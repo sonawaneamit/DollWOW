@@ -5,6 +5,12 @@ import { mapShopifyProduct } from "./mappers";
 
 const API_VERSION = "2026-04";
 
+const fallbackCollections = [
+  { id: "ready", handle: "ready-to-ship", title: "Ready To Ship" },
+  { id: "custom", handle: "custom", title: "Custom Dolls" },
+  { id: "premium", handle: "premium", title: "Premium Silicone" }
+];
+
 type ShopifyResponse<T> = {
   data?: T;
   errors?: Array<{ message: string }>;
@@ -73,7 +79,8 @@ const productFields = `
 `;
 
 export async function getProducts({ query, first = 24 }: { query?: string; first?: number } = {}) {
-  if (!hasShopifyStorefrontEnv()) return sampleProducts;
+  const fallbackProducts = sampleProducts.slice(0, first);
+  if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
   try {
     const data = await storefrontFetch<{
@@ -87,10 +94,11 @@ export async function getProducts({ query, first = 24 }: { query?: string; first
       { first, query }
     );
 
-    return data.products.edges.map((edge) => mapShopifyProduct(edge.node));
+    const products = data.products.edges.map((edge) => mapShopifyProduct(edge.node));
+    return products.length ? products : fallbackProducts;
   } catch (error) {
     console.error(error);
-    return sampleProducts;
+    return fallbackProducts;
   }
 }
 
@@ -107,7 +115,7 @@ export async function getProductByHandle(handle: string) {
       { handle }
     );
 
-    return data.product ? mapShopifyProduct(data.product) : null;
+    return data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((product) => product.handle === handle) ?? null);
   } catch (error) {
     console.error(error);
     return sampleProducts.find((product) => product.handle === handle) ?? null;
@@ -115,13 +123,7 @@ export async function getProductByHandle(handle: string) {
 }
 
 export async function getCollections() {
-  if (!hasShopifyStorefrontEnv()) {
-    return [
-      { id: "ready", handle: "ready-to-ship", title: "Ready To Ship" },
-      { id: "custom", handle: "custom", title: "Custom Dolls" },
-      { id: "premium", handle: "premium", title: "Premium Silicone" }
-    ];
-  }
+  if (!hasShopifyStorefrontEnv()) return fallbackCollections;
 
   try {
     const data = await storefrontFetch<{
@@ -134,10 +136,11 @@ export async function getCollections() {
       }`
     );
 
-    return data.collections.edges.map((edge) => edge.node);
+    const collections = data.collections.edges.map((edge) => edge.node);
+    return collections.length ? collections : fallbackCollections;
   } catch (error) {
     console.error(error);
-    return [];
+    return fallbackCollections;
   }
 }
 
