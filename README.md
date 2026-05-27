@@ -30,6 +30,7 @@ GA_MEASUREMENT_ID=...
 ```
 
 Shopify Storefront/Admin API version is pinned in code to `2026-04`.
+`SHOPIFY_STOREFRONT_ACCESS_TOKEN` can be either the Headless channel private token or a public Storefront API token; the app chooses the correct request header automatically.
 
 ## Implemented Flows
 
@@ -50,3 +51,13 @@ npm run build
 ```
 
 Browser QA screenshots are saved in `qa-screenshots/` and ignored by git.
+
+## Integration Smoke Test
+
+After `.env.local` is filled and the Supabase SQL migration has run:
+
+```bash
+npm run smoke:integrations
+```
+
+This checks Shopify Storefront API access and verifies that the Supabase `support_leads` table is reachable. It does not print secret values.

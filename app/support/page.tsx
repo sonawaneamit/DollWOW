@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { Mail, Phone } from "lucide-react";
 import { GoldButton } from "@/components/GoldButton";
+import { SupportLeadForm } from "@/components/SupportLeadForm";
 
 export const metadata = { title: "Support" };
 
@@ -9,6 +11,11 @@ export default function SupportPage() {
       <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Support</p>
       <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Private help from a real person</h1>
       <p className="mt-3 text-ivory-400">Ask about delivery, size, weight, options, price comparison, or a custom order before checkout.</p>
+      <div className="mt-8">
+        <Suspense fallback={<div className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-8 text-ivory-400">Loading support form...</div>}>
+          <SupportLeadForm />
+        </Suspense>
+      </div>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <div className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
           <Mail className="h-6 w-6 text-gold-400" />

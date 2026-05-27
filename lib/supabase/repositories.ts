@@ -114,6 +114,7 @@ export async function saveGuidedSession(input: {
 
 export async function saveSupportLead(input: {
   sourceFlow: string;
+  name?: string;
   email: string;
   question: string;
   productIds?: string[];
@@ -125,6 +126,7 @@ export async function saveSupportLead(input: {
     .from("support_leads")
     .insert({
       source_flow: input.sourceFlow,
+      name_optional: input.name ?? null,
       email: input.email,
       question: input.question,
       product_ids: input.productIds ?? [],

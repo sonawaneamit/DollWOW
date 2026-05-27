@@ -1,5 +1,6 @@
 import { sampleProducts } from "@/lib/data/sample-products";
 import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
+import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
 
 const API_VERSION = "2026-04";
@@ -19,7 +20,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+      ...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)
     },
     body: JSON.stringify({ query, variables }),
     next: { revalidate: 120 }

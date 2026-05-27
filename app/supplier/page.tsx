@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { GoldButton } from "@/components/GoldButton";
+import { SupportLeadForm } from "@/components/SupportLeadForm";
 
 export const metadata = { title: "Supplier Partnerships" };
 
@@ -15,6 +17,11 @@ export default function SupplierPage() {
       </div>
       <div className="mt-8">
         <GoldButton href="mailto:support@dollwow.com">Contact DollWow</GoldButton>
+      </div>
+      <div className="mt-10">
+        <Suspense fallback={<div className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-8 text-ivory-400">Loading supplier form...</div>}>
+          <SupportLeadForm defaultSource="supplier" />
+        </Suspense>
       </div>
     </section>
   );
