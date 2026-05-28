@@ -147,11 +147,11 @@ async function updateInitialVariant(productId, variantId, product) {
         {
           id: variantId,
           price,
-          inventoryPolicy: "DENY",
+          inventoryPolicy: "CONTINUE",
           taxable: true,
           inventoryItem: {
             sku: skuFor(product),
-            tracked: product.extended?.stockStatus === "ready_to_ship"
+            tracked: false
           }
         }
       ]

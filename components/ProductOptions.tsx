@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
-import { AlertTriangle, Check, Loader2, ShoppingBag } from "lucide-react";
+import { AlertTriangle, Check, Clock3, Loader2, ShieldCheck, ShoppingBag } from "lucide-react";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { getDefaultSelections, getOptionConflict, resolveCustomization } from "@/lib/customization/resolve";
 import { formatMoney } from "@/lib/utils/currency";
@@ -26,8 +27,11 @@ export function ProductOptions({ product }: { product: Product }) {
   const resolved = useMemo(() => resolveCustomization(config, selected, basePrice), [basePrice, config, selected]);
   const hasIssues = resolved.issues.length > 0;
   const hasPaidAddOns = resolved.optionPriceDelta > 0;
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+  const checkoutLabel = product.extended.stockStatus === "ready_to_ship" ? "Continue to secure checkout" : "Start custom order";
 
   async function addToCart() {
+    if (!canCheckout) return;
     setLoading(true);
     setError("");
     const response = await fetch("/api/cart/create", {
@@ -57,6 +61,11 @@ export function ProductOptions({ product }: { product: Product }) {
       <div className="mt-4 grid grid-cols-2 gap-2 rounded-[16px] border border-gold-500/12 bg-ink-950/45 p-3 text-sm">
         <SummaryItem label="Base" value={formatMoney(basePrice, currencyCode)} />
         <SummaryItem label="Options" value={formatMoney(resolved.optionPriceDelta, currencyCode)} />
+      </div>
+
+      <div className="mt-3 grid gap-2 text-xs text-ivory-400">
+        <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet checkout through Shopify" />
+        <Assurance icon={<Clock3 className="h-4 w-4" />} text="Final specs and timing confirmed by support" />
       </div>
 
       {product.variants.length > 1 && (
@@ -113,16 +122,38 @@ export function ProductOptions({ product }: { product: Product }) {
       </div>
 
       {error && <p className="mt-4 text-sm text-danger">{error}</p>}
-      <GoldButton className="mt-5 w-full" disabled={!variantId || loading || hasIssues} onClick={addToCart}>
+      {!variant?.availableForSale && <p className="mt-4 rounded-[14px] border border-danger/25 bg-danger/10 p-3 text-sm text-ivory-100">This configuration is not available for checkout yet. Contact support and we will confirm it manually.</p>}
+      <GoldButton className="mt-5 w-full" disabled={!canCheckout || loading} onClick={addToCart}>
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-        Add configured build
+        {checkoutLabel}
       </GoldButton>
       <p className="mt-3 text-xs text-ivory-600">
         {hasPaidAddOns
-          ? "Demo note: paid add-ons are captured as cart properties until Shopify option-price products are connected."
-          : "Custom details are confirmed before production. AI visuals are not a delivery guarantee."}
+          ? "Paid customization selections are captured for support confirmation before fulfillment."
+          : "Custom details are confirmed before production. Visual aids are not a delivery guarantee."}
       </p>
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur lg:hidden">
+        <div className="mx-auto flex max-w-7xl items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-xs text-ivory-500">{product.title}</p>
+            <p className="text-base font-semibold text-gold-300">{formatMoney(resolved.totalPrice, currencyCode)}</p>
+          </div>
+          <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={addToCart}>
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+            Checkout
+          </GoldButton>
+        </div>
+      </div>
     </aside>
+  );
+}
+
+function Assurance({ icon, text }: { icon: ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-2 rounded-[12px] bg-ink-950/45 px-3 py-2">
+      <span className="text-gold-300">{icon}</span>
+      <span>{text}</span>
+    </div>
   );
 }
 
