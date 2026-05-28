@@ -80,14 +80,15 @@ async function getScrapeItems(startUrl, limit, brand) {
 }
 
 async function runApifyScrape(startUrl, limit, brandSlug) {
+  const productUrls = await resolveProductUrls(startUrl, limit);
   const actorId = encodeURIComponent(DEFAULT_ACTOR_ID);
   const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(process.env.APIFY_API_TOKEN)}`;
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      startUrls: [{ url: startUrl }],
-      maxRequestsPerCrawl: Math.max(limit * 3, 10),
+      startUrls: productUrls.map((url) => ({ url })),
+      maxRequestsPerCrawl: Math.max(productUrls.length, 1),
       maxRequestRetries: 2,
       pageFunction: buildApifyPageFunction(limit, brandSlug)
     })
@@ -101,44 +102,36 @@ async function runApifyScrape(startUrl, limit, brandSlug) {
   }
 
   const data = await response.json();
+  const errorItem = Array.isArray(data) ? data.find((item) => item?.["#error"]) : null;
+  if (errorItem) {
+    const messages = errorItem["#debug"]?.errorMessages?.join("; ") || "unknown Apify extraction error";
+    throw new Error(`Apify product extraction failed: ${messages}`);
+  }
   return Array.isArray(data) ? data.filter((item) => item?.sourceUrl?.includes("/product/")).slice(0, limit) : [];
 }
 
 function buildApifyPageFunction(limit, brandSlug) {
   return `async function pageFunction(context) {
-    const { $, request, enqueueRequest } = context;
+    const { request } = context;
     const isProduct = request.url.includes('/product/');
+    if (!isProduct) return null;
 
-    if (!isProduct) {
-      const urls = new Set();
-      $('a[href*="/product/"]').each((_, element) => {
-        const href = $(element).attr('href');
-        if (href && urls.size < ${Number(limit)}) urls.add(href.split('?')[0]);
-      });
-      for (const url of urls) await enqueueRequest({ url });
-      $('a.next, a[rel="next"], .woocommerce-pagination a').each(async (_, element) => {
-        const href = $(element).attr('href');
-        if (href) await enqueueRequest({ url: href });
-      });
-      return null;
-    }
-
-    const html = $.html();
+    const meta = (selector) => document.querySelector(selector)?.getAttribute('content') || null;
+    const html = document.documentElement.outerHTML;
     return {
       sourceUrl: request.url,
       brandSlug: ${JSON.stringify(brandSlug || null)},
-      title: $('meta[property="og:title"]').attr('content') || $('h1').first().text(),
-      price: $('[itemprop="price"]').attr('content') || $('meta[property="product:price:amount"]').attr('content') || null,
-      image: $('meta[property="og:image"]').attr('content') || null,
-      description: $('meta[property="og:description"]').attr('content') || null,
+      title: meta('meta[property="og:title"]') || document.querySelector('h1')?.textContent || document.title,
+      price: document.querySelector('[itemprop="price"]')?.getAttribute('content') || meta('meta[property="product:price:amount"]') || null,
+      image: meta('meta[property="og:image"]'),
+      description: meta('meta[property="og:description"]'),
       html
     };
   }`;
 }
 
 async function runLocalScrape(startUrl, limit, brandSlug) {
-  const categoryHtml = await fetchText(startUrl);
-  const productUrls = extractProductUrls(categoryHtml, startUrl).slice(0, limit);
+  const productUrls = await resolveProductUrls(startUrl, limit);
   const products = [];
 
   for (const url of productUrls) {
@@ -155,6 +148,16 @@ async function runLocalScrape(startUrl, limit, brandSlug) {
   }
 
   return products;
+}
+
+async function resolveProductUrls(startUrl, limit) {
+  if (isProductUrl(startUrl)) return [startUrl];
+  const categoryHtml = await fetchText(startUrl);
+  return extractProductUrls(categoryHtml, startUrl).slice(0, limit);
+}
+
+function isProductUrl(url) {
+  return new URL(url).pathname.includes("/product/");
 }
 
 async function fetchText(url) {
