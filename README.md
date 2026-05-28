@@ -68,8 +68,9 @@ RosemaryDoll product data can be scraped into a review JSON file before any Shop
 
 ```bash
 npm run scrape:rosemary -- --brand zelex --limit 20
+npm run prepare:rosemary-import
 ```
 
 Supported brand shortcuts are `wm`, `zelex`, `irontech`, `starpery`, and `doll-castle`. Add `APIFY_API_TOKEN` to `.env.local` to run the Apify actor; without it, the script uses local fetch mode. Output goes to `data/imports/`, which is ignored by git.
 
-Use the generated JSON as a review/staging artifact. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.
+Use the generated JSON as a review/staging artifact. `prepare:rosemary-import` converts the latest scrape into `data/exports/` review files: a Shopify draft-product CSV, a storefront-shaped JSON preview, and a warning report. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.

@@ -10,4 +10,5 @@ coverage
 .local-data
 qa-screenshots
 data/imports
+data/exports
 *.tsbuildinfo

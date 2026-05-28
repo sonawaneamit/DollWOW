@@ -15,6 +15,16 @@ const BRAND_START_URLS = {
   "doll-castle": "https://www.rosemarydoll.com/sex-doll-brands/dolls-castle-sex-dolls/"
 };
 
+const BRAND_LABELS = {
+  wm: "WM Dolls",
+  zelex: "Zelex Dolls",
+  irontech: "Irontech Doll",
+  starpery: "Starpery Dolls",
+  "doll-castle": "Doll Castle"
+};
+
+const IGNORED_PRODUCT_HANDLES = new Set(["custom-full-silicone-female-doll", "custom-full-tpe-sex-doll"]);
+
 const args = parseArgs(process.argv.slice(2));
 
 if (args.help) {
@@ -179,7 +189,11 @@ function extractProductUrls(html, baseUrl) {
     url.search = "";
     urls.add(url.toString());
   }
-  return [...urls].filter((url) => url.includes("rosemarydoll.com/product/"));
+  return [...urls].filter((url) => {
+    if (!url.includes("rosemarydoll.com/product/")) return false;
+    const handle = url.replace(/\/$/, "").split("/").pop();
+    return !IGNORED_PRODUCT_HANDLES.has(handle);
+  });
 }
 
 function normalizeRosemaryProduct(item, brandFallback) {
@@ -188,10 +202,10 @@ function normalizeRosemaryProduct(item, brandFallback) {
   const title = rawTitle.replace(/\s+-\s+RosemaryDoll$/i, "");
   const description = cleanText(item.description || "");
   const price = Number(item.price || pickJsonPrice(item.html || ""));
-  const brand = cleanBrand(extractSpec(description, "Brand")) || title.match(/\(([^)]+)\)/)?.[1] || brandFallback || "RosemaryDoll";
+  const brand = cleanBrand(extractSpec(description, "Brand")) || title.match(/\(([^)]+)\)/)?.[1] || BRAND_LABELS[brandFallback] || brandFallback || "RosemaryDoll";
   const sourceUrl = item.sourceUrl.split("?")[0];
   const handle = sourceUrl.replace(/\/$/, "").split("/").pop();
-  const imageUrls = unique([item.image, ...extractImageUrls(item.html || "")]).filter(Boolean).slice(0, 16);
+  const imageUrls = unique([item.image, ...extractImageUrls(item.html || "")]).filter(isCatalogImage).slice(0, 16);
   const optionGroupLabels = extractOptionGroupLabels(item.html || "");
   const stockSignal = `${rawTitle} ${pickTitle(item.html || "")}`;
   const isReadyToShip = /\bin stock\b|fast shipping/i.test(stockSignal);
@@ -237,6 +251,14 @@ function extractImageUrls(html) {
   return unique([...html.matchAll(/https?:\/\/www\.rosemarydoll\.com\/wp-content\/uploads\/[^"'\s]+\.(?:jpg|jpeg|png|webp)/gi)].map((match) => decodeHtml(match[0])));
 }
 
+function isCatalogImage(url) {
+  return (
+    Boolean(url) &&
+    !/logo|favicon|placeholder|payment|paypal|visa|mastercard|klarna|afterpay|trust|reward|timeline|fedex|certificate|authorization/i.test(url) &&
+    !/\/(?:us|ca|eu|uk|jp|au-1|nz-1)\.(?:jpe?g|png|webp)$/i.test(url)
+  );
+}
+
 function extractOptionGroupLabels(html) {
   const text = cleanText(html.replace(/<[^>]+>/g, " "));
   return unique([...text.matchAll(/\b(SELECT [A-Z0-9\s\-&/]+?)(?=\s{2,}| NOTE| Image:|$)/g)].map((match) => cleanText(match[1]))).slice(0, 30);
@@ -270,6 +292,7 @@ function cleanBrand(value) {
 
 function decodeHtml(value) {
   return String(value || "")
+    .replace(/\\u([0-9a-fA-F]{4})/g, (_, code) => String.fromCharCode(Number.parseInt(code, 16)))
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
     .replace(/&#039;/g, "'")

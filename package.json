@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "smoke:integrations": "node scripts/smoke-integrations.mjs",
     "scrape:rosemary": "node scripts/scrape-rosemary.mjs",
+    "prepare:rosemary-import": "node scripts/prepare-rosemary-import.mjs",
     "test": "vitest run"
   },
   "dependencies": {
