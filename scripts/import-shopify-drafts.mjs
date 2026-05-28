@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
+let tokenCache = null;
 
 await loadLocalEnv();
 
@@ -116,7 +117,7 @@ async function createDraftProduct(product) {
         metafields: productMetafields(product)
       },
       media: (product.images || []).slice(0, Number(args.maxImages || 8)).map((image) => ({
-        originalSource: image.url,
+        originalSource: encodeMediaUrl(image.url),
         alt: image.altText || product.title,
         mediaContentType: "IMAGE"
       }))
@@ -190,11 +191,12 @@ function metafield(key, value, type = "single_line_text_field") {
 
 async function adminFetch(query, variables = {}) {
   const domain = process.env.SHOPIFY_STORE_DOMAIN.replace(/^https?:\/\//, "");
+  const accessToken = await getAdminAccessToken(domain);
   const response = await fetch(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Access-Token": process.env.SHOPIFY_ADMIN_ACCESS_TOKEN
+      "X-Shopify-Access-Token": accessToken
     },
     body: JSON.stringify({ query, variables })
   });
@@ -204,6 +206,34 @@ async function adminFetch(query, variables = {}) {
     throw new Error(`Shopify Admin API request failed: ${message}`);
   }
   return payload.data;
+}
+
+async function getAdminAccessToken(domain) {
+  if (process.env.SHOPIFY_ADMIN_ACCESS_TOKEN) return process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
+  if (tokenCache && tokenCache.expiresAt > Date.now() + 60_000) return tokenCache.accessToken;
+  if (!process.env.SHOPIFY_CLIENT_ID || !process.env.SHOPIFY_CLIENT_SECRET) {
+    throw new Error("Shopify Admin API requires SHOPIFY_ADMIN_ACCESS_TOKEN or SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET.");
+  }
+
+  const response = await fetch(`https://${domain}/admin/oauth/access_token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      client_id: process.env.SHOPIFY_CLIENT_ID,
+      client_secret: process.env.SHOPIFY_CLIENT_SECRET
+    })
+  });
+  const payload = await response.json();
+  if (!response.ok || !payload.access_token) {
+    throw new Error(payload.error_description || payload.error || "Failed to mint Shopify Admin access token.");
+  }
+
+  tokenCache = {
+    accessToken: payload.access_token,
+    expiresAt: Date.now() + Math.max((payload.expires_in || 3600) - 60, 60) * 1000
+  };
+  return tokenCache.accessToken;
 }
 
 function productDescriptionHtml(product) {
@@ -241,14 +271,18 @@ function skuFor(product) {
     .slice(0, 64);
 }
 
+function encodeMediaUrl(url) {
+  return encodeURI(url);
+}
+
 function formatUserError(error) {
   const field = Array.isArray(error.field) ? error.field.join(".") : error.field;
   return field ? `${field}: ${error.message}` : error.message;
 }
 
 function assertShopifyAdminEnv() {
-  if (!process.env.SHOPIFY_STORE_DOMAIN || !process.env.SHOPIFY_ADMIN_ACCESS_TOKEN) {
-    throw new Error("SHOPIFY_STORE_DOMAIN and SHOPIFY_ADMIN_ACCESS_TOKEN are required for --execute.");
+  if (!process.env.SHOPIFY_STORE_DOMAIN || !(process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || (process.env.SHOPIFY_CLIENT_ID && process.env.SHOPIFY_CLIENT_SECRET))) {
+    throw new Error("SHOPIFY_STORE_DOMAIN plus SHOPIFY_ADMIN_ACCESS_TOKEN or SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET are required for --execute.");
   }
 }
 
