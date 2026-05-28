@@ -41,3 +41,17 @@ a {
   background-clip: text;
   color: transparent;
 }
+
+.studio-float {
+  animation: studio-float 7s ease-in-out infinite;
+}
+
+@keyframes studio-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

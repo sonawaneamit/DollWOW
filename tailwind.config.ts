@@ -34,7 +34,8 @@ const config: Config = {
         sans: ["var(--font-sans)", "Inter", "Arial", "sans-serif"]
       },
       boxShadow: {
-        glow: "0 0 80px rgba(216, 177, 90, 0.16)"
+        glow: "0 0 80px rgba(216, 177, 90, 0.16)",
+        soft: "0 22px 70px rgba(0, 0, 0, 0.32)"
       }
     }
   },
