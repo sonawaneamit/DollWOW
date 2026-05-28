@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+await loadLocalEnv();
+
 const DEFAULT_ACTOR_ID = process.env.APIFY_WEB_SCRAPER_ACTOR_ID || "apify~web-scraper";
 
 const BRAND_START_URLS = {
@@ -28,7 +30,14 @@ if (!startUrl) {
   throw new Error(`Pass --brand ${Object.keys(BRAND_START_URLS).join("|")} or --url <Rosemary category URL>.`);
 }
 
-const items = args.local || !process.env.APIFY_API_TOKEN ? await runLocalScrape(startUrl, limit, brand) : await runApifyScrape(startUrl, limit, brand);
+class ApifyPermissionError extends Error {
+  constructor(approvalUrl) {
+    super("Apify blocked this actor because its account permissions have not been approved yet.");
+    this.approvalUrl = approvalUrl;
+  }
+}
+
+const items = await getScrapeItems(startUrl, limit, brand);
 const normalized = items.map((item) => normalizeRosemaryProduct(item, brand)).filter(Boolean);
 const outputPath = args.out || path.join(ROOT, "data", "imports", `rosemary-${brand || "custom"}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`);
 
@@ -55,6 +64,21 @@ if (!process.env.APIFY_API_TOKEN && !args.local) {
   console.log("APIFY_API_TOKEN was not set, so the script used local fetch mode. Add the token to use Apify.");
 }
 
+async function getScrapeItems(startUrl, limit, brand) {
+  if (args.local || !process.env.APIFY_API_TOKEN) return runLocalScrape(startUrl, limit, brand);
+  try {
+    return await runApifyScrape(startUrl, limit, brand);
+  } catch (error) {
+    if (error instanceof ApifyPermissionError) {
+      console.error(error.message);
+      console.error(`Approve actor permissions: ${error.approvalUrl}`);
+      console.error("Then rerun the same command, or add --local to use local fetch mode.");
+      process.exit(1);
+    }
+    throw error;
+  }
+}
+
 async function runApifyScrape(startUrl, limit, brandSlug) {
   const actorId = encodeURIComponent(DEFAULT_ACTOR_ID);
   const endpoint = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${encodeURIComponent(process.env.APIFY_API_TOKEN)}`;
@@ -70,7 +94,10 @@ async function runApifyScrape(startUrl, limit, brandSlug) {
   });
 
   if (!response.ok) {
-    throw new Error(`Apify actor failed (${response.status}): ${await response.text()}`);
+    const body = await response.text();
+    const approvalUrl = body.match(/"approvalUrl"\s*:\s*"([^"]+)"/)?.[1];
+    if (response.status === 403 && approvalUrl) throw new ApifyPermissionError(approvalUrl);
+    throw new Error(`Apify actor failed (${response.status}): ${body}`);
   }
 
   const data = await response.json();
@@ -287,4 +314,25 @@ function printHelp() {
 
 By default the script uses Apify when APIFY_API_TOKEN is set. Without a token, it uses local fetch mode.
 Output is written to data/imports/ and ignored by git for review before Shopify import.`);
+}
+
+async function loadLocalEnv() {
+  const envPath = path.join(ROOT, ".env.local");
+  try {
+    const text = await fs.readFile(envPath, "utf8");
+    for (const rawLine of text.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith("#")) continue;
+      const index = line.indexOf("=");
+      if (index === -1) continue;
+      const key = line.slice(0, index).trim();
+      let value = line.slice(index + 1).trim();
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      process.env[key] ||= value;
+    }
+  } catch {
+    // Local env is optional; CI/Vercel can provide process.env directly.
+  }
 }
