@@ -31,6 +31,7 @@ GA_MEASUREMENT_ID=...
 
 Shopify Storefront/Admin API version is pinned in code to `2026-04`.
 `SHOPIFY_STOREFRONT_ACCESS_TOKEN` can be either the Headless channel private token or a public Storefront API token; the app chooses the correct request header automatically.
+`SHOPIFY_ADMIN_ACCESS_TOKEN` must be a Shopify Admin API access token from a custom app, not the app client secret or app automation token. Product draft imports require `write_products`; price-match discount plumbing requires discount write access.
 
 ## Implemented Flows
 
@@ -69,8 +70,9 @@ RosemaryDoll product data can be scraped into a review JSON file before any Shop
 ```bash
 npm run scrape:rosemary -- --brand zelex --limit 20
 npm run prepare:rosemary-import
+npm run import:shopify-drafts
 ```
 
 Supported brand shortcuts are `wm`, `zelex`, `irontech`, `starpery`, and `doll-castle`. Add `APIFY_API_TOKEN` to `.env.local` to run the Apify actor; without it, the script uses local fetch mode. Output goes to `data/imports/`, which is ignored by git.
 
-Use the generated JSON as a review/staging artifact. `prepare:rosemary-import` converts the latest scrape into `data/exports/` review files: a Shopify draft-product CSV, a storefront-shaped JSON preview, and a warning report. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.
+Use the generated JSON as a review/staging artifact. `prepare:rosemary-import` converts the latest scrape into `data/exports/` review files: a Shopify draft-product CSV, a storefront-shaped JSON preview, and a warning report. `import:shopify-drafts` dry-runs by default; add `-- --execute` only when you want it to create draft products through the Shopify Admin GraphQL API. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.

@@ -42,6 +42,7 @@ When importing products from RosemaryDoll or another owned/approved source, use 
 - Convert reviewed scrape output into import artifacts using `npm run prepare:rosemary-import -- --input <file>`.
 - Treat `data/imports/` files as local review artifacts; they are ignored by git.
 - Treat `data/exports/` files as local review artifacts too; they are ignored by git and can include Shopify CSVs, storefront previews, and warning reports.
+- Use `npm run import:shopify-drafts -- --input <storefront-preview.json>` to dry-run Shopify draft creation. Add `--execute` only after reviewing the exact input file.
 - Review source URL, title, brand, price, specs, stock status, image URLs, and customization option labels before publishing.
 - Keep Shopify as the production source of truth after import; crawlers should support updates and stock snapshots, not bypass catalog review.
 - Do not auto-publish scraped items until supplier authorization, product accuracy, and image provenance are clear.
