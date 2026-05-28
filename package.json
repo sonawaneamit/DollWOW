@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "smoke:integrations": "node scripts/smoke-integrations.mjs",
+    "scrape:rosemary": "node scripts/scrape-rosemary.mjs",
     "test": "vitest run"
   },
   "dependencies": {

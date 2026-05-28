@@ -10,7 +10,9 @@ const envSchema = z.object({
   SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
   OPENAI_API_KEY: z.string().optional(),
   EMAIL_PROVIDER_API_KEY: z.string().optional(),
-  GA_MEASUREMENT_ID: z.string().optional()
+  GA_MEASUREMENT_ID: z.string().optional(),
+  APIFY_API_TOKEN: z.string().optional(),
+  APIFY_WEB_SCRAPER_ACTOR_ID: z.string().optional()
 });
 
 export const env = envSchema.parse({
@@ -23,7 +25,9 @@ export const env = envSchema.parse({
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   EMAIL_PROVIDER_API_KEY: process.env.EMAIL_PROVIDER_API_KEY,
-  GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID
+  GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
+  APIFY_API_TOKEN: process.env.APIFY_API_TOKEN,
+  APIFY_WEB_SCRAPER_ACTOR_ID: process.env.APIFY_WEB_SCRAPER_ACTOR_ID
 });
 
 export function hasShopifyStorefrontEnv() {

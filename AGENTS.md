@@ -33,3 +33,13 @@ Design customization around brand/supplier option sets:
 - The product page configuration UI should expose price impacts, conflicts, missing required choices, and production-time implications before checkout.
 
 Product-page work should therefore start with a reusable configuration schema and rule engine, then render a premium configurator from that schema.
+
+## Catalog Import Workflow
+
+When importing products from RosemaryDoll or another owned/approved source, use a review-first pipeline:
+
+- Scrape brand/category pages into normalized JSON using `npm run scrape:rosemary -- --brand <brand> --limit <n>`.
+- Treat `data/imports/` files as local review artifacts; they are ignored by git.
+- Review source URL, title, brand, price, specs, stock status, image URLs, and customization option labels before publishing.
+- Keep Shopify as the production source of truth after import; crawlers should support updates and stock snapshots, not bypass catalog review.
+- Do not auto-publish scraped items until supplier authorization, product accuracy, and image provenance are clear.

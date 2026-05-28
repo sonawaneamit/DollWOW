@@ -61,3 +61,15 @@ npm run smoke:integrations
 ```
 
 This checks Shopify Storefront API access and verifies that the Supabase `support_leads` table is reachable. It does not print secret values.
+
+## RosemaryDoll Import Reviews
+
+RosemaryDoll product data can be scraped into a review JSON file before any Shopify import:
+
+```bash
+npm run scrape:rosemary -- --brand zelex --limit 20
+```
+
+Supported brand shortcuts are `wm`, `zelex`, `irontech`, `starpery`, and `doll-castle`. Add `APIFY_API_TOKEN` to `.env.local` to run the Apify actor; without it, the script uses local fetch mode. Output goes to `data/imports/`, which is ignored by git.
+
+Use the generated JSON as a review/staging artifact. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.

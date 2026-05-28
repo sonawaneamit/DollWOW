@@ -9,4 +9,5 @@ coverage
 .DS_Store
 .local-data
 qa-screenshots
+data/imports
 *.tsbuildinfo
