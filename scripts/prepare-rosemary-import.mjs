@@ -229,7 +229,6 @@ function reviewWarnings(product) {
 
 function productTags(product) {
   return unique([
-    "rosemary-review",
     product.brandSlug,
     slugify(product.brand || ""),
     product.stockStatus,
