@@ -29,7 +29,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
       <aside className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
         <div className="flex items-center gap-3">
           {allowed ? <BadgeCheck className="h-6 w-6 text-stock" /> : <AlertTriangle className="h-6 w-6 text-warn" />}
-          <h2 className="text-2xl font-semibold text-ivory-50">{allowed ? "Price match ready" : "Human check needed"}</h2>
+          <h2 className="text-2xl font-semibold text-ivory-50">{allowed ? "Price match ready" : "Team check needed"}</h2>
         </div>
         {product && (
           <div className="mt-5 rounded-[16px] bg-ink-950/50 p-4">
@@ -53,7 +53,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
         </ul>
         <div className="mt-6 flex flex-wrap gap-3">
           {product && <GoldButton href={`/products/${product.handle}`}>View DollWow match</GoldButton>}
-          <GoldButton href="/support?source=compare" variant="secondary">Ask human help</GoldButton>
+          <GoldButton href="/support?source=compare" variant="secondary">Ask our team</GoldButton>
         </div>
       </aside>
     </div>

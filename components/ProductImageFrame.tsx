@@ -5,7 +5,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
   const image = product.featuredImage ?? product.images[0] ?? null;
 
   return (
-    <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)]">
+    <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)]">
       {image ? (
         <Image
           src={image.url}
@@ -13,7 +13,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
           fill
           sizes="(min-width: 1024px) 33vw, 90vw"
           priority={priority}
-          className="object-cover"
+          className="object-cover noir-media"
         />
       ) : (
         <div className="flex h-full flex-col items-center justify-center p-6 text-center">

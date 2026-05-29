@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon, X } from "lucide-react";
 import { clsx } from "clsx";
 import type { Product, ProductImage } from "@/types/product";
 
 export function ProductGallery({ product }: { product: Product }) {
   const images = useMemo(() => uniqueImages([product.featuredImage, ...product.images]), [product]);
   const [index, setIndex] = useState(0);
+  const [isPreviewOpen, setPreviewOpen] = useState(false);
   const active = images[index] ?? null;
   const hasControls = images.length > 1;
 
@@ -18,16 +19,18 @@ export function ProductGallery({ product }: { product: Product }) {
 
   return (
     <section className="space-y-3">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/14 bg-[linear-gradient(145deg,#1a1713,#050505)]">
+      <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)] shadow-soft">
         {active ? (
-          <Image
-            src={active.url}
-            alt={active.altText ?? product.title}
-            fill
-            sizes="(min-width: 1024px) 44vw, 94vw"
-            priority
-            className="object-cover"
-          />
+          <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
+            <Image
+              src={active.url}
+              alt={active.altText ?? product.title}
+              fill
+              sizes="(min-width: 1024px) 44vw, 94vw"
+              priority
+              className="object-cover noir-media"
+            />
+          </button>
         ) : (
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
             <ImageIcon className="mb-4 h-10 w-10 text-gold-300" />
@@ -73,16 +76,37 @@ export function ProductGallery({ product }: { product: Product }) {
               onClick={() => setIndex(imageIndex)}
               aria-label={`View image ${imageIndex + 1}`}
               className={clsx(
-                "relative aspect-square overflow-hidden rounded-[10px] border bg-ink-900 transition",
+                "noir-media-wrap relative aspect-square overflow-hidden rounded-[10px] border bg-ink-900 transition",
                 imageIndex === index ? "border-gold-300" : "border-gold-500/14 hover:border-gold-300/70"
               )}
             >
-              <Image src={image.url} alt={image.altText ?? product.title} fill sizes="96px" className="object-cover" />
+              <Image src={image.url} alt={image.altText ?? product.title} fill sizes="96px" className="object-cover noir-media" />
             </button>
           ))}
         </div>
       )}
+      {isPreviewOpen && active && (
+        <ImagePreview imageUrl={active.url} alt={active.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
+      )}
     </section>
+  );
+}
+
+function ImagePreview({ imageUrl, alt, onClose }: { imageUrl: string; alt: string; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/92 p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Product image preview">
+      <button
+        type="button"
+        aria-label="Close image preview"
+        onClick={onClose}
+        className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-gold-500/25 bg-ink-900/80 text-ivory-50 transition hover:border-gold-300"
+      >
+        <X className="h-5 w-5" />
+      </button>
+      <div className="relative h-[88vh] w-full max-w-5xl overflow-hidden rounded-[24px] border border-gold-500/25 bg-ink-950 shadow-soft">
+        <Image src={imageUrl} alt={alt} fill sizes="95vw" className="object-contain" />
+      </div>
+    </div>
   );
 }
 

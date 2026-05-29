@@ -8,7 +8,7 @@ export default function ComparePage() {
       <div className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-6 sm:p-8">
         <p className="text-sm uppercase tracking-[0.18em] text-gold-300">LIVE Price Comparison</p>
         <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Paste a product link</h1>
-        <p className="mt-3 text-ivory-400">We extract what we can, look for a DollWow match, and show when a human should verify before you pay.</p>
+        <p className="mt-3 text-ivory-400">We extract what we can, look for a DollWow match, and show when our team should verify before you pay.</p>
         <div className="mt-7">
           <CompareListingForm />
         </div>

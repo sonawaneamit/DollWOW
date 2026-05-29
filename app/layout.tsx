@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "DollWow | Find, compare, customize, and buy with confidence",
     template: "%s | DollWow"
   },
-  description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and human support.",
+  description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and specialist support.",
   robots: {
     index: true,
     follow: true

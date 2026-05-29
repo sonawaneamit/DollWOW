@@ -153,7 +153,7 @@ const configs = {
   generic: {
     id: "generic",
     brandLabel: "DollWow Select",
-    leadTimeNote: "Custom details are reviewed by a human before production or shipment.",
+    leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
     groups: [skinTones, eyeColor, wigFinish, bodyUpgrades, careAddOns],
     rules: []
   }

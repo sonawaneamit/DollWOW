@@ -9,7 +9,7 @@ export default function WhyPage() {
         {[
           ["Plain choices", "Use simple filters, product details, and a short quiz instead of learning every brand first."],
           ["Comparison help", "Paste a listing and we help compare price, delivery, specs, and support."],
-          ["Human support", "Ask private questions before you buy, especially for custom or high-ticket orders."],
+          ["Specialist support", "Ask our team private questions before you buy, especially for custom or high-ticket orders."],
           ["Clear records", "Each product gets a clear details card and care record without tech jargon."]
         ].map(([title, copy]) => (
           <div key={title} className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">

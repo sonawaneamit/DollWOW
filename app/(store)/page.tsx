@@ -19,7 +19,7 @@ export default async function HomePage() {
             The private way to compare, customize, and <span className="gold-text">buy with confidence.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ivory-400">
-            Compare listings, choose a practical fit, customize what matters, and get private human support before checkout.
+            Compare listings, choose a practical fit, customize what matters, and get private support from our team before checkout.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <GoldButton href="/shop">Shop Dolls</GoldButton>
@@ -31,7 +31,7 @@ export default async function HomePage() {
           <p className="text-xs uppercase tracking-[0.18em] text-gold-300">LIVE Price Comparison</p>
           <h2 className="mt-3 text-2xl font-semibold text-ivory-50">Paste a listing link from any website</h2>
           <p className="mt-2 text-sm text-ivory-400">
-            We check the page, compare against DollWow, and tell you when a human should verify the match.
+            We check the page, compare against DollWow, and tell you when our team should verify the match.
           </p>
           <div className="mt-5">
             <CompareListingForm compact />
@@ -43,7 +43,7 @@ export default async function HomePage() {
         <TrustBadge icon={BadgeCheck} label="Best price match" />
         <TrustBadge icon={Lock} label="Discreet shipping" />
         <TrustBadge icon={Truck} label="Delivery checked" />
-        <TrustBadge icon={Users} label="Human support" />
+        <TrustBadge icon={Users} label="Specialist support" />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ export default async function HomePage() {
       <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-14 sm:px-6 lg:grid-cols-3 lg:px-8">
         <Feature href="/help-me-choose" title="Help Me Choose" copy="Answer a few practical questions and get 3 to 5 useful recommendations." />
         <Feature href="/warehouse" title="Doll Warehouse" copy={`${ready.length || products.length} ready-to-ship options with location and delivery notes.`} />
-        <Feature href="/customize" title="Make Her Yours" copy="Use a polished build studio with live pricing, clear steps, and human review." />
+        <Feature href="/customize" title="Make Her Yours" copy="Use a polished build studio with live pricing, clear steps, and team review." />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">

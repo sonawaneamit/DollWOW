@@ -32,7 +32,7 @@ export function decidePriceMatch(input: {
   if (!parsed) reasons.push("The listing could not be parsed.");
   const vendor = parsed ? approvedVendors.find((item) => item.domain === parsed.sourceDomain) : null;
   if (!vendor?.allowedForPriceMatch) reasons.push("This vendor is not approved for automatic price matching yet.");
-  if (input.confidence !== "high") reasons.push("The match needs a human check.");
+  if (input.confidence !== "high") reasons.push("The match needs a team check.");
   if (!parsed?.price) reasons.push("The competitor total price is not clear.");
   if (parsed && !isFresh(parsed.lastCheckedAt)) reasons.push("The competitor price is not fresh enough.");
   const variant = input.product?.variants.find((item) => item.availableForSale);

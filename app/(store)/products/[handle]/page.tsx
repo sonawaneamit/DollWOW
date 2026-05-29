@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             <div className="mt-5 grid gap-2 text-sm text-ivory-300 sm:grid-cols-3">
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<Truck className="h-4 w-4" />} text="Timing confirmed" />
-              <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Human QC support" />
+              <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <GoldButton href="/compare" variant="secondary">

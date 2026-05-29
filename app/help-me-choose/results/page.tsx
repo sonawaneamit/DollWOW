@@ -14,7 +14,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Your recommendations</p>
       <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Good options to review first</h1>
-      <p className="mt-3 max-w-3xl text-ivory-400">These are practical starting points. Open a product, compare prices, or ask human help before buying.</p>
+      <p className="mt-3 max-w-3xl text-ivory-400">These are practical starting points. Open a product, compare prices, or ask our team before buying.</p>
       <div className="mt-8">
         <ProductGrid products={recommended} />
       </div>

@@ -18,7 +18,8 @@ import {
   Scissors,
   ShieldCheck,
   ShoppingBag,
-  Sparkles
+  Sparkles,
+  X
 } from "lucide-react";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { getDefaultSelections, getOptionConflict, resolveCustomization } from "@/lib/customization/resolve";
@@ -43,6 +44,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const resolved = useMemo(() => resolveCustomization(config, selected, basePrice), [basePrice, config, selected]);
   const activeGroup = config.groups.find((group) => group.id === activeGroupId) ?? config.groups[0];
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
+  const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
   const checkoutLabel = product.extended.stockStatus === "ready_to_ship" ? "Secure checkout" : "Start custom order";
@@ -80,7 +82,7 @@ export function ProductOptions({ product }: { product: Product }) {
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Build studio</p>
               <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Make her yours</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">Choose what matters. The price updates as you go, and a person checks it all before anything is made or shipped.</p>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">Choose what matters. The price updates as you go, and our team checks it all before anything is made or shipped.</p>
             </div>
             <div className="rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-4 py-2 text-sm text-ivory-300">
               {resolved.selectedOptions.length} selections
@@ -89,9 +91,11 @@ export function ProductOptions({ product }: { product: Product }) {
 
           <div className="relative z-10 mx-auto my-8 flex w-full max-w-[640px] flex-1 items-center justify-center">
             <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-            <div className="studio-float relative aspect-[4/5] w-full max-w-[430px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
+            <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[430px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
               {heroImage ? (
-                <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover" />
+                <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
+                  <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
+                </button>
               ) : (
                 <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{product.title}</div>
               )}
@@ -204,6 +208,9 @@ export function ProductOptions({ product }: { product: Product }) {
           </GoldButton>
         </div>
       </div>
+      {isPreviewOpen && heroImage && (
+        <ImagePreview imageUrl={heroImage.url} alt={heroImage.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
+      )}
     </section>
   );
 }
@@ -316,17 +323,21 @@ function OptionTile({
       disabled={disabled}
       title={disabled ? conflict ?? undefined : undefined}
       className={clsx(
-        "group relative min-h-32 overflow-hidden rounded-[22px] border p-4 text-left transition duration-200",
+        "group relative flex min-h-36 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-4 text-center transition duration-200",
         selected ? "border-[#4f9c8a] bg-[linear-gradient(180deg,rgba(79,156,138,0.09),rgba(7,4,3,0.62))] shadow-[0_16px_40px_rgba(79,156,138,0.16)]" : "border-gold-500/20 bg-ink-950/62 hover:-translate-y-0.5 hover:border-gold-300/60 hover:shadow-[0_16px_40px_rgba(20,6,4,0.32)]",
         disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-gold-500/20 hover:shadow-none"
       )}
     >
-      <span className="flex items-start gap-3">
+      {selected && (
+        <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#4f9c8a] text-white shadow-[0_8px_24px_rgba(79,156,138,0.28)]">
+          <Check className="h-4 w-4" />
+        </span>
+      )}
+      <span className="flex min-h-full flex-col items-center gap-3">
         <OptionMark option={option} selected={selected} />
         <span className="min-w-0 flex-1">
-          <span className="flex items-start justify-between gap-3">
+          <span className="block">
             <span className="font-semibold text-ivory-50">{option.label}</span>
-            {selected && <Check className="h-4 w-4 shrink-0 text-[#4f9c8a]" />}
           </span>
           {option.description && <span className="mt-2 block text-xs leading-5 text-ivory-500">{option.description}</span>}
           <span className="mt-3 inline-flex rounded-full bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-gold-300">
@@ -337,6 +348,24 @@ function OptionTile({
         </span>
       </span>
     </button>
+  );
+}
+
+function ImagePreview({ imageUrl, alt, onClose }: { imageUrl: string; alt: string; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/92 p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Product image preview">
+      <button
+        type="button"
+        aria-label="Close image preview"
+        onClick={onClose}
+        className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-gold-500/25 bg-ink-900/80 text-ivory-50 transition hover:border-gold-300"
+      >
+        <X className="h-5 w-5" />
+      </button>
+      <div className="relative h-[88vh] w-full max-w-5xl overflow-hidden rounded-[24px] border border-gold-500/25 bg-ink-950 shadow-soft">
+        <Image src={imageUrl} alt={alt} fill sizes="95vw" className="object-contain" />
+      </div>
+    </div>
   );
 }
 
