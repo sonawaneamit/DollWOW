@@ -42,12 +42,14 @@ export function ProductOptions({ product }: { product: Product }) {
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = variant?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
   const resolved = useMemo(() => resolveCustomization(config, selected, basePrice), [basePrice, config, selected]);
-  const activeGroup = config.groups.find((group) => group.id === activeGroupId) ?? config.groups[0];
+  const activeGroupIndex = Math.max(0, config.groups.findIndex((group) => group.id === activeGroupId));
+  const activeGroup = config.groups[activeGroupIndex] ?? config.groups[0];
+  const previousGroup = config.groups[activeGroupIndex - 1] ?? null;
+  const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
-  const checkoutLabel = product.extended.stockStatus === "ready_to_ship" ? "Secure checkout" : "Start custom order";
 
   async function addToCart() {
     if (!canCheckout) return;
@@ -69,6 +71,14 @@ export function ProductOptions({ product }: { product: Product }) {
 
   function selectOption(groupId: string, optionId: string) {
     setSelected((current) => ({ ...current, [groupId]: optionId }));
+  }
+
+  function goToPreviousGroup() {
+    if (previousGroup) setActiveGroupId(previousGroup.id);
+  }
+
+  function goToNextGroup() {
+    if (nextGroup) setActiveGroupId(nextGroup.id);
   }
 
   return (
@@ -116,7 +126,7 @@ export function ProductOptions({ product }: { product: Product }) {
             <div className="mt-2 flex items-center justify-between gap-3">
               <h3 className="text-2xl font-semibold">{activeGroup.label}</h3>
               <span className="rounded-full border border-gold-500/20 bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-ivory-400">
-                {config.groups.findIndex((group) => group.id === activeGroup.id) + 1}/{config.groups.length}
+                {activeGroupIndex + 1}/{config.groups.length}
               </span>
             </div>
             <p className="mt-2 text-sm leading-6 text-ivory-400">{activeGroup.description}</p>
@@ -179,15 +189,38 @@ export function ProductOptions({ product }: { product: Product }) {
               </div>
             </div>
             {error && <p className="mt-3 text-sm text-danger">{error}</p>}
-            <button
-              type="button"
-              disabled={!canCheckout || loading}
-              onClick={addToCart}
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-              {checkoutLabel}
-            </button>
+            <div className="mt-5 grid gap-2">
+              {nextGroup ? (
+                <button
+                  type="button"
+                  onClick={goToNextGroup}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
+                >
+                  Next: {nextGroup.label}
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={!canCheckout || loading}
+                  onClick={addToCart}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+                  Checkout
+                </button>
+              )}
+              {previousGroup && (
+                <button
+                  type="button"
+                  onClick={goToPreviousGroup}
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-3 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Back: {previousGroup.label}
+                </button>
+              )}
+            </div>
             <div className="mt-4 grid gap-2 text-xs text-ivory-400">
               <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet Shopify checkout" />
               <Assurance icon={<Clock3 className="h-4 w-4" />} text="Final specs confirmed by support" />
