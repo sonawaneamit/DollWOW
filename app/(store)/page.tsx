@@ -16,7 +16,7 @@ export default async function HomePage() {
         <div className="flex flex-col justify-center">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-300">DollWow.com</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] text-ivory-50 sm:text-6xl">
-            Find the right doll. <span className="gold-text">Buy with confidence.</span>
+            The private way to compare, customize, and <span className="gold-text">buy with confidence.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ivory-400">
             Compare listings, choose a practical fit, customize what matters, and get private human support before checkout.
@@ -60,7 +60,7 @@ export default async function HomePage() {
       <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-14 sm:px-6 lg:grid-cols-3 lg:px-8">
         <Feature href="/help-me-choose" title="Help Me Choose" copy="Answer a few practical questions and get 3 to 5 useful recommendations." />
         <Feature href="/warehouse" title="Doll Warehouse" copy={`${ready.length || products.length} ready-to-ship options with location and delivery notes.`} />
-        <Feature href="/customize" title="Customize Your Doll" copy="Choose simple option groups and see a clear selected-items summary." />
+        <Feature href="/customize" title="Make Her Yours" copy="Use a polished build studio with live pricing, clear steps, and human review." />
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">

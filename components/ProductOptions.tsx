@@ -70,19 +70,19 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   return (
-    <section className="overflow-hidden rounded-[28px] border border-gold-500/16 bg-[linear-gradient(135deg,rgba(22,19,14,0.96),rgba(5,5,5,0.98))] shadow-soft">
+    <section className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="grid min-h-[720px] lg:grid-cols-[150px_minmax(0,1fr)_390px]">
         <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} onSelect={setActiveGroupId} />
 
-        <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/12 bg-[linear-gradient(180deg,rgba(247,242,232,0.03),rgba(216,177,90,0.02))] p-5 sm:p-8 lg:border-x lg:border-y-0">
-          <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(216,177,90,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(216,177,90,0.05)_1px,transparent_1px)] [background-size:44px_44px]" />
+        <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.035),rgba(217,154,111,0.025))] p-5 sm:p-8 lg:border-x lg:border-y-0">
+          <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Build studio</p>
-              <h2 className="mt-2 text-3xl font-semibold text-ivory-50">Customize your DollWow build</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">{config.leadTimeNote}</p>
+              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Make her yours</h2>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">Choose what matters. The price updates as you go, and a person checks it all before anything is made or shipped.</p>
             </div>
-            <div className="rounded-full border border-gold-500/18 bg-ink-950/70 px-4 py-2 text-sm text-ivory-300">
+            <div className="rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-4 py-2 text-sm text-ivory-300">
               {resolved.selectedOptions.length} selections
             </div>
           </div>
@@ -106,25 +106,25 @@ export function ProductOptions({ product }: { product: Product }) {
           <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
         </div>
 
-        <aside className="flex min-h-[620px] flex-col bg-ivory-50 text-ink-950">
-          <div className="border-b border-ink-950/10 p-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-ink-500">Now choosing</p>
+        <aside className="flex min-h-[620px] flex-col bg-ink-800 text-ivory-50">
+          <div className="border-b border-gold-500/20 p-5">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Now choosing</p>
             <div className="mt-2 flex items-center justify-between gap-3">
               <h3 className="text-2xl font-semibold">{activeGroup.label}</h3>
-              <span className="rounded-full bg-ink-950 px-3 py-1 text-xs font-semibold text-ivory-50">
+              <span className="rounded-full border border-gold-500/20 bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-ivory-400">
                 {config.groups.findIndex((group) => group.id === activeGroup.id) + 1}/{config.groups.length}
               </span>
             </div>
-            <p className="mt-2 text-sm leading-6 text-ink-500">{activeGroup.description}</p>
+            <p className="mt-2 text-sm leading-6 text-ivory-400">{activeGroup.description}</p>
           </div>
 
           {product.variants.length > 1 && (
             <label className="mx-5 mt-5 block">
-              <span className="mb-2 block text-sm font-semibold text-ink-700">Build</span>
+              <span className="mb-2 block text-sm font-semibold text-ivory-300">Build</span>
               <select
                 value={variantId}
                 onChange={(event) => setVariantId(event.target.value)}
-                className="w-full rounded-[14px] border-ink-950/15 bg-white text-ink-950 focus:border-gold-500 focus:ring-gold-500"
+                className="w-full rounded-[14px] border-gold-500/20 bg-ink-950 text-ivory-50 focus:border-gold-300 focus:ring-gold-300"
               >
                 {product.variants.map((item) => (
                   <option key={item.id} value={item.id}>
@@ -146,7 +146,7 @@ export function ProductOptions({ product }: { product: Product }) {
             />
 
             {hasIssues && (
-              <div className="mt-5 space-y-2 rounded-[18px] border border-danger/35 bg-danger/10 p-4 text-sm text-ink-800">
+              <div className="mt-5 space-y-2 rounded-[18px] border border-danger/35 bg-danger/10 p-4 text-sm text-ivory-300">
                 {resolved.issues.map((issue) => (
                   <p key={`${issue.ruleId}-${issue.groupId}-${issue.optionId}`} className="flex gap-2">
                     <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-danger" />
@@ -157,19 +157,19 @@ export function ProductOptions({ product }: { product: Product }) {
             )}
 
             {!variant?.availableForSale && (
-              <p className="mt-5 rounded-[18px] border border-danger/25 bg-danger/10 p-4 text-sm text-ink-800">
+              <p className="mt-5 rounded-[18px] border border-danger/25 bg-danger/10 p-4 text-sm text-ivory-300">
                 This configuration is not available for checkout yet. Contact support and we will confirm it manually.
               </p>
             )}
           </div>
 
-          <div className="border-t border-ink-950/10 bg-[#edf3ef] p-5">
+          <div className="border-t border-gold-500/20 bg-ivory-50/[0.06] p-5">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-ink-500">Total price</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">Your build</p>
                 <p className="mt-1 text-3xl font-semibold">{formatMoney(resolved.totalPrice, currencyCode)}</p>
               </div>
-              <div className="text-right text-xs text-ink-500">
+              <div className="text-right text-xs text-ivory-500">
                 <p>Base {formatMoney(basePrice, currencyCode)}</p>
                 <p>Options {formatMoney(resolved.optionPriceDelta, currencyCode)}</p>
               </div>
@@ -184,7 +184,7 @@ export function ProductOptions({ product }: { product: Product }) {
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
               {checkoutLabel}
             </button>
-            <div className="mt-4 grid gap-2 text-xs text-ink-600">
+            <div className="mt-4 grid gap-2 text-xs text-ivory-400">
               <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet Shopify checkout" />
               <Assurance icon={<Clock3 className="h-4 w-4" />} text="Final specs confirmed by support" />
             </div>
@@ -220,7 +220,7 @@ function CategoryRail({
   onSelect: (groupId: string) => void;
 }) {
   return (
-    <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/12 bg-ink-950/82 p-4 lg:flex-col lg:overflow-visible lg:border-b-0 lg:p-5">
+    <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:flex-col lg:overflow-visible lg:border-b-0 lg:p-5">
       {groups.map((group) => {
         const active = group.id === activeGroupId;
         return (
@@ -230,7 +230,7 @@ function CategoryRail({
             onClick={() => onSelect(group.id)}
             className={clsx(
               "group flex min-w-32 items-center gap-3 rounded-[18px] border p-3 text-left transition lg:min-w-0 lg:flex-col lg:items-start lg:p-4",
-              active ? "border-gold-300 bg-gold-400 text-ink-950" : "border-gold-500/12 bg-ink-900/62 text-ivory-400 hover:border-gold-300/70 hover:text-ivory-50"
+              active ? "border-gold-300 bg-ivory-50 text-ink-950" : "border-transparent bg-transparent text-ivory-400 hover:border-gold-500/30 hover:bg-ivory-50/[0.045] hover:text-ivory-50"
             )}
           >
             <span className={clsx("flex h-11 w-11 shrink-0 items-center justify-center rounded-full border", active ? "border-ink-950/25 bg-ink-950/10" : "border-gold-500/18 bg-ink-950/65 text-gold-300")}>
@@ -238,7 +238,7 @@ function CategoryRail({
             </span>
             <span>
               <span className="block text-sm font-semibold">{group.label}</span>
-              <span className={clsx("mt-1 block text-xs", active ? "text-ink-800" : "text-ivory-600")}>{selected[group.id] ? "Selected" : "Choose"}</span>
+              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{active ? "Now" : selected[group.id] ? "Selected" : "Choose"}</span>
             </span>
           </button>
         );
@@ -317,22 +317,22 @@ function OptionTile({
       title={disabled ? conflict ?? undefined : undefined}
       className={clsx(
         "group relative min-h-32 overflow-hidden rounded-[22px] border p-4 text-left transition duration-200",
-        selected ? "border-[#4f9c8a] bg-[#eef8f5] shadow-[0_16px_40px_rgba(79,156,138,0.18)]" : "border-ink-950/8 bg-white hover:-translate-y-0.5 hover:border-[#4f9c8a]/60 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]",
-        disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-ink-950/8 hover:shadow-none"
+        selected ? "border-[#4f9c8a] bg-[linear-gradient(180deg,rgba(79,156,138,0.09),rgba(7,4,3,0.62))] shadow-[0_16px_40px_rgba(79,156,138,0.16)]" : "border-gold-500/20 bg-ink-950/62 hover:-translate-y-0.5 hover:border-gold-300/60 hover:shadow-[0_16px_40px_rgba(20,6,4,0.32)]",
+        disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-gold-500/20 hover:shadow-none"
       )}
     >
       <span className="flex items-start gap-3">
         <OptionMark option={option} selected={selected} />
         <span className="min-w-0 flex-1">
           <span className="flex items-start justify-between gap-3">
-            <span className="font-semibold text-ink-950">{option.label}</span>
+            <span className="font-semibold text-ivory-50">{option.label}</span>
             {selected && <Check className="h-4 w-4 shrink-0 text-[#4f9c8a]" />}
           </span>
-          {option.description && <span className="mt-2 block text-xs leading-5 text-ink-500">{option.description}</span>}
-          <span className="mt-3 inline-flex rounded-full bg-ink-950 px-3 py-1 text-xs font-semibold text-ivory-50">
+          {option.description && <span className="mt-2 block text-xs leading-5 text-ivory-500">{option.description}</span>}
+          <span className="mt-3 inline-flex rounded-full bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-gold-300">
             {option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
           </span>
-          {option.productionNote && <span className="mt-2 block text-xs text-ink-500">{option.productionNote}</span>}
+          {option.productionNote && <span className="mt-2 block text-xs text-ivory-500">{option.productionNote}</span>}
           {disabled && group.display === "cards" && <span className="mt-2 block text-xs text-danger">{conflict}</span>}
         </span>
       </span>
@@ -344,14 +344,14 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
   if (option.swatch?.kind === "color") {
     return (
       <span
-        className={clsx("mt-0.5 h-14 w-14 shrink-0 rounded-full border-[6px]", selected ? "border-[#dbeee9]" : "border-[#f3f4f1]")}
+        className={clsx("mt-0.5 h-14 w-14 shrink-0 rounded-full border-[6px]", selected ? "border-[#4f9c8a]/35" : "border-ivory-50/10")}
         style={{ backgroundColor: option.swatch.value }}
         aria-hidden="true"
       />
     );
   }
   return (
-    <span className={clsx("mt-0.5 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-lg font-semibold", selected ? "border-[#4f9c8a] bg-[#e4f4ef] text-[#2d7d6c]" : "border-ink-950/10 bg-[#f5f5f1] text-ink-500")}>
+    <span className={clsx("mt-0.5 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-lg font-semibold", selected ? "border-[#4f9c8a] bg-[#4f9c8a]/15 text-[#9bd7c9]" : "border-gold-500/20 bg-ivory-50/[0.045] text-ivory-500")}>
       {option.swatch?.label ?? option.label.slice(0, 1)}
     </span>
   );
@@ -369,11 +369,11 @@ function SelectedTray({ selectedOptions, currencyCode }: { selectedOptions: Retu
       </div>
       <div className="flex gap-3 overflow-x-auto pb-1">
         {selectedOptions.map((option) => (
-          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-56 items-center gap-3 rounded-[18px] border border-gold-500/14 bg-ivory-50/95 p-3 text-ink-950">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-[#e9f2ee] text-[#4f9c8a]">{groupIcon(option.groupId)}</span>
+          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-56 items-center gap-3 rounded-[18px] border border-gold-500/20 bg-ivory-50/[0.045] p-3 text-ivory-50">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
             <span className="min-w-0">
               <span className="block truncate text-sm font-semibold">{option.optionLabel}</span>
-              <span className="mt-1 block truncate text-xs text-ink-500">{option.groupLabel}</span>
+              <span className="mt-1 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
               <span className="mt-1 block text-sm font-semibold text-[#2d7d6c]">{option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
             </span>
           </div>
@@ -385,7 +385,7 @@ function SelectedTray({ selectedOptions, currencyCode }: { selectedOptions: Retu
 
 function Assurance({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-[12px] bg-white/65 px-3 py-2">
+    <div className="flex items-center gap-2 rounded-[12px] border border-gold-500/10 bg-ivory-50/[0.045] px-3 py-2">
       <span className="text-[#4f9c8a]">{icon}</span>
       <span>{text}</span>
     </div>

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Georgia";
-  --font-sans: "Inter";
+  --font-display: "Schibsted Grotesk";
+  --font-sans: "Hanken Grotesk";
   color-scheme: dark;
 }
 
@@ -20,9 +20,12 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 18% 0%, rgba(216, 177, 90, 0.12), transparent 34rem),
-    linear-gradient(135deg, #050505 0%, #0b0a08 45%, #15120d 100%);
-  color: #f7f2e8;
+    radial-gradient(48rem 36rem at 78% -6%, rgba(216, 130, 90, 0.16), transparent 66%),
+    radial-gradient(40rem 44rem at 8% 8%, rgba(150, 60, 70, 0.12), transparent 60%),
+    radial-gradient(120% 120% at 50% 40%, transparent 52%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(180deg, #160d0a 0%, #0a0605 64rem);
+  background-attachment: fixed;
+  color: #f6e9dd;
 }
 
 a {
@@ -31,12 +34,12 @@ a {
 }
 
 ::selection {
-  background: rgba(216, 177, 90, 0.45);
-  color: #050505;
+  background: rgba(217, 154, 111, 0.45);
+  color: #1c1009;
 }
 
 .gold-text {
-  background: linear-gradient(120deg, #ffe1a3, #d8b15a 55%, #f2c766);
+  background: linear-gradient(120deg, #f3cdb0, #e8b48f 55%, #b97a4e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

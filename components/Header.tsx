@@ -12,26 +12,26 @@ const links = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-gold-500/12 bg-ink-950/86 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-gold-500/20 bg-ink-900/82 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="text-xl font-bold text-ivory-50">
           Doll<span className="text-gold-400">Wow</span>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm text-ivory-400 lg:flex">
+        <nav className="hidden items-center gap-1 text-sm text-ivory-400 lg:flex">
           {links.map(([label, href]) => (
-            <Link key={href} href={href} className="hover:text-gold-300">
+            <Link key={href} href={href} className="rounded-full px-3 py-2 hover:bg-ivory-50/[0.045] hover:text-ivory-50">
               {label}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-2 text-ivory-300">
-          <Link href="/shop" className="rounded-full p-2 hover:bg-ink-800" aria-label="Search products">
+          <Link href="/shop" className="rounded-full border border-gold-500/20 bg-ivory-50/[0.035] p-2 hover:border-gold-300/50 hover:text-ivory-50" aria-label="Search products">
             <Search className="h-5 w-5" />
           </Link>
-          <Link href="/support" className="rounded-full p-2 hover:bg-ink-800" aria-label="Get help">
+          <Link href="/support" className="rounded-full border border-gold-500/20 bg-ivory-50/[0.035] p-2 hover:border-gold-300/50 hover:text-ivory-50" aria-label="Get help">
             <HelpCircle className="h-5 w-5" />
           </Link>
-          <Link href="/cart" className="rounded-full p-2 hover:bg-ink-800" aria-label="Cart">
+          <Link href="/cart" className="rounded-full border border-gold-500/20 bg-ivory-50/[0.035] p-2 hover:border-gold-300/50 hover:text-ivory-50" aria-label="Cart">
             <ShoppingBag className="h-5 w-5" />
           </Link>
         </div>

@@ -5,7 +5,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
   const image = product.featuredImage ?? product.images[0] ?? null;
 
   return (
-    <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/14 bg-[linear-gradient(145deg,#1a1713,#050505)]">
+    <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)]">
       {image ? (
         <Image
           src={image.url}
