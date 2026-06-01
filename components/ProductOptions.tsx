@@ -403,6 +403,13 @@ function ImagePreview({ imageUrl, alt, onClose }: { imageUrl: string; alt: strin
 }
 
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
+  if (option.swatch?.kind === "image") {
+    return (
+      <span className={clsx("relative mt-0.5 h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border bg-ink-900", selected ? "border-[#4f9c8a]" : "border-gold-500/20")} aria-hidden="true">
+        <Image src={option.swatch.value} alt="" fill sizes="80px" className="object-cover" />
+      </span>
+    );
+  }
   if (option.swatch?.kind === "color") {
     return (
       <span

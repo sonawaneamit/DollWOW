@@ -9,6 +9,7 @@ const DEFAULT_ACTOR_ID = process.env.APIFY_WEB_SCRAPER_ACTOR_ID || "apify~web-sc
 
 const BRAND_START_URLS = {
   wm: "https://www.rosemarydoll.com/sex-doll-brands/wm-sex-dolls/",
+  angelkiss: "https://www.rosemarydoll.com/sex-doll-brands/angelkiss-dolls/",
   zelex: "https://www.rosemarydoll.com/sex-doll-brands/zelex-dolls/",
   irontech: "https://www.rosemarydoll.com/sex-doll-brands/irontech-doll/",
   starpery: "https://www.rosemarydoll.com/sex-doll-brands/starpery-dolls/",
@@ -17,6 +18,7 @@ const BRAND_START_URLS = {
 
 const BRAND_LABELS = {
   wm: "WM Dolls",
+  angelkiss: "Anglekiss Dolls",
   zelex: "Zelex Dolls",
   irontech: "Irontech Doll",
   starpery: "Starpery Dolls",
@@ -47,8 +49,12 @@ class ApifyPermissionError extends Error {
   }
 }
 
-const items = await getScrapeItems(startUrl, limit, brand);
-const normalized = items.map((item) => normalizeRosemaryProduct(item, brand)).filter(Boolean);
+const fetchLimit = isProductUrl(startUrl) ? limit : Math.max(limit * 2, limit);
+const items = await getScrapeItems(startUrl, fetchLimit, brand);
+const normalized = items
+  .map((item) => normalizeRosemaryProduct(item, brand))
+  .filter(Boolean)
+  .slice(0, limit);
 const outputPath = args.out || path.join(ROOT, "data", "imports", `rosemary-${brand || "custom"}-${new Date().toISOString().replace(/[:.]/g, "-")}.json`);
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
@@ -205,8 +211,10 @@ function normalizeRosemaryProduct(item, brandFallback) {
   const brand = cleanBrand(extractSpec(description, "Brand")) || title.match(/\(([^)]+)\)/)?.[1] || BRAND_LABELS[brandFallback] || brandFallback || "RosemaryDoll";
   const sourceUrl = item.sourceUrl.split("?")[0];
   const handle = sourceUrl.replace(/\/$/, "").split("/").pop();
+  if (/watermark/i.test(`${title} ${handle}`)) return null;
   const imageUrls = unique([item.image, ...extractImageUrls(item.html || "")]).filter(isCatalogImage).slice(0, 16);
   const optionGroupLabels = extractOptionGroupLabels(item.html || "");
+  const optionGroups = extractOptionGroups(item.html || "", sourceUrl);
   const stockSignal = `${rawTitle} ${pickTitle(item.html || "")}`;
   const isReadyToShip = /\bin stock\b|fast shipping/i.test(stockSignal);
   const dimensions = {
@@ -231,6 +239,7 @@ function normalizeRosemaryProduct(item, brandFallback) {
     specs: dimensions,
     imageUrls,
     optionGroupLabels,
+    optionGroups,
     importedAt: new Date().toISOString()
   };
 }
@@ -262,6 +271,77 @@ function isCatalogImage(url) {
 function extractOptionGroupLabels(html) {
   const text = cleanText(html.replace(/<[^>]+>/g, " "));
   return unique([...text.matchAll(/\b(SELECT [A-Z0-9\s\-&/]+?)(?=\s{2,}| NOTE| Image:|$)/g)].map((match) => cleanText(match[1]))).slice(0, 30);
+}
+
+function extractOptionGroups(html, sourceUrl) {
+  const labelMatches = [...html.matchAll(/<span[^>]+class=["'][^"']*\btc-epo-element-label-text\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/gi)].map((match) => ({
+    label: cleanOptionGroupLabel(match[1]),
+    index: match.index || 0
+  }));
+
+  return labelMatches
+    .map((match, index) => {
+      const next = labelMatches[index + 1]?.index ?? html.length;
+      const section = html.slice(match.index, next);
+      const optionMatches = [...section.matchAll(/<li\b[^>]*class=["'][^"']*\btmcp-field-wrap\b[^"']*["'][^>]*>[\s\S]*?<\/li>/gi)];
+      const options = optionMatches.map((optionMatch) => extractOption(optionMatch[0], sourceUrl)).filter(Boolean);
+      if (!match.label || options.length < 2) return null;
+      return {
+        id: slugify(match.label.replace(/^select\s+/i, "")),
+        label: titleCase(match.label.replace(/^select\s+/i, "")),
+        sourceLabel: match.label,
+        display: options.some((option) => option.imageUrl) ? "swatches" : "cards",
+        options
+      };
+    })
+    .filter(Boolean)
+    .filter((group) => isUsefulOptionGroup(group))
+    .slice(0, 20);
+}
+
+function extractOption(html, sourceUrl) {
+  const label =
+    cleanText(html.match(/<span[^>]+class=["'][^"']*\btc-label-text\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i)?.[1] || "") ||
+    cleanText(html.match(/<img[^>]+alt=["']([^"']+)["']/i)?.[1] || "") ||
+    cleanText(html.match(/\bvalue=["']([^"']+)["']/i)?.[1] || "").replace(/_\d+$/, "");
+  if (!label) return null;
+
+  const rawImage =
+    decodeHtml(html.match(/\bdata-image=["']([^"']+)["']/i)?.[1] || "") ||
+    decodeHtml(html.match(/<img[^>]+class=["'][^"']*\btc-image\b[^"']*["'][^>]+src=["']([^"']+)["']/i)?.[1] || "");
+  const imageUrl = absolutizeRosemaryUrl(rawImage, sourceUrl);
+  const rawPrice = decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || "");
+  const priceDelta = Number(rawPrice);
+
+  return {
+    id: slugify(label),
+    label,
+    value: cleanText(html.match(/\bvalue=["']([^"']+)["']/i)?.[1] || ""),
+    priceDelta: Number.isFinite(priceDelta) && priceDelta > 0 ? priceDelta : 0,
+    imageUrl: imageUrl && isCatalogImage(imageUrl) ? imageUrl : null,
+    selected: /<input\b[^>]*(?:\schecked(?:=["']checked["'])?)(?=[\s>])/i.test(html)
+  };
+}
+
+function cleanOptionGroupLabel(value) {
+  return cleanText(value.replace(/<[^>]+>/g, " ")).replace(/\*+/g, "").trim();
+}
+
+function isUsefulOptionGroup(group) {
+  if (!group?.options?.length) return false;
+  if (/payment|shipping|coupon|rush|terms|quantity/i.test(group.label)) return false;
+  return group.options.some((option) => option.imageUrl) || /skin|eye|head|wig|hair|body|feet|heating|vagina|nail|makeup|stand|storage|skeleton/i.test(group.label);
+}
+
+function absolutizeRosemaryUrl(value, sourceUrl) {
+  if (!value || value === "no-image") return null;
+  try {
+    const url = new URL(value, sourceUrl || "https://www.rosemarydoll.com/");
+    if (url.hostname === "rosemarydoll.com") url.hostname = "www.rosemarydoll.com";
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 function extractSpec(description, label) {
@@ -312,6 +392,12 @@ function slugify(value) {
     .replace(/^-|-$/g, "");
 }
 
+function titleCase(value) {
+  return cleanText(value)
+    .toLowerCase()
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -336,6 +422,7 @@ function printHelp() {
   console.log(`Usage:
   npm run scrape:rosemary -- --brand zelex --limit 20
   npm run scrape:rosemary -- --brand wm --limit 10 --local
+  npm run scrape:rosemary -- --brand angelkiss --limit 10 --local
   npm run scrape:rosemary -- --url https://www.rosemarydoll.com/shop/?filter_brand=zelex-doll --limit 12
 
 By default the script uses Apify when APIFY_API_TOKEN is set. Without a token, it uses local fetch mode.

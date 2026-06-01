@@ -1,3 +1,5 @@
+import type { CustomizationGroup } from "./customization";
+
 export type Money = {
   amount: string;
   currencyCode: string;
@@ -47,5 +49,6 @@ export type ProductExtended = {
   deliveryEstimate?: string;
   stockLastCheckedAt?: string;
   customAvailable?: boolean;
+  customizationGroups?: CustomizationGroup[];
   qcNote?: string;
 };

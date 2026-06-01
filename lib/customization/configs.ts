@@ -161,6 +161,16 @@ const configs = {
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
   const text = [product.extended.brand, product.vendor, product.productType, ...product.tags].join(" ").toLowerCase();
+  const importedGroups = product.extended.customizationGroups?.filter((group) => group.options.length >= 2);
+  if (importedGroups?.length) {
+    return {
+      id: "imported",
+      brandLabel: product.extended.brand ?? product.vendor,
+      leadTimeNote: "Supplier option references are captured from the imported catalog. Final compatibility and pricing are confirmed before fulfillment.",
+      groups: importedGroups,
+      rules: []
+    };
+  }
   if (text.includes("torso")) return configs.torso;
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;

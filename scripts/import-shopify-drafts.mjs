@@ -175,6 +175,7 @@ function productMetafields(product) {
     metafield("delivery_estimate", extended.deliveryEstimate),
     metafield("stock_last_checked_at", extended.stockLastCheckedAt, "date_time"),
     metafield("custom_available", extended.customAvailable, "boolean"),
+    metafield("customization_groups", extended.customizationGroups?.length ? JSON.stringify(extended.customizationGroups) : "", "json"),
     metafield("qc_note", extended.qcNote, "multi_line_text_field")
   ].filter(Boolean);
 }
@@ -248,9 +249,14 @@ function productDescriptionHtml(product) {
     ["Warehouse", extended.warehouseCountry]
   ].filter(([, value]) => value);
   const specList = rows.map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join("");
+  const optionImageCount = (extended.customizationGroups || []).reduce(
+    (total, group) => total + (group.options || []).filter((option) => option.swatch?.kind === "image").length,
+    0
+  );
   return [
     `<p>${escapeHtml(product.description || product.title)}</p>`,
     specList ? `<ul>${specList}</ul>` : "",
+    optionImageCount ? `<p>${optionImageCount} customization option reference images are available in the DollWow product configurator.</p>` : "",
     `<p>Final availability, production options, and warehouse timing are confirmed by DollWow support before fulfillment.</p>`
   ]
     .filter(Boolean)

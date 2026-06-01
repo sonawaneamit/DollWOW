@@ -25,6 +25,7 @@ type ShopifyProductNode = {
   deliveryEstimate?: { value?: string };
   stockLastCheckedAt?: { value?: string };
   customAvailable?: { value?: string };
+  customizationGroups?: { value?: string };
   qcNote?: { value?: string };
 };
 
@@ -36,6 +37,15 @@ function numberValue(value?: string) {
 function booleanValue(value?: string) {
   if (!value) return undefined;
   return ["true", "1", "yes"].includes(value.toLowerCase());
+}
+
+function jsonValue<T>(value?: string): T | undefined {
+  if (!value) return undefined;
+  try {
+    return JSON.parse(value) as T;
+  } catch {
+    return undefined;
+  }
 }
 
 export function mapShopifyProduct(node: ShopifyProductNode): Product {
@@ -62,6 +72,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       deliveryEstimate: node.deliveryEstimate?.value,
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
       customAvailable: booleanValue(node.customAvailable?.value),
+      customizationGroups: jsonValue<Product["extended"]["customizationGroups"]>(node.customizationGroups?.value),
       qcNote: node.qcNote?.value
     }
   };

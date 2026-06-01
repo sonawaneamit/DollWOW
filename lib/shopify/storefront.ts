@@ -75,6 +75,7 @@ const productFields = `
   deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
   stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
   customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
+  customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
 `;
 

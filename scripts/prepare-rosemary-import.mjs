@@ -185,6 +185,7 @@ function toStorefrontProduct(product, vendor) {
       deliveryEstimate: product.stockStatus === "ready_to_ship" ? "Fast shipping after stock confirmation" : "4-8 weeks",
       stockLastCheckedAt: product.importedAt || new Date().toISOString(),
       customAvailable: Boolean(product.customAvailable),
+      customizationGroups: normalizeCustomizationGroups(product.optionGroups || []),
       qcNote: `Prepared from ${product.sourceUrl}. Review supplier authorization, pricing, images, and option mapping before publish.`
     }
   };
@@ -202,14 +203,19 @@ function productBodyHtml(product) {
   ].filter(([, value]) => value);
   const specHtml = specs.map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join("");
   const optionLabels = (product.optionGroupLabels || []).slice(0, 12);
+  const optionImageCount = countOptionImages(product.optionGroups || []);
   const optionHtml = optionLabels.length
     ? `<p><strong>Customization groups to map:</strong> ${escapeHtml(optionLabels.join(", "))}</p>`
+    : "";
+  const optionImageHtml = optionImageCount
+    ? `<p><strong>Customization option images captured:</strong> ${optionImageCount}</p>`
     : "";
 
   return [
     `<p>${escapeHtml(product.description || product.title)}</p>`,
     specHtml ? `<ul>${specHtml}</ul>` : "",
     optionHtml,
+    optionImageHtml,
     `<p>Final availability, production options, and warehouse timing are confirmed by DollWow support before fulfillment.</p>`
   ]
     .filter(Boolean)
@@ -224,7 +230,53 @@ function reviewWarnings(product) {
   if (/^custom full/i.test(product.title)) warnings.push(`${prefix} generic title should be reviewed`);
   if (product.stockStatus === "ready_to_ship" && !product.warehouseCountry) warnings.push(`${prefix} ready-to-ship item missing warehouse country`);
   if (product.customAvailable && !product.optionGroupLabels?.length) warnings.push(`${prefix} custom item has no option group labels`);
+  if (product.customAvailable && !countOptionImages(product.optionGroups || [])) warnings.push(`${prefix} custom item has no captured option images`);
   return warnings;
+}
+
+function normalizeCustomizationGroups(groups) {
+  return groups
+    .filter(shouldExposeCustomizationGroup)
+    .map((group) => ({
+      id: group.id,
+      label: group.label,
+      description: `${group.label} options captured from supplier-style Rosemary option data. Final compatibility and pricing are confirmed before fulfillment.`,
+      required: true,
+      display: group.display === "swatches" ? "swatches" : "cards",
+      options: (group.options || [])
+        .filter((option) => option?.label)
+        .map((option) => ({
+          id: option.id || slugify(option.label),
+          label: normalizeOptionLabel(option.label),
+          priceDelta: Number(option.priceDelta || 0) || undefined,
+          swatch: option.imageUrl
+            ? {
+                kind: "image",
+                value: option.imageUrl,
+                label: option.label
+              }
+            : undefined,
+          productionNote: option.selected ? "Default supplier selection." : undefined
+        }))
+        .slice(0, 36)
+    }))
+    .filter((group) => group.id && group.label && group.options.length >= 2)
+    .slice(0, 12);
+}
+
+function shouldExposeCustomizationGroup(group) {
+  if (!group?.label) return false;
+  if (/^other heads?$/i.test(group.label)) return false;
+  if (/^heads?$/i.test(group.label) && ((group.options || []).length <= 3 || (group.options || []).some((option) => /other heads?/i.test(option.label)))) return false;
+  return true;
+}
+
+function normalizeOptionLabel(label) {
+  return cleanText(String(label || "").replace(/^No Change$/i, "Factory default"));
+}
+
+function countOptionImages(groups) {
+  return groups.reduce((total, group) => total + (group.options || []).filter((option) => option.imageUrl).length, 0);
 }
 
 function productTags(product) {
