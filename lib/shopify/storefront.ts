@@ -40,7 +40,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
   return payload.data as T;
 }
 
-const productFields = `
+const productListFields = `
   id
   handle
   title
@@ -75,8 +75,12 @@ const productFields = `
   deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
   stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
   customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
-  customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
+`;
+
+const productDetailFields = `
+  ${productListFields}
+  customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
 `;
 
 export async function getProducts({ query, first = 24 }: { query?: string; first?: number } = {}) {
@@ -89,7 +93,7 @@ export async function getProducts({ query, first = 24 }: { query?: string; first
     }>(
       `query Products($first: Int!, $query: String) {
         products(first: $first, query: $query, sortKey: TITLE) {
-          edges { node { ${productFields} } }
+          edges { node { ${productListFields} } }
         }
       }`,
       { first, query }
@@ -111,7 +115,7 @@ export async function getProductByHandle(handle: string) {
   try {
     const data = await storefrontFetch<{ product: Parameters<typeof mapShopifyProduct>[0] | null }>(
       `query Product($handle: String!) {
-        product(handle: $handle) { ${productFields} }
+        product(handle: $handle) { ${productDetailFields} }
       }`,
       { handle }
     );

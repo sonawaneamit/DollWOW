@@ -83,10 +83,10 @@ export function ProductOptions({ product }: { product: Product }) {
 
   return (
     <section className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
-      <div className="grid min-h-[720px] lg:grid-cols-[150px_minmax(0,1fr)_390px]">
+      <div className="grid min-h-[720px] lg:h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_390px] xl:grid-cols-[144px_minmax(0,1fr)_420px]">
         <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} onSelect={setActiveGroupId} />
 
-        <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.035),rgba(217,154,111,0.025))] p-5 sm:p-8 lg:border-x lg:border-y-0">
+        <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.035),rgba(217,154,111,0.025))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
             <div>
@@ -99,9 +99,9 @@ export function ProductOptions({ product }: { product: Product }) {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto my-8 flex w-full max-w-[640px] flex-1 items-center justify-center">
+          <div className="relative z-10 mx-auto my-5 flex min-h-0 w-full max-w-[560px] flex-1 items-center justify-center">
             <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-            <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[430px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
+            <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] xl:max-w-[390px]">
               {heroImage ? (
                 <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
                   <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
@@ -120,7 +120,7 @@ export function ProductOptions({ product }: { product: Product }) {
           <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
         </div>
 
-        <aside className="flex min-h-[620px] flex-col bg-ink-800 text-ivory-50">
+        <aside className="flex min-h-[620px] flex-col overflow-hidden bg-ink-800 text-ivory-50 lg:min-h-0">
           <div className="border-b border-gold-500/20 p-5">
             <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Now choosing</p>
             <div className="mt-2 flex items-center justify-between gap-3">
@@ -149,7 +149,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </label>
           )}
 
-          <div className="min-h-0 flex-1 overflow-y-auto p-5">
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
             <OptionPalette
               group={activeGroup}
               selected={selected[activeGroup.id]}
@@ -260,7 +260,7 @@ function CategoryRail({
   onSelect: (groupId: string) => void;
 }) {
   return (
-    <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:flex-col lg:overflow-visible lg:border-b-0 lg:p-5">
+    <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
       {groups.map((group) => {
         const active = group.id === activeGroupId;
         return (
@@ -269,7 +269,7 @@ function CategoryRail({
             key={group.id}
             onClick={() => onSelect(group.id)}
             className={clsx(
-              "group flex min-w-32 items-center gap-3 rounded-[18px] border p-3 text-left transition lg:min-w-0 lg:flex-col lg:items-start lg:p-4",
+              "group flex min-w-32 items-center gap-3 rounded-[18px] border p-3 text-left transition lg:min-w-0 lg:flex-col lg:items-start lg:p-3",
               active ? "border-gold-300 bg-ivory-50 text-ink-950" : "border-transparent bg-transparent text-ivory-400 hover:border-gold-500/30 hover:bg-ivory-50/[0.045] hover:text-ivory-50"
             )}
           >
@@ -406,7 +406,7 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
   if (option.swatch?.kind === "image") {
     return (
       <span className={clsx("relative mt-0.5 h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border bg-ink-900", selected ? "border-[#4f9c8a]" : "border-gold-500/20")} aria-hidden="true">
-        <Image src={option.swatch.value} alt="" fill sizes="80px" className="object-cover" />
+        <Image src={option.swatch.value} alt="" fill sizes="80px" className="object-cover" loading="lazy" unoptimized />
       </span>
     );
   }

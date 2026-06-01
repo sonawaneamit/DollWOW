@@ -80,7 +80,7 @@ export function ProductGallery({ product }: { product: Product }) {
                 imageIndex === index ? "border-gold-300" : "border-gold-500/14 hover:border-gold-300/70"
               )}
             >
-              <Image src={image.url} alt={image.altText ?? product.title} fill sizes="96px" className="object-cover noir-media" />
+              <Image src={image.url} alt={image.altText ?? product.title} fill sizes="96px" className="object-cover noir-media" loading="lazy" unoptimized />
             </button>
           ))}
         </div>
