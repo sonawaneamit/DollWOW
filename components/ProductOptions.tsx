@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
@@ -30,6 +30,9 @@ import { GoldButton } from "./GoldButton";
 
 export function ProductOptions({ product }: { product: Product }) {
   const router = useRouter();
+  const stepPanelRef = useRef<HTMLElement>(null);
+  const optionScrollerRef = useRef<HTMLDivElement>(null);
+  const didMountRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const config = useMemo(() => getCustomizationConfig(product), [product]);
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
@@ -50,6 +53,24 @@ export function ProductOptions({ product }: { product: Product }) {
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+
+  useEffect(() => {
+    optionScrollerRef.current?.scrollTo({ top: 0 });
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+
+    window.requestAnimationFrame(() => {
+      const panel = stepPanelRef.current;
+      if (!panel) return;
+      const stickyHeaderOffset = 112;
+      const top = panel.getBoundingClientRect().top + window.scrollY - stickyHeaderOffset;
+      const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      window.scrollTo({ top: Math.max(0, top), behavior });
+    });
+  }, [activeGroupId]);
 
   async function addToCart() {
     if (!canCheckout) return;
@@ -120,7 +141,7 @@ export function ProductOptions({ product }: { product: Product }) {
           <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
         </div>
 
-        <aside className="flex min-h-[620px] flex-col overflow-hidden bg-ink-800 text-ivory-50 lg:min-h-0">
+        <aside ref={stepPanelRef} className="scroll-mt-28 flex min-h-[620px] flex-col overflow-hidden bg-ink-800 text-ivory-50 lg:min-h-0">
           <div className="border-b border-gold-500/20 p-5">
             <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Now choosing</p>
             <div className="mt-2 flex items-center justify-between gap-3">
@@ -149,7 +170,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </label>
           )}
 
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
+          <div ref={optionScrollerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
             <OptionPalette
               group={activeGroup}
               selected={selected[activeGroup.id]}
