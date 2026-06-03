@@ -37,6 +37,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(config.groups[0]?.id ?? "");
+  const [isReviewing, setReviewing] = useState(false);
   const [selected, setSelected] = useState(() => getDefaultSelections(config));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,6 +50,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const activeGroup = config.groups[activeGroupIndex] ?? config.groups[0];
   const previousGroup = config.groups[activeGroupIndex - 1] ?? null;
   const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
+  const stepCount = config.groups.length + 1;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
@@ -70,7 +72,7 @@ export function ProductOptions({ product }: { product: Product }) {
       const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
       window.scrollTo({ top: Math.max(0, top), behavior });
     });
-  }, [activeGroupId]);
+  }, [activeGroupId, isReviewing]);
 
   async function addToCart() {
     if (!canCheckout) return;
@@ -95,62 +97,104 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   function goToPreviousGroup() {
+    if (isReviewing) {
+      const finalGroup = config.groups.at(-1);
+      if (finalGroup) setActiveGroupId(finalGroup.id);
+      setReviewing(false);
+      return;
+    }
     if (previousGroup) setActiveGroupId(previousGroup.id);
   }
 
   function goToNextGroup() {
-    if (nextGroup) setActiveGroupId(nextGroup.id);
+    if (nextGroup) {
+      setActiveGroupId(nextGroup.id);
+      return;
+    }
+    setReviewing(true);
+  }
+
+  function goToGroup(groupId: string) {
+    setReviewing(false);
+    setActiveGroupId(groupId);
+  }
+
+  function showReview() {
+    setReviewing(true);
   }
 
   return (
     <section className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="grid min-h-[720px] lg:h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_390px] xl:grid-cols-[144px_minmax(0,1fr)_420px]">
-        <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} onSelect={setActiveGroupId} />
+        <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} isReviewing={isReviewing} onSelect={goToGroup} />
 
         <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.035),rgba(217,154,111,0.025))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Build studio</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Make her yours</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">Choose what matters. The price updates as you go, and our team checks it all before anything is made or shipped.</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{isReviewing ? "Build review" : "Build studio"}</p>
+              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">{isReviewing ? "Confirm your build" : "Make her yours"}</h2>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">
+                {isReviewing
+                  ? "Review the selected options, edit anything that needs a second look, then continue to checkout."
+                  : "Choose what matters. The price updates as you go, and our team checks it all before anything is made or shipped."}
+              </p>
             </div>
             <div className="rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-4 py-2 text-sm text-ivory-300">
-              {resolved.selectedOptions.length} selections
+              {isReviewing ? "Ready to review" : `${resolved.selectedOptions.length} selections`}
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto my-5 flex min-h-0 w-full max-w-[560px] flex-1 items-center justify-center">
-            <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-            <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] xl:max-w-[390px]">
-              {heroImage ? (
-                <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
-                  <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
-                </button>
-              ) : (
-                <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{product.title}</div>
-              )}
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(0,0,0,0.62))]" />
-              <div className="absolute bottom-4 left-4 right-4 rounded-[18px] border border-gold-500/18 bg-ink-950/78 p-4 backdrop-blur">
-                <p className="line-clamp-1 text-sm font-semibold text-ivory-50">{product.title}</p>
-                <p className="mt-1 text-xs text-ivory-500">{product.extended.brand ?? product.vendor}</p>
-              </div>
-            </div>
+          <div className="relative z-10 mx-auto my-5 flex min-h-0 w-full max-w-[640px] flex-1 items-center justify-center">
+            {isReviewing ? (
+              <BuildReviewSummary
+                selectedOptions={resolved.selectedOptions}
+                basePrice={basePrice}
+                optionPriceDelta={resolved.optionPriceDelta}
+                totalPrice={resolved.totalPrice}
+                currencyCode={currencyCode}
+                onEdit={goToGroup}
+              />
+            ) : (
+              <>
+                <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
+                <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] xl:max-w-[390px]">
+                  {heroImage ? (
+                    <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
+                      <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
+                    </button>
+                  ) : (
+                    <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{product.title}</div>
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(0,0,0,0.62))]" />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-[18px] border border-gold-500/18 bg-ink-950/78 p-4 backdrop-blur">
+                    <p className="line-clamp-1 text-sm font-semibold text-ivory-50">{product.title}</p>
+                    <p className="mt-1 text-xs text-ivory-500">{product.extended.brand ?? product.vendor}</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
-          <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
+          {isReviewing ? (
+            <ReviewPriceStrip basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} />
+          ) : (
+            <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
+          )}
         </div>
 
         <aside ref={stepPanelRef} className="scroll-mt-28 flex min-h-[620px] flex-col overflow-hidden bg-ink-800 text-ivory-50 lg:min-h-0">
           <div className="border-b border-gold-500/20 p-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Now choosing</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-gold-300">{isReviewing ? "Final review" : "Now choosing"}</p>
             <div className="mt-2 flex items-center justify-between gap-3">
-              <h3 className="text-2xl font-semibold">{activeGroup.label}</h3>
+              <h3 className="text-2xl font-semibold">{isReviewing ? "Your selections" : activeGroup.label}</h3>
               <span className="rounded-full border border-gold-500/20 bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-ivory-400">
-                {activeGroupIndex + 1}/{config.groups.length}
+                {isReviewing ? `${stepCount}/${stepCount}` : `${activeGroupIndex + 1}/${stepCount}`}
               </span>
             </div>
-            <p className="mt-2 text-sm leading-6 text-ivory-400">{activeGroup.description}</p>
+            <p className="mt-2 text-sm leading-6 text-ivory-400">
+              {isReviewing ? "Final specs are passed to Shopify as order notes and confirmed by our team before fulfillment." : activeGroup.description}
+            </p>
           </div>
 
           {product.variants.length > 1 && (
@@ -171,14 +215,18 @@ export function ProductOptions({ product }: { product: Product }) {
           )}
 
           <div ref={optionScrollerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
-            <OptionPalette
-              group={activeGroup}
-              selected={selected[activeGroup.id]}
-              selections={selected}
-              onSelect={(optionId) => selectOption(activeGroup.id, optionId)}
-              config={config}
-              currencyCode={currencyCode}
-            />
+            {isReviewing ? (
+              <ReviewSidebarSummary selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+            ) : (
+              <OptionPalette
+                group={activeGroup}
+                selected={selected[activeGroup.id]}
+                selections={selected}
+                onSelect={(optionId) => selectOption(activeGroup.id, optionId)}
+                config={config}
+                currencyCode={currencyCode}
+              />
+            )}
 
             {hasIssues && (
               <div className="mt-5 space-y-2 rounded-[18px] border border-danger/35 bg-danger/10 p-4 text-sm text-ivory-300">
@@ -211,7 +259,17 @@ export function ProductOptions({ product }: { product: Product }) {
             </div>
             {error && <p className="mt-3 text-sm text-danger">{error}</p>}
             <div className="mt-5 grid gap-2">
-              {nextGroup ? (
+              {isReviewing ? (
+                <button
+                  type="button"
+                  disabled={!canCheckout || loading}
+                  onClick={addToCart}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+                  Checkout
+                </button>
+              ) : nextGroup ? (
                 <button
                   type="button"
                   onClick={goToNextGroup}
@@ -223,22 +281,21 @@ export function ProductOptions({ product }: { product: Product }) {
               ) : (
                 <button
                   type="button"
-                  disabled={!canCheckout || loading}
-                  onClick={addToCart}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                  onClick={goToNextGroup}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
                 >
-                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-                  Checkout
+                  Review build
+                  <ChevronRight className="h-4 w-4" />
                 </button>
               )}
-              {previousGroup && (
+              {(previousGroup || isReviewing) && (
                 <button
                   type="button"
                   onClick={goToPreviousGroup}
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-3 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
                 >
                   <ChevronLeft className="h-4 w-4" />
-                  Back: {previousGroup.label}
+                  {isReviewing ? `Back: ${activeGroup.label}` : `Back: ${previousGroup?.label}`}
                 </button>
               )}
             </div>
@@ -256,9 +313,9 @@ export function ProductOptions({ product }: { product: Product }) {
             <p className="truncate text-xs text-ivory-500">{product.title}</p>
             <p className="text-base font-semibold text-gold-300">{formatMoney(resolved.totalPrice, currencyCode)}</p>
           </div>
-          <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={addToCart}>
+          <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={isReviewing ? addToCart : showReview}>
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-            Checkout
+            {isReviewing ? "Checkout" : "Review"}
           </GoldButton>
         </div>
       </div>
@@ -273,17 +330,19 @@ function CategoryRail({
   groups,
   activeGroupId,
   selected,
+  isReviewing,
   onSelect
 }: {
   groups: CustomizationGroup[];
   activeGroupId: string;
   selected: Record<string, string>;
+  isReviewing: boolean;
   onSelect: (groupId: string) => void;
 }) {
   return (
     <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
       {groups.map((group) => {
-        const active = group.id === activeGroupId;
+        const active = !isReviewing && group.id === activeGroupId;
         return (
           <button
             type="button"
@@ -305,6 +364,115 @@ function CategoryRail({
         );
       })}
     </nav>
+  );
+}
+
+function BuildReviewSummary({
+  selectedOptions,
+  basePrice,
+  optionPriceDelta,
+  totalPrice,
+  currencyCode,
+  onEdit
+}: {
+  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
+  basePrice: number;
+  optionPriceDelta: number;
+  totalPrice: number;
+  currencyCode: string;
+  onEdit: (groupId: string) => void;
+}) {
+  return (
+    <div className="w-full rounded-[28px] border border-gold-500/20 bg-ink-950/64 p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <PriceStat label="Base doll" value={formatMoney(basePrice, currencyCode)} />
+        <PriceStat label="Options" value={formatMoney(optionPriceDelta, currencyCode)} />
+        <PriceStat label="Total" value={formatMoney(totalPrice, currencyCode)} strong />
+      </div>
+      <div className="mt-4 max-h-[390px] overflow-y-auto pr-1">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {selectedOptions.map((option) => (
+            <button
+              type="button"
+              key={`${option.groupId}-${option.optionId}`}
+              onClick={() => onEdit(option.groupId)}
+              className="group flex items-start gap-3 rounded-[18px] border border-gold-500/16 bg-ivory-50/[0.045] p-3 text-left transition hover:-translate-y-0.5 hover:border-gold-300/55 hover:bg-ivory-50/[0.07]"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">
+                {groupIcon(option.groupId)}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-xs uppercase tracking-[0.12em] text-ivory-500">{option.groupLabel}</span>
+                <span className="mt-1 block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
+                <span className="mt-2 inline-flex rounded-full bg-ink-950/70 px-2.5 py-1 text-xs font-semibold text-gold-300">
+                  {option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
+                </span>
+              </span>
+              <span className="shrink-0 text-xs font-semibold text-gold-300 opacity-70 transition group-hover:opacity-100">Edit</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ReviewPriceStrip({
+  basePrice,
+  optionPriceDelta,
+  totalPrice,
+  currencyCode
+}: {
+  basePrice: number;
+  optionPriceDelta: number;
+  totalPrice: number;
+  currencyCode: string;
+}) {
+  return (
+    <div className="relative z-10 grid gap-3 rounded-[20px] border border-gold-500/16 bg-ink-950/55 p-4 text-sm text-ivory-300 sm:grid-cols-3">
+      <PriceStat label="Base" value={formatMoney(basePrice, currencyCode)} />
+      <PriceStat label="Selected options" value={formatMoney(optionPriceDelta, currencyCode)} />
+      <PriceStat label="Final build" value={formatMoney(totalPrice, currencyCode)} strong />
+    </div>
+  );
+}
+
+function ReviewSidebarSummary({
+  selectedOptions,
+  currencyCode,
+  onEdit
+}: {
+  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
+  currencyCode: string;
+  onEdit: (groupId: string) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      {selectedOptions.map((option) => (
+        <button
+          type="button"
+          key={`${option.groupId}-${option.optionId}`}
+          onClick={() => onEdit(option.groupId)}
+          className="flex w-full items-center gap-3 rounded-[14px] border border-gold-500/14 bg-ink-950/48 p-3 text-left transition hover:border-gold-300/50 hover:bg-ivory-50/[0.055]"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-[#4f9c8a]/14 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
+            <span className="mt-0.5 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
+          </span>
+          <span className="shrink-0 text-xs font-semibold text-gold-300">{option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Edit"}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function PriceStat({ label, value, strong = false }: { label: string; value: string; strong?: boolean }) {
+  return (
+    <div className={clsx("rounded-[16px] border p-3", strong ? "border-gold-300/34 bg-gold-300/10" : "border-gold-500/12 bg-ivory-50/[0.04]")}>
+      <p className="text-xs uppercase tracking-[0.14em] text-ivory-500">{label}</p>
+      <p className={clsx("mt-1 font-semibold", strong ? "text-xl text-gold-200" : "text-ivory-50")}>{value}</p>
+    </div>
   );
 }
 
