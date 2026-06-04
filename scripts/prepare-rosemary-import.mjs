@@ -270,31 +270,62 @@ function reviewWarnings(product) {
 function normalizeCustomizationGroups(groups) {
   return groups
     .filter(shouldExposeCustomizationGroup)
-    .map((group) => ({
-      id: group.id,
-      label: group.label,
-      description: `${group.label} options captured from supplier-style Rosemary option data. Final compatibility and pricing are confirmed before fulfillment.`,
-      required: true,
-      display: group.display === "swatches" ? "swatches" : "cards",
-      options: (group.options || [])
-        .filter((option) => option?.label)
-        .map((option) => ({
-          id: option.id || slugify(option.label),
-          label: normalizeOptionLabel(option.label),
-          priceDelta: Number(option.priceDelta || 0) || undefined,
-          swatch: option.imageUrl
-            ? {
-                kind: "image",
-                value: option.imageUrl,
-                label: option.label
-              }
-            : undefined,
-          productionNote: option.selected ? "Default supplier selection." : undefined
-        }))
-        .slice(0, 36)
-    }))
+    .map((group) => {
+      const options = normalizedCustomizationOptions(group).slice(0, 48);
+      return {
+        id: group.id,
+        label: group.label,
+        description: `${group.label} options captured from supplier-style Rosemary option data. Final compatibility and pricing are confirmed before fulfillment.`,
+        required: true,
+        display: group.display === "swatches" ? "swatches" : "cards",
+        options
+      };
+    })
     .filter((group) => group.id && group.label && group.options.length >= 2)
-    .slice(0, 12);
+    .slice(0, 36);
+}
+
+function normalizedCustomizationOptions(group) {
+  const options = (group.options || [])
+    .filter((option) => option?.label)
+    .map((option) => ({
+      id: option.id || slugify(option.label),
+      label: normalizeOptionLabel(option.label),
+      priceDelta: Number(option.priceDelta || 0) || undefined,
+      swatch: option.imageUrl
+        ? {
+            kind: "image",
+            value: option.imageUrl,
+            label: option.label
+          }
+        : undefined,
+      productionNote: option.selected ? "Default supplier selection." : undefined
+    }));
+
+  if (shouldPrependNoAddOn(group, options)) {
+    return [
+      {
+        id: "no-add-on",
+        label: "No add-on",
+        productionNote: "No paid add-on selected."
+      },
+      ...options
+    ];
+  }
+
+  return options;
+}
+
+function shouldPrependNoAddOn(group, options) {
+  if (!options.length) return false;
+  if (hasNoAddOnOption(options)) return false;
+  if ((group.options || []).some((option) => option.selected)) return false;
+  const label = group.label || "";
+  return group.inputType === "checkboxes" || /add[-\s]?on|options|accessories|lingerie|flight case|extra head/i.test(label);
+}
+
+function hasNoAddOnOption(options) {
+  return options.some((option) => /^(no add-on|no thanks|none|factory default|default)$/i.test(option.label || ""));
 }
 
 function shouldExposeCustomizationGroup(group) {

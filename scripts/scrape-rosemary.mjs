@@ -315,12 +315,13 @@ function extractOptionGroups(html, sourceUrl) {
         label: titleCase(match.label.replace(/^select\s+/i, "")),
         sourceLabel: match.label,
         display: options.some((option) => option.imageUrl) ? "swatches" : "cards",
+        inputType: options.some((option) => option.inputType === "checkbox") ? "checkboxes" : "radio",
         options
       };
     })
     .filter(Boolean)
     .filter((group) => isUsefulOptionGroup(group))
-    .slice(0, 20);
+    .slice(0, 40);
 }
 
 function extractOption(html, sourceUrl) {
@@ -334,17 +335,62 @@ function extractOption(html, sourceUrl) {
     decodeHtml(html.match(/\bdata-image=["']([^"']+)["']/i)?.[1] || "") ||
     decodeHtml(html.match(/<img[^>]+class=["'][^"']*\btc-image\b[^"']*["'][^>]+src=["']([^"']+)["']/i)?.[1] || "");
   const imageUrl = absolutizeRosemaryUrl(rawImage, sourceUrl);
-  const rawPrice = decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || "");
-  const priceDelta = Number(rawPrice);
+  const priceDelta = extractOptionPriceDelta(html);
 
   return {
     id: slugify(label),
     label,
     value: cleanText(html.match(/\bvalue=["']([^"']+)["']/i)?.[1] || ""),
-    priceDelta: Number.isFinite(priceDelta) && priceDelta > 0 ? priceDelta : 0,
+    priceDelta,
     imageUrl: imageUrl && isCatalogImage(imageUrl) ? imageUrl : null,
-    selected: /<input\b[^>]*(?:\schecked(?:=["']checked["'])?)(?=[\s>])/i.test(html)
+    selected: /<input\b[^>]*(?:\schecked(?:=["']checked["'])?)(?=[\s>])/i.test(html),
+    inputType: html.match(/<input\b[^>]*\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase() || null
   };
+}
+
+function extractOptionPriceDelta(html) {
+  const rawPrice = decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || "");
+  const dataPrice = Number(rawPrice);
+  if (Number.isFinite(dataPrice) && dataPrice > 0) return dataPrice;
+
+  for (const attr of ["data-rules", "data-original-rules"]) {
+    const rawRules = decodeHtml(html.match(new RegExp(`\\b${attr}=["']([^"']*)["']`, "i"))?.[1] || "");
+    const rulesPrice = priceFromRules(rawRules);
+    if (rulesPrice > 0) return rulesPrice;
+  }
+
+  return 0;
+}
+
+function priceFromRules(rawRules) {
+  if (!rawRules) return 0;
+  const values = [];
+  collectNumericValues(parseRules(rawRules), values);
+  if (!values.length) {
+    values.push(...[...rawRules.matchAll(/-?\d+(?:\.\d+)?/g)].map((match) => Number(match[0])));
+  }
+  return Math.max(0, ...values.filter((value) => Number.isFinite(value)));
+}
+
+function parseRules(rawRules) {
+  try {
+    return JSON.parse(rawRules);
+  } catch {
+    return rawRules;
+  }
+}
+
+function collectNumericValues(value, values) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectNumericValues(item, values);
+    return;
+  }
+  if (value && typeof value === "object") {
+    for (const item of Object.values(value)) collectNumericValues(item, values);
+    return;
+  }
+  const numeric = Number(value);
+  if (Number.isFinite(numeric)) values.push(numeric);
 }
 
 function cleanOptionGroupLabel(value) {

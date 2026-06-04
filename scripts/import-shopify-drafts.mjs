@@ -18,6 +18,7 @@ if (args.help) {
 
 const inputPath = path.resolve(ROOT, args.input || (await findLatestPreview()));
 const execute = Boolean(args.execute);
+const updateExisting = Boolean(args["update-existing"]);
 const limit = Number(args.limit || 0);
 const parsedInput = JSON.parse(await fs.readFile(inputPath, "utf8"));
 const products = Array.isArray(parsedInput) ? parsedInput.slice(0, limit || undefined) : [];
@@ -52,8 +53,19 @@ const results = [];
 for (const product of products) {
   const existing = await findExistingProduct(product.handle);
   if (existing) {
-    results.push({ handle: product.handle, status: "skipped_existing", productId: existing.id });
-    console.log(`Skipped existing product ${product.handle} (${existing.id})`);
+    if (!updateExisting) {
+      results.push({ handle: product.handle, status: "skipped_existing", productId: existing.id });
+      console.log(`Skipped existing product ${product.handle} (${existing.id})`);
+      continue;
+    }
+
+    const updated = await updateExistingProduct(existing.id, product);
+    const variantId = existing.variants?.nodes?.[0]?.id;
+    if (variantId) {
+      await updateInitialVariant(existing.id, variantId, product);
+    }
+    results.push({ handle: product.handle, status: "updated_existing", productId: updated.id, variantId });
+    console.log(`Updated existing product ${product.handle} (${updated.id})`);
     continue;
   }
 
@@ -89,7 +101,15 @@ async function findExistingProduct(handle) {
   const data = await adminFetch(
     `query ProductByHandle($query: String!) {
       products(first: 1, query: $query) {
-        nodes { id handle title status }
+        nodes {
+          id
+          handle
+          title
+          status
+          variants(first: 1) {
+            nodes { id }
+          }
+        }
       }
     }`,
     { query: `handle:${handle}` }
@@ -140,6 +160,43 @@ async function createDraftProduct(product) {
   if (error) throw new Error(`productCreate failed for ${product.handle}: ${formatUserError(error)}`);
   if (!data.productCreate.product) throw new Error(`Shopify did not return product for ${product.handle}.`);
   return data.productCreate.product;
+}
+
+async function updateExistingProduct(productId, product) {
+  const data = await adminFetch(
+    `mutation ProductUpdate($product: ProductUpdateInput!) {
+      productUpdate(product: $product) {
+        product {
+          id
+          handle
+          title
+          status
+        }
+        userErrors { field message }
+      }
+    }`,
+    {
+      product: {
+        id: productId,
+        title: product.title,
+        handle: product.handle,
+        descriptionHtml: productDescriptionHtml(product),
+        vendor: product.vendor || "DollWow",
+        productType: product.productType || "Adult doll",
+        tags: product.tags || [],
+        seo: {
+          title: product.seo?.title || `${product.title} | DollWow`,
+          description: product.seo?.description || plainText(product.description).slice(0, 155)
+        },
+        metafields: productMetafields(product)
+      }
+    }
+  );
+
+  const error = data.productUpdate.userErrors[0];
+  if (error) throw new Error(`productUpdate failed for ${product.handle}: ${formatUserError(error)}`);
+  if (!data.productUpdate.product) throw new Error(`Shopify did not return product for ${product.handle}.`);
+  return data.productUpdate.product;
 }
 
 async function updateInitialVariant(productId, variantId, product) {
@@ -337,7 +394,7 @@ function parseArgs(values) {
     const arg = values[index];
     if (!arg.startsWith("--")) continue;
     const key = arg.slice(2);
-    if (key === "help" || key === "execute") {
+    if (key === "help" || key === "execute" || key === "update-existing") {
       parsed[key] = true;
     } else {
       parsed[key] = values[index + 1];
@@ -373,6 +430,7 @@ function printHelp() {
   npm run import:shopify-drafts
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --limit 1 --execute
+  npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --update-existing
 
-Dry-runs by default. With --execute, creates Shopify products as DRAFT, attaches media, sets custom metafields, and updates the initial variant price/SKU.`);
+Dry-runs by default. With --execute, creates Shopify products as DRAFT, attaches media, sets custom metafields, and updates the initial variant price/SKU. Add --update-existing to refresh title, SEO, description, variant price/SKU, and metafields for matching handles without duplicating media.`);
 }
