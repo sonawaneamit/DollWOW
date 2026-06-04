@@ -24,7 +24,8 @@ Avoid depending on clumsy generic Shopify option apps for the core product custo
 Design customization around brand/supplier option sets:
 
 - Each brand or supplier can define shared option groups that apply across many dolls, such as skin tone, eye color, lip color, wig/hair, implanted hair, head functions, body heating, standing feet, skeleton upgrades, storage/care accessories, and other add-ons.
-- Option availability, pricing, visual references, and incompatibility rules can vary by brand and sometimes by body/head model.
+- Option availability, pricing, visual references, and incompatibility rules can vary by brand and sometimes by body/head model, height, material, hybrid construction, and male/female body type.
+- Do not assume every doll within a brand has the same customization set. Imported product-specific option groups should take precedence over brand defaults; brand-wide option sets are reusable starting points, not proof that every SKU supports every option.
 - Some options are conditional or mutually exclusive. Example: electronic head functions may be incompatible with implanted hair because implanted hair can interfere with wiring.
 - Product pages should present options visually where possible, using supplier images, DollWow-owned illustrations, or clearly labeled AI-generated visual aids.
 - When no supplier image exists, GPT Image 2 or another approved image workflow can generate tasteful, brand-consistent option illustrations, but generated visuals must not misrepresent the final product.
