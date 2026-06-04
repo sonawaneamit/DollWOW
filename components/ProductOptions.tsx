@@ -30,6 +30,7 @@ import { GoldButton } from "./GoldButton";
 
 export function ProductOptions({ product }: { product: Product }) {
   const router = useRouter();
+  const rootRef = useRef<HTMLElement>(null);
   const stepPanelRef = useRef<HTMLElement>(null);
   const optionScrollerRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
@@ -41,6 +42,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const [selected, setSelected] = useState(() => getDefaultSelections(config));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isMobileDockVisible, setMobileDockVisible] = useState(false);
 
   const variant = product.variants.find((item) => item.id === variantId) ?? firstAvailable;
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
@@ -73,6 +75,16 @@ export function ProductOptions({ product }: { product: Product }) {
       window.scrollTo({ top: Math.max(0, top), behavior });
     });
   }, [activeGroupId, isReviewing]);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setMobileDockVisible(entry.isIntersecting), {
+      threshold: 0.08
+    });
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
 
   async function addToCart() {
     if (!canCheckout) return;
@@ -124,7 +136,7 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   return (
-    <section className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
+    <section ref={rootRef} className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="grid min-h-[720px] lg:h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_390px] xl:grid-cols-[144px_minmax(0,1fr)_420px]">
         <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} isReviewing={isReviewing} onSelect={goToGroup} />
 
@@ -307,7 +319,7 @@ export function ProductOptions({ product }: { product: Product }) {
         </aside>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur lg:hidden">
+      <div className={clsx("fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
         <div className="mx-auto flex max-w-7xl items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-ivory-500">{product.title}</p>
