@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { reviewWarningsForRosemaryProduct, toDollWowImportProduct } from "./rosemary-guardrails.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DEFAULT_OUT_DIR = path.join(ROOT, "data", "exports");
@@ -19,7 +20,10 @@ const status = args.status || "draft";
 const publish = args.publish === "true";
 
 const importData = JSON.parse(await fs.readFile(inputPath, "utf8"));
-const products = dedupeProducts(importData.products || []);
+const rawProducts = dedupeProducts(importData.products || []);
+const preparedProducts = rawProducts.map((product) => toDollWowImportProduct(product));
+const blockedProducts = preparedProducts.filter((product) => product.excludedFromDollWow);
+const products = args.includeExclusives ? preparedProducts : preparedProducts.filter((product) => !product.excludedFromDollWow);
 const preparedAt = new Date().toISOString();
 const basename = path.basename(inputPath, ".json");
 const csvPath = path.join(outputDir, `${basename}-shopify-products.csv`);
@@ -35,10 +39,26 @@ await fs.writeFile(
     {
       sourceFile: path.relative(ROOT, inputPath),
       preparedAt,
+      rawProductCount: rawProducts.length,
       productCount: products.length,
+      blockedProductCount: blockedProducts.length,
+      blockedProducts: blockedProducts.map((product) => ({
+        sourceHandle: product.sourceHandle || product.handle,
+        sourceTitle: product.sourceTitle || product.title,
+        proposedHandle: product.handle,
+        proposedTitle: product.title,
+        sourceUrl: product.sourceUrl,
+        exclusiveSignals: product.reviewFlags?.exclusiveSignals || []
+      })),
+      rewrittenProducts: products.map((product) => ({
+        sourceHandle: product.sourceHandle || product.handle,
+        sourceTitle: product.sourceTitle || product.title,
+        handle: product.handle,
+        title: product.title
+      })),
       csv: path.relative(ROOT, csvPath),
       storefrontPreview: path.relative(ROOT, previewPath),
-      warnings: products.flatMap((product) => reviewWarnings(product))
+      warnings: preparedProducts.flatMap((product) => reviewWarnings(product))
     },
     null,
     2
@@ -47,6 +67,9 @@ await fs.writeFile(
 );
 
 console.log(`Prepared ${products.length} products from ${path.relative(ROOT, inputPath)}`);
+if (blockedProducts.length) {
+  console.log(`Blocked ${blockedProducts.length} possible Rosemary-exclusive products. Review ${path.relative(ROOT, reportPath)} for details.`);
+}
 console.log(`Shopify CSV: ${path.relative(ROOT, csvPath)}`);
 console.log(`Storefront preview: ${path.relative(ROOT, previewPath)}`);
 console.log(`Review report: ${path.relative(ROOT, reportPath)}`);
@@ -157,6 +180,11 @@ function toStorefrontProduct(product, vendor) {
     title: product.title,
     description: product.description,
     vendor,
+    sourceUrl: product.sourceUrl,
+    sourceTitle: product.sourceTitle,
+    sourceHandle: product.sourceHandle,
+    reviewFlags: product.reviewFlags,
+    excludedFromDollWow: product.excludedFromDollWow,
     productType: productType(product),
     tags: productTags(product),
     featuredImage: product.imageUrls?.filter(isCatalogImage)?.[0] ? image(product.imageUrls.filter(isCatalogImage)[0], product.title) : null,
@@ -225,6 +253,7 @@ function productBodyHtml(product) {
 function reviewWarnings(product) {
   const warnings = [];
   const prefix = `${product.handle}:`;
+  warnings.push(...reviewWarningsForRosemaryProduct(product));
   if (!product.price) warnings.push(`${prefix} missing price`);
   if (!product.imageUrls?.filter(isCatalogImage)?.length) warnings.push(`${prefix} missing catalog images`);
   if (/^custom full/i.test(product.title)) warnings.push(`${prefix} generic title should be reviewed`);
@@ -379,7 +408,7 @@ function parseArgs(values) {
     const arg = values[index];
     if (!arg.startsWith("--")) continue;
     const key = arg.slice(2);
-    if (key === "help") {
+    if (key === "help" || key === "includeExclusives") {
       parsed[key] = true;
     } else {
       parsed[key] = values[index + 1];
@@ -394,9 +423,12 @@ function printHelp() {
   npm run prepare:rosemary-import
   npm run prepare:rosemary-import -- --input data/imports/rosemary-zelex-example.json
   npm run prepare:rosemary-import -- --input data/imports/rosemary-zelex-example.json --status draft --publish false
+  npm run prepare:rosemary-import -- --input data/imports/rosemary-zelex-example.json --includeExclusives
 
 Reads a normalized Rosemary scrape JSON and writes review artifacts to data/exports/:
 - Shopify CSV for draft product import
 - Storefront-shaped JSON preview
-- Review report with warnings`);
+- Review report with warnings
+
+Possible Rosemary-exclusive/likeness-restricted products are excluded by default. Use --includeExclusives only for local investigation, not Shopify import.`);
 }

@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { findRosemaryExclusiveSignals } from "./rosemary-guardrails.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
@@ -18,10 +19,21 @@ if (args.help) {
 const inputPath = path.resolve(ROOT, args.input || (await findLatestPreview()));
 const execute = Boolean(args.execute);
 const limit = Number(args.limit || 0);
-const products = JSON.parse(await fs.readFile(inputPath, "utf8")).slice(0, limit || undefined);
+const parsedInput = JSON.parse(await fs.readFile(inputPath, "utf8"));
+const products = Array.isArray(parsedInput) ? parsedInput.slice(0, limit || undefined) : [];
 
 if (!Array.isArray(products) || !products.length) {
   throw new Error(`No products found in ${path.relative(ROOT, inputPath)}.`);
+}
+
+const blockedProducts = products.filter((product) => product.excludedFromDollWow || findRosemaryExclusiveSignals(product).length > 0);
+
+if (blockedProducts.length) {
+  throw new Error(
+    `Refusing Shopify import because ${blockedProducts.length} product(s) look Rosemary-exclusive or restricted: ${blockedProducts
+      .map((product) => product.sourceTitle || product.title || product.handle)
+      .join("; ")}`
+  );
 }
 
 console.log(`${execute ? "Importing" : "Dry run for"} ${products.length} Shopify draft products from ${path.relative(ROOT, inputPath)}`);
@@ -176,7 +188,11 @@ function productMetafields(product) {
     metafield("stock_last_checked_at", extended.stockLastCheckedAt, "date_time"),
     metafield("custom_available", extended.customAvailable, "boolean"),
     metafield("customization_groups", extended.customizationGroups?.length ? JSON.stringify(extended.customizationGroups) : "", "json"),
-    metafield("qc_note", extended.qcNote, "multi_line_text_field")
+    metafield("qc_note", extended.qcNote, "multi_line_text_field"),
+    metafield("source_url", product.sourceUrl),
+    metafield("source_title", product.sourceTitle),
+    metafield("source_handle", product.sourceHandle),
+    metafield("import_review_flags", product.reviewFlags ? JSON.stringify(product.reviewFlags) : "", "json")
   ].filter(Boolean);
 }
 

@@ -44,5 +44,7 @@ When importing products from RosemaryDoll or another owned/approved source, use 
 - Treat `data/exports/` files as local review artifacts too; they are ignored by git and can include Shopify CSVs, storefront previews, and warning reports.
 - Use `npm run import:shopify-drafts -- --input <storefront-preview.json>` to dry-run Shopify draft creation. Add `--execute` only after reviewing the exact input file.
 - Review source URL, title, brand, price, specs, stock status, image URLs, and customization option labels before publishing.
+- Exclude anything labeled Rosemary exclusive, exclusive-only, celebrity/likeness-restricted, or otherwise authorized only for Rosemary customers. Even though Rosemary is owned/approved as a source, those products must not be advertised on DollWow without separate approval.
+- Rewrite imported product names and descriptions into DollWow-specific catalog copy before Shopify import. Keep factual specs, brand, price, stock, and option data, but avoid obvious duplicate Rosemary titles, copied descriptions, and source-store wording.
 - Keep Shopify as the production source of truth after import; crawlers should support updates and stock snapshots, not bypass catalog review.
 - Do not auto-publish scraped items until supplier authorization, product accuracy, and image provenance are clear.

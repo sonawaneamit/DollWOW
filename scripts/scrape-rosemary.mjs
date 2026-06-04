@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { findRosemaryExclusiveSignals } from "./rosemary-guardrails.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 await loadLocalEnv();
@@ -215,6 +216,15 @@ function normalizeRosemaryProduct(item, brandFallback) {
   const imageUrls = unique([item.image, ...extractImageUrls(item.html || "")]).filter(isCatalogImage).slice(0, 16);
   const optionGroupLabels = extractOptionGroupLabels(item.html || "");
   const optionGroups = extractOptionGroups(item.html || "", sourceUrl);
+  const reviewFlags = {
+    exclusiveSignals: findRosemaryExclusiveSignals({
+      title,
+      description,
+      html: item.html || "",
+      optionGroupLabels,
+      optionGroups
+    })
+  };
   const stockSignal = `${rawTitle} ${pickTitle(item.html || "")}`;
   const isReadyToShip = /\bin stock\b|fast shipping/i.test(stockSignal);
   const dimensions = {
@@ -227,6 +237,7 @@ function normalizeRosemaryProduct(item, brandFallback) {
     source: "rosemarydoll",
     sourceUrl,
     handle,
+    sourceTitle: title.replace(/\s*\[[^\]]+\]\s*/g, " ").replace(/\s+/g, " ").trim(),
     title: title.replace(/\s*\[[^\]]+\]\s*/g, " ").replace(/\s+/g, " ").trim(),
     brand,
     brandSlug: item.brandSlug || brandFallback || slugify(brand),
@@ -240,6 +251,8 @@ function normalizeRosemaryProduct(item, brandFallback) {
     imageUrls,
     optionGroupLabels,
     optionGroups,
+    reviewFlags,
+    excludedFromDollWow: reviewFlags.exclusiveSignals.length > 0,
     importedAt: new Date().toISOString()
   };
 }

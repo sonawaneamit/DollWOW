@@ -1,18 +1,11 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
+import { cartCreateRequestSchema } from "@/lib/cart/input";
 import { createCart } from "@/lib/shopify/storefront";
 import { analyticsEvents, trackServerEvent } from "@/lib/analytics/events";
 
-const schema = z.object({
-  merchandiseId: z.string().min(1),
-  quantity: z.number().int().min(1).max(10).default(1),
-  attributes: z.array(z.object({ key: z.string(), value: z.string() })).optional(),
-  discountCodes: z.array(z.string()).optional()
-});
-
 export async function POST(request: Request) {
   try {
-    const input = schema.parse(await request.json());
+    const input = cartCreateRequestSchema.parse(await request.json());
     const cart = await createCart(input);
     trackServerEvent(analyticsEvents.addToCart, {
       variant_id: input.merchandiseId,
