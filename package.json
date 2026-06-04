@@ -14,6 +14,7 @@
     "smoke:integrations": "node scripts/smoke-integrations.mjs",
     "scrape:rosemary": "node scripts/scrape-rosemary.mjs",
     "prepare:rosemary-import": "node scripts/prepare-rosemary-import.mjs",
+    "seo:dataforseo": "node scripts/enrich-seo-dataforseo.mjs",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
     "test": "vitest run"
   },

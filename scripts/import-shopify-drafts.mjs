@@ -123,8 +123,8 @@ async function createDraftProduct(product) {
         tags: product.tags || [],
         status: "DRAFT",
         seo: {
-          title: `${product.title} | DollWow`,
-          description: plainText(product.description).slice(0, 155)
+          title: product.seo?.title || `${product.title} | DollWow`,
+          description: product.seo?.description || plainText(product.description).slice(0, 155)
         },
         metafields: productMetafields(product)
       },

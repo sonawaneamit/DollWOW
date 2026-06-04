@@ -27,6 +27,7 @@ const BRAND_LABELS = {
 };
 
 const IGNORED_PRODUCT_HANDLES = new Set(["custom-full-silicone-female-doll", "custom-full-tpe-sex-doll"]);
+const PRODUCT_PATH_PATTERN = /(?:^|\/)product\//i;
 
 const args = parseArgs(process.argv.slice(2));
 
@@ -107,7 +108,7 @@ async function runApifyScrape(startUrl, limit, brandSlug) {
       startUrls: productUrls.map((url) => ({ url })),
       maxRequestsPerCrawl: Math.max(productUrls.length, 1),
       maxRequestRetries: 2,
-      pageFunction: buildApifyPageFunction(limit, brandSlug)
+      pageFunction: buildApifyPageFunction(limit, brandSlug, isProductUrl(startUrl) ? null : startUrl)
     })
   });
 
@@ -124,19 +125,20 @@ async function runApifyScrape(startUrl, limit, brandSlug) {
     const messages = errorItem["#debug"]?.errorMessages?.join("; ") || "unknown Apify extraction error";
     throw new Error(`Apify product extraction failed: ${messages}`);
   }
-  return Array.isArray(data) ? data.filter((item) => item?.sourceUrl?.includes("/product/")).slice(0, limit) : [];
+  return Array.isArray(data) ? data.filter((item) => item?.sourceUrl && isProductUrl(item.sourceUrl)).slice(0, limit) : [];
 }
 
-function buildApifyPageFunction(limit, brandSlug) {
+function buildApifyPageFunction(limit, brandSlug, collectionUrl) {
   return `async function pageFunction(context) {
     const { request } = context;
-    const isProduct = request.url.includes('/product/');
+    const isProduct = /(?:^|\\/)product\\//i.test(new URL(request.url).pathname);
     if (!isProduct) return null;
 
     const meta = (selector) => document.querySelector(selector)?.getAttribute('content') || null;
     const html = document.documentElement.outerHTML;
     return {
       sourceUrl: request.url,
+      sourceCollectionUrl: ${JSON.stringify(collectionUrl || null)},
       brandSlug: ${JSON.stringify(brandSlug || null)},
       title: meta('meta[property="og:title"]') || document.querySelector('h1')?.textContent || document.title,
       price: document.querySelector('[itemprop="price"]')?.getAttribute('content') || meta('meta[property="product:price:amount"]') || null,
@@ -155,6 +157,7 @@ async function runLocalScrape(startUrl, limit, brandSlug) {
     const html = await fetchText(url);
     products.push({
       sourceUrl: url,
+      sourceCollectionUrl: isProductUrl(startUrl) ? null : startUrl,
       brandSlug,
       title: pickMeta(html, "og:title") || pickTitle(html),
       price: pickJsonPrice(html),
@@ -174,7 +177,7 @@ async function resolveProductUrls(startUrl, limit) {
 }
 
 function isProductUrl(url) {
-  return new URL(url).pathname.includes("/product/");
+  return PRODUCT_PATH_PATTERN.test(new URL(url).pathname);
 }
 
 async function fetchText(url) {
@@ -190,15 +193,17 @@ async function fetchText(url) {
 
 function extractProductUrls(html, baseUrl) {
   const urls = new Set();
-  const matches = html.matchAll(/href=["']([^"']*\/product\/[^"']+)["']/gi);
+  const matches = html.matchAll(/href=["']([^"']*(?:\/[a-z]{2})?\/product\/[^"']+)["']/gi);
   for (const match of matches) {
     const url = new URL(match[1], baseUrl);
     url.search = "";
     urls.add(url.toString());
   }
-  return [...urls].filter((url) => {
-    if (!url.includes("rosemarydoll.com/product/")) return false;
-    const handle = url.replace(/\/$/, "").split("/").pop();
+  return [...urls].filter((value) => {
+    const url = new URL(value);
+    if (url.hostname !== "www.rosemarydoll.com" && url.hostname !== "rosemarydoll.com") return false;
+    if (!PRODUCT_PATH_PATTERN.test(url.pathname)) return false;
+    const handle = url.pathname.replace(/\/$/, "").split("/").pop();
     return !IGNORED_PRODUCT_HANDLES.has(handle);
   });
 }
@@ -218,6 +223,11 @@ function normalizeRosemaryProduct(item, brandFallback) {
   const optionGroups = extractOptionGroups(item.html || "", sourceUrl);
   const reviewFlags = {
     exclusiveSignals: findRosemaryExclusiveSignals({
+      sourceUrl,
+      sourceCollectionUrl: item.sourceCollectionUrl || null,
+      handle,
+      brand,
+      brandSlug: item.brandSlug || brandFallback || slugify(brand),
       title,
       description,
       html: item.html || "",
@@ -236,6 +246,7 @@ function normalizeRosemaryProduct(item, brandFallback) {
   return {
     source: "rosemarydoll",
     sourceUrl,
+    sourceCollectionUrl: item.sourceCollectionUrl || null,
     handle,
     sourceTitle: title.replace(/\s*\[[^\]]+\]\s*/g, " ").replace(/\s+/g, " ").trim(),
     title: title.replace(/\s*\[[^\]]+\]\s*/g, " ").replace(/\s+/g, " ").trim(),

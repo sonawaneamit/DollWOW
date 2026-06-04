@@ -54,4 +54,15 @@ describe("Rosemary import guardrails", () => {
     expect(product.excludedFromDollWow).toBe(true);
     expect(product.reviewFlags.exclusiveSignals.length).toBeGreaterThan(0);
   });
+
+  it("blocks products scraped from Rosemary exclusive collections even when product copy is subtle", () => {
+    const product = toDollWowImportProduct({
+      ...baseProduct,
+      title: "Anime Cosplay Silicone Sex Doll - Mizuno Luzmi",
+      sourceCollectionUrl: "https://www.rosemarydoll.com/es/sex-doll-brands/exclusive/"
+    });
+
+    expect(product.excludedFromDollWow).toBe(true);
+    expect(product.reviewFlags.exclusiveSignals.map((signal) => signal.type)).toContain("exclusive-source-collection");
+  });
 });

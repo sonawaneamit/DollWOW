@@ -73,9 +73,14 @@ RosemaryDoll product data can be scraped into a review JSON file before any Shop
 ```bash
 npm run scrape:rosemary -- --brand zelex --limit 20
 npm run prepare:rosemary-import
+npm run seo:dataforseo -- --input data/exports/rosemary-wm-storefront-products.json
 npm run import:shopify-drafts
 ```
 
 Supported brand shortcuts are `wm`, `zelex`, `irontech`, `starpery`, and `doll-castle`. Add `APIFY_API_TOKEN` to `.env.local` to run the Apify actor; without it, the script uses local fetch mode. Output goes to `data/imports/`, which is ignored by git.
 
-Use the generated JSON as a review/staging artifact. `prepare:rosemary-import` converts the latest scrape into `data/exports/` review files: a Shopify draft-product CSV, a storefront-shaped JSON preview, and a warning report. It rewrites Rosemary-sourced names/descriptions into DollWow-specific catalog copy and excludes possible Rosemary-exclusive or likeness-restricted products by default. `import:shopify-drafts` dry-runs by default; add `-- --execute` only when you want it to create draft products through the Shopify Admin GraphQL API. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, and customization option mapping have been reviewed.
+Use the generated JSON as a review/staging artifact. `prepare:rosemary-import` converts the latest scrape into `data/exports/` review files: a Shopify draft-product CSV, a storefront-shaped JSON preview, and a warning report. It rewrites Rosemary-sourced names/descriptions into DollWow-specific catalog copy and excludes possible Rosemary-exclusive or likeness-restricted products by default.
+
+Run `seo:dataforseo` after prepare when products need SEO enrichment. It dry-runs by default and writes an SEO-enriched storefront JSON plus a report; add `-- --execute` only when you want to call DataForSEO for search-volume data. You can pass `--env ../ColorMine-Website/.env` locally if the DataForSEO credentials live in another project env file.
+
+`import:shopify-drafts` dry-runs by default; add `-- --execute` only when you want it to create draft products through the Shopify Admin GraphQL API. Do not publish directly to Shopify until product handles, prices, images, supplier authorization, SEO metadata, and customization option mapping have been reviewed.

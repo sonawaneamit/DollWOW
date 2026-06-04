@@ -202,6 +202,10 @@ function toStorefrontProduct(product, vendor) {
       minVariantPrice: { amount, currencyCode: product.currency || "USD" },
       maxVariantPrice: { amount, currencyCode: product.currency || "USD" }
     },
+    seo: {
+      title: seoTitle(product),
+      description: seoDescription(product)
+    },
     extended: {
       brand: product.brand,
       material,

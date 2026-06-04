@@ -13,6 +13,25 @@ const EXCLUSIVE_PATTERNS = [
   }
 ];
 
+const EXCLUSIVE_IDENTITY_PATTERNS = [
+  {
+    type: "exclusive-title",
+    regex: /(?:^|[\s[(])(?:exclusive|exclusiva)(?:[\]\s)-]|$)/i
+  },
+  {
+    type: "exclusive-brand",
+    regex: /\b(?:brand|marca)\s*:\s*(?:exclusive|exclusiva)\b/i
+  },
+  {
+    type: "exclusive-handle",
+    regex: /(?:^|[-/])(?:exclusive|exclusiva)(?:[-/]|$)/i
+  },
+  {
+    type: "exclusive-source-collection",
+    regex: /\/sex-doll-brands\/(?:exclusive|exclusiva)\/|[?&]filter_brand=(?:exclusive|exclusiva)\b/i
+  }
+];
+
 const SOURCE_COPY_PATTERNS = [
   /\bRosemaryDoll\b/gi,
   /\bRosemary\s+Doll\b/gi,
@@ -22,7 +41,18 @@ const SOURCE_COPY_PATTERNS = [
 
 export function findRosemaryExclusiveSignals(product) {
   const text = reviewText(product);
+  const identityText = reviewIdentityText(product);
   const signals = [];
+
+  for (const pattern of EXCLUSIVE_IDENTITY_PATTERNS) {
+    const match = identityText.match(pattern.regex);
+    if (match?.index !== undefined) {
+      signals.push({
+        type: pattern.type,
+        excerpt: excerptAround(identityText, match.index, match[0].length)
+      });
+    }
+  }
 
   for (const pattern of EXCLUSIVE_PATTERNS) {
     const match = text.match(pattern.regex);
@@ -123,6 +153,11 @@ export function reviewWarningsForRosemaryProduct(product) {
 function reviewText(product) {
   return cleanText(
     [
+      product.sourceUrl,
+      product.handle,
+      product.sourceHandle,
+      product.brand,
+      product.brandSlug,
       product.title,
       product.sourceTitle,
       product.description,
@@ -130,6 +165,12 @@ function reviewText(product) {
       ...(product.optionGroupLabels || []),
       ...(product.optionGroups || []).flatMap((group) => [group.label, ...(group.options || []).map((option) => option.label)])
     ].join(" ")
+  );
+}
+
+function reviewIdentityText(product) {
+  return cleanText(
+    [product.sourceUrl, product.sourceCollectionUrl, product.handle, product.sourceHandle, product.brand, product.brandSlug, product.title, product.sourceTitle, product.description].join(" ")
   );
 }
 
@@ -154,7 +195,7 @@ function extractCup(title) {
 }
 
 function cleanCup(value) {
-  return cleanText(value).replace(/\s*cup$/i, "").toUpperCase();
+  return cleanText(value).replace(/\s*cup$/i, "").replace(/[^a-z]/gi, "").toUpperCase();
 }
 
 function inferMaterial(product) {
