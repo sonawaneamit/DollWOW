@@ -22,9 +22,9 @@ import {
   X
 } from "lucide-react";
 import { getCustomizationConfig } from "@/lib/customization/configs";
-import { getDefaultSelections, getOptionConflict, resolveCustomization } from "@/lib/customization/resolve";
+import { getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
 import { formatMoney } from "@/lib/utils/currency";
-import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
 import type { Product } from "@/types/product";
 import { GoldButton } from "./GoldButton";
 
@@ -105,7 +105,11 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   function selectOption(groupId: string, optionId: string) {
-    setSelected((current) => ({ ...current, [groupId]: optionId }));
+    const group = config.groups.find((item) => item.id === groupId);
+    setSelected((current) => ({
+      ...current,
+      [groupId]: group?.selectionMode === "multiple" ? nextMultipleSelection(group.options[0]?.id ?? "", current[groupId], optionId) : optionId
+    }));
   }
 
   function goToPreviousGroup() {
@@ -346,7 +350,7 @@ function CategoryRail({
 }: {
   groups: CustomizationGroup[];
   activeGroupId: string;
-  selected: Record<string, string>;
+  selected: CustomizationSelections;
   isReviewing: boolean;
   onSelect: (groupId: string) => void;
 }) {
@@ -369,7 +373,7 @@ function CategoryRail({
             </span>
             <span>
               <span className="block text-sm font-semibold">{group.label}</span>
-              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{active ? "Now" : selected[group.id] ? "Selected" : "Choose"}</span>
+              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{active ? "Now" : selectionIds(selected[group.id]).length ? "Selected" : "Choose"}</span>
             </span>
           </button>
         );
@@ -476,8 +480,8 @@ function OptionPalette({
   currencyCode
 }: {
   group: CustomizationGroup;
-  selected: string;
-  selections: Record<string, string>;
+  selected: CustomizationSelectionValue | undefined;
+  selections: CustomizationSelections;
   onSelect: (optionId: string) => void;
   config: ReturnType<typeof getCustomizationConfig>;
   currencyCode: string;
@@ -493,7 +497,7 @@ function OptionPalette({
     >
       {group.options.map((option) => {
         const conflict = getOptionConflict(config, selections, group.id, option.id);
-        const isSelected = selected === option.id;
+        const isSelected = selectionIds(selected).includes(option.id);
         const isDisabled = Boolean(conflict) && !isSelected;
         return (
           <OptionTile

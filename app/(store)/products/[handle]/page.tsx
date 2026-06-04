@@ -75,6 +75,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
         <OrderTimeline product={product} />
         <BuyerConfidence />
+        <ProductEducation product={product} />
         <ProductFAQ />
         <DollDetailsCard product={product} />
         <HumanHelpCTA source="product" />
@@ -178,6 +179,85 @@ function BuyerConfidence() {
               <span className="mt-1 block text-sm leading-6 text-ivory-400">{item.text}</span>
             </span>
           </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProductEducation({ product }: { product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>> }) {
+  const hasCustomOptions = Boolean(product.extended.customizationGroups?.length);
+  const items = [
+    {
+      title: "What is included",
+      eyebrow: "Base build",
+      text: "The listed price starts from the supplier base configuration. When factory defaults are used, the build review still confirms material, selected head/body references, timing, and availability before fulfillment.",
+      icon: <PackageCheck className="h-5 w-5" />
+    },
+    {
+      title: "Paid add-ons",
+      eyebrow: "Optional upgrades",
+      text: hasCustomOptions
+        ? "Paid add-ons appear in the builder with live price deltas. Multi-select groups such as accessories or premium options can include more than one add-on where the supplier allows it."
+        : "Optional upgrades are confirmed by the team when supplier option data is available for this item.",
+      icon: <Sparkles className="h-5 w-5" />
+    },
+    {
+      title: "QC and photos",
+      eyebrow: "Before shipping",
+      text: "Custom orders are checked before production, and supplier QC photos are requested where available before the order is released to ship.",
+      icon: <Camera className="h-5 w-5" />
+    },
+    {
+      title: "Private delivery",
+      eyebrow: "Discreet by default",
+      text: "Shipping timing and packaging notes are confirmed after checkout. Customer-facing updates should stay practical, private, and clear.",
+      icon: <ShieldCheck className="h-5 w-5" />
+    },
+    {
+      title: "Price match review",
+      eyebrow: "Comparison help",
+      text: "If you find the same product at an approved seller, the DollWow team can verify the match, total delivered price, freshness, and margin rules before any offer is issued.",
+      icon: <Scale className="h-5 w-5" />
+    },
+    {
+      title: "Care and storage",
+      eyebrow: "Ownership basics",
+      text: "Care, storage, and accessory guidance should be written in DollWow’s voice for launch. For now, accessory choices are treated as supplier option references that our team verifies.",
+      icon: <ClipboardCheck className="h-5 w-5" />
+    }
+  ];
+
+  return (
+    <section className="rounded-[28px] border border-gold-500/18 bg-[linear-gradient(135deg,rgba(42,24,22,0.72),rgba(7,4,3,0.94))] p-5 shadow-soft sm:p-7">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Buyer guide</p>
+          <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Clear answers before checkout</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">
+            This section is intentionally DollWow-written: supplier facts, privacy cues, and order-process education without copied vendor wording or fake social proof.
+          </p>
+        </div>
+        <Link
+          href="/support"
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/18 bg-ivory-50/[0.045] px-4 py-2 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/60"
+        >
+          <MessageCircle className="h-4 w-4 text-gold-300" />
+          Ask our team
+        </Link>
+      </div>
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <article key={item.title} className="rounded-[20px] border border-gold-500/14 bg-ink-950/46 p-4">
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/14 text-[#9bd7c9]">{item.icon}</span>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-300">{item.eyebrow}</p>
+                <h3 className="mt-1 font-semibold text-ivory-50">{item.title}</h3>
+              </div>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-ivory-400">{item.text}</p>
+          </article>
         ))}
       </div>
     </section>

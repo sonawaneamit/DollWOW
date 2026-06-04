@@ -17,6 +17,7 @@ export type CustomizationGroup = {
   label: string;
   description: string;
   required?: boolean;
+  selectionMode?: "single" | "multiple";
   display: "cards" | "swatches" | "compact";
   options: CustomizationOption[];
 };
@@ -37,7 +38,9 @@ export type BrandCustomizationConfig = {
   rules: CustomizationRule[];
 };
 
-export type CustomizationSelections = Record<string, string>;
+export type CustomizationSelectionValue = string | string[];
+
+export type CustomizationSelections = Record<string, CustomizationSelectionValue>;
 
 export type CustomizationIssue = {
   ruleId?: string;

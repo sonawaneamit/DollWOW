@@ -272,11 +272,13 @@ function normalizeCustomizationGroups(groups) {
     .filter(shouldExposeCustomizationGroup)
     .map((group) => {
       const options = normalizedCustomizationOptions(group).slice(0, 48);
+      const multiple = isMultiSelectGroup(group);
       return {
         id: group.id,
         label: group.label,
         description: `${group.label} options captured from supplier-style Rosemary option data. Final compatibility and pricing are confirmed before fulfillment.`,
-        required: true,
+        required: !multiple,
+        selectionMode: multiple ? "multiple" : "single",
         display: group.display === "swatches" ? "swatches" : "cards",
         options
       };
@@ -322,6 +324,11 @@ function shouldPrependNoAddOn(group, options) {
   if ((group.options || []).some((option) => option.selected)) return false;
   const label = group.label || "";
   return group.inputType === "checkboxes" || /add[-\s]?on|options|accessories|lingerie|flight case|extra head/i.test(label);
+}
+
+function isMultiSelectGroup(group) {
+  if (group.inputType === "checkboxes") return true;
+  return /accessories|lingerie|premium head|premium head & body|body options|head options/i.test(group.label || "");
 }
 
 function hasNoAddOnOption(options) {

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
-import { getDefaultSelections, getOptionConflict, resolveCustomization } from "@/lib/customization/resolve";
+import { getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
+import type { BrandCustomizationConfig } from "@/types/customization";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("customization config", () => {
@@ -51,5 +52,37 @@ describe("customization config", () => {
     expect(resolved.optionPriceDelta).toBe(274);
     expect(resolved.totalPrice).toBe(1873);
     expect(resolved.cartAttributes.some((attribute) => attribute.key === "DollWow Skin tone")).toBe(true);
+  });
+
+  it("supports multi-select add-on groups with no-add-on exclusivity", () => {
+    const config: BrandCustomizationConfig = {
+      id: "wm-imported-test",
+      brandLabel: "WM Dolls",
+      leadTimeNote: "Imported add-ons are verified before fulfillment.",
+      rules: [],
+      groups: [
+        {
+          id: "accessories",
+          label: "Accessories",
+          description: "Optional accessories.",
+          display: "cards",
+          selectionMode: "multiple",
+          options: [
+            { id: "no-add-on", label: "No add-on" },
+            { id: "care-kit", label: "Care Kit", priceDelta: 99 },
+            { id: "head-stand", label: "Head Stand", priceDelta: 50 }
+          ]
+        }
+      ]
+    };
+
+    const defaults = getDefaultSelections(config);
+    const withCareKit = nextMultipleSelection("no-add-on", defaults.accessories, "care-kit");
+    const withTwoAddOns = nextMultipleSelection("no-add-on", withCareKit, "head-stand");
+    const resolved = resolveCustomization(config, { accessories: withTwoAddOns }, 1666);
+
+    expect(withTwoAddOns).toEqual(["care-kit", "head-stand"]);
+    expect(resolved.optionPriceDelta).toBe(149);
+    expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Accessories")?.value).toBe("Care Kit (+$99), Head Stand (+$50)");
   });
 });
