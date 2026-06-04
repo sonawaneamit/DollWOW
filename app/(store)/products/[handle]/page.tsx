@@ -7,8 +7,8 @@ import { GoldButton } from "@/components/GoldButton";
 import { HumanHelpCTA } from "@/components/HumanHelpCTA";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductFAQ } from "@/components/ProductFAQ";
-import { ProductGrid } from "@/components/ProductGrid";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ProductImageFrame } from "@/components/ProductImageFrame";
 import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { formatMoney } from "@/lib/utils/currency";
@@ -204,12 +204,61 @@ function SimilarDolls({
           <GoldButton href="/shop" variant="secondary">Browse all</GoldButton>
         </div>
       </div>
-      <div className="mt-5">
-        <ProductGrid products={products.map((item) => item)} />
+      <div className="mt-5 overflow-x-auto pb-2">
+        <div className="grid min-w-[920px] grid-cols-4 gap-3 lg:min-w-0">
+          {products.map((item) => (
+            <SimilarDollCard key={item.id} product={item} reference={product} />
+          ))}
+        </div>
       </div>
       {product.extended.material && <p className="mt-4 text-xs text-ivory-600">Current reference: {product.extended.material}, {product.extended.heightCm ? `${product.extended.heightCm} cm` : "height pending"}.</p>}
     </section>
   );
+}
+
+function SimilarDollCard({
+  product,
+  reference
+}: {
+  product: NonNullable<Awaited<ReturnType<typeof getProducts>>>[number];
+  reference: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>;
+}) {
+  const price = product.priceRange.minVariantPrice;
+  const reason = matchReason(product, reference);
+  return (
+    <article className="rounded-[16px] border border-gold-500/14 bg-ink-950/48 p-2 transition hover:-translate-y-0.5 hover:border-gold-300/45">
+      <Link href={`/products/${product.handle}`} aria-label={`View ${product.title}`}>
+        <ProductImageFrame product={product} />
+      </Link>
+      <div className="space-y-2 px-1.5 pb-1 pt-2">
+        <div className="flex items-center justify-between gap-2">
+          <p className="truncate text-[11px] uppercase tracking-[0.14em] text-gold-300">{product.extended.brand ?? product.vendor}</p>
+          <span className="shrink-0 rounded-full border border-[#4f9c8a]/25 bg-[#4f9c8a]/10 px-2 py-0.5 text-[11px] font-semibold text-[#9bd7c9]">{reason}</span>
+        </div>
+        <Link href={`/products/${product.handle}`} className="line-clamp-2 min-h-10 text-sm font-semibold leading-5 text-ivory-50">
+          {product.title}
+        </Link>
+        <div className="grid grid-cols-3 gap-1 text-[11px] text-ivory-500">
+          <span className="truncate">{product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height"}</span>
+          <span className="truncate">{product.extended.material ?? "Material"}</span>
+          <span className="truncate">{product.extended.cupSize ?? "Cup"}</span>
+        </div>
+        <div className="flex items-center justify-between border-t border-gold-500/12 pt-2">
+          <strong className="text-base text-gold-300">{formatMoney(price.amount, price.currencyCode)}</strong>
+          <Link href={`/products/${product.handle}`} className="rounded-full bg-gold-400 px-3 py-1.5 text-xs font-semibold text-ink-950">
+            View
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function matchReason(product: NonNullable<Awaited<ReturnType<typeof getProducts>>>[number], reference: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
+  if (product.extended.material && product.extended.material === reference.extended.material) return "Same material";
+  if (product.extended.cupSize && product.extended.cupSize === reference.extended.cupSize) return "Same cup";
+  if (product.extended.heightCm && reference.extended.heightCm && Math.abs(product.extended.heightCm - reference.extended.heightCm) <= 8) return "Similar size";
+  return "Comparable";
 }
 
 function productIntro(description: string) {
