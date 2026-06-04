@@ -136,13 +136,14 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   return (
-    <section ref={rootRef} className="overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
-      <div className="grid min-h-[720px] lg:h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_390px] xl:grid-cols-[144px_minmax(0,1fr)_420px]">
+    <section ref={rootRef} className="relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(42rem_32rem_at_78%_8%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(36rem_28rem_at_20%_16%,rgba(192,105,94,0.12),transparent_64%)]" />
+      <div className="relative grid min-h-[760px] lg:h-[880px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]">
         <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} isReviewing={isReviewing} onSelect={goToGroup} />
 
-        <div className="relative flex min-h-[560px] flex-col justify-between overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.035),rgba(217,154,111,0.025))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
+        <div className="relative flex min-h-[560px] flex-col overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
+          <div className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{isReviewing ? "Build review" : "Build studio"}</p>
               <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">{isReviewing ? "Confirm your build" : "Make her yours"}</h2>
@@ -157,7 +158,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto my-5 flex min-h-0 w-full max-w-[640px] flex-1 items-center justify-center">
+          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-4 max-w-[920px] overflow-y-auto py-1" : "my-4 max-w-[640px]")}>
             {isReviewing ? (
               <BuildReviewSummary
                 selectedOptions={resolved.selectedOptions}
@@ -170,7 +171,7 @@ export function ProductOptions({ product }: { product: Product }) {
             ) : (
               <>
                 <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-                <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] xl:max-w-[390px]">
+                <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] sm:max-w-[320px] xl:max-w-[340px]">
                   {heroImage ? (
                     <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
                       <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
@@ -188,15 +189,13 @@ export function ProductOptions({ product }: { product: Product }) {
             )}
           </div>
 
-          {isReviewing ? (
-            <ReviewPriceStrip basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} />
-          ) : (
+          {!isReviewing && (
             <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
           )}
         </div>
 
-        <aside ref={stepPanelRef} className="scroll-mt-28 flex min-h-[620px] flex-col overflow-hidden bg-ink-800 text-ivory-50 lg:min-h-0">
-          <div className="border-b border-gold-500/20 p-5">
+        <aside ref={stepPanelRef} className="scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
+          <div className="shrink-0 border-b border-gold-500/20 bg-ink-950/28 p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-gold-300">{isReviewing ? "Final review" : "Now choosing"}</p>
             <div className="mt-2 flex items-center justify-between gap-3">
               <h3 className="text-2xl font-semibold">{isReviewing ? "Your selections" : activeGroup.label}</h3>
@@ -204,7 +203,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 {isReviewing ? `${stepCount}/${stepCount}` : `${activeGroupIndex + 1}/${stepCount}`}
               </span>
             </div>
-            <p className="mt-2 text-sm leading-6 text-ivory-400">
+            <p className="mt-2 text-sm leading-5 text-ivory-400">
               {isReviewing ? "Final specs are passed to Shopify as order notes and confirmed by our team before fulfillment." : activeGroup.description}
             </p>
           </div>
@@ -226,7 +225,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </label>
           )}
 
-          <div ref={optionScrollerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5">
+          <div ref={optionScrollerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4">
             {isReviewing ? (
               <ReviewSidebarSummary selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
             ) : (
@@ -258,11 +257,11 @@ export function ProductOptions({ product }: { product: Product }) {
             )}
           </div>
 
-          <div className="border-t border-gold-500/20 bg-ivory-50/[0.06] p-5">
+          <div className="shrink-0 border-t border-gold-500/20 bg-[linear-gradient(180deg,rgba(246,233,221,0.055),rgba(79,156,138,0.055))] p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">Your build</p>
-                <p className="mt-1 text-3xl font-semibold">{formatMoney(resolved.totalPrice, currencyCode)}</p>
+                <p className="mt-1 text-2xl font-semibold">{formatMoney(resolved.totalPrice, currencyCode)}</p>
               </div>
               <div className="text-right text-xs text-ivory-500">
                 <p>Base {formatMoney(basePrice, currencyCode)}</p>
@@ -270,13 +269,13 @@ export function ProductOptions({ product }: { product: Product }) {
               </div>
             </div>
             {error && <p className="mt-3 text-sm text-danger">{error}</p>}
-            <div className="mt-5 grid gap-2">
+            <div className="mt-3 grid gap-2">
               {isReviewing ? (
                 <button
                   type="button"
                   disabled={!canCheckout || loading}
                   onClick={addToCart}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
                   Checkout
@@ -285,7 +284,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToNextGroup}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
                 >
                   Next: {nextGroup.label}
                   <ChevronRight className="h-4 w-4" />
@@ -294,7 +293,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToNextGroup}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
                 >
                   Review build
                   <ChevronRight className="h-4 w-4" />
@@ -304,14 +303,14 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToPreviousGroup}
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-3 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
+                  className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-2 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
                 >
                   <ChevronLeft className="h-4 w-4" />
                   {isReviewing ? `Back: ${activeGroup.label}` : `Back: ${previousGroup?.label}`}
                 </button>
               )}
             </div>
-            <div className="mt-4 grid gap-2 text-xs text-ivory-400">
+            <div className="mt-3 grid gap-2 text-xs text-ivory-400 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet Shopify checkout" />
               <Assurance icon={<Clock3 className="h-4 w-4" />} text="Final specs confirmed by support" />
             </div>
@@ -395,13 +394,13 @@ function BuildReviewSummary({
   onEdit: (groupId: string) => void;
 }) {
   return (
-    <div className="w-full rounded-[28px] border border-gold-500/20 bg-ink-950/64 p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
+    <div className="w-full rounded-[28px] border border-gold-500/20 bg-[linear-gradient(155deg,rgba(7,4,3,0.82),rgba(35,21,16,0.78))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
       <div className="grid gap-3 sm:grid-cols-3">
         <PriceStat label="Base doll" value={formatMoney(basePrice, currencyCode)} />
         <PriceStat label="Options" value={formatMoney(optionPriceDelta, currencyCode)} />
         <PriceStat label="Total" value={formatMoney(totalPrice, currencyCode)} strong />
       </div>
-      <div className="mt-4 max-h-[390px] overflow-y-auto pr-1">
+      <div className="mt-4 max-h-[520px] overflow-y-auto pr-1 lg:max-h-[600px]">
         <div className="grid gap-3 sm:grid-cols-2">
           {selectedOptions.map((option) => (
             <button
@@ -425,26 +424,6 @@ function BuildReviewSummary({
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function ReviewPriceStrip({
-  basePrice,
-  optionPriceDelta,
-  totalPrice,
-  currencyCode
-}: {
-  basePrice: number;
-  optionPriceDelta: number;
-  totalPrice: number;
-  currencyCode: string;
-}) {
-  return (
-    <div className="relative z-10 grid gap-3 rounded-[20px] border border-gold-500/16 bg-ink-950/55 p-4 text-sm text-ivory-300 sm:grid-cols-3">
-      <PriceStat label="Base" value={formatMoney(basePrice, currencyCode)} />
-      <PriceStat label="Selected options" value={formatMoney(optionPriceDelta, currencyCode)} />
-      <PriceStat label="Final build" value={formatMoney(totalPrice, currencyCode)} strong />
     </div>
   );
 }
@@ -557,7 +536,7 @@ function OptionTile({
       disabled={disabled}
       title={disabled ? conflict ?? undefined : undefined}
       className={clsx(
-        "group relative flex min-h-36 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-4 text-center transition duration-200",
+        "group relative flex min-h-32 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-3 text-center transition duration-200",
         selected ? "border-[#4f9c8a] bg-[linear-gradient(180deg,rgba(79,156,138,0.09),rgba(7,4,3,0.62))] shadow-[0_16px_40px_rgba(79,156,138,0.16)]" : "border-gold-500/20 bg-ink-950/62 hover:-translate-y-0.5 hover:border-gold-300/60 hover:shadow-[0_16px_40px_rgba(20,6,4,0.32)]",
         disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-gold-500/20 hover:shadow-none"
       )}
@@ -606,22 +585,22 @@ function ImagePreview({ imageUrl, alt, onClose }: { imageUrl: string; alt: strin
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
   if (option.swatch?.kind === "image") {
     return (
-      <span className={clsx("relative mt-0.5 h-20 w-20 shrink-0 overflow-hidden rounded-[20px] border bg-ink-900", selected ? "border-[#4f9c8a]" : "border-gold-500/20")} aria-hidden="true">
-        <Image src={option.swatch.value} alt="" fill sizes="80px" className="object-cover" loading="lazy" unoptimized />
+      <span className={clsx("relative mt-0.5 h-16 w-16 shrink-0 overflow-hidden rounded-[18px] border bg-ink-900 xl:h-18 xl:w-18", selected ? "border-[#4f9c8a]" : "border-gold-500/20")} aria-hidden="true">
+        <Image src={option.swatch.value} alt="" fill sizes="72px" className="object-cover" loading="lazy" unoptimized />
       </span>
     );
   }
   if (option.swatch?.kind === "color") {
     return (
       <span
-        className={clsx("mt-0.5 h-14 w-14 shrink-0 rounded-full border-[6px]", selected ? "border-[#4f9c8a]/35" : "border-ivory-50/10")}
+        className={clsx("mt-0.5 h-12 w-12 shrink-0 rounded-full border-[5px]", selected ? "border-[#4f9c8a]/35" : "border-ivory-50/10")}
         style={{ backgroundColor: option.swatch.value }}
         aria-hidden="true"
       />
     );
   }
   return (
-    <span className={clsx("mt-0.5 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-lg font-semibold", selected ? "border-[#4f9c8a] bg-[#4f9c8a]/15 text-[#9bd7c9]" : "border-gold-500/20 bg-ivory-50/[0.045] text-ivory-500")}>
+    <span className={clsx("mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border text-lg font-semibold", selected ? "border-[#4f9c8a] bg-[#4f9c8a]/15 text-[#9bd7c9]" : "border-gold-500/20 bg-ivory-50/[0.045] text-ivory-500")}>
       {option.swatch?.label ?? option.label.slice(0, 1)}
     </span>
   );
@@ -637,10 +616,10 @@ function SelectedTray({ selectedOptions, currencyCode }: { selectedOptions: Retu
           <ChevronRight className="h-4 w-4" />
         </div>
       </div>
-      <div className="flex gap-3 overflow-x-auto pb-1">
+      <div className="flex gap-3 overflow-x-auto border-t border-gold-500/12 pt-3">
         {selectedOptions.map((option) => (
-          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-56 items-center gap-3 rounded-[18px] border border-gold-500/20 bg-ivory-50/[0.045] p-3 text-ivory-50">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
+          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-52 items-center gap-3 rounded-[18px] border border-gold-500/18 bg-ink-950/52 p-3 text-ivory-50 shadow-[0_14px_34px_rgba(0,0,0,0.2)]">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
             <span className="min-w-0">
               <span className="block truncate text-sm font-semibold">{option.optionLabel}</span>
               <span className="mt-1 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
