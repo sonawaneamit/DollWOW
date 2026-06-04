@@ -175,9 +175,10 @@ function seoTitle(product, primaryKeyword) {
 function seoDescription(product, primaryKeyword) {
   const extended = product.extended || {};
   const stock = extended.stockStatus === "ready_to_ship" ? "warehouse timing" : "custom options";
+  const keyword = primaryKeyword && primaryKeyword !== product.title ? titleCase(primaryKeyword) : product.title;
   return truncate(
     cleanText(
-      `Compare ${primaryKeyword || product.title} with clear specs, ${stock}, discreet checkout, and DollWow team confirmation before fulfillment.`
+      `Compare ${keyword} with clear specs, ${stock}, discreet checkout, and DollWow team confirmation before fulfillment.`
     ),
     156
   );

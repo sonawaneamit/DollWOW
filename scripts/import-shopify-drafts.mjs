@@ -286,11 +286,22 @@ function availabilityLabel(extended) {
 }
 
 function skuFor(product) {
-  return ["DW", ...(product.tags || []).slice(0, 1), product.handle]
+  return skuParts("DW", (product.tags || [])[0], product.handle)
     .join("-")
     .toUpperCase()
     .replace(/[^A-Z0-9-]/g, "")
     .slice(0, 64);
+}
+
+function skuParts(...values) {
+  const parts = [];
+  for (const value of values) {
+    for (const part of plainText(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").split("-")) {
+      if (!part || parts.at(-1) === part) continue;
+      parts.push(part);
+    }
+  }
+  return parts;
 }
 
 function encodeMediaUrl(url) {

@@ -16,7 +16,7 @@ type ShopifyResponse<T> = {
   errors?: Array<{ message: string }>;
 };
 
-async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}) {
+async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}, options: { cache?: RequestCache; revalidate?: number } = {}) {
   if (!hasShopifyStorefrontEnv()) {
     throw new Error("Shopify Storefront API is not configured.");
   }
@@ -29,7 +29,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
       ...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)
     },
     body: JSON.stringify({ query, variables }),
-    next: { revalidate: 120 }
+    ...(options.cache ? { cache: options.cache } : { next: { revalidate: options.revalidate ?? 120 } })
   });
 
   const payload = (await response.json()) as ShopifyResponse<T>;
@@ -117,7 +117,8 @@ export async function getProductByHandle(handle: string) {
       `query Product($handle: String!) {
         product(handle: $handle) { ${productDetailFields} }
       }`,
-      { handle }
+      { handle },
+      { cache: "no-store" }
     );
 
     return data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((product) => product.handle === handle) ?? null);

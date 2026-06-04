@@ -350,7 +350,7 @@ function gramsFor(product) {
 }
 
 function skuFor(product) {
-  return unique(["DW", product.brandSlug, product.handle])
+  return skuParts("DW", product.brandSlug, product.handle)
     .join("-")
     .toUpperCase()
     .replace(/[^A-Z0-9-]/g, "")
@@ -397,6 +397,17 @@ function cleanText(value) {
 
 function unique(values) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function skuParts(...values) {
+  const parts = [];
+  for (const value of values) {
+    for (const part of slugify(value).split("-")) {
+      if (!part || parts.at(-1) === part) continue;
+      parts.push(part);
+    }
+  }
+  return parts;
 }
 
 function slugify(value) {
