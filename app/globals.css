@@ -242,7 +242,10 @@ body {
 }
 
 .product-builder .builder-panel {
-  background: var(--surface-solid);
+  background:
+    radial-gradient(32rem 28rem at 85% -8%, rgba(224, 128, 104, 0.16), transparent 64%),
+    linear-gradient(180deg, #1a110d, #080403);
+  color: #f6e9dd;
 }
 
 .product-builder .builder-price-island,
@@ -267,9 +270,20 @@ body {
   color: var(--text);
 }
 
+.product-builder .builder-panel .option-tile {
+  border-color: rgba(232, 180, 143, 0.18);
+  background: rgba(245, 225, 210, 0.055);
+  color: #f6e9dd;
+}
+
 .product-builder .option-tile.is-selected {
   border-color: var(--border-strong);
   background: var(--accent-soft);
+}
+
+.product-builder .builder-panel .option-tile.is-selected {
+  border-color: rgba(224, 128, 104, 0.58);
+  background: linear-gradient(180deg, rgba(224, 128, 104, 0.14), rgba(245, 225, 210, 0.065));
 }
 
 .product-builder .option-check {

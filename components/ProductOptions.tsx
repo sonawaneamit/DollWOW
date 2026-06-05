@@ -198,7 +198,7 @@ export function ProductOptions({ product }: { product: Product }) {
           )}
         </div>
 
-        <aside ref={stepPanelRef} className="builder-panel scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
+        <aside ref={stepPanelRef} data-tone="deep" className="builder-panel scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
           <div className="shrink-0 border-b border-gold-500/20 bg-ink-950/28 p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-gold-300">{isReviewing ? "Final review" : "Now choosing"}</p>
             <div className="mt-2 flex items-center justify-between gap-3">
@@ -614,21 +614,22 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
 function SelectedTray({ selectedOptions, currencyCode }: { selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"]; currencyCode: string }) {
   return (
     <div className="relative z-10">
-      <div className="mb-3 flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-ivory-100">Selected items ({selectedOptions.length})</h3>
-        <div className="hidden gap-2 text-ivory-500 sm:flex">
+      <div className="mb-2 flex items-center justify-between">
+        <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ivory-500">Selected ({selectedOptions.length})</h3>
+        <div className="hidden gap-2 text-ivory-600 sm:flex">
           <ChevronLeft className="h-4 w-4" />
           <ChevronRight className="h-4 w-4" />
         </div>
       </div>
-      <div className="flex gap-3 overflow-x-auto border-t border-gold-500/12 pt-3">
+      <div className="flex gap-2 overflow-x-auto border-t border-gold-500/12 pt-2">
         {selectedOptions.map((option) => (
-          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-52 items-center gap-3 rounded-[18px] border border-gold-500/18 bg-ink-950/52 p-3 text-ivory-50 shadow-[0_14px_34px_rgba(0,0,0,0.2)]">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
-            <span className="min-w-0">
-              <span className="block truncate text-sm font-semibold">{option.optionLabel}</span>
-              <span className="mt-1 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
-              <span className="mt-1 block text-sm font-semibold text-[#2d7d6c]">{option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
+          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-44 max-w-56 items-center gap-2 rounded-full border border-gold-500/14 bg-ivory-50/[0.42] px-3 py-2 text-ivory-50 shadow-[0_8px_22px_rgba(96,40,38,0.08)]">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#236b5f] text-[#fff4f1]">
+              <Check className="h-3.5 w-3.5" />
+            </span>
+            <span className="min-w-0 text-xs leading-4">
+              <span className="block truncate font-semibold text-[#3d231f]">{option.groupLabel}: {option.optionLabel}</span>
+              {option.priceDelta ? <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(option.priceDelta, currencyCode)}</span> : null}
             </span>
           </div>
         ))}
