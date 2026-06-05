@@ -162,7 +162,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </div>
           </div>
 
-          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-4 max-w-[920px] overflow-y-auto py-1" : "my-4 max-w-[640px]")}>
+          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-4 max-w-[920px] items-start overflow-y-auto py-4" : "my-4 max-w-[640px]")}>
             {isReviewing ? (
               <BuildReviewSummary
                 selectedOptions={resolved.selectedOptions}
