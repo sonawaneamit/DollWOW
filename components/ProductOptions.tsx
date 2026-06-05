@@ -140,12 +140,12 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   return (
-    <section ref={rootRef} className="relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
+    <section ref={rootRef} data-tone="blush" className="product-builder relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(42rem_32rem_at_78%_8%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(36rem_28rem_at_20%_16%,rgba(192,105,94,0.12),transparent_64%)]" />
       <div className="relative grid min-h-[760px] lg:h-[880px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]">
         <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} isReviewing={isReviewing} onSelect={goToGroup} />
 
-        <div className="relative flex min-h-[560px] flex-col overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
+        <div className="builder-stage relative flex min-h-[560px] flex-col overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
           <div className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-4">
             <div>
@@ -175,7 +175,7 @@ export function ProductOptions({ product }: { product: Product }) {
             ) : (
               <>
                 <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-                <div className="noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] sm:max-w-[320px] xl:max-w-[340px]">
+                <div data-tone="deep" className="builder-preview-island noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] sm:max-w-[320px] xl:max-w-[340px]">
                   {heroImage ? (
                     <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
                       <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
@@ -198,7 +198,7 @@ export function ProductOptions({ product }: { product: Product }) {
           )}
         </div>
 
-        <aside ref={stepPanelRef} className="scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
+        <aside ref={stepPanelRef} className="builder-panel scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
           <div className="shrink-0 border-b border-gold-500/20 bg-ink-950/28 p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-gold-300">{isReviewing ? "Final review" : "Now choosing"}</p>
             <div className="mt-2 flex items-center justify-between gap-3">
@@ -261,7 +261,7 @@ export function ProductOptions({ product }: { product: Product }) {
             )}
           </div>
 
-          <div className="shrink-0 border-t border-gold-500/20 bg-[linear-gradient(180deg,rgba(246,233,221,0.055),rgba(79,156,138,0.055))] p-4">
+          <div data-tone="deep" className="builder-price-island shrink-0 border-t border-gold-500/20 bg-[linear-gradient(180deg,rgba(246,233,221,0.055),rgba(79,156,138,0.055))] p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">Your build</p>
@@ -279,7 +279,7 @@ export function ProductOptions({ product }: { product: Product }) {
                   type="button"
                   disabled={!canCheckout || loading}
                   onClick={addToCart}
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
                   Checkout
@@ -288,7 +288,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToNextGroup}
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
+                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
                 >
                   Next: {nextGroup.label}
                   <ChevronRight className="h-4 w-4" />
@@ -297,7 +297,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToNextGroup}
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
+                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
                 >
                   Review build
                   <ChevronRight className="h-4 w-4" />
@@ -307,7 +307,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 <button
                   type="button"
                   onClick={goToPreviousGroup}
-                  className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-2 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
+                  className="builder-secondary-button inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-2 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
                 >
                   <ChevronLeft className="h-4 w-4" />
                   {isReviewing ? `Back: ${activeGroup.label}` : `Back: ${previousGroup?.label}`}
@@ -322,7 +322,7 @@ export function ProductOptions({ product }: { product: Product }) {
         </aside>
       </div>
 
-      <div className={clsx("fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
+      <div data-tone="deep" className={clsx("builder-price-island fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
         <div className="mx-auto flex max-w-7xl items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-ivory-500">{product.title}</p>
@@ -355,7 +355,7 @@ function CategoryRail({
   onSelect: (groupId: string) => void;
 }) {
   return (
-    <nav className="flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
+    <nav className="builder-rail flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
       {groups.map((group) => {
         const active = !isReviewing && group.id === activeGroupId;
         return (
@@ -398,7 +398,7 @@ function BuildReviewSummary({
   onEdit: (groupId: string) => void;
 }) {
   return (
-    <div className="w-full rounded-[28px] border border-gold-500/20 bg-[linear-gradient(155deg,rgba(7,4,3,0.82),rgba(35,21,16,0.78))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
+    <div data-tone="deep" className="builder-review-island w-full rounded-[28px] border border-gold-500/20 bg-[linear-gradient(155deg,rgba(7,4,3,0.82),rgba(35,21,16,0.78))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
       <div className="grid gap-3 sm:grid-cols-3">
         <PriceStat label="Base doll" value={formatMoney(basePrice, currencyCode)} />
         <PriceStat label="Options" value={formatMoney(optionPriceDelta, currencyCode)} />
@@ -540,13 +540,14 @@ function OptionTile({
       disabled={disabled}
       title={disabled ? conflict ?? undefined : undefined}
       className={clsx(
-        "group relative flex min-h-32 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-3 text-center transition duration-200",
+        "option-tile group relative flex min-h-32 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-3 text-center transition duration-200",
         selected ? "border-[#4f9c8a] bg-[linear-gradient(180deg,rgba(79,156,138,0.09),rgba(7,4,3,0.62))] shadow-[0_16px_40px_rgba(79,156,138,0.16)]" : "border-gold-500/20 bg-ink-950/62 hover:-translate-y-0.5 hover:border-gold-300/60 hover:shadow-[0_16px_40px_rgba(20,6,4,0.32)]",
+        selected && "is-selected",
         disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-gold-500/20 hover:shadow-none"
       )}
     >
       {selected && (
-        <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#4f9c8a] text-white shadow-[0_8px_24px_rgba(79,156,138,0.28)]">
+        <span className="option-check absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#4f9c8a] text-white shadow-[0_8px_24px_rgba(79,156,138,0.28)]">
           <Check className="h-4 w-4" />
         </span>
       )}

@@ -24,8 +24,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const intro = productIntro(product.description);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 lg:px-8 lg:pb-12">
-      <div className="space-y-8">
+    <main className="pb-28 lg:pb-0">
+      <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <ProductGallery product={product} />
           <div className="flex flex-col justify-center">
@@ -68,26 +68,58 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             {firstAvailable && <ProductBuyActions merchandiseId={firstAvailable.id} productTitle={product.title} />}
           </div>
         </div>
+      </ToneBand>
 
+      <ToneBand tone="blush">
         <div id="build-studio" className="scroll-mt-28">
           <ProductOptions product={product} />
         </div>
+      </ToneBand>
 
+      <ToneBand tone="deep">
         <OrderTimeline product={product} />
+      </ToneBand>
+
+      <ToneBand tone="rose">
         <BuyerConfidence />
+      </ToneBand>
+
+      <ToneBand tone="blush">
         <ProductEducation product={product} />
+      </ToneBand>
+
+      <ToneBand tone="deep">
         <ProductFAQ />
-        <DollDetailsCard product={product} />
         <HumanHelpCTA source="product" />
+      </ToneBand>
+
+      <ToneBand tone="blush">
+        <DollDetailsCard product={product} />
         <SimilarDolls products={alternatives} product={product} />
-      </div>
-    </div>
+      </ToneBand>
+    </main>
+  );
+}
+
+function ToneBand({
+  tone,
+  children,
+  className = ""
+}: {
+  tone: "deep" | "rose" | "blush";
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <section data-tone={tone} className={`tone-section ${className}`}>
+      <div className="tone-inner space-y-8">{children}</div>
+    </section>
   );
 }
 
 function Spec({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[14px] border border-gold-500/12 bg-ink-800/70 p-4">
+    <div className="tone-card rounded-[14px] p-4">
       <p className="text-xs uppercase tracking-[0.14em] text-ivory-600">{label}</p>
       <p className="mt-1 font-semibold text-ivory-100">{value}</p>
     </div>
@@ -96,7 +128,7 @@ function Spec({ label, value }: { label: string; value: string }) {
 
 function TrustLine({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <div className="flex min-h-11 items-center gap-2 rounded-[12px] border border-gold-500/12 bg-ink-900/60 px-3">
+    <div className="tone-card flex min-h-11 items-center gap-2 rounded-[12px] px-3">
       <span className="text-gold-300">{icon}</span>
       <span>{text}</span>
     </div>
@@ -121,7 +153,7 @@ function OrderTimeline({ product }: { product: NonNullable<Awaited<ReturnType<ty
       ];
 
   return (
-    <section className="rounded-[28px] border border-gold-500/18 bg-[linear-gradient(135deg,rgba(26,17,13,0.9),rgba(7,4,3,0.96))] p-5 shadow-soft sm:p-7">
+    <section className="tone-card rounded-[28px] p-5 sm:p-7">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-gold-300">After checkout</p>
@@ -162,7 +194,7 @@ function BuyerConfidence() {
   ];
 
   return (
-    <section className="grid gap-4 rounded-[28px] border border-gold-500/18 bg-ink-800/64 p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr]">
+    <section className="tone-card grid gap-4 rounded-[28px] p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr]">
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Confidence</p>
         <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Clear support, real expectations</h2>
@@ -229,7 +261,7 @@ function ProductEducation({ product }: { product: NonNullable<Awaited<ReturnType
   ];
 
   return (
-    <section className="rounded-[28px] border border-gold-500/18 bg-[linear-gradient(135deg,rgba(42,24,22,0.72),rgba(7,4,3,0.94))] p-5 shadow-soft sm:p-7">
+    <section className="tone-card rounded-[28px] p-5 sm:p-7">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Buyer guide</p>
@@ -272,7 +304,7 @@ function SimilarDolls({
   product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>;
 }) {
   return (
-    <section className="rounded-[28px] border border-gold-500/18 bg-ink-800/58 p-5 sm:p-7">
+    <section className="tone-card rounded-[28px] p-5 sm:p-7">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Similar dolls</p>

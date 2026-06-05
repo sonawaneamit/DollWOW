@@ -8,6 +8,86 @@
   color-scheme: dark;
 }
 
+[data-theme="boudoir"] [data-tone="deep"],
+[data-theme="boudoir"] [data-tone="rose"],
+[data-theme="boudoir"] [data-tone="blush"] {
+  --stock-tone: #2d7d6c;
+  color: var(--text);
+}
+
+[data-theme="boudoir"] [data-tone="deep"] {
+  --bg: #160c0a;
+  --bg-image:
+    radial-gradient(46rem 32rem at 80% -10%, rgba(224, 128, 104, 0.2), transparent 64%),
+    radial-gradient(40rem 42rem at 4% 4%, rgba(168, 58, 74, 0.16), transparent 58%),
+    radial-gradient(50rem 30rem at 60% 112%, rgba(150, 52, 64, 0.12), transparent 60%);
+  --surface: rgba(245, 225, 210, 0.045);
+  --surface-2: rgba(245, 225, 210, 0.07);
+  --surface-solid: #1a110d;
+  --text: #f6e9dd;
+  --text-dim: #c9b3a3;
+  --text-faint: #98826f;
+  --hairline: rgba(217, 154, 111, 0.2);
+  --hairline-2: rgba(245, 225, 210, 0.08);
+  --border-strong: rgba(232, 180, 143, 0.45);
+  --accent: #e8b48f;
+  --accent-line: #d59a6f;
+  --accent-soft: rgba(217, 154, 111, 0.16);
+  --on-accent: #1c1009;
+  --cta-bg: linear-gradient(135deg, #f3cdb0, #b97a4e);
+  --cta-text: #1c1009;
+  --shadow-card: 0 36px 90px rgba(20, 6, 4, 0.55);
+}
+
+[data-theme="boudoir"] [data-tone="rose"] {
+  --bg: #d8a49c;
+  --bg-image:
+    radial-gradient(46rem 34rem at 84% -10%, rgba(176, 66, 72, 0.3), transparent 62%),
+    radial-gradient(40rem 32rem at 6% 106%, rgba(120, 36, 52, 0.2), transparent 58%),
+    linear-gradient(180deg, #dca8a0 0%, #d29a92 82%);
+  --surface: #ecc6be;
+  --surface-2: #e5b8af;
+  --surface-solid: #f1d2cb;
+  --text: #3a1a18;
+  --text-dim: #6e3c37;
+  --text-faint: #9c6760;
+  --hairline: rgba(74, 26, 24, 0.15);
+  --hairline-2: rgba(74, 26, 24, 0.08);
+  --border-strong: rgba(140, 48, 50, 0.5);
+  --accent: #9c3f3c;
+  --accent-line: #7e302f;
+  --accent-soft: rgba(156, 63, 60, 0.16);
+  --on-accent: #f1d2cb;
+  --cta-bg: #3a1a18;
+  --cta-text: #f1d2cb;
+  --shadow-card: 0 24px 54px rgba(110, 38, 40, 0.2);
+  --stock-tone: #206b5d;
+}
+
+[data-theme="boudoir"] [data-tone="blush"] {
+  --bg: #f3ded9;
+  --bg-image:
+    radial-gradient(44rem 34rem at 86% -8%, rgba(206, 120, 108, 0.22), transparent 64%),
+    linear-gradient(180deg, #f7e6e1 0%, #efd6d0 80%);
+  --surface: #fcefeb;
+  --surface-2: #f6e4df;
+  --surface-solid: #fff4f1;
+  --text: #3d231f;
+  --text-dim: #73534c;
+  --text-faint: #a8847b;
+  --hairline: rgba(78, 36, 32, 0.11);
+  --hairline-2: rgba(78, 36, 32, 0.06);
+  --border-strong: rgba(168, 82, 74, 0.4);
+  --accent: #b15549;
+  --accent-line: #90413a;
+  --accent-soft: rgba(177, 85, 73, 0.13);
+  --on-accent: #fff4f1;
+  --cta-bg: #3d231f;
+  --cta-text: #fff4f1;
+  --shadow-card: 0 24px 54px rgba(96, 40, 38, 0.16);
+  --stock-tone: #236b5f;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -26,6 +106,190 @@ body {
     linear-gradient(180deg, #160d0a 0%, #0a0605 64rem);
   background-attachment: fixed;
   color: #f6e9dd;
+}
+
+.tone-section {
+  position: relative;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.tone-section::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-image);
+}
+
+.tone-inner {
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding: clamp(3rem, 6vw, 5.5rem) 1rem;
+}
+
+@media (min-width: 640px) {
+  .tone-inner {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tone-inner {
+    padding-inline: 2rem;
+  }
+}
+
+.tone-card {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  color: var(--text);
+}
+
+.tone-section .tone-eyebrow,
+.tone-section .text-gold-300,
+.tone-section .text-gold-400,
+.tone-section .text-gold-200 {
+  color: var(--accent);
+}
+
+.tone-section .text-ivory-50,
+.tone-section .text-ivory-100,
+.tone-section .text-ivory-200 {
+  color: var(--text);
+}
+
+.tone-section .text-ivory-300,
+.tone-section .text-ivory-400,
+.tone-section .text-ivory-500 {
+  color: var(--text-dim);
+}
+
+.tone-section .text-ivory-600 {
+  color: var(--text-faint);
+}
+
+.tone-section .border-gold-500\/18,
+.tone-section .border-gold-500\/16,
+.tone-section .border-gold-500\/14,
+.tone-section .border-gold-500\/12,
+.tone-section .border-gold-500\/10,
+.tone-section .border-gold-500\/20,
+.tone-section .border-gold-500\/25 {
+  border-color: var(--hairline);
+}
+
+.tone-section .bg-ink-950\/48,
+.tone-section .bg-ink-950\/45,
+.tone-section .bg-ink-950\/46,
+.tone-section .bg-ink-950\/52,
+.tone-section .bg-ink-950\/50,
+.tone-section .bg-ink-950\/70,
+.tone-section .bg-ink-950\/72,
+.tone-section .bg-ink-900\/60,
+.tone-section .bg-ink-800\/58,
+.tone-section .bg-ink-800\/64,
+.tone-section .bg-ink-800\/70,
+.tone-section .bg-ink-800\/72,
+.tone-section .bg-ink-800\/78,
+.tone-section .bg-ink-800\/80,
+.tone-section .bg-ivory-50\/\[0\.035\],
+.tone-section .bg-ivory-50\/\[0\.045\],
+.tone-section .bg-ivory-50\/\[0\.055\],
+.tone-section .bg-ivory-50\/\[0\.06\],
+.tone-section .bg-ivory-50\/\[0\.07\] {
+  background: var(--surface);
+}
+
+.tone-section[data-tone="deep"] .deep-island,
+.deep-island[data-tone="deep"] {
+  background:
+    radial-gradient(36rem 24rem at 82% -12%, rgba(224, 128, 104, 0.18), transparent 62%),
+    linear-gradient(145deg, #1a110d, #070403);
+  border-color: rgba(232, 180, 143, 0.26);
+  color: #f6e9dd;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+.product-builder {
+  border-color: var(--hairline);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-card);
+}
+
+.product-builder::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-image);
+  opacity: 0.72;
+}
+
+.product-builder .builder-rail,
+.product-builder .builder-stage,
+.product-builder .builder-panel,
+.product-builder .builder-dock {
+  border-color: var(--hairline);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.product-builder .builder-panel {
+  background: var(--surface-solid);
+}
+
+.product-builder .builder-price-island,
+.product-builder .builder-preview-island,
+.product-builder .builder-review-island {
+  background:
+    radial-gradient(34rem 24rem at 82% -10%, rgba(224, 128, 104, 0.18), transparent 64%),
+    linear-gradient(145deg, #1a110d, #070403);
+  border-color: rgba(232, 180, 143, 0.28);
+  color: #f6e9dd;
+}
+
+.product-builder .builder-price-island *:not(svg),
+.product-builder .builder-preview-island *:not(svg),
+.product-builder .builder-review-island *:not(svg) {
+  color: inherit;
+}
+
+.product-builder .option-tile {
+  border-color: var(--hairline);
+  background: var(--surface-solid);
+  color: var(--text);
+}
+
+.product-builder .option-tile.is-selected {
+  border-color: var(--border-strong);
+  background: var(--accent-soft);
+}
+
+.product-builder .option-check {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.product-builder .builder-primary-button {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+}
+
+.product-builder .builder-price-island .builder-primary-button {
+  color: var(--cta-text);
+}
+
+.product-builder .builder-secondary-button {
+  border-color: var(--hairline);
+  background: var(--surface);
+  color: var(--text);
 }
 
 a {
