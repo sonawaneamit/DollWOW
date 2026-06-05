@@ -1,11 +1,15 @@
 import { GoldButton } from "@/components/GoldButton";
+import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
+import { compactFilters, filterProducts, filtersFromSearchParams, shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { getProducts } from "@/lib/shopify/storefront";
 
 export const metadata = { title: "Customize" };
 
-export default async function CustomizePage() {
-  const products = (await getProducts()).filter((product) => product.extended.customAvailable);
+export default async function CustomizePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const filters = compactFilters({ ...filtersFromSearchParams(await searchParams), availability: "custom" });
+  const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 600 });
+  const filteredProducts = filterProducts(products, filters).filter((product) => product.extended.customAvailable);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -18,7 +22,10 @@ export default async function CustomizePage() {
         </div>
       </div>
       <div className="mt-8">
-        <ProductGrid products={products} />
+        <ProductFilters filters={filters} action="/customize" resetHref="/customize" />
+      </div>
+      <div className="mt-8">
+        <ProductGrid products={filteredProducts} />
       </div>
     </section>
   );

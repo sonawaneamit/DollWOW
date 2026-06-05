@@ -371,8 +371,29 @@ function productTags(product) {
     product.stockStatus,
     product.customAvailable ? "customizable" : null,
     inferMaterial(product).toLowerCase().replace(/\s+/g, "-"),
+    heightRangeTag(product.specs?.heightCm),
+    weightRangeTag(product.specs?.weightLb),
     product.warehouseCountry ? `warehouse-${slugify(product.warehouseCountry)}` : null
   ]).filter(Boolean);
+}
+
+function heightRangeTag(heightCm) {
+  const height = Number(heightCm || 0);
+  if (!height) return null;
+  if (height < 155) return "height-under-155";
+  if (height <= 159) return "height-155-159";
+  if (height <= 164) return "height-160-164";
+  if (height <= 169) return "height-165-169";
+  return "height-170-plus";
+}
+
+function weightRangeTag(weightLb) {
+  const weight = Number(weightLb || 0);
+  if (!weight) return null;
+  if (weight < 75) return "weight-under-75";
+  if (weight <= 89) return "weight-75-89";
+  if (weight <= 109) return "weight-90-109";
+  return "weight-110-plus";
 }
 
 function productType(product) {

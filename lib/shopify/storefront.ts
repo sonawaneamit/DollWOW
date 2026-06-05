@@ -1,4 +1,5 @@
 import { sampleProducts } from "@/lib/data/sample-products";
+import type { Product } from "@/types/product";
 import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
 import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
@@ -14,6 +15,21 @@ const fallbackCollections = [
 type ShopifyResponse<T> = {
   data?: T;
   errors?: Array<{ message: string }>;
+};
+
+type ProductListNode = Parameters<typeof mapShopifyProduct>[0];
+type ProductListData = {
+  products: {
+    edges: Array<{ cursor: string; node: ProductListNode }>;
+    pageInfo: { hasNextPage: boolean; endCursor: string | null };
+  };
+};
+
+type ProductCountData = {
+  products: {
+    edges: Array<{ cursor: string }>;
+    pageInfo: { hasNextPage: boolean; endCursor: string | null };
+  };
 };
 
 async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}, options: { cache?: RequestCache; revalidate?: number } = {}) {
@@ -83,27 +99,67 @@ const productDetailFields = `
   customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
 `;
 
-export async function getProducts({ query, first = 24 }: { query?: string; first?: number } = {}) {
+export async function getProducts({ query, first = 96 }: { query?: string; first?: number } = {}) {
   const fallbackProducts = sampleProducts.slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
   try {
-    const data = await storefrontFetch<{
-      products: { edges: Array<{ node: Parameters<typeof mapShopifyProduct>[0] }> };
-    }>(
-      `query Products($first: Int!, $query: String) {
-        products(first: $first, query: $query, sortKey: TITLE) {
-          edges { node { ${productListFields} } }
-        }
-      }`,
-      { first, query }
-    );
+    const products: Product[] = [];
+    let after: string | null = null;
+    const target = Math.max(1, first);
 
-    const products = data.products.edges.map((edge) => mapShopifyProduct(edge.node));
+    while (products.length < target) {
+      const pageSize = Math.min(250, target - products.length);
+      const data: ProductListData = await storefrontFetch<ProductListData>(
+        `query Products($first: Int!, $query: String, $after: String) {
+          products(first: $first, after: $after, query: $query, sortKey: TITLE) {
+            edges { cursor node { ${productListFields} } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }`,
+        { first: pageSize, query, after }
+      );
+
+      products.push(...data.products.edges.map((edge) => mapShopifyProduct(edge.node)));
+      if (!data.products.pageInfo.hasNextPage) break;
+      after = data.products.pageInfo.endCursor;
+      if (!after) break;
+    }
+
     return products.length ? products : fallbackProducts;
   } catch (error) {
     console.error(error);
     return fallbackProducts;
+  }
+}
+
+export async function getProductCount({ query }: { query?: string } = {}) {
+  if (!hasShopifyStorefrontEnv()) return sampleProducts.length;
+
+  try {
+    let count = 0;
+    let after: string | null = null;
+
+    do {
+      const data: ProductCountData = await storefrontFetch<ProductCountData>(
+        `query ProductsCount($query: String, $after: String) {
+          products(first: 250, after: $after, query: $query) {
+            edges { cursor }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      }`,
+        { query, after }
+      );
+
+      count += data.products.edges.length;
+      after = data.products.pageInfo.hasNextPage ? data.products.pageInfo.endCursor : null;
+    } while (after);
+
+    return count;
+  } catch (error) {
+    console.error(error);
+    return 0;
   }
 }
 
