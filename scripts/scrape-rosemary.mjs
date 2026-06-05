@@ -39,6 +39,7 @@ if (args.help) {
 const brand = String(args.brand || "").toLowerCase();
 const startUrl = args.url || BRAND_START_URLS[brand];
 const limit = Number(args.limit || 24);
+const concurrency = Math.max(1, Number(args.concurrency || 4));
 
 if (!startUrl) {
   throw new Error(`Pass --brand ${Object.keys(BRAND_START_URLS).join("|")} or --url <Rosemary category URL>.`);
@@ -151,17 +152,15 @@ function buildApifyPageFunction(limit, brandSlug, collectionUrl) {
 
 async function runLocalScrape(startUrl, limit, brandSlug) {
   const productUrls = await resolveProductUrls(startUrl, limit);
-  const products = [];
-
-  for (const url of productUrls) {
+  return mapWithConcurrency(productUrls, concurrency, async (url) => {
     let html = "";
     try {
       html = await fetchText(url);
     } catch (error) {
       console.warn(`Skipping ${url}: ${error.message}`);
-      continue;
+      return null;
     }
-    products.push({
+    return {
       sourceUrl: url,
       sourceCollectionUrl: isProductUrl(startUrl) ? null : startUrl,
       brandSlug,
@@ -170,16 +169,32 @@ async function runLocalScrape(startUrl, limit, brandSlug) {
       image: pickMeta(html, "og:image"),
       description: pickMeta(html, "og:description"),
       html
-    });
-  }
-
-  return products;
+    };
+  }).then((products) => products.filter(Boolean));
 }
 
 async function resolveProductUrls(startUrl, limit) {
   if (isProductUrl(startUrl)) return [startUrl];
   const categoryHtml = await fetchText(startUrl);
-  return extractProductUrls(categoryHtml, startUrl).slice(0, limit);
+  const urls = new Set(extractProductUrls(categoryHtml, startUrl));
+
+  if (args["all-pages"]) {
+    const pageUrls = extractPaginationUrls(categoryHtml, startUrl);
+    const pageHtmls = await mapWithConcurrency(pageUrls, 3, async (url) => {
+      try {
+        return await fetchText(url);
+      } catch (error) {
+        console.warn(`Skipping category page ${url}: ${error.message}`);
+        return "";
+      }
+    });
+
+    for (const html of pageHtmls) {
+      for (const url of extractProductUrls(html, startUrl)) urls.add(url);
+    }
+  }
+
+  return [...urls].slice(0, limit);
 }
 
 function isProductUrl(url) {
@@ -212,6 +227,52 @@ function extractProductUrls(html, baseUrl) {
     const handle = url.pathname.replace(/\/$/, "").split("/").pop();
     return !IGNORED_PRODUCT_HANDLES.has(handle);
   });
+}
+
+function extractPaginationUrls(html, baseUrl) {
+  const urls = new Set();
+  const matches = html.matchAll(/href=["']([^"']*(?:\/page\/\d+\/|[?&](?:product-page|paged)=\d+)[^"']*)["']/gi);
+  const base = new URL(baseUrl);
+
+  for (const match of matches) {
+    try {
+      const decoded = decodeHtml(match[1]);
+      const url = new URL(decoded, baseUrl);
+      if (url.hostname !== base.hostname) continue;
+      if (!url.pathname.includes("/sex-doll-brands/") && !url.search.includes("filter_brand")) continue;
+      if (base.searchParams.has("filter_brand") && !url.searchParams.has("filter_brand")) {
+        url.searchParams.set("filter_brand", base.searchParams.get("filter_brand"));
+      }
+      if (base.searchParams.has("query_type_brand") && !url.searchParams.has("query_type_brand")) {
+        url.searchParams.set("query_type_brand", base.searchParams.get("query_type_brand"));
+      }
+      url.hash = "";
+      urls.add(url.toString());
+    } catch {
+      // Ignore malformed pagination links.
+    }
+  }
+
+  return [...urls].filter((url) => url !== base.toString()).sort((a, b) => pageNumber(a) - pageNumber(b));
+}
+
+function pageNumber(url) {
+  const parsed = new URL(url);
+  return Number(parsed.pathname.match(/\/page\/(\d+)\//)?.[1] || parsed.searchParams.get("product-page") || parsed.searchParams.get("paged") || 1);
+}
+
+async function mapWithConcurrency(values, size, mapper) {
+  const results = new Array(values.length);
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(size, values.length) }, async () => {
+    while (cursor < values.length) {
+      const index = cursor;
+      cursor += 1;
+      results[index] = await mapper(values[index], index);
+    }
+  });
+  await Promise.all(workers);
+  return results;
 }
 
 function normalizeRosemaryProduct(item, brandFallback) {
@@ -484,7 +545,7 @@ function parseArgs(values) {
     const arg = values[index];
     if (!arg.startsWith("--")) continue;
     const key = arg.slice(2);
-    if (key === "local" || key === "help") {
+    if (key === "local" || key === "help" || key === "all-pages") {
       parsed[key] = true;
     } else {
       parsed[key] = values[index + 1];
@@ -498,6 +559,7 @@ function printHelp() {
   console.log(`Usage:
   npm run scrape:rosemary -- --brand zelex --limit 20
   npm run scrape:rosemary -- --brand wm --limit 10 --local
+  npm run scrape:rosemary -- --brand wm --url "https://www.rosemarydoll.com/sex-doll-brands/?filter_brand=wm-dolls&query_type_brand=or" --all-pages --limit 600 --local
   npm run scrape:rosemary -- --brand angelkiss --limit 10 --local
   npm run scrape:rosemary -- --url https://www.rosemarydoll.com/shop/?filter_brand=zelex-doll --limit 12
 

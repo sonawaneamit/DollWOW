@@ -21,7 +21,7 @@ const publish = args.publish === "true";
 
 const importData = JSON.parse(await fs.readFile(inputPath, "utf8"));
 const rawProducts = dedupeProducts(importData.products || []);
-const preparedProducts = rawProducts.map((product) => toDollWowImportProduct(product));
+const preparedProducts = uniquifyProductHandles(rawProducts.map((product) => toDollWowImportProduct(product)));
 const blockedProducts = preparedProducts.filter((product) => product.excludedFromDollWow);
 const products = args.includeExclusives ? preparedProducts : preparedProducts.filter((product) => !product.excludedFromDollWow);
 const preparedAt = new Date().toISOString();
@@ -98,6 +98,20 @@ function dedupeProducts(products) {
     byHandle.set(product.handle, product);
   }
   return [...byHandle.values()];
+}
+
+function uniquifyProductHandles(products) {
+  const seen = new Set();
+  return products.map((product) => {
+    let handle = product.handle;
+    let index = 2;
+    while (seen.has(handle)) {
+      handle = `${product.handle}-${index}`;
+      index += 1;
+    }
+    seen.add(handle);
+    return handle === product.handle ? product : { ...product, handle };
+  });
 }
 
 function buildShopifyCsv(products, options) {
