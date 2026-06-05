@@ -40,6 +40,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const [activeGroupId, setActiveGroupId] = useState(config.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
   const [selected, setSelected] = useState(() => getDefaultSelections(config));
+  const [reviewedGroupIds, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isMobileDockVisible, setMobileDockVisible] = useState(false);
@@ -57,6 +58,7 @@ export function ProductOptions({ product }: { product: Product }) {
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+  const reviewedCount = reviewedGroupIds.size;
 
   useEffect(() => {
     optionScrollerRef.current?.scrollTo({ top: 0 });
@@ -106,10 +108,15 @@ export function ProductOptions({ product }: { product: Product }) {
 
   function selectOption(groupId: string, optionId: string) {
     const group = config.groups.find((item) => item.id === groupId);
+    markGroupReviewed(groupId);
     setSelected((current) => ({
       ...current,
       [groupId]: group?.selectionMode === "multiple" ? nextMultipleSelection(group.options[0]?.id ?? "", current[groupId], optionId) : optionId
     }));
+  }
+
+  function markGroupReviewed(groupId: string) {
+    setReviewedGroupIds((current) => new Set(current).add(groupId));
   }
 
   function goToPreviousGroup() {
@@ -123,6 +130,7 @@ export function ProductOptions({ product }: { product: Product }) {
   }
 
   function goToNextGroup() {
+    if (activeGroup) markGroupReviewed(activeGroup.id);
     if (nextGroup) {
       setActiveGroupId(nextGroup.id);
       return;
@@ -143,7 +151,14 @@ export function ProductOptions({ product }: { product: Product }) {
     <section ref={rootRef} data-tone="blush" className="product-builder relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(42rem_32rem_at_78%_8%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(36rem_28rem_at_20%_16%,rgba(192,105,94,0.12),transparent_64%)]" />
       <div className="relative grid min-h-[760px] lg:h-[880px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]">
-        <CategoryRail groups={config.groups} activeGroupId={activeGroup.id} selected={selected} isReviewing={isReviewing} onSelect={goToGroup} />
+        <CategoryRail
+          groups={config.groups}
+          activeGroupId={activeGroup.id}
+          selected={selected}
+          reviewedGroupIds={reviewedGroupIds}
+          isReviewing={isReviewing}
+          onSelect={goToGroup}
+        />
 
         <div className="builder-stage relative flex min-h-[560px] flex-col overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
@@ -158,7 +173,7 @@ export function ProductOptions({ product }: { product: Product }) {
               </p>
             </div>
             <div className="rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-4 py-2 text-sm text-ivory-300">
-              {isReviewing ? "Ready to review" : `${resolved.selectedOptions.length} selections`}
+              {isReviewing ? "Ready to review" : `${reviewedCount}/${config.groups.length} reviewed`}
             </div>
           </div>
 
@@ -194,7 +209,13 @@ export function ProductOptions({ product }: { product: Product }) {
           </div>
 
           {!isReviewing && (
-            <SelectedTray selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} />
+            <SelectedTray
+              groups={config.groups}
+              selected={selected}
+              selectedOptions={resolved.selectedOptions}
+              reviewedGroupIds={reviewedGroupIds}
+              currencyCode={currencyCode}
+            />
           )}
         </div>
 
@@ -237,6 +258,7 @@ export function ProductOptions({ product }: { product: Product }) {
                 group={activeGroup}
                 selected={selected[activeGroup.id]}
                 selections={selected}
+                isGroupReviewed={reviewedGroupIds.has(activeGroup.id)}
                 onSelect={(optionId) => selectOption(activeGroup.id, optionId)}
                 config={config}
                 currencyCode={currencyCode}
@@ -345,12 +367,14 @@ function CategoryRail({
   groups,
   activeGroupId,
   selected,
+  reviewedGroupIds,
   isReviewing,
   onSelect
 }: {
   groups: CustomizationGroup[];
   activeGroupId: string;
   selected: CustomizationSelections;
+  reviewedGroupIds: Set<string>;
   isReviewing: boolean;
   onSelect: (groupId: string) => void;
 }) {
@@ -358,6 +382,9 @@ function CategoryRail({
     <nav className="builder-rail flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
       {groups.map((group) => {
         const active = !isReviewing && group.id === activeGroupId;
+        const reviewed = reviewedGroupIds.has(group.id);
+        const label = active ? "Now" : reviewed ? "Reviewed" : "Choose";
+        const selectedLabel = reviewed ? selectedLabelForGroup(group, selected[group.id]) : "";
         return (
           <button
             type="button"
@@ -373,7 +400,7 @@ function CategoryRail({
             </span>
             <span>
               <span className="block text-sm font-semibold">{group.label}</span>
-              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{active ? "Now" : selectionIds(selected[group.id]).length ? "Selected" : "Choose"}</span>
+              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{selectedLabel || label}</span>
             </span>
           </button>
         );
@@ -475,6 +502,7 @@ function OptionPalette({
   group,
   selected,
   selections,
+  isGroupReviewed,
   onSelect,
   config,
   currencyCode
@@ -482,6 +510,7 @@ function OptionPalette({
   group: CustomizationGroup;
   selected: CustomizationSelectionValue | undefined;
   selections: CustomizationSelections;
+  isGroupReviewed: boolean;
   onSelect: (optionId: string) => void;
   config: ReturnType<typeof getCustomizationConfig>;
   currencyCode: string;
@@ -499,12 +528,13 @@ function OptionPalette({
         const conflict = getOptionConflict(config, selections, group.id, option.id);
         const isSelected = selectionIds(selected).includes(option.id);
         const isDisabled = Boolean(conflict) && !isSelected;
+        const showSelected = isSelected && isGroupReviewed;
         return (
           <OptionTile
             key={option.id}
             group={group}
             option={option}
-            selected={isSelected}
+            selected={showSelected}
             disabled={isDisabled}
             conflict={conflict}
             currencyCode={currencyCode}
@@ -611,31 +641,69 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
   );
 }
 
-function SelectedTray({ selectedOptions, currencyCode }: { selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"]; currencyCode: string }) {
+function SelectedTray({
+  groups,
+  selected,
+  selectedOptions,
+  reviewedGroupIds,
+  currencyCode
+}: {
+  groups: CustomizationGroup[];
+  selected: CustomizationSelections;
+  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
+  reviewedGroupIds: Set<string>;
+  currencyCode: string;
+}) {
+  const reviewedOptions = selectedOptions.filter((option) => reviewedGroupIds.has(option.groupId));
+  const progress = groups.length ? (reviewedGroupIds.size / groups.length) * 100 : 0;
+
   return (
     <div className="relative z-10">
-      <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ivory-500">Selected ({selectedOptions.length})</h3>
-        <div className="hidden gap-2 text-ivory-600 sm:flex">
-          <ChevronLeft className="h-4 w-4" />
-          <ChevronRight className="h-4 w-4" />
-        </div>
+      <div className="mb-2 flex items-center justify-between gap-4">
+        <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ivory-500">Reviewed ({reviewedGroupIds.size}/{groups.length})</h3>
+        <p className="hidden text-xs text-ivory-600 sm:block">Defaults are included until changed.</p>
       </div>
-      <div className="flex gap-2 overflow-x-auto border-t border-gold-500/12 pt-2">
-        {selectedOptions.map((option) => (
-          <div key={`${option.groupId}-${option.optionId}`} className="flex min-w-44 max-w-56 items-center gap-2 rounded-full border border-gold-500/14 bg-ivory-50/[0.42] px-3 py-2 text-ivory-50 shadow-[0_8px_22px_rgba(96,40,38,0.08)]">
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#236b5f] text-[#fff4f1]">
-              <Check className="h-3.5 w-3.5" />
-            </span>
-            <span className="min-w-0 text-xs leading-4">
-              <span className="block truncate font-semibold text-[#3d231f]">{option.groupLabel}: {option.optionLabel}</span>
-              {option.priceDelta ? <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(option.priceDelta, currencyCode)}</span> : null}
-            </span>
+      <div className="border-t border-gold-500/12 pt-3">
+        <div className="h-2 overflow-hidden rounded-full bg-ivory-50/[0.18]">
+          <div className="h-full rounded-full bg-[#236b5f] transition-all duration-300" style={{ width: `${progress}%` }} />
+        </div>
+        {reviewedOptions.length ? (
+          <div className="mt-3 flex gap-2 overflow-x-auto">
+            {groups.filter((group) => reviewedGroupIds.has(group.id)).map((group) => {
+              const label = selectedLabelForGroup(group, selected[group.id]);
+              const priceDelta = selectedOptions.filter((option) => option.groupId === group.id).reduce((sum, option) => sum + option.priceDelta, 0);
+              return (
+                <div key={group.id} className="flex min-w-36 max-w-48 items-center gap-2 rounded-full border border-gold-500/14 bg-ivory-50/[0.38] px-3 py-2 shadow-[0_8px_22px_rgba(96,40,38,0.08)]">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#236b5f] text-[#fff4f1]">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="min-w-0 text-xs leading-4">
+                    <span className="block truncate font-semibold text-[#3d231f]">{group.label}</span>
+                    <span className="block truncate text-[#7a5b55]">{label || "Reviewed"}</span>
+                    {priceDelta ? <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(priceDelta, currencyCode)}</span> : null}
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        ) : (
+          <p className="mt-3 rounded-[14px] border border-gold-500/12 bg-ivory-50/[0.28] px-3 py-2 text-sm text-[#7a5b55]">
+            Start with Material, then move through each group. The checked state appears as you review or change options.
+          </p>
+        )}
       </div>
     </div>
   );
+}
+
+function selectedLabelForGroup(group: CustomizationGroup, value: CustomizationSelectionValue | undefined) {
+  const optionIds = selectionIds(value);
+  const labels = optionIds
+    .map((optionId) => group.options.find((option) => option.id === optionId)?.label)
+    .filter(Boolean);
+  if (!labels.length) return "";
+  if (labels.length === 1) return labels[0] ?? "";
+  return `${labels.length} selected`;
 }
 
 function Assurance({ icon, text }: { icon: ReactNode; text: string }) {
