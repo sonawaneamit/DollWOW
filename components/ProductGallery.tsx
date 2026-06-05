@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
+import { ImagePreviewModal } from "./ImagePreviewModal";
 import type { Product, ProductImage } from "@/types/product";
 
 export function ProductGallery({ product }: { product: Product }) {
@@ -86,27 +87,9 @@ export function ProductGallery({ product }: { product: Product }) {
         </div>
       )}
       {isPreviewOpen && active && (
-        <ImagePreview imageUrl={active.url} alt={active.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
+        <ImagePreviewModal imageUrl={active.url} alt={active.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
-  );
-}
-
-function ImagePreview({ imageUrl, alt, onClose }: { imageUrl: string; alt: string; onClose: () => void }) {
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/92 p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Product image preview">
-      <button
-        type="button"
-        aria-label="Close image preview"
-        onClick={onClose}
-        className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-gold-500/25 bg-ink-900/80 text-ivory-50 transition hover:border-gold-300"
-      >
-        <X className="h-5 w-5" />
-      </button>
-      <div className="relative h-[88vh] w-full max-w-5xl overflow-hidden rounded-[24px] border border-gold-500/25 bg-ink-950 shadow-soft">
-        <Image src={imageUrl} alt={alt} fill sizes="95vw" className="object-contain" />
-      </div>
-    </div>
   );
 }
 
