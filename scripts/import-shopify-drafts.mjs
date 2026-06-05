@@ -266,7 +266,7 @@ function metafield(key, value, type = "single_line_text_field") {
 async function adminFetch(query, variables = {}) {
   const domain = process.env.SHOPIFY_STORE_DOMAIN.replace(/^https?:\/\//, "");
   const accessToken = await getAdminAccessToken(domain);
-  const response = await fetch(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
+  const response = await fetchWithRetry(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -280,6 +280,26 @@ async function adminFetch(query, variables = {}) {
     throw new Error(`Shopify Admin API request failed: ${message}`);
   }
   return payload.data;
+}
+
+async function fetchWithRetry(url, options, attempts = 4) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, options);
+      if (![429, 500, 502, 503, 504].includes(response.status) || attempt === attempts) return response;
+      lastError = new Error(`HTTP ${response.status}`);
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts) throw error;
+    }
+    await delay(750 * attempt);
+  }
+  throw lastError;
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function getAdminAccessToken(domain) {

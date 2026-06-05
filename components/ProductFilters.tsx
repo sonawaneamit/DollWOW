@@ -5,6 +5,8 @@ import { activeFilterCount, catalogFilterOptions, type CatalogFilters } from "@/
 const quickLinks = [
   { label: "All", href: "/shop" },
   { label: "WM Dolls", href: "/shop/wm-dolls" },
+  { label: "Angelkiss", href: "/shop/angelkiss-dolls" },
+  { label: "Irontech", href: "/shop/irontech-dolls" },
   { label: "Ready to ship", href: "/shop/ready-to-ship" },
   { label: "Factory order", href: "/shop/custom" },
   { label: "TPE", href: "/shop/tpe" },

@@ -10,7 +10,11 @@ export type CatalogFilters = {
 };
 
 export const catalogFilterOptions = {
-  brands: [{ label: "WM Dolls", value: "wm" }],
+  brands: [
+    { label: "WM Dolls", value: "wm" },
+    { label: "Angelkiss", value: "angelkiss" },
+    { label: "Irontech", value: "irontech" }
+  ],
   availability: [
     { label: "Ready to ship", value: "ready_to_ship" },
     { label: "Factory order", value: "custom" }
@@ -48,6 +52,10 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   customizable: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
   "wm-dolls": { title: "WM Dolls", filters: { brand: "wm" } },
   wm: { title: "WM Dolls", filters: { brand: "wm" } },
+  "angelkiss-dolls": { title: "Angelkiss Dolls", filters: { brand: "angelkiss" } },
+  angelkiss: { title: "Angelkiss Dolls", filters: { brand: "angelkiss" } },
+  "irontech-dolls": { title: "Irontech Dolls", filters: { brand: "irontech" } },
+  irontech: { title: "Irontech Dolls", filters: { brand: "irontech" } },
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
   "silicone-head": { title: "Silicone-head dolls", filters: { material: "silicone-head" } },
