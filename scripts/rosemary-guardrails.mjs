@@ -104,14 +104,15 @@ export function rewriteDollWowTitle(product) {
   const cup = cleanCup(product.specs?.cupSize || extractCup(sourceTitle));
   const name = extractDollName(sourceTitle);
   const prefix = name || brand || "DollWow";
-  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", "Companion Doll"].filter(Boolean);
+  const availability = product.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.customAvailable ? "Customizable" : "";
+  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", availability, "Companion Doll"].filter(Boolean);
 
   return preserveProductAcronyms(cleanText(`${prefix} ${details.join(" ")}`));
 }
 
 export function rewriteDollWowHandle(product, title = rewriteDollWowTitle(product)) {
   const brand = slugify(product.brandSlug || product.brand || "");
-  const base = slugify(title);
+  const base = slugify(title.replace(/\b(?:ready[-\s]?to[-\s]?ship|customizable)\b/gi, " "));
   const sourceHandle = slugify(product.sourceHandle || product.handle || "");
   const suffix = shortStableSuffix(sourceHandle || base);
   return uniqueSlugParts([brand, base, suffix]).join("-");

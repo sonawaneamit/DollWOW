@@ -154,7 +154,13 @@ async function runLocalScrape(startUrl, limit, brandSlug) {
   const products = [];
 
   for (const url of productUrls) {
-    const html = await fetchText(url);
+    let html = "";
+    try {
+      html = await fetchText(url);
+    } catch (error) {
+      console.warn(`Skipping ${url}: ${error.message}`);
+      continue;
+    }
     products.push({
       sourceUrl: url,
       sourceCollectionUrl: isProductUrl(startUrl) ? null : startUrl,
