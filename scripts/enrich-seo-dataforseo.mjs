@@ -105,6 +105,13 @@ async function fetchKeywordVolumes(keywords) {
   if (!response.ok || payload.status_code >= 40000) {
     throw new Error(payload.status_message || `DataForSEO request failed with HTTP ${response.status}.`);
   }
+  if (payload.tasks_error) {
+    const failedTask = payload.tasks?.find((task) => Number(task.status_code || 0) >= 40000);
+    const message = failedTask?.status_message || payload.status_message || "DataForSEO task failed.";
+    throw new Error(message);
+  }
+  const failedTask = payload.tasks?.find((task) => Number(task.status_code || 0) >= 40000);
+  if (failedTask) throw new Error(failedTask.status_message || "DataForSEO task failed.");
 
   const results = payload.tasks?.flatMap((task) => task.result || []) || [];
   return new Map(

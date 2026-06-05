@@ -10,6 +10,10 @@ const EXCLUSIVE_PATTERNS = [
   {
     type: "likeness-rights",
     regex: /\b(?:celebrity|influencer|model)\s+(?:likeness|collaboration|collab|inspired)\b|\blicensed\s+likeness\b/i
+  },
+  {
+    type: "restricted-school-theme",
+    regex: /\b(?:schoolgirl|school\s+girl|student|teacher|campus|classmate|college|uniform)\b/i
   }
 ];
 
@@ -77,11 +81,13 @@ export function toDollWowImportProduct(product) {
     : findRosemaryExclusiveSignals(product);
   const sourceTitle = cleanText(product.sourceTitle || product.title);
   const sourceHandle = cleanText(product.sourceHandle || product.handle);
+  const brand = canonicalBrandLabel(product.brand || product.brandSlug || "");
   const title = rewriteDollWowTitle(product);
   const handle = rewriteDollWowHandle(product, title);
 
   return {
     ...product,
+    brand,
     sourceTitle,
     sourceHandle,
     handle,
@@ -208,8 +214,21 @@ function inferMaterial(product) {
 }
 
 function cleanBrandLabel(value) {
-  const text = titleCase(cleanText(value).replace(/-/g, " "));
+  const text = titleCase(cleanText(canonicalBrandLabel(value)).replace(/-/g, " "));
   return preserveProductAcronyms(text);
+}
+
+function canonicalBrandLabel(value) {
+  const text = cleanText(value).replace(/-/g, " ");
+  const lower = text.toLowerCase();
+  if (/\bstarpery\b/.test(lower)) return "Starpery Dolls";
+  if (/\bpiper\b/.test(lower)) return "Piper Dolls";
+  if (/\btantaly\b/.test(lower)) return "Tantaly";
+  if (/^yl\b|\byl dolls?\b/.test(lower)) return "YL Dolls";
+  if (/\berovenus\b/.test(lower)) return "Erovenus";
+  if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "SE Doll";
+  if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6YE Dolls";
+  return text;
 }
 
 function preserveProductAcronyms(value) {

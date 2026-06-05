@@ -13,7 +13,14 @@ export const catalogFilterOptions = {
   brands: [
     { label: "WM Dolls", value: "wm" },
     { label: "Angelkiss", value: "angelkiss" },
-    { label: "Irontech", value: "irontech" }
+    { label: "Irontech", value: "irontech" },
+    { label: "Starpery", value: "starpery" },
+    { label: "Piper Dolls", value: "piper" },
+    { label: "Tantaly", value: "tantaly" },
+    { label: "YL Dolls", value: "yl" },
+    { label: "Erovenus", value: "erovenus" },
+    { label: "SE Doll", value: "sedoll" },
+    { label: "6YE Dolls", value: "6ye" }
   ],
   availability: [
     { label: "Ready to ship", value: "ready_to_ship" },
@@ -56,6 +63,21 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   angelkiss: { title: "Angelkiss Dolls", filters: { brand: "angelkiss" } },
   "irontech-dolls": { title: "Irontech Dolls", filters: { brand: "irontech" } },
   irontech: { title: "Irontech Dolls", filters: { brand: "irontech" } },
+  "starpery-dolls": { title: "Starpery Dolls", filters: { brand: "starpery" } },
+  starpery: { title: "Starpery Dolls", filters: { brand: "starpery" } },
+  "piper-dolls": { title: "Piper Dolls", filters: { brand: "piper" } },
+  piper: { title: "Piper Dolls", filters: { brand: "piper" } },
+  "tantaly-dolls": { title: "Tantaly Dolls", filters: { brand: "tantaly" } },
+  tantaly: { title: "Tantaly Dolls", filters: { brand: "tantaly" } },
+  "yl-dolls": { title: "YL Dolls", filters: { brand: "yl" } },
+  yl: { title: "YL Dolls", filters: { brand: "yl" } },
+  "erovenus-dolls": { title: "Erovenus Dolls", filters: { brand: "erovenus" } },
+  erovenus: { title: "Erovenus Dolls", filters: { brand: "erovenus" } },
+  "se-doll": { title: "SE Doll", filters: { brand: "sedoll" } },
+  "se-dolls": { title: "SE Doll", filters: { brand: "sedoll" } },
+  sedoll: { title: "SE Doll", filters: { brand: "sedoll" } },
+  "6ye-dolls": { title: "6YE Dolls", filters: { brand: "6ye" } },
+  "6ye": { title: "6YE Dolls", filters: { brand: "6ye" } },
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
   "silicone-head": { title: "Silicone-head dolls", filters: { material: "silicone-head" } },
@@ -89,7 +111,7 @@ export function compactFilters(filters: CatalogFilters): CatalogFilters {
 
 export function shopifyQueryForFilters(filters: CatalogFilters) {
   const parts = [];
-  if (filters.brand) parts.push(`tag:${tagForFilter(filters.brand)}`);
+  if (filters.brand) parts.push(shopifyBrandQuery(filters.brand));
   if (filters.availability) parts.push(`tag:${filters.availability}`);
   if (filters.material) parts.push(`tag:${tagForFilter(filters.material)}`);
   return parts.join(" AND ") || undefined;
@@ -127,6 +149,14 @@ function productMatchesMaterial(product: Product, material: string) {
 function tagForFilter(value: string) {
   if (value === "ready-to-ship") return "ready_to_ship";
   return value.toLowerCase().replace(/[^a-z0-9_]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function shopifyBrandQuery(brand: string) {
+  const target = tagForFilter(brand);
+  if (target === "yl") {
+    return "tag:yl AND -tag:wm AND -tag:irontech AND -tag:sedoll";
+  }
+  return `tag:${target}`;
 }
 
 function inRange(value: number | undefined, range: string) {

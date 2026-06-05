@@ -6,6 +6,7 @@ import { findRosemaryExclusiveSignals } from "./rosemary-guardrails.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
 let tokenCache = null;
+let publicationCache = null;
 
 await loadLocalEnv();
 
@@ -20,6 +21,9 @@ const inputPath = path.resolve(ROOT, args.input || (await findLatestPreview()));
 const execute = Boolean(args.execute);
 const updateExisting = Boolean(args["update-existing"]);
 const limit = Number(args.limit || 0);
+const productStatus = String(args.status || "DRAFT").toUpperCase();
+const shouldPublish = Boolean(args.publish);
+const publicationNamePattern = args.publication ? new RegExp(String(args.publication), "i") : /headless|online store/i;
 const parsedInput = JSON.parse(await fs.readFile(inputPath, "utf8"));
 const products = Array.isArray(parsedInput) ? parsedInput.slice(0, limit || undefined) : [];
 
@@ -64,6 +68,7 @@ for (const product of products) {
     if (variantId) {
       await updateInitialVariant(existing.id, variantId, product);
     }
+    if (shouldPublish) await publishProduct(updated.id);
     results.push({ handle: product.handle, status: "updated_existing", productId: updated.id, variantId });
     console.log(`Updated existing product ${product.handle} (${updated.id})`);
     continue;
@@ -74,8 +79,9 @@ for (const product of products) {
   if (variantId) {
     await updateInitialVariant(created.id, variantId, product);
   }
-  results.push({ handle: product.handle, status: "created_draft", productId: created.id, variantId });
-  console.log(`Created draft ${product.handle} (${created.id})`);
+  if (shouldPublish) await publishProduct(created.id);
+  results.push({ handle: product.handle, status: `created_${productStatus.toLowerCase()}`, productId: created.id, variantId });
+  console.log(`Created ${productStatus.toLowerCase()} product ${product.handle} (${created.id})`);
 }
 
 console.log(JSON.stringify({ count: results.length, results }, null, 2));
@@ -141,7 +147,7 @@ async function createDraftProduct(product) {
         vendor: product.vendor || "DollWow",
         productType: product.productType || "Adult doll",
         tags: product.tags || [],
-        status: "DRAFT",
+        status: productStatus,
         seo: {
           title: product.seo?.title || `${product.title} | DollWow`,
           description: product.seo?.description || plainText(product.description).slice(0, 155)
@@ -231,12 +237,47 @@ async function updateInitialVariant(productId, variantId, product) {
   if (error) throw new Error(`productVariantsBulkUpdate failed for ${product.handle}: ${formatUserError(error)}`);
 }
 
+async function publishProduct(productId) {
+  const publications = await getTargetPublications();
+  if (!publications.length) {
+    throw new Error(`No Shopify publications matched ${publicationNamePattern}.`);
+  }
+
+  const data = await adminFetch(
+    `mutation PublishProduct($id: ID!, $input: [PublicationInput!]!) {
+      publishablePublish(id: $id, input: $input) {
+        userErrors { field message }
+      }
+    }`,
+    {
+      id: productId,
+      input: publications.map((publication) => ({ publicationId: publication.id }))
+    }
+  );
+
+  const error = data.publishablePublish.userErrors[0];
+  if (error) throw new Error(`publishablePublish failed for ${productId}: ${formatUserError(error)}`);
+}
+
+async function getTargetPublications() {
+  if (publicationCache) return publicationCache;
+  const data = await adminFetch(
+    `query Publications {
+      publications(first: 50) {
+        nodes { id name }
+      }
+    }`
+  );
+  publicationCache = data.publications.nodes.filter((publication) => publicationNamePattern.test(publication.name || ""));
+  return publicationCache;
+}
+
 function productMetafields(product) {
   const extended = product.extended || {};
   return [
     metafield("brand", extended.brand),
     metafield("material", extended.material),
-    metafield("height_cm", extended.heightCm, "number_integer"),
+    metafield("height_cm", integerMetafieldValue(extended.heightCm), "number_integer"),
     metafield("weight_lb", extended.weightLb, "number_decimal"),
     metafield("cup_size", extended.cupSize),
     metafield("warehouse_country", extended.warehouseCountry),
@@ -261,6 +302,12 @@ function metafield(key, value, type = "single_line_text_field") {
     type,
     value: type === "boolean" ? String(Boolean(value)) : String(value)
   };
+}
+
+function integerMetafieldValue(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return value;
+  return Math.round(number);
 }
 
 async function adminFetch(query, variables = {}) {
@@ -414,7 +461,7 @@ function parseArgs(values) {
     const arg = values[index];
     if (!arg.startsWith("--")) continue;
     const key = arg.slice(2);
-    if (key === "help" || key === "execute" || key === "update-existing") {
+    if (key === "help" || key === "execute" || key === "update-existing" || key === "publish") {
       parsed[key] = true;
     } else {
       parsed[key] = values[index + 1];
@@ -450,7 +497,9 @@ function printHelp() {
   npm run import:shopify-drafts
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --limit 1 --execute
+  npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --status ACTIVE
+  npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --status ACTIVE --publish
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --update-existing
 
-Dry-runs by default. With --execute, creates Shopify products as DRAFT, attaches media, sets custom metafields, and updates the initial variant price/SKU. Add --update-existing to refresh title, SEO, description, variant price/SKU, and metafields for matching handles without duplicating media.`);
+Dry-runs by default. With --execute, creates Shopify products as DRAFT unless --status ACTIVE is passed, attaches media, sets custom metafields, and updates the initial variant price/SKU. Add --publish to publish matching Online Store/Headless publications. Add --update-existing to refresh title, SEO, description, variant price/SKU, and metafields for matching handles without duplicating media.`);
 }
