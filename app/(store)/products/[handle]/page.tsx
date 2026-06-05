@@ -165,9 +165,9 @@ function BuyerConfidence() {
     <section className="grid gap-4 rounded-[28px] border border-gold-500/18 bg-ink-800/64 p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr]">
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Confidence</p>
-        <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Trust without fake social proof</h2>
+        <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Clear support, real expectations</h2>
         <p className="mt-3 text-sm leading-6 text-ivory-400">
-          This category needs reassurance, but we should earn it plainly: real order process, real privacy cues, real verified reviews once they exist.
+          We keep the buying process practical and private, with clear order steps, careful option review, and verified customer feedback as DollWow orders come in.
         </p>
       </div>
       <div className="grid gap-3">
@@ -235,7 +235,7 @@ function ProductEducation({ product }: { product: NonNullable<Awaited<ReturnType
           <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Buyer guide</p>
           <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Clear answers before checkout</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">
-            This section is intentionally DollWow-written: supplier facts, privacy cues, and order-process education without copied vendor wording or fake social proof.
+            Review what is included, how optional upgrades affect the build, and what our team checks before your order moves into fulfillment.
           </p>
         </div>
         <Link
