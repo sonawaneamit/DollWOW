@@ -2,10 +2,6 @@ import type { Product } from "@/types/product";
 
 const now = new Date().toISOString();
 
-function image(url: string, altText: string) {
-  return { url, altText, width: null, height: null };
-}
-
 function priceRange(amount: string) {
   return {
     minVariantPrice: { amount, currencyCode: "USD" },
@@ -33,10 +29,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Ready-to-ship silicone doll",
     tags: ["ready-to-ship", "silicone", "warehouse-us", "premium", "zelex"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2023/10/172cm5ft8-E-cup-Silicone-Sex-Doll-%E2%80%93-Ida-Belle-8.jpg",
-      "Ida Belle 172cm silicone doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("ida-belle-172", "In-stock configuration", "2000", "Ready-to-ship")],
     priceRange: priceRange("2000"),
@@ -51,7 +44,7 @@ export const sampleProducts: Product[] = [
       deliveryEstimate: "Fast shipping from US warehouse",
       stockLastCheckedAt: now,
       customAvailable: false,
-      qcNote: "Demo item sourced from the RosemaryDoll in-stock USA catalog."
+      qcNote: "Demo item staged from supplier-provided in-stock catalog data."
     }
   },
   {
@@ -63,10 +56,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Ready-to-ship silicone doll",
     tags: ["ready-to-ship", "silicone", "warehouse-us", "compact", "zelex"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2023/10/160cm5ft3-J-cup-Silicone-Sex-Doll-%E2%80%93-Boris-Dunlop-10.jpg",
-      "Boris Dunlop 160cm silicone doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("boris-dunlop-160", "In-stock configuration", "2000", "Ready-to-ship")],
     priceRange: priceRange("2000"),
@@ -93,10 +83,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Ready-to-ship silicone doll",
     tags: ["ready-to-ship", "silicone", "warehouse-us", "premium", "zelex"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2023/11/160cm5ft3-J-cup-Silicone-Sex-Doll-%E2%80%93-Karen-Wilcox-9.jpg",
-      "Karen Wilcox 160cm silicone doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("karen-wilcox-160", "In-stock configuration", "2000", "Ready-to-ship")],
     priceRange: priceRange("2000"),
@@ -123,10 +110,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Ready-to-ship torso",
     tags: ["ready-to-ship", "silicone", "warehouse-us", "torso", "compact"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2025/07/106cm3ft6-F-cup-Silicone-Sex-Doll-Torso-%E2%80%93-Cecilia-20.jpg",
-      "Cecilia 101cm silicone torso"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("cecilia-101", "In-stock configuration", "1299", "Ready-to-ship")],
     priceRange: priceRange("1299"),
@@ -153,10 +137,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Custom TPE doll",
     tags: ["custom", "tpe", "best-value", "factory-order", "doll-castle"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2026/05/164cm5ft5-E-cup-TPE-Sex-Doll-Selena-2.jpg",
-      "Selena 164cm TPE custom doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("selena-164", "Base custom build", "1599", "Custom order")],
     priceRange: priceRange("1599"),
@@ -183,10 +164,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Custom TPE doll",
     tags: ["custom", "tpe", "best-value", "factory-order", "doll-castle"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2026/05/164cm5ft5-E-cup-TPE-Sex-Doll-Zara-2.jpg",
-      "Zara 164cm TPE custom doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("zara-164", "Base custom build", "1599", "Custom order")],
     priceRange: priceRange("1599"),
@@ -213,10 +191,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Custom silicone-head doll",
     tags: ["custom", "silicone-head", "premium", "factory-order", "doll-castle"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2026/05/164cm5ft5-E-cup-Silicone-Head-Sex-Doll-Rosalie-5.jpg",
-      "Rosalie 164cm silicone head custom doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("rosalie-164", "Premium custom build", "2299", "Custom order")],
     priceRange: priceRange("2299"),
@@ -243,10 +218,7 @@ export const sampleProducts: Product[] = [
     vendor: "DollWow",
     productType: "Custom silicone-head doll",
     tags: ["custom", "silicone-head", "premium", "factory-order", "starpery", "tall"],
-    featuredImage: image(
-      "https://www.rosemarydoll.com/wp-content/uploads/2026/05/171cm5ft7-D-cup-Silicone-Head-Sex-Doll-%E2%80%93-Jane-Bennet-4.jpg",
-      "Jane Bennet 171cm silicone head custom doll"
-    ),
+    featuredImage: null,
     images: [],
     variants: [defaultVariant("jane-bennet-171", "Premium custom build", "1949", "Custom order")],
     priceRange: priceRange("1949"),

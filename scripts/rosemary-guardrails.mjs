@@ -43,6 +43,8 @@ const SOURCE_COPY_PATTERNS = [
   /\bRosemary\b/gi
 ];
 
+const VISIBLE_NAME_REPLACEMENTS = new Map([["rosemary", "Rosalyn"]]);
+
 export function findRosemaryExclusiveSignals(product) {
   const text = reviewText(product);
   const identityText = reviewIdentityText(product);
@@ -108,7 +110,7 @@ export function rewriteDollWowTitle(product) {
   const material = titleCase(inferMaterial(product));
   const height = product.specs?.heightCm ? `${product.specs.heightCm}cm` : extractHeight(sourceTitle);
   const cup = cleanCup(product.specs?.cupSize || extractCup(sourceTitle));
-  const name = extractDollName(sourceTitle);
+  const name = safeVisibleDollName(extractDollName(sourceTitle));
   const prefix = name || brand || "DollWow";
   const availability = product.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.customAvailable ? "Customizable" : "";
   const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", availability, "Companion Doll"].filter(Boolean);
@@ -191,6 +193,11 @@ function extractDollName(title) {
   if (dashName) return titleCase(cleanText(dashName.replace(/\b(?:wm|zelex|irontech|anglekiss|dolls?)\b/gi, "")));
   const trailingName = clean.match(/\b(?:Doll|Torso)\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?)$/)?.[1];
   return trailingName ? titleCase(trailingName) : "";
+}
+
+function safeVisibleDollName(name) {
+  const clean = cleanText(name);
+  return VISIBLE_NAME_REPLACEMENTS.get(clean.toLowerCase()) || clean;
 }
 
 function extractHeight(title) {
