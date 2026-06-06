@@ -290,7 +290,6 @@ function normalizeCustomizationGroups(groups) {
       return {
         id: group.id,
         label: group.label,
-        description: `${group.label} options are captured from supplier-provided configuration data. Final compatibility and pricing are confirmed before fulfillment.`,
         required: !multiple,
         selectionMode: multiple ? "multiple" : "single",
         display: group.display === "swatches" ? "swatches" : "cards",

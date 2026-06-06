@@ -15,7 +15,7 @@ export type CustomizationOption = {
 export type CustomizationGroup = {
   id: string;
   label: string;
-  description: string;
+  description?: string;
   required?: boolean;
   selectionMode?: "single" | "multiple";
   display: "cards" | "swatches" | "compact";

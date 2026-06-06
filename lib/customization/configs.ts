@@ -166,7 +166,7 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
     return {
       id: "imported",
       brandLabel: product.extended.brand ?? product.vendor,
-      leadTimeNote: "Supplier option references are captured from the imported catalog. Final compatibility and pricing are confirmed before fulfillment.",
+      leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
       groups: importedGroups,
       rules: []
     };

@@ -228,9 +228,11 @@ export function ProductOptions({ product }: { product: Product }) {
                 {isReviewing ? `${stepCount}/${stepCount}` : `${activeGroupIndex + 1}/${stepCount}`}
               </span>
             </div>
-            <p className="mt-2 text-sm leading-5 text-ivory-400">
-              {isReviewing ? "Final specs are passed to Shopify as order notes and confirmed by our team before fulfillment." : activeGroup.description}
-            </p>
+            {(isReviewing || activeGroup.description) && (
+              <p className="mt-2 text-sm leading-5 text-ivory-400">
+                {isReviewing ? "Final specs are passed to Shopify as order notes and confirmed by our team before fulfillment." : activeGroup.description}
+              </p>
+            )}
           </div>
 
           {product.variants.length > 1 && (
