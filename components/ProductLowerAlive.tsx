@@ -10,11 +10,12 @@ import {
   Camera,
   Check,
   ChevronDown,
+  Clock3,
   ClipboardCheck,
   CreditCard,
   Eye,
   HelpCircle,
-  MessageCircle,
+  Heart,
   PackageCheck,
   Scale,
   ShieldCheck,
@@ -53,7 +54,6 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
   const [openFaq, setOpenFaq] = useState(0);
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
   const steps = useMemo(() => orderSteps(product, readyToShip), [product, readyToShip]);
-  const customGroupCount = product.extended.customizationGroups?.length ?? 0;
   const specs = productSpecs(product);
   const price = product.priceRange.minVariantPrice;
 
@@ -67,7 +67,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
 
   return (
     <div ref={rootRef} className="alive-product-lower">
-      <AliveBand tone="deep">
+      <AliveBand tone="deep" className="alive-order-band">
         <div className="alive-band-head alive-reveal">
           <div>
             <p className="alive-eyebrow">
@@ -81,17 +81,17 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
                 : "Custom builds are reviewed by our team before anything is made or shipped, so the wait feels clear from the start."}
             </p>
           </div>
-          <Link href="/support" className="alive-pill">
-            <MessageCircle className="h-4 w-4" />
-            Ask a question
-          </Link>
+          <span className="alive-pill">
+            <Clock3 className="h-4 w-4" />
+            {readyToShip ? product.extended.deliveryEstimate ?? "Warehouse timing confirmed" : `About ${product.extended.deliveryEstimate ?? "4-8 weeks"}, start to finish`}
+          </span>
         </div>
 
         <div className="alive-stats alive-reveal" data-delay="1">
-          <Stat value={1} suffix="" label="Specialist review" />
-          <Stat value={steps.length} suffix="" label="Order checkpoints" />
-          <Stat value={customGroupCount} suffix="" label="Build sections" />
-          <Stat value={0} suffix="" label="Product words on the box" />
+          <Stat kicker="Human review" value={1} label="Specialist checks your build by hand, every time" />
+          <Stat kicker="Before it ships" value={readyToShip ? 4 : 6} suffix="checks" label="Compatibility, pricing, timing, QC, and packaging" />
+          <Stat kicker="QC photos" value={100} suffix="%" label="Private approval shots when the factory provides them" />
+          <Stat kicker="On the box" value={0} suffix="logos" label="Plain, unmarked, fully tracked packaging" />
         </div>
 
         <div className="alive-timeline-wrap alive-reveal" data-delay="2">
@@ -105,7 +105,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
                 <p className="alive-step-when">{step.when}</p>
                 <h3>
                   {step.label}
-                  {step.featured && <span>Buyer favorite</span>}
+                  {step.featured && <span>Buyers love this</span>}
                 </h3>
                 <p>{step.detail}</p>
               </article>
@@ -329,20 +329,19 @@ function useAliveMotion(rootRef: React.RefObject<HTMLDivElement | null>) {
       if (counter.dataset.done) return;
       counter.dataset.done = "true";
       const target = Number(counter.dataset.countTo ?? "0");
-      const suffix = counter.dataset.countSuffix ?? "";
       const duration = Number(counter.dataset.countDuration ?? "1200");
 
       if (reduce) {
-        counter.textContent = `${target}${suffix}`;
+        counter.textContent = `${target}`;
         return;
       }
 
       const start = performance.now();
       const tick = (now: number) => {
         const progress = Math.min(1, (now - start) / duration);
-        counter.textContent = `${Math.round(target * easeOutCubic(progress))}${suffix}`;
+        counter.textContent = `${Math.round(target * easeOutCubic(progress))}`;
         if (progress < 1) requestAnimationFrame(tick);
-        else counter.textContent = `${target}${suffix}`;
+        else counter.textContent = `${target}`;
       };
       requestAnimationFrame(tick);
     };
@@ -387,17 +386,18 @@ function useAliveMotion(rootRef: React.RefObject<HTMLDivElement | null>) {
   }, [rootRef]);
 }
 
-function AliveBand({ tone, children }: { tone: "deep" | "rose" | "blush"; children: ReactNode }) {
+function AliveBand({ tone, children, className = "" }: { tone: "deep" | "rose" | "blush"; children: ReactNode; className?: string }) {
   return (
-    <section data-tone={tone} className="tone-section alive-band">
+    <section data-tone={tone} className={`tone-section alive-band ${className}`}>
       <div className="tone-inner alive-inner">{children}</div>
     </section>
   );
 }
 
-function Stat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+function Stat({ kicker, value, suffix = "", label }: { kicker: string; value: number; suffix?: string; label: string }) {
   return (
     <div className="alive-stat">
+      <p className="alive-stat-kicker">{kicker}</p>
       <strong>
         <span data-count-to={value} data-count-suffix={suffix}>
           0
@@ -462,19 +462,20 @@ function SimilarDollCard({ product, reference }: { product: Product; reference: 
 function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   if (readyToShip) {
     return [
-      { label: "Order placed", detail: "Your order is received through secure Shopify checkout.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
-      { label: "Team review", detail: "We check availability, shipping details, and any order notes.", when: "1 business day", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
-      { label: "Warehouse release", detail: "The doll is prepared for discreet shipment from the warehouse.", when: product.extended.deliveryEstimate ?? "Fast timing", icon: <PackageCheck className="h-5 w-5" /> },
-      { label: "Plain-box shipping", detail: "Tracking is shared after the package leaves in plain outer packaging.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
+      { label: "Order placed", detail: "Your order details are captured privately. Card shows a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
+      { label: "Specialist QC review", detail: "A real person checks availability, shipping timing, and order notes before release.", when: "1 business day", icon: <ShieldCheck className="h-5 w-5" /> },
+      { label: "Warehouse release", detail: "The warehouse prepares the doll for plain-box shipping.", when: product.extended.deliveryEstimate ?? "Fast timing", icon: <PackageCheck className="h-5 w-5" />, featured: true },
+      { label: "Plain-box shipping", detail: "Unmarked packaging, fully tracked. We share tracking after release.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
     ];
   }
 
   return [
-    { label: "Order placed", detail: "Your selected build is saved for private order review.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
-    { label: "Specialist review", detail: "We check compatibility, price, timing, and every selected option.", when: "1-2 days", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
-    { label: "Built to order", detail: "The factory prepares the configuration you chose.", when: product.extended.deliveryEstimate ?? "Factory timing", icon: <Sparkles className="h-5 w-5" /> },
-    { label: "QC photos", detail: "If factory photos are offered for this build, we can request them before release.", when: "Before ship", icon: <Camera className="h-5 w-5" /> },
-    { label: "Plain-box shipping", detail: "Tracking is shared after the package leaves in plain outer packaging.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
+    { label: "Order placed", detail: "Your build details are captured as a private order note. Card shows a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
+    { label: "Specialist QC review", detail: "A real person checks compatibility, pricing, timing, and order notes before anything is made.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
+    { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Sparkles className="h-5 w-5" /> },
+    { label: "Private QC photos", detail: "Where available, we request supplier photos for you to approve before release.", when: "Before ship", icon: <Eye className="h-5 w-5" />, featured: true },
+    { label: "Plain-box shipping", detail: "Unmarked packaging, fully tracked. We share tracking after release.", when: "3-5 days", icon: <Truck className="h-5 w-5" /> },
+    { label: "Delivered", detail: "At your door, discreetly. Nothing on the box gives it away.", when: "Done", icon: <Heart className="h-5 w-5" /> }
   ];
 }
 
