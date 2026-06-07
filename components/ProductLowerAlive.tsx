@@ -40,11 +40,11 @@ type TimelineStep = {
 
 const marqueeItems = [
   "Discreet checkout",
-  "Team-reviewed specs",
+  "Specialist order review",
   "Plain-box delivery",
-  "Price-match request",
-  "Factory-order clarity",
-  "Private support"
+  "Private QC options",
+  "Clear factory timing",
+  "Price-match help"
 ];
 
 export function ProductLowerAlive({ product, similarProducts }: Props) {
@@ -72,26 +72,26 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
           <div>
             <p className="alive-eyebrow">
               <span />
-              After checkout
+              After you order
             </p>
-            <h2>What happens next</h2>
+            <h2>No guessing. Here&apos;s every step.</h2>
             <p className="alive-lead">
               {readyToShip
-                ? "A ready-to-ship order still gets a practical team check before warehouse release."
-                : "Your build moves through a short review path before production and shipping."}
+                ? "Your order is checked by our team before it moves to warehouse release and discreet shipping."
+                : "Custom builds are reviewed by our team before anything is made or shipped, so the wait feels clear from the start."}
             </p>
           </div>
           <Link href="/support" className="alive-pill">
             <MessageCircle className="h-4 w-4" />
-            Ask our team
+            Ask a question
           </Link>
         </div>
 
         <div className="alive-stats alive-reveal" data-delay="1">
-          <Stat value={1} suffix="" label="Team review before fulfillment" />
-          <Stat value={steps.length} suffix="" label="Order checkpoints shown" />
-          <Stat value={customGroupCount} suffix="" label="Customization groups when available" />
-          <Stat value={0} suffix="" label="Invented testimonials" />
+          <Stat value={1} suffix="" label="Specialist review" />
+          <Stat value={steps.length} suffix="" label="Order checkpoints" />
+          <Stat value={customGroupCount} suffix="" label="Build sections" />
+          <Stat value={0} suffix="" label="Product words on the box" />
         </div>
 
         <div className="alive-timeline-wrap alive-reveal" data-delay="2">
@@ -132,9 +132,9 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
               <span />
               Confidence
             </p>
-            <h2>Premium without making it fussy</h2>
+            <h2>Confidence before you commit</h2>
             <p className="alive-lead">
-              A cleaner buying path, visible checkpoints, and private support are where DollWow should stand apart when product catalogs look similar.
+              Clear timing, discreet delivery, and specialist review help you order with confidence before a custom build begins.
             </p>
             <div className="alive-seal" aria-hidden="true">
               <svg viewBox="0 0 120 120" className="alive-seal-ring">
@@ -142,7 +142,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
                   <path id="alive-seal-path" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" />
                 </defs>
                 <text>
-                  <textPath href="#alive-seal-path">DollWow reviewed • private by default • </textPath>
+                  <textPath href="#alive-seal-path">Discreet order • team checked • </textPath>
                 </text>
               </svg>
               <div className="alive-seal-core">
@@ -155,19 +155,19 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
             <ReassuranceCard
               icon={<BadgeCheck className="h-5 w-5" />}
               title="Specs are checked"
-              text="Options, timing, and supplier notes are reviewed before fulfillment."
+              text="Your selected options, timing, and fulfillment notes are reviewed before the order moves forward."
               delay={1}
             />
             <ReassuranceCard
               icon={<ShieldCheck className="h-5 w-5" />}
-              title="Privacy stays practical"
-              text="Discreet checkout cues, plain packaging expectations, and direct support."
+              title="Discreet from checkout to delivery"
+              text="Billing, order updates, and packaging are handled with privacy in mind."
               delay={2}
             />
             <ReassuranceCard
               icon={<Scale className="h-5 w-5" />}
-              title="Comparison help is built in"
-              text="Send a competitor link and our team can verify the match before an offer."
+              title="Found the same doll elsewhere?"
+              text="Send us the listing and we can compare the match, delivery, and final price."
               delay={3}
             />
           </div>
@@ -181,21 +181,21 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
               <span />
               Buyer guide
             </p>
-            <h2>Quick checks before you choose</h2>
+            <h2>Know what you&apos;re choosing</h2>
           </div>
           <Link href="/compare" className="alive-pill">
             <Scale className="h-4 w-4" />
-            Check a price
+            Compare a price
           </Link>
         </div>
 
         <div className="alive-guide-grid">
-          <GuideCard icon={<PackageCheck className="h-5 w-5" />} kicker="Base build" title="What is included" text="Start with the supplier base configuration, then change only what matters." />
-          <GuideCard icon={<Sparkles className="h-5 w-5" />} kicker="Add-ons" title="Paid options" text="Upgrade costs appear in the builder when option data is available." />
-          <GuideCard icon={<Eye className="h-5 w-5" />} kicker="Visuals" title="Option references" text="Image tiles help make customization easier to scan." />
-          <GuideCard icon={<Camera className="h-5 w-5" />} kicker="Before ship" title="QC photos" text="Where suppliers support them, photos can be requested before release." />
-          <GuideCard icon={<Truck className="h-5 w-5" />} kicker="Delivery" title="Factory or warehouse" text="The page separates ready-to-ship timing from made-to-order timing." />
-          <GuideCard icon={<HelpCircle className="h-5 w-5" />} kicker="Support" title="Need a second look?" text="Send the link, budget, or option question and our team can help." />
+          <GuideCard icon={<PackageCheck className="h-5 w-5" />} kicker="Base build" title="Included setup" text="Start with the standard factory build, then personalize the details that matter to you." />
+          <GuideCard icon={<Sparkles className="h-5 w-5" />} kicker="Add-ons" title="Upgrade pricing" text="Paid options show their added cost before you continue to checkout." />
+          <GuideCard icon={<Eye className="h-5 w-5" />} kicker="Visuals" title="Reference images" text="Option photos and swatches make skin, hair, eyes, and details easier to compare." />
+          <GuideCard icon={<Camera className="h-5 w-5" />} kicker="Before ship" title="QC photo requests" text="For custom builds, we can request factory QC photos before the order is released." />
+          <GuideCard icon={<Truck className="h-5 w-5" />} kicker="Delivery" title="Factory or warehouse" text="Ready-to-ship and made-to-order dolls are labeled clearly, with timing shown up front." />
+          <GuideCard icon={<HelpCircle className="h-5 w-5" />} kicker="Support" title="Need a second look?" text="Send the product, budget, or option question and our team can help you decide." />
         </div>
       </AliveBand>
 
@@ -206,8 +206,8 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
               <span />
               Private questions
             </p>
-            <h2>FAQ, kept short</h2>
-            <p className="alive-lead">The builder should do the heavy lifting. These are only the checkout questions people tend to ask.</p>
+            <h2>Questions before checkout</h2>
+            <p className="alive-lead">A few practical answers before you place a private, high-consideration order.</p>
           </div>
 
           <div className="alive-faq alive-reveal" data-delay="1">
@@ -233,15 +233,15 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
           <section className="alive-review-card alive-reveal">
             <p className="alive-eyebrow">
               <span />
-              Verified feedback
+              Reviews
             </p>
-            <h2>No fake reviews</h2>
+            <h2>Real buyer feedback only</h2>
             <p>
-              Buyer reviews will appear after verified DollWow orders. Until then, the page focuses on specs, clear options, and team review.
+              We show reviews only after verified DollWow orders. For now, this page focuses on product details, privacy, and order support.
             </p>
             <div className="alive-review-proof">
               <Check className="h-5 w-5" />
-              <span>Launch policy: real orders only</span>
+              <span>Verified orders only</span>
             </div>
           </section>
 
@@ -272,7 +272,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
               <span />
               Similar dolls
             </p>
-            <h2>Compare the nearby options</h2>
+            <h2>Similar dolls to compare</h2>
           </div>
           <div className="alive-rail-actions">
             <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous similar dolls">
@@ -296,11 +296,11 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
             <span />
             Ready when you are
           </p>
-          <h2>Choose the build. We’ll check the details.</h2>
-          <p>{formatMoney(price.amount, price.currencyCode)} base price before optional upgrades.</p>
+          <h2>Make your choice with confidence.</h2>
+          <p>Starting at {formatMoney(price.amount, price.currencyCode)} before optional upgrades.</p>
           <div>
             <Link href="#build-studio" className="alive-primary-link">
-              Customize this doll
+              Customize her
             </Link>
             <Link href="/compare" className="alive-secondary-link">
               Found it cheaper?
@@ -462,19 +462,19 @@ function SimilarDollCard({ product, reference }: { product: Product; reference: 
 function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   if (readyToShip) {
     return [
-      { label: "Order placed", detail: "Secure Shopify checkout captures the order.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
-      { label: "Team review", detail: "We check the product, address, timing, and fulfillment notes.", when: "1 business day", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
-      { label: "Warehouse release", detail: "Inventory timing and discreet packaging are confirmed.", when: product.extended.deliveryEstimate ?? "Fast timing", icon: <PackageCheck className="h-5 w-5" /> },
-      { label: "Plain-box shipping", detail: "Tracking is shared after the order leaves.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
+      { label: "Order placed", detail: "Your order is received through secure Shopify checkout.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
+      { label: "Team review", detail: "We check availability, shipping details, and any order notes.", when: "1 business day", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
+      { label: "Warehouse release", detail: "The doll is prepared for discreet shipment from the warehouse.", when: product.extended.deliveryEstimate ?? "Fast timing", icon: <PackageCheck className="h-5 w-5" /> },
+      { label: "Plain-box shipping", detail: "Tracking is shared after the package leaves in plain outer packaging.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
     ];
   }
 
   return [
-    { label: "Order placed", detail: "Your selected build is captured for private review.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
-    { label: "Specialist review", detail: "Compatibility, pricing, timing, and supplier notes are checked.", when: "1-2 days", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
-    { label: "Built to order", detail: "The supplier prepares the configuration you chose.", when: product.extended.deliveryEstimate ?? "Factory timing", icon: <Sparkles className="h-5 w-5" /> },
-    { label: "QC photos", detail: "Where available, supplier photos can be requested before release.", when: "Before ship", icon: <Camera className="h-5 w-5" /> },
-    { label: "Plain-box shipping", detail: "Tracking is shared after final release.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
+    { label: "Order placed", detail: "Your selected build is saved for private order review.", when: "Today", icon: <CreditCard className="h-5 w-5" /> },
+    { label: "Specialist review", detail: "We check compatibility, price, timing, and every selected option.", when: "1-2 days", icon: <ClipboardCheck className="h-5 w-5" />, featured: true },
+    { label: "Built to order", detail: "The factory prepares the configuration you chose.", when: product.extended.deliveryEstimate ?? "Factory timing", icon: <Sparkles className="h-5 w-5" /> },
+    { label: "QC photos", detail: "If factory photos are offered for this build, we can request them before release.", when: "Before ship", icon: <Camera className="h-5 w-5" /> },
+    { label: "Plain-box shipping", detail: "Tracking is shared after the package leaves in plain outer packaging.", when: "Final step", icon: <Truck className="h-5 w-5" /> }
   ];
 }
 
@@ -482,11 +482,11 @@ function faqItems(product: Product, readyToShip: boolean) {
   return [
     {
       question: "Can I buy the default build?",
-      answer: "Yes. Leave the builder on the default selections and continue to checkout. Our team still reviews the order details before fulfillment."
+      answer: "Yes. Keep the default selections and continue to checkout. Our team still reviews the order details before fulfillment."
     },
     {
       question: "What if I choose paid options?",
-      answer: "The builder adds option pricing where supplier data is available. Final compatibility and timing are checked before production or shipment."
+      answer: "Paid options show their added cost before checkout. Our team checks compatibility and timing before production or shipment."
     },
     {
       question: readyToShip ? "Is this ready to ship?" : "How long does a custom order take?",
@@ -496,7 +496,7 @@ function faqItems(product: Product, readyToShip: boolean) {
     },
     {
       question: "Can DollWow check another seller’s price?",
-      answer: "Yes. Use the comparison flow and send the link. We verify the seller, product match, total delivered price, freshness, and margin rules."
+      answer: "Yes. Send us the listing and we can compare the seller, product match, delivery terms, and final delivered price."
     }
   ];
 }

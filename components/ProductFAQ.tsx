@@ -12,15 +12,15 @@ const faqs = [
   },
   {
     question: "What will appear on my billing statement?",
-    answer: "Checkout runs through Shopify. We avoid product-descriptive language in the storefront flow and keep billing/discretion messaging clear before purchase."
+    answer: "Checkout runs through Shopify with discreet wording. We keep billing and order messages plain before purchase."
   },
   {
     question: "What happens after I order a custom build?",
-    answer: "Our team reviews the selected options, checks compatibility, confirms timing, and follows up if anything needs clarification before the supplier proceeds."
+    answer: "Our team reviews the selected options, checks compatibility, confirms timing, and follows up if anything needs clarification before production begins."
   },
   {
     question: "Do I get QC photos before shipment?",
-    answer: "For custom builds where supplier QC photos are available, we request private QC photos before shipment so you can confirm the final look."
+    answer: "For custom builds with factory QC photos, we request them privately before shipment so you can confirm the final look."
   },
   {
     question: "What if the package arrives damaged?",

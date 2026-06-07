@@ -4,7 +4,7 @@ import type { BrandCustomizationConfig, CustomizationGroup, CustomizationRule } 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
   label: "Skin tone",
-  description: "Choose the closest supplier skin reference. Final tone can vary slightly by batch and material.",
+  description: "Choose the closest factory skin reference. Final tone can vary slightly by batch and material.",
   required: true,
   display: "swatches",
   options: [
@@ -18,7 +18,7 @@ const skinTones: CustomizationGroup = {
 const eyeColor: CustomizationGroup = {
   id: "eye-color",
   label: "Eye color",
-  description: "Visual eye references are supplier-style placeholders until brand-specific images are loaded.",
+  description: "Use these color references to choose the eye look you prefer.",
   required: true,
   display: "swatches",
   options: [
@@ -139,7 +139,7 @@ const configs = {
   starpery: {
     id: "starpery",
     brandLabel: "Starpery Dolls",
-    leadTimeNote: "Starpery custom builds are confirmed with supplier photos before production proceeds.",
+    leadTimeNote: "Starpery custom builds are confirmed with factory photos before production begins.",
     groups: [skinTones, eyeColor, wigFinish, bodyUpgrades, careAddOns],
     rules: []
   },

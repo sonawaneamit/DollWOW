@@ -16,7 +16,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
         <div>
           <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Doll Warehouse</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Ready-to-ship inventory</h1>
-          <p className="mt-3 max-w-2xl text-ivory-400">Warehouse location, delivery estimate, and stock freshness are shown clearly. Final stock is verified before checkout.</p>
+          <p className="mt-3 max-w-2xl text-ivory-400">Warehouse location and delivery estimates are shown clearly. Final stock is verified before checkout.</p>
           <p className="mt-3 text-sm font-semibold text-gold-200">{filteredProducts.length} ready-to-ship dolls</p>
         </div>
         <ProductFilters filters={filters} action="/warehouse" resetHref="/warehouse" />

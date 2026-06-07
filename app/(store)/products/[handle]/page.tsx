@@ -117,5 +117,5 @@ function productIntro(description: string) {
   const firstSpecIndex = cleaned.search(/\bHeight:|\bBrand:|\bWe provide\b/i);
   const intro = firstSpecIndex > 40 ? cleaned.slice(0, firstSpecIndex).trim() : cleaned;
   if (intro.length > 260) return `${intro.slice(0, 257).trim()}...`;
-  return intro || "A DollWow catalog item with details, availability, and configuration confirmed before fulfillment.";
+  return intro || "A DollWow product with details, availability, and options confirmed before fulfillment.";
 }
