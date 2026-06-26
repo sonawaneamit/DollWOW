@@ -64,7 +64,9 @@ export async function createPriceMatchDiscountCode(input: {
   code: string;
   startsAt: string;
   endsAt: string;
-  percentage: number;
+  percentage?: number;
+  amountOff?: number;
+  currencyCode?: string;
   productVariantIds: string[];
 }) {
   const data = await adminFetch<{
@@ -87,7 +89,14 @@ export async function createPriceMatchDiscountCode(input: {
         endsAt: input.endsAt,
         customerSelection: { all: true },
         customerGets: {
-          value: { percentage: input.percentage / 100 },
+          value: input.amountOff
+            ? {
+                discountAmount: {
+                  amount: input.amountOff,
+                  appliesOnEachItem: false
+                }
+              }
+            : { percentage: (input.percentage ?? 0) / 100 },
           items: { products: { productVariantsToAdd: input.productVariantIds } }
         },
         combinesWith: {
@@ -104,6 +113,42 @@ export async function createPriceMatchDiscountCode(input: {
   const error = data.discountCodeBasicCreate.userErrors[0];
   if (error) throw new Error(error.message);
   return data.discountCodeBasicCreate.codeDiscountNode;
+}
+
+export async function getProductAdminMetafieldsByHandle(handle: string) {
+  try {
+    const data = await adminFetch<{
+      productByHandle: {
+        measurements?: { value?: string | null } | null;
+        headModel?: { value?: string | null } | null;
+      } | null;
+    }>(
+      `query ProductAdminMetafields($handle: String!) {
+        productByHandle(handle: $handle) {
+          measurements: metafield(namespace: "custom", key: "measurements") { value }
+          headModel: metafield(namespace: "custom", key: "head_model") { value }
+        }
+      }`,
+      { handle }
+    );
+
+    const measurements = parseJson<Record<string, string>>(data.productByHandle?.measurements?.value);
+    const headModel = data.productByHandle?.headModel?.value || undefined;
+
+    if (!measurements && !headModel) return null;
+    return { measurements, headModel };
+  } catch {
+    return null;
+  }
+}
+
+function parseJson<T>(value?: string | null) {
+  if (!value) return undefined;
+  try {
+    return JSON.parse(value) as T;
+  } catch {
+    return undefined;
+  }
 }
 
 export { API_VERSION as SHOPIFY_ADMIN_API_VERSION };

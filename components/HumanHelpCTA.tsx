@@ -16,7 +16,7 @@ export function HumanHelpCTA({ source = "site" }: { source?: string }) {
           <GoldButton href={`/support?source=${source}`} variant="secondary">
             <MessageCircle className="h-4 w-4" /> Ask a question
           </GoldButton>
-          <GoldButton href="mailto:support@dollwow.com">
+          <GoldButton href="mailto:hello@dollwow.com">
             <Mail className="h-4 w-4" /> Email support
           </GoldButton>
         </div>

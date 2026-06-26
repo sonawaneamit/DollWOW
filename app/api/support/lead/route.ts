@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { analyticsEvents, trackServerEvent } from "@/lib/analytics/events";
+import { sendSupportLeadAdminAlert } from "@/lib/email/adminAlerts";
 import { saveSupportLead } from "@/lib/supabase/repositories";
 
 const schema = z.object({
@@ -20,6 +21,14 @@ export async function POST(request: Request) {
       email: input.email,
       question: input.question,
       productIds: input.productIds
+    });
+
+    await sendSupportLeadAdminAlert({
+      id: lead?.id ?? null,
+      sourceFlow: input.sourceFlow,
+      name: input.name,
+      email: input.email,
+      question: input.question
     });
 
     trackServerEvent(analyticsEvents.askHumanHelp, {

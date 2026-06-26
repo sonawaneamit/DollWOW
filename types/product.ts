@@ -39,11 +39,19 @@ export type Product = {
 };
 
 export type ProductExtended = {
+  catalogIdentityKey?: string;
+  catalogBodyIdentityKey?: string;
+  headModel?: string;
+  displayName?: string;
+  bodyType?: "male" | "female" | "unknown";
   brand?: string;
+  sourceTitle?: string;
+  sourceHandle?: string;
   material?: string;
   heightCm?: number;
   weightLb?: number;
   cupSize?: string;
+  measurements?: Record<string, string>;
   warehouseCountry?: string;
   stockStatus?: "ready_to_ship" | "custom" | "check_stock";
   deliveryEstimate?: string;

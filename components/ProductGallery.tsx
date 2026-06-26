@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { ImagePreviewModal } from "./ImagePreviewModal";
+import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product, ProductImage } from "@/types/product";
 
 export function ProductGallery({ product }: { product: Product }) {
@@ -13,6 +14,7 @@ export function ProductGallery({ product }: { product: Product }) {
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const active = images[index] ?? null;
   const hasControls = images.length > 1;
+  const displayTitle = productPublicTitle(product);
 
   function move(direction: -1 | 1) {
     setIndex((current) => (current + direction + images.length) % images.length);
@@ -25,7 +27,7 @@ export function ProductGallery({ product }: { product: Product }) {
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
               src={active.url}
-              alt={active.altText ?? product.title}
+              alt={displayTitle}
               fill
               sizes="(min-width: 1024px) 44vw, 94vw"
               priority
@@ -35,7 +37,7 @@ export function ProductGallery({ product }: { product: Product }) {
         ) : (
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
             <ImageIcon className="mb-4 h-10 w-10 text-gold-300" />
-            <p className="text-sm font-semibold text-ivory-50">{product.title}</p>
+            <p className="text-sm font-semibold text-ivory-50">{displayTitle}</p>
             <p className="mt-2 text-xs text-ivory-600">Product image appears when Shopify media is connected.</p>
           </div>
         )}
@@ -81,13 +83,13 @@ export function ProductGallery({ product }: { product: Product }) {
                 imageIndex === index ? "border-gold-300" : "border-gold-500/14 hover:border-gold-300/70"
               )}
             >
-              <Image src={image.url} alt={image.altText ?? product.title} fill sizes="96px" className="object-cover noir-media" loading="lazy" unoptimized />
+              <Image src={image.url} alt={displayTitle} fill sizes="96px" className="object-cover noir-media" loading="lazy" unoptimized />
             </button>
           ))}
         </div>
       )}
       {isPreviewOpen && active && (
-        <ImagePreviewModal imageUrl={active.url} alt={active.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
+        <ImagePreviewModal imageUrl={active.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
   );

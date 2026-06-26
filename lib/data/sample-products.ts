@@ -44,7 +44,7 @@ export const sampleProducts: Product[] = [
       deliveryEstimate: "Fast shipping from US warehouse",
       stockLastCheckedAt: now,
       customAvailable: false,
-      qcNote: "Demo item staged from supplier-provided in-stock catalog data."
+      qcNote: "Demo item staged from reviewed in-stock catalog data."
     }
   },
   {

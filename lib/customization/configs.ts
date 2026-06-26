@@ -167,7 +167,7 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
       id: "imported",
       brandLabel: product.extended.brand ?? product.vendor,
       leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
-      groups: importedGroups,
+      groups: uniqueCustomizationGroups(importedGroups),
       rules: []
     };
   }
@@ -176,4 +176,28 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
   if (text.includes("doll castle")) return configs.dollCastle;
   if (text.includes("starpery")) return configs.starpery;
   return configs.generic;
+}
+
+function uniqueCustomizationGroups(groups: CustomizationGroup[]) {
+  const seen = new Map<string, number>();
+
+  return groups.map((group) => {
+    const baseId = group.id || slugifyOptionGroup(group.label);
+    const count = seen.get(baseId) ?? 0;
+    seen.set(baseId, count + 1);
+    if (count === 0) return group;
+
+    return {
+      ...group,
+      id: `${baseId}-${count + 1}`
+    };
+  });
+}
+
+function slugifyOptionGroup(value: string) {
+  const slug = value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || "custom-option";
 }

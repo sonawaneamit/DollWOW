@@ -1,0 +1,11 @@
+designer-reference
+qa-screenshots
+data/imports
+data/exports
+tmp
+docs
+*.pdf
+*.xlsx
+*.zip
+README.md
+AGENTS.md

@@ -22,7 +22,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
         <ProductFilters filters={filters} action="/warehouse" resetHref="/warehouse" />
       </div>
       <div className="mt-8">
-        <ProductGrid products={filteredProducts} />
+        <ProductGrid products={filteredProducts} filters={filters} resetHref="/warehouse" />
       </div>
     </section>
   );

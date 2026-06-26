@@ -20,6 +20,10 @@ if (args.help) {
 const inputPath = path.resolve(ROOT, args.input || (await findLatestPreview()));
 const execute = Boolean(args.execute);
 const updateExisting = Boolean(args["update-existing"]);
+const matchLegacyHandles = Boolean(args["match-legacy-handles"]);
+const noCreate = Boolean(args["no-create"]);
+const quiet = Boolean(args.quiet);
+const resultsPath = args["results-output"] ? path.resolve(ROOT, String(args["results-output"])) : null;
 const limit = Number(args.limit || 0);
 const productStatus = String(args.status || "DRAFT").toUpperCase();
 const shouldPublish = Boolean(args.publish);
@@ -41,7 +45,7 @@ if (blockedProducts.length) {
   );
 }
 
-console.log(`${execute ? "Importing" : "Dry run for"} ${products.length} Shopify draft products from ${path.relative(ROOT, inputPath)}`);
+log(`${execute ? "Importing" : "Dry run for"} ${products.length} Shopify draft products from ${path.relative(ROOT, inputPath)}`);
 
 if (!execute) {
   for (const product of products) {
@@ -55,11 +59,12 @@ assertShopifyAdminEnv();
 
 const results = [];
 for (const product of products) {
-  const existing = await findExistingProduct(product.handle);
+  const match = await findExistingProductForImport(product);
+  const existing = match?.product || null;
   if (existing) {
     if (!updateExisting) {
       results.push({ handle: product.handle, status: "skipped_existing", productId: existing.id });
-      console.log(`Skipped existing product ${product.handle} (${existing.id})`);
+      log(`Skipped existing product ${product.handle} (${existing.id})`);
       continue;
     }
 
@@ -69,8 +74,14 @@ for (const product of products) {
       await updateInitialVariant(existing.id, variantId, product);
     }
     if (shouldPublish) await publishProduct(updated.id);
-    results.push({ handle: product.handle, status: "updated_existing", productId: updated.id, variantId });
-    console.log(`Updated existing product ${product.handle} (${updated.id})`);
+    results.push({ handle: product.handle, matchedHandle: match.handle, status: "updated_existing", productId: updated.id, variantId });
+    log(`Updated existing product ${match.handle} -> ${product.handle} (${updated.id})`);
+    continue;
+  }
+
+  if (noCreate) {
+    results.push({ handle: product.handle, status: "skipped_missing_no_create" });
+    log(`Skipped missing product ${product.handle} because --no-create is set`);
     continue;
   }
 
@@ -81,10 +92,15 @@ for (const product of products) {
   }
   if (shouldPublish) await publishProduct(created.id);
   results.push({ handle: product.handle, status: `created_${productStatus.toLowerCase()}`, productId: created.id, variantId });
-  console.log(`Created ${productStatus.toLowerCase()} product ${product.handle} (${created.id})`);
+  log(`Created ${productStatus.toLowerCase()} product ${product.handle} (${created.id})`);
 }
 
-console.log(JSON.stringify({ count: results.length, results }, null, 2));
+const resultPayload = { count: results.length, summary: summarizeResults(results), results };
+if (resultsPath) {
+  await fs.mkdir(path.dirname(resultsPath), { recursive: true });
+  await fs.writeFile(resultsPath, JSON.stringify(resultPayload, null, 2), "utf8");
+}
+console.log(JSON.stringify(resultsPath ? { ...resultPayload, results: undefined, resultsFile: path.relative(ROOT, resultsPath) } : resultPayload, null, 2));
 
 async function findLatestPreview() {
   const exportDir = path.join(ROOT, "data", "exports");
@@ -121,6 +137,20 @@ async function findExistingProduct(handle) {
     { query: `handle:${handle}` }
   );
   return data.products.nodes.find((product) => product.handle === handle) || null;
+}
+
+async function findExistingProductForImport(product) {
+  const candidateHandles = unique([
+    product.handle,
+    ...(matchLegacyHandles ? product.reviewFlags?.legacyHandles || [] : [])
+  ]);
+
+  for (const handle of candidateHandles) {
+    const existing = await findExistingProduct(handle);
+    if (existing) return { handle, product: existing };
+  }
+
+  return null;
 }
 
 async function createDraftProduct(product) {
@@ -190,6 +220,7 @@ async function updateExistingProduct(productId, product) {
         vendor: product.vendor || "DollWow",
         productType: product.productType || "Adult doll",
         tags: product.tags || [],
+        status: productStatus,
         seo: {
           title: product.seo?.title || `${product.title} | DollWow`,
           description: product.seo?.description || plainText(product.description).slice(0, 155)
@@ -275,11 +306,16 @@ async function getTargetPublications() {
 function productMetafields(product) {
   const extended = product.extended || {};
   return [
+    metafield("catalog_identity_key", extended.catalogIdentityKey),
+    metafield("catalog_body_identity_key", extended.catalogBodyIdentityKey),
+    metafield("head_model", extended.headModel),
+    metafield("body_type", extended.bodyType),
     metafield("brand", extended.brand),
     metafield("material", extended.material),
     metafield("height_cm", integerMetafieldValue(extended.heightCm), "number_integer"),
     metafield("weight_lb", extended.weightLb, "number_decimal"),
     metafield("cup_size", extended.cupSize),
+    metafield("measurements", extended.measurements ? JSON.stringify(extended.measurements) : "", "json"),
     metafield("warehouse_country", extended.warehouseCountry),
     metafield("stock_status", extended.stockStatus),
     metafield("delivery_estimate", extended.deliveryEstimate),
@@ -379,6 +415,7 @@ async function getAdminAccessToken(domain) {
 
 function productDescriptionHtml(product) {
   const extended = product.extended || {};
+  const measurementRows = measurementSpecRows(extended.measurements);
   const rows = [
     ["Brand", extended.brand],
     ["Material", extended.material],
@@ -388,7 +425,9 @@ function productDescriptionHtml(product) {
     ["Availability", availabilityLabel(extended)],
     ["Warehouse", extended.warehouseCountry]
   ].filter(([, value]) => value);
-  const specList = rows.map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join("");
+  const specList = dedupeSpecRows([...measurementRows, ...rows])
+    .map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`)
+    .join("");
   const optionImageCount = (extended.customizationGroups || []).reduce(
     (total, group) => total + (group.options || []).filter((option) => option.swatch?.kind === "image").length,
     0
@@ -401,6 +440,36 @@ function productDescriptionHtml(product) {
   ]
     .filter(Boolean)
     .join("");
+}
+
+function measurementSpecRows(measurements = {}) {
+  const order = [
+    "Height",
+    "Weight",
+    "Cup size",
+    "Feet Length",
+    "Bust",
+    "Legs Length",
+    "Waist",
+    "Arms Length",
+    "Hip",
+    "Shoulders Width",
+    "Vagina Depth",
+    "Anus Depth",
+    "Oral Depth"
+  ];
+  return order.map((label) => [label, measurements[label]]).filter(([, value]) => value);
+}
+
+function dedupeSpecRows(rows) {
+  const seen = new Set();
+  return rows.filter(([label, value]) => {
+    if (!value) return false;
+    const key = String(label).toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function availabilityLabel(extended) {
@@ -426,6 +495,10 @@ function skuParts(...values) {
     }
   }
   return parts;
+}
+
+function unique(values) {
+  return [...new Set(values.filter(Boolean))];
 }
 
 function encodeMediaUrl(url) {
@@ -461,7 +534,7 @@ function parseArgs(values) {
     const arg = values[index];
     if (!arg.startsWith("--")) continue;
     const key = arg.slice(2);
-    if (key === "help" || key === "execute" || key === "update-existing" || key === "publish") {
+    if (key === "help" || key === "execute" || key === "update-existing" || key === "publish" || key === "match-legacy-handles" || key === "no-create" || key === "quiet") {
       parsed[key] = true;
     } else {
       parsed[key] = values[index + 1];
@@ -500,6 +573,19 @@ function printHelp() {
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --status ACTIVE
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --status ACTIVE --publish
   npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --update-existing
+  npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --update-existing --match-legacy-handles --no-create
+  npm run import:shopify-drafts -- --input data/exports/rosemary-custom-storefront-products.json --execute --update-existing --no-create --quiet --results-output data/exports/import-results.json
 
-Dry-runs by default. With --execute, creates Shopify products as DRAFT unless --status ACTIVE is passed, attaches media, sets custom metafields, and updates the initial variant price/SKU. Add --publish to publish matching Online Store/Headless publications. Add --update-existing to refresh title, SEO, description, variant price/SKU, and metafields for matching handles without duplicating media.`);
+Dry-runs by default. With --execute, creates Shopify products as DRAFT unless --status ACTIVE is passed, attaches media, sets custom metafields, and updates the initial variant price/SKU. Add --publish to publish matching Online Store/Headless publications. Add --update-existing to refresh title, SEO, description, variant price/SKU, and metafields for matching handles without duplicating media. Add --match-legacy-handles when a regenerated product has reviewFlags.legacyHandles. Add --no-create for cleanup runs that must never create new products. Add --quiet and --results-output for large batch cleanups.`);
+}
+
+function summarizeResults(results) {
+  return results.reduce((summary, result) => {
+    summary[result.status] = (summary[result.status] || 0) + 1;
+    return summary;
+  }, {});
+}
+
+function log(message) {
+  if (!quiet) console.log(message);
 }

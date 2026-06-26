@@ -1,0 +1,52 @@
+{
+  "status": "draft",
+  "publishAs": "/agent-index.json",
+  "site": "DollWow",
+  "canonicalBaseUrl": "https://dollwow.com",
+  "description": "DollWow is a headless adult commerce storefront for comparing, customizing, and ordering premium dolls with discreet support, clear product details, price-match review, and buyer protection.",
+  "editorialPolicy": {
+    "voice": "Practical, discreet, premium adult-commerce guidance.",
+    "claims": "Product and policy claims should be reviewed against catalog data, supplier materials, and published policies before publication.",
+    "medicalLegalDisclaimer": "Health, legal, and safety topics are informational and not a substitute for medical, therapeutic, or legal advice."
+  },
+  "contributors": [
+    {
+      "id": "jesse",
+      "name": "Jesse",
+      "title": "Licensed Sexologist and DollWow Intimacy Education Editor",
+      "topics": ["care", "privacy", "buyer questions", "safety", "intimacy education"]
+    },
+    {
+      "id": "alex",
+      "name": "Alex",
+      "title": "Doll Collector and DollWow Product Educator with 20+ Years of Experience",
+      "topics": ["product comparison", "brand guides", "materials", "measurements", "customization"]
+    }
+  ],
+  "corePages": [
+    { "label": "Shop", "url": "https://dollwow.com/shop" },
+    { "label": "Help Me Choose", "url": "https://dollwow.com/help-me-choose" },
+    { "label": "Customize", "url": "https://dollwow.com/customize" },
+    { "label": "Price Match", "url": "https://dollwow.com/compare" },
+    { "label": "Buyer Protection", "url": "https://dollwow.com/buyer-protection" },
+    { "label": "Shipping", "url": "https://dollwow.com/shipping" },
+    { "label": "Returns", "url": "https://dollwow.com/returns" },
+    { "label": "Support", "url": "https://dollwow.com/support" }
+  ],
+  "draftLearningCenterRoutes": [
+    "https://dollwow.com/learn/tpe-vs-silicone-sex-dolls",
+    "https://dollwow.com/learn/sex-doll-cost",
+    "https://dollwow.com/learn/best-sex-dolls",
+    "https://dollwow.com/learn/most-realistic-sex-dolls",
+    "https://dollwow.com/learn/mini-sex-dolls",
+    "https://dollwow.com/learn/male-sex-doll-buying-guide",
+    "https://dollwow.com/learn/sex-doll-reviews",
+    "https://dollwow.com/learn/ready-to-ship-vs-custom-sex-dolls",
+    "https://dollwow.com/learn/discreet-sex-doll-shipping"
+  ],
+  "feedsToAdd": [
+    "https://dollwow.com/product-feed.json",
+    "https://dollwow.com/sitemap.xml",
+    "https://dollwow.com/llms.txt"
+  ]
+}

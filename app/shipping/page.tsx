@@ -1,18 +1,51 @@
-export const metadata = { title: "Shipping" };
+import type { Metadata } from "next";
+import { PolicyLayout } from "@/components/PolicyLayout";
+
+export const metadata: Metadata = { title: "Shipping Guide" };
 
 export default function ShippingPage() {
-  return <PolicyPage title="Shipping" intro="Delivery time depends on warehouse location, custom work, and final stock confirmation." items={["Ready-to-ship products show a warehouse country and delivery estimate.", "Custom orders take longer and are confirmed before production.", "Packaging is discreet. Tracking details are shared after shipment.", "International buyers are responsible for local customs rules and import fees where they apply."]} />;
-}
-
-function PolicyPage({ title, intro, items }: { title: string; intro: string; items: string[] }) {
   return (
-    <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Policy</p>
-      <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{title}</h1>
-      <p className="mt-3 text-ivory-400">{intro}</p>
-      <ul className="mt-8 space-y-3">
-        {items.map((item) => <li key={item} className="rounded-[16px] border border-gold-500/14 bg-ink-800/72 p-4 text-ivory-300">{item}</li>)}
-      </ul>
-    </section>
+    <PolicyLayout
+      eyebrow="Shipping guide"
+      title="Shipping timing and what to expect."
+      intro="Shipping timing depends on whether the doll is already in a warehouse or being built to order. DollWow shows that clearly before checkout so customers can tell the difference between a faster warehouse order and a custom build."
+      ctas={[
+        { label: "Shipping protection", href: "/shipping-protection", primary: true },
+        { label: "How ordering works", href: "/how-ordering-works" }
+      ]}
+      sections={[
+        {
+          title: "Ready-to-ship orders",
+          items: [
+            "Ready-to-ship products usually leave the warehouse within 2-3 business days after stock confirmation.",
+            "These orders are prioritized for fast release, so customization is limited and factory approval photos may not be available.",
+            "Final release still depends on stock confirmation and order review."
+          ]
+        },
+        {
+          title: "Made-to-order builds",
+          items: [
+            "Custom orders usually take about 3-5 weeks before release because the build moves through production, review, and final approval before shipment.",
+            "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
+            "Timing is confirmed before the order moves deeper into fulfillment."
+          ]
+        },
+        {
+          title: "Privacy and tracking",
+          items: [
+            "Packaging is plain by default.",
+            "Tracking details are shared after shipment activation.",
+            "Delivery damage should be reported within 24 hours of arrival with photos, packaging, and the order reference kept for review.",
+            "International buyers remain responsible for local customs rules and import fees where they apply."
+          ]
+        }
+      ]}
+      asideTitle="Fast read"
+      asideItems={[
+        "Warehouse timing is faster, but still checked before release.",
+        "Custom orders are slower because approval happens before shipment, not after.",
+        "Shipping protection exists for issues like damage, loss, or misdelivery."
+      ]}
+    />
   );
 }

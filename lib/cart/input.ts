@@ -8,6 +8,12 @@ const rawAttributeSchema = z.object({
   value: z.string().max(1000)
 });
 
+const customizationChargeSchema = z.object({
+  amount: z.number().min(0).max(20_000),
+  currencyCode: z.string().min(3).max(3),
+  title: z.string().max(180).optional()
+});
+
 export const cartCreateRequestSchema = z
   .object({
     merchandiseId: z
@@ -18,11 +24,13 @@ export const cartCreateRequestSchema = z
       .refine((value) => value.startsWith("gid://shopify/ProductVariant/"), "A Shopify product variant ID is required."),
     quantity: z.number().int().min(1).max(10).default(1),
     attributes: z.array(rawAttributeSchema).max(50).optional(),
+    customizationCharge: customizationChargeSchema.optional(),
     discountCodes: z.array(z.string().max(120)).max(10).optional()
   })
   .transform((input) => ({
     ...input,
     attributes: normalizeLineAttributes(input.attributes),
+    customizationCharge: normalizeCustomizationCharge(input.customizationCharge),
     discountCodes: normalizeDiscountCodes(input.discountCodes)
   }));
 
@@ -58,6 +66,17 @@ export function normalizeDiscountCodes(discountCodes: string[] = []) {
   }
 
   return normalized;
+}
+
+function normalizeCustomizationCharge(charge?: z.infer<typeof customizationChargeSchema>) {
+  if (!charge) return undefined;
+  const amount = Math.round(Number(charge.amount || 0) * 100) / 100;
+  if (amount <= 0) return undefined;
+  return {
+    amount,
+    currencyCode: charge.currencyCode.toUpperCase(),
+    title: normalizeWhitespace(charge.title || "Custom options").slice(0, 120)
+  };
 }
 
 function normalizeWhitespace(value: string) {

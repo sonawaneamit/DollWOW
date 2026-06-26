@@ -25,7 +25,7 @@ export default async function CustomizePage({ searchParams }: { searchParams: Pr
         <ProductFilters filters={filters} action="/customize" resetHref="/customize" />
       </div>
       <div className="mt-8">
-        <ProductGrid products={filteredProducts} />
+        <ProductGrid products={filteredProducts} filters={filters} resetHref="/customize" />
       </div>
     </section>
   );

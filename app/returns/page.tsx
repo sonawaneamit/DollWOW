@@ -1,16 +1,50 @@
-export const metadata = { title: "Returns and Replacements" };
+import type { Metadata } from "next";
+import { PolicyLayout } from "@/components/PolicyLayout";
+
+export const metadata: Metadata = { title: "Returns and Replacements" };
 
 export default function ReturnsPage() {
   return (
-    <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Policy</p>
-      <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Returns and replacements</h1>
-      <p className="mt-3 text-ivory-400">High-ticket custom products need clear expectations. We verify product details before checkout and help with documented delivery or quality issues.</p>
-      <div className="mt-8 space-y-3">
-        {["Custom items may not be returnable once production begins.", "Damage or missing-item claims need photos and order details quickly after delivery.", "Replacement decisions depend on supplier policy, order status, and product condition.", "We do not use fake reviews or invented buyer photos."].map((item) => (
-          <div key={item} className="rounded-[16px] border border-gold-500/14 bg-ink-800/72 p-4 text-ivory-300">{item}</div>
-        ))}
-      </div>
-    </section>
+    <PolicyLayout
+      eyebrow="Returns and replacements"
+      title="Resolution rules that match the product."
+      intro="High-ticket orders need clear rules before checkout. DollWow reviews product details before the order moves forward and helps with documented delivery or quality issues after arrival."
+      ctas={[
+        { label: "Buyer protection", href: "/buyer-protection", primary: true },
+        { label: "Shipping protection", href: "/shipping-protection" }
+      ]}
+      sections={[
+        {
+          title: "Custom-order expectations",
+          items: [
+            "Custom items may not be returnable once production begins.",
+            "That is why the option review and factory-photo approval steps matter so much before shipment.",
+            "Ready-to-ship warehouse dolls move faster, but usually have fewer customization changes available."
+          ]
+        },
+        {
+          title: "Damage and delivery issues",
+          items: [
+            "Damage, missing-item, or wrong-item claims need photos and order details within 24 hours of delivery.",
+            "Replacement decisions depend on the seriousness of the issue, supplier review, and documented product condition.",
+            "Minor cosmetic shipping wear is handled differently from major transit damage."
+          ]
+        },
+        {
+          title: "How we keep this fair",
+          items: [
+            "Coverage is written around the realities of custom production, shipping, and documented product condition.",
+            "Customer confidence comes from clear rules, careful review, and real support when something needs attention.",
+            "The goal is a clear answer: repair, replacement, or another fair resolution when the order genuinely needs it."
+          ]
+        }
+      ]}
+      asideTitle="Important note"
+      asideItems={[
+        "Report any issue within 24 hours of delivery and keep packaging until the case is understood.",
+        "Custom production limits ordinary returns, but documented delivery problems are still taken seriously.",
+        "Buyer protection and shipping protection pages explain the difference between major and minor issues."
+      ]}
+    />
   );
 }

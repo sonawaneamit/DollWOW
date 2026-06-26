@@ -1,26 +1,25 @@
 import type { Product } from "@/types/product";
+import { brandFilterOptions, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
+import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
 
 export type CatalogFilters = {
+  query?: string;
   brand?: string;
+  bodyType?: "male" | "female";
   availability?: "ready_to_ship" | "custom";
   material?: string;
   height?: string;
   weight?: string;
+  cup?: string;
+  price?: string;
   sort?: string;
 };
 
 export const catalogFilterOptions = {
-  brands: [
-    { label: "WM Dolls", value: "wm" },
-    { label: "Angelkiss", value: "angelkiss" },
-    { label: "Irontech", value: "irontech" },
-    { label: "Starpery", value: "starpery" },
-    { label: "Piper Dolls", value: "piper" },
-    { label: "Tantaly", value: "tantaly" },
-    { label: "YL Dolls", value: "yl" },
-    { label: "Erovenus", value: "erovenus" },
-    { label: "SE Doll", value: "sedoll" },
-    { label: "6YE Dolls", value: "6ye" }
+  brands: brandFilterOptions(),
+  bodyTypes: [
+    { label: "Female dolls", value: "female" },
+    { label: "Male dolls", value: "male" }
   ],
   availability: [
     { label: "Ready to ship", value: "ready_to_ship" },
@@ -44,6 +43,20 @@ export const catalogFilterOptions = {
     { label: "90-109 lb", value: "90-109" },
     { label: "110 lb+", value: "110-999" }
   ],
+  cups: [
+    { label: "A-C cup", value: "A-C" },
+    { label: "D-F cup", value: "D-F" },
+    { label: "G-I cup", value: "G-I" },
+    { label: "J-L cup", value: "J-L" },
+    { label: "M+ cup", value: "M-Z" }
+  ],
+  prices: [
+    { label: "Under $1,500", value: "0-1499" },
+    { label: "$1,500-$1,999", value: "1500-1999" },
+    { label: "$2,000-$2,499", value: "2000-2499" },
+    { label: "$2,500-$2,999", value: "2500-2999" },
+    { label: "$3,000+", value: "3000-999999" }
+  ],
   sorts: [
     { label: "Featured", value: "featured" },
     { label: "Price: low to high", value: "price-asc" },
@@ -53,31 +66,25 @@ export const catalogFilterOptions = {
   ]
 } as const;
 
+const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>> = {
+  brand: new Map(catalogFilterOptions.brands.map((option) => [option.value, option.label])),
+  bodyType: new Map(catalogFilterOptions.bodyTypes.map((option) => [option.value, option.label])),
+  availability: new Map(catalogFilterOptions.availability.map((option) => [option.value, option.label])),
+  material: new Map(catalogFilterOptions.materials.map((option) => [option.value, option.label])),
+  height: new Map(catalogFilterOptions.heights.map((option) => [option.value, option.label])),
+  weight: new Map(catalogFilterOptions.weights.map((option) => [option.value, option.label])),
+  cup: new Map(catalogFilterOptions.cups.map((option) => [option.value, option.label])),
+  price: new Map(catalogFilterOptions.prices.map((option) => [option.value, option.label])),
+  sort: new Map(catalogFilterOptions.sorts.map((option) => [option.value, option.label]))
+} satisfies Record<string, Map<string, string>>;
+
 export const collectionPresets: Record<string, { title: string; filters: CatalogFilters }> = {
   "ready-to-ship": { title: "Ready-to-ship dolls", filters: { availability: "ready_to_ship" } },
   custom: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
   customizable: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
-  "wm-dolls": { title: "WM Dolls", filters: { brand: "wm" } },
-  wm: { title: "WM Dolls", filters: { brand: "wm" } },
-  "angelkiss-dolls": { title: "Angelkiss Dolls", filters: { brand: "angelkiss" } },
-  angelkiss: { title: "Angelkiss Dolls", filters: { brand: "angelkiss" } },
-  "irontech-dolls": { title: "Irontech Dolls", filters: { brand: "irontech" } },
-  irontech: { title: "Irontech Dolls", filters: { brand: "irontech" } },
-  "starpery-dolls": { title: "Starpery Dolls", filters: { brand: "starpery" } },
-  starpery: { title: "Starpery Dolls", filters: { brand: "starpery" } },
-  "piper-dolls": { title: "Piper Dolls", filters: { brand: "piper" } },
-  piper: { title: "Piper Dolls", filters: { brand: "piper" } },
-  "tantaly-dolls": { title: "Tantaly Dolls", filters: { brand: "tantaly" } },
-  tantaly: { title: "Tantaly Dolls", filters: { brand: "tantaly" } },
-  "yl-dolls": { title: "YL Dolls", filters: { brand: "yl" } },
-  yl: { title: "YL Dolls", filters: { brand: "yl" } },
-  "erovenus-dolls": { title: "Erovenus Dolls", filters: { brand: "erovenus" } },
-  erovenus: { title: "Erovenus Dolls", filters: { brand: "erovenus" } },
-  "se-doll": { title: "SE Doll", filters: { brand: "sedoll" } },
-  "se-dolls": { title: "SE Doll", filters: { brand: "sedoll" } },
-  sedoll: { title: "SE Doll", filters: { brand: "sedoll" } },
-  "6ye-dolls": { title: "6YE Dolls", filters: { brand: "6ye" } },
-  "6ye": { title: "6YE Dolls", filters: { brand: "6ye" } },
+  "female-dolls": { title: "Female dolls", filters: { bodyType: "female" } },
+  "male-dolls": { title: "Male dolls", filters: { bodyType: "male" } },
+  ...brandCollectionPresets(),
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
   "silicone-head": { title: "Silicone-head dolls", filters: { material: "silicone-head" } },
@@ -96,11 +103,15 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
   };
 
   return compactFilters({
+    query: valueFor("query"),
     brand: valueFor("brand"),
+    bodyType: valueFor("bodyType") as CatalogFilters["bodyType"],
     availability: valueFor("availability") as CatalogFilters["availability"],
     material: valueFor("material"),
     height: valueFor("height"),
     weight: valueFor("weight"),
+    cup: valueFor("cup"),
+    price: valueFor("price"),
     sort: valueFor("sort") || "featured"
   });
 }
@@ -112,6 +123,7 @@ export function compactFilters(filters: CatalogFilters): CatalogFilters {
 export function shopifyQueryForFilters(filters: CatalogFilters) {
   const parts = [];
   if (filters.brand) parts.push(shopifyBrandQuery(filters.brand));
+  if (filters.bodyType) parts.push(`tag:${filters.bodyType}-doll`);
   if (filters.availability) parts.push(`tag:${filters.availability}`);
   if (filters.material) parts.push(`tag:${tagForFilter(filters.material)}`);
   return parts.join(" AND ") || undefined;
@@ -119,25 +131,50 @@ export function shopifyQueryForFilters(filters: CatalogFilters) {
 
 export function filterProducts(products: Product[], filters: CatalogFilters) {
   const filtered = products.filter((product) => {
+    if (filters.query && !productMatchesCatalogSearch(product, filters.query)) return false;
     if (filters.brand && !productMatchesBrand(product, filters.brand)) return false;
+    if (filters.bodyType && !productMatchesBodyType(product, filters.bodyType)) return false;
     if (filters.availability && product.extended.stockStatus !== filters.availability) return false;
     if (filters.material && !productMatchesMaterial(product, filters.material)) return false;
     if (filters.height && !inRange(product.extended.heightCm, filters.height)) return false;
     if (filters.weight && !inRange(product.extended.weightLb, filters.weight)) return false;
+    if (filters.cup && !cupMatches(product.extended.cupSize, filters.cup)) return false;
+    if (filters.price && !inRange(price(product), filters.price)) return false;
     return true;
   });
 
-  return sortProducts(filtered, filters.sort);
+  return sortProducts(filtered, filters.sort, filters.query);
 }
 
 export function activeFilterCount(filters: CatalogFilters) {
   return Object.keys(compactFilters(filters)).length;
 }
 
+export function getCatalogFilterLabel(key: keyof CatalogFilters, value?: string) {
+  if (!value) return undefined;
+  if (key === "query") return `Search: ${value}`;
+  const label = filterLabelMaps[key]?.get(value);
+  if (label) return label;
+  return value;
+}
+
+export function requiresCatalogWideFetch(filters: CatalogFilters) {
+  return Boolean(
+    filters.query ||
+      filters.height ||
+      filters.weight ||
+      filters.cup ||
+      filters.price ||
+      (filters.sort && filters.sort !== "featured")
+  );
+}
+
 function productMatchesBrand(product: Product, brand: string) {
-  const target = tagForFilter(brand);
+  const canonical = getCatalogBrand(brand);
+  const target = tagForFilter(canonical?.value || brand);
+  const tags = canonical?.tags || [target];
   const brandText = `${product.extended.brand || ""} ${product.vendor}`.toLowerCase();
-  return product.tags.includes(target) || brandText.includes(target.replace(/-/g, " "));
+  return tags.some((tag) => product.tags.includes(tag)) || brandText.includes(target.replace(/-/g, " "));
 }
 
 function productMatchesMaterial(product: Product, material: string) {
@@ -146,27 +183,53 @@ function productMatchesMaterial(product: Product, material: string) {
   return product.tags.includes(target) || materialText.includes(target);
 }
 
+function productMatchesBodyType(product: Product, bodyType: NonNullable<CatalogFilters["bodyType"]>) {
+  if (product.extended.bodyType === bodyType) return true;
+  return product.tags.includes(`${bodyType}-doll`);
+}
+
 function tagForFilter(value: string) {
   if (value === "ready-to-ship") return "ready_to_ship";
   return value.toLowerCase().replace(/[^a-z0-9_]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function shopifyBrandQuery(brand: string) {
-  const target = tagForFilter(brand);
+  const canonical = getCatalogBrand(brand);
+  const target = tagForFilter(canonical?.value || brand);
   if (target === "yl") {
     return "tag:yl AND -tag:wm AND -tag:irontech AND -tag:sedoll";
   }
-  return `tag:${target}`;
+  const tags = canonical?.tags?.length ? canonical.tags : [target];
+  return tags.length === 1 ? `tag:${tags[0]}` : `(${tags.map((tag) => `tag:${tag}`).join(" OR ")})`;
+}
+
+function brandCollectionPresets() {
+  return Object.fromEntries(
+    catalogBrands.flatMap((brand) => [
+      [brand.collectionHandle, { title: brand.label, filters: { brand: brand.value } }],
+      [brand.value, { title: brand.label, filters: { brand: brand.value } }]
+    ])
+  ) as Record<string, { title: string; filters: CatalogFilters }>;
 }
 
 function inRange(value: number | undefined, range: string) {
-  if (!value) return false;
+  if (value === undefined || value === null || Number.isNaN(value)) return false;
   const [min, max] = range.split("-").map(Number);
   return Number.isFinite(min) && Number.isFinite(max) && value >= min && value <= max;
 }
 
-function sortProducts(products: Product[], sort = "featured") {
+function cupMatches(cupSize: string | undefined, range: string) {
+  if (!cupSize) return false;
+  const normalizedCup = cupSize.trim().toUpperCase();
+  const [min, max] = range.split("-");
+  if (!normalizedCup || !min || !max) return false;
+  const code = normalizedCup.charCodeAt(0);
+  return code >= min.charCodeAt(0) && code <= max.charCodeAt(0);
+}
+
+function sortProducts(products: Product[], sort = "featured", query?: string) {
   const sorted = [...products];
+  if ((!sort || sort === "featured") && query) sorted.sort((a, b) => productSearchScore(b, query) - productSearchScore(a, query));
   if (sort === "price-asc") sorted.sort((a, b) => price(a) - price(b));
   if (sort === "price-desc") sorted.sort((a, b) => price(b) - price(a));
   if (sort === "height-asc") sorted.sort((a, b) => (a.extended.heightCm || 0) - (b.extended.heightCm || 0));

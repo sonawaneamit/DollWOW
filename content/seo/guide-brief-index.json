@@ -1,0 +1,337 @@
+[
+  {
+    "order": 1,
+    "slug": "best-sex-dolls",
+    "title": "Best Sex Dolls: DollWow Buyer Guide",
+    "primaryKeyword": "best sex dolls",
+    "secondaryKeywords": [
+      "best sex dolls 2025",
+      "realistic sex dolls"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/best-sex-dolls"
+  },
+  {
+    "order": 2,
+    "slug": "realistic-sex-dolls",
+    "title": "Realistic Sex Dolls: What Actually Matters",
+    "primaryKeyword": "realistic sex dolls",
+    "secondaryKeywords": [
+      "most realistic sex dolls"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/realistic-sex-dolls"
+  },
+  {
+    "order": 3,
+    "slug": "tpe-vs-silicone-sex-dolls",
+    "title": "TPE vs Silicone Sex Dolls",
+    "primaryKeyword": "tpe vs silicone",
+    "secondaryKeywords": [
+      "silicone vs tpe",
+      "tpe material vs silicone"
+    ],
+    "category": "Materials And Care",
+    "intent": "informational",
+    "author": "jesse",
+    "targetUrl": "/guides/tpe-vs-silicone-sex-dolls"
+  },
+  {
+    "order": 4,
+    "slug": "silicone-sex-dolls",
+    "title": "Silicone Sex Dolls: Pros, Cons, Care, And Price",
+    "primaryKeyword": "silicone sex dolls",
+    "secondaryKeywords": [
+      "silicone sex doll",
+      "silicone vs tpe"
+    ],
+    "category": "Materials And Care",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/silicone-sex-dolls"
+  },
+  {
+    "order": 5,
+    "slug": "tpe-sex-dolls",
+    "title": "TPE Sex Dolls: Pros, Cons, Care, And Price",
+    "primaryKeyword": "tpe sex doll",
+    "secondaryKeywords": [
+      "tpe dolls",
+      "tpe vs silicone"
+    ],
+    "category": "Materials And Care",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/tpe-sex-dolls"
+  },
+  {
+    "order": 6,
+    "slug": "male-sex-doll-buying-guide",
+    "title": "Male Sex Doll Buying Guide",
+    "primaryKeyword": "male sex doll",
+    "secondaryKeywords": [
+      "realistic male sex doll"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/male-sex-doll-buying-guide"
+  },
+  {
+    "order": 7,
+    "slug": "mini-petite-sex-dolls",
+    "title": "Mini Sex Dolls And Petite Sex Dolls Guide",
+    "primaryKeyword": "mini sex dolls",
+    "secondaryKeywords": [
+      "petite sex doll"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/mini-petite-sex-dolls"
+  },
+  {
+    "order": 8,
+    "slug": "torso-sex-dolls",
+    "title": "Torso Sex Dolls Guide",
+    "primaryKeyword": "torso sex dolls",
+    "secondaryKeywords": [
+      "sex doll torso"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/torso-sex-dolls"
+  },
+  {
+    "order": 9,
+    "slug": "ready-to-ship-vs-custom-sex-dolls",
+    "title": "Ready-To-Ship vs Custom Sex Dolls",
+    "primaryKeyword": "ready to ship sex dolls",
+    "secondaryKeywords": [
+      "custom sex doll"
+    ],
+    "category": "Shipping And Privacy",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/ready-to-ship-vs-custom-sex-dolls"
+  },
+  {
+    "order": 10,
+    "slug": "sex-doll-cost",
+    "title": "How Much Does A Sex Doll Cost?",
+    "primaryKeyword": "sex doll cost",
+    "secondaryKeywords": [
+      "sex doll price",
+      "sex doll cheap"
+    ],
+    "category": "Buying Guides",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/sex-doll-cost"
+  },
+  {
+    "order": 11,
+    "slug": "how-to-customize-a-sex-doll",
+    "title": "How To Customize A Sex Doll",
+    "primaryKeyword": "sex doll customization",
+    "secondaryKeywords": [
+      "custom sex doll",
+      "customize sex doll"
+    ],
+    "category": "Customization",
+    "intent": "informational",
+    "author": "alex",
+    "targetUrl": "/guides/how-to-customize-a-sex-doll"
+  },
+  {
+    "order": 12,
+    "slug": "discreet-sex-doll-shipping",
+    "title": "How Discreet Sex Doll Shipping Works",
+    "primaryKeyword": "discreet sex doll shipping",
+    "secondaryKeywords": [
+      "sex doll shipping"
+    ],
+    "category": "Shipping And Privacy",
+    "intent": "informational",
+    "author": "jesse",
+    "targetUrl": "/guides/discreet-sex-doll-shipping"
+  },
+  {
+    "order": 13,
+    "slug": "sex-doll-scams",
+    "title": "Sex Doll Scams: How To Check A Seller",
+    "primaryKeyword": "sex doll scams",
+    "secondaryKeywords": [
+      "fake sex doll sellers"
+    ],
+    "category": "Scams And Buyer Protection",
+    "intent": "informational",
+    "author": "jesse",
+    "targetUrl": "/guides/sex-doll-scams"
+  },
+  {
+    "order": 14,
+    "slug": "how-to-clean-a-sex-doll",
+    "title": "How To Clean And Store A Sex Doll",
+    "primaryKeyword": "how to clean sex doll",
+    "secondaryKeywords": [
+      "sex doll storage",
+      "sex doll maintenance"
+    ],
+    "category": "Materials And Care",
+    "intent": "informational",
+    "author": "jesse",
+    "targetUrl": "/guides/how-to-clean-a-sex-doll"
+  },
+  {
+    "order": 15,
+    "slug": "sex-doll-reviews",
+    "title": "Sex Doll Reviews: How To Read Them Without Getting Fooled",
+    "primaryKeyword": "sex doll review",
+    "secondaryKeywords": [
+      "sex doll reviews"
+    ],
+    "category": "Scams And Buyer Protection",
+    "intent": "informational",
+    "author": "jesse",
+    "targetUrl": "/guides/sex-doll-reviews"
+  },
+  {
+    "order": 16,
+    "slug": "wm-dolls-buying-guide",
+    "title": "Best WM Dolls: Brand Buying Guide",
+    "primaryKeyword": "wm doll",
+    "secondaryKeywords": [
+      "wm dolls",
+      "wm sex doll"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/wm-dolls-buying-guide"
+  },
+  {
+    "order": 17,
+    "slug": "zelex-dolls-buying-guide",
+    "title": "Best Zelex Dolls: Brand Buying Guide",
+    "primaryKeyword": "zelex doll",
+    "secondaryKeywords": [
+      "zelex dolls"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/zelex-dolls-buying-guide"
+  },
+  {
+    "order": 18,
+    "slug": "se-doll-buying-guide",
+    "title": "Best SE Doll Models: Brand Buying Guide",
+    "primaryKeyword": "se doll",
+    "secondaryKeywords": [
+      "se dolls"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/se-doll-buying-guide"
+  },
+  {
+    "order": 19,
+    "slug": "starpery-dolls-buying-guide",
+    "title": "Best Starpery Dolls: Brand Buying Guide",
+    "primaryKeyword": "starpery doll",
+    "secondaryKeywords": [
+      "starpery dolls"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/starpery-dolls-buying-guide"
+  },
+  {
+    "order": 20,
+    "slug": "irontech-dolls-buying-guide",
+    "title": "Best Irontech Dolls: Brand Buying Guide",
+    "primaryKeyword": "irontech doll",
+    "secondaryKeywords": [
+      "irontech dolls"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/irontech-dolls-buying-guide"
+  },
+  {
+    "order": 21,
+    "slug": "wm-dolls-vs-zelex-dolls",
+    "title": "WM Dolls vs Zelex Dolls",
+    "primaryKeyword": "wm dolls vs zelex dolls",
+    "secondaryKeywords": [
+      "wm doll",
+      "zelex doll"
+    ],
+    "category": "Brand Comparisons",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/wm-dolls-vs-zelex-dolls"
+  },
+  {
+    "order": 22,
+    "slug": "silicone-head-vs-full-silicone",
+    "title": "TPE Body With Silicone Head vs Full Silicone",
+    "primaryKeyword": "silicone head sex doll",
+    "secondaryKeywords": [
+      "full silicone sex doll",
+      "silicone head dolls"
+    ],
+    "category": "Materials And Care",
+    "intent": "commercial",
+    "author": "alex",
+    "targetUrl": "/guides/silicone-head-vs-full-silicone"
+  },
+  {
+    "order": 23,
+    "slug": "implanted-hair-vs-wig",
+    "title": "Implanted Hair vs Wig",
+    "primaryKeyword": "implanted hair sex doll",
+    "secondaryKeywords": [
+      "sex doll wig"
+    ],
+    "category": "Customization",
+    "intent": "informational",
+    "author": "alex",
+    "targetUrl": "/guides/implanted-hair-vs-wig"
+  },
+  {
+    "order": 24,
+    "slug": "standing-feet-sex-doll-guide",
+    "title": "Standing Feet Guide",
+    "primaryKeyword": "sex doll standing feet",
+    "secondaryKeywords": [
+      "standing feet sex doll"
+    ],
+    "category": "Customization",
+    "intent": "informational",
+    "author": "alex",
+    "targetUrl": "/guides/standing-feet-sex-doll-guide"
+  },
+  {
+    "order": 25,
+    "slug": "body-heating-sex-doll-guide",
+    "title": "Body Heating Guide",
+    "primaryKeyword": "sex doll body heating",
+    "secondaryKeywords": [
+      "heated sex doll"
+    ],
+    "category": "Customization",
+    "intent": "informational",
+    "author": "alex",
+    "targetUrl": "/guides/body-heating-sex-doll-guide"
+  }
+]

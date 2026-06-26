@@ -28,6 +28,29 @@ const BRAND_LABELS = {
 
 const IGNORED_PRODUCT_HANDLES = new Set(["custom-full-silicone-female-doll", "custom-full-tpe-sex-doll"]);
 const PRODUCT_PATH_PATTERN = /(?:^|\/)product\//i;
+const MEASUREMENT_LABELS = [
+  "Height",
+  "Weight",
+  "Bra Size",
+  "Cup Size",
+  "Cup size",
+  "Feet Length",
+  "Bust",
+  "Legs Length",
+  "Waist",
+  "Arms Length",
+  "Hip",
+  "Shoulders Width",
+  "Shoulder Width",
+  "Vagina Length",
+  "Vagina Depth",
+  "Anus Length",
+  "Anus Depth",
+  "Mouth Depth",
+  "Oral Depth"
+];
+const MEASUREMENT_STOP_LABELS = [...MEASUREMENT_LABELS, "Brand", "Material", "Availability", "Warehouse", "Delivery"];
+const MEASUREMENT_LOOKAHEAD = MEASUREMENT_STOP_LABELS.map(escapeRegex).join("|");
 
 const args = parseArgs(process.argv.slice(2));
 
@@ -304,10 +327,12 @@ function normalizeRosemaryProduct(item, brandFallback) {
   };
   const stockSignal = `${rawTitle} ${pickTitle(item.html || "")}`;
   const isReadyToShip = /\bin stock\b|fast shipping/i.test(stockSignal);
+  const measurements = extractMeasurements(description);
   const dimensions = {
-    heightCm: numberFromSpec(description, /Height:[^/]+\/\s*([0-9.]+)\s*cm/i),
-    weightLb: numberFromSpec(description, /Weight:\s*([0-9.]+)\s*lbs?/i),
-    cupSize: cleanText(description.match(/Bra Size:\s*([^:]+?)(?: Feet Length| Bust|$)/i)?.[1] || "")
+    heightCm: numberFromSpec(measurements.Height || description, /(?:Height:\s*)?[^/]+\/\s*([0-9.]+)\s*cm/i),
+    weightLb: numberFromSpec(measurements.Weight || description, /(?:Weight:\s*)?([0-9.]+)\s*lbs?/i),
+    cupSize: measurements["Cup size"] || cleanText(description.match(/Bra Size:\s*([^:]+?)(?: Feet Length| Bust|$)/i)?.[1] || ""),
+    measurements
   };
 
   return {
@@ -333,6 +358,28 @@ function normalizeRosemaryProduct(item, brandFallback) {
     excludedFromDollWow: reviewFlags.exclusiveSignals.length > 0,
     importedAt: new Date().toISOString()
   };
+}
+
+function extractMeasurements(text) {
+  const normalized = cleanText(text || "");
+  const result = {};
+  for (const label of MEASUREMENT_LABELS) {
+    const value = cleanText(
+      normalized.match(new RegExp(`\\b${escapeRegex(label)}:\\s*([^:]+?)(?=\\s+(?:${MEASUREMENT_LOOKAHEAD}):|$)`, "i"))?.[1] || ""
+    );
+    if (!value) continue;
+    result[normalizeMeasurementLabel(label)] = value;
+  }
+  return result;
+}
+
+function normalizeMeasurementLabel(label) {
+  if (/^bra size$/i.test(label) || /^cup size$/i.test(label)) return "Cup size";
+  if (/^shoulder width$/i.test(label)) return "Shoulders Width";
+  if (/^mouth depth$/i.test(label)) return "Oral Depth";
+  if (/^vagina length$/i.test(label)) return "Vagina Depth";
+  if (/^anus length$/i.test(label)) return "Anus Depth";
+  return label;
 }
 
 function pickMeta(html, property) {

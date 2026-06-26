@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { Scale, ShoppingBag } from "lucide-react";
 import { formatMoney } from "@/lib/utils/currency";
+import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
 import { ProductImageFrame } from "./ProductImageFrame";
 import { WarehouseStatusBadge } from "./WarehouseStatusBadge";
 
 export function ProductCard({ product }: { product: Product }) {
   const price = product.priceRange.minVariantPrice;
+  const displayTitle = productPublicTitle(product);
   return (
     <article className="group rounded-[18px] border border-gold-500/14 bg-ink-800/72 p-3 transition hover:border-gold-400/40">
-      <Link href={`/products/${product.handle}`} aria-label={`View ${product.title}`}>
+      <Link href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
         <ProductImageFrame product={product} />
       </Link>
       <div className="space-y-3 p-2">
@@ -17,7 +19,7 @@ export function ProductCard({ product }: { product: Product }) {
           <div>
             <p className="text-xs uppercase tracking-[0.16em] text-gold-300">{product.extended.brand ?? product.vendor}</p>
             <Link href={`/products/${product.handle}`} className="mt-1 block text-lg font-semibold text-ivory-50">
-              {product.title}
+              {displayTitle}
             </Link>
           </div>
           <WarehouseStatusBadge status={product.extended.stockStatus} />
@@ -30,7 +32,11 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center justify-between border-t border-gold-500/12 pt-3">
           <strong className="text-xl text-gold-300">{formatMoney(price.amount, price.currencyCode)}</strong>
           <div className="flex gap-2">
-            <Link href="/compare" className="rounded-full border border-gold-500/20 p-2 text-gold-300" aria-label="Compare prices">
+            <Link
+              href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
+              className="rounded-full border border-gold-500/20 p-2 text-gold-300"
+              aria-label="Compare prices"
+            >
               <Scale className="h-4 w-4" />
             </Link>
             <Link href={`/products/${product.handle}`} className="rounded-full bg-gold-400 p-2 text-ink-950" aria-label="View product">

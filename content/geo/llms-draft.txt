@@ -1,0 +1,57 @@
+# DollWow
+
+> DollWow is a headless adult commerce storefront for comparing, customizing, and ordering premium dolls with discreet support, clear product details, price-match review, and buyer protection.
+
+Important: This is a draft for future `/llms.txt`. Do not publish until production routes exist at `https://dollwow.com`.
+
+## Core Pages
+
+- Home: https://dollwow.com/
+- Shop: https://dollwow.com/shop
+- Help Me Choose: https://dollwow.com/help-me-choose
+- Customize: https://dollwow.com/customize
+- Price Match: https://dollwow.com/compare
+- Buyer Protection: https://dollwow.com/buyer-protection
+- Shipping: https://dollwow.com/shipping
+- Returns: https://dollwow.com/returns
+- Support: https://dollwow.com/support
+
+## Priority Collections
+
+- Sex Dolls: https://dollwow.com/sex-dolls
+- Realistic Sex Dolls: https://dollwow.com/realistic-sex-dolls
+- TPE Sex Dolls: https://dollwow.com/tpe-sex-dolls
+- Silicone Sex Dolls: https://dollwow.com/silicone-sex-dolls
+- Silicone Head Sex Dolls: https://dollwow.com/silicone-head-sex-dolls
+- Male Sex Dolls: https://dollwow.com/male-sex-dolls
+- Mini Sex Dolls: https://dollwow.com/mini-sex-dolls
+- Petite Sex Dolls: https://dollwow.com/petite-sex-dolls
+- Ready To Ship Sex Dolls: https://dollwow.com/ready-to-ship-sex-dolls
+- Custom Sex Dolls: https://dollwow.com/custom-sex-dolls
+
+## Learning Center Draft Routes
+
+- TPE vs Silicone: https://dollwow.com/learn/tpe-vs-silicone-sex-dolls
+- Sex Doll Cost: https://dollwow.com/learn/sex-doll-cost
+- Best Sex Dolls: https://dollwow.com/learn/best-sex-dolls
+- Most Realistic Sex Dolls: https://dollwow.com/learn/most-realistic-sex-dolls
+- Mini Sex Dolls: https://dollwow.com/learn/mini-sex-dolls
+- Male Sex Doll Buying Guide: https://dollwow.com/learn/male-sex-doll-buying-guide
+- Sex Doll Reviews: https://dollwow.com/learn/sex-doll-reviews
+- Ready-To-Ship vs Custom: https://dollwow.com/learn/ready-to-ship-vs-custom-sex-dolls
+- Discreet Shipping: https://dollwow.com/learn/discreet-sex-doll-shipping
+
+## Editorial Policy
+
+DollWow content should be practical, discreet, premium, and non-explicit. Product claims should be reviewed against DollWow catalog data, supplier materials, and published policies before publication. Health, legal, and safety topics are informational and not a substitute for medical, therapeutic, or legal advice.
+
+## Contributors
+
+- Jesse: Licensed Sexologist and DollWow Intimacy Education Editor.
+- Alex: Doll Collector and DollWow Product Educator with 20+ Years of Experience.
+
+## Feeds To Add
+
+- Product feed: https://dollwow.com/product-feed.json
+- Agent index: https://dollwow.com/agent-index.json
+- Sitemap: https://dollwow.com/sitemap.xml

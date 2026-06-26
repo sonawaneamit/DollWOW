@@ -63,6 +63,9 @@ export function findRosemaryExclusiveSignals(product) {
   for (const pattern of EXCLUSIVE_PATTERNS) {
     const match = text.match(pattern.regex);
     if (match?.index !== undefined) {
+      if (pattern.type === "restricted-school-theme" && isBenignSchoolDiscountMention(text, match.index, match[0].length)) {
+        continue;
+      }
       signals.push({
         type: pattern.type,
         excerpt: excerptAround(text, match.index, match[0].length)
@@ -86,6 +89,7 @@ export function toDollWowImportProduct(product) {
   const brand = canonicalBrandLabel(product.brand || product.brandSlug || "");
   const title = rewriteDollWowTitle(product);
   const handle = rewriteDollWowHandle(product, title);
+  const legacyHandles = legacyDollWowHandles(product, title, handle);
 
   return {
     ...product,
@@ -97,6 +101,7 @@ export function toDollWowImportProduct(product) {
     description: buildDollWowDescription(product),
     reviewFlags: {
       ...(product.reviewFlags || {}),
+      legacyHandles,
       exclusiveSignals,
       sourceCopyRewritten: title !== sourceTitle || cleanText(product.description) !== buildDollWowDescription(product)
     },
@@ -119,11 +124,48 @@ export function rewriteDollWowTitle(product) {
 }
 
 export function rewriteDollWowHandle(product, title = rewriteDollWowTitle(product)) {
-  const brand = slugify(product.brandSlug || product.brand || "");
+  const brand = canonicalBrandSlug(product.brand || product.brandSlug || "");
   const base = slugify(title.replace(/\b(?:ready[-\s]?to[-\s]?ship|customizable)\b/gi, " "));
   const sourceHandle = slugify(product.sourceHandle || product.handle || "");
   const suffix = shortStableSuffix(sourceHandle || base);
   return uniqueSlugParts([brand, base, suffix]).join("-");
+}
+
+function legacyDollWowHandles(product, title, canonicalHandle) {
+  const sourceBrandSlug = slugify(product.brandSlug || "");
+  const canonicalBrand = canonicalBrandSlug(product.brand || product.brandSlug || "");
+  const legacyHandles = [];
+
+  const sourceHandle = slugify(product.sourceHandle || product.handle || "");
+  const base = slugify(title.replace(/\b(?:ready[-\s]?to[-\s]?ship|customizable)\b/gi, " "));
+  const suffix = shortStableSuffix(sourceHandle || base);
+
+  if (sourceBrandSlug && sourceBrandSlug !== canonicalBrand) {
+    const legacyHandle = uniqueSlugParts([sourceBrandSlug, base, suffix]).join("-");
+    if (legacyHandle && legacyHandle !== canonicalHandle) legacyHandles.push(legacyHandle);
+  }
+
+  const legacyNaCupTitle = legacyNaCupDollWowTitle(product);
+  if (legacyNaCupTitle) {
+    const legacyNaCupBase = slugify(legacyNaCupTitle.replace(/\b(?:ready[-\s]?to[-\s]?ship|customizable)\b/gi, " "));
+    const legacyNaCupHandle = uniqueSlugParts([canonicalBrand, legacyNaCupBase, suffix]).join("-");
+    if (legacyNaCupHandle && legacyNaCupHandle !== canonicalHandle) legacyHandles.push(legacyNaCupHandle);
+  }
+
+  return [...new Set(legacyHandles)];
+}
+
+function legacyNaCupDollWowTitle(product) {
+  if (!isCupNotApplicable(product.specs?.cupSize || extractCup(cleanSourceTitle(product.title)))) return "";
+  const sourceTitle = cleanSourceTitle(product.title);
+  const brand = cleanBrandLabel(product.brand || product.brandSlug || "");
+  const material = titleCase(inferMaterial(product));
+  const height = product.specs?.heightCm ? `${product.specs.heightCm}cm` : extractHeight(sourceTitle);
+  const name = safeVisibleDollName(extractDollName(sourceTitle));
+  const prefix = name || brand || "DollWow";
+  const availability = product.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.customAvailable ? "Customizable" : "";
+  const details = [height, "NA-Cup", material && material !== "Adult Doll" ? material : "", availability, "Companion Doll"].filter(Boolean);
+  return preserveProductAcronyms(cleanText(`${prefix} ${details.join(" ")}`));
 }
 
 export function buildDollWowDescription(product) {
@@ -183,6 +225,15 @@ function reviewIdentityText(product) {
   );
 }
 
+function isBenignSchoolDiscountMention(text, index, length) {
+  const excerpt = excerptAround(text, index, length).toLowerCase();
+  return (
+    /\bstudent\s+discounts?\b/.test(excerpt) ||
+    /\bfirst responders?\s*&?\s*seniors?\s+discounts?\b/.test(excerpt) ||
+    /\bworkers,\s*first responders?\b/.test(excerpt)
+  );
+}
+
 function cleanSourceTitle(title) {
   return cleanText(String(title || "").replace(/\s+-\s+RosemaryDoll$/i, "").replace(/\s*\[[^\]]+\]\s*/g, " "));
 }
@@ -205,11 +256,21 @@ function extractHeight(title) {
 }
 
 function extractCup(title) {
+  if (isCupNotApplicable(title)) return "";
   return title.match(/\b([A-Z]{1,2})\s*-?\s*Cup\b/i)?.[1] || "";
 }
 
 function cleanCup(value) {
+  const normalized = cleanText(value)
+    .toLowerCase()
+    .replace(/\s*cup$/i, "")
+    .replace(/[^a-z0-9]+/g, "");
+  if (["na", "none", "notapplicable", "nocup"].includes(normalized)) return "";
   return cleanText(value).replace(/\s*cup$/i, "").replace(/[^a-z]/gi, "").toUpperCase();
+}
+
+function isCupNotApplicable(...values) {
+  return values.filter(Boolean).some((value) => /\b(?:n\/?a|none|not\s+applicable|no\s+cup)\s*-?\s*cup\b/i.test(String(value)) || ["na", "n/a"].includes(cleanText(value).toLowerCase()));
 }
 
 function inferMaterial(product) {
@@ -229,6 +290,7 @@ function canonicalBrandLabel(value) {
   const text = cleanText(value).replace(/-/g, " ");
   const lower = text.toLowerCase();
   if (/\bstarpery\b/.test(lower)) return "Starpery Dolls";
+  if (/\bangel\s*kiss\b|\bangelkiss\b|\banglekiss\b/.test(lower)) return "Angelkiss";
   if (/\bpiper\b/.test(lower)) return "Piper Dolls";
   if (/\btantaly\b/.test(lower)) return "Tantaly";
   if (/^yl\b|\byl dolls?\b/.test(lower)) return "YL Dolls";
@@ -236,6 +298,22 @@ function canonicalBrandLabel(value) {
   if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "SE Doll";
   if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6YE Dolls";
   return text;
+}
+
+function canonicalBrandSlug(value) {
+  const lower = cleanText(value).replace(/-/g, " ").toLowerCase();
+  if (/\bwm\b|\bwm dolls?\b/.test(lower)) return "wm";
+  if (/\bangel\s*kiss\b|\bangelkiss\b|\banglekiss\b/.test(lower)) return "angelkiss";
+  if (/\biron\s*tech\b|\birontech\b/.test(lower)) return "irontech";
+  if (/\bstarpery\b/.test(lower)) return "starpery";
+  if (/\bpiper\b/.test(lower)) return "piper";
+  if (/\btantaly\b/.test(lower)) return "tantaly";
+  if (/^yl\b|\byl dolls?\b/.test(lower)) return "yl";
+  if (/\berovenus\b/.test(lower)) return "erovenus";
+  if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "sedoll";
+  if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6ye";
+  if (/\bzelex\b|\bzellix\b/.test(lower)) return "zelex";
+  return slugify(value);
 }
 
 function preserveProductAcronyms(value) {

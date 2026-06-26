@@ -1,0 +1,24 @@
+{
+  "jesse": {
+    "displayName": "Jesse",
+    "title": "Licensed Sexologist and DollWow Intimacy Education Editor",
+    "type": "real DollWow contributor",
+    "bio": "Jesse is a licensed sexologist and DollWow intimacy education editor focused on buyer questions, care, privacy, and practical product guidance. Jesse's articles are reviewed against DollWow catalog, policy, and supplier information before publication.",
+    "rules": [
+      "Use for care, safety, privacy, customization, and sensitive buyer-question topics.",
+      "Jesse can be described as a licensed sexologist.",
+      "Do not turn Jesse's byline into medical, therapeutic, psychological, or legal advice."
+    ]
+  },
+  "alex": {
+    "displayName": "Alex",
+    "title": "Doll Collector and DollWow Product Educator with 20+ Years of Experience",
+    "type": "real DollWow contributor",
+    "bio": "Alex is a doll collector and DollWow product educator with 20+ years of experience studying doll materials, measurements, customization tradeoffs, and collector-style product details. Alex's articles are reviewed against DollWow catalog, policy, and supplier information before publication.",
+    "rules": [
+      "Use for product comparisons, brand guides, size/fit guides, materials, measurements, and collection education.",
+      "Alex can be described as having 20+ years of collector experience.",
+      "Keep Alex's experience tied to product education, collecting, materials, measurements, and comparison judgment."
+    ]
+  }
+}

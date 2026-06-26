@@ -104,7 +104,7 @@ export function getOptionConflict(
 ) {
   const group = config.groups.find((item) => item.id === groupId);
   const currentValue = selections[groupId] ?? getDefaultSelections(config)[groupId];
-  const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(group.options[0]?.id ?? "", currentValue, optionId) : optionId;
+  const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(defaultMultipleOptionId(group.options), currentValue, optionId) : optionId;
   const nextSelections = normalizedSelections(config, { ...selections, [groupId]: nextValue });
   const conflict = config.rules.find((rule) => {
     const whenSelected = selectionIds(nextSelections[rule.when.groupId]).includes(rule.when.optionId);
@@ -118,6 +118,13 @@ export function describeOption(config: BrandCustomizationConfig, groupId: string
   const match = findOption(config, groupId, optionId);
   if (!match) return null;
   return `${match.group.label}: ${match.option.label}`;
+}
+
+export function defaultMultipleOptionId(options: CustomizationOption[]) {
+  return (
+    options.find((option) => isNoAddOnOption(option.id, option.label) || /default supplier selection/i.test(option.productionNote || ""))?.id ??
+    ""
+  );
 }
 
 export function selectionIds(value: CustomizationSelectionValue | undefined): string[] {
@@ -154,5 +161,11 @@ function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
 }
 
 function isNoAddOnOption(id: string, label = "") {
-  return id === "no-add-on" || id === "none" || /^(no add-on|no thanks|none)$/i.test(label);
+  return (
+    id === "no-add-on" ||
+    id === "none" ||
+    id === "default" ||
+    id === "factory-default" ||
+    /^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(label)
+  );
 }

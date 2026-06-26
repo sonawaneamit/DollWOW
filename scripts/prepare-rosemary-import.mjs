@@ -21,7 +21,12 @@ const publish = args.publish === "true";
 
 const importData = JSON.parse(await fs.readFile(inputPath, "utf8"));
 const rawProducts = dedupeProducts(importData.products || []);
-const preparedProducts = uniquifyProductHandles(rawProducts.map((product) => toDollWowImportProduct(product)));
+const preparedProducts = uniquifyProductHandles(
+  rawProducts.map((product) => ({
+    ...toDollWowImportProduct(product),
+    sourceDescription: product.description || ""
+  }))
+);
 const blockedProducts = preparedProducts.filter((product) => product.excludedFromDollWow);
 const products = args.includeExclusives ? preparedProducts : preparedProducts.filter((product) => !product.excludedFromDollWow);
 const preparedAt = new Date().toISOString();
@@ -188,6 +193,7 @@ function buildShopifyCsv(products, options) {
 function toStorefrontProduct(product, vendor) {
   const amount = String(product.price || "0");
   const material = inferMaterial(product);
+  const catalogIdentity = catalogIdentityFor(product, material);
   return {
     id: `gid://shopify/Product/import-${product.handle}`,
     handle: product.handle,
@@ -221,23 +227,113 @@ function toStorefrontProduct(product, vendor) {
       description: seoDescription(product)
     },
     extended: {
+      catalogIdentityKey: catalogIdentity.key,
+      catalogBodyIdentityKey: catalogIdentity.bodyKey,
+      headModel: catalogIdentity.headModel,
+      bodyType: inferBodyType(product),
       brand: product.brand,
       material,
       heightCm: product.specs?.heightCm || null,
       weightLb: product.specs?.weightLb || null,
       cupSize: product.specs?.cupSize || "",
+      measurements: product.specs?.measurements || {},
       warehouseCountry: product.warehouseCountry || (product.stockStatus === "custom" ? "Factory order" : null),
       stockStatus: product.stockStatus || "check_stock",
       deliveryEstimate: product.stockStatus === "ready_to_ship" ? "Fast shipping after stock confirmation" : "4-8 weeks",
       stockLastCheckedAt: product.importedAt || new Date().toISOString(),
       customAvailable: Boolean(product.customAvailable),
       customizationGroups: normalizeCustomizationGroups(product.optionGroups || []),
-      qcNote: `Prepared from ${product.sourceUrl}. Review supplier authorization, pricing, images, and option mapping before publish.`
+      qcNote: "Final details are confirmed before checkout or production."
     }
   };
 }
 
+function catalogIdentityFor(product, material) {
+  const brand = canonicalBrandTag(product.brand || product.brandSlug || "");
+  const model = catalogModelSlug(product);
+  const height = Number(product.specs?.heightCm || 0);
+  const cup = normalizeCatalogCup(product.specs?.cupSize);
+  const normalizedMaterial = normalizeCatalogMaterial(material);
+  const headModel = extractHeadModel(product);
+  const bodyKey = [brand || "unknown-brand", model || "unknown-model", height ? `${Math.round(height)}cm` : "height-unknown", cup ? `${cup}-cup` : "cup-unknown", normalizedMaterial || "material-unknown"]
+    .map(slugify)
+    .join("__");
+  return {
+    bodyKey,
+    headModel,
+    key: headModel ? `${bodyKey}__${slugify(headModel)}` : bodyKey
+  };
+}
+
+function normalizeCatalogCup(value) {
+  const normalized = cleanText(value || "")
+    .toLowerCase()
+    .replace(/\s*cup$/i, "")
+    .replace(/[^a-z0-9]+/g, "");
+  if (["na", "none", "notapplicable", "nocup"].includes(normalized)) return "";
+  return cleanText(value || "").match(/[a-z]{1,3}/i)?.[0]?.toLowerCase() || "";
+}
+
+function extractHeadModel(product) {
+  const text = [product.title, product.sourceTitle, product.sourceDescription, product.description, product.handle, product.sourceHandle].filter(Boolean).join(" ");
+  const patterns = [
+    /\b(?:has|with)\s+[a-z0-9\s-]*?head\s*#?\s*([a-z]{0,4}\d{1,4})\b/i,
+    /\bhead\s*(?:#|no\.?|number)?\s*([a-z]{0,4}\d{1,4})\b/i,
+    /\bsilicone\s+head\s+([a-z]{1,4}\d{1,4})\b/i,
+    /\bhead\s+([a-z]{1,4}\d{1,4})\b/i
+  ];
+
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    const normalized = normalizeHeadModel(match?.[1]);
+    if (normalized) return normalized;
+  }
+
+  return null;
+}
+
+function normalizeHeadModel(value) {
+  const match = String(value || "")
+    .trim()
+    .replace(/^#/, "")
+    .match(/^[a-z]{0,4}\d{1,4}$/i);
+  return match ? `head-${match[0].toLowerCase()}` : null;
+}
+
+function catalogModelSlug(product) {
+  const brand = canonicalBrandTag(product.brand || product.brandSlug || "");
+  const brandPhrases = unique([product.brand, product.brandSlug, brand, brand ? `${brand} dolls` : null]);
+  for (const candidate of [product.title, product.sourceTitle, product.handle, product.sourceHandle].filter(Boolean)) {
+    let cleaned = String(candidate)
+      .replace(/\b(1[2-9]\d|20\d|21\d)\s*cm\b/gi, " ")
+      .replace(/\b\d+\s*ft\s*\d*\b/gi, " ")
+      .replace(/\b[a-z]{1,3}\s*-?\s*cup\b/gi, " ")
+      .replace(/\b(tpe|silicone head|silicone|hybrid)\b/gi, " ")
+      .replace(/\b(customizable|custom|companion|adult|doll|dolls|sex|ready|ship|shipping|factory|order)\b/gi, " ")
+      .replace(/\b(import|gid|shopify|product)\b/gi, " ")
+      .replace(/\b[0-9a-f]{4,}\b/gi, " ");
+
+    for (const phrase of brandPhrases) {
+      cleaned = cleaned.replace(new RegExp(`\\b${escapeRegExp(phrase).replace(/\\ /g, "[\\s-]+")}\\b`, "gi"), " ");
+    }
+
+    const model = slugify(cleaned);
+    if (model && model !== "doll") return model;
+  }
+  return "";
+}
+
+function normalizeCatalogMaterial(value) {
+  const normalized = cleanText(value).toLowerCase();
+  if (normalized.includes("silicone head")) return "silicone-head";
+  if (normalized.includes("silicone")) return "silicone";
+  if (normalized.includes("tpe")) return "tpe";
+  if (normalized.includes("hybrid")) return "hybrid";
+  return "";
+}
+
 function productBodyHtml(product) {
+  const measurementRows = measurementSpecRows(product.specs?.measurements);
   const specs = [
     ["Brand", product.brand],
     ["Material", inferMaterial(product)],
@@ -247,14 +343,14 @@ function productBodyHtml(product) {
     ["Stock", product.stockStatus === "ready_to_ship" ? "Ready to ship after confirmation" : "Custom factory order"],
     ["Warehouse", product.warehouseCountry]
   ].filter(([, value]) => value);
-  const specHtml = specs.map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join("");
+  const specHtml = dedupeSpecRows([...measurementRows, ...specs])
+    .map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`)
+    .join("");
   const optionLabels = (product.optionGroupLabels || []).slice(0, 12);
   const optionImageCount = countOptionImages(product.optionGroups || []);
-  const optionHtml = optionLabels.length
-    ? `<p><strong>Customization groups to map:</strong> ${escapeHtml(optionLabels.join(", "))}</p>`
-    : "";
+  const optionHtml = optionLabels.length ? `<p><strong>Available customizations:</strong> ${escapeHtml(optionLabels.join(", "))}</p>` : "";
   const optionImageHtml = optionImageCount
-    ? `<p><strong>Customization option images captured:</strong> ${optionImageCount}</p>`
+    ? `<p><strong>Visual option references:</strong> ${optionImageCount} supplier reference images are available in the DollWow configurator.</p>`
     : "";
 
   return [
@@ -266,6 +362,36 @@ function productBodyHtml(product) {
   ]
     .filter(Boolean)
     .join("");
+}
+
+function measurementSpecRows(measurements = {}) {
+  const order = [
+    "Height",
+    "Weight",
+    "Cup size",
+    "Feet Length",
+    "Bust",
+    "Legs Length",
+    "Waist",
+    "Arms Length",
+    "Hip",
+    "Shoulders Width",
+    "Vagina Depth",
+    "Anus Depth",
+    "Oral Depth"
+  ];
+  return order.map((label) => [label, measurements[label]]).filter(([, value]) => value);
+}
+
+function dedupeSpecRows(rows) {
+  const seen = new Set();
+  return rows.filter(([label, value]) => {
+    if (!value) return false;
+    const key = String(label).toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function reviewWarnings(product) {
@@ -310,7 +436,7 @@ function normalizedCustomizationOptions(group) {
       swatch: option.imageUrl
         ? {
             kind: "image",
-            value: option.imageUrl,
+            value: normalizeRosemaryAssetUrl(option.imageUrl),
             label: option.label
           }
         : undefined,
@@ -359,16 +485,53 @@ function normalizeOptionLabel(label) {
   return cleanText(String(label || "").replace(/^No Change$/i, "Factory default"));
 }
 
+function normalizeRosemaryAssetUrl(value) {
+  try {
+    const url = new URL(value);
+    const pathname = url.pathname.toLowerCase();
+
+    if (pathname.includes("deluxe-care-kit")) {
+      return "/option-swatches/deluxe-care-kit.svg";
+    }
+
+    if (pathname.includes("care-kit")) {
+      return "/option-swatches/care-kit.svg";
+    }
+
+    if (url.hostname.includes("nitrocdn.com")) {
+      const match = url.pathname.match(/\/(www\.)?(supplier|rosemarydoll)\.com(\/wp-content\/uploads\/.+)$/i);
+      if (match) {
+        return `https://www.rosemarydoll.com${match[3]}`;
+      }
+      return value;
+    }
+    if (/(^|\.)supplier\.com$/i.test(url.hostname)) {
+      url.hostname = "www.rosemarydoll.com";
+      return url.toString();
+    }
+    if (url.hostname === "rosemarydoll.com") {
+      url.hostname = "www.rosemarydoll.com";
+      return url.toString();
+    }
+    return value;
+  } catch {
+    return value;
+  }
+}
+
 function countOptionImages(groups) {
   return groups.reduce((total, group) => total + (group.options || []).filter((option) => option.imageUrl).length, 0);
 }
 
 function productTags(product) {
+  const brand = canonicalBrandTag(product.brand || product.brandSlug || "");
+  const bodyType = inferBodyType(product);
   return unique([
-    product.brandSlug,
-    slugify(product.brand || ""),
+    brand,
+    brand ? `${brand}-dolls` : null,
     product.stockStatus,
     product.customAvailable ? "customizable" : null,
+    bodyType !== "unknown" ? `${bodyType}-doll` : null,
     inferMaterial(product).toLowerCase().replace(/\s+/g, "-"),
     heightRangeTag(product.specs?.heightCm),
     weightRangeTag(product.specs?.weightLb),
@@ -412,6 +575,21 @@ function inferMaterial(product) {
   return "Adult doll";
 }
 
+function inferBodyType(product) {
+  const text = `${product.title || ""} ${product.sourceTitle || ""} ${product.handle || ""} ${product.description || ""} ${(product.tags || []).join(" ")}`.toLowerCase();
+  if (/\bmale masturbator\b/.test(text)) {
+    if (/\b(vagina depth|breast|bust|bra size|big boobs?)\b/.test(text)) return "female";
+    return "unknown";
+  }
+  if (/\b(male|man|men|boy|boys|gentleman|gentlemen|masculine)\b/.test(text)) return "male";
+  if (/\b(female|woman|women|girl|girls|feminine)\b/.test(text)) return "female";
+  const cup = cleanText(product.specs?.cupSize).toLowerCase();
+  if (cup && !["na", "n/a", "none"].includes(cup.replace(/\s+/g, ""))) return "female";
+  if (/\b(vagina depth|breast|bust|bra size)\b/.test(text)) return "female";
+  if (/\b(penis|male torso|male body)\b/.test(text)) return "male";
+  return "unknown";
+}
+
 function inventoryQty(product) {
   return product.stockStatus === "ready_to_ship" ? "1" : "0";
 }
@@ -422,11 +600,27 @@ function gramsFor(product) {
 }
 
 function skuFor(product) {
-  return skuParts("DW", product.brandSlug, product.handle)
+  return skuParts("DW", canonicalBrandTag(product.brand || product.brandSlug || ""), product.handle)
     .join("-")
     .toUpperCase()
     .replace(/[^A-Z0-9-]/g, "")
     .slice(0, 64);
+}
+
+function canonicalBrandTag(value) {
+  const lower = cleanText(value).replace(/-/g, " ").toLowerCase();
+  if (/\bwm\b|\bwm dolls?\b/.test(lower)) return "wm";
+  if (/\bangel\s*kiss\b|\bangelkiss\b|\banglekiss\b/.test(lower)) return "angelkiss";
+  if (/\biron\s*tech\b|\birontech\b/.test(lower)) return "irontech";
+  if (/\bstarpery\b/.test(lower)) return "starpery";
+  if (/\bpiper\b/.test(lower)) return "piper";
+  if (/\btantaly\b/.test(lower)) return "tantaly";
+  if (/^yl\b|\byl dolls?\b/.test(lower)) return "yl";
+  if (/\berovenus\b/.test(lower)) return "erovenus";
+  if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "sedoll";
+  if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6ye";
+  if (/\bzelex\b|\bzellix\b/.test(lower)) return "zelex";
+  return slugify(value);
 }
 
 function seoTitle(product) {
@@ -465,6 +659,10 @@ function escapeHtml(value) {
 
 function cleanText(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function escapeRegExp(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function unique(values) {

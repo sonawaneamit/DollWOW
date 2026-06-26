@@ -1,18 +1,65 @@
 import { CompareListingForm } from "@/components/CompareListingForm";
 
-export const metadata = { title: "Compare a Listing" };
+export const metadata = { title: "Price Match Request" };
 
-export default function ComparePage() {
+export default async function ComparePage({
+  searchParams
+}: {
+  searchParams: Promise<{ product?: string; title?: string }>;
+}) {
+  const params = await searchParams;
+  const targetProductHandle = params.product;
+  const targetProductTitle = params.title;
+
   return (
-    <section className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-6 sm:p-8">
-        <p className="text-sm uppercase tracking-[0.18em] text-gold-300">LIVE Price Comparison</p>
-        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Paste a product link</h1>
-        <p className="mt-3 text-ivory-400">We extract what we can, look for a DollWow match, and show when our team should verify before you pay.</p>
-        <div className="mt-7">
-          <CompareListingForm />
+    <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="rounded-[24px] border border-gold-500/16 bg-ink-800/78 p-6 sm:p-8">
+          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">LIVE Price Comparison</p>
+          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Request a price match</h1>
+          <p className="mt-3 text-ivory-400">Share the competitor product link, the final quoted total, and a screenshot of the configured cart or summary. That gives us enough to review the real offer instead of only the base page.</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <QuickFact title="Final total" body="We review the total after options, extras, and promos." />
+            <QuickFact title="Cart screenshot" body="A clear cart screenshot helps us verify the exact setup faster." />
+            <QuickFact title="Manual review when needed" body="If something is unclear, a real person checks it before we promise anything." />
+          </div>
+          <div className="mt-7">
+            <CompareListingForm targetProductHandle={targetProductHandle} targetProductTitle={targetProductTitle} />
+          </div>
+        </div>
+
+        <div className="rounded-[24px] border border-gold-500/16 bg-gradient-to-br from-rose-950/35 via-ink-900/86 to-ink-950/95 p-6 sm:p-8">
+          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">WHAT TO SEND</p>
+          <h2 className="mt-2 text-4xl font-semibold text-ivory-50">Help us check it quickly</h2>
+          <div className="mt-6 space-y-4 text-sm text-ivory-300">
+            <div className="rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Product URL</p>
+              <p className="mt-2">Paste the exact listing you priced on the competitor site.</p>
+            </div>
+            <div className="rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Final price</p>
+              <p className="mt-2">Enter the total you saw after options, accessories, shipping, or discounts.</p>
+            </div>
+            <div className="rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Screenshot</p>
+              <p className="mt-2">Upload a clear cart or checkout summary showing the selected setup and final price.</p>
+            </div>
+            <div className="rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
+              <p className="text-xs uppercase tracking-[0.16em] text-gold-300">What happens next</p>
+              <p className="mt-2">Simple quotes can move quickly. Configured or promo-heavy quotes go to team review so we stay accurate.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function QuickFact({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-[16px] border border-gold-500/14 bg-ink-950/40 p-4">
+      <p className="text-sm font-semibold text-ivory-100">{title}</p>
+      <p className="mt-2 text-sm text-ivory-400">{body}</p>
+    </div>
   );
 }

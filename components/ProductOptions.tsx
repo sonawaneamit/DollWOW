@@ -20,8 +20,11 @@ import {
   ShoppingBag,
   Sparkles
 } from "lucide-react";
+import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { getCustomizationConfig } from "@/lib/customization/configs";
-import { getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
+import { defaultMultipleOptionId, getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
+import { writeBrowserCartState } from "@/lib/cart/browser";
+import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
 import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
 import type { Product } from "@/types/product";
@@ -55,6 +58,9 @@ export function ProductOptions({ product }: { product: Product }) {
   const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
   const stepCount = config.groups.length + 1;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
+  const displayTitle = productPublicTitle(product);
+  const displayName = productDisplayName(product);
+  const builderHeading = productBuilderHeading(product);
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
@@ -95,7 +101,18 @@ export function ProductOptions({ product }: { product: Product }) {
     const response = await fetch("/api/cart/create", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ merchandiseId: variantId, quantity: 1, attributes: resolved.cartAttributes })
+      body: JSON.stringify({
+        merchandiseId: variantId,
+        quantity: 1,
+        attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }, ...resolved.cartAttributes] : resolved.cartAttributes,
+        customizationCharge: resolved.optionPriceDelta
+          ? {
+              amount: resolved.optionPriceDelta,
+              currencyCode,
+              title: `${displayName || displayTitle} custom options`
+            }
+          : undefined
+      })
     });
     const payload = await response.json();
     setLoading(false);
@@ -103,6 +120,17 @@ export function ProductOptions({ product }: { product: Product }) {
       setError(payload.error ?? "Could not start checkout.");
       return;
     }
+    writeBrowserCartState({
+      checkoutUrl: payload.checkoutUrl,
+      totalQuantity: payload.totalQuantity ?? 1,
+      productTitle: displayTitle,
+      productDisplayName: displayName || undefined,
+      productHandle: product.handle,
+      productImageUrl: heroImage?.url,
+      productImageAlt: heroImage?.altText ?? displayTitle,
+      currencyCode,
+      customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
+    });
     router.push(payload.checkoutUrl);
   }
 
@@ -111,7 +139,7 @@ export function ProductOptions({ product }: { product: Product }) {
     markGroupReviewed(groupId);
     setSelected((current) => ({
       ...current,
-      [groupId]: group?.selectionMode === "multiple" ? nextMultipleSelection(group.options[0]?.id ?? "", current[groupId], optionId) : optionId
+      [groupId]: group?.selectionMode === "multiple" ? nextMultipleSelection(defaultMultipleOptionId(group.options), current[groupId], optionId) : optionId
     }));
   }
 
@@ -165,7 +193,7 @@ export function ProductOptions({ product }: { product: Product }) {
           <div className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{isReviewing ? "Build review" : "Build studio"}</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">{isReviewing ? "Confirm your build" : "Make her yours"}</h2>
+              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">{isReviewing ? "Confirm your build" : builderHeading}</h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">
                 {isReviewing
                   ? "Review the selected options, edit anything that needs a second look, then continue to checkout."
@@ -193,14 +221,14 @@ export function ProductOptions({ product }: { product: Product }) {
                 <div data-tone="deep" className="builder-preview-island noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] sm:max-w-[320px] xl:max-w-[340px]">
                   {heroImage ? (
                     <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
-                      <Image src={heroImage.url} alt={heroImage.altText ?? product.title} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
+                      <Image src={heroImage.url} alt={displayTitle} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
                     </button>
                   ) : (
-                    <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{product.title}</div>
+                    <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{displayTitle}</div>
                   )}
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(0,0,0,0.62))]" />
                   <div className="absolute bottom-4 left-4 right-4 rounded-[18px] border border-gold-500/18 bg-ink-950/78 p-4 backdrop-blur">
-                    <p className="line-clamp-1 text-sm font-semibold text-ivory-50">{product.title}</p>
+                    <p className="line-clamp-1 text-sm font-semibold text-ivory-50">{displayTitle}</p>
                     <p className="mt-1 text-xs text-ivory-500">{product.extended.brand ?? product.vendor}</p>
                   </div>
                 </div>
@@ -349,7 +377,7 @@ export function ProductOptions({ product }: { product: Product }) {
       <div data-tone="deep" className={clsx("builder-price-island fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
         <div className="mx-auto flex max-w-7xl items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-xs text-ivory-500">{product.title}</p>
+            <p className="truncate text-xs text-ivory-500">{displayTitle}</p>
             <p className="text-base font-semibold text-gold-300">{formatMoney(resolved.totalPrice, currencyCode)}</p>
           </div>
           <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={isReviewing ? addToCart : showReview}>
@@ -359,10 +387,27 @@ export function ProductOptions({ product }: { product: Product }) {
         </div>
       </div>
       {isPreviewOpen && heroImage && (
-        <ImagePreviewModal imageUrl={heroImage.url} alt={heroImage.altText ?? product.title} onClose={() => setPreviewOpen(false)} />
+        <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
   );
+}
+
+function cartCustomizationSummary(
+  selectedOptions: Array<{ groupLabel: string; optionLabel: string; priceDelta: number }>
+) {
+  const byGroup = new Map<string, { optionLabels: string[]; priceDelta: number }>();
+  for (const option of selectedOptions) {
+    const current = byGroup.get(option.groupLabel) ?? { optionLabels: [], priceDelta: 0 };
+    current.optionLabels.push(option.optionLabel);
+    current.priceDelta += option.priceDelta;
+    byGroup.set(option.groupLabel, current);
+  }
+  return [...byGroup.entries()].map(([groupLabel, summary]) => ({
+    groupLabel,
+    optionLabels: summary.optionLabels,
+    priceDelta: summary.priceDelta
+  }));
 }
 
 function CategoryRail({

@@ -1,16 +1,42 @@
-export const metadata = { title: "Adult-Only Policy" };
+import type { Metadata } from "next";
+import { PolicyLayout } from "@/components/PolicyLayout";
+
+export const metadata: Metadata = { title: "Adult-Only Policy" };
 
 export default function AdultOnlyPage() {
   return (
-    <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Adult-only policy</p>
-      <h1 className="mt-2 text-4xl font-semibold text-ivory-50">DollWow is for adults only</h1>
-      <p className="mt-4 text-ivory-400">This site is intended only for adults who are legally permitted to buy adult products in their location.</p>
-      <div className="mt-8 space-y-3">
-        {["No underage-coded categories, language, imagery, themes, or styling are allowed.", "We avoid school themes, teen language, and misleading product claims.", "Customers are responsible for following local laws.", "Support may refuse requests that do not fit these standards."].map((item) => (
-          <div key={item} className="rounded-[16px] border border-gold-500/14 bg-ink-800/72 p-4 text-ivory-300">{item}</div>
-        ))}
-      </div>
-    </section>
+    <PolicyLayout
+      eyebrow="Adult-only policy"
+      title="DollWow is for adults only."
+      intro="This site is intended only for adults who are legally allowed to buy adult products in their location. We keep the catalog adult, clear, and responsible."
+      ctas={[
+        { label: "Browse catalog", href: "/shop", primary: true },
+        { label: "Privacy policy", href: "/privacy-policy" }
+      ]}
+      sections={[
+        {
+          title: "Age and local laws",
+          items: [
+            "You must be an adult in your location to use this site or buy from DollWow.",
+            "Customers are responsible for following local laws, customs rules, and import restrictions.",
+            "Support may refuse requests that do not fit these standards."
+          ]
+        },
+        {
+          title: "Content standards",
+          items: [
+            "No underage-coded categories, language, imagery, themes, or styling are allowed.",
+            "We avoid school themes, teen language, and misleading product claims.",
+            "AI-generated visuals must not misrepresent the actual product, included accessories, or shipping state."
+          ]
+        }
+      ]}
+      asideTitle="Simple rule"
+      asideItems={[
+        "Adults only.",
+        "No underage-coded content.",
+        "No fake reviews, fake buyers, or misleading claims."
+      ]}
+    />
   );
 }

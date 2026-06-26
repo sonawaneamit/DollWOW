@@ -56,7 +56,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
   return payload.data as T;
 }
 
-const productListFields = `
+const productListFieldsBase = `
   id
   handle
   title
@@ -81,11 +81,19 @@ const productListFields = `
       }
     }
   }
+  catalogIdentityKey: metafield(namespace: "custom", key: "catalog_identity_key") { value }
+  catalogBodyIdentityKey: metafield(namespace: "custom", key: "catalog_body_identity_key") { value }
+  headModel: metafield(namespace: "custom", key: "head_model") { value }
+  displayName: metafield(namespace: "custom", key: "display_name") { value }
+  bodyType: metafield(namespace: "custom", key: "body_type") { value }
   brand: metafield(namespace: "custom", key: "brand") { value }
+  sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
+  sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }
   material: metafield(namespace: "custom", key: "material") { value }
   heightCm: metafield(namespace: "custom", key: "height_cm") { value }
   weightLb: metafield(namespace: "custom", key: "weight_lb") { value }
   cupSize: metafield(namespace: "custom", key: "cup_size") { value }
+  measurements: metafield(namespace: "custom", key: "measurements") { value }
   warehouseCountry: metafield(namespace: "custom", key: "warehouse_country") { value }
   stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
   deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
@@ -94,12 +102,26 @@ const productListFields = `
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
 `;
 
+function productListFields(options: { includeCustomizationGroups?: boolean } = {}) {
+  return `
+    ${productListFieldsBase}
+    ${options.includeCustomizationGroups ? 'customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }' : ""}
+  `;
+}
+
 const productDetailFields = `
-  ${productListFields}
-  customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
+  ${productListFields({ includeCustomizationGroups: true })}
 `;
 
-export async function getProducts({ query, first = 96 }: { query?: string; first?: number } = {}) {
+export async function getProducts({
+  query,
+  first = 96,
+  includeCustomizationGroups = false
+}: {
+  query?: string;
+  first?: number;
+  includeCustomizationGroups?: boolean;
+} = {}) {
   const fallbackProducts = sampleProducts.slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
@@ -113,14 +135,14 @@ export async function getProducts({ query, first = 96 }: { query?: string; first
       const data: ProductListData = await storefrontFetch<ProductListData>(
         `query Products($first: Int!, $query: String, $after: String) {
           products(first: $first, after: $after, query: $query, sortKey: TITLE) {
-            edges { cursor node { ${productListFields} } }
+            edges { cursor node { ${productListFields({ includeCustomizationGroups })} } }
             pageInfo { hasNextPage endCursor }
           }
         }`,
         { first: pageSize, query, after }
       );
 
-      products.push(...data.products.edges.map((edge) => mapShopifyProduct(edge.node)));
+      products.push(...data.products.edges.map((edge) => mapShopifyProduct(edge.node)).filter(isCustomerVisibleProduct));
       if (!data.products.pageInfo.hasNextPage) break;
       after = data.products.pageInfo.endCursor;
       if (!after) break;
@@ -131,6 +153,10 @@ export async function getProducts({ query, first = 96 }: { query?: string; first
     console.error(error);
     return fallbackProducts;
   }
+}
+
+function isCustomerVisibleProduct(product: Product) {
+  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag));
 }
 
 export async function getProductCount({ query }: { query?: string } = {}) {
@@ -163,7 +189,7 @@ export async function getProductCount({ query }: { query?: string } = {}) {
   }
 }
 
-export async function getProductByHandle(handle: string) {
+export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number } = { cache: "no-store" }) {
   if (!hasShopifyStorefrontEnv()) {
     return sampleProducts.find((product) => product.handle === handle) ?? null;
   }
@@ -174,7 +200,7 @@ export async function getProductByHandle(handle: string) {
         product(handle: $handle) { ${productDetailFields} }
       }`,
       { handle },
-      { cache: "no-store" }
+      options
     );
 
     return data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((product) => product.handle === handle) ?? null);
@@ -210,6 +236,11 @@ export async function createCart(input: {
   merchandiseId: string;
   quantity: number;
   attributes?: Array<{ key: string; value: string }>;
+  customizationCharge?: {
+    amount: number;
+    currencyCode: string;
+    title?: string;
+  };
   discountCodes?: string[];
 }) {
   if (!hasShopifyStorefrontEnv()) {
@@ -239,7 +270,8 @@ export async function createCart(input: {
             merchandiseId: input.merchandiseId,
             quantity: input.quantity,
             attributes: input.attributes ?? []
-          }
+          },
+          ...customizationChargeLines(input.customizationCharge)
         ],
         discountCodes: input.discountCodes ?? []
       }
@@ -250,6 +282,90 @@ export async function createCart(input: {
   if (error) throw new Error(error.message);
   if (!data.cartCreate.cart) throw new Error("Shopify did not return a cart.");
   return data.cartCreate.cart;
+}
+
+type ShopifyCartLineInput = {
+  merchandiseId: string;
+  quantity: number;
+  attributes?: Array<{ key: string; value: string }>;
+};
+
+type ChargeVariant = {
+  amount: number;
+  merchandiseId: string;
+};
+
+export function customizationChargeLines(charge?: {
+  amount: number;
+  currencyCode: string;
+  title?: string;
+}): ShopifyCartLineInput[] {
+  if (!charge || charge.amount <= 0) return [];
+
+  const configuredCurrency = (env.SHOPIFY_CUSTOM_OPTION_CHARGE_CURRENCY || "USD").toUpperCase();
+  if (charge.currencyCode.toUpperCase() !== configuredCurrency) {
+    throw new Error(`Custom option charges are configured for ${configuredCurrency}, but this product is priced in ${charge.currencyCode}.`);
+  }
+
+  const variants = parseCustomizationChargeVariants();
+  if (!variants.length) {
+    throw new Error("Custom option charges are not configured in Shopify yet. Add SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS before checking out paid customizations.");
+  }
+
+  let remainingCents = Math.round(charge.amount * 100);
+  const lines: ShopifyCartLineInput[] = [];
+
+  for (const variant of variants) {
+    const variantCents = Math.round(variant.amount * 100);
+    if (variantCents <= 0 || remainingCents < variantCents) continue;
+    const quantity = Math.floor(remainingCents / variantCents);
+    if (!quantity) continue;
+    lines.push({
+      merchandiseId: variant.merchandiseId,
+      quantity,
+      attributes: [
+        { key: "DollWow Charge Type", value: "Custom options" },
+        { key: "DollWow Charge For", value: charge.title || "Selected customization options" },
+        { key: "DollWow Charge Amount", value: `${configuredCurrency} ${variant.amount}` }
+      ]
+    });
+    remainingCents -= quantity * variantCents;
+  }
+
+  if (remainingCents !== 0) {
+    throw new Error("Custom option charge denominations do not cover this option total. Add smaller Shopify charge variants.");
+  }
+
+  return lines;
+}
+
+function parseCustomizationChargeVariants(): ChargeVariant[] {
+  const raw = env.SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS;
+  if (!raw) return [];
+
+  let entries: Array<[string, unknown]> = [];
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      entries = Object.entries(parsed as Record<string, unknown>);
+    }
+  } catch {
+    entries = raw.split(",").map((pair) => {
+      const separatorIndex = pair.indexOf(":");
+      if (separatorIndex === -1) return [pair, ""] as [string, unknown];
+      const amount = pair.slice(0, separatorIndex);
+      const id = pair.slice(separatorIndex + 1);
+      return [amount, id] as [string, unknown];
+    });
+  }
+
+  return entries
+    .map(([amount, merchandiseId]) => ({
+      amount: Number(amount),
+      merchandiseId: String(merchandiseId || "").trim()
+    }))
+    .filter((variant) => variant.amount > 0 && variant.merchandiseId.startsWith("gid://shopify/ProductVariant/"))
+    .sort((a, b) => b.amount - a.amount);
 }
 
 export { API_VERSION as SHOPIFY_STOREFRONT_API_VERSION };

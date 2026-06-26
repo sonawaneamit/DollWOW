@@ -1,0 +1,86 @@
+[
+  {
+    "value": "wm",
+    "label": "WM Dolls",
+    "collectionHandle": "wm-dolls",
+    "tags": ["wm", "wm-dolls"],
+    "aliases": ["wm", "wm doll", "wm dolls", "wmdoll", "wmdolls"]
+  },
+  {
+    "value": "angelkiss",
+    "label": "Angelkiss",
+    "collectionHandle": "angelkiss-dolls",
+    "tags": ["angelkiss", "angelkiss-doll", "angelkiss-dolls", "anglekiss-doll", "anglekiss-dolls"],
+    "aliases": ["angelkiss", "anglekiss", "angel kiss", "angelkiss doll", "angelkiss dolls", "anglekiss doll", "anglekiss dolls", "angel kiss doll", "angel kiss dolls"]
+  },
+  {
+    "value": "irontech",
+    "label": "Irontech Dolls",
+    "collectionHandle": "irontech-dolls",
+    "tags": ["irontech", "irontech-doll", "irontech-dolls"],
+    "aliases": ["irontech", "iron tech", "irontech doll", "irontech dolls", "iron tech doll", "iron tech dolls"]
+  },
+  {
+    "value": "starpery",
+    "label": "Starpery Dolls",
+    "collectionHandle": "starpery-dolls",
+    "tags": ["starpery", "starpery-dolls"],
+    "aliases": ["starpery", "star pery", "starpery doll", "starpery dolls", "star pery doll", "star pery dolls"]
+  },
+  {
+    "value": "piper",
+    "label": "Piper Dolls",
+    "collectionHandle": "piper-dolls",
+    "tags": ["piper", "piper-dolls"],
+    "aliases": ["piper", "piper doll", "piper dolls"]
+  },
+  {
+    "value": "tantaly",
+    "label": "Tantaly",
+    "collectionHandle": "tantaly-dolls",
+    "tags": ["tantaly", "tantaly-dolls"],
+    "aliases": ["tantaly", "tantaly doll", "tantaly dolls"]
+  },
+  {
+    "value": "yl",
+    "label": "YL Dolls",
+    "collectionHandle": "yl-dolls",
+    "tags": ["yl", "yl-dolls"],
+    "aliases": ["yl", "yl doll", "yl dolls"]
+  },
+  {
+    "value": "erovenus",
+    "label": "Erovenus",
+    "collectionHandle": "erovenus-dolls",
+    "tags": ["erovenus", "erovenus-dolls"],
+    "aliases": ["erovenus", "erovenus doll", "erovenus dolls"]
+  },
+  {
+    "value": "sedoll",
+    "label": "SE Doll",
+    "collectionHandle": "se-doll",
+    "tags": ["sedoll", "se-doll", "se-dolls"],
+    "aliases": ["sedoll", "se doll", "se dolls", "sexdoll"]
+  },
+  {
+    "value": "6ye",
+    "label": "6YE Dolls",
+    "collectionHandle": "6ye-dolls",
+    "tags": ["6ye", "6ye-dolls"],
+    "aliases": ["6ye", "6ye doll", "6ye dolls", "sixye"]
+  },
+  {
+    "value": "zelex",
+    "label": "Zelex Dolls",
+    "collectionHandle": "zelex-dolls",
+    "tags": ["zelex", "zelex-dolls"],
+    "aliases": ["zelex", "zelex doll", "zelex dolls", "zellix", "zellix doll", "zellix dolls"]
+  },
+  {
+    "value": "dolls-castle",
+    "label": "Dolls Castle",
+    "collectionHandle": "dolls-castle",
+    "tags": ["dolls-castle", "doll-castle"],
+    "aliases": ["dolls castle", "doll castle", "dollscastle"]
+  }
+]

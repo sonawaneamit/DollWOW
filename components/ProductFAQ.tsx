@@ -19,12 +19,12 @@ const faqs = [
     answer: "Our team reviews the selected options, checks compatibility, confirms timing, and follows up if anything needs clarification before production begins."
   },
   {
-    question: "Do I get QC photos before shipment?",
-    answer: "For custom builds with factory QC photos, we request them privately before shipment so you can confirm the final look."
+    question: "Do I approve factory photos before shipment?",
+    answer: "For custom builds, we send detailed factory photos and videos before shipment. If something needs a second pass, we request revisions before the order is approved to ship."
   },
   {
     question: "What if the package arrives damaged?",
-    answer: "Contact us quickly with photos of the packaging and item condition. We will document the issue and coordinate the replacement or support path."
+    answer: "Contact us quickly with photos of the packaging and item condition. We will review the issue and help with repair, replacement, or the right next step."
   },
   {
     question: "Can I ask questions before buying?",

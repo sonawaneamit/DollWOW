@@ -1,32 +1,80 @@
 import Link from "next/link";
 
-const footerLinks = [
-  ["Shipping", "/shipping"],
-  ["Returns", "/returns"],
-  ["Adult-only policy", "/adult-only"],
-  ["Support", "/support"],
-  ["Supplier page", "/supplier"]
-];
+const footerGroups = [
+  {
+    title: "Shop",
+    links: [
+      ["All dolls", "/shop"],
+      ["Ready to ship", "/warehouse"],
+      ["Customize", "/customize"],
+      ["Price match", "/compare"]
+    ]
+  },
+  {
+    title: "Guidance",
+    links: [
+      ["Help me choose", "/help-me-choose"],
+      ["FAQ", "/faq"],
+      ["Why DollWow", "/why-dollwow"],
+      ["Support", "/support"],
+      ["For brands", "/supplier"]
+    ]
+  },
+  {
+    title: "Policies",
+    links: [
+      ["Buyer protection", "/buyer-protection"],
+      ["Shipping protection", "/shipping-protection"],
+      ["Best price guarantee", "/best-price-guarantee"],
+      ["How ordering works", "/how-ordering-works"],
+      ["Shipping", "/shipping"],
+      ["Returns", "/returns"],
+      ["Scam alert", "/scam-alert"],
+      ["Privacy policy", "/privacy-policy"],
+      ["Adult-only policy", "/adult-only"]
+    ]
+  }
+] as const;
 
 export function Footer() {
   return (
-    <footer className="border-t border-gold-500/12 bg-ink-950">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8">
-        <div>
-          <p className="text-2xl font-bold text-ivory-50">
-            Doll<span className="text-gold-400">Wow</span>
-          </p>
-          <p className="mt-3 max-w-xl text-sm text-ivory-500">
-            A simpler way to find, compare, customize, and buy the right doll with clear support.
-          </p>
-          <p className="mt-4 text-xs text-ivory-600">Adults only. Product details, prices, and stock are verified before checkout.</p>
-        </div>
-        <div className="grid grid-cols-2 gap-3 text-sm text-ivory-400">
-          {footerLinks.map(([label, href]) => (
-            <Link key={href} href={href} className="hover:text-gold-300">
-              {label}
-            </Link>
+    <footer className="border-t border-gold-500/12 bg-[linear-gradient(180deg,#120907,#090505)]">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 border-b border-gold-500/12 pb-8 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
+          <div>
+            <p className="text-2xl font-bold text-ivory-50">
+              Doll<span className="text-gold-400">Wow</span>
+            </p>
+            <p className="mt-3 max-w-md text-sm leading-6 text-ivory-400">
+              A premium storefront for comparing, customizing, and ordering with discreet checkout, clear timelines, and support that stays useful.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Link href="/shop" className="rounded-[14px] border border-gold-500/18 px-3 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
+                Browse catalog
+              </Link>
+              <Link href="/support" className="rounded-[14px] border border-gold-500/18 px-3 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
+                Ask our team
+              </Link>
+            </div>
+          </div>
+
+          {footerGroups.map((group) => (
+            <div key={group.title}>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{group.title}</p>
+              <div className="mt-4 grid gap-3 text-sm text-ivory-400">
+                {group.links.map(([label, href]) => (
+                  <Link key={href} href={href} className="transition hover:text-gold-300">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
+        </div>
+
+        <div className="flex flex-col gap-3 pt-6 text-sm text-ivory-500 md:flex-row md:items-center md:justify-between">
+          <p>Adults only. Product details, prices, and availability are reviewed before checkout.</p>
+          <p>Discreet billing and plain packaging by default.</p>
         </div>
       </div>
     </footer>

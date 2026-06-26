@@ -1,94 +1,77 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { QuizAnswers } from "@/types/quiz";
+import { defaultQuizAnswers } from "@/lib/quiz/answers";
 import { GoldButton } from "./GoldButton";
 
 const questions: Array<{
   key: keyof QuizAnswers;
   label: string;
-  options: Array<{ value: string; label: string }>;
+  helper: string;
+  options: Array<{ value: string; label: string; hint?: string }>;
 }> = [
-  { key: "budget", label: "Budget", options: [
-    { value: "under-1500", label: "Under $1,500" },
-    { value: "1500-2500", label: "$1,500 to $2,500" },
-    { value: "2500-4000", label: "$2,500 to $4,000" },
-    { value: "4000-plus", label: "$4,000+" }
+  { key: "companionType", label: "Who are you shopping for?", helper: "This keeps male and female dolls from mixing in your shortlist.", options: [
+    { value: "female", label: "Female dolls", hint: "Most common choice" },
+    { value: "male", label: "Male dolls", hint: "Show male-body options first" },
+    { value: "any", label: "Open to either", hint: "Keep the search broad" }
   ] },
-  { key: "delivery", label: "Delivery timing", options: [
-    { value: "fast", label: "Fast delivery" },
-    { value: "balanced", label: "Balanced" },
-    { value: "custom", label: "Custom is fine" }
+  { key: "budget", label: "Budget", helper: "Use the range you would actually be comfortable checking out with.", options: [
+    { value: "under-1500", label: "Under $1,500", hint: "Value-focused" },
+    { value: "1500-2500", label: "$1,500 to $2,500", hint: "Most common range" },
+    { value: "2500-4000", label: "$2,500 to $4,000", hint: "More premium builds" },
+    { value: "4000-plus", label: "$4,000+", hint: "High-end options" }
   ] },
-  { key: "material", label: "Material", options: [
-    { value: "tpe", label: "TPE" },
-    { value: "silicone", label: "Silicone" },
-    { value: "either", label: "Either" }
+  { key: "delivery", label: "Timing", helper: "Ready-to-ship dolls move faster; custom orders give you more control.", options: [
+    { value: "fast", label: "As soon as possible", hint: "Prioritize warehouse dolls" },
+    { value: "balanced", label: "Balanced", hint: "Good mix of stock and custom" },
+    { value: "custom", label: "Custom is fine", hint: "3-5 week custom timing is okay" }
   ] },
-  { key: "bodyType", label: "Body preference", options: [
-    { value: "lighter", label: "Lighter/easier" },
-    { value: "curvy", label: "Curvy" },
-    { value: "premium", label: "Premium feel" },
-    { value: "unsure", label: "Not sure" }
+  { key: "material", label: "Material", helper: "Pick a preference if you already know it. Otherwise we will keep both.", options: [
+    { value: "tpe", label: "TPE", hint: "Softer, often lower price" },
+    { value: "silicone", label: "Silicone", hint: "Premium finish and durability" },
+    { value: "either", label: "Either", hint: "Show both" }
   ] },
-  { key: "sizeComfort", label: "Handling comfort", options: [
-    { value: "easy", label: "Easy to move" },
-    { value: "standard", label: "Standard" },
-    { value: "large", label: "Larger is okay" }
+  { key: "bodyType", label: "Build preference", helper: "This is a soft preference, not a strict filter.", options: [
+    { value: "lighter", label: "Lighter/easier", hint: "Less difficult to move" },
+    { value: "curvy", label: "Curvy", hint: "Fuller proportions" },
+    { value: "premium", label: "Premium feel", hint: "Higher-end finish" },
+    { value: "unsure", label: "Not sure", hint: "Let DollWow suggest" }
   ] },
-  { key: "storage", label: "Storage space", options: [
-    { value: "limited", label: "Limited" },
-    { value: "normal", label: "Normal" },
-    { value: "dedicated", label: "Dedicated space" }
+  { key: "sizeComfort", label: "Handling comfort", helper: "Weight matters for moving, cleaning, storing, and dressing.", options: [
+    { value: "easy", label: "Easy to move", hint: "Prioritize lighter dolls" },
+    { value: "standard", label: "Standard", hint: "No strong limit" },
+    { value: "large", label: "Larger is okay", hint: "Size matters more than weight" }
   ] },
-  { key: "customNeeds", label: "Custom choices", options: [
-    { value: "ready", label: "Ready-to-ship" },
-    { value: "some-options", label: "Some options" },
-    { value: "full-custom", label: "Full custom" }
+  { key: "storage", label: "Storage", helper: "This helps avoid recommending something too large for your setup.", options: [
+    { value: "limited", label: "Limited space", hint: "Smaller/lighter is safer" },
+    { value: "normal", label: "Normal space", hint: "Most dolls can work" },
+    { value: "dedicated", label: "Dedicated space", hint: "Larger builds are okay" }
   ] },
-  { key: "experience", label: "Experience", options: [
-    { value: "first-time", label: "First time" },
-    { value: "collector", label: "Collector" }
+  { key: "customNeeds", label: "Customization", helper: "Choose how much you want to personalize before checkout.", options: [
+    { value: "ready", label: "Ready-to-ship", hint: "Fewer changes, faster shipping" },
+    { value: "some-options", label: "Some options", hint: "A little personalization" },
+    { value: "full-custom", label: "Full custom", hint: "More control over the build" }
+  ] },
+  { key: "experience", label: "Buying experience", helper: "First-time buyers usually benefit from simpler handling and clearer timing.", options: [
+    { value: "first-time", label: "First time", hint: "Keep recommendations practical" },
+    { value: "collector", label: "Collector", hint: "Show more specialized options" }
   ] }
 ];
 
-const defaults: QuizAnswers = {
-  budget: "1500-2500",
-  delivery: "balanced",
-  material: "either",
-  bodyType: "unsure",
-  sizeComfort: "standard",
-  storage: "normal",
-  customNeeds: "some-options",
-  experience: "first-time"
-};
-
-export function HelpMeChooseQuiz() {
-  const router = useRouter();
-  const [answers, setAnswers] = useState<QuizAnswers>(defaults);
-  const [loading, setLoading] = useState(false);
-
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setLoading(true);
-    const response = await fetch("/api/quiz/submit", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ answers })
-    });
-    const payload = await response.json();
-    setLoading(false);
-    router.push(`/help-me-choose/results?ids=${encodeURIComponent(payload.productIds.join(","))}`);
-  }
+export function HelpMeChooseQuiz({ initialAnswers }: { initialAnswers?: QuizAnswers }) {
+  const [answers, setAnswers] = useState<QuizAnswers>({ ...defaultQuizAnswers, ...initialAnswers });
 
   return (
-    <form onSubmit={submit} className="space-y-6">
-      {questions.map((question) => (
-        <fieldset key={question.key} className="rounded-[18px] border border-gold-500/14 bg-ink-800/70 p-4">
-          <legend className="px-1 text-sm font-semibold text-gold-300">{question.label}</legend>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+    <form action="/help-me-choose/results" method="get" className="space-y-5">
+      {questions.map((question, index) => (
+        <fieldset key={question.key} className="border border-gold-500/14 bg-ink-800/70 p-4 sm:p-5">
+          <legend className="px-1 text-sm font-semibold text-gold-300">
+            {index + 1}. {question.label}
+          </legend>
+          <p className="mt-1 text-sm leading-6 text-ivory-500">{question.helper}</p>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {question.options.map((option) => (
               <label key={option.value} className="cursor-pointer">
                 <input
@@ -100,21 +83,22 @@ export function HelpMeChooseQuiz() {
                   className="sr-only"
                 />
                 <span
-                  className={`block rounded-[14px] border px-4 py-3 text-sm ${
+                  className={`block min-h-[86px] border px-4 py-3 text-sm transition ${
                     answers[question.key] === option.value
-                      ? "border-gold-300 bg-gold-400 text-ink-950"
-                      : "border-gold-500/14 bg-ink-950/45 text-ivory-300"
+                      ? "border-gold-300 bg-gold-400 text-ink-950 shadow-[0_0_32px_rgba(224,170,112,0.16)]"
+                      : "border-gold-500/14 bg-ink-950/45 text-ivory-300 hover:border-gold-300/40"
                   }`}
                 >
-                  {option.label}
+                  <strong className="block text-base">{option.label}</strong>
+                  {option.hint ? <span className="mt-1 block text-xs opacity-75">{option.hint}</span> : null}
                 </span>
               </label>
             ))}
           </div>
         </fieldset>
       ))}
-      <GoldButton className="w-full sm:w-auto" disabled={loading}>
-        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+      <GoldButton className="w-full sm:w-auto">
+        <ArrowRight className="h-4 w-4" />
         Show recommendations
       </GoldButton>
     </form>
