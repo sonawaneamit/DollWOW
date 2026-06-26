@@ -376,7 +376,7 @@ function HomeDollWall({ products }: { products: Product[] }) {
             if (!image) return null;
             return (
               <Link key={tile.key} className={`home-wall-cell home-wall-cell--${index + 1}`} href={tile.href}>
-                <Image src={image.url} alt={`${tile.label} collection preview`} fill sizes="(min-width: 1024px) 18vw, 46vw" className="object-cover" />
+                <Image src={image.url} alt={`${tile.label} collection preview`} fill sizes="(min-width: 1280px) 15vw, (min-width: 760px) 30vw, 46vw" className="home-wall-cell__image object-cover" />
                 <span>
                   <small>{tile.eyebrow}</small>
                   {tile.label}
