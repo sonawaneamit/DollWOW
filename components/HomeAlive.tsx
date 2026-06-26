@@ -20,6 +20,19 @@ type Rail = {
   products: Product[];
 };
 
+type LookTile = {
+  key: string;
+  label: string;
+  eyebrow: string;
+  href: string;
+  product: Product;
+  count: number;
+};
+
+type LookDefinition = Omit<LookTile, "product" | "count"> & {
+  match: (product: Product) => boolean;
+};
+
 const HERO_PREVIEW_IMAGES: Record<string, string> = {
   "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o": "/images/home-hero/portraits-new/sedoll-carry-home.png",
   "starpery-adele-153cm-e-cup-silicone-head-companion-doll-1dn4l": "/images/home-hero/portraits-new/starpery-adele-home-v2.png",
@@ -346,8 +359,8 @@ function getHeroPreviewImage(product: Product) {
 }
 
 function HomeDollWall({ products }: { products: Product[] }) {
-  const picks = products.filter((product) => product.featuredImage || product.images[0]).slice(4, 10);
-  if (picks.length < 4) return null;
+  const tiles = buildLookTiles(products);
+  if (tiles.length < 4) return null;
 
   return (
     <section className="home-band home-wall-band" data-tone="deep">
@@ -357,16 +370,17 @@ function HomeDollWall({ products }: { products: Product[] }) {
           <h2>A quicker way to spot what catches your eye.</h2>
         </div>
         <div className="home-wall-grid reveal" data-d="2">
-          {picks.map((product, index) => {
+          {tiles.map((tile, index) => {
+            const product = tile.product;
             const image = product.featuredImage ?? product.images[0];
             if (!image) return null;
-            const displayTitle = productPublicTitle(product);
             return (
-              <Link key={product.id} className={`home-wall-cell home-wall-cell--${index + 1}`} href={`/products/${product.handle}`}>
-                <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1024px) 18vw, 46vw" className="object-cover" />
+              <Link key={tile.key} className={`home-wall-cell home-wall-cell--${index + 1}`} href={tile.href}>
+                <Image src={image.url} alt={`${tile.label} collection preview`} fill sizes="(min-width: 1024px) 18vw, 46vw" className="object-cover" />
                 <span>
-                  <small>{product.extended.brand ?? product.vendor}</small>
-                  {shortTitle(displayTitle)}
+                  <small>{tile.eyebrow}</small>
+                  {tile.label}
+                  <em>{tile.count} dolls</em>
                 </span>
               </Link>
             );
@@ -375,6 +389,132 @@ function HomeDollWall({ products }: { products: Product[] }) {
       </div>
     </section>
   );
+}
+
+function buildLookTiles(products: Product[]): LookTile[] {
+  const imageProducts = products.filter((product) => product.featuredImage || product.images[0]);
+  const usedProductIds = new Set<string>();
+  const definitions: LookDefinition[] = [
+    {
+      key: "blonde",
+      label: "Blonde dolls",
+      eyebrow: "Hair color",
+      href: "/shop?query=blonde",
+      match: (product: Product) => /\b(blonde|blond|platinum)\b/.test(lookSearchText(product))
+    },
+    {
+      key: "brunette",
+      label: "Brunette dolls",
+      eyebrow: "Hair color",
+      href: "/shop?query=brunette",
+      match: (product: Product) => /\b(brunette|brown hair|dark brown|black hair)\b/.test(lookSearchText(product))
+    },
+    {
+      key: "curvy",
+      label: "Curvy builds",
+      eyebrow: "Shape",
+      href: "/shop?cup=G-I",
+      match: (product: Product) => cupRank(product.extended.cupSize) >= cupRank("G")
+    },
+    {
+      key: "petite",
+      label: "Petite builds",
+      eyebrow: "Size",
+      href: "/shop?height=0-154",
+      match: (product: Product) => Boolean(product.extended.heightCm && product.extended.heightCm <= 154)
+    },
+    {
+      key: "female",
+      label: "Female dolls",
+      eyebrow: "Gender",
+      href: "/shop/female-dolls",
+      match: (product: Product) => !isMaleProduct(product)
+    },
+    {
+      key: "male",
+      label: "Male dolls",
+      eyebrow: "Gender",
+      href: "/shop/male-dolls",
+      match: isMaleProduct
+    },
+    {
+      key: "ready",
+      label: "Ready to ship",
+      eyebrow: "Availability",
+      href: "/warehouse",
+      match: (product: Product) => product.extended.stockStatus === "ready_to_ship"
+    },
+    {
+      key: "asian",
+      label: "Asian looks",
+      eyebrow: "Look",
+      href: "/shop?query=asian",
+      match: (product: Product) => /\b(asian|japanese|korean|chinese|thai|filipina|vietnamese)\b/.test(lookSearchText(product))
+    },
+    {
+      key: "black",
+      label: "Black dolls",
+      eyebrow: "Look",
+      href: "/shop?query=black%20skin",
+      match: (product: Product) => /\b(black skin|dark skin|brown skin|deep skin|african|ebony)\b/.test(lookSearchText(product))
+    }
+  ];
+
+  const tiles: LookTile[] = [];
+  for (const definition of definitions) {
+    const matches = products.filter(definition.match);
+    const product = imageProducts.find((item) => !usedProductIds.has(item.id) && definition.match(item));
+    if (!product || matches.length === 0) continue;
+    usedProductIds.add(product.id);
+    tiles.push({
+      key: definition.key,
+      label: definition.label,
+      eyebrow: definition.eyebrow,
+      href: definition.href,
+      product,
+      count: matches.length
+    });
+  }
+
+  return tiles.slice(0, 6);
+}
+
+function lookSearchText(product: Product) {
+  return [
+    product.title,
+    product.description,
+    product.vendor,
+    product.productType,
+    product.extended.brand,
+    product.extended.displayName,
+    product.extended.sourceTitle,
+    product.extended.material,
+    product.extended.cupSize,
+    ...product.tags,
+    ...product.images.map((image) => image.altText || ""),
+    ...(product.extended.customizationGroups || []).flatMap((group) => [
+      group.id,
+      group.label,
+      group.description,
+      ...group.options.flatMap((option) => [
+        option.id,
+        option.label,
+        option.description,
+        option.swatch?.label,
+        option.swatch?.kind === "text" ? option.swatch.value : "",
+        option.swatch?.kind === "image" ? option.swatch.value.split("/").pop()?.replace(/\.[a-z0-9]+$/i, "").replace(/[-_]+/g, " ") : ""
+      ])
+    ])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function cupRank(cupSize?: string) {
+  if (!cupSize) return 0;
+  const cup = cupSize.toUpperCase().match(/[A-Z]/)?.[0];
+  return cup ? cup.charCodeAt(0) - 64 : 0;
 }
 
 function PreviewShowcase({ products }: { products: Product[] }) {

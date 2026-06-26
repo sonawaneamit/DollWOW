@@ -178,7 +178,12 @@ export function ProductOptions({ product }: { product: Product }) {
   return (
     <section ref={rootRef} data-tone="blush" className="product-builder relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(42rem_32rem_at_78%_8%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(36rem_28rem_at_20%_16%,rgba(192,105,94,0.12),transparent_64%)]" />
-      <div className="relative grid min-h-[760px] lg:h-[880px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]">
+      <div
+        className={clsx(
+          "relative grid min-h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]",
+          isReviewing ? "lg:h-auto" : "lg:h-[880px]"
+        )}
+      >
         <CategoryRail
           groups={config.groups}
           activeGroupId={activeGroup.id}
@@ -188,7 +193,12 @@ export function ProductOptions({ product }: { product: Product }) {
           onSelect={goToGroup}
         />
 
-        <div className="builder-stage relative flex min-h-[560px] flex-col overflow-hidden border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:min-h-0 lg:border-x lg:border-y-0">
+        <div
+          className={clsx(
+            "builder-stage relative flex min-h-[560px] flex-col border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:border-x lg:border-y-0",
+            isReviewing ? "overflow-visible lg:min-h-[880px]" : "overflow-hidden lg:min-h-0"
+          )}
+        >
           <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
           <div className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-4">
             <div>
@@ -205,7 +215,7 @@ export function ProductOptions({ product }: { product: Product }) {
             </div>
           </div>
 
-          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-4 max-w-[920px] items-start overflow-y-auto py-4" : "my-4 max-w-[640px]")}>
+          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-6 max-w-[920px] items-start overflow-visible py-2" : "my-4 max-w-[640px]")}>
             {isReviewing ? (
               <BuildReviewSummary
                 selectedOptions={resolved.selectedOptions}

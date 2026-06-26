@@ -5,6 +5,7 @@ import { recommendProducts } from "@/lib/quiz/recommendProducts";
 describe("recommendProducts", () => {
   it("returns up to five practical recommendations", () => {
     const results = recommendProducts(sampleProducts, {
+      companionType: "any",
       budget: "1500-2500",
       delivery: "fast",
       material: "either",

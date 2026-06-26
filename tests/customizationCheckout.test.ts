@@ -74,6 +74,7 @@ describe("customization checkout support", () => {
           {
             id: "hair-implanted-color",
             label: "Hair implanted color",
+            display: "cards",
             options: [
               { id: "default", label: "Factory default" },
               { id: "black", label: "Black" }
@@ -82,6 +83,7 @@ describe("customization checkout support", () => {
           {
             id: "hair-implanted-color",
             label: "Hair implanted color",
+            display: "cards",
             options: [
               { id: "default", label: "Factory default" },
               { id: "brown", label: "Brown" }

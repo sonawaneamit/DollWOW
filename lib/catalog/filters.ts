@@ -1,5 +1,5 @@
 import type { Product } from "@/types/product";
-import { brandFilterOptions, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
+import { brandFilterOptions, brandFromText, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
 
 export type CatalogFilters = {
@@ -171,10 +171,20 @@ export function requiresCatalogWideFetch(filters: CatalogFilters) {
 
 function productMatchesBrand(product: Product, brand: string) {
   const canonical = getCatalogBrand(brand);
-  const target = tagForFilter(canonical?.value || brand);
+  const target = canonical?.value || tagForFilter(brand);
+  const declaredBrand = getCatalogBrand(product.extended.brand) ?? brandFromText(product.extended.brand, product.vendor);
+
+  if (declaredBrand) {
+    return declaredBrand.value === target;
+  }
+
+  const sourceBrand = brandFromText(product.title, product.extended.sourceTitle);
+  if (sourceBrand) {
+    return sourceBrand.value === target;
+  }
+
   const tags = canonical?.tags || [target];
-  const brandText = `${product.extended.brand || ""} ${product.vendor}`.toLowerCase();
-  return tags.some((tag) => product.tags.includes(tag)) || brandText.includes(target.replace(/-/g, " "));
+  return tags.some((tag) => product.tags.includes(tag));
 }
 
 function productMatchesMaterial(product: Product, material: string) {

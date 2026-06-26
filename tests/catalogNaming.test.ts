@@ -51,7 +51,7 @@ describe("DollWow catalog naming", () => {
         material: "Silicone Head",
         heightCm: 153,
         cupSize: "E",
-        stockStatus: "custom"
+        stockStatus: "custom" as const
       }
     });
 
@@ -95,7 +95,7 @@ describe("DollWow catalog naming", () => {
         material: "Silicone Head",
         heightCm: 153,
         cupSize: "E",
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         customAvailable: true
       }
     });
@@ -136,7 +136,7 @@ describe("DollWow catalog naming", () => {
         heightCm: 165,
         cupSize: "D",
         customAvailable: true,
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         headModel: "head-218",
         displayName: "Head 218"
       }
@@ -161,7 +161,7 @@ describe("DollWow catalog naming", () => {
         heightCm: 165,
         cupSize: "D",
         customAvailable: true,
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         headModel: "head-218",
         displayName: "Head 218"
       }
@@ -185,7 +185,7 @@ describe("DollWow catalog naming", () => {
         heightCm: 165,
         cupSize: "D",
         customAvailable: true,
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         headModel: "head-218",
         displayName: "Head 218"
       }
@@ -209,7 +209,7 @@ describe("DollWow catalog naming", () => {
         heightCm: 165,
         cupSize: "D",
         customAvailable: true,
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         headModel: "head-218",
         displayName: "Head 218"
       }
@@ -234,7 +234,7 @@ describe("DollWow catalog naming", () => {
         heightCm: 165,
         cupSize: "D",
         customAvailable: true,
-        stockStatus: "custom",
+        stockStatus: "custom" as const,
         headModel: "head-218",
         displayName: ""
       }

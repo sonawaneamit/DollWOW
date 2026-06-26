@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { descriptionSpecs, detailedProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
-import { productPublicTitle } from "@/lib/catalog/naming";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("product spec display helpers", () => {
@@ -46,7 +45,7 @@ describe("product spec display helpers", () => {
       description: "Height: 5 ft / 153 cm Weight: 98.1 lbs / 44.5 kg Bra Size: G-Cup"
     };
 
-    expect(productHeroIntro(product)).toContain(productPublicTitle(product));
+    expect(productHeroIntro(product)).toContain("Ida Belle");
     expect(productHeroIntro(product)).not.toContain(product.title);
     expect(productHeroIntro(product)).not.toContain("Weight:");
   });
@@ -60,7 +59,7 @@ describe("product spec display helpers", () => {
 
     const intro = productHeroIntro(product);
 
-    expect(intro).toContain(productPublicTitle(product));
+    expect(intro).toContain("Ida Belle");
     expect(intro).not.toContain(product.title);
     expect(intro).not.toContain("Vagina Depth:");
     expect(intro).not.toContain("head #196");
@@ -75,7 +74,7 @@ describe("product spec display helpers", () => {
 
     const intro = productHeroIntro(product);
 
-    expect(intro).toContain(productPublicTitle(product));
+    expect(intro).toContain("Ida Belle");
     expect(intro).not.toContain(product.title);
     expect(intro).not.toContain("Brand:");
     expect(intro).not.toContain("Availability:");
@@ -106,8 +105,8 @@ describe("product spec display helpers", () => {
 
     expect(productMeasurementSpecs(product)).toEqual(
       expect.arrayContaining([
-        { label: "Height", value: "172 cm" },
-        { label: "Weight", value: "79 lb" },
+        { label: "Height", value: "5 ft 8 in / 172 cm" },
+        { label: "Weight", value: "79.0 lb / 35.8 kg" },
         { label: "Cup size", value: "E" },
         { label: "Bust", value: "2 ft 7 in / 80 cm" },
         { label: "Waist", value: "1 ft 8 in / 52 cm" },
