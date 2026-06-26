@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { Camera, CheckCircle2, Lock, MessageCircle, Scale, ShieldCheck, Truck } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -87,37 +88,46 @@ const readingLinks = [
 export default function WhyPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="rounded-[28px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-7 sm:p-10">
-        <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Why DollWow</p>
-        <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
-          A more transparent way to buy.
-        </h1>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-ivory-300">
-          Most buyers already know what they are looking at. The real question is whether the store feels clear,
-          private, reachable, and reliable when the order gets expensive.
-        </p>
+      <div className="grid gap-7 rounded-[28px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+        <div>
+          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Why DollWow</p>
+          <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
+            A more transparent way to buy.
+          </h1>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-ivory-300">
+            Most buyers already know what they are looking at. The real question is whether the store feels clear,
+            private, reachable, and reliable when the order gets expensive.
+          </p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/shop"
-            className="rounded-[14px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-[#1f120b] transition hover:bg-gold-200"
-          >
-            Browse the catalog
-          </Link>
-          <Link
-            href="/buyer-protection"
-            className="rounded-[14px] border border-gold-500/18 bg-ink-800/72 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
-          >
-            Read buyer protection
-          </Link>
-          <Link
-            href="/support"
-            className="rounded-[14px] border border-gold-500/18 bg-ink-800/72 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
-          >
-            Ask our team
-          </Link>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/shop"
+              className="rounded-[14px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-[#1f120b] transition hover:bg-gold-200"
+            >
+              Browse the catalog
+            </Link>
+            <Link
+              href="/buyer-protection"
+              className="rounded-[14px] border border-gold-500/18 bg-ink-800/72 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
+            >
+              Read buyer protection
+            </Link>
+            <Link
+              href="/support"
+              className="rounded-[14px] border border-gold-500/18 bg-ink-800/72 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
+            >
+              Ask our team
+            </Link>
+          </div>
         </div>
-
+        <InfoVisualPanel
+          seed="why-dollwow"
+          eyebrow="Catalog trust"
+          title="Photos, specs, timing, support."
+          copy="DollWow puts the real product, measurements, order timing, and support path closer together."
+          cta={{ label: "See protection", href: "/buyer-protection" }}
+          compact
+        />
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

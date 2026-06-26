@@ -1,4 +1,5 @@
 import { HelpMeChooseQuiz } from "@/components/HelpMeChooseQuiz";
+import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { quizAnswersFromParams } from "@/lib/quiz/answers";
 import { BadgeCheck, Clock, Ruler, ShieldCheck } from "lucide-react";
 
@@ -16,7 +17,7 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
         <div>
           <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Help Me Choose</p>
           <h1 className="mt-2 text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
@@ -27,21 +28,31 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
             no fake “perfect match,” just useful filters for budget, size, material, timing, and customization.
           </p>
         </div>
-        <aside className="border border-gold-500/14 bg-ink-800/72 p-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">What it checks</p>
-          <div className="mt-4 grid gap-3">
-            {quickSignals.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title} className="flex gap-3 border border-gold-500/10 bg-[#120907]/60 p-3">
-                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
-                  <div>
-                    <strong className="text-sm text-ivory-100">{item.title}</strong>
-                    <p className="mt-1 text-xs leading-5 text-ivory-500">{item.copy}</p>
+        <aside className="space-y-4">
+          <InfoVisualPanel
+            seed="help-me-choose"
+            eyebrow="Browse by fit"
+            title="Start with a few real catalog examples."
+            copy="The quiz narrows the catalog by size, timing, material, budget, and customization instead of making you scroll everything."
+            cta={{ label: "Browse all dolls", href: "/shop" }}
+            compact
+          />
+          <div className="border border-gold-500/14 bg-ink-800/72 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">What it checks</p>
+            <div className="mt-4 grid gap-3">
+              {quickSignals.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="flex gap-3 border border-gold-500/10 bg-[#120907]/60 p-3">
+                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
+                    <div>
+                      <strong className="text-sm text-ivory-100">{item.title}</strong>
+                      <p className="mt-1 text-xs leading-5 text-ivory-500">{item.copy}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </aside>
       </div>

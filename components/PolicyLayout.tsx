@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 
 type PolicyCard = {
@@ -17,6 +18,12 @@ type PolicyLayoutProps = {
   eyebrow: string;
   title: string;
   intro: string;
+  visual?: {
+    eyebrow?: string;
+    title?: string;
+    copy?: string;
+    cta?: { label: string; href: string };
+  };
   cards?: PolicyCard[];
   sections?: PolicySection[];
   asideTitle?: string;
@@ -29,6 +36,7 @@ export function PolicyLayout({
   eyebrow,
   title,
   intro,
+  visual,
   cards = [],
   sections = [],
   asideTitle,
@@ -66,6 +74,17 @@ export function PolicyLayout({
             <TrustLogoStrip />
           </div>
 
+          <div className="mt-7 lg:hidden">
+            <InfoVisualPanel
+              seed={`${eyebrow}-${title}-mobile`}
+              eyebrow={visual?.eyebrow ?? eyebrow}
+              title={visual?.title}
+              copy={visual?.copy}
+              cta={visual?.cta}
+              compact
+            />
+          </div>
+
           {cards.length ? (
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {cards.map((card) => (
@@ -98,16 +117,28 @@ export function PolicyLayout({
           {children ? <div className="mt-10">{children}</div> : null}
         </div>
 
-        <aside className="h-fit rounded-[22px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">{asideTitle ?? "Quick notes"}</p>
-          <div className="mt-4 space-y-3">
-            {asideItems.map((item) => (
-              <div key={item} className="rounded-[14px] border border-gold-500/10 bg-[#120907]/55 p-4 text-sm leading-6 text-ivory-300">
-                {item}
-              </div>
-            ))}
+        <div className="space-y-5">
+          <div className="hidden lg:block">
+            <InfoVisualPanel
+              seed={`${eyebrow}-${title}`}
+              eyebrow={visual?.eyebrow ?? eyebrow}
+              title={visual?.title}
+              copy={visual?.copy}
+              cta={visual?.cta}
+            />
           </div>
-        </aside>
+
+          <aside className="h-fit rounded-[22px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">{asideTitle ?? "Quick notes"}</p>
+            <div className="mt-4 space-y-3">
+              {asideItems.map((item) => (
+                <div key={item} className="rounded-[14px] border border-gold-500/10 bg-[#120907]/55 p-4 text-sm leading-6 text-ivory-300">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
   );

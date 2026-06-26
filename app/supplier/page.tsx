@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { BadgeCheck, Boxes, CircleDollarSign, FileCheck2, Globe2, MessageCircle } from "lucide-react";
 import { GoldButton } from "@/components/GoldButton";
+import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { SupportLeadForm } from "@/components/SupportLeadForm";
 
 export const metadata = {
@@ -93,23 +94,33 @@ export default function SupplierPage() {
           </div>
         </div>
 
-        <aside className="rounded-[24px] border border-gold-500/14 bg-ink-800/72 p-6 sm:p-7">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-[16px] border border-gold-500/14 bg-[#20120d] text-gold-300">
-            <BadgeCheck className="h-5 w-5" />
-          </div>
-          <h2 className="mt-4 text-2xl font-semibold text-ivory-50">What DollWow wants to protect</h2>
-          <p className="mt-3 text-sm leading-6 text-ivory-400">
-            We want clean authorization, accurate product data, approved image usage, MAP clarity, and a reliable brand contact for
-            stock, pricing, support, and post-order questions.
-          </p>
-          <div className="mt-5 grid gap-3 text-sm text-ivory-300">
-            <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
-              <strong className="block text-ivory-100">Best fit</strong>
-              Brands that want stronger international presentation, cleaner pre-sale support, and better customer confidence.
+        <aside className="space-y-5">
+          <InfoVisualPanel
+            seed="brand-partnerships"
+            eyebrow="Catalog presentation"
+            title="Real product pages, cleaner buying."
+            copy="DollWow is designed to make brand photos, measurements, options, timing, and support easier for US and European buyers to understand."
+            cta={{ label: "View catalog", href: "/shop" }}
+            compact
+          />
+          <div className="rounded-[24px] border border-gold-500/14 bg-ink-800/72 p-6 sm:p-7">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-[16px] border border-gold-500/14 bg-[#20120d] text-gold-300">
+              <BadgeCheck className="h-5 w-5" />
             </div>
-            <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
-              <strong className="block text-ivory-100">Launch posture</strong>
-              We can start with a reviewed product set, then expand once MAP, option rules, fulfillment expectations, and terms are clear.
+            <h2 className="mt-4 text-2xl font-semibold text-ivory-50">What DollWow wants to protect</h2>
+            <p className="mt-3 text-sm leading-6 text-ivory-400">
+              We want clean authorization, accurate product data, approved image usage, MAP clarity, and a reliable brand contact for
+              stock, pricing, support, and post-order questions.
+            </p>
+            <div className="mt-5 grid gap-3 text-sm text-ivory-300">
+              <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
+                <strong className="block text-ivory-100">Best fit</strong>
+                Brands that want stronger international presentation, cleaner pre-sale support, and better customer confidence.
+              </div>
+              <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
+                <strong className="block text-ivory-100">Launch posture</strong>
+                We can start with a reviewed product set, then expand once MAP, option rules, fulfillment expectations, and terms are clear.
+              </div>
             </div>
           </div>
         </aside>
