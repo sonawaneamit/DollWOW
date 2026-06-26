@@ -118,12 +118,13 @@ export function HomeAlive({ products }: { products: Product[] }) {
 
       <HomeMarquee />
       <TrustBand />
+      <HomeDollWall products={products} />
 
       {rails.map((rail, index) => (
         <ProductRail key={rail.key} rail={rail} index={index} />
       ))}
 
-      <PreviewShowcase />
+      <PreviewShowcase products={products} />
       <ClosingBand />
     </div>
   );
@@ -344,17 +345,48 @@ function getHeroPreviewImage(product: Product) {
   return HERO_PREVIEW_IMAGES[product.handle] ?? null;
 }
 
-function PreviewShowcase() {
+function HomeDollWall({ products }: { products: Product[] }) {
+  const picks = products.filter((product) => product.featuredImage || product.images[0]).slice(4, 10);
+  if (picks.length < 4) return null;
+
+  return (
+    <section className="home-band home-wall-band" data-tone="deep">
+      <div className="home-band__inner home-wall">
+        <div className="home-wall__head reveal">
+          <p className="home-eyebrow">Browse by look</p>
+          <h2>A quicker way to spot what catches your eye.</h2>
+        </div>
+        <div className="home-wall-grid reveal" data-d="2">
+          {picks.map((product, index) => {
+            const image = product.featuredImage ?? product.images[0];
+            if (!image) return null;
+            const displayTitle = productPublicTitle(product);
+            return (
+              <Link key={product.id} className={`home-wall-cell home-wall-cell--${index + 1}`} href={`/products/${product.handle}`}>
+                <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1024px) 18vw, 46vw" className="object-cover" />
+                <span>
+                  <small>{product.extended.brand ?? product.vendor}</small>
+                  {shortTitle(displayTitle)}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PreviewShowcase({ products }: { products: Product[] }) {
+  const picks = products.filter((product) => product.featuredImage || product.images[0]).slice(10, 13);
+
   return (
     <section className="home-band home-preview-band" data-tone="blush">
       <div className="home-band__inner home-preview">
         <div className="home-preview__stage reveal">
-          <div className="home-preview__tile home-preview__tile--wide">
-            <Sparkles className="h-8 w-8" />
-            <span>DollWow spotlight preview</span>
-          </div>
-          <div className="home-preview__tile"><span>Factory image set</span></div>
-          <div className="home-preview__tile"><span>Homepage styling pass</span></div>
+          {picks.map((product, index) => (
+            <VisualPreviewTile key={product.id} product={product} wide={index === 0} />
+          ))}
         </div>
         <div className="home-preview__copy reveal" data-d="2">
           <p className="home-eyebrow">How it works</p>
@@ -371,6 +403,18 @@ function PreviewShowcase() {
         </div>
       </div>
     </section>
+  );
+}
+
+function VisualPreviewTile({ product, wide = false }: { product: Product; wide?: boolean }) {
+  const image = product.featuredImage ?? product.images[0] ?? null;
+  const displayTitle = productPublicTitle(product);
+
+  return (
+    <Link className={`home-preview__tile home-preview__tile--image ${wide ? "home-preview__tile--wide" : ""}`} href={`/products/${product.handle}`}>
+      {image ? <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /> : null}
+      <span>{shortTitle(displayTitle)}</span>
+    </Link>
   );
 }
 

@@ -452,27 +452,29 @@ function GuideCard({ icon, kicker, title, text }: { icon: ReactNode; kicker: str
 function SimilarDollCard({ product, reference }: { product: Product; reference: Product }) {
   const price = product.priceRange.minVariantPrice;
   const displayTitle = productPublicTitle(product);
+  const reason = matchReason(product, reference);
   return (
     <article className="alive-sim-card">
-      <Link href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
+      <Link className="alive-sim-link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
         <ProductImageFrame product={product} />
-      </Link>
-      <div className="alive-sim-body">
-        <div>
-          <span>{product.extended.brand ?? product.vendor}</span>
-          <small>{matchReason(product, reference)}</small>
+        <span className="alive-sim-scrim" aria-hidden="true" />
+        <span className="alive-sim-match">{reason}</span>
+        <div className="alive-sim-body">
+          <div>
+            <span>{product.extended.brand ?? product.vendor}</span>
+          </div>
+          <h3>{displayTitle}</h3>
+          <p>
+            {product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height pending"}
+            <span>{product.extended.material ?? "Material pending"}</span>
+            <span>{product.extended.cupSize ?? "Cup pending"}</span>
+          </p>
+          <footer>
+            <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
+            <span>View</span>
+          </footer>
         </div>
-        <Link href={`/products/${product.handle}`}>{displayTitle}</Link>
-        <p>
-          {product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height pending"}
-          <span>{product.extended.material ?? "Material pending"}</span>
-          <span>{product.extended.cupSize ?? "Cup pending"}</span>
-        </p>
-        <footer>
-          <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
-          <Link href={`/products/${product.handle}`}>View</Link>
-        </footer>
-      </div>
+      </Link>
     </article>
   );
 }
