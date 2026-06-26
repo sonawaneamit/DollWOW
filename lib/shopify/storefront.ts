@@ -5,6 +5,7 @@ import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
 
 const API_VERSION = "2026-04";
+const DEFAULT_CHECKOUT_DOMAIN = "checkout.dollwow.com";
 
 const fallbackCollections = [
   { id: "ready", handle: "ready-to-ship", title: "Ready To Ship" },
@@ -282,7 +283,40 @@ export async function createCart(input: {
   const error = data.cartCreate.userErrors[0];
   if (error) throw new Error(error.message);
   if (!data.cartCreate.cart) throw new Error("Shopify did not return a cart.");
-  return data.cartCreate.cart;
+  return {
+    ...data.cartCreate.cart,
+    checkoutUrl: normalizeShopifyCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+  };
+}
+
+export function normalizeShopifyCheckoutUrl(checkoutUrl: string) {
+  const checkoutDomain = (env.SHOPIFY_CHECKOUT_DOMAIN || DEFAULT_CHECKOUT_DOMAIN).replace(/^https?:\/\//, "").replace(/\/$/, "");
+  if (!checkoutDomain || checkoutUrl.startsWith("/")) return checkoutUrl;
+
+  try {
+    const url = new URL(checkoutUrl);
+    const storefrontHost = new URL(env.NEXT_PUBLIC_SITE_URL).hostname.toLowerCase();
+    const apexStorefrontHost = storefrontHost.replace(/^www\./, "");
+    const shopifyStoreHost = env.SHOPIFY_STORE_DOMAIN?.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
+    const checkoutHost = checkoutDomain.toLowerCase();
+    const checkoutLikePath = url.pathname.startsWith("/cart") || url.pathname.startsWith("/checkouts");
+    const host = url.hostname.toLowerCase();
+    const shouldNormalize =
+      checkoutLikePath &&
+      host !== checkoutHost &&
+      (host === storefrontHost ||
+        host === apexStorefrontHost ||
+        host === `www.${apexStorefrontHost}` ||
+        host === shopifyStoreHost ||
+        host.endsWith(".myshopify.com"));
+
+    if (!shouldNormalize) return checkoutUrl;
+    url.protocol = "https:";
+    url.hostname = checkoutDomain;
+    return url.toString();
+  } catch {
+    return checkoutUrl;
+  }
 }
 
 type ShopifyCartLineInput = {

@@ -20,6 +20,7 @@ Copy `.env.example` to `.env.local` and fill:
 ```bash
 NEXT_PUBLIC_SITE_URL=https://dollwow.com
 SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+SHOPIFY_CHECKOUT_DOMAIN=checkout.dollwow.com
 SHOPIFY_STOREFRONT_ACCESS_TOKEN=...
 SHOPIFY_ADMIN_ACCESS_TOKEN=...
 SHOPIFY_CLIENT_ID=...
@@ -33,6 +34,7 @@ GA_MEASUREMENT_ID=...
 ```
 
 Shopify Storefront/Admin API version is pinned in code to `2026-04`.
+`SHOPIFY_CHECKOUT_DOMAIN` should point to the Shopify-owned checkout/cart host, such as `checkout.dollwow.com`, while `NEXT_PUBLIC_SITE_URL` points to the Vercel storefront domain.
 `SHOPIFY_STOREFRONT_ACCESS_TOKEN` can be either the Headless channel private token or a public Storefront API token; the app chooses the correct request header automatically.
 `SHOPIFY_ADMIN_ACCESS_TOKEN` can be a short-lived Shopify Admin API access token from a custom app. If it is omitted, server-side Admin calls use `SHOPIFY_CLIENT_ID` and `SHOPIFY_CLIENT_SECRET` to mint a short-lived token with Shopify's client-credentials flow. Product draft imports require `write_products`; price-match discount plumbing requires discount write access. `SHOPIFY_APP_AUTOMATION_TOKEN` is only for Shopify CLI app deploy automation, not Admin API calls.
 
