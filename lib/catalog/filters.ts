@@ -1,10 +1,12 @@
 import type { Product } from "@/types/product";
 import { brandFilterOptions, brandFromText, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
+import { getCatalogLook, lookCollectionPresets, lookFilterOptions, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
 
 export type CatalogFilters = {
   query?: string;
   brand?: string;
+  look?: string;
   bodyType?: "male" | "female";
   availability?: "ready_to_ship" | "custom";
   material?: string;
@@ -17,6 +19,7 @@ export type CatalogFilters = {
 
 export const catalogFilterOptions = {
   brands: brandFilterOptions(),
+  looks: lookFilterOptions(),
   bodyTypes: [
     { label: "Female dolls", value: "female" },
     { label: "Male dolls", value: "male" }
@@ -68,6 +71,7 @@ export const catalogFilterOptions = {
 
 const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>> = {
   brand: new Map(catalogFilterOptions.brands.map((option) => [option.value, option.label])),
+  look: new Map(catalogFilterOptions.looks.map((option) => [option.value, option.label])),
   bodyType: new Map(catalogFilterOptions.bodyTypes.map((option) => [option.value, option.label])),
   availability: new Map(catalogFilterOptions.availability.map((option) => [option.value, option.label])),
   material: new Map(catalogFilterOptions.materials.map((option) => [option.value, option.label])),
@@ -84,6 +88,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   customizable: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
   "female-dolls": { title: "Female dolls", filters: { bodyType: "female" } },
   "male-dolls": { title: "Male dolls", filters: { bodyType: "male" } },
+  ...lookCollectionPresets(),
   ...brandCollectionPresets(),
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
@@ -105,6 +110,7 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
   return compactFilters({
     query: valueFor("query"),
     brand: valueFor("brand"),
+    look: valueFor("look"),
     bodyType: valueFor("bodyType") as CatalogFilters["bodyType"],
     availability: valueFor("availability") as CatalogFilters["availability"],
     material: valueFor("material"),
@@ -123,6 +129,7 @@ export function compactFilters(filters: CatalogFilters): CatalogFilters {
 export function shopifyQueryForFilters(filters: CatalogFilters) {
   const parts = [];
   if (filters.brand) parts.push(shopifyBrandQuery(filters.brand));
+  if (filters.look) parts.push(shopifyLookQuery(filters.look));
   if (filters.bodyType) parts.push(`tag:${filters.bodyType}-doll`);
   if (filters.availability) parts.push(`tag:${filters.availability}`);
   if (filters.material) parts.push(`tag:${tagForFilter(filters.material)}`);
@@ -133,6 +140,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
   const filtered = products.filter((product) => {
     if (filters.query && !productMatchesCatalogSearch(product, filters.query)) return false;
     if (filters.brand && !productMatchesBrand(product, filters.brand)) return false;
+    if (filters.look && !productMatchesLook(product, filters.look)) return false;
     if (filters.bodyType && !productMatchesBodyType(product, filters.bodyType)) return false;
     if (filters.availability && product.extended.stockStatus !== filters.availability) return false;
     if (filters.material && !productMatchesMaterial(product, filters.material)) return false;
@@ -161,6 +169,7 @@ export function getCatalogFilterLabel(key: keyof CatalogFilters, value?: string)
 export function requiresCatalogWideFetch(filters: CatalogFilters) {
   return Boolean(
     filters.query ||
+      filters.look ||
       filters.height ||
       filters.weight ||
       filters.cup ||
@@ -211,6 +220,11 @@ function shopifyBrandQuery(brand: string) {
   }
   const tags = canonical?.tags?.length ? canonical.tags : [target];
   return tags.length === 1 ? `tag:${tags[0]}` : `(${tags.map((tag) => `tag:${tag}`).join(" OR ")})`;
+}
+
+function shopifyLookQuery(look: string) {
+  const catalogLook = getCatalogLook(look);
+  return `tag:${tagForFilter(catalogLook?.value || look)}`;
 }
 
 function brandCollectionPresets() {

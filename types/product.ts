@@ -44,6 +44,7 @@ export type ProductExtended = {
   headModel?: string;
   displayName?: string;
   bodyType?: "male" | "female" | "unknown";
+  lookTags?: string[];
   brand?: string;
   sourceTitle?: string;
   sourceHandle?: string;

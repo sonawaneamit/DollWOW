@@ -86,6 +86,7 @@ const productListFieldsBase = `
   headModel: metafield(namespace: "custom", key: "head_model") { value }
   displayName: metafield(namespace: "custom", key: "display_name") { value }
   bodyType: metafield(namespace: "custom", key: "body_type") { value }
+  lookTags: metafield(namespace: "custom", key: "look_tags") { value }
   brand: metafield(namespace: "custom", key: "brand") { value }
   sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
   sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }

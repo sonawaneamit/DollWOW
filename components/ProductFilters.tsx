@@ -15,6 +15,9 @@ const quickLinks = [
   { label: "Male dolls", href: "/shop/male-dolls" },
   { label: "Ready to ship", href: "/shop/ready-to-ship" },
   { label: "Factory order", href: "/shop/custom" },
+  { label: "Blonde", href: "/shop/blonde-dolls" },
+  { label: "Asian look", href: "/shop/asian-dolls" },
+  { label: "Curvy", href: "/shop/curvy-dolls" },
   { label: "TPE", href: "/shop/tpe" },
   { label: "Silicone", href: "/shop/silicone" },
   { label: "170 cm+", href: "/shop/height-170-plus" }
@@ -68,6 +71,7 @@ export function ProductFilters({
           />
         </label>
         <SelectFilter label="Brand" name="brand" value={filters.brand} options={catalogFilterOptions.brands} />
+        <SelectFilter label="Look" name="look" value={filters.look} options={catalogFilterOptions.looks} />
         <SelectFilter label="Body type" name="bodyType" value={filters.bodyType} options={catalogFilterOptions.bodyTypes} />
         <SelectFilter label="Availability" name="availability" value={filters.availability} options={catalogFilterOptions.availability} />
         <SelectFilter label="Material" name="material" value={filters.material} options={catalogFilterOptions.materials} />

@@ -21,6 +21,7 @@ type ShopifyProductNode = {
   headModel?: { value?: string };
   displayName?: { value?: string };
   bodyType?: { value?: string };
+  lookTags?: { value?: string };
   brand?: { value?: string };
   sourceTitle?: { value?: string };
   sourceHandle?: { value?: string };
@@ -134,6 +135,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       headModel: node.headModel?.value,
       displayName: node.displayName?.value,
       bodyType: (node.bodyType?.value as Product["extended"]["bodyType"]) || undefined,
+      lookTags: jsonValue<string[]>(node.lookTags?.value),
       brand: node.brand?.value ?? node.vendor,
       sourceTitle: node.sourceTitle?.value,
       sourceHandle: node.sourceHandle?.value,

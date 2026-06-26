@@ -20,6 +20,7 @@
     "backfill:measurements": "node scripts/backfill-shopify-measurements.mjs",
     "backfill:display-names": "node scripts/backfill-shopify-display-names.mjs",
     "backfill:body-type": "node scripts/backfill-shopify-body-type.mjs",
+    "enrich:look-tags": "node scripts/enrich-shopify-look-tags.mjs",
     "generate:human-display-names": "node scripts/generate-shopify-human-display-names.mjs",
     "refresh:public-copy": "node scripts/refresh-shopify-public-copy.mjs",
     "migrate:shopify-assets": "node scripts/migrate-shopify-assets.mjs",
