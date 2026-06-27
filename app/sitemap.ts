@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { collectionPresets } from "@/lib/catalog/filters";
+import { getLearningArticles } from "@/lib/learn/content";
 import { getProducts } from "@/lib/shopify/storefront";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
@@ -7,6 +8,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").repl
 const staticRoutes = [
   "",
   "/shop",
+  "/learn",
   "/customize",
   "/warehouse",
   "/help-me-choose",
@@ -32,6 +34,7 @@ export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const products = await getProducts({ first: 2200 });
+  const articles = getLearningArticles();
 
   const staticEntries = staticRoutes.map((path) => ({
     url: `${siteUrl}${path}`,
@@ -58,5 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65
     })) satisfies MetadataRoute.Sitemap;
 
-  return [...staticEntries, ...collectionEntries, ...productEntries];
+  const learnEntries = articles.map((article) => ({
+    url: `${siteUrl}/learn/${article.slug}`,
+    lastModified: new Date(article.lastReviewed),
+    changeFrequency: "monthly",
+    priority: 0.75
+  })) satisfies MetadataRoute.Sitemap;
+
+  return [...staticEntries, ...collectionEntries, ...productEntries, ...learnEntries];
 }

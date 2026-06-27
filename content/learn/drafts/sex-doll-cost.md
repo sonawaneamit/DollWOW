@@ -28,7 +28,7 @@ Sex doll cost depends on material, brand, height, weight, head model, customizat
 - Author: Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience.
 - Product examples must be verified against live DollWow catalog data before publication.
 - DollWow should confirm product facts, options, stock status, and delivery details before fulfillment.
-- DollWow compares full delivered value, not just headline price.
+- DollWow compares full delivered value instead of headline price alone.
 
 ## Why Prices Vary So Much
 
@@ -50,7 +50,7 @@ Price also depends on trust. A very low listing may be missing shipping, may use
 
 ## Cheap vs Good Value
 
-Cheap can be useful if the buyer understands the tradeoff. A value-focused buyer should still confirm material, exact product match, stock status, shipping cost, and what happens if the product arrives different from expected. DollWow's price-match approach should compare the full delivered value, not just the headline price.
+Cheap can be useful if the buyer understands the tradeoff. A value-focused buyer should still confirm material, exact product match, stock status, shipping cost, and what happens if the product arrives different from expected. DollWow's price-match approach should compare the full delivered value instead of the headline price alone.
 
 ## How DollWow Reviews A Lower Price
 
@@ -58,7 +58,7 @@ DollWow can review competitor listings from trusted retailers and authorized ven
 
 ## Buyer Checklist
 
-- Compare final delivered price, not just item price.
+- Compare final delivered price instead of item price alone.
 - Confirm product match and configuration.
 - Check whether the product is ready to ship or factory order.
 - Confirm which custom options are included or extra.

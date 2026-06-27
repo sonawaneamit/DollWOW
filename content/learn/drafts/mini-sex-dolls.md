@@ -75,7 +75,7 @@ Usually yes, but the exact answer depends on height, weight, body shape, and sto
 
 ### Are petite dolls less realistic?
 
-Not necessarily. Realism depends on sculpt, material, proportions, finishing, and final configuration, not only size.
+Not necessarily. Realism depends on sculpt, material, proportions, finishing, final configuration, and size together.
 
 ### Are mini dolls cheaper?
 

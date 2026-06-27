@@ -47,7 +47,7 @@ Male dolls need the same practical review as any premium doll: product identity,
 ## Buyer Checklist
 
 - Confirm the listing is actually a male body type.
-- Review full measurements, not only height.
+- Review full measurements before judging from height alone.
 - Ask whether the exact model is in stock.
 - Confirm custom options before checkout.
 - Ask about factory photos for custom orders.

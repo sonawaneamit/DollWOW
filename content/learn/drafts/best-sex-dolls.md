@@ -52,7 +52,7 @@ DollWow should verify the product identity, supplier/brand, measurements, materi
 
 ## Buyer Checklist
 
-- Start with height and weight, not only photos.
+- Start with height and weight before judging from photos.
 - Decide whether TPE, silicone, or silicone head makes the most sense.
 - Compare stock status and timeline.
 - Review all option costs and incompatibilities.

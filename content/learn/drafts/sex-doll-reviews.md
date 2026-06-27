@@ -28,7 +28,7 @@ Sex doll reviews are useful only when they help verify product identity, seller 
 - Author: Jesse, Licensed Sexologist and DollWow Intimacy Education Editor.
 - Product examples must be verified against live DollWow catalog data before publication.
 - DollWow should confirm product facts, options, stock status, and delivery details before fulfillment.
-- DollWow compares full delivered value, not just headline price.
+- DollWow compares full delivered value instead of headline price alone.
 
 ## What A Useful Review Should Tell You
 

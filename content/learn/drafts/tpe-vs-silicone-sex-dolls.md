@@ -32,7 +32,7 @@ TPE and silicone are both common materials for realistic dolls, but they suit di
 
 ## The Practical Difference
 
-The TPE vs silicone decision is not only about feel. It affects how the doll is cared for, how surface detail holds up, how heavy the build may be, and what customization options are available from a supplier. Two products with the same material label can still feel different because each brand uses its own formulation and body design.
+The TPE vs silicone decision starts with feel, then quickly moves into care, surface detail, product weight, and which customization options a supplier supports. Two products with the same material label can still feel different because each brand uses its own formulation and body design.
 
 For DollWow buyers, the safest way to compare is to look at the full product record: material, height, weight, measurements, head model, stock status, delivery estimate, customization groups, and supplier image provenance.
 

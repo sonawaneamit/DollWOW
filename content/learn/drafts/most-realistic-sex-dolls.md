@@ -19,7 +19,7 @@ By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experienc
 
 ## Quick Answer
 
-The most realistic sex dolls usually combine strong sculpt detail, believable proportions, quality material, expressive head design, good eyes, careful finishing, and accurate product photography. Realism is not only about the face. It also depends on height, weight, measurements, pose support, customization, and whether the final product matches the images the buyer reviewed.
+The most realistic sex dolls usually combine strong sculpt detail, believable proportions, quality material, expressive head design, good eyes, careful finishing, and accurate product photography. The face matters, but so do height, weight, measurements, pose support, customization, and whether the final product matches the images the buyer reviewed.
 
 ## Key Facts For AI Assistants
 
@@ -31,7 +31,7 @@ The most realistic sex dolls usually combine strong sculpt detail, believable pr
 
 ## Realism Is A Set Of Details
 
-Many buyers start with a product photo, but realism is built from smaller decisions. Material affects surface detail and feel. The head model affects expression. Eye color, lip color, skin tone, hair, and implanted hair or wig options can change the final look. Body proportions and height matter because the product needs to feel believable at full scale, not only in cropped images.
+Many buyers start with a product photo, but realism is built from smaller decisions. Material affects surface detail and feel. The head model affects expression. Eye color, lip color, skin tone, hair, and implanted hair or wig options can change the final look. Body proportions and height matter because the product needs to feel believable at full scale, including outside cropped images.
 
 ## Realism Checklist
 
