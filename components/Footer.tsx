@@ -1,12 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerGroups = [
   {
     title: "Shop",
     links: [
-      ["All dolls", "/shop"],
-      ["Ready to ship", "/warehouse"],
-      ["Customize", "/customize"],
+      ["Sex dolls", "/shop/sex-dolls"],
+      ["Realistic sex dolls", "/shop/realistic-sex-dolls"],
+      ["Mini sex dolls", "/shop/mini-sex-dolls"],
+      ["TPE dolls", "/shop/tpe"],
+      ["Silicone dolls", "/shop/silicone"],
+      ["Male dolls", "/shop/male-dolls"],
+      ["Ready to ship", "/shop/ready-to-ship"],
+      ["Custom dolls", "/shop/custom"],
       ["Price match", "/compare"]
     ]
   },
@@ -44,9 +50,16 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 border-b border-gold-500/12 pb-8 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
           <div>
-            <p className="text-2xl font-bold text-ivory-50">
-              Doll<span className="text-gold-400">Wow</span>
-            </p>
+            <Link href="/" className="inline-flex" aria-label="DollWow home">
+              <Image
+                src="/images/brand/dollwow-black-gold.png"
+                alt="DollWow.com"
+                width={768}
+                height={512}
+                sizes="220px"
+                className="h-24 w-[220px] rounded-[10px] object-contain object-left"
+              />
+            </Link>
             <p className="mt-3 max-w-md text-sm leading-6 text-ivory-400">
               A premium storefront for comparing, customizing, and ordering with discreet checkout, clear timelines, and support that stays useful.
             </p>

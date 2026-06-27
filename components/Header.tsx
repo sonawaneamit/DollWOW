@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
@@ -17,9 +18,11 @@ const topLinks = [
 ] as const;
 
 const featuredShopLinks = [
-  { label: "All dolls", href: "/shop" },
-  { label: "Ready to ship", href: "/warehouse" },
-  { label: "Factory order", href: "/customize" },
+  { label: "Sex dolls", href: "/shop/sex-dolls" },
+  { label: "Realistic sex dolls", href: "/shop/realistic-sex-dolls" },
+  { label: "Mini sex dolls", href: "/shop/mini-sex-dolls" },
+  { label: "Ready to ship", href: "/shop/ready-to-ship" },
+  { label: "Factory order", href: "/shop/custom" },
   { label: "Female dolls", href: "/shop/female-dolls" },
   { label: "Male dolls", href: "/shop/male-dolls" }
 ];
@@ -36,21 +39,27 @@ const policyLinks = [
 ];
 
 const quickSearchLinks = [
+  { label: "Sex dolls", href: "/shop/sex-dolls" },
+  { label: "Realistic", href: "/shop/realistic-sex-dolls" },
+  { label: "Mini", href: "/shop/mini-sex-dolls" },
   { label: "WM Dolls", href: "/shop?brand=wm-dolls" },
   { label: "Angelkiss", href: "/shop?brand=angelkiss-dolls" },
   { label: "Irontech", href: "/shop?brand=irontech-dolls" },
-  { label: "Silicone", href: "/shop?material=silicone" },
-  { label: "TPE", href: "/shop?material=tpe" },
-  { label: "170 cm+", href: "/shop?height=170-plus" }
+  { label: "Silicone", href: "/shop/silicone" },
+  { label: "TPE", href: "/shop/tpe" },
+  { label: "170 cm+", href: "/shop/height-170-plus" }
 ];
 
 const suggestedSearchRoutes = [
-  { label: "Ready to ship", href: "/warehouse", keywords: ["ready", "warehouse", "ships", "tomorrow", "stock"] },
-  { label: "Custom builds", href: "/customize", keywords: ["custom", "customize", "builder", "options"] },
+  { label: "Sex dolls", href: "/shop/sex-dolls", keywords: ["sex", "doll", "dolls", "adult"] },
+  { label: "Realistic sex dolls", href: "/shop/realistic-sex-dolls", keywords: ["realistic", "real", "lifelike"] },
+  { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", keywords: ["mini", "petite", "small", "compact"] },
+  { label: "Ready to ship", href: "/shop/ready-to-ship", keywords: ["ready", "warehouse", "ships", "tomorrow", "stock"] },
+  { label: "Custom builds", href: "/shop/custom", keywords: ["custom", "customize", "builder", "options"] },
   { label: "Male dolls", href: "/shop/male-dolls", keywords: ["male", "man", "men"] },
   { label: "Female dolls", href: "/shop/female-dolls", keywords: ["female", "woman", "women"] },
-  { label: "Silicone dolls", href: "/shop?material=silicone", keywords: ["silicone"] },
-  { label: "TPE dolls", href: "/shop?material=tpe", keywords: ["tpe"] }
+  { label: "Silicone dolls", href: "/shop/silicone", keywords: ["silicone"] },
+  { label: "TPE dolls", href: "/shop/tpe", keywords: ["tpe"] }
 ];
 
 const brandLinks = catalogFilterOptions.brands.map((brand) => ({
@@ -215,8 +224,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-[80] border-b border-[#d59a6f]/22 bg-[#160c0a] text-[#f6e9dd] shadow-[0_18px_54px_rgba(20,6,4,0.28)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" onClick={closeAll} className="shrink-0 text-xl font-bold tracking-[-0.03em] text-ivory-50">
-          Doll<span className="text-gold-400">Wow</span><span className="text-gold-400">.</span>
+        <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
+          <Image
+            src="/images/brand/dollwow-black-gold.png"
+            alt="DollWow.com"
+            width={768}
+            height={512}
+            priority
+            sizes="(max-width: 640px) 148px, 184px"
+            className="h-10 w-[148px] rounded-[6px] object-contain object-left sm:h-12 sm:w-[184px]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 text-sm text-[#e8d0c1] lg:flex" aria-label="Primary navigation">
@@ -353,11 +370,11 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
     <div id="mobile-menu" className="max-h-[calc(100dvh-74px)] overflow-y-auto border-t border-[#d59a6f]/18 bg-[#100806] px-4 py-4 shadow-[0_28px_80px_rgba(0,0,0,0.7)] lg:hidden">
       <div className="space-y-3">
         <Link
-          href="/shop"
+          href="/shop/sex-dolls"
           onClick={onNavigate}
           className="flex items-center justify-between rounded-[14px] border border-[#d59a6f]/22 bg-[#f6e9dd]/[0.055] px-4 py-3 text-base font-semibold text-[#fff7ef]"
         >
-          Shop all dolls
+          Shop sex dolls
           <span className="text-xs uppercase tracking-[0.16em] text-[#e8b48f]">Catalog</span>
         </Link>
         <div className="grid grid-cols-2 gap-2">
@@ -377,6 +394,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
         </div>
 
         <MobileDetails title="Brands" links={brandLinks.slice(0, 12)} onNavigate={onNavigate} />
+        <MobileDetails title="Popular collections" links={featuredShopLinks} onNavigate={onNavigate} />
         <MobileDetails title="Shop by height" links={heightLinks} onNavigate={onNavigate} />
         <MobileDetails title="Material" links={materialLinks} onNavigate={onNavigate} />
         <MobileDetails title="Protection and policies" links={policyLinks} onNavigate={onNavigate} />

@@ -4,6 +4,9 @@ import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type Ca
 
 const quickLinks = [
   { label: "All", href: "/shop" },
+  { label: "Sex dolls", href: "/shop/sex-dolls" },
+  { label: "Realistic", href: "/shop/realistic-sex-dolls" },
+  { label: "Mini", href: "/shop/mini-sex-dolls" },
   { label: "WM Dolls", href: "/shop/wm-dolls" },
   { label: "Angelkiss", href: "/shop/angelkiss-dolls" },
   { label: "Irontech", href: "/shop/irontech-dolls" },
