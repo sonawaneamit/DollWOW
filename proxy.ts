@@ -2,6 +2,12 @@ import { NextResponse, type NextRequest } from "next/server";
 import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
 
 export function proxy(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith("/cart/c") || request.nextUrl.pathname.startsWith("/checkouts")) {
+    const checkoutDomain = (env.SHOPIFY_CHECKOUT_DOMAIN || "checkout.dollwow.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
+    const checkoutUrl = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, `https://${checkoutDomain}`);
+    return NextResponse.redirect(checkoutUrl, 307);
+  }
+
   if (
     !request.nextUrl.pathname.startsWith("/admin") &&
     !request.nextUrl.pathname.startsWith("/ops") &&
@@ -39,5 +45,5 @@ function unauthorized() {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/ops/:path*", "/price-match/:path*"]
+  matcher: ["/admin/:path*", "/ops/:path*", "/price-match/:path*", "/cart/c/:path*", "/checkouts/:path*"]
 };
