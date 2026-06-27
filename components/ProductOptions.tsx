@@ -24,6 +24,7 @@ import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { defaultMultipleOptionId, getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
 import { writeBrowserCartState } from "@/lib/cart/browser";
+import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
 import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
@@ -120,8 +121,9 @@ export function ProductOptions({ product }: { product: Product }) {
       setError(payload.error ?? "Could not start checkout.");
       return;
     }
+    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
     writeBrowserCartState({
-      checkoutUrl: payload.checkoutUrl,
+      checkoutUrl,
       totalQuantity: payload.totalQuantity ?? 1,
       productTitle: displayTitle,
       productDisplayName: displayName || undefined,
@@ -131,7 +133,7 @@ export function ProductOptions({ product }: { product: Product }) {
       currencyCode,
       customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
     });
-    router.push(payload.checkoutUrl);
+    router.push(checkoutUrl);
   }
 
   function selectOption(groupId: string, optionId: string) {

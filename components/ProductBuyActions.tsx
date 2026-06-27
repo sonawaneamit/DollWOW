@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Loader2, ShoppingBag, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { writeBrowserCartState } from "@/lib/cart/browser";
 import type { CatalogBodyType } from "@/lib/catalog/bodyType";
 import type { ProductImage } from "@/types/product";
@@ -55,8 +56,9 @@ export function ProductBuyActions({
       setError(payload.error ?? "Could not start checkout.");
       return;
     }
+    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
     writeBrowserCartState({
-      checkoutUrl: payload.checkoutUrl,
+      checkoutUrl,
       totalQuantity: payload.totalQuantity ?? 1,
       productTitle,
       productDisplayName,
@@ -64,7 +66,7 @@ export function ProductBuyActions({
       productImageUrl: productImage?.url,
       productImageAlt: productImage?.altText ?? productTitle
     });
-    router.push(payload.checkoutUrl);
+    router.push(checkoutUrl);
   }
 
   function scrollToCustomizer() {

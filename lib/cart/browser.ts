@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
+
 export type BrowserCartState = {
   checkoutUrl: string;
   totalQuantity: number;
@@ -29,7 +31,10 @@ export function readBrowserCartState(): BrowserCartState | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as BrowserCartState;
     if (!parsed?.checkoutUrl || !parsed?.totalQuantity) return null;
-    return parsed;
+    return {
+      ...parsed,
+      checkoutUrl: normalizeCheckoutUrl(parsed.checkoutUrl)
+    };
   } catch {
     return null;
   }
@@ -39,6 +44,7 @@ export function writeBrowserCartState(input: Omit<BrowserCartState, "updatedAt">
   if (typeof window === "undefined") return;
   const state: BrowserCartState = {
     ...input,
+    checkoutUrl: normalizeCheckoutUrl(input.checkoutUrl),
     updatedAt: new Date().toISOString()
   };
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
