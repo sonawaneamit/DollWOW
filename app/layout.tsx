@@ -23,6 +23,16 @@ export const metadata: Metadata = {
     template: "%s | DollWow"
   },
   description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and specialist support.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/brand/dollwow-black-gold.png",
+        width: 768,
+        height: 512,
+        alt: "DollWow.com"
+      }
+    ]
+  },
   robots: {
     index: true,
     follow: true
