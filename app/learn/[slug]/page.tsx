@@ -81,10 +81,19 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           ) : null}
           <div className="mt-8 max-w-3xl rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
             <p className="text-sm font-semibold text-ivory-50">
-              By {article.authorDisplayName}, {article.authorTitle}
+              By{" "}
+              <Link href={`/editorial-policy#${article.author}`} className="text-gold-300 underline underline-offset-4 transition hover:text-gold-200">
+                {article.authorDisplayName}
+              </Link>
+              , {article.authorTitle}
             </p>
             <p className="mt-2 text-sm leading-6 text-ivory-300">{author?.bio}</p>
-            <p className="mt-3 text-xs uppercase tracking-[0.16em] text-gold-300">Last reviewed {article.lastReviewed}</p>
+            <p className="mt-3 text-xs uppercase tracking-[0.16em] text-gold-300">
+              Last reviewed {article.lastReviewed} ·{" "}
+              <Link href="/editorial-policy" className="underline underline-offset-4 transition hover:text-gold-200">
+                Editorial policy
+              </Link>
+            </p>
           </div>
         </div>
       </section>

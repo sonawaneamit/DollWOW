@@ -52,8 +52,12 @@ export default function LearnPage() {
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-ink-700">{article.excerpt}</p>
                     <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
-                    <p className="font-semibold text-ink-950">{article.authorDisplayName}</p>
-                    <p>{author?.shortBio ?? article.authorTitle}</p>
+                      <p className="font-semibold text-ink-950">
+                        <Link href={`/editorial-policy#${article.author}`} className="transition hover:text-gold-700">
+                          {article.authorDisplayName}
+                        </Link>
+                      </p>
+                      <p>{author?.shortBio ?? article.authorTitle}</p>
                     </div>
                   </div>
                 </article>
