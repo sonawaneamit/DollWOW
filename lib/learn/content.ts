@@ -24,6 +24,8 @@ export type LearnArticle = {
   status: string;
   reviewOwner: string;
   lastReviewed: string;
+  featuredImage: string;
+  featuredImageAlt: string;
   body: string;
   excerpt: string;
 };
@@ -88,6 +90,7 @@ export function buildArticleStructuredData(article: LearnArticle) {
       url: siteUrl
     },
     mainEntityOfPage: learnArticleUrl(article.slug),
+    image: absoluteUrl(article.featuredImage),
     keywords: [article.primaryKeyword, ...article.secondaryKeywords].join(", ")
   };
 }
@@ -138,6 +141,8 @@ function readArticle(filePath: string): LearnArticle {
     status: stringValue(frontmatter.status),
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
+    featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
+    featuredImageAlt: featuredImageAlt(stringValue(frontmatter.title)),
     body: publicBody,
     excerpt: excerpt(publicBody)
   };
@@ -237,4 +242,20 @@ function priority(slug: string) {
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;
+}
+
+function featuredImagePath(slug: string) {
+  const relativePath = `/images/learn/${slug}.webp`;
+  const filePath = path.join(ROOT, "public", relativePath);
+  return fs.existsSync(filePath) ? relativePath : "";
+}
+
+function featuredImageAlt(title: string) {
+  return `Editorial featured image for ${title}`;
+}
+
+export function absoluteUrl(pathname: string) {
+  if (!pathname) return undefined;
+  if (/^https?:\/\//.test(pathname)) return pathname;
+  return `${siteUrl}${pathname}`;
 }

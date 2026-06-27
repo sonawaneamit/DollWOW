@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getLearnAuthor, getLearningArticles } from "@/lib/learn/content";
 
@@ -38,15 +39,22 @@ export default function LearnPage() {
             {articles.map((article) => {
               const author = getLearnAuthor(article.author);
               return (
-                <article key={article.slug} className="tone-card rounded-[8px] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-400">{article.category}</p>
-                  <h2 className="mt-3 text-xl font-semibold leading-tight text-ink-950">
-                    <Link href={`/learn/${article.slug}`}>{article.title}</Link>
-                  </h2>
-                  <p className="mt-3 text-sm leading-6 text-ink-700">{article.excerpt}</p>
-                  <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
+                <article key={article.slug} className="tone-card overflow-hidden rounded-[8px]">
+                  {article.featuredImage ? (
+                    <Link href={`/learn/${article.slug}`} className="relative block aspect-[3/2] bg-ink-900">
+                      <Image src={article.featuredImage} alt={article.featuredImageAlt} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
+                    </Link>
+                  ) : null}
+                  <div className="p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-400">{article.category}</p>
+                    <h2 className="mt-3 text-xl font-semibold leading-tight text-ink-950">
+                      <Link href={`/learn/${article.slug}`}>{article.title}</Link>
+                    </h2>
+                    <p className="mt-3 text-sm leading-6 text-ink-700">{article.excerpt}</p>
+                    <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
                     <p className="font-semibold text-ink-950">{article.authorDisplayName}</p>
                     <p>{author?.shortBio ?? article.authorTitle}</p>
+                    </div>
                   </div>
                 </article>
               );

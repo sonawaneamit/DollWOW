@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/MarkdownContent";
@@ -6,6 +7,7 @@ import {
   buildArticleBreadcrumbStructuredData,
   buildArticleFaqStructuredData,
   buildArticleStructuredData,
+  absoluteUrl,
   getLearnAuthor,
   getLearningArticle,
   getLearningArticles,
@@ -30,12 +32,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: article.description,
       url: learnArticleUrl(article.slug),
       type: "article",
-      siteName: "DollWow"
+      siteName: "DollWow",
+      images: article.featuredImage ? [{ url: absoluteUrl(article.featuredImage)!, alt: article.featuredImageAlt, width: 1536, height: 1024 }] : undefined
     },
     twitter: {
-      card: "summary",
+      card: article.featuredImage ? "summary_large_image" : "summary",
       title: article.title,
-      description: article.description
+      description: article.description,
+      images: article.featuredImage ? [absoluteUrl(article.featuredImage)!] : undefined
     }
   };
 }
@@ -61,6 +65,19 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           <p className="mt-5 text-sm uppercase tracking-[0.18em] text-gold-300">{article.category}</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">{article.description}</p>
+          {article.featuredImage ? (
+            <div className="mt-8 max-w-5xl overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04]">
+              <Image
+                src={article.featuredImage}
+                alt={article.featuredImageAlt}
+                width={1536}
+                height={1024}
+                priority
+                className="h-auto w-full object-cover"
+                sizes="(min-width: 1024px) 80rem, 100vw"
+              />
+            </div>
+          ) : null}
           <div className="mt-8 max-w-3xl rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
             <p className="text-sm font-semibold text-ivory-50">
               By {article.authorDisplayName}, {article.authorTitle}
