@@ -226,13 +226,13 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
           <Image
-            src="/images/brand/dollwow-black-gold.png"
+            src="/images/brand/dollwow-black-gold-lockup.png"
             alt="DollWow.com"
-            width={768}
-            height={512}
+            width={650}
+            height={235}
             priority
-            sizes="(max-width: 640px) 148px, 184px"
-            className="h-10 w-[148px] rounded-[6px] object-contain object-left sm:h-12 sm:w-[184px]"
+            sizes="(max-width: 640px) 190px, 260px"
+            className="h-14 w-[190px] rounded-[6px] object-contain object-left sm:h-16 sm:w-[260px]"
           />
         </Link>
 

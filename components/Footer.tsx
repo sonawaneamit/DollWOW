@@ -52,12 +52,12 @@ export function Footer() {
           <div>
             <Link href="/" className="inline-flex" aria-label="DollWow home">
               <Image
-                src="/images/brand/dollwow-black-gold.png"
+                src="/images/brand/dollwow-black-gold-lockup.png"
                 alt="DollWow.com"
-                width={768}
-                height={512}
-                sizes="220px"
-                className="h-24 w-[220px] rounded-[10px] object-contain object-left"
+                width={650}
+                height={235}
+                sizes="280px"
+                className="h-28 w-[280px] rounded-[10px] object-contain object-left"
               />
             </Link>
             <p className="mt-3 max-w-md text-sm leading-6 text-ivory-400">
