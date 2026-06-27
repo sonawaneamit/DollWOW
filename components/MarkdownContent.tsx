@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function MarkdownContent({ markdown }: { markdown: string }) {
@@ -46,8 +47,8 @@ function renderBlocks(markdown: string) {
       }
       blocks.push(
         <ul key={blocks.length}>
-          {items.map((item) => (
-            <li key={item}>{renderInline(item)}</li>
+          {items.map((item, itemIndex) => (
+            <li key={itemIndex}>{renderInline(item)}</li>
           ))}
         </ul>
       );
@@ -102,10 +103,35 @@ function Table({ lines }: { lines: string[] }) {
 }
 
 function renderInline(value: string) {
-  const parts = value.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).filter(Boolean);
+  const parts = value.split(/(\[[^\]]+\]\([^)]+\)|`[^`]+`|\*\*[^*]+\*\*)/g).filter(Boolean);
   return parts.map((part, index) => {
     if (part.startsWith("`") && part.endsWith("`")) return <code key={`${part}-${index}`}>{part.slice(1, -1)}</code>;
     if (part.startsWith("**") && part.endsWith("**")) return <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>;
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link) {
+      const [, label, href] = link;
+      if (href.startsWith("/") && !href.startsWith("//")) {
+        return (
+          <Link key={`${href}-${index}`} href={href} className="font-semibold text-gold-400 underline underline-offset-4 transition hover:text-gold-300">
+            {label}
+          </Link>
+        );
+      }
+      if (/^https?:\/\//.test(href)) {
+        return (
+          <a
+            key={`${href}-${index}`}
+            href={href}
+            className="font-semibold text-gold-400 underline underline-offset-4 transition hover:text-gold-300"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {label}
+          </a>
+        );
+      }
+      return label;
+    }
     return part;
   });
 }
