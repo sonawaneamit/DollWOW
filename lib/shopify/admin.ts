@@ -11,7 +11,7 @@ async function adminFetch<T>(query: string, variables: Record<string, unknown> =
 
   const domain = env.SHOPIFY_STORE_DOMAIN!.replace(/^https?:\/\//, "");
   const accessToken = await getAdminAccessToken(domain);
-  const response = await fetch(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
+  let response = await fetch(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,22 @@ async function adminFetch<T>(query: string, variables: Record<string, unknown> =
     cache: "no-store"
   });
 
-  const payload = await response.json();
+  let payload = await response.json();
+  if (response.status === 401 && env.SHOPIFY_ADMIN_ACCESS_TOKEN && env.SHOPIFY_CLIENT_ID && env.SHOPIFY_CLIENT_SECRET) {
+    tokenCache = null;
+    const fallbackToken = await mintAdminAccessToken(domain);
+    response = await fetch(`https://${domain}/admin/api/${API_VERSION}/graphql.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": fallbackToken
+      },
+      body: JSON.stringify({ query, variables }),
+      cache: "no-store"
+    });
+    payload = await response.json();
+  }
+
   if (!response.ok || payload.errors?.length) {
     throw new Error(payload.errors?.[0]?.message ?? "Shopify Admin request failed.");
   }
@@ -33,6 +48,15 @@ async function getAdminAccessToken(domain: string) {
   if (tokenCache && tokenCache.expiresAt > Date.now() + 60_000) return tokenCache.accessToken;
   if (!env.SHOPIFY_CLIENT_ID || !env.SHOPIFY_CLIENT_SECRET) {
     throw new Error("Shopify Admin API requires SHOPIFY_ADMIN_ACCESS_TOKEN or SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET.");
+  }
+
+  return mintAdminAccessToken(domain);
+}
+
+async function mintAdminAccessToken(domain: string) {
+  if (tokenCache && tokenCache.expiresAt > Date.now() + 60_000) return tokenCache.accessToken;
+  if (!env.SHOPIFY_CLIENT_ID || !env.SHOPIFY_CLIENT_SECRET) {
+    throw new Error("Shopify Admin API requires SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET to mint an access token.");
   }
 
   const response = await fetch(`https://${domain}/admin/oauth/access_token`, {
