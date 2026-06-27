@@ -14,6 +14,7 @@ const footerGroups = [
     title: "Guidance",
     links: [
       ["Help me choose", "/help-me-choose"],
+      ["Learning Center", "/learn"],
       ["FAQ", "/faq"],
       ["Why DollWow", "/why-dollwow"],
       ["Support", "/support"],

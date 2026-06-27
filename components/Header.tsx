@@ -12,6 +12,7 @@ const topLinks = [
   { label: "Customize", href: "/customize" },
   { label: "Price Match", href: "/compare" },
   { label: "Help Me Choose", href: "/help-me-choose" },
+  { label: "Learning Center", href: "/learn" },
   { label: "About Us", href: "/why-dollwow" }
 ] as const;
 
@@ -73,6 +74,7 @@ const prefetchTargets = [
   "/customize",
   "/compare",
   "/help-me-choose",
+  "/learn",
   "/why-dollwow",
   "/support",
   "/cart",
@@ -111,6 +113,7 @@ export function Header() {
     if (pathname?.startsWith("/customize")) return "Customize";
     if (pathname?.startsWith("/compare")) return "Price Match";
     if (pathname?.startsWith("/help-me-choose")) return "Help Me Choose";
+    if (pathname?.startsWith("/learn")) return "Learning Center";
     if (pathname?.startsWith("/why-dollwow")) return "About Us";
     if (pathname?.startsWith("/shop") || pathname?.startsWith("/products")) return "Shop Dolls";
     return "";
