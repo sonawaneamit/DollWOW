@@ -5,7 +5,7 @@ import authors from "@/content/editorial/authors.json";
 export const metadata: Metadata = {
   title: "Editorial Policy",
   description:
-    "How DollWow writes, reviews, and maintains Learning Center guides, including contributor bylines, product claim rules, and catalog review standards.",
+    "How DollWow writes, reviews, and maintains Learning Center guides, including contributor bylines, product accuracy, and catalog review standards.",
   alternates: { canonical: "/editorial-policy" }
 };
 
@@ -16,18 +16,24 @@ const authorEntries = [
 
 const reviewStandards = [
   "Product, price, stock, option, shipping, warranty, and supplier claims are checked against DollWow catalog data, supplier materials, and published store policies before publication.",
-  "If a detail depends on live inventory, warehouse confirmation, supplier approval, or a specific build path, the article should say so plainly.",
-  "Learning Center content does not use fake customer stories, fake reviews, invented product examples, or unverified supplier authorization claims.",
-  "AI tools may help with drafting, editing, image concepts, and content operations, but final published claims must stay grounded in DollWow-controlled data or approved source material.",
+  "When a detail depends on live inventory, warehouse confirmation, supplier approval, or a specific custom build, we make that clear instead of treating it as universal.",
+  "Learning Center content avoids fake customer stories, fake reviews, invented product examples, and unsupported supplier authorization claims.",
+  "AI tools may support drafting, editing, and visual concepts, but published product and policy claims are reviewed against DollWow-controlled data or approved source material.",
   "Health, care, legal, and safety topics are informational. They are not a substitute for medical, therapeutic, legal, or local compliance advice."
 ];
 
-const claimRules = [
-  "Use exact prices only when live catalog data confirms them.",
-  "Do not promise delivery dates unless DollWow can operationally support that promise.",
-  "Do not describe AI-generated editorial imagery as actual product photography.",
-  "Do not describe a product as factory-authorized unless that provenance is confirmed.",
-  "Do not imply Jesse or Alex are DollWow co-founders. They are editorial contributors."
+const accuracyStandards = [
+  "Exact prices come from the live catalog or a reviewed product source.",
+  "Delivery timing is written carefully because in-stock items, custom builds, supplier processing, and freight handling can differ.",
+  "Editorial illustrations are used to explain buying concepts. Product photography and product pages are the place to inspect the actual item.",
+  "Supplier, brand, and authorization details are included only when DollWow has a reviewed source for them.",
+  "Contributor biographies explain who is writing or reviewing guidance without presenting contributors as company founders."
+];
+
+const trustNotes = [
+  "Learning Center articles show contributor bylines so readers can see the point of view behind each guide.",
+  "Product pages, collection pages, checkout, and published store policies are the final source for current prices, options, shipping, and availability.",
+  "If something is unclear before checkout, DollWow support can help confirm product details, custom options, and timing."
 ];
 
 export default function EditorialPolicyPage() {
@@ -81,7 +87,7 @@ export default function EditorialPolicyPage() {
               <section className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.5] p-6">
                 <h2 className="text-2xl font-semibold text-ink-950">Contributor Bylines</h2>
                 <p className="mt-3 text-sm leading-6 text-ink-700">
-                  DollWow uses contributor bylines for Learning Center and buying-guide content. Jesse and Alex are real editorial contributors, not co-founder aliases.
+                  DollWow uses contributor bylines for Learning Center and buying-guide content so readers know who is shaping the guidance.
                 </p>
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
                   {authorEntries.map(({ id, profile }) => (
@@ -106,9 +112,9 @@ export default function EditorialPolicyPage() {
               </section>
 
               <section className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.5] p-6">
-                <h2 className="text-2xl font-semibold text-ink-950">Claim Rules</h2>
+                <h2 className="text-2xl font-semibold text-ink-950">How We Keep Product Claims Accurate</h2>
                 <div className="mt-5 space-y-3">
-                  {claimRules.map((item) => (
+                  {accuracyStandards.map((item) => (
                     <p key={item} className="rounded-[8px] border border-gold-500/12 bg-white/50 p-4 text-sm leading-6 text-ink-700">
                       {item}
                     </p>
@@ -118,11 +124,11 @@ export default function EditorialPolicyPage() {
             </div>
 
             <aside className="h-fit rounded-[8px] border border-gold-500/16 bg-ink-950 p-6 text-ivory-200">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Source trail</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">What To Check Before You Buy</p>
               <div className="mt-5 space-y-3 text-sm leading-6 text-ivory-300">
-                <p>Learning Center articles link to this policy through author bylines.</p>
-                <p>Article schema identifies contributor name, job title, and publication details.</p>
-                <p>DollWow catalog and policy pages remain the source of truth for product, price, shipping, and checkout claims.</p>
+                {trustNotes.map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
               </div>
             </aside>
           </div>
