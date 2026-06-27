@@ -51,6 +51,9 @@ Avoid phrases and structures that make the copy sound generated:
 - Repeating the keyword in every paragraph
 - Starting multiple sections with the same sentence shape
 - Ending sections with generic summaries like `By understanding these factors, you can make an informed decision.`
+- Em dashes. Use a period, comma, colon, or parentheses instead.
+- `Not just X, but Y` / `not only X, it is Y` / `more than just X` constructions.
+- Contrived contrast lines like `This is not just about buying a doll. It is about confidence, privacy, and control.`
 
 ### Preferred Sentence Rhythm
 
@@ -229,6 +232,8 @@ Byline system:
 
 Style rules:
 - Avoid ChatGPT-style openings such as "When it comes to," "In today's world," "It is important to note," and "This comprehensive guide."
+- Do not use em dashes.
+- Do not use "not just X, but Y," "not only X, it is Y," or "more than just X" framing.
 - Use concrete buyer context: price, material, measurements, handling, storage, stock status, customization, supplier confirmation, privacy, support, and checkout risk.
 - Mix short and medium sentences. Do not make every paragraph the same shape.
 - Use plain, grounded lines when useful: "That is the part worth checking before you pay." "If timing matters, ask before checkout." "The product page should win over the brochure copy."
