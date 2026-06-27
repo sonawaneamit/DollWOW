@@ -32,6 +32,68 @@ Use this rule:
 
 Do not create separate thin blog posts for every 10-volume question. Fold small questions into FAQ sections on stronger pages.
 
+## Competitor SERP Match And Exceed Workflow
+
+Run a DataForSEO SERP audit before each major content batch. The point is to see what Google is already rewarding in the US for the biggest commercial and commercial-investigation keywords, then build a DollWow page that matches the winning page type and exceeds the usefulness of the ranking pages.
+
+Command:
+
+```bash
+npm run seo:serp-competitors -- --execute --env ../ColorMine-Website/.env
+```
+
+Use this for priority keywords such as:
+
+- `sex dolls`
+- `sex doll`
+- `realistic sex dolls`
+- `tpe sex doll`
+- `tpe dolls`
+- `silicone sex dolls`
+- `male sex doll`
+- `male dolls`
+- `mini sex dolls`
+- `torso sex dolls`
+- `best sex dolls`
+- `sex doll cost`
+- `sex doll reviews`
+- `ready to ship sex dolls`
+- `custom sex doll`
+
+Seed competitors to monitor:
+
+- `yourdoll.com`
+- `siliconwives.com`
+- `rosemarydoll.com`
+- `joylovedolls.com`
+- `spartandolls.com`
+
+The audit should identify:
+
+- The top domains appearing across the keyword set.
+- The ranking URL for each keyword.
+- Whether ranking pages are collections, product pages, blogs, guides, homepages, or other page types.
+- Which queries need a DollWow collection page first.
+- Which queries need a Learning Center article or comparison guide first.
+- Which existing DollWow pages should be refreshed.
+
+### Match And Exceed Rules
+
+Match the ranking page type first. If the SERP is mostly collection pages, build a stronger collection page before writing another guide. If the SERP is mostly guides, build the stronger guide and link it into the relevant collection.
+
+Exceed competitors with:
+
+- Better product filters and live catalog links.
+- Clearer shipping, privacy, price-match, and support details.
+- Real comparison tables.
+- FAQ schema.
+- Jesse or Alex bylines linked to the editorial policy.
+- Product examples only when live Shopify data confirms relevance.
+- Internal links to matching collection pages, articles, support, price match, and buyer protection.
+- Original DollWow screenshots, illustrations, charts, or product cards where useful.
+
+Do not copy competitor wording, structure pages as doorway spam, invent reviews, or make unverifiable claims about competitors.
+
 ## DataForSEO Signals
 
 High-opportunity keywords from DataForSEO:
@@ -336,7 +398,8 @@ Use OpenAI/Claude for drafting, but use deterministic facts:
 6. Add internal links.
 7. Add FAQ schema candidates.
 8. Add image/infographic brief.
-9. Human review before publishing.
+9. Run the DataForSEO SERP competitor audit and adjust the brief to match the winning page type.
+10. Human review before publishing.
 
 Prompt:
 

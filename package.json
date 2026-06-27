@@ -16,6 +16,7 @@
     "prepare:rosemary-import": "node scripts/prepare-rosemary-import.mjs",
     "review:import-duplicates": "node scripts/review-import-duplicates.mjs",
     "seo:dataforseo": "node scripts/enrich-seo-dataforseo.mjs",
+    "seo:serp-competitors": "node scripts/audit-dataforseo-serp-competitors.mjs",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
     "backfill:measurements": "node scripts/backfill-shopify-measurements.mjs",
     "backfill:display-names": "node scripts/backfill-shopify-display-names.mjs",

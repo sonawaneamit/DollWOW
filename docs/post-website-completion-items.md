@@ -36,6 +36,7 @@ These tasks can run before the website feature work is complete:
 8. Prepare sitemap/robots requirements and URL inventory.
 9. Prepare product-page content expansion inputs.
 10. Prepare competitor comparison briefs using factual, visible comparison criteria.
+11. Run DataForSEO SERP competitor audits for priority US keywords and use the output to decide whether each target needs a collection page, guide, comparison page, or PDP enhancement.
 
 ## What Should Wait For The Main Website Thread
 
@@ -187,6 +188,14 @@ Create content briefs first. Store them in:
 `content/seo/briefs/`
 
 Also read `docs/blog-strategy.md` and `docs/editorial-voice-and-bylines.md` for the dedicated Learning Center/blog plan, voice, and privacy-safe byline rules. Use the blog strategy for long-tail informational questions, comparison posts, care/privacy topics, and AI-answer/GEO content. Use this execution brief for collection, Shopify, and technical SEO work.
+
+Before creating a new batch, run:
+
+```bash
+npm run seo:serp-competitors -- --execute --env ../ColorMine-Website/.env
+```
+
+Use the DataForSEO output to identify the top 10 competing domains and the exact URLs ranking for commercial keywords such as `sex dolls`, `tpe dolls`, `silicone sex dolls`, `male sex doll`, `mini sex dolls`, and `best sex dolls`. If ranking pages are collections, prioritize a DollWow collection route and Shopify collection/metafield work. If ranking pages are guides, prioritize a Learning Center article with comparison tables, FAQs, author policy links, and relevant catalog links.
 
 Recommended format:
 
