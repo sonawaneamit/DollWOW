@@ -67,6 +67,19 @@ const materialLinks = catalogFilterOptions.materials.map((material) => ({
   href: `/shop?material=${material.value}`
 }));
 
+const prefetchTargets = [
+  "/shop",
+  "/warehouse",
+  "/customize",
+  "/compare",
+  "/help-me-choose",
+  "/why-dollwow",
+  "/support",
+  "/cart",
+  ...featuredShopLinks.map((link) => link.href),
+  ...quickSearchLinks.map((link) => link.href)
+];
+
 type SearchResultSuggestion = {
   score: number;
   id: string;
@@ -83,6 +96,7 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [shopMenuOpen, setShopMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [cartState, setCartState] = useState<BrowserCartState | null>(null);
@@ -114,6 +128,12 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    for (const href of Array.from(new Set(prefetchTargets))) {
+      router.prefetch(href);
+    }
+  }, [router]);
+
+  useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") closeAll();
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
@@ -128,13 +148,17 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (!mobileMenuOpen) return;
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [mobileMenuOpen]);
+    if (!shopMenuOpen) return;
+
+    function onPointerDown(event: PointerEvent) {
+      const target = event.target as Element | null;
+      if (target?.closest("[data-shop-menu-root]")) return;
+      setShopMenuOpen(false);
+    }
+
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => window.removeEventListener("pointerdown", onPointerDown);
+  }, [shopMenuOpen]);
 
   useEffect(() => {
     if (!shouldQueryRemote) return;
@@ -168,6 +192,7 @@ export function Header() {
 
   function openSearch() {
     setMobileMenuOpen(false);
+    setShopMenuOpen(false);
     setSearchOpen(true);
   }
 
@@ -180,26 +205,34 @@ export function Header() {
 
   function closeAll() {
     setMobileMenuOpen(false);
+    setShopMenuOpen(false);
     setSearchOpen(false);
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#d59a6f]/22 bg-[#160c0a]/92 text-[#f6e9dd] shadow-[0_18px_54px_rgba(20,6,4,0.28)] backdrop-blur-xl">
+    <header className="sticky top-0 z-[80] border-b border-[#d59a6f]/22 bg-[#160c0a] text-[#f6e9dd] shadow-[0_18px_54px_rgba(20,6,4,0.28)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" onClick={closeAll} className="shrink-0 text-xl font-bold tracking-[-0.03em] text-ivory-50">
           Doll<span className="text-gold-400">Wow</span><span className="text-gold-400">.</span>
         </Link>
 
         <nav className="hidden items-center gap-1 text-sm text-[#e8d0c1] lg:flex" aria-label="Primary navigation">
-          <div className="group/shop relative">
-            <Link
-              href="/shop"
-              className={`inline-flex items-center gap-1.5 rounded-[12px] px-3 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] ${activeLabel === "Shop Dolls" ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
+          <div data-shop-menu-root>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchOpen(false);
+                setMobileMenuOpen(false);
+                setShopMenuOpen((value) => !value);
+              }}
+              className={`inline-flex items-center gap-1.5 rounded-[12px] px-3 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] ${activeLabel === "Shop Dolls" || shopMenuOpen ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
+              aria-expanded={shopMenuOpen}
+              aria-controls="desktop-shop-menu"
             >
               Shop Dolls
-              <ChevronDown className="h-3.5 w-3.5 opacity-70 transition group-hover/shop:rotate-180" />
-            </Link>
-            <DesktopShopDropdown />
+              <ChevronDown className={`h-3.5 w-3.5 opacity-70 transition ${shopMenuOpen ? "rotate-180" : ""}`} />
+            </button>
+            {shopMenuOpen ? <DesktopShopDropdown onNavigate={closeAll} /> : null}
           </div>
           {topLinks.map((link) => (
             <Link
@@ -243,6 +276,7 @@ export function Header() {
             type="button"
             onClick={() => {
               setSearchOpen(false);
+              setShopMenuOpen(false);
               setMobileMenuOpen((value) => !value);
             }}
             className="rounded-[12px] border border-[#d59a6f]/24 bg-[#f6e9dd]/[0.055] p-2 transition hover:border-[#e8b48f]/60 hover:text-[#f6e9dd] lg:hidden"
@@ -272,32 +306,38 @@ export function Header() {
   );
 }
 
-function DesktopShopDropdown() {
+function DesktopShopDropdown({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <div className="invisible absolute left-1/2 top-full z-50 w-[min(64rem,calc(100vw-2rem))] -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover/shop:visible group-hover/shop:opacity-100 group-focus-within/shop:visible group-focus-within/shop:opacity-100">
-      <div className="overflow-hidden rounded-[14px] border border-[#d59a6f]/26 bg-[linear-gradient(180deg,#1b100d,#0d0605)] shadow-[0_32px_90px_rgba(0,0,0,0.62)]">
-        <div className="grid gap-0 border-b border-[#d59a6f]/16 p-5 lg:grid-cols-[1.2fr_0.85fr_0.85fr_1fr]">
-          <MenuColumn title="Brands" links={brandLinks.slice(0, 12)} twoColumns />
-          <MenuColumn title="Height" links={heightLinks} />
-          <MenuColumn title="Material" links={materialLinks} />
-          <MenuColumn title="Popular" links={featuredShopLinks} />
-        </div>
-        <div className="grid gap-4 p-5 lg:grid-cols-[1fr_auto]">
-          <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#e8b48f]">Quick links</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {quickSearchLinks.map((link) => (
-                <HeaderPill key={link.href} href={link.href} label={link.label} />
-              ))}
-            </div>
+    <div
+      id="desktop-shop-menu"
+      data-shop-menu-root
+      className="fixed inset-x-0 top-[65px] z-[85] border-y border-[#d59a6f]/22 bg-[#100806] shadow-[0_32px_90px_rgba(0,0,0,0.62)]"
+    >
+      <div className="mx-auto max-h-[calc(100vh-65px)] max-w-7xl overflow-y-auto px-6 py-6 lg:px-8">
+        <div className="overflow-hidden border border-[#d59a6f]/26 bg-[linear-gradient(180deg,#1b100d,#0d0605)]">
+          <div className="grid gap-0 border-b border-[#d59a6f]/16 p-5 lg:grid-cols-[1.2fr_0.85fr_0.85fr_1fr]">
+            <MenuColumn title="Brands" links={brandLinks.slice(0, 12)} twoColumns onNavigate={onNavigate} />
+            <MenuColumn title="Height" links={heightLinks} onNavigate={onNavigate} />
+            <MenuColumn title="Material" links={materialLinks} onNavigate={onNavigate} />
+            <MenuColumn title="Popular" links={featuredShopLinks} onNavigate={onNavigate} />
           </div>
-          <div className="flex items-end gap-2">
-            <Link href="/help-me-choose" className="rounded-[12px] bg-[#f3cdb0] px-4 py-2 text-sm font-semibold text-[#1c1009]">
-              Help me choose
-            </Link>
-            <Link href="/compare" className="rounded-[12px] border border-[#d59a6f]/30 px-4 py-2 text-sm font-semibold text-[#f3cdb0] hover:border-[#f3cdb0]/60">
-              Price match
-            </Link>
+          <div className="grid gap-4 p-5 lg:grid-cols-[1fr_auto]">
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#e8b48f]">Quick links</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {quickSearchLinks.map((link) => (
+                  <HeaderPill key={link.href} href={link.href} label={link.label} onNavigate={onNavigate} />
+                ))}
+              </div>
+            </div>
+            <div className="flex items-end gap-2">
+              <Link href="/help-me-choose" onClick={onNavigate} className="rounded-[12px] bg-[#f3cdb0] px-4 py-2 text-sm font-semibold text-[#1c1009]">
+                Help me choose
+              </Link>
+              <Link href="/compare" onClick={onNavigate} className="rounded-[12px] border border-[#d59a6f]/30 px-4 py-2 text-sm font-semibold text-[#f3cdb0] hover:border-[#f3cdb0]/60">
+                Price match
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -307,7 +347,7 @@ function DesktopShopDropdown() {
 
 function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <div id="mobile-menu" className="fixed inset-x-0 top-[61px] z-40 max-h-[calc(100dvh-61px)] overflow-y-auto border-t border-[#d59a6f]/18 bg-[#100806]/98 px-4 py-4 shadow-[0_28px_80px_rgba(0,0,0,0.7)] backdrop-blur-xl lg:hidden">
+    <div id="mobile-menu" className="max-h-[calc(100dvh-74px)] overflow-y-auto border-t border-[#d59a6f]/18 bg-[#100806] px-4 py-4 shadow-[0_28px_80px_rgba(0,0,0,0.7)] lg:hidden">
       <div className="space-y-3">
         <Link
           href="/shop"
@@ -345,11 +385,13 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
 function MenuColumn({
   title,
   links,
-  twoColumns = false
+  twoColumns = false,
+  onNavigate
 }: {
   title: string;
   links: Array<{ label: string; href: string }>;
   twoColumns?: boolean;
+  onNavigate?: () => void;
 }) {
   return (
     <div className="px-2 py-1">
@@ -359,6 +401,7 @@ function MenuColumn({
           <Link
             key={link.href}
             href={link.href}
+            onClick={onNavigate}
             className="rounded-[8px] px-3 py-1.5 text-[0.88rem] leading-tight text-[#d8c0b0] transition hover:bg-[#f6e9dd]/[0.06] hover:text-[#fff7ef]"
           >
             {link.label}
@@ -395,9 +438,9 @@ function MobileDetails({
   );
 }
 
-function HeaderPill({ href, label }: { href: string; label: string }) {
+function HeaderPill({ href, label, onNavigate }: { href: string; label: string; onNavigate?: () => void }) {
   return (
-    <Link href={href} className="rounded-[10px] border border-[#d59a6f]/18 px-3 py-2 text-sm text-[#ead4c6] transition hover:border-[#e8b48f]/55 hover:text-[#fff7ef]">
+    <Link href={href} onClick={onNavigate} className="rounded-[10px] border border-[#d59a6f]/18 px-3 py-2 text-sm text-[#ead4c6] transition hover:border-[#e8b48f]/55 hover:text-[#fff7ef]">
       {label}
     </Link>
   );
