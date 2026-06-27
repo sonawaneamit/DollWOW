@@ -10,8 +10,17 @@ const authors = {
     displayName: "Jesse",
     title: "Licensed Sexologist and DollWow Intimacy Education Editor",
     type: "real DollWow contributor",
+    shortBio: "Jesse is a licensed sexologist and DollWow's intimacy education editor.",
     bio:
-      "Jesse is a licensed sexologist and DollWow intimacy education editor focused on buyer questions, care, privacy, and practical product guidance. Jesse's articles are reviewed against DollWow catalog, policy, and supplier information before publication.",
+      "Jesse writes DollWow's care, privacy, safety, and buyer-comfort guides through the lens of a licensed sexologist. Jesse's role is to make sensitive buying questions feel clear and practical, while keeping product, shipping, and policy claims grounded in DollWow catalog data and supplier information.",
+    voice:
+      "Calm, careful, privacy-aware, and practical. Jesse should reduce anxiety, separate fact from preference, and avoid medical or therapeutic certainty unless the article has specific review.",
+    signaturePhrases: [
+      "For most buyers, the practical question is...",
+      "A safer way to compare is...",
+      "If timing matters, ask before checkout.",
+      "This is informational, not medical advice."
+    ],
     rules: [
       "Use for care, safety, privacy, customization, and sensitive buyer-question topics.",
       "Jesse can be described as a licensed sexologist.",
@@ -22,8 +31,17 @@ const authors = {
     displayName: "Alex",
     title: "Doll Collector and DollWow Product Educator with 20+ Years of Experience",
     type: "real DollWow contributor",
+    shortBio: "Alex is a doll collector and DollWow product educator with 20+ years of experience.",
     bio:
-      "Alex is a doll collector and DollWow product educator with 20+ years of experience studying doll materials, measurements, customization tradeoffs, and collector-style product details. Alex's articles are reviewed against DollWow catalog, policy, and supplier information before publication.",
+      "Alex writes DollWow's buying guides, brand explainers, and product-comparison content from 20+ years of collector experience. Alex focuses on the details buyers can actually compare: material, height, weight, measurements, body type, option compatibility, catalog photos, and what should be confirmed before checkout.",
+    voice:
+      "Specific, detail-oriented, and collector-practical. Alex should sound like someone who knows where catalog listings can mislead buyers, not like a brochure or generic product roundup.",
+    signaturePhrases: [
+      "The spec that matters here is...",
+      "I would compare this against...",
+      "The listing is only the starting point.",
+      "Product-specific options win over brand-wide assumptions."
+    ],
     rules: [
       "Use for product comparisons, brand guides, size/fit guides, materials, measurements, and collection education.",
       "Alex can be described as having 20+ years of collector experience.",
@@ -32,7 +50,11 @@ const authors = {
   }
 };
 
-const voiceBlock = `Write in DollWow's editorial voice: discreet, practical, premium adult-commerce guidance. Be clear and specific, never explicit for its own sake. Help a privacy-conscious buyer compare product facts, options, timing, and risks. Do not invent reviews, credentials, health claims, legal advice, supplier authorization, shipping guarantees, included accessories, or product availability. Use careful language when something depends on supplier confirmation.`;
+const voiceBlock = `Write in DollWow's editorial voice: discreet, practical, premium adult-commerce guidance. The copy should sound like an experienced adult-commerce specialist, not a generic AI explainer. Be clear and specific, never explicit for its own sake. Help a privacy-conscious buyer compare product facts, options, timing, and risks. Do not invent reviews, credentials, health claims, legal advice, supplier authorization, shipping guarantees, included accessories, or product availability. Use careful language when something depends on supplier confirmation.
+
+Anti-ChatGPT style rules: do not open with "When it comes to," "In today's world," "It is important to note," "This comprehensive guide," or "Whether you're a beginner..." Avoid generic phrases like "unlock," "elevate your experience," "game-changer," "boasts," and "crafted to perfection." Use concrete buyer details: price, material, height, weight, measurements, storage, stock status, customization, supplier confirmation, privacy, delivery timing, and checkout risk. Mix short and medium sentences. Do not stuff keywords.
+
+Author voice: Jesse is calm, careful, privacy-aware, and practical. Alex is specific, detail-oriented, and collector-practical.`;
 
 const blogTopics = [
   topic("tpe-vs-silicone-sex-dolls", "TPE vs Silicone Sex Dolls: Which Material Should You Choose?", "silicone vs tpe", ["tpe vs silicone", "tpe vs silicone difference", "tpe material vs silicone"], "Materials And Care", "informational", "jesse", ["/tpe-sex-dolls", "/silicone-sex-dolls", "/silicone-head-sex-dolls", "/customize"]),

@@ -410,5 +410,5 @@ Phase 1:
 5. Do not generate final article body yet unless asked.
 6. Do not invent product claims, reviews, shipping promises, health claims, or legal advice.
 7. Add a summary JSON index of the briefs at content/learn/blog-brief-index.json.
-8. Use Jesse and Alex only as privacy-protecting DollWow editorial personas; do not invent credentials, founder identities, fake reviews, or unsubstantiated experience claims.
+8. Use Jesse and Alex only as real DollWow editorial contributor bylines; do not invent founder identities, fake reviews, or unsubstantiated experience claims.
 ```

@@ -472,7 +472,7 @@ Phase 1:
 5. Do not call Shopify Admin API with execute mode.
 6. Do not modify PDP UI or header/navigation.
 7. Run typecheck/lint/tests if code changes are made.
-8. Use Jesse and Alex only as privacy-protecting DollWow editorial personas; do not invent credentials, founder identities, fake reviews, or unsubstantiated experience claims.
+8. Use Jesse and Alex only as real DollWow editorial contributor bylines; do not invent founder identities, fake reviews, or unsubstantiated experience claims.
 ```
 
 ## Second Codex Task Prompt
