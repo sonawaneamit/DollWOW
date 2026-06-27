@@ -8,11 +8,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(checkoutUrl, 307);
   }
 
-  if (
-    !request.nextUrl.pathname.startsWith("/admin") &&
-    !request.nextUrl.pathname.startsWith("/ops") &&
-    !request.nextUrl.pathname.startsWith("/price-match")
-  ) {
+  if (!request.nextUrl.pathname.startsWith("/admin") && !request.nextUrl.pathname.startsWith("/ops")) {
     return NextResponse.next();
   }
 
@@ -45,5 +41,5 @@ function unauthorized() {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/ops/:path*", "/price-match/:path*", "/cart/c/:path*", "/checkouts/:path*"]
+  matcher: ["/admin/:path*", "/ops/:path*", "/cart/c/:path*", "/checkouts/:path*"]
 };

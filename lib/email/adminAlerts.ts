@@ -22,7 +22,7 @@ export async function sendSupportLeadAdminAlert(lead: SupportLeadAlert) {
       ? `New DollWow brand partnership message${lead.name ? ` from ${lead.name}` : ""}`
       : `New DollWow support request${lead.name ? ` from ${lead.name}` : ""}`;
     const sourceLabel = isBrandLead ? "Brand partnership" : lead.sourceFlow;
-    const adminHref = isBrandLead ? appUrl : `${appUrl}/price-match`;
+    const adminHref = isBrandLead ? appUrl : `${appUrl}/ops/price-match`;
     const html = `
       <h2>${isBrandLead ? "New DollWow brand partnership message" : "New DollWow support request"}</h2>
       <p><strong>Source:</strong> ${escapeHtml(sourceLabel)}</p>
@@ -70,7 +70,7 @@ export async function sendPriceMatchAdminAlert(request: ComparisonRequest) {
   try {
     const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
     const appUrl = (env.ADMIN_APP_URL || env.NEXT_PUBLIC_SITE_URL).replace(/\/$/, "");
-    const reviewUrl = `${appUrl}/price-match`;
+    const reviewUrl = `${appUrl}/ops/price-match`;
     const resultUrl = `${appUrl}/compare/${request.id}`;
     const targetProductUrl = request.targetProductHandle ? `${appUrl}/products/${request.targetProductHandle}` : null;
     const subject = `New price match request${request.targetProductTitle ? `: ${request.targetProductTitle}` : ""}`;

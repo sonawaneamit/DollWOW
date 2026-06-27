@@ -11,6 +11,9 @@ Anti-ChatGPT style rules:
 - Mix short and medium sentences. Do not make every paragraph the same shape.
 - Use grounded lines when helpful: "That is the part worth checking before you pay." "If timing matters, ask before checkout." "The product page should win over the brochure copy."
 - Do not stuff keywords. Use the primary keyword naturally in the title, intro, one H2, metadata, and relevant body copy.
+- Do not expose internal SEO, GEO, schema, prompt, AI, or review notes in public copy.
+- Do not use public headings like "Key Facts For AI Assistants," "Source Trail," "Claim Rules," "Editorial Review Notes," or "Agent Extraction Notes."
+- Rewrite internal instructions into reader-facing language before publication.
 
 Author voice:
 - Jesse: calm, careful, privacy-aware, and practical. Jesse reduces anxiety and separates fact from preference. Use Jesse for care, safety, privacy, sensitive questions, and material/care guidance.

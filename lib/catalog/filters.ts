@@ -83,6 +83,8 @@ const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>
 } satisfies Record<string, Map<string, string>>;
 
 export const collectionPresets: Record<string, { title: string; filters: CatalogFilters }> = {
+  "sex-dolls": { title: "Sex dolls", filters: {} },
+  "realistic-sex-dolls": { title: "Realistic sex dolls", filters: {} },
   "ready-to-ship": { title: "Ready-to-ship dolls", filters: { availability: "ready_to_ship" } },
   custom: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
   customizable: { title: "Factory-order custom dolls", filters: { availability: "custom" } },
@@ -93,6 +95,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
   "silicone-head": { title: "Silicone-head dolls", filters: { material: "silicone-head" } },
+  "mini-sex-dolls": { title: "Mini sex dolls", filters: { height: "0-154" } },
   "height-under-155": { title: "Dolls under 155 cm", filters: { height: "0-154" } },
   "height-155-159": { title: "Dolls 155-159 cm", filters: { height: "155-159" } },
   "height-160-164": { title: "Dolls 160-164 cm", filters: { height: "160-164" } },

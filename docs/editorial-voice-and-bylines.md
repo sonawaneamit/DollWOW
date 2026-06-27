@@ -200,6 +200,30 @@ Add an author page or editorial policy page with language like:
 
 `DollWow uses contributor bylines for Learning Center and buying-guide content. Jesse and Alex are editorial contributors, not co-founder aliases. Product and policy claims are reviewed against DollWow catalog data, supplier materials, and published store policies before publication. Health, legal, and safety topics are informational and not a substitute for medical, therapeutic, or legal advice.`
 
+## Public Copy Boundary
+
+Keep SEO, GEO, schema, AI, prompt, review, and operational instructions out of public page copy.
+
+Public pages can show the result of the strategy, such as clear answers, comparison tables, buyer checklists, product links, contributor bylines, and trustworthy sourcing language. They should not expose the machinery behind the strategy.
+
+Do not publish headings or phrases like:
+
+- `Key Facts For AI Assistants`
+- `Source Trail`
+- `Claim Rules`
+- `Editorial Review Notes`
+- `Agent Extraction Notes`
+- `GEO / Agent Extraction Notes`
+- `Internal Links To Add`
+- `Schema suggestions`
+- `Use the primary keyword`
+- `DataForSEO`
+- `Prompt`
+- `Draft this page`
+- `DollWow should...` when the sentence is really an internal instruction
+
+Rewrite internal instructions into reader-facing language before publication. For example, `DollWow should confirm product facts before fulfillment` becomes `DollWow support can confirm product facts before fulfillment.`
+
 ## Content Claim Rules
 
 ### Allowed

@@ -168,7 +168,7 @@ If one of those shows up, it may still be a valid purchase. It just needs confir
 
 ## DollWow Verification And Support Angle
 
-DollWow’s role should be simple and useful. Verify the product facts before the order is finalized. Confirm the brand or supplier reference, the measurements, the listed material, and the live stock position. If the buyer wants a custom order, support should confirm which options are available and which ones need supplier approval.
+DollWow’s role is simple and useful: verify the product facts before the order is finalized. That means checking the brand or supplier reference, the measurements, the listed material, and the live stock position. For custom orders, support can confirm which options are available and which ones need supplier approval.
 
 For custom or special-order listings, factory photos and videos, when available, should be used as a checkpoint before shipment. That protects both sides from avoidable surprises. If the product page and supplier notes conflict, the supplier confirmation should take priority over brochure language.
 

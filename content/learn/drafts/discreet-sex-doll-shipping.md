@@ -131,7 +131,7 @@ Even if the parcel is plain, delivery can still be noticed by someone at the doo
 
 ## DollWow Verification and Support Angle
 
-DollWow should verify discreet sex doll shipping details before fulfillment, not after the buyer pays. That includes:
+DollWow support can verify discreet sex doll shipping details before fulfillment, not after the buyer pays. That includes:
 
 - Stock status from the warehouse or supplier.
 - Packaging method where the supplier confirms it.
@@ -161,7 +161,7 @@ It should not use unnecessary product-identifying language where plain packaging
 
 ### Is billing discreet?
 
-Billing should use neutral language where supported by the payment setup, but that depends on the processor and merchant configuration. DollWow should not promise a descriptor it cannot verify.
+Billing can use neutral language where supported by the payment setup, but that depends on the processor and merchant configuration. DollWow will not promise a descriptor it cannot verify.
 
 ### Can I change the delivery address after ordering?
 

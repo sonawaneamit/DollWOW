@@ -147,7 +147,7 @@ A common red flag is a listing that sounds confident but leaves out core specs. 
 
 ## DollWow Verification And Support Angle
 
-DollWow should confirm product facts, options, stock status, and delivery details before fulfillment. That is especially important with mini sex dolls and other compact models, because buyers often use them to solve a space or privacy problem. A missing measurement or unclear option can turn into a bad fit after checkout.
+DollWow support can confirm product facts, options, stock status, and delivery details before fulfillment. That is especially important with mini sex dolls and other compact models, because buyers often use them to solve a space or privacy problem. A missing measurement or unclear option can turn into a bad fit after checkout.
 
 For support conversations, the most useful questions are simple:
 

@@ -165,11 +165,11 @@ If timing matters, ask before checkout. If the answer depends on supplier confir
 
 ## DollWow Verification And Support Angle
 
-DollWow should treat reviews as one input, not the final answer.
+DollWow treats reviews as one input, not the final answer.
 
 Jesse here. For a privacy-conscious buyer, support matters because it can confirm the facts that reviews often blur. The strongest help is simple: confirm the product identity, the exact options, stock status, processing time, and any packaging or delivery details that are known at the time of purchase. If something depends on supplier confirmation, say so directly.
 
-DollWow should also avoid overstating review quality. Do not present unverified praise as proof. Do not imply every order ships on the same timeline. Do not attach claims to a product that have not been confirmed on the live listing or through support.
+DollWow avoids overstating review quality. Unverified praise is not proof, and every order should not be treated as if it ships on the same timeline. Product claims need to match the live listing or a support confirmation.
 
 The safest support posture is steady and specific:
 

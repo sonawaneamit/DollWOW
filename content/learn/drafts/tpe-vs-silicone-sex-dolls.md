@@ -183,7 +183,7 @@ Before checkout, use this list and keep it practical.
 
 DollWow’s job is to reduce guesswork before the order is placed.
 
-For a silicone vs tpe comparison, DollWow should confirm:
+For a silicone vs TPE comparison, DollWow support can confirm:
 
 - The exact material listed on the current product page
 - Whether the build is full TPE, full silicone, or a mixed configuration

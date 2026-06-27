@@ -73,7 +73,7 @@ A realistic male sex doll may also come with tradeoffs. A more detailed build ca
 
 This is where many listings get fuzzy. Some product pages show options that are available only on certain factory runs. Others use the same photos across multiple configurations. If the listing claims custom hair, eye color, skin tone, or body changes, confirm whether those are real orderable options or just display images.
 
-If timing matters, ask before checkout. A buyer who needs a predictable delivery window should prefer confirmed stock or a clearly defined production timeline. If the build depends on supplier confirmation, DollWow should say so instead of guessing.
+If timing matters, ask before checkout. A buyer who needs a predictable delivery window should prefer confirmed stock or a clearly defined production timeline. If the build depends on supplier confirmation, DollWow support can explain that before the order moves forward.
 
 ### Quick decision guide
 
@@ -143,7 +143,7 @@ The product page should win over the brochure copy. If the page is thin on facts
 
 ## DollWow Verification and Support Angle
 
-DollWow should verify the information that actually affects the buyer’s outcome. That includes:
+DollWow support can verify the information that actually affects the buyer’s outcome. That includes:
 
 - exact model and body type
 - listed dimensions

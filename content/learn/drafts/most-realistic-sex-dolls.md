@@ -166,7 +166,7 @@ Care instructions also matter. Some materials react differently to powders, oils
 
 ## DollWow Verification And Support Angle
 
-DollWow should separate appearance claims from confirmed product facts. That means verifying the live listing, checking current configuration details, and confirming what is actually part of the order before the buyer pays.
+DollWow separates appearance claims from confirmed product facts. That means verifying the live listing, checking current configuration details, and confirming what is actually part of the order before the buyer pays.
 
 For custom or semi-custom builds, DollWow can help by:
 - Confirming the exact build options available
