@@ -7,7 +7,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = path.join(ROOT, "public", "images", "learn");
 const WIDTH = 1536;
 const HEIGHT = 1024;
-const PHOTO_LEFT = 776;
+const PHOTO_LEFT = 548;
 const PHOTO_WIDTH = WIDTH - PHOTO_LEFT;
 
 const banners = [
@@ -139,17 +139,19 @@ function backgroundSvg({ accent, rose, motif }) {
     </defs>
     <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)"/>
     <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow)"/>
-    <rect x="64" y="88" width="560" height="820" rx="28" fill="#fff7ef" opacity="0.06" stroke="${accent}" stroke-opacity="0.18"/>
-    <rect x="108" y="132" width="210" height="138" rx="18" fill="${rose}" opacity="0.36"/>
-    <rect x="346" y="132" width="210" height="138" rx="18" fill="#fff7ef" opacity="0.10"/>
-    <rect x="108" y="320" width="410" height="22" rx="11" fill="${accent}" opacity="0.36"/>
-    <rect x="108" y="372" width="330" height="18" rx="9" fill="#fff7ef" opacity="0.18"/>
-    <rect x="108" y="424" width="376" height="18" rx="9" fill="#fff7ef" opacity="0.13"/>
-    <rect x="108" y="530" width="128" height="128" rx="20" fill="#fff7ef" opacity="0.12"/>
-    <rect x="264" y="530" width="128" height="128" rx="20" fill="${accent}" opacity="0.23"/>
-    <rect x="420" y="530" width="128" height="128" rx="20" fill="${rose}" opacity="0.28"/>
-    <path d="M112 762 C205 690 290 826 386 752 C456 698 508 732 560 788" fill="none" stroke="${accent}" stroke-width="6" stroke-linecap="round" opacity="0.34"/>
-    <rect x="116" y="800" width="248" height="64" rx="18" fill="#080504" opacity="0.34" stroke="${accent}" stroke-opacity="0.22"/>
+    <rect x="52" y="92" width="430" height="816" rx="28" fill="#fff7ef" opacity="0.07" stroke="${accent}" stroke-opacity="0.18"/>
+    <rect x="88" y="138" width="156" height="124" rx="18" fill="${rose}" opacity="0.38"/>
+    <rect x="270" y="138" width="156" height="124" rx="18" fill="#fff7ef" opacity="0.12"/>
+    <rect x="88" y="312" width="330" height="22" rx="11" fill="${accent}" opacity="0.38"/>
+    <rect x="88" y="362" width="278" height="18" rx="9" fill="#fff7ef" opacity="0.2"/>
+    <rect x="88" y="410" width="314" height="18" rx="9" fill="#fff7ef" opacity="0.14"/>
+    <rect x="88" y="510" width="104" height="104" rx="18" fill="#fff7ef" opacity="0.14"/>
+    <rect x="218" y="510" width="104" height="104" rx="18" fill="${accent}" opacity="0.25"/>
+    <rect x="348" y="510" width="104" height="104" rx="18" fill="${rose}" opacity="0.3"/>
+    <rect x="88" y="646" width="170" height="112" rx="18" fill="#fff7ef" opacity="0.08" stroke="${accent}" stroke-opacity="0.12"/>
+    <rect x="286" y="646" width="166" height="112" rx="18" fill="#080504" opacity="0.18" stroke="${accent}" stroke-opacity="0.16"/>
+    <path d="M92 794 C172 728 250 842 334 778 C396 730 436 750 480 804" fill="none" stroke="${accent}" stroke-width="6" stroke-linecap="round" opacity="0.36"/>
+    <rect x="96" y="830" width="220" height="56" rx="18" fill="#080504" opacity="0.38" stroke="${accent}" stroke-opacity="0.22"/>
     ${decorative}
     <path d="M0 812 C224 724 340 854 570 790 C770 734 910 692 1150 748 C1310 788 1424 744 1536 692 L1536 1024 L0 1024 Z" fill="#f8efe7" opacity="0.055"/>
   </svg>`;
