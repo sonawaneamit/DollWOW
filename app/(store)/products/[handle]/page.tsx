@@ -9,6 +9,7 @@ import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
+import { getCatalogBrand } from "@/lib/catalog/brands";
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
@@ -362,6 +363,15 @@ function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getP
     { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare this listing against the full DollWow catalog." }
   ];
   const material = String(product.extended.material || "").toLowerCase();
+  const brand = getCatalogBrand(product.extended.brand || product.vendor);
+
+  if (brand) {
+    paths.push({
+      label: `${brand.label} brand hub`,
+      href: `/brands/${brand.collectionHandle}`,
+      description: `Compare current ${brand.label} listings, options, and buyer guidance.`
+    });
+  }
 
   if (material.includes("tpe")) {
     paths.push(

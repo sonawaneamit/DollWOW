@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
+import { brandHubHref } from "@/lib/catalog/brands";
 import { readBrowserCartState, type BrowserCartState } from "@/lib/cart/browser";
 
 const topLinks = [
@@ -42,9 +43,9 @@ const quickSearchLinks = [
   { label: "Sex dolls", href: "/shop/sex-dolls" },
   { label: "Realistic", href: "/shop/realistic-sex-dolls" },
   { label: "Mini", href: "/shop/mini-sex-dolls" },
-  { label: "WM Dolls", href: "/shop?brand=wm-dolls" },
-  { label: "Angelkiss", href: "/shop?brand=angelkiss-dolls" },
-  { label: "Irontech", href: "/shop?brand=irontech-dolls" },
+  { label: "WM Dolls", href: "/brands/wm-dolls" },
+  { label: "Angelkiss", href: "/brands/angelkiss-dolls" },
+  { label: "Irontech", href: "/brands/irontech-dolls" },
   { label: "Silicone", href: "/shop/silicone" },
   { label: "TPE", href: "/shop/tpe" },
   { label: "170 cm+", href: "/shop/height-170-plus" }
@@ -64,7 +65,7 @@ const suggestedSearchRoutes = [
 
 const brandLinks = catalogFilterOptions.brands.map((brand) => ({
   label: brand.label,
-  href: `/shop?brand=${brand.value}`
+  href: brandHubHref(brand.value)
 }));
 
 const heightLinks = catalogFilterOptions.heights.map((height) => ({
@@ -598,7 +599,7 @@ function buildSearchSuggestions(query: string) {
     if (!normalized || brandTerms.some((term) => term.includes(normalized) || normalized.includes(term))) {
       suggestions.push({
         label: brand.label,
-        href: `/shop?brand=${brand.value}`,
+        href: brandHubHref(brand.value),
         kind: "Brand"
       });
     }

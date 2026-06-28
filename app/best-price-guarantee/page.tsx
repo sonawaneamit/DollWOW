@@ -9,7 +9,7 @@ export default function BestPriceGuaranteePage() {
   return (
     <PolicyLayout
       eyebrow="Best price support"
-      title="Price-match review with context, not just sticker price."
+      title="Price-match review with full deal context."
       intro="If you find the same configuration cheaper within 30 days of purchase, DollWow reviews the listing and refunds the difference when it qualifies. We check that it is really the same product, that shipping and freebies do not change the total, and that the seller looks legitimate before approving price support."
       ctas={[
         { label: "Compare a listing", href: "/compare", primary: true },
@@ -22,7 +22,7 @@ export default function BestPriceGuaranteePage() {
         },
         {
           title: "Total deal review",
-          body: "Coupons, seasonal discounts, free add-ons, and shipping terms all matter. We review the effective final price, not just the headline number."
+          body: "Coupons, seasonal discounts, free add-ons, and shipping terms all matter. We review the effective final price, including the headline number."
         },
         {
           title: "30-day price protection",

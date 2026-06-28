@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { brandHubHandles } from "@/lib/catalog/brandSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 import { getLearningArticles } from "@/lib/learn/content";
 import { getProducts } from "@/lib/shopify/storefront";
@@ -8,6 +9,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").repl
 const staticRoutes = [
   "",
   "/shop",
+  "/brands",
   "/learn",
   "/editorial-policy",
   "/customize",
@@ -53,6 +55,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8
     })) satisfies MetadataRoute.Sitemap;
 
+  const brandEntries = brandHubHandles
+    .sort()
+    .map((handle) => ({
+      url: `${siteUrl}/brands/${handle}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.78
+    })) satisfies MetadataRoute.Sitemap;
+
   const productEntries = products
     .filter((product) => product.handle)
     .map((product) => ({
@@ -69,5 +80,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75
   })) satisfies MetadataRoute.Sitemap;
 
-  return [...staticEntries, ...collectionEntries, ...productEntries, ...learnEntries];
+  return [...staticEntries, ...collectionEntries, ...brandEntries, ...productEntries, ...learnEntries];
 }

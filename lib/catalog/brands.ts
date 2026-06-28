@@ -60,6 +60,11 @@ export function brandFilterOptions() {
   return catalogBrands.map(({ label, value }) => ({ label, value }));
 }
 
+export function brandHubHref(value: string | undefined | null) {
+  const brand = getCatalogBrand(value);
+  return brand ? `/brands/${brand.collectionHandle}` : "/shop";
+}
+
 export function normalizeBrandText(value: string | undefined | null) {
   return String(value || "")
     .toLowerCase()
