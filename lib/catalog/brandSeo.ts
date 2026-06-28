@@ -69,7 +69,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
 };
 
 export function buildBrandMetadata(brand: CatalogBrand): Metadata {
-  const title = `${brand.label} Dolls: Shop ${brand.label} Models`;
+  const title = `${brandHubTitle(brand)}: Shop ${brand.label} Models`;
   const description = `${brand.label} models on DollWow with product facts, pricing, material, size, stock path, customization notes, buyer guides, and discreet support.`;
   const url = brandCanonicalUrl(brand);
 
@@ -101,7 +101,7 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: `${brand.label} Dolls`,
+      name: brandHubTitle(brand),
       description: profile.intro,
       url,
       isPartOf: {
@@ -150,13 +150,17 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
   return {
     intro:
       custom.intro ??
-      `Shop ${brand.label} dolls on DollWow with crawlable product facts for material, size, price, stock path, and customization. ${positioning} Use this brand hub to compare current catalog listings, then open each product page for exact measurements, images, options, and support confirmation before checkout.`,
+      `Shop ${brand.label} models on DollWow and compare material, size, price, stock path, and customization details in one place. ${positioning} Use this brand hub to review current catalog listings, then open each product page for exact measurements, images, options, and support confirmation before checkout.`,
     positioning,
     guideHref: custom.guideHref,
     guideLabel: custom.guideLabel,
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),
     faqs: custom.faqs ?? defaultFaqs(brand)
   };
+}
+
+export function brandHubTitle(brand: CatalogBrand) {
+  return /\bdolls?\b/i.test(brand.label) ? brand.label : `${brand.label} Dolls`;
 }
 
 export function brandRelatedLinks(brand: CatalogBrand) {

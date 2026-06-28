@@ -55,7 +55,7 @@ DollWow is not trying to win buyers with a louder promo banner. The useful diffe
 | Private purchase support | Sensitive questions can be hard to ask late in checkout. | DollWow makes [support](/support), [shipping information](/shipping), and [buyer protection](/buyer-protection) easy to reach before payment. |
 
 - Product pages emphasize fit, material, stock status, and order path.
-- Collection pages are built to be crawlable and useful, not only product grids.
+- Collection pages include visible comparison guidance alongside product grids.
 - The [price match and listing review flow](/compare) gives buyers a place to compare another offer before checkout.
 - [Buyer protection](/buyer-protection) and [shipping information](/shipping) are linked from guides and product pages so the support path is not hidden.
 - The Learning Center explains tradeoffs in plain language before a buyer reaches payment.
@@ -67,7 +67,7 @@ Before choosing between YourDoll, DollWow, or another seller, check these items.
 - Is the product title specific enough to identify the model?
 - Do the photos match the listed material, height, and body type?
 - Is the doll ready to ship, factory order, or subject to stock confirmation?
-- Are custom options available for this exact product, not only the brand in general?
+- Are custom options available for this exact product, beyond the brand in general?
 - Does the page make shipping timing and discreet delivery expectations clear?
 - Can support confirm the final configuration before payment?
 - Is the lower price still lower after shipping, options, and any required upgrades?
@@ -83,7 +83,7 @@ A broad store page does not tell you whether a specific product is comparable. C
 
 ### Treating every discount as equal
 
-A discount can be real, but the reason matters. Clearance, warehouse inventory, custom order timing, and excluded accessories can all change value. Compare final delivered price, not only the first number you see.
+A discount can be real, but the reason matters. Clearance, warehouse inventory, custom order timing, and excluded accessories can all change value. Compare final delivered price beyond the first number you see.
 
 ### Assuming images prove the final build
 

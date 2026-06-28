@@ -414,7 +414,7 @@ function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getP
   }
 
   paths.push(
-    { label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value, not only the base price." },
+    { label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value beyond the base price." },
     { label: "Compare a listing", href: `/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(productPublicTitle(product))}`, description: "Ask DollWow to review another offer before checkout." }
   );
 

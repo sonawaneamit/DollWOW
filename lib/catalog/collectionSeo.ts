@@ -513,7 +513,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     },
     {
       factor: "Buyer guidance",
-      whyItMatters: "A private high-ticket purchase needs education before checkout, not only product photos.",
+      whyItMatters: "A private high-ticket purchase needs education before checkout alongside product photos.",
       dollWowAdvantage: "Collection pages connect directly to cost, material, realistic-feature, shipping, and alternative-store guides."
     },
     {

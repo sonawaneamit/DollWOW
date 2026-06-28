@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
 import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
-import { brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
+import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 
 export function generateStaticParams() {
@@ -38,7 +38,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
       <div className="shop-visual-hero">
         <div>
           <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Brand hub</p>
-          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brand.label} Dolls</h1>
+          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} DollWow listings in this brand view</p>
         </div>

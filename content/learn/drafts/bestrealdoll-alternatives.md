@@ -81,7 +81,7 @@ The goal is not to claim every DollWow listing is better. The goal is to help th
 
 Use this checklist before choosing between BestRealDoll, DollWow, or another seller.
 
-- Does the page identify the exact doll, not only a broad category?
+- Does the page identify the exact doll, beyond a broad category?
 - Are height, weight, material, and measurements visible?
 - Is the stock path current and easy to understand?
 - Are custom options confirmed for this product?
