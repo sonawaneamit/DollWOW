@@ -20,6 +20,11 @@ type RelatedLink = {
   href: string;
 };
 
+type CollectionBuyerNote = {
+  title: string;
+  body: string;
+};
+
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
 export function buildCollectionMetadata(
@@ -167,6 +172,41 @@ export function collectionRelatedLinks(handle: string, preset: CollectionPreset)
   ];
 }
 
+export function collectionBuyerNotes(handle: string, preset: CollectionPreset): CollectionBuyerNote[] {
+  const byHandle = collectionBuyerNotesByHandle[handle];
+  if (byHandle) return byHandle;
+  if (preset.filters.material) {
+    return [
+      {
+        title: "Compare material with handling",
+        body: "Material affects feel and cleaning, but height, weight, skeleton support, and storage space often decide whether a listing is practical."
+      },
+      {
+        title: "Check the exact build",
+        body: "Confirm whether the product is full TPE, full silicone, silicone-head, or another mixed construction before comparing price."
+      },
+      {
+        title: "Use product facts first",
+        body: "A category label is a starting point. Product pages, supplier notes, and support confirmation should guide the final choice."
+      }
+    ];
+  }
+  return [
+    {
+      title: "Start with measurable facts",
+      body: "Compare height, weight, material, measurements, stock status, and custom order path before judging photos or headline price."
+    },
+    {
+      title: "Confirm timing before checkout",
+      body: "Ready-to-ship and factory-order paths can have different approval steps, logistics, and delivery expectations."
+    },
+    {
+      title: "Match the product to the buyer",
+      body: "The best listing is the one that fits budget, privacy needs, handling comfort, storage space, and support expectations."
+    }
+  ];
+}
+
 function collectionTitle(preset: CollectionPreset) {
   return preset.title;
 }
@@ -239,6 +279,135 @@ const collectionMetaDescriptions: Record<string, string> = {
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
   custom: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing.",
   customizable: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing."
+};
+
+const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
+  "sex-dolls": [
+    {
+      title: "Compare the full purchase, not the headline",
+      body: "A sex doll listing should be judged by material, height, weight, measurements, stock status, customization path, shipping expectations, and support quality."
+    },
+    {
+      title: "Use filters to narrow risk",
+      body: "Start broad, then filter by material, body type, height, price, stock status, and brand so the remaining choices are easier to verify."
+    },
+    {
+      title: "Confirm sensitive details early",
+      body: "If privacy, timing, packaging, billing, or exact configuration matters, ask support before checkout instead of relying on category copy."
+    }
+  ],
+  "realistic-sex-dolls": [
+    {
+      title: "Realism starts with proportions",
+      body: "Face detail matters, but height, body proportions, skin finish, eyes, hands, poseability, and final configuration shape the realistic effect."
+    },
+    {
+      title: "Photos need context",
+      body: "Product images may show a sample or a specific option set. Confirm the exact head, body, wig, eyes, and material before treating photos as a match."
+    },
+    {
+      title: "Balance realism with handling",
+      body: "Larger and more detailed builds can be heavier or harder to store. Check weight and dimensions alongside appearance."
+    }
+  ],
+  "mini-sex-dolls": [
+    {
+      title: "Shorter does not always mean easy",
+      body: "Mini sex dolls can be easier to store, but weight, boxed size, material, and storage orientation still matter."
+    },
+    {
+      title: "Compare exact measurements",
+      body: "Height labels vary by brand. Review bust, waist, hips, shoulders, feet, and listed weight before deciding a compact model is the right fit."
+    },
+    {
+      title: "Plan privacy and storage together",
+      body: "Compact buyers often care about discretion. Confirm packaging, storage footprint, and delivery timing before checkout."
+    }
+  ],
+  tpe: [
+    {
+      title: "TPE is often value-focused",
+      body: "Many TPE dolls start at a lower price than comparable silicone builds, but final cost can change with size, options, shipping, and stock path."
+    },
+    {
+      title: "Care routine matters",
+      body: "TPE can require careful cleaning, drying, powdering, and storage. Product-specific care guidance should beat generic assumptions."
+    },
+    {
+      title: "Check the material claim",
+      body: "Some listings mix TPE and silicone elements. Confirm the exact construction before comparing feel, price, or care needs."
+    }
+  ],
+  silicone: [
+    {
+      title: "Silicone can carry detail well",
+      body: "Silicone is often chosen for sculpt detail and firmer structure, but realism still depends on proportions, faceup, eyes, wig, and final configuration."
+    },
+    {
+      title: "Do not skip weight",
+      body: "A premium material does not remove handling concerns. Check height, weight, and storage before choosing a larger silicone build."
+    },
+    {
+      title: "Confirm full silicone versus hybrid",
+      body: "Some products are silicone-head or mixed builds. Confirm the exact head and body material before checkout."
+    }
+  ],
+  "male-dolls": [
+    {
+      title: "Body scale matters first",
+      body: "Male dolls should be compared by height, shoulder width, waist, hips, material, skeleton support, and weight before aesthetics."
+    },
+    {
+      title: "Options can differ by body type",
+      body: "Do not assume options from other body categories carry over. Custom availability can vary by male body, head model, and supplier."
+    },
+    {
+      title: "Confirm the build path",
+      body: "Current stock, production timing, available photos, and supported options should be reviewed before a male doll order is finalized."
+    }
+  ],
+  "ready-to-ship": [
+    {
+      title: "Fast comparison still needs confirmation",
+      body: "Ready-to-ship listings can move faster, but stock, exact configuration, approval materials, and delivery timing should still be confirmed."
+    },
+    {
+      title: "Expect fewer changes",
+      body: "Warehouse-style listings may have less customization flexibility than factory-order builds. Compare what is fixed before checkout."
+    },
+    {
+      title: "Use timing as one factor",
+      body: "A faster path is useful, but material, size, weight, privacy, and support clarity still matter."
+    }
+  ],
+  custom: [
+    {
+      title: "Custom starts with compatibility",
+      body: "Custom options can depend on brand, body model, head model, material, and supplier rules. Product-specific compatibility matters."
+    },
+    {
+      title: "Production timing is part of the choice",
+      body: "Factory-order builds can require option confirmation, production time, approval materials, and final shipment checks."
+    },
+    {
+      title: "Confirm what is included",
+      body: "Do not assume accessories, wigs, eyes, functions, or upgrades are included unless the product page or support confirms them."
+    }
+  ],
+  customizable: [
+    {
+      title: "Custom starts with compatibility",
+      body: "Custom options can depend on brand, body model, head model, material, and supplier rules. Product-specific compatibility matters."
+    },
+    {
+      title: "Production timing is part of the choice",
+      body: "Factory-order builds can require option confirmation, production time, approval materials, and final shipment checks."
+    },
+    {
+      title: "Confirm what is included",
+      body: "Do not assume accessories, wigs, eyes, functions, or upgrades are included unless the product page or support confirms them."
+    }
+  ]
 };
 
 const collectionLinksByHandle: Record<string, RelatedLink[]> = {

@@ -1,7 +1,7 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
-import { buildCollectionMetadata, buildCollectionStructuredData, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 import Link from "next/link";
 
@@ -36,6 +36,7 @@ export default async function CollectionPage({
   const filtered = filterProducts(products, filters);
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
   const relatedLinks = collectionRelatedLinks(collection, preset);
+  const buyerNotes = collectionBuyerNotes(collection, preset);
   const faqItems = collectionFaqItems(collection, preset);
   const activeFilterLabels = Object.entries(filters)
     .filter(([, value]) => Boolean(value))
@@ -81,6 +82,24 @@ export default async function CollectionPage({
           <ProductGrid products={filtered} filters={filters} resetHref={`/shop/${collection}`} />
         </div>
       </div>
+      {buyerNotes.length ? (
+        <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-buyer-notes-heading">
+          <div className="max-w-3xl">
+            <p className="text-sm uppercase tracking-[0.16em] text-gold-300">How to compare</p>
+            <h2 id="collection-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
+              What to check before choosing from this collection
+            </h2>
+          </div>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {buyerNotes.map((item) => (
+              <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
+                <h3 className="text-base font-semibold text-ivory-100">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-ivory-400">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
       {faqItems.length ? (
         <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-faq-heading">
           <h2 id="collection-faq-heading" className="text-2xl font-semibold text-ivory-50">
