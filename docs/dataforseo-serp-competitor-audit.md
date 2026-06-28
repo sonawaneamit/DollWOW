@@ -1,9 +1,9 @@
 # DataForSEO SERP Competitor Audit
 
-Audit date: 2026-06-27
+Audit date: 2026-06-28
 Market: United States, Google organic, desktop
-Source export: `data/exports/dataforseo-serp-competitor-audit-2026-06-27T21-11-07-368Z.json`
-Markdown export: `data/exports/dataforseo-serp-competitor-audit-2026-06-27T21-11-07-368Z.md`
+Source export: `data/exports/dataforseo-serp-competitor-audit-2026-06-28T10-43-58-531Z.json`
+Markdown export: `data/exports/dataforseo-serp-competitor-audit-2026-06-28T10-43-58-531Z.md`
 
 Raw exports are intentionally ignored by git. This file tracks the strategic findings we should act on.
 
@@ -33,25 +33,26 @@ The top domains across the 15-keyword audit were:
 | --- | --- |
 | `youtube.com` | Appears heavily for broad and review-style queries. Useful for video/content format inspiration, but not a direct ecommerce page model. |
 | `amazon.com` | Strong across broad, material, male, mini, torso, and cost queries. Often ranks category/search pages. |
-| `yourdoll.com` | Strongest direct adult ecommerce competitor in the set. Ranks for broad, TPE, best, torso, and ready-to-ship terms. |
-| `bestrealdoll.com` | Shows up across broad and commercial queries with guide and collection patterns. |
-| `joylovedolls.com` | Strong for broad, best, and male terms. |
-| `siliconwives.com` | Strong for `sex doll reviews`, TPE/silicone content, and broad terms. |
+| `yourdoll.com` | Strongest direct adult ecommerce competitor in the set. Ranks for broad, TPE, best, torso, cost, ready-to-ship, and custom terms. |
+| `bestrealdoll.com` | Stronger in the fresh audit, including rank 1 for `best sex dolls` and repeated collection visibility. |
+| `siliconwives.com` | Strong for `sex doll reviews`, TPE/silicone content, and custom collection terms. |
+| `betterlovedoll.com` | Strong collection competitor for silicone, TPE, torso, ready-to-ship, and price-style queries. |
 | `realdoll.com` | Strong brand and broad-term presence. |
-| `betterlovedoll.com` | Appears mostly with collection pages. |
+| `sexdolltech.com` | Strong for material and price/category pages, including rank 1 for `tpe sex doll` and rank 2 for `sex doll cost`. |
 | `realsexdoll.com` | Broad commercial presence. |
-| `sexdolltech.com` | Strong for material and price/category pages. |
+| `joylovedolls.com` | Strong for broad, best, and male terms. |
 | `rosemarydoll.com` | Present for TPE and broad terms. |
 | `uloversdoll.com` | Present for male and broad terms. |
+| `spartanlover.com` | Niche male-doll competitor; appeared for `male sex doll`, while `spartandolls.com` did not appear. |
 
 Seed competitor visibility:
 
 | Seed Competitor | Keywords Appeared | Best Rank | Priority |
 | --- | ---: | ---: | --- |
-| `yourdoll.com` | 11 | 1 | Highest |
-| `joylovedolls.com` | 6 | 1 | High |
-| `siliconwives.com` | 7 | 1 | High |
-| `rosemarydoll.com` | 5 | 5 | Medium |
+| `yourdoll.com` | 13 | 1 | Highest |
+| `siliconwives.com` | 8 | 1 | High |
+| `joylovedolls.com` | 5 | 2 | High |
+| `rosemarydoll.com` | 4 | 4 | Medium |
 | `spartandolls.com` | 0 | n/a | Monitor with `spartanlover.com` and related Spartan properties |
 
 ## Page Type Pattern
@@ -107,21 +108,21 @@ For guide pages:
 
 ## Immediate Actions
 
-1. Create or alias `/shop/sex-dolls` to the all-catalog commercial collection.
-2. Create `/shop/realistic-sex-dolls` if the catalog can support a broad realistic collection.
-3. Add or alias `/shop/mini-sex-dolls` to the current under-155 cm collection after confirming the naming is accurate.
-4. Strengthen `/shop/tpe`, `/shop/silicone`, `/shop/male-dolls`, `/shop/ready-to-ship`, and `/shop/custom` with query-specific intros, FAQs, and links to current guides.
+1. Keep `/shop/sex-dolls`, `/shop/realistic-sex-dolls`, `/shop/tpe`, `/shop/silicone`, `/shop/male-dolls`, `/shop/ready-to-ship`, and `/shop/custom` as collection-first assets with crawlable intros, FAQs, schema, and guide links.
+2. Add or alias `/shop/mini-sex-dolls` to the current under-155 cm collection after confirming the naming is accurate.
+3. Create `/shop/torso-sex-dolls` only if inventory supports the category.
+4. Build competitor alternative pages in this order: YourDoll, BestRealDoll, Silicon Wives, JoyLoveDolls, RosemaryDoll.
 5. Add curated product modules to `/learn/best-sex-dolls`, `/learn/sex-doll-cost`, and `/learn/sex-doll-reviews` after live product selection rules are reviewed.
 6. Re-run the DataForSEO SERP audit monthly and after major content batches.
 
 ## Command
 
 ```bash
-npm run seo:serp-competitors -- --execute --env ../ColorMine-Website/.env --depth 50
+npm run seo:serp-competitors -- --execute --depth 50
 ```
 
 Use `--keywords` for smaller audits, for example:
 
 ```bash
-npm run seo:serp-competitors -- --execute --env ../ColorMine-Website/.env --keywords "sex dolls,tpe dolls,male sex doll" --depth 50
+npm run seo:serp-competitors -- --execute --keywords "sex dolls,tpe dolls,male sex doll" --depth 50
 ```

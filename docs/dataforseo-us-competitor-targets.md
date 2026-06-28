@@ -1,6 +1,6 @@
 # DataForSEO US Competitor Targets
 
-Source: `data/exports/dataforseo-serp-competitor-audit-2026-06-27T21-11-07-368Z.json`
+Source: `data/exports/dataforseo-serp-competitor-audit-2026-06-28T10-43-58-531Z.json`
 
 Market: United States, Google organic, desktop
 
@@ -14,16 +14,16 @@ The strongest direct ecommerce competitors across the audited US keyword set are
 
 | Priority | Domain | Signal | Best Use |
 | --- | --- | --- | --- |
-| 1 | `yourdoll.com` | 11 audited keywords, best rank 1 | Full alternative page, collection match-and-exceed checks, ready-to-ship comparison |
-| 2 | `siliconwives.com` | 7 audited keywords, best rank 1 | Full alternative page, reviews/material-guide comparison |
-| 3 | `joylovedolls.com` | 6 audited keywords, best rank 1 | Full alternative page, best/male/broad collection comparison |
-| 4 | `bestrealdoll.com` | 7 audited keywords, best rank 4 | Full alternative or "best sites" comparison page |
-| 5 | `realdoll.com` | 5 audited keywords, best rank 3 | Brand comparison mention, premium/established market positioning |
-| 6 | `rosemarydoll.com` | 5 audited keywords, best rank 5 | Alternative page already useful, but lower direct priority than YourDoll/Silicon Wives/JoyLoveDolls |
-| 7 | `betterlovedoll.com` | 7 audited keywords, best rank 4 | Collection-page gap analysis and future alternative page |
+| 1 | `yourdoll.com` | 13 audited keywords, best rank 1 | Full alternative page, collection match-and-exceed checks, ready-to-ship comparison |
+| 2 | `bestrealdoll.com` | 9 audited keywords, best rank 1 | Full alternative page and "best sites" comparison page |
+| 3 | `siliconwives.com` | 8 audited keywords, best rank 1 | Full alternative page, reviews/material-guide comparison |
+| 4 | `betterlovedoll.com` | 8 audited keywords, best rank 1 | Collection-page gap analysis and second-wave alternative page |
+| 5 | `sexdolltech.com` | 7 audited keywords, best rank 1 | Material/price collection competitor and second-wave alternative page |
+| 6 | `realdoll.com` | 7 audited keywords, best rank 3 | Brand comparison mention, premium/established market positioning |
+| 7 | `joylovedolls.com` | 5 audited keywords, best rank 2 | Full alternative page, best/male/broad collection comparison |
 | 8 | `realsexdoll.com` | 6 audited keywords, best rank 3 | Collection-page gap analysis and future alternative page |
-| 9 | `sexdolltech.com` | 6 audited keywords, best rank 1 | Material/price collection competitor, future alternative page |
-| 10 | `uloversdoll.com` | 5 audited keywords, best rank 6 | Monitor and mention in broader buyer-choice comparisons |
+| 9 | `rosemarydoll.com` | 4 audited keywords, best rank 4 | Alternative page already useful, but lower direct priority than YourDoll/BestRealDoll/Silicon Wives |
+| 10 | `uloversdoll.com` | 4 audited keywords, best rank 7 | Monitor and mention in broader buyer-choice comparisons |
 
 ## Recommended Competitor Mix
 
@@ -35,11 +35,11 @@ These are useful for "how DollWow compares to established sellers" content:
 
 | Domain | Why It Matters | Recommended Asset |
 | --- | --- | --- |
-| `yourdoll.com` | Strongest direct SERP footprint in this audit. Ranks for broad, TPE, best, torso, cost, and ready-to-ship intent. | `/learn/yourdoll-alternatives` |
-| `siliconwives.com` | Wins review and material-guide intent, including `sex doll reviews` and TPE/silicone searches. | `/learn/siliconwives-alternatives` |
-| `joylovedolls.com` | Ranks for broad, best, and male-doll intent. | `/learn/joylovedolls-alternatives` |
+| `yourdoll.com` | Strongest direct SERP footprint in this audit. Ranks for broad, TPE, best, torso, cost, ready-to-ship, and custom intent. | `/learn/yourdoll-alternatives` |
+| `bestrealdoll.com` | Jumped to the top for `best sex dolls` and appears across broad, silicone, cost, ready-to-ship, and custom intent. | `/learn/bestrealdoll-alternatives` |
+| `siliconwives.com` | Wins review and material-guide intent, including `sex doll reviews`, TPE/silicone searches, and custom-doll collection intent. | `/learn/siliconwives-alternatives` |
 | `realdoll.com` | Established brand signal and broad-term presence. | Mention in "best sex dolls" and premium-buying guides before building a dedicated alternative page. |
-| `bestrealdoll.com` | Shows both guide and collection patterns across commercial terms. | Build after first-wave alternatives. |
+| `joylovedolls.com` | Ranks for broad, best, and male-doll intent. | `/learn/joylovedolls-alternatives` |
 
 ### Strong Mid-Market Direct Competitors
 
@@ -48,10 +48,11 @@ These are useful for collection and guide match-and-exceed checks:
 | Domain | Why It Matters | Recommended Asset |
 | --- | --- | --- |
 | `rosemarydoll.com` | Present for TPE and broad commercial terms. | `/learn/rosemarydoll-alternatives` |
-| `betterlovedoll.com` | Appears repeatedly with collection pages, especially torso/silicone style queries. | Future alternative page or collection comparison section. |
+| `betterlovedoll.com` | Appears repeatedly with collection pages, especially silicone, TPE, torso, ready-to-ship, and price-style queries. | Second-wave alternative page and collection comparison sections. |
 | `realsexdoll.com` | Broad commercial presence across general queries. | Future alternative page after core first wave. |
-| `sexdolltech.com` | Strong for material and price/category pages. | Material and price comparison sections first, alternative page later. |
+| `sexdolltech.com` | Strong for material and price/category pages, including rank 1 for `tpe sex doll` and rank 2 for `sex doll cost`. | Material and price comparison sections first, alternative page later. |
 | `sex doll queen` / `sexdollqueen.com` | Appears for reviews and ready-to-ship intent. | Mention in review-quality and ready-to-ship guides. |
+| `sex doll partner` / `sexdollpartner.com` | Appears for ready-to-ship and custom-order style intent. | Monitor for custom and ready-to-ship comparison mentions. |
 
 ### Niche, Upcoming, Or Specialized SERP Entrants
 
@@ -59,17 +60,17 @@ These are useful for long-tail pages and monitoring. Do not over-prioritize them
 
 | Domain | SERP Signal | Best Use |
 | --- | --- | --- |
-| `spartanlover.com` | Appeared for `male sex doll`; `spartandolls.com` did not appear in this audit. | Male-doll competitor monitor and future male-doll alternatives section. |
+| `spartanlover.com` | Appeared twice for `male sex doll`, including rank 2; `spartandolls.com` did not appear in this audit. | Male-doll competitor monitor and future male-doll alternatives section. |
 | `myrobotdoll.com` | Appeared for TPE/silicone and ready-to-ship style intent. | Material comparison and fast-delivery comparison mentions. |
 | `dollpimp.com` | Appeared for ready-to-ship/in-stock style intent. | Ready-to-ship comparison mention. |
 | `linkooerdoll.com` | Appeared for `mini sex dolls`. | Mini-doll collection gap check. |
 | `minianimedoll.com` | Appeared for `mini sex dolls`. | Mini/anime niche monitor. |
-| `cocadoll.com` | Appeared for `mini sex dolls`. | Mini-doll collection gap check. |
 | `miisoo.com` | Appeared for `mini sex dolls`. | Mini-doll collection gap check. |
 | `poptorso.com` | Ranked first for `torso sex dolls`. | Torso collection competitor if DollWow inventory supports the category. |
 | `xtorso.com` | Appeared for `torso sex dolls`. | Torso collection competitor if inventory supports the category. |
-| `sydolls.com` | Ranked for `custom sex doll`. | Custom-doll collection competitor monitor. |
-| `lovethisdoll.com` | Appeared for `custom sex doll`. | Custom-doll comparison mention. |
+| `venuslovedolls.com` | Appeared across several broad SERPs with homepage and product URLs. | Newer/upcoming monitor for broader competitor tracking. |
+| `naughtyharbor.com` | Appeared for `custom sex doll` guide intent. | Custom-doll content format monitor. |
+| `adameve.com` | Appeared around broad/marketplace SERPs. | Marketplace-adjacent monitor only. |
 
 ## Adjacent SERP Players
 
@@ -89,10 +90,10 @@ Do not build "alternatives" pages for these, but use them to understand search i
 Build these first:
 
 1. `/learn/yourdoll-alternatives`
-2. `/learn/siliconwives-alternatives`
-3. `/learn/joylovedolls-alternatives`
-4. `/learn/rosemarydoll-alternatives`
-5. `/learn/bestrealdoll-alternatives`
+2. `/learn/bestrealdoll-alternatives`
+3. `/learn/siliconwives-alternatives`
+4. `/learn/joylovedolls-alternatives`
+5. `/learn/rosemarydoll-alternatives`
 
 Each page should compare:
 
@@ -114,6 +115,7 @@ Build these after the first wave and after GSC starts showing impressions:
 3. `/learn/sexdolltech-alternatives`
 4. `/learn/myrobotdoll-alternatives`
 5. `/learn/sexdollqueen-alternatives`
+6. `/learn/sexdollpartner-alternatives`
 
 ## Niche Collection Checks
 
@@ -122,9 +124,9 @@ Use these competitors to decide whether DollWow needs stronger collection pages:
 | Query | Competitors To Inspect | DollWow Target |
 | --- | --- | --- |
 | `male sex doll` | `spartanlover.com`, `joylovedolls.com`, `uloversdoll.com` | `/shop/male-dolls` |
-| `mini sex dolls` | `linkooerdoll.com`, `minianimedoll.com`, `cocadoll.com`, `miisoo.com` | `/shop/mini-sex-dolls` |
+| `mini sex dolls` | `linkooerdoll.com`, `minianimedoll.com`, `miisoo.com` | `/shop/mini-sex-dolls` |
 | `torso sex dolls` | `poptorso.com`, `xtorso.com`, `betterlovedoll.com`, `yourdoll.com` | `/shop/torso-sex-dolls` if inventory supports it |
-| `custom sex doll` | `sydolls.com`, `lovethisdoll.com` | `/shop/custom` |
+| `custom sex doll` | `bestrealdoll.com`, `siliconwives.com`, `yourdoll.com`, `myrobotdoll.com`, `naughtyharbor.com` | `/shop/custom` |
 | `ready to ship sex dolls` | `yourdoll.com`, `sexdollqueen.com`, `dollpimp.com`, `myrobotdoll.com` | `/shop/ready-to-ship` |
 
 ## Editorial Guardrails
