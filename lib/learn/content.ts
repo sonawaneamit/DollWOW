@@ -253,7 +253,12 @@ function priority(slug: string) {
     "sex-doll-storage",
     "sex-doll-maintenance-checklist",
     "sex-doll-scams",
-    "sex-doll-laws-us"
+    "sex-doll-laws-us",
+    "custom-sex-dolls",
+    "implanted-hair-vs-wig",
+    "standing-feet-sex-doll-guide",
+    "body-heating-sex-doll-guide",
+    "sex-doll-skeleton-options"
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;

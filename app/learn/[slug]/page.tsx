@@ -108,7 +108,6 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             <MarkdownContent markdown={article.body} />
-            <ArticleInstructionalVisual slug={article.slug} />
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
@@ -130,18 +129,6 @@ async function getArticleProductModule(slug: string) {
   });
   const picks = filterProducts(products, filters).slice(0, 3);
   return { ...config, products: picks };
-}
-
-function ArticleInstructionalVisual({ slug }: { slug: string }) {
-  const visual = instructionalVisualConfig(slug);
-  if (!visual) return null;
-
-  return (
-    <figure className="mt-12 overflow-hidden rounded-[8px] border border-ink-950/10 bg-white shadow-soft">
-      <Image src={visual.src} alt={visual.alt} width={visual.width} height={visual.height} sizes="(min-width: 768px) 48rem, 100vw" className="h-auto w-full" />
-      <figcaption className="border-t border-ink-950/10 bg-white px-4 py-3 text-sm leading-6 text-ink-700">{visual.caption}</figcaption>
-    </figure>
-  );
 }
 
 function ArticleInfographic({ slug }: { slug: string }) {
@@ -290,20 +277,6 @@ function ArticleActions({ slug }: { slug: string }) {
       ) : null}
     </aside>
   );
-}
-
-function instructionalVisualConfig(slug: string) {
-  const map: Record<string, { src: string; alt: string; caption: string; width: number; height: number }> = {
-    "how-to-clean-a-sex-doll": {
-      src: "/images/learn/doll-care-guide-vertical.png",
-      alt: "Six-step doll care guide showing mild wash, gentle cleaning, rinsing, drying, care powder, and dry storage",
-      caption: "A visual care sequence for cleaning, drying, powdering, and storing a doll. Always follow the care instructions for the specific material and product.",
-      width: 1024,
-      height: 1536
-    }
-  };
-
-  return map[slug] ?? null;
 }
 
 type ArticleInfographicConfig = {
@@ -655,6 +628,36 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/sex-dolls",
       filters: {}
     },
+    "custom-sex-dolls": {
+      title: "Compare custom-order listings",
+      description: "Use current catalog examples to compare base model, material, size, price, and product-specific option paths.",
+      collectionHref: "/shop/custom",
+      filters: { availability: "custom" }
+    },
+    "implanted-hair-vs-wig": {
+      title: "Start with custom-order listings",
+      description: "Hair choices are product-specific, so compare base models and ask support to confirm current wig or implanted hair options.",
+      collectionHref: "/shop/custom",
+      filters: { availability: "custom" }
+    },
+    "standing-feet-sex-doll-guide": {
+      title: "Compare custom builds before choosing standing feet",
+      description: "Standing feet should be confirmed against the exact product, body, skeleton, material, and supplier rules.",
+      collectionHref: "/shop/custom",
+      filters: { availability: "custom" }
+    },
+    "body-heating-sex-doll-guide": {
+      title: "Compare factory-order options",
+      description: "Heating is product-specific and should be confirmed against the exact body, material, power setup, and production path.",
+      collectionHref: "/shop/custom",
+      filters: { availability: "custom" }
+    },
+    "sex-doll-skeleton-options": {
+      title: "Compare custom listings by body and option path",
+      description: "Skeleton choices affect posing, handling, and storage, so start with product facts before choosing an upgrade.",
+      collectionHref: "/shop/custom",
+      filters: { availability: "custom" }
+    },
     "yourdoll-alternatives": {
       title: "Start with comparable DollWow listings",
       description: "Use live catalog examples to compare material, price, measurements, stock path, and support context before choosing between stores.",
@@ -776,6 +779,26 @@ function relatedCollections(slug: string) {
     "sex-doll-laws-us": [
       { label: "Adult-only policy", href: "/adult-only", description: "Review DollWow's adult-only catalog standard." },
       { label: "Buyer protection", href: "/buyer-protection", description: "Review purchase clarity and support expectations." }
+    ],
+    "custom-sex-dolls": [
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings and option paths." },
+      { label: "Customize", href: "/customize", description: "Review DollWow's customization workflow." }
+    ],
+    "implanted-hair-vs-wig": [
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare listings where hair options may be available." },
+      { label: "Custom sex dolls", href: "/learn/custom-sex-dolls", description: "Review the broader customization process." }
+    ],
+    "standing-feet-sex-doll-guide": [
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare option-led builds." },
+      { label: "Skeleton options", href: "/learn/sex-doll-skeleton-options", description: "Review pose and handling tradeoffs." }
+    ],
+    "body-heating-sex-doll-guide": [
+      { label: "Custom dolls", href: "/shop/custom", description: "Review factory-order listings where functions may be configurable." },
+      { label: "Ask support", href: "/support", description: "Confirm product-specific heating compatibility." }
+    ],
+    "sex-doll-skeleton-options": [
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings by body and option path." },
+      { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Review how feet and skeleton choices interact." }
     ],
     "yourdoll-alternatives": [
       { label: "Sex dolls", href: "/shop/sex-dolls", description: "Compare live product listings, filters, and buyer-fit details." },
