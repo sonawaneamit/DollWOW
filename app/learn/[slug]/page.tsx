@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
+import { ProductCard } from "@/components/ProductCard";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/MarkdownContent";
+import { compactFilters, filterProducts, requiresCatalogWideFetch, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import {
   buildArticleBreadcrumbStructuredData,
   buildArticleFaqStructuredData,
@@ -14,6 +16,8 @@ import {
   getLearningArticles,
   learnArticleUrl
 } from "@/lib/learn/content";
+import { getProducts } from "@/lib/shopify/storefront";
+import type { Product } from "@/types/product";
 
 export function generateStaticParams() {
   return getLearningArticles().map((article) => ({ slug: article.slug }));
@@ -51,6 +55,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   if (!article) notFound();
   const author = getLearnAuthor(article.author);
   const schema = [buildArticleStructuredData(article), buildArticleBreadcrumbStructuredData(article), buildArticleFaqStructuredData(article)].filter(Boolean);
+  const productModule = await getArticleProductModule(article.slug);
 
   return (
     <main>
@@ -102,11 +107,49 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             <MarkdownContent markdown={article.body} />
+            <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
           </article>
         </div>
       </section>
     </main>
+  );
+}
+
+async function getArticleProductModule(slug: string) {
+  const config = productModuleConfig(slug);
+  if (!config) return null;
+
+  const filters = compactFilters(config.filters);
+  const products = await getProducts({
+    query: shopifyQueryForFilters(filters),
+    first: requiresCatalogWideFetch(filters) ? 600 : 80
+  });
+  const picks = filterProducts(products, filters).slice(0, 3);
+  return { ...config, products: picks };
+}
+
+function ArticleProductExamples({ module }: { module: ArticleProductModule | null }) {
+  if (!module || !module.products.length) return null;
+
+  return (
+    <aside className="mt-12 rounded-[8px] border border-gold-500/18 bg-ink-950 p-5 shadow-soft">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Catalog examples</p>
+          <h2 className="mt-2 text-2xl font-semibold leading-tight text-ivory-50">{module.title}</h2>
+          <p className="mt-3 text-sm leading-6 text-ivory-300">{module.description}</p>
+        </div>
+        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/24 px-4 py-2 text-sm font-semibold text-gold-200 transition hover:border-gold-300/50 hover:text-gold-100">
+          View collection
+        </Link>
+      </div>
+      <div className="mt-5 grid gap-5 md:grid-cols-3">
+        {module.products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </aside>
   );
 }
 
@@ -145,6 +188,75 @@ function ArticleActions({ slug }: { slug: string }) {
       ) : null}
     </aside>
   );
+}
+
+type ArticleProductModule = {
+  title: string;
+  description: string;
+  collectionHref: string;
+  filters: CatalogFilters;
+  products: Product[];
+};
+
+function productModuleConfig(slug: string): Omit<ArticleProductModule, "products"> | null {
+  const map: Record<string, Omit<ArticleProductModule, "products">> = {
+    "tpe-vs-silicone-sex-dolls": {
+      title: "Compare TPE listings in the catalog",
+      description: "Use live catalog examples to compare size, price, stock status, and material details before choosing between TPE and silicone.",
+      collectionHref: "/shop/tpe",
+      filters: { material: "tpe" }
+    },
+    "sex-doll-cost": {
+      title: "Price-check ready-to-ship listings",
+      description: "These catalog examples help anchor cost research in real DollWow listings instead of generic price ranges.",
+      collectionHref: "/shop/ready-to-ship",
+      filters: { availability: "ready_to_ship" }
+    },
+    "best-sex-dolls": {
+      title: "Start with the main sex doll catalog",
+      description: "Use live product cards as a practical starting point, then narrow by material, height, body type, and delivery path.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "most-realistic-sex-dolls": {
+      title: "Compare realistic-detail candidates",
+      description: "Silicone and silicone-head listings are useful starting points for comparing sculpt detail, finish, and configuration notes.",
+      collectionHref: "/shop/realistic-sex-dolls",
+      filters: { material: "silicone" }
+    },
+    "mini-sex-dolls": {
+      title: "Compare compact catalog options",
+      description: "These examples help compare smaller builds by listed height, weight, material, and stock status.",
+      collectionHref: "/shop/mini-sex-dolls",
+      filters: { height: "0-154" }
+    },
+    "male-sex-doll-buying-guide": {
+      title: "Compare male doll listings",
+      description: "Use live catalog cards to check body scale, material, stock status, and product-specific details.",
+      collectionHref: "/shop/male-dolls",
+      filters: { bodyType: "male" }
+    },
+    "ready-to-ship-vs-custom-sex-dolls": {
+      title: "See ready-to-ship examples",
+      description: "Ready-to-ship listings are useful when timing matters, but current stock and exact configuration still need review.",
+      collectionHref: "/shop/ready-to-ship",
+      filters: { availability: "ready_to_ship" }
+    },
+    "discreet-sex-doll-shipping": {
+      title: "Compare listings where timing matters",
+      description: "Ready-to-ship product examples help buyers discuss packaging, delivery path, and timing with support before checkout.",
+      collectionHref: "/shop/ready-to-ship",
+      filters: { availability: "ready_to_ship" }
+    },
+    "sex-doll-reviews": {
+      title: "Use product pages to verify review claims",
+      description: "Live product cards keep review research grounded in actual listings, specs, stock status, and support-confirmed details.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    }
+  };
+
+  return map[slug] ?? null;
 }
 
 function relatedCollections(slug: string) {
