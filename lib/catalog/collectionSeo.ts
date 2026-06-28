@@ -25,6 +25,12 @@ type CollectionBuyerNote = {
   body: string;
 };
 
+export type CollectionComparisonRow = {
+  factor: string;
+  whyItMatters: string;
+  dollWowAdvantage: string;
+};
+
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
 export function buildCollectionMetadata(
@@ -205,6 +211,31 @@ export function collectionBuyerNotes(handle: string, preset: CollectionPreset): 
       body: "The best listing is the one that fits budget, privacy needs, handling comfort, storage space, and support expectations."
     }
   ];
+}
+
+export function collectionComparisonRows(handle: string, preset: CollectionPreset): CollectionComparisonRow[] {
+  const byHandle = collectionComparisonRowsByHandle[handle];
+  if (byHandle) return byHandle;
+  if (preset.filters.material) {
+    return [
+      {
+        factor: "Material facts",
+        whyItMatters: "Material labels can hide differences in head, body, surface finish, care, and weight.",
+        dollWowAdvantage: "DollWow keeps material filters tied to product cards, measurements, care guides, and support confirmation."
+      },
+      {
+        factor: "Handling and storage",
+        whyItMatters: "A material choice can still be wrong if the doll is too heavy or hard to store.",
+        dollWowAdvantage: "Product cards and filters help compare height, weight, body type, and order path together."
+      },
+      {
+        factor: "Final configuration",
+        whyItMatters: "Photos and category labels do not always prove the exact build a buyer receives.",
+        dollWowAdvantage: "Buyers can ask support to confirm the current product path before checkout."
+      }
+    ];
+  }
+  return [];
 }
 
 function collectionTitle(preset: CollectionPreset) {
@@ -415,12 +446,15 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
-    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "YourDoll alternatives", href: "/learn/yourdoll-alternatives" },
+    { label: "BestRealDoll alternatives", href: "/learn/bestrealdoll-alternatives" }
   ],
   "realistic-sex-dolls": [
     { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
-    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" }
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   "mini-sex-dolls": [
     { label: "Mini sex dolls guide", href: "/learn/mini-sex-dolls" },
@@ -435,32 +469,160 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   tpe: [
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "What TPE material means", href: "/learn/tpe-vs-silicone-sex-dolls" },
-    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "RosemaryDoll alternatives", href: "/learn/rosemarydoll-alternatives" }
   ],
   silicone: [
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },
-    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   "male-dolls": [
     { label: "Male sex doll buying guide", href: "/learn/male-sex-doll-buying-guide" },
     { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
-    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "JoyLoveDolls alternatives", href: "/learn/joylovedolls-alternatives" }
   ],
   "ready-to-ship": [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
-    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" }
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "YourDoll alternatives", href: "/learn/yourdoll-alternatives" }
   ],
   custom: [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
-    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   customizable: [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
-    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
+  ]
+};
+
+const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]> = {
+  "sex-dolls": [
+    {
+      factor: "Catalog breadth",
+      whyItMatters: "Broad doll searches can quickly become messy if every product is shown with the same priority.",
+      dollWowAdvantage: "DollWow lets buyers narrow by material, body type, height, price, stock path, brand, and custom availability."
+    },
+    {
+      factor: "Buyer guidance",
+      whyItMatters: "A private high-ticket purchase needs education before checkout, not only product photos.",
+      dollWowAdvantage: "Collection pages connect directly to cost, material, realistic-feature, shipping, and alternative-store guides."
+    },
+    {
+      factor: "Pre-checkout support",
+      whyItMatters: "Price, stock, options, and delivery timing can change the final decision.",
+      dollWowAdvantage: "DollWow gives buyers support and listing-comparison paths before they pay."
+    }
+  ],
+  "realistic-sex-dolls": [
+    {
+      factor: "Realism criteria",
+      whyItMatters: "Realism depends on proportions, face detail, eyes, skin finish, pose support, and final configuration.",
+      dollWowAdvantage: "DollWow pairs realistic listings with guides that explain what to verify beyond photos."
+    },
+    {
+      factor: "Product proof",
+      whyItMatters: "A photo may show a sample, reference build, or a specific option set.",
+      dollWowAdvantage: "Product pages and support help buyers confirm the exact head, body, material, and options."
+    },
+    {
+      factor: "Practical fit",
+      whyItMatters: "The most realistic-looking doll can still be too heavy, too large, or wrong for storage.",
+      dollWowAdvantage: "Filters and product cards keep height, weight, material, and delivery path visible during comparison."
+    }
+  ],
+  "mini-sex-dolls": [
+    {
+      factor: "Compact size",
+      whyItMatters: "Mini labels vary, and shorter dolls can still be dense or awkward to store.",
+      dollWowAdvantage: "DollWow filters compact listings by height and keeps weight, material, and stock path visible."
+    },
+    {
+      factor: "Privacy planning",
+      whyItMatters: "Many compact buyers care about storage, packaging, and delivery timing.",
+      dollWowAdvantage: "The collection links directly to discreet shipping and compact-doll guidance."
+    },
+    {
+      factor: "Usability",
+      whyItMatters: "Height alone does not tell the buyer how a product will handle in a real room.",
+      dollWowAdvantage: "DollWow encourages checking weight, measurements, storage orientation, and support-confirmed details."
+    }
+  ],
+  "male-dolls": [
+    {
+      factor: "Adult search intent",
+      whyItMatters: "Male doll searches can mix adult and non-adult results.",
+      dollWowAdvantage: "DollWow keeps this collection focused on adult male body-type listings and practical buyer details."
+    },
+    {
+      factor: "Body scale",
+      whyItMatters: "Shoulder width, height, weight, material, and skeleton support shape the ownership experience.",
+      dollWowAdvantage: "Product cards and the male doll guide help buyers compare more than styling."
+    },
+    {
+      factor: "Option clarity",
+      whyItMatters: "Male body customization can vary by supplier, body, head, and material.",
+      dollWowAdvantage: "DollWow prompts buyers to confirm product-specific options before checkout."
+    }
+  ],
+  "ready-to-ship": [
+    {
+      factor: "Timing",
+      whyItMatters: "Fast fulfillment only helps if the exact unit and stock path are confirmed.",
+      dollWowAdvantage: "DollWow separates ready-to-ship listings and tells buyers to confirm current availability before checkout."
+    },
+    {
+      factor: "Configuration",
+      whyItMatters: "Warehouse-style listings can have fewer change options than factory orders.",
+      dollWowAdvantage: "DollWow links ready-to-ship buyers to custom-order guidance so tradeoffs are clear."
+    },
+    {
+      factor: "Privacy",
+      whyItMatters: "Timing and delivery details often matter most when discretion is important.",
+      dollWowAdvantage: "The collection links directly to shipping guidance and support."
+    }
+  ],
+  custom: [
+    {
+      factor: "Option compatibility",
+      whyItMatters: "Custom choices can depend on brand, body model, head model, material, and supplier rules.",
+      dollWowAdvantage: "DollWow frames customization as product-specific, with support confirmation before checkout."
+    },
+    {
+      factor: "Production timing",
+      whyItMatters: "Custom orders can require supplier confirmation, production time, and final approval checks.",
+      dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
+    },
+    {
+      factor: "Final value",
+      whyItMatters: "Options, accessories, shipping, and production path can change the real cost.",
+      dollWowAdvantage: "DollWow connects custom pages to cost guides and listing review."
+    }
+  ],
+  customizable: [
+    {
+      factor: "Option compatibility",
+      whyItMatters: "Custom choices can depend on brand, body model, head model, material, and supplier rules.",
+      dollWowAdvantage: "DollWow frames customization as product-specific, with support confirmation before checkout."
+    },
+    {
+      factor: "Production timing",
+      whyItMatters: "Custom orders can require supplier confirmation, production time, and final approval checks.",
+      dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
+    },
+    {
+      factor: "Final value",
+      whyItMatters: "Options, accessories, shipping, and production path can change the real cost.",
+      dollWowAdvantage: "DollWow connects custom pages to cost guides and listing review."
+    }
   ]
 };
 

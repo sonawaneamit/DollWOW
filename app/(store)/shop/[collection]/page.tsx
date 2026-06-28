@@ -1,7 +1,7 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
-import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 import Link from "next/link";
 
@@ -37,6 +37,7 @@ export default async function CollectionPage({
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
   const relatedLinks = collectionRelatedLinks(collection, preset);
   const buyerNotes = collectionBuyerNotes(collection, preset);
+  const comparisonRows = collectionComparisonRows(collection, preset);
   const faqItems = collectionFaqItems(collection, preset);
   const activeFilterLabels = Object.entries(filters)
     .filter(([, value]) => Boolean(value))
@@ -66,6 +67,36 @@ export default async function CollectionPage({
             </Link>
           ))}
         </nav>
+      ) : null}
+      {comparisonRows.length ? (
+        <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="collection-comparison-heading">
+          <div className="border-b border-gold-500/12 p-5">
+            <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Buyer comparison</p>
+            <h2 id="collection-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
+              Why compare this collection on DollWow
+            </h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+              <thead className="bg-ink-950/60 text-ivory-100">
+                <tr>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Why it matters</th>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWow advantage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr key={row.factor} className="border-b border-gold-500/10 last:border-b-0">
+                    <td className="px-5 py-4 font-semibold text-ivory-100">{row.factor}</td>
+                    <td className="px-5 py-4 leading-6 text-ivory-400">{row.whyItMatters}</td>
+                    <td className="px-5 py-4 leading-6 text-ivory-300">{row.dollWowAdvantage}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       ) : null}
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
