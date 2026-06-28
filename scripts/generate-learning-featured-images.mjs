@@ -9,9 +9,13 @@ const FORCE = process.argv.includes("--force");
 
 const sharedStyle = [
   "Premium editorial illustration for DollWow Learning Center.",
-  "Use a refined magazine-style digital illustration, not a photorealistic render.",
-  "Use elegant adult-commerce buyer-guide symbolism: material samples, measuring tools, discreet packaging, catalog cards, swatches, silhouettes, privacy objects, and soft product-display forms.",
-  "No readable text, no logos, no fake reviews, no explicit sexual activity, no nudity focus, no underage-coded styling, no school themes.",
+  "Use a refined magazine-style digital illustration or tasteful hyper-real editorial banner.",
+  "The hero subject must be a realistic adult doll, doll display form, doll catalog card, or doll-focused showroom scene.",
+  "Use buyer-guide symbolism around the doll: material swatches, measuring tools, discreet packaging, catalog cards, option references, privacy objects, comparison cards, and support desk items.",
+  "Do not depict standalone sex toys, dildos, vibrators, pleasure-device shapes, fake reviews, explicit sexual activity, nudity focus, underage-coded styling, school themes, or objects DollWow does not sell.",
+  "If an image uses an abstract shape, make it clearly a swatch, package, measurement marker, catalog card, or display prop, not a sex toy.",
+  "Do not imply the generated image is an actual product photo unless a real supplier product image is used as a reference.",
+  "No readable text and no logos inside the image.",
   "Warm dark boudoir palette with ivory, muted rose, bronze, black, soft grain, confident composition, and human art-director polish.",
   "Landscape composition with clean negative space, suitable for a featured blog image."
 ].join(" ");
@@ -20,22 +24,22 @@ const images = [
   {
     slug: "tpe-vs-silicone-sex-dolls",
     prompt:
-      "Illustrated side-by-side material comparison: one soft matte sample, one smoother glossy sample, with a simple draped display form, care cloth, and small swatch labels shown as abstract blank cards. Calm education mood."
+      "Doll-focused side-by-side material comparison: one tasteful adult doll display form in soft focus, matte and glossy material swatches, care cloth, blank comparison cards, and measuring tape. Calm education mood."
   },
   {
     slug: "sex-doll-cost",
     prompt:
-      "Illustrated buyer desk scene with abstract price-tier cards, measuring tape, material swatches, shipping box icon, care kit shapes, and a turned-away product catalog card. Calm value-comparison mood."
+      "Buyer desk scene with a doll catalog photo card, abstract price-tier cards, measuring tape, material swatches, discreet shipping box, care kit pouch, and support note cards. Calm value-comparison mood."
   },
   {
     slug: "best-sex-dolls",
     prompt:
-      "Illustrated curated showroom scene with several tasteful display-form silhouettes in soft focus, material cards, measurement tools, and comparison tokens in the foreground. Buyer-guide atmosphere."
+      "Curated showroom banner with several tasteful adult doll display silhouettes in soft focus, material cards, measurement tools, and comparison tokens in the foreground. Buyer-guide atmosphere."
   },
   {
     slug: "most-realistic-sex-dolls",
     prompt:
-      "Illustrated realism detail board: glass eye shapes, wig fiber strands, skin texture samples, sculpt reference profile, lighting swatches, and a magnifying glass. Premium inspection mood."
+      "Realism detail board next to a tasteful adult doll portrait crop: glass eye references, wig fiber strands, skin texture samples, sculpt profile card, lighting swatches, and a magnifying glass. Premium inspection mood."
   },
   {
     slug: "mini-sex-dolls",
@@ -45,7 +49,7 @@ const images = [
   {
     slug: "male-sex-doll-buying-guide",
     prompt:
-      "Illustrated male product guide: tasteful masculine display-form silhouette, measuring tape, material swatches, neutral wardrobe pieces, and body-proportion guide shapes. Premium catalog education mood."
+      "Male doll product guide banner: tasteful adult male doll display-form silhouette, measuring tape, material swatches, neutral wardrobe pieces, and body-proportion guide cards. Premium catalog education mood."
   },
   {
     slug: "sex-doll-reviews",
@@ -55,7 +59,7 @@ const images = [
   {
     slug: "ready-to-ship-vs-custom-sex-dolls",
     prompt:
-      "Illustrated split logistics scene: one side has a discreet shipping box and warehouse shapes, the other has customization swatches, hair sample, eye-color cards, and a blank product proof card."
+      "Split logistics scene with a doll catalog card: one side has a discreet shipping box and warehouse shapes, the other has customization swatches, hair sample, eye-color cards, and a blank product proof card."
   },
   {
     slug: "discreet-sex-doll-shipping",

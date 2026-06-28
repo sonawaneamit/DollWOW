@@ -108,6 +108,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             <MarkdownContent markdown={article.body} />
+            <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
           </article>
@@ -128,6 +129,52 @@ async function getArticleProductModule(slug: string) {
   });
   const picks = filterProducts(products, filters).slice(0, 3);
   return { ...config, products: picks };
+}
+
+function ArticleInfographic({ slug }: { slug: string }) {
+  const infographic = infographicConfig(slug);
+  if (!infographic) return null;
+
+  return (
+    <aside className="mt-12 overflow-hidden rounded-[8px] border border-ink-950/10 bg-ink-950 text-ivory-50 shadow-soft" aria-labelledby={`${slug}-infographic-heading`}>
+      <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative min-h-[260px] overflow-hidden bg-[radial-gradient(circle_at_24%_20%,rgba(217,157,107,0.28),transparent_34%),linear-gradient(145deg,rgba(44,20,16,0.92),rgba(8,6,5,1))] p-6">
+          <div className="absolute -right-10 top-8 h-44 w-44 rounded-full border border-gold-300/20" />
+          <div className="absolute bottom-6 right-7 h-32 w-20 rounded-t-full border border-ivory-50/14 bg-ivory-50/[0.04]" />
+          <div className="absolute bottom-6 right-24 h-24 w-16 rounded-t-full border border-gold-300/16 bg-gold-300/[0.08]" />
+          <p className="relative text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{infographic.eyebrow}</p>
+          <h2 id={`${slug}-infographic-heading`} className="relative mt-3 text-2xl font-semibold leading-tight text-ivory-50">
+            {infographic.title}
+          </h2>
+          <p className="relative mt-4 max-w-sm text-sm leading-6 text-ivory-300">{infographic.summary}</p>
+          <div className="relative mt-7 grid grid-cols-2 gap-3">
+            {infographic.stats.map((stat) => (
+              <div key={stat.label} className="rounded-[8px] border border-gold-300/16 bg-ivory-50/[0.06] p-3">
+                <p className="text-lg font-semibold text-gold-200">{stat.value}</p>
+                <p className="mt-1 text-xs leading-5 text-ivory-400">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-ivory-50 p-5 text-ink-950">
+          <div className="grid gap-3">
+            {infographic.items.map((item, index) => (
+              <div key={item.title} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 rounded-[8px] border border-gold-500/16 bg-white/65 p-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-300 text-sm font-semibold text-[#1f120b]">{index + 1}</span>
+                <div>
+                  <h3 className="text-base font-semibold leading-tight text-ink-950">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-ink-700">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link href={infographic.href} className="mt-5 inline-flex rounded-[12px] border border-ink-950/16 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-ink-950/35 hover:bg-ink-950/[0.04]">
+            {infographic.cta}
+          </Link>
+        </div>
+      </div>
+    </aside>
+  );
 }
 
 function ArticleProductExamples({ module }: { module: ArticleProductModule | null }) {
@@ -235,6 +282,176 @@ function ArticleActions({ slug }: { slug: string }) {
       ) : null}
     </aside>
   );
+}
+
+type ArticleInfographicConfig = {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  stats: Array<{ value: string; label: string }>;
+  items: Array<{ title: string; body: string }>;
+  href: string;
+  cta: string;
+};
+
+function infographicConfig(slug: string): ArticleInfographicConfig | null {
+  const map: Record<string, ArticleInfographicConfig> = {
+    "tpe-vs-silicone-sex-dolls": {
+      eyebrow: "Material comparison",
+      title: "Compare the whole build before choosing a material",
+      summary: "TPE and silicone are useful buying shortcuts, but the better decision comes from comparing material, size, care, weight, and configuration together.",
+      stats: [
+        { value: "2", label: "core materials to compare" },
+        { value: "5", label: "product facts to verify" }
+      ],
+      items: [
+        { title: "Feel and finish", body: "Compare softness, surface detail, firmness, and how the product is finished by the specific brand." },
+        { title: "Care routine", body: "Check cleaning, drying, powdering, and storage requirements before assuming one material is easier." },
+        { title: "Handling comfort", body: "Height and weight can matter more in daily use than the material label alone." },
+        { title: "Final configuration", body: "Confirm whether the listing is full TPE, full silicone, silicone-head, or another mixed build." }
+      ],
+      href: "/shop/tpe",
+      cta: "Compare TPE listings"
+    },
+    "sex-doll-cost": {
+      eyebrow: "Cost breakdown",
+      title: "What changes the delivered price",
+      summary: "A low catalog price can still become expensive if the listing is unclear, shipping is missing, or the configuration needs extra confirmation.",
+      stats: [
+        { value: "$", label: "base price is only one layer" },
+        { value: "6", label: "cost factors to review" }
+      ],
+      items: [
+        { title: "Base model", body: "Brand, material, height, and body design set the first price range." },
+        { title: "Options", body: "Skin tone, eyes, wig, functions, skeleton upgrades, and accessories can affect the final total." },
+        { title: "Shipping path", body: "Ready-to-ship and factory-order listings can have different timing and logistics." },
+        { title: "Verification", body: "Support confirmation reduces risk when photos, specs, or included items are unclear." }
+      ],
+      href: "/best-price-guarantee",
+      cta: "Review the price guarantee"
+    },
+    "best-sex-dolls": {
+      eyebrow: "Buyer shortlist",
+      title: "A practical way to shortlist dolls",
+      summary: "The best choice is the listing that fits the buyer, not the one with the loudest promo banner.",
+      stats: [
+        { value: "4", label: "shortlist filters" },
+        { value: "1", label: "final support check" }
+      ],
+      items: [
+        { title: "Start with constraints", body: "Budget, storage, privacy, weight, and timing narrow the catalog quickly." },
+        { title: "Compare facts", body: "Use material, height, measurements, stock status, and custom order path before judging photos." },
+        { title: "Read the product page", body: "Check what the exact listing includes and what requires confirmation." },
+        { title: "Ask before checkout", body: "If a detail affects the order, get support to confirm it before payment." }
+      ],
+      href: "/shop/sex-dolls",
+      cta: "Browse the catalog"
+    },
+    "most-realistic-sex-dolls": {
+      eyebrow: "Realism checklist",
+      title: "What makes a doll look realistic",
+      summary: "Realism comes from the finished build: proportions, face detail, eyes, skin finish, hair, pose support, and whether the final product matches the confirmed configuration.",
+      stats: [
+        { value: "7", label: "visual details to check" },
+        { value: "1", label: "confirmed configuration" }
+      ],
+      items: [
+        { title: "Face and eyes", body: "Check sculpt, eye placement, expression, and whether the head matches the chosen body." },
+        { title: "Proportions", body: "Height, shoulders, waist, hips, hands, and feet affect realism at full scale." },
+        { title: "Finish", body: "Material, skin texture, faceup, hair, and lighting all change the final look." },
+        { title: "Photo accuracy", body: "Confirm whether images show the exact build, a sample, or a reference configuration." }
+      ],
+      href: "/shop/realistic-sex-dolls",
+      cta: "Compare realistic listings"
+    },
+    "mini-sex-dolls": {
+      eyebrow: "Compact fit",
+      title: "Small builds still need exact measurements",
+      summary: "Mini and compact dolls can be easier to plan around, but storage and handling depend on more than height.",
+      stats: [
+        { value: "155", label: "cm and under is a useful starting filter" },
+        { value: "4", label: "storage facts to confirm" }
+      ],
+      items: [
+        { title: "Height", body: "Use height as a starting filter, then check the full measurement table." },
+        { title: "Weight", body: "Compact dolls can still be dense depending on material and internal structure." },
+        { title: "Storage footprint", body: "Review boxed size, orientation, and where the product will be stored." },
+        { title: "Privacy path", body: "Confirm delivery timing, packaging, and support notes if discretion is the reason for buying small." }
+      ],
+      href: "/shop/mini-sex-dolls",
+      cta: "Compare mini dolls"
+    },
+    "male-sex-doll-buying-guide": {
+      eyebrow: "Male doll fit",
+      title: "Body scale comes before styling",
+      summary: "Male dolls should be compared by proportions, measurements, material, skeleton support, and available options before choosing by image alone.",
+      stats: [
+        { value: "6", label: "body facts to compare" },
+        { value: "1", label: "product-specific option check" }
+      ],
+      items: [
+        { title: "Body proportions", body: "Compare height, shoulders, waist, hips, and weight before focusing on styling." },
+        { title: "Material", body: "Review whether the body and head are TPE, silicone, or a mixed construction." },
+        { title: "Options", body: "Custom availability can vary by male body, head model, and supplier." },
+        { title: "Delivery path", body: "Confirm stock, production timing, and final approval details before checkout." }
+      ],
+      href: "/shop/male-dolls",
+      cta: "Compare male dolls"
+    },
+    "sex-doll-reviews": {
+      eyebrow: "Review check",
+      title: "How to tell whether a review is useful",
+      summary: "Useful reviews connect claims to a real product, clear specs, current seller policies, and verifiable support.",
+      stats: [
+        { value: "3", label: "claims to verify" },
+        { value: "0", label: "fake-review tolerance" }
+      ],
+      items: [
+        { title: "Match the product", body: "Check whether the review refers to the exact brand, body, head, and material." },
+        { title: "Look for specifics", body: "Measurements, delivery timing, care notes, and support details are more useful than vague praise." },
+        { title: "Watch for mismatches", body: "Photos, specs, and pricing should point to the same product." },
+        { title: "Use support", body: "Ask DollWow to compare a listing if the review or seller page feels unclear." }
+      ],
+      href: "/compare",
+      cta: "Compare a listing"
+    },
+    "ready-to-ship-vs-custom-sex-dolls": {
+      eyebrow: "Order path",
+      title: "Ready-to-ship and custom solve different problems",
+      summary: "One path favors timing and fixed configuration. The other favors control, supplier rules, and production confirmation.",
+      stats: [
+        { value: "2", label: "main order paths" },
+        { value: "1", label: "confirmation step before checkout" }
+      ],
+      items: [
+        { title: "Ready-to-ship", body: "Useful when timing matters, but exact stock and configuration still need confirmation." },
+        { title: "Custom", body: "Useful when options matter, but production time and compatibility rules can vary." },
+        { title: "Photos", body: "Confirm whether images show the exact unit, a sample, or a reference build." },
+        { title: "Final check", body: "Ask support to confirm timing, included items, and supplier constraints." }
+      ],
+      href: "/shop/ready-to-ship",
+      cta: "Compare ready-to-ship dolls"
+    },
+    "discreet-sex-doll-shipping": {
+      eyebrow: "Privacy path",
+      title: "Discretion is a delivery process, not a slogan",
+      summary: "Privacy depends on packaging, billing expectations, timing, support communication, and whether the order details are confirmed before shipment.",
+      stats: [
+        { value: "4", label: "privacy details to review" },
+        { value: "1", label: "plain support conversation" }
+      ],
+      items: [
+        { title: "Packaging", body: "Look for plain, practical packaging expectations instead of vague promises." },
+        { title: "Timing", body: "Confirm current stock and delivery path if timing affects privacy." },
+        { title: "Communication", body: "Use support to clarify sensitive details before checkout." },
+        { title: "Order accuracy", body: "Make sure the product, options, and shipping path match what you expect." }
+      ],
+      href: "/shipping",
+      cta: "Review shipping details"
+    }
+  };
+
+  return map[slug] ?? null;
 }
 
 type ArticleProductModule = {

@@ -28,6 +28,7 @@
     "setup:custom-option-charges": "node scripts/setup-custom-option-charges.mjs",
     "sync:shopify-products": "node scripts/sync-shopify-products.mjs",
     "catalog:audit": "node scripts/catalog-audit.mjs",
+    "generate:learning-banners": "node scripts/generate-learning-banner-composites.mjs",
     "test": "vitest run"
   },
   "dependencies": {
@@ -49,6 +50,7 @@
     "eslint-config-next": "16.2.6",
     "playwright": "^1.60.0",
     "postcss": "^8.5.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "vitest": "^4.0.15"
