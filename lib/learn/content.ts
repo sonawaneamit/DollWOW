@@ -243,7 +243,12 @@ function priority(slug: string) {
     "bestrealdoll-alternatives",
     "siliconwives-alternatives",
     "joylovedolls-alternatives",
-    "rosemarydoll-alternatives"
+    "rosemarydoll-alternatives",
+    "betterlovedoll-alternatives",
+    "realsexdoll-alternatives",
+    "sexdolltech-alternatives",
+    "myrobotdoll-alternatives",
+    "sexdollqueen-alternatives"
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;
