@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hanken_Grotesk, Schibsted_Grotesk } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
 
 const display = Schibsted_Grotesk({
@@ -40,9 +41,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const siteStructuredData = buildSiteStructuredData();
+
   return (
     <html lang="en" data-theme="boudoir" data-scroll-behavior="smooth">
       <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
+        {siteStructuredData.map((entry) => (
+          <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
+        ))}
         <Header />
         <main>{children}</main>
         <Footer />

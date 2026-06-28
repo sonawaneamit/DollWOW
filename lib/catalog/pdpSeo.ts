@@ -253,14 +253,16 @@ export function buildProductStructuredData(product: Product) {
   const material = product.extended.material || inferredMaterial(product);
   const measurements = productMeasurementSpecs(product);
   const keywords = productKeywordSet(product);
+  const additionalProperty = productSchemaProperties(product, measurements);
 
   return {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${canonicalUrl}#product`,
     name: publicTitle,
     description: buildPdpMetaDescription(product),
     url: canonicalUrl,
-    image: product.images.map((image) => image.url).filter(Boolean),
+    image: productSchemaImages(product),
     brand: {
       "@type": "Brand",
       name: brand
@@ -270,11 +272,7 @@ export function buildProductStructuredData(product: Product) {
     sku: product.handle,
     mpn: product.extended.catalogIdentityKey || product.extended.catalogBodyIdentityKey || undefined,
     keywords: keywords.join(", "),
-    additionalProperty: measurements.map((measurement) => ({
-      "@type": "PropertyValue",
-      name: measurement.label,
-      value: measurement.value
-    })),
+    additionalProperty,
     offers: {
       "@type": "Offer",
       priceCurrency: product.priceRange.minVariantPrice.currencyCode,
@@ -287,6 +285,59 @@ export function buildProductStructuredData(product: Product) {
       url: canonicalUrl
     }
   };
+}
+
+function productSchemaImages(product: Product) {
+  return Array.from(new Set([product.featuredImage?.url, ...product.images.map((image) => image.url)].filter(Boolean))) as string[];
+}
+
+function productSchemaProperties(product: Product, measurements: ReturnType<typeof productMeasurementSpecs>) {
+  const properties = [
+    ...measurements.map((measurement) => ({ name: measurement.label, value: measurement.value })),
+    { name: "Brand", value: product.extended.brand || product.vendor },
+    { name: "Material", value: product.extended.material || inferredMaterial(product) },
+    { name: "Body type", value: productBodyLabel(product) },
+    { name: "Head model", value: product.extended.headModel },
+    { name: "Height", value: product.extended.heightCm ? `${product.extended.heightCm} cm` : undefined },
+    { name: "Weight", value: product.extended.weightLb ? `${product.extended.weightLb} lb` : undefined },
+    { name: "Cup size", value: normalizeCup(product.extended.cupSize) },
+    { name: "Order path", value: orderPathLabel(product) },
+    { name: "Stock status", value: stockStatusLabel(product.extended.stockStatus) },
+    { name: "Customization available", value: product.extended.customAvailable === undefined ? undefined : product.extended.customAvailable ? "Yes" : "No" },
+    { name: "Delivery estimate", value: product.extended.deliveryEstimate },
+    { name: "Warehouse country", value: product.extended.warehouseCountry },
+    { name: "Stock last checked", value: product.extended.stockLastCheckedAt }
+  ];
+
+  const seen = new Set<string>();
+  return properties
+    .map((property) => ({ name: cleanText(property.name), value: cleanText(property.value) }))
+    .filter((property) => property.name && property.value)
+    .filter((property) => {
+      const key = `${property.name.toLowerCase()}:${property.value.toLowerCase()}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .map((property) => ({
+      "@type": "PropertyValue",
+      name: property.name,
+      value: property.value
+    }));
+}
+
+function orderPathLabel(product: Product) {
+  if (product.extended.stockStatus === "ready_to_ship") return "Ready to ship after stock confirmation";
+  if (product.extended.customAvailable) return "Factory-order custom build";
+  if (product.extended.stockStatus === "check_stock") return "Check stock with support";
+  return product.extended.stockStatus === "custom" ? "Factory order" : undefined;
+}
+
+function stockStatusLabel(status: Product["extended"]["stockStatus"]) {
+  if (status === "ready_to_ship") return "Ready to ship";
+  if (status === "custom") return "Custom order";
+  if (status === "check_stock") return "Check stock";
+  return undefined;
 }
 
 export function buildProductFaqStructuredData(product: Product) {
