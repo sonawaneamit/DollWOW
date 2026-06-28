@@ -186,6 +186,9 @@ That approach is more useful than a polished promise.
 - [Compare TPE vs silicone sex dolls](/learn/tpe-vs-silicone-sex-dolls)
 - [Understand sex doll cost](/learn/sex-doll-cost)
 - [Read discreet shipping guidance](/learn/discreet-sex-doll-shipping)
+- [Compare Silicon Wives alternatives](/learn/siliconwives-alternatives)
+- [Compare YourDoll alternatives](/learn/yourdoll-alternatives)
+- [Compare BestRealDoll alternatives](/learn/bestrealdoll-alternatives)
 - [Submit a listing for price match review](/compare)
 - [Read DollWow buyer protection](/buyer-protection)
 

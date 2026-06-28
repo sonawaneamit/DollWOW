@@ -180,6 +180,9 @@ Jesse’s practical view is this. A premium purchase should not depend on guessw
 - [Understand sex doll cost and pricing](/learn/sex-doll-cost)
 - [Compare realistic doll features](/learn/most-realistic-sex-dolls)
 - [Review ready-to-ship vs custom orders](/learn/ready-to-ship-vs-custom-sex-dolls)
+- [Compare YourDoll alternatives](/learn/yourdoll-alternatives)
+- [Compare BestRealDoll alternatives](/learn/bestrealdoll-alternatives)
+- [Compare Silicon Wives alternatives](/learn/siliconwives-alternatives)
 - [Browse the DollWow catalog](/shop)
 - [Use the DollWow finder](/help-me-choose)
 
