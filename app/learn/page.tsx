@@ -38,9 +38,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
           <div className="flex flex-wrap gap-2" aria-label="Learning Center categories">
             <Link
               href="/learn#guides"
-              className={`rounded-full border px-3 py-1 text-sm font-semibold transition ${
-                selectedCategory ? "border-gold-500/18 bg-ivory-50/[0.45] text-ink-800 hover:border-gold-500/32" : "border-ink-950/18 bg-ink-950 text-ivory-50"
-              }`}
+              className={categoryPillClass(!selectedCategory)}
             >
               All guides
             </Link>
@@ -48,9 +46,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
               <Link
                 key={category}
                 href={`/learn?category=${encodeURIComponent(category)}#guides`}
-                className={`rounded-full border px-3 py-1 text-sm font-semibold transition ${
-                  selectedCategory === category ? "border-ink-950/18 bg-ink-950 text-ivory-50" : "border-gold-500/18 bg-ivory-50/[0.45] text-ink-800 hover:border-gold-500/32"
-                }`}
+                className={categoryPillClass(selectedCategory === category)}
               >
                 {category}
               </Link>
@@ -114,4 +110,11 @@ function categoryFromParam(value: string | string[] | undefined, categories: str
   if (!raw) return "";
   const decoded = decodeURIComponent(raw);
   return categories.includes(decoded) ? decoded : "";
+}
+
+function categoryPillClass(active: boolean) {
+  const base = "rounded-full border px-3 py-1 text-sm font-semibold transition";
+  return active
+    ? `${base} border-[#6f3a22] bg-[#6f3a22] text-[#fff7ef] shadow-[0_8px_20px_rgba(111,58,34,0.18)] hover:bg-[#5c2f1d]`
+    : `${base} border-[#d8bfb0] bg-[#fff7ef]/50 text-[#24120d] hover:border-[#b98967] hover:bg-[#fff7ef]/72`;
 }
