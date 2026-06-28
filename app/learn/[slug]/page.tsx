@@ -448,6 +448,91 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
       ],
       href: "/shipping",
       cta: "Review shipping details"
+    },
+    "how-to-clean-a-sex-doll": {
+      eyebrow: "Care routine",
+      title: "Clean gently, dry fully, store carefully",
+      summary: "A good cleaning routine protects the material and keeps ownership practical. The exact care path should match the product material and supplier guidance.",
+      stats: [
+        { value: "3", label: "core steps: clean, dry, store" },
+        { value: "2", label: "main material paths to compare" }
+      ],
+      items: [
+        { title: "Confirm material", body: "Check whether the doll is TPE, silicone, silicone-head, or mixed construction before choosing care products." },
+        { title: "Use mild care", body: "Avoid harsh cleaners, abrasive tools, high heat, and products that are not confirmed for the material." },
+        { title: "Dry fully", body: "Surface and internal areas should be fully dry before storage." },
+        { title: "Ask first", body: "If the routine affects your purchase decision, ask support to confirm the product-specific care path." }
+      ],
+      href: "/learn/tpe-vs-silicone-sex-dolls",
+      cta: "Compare material care"
+    },
+    "sex-doll-storage": {
+      eyebrow: "Storage plan",
+      title: "Plan privacy and material protection together",
+      summary: "Storage should protect the doll from moisture, heat, pressure, dye transfer, and awkward positioning while still fitting the buyer's space.",
+      stats: [
+        { value: "5", label: "storage risks to avoid" },
+        { value: "1", label: "real room to plan around" }
+      ],
+      items: [
+        { title: "Measure first", body: "Height, weight, and boxed size decide whether a storage plan is realistic." },
+        { title: "Avoid pressure", body: "Long-term compression and awkward joint positions can create avoidable problems." },
+        { title: "Protect the surface", body: "Use clean, light-colored fabrics and avoid dye-transfer risks." },
+        { title: "Keep it dry", body: "Store only after cleaning and drying are complete." }
+      ],
+      href: "/shop/mini-sex-dolls",
+      cta: "Compare compact dolls"
+    },
+    "sex-doll-maintenance-checklist": {
+      eyebrow: "Maintenance rhythm",
+      title: "A repeatable checklist beats guesswork",
+      summary: "Maintenance should be simple enough to follow consistently: clean, dry, inspect, protect, store, and recheck the setup.",
+      stats: [
+        { value: "6", label: "routine checks" },
+        { value: "0", label: "harsh products needed" }
+      ],
+      items: [
+        { title: "Before buying", body: "Choose a product that fits your storage, lifting comfort, and care expectations." },
+        { title: "After cleaning", body: "Dry fully and inspect the surface before storage." },
+        { title: "During storage", body: "Avoid heat, pressure, dark dyes, and cramped positions." },
+        { title: "Monthly review", body: "Check surface condition, storage fabric, joints, and care supplies." }
+      ],
+      href: "/support",
+      cta: "Ask about care"
+    },
+    "sex-doll-scams": {
+      eyebrow: "Buyer protection",
+      title: "Verify the offer before the price talks you into it",
+      summary: "Scam risk rises when low prices, vague product facts, unclear shipping, and weak support appear together.",
+      stats: [
+        { value: "6", label: "red flags to check" },
+        { value: "1", label: "listing review before checkout" }
+      ],
+      items: [
+        { title: "Check identity", body: "The exact product, material, size, stock path, and included options should be clear." },
+        { title: "Question photos", body: "Images should be backed by product facts and support, not used as the only proof." },
+        { title: "Compare delivered value", body: "Review shipping, options, policies, and support before trusting a low price." },
+        { title: "Use support", body: "Submit another listing for review if the offer feels unclear." }
+      ],
+      href: "/compare",
+      cta: "Compare a listing"
+    },
+    "sex-doll-laws-us": {
+      eyebrow: "Adult-only standard",
+      title: "Keep legality, privacy, and product standards separate",
+      summary: "Adult buyers should avoid underage-coded or unlawful product presentation completely and verify local rules when they have a specific legal concern.",
+      stats: [
+        { value: "18+", label: "adult-only buying context" },
+        { value: "0", label: "underage-coded tolerance" }
+      ],
+      items: [
+        { title: "Adult presentation", body: "Products should be clearly adult and should not use underage-coded or school-themed presentation." },
+        { title: "Local variation", body: "State, local, import, payment, and platform rules can vary." },
+        { title: "Privacy is separate", body: "Discreet shipping protects privacy, but it does not answer legal questions." },
+        { title: "Verify concerns", body: "Specific legal questions should be checked with a qualified source." }
+      ],
+      href: "/adult-only",
+      cta: "Review adult-only policy"
     }
   };
 
@@ -515,6 +600,36 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
     "sex-doll-reviews": {
       title: "Use product pages to verify review claims",
       description: "Live product cards keep review research grounded in actual listings, specs, stock status, and support-confirmed details.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "how-to-clean-a-sex-doll": {
+      title: "Compare material-specific care needs",
+      description: "Use catalog examples to compare material, size, weight, and product facts before choosing a care routine.",
+      collectionHref: "/shop/tpe",
+      filters: { material: "tpe" }
+    },
+    "sex-doll-storage": {
+      title: "Compare storage-friendly sizes",
+      description: "Compact listings help buyers think through height, weight, storage footprint, and privacy before checkout.",
+      collectionHref: "/shop/mini-sex-dolls",
+      filters: { height: "0-154" }
+    },
+    "sex-doll-maintenance-checklist": {
+      title: "Start with material and size",
+      description: "Maintenance planning is easier when product size, weight, material, and storage needs are visible before checkout.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "sex-doll-scams": {
+      title: "Use live listings as a fact baseline",
+      description: "Real catalog examples make it easier to compare material, price, measurements, and support context against another seller's offer.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "sex-doll-laws-us": {
+      title: "Compare adult-only catalog listings",
+      description: "DollWow keeps catalog comparison focused on adult products, clear facts, and support-confirmed order details.",
       collectionHref: "/shop/sex-dolls",
       filters: {}
     },
@@ -619,6 +734,26 @@ function relatedCollections(slug: string) {
     "sex-doll-reviews": [
       { label: "Buyer protection", href: "/buyer-protection", description: "Review verification and purchase clarity expectations." },
       { label: "Price match review", href: "/compare", description: "Submit a listing for side-by-side review." }
+    ],
+    "how-to-clean-a-sex-doll": [
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material care before choosing a product." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan drying and storage as part of the same routine." }
+    ],
+    "sex-doll-storage": [
+      { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact listings for smaller storage spaces." },
+      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Clean and dry fully before storage." }
+    ],
+    "sex-doll-maintenance-checklist": [
+      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Use a gentle cleaning routine matched to material." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Protect the material after cleaning." }
+    ],
+    "sex-doll-scams": [
+      { label: "Scam alert", href: "/scam-alert", description: "Review DollWow's buyer-protection warning signs." },
+      { label: "Compare a listing", href: "/compare", description: "Submit another seller's offer for review." }
+    ],
+    "sex-doll-laws-us": [
+      { label: "Adult-only policy", href: "/adult-only", description: "Review DollWow's adult-only catalog standard." },
+      { label: "Buyer protection", href: "/buyer-protection", description: "Review purchase clarity and support expectations." }
     ],
     "yourdoll-alternatives": [
       { label: "Sex dolls", href: "/shop/sex-dolls", description: "Compare live product listings, filters, and buyer-fit details." },

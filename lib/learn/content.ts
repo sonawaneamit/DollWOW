@@ -248,7 +248,12 @@ function priority(slug: string) {
     "realsexdoll-alternatives",
     "sexdolltech-alternatives",
     "myrobotdoll-alternatives",
-    "sexdollqueen-alternatives"
+    "sexdollqueen-alternatives",
+    "how-to-clean-a-sex-doll",
+    "sex-doll-storage",
+    "sex-doll-maintenance-checklist",
+    "sex-doll-scams",
+    "sex-doll-laws-us"
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;
