@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { GoldButton } from "@/components/GoldButton";
 import { getLearnAuthor, getLearningArticles } from "@/lib/learn/content";
 
 export const metadata: Metadata = {
@@ -83,9 +84,9 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
                       <Link href={`/learn/${article.slug}`}>{article.title}</Link>
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-ink-700">{article.excerpt}</p>
-                    <Link href={`/learn/${article.slug}`} className="mt-5 inline-flex rounded-[12px] bg-ink-950 px-4 py-2 text-sm font-semibold text-ivory-50 transition hover:bg-ink-800">
+                    <GoldButton href={`/learn/${article.slug}`} variant="primary" className="mt-5 min-h-0 px-4 py-2">
                       Read guide
-                    </Link>
+                    </GoldButton>
                     <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
                       <p className="font-semibold text-ink-950">
                         <Link href={`/editorial-policy#${article.author}`} className="transition hover:text-gold-700">
@@ -113,8 +114,5 @@ function categoryFromParam(value: string | string[] | undefined, categories: str
 }
 
 function categoryPillClass(active: boolean) {
-  const base = "rounded-full border px-3 py-1 text-sm font-semibold transition";
-  return active
-    ? `${base} border-[#6f3a22] bg-[#6f3a22] text-[#fff7ef] shadow-[0_8px_20px_rgba(111,58,34,0.18)] hover:bg-[#5c2f1d]`
-    : `${base} border-[#d8bfb0] bg-[#fff7ef]/50 text-[#24120d] hover:border-[#b98967] hover:bg-[#fff7ef]/72`;
+  return `learn-category-pill${active ? " is-active" : ""}`;
 }
