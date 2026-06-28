@@ -238,7 +238,12 @@ function priority(slug: string) {
     "male-sex-doll-buying-guide",
     "sex-doll-reviews",
     "ready-to-ship-vs-custom-sex-dolls",
-    "discreet-sex-doll-shipping"
+    "discreet-sex-doll-shipping",
+    "yourdoll-alternatives",
+    "bestrealdoll-alternatives",
+    "siliconwives-alternatives",
+    "joylovedolls-alternatives",
+    "rosemarydoll-alternatives"
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;

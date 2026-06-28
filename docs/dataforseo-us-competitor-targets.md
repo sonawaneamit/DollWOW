@@ -132,6 +132,7 @@ Use these competitors to decide whether DollWow needs stronger collection pages:
 ## Editorial Guardrails
 
 - Do not make unsupported claims about competitor product quality, shipping, pricing, stock, warranties, or customer experience.
+- Do not link to competitor domains from DollWow alternative pages. Name competitors in plain text when needed for search intent, but keep calls to action and comparison links internal to DollWow.
 - Use neutral headings: "What to compare before buying," "Questions to ask before checkout," and "When DollWow may be a better fit."
 - Avoid scraped competitor copy, fake reviews, invented buyer stories, and ranking claims without a cited source.
 - Link to DollWow collections, support, price match, buyer protection, shipping, and relevant Learning Center guides.

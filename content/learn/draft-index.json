@@ -79,5 +79,50 @@
     "author": "jesse",
     "category": "Shipping And Privacy",
     "path": "content/learn/drafts/discreet-sex-doll-shipping.md"
+  },
+  {
+    "order": 10,
+    "slug": "yourdoll-alternatives",
+    "title": "YourDoll Alternatives: What To Compare Before Buying",
+    "primaryKeyword": "yourdoll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/yourdoll-alternatives.md"
+  },
+  {
+    "order": 11,
+    "slug": "bestrealdoll-alternatives",
+    "title": "BestRealDoll Alternatives: What To Compare Before Buying",
+    "primaryKeyword": "bestrealdoll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/bestrealdoll-alternatives.md"
+  },
+  {
+    "order": 12,
+    "slug": "siliconwives-alternatives",
+    "title": "Silicon Wives Alternatives: What To Compare Before Buying",
+    "primaryKeyword": "silicon wives",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/siliconwives-alternatives.md"
+  },
+  {
+    "order": 13,
+    "slug": "joylovedolls-alternatives",
+    "title": "JoyLoveDolls Alternatives: What To Compare Before Buying",
+    "primaryKeyword": "joylovedolls",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/joylovedolls-alternatives.md"
+  },
+  {
+    "order": 14,
+    "slug": "rosemarydoll-alternatives",
+    "title": "RosemaryDoll Alternatives: What To Compare Before Buying",
+    "primaryKeyword": "rosemary doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/rosemarydoll-alternatives.md"
   }
 ]

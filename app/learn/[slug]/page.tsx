@@ -517,6 +517,36 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       description: "Live product cards keep review research grounded in actual listings, specs, stock status, and support-confirmed details.",
       collectionHref: "/shop/sex-dolls",
       filters: {}
+    },
+    "yourdoll-alternatives": {
+      title: "Start with comparable DollWow listings",
+      description: "Use live catalog examples to compare material, price, measurements, stock path, and support context before choosing between stores.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "bestrealdoll-alternatives": {
+      title: "Compare best-fit candidates with live catalog data",
+      description: "These examples keep best-doll research tied to product facts, not ranking labels or promo language.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
+    "siliconwives-alternatives": {
+      title: "Compare material-led listings",
+      description: "Material comparisons work best when tied to actual product specs, weight, stock path, and support-confirmed details.",
+      collectionHref: "/shop/silicone",
+      filters: { material: "silicone" }
+    },
+    "joylovedolls-alternatives": {
+      title: "Compare male doll listings",
+      description: "Use live catalog examples to check body scale, material, measurements, stock status, and order path.",
+      collectionHref: "/shop/male-dolls",
+      filters: { bodyType: "male" }
+    },
+    "rosemarydoll-alternatives": {
+      title: "Compare TPE listings with clear product facts",
+      description: "TPE comparisons should stay grounded in visible material, height, weight, stock status, and support-confirmed order details.",
+      collectionHref: "/shop/tpe",
+      filters: { material: "tpe" }
     }
   };
 
@@ -559,6 +589,26 @@ function relatedCollections(slug: string) {
     "sex-doll-reviews": [
       { label: "Buyer protection", href: "/buyer-protection", description: "Review verification and purchase clarity expectations." },
       { label: "Price match review", href: "/compare", description: "Submit a listing for side-by-side review." }
+    ],
+    "yourdoll-alternatives": [
+      { label: "Sex dolls", href: "/shop/sex-dolls", description: "Compare live product listings, filters, and buyer-fit details." },
+      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Review fixed-configuration listings where timing matters." }
+    ],
+    "bestrealdoll-alternatives": [
+      { label: "Best sex dolls guide", href: "/learn/best-sex-dolls", description: "Use a practical shortlist framework before choosing a model." },
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order paths and product-specific options." }
+    ],
+    "siliconwives-alternatives": [
+      { label: "TPE vs silicone guide", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material tradeoffs before judging by photos alone." },
+      { label: "Silicone dolls", href: "/shop/silicone", description: "Review premium material listings and detailed product facts." }
+    ],
+    "joylovedolls-alternatives": [
+      { label: "Male dolls", href: "/shop/male-dolls", description: "Compare male body-type listings and build details." },
+      { label: "DollWow finder", href: "/help-me-choose", description: "Narrow the catalog with guided buyer preferences." }
+    ],
+    "rosemarydoll-alternatives": [
+      { label: "TPE dolls", href: "/shop/tpe", description: "Compare TPE listings by size, weight, value, and order path." },
+      { label: "Compare a listing", href: "/compare", description: "Submit another offer for side-by-side review." }
     ]
   };
 
