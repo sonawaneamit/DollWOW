@@ -90,7 +90,7 @@ A compact body can still feel large in some measurements. For collectors, that i
 
 Jesse: Material affects routine care. TPE and silicone are common in this category, but they do not behave the same. Care instructions should come from the product page or the manufacturer guidance, not a generic assumption.
 
-Use the product’s care notes for cleaning, drying, and storage. If the listing does not specify a maintenance method, ask support for the official guidance. That is the part worth checking before you pay, especially if you want to avoid damage from the wrong cleaner, powder, or storage setup.
+Use the product’s care notes for cleaning, drying, and storage. If the listing does not specify a maintenance method, ask support for confirmed guidance. That is the part worth checking before you pay, especially if you want to avoid damage from the wrong cleaner, powder, or storage setup.
 
 ### 5. Decide how much customization you actually need
 

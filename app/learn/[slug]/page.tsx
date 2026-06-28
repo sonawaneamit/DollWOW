@@ -658,6 +658,42 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
+    "wm-dolls-buying-guide": {
+      title: "Compare WM Dolls listings",
+      description: "Use current DollWow product cards to compare WM models by material, size, price, stock path, and customization context.",
+      collectionHref: "/brands/wm-dolls",
+      filters: { brand: "wm" }
+    },
+    "irontech-dolls-buying-guide": {
+      title: "Compare Irontech Dolls listings",
+      description: "Review current Irontech product cards by body type, material, size, stock path, and option context.",
+      collectionHref: "/brands/irontech-dolls",
+      filters: { brand: "irontech" }
+    },
+    "starpery-dolls-buying-guide": {
+      title: "Compare Starpery Dolls listings",
+      description: "Use current Starpery product cards to compare realism-focused builds by material, size, price, and order path.",
+      collectionHref: "/brands/starpery-dolls",
+      filters: { brand: "starpery" }
+    },
+    "zelex-dolls-buying-guide": {
+      title: "Compare Zelex Dolls listings",
+      description: "Review current Zelex product cards by material, measurements, price, stock path, and customization context.",
+      collectionHref: "/brands/zelex-dolls",
+      filters: { brand: "zelex" }
+    },
+    "se-doll-buying-guide": {
+      title: "Compare SE Doll listings",
+      description: "Use current SE Doll product cards to compare material, measurements, finish, and support-confirmed order details.",
+      collectionHref: "/brands/se-doll",
+      filters: { brand: "sedoll" }
+    },
+    "6ye-dolls-buying-guide": {
+      title: "Compare 6YE Dolls listings",
+      description: "Review current 6YE product cards by price, material, size, stock path, and final delivered value.",
+      collectionHref: "/brands/6ye-dolls",
+      filters: { brand: "6ye" }
+    },
     "yourdoll-alternatives": {
       title: "Start with comparable DollWow listings",
       description: "Use live catalog examples to compare material, price, measurements, stock path, and support context before choosing between stores.",
@@ -799,6 +835,30 @@ function relatedCollections(slug: string) {
     "sex-doll-skeleton-options": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings by body and option path." },
       { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Review how feet and skeleton choices interact." }
+    ],
+    "wm-dolls-buying-guide": [
+      { label: "WM Dolls brand hub", href: "/brands/wm-dolls", description: "Compare current DollWow WM listings." },
+      { label: "Custom dolls", href: "/shop/custom", description: "Review option-led factory-order paths." }
+    ],
+    "irontech-dolls-buying-guide": [
+      { label: "Irontech Dolls brand hub", href: "/brands/irontech-dolls", description: "Compare current DollWow Irontech listings." },
+      { label: "Male doll guide", href: "/learn/male-sex-doll-buying-guide", description: "Review male body-type fit and measurements." }
+    ],
+    "starpery-dolls-buying-guide": [
+      { label: "Starpery Dolls brand hub", href: "/brands/starpery-dolls", description: "Compare current DollWow Starpery listings." },
+      { label: "Most realistic guide", href: "/learn/most-realistic-sex-dolls", description: "Review realism factors before choosing." }
+    ],
+    "zelex-dolls-buying-guide": [
+      { label: "Zelex Dolls brand hub", href: "/brands/zelex-dolls", description: "Compare current DollWow Zelex listings." },
+      { label: "Silicone dolls", href: "/shop/silicone", description: "Compare silicone-focused catalog options." }
+    ],
+    "se-doll-buying-guide": [
+      { label: "SE Doll brand hub", href: "/brands/se-doll", description: "Compare current DollWow SE Doll listings." },
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Review material tradeoffs before checkout." }
+    ],
+    "6ye-dolls-buying-guide": [
+      { label: "6YE Dolls brand hub", href: "/brands/6ye-dolls", description: "Compare current DollWow 6YE listings." },
+      { label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value beyond headline price." }
     ],
     "yourdoll-alternatives": [
       { label: "Sex dolls", href: "/shop/sex-dolls", description: "Compare live product listings, filters, and buyer-fit details." },

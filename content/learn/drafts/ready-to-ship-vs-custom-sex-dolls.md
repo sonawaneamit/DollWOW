@@ -154,7 +154,7 @@ A heavy box may require planning for transport, receiving, and storage. This is 
 
 ### 4. Overestimating customization options
 
-A custom sex doll is still limited by the supplier’s build rules. If a feature is not officially supported, it should not be treated as available just because the website mentions it in general terms.
+A custom sex doll is still limited by the supplier’s build rules. If a feature is not supported by the supplier, it should not be treated as available just because the website mentions it in general terms.
 
 ### 5. Skipping privacy questions
 

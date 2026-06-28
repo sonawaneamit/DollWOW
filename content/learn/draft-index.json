@@ -259,5 +259,59 @@
     "author": "alex",
     "category": "Customization",
     "path": "content/learn/drafts/sex-doll-skeleton-options.md"
+  },
+  {
+    "order": 30,
+    "slug": "wm-dolls-buying-guide",
+    "title": "WM Dolls Buying Guide",
+    "primaryKeyword": "wm doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/wm-dolls-buying-guide.md"
+  },
+  {
+    "order": 31,
+    "slug": "irontech-dolls-buying-guide",
+    "title": "Irontech Dolls Buying Guide",
+    "primaryKeyword": "irontech doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/irontech-dolls-buying-guide.md"
+  },
+  {
+    "order": 32,
+    "slug": "starpery-dolls-buying-guide",
+    "title": "Starpery Dolls Buying Guide",
+    "primaryKeyword": "starpery doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/starpery-dolls-buying-guide.md"
+  },
+  {
+    "order": 33,
+    "slug": "zelex-dolls-buying-guide",
+    "title": "Zelex Dolls Buying Guide",
+    "primaryKeyword": "zelex doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/zelex-dolls-buying-guide.md"
+  },
+  {
+    "order": 34,
+    "slug": "se-doll-buying-guide",
+    "title": "SE Doll Buying Guide",
+    "primaryKeyword": "se doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/se-doll-buying-guide.md"
+  },
+  {
+    "order": 35,
+    "slug": "6ye-dolls-buying-guide",
+    "title": "6YE Dolls Buying Guide",
+    "primaryKeyword": "6ye doll",
+    "author": "alex",
+    "category": "Brand Comparisons",
+    "path": "content/learn/drafts/6ye-dolls-buying-guide.md"
   }
 ]

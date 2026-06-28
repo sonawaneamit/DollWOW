@@ -258,7 +258,13 @@ function priority(slug: string) {
     "implanted-hair-vs-wig",
     "standing-feet-sex-doll-guide",
     "body-heating-sex-doll-guide",
-    "sex-doll-skeleton-options"
+    "sex-doll-skeleton-options",
+    "wm-dolls-buying-guide",
+    "irontech-dolls-buying-guide",
+    "starpery-dolls-buying-guide",
+    "zelex-dolls-buying-guide",
+    "se-doll-buying-guide",
+    "6ye-dolls-buying-guide"
   ];
   const index = order.indexOf(slug);
   return index === -1 ? 999 : index;
