@@ -108,6 +108,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             <MarkdownContent markdown={article.body} />
+            <ArticleInstructionalVisual slug={article.slug} />
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
@@ -131,44 +132,51 @@ async function getArticleProductModule(slug: string) {
   return { ...config, products: picks };
 }
 
+function ArticleInstructionalVisual({ slug }: { slug: string }) {
+  const visual = instructionalVisualConfig(slug);
+  if (!visual) return null;
+
+  return (
+    <figure className="mt-12 overflow-hidden rounded-[8px] border border-ink-950/10 bg-white shadow-soft">
+      <Image src={visual.src} alt={visual.alt} width={visual.width} height={visual.height} sizes="(min-width: 768px) 48rem, 100vw" className="h-auto w-full" />
+      <figcaption className="border-t border-ink-950/10 bg-white px-4 py-3 text-sm leading-6 text-ink-700">{visual.caption}</figcaption>
+    </figure>
+  );
+}
+
 function ArticleInfographic({ slug }: { slug: string }) {
   const infographic = infographicConfig(slug);
   if (!infographic) return null;
 
   return (
-    <aside className="mt-12 overflow-hidden rounded-[8px] border border-ink-950/10 bg-ink-950 text-ivory-50 shadow-soft" aria-labelledby={`${slug}-infographic-heading`}>
-      <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="relative min-h-[260px] overflow-hidden bg-[radial-gradient(circle_at_24%_20%,rgba(217,157,107,0.28),transparent_34%),linear-gradient(145deg,rgba(44,20,16,0.92),rgba(8,6,5,1))] p-6">
-          <div className="absolute -right-10 top-8 h-44 w-44 rounded-full border border-gold-300/20" />
-          <div className="absolute bottom-6 right-7 h-32 w-20 rounded-t-full border border-ivory-50/14 bg-ivory-50/[0.04]" />
-          <div className="absolute bottom-6 right-24 h-24 w-16 rounded-t-full border border-gold-300/16 bg-gold-300/[0.08]" />
-          <p className="relative text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{infographic.eyebrow}</p>
-          <h2 id={`${slug}-infographic-heading`} className="relative mt-3 text-2xl font-semibold leading-tight text-ivory-50">
-            {infographic.title}
-          </h2>
-          <p className="relative mt-4 max-w-sm text-sm leading-6 text-ivory-300">{infographic.summary}</p>
-          <div className="relative mt-7 grid grid-cols-2 gap-3">
-            {infographic.stats.map((stat) => (
-              <div key={stat.label} className="rounded-[8px] border border-gold-300/16 bg-ivory-50/[0.06] p-3">
-                <p className="text-lg font-semibold text-gold-200">{stat.value}</p>
-                <p className="mt-1 text-xs leading-5 text-ivory-400">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+    <aside className="tone-card mt-12 overflow-hidden rounded-[8px] p-0 shadow-soft" aria-labelledby={`${slug}-infographic-heading`}>
+      <div className="border-b border-gold-500/14 bg-ivory-50/[0.48] p-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-700">{infographic.eyebrow}</p>
+        <h2 id={`${slug}-infographic-heading`} className="mt-2 text-2xl font-semibold leading-tight text-ink-950">
+          {infographic.title}
+        </h2>
+        <p className="mt-3 text-sm leading-6 text-ink-700">{infographic.summary}</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {infographic.stats.map((stat) => (
+            <div key={stat.label} className="rounded-[8px] border border-gold-500/16 bg-white/60 p-4">
+              <p className="text-2xl font-semibold text-gold-700">{stat.value}</p>
+              <p className="mt-1 text-sm leading-5 text-ink-700">{stat.label}</p>
+            </div>
+          ))}
         </div>
-        <div className="bg-ivory-50 p-5 text-ink-950">
-          <div className="grid gap-3">
-            {infographic.items.map((item, index) => (
-              <div key={item.title} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 rounded-[8px] border border-gold-500/16 bg-white/65 p-4">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-300 text-sm font-semibold text-[#1f120b]">{index + 1}</span>
-                <div>
-                  <h3 className="text-base font-semibold leading-tight text-ink-950">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-ink-700">{item.body}</p>
-                </div>
-              </div>
-            ))}
+      </div>
+      <div className="grid gap-3 p-5">
+        {infographic.items.map((item, index) => (
+          <div key={item.title} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 rounded-[8px] border border-gold-500/14 bg-white/55 p-4">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-300 text-sm font-semibold text-[#1f120b]">{index + 1}</span>
+            <div>
+              <h3 className="text-base font-semibold leading-tight text-ink-950">{item.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-ink-700">{item.body}</p>
+            </div>
           </div>
-          <Link href={infographic.href} className="mt-5 inline-flex rounded-[12px] border border-ink-950/16 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-ink-950/35 hover:bg-ink-950/[0.04]">
+        ))}
+        <div className="pt-1">
+          <Link href={infographic.href} className="inline-flex rounded-[12px] border border-ink-950/16 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-ink-950/35 hover:bg-ink-950/[0.04]">
             {infographic.cta}
           </Link>
         </div>
@@ -282,6 +290,20 @@ function ArticleActions({ slug }: { slug: string }) {
       ) : null}
     </aside>
   );
+}
+
+function instructionalVisualConfig(slug: string) {
+  const map: Record<string, { src: string; alt: string; caption: string; width: number; height: number }> = {
+    "how-to-clean-a-sex-doll": {
+      src: "/images/learn/doll-care-guide-vertical.png",
+      alt: "Six-step doll care guide showing mild wash, gentle cleaning, rinsing, drying, care powder, and dry storage",
+      caption: "A visual care sequence for cleaning, drying, powdering, and storing a doll. Always follow the care instructions for the specific material and product.",
+      width: 1024,
+      height: 1536
+    }
+  };
+
+  return map[slug] ?? null;
 }
 
 type ArticleInfographicConfig = {
