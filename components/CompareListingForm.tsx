@@ -156,7 +156,7 @@ export function CompareListingForm({
       )}
       {error && <p className="text-sm text-danger">{error}</p>}
       <div className="grid gap-2 text-xs text-ivory-500 sm:grid-cols-3">
-        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">We compare the real final deal, not just the base price on the page.</p>
+        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">We compare the real final deal, including add-ons, shipping, and the base price on the page.</p>
         <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">Your screenshot shows the chosen options, extras, and total we need to match.</p>
         <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">If anything is unclear, the request goes to a team review instead of a guess.</p>
       </div>

@@ -258,6 +258,7 @@ function ProductSpecSummary({
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
   const measurementGroups = groupMeasurements(measurements);
+  const relatedPaths = productRelatedPaths(product);
 
   return (
     <section className="pdp-spec-summary" aria-labelledby="product-specs-heading">
@@ -329,10 +330,90 @@ function ProductSpecSummary({
               ))}
             </div>
           )}
+
+          {relatedPaths.length ? (
+            <section className="tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">Related buying paths</p>
+              <h3 id="product-related-paths-heading" className="mt-2 text-lg font-semibold text-ivory-50">
+                Compare this doll in context
+              </h3>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {relatedPaths.map((path) => (
+                  <Link
+                    key={path.href}
+                    href={path.href}
+                    className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.045] p-3 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/50 hover:bg-ivory-50/[0.07]"
+                  >
+                    {path.label}
+                    <span className="mt-1 block text-xs font-normal leading-5 text-ivory-500">{path.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       </div>
     </section>
   );
+}
+
+function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
+  const paths: Array<{ label: string; href: string; description: string }> = [
+    { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare this listing against the full DollWow catalog." }
+  ];
+  const material = String(product.extended.material || "").toLowerCase();
+
+  if (material.includes("tpe")) {
+    paths.push(
+      { label: "TPE dolls", href: "/shop/tpe", description: "Compare material, weight, price, and care tradeoffs." },
+      { label: "TPE vs silicone guide", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Review material differences before checkout." }
+    );
+  }
+
+  if (material.includes("silicone")) {
+    paths.push(
+      { label: "Silicone dolls", href: "/shop/silicone", description: "Compare premium material builds and sculpt detail." },
+      { label: "Most realistic guide", href: "/learn/most-realistic-sex-dolls", description: "Review realism factors beyond photos." }
+    );
+  }
+
+  if (product.extended.bodyType === "male") {
+    paths.push(
+      { label: "Male dolls", href: "/shop/male-dolls", description: "Compare male body-type listings and measurements." },
+      { label: "Male doll guide", href: "/learn/male-sex-doll-buying-guide", description: "Review body scale, material, and option checks." }
+    );
+  }
+
+  if (product.extended.heightCm && product.extended.heightCm < 155) {
+    paths.push(
+      { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact builds, storage, and handling." },
+      { label: "Mini doll guide", href: "/learn/mini-sex-dolls", description: "Review size, privacy, and storage tradeoffs." }
+    );
+  }
+
+  if (product.extended.stockStatus === "ready_to_ship") {
+    paths.push(
+      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare timing, stock path, and fixed configuration." },
+      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand the order path tradeoffs." }
+    );
+  } else {
+    paths.push(
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order paths and product-specific options." },
+      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand timing, options, and approval steps." }
+    );
+  }
+
+  paths.push(
+    { label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value, not only the base price." },
+    { label: "Compare a listing", href: `/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(productPublicTitle(product))}`, description: "Ask DollWow to review another offer before checkout." }
+  );
+
+  const seen = new Set<string>();
+  return paths.filter((path) => {
+    if (seen.has(path.href)) return false;
+    seen.add(path.href);
+    return true;
+  }).slice(0, 8);
 }
 
 function formatHeadModel(value?: string) {

@@ -135,7 +135,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
           <MiniTrustCard
             icon={Truck}
             title="Real total review"
-            body="We look at add-ons, shipping, and promos too, so the review tracks the real delivered deal, not just the base page."
+            body="We look at add-ons, shipping, and promos too, so the review tracks the real delivered deal beyond the base page."
           />
         </div>
 
