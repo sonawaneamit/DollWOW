@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
-import { ProductCard } from "@/components/ProductCard";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { compactFilters, filterProducts, requiresCatalogWideFetch, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
+import { productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildArticleBreadcrumbStructuredData,
   buildArticleFaqStructuredData,
@@ -17,6 +17,7 @@ import {
   learnArticleUrl
 } from "@/lib/learn/content";
 import { getProducts } from "@/lib/shopify/storefront";
+import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
 export function generateStaticParams() {
@@ -133,23 +134,69 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
   if (!module || !module.products.length) return null;
 
   return (
-    <aside className="mt-12 rounded-[8px] border border-gold-500/18 bg-ink-950 p-5 shadow-soft">
+    <aside className="tone-card mt-12 rounded-[8px] p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Catalog examples</p>
-          <h2 className="mt-2 text-2xl font-semibold leading-tight text-ivory-50">{module.title}</h2>
-          <p className="mt-3 text-sm leading-6 text-ivory-300">{module.description}</p>
+          <p className="text-sm uppercase tracking-[0.16em] text-gold-400">Catalog examples</p>
+          <h2 className="mt-2 text-2xl font-semibold leading-tight text-ink-950">{module.title}</h2>
+          <p className="mt-3 text-sm leading-6 text-ink-700">{module.description}</p>
         </div>
-        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/24 px-4 py-2 text-sm font-semibold text-gold-200 transition hover:border-gold-300/50 hover:text-gold-100">
+        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/20 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-gold-500/40 hover:bg-ivory-50/[0.45]">
           View collection
         </Link>
       </div>
-      <div className="mt-5 grid gap-5 md:grid-cols-3">
+      <div className="mt-5 grid gap-3">
         {module.products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ArticleProductExampleCard key={product.id} product={product} />
         ))}
       </div>
     </aside>
+  );
+}
+
+function ArticleProductExampleCard({ product }: { product: Product }) {
+  const displayTitle = productPublicTitle(product);
+  const image = product.featuredImage ?? product.images[0] ?? null;
+  const price = product.priceRange.minVariantPrice;
+  const specs = [
+    product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
+    product.extended.material,
+    product.extended.cupSize
+  ].filter((spec): spec is string => Boolean(spec));
+
+  return (
+    <article className="grid gap-4 rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.35] p-3 sm:grid-cols-[112px_minmax(0,1fr)]">
+      <Link href={`/products/${product.handle}`} className="relative aspect-square overflow-hidden rounded-[8px] bg-ink-950/10">
+        {image ? (
+          <Image src={image.url} alt={displayTitle} fill sizes="112px" className="object-cover" />
+        ) : (
+          <span className="flex h-full items-center justify-center p-3 text-center text-xs font-semibold text-ink-700">{displayTitle}</span>
+        )}
+      </Link>
+      <div className="min-w-0">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">{product.extended.brand ?? product.vendor}</p>
+        <h3 className="mt-1 text-base font-semibold leading-snug text-ink-950">
+          <Link href={`/products/${product.handle}`} className="transition hover:text-gold-700">
+            {displayTitle}
+          </Link>
+        </h3>
+        {specs.length ? (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {specs.map((spec) => (
+              <span key={spec} className="rounded-full border border-gold-500/14 px-2.5 py-1 text-xs font-semibold text-ink-700">
+                {spec}
+              </span>
+            ))}
+          </div>
+        ) : null}
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <p className="text-lg font-semibold text-ink-950">{formatMoney(price.amount, price.currencyCode)}</p>
+          <GoldButton href={`/products/${product.handle}`} variant="primary" className="min-h-0 px-4 py-2">
+            View doll
+          </GoldButton>
+        </div>
+      </div>
+    </article>
   );
 }
 
