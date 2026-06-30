@@ -24,6 +24,13 @@ export const metadata: Metadata = {
     template: "%s | DollWow"
   },
   description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and specialist support.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" }
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }]
+  },
   openGraph: {
     images: [
       {
