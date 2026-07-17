@@ -1,7 +1,10 @@
 import { CompareListingForm } from "@/components/CompareListingForm";
 import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 
-export const metadata = { title: "Price Match Request" };
+export const metadata = {
+  title: "Sex Doll Price Match",
+  description: "Request a DollWow price match using the competitor link, final configured price, and cart screenshot. We compare the same doll, options, shipping, and promotions."
+};
 
 export default async function ComparePage({
   searchParams
@@ -32,7 +35,7 @@ export default async function ComparePage({
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <QuickFact title="Final total" body="We review the total after options, extras, and promos." />
             <QuickFact title="Cart screenshot" body="A clear cart screenshot helps us verify the exact setup faster." />
-            <QuickFact title="Manual review when needed" body="If something is unclear, a real person checks it before we promise anything." />
+            <QuickFact title="A real answer" body="If anything is unclear, a DollWow specialist checks it and replies by email." />
           </div>
           <div className="mt-7">
             <CompareListingForm targetProductHandle={targetProductHandle} targetProductTitle={targetProductTitle} />

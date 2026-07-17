@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "What happens after I order a custom build?",
-    answer: "Our team reviews the selected options, checks compatibility, confirms timing, and follows up if anything needs clarification before production begins."
+    answer: "A DollWow specialist checks your choices, confirms the expected timing, and contacts you if two options cannot be combined. Production begins after the order details are clear."
   },
   {
     question: "Do I approve factory photos before shipment?",
@@ -41,7 +41,7 @@ export function ProductFAQ() {
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Private Questions</p>
           <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Before you ask</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">The things people usually want to know before placing a private, high-consideration order.</p>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">Clear answers to the questions customers ask most before ordering.</p>
         </div>
         <GoldButton href="/support" variant="secondary" className="shrink-0">
           <MessageCircle className="h-4 w-4" />

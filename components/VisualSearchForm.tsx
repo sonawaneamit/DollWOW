@@ -102,7 +102,7 @@ export function VisualSearchForm() {
               onChange={(event) => setImageFile(event.target.files?.[0] || null)}
               className="block w-full text-sm text-ivory-200 file:mr-4 file:rounded-full file:border-0 file:bg-gold-500/15 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gold-100 hover:file:bg-gold-500/25"
             />
-            <p className="mt-2 text-xs text-ivory-500">JPG, PNG, or WebP. We store it briefly so the visual-search provider can inspect it.</p>
+            <p className="mt-2 text-xs text-ivory-500">JPG, PNG, or WebP. Your image is stored briefly while we search for a match.</p>
             {fileSummary ? <p className="mt-2 text-sm text-ivory-300">{fileSummary}</p> : null}
           </div>
         </label>

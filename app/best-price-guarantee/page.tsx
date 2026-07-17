@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Best Price Guarantee"
+  title: "Sex Doll Best Price Guarantee",
+  description: "Found the same sex doll and configuration for less? Send DollWow the final offer for a price match before purchase or within 30 days of your order."
 };
 
 export default function BestPriceGuaranteePage() {
   return (
     <PolicyLayout
       eyebrow="Best price support"
-      title="Price-match review with full deal context."
-      intro="If you find the same configuration cheaper within 30 days of purchase, DollWow reviews the listing and refunds the difference when it qualifies. We check that it is really the same product, that shipping and freebies do not change the total, and that the seller looks legitimate before approving price support."
+      title="Find the same doll for less? Send it to us."
+      intro="We compare the complete offer, including the doll, selected options, extras, shipping, and final price. If the same configuration qualifies, we will match it before purchase or refund the difference within 30 days of your DollWow order."
       ctas={[
         { label: "Compare a listing", href: "/compare", primary: true },
         { label: "Buyer protection", href: "/buyer-protection" }
@@ -29,12 +30,12 @@ export default function BestPriceGuaranteePage() {
           body: "If the same configuration shows up cheaper within 30 days of your purchase, send us the listing and we will review it for a refund of the difference."
         },
         {
-          title: "Trusted-vendor bias",
-          body: "Approved vendors and well-known industry sellers are more likely to move through fast review, because their pricing and fulfillment patterns are easier to validate."
+          title: "Trusted sellers",
+          body: "Listings from established, authorized sellers are usually faster to verify."
         },
         {
-          title: "Team review fallback",
-          body: "If the match is unclear or the promo math is too aggressive, we create a manual review instead of forcing a risky automatic decision."
+          title: "When we need more details",
+          body: "If the product, selected options, or final price is unclear, we will email you before deciding."
         }
       ]}
       sections={[
@@ -54,7 +55,7 @@ export default function BestPriceGuaranteePage() {
             "The listing is from an unverified or obviously risky seller.",
             "The promo depends on vague bundles, hidden coupons, or hard-to-value freebies.",
             "The other page does not look like the same product once body, head, or material are checked closely.",
-            "The deal would require ignoring supplier or margin guardrails that are part of responsible pricing."
+            "The requested price is below what we can responsibly offer."
           ]
         }
       ]}

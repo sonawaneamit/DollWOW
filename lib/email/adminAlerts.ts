@@ -1,6 +1,7 @@
 import { env } from "@/lib/utils/env";
 import { formatMoney } from "@/lib/utils/currency";
 import type { ComparisonRequest } from "@/types/comparison";
+import { sendEmail } from "./sendEmail";
 
 type SupportLeadAlert = {
   id?: string | null;
@@ -11,18 +12,15 @@ type SupportLeadAlert = {
 };
 
 export async function sendSupportLeadAdminAlert(lead: SupportLeadAlert) {
-  if (!env.CLOUDFLARE_ACCOUNT_ID || !env.CLOUDFLARE_EMAIL_API_TOKEN) return;
-
   try {
     const appUrl = (env.ADMIN_APP_URL || env.NEXT_PUBLIC_SITE_URL).replace(/\/$/, "");
     const recipient = env.ADMIN_ALERT_EMAIL || "hello@dollwow.com";
-    const from = env.ADMIN_ALERT_FROM || recipient;
     const isBrandLead = lead.sourceFlow === "brand-partnership" || lead.sourceFlow === "supplier";
     const subject = isBrandLead
       ? `New DollWow brand partnership message${lead.name ? ` from ${lead.name}` : ""}`
       : `New DollWow support request${lead.name ? ` from ${lead.name}` : ""}`;
     const sourceLabel = isBrandLead ? "Brand partnership" : lead.sourceFlow;
-    const adminHref = isBrandLead ? appUrl : `${appUrl}/ops/price-match`;
+    const adminRow = isBrandLead ? `<p><strong>Website:</strong> <a href="${appUrl}">${escapeHtml(appUrl)}</a></p>` : "";
     const html = `
       <h2>${isBrandLead ? "New DollWow brand partnership message" : "New DollWow support request"}</h2>
       <p><strong>Source:</strong> ${escapeHtml(sourceLabel)}</p>
@@ -30,7 +28,7 @@ export async function sendSupportLeadAdminAlert(lead: SupportLeadAlert) {
       <p><strong>Email:</strong> <a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></p>
       <p><strong>Message:</strong></p>
       <p>${escapeHtml(lead.question).replaceAll("\n", "<br />")}</p>
-      <p><strong>Admin:</strong> <a href="${adminHref}">${escapeHtml(adminHref)}</a></p>
+      ${adminRow}
     `;
     const text = [
       isBrandLead ? "New DollWow brand partnership message" : "New DollWow support request",
@@ -39,34 +37,17 @@ export async function sendSupportLeadAdminAlert(lead: SupportLeadAlert) {
       `Email: ${lead.email}`,
       "",
       lead.question,
-      "",
-      `Admin site: ${adminHref}`
+      ...(isBrandLead ? ["", `Website: ${appUrl}`] : [])
     ].join("\n");
 
-    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/email/sending/send`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.CLOUDFLARE_EMAIL_API_TOKEN}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        to: recipient,
-        from,
-        subject,
-        html,
-        text
-      })
-    });
-    if (!response.ok) {
-      throw new Error(`Cloudflare email failed: ${response.status} ${await response.text()}`);
-    }
+    return await sendEmail({ to: recipient, replyTo: lead.email, subject, html, text });
   } catch (error) {
     console.error("Support lead admin alert failed", error);
+    return { delivered: false, provider: "none" as const };
   }
 }
 
 export async function sendPriceMatchAdminAlert(request: ComparisonRequest) {
-  if (!env.CLOUDFLARE_ACCOUNT_ID || !env.CLOUDFLARE_EMAIL_API_TOKEN) return;
   try {
     const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
     const appUrl = (env.ADMIN_APP_URL || env.NEXT_PUBLIC_SITE_URL).replace(/\/$/, "");
@@ -75,7 +56,6 @@ export async function sendPriceMatchAdminAlert(request: ComparisonRequest) {
     const targetProductUrl = request.targetProductHandle ? `${appUrl}/products/${request.targetProductHandle}` : null;
     const subject = `New price match request${request.targetProductTitle ? `: ${request.targetProductTitle}` : ""}`;
     const recipient = env.ADMIN_ALERT_EMAIL || "hello@dollwow.com";
-    const from = env.ADMIN_ALERT_FROM || recipient;
     const quotedCurrency = request.quotedCurrency || request.parsed?.currency || "USD";
     const quotedPrice = request.quotedPrice ? formatMoney(request.quotedPrice, quotedCurrency) : "Not provided";
     const requestedDiscount =
@@ -104,23 +84,7 @@ export async function sendPriceMatchAdminAlert(request: ComparisonRequest) {
       `Customer result: ${resultUrl}`
     ].join("\n");
 
-    const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/email/sending/send`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.CLOUDFLARE_EMAIL_API_TOKEN}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        to: recipient,
-        from,
-        subject,
-        html,
-        text
-      })
-    });
-    if (!response.ok) {
-      throw new Error(`Cloudflare email failed: ${response.status} ${await response.text()}`);
-    }
+    await sendEmail({ to: recipient, replyTo: request.customerEmail, subject, html, text });
   } catch (error) {
     // ponytail: email alerts are best-effort; queue data already lives in Supabase
     console.error("Price match admin alert failed", error);
@@ -132,10 +96,9 @@ export async function sendPriceMatchCustomerReply(input: {
   productUrl?: string;
   isApproved: boolean;
 }) {
-  if (!env.CLOUDFLARE_ACCOUNT_ID || !env.CLOUDFLARE_EMAIL_API_TOKEN || !input.request.customerEmail) return;
+  if (!input.request.customerEmail) return;
 
   const recipient = input.request.customerEmail;
-  const from = env.ADMIN_ALERT_FROM || env.ADMIN_ALERT_EMAIL || "hello@dollwow.com";
   const quotedCurrency = input.request.quotedCurrency || input.request.parsed?.currency || "USD";
   const quotedPrice = input.request.quotedPrice ? formatMoney(input.request.quotedPrice, quotedCurrency) : "your quoted total";
   const subject = input.isApproved
@@ -174,23 +137,9 @@ export async function sendPriceMatchCustomerReply(input: {
     .filter(Boolean)
     .join("\n");
 
-  const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/email/sending/send`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.CLOUDFLARE_EMAIL_API_TOKEN}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      to: recipient,
-      from,
-      subject,
-      html,
-      text
-    })
-  });
-
-  if (!response.ok) {
-    throw new Error(`Cloudflare email failed: ${response.status} ${await response.text()}`);
+  const delivery = await sendEmail({ to: recipient, replyTo: env.ADMIN_ALERT_EMAIL || "hello@dollwow.com", subject, html, text });
+  if (!delivery.delivered) {
+    throw new Error("Customer email could not be delivered.");
   }
 }
 

@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "How Ordering Works"
+  title: "How to Order a Sex Doll",
+  description: "Learn how to choose, customize, approve, and receive a sex doll from DollWow with private checkout, factory photos, discreet shipping, and tracking."
 };
 
 export default function HowOrderingWorksPage() {
   return (
     <PolicyLayout
       eyebrow="How ordering works"
-      title="A private, step-by-step order."
-      intro="This category is easier to trust when every step is visible. DollWow keeps ordering simple: choose the build, review the details, approve the final look where available, and receive the order discreetly."
+      title="From choosing your doll to discreet delivery."
+      intro="You should always know what happens next. Choose your doll, review the available options, approve factory photos for a custom order, and receive tracking when it ships."
       ctas={[
         { label: "Browse the catalog", href: "/shop", primary: true },
         { label: "Help me choose", href: "/help-me-choose" }
@@ -31,11 +32,11 @@ export default function HowOrderingWorksPage() {
           ]
         },
         {
-          title: "3. Team review before the order moves forward",
+          title: "3. We confirm your order",
           items: [
-            "We review timing, configuration, and any support notes after checkout.",
-            "If something looks unclear, we reach out before the order moves deeper into fulfillment.",
-            "Ready-to-ship dolls are prepared for warehouse release, while custom builds move into production after review."
+            "After checkout, we confirm your selected options and expected timing.",
+            "If anything is unclear or incompatible, we contact you before production or shipment.",
+            "Ready-to-ship dolls are prepared at the warehouse. Custom dolls move into production after the order details are confirmed."
           ]
         },
         {
@@ -43,7 +44,7 @@ export default function HowOrderingWorksPage() {
           items: [
             "Where available, custom builds include detailed factory photos and videos before shipment.",
             "Cosmetic revisions can be requested until the final visual build is approved.",
-            "Structural re-spec work is treated differently from visual revision requests."
+            "Changes to height, body shape, cup size, skeleton, or other structural features must be requested before production begins."
           ]
         },
         {

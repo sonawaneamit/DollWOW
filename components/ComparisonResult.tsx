@@ -25,15 +25,15 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
     ...(request.parsed?.freebies ?? [])
   ].filter(Boolean) as string[];
   const nextStepTitle =
-    reviewState === "approved" ? "Approved and emailed" : allowed ? "Looks matchable" : request.customerEmail ? "Under review" : "Needs a team review";
+    reviewState === "approved" ? "Approved and emailed" : allowed ? "Looks matchable" : request.customerEmail ? "We’re checking it" : "More details needed";
   const nextStepCopy =
     reviewState === "approved"
       ? "Your approved result has been emailed. If a code was issued, use it on the matched DollWow product at checkout."
       : allowed
         ? "This listing looks close enough to move forward. Review the DollWow match and continue when ready."
         : request.customerEmail
-          ? "Your request is in the review queue. We’ll check the real total, any add-ons, and promo details before replying."
-          : "This request needs a team review before we can promise a match. Leave an email next time so we can send the result back.";
+          ? "A DollWow specialist will check the final total, selected extras, shipping, and any promotion before replying."
+          : "We need a few more details before confirming the match. Include your email so we can send you the result.";
   const heroTone =
     reviewState === "approved"
       ? "border-stock/30 bg-stock/10 text-stock"
@@ -45,7 +45,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
       ? { label: "Approved", detail: "Email sent", icon: MailCheck }
       : allowed
         ? { label: "Looks good", detail: "Ready for next step", icon: BadgeCheck }
-        : { label: "Needs review", detail: "Team check", icon: AlertTriangle };
+        : { label: "Being checked", detail: "We’ll confirm by email", icon: AlertTriangle };
   const StatusIcon = statusBadge.icon;
 
   return (
@@ -116,7 +116,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
       <aside className="rounded-[20px] border border-gold-500/16 bg-gradient-to-br from-rose-950/25 via-ink-900/82 to-ink-950/95 p-6">
         <div className="flex items-center gap-3">
           {reviewState === "approved" ? <MailCheck className="h-6 w-6 text-stock" /> : allowed ? <BadgeCheck className="h-6 w-6 text-stock" /> : <AlertTriangle className="h-6 w-6 text-warn" />}
-          <h2 className="text-2xl font-semibold text-ivory-50">{reviewState === "approved" ? "Approved" : allowed ? "Looks good so far" : "Team review in progress"}</h2>
+          <h2 className="text-2xl font-semibold text-ivory-50">{reviewState === "approved" ? "Approved" : allowed ? "Looks good so far" : "We’re checking your request"}</h2>
         </div>
 
         <div className="mt-4 rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
@@ -261,7 +261,7 @@ function simplifyReason(reason: string) {
   if (normalized.includes("configured-cart screenshot")) return "You included a cart screenshot, so the team needs to review the final total.";
   if (normalized.includes("quoted price was") && normalized.includes("could not be verified")) return "We could not confirm that exact price from the page alone.";
   if (normalized.includes("page scrape found") && normalized.includes("does not closely match")) return "The price we found on the page does not line up with the total you entered.";
-  if (normalized.includes("vendor is not approved")) return "This seller still needs a manual review.";
+  if (normalized.includes("vendor is not approved")) return "We need to verify this seller before confirming a match.";
   if (normalized.includes("competitor total price is not clear")) return "The final competitor total is not fully clear yet.";
   if (normalized.includes("product is not available for checkout")) return "The matching DollWow product is not currently available for checkout.";
   if (normalized.includes("match needs a team check")) return "A team member needs to review this request.";

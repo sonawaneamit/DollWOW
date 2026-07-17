@@ -15,18 +15,18 @@ const authorEntries = [
 ] as const;
 
 const reviewStandards = [
-  "Product, price, stock, option, shipping, warranty, and supplier claims are checked against DollWow catalog data, supplier materials, and published store policies before publication.",
-  "When a detail depends on live inventory, warehouse confirmation, supplier approval, or a specific custom build, we make that clear instead of treating it as universal.",
-  "Learning Center content avoids fake customer stories, fake reviews, invented product examples, and unsupported supplier authorization claims.",
+  "Product, price, availability, option, shipping, and warranty claims are checked against current catalog records, manufacturer documents, and published DollWow policies before publication.",
+  "When a detail depends on live inventory, warehouse confirmation, or a specific custom build, we say so instead of presenting it as universal.",
+  "Learning Center articles do not use fake customer stories, fake reviews, or unsupported authorization claims.",
   "AI tools may support drafting, editing, and visual concepts, but published product and policy claims are reviewed against DollWow-controlled data or approved source material.",
   "Health, care, legal, and safety topics are informational. They are not a substitute for medical, therapeutic, legal, or local compliance advice."
 ];
 
 const accuracyStandards = [
   "Exact prices come from the live catalog or a reviewed product source.",
-  "Delivery timing is written carefully because in-stock items, custom builds, supplier processing, and freight handling can differ.",
+  "Delivery timing is written carefully because warehouse dolls, custom builds, and international shipping can differ.",
   "Editorial illustrations are used to explain buying concepts. Product photography and product pages are the place to inspect the actual item.",
-  "Supplier, brand, and authorization details are included only when DollWow has a reviewed source for them.",
+  "Brand and authorization details are included only when DollWow has reliable documentation for them.",
   "Contributor biographies explain who is writing or reviewing guidance without presenting contributors as company founders."
 ];
 

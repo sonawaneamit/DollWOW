@@ -64,7 +64,7 @@ export function Footer() {
               />
             </Link>
             <p className="mt-3 max-w-md text-sm leading-6 text-ivory-400">
-              A premium storefront for comparing, customizing, and ordering with discreet checkout, clear timelines, and support that stays useful.
+              Compare models, review custom options, and order with discreet checkout, clear timelines, and responsive support.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <Link href="/shop" className="rounded-[14px] border border-gold-500/18 px-3 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">

@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Shipping Protection"
+  title: "Discreet Sex Doll Shipping Protection",
+  description: "Learn how DollWow handles plain packaging, tracking, lost shipments, misdelivery, transit damage, repair kits, and replacement support."
 };
 
 export default function ShippingProtectionPage() {
   return (
     <PolicyLayout
       eyebrow="Shipping protection"
-      title="Clear protection from dispatch to delivery."
-      intro="Shipping protection means you should know when to expect tracking and what to do if delivery goes wrong. We keep the process discreet, documented, and easy to follow."
+      title="Discreet, tracked shipping with help when you need it."
+      intro="Your doll ships in plain packaging, and tracking is sent as soon as the carrier receives it. If a package is lost, misdelivered, or damaged in transit, contact us within 24 hours of delivery so we can help."
       ctas={[
         { label: "Buyer protection", href: "/buyer-protection", primary: true },
         { label: "Shipping guide", href: "/shipping" }
@@ -29,8 +30,8 @@ export default function ShippingProtectionPage() {
           body: "If transit damage happens, report it within 24 hours of delivery so we can review repair-kit support or replacement options."
         },
         {
-          title: "Loss and misdelivery review",
-          body: "If a package is delayed, lost, or misdelivered, our team can review the shipping record and start the next resolution step."
+          title: "Lost or misdelivered orders",
+          body: "If a package is delayed, lost, or delivered to the wrong place, we check the carrier record and help arrange the appropriate resolution."
         }
       ]}
       sections={[
@@ -40,7 +41,7 @@ export default function ShippingProtectionPage() {
             "Lost or stalled shipments after dispatch.",
             "Material shipping damage visible at delivery or unboxing.",
             "Misdelivery or delivery record problems that need carrier review.",
-            "A documented shipping issue where the customer needs one clear answer instead of being passed around."
+            "One DollWow contact to help you through the claim."
           ]
         },
         {
@@ -64,7 +65,7 @@ export default function ShippingProtectionPage() {
           items: [
             "Packaging is plain and privacy-conscious by default.",
             "Tracking is shared after shipment activation, not before carrier handoff.",
-            "If additional packaging upgrades become available by supplier or lane, we will show them clearly instead of implying they are universal."
+            "Available packaging or shipping upgrades are shown on the product page or confirmed before payment."
           ]
         }
       ]}

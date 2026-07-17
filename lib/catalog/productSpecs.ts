@@ -123,7 +123,7 @@ export function productMeasurementSpecs(product: Product): DisplaySpec[] {
     const normalized = normalizeMeasurementLabel(label);
     const value = values.get(normalized);
     if (value) return { label: normalized, value };
-    if (CRITICAL_MEASUREMENT_LABELS.has(normalized)) return { label: normalized, value: "Confirm with team" };
+    if (CRITICAL_MEASUREMENT_LABELS.has(normalized)) return { label: normalized, value: "Ask us" };
     return null;
   }).filter((spec): spec is DisplaySpec => Boolean(spec));
 }
@@ -195,10 +195,10 @@ function productFallbackIntro(product: Product) {
   if (material) specParts.push(phraseWithArticle(material.toLowerCase(), "build"));
   const specPhrase = joinNatural(specParts);
   const customLine = product.extended.customAvailable === false
-    ? "The page shows the exact setup included in the base configuration."
+    ? "The listed configuration is sold as shown."
     : product.extended.stockStatus === "ready_to_ship"
-      ? "Warehouse timing stays upfront so you can compare the base setup, measurements, and shipping before checkout."
-      : "The page starts from the factory setup, then shows option, timing, and measurement details before checkout.";
+      ? "Review the included configuration, measurements, and shipping timing before checkout."
+      : "Review the included configuration, available options, timing, and measurements before checkout.";
 
   if (specPhrase) {
     return `${leadName} is a ${availability} ${brand} ${bodyLabel} with ${specPhrase}. ${customLine}`;

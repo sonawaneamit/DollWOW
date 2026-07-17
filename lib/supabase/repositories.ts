@@ -359,7 +359,7 @@ export async function saveSupportLead(input: {
   const supabase = getSupabaseServerClient();
   if (!supabase) return { id: crypto.randomUUID(), ...input };
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("support_leads")
     .insert({
       source_flow: input.sourceFlow,
@@ -371,6 +371,10 @@ export async function saveSupportLead(input: {
     })
     .select("id")
     .single();
+
+  if (error) {
+    throw new Error(`Could not save support request: ${error.message}`);
+  }
 
   return data;
 }

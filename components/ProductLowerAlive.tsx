@@ -502,7 +502,7 @@ function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   }
 
   return [
-    { label: "Order placed", detail: "Your build details are captured as a private order note. Card shows a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
+    { label: "Order placed", detail: "We save your selected options and send a private confirmation. Your payment statement uses a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
     { label: "Specialist QC review", detail: "A real person checks compatibility, pricing, timing, and order notes before anything is made.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
     { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Sparkles className="h-5 w-5" /> },
     {

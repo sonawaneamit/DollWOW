@@ -3,7 +3,10 @@ import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { quizAnswersFromParams } from "@/lib/quiz/answers";
 import { BadgeCheck, Clock, Ruler, ShieldCheck } from "lucide-react";
 
-export const metadata = { title: "Help Me Choose" };
+export const metadata = {
+  title: "Help Me Choose a Sex Doll",
+  description: "Find realistic sex dolls that fit your preferred size, material, budget, delivery timing, and customization needs with the DollWow guided quiz."
+};
 
 const quickSignals = [
   { title: "Size and weight", copy: "We factor in height, weight, and storage comfort.", icon: Ruler },
@@ -24,8 +27,8 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
             Find a practical shortlist without guessing.
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-7 text-ivory-400">
-            Answer a few buying questions and DollWow will suggest dolls to review first. No awkward personal questions,
-            no fake “perfect match,” just useful filters for budget, size, material, timing, and customization.
+            Answer a few simple questions and we’ll create a shortlist based on your budget, preferred size, material,
+            delivery timing, and customization needs. You can change any answer before viewing your matches.
           </p>
         </div>
         <aside className="space-y-4">

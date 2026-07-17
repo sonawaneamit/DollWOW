@@ -65,14 +65,14 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
               <tr>
                 <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
                 <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">What to check</th>
-                <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWow path</th>
+                <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">How DollWow helps</th>
               </tr>
             </thead>
             <tbody>
               {[
                 ["Model fit", "Compare height, weight, measurements, body type, and material before judging the photos.", "Use filters and product pages to compare facts across current listings."],
-                ["Custom options", "Options can vary by body, head, material, and supplier rules.", "Ask support to confirm product-specific options and conflicts before checkout."],
-                ["Final cost", "Base price can change with options, shipping path, stock status, and support-confirmed details.", "Use the price-match and cost guide paths before ordering."]
+                ["Custom options", "Available choices can vary by body, head, and material.", "Each product page shows model-specific options, prices, and known conflicts."],
+                ["Final cost", "The starting price can change when you add custom options or accessories.", "The configurator updates the price as you build, and our price-match team can check a competitor quote."]
               ].map(([factor, check, path]) => (
                 <tr key={factor} className="border-b border-gold-500/10 last:border-b-0">
                   <td className="px-5 py-4 font-semibold text-ivory-100">{factor}</td>

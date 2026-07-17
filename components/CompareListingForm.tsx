@@ -137,7 +137,7 @@ export function CompareListingForm({
             onChange={(event) => setScreenshotFile(event.target.files?.[0] || null)}
             className="mt-3 block w-full text-sm text-ivory-200 file:mr-4 file:rounded-full file:border-0 file:bg-gold-500/15 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gold-100 hover:file:bg-gold-500/25"
           />
-          <p className="mt-2 text-xs text-ivory-500">JPG, PNG, or WebP. This lets the team verify the configured quote instead of guessing from the product page.</p>
+          <p className="mt-2 text-xs text-ivory-500">JPG, PNG, or WebP. This helps us verify the exact configuration and final total.</p>
           {fileSummary ? <p className="mt-2 text-sm text-ivory-300">{fileSummary}</p> : null}
         </div>
       </label>
@@ -156,9 +156,9 @@ export function CompareListingForm({
       )}
       {error && <p className="text-sm text-danger">{error}</p>}
       <div className="grid gap-2 text-xs text-ivory-500 sm:grid-cols-3">
-        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">We compare the real final deal, including add-ons, shipping, and the base price on the page.</p>
-        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">Your screenshot shows the chosen options, extras, and total we need to match.</p>
-        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">If anything is unclear, the request goes to a team review instead of a guess.</p>
+        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">We compare the product, options, extras, shipping, and final price.</p>
+        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">Upload the cart summary so we can verify the same configuration.</p>
+        <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">If we need more information, we will email you before approving the match.</p>
       </div>
       <GoldButton className="w-full" disabled={loading}>
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}

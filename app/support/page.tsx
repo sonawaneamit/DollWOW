@@ -5,7 +5,10 @@ import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { SupportLeadForm } from "@/components/SupportLeadForm";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 
-export const metadata = { title: "Support" };
+export const metadata = {
+  title: "Sex Doll Buying Help",
+  description: "Get private, personal help with sex doll sizing, materials, customization, delivery, price matching, and product comparisons from DollWow."
+};
 
 export default function SupportPage() {
   return (
@@ -16,7 +19,7 @@ export default function SupportPage() {
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Private help from our team</h1>
           <p className="mt-3 text-ivory-400">Ask about delivery, size, weight, options, price match, or a custom order before checkout.</p>
           <div className="mt-6">
-            <TrustLogoStrip compact />
+            <TrustLogoStrip compact eager />
           </div>
         </div>
         <InfoVisualPanel
@@ -44,10 +47,10 @@ export default function SupportPage() {
         </div>
         <div className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
           <Phone className="h-6 w-6 text-gold-400" />
-          <h2 className="mt-4 text-xl font-semibold text-ivory-50">Call request</h2>
-          <p className="mt-2 text-sm text-ivory-400">Phone appointments can be added here once the launch number is ready.</p>
+          <h2 className="mt-4 text-xl font-semibold text-ivory-50">Prefer a call?</h2>
+          <p className="mt-2 text-sm text-ivory-400">Send us a note with your question and the best way to reach you. We can arrange a private follow-up when needed.</p>
           <div className="mt-4">
-            <GoldButton href="/compare" variant="secondary">Compare first</GoldButton>
+            <GoldButton href="mailto:hello@dollwow.com?subject=DollWow%20call%20request" variant="secondary">Email to schedule</GoldButton>
           </div>
         </div>
       </div>

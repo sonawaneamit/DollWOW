@@ -144,8 +144,7 @@ export function CartPageClient() {
             </div>
           ) : null}
           <p className="mt-5 text-sm leading-6 text-ivory-500">
-            Product pages send you straight to secure Shopify checkout. This page simply saves your latest checkout link
-            so you can get back to it.
+            Your latest checkout is saved here so you can review the product, return to shopping, or continue securely.
           </p>
         </div>
       </div>

@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
-export const metadata: Metadata = { title: "Returns and Replacements" };
+export const metadata: Metadata = {
+  title: "Sex Doll Returns and Replacements",
+  description: "Read DollWow rules for custom sex doll returns, delivery damage, minor repairs, replacements, factory photo approval, and reporting an issue after delivery."
+};
 
 export default function ReturnsPage() {
   return (
     <PolicyLayout
       eyebrow="Returns and replacements"
-      title="Resolution rules that match the product."
-      intro="High-ticket orders need clear rules before checkout. DollWow reviews product details before the order moves forward and helps with documented delivery or quality issues after arrival."
+      title="Returns, repairs, and replacements explained."
+      intro="Sex dolls are personal, made-to-order products, so ordinary returns are limited once production begins. Delivery damage, incorrect items, and meaningful differences from an approved custom build still receive prompt support."
       ctas={[
         { label: "Buyer protection", href: "/buyer-protection", primary: true },
         { label: "Shipping protection", href: "/shipping-protection" }
@@ -26,15 +29,15 @@ export default function ReturnsPage() {
           title: "Damage and delivery issues",
           items: [
             "Damage, missing-item, or wrong-item claims need photos and order details within 24 hours of delivery.",
-            "Replacement decisions depend on the seriousness of the issue, supplier review, and documented product condition.",
+            "We assess the severity of the issue and the documented condition to determine whether repair, replacement, or another resolution is appropriate.",
             "Minor cosmetic shipping wear is handled differently from major transit damage."
           ]
         },
         {
           title: "How we keep this fair",
           items: [
-            "Coverage is written around the realities of custom production, shipping, and documented product condition.",
-            "Customer confidence comes from clear rules, careful review, and real support when something needs attention.",
+            "Custom production begins only after the order details are confirmed.",
+            "Factory photos give custom-order customers a chance to approve the final appearance before shipment.",
             "The goal is a clear answer: repair, replacement, or another fair resolution when the order genuinely needs it."
           ]
         }

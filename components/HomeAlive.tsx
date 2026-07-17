@@ -456,17 +456,17 @@ function PreviewShowcase({ products }: { products: Product[] }) {
           ))}
         </div>
         <div className="home-preview__copy reveal" data-d="2">
-          <p className="home-eyebrow">How it works</p>
-          <h2>Styled for discovery. Grounded in the real listing.</h2>
+          <p className="home-eyebrow">Shop with confidence</p>
+          <h2>See the style. Check every detail.</h2>
           <p>
-            Spotlight images on the homepage can feel more editorial, but every click still lands on the real product gallery, specs, timing, and custom options.
+            Start with the look that catches your eye, then open the product page for full photos, measurements, available options, and current delivery information.
           </p>
           <ul>
-            <li><ShieldCheck className="h-4 w-4" /> Styled previews stay separate from the product gallery</li>
-            <li><BadgeCheck className="h-4 w-4" /> Real specs and options stay tied to the listing</li>
-            <li><Truck className="h-4 w-4" /> No invented accessories, timing, or delivery promises</li>
+            <li><ShieldCheck className="h-4 w-4" /> Browse the full product gallery</li>
+            <li><BadgeCheck className="h-4 w-4" /> Compare materials and measurements</li>
+            <li><Truck className="h-4 w-4" /> Check options and delivery before checkout</li>
           </ul>
-          <Link className="home-btn home-btn--primary" href="/shop">Browse the catalog</Link>
+          <Link className="home-btn home-btn--primary" href="/shop">Explore all dolls</Link>
         </div>
       </div>
     </section>

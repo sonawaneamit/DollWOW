@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function TrustLogoStrip({ compact = false }: { compact?: boolean }) {
+export function TrustLogoStrip({ compact = false, eager = false }: { compact?: boolean; eager?: boolean }) {
   return (
     <div className={compact ? "trust-logo-strip trust-logo-strip--compact" : "trust-logo-strip"}>
       <Image
@@ -8,6 +8,8 @@ export function TrustLogoStrip({ compact = false }: { compact?: boolean }) {
         alt="DollWow buyer protection, plain box shipping, factory photo approval, price match review, and secure checkout trust badges"
         width={2048}
         height={768}
+        loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : "auto"}
         sizes={compact ? "(min-width: 768px) 520px, 100vw" : "(min-width: 1024px) 900px, 100vw"}
         className="trust-logo-strip__image"
       />

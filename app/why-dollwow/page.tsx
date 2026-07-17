@@ -4,7 +4,8 @@ import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { Camera, CheckCircle2, Lock, MessageCircle, Scale, ShieldCheck, Truck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Why DollWow"
+  title: "Why Buy from DollWow",
+  description: "DollWow combines an up-to-date sex doll catalog with expert product help, clear customization, factory photo approval, discreet shipping, and price matching."
 };
 
 const proofCards = [

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy"
+  title: "Privacy and Discreet Ordering",
+  description: "How DollWow protects customer privacy through neutral billing, plain packaging, discreet communication, secure checkout, and limited data collection."
 };
 
 export default function PrivacyPolicyPage() {
@@ -29,7 +30,7 @@ export default function PrivacyPolicyPage() {
           items: [
             "Order updates are kept practical and discreet.",
             "If support needs more information about your build, shipping issue, or approval step, we ask for only what helps resolve the case.",
-            "Private order notes are used to keep the order clear for the team handling it."
+            "Order notes help us remember your choices and provide consistent support without making you repeat details."
           ]
         },
         {

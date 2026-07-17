@@ -157,8 +157,8 @@ export function VisualSearchResult({
 
 function humanizeVisualSearchStatus(status: VisualSearchRequestRecord["status"]) {
   if (status === "processed") return "Matches found";
-  if (status === "needs_review") return "Needs team review";
-  if (status === "provider_unavailable") return "Needs team review";
+  if (status === "needs_review") return "We can check this";
+  if (status === "provider_unavailable") return "We can check this";
   if (status === "error") return "Search incomplete";
   return "Processing";
 }
@@ -180,8 +180,8 @@ function buildStatusNote(request: VisualSearchRequestRecord, suggestionCount: nu
 
   if (request.status === "needs_review") {
     return request.customerEmail
-      ? "This image needs a team review. Your email is attached so we can follow up if we need to verify or import the closest match."
-      : "This image needs a team review. Add your email in a follow-up if you want us to verify or import the closest match for you.";
+      ? "We could not find a confident match automatically. Your email is attached, so a DollWow specialist can check the image and follow up."
+      : "We could not find a confident match automatically. Add your email if you would like a DollWow specialist to check it for you.";
   }
 
   return "We saved the photo so our team can review it if needed.";

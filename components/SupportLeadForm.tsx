@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import { GoldButton } from "./GoldButton";
 
@@ -11,26 +11,47 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const startedAt = useRef(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
     setMessage("");
 
-    const response = await fetch("/api/support/lead", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        sourceFlow: source,
-        name: name || undefined,
-        email,
-        question
-      })
-    });
+    if (question.trim().length < 8) {
+      setStatus("error");
+      setMessage("Please add a little more detail so our team can help.");
+      return;
+    }
 
-    const payload = await response.json();
+    let response: Response;
+    try {
+      response = await fetch("/api/support/lead", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          sourceFlow: source,
+          name: name || undefined,
+          email,
+          question,
+          website,
+          startedAt: startedAt.current
+        })
+      });
+    } catch {
+      setStatus("error");
+      setMessage("We could not send your request. Please try again or email hello@dollwow.com.");
+      return;
+    }
+
+    const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       setStatus("error");
       setMessage(payload.error ?? "We could not send your request.");
@@ -38,10 +59,16 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
     }
 
     setStatus("success");
-    setMessage(copy.success);
+    setMessage(
+      payload.emailDelivered === false
+        ? "Your message is saved. Email delivery is taking longer than expected, so you can also reach us directly at hello@dollwow.com."
+        : copy.success
+    );
     setName("");
     setEmail("");
     setQuestion("");
+    setWebsite("");
+    startedAt.current = Date.now();
   }
 
   const isBrandPartnership = source === "brand-partnership" || source === "supplier";
@@ -59,18 +86,27 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
       }
     : {
         kicker: "Private request",
-        title: "Ask before you buy",
-        body: "Tell us what you are comparing, customizing, or unsure about. Keep it practical and we will help.",
+        title: "How can we help?",
+        body: "Send us your product question, comparison, or customization request. A DollWow specialist will reply privately.",
         nameLabel: "Name, optional",
         emailLabel: "Email",
         questionLabel: "Question",
-        placeholder: "I found this listing and want to compare delivery, options, or price...",
-        success: "Thanks. We saved your request and will follow up privately.",
-        button: "Send request"
+        placeholder: "Tell us which doll you are considering and what you would like to know...",
+        success: "Your message is on its way. We will reply by email as soon as possible.",
+        button: "Send message"
       };
 
   return (
     <form onSubmit={submit} className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-6 sm:p-8">
+      <input
+        name="website"
+        value={website}
+        onChange={(event) => setWebsite(event.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       <p className="text-sm uppercase tracking-[0.18em] text-gold-300">{copy.kicker}</p>
       <h2 className="mt-2 text-3xl font-semibold text-ivory-50">{copy.title}</h2>
       <p className="mt-3 text-sm text-ivory-400">{copy.body}</p>
@@ -102,6 +138,7 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
         <span className="mb-2 block text-sm font-medium text-ivory-200">{copy.questionLabel}</span>
         <textarea
           required
+          minLength={8}
           rows={5}
           value={question}
           onChange={(event) => setQuestion(event.target.value)}

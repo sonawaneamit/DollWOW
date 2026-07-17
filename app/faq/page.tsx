@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "FAQ"
+  title: "Sex Doll Buying FAQ",
+  description: "Answers about buying a sex doll from DollWow, including customization, factory photos, discreet shipping, delivery timing, price matching, repairs, and replacements."
 };
 
 export default function FaqPage() {

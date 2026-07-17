@@ -70,7 +70,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
 
 export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   const title = `${brandHubTitle(brand)}: Shop ${brand.label} Models`;
-  const description = `${brand.label} models on DollWow with product facts, pricing, material, size, stock path, customization notes, buyer guides, and discreet support.`;
+  const description = `${brand.label} models on DollWow with current prices, materials, measurements, custom options, buyer guides, and discreet support.`;
   const url = brandCanonicalUrl(brand);
 
   return {
@@ -145,12 +145,12 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
   const custom = brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
-    `${brand.label} is part of the DollWow catalog and should be compared by product facts, current options, material, size, and support-confirmed order path.`;
+    `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;
 
   return {
     intro:
       custom.intro ??
-      `Shop ${brand.label} models on DollWow and compare material, size, price, stock path, and customization details in one place. ${positioning} Use this brand hub to review current catalog listings, then open each product page for exact measurements, images, options, and support confirmation before checkout.`,
+      `Shop ${brand.label} models on DollWow and compare material, size, price, availability, and custom options in one place. ${positioning} Open any product page for full photos, exact measurements, available choices, and delivery information before checkout.`,
     positioning,
     guideHref: custom.guideHref,
     guideLabel: custom.guideLabel,
@@ -191,7 +191,7 @@ function defaultBuyerNotes(brand: CatalogBrand) {
     },
     {
       title: "Review final value",
-      body: "Compare base price, options, shipping path, support confirmation, and privacy needs before choosing a listing."
+      body: "Compare the starting price, available options, delivery time, measurements, and privacy details before choosing a doll."
     }
   ];
 }
@@ -200,12 +200,12 @@ function defaultFaqs(brand: CatalogBrand) {
   return [
     {
       question: `How should I compare ${brand.label} dolls?`,
-      answer: `Compare ${brand.label} models by material, height, weight, measurements, body type, stock path, customization availability, and delivered value.`
+      answer: `Compare ${brand.label} models by material, height, weight, measurements, body type, availability, custom options, and total value.`
     },
     {
       question: `Can every ${brand.label} model use the same custom options?`,
       answer:
-        "No. Option availability can vary by body, head, material, supplier rules, and current product setup. Confirm product-specific options before ordering."
+        "No. Available options can vary by body, head, and material. The product page shows the choices offered for that specific doll."
     },
     {
       question: `Does DollWow confirm ${brand.label} stock and order details?`,

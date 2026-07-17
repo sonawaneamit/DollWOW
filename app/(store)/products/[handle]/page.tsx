@@ -403,12 +403,12 @@ function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getP
 
   if (product.extended.stockStatus === "ready_to_ship") {
     paths.push(
-      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare timing, stock path, and fixed configuration." },
-      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand the order path tradeoffs." }
+      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "See available models and expected dispatch times." },
+      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Compare delivery timing and available options." }
     );
   } else {
     paths.push(
-      { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order paths and product-specific options." },
+      { label: "Custom dolls", href: "/shop/custom", description: "Explore made-to-order dolls and their available options." },
       { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand timing, options, and approval steps." }
     );
   }

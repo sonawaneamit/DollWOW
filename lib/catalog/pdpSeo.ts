@@ -79,8 +79,8 @@ export function buildPdpSearchFit(product: Product) {
   const fitPhrase = buildFitPhrase(product, height, cup);
   const customPhrase =
     product.extended.customAvailable === false
-      ? "base setup shown on the page"
-      : "base setup first, with custom options shown before checkout";
+      ? "a fixed base configuration"
+      : "an included configuration with custom options available before checkout";
 
   return {
     title: "At a glance",
@@ -97,7 +97,9 @@ export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
   const material = product.extended.material || inferredMaterial(product);
   const bodyLabel = productBodyLabel(product);
   const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation." : "Built to order with timing confirmed before production.";
-  const custom = product.extended.customAvailable === false ? "The page shows a fixed setup." : "The page starts from the factory default, then shows available custom choices and pricing.";
+  const custom = product.extended.customAvailable === false
+    ? "This configuration is sold as listed."
+    : "Start with the included configuration, then review available custom choices and pricing.";
   const sizeNote =
     product.extended.heightCm && product.extended.heightCm <= 155
       ? "Shorter frame that is easier to compare for storage, display, and handling."
@@ -144,7 +146,7 @@ export function buildPdpTrustSignals(product: Product): TrustSignal[] {
     },
     {
       title: "Private delivery",
-      body: "Plain packaging, neutral billing, and team review are included from checkout to delivery.",
+      body: "Plain packaging, neutral billing, and private order updates are included from checkout to delivery.",
       href: "/shipping-protection",
       label: "Delivery details"
     }
@@ -301,7 +303,7 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
     { name: "Height", value: product.extended.heightCm ? `${product.extended.heightCm} cm` : undefined },
     { name: "Weight", value: product.extended.weightLb ? `${product.extended.weightLb} lb` : undefined },
     { name: "Cup size", value: normalizeCup(product.extended.cupSize) },
-    { name: "Order path", value: orderPathLabel(product) },
+    { name: "Ordering option", value: orderPathLabel(product) },
     { name: "Stock status", value: stockStatusLabel(product.extended.stockStatus) },
     { name: "Customization available", value: product.extended.customAvailable === undefined ? undefined : product.extended.customAvailable ? "Yes" : "No" },
     { name: "Delivery estimate", value: product.extended.deliveryEstimate },
@@ -370,7 +372,7 @@ export function pdpFaqItems(product: Product): FaqItem[] {
     {
       question: "Can I customize this doll before checkout?",
       answer: hasCustom
-        ? "Yes. The page shows the default build first, then lets you review available options and price changes before checkout."
+        ? "Yes. Start with the included configuration, then review available options and price changes before checkout."
         : "This listing is treated as a fixed configuration. If you need a different setup, our team can confirm whether another version is available."
     },
     {
@@ -405,7 +407,7 @@ function buildPdpMetaDescription(product: Product) {
     `${publicTitle} is a ${stock} ${material.toLowerCase()} ${bodyLabel}.`,
     factLine ? `Compare ${factLine}, detailed measurements, and option depth before checkout.` : "Compare detailed measurements and option depth before checkout.",
     compareTerms ? `Useful for ${compareTerms} searches.` : "",
-    "Private checkout and team review included."
+    "Private checkout and personal order support included."
   ]
     .filter(Boolean)
     .join(" ");

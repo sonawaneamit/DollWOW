@@ -137,16 +137,16 @@ export function collectionIntro(preset: CollectionPreset, handle = "") {
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;
   if (preset.filters.availability === "ready_to_ship") {
-    return `${title} are catalog listings organized for faster warehouse-style comparison. Use this page to compare available models by material, size, price, and configuration before asking support to confirm current stock and delivery timing. Ready-to-ship listings can move faster than custom builds, but the exact product, warehouse status, approval materials, and shipping path should still be confirmed before checkout.`;
+    return `${title} are already held in a warehouse for faster dispatch. Compare available models by material, size, price, and included configuration, then ask us to confirm the exact unit and expected dispatch time before payment.`;
   }
   if (preset.filters.availability === "custom") {
-    return `${title} help buyers compare build-to-order options, base pricing, material, size, and customization depth before committing to a final configuration. Use the filters to narrow the catalog, then review the product page for option compatibility, supplier limits, production timing, and any details support needs to confirm in writing.`;
+    return `${title} let you choose details such as material, skin tone, hair, eyes, skeleton features, functions, and accessories. Use the filters to compare starting prices and body sizes, then open a product to see the exact choices and production time available for that doll.`;
   }
   if (preset.filters.material) {
     return `${title} help buyers compare material feel, care needs, price range, weight, and customization tradeoffs across DollWow's catalog. Start with the product facts on this page, then use the related guides below to compare TPE, silicone, hybrid builds, shipping expectations, and maintenance before you choose a specific model.`;
   }
   if (preset.filters.bodyType === "male") {
-    return `${title} collect male body-type listings so shoppers can compare height, material, body proportions, stock status, and custom order options in one place. Review measurements and weight carefully, then confirm the exact build path, available options, and delivery timing before checkout.`;
+    return `${title} bring together male sex dolls by height, material, body proportions, availability, and custom options. Review the measurements and weight carefully, then ask us to confirm any option or delivery detail that matters to you.`;
   }
   if (preset.filters.brand) {
     return `${title} brings together DollWow catalog listings for this brand with practical filters for size, material, price, availability, and customization.`;
@@ -193,18 +193,18 @@ export function collectionBuyerNotes(handle: string, preset: CollectionPreset): 
       },
       {
         title: "Use product facts first",
-        body: "A category label is a starting point. Product pages, supplier notes, and support confirmation should guide the final choice."
+        body: "A category is a useful starting point. Open each product page for its exact measurements, photos, materials, options, and delivery information."
       }
     ];
   }
   return [
     {
       title: "Start with measurable facts",
-      body: "Compare height, weight, material, measurements, stock status, and custom order path before judging photos or headline price."
+      body: "Compare height, weight, material, measurements, availability, and custom options before judging photos or headline price."
     },
     {
       title: "Confirm timing before checkout",
-      body: "Ready-to-ship and factory-order paths can have different approval steps, logistics, and delivery expectations."
+      body: "Ready-to-ship and made-to-order dolls have different delivery times, available options, and approval steps."
     },
     {
       title: "Match the product to the buyer",
@@ -221,12 +221,12 @@ export function collectionComparisonRows(handle: string, preset: CollectionPrese
       {
         factor: "Material facts",
         whyItMatters: "Material labels can hide differences in head, body, surface finish, care, and weight.",
-        dollWowAdvantage: "DollWow keeps material filters tied to product cards, measurements, care guides, and support confirmation."
+        dollWowAdvantage: "DollWow keeps material filters connected to product photos, measurements, care guides, and available options."
       },
       {
         factor: "Handling and storage",
         whyItMatters: "A material choice can still be wrong if the doll is too heavy or hard to store.",
-        dollWowAdvantage: "Product cards and filters help compare height, weight, body type, and order path together."
+        dollWowAdvantage: "Product cards and filters help compare height, weight, body type, and availability together."
       },
       {
         factor: "Final configuration",
@@ -269,7 +269,7 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
     {
       question: "Are all options available on every product in this collection?",
       answer:
-        "No. Custom options vary by brand, body model, material, head model, and supplier rules. Product-specific options and incompatibilities should be reviewed on the product page before ordering."
+        "No. Available choices vary by brand, body, head, and material. Each product page shows the options offered for that specific doll, including any known incompatibilities."
     },
     {
       question: "Does DollWow confirm stock and shipping details?",
@@ -281,23 +281,23 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 
 const collectionIntroByHandle: Record<string, string> = {
   "sex-dolls":
-    "Shop sex dolls across the full DollWow catalog with filters for material, body type, height, weight, price, stock status, and custom order path. This collection is built for practical comparison before a private purchase. Start with the product facts, then review the matching guide links for cost, materials, realistic features, shipping, and buyer protection. If timing, privacy, or exact configuration matters, ask support to confirm the current listing details before checkout.",
+    "Shop sex dolls across the full DollWow catalog with filters for material, body type, height, weight, price, availability, and custom options. Compare measurements, photos, delivery timing, and buyer protection before making a private purchase. If a specific detail matters, ask our team to confirm it before checkout.",
   "realistic-sex-dolls":
     "Realistic sex dolls should be compared by more than face photos. Use this collection to review body proportions, material, skin finish, measurements, weight, and customization options across DollWow listings. A realistic look can depend on the exact head, body, wig, eyes, faceup, and final configuration, so compare the product page carefully and ask support to confirm any detail that affects the finished build.",
   "mini-sex-dolls":
     "Mini sex dolls and compact dolls can be easier to store, move, and plan around, but height alone does not tell the full story. Use this collection to compare smaller listings by weight, measurements, material, stock status, and customization options. Check length, boxed size, storage orientation, and handling needs before choosing a product, especially if privacy or room size is the main reason for buying compact.",
   tpe:
-    "TPE dolls are often chosen for a softer feel, flexible posing, and a lower starting price than many silicone builds. Use this collection to compare TPE listings by height, weight, body shape, stock status, and available options. TPE care, surface handling, and supplier formulation can vary, so review the product page and the material guide before choosing a specific doll.",
+    "TPE dolls are often chosen for their softer feel, flexible posing, and lower starting price compared with many silicone dolls. Compare TPE sex dolls by height, weight, body shape, availability, and custom options, then read the material guide for cleaning, storage, and handling advice.",
   silicone:
     "Silicone dolls are often chosen for firmer structure, detailed finish, and easier surface cleaning compared with many TPE builds. Use this collection to compare silicone listings by height, weight, sculpt detail, stock status, and customization depth. Silicone can still vary by brand and body design, so confirm the exact material, head and body construction, and available options before checkout.",
   "male-dolls":
-    "Male dolls should be compared by exact body proportions, material, weight, skeleton support, stock status, and custom option limits. Use this collection to narrow DollWow listings by practical buyer needs, then review product pages for measurements, handling expectations, and supplier-specific options. If a build depends on confirmation, support can help verify the current path before checkout.",
+    "Compare male sex dolls by body proportions, material, weight, skeleton support, availability, and custom options. Each product page includes measurements and handling details, and our team can confirm any model-specific choice before checkout.",
   "ready-to-ship":
-    "Ready-to-ship sex dolls are the right place to start when timing matters. This collection helps buyers compare listings that are organized for faster warehouse-style fulfillment, with filters for material, size, price, and body type. Stock can change quickly, so confirm the exact unit, current availability, approval materials, and delivery timing before checkout.",
+    "Ready-to-ship sex dolls are the best place to start when timing matters. Compare warehouse dolls by material, size, price, body type, and location. Availability can change quickly, so we confirm the exact unit and expected dispatch time before payment.",
   custom:
-    "Custom sex dolls and factory-order listings are for buyers who want more control over the final build. Use this collection to compare base models, materials, size, and customization potential before choosing a configuration. Final options can depend on brand, body model, head model, material, and supplier rules, so confirm compatibility and production timing before checkout.",
+    "Custom sex dolls give you more control over the final appearance and features. Compare body sizes, materials, starting prices, and available choices, then customize the exact doll you want. Options vary by model, and prices update as you build.",
   customizable:
-    "Custom sex dolls and factory-order listings are for buyers who want more control over the final build. Use this collection to compare base models, materials, size, and customization potential before choosing a configuration. Final options can depend on brand, body model, head model, material, and supplier rules, so confirm compatibility and production timing before checkout."
+    "Custom sex dolls give you more control over the final appearance and features. Compare body sizes, materials, starting prices, and available choices, then customize the exact doll you want. Options vary by model, and prices update as you build."
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
@@ -358,7 +358,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   tpe: [
     {
       title: "TPE is often value-focused",
-      body: "Many TPE dolls start at a lower price than comparable silicone builds, but final cost can change with size, options, shipping, and stock path."
+      body: "Many TPE dolls start at a lower price than comparable silicone builds, but final cost can change with size, options, shipping, and availability."
     },
     {
       title: "Care routine matters",
@@ -390,7 +390,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     },
     {
       title: "Options can differ by body type",
-      body: "Do not assume options from other body categories carry over. Custom availability can vary by male body, head model, and supplier."
+      body: "Options from another doll may not be available here. Choices can vary by body, head, and material."
     },
     {
       title: "Confirm the build path",
@@ -400,7 +400,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   "ready-to-ship": [
     {
       title: "Fast comparison still needs confirmation",
-      body: "Ready-to-ship listings can move faster, but stock, exact configuration, approval materials, and delivery timing should still be confirmed."
+      body: "Ready-to-ship dolls move faster, but we still confirm the exact unit, included configuration, and expected dispatch time before payment."
     },
     {
       title: "Expect fewer changes",
@@ -414,11 +414,11 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   custom: [
     {
       title: "Custom starts with compatibility",
-      body: "Custom options can depend on brand, body model, head model, material, and supplier rules. Product-specific compatibility matters."
+      body: "Custom choices depend on the brand, body, head, and material. Check the product page for the options available on that doll."
     },
     {
       title: "Production timing is part of the choice",
-      body: "Factory-order builds can require option confirmation, production time, approval materials, and final shipment checks."
+      body: "Made-to-order dolls take time to build. We check your choices and send factory photos and videos for approval before shipment."
     },
     {
       title: "Confirm what is included",
@@ -428,11 +428,11 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   customizable: [
     {
       title: "Custom starts with compatibility",
-      body: "Custom options can depend on brand, body model, head model, material, and supplier rules. Product-specific compatibility matters."
+      body: "Custom choices depend on the brand, body, head, and material. Check the product page for the options available on that doll."
     },
     {
       title: "Production timing is part of the choice",
-      body: "Factory-order builds can require option confirmation, production time, approval materials, and final shipment checks."
+      body: "Made-to-order dolls take time to build. We check your choices and send factory photos and videos for approval before shipment."
     },
     {
       title: "Confirm what is included",
@@ -509,7 +509,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Catalog breadth",
       whyItMatters: "Broad doll searches can quickly become messy if every product is shown with the same priority.",
-      dollWowAdvantage: "DollWow lets buyers narrow by material, body type, height, price, stock path, brand, and custom availability."
+      dollWowAdvantage: "DollWow lets buyers narrow by material, body type, height, price, availability, brand, and custom options."
     },
     {
       factor: "Buyer guidance",
@@ -543,7 +543,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Compact size",
       whyItMatters: "Mini labels vary, and shorter dolls can still be dense or awkward to store.",
-      dollWowAdvantage: "DollWow filters compact listings by height and keeps weight, material, and stock path visible."
+      dollWowAdvantage: "DollWow filters compact listings by height and keeps weight, material, and availability visible."
     },
     {
       factor: "Privacy planning",
@@ -569,14 +569,14 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     },
     {
       factor: "Option clarity",
-      whyItMatters: "Male body customization can vary by supplier, body, head, and material.",
+      whyItMatters: "Available choices can vary by body, head, and material.",
       dollWowAdvantage: "DollWow prompts buyers to confirm product-specific options before checkout."
     }
   ],
   "ready-to-ship": [
     {
       factor: "Timing",
-      whyItMatters: "Fast fulfillment only helps if the exact unit and stock path are confirmed.",
+      whyItMatters: "Fast delivery only helps when the exact doll is confirmed as available.",
       dollWowAdvantage: "DollWow separates ready-to-ship listings and tells buyers to confirm current availability before checkout."
     },
     {
@@ -593,12 +593,12 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   custom: [
     {
       factor: "Option compatibility",
-      whyItMatters: "Custom choices can depend on brand, body model, head model, material, and supplier rules.",
-      dollWowAdvantage: "DollWow frames customization as product-specific, with support confirmation before checkout."
+      whyItMatters: "Custom choices can depend on the brand, body, head, and material.",
+      dollWowAdvantage: "Each DollWow product page shows the choices and prices available for that specific doll."
     },
     {
       factor: "Production timing",
-      whyItMatters: "Custom orders can require supplier confirmation, production time, and final approval checks.",
+      whyItMatters: "Custom orders require production time and final photo approval before shipment.",
       dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
     },
     {
@@ -610,12 +610,12 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   customizable: [
     {
       factor: "Option compatibility",
-      whyItMatters: "Custom choices can depend on brand, body model, head model, material, and supplier rules.",
-      dollWowAdvantage: "DollWow frames customization as product-specific, with support confirmation before checkout."
+      whyItMatters: "Custom choices can depend on the brand, body, head, and material.",
+      dollWowAdvantage: "Each DollWow product page shows the choices and prices available for that specific doll."
     },
     {
       factor: "Production timing",
-      whyItMatters: "Custom orders can require supplier confirmation, production time, and final approval checks.",
+      whyItMatters: "Custom orders require production time and final photo approval before shipment.",
       dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
     },
     {
@@ -636,12 +636,12 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Are sex doll prices final on collection pages?",
       answer:
-        "Collection pages show catalog pricing, but the final total can depend on options, shipping, and any required supplier confirmation. Review the product page and checkout details before paying."
+        "Collection pages show starting prices. Your final total can change when you add custom options, accessories, or shipping. The product page updates the price as you choose."
     },
     {
       question: "Can DollWow help confirm the exact product before I order?",
       answer:
-        "Yes. If a listing depends on current stock, supplier details, custom options, or timing, ask support to confirm the important details before checkout."
+        "Yes. Ask us to confirm current availability, custom options, or delivery timing whenever those details affect your decision."
     }
   ],
   "realistic-sex-dolls": [
@@ -738,24 +738,24 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Do male dolls have the same options as other dolls?",
       answer:
-        "Not always. Supplier options can vary by body type, head model, material, and production path, so product-specific confirmation matters."
+        "Not always. Available options vary by body, head, and material, so check the choices shown on the individual product page."
     },
     {
       question: "Can DollWow confirm a male doll build before checkout?",
       answer:
-        "Yes. Support can help confirm current stock, available options, production timing, and any supplier details that affect the final order."
+        "Yes. Our team can confirm current availability, available options, production time, and delivery details before you order."
     }
   ],
   "ready-to-ship": [
     {
       question: "Are ready-to-ship sex dolls available immediately?",
       answer:
-        "They are organized for faster fulfillment, but current stock, exact configuration, approval materials, and shipping timing should still be confirmed before checkout."
+        "They are held in a warehouse for faster dispatch. We still confirm the exact doll, included configuration, and expected dispatch time before payment."
     },
     {
       question: "How are ready-to-ship dolls different from custom orders?",
       answer:
-        "Ready-to-ship listings usually have less configuration flexibility but can move faster. Custom orders allow more choices but depend on supplier rules and production timing."
+        "Ready-to-ship dolls usually offer fewer changes but dispatch faster. Made-to-order dolls offer more choices and usually take about 3-5 weeks from order to delivery."
     },
     {
       question: "Should I ask for confirmation before buying ready-to-ship?",
@@ -767,34 +767,34 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "What can be customized on a sex doll?",
       answer:
-        "Custom options can include body model, head, skin tone, eyes, wig, makeup, skeleton features, heating, standing feet, and accessories, but availability varies by supplier and model."
+        "Custom options may include the head, skin tone, eyes, hair, makeup, skeleton features, heating, standing feet, and accessories. Available choices vary by model."
     },
     {
       question: "Are all custom options compatible?",
       answer:
-        "No. Some options depend on body type, material, head model, and supplier rules. Product-specific confirmation is important before checkout."
+        "No. Some options depend on the body, material, or head. The configurator shows the choices available for that specific doll."
     },
     {
       question: "Do custom sex dolls take longer?",
       answer:
-        "Usually yes. Custom builds can require supplier confirmation, production time, and final approval materials before shipment."
+        "Yes. Custom dolls need production time, and factory photos and videos are sent for your approval before shipment."
     }
   ],
   customizable: [
     {
       question: "What can be customized on a sex doll?",
       answer:
-        "Custom options can include body model, head, skin tone, eyes, wig, makeup, skeleton features, heating, standing feet, and accessories, but availability varies by supplier and model."
+        "Custom options may include the head, skin tone, eyes, hair, makeup, skeleton features, heating, standing feet, and accessories. Available choices vary by model."
     },
     {
       question: "Are all custom options compatible?",
       answer:
-        "No. Some options depend on body type, material, head model, and supplier rules. Product-specific confirmation is important before checkout."
+        "No. Some options depend on the body, material, or head. The configurator shows the choices available for that specific doll."
     },
     {
       question: "Do custom sex dolls take longer?",
       answer:
-        "Usually yes. Custom builds can require supplier confirmation, production time, and final approval materials before shipment."
+        "Yes. Custom dolls need production time, and factory photos and videos are sent for your approval before shipment."
     }
   ]
 };

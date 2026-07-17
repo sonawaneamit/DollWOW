@@ -122,9 +122,9 @@ describe("product spec display helpers", () => {
       })
     ).toEqual(
       expect.arrayContaining([
-        { label: "Height", value: "Confirm with team" },
-        { label: "Weight", value: "Confirm with team" },
-        { label: "Cup size", value: "Confirm with team" }
+        { label: "Height", value: "Ask us" },
+        { label: "Weight", value: "Ask us" },
+        { label: "Cup size", value: "Ask us" }
       ])
     );
   });

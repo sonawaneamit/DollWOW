@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Scam Alert"
+  title: "How to Avoid Sex Doll Scams",
+  description: "Learn how to identify risky sex doll websites, copied listings, unrealistic discounts, weak shipping policies, missing support, and unclear custom-order terms."
 };
 
 export default function ScamAlertPage() {

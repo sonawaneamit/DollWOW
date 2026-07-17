@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Buyer Protection"
+  title: "Sex Doll Buyer Protection",
+  description: "Understand DollWow buyer protection for custom sex dolls, factory photo approval, shipping damage, lost orders, repairs, replacements, and refunds."
 };
 
 export default function BuyerProtectionPage() {
   return (
     <PolicyLayout
       eyebrow="Buyer protection"
-      title="Protection built for high-consideration orders."
-      intro="Buyer protection should answer the biggest checkout questions up front: will the order actually arrive, what happens if it is damaged, and how much approval you get before shipment. We keep those rules visible before payment."
+      title="Order with a clear plan if something goes wrong."
+      intro="Every DollWow order includes private support from checkout through delivery. Custom dolls include factory photo approval, and documented delivery problems are covered by a clear repair, replacement, or refund process."
       ctas={[
         { label: "See shipping protection", href: "/shipping-protection", primary: true },
         { label: "How ordering works", href: "/how-ordering-works" }
@@ -29,8 +30,8 @@ export default function BuyerProtectionPage() {
           body: "For custom builds, we send detailed factory photos and videos before shipment. Cosmetic revision requests can continue until you approve the final look for release."
         },
         {
-          title: "Authenticity and match review",
-          body: "We verify the ordered build, timing, and supplier details before the order moves forward. If you found the same listing elsewhere, we can compare the final delivered price before you commit."
+          title: "Order confirmation",
+          body: "We confirm the selected doll, options, and expected timing before production or dispatch. If you found the same configuration for less, send it to us for a price match."
         }
       ]}
       sections={[
@@ -49,7 +50,7 @@ export default function BuyerProtectionPage() {
           items: [
             "Minor cuts, bruises, small finish marks, or similar cosmetic transit wear are handled through a complimentary silicone or TPE repair kit, depending on the material.",
             "Our team provides guided repair support so the issue can be handled quickly and privately.",
-            "If the issue is not minor, the claim can be escalated into replacement review instead."
+            "If the damage is more serious, we move to a replacement or refund assessment."
           ]
         },
         {
@@ -71,7 +72,7 @@ export default function BuyerProtectionPage() {
           title: "Claim expectations",
           items: [
             "Damage or delivery issues should be reported within 24 hours of delivery with photos, video where useful, and the order reference.",
-            "We may ask for packaging photos, label photos, and a short description of the issue so the shipping and supplier review can move quickly.",
+            "We may ask for packaging photos, label photos, and a short description so we can resolve the claim quickly.",
             "Custom products are reviewed carefully before release, which is why pre-shipment approval matters so much in this category."
           ]
         },
@@ -89,7 +90,7 @@ export default function BuyerProtectionPage() {
         "Custom products should always be reviewed at the factory-photo stage before shipment.",
         "Keep all delivery packaging until any shipping concern is resolved.",
         "Ready-to-ship items move faster, but that can mean fewer pre-release approval steps.",
-        "Buyer protection is strongest when the order details, options, and final approval are documented clearly."
+        "Keep your order confirmation and factory approval messages until delivery is complete."
       ]}
     />
   );

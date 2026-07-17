@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
 
-export const metadata: Metadata = { title: "Shipping Guide" };
+export const metadata: Metadata = {
+  title: "Sex Doll Shipping Guide",
+  description: "Compare ready-to-ship and custom sex doll delivery timing, factory photo approval, discreet packaging, tracking, and international shipping expectations."
+};
 
 export default function ShippingPage() {
   return (
@@ -27,7 +30,7 @@ export default function ShippingPage() {
           items: [
             "Custom orders usually take about 3-5 weeks before release because the build moves through production, review, and final approval before shipment.",
             "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
-            "Timing is confirmed before the order moves deeper into fulfillment."
+            "We confirm the expected production and shipping dates after reviewing your final choices."
           ]
         },
         {
