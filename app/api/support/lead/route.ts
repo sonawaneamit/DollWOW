@@ -66,8 +66,10 @@ export async function POST(request: Request) {
     });
 
     trackServerEvent(analyticsEvents.askHumanHelp, {
-      source_flow: input.sourceFlow,
-      product_count: input.productIds?.length ?? 0
+      params: {
+        source_flow: input.sourceFlow,
+        product_count: input.productIds?.length ?? 0
+      }
     });
 
     return NextResponse.json({ ok: true, id: lead?.id ?? null, emailDelivered: delivery?.delivered ?? false });

@@ -32,9 +32,11 @@ export async function POST(request: Request) {
     const id = crypto.randomUUID();
     await saveGuidedSession({ id, answers: input.answers as QuizAnswers, recommendedProductIds: productIds, email: input.email });
     trackServerEvent(analyticsEvents.completeHelpMeChoose, {
-      budget_range: input.answers.budget,
-      delivery_preference: input.answers.delivery,
-      recommended_count: productIds.length
+      params: {
+        budget_range: input.answers.budget,
+        delivery_preference: input.answers.delivery,
+        recommended_count: productIds.length
+      }
     });
     return NextResponse.json({ id, productIds, recommendations });
   } catch (error) {
