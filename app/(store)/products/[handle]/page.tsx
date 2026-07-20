@@ -3,12 +3,14 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
-import { GoldButton } from "@/components/GoldButton";
+import { PdpTrackers } from "@/components/PdpTrackers";
+import { WishlistButton } from "@/components/WishlistButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
+import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
@@ -37,14 +39,14 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const { handle } = await params;
   const [storefrontProduct, allProducts, adminProductData] = await Promise.all([
     getProductByHandle(handle),
-    getProducts({ first: 8 }),
+    getProducts({ first: 60 }),
     getProductAdminMetafieldsByHandle(handle)
   ]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
-  const alternatives = allProducts.filter((item) => item.id !== product.id).slice(0, 4);
+  const alternatives = scoreSimilarProducts(product, allProducts, 4);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
@@ -99,14 +101,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               <TrustLine icon={<Truck className="h-4 w-4" />} text="Timing confirmed" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <GoldButton href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`} variant="secondary">
-                <Scale className="h-4 w-4" /> Found this somewhere else?
-              </GoldButton>
-              <GoldButton href="/support" variant="secondary">
-                <MessageCircle className="h-4 w-4" /> Ask before buying
-              </GoldButton>
-            </div>
             {firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
@@ -114,10 +108,42 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 productDisplayName={displayName || undefined}
                 productHandle={product.handle}
                 productImage={product.featuredImage ?? product.images[0] ?? null}
+                brand={product.extended.brand ?? product.vendor}
+                unitPrice={Number(price.amount)}
+                currencyCode={price.currencyCode}
+                deliveryEstimate={product.extended.deliveryEstimate}
                 bodyType={bodyType}
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
               />
             )}
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+              <WishlistButton
+                entry={{
+                  productHandle: product.handle,
+                  productTitle: displayTitle,
+                  brand: product.extended.brand ?? product.vendor,
+                  imageUrl: (product.featuredImage ?? product.images[0])?.url,
+                  imageAlt: (product.featuredImage ?? product.images[0])?.altText ?? displayTitle,
+                  unitPrice: Number(price.amount),
+                  currencyCode: price.currencyCode,
+                  readyToShip: product.extended.stockStatus === "ready_to_ship"
+                }}
+                label
+                className="font-semibold text-ivory-300 hover:text-gold-200"
+              />
+              <Link
+                href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
+                className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
+              >
+                <Scale className="h-4 w-4 text-gold-300" /> Found this somewhere else?
+              </Link>
+              <Link
+                href="/support"
+                className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
+              >
+                <MessageCircle className="h-4 w-4 text-gold-300" /> Ask a specialist before buying
+              </Link>
+            </div>
           </div>
         </div>
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
@@ -130,6 +156,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />
+      <PdpTrackers product={product} />
     </main>
   );
 }
