@@ -4,12 +4,15 @@ import { useSyncExternalStore } from "react";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { createStorageStore } from "@/lib/utils/storageStore";
 
-const STORAGE_KEY = "dollwow-cart";
+export type BrowserCartCustomizationItem = {
+  groupLabel: string;
+  optionLabels: string[];
+  priceDelta?: number;
+};
 
-type BrowserCartState = {
+export type BrowserCartState = {
   checkoutUrl: string;
   totalQuantity: number;
-  updatedAt: string;
   productTitle?: string;
   productDisplayName?: string;
   productHandle?: string;
@@ -18,8 +21,15 @@ type BrowserCartState = {
   merchandiseId?: string;
   quantity?: number;
   readyToShip?: boolean;
-  customizationSummary?: string[];
+  currencyCode?: string;
+  customizationSummary?: BrowserCartCustomizationItem[];
+  updatedAt: string;
 };
+
+// Keep the original key: returning visitors may still hold a saved checkout
+// written by the previous single-item flow.
+const STORAGE_KEY = "dollwow-cart-state";
+const CART_UPDATED_EVENT = "dollwow:cart-updated";
 
 function parseBrowserCartState(raw: string | null): BrowserCartState | null {
   if (!raw) return null;
@@ -35,7 +45,7 @@ function parseBrowserCartState(raw: string | null): BrowserCartState | null {
   }
 }
 
-const legacyCartStore = createStorageStore<BrowserCartState | null>(STORAGE_KEY, "dollwow:cart-updated", parseBrowserCartState, null);
+const legacyCartStore = createStorageStore<BrowserCartState | null>(STORAGE_KEY, CART_UPDATED_EVENT, parseBrowserCartState, null);
 
 /** Reactive access to the legacy saved-checkout state (SSR-safe). */
 export function useLegacyCartState(): BrowserCartState | null {
@@ -47,17 +57,19 @@ export function readBrowserCartState(): BrowserCartState | null {
   return parseBrowserCartState(window.localStorage.getItem(STORAGE_KEY));
 }
 
-export function writeBrowserCartState(state: Omit<BrowserCartState, "updatedAt">) {
+export function writeBrowserCartState(input: Omit<BrowserCartState, "updatedAt">) {
   if (typeof window === "undefined") return;
-  const payload: BrowserCartState = { ...state, updatedAt: new Date().toISOString() };
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  window.dispatchEvent(new CustomEvent("dollwow:cart-updated"));
+  const state: BrowserCartState = {
+    ...input,
+    checkoutUrl: normalizeCheckoutUrl(input.checkoutUrl),
+    updatedAt: new Date().toISOString()
+  };
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  window.dispatchEvent(new CustomEvent(CART_UPDATED_EVENT, { detail: state }));
 }
 
 export function clearBrowserCartState() {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(STORAGE_KEY);
-  window.dispatchEvent(new CustomEvent("dollwow:cart-updated"));
+  window.dispatchEvent(new CustomEvent(CART_UPDATED_EVENT, { detail: null }));
 }
-
-export type { BrowserCartState };
