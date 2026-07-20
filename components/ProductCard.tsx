@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Scale } from "lucide-react";
+import { WishlistButton } from "@/components/WishlistButton";
 import { formatMoney } from "@/lib/utils/currency";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
@@ -57,6 +58,19 @@ export function ProductCard({ product }: { product: Product }) {
       >
         <Scale className="h-4 w-4" />
       </Link>
+      <WishlistButton
+        entry={{
+          productHandle: product.handle,
+          productTitle: displayTitle,
+          brand: product.extended.brand ?? product.vendor,
+          imageUrl: image?.url,
+          imageAlt: image?.altText ?? displayTitle,
+          unitPrice: Number(price.amount),
+          currencyCode: price.currencyCode,
+          readyToShip: ready
+        }}
+        className="catalog-product-card__wish"
+      />
     </article>
   );
 }

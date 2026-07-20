@@ -1,5 +1,6 @@
 import { GoldButton } from "@/components/GoldButton";
 import { CartPageClient } from "@/components/CartPageClient";
+import { RecentlyViewedRail } from "@/components/RecentlyViewedRail";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 import Link from "next/link";
 import { Camera, Lock, ShieldCheck, Truck } from "lucide-react";
@@ -13,13 +14,15 @@ export default function CartPage({ searchParams }: { searchParams: Promise<{ moc
     <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-5">
         <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Cart</p>
-        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Saved checkout</h1>
+        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Your bag</h1>
         <p className="mt-3 max-w-2xl text-ivory-400">
-          Resume checkout, review the product, or keep browsing.
+          Review your items, complete your order with matching picks, or check out securely.
         </p>
       </div>
 
       <CartPageClient />
+
+      <RecentlyViewedRail />
 
       <div className="mt-6 border border-gold-500/16 bg-ink-800/72 p-5 sm:p-6">
         <div className="flex flex-wrap items-end justify-between gap-3">

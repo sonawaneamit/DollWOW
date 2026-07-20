@@ -175,8 +175,7 @@ export async function getProductCount({ query }: { query?: string } = {}) {
             edges { cursor }
             pageInfo { hasNextPage endCursor }
           }
-        }
-      }`,
+        }`,
         { query, after }
       );
 
@@ -275,6 +274,55 @@ export async function createCart(input: {
           },
           ...customizationChargeLines(input.customizationCharge)
         ],
+        discountCodes: input.discountCodes ?? []
+      }
+    }
+  );
+
+  const error = data.cartCreate.userErrors[0];
+  if (error) throw new Error(error.message);
+  if (!data.cartCreate.cart) throw new Error("Shopify did not return a cart.");
+  return {
+    ...data.cartCreate.cart,
+    checkoutUrl: normalizeShopifyCheckoutUrl(data.cartCreate.cart.checkoutUrl)
+  };
+}
+
+export async function createCartWithLines(input: {
+  lines: Array<{
+    merchandiseId: string;
+    quantity: number;
+    attributes?: Array<{ key: string; value: string }>;
+  }>;
+  discountCodes?: string[];
+}) {
+  if (!hasShopifyStorefrontEnv()) {
+    return {
+      id: "mock-cart",
+      checkoutUrl: "/cart?mockCheckout=1",
+      totalQuantity: input.lines.reduce((sum, line) => sum + line.quantity, 0)
+    };
+  }
+
+  const data = await storefrontFetch<{
+    cartCreate: {
+      cart: { id: string; checkoutUrl: string; totalQuantity: number } | null;
+      userErrors: Array<{ field: string[]; message: string }>;
+    };
+  }>(
+    `mutation CartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart { id checkoutUrl totalQuantity }
+        userErrors { field message }
+      }
+    }`,
+    {
+      input: {
+        lines: input.lines.map((line) => ({
+          merchandiseId: line.merchandiseId,
+          quantity: line.quantity,
+          attributes: line.attributes ?? []
+        })),
         discountCodes: input.discountCodes ?? []
       }
     }

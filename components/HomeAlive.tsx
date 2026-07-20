@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, Heart, Lock, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, Lock, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { WishlistButton } from "@/components/WishlistButton";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
@@ -295,7 +296,19 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
       <Link href={`/products/${product.handle}`} className="home-product-card__media" aria-label={`View ${displayTitle}`}>
         <HomeProductImage product={product} priority={priority} />
         <span className={`home-product-badge ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
-        <button type="button" className="home-heart" aria-label="Save for later"><Heart className="h-4 w-4" /></button>
+        <WishlistButton
+          entry={{
+            productHandle: product.handle,
+            productTitle: displayTitle,
+            brand: product.extended.brand ?? product.vendor,
+            imageUrl: product.featuredImage?.url ?? product.images[0]?.url,
+            imageAlt: product.featuredImage?.altText ?? product.images[0]?.altText ?? displayTitle,
+            unitPrice: Number(price.amount),
+            currencyCode: price.currencyCode,
+            readyToShip: ready
+          }}
+          className="home-heart"
+        />
       </Link>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>

@@ -2,6 +2,14 @@ import { z } from "zod";
 
 const MAX_ATTRIBUTES = 20;
 const MAX_DISCOUNT_CODES = 5;
+const MAX_CHECKOUT_LINES = 20;
+
+const merchandiseIdSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .max(180)
+  .refine((value) => value.startsWith("gid://shopify/ProductVariant/"), "A Shopify product variant ID is required.");
 
 const rawAttributeSchema = z.object({
   key: z.string().min(1).max(120),
@@ -16,12 +24,7 @@ const customizationChargeSchema = z.object({
 
 export const cartCreateRequestSchema = z
   .object({
-    merchandiseId: z
-      .string()
-      .trim()
-      .min(1)
-      .max(180)
-      .refine((value) => value.startsWith("gid://shopify/ProductVariant/"), "A Shopify product variant ID is required."),
+    merchandiseId: merchandiseIdSchema,
     quantity: z.number().int().min(1).max(10).default(1),
     attributes: z.array(rawAttributeSchema).max(50).optional(),
     customizationCharge: customizationChargeSchema.optional(),
@@ -35,6 +38,32 @@ export const cartCreateRequestSchema = z
   }));
 
 export type CartCreateRequest = z.infer<typeof cartCreateRequestSchema>;
+
+export const cartLineSchema = z.object({
+  merchandiseId: merchandiseIdSchema,
+  quantity: z.number().int().min(1).max(10).default(1),
+  attributes: z.array(rawAttributeSchema).max(50).optional()
+});
+
+/**
+ * Multi-line checkout request used by the bag. Shares the same attribute and
+ * discount normalization as the single-line create flow so Shopify receives
+ * consistent payloads from both paths.
+ */
+export const cartCheckoutRequestSchema = z
+  .object({
+    lines: z.array(cartLineSchema).min(1).max(MAX_CHECKOUT_LINES),
+    discountCodes: z.array(z.string().max(120)).max(10).optional()
+  })
+  .transform((input) => ({
+    lines: input.lines.map((line) => ({
+      ...line,
+      attributes: normalizeLineAttributes(line.attributes)
+    })),
+    discountCodes: normalizeDiscountCodes(input.discountCodes)
+  }));
+
+export type CartCheckoutRequest = z.infer<typeof cartCheckoutRequestSchema>;
 
 export function normalizeLineAttributes(attributes: Array<{ key: string; value: string }> = []) {
   const seen = new Set<string>();
