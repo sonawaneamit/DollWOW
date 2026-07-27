@@ -16,7 +16,7 @@ const topLinks = [
   { label: "Help Me Choose", href: "/help-me-choose" },
   { label: "Learning Center", href: "/learn" },
   { label: "About Us", href: "/why-dollwow" },
-  { label: "Authorized vendors", href: "/authorized-vendors" }
+  { label: "Certificates", href: "/authorized-vendors" }
 ] as const;
 
 const featuredShopLinks = [
@@ -127,7 +127,7 @@ export function Header() {
     if (pathname?.startsWith("/help-me-choose")) return "Help Me Choose";
     if (pathname?.startsWith("/learn")) return "Learning Center";
     if (pathname?.startsWith("/why-dollwow")) return "About Us";
-    if (pathname?.startsWith("/authorized-vendors")) return "Authorized vendors";
+    if (pathname?.startsWith("/authorized-vendors")) return "Certificates";
     if (pathname?.startsWith("/shop") || pathname?.startsWith("/products")) return "Shop Dolls";
     return "";
   }, [pathname]);
@@ -227,7 +227,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-[80] border-b border-[#d59a6f]/22 bg-[#160c0a] text-[#f6e9dd] shadow-[0_18px_54px_rgba(20,6,4,0.28)]">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
           <Image
             src="/images/brand/dollwow-black-gold-lockup.png"
@@ -235,12 +235,12 @@ export function Header() {
             width={650}
             height={235}
             priority
-            sizes="(max-width: 640px) 190px, 260px"
-            className="h-14 w-[190px] rounded-[6px] object-contain object-left sm:h-16 sm:w-[260px]"
+            sizes="(max-width: 640px) 190px, 220px"
+            className="h-14 w-[190px] rounded-[6px] object-contain object-left sm:h-14 sm:w-[220px]"
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 text-sm text-[#e8d0c1] lg:flex" aria-label="Primary navigation">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0 text-[13px] text-[#e8d0c1] xl:flex 2xl:text-sm" aria-label="Primary navigation">
           <div data-shop-menu-root>
             <button
               type="button"
@@ -249,7 +249,7 @@ export function Header() {
                 setMobileMenuOpen(false);
                 setShopMenuOpen((value) => !value);
               }}
-              className={`inline-flex items-center gap-1.5 rounded-[12px] px-3 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] ${activeLabel === "Shop Dolls" || shopMenuOpen ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
+              className={`inline-flex whitespace-nowrap items-center gap-1.5 rounded-[12px] px-2.5 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] 2xl:px-3 ${activeLabel === "Shop Dolls" || shopMenuOpen ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
               aria-expanded={shopMenuOpen}
               aria-controls="desktop-shop-menu"
             >
@@ -263,7 +263,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={closeAll}
-              className={`rounded-[12px] px-3 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] ${activeLabel === link.label ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
+              className={`whitespace-nowrap rounded-[12px] px-2.5 py-2 transition hover:bg-[#f6e9dd]/[0.07] hover:text-[#fff7ef] 2xl:px-3 ${activeLabel === link.label ? "bg-[#f6e9dd]/[0.07] text-[#fff7ef]" : ""}`}
             >
               {link.label}
             </Link>
@@ -303,7 +303,7 @@ export function Header() {
               setShopMenuOpen(false);
               setMobileMenuOpen((value) => !value);
             }}
-            className="rounded-[12px] border border-[#d59a6f]/24 bg-[#f6e9dd]/[0.055] p-2 transition hover:border-[#e8b48f]/60 hover:text-[#f6e9dd] lg:hidden"
+            className="rounded-[12px] border border-[#d59a6f]/24 bg-[#f6e9dd]/[0.055] p-2 transition hover:border-[#e8b48f]/60 hover:text-[#f6e9dd] xl:hidden"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -371,7 +371,7 @@ function DesktopShopDropdown({ onNavigate }: { onNavigate: () => void }) {
 
 function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <div id="mobile-menu" className="max-h-[calc(100dvh-74px)] overflow-y-auto border-t border-[#d59a6f]/18 bg-[#100806] px-4 py-4 shadow-[0_28px_80px_rgba(0,0,0,0.7)] lg:hidden">
+    <div id="mobile-menu" className="max-h-[calc(100dvh-74px)] overflow-y-auto border-t border-[#d59a6f]/18 bg-[#100806] px-4 py-4 shadow-[0_28px_80px_rgba(0,0,0,0.7)] xl:hidden">
       <div className="space-y-3">
         <Link
           href="/shop/sex-dolls"
