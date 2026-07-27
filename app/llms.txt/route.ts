@@ -26,8 +26,7 @@ const corePages = [
   ["Shipping", "/shipping"],
   ["Returns", "/returns"],
   ["Privacy Policy", "/privacy-policy"],
-  ["Support", "/support"],
-  ["Editorial Policy", "/editorial-policy"]
+  ["Support", "/support"]
 ];
 
 export const revalidate = 3600;

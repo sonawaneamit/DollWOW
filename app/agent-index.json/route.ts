@@ -20,8 +20,7 @@ const policies = [
   { label: "Best Price Guarantee", path: "/best-price-guarantee" },
   { label: "Shipping", path: "/shipping" },
   { label: "Returns", path: "/returns" },
-  { label: "Privacy Policy", path: "/privacy-policy" },
-  { label: "Editorial Policy", path: "/editorial-policy" }
+  { label: "Privacy Policy", path: "/privacy-policy" }
 ];
 
 export const revalidate = 3600;

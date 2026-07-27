@@ -89,9 +89,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
                     </GoldButton>
                     <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
                       <p className="font-semibold text-ink-950">
-                        <Link href={`/editorial-policy#${article.author}`} className="transition hover:text-gold-700">
-                          {article.authorDisplayName}
-                        </Link>
+                        {article.authorDisplayName}
                       </p>
                       <p>{author?.shortBio ?? article.authorTitle}</p>
                     </div>

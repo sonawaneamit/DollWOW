@@ -24,7 +24,6 @@ const footerGroups = [
     links: [
       ["Help me choose", "/help-me-choose"],
       ["Learning Center", "/learn"],
-      ["Editorial policy", "/editorial-policy"],
       ["FAQ", "/faq"],
       ["Why DollWow", "/why-dollwow"],
       ["Authorized vendors", "/authorized-vendors"],
