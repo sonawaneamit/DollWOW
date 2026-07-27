@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { GoldButton } from "@/components/GoldButton";
+import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
@@ -120,6 +121,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             )}
           </div>
         </div>
+        <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 

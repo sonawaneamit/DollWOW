@@ -27,6 +27,7 @@ const footerGroups = [
       ["Editorial policy", "/editorial-policy"],
       ["FAQ", "/faq"],
       ["Why DollWow", "/why-dollwow"],
+      ["Authorized vendors", "/authorized-vendors"],
       ["Support", "/support"],
       ["For brands", "/supplier"]
     ]

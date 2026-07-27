@@ -15,7 +15,8 @@ const topLinks = [
   { label: "Price Match", href: "/compare" },
   { label: "Help Me Choose", href: "/help-me-choose" },
   { label: "Learning Center", href: "/learn" },
-  { label: "About Us", href: "/why-dollwow" }
+  { label: "About Us", href: "/why-dollwow" },
+  { label: "Authorized vendors", href: "/authorized-vendors" }
 ] as const;
 
 const featuredShopLinks = [
@@ -86,6 +87,7 @@ const prefetchTargets = [
   "/help-me-choose",
   "/learn",
   "/why-dollwow",
+  "/authorized-vendors",
   "/support",
   "/cart",
   ...featuredShopLinks.map((link) => link.href),
@@ -125,6 +127,7 @@ export function Header() {
     if (pathname?.startsWith("/help-me-choose")) return "Help Me Choose";
     if (pathname?.startsWith("/learn")) return "Learning Center";
     if (pathname?.startsWith("/why-dollwow")) return "About Us";
+    if (pathname?.startsWith("/authorized-vendors")) return "Authorized vendors";
     if (pathname?.startsWith("/shop") || pathname?.startsWith("/products")) return "Shop Dolls";
     return "";
   }, [pathname]);

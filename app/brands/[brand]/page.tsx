@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
+import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
@@ -43,6 +44,8 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} DollWow listings in this brand view</p>
         </div>
       </div>
+
+      <BrandAuthorizationCard brand={brand.value} variant="brand" />
 
       <nav aria-label={`${brand.label} related guides`} className="mb-8 flex flex-wrap gap-3">
         {relatedLinks.map((link) => (
