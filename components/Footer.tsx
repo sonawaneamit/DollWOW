@@ -16,6 +16,7 @@ const footerGroups = [
       ["WM Dolls", "/brands/wm-dolls"],
       ["Irontech Dolls", "/brands/irontech-dolls"],
       ["Starpery Dolls", "/brands/starpery-dolls"],
+      ["Avant Doll", "/brands/avant-dolls"],
       ["Price match", "/compare"]
     ]
   },

@@ -88,6 +88,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
   {
     id: "avant-doll",
     brand: "Avant Doll",
+    brandValue: "avant",
     aliases: ["avant", "avant doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/avant-doll-authorized.jpeg",

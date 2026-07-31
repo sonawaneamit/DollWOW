@@ -28,6 +28,13 @@
     "aliases": ["starpery", "star pery", "starpery doll", "starpery dolls", "star pery doll", "star pery dolls"]
   },
   {
+    "value": "avant",
+    "label": "Avant Doll",
+    "collectionHandle": "avant-dolls",
+    "tags": ["avant", "avant-doll", "avant-dolls"],
+    "aliases": ["avant", "avant doll", "avant dolls", "avantdoll"]
+  },
+  {
     "value": "piper",
     "label": "Piper Dolls",
     "collectionHandle": "piper-dolls",

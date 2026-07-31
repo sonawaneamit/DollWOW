@@ -10,6 +10,11 @@ const outputPath = path.resolve(args.get("--output") || path.join(ROOT, "data/ex
 
 const review = JSON.parse(await fs.readFile(reviewPath, "utf8"));
 const products = [];
+const displayNameCounts = review.products.reduce((counts, product) => {
+  const key = product.displayName.trim().toLowerCase();
+  counts.set(key, (counts.get(key) || 0) + 1);
+  return counts;
+}, new Map());
 
 for (const product of review.products) {
   const mediaDirectory = path.join(sourceRoot, product.sourceFolder);
@@ -20,7 +25,11 @@ for (const product of review.products) {
   products.push({
     sourceNumber: product.sourceNumber,
     title: product.listingTitle,
-    handle: slugify(`avant-${product.displayName}-${product.heightCm}cm-${product.cupSize}-full-silicone`),
+    handle: slugify(
+      `avant-${product.displayName}-${product.heightCm}cm-${product.cupSize}-full-silicone${
+        displayNameCounts.get(product.displayName.trim().toLowerCase()) > 1 ? `-${product.skinTone}` : ""
+      }`
+    ),
     displayName: product.displayName,
     identity: {
       brand: "Avant Doll",
@@ -99,7 +108,7 @@ async function walk(directory) {
 
 function buildMeasurements(row, heightCm, cupSize) {
   if (!row) return null;
-  const [height, neckGirth, shouldersWidth, bust, underBust, waist, hip, armsLength, handLength, legsLength, feetLength, vaginaDepth, anusDepth, oralDepth, weight] = row;
+  const [, neckGirth, shouldersWidth, bust, underBust, waist, hip, armsLength, handLength, legsLength, feetLength, vaginaDepth, anusDepth, oralDepth, weight] = row;
   return compact({
     Height: formatHeight(heightCm),
     Weight: weight && asWeight(weight),
