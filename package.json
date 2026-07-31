@@ -30,6 +30,10 @@
     "catalog:audit": "node scripts/catalog-audit.mjs",
     "copy:audit": "node scripts/audit-customer-copy.mjs",
     "generate:learning-banners": "node scripts/generate-learning-banner-composites.mjs",
+    "audit:avant-source": "node scripts/audit-avant-source-pack.mjs",
+    "prepare:avant-review": "node scripts/build-avant-review-manifest.mjs",
+    "prepare:avant-import": "node scripts/prepare-avant-official-import.mjs",
+    "audit:avant-public": "node scripts/audit-avant-public-references.mjs",
     "test": "vitest run"
   },
   "dependencies": {
