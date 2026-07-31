@@ -16,6 +16,7 @@ if (!new Set(["DRAFT", "ACTIVE"]).has(publicationStatus)) {
 }
 
 let tokenCache = null;
+let storefrontPublicationIds = null;
 await loadLocalEnv();
 
 const plan = JSON.parse(await fs.readFile(planPath, "utf8"));
@@ -60,11 +61,13 @@ for (const product of products) {
       await updateProduct(existing.id, product);
       await replaceProductMedia(existing.id, mediaSources, product.title);
       await updateExistingVariant(existing.id, product);
+      if (publicationStatus === "ACTIVE") await publishToStorefronts(existing.id);
       summary.updated.push(product.handle);
     } else {
       const created = await createProduct(product, mediaSources);
       const variantId = created.variants.nodes[0]?.id;
       if (variantId) await updateVariant(created.id, variantId, product);
+      if (publicationStatus === "ACTIVE") await publishToStorefronts(created.id);
       summary.created.push(product.handle);
     }
   } catch (error) {
@@ -161,13 +164,34 @@ function metafieldsFor(product, { priceConfirmed }) {
         source: "avant-official",
         mediaState: product.media.supplierMediaComplete ? "complete" : "needs-additional-stills",
         priceStatus: product.commercial.priceStatus,
-        catalogVisible: false,
-        publicationBlocked: true,
+        catalogVisible: publicationStatus === "ACTIVE",
+        publicationBlocked: publicationStatus !== "ACTIVE",
         commercialPriceConfirmed: priceConfirmed
       }),
       "json"
     )
   ];
+}
+
+async function publishToStorefronts(productId) {
+  if (!storefrontPublicationIds) {
+    const data = await adminFetch(`query Publications { publications(first: 50) { nodes { id name } } }`);
+    storefrontPublicationIds = data.publications?.nodes
+      ?.filter((item) => /headless|online store/i.test(item.name))
+      .map((item) => item.id);
+    if (!storefrontPublicationIds?.length) throw new Error("Could not find Shopify storefront publication channels.");
+  }
+
+  const data = await adminFetch(
+    `mutation PublishProduct($id: ID!, $input: [PublicationInput!]!) {
+      publishablePublish(id: $id, input: $input) {
+        userErrors { field message }
+      }
+    }`,
+    { id: productId, input: storefrontPublicationIds.map((publicationId) => ({ publicationId })) }
+  );
+  const error = data.publishablePublish.userErrors[0];
+  if (error) throw new Error(`publishablePublish failed: ${formatUserError(error)}`);
 }
 
 async function createProduct(product, mediaSources) {
