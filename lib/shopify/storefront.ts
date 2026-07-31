@@ -57,7 +57,8 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
   return payload.data as T;
 }
 
-const productListFieldsBase = `
+function productFieldsBase(imageFirst: number) {
+  return `
   id
   handle
   title
@@ -66,7 +67,7 @@ const productListFieldsBase = `
   productType
   tags
   featuredImage { url altText width height }
-  images(first: 8) { edges { node { url altText width height } } }
+  images(first: ${imageFirst}) { edges { node { url altText width height } } }
   priceRange {
     minVariantPrice { amount currencyCode }
     maxVariantPrice { amount currencyCode }
@@ -103,16 +104,17 @@ const productListFieldsBase = `
   customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
 `;
+}
 
-function productListFields(options: { includeCustomizationGroups?: boolean } = {}) {
+function productListFields(options: { includeCustomizationGroups?: boolean; imageFirst?: number } = {}) {
   return `
-    ${productListFieldsBase}
+    ${productFieldsBase(options.imageFirst ?? 8)}
     ${options.includeCustomizationGroups ? 'customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }' : ""}
   `;
 }
 
 const productDetailFields = `
-  ${productListFields({ includeCustomizationGroups: true })}
+  ${productListFields({ includeCustomizationGroups: true, imageFirst: 50 })}
 `;
 
 export async function getProducts({
