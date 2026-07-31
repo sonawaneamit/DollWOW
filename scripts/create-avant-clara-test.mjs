@@ -54,7 +54,7 @@ const product = {
     metafield("custom_available", "true", "boolean"),
     metafield("source_title", "Avant Clara 165cm F-Cup Ros Head Full Silicone Doll (Wheat)"),
     metafield("source_handle", "avant-clara-165cm-f-cup-ros-wheat"),
-    metafield("qc_note", "Manufacturer-provided Avant catalog media and specifications."),
+    metafield("qc_note", "Manufacturer-provided Avant catalog media and specifications.", "multi_line_text_field"),
     metafield("import_review_flags", JSON.stringify({ testListing: true, catalogVisible: false, robots: "noindex" }), "json")
   ],
   images: ["_O3A6915.jpg", "_O3A6927.jpg", "_O3A6937.jpg", "_O3A7082.jpg"]
@@ -84,19 +84,17 @@ if (!execute) {
 
 assertShopifyAdminEnv();
 const existing = await findProductByHandle(product.handle);
-if (existing) {
-  throw new Error(`Refusing to create a duplicate test listing: ${product.handle} already exists as ${existing.id}.`);
+let created = existing;
+if (!created) {
+  const imageSources = [];
+  for (const fileName of product.images) {
+    imageSources.push(await uploadImageToStaging(path.join(assetDirectory, fileName)));
+  }
+  created = await createProduct(imageSources);
+  const variantId = created.variants.nodes[0]?.id;
+  if (!variantId) throw new Error("Shopify did not return the initial product variant.");
+  await updateVariant(created.id, variantId);
 }
-
-const imageSources = [];
-for (const fileName of product.images) {
-  imageSources.push(await uploadImageToStaging(path.join(assetDirectory, fileName)));
-}
-
-const created = await createProduct(imageSources);
-const variantId = created.variants.nodes[0]?.id;
-if (!variantId) throw new Error("Shopify did not return the initial product variant.");
-await updateVariant(created.id, variantId);
 const publication = await getHeadlessPublication();
 await publishToHeadless(created.id, publication.id);
 
@@ -203,7 +201,7 @@ async function uploadImageToStaging(filePath) {
 
 async function getHeadlessPublication() {
   const data = await adminFetch(`query Publications { publications(first: 50) { nodes { id name } } }`);
-  const publication = data.publications.nodes.find((item) => /^headless$/i.test(item.name || ""));
+  const publication = data.publications.nodes.find((item) => /headless/i.test(item.name || ""));
   if (!publication) throw new Error("The Shopify Headless publication was not found; refusing to publish anywhere else.");
   return publication;
 }
@@ -221,7 +219,7 @@ async function publishToHeadless(productId, publicationId) {
 
 async function findProductByHandle(handle) {
   const data = await adminFetch(
-    `query ProductByHandle($query: String!) { products(first: 1, query: $query) { nodes { id handle } } }`,
+    `query ProductByHandle($query: String!) { products(first: 1, query: $query) { nodes { id handle variants(first: 1) { nodes { id } } } } }`,
     { query: `handle:${handle}` }
   );
   return data.products.nodes.find((item) => item.handle === handle) || null;
