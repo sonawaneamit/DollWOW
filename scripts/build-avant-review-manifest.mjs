@@ -27,6 +27,23 @@ const PUBLIC_REFERENCE_OVERRIDES = {
   }
 };
 
+// The workbook's merged cells make rows 4-6 inconsistent in raw XML. These
+// values are transcribed from Avant's supplied price and shipping workbook and
+// retain the workbook as the commercial source of truth.
+const WORKBOOK_PRICE_TIERS = [
+  { heightCm: 157, cupSize: "E-Cup", supplierCostUsd: 850, minimumAdvertisedUsd: 2099 },
+  { heightCm: 158, cupSize: "H-Cup", supplierCostUsd: 860, minimumAdvertisedUsd: 2099 },
+  { heightCm: 165, cupSize: "F-Cup", supplierCostUsd: 850, minimumAdvertisedUsd: 2099 },
+  { heightCm: 166, cupSize: "D-Cup", supplierCostUsd: 860, minimumAdvertisedUsd: 2099 }
+];
+
+const WORKBOOK_SHIPPING_USD = {
+  157: { usStandard: 245, usAir: 450, ukAir: 530, euStandard: 245, euAir: 465 },
+  158: { usStandard: 240, usAir: 460, ukAir: 540, euStandard: 255, euAir: 475 },
+  165: { usStandard: 250, usAir: 470, ukAir: 550, euStandard: 265, euAir: 485 },
+  166: { usStandard: 255, usAir: 480, ukAir: 560, euStandard: 279, euAir: 495 }
+};
+
 const audit = JSON.parse(await fs.readFile(auditPath, "utf8"));
 const [priceRows, optionRows, shippingRows, bodyRows] = await Promise.all([
   readXlsxSheet(priceWorkbook, "sheet1.xml"),
@@ -40,22 +57,25 @@ const bodySpecs = bodyRows
   .map((row) => ({ sourceRow: row, key: parseBodySpecKey(row.find(Boolean)) }));
 
 const priceTiers = priceRows
-  .filter((row) => row.some((value) => /\d{3}cm.*(?:Cup|realistic skin texture)/i.test(value)))
-  .map((row) => ({ sourceRow: row, key: parsePriceKey(row) }));
+  .map((row) => ({ sourceRow: row, key: parsePriceKey(row) }))
+  .filter((item) => item.key);
 
 const products = audit.products.map((product) => {
   const bodySpec = bodySpecs.find((item) => item.key?.heightCm === product.heightCm && item.key?.cupSize === product.cupSize);
   const priceTier = priceTiers.find((item) => item.key?.heightCm === product.heightCm && item.key?.cupSize === product.cupSize);
-  const minimumAdvertisedUsd = priceTier?.key?.minimumAdvertisedUsd ?? null;
+  const workbookPriceTier = WORKBOOK_PRICE_TIERS.find((item) => item.heightCm === product.heightCm && item.cupSize === product.cupSize);
+  const commercialTier = priceTier?.key ?? workbookPriceTier;
+  const minimumAdvertisedUsd = commercialTier?.minimumAdvertisedUsd ?? null;
   const mediaAndSpecsReady = product.mediaState === "ready" && Boolean(bodySpec);
 
   return {
     ...product,
     officialMediaDirectory: path.join("1 Pictures", product.sourceFolder),
     officialBodySpecification: bodySpec?.sourceRow ?? null,
-    officialPriceTier: priceTier?.sourceRow ?? null,
-    supplierCostUsd: priceTier?.key?.supplierCostUsd ?? null,
+    officialPriceTier: priceTier?.sourceRow ?? workbookPriceTier ?? null,
+    supplierCostUsd: commercialTier?.supplierCostUsd ?? null,
     minimumAdvertisedUsd,
+    internalShippingUsd: WORKBOOK_SHIPPING_USD[product.heightCm] ?? null,
     publicReference: PUBLIC_REFERENCE_OVERRIDES[product.displayName] ?? {
       source: "YourDoll",
       url: null,
@@ -106,8 +126,11 @@ function parseBodySpecKey(value = "") {
 }
 
 function parsePriceKey(row) {
-  const match = row.join(" ").match(/(\d{3})cm.*?([A-Z])\s*\(?realistic skin texture\)?/i);
-  const fallback = row.join(" ").match(/(\d{3})cm.*?([A-Z])\s*Cup/i);
+  // The price sheet uses merged cells, so read the configuration cell directly
+  // instead of depending on the surrounding columns being populated.
+  const configuration = row.find((value) => /\d{3}cm/i.test(String(value ?? ""))) ?? "";
+  const match = String(configuration).match(/(\d{3})cm\s*([A-Z])\b/i);
+  const fallback = row.join(" ").match(/(\d{3})cm\s*([A-Z])\s*Cup/i);
   const dimensions = match || fallback;
   return dimensions
     ? {

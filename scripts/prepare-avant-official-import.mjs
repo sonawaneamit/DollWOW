@@ -56,6 +56,7 @@ for (const product of review.products) {
     commercial: {
       minimumAdvertisedUsd: product.minimumAdvertisedUsd,
       supplierCostUsd: product.supplierCostUsd,
+      internalShippingUsd: product.internalShippingUsd,
       priceStatus: product.minimumAdvertisedUsd ? "official-map-confirmed" : "supplier-price-confirmation-needed"
     },
     publicReference: product.publicReference,
