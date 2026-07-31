@@ -158,7 +158,9 @@ export async function getProducts({
 }
 
 function isCustomerVisibleProduct(product: Product) {
-  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag));
+  return !(product.tags || []).some(
+    (tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag)
+  );
 }
 
 export async function getProductCount({ query }: { query?: string } = {}) {

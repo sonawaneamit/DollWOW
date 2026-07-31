@@ -31,7 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
   const { handle } = await params;
   const product = await getProductByHandle(handle);
   if (!product) return {};
-  return buildPdpMetadata(product);
+  const metadata = buildPdpMetadata(product);
+  if ((product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+    return { ...metadata, robots: { index: false, follow: false } };
+  }
+  return metadata;
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
