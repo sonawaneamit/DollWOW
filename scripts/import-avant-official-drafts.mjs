@@ -8,7 +8,12 @@ const args = new Map(process.argv.slice(2).map((value, index, list) => [value, l
 const execute = process.argv.includes("--execute");
 const limit = Number(args.get("--limit") || 0);
 const only = String(args.get("--only") || "").trim().toLowerCase();
+const publicationStatus = String(args.get("--status") || "DRAFT").trim().toUpperCase();
 const planPath = path.resolve(args.get("--input") || path.join(ROOT, "data/exports/avant-official-import-plan.json"));
+
+if (!new Set(["DRAFT", "ACTIVE"]).has(publicationStatus)) {
+  throw new Error("--status must be either DRAFT or ACTIVE.");
+}
 
 let tokenCache = null;
 await loadLocalEnv();
@@ -30,7 +35,7 @@ if (!execute) {
           media: product.media.imageCount,
           priceStatus: product.commercial.priceStatus,
           price: product.commercial.minimumAdvertisedUsd || null,
-          status: "DRAFT"
+          status: publicationStatus
         }))
       },
       null,
@@ -80,7 +85,7 @@ function productInput(product) {
     vendor: "Avant Doll",
     productType: "Adult doll",
     tags: tagsFor(product),
-    status: "DRAFT",
+    status: publicationStatus,
     seo: {
       title: `${product.title} | DollWow`,
       description: `Explore ${product.displayName}, an Avant Doll ${product.identity.heightCm} cm ${product.identity.cupSize} full silicone model with detailed measurements and available custom options.`

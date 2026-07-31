@@ -47,9 +47,9 @@ const SPOTLIGHT_HANDLE_PRIORITY = [
   "ida-belle-172-ready-to-ship"
 ];
 
-export function HomeAlive({ products }: { products: Product[] }) {
+export function HomeAlive({ products, recentlyAddedProducts }: { products: Product[]; recentlyAddedProducts?: Product[] }) {
   const spotlight = useMemo(() => buildSpotlightProducts(products), [products]);
-  const rails = useMemo(() => buildRails(products), [products]);
+  const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
   const [activeSpot, setActiveSpot] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -501,13 +501,13 @@ function ClosingBand() {
   );
 }
 
-function buildRails(products: Product[]): Rail[] {
+function buildRails(products: Product[], recentlyAddedProducts: Product[] = []): Rail[] {
   const ready = products.filter((product) => product.extended.stockStatus === "ready_to_ship");
   const female = products.filter((product) => !isMaleProduct(product));
   const male = products.filter(isMaleProduct);
   const rare = products.filter(isRareProduct);
   const sale = products.filter(isSaleProduct);
-  const newArrivals = products.slice(12, 26).length >= 3 ? products.slice(12, 26) : products.slice(0, 14);
+  const newArrivals = recentlyAddedProducts.length ? recentlyAddedProducts : products.slice(0, 14);
 
   const rails: Rail[] = [
     {

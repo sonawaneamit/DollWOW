@@ -10,17 +10,18 @@ const HOMEPAGE_SPOTLIGHT_HANDLES = [
 ];
 
 export default async function HomePage() {
-  const [spotlightProducts, products, femaleProducts, maleProducts, readyProducts] = await Promise.all([
+  const [spotlightProducts, products, femaleProducts, maleProducts, readyProducts, recentlyAddedProducts] = await Promise.all([
     Promise.all(HOMEPAGE_SPOTLIGHT_HANDLES.map((handle) => getProductByHandle(handle, { revalidate: 120 }))),
     getProducts({ first: 96 }),
     getProducts({ first: 36, query: shopifyQueryForFilters({ bodyType: "female" }) }),
     getProducts({ first: 36, query: shopifyQueryForFilters({ bodyType: "male" }) }),
-    getProducts({ first: 36, query: shopifyQueryForFilters({ availability: "ready_to_ship" }) })
+    getProducts({ first: 36, query: shopifyQueryForFilters({ availability: "ready_to_ship" }) }),
+    getProducts({ first: 14, sortKey: "CREATED_AT", reverse: true })
   ]);
 
   const curatedProducts = dedupeProducts([...spotlightProducts.filter(isProduct), ...readyProducts, ...femaleProducts, ...maleProducts, ...products]);
 
-  return <HomeAlive products={curatedProducts} />;
+  return <HomeAlive products={curatedProducts} recentlyAddedProducts={recentlyAddedProducts} />;
 }
 
 function dedupeProducts<T extends { id: string }>(products: T[]) {
