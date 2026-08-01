@@ -35,6 +35,7 @@
     "prepare:avant-import": "node scripts/prepare-avant-official-import.mjs",
     "import:avant-drafts": "node scripts/import-avant-official-drafts.mjs",
     "sync:avant-customizations": "node scripts/sync-avant-customization-groups.mjs",
+    "upload:avant-option-assets": "node scripts/upload-avant-option-assets.mjs",
     "audit:avant-public": "node scripts/audit-avant-public-references.mjs",
     "test": "vitest run"
   },

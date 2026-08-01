@@ -7,8 +7,27 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "ros-wig", "label": "ROS head with wig", "description": "Factory wig finish.", "priceDelta": 0 },
-        { "id": "ros-implanted-hair", "label": "ROS head with implanted hair", "description": "Implanted hair finish.", "priceDelta": 250, "productionNote": "Made to order." }
+        {
+          "id": "ros-wig",
+          "label": "ROS head with wig",
+          "description": "Factory wig finish.",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-head-ros-wig-b61f02f598.jpg?v=1785576130"
+          }
+        },
+        {
+          "id": "ros-implanted-hair",
+          "label": "ROS head with implanted hair",
+          "description": "Implanted hair finish.",
+          "priceDelta": 250,
+          "productionNote": "Made to order.",
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-head-ros-implanted-hair-89d2665531.jpg?v=1785576133"
+          }
+        }
       ]
     },
     {
@@ -18,8 +37,24 @@
       "required": true,
       "display": "swatches",
       "options": [
-        { "id": "wheat", "label": "Wheat", "priceDelta": 0, "swatch": { "kind": "color", "value": "#c98c62" } },
-        { "id": "white", "label": "White", "priceDelta": 0, "swatch": { "kind": "color", "value": "#f2d6be" } }
+        {
+          "id": "wheat",
+          "label": "Wheat",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-skin-wheat-7cf79585e2.jpg?v=1785576135"
+          }
+        },
+        {
+          "id": "white",
+          "label": "White",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-skin-white-56d4e60524.jpg?v=1785576138"
+          }
+        }
       ]
     },
     {
@@ -29,9 +64,37 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "factory-wig", "label": "Factory wig", "description": "The wig shown with this model.", "priceDelta": 0 },
-        { "id": "simple-wig-change", "label": "Simple wig change", "description": "A standard alternate wig style.", "priceDelta": 0 },
-        { "id": "complex-custom-wig", "label": "Complex custom wig", "description": "Custom styling request.", "priceDelta": 55, "productionNote": "May add production time." }
+        {
+          "id": "factory-wig",
+          "label": "Factory wig",
+          "description": "The wig shown with this model.",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-wig-factory-wig-b3071be805.png?v=1785576142"
+          }
+        },
+        {
+          "id": "simple-wig-change",
+          "label": "Simple wig change",
+          "description": "A standard alternate wig style.",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-wig-simple-wig-change-479df6532a.png?v=1785576145"
+          }
+        },
+        {
+          "id": "complex-custom-wig",
+          "label": "Complex custom wig",
+          "description": "Custom styling request.",
+          "priceDelta": 55,
+          "productionNote": "May add production time.",
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-wig-complex-custom-wig-bfcf2470e2.png?v=1785576148"
+          }
+        }
       ]
     },
     {
@@ -41,26 +104,186 @@
       "required": true,
       "display": "compact",
       "options": [
-        { "id": "eye-01", "label": "Eye color 01", "priceDelta": 0 },
-        { "id": "eye-02", "label": "Eye color 02", "priceDelta": 0 },
-        { "id": "eye-03", "label": "Eye color 03", "priceDelta": 0 },
-        { "id": "eye-04", "label": "Eye color 04", "priceDelta": 0 },
-        { "id": "eye-05", "label": "Eye color 05", "priceDelta": 0 },
-        { "id": "eye-06", "label": "Eye color 06", "priceDelta": 0 },
-        { "id": "eye-07", "label": "Eye color 07", "priceDelta": 0 },
-        { "id": "eye-08", "label": "Eye color 08", "priceDelta": 0 },
-        { "id": "eye-09", "label": "Eye color 09", "priceDelta": 0 },
-        { "id": "eye-10", "label": "Eye color 10", "priceDelta": 0 },
-        { "id": "eye-11", "label": "Eye color 11", "priceDelta": 0 },
-        { "id": "eye-12", "label": "Eye color 12", "priceDelta": 0 },
-        { "id": "eye-13", "label": "Eye color 13", "priceDelta": 0 },
-        { "id": "eye-14", "label": "Eye color 14", "priceDelta": 0 },
-        { "id": "eye-15", "label": "Eye color 15", "priceDelta": 0 },
-        { "id": "eye-16", "label": "Eye color 16", "priceDelta": 0 },
-        { "id": "eye-17", "label": "Eye color 17", "priceDelta": 0 },
-        { "id": "eye-18", "label": "Eye color 18", "priceDelta": 0 },
-        { "id": "eye-19", "label": "Eye color 19", "priceDelta": 0 },
-        { "id": "eye-20", "label": "Eye color 20", "priceDelta": 0 }
+        {
+          "id": "eye-01",
+          "label": "Eye color 01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-01-2e597cbcaa.png?v=1785576151"
+          }
+        },
+        {
+          "id": "eye-02",
+          "label": "Eye color 02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-02-8c85b4fda2.png?v=1785576154"
+          }
+        },
+        {
+          "id": "eye-03",
+          "label": "Eye color 03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-03-d854fa3130.png?v=1785576158"
+          }
+        },
+        {
+          "id": "eye-04",
+          "label": "Eye color 04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-04-4fbfdbe2da.png?v=1785576161"
+          }
+        },
+        {
+          "id": "eye-05",
+          "label": "Eye color 05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-05-d5699494be.png?v=1785576164"
+          }
+        },
+        {
+          "id": "eye-06",
+          "label": "Eye color 06",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-06-27ace8c9dd.png?v=1785576167"
+          }
+        },
+        {
+          "id": "eye-07",
+          "label": "Eye color 07",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-07-70761873c1.png?v=1785576170"
+          }
+        },
+        {
+          "id": "eye-08",
+          "label": "Eye color 08",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-08-5b0dfc2fa5.png?v=1785576173"
+          }
+        },
+        {
+          "id": "eye-09",
+          "label": "Eye color 09",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-09-287a0540bc.png?v=1785576176"
+          }
+        },
+        {
+          "id": "eye-10",
+          "label": "Eye color 10",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-10-da474e4255.png?v=1785576179"
+          }
+        },
+        {
+          "id": "eye-11",
+          "label": "Eye color 11",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-11-2d3791a442.png?v=1785576182"
+          }
+        },
+        {
+          "id": "eye-12",
+          "label": "Eye color 12",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-12-6b54c6ad6b.png?v=1785576185"
+          }
+        },
+        {
+          "id": "eye-13",
+          "label": "Eye color 13",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-13-3a77a74e41.png?v=1785576188"
+          }
+        },
+        {
+          "id": "eye-14",
+          "label": "Eye color 14",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-14-febb38d25a.png?v=1785576191"
+          }
+        },
+        {
+          "id": "eye-15",
+          "label": "Eye color 15",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-15-6f96badcea.png?v=1785576195"
+          }
+        },
+        {
+          "id": "eye-16",
+          "label": "Eye color 16",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-16-6d8c87f689.png?v=1785576198"
+          }
+        },
+        {
+          "id": "eye-17",
+          "label": "Eye color 17",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-17-99060a08e9.png?v=1785576201"
+          }
+        },
+        {
+          "id": "eye-18",
+          "label": "Eye color 18",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-18-cbd8711148.png?v=1785576204"
+          }
+        },
+        {
+          "id": "eye-19",
+          "label": "Eye color 19",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-19-268b9abf48.png?v=1785576207"
+          }
+        },
+        {
+          "id": "eye-20",
+          "label": "Eye color 20",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-20-09060e3b1a.png?v=1785576210"
+          }
+        }
       ]
     },
     {
@@ -70,8 +293,24 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "standard", "label": "Standard eye finish", "priceDelta": 0 },
-        { "id": "veined", "label": "Veined eye finish", "priceDelta": 20 }
+        {
+          "id": "standard",
+          "label": "Standard eye finish",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-style-standard-67890965bc.jpg?v=1785576213"
+          }
+        },
+        {
+          "id": "veined",
+          "label": "Veined eye finish",
+          "priceDelta": 20,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-eye-style-veined-39e7ea7f2d.jpg?v=1785576216"
+          }
+        }
       ]
     },
     {
@@ -81,10 +320,42 @@
       "required": true,
       "display": "compact",
       "options": [
-        { "id": "lip-01", "label": "Lip color 01", "priceDelta": 0 },
-        { "id": "lip-02", "label": "Lip color 02", "priceDelta": 0 },
-        { "id": "lip-03", "label": "Lip color 03", "priceDelta": 0 },
-        { "id": "lip-04", "label": "Lip color 04", "priceDelta": 0 }
+        {
+          "id": "lip-01",
+          "label": "Lip color 01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-lip-01-05dc0bb547.jpg?v=1785576220"
+          }
+        },
+        {
+          "id": "lip-02",
+          "label": "Lip color 02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-lip-02-d6ab16e67d.jpg?v=1785576224"
+          }
+        },
+        {
+          "id": "lip-03",
+          "label": "Lip color 03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-lip-03-9e90f8f480.jpg?v=1785576228"
+          }
+        },
+        {
+          "id": "lip-04",
+          "label": "Lip color 04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-lip-04-be9fa482e8.jpg?v=1785576232"
+          }
+        }
       ]
     },
     {
@@ -94,12 +365,60 @@
       "required": true,
       "display": "compact",
       "options": [
-        { "id": "bright-pink", "label": "Bright pink", "priceDelta": 0 },
-        { "id": "light-pink", "label": "Light pink", "priceDelta": 0 },
-        { "id": "natural", "label": "Natural", "priceDelta": 0 },
-        { "id": "brown", "label": "Brown", "priceDelta": 0 },
-        { "id": "dark-brown", "label": "Dark brown", "priceDelta": 0 },
-        { "id": "bright-red", "label": "Bright red", "priceDelta": 0 }
+        {
+          "id": "bright-pink",
+          "label": "Bright pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-bright-pink-c1a3140600.png?v=1785576235"
+          }
+        },
+        {
+          "id": "light-pink",
+          "label": "Light pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-light-pink-1533a9b795.png?v=1785576238"
+          }
+        },
+        {
+          "id": "natural",
+          "label": "Natural",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-natural-f572af308e.png?v=1785576241"
+          }
+        },
+        {
+          "id": "brown",
+          "label": "Brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-brown-81f54a4954.png?v=1785576245"
+          }
+        },
+        {
+          "id": "dark-brown",
+          "label": "Dark brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-dark-brown-ed4ee01f95.png?v=1785576247"
+          }
+        },
+        {
+          "id": "bright-red",
+          "label": "Bright red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-areola-bright-red-2ff8e5f913.png?v=1785576251"
+          }
+        }
       ]
     },
     {
@@ -109,8 +428,24 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "gel", "label": "Gel breasts", "priceDelta": 0 },
-        { "id": "solid", "label": "Solid breasts", "priceDelta": 0 }
+        {
+          "id": "gel",
+          "label": "Gel breasts",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-breast-gel-8bac4e83fe.jpg?v=1785576253"
+          }
+        },
+        {
+          "id": "solid",
+          "label": "Solid breasts",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-breast-solid-f10ed403cb.jpg?v=1785576256"
+          }
+        }
       ]
     },
     {
@@ -120,18 +455,114 @@
       "required": true,
       "display": "compact",
       "options": [
-        { "id": "white", "label": "White", "priceDelta": 0 },
-        { "id": "black", "label": "Black", "priceDelta": 0 },
-        { "id": "pink", "label": "Pink", "priceDelta": 0 },
-        { "id": "red", "label": "Red", "priceDelta": 0 },
-        { "id": "purple", "label": "Purple", "priceDelta": 0 },
-        { "id": "natural", "label": "Natural", "priceDelta": 0 },
-        { "id": "green", "label": "Green", "priceDelta": 0 },
-        { "id": "matte-red", "label": "Matte red", "priceDelta": 0 },
-        { "id": "matte-black", "label": "Matte black", "priceDelta": 0 },
-        { "id": "long-natural", "label": "Long natural", "priceDelta": 0 },
-        { "id": "long-red", "label": "Long red", "priceDelta": 0 },
-        { "id": "long-black", "label": "Long black", "priceDelta": 0 }
+        {
+          "id": "white",
+          "label": "White",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-white-4fdae76227.png?v=1785576259"
+          }
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-black-581e6522c0.png?v=1785576261"
+          }
+        },
+        {
+          "id": "pink",
+          "label": "Pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-pink-76e71a7160.png?v=1785576265"
+          }
+        },
+        {
+          "id": "red",
+          "label": "Red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-red-3fd5da244b.png?v=1785576267"
+          }
+        },
+        {
+          "id": "purple",
+          "label": "Purple",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-purple-93e10f9095.png?v=1785576270"
+          }
+        },
+        {
+          "id": "natural",
+          "label": "Natural",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-natural-15da6ec949.png?v=1785576273"
+          }
+        },
+        {
+          "id": "green",
+          "label": "Green",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-green-4bf865add1.png?v=1785576276"
+          }
+        },
+        {
+          "id": "matte-red",
+          "label": "Matte red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-matte-red-041f6a6e81.png?v=1785576279"
+          }
+        },
+        {
+          "id": "matte-black",
+          "label": "Matte black",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-matte-black-8017f0a276.png?v=1785576282"
+          }
+        },
+        {
+          "id": "long-natural",
+          "label": "Long natural",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-long-natural-5a8af7c6b8.png?v=1785576285"
+          }
+        },
+        {
+          "id": "long-red",
+          "label": "Long red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-long-red-05eaeddf78.png?v=1785576288"
+          }
+        },
+        {
+          "id": "long-black",
+          "label": "Long black",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-finger-long-black-6d5f629a7b.png?v=1785576291"
+          }
+        }
       ]
     },
     {
@@ -141,15 +572,87 @@
       "required": true,
       "display": "compact",
       "options": [
-        { "id": "white", "label": "White", "priceDelta": 0 },
-        { "id": "black", "label": "Black", "priceDelta": 0 },
-        { "id": "pink", "label": "Pink", "priceDelta": 0 },
-        { "id": "red", "label": "Red", "priceDelta": 0 },
-        { "id": "purple", "label": "Purple", "priceDelta": 0 },
-        { "id": "natural", "label": "Natural", "priceDelta": 0 },
-        { "id": "green", "label": "Green", "priceDelta": 0 },
-        { "id": "matte-red", "label": "Matte red", "priceDelta": 0 },
-        { "id": "matte-black", "label": "Matte black", "priceDelta": 0 }
+        {
+          "id": "white",
+          "label": "White",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-white-afbf3e661c.png?v=1785576294"
+          }
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-black-63045f76e6.png?v=1785576297"
+          }
+        },
+        {
+          "id": "pink",
+          "label": "Pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-pink-bb6bfd91f5.png?v=1785576300"
+          }
+        },
+        {
+          "id": "red",
+          "label": "Red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-red-131eda86c7.png?v=1785576303"
+          }
+        },
+        {
+          "id": "purple",
+          "label": "Purple",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-purple-d183938c4d.png?v=1785576306"
+          }
+        },
+        {
+          "id": "natural",
+          "label": "Natural",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-natural-57601b8ec6.png?v=1785576308"
+          }
+        },
+        {
+          "id": "green",
+          "label": "Green",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-green-da6c3f81da.png?v=1785576311"
+          }
+        },
+        {
+          "id": "matte-red",
+          "label": "Matte red",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-matte-red-4a7383e782.png?v=1785576315"
+          }
+        },
+        {
+          "id": "matte-black",
+          "label": "Matte black",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toe-matte-black-c5beb98807.png?v=1785576318"
+          }
+        }
       ]
     },
     {
@@ -159,9 +662,33 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "hard-feet", "label": "Hard feet (no visible bolts)", "priceDelta": 0 },
-        { "id": "standing-bolts", "label": "Standing feet with bolts", "priceDelta": 0 },
-        { "id": "non-standing", "label": "Non-standing", "priceDelta": 0 }
+        {
+          "id": "hard-feet",
+          "label": "Hard feet (no visible bolts)",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-foot-hard-feet-9b5082d3bc.jpg?v=1785576321"
+          }
+        },
+        {
+          "id": "standing-bolts",
+          "label": "Standing feet with bolts",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-foot-standing-bolts-f460d668b8.jpg?v=1785576324"
+          }
+        },
+        {
+          "id": "non-standing",
+          "label": "Non-standing",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-foot-non-standing-dc31e38f61.jpg?v=1785576326"
+          }
+        }
       ]
     },
     {
@@ -171,8 +698,24 @@
       "required": true,
       "display": "cards",
       "options": [
-        { "id": "wire-toes", "label": "Wire toes", "priceDelta": 0 },
-        { "id": "toe-bones", "label": "Toe bones", "priceDelta": 42 }
+        {
+          "id": "wire-toes",
+          "label": "Wire toes",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toes-wire-toes-18a034d1f0.jpg?v=1785576329"
+          }
+        },
+        {
+          "id": "toe-bones",
+          "label": "Toe bones",
+          "priceDelta": 42,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-toes-toe-bones-30d8f481f0_a2049e9e-85e2-4a5e-af8c-c40e450fabc1.jpg?v=1785576332"
+          }
+        }
       ]
     },
     {
@@ -182,15 +725,51 @@
       "selectionMode": "multiple",
       "display": "compact",
       "options": [
-        { "id": "none", "label": "No finish upgrades", "priceDelta": 0 },
-        { "id": "pubic-hair", "label": "Pubic hair transplant", "priceDelta": 28 },
-        { "id": "soft-butt", "label": "Soft butt", "priceDelta": 55 },
-        { "id": "body-freckles", "label": "Body freckles and moles", "priceDelta": 28 },
-        { "id": "facial-freckles", "label": "Facial freckles", "priceDelta": 21 },
-        { "id": "bikini-lines", "label": "Bikini lines", "priceDelta": 21 },
-        { "id": "matte-finish", "label": "Matte finish", "priceDelta": 21 },
-        { "id": "custom-body-paint", "label": "Custom body painting", "priceDelta": 40 },
-        { "id": "piercing", "label": "Nipple and belly piercing", "priceDelta": 11 }
+        {
+          "id": "none",
+          "label": "No finish upgrades",
+          "priceDelta": 0
+        },
+        {
+          "id": "pubic-hair",
+          "label": "Pubic hair transplant",
+          "priceDelta": 28
+        },
+        {
+          "id": "soft-butt",
+          "label": "Soft butt",
+          "priceDelta": 55
+        },
+        {
+          "id": "body-freckles",
+          "label": "Body freckles and moles",
+          "priceDelta": 28
+        },
+        {
+          "id": "facial-freckles",
+          "label": "Facial freckles",
+          "priceDelta": 21
+        },
+        {
+          "id": "bikini-lines",
+          "label": "Bikini lines",
+          "priceDelta": 21
+        },
+        {
+          "id": "matte-finish",
+          "label": "Matte finish",
+          "priceDelta": 21
+        },
+        {
+          "id": "custom-body-paint",
+          "label": "Custom body painting",
+          "priceDelta": 40
+        },
+        {
+          "id": "piercing",
+          "label": "Nipple and belly piercing",
+          "priceDelta": 11
+        }
       ]
     },
     {
@@ -200,10 +779,30 @@
       "selectionMode": "multiple",
       "display": "compact",
       "options": [
-        { "id": "none", "label": "No functional upgrades", "priceDelta": 0 },
-        { "id": "moaning", "label": "Moaning function", "priceDelta": 49 },
-        { "id": "heating", "label": "Body heating", "priceDelta": 84 },
-        { "id": "automatic-function", "label": "Automatic clamping and sucking", "priceDelta": 70 }
+        {
+          "id": "none",
+          "label": "No functional upgrades",
+          "priceDelta": 0
+        },
+        {
+          "id": "moaning",
+          "label": "Moaning function",
+          "priceDelta": 49
+        },
+        {
+          "id": "heating",
+          "label": "Body heating",
+          "priceDelta": 84,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-functional-heating-5c4daff469_34c2345a-ac0b-4343-9820-0796c770e7f4.jpg?v=1785576334"
+          }
+        },
+        {
+          "id": "automatic-function",
+          "label": "Automatic clamping and sucking",
+          "priceDelta": 70
+        }
       ]
     },
     {
@@ -213,12 +812,44 @@
       "selectionMode": "multiple",
       "display": "compact",
       "options": [
-        { "id": "none", "label": "No accessory", "priceDelta": 0 },
-        { "id": "head-rod", "label": "Head rod", "priceDelta": 6 },
-        { "id": "head-stand", "label": "Doll head stand", "priceDelta": 8 },
-        { "id": "pvc-torso-stand", "label": "PVC torso stand", "priceDelta": 41 },
-        { "id": "full-doll-stand", "label": "Full doll stand", "priceDelta": 77 },
-        { "id": "heating-blanket", "label": "Heating blanket", "priceDelta": 21 }
+        {
+          "id": "none",
+          "label": "No accessory",
+          "priceDelta": 0
+        },
+        {
+          "id": "head-rod",
+          "label": "Head rod",
+          "priceDelta": 6
+        },
+        {
+          "id": "head-stand",
+          "label": "Doll head stand",
+          "priceDelta": 8,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-care-head-stand-f75b238be4_44d958c9-8fac-45f3-bc25-3af4a8ff5d0c.jpg?v=1785576337"
+          }
+        },
+        {
+          "id": "pvc-torso-stand",
+          "label": "PVC torso stand",
+          "priceDelta": 41
+        },
+        {
+          "id": "full-doll-stand",
+          "label": "Full doll stand",
+          "priceDelta": 77
+        },
+        {
+          "id": "heating-blanket",
+          "label": "Heating blanket",
+          "priceDelta": 21,
+          "swatch": {
+            "kind": "image",
+            "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/avant-care-heating-blanket-5c4daff469_8b0ffb29-63de-4fb6-902e-9c782ae977ce.jpg?v=1785576339"
+          }
+        }
       ]
     }
   ]
