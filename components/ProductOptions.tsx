@@ -33,13 +33,22 @@ import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 
 export function ProductOptions({ product }: { product: Product }) {
+  const config = useMemo(() => getCustomizationConfig(product), [product]);
+
+  if (!config.groups.length) {
+    return <ProductOptionsOnRequest product={product} />;
+  }
+
+  return <ProductOptionsBuilder product={product} config={config} />;
+}
+
+function ProductOptionsBuilder({ product, config }: { product: Product; config: ReturnType<typeof getCustomizationConfig> }) {
   const router = useRouter();
   const rootRef = useRef<HTMLElement>(null);
   const stepPanelRef = useRef<HTMLElement>(null);
   const optionScrollerRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
-  const config = useMemo(() => getCustomizationConfig(product), [product]);
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(config.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
@@ -401,6 +410,83 @@ export function ProductOptions({ product }: { product: Product }) {
       {isPreviewOpen && heroImage && (
         <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
       )}
+    </section>
+  );
+}
+
+function ProductOptionsOnRequest({ product }: { product: Product }) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
+  const displayTitle = productPublicTitle(product);
+  const displayName = productDisplayName(product);
+  const heroImage = product.featuredImage ?? product.images[0] ?? null;
+  const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
+  const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
+  const canCheckout = Boolean(firstAvailable?.id && firstAvailable.availableForSale);
+
+  async function addToCart() {
+    if (!canCheckout || !firstAvailable?.id) return;
+    setLoading(true);
+    setError("");
+    const response = await fetch("/api/cart/create", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        merchandiseId: firstAvailable.id,
+        quantity: 1,
+        attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }] : []
+      })
+    });
+    const payload = await response.json();
+    setLoading(false);
+    if (!response.ok) {
+      setError(payload.error ?? "Could not start checkout.");
+      return;
+    }
+    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
+    writeBrowserCartState({
+      checkoutUrl,
+      totalQuantity: payload.totalQuantity ?? 1,
+      productTitle: displayTitle,
+      productDisplayName: displayName || undefined,
+      productHandle: product.handle,
+      productImageUrl: heroImage?.url,
+      productImageAlt: heroImage?.altText ?? displayTitle,
+      currencyCode,
+      customizationSummary: []
+    });
+    router.push(checkoutUrl);
+  }
+
+  return (
+    <section data-tone="blush" className="relative overflow-hidden rounded-[24px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] p-5 shadow-soft sm:p-8">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_25rem_at_80%_5%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(30rem_22rem_at_10%_100%,rgba(192,105,94,0.12),transparent_64%)]" />
+      <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
+        <div>
+          <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Avant Doll</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Order the configuration shown</h2>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-ivory-400">
+            The listed price covers the configuration shown in this product gallery. If you would like a different finish or an additional feature, ask our team before checkout and we will confirm what is available for this model.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+              {loading ? "Starting checkout" : `Checkout ${formatMoney(basePrice, currencyCode)}`}
+            </GoldButton>
+            <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-gold-500/35 px-5 py-2.5 text-sm font-semibold text-ivory-50 transition hover:border-gold-300 hover:bg-ivory-50/[0.05]">
+              Ask about options
+            </a>
+          </div>
+          {error && <p className="mt-3 text-sm text-danger">{error}</p>}
+        </div>
+        <div className="rounded-[18px] border border-gold-500/18 bg-ivory-50/[0.045] p-4 text-sm text-ivory-300">
+          <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Included with this listing</p>
+          <p className="mt-3 text-lg font-semibold text-ivory-50">{formatMoney(basePrice, currencyCode)}</p>
+          <p className="mt-1 leading-6 text-ivory-400">Base configuration shown in the product photos and specifications.</p>
+        </div>
+      </div>
     </section>
   );
 }

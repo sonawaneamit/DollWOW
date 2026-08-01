@@ -150,6 +150,13 @@ const configs = {
     groups: [skinTones, torsoCareAddOns],
     rules: []
   },
+  optionsOnRequest: {
+    id: "options-on-request",
+    brandLabel: "Options confirmed with our team",
+    leadTimeNote: "",
+    groups: [],
+    rules: []
+  },
   generic: {
     id: "generic",
     brandLabel: "DollWow Select",
@@ -161,7 +168,9 @@ const configs = {
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
   const text = [product.extended.brand, product.vendor, product.productType, ...product.tags].join(" ").toLowerCase();
-  const importedGroups = product.extended.customizationGroups?.filter((group) => group.options.length >= 2);
+  const importedGroups = product.extended.customizationGroups?.filter(
+    (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
+  );
   if (importedGroups?.length) {
     return {
       id: "imported",
@@ -172,6 +181,9 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
     };
   }
   if (text.includes("torso")) return configs.torso;
+  // Avant's current import contains option documentation, not selectable option values.
+  // Do not substitute generic DollWow options or prices for an official Avant configuration.
+  if (text.includes("avant")) return configs.optionsOnRequest;
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
   if (text.includes("starpery")) return configs.starpery;
