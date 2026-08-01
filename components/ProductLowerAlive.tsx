@@ -482,8 +482,8 @@ function SimilarDollCard({ product, reference }: { product: Product; reference: 
 function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   if (readyToShip) {
     return [
-      { label: "Order placed", detail: "Your order details are captured privately. Card shows a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
-      { label: "Specialist QC review", detail: "A real person checks availability, shipping timing, and order notes before release.", when: "1 business day", icon: <ShieldCheck className="h-5 w-5" /> },
+      { label: "Order placed", detail: "You receive a private order confirmation with the details you selected.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
+      { label: "Order check", detail: "We confirm that the doll is in stock and ready to ship.", when: "1 business day", icon: <ShieldCheck className="h-5 w-5" /> },
       {
         label: "Warehouse release",
         detail: "After stock confirmation, ready-to-ship dolls usually leave the warehouse within 2-3 business days. Custom changes are limited so release stays fast.",
@@ -502,8 +502,8 @@ function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   }
 
   return [
-    { label: "Order placed", detail: "We save your selected options and send a private confirmation. Your payment statement uses a neutral name.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
-    { label: "Specialist QC review", detail: "A real person checks compatibility, pricing, timing, and order notes before anything is made.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
+    { label: "Order placed", detail: "You receive a private confirmation with the options you selected.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
+    { label: "Order check", detail: "We review your selected options, price, and timing before production begins.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
     { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Sparkles className="h-5 w-5" /> },
     {
       label: "Factory photo approval",

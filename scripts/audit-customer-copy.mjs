@@ -4,6 +4,8 @@ import path from "node:path";
 const roots = ["app", "components", "lib/catalog"];
 const excludedSegments = ["/api/", "/ops/", "/admin/", "/llms.txt/", ".test.", ".spec."];
 const rules = [
+  ["backend order notes", /\border notes\b/gi],
+  ["checkout implementation wording", /passed to Shopify/gi],
   ["stock path", /stock path/gi],
   ["order path", /order path/gi],
   ["factory-order path", /factory-order path/gi],

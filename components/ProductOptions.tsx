@@ -279,7 +279,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             </div>
             {(isReviewing || activeGroup.description) && (
               <p className="mt-2 text-sm leading-5 text-ivory-400">
-                {isReviewing ? "Final specs are passed to Shopify as order notes and confirmed by our team before fulfillment." : activeGroup.description}
+                {isReviewing ? "Review your selections and total before you continue to checkout." : activeGroup.description}
               </p>
             )}
           </div>
@@ -329,7 +329,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
 
             {!variant?.availableForSale && (
               <p className="mt-5 rounded-[18px] border border-danger/25 bg-danger/10 p-4 text-sm text-ivory-300">
-                This configuration is not available for checkout yet. Contact support and we will confirm it manually.
+                This option combination is not available to order online. Contact us and we will help with the closest available choice.
               </p>
             )}
           </div>
@@ -389,7 +389,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             </div>
             <div className="mt-3 grid gap-2 text-xs text-ivory-400 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet Shopify checkout" />
-              <Assurance icon={<Clock3 className="h-4 w-4" />} text="Final specs confirmed by support" />
+              <Assurance icon={<Clock3 className="h-4 w-4" />} text="Help with options when you need it" />
             </div>
           </div>
         </aside>
@@ -466,9 +466,9 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
       <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Avant Doll</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Order the configuration shown</h2>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Buy this doll as shown</h2>
           <p className="mt-3 max-w-xl text-sm leading-6 text-ivory-400">
-            The listed price covers the configuration shown in this product gallery. If you would like a different finish or an additional feature, ask our team before checkout and we will confirm what is available for this model.
+            This listing includes the doll shown in the gallery. Looking for a different finish or feature? Send us a message before checkout and we will help you find the right fit.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
@@ -484,7 +484,7 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
         <div className="rounded-[18px] border border-gold-500/18 bg-ivory-50/[0.045] p-4 text-sm text-ivory-300">
           <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Included with this listing</p>
           <p className="mt-3 text-lg font-semibold text-ivory-50">{formatMoney(basePrice, currencyCode)}</p>
-          <p className="mt-1 leading-6 text-ivory-400">Base configuration shown in the product photos and specifications.</p>
+          <p className="mt-1 leading-6 text-ivory-400">Includes the doll shown in the product photos and details.</p>
         </div>
       </div>
     </section>

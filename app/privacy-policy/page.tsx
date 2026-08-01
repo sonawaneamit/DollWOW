@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
           items: [
             "Order updates are kept practical and discreet.",
             "If support needs more information about your build, shipping issue, or approval step, we ask for only what helps resolve the case.",
-            "Order notes help us remember your choices and provide consistent support without making you repeat details."
+            "Purchase details help us remember your choices and provide consistent support without making you repeat details."
           ]
         },
         {

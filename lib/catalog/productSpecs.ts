@@ -204,7 +204,7 @@ function productFallbackIntro(product: Product) {
     return `${leadName} is a ${availability} ${brand} ${bodyLabel} with ${specPhrase}. ${customLine}`;
   }
 
-  return `${leadName} is a ${availability} ${brand} ${bodyLabel} with measurements, timing, and order details checked before you continue.`;
+  return `${leadName} is a ${availability} ${brand} ${bodyLabel}. View the measurements, timing, and order details before checkout.`;
 }
 
 function isRedundantWithTitle(product: Product, intro: string) {

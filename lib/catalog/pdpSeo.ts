@@ -367,7 +367,7 @@ export function pdpFaqItems(product: Product): FaqItem[] {
       question: "How does delivery work for this build?",
       answer: readyToShip
         ? `This model is listed as ready to ship. Our team confirms stock, timing, and release details before it moves out for discreet delivery. Current timing: ${delivery}.`
-        : `This model is built to order. We confirm timing, compatibility, and order notes before production starts. Current timing: ${delivery}.`
+        : `This model is built to order. We confirm the available timing and selected options before production starts. Current timing: ${delivery}.`
     },
     {
       question: "Can I customize this doll before checkout?",

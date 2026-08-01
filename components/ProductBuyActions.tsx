@@ -45,8 +45,7 @@ export function ProductBuyActions({
         quantity: 1,
         attributes: [
           ...(productDisplayName ? [{ key: "DollWow Reference Name", value: productDisplayName }] : []),
-          { key: "DollWow Build", value: "Buy as shown" },
-          { key: "DollWow Fulfillment Note", value: "Base configuration selected; team confirms final specs before fulfillment." }
+          { key: "Selected configuration", value: "As shown" }
         ]
       })
     });
@@ -87,8 +86,8 @@ export function ProductBuyActions({
       </div>
       <p className="text-xs leading-5 text-ivory-500">
         {readyToShip
-          ? `Buy as shown uses the exact warehouse configuration for ${productTitle}. Ready-to-ship orders are stock-confirmed, reviewed by our team, and released in plain packaging as quickly as possible.`
-          : `Buy as shown uses the base configuration for ${productTitle}. Custom builds are reviewed by our team and move through factory photo approval before shipment.`}
+          ? `Buy as shown reserves the warehouse doll pictured for ${productTitle}. It ships in plain packaging once stock is confirmed.`
+          : `Buy as shown keeps the configuration pictured for ${productTitle}. For custom builds, you receive factory photos before shipment.`}
       </p>
       <div className="flex flex-wrap gap-2">
         <Link href="/buyer-protection" className="rounded-[12px] border border-gold-500/16 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-300 transition hover:border-gold-300/45 hover:text-ivory-50">
