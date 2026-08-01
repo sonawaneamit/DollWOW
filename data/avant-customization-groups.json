@@ -1,0 +1,225 @@
+{
+  "groups": [
+    {
+      "id": "head-hair-finish",
+      "label": "Head and hair finish",
+      "description": "Choose the factory wig or implanted-hair finish for this ROS head.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "ros-wig", "label": "ROS head with wig", "description": "Factory wig finish.", "priceDelta": 0 },
+        { "id": "ros-implanted-hair", "label": "ROS head with implanted hair", "description": "Implanted hair finish.", "priceDelta": 250, "productionNote": "Made to order." }
+      ]
+    },
+    {
+      "id": "skin-tone",
+      "label": "Skin tone",
+      "description": "Choose the official Avant silicone skin reference.",
+      "required": true,
+      "display": "swatches",
+      "options": [
+        { "id": "wheat", "label": "Wheat", "priceDelta": 0, "swatch": { "kind": "color", "value": "#c98c62" } },
+        { "id": "white", "label": "White", "priceDelta": 0, "swatch": { "kind": "color", "value": "#f2d6be" } }
+      ]
+    },
+    {
+      "id": "wig-style",
+      "label": "Wig style",
+      "description": "Select a factory wig, a simple wig change, or a complex custom style.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "factory-wig", "label": "Factory wig", "description": "The wig shown with this model.", "priceDelta": 0 },
+        { "id": "simple-wig-change", "label": "Simple wig change", "description": "A standard alternate wig style.", "priceDelta": 0 },
+        { "id": "complex-custom-wig", "label": "Complex custom wig", "description": "Custom styling request.", "priceDelta": 55, "productionNote": "May add production time." }
+      ]
+    },
+    {
+      "id": "eye-color",
+      "label": "Eye color",
+      "description": "Choose an Avant eye-color reference.",
+      "required": true,
+      "display": "compact",
+      "options": [
+        { "id": "eye-01", "label": "Eye color 01", "priceDelta": 0 },
+        { "id": "eye-02", "label": "Eye color 02", "priceDelta": 0 },
+        { "id": "eye-03", "label": "Eye color 03", "priceDelta": 0 },
+        { "id": "eye-04", "label": "Eye color 04", "priceDelta": 0 },
+        { "id": "eye-05", "label": "Eye color 05", "priceDelta": 0 },
+        { "id": "eye-06", "label": "Eye color 06", "priceDelta": 0 },
+        { "id": "eye-07", "label": "Eye color 07", "priceDelta": 0 },
+        { "id": "eye-08", "label": "Eye color 08", "priceDelta": 0 },
+        { "id": "eye-09", "label": "Eye color 09", "priceDelta": 0 },
+        { "id": "eye-10", "label": "Eye color 10", "priceDelta": 0 },
+        { "id": "eye-11", "label": "Eye color 11", "priceDelta": 0 },
+        { "id": "eye-12", "label": "Eye color 12", "priceDelta": 0 },
+        { "id": "eye-13", "label": "Eye color 13", "priceDelta": 0 },
+        { "id": "eye-14", "label": "Eye color 14", "priceDelta": 0 },
+        { "id": "eye-15", "label": "Eye color 15", "priceDelta": 0 },
+        { "id": "eye-16", "label": "Eye color 16", "priceDelta": 0 },
+        { "id": "eye-17", "label": "Eye color 17", "priceDelta": 0 },
+        { "id": "eye-18", "label": "Eye color 18", "priceDelta": 0 },
+        { "id": "eye-19", "label": "Eye color 19", "priceDelta": 0 },
+        { "id": "eye-20", "label": "Eye color 20", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "eye-style",
+      "label": "Eye style",
+      "description": "Choose the standard eye finish or the veined-eye upgrade.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "standard", "label": "Standard eye finish", "priceDelta": 0 },
+        { "id": "veined", "label": "Veined eye finish", "priceDelta": 20 }
+      ]
+    },
+    {
+      "id": "lip-color",
+      "label": "Lip color",
+      "description": "Choose an official Avant lip-color reference.",
+      "required": true,
+      "display": "compact",
+      "options": [
+        { "id": "lip-01", "label": "Lip color 01", "priceDelta": 0 },
+        { "id": "lip-02", "label": "Lip color 02", "priceDelta": 0 },
+        { "id": "lip-03", "label": "Lip color 03", "priceDelta": 0 },
+        { "id": "lip-04", "label": "Lip color 04", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "areola-color",
+      "label": "Areola color",
+      "description": "Choose an official Avant areola-color reference.",
+      "required": true,
+      "display": "compact",
+      "options": [
+        { "id": "bright-pink", "label": "Bright pink", "priceDelta": 0 },
+        { "id": "light-pink", "label": "Light pink", "priceDelta": 0 },
+        { "id": "natural", "label": "Natural", "priceDelta": 0 },
+        { "id": "brown", "label": "Brown", "priceDelta": 0 },
+        { "id": "dark-brown", "label": "Dark brown", "priceDelta": 0 },
+        { "id": "bright-red", "label": "Bright red", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "breast-fill",
+      "label": "Breast fill",
+      "description": "Choose gel or solid breast fill.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "gel", "label": "Gel breasts", "priceDelta": 0 },
+        { "id": "solid", "label": "Solid breasts", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "finger-nail-color",
+      "label": "Finger nail color",
+      "description": "Choose an official Avant finger-nail color reference.",
+      "required": true,
+      "display": "compact",
+      "options": [
+        { "id": "white", "label": "White", "priceDelta": 0 },
+        { "id": "black", "label": "Black", "priceDelta": 0 },
+        { "id": "pink", "label": "Pink", "priceDelta": 0 },
+        { "id": "red", "label": "Red", "priceDelta": 0 },
+        { "id": "purple", "label": "Purple", "priceDelta": 0 },
+        { "id": "natural", "label": "Natural", "priceDelta": 0 },
+        { "id": "green", "label": "Green", "priceDelta": 0 },
+        { "id": "matte-red", "label": "Matte red", "priceDelta": 0 },
+        { "id": "matte-black", "label": "Matte black", "priceDelta": 0 },
+        { "id": "long-natural", "label": "Long natural", "priceDelta": 0 },
+        { "id": "long-red", "label": "Long red", "priceDelta": 0 },
+        { "id": "long-black", "label": "Long black", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "toe-nail-color",
+      "label": "Toe nail color",
+      "description": "Choose an official Avant toe-nail color reference.",
+      "required": true,
+      "display": "compact",
+      "options": [
+        { "id": "white", "label": "White", "priceDelta": 0 },
+        { "id": "black", "label": "Black", "priceDelta": 0 },
+        { "id": "pink", "label": "Pink", "priceDelta": 0 },
+        { "id": "red", "label": "Red", "priceDelta": 0 },
+        { "id": "purple", "label": "Purple", "priceDelta": 0 },
+        { "id": "natural", "label": "Natural", "priceDelta": 0 },
+        { "id": "green", "label": "Green", "priceDelta": 0 },
+        { "id": "matte-red", "label": "Matte red", "priceDelta": 0 },
+        { "id": "matte-black", "label": "Matte black", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "foot-type",
+      "label": "Foot type",
+      "description": "Choose one Avant foot construction.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "hard-feet", "label": "Hard feet (no visible bolts)", "priceDelta": 0 },
+        { "id": "standing-bolts", "label": "Standing feet with bolts", "priceDelta": 0 },
+        { "id": "non-standing", "label": "Non-standing", "priceDelta": 0 }
+      ]
+    },
+    {
+      "id": "toe-construction",
+      "label": "Toe construction",
+      "description": "Choose wire toes or the toe-bones upgrade.",
+      "required": true,
+      "display": "cards",
+      "options": [
+        { "id": "wire-toes", "label": "Wire toes", "priceDelta": 0 },
+        { "id": "toe-bones", "label": "Toe bones", "priceDelta": 42 }
+      ]
+    },
+    {
+      "id": "finish-upgrades",
+      "label": "Finish upgrades",
+      "description": "Optional body-detail upgrades from Avant.",
+      "selectionMode": "multiple",
+      "display": "compact",
+      "options": [
+        { "id": "none", "label": "No finish upgrades", "priceDelta": 0 },
+        { "id": "pubic-hair", "label": "Pubic hair transplant", "priceDelta": 28 },
+        { "id": "soft-butt", "label": "Soft butt", "priceDelta": 55 },
+        { "id": "body-freckles", "label": "Body freckles and moles", "priceDelta": 28 },
+        { "id": "facial-freckles", "label": "Facial freckles", "priceDelta": 21 },
+        { "id": "bikini-lines", "label": "Bikini lines", "priceDelta": 21 },
+        { "id": "matte-finish", "label": "Matte finish", "priceDelta": 21 },
+        { "id": "custom-body-paint", "label": "Custom body painting", "priceDelta": 40 },
+        { "id": "piercing", "label": "Nipple and belly piercing", "priceDelta": 11 }
+      ]
+    },
+    {
+      "id": "functional-upgrades",
+      "label": "Functional upgrades",
+      "description": "Optional Avant functional upgrades.",
+      "selectionMode": "multiple",
+      "display": "compact",
+      "options": [
+        { "id": "none", "label": "No functional upgrades", "priceDelta": 0 },
+        { "id": "moaning", "label": "Moaning function", "priceDelta": 49 },
+        { "id": "heating", "label": "Body heating", "priceDelta": 84 },
+        { "id": "automatic-function", "label": "Automatic clamping and sucking", "priceDelta": 70 }
+      ]
+    },
+    {
+      "id": "care-and-storage",
+      "label": "Care and storage",
+      "description": "Optional official Avant support accessories.",
+      "selectionMode": "multiple",
+      "display": "compact",
+      "options": [
+        { "id": "none", "label": "No accessory", "priceDelta": 0 },
+        { "id": "head-rod", "label": "Head rod", "priceDelta": 6 },
+        { "id": "head-stand", "label": "Doll head stand", "priceDelta": 8 },
+        { "id": "pvc-torso-stand", "label": "PVC torso stand", "priceDelta": 41 },
+        { "id": "full-doll-stand", "label": "Full doll stand", "priceDelta": 77 },
+        { "id": "heating-blanket", "label": "Heating blanket", "priceDelta": 21 }
+      ]
+    }
+  ]
+}

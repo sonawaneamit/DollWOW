@@ -10,6 +10,9 @@ const limit = Number(args.get("--limit") || 0);
 const only = String(args.get("--only") || "").trim().toLowerCase();
 const publicationStatus = String(args.get("--status") || "DRAFT").trim().toUpperCase();
 const planPath = path.resolve(args.get("--input") || path.join(ROOT, "data/exports/avant-official-import-plan.json"));
+const avantCustomizationTemplate = JSON.parse(
+  await fs.readFile(path.join(ROOT, "data/avant-customization-groups.json"), "utf8")
+);
 
 if (!new Set(["DRAFT", "ACTIVE"]).has(publicationStatus)) {
   throw new Error("--status must be either DRAFT or ACTIVE.");
@@ -129,6 +132,15 @@ function initialLookTags(product) {
   return tags;
 }
 
+function avantCustomizationGroups(identity) {
+  const groups = structuredClone(avantCustomizationTemplate.groups);
+  const skinGroup = groups.find((group) => group.id === "skin-tone");
+  if (skinGroup && /white/i.test(identity.skinTone)) {
+    skinGroup.options.sort((left, right) => Number(right.id === "white") - Number(left.id === "white"));
+  }
+  return groups;
+}
+
 function metafieldsFor(product, { priceConfirmed }) {
   const identity = product.identity;
   const identityKey = ["avant", identity.heightCm, identity.cupSize.replace(/-cup/i, ""), "silicone", identity.headModel, identity.skinTone]
@@ -148,7 +160,7 @@ function metafieldsFor(product, { priceConfirmed }) {
     metafield("stock_status", "custom"),
     metafield("delivery_estimate", "3-5 weeks from order to delivery"),
     metafield("custom_available", "true", "boolean"),
-    metafield("customization_groups", "[]", "json"),
+    metafield("customization_groups", JSON.stringify(avantCustomizationGroups(identity)), "json"),
     metafield("documented_customization_options", JSON.stringify(product.documentedOptions), "json"),
     metafield("look_tags", JSON.stringify(initialLookTags(product)), "json"),
     metafield(

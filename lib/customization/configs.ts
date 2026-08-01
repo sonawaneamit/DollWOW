@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationRule } from "@/types/customization";
+import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -181,9 +182,15 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
     };
   }
   if (text.includes("torso")) return configs.torso;
-  // Avant's current import contains option documentation, not selectable option values.
-  // Do not substitute generic DollWow options or prices for an official Avant configuration.
-  if (text.includes("avant")) return configs.optionsOnRequest;
+  if (text.includes("avant")) {
+    return {
+      id: "avant-official",
+      brandLabel: "Avant Doll",
+      leadTimeNote: "Avant custom builds are confirmed before production begins.",
+      groups: getAvantCustomizationGroups(product),
+      rules: []
+    };
+  }
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
   if (text.includes("starpery")) return configs.starpery;
