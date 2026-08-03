@@ -25,6 +25,7 @@ type ShopifyProductNode = {
   brand?: { value?: string };
   sourceTitle?: { value?: string };
   sourceHandle?: { value?: string };
+  sourceReleaseRank?: { value?: string };
   material?: { value?: string };
   heightCm?: { value?: string };
   weightLb?: { value?: string };
@@ -139,6 +140,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       brand: node.brand?.value ?? node.vendor,
       sourceTitle: node.sourceTitle?.value,
       sourceHandle: node.sourceHandle?.value,
+      sourceReleaseRank: numberValue(node.sourceReleaseRank?.value),
       material: node.material?.value,
       heightCm: numberValue(node.heightCm?.value),
       weightLb: numberValue(node.weightLb?.value),

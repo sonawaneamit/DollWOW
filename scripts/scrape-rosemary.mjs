@@ -263,11 +263,10 @@ function extractPaginationUrls(html, baseUrl) {
       const url = new URL(decoded, baseUrl);
       if (url.hostname !== base.hostname) continue;
       if (!url.pathname.includes("/sex-doll-brands/") && !url.search.includes("filter_brand")) continue;
-      if (base.searchParams.has("filter_brand") && !url.searchParams.has("filter_brand")) {
-        url.searchParams.set("filter_brand", base.searchParams.get("filter_brand"));
-      }
-      if (base.searchParams.has("query_type_brand") && !url.searchParams.has("query_type_brand")) {
-        url.searchParams.set("query_type_brand", base.searchParams.get("query_type_brand"));
+      for (const [key, value] of base.searchParams.entries()) {
+        if (!url.searchParams.has(key)) {
+          url.searchParams.set(key, value);
+        }
       }
       url.hash = "";
       urls.add(url.toString());

@@ -26,9 +26,10 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
   const filters: CatalogFilters = { brand: brand.value };
   const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 600 });
   const filtered = filterProducts(products, filters);
+  const orderedProducts = brand.value === "irontech" ? orderBySourceRelease(filtered) : filtered;
   const profile = brandSeoProfile(brand);
   const relatedLinks = brandRelatedLinks(brand);
-  const structuredData = buildBrandStructuredData(brand, filtered);
+  const structuredData = buildBrandStructuredData(brand, orderedProducts);
 
   return (
     <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -41,7 +42,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
           <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Brand hub</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
-          <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} DollWow listings in this brand view</p>
+          <p className="mt-3 text-sm font-semibold text-gold-200">{orderedProducts.length} DollWow listings in this brand view</p>
         </div>
       </div>
 
@@ -88,7 +89,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
         </div>
       </section>
 
-      <ProductGrid products={filtered} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+      <ProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
 
       <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
         <div className="max-w-3xl">
@@ -140,4 +141,16 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
       </section>
     </section>
   );
+}
+
+function orderBySourceRelease<T extends { extended: { sourceReleaseRank?: number } }>(products: T[]) {
+  return [...products].sort((left, right) => {
+    const leftRank = left.extended.sourceReleaseRank;
+    const rightRank = right.extended.sourceReleaseRank;
+
+    if (leftRank === undefined && rightRank === undefined) return 0;
+    if (leftRank === undefined) return 1;
+    if (rightRank === undefined) return -1;
+    return leftRank - rightRank;
+  });
 }

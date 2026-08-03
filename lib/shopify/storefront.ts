@@ -92,6 +92,7 @@ function productFieldsBase(imageFirst: number) {
   brand: metafield(namespace: "custom", key: "brand") { value }
   sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
   sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }
+  sourceReleaseRank: metafield(namespace: "custom", key: "source_release_rank") { value }
   material: metafield(namespace: "custom", key: "material") { value }
   heightCm: metafield(namespace: "custom", key: "height_cm") { value }
   weightLb: metafield(namespace: "custom", key: "weight_lb") { value }

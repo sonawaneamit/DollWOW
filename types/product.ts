@@ -48,6 +48,7 @@ export type ProductExtended = {
   brand?: string;
   sourceTitle?: string;
   sourceHandle?: string;
+  sourceReleaseRank?: number;
   material?: string;
   heightCm?: number;
   weightLb?: number;
