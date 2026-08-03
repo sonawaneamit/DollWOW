@@ -20,6 +20,7 @@
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
     "backfill:measurements": "node scripts/backfill-shopify-measurements.mjs",
     "backfill:irontech-release-order": "node scripts/backfill-irontech-release-order.mjs",
+    "backfill:source-release-order": "node scripts/backfill-source-release-order.mjs",
     "backfill:display-names": "node scripts/backfill-shopify-display-names.mjs",
     "backfill:body-type": "node scripts/backfill-shopify-body-type.mjs",
     "enrich:look-tags": "node scripts/enrich-shopify-look-tags.mjs",

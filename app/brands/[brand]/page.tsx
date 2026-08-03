@@ -28,10 +28,11 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: 600,
-    ...(brand.value === "irontech" ? { cacheKey: "irontech-release-order-v1" } : {})
+    cacheKey: `${brand.value}-release-order-v1`
   });
   const filtered = filterProducts(products, filters);
-  const orderedProducts = brand.value === "irontech" ? orderBySourceRelease(filtered) : filtered;
+  const orderedProducts = orderBySourceRelease(filtered);
+  const hasReleaseOrder = orderedProducts.some((product) => product.extended.sourceReleaseRank !== undefined);
   const profile = brandSeoProfile(brand);
   const relatedLinks = brandRelatedLinks(brand);
   const structuredData = buildBrandStructuredData(brand, orderedProducts);
@@ -94,8 +95,8 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
         </div>
       </section>
 
-      {brand.value === "irontech" ? (
-        <BrandProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+      {hasReleaseOrder ? (
+        <BrandProductGrid brandLabel={brand.label} products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
       ) : (
         <ProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
       )}

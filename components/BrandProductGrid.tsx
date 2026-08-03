@@ -8,10 +8,12 @@ import { ProductGrid } from "./ProductGrid";
 type SortOption = "latest" | "price-low" | "price-high";
 
 export function BrandProductGrid({
+  brandLabel,
   products,
   filters,
   resetHref
 }: {
+  brandLabel: string;
   products: Product[];
   filters: CatalogFilters;
   resetHref: string;
@@ -20,7 +22,7 @@ export function BrandProductGrid({
   const sortedProducts = useMemo(() => sortProducts(products, sort), [products, sort]);
 
   return (
-    <section aria-label="Irontech product listings">
+    <section aria-label={`${brandLabel} product listings`}>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-y border-gold-500/12 py-4">
         <p className="text-sm text-ivory-400">Showing newest releases first</p>
         <label className="flex items-center gap-3 text-sm font-semibold text-ivory-200">
