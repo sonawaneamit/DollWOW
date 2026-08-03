@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
+import { BrandProductGrid } from "@/components/BrandProductGrid";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
@@ -93,7 +94,11 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
         </div>
       </section>
 
-      <ProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+      {brand.value === "irontech" ? (
+        <BrandProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+      ) : (
+        <ProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+      )}
 
       <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
         <div className="max-w-3xl">
@@ -155,6 +160,6 @@ function orderBySourceRelease<T extends { extended: { sourceReleaseRank?: number
     if (leftRank === undefined && rightRank === undefined) return 0;
     if (leftRank === undefined) return 1;
     if (rightRank === undefined) return -1;
-    return leftRank - rightRank;
+    return rightRank - leftRank;
   });
 }
