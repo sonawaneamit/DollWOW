@@ -17,6 +17,7 @@ if (args.help) {
 assertShopifyAdminEnv();
 
 const execute = Boolean(args.execute);
+if (execute) await ensureStorefrontReleaseRankDefinition();
 const products = await fetchIrontechProducts();
 const sourceDates = await fetchSourcePublishDates(products);
 const ranks = buildReleaseRanks(sourceDates);
@@ -93,6 +94,54 @@ function buildReleaseRanks(sourceDates) {
     ranks.set(handle, index + 1);
   });
   return ranks;
+}
+
+async function ensureStorefrontReleaseRankDefinition() {
+  const data = await adminFetch(
+    `query SourceReleaseRankDefinition {
+      metafieldDefinition(identifier: {
+        namespace: "custom"
+        key: "source_release_rank"
+        ownerType: PRODUCT
+      }) {
+        id
+      }
+    }`
+  );
+
+  const response = data.metafieldDefinition
+    ? await adminFetch(
+        `mutation ExposeSourceReleaseRank($definition: MetafieldDefinitionUpdateInput!) {
+          metafieldDefinitionUpdate(definition: $definition) {
+            userErrors { field message }
+          }
+        }`,
+        { definition: { id: data.metafieldDefinition.id, access: { storefront: "PUBLIC_READ" } } }
+      )
+    : await adminFetch(
+        `mutation CreateSourceReleaseRank($definition: MetafieldDefinitionInput!) {
+          metafieldDefinitionCreate(definition: $definition) {
+            userErrors { field message }
+          }
+        }`,
+        {
+          definition: {
+            name: "Source release rank",
+            namespace: "custom",
+            key: "source_release_rank",
+            ownerType: "PRODUCT",
+            type: "number_integer",
+            access: { storefront: "PUBLIC_READ" }
+          }
+        }
+      );
+
+  const errors = response.metafieldDefinitionUpdate?.userErrors || response.metafieldDefinitionCreate?.userErrors || [];
+  const error = errors[0];
+  if (error) {
+    const field = Array.isArray(error.field) ? error.field.join(".") : error.field;
+    throw new Error(field ? `${field}: ${error.message}` : error.message);
+  }
 }
 
 async function fetchSourcePublishDates(products) {
