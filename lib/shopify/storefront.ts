@@ -123,13 +123,15 @@ export async function getProducts({
   first = 96,
   includeCustomizationGroups = false,
   sortKey = "TITLE",
-  reverse = false
+  reverse = false,
+  cacheKey
 }: {
   query?: string;
   first?: number;
   includeCustomizationGroups?: boolean;
   sortKey?: "TITLE" | "CREATED_AT" | "UPDATED_AT" | "PRICE" | "BEST_SELLING";
   reverse?: boolean;
+  cacheKey?: string;
 } = {}) {
   const fallbackProducts = sampleProducts.slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
@@ -142,7 +144,8 @@ export async function getProducts({
     while (products.length < target) {
       const pageSize = Math.min(250, target - products.length);
       const data: ProductListData = await storefrontFetch<ProductListData>(
-        `query Products($first: Int!, $query: String, $after: String, $sortKey: ProductSortKeys!, $reverse: Boolean!) {
+        `# ${cacheKey ?? "catalog-v1"}
+        query Products($first: Int!, $query: String, $after: String, $sortKey: ProductSortKeys!, $reverse: Boolean!) {
           products(first: $first, after: $after, query: $query, sortKey: $sortKey, reverse: $reverse) {
             edges { cursor node { ${productListFields({ includeCustomizationGroups })} } }
             pageInfo { hasNextPage endCursor }

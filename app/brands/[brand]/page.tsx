@@ -24,7 +24,11 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
   if (!brand) notFound();
 
   const filters: CatalogFilters = { brand: brand.value };
-  const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 600 });
+  const products = await getProducts({
+    query: shopifyQueryForFilters(filters),
+    first: 600,
+    ...(brand.value === "irontech" ? { cacheKey: "irontech-release-order-v1" } : {})
+  });
   const filtered = filterProducts(products, filters);
   const orderedProducts = brand.value === "irontech" ? orderBySourceRelease(filtered) : filtered;
   const profile = brandSeoProfile(brand);
