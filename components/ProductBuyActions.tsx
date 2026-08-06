@@ -6,7 +6,6 @@ import { Loader2, ShoppingBag, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { writeBrowserCartState } from "@/lib/cart/browser";
-import type { CatalogBodyType } from "@/lib/catalog/bodyType";
 import type { ProductImage } from "@/types/product";
 import { GoldButton } from "./GoldButton";
 import { TrustLogoStrip } from "./TrustLogoStrip";
@@ -17,7 +16,6 @@ export function ProductBuyActions({
   productDisplayName,
   productHandle,
   productImage,
-  bodyType = "unknown",
   readyToShip = false
 }: {
   merchandiseId: string;
@@ -25,15 +23,11 @@ export function ProductBuyActions({
   productDisplayName?: string;
   productHandle: string;
   productImage?: ProductImage | null;
-  bodyType?: CatalogBodyType;
   readyToShip?: boolean;
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const customizeLabel =
-    bodyType === "male" ? "Customize him" : bodyType === "female" ? "Customize her" : "Customize this build";
-
   async function buyAsShown() {
     setLoading(true);
     setError("");
@@ -81,7 +75,7 @@ export function ProductBuyActions({
         </GoldButton>
         <GoldButton variant="secondary" onClick={scrollToCustomizer} className="min-h-14">
           <SlidersHorizontal className="h-4 w-4" />
-          {customizeLabel}
+          Customize
         </GoldButton>
       </div>
       <p className="text-xs leading-5 text-ivory-500">

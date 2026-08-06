@@ -11,7 +11,6 @@ import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { getCatalogBrand } from "@/lib/catalog/brands";
-import { productBodyType } from "@/lib/catalog/bodyType";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildPdpDecisionNotes,
@@ -54,7 +53,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
   const pdpTitle = productPdpTitle(product);
-  const bodyType = productBodyType(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -119,7 +117,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 productDisplayName={displayName || undefined}
                 productHandle={product.handle}
                 productImage={product.featuredImage ?? product.images[0] ?? null}
-                bodyType={bodyType}
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
               />
             )}

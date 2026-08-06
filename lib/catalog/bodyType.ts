@@ -19,17 +19,13 @@ export function productBodyType(product: Product): CatalogBodyType {
 }
 
 export function productBuilderHeading(product: Product) {
-  const bodyType = productBodyType(product);
-  if (bodyType === "male") return "Make him yours";
-  if (bodyType === "female") return "Make her yours";
+  void product;
   return "Make it yours";
 }
 
 export function productCustomizeLabel(product: Product) {
-  const bodyType = productBodyType(product);
-  if (bodyType === "male") return "Customize him";
-  if (bodyType === "female") return "Customize her";
-  return "Customize this build";
+  void product;
+  return "Customize";
 }
 
 export function productBodyLabel(product: Product) {
