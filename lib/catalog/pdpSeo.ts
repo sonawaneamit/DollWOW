@@ -79,12 +79,12 @@ export function buildPdpSearchFit(product: Product) {
   const fitPhrase = buildFitPhrase(product, height, cup);
   const customPhrase =
     product.extended.customAvailable === false
-      ? "a fixed base configuration"
-      : "an included configuration with custom options available before checkout";
+      ? "The listed price is for the configuration shown."
+      : "Available choices and pricing are shown before checkout.";
 
   return {
     title: "At a glance",
-    summary: `${capitalize(orderType)} ${brandCopy} ${bodyLabel} with ${fitPhrase}, ${materialPhrase}, and ${customPhrase}. Most shoppers compare full measurements, options, and discreet checkout details before deciding.`,
+    summary: `${capitalize(orderType)} ${brandCopy} ${bodyLabel} with ${fitPhrase} and ${materialPhrase}. ${customPhrase} Most shoppers compare full measurements, options, and discreet checkout details before deciding.`,
     chips
   };
 }
@@ -418,7 +418,7 @@ function buildPdpMetaDescription(product: Product) {
 function buildFitPhrase(product: Product, height: string, cup: string) {
   const fitBits = [];
   if (height) fitBits.push(phraseWithArticle(height, "frame"));
-  if (cup) fitBits.push(`${cup} profile`);
+  if (cup && cup !== "body profile") fitBits.push(`${cup} profile`);
   if (!fitBits.length) {
     const displayName = productDisplayNameForUi(product);
     return displayName ? `${displayName.toLowerCase()} styling cues` : "confirmed proportions";

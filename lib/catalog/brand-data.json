@@ -35,6 +35,27 @@
     "aliases": ["avant", "avant doll", "avant dolls", "avantdoll"]
   },
   {
+    "value": "sy",
+    "label": "SY Dolls",
+    "collectionHandle": "sy-dolls",
+    "tags": ["sy", "sy-doll", "sy-dolls"],
+    "aliases": ["sy", "sy doll", "sy dolls", "sydoll", "sydolls"]
+  },
+  {
+    "value": "moonvale",
+    "label": "Moonvale",
+    "collectionHandle": "moonvale-dolls",
+    "tags": ["moonvale", "moonvale-doll", "moonvale-dolls"],
+    "aliases": ["moonvale", "moonvale doll", "moonvale dolls"]
+  },
+  {
+    "value": "rosretty",
+    "label": "Rosretty",
+    "collectionHandle": "rosretty-dolls",
+    "tags": ["rosretty", "rosretty-doll", "rosretty-dolls"],
+    "aliases": ["rosretty", "rosretty doll", "rosretty dolls"]
+  },
+  {
     "value": "piper",
     "label": "Piper Dolls",
     "collectionHandle": "piper-dolls",

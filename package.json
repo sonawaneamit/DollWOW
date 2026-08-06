@@ -35,10 +35,15 @@
     "audit:avant-source": "node scripts/audit-avant-source-pack.mjs",
     "prepare:avant-review": "node scripts/build-avant-review-manifest.mjs",
     "prepare:avant-import": "node scripts/prepare-avant-official-import.mjs",
+    "prepare:sy-import": "node scripts/prepare-sy-official-import.mjs",
     "import:avant-drafts": "node scripts/import-avant-official-drafts.mjs",
     "sync:avant-customizations": "node scripts/sync-avant-customization-groups.mjs",
     "upload:avant-option-assets": "node scripts/upload-avant-option-assets.mjs",
     "audit:avant-public": "node scripts/audit-avant-public-references.mjs",
+    "capture:rosretty-review": "node scripts/capture-rosretty-review-sources.mjs",
+    "finalize:rosretty-review": "node scripts/finalize-rosretty-review-capture.mjs",
+    "prepare:rosretty-review": "node scripts/build-rosretty-review-manifest.mjs",
+    "prepare:rosretty-preview": "node scripts/prepare-rosretty-approved-preview.mjs",
     "test": "vitest run"
   },
   "dependencies": {

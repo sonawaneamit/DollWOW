@@ -25,17 +25,23 @@ const noCreate = Boolean(args["no-create"]);
 const quiet = Boolean(args.quiet);
 const resultsPath = args["results-output"] ? path.resolve(ROOT, String(args["results-output"])) : null;
 const limit = Number(args.limit || 0);
+const offset = Math.max(0, Number(args.offset || 0));
 const productStatus = String(args.status || "DRAFT").toUpperCase();
 const shouldPublish = Boolean(args.publish);
+const replaceMedia = Boolean(args["replace-media"]);
 const publicationNamePattern = args.publication ? new RegExp(String(args.publication), "i") : /headless|online store/i;
 const parsedInput = JSON.parse(await fs.readFile(inputPath, "utf8"));
-const products = Array.isArray(parsedInput) ? parsedInput.slice(0, limit || undefined) : [];
+const products = Array.isArray(parsedInput) ? parsedInput.slice(offset, limit ? offset + limit : undefined) : [];
 
 if (!Array.isArray(products) || !products.length) {
   throw new Error(`No products found in ${path.relative(ROOT, inputPath)}.`);
 }
 
-const blockedProducts = products.filter((product) => product.excludedFromDollWow || findRosemaryExclusiveSignals(product).length > 0);
+const blockedProducts = products.filter((product) => {
+  if (product.excludedFromDollWow) return true;
+  const sourceHost = new URL(product.sourceUrl || "https://invalid.local").hostname.toLowerCase();
+  return sourceHost.endsWith("rosemarydoll.com") && findRosemaryExclusiveSignals(product).length > 0;
+});
 
 if (blockedProducts.length) {
   throw new Error(
@@ -72,6 +78,9 @@ for (const product of products) {
     const variantId = existing.variants?.nodes?.[0]?.id;
     if (variantId) {
       await updateInitialVariant(existing.id, variantId, product);
+    }
+    if (replaceMedia && product.images?.length) {
+      await replaceProductMedia(existing.id, existing.media?.nodes || [], product);
     }
     if (shouldPublish) await publishProduct(updated.id);
     results.push({ handle: product.handle, matchedHandle: match.handle, status: "updated_existing", productId: updated.id, variantId });
@@ -131,12 +140,53 @@ async function findExistingProduct(handle) {
           variants(first: 1) {
             nodes { id }
           }
+          media(first: 100) {
+            nodes {
+              id
+              mediaContentType
+            }
+          }
         }
       }
     }`,
     { query: `handle:${handle}` }
   );
   return data.products.nodes.find((product) => product.handle === handle) || null;
+}
+
+async function replaceProductMedia(productId, currentMedia, product) {
+  const desiredMedia = (product.images || []).slice(0, Number(args.maxImages || 40)).map((image) => ({
+    originalSource: encodeMediaUrl(image.url),
+    alt: image.altText || product.title,
+    mediaContentType: "IMAGE"
+  }));
+
+  const created = await adminFetch(
+    `mutation ProductCreateMedia($productId: ID!, $media: [CreateMediaInput!]!) {
+      productCreateMedia(productId: $productId, media: $media) {
+        media { id }
+        mediaUserErrors { field message }
+      }
+    }`,
+    { productId, media: desiredMedia }
+  );
+  const createError = created.productCreateMedia.mediaUserErrors[0];
+  if (createError) throw new Error(`productCreateMedia failed for ${product.handle}: ${formatUserError(createError)}`);
+
+  const oldIds = currentMedia.map((media) => media.id).filter(Boolean);
+  if (!oldIds.length) return;
+
+  const deleted = await adminFetch(
+    `mutation ProductDeleteMedia($productId: ID!, $mediaIds: [ID!]!) {
+      productDeleteMedia(productId: $productId, mediaIds: $mediaIds) {
+        deletedMediaIds
+        mediaUserErrors { field message }
+      }
+    }`,
+    { productId, mediaIds: oldIds }
+  );
+  const deleteError = deleted.productDeleteMedia.mediaUserErrors[0];
+  if (deleteError) throw new Error(`productDeleteMedia failed for ${product.handle}: ${formatUserError(deleteError)}`);
 }
 
 async function findExistingProductForImport(product) {
@@ -308,6 +358,8 @@ function productMetafields(product) {
   return [
     metafield("catalog_identity_key", extended.catalogIdentityKey),
     metafield("catalog_body_identity_key", extended.catalogBodyIdentityKey),
+    metafield("display_name", extended.displayName),
+    metafield("source_release_rank", integerMetafieldValue(extended.sourceReleaseRank), "number_integer"),
     metafield("head_model", extended.headModel),
     metafield("body_type", extended.bodyType),
     metafield("brand", extended.brand),
@@ -428,18 +480,43 @@ function productDescriptionHtml(product) {
   const specList = dedupeSpecRows([...measurementRows, ...rows])
     .map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`)
     .join("");
-  const optionImageCount = (extended.customizationGroups || []).reduce(
-    (total, group) => total + (group.options || []).filter((option) => option.swatch?.kind === "image").length,
-    0
-  );
+  const isReadyToShip = extended.stockStatus === "ready_to_ship";
   return [
-    `<p>${escapeHtml(product.description || product.title)}</p>`,
+    `<p>${escapeHtml(productDescriptionIntro(product))}</p>`,
     specList ? `<ul>${specList}</ul>` : "",
-    optionImageCount ? `<p>${optionImageCount} customization option reference images are available in the DollWow product configurator.</p>` : "",
-    `<p>Final availability, production options, and warehouse timing are confirmed by DollWow support before fulfillment.</p>`
+    isReadyToShip
+      ? "<p>This ready-to-ship listing is checked before dispatch, and tracking is issued once it ships.</p>"
+      : "<p>For custom orders, factory photos are shared for your approval before shipment.</p>"
   ]
     .filter(Boolean)
     .join("");
+}
+
+function productDescriptionIntro(product) {
+  const extended = product.extended || {};
+  const name = extended.displayName || product.title;
+  const brand = extended.brand || product.vendor;
+  const details = [
+    extended.heightCm ? `${extended.heightCm} cm` : "",
+    extended.material,
+    extended.cupSize
+  ].filter(Boolean);
+  const identity = [brand, name].filter(Boolean).join(" ").trim();
+  const profile = details.length ? ` in ${details.join(", ")}` : "";
+  const measurements = extended.measurements || {};
+  const bust = displayMeasurementValue(measurements.Bust);
+  const hip = displayMeasurementValue(measurements.Hip);
+  const bodyDetails = [
+    bust ? `a ${bust} bust` : "",
+    hip ? `${hip} hips` : ""
+  ].filter(Boolean);
+  const silhouette = bodyDetails.length ? ` with ${bodyDetails.join(" and ")}` : "";
+
+  if (extended.stockStatus === "ready_to_ship") {
+    return `${identity || product.title} is a ready-to-ship listing${profile}${silhouette}. Product measurements and current availability are shown below.`;
+  }
+
+  return `${identity || product.title} is listed${profile}${silhouette}. Browse the full measurements and available configuration choices for this model below.`;
 }
 
 function measurementSpecRows(measurements = {}) {
@@ -458,7 +535,16 @@ function measurementSpecRows(measurements = {}) {
     "Anus Depth",
     "Oral Depth"
   ];
-  return order.map((label) => [label, measurements[label]]).filter(([, value]) => value);
+  return order
+    .map((label) => [label, displayMeasurementValue(measurements[label])])
+    .filter(([, value]) => value);
+}
+
+function displayMeasurementValue(value) {
+  return String(value || "")
+    .replace(/(\d)\s*lab\b/gi, "$1 in")
+    .replace(/\s*\/\s*/g, " / ")
+    .trim();
 }
 
 function dedupeSpecRows(rows) {

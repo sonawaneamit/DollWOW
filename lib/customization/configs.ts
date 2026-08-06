@@ -181,6 +181,10 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
       rules: []
     };
   }
+  // Rosretty source data has not yet exposed a verified per-product option
+  // schema. Check this before the shared torso fallback so no Rosretty SKU
+  // receives generic options by mistake.
+  if (text.includes("rosretty")) return configs.optionsOnRequest;
   if (text.includes("torso")) return configs.torso;
   if (text.includes("avant")) {
     return {
