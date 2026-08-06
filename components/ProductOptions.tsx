@@ -421,6 +421,7 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
+  const brandName = product.extended.brand || product.vendor || "DollWow";
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
@@ -465,10 +466,10 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_25rem_at_80%_5%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(30rem_22rem_at_10%_100%,rgba(192,105,94,0.12),transparent_64%)]" />
       <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-gold-300">Avant Doll</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Buy this doll as shown</h2>
+          <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{brandName}</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Order this doll as shown</h2>
           <p className="mt-3 max-w-xl text-sm leading-6 text-ivory-400">
-            This listing includes the doll shown in the gallery. Looking for a different finish or feature? Send us a message before checkout and we will help you find the right fit.
+            This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
@@ -476,15 +477,15 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
               {loading ? "Starting checkout" : `Checkout ${formatMoney(basePrice, currencyCode)}`}
             </GoldButton>
             <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-gold-500/35 px-5 py-2.5 text-sm font-semibold text-ivory-50 transition hover:border-gold-300 hover:bg-ivory-50/[0.05]">
-              Ask about options
+              Ask about this doll
             </a>
           </div>
           {error && <p className="mt-3 text-sm text-danger">{error}</p>}
         </div>
         <div className="rounded-[18px] border border-gold-500/18 bg-ivory-50/[0.045] p-4 text-sm text-ivory-300">
-          <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Included with this listing</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Listing price</p>
           <p className="mt-3 text-lg font-semibold text-ivory-50">{formatMoney(basePrice, currencyCode)}</p>
-          <p className="mt-1 leading-6 text-ivory-400">Includes the doll shown in the product photos and details.</p>
+          <p className="mt-1 leading-6 text-ivory-400">For the doll shown in the product gallery and listed specifications.</p>
         </div>
       </div>
     </section>

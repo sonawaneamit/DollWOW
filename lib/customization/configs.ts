@@ -168,7 +168,21 @@ const configs = {
 } satisfies Record<string, BrandCustomizationConfig>;
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
-  const text = [product.extended.brand, product.vendor, product.productType, ...product.tags].join(" ").toLowerCase();
+  // Catalog imports are not perfectly consistent about where a brand lands.
+  // Include stable product identifiers so a valid brand-specific configuration
+  // never falls through to a generic or no-options experience.
+  const text = [
+    product.extended.brand,
+    product.vendor,
+    product.productType,
+    product.extended.sourceTitle,
+    product.title,
+    product.handle,
+    ...product.tags
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
   const importedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
