@@ -124,7 +124,9 @@ export async function getProducts({
   includeCustomizationGroups = false,
   sortKey = "TITLE",
   reverse = false,
-  cacheKey
+  cacheKey,
+  cache,
+  revalidate
 }: {
   query?: string;
   first?: number;
@@ -132,6 +134,8 @@ export async function getProducts({
   sortKey?: "TITLE" | "CREATED_AT" | "UPDATED_AT" | "PRICE" | "BEST_SELLING";
   reverse?: boolean;
   cacheKey?: string;
+  cache?: RequestCache;
+  revalidate?: number;
 } = {}) {
   const fallbackProducts = sampleProducts.slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
@@ -151,7 +155,8 @@ export async function getProducts({
             pageInfo { hasNextPage endCursor }
           }
         }`,
-        { first: pageSize, query, after, sortKey, reverse }
+        { first: pageSize, query, after, sortKey, reverse },
+        { cache, revalidate }
       );
 
       products.push(...data.products.edges.map((edge) => mapShopifyProduct(edge.node)).filter(isCustomerVisibleProduct));

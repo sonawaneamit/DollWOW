@@ -8,6 +8,9 @@ import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 
+// Brand pages need to reflect newly published catalog items without a full-site redeploy.
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return catalogBrands.map((brand) => ({ brand: brand.collectionHandle }));
 }
@@ -28,7 +31,8 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: 600,
-    cacheKey: `${brand.value}-release-order-v1`
+    cacheKey: `${brand.value}-release-order-v1`,
+    cache: "no-store"
   });
   const filtered = filterProducts(products, filters);
   const orderedProducts = orderBySourceRelease(filtered);
