@@ -25,7 +25,13 @@ if (!new Set(["sy", "moonvale"]).has(brand)) {
   throw new Error("Use --brand sy or --brand moonvale.");
 }
 
-const sourceProducts = await fetchCollectionProducts(brand === "moonvale" ? "/collections/moonvale-doll/products.json" : "/collections/all/products.json");
+const sourceCollections = brand === "moonvale"
+  ? ["/collections/moonvale-doll/products.json"]
+  : ["/collections/all/products.json", "/collections/m-series/products.json", "/collections/silicone-sex-dolls/products.json"];
+const sourceProducts = uniqueBy(
+  (await Promise.all(sourceCollections.map((collectionPath) => fetchCollectionProducts(collectionPath)))).flat(),
+  (product) => product.handle
+);
 const usStock = await fetchCollectionProducts("/collections/sy-dolls-in-stock-us/products.json");
 const euStock = await fetchCollectionProducts("/collections/sy-dolls-in-stock-eu/products.json");
 const stockByHandle = new Map([
@@ -50,6 +56,7 @@ const report = {
   generatedAt: new Date().toISOString(),
   source: SOURCE,
   brand,
+  sourceCollections,
   totals: {
     sourceProducts: sourceProducts.length,
     catalogDolls: catalog.length,
@@ -195,7 +202,7 @@ function mapProduct(source, details, stock, releaseRank, retailAdjustment) {
   return {
     title,
     handle: slugify(`${label}-${identity.displayName}-${identity.heightCm || ""}cm-${identity.cupSize || ""}-${identity.material || ""}-${shortHash(source.handle)}`),
-    description: publicDescription(identity, stockStatus),
+    description: publicDescription(identity, stockStatus, details.options.length > 0),
     vendor: source.vendor === "Moonvale Doll" ? "Moonvale" : "SY Dolls",
     productType: identity.isTorso ? "Torso doll" : "Companion doll",
     tags,
@@ -289,7 +296,7 @@ function disambiguateDuplicateTitles(products) {
       if (!edition || used.has(normalize(edition))) edition = `Style ${index + 1}`;
       used.add(normalize(edition));
       product.title = cleanTitle(`${base} - ${edition} Companion Doll`);
-      product.description = `${product.description.replace(/\.$/, "")} This listing is presented as the ${edition.toLowerCase()} style.`;
+      product.description = `${product.description.replace(/\.$/, "")}. This listing uses the ${edition.toLowerCase()} configuration shown in the product photos.`;
     }
   }
 }
@@ -349,9 +356,10 @@ function parseAvisOptions(html) {
 function mapAvisGroup(source) {
   const values = Array.isArray(source.option_values) ? source.option_values : [];
   const selectionMode = String(source.allow_multiple) === "true" ? "multiple" : "single";
-  const groupLabel = cleanText(source.label_product || source.label_cart || "Customization option");
+  const sourceLabel = cleanText(source.label_product || source.label_cart || "Customization option");
+  const groupLabel = shopperOptionGroupLabel(sourceLabel);
   return {
-    id: slugify(source.key || source.option_id || groupLabel),
+    id: slugify(source.key || source.option_id || sourceLabel),
     label: groupLabel,
     required: false,
     selectionMode,
@@ -367,6 +375,35 @@ function mapAvisGroup(source) {
           : { kind: "text", value: cleanText(value.value || "Option") }
     })).filter((option) => option.id && option.label)
   };
+}
+
+function shopperOptionGroupLabel(value) {
+  const normalized = normalize(value);
+  const labels = new Map([
+    ["ros-head", "Additional head"],
+    ["ros-options", "Facial details and features"],
+    ["second-heads-hair-style", "Additional head hair finish"],
+    ["second-heads-implanted-hair", "Additional head implanted hair"],
+    ["second-heads-wig", "Additional head wig"],
+    ["second-heads-eye-options", "Additional head eye color"],
+    ["hair-style", "Hair finish"],
+    ["implanted-hair", "Implanted hair"],
+    ["wig", "Wig"],
+    ["eye-options", "Eye color"],
+    ["skin-tones", "Skin tone"],
+    ["breast-butt-softness", "Breast and butt softness"],
+    ["areola-color", "Areola color"],
+    ["nail-options", "Nail color"],
+    ["pubic-hair", "Pubic hair"],
+    ["labia-color", "Labia color"],
+    ["stand-options", "Standing support"],
+    ["body-options", "Body options"],
+    ["smart-features-1", "Smart features"],
+    ["smart-features-2", "Smart feature upgrades"],
+    ["smart-features", "Smart features"],
+    ["accessories", "Accessories"]
+  ]);
+  return labels.get(normalized) || value;
 }
 
 function balancedObject(value, start) {
@@ -401,12 +438,12 @@ async function mapWithConcurrency(items, max, mapper) {
   return output;
 }
 
-function publicDescription(identity, stockStatus) {
+function publicDescription(identity, stockStatus, hasOptions) {
   const parts = [identity.heightCm ? `${identity.heightCm} cm` : "", identity.material, identity.cupSize].filter(Boolean).join(", ");
   if (stockStatus === "ready_to_ship") {
-    return `${identity.displayName}${parts ? ` is a ready-to-ship listing in ${parts}.` : " is a ready-to-ship listing."} Measurements and current availability are shown below.`;
+    return `${identity.displayName}${parts ? ` is ready to ship in ${parts}.` : " is ready to ship."} Review the photos, measurements, and current availability before checkout.`;
   }
-  return `${identity.displayName}${parts ? ` is listed in ${parts}.` : " is listed here."} Browse the full measurements and available configuration choices for this model below.`;
+  return `${identity.displayName}${parts ? ` is available in ${parts}.` : " is available to order."} ${hasOptions ? "Review the measurements and available options for this model below." : "Review the product photos and measurements below."}`;
 }
 
 function canonicalMeasurementLabel(label) {
