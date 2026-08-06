@@ -593,7 +593,7 @@ function BuildReviewSummary({
                 <span className="block text-xs uppercase tracking-[0.12em] text-ivory-500">{option.groupLabel}</span>
                 <span className="mt-1 block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
                 <span className="mt-2 inline-flex rounded-full bg-ink-950/70 px-2.5 py-1 text-xs font-semibold text-gold-300">
-                  {option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
+                  {option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
                 </span>
               </span>
               <span className="shrink-0 text-xs font-semibold text-gold-300 opacity-70 transition group-hover:opacity-100">Edit</span>
@@ -628,7 +628,7 @@ function ReviewSidebarSummary({
             <span className="block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
             <span className="mt-0.5 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
           </span>
-          <span className="shrink-0 text-xs font-semibold text-gold-300">{option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Edit"}</span>
+          <span className="shrink-0 text-xs font-semibold text-gold-300">{option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
         </button>
       ))}
     </div>
@@ -735,7 +735,7 @@ function OptionTile({
           </span>
           {option.description && <span className="mt-2 block text-xs leading-5 text-ivory-500">{option.description}</span>}
           <span className="mt-3 inline-flex rounded-full bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-gold-300">
-            {option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
+            {option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
           </span>
           {option.productionNote && <span className="mt-2 block text-xs text-ivory-500">{option.productionNote}</span>}
           {disabled && group.display === "cards" && <span className="mt-2 block text-xs text-danger">{conflict}</span>}

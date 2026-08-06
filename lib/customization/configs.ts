@@ -1,6 +1,7 @@
 import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationRule } from "@/types/customization";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
+import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -183,6 +184,15 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
+  if (text.includes("rosretty")) {
+    return {
+      id: "rosretty-official",
+      brandLabel: "Rosretty Dolls",
+      leadTimeNote: "Rosretty selections are confirmed before production begins.",
+      groups: getRosrettyCustomizationGroups(product),
+      rules: []
+    };
+  }
   const importedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
@@ -195,10 +205,6 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
       rules: []
     };
   }
-  // Rosretty source data has not yet exposed a verified per-product option
-  // schema. Check this before the shared torso fallback so no Rosretty SKU
-  // receives generic options by mistake.
-  if (text.includes("rosretty")) return configs.optionsOnRequest;
   if (text.includes("torso")) return configs.torso;
   if (text.includes("avant")) {
     return {
