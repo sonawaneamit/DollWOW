@@ -1,4 +1,4 @@
-import type { Product } from "@/types/product";
+import type { Product, ProductMedia } from "@/types/product";
 import type { CustomizationGroup } from "@/types/customization";
 
 type Edge<T> = { node: T };
@@ -14,6 +14,13 @@ type ShopifyProductNode = {
   tags: string[];
   featuredImage: Product["featuredImage"];
   images: Connection<NonNullable<Product["featuredImage"]>>;
+  media?: Connection<{
+    mediaContentType: "IMAGE" | "VIDEO";
+    alt?: string | null;
+    image?: NonNullable<Product["featuredImage"]>;
+    previewImage?: NonNullable<Product["featuredImage"]> | null;
+    sources?: Array<{ url: string; mimeType?: string | null }>;
+  }>;
   variants: Connection<Product["variants"][number]>;
   priceRange: Product["priceRange"];
   catalogIdentityKey?: { value?: string };
@@ -128,6 +135,15 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
     tags: node.tags ?? [],
     featuredImage: node.featuredImage ?? null,
     images: node.images?.edges.map((edge) => edge.node) ?? [],
+    media:
+      node.media?.edges.flatMap<ProductMedia>(({ node }) => {
+        if (node.mediaContentType === "IMAGE" && node.image) return [{ type: "image" as const, image: node.image, altText: node.alt ?? node.image.altText }];
+        if (node.mediaContentType === "VIDEO") {
+          const source = node.sources?.find((item) => item.mimeType === "video/mp4") ?? node.sources?.[0];
+          return source ? [{ type: "video" as const, url: source.url, previewImage: node.previewImage ?? null, altText: node.alt ?? null }] : [];
+        }
+        return [];
+      }) ?? [],
     variants: node.variants?.edges.map((edge) => edge.node) ?? [],
     priceRange: node.priceRange,
     extended: {

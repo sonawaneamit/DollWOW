@@ -6,27 +6,27 @@ import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 import { productPublicTitle } from "@/lib/catalog/naming";
-import type { Product, ProductImage } from "@/types/product";
+import type { Product, ProductImage, ProductMedia } from "@/types/product";
 
 export function ProductGallery({ product }: { product: Product }) {
-  const images = useMemo(() => uniqueImages([product.featuredImage, ...product.images]), [product]);
+  const media = useMemo(() => productMedia(product), [product]);
   const [index, setIndex] = useState(0);
   const [isPreviewOpen, setPreviewOpen] = useState(false);
-  const active = images[index] ?? null;
-  const hasControls = images.length > 1;
+  const active = media[index] ?? null;
+  const hasControls = media.length > 1;
   const displayTitle = productPublicTitle(product);
 
   function move(direction: -1 | 1) {
-    setIndex((current) => (current + direction + images.length) % images.length);
+    setIndex((current) => (current + direction + media.length) % media.length);
   }
 
   return (
     <section className="space-y-3">
       <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)] shadow-soft">
-        {active ? (
+        {active?.type === "image" ? (
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
-              src={active.url}
+              src={active.image.url}
               alt={displayTitle}
               fill
               sizes="(min-width: 1024px) 44vw, 94vw"
@@ -34,6 +34,10 @@ export function ProductGallery({ product }: { product: Product }) {
               className="object-cover noir-media"
             />
           </button>
+        ) : active?.type === "video" ? (
+          <video controls playsInline preload="metadata" poster={active.previewImage?.url} className="h-full w-full bg-black object-contain">
+            <source src={active.url} type="video/mp4" />
+          </video>
         ) : (
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
             <ImageIcon className="mb-4 h-10 w-10 text-gold-300" />
@@ -63,36 +67,47 @@ export function ProductGallery({ product }: { product: Product }) {
           </>
         )}
 
-        {images.length > 0 && (
+        {media.length > 0 && (
           <div className="absolute bottom-3 right-3 rounded-full border border-gold-500/20 bg-ink-950/72 px-3 py-1 text-xs font-semibold text-ivory-100 backdrop-blur">
-            {index + 1} / {images.length}
+            {index + 1} / {media.length}
           </div>
         )}
       </div>
 
-      {images.length > 1 && (
-        <div className="grid grid-cols-5 gap-2 sm:grid-cols-6 lg:grid-cols-5">
-          {images.slice(0, 10).map((image, imageIndex) => (
+      {media.length > 1 && (
+        <div className="flex gap-2 overflow-x-auto pb-2">
+          {media.map((item, imageIndex) => (
             <button
               type="button"
-              key={`${image.url}-${imageIndex}`}
+              key={`${item.type === "image" ? item.image.url : item.url}-${imageIndex}`}
               onClick={() => setIndex(imageIndex)}
               aria-label={`View image ${imageIndex + 1}`}
               className={clsx(
-                "noir-media-wrap relative aspect-square overflow-hidden rounded-[10px] border bg-ink-900 transition",
+                "noir-media-wrap relative aspect-square w-[72px] shrink-0 overflow-hidden rounded-[10px] border bg-ink-900 transition sm:w-[84px]",
                 imageIndex === index ? "border-gold-300" : "border-gold-500/14 hover:border-gold-300/70"
               )}
             >
-              <Image src={image.url} alt={displayTitle} fill sizes="96px" className="object-cover noir-media" loading="lazy" unoptimized />
+              {item.type === "image" ? (
+                <Image src={item.image.url} alt={displayTitle} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
+              ) : item.previewImage ? (
+                <Image src={item.previewImage.url} alt={`${displayTitle} video`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
+              ) : (
+                <span className="flex h-full items-center justify-center text-xs font-semibold text-ivory-100">Video</span>
+              )}
             </button>
           ))}
         </div>
       )}
-      {isPreviewOpen && active && (
-        <ImagePreviewModal imageUrl={active.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
+      {isPreviewOpen && active?.type === "image" && (
+        <ImagePreviewModal imageUrl={active.image.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
   );
+}
+
+function productMedia(product: Product): ProductMedia[] {
+  if (product.media?.length) return product.media;
+  return uniqueImages([product.featuredImage, ...product.images]).map((image) => ({ type: "image", image, altText: image.altText }));
 }
 
 function uniqueImages(images: Array<ProductImage | null>) {

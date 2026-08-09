@@ -107,15 +107,27 @@ function productFieldsBase(imageFirst: number) {
 `;
 }
 
-function productListFields(options: { includeCustomizationGroups?: boolean; imageFirst?: number } = {}) {
+function productListFields(options: { includeCustomizationGroups?: boolean; imageFirst?: number; includeMedia?: boolean } = {}) {
   return `
     ${productFieldsBase(options.imageFirst ?? 8)}
+    ${
+      options.includeMedia
+        ? `media(first: 50) {
+            edges { node {
+              mediaContentType
+              alt
+              ... on MediaImage { image { url altText width height } }
+              ... on Video { previewImage { url altText width height } sources { url mimeType } }
+            } }
+          }`
+        : ""
+    }
     ${options.includeCustomizationGroups ? 'customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }' : ""}
   `;
 }
 
 const productDetailFields = `
-  ${productListFields({ includeCustomizationGroups: true, imageFirst: 50 })}
+  ${productListFields({ includeCustomizationGroups: true, imageFirst: 50, includeMedia: true })}
 `;
 
 export async function getProducts({
