@@ -647,6 +647,7 @@ function canonicalBrandTag(value) {
   if (/\bai\s*tech\b|\baitech\b/.test(lower)) return "ai-tech";
   if (/\bil\s*dolls?\b|\bildoll\b/.test(lower)) return "il-doll";
   if (/\bclimax\b/.test(lower)) return "climax";
+  if (/\breal\s*lady\b|\breallady\b/.test(lower)) return "real-lady";
   return slugify(value);
 }
 

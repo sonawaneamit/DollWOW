@@ -61,6 +61,7 @@ export function resolveCustomization(
         optionId: option.id,
         optionLabel: option.label,
         priceDelta: option.priceDelta ?? 0,
+        priceConfirmed: option.priceDelta !== undefined,
         productionNote: option.productionNote
       });
     }
@@ -80,6 +81,7 @@ export function resolveCustomization(
   }
 
   const optionPriceDelta = selectedOptions.reduce((sum, option) => sum + option.priceDelta, 0);
+  const requiresPriceConfirmation = selectedOptions.some((option) => !option.priceConfirmed);
   const cartAttributes = groupedCartAttributes(selectedOptions);
 
   return {
@@ -87,10 +89,14 @@ export function resolveCustomization(
     selectedOptions,
     optionPriceDelta,
     totalPrice: basePrice + optionPriceDelta,
+    requiresPriceConfirmation,
     issues,
     cartAttributes: [
       { key: "DollWow Config ID", value: config.id },
       ...cartAttributes,
+      ...(requiresPriceConfirmation
+        ? [{ key: "DollWow Price Status", value: "Selected options need final price confirmation" }]
+        : []),
       { key: "DollWow Option Delta", value: `$${optionPriceDelta}` }
     ]
   };
@@ -156,7 +162,11 @@ function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
   }
   return [...byGroup.entries()].map(([groupLabel, options]) => ({
     key: `DollWow ${groupLabel}`,
-    value: options.map((option) => (option.priceDelta ? `${option.optionLabel} (+$${option.priceDelta})` : option.optionLabel)).join(", ")
+    value: options
+      .map((option) =>
+        !option.priceConfirmed ? `${option.optionLabel} (price to confirm)` : option.priceDelta ? `${option.optionLabel} (+$${option.priceDelta})` : option.optionLabel
+      )
+      .join(", ")
   }));
 }
 

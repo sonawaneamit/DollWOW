@@ -6,6 +6,7 @@ tmp
 docs
 *.pdf
 !public/images/authorizations/*.pdf
+!public/resources/**/*.pdf
 *.xlsx
 *.zip
 README.md

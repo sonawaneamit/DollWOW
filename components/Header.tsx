@@ -49,6 +49,7 @@ const quickSearchLinks = [
   { label: "WM Dolls", href: "/brands/wm-dolls" },
   { label: "Angelkiss", href: "/brands/angelkiss-dolls" },
   { label: "Irontech", href: "/brands/irontech-dolls" },
+  { label: "Real Lady", href: "/brands/real-lady-dolls" },
   { label: "Avant Doll", href: "/brands/avant-dolls" },
   { label: "Silicone", href: "/shop/silicone" },
   { label: "TPE", href: "/shop/tpe" },

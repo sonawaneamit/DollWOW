@@ -82,6 +82,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     id: "irontech",
     brand: "Irontech Dolls",
     brandValue: "irontech",
+    relatedBrandValues: ["real-lady"],
     aliases: ["irontech", "irontech doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/irontech-authorization.jpeg",

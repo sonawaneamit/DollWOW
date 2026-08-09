@@ -19,6 +19,7 @@ export type CustomizationGroup = {
   required?: boolean;
   selectionMode?: "single" | "multiple";
   display: "cards" | "swatches" | "compact";
+  resources?: Array<{ label: string; href: string; kind?: "document" | "video" | "web" }>;
   options: CustomizationOption[];
 };
 
@@ -55,6 +56,7 @@ export type SelectedCustomizationOption = {
   optionId: string;
   optionLabel: string;
   priceDelta: number;
+  priceConfirmed: boolean;
   productionNote?: string;
 };
 
@@ -63,6 +65,7 @@ export type ResolvedCustomization = {
   selectedOptions: SelectedCustomizationOption[];
   optionPriceDelta: number;
   totalPrice: number;
+  requiresPriceConfirmation: boolean;
   issues: CustomizationIssue[];
   cartAttributes: Array<{ key: string; value: string }>;
 };

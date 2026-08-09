@@ -12,6 +12,7 @@ import {
   ChevronRight,
   Clock3,
   Eye,
+  ExternalLink,
   Loader2,
   PackageCheck,
   Palette,
@@ -73,7 +74,8 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const builderHeading = productBuilderHeading(product);
   const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
-  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+  const requiresPriceConfirmation = resolved.requiresPriceConfirmation;
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues && !requiresPriceConfirmation);
   const reviewedCount = reviewedGroupIds.size;
 
   useEffect(() => {
@@ -143,6 +145,10 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
       customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
     });
     router.push(checkoutUrl);
+  }
+
+  function askAboutBuild() {
+    router.push(`/support?product=${encodeURIComponent(product.handle)}`);
   }
 
   function selectOption(groupId: string, optionId: string) {
@@ -234,6 +240,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                 optionPriceDelta={resolved.optionPriceDelta}
                 totalPrice={resolved.totalPrice}
                 currencyCode={currencyCode}
+                requiresPriceConfirmation={requiresPriceConfirmation}
                 onEdit={goToGroup}
               />
             ) : (
@@ -337,26 +344,42 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           <div data-tone="deep" className="builder-price-island shrink-0 border-t border-gold-500/20 bg-[linear-gradient(180deg,rgba(246,233,221,0.055),rgba(79,156,138,0.055))] p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">Your build</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">{requiresPriceConfirmation ? "Starting at" : "Your build"}</p>
                 <p className="mt-1 text-2xl font-semibold">{formatMoney(resolved.totalPrice, currencyCode)}</p>
               </div>
               <div className="text-right text-xs text-ivory-500">
                 <p>Base {formatMoney(basePrice, currencyCode)}</p>
-                <p>Options {formatMoney(resolved.optionPriceDelta, currencyCode)}</p>
+                <p>{requiresPriceConfirmation ? "Selected options: price to confirm" : `Options ${formatMoney(resolved.optionPriceDelta, currencyCode)}`}</p>
               </div>
             </div>
+            {requiresPriceConfirmation && (
+              <p className="mt-3 text-sm leading-6 text-ivory-400">
+                Some selected options need a final price. Ask our team before checkout.
+              </p>
+            )}
             {error && <p className="mt-3 text-sm text-danger">{error}</p>}
             <div className="mt-3 grid gap-2">
               {isReviewing ? (
-                <button
-                  type="button"
-                  disabled={!canCheckout || loading}
-                  onClick={addToCart}
-                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-                  Checkout
-                </button>
+                requiresPriceConfirmation ? (
+                  <button
+                    type="button"
+                    onClick={askAboutBuild}
+                    className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a]"
+                  >
+                    <Sparkles className="h-4 w-4" />
+                    Ask about this build
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={!canCheckout || loading}
+                    onClick={addToCart}
+                    className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
+                  >
+                    {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+                    Checkout
+                  </button>
+                )
               ) : nextGroup ? (
                 <button
                   type="button"
@@ -401,9 +424,13 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             <p className="truncate text-xs text-ivory-500">{displayTitle}</p>
             <p className="text-base font-semibold text-gold-300">{formatMoney(resolved.totalPrice, currencyCode)}</p>
           </div>
-          <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={isReviewing ? addToCart : showReview}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-            {isReviewing ? "Checkout" : "Review"}
+          <GoldButton
+            className="min-w-36 px-4"
+            disabled={isReviewing ? (!requiresPriceConfirmation && (!canCheckout || loading)) : false}
+            onClick={isReviewing ? (requiresPriceConfirmation ? askAboutBuild : addToCart) : showReview}
+          >
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : requiresPriceConfirmation && isReviewing ? <Sparkles className="h-4 w-4" /> : <ShoppingBag className="h-4 w-4" />}
+            {isReviewing ? (requiresPriceConfirmation ? "Ask our team" : "Checkout") : "Review"}
           </GoldButton>
         </div>
       </div>
@@ -561,6 +588,7 @@ function BuildReviewSummary({
   optionPriceDelta,
   totalPrice,
   currencyCode,
+  requiresPriceConfirmation,
   onEdit
 }: {
   selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
@@ -568,15 +596,21 @@ function BuildReviewSummary({
   optionPriceDelta: number;
   totalPrice: number;
   currencyCode: string;
+  requiresPriceConfirmation: boolean;
   onEdit: (groupId: string) => void;
 }) {
   return (
     <div data-tone="deep" className="builder-review-island w-full rounded-[28px] border border-gold-500/20 bg-[linear-gradient(155deg,rgba(7,4,3,0.82),rgba(35,21,16,0.78))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
       <div className="grid gap-3 sm:grid-cols-3">
         <PriceStat label="Base doll" value={formatMoney(basePrice, currencyCode)} />
-        <PriceStat label="Options" value={formatMoney(optionPriceDelta, currencyCode)} />
-        <PriceStat label="Total" value={formatMoney(totalPrice, currencyCode)} strong />
+        <PriceStat label={requiresPriceConfirmation ? "Selected options" : "Options"} value={requiresPriceConfirmation ? "Price to confirm" : formatMoney(optionPriceDelta, currencyCode)} />
+        <PriceStat label={requiresPriceConfirmation ? "Starting total" : "Total"} value={formatMoney(totalPrice, currencyCode)} strong />
       </div>
+      {requiresPriceConfirmation && (
+        <p className="mt-3 text-sm leading-6 text-ivory-300">
+          Some selected options need a final price. Ask our team before checkout.
+        </p>
+      )}
       <div className="mt-4 max-h-[520px] overflow-y-auto pr-1 lg:max-h-[600px]">
         <div className="grid gap-3 sm:grid-cols-2">
           {selectedOptions.map((option) => (
@@ -593,7 +627,7 @@ function BuildReviewSummary({
                 <span className="block text-xs uppercase tracking-[0.12em] text-ivory-500">{option.groupLabel}</span>
                 <span className="mt-1 block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
                 <span className="mt-2 inline-flex rounded-full bg-ink-950/70 px-2.5 py-1 text-xs font-semibold text-gold-300">
-                  {option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
+                  {!option.priceConfirmed ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
                 </span>
               </span>
               <span className="shrink-0 text-xs font-semibold text-gold-300 opacity-70 transition group-hover:opacity-100">Edit</span>
@@ -628,7 +662,7 @@ function ReviewSidebarSummary({
             <span className="block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
             <span className="mt-0.5 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
           </span>
-          <span className="shrink-0 text-xs font-semibold text-gold-300">{option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
+          <span className="shrink-0 text-xs font-semibold text-gold-300">{!option.priceConfirmed ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
         </button>
       ))}
     </div>
@@ -662,15 +696,19 @@ function OptionPalette({
   currencyCode: string;
 }) {
   return (
-    <div
-      className={clsx(
-        "grid gap-4",
-        group.display === "swatches" && "grid-cols-2 sm:grid-cols-3 lg:grid-cols-2",
-        group.display === "cards" && "grid-cols-1",
-        group.display === "compact" && "grid-cols-2"
-      )}
-    >
-      {group.options.map((option) => {
+    <div>
+      {group.resources?.length ? (
+        <div className="mb-4 flex flex-wrap gap-2">
+          {group.resources.map((resource) => (
+            <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-3 py-2 text-xs font-semibold text-gold-300 transition hover:border-gold-300/60 hover:text-gold-200">
+              {resource.label}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          ))}
+        </div>
+      ) : null}
+      <div className={clsx("grid gap-4", group.display === "swatches" && "grid-cols-2 sm:grid-cols-3 lg:grid-cols-2", group.display === "cards" && "grid-cols-1", group.display === "compact" && "grid-cols-2")}>
+        {group.options.map((option) => {
         const conflict = getOptionConflict(config, selections, group.id, option.id);
         const isSelected = selectionIds(selected).includes(option.id);
         const isDisabled = Boolean(conflict) && !isSelected;
@@ -687,7 +725,8 @@ function OptionPalette({
             onClick={() => onSelect(option.id)}
           />
         );
-      })}
+        })}
+      </div>
     </div>
   );
 }
@@ -799,7 +838,9 @@ function SelectedTray({
           <div className="mt-3 flex gap-2 overflow-x-auto">
             {groups.filter((group) => reviewedGroupIds.has(group.id)).map((group) => {
               const label = selectedLabelForGroup(group, selected[group.id]);
-              const priceDelta = selectedOptions.filter((option) => option.groupId === group.id).reduce((sum, option) => sum + option.priceDelta, 0);
+              const selectedGroupOptions = selectedOptions.filter((option) => option.groupId === group.id);
+              const priceDelta = selectedGroupOptions.reduce((sum, option) => sum + option.priceDelta, 0);
+              const hasUnconfirmedPrice = selectedGroupOptions.some((option) => !option.priceConfirmed);
               return (
                 <div key={group.id} className="flex min-w-36 max-w-48 items-center gap-2 rounded-full border border-gold-500/14 bg-ivory-50/[0.38] px-3 py-2 shadow-[0_8px_22px_rgba(96,40,38,0.08)]">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#236b5f] text-[#fff4f1]">
@@ -808,7 +849,11 @@ function SelectedTray({
                   <span className="min-w-0 text-xs leading-4">
                     <span className="block truncate font-semibold text-[#3d231f]">{group.label}</span>
                     <span className="block truncate text-[#7a5b55]">{label || "Reviewed"}</span>
-                    {priceDelta ? <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(priceDelta, currencyCode)}</span> : null}
+                    {hasUnconfirmedPrice ? (
+                      <span className="block truncate font-semibold text-gold-600">Confirm price</span>
+                    ) : priceDelta ? (
+                      <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(priceDelta, currencyCode)}</span>
+                    ) : null}
                   </span>
                 </div>
               );
