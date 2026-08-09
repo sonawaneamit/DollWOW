@@ -46,44 +46,47 @@ export function PolicyLayout({
 }: PolicyLayoutProps) {
   return (
     <section className="mx-auto max-w-6xl px-5 py-12 text-text sm:px-6 lg:px-8 lg:py-16">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)]">
+      <div>
+        <p className="text-[15px] font-semibold text-text-dim">{eyebrow}</p>
+        <h1 className="mt-2 max-w-4xl font-display text-[clamp(2.25rem,4vw,3.25rem)] font-semibold leading-[1.1] text-text">{title}</h1>
+        <p className="mt-5 max-w-3xl text-[17px] leading-7 text-text-dim">{intro}</p>
+
+        {ctas.length ? (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {ctas.map((cta) => (
+              <Link
+                key={cta.href}
+                href={cta.href}
+                className={
+                  cta.primary
+                    ? "inline-flex min-h-[52px] items-center rounded-button bg-accent px-5 text-[17px] font-semibold text-white transition-colors hover:bg-accent-hover"
+                    : "inline-flex min-h-[52px] items-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
+                }
+              >
+                {cta.label}
+              </Link>
+            ))}
+          </div>
+        ) : null}
+
+        <div className="mt-7">
+          <TrustLogoStrip eager />
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <InfoVisualPanel
+          seed={`${eyebrow}-${title}`}
+          eyebrow={visual?.eyebrow ?? eyebrow}
+          title={visual?.title}
+          copy={visual?.copy}
+          cta={visual?.cta}
+          compact
+        />
+      </div>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)]">
         <div>
-          <p className="text-[15px] font-semibold text-text-dim">{eyebrow}</p>
-          <h1 className="mt-2 font-display text-[clamp(2.25rem,4vw,3.25rem)] font-semibold leading-[1.1] text-text">{title}</h1>
-          <p className="mt-5 max-w-3xl text-[17px] leading-7 text-text-dim">{intro}</p>
-
-          {ctas.length ? (
-            <div className="mt-6 flex flex-wrap gap-3">
-              {ctas.map((cta) => (
-                <Link
-                  key={cta.href}
-                  href={cta.href}
-                  className={
-                    cta.primary
-                      ? "inline-flex min-h-[52px] items-center rounded-button bg-accent px-5 text-[17px] font-semibold text-white transition-colors hover:bg-accent-hover"
-                      : "inline-flex min-h-[52px] items-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
-                  }
-                >
-                  {cta.label}
-                </Link>
-              ))}
-            </div>
-          ) : null}
-
-          <div className="mt-7">
-            <TrustLogoStrip />
-          </div>
-
-          <div className="mt-7 lg:hidden">
-            <InfoVisualPanel
-              seed={`${eyebrow}-${title}-mobile`}
-              eyebrow={visual?.eyebrow ?? eyebrow}
-              title={visual?.title}
-              copy={visual?.copy}
-              cta={visual?.cta}
-              compact
-            />
-          </div>
 
           {cards.length ? (
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -118,16 +121,6 @@ export function PolicyLayout({
         </div>
 
         <div className="space-y-5">
-          <div className="hidden lg:block">
-            <InfoVisualPanel
-              seed={`${eyebrow}-${title}`}
-              eyebrow={visual?.eyebrow ?? eyebrow}
-              title={visual?.title}
-              copy={visual?.copy}
-              cta={visual?.cta}
-            />
-          </div>
-
           <aside className="h-fit rounded-lg bg-surface p-6 shadow-card">
             <p className="text-[15px] font-semibold text-text-dim">{asideTitle ?? "Quick notes"}</p>
             <div className="mt-4 space-y-3">
