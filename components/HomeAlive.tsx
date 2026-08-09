@@ -82,12 +82,8 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
             <p className="home-hero__lead">
               Explore real DollWow catalog picks with clear specs, private checkout, and practical support when you want a second look.
             </p>
-            {activeProduct && <SpotlightMeta product={activeProduct} />}
             <div className="home-hero__actions">
-              <Link className="home-btn home-btn--primary" href={activeProduct ? `/products/${activeProduct.handle}` : "/shop"}>
-                View this doll <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link className="home-btn home-btn--ghost" href="/shop">Shop all dolls</Link>
+              <Link className="home-btn home-btn--primary" href="/shop">Shop all dolls <ArrowRight className="h-4 w-4" /></Link>
             </div>
           </div>
 
@@ -140,30 +136,6 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
 
       <PreviewShowcase products={products} />
       <ClosingBand />
-    </div>
-  );
-}
-
-function SpotlightMeta({ product }: { product: Product }) {
-  const price = product.priceRange.minVariantPrice;
-  const displayTitle = productPublicTitle(product);
-  const specs = [
-    product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
-    product.extended.material,
-    formatCupSize(product.extended.cupSize),
-    product.extended.stockStatus === "ready_to_ship" ? "Ready to ship" : "Factory order"
-  ].filter(Boolean);
-
-  return (
-    <div className="home-spot-meta">
-      <p>{product.extended.brand ?? product.vendor}</p>
-      <h2>{shortTitle(displayTitle)}</h2>
-      <div className="home-chip-row">
-        {specs.slice(0, 4).map((spec) => (
-          <span key={spec}>{spec}</span>
-        ))}
-      </div>
-      <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
     </div>
   );
 }
@@ -371,9 +343,28 @@ function HomeSpotlightVideo({ product }: { product: Product }) {
       >
         <source src={media.video} type="video/mp4" />
       </video>
-      <span className="home-spot__video-badge"><span /> Product preview</span>
+      <span className="home-spot__video-badge">
+        <span />
+        {displayBrandFor(product)} <b aria-hidden="true">|</b> {modelNameFor(product)}
+        <ArrowRight aria-hidden="true" />
+      </span>
     </div>
   );
+}
+
+function modelNameFor(product: Product) {
+  const brand = displayBrandFor(product);
+  const title = productPublicTitle(product);
+  const withoutBrand = title.replace(new RegExp(`^${escapeRegExp(brand)}(?:\\s+Dolls?)?\\s*`, "i"), "");
+  return withoutBrand.split(/\s+\d{2,3}(?:[.,]\d+)?\s*cm\b/i)[0]?.trim() || shortTitle(title);
+}
+
+function displayBrandFor(product: Product) {
+  return (product.extended.brand ?? product.vendor ?? "DollWow").replace(/\s+Dolls?$/i, "").trim();
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function buildSpotlightProducts(products: Product[]) {
