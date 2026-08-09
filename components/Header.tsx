@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
+import { BadgeCheck, ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { readBrowserCartState, type BrowserCartState } from "@/lib/cart/browser";
@@ -341,7 +341,7 @@ function DesktopShopDropdown({ onNavigate }: { onNavigate: () => void }) {
       <div className="mx-auto max-h-[calc(100vh-65px)] max-w-7xl overflow-y-auto px-6 py-6 lg:px-8">
         <div className="overflow-hidden border border-[#d59a6f]/26 bg-[linear-gradient(180deg,#1b100d,#0d0605)]">
           <div className="grid gap-0 border-b border-[#d59a6f]/16 p-5 lg:grid-cols-[1.2fr_0.85fr_0.85fr_1fr]">
-            <MenuColumn title="Brands" links={brandLinks.slice(0, 12)} twoColumns onNavigate={onNavigate} />
+            <MenuColumn title="Brands" links={brandLinks} twoColumns onNavigate={onNavigate} />
             <MenuColumn title="Height" links={heightLinks} onNavigate={onNavigate} />
             <MenuColumn title="Material" links={materialLinks} onNavigate={onNavigate} />
             <MenuColumn title="Popular" links={featuredShopLinks} onNavigate={onNavigate} />
@@ -356,6 +356,10 @@ function DesktopShopDropdown({ onNavigate }: { onNavigate: () => void }) {
               </div>
             </div>
             <div className="flex items-end gap-2">
+              <Link href="/authorized-vendors" onClick={onNavigate} className="inline-flex items-center gap-2 rounded-[12px] border border-[#d59a6f]/30 px-4 py-2 text-sm font-semibold text-[#f3cdb0] hover:border-[#f3cdb0]/60">
+                <BadgeCheck className="h-4 w-4" />
+                Certificates
+              </Link>
               <Link href="/help-me-choose" onClick={onNavigate} className="rounded-[12px] bg-[#f3cdb0] px-4 py-2 text-sm font-semibold text-[#1c1009]">
                 Help me choose
               </Link>
@@ -398,7 +402,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
           </Link>
         </div>
 
-        <MobileDetails title="Brands" links={brandLinks.slice(0, 12)} onNavigate={onNavigate} />
+        <MobileDetails title="Brands" links={brandLinks} onNavigate={onNavigate} />
         <MobileDetails title="Popular collections" links={featuredShopLinks} onNavigate={onNavigate} />
         <MobileDetails title="Shop by height" links={heightLinks} onNavigate={onNavigate} />
         <MobileDetails title="Material" links={materialLinks} onNavigate={onNavigate} />
