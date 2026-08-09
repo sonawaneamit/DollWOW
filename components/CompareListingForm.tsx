@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LinkIcon, Loader2, Upload } from "lucide-react";
 import { GoldButton } from "./GoldButton";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 
 export function CompareListingForm({
   compact = false,
@@ -57,6 +58,10 @@ export function CompareListingForm({
       return;
     }
 
+    trackEvent(analyticsEvents.submitCompareListing, {
+      target_product: targetProductHandle,
+      has_email: Boolean(email)
+    });
     router.push(`/compare/${payload.id}`);
   }
 
