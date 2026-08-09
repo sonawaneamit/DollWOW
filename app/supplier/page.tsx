@@ -95,14 +95,6 @@ export default function SupplierPage() {
         </div>
 
         <aside className="space-y-5">
-          <InfoVisualPanel
-            seed="brand-partnerships"
-            eyebrow="Catalog presentation"
-            title="Real product pages, cleaner buying."
-            copy="DollWow is designed to make brand photos, measurements, options, timing, and support easier for US and European buyers to understand."
-            cta={{ label: "View catalog", href: "/shop" }}
-            compact
-          />
           <div className="rounded-[24px] border border-gold-500/14 bg-ink-800/72 p-6 sm:p-7">
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-[16px] border border-gold-500/14 bg-[#20120d] text-gold-300">
               <BadgeCheck className="h-5 w-5" />
@@ -124,6 +116,17 @@ export default function SupplierPage() {
             </div>
           </div>
         </aside>
+      </div>
+
+      <div className="mt-8">
+        <InfoVisualPanel
+          seed="brand-partnerships"
+          eyebrow="Catalog presentation"
+          title="Real product pages, cleaner buying."
+          copy="DollWow is designed to make brand photos, measurements, options, timing, and support easier for US and European buyers to understand."
+          cta={{ label: "View catalog", href: "/shop" }}
+          compact
+        />
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

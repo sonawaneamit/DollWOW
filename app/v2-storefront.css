@@ -7,6 +7,35 @@ main {
   color: rgb(var(--color-text));
 }
 
+/* Shared informational artwork is always a horizontal banner. It uses a
+   curated catalog portrait and collapses cleanly when the page gets narrow. */
+.info-visual-banner {
+  container-type: inline-size;
+}
+
+.info-visual-banner__layout {
+  display: grid;
+  min-width: 0;
+}
+
+.info-visual-banner__media {
+  position: relative;
+  display: block;
+  min-height: 260px;
+  overflow: hidden;
+  background: rgb(var(--color-surface-tint));
+}
+
+@container (min-width: 680px) {
+  .info-visual-banner__layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  }
+
+  .info-visual-banner__media {
+    min-height: 100%;
+  }
+}
+
 .tone-section,
 .alive-band,
 .home-band,

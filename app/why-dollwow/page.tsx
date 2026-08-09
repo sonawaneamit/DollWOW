@@ -89,7 +89,7 @@ const readingLinks = [
 export default function WhyPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="grid gap-7 rounded-[28px] border border-gold-500/14 bg-surface p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+      <div className="rounded-[28px] border border-gold-500/14 bg-surface p-7 sm:p-10">
         <div>
           <p className="text-sm  text-gold-300">Why DollWow</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
@@ -121,14 +121,16 @@ export default function WhyPage() {
             </Link>
           </div>
         </div>
-        <InfoVisualPanel
-          seed="why-dollwow"
-          eyebrow="Catalog trust"
-          title="Photos, specs, timing, support."
-          copy="DollWow puts the real product, measurements, order timing, and support path closer together."
-          cta={{ label: "See protection", href: "/buyer-protection" }}
-          compact
-        />
+        <div className="mt-8">
+          <InfoVisualPanel
+            seed="why-dollwow"
+            eyebrow="Catalog trust"
+            title="Photos, specs, timing, support."
+            copy="DollWow puts the real product, measurements, order timing, and support path closer together."
+            cta={{ label: "See protection", href: "/buyer-protection" }}
+            compact
+          />
+        </div>
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

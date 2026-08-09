@@ -20,44 +20,44 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
-        <div>
-          <p className="text-sm  text-gold-300">Help Me Choose</p>
-          <h1 className="mt-2 text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
-            Find a practical shortlist without guessing.
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-7 text-ivory-400">
-            Answer a few simple questions and we’ll create a shortlist based on your budget, preferred size, material,
-            delivery timing, and customization needs. You can change any answer before viewing your matches.
-          </p>
+      <div>
+        <p className="text-sm text-accent">Help Me Choose</p>
+        <h1 className="mt-2 max-w-4xl text-4xl font-semibold leading-tight text-text sm:text-5xl">
+          Find a practical shortlist without guessing.
+        </h1>
+        <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">
+          Answer a few simple questions and we’ll create a shortlist based on your budget, preferred size, material,
+          delivery timing, and customization needs. You can change any answer before viewing your matches.
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <InfoVisualPanel
+          seed="help-me-choose"
+          eyebrow="Browse by fit"
+          title="Start with a few real catalog examples."
+          copy="The quiz narrows the catalog by size, timing, material, budget, and customization instead of making you scroll everything."
+          cta={{ label: "Browse all dolls", href: "/shop" }}
+          compact
+        />
+      </div>
+
+      <div className="mt-6 rounded-lg border border-border bg-surface p-5 shadow-card">
+        <p className="text-sm font-semibold text-accent">What it checks</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {quickSignals.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.title} className="flex gap-3 rounded-sm bg-surface-tint p-4">
+                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <div>
+                  <strong className="text-sm text-text">{item.title}</strong>
+                  <p className="mt-1 text-sm leading-5 text-text-dim">{item.copy}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <aside className="space-y-4">
-          <InfoVisualPanel
-            seed="help-me-choose"
-            eyebrow="Browse by fit"
-            title="Start with a few real catalog examples."
-            copy="The quiz narrows the catalog by size, timing, material, budget, and customization instead of making you scroll everything."
-            cta={{ label: "Browse all dolls", href: "/shop" }}
-            compact
-          />
-          <div className="border border-gold-500/14 bg-ink-800/72 p-5">
-            <p className="text-sm font-semibold  text-gold-300">What it checks</p>
-            <div className="mt-4 grid gap-3">
-              {quickSignals.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="flex gap-3 border border-gold-500/10 bg-surface-tint p-3">
-                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
-                    <div>
-                      <strong className="text-sm text-ivory-100">{item.title}</strong>
-                      <p className="mt-1 text-sm leading-5 text-ivory-500">{item.copy}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </aside>
       </div>
       <div className="mt-8">
         <HelpMeChooseQuiz initialAnswers={initialAnswers} />

@@ -13,15 +13,15 @@ export const metadata = {
 export default function SupportPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
-        <div>
-          <p className="text-sm  text-gold-300">Support</p>
-          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Private help from our team</h1>
-          <p className="mt-3 text-ivory-400">Ask about delivery, size, weight, options, price match, or a custom order before checkout.</p>
-          <div className="mt-6">
-            <TrustLogoStrip compact eager />
-          </div>
+      <div>
+        <p className="text-sm text-accent">Support</p>
+        <h1 className="mt-2 text-4xl font-semibold text-text">Private help from our team</h1>
+        <p className="mt-3 text-text-dim">Ask about delivery, size, weight, options, price match, or a custom order before checkout.</p>
+        <div className="mt-6">
+          <TrustLogoStrip compact eager />
         </div>
+      </div>
+      <div className="mt-8">
         <InfoVisualPanel
           seed="support"
           eyebrow="Before you buy"
