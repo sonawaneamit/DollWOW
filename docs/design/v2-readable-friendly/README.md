@@ -2,7 +2,7 @@
 
 **Status:** approved direction, ready for implementation
 **Audience for this document:** the coding agent (Codex) implementing the redesign
-**Read first, then read:** `design-tokens.md` → `header-spec.md` → `pdp-customizer-spec.md`
+**Read first, then read:** `design-tokens.md` → `header-spec.md` → `pdp-customizer-spec.md` → `concept-carryovers.md`
 
 ---
 
@@ -25,16 +25,18 @@ The average DollWOW buyer is **55 years old or older**. The current design works
 3. **Big, obvious touch targets.** Every interactive element ≥ 44px tall; primary buttons 52–56px. Buttons look like buttons: solid fill, clear label, no icon-only controls without a visible text label.
 4. **Plain, friendly language.** Short sentences. No jargon, no marketing cleverness in UI copy. Say "Factory default — included" not "Default supplier selection."
 5. **One accent color, used sparingly.** Terracotta for actions and selected states. Green only for stock/success. Red only for errors.
-6. **Calm interface.** No floating elements, no parallax, no marquee animation. All animation respects `prefers-reduced-motion`.
+6. **Calm interface.** No floating elements, no parallax, no marquee animation. Gentle fade-up reveals (see `concept-carryovers.md`) are the only ambient motion. All animation respects `prefers-reduced-motion`.
 7. **Mobile first, but desktop is the money.** Older buyers browse on desktop and tablet; both must be excellent.
 
 ## 3. Scope of this redesign
 
 | Phase | Scope | Files primarily touched |
 |---|---|---|
-| **1** | Design tokens + global chrome (header + footer) | `tailwind.config.ts`, `app/globals.css`, `app/layout.tsx`, `components/Header.tsx`, `components/Footer.tsx`, `components/GoldButton.tsx` |
-| **2** | PDP customizer + buy box | `components/ProductOptions.tsx`, `components/ProductBuyActions.tsx`, PDP section of `app/(store)/products/[handle]/page.tsx` |
+| **1** | Design tokens + global chrome (header + footer) **+ After Dark theme** | `tailwind.config.ts`, `app/globals.css`, `app/layout.tsx`, `components/Header.tsx`, `components/Footer.tsx`, `components/GoldButton.tsx` |
+| **2** | PDP customizer + buy box **+ scroll thread** | `components/ProductOptions.tsx`, `components/ProductBuyActions.tsx`, PDP section of `app/(store)/products/[handle]/page.tsx` |
 | **3** | Homepage + catalog surfaces | `components/HomeAlive.tsx`, `components/ProductCard.tsx`, `components/ProductGrid.tsx`, `components/ProductFilters.tsx`, `components/ProductLowerAlive.tsx`, `components/CartPageClient.tsx` |
+
+**Carried over from the earlier design explorations** (full spec in `concept-carryovers.md`): the After Dark theme toggle (Phase 1), the PDP scroll thread (Phase 2), and calm fade-up reveals (global). These are **in scope** and part of the acceptance criteria. The bolder homepage-theater concepts from those explorations are deferred to Phase 3 and are not approved yet.
 
 Implement **Phase 1 and Phase 2 in this effort** (one PR per phase is fine; Phase 1 first). Phase 3 is listed for context only — do not start it without explicit approval.
 
@@ -59,19 +61,22 @@ Phase 1 is done when:
 - [ ] Site renders in the new light theme with no dark-theme remnants in header/footer.
 - [ ] Header matches `header-spec.md` on desktop, tablet, and mobile; all previous destinations reachable (secondary links via footer).
 - [ ] No text below 14px; nav items ≥ 16px; all tap targets ≥ 44px.
+- [ ] After Dark toggle (header + mobile menu) matches `concept-carryovers.md`: switches the full storefront without reload, persists via localStorage, first visit follows OS preference, no flash of wrong theme on load; both themes pass AA contrast.
+- [ ] Header utility row stays on one line at 1280px with the toggle present.
 - [ ] `npm run build` and `npm test` pass; no new lint warnings.
 
 Phase 2 is done when:
 - [ ] Customizer matches `pdp-customizer-spec.md`: single-column step flow, readable tiles, visible running summary, plain-language copy.
 - [ ] Conflict rules, price deltas, required-group validation, `ProductOptionsOnRequest` fallback, and checkout attributes all behave exactly as before (verify with existing tests plus a manual pass on one Zelex product — implanted hair vs. head function conflict — and one imported multi-group product).
-- [ ] Contrast: body text ≥ 4.5:1, large text/UI ≥ 3:1 (WCAG AA).
+- [ ] Contrast: body text ≥ 4.5:1, large text/UI ≥ 3:1 (WCAG AA), in both light and dark themes.
 - [ ] Keyboard-only flow: a user can tab through every option group, select options, reach review, and start checkout without a mouse. Focus ring always visible.
-- [ ] `prefers-reduced-motion`: no animation plays.
+- [ ] Scroll thread matches `concept-carryovers.md`: renders on the PDP at ≥ 1240px, fills with scroll, active tick label updates, ticks navigate; absent below 1240px with no layout gap.
+- [ ] `prefers-reduced-motion`: no animation plays (reveals skipped, instant scrolling, thread fill snaps).
 - [ ] `npm run build` and `npm test` pass.
 
 ## 6. Working notes
 
 - Existing tests live in `tests/`; extend them where behavior is touched (e.g., step navigation, conflict messaging), but do not weaken assertions to make things pass.
 - Keep component and file names stable where possible (`Header`, `ProductOptions`, `ProductBuyActions`) so diffs stay reviewable.
-- Prefer editing `app/globals.css` tokens over scattering new hardcoded hex values. New hex values belong in `tailwind.config.ts` and the token CSS only.
+- Prefer editing `app/globals.css` tokens over scattering new hardcoded hex values. New hex values belong in `tailwind.config.ts` and the token CSS only. The dark theme is a second set of values for the same tokens (`:root[data-theme="dark"]`), not a parallel class system.
 - When you are unsure between two visual options, pick the one that is bigger, higher-contrast, and simpler.
