@@ -8,12 +8,15 @@ export async function POST(request: Request) {
     const input = cartCreateRequestSchema.parse(await request.json());
     const cart = await createCart(input);
     trackServerEvent(analyticsEvents.addToCart, {
-      variant_id: input.merchandiseId,
-      line_count: input.quantity
+      params: {
+        variant_id: input.merchandiseId,
+        line_count: input.quantity
+      }
     });
     trackServerEvent(analyticsEvents.beginCheckout, {
-      checkout_url: cart.checkoutUrl,
-      line_count: input.quantity
+      params: {
+        line_count: input.quantity
+      }
     });
     return NextResponse.json(cart);
   } catch (error) {
