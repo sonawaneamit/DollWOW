@@ -21,6 +21,13 @@
     "aliases": ["irontech", "iron tech", "irontech doll", "irontech dolls", "iron tech doll", "iron tech dolls"]
   },
   {
+    "value": "real-lady",
+    "label": "Real Lady",
+    "collectionHandle": "real-lady-dolls",
+    "tags": ["real-lady", "real-lady-doll", "real-lady-dolls", "reallady"],
+    "aliases": ["real lady", "real lady doll", "real lady dolls", "reallady"]
+  },
+  {
     "value": "starpery",
     "label": "Starpery Dolls",
     "collectionHandle": "starpery-dolls",

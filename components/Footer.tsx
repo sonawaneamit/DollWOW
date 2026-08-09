@@ -1,33 +1,32 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 const footerGroups = [
   {
     title: "Shop",
     links: [
-      ["Sex dolls", "/shop/sex-dolls"],
-      ["Realistic sex dolls", "/shop/realistic-sex-dolls"],
-      ["Mini sex dolls", "/shop/mini-sex-dolls"],
-      ["TPE dolls", "/shop/tpe"],
-      ["Silicone dolls", "/shop/silicone"],
-      ["Male dolls", "/shop/male-dolls"],
-      ["Ready to ship", "/shop/ready-to-ship"],
-      ["Custom dolls", "/shop/custom"],
-      ["WM Dolls", "/brands/wm-dolls"],
-      ["Irontech Dolls", "/brands/irontech-dolls"],
-      ["Starpery Dolls", "/brands/starpery-dolls"],
-      ["Avant Doll", "/brands/avant-dolls"],
-      ["Price match", "/compare"]
+      ["Shop all dolls", "/shop"],
+      ["Ready to ship", "/warehouse"],
+      ["Customize a doll", "/customize"],
+      ["Price Match", "/compare"],
+      ["Saved dolls", "/saved"]
     ]
   },
   {
-    title: "Guidance",
+    title: "Learn",
     links: [
-      ["Help me choose", "/help-me-choose"],
       ["Learning Center", "/learn"],
+      ["Help me choose", "/help-me-choose"],
       ["FAQ", "/faq"],
-      ["Why DollWow", "/why-dollwow"],
+      ["How ordering works", "/how-ordering-works"]
+    ]
+  },
+  {
+    title: "Company",
+    links: [
+      ["About Us", "/why-dollwow"],
       ["Authorized vendors", "/authorized-vendors"],
+      ["Brands", "/brands"],
       ["Support", "/support"],
       ["For brands", "/supplier"]
     ]
@@ -38,51 +37,46 @@ const footerGroups = [
       ["Buyer protection", "/buyer-protection"],
       ["Shipping protection", "/shipping-protection"],
       ["Best price guarantee", "/best-price-guarantee"],
-      ["How ordering works", "/how-ordering-works"],
       ["Shipping", "/shipping"],
       ["Returns", "/returns"],
-      ["Scam alert", "/scam-alert"],
       ["Privacy policy", "/privacy-policy"],
-      ["Adult-only policy", "/adult-only"]
+      ["Adult-only policy", "/adult-only"],
+      ["Scam alert", "/scam-alert"]
     ]
   }
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="border-t border-gold-500/12 bg-[linear-gradient(180deg,#120907,#090505)]">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 border-b border-gold-500/12 pb-8 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
-          <div>
+    <footer className="mt-auto bg-surface-tint text-text">
+      <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16">
+        <div className="grid gap-10 border-b border-border pb-10 md:grid-cols-2 lg:grid-cols-[1.35fr_repeat(4,1fr)]">
+          <div className="md:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex" aria-label="DollWow home">
               <Image
                 src="/images/brand/dollwow-black-gold-lockup.png"
                 alt="DollWow.com"
                 width={650}
                 height={235}
-                sizes="280px"
-                className="h-28 w-[280px] rounded-[10px] object-contain object-left"
+                sizes="220px"
+                className="h-20 w-[220px] object-contain object-left"
               />
             </Link>
-            <p className="mt-3 max-w-md text-sm leading-6 text-ivory-400">
-              Compare models, review custom options, and order with discreet checkout, clear timelines, and responsive support.
+            <p className="mt-4 max-w-sm text-base leading-7 text-text-dim">
+              Compare models, review custom options, and order with clear pricing, discreet delivery, and responsive support.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Link href="/shop" className="rounded-[14px] border border-gold-500/18 px-3 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
-                Browse catalog
-              </Link>
-              <Link href="/support" className="rounded-[14px] border border-gold-500/18 px-3 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
-                Ask our team
-              </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/shop" className="inline-flex min-h-11 items-center rounded-button bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover">Browse catalog</Link>
+              <Link href="/support" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-[15px] font-semibold text-accent hover:bg-accent-tint">Ask our team</Link>
             </div>
           </div>
 
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{group.title}</p>
-              <div className="mt-4 grid gap-3 text-sm text-ivory-400">
+              <h2 className="text-[17px] font-semibold text-text">{group.title}</h2>
+              <div className="mt-3 grid">
                 {group.links.map(([label, href]) => (
-                  <Link key={href} href={href} className="transition hover:text-gold-300">
+                  <Link key={href} href={href} className="flex min-h-11 items-center text-[15px] text-text-dim transition-colors hover:text-accent">
                     {label}
                   </Link>
                 ))}
@@ -91,7 +85,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 pt-6 text-sm text-ivory-500 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-2 pt-6 text-sm leading-6 text-text-faint md:flex-row md:items-center md:justify-between">
           <p>Adults only. Product details, prices, and availability are reviewed before checkout.</p>
           <p>Discreet billing and plain packaging by default.</p>
         </div>

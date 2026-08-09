@@ -3,13 +3,15 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
-import { GoldButton } from "@/components/GoldButton";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
+import { PdpTrackers } from "@/components/PdpTrackers";
+import { WishlistButton } from "@/components/WishlistButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
+import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
@@ -41,14 +43,14 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const { handle } = await params;
   const [storefrontProduct, allProducts, adminProductData] = await Promise.all([
     getProductByHandle(handle),
-    getProducts({ first: 8 }),
+    getProducts({ first: 60 }),
     getProductAdminMetafieldsByHandle(handle)
   ]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
-  const alternatives = allProducts.filter((item) => item.id !== product.id).slice(0, 4);
+  const alternatives = scoreSimilarProducts(product, allProducts, 4);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
@@ -72,10 +74,10 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           <ProductGallery product={product} />
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm uppercase tracking-[0.18em] text-gold-300">{product.extended.brand ?? product.vendor}</p>
+              <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
             </div>
-            {displayNameUi ? <p className="mt-3 text-base font-medium uppercase tracking-[0.16em] text-gold-200/90">{displayNameUi}</p> : null}
+            {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">{displayNameUi ? pdpTitle : displayTitle}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300">{formatMoney(price.amount, price.currencyCode)}</strong>
@@ -102,14 +104,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               <TrustLine icon={<Truck className="h-4 w-4" />} text="Timing confirmed" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <GoldButton href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`} variant="secondary">
-                <Scale className="h-4 w-4" /> Found this somewhere else?
-              </GoldButton>
-              <GoldButton href="/support" variant="secondary">
-                <MessageCircle className="h-4 w-4" /> Ask before buying
-              </GoldButton>
-            </div>
             {firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
@@ -117,9 +111,41 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 productDisplayName={displayName || undefined}
                 productHandle={product.handle}
                 productImage={product.featuredImage ?? product.images[0] ?? null}
+                brand={product.extended.brand ?? product.vendor}
+                unitPrice={Number(price.amount)}
+                currencyCode={price.currencyCode}
+                deliveryEstimate={product.extended.deliveryEstimate}
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
               />
             )}
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+              <WishlistButton
+                entry={{
+                  productHandle: product.handle,
+                  productTitle: displayTitle,
+                  brand: product.extended.brand ?? product.vendor,
+                  imageUrl: (product.featuredImage ?? product.images[0])?.url,
+                  imageAlt: (product.featuredImage ?? product.images[0])?.altText ?? displayTitle,
+                  unitPrice: Number(price.amount),
+                  currencyCode: price.currencyCode,
+                  readyToShip: product.extended.stockStatus === "ready_to_ship"
+                }}
+                label
+                className="font-semibold text-ivory-300 hover:text-gold-200"
+              />
+              <Link
+                href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
+                className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
+              >
+                <Scale className="h-4 w-4 text-gold-300" /> Found this somewhere else?
+              </Link>
+              <Link
+                href="/support"
+                className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
+              >
+                <MessageCircle className="h-4 w-4 text-gold-300" /> Ask a specialist before buying
+              </Link>
+            </div>
           </div>
         </div>
         <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
@@ -133,6 +159,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />
+      <PdpTrackers product={product} />
     </main>
   );
 }
@@ -156,7 +183,7 @@ function ProductSearchFitCard({ title, summary, chips }: { title: string; summar
   return (
     <section className="pdp-search-fit tone-card mt-5" aria-label={title}>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{title}</p>
+        <p className="text-sm font-semibold  text-gold-300">{title}</p>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-300">{summary}</p>
       </div>
       <div className="pdp-search-fit-chips">
@@ -229,7 +256,7 @@ function ToneBand({
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div className="tone-card rounded-[14px] p-4">
-      <p className="text-xs uppercase tracking-[0.14em] text-ivory-600">{label}</p>
+      <p className="text-sm  text-ivory-600">{label}</p>
       <p className="mt-1 font-semibold text-ivory-100">{value}</p>
     </div>
   );
@@ -337,7 +364,7 @@ function ProductSpecSummary({
 
           {relatedPaths.length ? (
             <section className="tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">Related buying paths</p>
+              <p className="text-sm font-semibold  text-gold-300">Related buying paths</p>
               <h3 id="product-related-paths-heading" className="mt-2 text-lg font-semibold text-ivory-50">
                 Compare this doll in context
               </h3>
@@ -349,7 +376,7 @@ function ProductSpecSummary({
                     className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.045] p-3 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/50 hover:bg-ivory-50/[0.07]"
                   >
                     {path.label}
-                    <span className="mt-1 block text-xs font-normal leading-5 text-ivory-500">{path.description}</span>
+                    <span className="mt-1 block text-sm font-normal leading-5 text-ivory-500">{path.description}</span>
                   </Link>
                 ))}
               </div>

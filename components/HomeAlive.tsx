@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, Heart, Lock, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, Lock, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { WishlistButton } from "@/components/WishlistButton";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
@@ -51,17 +52,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   const spotlight = useMemo(() => buildSpotlightProducts(products), [products]);
   const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
   const [activeSpot, setActiveSpot] = useState(0);
-  const [paused, setPaused] = useState(false);
-
   useHomeMotion();
-
-  useEffect(() => {
-    if (spotlight.length < 2 || paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      setActiveSpot((index) => (index + 1) % spotlight.length);
-    }, 4600);
-    return () => window.clearInterval(timer);
-  }, [paused, spotlight.length]);
 
   const activeProduct = spotlight[activeSpot] ?? products[0];
 
@@ -88,7 +79,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
             </div>
           </div>
 
-          <div className="home-spot reveal in" data-d="2" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div className="home-spot reveal in" data-d="2">
             <div className="home-spot__media">
               {spotlight.map((product, index) => (
                 <Link
@@ -129,7 +120,6 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
         </div>
       </section>
 
-      <HomeMarquee />
       <TrustBand />
       <HomeDollWall products={products} />
 
@@ -164,19 +154,6 @@ function SpotlightMeta({ product }: { product: Product }) {
       </div>
       <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
     </div>
-  );
-}
-
-function HomeMarquee() {
-  const items = ["Price-match support", "Discreet shipping", "Checked before production", "Specialist support", "Factory photos before ship", "Warehouse picks"];
-  return (
-    <section className="home-marquee" aria-label="DollWow benefits">
-      <div className="home-marquee__track">
-        {[...items, ...items].map((item, index) => (
-          <span key={`${item}-${index}`}>{item}</span>
-        ))}
-      </div>
-    </section>
   );
 }
 
@@ -295,7 +272,19 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
       <Link href={`/products/${product.handle}`} className="home-product-card__media" aria-label={`View ${displayTitle}`}>
         <HomeProductImage product={product} priority={priority} />
         <span className={`home-product-badge ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
-        <button type="button" className="home-heart" aria-label="Save for later"><Heart className="h-4 w-4" /></button>
+        <WishlistButton
+          entry={{
+            productHandle: product.handle,
+            productTitle: displayTitle,
+            brand: product.extended.brand ?? product.vendor,
+            imageUrl: product.featuredImage?.url ?? product.images[0]?.url,
+            imageAlt: product.featuredImage?.altText ?? product.images[0]?.altText ?? displayTitle,
+            unitPrice: Number(price.amount),
+            currencyCode: price.currencyCode,
+            readyToShip: ready
+          }}
+          className="home-heart"
+        />
       </Link>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>

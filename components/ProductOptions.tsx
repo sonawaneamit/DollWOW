@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import {
@@ -11,21 +10,27 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
-  Eye,
+  ExternalLink,
+  Info,
   Loader2,
-  PackageCheck,
-  Palette,
-  Scissors,
-  ShieldCheck,
+  Maximize2,
   ShoppingBag,
   Sparkles
 } from "lucide-react";
-import { productBuilderHeading } from "@/lib/catalog/bodyType";
-import { getCustomizationConfig } from "@/lib/customization/configs";
-import { defaultMultipleOptionId, getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
+import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
+import { getCustomizationConfig } from "@/lib/customization/configs";
+import {
+  defaultMultipleOptionId,
+  getDefaultSelections,
+  getOptionConflict,
+  nextMultipleSelection,
+  resolveCustomization,
+  selectionIds
+} from "@/lib/customization/resolve";
 import { formatMoney } from "@/lib/utils/currency";
 import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
 import type { Product } from "@/types/product";
@@ -34,19 +39,12 @@ import { ImagePreviewModal } from "./ImagePreviewModal";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
-
-  if (!config.groups.length) {
-    return <ProductOptionsOnRequest product={product} />;
-  }
-
-  return <ProductOptionsBuilder product={product} config={config} />;
+  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} /> : <ProductOptionsOnRequest product={product} />;
 }
 
 function ProductOptionsBuilder({ product, config }: { product: Product; config: ReturnType<typeof getCustomizationConfig> }) {
   const router = useRouter();
   const rootRef = useRef<HTMLElement>(null);
-  const stepPanelRef = useRef<HTMLElement>(null);
-  const optionScrollerRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
@@ -57,6 +55,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isMobileDockVisible, setMobileDockVisible] = useState(false);
+  const [isPreviewOpen, setPreviewOpen] = useState(false);
 
   const variant = product.variants.find((item) => item.id === variantId) ?? firstAvailable;
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
@@ -66,29 +65,24 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const activeGroup = config.groups[activeGroupIndex] ?? config.groups[0];
   const previousGroup = config.groups[activeGroupIndex - 1] ?? null;
   const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
-  const stepCount = config.groups.length + 1;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
-  const builderHeading = productBuilderHeading(product);
-  const [isPreviewOpen, setPreviewOpen] = useState(false);
   const hasIssues = resolved.issues.length > 0;
-  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
-  const reviewedCount = reviewedGroupIds.size;
+  const requiresPriceConfirmation = resolved.requiresPriceConfirmation;
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues && !requiresPriceConfirmation);
 
   useEffect(() => {
-    optionScrollerRef.current?.scrollTo({ top: 0 });
     if (!didMountRef.current) {
       didMountRef.current = true;
       return;
     }
     if (typeof window === "undefined" || window.innerWidth >= 1024) return;
-
+    const targetId = isReviewing ? "custom-step-review" : `custom-step-${activeGroupId}`;
     window.requestAnimationFrame(() => {
-      const panel = stepPanelRef.current;
+      const panel = document.getElementById(targetId);
       if (!panel) return;
-      const stickyHeaderOffset = 112;
-      const top = panel.getBoundingClientRect().top + window.scrollY - stickyHeaderOffset;
+      const top = panel.getBoundingClientRect().top + window.scrollY - 92;
       const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
       window.scrollTo({ top: Math.max(0, top), behavior });
     });
@@ -97,9 +91,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   useEffect(() => {
     const root = rootRef.current;
     if (!root || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(([entry]) => setMobileDockVisible(entry.isIntersecting), {
-      threshold: 0.08
-    });
+    const observer = new IntersectionObserver(([entry]) => setMobileDockVisible(entry.isIntersecting), { threshold: 0.08 });
     observer.observe(root);
     return () => observer.disconnect();
   }, []);
@@ -108,41 +100,55 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     if (!canCheckout) return;
     setLoading(true);
     setError("");
-    const response = await fetch("/api/cart/create", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        merchandiseId: variantId,
-        quantity: 1,
-        attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }, ...resolved.cartAttributes] : resolved.cartAttributes,
-        customizationCharge: resolved.optionPriceDelta
-          ? {
-              amount: resolved.optionPriceDelta,
-              currencyCode,
-              title: `${displayName || displayTitle} custom options`
-            }
-          : undefined
-      })
-    });
-    const payload = await response.json();
-    setLoading(false);
-    if (!response.ok) {
-      setError(payload.error ?? "Could not start checkout.");
-      return;
+    try {
+      const response = await fetch("/api/cart/create", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          merchandiseId: variantId,
+          quantity: 1,
+          attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }, ...resolved.cartAttributes] : resolved.cartAttributes,
+          customizationCharge: resolved.optionPriceDelta
+            ? { amount: resolved.optionPriceDelta, currencyCode, title: `${displayName || displayTitle} custom options` }
+            : undefined
+        })
+      });
+      const payload = await response.json();
+      if (!response.ok) {
+        setError(payload.error ?? "Could not start checkout.");
+        return;
+      }
+      const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
+      writeBrowserCartState({
+        checkoutUrl,
+        totalQuantity: payload.totalQuantity ?? 1,
+        productTitle: displayTitle,
+        productDisplayName: displayName || undefined,
+        productHandle: product.handle,
+        productImageUrl: heroImage?.url,
+        productImageAlt: heroImage?.altText ?? displayTitle,
+        currencyCode,
+        customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
+      });
+      trackEvent(analyticsEvents.addToCart, {
+        item_id: variantId,
+        item_name: displayName || displayTitle,
+        item_brand: product.extended.brand ?? product.vendor,
+        price: resolved.totalPrice,
+        currency: currencyCode,
+        quantity: 1
+      });
+      trackEvent(analyticsEvents.beginCheckout, { value: resolved.totalPrice, currency: currencyCode, item_count: 1 });
+      router.push(checkoutUrl);
+    } catch {
+      setError("Could not start checkout. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
-    writeBrowserCartState({
-      checkoutUrl,
-      totalQuantity: payload.totalQuantity ?? 1,
-      productTitle: displayTitle,
-      productDisplayName: displayName || undefined,
-      productHandle: product.handle,
-      productImageUrl: heroImage?.url,
-      productImageAlt: heroImage?.altText ?? displayTitle,
-      currencyCode,
-      customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
-    });
-    router.push(checkoutUrl);
+  }
+
+  function askAboutBuild() {
+    router.push(`/support?product=${encodeURIComponent(product.handle)}`);
   }
 
   function selectOption(groupId: string, optionId: string) {
@@ -150,7 +156,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     markGroupReviewed(groupId);
     setSelected((current) => ({
       ...current,
-      [groupId]: group?.selectionMode === "multiple" ? nextMultipleSelection(defaultMultipleOptionId(group.options), current[groupId], optionId) : optionId
+      [groupId]: group?.selectionMode === "multiple"
+        ? nextMultipleSelection(defaultMultipleOptionId(group.options), current[groupId], optionId)
+        : optionId
     }));
   }
 
@@ -170,11 +178,8 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
 
   function goToNextGroup() {
     if (activeGroup) markGroupReviewed(activeGroup.id);
-    if (nextGroup) {
-      setActiveGroupId(nextGroup.id);
-      return;
-    }
-    setReviewing(true);
+    if (nextGroup) setActiveGroupId(nextGroup.id);
+    else setReviewing(true);
   }
 
   function goToGroup(groupId: string) {
@@ -186,231 +191,365 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     setReviewing(true);
   }
 
+  const disabledReason = resolved.issues[0]?.message || (!variant?.availableForSale ? "This build is not available to order online." : "");
+
   return (
-    <section ref={rootRef} data-tone="blush" className="product-builder relative overflow-hidden rounded-[30px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] shadow-soft">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(42rem_32rem_at_78%_8%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(36rem_28rem_at_20%_16%,rgba(192,105,94,0.12),transparent_64%)]" />
-      <div
-        className={clsx(
-          "relative grid min-h-[760px] lg:min-h-0 lg:grid-cols-[132px_minmax(0,1fr)_420px] xl:grid-cols-[144px_minmax(0,1fr)_460px]",
-          isReviewing ? "lg:h-auto" : "lg:h-[880px]"
-        )}
-      >
-        <CategoryRail
-          groups={config.groups}
-          activeGroupId={activeGroup.id}
-          selected={selected}
-          reviewedGroupIds={reviewedGroupIds}
-          isReviewing={isReviewing}
-          onSelect={goToGroup}
-        />
+    <section ref={rootRef} className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
+      <ScrollThread
+        groups={config.groups}
+        activeGroupId={activeGroupId}
+        isReviewing={isReviewing}
+        onSelect={goToGroup}
+        onReview={showReview}
+      />
 
-        <div
-          className={clsx(
-            "builder-stage relative flex min-h-[560px] flex-col border-y border-gold-500/20 bg-[linear-gradient(180deg,rgba(245,225,210,0.045),rgba(79,156,138,0.035)_45%,rgba(217,154,111,0.028))] p-5 sm:p-8 lg:border-x lg:border-y-0",
-            isReviewing ? "overflow-visible lg:min-h-[880px]" : "overflow-hidden lg:min-h-0"
-          )}
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(246,233,221,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(246,233,221,0.08)_1px,transparent_1px)] [background-size:46px_46px]" />
-          <div className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{isReviewing ? "Build review" : "Build studio"}</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">{isReviewing ? "Confirm your build" : builderHeading}</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-ivory-500">
-                {isReviewing
-                  ? "Review the selected options, edit anything that needs a second look, then continue to checkout."
-                  : "Choose what matters. The price updates as you go, and our team checks it all before anything is made or shipped."}
-              </p>
+      <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-[15px] font-semibold text-text-dim">{productBuilderHeading(product)}</p>
+          <h2 className="mt-1 font-display text-[clamp(1.75rem,3vw,2.25rem)] font-semibold leading-tight">Customize your doll</h2>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-text-dim">
+            Work through the steps below — defaults are already selected, so change only what you care about.
+          </p>
+        </div>
+        <p className="rounded-sm bg-accent-tint px-4 py-2 text-[15px] font-semibold text-text">
+          {reviewedGroupIds.size} of {config.groups.length} steps done
+        </p>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+        <aside className="lg:col-span-5">
+          <div className="lg:sticky lg:top-24">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-surface-tint">
+              {heroImage ? (
+                <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Enlarge product image">
+                  <Image src={heroImage.url} alt={displayTitle} fill sizes="(min-width: 1024px) 38vw, 92vw" className="object-cover" />
+                  <span className="absolute bottom-4 right-4 inline-flex min-h-11 items-center gap-2 rounded-sm bg-surface px-3 text-[15px] font-semibold text-text shadow-card">
+                    <Maximize2 className="h-4 w-4" aria-hidden="true" /> Enlarge
+                  </span>
+                </button>
+              ) : (
+                <div className="flex h-full items-center justify-center p-8 text-center text-base text-text-dim">{displayTitle}</div>
+              )}
             </div>
-            <div className="rounded-full border border-gold-500/20 bg-ivory-50/[0.045] px-4 py-2 text-sm text-ivory-300">
-              {isReviewing ? "Ready to review" : `${reviewedCount}/${config.groups.length} reviewed`}
-            </div>
-          </div>
-
-          <div className={clsx("relative z-10 mx-auto flex min-h-0 w-full flex-1 items-center justify-center", isReviewing ? "my-6 max-w-[920px] items-start overflow-visible py-2" : "my-4 max-w-[640px]")}>
-            {isReviewing ? (
-              <BuildReviewSummary
-                selectedOptions={resolved.selectedOptions}
-                basePrice={basePrice}
-                optionPriceDelta={resolved.optionPriceDelta}
-                totalPrice={resolved.totalPrice}
-                currencyCode={currencyCode}
-                onEdit={goToGroup}
-              />
-            ) : (
-              <>
-                <div className="absolute inset-x-10 bottom-5 h-16 rounded-full bg-gold-500/12 blur-3xl" />
-                <div data-tone="deep" className="builder-preview-island noir-media-wrap studio-float relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-[30px] border border-gold-500/18 bg-ink-950 shadow-[0_30px_90px_rgba(0,0,0,0.42)] sm:max-w-[320px] xl:max-w-[340px]">
-                  {heroImage ? (
-                    <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
-                      <Image src={heroImage.url} alt={displayTitle} fill sizes="(min-width: 1024px) 36vw, 92vw" className="object-cover noir-media" />
-                    </button>
-                  ) : (
-                    <div className="flex h-full items-center justify-center p-8 text-center text-sm text-ivory-500">{displayTitle}</div>
-                  )}
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(0,0,0,0.62))]" />
-                  <div className="absolute bottom-4 left-4 right-4 rounded-[18px] border border-gold-500/18 bg-ink-950/78 p-4 backdrop-blur">
-                    <p className="line-clamp-1 text-sm font-semibold text-ivory-50">{displayTitle}</p>
-                    <p className="mt-1 text-xs text-ivory-500">{product.extended.brand ?? product.vendor}</p>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-
-          {!isReviewing && (
-            <SelectedTray
+            <h3 className="mt-5 text-xl font-semibold leading-snug">{displayTitle}</h3>
+            <p className="mt-1 text-[15px] text-text-dim">{product.extended.brand ?? product.vendor}</p>
+            <BuildSummary
               groups={config.groups}
               selected={selected}
               selectedOptions={resolved.selectedOptions}
-              reviewedGroupIds={reviewedGroupIds}
+              basePrice={basePrice}
+              optionPriceDelta={resolved.optionPriceDelta}
+              totalPrice={resolved.totalPrice}
               currencyCode={currencyCode}
+              requiresPriceConfirmation={requiresPriceConfirmation}
+              leadTimeNote={config.leadTimeNote}
             />
-          )}
-        </div>
-
-        <aside ref={stepPanelRef} data-tone="deep" className="builder-panel scroll-mt-28 flex min-h-[660px] flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(33,21,15,0.98),rgba(15,8,7,0.98))] text-ivory-50 lg:min-h-0">
-          <div className="shrink-0 border-b border-gold-500/20 bg-ink-950/28 p-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-gold-300">{isReviewing ? "Final review" : "Now choosing"}</p>
-            <div className="mt-2 flex items-center justify-between gap-3">
-              <h3 className="text-2xl font-semibold">{isReviewing ? "Your selections" : activeGroup.label}</h3>
-              <span className="rounded-full border border-gold-500/20 bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-ivory-400">
-                {isReviewing ? `${stepCount}/${stepCount}` : `${activeGroupIndex + 1}/${stepCount}`}
-              </span>
-            </div>
-            {(isReviewing || activeGroup.description) && (
-              <p className="mt-2 text-sm leading-5 text-ivory-400">
-                {isReviewing ? "Review your selections and total before you continue to checkout." : activeGroup.description}
-              </p>
-            )}
           </div>
+        </aside>
 
-          {product.variants.length > 1 && (
-            <label className="mx-5 mt-5 block">
-              <span className="mb-2 block text-sm font-semibold text-ivory-300">Build</span>
+        <div className="space-y-3 lg:col-span-7">
+          {product.variants.length > 1 ? (
+            <label className="block rounded-md bg-surface-tint p-4">
+              <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
               <select
                 value={variantId}
                 onChange={(event) => setVariantId(event.target.value)}
-                className="w-full rounded-[14px] border-gold-500/20 bg-ink-950 text-ivory-50 focus:border-gold-300 focus:ring-gold-300"
+                className="h-14 w-full rounded-sm border border-border bg-surface px-4 text-base text-text focus:border-accent focus:ring-accent"
               >
-                {product.variants.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.title}
-                  </option>
-                ))}
+                {product.variants.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
               </select>
             </label>
-          )}
+          ) : null}
 
-          <div ref={optionScrollerRef} className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4">
-            {isReviewing ? (
-              <ReviewSidebarSummary selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+          {config.groups.map((group, index) => {
+            const active = !isReviewing && group.id === activeGroupId;
+            return (
+              <section
+                key={group.id}
+                id={`custom-step-${group.id}`}
+                className={clsx("scroll-mt-24 rounded-md border bg-surface transition-colors", active ? "border-accent shadow-card" : "border-border")}
+              >
+                <button
+                  type="button"
+                  onClick={() => goToGroup(group.id)}
+                  className="flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 py-3 text-left sm:px-5"
+                  aria-expanded={active}
+                  aria-controls={`custom-options-${group.id}`}
+                >
+                  <span className={clsx("flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold", active ? "bg-accent text-white" : "bg-surface-tint text-text")}>{index + 1}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[17px] font-semibold text-text">{group.label}</span>
+                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, selected[group.id]) || "Factory default — included"}</span> : null}
+                  </span>
+                  {!active ? <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</span> : null}
+                </button>
+
+                {active ? (
+                  <div id={`custom-options-${group.id}`} className="border-t border-border px-4 pb-5 pt-5 sm:px-5">
+                    <p className="text-[15px] font-semibold text-text-dim">Step {index + 1} of {config.groups.length}</p>
+                    {group.description ? <p className="mt-2 text-[15px] leading-6 text-text-dim">{group.description}</p> : null}
+                    <div className="mt-5">
+                      <OptionPalette
+                        group={group}
+                        selected={selected[group.id]}
+                        selections={selected}
+                        onSelect={(optionId) => selectOption(group.id, optionId)}
+                        config={config}
+                        currencyCode={currencyCode}
+                      />
+                    </div>
+                    <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+                      {previousGroup ? (
+                        <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
+                          <ChevronLeft className="h-5 w-5" /> Back
+                        </button>
+                      ) : <span />}
+                      <button type="button" onClick={goToNextGroup} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover">
+                        {nextGroup ? `Next: ${nextGroup.label}` : "Review your build"}<ChevronRight className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </section>
+            );
+          })}
+
+          <section id="custom-step-review" className={clsx("scroll-mt-24 rounded-md border bg-surface", isReviewing ? "border-accent shadow-card" : "border-border")}>
+            {!isReviewing ? (
+              <button type="button" onClick={showReview} className="flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 text-left sm:px-5" aria-expanded="false">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-tint text-text"><Check className="h-5 w-5" /></span>
+                <span className="min-w-0 flex-1 text-[17px] font-semibold">Review your build</span>
+                <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Review</span>
+              </button>
             ) : (
-              <OptionPalette
-                group={activeGroup}
-                selected={selected[activeGroup.id]}
-                selections={selected}
-                isGroupReviewed={reviewedGroupIds.has(activeGroup.id)}
-                onSelect={(optionId) => selectOption(activeGroup.id, optionId)}
-                config={config}
-                currencyCode={currencyCode}
-              />
-            )}
+              <div className="p-4 sm:p-6">
+                <p className="text-[15px] font-semibold text-text-dim">Review</p>
+                <h3 className="mt-1 font-display text-2xl font-semibold">Review your build</h3>
+                <p className="mt-2 text-[15px] leading-6 text-text-dim">Check each choice, then continue to checkout. You can still change anything.</p>
 
-            {hasIssues && (
-              <div className="mt-5 space-y-2 rounded-[18px] border border-danger/35 bg-danger/10 p-4 text-sm text-ivory-300">
-                {resolved.issues.map((issue) => (
-                  <p key={`${issue.ruleId}-${issue.groupId}-${issue.optionId}`} className="flex gap-2">
-                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-danger" />
-                    {issue.message}
+                <ReviewRows groups={config.groups} selected={selected} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+                <PriceSummary basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} requiresPriceConfirmation={requiresPriceConfirmation} />
+
+                {hasIssues ? (
+                  <div className="mt-5 space-y-2">
+                    {resolved.issues.map((issue) => (
+                      <p key={`${issue.ruleId}-${issue.groupId}-${issue.optionId}`} className="flex gap-2 rounded-sm bg-danger-tint p-4 text-[15px] leading-6 text-danger">
+                        <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />{issue.message}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+
+                {!variant?.availableForSale ? (
+                  <p className="mt-5 rounded-sm bg-danger-tint p-4 text-[15px] leading-6 text-danger">
+                    This option combination is not available to order online. <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="font-semibold underline underline-offset-4">Contact us</a> and we will help with the closest available choice.
                   </p>
-                ))}
+                ) : null}
+
+                {requiresPriceConfirmation ? <p className="mt-5 rounded-sm bg-accent-tint p-4 text-[15px] leading-6 text-text">Some selected options need a final price. Ask our team before checkout.</p> : null}
+                {error ? <p className="mt-4 text-[15px] text-danger">{error}</p> : null}
+
+                <div className="mt-6 grid gap-3">
+                  {requiresPriceConfirmation ? (
+                    <button type="button" onClick={askAboutBuild} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover">
+                      <Sparkles className="h-5 w-5" /> Ask about this build
+                    </button>
+                  ) : (
+                    <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
+                      {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
+                      Continue to secure checkout — {formatMoney(resolved.totalPrice, currencyCode)}
+                    </button>
+                  )}
+                  {disabledReason && !requiresPriceConfirmation ? <p className="text-[15px] leading-6 text-danger">{disabledReason}</p> : null}
+                  <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
+                    <ChevronLeft className="h-5 w-5" /> Back to {activeGroup.label}
+                  </button>
+                </div>
+                <p className="mt-5 text-center text-[15px] text-text-dim">Secure checkout by Shopify</p>
+                <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="mt-2 flex min-h-11 items-center justify-center text-[15px] font-semibold text-accent underline underline-offset-4">Questions? Talk to a real person</a>
               </div>
             )}
-
-            {!variant?.availableForSale && (
-              <p className="mt-5 rounded-[18px] border border-danger/25 bg-danger/10 p-4 text-sm text-ivory-300">
-                This option combination is not available to order online. Contact us and we will help with the closest available choice.
-              </p>
-            )}
-          </div>
-
-          <div data-tone="deep" className="builder-price-island shrink-0 border-t border-gold-500/20 bg-[linear-gradient(180deg,rgba(246,233,221,0.055),rgba(79,156,138,0.055))] p-4">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-ivory-500">Your build</p>
-                <p className="mt-1 text-2xl font-semibold">{formatMoney(resolved.totalPrice, currencyCode)}</p>
-              </div>
-              <div className="text-right text-xs text-ivory-500">
-                <p>Base {formatMoney(basePrice, currencyCode)}</p>
-                <p>Options {formatMoney(resolved.optionPriceDelta, currencyCode)}</p>
-              </div>
-            </div>
-            {error && <p className="mt-3 text-sm text-danger">{error}</p>}
-            <div className="mt-3 grid gap-2">
-              {isReviewing ? (
-                <button
-                  type="button"
-                  disabled={!canCheckout || loading}
-                  onClick={addToCart}
-                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[#4f9c8a] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#438b7a] disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-                  Checkout
-                </button>
-              ) : nextGroup ? (
-                <button
-                  type="button"
-                  onClick={goToNextGroup}
-                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
-                >
-                  Next: {nextGroup.label}
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={goToNextGroup}
-                  className="builder-primary-button inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-ink-950 transition hover:-translate-y-0.5"
-                >
-                  Review build
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              )}
-              {(previousGroup || isReviewing) && (
-                <button
-                  type="button"
-                  onClick={goToPreviousGroup}
-                  className="builder-secondary-button inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-[14px] border border-gold-500/20 bg-ivory-50/[0.045] px-5 py-2 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                  {isReviewing ? `Back: ${activeGroup.label}` : `Back: ${previousGroup?.label}`}
-                </button>
-              )}
-            </div>
-            <div className="mt-3 grid gap-2 text-xs text-ivory-400 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              <Assurance icon={<ShieldCheck className="h-4 w-4" />} text="Discreet Shopify checkout" />
-              <Assurance icon={<Clock3 className="h-4 w-4" />} text="Help with options when you need it" />
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <div data-tone="deep" className={clsx("builder-price-island fixed inset-x-0 bottom-0 z-40 border-t border-gold-500/16 bg-ink-950/95 p-3 shadow-soft backdrop-blur transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
-        <div className="mx-auto flex max-w-7xl items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-xs text-ivory-500">{displayTitle}</p>
-            <p className="text-base font-semibold text-gold-300">{formatMoney(resolved.totalPrice, currencyCode)}</p>
-          </div>
-          <GoldButton className="min-w-36 px-4" disabled={!canCheckout || loading} onClick={isReviewing ? addToCart : showReview}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-            {isReviewing ? "Checkout" : "Review"}
-          </GoldButton>
+          </section>
         </div>
       </div>
-      {isPreviewOpen && heroImage && (
-        <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
-      )}
+
+      <div className={clsx("fixed inset-x-0 bottom-0 z-40 bg-surface p-3 shadow-[0_-4px_20px_rgba(41,32,27,0.10)] transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
+        <div className="mx-auto flex max-w-2xl items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm text-text-dim">{displayTitle}</p>
+            <p className="text-[17px] font-semibold text-text" aria-live="polite">{formatMoney(resolved.totalPrice, currencyCode)}</p>
+          </div>
+          <button
+            type="button"
+            disabled={isReviewing ? (!requiresPriceConfirmation && (!canCheckout || loading)) : false}
+            onClick={isReviewing ? (requiresPriceConfirmation ? askAboutBuild : addToCart) : showReview}
+            className="inline-flex min-h-12 min-w-32 items-center justify-center gap-2 rounded-button bg-accent px-4 text-base font-semibold text-white hover:bg-accent-hover disabled:opacity-45"
+          >
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+            {isReviewing ? (requiresPriceConfirmation ? "Ask our team" : "Checkout") : "Review"}
+          </button>
+        </div>
+      </div>
+
+      {isPreviewOpen && heroImage ? <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} /> : null}
     </section>
+  );
+}
+
+function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, requiresPriceConfirmation, leadTimeNote }: {
+  groups: CustomizationGroup[];
+  selected: CustomizationSelections;
+  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
+  basePrice: number;
+  optionPriceDelta: number;
+  totalPrice: number;
+  currencyCode: string;
+  requiresPriceConfirmation: boolean;
+  leadTimeNote?: string;
+}) {
+  return (
+    <div className="mt-5 rounded-md bg-surface-tint p-5">
+      <h3 className="text-xl font-semibold">Your build</h3>
+      <div className="mt-3 divide-y divide-border">
+        {groups.map((group) => {
+          const summary = groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode);
+          return <div key={group.id} className="flex justify-between gap-4 py-3 text-[15px]"><span className="text-text-dim">{group.label}</span><span className="text-right font-semibold text-text">{summary}</span></div>;
+        })}
+      </div>
+      <PriceSummary basePrice={basePrice} optionPriceDelta={optionPriceDelta} totalPrice={totalPrice} currencyCode={currencyCode} requiresPriceConfirmation={requiresPriceConfirmation} compact />
+      <div aria-live="polite" className="sr-only">Current total {formatMoney(totalPrice, currencyCode)}</div>
+      {leadTimeNote ? <p className="mt-4 text-sm leading-6 text-text-dim"><Clock3 className="mr-2 inline h-4 w-4" />{leadTimeNote}</p> : null}
+      <p className="mt-3 text-sm leading-6 text-text-dim">Our team reviews every configuration before anything is made or shipped.</p>
+    </div>
+  );
+}
+
+function ReviewRows({ groups, selected, selectedOptions, currencyCode, onEdit }: {
+  groups: CustomizationGroup[];
+  selected: CustomizationSelections;
+  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
+  currencyCode: string;
+  onEdit: (groupId: string) => void;
+}) {
+  return (
+    <div className="mt-5 divide-y divide-border rounded-md border border-border px-4">
+      {groups.map((group) => (
+        <div key={group.id} className="flex min-h-[72px] items-center gap-4 py-3">
+          <span className="min-w-0 flex-1">
+            <span className="block text-[15px] text-text-dim">{group.label}</span>
+            <span className="mt-0.5 block text-[15px] font-semibold text-text">{groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode)}</span>
+          </span>
+          <button type="button" onClick={() => onEdit(group.id)} className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, requiresPriceConfirmation, compact = false }: {
+  basePrice: number;
+  optionPriceDelta: number;
+  totalPrice: number;
+  currencyCode: string;
+  requiresPriceConfirmation: boolean;
+  compact?: boolean;
+}) {
+  return (
+    <div className={clsx("border-t border-border", compact ? "mt-2 pt-3" : "mt-5 rounded-md bg-surface-tint p-4")}>
+      <div className="flex justify-between gap-4 text-[15px] text-text-dim"><span>Base</span><span>{formatMoney(basePrice, currencyCode)}</span></div>
+      <div className="mt-2 flex justify-between gap-4 text-[15px] text-text-dim"><span>Options</span><span>{requiresPriceConfirmation ? "Price confirmed by our team" : formatMoney(optionPriceDelta, currencyCode)}</span></div>
+      <div className="mt-3 flex justify-between gap-4 border-t border-border pt-3 text-xl font-semibold text-text"><span>{requiresPriceConfirmation ? "Starting total" : "Total"}</span><span>{formatMoney(totalPrice, currencyCode)}</span></div>
+    </div>
+  );
+}
+
+function OptionPalette({ group, selected, selections, onSelect, config, currencyCode }: {
+  group: CustomizationGroup;
+  selected: CustomizationSelectionValue | undefined;
+  selections: CustomizationSelections;
+  onSelect: (optionId: string) => void;
+  config: ReturnType<typeof getCustomizationConfig>;
+  currencyCode: string;
+}) {
+  return (
+    <div>
+      {group.resources?.length ? (
+        <div className="mb-4 flex flex-wrap gap-2">
+          {group.resources.map((resource) => (
+            <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-border px-3 text-[15px] font-semibold text-accent hover:bg-accent-tint">
+              {resource.label}<ExternalLink className="h-4 w-4" />
+            </a>
+          ))}
+        </div>
+      ) : null}
+      <div className={clsx("grid gap-3", group.display === "swatches" ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1 sm:grid-cols-2")}>
+        {group.options.map((option) => {
+          const conflict = getOptionConflict(config, selections, group.id, option.id);
+          const isSelected = selectionIds(selected).includes(option.id);
+          const isDisabled = Boolean(conflict) && !isSelected;
+          return <OptionTile key={option.id} option={option} selected={isSelected} disabled={isDisabled} conflict={conflict} currencyCode={currencyCode} onClick={() => onSelect(option.id)} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+function OptionTile({ option, selected, disabled, conflict, currencyCode, onClick }: {
+  option: CustomizationOption;
+  selected: boolean;
+  disabled: boolean;
+  conflict: string | null;
+  currencyCode: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={clsx(
+        "relative flex min-h-24 items-start gap-4 rounded-md border p-4 text-left transition-colors",
+        selected ? "border-2 border-accent bg-accent-tint" : "border-border bg-surface hover:border-accent",
+        disabled && "cursor-not-allowed border-dashed bg-bg hover:border-border"
+      )}
+    >
+      {selected ? <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-accent text-white"><Check className="h-4 w-4" /></span> : null}
+      <OptionMark option={option} selected={selected} />
+      <span className="min-w-0 flex-1 pr-5">
+        <span className="block text-[17px] font-semibold text-text">{option.label}</span>
+        {option.description ? <span className="mt-1 block text-sm leading-5 text-text-dim">{option.description}</span> : null}
+        <span className="mt-2 block text-sm font-semibold text-text-dim">
+          {option.priceDelta === undefined ? "Price confirmed by our team" : option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
+        </span>
+        {option.productionNote ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-text-dim"><Info className="mt-0.5 h-4 w-4 shrink-0" />{option.productionNote}</span> : null}
+        {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{conflict}</span> : null}
+      </span>
+    </button>
+  );
+}
+
+function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
+  if (option.swatch?.kind === "image") {
+    return <span className={clsx("relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border bg-surface-tint", selected ? "border-accent" : "border-border")} aria-hidden="true"><Image src={option.swatch.value} alt="" fill sizes="64px" className="object-cover" loading="lazy" unoptimized /></span>;
+  }
+  if (option.swatch?.kind === "color") {
+    return <span className="h-12 w-12 shrink-0 rounded-full border-2 border-border" style={{ backgroundColor: option.swatch.value }} aria-hidden="true" />;
+  }
+  return <span className={clsx("flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-semibold", selected ? "bg-accent text-white" : "bg-surface-tint text-text")}>{option.swatch?.label ?? option.label.slice(0, 1)}</span>;
+}
+
+function ScrollThread({ groups, activeGroupId, isReviewing, onSelect, onReview }: { groups: CustomizationGroup[]; activeGroupId: string; isReviewing: boolean; onSelect: (id: string) => void; onReview: () => void }) {
+  const activeIndex = isReviewing ? groups.length : Math.max(0, groups.findIndex((group) => group.id === activeGroupId));
+  const progress = groups.length ? (activeIndex / groups.length) * 100 : 0;
+  return (
+    <nav className="pdp-scroll-thread" aria-label="Customization steps">
+      <div className="pdp-scroll-thread__track"><span style={{ height: `${progress}%` }} /></div>
+      {[...groups, { id: "review", label: "Review" } as CustomizationGroup].map((group, index) => (
+        <button key={group.id} type="button" onClick={() => group.id === "review" ? onReview() : onSelect(group.id)} className={clsx("pdp-scroll-thread__tick", index === activeIndex && "is-active")}>
+          <span aria-hidden="true" /> <b>{group.label}</b>
+        </button>
+      ))}
+    </nav>
   );
 }
 
@@ -431,70 +570,64 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
     if (!canCheckout || !firstAvailable?.id) return;
     setLoading(true);
     setError("");
-    const response = await fetch("/api/cart/create", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        merchandiseId: firstAvailable.id,
-        quantity: 1,
-        attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }] : []
-      })
-    });
-    const payload = await response.json();
-    setLoading(false);
-    if (!response.ok) {
-      setError(payload.error ?? "Could not start checkout.");
-      return;
+    try {
+      const response = await fetch("/api/cart/create", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ merchandiseId: firstAvailable.id, quantity: 1, attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }] : [] })
+      });
+      const payload = await response.json();
+      if (!response.ok) {
+        setError(payload.error ?? "Could not start checkout.");
+        return;
+      }
+      const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
+      writeBrowserCartState({
+        checkoutUrl,
+        totalQuantity: payload.totalQuantity ?? 1,
+        productTitle: displayTitle,
+        productDisplayName: displayName || undefined,
+        productHandle: product.handle,
+        productImageUrl: heroImage?.url,
+        productImageAlt: heroImage?.altText ?? displayTitle,
+        currencyCode,
+        customizationSummary: []
+      });
+      router.push(checkoutUrl);
+    } catch {
+      setError("Could not start checkout. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
-    writeBrowserCartState({
-      checkoutUrl,
-      totalQuantity: payload.totalQuantity ?? 1,
-      productTitle: displayTitle,
-      productDisplayName: displayName || undefined,
-      productHandle: product.handle,
-      productImageUrl: heroImage?.url,
-      productImageAlt: heroImage?.altText ?? displayTitle,
-      currencyCode,
-      customizationSummary: []
-    });
-    router.push(checkoutUrl);
   }
 
   return (
-    <section data-tone="blush" className="relative overflow-hidden rounded-[24px] border border-gold-500/20 bg-[linear-gradient(135deg,rgba(26,17,13,0.96),rgba(7,4,3,0.98))] p-5 shadow-soft sm:p-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_25rem_at_80%_5%,rgba(79,156,138,0.1),transparent_62%),radial-gradient(30rem_22rem_at_10%_100%,rgba(192,105,94,0.12),transparent_64%)]" />
-      <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
+    <section className="rounded-lg bg-surface p-5 text-text shadow-card sm:p-8">
+      <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-gold-300">{brandName}</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold text-ivory-50">Order this doll as shown</h2>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-ivory-400">
-            This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version.
-          </p>
+          <p className="text-[15px] font-semibold text-text-dim">{brandName}</p>
+          <h2 className="mt-1 font-display text-3xl font-semibold">Order this doll as shown</h2>
+          <p className="mt-3 max-w-xl text-base leading-7 text-text-dim">This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version.</p>
           <div className="mt-5 flex flex-wrap gap-3">
             <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-              {loading ? "Starting checkout" : `Checkout ${formatMoney(basePrice, currencyCode)}`}
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
+              {loading ? "Starting checkout" : `Continue to secure checkout — ${formatMoney(basePrice, currencyCode)}`}
             </GoldButton>
-            <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-11 items-center justify-center rounded-[14px] border border-gold-500/35 px-5 py-2.5 text-sm font-semibold text-ivory-50 transition hover:border-gold-300 hover:bg-ivory-50/[0.05]">
-              Ask about this doll
-            </a>
+            <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-[52px] items-center justify-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent hover:bg-accent-tint">Ask about this doll</a>
           </div>
-          {error && <p className="mt-3 text-sm text-danger">{error}</p>}
+          {error ? <p className="mt-3 text-[15px] text-danger">{error}</p> : null}
         </div>
-        <div className="rounded-[18px] border border-gold-500/18 bg-ivory-50/[0.045] p-4 text-sm text-ivory-300">
-          <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Listing price</p>
-          <p className="mt-3 text-lg font-semibold text-ivory-50">{formatMoney(basePrice, currencyCode)}</p>
-          <p className="mt-1 leading-6 text-ivory-400">For the doll shown in the product gallery and listed specifications.</p>
+        <div className="rounded-md bg-surface-tint p-5">
+          <p className="text-[15px] font-semibold text-text-dim">Listing price</p>
+          <p className="mt-2 text-xl font-semibold">{formatMoney(basePrice, currencyCode)}</p>
+          <p className="mt-1 text-[15px] leading-6 text-text-dim">For the doll shown in the product gallery and listed specifications.</p>
         </div>
       </div>
     </section>
   );
 }
 
-function cartCustomizationSummary(
-  selectedOptions: Array<{ groupLabel: string; optionLabel: string; priceDelta: number }>
-) {
+function cartCustomizationSummary(selectedOptions: Array<{ groupLabel: string; optionLabel: string; priceDelta: number }>) {
   const byGroup = new Map<string, { optionLabels: string[]; priceDelta: number }>();
   for (const option of selectedOptions) {
     const current = byGroup.get(option.groupLabel) ?? { optionLabels: [], priceDelta: 0 };
@@ -502,352 +635,20 @@ function cartCustomizationSummary(
     current.priceDelta += option.priceDelta;
     byGroup.set(option.groupLabel, current);
   }
-  return [...byGroup.entries()].map(([groupLabel, summary]) => ({
-    groupLabel,
-    optionLabels: summary.optionLabels,
-    priceDelta: summary.priceDelta
-  }));
-}
-
-function CategoryRail({
-  groups,
-  activeGroupId,
-  selected,
-  reviewedGroupIds,
-  isReviewing,
-  onSelect
-}: {
-  groups: CustomizationGroup[];
-  activeGroupId: string;
-  selected: CustomizationSelections;
-  reviewedGroupIds: Set<string>;
-  isReviewing: boolean;
-  onSelect: (groupId: string) => void;
-}) {
-  return (
-    <nav className="builder-rail flex gap-2 overflow-x-auto border-b border-gold-500/20 bg-ivory-50/[0.035] p-4 lg:h-full lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:p-4">
-      {groups.map((group) => {
-        const active = !isReviewing && group.id === activeGroupId;
-        const reviewed = reviewedGroupIds.has(group.id);
-        const label = active ? "Now" : reviewed ? "Reviewed" : "Choose";
-        const selectedLabel = reviewed ? selectedLabelForGroup(group, selected[group.id]) : "";
-        return (
-          <button
-            type="button"
-            key={group.id}
-            onClick={() => onSelect(group.id)}
-            className={clsx(
-              "group flex min-w-32 items-center gap-3 rounded-[18px] border p-3 text-left transition lg:min-w-0 lg:flex-col lg:items-start lg:p-3",
-              active ? "border-gold-300 bg-ivory-50 text-ink-950" : "border-transparent bg-transparent text-ivory-400 hover:border-gold-500/30 hover:bg-ivory-50/[0.045] hover:text-ivory-50"
-            )}
-          >
-            <span className={clsx("flex h-11 w-11 shrink-0 items-center justify-center rounded-full border", active ? "border-ink-950/25 bg-ink-950/10" : "border-gold-500/18 bg-ink-950/65 text-gold-300")}>
-              {groupIcon(group.id)}
-            </span>
-            <span>
-              <span className="block text-sm font-semibold">{group.label}</span>
-              <span className={clsx("mt-1 block text-xs", active ? "text-ink-500" : "text-ivory-600")}>{selectedLabel || label}</span>
-            </span>
-          </button>
-        );
-      })}
-    </nav>
-  );
-}
-
-function BuildReviewSummary({
-  selectedOptions,
-  basePrice,
-  optionPriceDelta,
-  totalPrice,
-  currencyCode,
-  onEdit
-}: {
-  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
-  basePrice: number;
-  optionPriceDelta: number;
-  totalPrice: number;
-  currencyCode: string;
-  onEdit: (groupId: string) => void;
-}) {
-  return (
-    <div data-tone="deep" className="builder-review-island w-full rounded-[28px] border border-gold-500/20 bg-[linear-gradient(155deg,rgba(7,4,3,0.82),rgba(35,21,16,0.78))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.34)] backdrop-blur sm:p-5">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <PriceStat label="Base doll" value={formatMoney(basePrice, currencyCode)} />
-        <PriceStat label="Options" value={formatMoney(optionPriceDelta, currencyCode)} />
-        <PriceStat label="Total" value={formatMoney(totalPrice, currencyCode)} strong />
-      </div>
-      <div className="mt-4 max-h-[520px] overflow-y-auto pr-1 lg:max-h-[600px]">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {selectedOptions.map((option) => (
-            <button
-              type="button"
-              key={`${option.groupId}-${option.optionId}`}
-              onClick={() => onEdit(option.groupId)}
-              className="group flex items-start gap-3 rounded-[18px] border border-gold-500/16 bg-ivory-50/[0.045] p-3 text-left transition hover:-translate-y-0.5 hover:border-gold-300/55 hover:bg-ivory-50/[0.07]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] bg-[#4f9c8a]/15 text-[#9bd7c9]">
-                {groupIcon(option.groupId)}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-xs uppercase tracking-[0.12em] text-ivory-500">{option.groupLabel}</span>
-                <span className="mt-1 block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
-                <span className="mt-2 inline-flex rounded-full bg-ink-950/70 px-2.5 py-1 text-xs font-semibold text-gold-300">
-                  {option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}
-                </span>
-              </span>
-              <span className="shrink-0 text-xs font-semibold text-gold-300 opacity-70 transition group-hover:opacity-100">Edit</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ReviewSidebarSummary({
-  selectedOptions,
-  currencyCode,
-  onEdit
-}: {
-  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
-  currencyCode: string;
-  onEdit: (groupId: string) => void;
-}) {
-  return (
-    <div className="space-y-2">
-      {selectedOptions.map((option) => (
-        <button
-          type="button"
-          key={`${option.groupId}-${option.optionId}`}
-          onClick={() => onEdit(option.groupId)}
-          className="flex w-full items-center gap-3 rounded-[14px] border border-gold-500/14 bg-ink-950/48 p-3 text-left transition hover:border-gold-300/50 hover:bg-ivory-50/[0.055]"
-        >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] bg-[#4f9c8a]/14 text-[#9bd7c9]">{groupIcon(option.groupId)}</span>
-          <span className="min-w-0 flex-1">
-            <span className="block truncate text-sm font-semibold text-ivory-50">{option.optionLabel}</span>
-            <span className="mt-0.5 block truncate text-xs text-ivory-500">{option.groupLabel}</span>
-          </span>
-          <span className="shrink-0 text-xs font-semibold text-gold-300">{option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? formatMoney(option.priceDelta, currencyCode) : "Included"}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function PriceStat({ label, value, strong = false }: { label: string; value: string; strong?: boolean }) {
-  return (
-    <div className={clsx("rounded-[16px] border p-3", strong ? "border-gold-300/34 bg-gold-300/10" : "border-gold-500/12 bg-ivory-50/[0.04]")}>
-      <p className="text-xs uppercase tracking-[0.14em] text-ivory-500">{label}</p>
-      <p className={clsx("mt-1 font-semibold", strong ? "text-xl text-gold-200" : "text-ivory-50")}>{value}</p>
-    </div>
-  );
-}
-
-function OptionPalette({
-  group,
-  selected,
-  selections,
-  isGroupReviewed,
-  onSelect,
-  config,
-  currencyCode
-}: {
-  group: CustomizationGroup;
-  selected: CustomizationSelectionValue | undefined;
-  selections: CustomizationSelections;
-  isGroupReviewed: boolean;
-  onSelect: (optionId: string) => void;
-  config: ReturnType<typeof getCustomizationConfig>;
-  currencyCode: string;
-}) {
-  return (
-    <div
-      className={clsx(
-        "grid gap-4",
-        group.display === "swatches" && "grid-cols-2 sm:grid-cols-3 lg:grid-cols-2",
-        group.display === "cards" && "grid-cols-1",
-        group.display === "compact" && "grid-cols-2"
-      )}
-    >
-      {group.options.map((option) => {
-        const conflict = getOptionConflict(config, selections, group.id, option.id);
-        const isSelected = selectionIds(selected).includes(option.id);
-        const isDisabled = Boolean(conflict) && !isSelected;
-        const showSelected = isSelected && isGroupReviewed;
-        return (
-          <OptionTile
-            key={option.id}
-            group={group}
-            option={option}
-            selected={showSelected}
-            disabled={isDisabled}
-            conflict={conflict}
-            currencyCode={currencyCode}
-            onClick={() => onSelect(option.id)}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-function OptionTile({
-  group,
-  option,
-  selected,
-  disabled,
-  conflict,
-  currencyCode,
-  onClick
-}: {
-  group: CustomizationGroup;
-  option: CustomizationOption;
-  selected: boolean;
-  disabled: boolean;
-  conflict: string | null;
-  currencyCode: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      title={disabled ? conflict ?? undefined : undefined}
-      className={clsx(
-        "option-tile group relative flex min-h-32 flex-col items-center justify-start overflow-hidden rounded-[22px] border p-3 text-center transition duration-200",
-        selected ? "border-[#4f9c8a] bg-[linear-gradient(180deg,rgba(79,156,138,0.09),rgba(7,4,3,0.62))] shadow-[0_16px_40px_rgba(79,156,138,0.16)]" : "border-gold-500/20 bg-ink-950/62 hover:-translate-y-0.5 hover:border-gold-300/60 hover:shadow-[0_16px_40px_rgba(20,6,4,0.32)]",
-        selected && "is-selected",
-        disabled && "cursor-not-allowed opacity-45 hover:translate-y-0 hover:border-gold-500/20 hover:shadow-none"
-      )}
-    >
-      {selected && (
-        <span className="option-check absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#4f9c8a] text-white shadow-[0_8px_24px_rgba(79,156,138,0.28)]">
-          <Check className="h-4 w-4" />
-        </span>
-      )}
-      <span className="flex min-h-full flex-col items-center gap-3">
-        <OptionMark option={option} selected={selected} />
-        <span className="min-w-0 flex-1">
-          <span className="block">
-            <span className="font-semibold text-ivory-50">{option.label}</span>
-          </span>
-          {option.description && <span className="mt-2 block text-xs leading-5 text-ivory-500">{option.description}</span>}
-          <span className="mt-3 inline-flex rounded-full bg-ivory-50/[0.06] px-3 py-1 text-xs font-semibold text-gold-300">
-            {option.priceDelta === undefined ? "Confirm price" : option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
-          </span>
-          {option.productionNote && <span className="mt-2 block text-xs text-ivory-500">{option.productionNote}</span>}
-          {disabled && group.display === "cards" && <span className="mt-2 block text-xs text-danger">{conflict}</span>}
-        </span>
-      </span>
-    </button>
-  );
-}
-
-function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
-  if (option.swatch?.kind === "image") {
-    return (
-      <span className={clsx("relative mt-0.5 h-16 w-16 shrink-0 overflow-hidden rounded-[18px] border bg-ink-900 xl:h-18 xl:w-18", selected ? "border-[#4f9c8a]" : "border-gold-500/20")} aria-hidden="true">
-        <Image src={option.swatch.value} alt="" fill sizes="72px" className="object-cover" loading="lazy" unoptimized />
-      </span>
-    );
-  }
-  if (option.swatch?.kind === "color") {
-    return (
-      <span
-        className={clsx("mt-0.5 h-12 w-12 shrink-0 rounded-full border-[5px]", selected ? "border-[#4f9c8a]/35" : "border-ivory-50/10")}
-        style={{ backgroundColor: option.swatch.value }}
-        aria-hidden="true"
-      />
-    );
-  }
-  return (
-    <span className={clsx("mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border text-lg font-semibold", selected ? "border-[#4f9c8a] bg-[#4f9c8a]/15 text-[#9bd7c9]" : "border-gold-500/20 bg-ivory-50/[0.045] text-ivory-500")}>
-      {option.swatch?.label ?? option.label.slice(0, 1)}
-    </span>
-  );
-}
-
-function SelectedTray({
-  groups,
-  selected,
-  selectedOptions,
-  reviewedGroupIds,
-  currencyCode
-}: {
-  groups: CustomizationGroup[];
-  selected: CustomizationSelections;
-  selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
-  reviewedGroupIds: Set<string>;
-  currencyCode: string;
-}) {
-  const reviewedOptions = selectedOptions.filter((option) => reviewedGroupIds.has(option.groupId));
-  const progress = groups.length ? (reviewedGroupIds.size / groups.length) * 100 : 0;
-
-  return (
-    <div className="relative z-10">
-      <div className="mb-2 flex items-center justify-between gap-4">
-        <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ivory-500">Reviewed ({reviewedGroupIds.size}/{groups.length})</h3>
-        <p className="hidden text-xs text-ivory-600 sm:block">Defaults are included until changed.</p>
-      </div>
-      <div className="border-t border-gold-500/12 pt-3">
-        <div className="h-2 overflow-hidden rounded-full bg-ivory-50/[0.18]">
-          <div className="h-full rounded-full bg-[#236b5f] transition-all duration-300" style={{ width: `${progress}%` }} />
-        </div>
-        {reviewedOptions.length ? (
-          <div className="mt-3 flex gap-2 overflow-x-auto">
-            {groups.filter((group) => reviewedGroupIds.has(group.id)).map((group) => {
-              const label = selectedLabelForGroup(group, selected[group.id]);
-              const priceDelta = selectedOptions.filter((option) => option.groupId === group.id).reduce((sum, option) => sum + option.priceDelta, 0);
-              return (
-                <div key={group.id} className="flex min-w-36 max-w-48 items-center gap-2 rounded-full border border-gold-500/14 bg-ivory-50/[0.38] px-3 py-2 shadow-[0_8px_22px_rgba(96,40,38,0.08)]">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#236b5f] text-[#fff4f1]">
-                    <Check className="h-3.5 w-3.5" />
-                  </span>
-                  <span className="min-w-0 text-xs leading-4">
-                    <span className="block truncate font-semibold text-[#3d231f]">{group.label}</span>
-                    <span className="block truncate text-[#7a5b55]">{label || "Reviewed"}</span>
-                    {priceDelta ? <span className="block truncate font-semibold text-[#236b5f]">+ {formatMoney(priceDelta, currencyCode)}</span> : null}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p className="mt-3 rounded-[14px] border border-gold-500/12 bg-ivory-50/[0.28] px-3 py-2 text-sm text-[#7a5b55]">
-            Start with Material, then move through each group. The checked state appears as you review or change options.
-          </p>
-        )}
-      </div>
-    </div>
-  );
+  return [...byGroup.entries()].map(([groupLabel, summary]) => ({ groupLabel, optionLabels: summary.optionLabels, priceDelta: summary.priceDelta }));
 }
 
 function selectedLabelForGroup(group: CustomizationGroup, value: CustomizationSelectionValue | undefined) {
-  const optionIds = selectionIds(value);
-  const labels = optionIds
-    .map((optionId) => group.options.find((option) => option.id === optionId)?.label)
-    .filter(Boolean);
+  const labels = selectionIds(value).map((optionId) => group.options.find((option) => option.id === optionId)?.label).filter(Boolean);
   if (!labels.length) return "";
   if (labels.length === 1) return labels[0] ?? "";
-  return `${labels.length} selected`;
+  return labels.join(", ");
 }
 
-function Assurance({ icon, text }: { icon: ReactNode; text: string }) {
-  return (
-    <div className="flex items-center gap-2 rounded-[12px] border border-gold-500/10 bg-ivory-50/[0.045] px-3 py-2">
-      <span className="text-[#4f9c8a]">{icon}</span>
-      <span>{text}</span>
-    </div>
-  );
-}
-
-function groupIcon(groupId: string) {
-  if (groupId.includes("skin")) return <Palette className="h-5 w-5" />;
-  if (groupId.includes("eye")) return <Eye className="h-5 w-5" />;
-  if (groupId.includes("hair")) return <Scissors className="h-5 w-5" />;
-  if (groupId.includes("body") || groupId.includes("head")) return <Sparkles className="h-5 w-5" />;
-  if (groupId.includes("care")) return <PackageCheck className="h-5 w-5" />;
-  return <Sparkles className="h-5 w-5" />;
+function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSelectionValue | undefined, selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"], currencyCode: string) {
+  const label = selectedLabelForGroup(group, value) || "Factory default";
+  const options = selectedOptions.filter((option) => option.groupId === group.id);
+  if (options.some((option) => !option.priceConfirmed)) return `${label} · Price confirmed by our team`;
+  const delta = options.reduce((sum, option) => sum + option.priceDelta, 0);
+  return delta ? `${label} (+${formatMoney(delta, currencyCode)})` : `${label} — included`;
 }

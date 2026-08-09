@@ -69,7 +69,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           <Link href="/learn" className="text-sm font-semibold text-gold-300">
             Learning Center
           </Link>
-          <p className="mt-5 text-sm uppercase tracking-[0.18em] text-gold-300">{article.category}</p>
+          <p className="mt-5 text-sm  text-gold-300">{article.category}</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">{article.description}</p>
           {article.featuredImage ? (
@@ -90,7 +90,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               By {article.authorDisplayName}, {article.authorTitle}
             </p>
             <p className="mt-2 text-sm leading-6 text-ivory-300">{author?.bio}</p>
-            <p className="mt-3 text-xs uppercase tracking-[0.16em] text-gold-300">Last reviewed {article.lastReviewed}</p>
+            <p className="mt-3 text-sm  text-gold-300">Last reviewed {article.lastReviewed}</p>
           </div>
         </div>
       </section>
@@ -129,8 +129,8 @@ function ArticleInfographic({ slug }: { slug: string }) {
   return (
     <aside className="tone-card mt-12 overflow-hidden rounded-[8px] p-0 shadow-soft" aria-labelledby={`${slug}-infographic-heading`}>
       <div className="border-b border-gold-500/14 bg-ivory-50/[0.48] p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-700">{infographic.eyebrow}</p>
-        <h2 id={`${slug}-infographic-heading`} className="mt-2 text-2xl font-semibold leading-tight text-ink-950">
+        <p className="text-sm font-semibold  text-gold-700">{infographic.eyebrow}</p>
+        <h2 id={`${slug}-infographic-heading`} className="mt-2 text-2xl font-semibold leading-tight text-text">
           {infographic.title}
         </h2>
         <p className="mt-3 text-sm leading-6 text-ink-700">{infographic.summary}</p>
@@ -146,15 +146,15 @@ function ArticleInfographic({ slug }: { slug: string }) {
       <div className="grid gap-3 p-5">
         {infographic.items.map((item, index) => (
           <div key={item.title} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 rounded-[8px] border border-gold-500/14 bg-white/55 p-4">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-300 text-sm font-semibold text-[#1f120b]">{index + 1}</span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-300 text-sm font-semibold text-white">{index + 1}</span>
             <div>
-              <h3 className="text-base font-semibold leading-tight text-ink-950">{item.title}</h3>
+              <h3 className="text-base font-semibold leading-tight text-text">{item.title}</h3>
               <p className="mt-2 text-sm leading-6 text-ink-700">{item.body}</p>
             </div>
           </div>
         ))}
         <div className="pt-1">
-          <Link href={infographic.href} className="inline-flex rounded-[12px] border border-ink-950/16 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-ink-950/35 hover:bg-ink-950/[0.04]">
+          <Link href={infographic.href} className="inline-flex rounded-[12px] border border-border-strong px-4 py-2 text-sm font-semibold text-text transition hover:border-border-strong hover:bg-ink-950/[0.04]">
             {infographic.cta}
           </Link>
         </div>
@@ -170,11 +170,11 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
     <aside className="tone-card mt-12 rounded-[8px] p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.16em] text-gold-400">Catalog examples</p>
-          <h2 className="mt-2 text-2xl font-semibold leading-tight text-ink-950">{module.title}</h2>
+          <p className="text-sm  text-gold-400">Catalog examples</p>
+          <h2 className="mt-2 text-2xl font-semibold leading-tight text-text">{module.title}</h2>
           <p className="mt-3 text-sm leading-6 text-ink-700">{module.description}</p>
         </div>
-        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/20 px-4 py-2 text-sm font-semibold text-ink-950 transition hover:border-gold-500/40 hover:bg-ivory-50/[0.45]">
+        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/20 px-4 py-2 text-sm font-semibold text-text transition hover:border-gold-500/40 hover:bg-ivory-50/[0.45]">
           View collection
         </Link>
       </div>
@@ -203,12 +203,12 @@ function ArticleProductExampleCard({ product }: { product: Product }) {
         {image ? (
           <Image src={image.url} alt={displayTitle} fill sizes="112px" className="object-cover" />
         ) : (
-          <span className="flex h-full items-center justify-center p-3 text-center text-xs font-semibold text-ink-700">{displayTitle}</span>
+          <span className="flex h-full items-center justify-center p-3 text-center text-sm font-semibold text-ink-700">{displayTitle}</span>
         )}
       </Link>
       <div className="min-w-0">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">{product.extended.brand ?? product.vendor}</p>
-        <h3 className="mt-1 text-base font-semibold leading-snug text-ink-950">
+        <p className="text-sm font-semibold  text-gold-700">{product.extended.brand ?? product.vendor}</p>
+        <h3 className="mt-1 text-base font-semibold leading-snug text-text">
           <Link href={`/products/${product.handle}`} className="transition hover:text-gold-700">
             {displayTitle}
           </Link>
@@ -216,14 +216,14 @@ function ArticleProductExampleCard({ product }: { product: Product }) {
         {specs.length ? (
           <div className="mt-2 flex flex-wrap gap-2">
             {specs.map((spec) => (
-              <span key={spec} className="rounded-full border border-gold-500/14 px-2.5 py-1 text-xs font-semibold text-ink-700">
+              <span key={spec} className="rounded-full border border-gold-500/14 px-2.5 py-1 text-sm font-semibold text-ink-700">
                 {spec}
               </span>
             ))}
           </div>
         ) : null}
         <div className="mt-4 flex flex-wrap items-center gap-3">
-          <p className="text-lg font-semibold text-ink-950">{formatMoney(price.amount, price.currencyCode)}</p>
+          <p className="text-lg font-semibold text-text">{formatMoney(price.amount, price.currencyCode)}</p>
           <GoldButton href={`/products/${product.handle}`} variant="primary" className="min-h-0 px-4 py-2">
             View doll
           </GoldButton>
@@ -238,17 +238,17 @@ function ArticleActions({ slug }: { slug: string }) {
 
   return (
     <aside className="mt-12 rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.45] p-5 shadow-soft">
-      <p className="text-sm uppercase tracking-[0.16em] text-gold-600">Next step</p>
-      <h2 className="mt-2 text-2xl font-semibold leading-tight text-ink-950">Compare options with real catalog context</h2>
+      <p className="text-sm  text-gold-600">Next step</p>
+      <h2 className="mt-2 text-2xl font-semibold leading-tight text-text">Compare options with real catalog context</h2>
       <p className="mt-3 text-sm leading-6 text-ink-800">
         Use the finder, submit another listing for review, or ask DollWow to confirm product details before checkout.
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <GoldButton href="/help-me-choose">Use the DollWow finder</GoldButton>
-        <GoldButton href="/compare" variant="secondary" className="border-ink-950/18 bg-ink-950/[0.04] text-ink-950 hover:border-ink-950/40 hover:bg-ink-950/[0.08]">
+        <GoldButton href="/compare" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
           Compare a listing
         </GoldButton>
-        <GoldButton href="/support" variant="secondary" className="border-ink-950/18 bg-ink-950/[0.04] text-ink-950 hover:border-ink-950/40 hover:bg-ink-950/[0.08]">
+        <GoldButton href="/support" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
           Ask support
         </GoldButton>
       </div>
@@ -258,10 +258,10 @@ function ArticleActions({ slug }: { slug: string }) {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-[8px] border border-ink-950/10 bg-white/45 p-4 text-sm font-semibold text-ink-950 transition hover:border-ink-950/25 hover:bg-white/70"
+              className="rounded-[8px] border border-border-strong bg-white/45 p-4 text-sm font-semibold text-text transition hover:border-border-strong hover:bg-white/70"
             >
               {item.label}
-              <span className="mt-1 block text-xs font-normal leading-5 text-ink-700">{item.description}</span>
+              <span className="mt-1 block text-sm font-normal leading-5 text-ink-700">{item.description}</span>
             </Link>
           ))}
         </div>

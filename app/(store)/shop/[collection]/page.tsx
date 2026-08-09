@@ -31,7 +31,7 @@ export default async function CollectionPage({
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
-    includeCustomizationGroups: Boolean(filters.query)
+    includeCustomizationGroups: false
   });
   const filtered = filterProducts(products, filters);
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
@@ -53,7 +53,7 @@ export default async function CollectionPage({
       ))}
       <div className="shop-visual-hero">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Collection</p>
+          <p className="text-sm  text-gold-300">Collection</p>
           <h1 className="mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{collectionIntro(preset, collection)}</p>
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls in this collection view</p>
@@ -71,7 +71,7 @@ export default async function CollectionPage({
       {comparisonRows.length ? (
         <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="collection-comparison-heading">
           <div className="border-b border-gold-500/12 p-5">
-            <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Buyer comparison</p>
+            <p className="text-sm  text-gold-300">Buyer comparison</p>
             <h2 id="collection-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
               Why compare this collection on DollWow
             </h2>
@@ -116,7 +116,7 @@ export default async function CollectionPage({
       {buyerNotes.length ? (
         <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-buyer-notes-heading">
           <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.16em] text-gold-300">How to compare</p>
+            <p className="text-sm  text-gold-300">How to compare</p>
             <h2 id="collection-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
               What to check before choosing from this collection
             </h2>

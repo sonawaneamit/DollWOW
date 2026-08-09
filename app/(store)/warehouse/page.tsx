@@ -17,7 +17,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Doll Warehouse</p>
+          <p className="text-sm  text-gold-300">Doll Warehouse</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Ready-to-ship inventory</h1>
           <p className="mt-3 max-w-2xl text-ivory-400">Browse dolls already held in a warehouse for faster dispatch. We show the warehouse location and confirm availability before payment.</p>
           <p className="mt-3 text-sm font-semibold text-gold-200">{filteredProducts.length} ready-to-ship dolls</p>

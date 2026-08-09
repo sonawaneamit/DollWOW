@@ -1,5 +1,6 @@
 import { GoldButton } from "@/components/GoldButton";
 import { CartPageClient } from "@/components/CartPageClient";
+import { RecentlyViewedRail } from "@/components/RecentlyViewedRail";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 import Link from "next/link";
 import { Camera, Lock, ShieldCheck, Truck } from "lucide-react";
@@ -12,19 +13,21 @@ export default function CartPage({ searchParams }: { searchParams: Promise<{ moc
   return (
     <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-5">
-        <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Cart</p>
-        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Saved checkout</h1>
+        <p className="text-sm  text-gold-300">Cart</p>
+        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Your bag</h1>
         <p className="mt-3 max-w-2xl text-ivory-400">
-          Resume checkout, review the product, or keep browsing.
+          Review your items, complete your order with matching picks, or check out securely.
         </p>
       </div>
 
       <CartPageClient />
 
+      <RecentlyViewedRail />
+
       <div className="mt-6 border border-gold-500/16 bg-ink-800/72 p-5 sm:p-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Before you pay</p>
+            <p className="text-sm font-semibold  text-gold-300">Before you pay</p>
             <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Private, clear, and reviewed by our team.</h2>
           </div>
           <GoldButton href="/shop" variant="secondary">Keep shopping</GoldButton>
@@ -56,7 +59,7 @@ export default function CartPage({ searchParams }: { searchParams: Promise<{ moc
 
 function TrustCard({ icon, title, body }: { icon: ReactNode; title: string; body: string }) {
   return (
-    <article className="border border-gold-500/14 bg-[#120907]/65 p-4">
+    <article className="border border-gold-500/14 bg-surface-tint p-4">
       <div className="mb-3 grid h-10 w-10 place-items-center bg-gold-300/10 text-gold-300">{icon}</div>
       <h2 className="text-sm font-semibold text-ivory-100">{title}</h2>
       <p className="mt-2 text-sm leading-6 text-ivory-300">{body}</p>

@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import { Hanken_Grotesk, Schibsted_Grotesk } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
+import { ConsentBanner } from "@/components/ConsentBanner";
+import { CartProvider } from "@/components/cart/CartProvider";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
+import "./v2-storefront.css";
 
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -49,16 +54,49 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const siteStructuredData = buildSiteStructuredData();
+  const measurementId = process.env.GA_MEASUREMENT_ID;
 
   return (
-    <html lang="en" data-theme="boudoir" data-scroll-behavior="smooth">
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script
+          id="dollwow-theme-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'?'dark':'light';document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
+          }}
+        />
+      </head>
       <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
         {siteStructuredData.map((entry) => (
           <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
         ))}
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        {measurementId ? (
+          // GA4 Consent Mode v2 defaults: everything denied until the visitor
+          // chooses via the consent banner. Must run before the gtag loader.
+          <script
+            id="ga4-consent-defaults"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = window.gtag || gtag;
+gtag('consent', 'default', {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  wait_for_update: 500
+});`
+            }}
+          />
+        ) : null}
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
+        <ConsentBanner />
+        <Analytics measurementId={measurementId} />
       </body>
     </html>
   );

@@ -10,8 +10,8 @@ const skinTones: CustomizationGroup = {
   required: true,
   display: "swatches",
   options: [
-    { id: "factory", label: "Factory default", swatch: { kind: "color", value: "#e7b98f" } },
-    { id: "light", label: "Light", swatch: { kind: "color", value: "#f0c9a5" } },
+    { id: "factory", label: "Factory default", priceDelta: 0, swatch: { kind: "color", value: "#e7b98f" } },
+    { id: "light", label: "Light", priceDelta: 0, swatch: { kind: "color", value: "#f0c9a5" } },
     { id: "tan", label: "Tan", priceDelta: 45, swatch: { kind: "color", value: "#c88f64" } },
     { id: "deep", label: "Deep", priceDelta: 65, swatch: { kind: "color", value: "#8d563d" } }
   ]
@@ -24,8 +24,8 @@ const eyeColor: CustomizationGroup = {
   required: true,
   display: "swatches",
   options: [
-    { id: "factory", label: "Factory default", swatch: { kind: "color", value: "#5a3928" } },
-    { id: "brown", label: "Brown", swatch: { kind: "color", value: "#59351f" } },
+    { id: "factory", label: "Factory default", priceDelta: 0, swatch: { kind: "color", value: "#5a3928" } },
+    { id: "brown", label: "Brown", priceDelta: 0, swatch: { kind: "color", value: "#59351f" } },
     { id: "blue", label: "Blue", priceDelta: 25, swatch: { kind: "color", value: "#6d93bd" } },
     { id: "green", label: "Green", priceDelta: 25, swatch: { kind: "color", value: "#6f8f68" } }
   ]
@@ -57,7 +57,7 @@ const zelexHeadFunctions: CustomizationGroup = {
   required: true,
   display: "cards",
   options: [
-    { id: "none", label: "No electronic head function", description: "Standard head build." },
+    { id: "none", label: "No electronic head function", description: "Standard head build.", priceDelta: 0 },
     { id: "oral-function", label: "Oral function", description: "Supplier electronic head function.", priceDelta: 350 },
     { id: "eye-movement", label: "Eye movement", description: "Supplier electronic eye movement.", priceDelta: 420 }
   ]
@@ -69,7 +69,7 @@ const bodyUpgrades: CustomizationGroup = {
   description: "Functional upgrades are confirmed against the selected body before production.",
   display: "cards",
   options: [
-    { id: "standard", label: "Standard body", description: "No body upgrade." },
+    { id: "standard", label: "Standard body", description: "No body upgrade.", priceDelta: 0 },
     { id: "standing-feet", label: "Standing feet", description: "Useful for display and assisted positioning.", priceDelta: 120 },
     { id: "body-heating", label: "Body heating", description: "Supplier heating option where compatible.", priceDelta: 280 }
   ]
@@ -78,7 +78,7 @@ const bodyUpgrades: CustomizationGroup = {
 const tpeBodyUpgrades: CustomizationGroup = {
   ...bodyUpgrades,
   options: [
-    { id: "standard", label: "Standard body", description: "No body upgrade." },
+    { id: "standard", label: "Standard body", description: "No body upgrade.", priceDelta: 0 },
     { id: "standing-feet", label: "Standing feet", description: "Useful for display and assisted positioning.", priceDelta: 95 },
     { id: "body-heating", label: "Body heating", description: "Supplier heating option where compatible.", priceDelta: 180 }
   ]
@@ -90,7 +90,7 @@ const careAddOns: CustomizationGroup = {
   description: "Optional support items that make ownership and storage easier.",
   display: "compact",
   options: [
-    { id: "none", label: "No add-on" },
+    { id: "none", label: "No add-on", priceDelta: 0 },
     { id: "care-kit", label: "Care kit", priceDelta: 49 },
     { id: "storage-bag", label: "Storage bag", priceDelta: 79 },
     { id: "care-storage", label: "Care kit + storage bag", priceDelta: 118 }
@@ -100,9 +100,86 @@ const careAddOns: CustomizationGroup = {
 const torsoCareAddOns: CustomizationGroup = {
   ...careAddOns,
   options: [
-    { id: "none", label: "No add-on" },
+    { id: "none", label: "No add-on", priceDelta: 0 },
     { id: "care-kit", label: "Care kit", priceDelta: 39 },
     { id: "storage-bag", label: "Compact storage bag", priceDelta: 59 }
+  ]
+};
+
+const irontechUlw: CustomizationGroup = {
+  id: "body-weight",
+  label: "Body weight technology",
+  description: "ULW is available for supported full-size Irontech silicone bodies and is designed to make lifting, repositioning, dressing, cleaning, and storage easier.",
+  required: true,
+  display: "cards",
+  resources: [
+    { label: "Watch the ULW demonstration", href: "/resources/irontech-ulw/irontech-ulw-demo.mp4", kind: "video" },
+    { label: "Read the Irontech ULW white paper", href: "/resources/irontech-ulw/irontech-ulw-white-paper.pdf", kind: "document" },
+    { label: "Irontech ULW information", href: "https://www.irontechdoll.com/ultra-lightweight-technology-ulw/", kind: "web" }
+  ],
+  options: [
+    { id: "standard-weight", label: "Standard body weight", description: "The standard body construction and listed catalog weight.", priceDelta: 0 },
+    {
+      id: "ultra-lightweight",
+      label: "Ultra Light Weight (ULW)",
+      description: "Up to 30% lighter depending on the body configuration and production batch.",
+      priceDelta: 195,
+      productionNote: "Factory compatibility and final weight are confirmed before production.",
+      swatch: { kind: "image", value: "/option-swatches/irontech/ultra-lightweight.png", label: "Irontech ULW" }
+    }
+  ]
+};
+
+const ironAiHeadUpgrade: CustomizationGroup = {
+  id: "ironai-head-upgrade",
+  label: "IronAI companion head",
+  description:
+    "IronAI adds natural voice and text conversation, contextual and emotional responses, long-term memory, seven-language support, and online feature updates. Setup uses the IronAI app and a 2.4GHz Wi-Fi connection.",
+  required: true,
+  display: "cards",
+  resources: [
+    {
+      label: "How IronAI works",
+      href: "https://www.real-lady.com/products/sex-doll-ironai-heads/",
+      kind: "web"
+    }
+  ],
+  options: [
+    {
+      id: "standard-head",
+      label: "Standard head",
+      description: "Keep the head and functions shown with this model.",
+      priceDelta: 0
+    },
+    {
+      id: "ironai-head",
+      label: "Upgrade to IronAI",
+      description: "Includes the IronAI Core, voice and text interaction, long-term memory, Wi-Fi connectivity, and OTA updates.",
+      priceDelta: 119,
+      productionNote: "Head-model compatibility is confirmed before production.",
+      swatch: {
+        kind: "image",
+        value: "https://www.real-lady.com/wp-content/uploads/2026/06/RIC_8823-scaled.jpg",
+        label: "Real Lady IronAI head"
+      }
+    }
+  ]
+};
+
+const ironAiHeadModels: CustomizationGroup = {
+  id: "head",
+  label: "IronAI head model",
+  description: "Choose one of the IronAI-compatible Real Lady head models currently listed by the manufacturer.",
+  required: true,
+  selectionMode: "single",
+  display: "swatches",
+  resources: ironAiHeadUpgrade.resources,
+  options: [
+    { id: "r4-celeste", label: "R4 Celeste" },
+    { id: "r8-lena", label: "R8 Lena" },
+    { id: "r10-viki", label: "R10 Viki" },
+    { id: "r11-alara", label: "R11 Alara" },
+    { id: "r12-hailey", label: "R12 Hailey" }
   ]
 };
 
@@ -184,24 +261,25 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
+  const importedGroups = product.extended.customizationGroups?.filter(
+    (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
+  );
+  if (importedGroups?.length) {
+    const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
+    return {
+      id: "imported",
+      brandLabel: product.extended.brand ?? product.vendor,
+      leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
+      groups: uniqueCustomizationGroups(withIronAi(product, withIrontechUlw(product, sourceGroups))),
+      rules: []
+    };
+  }
   if (text.includes("rosretty")) {
     return {
       id: "rosretty-official",
       brandLabel: "Rosretty Dolls",
       leadTimeNote: "Rosretty selections are confirmed before production begins.",
       groups: getRosrettyCustomizationGroups(product),
-      rules: []
-    };
-  }
-  const importedGroups = product.extended.customizationGroups?.filter(
-    (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
-  );
-  if (importedGroups?.length) {
-    return {
-      id: "imported",
-      brandLabel: product.extended.brand ?? product.vendor,
-      leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
-      groups: uniqueCustomizationGroups(importedGroups),
       rules: []
     };
   }
@@ -218,7 +296,126 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
   if (text.includes("starpery")) return configs.starpery;
+  if (isIrontechProduct(product)) {
+    return {
+      id: "irontech",
+      brandLabel: "Irontech Dolls",
+      leadTimeNote: "Irontech custom builds and ULW compatibility are confirmed before production begins.",
+      groups: withIronAi(product, withIrontechUlw(product, configs.generic.groups)),
+      rules: []
+    };
+  }
+  if (isRealLadyProduct(product)) {
+    return {
+      id: "real-lady",
+      brandLabel: "Real Lady",
+      leadTimeNote: "Real Lady custom builds and IronAI compatibility are confirmed before production begins.",
+      groups: withIronAi(product, configs.generic.groups),
+      rules: []
+    };
+  }
   return configs.generic;
+}
+
+function withIronAi(product: Product, groups: CustomizationGroup[]) {
+  if (isIronAiHeadProduct(product)) {
+    const headStand = groups.find((group) => group.id === "sex-doll-head-stand");
+    return headStand ? [ironAiHeadModels, headStand] : [ironAiHeadModels];
+  }
+  if (!isRealLadyProduct(product) || !supportsIronAiUpgrade(product) || groups.some((group) => group.id === ironAiHeadUpgrade.id)) return groups;
+  return [...groups, ironAiHeadUpgrade];
+}
+
+function normalizeRealLadyImportedGroups(groups: CustomizationGroup[]) {
+  const removedLegacyGroups = /extra free head|custom options for extra head|head type for extra head|hairstyle for extra head|hair color for extra head|eye color for extra head|premium head options for extra head/i;
+
+  return groups
+    .filter((group) => !removedLegacyGroups.test(group.label))
+    .map((group) => {
+      if (/weight reduction/i.test(group.label)) {
+        return {
+          ...group,
+          label: "Body weight",
+          options: group.options.map((option) =>
+            /ultra light/i.test(option.label)
+              ? { ...option, label: "Ultra Light Weight", priceDelta: 265 }
+              : { ...option, priceDelta: option.priceDelta ?? 0 }
+          )
+        };
+      }
+
+      if (/robot option/i.test(group.label)) {
+        return {
+          ...group,
+          label: "Robot functions",
+          selectionMode: "single" as const,
+          display: "cards" as const,
+          options: [
+            { id: "no-robot-functions", label: "No robot functions", priceDelta: 0 },
+            { id: "intelligent-moaning", label: "Intelligent moaning function", priceDelta: 180 },
+            { id: "electric-hip-waist", label: "Electric hip and waist", priceDelta: 280, productionNote: "Adds approximately 3 kg." },
+            { id: "oral-sex-movement", label: "Oral movement function", priceDelta: 280, productionNote: "Adds approximately 4 kg." }
+          ]
+        };
+      }
+
+      const options = group.options
+        .filter((option) => !(group.label.toLowerCase().includes("premium head & body") && option.id === "ironai"))
+        .map((option) => {
+          const label = option.label.toLowerCase();
+          if (label.includes("implanted") && /hair(style)?/i.test(group.label)) return { ...option, priceDelta: 150 };
+          if (label.includes("ros max") && /head type/i.test(group.label)) return { ...option, priceDelta: 200 };
+          if ((label.includes("movable jaw") || label === "ros") && /head type/i.test(group.label)) return { ...option, priceDelta: 200 };
+          if (label.includes("ultra soft butt") || label === "gel butt (free)") return { ...option, priceDelta: 150 };
+          if (label.includes("ultra soft thigh")) return { ...option, priceDelta: 120 };
+          if (label.includes("ultra soft belly")) return { ...option, priceDelta: 120 };
+          if (label.includes("body moaning")) return { ...option, priceDelta: 180 };
+          return { ...option, priceDelta: option.priceDelta ?? 0 };
+        });
+      return { ...group, options };
+    });
+}
+
+function withIrontechUlw(product: Product, groups: CustomizationGroup[]) {
+  if (!isIrontechProduct(product) || !supportsIrontechUlw(product) || groups.some((group) => group.id === irontechUlw.id)) return groups;
+  return [...groups, irontechUlw];
+}
+
+function isIrontechProduct(product: Product) {
+  return [product.extended.brand, product.vendor, product.title, product.handle, ...product.tags]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase()
+    .includes("irontech");
+}
+
+function isRealLadyProduct(product: Product) {
+  const text = [product.extended.brand, product.vendor, product.title, product.handle, ...product.tags]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return /\breal[ -]?lady\b|\breallady\b/.test(text);
+}
+
+function isIronAiHeadProduct(product: Product) {
+  const text = [product.extended.brand, product.vendor, product.productType, product.title, product.handle, ...product.tags]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return text.includes("ironai") && text.includes("head");
+}
+
+function supportsIronAiUpgrade(product: Product) {
+  const form = [product.productType, product.title, product.handle, ...product.tags].filter(Boolean).join(" ").toLowerCase();
+  return !/\b(torso|hips?|body-part|head only|head-only)\b/.test(form);
+}
+
+function supportsIrontechUlw(product: Product) {
+  const material = (product.extended.material ?? "").toLowerCase();
+  const form = [product.productType, product.title, product.handle, ...product.tags].filter(Boolean).join(" ").toLowerCase();
+  const fullSiliconeBody = material.includes("silicone") && !material.includes("head") && !material.includes("hybrid") && !material.includes("tpe");
+  const fullBody = !/\b(torso|hips?|body-part)\b/.test(form);
+  return fullSiliconeBody && fullBody;
 }
 
 function uniqueCustomizationGroups(groups: CustomizationGroup[]) {

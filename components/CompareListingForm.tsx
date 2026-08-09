@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LinkIcon, Loader2, Upload } from "lucide-react";
 import { GoldButton } from "./GoldButton";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 
 export function CompareListingForm({
   compact = false,
@@ -57,6 +58,10 @@ export function CompareListingForm({
       return;
     }
 
+    trackEvent(analyticsEvents.submitCompareListing, {
+      target_product: targetProductHandle,
+      has_email: Boolean(email)
+    });
     router.push(`/compare/${payload.id}`);
   }
 
@@ -80,7 +85,7 @@ export function CompareListingForm({
       </label>
       {targetProductHandle ? (
         <div className="rounded-[14px] border border-gold-500/16 bg-ink-950/45 px-4 py-3">
-          <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Matching against</p>
+          <p className="text-sm  text-gold-300">Matching against</p>
           <p className="mt-1 text-sm font-medium text-ivory-100">{targetProductTitle ?? targetProductHandle}</p>
         </div>
       ) : null}
@@ -95,7 +100,7 @@ export function CompareListingForm({
             placeholder="2000"
             className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
           />
-          <p className="mt-2 text-xs text-ivory-500">Enter the final total you were shown, including selected options and add-ons.</p>
+          <p className="mt-2 text-sm text-ivory-500">Enter the final total you were shown, including selected options and add-ons.</p>
         </label>
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-ivory-200">Currency</span>
@@ -121,7 +126,7 @@ export function CompareListingForm({
           placeholder="153"
           className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
         />
-        <p className="mt-2 text-xs text-ivory-500">Optional. If you already did the math, tell us the discount amount you think would match the offer.</p>
+        <p className="mt-2 text-sm text-ivory-500">Optional. If you already did the math, tell us the discount amount you think would match the offer.</p>
       </label>
       <label className="block">
         <span className="mb-2 block text-sm font-medium text-ivory-200">Screenshot of the configured cart or summary</span>
@@ -137,7 +142,7 @@ export function CompareListingForm({
             onChange={(event) => setScreenshotFile(event.target.files?.[0] || null)}
             className="mt-3 block w-full text-sm text-ivory-200 file:mr-4 file:rounded-full file:border-0 file:bg-gold-500/15 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gold-100 hover:file:bg-gold-500/25"
           />
-          <p className="mt-2 text-xs text-ivory-500">JPG, PNG, or WebP. This helps us verify the exact configuration and final total.</p>
+          <p className="mt-2 text-sm text-ivory-500">JPG, PNG, or WebP. This helps us verify the exact configuration and final total.</p>
           {fileSummary ? <p className="mt-2 text-sm text-ivory-300">{fileSummary}</p> : null}
         </div>
       </label>
@@ -151,11 +156,11 @@ export function CompareListingForm({
             placeholder="you@example.com"
             className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
           />
-          <p className="mt-2 text-xs text-ivory-500">We use this to send the reviewed result and any approved price-match code.</p>
+          <p className="mt-2 text-sm text-ivory-500">We use this to send the reviewed result and any approved price-match code.</p>
         </label>
       )}
       {error && <p className="text-sm text-danger">{error}</p>}
-      <div className="grid gap-2 text-xs text-ivory-500 sm:grid-cols-3">
+      <div className="grid gap-2 text-sm text-ivory-500 sm:grid-cols-3">
         <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">We compare the product, options, extras, shipping, and final price.</p>
         <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">Upload the cart summary so we can verify the same configuration.</p>
         <p className="rounded-[14px] border border-gold-500/14 bg-ink-950/40 px-3 py-2">If we need more information, we will email you before approving the match.</p>
@@ -164,7 +169,7 @@ export function CompareListingForm({
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
         Send for review
       </GoldButton>
-      <p className="text-xs text-ivory-600">Prices and promos change. We confirm the real final deal before we approve anything.</p>
+      <p className="text-sm text-ivory-600">Prices and promos change. We confirm the real final deal before we approve anything.</p>
     </form>
   );
 }

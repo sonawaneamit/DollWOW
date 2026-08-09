@@ -22,7 +22,7 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Help Me Choose</p>
+          <p className="text-sm  text-gold-300">Help Me Choose</p>
           <h1 className="mt-2 text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
             Find a practical shortlist without guessing.
           </h1>
@@ -41,16 +41,16 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
             compact
           />
           <div className="border border-gold-500/14 bg-ink-800/72 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">What it checks</p>
+            <p className="text-sm font-semibold  text-gold-300">What it checks</p>
             <div className="mt-4 grid gap-3">
               {quickSignals.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="flex gap-3 border border-gold-500/10 bg-[#120907]/60 p-3">
+                  <div key={item.title} className="flex gap-3 border border-gold-500/10 bg-surface-tint p-3">
                     <Icon className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
                     <div>
                       <strong className="text-sm text-ivory-100">{item.title}</strong>
-                      <p className="mt-1 text-xs leading-5 text-ivory-500">{item.copy}</p>
+                      <p className="mt-1 text-sm leading-5 text-ivory-500">{item.copy}</p>
                     </div>
                   </div>
                 );

@@ -1,101 +1,198 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Loader2, ShoppingBag, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
+import { useState } from "react";
+import { Loader2, Lock, ShoppingBag, Sparkles, Truck, Zap } from "lucide-react";
+import { useCart } from "@/components/cart/CartProvider";
+import { TrustLogoStrip } from "@/components/TrustLogoStrip";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { writeBrowserCartState } from "@/lib/cart/browser";
+import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
+import { installmentLabel } from "@/lib/commerce/installments";
+import { formatMoney } from "@/lib/utils/currency";
 import type { ProductImage } from "@/types/product";
-import { GoldButton } from "./GoldButton";
-import { TrustLogoStrip } from "./TrustLogoStrip";
 
+type ProductBuyActionsProps = {
+  merchandiseId: string;
+  productTitle: string;
+  productDisplayName?: string;
+  productHandle: string;
+  productImage: ProductImage | null;
+  brand?: string;
+  unitPrice: number;
+  currencyCode: string;
+  deliveryEstimate?: string;
+  readyToShip: boolean;
+};
+
+/**
+ * PDP buy box. Two lanes: "Add to bag" (multi-item bag + drawer, buy as
+ * shown) and "Buy it now" (legacy single-line express checkout). Customizing
+ * scrolls to the Build Studio below the fold.
+ */
 export function ProductBuyActions({
   merchandiseId,
   productTitle,
   productDisplayName,
   productHandle,
   productImage,
-  readyToShip = false
-}: {
-  merchandiseId: string;
-  productTitle: string;
-  productDisplayName?: string;
-  productHandle: string;
-  productImage?: ProductImage | null;
-  readyToShip?: boolean;
-}) {
+  brand,
+  unitPrice,
+  currencyCode,
+  deliveryEstimate,
+  readyToShip
+}: ProductBuyActionsProps) {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  async function buyAsShown() {
-    setLoading(true);
-    setError("");
-    const response = await fetch("/api/cart/create", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        merchandiseId,
-        quantity: 1,
-        attributes: [
-          ...(productDisplayName ? [{ key: "DollWow Reference Name", value: productDisplayName }] : []),
-          { key: "Selected configuration", value: "As shown" }
-        ]
-      })
-    });
-    const payload = await response.json();
-    setLoading(false);
-    if (!response.ok) {
-      setError(payload.error ?? "Could not start checkout.");
-      return;
-    }
-    const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
-    writeBrowserCartState({
-      checkoutUrl,
-      totalQuantity: payload.totalQuantity ?? 1,
+  const cart = useCart();
+  const [buyNowPending, setBuyNowPending] = useState(false);
+  const [buyNowError, setBuyNowError] = useState("");
+
+  const name = productDisplayName || productTitle;
+  const installments = installmentLabel(unitPrice, currencyCode, formatMoney);
+  const buildAttributes = [
+    ...(productDisplayName ? [{ key: "DollWow Reference Name", value: productDisplayName }] : []),
+    { key: "Selected configuration", value: "As shown" }
+  ];
+
+  function addToBag() {
+    cart.addItem({
+      merchandiseId,
+      productHandle,
       productTitle,
       productDisplayName,
-      productHandle,
-      productImageUrl: productImage?.url,
-      productImageAlt: productImage?.altText ?? productTitle
+      brand,
+      imageUrl: productImage?.url,
+      imageAlt: productImage?.altText ?? productTitle,
+      unitPrice,
+      currencyCode,
+      readyToShip,
+      attributes: buildAttributes
     });
-    router.push(checkoutUrl);
+  }
+
+  async function buyNow() {
+    if (buyNowPending) return;
+    setBuyNowPending(true);
+    setBuyNowError("");
+    try {
+      const response = await fetch("/api/cart/create", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ merchandiseId, quantity: 1, attributes: buildAttributes })
+      });
+      const payload = await response.json();
+      if (!response.ok) {
+        setBuyNowError(payload.error ?? "Could not start checkout.");
+        return;
+      }
+      const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
+      writeBrowserCartState({
+        checkoutUrl,
+        totalQuantity: payload.totalQuantity ?? 1,
+        productTitle,
+        productDisplayName,
+        productHandle,
+        productImageUrl: productImage?.url,
+        productImageAlt: productImage?.altText ?? productTitle,
+        merchandiseId,
+        quantity: 1,
+        readyToShip,
+        currencyCode
+      });
+      trackEvent(analyticsEvents.addToCart, {
+        item_id: merchandiseId,
+        item_name: name,
+        item_brand: brand,
+        price: unitPrice,
+        currency: currencyCode,
+        quantity: 1
+      });
+      trackEvent(analyticsEvents.beginCheckout, { value: unitPrice, currency: currencyCode, item_count: 1 });
+      router.push(checkoutUrl);
+    } catch {
+      setBuyNowError("Could not start checkout. Please try again.");
+    } finally {
+      setBuyNowPending(false);
+    }
   }
 
   function scrollToCustomizer() {
-    document.getElementById("build-studio")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const target = document.getElementById("build-studio");
+    if (!target) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
   }
 
   return (
-    <div className="mt-6 space-y-3">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <GoldButton onClick={buyAsShown} disabled={!merchandiseId || loading} className="min-h-14">
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-          Buy as shown
-        </GoldButton>
-        <GoldButton variant="secondary" onClick={scrollToCustomizer} className="min-h-14">
-          <SlidersHorizontal className="h-4 w-4" />
-          Customize
-        </GoldButton>
+    <div className="mt-6 rounded-lg bg-surface p-5 text-text shadow-card sm:p-6">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="text-[15px] font-semibold text-text-dim">Buy as shown</p>
+        {installments ? <p className="text-sm text-text-faint">{installments}</p> : null}
       </div>
-      <p className="text-xs leading-5 text-ivory-500">
-        {readyToShip
-          ? `Buy as shown reserves the warehouse doll pictured for ${productTitle}. It ships in plain packaging once stock is confirmed.`
-          : `Buy as shown keeps the configuration pictured for ${productTitle}. For custom builds, you receive factory photos before shipment.`}
+
+      <div className="mt-4 grid gap-3">
+        <button
+          type="button"
+          onClick={addToBag}
+          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
+        >
+          <ShoppingBag className="h-5 w-5" />
+          Add to bag · {formatMoney(unitPrice, currencyCode)}
+        </button>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <button
+            type="button"
+            onClick={buyNow}
+            disabled={buyNowPending}
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint disabled:opacity-60"
+          >
+            {buyNowPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <Zap className="h-5 w-5" />}
+            Buy now
+          </button>
+          <button
+            type="button"
+            onClick={scrollToCustomizer}
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
+          >
+            <Sparkles className="h-5 w-5" />
+            Customize your doll
+          </button>
+        </div>
+        {buyNowError ? <p className="text-sm text-danger">{buyNowError}</p> : null}
+      </div>
+
+      <div className="mt-5 flex items-start gap-3 rounded-md bg-surface-tint p-4">
+        <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-stock-tint text-stock">
+          <Truck className="h-5 w-5" />
+        </span>
+        <div>
+          <p className="text-base font-semibold text-text">
+            {readyToShip ? "In the warehouse now" : "Built to order for you"}
+          </p>
+          <p className="mt-1 text-[15px] leading-6 text-text-dim">
+            {readyToShip
+              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}Leaves the warehouse in 1-3 business days after stock confirmation.`
+              : "You approve detailed factory photos and videos before anything ships. Timing is confirmed before you pay."}
+          </p>
+        </div>
+      </div>
+
+      <p className="mt-4 flex items-center justify-center gap-2 text-center text-[15px] text-text-dim">
+        <Lock className="h-4 w-4" /> Secure checkout by Shopify · plain packaging · neutral billing
       </p>
-      <div className="flex flex-wrap gap-2">
-        <Link href="/buyer-protection" className="rounded-[12px] border border-gold-500/16 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-300 transition hover:border-gold-300/45 hover:text-ivory-50">
-          Buyer protection
-        </Link>
-        <Link href="/shipping-protection" className="rounded-[12px] border border-gold-500/16 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-300 transition hover:border-gold-300/45 hover:text-ivory-50">
-          Shipping protection
-        </Link>
-        <Link href="/how-ordering-works" className="rounded-[12px] border border-gold-500/16 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-300 transition hover:border-gold-300/45 hover:text-ivory-50">
-          How ordering works
-        </Link>
+
+      <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[15px] font-semibold text-accent">
+        <Link href="/buyer-protection" className="min-h-11 py-2 underline underline-offset-4">Buyer protection</Link>
+        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
+        <Link href="/shipping-protection" className="min-h-11 py-2 underline underline-offset-4">Shipping protection</Link>
+        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
+        <Link href="/how-ordering-works" className="min-h-11 py-2 underline underline-offset-4">How ordering works</Link>
       </div>
-      <TrustLogoStrip compact />
-      {error && <p className="text-sm text-danger">{error}</p>}
+
+      <div className="mt-4">
+        <TrustLogoStrip compact />
+      </div>
     </div>
   );
 }

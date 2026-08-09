@@ -30,7 +30,7 @@ export function VisualSearchResult({
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
       <section className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
-        <p className="text-xs uppercase tracking-[0.18em] text-gold-300">Find this doll</p>
+        <p className="text-sm  text-gold-300">Find this doll</p>
         <h1 className="mt-3 text-3xl font-semibold text-ivory-50">Image search result</h1>
         <p className="mt-2 text-sm text-ivory-400">We checked the photo against DollWow products and public image results.</p>
 
@@ -40,11 +40,11 @@ export function VisualSearchResult({
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-gold-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold-200">
+              <span className="rounded-full border border-gold-500/20 px-3 py-1 text-sm font-semibold  text-gold-200">
                 {statusLabel}
               </span>
               {request.results.length ? (
-                <span className="rounded-full border border-gold-500/20 px-3 py-1 text-xs font-semibold text-ivory-200">
+                <span className="rounded-full border border-gold-500/20 px-3 py-1 text-sm font-semibold text-ivory-200">
                   Top public match {Math.round(topConfidence * 100)}%
                 </span>
               ) : null}
@@ -71,19 +71,19 @@ export function VisualSearchResult({
               <div key={`${result.rank}-${result.resultUrl}`} className="rounded-[14px] bg-ink-950/50 p-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <p className="text-xs uppercase tracking-[0.16em] text-gold-300">{result.resultDomain}</p>
+                    <p className="text-sm  text-gold-300">{result.resultDomain}</p>
                     <Link href={result.resultUrl} target="_blank" className="mt-1 block text-base font-semibold text-ivory-50 hover:text-gold-200">
                       {result.title || result.resultUrl}
                     </Link>
                     {result.snippet ? <p className="mt-2 text-sm text-ivory-400">{result.snippet}</p> : null}
                     {result.imageUrl ? (
-                      <Link href={result.imageUrl} target="_blank" className="mt-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-gold-300 hover:text-gold-200">
+                      <Link href={result.imageUrl} target="_blank" className="mt-3 inline-flex items-center gap-2 text-sm font-medium  text-gold-300 hover:text-gold-200">
                         <ImageIcon className="h-3.5 w-3.5" />
                         View match image
                       </Link>
                     ) : null}
                   </div>
-                  <span className="shrink-0 rounded-full border border-gold-500/18 px-3 py-1 text-xs font-semibold text-gold-200">
+                  <span className="shrink-0 rounded-full border border-gold-500/18 px-3 py-1 text-sm font-semibold text-gold-200">
                     Match {Math.round((result.confidence || 0) * 100)}%
                   </span>
                 </div>
@@ -109,7 +109,7 @@ export function VisualSearchResult({
             suggestions.map(({ product, score }) =>
               product ? (
                 <div key={product.id} className="rounded-[16px] bg-ink-950/50 p-4">
-                  <p className="text-xs uppercase tracking-[0.16em] text-gold-300">{product.extended.brand || product.vendor}</p>
+                  <p className="text-sm  text-gold-300">{product.extended.brand || product.vendor}</p>
                   <Link href={`/products/${product.handle}`} className="mt-1 block text-lg font-semibold text-ivory-50 hover:text-gold-200">
                     {productPublicTitle(product)}
                   </Link>
@@ -118,12 +118,12 @@ export function VisualSearchResult({
                     {product.extended.material ? ` • ${product.extended.material}` : ""}
                     {product.extended.cupSize ? ` • ${product.extended.cupSize}` : ""}
                   </p>
-                  <p className="mt-2 text-xs text-ivory-500">{score >= 90 ? "Matched to a DollWow visual asset." : "Possible fit. Worth a quick team check before you order."}</p>
+                  <p className="mt-2 text-sm text-ivory-500">{score >= 90 ? "Matched to a DollWow visual asset." : "Possible fit. Worth a quick team check before you order."}</p>
                   <div className="mt-3 flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-gold-500/18 px-3 py-1 text-xs font-semibold text-gold-200">
+                    <span className="rounded-full border border-gold-500/18 px-3 py-1 text-sm font-semibold text-gold-200">
                       Catalog score {score}
                     </span>
-                    <GoldButton href={`/products/${product.handle}`} className="min-h-0 px-4 py-2 text-xs">
+                    <GoldButton href={`/products/${product.handle}`} className="min-h-0 px-4 py-2 text-sm">
                       View doll
                     </GoldButton>
                   </div>

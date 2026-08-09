@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import type { QuizAnswers } from "@/types/quiz";
 import { defaultQuizAnswers } from "@/lib/quiz/answers";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { GoldButton } from "./GoldButton";
 
 const questions: Array<{
@@ -62,9 +63,26 @@ const questions: Array<{
 
 export function HelpMeChooseQuiz({ initialAnswers }: { initialAnswers?: QuizAnswers }) {
   const [answers, setAnswers] = useState<QuizAnswers>({ ...defaultQuizAnswers, ...initialAnswers });
+  const didTrackStart = useRef(false);
+
+  function trackStart() {
+    if (didTrackStart.current) return;
+    didTrackStart.current = true;
+    trackEvent(analyticsEvents.startHelpMeChoose);
+  }
 
   return (
-    <form action="/help-me-choose/results" method="get" className="space-y-5">
+    <form
+      action="/help-me-choose/results"
+      method="get"
+      className="space-y-5"
+      onSubmit={() =>
+        trackEvent(analyticsEvents.completeHelpMeChoose, {
+          budget_range: answers.budget,
+          delivery_preference: answers.delivery
+        })
+      }
+    >
       {questions.map((question, index) => (
         <fieldset key={question.key} className="border border-gold-500/14 bg-ink-800/70 p-4 sm:p-5">
           <legend className="px-1 text-sm font-semibold text-gold-300">
@@ -79,18 +97,21 @@ export function HelpMeChooseQuiz({ initialAnswers }: { initialAnswers?: QuizAnsw
                   name={question.key}
                   value={option.value}
                   checked={answers[question.key] === option.value}
-                  onChange={() => setAnswers((current) => ({ ...current, [question.key]: option.value }))}
+                  onChange={() => {
+                    trackStart();
+                    setAnswers((current) => ({ ...current, [question.key]: option.value }));
+                  }}
                   className="sr-only"
                 />
                 <span
                   className={`block min-h-[86px] border px-4 py-3 text-sm transition ${
                     answers[question.key] === option.value
-                      ? "border-gold-300 bg-gold-400 text-ink-950 shadow-[0_0_32px_rgba(224,170,112,0.16)]"
+                      ? "border-gold-300 bg-gold-300 text-white shadow-[0_0_32px_rgba(224,170,112,0.16)]"
                       : "border-gold-500/14 bg-ink-950/45 text-ivory-300 hover:border-gold-300/40"
                   }`}
                 >
                   <strong className="block text-base">{option.label}</strong>
-                  {option.hint ? <span className="mt-1 block text-xs opacity-75">{option.hint}</span> : null}
+                  {option.hint ? <span className="mt-1 block text-sm opacity-75">{option.hint}</span> : null}
                 </span>
               </label>
             ))}

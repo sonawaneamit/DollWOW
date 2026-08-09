@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/ai/rateLimit";
-import { logAIUsageEvent } from "@/lib/ai/usage";
-import { getProducts } from "@/lib/shopify/storefront";
+import { getSearchProducts } from "@/lib/shopify/storefront";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { parseCatalogSearchQuery, rankCatalogProducts } from "@/lib/search/catalog";
+import { shopifyQueryForCatalogSearch } from "@/lib/catalog/filters";
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("query")?.trim() || "";
@@ -13,41 +13,27 @@ export async function GET(request: NextRequest) {
     scope: "catalog-search",
     identifier,
     limit: 60,
-    windowSeconds: 60
+    windowSeconds: 60,
+    storage: "memory"
   });
 
   if (!rateLimit.allowed) {
-    await logAIUsageEvent({
-      feature: "semantic-search",
-      provider: "deterministic",
-      route: "/api/search",
-      status: "blocked",
-      ip: identifier,
-      metadata: { reason: "rate_limit" }
-    });
-
     return NextResponse.json(
       { error: "Too many searches. Please try again shortly.", resetAt: rateLimit.resetAt },
       { status: 429, headers: rateLimitHeaders(rateLimit) }
     );
   }
 
-  const products = await getProducts({ first: 2200, includeCustomizationGroups: Boolean(query) });
+  // Ask Shopify for a small candidate set, then apply DollWow's deterministic
+  // ranking. Pulling every product and configurator made ordinary model-name
+  // searches slow enough to fail in a serverless request.
+  const products = await getSearchProducts({
+    first: 48,
+    query: shopifyQueryForCatalogSearch(query),
+    revalidate: 86_400
+  });
   const ranked = rankCatalogProducts(products, query, limit);
   const parsed = parseCatalogSearchQuery(query);
-
-  await logAIUsageEvent({
-    feature: "semantic-search",
-    provider: "deterministic",
-    route: "/api/search",
-    status: "fallback",
-    ip: identifier,
-    metadata: {
-      queryPresent: Boolean(query),
-      resultCount: ranked.length,
-      parsed
-    }
-  });
 
   return NextResponse.json(
     {
@@ -68,7 +54,12 @@ export async function GET(request: NextRequest) {
         image: product.featuredImage
       }))
     },
-    { headers: rateLimitHeaders(rateLimit) }
+    {
+      headers: {
+        ...rateLimitHeaders(rateLimit),
+        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800"
+      }
+    }
   );
 }
 

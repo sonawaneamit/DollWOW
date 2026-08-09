@@ -10,14 +10,14 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-ink-950";
+  "inline-flex min-h-[52px] items-center justify-center gap-2 rounded-button px-5 py-3 text-[17px] font-semibold transition-colors duration-200";
 
 export function GoldButton({ href, children, variant = "primary", className, ...buttonProps }: Props) {
   const classes = clsx(
     base,
     variant === "primary"
-      ? "bg-gradient-to-br from-gold-200 to-gold-500 text-ink-950 shadow-glow hover:-translate-y-0.5"
-      : "border border-gold-500/40 bg-ivory-50/[0.045] text-ivory-50 hover:-translate-y-0.5 hover:border-gold-300/70 hover:bg-ivory-50/[0.07]",
+      ? "bg-accent text-white shadow-card hover:bg-accent-hover"
+      : "border-2 border-accent bg-transparent text-accent hover:bg-accent-tint",
     className
   );
 

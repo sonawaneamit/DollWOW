@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
 import type { BrandCustomizationConfig } from "@/types/customization";
+import type { Product } from "@/types/product";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("customization config", () => {
@@ -52,6 +53,62 @@ describe("customization config", () => {
     expect(resolved.optionPriceDelta).toBe(274);
     expect(resolved.totalPrice).toBe(1873);
     expect(resolved.cartAttributes.some((attribute) => attribute.key === "DollWow Skin tone")).toBe(true);
+  });
+
+  it("uses imported model-specific groups before Rosretty brand defaults", () => {
+    const source = sampleProducts[4];
+    const product: Product = {
+      ...source,
+      title: "Rosretty Gemma 158cm Silicone",
+      vendor: "Rosretty",
+      extended: {
+        ...source.extended,
+        brand: "Rosretty Doll",
+        customizationGroups: [
+          {
+            id: "model-eyes",
+            label: "Model eye color",
+            display: "cards",
+            options: [
+              { id: "as-shown", label: "As shown", priceDelta: 0 },
+              { id: "blue", label: "Blue", priceDelta: 35 }
+            ]
+          }
+        ]
+      }
+    };
+
+    const config = getCustomizationConfig(product);
+
+    expect(config.id).toBe("imported");
+    expect(config.groups).toHaveLength(1);
+    expect(config.groups[0]?.id).toBe("model-eyes");
+  });
+
+  it("requires final pricing when an imported option has no verified price", () => {
+    const config: BrandCustomizationConfig = {
+      id: "quote-required",
+      brandLabel: "Test brand",
+      leadTimeNote: "Pricing is confirmed before checkout.",
+      rules: [],
+      groups: [
+        {
+          id: "upgrade",
+          label: "Upgrade",
+          display: "cards",
+          options: [
+            { id: "as-shown", label: "As shown", priceDelta: 0 },
+            { id: "quote-only", label: "Custom feature" }
+          ]
+        }
+      ]
+    };
+
+    const resolved = resolveCustomization(config, { upgrade: "quote-only" }, 1500);
+
+    expect(resolved.requiresPriceConfirmation).toBe(true);
+    expect(resolved.totalPrice).toBe(1500);
+    expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Upgrade")?.value).toContain("price to confirm");
   });
 
   it("supports multi-select add-on groups with no-add-on exclusivity", () => {

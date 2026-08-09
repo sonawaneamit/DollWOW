@@ -21,16 +21,6 @@ type VisualItem = {
   brand: string;
 };
 
-type PosterTheme = {
-  shell: string;
-  wash: string;
-  glow: string;
-  accent: string;
-  kicker: string;
-  promo: string;
-  promoSub: string;
-};
-
 const fallbackVisuals: VisualItem[] = [
   {
     src: "/images/home-hero/portraits-new/starpery-adele-home-v2.png",
@@ -58,36 +48,6 @@ const fallbackVisuals: VisualItem[] = [
   }
 ];
 
-const posterThemes: PosterTheme[] = [
-  {
-    shell: "border-gold-500/22 bg-[#100605]",
-    wash: "bg-[radial-gradient(circle_at_24%_20%,rgba(237,188,151,0.28),transparent_26%),radial-gradient(circle_at_84%_18%,rgba(113,36,47,0.36),transparent_34%),linear-gradient(135deg,#2b100e_0%,#120706_55%,#060202_100%)]",
-    glow: "bg-[linear-gradient(100deg,rgba(6,2,2,0.96)_0%,rgba(14,6,5,0.82)_42%,rgba(14,6,5,0.18)_68%,rgba(14,6,5,0.78)_100%)]",
-    accent: "text-[#f1bd98]",
-    kicker: "Private showroom",
-    promo: "Curated picks",
-    promoSub: "Real listings, polished shopping"
-  },
-  {
-    shell: "border-[#f5d082]/24 bg-[#120b05]",
-    wash: "bg-[radial-gradient(circle_at_28%_20%,rgba(253,215,132,0.26),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(223,151,75,0.32),transparent_32%),linear-gradient(135deg,#2a1a0a_0%,#100805_48%,#050202_100%)]",
-    glow: "bg-[linear-gradient(100deg,rgba(7,3,2,0.95)_0%,rgba(26,12,6,0.78)_44%,rgba(26,12,6,0.12)_70%,rgba(8,3,2,0.74)_100%)]",
-    accent: "text-[#f7d9a8]",
-    kicker: "DollWow advantage",
-    promo: "Factory photos",
-    promoSub: "Approval before shipment"
-  },
-  {
-    shell: "border-[#d67f89]/22 bg-[#160706]",
-    wash: "bg-[radial-gradient(circle_at_24%_22%,rgba(244,164,150,0.28),transparent_26%),radial-gradient(circle_at_86%_12%,rgba(123,33,56,0.38),transparent_34%),linear-gradient(135deg,#2d1111_0%,#140606_48%,#060202_100%)]",
-    glow: "bg-[linear-gradient(100deg,rgba(8,3,3,0.95)_0%,rgba(25,8,8,0.78)_42%,rgba(25,8,8,0.12)_70%,rgba(8,3,3,0.76)_100%)]",
-    accent: "text-[#f0aaa5]",
-    kicker: "Buyer confidence",
-    promo: "Price match",
-    promoSub: "Send us the listing"
-  }
-];
-
 const trustBits = ["Private checkout", "Factory photos", "Price-match review"];
 
 const posterBrandTags = [
@@ -112,48 +72,30 @@ export async function InfoVisualPanel({
 }: InfoVisualPanelProps) {
   const visuals = await getVisuals(seed);
   const [hero, ...supporting] = visuals;
-  const theme = posterThemes[hashSeed(seed) % posterThemes.length];
 
   return (
     <section
-      className={`group relative isolate overflow-hidden rounded-[18px] border shadow-[0_28px_90px_rgba(0,0,0,0.45)] ${theme.shell} ${
-        compact ? "min-h-[420px]" : "min-h-[500px] lg:min-h-[560px]"
-      }`}
+      className={`grid overflow-hidden rounded-lg bg-surface text-text shadow-card lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)] ${compact ? "min-h-[380px]" : "min-h-[500px]"}`}
       aria-label={title}
     >
-      <div className={`absolute inset-0 ${theme.wash}`} />
-      <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div className="absolute inset-y-0 right-0 w-full sm:w-[64%]">
-        <PosterHero item={hero} priority />
-      </div>
-      <div className={`absolute inset-0 ${theme.glow}`} />
-      <div className="absolute right-5 top-5 hidden rounded-full border border-ivory-200/20 bg-[#080302]/42 px-4 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-ivory-100/88 backdrop-blur sm:block">
-        {theme.kicker}
-      </div>
-
-      <div className="relative z-10 flex min-h-[inherit] max-w-[760px] flex-col justify-between p-5 sm:p-7 lg:p-8">
+      <div className="flex flex-col justify-between p-6 sm:p-8">
         <div>
-          <p className={`text-[0.68rem] font-semibold uppercase tracking-[0.24em] ${theme.accent}`}>{eyebrow}</p>
-          <h2 className={`${compact ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl lg:text-6xl"} mt-4 max-w-[11ch] font-semibold leading-[0.96] text-ivory-50`}>
+          <p className="text-[15px] font-semibold text-text-dim">{eyebrow}</p>
+          <h2 className={`${compact ? "text-3xl" : "text-4xl"} mt-3 max-w-[15ch] font-display font-semibold leading-tight text-text`}>
             {title}
           </h2>
-          <p className="mt-5 max-w-[31rem] text-base leading-7 text-ivory-200/88 sm:text-lg">{copy}</p>
+          <p className="mt-4 max-w-[31rem] text-base leading-7 text-text-dim">{copy}</p>
           {cta ? (
-            <Link href={cta.href} className="mt-6 inline-flex rounded-[12px] bg-gold-300 px-5 py-3 text-sm font-semibold text-[#1f120b] shadow-[0_18px_50px_rgba(222,158,106,0.26)] transition hover:-translate-y-0.5 hover:bg-gold-200">
+            <Link href={cta.href} className="mt-6 inline-flex min-h-[52px] items-center rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover">
               {cta.label}
             </Link>
           ) : null}
         </div>
 
         <div className="mt-8 grid gap-4">
-          <div className="w-fit border border-gold-500/18 bg-[#080302]/54 p-4 backdrop-blur-md">
-            <p className={`text-[0.62rem] font-semibold uppercase tracking-[0.24em] ${theme.accent}`}>{theme.promo}</p>
-            <p className="mt-1 text-sm text-ivory-200">{theme.promoSub}</p>
-          </div>
-
           <div className="flex flex-wrap items-center gap-2">
             {trustBits.map((bit) => (
-              <span key={bit} className="rounded-full border border-ivory-100/16 bg-[#080302]/50 px-3 py-1.5 text-xs font-semibold text-ivory-100/86 backdrop-blur">
+              <span key={bit} className="inline-flex min-h-11 items-center rounded-sm bg-surface-tint px-3 text-sm font-semibold text-text-dim">
                 {bit}
               </span>
             ))}
@@ -166,6 +108,7 @@ export async function InfoVisualPanel({
           </div>
         </div>
       </div>
+      <div className="relative min-h-[360px] bg-surface-tint lg:min-h-full"><PosterHero item={hero} priority /></div>
     </section>
   );
 }
@@ -178,13 +121,12 @@ function PosterHero({ item, priority = false }: { item: VisualItem; priority?: b
         src={item.src}
         alt={item.alt}
         loading={priority ? "eager" : "lazy"}
-        className="h-full w-full object-cover object-[center_16%] opacity-[0.88] saturate-[0.94] transition duration-700 group-hover:scale-[1.02] group-hover:opacity-95"
+        className="h-full w-full object-cover object-[center_16%]"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_24%,transparent_0%,rgba(6,2,2,0.08)_24%,rgba(6,2,2,0.68)_82%)]" />
-      <figcaption className="absolute bottom-5 right-5 hidden max-w-[290px] border border-ivory-100/18 bg-[#080302]/54 p-4 text-right backdrop-blur-md sm:block">
-        <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-gold-200/86">{item.brand}</p>
-        <p className="mt-1 line-clamp-2 text-base font-semibold leading-tight text-ivory-50">{item.title}</p>
-        <p className="mt-1 text-xs text-ivory-200/78">{item.subtitle}</p>
+      <figcaption className="absolute inset-x-4 bottom-4 rounded-sm bg-surface p-4 shadow-card sm:inset-x-auto sm:right-4 sm:max-w-[290px]">
+        <p className="text-sm font-semibold text-text-dim">{item.brand}</p>
+        <p className="mt-1 line-clamp-2 text-base font-semibold leading-tight text-text">{item.title}</p>
+        <p className="mt-1 text-sm text-text-dim">{item.subtitle}</p>
       </figcaption>
     </>
   );
@@ -198,9 +140,9 @@ function PosterHero({ item, priority = false }: { item: VisualItem; priority?: b
 
 function PosterThumb({ item }: { item: VisualItem }) {
   const thumb = (
-    <span className="relative block h-16 w-12 overflow-hidden rounded-[12px] border border-gold-300/28 bg-[#080302]/72 shadow-[0_12px_34px_rgba(0,0,0,0.34)]">
+    <span className="relative block h-16 w-12 overflow-hidden rounded-sm border border-border bg-surface-tint">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={item.src} alt="" loading="lazy" className="h-full w-full object-cover object-[center_14%] opacity-90" />
+      <img src={item.src} alt="" loading="lazy" className="h-full w-full object-cover object-[center_14%]" />
     </span>
   );
 

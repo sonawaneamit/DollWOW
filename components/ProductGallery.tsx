@@ -22,7 +22,7 @@ export function ProductGallery({ product }: { product: Product }) {
 
   return (
     <section className="space-y-3">
-      <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)] shadow-soft">
+      <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-surface-tint shadow-soft">
         {active?.type === "image" ? (
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
@@ -42,7 +42,7 @@ export function ProductGallery({ product }: { product: Product }) {
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
             <ImageIcon className="mb-4 h-10 w-10 text-gold-300" />
             <p className="text-sm font-semibold text-ivory-50">{displayTitle}</p>
-            <p className="mt-2 text-xs text-ivory-600">Product image appears when Shopify media is connected.</p>
+            <p className="mt-2 text-sm text-ivory-600">Product image appears when Shopify media is connected.</p>
           </div>
         )}
 
@@ -52,7 +52,7 @@ export function ProductGallery({ product }: { product: Product }) {
               type="button"
               aria-label="Previous image"
               onClick={() => move(-1)}
-              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft backdrop-blur transition hover:border-gold-300"
+              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -60,7 +60,7 @@ export function ProductGallery({ product }: { product: Product }) {
               type="button"
               aria-label="Next image"
               onClick={() => move(1)}
-              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft backdrop-blur transition hover:border-gold-300"
+              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -68,7 +68,7 @@ export function ProductGallery({ product }: { product: Product }) {
         )}
 
         {media.length > 0 && (
-          <div className="absolute bottom-3 right-3 rounded-full border border-gold-500/20 bg-ink-950/72 px-3 py-1 text-xs font-semibold text-ivory-100 backdrop-blur">
+          <div className="absolute bottom-3 right-3 rounded-full border border-gold-500/20 bg-ink-950/72 px-3 py-1 text-sm font-semibold text-ivory-100">
             {index + 1} / {media.length}
           </div>
         )}
@@ -92,7 +92,7 @@ export function ProductGallery({ product }: { product: Product }) {
               ) : item.previewImage ? (
                 <Image src={item.previewImage.url} alt={`${displayTitle} video`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
               ) : (
-                <span className="flex h-full items-center justify-center text-xs font-semibold text-ivory-100">Video</span>
+                <span className="flex h-full items-center justify-center text-sm font-semibold text-ivory-100">Video</span>
               )}
             </button>
           ))}

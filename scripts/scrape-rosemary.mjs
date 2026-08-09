@@ -13,6 +13,7 @@ const BRAND_START_URLS = {
   angelkiss: "https://www.rosemarydoll.com/sex-doll-brands/angelkiss-dolls/",
   zelex: "https://www.rosemarydoll.com/sex-doll-brands/zelex-dolls/",
   irontech: "https://www.rosemarydoll.com/sex-doll-brands/irontech-doll/",
+  "real-lady": "https://www.rosemarydoll.com/sex-doll-brands/real-lady-sex-dolls/",
   starpery: "https://www.rosemarydoll.com/sex-doll-brands/starpery-dolls/",
   "doll-castle": "https://www.rosemarydoll.com/sex-doll-brands/dolls-castle-sex-dolls/"
 };
@@ -22,6 +23,7 @@ const BRAND_LABELS = {
   angelkiss: "Anglekiss Dolls",
   zelex: "Zelex Dolls",
   irontech: "Irontech Doll",
+  "real-lady": "Real Lady",
   starpery: "Starpery Dolls",
   "doll-castle": "Doll Castle"
 };
