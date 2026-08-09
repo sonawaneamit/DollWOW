@@ -7,7 +7,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { BadgeCheck, ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 import { brandHubHref } from "@/lib/catalog/brands";
-import { readBrowserCartState, type BrowserCartState } from "@/lib/cart/browser";
+import { useLegacyCartState } from "@/lib/cart/browser";
+import { useCart } from "@/components/cart/CartProvider";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 
 const topLinks = [
   { label: "Ready to ship", href: "/warehouse" },
@@ -110,16 +112,17 @@ type SearchResultSuggestion = {
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
+  const cart = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [shopMenuOpen, setShopMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [cartState, setCartState] = useState<BrowserCartState | null>(null);
+  const cartState = useLegacyCartState();
   const [searchResults, setSearchResults] = useState<SearchResultSuggestion[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const shouldQueryRemote = searchOpen && searchQuery.trim().length >= 2;
 
-  const activeCount = cartState?.totalQuantity ?? 0;
+  const activeCount = cart.count || (cartState?.totalQuantity ?? 0);
   const searchSuggestions = useMemo(() => buildSearchSuggestions(searchQuery), [searchQuery]);
   const activeLabel = useMemo(() => {
     if (pathname?.startsWith("/warehouse")) return "Ready to ship";
@@ -132,17 +135,6 @@ export function Header() {
     if (pathname?.startsWith("/shop") || pathname?.startsWith("/products")) return "Shop Dolls";
     return "";
   }, [pathname]);
-
-  useEffect(() => {
-    const sync = () => setCartState(readBrowserCartState());
-    sync();
-    window.addEventListener("storage", sync);
-    window.addEventListener("dollwow:cart-updated", sync as EventListener);
-    return () => {
-      window.removeEventListener("storage", sync);
-      window.removeEventListener("dollwow:cart-updated", sync as EventListener);
-    };
-  }, []);
 
   useEffect(() => {
     for (const href of Array.from(new Set(prefetchTargets))) {
@@ -216,6 +208,7 @@ export function Header() {
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmed = searchQuery.trim();
+    if (trimmed) trackEvent(analyticsEvents.search, { search_term: trimmed });
     router.push(trimmed ? `/shop?query=${encodeURIComponent(trimmed)}` : "/shop");
     closeAll();
   }
@@ -283,12 +276,15 @@ export function Header() {
           <Link href="/support" onClick={closeAll} className="hidden rounded-[12px] border border-[#d59a6f]/24 bg-[#f6e9dd]/[0.055] p-2 transition hover:border-[#e8b48f]/60 hover:text-[#f6e9dd] sm:inline-flex" aria-label="Get help">
             <HelpCircle className="h-5 w-5" />
           </Link>
-          <Link
-            href="/cart"
-            onClick={closeAll}
+          <button
+            type="button"
+            onClick={() => {
+              closeAll();
+              cart.openDrawer();
+            }}
             className="relative rounded-[12px] border border-[#d59a6f]/24 bg-[#f6e9dd]/[0.055] p-2 transition hover:border-[#e8b48f]/60 hover:text-[#f6e9dd]"
-            aria-label={activeCount ? "Saved checkout" : "Cart"}
-            title={activeCount ? "Saved checkout" : "Cart"}
+            aria-label={activeCount ? `Open bag, ${activeCount} item${activeCount === 1 ? "" : "s"}` : "Open bag"}
+            title="Open bag"
           >
             <ShoppingBag className="h-5 w-5" />
             {activeCount ? (
@@ -296,7 +292,7 @@ export function Header() {
                 {activeCount}
               </span>
             ) : null}
-          </Link>
+          </button>
           <button
             type="button"
             onClick={() => {
@@ -363,7 +359,7 @@ function DesktopShopDropdown({ onNavigate }: { onNavigate: () => void }) {
               <Link href="/help-me-choose" onClick={onNavigate} className="rounded-[12px] bg-[#f3cdb0] px-4 py-2 text-sm font-semibold text-[#1c1009]">
                 Help me choose
               </Link>
-              <Link href="/compare" onClick={onNavigate} className="rounded-[12px] border border-[#d59a6f]/30 px-4 py-2 text-sm font-semibold text-[#f3cdb0] hover:border-[#f3cdb0]/60">
+              <Link href="/compare" onNavigate={onNavigate} className="rounded-[12px] border border-[#d59a6f]/30 px-4 py-2 text-sm font-semibold text-[#f3cdb0] hover:border-[#f3cdb0]/60">
                 Price match
               </Link>
             </div>
@@ -397,7 +393,7 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
               {link.label}
             </Link>
           ))}
-          <Link href="/support" onClick={onNavigate} className="rounded-[12px] border border-[#d59a6f]/18 bg-[#f6e9dd]/[0.035] px-3 py-3 text-sm font-semibold text-[#ead4c6]">
+          <Link href="/support" onNavigate={onNavigate} className="rounded-[12px] border border-[#d59a6f]/18 bg-[#f6e9dd]/[0.035] px-3 py-3 text-sm font-semibold text-[#ead4c6]">
             Support
           </Link>
         </div>

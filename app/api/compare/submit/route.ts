@@ -123,9 +123,11 @@ export async function POST(request: Request) {
       });
     }
     trackServerEvent(analyticsEvents.submitCompareListing, {
-      input_domain: parsed.sourceDomain,
-      has_email: Boolean(input.email),
-      confidence
+      params: {
+        input_domain: parsed.sourceDomain,
+        has_email: Boolean(input.email),
+        confidence
+      }
     });
     return NextResponse.json({ id: comparison.id });
   } catch (error) {

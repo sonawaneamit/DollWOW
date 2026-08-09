@@ -25,6 +25,7 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import { defaultMultipleOptionId, getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization, selectionIds } from "@/lib/customization/resolve";
 import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
+import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
 import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
@@ -142,6 +143,15 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
       currencyCode,
       customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
     });
+    trackEvent(analyticsEvents.addToCart, {
+      item_id: variantId,
+      item_name: displayName || displayTitle,
+      item_brand: product.extended.brand ?? product.vendor,
+      price: resolved.totalPrice,
+      currency: currencyCode,
+      quantity: 1
+    });
+    trackEvent(analyticsEvents.beginCheckout, { value: resolved.totalPrice, currency: currencyCode, item_count: 1 });
     router.push(checkoutUrl);
   }
 
