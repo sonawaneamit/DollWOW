@@ -52,16 +52,16 @@ Add alongside the light tokens (see `design-tokens.md`); apply on `:root[data-th
 
 ## 2. Scroll thread (keep — Phase 2, PDP only)
 
-**What:** a slim fixed "thread" on the left edge of the PDP that fills with accent color as you scroll, with ticks labeling the major sections.
+**What:** a fixed "thread" on the left edge of the PDP that fills with accent color as you scroll, with ticks labeling the major sections.
 
 **Why it stays:** the PDP is long; the thread tells the buyer where they are and how much is left. Wayfinding, not decoration. Tested well in the preview.
 
 ### Spec
 
-- Fixed left rail, vertically centered; 2px track, height `min(46vh, 420px)`. **Hidden below 1240px viewport width** — mobile/tablet get nothing, and there must be no layout gap where it would have been.
+- Fixed left rail, vertically centered. **6px track** — thick enough to notice at a glance; this is deliberately chunky, not a hairline. Height `min(46vh, 420px)`. Track color `border-strong`; fill in accent with a soft accent shadow (e.g. `0 2px 10px rgba(181,71,31,.45)`) so progress reads from the corner of the eye. **Hidden below 1240px viewport width** — mobile/tablet get nothing, and there must be no layout gap where it would have been.
 - Fill height = page scroll progress (0–100%).
-- One tick per major PDP section (e.g. "Meet <name>", "Customize", and any reviews/details section — use the actual rendered sections). Tick position derives from the section's offset: `(section.offsetTop − 0.35 × viewport height) / scrollable max`.
-- The active tick (last one passed) shows its text label beside the rail; labels use `text-dim`, active label uses accent + semibold.
+- One tick per major PDP section (e.g. "Meet <name>", "Customize", and any reviews/details section — use the actual rendered sections). Ticks are **16px dots with 3px borders**; the active tick fills with accent and scales up ~15%. Tick position derives from the section's offset: `(section.offsetTop − 0.35 × viewport height) / scrollable max`.
+- The active tick (last one passed) shows its text label beside the rail (15px semibold); labels use `text-dim`, active label uses accent.
 - Ticks are anchor links: clicking scrolls to the section (respecting the reduced-motion rule below).
 - Purely additive: absolutely positioned, no document-flow changes; if JS fails, the rail simply does not render and the page is unaffected.
 - **PDP only.** Never on cart, checkout, account, or policy pages. (Homepage reuse is a Phase 3 decision.)
@@ -106,7 +106,7 @@ Rationale: they fight readability on a PDP and optimize for aesthetics over orie
 - [ ] Theme toggle switches the full storefront without reload; choice persists across sessions; first visit respects OS preference; no flash of wrong theme on load.
 - [ ] Both themes pass AA contrast on text and UI states (spot-check: tile selected state, conflict message, stock badge, prices, totals).
 - [ ] Product imagery is never filtered or dimmed in dark mode.
-- [ ] Thread appears on the PDP at ≥ 1240px, fills with scroll, active tick label updates, ticks navigate; absent below 1240px with no layout gap.
+- [ ] Thread appears on the PDP at ≥ 1240px at the specified weight (6px track, 16px ticks), fills with scroll, active tick label updates, ticks navigate; absent below 1240px with no layout gap.
 - [ ] With `prefers-reduced-motion: reduce`, the page is fully static and readable (no reveals, no smooth scroll, thread fill snaps).
 - [ ] Header utility row stays on one line at 1280px with the toggle present; no wrapping at any supported desktop width.
 - [ ] No guardrail regressions: these features add color/motion/wayfinding only — no urgency tricks, no invented content, no behavior-contract changes.
