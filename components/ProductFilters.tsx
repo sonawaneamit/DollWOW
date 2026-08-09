@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { SlidersHorizontal } from "lucide-react";
+import { BadgeCheck, SlidersHorizontal } from "lucide-react";
+import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 
 const quickLinks = [
@@ -7,13 +8,7 @@ const quickLinks = [
   { label: "Sex dolls", href: "/shop/sex-dolls" },
   { label: "Realistic", href: "/shop/realistic-sex-dolls" },
   { label: "Mini", href: "/shop/mini-sex-dolls" },
-  { label: "WM Dolls", href: "/shop/wm-dolls" },
-  { label: "Angelkiss", href: "/shop/angelkiss-dolls" },
-  { label: "Irontech", href: "/shop/irontech-dolls" },
-  { label: "Starpery", href: "/shop/starpery-dolls" },
-  { label: "Piper", href: "/shop/piper-dolls" },
-  { label: "SE Doll", href: "/shop/sedoll" },
-  { label: "6YE", href: "/shop/6ye-dolls" },
+  ...catalogFilterOptions.brands.map((brand) => ({ label: brand.label, href: brandHubHref(brand.value) })),
   { label: "Female dolls", href: "/shop/female-dolls" },
   { label: "Male dolls", href: "/shop/male-dolls" },
   { label: "Ready to ship", href: "/shop/ready-to-ship" },
@@ -50,6 +45,9 @@ export function ProductFilters({
           {count ? <span>{count} active</span> : null}
         </div>
         <div className="product-filters__quicklinks">
+          <Link href="/authorized-vendors" className="product-filters__chip inline-flex items-center gap-1.5">
+            <BadgeCheck className="h-3.5 w-3.5" /> Certificates
+          </Link>
           {quickLinks.map((filter) => (
             <Link
               key={filter.href}
