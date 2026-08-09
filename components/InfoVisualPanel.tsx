@@ -10,41 +10,72 @@ type InfoVisualPanelProps = {
 };
 
 type VisualItem = {
-  src: string;
-  alt: string;
+  video: string;
+  poster: string;
   title: string;
   subtitle: string;
   href: string;
   brand: string;
 };
 
-// These are deliberately curated local catalog portraits. Informational pages
-// should never inherit a surprising supplier photo just because the catalog
-// order changed.
+// Supplier-approved product previews keep informational pages grounded in the
+// real DollWow catalog instead of inheriting an unrelated generated portrait.
 const curatedVisuals: VisualItem[] = [
   {
-    src: "/images/home-hero/portraits-new/starpery-adele-home-v2.png",
-    alt: "Starpery Adele catalog portrait",
-    title: "Starpery Adele",
-    subtitle: "Custom order",
-    brand: "Starpery",
-    href: "/brands/starpery-dolls"
+    video: "/videos/home-spotlight/quine.mp4",
+    poster: "/images/home-hero/video-posters/quine.webp",
+    title: "Jarliet Quine",
+    subtitle: "167 cm · Silicone",
+    brand: "Jarliet Dolls",
+    href: "/products/jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7"
   },
   {
-    src: "/images/home-hero/portraits-new/zelex-ida-home.png",
-    alt: "Zelex Ida catalog portrait",
-    title: "Zelex Ida",
-    subtitle: "Ready to ship",
-    brand: "Zelex Dolls",
-    href: "/brands/zelex-dolls"
+    video: "/videos/home-spotlight/vivian.mp4",
+    poster: "/images/home-hero/video-posters/vivian.webp",
+    title: "Irontech Vivian",
+    subtitle: "153 cm · Silicone head",
+    brand: "Irontech",
+    href: "/products/irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli"
   },
   {
-    src: "/images/home-hero/portraits-new/sedoll-carry-home.png",
-    alt: "SE Doll Carry catalog portrait",
+    video: "/videos/home-spotlight/freya.mp4",
+    poster: "/images/home-hero/video-posters/freya.webp",
+    title: "Starpery Freya",
+    subtitle: "165 cm · Silicone",
+    brand: "Starpery Dolls",
+    href: "/products/starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra"
+  },
+  {
+    video: "/videos/home-spotlight/doris.mp4",
+    poster: "/images/home-hero/video-posters/doris.webp",
+    title: "Erovenus Doris",
+    subtitle: "112.5 cm · Silicone",
+    brand: "Erovenus",
+    href: "/products/erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l"
+  },
+  {
+    video: "/videos/home-spotlight/isla.mp4",
+    poster: "/images/home-hero/video-posters/isla.webp",
+    title: "YL Isla",
+    subtitle: "158 cm · Silicone",
+    brand: "YL Doll",
+    href: "/products/yl-isla-158cm-e-cup-silicone-companion-doll-1iikg"
+  },
+  {
+    video: "/videos/home-spotlight/carry.mp4",
+    poster: "/images/home-hero/video-posters/carry.webp",
     title: "SE Doll Carry",
-    subtitle: "Custom order",
+    subtitle: "150 cm · TPE",
     brand: "SE Doll",
-    href: "/brands/se-doll"
+    href: "/products/sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4"
+  },
+  {
+    video: "/videos/home-spotlight/zeki.mp4",
+    poster: "/images/home-hero/video-posters/zeki.webp",
+    title: "HR Dolls Zeki",
+    subtitle: "165 cm · Silicone",
+    brand: "HR Dolls",
+    href: "/products/hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
   }
 ];
 
@@ -89,14 +120,10 @@ export function InfoVisualPanel({
         </div>
 
         <Link href={visual.href} className="info-visual-banner__media group" aria-label={`View ${visual.title}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={visual.src}
-            alt={visual.alt}
-            loading="eager"
-            fetchPriority="high"
-            className="h-full w-full object-cover object-[center_18%]"
-          />
+          <video className="info-visual-banner__video" poster={visual.poster} autoPlay muted loop playsInline preload="metadata" aria-label={`${visual.title} product preview video`}>
+            <source src={visual.video} type="video/mp4" />
+          </video>
+          <span className="info-visual-banner__video-label"><span /> Product preview</span>
           <span className="absolute inset-x-4 bottom-4 rounded-sm bg-surface/95 p-3 shadow-card">
             <span className="block text-sm font-semibold text-text-dim">{visual.brand}</span>
             <span className="mt-0.5 block text-base font-semibold text-text">{visual.title}</span>
