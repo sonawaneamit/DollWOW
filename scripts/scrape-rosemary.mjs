@@ -60,7 +60,10 @@ if (args.help) {
 }
 
 const brand = String(args.brand || "").toLowerCase();
-const startUrl = args.url || BRAND_START_URLS[brand];
+const urlsFile = args["urls-file"] ? path.resolve(ROOT, String(args["urls-file"])) : null;
+const urlManifest = urlsFile ? JSON.parse(await fs.readFile(urlsFile, "utf8")) : null;
+const productUrlOverride = urlManifest ? (Array.isArray(urlManifest) ? urlManifest : urlManifest.urls || []) : null;
+const startUrl = args.url || urlManifest?.categoryUrl || productUrlOverride?.[0] || BRAND_START_URLS[brand];
 const limit = Number(args.limit || 24);
 const concurrency = Math.max(1, Number(args.concurrency || 4));
 
@@ -197,6 +200,7 @@ async function runLocalScrape(startUrl, limit, brandSlug) {
 }
 
 async function resolveProductUrls(startUrl, limit) {
+  if (productUrlOverride) return [...new Set(productUrlOverride)].slice(0, limit);
   if (isProductUrl(startUrl)) return [startUrl];
   const categoryHtml = await fetchText(startUrl);
   const urls = new Set(extractProductUrls(categoryHtml, startUrl));
@@ -619,6 +623,7 @@ function printHelp() {
   npm run scrape:rosemary -- --brand wm --url "https://www.rosemarydoll.com/sex-doll-brands/?filter_brand=wm-dolls&query_type_brand=or" --all-pages --limit 600 --local
   npm run scrape:rosemary -- --brand angelkiss --limit 10 --local
   npm run scrape:rosemary -- --url https://www.rosemarydoll.com/shop/?filter_brand=zelex-doll --limit 12
+  npm run scrape:rosemary -- --brand climax --urls-file data/imports/climax-category-urls.json --limit 250 --local
 
 By default the script uses Apify when APIFY_API_TOKEN is set. Without a token, it uses local fetch mode.
 Output is written to data/imports/ and ignored by git for review before Shopify import.`);

@@ -10,6 +10,7 @@ export type CatalogFilters = {
   bodyType?: "male" | "female";
   availability?: "ready_to_ship" | "custom";
   material?: string;
+  productForm?: "full-doll" | "torso" | "hips";
   height?: string;
   weight?: string;
   cup?: string;
@@ -30,8 +31,13 @@ export const catalogFilterOptions = {
   ],
   materials: [
     { label: "TPE", value: "tpe" },
-    { label: "Silicone", value: "silicone" },
-    { label: "Silicone head", value: "silicone-head" }
+    { label: "Full silicone", value: "silicone" },
+    { label: "Hybrid (silicone head + TPE body)", value: "hybrid" }
+  ],
+  productForms: [
+    { label: "Full dolls", value: "full-doll" },
+    { label: "Torsos", value: "torso" },
+    { label: "Hips", value: "hips" }
   ],
   heights: [
     { label: "Under 155 cm", value: "0-154" },
@@ -75,6 +81,7 @@ const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>
   bodyType: new Map(catalogFilterOptions.bodyTypes.map((option) => [option.value, option.label])),
   availability: new Map(catalogFilterOptions.availability.map((option) => [option.value, option.label])),
   material: new Map(catalogFilterOptions.materials.map((option) => [option.value, option.label])),
+  productForm: new Map(catalogFilterOptions.productForms.map((option) => [option.value, option.label])),
   height: new Map(catalogFilterOptions.heights.map((option) => [option.value, option.label])),
   weight: new Map(catalogFilterOptions.weights.map((option) => [option.value, option.label])),
   cup: new Map(catalogFilterOptions.cups.map((option) => [option.value, option.label])),
@@ -94,7 +101,10 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   ...brandCollectionPresets(),
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
   silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
-  "silicone-head": { title: "Silicone-head dolls", filters: { material: "silicone-head" } },
+  hybrid: { title: "Hybrid dolls", filters: { material: "hybrid" } },
+  "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },
+  torsos: { title: "Torso dolls", filters: { productForm: "torso" } },
+  hips: { title: "Hips", filters: { productForm: "hips" } },
   "mini-sex-dolls": { title: "Mini sex dolls", filters: { height: "0-154" } },
   "height-under-155": { title: "Dolls under 155 cm", filters: { height: "0-154" } },
   "height-155-159": { title: "Dolls 155-159 cm", filters: { height: "155-159" } },
@@ -117,6 +127,7 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
     bodyType: valueFor("bodyType") as CatalogFilters["bodyType"],
     availability: valueFor("availability") as CatalogFilters["availability"],
     material: valueFor("material"),
+    productForm: valueFor("productForm") as CatalogFilters["productForm"],
     height: valueFor("height"),
     weight: valueFor("weight"),
     cup: valueFor("cup"),
@@ -135,7 +146,8 @@ export function shopifyQueryForFilters(filters: CatalogFilters) {
   if (filters.look) parts.push(shopifyLookQuery(filters.look));
   if (filters.bodyType) parts.push(`tag:${filters.bodyType}-doll`);
   if (filters.availability) parts.push(`tag:${filters.availability}`);
-  if (filters.material) parts.push(`tag:${tagForFilter(filters.material)}`);
+  if (filters.material) parts.push(shopifyMaterialQuery(filters.material));
+  if (filters.productForm) parts.push(shopifyProductFormQuery(filters.productForm));
   return parts.join(" AND ") || undefined;
 }
 
@@ -147,6 +159,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.bodyType && !productMatchesBodyType(product, filters.bodyType)) return false;
     if (filters.availability && product.extended.stockStatus !== filters.availability) return false;
     if (filters.material && !productMatchesMaterial(product, filters.material)) return false;
+    if (filters.productForm && !productMatchesProductForm(product, filters.productForm)) return false;
     if (filters.height && !inRange(product.extended.heightCm, filters.height)) return false;
     if (filters.weight && !inRange(product.extended.weightLb, filters.weight)) return false;
     if (filters.cup && !cupMatches(product.extended.cupSize, filters.cup)) return false;
@@ -200,9 +213,39 @@ function productMatchesBrand(product: Product, brand: string) {
 }
 
 function productMatchesMaterial(product: Product, material: string) {
-  const target = tagForFilter(material);
-  const materialText = `${product.extended.material || ""} ${product.productType}`.toLowerCase().replace(/\s+/g, "-");
-  return product.tags.includes(target) || materialText.includes(target);
+  const tags = new Set(product.tags.map(tagForFilter));
+  const text = `${product.extended.material || ""} ${product.productType}`.toLowerCase();
+  const isHybrid = tags.has("hybrid") || tags.has("silicone-head") || /silicone\s*head|hybrid|tpe\s*body.*silicone\s*head/.test(text);
+  if (material === "hybrid") return isHybrid;
+  if (material === "silicone") return !isHybrid && (tags.has("silicone") || /\bsilicone\b/.test(text));
+  if (material === "tpe") return !isHybrid && (tags.has("tpe") || /\btpe\b/.test(text));
+  return tags.has(tagForFilter(material));
+}
+
+function productMatchesProductForm(product: Product, form: NonNullable<CatalogFilters["productForm"]>) {
+  const tags = new Set(product.tags.map(tagForFilter));
+  if (tags.has("hips")) return form === "hips";
+  if (tags.has("torso")) return form === "torso";
+  if (tags.has("full-doll")) return form === "full-doll";
+  const text = `${product.productType} ${product.title}`.toLowerCase();
+  const isHips = /\b(hips?|hip torso|lower body|butt)\b/.test(text);
+  const isTorso = !isHips && /\b(torso|upper body|half body)\b/.test(text);
+  if (form === "hips") return isHips;
+  if (form === "torso") return isTorso;
+  return !isHips && !isTorso;
+}
+
+function shopifyMaterialQuery(material: string) {
+  if (material === "hybrid") return "(tag:hybrid OR tag:silicone-head)";
+  if (material === "silicone") return "tag:silicone AND -tag:silicone-head AND -tag:hybrid";
+  if (material === "tpe") return "tag:tpe AND -tag:silicone-head AND -tag:hybrid";
+  return `tag:${tagForFilter(material)}`;
+}
+
+function shopifyProductFormQuery(form: NonNullable<CatalogFilters["productForm"]>) {
+  if (form === "hips") return "tag:hips";
+  if (form === "torso") return "tag:torso AND -tag:hips";
+  return "-tag:torso AND -tag:hips";
 }
 
 function productMatchesBodyType(product: Product, bodyType: NonNullable<CatalogFilters["bodyType"]>) {

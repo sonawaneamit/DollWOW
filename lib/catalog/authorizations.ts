@@ -90,6 +90,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
   {
     id: "il-doll",
     brand: "IL Doll",
+    brandValue: "il-doll",
     aliases: ["il doll", "ildoll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/il-doll-authorization.pdf",
@@ -115,7 +116,9 @@ export const brandAuthorizations: BrandAuthorization[] = [
   }
 ];
 
-export const liveAuthorizedBrands = catalogBrands.filter((brand) => brand.value !== "zelex");
+const brandsWithoutAuthorizationOnFile = new Set(["zelex", "ai-tech", "climax"]);
+
+export const liveAuthorizedBrands = catalogBrands.filter((brand) => !brandsWithoutAuthorizationOnFile.has(brand.value));
 
 export function getBrandAuthorization(value: string | undefined | null) {
   const catalogBrand = getCatalogBrand(value);
@@ -132,5 +135,5 @@ export function getBrandAuthorization(value: string | undefined | null) {
 
 export function isLiveAuthorizedBrand(value: string | undefined | null) {
   const brand = getCatalogBrand(value);
-  return Boolean(brand && brand.value !== "zelex");
+  return Boolean(brand && !brandsWithoutAuthorizationOnFile.has(brand.value));
 }
