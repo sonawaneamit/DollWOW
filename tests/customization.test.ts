@@ -111,6 +111,56 @@ describe("customization config", () => {
     expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Upgrade")?.value).toContain("price to confirm");
   });
 
+  it("treats imported factory defaults as included even when the supplier omitted a numeric price", () => {
+    const config: BrandCustomizationConfig = {
+      id: "imported-defaults",
+      brandLabel: "Test brand",
+      leadTimeNote: "",
+      rules: [],
+      groups: [
+        {
+          id: "body-finish",
+          label: "Body finish",
+          display: "cards",
+          options: [
+            { id: "as-shown", label: "As shown" },
+            { id: "custom-finish", label: "Custom finish" }
+          ]
+        },
+        {
+          id: "included-upgrades",
+          label: "Included upgrades",
+          display: "cards",
+          selectionMode: "multiple",
+          options: [
+            { id: "articulated-fingers", label: "Articulated fingers", productionNote: "Default supplier selection." },
+            { id: "gel-butt", label: "Gel butt", productionNote: "Default supplier selection." }
+          ]
+        },
+        {
+          id: "accessories",
+          label: "Accessories",
+          display: "cards",
+          options: [
+            { id: "none", label: "No add-on" },
+            { id: "flight-case", label: "Flight case" }
+          ]
+        }
+      ]
+    };
+
+    const defaults = getDefaultSelections(config);
+    const resolved = resolveCustomization(config, defaults, 2110);
+
+    expect(resolved.requiresPriceConfirmation).toBe(false);
+    expect(resolved.optionPriceDelta).toBe(0);
+    expect(resolved.totalPrice).toBe(2110);
+    expect(resolved.selectedOptions.every((option) => option.priceConfirmed)).toBe(true);
+
+    const custom = resolveCustomization(config, { ...defaults, "body-finish": "custom-finish" }, 2110);
+    expect(custom.requiresPriceConfirmation).toBe(true);
+  });
+
   it("supports multi-select add-on groups with no-add-on exclusivity", () => {
     const config: BrandCustomizationConfig = {
       id: "wm-imported-test",

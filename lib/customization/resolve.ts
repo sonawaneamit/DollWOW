@@ -44,6 +44,7 @@ export function resolveCustomization(
   basePrice: number
 ): ResolvedCustomization {
   const normalized = normalizedSelections(config, selections);
+  const defaults = getDefaultSelections(config);
   const issues: CustomizationIssue[] = [];
   const selectedOptions: SelectedCustomizationOption[] = [];
 
@@ -55,13 +56,14 @@ export function resolveCustomization(
       continue;
     }
     for (const option of options) {
+      const includedByDefault = selectionIds(defaults[group.id]).includes(option.id);
       selectedOptions.push({
         groupId: group.id,
         groupLabel: group.label,
         optionId: option.id,
         optionLabel: option.label,
         priceDelta: option.priceDelta ?? 0,
-        priceConfirmed: option.priceDelta !== undefined,
+        priceConfirmed: includedByDefault || option.priceDelta !== undefined,
         productionNote: option.productionNote
       });
     }
