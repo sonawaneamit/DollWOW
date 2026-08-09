@@ -83,6 +83,7 @@ type SearchResultSuggestion = {
   heightCm?: number;
   stockStatus?: string;
   price?: { amount: string; currencyCode: string };
+  image?: { url: string; altText: string | null; width?: number | null; height?: number | null } | null;
 };
 
 export function Header() {
@@ -465,12 +466,28 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                     <div className="flex min-h-14 items-center rounded-sm bg-surface-tint px-4 text-[15px] text-text-dim">Looking through the catalog...</div>
                   ) : searchResults.length ? (
                     searchResults.map((result) => (
-                      <Link key={result.id} href={`/products/${result.handle}`} onClick={onNavigate} className="flex min-h-14 items-center justify-between gap-4 rounded-sm border border-border px-4 py-3 hover:border-accent hover:bg-accent-tint">
-                        <div className="min-w-0">
-                          <p className="truncate text-base font-semibold text-text">{result.title}</p>
-                          <p className="mt-1 text-sm text-text-dim">{[result.brand, result.material, result.heightCm ? `${result.heightCm} cm` : "", humanizeStockStatus(result.stockStatus)].filter(Boolean).join(" · ")}</p>
+                      <Link key={result.id} href={`/products/${result.handle}`} onClick={onNavigate} className="group flex min-h-20 items-center gap-3 rounded-sm border border-border p-2.5 hover:border-accent hover:bg-accent-tint sm:gap-4 sm:p-3">
+                        <span className="relative h-20 w-16 shrink-0 overflow-hidden rounded-sm bg-surface-tint sm:h-24 sm:w-20">
+                          {result.image?.url ? (
+                            <Image
+                              src={result.image.url}
+                              alt={result.image.altText || result.title}
+                              fill
+                              sizes="(min-width: 640px) 80px, 64px"
+                              className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                              loading="eager"
+                            />
+                          ) : (
+                            <span className="flex h-full w-full items-center justify-center text-text-faint" aria-hidden="true"><ShoppingBag className="h-5 w-5" /></span>
+                          )}
+                        </span>
+                        <div className="flex min-w-0 flex-1 items-center justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="line-clamp-2 text-base font-semibold leading-snug text-text">{result.title}</p>
+                            <p className="mt-1 line-clamp-2 text-sm leading-5 text-text-dim">{[result.brand, result.material, result.heightCm ? `${result.heightCm} cm` : "", humanizeStockStatus(result.stockStatus)].filter(Boolean).join(" · ")}</p>
+                          </div>
+                          {result.price?.amount ? <span className="shrink-0 text-base font-semibold text-text">${Math.round(Number(result.price.amount)).toLocaleString()}</span> : null}
                         </div>
-                        {result.price?.amount ? <span className="shrink-0 text-base font-semibold text-text">${Math.round(Number(result.price.amount)).toLocaleString()}</span> : null}
                       </Link>
                     ))
                   ) : (
