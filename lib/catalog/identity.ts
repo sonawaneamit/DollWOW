@@ -108,6 +108,7 @@ export function normalizeMaterial(value: string | undefined | null) {
 export function extractHeadModel(...values: Array<string | undefined | null>) {
   const text = values.filter(Boolean).join(" ");
   const patterns = [
+    /\bhead\s+silicone\s*#?\s*([a-z]{0,4}\d{1,4})\b/i,
     /\b(?:has|with)\s+[a-z0-9\s-]*?head\s*#?\s*([a-z]{0,4}\d{1,4})\b/i,
     /\bhead\s*(?:#|no\.?|number)?\s*([a-z]{0,4}\d{1,4})\b/i,
     /\bsilicone\s+head\s+([a-z]{1,4}\d{1,4})\b/i,
