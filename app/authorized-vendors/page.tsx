@@ -72,7 +72,7 @@ export default function AuthorizedVendorsPage() {
           </div>
         </section>
 
-        <section className="mt-12 rounded-[8px] border border-gold-500/18 bg-[linear-gradient(120deg,rgba(51,29,22,0.7),rgba(16,8,7,0.88))] p-6 sm:p-7" aria-labelledby="written-confirmations-heading">
+        <section className="mt-12 rounded-lg border border-border bg-surface p-6 shadow-card sm:p-7" aria-labelledby="written-confirmations-heading">
           <p className="flex items-center gap-2 text-sm font-semibold  text-gold-300"><ShieldCheck className="h-4 w-4" /> Confirmed in writing</p>
           <h2 id="written-confirmations-heading" className="mt-2 text-2xl font-semibold text-ivory-50">Additional authorized brands</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
