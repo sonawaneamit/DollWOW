@@ -346,7 +346,10 @@ function productBodyHtml(product) {
   const specHtml = dedupeSpecRows([...measurementRows, ...specs])
     .map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`)
     .join("");
-  const optionLabels = (product.optionGroupLabels || []).slice(0, 12);
+  const optionLabels = (product.optionGroupLabels?.length
+    ? product.optionGroupLabels
+    : (product.optionGroups || []).map((group) => group.label).filter(Boolean)
+  ).slice(0, 12);
   const optionImageCount = countOptionImages(product.optionGroups || []);
   const optionHtml = optionLabels.length ? `<p><strong>Available customizations:</strong> ${escapeHtml(optionLabels.join(", "))}</p>` : "";
   const optionImageHtml = optionImageCount
@@ -402,7 +405,9 @@ function reviewWarnings(product) {
   if (!product.imageUrls?.filter(isCatalogImage)?.length) warnings.push(`${prefix} missing catalog images`);
   if (/^custom full/i.test(product.title)) warnings.push(`${prefix} generic title should be reviewed`);
   if (product.stockStatus === "ready_to_ship" && !product.warehouseCountry) warnings.push(`${prefix} ready-to-ship item missing warehouse country`);
-  if (product.customAvailable && !product.optionGroupLabels?.length) warnings.push(`${prefix} custom item has no option group labels`);
+  if (product.customAvailable && !product.optionGroupLabels?.length && !product.optionGroups?.some((group) => group.label)) {
+    warnings.push(`${prefix} custom item has no option group labels`);
+  }
   if (product.customAvailable && !countOptionImages(product.optionGroups || [])) warnings.push(`${prefix} custom item has no captured option images`);
   return warnings;
 }
@@ -620,6 +625,8 @@ function canonicalBrandTag(value) {
   if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "sedoll";
   if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6ye";
   if (/\bzelex\b|\bzellix\b/.test(lower)) return "zelex";
+  if (/\bjarliet\b|\bjarlie\b/.test(lower)) return "jarliet";
+  if (/\bhr dolls?\b|\bherun\b/.test(lower)) return "hr";
   return slugify(value);
 }
 

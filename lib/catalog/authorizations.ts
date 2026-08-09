@@ -54,7 +54,8 @@ export const brandAuthorizations: BrandAuthorization[] = [
   {
     id: "herun-doll",
     brand: "Herun Doll",
-    aliases: ["herun", "herun doll"],
+    brandValue: "hr",
+    aliases: ["herun", "herun doll", "herun dolls", "hr", "hr doll", "hr dolls"],
     status: "written-confirmation"
   },
   {
@@ -97,7 +98,8 @@ export const brandAuthorizations: BrandAuthorization[] = [
   {
     id: "jarlie",
     brand: "Jarlie",
-    aliases: ["jarlie doll"],
+    brandValue: "jarliet",
+    aliases: ["jarlie", "jarlie doll", "jarlie dolls", "jarliet", "jarliet doll", "jarliet dolls"],
     status: "certificate",
     certificateSrc: "/images/authorizations/jarlie-authorized.jpg",
     certificatePreviewSrc: "/images/authorizations/previews/jarlie-authorized.webp"

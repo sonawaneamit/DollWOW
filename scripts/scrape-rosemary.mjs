@@ -326,6 +326,7 @@ function normalizeRosemaryProduct(item, brandFallback) {
   };
   const stockSignal = `${rawTitle} ${pickTitle(item.html || "")}`;
   const isReadyToShip = /\bin stock\b|fast shipping/i.test(stockSignal);
+  const warehouseCountry = isReadyToShip ? inferWarehouseCountry(`${stockSignal} ${sourceUrl}`) : null;
   const measurements = extractMeasurements(description);
   const dimensions = {
     heightCm: numberFromSpec(measurements.Height || description, /(?:Height:\s*)?[^/]+\/\s*([0-9.]+)\s*cm/i),
@@ -346,7 +347,7 @@ function normalizeRosemaryProduct(item, brandFallback) {
     price: Number.isFinite(price) ? price : null,
     currency: "USD",
     stockStatus: isReadyToShip ? "ready_to_ship" : "custom",
-    warehouseCountry: isReadyToShip && /\bUSA?\b|United States/i.test(stockSignal) ? "United States" : null,
+    warehouseCountry,
     customAvailable: !isReadyToShip,
     description,
     specs: dimensions,
@@ -357,6 +358,16 @@ function normalizeRosemaryProduct(item, brandFallback) {
     excludedFromDollWow: reviewFlags.exclusiveSignals.length > 0,
     importedAt: new Date().toISOString()
   };
+}
+
+function inferWarehouseCountry(value) {
+  const text = cleanText(value || "");
+  if (/\bUnited States\b|\bUSA\b|\bUS warehouse\b|in-stock-us\b/i.test(text)) return "United States";
+  if (/\bUnited Kingdom\b|\bUK warehouse\b|in-stock-uk\b/i.test(text)) return "United Kingdom";
+  if (/\bEuropean Union\b|\bEurope\b|\bEU warehouse\b|in-stock-eu\b/i.test(text)) return "European Union";
+  if (/\bCanada\b|\bCanadian warehouse\b|in-stock-ca\b/i.test(text)) return "Canada";
+  if (/\bAustralia\b|\bAustralian warehouse\b|in-stock-au\b/i.test(text)) return "Australia";
+  return null;
 }
 
 function extractMeasurements(text) {

@@ -110,5 +110,19 @@
     "collectionHandle": "dolls-castle",
     "tags": ["dolls-castle", "doll-castle"],
     "aliases": ["dolls castle", "doll castle", "dollscastle"]
+  },
+  {
+    "value": "jarliet",
+    "label": "Jarliet Dolls",
+    "collectionHandle": "jarliet-dolls",
+    "tags": ["jarliet", "jarliet-doll", "jarliet-dolls", "jarlie", "jarlie-doll"],
+    "aliases": ["jarliet", "jarliet doll", "jarliet dolls", "jarlie", "jarlie doll", "jarlie dolls"]
+  },
+  {
+    "value": "hr",
+    "label": "HR Dolls",
+    "collectionHandle": "hr-dolls",
+    "tags": ["hr", "hr-doll", "hr-dolls", "herun", "herun-doll", "herun-dolls"],
+    "aliases": ["hr", "hr doll", "hr dolls", "herun", "herun doll", "herun dolls"]
   }
 ]
