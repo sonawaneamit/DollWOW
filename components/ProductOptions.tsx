@@ -203,6 +203,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         onReview={showReview}
       />
 
+      <div className="product-builder__content">
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{productBuilderHeading(product)}</p>
@@ -392,6 +393,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
       </div>
 
       {isPreviewOpen && heroImage ? <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} /> : null}
+      </div>
     </section>
   );
 }
@@ -413,7 +415,7 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
       <div className="mt-3 divide-y divide-border">
         {groups.map((group) => {
           const summary = groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode);
-          return <div key={group.id} className="flex justify-between gap-4 py-3 text-[15px]"><span className="text-text-dim">{group.label}</span><span className="text-right font-semibold text-text">{summary}</span></div>;
+          return <div key={group.id} className="build-summary-row py-3 text-[15px]"><span className="text-text-dim">{group.label}</span><span className="min-w-0 font-semibold text-text">{summary}</span></div>;
         })}
       </div>
       <PriceSummary basePrice={basePrice} optionPriceDelta={optionPriceDelta} totalPrice={totalPrice} currencyCode={currencyCode} requiresPriceConfirmation={requiresPriceConfirmation} compact />
@@ -482,7 +484,7 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
           ))}
         </div>
       ) : null}
-      <div className={clsx("grid gap-3", group.display === "swatches" ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1 sm:grid-cols-2")}>
+      <div className="product-option-grid grid grid-cols-1 gap-3">
         {group.options.map((option) => {
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
@@ -508,7 +510,8 @@ function OptionTile({ option, selected, disabled, conflict, currencyCode, onClic
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "relative flex min-h-24 items-start gap-4 rounded-md border p-4 text-left transition-colors",
+        "option-tile relative flex min-h-24 min-w-0 items-start gap-4 rounded-md border p-4 text-left transition-colors",
+        selected && "is-selected",
         selected ? "border-2 border-accent bg-accent-tint" : "border-border bg-surface hover:border-accent",
         disabled && "cursor-not-allowed border-dashed bg-bg hover:border-border"
       )}
@@ -518,14 +521,19 @@ function OptionTile({ option, selected, disabled, conflict, currencyCode, onClic
       <span className="min-w-0 flex-1 pr-5">
         <span className="block text-[17px] font-semibold text-text">{option.label}</span>
         {option.description ? <span className="mt-1 block text-sm leading-5 text-text-dim">{option.description}</span> : null}
-        <span className="mt-2 block text-sm font-semibold text-text-dim">
-          {option.priceDelta === undefined ? "Price confirmed by our team" : option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included"}
+        <span className="option-tile__price mt-2 inline-flex text-sm font-semibold">
+          {optionPriceLabel(option, currencyCode)}
         </span>
         {option.productionNote ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-text-dim"><Info className="mt-0.5 h-4 w-4 shrink-0" />{option.productionNote}</span> : null}
         {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{conflict}</span> : null}
       </span>
     </button>
   );
+}
+
+function optionPriceLabel(option: CustomizationOption, currencyCode: string) {
+  if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included";
+  return /\bfree\b/i.test(option.label) ? "Included" : "Price confirmation required";
 }
 
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
@@ -604,20 +612,21 @@ function ScrollThread({ groups, activeGroupId, isReviewing, onSelect, onReview }
   }
 
   const threadGroups = [...groups, { id: "review", label: "Review" } as CustomizationGroup];
-  const threadNodeXs = threadGroups.map((_, index) => [8, 24, 12, 30, 10, 26][index % 6]);
-  const threadHeight = threadGroups.length * 48 - 16;
+  const threadNodeXs = threadGroups.map((_, index) => [18, 40, 24, 44, 20, 38][index % 6]);
+  const threadHeight = threadGroups.length * 92 - 30;
   const threadPath = threadNodeXs.reduce((path, x, index) => {
-    const y = 16 + index * 48;
+    const y = 24 + index * 92;
     if (index === 0) return `M${x} ${y}`;
     const previousX = threadNodeXs[index - 1];
-    const previousY = y - 48;
-    return `${path} C${previousX} ${previousY + 24} ${x} ${y - 24} ${x} ${y}`;
+    const previousY = y - 92;
+    return `${path} C${previousX} ${previousY + 46} ${x} ${y - 46} ${x} ${y}`;
   }, "");
 
   return (
     <nav ref={threadRef} className="pdp-scroll-thread" aria-label="Customization steps">
       <div className="pdp-scroll-thread__sticky">
-        <svg className="pdp-scroll-thread__track" viewBox={`0 0 48 ${threadHeight}`} preserveAspectRatio="none" aria-hidden="true" style={{ height: threadHeight }}>
+        <p className="pdp-scroll-thread__title">Build steps</p>
+        <svg className="pdp-scroll-thread__track" viewBox={`0 0 64 ${threadHeight}`} preserveAspectRatio="none" aria-hidden="true" style={{ height: threadHeight }}>
           <path className="pdp-scroll-thread__path-base" pathLength="100" d={threadPath} />
           <path
             className="pdp-scroll-thread__path-progress"

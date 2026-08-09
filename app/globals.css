@@ -534,6 +534,48 @@ textarea {
   background: var(--accent-soft);
 }
 
+.product-builder__content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.product-option-grid {
+  align-items: stretch;
+}
+
+.product-builder .option-tile {
+  width: 100%;
+  min-height: 8.5rem;
+  overflow: hidden;
+}
+
+.product-builder .option-tile > span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.product-builder .option-tile__price {
+  border-radius: 999px;
+  background: rgb(var(--color-surface-tint));
+  color: rgb(var(--color-text));
+  padding: 0.3rem 0.55rem;
+}
+
+.product-builder .option-tile.is-selected .option-tile__price {
+  background: rgb(var(--color-surface));
+}
+
+.build-summary-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.65fr) minmax(0, 1.35fr);
+  gap: 1rem;
+}
+
+.build-summary-row > :last-child {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
 .product-builder .builder-panel .option-tile.is-selected {
   border-color: rgba(224, 128, 104, 0.58);
   background: linear-gradient(180deg, rgba(224, 128, 104, 0.14), rgba(245, 225, 210, 0.065));
@@ -4052,39 +4094,62 @@ a {
 }
 
 @media (min-width: 1240px) {
+  .product-builder {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .product-builder__content {
+    grid-column: 2;
+  }
+
   .pdp-scroll-thread {
     position: sticky;
     top: 7rem;
-    float: left;
     display: block;
-    width: 3rem;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    width: 10rem;
     height: fit-content;
-    margin-left: -3.25rem;
     z-index: 2;
-    pointer-events: none;
   }
 
   .pdp-scroll-thread__sticky {
     position: relative;
     display: grid;
-    gap: 1rem;
-    width: 3rem;
-    pointer-events: auto;
+    gap: 3.75rem;
+    width: 10rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 1rem;
+    background: rgb(var(--color-surface) / 0.96);
+    padding: 1rem 0.75rem;
+    box-shadow: var(--shadow-card);
   }
 
   .pdp-scroll-thread__track {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 3rem;
+    top: 3.2rem;
+    left: 0.75rem;
+    width: 4rem;
     height: 17rem;
     overflow: visible;
+  }
+
+  .pdp-scroll-thread__title {
+    min-height: 1.25rem;
+    color: rgb(var(--color-text-faint));
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   .pdp-scroll-thread__track path {
     fill: none;
     stroke-linecap: round;
-    stroke-width: 6;
+    stroke-width: 8;
     vector-effect: non-scaling-stroke;
   }
 
@@ -4103,7 +4168,7 @@ a {
     display: flex;
     min-height: 32px;
     align-items: center;
-    padding-left: 1.15rem;
+    padding-left: 4rem;
     color: rgb(var(--color-text-faint));
   }
 
@@ -4117,10 +4182,10 @@ a {
 
   .pdp-scroll-thread__tick > span {
     position: absolute;
-    left: calc(var(--thread-x) - 8px);
-    width: 16px;
-    height: 16px;
-    border: 3px solid rgb(var(--color-surface));
+    left: calc(var(--thread-x) - 5px);
+    width: 20px;
+    height: 20px;
+    border: 4px solid rgb(var(--color-surface));
     border-radius: 999px;
     background: rgb(var(--color-border-strong));
     box-shadow: 0 0 0 1px rgb(var(--color-border));
@@ -4128,17 +4193,16 @@ a {
 
   .pdp-scroll-thread__tick b {
     position: absolute;
-    left: calc(var(--thread-x) + 0.85rem);
-    width: max-content;
-    max-width: 7.5rem;
-    padding: 0.3rem 0.55rem;
-    border: 1px solid rgb(var(--color-border));
-    border-radius: 999px;
-    background: rgb(var(--color-surface));
-    box-shadow: var(--shadow-card);
-    opacity: 0;
-    font-size: 14px;
-    line-height: 1.2;
+    position: static;
+    width: 5rem;
+    max-width: 5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 0.62;
+    font-size: 12px;
+    line-height: 1.25;
     pointer-events: none;
     transition: opacity 160ms ease;
   }
@@ -4151,6 +4215,7 @@ a {
 
   .pdp-scroll-thread__tick.is-active {
     color: rgb(var(--color-text));
+    font-weight: 700;
   }
 
   .pdp-scroll-thread__tick.is-active > span {
