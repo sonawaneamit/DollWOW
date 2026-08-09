@@ -5,6 +5,7 @@ data/exports
 tmp
 docs
 *.pdf
+!public/images/authorizations/*.pdf
 *.xlsx
 *.zip
 README.md
