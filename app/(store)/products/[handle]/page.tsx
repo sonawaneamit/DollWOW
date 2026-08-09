@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const faqStructuredData = buildProductFaqStructuredData(product);
 
   return (
-    <div className="pb-28 lg:pb-0">
+    <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">

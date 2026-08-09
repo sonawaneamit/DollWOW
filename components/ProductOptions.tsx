@@ -90,10 +90,26 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
 
   useEffect(() => {
     const root = rootRef.current;
-    if (!root || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(([entry]) => setMobileDockVisible(entry.isIntersecting), { threshold: 0.08 });
-    observer.observe(root);
-    return () => observer.disconnect();
+    if (!root) return;
+
+    let frame = 0;
+    const updateDock = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const rect = root.getBoundingClientRect();
+        const dockLine = window.innerHeight - 88;
+        setMobileDockVisible(window.innerWidth < 1024 && rect.top < dockLine && rect.bottom > dockLine);
+      });
+    };
+
+    updateDock();
+    window.addEventListener("scroll", updateDock, { passive: true });
+    window.addEventListener("resize", updateDock);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateDock);
+      window.removeEventListener("resize", updateDock);
+    };
   }, []);
 
   async function addToCart() {
@@ -194,7 +210,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const disabledReason = resolved.issues[0]?.message || (!variant?.availableForSale ? "This build is not available to order online." : "");
 
   return (
-    <section ref={rootRef} className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
+    <section ref={rootRef} className="product-builder relative rounded-lg bg-surface p-5 pb-24 text-text shadow-card sm:p-7 sm:pb-24 lg:p-8">
       <div className="product-builder__content">
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -374,8 +390,8 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         </div>
       </div>
 
-      <div className={clsx("fixed inset-x-0 bottom-0 z-40 bg-surface p-3 shadow-[0_-4px_20px_rgba(41,32,27,0.10)] transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
-        <div className="mx-auto flex max-w-2xl items-center gap-3">
+      <div className={clsx("pdp-mobile-build-dock fixed inset-x-0 bottom-0 z-40 border-t border-border p-3 shadow-[0_-4px_20px_rgba(41,32,27,0.14)] transition duration-200 lg:hidden", isMobileDockVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0")}>
+        <div className="mx-auto grid max-w-2xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm text-text-dim">{displayTitle}</p>
             <p className="text-[17px] font-semibold text-text" aria-live="polite">{formatMoney(resolved.totalPrice, currencyCode)}</p>
@@ -387,7 +403,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             className="inline-flex min-h-12 min-w-32 items-center justify-center gap-2 rounded-button bg-accent px-4 text-base font-semibold text-white hover:bg-accent-hover disabled:opacity-45"
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {isReviewing ? (requiresPriceConfirmation ? "Ask our team" : "Checkout") : "Review"}
+            {isReviewing ? (requiresPriceConfirmation ? "Ask our team" : "Checkout") : "Review build"}
           </button>
         </div>
       </div>
