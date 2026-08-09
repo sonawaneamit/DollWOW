@@ -2508,28 +2508,6 @@ a {
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.trust-logo-strip {
-  overflow: hidden;
-  border: 1px solid rgba(213, 154, 111, 0.18);
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(246, 233, 221, 0.04), rgba(246, 233, 221, 0.015)),
-    #0b0504;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
-}
-
-.trust-logo-strip--compact {
-  border-radius: 12px;
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
-}
-
-.trust-logo-strip__image {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 0.94;
-}
-
 .home-rail-head__title {
   display: flex;
   align-items: flex-start;
