@@ -4093,17 +4093,143 @@ a {
   overflow: clip;
 }
 
+.storefront-zipper {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .storefront-zipper {
+    position: fixed;
+    z-index: 35;
+    top: 6.4rem;
+    bottom: 2rem;
+    left: max(0.5rem, calc((100vw - 90rem) / 2 + 0.5rem));
+    display: block;
+    width: 5.25rem;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 18px rgba(70, 36, 20, 0.16));
+  }
+
+  .storefront-zipper__caption {
+    position: absolute;
+    top: 0;
+    left: -0.1rem;
+    z-index: 4;
+    color: rgb(var(--color-text-faint));
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .storefront-zipper__opened {
+    position: absolute;
+    inset: 0 0 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .storefront-zipper__opened svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .storefront-zipper__tape,
+  .storefront-zipper__teeth-open {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .storefront-zipper__tape {
+    stroke: rgb(var(--color-accent-tint));
+    stroke-linecap: round;
+    stroke-width: 12;
+  }
+
+  .storefront-zipper__teeth-open {
+    stroke: rgb(var(--color-accent));
+    stroke-dasharray: 2 7;
+    stroke-linecap: round;
+    stroke-width: 5;
+  }
+
+  .storefront-zipper__closed {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .storefront-zipper__closed-tape {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: rgb(var(--color-accent-tint));
+  }
+
+  .storefront-zipper__closed-tape--left { left: calc(50% - 12px); }
+  .storefront-zipper__closed-tape--right { right: calc(50% - 12px); }
+
+  .storefront-zipper__closed-teeth {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 8px);
+    width: 16px;
+    background:
+      linear-gradient(90deg, transparent 0 3px, rgb(var(--color-accent)) 3px 7px, transparent 7px 9px, rgb(var(--color-accent)) 9px 13px, transparent 13px),
+      repeating-linear-gradient(180deg, rgb(var(--color-accent)) 0 3px, transparent 3px 8px);
+    filter: drop-shadow(0 1px 0 rgb(var(--color-surface)));
+  }
+
+  .storefront-zipper__pull {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+    width: 2.75rem;
+    height: 4rem;
+    color: rgb(var(--color-accent));
+    transform: translate(-50%, -1.15rem);
+    transition: top 80ms linear;
+  }
+
+  .storefront-zipper__pull svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: currentColor;
+    stroke: rgb(var(--color-surface));
+    stroke-width: 1.5;
+  }
+
+  .storefront-zipper__pull-hole {
+    fill: rgb(var(--color-surface));
+    stroke: rgb(var(--color-accent));
+  }
+
+  .storefront-zipper__chapter {
+    position: absolute;
+    top: 1.25rem;
+    left: 3rem;
+    min-width: max-content;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 999px;
+    background: rgb(var(--color-surface) / 0.96);
+    color: rgb(var(--color-text));
+    padding: 0.35rem 0.6rem;
+    box-shadow: var(--shadow-card);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
 @media (min-width: 1240px) {
-  .product-builder {
-    display: grid;
-    grid-template-columns: 10rem minmax(0, 1fr);
-    gap: 1.25rem;
-  }
-
-  .product-builder__content {
-    grid-column: 2;
-  }
-
   .pdp-scroll-thread {
     position: sticky;
     top: 7rem;
