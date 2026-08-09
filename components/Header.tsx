@@ -26,7 +26,9 @@ const featuredShopLinks = [
   { label: "Ready to ship", href: "/shop/ready-to-ship" },
   { label: "Factory order", href: "/shop/custom" },
   { label: "Female dolls", href: "/shop/female-dolls" },
-  { label: "Male dolls", href: "/shop/male-dolls" }
+  { label: "Male dolls", href: "/shop/male-dolls" },
+  { label: "Torsos", href: "/shop/torsos" },
+  { label: "Hips", href: "/shop/hips" }
 ];
 
 const policyLinks = [

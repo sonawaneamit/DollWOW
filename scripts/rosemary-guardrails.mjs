@@ -118,7 +118,9 @@ export function rewriteDollWowTitle(product) {
   const name = safeVisibleDollName(extractDollName(sourceTitle));
   const prefix = name || brand || "DollWow";
   const availability = product.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.customAvailable ? "Customizable" : "";
-  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", availability, "Companion Doll"].filter(Boolean);
+  const form = inferProductForm(product);
+  const productLabel = form === "hips" ? "Hips" : form === "torso" ? "Torso" : "Companion Doll";
+  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", availability, productLabel].filter(Boolean);
 
   return preserveProductAcronyms(cleanText(`${prefix} ${details.join(" ")}`));
 }
@@ -184,9 +186,9 @@ export function buildDollWowDescription(product) {
     ? " The DollWow configurator highlights compatible options, visual references, and price impacts before checkout."
     : " The listed configuration is reviewed for stock, timing, and final product details before checkout.";
 
-  return cleanText(
-    `A ${brand} ${specPhrase} companion doll prepared by DollWow ${availability}. We keep the core supplier specs visible, add clearer buying guidance, and confirm availability, options, and discreet fulfillment details before the order moves forward.${optionPhrase}`
-  );
+  const form = inferProductForm(product);
+  const productLabel = form === "hips" ? "hips model" : form === "torso" ? "torso doll" : "companion doll";
+  return cleanText(`A ${brand} ${specPhrase} ${productLabel} prepared by DollWow ${availability}. We keep the core supplier specs visible, add clearer buying guidance, and confirm availability, options, and discreet fulfillment details before the order moves forward.${optionPhrase}`);
 }
 
 export function reviewWarningsForRosemaryProduct(product) {
@@ -242,7 +244,7 @@ function extractDollName(title) {
   const clean = cleanSourceTitle(title);
   const dashName = clean.match(/\s[-–]\s([^()|]+?)(?:\s*\([^)]*\))?$/)?.[1];
   if (dashName) return titleCase(cleanText(dashName.replace(/\b(?:wm|zelex|irontech|anglekiss|dolls?)\b/gi, "")));
-  const trailingName = clean.match(/\b(?:Doll|Torso)\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?)$/)?.[1];
+  const trailingName = clean.match(/\b(?:Doll|Torso|Hips?)\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)?)$/)?.[1];
   return trailingName ? titleCase(trailingName) : "";
 }
 
@@ -275,10 +277,19 @@ function isCupNotApplicable(...values) {
 
 function inferMaterial(product) {
   const text = `${product.title || ""} ${product.description || ""}`.toLowerCase();
-  if (text.includes("silicone head")) return "Silicone Head";
+  if (/\bhybrid\b|silicone\s*head|tpe\s*body.*silicone\s*head/.test(text)) return "Hybrid";
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";
   return "Adult Doll";
+}
+
+function inferProductForm(product) {
+  // Product descriptions enumerate customization choices such as hips and butt
+  // shapes for full dolls, so only identity fields are reliable form signals.
+  const text = `${product.title || ""} ${product.sourceTitle || ""} ${product.handle || ""}`.toLowerCase();
+  if (/\b(hips?|hip torso|lower body|butt)\b/.test(text)) return "hips";
+  if (/\b(torso|upper body|half body)\b/.test(text)) return "torso";
+  return "full-doll";
 }
 
 function cleanBrandLabel(value) {
@@ -297,6 +308,9 @@ function canonicalBrandLabel(value) {
   if (/\berovenus\b/.test(lower)) return "Erovenus";
   if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "SE Doll";
   if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6YE Dolls";
+  if (/\bai\s*tech\b|\baitech\b/.test(lower)) return "Ai-Tech";
+  if (/\bil\s*dolls?\b|\bildoll\b/.test(lower)) return "IL Doll";
+  if (/\bclimax\b/.test(lower)) return "Climax Doll";
   return text;
 }
 
@@ -313,6 +327,9 @@ function canonicalBrandSlug(value) {
   if (/\bse\s*dolls?\b|\bsedoll\b/.test(lower)) return "sedoll";
   if (/\b6\s*ye\b|\b6ye\b/.test(lower)) return "6ye";
   if (/\bzelex\b|\bzellix\b/.test(lower)) return "zelex";
+  if (/\bai\s*tech\b|\baitech\b/.test(lower)) return "ai-tech";
+  if (/\bil\s*dolls?\b|\bildoll\b/.test(lower)) return "il-doll";
+  if (/\bclimax\b/.test(lower)) return "climax";
   return slugify(value);
 }
 

@@ -531,6 +531,7 @@ function countOptionImages(groups) {
 function productTags(product) {
   const brand = canonicalBrandTag(product.brand || product.brandSlug || "");
   const bodyType = inferBodyType(product);
+  const form = inferProductForm(product);
   return unique([
     brand,
     brand ? `${brand}-dolls` : null,
@@ -538,6 +539,7 @@ function productTags(product) {
     product.customAvailable ? "customizable" : null,
     bodyType !== "unknown" ? `${bodyType}-doll` : null,
     inferMaterial(product).toLowerCase().replace(/\s+/g, "-"),
+    form,
     heightRangeTag(product.specs?.heightCm),
     weightRangeTag(product.specs?.weightLb),
     product.warehouseCountry ? `warehouse-${slugify(product.warehouseCountry)}` : null
@@ -565,7 +567,9 @@ function weightRangeTag(weightLb) {
 
 function productType(product) {
   const material = inferMaterial(product);
-  return product.stockStatus === "ready_to_ship" ? `Ready-to-ship ${material} doll` : `Custom ${material} doll`;
+  const form = inferProductForm(product);
+  const label = form === "hips" ? "hips" : form === "torso" ? "torso doll" : "doll";
+  return product.stockStatus === "ready_to_ship" ? `Ready-to-ship ${material} ${label}` : `Custom ${material} ${label}`;
 }
 
 function baseConfigurationLabel(product) {
@@ -574,10 +578,19 @@ function baseConfigurationLabel(product) {
 
 function inferMaterial(product) {
   const text = `${product.title || ""} ${product.description || ""}`.toLowerCase();
-  if (text.includes("silicone head")) return "Silicone head";
+  if (/\bhybrid\b|silicone\s*head|tpe\s*body.*silicone\s*head/.test(text)) return "Hybrid";
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";
   return "Adult doll";
+}
+
+function inferProductForm(product) {
+  // Product descriptions enumerate customization choices such as hips and butt
+  // shapes for full dolls, so only identity fields are reliable form signals.
+  const text = `${product.title || ""} ${product.sourceTitle || ""} ${product.handle || ""}`.toLowerCase();
+  if (/\b(hips?|hip torso|lower body|butt)\b/.test(text)) return "hips";
+  if (/\b(torso|upper body|half body)\b/.test(text)) return "torso";
+  return "full-doll";
 }
 
 function inferBodyType(product) {
@@ -627,6 +640,9 @@ function canonicalBrandTag(value) {
   if (/\bzelex\b|\bzellix\b/.test(lower)) return "zelex";
   if (/\bjarliet\b|\bjarlie\b/.test(lower)) return "jarliet";
   if (/\bhr dolls?\b|\bherun\b/.test(lower)) return "hr";
+  if (/\bai\s*tech\b|\baitech\b/.test(lower)) return "ai-tech";
+  if (/\bil\s*dolls?\b|\bildoll\b/.test(lower)) return "il-doll";
+  if (/\bclimax\b/.test(lower)) return "climax";
   return slugify(value);
 }
 

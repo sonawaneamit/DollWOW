@@ -124,5 +124,26 @@
     "collectionHandle": "hr-dolls",
     "tags": ["hr", "hr-doll", "hr-dolls", "herun", "herun-doll", "herun-dolls"],
     "aliases": ["hr", "hr doll", "hr dolls", "herun", "herun doll", "herun dolls"]
+  },
+  {
+    "value": "ai-tech",
+    "label": "Ai-Tech",
+    "collectionHandle": "ai-tech-dolls",
+    "tags": ["ai-tech", "ai-tech-doll", "ai-tech-dolls", "aitech"],
+    "aliases": ["ai-tech", "ai tech", "aitech", "ai-tech doll", "ai-tech dolls", "ai tech doll", "ai tech dolls"]
+  },
+  {
+    "value": "il-doll",
+    "label": "IL Doll",
+    "collectionHandle": "il-doll",
+    "tags": ["il-doll", "il-dolls", "ildoll"],
+    "aliases": ["il doll", "il dolls", "ildoll", "ildolls"]
+  },
+  {
+    "value": "climax",
+    "label": "Climax Doll",
+    "collectionHandle": "climax-dolls",
+    "tags": ["climax", "climax-doll", "climax-dolls"],
+    "aliases": ["climax", "climax doll", "climax dolls"]
   }
 ]
