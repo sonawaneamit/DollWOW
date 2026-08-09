@@ -33,6 +33,14 @@ type ProductCountData = {
   };
 };
 
+type SearchProductData = {
+  products: {
+    edges: Array<{
+      node: Omit<ProductListNode, "description" | "images" | "variants">;
+    }>;
+  };
+};
+
 async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}, options: { cache?: RequestCache; revalidate?: number } = {}) {
   if (!hasShopifyStorefrontEnv()) {
     throw new Error("Shopify Storefront API is not configured.");
@@ -178,6 +186,72 @@ export async function getProducts({
     }
 
     return products.length ? products : fallbackProducts;
+  } catch (error) {
+    console.error(error);
+    return fallbackProducts;
+  }
+}
+
+/**
+ * Lightweight catalog lookup for live typeahead. Product cards and PDPs need
+ * galleries, variants and dozens of metafields; a four-row search suggestion
+ * does not. Keeping this query deliberately small makes cold searches feel
+ * immediate while returning the same normalized Product shape to the ranker.
+ */
+export async function getSearchProducts({
+  query,
+  first = 48,
+  revalidate = 300
+}: {
+  query?: string;
+  first?: number;
+  revalidate?: number;
+} = {}) {
+  const fallbackProducts = sampleProducts.slice(0, first);
+  if (!hasShopifyStorefrontEnv()) return fallbackProducts;
+
+  try {
+    const data = await storefrontFetch<SearchProductData>(
+      `# catalog-typeahead-v1
+      query SearchProducts($first: Int!, $query: String) {
+        products(first: $first, query: $query, sortKey: RELEVANCE) {
+          edges { node {
+            id
+            handle
+            title
+            vendor
+            productType
+            tags
+            featuredImage { url altText width height }
+            priceRange {
+              minVariantPrice { amount currencyCode }
+              maxVariantPrice { amount currencyCode }
+            }
+            displayName: metafield(namespace: "custom", key: "display_name") { value }
+            brand: metafield(namespace: "custom", key: "brand") { value }
+            sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
+            lookTags: metafield(namespace: "custom", key: "look_tags") { value }
+            material: metafield(namespace: "custom", key: "material") { value }
+            heightCm: metafield(namespace: "custom", key: "height_cm") { value }
+            cupSize: metafield(namespace: "custom", key: "cup_size") { value }
+            stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
+          } }
+        }
+      }`,
+      { first: Math.min(Math.max(first, 1), 100), query },
+      { revalidate }
+    );
+
+    return data.products.edges
+      .map(({ node }) =>
+        mapShopifyProduct({
+          ...node,
+          description: "",
+          images: { edges: [] },
+          variants: { edges: [] }
+        } as ProductListNode)
+      )
+      .filter(isCustomerVisibleProduct);
   } catch (error) {
     console.error(error);
     return fallbackProducts;

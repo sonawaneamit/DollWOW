@@ -10,14 +10,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
-  Eye,
   ExternalLink,
   Info,
   Loader2,
   Maximize2,
-  PackageCheck,
-  Palette,
-  Scissors,
   ShoppingBag,
   Sparkles
 } from "lucide-react";
@@ -655,12 +651,4 @@ function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSe
   if (options.some((option) => !option.priceConfirmed)) return `${label} · Price confirmed by our team`;
   const delta = options.reduce((sum, option) => sum + option.priceDelta, 0);
   return delta ? `${label} (+${formatMoney(delta, currencyCode)})` : `${label} — included`;
-}
-
-function groupIcon(groupId: string) {
-  if (groupId.includes("skin")) return <Palette className="h-5 w-5" />;
-  if (groupId.includes("eye")) return <Eye className="h-5 w-5" />;
-  if (groupId.includes("hair")) return <Scissors className="h-5 w-5" />;
-  if (groupId.includes("care")) return <PackageCheck className="h-5 w-5" />;
-  return <Sparkles className="h-5 w-5" />;
 }

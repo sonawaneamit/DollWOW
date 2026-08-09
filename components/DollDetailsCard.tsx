@@ -24,7 +24,7 @@ export function DollDetailsCard({ product }: { product: Product }) {
       <dl className="grid gap-3 sm:grid-cols-2">
         {details.map(([label, value]) => (
           <div key={label} className="rounded-[14px] bg-ink-950/45 p-4">
-            <dt className="text-xs uppercase tracking-[0.14em] text-ivory-600">{label}</dt>
+            <dt className="text-sm  text-ivory-600">{label}</dt>
             <dd className="mt-1 text-sm font-semibold text-ivory-100">{value}</dd>
           </div>
         ))}

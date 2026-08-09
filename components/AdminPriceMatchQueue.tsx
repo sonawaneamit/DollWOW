@@ -92,7 +92,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
     <article className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
-          <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] ${tone.className}`}>
+          <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium  ${tone.className}`}>
             <ToneIcon className="h-3.5 w-3.5" />
             {statusLabel}
           </div>
@@ -122,7 +122,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
           </div>
 
           <div className="rounded-[14px] border border-gold-500/12 bg-ink-900/50 p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gold-300">What needs attention</p>
+            <p className="text-sm  text-gold-300">What needs attention</p>
             <ul className="mt-3 space-y-2 text-sm text-ivory-300">
               {currentRequest.priceMatch.reasons.length ? currentRequest.priceMatch.reasons.map((reason) => (
                 <li key={reason} className="flex gap-2">
@@ -135,7 +135,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
 
           {currentRequest.approvedDiscountCode ? (
             <div className="rounded-[14px] border border-stock/20 bg-stock/10 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-stock">Issued code</p>
+              <p className="text-sm  text-stock">Issued code</p>
               <p className="mt-2 text-lg font-semibold text-ivory-50">{currentRequest.approvedDiscountCode}</p>
             </div>
           ) : null}
@@ -222,7 +222,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
 function AdminMetric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-[14px] border border-gold-500/12 bg-ink-900/45 p-4">
-      <p className="text-xs uppercase tracking-[0.16em] text-gold-300">{label}</p>
+      <p className="text-sm  text-gold-300">{label}</p>
       <p className="mt-2 text-base font-medium text-ivory-100">{value}</p>
     </div>
   );

@@ -25,7 +25,7 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink-950/94 p-3 backdrop-blur-md sm:p-5"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink-950/94 p-3 sm:p-5"
       role="dialog"
       aria-modal="true"
       aria-label="Product image preview"

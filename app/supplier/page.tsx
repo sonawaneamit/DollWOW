@@ -65,8 +65,8 @@ export default function SupplierPage() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-start">
-        <div className="rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-7 sm:p-10">
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Brand partnerships</p>
+        <div className="rounded-[24px] border border-gold-500/14 bg-surface p-7 sm:p-10">
+          <p className="text-sm  text-gold-300">Brand partnerships</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
             Careful brand representation for serious US and European buyers.
           </h1>
@@ -87,7 +87,7 @@ export default function SupplierPage() {
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {["MAP-aware pricing", "Brand-safe support", "US/EU market focus"].map((item) => (
-              <div key={item} className="border border-gold-500/12 bg-[#120907]/60 px-4 py-3 text-sm font-semibold text-ivory-200">
+              <div key={item} className="border border-gold-500/12 bg-surface-tint px-4 py-3 text-sm font-semibold text-ivory-200">
                 {item}
               </div>
             ))}
@@ -113,11 +113,11 @@ export default function SupplierPage() {
               stock, pricing, support, and post-order questions.
             </p>
             <div className="mt-5 grid gap-3 text-sm text-ivory-300">
-              <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
+              <div className="border border-gold-500/10 bg-surface-tint p-4">
                 <strong className="block text-ivory-100">Best fit</strong>
                 Brands that want stronger international presentation, cleaner pre-sale support, and better customer confidence.
               </div>
-              <div className="border border-gold-500/10 bg-[#120907]/60 p-4">
+              <div className="border border-gold-500/10 bg-surface-tint p-4">
                 <strong className="block text-ivory-100">Launch posture</strong>
                 We can start with a reviewed product set, then expand once MAP, option rules, fulfillment expectations, and terms are clear.
               </div>
@@ -142,12 +142,12 @@ export default function SupplierPage() {
       </div>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        <div className="rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Operating standards</p>
+        <div className="rounded-[24px] border border-gold-500/14 bg-surface p-6 sm:p-7">
+          <p className="text-sm font-semibold  text-gold-300">Operating standards</p>
           <h2 className="mt-3 text-3xl font-semibold text-ivory-50">How we protect brand trust.</h2>
           <div className="mt-5 space-y-3">
             {operatingStandards.map((item) => (
-              <div key={item} className="flex gap-3 border border-gold-500/10 bg-[#120907]/60 p-4 text-sm leading-6 text-ivory-300">
+              <div key={item} className="flex gap-3 border border-gold-500/10 bg-surface-tint p-4 text-sm leading-6 text-ivory-300">
                 <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
                 <span>{item}</span>
               </div>
@@ -156,13 +156,13 @@ export default function SupplierPage() {
         </div>
 
         <div className="rounded-[24px] border border-gold-500/14 bg-ink-800/62 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Helpful brand inputs</p>
+          <p className="text-sm font-semibold  text-gold-300">Helpful brand inputs</p>
           <h2 className="mt-3 text-3xl font-semibold text-ivory-50">The few things that make onboarding smoother.</h2>
           <div className="mt-6 grid gap-4">
             {brandNeeds.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="border border-gold-500/12 bg-[#120907]/58 p-5">
+                <article key={item.title} className="border border-gold-500/12 bg-surface-tint p-5">
                   <Icon className="h-5 w-5 text-gold-300" />
                   <h3 className="mt-4 text-lg font-semibold text-ivory-100">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-ivory-400">{item.copy}</p>
@@ -173,10 +173,10 @@ export default function SupplierPage() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6 sm:p-7">
+      <section className="mt-8 rounded-[24px] border border-gold-500/14 bg-surface p-6 sm:p-7">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Brand contact</p>
+            <p className="text-sm font-semibold  text-gold-300">Brand contact</p>
             <h2 className="mt-3 text-3xl font-semibold text-ivory-50">Send product, MAP, or authorization questions here.</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">
               Use this form for brand introductions, corrected product data, image permissions, stock files, price lists, MAP rules, or brand-specific option rules.
@@ -184,7 +184,7 @@ export default function SupplierPage() {
           </div>
           <Link
             href="mailto:hello@dollwow.com"
-            className="inline-flex w-fit items-center justify-center rounded-[14px] border border-gold-500/18 bg-[#120907]/65 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
+            className="inline-flex w-fit items-center justify-center rounded-[14px] border border-gold-500/18 bg-surface-tint px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
           >
             hello@dollwow.com
           </Link>

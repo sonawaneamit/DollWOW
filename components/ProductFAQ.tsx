@@ -39,7 +39,7 @@ export function ProductFAQ() {
     <section className="rounded-[28px] border border-gold-500/18 bg-ink-800/68 p-5 shadow-soft sm:p-7">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-gold-300">Private Questions</p>
+          <p className="text-sm  text-gold-300">Private Questions</p>
           <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Before you ask</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">Clear answers to the questions customers ask most before ordering.</p>
         </div>

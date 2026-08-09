@@ -97,7 +97,7 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
       };
 
   return (
-    <form onSubmit={submit} className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-6 sm:p-8">
+    <form onSubmit={submit} className="rounded-lg bg-surface p-6 text-text shadow-card sm:p-8">
       <input
         name="website"
         value={website}
@@ -107,42 +107,42 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
         className="hidden"
         aria-hidden="true"
       />
-      <p className="text-sm uppercase tracking-[0.18em] text-gold-300">{copy.kicker}</p>
-      <h2 className="mt-2 text-3xl font-semibold text-ivory-50">{copy.title}</h2>
-      <p className="mt-3 text-sm text-ivory-400">{copy.body}</p>
+      <p className="text-[15px] font-semibold text-text-dim">{copy.kicker}</p>
+      <h2 className="mt-2 text-3xl font-semibold text-text">{copy.title}</h2>
+      <p className="mt-3 text-base leading-7 text-text-dim">{copy.body}</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-2 block text-sm font-medium text-ivory-200">{copy.nameLabel}</span>
+          <span className="mb-2 block text-[15px] font-semibold text-text-dim">{copy.nameLabel}</span>
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
+            className="h-14 w-full rounded-sm border border-border bg-surface px-4 text-base text-text placeholder:text-text-faint focus:border-accent focus:ring-accent"
             placeholder="Your name"
           />
         </label>
         <label className="block">
-          <span className="mb-2 block text-sm font-medium text-ivory-200">{copy.emailLabel}</span>
+          <span className="mb-2 block text-[15px] font-semibold text-text-dim">{copy.emailLabel}</span>
           <input
             required
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
+            className="h-14 w-full rounded-sm border border-border bg-surface px-4 text-base text-text placeholder:text-text-faint focus:border-accent focus:ring-accent"
             placeholder="you@example.com"
           />
         </label>
       </div>
 
       <label className="mt-4 block">
-        <span className="mb-2 block text-sm font-medium text-ivory-200">{copy.questionLabel}</span>
+        <span className="mb-2 block text-[15px] font-semibold text-text-dim">{copy.questionLabel}</span>
         <textarea
           required
           minLength={8}
           rows={5}
           value={question}
           onChange={(event) => setQuestion(event.target.value)}
-          className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 placeholder:text-ivory-600 focus:border-gold-300 focus:ring-gold-300"
+          className="w-full rounded-sm border border-border bg-surface px-4 py-3 text-base text-text placeholder:text-text-faint focus:border-accent focus:ring-accent"
           placeholder={copy.placeholder}
         />
       </label>

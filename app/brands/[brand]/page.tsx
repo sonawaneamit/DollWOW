@@ -49,7 +49,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
 
       <div className="shop-visual-hero">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Brand hub</p>
+          <p className="text-sm  text-gold-300">Brand hub</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
           <p className="mt-3 text-sm font-semibold text-gold-200">{orderedProducts.length} DollWow listings in this brand view</p>
@@ -68,7 +68,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
 
       <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="brand-comparison-heading">
         <div className="border-b border-gold-500/12 p-5">
-          <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Brand comparison</p>
+          <p className="text-sm  text-gold-300">Brand comparison</p>
           <h2 id="brand-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
             How to evaluate {brand.label}
           </h2>
@@ -107,7 +107,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
 
       <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
         <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Buyer notes</p>
+          <p className="text-sm  text-gold-300">Buyer notes</p>
           <h2 id="brand-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
             What to confirm before choosing {brand.label}
           </h2>
@@ -137,7 +137,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
       </section>
 
       <section className="mt-10 rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-6">
-        <p className="text-sm uppercase tracking-[0.16em] text-gold-300">Browse more brands</p>
+        <p className="text-sm  text-gold-300">Browse more brands</p>
         <div className="mt-4 flex flex-wrap gap-3">
           {catalogBrands
             .filter((option) => option.value !== brand.value)

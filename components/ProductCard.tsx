@@ -19,38 +19,21 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="catalog-product-card group">
-      <Link className="catalog-product-card__link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
-        {image ? (
-          <Image
-            src={image.url}
-            alt={displayTitle}
-            fill
-            sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw"
-            className="catalog-product-card__image"
-          />
-        ) : (
-          <div className="catalog-product-card__empty">
-            <span>{displayTitle}</span>
-          </div>
-        )}
-        <span className="catalog-product-card__vignette" aria-hidden="true" />
+      <Link className="catalog-product-card__media" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
+        {image ? <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
         <span className={`catalog-product-card__status ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
-        <div className="catalog-product-card__body">
-          <p>{product.extended.brand ?? product.vendor}</p>
-          <h2>{displayTitle}</h2>
-          <div className="catalog-product-card__specs">
-            {specs.slice(0, 3).map((spec) => (
-              <span key={spec}>{spec}</span>
-            ))}
-          </div>
-          <footer>
-            <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
-            <span>
-              View doll <ArrowRight className="h-3.5 w-3.5" />
-            </span>
-          </footer>
-        </div>
       </Link>
+      <div className="catalog-product-card__body">
+        <p>{product.extended.brand ?? product.vendor}</p>
+        <Link href={`/products/${product.handle}`}><h2>{displayTitle}</h2></Link>
+        <div className="catalog-product-card__specs">
+          {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
+        </div>
+        <footer>
+          <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
+          <Link href={`/products/${product.handle}`}>View doll <ArrowRight className="h-4 w-4" /></Link>
+        </footer>
+      </div>
       <Link
         href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
         className="catalog-product-card__compare"

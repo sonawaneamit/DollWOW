@@ -142,6 +142,10 @@ export function compactFilters(filters: CatalogFilters): CatalogFilters {
 
 export function shopifyQueryForFilters(filters: CatalogFilters) {
   const parts = [];
+  if (filters.query) {
+    const textQuery = shopifyQueryForCatalogSearch(filters.query);
+    if (textQuery) parts.push(textQuery);
+  }
   if (filters.brand) parts.push(shopifyBrandQuery(filters.brand));
   if (filters.look) parts.push(shopifyLookQuery(filters.look));
   if (filters.bodyType) parts.push(`tag:${filters.bodyType}-doll`);
@@ -149,6 +153,27 @@ export function shopifyQueryForFilters(filters: CatalogFilters) {
   if (filters.material) parts.push(shopifyMaterialQuery(filters.material));
   if (filters.productForm) parts.push(shopifyProductFormQuery(filters.productForm));
   return parts.join(" AND ") || undefined;
+}
+
+export function shopifyQueryForCatalogSearch(query: string) {
+  const terms = String(query || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 8);
+  if (!terms.length) return undefined;
+
+  const expanded = terms.map((term) => {
+    if (term === "evie" || term === "eive") return "(evie OR eive)";
+    if (["busty", "buxom"].includes(term)) return "(busty OR curvy OR tag:shape-curvy OR tag:shape-fuller)";
+    if (["blonde", "blond", "platinum"].includes(term)) return "(blonde OR blond OR platinum OR tag:hair-blonde)";
+    if (["brunette"].includes(term)) return "(brunette OR tag:hair-brunette)";
+    if (["petite", "compact"].includes(term)) return `(${term} OR tag:shape-petite)`;
+    return term;
+  });
+  return expanded.join(" AND ");
 }
 
 export function filterProducts(products: Product[], filters: CatalogFilters) {
@@ -184,8 +209,7 @@ export function getCatalogFilterLabel(key: keyof CatalogFilters, value?: string)
 
 export function requiresCatalogWideFetch(filters: CatalogFilters) {
   return Boolean(
-    filters.query ||
-      filters.look ||
+    filters.look ||
       filters.height ||
       filters.weight ||
       filters.cup ||

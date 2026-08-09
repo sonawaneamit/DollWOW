@@ -21,13 +21,13 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
     <main>
       <section className="tone-section" data-tone="deep">
         <div className="tone-inner">
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Learning Center</p>
+          <p className="text-sm  text-gold-300">Learning Center</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">Private, practical buying guides for expensive decisions</h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">
             Compare material, price, size, shipping, reviews, customization, and support before checkout. Every guide is written for buyers who want clear facts without fake reviews or pressure.
           </p>
           <div className="mt-7">
-            <Link href="#guides" className="rounded-[12px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-[#1f120b] transition hover:bg-gold-200">
+            <Link href="#guides" className="rounded-[12px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-200">
               See guides
             </Link>
           </div>
@@ -57,8 +57,8 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
           <div id="guides" className="mt-8 scroll-mt-28">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.16em] text-gold-700">{selectedCategory || "All guides"}</p>
-                <h2 className="mt-2 text-3xl font-semibold text-ink-950">{visibleArticles.length} guides</h2>
+                <p className="text-sm  text-gold-700">{selectedCategory || "All guides"}</p>
+                <h2 className="mt-2 text-3xl font-semibold text-text">{visibleArticles.length} guides</h2>
               </div>
               {selectedCategory ? (
                 <Link href="/learn#guides" className="text-sm font-semibold text-ink-700 underline underline-offset-4 transition hover:text-gold-700">
@@ -79,8 +79,8 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
                     </Link>
                   ) : null}
                   <div className="p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-400">{article.category}</p>
-                    <h2 className="mt-3 text-xl font-semibold leading-tight text-ink-950">
+                    <p className="text-sm font-semibold  text-gold-400">{article.category}</p>
+                    <h2 className="mt-3 text-xl font-semibold leading-tight text-text">
                       <Link href={`/learn/${article.slug}`}>{article.title}</Link>
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-ink-700">{article.excerpt}</p>
@@ -88,7 +88,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
                       Read guide
                     </GoldButton>
                     <div className="mt-5 border-t border-gold-500/14 pt-4 text-sm text-ink-700">
-                      <p className="font-semibold text-ink-950">
+                      <p className="font-semibold text-text">
                         {article.authorDisplayName}
                       </p>
                       <p>{author?.shortBio ?? article.authorTitle}</p>

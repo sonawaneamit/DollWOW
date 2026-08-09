@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parseCatalogSearchQuery, productSearchScore, rankCatalogProducts } from "@/lib/search/catalog";
 import { sampleProducts } from "@/lib/data/sample-products";
+import { shopifyQueryForCatalogSearch } from "@/lib/catalog/filters";
 
 describe("catalog search", () => {
   it("parses practical shopping filters from natural queries", () => {
@@ -53,6 +54,13 @@ describe("catalog search", () => {
       extended: { ...sampleProducts[0].extended, displayName: "", sourceTitle: "" }
     };
     expect(productSearchScore(product, "Evie")).toBeGreaterThan(0);
+  });
+
+  it("builds a safe Shopify candidate query and expands Evie/Eive", () => {
+    expect(shopifyQueryForCatalogSearch("161 Evie!")).toBe("161 AND (evie OR eive)");
+    expect(shopifyQueryForCatalogSearch("busty blonde")).toBe(
+      "(busty OR curvy OR tag:shape-curvy OR tag:shape-fuller) AND (blonde OR blond OR platinum OR tag:hair-blonde)"
+    );
   });
 
   it("matches customization option labels such as hair color", () => {

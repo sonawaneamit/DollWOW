@@ -39,7 +39,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
         </div>
       )}
       <div className="p-5 sm:p-6">
-        <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">
+        <p className="flex items-center gap-2 text-sm font-semibold  text-gold-300">
           <BadgeCheck className="h-4 w-4" />
           Authorized vendor
         </p>
@@ -53,7 +53,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           {hasCertificate ? (
-            <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-[8px] border border-gold-400/45 px-3 py-2 text-sm font-semibold text-gold-200 transition hover:bg-gold-300 hover:text-ink-950">
+            <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-[8px] border border-gold-400/45 px-3 py-2 text-sm font-semibold text-gold-200 transition hover:bg-gold-300 hover:text-white">
               View certificate <ExternalLink className="h-3.5 w-3.5" />
             </a>
           ) : null}

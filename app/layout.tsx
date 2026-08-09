@@ -8,6 +8,7 @@ import { CartProvider } from "@/components/cart/CartProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
+import "./v2-storefront.css";
 
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -61,7 +62,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           id="dollwow-theme-init"
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'||saved==='light'?saved:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
+            __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'?'dark':'light';document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
           }}
         />
       </head>

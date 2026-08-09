@@ -19,7 +19,7 @@ export default async function ComparePage({
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
         <div className="rounded-[24px] border border-gold-500/16 bg-ink-800/78 p-6 sm:p-8">
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">LIVE Price Comparison</p>
+          <p className="text-sm  text-gold-300">LIVE Price Comparison</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Request a price match</h1>
           <p className="mt-3 text-ivory-400">Share the competitor product link, the final quoted total, and a screenshot of the configured cart or summary. That gives us enough to review the real offer instead of only the base page.</p>
           <div className="mt-6 lg:hidden">
@@ -53,7 +53,7 @@ export default async function ComparePage({
             />
           </div>
           <div className="rounded-[24px] border border-gold-500/16 bg-gradient-to-br from-rose-950/35 via-ink-900/86 to-ink-950/95 p-6 sm:p-8">
-            <p className="text-sm uppercase tracking-[0.18em] text-gold-300">WHAT TO SEND</p>
+            <p className="text-sm  text-gold-300">WHAT TO SEND</p>
             <h2 className="mt-2 text-3xl font-semibold text-ivory-50">The quick checklist</h2>
             <div className="mt-6 grid gap-3 text-sm text-ivory-300">
               <QuickFact title="Product URL" body="Paste the listing you priced." />

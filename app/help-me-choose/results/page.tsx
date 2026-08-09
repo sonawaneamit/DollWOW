@@ -32,7 +32,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Your recommendations</p>
+      <p className="text-sm  text-gold-300">Your recommendations</p>
       <div className="mt-2 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
         <div>
           <h1 className="text-4xl font-semibold text-ivory-50">Start with these dolls.</h1>
@@ -43,7 +43,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
         </div>
         <div className="border border-gold-500/14 bg-ink-800/72 p-5">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Options selected</p>
+            <p className="text-sm font-semibold  text-gold-300">Options selected</p>
             <Link href={editHref} className="text-sm font-semibold text-gold-200 hover:text-gold-100">
               Edit
             </Link>
@@ -67,7 +67,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
             return (
               <article key={product.id} className="relative">
                 {recommendation ? (
-                  <div className="mb-3 border border-gold-500/14 bg-[#120907]/70 p-4">
+                  <div className="mb-3 border border-gold-500/14 bg-surface-tint p-4">
                     <div className="flex items-center gap-2 text-sm font-semibold text-gold-300">
                       <CheckCircle2 className="h-4 w-4" />
                       {recommendation.badge}

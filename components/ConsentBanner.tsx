@@ -20,7 +20,7 @@ export function ConsentBanner() {
     <div
       role="dialog"
       aria-label="Privacy preferences"
-      className="fixed inset-x-0 bottom-0 z-[95] border-t border-gold-500/20 bg-ink-950/97 px-4 py-4 shadow-soft backdrop-blur sm:px-6"
+      className="fixed inset-x-0 bottom-0 z-[95] border-t border-gold-500/20 bg-ink-950/97 px-4 py-4 shadow-soft sm:px-6"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
@@ -29,7 +29,7 @@ export function ConsentBanner() {
           </span>
           <div>
             <p className="text-sm font-semibold text-ivory-100">Your privacy, your choice</p>
-            <p className="mt-1 max-w-xl text-xs leading-5 text-ivory-400">
+            <p className="mt-1 max-w-xl text-sm leading-5 text-ivory-400">
               We use privacy-safe analytics to improve the store. Nothing is shared with advertisers, and your browsing here
               stays discreet. Read our <Link href="/privacy-policy" className="text-gold-300 underline-offset-2 hover:underline">privacy policy</Link>.
             </p>
@@ -39,14 +39,14 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => writeConsent("denied")}
-            className="rounded-full border border-gold-500/24 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ivory-300 transition hover:border-gold-300/50 hover:text-ivory-50"
+            className="rounded-full border border-gold-500/24 px-4 py-2 text-sm font-semibold  text-ivory-300 transition hover:border-gold-300/50 hover:text-ivory-50"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={() => writeConsent("granted")}
-            className="rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink-950 shadow-glow transition hover:-translate-y-0.5"
+            className="rounded-full bg-accent px-4 py-2 text-sm font-semibold  text-white shadow-glow transition"
           >
             Accept
           </button>

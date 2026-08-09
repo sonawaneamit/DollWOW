@@ -49,7 +49,7 @@ export function CartPageClient() {
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition"
             >
               Browse the catalog <ArrowRight className="h-4 w-4" />
             </Link>
@@ -89,7 +89,7 @@ export function CartPageClient() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
                       {item.brand ? (
-                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gold-300">{item.brand}</p>
+                        <p className="text-sm font-semibold  text-gold-300">{item.brand}</p>
                       ) : null}
                       <Link
                         href={`/products/${item.productHandle}`}
@@ -97,13 +97,13 @@ export function CartPageClient() {
                       >
                         {item.productDisplayName || item.productTitle}
                       </Link>
-                      <p className="mt-1 text-xs text-ivory-500">
+                      <p className="mt-1 text-sm text-ivory-500">
                         {item.readyToShip ? "Ready to ship · timing confirmed before checkout" : "Made to order · reviewed by our team first"}
                       </p>
                       {item.attributes?.length ? (
                         <ul className="mt-2 grid gap-0.5">
                           {item.attributes.slice(0, 4).map((attribute) => (
-                            <li key={attribute.key} className="text-xs text-ivory-500">
+                            <li key={attribute.key} className="text-sm text-ivory-500">
                               <span className="text-ivory-600">{attribute.key}:</span> {attribute.value}
                             </li>
                           ))}
@@ -149,7 +149,7 @@ export function CartPageClient() {
 
         {cart.upsells.length ? (
           <section className="mt-8" aria-label="Pairs well with your bag">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Complete your order</p>
+            <p className="text-sm font-semibold  text-gold-300">Complete your order</p>
             <h2 className="mt-1 text-xl font-semibold text-ivory-50">Pairs well with your bag</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {cart.upsells.slice(0, 4).map((upsell) => (
@@ -184,7 +184,7 @@ export function CartPageClient() {
                       );
                       trackEvent(analyticsEvents.addUpsell, { item_name: upsell.productTitle, location: "cart_page" });
                     }}
-                    className="shrink-0 rounded-full border border-gold-500/24 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-gold-200 transition hover:border-gold-300/60 hover:text-gold-100"
+                    className="shrink-0 rounded-full border border-gold-500/24 px-4 py-2 text-sm font-semibold  text-gold-200 transition hover:border-gold-300/60 hover:text-gold-100"
                   >
                     Add
                   </button>
@@ -196,12 +196,12 @@ export function CartPageClient() {
       </div>
 
       <aside className="h-fit rounded-[18px] border border-gold-500/16 bg-ink-800/72 p-5 lg:sticky lg:top-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Order summary</p>
+        <p className="text-sm font-semibold  text-gold-300">Order summary</p>
         <div className="mt-3 flex items-center justify-between text-sm text-ivory-300">
           <span>Subtotal ({cart.count} item{cart.count === 1 ? "" : "s"})</span>
           <strong className="text-xl text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
         </div>
-        <p className="mt-2 text-xs leading-5 text-ivory-500">
+        <p className="mt-2 text-sm leading-5 text-ivory-500">
           Shipping, taxes, and any custom options are confirmed at checkout. Custom builds include factory photo
           approval before anything ships.
         </p>
@@ -210,12 +210,12 @@ export function CartPageClient() {
           type="button"
           onClick={cart.checkout}
           disabled={cart.checkoutPending}
-          className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold text-ink-950 shadow-glow transition hover:-translate-y-0.5 disabled:opacity-60"
+          className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-glow transition disabled:opacity-60"
         >
           {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
           Secure checkout
         </button>
-        <p className="mt-3 text-center text-[0.72rem] leading-4 text-ivory-500">
+        <p className="mt-3 text-center text-sm leading-4 text-ivory-500">
           Plain packaging · neutral billing · buyer protection
         </p>
         <Link
@@ -249,25 +249,25 @@ function LegacySavedCheckout({ onCleared }: { onCleared: () => void }) {
           </span>
         ) : null}
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">Saved checkout</p>
+          <p className="text-sm font-semibold  text-gold-300">Saved checkout</p>
           <p className="mt-1 text-sm font-semibold text-ivory-100">
             {legacy.productDisplayName || legacy.productTitle || "Your previous checkout"} is still saved
           </p>
-          <p className="mt-1 text-xs leading-5 text-ivory-500">
+          <p className="mt-1 text-sm leading-5 text-ivory-500">
             {legacy.totalQuantity} item{legacy.totalQuantity === 1 ? "" : "s"} · saved {new Date(legacy.updatedAt).toLocaleDateString()}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <a
             href={legacy.checkoutUrl}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink-950 transition hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold  text-white transition"
           >
             <Lock className="h-3.5 w-3.5" /> Resume checkout
           </a>
           <button
             type="button"
             onClick={onCleared}
-            className="rounded-full border border-gold-500/24 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ivory-300 transition hover:border-gold-300/50 hover:text-ivory-50"
+            className="rounded-full border border-gold-500/24 px-4 py-2 text-sm font-semibold  text-ivory-300 transition hover:border-gold-300/50 hover:text-ivory-50"
           >
             Clear
           </button>

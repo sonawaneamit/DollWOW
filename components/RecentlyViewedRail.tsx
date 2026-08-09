@@ -22,7 +22,7 @@ export function RecentlyViewedRail({ excludeHandle, title = "Recently viewed" }:
     <section className="mt-10" aria-label={title}>
       <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Keep browsing</p>
+          <p className="text-sm font-semibold  text-gold-300">Keep browsing</p>
           <h2 className="mt-1 text-xl font-semibold text-ivory-50">{title}</h2>
         </div>
         <Link
@@ -37,7 +37,7 @@ export function RecentlyViewedRail({ excludeHandle, title = "Recently viewed" }:
           <Link
             key={entry.productHandle}
             href={`/products/${entry.productHandle}`}
-            className="group overflow-hidden rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.035] transition hover:-translate-y-0.5 hover:border-gold-300/50"
+            className="group overflow-hidden rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.035] transition hover:border-gold-300/50"
           >
             <div className="relative aspect-[4/5] bg-ink-900">
               {entry.imageUrl ? (
@@ -50,15 +50,15 @@ export function RecentlyViewedRail({ excludeHandle, title = "Recently viewed" }:
                 />
               ) : null}
               {entry.readyToShip ? (
-                <span className="absolute left-2 top-2 rounded-full border border-emerald-300/30 bg-emerald-900/85 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-emerald-100">
+                <span className="absolute left-2 top-2 rounded-full border border-emerald-300/30 bg-emerald-900/85 px-2 py-0.5 text-sm font-bold  text-emerald-100">
                   Ready
                 </span>
               ) : null}
             </div>
             <div className="p-2.5">
-              {entry.brand ? <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-gold-300">{entry.brand}</p> : null}
-              <p className="mt-0.5 line-clamp-2 text-xs font-semibold leading-4 text-ivory-100">{entry.productTitle}</p>
-              <p className="mt-1 text-xs font-semibold text-gold-200">{formatMoney(entry.unitPrice, entry.currencyCode)}</p>
+              {entry.brand ? <p className="text-sm font-bold  text-gold-300">{entry.brand}</p> : null}
+              <p className="mt-0.5 line-clamp-2 text-sm font-semibold leading-4 text-ivory-100">{entry.productTitle}</p>
+              <p className="mt-1 text-sm font-semibold text-gold-200">{formatMoney(entry.unitPrice, entry.currencyCode)}</p>
             </div>
           </Link>
         ))}

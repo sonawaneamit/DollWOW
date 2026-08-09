@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import { brandFromText, getCatalogBrand } from "@/lib/catalog/brands";
+import { catalogLookOptions } from "@/lib/catalog/lookTags";
 
 export type ParsedCatalogSearch = {
   normalizedQuery: string;
@@ -132,6 +133,7 @@ function productSearchText(product: Product) {
       product.extended.sourceTitle,
       product.extended.material,
       product.extended.cupSize,
+      ...(product.extended.lookTags || []),
       product.extended.heightCm ? `${product.extended.heightCm} cm` : "",
       product.extended.weightLb ? `${product.extended.weightLb} lb` : "",
       product.extended.stockStatus,
@@ -184,6 +186,15 @@ function expandCatalogSearchTerms(normalizedQuery: string, terms: string[]) {
   }
   if (/(short hair|long hair|curly hair|straight hair|bob cut)\b/.test(normalizedQuery)) {
     addTerms(["hair", "hairstyle"]);
+  }
+  if (/\b(busty|buxom|big bust|large bust|full bust|big breasts?|big boobs?)\b/.test(normalizedQuery)) {
+    addTerms(["shape", "curvy", "fuller", "bust"]);
+  }
+
+  for (const look of catalogLookOptions) {
+    if (look.keywords.some((keyword) => normalizedQuery.includes(keyword))) {
+      addTerms([look.value, ...look.keywords]);
+    }
   }
 
   return Array.from(expanded);
@@ -291,7 +302,7 @@ function parseAvailability(normalizedQuery: string) {
 }
 
 function parseHeightCm(normalizedQuery: string) {
-  const match = normalizedQuery.match(/\b(1[2-9]\d|20\d|21\d)\s*cm\b/);
+  const match = normalizedQuery.match(/\b(1[2-9]\d|20\d|21\d)(?:\s*cm)?\b/);
   return match ? Number(match[1]) : undefined;
 }
 

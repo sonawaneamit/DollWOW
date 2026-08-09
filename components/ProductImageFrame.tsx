@@ -7,7 +7,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
   const displayTitle = productPublicTitle(product);
 
   return (
-    <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-[linear-gradient(145deg,#1a110d,#070403)]">
+    <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-surface-tint">
       {image ? (
         <Image
           src={image.url}
@@ -21,7 +21,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
         <div className="flex h-full flex-col items-center justify-center p-6 text-center">
           <div className="mb-5 h-24 w-24 rounded-full border border-gold-500/30 bg-gold-500/10" />
           <p className="text-sm font-semibold text-ivory-50">{displayTitle}</p>
-          <p className="mt-2 text-xs text-ivory-600">Product image appears when Shopify media is connected.</p>
+          <p className="mt-2 text-sm text-ivory-600">Product image appears when Shopify media is connected.</p>
         </div>
       )}
     </div>

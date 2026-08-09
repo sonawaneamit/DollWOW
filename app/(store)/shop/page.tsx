@@ -12,7 +12,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: needsWideFetch ? 2200 : 600,
-    includeCustomizationGroups: Boolean(filters.query)
+    includeCustomizationGroups: false
   });
   const filteredProducts = filterProducts(products, filters);
   const visibleProducts = needsWideFetch ? filteredProducts.slice(0, 96) : filteredProducts;
@@ -27,7 +27,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
     <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="shop-visual-hero">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Shop Dolls</p>
+          <p className="text-sm  text-gold-300">Shop Dolls</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Browse the catalog</h1>
           <p className="mt-3 max-w-2xl text-ivory-400">
             Filter by practical needs: delivery, material, size, weight, budget, and custom options.

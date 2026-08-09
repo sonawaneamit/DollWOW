@@ -52,17 +52,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   const spotlight = useMemo(() => buildSpotlightProducts(products), [products]);
   const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
   const [activeSpot, setActiveSpot] = useState(0);
-  const [paused, setPaused] = useState(false);
-
   useHomeMotion();
-
-  useEffect(() => {
-    if (spotlight.length < 2 || paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      setActiveSpot((index) => (index + 1) % spotlight.length);
-    }, 4600);
-    return () => window.clearInterval(timer);
-  }, [paused, spotlight.length]);
 
   const activeProduct = spotlight[activeSpot] ?? products[0];
 
@@ -89,7 +79,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
             </div>
           </div>
 
-          <div className="home-spot reveal in" data-d="2" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div className="home-spot reveal in" data-d="2">
             <div className="home-spot__media">
               {spotlight.map((product, index) => (
                 <Link
@@ -130,7 +120,6 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
         </div>
       </section>
 
-      <HomeMarquee />
       <TrustBand />
       <HomeDollWall products={products} />
 
@@ -165,19 +154,6 @@ function SpotlightMeta({ product }: { product: Product }) {
       </div>
       <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
     </div>
-  );
-}
-
-function HomeMarquee() {
-  const items = ["Price-match support", "Discreet shipping", "Checked before production", "Specialist support", "Factory photos before ship", "Warehouse picks"];
-  return (
-    <section className="home-marquee" aria-label="DollWow benefits">
-      <div className="home-marquee__track">
-        {[...items, ...items].map((item, index) => (
-          <span key={`${item}-${index}`}>{item}</span>
-        ))}
-      </div>
-    </section>
   );
 }
 

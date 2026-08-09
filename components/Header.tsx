@@ -97,7 +97,7 @@ export function Header() {
   const [searchResults, setSearchResults] = useState<SearchResultSuggestion[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const shouldQueryRemote = searchOpen && searchQuery.trim().length >= 2;
+  const shouldQueryRemote = (searchOpen || mobileMenuOpen) && searchQuery.trim().length >= 2;
   const activeCount = cart.count || (cartState?.totalQuantity ?? 0);
   const searchSuggestions = useMemo(() => buildSearchSuggestions(searchQuery), [searchQuery]);
 
@@ -137,11 +137,7 @@ export function Header() {
   }, [brandsOpen]);
 
   useEffect(() => {
-    if (!shouldQueryRemote) {
-      setSearchResults([]);
-      setSearchLoading(false);
-      return;
-    }
+    if (!shouldQueryRemote) return;
 
     const trimmed = searchQuery.trim();
     const controller = new AbortController();
@@ -166,7 +162,7 @@ export function Header() {
       controller.abort();
       window.clearTimeout(timeout);
     };
-  }, [searchOpen, searchQuery, shouldQueryRemote]);
+  }, [mobileMenuOpen, searchOpen, searchQuery, shouldQueryRemote]);
 
   function closeAll() {
     setMobileMenuOpen(false);
@@ -283,7 +279,14 @@ export function Header() {
       </div>
 
       {mobileMenuOpen ? (
-        <MobileMenu searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSubmit={handleSearchSubmit} onNavigate={closeAll} />
+        <MobileMenu
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchResults={searchResults}
+          searchLoading={searchLoading}
+          onSubmit={handleSearchSubmit}
+          onNavigate={closeAll}
+        />
       ) : null}
       {searchOpen ? (
         <SearchDialog
@@ -322,7 +325,14 @@ function BrandsDropdown({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-function MobileMenu({ searchQuery, setSearchQuery, onSubmit, onNavigate }: { searchQuery: string; setSearchQuery: (value: string) => void; onSubmit: (event: FormEvent<HTMLFormElement>) => void; onNavigate: () => void }) {
+function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading, onSubmit, onNavigate }: {
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  searchResults: SearchResultSuggestion[];
+  searchLoading: boolean;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onNavigate: () => void;
+}) {
   return (
     <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] z-[79] overflow-y-auto bg-bg px-5 py-5 lg:hidden">
       <div className="mx-auto max-w-2xl pb-10">
@@ -336,6 +346,35 @@ function MobileMenu({ searchQuery, setSearchQuery, onSubmit, onNavigate }: { sea
             aria-label="Search the catalog"
           />
         </form>
+
+        {searchQuery.trim().length >= 2 ? (
+          <div className="mt-2 overflow-hidden rounded-md border border-border bg-surface shadow-card" aria-live="polite">
+            {searchLoading ? (
+              <p className="px-4 py-4 text-sm text-text-dim">Looking through the catalog...</p>
+            ) : searchResults.length ? (
+              searchResults.map((result) => (
+                <Link
+                  key={result.id}
+                  href={`/products/${result.handle}`}
+                  onClick={onNavigate}
+                  className="flex min-h-16 items-center justify-between gap-3 border-b border-border px-4 py-3 last:border-b-0"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate font-semibold text-text">{result.title}</span>
+                    <span className="mt-0.5 block text-sm text-text-dim">
+                      {[result.brand, result.heightCm ? `${result.heightCm} cm` : "", result.material].filter(Boolean).join(" · ")}
+                    </span>
+                  </span>
+                  {result.price?.amount ? <strong className="shrink-0 text-sm text-text">${Math.round(Number(result.price.amount)).toLocaleString()}</strong> : null}
+                </Link>
+              ))
+            ) : (
+              <Link href={`/shop?query=${encodeURIComponent(searchQuery.trim())}`} onClick={onNavigate} className="block px-4 py-4 text-sm font-semibold text-accent">
+                See all results for “{searchQuery.trim()}”
+              </Link>
+            )}
+          </div>
+        ) : null}
 
         <nav className="mt-4 grid gap-2" aria-label="Mobile navigation">
           {mobilePrimaryLinks.map((link) => (
@@ -456,7 +495,7 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
 }
 
 function CartBadge({ count }: { count: number }) {
-  return <span className="absolute -right-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-stock px-1 text-xs font-bold leading-none text-white">{count}</span>;
+  return <span className="absolute -right-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-stock px-1 text-sm font-bold leading-none text-white">{count}</span>;
 }
 
 function cartLabel(count: number) {

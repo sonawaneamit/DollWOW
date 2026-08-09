@@ -20,7 +20,7 @@ const config: Config = {
         "stock-tint": "rgb(var(--color-stock-tint) / <alpha-value>)",
         "danger-tint": "rgb(var(--color-danger-tint) / <alpha-value>)",
         ink: {
-          950: "rgb(var(--color-text) / <alpha-value>)",
+          950: "rgb(var(--color-surface) / <alpha-value>)",
           900: "rgb(var(--color-surface) / <alpha-value>)",
           850: "rgb(var(--color-surface) / <alpha-value>)",
           800: "rgb(var(--color-surface-tint) / <alpha-value>)",

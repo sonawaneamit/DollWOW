@@ -51,7 +51,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
       <section className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
-        <p className="text-xs uppercase tracking-[0.18em] text-gold-300">PRICE MATCH REQUEST</p>
+        <p className="text-sm  text-gold-300">PRICE MATCH REQUEST</p>
         <h1 className="mt-3 text-3xl font-semibold text-ivory-50">Your review result</h1>
         <p className="mt-2 text-sm text-ivory-400">We check the live listing, the final quoted total, and any screenshot you shared.</p>
 
@@ -62,12 +62,12 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
             </div>
             <div>
               <p className="text-sm font-semibold">{statusBadge.label}</p>
-              <p className="text-xs opacity-90">{statusBadge.detail}</p>
+              <p className="text-sm opacity-90">{statusBadge.detail}</p>
             </div>
           </div>
           <div className="text-right text-sm">
             <p className="font-medium text-ivory-50">{quotedPrice ? formatMoney(quotedPrice, currency) : "No price entered"}</p>
-            <p className="text-xs opacity-90">{hasScreenshot ? "Screenshot included" : "No screenshot uploaded"}</p>
+            <p className="text-sm opacity-90">{hasScreenshot ? "Screenshot included" : "No screenshot uploaded"}</p>
           </div>
         </div>
 
@@ -81,10 +81,10 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
 
         {promoSignals.length ? (
           <div className="mt-4 rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Promos we noticed</p>
+            <p className="text-sm  text-gold-300">Promos we noticed</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {promoSignals.map((signal) => (
-                <span key={signal} className="rounded-full border border-gold-500/14 bg-ink-900/70 px-3 py-1 text-xs text-ivory-200">
+                <span key={signal} className="rounded-full border border-gold-500/14 bg-ink-900/70 px-3 py-1 text-sm text-ivory-200">
                   {signal}
                 </span>
               ))}
@@ -104,7 +104,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
 
         {request.screenshotUrl ? (
           <div className="mt-4 rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-gold-300">Your screenshot</p>
+            <p className="text-sm  text-gold-300">Your screenshot</p>
             <p className="mt-2 text-sm text-ivory-400">We use your screenshot to review the exact setup, add-ons, and final total instead of guessing from the base product page.</p>
             <a href={request.screenshotUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-sm font-medium text-gold-300 hover:text-gold-200">
               Open competitor cart screenshot
@@ -120,10 +120,10 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
         </div>
 
         <div className="mt-4 rounded-[18px] border border-gold-500/14 bg-ink-950/45 p-4">
-          <p className="text-xs uppercase tracking-[0.16em] text-gold-300">What happens next</p>
+          <p className="text-sm  text-gold-300">What happens next</p>
           <h3 className="mt-2 text-lg font-semibold text-ivory-50">{nextStepTitle}</h3>
           <p className="mt-2 text-sm text-ivory-400">{nextStepCopy}</p>
-          {request.customerEmail ? <p className="mt-2 text-xs text-ivory-500">Follow-up email: {request.customerEmail}</p> : null}
+          {request.customerEmail ? <p className="mt-2 text-sm text-ivory-500">Follow-up email: {request.customerEmail}</p> : null}
         </div>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -159,7 +159,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
 
         {(allowed && request.priceMatch.discountPercent) || request.approvedDiscountCode ? (
           <div className="mt-5 rounded-[16px] border border-stock/25 bg-stock/10 p-4">
-            <p className="text-xs uppercase tracking-[0.16em] text-stock">{request.approvedDiscountCode ? "Discount code ready" : "Approved match"}</p>
+            <p className="text-sm  text-stock">{request.approvedDiscountCode ? "Discount code ready" : "Approved match"}</p>
             <p className="mt-2 text-2xl font-semibold text-ivory-50">
               {request.approvedDiscountCode
                 ? request.approvedDiscountCode
@@ -209,7 +209,7 @@ function Row({ label, value }: { label: string; value: string }) {
 function SummaryCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-[16px] border border-gold-500/14 bg-ink-950/45 p-4">
-      <p className="text-xs uppercase tracking-[0.16em] text-gold-300">{label}</p>
+      <p className="text-sm  text-gold-300">{label}</p>
       <p className="mt-2 text-sm font-medium leading-6 text-ivory-100">{value}</p>
     </div>
   );

@@ -89,9 +89,9 @@ const readingLinks = [
 export default function WhyPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="grid gap-7 rounded-[28px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+      <div className="grid gap-7 rounded-[28px] border border-gold-500/14 bg-surface p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
         <div>
-          <p className="text-sm uppercase tracking-[0.18em] text-gold-300">Why DollWow</p>
+          <p className="text-sm  text-gold-300">Why DollWow</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">
             A more transparent way to buy.
           </h1>
@@ -103,7 +103,7 @@ export default function WhyPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/shop"
-              className="rounded-[14px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-[#1f120b] transition hover:bg-gold-200"
+              className="rounded-[14px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-200"
             >
               Browse the catalog
             </Link>
@@ -148,21 +148,21 @@ export default function WhyPage() {
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
         <section className="rounded-[24px] border border-gold-500/14 bg-ink-800/62 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Before you pay</p>
+          <p className="text-sm font-semibold  text-gold-300">Before you pay</p>
           <h2 className="mt-3 text-3xl font-semibold text-ivory-50">What you should be able to verify first.</h2>
           <div className="mt-6 space-y-3">
             {confidenceChecks.map((item) => (
-              <div key={item} className="rounded-[16px] border border-gold-500/10 bg-[#120907]/65 px-4 py-3 text-sm leading-6 text-ivory-300">
+              <div key={item} className="rounded-[16px] border border-gold-500/10 bg-surface-tint px-4 py-3 text-sm leading-6 text-ivory-300">
                 {item}
               </div>
             ))}
           </div>
         </section>
 
-        <aside className="rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Order timing</p>
+        <aside className="rounded-[24px] border border-gold-500/14 bg-surface p-6 sm:p-7">
+          <p className="text-sm font-semibold  text-gold-300">Order timing</p>
           <div className="mt-5 space-y-4">
-            <div className="rounded-[16px] border border-gold-500/10 bg-[#120907]/60 p-4">
+            <div className="rounded-[16px] border border-gold-500/10 bg-surface-tint p-4">
               <div className="flex items-center gap-3">
                 <Truck className="h-5 w-5 text-gold-300" />
                 <strong className="text-sm font-semibold text-ivory-100">Ready to ship</strong>
@@ -171,7 +171,7 @@ export default function WhyPage() {
                 Usually released from the warehouse in 2-3 business days after stock confirmation, with fewer approval steps.
               </p>
             </div>
-            <div className="rounded-[16px] border border-gold-500/10 bg-[#120907]/60 p-4">
+            <div className="rounded-[16px] border border-gold-500/10 bg-surface-tint p-4">
               <div className="flex items-center gap-3">
                 <Camera className="h-5 w-5 text-gold-300" />
                 <strong className="text-sm font-semibold text-ivory-100">Custom build</strong>
@@ -185,11 +185,11 @@ export default function WhyPage() {
       </div>
 
       <section className="mt-8 rounded-[24px] border border-gold-500/14 bg-ink-800/62 p-6 sm:p-7">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Support that matters</p>
+        <p className="text-sm font-semibold  text-gold-300">Support that matters</p>
         <h2 className="mt-3 text-3xl font-semibold text-ivory-50">When buyers usually want a second set of eyes.</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {supportMoments.map((item) => (
-            <article key={item.title} className="rounded-[18px] border border-gold-500/12 bg-[#120907]/60 p-5">
+            <article key={item.title} className="rounded-[18px] border border-gold-500/12 bg-surface-tint p-5">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-gold-500/12 bg-[#20120d] text-gold-300">
                 <MessageCircle className="h-5 w-5" />
               </div>
@@ -201,12 +201,12 @@ export default function WhyPage() {
       </section>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.9fr)]">
-        <div className="rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">What we mean by trust</p>
+        <div className="rounded-[24px] border border-gold-500/14 bg-surface p-6 sm:p-7">
+          <p className="text-sm font-semibold  text-gold-300">What we mean by trust</p>
           <h2 className="mt-3 text-3xl font-semibold text-ivory-50">Simple promises, easy to check.</h2>
           <div className="mt-5 space-y-3">
             {promisePoints.map((item) => (
-              <div key={item} className="flex gap-3 rounded-[16px] border border-gold-500/10 bg-[#120907]/60 p-4 text-sm leading-6 text-ivory-300">
+              <div key={item} className="flex gap-3 rounded-[16px] border border-gold-500/10 bg-surface-tint p-4 text-sm leading-6 text-ivory-300">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
                 <span>{item}</span>
               </div>
@@ -215,10 +215,10 @@ export default function WhyPage() {
         </div>
 
         <div className="rounded-[24px] border border-gold-500/14 bg-ink-800/62 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">What we avoid</p>
+          <p className="text-sm font-semibold  text-gold-300">What we avoid</p>
           <div className="mt-5 space-y-4">
             {trustRules.map((item) => (
-              <article key={item.title} className="rounded-[16px] border border-gold-500/10 bg-[#120907]/58 p-4">
+              <article key={item.title} className="rounded-[16px] border border-gold-500/10 bg-surface-tint p-4">
                 <h3 className="text-base font-semibold text-ivory-100">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-ivory-400">{item.copy}</p>
               </article>
@@ -227,10 +227,10 @@ export default function WhyPage() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[24px] border border-gold-500/14 bg-[linear-gradient(180deg,#1a110d,#100907)] p-6 sm:p-7">
+      <section className="mt-8 rounded-[24px] border border-gold-500/14 bg-surface p-6 sm:p-7">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">Read the rules yourself</p>
+            <p className="text-sm font-semibold  text-gold-300">Read the rules yourself</p>
             <h2 className="mt-3 text-3xl font-semibold text-ivory-50">The important pages should never be hard to find.</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-400">
             If a store wants trust, the policy and process pages should be visible before checkout, not after a problem starts.
@@ -238,7 +238,7 @@ export default function WhyPage() {
           </div>
           <Link
             href="/how-ordering-works"
-            className="inline-flex w-fit items-center gap-2 rounded-[14px] border border-gold-500/18 bg-[#120907]/65 px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
+            className="inline-flex w-fit items-center gap-2 rounded-[14px] border border-gold-500/18 bg-surface-tint px-4 py-2.5 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
           >
             See how ordering works
           </Link>
@@ -248,7 +248,7 @@ export default function WhyPage() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-[16px] border border-gold-500/12 bg-[#120907]/58 px-4 py-3 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
+              className="rounded-[16px] border border-gold-500/12 bg-surface-tint px-4 py-3 text-sm font-semibold text-ivory-200 transition hover:border-gold-300/45 hover:text-ivory-50"
             >
               {link.label}
             </Link>

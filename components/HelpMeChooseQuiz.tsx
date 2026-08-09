@@ -106,12 +106,12 @@ export function HelpMeChooseQuiz({ initialAnswers }: { initialAnswers?: QuizAnsw
                 <span
                   className={`block min-h-[86px] border px-4 py-3 text-sm transition ${
                     answers[question.key] === option.value
-                      ? "border-gold-300 bg-gold-400 text-ink-950 shadow-[0_0_32px_rgba(224,170,112,0.16)]"
+                      ? "border-gold-300 bg-gold-300 text-white shadow-[0_0_32px_rgba(224,170,112,0.16)]"
                       : "border-gold-500/14 bg-ink-950/45 text-ivory-300 hover:border-gold-300/40"
                   }`}
                 >
                   <strong className="block text-base">{option.label}</strong>
-                  {option.hint ? <span className="mt-1 block text-xs opacity-75">{option.hint}</span> : null}
+                  {option.hint ? <span className="mt-1 block text-sm opacity-75">{option.hint}</span> : null}
                 </span>
               </label>
             ))}

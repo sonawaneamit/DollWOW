@@ -1,7 +1,7 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type StorefrontTheme = "light" | "dark";
 
@@ -10,19 +10,20 @@ function activeDocumentTheme(): StorefrontTheme {
   return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
-export function ThemeToggle({ compact = false }: { compact?: boolean }) {
-  const [theme, setTheme] = useState<StorefrontTheme>("light");
+function subscribeToThemeChange(onChange: () => void) {
+  window.addEventListener("dollwow-theme-change", onChange);
+  return () => window.removeEventListener("dollwow-theme-change", onChange);
+}
 
-  useEffect(() => {
-    setTheme(activeDocumentTheme());
-  }, []);
+export function ThemeToggle({ compact = false }: { compact?: boolean }) {
+  const theme = useSyncExternalStore(subscribeToThemeChange, activeDocumentTheme, () => "light");
 
   function toggleTheme() {
     const nextTheme: StorefrontTheme = activeDocumentTheme() === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
     document.documentElement.style.colorScheme = nextTheme;
     window.localStorage.setItem("dollwow-theme", nextTheme);
-    setTheme(nextTheme);
+    window.dispatchEvent(new Event("dollwow-theme-change"));
   }
 
   const isDark = theme === "dark";

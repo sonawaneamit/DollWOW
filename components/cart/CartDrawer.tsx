@@ -29,11 +29,11 @@ export function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-[96]" role="dialog" aria-label="Shopping bag">
-      <button type="button" aria-label="Close bag" className="absolute inset-0 bg-black/62 backdrop-blur-sm" onClick={cart.closeDrawer} />
-      <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-gold-500/20 bg-[linear-gradient(180deg,#160d0a,#0c0605)] shadow-soft">
+      <button type="button" aria-label="Close bag" className="absolute inset-0 bg-black/62" onClick={cart.closeDrawer} />
+      <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-gold-500/20 bg-surface shadow-soft">
         <div className="flex items-center justify-between border-b border-gold-500/16 px-5 py-4">
           <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gold-300">Your bag</p>
+            <p className="text-sm font-semibold  text-gold-300">Your bag</p>
             <p className="mt-1 text-sm text-ivory-400">
               {cart.count ? `${cart.count} item${cart.count === 1 ? "" : "s"}` : "Nothing here yet"}
             </p>
@@ -66,11 +66,11 @@ export function CartDrawer() {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          {item.brand ? <p className="text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-gold-300">{item.brand}</p> : null}
+                          {item.brand ? <p className="text-sm font-semibold  text-gold-300">{item.brand}</p> : null}
                           <Link href={`/products/${item.productHandle}`} onClick={cart.closeDrawer} className="mt-0.5 block truncate text-sm font-semibold text-ivory-100 hover:text-gold-200">
                             {item.productDisplayName || item.productTitle}
                           </Link>
-                          <p className="mt-0.5 text-xs text-ivory-500">{item.readyToShip ? "Ready to ship" : "Reviewed before production"}</p>
+                          <p className="mt-0.5 text-sm text-ivory-500">{item.readyToShip ? "Ready to ship" : "Reviewed before production"}</p>
                         </div>
                         <button
                           type="button"
@@ -112,11 +112,11 @@ export function CartDrawer() {
             <div className="rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.03] p-6 text-center">
               <ShoppingBag className="mx-auto h-8 w-8 text-gold-300" />
               <p className="mt-3 text-sm font-semibold text-ivory-100">Your bag is empty</p>
-              <p className="mt-1 text-xs leading-5 text-ivory-400">Add a doll or an accessory and it will wait for you here.</p>
+              <p className="mt-1 text-sm leading-5 text-ivory-400">Add a doll or an accessory and it will wait for you here.</p>
               <Link
                 href="/shop"
                 onClick={cart.closeDrawer}
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink-950"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold  text-white"
               >
                 Browse the catalog <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -125,7 +125,7 @@ export function CartDrawer() {
 
           {cart.upsells.length ? (
             <div className="mt-6">
-              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-gold-300">Complete your order</p>
+              <p className="text-sm font-semibold  text-gold-300">Complete your order</p>
               <div className="mt-3 grid gap-2">
                 {cart.upsells.slice(0, 4).map((upsell) => (
                   <div key={upsell.merchandiseId} className="flex items-center gap-3 rounded-[14px] border border-gold-500/12 bg-ivory-50/[0.028] p-2.5">
@@ -135,8 +135,8 @@ export function CartDrawer() {
                       ) : null}
                     </Link>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-xs font-semibold text-ivory-100">{upsell.productTitle}</p>
-                      <p className="mt-0.5 text-xs text-gold-200">{formatMoney(upsell.unitPrice, upsell.currencyCode)}</p>
+                      <p className="truncate text-sm font-semibold text-ivory-100">{upsell.productTitle}</p>
+                      <p className="mt-0.5 text-sm text-gold-200">{formatMoney(upsell.unitPrice, upsell.currencyCode)}</p>
                     </div>
                     <button
                       type="button"
@@ -154,7 +154,7 @@ export function CartDrawer() {
                         });
                         trackEvent(analyticsEvents.addUpsell, { item_name: upsell.productTitle });
                       }}
-                      className="shrink-0 rounded-full border border-gold-500/24 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-gold-200 transition hover:border-gold-300/60 hover:text-gold-100"
+                      className="shrink-0 rounded-full border border-gold-500/24 px-3 py-1.5 text-sm font-semibold  text-gold-200 transition hover:border-gold-300/60 hover:text-gold-100"
                     >
                       Add
                     </button>
@@ -171,18 +171,18 @@ export function CartDrawer() {
               <span className="text-ivory-400">Subtotal</span>
               <strong className="text-lg text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
             </div>
-            <p className="mt-1 text-[0.7rem] leading-4 text-ivory-500">Shipping and any custom options are confirmed at checkout.</p>
-            {cart.checkoutError ? <p className="mt-2 text-xs text-danger">{cart.checkoutError}</p> : null}
+            <p className="mt-1 text-sm leading-4 text-ivory-500">Shipping and any custom options are confirmed at checkout.</p>
+            {cart.checkoutError ? <p className="mt-2 text-sm text-danger">{cart.checkoutError}</p> : null}
             <button
               type="button"
               onClick={cart.checkout}
               disabled={cart.checkoutPending}
-              className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3 text-sm font-semibold text-ink-950 shadow-glow transition hover:-translate-y-0.5 disabled:opacity-60"
+              className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-glow transition disabled:opacity-60"
             >
               {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
               Secure checkout
             </button>
-            <div className="mt-3 flex items-center justify-between text-[0.7rem] text-ivory-500">
+            <div className="mt-3 flex items-center justify-between text-sm text-ivory-500">
               <Link href="/cart" onClick={cart.closeDrawer} className="font-semibold text-ivory-300 underline-offset-2 hover:underline">
                 View full cart
               </Link>

@@ -74,10 +74,10 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           <ProductGallery product={product} />
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm uppercase tracking-[0.18em] text-gold-300">{product.extended.brand ?? product.vendor}</p>
+              <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
             </div>
-            {displayNameUi ? <p className="mt-3 text-base font-medium uppercase tracking-[0.16em] text-gold-200/90">{displayNameUi}</p> : null}
+            {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">{displayNameUi ? pdpTitle : displayTitle}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300">{formatMoney(price.amount, price.currencyCode)}</strong>
@@ -183,7 +183,7 @@ function ProductSearchFitCard({ title, summary, chips }: { title: string; summar
   return (
     <section className="pdp-search-fit tone-card mt-5" aria-label={title}>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{title}</p>
+        <p className="text-sm font-semibold  text-gold-300">{title}</p>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-300">{summary}</p>
       </div>
       <div className="pdp-search-fit-chips">
@@ -256,7 +256,7 @@ function ToneBand({
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div className="tone-card rounded-[14px] p-4">
-      <p className="text-xs uppercase tracking-[0.14em] text-ivory-600">{label}</p>
+      <p className="text-sm  text-ivory-600">{label}</p>
       <p className="mt-1 font-semibold text-ivory-100">{value}</p>
     </div>
   );
@@ -364,7 +364,7 @@ function ProductSpecSummary({
 
           {relatedPaths.length ? (
             <section className="tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold-300">Related buying paths</p>
+              <p className="text-sm font-semibold  text-gold-300">Related buying paths</p>
               <h3 id="product-related-paths-heading" className="mt-2 text-lg font-semibold text-ivory-50">
                 Compare this doll in context
               </h3>
@@ -376,7 +376,7 @@ function ProductSpecSummary({
                     className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.045] p-3 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/50 hover:bg-ivory-50/[0.07]"
                   >
                     {path.label}
-                    <span className="mt-1 block text-xs font-normal leading-5 text-ivory-500">{path.description}</span>
+                    <span className="mt-1 block text-sm font-normal leading-5 text-ivory-500">{path.description}</span>
                   </Link>
                 ))}
               </div>

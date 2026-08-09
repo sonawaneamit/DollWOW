@@ -41,14 +41,14 @@ export function SavedPageClient() {
                     </span>
                   )}
                   {entry.readyToShip ? (
-                    <span className="absolute left-2.5 top-2.5 rounded-full border border-emerald-300/30 bg-emerald-900/85 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-emerald-100">
+                    <span className="absolute left-2.5 top-2.5 rounded-full border border-emerald-300/30 bg-emerald-900/85 px-2 py-0.5 text-sm font-bold  text-emerald-100">
                       Ready to ship
                     </span>
                   ) : null}
                 </div>
                 <div className="p-3">
                   {entry.brand ? (
-                    <p className="text-[0.64rem] font-bold uppercase tracking-[0.14em] text-gold-300">{entry.brand}</p>
+                    <p className="text-sm font-bold  text-gold-300">{entry.brand}</p>
                   ) : null}
                   <h2 className="mt-0.5 line-clamp-2 text-sm font-semibold leading-5 text-ivory-100">{entry.productTitle}</h2>
                   <p className="mt-1.5 text-sm font-semibold text-gold-200">{formatMoney(entry.unitPrice, entry.currencyCode)}</p>
@@ -58,7 +58,7 @@ export function SavedPageClient() {
                 type="button"
                 onClick={() => removeFromWishlist(entry.productHandle)}
                 aria-label={`Remove ${entry.productTitle} from saved dolls`}
-                className="absolute right-2.5 top-2.5 grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-black/55 text-ivory-200 backdrop-blur transition hover:border-danger/60 hover:text-danger"
+                className="absolute right-2.5 top-2.5 grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-black/55 text-ivory-200 transition hover:border-danger/60 hover:text-danger"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -75,7 +75,7 @@ export function SavedPageClient() {
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition"
             >
               Browse the catalog <ArrowRight className="h-4 w-4" />
             </Link>
