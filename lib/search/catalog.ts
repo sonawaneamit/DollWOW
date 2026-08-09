@@ -1,5 +1,5 @@
 import type { Product } from "@/types/product";
-import { getCatalogBrand } from "@/lib/catalog/brands";
+import { brandFromText, getCatalogBrand } from "@/lib/catalog/brands";
 
 export type ParsedCatalogSearch = {
   normalizedQuery: string;
@@ -56,6 +56,20 @@ export function productSearchScore(product: Product, query: string | ParsedCatal
   );
   const expandedTermSet = new Set(parsed.expandedTerms);
 
+  // Queries made entirely from broad catalog words (for example "doll" or
+  // "sex dolls") should show the catalog instead of an empty result set.
+  if (
+    parsed.expandedTerms.length === 0 &&
+    !parsed.brand &&
+    !parsed.bodyType &&
+    !parsed.material &&
+    !parsed.availability &&
+    !parsed.heightCm &&
+    !parsed.cupSize
+  ) {
+    return 1;
+  }
+
   for (const term of parsed.expandedTerms) {
     const isExpandedOnly = !parsed.terms.includes(term);
 
@@ -65,6 +79,7 @@ export function productSearchScore(product: Product, query: string | ParsedCatal
     else if (customizationText.includes(term)) score += isExpandedOnly ? 2 : 3;
     else if (sourceText.includes(term)) score += isExpandedOnly ? 1 : 2;
     else if (text.includes(term)) score += 1;
+    else if (!isExpandedOnly && term.length >= 4 && containsNearToken(text, term)) score += 2;
   }
 
   if (expandedTermSet.has("hair") && productHasCustomizationIntent(product, ["hair", "wig", "hairstyle"])) {
@@ -194,6 +209,9 @@ function productMatchesBodyTypeValue(product: Product, bodyType: "male" | "femal
 }
 
 function parseBrand(normalizedQuery: string, terms: string[]) {
+  const phraseBrand = brandFromText(normalizedQuery);
+  if (phraseBrand) return phraseBrand.value;
+
   for (const term of terms) {
     const brand = getCatalogBrand(term);
     if (brand) return brand.value;
@@ -204,6 +222,53 @@ function parseBrand(normalizedQuery: string, terms: string[]) {
   }
 
   return undefined;
+}
+
+function containsNearToken(text: string, target: string) {
+  return text.split(" ").some((token) => {
+    if (Math.abs(token.length - target.length) > 1) return false;
+    if (token.length === target.length && isAdjacentTransposition(token, target)) return true;
+    return editDistanceAtMostOne(token, target);
+  });
+}
+
+function isAdjacentTransposition(value: string, target: string) {
+  if (value === target) return true;
+  const differences: number[] = [];
+  for (let index = 0; index < value.length; index += 1) {
+    if (value[index] !== target[index]) differences.push(index);
+    if (differences.length > 2) return false;
+  }
+  if (differences.length !== 2 || differences[1] !== differences[0] + 1) return false;
+  const [first, second] = differences;
+  return value[first] === target[second] && value[second] === target[first];
+}
+
+function editDistanceAtMostOne(value: string, target: string) {
+  if (value === target) return true;
+  if (Math.abs(value.length - target.length) > 1) return false;
+
+  let valueIndex = 0;
+  let targetIndex = 0;
+  let edits = 0;
+  while (valueIndex < value.length && targetIndex < target.length) {
+    if (value[valueIndex] === target[targetIndex]) {
+      valueIndex += 1;
+      targetIndex += 1;
+      continue;
+    }
+    edits += 1;
+    if (edits > 1) return false;
+    if (value.length > target.length) valueIndex += 1;
+    else if (target.length > value.length) targetIndex += 1;
+    else {
+      valueIndex += 1;
+      targetIndex += 1;
+    }
+  }
+
+  if (valueIndex < value.length || targetIndex < target.length) edits += 1;
+  return edits <= 1;
 }
 
 function parseMaterial(normalizedQuery: string) {

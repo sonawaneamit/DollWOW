@@ -29,6 +29,32 @@ describe("catalog search", () => {
     expect(ranked[0].score).toBeGreaterThanOrEqual(ranked[ranked.length - 1].score);
   });
 
+  it("returns the catalog for broad stop-word-only queries", () => {
+    expect(rankCatalogProducts(sampleProducts, "doll", 3)).toHaveLength(Math.min(3, sampleProducts.length));
+    expect(rankCatalogProducts(sampleProducts, "sex dolls", 3)).toHaveLength(Math.min(3, sampleProducts.length));
+  });
+
+  it("matches a height typed without the cm suffix", () => {
+    const product = {
+      ...sampleProducts[0],
+      title: "Irontech 161cm F-cup Evie",
+      extended: { ...sampleProducts[0].extended, heightCm: 161 }
+    };
+    expect(productSearchScore(product, "161")).toBeGreaterThan(0);
+  });
+
+  it("tolerates the supplier's Evie and Eive transposed spelling", () => {
+    const product = {
+      ...sampleProducts[0],
+      title: "Irontech 161cm T4 Eive ROS MAX Glow",
+      description: "",
+      images: [],
+      tags: [],
+      extended: { ...sampleProducts[0].extended, displayName: "", sourceTitle: "" }
+    };
+    expect(productSearchScore(product, "Evie")).toBeGreaterThan(0);
+  });
+
   it("matches customization option labels such as hair color", () => {
     const product = {
       ...sampleProducts[0],

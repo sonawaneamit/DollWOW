@@ -32,7 +32,11 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const products = await getProducts({ first: 2200, includeCustomizationGroups: Boolean(query) });
+  // Search needs the complete catalog promptly. Pulling every product's full
+  // configurator JSON made ordinary model-name and height searches slow enough
+  // to fail in a serverless request. Core product fields already contain the
+  // title, source title, specs, tags, and image alt text used below.
+  const products = await getProducts({ first: 2200, includeCustomizationGroups: false });
   const ranked = rankCatalogProducts(products, query, limit);
   const parsed = parseCatalogSearchQuery(query);
 

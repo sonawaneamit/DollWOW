@@ -56,7 +56,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const measurementId = process.env.GA_MEASUREMENT_ID;
 
   return (
-    <html lang="en" data-theme="boudoir" data-scroll-behavior="smooth">
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script
+          id="dollwow-theme-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'||saved==='light'?saved:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
+          }}
+        />
+      </head>
       <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
         {siteStructuredData.map((entry) => (
           <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
