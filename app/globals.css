@@ -1464,13 +1464,45 @@ a {
 
 .pdp-spec-summary-grid {
   display: grid;
-  grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 0.58fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1rem, 3vw, 1.5rem);
   padding-top: 1.15rem;
 }
 
+.pdp-spec-dashboard {
+  display: contents;
+}
+
+.pdp-spec-dashboard > .pdp-fit-checks {
+  grid-column: 1;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.pdp-spec-dashboard > .pdp-fit-checks > .pdp-fit-check {
+  grid-column: span 2;
+}
+
+.pdp-spec-dashboard > .pdp-fit-checks:has(> :nth-child(5):last-child) > :nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
+.pdp-spec-dashboard > .pdp-measurement-groups,
+.pdp-spec-dashboard > .pdp-related-paths {
+  grid-column: 1 / -1;
+}
+
+.pdp-spec-dashboard > .pdp-measurement-groups {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.pdp-related-paths > div {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .pdp-detail-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   align-content: start;
   border-top: 1px solid var(--hairline-2);
 }
@@ -2048,6 +2080,29 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .pdp-spec-dashboard > .pdp-fit-checks,
+  .pdp-spec-dashboard > .pdp-measurement-groups,
+  .pdp-spec-dashboard > .pdp-related-paths {
+    grid-column: 1;
+  }
+
+  .pdp-spec-dashboard > .pdp-fit-checks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pdp-spec-dashboard > .pdp-fit-checks > .pdp-fit-check {
+    grid-column: auto;
+  }
+
+  .pdp-spec-dashboard > .pdp-fit-checks:has(> :nth-child(5):last-child) > :nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+
+  .pdp-spec-dashboard > .pdp-measurement-groups,
+  .pdp-related-paths > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .alive-guide-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2059,6 +2114,14 @@ a {
 
   .alive-spec-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .pdp-spec-dashboard > .pdp-fit-checks,
+  .pdp-spec-dashboard > .pdp-measurement-groups,
+  .pdp-related-paths > div {
+    grid-template-columns: 1fr;
   }
 }
 

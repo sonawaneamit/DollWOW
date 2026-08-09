@@ -314,7 +314,7 @@ function ProductSpecSummary({
           ))}
         </div>
 
-        <div className="space-y-5">
+        <div className="pdp-spec-dashboard">
           <div className="pdp-fit-checks">
             {fitChecks.map((check, index) => {
               const visual = fitCheckVisual(index);
@@ -363,7 +363,7 @@ function ProductSpecSummary({
           )}
 
           {relatedPaths.length ? (
-            <section className="tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
+            <section className="pdp-related-paths tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
               <p className="text-sm font-semibold  text-gold-300">Related buying paths</p>
               <h3 id="product-related-paths-heading" className="mt-2 text-lg font-semibold text-ivory-50">
                 Compare this doll in context
