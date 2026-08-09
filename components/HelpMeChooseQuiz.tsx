@@ -18,6 +18,12 @@ const questions: Array<{
     { value: "male", label: "Male dolls", hint: "Show male-body options first" },
     { value: "any", label: "Open to either", hint: "Keep the search broad" }
   ] },
+  { key: "productForm", label: "What kind of product do you want?", helper: "Full dolls, torsos, and hips are different products, so this choice stays strict.", options: [
+    { value: "full", label: "Full doll", hint: "Complete body — recommended for first-time buyers" },
+    { value: "torso", label: "Torso", hint: "Torso-only product" },
+    { value: "hips", label: "Hips", hint: "Waist-and-hips product" },
+    { value: "any", label: "Open to any", hint: "Show all product forms" }
+  ] },
   { key: "budget", label: "Budget", helper: "Use the range you would actually be comfortable checking out with.", options: [
     { value: "under-1500", label: "Under $1,500", hint: "Value-focused" },
     { value: "1500-2500", label: "$1,500 to $2,500", hint: "Most common range" },

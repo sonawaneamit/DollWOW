@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PrivacySettingsButton } from "@/components/PrivacySettingsButton";
 
 const footerGroups = [
   {
@@ -80,6 +81,7 @@ export function Footer() {
                     {label}
                   </Link>
                 ))}
+                {group.title === "Policies" ? <PrivacySettingsButton /> : null}
               </div>
             </div>
           ))}

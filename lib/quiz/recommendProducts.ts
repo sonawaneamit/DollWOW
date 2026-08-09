@@ -8,28 +8,65 @@ function budgetMax(budget: QuizAnswers["budget"]) {
   return Number.POSITIVE_INFINITY;
 }
 
+function budgetMin(budget: QuizAnswers["budget"]) {
+  if (budget === "under-1500") return 0;
+  if (budget === "1500-2500") return 1500;
+  if (budget === "2500-4000") return 2500;
+  return 4000;
+}
+
+function productForm(product: Product): QuizAnswers["productForm"] {
+  const haystack = `${product.productType} ${product.tags.join(" ")} ${product.title}`.toLowerCase();
+  if (/\bhips?\b|buttock/.test(haystack)) return "hips";
+  if (/\btorsos?\b|torsr/.test(haystack)) return "torso";
+  return "full";
+}
+
+function recommendationIdentity(product: Product) {
+  const price = Number(product.priceRange.minVariantPrice.amount).toFixed(2);
+  return `${product.title.trim().toLowerCase()}|${product.extended.material?.toLowerCase() ?? ""}|${product.extended.heightCm ?? ""}|${price}`;
+}
+
 export function recommendProducts(products: Product[], answers: QuizAnswers): QuizRecommendation[] {
+  const min = budgetMin(answers.budget);
   const max = budgetMax(answers.budget);
 
-  const scored = products.map((product) => {
+  const eligible = products.filter((product) => {
+    const price = Number(product.priceRange.minVariantPrice.amount);
+    if (!Number.isFinite(price) || price < min || price > max) return false;
+    if (answers.companionType === "male" && product.extended.bodyType !== "male") return false;
+    if (answers.companionType === "female" && product.extended.bodyType === "male") return false;
+    if (answers.productForm !== "any" && productForm(product) !== answers.productForm) return false;
+    if (answers.material !== "either" && !product.extended.material?.toLowerCase().includes(answers.material)) return false;
+    if (answers.delivery === "fast" && product.extended.stockStatus !== "ready_to_ship") return false;
+    if (answers.customNeeds === "ready" && product.extended.stockStatus !== "ready_to_ship") return false;
+    return true;
+  });
+
+  const seen = new Set<string>();
+  const uniqueEligible = eligible.filter((product) => {
+    const identity = recommendationIdentity(product);
+    if (seen.has(identity)) return false;
+    seen.add(identity);
+    return true;
+  });
+
+  const scored = uniqueEligible.map((product) => {
     let score = 0;
     const reasons: string[] = [];
     const price = Number(product.priceRange.minVariantPrice.amount);
     const tags = product.tags.map((tag) => tag.toLowerCase());
 
-    if (answers.companionType !== "any" && product.extended.bodyType === answers.companionType) {
+    if (answers.companionType !== "any") {
       score += 5;
       reasons.push(answers.companionType === "male" ? "male doll preference" : "female doll preference");
     } else if (answers.companionType === "any") {
       score += 1;
     }
 
-    if (price <= max) {
+    if (price >= min && price <= max) {
       score += 3;
       reasons.push("fits your budget range");
-    } else if (Number.isFinite(max) && price <= max + 350) {
-      score += 1;
-      reasons.push("slightly above budget, but close enough to review");
     }
 
     if (answers.delivery === "fast" && product.extended.stockStatus === "ready_to_ship") {

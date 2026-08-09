@@ -1,5 +1,6 @@
 export type QuizAnswers = {
   companionType: "female" | "male" | "any";
+  productForm: "full" | "torso" | "hips" | "any";
   budget: "under-1500" | "1500-2500" | "2500-4000" | "4000-plus";
   delivery: "fast" | "balanced" | "custom";
   material: "tpe" | "silicone" | "either";

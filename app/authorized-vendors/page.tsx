@@ -15,7 +15,7 @@ export default function AuthorizedVendorsPage() {
   const writtenConfirmations = brandAuthorizations.filter((entry) => entry.status === "written-confirmation");
 
   return (
-    <main className="shop-visual-shell min-h-screen">
+    <div className="shop-visual-shell min-h-screen">
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold  text-gold-300">Authorized vendors</p>
@@ -86,6 +86,6 @@ export default function AuthorizedVendorsPage() {
           </div>
         </section>
       </section>
-    </main>
+    </div>
   );
 }

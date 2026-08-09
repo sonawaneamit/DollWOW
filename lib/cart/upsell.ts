@@ -17,8 +17,8 @@ const ACCESSORY_MAX_PRICE = 800;
 
 /**
  * Ranks catalog products as cart/drawer upsells. Accessories and care items
- * rank first (natural AOV builders), then ready-to-ship dolls for shoppers
- * still comparing. Anything already in the bag is excluded by the caller.
+ * are the only items shown at checkout. Alternative dolls belong in discovery
+ * and comparison, not in a high-consideration cart.
  */
 export function rankUpsells(products: Product[], limit = 8): Product[] {
   return products
@@ -32,10 +32,10 @@ export function rankUpsells(products: Product[], limit = 8): Product[] {
 export function upsellScore(product: Product): number {
   const text = `${product.productType} ${product.tags.join(" ")} ${product.title}`;
   const price = upsellPrice(product);
+  if (!ACCESSORY_PATTERN.test(text) || price <= 0 || price > ACCESSORY_MAX_PRICE) return 0;
   let score = 0;
 
-  if (ACCESSORY_PATTERN.test(text)) score += 3;
-  if (price > 0 && price <= ACCESSORY_MAX_PRICE) score += ACCESSORY_PATTERN.test(text) ? 1 : 0;
+  score += 4;
   if (product.extended.stockStatus === "ready_to_ship") score += 2;
   if (product.variants.some((variant) => variant.availableForSale)) score += 1;
 

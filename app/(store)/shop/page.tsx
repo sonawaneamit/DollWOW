@@ -1,6 +1,8 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
+import { CatalogPagination } from "@/components/CatalogPagination";
 import { activeFilterCount, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
+import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import { getProducts } from "@/lib/shopify/storefront";
 
 export const metadata = { title: "Shop Dolls" };
@@ -15,7 +17,8 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
     includeCustomizationGroups: false
   });
   const filteredProducts = filterProducts(products, filters);
-  const visibleProducts = needsWideFetch ? filteredProducts.slice(0, 96) : filteredProducts;
+  const catalogPage = paginateCatalog(filteredProducts, catalogPageFromValue(params.page));
+  const visibleProducts = catalogPage.items;
   const activeFilterLabels = Object.entries(filters)
     .filter(([, value]) => Boolean(value))
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -34,8 +37,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
             {filters.query ? ` Search: “${filters.query}”.` : ""}
           </p>
           <p className="mt-4 text-sm font-semibold text-gold-200">
-            {filteredProducts.length} dolls in this view
-            {visibleProducts.length < filteredProducts.length ? ` · showing first ${visibleProducts.length}` : ""}
+            {filteredProducts.length} dolls in this view · showing {catalogPage.startItem}–{catalogPage.endItem}
           </p>
         </div>
       </div>
@@ -52,12 +54,8 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
               ))}
             </div>
           ) : null}
-          {visibleProducts.length < filteredProducts.length ? (
-            <div className="shop-broad-note">
-              Showing the first {visibleProducts.length} matches. Add a brand, height, body type, or price filter to narrow the list.
-            </div>
-          ) : null}
           <ProductGrid products={visibleProducts} filters={filters} resetHref="/shop" />
+          <CatalogPagination {...catalogPage} basePath="/shop" searchParams={params} />
         </div>
       </div>
     </section>

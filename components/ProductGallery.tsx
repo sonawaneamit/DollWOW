@@ -27,10 +27,11 @@ export function ProductGallery({ product }: { product: Product }) {
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
               src={active.image.url}
-              alt={displayTitle}
+              alt={`${displayTitle} — image ${index + 1} of ${media.length}`}
               fill
               sizes="(min-width: 1024px) 44vw, 94vw"
               priority
+              loading="eager"
               className="object-cover noir-media"
             />
           </button>
@@ -52,7 +53,7 @@ export function ProductGallery({ product }: { product: Product }) {
               type="button"
               aria-label="Previous image"
               onClick={() => move(-1)}
-              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
+              className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -60,7 +61,7 @@ export function ProductGallery({ product }: { product: Product }) {
               type="button"
               aria-label="Next image"
               onClick={() => move(1)}
-              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
+              className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/25 bg-ink-950/72 text-ivory-50 shadow-soft transition hover:border-gold-300"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -88,7 +89,7 @@ export function ProductGallery({ product }: { product: Product }) {
               )}
             >
               {item.type === "image" ? (
-                <Image src={item.image.url} alt={displayTitle} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
+                <Image src={item.image.url} alt={`${displayTitle} — image ${imageIndex + 1} of ${media.length}`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
               ) : item.previewImage ? (
                 <Image src={item.previewImage.url} alt={`${displayTitle} video`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
               ) : (

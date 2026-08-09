@@ -66,13 +66,13 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const faqStructuredData = buildProductFaqStructuredData(product);
 
   return (
-    <main className="pb-28 lg:pb-0">
+    <div className="pb-28 lg:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <ProductGallery product={product} />
-          <div className="flex flex-col justify-center">
+          <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
@@ -91,9 +91,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               Found it cheaper? We&apos;ll check the price
             </Link>
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
-            <ProductSearchFitCard title={searchFit.title} summary={searchFit.summary} chips={searchFit.chips.map((chip) => chip.label)} />
-            <ProductDecisionNotes notes={decisionNotes} />
-            <ProductTrustSignalGrid signals={trustSignals} />
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-ivory-300">
               {heroSpecs.map((spec) => (
                 <Spec key={spec.label} label={spec.label} value={spec.value} />
@@ -118,6 +115,15 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
               />
             )}
+            <nav aria-label="Product page sections" className="pdp-quick-nav">
+              <a href="#overview">Overview</a>
+              <a href="#build-studio">Options</a>
+              <a href="#product-specs">Specs</a>
+              <a href="#authorization">Authorization</a>
+            </nav>
+            <ProductSearchFitCard title={searchFit.title} summary={searchFit.summary} chips={searchFit.chips.map((chip) => chip.label)} />
+            <ProductDecisionNotes notes={decisionNotes} />
+            <ProductTrustSignalGrid signals={trustSignals} />
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
               <WishlistButton
                 entry={{
@@ -158,12 +164,14 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       <ToneBand tone="deep" className="pdp-details-band">
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
-        <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
+        <div id="authorization" className="scroll-mt-24">
+          <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
+        </div>
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />
       <PdpTrackers product={product} />
-    </main>
+    </div>
   );
 }
 
@@ -184,7 +192,7 @@ function mergeAdminMetafields(
 
 function ProductSearchFitCard({ title, summary, chips }: { title: string; summary: string; chips: string[] }) {
   return (
-    <section className="pdp-search-fit tone-card mt-5" aria-label={title}>
+    <section className="pdp-search-fit pdp-mobile-secondary tone-card mt-5 hidden lg:grid" aria-label={title}>
       <div>
         <p className="text-sm font-semibold  text-gold-300">{title}</p>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-300">{summary}</p>
@@ -200,7 +208,7 @@ function ProductSearchFitCard({ title, summary, chips }: { title: string; summar
 
 function ProductDecisionNotes({ notes }: { notes: Array<{ title: string; body: string }> }) {
   return (
-    <section className="pdp-decision-notes" aria-label="Quick buying notes">
+    <section className="pdp-decision-notes pdp-mobile-secondary hidden lg:grid" aria-label="Quick buying notes">
       {notes.map((note, index) => {
         const visual = decisionNoteVisual(index);
         return (
@@ -219,7 +227,7 @@ function ProductDecisionNotes({ notes }: { notes: Array<{ title: string; body: s
 
 function ProductTrustSignalGrid({ signals }: { signals: Array<{ title: string; body: string; href: string; label: string }> }) {
   return (
-    <section className="pdp-trust-grid" aria-label="Order reassurance">
+    <section className="pdp-trust-grid pdp-mobile-secondary hidden lg:grid" aria-label="Order reassurance">
       {signals.map((signal, index) => {
         const visual = trustSignalVisual(index);
         return (
@@ -295,7 +303,7 @@ function ProductSpecSummary({
   const relatedPaths = productRelatedPaths(product);
 
   return (
-    <section className="pdp-spec-summary" aria-labelledby="product-specs-heading">
+    <section id="product-specs" className="pdp-spec-summary scroll-mt-24" aria-labelledby="product-specs-heading">
       <div className="pdp-spec-summary-head">
         <div>
           <p className="alive-eyebrow">

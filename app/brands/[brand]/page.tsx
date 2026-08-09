@@ -2,11 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
 import { BrandProductGrid } from "@/components/BrandProductGrid";
+import { CatalogPagination } from "@/components/CatalogPagination";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
+import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -22,8 +24,15 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   return buildBrandMetadata(brand);
 }
 
-export default async function BrandHubPage({ params }: { params: Promise<{ brand: string }> }) {
+export default async function BrandHubPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ brand: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { brand: handle } = await params;
+  const rawSearchParams = await searchParams;
   const brand = getCatalogBrand(handle);
   if (!brand) notFound();
 
@@ -36,6 +45,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
   });
   const filtered = filterProducts(products, filters);
   const orderedProducts = orderBySourceRelease(filtered);
+  const catalogPage = paginateCatalog(orderedProducts, catalogPageFromValue(rawSearchParams.page));
   const hasReleaseOrder = orderedProducts.some((product) => product.extended.sourceReleaseRank !== undefined);
   const profile = brandSeoProfile(brand);
   const relatedLinks = brandRelatedLinks(brand);
@@ -52,7 +62,7 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
           <p className="text-sm  text-gold-300">Brand hub</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
-          <p className="mt-3 text-sm font-semibold text-gold-200">{orderedProducts.length} DollWow listings in this brand view</p>
+          <p className="mt-3 text-sm font-semibold text-gold-200">{orderedProducts.length} DollWow listings · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
         </div>
       </div>
 
@@ -100,10 +110,11 @@ export default async function BrandHubPage({ params }: { params: Promise<{ brand
       </section>
 
       {hasReleaseOrder ? (
-        <BrandProductGrid brandLabel={brand.label} products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+        <BrandProductGrid brandLabel={brand.label} products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
       ) : (
-        <ProductGrid products={orderedProducts} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+        <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
       )}
+      <CatalogPagination {...catalogPage} basePath={`/brands/${brand.collectionHandle}`} searchParams={rawSearchParams} />
 
       <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
         <div className="max-w-3xl">

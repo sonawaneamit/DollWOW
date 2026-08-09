@@ -1,8 +1,10 @@
 import { GoldButton } from "@/components/GoldButton";
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
+import { CatalogPagination } from "@/components/CatalogPagination";
 import { compactFilters, filterProducts, filtersFromSearchParams, shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { getProducts } from "@/lib/shopify/storefront";
+import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 
 export const metadata = {
   title: "Custom Sex Dolls",
@@ -10,9 +12,11 @@ export const metadata = {
 };
 
 export default async function CustomizePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  const filters = compactFilters({ ...filtersFromSearchParams(await searchParams), availability: "custom" });
+  const rawSearchParams = await searchParams;
+  const filters = compactFilters({ ...filtersFromSearchParams(rawSearchParams), availability: "custom" });
   const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 600 });
   const filteredProducts = filterProducts(products, filters).filter((product) => product.extended.customAvailable);
+  const catalogPage = paginateCatalog(filteredProducts, catalogPageFromValue(rawSearchParams.page));
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -28,7 +32,8 @@ export default async function CustomizePage({ searchParams }: { searchParams: Pr
         <ProductFilters filters={filters} action="/customize" resetHref="/customize" />
       </div>
       <div className="mt-8">
-        <ProductGrid products={filteredProducts} filters={filters} resetHref="/customize" />
+        <ProductGrid products={catalogPage.items} filters={filters} resetHref="/customize" />
+        <CatalogPagination {...catalogPage} basePath="/customize" searchParams={rawSearchParams} />
       </div>
     </section>
   );

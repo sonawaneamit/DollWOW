@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BadgeCheck, ChevronDown, SlidersHorizontal } from "lucide-react";
-import type { ChangeEvent, FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 
@@ -40,6 +40,7 @@ export function ProductFilters({
   const count = activeFilterCount(filters);
   const activeFilters = buildActiveFilterLinks(filters, action);
   const isSidebar = variant === "sidebar";
+  const [mobileOpen, setMobileOpen] = useState(count > 0);
 
   function applyFilters(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -53,12 +54,25 @@ export function ProductFilters({
   }
 
   return (
-    <div className={`product-filters ${isSidebar ? "product-filters--sidebar" : "product-filters--bar"}`}>
+    <div className={`product-filters ${isSidebar ? "product-filters--sidebar" : "product-filters--bar"} ${mobileOpen ? "product-filters--mobile-open" : ""}`}>
       <div className="product-filters__top">
-        <div className="product-filters__title">
-          <SlidersHorizontal className="h-4 w-4 text-gold-300" />
-          Catalog filters
-          {count ? <span>{count} active</span> : null}
+        <div className="product-filters__heading-row">
+          <div className="product-filters__title">
+            <SlidersHorizontal className="h-4 w-4 text-gold-300" />
+            Catalog filters
+            {count ? <span>{count} active</span> : null}
+          </div>
+          {isSidebar ? (
+            <button
+              type="button"
+              className="product-filters__mobile-toggle"
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((current) => !current)}
+            >
+              {mobileOpen ? "Hide filters" : "Filter & sort"}
+              <ChevronDown className={`h-4 w-4 transition ${mobileOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+            </button>
+          ) : null}
         </div>
         <div className="product-filters__quicklinks">
           <Link href="/authorized-vendors" className="product-filters__chip inline-flex items-center gap-1.5">

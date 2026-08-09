@@ -22,7 +22,9 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
   const recommended = idList.length
     ? products.filter((product) => idList.includes(product.id))
     : recommendations.length
-      ? products.filter((product) => recommendationById.has(product.id))
+      ? recommendations
+          .map((recommendation) => products.find((product) => product.id === recommendation.productId))
+          .filter((product): product is (typeof products)[number] => Boolean(product))
       : products.slice(0, 5);
   const orderedRecommended = idList.length
     ? idList.map((id) => recommended.find((product) => product.id === id)).filter(Boolean)

@@ -1,8 +1,10 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
+import { CatalogPagination } from "@/components/CatalogPagination";
 import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getProducts } from "@/lib/shopify/storefront";
+import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
 
 export async function generateMetadata({
@@ -25,7 +27,8 @@ export default async function CollectionPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { collection } = await params;
-  const paramsFilters = filtersFromSearchParams(await searchParams);
+  const rawSearchParams = await searchParams;
+  const paramsFilters = filtersFromSearchParams(rawSearchParams);
   const preset = collectionPresets[collection] || { title: collection.replace(/-/g, " "), filters: { brand: collection } };
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
   const products = await getProducts({
@@ -34,6 +37,7 @@ export default async function CollectionPage({
     includeCustomizationGroups: false
   });
   const filtered = filterProducts(products, filters);
+  const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
   const relatedLinks = collectionRelatedLinks(collection, preset);
   const buyerNotes = collectionBuyerNotes(collection, preset);
@@ -56,7 +60,7 @@ export default async function CollectionPage({
           <p className="text-sm  text-gold-300">Collection</p>
           <h1 className="mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{collectionIntro(preset, collection)}</p>
-          <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls in this collection view</p>
+          <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
         </div>
       </div>
       {relatedLinks.length ? (
@@ -110,7 +114,8 @@ export default async function CollectionPage({
               ))}
             </div>
           ) : null}
-          <ProductGrid products={filtered} filters={filters} resetHref={`/shop/${collection}`} />
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/shop/${collection}`} />
+          <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>
       {buyerNotes.length ? (

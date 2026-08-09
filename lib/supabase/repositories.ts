@@ -338,6 +338,7 @@ export async function getGuidedSession(id: string): Promise<{
 function normalizeQuizAnswers(answers: QuizAnswers): QuizAnswers {
   return {
     companionType: answers.companionType ?? "female",
+    productForm: answers.productForm ?? "full",
     budget: answers.budget,
     delivery: answers.delivery,
     material: answers.material,

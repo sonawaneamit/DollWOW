@@ -59,8 +59,8 @@ export function updateGtagConsent(state: Exclude<ConsentState, "unknown">) {
   const value = state === "granted" ? "granted" : "denied";
   window.gtag?.("consent", "update", {
     analytics_storage: value,
-    ad_storage: value,
-    ad_user_data: value,
-    ad_personalization: value
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied"
   });
 }

@@ -59,7 +59,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   const productModule = await getArticleProductModule(article.slug);
 
   return (
-    <main>
+    <div>
       {schema.map((entry) => (
         <script key={entry?.["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
       ))}
@@ -105,7 +105,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           </article>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

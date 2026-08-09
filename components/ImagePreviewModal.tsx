@@ -1,23 +1,50 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
 export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string; alt: string; onClose: () => void }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
+    previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     document.body.style.overflow = "hidden";
+    const dialog = dialogRef.current;
+    const siblings = Array.from(document.body.children).filter((element) => !element.contains(dialog));
+    const siblingState = siblings.map((element) => ({
+      element: element as HTMLElement,
+      inert: (element as HTMLElement).inert,
+      ariaHidden: element.getAttribute("aria-hidden")
+    }));
+    siblings.forEach((element) => {
+      (element as HTMLElement).inert = true;
+      element.setAttribute("aria-hidden", "true");
+    });
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
+      }
     }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      siblingState.forEach(({ element, inert, ariaHidden }) => {
+        element.inert = inert;
+        if (ariaHidden === null) element.removeAttribute("aria-hidden");
+        else element.setAttribute("aria-hidden", ariaHidden);
+      });
+      previousFocusRef.current?.focus();
     };
   }, [onClose]);
 
@@ -25,6 +52,7 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
 
   return createPortal(
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink-950/94 p-3 sm:p-5"
       role="dialog"
       aria-modal="true"
@@ -34,6 +62,7 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
       }}
     >
       <button
+        ref={closeButtonRef}
         type="button"
         aria-label="Close image preview"
         onClick={onClose}

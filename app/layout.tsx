@@ -91,9 +91,10 @@ gtag('consent', 'default', {
           />
         ) : null}
         <CartProvider>
+          <a href="#main-content" className="skip-link">Skip to main content</a>
           <Header />
           <StorefrontZipper />
-          <main>{children}</main>
+          <main id="main-content" tabIndex={-1}>{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>

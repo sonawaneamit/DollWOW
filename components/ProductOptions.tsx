@@ -210,7 +210,15 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
       </div>
 
       <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-        <aside className="lg:col-span-5">
+        <div className="rounded-md bg-surface-tint p-4 lg:hidden">
+          <p className="text-sm font-semibold text-text-dim">Current build</p>
+          <div className="mt-2 flex items-center justify-between gap-4">
+            <span className="text-sm text-text-dim">Starting total</span>
+            <strong className="text-xl text-text" aria-live="polite">{formatMoney(resolved.totalPrice, currencyCode)}</strong>
+          </div>
+          <p className="mt-2 text-sm leading-5 text-text-dim">Review the choice groups below; a full summary appears before checkout.</p>
+        </div>
+        <aside className="hidden lg:col-span-5 lg:block">
           <div className="lg:sticky lg:top-24">
             <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-surface-tint">
               {heroImage ? (
@@ -501,6 +509,7 @@ function OptionTile({ option, selected, disabled, conflict, currencyCode, onClic
       type="button"
       onClick={onClick}
       disabled={disabled}
+      aria-pressed={selected}
       className={clsx(
         "option-tile relative flex min-h-24 min-w-0 items-start gap-4 rounded-md border p-4 text-left transition-colors",
         selected && "is-selected",

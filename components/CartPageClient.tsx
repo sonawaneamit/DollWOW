@@ -113,7 +113,7 @@ export function CartPageClient() {
                     <button
                       type="button"
                       onClick={() => cart.removeItem(item.merchandiseId)}
-                      className="rounded-[10px] p-2 text-ivory-500 transition hover:bg-ivory-50/[0.06] hover:text-danger"
+                      className="flex h-11 w-11 items-center justify-center rounded-[10px] text-ivory-500 transition hover:bg-ivory-50/[0.06] hover:text-danger"
                       aria-label={`Remove ${item.productDisplayName || item.productTitle}`}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -124,7 +124,7 @@ export function CartPageClient() {
                       <button
                         type="button"
                         onClick={() => cart.updateQuantity(item.merchandiseId, item.quantity - 1)}
-                        className="px-3 py-2 text-ivory-300 hover:text-ivory-50"
+                        className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                         aria-label="Decrease quantity"
                       >
                         <Minus className="h-3.5 w-3.5" />
@@ -133,7 +133,7 @@ export function CartPageClient() {
                       <button
                         type="button"
                         onClick={() => cart.updateQuantity(item.merchandiseId, Math.min(MAX_ITEM_QUANTITY, item.quantity + 1))}
-                        className="px-3 py-2 text-ivory-300 hover:text-ivory-50"
+                        className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                         aria-label="Increase quantity"
                       >
                         <Plus className="h-3.5 w-3.5" />

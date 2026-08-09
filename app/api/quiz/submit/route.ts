@@ -8,6 +8,7 @@ import type { QuizAnswers } from "@/types/quiz";
 
 const answerSchema = z.object({
   companionType: z.enum(["female", "male", "any"]).default("female"),
+  productForm: z.enum(["full", "torso", "hips", "any"]).default("full"),
   budget: z.enum(["under-1500", "1500-2500", "2500-4000", "4000-plus"]),
   delivery: z.enum(["fast", "balanced", "custom"]),
   material: z.enum(["tpe", "silicone", "either"]),

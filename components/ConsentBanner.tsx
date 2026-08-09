@@ -15,6 +15,13 @@ export function ConsentBanner() {
   const consent = useConsent();
   const mounted = useMounted();
   const [revealed, setRevealed] = useState(false);
+  const [managing, setManaging] = useState(false);
+
+  useEffect(() => {
+    const openPreferences = () => setManaging(true);
+    window.addEventListener("dollwow:manage-consent", openPreferences);
+    return () => window.removeEventListener("dollwow:manage-consent", openPreferences);
+  }, []);
 
   useEffect(() => {
     if (!mounted || consent !== "unknown") return;
@@ -30,7 +37,12 @@ export function ConsentBanner() {
     return () => window.removeEventListener("scroll", revealAfterScroll);
   }, [consent, mounted]);
 
-  if (!mounted || consent !== "unknown" || !revealed) return null;
+  if (!mounted || (!managing && (consent !== "unknown" || !revealed))) return null;
+
+  function choose(state: "granted" | "denied") {
+    writeConsent(state);
+    setManaging(false);
+  }
 
   return (
     <div
@@ -53,14 +65,14 @@ export function ConsentBanner() {
         <div className="consent-banner__actions">
           <button
             type="button"
-            onClick={() => writeConsent("denied")}
+            onClick={() => choose("denied")}
             className="consent-banner__button consent-banner__button--decline"
           >
             Decline
           </button>
           <button
             type="button"
-            onClick={() => writeConsent("granted")}
+            onClick={() => choose("granted")}
             className="consent-banner__button consent-banner__button--accept"
           >
             Accept

@@ -18,7 +18,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
   const visibleArticles = selectedCategory ? articles.filter((article) => article.category === selectedCategory) : articles;
 
   return (
-    <main>
+    <div>
       <section className="tone-section" data-tone="deep">
         <div className="tone-inner">
           <p className="text-sm  text-gold-300">Learning Center</p>
@@ -100,7 +100,7 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

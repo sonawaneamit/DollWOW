@@ -2,6 +2,7 @@ import type { QuizAnswers } from "@/types/quiz";
 
 export const defaultQuizAnswers: QuizAnswers = {
   companionType: "female",
+  productForm: "full",
   budget: "1500-2500",
   delivery: "balanced",
   material: "either",
@@ -13,6 +14,7 @@ export const defaultQuizAnswers: QuizAnswers = {
 };
 
 const companionTypes = new Set<QuizAnswers["companionType"]>(["female", "male", "any"]);
+const productForms = new Set<QuizAnswers["productForm"]>(["full", "torso", "hips", "any"]);
 const budgets = new Set<QuizAnswers["budget"]>(["under-1500", "1500-2500", "2500-4000", "4000-plus"]);
 const deliveries = new Set<QuizAnswers["delivery"]>(["fast", "balanced", "custom"]);
 const materials = new Set<QuizAnswers["material"]>(["tpe", "silicone", "either"]);
@@ -27,6 +29,9 @@ export function quizAnswersFromParams(params: Record<string, string | undefined>
     companionType: companionTypes.has(params.companionType as QuizAnswers["companionType"])
       ? (params.companionType as QuizAnswers["companionType"])
       : defaultQuizAnswers.companionType,
+    productForm: productForms.has(params.productForm as QuizAnswers["productForm"])
+      ? (params.productForm as QuizAnswers["productForm"])
+      : defaultQuizAnswers.productForm,
     budget: budgets.has(params.budget as QuizAnswers["budget"]) ? (params.budget as QuizAnswers["budget"]) : defaultQuizAnswers.budget,
     delivery: deliveries.has(params.delivery as QuizAnswers["delivery"])
       ? (params.delivery as QuizAnswers["delivery"])
@@ -70,6 +75,12 @@ export function quizAnswerSummary(answers: QuizAnswers) {
     "2500-4000": "$2,500 to $4,000",
     "4000-plus": "$4,000+"
   };
+  const productFormLabels: Record<QuizAnswers["productForm"], string> = {
+    full: "Full doll",
+    torso: "Torso",
+    hips: "Hips",
+    any: "Any product form"
+  };
   const deliveryLabels: Record<QuizAnswers["delivery"], string> = {
     fast: "Fast shipping",
     balanced: "Flexible timing",
@@ -93,6 +104,7 @@ export function quizAnswerSummary(answers: QuizAnswers) {
 
   return [
     { label: "Dolls", value: companionTypeLabels[answers.companionType] },
+    { label: "Form", value: productFormLabels[answers.productForm] },
     { label: "Budget", value: budgetLabels[answers.budget] },
     { label: "Timing", value: deliveryLabels[answers.delivery] },
     { label: "Material", value: materialLabels[answers.material] },
