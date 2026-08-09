@@ -41,6 +41,95 @@
   color-scheme: light;
 }
 
+/* A quiet storefront signature: a Marble-inspired progress ribbon rather than a literal zipper. */
+.storefront-zipper {
+  position: fixed;
+  z-index: 35;
+  top: 5.5rem;
+  bottom: max(0.9rem, env(safe-area-inset-bottom));
+  left: -0.2rem;
+  display: block;
+  width: 1.55rem;
+  filter: none;
+  pointer-events: none;
+}
+
+.storefront-zipper__caption {
+  display: none;
+}
+
+.storefront-zipper__ribbon {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 7px;
+  overflow: visible;
+  border-radius: 999px;
+  background: rgb(var(--color-accent) / 0.16);
+  transform: translateX(-50%);
+}
+
+.storefront-zipper__progress {
+  position: absolute;
+  inset: 0 0 auto;
+  min-height: 0;
+  border-radius: inherit;
+  background: rgb(var(--color-accent));
+  box-shadow: 0 0 0 1px rgb(var(--color-accent) / 0.08);
+}
+
+.storefront-zipper__marker {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 4px solid rgb(var(--color-surface));
+  border-radius: 999px;
+  background: rgb(var(--color-accent));
+  box-shadow: 0 0 0 1px rgb(var(--color-accent) / 0.24), 0 6px 18px rgb(var(--color-accent) / 0.22);
+  transform: translate(-50%, -50%);
+  transition: top 90ms linear;
+}
+
+@media (min-width: 1180px) {
+  .storefront-zipper {
+    top: 6.35rem;
+    bottom: 2rem;
+    left: max(0.45rem, calc((100vw - 90rem) / 2 + 0.45rem));
+    width: 4.75rem;
+    filter: none;
+  }
+
+  .storefront-zipper__caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    color: rgb(var(--color-text-faint));
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .storefront-zipper__ribbon {
+    width: 11px;
+  }
+
+  .storefront-zipper__marker {
+    width: 31px;
+    height: 31px;
+    border-width: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storefront-zipper__marker {
+    transition: none;
+  }
+}
+
 :root[data-theme="dark"] {
   --color-bg: 28 23 20;
   --color-surface: 38 32 25;
@@ -4157,20 +4246,20 @@ a {
 }
 
 .storefront-zipper {
-  display: none;
+  display: block;
 }
 
 @media (min-width: 1180px) {
   .storefront-zipper {
     position: fixed;
     z-index: 35;
-    top: 6.4rem;
+    top: 6.35rem;
     bottom: 2rem;
-    left: max(0.5rem, calc((100vw - 90rem) / 2 + 0.5rem));
+    left: max(0.45rem, calc((100vw - 90rem) / 2 + 0.45rem));
     display: block;
-    width: 5.25rem;
+    width: 4.75rem;
     pointer-events: none;
-    filter: drop-shadow(0 10px 18px rgba(70, 36, 20, 0.16));
+    filter: none;
   }
 
   .storefront-zipper__caption {

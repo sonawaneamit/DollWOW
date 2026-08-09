@@ -148,14 +148,17 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             </div>
           </div>
         </div>
-        <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
-        <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
           <ProductOptions product={product} />
         </div>
+      </ToneBand>
+
+      <ToneBand tone="deep" className="pdp-details-band">
+        <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
+        <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />
