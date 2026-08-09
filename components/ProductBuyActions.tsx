@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Camera, Loader2, Lock, ShieldCheck, ShoppingBag, Sparkles, Truck, Zap } from "lucide-react";
+import { Loader2, Lock, ShoppingBag, Sparkles, Truck, Zap } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
@@ -125,52 +125,52 @@ export function ProductBuyActions({
   }
 
   return (
-    <div className="mt-6 rounded-[22px] border border-gold-500/20 bg-ivory-50/[0.04] p-4 shadow-soft sm:p-5">
+    <div className="mt-6 rounded-lg bg-surface p-5 text-text shadow-card sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">Buy as shown</p>
-        {installments ? <p className="text-xs text-ivory-500">{installments}</p> : null}
+        <p className="text-[15px] font-semibold text-text-dim">Buy as shown</p>
+        {installments ? <p className="text-sm text-text-faint">{installments}</p> : null}
       </div>
 
-      <div className="mt-3 grid gap-2">
+      <div className="mt-4 grid gap-3">
         <button
           type="button"
           onClick={addToBag}
-          className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 px-5 py-3.5 text-base font-semibold text-ink-950 shadow-glow transition hover:-translate-y-0.5"
+          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
         >
           <ShoppingBag className="h-5 w-5" />
           Add to bag · {formatMoney(unitPrice, currencyCode)}
         </button>
-        <div className="grid gap-2 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           <button
             type="button"
             onClick={buyNow}
             disabled={buyNowPending}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gold-500/24 bg-ivory-50/[0.05] px-4 py-2.5 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60 disabled:opacity-60"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint disabled:opacity-60"
           >
-            {buyNowPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Zap className="h-4 w-4 text-gold-300" />}
-            Buy it now
+            {buyNowPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <Zap className="h-5 w-5" />}
+            Buy now
           </button>
           <button
             type="button"
             onClick={scrollToCustomizer}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gold-500/24 bg-ivory-50/[0.05] px-4 py-2.5 text-sm font-semibold text-ivory-50 transition hover:border-gold-300/60"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
           >
-            <Sparkles className="h-4 w-4 text-gold-300" />
-            Customize
+            <Sparkles className="h-5 w-5" />
+            Customize your doll
           </button>
         </div>
         {buyNowError ? <p className="text-sm text-danger">{buyNowError}</p> : null}
       </div>
 
-      <div className="mt-4 flex items-start gap-3 rounded-[16px] border border-gold-500/14 bg-ink-950/45 p-3.5">
-        <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold-300/10 text-gold-300">
-          <Truck className="h-4 w-4" />
+      <div className="mt-5 flex items-start gap-3 rounded-md bg-surface-tint p-4">
+        <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-stock-tint text-stock">
+          <Truck className="h-5 w-5" />
         </span>
         <div>
-          <p className="text-sm font-semibold text-ivory-100">
+          <p className="text-base font-semibold text-text">
             {readyToShip ? "In the warehouse now" : "Built to order for you"}
           </p>
-          <p className="mt-0.5 text-xs leading-5 text-ivory-400">
+          <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {readyToShip
               ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}Leaves the warehouse in 1-3 business days after stock confirmation.`
               : "You approve detailed factory photos and videos before anything ships. Timing is confirmed before you pay."}
@@ -178,20 +178,16 @@ export function ProductBuyActions({
         </div>
       </div>
 
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[0.72rem] text-ivory-500">
-        <Lock className="h-3.5 w-3.5" /> Secure Shopify checkout · plain packaging · neutral billing
+      <p className="mt-4 flex items-center justify-center gap-2 text-center text-[15px] text-text-dim">
+        <Lock className="h-4 w-4" /> Secure checkout by Shopify · plain packaging · neutral billing
       </p>
 
-      <div className="mt-3 flex flex-wrap justify-center gap-2 text-[0.72rem]">
-        <Link href="/buyer-protection" className="inline-flex items-center gap-1 rounded-full border border-gold-500/14 px-2.5 py-1 font-semibold text-ivory-400 transition hover:border-gold-300/45 hover:text-ivory-100">
-          <ShieldCheck className="h-3 w-3" /> Buyer protection
-        </Link>
-        <Link href="/shipping-protection" className="inline-flex items-center gap-1 rounded-full border border-gold-500/14 px-2.5 py-1 font-semibold text-ivory-400 transition hover:border-gold-300/45 hover:text-ivory-100">
-          <Truck className="h-3 w-3" /> Shipping protection
-        </Link>
-        <Link href="/how-ordering-works" className="inline-flex items-center gap-1 rounded-full border border-gold-500/14 px-2.5 py-1 font-semibold text-ivory-400 transition hover:border-gold-300/45 hover:text-ivory-100">
-          <Camera className="h-3 w-3" /> How ordering works
-        </Link>
+      <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[15px] font-semibold text-accent">
+        <Link href="/buyer-protection" className="min-h-11 py-2 underline underline-offset-4">Buyer protection</Link>
+        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
+        <Link href="/shipping-protection" className="min-h-11 py-2 underline underline-offset-4">Shipping protection</Link>
+        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
+        <Link href="/how-ordering-works" className="min-h-11 py-2 underline underline-offset-4">How ordering works</Link>
       </div>
 
       <div className="mt-4">

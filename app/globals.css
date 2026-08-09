@@ -3838,6 +3838,19 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .catalog-product-card,
   .catalog-product-card__image,
   .home-product-card__media img,
@@ -3846,5 +3859,86 @@ a {
     animation: none !important;
     transform: none !important;
     transition: none !important;
+  }
+}
+
+.pdp-scroll-thread {
+  display: none;
+}
+
+@media (min-width: 1240px) {
+  .pdp-scroll-thread {
+    position: absolute;
+    top: 9.5rem;
+    left: -3.25rem;
+    display: grid;
+    gap: 1rem;
+    width: 3rem;
+    z-index: 2;
+  }
+
+  .pdp-scroll-thread__track {
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0;
+    width: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgb(var(--color-border));
+  }
+
+  .pdp-scroll-thread__track span {
+    display: block;
+    width: 100%;
+    min-height: 6px;
+    border-radius: inherit;
+    background: rgb(var(--color-accent));
+    transition: height 180ms ease;
+  }
+
+  .pdp-scroll-thread__tick {
+    position: relative;
+    display: flex;
+    min-height: 32px;
+    align-items: center;
+    padding-left: 1.15rem;
+    color: rgb(var(--color-text-faint));
+  }
+
+  .pdp-scroll-thread__tick > span {
+    position: absolute;
+    left: -5px;
+    width: 16px;
+    height: 16px;
+    border: 3px solid rgb(var(--color-surface));
+    border-radius: 999px;
+    background: rgb(var(--color-border-strong));
+    box-shadow: 0 0 0 1px rgb(var(--color-border));
+  }
+
+  .pdp-scroll-thread__tick b {
+    position: absolute;
+    left: 1.25rem;
+    width: 7.5rem;
+    opacity: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    pointer-events: none;
+    transition: opacity 160ms ease;
+  }
+
+  .pdp-scroll-thread__tick:hover b,
+  .pdp-scroll-thread__tick:focus-visible b,
+  .pdp-scroll-thread__tick.is-active b {
+    opacity: 1;
+  }
+
+  .pdp-scroll-thread__tick.is-active {
+    color: rgb(var(--color-text));
+  }
+
+  .pdp-scroll-thread__tick.is-active > span {
+    background: rgb(var(--color-accent));
   }
 }
