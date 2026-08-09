@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { ConsentBanner } from "@/components/ConsentBanner";
+import { StorefrontZipper } from "@/components/StorefrontZipper";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
@@ -91,6 +92,7 @@ gtag('consent', 'default', {
         ) : null}
         <CartProvider>
           <Header />
+          <StorefrontZipper />
           <main>{children}</main>
           <Footer />
           <CartDrawer />
