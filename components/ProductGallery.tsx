@@ -21,8 +21,8 @@ export function ProductGallery({ product }: { product: Product }) {
   }
 
   return (
-    <section className="space-y-3">
-      <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-surface-tint shadow-soft">
+    <section className="min-w-0 max-w-full space-y-3 overflow-hidden">
+      <div className="noir-media-wrap relative aspect-[4/5] w-full max-w-full overflow-hidden rounded-[18px] border border-gold-500/20 bg-surface-tint shadow-soft">
         {active?.type === "image" ? (
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
@@ -75,7 +75,7 @@ export function ProductGallery({ product }: { product: Product }) {
       </div>
 
       {media.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-2">
+        <div className="flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-2">
           {media.map((item, imageIndex) => (
             <button
               type="button"

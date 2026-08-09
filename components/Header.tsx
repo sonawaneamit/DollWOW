@@ -197,7 +197,7 @@ export function Header() {
 
   return (
     <header className={`sticky top-0 z-[80] h-[72px] bg-surface text-text transition-shadow ${scrolled ? "shadow-sticky" : ""}`}>
-      <div className="mx-auto flex h-full max-w-[1440px] items-center gap-4 px-5 lg:px-8">
+      <div className="mx-auto flex h-full max-w-[1440px] items-center gap-2 px-3 sm:gap-4 sm:px-5 lg:px-8">
         <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
           <Image
             src="/images/brand/dollwow-black-gold-lockup.png"
@@ -206,7 +206,7 @@ export function Header() {
             height={235}
             priority
             sizes="(max-width: 640px) 150px, 176px"
-            className="h-12 w-[150px] object-contain object-left lg:w-44"
+            className="h-12 w-[128px] object-contain object-left sm:w-[150px] lg:w-44"
           />
         </Link>
 
@@ -256,7 +256,7 @@ export function Header() {
           </button>
         </div>
 
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="ml-auto flex items-center gap-1 sm:gap-2 lg:hidden">
           <button type="button" onClick={openCart} className="v2-icon-control relative" aria-label={cartLabel(activeCount)}>
             <ShoppingBag className="h-5 w-5" aria-hidden="true" />
             {activeCount ? <CartBadge count={activeCount} /> : null}
