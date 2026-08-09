@@ -90,7 +90,13 @@ export function InfoVisualPanel({
 
         <Link href={visual.href} className="info-visual-banner__media group" aria-label={`View ${visual.title}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={visual.src} alt={visual.alt} loading="lazy" className="h-full w-full object-cover object-[center_18%]" />
+          <img
+            src={visual.src}
+            alt={visual.alt}
+            loading="eager"
+            fetchPriority="high"
+            className="h-full w-full object-cover object-[center_18%]"
+          />
           <span className="absolute inset-x-4 bottom-4 rounded-sm bg-surface/95 p-3 shadow-card">
             <span className="block text-sm font-semibold text-text-dim">{visual.brand}</span>
             <span className="mt-0.5 block text-base font-semibold text-text">{visual.title}</span>
