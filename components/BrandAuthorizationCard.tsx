@@ -16,7 +16,8 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
 
   if (!isAuthorized) return null;
 
-  const label = authorization?.brand ?? catalogBrand?.label ?? brand ?? "this brand";
+  const label = catalogBrand?.label ?? authorization?.brand ?? brand ?? "this brand";
+  const certificateIssuer = authorization?.certificateIssuer ?? label;
   const hasCertificate = authorization?.status === "certificate" && authorization.certificateSrc && authorization.certificatePreviewSrc;
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
 
@@ -45,7 +46,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
         <h2 className="mt-2 text-xl font-semibold text-ivory-50">Authorized to sell {label}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-300">
           {hasCertificate
-            ? `DollWow is an approved seller for ${label}. View the authorization certificate shared by the brand.`
+            ? `DollWow is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}.`
             : isWrittenConfirmation
               ? `DollWow is an approved seller for ${label}. Brand confirmation is on file.`
               : `DollWow is an approved seller for ${label}.`}

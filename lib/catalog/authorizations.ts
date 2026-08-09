@@ -6,6 +6,8 @@ export type BrandAuthorization = {
   id: string;
   brand: string;
   brandValue?: string;
+  relatedBrandValues?: string[];
+  certificateIssuer?: string;
   aliases: string[];
   status: AuthorizationStatus;
   certificateSrc?: string;
@@ -20,7 +22,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["wm", "wm doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/wm-dolls-authorized.jpg",
-    certificatePreviewSrc: "/images/authorizations/wm-dolls-authorized.jpg"
+    certificatePreviewSrc: "/images/authorizations/previews/wm-dolls-authorized.webp"
   },
   {
     id: "tantaly",
@@ -29,7 +31,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["tantaly doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/tantaly-authorization.pdf",
-    certificatePreviewSrc: "/images/authorizations/tantaly-authorization-preview.png"
+    certificatePreviewSrc: "/images/authorizations/previews/tantaly-authorization-preview.webp"
   },
   {
     id: "dolls-castle",
@@ -38,14 +40,16 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["doll castle"],
     status: "certificate",
     certificateSrc: "/images/authorizations/dolls-castle-authorized.jpg",
-    certificatePreviewSrc: "/images/authorizations/dolls-castle-authorized.jpg"
+    certificatePreviewSrc: "/images/authorizations/previews/dolls-castle-authorized.webp"
   },
   {
     id: "starpery",
     brand: "Starpery Dolls",
     brandValue: "starpery",
     aliases: ["starpery", "starpery doll"],
-    status: "written-confirmation"
+    status: "certificate",
+    certificateSrc: "/images/authorizations/starpery-authorization.pdf",
+    certificatePreviewSrc: "/images/authorizations/previews/starpery-authorization.jpg"
   },
   {
     id: "herun-doll",
@@ -56,18 +60,31 @@ export const brandAuthorizations: BrandAuthorization[] = [
   {
     id: "rosretty",
     brand: "Rosretty Doll",
+    brandValue: "rosretty",
     aliases: ["rosretty", "rosretty doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/rosretty-authorized.jpg",
-    certificatePreviewSrc: "/images/authorizations/rosretty-authorized.jpg"
+    certificatePreviewSrc: "/images/authorizations/previews/rosretty-authorized.webp"
   },
   {
     id: "sy-doll",
     brand: "SY Doll",
+    brandValue: "sy",
+    relatedBrandValues: ["moonvale"],
+    certificateIssuer: "SY Doll",
     aliases: ["sy doll", "sydoll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/sy-doll-authorized.jpg",
-    certificatePreviewSrc: "/images/authorizations/sy-doll-authorized.jpg"
+    certificatePreviewSrc: "/images/authorizations/previews/sy-doll-authorization.webp"
+  },
+  {
+    id: "irontech",
+    brand: "Irontech Dolls",
+    brandValue: "irontech",
+    aliases: ["irontech", "irontech doll"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/irontech-authorization.jpeg",
+    certificatePreviewSrc: "/images/authorizations/previews/irontech-authorization.webp"
   },
   {
     id: "il-doll",
@@ -75,7 +92,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["il doll", "ildoll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/il-doll-authorization.pdf",
-    certificatePreviewSrc: "/images/authorizations/il-doll-authorization-preview.png"
+    certificatePreviewSrc: "/images/authorizations/previews/il-doll-authorization-preview.webp"
   },
   {
     id: "jarlie",
@@ -83,7 +100,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["jarlie doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/jarlie-authorized.jpg",
-    certificatePreviewSrc: "/images/authorizations/jarlie-authorized.jpg"
+    certificatePreviewSrc: "/images/authorizations/previews/jarlie-authorized.webp"
   },
   {
     id: "avant-doll",
@@ -92,7 +109,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
     aliases: ["avant", "avant doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/avant-doll-authorized.jpeg",
-    certificatePreviewSrc: "/images/authorizations/avant-doll-authorized.jpeg"
+    certificatePreviewSrc: "/images/authorizations/previews/avant-doll-authorized.webp"
   }
 ];
 
@@ -105,6 +122,7 @@ export function getBrandAuthorization(value: string | undefined | null) {
   return (
     brandAuthorizations.find((authorization) => {
       if (authorization.brandValue && authorization.brandValue === normalized) return true;
+      if (authorization.relatedBrandValues?.includes(normalized)) return true;
       return [authorization.brand, ...authorization.aliases].some((alias) => normalizeBrandText(alias) === normalized);
     }) ?? null
   );

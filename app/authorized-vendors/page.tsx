@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, ExternalLink, ShieldCheck } from "lucide-react";
 import { brandAuthorizations, liveAuthorizedBrands } from "@/lib/catalog/authorizations";
-import { brandHubHref } from "@/lib/catalog/brands";
+import { brandHubHref, getCatalogBrand } from "@/lib/catalog/brands";
 
 export const metadata: Metadata = {
   title: "Authorized Vendor Certificates | DollWow",
@@ -57,6 +57,11 @@ export default function AuthorizedVendorsPage() {
                 <div className="border-t border-gold-500/12 p-5">
                   <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-gold-300"><BadgeCheck className="h-4 w-4" /> Authorized seller</p>
                   <h3 className="mt-2 text-xl font-semibold text-ivory-50">{entry.brand}</h3>
+                  {entry.relatedBrandValues?.length ? (
+                    <p className="mt-1 text-sm text-ivory-400">
+                      Also covers {entry.relatedBrandValues.map((value) => getCatalogBrand(value)?.label ?? value).join(", ")}.
+                    </p>
+                  ) : null}
                   <div className="mt-4 flex items-center justify-between gap-3">
                     {entry.brandValue ? <Link href={brandHubHref(entry.brandValue)} className="text-sm font-semibold text-ivory-300 hover:text-gold-200">Browse brand</Link> : <span className="text-sm text-ivory-500">Coming to DollWow</span>}
                     <a href={entry.certificateSrc!} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-200 hover:text-gold-100">View certificate <ExternalLink className="h-3.5 w-3.5" /></a>
