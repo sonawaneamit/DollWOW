@@ -34,18 +34,24 @@ type LookDefinition = Omit<LookTile, "product" | "count"> & {
   match: (product: Product) => boolean;
 };
 
-const HERO_PREVIEW_IMAGES: Record<string, string> = {
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o": "/images/home-hero/portraits-new/sedoll-carry-home.png",
-  "starpery-adele-153cm-e-cup-silicone-head-companion-doll-1dn4l": "/images/home-hero/portraits-new/starpery-adele-home-v2.png",
-  "172cm-5ft8-e-cup-silicone-sex-doll-ida-belle": "/images/home-hero/portraits-new/zelex-ida-home.png",
-  "ida-belle-172-ready-to-ship": "/images/home-hero/portraits-new/zelex-ida-home.png"
+const HERO_VIDEO_MEDIA: Record<string, { video: string; poster: string }> = {
+  "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7": { video: "/videos/home-spotlight/quine.mp4", poster: "/images/home-hero/video-posters/quine.webp" },
+  "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli": { video: "/videos/home-spotlight/vivian.mp4", poster: "/images/home-hero/video-posters/vivian.webp" },
+  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra": { video: "/videos/home-spotlight/freya.mp4", poster: "/images/home-hero/video-posters/freya.webp" },
+  "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l": { video: "/videos/home-spotlight/doris.mp4", poster: "/images/home-hero/video-posters/doris.webp" },
+  "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg": { video: "/videos/home-spotlight/isla.mp4", poster: "/images/home-hero/video-posters/isla.webp" },
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4": { video: "/videos/home-spotlight/carry.mp4", poster: "/images/home-hero/video-posters/carry.webp" },
+  "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn": { video: "/videos/home-spotlight/zeki.mp4", poster: "/images/home-hero/video-posters/zeki.webp" }
 };
 
 const SPOTLIGHT_HANDLE_PRIORITY = [
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
-  "starpery-adele-153cm-e-cup-silicone-head-companion-doll-1dn4l",
-  "172cm-5ft8-e-cup-silicone-sex-doll-ida-belle",
-  "ida-belle-172-ready-to-ship"
+  "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
+  "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
+  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+  "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l",
+  "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg",
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
+  "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
 ];
 
 export function HomeAlive({ products, recentlyAddedProducts }: { products: Product[]; recentlyAddedProducts?: Product[] }) {
@@ -53,6 +59,12 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
   const [activeSpot, setActiveSpot] = useState(0);
   useHomeMotion();
+
+  useEffect(() => {
+    if (spotlight.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const interval = window.setInterval(() => setActiveSpot((current) => (current + 1) % spotlight.length), 6500);
+    return () => window.clearInterval(interval);
+  }, [spotlight.length]);
 
   const activeProduct = spotlight[activeSpot] ?? products[0];
 
@@ -81,16 +93,16 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
 
           <div className="home-spot reveal in" data-d="2">
             <div className="home-spot__media">
-              {spotlight.map((product, index) => (
+              {activeProduct ? (
                 <Link
-                  key={product.id}
-                  className={`home-spot__slide ${index === activeSpot ? "is-active" : ""}`}
-                  href={`/products/${product.handle}`}
-                  aria-label={`View ${productPublicTitle(product)}`}
+                  key={activeProduct.id}
+                  className="home-spot__slide home-spot__slide--video is-active"
+                  href={`/products/${activeProduct.handle}`}
+                  aria-label={`View ${productPublicTitle(activeProduct)}`}
                 >
-                  <HomeProductImage product={product} priority={index === 0} useHeroPreview />
+                  <HomeSpotlightVideo product={activeProduct} />
                 </Link>
-              ))}
+              ) : null}
             </div>
             <div className="home-spot__rail" aria-label="Featured dolls">
               {spotlight.map((product, index) => (
@@ -101,14 +113,13 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
                   onClick={() => setActiveSpot(index)}
                   aria-label={`Show ${productPublicTitle(product)}`}
                 >
-                  {getHeroPreviewImage(product) || product.featuredImage ? (
+                  {getHeroVideoMedia(product)?.poster || product.featuredImage ? (
                     <Image
-                      src={getHeroPreviewImage(product) ?? product.featuredImage!.url}
+                      src={getHeroVideoMedia(product)?.poster ?? product.featuredImage!.url}
                       alt=""
                       fill
                       sizes="56px"
                       className="object-cover"
-                      unoptimized={Boolean(getHeroPreviewImage(product))}
                     />
                   ) : (
                     <span>{initialsFor(product)}</span>
@@ -303,23 +314,12 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
   );
 }
 
-function HomeProductImage({ product, priority = false, useHeroPreview = false }: { product: Product; priority?: boolean; useHeroPreview?: boolean }) {
-  const heroPreview = useHeroPreview ? getHeroPreviewImage(product) : null;
+function HomeProductImage({ product, priority = false }: { product: Product; priority?: boolean }) {
   const image = product.featuredImage ?? product.images[0] ?? null;
   const displayTitle = productPublicTitle(product);
   return (
     <div className="home-image-shell">
-      {heroPreview ? (
-        <Image
-          src={heroPreview}
-          alt={`${displayTitle} styled DollWow homepage preview`}
-          fill
-          sizes="(min-width: 1100px) 620px, 90vw"
-          priority={priority}
-          className="object-cover"
-          unoptimized
-        />
-      ) : image ? (
+      {image ? (
         <Image
           src={image.url}
           alt={displayTitle}
@@ -338,13 +338,51 @@ function HomeProductImage({ product, priority = false, useHeroPreview = false }:
   );
 }
 
-function buildSpotlightProducts(products: Product[]) {
-  return SPOTLIGHT_HANDLE_PRIORITY.map((handle) => products.find((product) => product.handle === handle))
-    .filter((product): product is Product => Boolean(product && getHeroPreviewImage(product)));
+function HomeSpotlightVideo({ product }: { product: Product }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const media = getHeroVideoMedia(product);
+  const displayTitle = productPublicTitle(product);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    video.play().catch(() => undefined);
+  }, [media?.video]);
+
+  if (!media) return <HomeProductImage product={product} priority />;
+
+  return (
+    <div className="home-image-shell home-video-shell">
+      <video
+        ref={videoRef}
+        className="home-spot__video"
+        poster={media.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        aria-label={`${displayTitle} product preview video`}
+      >
+        <source src={media.video} type="video/mp4" />
+      </video>
+      <span className="home-spot__video-badge"><span /> Product preview</span>
+    </div>
+  );
 }
 
-function getHeroPreviewImage(product: Product) {
-  return HERO_PREVIEW_IMAGES[product.handle] ?? null;
+function buildSpotlightProducts(products: Product[]) {
+  return SPOTLIGHT_HANDLE_PRIORITY.map((handle) => products.find((product) => product.handle === handle))
+    .filter((product): product is Product => Boolean(product && getHeroVideoMedia(product)));
+}
+
+function getHeroVideoMedia(product: Product) {
+  return HERO_VIDEO_MEDIA[product.handle] ?? null;
 }
 
 function HomeDollWall({ products }: { products: Product[] }) {

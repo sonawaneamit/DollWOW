@@ -4,9 +4,13 @@ import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
-  "starpery-adele-153cm-e-cup-silicone-head-companion-doll-1dn4l",
-  "172cm-5ft8-e-cup-silicone-sex-doll-ida-belle"
+  "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
+  "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
+  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+  "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l",
+  "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg",
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
+  "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
 ];
 
 export default async function HomePage() {
