@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import { BadgeCheck, SlidersHorizontal } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { BadgeCheck, ChevronDown, SlidersHorizontal } from "lucide-react";
+import type { ChangeEvent, FormEvent } from "react";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 
@@ -32,9 +36,21 @@ export function ProductFilters({
   resetHref?: string;
   variant?: "bar" | "sidebar";
 }) {
+  const router = useRouter();
   const count = activeFilterCount(filters);
   const activeFilters = buildActiveFilterLinks(filters, action);
   const isSidebar = variant === "sidebar";
+
+  function applyFilters(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = new URLSearchParams();
+    for (const [key, rawValue] of new FormData(event.currentTarget).entries()) {
+      const value = String(rawValue).trim();
+      if (!value || (key === "sort" && value === "featured")) continue;
+      next.set(key, value);
+    }
+    router.push(next.size ? `${action}?${next.toString()}` : action);
+  }
 
   return (
     <div className={`product-filters ${isSidebar ? "product-filters--sidebar" : "product-filters--bar"}`}>
@@ -60,7 +76,7 @@ export function ProductFilters({
         </div>
       </div>
 
-      <form action={action} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
+      <form action={action} onSubmit={applyFilters} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
         <label className="product-filter-control product-filter-control--search">
           <span>Search</span>
           <input
@@ -71,6 +87,7 @@ export function ProductFilters({
             className="product-filter-input"
           />
         </label>
+        {isSidebar ? <FilterActions resetHref={resetHref} autoApply /> : null}
         <SelectFilter label="Brand" name="brand" value={filters.brand} options={catalogFilterOptions.brands} />
         <SelectFilter label="Look" name="look" value={filters.look} options={catalogFilterOptions.looks} />
         <SelectFilter label="Body type" name="bodyType" value={filters.bodyType} options={catalogFilterOptions.bodyTypes} />
@@ -82,14 +99,7 @@ export function ProductFilters({
         <SelectFilter label="Cup size" name="cup" value={filters.cup} options={catalogFilterOptions.cups} />
         <SelectFilter label="Price" name="price" value={filters.price} options={catalogFilterOptions.prices} />
         <SelectFilter label="Sort" name="sort" value={filters.sort || "featured"} options={catalogFilterOptions.sorts} />
-        <div className="product-filters__actions">
-          <button type="submit" className="product-filters__submit">
-            Apply filters
-          </button>
-          <Link href={resetHref} className="product-filters__reset">
-            Reset
-          </Link>
-        </div>
+        {!isSidebar ? <FilterActions resetHref={resetHref} /> : null}
       </form>
 
       {activeFilters.length ? (
@@ -117,6 +127,20 @@ export function ProductFilters({
   );
 }
 
+function FilterActions({ resetHref, autoApply = false }: { resetHref: string; autoApply?: boolean }) {
+  return (
+    <div className="product-filters__actions">
+      <button type="submit" className="product-filters__submit">
+        Apply filters
+      </button>
+      <Link href={resetHref} className="product-filters__reset">
+        Reset
+      </Link>
+      {autoApply ? <span className="product-filters__auto-note">Dropdowns update automatically</span> : null}
+    </div>
+  );
+}
+
 function SelectFilter({
   label,
   name,
@@ -128,21 +152,29 @@ function SelectFilter({
   value?: string;
   options: ReadonlyArray<{ label: string; value: string }>;
 }) {
+  function applySelection(event: ChangeEvent<HTMLSelectElement>) {
+    event.currentTarget.form?.requestSubmit();
+  }
+
   return (
     <label className="product-filter-control">
       <span>{label}</span>
-      <select
-        name={name}
-        defaultValue={value || (name === "sort" ? "featured" : "")}
-        className="product-filter-input"
-      >
-        {name === "sort" ? null : <option value="">Any</option>}
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <span className="product-filter-select-wrap">
+        <select
+          name={name}
+          defaultValue={value || (name === "sort" ? "featured" : "")}
+          className="product-filter-input product-filter-select"
+          onChange={applySelection}
+        >
+          {name === "sort" ? null : <option value="">Any</option>}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <ChevronDown className="product-filter-select-icon" aria-hidden="true" />
+      </span>
     </label>
   );
 }
