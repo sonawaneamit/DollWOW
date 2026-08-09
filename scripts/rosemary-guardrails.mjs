@@ -116,11 +116,12 @@ export function rewriteDollWowTitle(product) {
   const height = product.specs?.heightCm ? `${product.specs.heightCm}cm` : extractHeight(sourceTitle);
   const cup = cleanCup(product.specs?.cupSize || extractCup(sourceTitle));
   const name = safeVisibleDollName(extractDollName(sourceTitle));
+  const edition = extractEdition(sourceTitle);
   const prefix = name || brand || "DollWow";
   const availability = product.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.customAvailable ? "Customizable" : "";
   const form = inferProductForm(product);
   const productLabel = form === "hips" ? "Hips" : form === "torso" ? "Torso" : "Companion Doll";
-  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", availability, productLabel].filter(Boolean);
+  const details = [height, cup ? `${cup}-Cup` : "", material && material !== "Adult Doll" ? material : "", edition, availability, productLabel].filter(Boolean);
 
   return preserveProductAcronyms(cleanText(`${prefix} ${details.join(" ")}`));
 }
@@ -276,11 +277,18 @@ function isCupNotApplicable(...values) {
 }
 
 function inferMaterial(product) {
-  const text = `${product.title || ""} ${product.description || ""}`.toLowerCase();
+  const identity = `${product.title || ""} ${product.sourceTitle || ""}`.toLowerCase();
+  if (/silicone\s*head|tpe\s*body.*silicone\s*head/.test(identity)) return "Hybrid";
+  if (/\bsilicone\s+(?:sex\s+)?doll\b/.test(identity)) return "Silicone";
+  const text = `${identity} ${product.description || ""}`.toLowerCase();
   if (/\bhybrid\b|silicone\s*head|tpe\s*body.*silicone\s*head/.test(text)) return "Hybrid";
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";
   return "Adult Doll";
+}
+
+function extractEdition(title) {
+  return title.match(/\b(T\d+\s+ROS\s+MAX)\b/i)?.[1]?.toUpperCase() || "";
 }
 
 function inferProductForm(product) {

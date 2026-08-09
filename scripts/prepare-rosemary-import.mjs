@@ -577,7 +577,10 @@ function baseConfigurationLabel(product) {
 }
 
 function inferMaterial(product) {
-  const text = `${product.title || ""} ${product.description || ""}`.toLowerCase();
+  const identity = `${product.title || ""} ${product.sourceTitle || ""}`.toLowerCase();
+  if (/silicone\s*head|tpe\s*body.*silicone\s*head/.test(identity)) return "Hybrid";
+  if (/\bsilicone\s+(?:sex\s+)?doll\b/.test(identity)) return "Silicone";
+  const text = `${identity} ${product.description || ""}`.toLowerCase();
   if (/\bhybrid\b|silicone\s*head|tpe\s*body.*silicone\s*head/.test(text)) return "Hybrid";
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";

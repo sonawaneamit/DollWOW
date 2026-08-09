@@ -20,6 +20,10 @@ export type ProductImage = {
   height?: number | null;
 };
 
+export type ProductMedia =
+  | { type: "image"; image: ProductImage; altText: string | null }
+  | { type: "video"; url: string; previewImage: ProductImage | null; altText: string | null };
+
 export type Product = {
   id: string;
   handle: string;
@@ -30,6 +34,7 @@ export type Product = {
   tags: string[];
   featuredImage: ProductImage | null;
   images: ProductImage[];
+  media?: ProductMedia[];
   variants: ProductVariant[];
   priceRange: {
     minVariantPrice: Money;
