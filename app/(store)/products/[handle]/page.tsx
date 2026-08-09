@@ -152,7 +152,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
-      <ToneBand tone="blush">
+      <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
           <ProductOptions product={product} />
         </div>

@@ -3866,35 +3866,55 @@ a {
   display: none;
 }
 
+.pdp-builder-band {
+  overflow: clip;
+}
+
 @media (min-width: 1240px) {
   .pdp-scroll-thread {
-    position: absolute;
-    top: 9.5rem;
-    left: -3.25rem;
+    position: sticky;
+    top: 7rem;
+    float: left;
+    display: block;
+    width: 3rem;
+    height: fit-content;
+    margin-left: -3.25rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .pdp-scroll-thread__sticky {
+    position: relative;
     display: grid;
     gap: 1rem;
     width: 3rem;
-    z-index: 2;
+    pointer-events: auto;
   }
 
   .pdp-scroll-thread__track {
     position: absolute;
-    top: 0.5rem;
-    bottom: 0.5rem;
+    top: 0;
     left: 0;
-    width: 6px;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgb(var(--color-border));
+    width: 3rem;
+    height: 17rem;
+    overflow: visible;
   }
 
-  .pdp-scroll-thread__track span {
-    display: block;
-    width: 100%;
-    min-height: 6px;
-    border-radius: inherit;
-    background: rgb(var(--color-accent));
-    transition: height 180ms ease;
+  .pdp-scroll-thread__track path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 6;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .pdp-scroll-thread__path-base {
+    stroke: rgb(var(--color-accent) / 0.16);
+  }
+
+  .pdp-scroll-thread__path-progress {
+    stroke: rgb(var(--color-accent));
+    stroke-dasharray: 100;
+    transition: stroke-dashoffset 140ms linear;
   }
 
   .pdp-scroll-thread__tick {
@@ -3906,9 +3926,17 @@ a {
     color: rgb(var(--color-text-faint));
   }
 
+  .pdp-scroll-thread__tick:focus-visible {
+    outline: none;
+  }
+
+  .pdp-scroll-thread__tick:focus-visible > span {
+    box-shadow: 0 0 0 3px rgb(var(--color-surface)), 0 0 0 5px rgb(var(--color-accent));
+  }
+
   .pdp-scroll-thread__tick > span {
     position: absolute;
-    left: -5px;
+    left: calc(var(--thread-x) - 8px);
     width: 16px;
     height: 16px;
     border: 3px solid rgb(var(--color-surface));
@@ -3919,8 +3947,14 @@ a {
 
   .pdp-scroll-thread__tick b {
     position: absolute;
-    left: 1.25rem;
-    width: 7.5rem;
+    left: calc(var(--thread-x) + 0.85rem);
+    width: max-content;
+    max-width: 7.5rem;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 999px;
+    background: rgb(var(--color-surface));
+    box-shadow: var(--shadow-card);
     opacity: 0;
     font-size: 14px;
     line-height: 1.2;
@@ -3940,5 +3974,9 @@ a {
 
   .pdp-scroll-thread__tick.is-active > span {
     background: rgb(var(--color-accent));
+  }
+
+  .pdp-scroll-thread__tick.is-selected:not(.is-active) > span {
+    box-shadow: 0 0 0 2px rgb(var(--color-accent-tint)), 0 0 0 3px rgb(var(--color-accent));
   }
 }

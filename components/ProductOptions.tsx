@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import {
@@ -539,16 +539,107 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
 }
 
 function ScrollThread({ groups, activeGroupId, isReviewing, onSelect, onReview }: { groups: CustomizationGroup[]; activeGroupId: string; isReviewing: boolean; onSelect: (id: string) => void; onReview: () => void }) {
-  const activeIndex = isReviewing ? groups.length : Math.max(0, groups.findIndex((group) => group.id === activeGroupId));
-  const progress = groups.length ? (activeIndex / groups.length) * 100 : 0;
+  const threadRef = useRef<HTMLElement>(null);
+  const selectedIndex = isReviewing ? groups.length : Math.max(0, groups.findIndex((group) => group.id === activeGroupId));
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollIndex, setScrollIndex] = useState(selectedIndex);
+
+  useEffect(() => {
+    const thread = threadRef.current;
+    const root = thread?.closest<HTMLElement>(".product-builder");
+    if (!root) return;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const viewportAnchor = window.innerHeight * 0.38;
+      const stepIds = [...groups.map((group) => group.id), "review"];
+      const stepTops = stepIds.map((id) => document.getElementById(`custom-step-${id}`)?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY);
+      const finalIndex = stepTops.length - 1;
+      let nextIndex = 0;
+      let nextProgress = 0;
+
+      if (viewportAnchor >= stepTops[finalIndex]) {
+        nextIndex = finalIndex;
+        nextProgress = 100;
+      } else {
+        for (let index = 0; index < finalIndex; index += 1) {
+          if (viewportAnchor < stepTops[index] || viewportAnchor >= stepTops[index + 1]) continue;
+          const sectionProgress = Math.max(0, Math.min(1, (viewportAnchor - stepTops[index]) / Math.max(1, stepTops[index + 1] - stepTops[index])));
+          nextIndex = index;
+          nextProgress = ((index + sectionProgress) / finalIndex) * 100;
+          break;
+        }
+      }
+
+      setScrollProgress(nextProgress);
+      setScrollIndex(nextIndex);
+    };
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [groups]);
+
+  function navigateTo(groupId: string) {
+    if (groupId === "review") onReview();
+    else onSelect(groupId);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.getElementById(`custom-step-${groupId}`)?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start"
+        });
+      });
+    });
+  }
+
+  const threadGroups = [...groups, { id: "review", label: "Review" } as CustomizationGroup];
+  const threadNodeXs = threadGroups.map((_, index) => [8, 24, 12, 30, 10, 26][index % 6]);
+  const threadHeight = threadGroups.length * 48 - 16;
+  const threadPath = threadNodeXs.reduce((path, x, index) => {
+    const y = 16 + index * 48;
+    if (index === 0) return `M${x} ${y}`;
+    const previousX = threadNodeXs[index - 1];
+    const previousY = y - 48;
+    return `${path} C${previousX} ${previousY + 24} ${x} ${y - 24} ${x} ${y}`;
+  }, "");
+
   return (
-    <nav className="pdp-scroll-thread" aria-label="Customization steps">
-      <div className="pdp-scroll-thread__track"><span style={{ height: `${progress}%` }} /></div>
-      {[...groups, { id: "review", label: "Review" } as CustomizationGroup].map((group, index) => (
-        <button key={group.id} type="button" onClick={() => group.id === "review" ? onReview() : onSelect(group.id)} className={clsx("pdp-scroll-thread__tick", index === activeIndex && "is-active")}>
-          <span aria-hidden="true" /> <b>{group.label}</b>
-        </button>
-      ))}
+    <nav ref={threadRef} className="pdp-scroll-thread" aria-label="Customization steps">
+      <div className="pdp-scroll-thread__sticky">
+        <svg className="pdp-scroll-thread__track" viewBox={`0 0 48 ${threadHeight}`} preserveAspectRatio="none" aria-hidden="true" style={{ height: threadHeight }}>
+          <path className="pdp-scroll-thread__path-base" pathLength="100" d={threadPath} />
+          <path
+            className="pdp-scroll-thread__path-progress"
+            pathLength="100"
+            d={threadPath}
+            style={{ strokeDashoffset: 100 - scrollProgress }}
+          />
+        </svg>
+        {threadGroups.map((group, index) => (
+          <button
+            key={group.id}
+            type="button"
+            onClick={() => navigateTo(group.id)}
+            className={clsx("pdp-scroll-thread__tick", index === scrollIndex && "is-active", index === selectedIndex && "is-selected")}
+            aria-current={index === scrollIndex ? "step" : undefined}
+            aria-label={`Go to ${group.label}`}
+            style={{ "--thread-x": `${threadNodeXs[index]}px` } as CSSProperties}
+          >
+            <span aria-hidden="true" /> <b>{group.label}</b>
+          </button>
+        ))}
+      </div>
     </nav>
   );
 }
