@@ -96,7 +96,7 @@ gtag('consent', 'default', {
 });
 gtag('js', new Date());
 gtag('config', '${measurementId}', {
-  send_page_view: false,
+  send_page_view: true,
   anonymize_ip: true,
   linker: { domains: ['dollwow.com', 'checkout.dollwow.com'] }
 });`

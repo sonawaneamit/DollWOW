@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { readConsent, updateGtagConsent } from "@/lib/analytics/consent";
@@ -17,9 +17,14 @@ declare global {
 function PageViewTracker({ measurementId }: { measurementId?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const initialPageViewSentByConfig = useRef(false);
 
   useEffect(() => {
     if (!measurementId) return;
+    if (!initialPageViewSentByConfig.current) {
+      initialPageViewSentByConfig.current = true;
+      return;
+    }
     const query = searchParams?.toString();
     trackPageView(query ? `${pathname}?${query}` : pathname);
   }, [measurementId, pathname, searchParams]);
