@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="DollWOW">
+  <rect width="512" height="512" rx="116" fill="#bf471e"/>
+  <rect x="18" y="18" width="476" height="476" rx="100" fill="none" stroke="#f4dfc8" stroke-width="18"/>
+  <path fill="#fff8f2" d="M96 123h80c76 0 125 52 125 133s-49 133-125 133H96V123Zm62 57v152h17c40 0 63-28 63-76s-23-76-63-76h-17Z"/>
+  <path fill="#2b211b" d="M250 123h48l33 160 35-160h48l33 160 33-160h30l-47 266h-45l-28-129-28 129h-45l-67-266Z"/>
+</svg>

@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and specialist support.",
   icons: {
     icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.png", type: "image/png", sizes: "512x512" }
     ],
