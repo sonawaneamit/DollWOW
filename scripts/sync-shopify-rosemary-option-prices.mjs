@@ -32,7 +32,7 @@ if (args["apply-report"]) {
   process.exit(0);
 }
 
-const products = await fetchProducts(limit || 2000);
+const products = await fetchProducts(limit || 2000, args.handle ? String(args.handle) : "");
 const candidates = products.filter((product) => {
   const sourceUrl = product.sourceUrl?.value || "";
   const groups = parseGroups(product.customizationGroups?.value);
@@ -140,7 +140,7 @@ function mergePriceDeltas(groups, sourceGroups) {
           unmatchedOptions.push(`${group.label}: ${option.label}`);
           return option;
         }
-        if (!Number.isFinite(sourceOption.priceDelta) || sourceOption.priceDelta <= 0) return option;
+        if (!Number.isFinite(sourceOption.priceDelta)) return option;
         pricedMatches += 1;
         return { ...option, priceDelta: sourceOption.priceDelta };
       })
@@ -173,7 +173,7 @@ function extractOption(html) {
 
 function extractOptionPriceDelta(html) {
   const direct = Number(decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || ""));
-  if (Number.isFinite(direct) && direct > 0) return direct;
+  if (Number.isFinite(direct)) return direct;
   for (const attribute of ["data-rules", "data-original-rules"]) {
     const raw = decodeHtml(html.match(new RegExp(`\\b${attribute}=["']([^"']*)["']`, "i"))?.[1] || "");
     const values = [...raw.matchAll(/-?\d+(?:\.\d+)?/g)].map((match) => Number(match[0])).filter((value) => Number.isFinite(value) && value > 0);
@@ -182,12 +182,12 @@ function extractOptionPriceDelta(html) {
   return 0;
 }
 
-async function fetchProducts(limit) {
+async function fetchProducts(limit, handle = "") {
   const products = [];
   let after = null;
   do {
-    const data = await adminFetch(`query Products($first: Int!, $after: String) {
-      products(first: $first, after: $after) {
+    const data = await adminFetch(`query Products($first: Int!, $after: String, $query: String) {
+      products(first: $first, after: $after, query: $query) {
         nodes {
           id handle title
           sourceUrl: metafield(namespace: "custom", key: "source_url") { value }
@@ -195,7 +195,7 @@ async function fetchProducts(limit) {
         }
         pageInfo { hasNextPage endCursor }
       }
-    }`, { first: Math.min(250, limit - products.length), after });
+    }`, { first: Math.min(250, limit - products.length), after, query: handle ? `handle:${handle}` : null });
     products.push(...data.products.nodes);
     after = data.products.pageInfo.endCursor;
     if (!data.products.pageInfo.hasNextPage) break;
