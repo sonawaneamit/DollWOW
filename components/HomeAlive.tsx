@@ -45,9 +45,9 @@ const HERO_VIDEO_MEDIA: Record<string, { video: string; poster: string }> = {
 };
 
 const SPOTLIGHT_HANDLE_PRIORITY = [
-  "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
   "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+  "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
   "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l",
   "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg",
   "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
