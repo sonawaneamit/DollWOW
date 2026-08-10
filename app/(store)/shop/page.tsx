@@ -10,14 +10,11 @@ export const metadata = { title: "Shop Dolls" };
 export default async function ShopPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const params = await searchParams;
   const filters = filtersFromSearchParams(params);
-  const useLatestDefault = activeFilterCount(filters) === 0;
   const needsWideFetch = requiresCatalogWideFetch(filters);
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: needsWideFetch ? 2200 : 600,
-    includeCustomizationGroups: false,
-    sortKey: useLatestDefault ? "CREATED_AT" : "TITLE",
-    reverse: useLatestDefault
+    includeCustomizationGroups: false
   });
   const filteredProducts = filterProducts(products, filters);
   const catalogPage = paginateCatalog(filteredProducts, catalogPageFromValue(params.page));
@@ -47,7 +44,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
 
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
-          <ProductFilters filters={filters} variant="sidebar" defaultSort={useLatestDefault ? "latest" : undefined} />
+          <ProductFilters filters={filters} variant="sidebar" defaultSort="latest" />
         </aside>
         <div className="shop-visual-main">
           {hasActiveFilters ? (

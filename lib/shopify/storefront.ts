@@ -143,8 +143,8 @@ export async function getProducts({
   query,
   first = 96,
   includeCustomizationGroups = false,
-  sortKey = "TITLE",
-  reverse = false,
+  sortKey = "CREATED_AT",
+  reverse = true,
   cacheKey,
   cache,
   revalidate

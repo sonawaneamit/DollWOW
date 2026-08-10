@@ -35,7 +35,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
 
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
-          <ProductFilters filters={filters} action="/warehouse" resetHref="/warehouse" variant="sidebar" />
+          <ProductFilters filters={filters} action="/warehouse" resetHref="/warehouse" variant="sidebar" defaultSort="latest" />
         </aside>
         <div className="shop-visual-main">
           <div className="shop-active-strip">

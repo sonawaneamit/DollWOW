@@ -29,7 +29,7 @@ export default async function CustomizePage({ searchParams }: { searchParams: Pr
         </div>
       </div>
       <div className="mt-8">
-        <ProductFilters filters={filters} action="/customize" resetHref="/customize" />
+        <ProductFilters filters={filters} action="/customize" resetHref="/customize" defaultSort="latest" />
       </div>
       <div className="mt-8">
         <ProductGrid products={catalogPage.items} filters={filters} resetHref="/customize" />

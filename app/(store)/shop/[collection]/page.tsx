@@ -104,7 +104,7 @@ export default async function CollectionPage({
       ) : null}
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
-          <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" />
+          <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
         </aside>
         <div className="shop-visual-main">
           {hasActiveFilters ? (
