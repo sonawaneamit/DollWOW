@@ -85,8 +85,8 @@ describe("customization checkout support", () => {
             label: "Hair implanted color",
             display: "cards",
             options: [
-              { id: "default", label: "Factory default" },
-              { id: "black", label: "Black" }
+              { id: "default", label: "Factory default", priceDelta: 0 },
+              { id: "black", label: "Black", priceDelta: 0 }
             ]
           },
           {
@@ -94,8 +94,8 @@ describe("customization checkout support", () => {
             label: "Hair implanted color",
             display: "cards",
             options: [
-              { id: "default", label: "Factory default" },
-              { id: "brown", label: "Brown" }
+              { id: "default", label: "Factory default", priceDelta: 0 },
+              { id: "brown", label: "Brown", priceDelta: 0 }
             ]
           }
         ]

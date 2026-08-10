@@ -85,6 +85,46 @@ describe("customization config", () => {
     expect(config.groups[0]?.id).toBe("model-eyes");
   });
 
+  it("does not expose unpriced supplier-reference options to shoppers", () => {
+    const source = sampleProducts[4];
+    const product: Product = {
+      ...source,
+      title: "HR Dolls Adair 167cm Silicone Head",
+      vendor: "HR Dolls",
+      extended: {
+        ...source.extended,
+        brand: "HR Dolls",
+        customizationGroups: [
+          {
+            id: "skin-tone",
+            label: "Skin tone",
+            display: "cards",
+            options: [
+              { id: "white", label: "White Skin" },
+              { id: "flesh", label: "Flesh Skin" },
+              { id: "light-tan", label: "Light Tan Skin" }
+            ]
+          },
+          {
+            id: "care",
+            label: "Care",
+            display: "cards",
+            options: [
+              { id: "none", label: "No add-on" },
+              { id: "kit", label: "Care kit", priceDelta: 49 },
+              { id: "unpriced", label: "Flight case" }
+            ]
+          }
+        ]
+      }
+    };
+
+    const config = getCustomizationConfig(product);
+
+    expect(config.groups.map((group) => group.id)).toEqual(["care"]);
+    expect(config.groups[0]?.options.map((option) => option.id)).toEqual(["none", "kit"]);
+  });
+
   it("keeps unpriced imported upgrades out of the checkout selection", () => {
     const config: BrandCustomizationConfig = {
       id: "quote-required",

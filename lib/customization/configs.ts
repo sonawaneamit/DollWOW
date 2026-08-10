@@ -1,5 +1,5 @@
 import type { Product } from "@/types/product";
-import type { BrandCustomizationConfig, CustomizationGroup, CustomizationRule } from "@/types/customization";
+import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 
@@ -266,11 +266,12 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
   );
   if (importedGroups?.length) {
     const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
+    const onlineGroups = withIronAi(product, withIrontechUlw(product, onlineCheckoutGroups(sourceGroups)));
     return {
       id: "imported",
       brandLabel: product.extended.brand ?? product.vendor,
       leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
-      groups: uniqueCustomizationGroups(withIronAi(product, withIrontechUlw(product, sourceGroups))),
+      groups: uniqueCustomizationGroups(onlineGroups),
       rules: []
     };
   }
@@ -416,6 +417,29 @@ function supportsIrontechUlw(product: Product) {
   const fullSiliconeBody = material.includes("silicone") && !material.includes("head") && !material.includes("hybrid") && !material.includes("tpe");
   const fullBody = !/\b(torso|hips?|body-part)\b/.test(form);
   return fullSiliconeBody && fullBody;
+}
+
+/**
+ * Supplier import pages often include every factory reference option but no
+ * price data. Those references are useful during internal sourcing, but a
+ * customer must never be shown a choice they cannot actually select and buy.
+ * Keep only online-orderable choices (priced, included/default, or explicitly
+ * free) and drop a group entirely when it no longer offers a real choice.
+ */
+function onlineCheckoutGroups(groups: CustomizationGroup[]) {
+  return groups
+    .map((group) => ({
+      ...group,
+      options: group.options.filter(isOnlineCheckoutOption)
+    }))
+    .filter((group) => group.options.length >= 2);
+}
+
+function isOnlineCheckoutOption(option: CustomizationOption) {
+  if (option.priceDelta !== undefined) return true;
+  if (/\bfree\b/i.test(option.label)) return true;
+  if (/^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(option.label)) return true;
+  return /default supplier selection/i.test(option.productionNote || "");
 }
 
 function uniqueCustomizationGroups(groups: CustomizationGroup[]) {
