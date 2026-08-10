@@ -8,6 +8,11 @@ const args = parseArgs(process.argv.slice(2));
 const execute = Boolean(args.execute);
 const limit = Math.max(0, Number(args.limit || 0));
 const concurrency = Math.min(10, Math.max(1, Number(args.concurrency || 5)));
+const match = String(args.match || "").trim().toLowerCase();
+const brand = String(args.brand || "").trim().toLowerCase();
+const titlePrefix = String(args["title-prefix"] || "").trim().toLowerCase();
+const excludeTitlePrefix = String(args["exclude-title-prefix"] || "").trim().toLowerCase();
+const catalogBrand = String(args["catalog-brand"] || "").trim().toLowerCase();
 let tokenCache = null;
 
 await loadLocalEnv();
@@ -33,10 +38,27 @@ if (args["apply-report"]) {
 }
 
 const products = await fetchProducts(limit || 2000, args.handle ? String(args.handle) : "");
+if (args["list-vendors"] || args["list-brands"]) {
+  const counts = new Map();
+  for (const product of products) {
+    if (!isRosemaryUrl(product.sourceUrl?.value || "") || !parseGroups(product.customizationGroups?.value).length) continue;
+    const value = args["list-brands"] ? product.catalogBrand?.value || "(blank)" : product.vendor || "(blank)";
+    counts.set(value, (counts.get(value) || 0) + 1);
+  }
+  console.log(JSON.stringify([...counts].sort((left, right) => right[1] - left[1]).map(([value, count]) => ({ value, count })), null, 2));
+  process.exit(0);
+}
 const candidates = products.filter((product) => {
   const sourceUrl = product.sourceUrl?.value || "";
   const groups = parseGroups(product.customizationGroups?.value);
-  return isRosemaryUrl(sourceUrl) && groups.length;
+  const searchable = `${product.title} ${product.handle} ${product.vendor}`.toLowerCase();
+  const normalizedVendor = normalize(product.vendor || "");
+  return isRosemaryUrl(sourceUrl) && groups.length &&
+    (!match || searchable.includes(match)) &&
+    (!brand || normalizedVendor === normalize(brand)) &&
+    (!titlePrefix || product.title.toLowerCase().startsWith(titlePrefix)) &&
+    (!excludeTitlePrefix || !product.title.toLowerCase().startsWith(excludeTitlePrefix)) &&
+    (!catalogBrand || normalize(product.catalogBrand?.value || "") === normalize(catalogBrand));
 });
 
 console.log(`Checking ${candidates.length} Rosemary-sourced products with imported customization groups…`);
@@ -59,7 +81,9 @@ const report = {
 
 const reportDir = path.join(ROOT, "data", "exports");
 await fs.mkdir(reportDir, { recursive: true });
-const reportPath = path.join(reportDir, "shopify-rosemary-option-price-sync.json");
+const reportKey = catalogBrand || titlePrefix || brand || match;
+const reportSuffix = reportKey ? `-${reportKey.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}` : "";
+const reportPath = path.join(reportDir, `shopify-rosemary-option-price-sync${reportSuffix}.json`);
 await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 
 if (execute) {
@@ -172,8 +196,9 @@ function extractOption(html) {
 }
 
 function extractOptionPriceDelta(html) {
-  const direct = Number(decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || ""));
-  if (Number.isFinite(direct)) return direct;
+  const directRaw = decodeHtml(html.match(/\bdata-price=["']([^"']*)["']/i)?.[1] || "").trim();
+  const direct = Number(directRaw);
+  if (directRaw && Number.isFinite(direct)) return direct;
   for (const attribute of ["data-rules", "data-original-rules"]) {
     const raw = decodeHtml(html.match(new RegExp(`\\b${attribute}=["']([^"']*)["']`, "i"))?.[1] || "");
     const values = [...raw.matchAll(/-?\d+(?:\.\d+)?/g)].map((match) => Number(match[0])).filter((value) => Number.isFinite(value) && value > 0);
@@ -189,7 +214,8 @@ async function fetchProducts(limit, handle = "") {
     const data = await adminFetch(`query Products($first: Int!, $after: String, $query: String) {
       products(first: $first, after: $after, query: $query) {
         nodes {
-          id handle title
+          id handle title vendor
+          catalogBrand: metafield(namespace: "custom", key: "brand") { value }
           sourceUrl: metafield(namespace: "custom", key: "source_url") { value }
           customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
         }
@@ -252,16 +278,25 @@ async function getAdminAccessToken(domain) {
 
 async function fetchText(url) {
   let lastError;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: { "User-Agent": "DollWow catalog price sync/1.0" },
-        signal: AbortSignal.timeout(12_000)
+        signal: AbortSignal.timeout(20_000)
       });
-      if (!response.ok) throw new Error(`Source returned HTTP ${response.status}`);
+      if (!response.ok) {
+        const error = new Error(`Source returned HTTP ${response.status}`);
+        error.status = response.status;
+        error.retryAfter = Number(response.headers.get("retry-after") || 0);
+        throw error;
+      }
       return await response.text();
     } catch (error) {
       lastError = error;
+      const retryable = error?.status === 429 || error?.status === 503 || error?.name === "TimeoutError";
+      if (!retryable || attempt === 4) break;
+      const delayMs = error.retryAfter ? error.retryAfter * 1000 : Math.min(8_000, 750 * (2 ** (attempt - 1)));
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
     }
   }
   throw lastError;

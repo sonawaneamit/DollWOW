@@ -407,6 +407,7 @@ main {
   border-radius: 20px;
   background: rgb(var(--color-surface-tint));
   color: rgb(var(--color-text));
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   box-shadow: none;
 }
 
