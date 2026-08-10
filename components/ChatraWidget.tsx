@@ -4,9 +4,8 @@ import Script from "next/script";
 
 export function ChatraWidget({ chatraId }: { chatraId: string }) {
   const setup = JSON.stringify({
-    buttonStyle: "round",
+    buttonStyle: "tab",
     buttonPosition: "br",
-    buttonSize: 56,
     zIndex: 70,
     colors: {
       buttonText: "#ffffff",
