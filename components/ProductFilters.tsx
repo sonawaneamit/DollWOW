@@ -31,17 +31,19 @@ export function ProductFilters({
   action = "/shop",
   resetHref = "/shop",
   variant = "bar",
-  defaultSort
+  defaultSort,
+  lockedBrand = false
 }: {
   filters?: CatalogFilters;
   action?: string;
   resetHref?: string;
   variant?: "bar" | "sidebar";
   defaultSort?: string;
+  lockedBrand?: boolean;
 }) {
   const router = useRouter();
-  const count = activeFilterCount(filters);
-  const activeFilters = buildActiveFilterLinks(filters, action);
+  const count = Math.max(0, activeFilterCount(filters) - (lockedBrand && filters.brand ? 1 : 0));
+  const activeFilters = buildActiveFilterLinks(filters, action, lockedBrand ? ["brand"] : []);
   const isSidebar = variant === "sidebar";
   const [mobileOpen, setMobileOpen] = useState(count > 0);
 
@@ -105,7 +107,15 @@ export function ProductFilters({
           />
         </label>
         {isSidebar ? <FilterActions resetHref={resetHref} autoApply /> : null}
-        <SelectFilter label="Brand" name="brand" value={filters.brand} options={catalogFilterOptions.brands} />
+        {lockedBrand && filters.brand ? (
+          <div className="product-filter-control">
+            <span>Brand</span>
+            <input type="hidden" name="brand" value={filters.brand} />
+            <div className="product-filter-readonly">{getCatalogFilterLabel("brand", filters.brand) || filters.brand}</div>
+          </div>
+        ) : (
+          <SelectFilter label="Brand" name="brand" value={filters.brand} options={catalogFilterOptions.brands} />
+        )}
         <SelectFilter label="Look" name="look" value={filters.look} options={catalogFilterOptions.looks} />
         <SelectFilter label="Gender" name="bodyType" value={filters.bodyType} options={catalogFilterOptions.bodyTypes} />
         <SelectFilter label="Availability" name="availability" value={filters.availability} options={catalogFilterOptions.availability} />
@@ -187,11 +197,11 @@ function SelectFilter({
   );
 }
 
-function buildActiveFilterLinks(filters: CatalogFilters, action: string) {
+function buildActiveFilterLinks(filters: CatalogFilters, action: string, excludedKeys: Array<keyof CatalogFilters> = []) {
   const entries = Object.entries(filters).filter(([, value]) => Boolean(value)) as Array<[keyof CatalogFilters, string]>;
 
   return entries
-    .filter(([key, value]) => !(key === "sort" && value === "featured"))
+    .filter(([key, value]) => !(key === "sort" && value === "featured") && !excludedKeys.includes(key))
     .map(([key, value]) => {
       const next = new URLSearchParams();
       for (const [entryKey, entryValue] of entries) {

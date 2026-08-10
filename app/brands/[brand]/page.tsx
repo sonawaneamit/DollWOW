@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
-import { BrandProductGrid } from "@/components/BrandProductGrid";
+import { ProductFilters } from "@/components/ProductFilters";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
-import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
+import { activeFilterCount, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
@@ -36,20 +36,26 @@ export default async function BrandHubPage({
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) notFound();
 
-  const filters: CatalogFilters = { brand: brand.value };
+  const requestedFilters = filtersFromSearchParams(rawSearchParams);
+  const filters = compactFilters({ ...requestedFilters, brand: brand.value });
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
-    first: 600,
+    first: requiresCatalogWideFetch(filters) ? 2200 : 600,
     cacheKey: `${brand.value}-release-order-v1`,
     cache: "no-store"
   });
   const filtered = filterProducts(products, filters);
-  const orderedProducts = orderBySourceRelease(filtered);
+  const orderedProducts = !filters.sort || filters.sort === "latest" ? orderBySourceRelease(filtered) : filtered;
   const catalogPage = paginateCatalog(orderedProducts, catalogPageFromValue(rawSearchParams.page));
-  const hasReleaseOrder = orderedProducts.some((product) => product.extended.sourceReleaseRank !== undefined);
   const profile = brandSeoProfile(brand);
   const relatedLinks = brandRelatedLinks(brand);
   const structuredData = buildBrandStructuredData(brand, orderedProducts);
+  const activeFilterLabels = Object.entries(filters)
+    .filter(([key, value]) => Boolean(value) && key !== "brand")
+    .filter(([key, value]) => !(key === "sort" && value === "featured"))
+    .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
+    .filter(Boolean) as string[];
+  const hasActiveFilters = activeFilterCount(filters) > 1;
 
   return (
     <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -109,12 +115,27 @@ export default async function BrandHubPage({
         </div>
       </section>
 
-      {hasReleaseOrder ? (
-        <BrandProductGrid brandLabel={brand.label} products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
-      ) : (
-        <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
-      )}
-      <CatalogPagination {...catalogPage} basePath={`/brands/${brand.collectionHandle}`} searchParams={rawSearchParams} />
+      <div className="shop-visual-layout">
+        <aside className="shop-visual-sidebar">
+          <ProductFilters
+            filters={filters}
+            action={`/brands/${brand.collectionHandle}`}
+            resetHref={`/brands/${brand.collectionHandle}`}
+            variant="sidebar"
+            defaultSort="latest"
+            lockedBrand
+          />
+        </aside>
+        <div className="shop-visual-main">
+          {hasActiveFilters ? (
+            <div className="shop-active-strip">
+              {activeFilterLabels.map((label) => <span key={label}>{label}</span>)}
+            </div>
+          ) : null}
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+          <CatalogPagination {...catalogPage} basePath={`/brands/${brand.collectionHandle}`} searchParams={rawSearchParams} />
+        </div>
+      </div>
 
       <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
         <div className="max-w-3xl">
