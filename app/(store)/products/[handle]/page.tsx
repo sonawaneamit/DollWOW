@@ -13,6 +13,7 @@ import { ProductOptions } from "@/components/ProductOptions";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
+import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildPdpDecisionNotes,
@@ -64,6 +65,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const fitChecks = buildPdpFitChecks(product);
   const productStructuredData = buildProductStructuredData(product);
   const faqStructuredData = buildProductFaqStructuredData(product);
+  const productBrand = product.extended.brand ?? product.vendor;
+  const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
 
   return (
     <div>
@@ -108,7 +111,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 productDisplayName={displayName || undefined}
                 productHandle={product.handle}
                 productImage={product.featuredImage ?? product.images[0] ?? null}
-                brand={product.extended.brand ?? product.vendor}
+                brand={productBrand}
                 unitPrice={Number(price.amount)}
                 currencyCode={price.currencyCode}
                 deliveryEstimate={product.extended.deliveryEstimate}
@@ -119,7 +122,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               <a href="#overview">Overview</a>
               <a href="#build-studio">Options</a>
               <a href="#product-specs">Specs</a>
-              <a href="#authorization">Authorization</a>
+              {hasAuthorizationSection ? <a href="#authorization">Authorization</a> : null}
             </nav>
             <ProductSearchFitCard title={searchFit.title} summary={searchFit.summary} chips={searchFit.chips.map((chip) => chip.label)} />
             <ProductDecisionNotes notes={decisionNotes} />
@@ -164,9 +167,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       <ToneBand tone="deep" className="pdp-details-band">
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
-        <div id="authorization" className="scroll-mt-24">
-          <BrandAuthorizationCard brand={product.extended.brand ?? product.vendor} />
-        </div>
+        {hasAuthorizationSection ? (
+          <div id="authorization" className="scroll-mt-24">
+            <BrandAuthorizationCard brand={productBrand} />
+          </div>
+        ) : null}
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />

@@ -7,6 +7,7 @@ export type BrandAuthorization = {
   brand: string;
   brandValue?: string;
   relatedBrandValues?: string[];
+  relatedBrandNotes?: Record<string, string>;
   certificateIssuer?: string;
   aliases: string[];
   status: AuthorizationStatus;
@@ -83,6 +84,10 @@ export const brandAuthorizations: BrandAuthorization[] = [
     brand: "Irontech Dolls",
     brandValue: "irontech",
     relatedBrandValues: ["real-lady"],
+    relatedBrandNotes: {
+      "real-lady": "Real Lady is owned by Irontech Dolls, so the Irontech authorization certificate applies to this brand."
+    },
+    certificateIssuer: "Irontech Dolls",
     aliases: ["irontech", "irontech doll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/irontech-authorization.jpeg",
@@ -127,8 +132,8 @@ export function getBrandAuthorization(value: string | undefined | null) {
 
   return (
     brandAuthorizations.find((authorization) => {
-      if (authorization.brandValue && authorization.brandValue === normalized) return true;
-      if (authorization.relatedBrandValues?.includes(normalized)) return true;
+      if (authorization.brandValue && normalizeBrandText(authorization.brandValue) === normalized) return true;
+      if (authorization.relatedBrandValues?.some((value) => normalizeBrandText(value) === normalized)) return true;
       return [authorization.brand, ...authorization.aliases].some((alias) => normalizeBrandText(alias) === normalized);
     }) ?? null
   );
