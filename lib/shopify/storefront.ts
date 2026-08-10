@@ -46,6 +46,7 @@ type SeoProductNode = {
   priceRange: Product["priceRange"];
   displayName: MetafieldValue;
   bodyType: MetafieldValue;
+  lookTags: MetafieldValue;
   brand: MetafieldValue;
   sourceTitle: MetafieldValue;
   sourceHandle: MetafieldValue;
@@ -259,6 +260,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }:
               }
               displayName: metafield(namespace: "custom", key: "display_name") { value }
               bodyType: metafield(namespace: "custom", key: "body_type") { value }
+              lookTags: metafield(namespace: "custom", key: "look_tags") { value }
               brand: metafield(namespace: "custom", key: "brand") { value }
               sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
               sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }
@@ -311,6 +313,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
     extended: {
       displayName: metafieldText(node.displayName) || undefined,
       bodyType: bodyType === "male" || bodyType === "female" || bodyType === "unknown" ? bodyType : undefined,
+      lookTags: metafieldStringArray(node.lookTags),
       brand: metafieldText(node.brand) || undefined,
       sourceTitle: metafieldText(node.sourceTitle) || undefined,
       sourceHandle: metafieldText(node.sourceHandle) || undefined,
@@ -341,6 +344,18 @@ function metafieldBoolean(value: MetafieldValue) {
   const normalized = metafieldText(value).toLowerCase();
   if (normalized === "true") return true;
   if (normalized === "false") return false;
+  return undefined;
+}
+
+function metafieldStringArray(value: MetafieldValue) {
+  const text = metafieldText(value);
+  if (!text) return undefined;
+  try {
+    const parsed = JSON.parse(text);
+    if (Array.isArray(parsed)) return parsed.map((item) => String(item).trim()).filter(Boolean);
+  } catch {
+    return text.split(",").map((item) => item.trim()).filter(Boolean);
+  }
   return undefined;
 }
 

@@ -1,6 +1,6 @@
 # Step 4: Normalized Keyword Universe
 
-Generated: 2026-08-10T18:12:24.795Z
+Generated: 2026-08-10T18:52:33.990Z
 
 ## Completion Gate
 
@@ -16,7 +16,7 @@ Every raw candidate is retained under one canonical variant key or rejected with
 - Rejected keywords: 4201
 - Accounted candidates: 4771
 - Retained variants with fresh metrics: 338
-- Retained variants with live SERPs: 139
+- Retained variants with live SERPs: 138
 - API cost: $0.0000
 
 ## Rejection Reasons

@@ -1,6 +1,6 @@
 # Step 3: Live US Keyword Metrics And SERPs
 
-Generated: 2026-08-10T16:31:32.053Z
+Generated: 2026-08-10T18:48:52.282Z
 
 Mode: production
 
@@ -19,8 +19,8 @@ Fresh US metrics exist and at least 95% of selected keywords have successful des
 - Desktop and mobile SERPs requested: 200
 - Successful SERPs: 200
 - Keywords with both devices: 100
-- Normalized organic result rows: 2752
-- Recorded DataForSEO cost: $0.6385
+- Normalized organic result rows: 2740
+- Recorded DataForSEO cost: $0.6355
 
 ## Battlefield Coverage
 
@@ -40,34 +40,34 @@ Fresh US metrics exist and at least 95% of selected keywords have successful des
 
 | Domain | Keywords | Appearances | Top 10 | Best rank | Page types |
 | --- | ---: | ---: | ---: | ---: | --- |
-| youtube.com | 89 | 350 | 221 | 1 | guide: 49, other: 301 |
-| amazon.com | 73 | 255 | 202 | 1 | other: 214, guide: 18, collection: 23 |
-| reddit.com | 49 | 97 | 82 | 1 | other: 73, guide: 18, collection: 6 |
-| ebay.com | 48 | 76 | 66 | 1 | collection: 51, other: 21, product: 4 |
-| yourdoll.com | 53 | 82 | 63 | 1 | homepage: 10, collection: 19, other: 51, product: 2 |
-| bestrealdoll.com | 35 | 57 | 43 | 1 | collection: 40, homepage: 2, other: 8, product: 1, guide: 6 |
-| realsexdoll.com | 28 | 48 | 43 | 1 | other: 9, homepage: 39 |
-| etsy.com | 24 | 46 | 41 | 1 | other: 31, collection: 15 |
-| facebook.com | 29 | 49 | 37 | 2 | other: 43, guide: 5, product: 1 |
-| realdoll.com | 24 | 42 | 33 | 1 | homepage: 32, product: 7, other: 2, guide: 1 |
-| sexdollqueen.com | 28 | 42 | 29 | 1 | guide: 37, collection: 1, other: 4 |
-| rosemarydoll.com | 26 | 40 | 27 | 1 | homepage: 3, guide: 10, collection: 4, other: 23 |
-| en.wikipedia.org | 17 | 28 | 25 | 1 | other: 28 |
-| sexyrealsexdolls.com | 26 | 36 | 24 | 2 | collection: 28, other: 4, product: 2, guide: 2 |
-| instagram.com | 21 | 38 | 24 | 3 | other: 35, guide: 1, collection: 2 |
-| joylovedolls.com | 24 | 33 | 20 | 1 | homepage: 6, collection: 25, guide: 1, other: 1 |
-| pinterest.com | 12 | 23 | 20 | 2 | other: 13, collection: 7, guide: 3 |
-| spartanlover.com | 16 | 27 | 19 | 1 | collection: 12, homepage: 12, guide: 2, product: 1 |
-| uloversdoll.com | 16 | 26 | 19 | 1 | homepage: 2, other: 23, collection: 1 |
-| siliconelovers.com | 14 | 23 | 19 | 1 | homepage: 1, collection: 21, guide: 1 |
+| youtube.com | 90 | 344 | 228 | 1 | guide: 53, other: 291 |
+| amazon.com | 73 | 255 | 204 | 1 | other: 216, guide: 17, collection: 22 |
+| reddit.com | 50 | 99 | 81 | 1 | guide: 24, other: 69, collection: 6 |
+| yourdoll.com | 56 | 90 | 67 | 1 | homepage: 10, collection: 22, other: 55, product: 2, guide: 1 |
+| ebay.com | 44 | 73 | 63 | 1 | collection: 50, other: 19, product: 4 |
+| bestrealdoll.com | 33 | 56 | 46 | 1 | collection: 42, homepage: 3, other: 6, product: 1, guide: 4 |
+| realsexdoll.com | 28 | 49 | 45 | 1 | other: 12, homepage: 37 |
+| etsy.com | 25 | 45 | 40 | 1 | other: 29, collection: 15, guide: 1 |
+| facebook.com | 24 | 45 | 33 | 3 | other: 40, guide: 3, product: 2 |
+| realdoll.com | 25 | 43 | 32 | 1 | homepage: 31, product: 8, other: 2, guide: 2 |
+| sexdollqueen.com | 29 | 43 | 31 | 1 | guide: 40, collection: 1, other: 2 |
+| rosemarydoll.com | 26 | 38 | 28 | 1 | homepage: 3, guide: 10, collection: 5, other: 20 |
+| sexyrealsexdolls.com | 28 | 40 | 27 | 2 | collection: 35, other: 2, product: 2, guide: 1 |
+| en.wikipedia.org | 15 | 25 | 23 | 1 | other: 25 |
+| uloversdoll.com | 17 | 29 | 22 | 1 | homepage: 3, other: 24, collection: 2 |
+| spartanlover.com | 16 | 31 | 22 | 1 | collection: 18, homepage: 11, guide: 1, product: 1 |
+| joylovedolls.com | 22 | 32 | 21 | 2 | homepage: 6, collection: 23, guide: 2, other: 1 |
+| sexdolltech.com | 21 | 31 | 21 | 2 | product: 29, guide: 1, other: 1 |
+| myrobotdoll.com | 14 | 25 | 21 | 3 | guide: 13, product: 3, collection: 5, other: 4 |
+| instagram.com | 18 | 33 | 20 | 2 | other: 28, guide: 1, product: 2, collection: 2 |
 
 ## SERP Composition
 
-- other: 1424
-- collection: 507
-- guide: 403
-- homepage: 292
-- product: 126
+- other: 1372
+- collection: 532
+- guide: 406
+- homepage: 287
+- product: 143
 
 ## Notes
 
