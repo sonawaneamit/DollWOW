@@ -14,8 +14,7 @@ import {
   Info,
   Loader2,
   Maximize2,
-  ShoppingBag,
-  Sparkles
+  ShoppingBag
 } from "lucide-react";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { writeBrowserCartState } from "@/lib/cart/browser";
@@ -27,6 +26,7 @@ import {
   defaultMultipleOptionId,
   getDefaultSelections,
   getOptionConflict,
+  isOptionAvailableForCheckout,
   nextMultipleSelection,
   resolveCustomization,
   selectionIds
@@ -69,8 +69,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
-  const requiresPriceConfirmation = resolved.requiresPriceConfirmation;
-  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues && !requiresPriceConfirmation);
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
 
   useEffect(() => {
     if (!didMountRef.current) {
@@ -163,11 +162,8 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     }
   }
 
-  function askAboutBuild() {
-    router.push(`/support?product=${encodeURIComponent(product.handle)}`);
-  }
-
   function selectOption(groupId: string, optionId: string) {
+    if (!isOptionAvailableForCheckout(config, groupId, optionId)) return;
     const group = config.groups.find((item) => item.id === groupId);
     markGroupReviewed(groupId);
     setSelected((current) => ({
@@ -258,7 +254,6 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               optionPriceDelta={resolved.optionPriceDelta}
               totalPrice={resolved.totalPrice}
               currencyCode={currencyCode}
-              requiresPriceConfirmation={requiresPriceConfirmation}
               leadTimeNote={config.leadTimeNote}
             />
           </div>
@@ -345,7 +340,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                 <p className="mt-2 text-[15px] leading-6 text-text-dim">Check each choice, then continue to checkout. You can still change anything.</p>
 
                 <ReviewRows groups={config.groups} selected={selected} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
-                <PriceSummary basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} requiresPriceConfirmation={requiresPriceConfirmation} />
+                <PriceSummary basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} />
 
                 {hasIssues ? (
                   <div className="mt-5 space-y-2">
@@ -363,21 +358,14 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                   </p>
                 ) : null}
 
-                {requiresPriceConfirmation ? <p className="mt-5 rounded-sm bg-accent-tint p-4 text-[15px] leading-6 text-text">Some selected options need a final price. Ask our team before checkout.</p> : null}
                 {error ? <p className="mt-4 text-[15px] text-danger">{error}</p> : null}
 
                 <div className="mt-6 grid gap-3">
-                  {requiresPriceConfirmation ? (
-                    <button type="button" onClick={askAboutBuild} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover">
-                      <Sparkles className="h-5 w-5" /> Ask about this build
-                    </button>
-                  ) : (
-                    <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
-                      {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-                      Continue to secure checkout — {formatMoney(resolved.totalPrice, currencyCode)}
-                    </button>
-                  )}
-                  {disabledReason && !requiresPriceConfirmation ? <p className="text-[15px] leading-6 text-danger">{disabledReason}</p> : null}
+                  <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
+                    {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
+                    Continue to secure checkout — {formatMoney(resolved.totalPrice, currencyCode)}
+                  </button>
+                  {disabledReason ? <p className="text-[15px] leading-6 text-danger">{disabledReason}</p> : null}
                   <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
                     <ChevronLeft className="h-5 w-5" /> Back to {activeGroup.label}
                   </button>
@@ -398,12 +386,12 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           </div>
           <button
             type="button"
-            disabled={isReviewing ? (!requiresPriceConfirmation && (!canCheckout || loading)) : false}
-            onClick={isReviewing ? (requiresPriceConfirmation ? askAboutBuild : addToCart) : showReview}
+            disabled={isReviewing ? !canCheckout || loading : false}
+            onClick={isReviewing ? addToCart : showReview}
             className="inline-flex min-h-12 min-w-32 items-center justify-center gap-2 rounded-button bg-accent px-4 text-base font-semibold text-white hover:bg-accent-hover disabled:opacity-45"
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {isReviewing ? (requiresPriceConfirmation ? "Ask our team" : "Checkout") : "Review build"}
+            {isReviewing ? "Checkout" : "Review build"}
           </button>
         </div>
       </div>
@@ -414,7 +402,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   );
 }
 
-function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, requiresPriceConfirmation, leadTimeNote }: {
+function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, leadTimeNote }: {
   groups: CustomizationGroup[];
   selected: CustomizationSelections;
   selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
@@ -422,7 +410,6 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
   optionPriceDelta: number;
   totalPrice: number;
   currencyCode: string;
-  requiresPriceConfirmation: boolean;
   leadTimeNote?: string;
 }) {
   return (
@@ -434,7 +421,7 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
           return <div key={group.id} className="build-summary-row py-3 text-[15px]"><span className="text-text-dim">{group.label}</span><span className="min-w-0 font-semibold text-text">{summary}</span></div>;
         })}
       </div>
-      <PriceSummary basePrice={basePrice} optionPriceDelta={optionPriceDelta} totalPrice={totalPrice} currencyCode={currencyCode} requiresPriceConfirmation={requiresPriceConfirmation} compact />
+      <PriceSummary basePrice={basePrice} optionPriceDelta={optionPriceDelta} totalPrice={totalPrice} currencyCode={currencyCode} compact />
       <div aria-live="polite" className="sr-only">Current total {formatMoney(totalPrice, currencyCode)}</div>
       {leadTimeNote ? <p className="mt-4 text-sm leading-6 text-text-dim"><Clock3 className="mr-2 inline h-4 w-4" />{leadTimeNote}</p> : null}
       <p className="mt-3 text-sm leading-6 text-text-dim">Our team reviews every configuration before anything is made or shipped.</p>
@@ -464,19 +451,18 @@ function ReviewRows({ groups, selected, selectedOptions, currencyCode, onEdit }:
   );
 }
 
-function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, requiresPriceConfirmation, compact = false }: {
+function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, compact = false }: {
   basePrice: number;
   optionPriceDelta: number;
   totalPrice: number;
   currencyCode: string;
-  requiresPriceConfirmation: boolean;
   compact?: boolean;
 }) {
   return (
     <div className={clsx("border-t border-border", compact ? "mt-2 pt-3" : "mt-5 rounded-md bg-surface-tint p-4")}>
       <div className="flex justify-between gap-4 text-[15px] text-text-dim"><span>Base</span><span>{formatMoney(basePrice, currencyCode)}</span></div>
-      <div className="mt-2 flex justify-between gap-4 text-[15px] text-text-dim"><span>Options</span><span>{requiresPriceConfirmation ? "Price confirmed by our team" : formatMoney(optionPriceDelta, currencyCode)}</span></div>
-      <div className="mt-3 flex justify-between gap-4 border-t border-border pt-3 text-xl font-semibold text-text"><span>{requiresPriceConfirmation ? "Starting total" : "Total"}</span><span>{formatMoney(totalPrice, currencyCode)}</span></div>
+      <div className="mt-2 flex justify-between gap-4 text-[15px] text-text-dim"><span>Options</span><span>{formatMoney(optionPriceDelta, currencyCode)}</span></div>
+      <div className="mt-3 flex justify-between gap-4 border-t border-border pt-3 text-xl font-semibold text-text"><span>Total</span><span>{formatMoney(totalPrice, currencyCode)}</span></div>
     </div>
   );
 }
@@ -504,19 +490,21 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
         {group.options.map((option) => {
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
-          const isDisabled = Boolean(conflict) && !isSelected;
-          return <OptionTile key={option.id} option={option} selected={isSelected} disabled={isDisabled} conflict={conflict} currencyCode={currencyCode} onClick={() => onSelect(option.id)} />;
+          const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
+          const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
+          const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
+          return <OptionTile key={option.id} option={option} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} onClick={() => onSelect(option.id)} />;
         })}
       </div>
     </div>
   );
 }
 
-function OptionTile({ option, selected, disabled, conflict, currencyCode, onClick }: {
+function OptionTile({ option, selected, disabled, notice, currencyCode, onClick }: {
   option: CustomizationOption;
   selected: boolean;
   disabled: boolean;
-  conflict: string | null;
+  notice: string | null;
   currencyCode: string;
   onClick: () => void;
 }) {
@@ -539,10 +527,10 @@ function OptionTile({ option, selected, disabled, conflict, currencyCode, onClic
         <span className="block text-[17px] font-semibold text-text">{option.label}</span>
         {option.description ? <span className="mt-1 block text-sm leading-5 text-text-dim">{option.description}</span> : null}
         <span className="option-tile__price mt-2 inline-flex text-sm font-semibold">
-          {optionPriceLabel(option, currencyCode)}
+          {disabled && option.priceDelta === undefined && !/\bfree\b/i.test(option.label) ? "Unavailable online" : optionPriceLabel(option, currencyCode)}
         </span>
         {option.productionNote ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-text-dim"><Info className="mt-0.5 h-4 w-4 shrink-0" />{option.productionNote}</span> : null}
-        {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{conflict}</span> : null}
+        {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{notice}</span> : null}
       </span>
     </button>
   );
@@ -550,7 +538,7 @@ function OptionTile({ option, selected, disabled, conflict, currencyCode, onClic
 
 function optionPriceLabel(option: CustomizationOption, currencyCode: string) {
   if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included";
-  return /\bfree\b/i.test(option.label) ? "Included" : "Price confirmation required";
+  return "Included";
 }
 
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
@@ -658,7 +646,6 @@ function selectedLabelForGroup(group: CustomizationGroup, value: CustomizationSe
 function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSelectionValue | undefined, selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"], currencyCode: string) {
   const label = selectedLabelForGroup(group, value) || "Factory default";
   const options = selectedOptions.filter((option) => option.groupId === group.id);
-  if (options.some((option) => !option.priceConfirmed)) return `${label} · Price confirmed by our team`;
   const delta = options.reduce((sum, option) => sum + option.priceDelta, 0);
   return delta ? `${label} (+${formatMoney(delta, currencyCode)})` : `${label} — included`;
 }

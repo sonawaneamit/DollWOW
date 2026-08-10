@@ -32,8 +32,11 @@ function normalizedSelections(config: BrandCustomizationConfig, selections: Cust
   const defaults = getDefaultSelections(config);
   return Object.fromEntries(
     config.groups.map((group) => {
-      const value = selections[group.id] ?? defaults[group.id] ?? (group.selectionMode === "multiple" ? [] : "");
-      return [group.id, normalizeSelectionValue(group.selectionMode, value)];
+      const defaultValue = defaults[group.id] ?? (group.selectionMode === "multiple" ? [] : "");
+      const value = selections[group.id] ?? defaultValue;
+      const allowedIds = selectionIds(value).filter((optionId) => isOptionAvailableForCheckout(config, group.id, optionId));
+      if (group.selectionMode === "multiple") return [group.id, allowedIds.length ? allowedIds : selectionIds(defaultValue)];
+      return [group.id, allowedIds[0] ?? selectionIds(defaultValue)[0] ?? ""];
     })
   );
 }
@@ -63,7 +66,7 @@ export function resolveCustomization(
         optionId: option.id,
         optionLabel: option.label,
         priceDelta: option.priceDelta ?? 0,
-        priceConfirmed: includedByDefault || option.priceDelta !== undefined,
+        priceConfirmed: includedByDefault || hasCheckoutPrice(option),
         productionNote: option.productionNote
       });
     }
@@ -128,6 +131,13 @@ export function describeOption(config: BrandCustomizationConfig, groupId: string
   return `${match.group.label}: ${match.option.label}`;
 }
 
+export function isOptionAvailableForCheckout(config: BrandCustomizationConfig, groupId: string, optionId: string) {
+  const match = findOption(config, groupId, optionId);
+  if (!match) return false;
+  const includedByDefault = selectionIds(getDefaultSelections(config)[groupId]).includes(optionId);
+  return includedByDefault || hasCheckoutPrice(match.option);
+}
+
 export function defaultMultipleOptionId(options: CustomizationOption[]) {
   return (
     options.find((option) => isNoAddOnOption(option.id, option.label) || /default supplier selection/i.test(option.productionNote || ""))?.id ??
@@ -149,11 +159,6 @@ export function nextMultipleSelection(firstOptionId: string, currentValue: Custo
     return next.length ? next : noAddOnId ? [noAddOnId] : [];
   }
   return [...current.filter((id) => id !== noAddOnId), optionId];
-}
-
-function normalizeSelectionValue(selectionMode: "single" | "multiple" | undefined, value: CustomizationSelectionValue) {
-  if (selectionMode === "multiple") return selectionIds(value);
-  return selectionIds(value)[0] ?? "";
 }
 
 function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
@@ -180,4 +185,8 @@ function isNoAddOnOption(id: string, label = "") {
     id === "factory-default" ||
     /^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(label)
   );
+}
+
+function hasCheckoutPrice(option: CustomizationOption) {
+  return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) || isNoAddOnOption(option.id, option.label);
 }

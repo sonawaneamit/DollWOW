@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
-import { getDefaultSelections, getOptionConflict, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
+import { getDefaultSelections, getOptionConflict, isOptionAvailableForCheckout, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
 import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
 import { sampleProducts } from "@/lib/data/sample-products";
@@ -85,7 +85,7 @@ describe("customization config", () => {
     expect(config.groups[0]?.id).toBe("model-eyes");
   });
 
-  it("requires final pricing when an imported option has no verified price", () => {
+  it("keeps unpriced imported upgrades out of the checkout selection", () => {
     const config: BrandCustomizationConfig = {
       id: "quote-required",
       brandLabel: "Test brand",
@@ -106,9 +106,11 @@ describe("customization config", () => {
 
     const resolved = resolveCustomization(config, { upgrade: "quote-only" }, 1500);
 
-    expect(resolved.requiresPriceConfirmation).toBe(true);
+    expect(resolved.requiresPriceConfirmation).toBe(false);
     expect(resolved.totalPrice).toBe(1500);
-    expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Upgrade")?.value).toContain("price to confirm");
+    expect(resolved.selections.upgrade).toBe("as-shown");
+    expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Upgrade")?.value).toBe("As shown");
+    expect(isOptionAvailableForCheckout(config, "upgrade", "quote-only")).toBe(false);
   });
 
   it("treats imported factory defaults as included even when the supplier omitted a numeric price", () => {
@@ -158,7 +160,9 @@ describe("customization config", () => {
     expect(resolved.selectedOptions.every((option) => option.priceConfirmed)).toBe(true);
 
     const custom = resolveCustomization(config, { ...defaults, "body-finish": "custom-finish" }, 2110);
-    expect(custom.requiresPriceConfirmation).toBe(true);
+    expect(custom.requiresPriceConfirmation).toBe(false);
+    expect(custom.selections["body-finish"]).toBe("as-shown");
+    expect(isOptionAvailableForCheckout(config, "body-finish", "custom-finish")).toBe(false);
   });
 
   it("supports multi-select add-on groups with no-add-on exclusivity", () => {
