@@ -20,7 +20,7 @@ export function productImageSources(product: Product) {
 
 export type ProtectedImageSize = "full" | "card" | "thumb";
 
-const PROTECTED_IMAGE_VERSION = "2";
+const PROTECTED_IMAGE_VERSION = "3";
 
 export function protectedProductImageUrl(handle: string, position = 0, size: ProtectedImageSize = "full") {
   const params = new URLSearchParams({ v: PROTECTED_IMAGE_VERSION });

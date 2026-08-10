@@ -6,6 +6,7 @@ export const runtime = "nodejs";
 
 const MAX_SOURCE_BYTES = 30 * 1024 * 1024;
 const GOLD = "#d7a846";
+let watermarkLogoPromise: Promise<Buffer> | null = null;
 
 export async function GET(request: Request, { params }: { params: Promise<{ handle: string; position: string }> }) {
   const { handle, position: rawPosition } = await params;
@@ -37,23 +38,26 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
     .toBuffer({ resolveWithObject: true });
   const width = normalized.info.width;
   const height = normalized.info.height;
-  const fontSize = Math.max(28, Math.round(width * 0.073));
-  const letterSpacing = Math.max(5, Math.round(fontSize * 0.2));
-  const watermark = Buffer.from(`
-    <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.62"/>
-        </filter>
-      </defs>
-      <g transform="translate(${Math.round(width * 0.5)} ${Math.round(height * 0.63)}) rotate(-8)" opacity="0.22" filter="url(#shadow)">
-        <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="${GOLD}" stroke="#1a100c" stroke-opacity="0.42" stroke-width="2" paint-order="stroke" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" font-weight="600" letter-spacing="${letterSpacing}">DOLLWOW</text>
-      </g>
-    </svg>`);
   const shouldWatermark = requestedSize !== "thumb" && requestedSize !== "card";
-  const output = shouldWatermark
-    ? await sharp(normalized.data).composite([{ input: watermark, top: 0, left: 0 }]).webp({ quality: 86, effort: 4 }).toBuffer()
-    : normalized.data;
+  let output = normalized.data;
+  if (shouldWatermark) {
+    const sourceLogo = await watermarkLogo(new URL("/images/brand/dollwow-black-gold-lockup.png", request.url));
+    const mark = await sharp(sourceLogo)
+      .resize({ width: Math.max(250, Math.round(width * 0.44)), withoutEnlargement: true })
+      .ensureAlpha()
+      .linear([0, 0, 0, 0.2], [215, 168, 70, 0])
+      .rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png()
+      .toBuffer({ resolveWithObject: true });
+    output = await sharp(normalized.data)
+      .composite([{
+        input: mark.data,
+        left: Math.max(0, Math.round((width - mark.info.width) / 2)),
+        top: Math.max(0, Math.min(height - mark.info.height, Math.round(height * 0.63 - mark.info.height / 2)))
+      }])
+      .webp({ quality: 86, effort: 4 })
+      .toBuffer();
+  }
 
   return new Response(new Uint8Array(output), {
     headers: {
@@ -63,4 +67,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
       "X-Content-Type-Options": "nosniff"
     }
   });
+}
+
+function watermarkLogo(url: URL) {
+  watermarkLogoPromise ??= fetch(url, { next: { revalidate: 86400 } }).then(async (response) => {
+    if (!response.ok) throw new Error(`Watermark logo unavailable (${response.status})`);
+    return Buffer.from(await response.arrayBuffer());
+  });
+  return watermarkLogoPromise;
 }
