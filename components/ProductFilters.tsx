@@ -79,20 +79,22 @@ export function ProductFilters({
             </button>
           ) : null}
         </div>
-        <div className="product-filters__quicklinks">
-          <Link href="/authorized-vendors" className="product-filters__chip inline-flex items-center gap-1.5">
-            <BadgeCheck className="h-3.5 w-3.5" /> Certificates
-          </Link>
-          {quickLinks.map((filter) => (
-            <Link
-              key={filter.href}
-              href={filter.href}
-              className="product-filters__chip"
-            >
-              {filter.label}
+        {!isSidebar ? (
+          <div className="product-filters__quicklinks">
+            <Link href="/authorized-vendors" className="product-filters__chip inline-flex items-center gap-1.5">
+              <BadgeCheck className="h-3.5 w-3.5" /> Certificates
             </Link>
-          ))}
-        </div>
+            {quickLinks.map((filter) => (
+              <Link
+                key={filter.href}
+                href={filter.href}
+                className="product-filters__chip"
+              >
+                {filter.label}
+              </Link>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       <form action={action} onSubmit={applyFilters} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
