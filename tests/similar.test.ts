@@ -98,4 +98,15 @@ describe("similar products", () => {
     const torso = { ...makeProduct({ id: "torso", handle: "torso" }), productType: "Torso" };
     expect(scoreSimilarProducts(reference, [torso], 4)).toHaveLength(0);
   });
+
+  it("keeps recommendations within the same brand", () => {
+    const otherBrand = makeProduct({
+      id: "other-brand",
+      handle: "other-brand",
+      vendor: "Another Brand",
+      price: "2000",
+      extended: { brand: "Another Brand", material: "TPE", bodyType: "female", heightCm: 165, stockStatus: "custom" }
+    });
+    expect(scoreSimilarProducts(reference, [otherBrand], 4)).toHaveLength(0);
+  });
 });

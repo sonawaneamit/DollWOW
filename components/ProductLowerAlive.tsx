@@ -264,9 +264,9 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
           <div>
             <p className="alive-eyebrow">
               <span />
-              Similar dolls
+              More from this brand
             </p>
-            <h2>Similar dolls to compare</h2>
+            <h2>New arrivals from {product.extended.brand ?? product.vendor}</h2>
           </div>
           <div className="alive-rail-actions">
             <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous similar dolls">

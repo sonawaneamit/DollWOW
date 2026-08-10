@@ -1,45 +1,14 @@
 import type { Product } from "@/types/product";
 
-type RankedProduct = {
-  candidate: Product;
-  score: number;
-  price: number;
-};
-
 /**
- * Builds a deliberately varied PDP rail from genuinely compatible products.
- * Product form and body type are eligibility rules; price, construction,
- * proportions, appearance, delivery lane, and brand determine ranking.
+ * Returns the newest compatible products from the same brand. Candidates are
+ * supplied newest-first by Shopify. Keeping this deterministic is preferable
+ * until DollWow has enough browsing and order data for behavioral ranking.
  */
 export function scoreSimilarProducts(reference: Product, candidates: Product[], limit = 5): Product[] {
-  const referencePrice = productPrice(reference);
-  const ranked = candidates
+  return candidates
     .filter((candidate) => isEligibleAlternative(reference, candidate))
-    .map((candidate) => ({ candidate, score: similarityScore(reference, candidate), price: productPrice(candidate) }))
-    .filter((entry) => entry.score >= 18)
-    .sort((a, b) => b.score - a.score);
-
-  if (!ranked.length) return [];
-
-  // Keep the rail useful rather than filling every slot with near-identical
-  // products: closest choices first, then price/delivery alternatives.
-  const selected: RankedProduct[] = [];
-  addFirst(selected, ranked);
-  addFirst(selected, ranked);
-  addFirst(selected, ranked, (entry) => referencePrice > 0 && entry.price > 0 && entry.price < referencePrice * 0.92);
-  addFirst(
-    selected,
-    ranked,
-    (entry) => reference.extended.stockStatus !== "ready_to_ship" && entry.candidate.extended.stockStatus === "ready_to_ship"
-  );
-  addFirst(selected, ranked, (entry) => referencePrice > 0 && entry.price > referencePrice * 1.08);
-
-  for (const entry of ranked) {
-    if (selected.length >= limit) break;
-    if (!selected.some((item) => item.candidate.id === entry.candidate.id)) selected.push(entry);
-  }
-
-  return selected.slice(0, limit).map((entry) => entry.candidate);
+    .slice(0, limit);
 }
 
 export function similarityScore(reference: Product, candidate: Product): number {
@@ -88,6 +57,10 @@ function isEligibleAlternative(reference: Product, candidate: Product): boolean 
   if (candidate.id === reference.id || candidate.handle === reference.handle) return false;
   if (!candidate.featuredImage && !candidate.images.length) return false;
   if (!candidate.variants.some((variant) => variant.availableForSale)) return false;
+
+  const refBrand = normalize(reference.extended.brand ?? reference.vendor);
+  const candBrand = normalize(candidate.extended.brand ?? candidate.vendor);
+  if (!refBrand || !candBrand || refBrand !== candBrand) return false;
 
   const refForm = productForm(reference);
   const candForm = productForm(candidate);
@@ -143,11 +116,6 @@ function isRelatedMaterial(a: string, b: string): boolean {
 
 function productPrice(product: Product): number {
   return Number(product.priceRange.minVariantPrice.amount) || 0;
-}
-
-function addFirst(selected: RankedProduct[], ranked: RankedProduct[], predicate: (entry: RankedProduct) => boolean = () => true) {
-  const entry = ranked.find((item) => predicate(item) && !selected.some((chosen) => chosen.candidate.id === item.candidate.id));
-  if (entry) selected.push(entry);
 }
 
 function normalize(value?: string): string {

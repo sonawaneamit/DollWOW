@@ -43,16 +43,20 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
 
 export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  const [storefrontProduct, allProducts, adminProductData] = await Promise.all([
-    getProductByHandle(handle),
-    getProducts({ first: 600, imageFirst: 1, cacheKey: "pdp-related-catalog-v2", revalidate: 3600 }),
-    getProductAdminMetafieldsByHandle(handle)
-  ]);
+  const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
+  const vendorQuery = `vendor:${JSON.stringify(product.vendor)}`;
+  const brandProducts = await getProducts({
+    query: vendorQuery,
+    first: 600,
+    imageFirst: 1,
+    cacheKey: `pdp-related-brand-v1-${product.vendor.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    revalidate: 3600
+  });
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
-  const alternatives = scoreSimilarProducts(product, allProducts, 5);
+  const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
