@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { brandHubHandles } from "@/lib/catalog/brandSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 import { getLearningArticles } from "@/lib/learn/content";
-import { getProducts } from "@/lib/shopify/storefront";
+import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -36,7 +36,7 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const products = await getProducts({ first: 2200 });
+  const products = await getSeoCatalogProducts({ first: 5000 });
   const articles = getLearningArticles();
 
   const staticEntries = staticRoutes.map((path) => ({

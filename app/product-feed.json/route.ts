@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { productPublicTitle } from "@/lib/catalog/naming";
-import { getProducts } from "@/lib/shopify/storefront";
+import { getCatalogBrand } from "@/lib/catalog/brands";
+import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
@@ -8,7 +9,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").repl
 export const revalidate = 3600;
 
 export async function GET() {
-  const products = await getProducts({ first: 2200 });
+  const products = await getSeoCatalogProducts({ first: 5000 });
   const payload = {
     site: "DollWow",
     canonicalBaseUrl: siteUrl,
@@ -18,7 +19,7 @@ export async function GET() {
       handle: product.handle,
       title: productPublicTitle(product),
       canonicalUrl: `${siteUrl}/products/${product.handle}`,
-      brand: product.extended.brand || product.vendor || null,
+      brand: getCatalogBrand(product.extended.brand || product.vendor)?.label || product.extended.brand || product.vendor || null,
       material: product.extended.material || null,
       bodyType: product.extended.bodyType || null,
       heightCm: product.extended.heightCm || null,

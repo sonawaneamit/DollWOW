@@ -34,6 +34,40 @@ type ProductCountData = {
   };
 };
 
+type MetafieldValue = { value: string } | null;
+type SeoProductNode = {
+  id: string;
+  handle: string;
+  title: string;
+  vendor: string;
+  productType: string;
+  tags: string[];
+  featuredImage: Product["featuredImage"];
+  priceRange: Product["priceRange"];
+  displayName: MetafieldValue;
+  bodyType: MetafieldValue;
+  brand: MetafieldValue;
+  sourceTitle: MetafieldValue;
+  sourceHandle: MetafieldValue;
+  headModel: MetafieldValue;
+  material: MetafieldValue;
+  heightCm: MetafieldValue;
+  weightLb: MetafieldValue;
+  cupSize: MetafieldValue;
+  warehouseCountry: MetafieldValue;
+  stockStatus: MetafieldValue;
+  deliveryEstimate: MetafieldValue;
+  stockLastCheckedAt: MetafieldValue;
+  customAvailable: MetafieldValue;
+};
+
+type SeoProductListData = {
+  products: {
+    edges: Array<{ cursor: string; node: SeoProductNode }>;
+    pageInfo: { hasNextPage: boolean; endCursor: string | null };
+  };
+};
+
 type SearchProductData = {
   products: {
     edges: Array<{
@@ -194,6 +228,120 @@ export async function getProducts({
     console.error(error);
     return fallbackProducts;
   }
+}
+
+export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }: { first?: number; revalidate?: number } = {}) {
+  const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
+  if (!hasShopifyStorefrontEnv()) return fallbackProducts;
+
+  try {
+    const products: Product[] = [];
+    let after: string | null = null;
+    const target = Math.max(1, first);
+
+    while (products.length < target) {
+      const pageSize = Math.min(250, target - products.length);
+      const data: SeoProductListData = await storefrontFetch<SeoProductListData>(
+        `# seo-catalog-v1
+        query SeoCatalogProducts($first: Int!, $after: String) {
+          products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
+            edges { cursor node {
+              id
+              handle
+              title
+              vendor
+              productType
+              tags
+              featuredImage { url altText width height }
+              priceRange {
+                minVariantPrice { amount currencyCode }
+                maxVariantPrice { amount currencyCode }
+              }
+              displayName: metafield(namespace: "custom", key: "display_name") { value }
+              bodyType: metafield(namespace: "custom", key: "body_type") { value }
+              brand: metafield(namespace: "custom", key: "brand") { value }
+              sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
+              sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }
+              headModel: metafield(namespace: "custom", key: "head_model") { value }
+              material: metafield(namespace: "custom", key: "material") { value }
+              heightCm: metafield(namespace: "custom", key: "height_cm") { value }
+              weightLb: metafield(namespace: "custom", key: "weight_lb") { value }
+              cupSize: metafield(namespace: "custom", key: "cup_size") { value }
+              warehouseCountry: metafield(namespace: "custom", key: "warehouse_country") { value }
+              stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
+              deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
+              stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
+              customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
+            } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }`,
+        { first: pageSize, after },
+        { revalidate }
+      );
+
+      products.push(...data.products.edges.map(({ node }) => mapSeoCatalogProduct(node)).filter(isCustomerVisibleProduct));
+      if (!data.products.pageInfo.hasNextPage) break;
+      after = data.products.pageInfo.endCursor;
+      if (!after) break;
+    }
+
+    return products.length ? products : fallbackProducts;
+  } catch (error) {
+    console.error(error);
+    return fallbackProducts;
+  }
+}
+
+function mapSeoCatalogProduct(node: SeoProductNode): Product {
+  const bodyType = metafieldText(node.bodyType);
+  const stockStatus = metafieldText(node.stockStatus);
+  return {
+    id: node.id,
+    handle: node.handle,
+    title: node.title,
+    description: "",
+    vendor: node.vendor,
+    productType: node.productType,
+    tags: node.tags || [],
+    featuredImage: node.featuredImage,
+    images: node.featuredImage ? [node.featuredImage] : [],
+    variants: [],
+    priceRange: node.priceRange,
+    extended: {
+      displayName: metafieldText(node.displayName) || undefined,
+      bodyType: bodyType === "male" || bodyType === "female" || bodyType === "unknown" ? bodyType : undefined,
+      brand: metafieldText(node.brand) || undefined,
+      sourceTitle: metafieldText(node.sourceTitle) || undefined,
+      sourceHandle: metafieldText(node.sourceHandle) || undefined,
+      headModel: metafieldText(node.headModel) || undefined,
+      material: metafieldText(node.material) || undefined,
+      heightCm: metafieldNumber(node.heightCm),
+      weightLb: metafieldNumber(node.weightLb),
+      cupSize: metafieldText(node.cupSize) || undefined,
+      warehouseCountry: metafieldText(node.warehouseCountry) || undefined,
+      stockStatus: stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
+      deliveryEstimate: metafieldText(node.deliveryEstimate) || undefined,
+      stockLastCheckedAt: metafieldText(node.stockLastCheckedAt) || undefined,
+      customAvailable: metafieldBoolean(node.customAvailable)
+    }
+  };
+}
+
+function metafieldText(value: MetafieldValue) {
+  return value?.value?.trim() ?? "";
+}
+
+function metafieldNumber(value: MetafieldValue) {
+  const parsed = Number(metafieldText(value));
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function metafieldBoolean(value: MetafieldValue) {
+  const normalized = metafieldText(value).toLowerCase();
+  if (normalized === "true") return true;
+  if (normalized === "false") return false;
+  return undefined;
 }
 
 /**
