@@ -22,8 +22,8 @@ export const catalogFilterOptions = {
   brands: brandFilterOptions(),
   looks: lookFilterOptions(),
   bodyTypes: [
-    { label: "Female dolls", value: "female" },
-    { label: "Male dolls", value: "male" }
+    { label: "Female", value: "female" },
+    { label: "Male", value: "male" }
   ],
   availability: [
     { label: "Ready to ship", value: "ready_to_ship" },
