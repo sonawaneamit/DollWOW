@@ -79,18 +79,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'?'dark':'light';document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
           }}
         />
-      </head>
-      <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
-        {siteStructuredData.map((entry) => (
-          <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
-        ))}
         {measurementId ? (
-          // GA4 Consent Mode v2 defaults: everything denied until the visitor
-          // chooses via the consent banner. Must run before the gtag loader.
-          <script
-            id="ga4-consent-defaults"
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
+          <>
+            <script
+              id="ga4-consent-and-init"
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = window.gtag || gtag;
 gtag('consent', 'default', {
@@ -99,10 +93,23 @@ gtag('consent', 'default', {
   ad_user_data: 'denied',
   ad_personalization: 'denied',
   wait_for_update: 500
+});
+gtag('js', new Date());
+gtag('config', '${measurementId}', {
+  send_page_view: false,
+  anonymize_ip: true,
+  linker: { domains: ['dollwow.com', 'checkout.dollwow.com'] }
 });`
-            }}
-          />
+              }}
+            />
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
+          </>
         ) : null}
+      </head>
+      <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
+        {siteStructuredData.map((entry) => (
+          <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
+        ))}
         <CurrencyProvider>
           <ComparisonProvider>
             <CartProvider>

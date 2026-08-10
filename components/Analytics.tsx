@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
@@ -38,20 +37,6 @@ export function Analytics({ measurementId }: { measurementId?: string }) {
     <>
       {measurementId ? (
         <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
-          <Script id="ga4-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = window.gtag || gtag;
-              gtag('js', new Date());
-              gtag('config', '${measurementId}', {
-                send_page_view: false,
-                anonymize_ip: true,
-                linker: { domains: ['dollwow.com', 'checkout.dollwow.com'] }
-              });
-            `}
-          </Script>
           <ConsentRestore />
           <Suspense fallback={null}>
             <PageViewTracker measurementId={measurementId} />
