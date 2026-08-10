@@ -199,15 +199,20 @@ export function Header() {
     <header className={`sticky top-0 z-[80] h-[72px] bg-surface text-text transition-shadow ${scrolled ? "shadow-sticky" : ""}`}>
       <div className="mx-auto flex h-full max-w-[1440px] items-center gap-2 px-3 sm:gap-4 sm:px-5 lg:px-8">
         <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
-          <Image
-            src="/images/brand/dollwow-black-gold-lockup.png"
-            alt="DollWow.com"
-            width={650}
-            height={235}
-            priority
-            sizes="(max-width: 640px) 150px, 176px"
-            className="h-12 w-[128px] object-contain object-left sm:w-[150px] lg:w-44"
-          />
+          <span className="relative block h-12 w-12 shrink-0 overflow-hidden" aria-hidden="true">
+            <Image
+              src="/images/brand/dollwow-black-gold-lockup.png"
+              alt=""
+              width={650}
+              height={235}
+              priority
+              sizes="155px"
+              className="absolute -top-1 left-0 h-14 w-[155px] max-w-none object-contain object-left [clip-path:polygon(0_0,40%_0,40%_50%,28%_50%,28%_78%,40%_78%,40%_100%,0_100%)]"
+            />
+          </span>
+          <span className="-ml-1 font-display text-[20px] font-semibold uppercase tracking-[0.12em] text-accent sm:text-[22px]">
+            DollWow
+          </span>
         </Link>
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary navigation">
