@@ -19,7 +19,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # The lock contains platform-specific optional image binaries generated on
+      # macOS; npm install resolves the Linux runner variant without executing
+      # package lifecycle scripts.
+      - run: npm install --ignore-scripts --no-audit
       - run: npm run sync:rosemary-stock:weekly
         env:
           SHOPIFY_STORE_DOMAIN: ${{ secrets.SHOPIFY_STORE_DOMAIN }}
