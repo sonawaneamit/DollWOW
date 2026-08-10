@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Scale } from "lucide-react";
 import { WishlistButton } from "@/components/WishlistButton";
-import { formatMoney } from "@/lib/utils/currency";
+import { DisplayMoney } from "@/components/CurrencyProvider";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
 
@@ -30,7 +30,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>
         <footer>
-          <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
+          <strong><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
           <Link href={`/products/${product.handle}`}>View doll <ArrowRight className="h-4 w-4" /></Link>
         </footer>
       </div>

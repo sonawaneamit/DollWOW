@@ -26,7 +26,7 @@ import {
 } from "@/lib/catalog/pdpSeo";
 import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
-import { formatMoney } from "@/lib/utils/currency";
+import { DisplayMoney } from "@/components/CurrencyProvider";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">{displayNameUi ? pdpTitle : displayTitle}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <strong className="text-3xl text-gold-300">{formatMoney(price.amount, price.currencyCode)}</strong>
+              <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
             <Link

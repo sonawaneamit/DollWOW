@@ -6,6 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { CurrencySwitcher } from "@/components/CurrencySwitcher";
+import { DisplayMoney } from "@/components/CurrencyProvider";
 import { useCart } from "@/components/cart/CartProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { useLegacyCartState } from "@/lib/cart/browser";
@@ -245,6 +247,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto hidden shrink-0 items-center gap-1 lg:flex">
+          <CurrencySwitcher />
           <ThemeToggle compact />
           <button type="button" onClick={openSearch} className="v2-control" aria-label="Search products">
             <Search className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -371,7 +374,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
                       {[result.brand, result.heightCm ? `${result.heightCm} cm` : "", result.material].filter(Boolean).join(" · ")}
                     </span>
                   </span>
-                  {result.price?.amount ? <strong className="shrink-0 text-sm text-text">${Math.round(Number(result.price.amount)).toLocaleString()}</strong> : null}
+                  {result.price?.amount ? <strong className="shrink-0 text-sm text-text"><DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} /></strong> : null}
                 </Link>
               ))
             ) : (
@@ -398,6 +401,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
         <div className="mt-4 rounded-md bg-surface p-2 shadow-card">
           <ThemeToggle />
         </div>
+        <div className="mt-3"><CurrencySwitcher mobile /></div>
       </div>
     </div>
   );
@@ -491,7 +495,7 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                             <p className="line-clamp-2 text-base font-semibold leading-snug text-text">{result.title}</p>
                             <p className="mt-1 line-clamp-2 text-sm leading-5 text-text-dim">{[result.brand, result.material, result.heightCm ? `${result.heightCm} cm` : "", humanizeStockStatus(result.stockStatus)].filter(Boolean).join(" · ")}</p>
                           </div>
-                          {result.price?.amount ? <span className="shrink-0 text-base font-semibold text-text">${Math.round(Number(result.price.amount)).toLocaleString()}</span> : null}
+                          {result.price?.amount ? <DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} className="shrink-0 text-base font-semibold text-text" /> : null}
                         </div>
                       </Link>
                     ))

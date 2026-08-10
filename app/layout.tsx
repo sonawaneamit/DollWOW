@@ -7,6 +7,7 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 import { StorefrontZipper } from "@/components/StorefrontZipper";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
 import "./v2-storefront.css";
@@ -90,14 +91,16 @@ gtag('consent', 'default', {
             }}
           />
         ) : null}
-        <CartProvider>
-          <a href="#main-content" className="skip-link">Skip to main content</a>
-          <Header />
-          <StorefrontZipper />
-          <main id="main-content" tabIndex={-1}>{children}</main>
-          <Footer />
-          <CartDrawer />
-        </CartProvider>
+        <CurrencyProvider>
+          <CartProvider>
+            <a href="#main-content" className="skip-link">Skip to main content</a>
+            <Header />
+            <StorefrontZipper />
+            <main id="main-content" tabIndex={-1}>{children}</main>
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
+        </CurrencyProvider>
         <ConsentBanner />
         <Analytics measurementId={measurementId} />
       </body>
