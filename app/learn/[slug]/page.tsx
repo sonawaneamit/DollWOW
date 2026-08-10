@@ -246,34 +246,32 @@ function ArticleActions({ slug }: { slug: string }) {
   const collections = relatedCollections(slug);
 
   return (
-    <aside className="mt-12 rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.45] p-5 shadow-soft">
-      <p className="text-sm  text-gold-600">Next step</p>
-      <h2 className="mt-2 text-2xl font-semibold leading-tight text-text">Compare options with real catalog context</h2>
-      <p className="mt-3 text-sm leading-6 text-ink-800">
-        Use the finder, submit another listing for review, or ask DollWow to confirm product details before checkout.
+    <aside className="mt-14 border-t border-border pt-10">
+      <p className="text-sm font-semibold text-accent">Next step</p>
+      <h2 className="mt-2 text-2xl font-semibold leading-tight text-text">Ready to narrow the catalog?</h2>
+      <p className="mt-3 max-w-2xl text-sm leading-6 text-text-dim">
+        Start with the finder, browse the full catalog, or ask DollWow to confirm a product-specific detail before checkout.
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <GoldButton href="/help-me-choose">Use the DollWow finder</GoldButton>
-        <GoldButton href="/price-match" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
-          Compare a listing
+        <GoldButton href="/shop/sex-dolls" variant="secondary">
+          Browse all dolls
         </GoldButton>
-        <GoldButton href="/support" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
-          Ask support
-        </GoldButton>
+        <Link href="/price-match" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 transition hover:text-text">Compare a listing</Link>
+        <Link href="/support" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 transition hover:text-text">Ask support</Link>
       </div>
       {collections.length ? (
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <nav aria-label="Related buying paths" className="mt-7 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-5">
           {collections.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-[8px] border border-border-strong bg-white/45 p-4 text-sm font-semibold text-text transition hover:border-border-strong hover:bg-white/70"
+              className="text-sm font-semibold text-text transition hover:text-accent"
             >
               {item.label}
-              <span className="mt-1 block text-sm font-normal leading-5 text-ink-700">{item.description}</span>
             </Link>
           ))}
-        </div>
+        </nav>
       ) : null}
     </aside>
   );
