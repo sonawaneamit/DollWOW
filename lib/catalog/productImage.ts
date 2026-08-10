@@ -20,12 +20,9 @@ export function productImageSources(product: Product) {
 
 export type ProtectedImageSize = "full" | "card" | "thumb";
 
-const PROTECTED_IMAGE_VERSION = "3";
-
 export function protectedProductImageUrl(handle: string, position = 0, size: ProtectedImageSize = "full") {
-  const params = new URLSearchParams({ v: PROTECTED_IMAGE_VERSION });
-  if (size !== "full") params.set("size", size);
-  return `/product-media/${encodeURIComponent(handle)}/${Math.max(0, position)}?${params.toString()}`;
+  const suffix = size === "full" ? "" : `?size=${size}`;
+  return `/product-media/v4/${encodeURIComponent(handle)}/${Math.max(0, position)}${suffix}`;
 }
 
 export function protectedProductImageUrlFor(product: Product, image?: ProductImage | null, size: ProtectedImageSize = "full") {
