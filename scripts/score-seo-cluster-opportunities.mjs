@@ -89,7 +89,7 @@ function scoreCluster(cluster) {
   const geoScore = geoCitationScore(cluster);
   const authorityScore = existingAuthorityScore(cluster, bestDollWowRank);
   const rawScore = trafficScore * 0.25 + commercialScore * 0.2 + inventory.score * 0.2 + feasibilityScore * 0.15 + geoScore * 0.1 + authorityScore * 0.1;
-  const productionGate = gateFor(cluster, inventory.count);
+  const productionGate = gateFor(cluster, inventory);
   const opportunityScore = productionGate === "no-action" ? 0 : round(rawScore);
   const priorityTier = tierFor(opportunityScore, productionGate);
 
@@ -254,9 +254,11 @@ function existingAuthorityScore(cluster, bestRank) {
   return cluster.existingDollWowTarget ? 46 : 18;
 }
 
-function gateFor(cluster, inventoryCount) {
+function gateFor(cluster, inventory) {
+  const inventoryCount = inventory.count;
   if (cluster.winningPageType === "no-action" || cluster.primaryIntent === "non-target") return "no-action";
   if (cluster.winningPageType === "brand-hub" && inventoryCount === 0) return "blocked-no-authorized-inventory";
+  if (cluster.winningPageType === "review-guide" && inventoryCount === 0 && inventory.basis.startsWith("brand:")) return "blocked-no-authorized-inventory";
   if (cluster.winningPageType === "collection" && inventoryCount < 5) return "hold-insufficient-inventory";
   if (cluster.winningPageType === "collection" && inventoryCount < 10) return "manual-inventory-review";
   return "eligible";

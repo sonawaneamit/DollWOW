@@ -1,6 +1,6 @@
 # Step 7: Cluster Opportunity And Feasibility Scoring
 
-Generated: 2026-08-10T19:14:10.950Z
+Generated: 2026-08-10T19:21:58.170Z
 
 ## Completion Gate
 
@@ -13,9 +13,9 @@ Every Step 6 cluster has visible component scores, inventory support, a producti
 - Corrected Step 6 clusters: 110
 - Catalog products evaluated: 2968
 - Products matched to Shopify Admin metadata: 2968
-- Product feed generated: 2026-08-10T19:00:04.556Z
-- Priority tiers: Tier 2:44|Tier 3:37|Tier 1:19|Blocked:5|Backlog:4|No action:1
-- Production gates: eligible:103|hold-insufficient-inventory:3|blocked-no-authorized-inventory:2|manual-inventory-review:1|no-action:1
+- Product feed generated: 2026-08-10T19:17:19.877Z
+- Priority tiers: Tier 2:44|Tier 3:37|Tier 1:19|Blocked:6|Backlog:3|No action:1
+- Production gates: eligible:102|blocked-no-authorized-inventory:3|hold-insufficient-inventory:3|manual-inventory-review:1|no-action:1
 
 ## Scoring Model
 
@@ -99,6 +99,7 @@ Every Step 6 cluster has visible component scores, inventory support, a producti
 - futa sex doll: hold-insufficient-inventory; explicit matching catalog classification; Audit distinct qualifying inventory before page creation.
 - heated sex doll: hold-insufficient-inventory; verified catalog metadata:heated; Audit distinct qualifying inventory before page creation.
 - jy doll: blocked-no-authorized-inventory; brand:JY Doll; Do not publish commercially until authorized inventory is live.
+- zelex dolls review: blocked-no-authorized-inventory; brand:Zelex; Do not publish commercially until authorized inventory is live.
 - real doll eyes: no-action; explicitly excluded query; Exclude from production and preserve the decision log.
 
 ## Interpretation Rules
