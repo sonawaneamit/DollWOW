@@ -91,7 +91,7 @@ export function ComparisonPageClient() {
               return [
                 showGroup ? <tr key={`${row.group}-heading`}><th colSpan={comparison.entries.length + 1} className="border-b border-border bg-surface-tint px-4 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-accent">{row.group}</th></tr> : null,
                 <tr key={`${row.group}-${row.label}`}>
-                  <th className="sticky left-0 z-10 border-b border-r border-border bg-surface-tint px-4 py-3 text-sm font-semibold text-text">{row.label}</th>
+                  <th className="comparison-table__row-label sticky left-0 z-10 border-b border-r border-border px-4 py-3 text-sm font-semibold text-text">{row.label}</th>
                   {comparison.entries.map((entry) => <td key={entry.productHandle} className="border-b border-r border-border px-4 py-3 text-sm leading-6 text-text-dim last:border-r-0">{row.value(entry) || <span className="text-text-faint">Not provided</span>}</td>)}
                 </tr>
               ];

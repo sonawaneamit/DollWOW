@@ -717,6 +717,12 @@ main {
   background: rgb(var(--color-surface-tint));
 }
 
+.comparison-table__corner,
+.comparison-table__row-label {
+  background-color: rgb(var(--color-surface-tint));
+  background-image: none;
+}
+
 .comparison-product-head {
   height: 162px;
 }
