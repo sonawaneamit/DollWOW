@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { WishlistButton } from "@/components/WishlistButton";
 import { CompareButton } from "@/components/compare/CompareButton";
 import { DisplayMoney } from "@/components/CurrencyProvider";
+import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
 
@@ -30,6 +31,11 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         <div className="catalog-product-card__specs">
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>
+        {ready ? (
+          <div className="catalog-product-card__warehouse">
+            <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} compact />
+          </div>
+        ) : null}
         <footer>
           <strong><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
           <Link href={`/products/${product.handle}`}>View doll <ArrowRight className="h-4 w-4" /></Link>

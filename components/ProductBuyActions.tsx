@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Lock, ShoppingBag, SlidersHorizontal, Truck } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
+import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import type { ProductImage } from "@/types/product";
@@ -128,6 +129,11 @@ export function ProductBuyActions({
           <Truck className="h-5 w-5" />
         </span>
         <div>
+          {readyToShip ? (
+            <div className="mb-2">
+              <WarehouseLocationBadge regions={warehouseRegions} country={warehouseCountry} compact />
+            </div>
+          ) : null}
           <p className="text-base font-semibold text-text">
             {readyToShip
               ? `In stock in ${(warehouseRegions?.length ? warehouseRegions.join(", ") : warehouseCountry) || "a supplier warehouse"}`
