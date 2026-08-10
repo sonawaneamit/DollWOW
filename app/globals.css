@@ -281,6 +281,51 @@ textarea {
   transition: background-color 160ms ease;
 }
 
+.header-icon-action {
+  position: relative;
+}
+
+.header-icon-action::after {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  z-index: 90;
+  transform: translate(-50%, -4px);
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 8px;
+  background: rgb(var(--color-surface));
+  padding: 0.4rem 0.55rem;
+  color: rgb(var(--color-text));
+  box-shadow: 0 8px 22px rgba(41, 32, 27, 0.14);
+  content: attr(data-tooltip);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+  white-space: nowrap;
+}
+
+.header-icon-action:hover::after,
+.header-icon-action:focus-visible::after {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.currency-switcher--compact .styled-select__trigger {
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  gap: 0.15rem;
+  padding-inline: 0.45rem;
+}
+
+.currency-switcher--compact .styled-select__trigger svg {
+  height: 12px;
+  width: 12px;
+}
+
 .v2-header-link {
   position: relative;
   display: inline-flex;

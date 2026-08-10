@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, ChevronDown } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { clsx } from "clsx";
 
 type Option = { label: string; value: string };
@@ -13,7 +13,8 @@ export function StyledSelect({
   ariaLabel,
   className,
   menuClassName,
-  openUp = false
+  openUp = false,
+  triggerLabel
 }: {
   value: string;
   options: readonly Option[];
@@ -22,6 +23,7 @@ export function StyledSelect({
   className?: string;
   menuClassName?: string;
   openUp?: boolean;
+  triggerLabel?: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -53,7 +55,7 @@ export function StyledSelect({
         aria-controls={listboxId}
         onClick={() => setOpen((current) => !current)}
       >
-        <span>{selected?.label}</span>
+        <span>{triggerLabel ?? selected?.label}</span>
         <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
       </button>
       {open ? (

@@ -254,22 +254,18 @@ export function Header() {
         <div className="ml-auto hidden shrink-0 items-center gap-1 lg:flex">
           <CurrencySwitcher />
           <ThemeToggle compact />
-          <button type="button" onClick={openSearch} className="v2-control" aria-label="Search products">
+          <button type="button" onClick={openSearch} className="header-icon-action v2-icon-control" aria-label="Search products" data-tooltip="Search">
             <Search className="h-[18px] w-[18px]" aria-hidden="true" />
-            <span>Search</span>
           </button>
-          <Link href="/compare" onClick={closeAll} className="v2-control relative" aria-label={compareLabel(compareCount)}>
+          <Link href="/compare" onClick={closeAll} className="header-icon-action v2-icon-control relative" aria-label={compareLabel(compareCount)} data-tooltip="Compare">
             <Scale className="h-[18px] w-[18px]" aria-hidden="true" />
-            <span>Compare</span>
             {compareCount ? <CartBadge count={compareCount} /> : null}
           </Link>
-          <Link href="/support" onClick={closeAll} className="v2-control" aria-label="Get support">
+          <Link href="/support" onClick={closeAll} className="header-icon-action v2-icon-control" aria-label="Get support" data-tooltip="Support">
             <HelpCircle className="h-[18px] w-[18px]" aria-hidden="true" />
-            <span>Support</span>
           </Link>
-          <button type="button" onClick={openCart} className="v2-control relative" aria-label={cartLabel(activeCount)}>
+          <button type="button" onClick={openCart} className="header-icon-action v2-icon-control relative" aria-label={cartLabel(activeCount)} data-tooltip="Cart">
             <ShoppingBag className="h-[18px] w-[18px]" aria-hidden="true" />
-            <span>Cart</span>
             {activeCount ? <CartBadge count={activeCount} /> : null}
           </button>
         </div>
