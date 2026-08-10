@@ -343,6 +343,7 @@ export async function createCart(input: {
     amount: number;
     currencyCode: string;
     title?: string;
+    items?: Array<{ group?: string; label: string; amount: number }>;
   };
   discountCodes?: string[];
 }) {
@@ -459,6 +460,7 @@ export function customizationChargeLines(charge?: {
   amount: number;
   currencyCode: string;
   title?: string;
+  items?: Array<{ group?: string; label: string; amount: number }>;
 }): ShopifyCartLineInput[] {
   if (!charge || charge.amount <= 0) return [];
 
@@ -472,28 +474,32 @@ export function customizationChargeLines(charge?: {
     throw new Error("Custom option charges are not configured in Shopify yet. Add SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS before checking out paid customizations.");
   }
 
-  let remainingCents = Math.round(charge.amount * 100);
   const lines: ShopifyCartLineInput[] = [];
+  const itemTotalCents = (charge.items || []).reduce((sum, item) => sum + Math.round(item.amount * 100), 0);
+  const chargeItems = charge.items?.length && itemTotalCents === Math.round(charge.amount * 100)
+    ? charge.items
+    : [{ label: "Selected upgrades", amount: charge.amount }];
 
-  for (const variant of variants) {
-    const variantCents = Math.round(variant.amount * 100);
-    if (variantCents <= 0 || remainingCents < variantCents) continue;
-    const quantity = Math.floor(remainingCents / variantCents);
-    if (!quantity) continue;
-    lines.push({
-      merchandiseId: variant.merchandiseId,
-      quantity,
-      attributes: [
-        { key: "DollWow Charge Type", value: "Custom options" },
-        { key: "DollWow Charge For", value: charge.title || "Selected customization options" },
-        { key: "DollWow Charge Amount", value: `${configuredCurrency} ${variant.amount}` }
-      ]
-    });
-    remainingCents -= quantity * variantCents;
-  }
-
-  if (remainingCents !== 0) {
-    throw new Error("Custom option charge denominations do not cover this option total. Add smaller Shopify charge variants.");
+  for (const item of chargeItems) {
+    let remainingCents = Math.round(item.amount * 100);
+    for (const variant of variants) {
+      const variantCents = Math.round(variant.amount * 100);
+      if (variantCents <= 0 || remainingCents < variantCents) continue;
+      const quantity = Math.floor(remainingCents / variantCents);
+      if (!quantity) continue;
+      lines.push({
+        merchandiseId: variant.merchandiseId,
+        quantity,
+        attributes: [
+          { key: "For", value: charge.title || "Selected product" },
+          { key: "Upgrade", value: [item.group, item.label].filter(Boolean).join(": ") }
+        ]
+      });
+      remainingCents -= quantity * variantCents;
+    }
+    if (remainingCents !== 0) {
+      throw new Error("Custom option charge denominations do not cover this option total. Add smaller Shopify charge variants.");
+    }
   }
 
   return lines;

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
-const DEFAULT_DENOMINATIONS = [500, 100, 50, 10, 5, 1];
+const DEFAULT_DENOMINATIONS = [500, 100, 99, 50, 10, 5, 1];
 
 let tokenCache = null;
 let publicationCache = null;
@@ -126,7 +126,7 @@ async function updateChargeProduct(productId, amount) {
 
 function chargeProductInput(amount) {
   return {
-    title: `DollWow Custom Option Charge ${currency} ${amount}`,
+    title: "Selected customization",
     handle: chargeHandle(amount),
     descriptionHtml:
       "<p>System-only checkout line used to charge selected DollWow customization options. This item is not sold separately.</p>",
@@ -135,8 +135,8 @@ function chargeProductInput(amount) {
     tags: ["dollwow-system", "custom-option-charge"],
     status: "ACTIVE",
     seo: {
-      title: "DollWow custom option charge",
-      description: "System-only checkout charge."
+      title: "Selected customization",
+      description: "A priced customization selected for a DollWow product."
     }
   };
 }
@@ -303,7 +303,7 @@ function printHelp() {
   console.log(`Usage:
   node scripts/setup-custom-option-charges.mjs
   node scripts/setup-custom-option-charges.mjs -- --execute
-  node scripts/setup-custom-option-charges.mjs -- --execute --denominations 500,100,50,10,5,1 --currency USD
+  node scripts/setup-custom-option-charges.mjs -- --execute --denominations 500,100,99,50,10,5,1 --currency USD
 
 Creates system-only Shopify products for paid custom-option checkout charges and prints
 SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS for Vercel/.env.local.`);

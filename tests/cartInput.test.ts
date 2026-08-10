@@ -11,11 +11,23 @@ describe("cart create input", () => {
         { key: "DollWow Skin tone", value: "Duplicate is ignored" },
         { key: "Empty", value: "   " }
       ],
+      customizationCharge: {
+        amount: 99,
+        currencyCode: "usd",
+        title: " Freya ",
+        items: [{ group: " Accessories ", label: " Silicone   care kit ", amount: 99 }]
+      },
       discountCodes: [" save-10 ", "SAVE-10", "bad code!!!"]
     });
 
     expect(parsed.attributes).toEqual([{ key: "DollWow Skin tone", value: "Tan skin" }]);
     expect(parsed.discountCodes).toEqual(["SAVE-10", "BADCODE"]);
+    expect(parsed.customizationCharge).toEqual({
+      amount: 99,
+      currencyCode: "USD",
+      title: "Freya",
+      items: [{ group: "Accessories", label: "Silicone care kit", amount: 99 }]
+    });
   });
 
   it("requires a Shopify product variant ID", () => {

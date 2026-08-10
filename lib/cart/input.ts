@@ -19,7 +19,12 @@ const rawAttributeSchema = z.object({
 const customizationChargeSchema = z.object({
   amount: z.number().min(0).max(20_000),
   currencyCode: z.string().min(3).max(3),
-  title: z.string().max(180).optional()
+  title: z.string().max(180).optional(),
+  items: z.array(z.object({
+    group: z.string().max(120).optional(),
+    label: z.string().min(1).max(180),
+    amount: z.number().positive().max(20_000)
+  })).max(20).optional()
 });
 
 export const cartCreateRequestSchema = z
@@ -101,10 +106,17 @@ function normalizeCustomizationCharge(charge?: z.infer<typeof customizationCharg
   if (!charge) return undefined;
   const amount = Math.round(Number(charge.amount || 0) * 100) / 100;
   if (amount <= 0) return undefined;
+  const items = (charge.items || []).map((item) => ({
+    group: normalizeWhitespace(item.group || "").slice(0, 80),
+    label: normalizeWhitespace(item.label).slice(0, 120),
+    amount: Math.round(item.amount * 100) / 100
+  })).filter((item) => item.label && item.amount > 0);
+  const itemTotal = items.reduce((sum, item) => sum + item.amount, 0);
   return {
     amount,
     currencyCode: charge.currencyCode.toUpperCase(),
-    title: normalizeWhitespace(charge.title || "Custom options").slice(0, 120)
+    title: normalizeWhitespace(charge.title || "Selected product").slice(0, 120),
+    items: Math.round(itemTotal * 100) === Math.round(amount * 100) ? items : []
   };
 }
 

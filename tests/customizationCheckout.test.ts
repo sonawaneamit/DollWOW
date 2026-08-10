@@ -28,7 +28,11 @@ describe("customization checkout support", () => {
     const lines = customizationChargeLines({
       amount: 665,
       currencyCode: "USD",
-      title: "Test build options"
+      title: "Test doll",
+      items: [
+        { group: "Body", label: "Premium finish", amount: 600 },
+        { group: "Accessories", label: "Care kit", amount: 65 }
+      ]
     });
 
     expect(lines.map((line) => [line.merchandiseId, line.quantity])).toEqual([
@@ -38,6 +42,11 @@ describe("customization checkout support", () => {
       ["gid://shopify/ProductVariant/10", 1],
       ["gid://shopify/ProductVariant/5", 1]
     ]);
+    expect(lines[0]?.attributes).toEqual([
+      { key: "For", value: "Test doll" },
+      { key: "Upgrade", value: "Body: Premium finish" }
+    ]);
+    expect(lines[2]?.attributes?.find((attribute) => attribute.key === "Upgrade")?.value).toBe("Accessories: Care kit");
   });
 
   it("treats imported default choices as exclusive in multi-select groups", () => {

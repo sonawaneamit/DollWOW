@@ -124,7 +124,14 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           quantity: 1,
           attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }, ...resolved.cartAttributes] : resolved.cartAttributes,
           customizationCharge: resolved.optionPriceDelta
-            ? { amount: resolved.optionPriceDelta, currencyCode, title: `${displayName || displayTitle} custom options` }
+            ? {
+                amount: resolved.optionPriceDelta,
+                currencyCode,
+                title: displayName || displayTitle,
+                items: resolved.selectedOptions
+                  .filter((option) => option.priceDelta > 0)
+                  .map((option) => ({ group: option.groupLabel, label: option.optionLabel, amount: option.priceDelta }))
+              }
             : undefined
         })
       });
