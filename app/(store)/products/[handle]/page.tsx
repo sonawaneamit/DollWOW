@@ -46,12 +46,14 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
-  const vendorQuery = `vendor:${JSON.stringify(product.vendor)}`;
+  const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
+  const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
+  const brandQuery = brandTag ? `tag:${JSON.stringify(brandTag)}` : `title:${JSON.stringify(product.extended.brand ?? product.vendor)}`;
   const brandProducts = await getProducts({
-    query: vendorQuery,
+    query: brandQuery,
     first: 600,
     imageFirst: 1,
-    cacheKey: `pdp-related-brand-v1-${product.vendor.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    cacheKey: `pdp-related-brand-v2-${(relatedBrand?.value ?? product.extended.brand ?? product.vendor).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
     revalidate: 3600
   });
   const price = product.priceRange.minVariantPrice;
