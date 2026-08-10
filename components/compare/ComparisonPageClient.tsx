@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowRight, Check, Scale, ShoppingBag, Trash2 } from "lucide-react";
+import { ArrowRight, Check, Scale, ShoppingCart, Trash2 } from "lucide-react";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { useCart } from "@/components/cart/CartProvider";
 import { useMounted } from "@/lib/utils/storageStore";
@@ -16,7 +16,6 @@ export function ComparisonPageClient() {
   const [differencesOnly, setDifferencesOnly] = useState(false);
   const measurementLabels = useMemo(() => [...new Set(comparison.entries.flatMap((entry) => Object.keys(entry.measurements || {})))], [comparison.entries]);
   const rows = [
-    { group: "At a glance", label: "Price", value: (entry: typeof comparison.entries[number]) => <DisplayMoney amount={entry.unitPrice} currencyCode={entry.currencyCode} /> },
     { group: "At a glance", label: "Material", value: (entry: typeof comparison.entries[number]) => entry.material },
     { group: "At a glance", label: "Product type", value: (entry: typeof comparison.entries[number]) => entry.productType },
     { group: "At a glance", label: "Availability", value: (entry: typeof comparison.entries[number]) => entry.stockStatus === "ready_to_ship" ? "Ready to ship" : "Factory order" },
@@ -59,24 +58,26 @@ export function ComparisonPageClient() {
       </header>
 
       <p className="mt-6 text-sm font-semibold text-text-dim sm:hidden">Swipe sideways to compare each doll →</p>
-      <div className="mt-3 overflow-x-auto rounded-lg border border-border bg-surface shadow-card sm:mt-8">
-        <table className="w-full table-fixed border-collapse text-left" style={{ minWidth: `${160 + comparison.entries.length * 260}px` }}>
-          <thead className="sticky top-[var(--header-height,72px)] z-20 bg-surface shadow-sm">
+      <div className="comparison-table-shell mt-3 overflow-x-auto rounded-lg border border-border bg-surface shadow-card sm:mt-8">
+        <table className="comparison-table w-full table-fixed border-collapse text-left" style={{ minWidth: `${160 + comparison.entries.length * 260}px` }}>
+          <thead className="comparison-table__head sticky top-0 z-20 bg-surface shadow-sm">
             <tr>
-              <th className="sticky left-0 z-30 w-40 border-b border-r border-border bg-surface-tint p-4 align-bottom text-sm font-semibold text-text-dim">Product</th>
+              <th className="comparison-table__corner sticky left-0 z-30 w-40 border-b border-r border-border bg-surface-tint p-4 align-middle text-sm font-semibold text-text-dim">Product</th>
               {comparison.entries.map((entry) => (
-                <th key={entry.productHandle} className="border-b border-r border-border p-4 align-top last:border-r-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <Link href={`/products/${entry.productHandle}`} className="relative block aspect-[4/5] w-full max-w-32 overflow-hidden rounded-sm bg-surface-tint">
-                      {entry.imageUrl ? <Image src={entry.imageUrl} alt={entry.productTitle} fill sizes="128px" className="object-cover" /> : null}
+                <th key={entry.productHandle} className="comparison-product-head border-b border-r border-border p-3 align-top last:border-r-0">
+                  <div className="grid grid-cols-[64px_minmax(0,1fr)_44px] items-start gap-3">
+                    <Link href={`/products/${entry.productHandle}`} className="relative block aspect-[4/5] w-16 overflow-hidden rounded-sm bg-surface-tint">
+                      {entry.imageUrl ? <Image src={entry.imageUrl} alt={entry.productTitle} fill sizes="64px" className="object-contain object-top" /> : null}
                     </Link>
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-wider text-accent">{entry.brand}</p>
+                      <Link href={`/products/${entry.productHandle}`} className="mt-1 line-clamp-2 block text-sm font-semibold leading-5 text-text hover:text-accent">{entry.productTitle}</Link>
+                      <p className="mt-1 text-base font-semibold text-text"><DisplayMoney amount={entry.unitPrice} currencyCode={entry.currencyCode} /></p>
+                    </div>
                     <button type="button" onClick={() => comparison.remove(entry.productHandle)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-text-dim hover:bg-surface-tint hover:text-danger" aria-label={`Remove ${entry.productTitle}`}><Trash2 className="h-4 w-4" /></button>
                   </div>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-accent">{entry.brand}</p>
-                  <Link href={`/products/${entry.productHandle}`} className="mt-1 line-clamp-2 block text-base font-semibold leading-5 text-text hover:text-accent">{entry.productTitle}</Link>
-                  <p className="mt-2 text-lg font-semibold text-text"><DisplayMoney amount={entry.unitPrice} currencyCode={entry.currencyCode} /></p>
-                  <div className="mt-3 grid gap-2">
-                    {entry.merchandiseId ? <button type="button" onClick={() => cart.addItem({ merchandiseId: entry.merchandiseId!, productHandle: entry.productHandle, productTitle: entry.productTitle, brand: entry.brand, imageUrl: entry.imageUrl, unitPrice: entry.unitPrice, currencyCode: entry.currencyCode, readyToShip: entry.stockStatus === "ready_to_ship" })} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-button bg-accent px-3 text-sm font-semibold text-white"><ShoppingBag className="h-4 w-4" /> Add to Cart</button> : null}
+                  <div className="mt-2 grid grid-cols-2 gap-2">
+                    {entry.merchandiseId ? <button type="button" onClick={() => cart.addItem({ merchandiseId: entry.merchandiseId!, productHandle: entry.productHandle, productTitle: entry.productTitle, brand: entry.brand, imageUrl: entry.imageUrl, unitPrice: entry.unitPrice, currencyCode: entry.currencyCode, readyToShip: entry.stockStatus === "ready_to_ship" })} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-button bg-accent px-2 text-xs font-semibold text-white"><ShoppingCart className="h-4 w-4" /> Add to Cart</button> : <span />}
                     <Link href={`/products/${entry.productHandle}`} className="inline-flex min-h-11 items-center justify-center rounded-button border border-border-strong px-3 text-sm font-semibold text-text">View details</Link>
                   </div>
                 </th>
