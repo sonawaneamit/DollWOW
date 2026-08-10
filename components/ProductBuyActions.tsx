@@ -30,7 +30,7 @@ type ProductBuyActionsProps = {
 };
 
 /**
- * PDP buy box. Two lanes: "Add to bag" (multi-item bag + drawer, buy as
+ * PDP buy box. Two lanes: "Add to cart" (multi-item cart + drawer, buy as
  * shown) and "Buy it now" (legacy single-line express checkout). Customizing
  * scrolls to the Build Studio below the fold.
  */
@@ -145,7 +145,7 @@ export function ProductBuyActions({
           className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
         >
           <ShoppingBag className="h-5 w-5" />
-          Add to bag · {formatMoney(unitPrice, currencyCode)}
+          Add to Cart · {formatMoney(unitPrice, currencyCode)}
         </button>
         <div className={`grid gap-3 ${canCustomize ? "sm:grid-cols-2" : ""}`}>
           <button

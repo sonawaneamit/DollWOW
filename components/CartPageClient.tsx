@@ -41,7 +41,7 @@ export function CartPageClient() {
       <div className="grid gap-4">
         <div className="rounded-[18px] border border-gold-500/16 bg-ink-800/72 p-8 text-center">
           <ShoppingBag className="mx-auto h-9 w-9 text-gold-300" />
-          <h2 className="mt-3 text-2xl font-semibold text-ivory-50">Your bag is empty</h2>
+          <h2 className="mt-3 text-2xl font-semibold text-ivory-50">Your cart is empty</h2>
           <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-ivory-400">
             Add a doll or an accessory from any product page and it will wait for you here. Not sure where to start? The
             quiz builds a shortlist in about a minute.
@@ -148,9 +148,9 @@ export function CartPageClient() {
         </ul>
 
         {cart.upsells.length ? (
-          <section className="mt-8" aria-label="Pairs well with your bag">
+          <section className="mt-8" aria-label="Pairs well with your cart">
             <p className="text-sm font-semibold  text-gold-300">Complete your order</p>
-            <h2 className="mt-1 text-xl font-semibold text-ivory-50">Pairs well with your bag</h2>
+            <h2 className="mt-1 text-xl font-semibold text-ivory-50">Pairs well with your cart</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {cart.upsells.slice(0, 4).map((upsell) => (
                 <div key={upsell.merchandiseId} className="flex items-center gap-3 rounded-[16px] border border-gold-500/14 bg-ink-800/72 p-3">

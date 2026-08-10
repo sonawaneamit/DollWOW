@@ -13,7 +13,7 @@ export default function SavedPage() {
         <p className="text-sm  text-gold-300">Saved</p>
         <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Your saved dolls</h1>
         <p className="mt-3 max-w-2xl text-ivory-400">
-          A private shortlist that stays on this device. Open a doll to keep customizing, or add it to your bag.
+          A private shortlist that stays on this device. Open a doll to keep customizing, or add it to your cart.
         </p>
       </div>
       <SavedPageClient />

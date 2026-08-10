@@ -51,12 +51,12 @@ export function CartDrawer() {
   if (!drawerOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[96]" role="dialog" aria-modal="true" aria-label="Shopping bag">
-      <button type="button" aria-label="Close bag" className="absolute inset-0 bg-black/62" onClick={cart.closeDrawer} />
+    <div className="fixed inset-0 z-[96]" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <button type="button" aria-label="Dismiss cart drawer" className="absolute inset-0 bg-black/62" onClick={cart.closeDrawer} />
       <aside ref={panelRef} className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-gold-500/20 bg-surface shadow-soft">
         <div className="flex items-center justify-between border-b border-gold-500/16 px-5 py-4">
           <div>
-            <p className="text-sm font-semibold  text-gold-300">Your bag</p>
+            <p className="text-sm font-semibold  text-gold-300">Your cart</p>
             <p className="mt-1 text-sm text-ivory-400">
               {cart.count ? `${cart.count} item${cart.count === 1 ? "" : "s"}` : "Nothing here yet"}
             </p>
@@ -66,7 +66,7 @@ export function CartDrawer() {
             type="button"
             onClick={cart.closeDrawer}
             className="flex h-11 w-11 items-center justify-center rounded-[12px] border border-gold-500/20 text-ivory-300 transition hover:border-gold-300/50 hover:text-ivory-50"
-            aria-label="Close bag"
+            aria-label="Close cart"
           >
             <X className="h-4 w-4" />
           </button>
@@ -135,7 +135,7 @@ export function CartDrawer() {
           ) : (
             <div className="rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.03] p-6 text-center">
               <ShoppingBag className="mx-auto h-8 w-8 text-gold-300" />
-              <p className="mt-3 text-sm font-semibold text-ivory-100">Your bag is empty</p>
+              <p className="mt-3 text-sm font-semibold text-ivory-100">Your cart is empty</p>
               <p className="mt-1 text-sm leading-5 text-ivory-400">Add a doll or an accessory and it will wait for you here.</p>
               <Link
                 href="/shop"
