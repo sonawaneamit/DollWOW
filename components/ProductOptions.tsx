@@ -312,7 +312,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                         currencyCode={currencyCode}
                       />
                     </div>
-                    <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+                    <div className="product-builder-step-actions mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
                       {previousGroup ? (
                         <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
                           <ChevronLeft className="h-5 w-5" /> Back
@@ -488,7 +488,7 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
           ))}
         </div>
       ) : null}
-      <div className="product-option-grid grid grid-cols-1 gap-3">
+      <div className={clsx("product-option-grid grid grid-cols-1 gap-3", group.options.length >= 8 && "product-option-grid--scroll") }>
         {group.options.map((option) => {
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
