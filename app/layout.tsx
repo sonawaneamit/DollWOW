@@ -56,6 +56,11 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  verification: {
+    other: {
+      "msvalidate.01": "9A6C8A58EBCAAC65B76DC2B06AF37246"
+    }
   }
 };
 
