@@ -28,7 +28,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
         <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className="group relative block min-h-40 border-b border-border bg-[#f8efe8] sm:border-b-0 sm:border-r" aria-label={`Open ${label} authorization certificate`}>
           <Image
             src={authorization.certificatePreviewSrc!}
-            alt={`${label} authorized vendor certificate`}
+            alt={`${label} certification authorizing DollWow as a retailer`}
             fill
             sizes={variant === "brand" ? "220px" : "154px"}
             className="object-contain p-3 transition duration-300 group-hover:scale-[1.025]"
@@ -42,9 +42,9 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
       <div className="p-5 sm:p-6">
         <p className="flex items-center gap-2 text-sm font-semibold text-accent">
           <BadgeCheck className="h-4 w-4" />
-          Authorized vendor
+          Brand certification
         </p>
-        <h2 className="mt-2 text-xl font-semibold text-text">Authorized to sell {label}</h2>
+        <h2 className="mt-2 text-xl font-semibold text-text">Certified to sell {label}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-text-dim">
           {hasCertificate
             ? relatedBrandNote ?? `DollWow is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}.`
@@ -59,7 +59,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
             </a>
           ) : null}
           <Link href="/authorized-vendors" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-sm font-semibold text-accent transition-colors hover:bg-accent-tint">
-            All authorized brands
+            All certifications
           </Link>
         </div>
       </div>

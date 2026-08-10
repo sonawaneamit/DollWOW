@@ -26,7 +26,7 @@ const footerGroups = [
     title: "Company",
     links: [
       ["About Us", "/why-dollwow"],
-      ["Authorized vendors", "/authorized-vendors"],
+      ["Certifications", "/authorized-vendors"],
       ["Brands", "/brands"],
       ["Support", "/support"],
       ["For brands", "/supplier"]
