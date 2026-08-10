@@ -146,6 +146,7 @@ export async function getProducts({
   includeCustomizationGroups = false,
   sortKey = "CREATED_AT",
   reverse = true,
+  imageFirst = 8,
   cacheKey,
   cache,
   revalidate
@@ -155,6 +156,7 @@ export async function getProducts({
   includeCustomizationGroups?: boolean;
   sortKey?: "TITLE" | "CREATED_AT" | "UPDATED_AT" | "PRICE" | "BEST_SELLING";
   reverse?: boolean;
+  imageFirst?: number;
   cacheKey?: string;
   cache?: RequestCache;
   revalidate?: number;
@@ -173,7 +175,7 @@ export async function getProducts({
         `# ${cacheKey ?? "catalog-v1"}
         query Products($first: Int!, $query: String, $after: String, $sortKey: ProductSortKeys!, $reverse: Boolean!) {
           products(first: $first, after: $after, query: $query, sortKey: $sortKey, reverse: $reverse) {
-            edges { cursor node { ${productListFields({ includeCustomizationGroups })} } }
+            edges { cursor node { ${productListFields({ includeCustomizationGroups, imageFirst })} } }
             pageInfo { hasNextPage endCursor }
           }
         }`,

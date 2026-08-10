@@ -1,8 +1,8 @@
 import { HumanHelpCTA } from "@/components/HumanHelpCTA";
 import { ProductCard } from "@/components/ProductCard";
-import { ProductGrid } from "@/components/ProductGrid";
 import { quizAnswerSummary, quizAnswersFromParams, quizAnswersToSearchParams } from "@/lib/quiz/answers";
 import { recommendProducts } from "@/lib/quiz/recommendProducts";
+import { compactFilters, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { getProducts } from "@/lib/shopify/storefront";
 import { getGuidedSession } from "@/lib/supabase/repositories";
 import { ArrowRight, CheckCircle2, Filter, MessageCircle, Scale } from "lucide-react";
@@ -14,9 +14,20 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
   const params = await searchParams;
   const { ids, session } = params;
   const idList = ids?.split(",").filter(Boolean) ?? [];
-  const products = await getProducts();
   const guidedSession = session ? await getGuidedSession(session) : null;
   const answers = guidedSession?.answers ?? quizAnswersFromParams(params);
+  const sourceFilters = compactFilters({
+    bodyType: answers.companionType === "any" ? undefined : answers.companionType,
+    productForm: answers.productForm === "any" ? undefined : (`${answers.productForm}${answers.productForm === "full" ? "-doll" : ""}` as CatalogFilters["productForm"]),
+    material: answers.material === "either" ? undefined : answers.material,
+    availability: answers.delivery === "fast" || answers.customNeeds === "ready" ? "ready_to_ship" : undefined
+  });
+  const products = await getProducts({
+    query: shopifyQueryForFilters(sourceFilters),
+    first: 2200,
+    includeCustomizationGroups: false,
+    imageFirst: 1
+  });
   const recommendations = recommendProducts(products, answers);
   const recommendationById = new Map(recommendations.map((item) => [item.productId, item]));
   const recommended = idList.length
@@ -25,7 +36,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
       ? recommendations
           .map((recommendation) => products.find((product) => product.id === recommendation.productId))
           .filter((product): product is (typeof products)[number] => Boolean(product))
-      : products.slice(0, 5);
+      : [];
   const orderedRecommended = idList.length
     ? idList.map((id) => recommended.find((product) => product.id === id)).filter(Boolean)
     : recommended;
@@ -83,8 +94,16 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
           })}
         </div>
       ) : (
-        <div className="mt-8">
-          <ProductGrid products={[]} />
+        <div className="mt-8 rounded-lg border border-gold-500/18 bg-ink-800/72 p-6 sm:p-8">
+          <p className="text-sm font-semibold text-gold-300">No exact matches</p>
+          <h2 className="mt-2 text-2xl font-semibold text-ivory-50">We won&apos;t substitute dolls that ignore your choices.</h2>
+          <p className="mt-3 max-w-2xl text-base leading-7 text-ivory-400">
+            Try editing one constraint—usually budget, material, product form, or customization—or ask our team to check an incoming model.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href={editHref} className="inline-flex min-h-11 items-center rounded-button bg-gold-300 px-4 text-sm font-semibold text-white hover:bg-gold-200">Edit my answers</Link>
+            <Link href="/support?source=quiz-no-match" className="inline-flex min-h-11 items-center rounded-button border border-gold-300 px-4 text-sm font-semibold text-gold-200 hover:bg-gold-300/10">Ask for a recommendation</Link>
+          </div>
         </div>
       )}
 

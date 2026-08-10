@@ -101,6 +101,21 @@ export function quizAnswerSummary(answers: QuizAnswers) {
     "some-options": "Some customization",
     "full-custom": "Full custom is okay"
   };
+  const buildLabels: Record<QuizAnswers["bodyType"], string> = {
+    lighter: "Lighter/easier build",
+    curvy: "Curvier build",
+    premium: "Premium feel",
+    unsure: "No build preference"
+  };
+  const storageLabels: Record<QuizAnswers["storage"], string> = {
+    limited: "Limited space",
+    normal: "Normal storage space",
+    dedicated: "Dedicated storage space"
+  };
+  const experienceLabels: Record<QuizAnswers["experience"], string> = {
+    "first-time": "First doll",
+    collector: "Experienced collector"
+  };
 
   return [
     { label: "Dolls", value: companionTypeLabels[answers.companionType] },
@@ -108,7 +123,10 @@ export function quizAnswerSummary(answers: QuizAnswers) {
     { label: "Budget", value: budgetLabels[answers.budget] },
     { label: "Timing", value: deliveryLabels[answers.delivery] },
     { label: "Material", value: materialLabels[answers.material] },
+    { label: "Build", value: buildLabels[answers.bodyType] },
     { label: "Size", value: sizeLabels[answers.sizeComfort] },
-    { label: "Options", value: customLabels[answers.customNeeds] }
+    { label: "Storage", value: storageLabels[answers.storage] },
+    { label: "Options", value: customLabels[answers.customNeeds] },
+    { label: "Experience", value: experienceLabels[answers.experience] }
   ];
 }

@@ -40,6 +40,7 @@ export function recommendProducts(products: Product[], answers: QuizAnswers): Qu
     if (answers.material !== "either" && !product.extended.material?.toLowerCase().includes(answers.material)) return false;
     if (answers.delivery === "fast" && product.extended.stockStatus !== "ready_to_ship") return false;
     if (answers.customNeeds === "ready" && product.extended.stockStatus !== "ready_to_ship") return false;
+    if (["some-options", "full-custom"].includes(answers.customNeeds) && product.extended.customAvailable !== true) return false;
     return true;
   });
 
@@ -55,8 +56,6 @@ export function recommendProducts(products: Product[], answers: QuizAnswers): Qu
     let score = 0;
     const reasons: string[] = [];
     const price = Number(product.priceRange.minVariantPrice.amount);
-    const tags = product.tags.map((tag) => tag.toLowerCase());
-
     if (answers.companionType !== "any") {
       score += 5;
       reasons.push(answers.companionType === "male" ? "male doll preference" : "female doll preference");
@@ -99,7 +98,7 @@ export function recommendProducts(products: Product[], answers: QuizAnswers): Qu
     if (answers.storage === "dedicated" && (product.extended.heightCm ?? 0) >= 160) {
       score += 1;
     }
-    if (answers.bodyType !== "unsure" && tags.includes(answers.bodyType)) {
+    if (matchesBuildPreference(product, answers.bodyType)) {
       score += 2;
       reasons.push("matches your build preference");
     }
@@ -112,6 +111,11 @@ export function recommendProducts(products: Product[], answers: QuizAnswers): Qu
     }
     if (answers.experience === "first-time" && (product.extended.weightLb ?? 999) <= 85) {
       score += 1;
+      reasons.push("more manageable for a first purchase");
+    }
+    if (answers.experience === "collector" && (product.extended.customAvailable || price >= 2500)) {
+      score += 1;
+      reasons.push("more specialized configuration");
     }
 
     return { product, score, reasons };
@@ -125,4 +129,13 @@ export function recommendProducts(products: Product[], answers: QuizAnswers): Qu
       badge: index === 0 ? "Best fit" : product.extended.stockStatus === "ready_to_ship" ? "Fast option" : "Good match",
       reason: reasons.slice(0, 3).join(", ") || "A practical match for your budget, handling, and ordering preferences."
     }));
+}
+
+function matchesBuildPreference(product: Product, preference: QuizAnswers["bodyType"]) {
+  if (preference === "unsure") return false;
+  const tags = product.tags.map((tag) => tag.toLowerCase());
+  const text = `${product.title} ${product.productType} ${tags.join(" ")}`.toLowerCase();
+  if (preference === "lighter") return (product.extended.weightLb ?? Number.POSITIVE_INFINITY) <= 75 || /light(?:er|weight)|weight-under-75/.test(text);
+  if (preference === "curvy") return /\bcurvy\b|curvy-build|bbw|fuller/.test(text);
+  return /premium|full-silicone|silicone/.test(text) && Number(product.priceRange.minVariantPrice.amount) >= 2500;
 }
