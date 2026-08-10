@@ -13,7 +13,9 @@ import {
   ExternalLink,
   Info,
   Loader2,
+  MapPin,
   Maximize2,
+  PackageCheck,
   ShoppingBag
 } from "lucide-react";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
@@ -40,6 +42,8 @@ import { StyledSelect } from "./StyledSelect";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
+  const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
+  if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
   return config.groups.length ? <ProductOptionsBuilder product={product} config={config} /> : <ProductOptionsOnRequest product={product} />;
 }
 
@@ -553,7 +557,7 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
   return <span className={clsx("flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-semibold", selected ? "bg-accent text-white" : "bg-surface-tint text-text")}>{option.swatch?.label ?? option.label.slice(0, 1)}</span>;
 }
 
-function ProductOptionsOnRequest({ product }: { product: Product }) {
+function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { product: Product; fixedWarehouseUnit?: boolean }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -565,6 +569,10 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
   const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
   const canCheckout = Boolean(firstAvailable?.id && firstAvailable.availableForSale);
+  const checkedAt = product.extended.stockLastCheckedAt ? new Date(product.extended.stockLastCheckedAt) : null;
+  const checkedLabel = checkedAt && !Number.isNaN(checkedAt.getTime())
+    ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(checkedAt)
+    : null;
 
   async function addToCart() {
     if (!canCheckout || !firstAvailable?.id) return;
@@ -606,8 +614,24 @@ function ProductOptionsOnRequest({ product }: { product: Product }) {
       <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{brandName}</p>
-          <h2 className="mt-1 font-display text-3xl font-semibold">Order this doll as shown</h2>
-          <p className="mt-3 max-w-xl text-base leading-7 text-text-dim">This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version.</p>
+          <h2 className="mt-1 font-display text-3xl font-semibold">{fixedWarehouseUnit ? "This warehouse doll ships as shown" : "Order this doll as shown"}</h2>
+          <p className="mt-3 max-w-xl text-base leading-7 text-text-dim">
+            {fixedWarehouseUnit
+              ? "This is a specific stocked configuration. Factory-order colors, heads, and body upgrades are not available unless they are explicitly listed for this unit."
+              : "This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version."}
+          </p>
+          {fixedWarehouseUnit ? (
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="flex items-start gap-3 rounded-md bg-stock-tint p-4 text-stock">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                <div><p className="text-sm font-semibold">Warehouse region</p><p className="mt-1 text-base font-semibold text-text">{product.extended.warehouseCountry || "Confirming location"}</p></div>
+              </div>
+              <div className="flex items-start gap-3 rounded-md bg-surface-tint p-4">
+                <PackageCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                <div><p className="text-sm font-semibold text-text-dim">Stock record</p><p className="mt-1 text-base font-semibold text-text">{checkedLabel ? `Checked ${checkedLabel}` : "Confirmed before dispatch"}</p></div>
+              </div>
+            </div>
+          ) : null}
           <div className="mt-5 flex flex-wrap gap-3">
             <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}

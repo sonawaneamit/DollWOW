@@ -116,6 +116,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 currencyCode={price.currencyCode}
                 deliveryEstimate={product.extended.deliveryEstimate}
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
+                customAvailable={product.extended.customAvailable}
+                warehouseCountry={product.extended.warehouseCountry}
               />
             )}
             <nav aria-label="Product page sections" className="pdp-quick-nav">

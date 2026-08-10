@@ -24,6 +24,8 @@ type ProductBuyActionsProps = {
   currencyCode: string;
   deliveryEstimate?: string;
   readyToShip: boolean;
+  customAvailable?: boolean;
+  warehouseCountry?: string;
 };
 
 /**
@@ -41,7 +43,9 @@ export function ProductBuyActions({
   unitPrice,
   currencyCode,
   deliveryEstimate,
-  readyToShip
+  readyToShip,
+  customAvailable,
+  warehouseCountry
 }: ProductBuyActionsProps) {
   const router = useRouter();
   const cart = useCart();
@@ -50,6 +54,7 @@ export function ProductBuyActions({
 
   const name = productDisplayName || productTitle;
   const installments = installmentLabel(unitPrice, currencyCode, formatMoney);
+  const canCustomize = !readyToShip || customAvailable === true;
   const buildAttributes = [
     ...(productDisplayName ? [{ key: "DollWow Reference Name", value: productDisplayName }] : []),
     { key: "Selected configuration", value: "As shown" }
@@ -140,7 +145,7 @@ export function ProductBuyActions({
           <ShoppingBag className="h-5 w-5" />
           Add to bag · {formatMoney(unitPrice, currencyCode)}
         </button>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className={`grid gap-3 ${canCustomize ? "sm:grid-cols-2" : ""}`}>
           <button
             type="button"
             onClick={buyNow}
@@ -150,14 +155,16 @@ export function ProductBuyActions({
             {buyNowPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <Zap className="h-5 w-5" />}
             Buy now
           </button>
-          <button
-            type="button"
-            onClick={scrollToCustomizer}
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
-          >
-            <SlidersHorizontal className="h-5 w-5" />
-            Customize your doll
-          </button>
+          {canCustomize ? (
+            <button
+              type="button"
+              onClick={scrollToCustomizer}
+              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
+            >
+              <SlidersHorizontal className="h-5 w-5" />
+              {readyToShip ? "Available customizations" : "Customize your doll"}
+            </button>
+          ) : null}
         </div>
         {buyNowError ? <p className="text-sm text-danger">{buyNowError}</p> : null}
       </div>
@@ -168,11 +175,11 @@ export function ProductBuyActions({
         </span>
         <div>
           <p className="text-base font-semibold text-text">
-            {readyToShip ? "In the warehouse now" : "Built to order for you"}
+            {readyToShip ? `In the ${warehouseCountry || "supplier"} warehouse now` : "Built to order for you"}
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {readyToShip
-              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}Leaves the warehouse in 1-3 business days after stock confirmation.`
+              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}${canCustomize ? "The available options below are supported for this stock unit. " : "This is the fixed configuration shown; factory options do not apply. "}Leaves the warehouse in 1-3 business days after stock confirmation.`
               : "You approve detailed factory photos and videos before anything ships. Timing is confirmed before you pay."}
           </p>
         </div>
