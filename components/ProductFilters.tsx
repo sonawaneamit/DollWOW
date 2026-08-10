@@ -30,12 +30,14 @@ export function ProductFilters({
   filters = {},
   action = "/shop",
   resetHref = "/shop",
-  variant = "bar"
+  variant = "bar",
+  defaultSort
 }: {
   filters?: CatalogFilters;
   action?: string;
   resetHref?: string;
   variant?: "bar" | "sidebar";
+  defaultSort?: string;
 }) {
   const router = useRouter();
   const count = activeFilterCount(filters);
@@ -113,7 +115,7 @@ export function ProductFilters({
         <SelectFilter label="Weight" name="weight" value={filters.weight} options={catalogFilterOptions.weights} />
         <SelectFilter label="Cup size" name="cup" value={filters.cup} options={catalogFilterOptions.cups} />
         <SelectFilter label="Price" name="price" value={filters.price} options={catalogFilterOptions.prices} />
-        <SelectFilter label="Sort" name="sort" value={filters.sort || "featured"} options={catalogFilterOptions.sorts} />
+        <SelectFilter label="Sort" name="sort" value={filters.sort === "featured" && defaultSort ? defaultSort : filters.sort || defaultSort || "featured"} options={catalogFilterOptions.sorts} />
         {!isSidebar ? <FilterActions resetHref={resetHref} /> : null}
       </form>
 
