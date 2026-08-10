@@ -11,6 +11,7 @@ import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
+import { ResponsiveDetails } from "@/components/ResponsiveDetails";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
@@ -244,8 +245,11 @@ function ProductSpecSummary({
   const measurementGroups = groupMeasurements(measurements);
 
   return (
-    <details id="product-specs" className="pdp-spec-summary scroll-mt-24" aria-labelledby="product-specs-heading">
-      <summary className="pdp-spec-summary-head">
+    <ResponsiveDetails
+      id="product-specs"
+      className="pdp-spec-summary scroll-mt-24"
+      labelledBy="product-specs-heading"
+      summary={<summary className="pdp-spec-summary-head">
         <div>
           <p className="alive-eyebrow">
             <span />
@@ -257,7 +261,8 @@ function ProductSpecSummary({
           <p>Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout.</p>
           <span className="pdp-spec-toggle">View all measurements</span>
         </div>
-      </summary>
+      </summary>}
+    >
 
       <div className="pdp-spec-summary-grid">
         <div className="pdp-detail-grid">
@@ -319,7 +324,7 @@ function ProductSpecSummary({
 
         </div>
       </div>
-    </details>
+    </ResponsiveDetails>
   );
 }
 

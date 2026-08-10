@@ -1689,10 +1689,6 @@ a {
 }
 
 @media (min-width: 768px) {
-  .pdp-spec-summary:not([open]) > .pdp-spec-summary-grid {
-    display: grid;
-  }
-
   .pdp-spec-summary-head {
     cursor: default;
     pointer-events: none;
