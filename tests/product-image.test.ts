@@ -29,14 +29,14 @@ describe("protected product images", () => {
       "https://cdn.shopify.com/one.jpg",
       "https://cdn.shopify.com/two.jpg"
     ]);
-    expect(protectedProductImageUrlFor(product, product.images[1])).toBe("/product-media/sample-doll/1");
-    expect(protectedProductImageUrlFor(product, product.images[1], "thumb")).toBe("/product-media/sample-doll/1?size=thumb");
+    expect(protectedProductImageUrlFor(product, product.images[1])).toBe("/product-media/sample-doll/1?v=2");
+    expect(protectedProductImageUrlFor(product, product.images[1], "thumb")).toBe("/product-media/sample-doll/1?v=2&size=thumb");
   });
 
   it("removes source URLs from the public product payload", () => {
     const protectedProduct = withProtectedProductImages(product);
     expect(JSON.stringify(protectedProduct)).not.toContain("cdn.shopify.com");
-    expect(protectedProduct.featuredImage?.url).toBe("/product-media/sample-doll/0");
-    expect(protectedProduct.images[1].url).toBe("/product-media/sample-doll/1");
+    expect(protectedProduct.featuredImage?.url).toBe("/product-media/sample-doll/0?v=2");
+    expect(protectedProduct.images[1].url).toBe("/product-media/sample-doll/1?v=2");
   });
 });

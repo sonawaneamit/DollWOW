@@ -46,8 +46,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
           <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.62"/>
         </filter>
       </defs>
-      <g transform="translate(${Math.round(width * 0.5)} ${Math.round(height * 0.63)}) rotate(-8)" opacity="0.14" filter="url(#shadow)">
-        <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="${GOLD}" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" font-weight="600" letter-spacing="${letterSpacing}">DOLLWOW</text>
+      <g transform="translate(${Math.round(width * 0.5)} ${Math.round(height * 0.63)}) rotate(-8)" opacity="0.22" filter="url(#shadow)">
+        <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="${GOLD}" stroke="#1a100c" stroke-opacity="0.42" stroke-width="2" paint-order="stroke" font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" font-weight="600" letter-spacing="${letterSpacing}">DOLLWOW</text>
       </g>
     </svg>`);
   const shouldWatermark = requestedSize !== "thumb" && requestedSize !== "card";
