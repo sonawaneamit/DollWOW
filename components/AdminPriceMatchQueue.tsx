@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { AlertTriangle, BadgeCheck, MailCheck, SearchX, TimerReset } from "lucide-react";
 import { GoldButton } from "./GoldButton";
+import { StyledSelect } from "./StyledSelect";
 import { formatMoney } from "@/lib/utils/currency";
 import type { ComparisonRequest } from "@/types/comparison";
 
@@ -148,17 +149,13 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
         <div className="space-y-3">
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-ivory-200">Status</span>
-            <select
-              value={adminStatus}
-              onChange={(event) => setAdminStatus(event.target.value as NonNullable<ComparisonRequest["adminStatus"]>)}
-              className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 focus:border-gold-300 focus:ring-gold-300"
-            >
-              <option value="new">New</option>
-              <option value="in_review">In review</option>
-              <option value="approved">Approved</option>
-              <option value="declined">Declined</option>
-              <option value="sent_code">Code sent</option>
-            </select>
+            <StyledSelect value={adminStatus} onValueChange={(value) => setAdminStatus(value as NonNullable<ComparisonRequest["adminStatus"]>)} ariaLabel="Status" className="w-full" options={[
+              { label: "New", value: "new" },
+              { label: "In review", value: "in_review" },
+              { label: "Approved", value: "approved" },
+              { label: "Declined", value: "declined" },
+              { label: "Code sent", value: "sent_code" }
+            ]} />
           </label>
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-ivory-200">Notes</span>
@@ -183,17 +180,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
               </label>
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-ivory-200">Currency</span>
-                <select
-                  value={approvedDiscountCurrency}
-                  onChange={(event) => setApprovedDiscountCurrency(event.target.value)}
-                  className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 focus:border-gold-300 focus:ring-gold-300"
-                >
-                  {["USD", "CAD", "GBP", "EUR"].map((currency) => (
-                    <option key={currency} value={currency}>
-                      {currency}
-                    </option>
-                  ))}
-                </select>
+                <StyledSelect value={approvedDiscountCurrency} onValueChange={setApprovedDiscountCurrency} ariaLabel="Currency" className="w-full" options={["USD", "CAD", "GBP", "EUR"].map((currency) => ({ label: currency, value: currency }))} />
               </label>
             </div>
           ) : null}

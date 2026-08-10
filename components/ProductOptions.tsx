@@ -36,6 +36,7 @@ import type { CustomizationGroup, CustomizationOption, CustomizationSelections, 
 import type { Product } from "@/types/product";
 import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
+import { StyledSelect } from "./StyledSelect";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -270,13 +271,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           {product.variants.length > 1 ? (
             <label className="block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
-              <select
-                value={variantId}
-                onChange={(event) => setVariantId(event.target.value)}
-                className="h-14 w-full rounded-sm border border-border bg-surface px-4 text-base text-text focus:border-accent focus:ring-accent"
-              >
-                {product.variants.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
-              </select>
+              <StyledSelect value={variantId} onValueChange={setVariantId} ariaLabel="Choose a build" className="product-builder-variant-select" options={product.variants.map((item) => ({ label: item.title, value: item.id }))} />
             </label>
           ) : null}
 

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LinkIcon, Loader2, Upload } from "lucide-react";
 import { GoldButton } from "./GoldButton";
+import { StyledSelect } from "./StyledSelect";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 
 export function CompareListingForm({
@@ -104,17 +105,7 @@ export function CompareListingForm({
         </label>
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-ivory-200">Currency</span>
-          <select
-            value={quotedCurrency}
-            onChange={(event) => setQuotedCurrency(event.target.value)}
-            className="w-full rounded-[14px] border-gold-500/20 bg-ink-950/70 px-4 py-3 text-ivory-50 focus:border-gold-300 focus:ring-gold-300"
-          >
-            {["USD", "CAD", "GBP", "EUR"].map((currency) => (
-              <option key={currency} value={currency}>
-                {currency}
-              </option>
-            ))}
-          </select>
+          <StyledSelect value={quotedCurrency} onValueChange={setQuotedCurrency} ariaLabel="Currency" className="w-full" options={["USD", "CAD", "GBP", "EUR"].map((currency) => ({ label: currency, value: currency }))} />
         </label>
       </div>
       <label className="block">
