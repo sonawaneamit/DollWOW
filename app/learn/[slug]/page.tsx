@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
+import { GuideDownloadButton } from "@/components/GuideDownloadButton";
 import { notFound } from "next/navigation";
-import { MarkdownContent } from "@/components/MarkdownContent";
+import { headingId, MarkdownContent } from "@/components/MarkdownContent";
 import { compactFilters, filterProducts, requiresCatalogWideFetch, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -73,6 +74,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           <p className="mt-5 text-sm  text-gold-300">{article.category}</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">{article.description}</p>
+          {article.slug === "sex-doll-guide" ? <GuideDownloadButton /> : null}
           {article.featuredImage ? (
             <div className="mt-8 max-w-5xl overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04]">
               <Image
@@ -99,6 +101,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
       <section className="tone-section" data-tone="blush">
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
+            {article.slug === "sex-doll-guide" ? <GuideTableOfContents markdown={article.body} /> : null}
             <MarkdownContent markdown={article.body} />
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
@@ -107,6 +110,30 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         </div>
       </section>
     </div>
+  );
+}
+
+function GuideTableOfContents({ markdown }: { markdown: string }) {
+  const headings = markdown
+    .split("\n")
+    .filter((line) => line.startsWith("## "))
+    .map((line) => line.replace(/^##\s+/, ""))
+    .filter((heading) => !["Quick Answer", "What This Guide Covers"].includes(heading));
+
+  return (
+    <nav aria-label="Guide chapters" className="mb-12 border-y border-gold-500/20 py-7">
+      <p className="text-sm font-semibold text-gold-700">Guide chapters</p>
+      <ol className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {headings.map((heading, index) => (
+          <li key={heading} className="text-sm leading-6 text-ink-700">
+            <a href={`#${headingId(heading)}`} className="transition hover:text-gold-700">
+              <span className="mr-2 font-semibold text-gold-700">{String(index + 1).padStart(2, "0")}</span>
+              {heading}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }
 
@@ -537,6 +564,12 @@ type ArticleProductModule = {
 
 function productModuleConfig(slug: string): Omit<ArticleProductModule, "products"> | null {
   const map: Record<string, Omit<ArticleProductModule, "products">> = {
+    "sex-doll-guide": {
+      title: "Start with current DollWow catalog examples",
+      description: "Use live products to compare material, height, weight, price, and availability, then narrow the catalog around your practical requirements.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {}
+    },
     "tpe-vs-silicone-sex-dolls": {
       title: "Compare TPE listings in the catalog",
       description: "Use live catalog examples to compare size, price, stock status, and material details before choosing between TPE and silicone.",
@@ -757,6 +790,11 @@ function relatedCollections(slug: string) {
     { label: "Browse the catalog", href: "/shop", description: "Compare live DollWow products, filters, and pricing." }
   ];
   const map: Record<string, Array<{ label: string; href: string; description: string }>> = {
+    "sex-doll-guide": [
+      { label: "Browse all sex dolls", href: "/shop/sex-dolls", description: "Compare the complete live catalog by material, size, price, and availability." },
+      { label: "Use the DollWow finder", href: "/help-me-choose", description: "Narrow products around material, size, body type, and delivery preferences." },
+      { label: "Compare active brands", href: "/brands", description: "Review manufacturer hubs and current DollWow listings." }
+    ],
     "tpe-vs-silicone-sex-dolls": [
       { label: "Browse TPE dolls", href: "/shop/tpe", description: "Compare softer material builds and care tradeoffs." },
       { label: "Browse silicone dolls", href: "/shop/silicone", description: "Compare firmer premium builds and detail." }

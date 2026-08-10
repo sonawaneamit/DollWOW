@@ -18,13 +18,15 @@ function renderBlocks(markdown: string) {
     }
 
     if (line.startsWith("## ")) {
-      blocks.push(<h2 key={blocks.length}>{line.replace(/^##\s+/, "")}</h2>);
+      const heading = line.replace(/^##\s+/, "");
+      blocks.push(<h2 id={headingId(heading)} key={blocks.length}>{heading}</h2>);
       index += 1;
       continue;
     }
 
     if (line.startsWith("### ")) {
-      blocks.push(<h3 key={blocks.length}>{line.replace(/^###\s+/, "")}</h3>);
+      const heading = line.replace(/^###\s+/, "");
+      blocks.push(<h3 id={headingId(heading)} key={blocks.length}>{heading}</h3>);
       index += 1;
       continue;
     }
@@ -64,6 +66,13 @@ function renderBlocks(markdown: string) {
   }
 
   return blocks;
+}
+
+export function headingId(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function Table({ lines }: { lines: string[] }) {

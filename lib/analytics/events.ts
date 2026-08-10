@@ -12,7 +12,8 @@ export const analyticsEvents = {
   completeHelpMeChoose: "complete_help_me_choose",
   submitCompareListing: "submit_compare_listing",
   viewComparisonResult: "view_comparison_result",
-  askHumanHelp: "ask_human_help"
+  askHumanHelp: "ask_human_help",
+  downloadGuide: "download_guide"
 } as const;
 
 const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";

@@ -232,6 +232,7 @@ function arrayValue(value: unknown) {
 
 function priority(slug: string) {
   const order = [
+    "sex-doll-guide",
     "tpe-vs-silicone-sex-dolls",
     "sex-doll-cost",
     "best-sex-dolls",
