@@ -68,6 +68,7 @@ export const catalogFilterOptions = {
   ],
   sorts: [
     { label: "Featured", value: "featured" },
+    { label: "Latest arrivals", value: "latest" },
     { label: "Price: low to high", value: "price-asc" },
     { label: "Price: high to low", value: "price-desc" },
     { label: "Height: short to tall", value: "height-asc" },
@@ -324,6 +325,7 @@ function cupMatches(cupSize: string | undefined, range: string) {
 function sortProducts(products: Product[], sort = "featured", query?: string) {
   const sorted = [...products];
   if ((!sort || sort === "featured") && query) sorted.sort((a, b) => productSearchScore(b, query) - productSearchScore(a, query));
+  if (sort === "latest") sorted.sort((a, b) => (b.extended.sourceReleaseRank || 0) - (a.extended.sourceReleaseRank || 0));
   if (sort === "price-asc") sorted.sort((a, b) => price(a) - price(b));
   if (sort === "price-desc") sorted.sort((a, b) => price(b) - price(a));
   if (sort === "height-asc") sorted.sort((a, b) => (a.extended.heightCm || 0) - (b.extended.heightCm || 0));

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BadgeCheck, ChevronDown, SlidersHorizontal } from "lucide-react";
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 
@@ -166,14 +166,40 @@ function SelectFilter({
   value?: string;
   options: ReadonlyArray<{ label: string; value: string }>;
 }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileValue, setMobileValue] = useState(value || (name === "sort" ? "featured" : ""));
+  const mobileRootRef = useRef<HTMLSpanElement>(null);
+  const selectedOption = options.find((option) => option.value === mobileValue);
+
   function applySelection(event: ChangeEvent<HTMLSelectElement>) {
     event.currentTarget.form?.requestSubmit();
   }
 
+  useEffect(() => {
+    function closeOnOutsideClick(event: MouseEvent) {
+      if (!mobileRootRef.current?.contains(event.target as Node)) setMobileOpen(false);
+    }
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setMobileOpen(false);
+    }
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  function selectMobileOption(nextValue: string, form: HTMLFormElement | null) {
+    setMobileValue(nextValue);
+    setMobileOpen(false);
+    window.requestAnimationFrame(() => form?.requestSubmit());
+  }
+
   return (
-    <label className="product-filter-control">
+    <div className="product-filter-control">
       <span>{label}</span>
-      <span className="product-filter-select-wrap">
+      <span className="product-filter-select-wrap product-filter-select-wrap--desktop">
         <select
           name={name}
           defaultValue={value || (name === "sort" ? "featured" : "")}
@@ -189,7 +215,41 @@ function SelectFilter({
         </select>
         <ChevronDown className="product-filter-select-icon" aria-hidden="true" />
       </span>
-    </label>
+      <span ref={mobileRootRef} className={`product-filter-mobile-select ${mobileOpen ? "is-open" : ""} ${name === "sort" ? "product-filter-mobile-select--up" : ""}`}>
+        <input type="hidden" name={name} value={mobileValue} />
+        <button
+          type="button"
+          className="product-filter-mobile-select__trigger"
+          aria-expanded={mobileOpen}
+          aria-haspopup="listbox"
+          onClick={() => setMobileOpen((current) => !current)}
+        >
+          <span>{selectedOption?.label || (name === "sort" ? "Featured" : "Any")}</span>
+          <ChevronDown className="h-5 w-5 shrink-0" aria-hidden="true" />
+        </button>
+        {mobileOpen ? (
+          <span className="product-filter-mobile-select__menu" role="listbox" aria-label={label}>
+            {name === "sort" ? null : (
+              <button type="button" role="option" aria-selected={!mobileValue} onClick={(event) => selectMobileOption("", event.currentTarget.form)}>
+                Any
+              </button>
+            )}
+            {options.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                role="option"
+                aria-selected={mobileValue === option.value}
+                onClick={(event) => selectMobileOption(option.value, event.currentTarget.form)}
+              >
+                <span>{option.label}</span>
+                {mobileValue === option.value ? <span aria-hidden="true">✓</span> : null}
+              </button>
+            ))}
+          </span>
+        ) : null}
+      </span>
+    </div>
   );
 }
 
