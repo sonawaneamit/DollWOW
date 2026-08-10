@@ -15,6 +15,8 @@ import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
 import "./v2-storefront.css";
 
+const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
+
 const display = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const siteStructuredData = buildSiteStructuredData();
-  const measurementId = process.env.GA_MEASUREMENT_ID;
+  const measurementId = process.env.GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
   const chatraId = process.env.NEXT_PUBLIC_CHATRA_ID;
 
   return (

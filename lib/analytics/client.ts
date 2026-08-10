@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export type AnalyticsEventParams = Record<string, string | number | boolean | undefined>;
+export type AnalyticsEventParams = Record<string, string | number | boolean | object | undefined>;
 
 /**
  * Client-side event tracking. Events are queued onto the dataLayer, so calls

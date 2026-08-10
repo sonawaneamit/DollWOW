@@ -30,9 +30,15 @@ export function CartPageClient() {
     trackEvent(analyticsEvents.viewCart, {
       value: cart.subtotal,
       currency: cart.currencyCode,
-      item_count: cart.count
+      items: cart.items.map((item) => ({
+        item_id: item.merchandiseId,
+        item_name: item.productDisplayName || item.productTitle,
+        item_brand: item.brand,
+        price: item.unitPrice,
+        quantity: item.quantity
+      }))
     });
-  }, [mounted, cart.items.length, cart.subtotal, cart.currencyCode, cart.count]);
+  }, [mounted, cart.items, cart.subtotal, cart.currencyCode]);
 
   if (!mounted) {
     return <div className="min-h-48 rounded-[18px] border border-gold-500/14 bg-ivory-50/[0.03]" aria-hidden="true" />;

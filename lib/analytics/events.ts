@@ -2,7 +2,7 @@ export const analyticsEvents = {
   viewProduct: "view_item",
   viewCart: "view_cart",
   addToCart: "add_to_cart",
-  addToBag: "add_to_bag",
+  addToBag: "add_to_cart",
   addUpsell: "add_upsell",
   addToWishlist: "add_to_wishlist",
   beginCheckout: "begin_checkout",
@@ -14,6 +14,8 @@ export const analyticsEvents = {
   viewComparisonResult: "view_comparison_result",
   askHumanHelp: "ask_human_help"
 } as const;
+
+const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
 
 type ServerEventPayload = {
   clientId?: string;
@@ -33,7 +35,7 @@ export async function trackServerEvent(event: string, payload: ServerEventPayloa
     return;
   }
 
-  const measurementId = process.env.GA_MEASUREMENT_ID;
+  const measurementId = process.env.GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
   const apiSecret = process.env.GA_MP_API_SECRET;
   if (!measurementId || !apiSecret) return;
 

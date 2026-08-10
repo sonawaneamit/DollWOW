@@ -160,14 +160,27 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
       });
       trackEvent(analyticsEvents.addToCart, {
-        item_id: variantId,
-        item_name: displayName || displayTitle,
-        item_brand: product.extended.brand ?? product.vendor,
-        price: resolved.totalPrice,
+        value: resolved.totalPrice,
         currency: currencyCode,
-        quantity: 1
+        items: [{
+          item_id: variantId,
+          item_name: displayName || displayTitle,
+          item_brand: product.extended.brand ?? product.vendor,
+          price: resolved.totalPrice,
+          quantity: 1
+        }]
       });
-      trackEvent(analyticsEvents.beginCheckout, { value: resolved.totalPrice, currency: currencyCode, item_count: 1 });
+      trackEvent(analyticsEvents.beginCheckout, {
+        value: resolved.totalPrice,
+        currency: currencyCode,
+        items: [{
+          item_id: variantId,
+          item_name: displayName || displayTitle,
+          item_brand: product.extended.brand ?? product.vendor,
+          price: resolved.totalPrice,
+          quantity: 1
+        }]
+      });
       router.push(checkoutUrl);
     } catch {
       setError("Could not start checkout. Please try again.");

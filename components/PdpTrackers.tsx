@@ -20,9 +20,13 @@ export function PdpTrackers({ product }: { product: Product }) {
     trackEvent(analyticsEvents.viewProduct, {
       currency: price.currencyCode,
       value: Number(price.amount),
-      item_id: product.id,
-      item_name: title,
-      item_brand: brand
+      items: [{
+        item_id: product.id,
+        item_name: title,
+        item_brand: brand,
+        price: Number(price.amount),
+        quantity: 1
+      }]
     });
 
     writeRecentlyViewed({

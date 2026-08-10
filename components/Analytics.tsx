@@ -45,7 +45,11 @@ export function Analytics({ measurementId }: { measurementId?: string }) {
               function gtag(){dataLayer.push(arguments);}
               window.gtag = window.gtag || gtag;
               gtag('js', new Date());
-              gtag('config', '${measurementId}', { send_page_view: false, anonymize_ip: true });
+              gtag('config', '${measurementId}', {
+                send_page_view: false,
+                anonymize_ip: true,
+                linker: { domains: ['dollwow.com', 'checkout.dollwow.com'] }
+              });
             `}
           </Script>
           <ConsentRestore />

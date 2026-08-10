@@ -75,12 +75,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       const next = upsertBagItem(readBag(), { ...item, quantity: item.quantity ?? 1 });
       writeBag(next);
       trackEvent(analyticsEvents.addToBag, {
-        item_id: item.merchandiseId,
-        item_name: item.productDisplayName || item.productTitle,
-        item_brand: item.brand,
-        price: item.unitPrice,
+        value: item.unitPrice * (item.quantity ?? 1),
         currency: item.currencyCode,
-        quantity: item.quantity ?? 1
+        items: [{
+          item_id: item.merchandiseId,
+          item_name: item.productDisplayName || item.productTitle,
+          item_brand: item.brand,
+          price: item.unitPrice,
+          quantity: item.quantity ?? 1
+        }]
       });
       if (options?.openDrawer !== false) openDrawer();
     },
@@ -123,7 +126,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
       trackEvent(analyticsEvents.beginCheckout, {
         value: subtotal,
         currency: bagCurrency(bag),
-        item_count: bagItemCount(bag)
+        items: bag.map((item) => ({
+          item_id: item.merchandiseId,
+          item_name: item.productDisplayName || item.productTitle,
+          item_brand: item.brand,
+          price: item.unitPrice,
+          quantity: item.quantity
+        }))
       });
       window.location.assign(normalizeCheckoutUrl(payload.checkoutUrl));
     } catch {
