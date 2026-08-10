@@ -198,7 +198,7 @@ export function Header() {
   const chooseActive = pathname?.startsWith("/help-me-choose");
 
   return (
-    <header className={`sticky top-0 z-[80] h-[72px] bg-surface text-text transition-shadow ${scrolled ? "shadow-sticky" : ""}`}>
+    <header className={`site-header sticky top-0 z-[80] h-[72px] bg-surface text-text ${scrolled ? "is-scrolled" : ""}`}>
       <div className="mx-auto flex h-full max-w-[1440px] items-center gap-2 px-3 sm:gap-4 sm:px-5 lg:px-8">
         <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
           <span className="relative block h-12 w-12 shrink-0 overflow-hidden" aria-hidden="true">

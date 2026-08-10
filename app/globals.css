@@ -296,6 +296,35 @@ textarea {
   transition: background-color 160ms ease, color 160ms ease;
 }
 
+.site-header {
+  border-bottom: 1px solid rgb(var(--color-accent) / 0.16);
+  box-shadow: 0 1px 0 rgb(var(--color-accent) / 0.06);
+  transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.site-header::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 2%, rgb(var(--color-accent) / 0.48) 22%, rgb(var(--color-accent) / 0.7) 50%, rgb(var(--color-accent) / 0.48) 78%, transparent 98%);
+  content: "";
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: rgb(var(--color-accent) / 0.38);
+  background: color-mix(in srgb, rgb(var(--color-surface)) 96%, rgb(var(--color-accent)) 4%);
+  box-shadow: 0 12px 32px rgb(24 15 11 / 0.24), 0 2px 8px rgb(24 15 11 / 0.14);
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.site-header.is-scrolled::after {
+  opacity: 0.9;
+}
+
 .v2-header-link:hover {
   background: rgb(var(--color-surface-tint));
 }
