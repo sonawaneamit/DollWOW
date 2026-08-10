@@ -9,15 +9,16 @@ import {
   BadgeCheck,
   Camera,
   ChevronDown,
+  CircleDollarSign,
   Clock3,
   CreditCard,
   Eye,
+  Factory,
   HelpCircle,
   Heart,
   PackageCheck,
   Scale,
   ShieldCheck,
-  Sparkles,
   Truck
 } from "lucide-react";
 import { productCustomizeLabel } from "@/lib/catalog/bodyType";
@@ -213,7 +214,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
 
         <div className="alive-guide-grid">
           <GuideCard icon={<PackageCheck className="h-5 w-5" />} kicker="Base build" title="Included setup" text="Start with the standard factory build, then personalize the details that matter to you." />
-          <GuideCard icon={<Sparkles className="h-5 w-5" />} kicker="Add-ons" title="Upgrade pricing" text="Paid options show their added cost before you continue to checkout." />
+          <GuideCard icon={<CircleDollarSign className="h-5 w-5" />} kicker="Add-ons" title="Upgrade pricing" text="Paid options show their added cost before you continue to checkout." />
           <GuideCard icon={<Eye className="h-5 w-5" />} kicker="Visuals" title="Reference images" text="Option photos and swatches make skin, hair, eyes, and details easier to compare." />
           <GuideCard
             icon={<Camera className="h-5 w-5" />}
@@ -504,7 +505,7 @@ function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
   return [
     { label: "Order placed", detail: "You receive a private confirmation with the options you selected.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
     { label: "Order check", detail: "We review your selected options, price, and timing before production begins.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
-    { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Sparkles className="h-5 w-5" /> },
+    { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Factory className="h-5 w-5" /> },
     {
       label: "Factory photo approval",
       detail: "We send detailed factory photos and videos for your approval, and you can request cosmetic revisions until the final build is approved for shipment.",

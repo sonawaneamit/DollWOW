@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ImageIcon, Mail, SearchCheck, Sparkles } from "lucide-react";
+import { ImageIcon, Mail, MessageCircle, SearchCheck } from "lucide-react";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
 import type { VisualSearchRequestRecord } from "@/types/visualSearch";
@@ -139,7 +139,7 @@ export function VisualSearchResult({
 
         <div className="mt-6 rounded-[16px] border border-gold-500/16 bg-ink-950/40 p-4">
           <div className="flex items-center gap-2 text-gold-300">
-            <Sparkles className="h-4 w-4" />
+            <MessageCircle className="h-4 w-4" />
             <p className="text-sm font-semibold">Need our team to check?</p>
           </div>
           <p className="mt-2 text-sm text-ivory-400">

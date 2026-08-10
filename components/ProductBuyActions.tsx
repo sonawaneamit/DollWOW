@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Loader2, Lock, ShoppingBag, Sparkles, Truck, Zap } from "lucide-react";
+import { Loader2, Lock, ShoppingBag, SlidersHorizontal, Truck, Zap } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
@@ -155,7 +155,7 @@ export function ProductBuyActions({
             onClick={scrollToCustomizer}
             className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
           >
-            <Sparkles className="h-5 w-5" />
+            <SlidersHorizontal className="h-5 w-5" />
             Customize your doll
           </button>
         </div>

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Truck } from "lucide-react";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
@@ -496,7 +496,7 @@ function groupMeasurements(measurements: Array<{ label: string; value: string }>
 function decisionNoteVisual(index: number) {
   return [
     { icon: <Scale className="h-5 w-5" />, toneClass: "is-copper" },
-    { icon: <Sparkles className="h-5 w-5" />, toneClass: "is-rose" },
+    { icon: <Ruler className="h-5 w-5" />, toneClass: "is-rose" },
     { icon: <Clock3 className="h-5 w-5" />, toneClass: "is-olive" }
   ][index] ?? { icon: <CheckCircle2 className="h-5 w-5" />, toneClass: "is-copper" };
 }
@@ -512,7 +512,7 @@ function trustSignalVisual(index: number) {
 function fitCheckVisual(index: number) {
   return [
     { icon: <PackageCheck className="h-5 w-5" />, toneClass: "is-olive" },
-    { icon: <Sparkles className="h-5 w-5" />, toneClass: "is-copper" },
+    { icon: <Ruler className="h-5 w-5" />, toneClass: "is-copper" },
     { icon: <Scale className="h-5 w-5" />, toneClass: "is-rose" },
     { icon: <Truck className="h-5 w-5" />, toneClass: "is-copper" }
   ][index] ?? { icon: <Scale className="h-5 w-5" />, toneClass: "is-copper" };
@@ -523,7 +523,7 @@ function measurementGroupVisual(title: string) {
     return { icon: <Scale className="h-5 w-5" />, toneClass: "is-copper", note: "Key size markers shoppers compare first." };
   }
   if (title === "Body proportions") {
-    return { icon: <Sparkles className="h-5 w-5" />, toneClass: "is-rose", note: "Useful for clothing fit and silhouette expectations." };
+    return { icon: <Ruler className="h-5 w-5" />, toneClass: "is-rose", note: "Useful for clothing fit and silhouette expectations." };
   }
   return { icon: <ShieldCheck className="h-5 w-5" />, toneClass: "is-olive", note: "Reference dimensions often checked before purchase." };
 }

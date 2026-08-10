@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, Lock, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
@@ -71,8 +71,6 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   return (
     <div className="home-alive">
       <section className="home-hero" data-tone="deep">
-        <div className="home-hero__blob home-hero__blob--one" />
-        <div className="home-hero__blob home-hero__blob--two" />
         <div className="home-hero__inner">
           <div className="home-hero__copy reveal in">
             <p className="home-kicker"><span /> Doll of the moment</p>
@@ -207,7 +205,6 @@ function ProductRail({ rail, index }: { rail: Rail; index: number }) {
       <div className="home-band__inner">
         <div className="home-rail-head reveal">
           <div className="home-rail-head__title">
-            <div className="home-icon-tile"><Sparkles className="h-5 w-5" /></div>
             <div>
               <p className="home-eyebrow">{rail.eyebrow}</p>
               <h2>{rail.title}</h2>
@@ -228,7 +225,7 @@ function ProductRail({ rail, index }: { rail: Rail; index: number }) {
             ))
           ) : (
             <div className="home-empty-card">
-              <Sparkles className="h-7 w-7" />
+              <ImageIcon className="h-7 w-7" />
               <strong>{rail.title}</strong>
               <p>{rail.emptyCopy ?? "We’ll add products here as soon as this collection is ready."}</p>
             </div>
@@ -302,7 +299,7 @@ function HomeProductImage({ product, priority = false }: { product: Product; pri
         />
       ) : (
         <div className="home-image-shell__empty">
-          <Sparkles className="h-8 w-8" />
+          <ImageIcon className="h-8 w-8" />
           <span>{displayTitle}</span>
         </div>
       )}

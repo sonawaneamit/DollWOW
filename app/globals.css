@@ -2456,33 +2456,6 @@ a {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
 
-.home-hero__blob {
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  border-radius: 999px;
-  filter: blur(70px);
-  opacity: 0.55;
-  animation: home-drift 24s ease-in-out infinite alternate;
-}
-
-.home-hero__blob--one {
-  width: 24rem;
-  height: 24rem;
-  top: 8%;
-  right: 8%;
-  background: rgba(176, 78, 72, 0.42);
-}
-
-.home-hero__blob--two {
-  width: 28rem;
-  height: 22rem;
-  bottom: 6%;
-  left: 8%;
-  background: rgba(217, 154, 111, 0.2);
-  animation-duration: 32s;
-}
-
 .home-hero__inner,
 .home-band__inner,
 .home-closing__inner {
@@ -3382,7 +3355,6 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero__blob,
   .home-marquee__track {
     animation: none;
   }

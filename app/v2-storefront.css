@@ -98,7 +98,6 @@ main {
 .home-band::before,
 .home-band::after,
 .home-closing::after,
-.home-hero__blob,
 .catalog-product-card__vignette {
   display: none;
 }
