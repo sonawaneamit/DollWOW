@@ -10,6 +10,7 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { ComparisonProvider } from "@/components/compare/ComparisonProvider";
 import { ComparisonDrawer } from "@/components/compare/ComparisonDrawer";
+import { ChatraWidget } from "@/components/ChatraWidget";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
 import "./v2-storefront.css";
@@ -59,6 +60,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const siteStructuredData = buildSiteStructuredData();
   const measurementId = process.env.GA_MEASUREMENT_ID;
+  const chatraId = process.env.NEXT_PUBLIC_CHATRA_ID;
 
   return (
     <html lang="en" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
@@ -108,6 +110,7 @@ gtag('consent', 'default', {
         </CurrencyProvider>
         <ConsentBanner />
         <Analytics measurementId={measurementId} />
+        {chatraId ? <ChatraWidget chatraId={chatraId} /> : null}
       </body>
     </html>
   );
