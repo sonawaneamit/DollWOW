@@ -121,6 +121,80 @@ const hairFinish: CustomizationGroup = {
   ]
 };
 
+const hairstyle: CustomizationGroup = {
+  id: "hairstyle",
+  label: "Wig style",
+  description: "Choose the included removable wig supplied with the doll.",
+  required: true,
+  display: "swatches",
+  options: [
+    imageOption("shown-style", "Keep the style shown", "2020/04/default-300x300.jpg"),
+    imageOption("style-1", "Black long", "2021/03/Black-Long.png"),
+    imageOption("style-2", "Black medium", "2021/03/Black-Medium.png"),
+    imageOption("style-3", "Blonde with bangs", "2021/03/Blonde-Hair-with-bang.png"),
+    imageOption("style-4", "Blonde long", "2021/03/Blonde-Long.png"),
+    imageOption("style-5", "Blonde short", "2021/03/Blonde-Short.png"),
+    imageOption("style-6", "Brown long", "2021/03/Brown-Long.png"),
+    imageOption("style-7", "Brown short", "2021/03/Brown-Short.png"),
+    imageOption("style-8", "Gradient style 1", "2021/03/Gradient-hair-1.png"),
+    imageOption("style-9", "Gradient style 2", "2021/03/Gradient-hair-2.png"),
+    imageOption("style-10", "Green long and curly", "2021/03/Green-Long-Curly.png"),
+    imageOption("style-11", "Red long and curly", "2021/03/Red-Long-Curly.png"),
+    imageOption("style-12", "Red medium", "2021/03/Red-Medium.png")
+  ]
+};
+
+const breastType: CustomizationGroup = {
+  id: "breast-type",
+  label: "Breast fill",
+  description: "Both factory breast constructions are included for supported bodies.",
+  required: true,
+  display: "cards",
+  options: [
+    { id: "gel", label: "Gel breasts", priceDelta: 0, description: "Softer, gel-filled construction." },
+    { id: "solid", label: "Solid breasts", priceDelta: 0, description: "Standard solid construction." }
+  ]
+};
+
+const vaginaType: CustomizationGroup = {
+  id: "vagina-type",
+  label: "Vagina type",
+  description: "Choose a fixed or removable construction where supported by this body.",
+  required: true,
+  display: "cards",
+  options: [
+    { id: "fixed", label: "Fixed", priceDelta: 0 },
+    { id: "removable", label: "Removable insert", priceDelta: 0 }
+  ]
+};
+
+const vaginaTexture: CustomizationGroup = {
+  id: "vagina-texture",
+  label: "Internal texture",
+  description: "Factory texture choices are included.",
+  required: true,
+  display: "compact",
+  options: [
+    { id: "a", label: "Texture A", priceDelta: 0 },
+    { id: "b", label: "Texture B", priceDelta: 0 },
+    { id: "c", label: "Texture C", priceDelta: 0 }
+  ]
+};
+
+const pubicHair: CustomizationGroup = {
+  id: "pubic-hair",
+  label: "Pubic hair",
+  description: "Factory standard implanted hair is included; custom work and adhesive appliqués are optional.",
+  required: true,
+  display: "cards",
+  options: [
+    { id: "none", label: "None", priceDelta: 0 },
+    { id: "standard", label: "Standard implanted style", priceDelta: 0 },
+    { id: "custom", label: "Custom implanted shape", priceDelta: 100, description: "Upload or send the desired shape after ordering." },
+    { id: "paster", label: "Adhesive hair appliqué", priceDelta: 80 }
+  ]
+};
+
 const nailColor = (id: string, label: string): CustomizationGroup => ({
   id,
   label,
@@ -189,7 +263,7 @@ const accessories: CustomizationGroup = {
   selectionMode: "multiple",
   display: "compact",
   options: [
-    { id: "removable-insert", label: "Removable vagina insert", priceDelta: 15 },
+    { id: "removable-insert", label: "Spare removable vagina insert", priceDelta: 15 },
     { id: "penis-adapter", label: "Penis adapter", priceDelta: 25 },
     { id: "extra-eyes", label: "Extra eyes", priceDelta: 10 },
     { id: "extra-wig", label: "Extra wig", priceDelta: 10 },
@@ -209,9 +283,14 @@ export function getStarperyCustomizationGroups(product: Product): CustomizationG
     skinTone,
     eyeColor,
     eyeType,
+    hairstyle,
     hairFinish,
     nailColor("nail-color", "Fingernail color"),
     nailColor("toe-nail-color", "Toenail color"),
+    breastType,
+    vaginaType,
+    vaginaTexture,
+    pubicHair,
     bodyConstruction(silicone, supportsGelBelly),
     premiumOptions(silicone),
     additionalHead,
