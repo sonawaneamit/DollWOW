@@ -19,6 +19,7 @@ import {
 } from "@/lib/learn/content";
 import { getProducts, getProductsByHandles } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
+import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 
 export function generateStaticParams() {
   return getLearningArticles().map((article) => ({ slug: article.slug }));
@@ -56,7 +57,8 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   if (!article) notFound();
   const author = getLearnAuthor(article.author);
   const schema = [buildArticleStructuredData(article), buildArticleBreadcrumbStructuredData(article), buildArticleFaqStructuredData(article)].filter(Boolean);
-  const productModule = await getArticleProductModule(article.slug);
+  const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
+  const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
 
   return (
     <div>
@@ -100,7 +102,14 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             {article.slug === "sex-doll-guide" ? <GuideTableOfContents markdown={article.body} /> : null}
-            <MarkdownContent markdown={article.body} sectionVisuals={guideSectionVisuals(article.slug)} />
+            <MarkdownContent
+              markdown={article.body}
+              sectionVisuals={guideSectionVisuals(article.slug)}
+              sectionInsertions={guideProductGroups.length ? [{
+                afterHeading: "Curated Live Product Shortlists",
+                content: <GuideProductShortlists groups={guideProductGroups} />
+              }] : []}
+            />
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
@@ -151,6 +160,86 @@ async function getArticleProductModule(slug: string) {
   });
   const picks = filterProducts(products, filters).slice(0, 3);
   return { ...config, products: picks };
+}
+
+type GuideProductGroupDefinition = {
+  title: string;
+  description: string;
+  collectionHref: string;
+  collectionLabel: string;
+  items: Array<{ handle: string; reason: string }>;
+};
+
+type GuideProductGroup = Omit<GuideProductGroupDefinition, "items"> & {
+  items: Array<{ product: Product; reason: string }>;
+};
+
+async function getGuideProductGroups(): Promise<GuideProductGroup[]> {
+  const definitions = guideProductGroupsData as GuideProductGroupDefinition[];
+  const handles = definitions.flatMap((group) => group.items.map((item) => item.handle));
+  const products = await getProductsByHandles(handles, { revalidate: 120 });
+  const byHandle = new Map(products.map((product) => [product.handle, product]));
+
+  return definitions.map((group) => ({
+    ...group,
+    items: group.items.flatMap((item) => {
+      const product = byHandle.get(item.handle);
+      return product ? [{ product, reason: item.reason }] : [];
+    })
+  })).filter((group) => group.items.length);
+}
+
+function GuideProductShortlists({ groups }: { groups: GuideProductGroup[] }) {
+  return (
+    <div className="mt-6 space-y-12">
+      <p className="text-base leading-7 text-text-dim">
+        These are comparison examples, not a universal ranking. Prices, availability, specifications, and options come from the live DollWow catalog and should be rechecked on the product page before ordering.
+      </p>
+      {groups.map((group) => (
+        <section key={group.title} aria-labelledby={headingId(group.title)} className="border-t border-border pt-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h3 id={headingId(group.title)} className="text-2xl font-semibold leading-tight text-text">{group.title}</h3>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-text-dim">{group.description}</p>
+            </div>
+            <Link href={group.collectionHref} className="inline-flex min-h-11 shrink-0 items-center text-sm font-semibold text-accent underline underline-offset-4 transition hover:text-text">
+              {group.collectionLabel}
+            </Link>
+          </div>
+          <div className="catalog-grid mt-6 grid gap-5 sm:grid-cols-2">
+            {group.items.map(({ product, reason }, index) => (
+              <div key={product.handle} className="min-w-0">
+                <ProductCard product={product} priority={index < 2} />
+                <div className="border-x border-b border-border bg-surface-elevated px-4 py-4 text-sm leading-6 text-text-dim">
+                  <p className="font-semibold text-text">Why it is included</p>
+                  <p className="mt-1">{reason}</p>
+                  <p className="mt-2 text-xs text-text-dim">{guideMeasurements(product)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function guideMeasurements(product: Product) {
+  const values = [];
+  if (product.extended.heightCm) values.push(`${heightImperial(product.extended.heightCm)} / ${product.extended.heightCm} cm`);
+  if (product.extended.weightLb) values.push(`${trimNumber(product.extended.weightLb)} lb / ${trimNumber(product.extended.weightLb * 0.45359237)} kg`);
+  else values.push("Current listed weight: ask support to confirm");
+  if (product.extended.material) values.push(product.extended.material);
+  return values.join(" | ");
+}
+
+function heightImperial(heightCm: number) {
+  const totalInches = Math.round(heightCm / 2.54);
+  return `${Math.floor(totalInches / 12)} ft ${totalInches % 12} in`;
+}
+
+function trimNumber(value: number) {
+  return Number(value.toFixed(1)).toLocaleString("en-US", { maximumFractionDigits: 1 });
 }
 
 function ArticleInfographic({ slug }: { slug: string }) {

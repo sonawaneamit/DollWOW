@@ -9,11 +9,24 @@ export type MarkdownSectionVisual = {
   caption: string;
 };
 
-export function MarkdownContent({ markdown, sectionVisuals = [] }: { markdown: string; sectionVisuals?: MarkdownSectionVisual[] }) {
-  return <div className="learn-article-body">{renderBlocks(markdown, sectionVisuals)}</div>;
+export type MarkdownSectionInsertion = {
+  afterHeading: string;
+  content: ReactNode;
+};
+
+export function MarkdownContent({
+  markdown,
+  sectionVisuals = [],
+  sectionInsertions = []
+}: {
+  markdown: string;
+  sectionVisuals?: MarkdownSectionVisual[];
+  sectionInsertions?: MarkdownSectionInsertion[];
+}) {
+  return <div className="learn-article-body">{renderBlocks(markdown, sectionVisuals, sectionInsertions)}</div>;
 }
 
-function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[]) {
+function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[], sectionInsertions: MarkdownSectionInsertion[]) {
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
   let index = 0;
@@ -30,6 +43,8 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[])
       blocks.push(<h2 id={headingId(heading)} key={blocks.length}>{heading}</h2>);
       const visual = sectionVisuals.find((item) => item.afterHeading === heading);
       if (visual) blocks.push(<SectionVisual key={`${heading}-visual`} visual={visual} />);
+      const insertion = sectionInsertions.find((item) => item.afterHeading === heading);
+      if (insertion) blocks.push(<div key={`${heading}-insertion`}>{insertion.content}</div>);
       index += 1;
       continue;
     }

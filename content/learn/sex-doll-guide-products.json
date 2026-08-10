@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Ready-to-ship and value examples",
+    "description": "These products show how current availability, material, size, and configuration affect delivered value. Ready-to-ship status still needs confirmation before checkout.",
+    "collectionHref": "/shop/ready-to-ship",
+    "collectionLabel": "Browse ready-to-ship dolls",
+    "items": [
+      { "handle": "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu", "reason": "A ready-to-ship Irontech TPE example for comparing a premium brand against a fixed current configuration." },
+      { "handle": "jarliet-dolls-kala-152cm-e-cup-tpe-companion-doll-1liaf", "reason": "A compact ready-to-ship TPE example with a current starting price below many full-size custom builds." },
+      { "handle": "jarliet-dolls-eve-163cm-g-cup-silicone-companion-doll-bt4pc", "reason": "A ready-to-ship silicone example that shows why material and listed weight still matter when timing is the priority." },
+      { "handle": "erovenus-hot-kitty-aria-82cm-silicone-companion-doll-fvyv0", "reason": "A compact silicone example for buyers comparing lower handling weight and current warehouse availability." }
+    ]
+  },
+  {
+    "title": "Compact and easier-handling candidates",
+    "description": "Height can reduce storage demand, but the listed weight and body construction must still be checked product by product.",
+    "collectionHref": "/shop/petite-dolls",
+    "collectionLabel": "Browse petite dolls",
+    "items": [
+      { "handle": "starpery-yuan-154cm-yuan-2-full-silicone-doll", "reason": "A compact full-silicone Starpery model that remains substantial enough to require a handling plan." },
+      { "handle": "real-lady-viki-150cm-r10-silicone-doll", "reason": "A 150 cm silicone example with a comparatively lower listed weight among full-body products." },
+      { "handle": "sedoll-hinata-a-153cm-a-cup-silicone-companion-doll-1h7qd", "reason": "A petite SE Doll model for comparing compact dimensions, silicone construction, and custom ordering." },
+      { "handle": "piper-akira-150cm-c-cup-tpe-companion-doll-3c147", "reason": "A petite TPE example that demonstrates why two dolls of similar height can have different handling weights." }
+    ]
+  },
+  {
+    "title": "TPE construction examples",
+    "description": "These products span several carried brands so buyers can compare TPE using real measurements and current configuration paths rather than one universal material claim.",
+    "collectionHref": "/shop/tpe",
+    "collectionLabel": "Browse TPE dolls",
+    "items": [
+      { "handle": "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi", "reason": "A full-size 6YE TPE model with complete height and weight data for practical comparison." },
+      { "handle": "rosretty-cathy-150cm-tpe-4efb1cd", "reason": "A compact Rosretty TPE model that should be compared carefully because the current weight field is not available." },
+      { "handle": "sedoll-hazel-e-160cm-c-cup-tpe-companion-doll-n4c11", "reason": "An SE Doll TPE example for comparing material, body scale, and a brand-specific custom path." },
+      { "handle": "wm-head-172-160cm-i-cup-tpe-companion-doll-104ur", "reason": "A WM Dolls TPE build with live dimensions, weight, and customization status." }
+    ]
+  },
+  {
+    "title": "Full-silicone construction examples",
+    "description": "Full-silicone dolls vary meaningfully in size, weight, finish, and price. These cards provide a factual starting point rather than a universal quality ranking.",
+    "collectionHref": "/shop/silicone",
+    "collectionLabel": "Browse silicone dolls",
+    "items": [
+      { "handle": "wm-head-198-163cm-h-cup-silicone-companion-doll-1gykh", "reason": "A WM Dolls silicone example with a comparatively moderate listed weight for its height." },
+      { "handle": "sy-doll-alexis-168cm-silicone-8d8bd3f", "reason": "A taller SY silicone model that makes the handling impact of a heavier build easy to see." },
+      { "handle": "avant-cecilia-157cm-e-cup-full-silicone", "reason": "An Avant full-silicone example whose missing current weight should be confirmed before purchase." },
+      { "handle": "moonvale-lyora-155cm-silicone-15dc53e", "reason": "A Moonvale silicone model included to compare a newer carried brand while clearly flagging unavailable weight data." }
+    ]
+  },
+  {
+    "title": "Male doll examples",
+    "description": "Male products should be compared by body scale, construction, weight, and exact configuration. Styling alone does not show whether a product will be manageable.",
+    "collectionHref": "/shop/male-dolls",
+    "collectionLabel": "Browse male dolls",
+    "items": [
+      { "handle": "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s", "reason": "A 6YE male hybrid example with a silicone head and substantial listed weight." },
+      { "handle": "irontech-kevin-170cm-silicone-companion-doll-1kpog", "reason": "An Irontech silicone male model for comparing premium construction and a more moderate listed weight." },
+      { "handle": "irontech-abraham-176cm-silicone-companion-doll-1xmxj", "reason": "A tall Irontech male example that makes route planning and assisted handling especially important." },
+      { "handle": "sy-doll-kevin-168cm-tpe-76d2f22", "reason": "An SY TPE male model included with an explicit note that the current weight requires confirmation." }
+    ]
+  },
+  {
+    "title": "Torso and specialty-format examples",
+    "description": "Compact and specialty formats can reduce storage footprint or serve a particular aesthetic, but each form has different posing, cleaning, and handling tradeoffs.",
+    "collectionHref": "/shop/torsos",
+    "collectionLabel": "Browse torso dolls",
+    "items": [
+      { "handle": "climax-carmen-80cm-a-cup-silicone-torso-5py7s", "reason": "A silicone torso example with lower listed handling weight and a compact storage footprint." },
+      { "handle": "climax-climax-doll-63cm-m-cup-tpe-torso-aqiw5", "reason": "A TPE torso example that shows how compact height can still carry considerable weight." },
+      { "handle": "tantaly-aurora-2-0-89cm-g-cup-companion-doll-1rjq0", "reason": "A Tantaly specialty-format example with a lower current starting price and compact dimensions." },
+      { "handle": "dolls-castle-krystal-sz21-140cm-g-cup-silicone-wolf-girl-doll", "reason": "A fantasy-styled silicone product that illustrates the difference between specialty aesthetics and practical handling requirements." }
+    ]
+  }
+]
