@@ -2,6 +2,7 @@ import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
+import { getStarperyCustomizationGroups } from "@/lib/customization/starpery";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -219,7 +220,7 @@ const configs = {
     id: "starpery",
     brandLabel: "Starpery Dolls",
     leadTimeNote: "Starpery custom builds are confirmed with factory photos before production begins.",
-    groups: [skinTones, eyeColor, wigFinish, bodyUpgrades, careAddOns],
+    groups: [],
     rules: []
   },
   torso: {
@@ -296,7 +297,12 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
   }
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
-  if (text.includes("starpery")) return configs.starpery;
+  if (text.includes("starpery")) {
+    return {
+      ...configs.starpery,
+      groups: getStarperyCustomizationGroups(product)
+    };
+  }
   if (isIrontechProduct(product)) {
     return {
       id: "irontech",
