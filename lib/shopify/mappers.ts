@@ -39,6 +39,7 @@ type ShopifyProductNode = {
   cupSize?: { value?: string };
   measurements?: { value?: string };
   warehouseCountry?: { value?: string };
+  warehouseRegions?: { value?: string };
   stockStatus?: { value?: string };
   deliveryEstimate?: { value?: string };
   stockLastCheckedAt?: { value?: string };
@@ -163,6 +164,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       cupSize: node.cupSize?.value,
       measurements: jsonValue<Record<string, string>>(node.measurements?.value),
       warehouseCountry: node.warehouseCountry?.value,
+      warehouseRegions: jsonValue<string[]>(node.warehouseRegions?.value),
       stockStatus: node.stockStatus?.value as Product["extended"]["stockStatus"],
       deliveryEstimate: node.deliveryEstimate?.value,
       stockLastCheckedAt: node.stockLastCheckedAt?.value,

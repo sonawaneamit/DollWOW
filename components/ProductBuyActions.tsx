@@ -26,6 +26,7 @@ type ProductBuyActionsProps = {
   readyToShip: boolean;
   customAvailable?: boolean;
   warehouseCountry?: string;
+  warehouseRegions?: string[];
 };
 
 /**
@@ -45,7 +46,8 @@ export function ProductBuyActions({
   deliveryEstimate,
   readyToShip,
   customAvailable,
-  warehouseCountry
+  warehouseCountry,
+  warehouseRegions
 }: ProductBuyActionsProps) {
   const router = useRouter();
   const cart = useCart();
@@ -175,7 +177,9 @@ export function ProductBuyActions({
         </span>
         <div>
           <p className="text-base font-semibold text-text">
-            {readyToShip ? `In the ${warehouseCountry || "supplier"} warehouse now` : "Built to order for you"}
+            {readyToShip
+              ? `In stock in ${(warehouseRegions?.length ? warehouseRegions.join(", ") : warehouseCountry) || "a supplier warehouse"}`
+              : "Built to order for you"}
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {readyToShip

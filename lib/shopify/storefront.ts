@@ -108,6 +108,7 @@ function productFieldsBase(imageFirst: number) {
   cupSize: metafield(namespace: "custom", key: "cup_size") { value }
   measurements: metafield(namespace: "custom", key: "measurements") { value }
   warehouseCountry: metafield(namespace: "custom", key: "warehouse_country") { value }
+  warehouseRegions: metafield(namespace: "custom", key: "warehouse_regions") { value }
   stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
   deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
   stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }

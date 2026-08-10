@@ -369,6 +369,7 @@ function productMetafields(product) {
     metafield("cup_size", extended.cupSize),
     metafield("measurements", extended.measurements ? JSON.stringify(extended.measurements) : "", "json"),
     metafield("warehouse_country", extended.warehouseCountry),
+    metafield("warehouse_regions", extended.warehouseRegions?.length ? JSON.stringify(extended.warehouseRegions) : "", "json"),
     metafield("stock_status", extended.stockStatus),
     metafield("delivery_estimate", extended.deliveryEstimate),
     metafield("stock_last_checked_at", extended.stockLastCheckedAt, "date_time"),

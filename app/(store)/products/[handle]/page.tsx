@@ -118,6 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
                 customAvailable={product.extended.customAvailable}
                 warehouseCountry={product.extended.warehouseCountry}
+                warehouseRegions={product.extended.warehouseRegions}
               />
             )}
             <nav aria-label="Product page sections" className="pdp-quick-nav">
@@ -303,7 +304,7 @@ function ProductSpecSummary({
     ["Head model", formatHeadModel(product.extended.headModel)],
     ["Material", product.extended.material],
     ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
-    ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? product.extended.warehouseCountry : ""],
+    ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
   const measurementGroups = groupMeasurements(measurements);

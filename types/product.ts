@@ -60,6 +60,7 @@ export type ProductExtended = {
   cupSize?: string;
   measurements?: Record<string, string>;
   warehouseCountry?: string;
+  warehouseRegions?: string[];
   stockStatus?: "ready_to_ship" | "custom" | "check_stock";
   deliveryEstimate?: string;
   stockLastCheckedAt?: string;

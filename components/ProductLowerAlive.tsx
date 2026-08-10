@@ -542,7 +542,7 @@ function faqItems(product: Product, readyToShip: boolean) {
     {
       question: readyToShip ? "Is this ready to ship?" : "How long does a custom order take?",
       answer: readyToShip
-        ? `This item is marked ready to ship${product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. Most warehouse orders leave within 2-3 business days after stock confirmation.`
+        ? `This item is marked ready to ship${product.extended.warehouseRegions?.length ? ` from ${product.extended.warehouseRegions.join(", ")}` : product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. Most warehouse orders leave within 2-3 business days after stock confirmation.`
         : `This item is made to order. Most custom builds take about ${product.extended.deliveryEstimate ?? "3-5 weeks"} before release, because approval happens before shipment.`
     },
     {

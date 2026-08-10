@@ -9,7 +9,7 @@ export function DollDetailsCard({ product }: { product: Product }) {
     ["Weight", product.extended.weightLb ? `${product.extended.weightLb} lb` : "Confirm before checkout"],
     ["Cup size", product.extended.cupSize || "Confirm before checkout"],
     ["Delivery", product.extended.deliveryEstimate ?? "We verify before checkout"],
-    ["Warehouse", product.extended.warehouseCountry ?? "Confirm before checkout"]
+    ["Warehouse", product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Confirm before checkout"]
   ];
 
   return (

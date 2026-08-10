@@ -624,7 +624,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="flex items-start gap-3 rounded-md bg-stock-tint p-4 text-stock">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-                <div><p className="text-sm font-semibold">Warehouse region</p><p className="mt-1 text-base font-semibold text-text">{product.extended.warehouseCountry || "Confirming location"}</p></div>
+                <div><p className="text-sm font-semibold">Warehouse region</p><p className="mt-1 text-base font-semibold text-text">{product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Confirming location"}</p></div>
               </div>
               <div className="flex items-start gap-3 rounded-md bg-surface-tint p-4">
                 <PackageCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
