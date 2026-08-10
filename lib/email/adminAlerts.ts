@@ -52,7 +52,7 @@ export async function sendPriceMatchAdminAlert(request: ComparisonRequest) {
     const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
     const appUrl = (env.ADMIN_APP_URL || env.NEXT_PUBLIC_SITE_URL).replace(/\/$/, "");
     const reviewUrl = `${appUrl}/ops/price-match`;
-    const resultUrl = `${appUrl}/compare/${request.id}`;
+    const resultUrl = `${appUrl}/price-match/${request.id}`;
     const targetProductUrl = request.targetProductHandle ? `${appUrl}/products/${request.targetProductHandle}` : null;
     const subject = `New price match request${request.targetProductTitle ? `: ${request.targetProductTitle}` : ""}`;
     const recipient = env.ADMIN_ALERT_EMAIL || "hello@dollwow.com";

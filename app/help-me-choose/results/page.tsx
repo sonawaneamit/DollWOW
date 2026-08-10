@@ -113,7 +113,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
           <strong className="mt-4 block text-lg text-ivory-50">Browse more dolls</strong>
           <span className="mt-2 block text-sm leading-6 text-ivory-400">Use catalog filters for brand, body type, material, price, height, and availability.</span>
         </Link>
-        <Link href="/compare" className="border border-gold-500/14 bg-ink-800/72 p-5 text-ivory-200 transition hover:border-gold-300/45">
+        <Link href="/price-match" className="border border-gold-500/14 bg-ink-800/72 p-5 text-ivory-200 transition hover:border-gold-300/45">
           <Scale className="h-5 w-5 text-gold-300" />
           <strong className="mt-4 block text-lg text-ivory-50">Found it cheaper?</strong>
           <span className="mt-2 block text-sm leading-6 text-ivory-400">Send the competitor link, quoted total, and cart screenshot. We will review it.</span>

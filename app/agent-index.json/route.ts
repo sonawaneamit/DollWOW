@@ -68,7 +68,7 @@ export function GET() {
       url: `${siteUrl}${policy.path}`
     })),
     tools: [
-      { label: "Compare a listing", url: `${siteUrl}/compare` },
+      { label: "Price match", url: `${siteUrl}/price-match` },
       { label: "Help me choose", url: `${siteUrl}/help-me-choose` },
       { label: "Support", url: `${siteUrl}/support` }
     ],

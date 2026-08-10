@@ -609,6 +609,11 @@ main {
   box-shadow: 0 4px 16px rgba(41, 32, 27, 0.12);
 }
 
+.catalog-product-card__compare[aria-pressed="true"] {
+  background: rgb(var(--color-accent));
+  color: #fff;
+}
+
 .catalog-product-card__status {
   min-height: auto;
   padding: 0.4rem 0.65rem;

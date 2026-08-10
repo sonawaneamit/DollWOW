@@ -6,6 +6,7 @@ import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
+import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
@@ -86,13 +87,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
-            <Link
-              href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
-              className="mt-3 inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/18 bg-ivory-50/[0.045] px-3 py-2 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/60 hover:bg-ivory-50/[0.07]"
-            >
-              <Scale className="h-4 w-4 text-gold-300" />
-              Found it cheaper? We&apos;ll check the price
-            </Link>
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-ivory-300">
               {heroSpecs.map((spec) => (
@@ -145,12 +139,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 label
                 className="font-semibold text-ivory-300 hover:text-gold-200"
               />
-              <Link
-                href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
-                className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
-              >
-                <Scale className="h-4 w-4 text-gold-300" /> Found this somewhere else?
-              </Link>
+              <CompareButton
+                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
+                label
+                className="font-semibold text-ivory-300 hover:text-gold-200"
+              />
               <Link
                 href="/support"
                 className="inline-flex items-center gap-2 font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
@@ -462,10 +455,7 @@ function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getP
     );
   }
 
-  paths.push(
-    { label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value beyond the base price." },
-    { label: "Compare a listing", href: `/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(productPublicTitle(product))}`, description: "Ask DollWow to review another offer before checkout." }
-  );
+  paths.push({ label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value beyond the base price." });
 
   const seen = new Set<string>();
   return paths.filter((path) => {

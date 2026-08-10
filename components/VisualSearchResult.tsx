@@ -147,7 +147,7 @@ export function VisualSearchResult({
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <GoldButton href="/support?source=visual-search">Ask our team</GoldButton>
-            <GoldButton href="/compare" variant="secondary">Compare a listing instead</GoldButton>
+            <GoldButton href="/price-match" variant="secondary">Request a price match instead</GoldButton>
           </div>
         </div>
       </aside>

@@ -13,7 +13,7 @@ export default function ScamAlertPage() {
       title="How to spot a risky listing before you pay."
       intro="High-ticket adult products attract copied listings, fake promotions, and stores that look polished until something goes wrong. DollWow wants the warning signs to be obvious before a customer sends money anywhere."
       ctas={[
-        { label: "Compare a listing", href: "/compare", primary: true },
+        { label: "Request a price match", href: "/price-match", primary: true },
         { label: "Buyer protection", href: "/buyer-protection" }
       ]}
       cards={[

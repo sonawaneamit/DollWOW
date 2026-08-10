@@ -17,12 +17,12 @@ import {
   HelpCircle,
   Heart,
   PackageCheck,
-  Scale,
   ShieldCheck,
   Truck
 } from "lucide-react";
 import { productCustomizeLabel } from "@/lib/catalog/bodyType";
 import { ProductImageFrame } from "@/components/ProductImageFrame";
+import { CompareButton } from "@/components/compare/CompareButton";
 import type { Product } from "@/types/product";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
@@ -206,10 +206,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
             </p>
             <h2>Know what you&apos;re choosing</h2>
           </div>
-          <Link href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(productPublicTitle(product))}`} className="alive-pill">
-            <Scale className="h-4 w-4" />
-            Compare a price
-          </Link>
+          <CompareButton entry={compareEntry(product)} label className="alive-pill" />
         </div>
 
         <div className="alive-guide-grid">
@@ -299,14 +296,17 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
             <Link href="#build-studio" className="alive-primary-link">
               {customizeLabel}
             </Link>
-            <Link href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(productPublicTitle(product))}`} className="alive-secondary-link">
-              Found it cheaper?
-            </Link>
+            <CompareButton entry={compareEntry(product)} label className="alive-secondary-link" />
           </div>
         </div>
       </section>
     </div>
   );
+}
+
+function compareEntry(product: Product) {
+  const price = product.priceRange.minVariantPrice;
+  return { productHandle: product.handle, productTitle: productPublicTitle(product), brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: product.variants.find((variant) => variant.availableForSale)?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable };
 }
 
 function useAliveMotion(rootRef: React.RefObject<HTMLDivElement | null>) {

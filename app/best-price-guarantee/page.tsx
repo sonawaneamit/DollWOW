@@ -13,7 +13,7 @@ export default function BestPriceGuaranteePage() {
       title="Find the same doll for less? Send it to us."
       intro="We compare the complete offer, including the doll, selected options, extras, shipping, and final price. If the same configuration qualifies, we will match it before purchase or refund the difference within 30 days of your DollWow order."
       ctas={[
-        { label: "Compare a listing", href: "/compare", primary: true },
+        { label: "Request a price match", href: "/price-match", primary: true },
         { label: "Buyer protection", href: "/buyer-protection" }
       ]}
       cards={[

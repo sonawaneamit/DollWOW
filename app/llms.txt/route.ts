@@ -20,7 +20,7 @@ const corePages = [
   ["Learning Center", "/learn"],
   ["Help Me Choose", "/help-me-choose"],
   ["Customize", "/customize"],
-  ["Compare A Listing", "/compare"],
+  ["Price Match", "/price-match"],
   ["Buyer Protection", "/buyer-protection"],
   ["Best Price Guarantee", "/best-price-guarantee"],
   ["Shipping", "/shipping"],

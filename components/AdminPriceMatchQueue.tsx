@@ -101,7 +101,7 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
           <p className="text-sm text-ivory-400">{currentRequest.customerEmail || "No customer email"} • {new Date(currentRequest.createdAt).toLocaleString()}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <GoldButton href={`/compare/${currentRequest.id}`} variant="secondary">Open result</GoldButton>
+          <GoldButton href={`/price-match/${currentRequest.id}`} variant="secondary">Open result</GoldButton>
           <GoldButton href={currentRequest.inputUrl} variant="secondary">Open competitor URL</GoldButton>
           {currentRequest.screenshotUrl ? <GoldButton href={currentRequest.screenshotUrl} variant="secondary">Open screenshot</GoldButton> : null}
         </div>

@@ -63,7 +63,7 @@ export function CompareListingForm({
       target_product: targetProductHandle,
       has_email: Boolean(email)
     });
-    router.push(`/compare/${payload.id}`);
+    router.push(`/price-match/${payload.id}`);
   }
 
   return (

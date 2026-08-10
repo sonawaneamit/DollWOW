@@ -171,7 +171,7 @@ export function brandRelatedLinks(brand: CatalogBrand) {
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Ready-to-ship vs custom", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
-    { label: "Ask about price match", href: "/compare" }
+    { label: "Ask about price match", href: "/price-match" }
   ];
 }
 

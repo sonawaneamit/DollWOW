@@ -8,6 +8,8 @@ import { StorefrontZipper } from "@/components/StorefrontZipper";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CurrencyProvider } from "@/components/CurrencyProvider";
+import { ComparisonProvider } from "@/components/compare/ComparisonProvider";
+import { ComparisonDrawer } from "@/components/compare/ComparisonDrawer";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import "./globals.css";
 import "./v2-storefront.css";
@@ -92,14 +94,17 @@ gtag('consent', 'default', {
           />
         ) : null}
         <CurrencyProvider>
-          <CartProvider>
+          <ComparisonProvider>
+            <CartProvider>
             <a href="#main-content" className="skip-link">Skip to main content</a>
             <Header />
             <StorefrontZipper />
             <main id="main-content" tabIndex={-1}>{children}</main>
             <Footer />
             <CartDrawer />
-          </CartProvider>
+            <ComparisonDrawer />
+            </CartProvider>
+          </ComparisonProvider>
         </CurrencyProvider>
         <ConsentBanner />
         <Analytics measurementId={measurementId} />

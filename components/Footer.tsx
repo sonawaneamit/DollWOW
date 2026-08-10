@@ -9,7 +9,8 @@ const footerGroups = [
       ["Shop all dolls", "/shop"],
       ["Ready to ship", "/warehouse"],
       ["Customize a doll", "/customize"],
-      ["Price Match", "/compare"],
+      ["Compare dolls", "/compare"],
+      ["Price Match", "/price-match"],
       ["Saved dolls", "/saved"]
     ]
   },

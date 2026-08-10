@@ -169,7 +169,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
 
           <div className="mt-7 flex flex-wrap gap-3">
             {showSuggestedMatch && product ? <GoldButton href={`/products/${product.handle}`}>Open match</GoldButton> : null}
-            <GoldButton href="/support?source=compare" variant={showSuggestedMatch ? "secondary" : "primary"}>Ask our team</GoldButton>
+            <GoldButton href="/support?source=price-match" variant={showSuggestedMatch ? "secondary" : "primary"}>Ask our team</GoldButton>
           </div>
 
           <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-5 text-sm text-text-dim">

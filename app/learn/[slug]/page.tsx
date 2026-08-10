@@ -245,7 +245,7 @@ function ArticleActions({ slug }: { slug: string }) {
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <GoldButton href="/help-me-choose">Use the DollWow finder</GoldButton>
-        <GoldButton href="/compare" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
+        <GoldButton href="/price-match" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
           Compare a listing
         </GoldButton>
         <GoldButton href="/support" variant="secondary" className="border-border-strong bg-ink-950/[0.04] text-text hover:border-border-strong hover:bg-ink-950/[0.08]">
@@ -398,7 +398,7 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
         { title: "Watch for mismatches", body: "Photos, specs, and pricing should point to the same product." },
         { title: "Use support", body: "Ask DollWow to compare a listing if the review or seller page feels unclear." }
       ],
-      href: "/compare",
+      href: "/price-match",
       cta: "Compare a listing"
     },
     "ready-to-ship-vs-custom-sex-dolls": {
@@ -500,7 +500,7 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
         { title: "Compare delivered value", body: "Review shipping, options, policies, and support before trusting a low price." },
         { title: "Use support", body: "Submit another listing for review if the offer feels unclear." }
       ],
-      href: "/compare",
+      href: "/price-match",
       cta: "Compare a listing"
     },
     "sex-doll-laws-us": {
@@ -785,7 +785,7 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-reviews": [
       { label: "Buyer protection", href: "/buyer-protection", description: "Review verification and purchase clarity expectations." },
-      { label: "Price match review", href: "/compare", description: "Submit a listing for side-by-side review." }
+      { label: "Price match review", href: "/price-match", description: "Submit a listing for price review." }
     ],
     "how-to-clean-a-sex-doll": [
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material care before choosing a product." },
@@ -801,7 +801,7 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-scams": [
       { label: "Scam alert", href: "/scam-alert", description: "Review DollWow's buyer-protection warning signs." },
-      { label: "Compare a listing", href: "/compare", description: "Submit another seller's offer for review." }
+      { label: "Price match", href: "/price-match", description: "Submit another seller's offer for review." }
     ],
     "sex-doll-laws-us": [
       { label: "Adult-only policy", href: "/adult-only", description: "Review DollWow's adult-only catalog standard." },
@@ -869,7 +869,7 @@ function relatedCollections(slug: string) {
     ],
     "rosemarydoll-alternatives": [
       { label: "TPE dolls", href: "/shop/tpe", description: "Compare TPE dolls by size, weight, value, and availability." },
-      { label: "Compare a listing", href: "/compare", description: "Submit another offer for side-by-side review." }
+      { label: "Price match", href: "/price-match", description: "Submit another offer for price review." }
     ],
     "betterlovedoll-alternatives": [
       { label: "Silicone dolls", href: "/shop/silicone", description: "Compare silicone dolls by sculpt detail, weight, and availability." },

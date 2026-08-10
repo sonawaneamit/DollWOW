@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Scale } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { WishlistButton } from "@/components/WishlistButton";
+import { CompareButton } from "@/components/compare/CompareButton";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
@@ -34,13 +35,27 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           <Link href={`/products/${product.handle}`}>View doll <ArrowRight className="h-4 w-4" /></Link>
         </footer>
       </div>
-      <Link
-        href={`/compare?product=${encodeURIComponent(product.handle)}&title=${encodeURIComponent(displayTitle)}`}
+      <CompareButton
+        entry={{
+          productHandle: product.handle,
+          productTitle: displayTitle,
+          brand: product.extended.brand ?? product.vendor,
+          imageUrl: image?.url,
+          unitPrice: Number(price.amount),
+          currencyCode: price.currencyCode,
+          merchandiseId: product.variants.find((variant) => variant.availableForSale)?.id,
+          material: product.extended.material,
+          heightCm: product.extended.heightCm,
+          weightLb: product.extended.weightLb,
+          cupSize: product.extended.cupSize,
+          productType: product.productType,
+          measurements: product.extended.measurements,
+          warehouseRegions: product.extended.warehouseRegions,
+          stockStatus: product.extended.stockStatus,
+          customAvailable: product.extended.customAvailable
+        }}
         className="catalog-product-card__compare"
-        aria-label="Check price match"
-      >
-        <Scale className="h-4 w-4" />
-      </Link>
+      />
       <WishlistButton
         entry={{
           productHandle: product.handle,
