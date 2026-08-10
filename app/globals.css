@@ -1662,6 +1662,47 @@ a {
   padding-bottom: 1rem;
 }
 
+.pdp-spec-summary-head {
+  list-style: none;
+  cursor: pointer;
+}
+
+.pdp-spec-summary-head::-webkit-details-marker {
+  display: none;
+}
+
+.pdp-spec-toggle {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0 1rem;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+
+.pdp-spec-summary[open] .pdp-spec-toggle::after {
+  content: " — hide";
+}
+
+@media (min-width: 768px) {
+  .pdp-spec-summary:not([open]) > .pdp-spec-summary-grid {
+    display: grid;
+  }
+
+  .pdp-spec-summary-head {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .pdp-spec-toggle {
+    display: none;
+  }
+}
+
 .pdp-spec-summary-head h2 {
   margin: 0.35rem 0 0;
   color: var(--text, #fff8f0);

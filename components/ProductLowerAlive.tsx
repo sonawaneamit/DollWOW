@@ -1,28 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BadgeCheck,
-  Camera,
-  ChevronDown,
-  CircleDollarSign,
-  Clock3,
-  CreditCard,
-  Eye,
-  Factory,
-  HelpCircle,
-  Heart,
-  PackageCheck,
-  ShieldCheck,
-  Truck
-} from "lucide-react";
-import { productCustomizeLabel } from "@/lib/catalog/bodyType";
+import { ArrowLeft, ArrowRight, Camera, ChevronDown, PackageCheck, ShieldCheck, Truck } from "lucide-react";
 import { ProductImageFrame } from "@/components/ProductImageFrame";
-import { CompareButton } from "@/components/compare/CompareButton";
 import type { Product } from "@/types/product";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
@@ -32,33 +14,20 @@ type Props = {
   similarProducts: Product[];
 };
 
-type TimelineStep = {
+type ProcessStep = {
   label: string;
   detail: string;
-  when: string;
+  timing: string;
   icon: ReactNode;
-  featured?: boolean;
 };
-
-const marqueeItems = [
-  "Discreet checkout",
-  "Specialist order review",
-  "Plain-box delivery",
-  "Factory photo approval",
-  "Clear factory timing",
-  "Price-match help"
-];
 
 export function ProductLowerAlive({ product, similarProducts }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState(0);
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
-  const steps = useMemo(() => orderSteps(product, readyToShip), [product, readyToShip]);
-  const price = product.priceRange.minVariantPrice;
-  const customizeLabel = productCustomizeLabel(product);
 
-  useAliveMotion(rootRef);
+  useRevealMotion(rootRef);
 
   function scrollRail(direction: -1 | 1) {
     const rail = railRef.current;
@@ -68,321 +37,88 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
 
   return (
     <div ref={rootRef} className="alive-product-lower">
-      <AliveBand tone="deep" className="alive-order-band">
-        <div className="alive-band-head alive-reveal">
-          <div>
-            <p className="alive-eyebrow">
-              <span />
-              After you order
-            </p>
-            <h2>No guessing. Here&apos;s every step.</h2>
-            <p className="alive-lead">
-              {readyToShip
-                ? "Ready-to-ship orders move through stock confirmation, warehouse release, and discreet delivery as quickly as possible."
-                : "Custom builds are reviewed by our team before anything is made or shipped, so the wait feels clear from the start."}
-            </p>
-          </div>
-          <span className="alive-pill">
-            <Clock3 className="h-4 w-4" />
-            {readyToShip ? "Usually 2-3 business days to release" : `About ${product.extended.deliveryEstimate ?? "3-5 weeks"} before release`}
-          </span>
-        </div>
-
-        <div className="alive-stats alive-reveal" data-delay="1">
-          <Stat kicker="Specialist review" value={1} label="Every order is checked by hand before it moves forward" />
-          <Stat
-            kicker={readyToShip ? "Warehouse release" : "Before it ships"}
-            value={readyToShip ? "2-3 days" : 6}
-            suffix={readyToShip ? "" : "checks"}
-            label={readyToShip ? "Typical release after stock confirmation" : "Compatibility, pricing, timing, factory photos, and packaging"}
-          />
-          <Stat
-            kicker={readyToShip ? "Factory photos" : "Factory photos"}
-            value={readyToShip ? 0 : 100}
-            suffix={readyToShip ? "promised" : "%"}
-            label={readyToShip ? "Warehouse orders may skip this step so they can ship faster" : "Custom builds are reviewed with you before shipment"}
-          />
-          <Stat kicker="On the box" value={0} suffix="logos" label="Plain, unmarked, fully tracked packaging" />
-        </div>
-
-        <div className="alive-timeline-wrap alive-reveal" data-delay="2">
-          <div className="alive-timeline" data-alive-timeline>
-            <div className="alive-timeline-rail">
-              <div className="alive-vfill" data-alive-vfill />
+      {similarProducts.length ? (
+        <AliveBand tone="deep" className="pdp-related-band">
+          <div className="alive-band-head alive-reveal">
+            <div>
+              <p className="alive-eyebrow">
+                <span />
+                More from this brand
+              </p>
+              <h2>New arrivals from {product.extended.brand ?? product.vendor}</h2>
             </div>
-            {steps.map((step) => (
-              <article key={step.label} className={step.featured ? "alive-timeline-step is-featured" : "alive-timeline-step"}>
-                <div className="alive-timeline-node">{step.icon}</div>
-                <p className="alive-step-when">{step.when}</p>
-                <h3>
-                  {step.label}
-                  {step.featured && <span>Approval step</span>}
-                </h3>
-                <p>{step.detail}</p>
-              </article>
+            <div className="alive-rail-actions">
+              <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous products">
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+              <button type="button" onClick={() => scrollRail(1)} aria-label="Next products">
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+          <div ref={railRef} className="alive-similar-rail alive-reveal" data-delay="1">
+            {similarProducts.map((item) => (
+              <SimilarDollCard key={item.id} product={item} />
             ))}
           </div>
-        </div>
-      </AliveBand>
+        </AliveBand>
+      ) : null}
 
-      <AliveBand tone="rose">
-        <div className="alive-marquee" aria-hidden="true">
-          <div className="alive-marquee-track">
-            {[...marqueeItems, ...marqueeItems].map((item, index) => (
-              <span key={`${item}-${index}`}>
-                <i />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="alive-split">
+      <AliveBand tone="rose" className="pdp-practical-band">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start">
           <div className="alive-reveal">
             <p className="alive-eyebrow">
               <span />
-              Confidence
+              {readyToShip ? "Warehouse order" : "Made to order"}
             </p>
-            <h2>Confidence before you commit</h2>
-            <p className="alive-lead">
+            <h2 className="mt-3 text-3xl font-semibold text-text">What happens next</h2>
+            <p className="alive-lead mt-3">
               {readyToShip
-                ? "Clear timing, discreet delivery, and specialist review help you order with confidence before a warehouse release begins."
-                : "Clear timing, discreet delivery, and specialist review help you order with confidence before a custom build begins."}
+                ? "Stock confirmation, warehouse release, and discreet tracked delivery—kept to three clear stages."
+                : "Your configuration is reviewed, built, and approved with you before discreet tracked delivery."}
             </p>
-            <div className="alive-seal" aria-hidden="true">
-              <svg viewBox="0 0 120 120" className="alive-seal-ring">
-                <defs>
-                  <path id="alive-seal-path" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" />
-                </defs>
-                <text>
-                  <textPath href="#alive-seal-path">Discreet order • team checked • </textPath>
-                </text>
-              </svg>
-              <div className="alive-seal-core">
-                <ShieldCheck className="h-6 w-6" />
-              </div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {orderSteps(product, readyToShip).map((step) => (
+                <article key={step.label} className="tone-card rounded-[14px] p-4">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-accent-tint text-accent">{step.icon}</span>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-accent">{step.timing}</p>
+                  <h3 className="mt-2 text-base font-semibold text-text">{step.label}</h3>
+                  <p className="mt-2 text-sm leading-6 text-text-dim">{step.detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold text-accent">
+              <Link href="/buyer-protection" className="underline underline-offset-4">Buyer protection</Link>
+              <Link href="/shipping-protection" className="underline underline-offset-4">Delivery details</Link>
+              <Link href="/how-ordering-works" className="underline underline-offset-4">How ordering works</Link>
             </div>
           </div>
 
-          <div className="alive-reassure">
-            <ReassuranceCard
-              icon={<BadgeCheck className="h-5 w-5" />}
-              title="Buyer protection stays visible"
-              text="Coverage, delivery support, and damage reporting steps stay easy to find before you place the order."
-              href="/buyer-protection"
-              linkLabel="See protection"
-              delay={1}
-            />
-            <ReassuranceCard
-              icon={<ShieldCheck className="h-5 w-5" />}
-              title="Discreet from checkout to delivery"
-              text="Billing, order updates, and plain-box packaging are handled with privacy in mind from start to finish."
-              href="/shipping-protection"
-              linkLabel="See privacy details"
-              delay={2}
-            />
-            <ReassuranceCard
-              icon={readyToShip ? <PackageCheck className="h-5 w-5" /> : <Camera className="h-5 w-5" />}
-              title={readyToShip ? "Warehouse timing is clear" : "Factory approval happens before shipment"}
-              text={
-                readyToShip
-                  ? "Ready-to-ship dolls usually leave the warehouse within 2-3 business days after stock confirmation."
-                  : "Custom builds include detailed factory photos and videos, plus cosmetic revisions before shipment is approved."
-              }
-              href={readyToShip ? "/shipping-protection" : "/how-ordering-works"}
-              linkLabel={readyToShip ? "See warehouse timing" : "See approval steps"}
-              delay={3}
-            />
-          </div>
-        </div>
-      </AliveBand>
-
-      <AliveBand tone="blush">
-        <div className="alive-band-head alive-reveal">
-          <div>
+          <div className="alive-reveal" data-delay="1">
             <p className="alive-eyebrow">
               <span />
-              Buyer guide
+              Practical questions
             </p>
-            <h2>Know what you&apos;re choosing</h2>
-          </div>
-          <CompareButton entry={compareEntry(product)} label className="alive-pill" />
-        </div>
-
-        <div className="alive-guide-grid">
-          <GuideCard icon={<PackageCheck className="h-5 w-5" />} kicker="Base build" title="Included setup" text="Start with the standard factory build, then personalize the details that matter to you." />
-          <GuideCard icon={<CircleDollarSign className="h-5 w-5" />} kicker="Add-ons" title="Upgrade pricing" text="Paid options show their added cost before you continue to checkout." />
-          <GuideCard icon={<Eye className="h-5 w-5" />} kicker="Visuals" title="Reference images" text="Option photos and swatches make skin, hair, eyes, and details easier to compare." />
-          <GuideCard
-            icon={<Camera className="h-5 w-5" />}
-            kicker="Before ship"
-            title="Factory photo approval"
-            text="For custom builds, we share detailed factory photos and videos so you can approve the final look or request revisions before shipment."
-          />
-          <GuideCard icon={<Truck className="h-5 w-5" />} kicker="Delivery" title="Factory or warehouse" text="Ready-to-ship and made-to-order dolls are labeled clearly, with timing shown up front." />
-          <GuideCard icon={<HelpCircle className="h-5 w-5" />} kicker="Support" title="Need a second look?" text="Send the product, budget, or option question and our team can help you decide." />
-        </div>
-      </AliveBand>
-
-      <AliveBand tone="deep">
-        <div className="alive-split alive-split-wide">
-          <div className="alive-reveal">
-            <p className="alive-eyebrow">
-              <span />
-              Private questions
-            </p>
-            <h2>Questions before checkout</h2>
-            <p className="alive-lead">A few practical answers before you place a private, high-consideration order.</p>
-          </div>
-
-          <div className="alive-faq alive-reveal" data-delay="1">
-            {faqItems(product, readyToShip).map((item, index) => (
-              <article key={item.question} className={openFaq === index ? "alive-faq-item is-open" : "alive-faq-item"}>
-                <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
-                  {item.question}
-                  <span>
-                    <ChevronDown className="h-4 w-4" />
-                  </span>
-                </button>
-                <div>
-                  <p>{item.answer}</p>
-                </div>
-              </article>
-            ))}
-            <Link
-              href={`/support?source=pdp-bug-report&product=${encodeURIComponent(product.handle)}`}
-              className="alive-feedback-link"
-            >
+            <h2 className="mt-3 text-3xl font-semibold text-text">Before you order</h2>
+            <div className="alive-faq mt-5">
+              {faqItems(product, readyToShip).map((item, index) => (
+                <article key={item.question} className={openFaq === index ? "alive-faq-item is-open" : "alive-faq-item"}>
+                  <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
+                    {item.question}
+                    <span><ChevronDown className="h-4 w-4" /></span>
+                  </button>
+                  <div><p>{item.answer}</p></div>
+                </article>
+              ))}
+            </div>
+            <Link href={`/support?source=pdp-bug-report&product=${encodeURIComponent(product.handle)}`} className="alive-feedback-link">
               Found a bug? Improve this page and get $50 off.
             </Link>
           </div>
         </div>
       </AliveBand>
-
-      <AliveBand tone="deep">
-        <div className="alive-band-head alive-reveal">
-          <div>
-            <p className="alive-eyebrow">
-              <span />
-              More from this brand
-            </p>
-            <h2>New arrivals from {product.extended.brand ?? product.vendor}</h2>
-          </div>
-          <div className="alive-rail-actions">
-            <button type="button" onClick={() => scrollRail(-1)} aria-label="Previous similar dolls">
-              <ArrowLeft className="h-4 w-4" />
-            </button>
-            <button type="button" onClick={() => scrollRail(1)} aria-label="Next similar dolls">
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-        <div ref={railRef} className="alive-similar-rail alive-reveal" data-delay="1">
-          {similarProducts.map((item) => (
-            <SimilarDollCard key={item.id} product={item} />
-          ))}
-        </div>
-      </AliveBand>
-
-      <section className="alive-closing">
-        <div className="alive-closing-inner alive-reveal">
-          <p className="alive-eyebrow">
-            <span />
-            Ready when you are
-          </p>
-          <h2>Make your choice with confidence.</h2>
-          <p>Starting at {formatMoney(price.amount, price.currencyCode)} before optional upgrades.</p>
-          <div>
-            <Link href="#build-studio" className="alive-primary-link">
-              {customizeLabel}
-            </Link>
-            <CompareButton entry={compareEntry(product)} label className="alive-secondary-link" />
-          </div>
-        </div>
-      </section>
     </div>
   );
-}
-
-function compareEntry(product: Product) {
-  const price = product.priceRange.minVariantPrice;
-  return { productHandle: product.handle, productTitle: productPublicTitle(product), brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: product.variants.find((variant) => variant.availableForSale)?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable };
-}
-
-function useAliveMotion(rootRef: React.RefObject<HTMLDivElement | null>) {
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    root.classList.add("alive-motion-enabled");
-
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealEls = Array.from(root.querySelectorAll<HTMLElement>(".alive-reveal"));
-    const timeline = root.querySelector<HTMLElement>("[data-alive-timeline]");
-    const fill = root.querySelector<HTMLElement>("[data-alive-vfill]");
-    let ticking = false;
-
-    const easeOutCubic = (value: number) => 1 - Math.pow(1 - value, 3);
-
-    const runCounter = (counter: HTMLElement) => {
-      if (counter.dataset.done) return;
-      counter.dataset.done = "true";
-      const target = Number(counter.dataset.countTo ?? "0");
-      const duration = Number(counter.dataset.countDuration ?? "1200");
-
-      if (reduce) {
-        counter.textContent = `${target}`;
-        return;
-      }
-
-      const start = performance.now();
-      const tick = (now: number) => {
-        const progress = Math.min(1, (now - start) / duration);
-        counter.textContent = `${Math.round(target * easeOutCubic(progress))}`;
-        if (progress < 1) requestAnimationFrame(tick);
-        else counter.textContent = `${target}`;
-      };
-      requestAnimationFrame(tick);
-    };
-
-    const check = () => {
-      const height = window.innerHeight || document.documentElement.clientHeight;
-      revealEls.forEach((el) => {
-        if (el.classList.contains("is-visible")) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top < height * 0.88 && rect.bottom > 0) {
-          el.classList.add("is-visible");
-          el.querySelectorAll<HTMLElement>("[data-count-to]").forEach(runCounter);
-        }
-      });
-
-      if (timeline && fill) {
-        const rect = timeline.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (height * 0.62 - rect.top) / (rect.height * 0.74)));
-        fill.style.setProperty("--alive-progress", `${(progress * 100).toFixed(1)}%`);
-      }
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        check();
-        ticking = false;
-      });
-    };
-
-    check();
-    const timeout = window.setTimeout(check, 250);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      root.classList.remove("alive-motion-enabled");
-      window.clearTimeout(timeout);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [rootRef]);
 }
 
 function AliveBand({ tone, children, className = "" }: { tone: "deep" | "rose" | "blush"; children: ReactNode; className?: string }) {
@@ -390,69 +126,6 @@ function AliveBand({ tone, children, className = "" }: { tone: "deep" | "rose" |
     <section data-tone={tone} className={`tone-section alive-band ${className}`}>
       <div className="tone-inner alive-inner">{children}</div>
     </section>
-  );
-}
-
-function Stat({ kicker, value, suffix = "", label }: { kicker: string; value: number | string; suffix?: string; label: string }) {
-  const isCount = typeof value === "number";
-  return (
-    <div className="alive-stat">
-      <p className="alive-stat-kicker">{kicker}</p>
-      <strong>
-        {isCount ? (
-          <>
-            <span data-count-to={value} data-count-suffix={suffix}>
-              0
-            </span>
-            {suffix && <small>{suffix}</small>}
-          </>
-        ) : (
-          <span>{value}</span>
-        )}
-      </strong>
-      <p>{label}</p>
-    </div>
-  );
-}
-
-function ReassuranceCard({
-  icon,
-  title,
-  text,
-  href,
-  linkLabel,
-  delay
-}: {
-  icon: ReactNode;
-  title: string;
-  text: string;
-  href: string;
-  linkLabel: string;
-  delay: number;
-}) {
-  return (
-    <article className="alive-reassure-card alive-reveal" data-delay={delay}>
-      <span>{icon}</span>
-      <div>
-        <h3>{title}</h3>
-        <p>{text}</p>
-        <Link href={href} className="alive-reassure-link">
-          {linkLabel}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-function GuideCard({ icon, kicker, title, text }: { icon: ReactNode; kicker: string; title: string; text: string }) {
-  return (
-    <article className="alive-guide-card alive-reveal">
-      <span>{icon}</span>
-      <p>{kicker}</p>
-      <h3>{title}</h3>
-      <small>{text}</small>
-    </article>
   );
 }
 
@@ -466,9 +139,7 @@ function SimilarDollCard({ product }: { product: Product }) {
         <span className="alive-sim-scrim" aria-hidden="true" />
         {product.extended.stockStatus === "ready_to_ship" ? <span className="alive-sim-status">Ready to ship</span> : null}
         <div className="alive-sim-body">
-          <div>
-            <span>{product.extended.brand ?? product.vendor}</span>
-          </div>
+          <div><span>{product.extended.brand ?? product.vendor}</span></div>
           <h3>{displayTitle}</h3>
           <p>
             {product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height pending"}
@@ -485,73 +156,60 @@ function SimilarDollCard({ product }: { product: Product }) {
   );
 }
 
-function orderSteps(product: Product, readyToShip: boolean): TimelineStep[] {
+function orderSteps(product: Product, readyToShip: boolean): ProcessStep[] {
   if (readyToShip) {
     return [
-      { label: "Order placed", detail: "You receive a private order confirmation with the details you selected.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
-      { label: "Order check", detail: "We confirm that the doll is in stock and ready to ship.", when: "1 business day", icon: <ShieldCheck className="h-5 w-5" /> },
-      {
-        label: "Warehouse release",
-        detail: "After stock confirmation, ready-to-ship dolls usually leave the warehouse within 2-3 business days. Custom changes are limited so release stays fast.",
-        when: "2-3 business days",
-        icon: <PackageCheck className="h-5 w-5" />,
-        featured: true
-      },
-      { label: "Plain-box shipping", detail: "Unmarked packaging, fully tracked. We share tracking after release.", when: "After release", icon: <Truck className="h-5 w-5" /> },
-      {
-        label: "Delivery check",
-        detail: "If anything arrives damaged, report it within 24 hours with photos and packaging kept for review.",
-        when: "On arrival",
-        icon: <Heart className="h-5 w-5" />
-      }
+      { label: "Stock confirmed", detail: "We verify this exact warehouse unit before release.", timing: "1 business day", icon: <ShieldCheck className="h-5 w-5" /> },
+      { label: "Warehouse release", detail: "The fixed configuration is prepared for dispatch.", timing: "1–3 business days", icon: <PackageCheck className="h-5 w-5" /> },
+      { label: "Private delivery", detail: "Plain packaging with tracking shared after release.", timing: "After release", icon: <Truck className="h-5 w-5" /> }
     ];
   }
-
   return [
-    { label: "Order placed", detail: "You receive a private confirmation with the options you selected.", when: "Day 0", icon: <CreditCard className="h-5 w-5" /> },
-    { label: "Order check", detail: "We review your selected options, price, and timing before production begins.", when: "1-2 days", icon: <ShieldCheck className="h-5 w-5" /> },
-    { label: "Built to order", detail: "The factory assembles the exact configuration you chose, start to finish.", when: "3-5 weeks", icon: <Factory className="h-5 w-5" /> },
-    {
-      label: "Factory photo approval",
-      detail: "We send detailed factory photos and videos for your approval, and you can request cosmetic revisions until the final build is approved for shipment.",
-      when: "Before ship",
-      icon: <Camera className="h-5 w-5" />,
-      featured: true
-    },
-    { label: "Plain-box shipping", detail: "Unmarked packaging, fully tracked. We share tracking after release.", when: "3-5 days", icon: <Truck className="h-5 w-5" /> },
-    { label: "Delivery check", detail: "At your door, discreetly. If anything arrives damaged, report it within 24 hours with photos and packaging kept for review.", when: "On arrival", icon: <Heart className="h-5 w-5" /> }
+    { label: "Build reviewed", detail: "We check your selected options, compatibility, price, and timing.", timing: "1–2 business days", icon: <ShieldCheck className="h-5 w-5" /> },
+    { label: "Made for you", detail: "The factory produces the configuration recorded with your order.", timing: product.extended.deliveryEstimate ?? "3–5 weeks", icon: <PackageCheck className="h-5 w-5" /> },
+    { label: "You approve it", detail: "Factory photos and videos are reviewed before discreet shipment.", timing: "Before shipping", icon: <Camera className="h-5 w-5" /> }
   ];
 }
 
 function faqItems(product: Product, readyToShip: boolean) {
+  if (readyToShip) {
+    return [
+      {
+        question: "Is this exact doll currently in stock?",
+        answer: `This listing is marked ready to ship${product.extended.warehouseRegions?.length ? ` from ${product.extended.warehouseRegions.join(", ")}` : product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. We reconfirm the unit before warehouse release.`
+      },
+      { question: "Can I customize this warehouse doll?", answer: product.extended.customAvailable ? "Only the options shown on this page are supported for this stock unit." : "No. This warehouse unit is sold in the fixed configuration shown so it can dispatch quickly." },
+      { question: "When does it leave the warehouse?", answer: "Most confirmed warehouse orders are released within 1–3 business days. Tracking is shared after dispatch." },
+      { question: "What if it arrives damaged?", answer: "Contact us within 24 hours with photos of the product, carton, and packaging so the delivery claim can be reviewed." }
+    ];
+  }
   return [
-    {
-      question: "Can I buy the default build?",
-      answer: "Yes. Keep the default selections and continue to checkout. Our team still reviews the order details before fulfillment."
-    },
-    {
-      question: "What if I choose paid options?",
-      answer: "Paid options show their added cost before checkout. Our team checks compatibility and timing before production or shipment."
-    },
-    {
-      question: "Do I approve factory photos before shipment?",
-      answer:
-        "For custom builds, yes. We send detailed factory photos and videos before shipment, request cosmetic revisions if needed, and only clear the order once you approve the final build. Ready-to-ship warehouse dolls may skip this step so they can ship faster."
-    },
-    {
-      question: readyToShip ? "Is this ready to ship?" : "How long does a custom order take?",
-      answer: readyToShip
-        ? `This item is marked ready to ship${product.extended.warehouseRegions?.length ? ` from ${product.extended.warehouseRegions.join(", ")}` : product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. Most warehouse orders leave within 2-3 business days after stock confirmation.`
-        : `This item is made to order. Most custom builds take about ${product.extended.deliveryEstimate ?? "3-5 weeks"} before release, because approval happens before shipment.`
-    },
-    {
-      question: "What if the order arrives damaged?",
-      answer:
-        "Report delivery damage within 24 hours with photos of the product, outer carton, and packaging. Major transit damage can move into replacement or compensation review, while minor cosmetic shipping wear is usually handled with a complimentary repair kit and guided support."
-    },
-    {
-      question: "Can DollWow check another seller’s price?",
-      answer: "Yes. Send us the listing and we can compare the seller, product match, delivery terms, and final delivered price."
-    }
+    { question: "Can I buy the standard configuration?", answer: "Yes. Use Add standard configuration if the default build suits you, or open the configurator to personalize it." },
+    { question: "When is the final price shown?", answer: "Supported paid options update the build total before you add the configured doll to your cart." },
+    { question: "Do I approve the finished doll?", answer: "Yes. We share detailed factory photos and videos before shipment and review cosmetic revision requests before approval." },
+    { question: "How long does production take?", answer: `Most builds take about ${product.extended.deliveryEstimate ?? "3–5 weeks"} before release. The exact timing is reviewed with your configuration.` }
   ];
+}
+
+function useRevealMotion(rootRef: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    root.classList.add("alive-motion-enabled");
+    const elements = Array.from(root.querySelectorAll<HTMLElement>(".alive-reveal"));
+    const reveal = () => {
+      const height = window.innerHeight || document.documentElement.clientHeight;
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < height * 0.9 && rect.bottom > 0) element.classList.add("is-visible");
+      });
+    };
+    reveal();
+    window.addEventListener("scroll", reveal, { passive: true });
+    window.addEventListener("resize", reveal);
+    return () => {
+      window.removeEventListener("scroll", reveal);
+      window.removeEventListener("resize", reveal);
+    };
+  }, [rootRef]);
 }

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Camera, CheckCircle2, ChevronRight, Clock3, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Truck } from "lucide-react";
+import { CheckCircle2, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Truck } from "lucide-react";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
@@ -17,11 +17,8 @@ import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
 import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
-  buildPdpDecisionNotes,
   buildPdpFitChecks,
   buildPdpMetadata,
-  buildPdpSearchFit,
-  buildPdpTrustSignals,
   buildProductFaqStructuredData,
   buildProductStructuredData
 } from "@/lib/catalog/pdpSeo";
@@ -66,9 +63,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
-  const searchFit = buildPdpSearchFit(product);
-  const decisionNotes = buildPdpDecisionNotes(product);
-  const trustSignals = buildPdpTrustSignals(product);
   const fitChecks = buildPdpFitChecks(product);
   const productStructuredData = buildProductStructuredData(product);
   const faqStructuredData = buildProductFaqStructuredData(product);
@@ -128,13 +122,10 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             )}
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
-              <a href="#build-studio">Options</a>
+              <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>
               <a href="#product-specs">Specs</a>
               {hasAuthorizationSection ? <a href="#authorization">Authorization</a> : null}
             </nav>
-            <ProductSearchFitCard title={searchFit.title} summary={searchFit.summary} chips={searchFit.chips.map((chip) => chip.label)} />
-            <ProductDecisionNotes notes={decisionNotes} />
-            <ProductTrustSignalGrid signals={trustSignals} />
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
               <WishlistButton
                 entry={{
@@ -169,14 +160,16 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       <ToneBand tone="deep" className="pdp-details-band">
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
-        {hasAuthorizationSection ? (
-          <div id="authorization" className="scroll-mt-24">
-            <BrandAuthorizationCard brand={productBrand} />
-          </div>
-        ) : null}
       </ToneBand>
 
       <ProductLowerAlive product={product} similarProducts={alternatives} />
+      {hasAuthorizationSection ? (
+        <ToneBand tone="deep" className="pdp-authorization-band">
+          <div id="authorization" className="scroll-mt-24">
+            <BrandAuthorizationCard brand={productBrand} />
+          </div>
+        </ToneBand>
+      ) : null}
       <PdpTrackers product={product} />
     </div>
   );
@@ -195,64 +188,6 @@ function mergeAdminMetafields(
       headModel: adminData.headModel || product.extended.headModel
     }
   };
-}
-
-function ProductSearchFitCard({ title, summary, chips }: { title: string; summary: string; chips: string[] }) {
-  return (
-    <section className="pdp-search-fit pdp-mobile-secondary tone-card mt-5 hidden lg:grid" aria-label={title}>
-      <div>
-        <p className="text-sm font-semibold  text-gold-300">{title}</p>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-ivory-300">{summary}</p>
-      </div>
-      <div className="pdp-search-fit-chips">
-        {chips.map((chip) => (
-          <span key={chip}>{chip}</span>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ProductDecisionNotes({ notes }: { notes: Array<{ title: string; body: string }> }) {
-  return (
-    <section className="pdp-decision-notes pdp-mobile-secondary hidden lg:grid" aria-label="Quick buying notes">
-      {notes.map((note, index) => {
-        const visual = decisionNoteVisual(index);
-        return (
-          <article key={note.title} className="tone-card pdp-decision-note pdp-visual-card">
-            <div className={`pdp-visual-badge ${visual.toneClass}`}>{visual.icon}</div>
-            <div className="pdp-visual-copy">
-              <p>{note.title}</p>
-              <strong>{note.body}</strong>
-            </div>
-          </article>
-        );
-      })}
-    </section>
-  );
-}
-
-function ProductTrustSignalGrid({ signals }: { signals: Array<{ title: string; body: string; href: string; label: string }> }) {
-  return (
-    <section className="pdp-trust-grid pdp-mobile-secondary hidden lg:grid" aria-label="Order reassurance">
-      {signals.map((signal, index) => {
-        const visual = trustSignalVisual(index);
-        return (
-          <Link key={signal.title} href={signal.href} className="tone-card pdp-trust-card pdp-visual-card">
-            <div className={`pdp-visual-badge ${visual.toneClass}`}>{visual.icon}</div>
-            <div className="pdp-visual-copy">
-              <p>{signal.title}</p>
-              <strong>{signal.body}</strong>
-              <span>
-                {signal.label}
-                <ChevronRight className="h-4 w-4" />
-              </span>
-            </div>
-          </Link>
-        );
-      })}
-    </section>
-  );
 }
 
 function ToneBand({
@@ -307,11 +242,10 @@ function ProductSpecSummary({
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
   const measurementGroups = groupMeasurements(measurements);
-  const relatedPaths = productRelatedPaths(product);
 
   return (
-    <section id="product-specs" className="pdp-spec-summary scroll-mt-24" aria-labelledby="product-specs-heading">
-      <div className="pdp-spec-summary-head">
+    <details id="product-specs" className="pdp-spec-summary scroll-mt-24" aria-labelledby="product-specs-heading">
+      <summary className="pdp-spec-summary-head">
         <div>
           <p className="alive-eyebrow">
             <span />
@@ -319,8 +253,11 @@ function ProductSpecSummary({
           </p>
           <h2 id="product-specs-heading">Measurements and details</h2>
         </div>
-        <p>Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout.</p>
-      </div>
+        <div>
+          <p>Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout.</p>
+          <span className="pdp-spec-toggle">View all measurements</span>
+        </div>
+      </summary>
 
       <div className="pdp-spec-summary-grid">
         <div className="pdp-detail-grid">
@@ -380,95 +317,10 @@ function ProductSpecSummary({
             </div>
           )}
 
-          {relatedPaths.length ? (
-            <section className="pdp-related-paths tone-card rounded-[8px] p-5" aria-labelledby="product-related-paths-heading">
-              <p className="text-sm font-semibold  text-gold-300">Related buying paths</p>
-              <h3 id="product-related-paths-heading" className="mt-2 text-lg font-semibold text-ivory-50">
-                Compare this doll in context
-              </h3>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {relatedPaths.map((path) => (
-                  <Link
-                    key={path.href}
-                    href={path.href}
-                    className="rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.045] p-3 text-sm font-semibold text-ivory-100 transition hover:border-gold-300/50 hover:bg-ivory-50/[0.07]"
-                  >
-                    {path.label}
-                    <span className="mt-1 block text-sm font-normal leading-5 text-ivory-500">{path.description}</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ) : null}
         </div>
       </div>
-    </section>
+    </details>
   );
-}
-
-function productRelatedPaths(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
-  const paths: Array<{ label: string; href: string; description: string }> = [
-    { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare this listing against the full DollWow catalog." }
-  ];
-  const material = String(product.extended.material || "").toLowerCase();
-  const brand = getCatalogBrand(product.extended.brand || product.vendor);
-
-  if (brand) {
-    paths.push({
-      label: `${brand.label} brand hub`,
-      href: `/brands/${brand.collectionHandle}`,
-      description: `Compare current ${brand.label} listings, options, and buyer guidance.`
-    });
-  }
-
-  if (material.includes("tpe")) {
-    paths.push(
-      { label: "TPE dolls", href: "/shop/tpe", description: "Compare material, weight, price, and care tradeoffs." },
-      { label: "TPE vs silicone guide", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Review material differences before checkout." }
-    );
-  }
-
-  if (material.includes("silicone")) {
-    paths.push(
-      { label: "Silicone dolls", href: "/shop/silicone", description: "Compare premium material builds and sculpt detail." },
-      { label: "Most realistic guide", href: "/learn/most-realistic-sex-dolls", description: "Review realism factors beyond photos." }
-    );
-  }
-
-  if (product.extended.bodyType === "male") {
-    paths.push(
-      { label: "Male dolls", href: "/shop/male-dolls", description: "Compare male body-type listings and measurements." },
-      { label: "Male doll guide", href: "/learn/male-sex-doll-buying-guide", description: "Review body scale, material, and option checks." }
-    );
-  }
-
-  if (product.extended.heightCm && product.extended.heightCm < 155) {
-    paths.push(
-      { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact builds, storage, and handling." },
-      { label: "Mini doll guide", href: "/learn/mini-sex-dolls", description: "Review size, privacy, and storage tradeoffs." }
-    );
-  }
-
-  if (product.extended.stockStatus === "ready_to_ship") {
-    paths.push(
-      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "See available models and expected dispatch times." },
-      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Compare delivery timing and available options." }
-    );
-  } else {
-    paths.push(
-      { label: "Custom dolls", href: "/shop/custom", description: "Explore made-to-order dolls and their available options." },
-      { label: "Ready vs custom guide", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand timing, options, and approval steps." }
-    );
-  }
-
-  paths.push({ label: "Sex doll cost guide", href: "/learn/sex-doll-cost", description: "Compare delivered value beyond the base price." });
-
-  const seen = new Set<string>();
-  return paths.filter((path) => {
-    if (seen.has(path.href)) return false;
-    seen.add(path.href);
-    return true;
-  }).slice(0, 8);
 }
 
 function formatHeadModel(value?: string) {
@@ -495,22 +347,6 @@ function groupMeasurements(measurements: Array<{ label: string; value: string }>
         .filter((item): item is { label: string; value: string } => Boolean(item))
     }))
     .filter((group) => group.items.length > 0);
-}
-
-function decisionNoteVisual(index: number) {
-  return [
-    { icon: <Scale className="h-5 w-5" />, toneClass: "is-copper" },
-    { icon: <Ruler className="h-5 w-5" />, toneClass: "is-rose" },
-    { icon: <Clock3 className="h-5 w-5" />, toneClass: "is-olive" }
-  ][index] ?? { icon: <CheckCircle2 className="h-5 w-5" />, toneClass: "is-copper" };
-}
-
-function trustSignalVisual(index: number) {
-  return [
-    { icon: <ShieldCheck className="h-5 w-5" />, toneClass: "is-copper" },
-    { icon: <Camera className="h-5 w-5" />, toneClass: "is-rose" },
-    { icon: <PackageCheck className="h-5 w-5" />, toneClass: "is-olive" }
-  ][index] ?? { icon: <ShieldCheck className="h-5 w-5" />, toneClass: "is-copper" };
 }
 
 function fitCheckVisual(index: number) {

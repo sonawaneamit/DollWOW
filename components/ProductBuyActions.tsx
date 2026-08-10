@@ -1,14 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Loader2, Lock, ShoppingBag, SlidersHorizontal, Truck, Zap } from "lucide-react";
+import { Lock, ShoppingBag, SlidersHorizontal, Truck } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
-import { TrustLogoStrip } from "@/components/TrustLogoStrip";
-import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
-import { writeBrowserCartState } from "@/lib/cart/browser";
-import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import type { ProductImage } from "@/types/product";
@@ -30,9 +24,8 @@ type ProductBuyActionsProps = {
 };
 
 /**
- * PDP buy box. Two lanes: "Add to cart" (multi-item cart + drawer, buy as
- * shown) and "Buy it now" (legacy single-line express checkout). Customizing
- * scrolls to the Build Studio below the fold.
+ * PDP buy box. Warehouse products lead with Add to Cart. Made-to-order
+ * products lead with configuration and retain a quieter standard-build path.
  */
 export function ProductBuyActions({
   merchandiseId,
@@ -49,12 +42,8 @@ export function ProductBuyActions({
   warehouseCountry,
   warehouseRegions
 }: ProductBuyActionsProps) {
-  const router = useRouter();
   const cart = useCart();
-  const [buyNowPending, setBuyNowPending] = useState(false);
-  const [buyNowError, setBuyNowError] = useState("");
 
-  const name = productDisplayName || productTitle;
   const installments = installmentLabel(unitPrice, currencyCode, formatMoney);
   const canCustomize = !readyToShip || customAvailable === true;
   const buildAttributes = [
@@ -78,52 +67,6 @@ export function ProductBuyActions({
     });
   }
 
-  async function buyNow() {
-    if (buyNowPending) return;
-    setBuyNowPending(true);
-    setBuyNowError("");
-    try {
-      const response = await fetch("/api/cart/create", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ merchandiseId, quantity: 1, attributes: buildAttributes })
-      });
-      const payload = await response.json();
-      if (!response.ok) {
-        setBuyNowError(payload.error ?? "Could not start checkout.");
-        return;
-      }
-      const checkoutUrl = normalizeCheckoutUrl(payload.checkoutUrl);
-      writeBrowserCartState({
-        checkoutUrl,
-        totalQuantity: payload.totalQuantity ?? 1,
-        productTitle,
-        productDisplayName,
-        productHandle,
-        productImageUrl: productImage?.url,
-        productImageAlt: productImage?.altText ?? productTitle,
-        merchandiseId,
-        quantity: 1,
-        readyToShip,
-        currencyCode
-      });
-      trackEvent(analyticsEvents.addToCart, {
-        item_id: merchandiseId,
-        item_name: name,
-        item_brand: brand,
-        price: unitPrice,
-        currency: currencyCode,
-        quantity: 1
-      });
-      trackEvent(analyticsEvents.beginCheckout, { value: unitPrice, currency: currencyCode, item_count: 1 });
-      router.push(checkoutUrl);
-    } catch {
-      setBuyNowError("Could not start checkout. Please try again.");
-    } finally {
-      setBuyNowPending(false);
-    }
-  }
-
   function scrollToCustomizer() {
     const target = document.getElementById("build-studio");
     if (!target) return;
@@ -134,41 +77,50 @@ export function ProductBuyActions({
   return (
     <div className="mt-6 rounded-lg bg-surface p-5 text-text shadow-card sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-[15px] font-semibold text-text-dim">Buy as shown</p>
+        <p className="text-[15px] font-semibold text-text-dim">{readyToShip ? "Ready to ship" : "Choose how to order"}</p>
         {installments ? <p className="text-sm text-text-faint">{installments}</p> : null}
       </div>
 
       <div className="mt-4 grid gap-3">
-        <button
-          type="button"
-          onClick={addToBag}
-          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
-        >
-          <ShoppingBag className="h-5 w-5" />
-          Add to Cart · {formatMoney(unitPrice, currencyCode)}
-        </button>
-        <div className={`grid gap-3 ${canCustomize ? "sm:grid-cols-2" : ""}`}>
+        {readyToShip ? (
           <button
             type="button"
-            onClick={buyNow}
-            disabled={buyNowPending}
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint disabled:opacity-60"
+            onClick={addToBag}
+            className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
           >
-            {buyNowPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <Zap className="h-5 w-5" />}
-            Buy now
+            <ShoppingBag className="h-5 w-5" />
+            Add to Cart · {formatMoney(unitPrice, currencyCode)}
           </button>
-          {canCustomize ? (
+        ) : (
+          <button
+            type="button"
+            onClick={scrollToCustomizer}
+            className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
+          >
+            <SlidersHorizontal className="h-5 w-5" />
+            Customize your doll
+          </button>
+        )}
+        {readyToShip && canCustomize ? (
+          <button
+            type="button"
+            onClick={scrollToCustomizer}
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-2.5 text-[15px] font-semibold text-accent transition-colors hover:bg-accent-tint"
+          >
+            <SlidersHorizontal className="h-4 w-4" />
+            Available customizations
+          </button>
+        ) : null}
+        {!readyToShip ? (
             <button
               type="button"
-              onClick={scrollToCustomizer}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-3 text-[17px] font-semibold text-accent transition-colors hover:bg-accent-tint"
+              onClick={addToBag}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-2.5 text-[15px] font-semibold text-accent transition-colors hover:bg-accent-tint"
             >
-              <SlidersHorizontal className="h-5 w-5" />
-              {readyToShip ? "Available customizations" : "Customize your doll"}
+              <ShoppingBag className="h-4 w-4" />
+              Add standard configuration · {formatMoney(unitPrice, currencyCode)}
             </button>
-          ) : null}
-        </div>
-        {buyNowError ? <p className="text-sm text-danger">{buyNowError}</p> : null}
+        ) : null}
       </div>
 
       <div className="mt-5 flex items-start gap-3 rounded-md bg-surface-tint p-4">
@@ -193,16 +145,8 @@ export function ProductBuyActions({
         <Lock className="h-4 w-4" /> Secure checkout by Shopify · plain packaging · neutral billing
       </p>
 
-      <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[15px] font-semibold text-accent">
-        <Link href="/buyer-protection" className="min-h-11 py-2 underline underline-offset-4">Buyer protection</Link>
-        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
-        <Link href="/shipping-protection" className="min-h-11 py-2 underline underline-offset-4">Shipping protection</Link>
-        <span className="py-2 text-text-faint" aria-hidden="true">·</span>
-        <Link href="/how-ordering-works" className="min-h-11 py-2 underline underline-offset-4">How ordering works</Link>
-      </div>
-
-      <div className="mt-4">
-        <TrustLogoStrip compact />
+      <div className="mt-3 flex justify-center text-sm font-semibold text-accent">
+        <Link href="/buyer-protection" className="min-h-11 py-2 underline underline-offset-4">View buyer protection</Link>
       </div>
     </div>
   );

@@ -611,7 +611,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
 
   return (
     <section className="rounded-lg bg-surface p-5 text-text shadow-card sm:p-8">
-      <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]">
+      <div className={fixedWarehouseUnit ? "" : "grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]"}>
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{brandName}</p>
           <h2 className="mt-1 font-display text-3xl font-semibold">{fixedWarehouseUnit ? "This warehouse doll ships as shown" : "Order this doll as shown"}</h2>
@@ -632,20 +632,24 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
               </div>
             </div>
           ) : null}
-          <div className="mt-5 flex flex-wrap gap-3">
-            <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-              {loading ? "Starting checkout" : `Continue to secure checkout — ${formatMoney(basePrice, currencyCode)}`}
-            </GoldButton>
-            <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-[52px] items-center justify-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent hover:bg-accent-tint">Ask about this doll</a>
-          </div>
+          {!fixedWarehouseUnit ? (
+            <div className="mt-5 flex flex-wrap gap-3">
+              <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
+                {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
+                {loading ? "Starting checkout" : `Add to Cart — ${formatMoney(basePrice, currencyCode)}`}
+              </GoldButton>
+              <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-[52px] items-center justify-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent hover:bg-accent-tint">Ask about this doll</a>
+            </div>
+          ) : null}
           {error ? <p className="mt-3 text-[15px] text-danger">{error}</p> : null}
         </div>
-        <div className="rounded-md bg-surface-tint p-5">
-          <p className="text-[15px] font-semibold text-text-dim">Listing price</p>
-          <p className="mt-2 text-xl font-semibold">{formatMoney(basePrice, currencyCode)}</p>
-          <p className="mt-1 text-[15px] leading-6 text-text-dim">For the doll shown in the product gallery and listed specifications.</p>
-        </div>
+        {!fixedWarehouseUnit ? (
+          <div className="rounded-md bg-surface-tint p-5">
+            <p className="text-[15px] font-semibold text-text-dim">Listing price</p>
+            <p className="mt-2 text-xl font-semibold">{formatMoney(basePrice, currencyCode)}</p>
+            <p className="mt-1 text-[15px] leading-6 text-text-dim">For the doll shown in the product gallery and listed specifications.</p>
+          </div>
+        ) : null}
       </div>
     </section>
   );
