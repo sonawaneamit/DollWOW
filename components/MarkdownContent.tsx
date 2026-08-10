@@ -1,11 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export function MarkdownContent({ markdown }: { markdown: string }) {
-  return <div className="learn-article-body">{renderBlocks(markdown)}</div>;
+export type MarkdownSectionVisual = {
+  afterHeading: string;
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+export function MarkdownContent({ markdown, sectionVisuals = [] }: { markdown: string; sectionVisuals?: MarkdownSectionVisual[] }) {
+  return <div className="learn-article-body">{renderBlocks(markdown, sectionVisuals)}</div>;
 }
 
-function renderBlocks(markdown: string) {
+function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[]) {
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
   let index = 0;
@@ -20,6 +28,8 @@ function renderBlocks(markdown: string) {
     if (line.startsWith("## ")) {
       const heading = line.replace(/^##\s+/, "");
       blocks.push(<h2 id={headingId(heading)} key={blocks.length}>{heading}</h2>);
+      const visual = sectionVisuals.find((item) => item.afterHeading === heading);
+      if (visual) blocks.push(<SectionVisual key={`${heading}-visual`} visual={visual} />);
       index += 1;
       continue;
     }
@@ -66,6 +76,24 @@ function renderBlocks(markdown: string) {
   }
 
   return blocks;
+}
+
+function SectionVisual({ visual }: { visual: MarkdownSectionVisual }) {
+  return (
+    <figure className="my-8 overflow-hidden rounded-[8px] border border-border bg-surface shadow-card">
+      <Image
+        src={visual.src}
+        alt={visual.alt}
+        width={1200}
+        height={1600}
+        className="h-auto w-full"
+        sizes="(min-width: 768px) 48rem, 100vw"
+      />
+      <figcaption className="border-t border-border bg-surface-elevated px-4 py-3 text-sm leading-5 text-text-dim">
+        {visual.caption}
+      </figcaption>
+    </figure>
+  );
 }
 
 export function headingId(value: string) {

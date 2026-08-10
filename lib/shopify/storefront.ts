@@ -319,6 +319,39 @@ export async function getProductByHandle(handle: string, options: { cache?: Requ
   }
 }
 
+export async function getProductsByHandles(
+  handles: string[],
+  options: { cache?: RequestCache; revalidate?: number } = { revalidate: 120 }
+) {
+  const uniqueHandles = [...new Set(handles.filter(Boolean))];
+  if (!uniqueHandles.length) return [];
+  if (!hasShopifyStorefrontEnv()) {
+    const byHandle = new Map(sampleProducts.filter(isCustomerVisibleProduct).map((product) => [product.handle, product]));
+    return uniqueHandles.map((handle) => byHandle.get(handle)).filter((product): product is Product => Boolean(product));
+  }
+
+  try {
+    const variableDefinitions = uniqueHandles.map((_, index) => `$handle${index}: String!`).join(", ");
+    const selections = uniqueHandles
+      .map((_, index) => `product${index}: product(handle: $handle${index}) { ${productListFields({ imageFirst: 8 })} }`)
+      .join("\n");
+    const variables = Object.fromEntries(uniqueHandles.map((handle, index) => [`handle${index}`, handle]));
+    const data = await storefrontFetch<Record<string, ProductListNode | null>>(
+      `query ProductsByHandle(${variableDefinitions}) { ${selections} }`,
+      variables,
+      options
+    );
+    return uniqueHandles
+      .map((_, index) => data[`product${index}`])
+      .filter((node): node is ProductListNode => Boolean(node))
+      .map(mapShopifyProduct)
+      .filter(isCustomerVisibleProduct);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
 export async function getCollections() {
   if (!hasShopifyStorefrontEnv()) return fallbackCollections;
 

@@ -3,11 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
 import { GuideDownloadButton } from "@/components/GuideDownloadButton";
+import { ProductCard } from "@/components/ProductCard";
 import { notFound } from "next/navigation";
-import { headingId, MarkdownContent } from "@/components/MarkdownContent";
+import { headingId, MarkdownContent, type MarkdownSectionVisual } from "@/components/MarkdownContent";
 import { compactFilters, filterProducts, requiresCatalogWideFetch, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
-import { productPublicTitle } from "@/lib/catalog/naming";
-import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import {
   buildArticleBreadcrumbStructuredData,
   buildArticleFaqStructuredData,
@@ -18,8 +17,7 @@ import {
   getLearningArticles,
   learnArticleUrl
 } from "@/lib/learn/content";
-import { getProducts } from "@/lib/shopify/storefront";
-import { formatMoney } from "@/lib/utils/currency";
+import { getProducts, getProductsByHandles } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 
 export function generateStaticParams() {
@@ -102,7 +100,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             {article.slug === "sex-doll-guide" ? <GuideTableOfContents markdown={article.body} /> : null}
-            <MarkdownContent markdown={article.body} />
+            <MarkdownContent markdown={article.body} sectionVisuals={guideSectionVisuals(article.slug)} />
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
@@ -140,6 +138,11 @@ function GuideTableOfContents({ markdown }: { markdown: string }) {
 async function getArticleProductModule(slug: string) {
   const config = productModuleConfig(slug);
   if (!config) return null;
+
+  if (config.handles?.length) {
+    const products = await getProductsByHandles(config.handles, { revalidate: 120 });
+    return { ...config, products };
+  }
 
   const filters = compactFilters(config.filters);
   const products = await getProducts({
@@ -195,71 +198,48 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
   if (!module || !module.products.length) return null;
 
   return (
-    <aside className="tone-card mt-12 rounded-[8px] p-5">
+    <aside className="mt-14 border-y border-border py-10">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm  text-gold-400">Catalog examples</p>
+          <p className="text-sm font-semibold text-accent">Explore the catalog</p>
           <h2 className="mt-2 text-2xl font-semibold leading-tight text-text">{module.title}</h2>
-          <p className="mt-3 text-sm leading-6 text-ink-700">{module.description}</p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-text-dim">{module.description}</p>
         </div>
-        <Link href={module.collectionHref} className="shrink-0 rounded-[12px] border border-gold-500/20 px-4 py-2 text-sm font-semibold text-text transition hover:border-gold-500/40 hover:bg-ivory-50/[0.45]">
+        <Link href={module.collectionHref} className="inline-flex min-h-11 shrink-0 items-center rounded-sm border border-border px-4 text-sm font-semibold text-text transition hover:border-accent">
           View collection
         </Link>
       </div>
-      <div className="mt-5 grid gap-3">
-        {module.products.map((product) => (
-          <ArticleProductExampleCard key={product.id} product={product} />
+      <div className="catalog-grid mt-7 grid gap-5 sm:grid-cols-2">
+        {module.products.map((product, index) => (
+          <ProductCard key={product.id} product={product} priority={index < 2} />
         ))}
       </div>
     </aside>
   );
 }
 
-function ArticleProductExampleCard({ product }: { product: Product }) {
-  const displayTitle = productPublicTitle(product);
-  const image = product.featuredImage ?? product.images[0] ?? null;
-  const imageUrl = protectedProductImageUrlFor(product, image, "thumb");
-  const price = product.priceRange.minVariantPrice;
-  const specs = [
-    product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
-    product.extended.material,
-    product.extended.cupSize
-  ].filter((spec): spec is string => Boolean(spec));
-
-  return (
-    <article className="grid gap-4 rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.35] p-3 sm:grid-cols-[112px_minmax(0,1fr)]">
-      <Link href={`/products/${product.handle}`} className="relative aspect-square overflow-hidden rounded-[8px] bg-ink-950/10">
-        {imageUrl ? (
-          <Image src={imageUrl} alt={displayTitle} fill sizes="112px" className="object-cover" />
-        ) : (
-          <span className="flex h-full items-center justify-center p-3 text-center text-sm font-semibold text-ink-700">{displayTitle}</span>
-        )}
-      </Link>
-      <div className="min-w-0">
-        <p className="text-sm font-semibold  text-gold-700">{product.extended.brand ?? product.vendor}</p>
-        <h3 className="mt-1 text-base font-semibold leading-snug text-text">
-          <Link href={`/products/${product.handle}`} className="transition hover:text-gold-700">
-            {displayTitle}
-          </Link>
-        </h3>
-        {specs.length ? (
-          <div className="mt-2 flex flex-wrap gap-2">
-            {specs.map((spec) => (
-              <span key={spec} className="rounded-full border border-gold-500/14 px-2.5 py-1 text-sm font-semibold text-ink-700">
-                {spec}
-              </span>
-            ))}
-          </div>
-        ) : null}
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <p className="text-lg font-semibold text-text">{formatMoney(price.amount, price.currencyCode)}</p>
-          <GoldButton href={`/products/${product.handle}`} variant="primary" className="min-h-0 px-4 py-2">
-            View doll
-          </GoldButton>
-        </div>
-      </div>
-    </article>
-  );
+function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
+  if (slug !== "sex-doll-guide") return [];
+  return [
+    {
+      afterHeading: "TPE, Silicone, and Hybrid Construction",
+      src: "/images/learn/sex-doll-guide/material-comparison.webp",
+      alt: "DollWow visual comparison of a TPE doll and a silicone doll with practical material tradeoffs",
+      caption: "Use material as the start of the comparison, then verify the exact formulation, weight, care routine, and configuration."
+    },
+    {
+      afterHeading: "Size and Weight Matter More Than Buyers Expect",
+      src: "/images/learn/sex-doll-guide/size-and-handling.webp",
+      alt: "Three DollWow products compared by height, weight, material, and price",
+      caption: "Real catalog examples show why height alone does not predict handling weight. Product details and prices should be rechecked before ordering."
+    },
+    {
+      afterHeading: "Cleaning by Material and Construction",
+      src: "/images/learn/sex-doll-guide/care-routine.webp",
+      alt: "Five-step sex doll care routine covering material checks, gentle cleaning, drying, conditioning, and supported storage",
+      caption: "A practical first-week care sequence. Instructions for the exact product and material always take priority."
+    }
+  ];
 }
 
 function ArticleActions({ slug }: { slug: string }) {
@@ -559,16 +539,25 @@ type ArticleProductModule = {
   description: string;
   collectionHref: string;
   filters: CatalogFilters;
+  handles?: string[];
   products: Product[];
 };
 
 function productModuleConfig(slug: string): Omit<ArticleProductModule, "products"> | null {
   const map: Record<string, Omit<ArticleProductModule, "products">> = {
     "sex-doll-guide": {
-      title: "Start with current DollWow catalog examples",
-      description: "Use live products to compare material, height, weight, price, and availability, then narrow the catalog around your practical requirements.",
+      title: "Six useful starting points",
+      description: "This mixed set spans TPE and silicone, compact and full-size builds, ready-to-ship and custom orders, and female and male dolls. It is a comparison starting point, not a best-of ranking.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "real-lady-viki-150cm-r10-silicone-doll",
+        "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog"
+      ]
     },
     "tpe-vs-silicone-sex-dolls": {
       title: "Compare TPE listings in the catalog",
