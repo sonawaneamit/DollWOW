@@ -11,7 +11,6 @@ import { DisplayMoney } from "@/components/CurrencyProvider";
 import { useCart } from "@/components/cart/CartProvider";
 import { useComparison } from "@/components/compare/ComparisonProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
-import { useLegacyCartState } from "@/lib/cart/browser";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 
@@ -96,7 +95,6 @@ export function Header() {
   const router = useRouter();
   const cart = useCart();
   const comparison = useComparison();
-  const cartState = useLegacyCartState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -105,7 +103,10 @@ export function Header() {
   const [searchLoading, setSearchLoading] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const shouldQueryRemote = (searchOpen || mobileMenuOpen) && searchQuery.trim().length >= 2;
-  const activeCount = cart.count || (cartState?.totalQuantity ?? 0);
+  // The header reflects the active first-party cart only. A historical
+  // resumable checkout is shown separately on /cart and must not resurrect
+  // the badge after the shopper clears their current cart.
+  const activeCount = cart.count;
   const compareCount = comparison.entries.length;
   const searchSuggestions = useMemo(() => buildSearchSuggestions(searchQuery), [searchQuery]);
 
