@@ -4235,7 +4235,7 @@ a {
   background: linear-gradient(180deg, transparent 24%, rgba(10, 6, 5, 0.58) 68%, rgba(7, 4, 3, 0.94));
 }
 
-.alive-sim-match {
+.alive-sim-status {
   position: absolute;
   left: 0.85rem;
   top: 0.85rem;

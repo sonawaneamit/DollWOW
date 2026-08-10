@@ -279,7 +279,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
         </div>
         <div ref={railRef} className="alive-similar-rail alive-reveal" data-delay="1">
           {similarProducts.map((item) => (
-            <SimilarDollCard key={item.id} product={item} reference={product} />
+            <SimilarDollCard key={item.id} product={item} />
           ))}
         </div>
       </AliveBand>
@@ -456,16 +456,15 @@ function GuideCard({ icon, kicker, title, text }: { icon: ReactNode; kicker: str
   );
 }
 
-function SimilarDollCard({ product, reference }: { product: Product; reference: Product }) {
+function SimilarDollCard({ product }: { product: Product }) {
   const price = product.priceRange.minVariantPrice;
   const displayTitle = productPublicTitle(product);
-  const reason = matchReason(product, reference);
   return (
     <article className="alive-sim-card">
       <Link className="alive-sim-link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
         <ProductImageFrame product={product} />
         <span className="alive-sim-scrim" aria-hidden="true" />
-        <span className="alive-sim-match">{reason}</span>
+        {product.extended.stockStatus === "ready_to_ship" ? <span className="alive-sim-status">Ready to ship</span> : null}
         <div className="alive-sim-body">
           <div>
             <span>{product.extended.brand ?? product.vendor}</span>
@@ -555,11 +554,4 @@ function faqItems(product: Product, readyToShip: boolean) {
       answer: "Yes. Send us the listing and we can compare the seller, product match, delivery terms, and final delivered price."
     }
   ];
-}
-
-function matchReason(product: Product, reference: Product) {
-  if (product.extended.material && product.extended.material === reference.extended.material) return "Same material";
-  if (product.extended.cupSize && product.extended.cupSize === reference.extended.cupSize) return "Same cup";
-  if (product.extended.heightCm && reference.extended.heightCm && Math.abs(product.extended.heightCm - reference.extended.heightCm) <= 8) return "Similar size";
-  return "Comparable";
 }

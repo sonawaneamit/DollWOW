@@ -45,14 +45,14 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const { handle } = await params;
   const [storefrontProduct, allProducts, adminProductData] = await Promise.all([
     getProductByHandle(handle),
-    getProducts({ first: 60 }),
+    getProducts({ first: 600, imageFirst: 1, cacheKey: "pdp-related-catalog-v2", revalidate: 3600 }),
     getProductAdminMetafieldsByHandle(handle)
   ]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
-  const alternatives = scoreSimilarProducts(product, allProducts, 4);
+  const alternatives = scoreSimilarProducts(product, allProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);

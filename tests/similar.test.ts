@@ -17,9 +17,9 @@ function makeProduct(overrides: {
     vendor: overrides.vendor ?? "Vendor",
     productType: "Sex Dolls",
     tags: [],
-    featuredImage: null,
+    featuredImage: { url: "https://cdn.example.com/doll.jpg", altText: "Test doll" },
     images: [],
-    variants: [],
+    variants: [{ id: `${overrides.id ?? "1"}-variant`, title: "Default", availableForSale: true, price: { amount: overrides.price ?? "2000", currencyCode: "USD" }, selectedOptions: [] }],
     priceRange: {
       minVariantPrice: { amount: overrides.price ?? "2000", currencyCode: "USD" },
       maxVariantPrice: { amount: overrides.price ?? "2000", currencyCode: "USD" }
@@ -63,7 +63,7 @@ describe("similar products", () => {
     expect(similarityScore(reference, closeMatch)).toBeGreaterThan(similarityScore(reference, unrelated));
   });
 
-  it("drops candidates with no meaningful overlap", () => {
+  it("drops candidates with an incompatible body type", () => {
     const unrelated = makeProduct({
       id: "far",
       handle: "unrelated",
@@ -71,7 +71,6 @@ describe("similar products", () => {
       price: "9000",
       extended: { brand: "Other", material: "Silicone", bodyType: "male", heightCm: 100, stockStatus: "custom" }
     });
-    expect(similarityScore(reference, unrelated)).toBe(0);
     expect(scoreSimilarProducts(reference, [unrelated], 4)).toHaveLength(0);
   });
 
@@ -88,10 +87,15 @@ describe("similar products", () => {
     expect(scoreSimilarProducts(reference, candidates, 4)).toHaveLength(4);
   });
 
-  it("gives a small availability boost to ready-to-ship dolls", () => {
+  it("prefers products in the same delivery lane", () => {
     const base = { brand: "WM Doll", material: "TPE", bodyType: "female" as const };
     const ready = makeProduct({ id: "r", handle: "r", vendor: "WM Dolls", extended: { ...base, stockStatus: "ready_to_ship" } });
     const madeToOrder = makeProduct({ id: "m", handle: "m", vendor: "WM Dolls", extended: { ...base, stockStatus: "custom" } });
-    expect(similarityScore(reference, ready)).toBe(similarityScore(reference, madeToOrder) + 1);
+    expect(similarityScore(reference, madeToOrder)).toBeGreaterThan(similarityScore(reference, ready));
+  });
+
+  it("does not mix full dolls with torsos", () => {
+    const torso = { ...makeProduct({ id: "torso", handle: "torso" }), productType: "Torso" };
+    expect(scoreSimilarProducts(reference, [torso], 4)).toHaveLength(0);
   });
 });
