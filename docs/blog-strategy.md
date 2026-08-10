@@ -1,9 +1,11 @@
 # DollWow SEO Blog And Learning Center Strategy
 
 Research date: 2026-06-16
+Last updated: 2026-08-10
 Data source: DataForSEO Labs, competitor keyword footprints, DollWow catalog strategy
 Supporting data export: `data/exports/dollwow-blog-keywords-dataforseo-2026-06-16.json`
 Editorial voice: `docs/editorial-voice-and-bylines.md`
+Visual system: `docs/visual-commerce-layer.md`
 
 ## Recommendation
 
@@ -17,6 +19,107 @@ This matters because DollWow is a new domain. It will be hard to quickly beat en
 - AI Overview / answer-engine visibility.
 - Trust signals for nervous buyers.
 - Content assets that support paid, email, support, and sales follow-up too.
+
+## Visual-First Content Strategy
+
+DollWow sells a highly visual product. Strong imagery is a required part of the content strategy, not a decorative step added after writing. Every priority article should use real DollWow catalog photography or approved official-brand material to help the reader understand products, compare choices, and move naturally into relevant collection and product pages.
+
+The visual layer has four jobs:
+
+1. Earn attention in search, social feeds, image results, email, and internal content discovery.
+2. Make guides easier to understand through product examples, comparisons, diagrams, and data.
+3. Increase qualified internal clicks from informational content into collection pages and PDPs.
+4. Give DollWow a recognizable editorial identity that competitors cannot reproduce with the same factory image alone.
+
+### Minimum Visual Package
+
+Every priority Learning Center article should include:
+
+- One featured image grounded in a real product, approved brand campaign asset, or useful editorial illustration.
+- One meaningful inline visual, such as a comparison graphic, process diagram, product detail spread, checklist, or infographic.
+- One visual commerce module linking to a relevant collection or a curated group of products.
+- Purposeful image captions and descriptive alt text.
+- Mobile-specific art direction when the desktop crop does not remain useful on a narrow screen.
+
+Commercial investigation articles, listicles, and buyer roundups should normally include more:
+
+- A title-led cover using real catalog products.
+- A visual card for every featured recommendation.
+- A comparison summary graphic.
+- A closing visual CTA into the relevant money page.
+
+### Product Recommendation Cards
+
+For articles such as `Best Lightweight Sex Dolls`, each recommended product can have a visual editorial card containing:
+
+- A real, approved product photo.
+- A specific editorial label such as `Best under 60 lb`, `Best for compact storage`, or `Best ready-to-ship option`.
+- Brand and product name.
+- Verified weight, height, material, and current price.
+- A short reason for the recommendation.
+- A direct link to the canonical PDP.
+- A secondary link to the relevant collection when useful.
+
+Recommendation labels must follow visible criteria from the article. Avoid vague superlatives, invented testing, unsupported quality claims, or labels that cannot be explained with catalog facts.
+
+Example structure:
+
+```text
+BEST FOR COMPACT STORAGE
+Starpery | Product name
+55 lb | Silicone | From $1,899
+Selected for its lower listed weight and shorter frame.
+View product
+```
+
+Price, availability, delivery, and promotion details should be rendered from live Shopify data on the website. A downloadable or social graphic may contain a dated snapshot such as `Price checked August 2026` after editorial review.
+
+### Text In Visuals
+
+Text is encouraged when it makes the visual more useful. Suitable uses include:
+
+- Blog and guide titles.
+- Product names and recommendation labels.
+- Verified specs and price snapshots.
+- Infographic data and comparison dimensions.
+- Numbered instructional steps.
+- Short promotional offers and coupon details after verification.
+
+For website banners and product modules, prefer responsive HTML text over text baked into the bitmap. Embedded text is appropriate for infographics, downloadable assets, Open Graph images, email graphics, Pinterest images, and social cards.
+
+Every word embedded in an image must be inspected before publication. Important facts shown in an image must also appear in crawlable HTML so search engines, LLMs, screen readers, and users with images disabled receive the same information.
+
+### Internal Click Strategy
+
+Visuals should create useful next steps rather than functioning as dead illustrations.
+
+- Featured product cards link directly to their canonical PDPs.
+- Material comparisons link to `/shop/tpe`, `/shop/silicone`, and the relevant material guides.
+- Size and weight graphics link to canonical size, lightweight, mini, or storage-related collections.
+- Brand visuals link to the canonical `/brands/[brand]` hub.
+- Ready-to-ship visuals link to `/shop/ready-to-ship`.
+- Customization visuals link to `/shop/custom`, `/customize`, or a product configurator.
+- Closing article graphics link to the most relevant money page, not automatically to the generic shop page.
+
+Track visual-card clicks, collection CTA clicks, PDP clicks, and assisted conversions with analytics events and stable campaign IDs. Do not add internal UTM parameters that fragment canonical URLs or pollute attribution.
+
+### Product And Asset Selection
+
+Use the visual asset registry defined in `docs/visual-commerce-layer.md` to choose imagery by:
+
+- Article topic and search intent.
+- Brand and product relevance.
+- Image quality and crop flexibility.
+- Product availability and current catalog status.
+- Watermark and provenance status.
+- Desktop, mobile, social, and infographic suitability.
+- Presentation appropriateness for the article and placement.
+
+Do not select a visually attractive product that is unrelated to the guide merely to fill space. Product examples must reinforce the article's actual comparison or recommendation criteria.
+
+### Production Gate
+
+Create and approve one sample for each new visual family before producing variants or batches. Review product fidelity, text accuracy, crop quality, mobile behavior, watermark status, links, and commercial claims before publishing.
 
 ## Blog Vs Guide Vs Collection
 
@@ -369,6 +472,10 @@ Use real comparison dimensions. Do not turn tables into images.
 
 Link to relevant collections and product examples.
 
+## Visual Commerce Module
+
+Add product-grounded recommendation cards, a comparison graphic, or a collection CTA. Include the exact PDP and collection destinations in the brief.
+
 ## What To Check Before Ordering
 
 Checklist.
@@ -398,8 +505,12 @@ Use OpenAI/Claude for drafting, but use deterministic facts:
 6. Add internal links.
 7. Add FAQ schema candidates.
 8. Add image/infographic brief.
-9. Run the DataForSEO SERP competitor audit and adjust the brief to match the winning page type.
-10. Human review before publishing.
+9. Select approved product and brand assets from the visual manifest.
+10. Create one featured visual and at least one useful inline visual for priority content.
+11. Add tracked visual links to the relevant canonical PDPs and money collections.
+12. Inspect embedded image text, product fidelity, pricing, availability, provenance, alt text, and mobile crops.
+13. Run the DataForSEO SERP competitor audit and adjust the brief to match the winning page type.
+14. Human review before publishing.
 
 Prompt:
 
@@ -410,6 +521,7 @@ Tone: practical, premium ecommerce, discreet, non-explicit.
 Use the DollWow editorial voice and privacy-safe byline rules from docs/editorial-voice-and-bylines.md.
 Use only supplied facts. Do not invent product availability, reviews, shipping promises, health/legal claims, or included accessories.
 Include: quick answer, comparison table, buyer checklist, common mistakes, FAQs, internal links, schema suggestions.
+Visual requirements: propose a product-grounded featured image, useful inline graphic, visual recommendation cards where relevant, exact PDP/collection link destinations, mobile composition, and alt text. Do not invent visual product facts or recommendation claims.
 Facts:
 [paste keyword data, catalog data, policy notes]
 ```
