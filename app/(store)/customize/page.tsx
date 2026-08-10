@@ -1,8 +1,7 @@
-import { GoldButton } from "@/components/GoldButton";
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
-import { compactFilters, filterProducts, filtersFromSearchParams, shopifyQueryForFilters } from "@/lib/catalog/filters";
+import { compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 
@@ -14,26 +13,43 @@ export const metadata = {
 export default async function CustomizePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const rawSearchParams = await searchParams;
   const filters = compactFilters({ ...filtersFromSearchParams(rawSearchParams), availability: "custom" });
-  const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 600 });
+  const products = await getProducts({ query: shopifyQueryForFilters(filters), first: 3000, imageFirst: 1 });
   const filteredProducts = filterProducts(products, filters).filter((product) => product.extended.customAvailable);
   const catalogPage = paginateCatalog(filteredProducts, catalogPageFromValue(rawSearchParams.page));
+  const activeFilterLabels = Object.entries(filters)
+    .filter(([, value]) => Boolean(value))
+    .filter(([key, value]) => !(key === "sort" && value === "featured"))
+    .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
+    .filter(Boolean) as string[];
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="rounded-[24px] border border-gold-500/16 bg-ink-800/72 p-8">
-        <p className="text-sm  text-gold-300">Customize</p>
-        <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Build a doll that feels personal to you</h1>
-        <p className="mt-4 max-w-3xl text-ivory-400">Compare available materials, skin tones, eyes, hair, skeleton features, standing feet, heating, and accessories. Prices update as you choose, and we confirm every detail before production.</p>
-        <div className="mt-6">
-          <GoldButton href="/shop/custom">Shop custom dolls</GoldButton>
+    <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="shop-visual-hero">
+        <div>
+          <p className="text-sm text-gold-300">Custom Dolls</p>
+          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">Choose a doll, then make it yours</h1>
+          <p className="mt-3 max-w-2xl text-ivory-400">
+            Browse made-to-order dolls with visual options for materials, appearance, body features, and accessories. Every build is reviewed before production.
+          </p>
+          <p className="mt-3 text-sm font-semibold text-gold-200">
+            {filteredProducts.length} customizable dolls · showing {catalogPage.startItem}–{catalogPage.endItem}
+          </p>
         </div>
       </div>
-      <div className="mt-8">
-        <ProductFilters filters={filters} action="/customize" resetHref="/customize" defaultSort="latest" />
-      </div>
-      <div className="mt-8">
-        <ProductGrid products={catalogPage.items} filters={filters} resetHref="/customize" />
-        <CatalogPagination {...catalogPage} basePath="/customize" searchParams={rawSearchParams} />
+
+      <div className="shop-visual-layout">
+        <aside className="shop-visual-sidebar">
+          <ProductFilters filters={filters} action="/customize" resetHref="/customize" variant="sidebar" defaultSort="latest" />
+        </aside>
+        <div className="shop-visual-main">
+          <div className="shop-active-strip">
+            {activeFilterLabels.map((label) => (
+              <span key={label}>{label}</span>
+            ))}
+          </div>
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref="/customize" />
+          <CatalogPagination {...catalogPage} basePath="/customize" searchParams={rawSearchParams} />
+        </div>
       </div>
     </section>
   );
