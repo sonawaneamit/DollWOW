@@ -4,6 +4,7 @@ import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
 import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
+import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 
 const API_VERSION = "2026-04";
 
@@ -157,7 +158,7 @@ export async function getProducts({
   cache?: RequestCache;
   revalidate?: number;
 } = {}) {
-  const fallbackProducts = sampleProducts.slice(0, first);
+  const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
   try {
@@ -207,7 +208,7 @@ export async function getSearchProducts({
   first?: number;
   revalidate?: number;
 } = {}) {
-  const fallbackProducts = sampleProducts.slice(0, first);
+  const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
   try {
@@ -259,9 +260,9 @@ export async function getSearchProducts({
 }
 
 function isCustomerVisibleProduct(product: Product) {
-  return !(product.tags || []).some(
-    (tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag)
-  );
+  if (isHiddenCatalogBrand(product.extended.brand ?? product.vendor)) return false;
+  if ((product.tags || []).some((tag) => isHiddenCatalogBrand(tag))) return false;
+  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag));
 }
 
 export async function getProductCount({ query }: { query?: string } = {}) {
@@ -307,7 +308,8 @@ export async function getProductByHandle(handle: string, options: { cache?: Requ
       options
     );
 
-    return data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((product) => product.handle === handle) ?? null);
+    const product = data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((item) => item.handle === handle) ?? null);
+    return product && isCustomerVisibleProduct(product) ? product : null;
   } catch (error) {
     console.error(error);
     return sampleProducts.find((product) => product.handle === handle) ?? null;

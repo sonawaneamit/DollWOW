@@ -18,10 +18,6 @@ export const LOCAL_VISUAL_ASSETS: LocalVisualAsset[] = [
   {
     productHandle: "starpery-adele-153cm-e-cup-silicone-head-companion-doll-1dn4l",
     assetPath: "/images/home-hero/portraits-new/starpery-adele-home-v2.png"
-  },
-  {
-    productHandle: "172cm-5ft8-e-cup-silicone-sex-doll-ida-belle",
-    assetPath: "/images/home-hero/portraits-new/zelex-ida-home.png"
   }
 ];
 

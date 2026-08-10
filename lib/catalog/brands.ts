@@ -8,10 +8,13 @@ export type CatalogBrand = {
   aliases: string[];
 };
 
-export const catalogBrands = brandData satisfies CatalogBrand[];
+const allCatalogBrands = brandData satisfies CatalogBrand[];
+const hiddenCatalogBrandValues = new Set(["zelex"]);
 
-const brandsByValue = new Map(catalogBrands.map((brand) => [brand.value, brand]));
-const brandAliasEntries = catalogBrands.flatMap((brand) => [
+export const catalogBrands = allCatalogBrands.filter((brand) => !hiddenCatalogBrandValues.has(brand.value));
+
+const brandsByValue = new Map(allCatalogBrands.map((brand) => [brand.value, brand]));
+const brandAliasEntries = allCatalogBrands.flatMap((brand) => [
   [normalizeBrandText(brand.value), brand] as const,
   [normalizeBrandText(brand.label), brand] as const,
   [normalizeBrandText(brand.collectionHandle), brand] as const,
@@ -28,6 +31,11 @@ export function getCatalogBrand(value: string | undefined | null) {
 
 export function canonicalBrandValue(value: string | undefined | null) {
   return getCatalogBrand(value)?.value;
+}
+
+export function isHiddenCatalogBrand(value: string | undefined | null) {
+  const brand = getCatalogBrand(value);
+  return Boolean(brand && hiddenCatalogBrandValues.has(brand.value));
 }
 
 export function brandFromText(...values: Array<string | undefined | null>) {

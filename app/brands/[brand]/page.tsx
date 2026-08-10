@@ -5,7 +5,7 @@ import { BrandProductGrid } from "@/components/BrandProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { filterProducts, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
-import { catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
+import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ brand: string }> }) {
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
-  if (!brand) return {};
+  if (!brand || isHiddenCatalogBrand(brand.value)) return {};
   return buildBrandMetadata(brand);
 }
 
@@ -34,7 +34,7 @@ export default async function BrandHubPage({
   const { brand: handle } = await params;
   const rawSearchParams = await searchParams;
   const brand = getCatalogBrand(handle);
-  if (!brand) notFound();
+  if (!brand || isHiddenCatalogBrand(brand.value)) notFound();
 
   const filters: CatalogFilters = { brand: brand.value };
   const products = await getProducts({
