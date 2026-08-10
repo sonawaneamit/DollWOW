@@ -36,7 +36,6 @@ export function StorefrontZipper() {
   const percentage = progress * 100;
   return (
     <div className="storefront-zipper" aria-hidden="true">
-      <span className="storefront-zipper__caption">Your DollWow journey</span>
       <div className="storefront-zipper__ribbon">
         <span className="storefront-zipper__progress" style={{ height: `${percentage}%` }} />
         <span className="storefront-zipper__marker" style={{ top: `${percentage}%` }} />

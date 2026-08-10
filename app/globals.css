@@ -54,10 +54,6 @@
   pointer-events: none;
 }
 
-.storefront-zipper__caption {
-  display: none;
-}
-
 .storefront-zipper__ribbon {
   position: absolute;
   inset: 0 auto 0 50%;
@@ -95,22 +91,8 @@
     top: 6.35rem;
     bottom: 2rem;
     left: max(0.45rem, calc((100vw - 90rem) / 2 + 0.45rem));
-    width: 4.75rem;
+    width: 2rem;
     filter: none;
-  }
-
-  .storefront-zipper__caption {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    color: rgb(var(--color-text-faint));
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
   }
 
   .storefront-zipper__ribbon {
@@ -4532,23 +4514,9 @@ a {
     bottom: 2rem;
     left: max(0.45rem, calc((100vw - 90rem) / 2 + 0.45rem));
     display: block;
-    width: 4.75rem;
+    width: 2rem;
     pointer-events: none;
     filter: none;
-  }
-
-  .storefront-zipper__caption {
-    position: absolute;
-    top: 0;
-    left: -0.1rem;
-    z-index: 4;
-    color: rgb(var(--color-text-faint));
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
   }
 
   .storefront-zipper__opened {
