@@ -29,6 +29,7 @@
     "migrate:shopify-assets": "node scripts/migrate-shopify-assets.mjs",
     "setup:custom-option-charges": "node scripts/setup-custom-option-charges.mjs",
     "sync:shopify-products": "node scripts/sync-shopify-products.mjs",
+    "sync:rosemary-option-prices": "node scripts/sync-shopify-rosemary-option-prices.mjs",
     "catalog:audit": "node scripts/catalog-audit.mjs",
     "copy:audit": "node scripts/audit-customer-copy.mjs",
     "generate:learning-banners": "node scripts/generate-learning-banner-composites.mjs",
