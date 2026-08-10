@@ -3,12 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronDown, HelpCircle, Menu, Search, ShoppingBag, X } from "lucide-react";
+import { ChevronDown, HelpCircle, Menu, Scale, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CurrencySwitcher } from "@/components/CurrencySwitcher";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { useCart } from "@/components/cart/CartProvider";
+import { useComparison } from "@/components/compare/ComparisonProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { useLegacyCartState } from "@/lib/cart/browser";
 import { brandHubHref } from "@/lib/catalog/brands";
@@ -21,6 +22,7 @@ const primaryLinks = [
 
 const mobilePrimaryLinks = [
   ...primaryLinks,
+  { label: "Compare dolls", href: "/compare" },
   { label: "Help me choose", href: "/help-me-choose" },
   { label: "Support", href: "/support" }
 ] as const;
@@ -93,6 +95,7 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const cart = useCart();
+  const comparison = useComparison();
   const cartState = useLegacyCartState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
@@ -103,6 +106,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const shouldQueryRemote = (searchOpen || mobileMenuOpen) && searchQuery.trim().length >= 2;
   const activeCount = cart.count || (cartState?.totalQuantity ?? 0);
+  const compareCount = comparison.entries.length;
   const searchSuggestions = useMemo(() => buildSearchSuggestions(searchQuery), [searchQuery]);
 
   useEffect(() => {
@@ -254,6 +258,11 @@ export function Header() {
             <Search className="h-[18px] w-[18px]" aria-hidden="true" />
             <span>Search</span>
           </button>
+          <Link href="/compare" onClick={closeAll} className="v2-control relative" aria-label={compareLabel(compareCount)}>
+            <Scale className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Compare</span>
+            {compareCount ? <CartBadge count={compareCount} /> : null}
+          </Link>
           <Link href="/support" onClick={closeAll} className="v2-control" aria-label="Get support">
             <HelpCircle className="h-[18px] w-[18px]" aria-hidden="true" />
             <span>Support</span>
@@ -266,6 +275,10 @@ export function Header() {
         </div>
 
         <div className="ml-auto flex items-center gap-1 sm:gap-2 lg:hidden">
+          <Link href="/compare" onClick={closeAll} className="v2-icon-control relative" aria-label={compareLabel(compareCount)}>
+            <Scale className="h-5 w-5" aria-hidden="true" />
+            {compareCount ? <CartBadge count={compareCount} /> : null}
+          </Link>
           <button type="button" onClick={openCart} className="v2-icon-control relative" aria-label={cartLabel(activeCount)}>
             <ShoppingBag className="h-5 w-5" aria-hidden="true" />
             {activeCount ? <CartBadge count={activeCount} /> : null}
@@ -527,6 +540,10 @@ function CartBadge({ count }: { count: number }) {
 
 function cartLabel(count: number) {
   return count ? `Open cart, ${count} item${count === 1 ? "" : "s"}` : "Open cart";
+}
+
+function compareLabel(count: number) {
+  return count ? `Open comparison, ${count} doll${count === 1 ? "" : "s"} selected` : "Compare dolls";
 }
 
 function buildSearchSuggestions(query: string) {
