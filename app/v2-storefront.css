@@ -1014,12 +1014,19 @@ main {
   place-items: center;
   overflow: hidden;
   border-radius: 50%;
-  background: #fff;
-  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.warehouse-region-switcher__flag {
+  background: transparent;
+  font-size: 2.7rem;
+  text-indent: -0.01em;
 }
 
 .warehouse-region-switcher__globe {
+  background: #fff;
   color: #8d4c31;
+  font-size: 1.05rem;
   font-weight: 900;
 }
 

@@ -10,7 +10,7 @@ const warehouseFlags: Array<{ pattern: RegExp; flag: string; short: string }> = 
 function warehouseLocation(value: string) {
   const clean = value.trim();
   const known = warehouseFlags.find((entry) => entry.pattern.test(clean));
-  return known ?? { flag: "◉", short: clean };
+  return known ? { ...known, known: true } : { flag: "◉", short: clean, known: false };
 }
 
 export function WarehouseLocationBadge({
@@ -28,7 +28,10 @@ export function WarehouseLocationBadge({
   return (
     <span className={`warehouse-location-badge${compact ? " is-compact" : ""}`} aria-label={`Warehouse: ${locations.join(", ")}`}>
       <span className="warehouse-location-badge__flags" aria-hidden="true">
-        {locations.slice(0, 3).map((value) => <span key={value}>{warehouseLocation(value).flag}</span>)}
+        {locations.slice(0, 3).map((value) => {
+          const location = warehouseLocation(value);
+          return <span key={value} className={location.known ? "is-country-flag" : "is-generic-location"}>{location.flag}</span>;
+        })}
       </span>
       <span>{locations.map((value) => warehouseLocation(value).short).join(" · ")}{compact ? "" : " warehouse"}</span>
     </span>

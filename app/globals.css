@@ -3987,11 +3987,22 @@ a {
   height: 1.25rem;
   place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
-  background: #fff;
   box-shadow: 0 1px 4px rgba(41, 32, 27, 0.16);
-  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.warehouse-location-badge__flags > .is-country-flag {
+  background: transparent;
+  font-size: 2.05rem;
+  text-indent: -0.01em;
+}
+
+.warehouse-location-badge__flags > .is-generic-location {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: #fff;
+  color: #7a4936;
+  font-size: 0.75rem;
 }
 
 .warehouse-location-badge__flags > span + span {
