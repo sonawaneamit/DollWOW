@@ -23,6 +23,7 @@
     "seo:intelligence:step4": "node scripts/normalize-seo-keyword-universe.mjs",
     "seo:intelligence:step5": "node scripts/cluster-seo-serp-overlap.mjs",
     "seo:intelligence:step6": "node scripts/classify-seo-cluster-intent.mjs",
+    "seo:intelligence:step7": "node scripts/score-seo-cluster-opportunities.mjs",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
     "backfill:measurements": "node scripts/backfill-shopify-measurements.mjs",
     "backfill:irontech-release-order": "node scripts/backfill-irontech-release-order.mjs",

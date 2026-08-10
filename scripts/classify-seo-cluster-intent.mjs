@@ -57,7 +57,10 @@ const MANUAL_DECISIONS = new Map([
   ["ai companion doll", manualDecision("informational", "technology-research", "awareness", "technology-guide", "Understand AI companion terminology and verified capabilities.", "Mixed product, media, and robotics results support an educational subtopic.")],
   ["real doll eyes", manualDecision("non-target", "unrelated-craft-intent", "none", "no-action", "Do not create a DollWOW page for this query.", "The SERP is dominated by craft, replacement-eye, and collectible-doll intent.")],
   ["gay love doll", manualDecision("transactional", "audience-specific-shopping", "consideration", "collection", "Browse relevant adult products using respectful, inventory-backed filters.", "Commerce intent is present, but Step 7 must verify sufficient distinct inventory before page creation.")],
-  ["dolls castle review", manualDecision("commercial-investigation", "brand-evaluation", "consideration", "review-guide", "Evaluate Dolls Castle using transparent criteria, then browse verified listings.", "The term has no measured demand and mixed non-adult intent; Step 7 should score it below the brand hub.")]
+  ["dolls castle review", manualDecision("commercial-investigation", "brand-evaluation", "consideration", "review-guide", "Evaluate Dolls Castle using transparent criteria, then browse verified listings.", "The term has no measured demand and mixed non-adult intent; Step 7 should score it below the brand hub.")],
+  ["sex doll laws", manualDecision("informational", "risk-reduction", "consideration", "learning-guide", "Understand the legal issues that can affect purchase, import, and ownership, then verify current local rules.", "Government, legal, research, and community results clearly favor an evidence-led legal guide rather than a product collection.")],
+  ["sex doll shipping", manualDecision("informational", "commercial-investigation", "consideration", "learning-guide", "Understand shipping, packaging, timing, warehouse, and privacy factors before browsing verified inventory.", "The query needs a practical shipping guide; it should not inherit a collection page solely from retailer-heavy SERPs.")],
+  ["sex dolls brands", manualDecision("commercial-investigation", "brand-navigation", "consideration", "brand-directory", "Compare the authorized brands DollWOW currently carries, then open a brand hub or product.", "Mixed retailer, guide, and brand SERPs support a useful crawlable brand directory rather than a generic product collection.")]
 ]);
 
 await fs.mkdir(outputDir, { recursive: true });
@@ -164,7 +167,7 @@ function keywordProfile(cluster, canonicalRows) {
     isReview: /\breviews?\b/.test(text) || modifiers.includes("review"),
     isComparison: /\b(vs|versus|compare|comparison|difference)\b/.test(text) || modifiers.includes("comparison"),
     isCare: /\b(clean|cleaning|care|storage|store|repair|glue|powder|maintain|maintenance)\b/.test(text),
-    isTrust: /\b(legal|law|scam|privacy|discreet|warranty|return|safe|safety)\b/.test(text),
+    isTrust: /\b(legal|laws?|scam|privacy|discreet|warranty|return|safe|safety)\b/.test(text),
     isFulfillment: /\b(ready to ship|in stock|available now|quick ship|fast shipping|warehouse)\b/.test(text),
     isDeliveryQuestion: /\b(delivery time|shipping works|how long.*ship)\b/.test(text),
     isPricing: /\b(cost|price|how much)\b/.test(text),

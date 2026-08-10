@@ -1,6 +1,6 @@
 # Step 6: Search Intent And Winning Page Type
 
-Generated: 2026-08-10T18:55:56.356Z
+Generated: 2026-08-10T19:12:33.175Z
 
 ## Completion Gate
 
@@ -12,9 +12,9 @@ Every empirical cluster has an explicit intent, buyer stage, winning page type, 
 
 - Clusters classified: 110/110
 - Manual-review flags: 0
-- Manually validated decisions: 18
-- Primary intents: transactional:44|informational:26|commercial-investigation:19|brand-navigation:17|competitor-navigation:3|non-target:1
-- Winning page types: collection:44|brand-hub:17|learning-guide:14|technology-guide:14|review-guide:11|competitor-alternative-guide:4|best-of-guide:3|comparison-guide:2|no-action:1
+- Manually validated decisions: 21
+- Primary intents: transactional:41|informational:28|commercial-investigation:20|brand-navigation:17|competitor-navigation:3|non-target:1
+- Winning page types: collection:41|brand-hub:17|learning-guide:16|technology-guide:14|review-guide:11|competitor-alternative-guide:4|best-of-guide:3|comparison-guide:2|brand-directory:1|no-action:1
 - Confidence: high:73|medium:33|low:4
 
 ## Highest-Demand Classifications
