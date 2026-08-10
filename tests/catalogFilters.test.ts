@@ -69,4 +69,32 @@ describe("catalog filters", () => {
     expect(filterProducts([fullDoll, torso, hips], { productForm: "torso" }).map((product) => product.id)).toEqual(["torso"]);
     expect(filterProducts([fullDoll, torso, hips], { productForm: "hips" }).map((product) => product.id)).toEqual(["hips"]);
   });
+
+  it("filters ready-to-ship products by every supported warehouse region", () => {
+    const usAndEu = {
+      ...sampleProducts[0],
+      id: "us-eu",
+      extended: {
+        ...sampleProducts[0].extended,
+        warehouseCountry: "United States",
+        warehouseRegions: ["United States", "European Union"]
+      }
+    };
+    const canada = {
+      ...sampleProducts[0],
+      id: "canada",
+      extended: { ...sampleProducts[0].extended, warehouseCountry: "Canada", warehouseRegions: ["Canada"] }
+    };
+    const australia = {
+      ...sampleProducts[0],
+      id: "australia",
+      extended: { ...sampleProducts[0].extended, warehouseCountry: "Australia", warehouseRegions: ["Australia"] }
+    };
+    const products = [usAndEu, canada, australia];
+
+    expect(filterProducts(products, { region: "us" }).map((product) => product.id)).toEqual(["us-eu"]);
+    expect(filterProducts(products, { region: "eu" }).map((product) => product.id)).toEqual(["us-eu"]);
+    expect(filterProducts(products, { region: "ca" }).map((product) => product.id)).toEqual(["canada"]);
+    expect(filterProducts(products, { region: "au" }).map((product) => product.id)).toEqual(["australia"]);
+  });
 });

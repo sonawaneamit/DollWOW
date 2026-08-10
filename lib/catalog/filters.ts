@@ -9,6 +9,7 @@ export type CatalogFilters = {
   look?: string;
   bodyType?: "male" | "female";
   availability?: "ready_to_ship" | "custom";
+  region?: "us" | "eu" | "ca" | "au";
   material?: string;
   productForm?: "full-doll" | "torso" | "hips";
   height?: string;
@@ -28,6 +29,12 @@ export const catalogFilterOptions = {
   availability: [
     { label: "Ready to ship", value: "ready_to_ship" },
     { label: "Factory order", value: "custom" }
+  ],
+  regions: [
+    { label: "United States", shortLabel: "US", value: "us", flag: "🇺🇸" },
+    { label: "European Union", shortLabel: "EU", value: "eu", flag: "🇪🇺" },
+    { label: "Canada", shortLabel: "Canada", value: "ca", flag: "🇨🇦" },
+    { label: "Australia", shortLabel: "Australia", value: "au", flag: "🇦🇺" }
   ],
   materials: [
     { label: "TPE", value: "tpe" },
@@ -81,6 +88,7 @@ const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>
   look: new Map(catalogFilterOptions.looks.map((option) => [option.value, option.label])),
   bodyType: new Map(catalogFilterOptions.bodyTypes.map((option) => [option.value, option.label])),
   availability: new Map(catalogFilterOptions.availability.map((option) => [option.value, option.label])),
+  region: new Map(catalogFilterOptions.regions.map((option) => [option.value, option.label])),
   material: new Map(catalogFilterOptions.materials.map((option) => [option.value, option.label])),
   productForm: new Map(catalogFilterOptions.productForms.map((option) => [option.value, option.label])),
   height: new Map(catalogFilterOptions.heights.map((option) => [option.value, option.label])),
@@ -127,6 +135,7 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
     look: valueFor("look"),
     bodyType: valueFor("bodyType") as CatalogFilters["bodyType"],
     availability: valueFor("availability") as CatalogFilters["availability"],
+    region: valueFor("region") as CatalogFilters["region"],
     material: valueFor("material"),
     productForm: valueFor("productForm") as CatalogFilters["productForm"],
     height: valueFor("height"),
@@ -184,6 +193,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.look && !productMatchesLook(product, filters.look)) return false;
     if (filters.bodyType && !productMatchesBodyType(product, filters.bodyType)) return false;
     if (filters.availability && product.extended.stockStatus !== filters.availability) return false;
+    if (filters.region && !productMatchesWarehouseRegion(product, filters.region)) return false;
     if (filters.material && !productMatchesMaterial(product, filters.material)) return false;
     if (filters.productForm && !productMatchesProductForm(product, filters.productForm)) return false;
     if (filters.height && !inRange(product.extended.heightCm, filters.height)) return false;
@@ -215,8 +225,22 @@ export function requiresCatalogWideFetch(filters: CatalogFilters) {
       filters.weight ||
       filters.cup ||
       filters.price ||
+      filters.region ||
       (filters.sort && filters.sort !== "featured")
   );
+}
+
+function productMatchesWarehouseRegion(product: Product, region: NonNullable<CatalogFilters["region"]>) {
+  const values = [...(product.extended.warehouseRegions || []), product.extended.warehouseCountry || ""]
+    .map((value) => value.trim().toLowerCase())
+    .filter(Boolean);
+  const aliases: Record<NonNullable<CatalogFilters["region"]>, string[]> = {
+    us: ["united states", "united states of america", "usa", "us", "u.s."],
+    eu: ["european union", "eu", "europe"],
+    ca: ["canada"],
+    au: ["australia"]
+  };
+  return values.some((value) => aliases[region].includes(value));
 }
 
 function productMatchesBrand(product: Product, brand: string) {

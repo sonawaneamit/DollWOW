@@ -96,6 +96,7 @@ export function ProductFilters({
       </div>
 
       <form action={action} onSubmit={applyFilters} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
+        {filters.region ? <input type="hidden" name="region" value={filters.region} /> : null}
         <label className="product-filter-control product-filter-control--search">
           <span>Search</span>
           <input
