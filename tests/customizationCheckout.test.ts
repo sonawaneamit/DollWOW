@@ -43,10 +43,39 @@ describe("customization checkout support", () => {
       ["gid://shopify/ProductVariant/5", 1]
     ]);
     expect(lines[0]?.attributes).toEqual([
-      { key: "For", value: "Test doll" },
-      { key: "Upgrade", value: "Body: Premium finish" }
+      { key: "Applies to", value: "Test doll" },
+      { key: "Customization", value: "Body — Premium finish" }
     ]);
-    expect(lines[2]?.attributes?.find((attribute) => attribute.key === "Upgrade")?.value).toBe("Accessories: Care kit");
+    expect(lines[2]?.attributes?.find((attribute) => attribute.key === "Customization")?.value).toBe("Accessories — Care kit");
+  });
+
+  it("uses one readable checkout line when an exact option-price variant exists", async () => {
+    vi.stubEnv(
+      "SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS",
+      JSON.stringify({
+        "180": "gid://shopify/ProductVariant/180",
+        "50": "gid://shopify/ProductVariant/50",
+        "10": "gid://shopify/ProductVariant/10",
+        "5": "gid://shopify/ProductVariant/5",
+        "1": "gid://shopify/ProductVariant/1"
+      })
+    );
+    vi.stubEnv("SHOPIFY_CUSTOM_OPTION_CHARGE_CURRENCY", "USD");
+
+    const { customizationChargeLines } = await import("@/lib/shopify/storefront");
+    expect(customizationChargeLines({
+      amount: 180,
+      currencyCode: "USD",
+      title: "Xue",
+      items: [{ group: "Hair finish", label: "Implanted hair", amount: 180 }]
+    })).toEqual([{
+      merchandiseId: "gid://shopify/ProductVariant/180",
+      quantity: 1,
+      attributes: [
+        { key: "Applies to", value: "Xue" },
+        { key: "Customization", value: "Hair finish — Implanted hair" }
+      ]
+    }]);
   });
 
   it("treats imported default choices as exclusive in multi-select groups", () => {

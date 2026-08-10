@@ -375,12 +375,15 @@ export async function createCart(input: {
     {
       input: {
         lines: [
+          // Shopify Checkout currently presents cart lines in reverse creation
+          // order. Add pricing components first so the actual doll is the
+          // first, primary item customers see in the checkout summary.
+          ...customizationChargeLines(input.customizationCharge),
           {
             merchandiseId: input.merchandiseId,
             quantity: input.quantity,
             attributes: input.attributes ?? []
-          },
-          ...customizationChargeLines(input.customizationCharge)
+          }
         ],
         discountCodes: input.discountCodes ?? []
       }
@@ -496,8 +499,8 @@ export function customizationChargeLines(charge?: {
         merchandiseId: variant.merchandiseId,
         quantity,
         attributes: [
-          { key: "For", value: charge.title || "Selected product" },
-          { key: "Upgrade", value: [item.group, item.label].filter(Boolean).join(": ") }
+          { key: "Applies to", value: charge.title || "Selected product" },
+          { key: "Customization", value: [item.group, item.label].filter(Boolean).join(" — ") }
         ]
       });
       remainingCents -= quantity * variantCents;
