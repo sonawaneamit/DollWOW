@@ -25,6 +25,7 @@ import {
   buildProductStructuredData
 } from "@/lib/catalog/pdpSeo";
 import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
+import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
   const { handle } = await params;
   const product = await getProductByHandle(handle);
   if (!product) return {};
-  const metadata = buildPdpMetadata(product);
+  const metadata = buildPdpMetadata(withProtectedProductImages(product));
   if ((product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -45,6 +46,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
+  const publicProduct = withProtectedProductImages(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
   const brandQuery = brandTag ? `tag:${JSON.stringify(brandTag)}` : `title:${JSON.stringify(product.extended.brand ?? product.vendor)}`;
@@ -57,6 +59,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   });
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
+  const heroImage = product.featuredImage ?? product.images[0] ?? null;
+  const heroImageUrl = protectedProductImageUrlFor(product, heroImage);
   const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
@@ -66,7 +70,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
   const fitChecks = buildPdpFitChecks(product);
-  const productStructuredData = buildProductStructuredData(product);
+  const productStructuredData = buildProductStructuredData(publicProduct);
   const faqStructuredData = buildProductFaqStructuredData(product);
   const productBrand = product.extended.brand ?? product.vendor;
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
@@ -77,7 +81,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <ProductGallery product={product} />
+          <ProductGallery product={publicProduct} />
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
@@ -86,7 +90,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
               ) : null}
               <CompareButton
-                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
+                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: heroImageUrl, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
                 label
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
@@ -114,7 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 productTitle={displayTitle}
                 productDisplayName={displayName || undefined}
                 productHandle={product.handle}
-                productImage={product.featuredImage ?? product.images[0] ?? null}
+                productImage={heroImage ? { ...heroImage, url: heroImageUrl! } : null}
                 brand={productBrand}
                 unitPrice={Number(price.amount)}
                 currencyCode={price.currencyCode}
@@ -137,8 +141,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                   productHandle: product.handle,
                   productTitle: displayTitle,
                   brand: product.extended.brand ?? product.vendor,
-                  imageUrl: (product.featuredImage ?? product.images[0])?.url,
-                  imageAlt: (product.featuredImage ?? product.images[0])?.altText ?? displayTitle,
+                  imageUrl: heroImageUrl,
+                  imageAlt: heroImage?.altText ?? displayTitle,
                   unitPrice: Number(price.amount),
                   currencyCode: price.currencyCode,
                   readyToShip: product.extended.stockStatus === "ready_to_ship"
@@ -159,7 +163,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={product} />
+          <ProductOptions product={publicProduct} />
         </div>
       </ToneBand>
 
@@ -167,7 +171,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
-      <ProductLowerAlive product={product} similarProducts={alternatives} />
+      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages)} />
       {hasAuthorizationSection ? (
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">
@@ -175,7 +179,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           </div>
         </ToneBand>
       ) : null}
-      <PdpTrackers product={product} />
+      <PdpTrackers product={publicProduct} />
     </div>
   );
 }

@@ -23,6 +23,7 @@ import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   defaultMultipleOptionId,
@@ -71,6 +72,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const previousGroup = config.groups[activeGroupIndex - 1] ?? null;
   const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
+  const heroImageUrl = protectedProductImageUrlFor(product, heroImage);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
@@ -245,9 +247,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         <aside className="hidden lg:col-span-5 lg:block">
           <div className="lg:sticky lg:top-24">
             <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-surface-tint">
-              {heroImage ? (
+              {heroImageUrl ? (
                 <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Enlarge product image">
-                  <Image src={heroImage.url} alt={displayTitle} fill sizes="(min-width: 1024px) 38vw, 92vw" className="object-cover" />
+                  <Image src={heroImageUrl} alt={displayTitle} fill sizes="(min-width: 1024px) 38vw, 92vw" className="object-cover" />
                   <span className="absolute bottom-4 right-4 inline-flex min-h-11 items-center gap-2 rounded-sm bg-surface px-3 text-[15px] font-semibold text-text shadow-card">
                     <Maximize2 className="h-4 w-4" aria-hidden="true" /> Enlarge
                   </span>
@@ -402,7 +404,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         </div>
       </div>
 
-      {isPreviewOpen && heroImage ? <ImagePreviewModal imageUrl={heroImage.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} /> : null}
+      {isPreviewOpen && heroImageUrl ? <ImagePreviewModal imageUrl={heroImageUrl} alt={displayTitle} onClose={() => setPreviewOpen(false)} /> : null}
       </div>
     </section>
   );

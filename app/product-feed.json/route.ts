@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { getProducts } from "@/lib/shopify/storefront";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -34,7 +35,7 @@ export async function GET() {
       stockLastCheckedAt: product.extended.stockLastCheckedAt || null,
       image: product.featuredImage
         ? {
-            url: product.featuredImage.url,
+            url: `${siteUrl}${protectedProductImageUrlFor(product, product.featuredImage)}`,
             altText: product.featuredImage.altText || productPublicTitle(product)
           }
         : null

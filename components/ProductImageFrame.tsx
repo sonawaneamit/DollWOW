@@ -1,16 +1,18 @@
 import Image from "next/image";
 import type { Product } from "@/types/product";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { productPublicTitle } from "@/lib/catalog/naming";
 
 export function ProductImageFrame({ product, priority = false }: { product: Product; priority?: boolean }) {
   const image = product.featuredImage ?? product.images[0] ?? null;
+  const imageUrl = protectedProductImageUrlFor(product, image, "card");
   const displayTitle = productPublicTitle(product);
 
   return (
     <div className="noir-media-wrap relative aspect-[4/5] overflow-hidden rounded-[18px] border border-gold-500/20 bg-surface-tint">
-      {image ? (
+      {imageUrl ? (
         <Image
-          src={image.url}
+          src={imageUrl}
           alt={displayTitle}
           fill
           sizes="(min-width: 1024px) 33vw, 90vw"

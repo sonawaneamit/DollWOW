@@ -6,12 +6,14 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const price = product.priceRange.minVariantPrice;
   const displayTitle = productPublicTitle(product);
   const image = product.featuredImage ?? product.images[0] ?? null;
+  const publicImageUrl = protectedProductImageUrlFor(product, image, "card");
   const ready = product.extended.stockStatus === "ready_to_ship";
   const specs = [
     product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
@@ -22,7 +24,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   return (
     <article className="catalog-product-card group">
       <Link className="catalog-product-card__media" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
-        {image ? <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" priority={priority} loading={priority ? "eager" : "lazy"} /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
+        {publicImageUrl ? <Image src={publicImageUrl} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" priority={priority} loading={priority ? "eager" : "lazy"} /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
         <span className={`catalog-product-card__status ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
       </Link>
       <div className="catalog-product-card__body">
@@ -46,7 +48,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           productHandle: product.handle,
           productTitle: displayTitle,
           brand: product.extended.brand ?? product.vendor,
-          imageUrl: image?.url,
+          imageUrl: publicImageUrl,
           unitPrice: Number(price.amount),
           currencyCode: price.currencyCode,
           merchandiseId: product.variants.find((variant) => variant.availableForSale)?.id,
@@ -67,7 +69,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           productHandle: product.handle,
           productTitle: displayTitle,
           brand: product.extended.brand ?? product.vendor,
-          imageUrl: image?.url,
+          imageUrl: publicImageUrl,
           imageAlt: image?.altText ?? displayTitle,
           unitPrice: Number(price.amount),
           currencyCode: price.currencyCode,

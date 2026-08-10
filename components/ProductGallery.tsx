@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product, ProductImage, ProductMedia } from "@/types/product";
 
 export function ProductGallery({ product }: { product: Product }) {
@@ -26,7 +27,7 @@ export function ProductGallery({ product }: { product: Product }) {
         {active?.type === "image" ? (
           <button type="button" onClick={() => setPreviewOpen(true)} className="relative block h-full w-full" aria-label="Open product image preview">
             <Image
-              src={active.image.url}
+              src={protectedProductImageUrlFor(product, active.image)!}
               alt={`${displayTitle} — image ${index + 1} of ${media.length}`}
               fill
               sizes="(min-width: 1024px) 44vw, 94vw"
@@ -89,7 +90,7 @@ export function ProductGallery({ product }: { product: Product }) {
               )}
             >
               {item.type === "image" ? (
-                <Image src={item.image.url} alt={`${displayTitle} — image ${imageIndex + 1} of ${media.length}`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
+                <Image src={protectedProductImageUrlFor(product, item.image, "thumb")!} alt={`${displayTitle} — image ${imageIndex + 1} of ${media.length}`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
               ) : item.previewImage ? (
                 <Image src={item.previewImage.url} alt={`${displayTitle} video`} fill sizes="96px" className="object-cover noir-media" loading="lazy" />
               ) : (
@@ -100,7 +101,7 @@ export function ProductGallery({ product }: { product: Product }) {
         </div>
       )}
       {isPreviewOpen && active?.type === "image" && (
-        <ImagePreviewModal imageUrl={active.image.url} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
+        <ImagePreviewModal imageUrl={protectedProductImageUrlFor(product, active.image)!} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
   );

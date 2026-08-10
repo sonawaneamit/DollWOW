@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { compactFilters, filterProducts, requiresCatalogWideFetch, shopifyQueryForFilters, type CatalogFilters } from "@/lib/catalog/filters";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import {
   buildArticleBreadcrumbStructuredData,
   buildArticleFaqStructuredData,
@@ -190,6 +191,7 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
 function ArticleProductExampleCard({ product }: { product: Product }) {
   const displayTitle = productPublicTitle(product);
   const image = product.featuredImage ?? product.images[0] ?? null;
+  const imageUrl = protectedProductImageUrlFor(product, image, "thumb");
   const price = product.priceRange.minVariantPrice;
   const specs = [
     product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
@@ -200,8 +202,8 @@ function ArticleProductExampleCard({ product }: { product: Product }) {
   return (
     <article className="grid gap-4 rounded-[8px] border border-gold-500/14 bg-ivory-50/[0.35] p-3 sm:grid-cols-[112px_minmax(0,1fr)]">
       <Link href={`/products/${product.handle}`} className="relative aspect-square overflow-hidden rounded-[8px] bg-ink-950/10">
-        {image ? (
-          <Image src={image.url} alt={displayTitle} fill sizes="112px" className="object-cover" />
+        {imageUrl ? (
+          <Image src={imageUrl} alt={displayTitle} fill sizes="112px" className="object-cover" />
         ) : (
           <span className="flex h-full items-center justify-center p-3 text-center text-sm font-semibold text-ink-700">{displayTitle}</span>
         )}

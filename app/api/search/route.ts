@@ -4,6 +4,7 @@ import { getSearchProducts } from "@/lib/shopify/storefront";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { parseCatalogSearchQuery, rankCatalogProducts } from "@/lib/search/catalog";
 import { shopifyQueryForCatalogSearch } from "@/lib/catalog/filters";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("query")?.trim() || "";
@@ -51,7 +52,7 @@ export async function GET(request: NextRequest) {
         cupSize: product.extended.cupSize,
         stockStatus: product.extended.stockStatus,
         price: product.priceRange.minVariantPrice,
-        image: product.featuredImage
+        image: product.featuredImage ? { ...product.featuredImage, url: protectedProductImageUrlFor(product, product.featuredImage, "thumb")! } : null
       }))
     },
     {

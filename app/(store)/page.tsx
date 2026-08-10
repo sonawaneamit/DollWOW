@@ -2,6 +2,7 @@ import { HomeAlive } from "@/components/HomeAlive";
 import { shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
+import { withProtectedProductImages } from "@/lib/catalog/productImage";
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
@@ -25,7 +26,7 @@ export default async function HomePage() {
 
   const curatedProducts = dedupeProducts([...spotlightProducts.filter(isProduct), ...readyProducts, ...femaleProducts, ...maleProducts, ...products]);
 
-  return <HomeAlive products={curatedProducts} recentlyAddedProducts={recentlyAddedProducts} />;
+  return <HomeAlive products={curatedProducts.map(withProtectedProductImages)} recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages)} />;
 }
 
 function dedupeProducts<T extends { id: string }>(products: T[]) {

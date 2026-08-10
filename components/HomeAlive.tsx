@@ -7,6 +7,7 @@ import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, L
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { WishlistButton } from "@/components/WishlistButton";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
@@ -109,7 +110,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
                 >
                   {getHeroVideoMedia(product)?.poster || product.featuredImage ? (
                     <Image
-                      src={getHeroVideoMedia(product)?.poster ?? product.featuredImage!.url}
+                      src={getHeroVideoMedia(product)?.poster ?? protectedProductImageUrlFor(product, product.featuredImage)!}
                       alt=""
                       fill
                       sizes="56px"
@@ -246,6 +247,8 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
   const displayTitle = productPublicTitle(product);
   const ready = product.extended.stockStatus === "ready_to_ship";
   const specs = [product.extended.heightCm ? `${product.extended.heightCm} cm` : null, product.extended.material, formatCupSize(product.extended.cupSize)].filter(Boolean);
+  const image = product.featuredImage ?? product.images[0] ?? null;
+  const imageUrl = protectedProductImageUrlFor(product, image, "card");
 
   return (
     <article className="home-product-card">
@@ -257,8 +260,8 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
             productHandle: product.handle,
             productTitle: displayTitle,
             brand: product.extended.brand ?? product.vendor,
-            imageUrl: product.featuredImage?.url ?? product.images[0]?.url,
-            imageAlt: product.featuredImage?.altText ?? product.images[0]?.altText ?? displayTitle,
+            imageUrl,
+            imageAlt: image?.altText ?? displayTitle,
             unitPrice: Number(price.amount),
             currencyCode: price.currencyCode,
             readyToShip: ready
@@ -285,12 +288,13 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
 
 function HomeProductImage({ product, priority = false }: { product: Product; priority?: boolean }) {
   const image = product.featuredImage ?? product.images[0] ?? null;
+  const imageUrl = protectedProductImageUrlFor(product, image, "card");
   const displayTitle = productPublicTitle(product);
   return (
     <div className="home-image-shell">
-      {image ? (
+      {imageUrl ? (
         <Image
-          src={image.url}
+          src={imageUrl}
           alt={displayTitle}
           fill
           sizes="(min-width: 1100px) 360px, 82vw"
@@ -391,7 +395,7 @@ function HomeDollWall({ products }: { products: Product[] }) {
             if (!image) return null;
             return (
               <Link key={tile.key} className={`home-wall-cell home-wall-cell--${index + 1}`} href={tile.href}>
-                <Image src={image.url} alt={`${tile.label} collection preview`} fill sizes="(min-width: 1280px) 15vw, (min-width: 760px) 30vw, 46vw" className="home-wall-cell__image object-cover" />
+                <Image src={protectedProductImageUrlFor(product, image, "card")!} alt={`${tile.label} collection preview`} fill sizes="(min-width: 1280px) 15vw, (min-width: 760px) 30vw, 46vw" className="home-wall-cell__image object-cover" />
                 <span>
                   <small>{tile.eyebrow}</small>
                   {tile.label}
@@ -490,11 +494,12 @@ function PreviewShowcase({ products }: { products: Product[] }) {
 
 function VisualPreviewTile({ product, wide = false }: { product: Product; wide?: boolean }) {
   const image = product.featuredImage ?? product.images[0] ?? null;
+  const imageUrl = protectedProductImageUrlFor(product, image, "card");
   const displayTitle = productPublicTitle(product);
 
   return (
     <Link className={`home-preview__tile home-preview__tile--image ${wide ? "home-preview__tile--wide" : ""}`} href={`/products/${product.handle}`}>
-      {image ? <Image src={image.url} alt={displayTitle} fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /> : null}
+      {imageUrl ? <Image src={imageUrl} alt={displayTitle} fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /> : null}
       <span>{shortTitle(displayTitle)}</span>
     </Link>
   );
