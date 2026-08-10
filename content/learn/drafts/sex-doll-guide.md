@@ -30,26 +30,9 @@ Choose a sex doll by working through the practical constraints first: material, 
 - How to compare brands and live products without relying on hype.
 - What to verify about price, privacy, delivery, unboxing, cleaning, and long-term care.
 
-This guide is the broad decision hub. Detailed DollWow guides are linked throughout when a subject needs more depth. Product availability, prices, specifications, and options can change, so the current product page and written support confirmation take priority over any dated snapshot.
+Use this page in order if you are completely new. Start with the five-minute plan, learn the material and weight tradeoffs, compare the brand profiles, then use the product examples and pre-purchase checklist. Experienced buyers can jump directly to customization, electronics, care, or a specific brand.
 
-### How this guide was built
-
-This guide combines three kinds of information. The first is current DollWow catalog data: product material, dimensions, listed weight, starting price, availability, brand, and configuration status. The second is manufacturer documentation and product-specific guidance. The third is practical editorial judgment from Alex, based on more than 20 years of collecting and educating buyers. Jesse reviews sections that touch intimacy, communication, and care language within the boundaries of her work as a licensed sexologist.
-
-Those sources do not have equal authority for every question. A live product page is the best place to check what DollWow currently lists. The manufacturer is the best source for a formulation, option compatibility, operating instruction, or approved repair material. DollWow support is the right place to resolve a conflict in an order, configuration, or delivery path. A general guide can explain how to think, but it cannot turn one brand's instruction into a rule for every doll.
-
-The editorial team uses the following order when sources disagree:
-
-1. Written documentation for the exact product and selected configuration.
-2. Current manufacturer documentation for the relevant body, head, material, or option.
-3. Current DollWow catalog and support confirmation.
-4. General industry practice, clearly labeled as general rather than universal.
-
-Some catalog facts remain incomplete. Four of the 24 product examples in this edition do not currently have a reliable weight field. Their cards say that confirmation is required. They are not assigned an estimated weight based on height or material, because two visually similar bodies can differ substantially once the skeleton, foam core, head, breast construction, and material volume are considered.
-
-Prices in this guide are live starting prices rather than permanent promises. A custom configuration can cost more, and a ready-to-ship example may disappear or change. Likewise, an image may show styling, clothing, a wig, makeup, or an optional head. The product page and final written configuration define the order.
-
-The guide is reviewed as a connected system. High-volume shopping questions belong to collection pages, while narrow care and ownership questions belong to specialist Learning Center articles. This page gives enough information to make the next decision and then links to the strongest destination. That keeps the guide useful without reproducing every specialist article inside one very long page.
+Alex brings more than 20 years of collecting and buyer education to these practical comparisons, while Jesse, a licensed sexologist, reviews intimacy and care guidance. Product details can change, so treat each example as a starting point and confirm the final configuration before checkout.
 
 ## The Five-Minute Buying Plan
 
@@ -167,7 +150,7 @@ Compare whether the product includes a head, arms, thighs, or removable componen
 
 Male dolls may use TPE, silicone, or mixed construction and can carry substantial weight through the shoulders, chest, and limbs. Compare body proportions, genital construction, head material, insert or fixed components, and supported posing. Do not assume that a feature available on one male body appears across the brand.
 
-The live male collection currently includes products from multiple carried brands, but the range is smaller than the general catalog. This makes accurate classification important. DollWow's Tier 1 SEO validation found 49 current male products after Shopify metadata review. The collection should reflect verified products rather than broad audience keywords attached to unrelated listings.
+The male category is smaller than the general doll market, so a buyer may need to compare several brands to find the right build. Start with the [male doll collection](/shop/male-dolls), then compare exact shoulder, chest, waist, hip, limb, foot, and weight measurements rather than relying on a masculine product name.
 
 ### Hybrid dolls
 
@@ -246,7 +229,7 @@ The same caution applies to lifespan. A seller cannot know how long an individua
 
 ## Advanced Materials Need Brand-Level Verification
 
-Terms such as S-TPE, ultra-soft silicone, SLE, gel-filled areas, and lightweight construction may describe meaningful manufacturer technologies. They may also be used inconsistently across the market. DollWow should only describe a named material technology when the relevant manufacturer offers it and provides enough information to explain it accurately.
+Terms such as S-TPE, ultra-soft silicone, SLE, gel-filled areas, and lightweight construction may describe meaningful manufacturer technologies. They may also be used inconsistently across the market. Ask what the named feature changes on the exact body: softness, weight, finish, care, repair, compatibility, or price.
 
 When a special material is important to the purchase, confirm:
 
@@ -573,7 +556,7 @@ Electronic heads may offer combinations of sound, jaw movement, eye movement, ap
 
 Searches for AI dolls, sex robots, and robotic companions often combine several different products: a conventional doll with an electronic head, a conversational app, a separate robotic device, or a prototype shown in media. Buyers should not assume that every product using "AI" can move, see, converse privately, or operate without another device.
 
-For a connected feature, ask where conversation data is processed, whether an account is required, how recordings are handled, and what remains functional offline. Software availability can change after purchase. DollWow should describe the current supported feature, not speculate about future capabilities.
+For a connected feature, ask where conversation data is processed, whether an account is required, how recordings are handled, and what remains functional offline. Software availability can change after purchase, so buy for the functions supported now rather than a promised future update.
 
 Read the [AI sex doll guide](/learn/ai-sex-dolls) and [sex robot guide](/learn/sex-robots) for current distinctions.
 
@@ -647,118 +630,192 @@ A lower-cost model can be a good first purchase when its weight, material, dimen
 
 The better value is the product that can be handled, maintained, and supported as intended. A low checkout price is poor value if the body cannot be moved safely or the configuration is unclear.
 
-## How to Compare Doll Brands
+## Which Doll Brand Is Right for You?
 
-A useful brand comparison explains the manufacturer's current strengths, materials, catalog range, option system, documentation, and support path. It should not turn subjective preference into a fake ranking.
+Brand names become useful after you know the material, weight, body type, and features you want. A manufacturer may be excellent at detailed silicone faces, broad TPE customization, compact torsos, fantasy bodies, or electronic features without being the best fit for every buyer.
 
-Start with the active [DollWow brand directory](/brands). Deeper brand hubs are available for manufacturers with live catalog coverage, including [WM Dolls](/brands/wm-dolls), [Irontech Dolls](/brands/irontech-dolls), [Real Lady](/brands/real-lady-dolls), [Starpery Dolls](/brands/starpery-dolls), [SE Doll](/brands/se-doll), and [6YE Dolls](/brands/6ye-dolls).
+Use these profiles to decide which three or four brands deserve a closer look. Then compare exact bodies and heads. Product specifications and option compatibility always matter more than reputation alone.
 
-For each brand, compare:
+### WM Dolls: the established all-rounder
 
-- Live product count and supported body types.
-- TPE, silicone, hybrid, and named material availability.
-- Typical size and weight range.
-- Head and body compatibility rules.
-- Customization depth and documented conflicts.
-- Ready-to-ship availability.
-- Factory-photo, warranty, and support process.
+[WM Dolls](/brands/wm-dolls) is one of the longest-established and most recognizable Chinese manufacturers in the category. Collectors know the brand for a very broad choice of TPE bodies, faces, proportions, and customization. Its newer ranges also include silicone and hybrid constructions, including silicone heads paired with softer bodies.
 
-Do not list a brand merely because another guide mentions it. The DollWow guide covers brands that are active in the storefront and removes or updates profiles when catalog status changes.
+**Best starting point for:** a first-time buyer who wants many body and head choices inside a familiar manufacturer system, or an experienced buyer who already knows the exact proportions and options wanted.
 
-### Current DollWow brand directory
+**What to check:** WM has several material and skeleton generations, so do not assume an option seen on one model applies to another. Confirm the exact body, head connection, material, standing system, and selected upgrades. For a current example, compare [WM Nina 160cm D-Cup TPE](/products/wm-nina-160cm-d-cup-tpe-companion-doll-1jtvq), approximately `5 ft 3 in / 160 cm`.
 
-The following manufacturers had active DollWow listings when this guide was reviewed on August 10, 2026. Catalog size changes as products are added, retired, or temporarily unavailable, so use each linked hub for the current selection.
+### Irontech Dolls: sculpting, variety, and newer material systems
 
-| Brand | Useful starting point |
-| --- | --- |
-| [WM Dolls](/brands/wm-dolls) | One of the broadest current ranges, with extensive TPE and silicone body, head, and customization choices |
-| [Irontech Dolls](/brands/irontech-dolls) | Broad silicone and TPE coverage, including female and male bodies and advanced options on selected models |
-| [SE Doll](/brands/se-doll) | Large catalog spanning varied body proportions, materials, and head styles |
-| [SY Dolls](/brands/sy-dolls) | Wide selection of TPE and silicone models across several sizes and body types |
-| [Starpery Dolls](/brands/starpery-dolls) | Silicone-focused models and detailed finish options across a broad current range |
-| [YL Dolls](/brands/yl-dolls) | TPE and silicone choices with varied proportions and customization paths |
-| [Dolls Castle](/brands/dolls-castle) | Broad range of female models, materials, and body styles |
-| [Climax Doll](/brands/climax-dolls) | Current silicone-led range with varied sculpts and body formats |
-| [6YE Dolls](/brands/6ye-dolls) | Female and male models with TPE, silicone, and product-specific customization |
-| [HR Dolls](/brands/hr-dolls) | Varied current catalog including compact and full-size bodies |
-| [Jarliet Dolls](/brands/jarliet-dolls) | Female and male bodies across multiple sizes and configurations |
-| [Angelkiss Dolls](/brands/angelkiss-dolls) | Current TPE and silicone options with several body proportions |
-| [Piper Doll](/brands/piper-dolls) | Recognizable compact and stylized body range, with specifications varying by model |
-| [Rosretty Dolls](/brands/rosretty-dolls) | Compact through full-size models with product-specific materials and options |
-| [Real Lady](/brands/real-lady-dolls) | Silicone models with detailed body and face presentation |
-| [Tantaly](/brands/tantaly-dolls) | Torso and compact specialty formats designed around easier storage and handling |
-| [Erovenus Dolls](/brands/erovenus-dolls) | Torso and specialty products across several materials and body areas |
-| [IL Doll](/brands/il-doll) | Curated current selection of female models and body configurations |
-| [Avant Dolls](/brands/avant-dolls) | Smaller current range with distinctive models and specifications |
-| [Moonvale Dolls](/brands/moonvale-dolls) | Focused current range of silicone models |
-| [Ai-Tech Dolls](/brands/ai-tech-dolls) | Small specialist range where electronic or advanced functions require model-level verification |
+[Irontech Dolls](/brands/irontech-dolls) entered the market around 2018 and developed a following for Western-inspired faces, curvier body sculpting, and detailed presentation. The manufacturer expanded from TPE into full silicone and now offers female and male bodies, specialty constructions, and advanced options on selected models.
 
-This table is a navigation aid, not a ranking. A brand with more listings is not automatically better, and a smaller range may contain the best fit for a specific buyer. Compare at body and model level.
+**Best starting point for:** buyers prioritizing expressive face sculpts, curvy proportions, full silicone choices, or one manufacturer with both female and male ranges.
 
-### Catalog breadth snapshot
+**What to check:** promotional styling can be elaborate, so identify the exact head, makeup, wig, and skin tone used in the image. New named features should be verified on the selected body rather than assumed across the range. Compare the TPE [Irontech Len Stilwell 158cm](/products/irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu) with the silicone [Irontech Evie 161cm](/products/irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd).
 
-The August 10, 2026 catalog review found the following approximate active listing counts. These numbers document coverage at the time of review. They will change and should not be interpreted as sales, popularity, or quality scores.
+### SE Doll: broad choice with strong makeup and fantasy styling
 
-| Brand | Active listing snapshot |
-| --- | ---: |
-| WM Dolls | 474 |
-| Irontech Dolls | 431 |
-| SE Doll | 390 |
-| SY Dolls | 298 |
-| Starpery Dolls | 228 |
-| YL Dolls | 161 |
-| Dolls Castle | 160 |
-| Climax Doll | 136 |
-| 6YE Dolls | 121 |
-| HR Dolls | 106 |
-| Jarliet Dolls | 103 |
-| Angelkiss Dolls | 79 |
-| Piper Doll | 65 |
-| Rosretty Dolls | 58 |
-| Real Lady | 49 |
-| Tantaly | 30 |
-| Erovenus Dolls | 29 |
-| IL Doll | 19 |
-| Avant Dolls | 14 |
-| Moonvale Dolls | 10 |
-| Ai-Tech Dolls | 7 |
+[SE Doll](/brands/se-doll) was established in 2016 with production in Shenzhen, China. The brand became known for a wide selection of TPE and silicone dolls, detailed makeup, fantasy and elf-inspired heads, and continued experimentation with electronic and robotic features.
 
-A broad catalog creates more combinations to filter, but it also increases the need for precise product records. A focused catalog can be easier to compare but may offer fewer compatible heads, sizes, or stock choices. Use count to understand range, then return to the exact model.
+**Best starting point for:** buyers who want to compare realistic and fantasy styling within the same brand, or who value detailed makeup and a broad body range.
 
-### Broad-range brands
+**What to check:** painted detail needs gentler care, especially on TPE. Confirm whether a pictured finish is standard or an upgraded makeup option. Electronic features are product-specific. Start with [SE Doll Josie 148cm D-Cup TPE](/products/sedoll-josie-148cm-d-cup-tpe-companion-doll-11xfk), approximately `4 ft 10 in / 148 cm`, or browse the silicone choices in the brand hub.
 
-WM Dolls, Irontech Dolls, SE Doll, SY Dolls, Starpery Dolls, and YL Dolls each had more than 160 active listings in this snapshot. These hubs are practical starting points when the buyer wants to compare many bodies, heads, or materials inside one manufacturer system.
+### SY Dolls: bold proportions and accessible variety
 
-The size of the range makes filters and written requirements important. Set material, weight, body type, and order status before browsing deeply. Otherwise, a large visual catalog can produce a shortlist of incompatible products.
+[SY Dolls](/brands/sy-dolls) is a Chinese manufacturer known for curvy, fashion-forward bodies, vivid makeup, and a large choice of TPE models. The current range also includes silicone and silicone-head constructions, compact products, and full-size bodies.
 
-### Mid-size ranges
+**Best starting point for:** buyers drawn to pronounced hourglass proportions, high-impact styling, and a choice between more accessible TPE and selected silicone builds.
 
-Dolls Castle, Climax Doll, 6YE Dolls, HR Dolls, Jarliet Dolls, Angelkiss Dolls, Piper Doll, Rosretty Dolls, and Real Lady had approximately 49 to 160 active listings. These ranges can still span multiple materials and body types. Do not assume that every product shares the same option set because the hub feels more focused.
+**What to check:** body shape can be intentionally stylized, so compare measurements and neutral full-body views rather than relying on height. Confirm whether body painting, head material, and makeup shown are included. Examples include the compact [SY Belen 88cm Silicone](/products/sy-doll-belen-88cm-silicone-b456957), approximately `2 ft 11 in / 88 cm`, and full-size [SY Lirael 170cm Silicone](/products/sy-doll-lirael-170cm-silicone-efd59b6), approximately `5 ft 7 in / 170 cm`.
 
-### Focused and specialty ranges
+### Starpery Dolls: silicone realism and finish options
 
-Tantaly, Erovenus Dolls, IL Doll, Avant Dolls, Moonvale Dolls, and Ai-Tech Dolls had fewer than 50 active listings in the reviewed catalog. Some focus on particular forms, materials, or technologies. A smaller count is useful when that focus matches the buyer's need.
+[Starpery Dolls](/brands/starpery-dolls) is a newer-generation manufacturer that built its reputation around highly detailed silicone heads and bodies, Western and East Asian styling, body painting, and finish options such as veins, moles, freckles, and tan lines. Selected models use the brand's evolving weight-reduction and soft-silicone systems.
 
-Specialty products deserve the same evidence standard as high-volume categories. An advanced feature or distinctive body format should be confirmed at product level, especially when care, electronics, or replacement parts differ from conventional models.
+**Best starting point for:** buyers prioritizing facial realism, detailed surface finish, full silicone construction, and collectible presentation.
 
-### Why catalog counts should not appear in permanent promotional claims
+**What to check:** softer silicone and weight-reduction options can change care, compression resistance, weight, and production time. Confirm which version is selected. See [Starpery Yuan 154cm E-Cup Silicone](/products/starpery-yuan-154cm-yuan-2-full-silicone-doll), approximately `5 ft 1 in / 154 cm`.
 
-Inventory and product feeds change. Publishing "the largest" or a permanent exact count in marketing copy can become inaccurate quickly and may imply a comparison that was never measured across the market. This guide dates the snapshot and uses it only to describe current DollWow coverage.
+### YL Dolls: established TPE with fantasy influence
 
-### A repeatable brand-comparison method
+[YL Dolls](/brands/yl-dolls) has produced life-size dolls in China since around 2013. The brand is closely associated with the wider manufacturing ecosystem familiar to WM buyers, but it has its own faces and body designs, including fantasy-influenced looks and dramatic proportions.
 
-Choose two to four brands that actually support the target material, size, body type, and features. Then compare one or more exact products from each brand using the same evidence fields. This avoids comparing a brand's premium model with another brand's entry-level model and drawing a broad conclusion.
+**Best starting point for:** buyers who like the customization depth of established TPE manufacturers but want distinct faces, cosplay potential, or less conventional body shapes.
 
-Score only what can be verified:
+**What to check:** never assume cross-brand head compatibility from visual similarity alone. Confirm neck connection, skin tone, and head-body pairing in writing. A current starting point is [YL Vevina 151cm E-Cup TPE](/products/yl-vevina-151cm-e-cup-tpe-companion-doll-xqes4), approximately `4 ft 11 in / 151 cm`.
 
-1. **Fit:** dimensions, weight, body type, and intended handling routine.
-2. **Construction:** head and body material, skeleton, standing system, and removable or fixed parts.
-3. **Choice:** compatible heads, tones, appearance options, and structural upgrades.
-4. **Evidence:** complete specifications, current images, official documentation, and clear option rules.
-5. **Order process:** stock status, production checkpoints, shipping information, and configuration record.
-6. **Support:** clear contact path, damage documentation, warranty review, and repair guidance.
+### Dolls Castle: realistic and fantasy bodies in one range
 
-Do not average these into a universal brand score. Buyers weight the categories differently, and model-level evidence can be stronger or weaker within the same brand.
+[Dolls Castle](/brands/dolls-castle) dates to around 2016 and offers TPE and silicone dolls across realistic, curvy, and fantasy-led designs. Buyers may encounter conventional full-size models alongside more theatrical bodies with distinctive proportions or character styling.
+
+**Best starting point for:** buyers comparing everyday realism with fantasy presentation without moving between several manufacturers.
+
+**What to check:** identify whether horns, ears, tails, unusual feet, clothing, and other character elements are included or optional. Fantasy forms may need different storage support. Compare [Dolls Castle Zarina 153cm E-Cup TPE](/products/dolls-castle-zarina-153cm-e-cup-tpe-companion-doll-19dvb) with the silicone fantasy model [Dolls Castle Krystal 140cm](/products/dolls-castle-krystal-sz21-140cm-g-cup-silicone-wolf-girl-doll).
+
+### Climax Doll: torso roots with a broader modern range
+
+[Climax Doll](/brands/climax-dolls) became known for realistic torso products that offered a smaller footprint and lower entry price than many full-size dolls. Its current range extends beyond torsos into TPE, silicone, and hybrid full-body products.
+
+**Best starting point for:** buyers considering a torso for storage or handling, as well as shoppers who want to compare that format with a full-size model from the same label.
+
+**What to check:** the brand name no longer describes one construction. Confirm whether the product is a torso, full body, TPE, silicone, or hybrid. Compare the compact [Climax Carmen 80cm Silicone Torso](/products/climax-carmen-80cm-a-cup-silicone-torso-5py7s) with [Climax Tifa 156cm Hybrid](/products/climax-tifa-156cm-c-cup-hybrid-companion-doll-7uh4j).
+
+### 6YE Dolls: established TPE experience and varied body formats
+
+[6YE Dolls](/brands/6ye-dolls) is an established manufacturer familiar to long-time collectors. The brand has been known for TPE bodies, its Amor line, silicone-head options, and both female and male products. Buyers may also encounter technical similarities with HR products, but compatibility should never be assumed.
+
+**Best starting point for:** buyers wanting an experienced TPE manufacturer, varied proportions, or male and female choices under one brand.
+
+**What to check:** identify whether the listing uses a TPE head, silicone head, or another configuration, and confirm body-specific opening placement, skeleton, and care. See the male [6YE Claude 170cm Silicone Head](/products/6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s) and female [6YE Alyanna 168cm J-Cup TPE](/products/6ye-alyanna-168cm-j-cup-tpe-companion-doll-2qy8c).
+
+### HR Dolls: approachable TPE and silicone-head combinations
+
+[HR Dolls](/brands/hr-dolls) is best known for realistic TPE bodies, original head designs, and selected silicone-head combinations. Industry buyers often encounter HR alongside 6YE because of shared production history, but product names and option rules still need separate confirmation.
+
+**Best starting point for:** buyers seeking familiar TPE construction, realistic styling, and a range of conventional full-size proportions.
+
+**What to check:** confirm which head material is supplied and whether the pictured face, wig, and makeup match the base configuration. Start with [HR Genevieve 168cm E-Cup TPE](/products/hr-dolls-genevieve-168cm-e-cup-tpe-companion-doll-1q1xl), approximately `5 ft 6 in / 168 cm`.
+
+### Jarliet Dolls: value-led variety
+
+[Jarliet Dolls](/brands/jarliet-dolls) is generally positioned in the value-to-mid-market range. It offers a broad variety of Western, Black, and Asian face styles, male and female bodies, TPE models, and a growing selection of full silicone products.
+
+**Best starting point for:** buyers who want to compare several looks and materials while keeping the configured price under control.
+
+**What to check:** do not compare the base price of a TPE body with a configured silicone product. Review finish details and specifications at model level. Compare [Jarliet Helen 165cm D-Cup TPE](/products/jarliet-dolls-helen-165cm-d-cup-tpe-companion-doll-1ng0b) with silicone examples in the brand hub.
+
+### Angelkiss Dolls: silicone-focused presentation
+
+[Angelkiss Dolls](/brands/angelkiss-dolls) is commonly associated with the broader manufacturing ecosystem familiar to WM collectors, with a stronger focus on silicone bodies, detailed faces, and premium visual presentation.
+
+**Best starting point for:** buyers who like established mainstream styling but want to begin with full silicone models.
+
+**What to check:** visual or factory relationships do not guarantee that heads, tones, or options are interchangeable. Confirm every pairing on the exact product. See [Angelkiss Flora Simon 160cm D-Cup Silicone](/products/angelkiss-flora-simon-160cm-d-cup-silicone-companion-doll-1n7fy), approximately `5 ft 3 in / 160 cm`.
+
+### Piper Doll: seamless styling and distinctive compact bodies
+
+[Piper Doll](/brands/piper-dolls) developed a recognizable identity around soft TPE, seamless or integrated-looking head-and-body presentation on selected models, stylized proportions, compact dolls, and flexible skeleton options. The modern catalog also includes silicone products.
+
+**Best starting point for:** buyers who prioritize a smooth neck transition, compact scale, poseability, or Piper's distinctive body sculpting.
+
+**What to check:** some heads may be non-removable, which affects cleaning, storage, and future replacement. Confirm finger construction and skeleton version. Compare [Piper Akira 75cm C-Cup TPE](/products/piper-akira-75cm-c-cup-tpe-companion-doll-1alay) with [Piper Jenna 160cm G-Cup Silicone](/products/piper-jenna-160cm-g-cup-silicone-companion-doll-d0u7h).
+
+### Rosretty Dolls: a newer hybrid and feature-led brand
+
+[Rosretty Dolls](/brands/rosretty-dolls) was introduced around 2022 by Shenzhen Fairy Silicone and is closely related to the SY manufacturing family. The brand combines TPE, silicone heads, full silicone products, compact formats, and advanced head or powered options on selected models.
+
+**Best starting point for:** buyers interested in newer electronic or oral head features, hybrid construction, and a choice between compact and full-size products.
+
+**What to check:** feature combinations can add maintenance and compatibility requirements. Confirm exactly what is powered, how it is cleaned, and what is included. Compare [Rosretty Mireille 80cm Silicone](/products/rosretty-mireille-80cm-silicone-f326a05) with the full-size [Rosretty Beatrice 173cm Silicone](/products/rosretty-beatrice-173cm-silicone-222c6ac).
+
+### Real Lady Dolls: full silicone realism
+
+[Real Lady Dolls](/brands/real-lady-dolls) specializes in full silicone dolls with realistic face sculpts, detailed body finish, and premium presentation. The range is a natural comparison point for buyers who have already decided against TPE.
+
+**Best starting point for:** buyers prioritizing full silicone construction, fine surface detail, and realistic photographic presentation.
+
+**What to check:** full silicone weight and handling can vary substantially. Confirm the actual selected weight, softness option, makeup care, and standing system. Start with [Real Lady Sylvia 170cm Silicone](/products/real-lady-sylvia-170cm-s43-silicone-doll), approximately `5 ft 7 in / 170 cm`.
+
+### Tantaly: compact torso specialist
+
+[Tantaly](/brands/tantaly-dolls) built its identity around realistic torsos, hips, and compact products rather than a conventional catalog of full-size dolls. That focus can make the brand less intimidating for a buyer with limited storage or a strict handling limit.
+
+**Best starting point for:** first-time buyers considering a torso, shoppers with limited space, or anyone who wants a smaller ownership routine.
+
+**What to check:** compact does not automatically mean lightweight. Compare material, total weight, included body areas, base design, and storage position. See [Tantaly Badd Angel 74cm I-Cup](/products/tantaly-badd-angel-74cm-i-cup-companion-doll-1odf7), approximately `2 ft 5 in / 74 cm`.
+
+### Erovenus Dolls: compact silicone and torso formats
+
+[Erovenus Dolls](/brands/erovenus-dolls) is a China-based brand founded around 2019. It became known for compact silicone products, hips, torsos, and upper-body formats designed for buyers who do not want the footprint of a full-size doll.
+
+**Best starting point for:** buyers comparing torso styles, travel-friendly scale, or compact silicone construction.
+
+**What to check:** products at similar heights can have very different shapes and weights. Confirm which body areas and accessories are included. Compare [Erovenus 21cm Silicone Hips](/products/erovenus-lucy-20-5cm-silicone-hips-wcena) with [Erovenus Chloe Wildd 85cm F-Cup Silicone](/products/erovenus-chloe-wildd-85cm-f-cup-silicone-companion-doll-4sblg).
+
+### IL Doll: silicone detail and customization
+
+[IL Doll](/brands/il-doll) focuses on silicone models with detailed surface texture, freckles, skin variation, body painting, and customizable presentation. It is a more focused choice than the largest multi-material brands.
+
+**Best starting point for:** buyers who have decided on silicone and want to compare fine finish details rather than hundreds of TPE combinations.
+
+**What to check:** identify which texture and painting details are standard, which are options, and how the finish should be cleaned. See [IL Doll Snow 151cm E-Cup Silicone](/products/il-doll-snow-151cm-e-cup-silicone-companion-doll-1xyq5), approximately `4 ft 11 in / 151 cm`.
+
+### Avant Dolls: focused full silicone collection
+
+[Avant Dolls](/brands/avant-dolls) is a newer, focused silicone label with a smaller set of bodies and distinctive face options. A compact range can be easier to understand when the buyer already knows silicone is the preferred material.
+
+**Best starting point for:** buyers who want a curated full silicone shortlist rather than navigating a very large head-and-body system.
+
+**What to check:** a focused range does not mean every head fits every body. Confirm tone, connection, weight, finish, and included options. Compare [Avant Cecilia 157cm E-Cup Silicone](/products/avant-cecilia-157cm-e-cup-full-silicone) and [Avant Sophia 165cm F-Cup Silicone](/products/avant-sophia-165cm-f-cup-full-silicone-white).
+
+### Moonvale Dolls: newer silicone styling
+
+[Moonvale Dolls](/brands/moonvale-dolls) is a newer silicone-focused label with a deliberately small selection of recurring body and face combinations. Its current presentation emphasizes modern styling and full silicone builds.
+
+**Best starting point for:** buyers looking for a focused modern silicone collection and fewer initial choices.
+
+**What to check:** verify the exact face-body combination because visually similar listings may use different tones or styling. Current examples include [Moonvale Lyora 155cm Silicone](/products/moonvale-lyora-155cm-silicone-15dc53e) and [Moonvale Sorelle 160cm Silicone](/products/moonvale-sorelle-160cm-silicone-43fddc3).
+
+### Ai-Tech Dolls: conventional bodies with specialist technology
+
+[Ai-Tech Dolls](/brands/ai-tech-dolls) traces to a Shenzhen technology company established around 2016. It approaches the category from an artificial-intelligence and electronic-product background, although not every product carrying the brand includes the same smart or robotic functions.
+
+**Best starting point for:** buyers specifically exploring electronic heads, interactive features, or the boundary between a conventional doll and a connected product.
+
+**What to check:** define the desired function first. Confirm hardware, app, power, privacy, subscription, regional support, cleaning, and repair. Do not infer robotics from the brand name. A conventional body example is [Ai-Tech Dorean 167cm K-Cup TPE](/products/ai-tech-dorean-167cm-k-cup-tpe-companion-doll-qodze), approximately `5 ft 6 in / 167 cm`.
+
+### How to make a three-brand shortlist
+
+Choose brands by the problem they solve. For example:
+
+- **Broad first purchase:** begin with WM, Irontech, SE, YL, 6YE, or HR, then filter by weight and material.
+- **Full silicone realism:** compare Starpery, Real Lady, Angelkiss, IL Doll, Avant, or Moonvale.
+- **Compact ownership:** compare Tantaly, Erovenus, Piper, Climax, and compact models from Rosretty or SY.
+- **Fantasy styling:** begin with YL, SE, or Dolls Castle.
+- **Male dolls:** compare current male bodies from Irontech, 6YE, Jarliet, WM, and other brands shown in the [male collection](/shop/male-dolls).
+- **Electronic or AI features:** compare exact supported products from Ai-Tech, SE, Rosretty, and other brands only after the function is documented.
+
+Once three brands remain, compare one exact product from each using weight, body measurements, material, head, options, configured price, delivery path, and care. That is more reliable than trying to name one universal best brand.
 
 ## Curated Live Product Shortlists
 
@@ -780,7 +837,7 @@ Popularity, sales, or customer satisfaction should not be claimed unless DollWow
 
 The live cards below are not a disguised popularity ranking. They provide varied, current examples across six practical shopping paths: ready-to-ship and value, compact handling, TPE, full silicone, male dolls, and torso or specialty formats.
 
-At publication, each example passed four checks:
+Each example is included only when these four basics are available:
 
 - The product was available through the live DollWow catalog feed.
 - At least one current catalog image was present.
@@ -848,7 +905,7 @@ Confirm that support can answer a model-specific question. A useful answer shoul
 
 Reviews can reveal recurring service patterns, but they are not a substitute for product facts. Look for a range of dates, details, and outcomes. Be cautious when every review uses similar language, only discusses shipping speed, or makes claims that cannot be tied to the reviewed configuration.
 
-DollWow should never invent buyer stories, star ratings, sales counts, or popularity. Editorial product examples in this guide are selected from live catalog evidence, not presented as customer endorsements.
+Treat reviews as one source of context, not proof that the same product will fit your needs. Product examples in this guide are comparison starting points, not customer endorsements or claims that an item is universally popular.
 
 ### Payment and pressure signals
 
@@ -895,7 +952,7 @@ No seller should promise secrecy from a carrier, payment provider, customs autho
 
 A domestic warehouse can simplify transit for an existing unit, but confirm that the exact selected configuration is physically there. A brand offered by a domestic warehouse may still require factory production for custom options.
 
-For cross-border orders, ask who handles duties, taxes, customs documents, and brokerage charges. Rules depend on destination and can change. DollWow should confirm the current order path rather than publishing a universal promise.
+For cross-border orders, ask who handles duties, taxes, customs documents, and brokerage charges. Rules depend on destination and can change, so confirm the current order path for your address.
 
 ### Delivery-day checklist
 
@@ -1363,55 +1420,44 @@ Ask five questions:
 
 Update the care record and keep product-specific guidance accessible. A stable routine should become easier, not more complicated, after the first month.
 
-## Evidence, Updates, and Editorial Standards
+## How to Resolve Confusing or Conflicting Product Claims
 
-This guide is intended to be useful to human readers, search engines, AI assistants, and shopping agents without exposing internal optimization instructions on the page. Clear headings, direct answers, tables, definitions, dates, and source boundaries make the same content easier for all of them to interpret.
+New buyers often find two different weights, option names that sound similar, or a product photo that does not match the written description. That does not always mean the seller is dishonest. Manufacturers revise bodies, retailers combine data feeds, and older photography can remain in circulation. It does mean the conflict should be resolved before payment.
 
-### What changes automatically
+### Start with the exact configuration
 
-The curated product cards are connected to current DollWow catalog records. Product title, image, starting price, and availability can update with the storefront. A missing or retired product should be removed from the rendered shortlist rather than leaving a dead recommendation.
+Write down the body, head, material, skin tone, skeleton, standing system, and every paid option. A general brand page cannot confirm a detail that changes by body or head.
 
-### What requires editorial review
+### Use the most specific source
 
-Material claims, brand profiles, option compatibility, care instructions, shipping policies, and technology descriptions require human review. They should not change merely because a supplier page or competitor article uses new language.
+Check information in this order:
 
-The editorial review should check:
+1. Written details for the exact product and selected configuration.
+2. Current manufacturer documentation for that body, head, material, or option.
+3. Written confirmation from support that identifies the product.
+4. General articles, videos, forum posts, and older reviews.
 
-- Manufacturer documentation for changed materials or construction.
-- Current DollWow catalog and active brand status.
-- Internal links and destination quality.
-- Product examples, missing specifications, and image provenance.
-- Prices and dated commercial language.
-- Safety, privacy, electronic, and care claims.
-- Frequently asked questions emerging from search and support.
+A forum post can reveal a useful question, but it should not overrule current instructions for a different formulation or body.
 
-### How claims are phrased
+### Ask for a direct answer
 
-The guide distinguishes observed catalog facts, manufacturer claims, editorial interpretation, and unresolved details. It avoids turning "often" into "always" or presenting a category tendency as a product guarantee.
+Quote both conflicting claims and ask which one applies. For example: "The specifications show `77 lb / 35 kg`, but the option description shows `88 lb / 40 kg`. Which weight applies with this head and lightweight body option?"
 
-When a fact is time-sensitive, the guide uses a review date or sends the reader to the live record. When a feature is manufacturer-specific, it names that dependency. When evidence is absent, it asks for confirmation rather than generating a plausible answer.
+Specific questions are easier to verify than "Is this listing accurate?" Save the response with the final order.
 
-### Source hierarchy for future revisions
+### Know which facts change most often
 
-1. Exact product and configuration documentation.
-2. Current official manufacturer material.
-3. DollWow product, policy, operations, and support records.
-4. Original testing or documented editorial experience, with method and date.
-5. Reputable independent sources for broader context.
+Price, stock, warehouse location, production time, app support, and available options can change quickly. Material, body mold, height, and basic construction are usually more stable but can still be revised. Check a current product page before ordering even when an older guide or video appears detailed.
 
-Competitor content can reveal a question that buyers ask, but it is not evidence for a DollWow product claim. Search-volume data helps prioritize coverage, but it does not determine the answer.
+### Treat photography as evidence with limits
 
-### Visual evidence standard
+Product photos can establish sculpt, proportion, and potential finish. They may not establish the standard wig, clothing, makeup, eyes, skin tone, or included accessories. Ask which options created the pictured configuration.
 
-Product depictions should use current DollWow or supplier-authorized catalog photography and link to the relevant live product when used commercially. Editorial illustrations should teach a process, comparison, or measurement and must not be presented as photographs of an actual product.
+Generated illustrations can explain lifting, measuring, cleaning, or storage, but they should not be used to judge what an actual doll looks like. Use real product images for that decision.
 
-Visuals should include useful captions and alternative text. A measurement diagram should show both US and metric units. A product comparison visual should identify the brand and product and use current data. Generated editorial imagery requires a human check for anatomical, procedural, text, and product-representation errors before publication.
+### Leave unknown details unknown
 
-### Revision cadence
-
-Commercial links and live examples should be checked frequently. The complete editorial guide should receive a scheduled quarterly review and an additional review whenever a major carried brand changes material, option, or care documentation. High-impact corrections should not wait for the scheduled review.
-
-The visible review date signals when the editorial content was last checked. It does not imply that every live product price was frozen on that date.
+If a decision-critical weight, material, option, or electronic function cannot be confirmed, remove the product from the shortlist or postpone the order. A plausible estimate is not useful when the purchase is expensive or difficult to return.
 
 ## Pre-Purchase Checklist
 
@@ -1597,13 +1643,13 @@ Review them when the product arrives, before using a new care product, after add
 
 Keep the order summary, selected options, product screenshots, support confirmations, factory photos, shipping record, arrival photos, and manufacturer care instructions. These records help with future maintenance and support.
 
-### Does DollWow sell every brand discussed on other sex doll sites?
+### Why does this guide not cover every doll brand?
 
-No. This guide focuses on brands currently carried in the DollWow storefront. Brand coverage is reviewed over time, and a manufacturer is not added merely because it appears in a competitor guide or has search demand.
+The detailed profiles focus on brands whose current products you can inspect and compare through DollWow. Other manufacturers exist, but naming a brand without current products, specifications, and a support path would not help you complete a purchase.
 
 ### How current are the products in this guide?
 
-The examples are fetched from the live DollWow catalog when the page is rendered. Price, availability, and specifications can still change, so the product page and written confirmation should be checked before purchase. The guide displays its editorial review date separately.
+Product cards use current catalog information when the page loads. Price, availability, and specifications can still change, so open the product page and confirm the final configuration before purchase.
 
 ## Glossary
 
@@ -1624,5 +1670,3 @@ The examples are fetched from the live DollWow catalog when the page is rendered
 ## Next Steps
 
 Use the [DollWow finder](/help-me-choose) to narrow the catalog, [browse all sex dolls](/shop/sex-dolls), compare [active brands](/brands), or [ask support](/support) to verify a product-specific detail before checkout.
-
-This guide is maintained as a living reference. Product examples, prices, brand coverage, links, and review dates should be refreshed as the storefront and manufacturer documentation change.
