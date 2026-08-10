@@ -1564,6 +1564,23 @@ a {
   line-height: 1.6;
 }
 
+.alive-feedback-link {
+  width: fit-content;
+  margin: 0.35rem 0 0.1rem 0.25rem;
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
+  text-underline-offset: 0.22rem;
+}
+
+.alive-feedback-link:hover,
+.alive-feedback-link:focus-visible {
+  color: var(--accent);
+}
+
 .alive-spec-review-grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;

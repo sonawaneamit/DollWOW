@@ -8,9 +8,11 @@ import { GoldButton } from "./GoldButton";
 export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?: string }) {
   const searchParams = useSearchParams();
   const source = searchParams.get("source") ?? defaultSource;
+  const product = searchParams.get("product") ?? "";
+  const isBugReport = source === "pdp-bug-report";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState(() => isBugReport && product ? `Product page: ${product}\n\nIssue found: ` : "");
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -72,7 +74,19 @@ export function SupportLeadForm({ defaultSource = "support" }: { defaultSource?:
   }
 
   const isBrandPartnership = source === "brand-partnership" || source === "supplier";
-  const copy = isBrandPartnership
+  const copy = isBugReport
+    ? {
+        kicker: "Page feedback",
+        title: "Help us improve this product page",
+        body: "Report an incorrect price, option, specification, image, or broken feature. Confirmed reports are eligible for $50 off a DollWow order.",
+        nameLabel: "Name, optional",
+        emailLabel: "Email",
+        questionLabel: "What did you find?",
+        placeholder: "Tell us what is wrong, where it appears, and what you expected to see...",
+        success: "Thanks. We saved your report and will review the page and $50 discount eligibility.",
+        button: "Send bug report"
+      }
+    : isBrandPartnership
     ? {
         kicker: "Brand contact",
         title: "Talk with DollWow",

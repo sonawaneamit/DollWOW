@@ -252,6 +252,12 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
                 </div>
               </article>
             ))}
+            <Link
+              href={`/support?source=pdp-bug-report&product=${encodeURIComponent(product.handle)}`}
+              className="alive-feedback-link"
+            >
+              Found a bug? Improve this page and get $50 off.
+            </Link>
           </div>
         </div>
       </AliveBand>
