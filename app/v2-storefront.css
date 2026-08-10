@@ -698,9 +698,10 @@ main {
 
 .comparison-table-shell {
   position: relative;
-  max-height: calc(100vh - 104px);
-  overflow: auto;
-  overscroll-behavior: contain;
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: visible;
+  overscroll-behavior-x: contain;
   isolation: isolate;
 }
 
@@ -730,6 +731,12 @@ main {
 @media (max-width: 639px) {
   .comparison-product-head {
     height: 154px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .comparison-table-shell {
+    overflow: visible;
   }
 }
 

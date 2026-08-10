@@ -60,7 +60,7 @@ export function ComparisonPageClient() {
       <p className="mt-6 text-sm font-semibold text-text-dim sm:hidden">Swipe sideways to compare each doll →</p>
       <div className="comparison-table-shell mt-3 overflow-x-auto rounded-lg border border-border bg-surface shadow-card sm:mt-8">
         <table className="comparison-table w-full table-fixed border-collapse text-left" style={{ minWidth: `${160 + comparison.entries.length * 260}px` }}>
-          <thead className="comparison-table__head sticky top-0 z-20 bg-surface shadow-sm">
+          <thead className="comparison-table__head sticky top-[72px] z-20 bg-surface shadow-sm">
             <tr>
               <th className="comparison-table__corner sticky left-0 z-30 w-40 border-b border-r border-border bg-surface-tint p-4 align-middle text-sm font-semibold text-text-dim">Product</th>
               {comparison.entries.map((entry) => (
