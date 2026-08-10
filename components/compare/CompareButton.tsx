@@ -5,13 +5,14 @@ import { Check, Scale } from "lucide-react";
 import { useComparison } from "./ComparisonProvider";
 import type { CompareEntry } from "@/lib/compare/products";
 
-export function CompareButton({ entry, label = false, className = "" }: { entry: Omit<CompareEntry, "addedAt">; label?: boolean; className?: string }) {
+export function CompareButton({ entry, label = false, className = "", onToggle }: { entry: Omit<CompareEntry, "addedAt">; label?: boolean; className?: string; onToggle?: () => void }) {
   const comparison = useComparison();
   const selected = comparison.entries.some((item) => item.productHandle === entry.productHandle);
   function onClick(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
     comparison.toggle(entry);
+    onToggle?.();
   }
   return (
     <button type="button" onClick={onClick} aria-pressed={selected} aria-label={selected ? `Remove ${entry.productTitle} from comparison` : `Add ${entry.productTitle} to comparison`} className={`${label ? "inline-flex items-center gap-2" : ""} ${className}`.trim()}>

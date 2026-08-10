@@ -80,6 +80,11 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
+              <CompareButton
+                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
+                label
+                className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
+              />
             </div>
             {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">{displayNameUi ? pdpTitle : displayTitle}</h1>
@@ -136,11 +141,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                   currencyCode: price.currencyCode,
                   readyToShip: product.extended.stockStatus === "ready_to_ship"
                 }}
-                label
-                className="font-semibold text-ivory-300 hover:text-gold-200"
-              />
-              <CompareButton
-                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: (product.featuredImage ?? product.images[0])?.url, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
                 label
                 className="font-semibold text-ivory-300 hover:text-gold-200"
               />

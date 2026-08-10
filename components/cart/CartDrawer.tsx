@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { CompareButton } from "@/components/compare/CompareButton";
+import { compareEntryFromCartItem } from "@/lib/compare/products";
 import { useCart } from "@/components/cart/CartProvider";
 import { formatMoney } from "@/lib/utils/currency";
 import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
@@ -127,6 +129,12 @@ export function CartDrawer() {
                         </div>
                         <p className="text-sm font-semibold text-gold-200">{formatMoney(item.unitPrice * item.quantity, item.currencyCode)}</p>
                       </div>
+                      <CompareButton
+                        entry={compareEntryFromCartItem(item)}
+                        label
+                        onToggle={cart.closeDrawer}
+                        className="mt-2 min-h-11 rounded-full border border-gold-500/20 px-3 text-sm font-semibold text-ivory-300 hover:border-gold-300/50 hover:text-gold-200"
+                      />
                     </div>
                   </div>
                 </li>

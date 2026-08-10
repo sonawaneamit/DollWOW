@@ -10,6 +10,8 @@ import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { clearBrowserCartState, useLegacyCartState } from "@/lib/cart/browser";
 import { formatMoney } from "@/lib/utils/currency";
 import { useMounted } from "@/lib/utils/storageStore";
+import { CompareButton } from "@/components/compare/CompareButton";
+import { compareEntryFromCartItem } from "@/lib/compare/products";
 
 export function CartPageClient() {
   const cart = useCart();
@@ -141,6 +143,11 @@ export function CartPageClient() {
                     </div>
                     <p className="text-base font-semibold text-gold-200">{formatMoney(item.unitPrice * item.quantity, item.currencyCode)}</p>
                   </div>
+                  <CompareButton
+                    entry={compareEntryFromCartItem(item)}
+                    label
+                    className="mt-2 min-h-11 rounded-full border border-gold-500/20 px-3 text-sm font-semibold text-ivory-300 hover:border-gold-300/50 hover:text-gold-200"
+                  />
                 </div>
               </div>
             </li>
