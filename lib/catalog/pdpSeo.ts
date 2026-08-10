@@ -127,7 +127,7 @@ export function buildPdpTrustSignals(product: Product): TrustSignal[] {
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
   const timing = readyToShip
     ? "Stock is confirmed first, then warehouse release usually follows in 2-3 business days."
-    : `Custom builds usually take about ${product.extended.deliveryEstimate ?? "3-5 weeks"} before release, with approval before shipment.`;
+    : `Custom builds usually take about ${product.extended.deliveryEstimate ?? "3–4 weeks"} before release, with approval before shipment.`;
 
   return [
     {
@@ -207,7 +207,7 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
   const orderNote =
     stockStatus === "ready_to_ship"
       ? "Ready-to-ship orders usually leave within 1-3 business days after stock confirmation, and tracking is issued once the shipment is booked."
-      : "Custom orders usually take about 3-5 weeks from order to delivery, with option review and factory approval before shipment is released.";
+      : "Custom orders usually take about 3–4 weeks from order to delivery, with option review and factory approval before shipment is released.";
 
   return [
     {

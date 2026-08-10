@@ -28,7 +28,7 @@ export default function ShippingPage() {
         {
           title: "Made-to-order builds",
           items: [
-            "Custom orders usually take about 3-5 weeks before release because the build moves through production, review, and final approval before shipment.",
+            "Custom orders usually take about 3–4 weeks before release because the build moves through production, review, and final approval before shipment.",
             "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
             "We confirm the expected production and shipping dates after reviewing your final choices."
           ]

@@ -179,7 +179,7 @@ export default function WhyPage() {
                 <strong className="text-sm font-semibold text-ivory-100">Custom build</strong>
               </div>
               <p className="mt-2 text-sm leading-6 text-ivory-300">
-                Usually takes about 3-5 weeks before release, with factory photo and video approval before shipment.
+                Usually takes about 3–4 weeks before release, with factory photo and video approval before shipment.
               </p>
             </div>
           </div>

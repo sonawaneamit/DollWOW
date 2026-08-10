@@ -48,7 +48,7 @@ export default function ShippingProtectionPage() {
           title: "Timing by order type",
           items: [
             "Ready-to-ship warehouse dolls usually leave within 2-3 business days after stock confirmation.",
-            "Custom builds usually take about 3-5 weeks before release because production and final approval happen before shipment.",
+            "Custom builds usually take about 3–4 weeks before release because production and final approval happen before shipment.",
             "Ready-to-ship orders may not include factory approval photos because speed is the priority."
           ]
         },

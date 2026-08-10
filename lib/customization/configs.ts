@@ -212,7 +212,7 @@ const configs = {
   dollCastle: {
     id: "doll-castle",
     brandLabel: "Doll Castle",
-    leadTimeNote: "Doll Castle custom builds are usually confirmed before a 4-8 week production window.",
+    leadTimeNote: "Doll Castle custom builds are usually confirmed before a 3–4 week production window.",
     groups: [skinTones, eyeColor, wigFinish, tpeBodyUpgrades, careAddOns],
     rules: []
   },

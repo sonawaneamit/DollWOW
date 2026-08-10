@@ -755,7 +755,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "How are ready-to-ship dolls different from custom orders?",
       answer:
-        "Ready-to-ship dolls usually offer fewer changes but dispatch faster. Made-to-order dolls offer more choices and usually take about 3-5 weeks from order to delivery."
+        "Ready-to-ship dolls usually offer fewer changes but dispatch faster. Made-to-order dolls offer more choices and usually take about 3–4 weeks from order to delivery."
     },
     {
       question: "Should I ask for confirmation before buying ready-to-ship?",

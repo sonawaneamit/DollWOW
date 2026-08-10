@@ -1,5 +1,6 @@
 import type { Product, ProductMedia } from "@/types/product";
 import type { CustomizationGroup } from "@/types/customization";
+import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
 
 type Edge<T> = { node: T };
 type Connection<T> = { edges: Array<Edge<T>> };
@@ -126,6 +127,8 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
     jsonValue<Product["extended"]["customizationGroups"]>(node.customizationGroups?.value)
   );
 
+  const stockStatus = node.stockStatus?.value as Product["extended"]["stockStatus"];
+
   return {
     id: node.id,
     handle: node.handle,
@@ -165,8 +168,8 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       measurements: jsonValue<Record<string, string>>(node.measurements?.value),
       warehouseCountry: node.warehouseCountry?.value,
       warehouseRegions: jsonValue<string[]>(node.warehouseRegions?.value),
-      stockStatus: node.stockStatus?.value as Product["extended"]["stockStatus"],
-      deliveryEstimate: node.deliveryEstimate?.value,
+      stockStatus,
+      deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value),
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
       customAvailable: booleanValue(node.customAvailable?.value),
       customizationGroups,

@@ -5,6 +5,7 @@ import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
 import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
+import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
 
 const API_VERSION = "2026-04";
 
@@ -324,7 +325,10 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       cupSize: metafieldText(node.cupSize) || undefined,
       warehouseCountry: metafieldText(node.warehouseCountry) || undefined,
       stockStatus: stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
-      deliveryEstimate: metafieldText(node.deliveryEstimate) || undefined,
+      deliveryEstimate: customerDeliveryEstimate(
+        stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
+        metafieldText(node.deliveryEstimate) || undefined
+      ),
       stockLastCheckedAt: metafieldText(node.stockLastCheckedAt) || undefined,
       customAvailable: metafieldBoolean(node.customAvailable)
     }

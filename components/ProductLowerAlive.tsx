@@ -166,7 +166,7 @@ function orderSteps(product: Product, readyToShip: boolean): ProcessStep[] {
   }
   return [
     { label: "Build reviewed", detail: "We check your selected options, compatibility, price, and timing.", timing: "1–2 business days", icon: <ShieldCheck className="h-5 w-5" /> },
-    { label: "Made for you", detail: "The factory produces the configuration recorded with your order.", timing: product.extended.deliveryEstimate ?? "3–5 weeks", icon: <PackageCheck className="h-5 w-5" /> },
+    { label: "Made for you", detail: "The factory produces the configuration recorded with your order.", timing: product.extended.deliveryEstimate ?? "3–4 weeks", icon: <PackageCheck className="h-5 w-5" /> },
     { label: "You approve it", detail: "Factory photos and videos are reviewed before discreet shipment.", timing: "Before shipping", icon: <Camera className="h-5 w-5" /> }
   ];
 }
@@ -187,7 +187,7 @@ function faqItems(product: Product, readyToShip: boolean) {
     { question: "Can I buy the standard configuration?", answer: "Yes. Use Add standard configuration if the default build suits you, or open the configurator to personalize it." },
     { question: "When is the final price shown?", answer: "Supported paid options update the build total before you add the configured doll to your cart." },
     { question: "Do I approve the finished doll?", answer: "Yes. We share detailed factory photos and videos before shipment and review cosmetic revision requests before approval." },
-    { question: "How long does production take?", answer: `Most builds take about ${product.extended.deliveryEstimate ?? "3–5 weeks"} before release. The exact timing is reviewed with your configuration.` }
+    { question: "How long does production take?", answer: `Most builds take about ${product.extended.deliveryEstimate ?? "3–4 weeks"} before release. The exact timing is reviewed with your configuration.` }
   ];
 }
 
