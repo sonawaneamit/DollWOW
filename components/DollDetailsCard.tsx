@@ -1,12 +1,13 @@
 import { CheckCircle2 } from "lucide-react";
+import { formatHeightDual, formatWeightDual } from "@/lib/catalog/productSpecs";
 import type { Product } from "@/types/product";
 
 export function DollDetailsCard({ product }: { product: Product }) {
   const details = [
     ["Brand", product.extended.brand ?? product.vendor],
     ["Material", product.extended.material ?? "Confirm before checkout"],
-    ["Height", product.extended.heightCm ? `${product.extended.heightCm} cm` : "Confirm before checkout"],
-    ["Weight", product.extended.weightLb ? `${product.extended.weightLb} lb` : "Confirm before checkout"],
+    ["Height", formatHeightDual(product.extended.heightCm) || "Confirm before checkout"],
+    ["Weight", formatWeightDual(product.extended.weightLb) || "Confirm before checkout"],
     ["Cup size", product.extended.cupSize || "Confirm before checkout"],
     ["Delivery", product.extended.deliveryEstimate ?? "We verify before checkout"],
     ["Warehouse", product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Confirm before checkout"]

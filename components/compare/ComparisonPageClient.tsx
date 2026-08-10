@@ -7,6 +7,7 @@ import { ArrowRight, Check, Scale, ShoppingCart, Trash2 } from "lucide-react";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { useCart } from "@/components/cart/CartProvider";
 import { useMounted } from "@/lib/utils/storageStore";
+import { formatHeightDual, formatMeasurementDual, formatWeightDual } from "@/lib/catalog/productSpecs";
 import { useComparison } from "./ComparisonProvider";
 
 export function ComparisonPageClient() {
@@ -19,10 +20,10 @@ export function ComparisonPageClient() {
     { group: "At a glance", label: "Material", value: (entry: typeof comparison.entries[number]) => entry.material },
     { group: "At a glance", label: "Product type", value: (entry: typeof comparison.entries[number]) => entry.productType },
     { group: "At a glance", label: "Availability", value: (entry: typeof comparison.entries[number]) => entry.stockStatus === "ready_to_ship" ? "Ready to ship" : "Factory order" },
-    { group: "Size and handling", label: "Height", value: (entry: typeof comparison.entries[number]) => entry.heightCm ? `${entry.heightCm} cm` : undefined },
-    { group: "Size and handling", label: "Weight", value: (entry: typeof comparison.entries[number]) => entry.weightLb ? `${entry.weightLb} lb` : undefined },
+    { group: "Size and handling", label: "Height", value: (entry: typeof comparison.entries[number]) => formatHeightDual(entry.heightCm) || undefined },
+    { group: "Size and handling", label: "Weight", value: (entry: typeof comparison.entries[number]) => formatWeightDual(entry.weightLb) || undefined },
     { group: "Size and handling", label: "Cup size", value: (entry: typeof comparison.entries[number]) => entry.cupSize },
-    ...measurementLabels.map((label) => ({ group: "Measurements", label, value: (entry: typeof comparison.entries[number]) => entry.measurements?.[label] })),
+    ...measurementLabels.map((label) => ({ group: "Measurements", label, value: (entry: typeof comparison.entries[number]) => formatMeasurementDual(label, entry.measurements?.[label]) || undefined })),
     { group: "Ordering", label: "Warehouse", value: (entry: typeof comparison.entries[number]) => entry.warehouseRegions?.join(", ") },
     { group: "Ordering", label: "Customization", value: (entry: typeof comparison.entries[number]) => entry.customAvailable ? "Available" : entry.stockStatus === "ready_to_ship" ? "Fixed warehouse build" : "Confirm on product page" }
   ];

@@ -34,7 +34,7 @@ describe("product spec display helpers", () => {
     expect(productMeasurementSpecs(product)).toEqual(
       expect.arrayContaining([
         { label: "Height", value: "5 ft 8 in / 172 cm" },
-        { label: "Weight", value: "78.7 lbs / 35.7 kg" }
+        { label: "Weight", value: "78.7 lb / 35.7 kg" }
       ])
     );
   });
@@ -158,7 +158,7 @@ describe("product spec display helpers", () => {
 
     expect(productMeasurementSpecs(product)).toEqual([
       { label: "Height", value: "5 ft 8 in / 172 cm" },
-      { label: "Weight", value: "78.7 lbs / 35.7 kg" },
+      { label: "Weight", value: "78.7 lb / 35.7 kg" },
       { label: "Cup size", value: "E-Cup" },
       { label: "Bust", value: "2 ft 10 in / 86.5 cm" },
       { label: "Waist", value: "1 ft 11 in / 57.5 cm" },
@@ -171,5 +171,34 @@ describe("product spec display helpers", () => {
       { label: "Anus Depth", value: "6 in / 15 cm" },
       { label: "Oral Depth", value: "3 in / 8 cm" }
     ]);
+  });
+
+  it("adds US equivalents when a supplier provides metric-only measurements", () => {
+    const product = {
+      ...sampleProducts[0],
+      description: "",
+      extended: {
+        ...sampleProducts[0].extended,
+        heightCm: 154,
+        weightLb: undefined,
+        measurements: {
+          Height: "154 cm",
+          Weight: "42 kg",
+          Bust: "82 cm",
+          Waist: "56.5 cm",
+          "Feet Length": "22 cm",
+          "Vagina Depth": "17 cm"
+        }
+      }
+    };
+
+    expect(productMeasurementSpecs(product)).toEqual(expect.arrayContaining([
+      { label: "Height", value: "5 ft 1 in / 154 cm" },
+      { label: "Weight", value: "92.6 lb / 42.0 kg" },
+      { label: "Bust", value: "2 ft 8 in / 82 cm" },
+      { label: "Waist", value: "1 ft 10 in / 56.5 cm" },
+      { label: "Feet Length", value: "9 in / 22 cm" },
+      { label: "Vagina Depth", value: "7 in / 17 cm" }
+    ]));
   });
 });

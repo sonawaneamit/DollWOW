@@ -107,6 +107,7 @@ export function detailedProductSpecs(product: Product): DisplaySpec[] {
   const parsedMeasurements = parsed.filter((spec) => isMeasurementLabel(spec.label));
   const parsedDetails = parsed.filter((spec) => !isMeasurementLabel(spec.label) && !["Brand", "Material", "Delivery"].includes(spec.label));
   return dedupeSpecs([...measurementSpecs, ...parsedMeasurements, ...base, ...parsedDetails])
+    .map((spec) => isMeasurementLabel(spec.label) ? { ...spec, value: formatMeasurementDual(spec.label, spec.value) } : spec)
     .filter((spec) => spec.value)
     .slice(0, 18);
 }
@@ -139,7 +140,10 @@ export function descriptionSpecs(description: string): DisplaySpec[] {
 function measurementRecordSpecs(measurements?: Record<string, string>): DisplaySpec[] {
   if (!measurements) return [];
   return Object.entries(measurements)
-    .map(([label, value]) => ({ label: normalizeMeasurementLabel(label), value: cleanSpecValue(value) || "" }))
+    .map(([label, value]) => {
+      const normalizedLabel = normalizeMeasurementLabel(label);
+      return { label: normalizedLabel, value: formatMeasurementDual(normalizedLabel, cleanSpecValue(value) || "") };
+    })
     .filter((spec) => spec.value);
 }
 
@@ -318,7 +322,7 @@ function phraseWithArticle(value: string, suffix: string) {
   return `${article} ${text} ${suffix}`;
 }
 
-function formatHeightDual(heightCm: number | undefined) {
+export function formatHeightDual(heightCm: number | undefined) {
   if (!heightCm || !Number.isFinite(heightCm)) return "";
   const totalInches = heightCm / 2.54;
   const feet = Math.floor(totalInches / 12);
@@ -328,8 +332,58 @@ function formatHeightDual(heightCm: number | undefined) {
   return `${feet} ft ${inches} in / ${Math.round(heightCm)} cm`;
 }
 
-function formatWeightDual(weightLb: number | undefined) {
+export function formatWeightDual(weightLb: number | undefined) {
   if (!weightLb || !Number.isFinite(weightLb)) return "";
   const kilograms = weightLb / 2.20462;
   return `${weightLb.toFixed(1)} lb / ${kilograms.toFixed(1)} kg`;
+}
+
+export function formatMeasurementDual(label: string, rawValue: string | number | undefined | null) {
+  const value = String(rawValue ?? "").replace(/\s+/g, " ").trim();
+  if (!value || /^(ask us|confirm|n\/?a|na|not applicable)$/i.test(value)) return value;
+
+  const normalizedLabel = normalizeMeasurementLabel(label);
+  if (normalizedLabel === "Cup size") return value;
+  if (normalizedLabel === "Weight") return dualWeightFromText(value);
+  if (MEASUREMENT_LABELS.includes(normalizedLabel)) return dualLengthFromText(value);
+  return value;
+}
+
+function dualWeightFromText(value: string) {
+  const poundMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:lb|lbs|pounds?)\b/i);
+  const kilogramMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:kg|kgs|kilograms?)\b/i);
+  let pounds = poundMatch ? Number(poundMatch[1]) : undefined;
+  let kilograms = kilogramMatch ? Number(kilogramMatch[1]) : undefined;
+  if (pounds === undefined && kilograms === undefined) return value;
+  if (pounds === undefined && kilograms !== undefined) pounds = kilograms * 2.20462;
+  if (kilograms === undefined && pounds !== undefined) kilograms = pounds / 2.20462;
+  return `${pounds!.toFixed(1)} lb / ${kilograms!.toFixed(1)} kg`;
+}
+
+function dualLengthFromText(value: string) {
+  const centimeterMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:cm|centimeters?)\b/i);
+  const feetMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:ft|feet|foot)\b/i);
+  const inchesMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:in|inch|inches)\b/i);
+  let centimeters = centimeterMatch ? Number(centimeterMatch[1]) : undefined;
+  let totalInches = feetMatch ? Number(feetMatch[1]) * 12 : 0;
+  if (inchesMatch) totalInches += Number(inchesMatch[1]);
+  const hasImperial = Boolean(feetMatch || inchesMatch);
+
+  if (centimeters === undefined && !hasImperial) return value;
+  if (!hasImperial && centimeters !== undefined) totalInches = Math.round(centimeters / 2.54);
+  if (centimeters === undefined) centimeters = totalInches * 2.54;
+
+  return `${formatImperialLength(totalInches)} / ${formatDecimal(centimeters, 1)} cm`;
+}
+
+function formatImperialLength(totalInches: number) {
+  const roundedInches = Math.round(totalInches);
+  if (roundedInches < 12) return `${roundedInches} in`;
+  const feet = Math.floor(roundedInches / 12);
+  const inches = roundedInches % 12;
+  return inches ? `${feet} ft ${inches} in` : `${feet} ft`;
+}
+
+function formatDecimal(value: number, maximumFractionDigits: number) {
+  return new Intl.NumberFormat("en-US", { maximumFractionDigits, minimumFractionDigits: 0 }).format(value);
 }
