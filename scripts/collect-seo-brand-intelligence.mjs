@@ -40,6 +40,12 @@ const DEFAULT_BRANDS = [
     keyword: "Real Lady sex doll",
     manufacturerDomain: "real-lady.com",
     dollwowUrl: "https://dollwow.com/brands/real-lady-dolls"
+  },
+  {
+    key: "6ye",
+    keyword: "6YE Doll",
+    manufacturerDomain: "6yedollglobal.com",
+    dollwowUrl: "https://dollwow.com/brands/6ye-dolls"
   }
 ];
 

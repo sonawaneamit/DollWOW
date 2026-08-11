@@ -62,7 +62,12 @@ const KEYWORD_TARGETS = {
   "dolls castle dolls": { pageType: "collection", targetPath: "/brands/dolls-castle" },
   "real lady": { pageType: "collection", targetPath: "/brands/real-lady-dolls" },
   "real lady sex doll": { pageType: "collection", targetPath: "/brands/real-lady-dolls" },
-  "real lady dolls": { pageType: "collection", targetPath: "/brands/real-lady-dolls" }
+  "real lady dolls": { pageType: "collection", targetPath: "/brands/real-lady-dolls" },
+  "6ye doll": { pageType: "collection", targetPath: "/brands/6ye-dolls" },
+  "6ye dolls": { pageType: "collection", targetPath: "/brands/6ye-dolls" },
+  "6ye sex doll": { pageType: "collection", targetPath: "/brands/6ye-dolls" },
+  "6ye doll review": { pageType: "learning-guide", targetPath: "/learn/6ye-dolls-buying-guide" },
+  "6ye dolls buying guide": { pageType: "learning-guide", targetPath: "/learn/6ye-dolls-buying-guide" }
 };
 
 const args = parseArgs(process.argv.slice(2));

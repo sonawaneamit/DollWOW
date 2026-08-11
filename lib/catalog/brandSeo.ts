@@ -242,7 +242,68 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   "6ye": {
     positioning:
-      "6YE Dolls is often compared by buyers reviewing price, body scale, and practical catalog options across silicone and related builds.",
+      "6YE Dolls is a TPE-focused manufacturer with a broad 6YE Premium range, an Amor premium label, silicone-head hybrid paths, and varied body formats.",
+    intro:
+      "Compare current 6YE Dolls on DollWow by 6YE Premium or Amor range, TPE body, TPE or silicone head, height, listed weight, measurements, body and head pairing, price, availability, and supported options. The wider manufacturer catalog includes female and male full dolls, compact formats, torsos, separate heads, and model-specific skeleton or head features. Start with the exact product form and construction, then confirm the final body, head, connector, standing, and custom-option combination with DollWow before production.",
+    metaDescription:
+      "Shop 6YE Dolls by Premium or Amor range, TPE body, TPE or silicone head, size, weight, price, availability, and custom options.",
+    buyerNotes: [
+      {
+        title: "Start with the product form",
+        body: "6YE's wider range includes full dolls, compact formats, torsos, separate heads, and male products. Check exactly which body areas are included before comparing price or dimensions."
+      },
+      {
+        title: "Check body and head materials separately",
+        body: "A TPE body can be paired with a TPE or supported silicone head. The choice affects appearance, feel, care, weight, price, and available head functions."
+      },
+      {
+        title: "Plan the lift and route",
+        body: "Use the listed body weight, head weight, height, and complete measurements to plan delivery access, lifting, posing, and storage in your space."
+      }
+    ],
+    comparisonRows: [
+      [
+        "6YE Premium or Amor",
+        "The range label, body sculpt, finish, included construction, and option set can differ between products.",
+        "Compare the exact product page and final build rather than treating Amor as a universal upgrade package."
+      ],
+      [
+        "Body and head pairing",
+        "Body size, neck fitting, connector, head material, face, and optional functions must work together.",
+        "DollWow checks the requested body and head combination with the supplier before an eligible custom order enters production."
+      ],
+      [
+        "Skeleton, hands, and feet",
+        "Gear skeletons, standing support, articulated details, and newer head features are model-specific.",
+        "Confirm every required handling or posing feature on the exact listing instead of assuming it applies across 6YE."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What is the difference between 6YE Premium and Amor Doll?",
+        answer: "6YE presents Amor as a premium label within its wider range. The exact body, head, material, finish, and options still depend on the product, so compare the final specification rather than the label alone."
+      },
+      {
+        question: "Are 6YE Dolls made from TPE or silicone?",
+        answer: "6YE is primarily TPE-focused. Current DollWow listings can pair a TPE body with a TPE or supported silicone head, so check the body and head materials separately."
+      },
+      {
+        question: "Does 6YE make male dolls and compact products?",
+        answer: "The wider 6YE catalog includes male products, compact formats, torsos, separate heads, and female full dolls. DollWow shows only the currently available models it can support."
+      },
+      {
+        question: "Can every 6YE head fit every 6YE body?",
+        answer: "Do not assume so. Body size, neck fitting, connector, head material, and optional functions can affect compatibility. Ask DollWow to confirm the exact pairing before production."
+      },
+      {
+        question: "Do all 6YE Dolls have the same skeleton and standing features?",
+        answer: "No. Gear skeletons, standing support, articulated hands or feet, and newer head functions vary by model and selected configuration. Confirm each required feature on the product page."
+      },
+      {
+        question: "Can DollWow add a 6YE model that is missing?",
+        answer: "Send the product name or official link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ],
     guideHref: "/learn/6ye-dolls-buying-guide",
     guideLabel: "6YE Dolls buying guide"
   },
