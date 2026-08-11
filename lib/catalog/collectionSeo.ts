@@ -283,7 +283,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "sex-dolls":
     "Shop sex dolls across the full DollWow catalog with filters for material, body type, height, weight, price, availability, and custom options. Compare measurements, photos, delivery timing, and buyer protection before making a private purchase. If a specific detail matters, ask our team to confirm it before checkout.",
   "realistic-sex-dolls":
-    "Realistic sex dolls should be compared by more than face photos. Use this collection to review body proportions, material, skin finish, measurements, weight, and customization options across DollWow listings. A realistic look can depend on the exact head, body, wig, eyes, faceup, and final configuration, so compare the product page carefully and ask support to confirm any detail that affects the finished build.",
+    "Shop full-body, full-silicone candidates for the most realistic sex doll based on proportions, face sculpt, skin finish, eyes, hands, feet, measurements, weight, and final configuration. Full silicone is a useful starting pool for fine sculpt detail, but material and price do not create an objective realism ranking. Compare several angles, verify the exact head-and-body pairing, and consider TPE or hybrid builds when softness, feel, or a different construction matters more to you.",
   "mini-sex-dolls":
     "Shop full mini sex dolls with a known height up to 120 cm / 3 ft 11 in. Mini describes physical size only, and every DollWow product is sold for adults. Compare listed weight, complete measurements, material, stock status, customization, storage orientation, and handling needs. If you can accommodate a taller compact body, compare the separate petite collection from 121 to 154 cm / 4 ft to 5 ft 1 in.",
   "cheap-sex-dolls":
@@ -304,7 +304,7 @@ const collectionIntroByHandle: Record<string, string> = {
 
 const collectionMetaDescriptions: Record<string, string> = {
   "sex-dolls": "Shop sex dolls by material, height, weight, price, stock status, and custom options with DollWow buyer guides and support links.",
-  "realistic-sex-dolls": "Compare realistic sex dolls by proportions, material, measurements, finish, weight, and customization before choosing a DollWow listing.",
+  "realistic-sex-dolls": "Shop candidates for the most realistic sex dolls by proportions, face, skin finish, eyes, hands, weight, photos, and final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
@@ -332,16 +332,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   "realistic-sex-dolls": [
     {
-      title: "Realism starts with proportions",
-      body: "Face detail matters, but height, body proportions, skin finish, eyes, hands, poseability, and final configuration shape the realistic effect."
+      title: "There is no universal number one",
+      body: "Realism depends on your preferred face, proportions, finish, softness, styling, and practical limits. Use this collection as a full-silicone candidate pool, not a fixed ranking."
     },
     {
-      title: "Photos need context",
-      body: "Product images may show a sample or a specific option set. Confirm the exact head, body, wig, eyes, and material before treating photos as a match."
+      title: "Compare the complete build",
+      body: "Review full-body proportions, face angles, eyes, hands, feet, skin finish, listed weight, and pose support before focusing on one close-up image."
     },
     {
-      title: "Balance realism with handling",
-      body: "Larger and more detailed builds can be heavier or harder to store. Check weight and dimensions alongside appearance."
+      title: "Confirm the photographed options",
+      body: "A gallery may show a reference build. Match the selected head, body, tone, eyes, hair, faceup, and options to what you can actually order."
     }
   ],
   "mini-sex-dolls": [
@@ -469,9 +469,14 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "BestRealDoll alternatives", href: "/learn/bestrealdoll-alternatives" }
   ],
   "realistic-sex-dolls": [
-    { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },
+    { label: "Learn how to judge doll realism", href: "/learn/most-realistic-sex-dolls" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Browse TPE sex dolls", href: "/shop/tpe" },
+    { label: "Browse hybrid dolls", href: "/shop/hybrid" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   "mini-sex-dolls": [
@@ -561,19 +566,19 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   "realistic-sex-dolls": [
     {
-      factor: "Realism criteria",
-      whyItMatters: "Realism depends on proportions, face detail, eyes, skin finish, pose support, and final configuration.",
-      dollWowAdvantage: "DollWow pairs realistic listings with guides that explain what to verify beyond photos."
+      factor: "Transparent candidate rule",
+      whyItMatters: "No catalog tag or material can objectively identify one most-realistic doll for every buyer.",
+      dollWowAdvantage: "DollWow starts with full-body, full-silicone candidates and explains the rule instead of presenting an invented ranking."
     },
     {
-      factor: "Product proof",
-      whyItMatters: "A photo may show a sample, reference build, or a specific option set.",
-      dollWowAdvantage: "Product pages and support help buyers confirm the exact head, body, material, and options."
+      factor: "Complete visual test",
+      whyItMatters: "A close face photo can hide proportions, hand detail, body finish, posing limits, and configuration mismatches.",
+      dollWowAdvantage: "Product pages, filters, and the realism guide help buyers compare full-body facts, multiple angles, measurements, and handling weight."
     },
     {
-      factor: "Practical fit",
-      whyItMatters: "The most realistic-looking doll can still be too heavy, too large, or wrong for storage.",
-      dollWowAdvantage: "Filters and product cards keep height, weight, material, and delivery path visible during comparison."
+      factor: "Build confirmation",
+      whyItMatters: "Head, body, tone, eyes, hair, faceup, skeleton, and functions can change what the finished doll looks like.",
+      dollWowAdvantage: "DollWow reviews eligible custom selections before production and provides a factory-media approval path where supported."
     }
   ],
   "mini-sex-dolls": [
@@ -736,17 +741,37 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "What makes a sex doll look realistic?",
       answer:
-        "Realism usually comes from balanced proportions, face sculpt, skin finish, eyes, hands, material, and how well the final configuration matches the listing photos."
+        "Balanced proportions, coherent head scale, face sculpt, eye placement, skin finish, hands, feet, hair, natural posing, and a well-matched final configuration work together to create realism."
     },
     {
-      question: "Do realistic sex dolls always cost more?",
+      question: "Are silicone sex dolls more realistic than TPE dolls?",
       answer:
-        "Not always. Price depends on material, size, brand, customization, stock status, and included options. Compare the exact product facts rather than relying on the realism label alone."
+        "Silicone can hold fine sculpt and surface detail, while TPE is often chosen for a softer feel. Either can look realistic, so compare the exact face, proportions, finish, eyes, styling, and photographs rather than material alone."
     },
     {
-      question: "Should I confirm photos before ordering a realistic doll?",
+      question: "Why does this collection start with full-silicone dolls?",
       answer:
-        "Yes. Product photos may show a sample, reference build, or specific configuration. Confirm the exact head, body, material, wig, eyes, and options before checkout."
+        "Full silicone is a useful candidate pool for fine sculpt and surface detail and aligns with this search cluster. It is not an objective realism score, and buyers should also compare TPE or hybrid construction when softness or feel matters more."
+    },
+    {
+      question: "Do expensive dolls always look more realistic?",
+      answer:
+        "No. Price can reflect material, size, brand, labor, options, freight, and production complexity. It does not guarantee better proportions, face detail, or a more coherent final configuration."
+    },
+    {
+      question: "Should I confirm product photos before ordering?",
+      answer:
+        "Yes. A gallery may show a sample or specific option set. Confirm the exact head, body, material, skin tone, eyes, hair, faceup, and supported options before checkout."
+    },
+    {
+      question: "Does a heavier doll feel more realistic?",
+      answer:
+        "Weight can add physical presence, but heavier is not automatically more realistic. Use listed weight to judge carrying, positioning, cleaning, and storage fit."
+    },
+    {
+      question: "Can custom options improve realism?",
+      answer:
+        "They can when the eyes, hair, skin tone, faceup, head, and body work together. A mismatched or incompatible option set can make the finished build less coherent."
     }
   ],
   "mini-sex-dolls": [

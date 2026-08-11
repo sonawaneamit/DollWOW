@@ -97,6 +97,23 @@ describe("catalog filters", () => {
     expect(filterProducts([fullDoll, torso, hybrid], collectionPresets.tpe.filters).map((product) => product.id)).toEqual(["full-tpe"]);
   });
 
+  it("uses full-silicone dolls as the realistic collection candidate pool", () => {
+    const fullSilicone = { ...sampleProducts[0], id: "realistic-candidate", productType: "Custom Silicone doll", tags: ["silicone", "full-doll"] };
+    const tpe = {
+      ...sampleProducts[0],
+      id: "tpe-full",
+      title: "TPE Full Doll",
+      productType: "Custom TPE doll",
+      tags: ["tpe", "full-doll"],
+      extended: { ...sampleProducts[0].extended, material: "TPE", sourceTitle: "TPE Full Doll" }
+    };
+    const siliconeTorso = { ...sampleProducts[0], id: "silicone-torso", productType: "Custom Silicone torso", tags: ["silicone", "torso"] };
+
+    expect(filterProducts([fullSilicone, tpe, siliconeTorso], collectionPresets["realistic-sex-dolls"].filters).map((product) => product.id)).toEqual([
+      "realistic-candidate"
+    ]);
+  });
+
   it("filters ready-to-ship products by every supported warehouse region", () => {
     const usAndEu = {
       ...sampleProducts[0],

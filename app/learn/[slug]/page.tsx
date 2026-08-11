@@ -706,10 +706,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: {}
     },
     "most-realistic-sex-dolls": {
-      title: "Compare realistic-detail candidates",
-      description: "Silicone and silicone-head listings are useful starting points for comparing sculpt detail, finish, and configuration notes.",
+      title: "Six full-silicone realism candidates",
+      description: "This mixed set spans six DollWow brands, varied heights, body proportions, finishes, and handling weights. Use it to compare details, not as a universal best-of ranking.",
       collectionHref: "/shop/realistic-sex-dolls",
-      filters: { material: "silicone" }
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "real-lady-sylvia-170cm-s43-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0",
+        "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc"
+      ]
     },
     "mini-sex-dolls": {
       title: "Compare compact catalog options",
