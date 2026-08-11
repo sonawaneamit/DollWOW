@@ -36,7 +36,8 @@ const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 const hiddenArticleSlugs = new Set([
   "zelex-dolls-buying-guide",
   "tpe-sex-doll-repair",
-  "silicone-sex-doll-repair"
+  "silicone-sex-doll-repair",
+  "how-silicone-sex-dolls-are-made"
 ]);
 const internalHeadings = [
   "DollWow Catalog Links To Add",

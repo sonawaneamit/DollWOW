@@ -137,7 +137,10 @@ const KEYWORD_TARGETS = {
   "tpe doll glue": { pageType: "learning-guide", targetPath: "/learn/tpe-sex-doll-repair" },
   "silicone sex doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
   "how to repair silicone sex doll": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
-  "silicone doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" }
+  "silicone doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
+  "how are silicone sex dolls made": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
+  "how sex dolls are made": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
+  "silicone sex doll manufacturing process": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" }
 };
 
 const args = parseArgs(process.argv.slice(2));
