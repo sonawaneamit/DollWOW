@@ -113,7 +113,10 @@ const KEYWORD_TARGETS = {
   "sex doll laws": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
   "discreet sex doll shipping": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" },
   "sex doll shipping": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" },
-  "sex doll delivery": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" }
+  "sex doll delivery": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" },
+  "ready to ship vs custom sex dolls": { pageType: "learning-guide", targetPath: "/learn/ready-to-ship-vs-custom-sex-dolls" },
+  "made to order sex doll": { pageType: "learning-guide", targetPath: "/learn/ready-to-ship-vs-custom-sex-dolls" },
+  "factory order sex doll": { pageType: "learning-guide", targetPath: "/learn/ready-to-ship-vs-custom-sex-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));
