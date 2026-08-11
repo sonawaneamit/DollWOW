@@ -34,6 +34,7 @@ const KEYWORD_TARGETS = {
   "sex doll": { pageType: "collection", targetPath: "/shop/sex-dolls" },
   "realistic sex dolls": { pageType: "collection", targetPath: "/shop/realistic-sex-dolls" },
   "tpe sex doll": { pageType: "collection", targetPath: "/shop/tpe" },
+  "tpe sex dolls": { pageType: "collection", targetPath: "/shop/tpe" },
   "tpe dolls": { pageType: "collection", targetPath: "/shop/tpe" },
   "silicone sex dolls": { pageType: "collection", targetPath: "/shop/silicone" },
   "male sex doll": { pageType: "collection", targetPath: "/shop/male-dolls" },

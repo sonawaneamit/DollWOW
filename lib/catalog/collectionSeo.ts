@@ -289,7 +289,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "cheap-sex-dolls":
     "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
   tpe:
-    "TPE dolls are often chosen for their softer feel, flexible posing, and lower starting price compared with many silicone dolls. Compare TPE sex dolls by height, weight, body shape, availability, and custom options, then read the material guide for cleaning, storage, and handling advice.",
+    "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
     "Shop full silicone sex dolls by height, weight, body shape, finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. A silicone head on a TPE body is a hybrid build, not a full silicone doll. Check the material listed for both the head and body, then compare the exact measurements, carrying weight, photos, options, and production path before choosing a model.",
   "male-dolls":
@@ -307,7 +307,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "realistic-sex-dolls": "Compare realistic sex dolls by proportions, material, measurements, finish, weight, and customization before choosing a DollWow listing.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
-  tpe: "Shop TPE dolls by height, weight, body shape, price, stock status, and options, with DollWow material and care guidance.",
+  tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
@@ -374,16 +374,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   tpe: [
     {
-      title: "TPE is often value-focused",
-      body: "Many TPE dolls start at a lower price than comparable silicone builds, but final cost can change with size, options, shipping, and availability."
+      title: "Compare full TPE builds",
+      body: "This collection excludes hybrids, torsos, and hips. Use the separate product-form and hybrid collections when those formats fit your needs."
     },
     {
-      title: "Care routine matters",
-      body: "TPE can require careful cleaning, drying, powdering, and storage. Product-specific care guidance should beat generic assumptions."
+      title: "Softness varies by model",
+      body: "TPE is often softer than silicone, but formulation, body design, internal foam, and finish can change feel, flexibility, and handling weight."
     },
     {
-      title: "Check the material claim",
-      body: "Some listings mix TPE and silicone elements. Confirm the exact construction before comparing feel, price, or care needs."
+      title: "Plan the care routine",
+      body: "TPE generally needs gentle cleaning, complete drying, stain prevention, and careful storage. Follow the exact manufacturer guidance for the selected body."
     }
   ],
   silicone: [
@@ -493,9 +493,13 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
   ],
   tpe: [
+    { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
-    { label: "What TPE material means", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Learn how to clean a sex doll", href: "/learn/how-to-clean-a-sex-doll" },
+    { label: "Plan safe storage", href: "/learn/sex-doll-storage" },
+    { label: "Compare hybrid dolls", href: "/shop/hybrid" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "RosemaryDoll alternatives", href: "/learn/rosemarydoll-alternatives" }
   ],
   silicone: [
@@ -604,6 +608,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Delivered value",
       whyItMatters: "Options, shipping path, care needs, storage, and support can matter more than a small difference in starting price.",
       dollWowAdvantage: "DollWow connects live products with cost, material, fulfillment, and buyer-protection guidance before checkout."
+    }
+  ],
+  tpe: [
+    {
+      factor: "Material boundary",
+      whyItMatters: "A full TPE body and a silicone-head/TPE-body hybrid have different construction, care, appearance, and pricing tradeoffs.",
+      dollWowAdvantage: "DollWow keeps full-body TPE dolls in this collection and gives hybrids, torsos, and hips their own comparison paths."
+    },
+    {
+      factor: "Practical fit",
+      whyItMatters: "TPE softness does not predict height, carrying weight, storage needs, or how easy a doll will be to clean.",
+      dollWowAdvantage: "Filters and product pages keep dimensions, listed weight, body type, brand, availability, and options tied to the exact model."
+    },
+    {
+      factor: "Ownership guidance",
+      whyItMatters: "TPE formulations and finishes vary, so generic care claims can damage the wrong product.",
+      dollWowAdvantage: "The collection links directly to material, cleaning, storage, cost, shipping, and buyer-protection guidance before checkout."
     }
   ],
   silicone: [
@@ -796,19 +817,39 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   ],
   tpe: [
     {
-      question: "What should I compare on a TPE doll?",
+      question: "What is a TPE sex doll?",
       answer:
-        "Compare height, weight, body measurements, TPE formulation notes, stock status, skeleton options, care needs, and whether the product page clearly confirms the exact build."
+        "A TPE sex doll uses thermoplastic elastomer for the body. TPE formulations differ by manufacturer, so compare the exact model's feel, firmness, weight, finish, care instructions, and construction rather than assuming all TPE is identical."
     },
     {
       question: "Are TPE dolls cheaper than silicone dolls?",
       answer:
-        "Many TPE dolls start at a lower price than comparable silicone builds, but final cost depends on size, brand, options, shipping, and availability."
+        "Many TPE dolls start at a lower price than comparable full-silicone builds, but the final cost depends on product form, size, brand, options, availability, and delivery path. Compare equivalent products and the configured total."
     },
     {
-      question: "Do TPE dolls need special care?",
+      question: "Are TPE sex dolls soft?",
       answer:
-        "TPE usually needs careful surface cleaning, drying, and storage. Follow product-specific care guidance because material blends and finishes can vary."
+        "TPE is often chosen for softness and flexibility, but firmness varies by formulation, body design, internal foam, and manufacturer. Material alone cannot predict the feel of an exact model."
+    },
+    {
+      question: "How do you clean a TPE sex doll?",
+      answer:
+        "Use gentle, material-compatible products and follow the manufacturer's instructions for the exact doll. Avoid harsh chemicals and abrasion, rinse as directed, and dry every cleaned area completely before storage."
+    },
+    {
+      question: "Can TPE sex dolls stain?",
+      answer:
+        "Yes. Dark or untested fabrics, dyes, inks, and prolonged contact can transfer color to some TPE surfaces. Wash new clothing separately, test uncertain materials on a hidden area, and avoid long storage in dark garments."
+    },
+    {
+      question: "Is a silicone-head doll a TPE doll?",
+      answer:
+        "A silicone head paired with a TPE body is a hybrid. It is not a full TPE or full-silicone build, and the head and body may require different care. DollWow lists hybrids separately."
+    },
+    {
+      question: "What should I compare before buying a TPE sex doll?",
+      answer:
+        "Compare full-body versus compact form, height, listed weight, measurements, manufacturer, material notes, skeleton, supported options, availability, care needs, storage space, and final configured price."
     }
   ],
   silicone: [

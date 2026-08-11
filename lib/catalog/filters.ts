@@ -110,7 +110,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "male-dolls": { title: "Male dolls", filters: { bodyType: "male" } },
   ...lookCollectionPresets(),
   ...brandCollectionPresets(),
-  tpe: { title: "TPE dolls", filters: { material: "tpe" } },
+  tpe: { title: "TPE sex dolls", filters: { material: "tpe", productForm: "full-doll" } },
   silicone: { title: "Silicone sex dolls", filters: { material: "silicone" } },
   hybrid: { title: "Hybrid dolls", filters: { material: "hybrid" } },
   "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },

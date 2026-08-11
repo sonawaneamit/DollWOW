@@ -83,6 +83,20 @@ describe("catalog filters", () => {
     expect(filterProducts([fullDoll, torso, hips], { productForm: "hips" }).map((product) => product.id)).toEqual(["hips"]);
   });
 
+  it("keeps the TPE collection focused on full dolls", () => {
+    const fullDoll = { ...sampleProducts[0], id: "full-tpe", productType: "Custom TPE doll", tags: ["tpe", "full-doll"] };
+    const torso = { ...sampleProducts[0], id: "tpe-torso", productType: "Custom TPE torso doll", tags: ["tpe", "torso"] };
+    const hybrid = {
+      ...sampleProducts[0],
+      id: "tpe-hybrid",
+      title: "Silicone Head TPE Body Doll",
+      productType: "Custom hybrid doll",
+      tags: ["tpe", "silicone-head", "hybrid", "full-doll"]
+    };
+
+    expect(filterProducts([fullDoll, torso, hybrid], collectionPresets.tpe.filters).map((product) => product.id)).toEqual(["full-tpe"]);
+  });
+
   it("filters ready-to-ship products by every supported warehouse region", () => {
     const usAndEu = {
       ...sampleProducts[0],
