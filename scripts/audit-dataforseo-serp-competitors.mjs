@@ -69,7 +69,10 @@ const KEYWORD_TARGETS = {
   "6ye dolls": { pageType: "collection", targetPath: "/brands/6ye-dolls" },
   "6ye sex doll": { pageType: "collection", targetPath: "/brands/6ye-dolls" },
   "6ye doll review": { pageType: "learning-guide", targetPath: "/learn/6ye-dolls-buying-guide" },
-  "6ye dolls buying guide": { pageType: "learning-guide", targetPath: "/learn/6ye-dolls-buying-guide" }
+  "6ye dolls buying guide": { pageType: "learning-guide", targetPath: "/learn/6ye-dolls-buying-guide" },
+  "sex doll brands": { pageType: "brand-directory", targetPath: "/brands" },
+  "best sex doll brands": { pageType: "brand-directory", targetPath: "/brands" },
+  "sex dolls brands": { pageType: "brand-directory", targetPath: "/brands" }
 };
 
 const args = parseArgs(process.argv.slice(2));
