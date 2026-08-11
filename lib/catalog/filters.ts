@@ -126,7 +126,8 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "height-160-164": { title: "Dolls 160-164 cm", filters: { height: "160-164" } },
   "height-165-169": { title: "Dolls 165-169 cm", filters: { height: "165-169" } },
   "height-170-plus": { title: "Dolls 170 cm+", filters: { height: "170-999" } },
-  "lighter": { title: "Lighter dolls", filters: { weight: "0-74" } }
+  "lightweight-sex-dolls": { title: "Lightweight sex dolls", filters: { productForm: "full-doll", weight: "0-74" } },
+  "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } }
 };
 
 export function filtersFromSearchParams(params: Record<string, string | string[] | undefined> = {}): CatalogFilters {
@@ -279,9 +280,18 @@ function productMatchesMaterial(product: Product, material: string) {
 
 function productMatchesProductForm(product: Product, form: NonNullable<CatalogFilters["productForm"]>) {
   const tags = new Set(product.tags.map(tagForFilter));
-  const text = `${product.productType} ${product.title} ${product.extended.sourceTitle || ""}`.toLowerCase();
-  const isHips = /\b(hips?|hip torso|lower body|butt(?:ocks?)?)\b/.test(text);
-  const isTorso = !isHips && /\b(torsos?|upper body|half body)\b/.test(text);
+  const text = [
+    product.productType,
+    product.title,
+    product.extended.sourceTitle,
+    product.extended.catalogIdentityKey,
+    product.extended.catalogBodyIdentityKey,
+    product.featuredImage?.altText,
+    product.featuredImage?.url
+  ].filter(Boolean).join(" ").toLowerCase();
+  const inferredCompactForm = compactPartialProductForm(product);
+  const isHips = inferredCompactForm === "hips" || /\b(hips?|hip torso|lower body|butt(?:ocks?)?|big[\s_-]+ass)\b/.test(text);
+  const isTorso = !isHips && (inferredCompactForm === "torso" || /\b(torsos?|upper body|half body|partial body|body only|body profile)\b/.test(text));
   const isStandaloneHead = /\b(replacement head|standalone head|doll head|head only)\b/.test(text);
   if (isStandaloneHead) return false;
   if (isHips || tags.has("hips")) return form === "hips";
@@ -290,6 +300,33 @@ function productMatchesProductForm(product: Product, form: NonNullable<CatalogFi
   if (form === "hips") return isHips;
   if (form === "torso") return isTorso;
   return !isHips && !isTorso;
+}
+
+function compactPartialProductForm(product: Product): "torso" | "hips" | null {
+  const heightCm = Number(product.extended.heightCm || 0);
+  const measurements = product.extended.measurements;
+  if (!measurements || heightCm <= 0 || heightCm > 120) return null;
+
+  const normalized = new Map(
+    Object.entries(measurements).map(([key, value]) => [key.toLowerCase().replace(/[^a-z0-9]+/g, ""), String(value || "").trim()])
+  );
+  const limbKeys = ["feetlength", "legslength", "armslength"];
+  const hasCompleteLimbProfile = limbKeys.every((key) => normalized.has(key));
+  const unavailableLimbMeasurements = limbKeys.filter((key) => isUnavailableMeasurement(normalized.get(key))).length;
+  if (!hasCompleteLimbProfile || unavailableLimbMeasurements < 2) return null;
+
+  const hasBust = ["bust", "upperbust", "upperchest"].some((key) => isAvailableMeasurement(normalized.get(key)));
+  const hasWaistOrHip = ["waist", "hip", "hipcircumference"].some((key) => isAvailableMeasurement(normalized.get(key)));
+  if (!hasWaistOrHip) return null;
+  return hasBust ? "torso" : "hips";
+}
+
+function isAvailableMeasurement(value: string | undefined) {
+  return Boolean(value) && !isUnavailableMeasurement(value);
+}
+
+function isUnavailableMeasurement(value: string | undefined) {
+  return !value || /^(?:n\/?a|none|unknown|not available|-|0)$/i.test(value.trim());
 }
 
 function shopifyMaterialQuery(material: string) {

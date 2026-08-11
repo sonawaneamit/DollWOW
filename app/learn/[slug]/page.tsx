@@ -1404,7 +1404,7 @@ function relatedCollections(slug: string) {
     "mini-sex-dolls": [
       { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare full dolls up to 120 cm / 3 ft 11 in." },
       { label: "Petite sex dolls", href: "/shop/petite-dolls", description: "Compare compact full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in." },
-      { label: "Lighter dolls", href: "/shop/lighter", description: "Start with listed weight when handling is the main constraint." }
+      { label: "Lightweight sex dolls", href: "/shop/lightweight-sex-dolls", description: "Start with listed weight when handling is the main constraint." }
     ],
     "most-realistic-sex-dolls": [
       { label: "Silicone dolls", href: "/shop/silicone", description: "Compare premium material builds and sculpt detail." },
@@ -1431,7 +1431,7 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-storage": [
       { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact listings for smaller storage spaces." },
-      { label: "Lighter dolls", href: "/shop/lighter", description: "Start with listed weight when handling is the main constraint." },
+      { label: "Lightweight sex dolls", href: "/shop/lightweight-sex-dolls", description: "Start with listed weight when handling is the main constraint." },
       { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Clean and dry fully before storage." }
     ],
     "sex-doll-maintenance-checklist": [

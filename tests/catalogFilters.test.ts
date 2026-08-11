@@ -83,6 +83,82 @@ describe("catalog filters", () => {
     expect(filterProducts([fullDoll, torso, hips], { productForm: "hips" }).map((product) => product.id)).toEqual(["hips"]);
   });
 
+  it("lets structural partial-body evidence override a misleading full-doll tag", () => {
+    const hipsWithWrongTag = {
+      ...sampleProducts[0],
+      id: "misleading-hips",
+      title: "Daisy 29cm Customizable Companion Doll",
+      productType: "Custom Adult doll",
+      tags: ["customizable", "full-doll"],
+      extended: {
+        ...sampleProducts[0].extended,
+        heightCm: 29,
+        measurements: {
+          Height: "11 in / 29 cm",
+          Bust: "N/A",
+          Waist: "1 ft 11 in / 59.5 cm",
+          Hip: "3 ft 10 in / 117.5 cm",
+          "Feet Length": "N/A",
+          "Legs Length": "11 in / 28 cm",
+          "Arms Length": "N/A"
+        }
+      }
+    };
+    const torsoWithWrongTag = {
+      ...sampleProducts[0],
+      id: "misleading-torso",
+      title: "Jenny 90cm D-Cup Customizable Companion Doll",
+      productType: "Custom Adult doll",
+      tags: ["customizable", "full-doll"],
+      extended: {
+        ...sampleProducts[0].extended,
+        heightCm: 90,
+        measurements: {
+          Height: "2 ft 11 in / 90 cm",
+          Bust: "2 ft 8 in / 81 cm",
+          Waist: "1 ft 12 in / 60 cm",
+          Hip: "3 ft 4 in / 101 cm",
+          "Feet Length": "N/A",
+          "Legs Length": "N/A",
+          "Arms Length": "N/A"
+        }
+      }
+    };
+    const torsoFromSourceSignal = {
+      ...sampleProducts[0],
+      id: "source-torso",
+      title: "Compact Silicone Doll",
+      productType: "Custom Silicone doll",
+      tags: ["silicone", "full-doll"],
+      extended: { ...sampleProducts[0].extended, sourceTitle: "Body profile torso" }
+    };
+    const completeMiniDoll = {
+      ...sampleProducts[0],
+      id: "complete-mini",
+      title: "Complete Mini Doll 90cm",
+      productType: "Custom Silicone doll",
+      tags: ["silicone", "full-doll"],
+      extended: {
+        ...sampleProducts[0].extended,
+        heightCm: 90,
+        measurements: {
+          Height: "2 ft 11 in / 90 cm",
+          Bust: "2 ft 3 in / 70 cm",
+          Waist: "1 ft 8 in / 50 cm",
+          Hip: "2 ft 7 in / 80 cm",
+          "Feet Length": "7 in / 18 cm",
+          "Legs Length": "1 ft 10 in / 56 cm",
+          "Arms Length": "1 ft 4 in / 41 cm"
+        }
+      }
+    };
+    const products = [hipsWithWrongTag, torsoWithWrongTag, torsoFromSourceSignal, completeMiniDoll];
+
+    expect(filterProducts(products, { productForm: "full-doll" }).map((product) => product.id)).toEqual(["complete-mini"]);
+    expect(filterProducts(products, { productForm: "torso" }).map((product) => product.id)).toEqual(["misleading-torso", "source-torso"]);
+    expect(filterProducts(products, { productForm: "hips" }).map((product) => product.id)).toEqual(["misleading-hips"]);
+  });
+
   it("keeps the TPE collection focused on full dolls", () => {
     const fullDoll = { ...sampleProducts[0], id: "full-tpe", productType: "Custom TPE doll", tags: ["tpe", "full-doll"] };
     const torso = { ...sampleProducts[0], id: "tpe-torso", productType: "Custom TPE torso doll", tags: ["tpe", "torso"] };
@@ -235,6 +311,55 @@ describe("catalog filters", () => {
 
     expect(collectionPresets["cheap-sex-dolls"].filters).toEqual({ price: "0-1000", sort: "price-asc" });
     expect(filterProducts([aboveBoundary, affordable], collectionPresets["cheap-sex-dolls"].filters).map((product) => product.id)).toEqual(["affordable"]);
+  });
+
+  it("keeps the lightweight collection below 75 lb", () => {
+    const lightweight = {
+      ...sampleProducts[0],
+      id: "lightweight",
+      extended: { ...sampleProducts[0].extended, weightLb: 74 }
+    };
+    const boundary = {
+      ...sampleProducts[0],
+      id: "boundary",
+      extended: { ...sampleProducts[0].extended, weightLb: 75 }
+    };
+    const unknownWeight = {
+      ...sampleProducts[0],
+      id: "unknown-weight",
+      extended: { ...sampleProducts[0].extended, weightLb: 0 }
+    };
+
+    expect(collectionPresets["lightweight-sex-dolls"]).toEqual({
+      title: "Lightweight sex dolls",
+      filters: { productForm: "full-doll", weight: "0-74" }
+    });
+    expect(filterProducts(
+      [boundary, unknownWeight, lightweight],
+      collectionPresets["lightweight-sex-dolls"].filters
+    ).map((product) => product.id)).toEqual(["lightweight"]);
+  });
+
+  it("uses source release order for the new sex dolls collection", () => {
+    const earlier = {
+      ...sampleProducts[0],
+      id: "earlier-release",
+      extended: { ...sampleProducts[0].extended, sourceReleaseRank: 2 }
+    };
+    const newer = {
+      ...sampleProducts[0],
+      id: "newer-release",
+      extended: { ...sampleProducts[0].extended, sourceReleaseRank: 8 }
+    };
+
+    expect(collectionPresets["new-sex-dolls"]).toEqual({
+      title: "New sex dolls",
+      filters: { sort: "latest" }
+    });
+    expect(filterProducts([earlier, newer], collectionPresets["new-sex-dolls"].filters).map((product) => product.id)).toEqual([
+      "newer-release",
+      "earlier-release"
+    ]);
   });
 
   it("keeps appearance collections on their researched canonical titles and filters", () => {

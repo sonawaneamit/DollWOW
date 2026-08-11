@@ -290,6 +290,10 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop petite sex dolls with a known height from 121 to 154 cm / 4 ft to 5 ft 1 in. This collection is limited to complete dolls and keeps mini dolls up to 120 cm / 3 ft 11 in, torsos, hips products, and standalone heads on separate paths. Compare listed weight, body measurements, material, proportions, delivery route, cleaning space, storage, and supported options before choosing a compact full-body model.",
   "cheap-sex-dolls":
     "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
+  "lightweight-sex-dolls":
+    "Shop full-body lightweight sex dolls with a listed weight under 75 lb / 34 kg. This is DollWow's consistent shopping boundary, not a universal industry standard or a promise that every model will feel easy for every buyer to lift. Compare exact weight, height, width, material, grip points, delivery access, cleaning route, and storage position before choosing. If a reduced-weight option matters, ask our team to confirm that it is supported on the exact body.",
+  "new-sex-dolls":
+    "Browse new sex dolls and recent catalog additions with the latest supported releases shown first. New does not automatically mean better for your needs, and a release order is not proof of current stock or a universal manufacturer launch date. Compare the exact material, height, listed weight, body and head pairing, options, starting price, availability, and production path. If you have seen a newer approved model elsewhere, send our team the name or supplier link and we will check whether it can be added.",
   "asian-dolls":
     "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
   "black-dolls":
@@ -316,6 +320,8 @@ const collectionMetaDescriptions: Record<string, string> = {
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
+  "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
+  "new-sex-dolls": "Browse new sex dolls and recent catalog additions. Compare latest-supported models by material, size, weight, options, price, and availability.",
   "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
@@ -396,6 +402,34 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     {
       title: "Check full dolls and compact formats",
       body: "Lower-priced results can include full dolls, torsos, hips, or smaller models. Use the product-form and measurement filters to compare like with like."
+    }
+  ],
+  "lightweight-sex-dolls": [
+    {
+      title: "Use the listed weight",
+      body: "DollWow includes products under 75 lb / 34 kg in this collection. Check the exact pounds and kilograms because a difference of 10 to 20 lb / 4.5 to 9 kg can materially change handling."
+    },
+    {
+      title: "Plan the full route",
+      body: "Measure doors, stairs, cleaning space, drying space, and storage access. A doll can be lighter than another model and still be awkward because of its height, width, or balance."
+    },
+    {
+      title: "Keep product forms separate",
+      body: "This collection focuses on full dolls. Mini and petite full dolls, torsos, and hips products have separate paths so you can compare the format that best fits your space and handling needs."
+    }
+  ],
+  "new-sex-dolls": [
+    {
+      title: "Newest supported models first",
+      body: "The catalog uses available source-release order to bring newer additions forward. Open the exact product for current specifications, options, price, and availability."
+    },
+    {
+      title: "Compare the improvement",
+      body: "A new head, body, material, or feature only matters when it improves realism, handling, care, compatibility, or another priority you actually value."
+    },
+    {
+      title: "Ask for a model you have seen",
+      body: "Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
   "asian-dolls": [
@@ -556,6 +590,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   ],
   "petite-dolls": [
     { label: "Compare mini and petite sizes", href: "/learn/mini-sex-dolls" },
+    { label: "Browse torso sex dolls", href: "/shop/torsos" },
     { label: "Browse mini sex dolls", href: "/shop/mini-sex-dolls" },
     { label: "Browse torso sex dolls", href: "/shop/torsos" },
     { label: "Plan private storage", href: "/learn/sex-doll-storage" },
@@ -575,6 +610,22 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" }
+  ],
+  "lightweight-sex-dolls": [
+    { label: "Compare mini and petite sizes", href: "/learn/mini-sex-dolls" },
+    { label: "Plan private storage", href: "/learn/sex-doll-storage" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Ask how ordering works", href: "/how-ordering-works" }
+  ],
+  "new-sex-dolls": [
+    { label: "Browse all sex dolls", href: "/shop/sex-dolls" },
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Browse ready-to-ship dolls", href: "/shop/ready-to-ship" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
   ],
   "asian-dolls": [
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
@@ -755,6 +806,40 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Delivered value",
       whyItMatters: "Options, shipping path, care needs, storage, and support can matter more than a small difference in starting price.",
       dollWowAdvantage: "DollWow connects live products with cost, material, fulfillment, and buyer-protection guidance before checkout."
+    }
+  ],
+  "lightweight-sex-dolls": [
+    {
+      factor: "Exact handling weight",
+      whyItMatters: "Lightweight is not standardized, and the same height can have very different finished weights across materials and internal construction.",
+      dollWowAdvantage: "DollWow uses a clear under-75-lb / 34-kg collection boundary and keeps the exact listed weight tied to each product."
+    },
+    {
+      factor: "Size and balance",
+      whyItMatters: "A lighter doll can still be difficult to move through doors, stairs, bathrooms, or storage spaces.",
+      dollWowAdvantage: "Buyers can compare height, measurements, material, and weight across full dolls while torsos and hips products remain on separate paths."
+    },
+    {
+      factor: "Reduced-weight build",
+      whyItMatters: "Weight-reduction systems can vary by manufacturer, body, material, production batch, and selected options.",
+      dollWowAdvantage: "DollWow can confirm supported weight-reduction options and the expected finished build before an eligible custom order enters production."
+    }
+  ],
+  "new-sex-dolls": [
+    {
+      factor: "Release context",
+      whyItMatters: "New-arrival labels can refer to a manufacturer release, a retailer addition, a new head, or a new body, which are not always the same event.",
+      dollWowAdvantage: "DollWow shows recent supported catalog additions first and keeps the exact brand, head, body, materials, and photographs tied to each product."
+    },
+    {
+      factor: "Practical improvement",
+      whyItMatters: "A newer model is not automatically easier to handle, more realistic, better value, or better suited to your storage and care routine.",
+      dollWowAdvantage: "Buyers can compare measurements, listed weight, material, price, availability, and options before deciding whether the newer release is a meaningful upgrade."
+    },
+    {
+      factor: "Missing release",
+      whyItMatters: "A recently announced model may not yet be published in every approved retailer catalog.",
+      dollWowAdvantage: "Send live chat or hello@dollwow.com the model name or supplier link. Most approved additions can go live within 4 to 6 hours after confirmation."
     }
   ],
   "asian-dolls": [
@@ -1066,6 +1151,58 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Is the price shown on the collection page final?",
       answer:
         "It is the current starting catalog price. Open the product page to review the latest price, supported options, and any additional costs before checkout."
+    }
+  ],
+  "lightweight-sex-dolls": [
+    {
+      question: "What counts as a lightweight sex doll on DollWow?",
+      answer: "DollWow uses a listed full-doll weight under 75 lb / 34 kg as the collection boundary. There is no universal industry definition, so compare the exact weight and dimensions rather than relying on the label alone."
+    },
+    {
+      question: "Are lightweight sex dolls easy to lift?",
+      answer: "They can be easier to handle than heavier models, but ability, grip, height, width, balance, stairs, and storage access all matter. Plan the complete route before ordering."
+    },
+    {
+      question: "Are mini or petite sex dolls always lightweight?",
+      answer: "No. Height and weight are different measurements. A shorter doll can still be dense, while a taller body may use a supported weight-reduction system. Check both measurements."
+    },
+    {
+      question: "Does TPE or silicone weigh less?",
+      answer: "Material alone does not determine the finished weight. Body size, internal foam, skeleton, head, and options all contribute, so compare the exact listed pounds and kilograms."
+    },
+    {
+      question: "Can I request an ultra-lightweight build?",
+      answer: "Some manufacturers offer reduced-weight or ultra-lightweight options on selected bodies. Send the product link through live chat or hello@dollwow.com and our team will confirm whether the option is supported and how it affects the build."
+    },
+    {
+      question: "Can DollWow help find a lighter model that is not listed?",
+      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "new-sex-dolls": [
+    {
+      question: "How does DollWow order new sex dolls?",
+      answer: "Products with available source-release information are shown with newer supported additions first. Release order can differ from a manufacturer's announcement date or the date another retailer added the same model."
+    },
+    {
+      question: "Are all products on this page newly released?",
+      answer: "The newest supported catalog additions appear first, while deeper pages can include earlier releases. Open the exact product and ask support if the release timing affects your decision."
+    },
+    {
+      question: "Does new mean ready to ship?",
+      answer: "No. A new model can be made to order or held in a warehouse. Check the exact availability and ask DollWow to confirm the unit and expected timing before payment."
+    },
+    {
+      question: "Are newer sex dolls always more realistic?",
+      answer: "No. Realism depends on the specific face, body, skin finish, eyes, hair, proportions, material, articulation, and final configuration. Compare the actual build rather than its release order."
+    },
+    {
+      question: "Can I customize a new sex doll?",
+      answer: "Many new models support custom choices, but availability and compatibility vary by brand, body, head, and material. Review the product page and ask support to confirm any important option."
+    },
+    {
+      question: "Can DollWow add a new model that is missing?",
+      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
   "asian-dolls": [

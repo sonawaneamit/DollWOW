@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/shop/lighter",
+        destination: "/shop/lightweight-sex-dolls",
+        permanent: true
+      }
+    ];
+  },
   turbopack: {
     root: process.cwd()
   },
