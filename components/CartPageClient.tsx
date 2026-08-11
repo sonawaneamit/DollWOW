@@ -219,7 +219,6 @@ export function CartPageClient() {
           Shipping, taxes, and any custom options are confirmed at checkout. Custom builds include factory photo
           approval before anything ships.
         </p>
-        <Care365Seal compact className="mt-4" />
         {cart.checkoutError ? <p className="mt-3 text-sm text-danger">{cart.checkoutError}</p> : null}
         <button
           type="button"
@@ -230,6 +229,7 @@ export function CartPageClient() {
           {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
           Secure checkout
         </button>
+        <Care365Seal disclosure className="mt-3" />
         <p className="mt-3 text-center text-sm leading-4 text-ivory-500">
           Plain packaging · neutral billing · buyer protection
         </p>

@@ -205,7 +205,6 @@ export function CartDrawer() {
               <strong className="text-lg text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
             </div>
             <p className="mt-1 text-sm leading-4 text-ivory-500">Shipping and any custom options are confirmed at checkout.</p>
-            <Care365Seal compact className="mt-3" />
             {cart.checkoutError ? <p className="mt-2 text-sm text-danger">{cart.checkoutError}</p> : null}
             <button
               type="button"
@@ -216,6 +215,7 @@ export function CartDrawer() {
               {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
               Secure checkout
             </button>
+            <Care365Seal disclosure className="mt-3" />
             <div className="mt-3 flex items-center justify-between text-sm text-ivory-500">
               <Link href="/cart" onClick={cart.closeDrawer} className="inline-flex min-h-11 items-center font-semibold text-ivory-300 underline-offset-2 hover:underline">
                 View full cart
