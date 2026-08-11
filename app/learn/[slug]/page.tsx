@@ -967,10 +967,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "starpery-dolls-buying-guide": {
-      title: "Compare Starpery Dolls listings",
-      description: "Compare current Starpery models by material, size, price, finish, and availability.",
+      title: "Compare six Starpery build paths",
+      description: "Use current products to compare silicone-head and full-silicone construction, compact and taller bodies, different head systems, and a range of handling needs. This is a decision sample, not a bestseller ranking.",
       collectionHref: "/brands/starpery-dolls",
-      filters: { brand: "starpery" }
+      filters: { brand: "starpery" },
+      handles: [
+        "starpery-rong-151cm-b-cup-silicone-head-companion-doll-x9q92",
+        "starpery-candy-159cm-e-cup-silicone-head-companion-doll-z0szr",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "starpery-xue-171cm-xue-4-full-silicone-doll",
+        "starpery-seraphina-171cm-seraphina-ros-full-silicone-doll",
+        "starpery-nieve-176cm-f-cup-silicone-head-companion-doll-kyfgd"
+      ]
     },
     "zelex-dolls-buying-guide": {
       title: "Compare Zelex Dolls listings",

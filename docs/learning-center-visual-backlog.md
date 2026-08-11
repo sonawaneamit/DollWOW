@@ -1,6 +1,6 @@
 # DollWow Learning Center Visual Backlog
 
-Last updated: 2026-06-28
+Last updated: 2026-08-11
 
 Use this list for future GPT Image 2 or designer-generated visual assets. Do not block article publishing on these visuals unless the page depends on the image to explain the concept.
 
@@ -72,6 +72,6 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Product-grounded ownership-path visual live in code. Additional care or repair imagery should add new information. |
 | `/learn/irontech-dolls-buying-guide` | Technical atelier / build dossier | Mixed vertical and portrait | TPE, hybrid, full silicone, head systems, and handling weight using several current Irontech products | First visual live in code using Irontech Evie. Additional material and head-system visuals remain pending. |
 | `/learn/wm-dolls-buying-guide` | Catalog archive / body-and-head matrix | Mixed vertical and landscape | TPE and silicone paths, authenticity, body/head choice, and the difference between height and handling weight | First visual live in code using two WM products. Additional size/weight and authenticity visuals remain pending. |
-| `/learn/starpery-dolls-buying-guide` | High-fashion realism laboratory | Portrait-led editorial | Surface realism, silicone and hybrid paths, head systems, weight reduction, hands, and finish | First visual live in code using two Starpery products. Additional material and construction visuals remain pending. |
+| `/learn/starpery-dolls-buying-guide` | High-fashion realism laboratory | Portrait-led editorial | Surface realism, full-silicone and silicone-head paths, head systems, weight reduction, hands, and finish | First visual live in code using two Starpery products. The expanded guide and six-product comparison are complete. Additional construction-path and head-system or handling visuals must use different Starpery dolls. |
 | `/learn/sex-doll-storage` | Private-space planning story | Vertical instructional sequence | Storage positions, clearance, lifting route, privacy, pressure, light fabric, and dry conditions | Five-step instructional visual live in code and verified on mobile and desktop. Further visuals should add only new information. |
 | `/learn/how-to-clean-a-sex-doll` | Practical care manual | Vertical instructional sequence | Material check, gentle cleaning, rinsing, drying, approved care, and supported storage | Six-step instructional visual live in code. Additional visuals remain appropriate for removable inserts and powered-feature precautions if they can be shown accurately. |
