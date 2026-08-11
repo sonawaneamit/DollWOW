@@ -111,7 +111,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   ...lookCollectionPresets(),
   ...brandCollectionPresets(),
   tpe: { title: "TPE dolls", filters: { material: "tpe" } },
-  silicone: { title: "Silicone dolls", filters: { material: "silicone" } },
+  silicone: { title: "Silicone sex dolls", filters: { material: "silicone" } },
   hybrid: { title: "Hybrid dolls", filters: { material: "hybrid" } },
   "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },
   torsos: { title: "Torso dolls", filters: { productForm: "torso" } },
@@ -266,7 +266,7 @@ function productMatchesBrand(product: Product, brand: string) {
 
 function productMatchesMaterial(product: Product, material: string) {
   const tags = new Set(product.tags.map(tagForFilter));
-  const text = `${product.extended.material || ""} ${product.productType}`.toLowerCase();
+  const text = `${product.title} ${product.extended.sourceTitle || ""} ${product.extended.material || ""} ${product.productType}`.toLowerCase();
   const isHybrid = tags.has("hybrid") || tags.has("silicone-head") || /silicone\s*head|hybrid|tpe\s*body.*silicone\s*head/.test(text);
   if (material === "hybrid") return isHybrid;
   if (material === "silicone") return !isHybrid && (tags.has("silicone") || /\bsilicone\b/.test(text));

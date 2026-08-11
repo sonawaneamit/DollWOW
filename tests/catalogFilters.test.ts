@@ -36,6 +36,7 @@ describe("catalog filters", () => {
     const fullSilicone = {
       ...sampleProducts[0],
       id: "full-silicone",
+      title: "Full Silicone Test Doll",
       productType: "Custom Silicone doll",
       tags: ["silicone", "full-doll"],
       extended: { ...sampleProducts[0].extended, material: "Silicone" }
@@ -43,6 +44,7 @@ describe("catalog filters", () => {
     const tpe = {
       ...sampleProducts[0],
       id: "tpe",
+      title: "TPE Test Doll",
       productType: "Custom TPE doll",
       tags: ["tpe", "full-doll"],
       extended: { ...sampleProducts[0].extended, material: "TPE" }
@@ -50,14 +52,25 @@ describe("catalog filters", () => {
     const hybrid = {
       ...sampleProducts[0],
       id: "hybrid",
+      title: "Hybrid Test Doll",
       productType: "Custom Hybrid doll",
       tags: ["hybrid", "silicone-head", "full-doll"],
       extended: { ...sampleProducts[0].extended, material: "Hybrid" }
     };
+    const hybridWithIncompleteTags = {
+      ...sampleProducts[0],
+      id: "hybrid-incomplete-tags",
+      title: "Sienna Ray 165cm Silicone Head Doll",
+      productType: "Custom doll",
+      tags: ["silicone", "full-doll"],
+      extended: { ...sampleProducts[0].extended, material: "Silicone" }
+    };
 
-    expect(filterProducts([fullSilicone, tpe, hybrid], { material: "silicone" }).map((product) => product.id)).toEqual(["full-silicone"]);
-    expect(filterProducts([fullSilicone, tpe, hybrid], { material: "tpe" }).map((product) => product.id)).toEqual(["tpe"]);
-    expect(filterProducts([fullSilicone, tpe, hybrid], { material: "hybrid" }).map((product) => product.id)).toEqual(["hybrid"]);
+    const products = [fullSilicone, tpe, hybrid, hybridWithIncompleteTags];
+
+    expect(filterProducts(products, { material: "silicone" }).map((product) => product.id)).toEqual(["full-silicone"]);
+    expect(filterProducts(products, { material: "tpe" }).map((product) => product.id)).toEqual(["tpe"]);
+    expect(filterProducts(products, { material: "hybrid" }).map((product) => product.id)).toEqual(["hybrid", "hybrid-incomplete-tags"]);
   });
 
   it("separates full dolls, torsos, and hips", () => {

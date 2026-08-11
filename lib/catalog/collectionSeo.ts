@@ -291,7 +291,7 @@ const collectionIntroByHandle: Record<string, string> = {
   tpe:
     "TPE dolls are often chosen for their softer feel, flexible posing, and lower starting price compared with many silicone dolls. Compare TPE sex dolls by height, weight, body shape, availability, and custom options, then read the material guide for cleaning, storage, and handling advice.",
   silicone:
-    "Silicone dolls are often chosen for firmer structure, detailed finish, and easier surface cleaning compared with many TPE builds. Use this collection to compare silicone listings by height, weight, sculpt detail, stock status, and customization depth. Silicone can still vary by brand and body design, so confirm the exact material, head and body construction, and available options before checkout.",
+    "Shop full silicone sex dolls by height, weight, body shape, finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. A silicone head on a TPE body is a hybrid build, not a full silicone doll. Check the material listed for both the head and body, then compare the exact measurements, carrying weight, photos, options, and production path before choosing a model.",
   "male-dolls":
     "Compare male sex dolls by body proportions, material, weight, skeleton support, availability, and custom options. Each product page includes measurements and handling details, and our team can confirm any model-specific choice before checkout.",
   "ready-to-ship":
@@ -308,7 +308,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   tpe: "Shop TPE dolls by height, weight, body shape, price, stock status, and options, with DollWow material and care guidance.",
-  silicone: "Shop silicone dolls by sculpt detail, height, weight, material, customization, and stock status with DollWow buying guidance.",
+  silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Compare male dolls by body proportions, material, weight, measurements, stock status, and custom option limits.",
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
   custom: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing.",
@@ -388,16 +388,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   silicone: [
     {
-      title: "Silicone can carry detail well",
-      body: "Silicone is often chosen for sculpt detail and firmer structure, but realism still depends on proportions, faceup, eyes, wig, and final configuration."
+      title: "Start with the exact construction",
+      body: "Full silicone means the body is silicone. A silicone head paired with a TPE body is a hybrid, with different feel, care, weight, and pricing tradeoffs."
     },
     {
-      title: "Do not skip weight",
-      body: "A premium material does not remove handling concerns. Check height, weight, and storage before choosing a larger silicone build."
+      title: "Compare firmness and detail by model",
+      body: "Silicone formulations vary. Material alone does not prove softness or realism, so compare the body design, surface finish, faceup, eyes, hands, and current product photos."
     },
     {
-      title: "Confirm full silicone versus hybrid",
-      body: "Some products are silicone-head or mixed builds. Confirm the exact head and body material before checkout."
+      title: "Plan for weight, care, and storage",
+      body: "Check the listed weight and dimensions before ordering. Clean and dry every area according to the manufacturer's instructions, even when the surface is less porous than TPE."
     }
   ],
   "male-dolls": [
@@ -497,9 +497,12 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "RosemaryDoll alternatives", href: "/learn/rosemarydoll-alternatives" }
   ],
   silicone: [
+    { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   "male-dolls": [
@@ -595,6 +598,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Delivered value",
       whyItMatters: "Options, shipping path, care needs, storage, and support can matter more than a small difference in starting price.",
       dollWowAdvantage: "DollWow connects live products with cost, material, fulfillment, and buyer-protection guidance before checkout."
+    }
+  ],
+  silicone: [
+    {
+      factor: "Construction clarity",
+      whyItMatters: "Full silicone and silicone-head/TPE-body hybrids are different products even when both use the word silicone.",
+      dollWowAdvantage: "DollWow separates material paths and keeps the head, body, measurements, photos, and available options tied to the individual listing."
+    },
+    {
+      factor: "Practical ownership",
+      whyItMatters: "A realistic finish is not useful if the doll is too heavy to handle or difficult to clean and store.",
+      dollWowAdvantage: "Buyers can compare size, listed weight, availability, care guidance, and support before choosing a build."
+    },
+    {
+      factor: "Build confirmation",
+      whyItMatters: "Material, head, body, color, functions, and accessories can change the finished doll and final price.",
+      dollWowAdvantage: "DollWow reviews supported choices and provides a factory-approval path for eligible custom builds before shipment."
     }
   ],
   "male-dolls": [
@@ -777,19 +797,34 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   ],
   silicone: [
     {
-      question: "What should I compare on a silicone doll?",
+      question: "What is a full silicone sex doll?",
       answer:
-        "Compare sculpt detail, height, weight, body measurements, head and body construction, stock status, customization options, and care expectations."
+        "A full silicone sex doll has a silicone body. A product with a silicone head and TPE body is a hybrid build, not a full silicone doll, so check the listed material for both the head and body."
     },
     {
-      question: "Are silicone dolls more realistic?",
+      question: "Are silicone sex dolls more realistic than TPE dolls?",
       answer:
-        "Silicone can hold fine detail well, but realism also depends on face sculpt, proportions, skin finish, eyes, wig, pose, and the final configuration."
+        "Silicone can hold fine sculpt and surface detail well, but the more realistic choice depends on the specific face, proportions, finish, eyes, hands, hair, pose support, and final configuration. Material alone does not guarantee realism."
     },
     {
       question: "Are silicone dolls easier to clean than TPE dolls?",
       answer:
-        "Silicone is often easier to clean at the surface, but care still depends on the exact product, finish, and manufacturer guidance."
+        "Silicone is often less porous than TPE and can be easier to clean at the surface. Every area still needs complete cleaning and drying, and the routine should follow the manufacturer guidance for that product and finish."
+    },
+    {
+      question: "Are all silicone sex dolls soft?",
+      answer:
+        "No. Silicone formulations, body designs, internal foams, and breast options can produce different firmness levels. Compare model-specific details instead of assuming every silicone doll will feel the same."
+    },
+    {
+      question: "Does platinum silicone mean medical grade?",
+      answer:
+        "Not by itself. Platinum silicone describes a curing system. A medical-grade or safety certification is a separate claim that should be supported by documentation for the exact material or product."
+    },
+    {
+      question: "What should I compare before buying a silicone sex doll?",
+      answer:
+        "Compare full-silicone versus hybrid construction, height, listed weight, measurements, firmness, surface finish, stock or production status, supported options, care needs, storage space, and the final configured price."
     }
   ],
   "male-dolls": [

@@ -280,9 +280,19 @@ function featuredImagePath(slug: string) {
 }
 
 function featuredImageAlt(title: string, slug: string) {
-  if (slug === "sex-doll-guide") {
-    return "The Complete Guide to Choosing a Sex Doll featuring a real Irontech Evie doll";
-  }
+  const altBySlug: Record<string, string> = {
+    "sex-doll-guide": "The Complete Guide to Choosing a Sex Doll featuring a real Irontech Evie doll",
+    "tpe-vs-silicone-sex-dolls": "TPE and silicone doll material comparison using real DollWow catalog products",
+    "sex-doll-cost": "Sex doll cost guide comparing product price, options, fulfillment, and ownership factors",
+    "best-sex-dolls": "Best sex dolls buying guide featuring a selection of real DollWow catalog products",
+    "most-realistic-sex-dolls": "Guide to evaluating realistic sex doll proportions, finish, face detail, and configuration",
+    "mini-sex-dolls": "Mini sex doll size, weight, handling, and private storage guide",
+    "male-sex-doll-buying-guide": "Male sex doll buying guide featuring a real DollWow catalog product",
+    "sex-doll-reviews": "Sex doll review checklist for checking product photos, specifications, seller claims, and support",
+    "ready-to-ship-vs-custom-sex-dolls": "Ready-to-ship and custom sex doll order paths compared",
+    "discreet-sex-doll-shipping": "Discreet sex doll shipping guide covering packaging, delivery, privacy, and order checks"
+  };
+  if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;
 }
 

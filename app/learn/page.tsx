@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
-import { getLearnAuthor, getLearningArticles } from "@/lib/learn/content";
+import { absoluteUrl, getLearnAuthor, getLearningArticles, learnArticleUrl } from "@/lib/learn/content";
 
 export const metadata: Metadata = {
-  title: "DollWow Learning Center",
-  description: "Practical DollWow guides for comparing materials, pricing, shipping, privacy, customization, reviews, and product fit before buying.",
+  title: "Sex Doll Buying Guides, Care & Comparisons",
+  description: "Research sex doll materials, cost, size, care, shipping, customization, brands, reviews, and buyer protection in the DollWow Learning Center.",
   alternates: { canonical: "/learn" }
 };
 
@@ -16,9 +16,41 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
   const params = await searchParams;
   const selectedCategory = categoryFromParam(params.category, categories);
   const visibleArticles = selectedCategory ? articles.filter((article) => article.category === selectedCategory) : articles;
+  const learningCenterUrl = absoluteUrl("/learn");
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "DollWow Learning Center",
+      description: metadata.description,
+      url: learningCenterUrl,
+      inLanguage: "en-US",
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: articles.length,
+        itemListElement: articles.map((article, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: article.title,
+          url: learnArticleUrl(article.slug)
+        }))
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "Learning Center", item: learningCenterUrl }
+      ]
+    }
+  ];
 
   return (
     <div>
+      {schema.map((entry) => (
+        <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
+      ))}
       <section className="tone-section" data-tone="deep">
         <div className="tone-inner">
           <p className="text-sm  text-gold-300">Learning Center</p>
@@ -69,13 +101,13 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {visibleArticles.map((article) => {
+            {visibleArticles.map((article, index) => {
               const author = getLearnAuthor(article.author);
               return (
                 <article key={article.slug} className="tone-card overflow-hidden rounded-[8px]">
                   {article.featuredImage ? (
                     <Link href={`/learn/${article.slug}`} className="relative block aspect-[3/2] bg-ink-900">
-                      <Image src={article.featuredImage} alt={article.featuredImageAlt} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
+                      <Image src={article.featuredImage} alt={article.featuredImageAlt} fill priority={index === 0} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                     </Link>
                   ) : null}
                   <div className="p-5">
