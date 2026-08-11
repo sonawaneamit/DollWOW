@@ -26,6 +26,7 @@
     "seo:intelligence:step7": "node scripts/score-seo-cluster-opportunities.mjs",
     "seo:intelligence:step8": "node scripts/map-seo-clusters-to-urls.mjs",
     "seo:intelligence:step9": "node scripts/validate-tier-one-seo-pages.mjs",
+    "seo:intelligence:brands": "node scripts/collect-seo-brand-intelligence.mjs",
     "seo:guide:products": "node scripts/validate-ultimate-guide-products.mjs",
     "pdf:guide": "python3 scripts/build-ultimate-guide-pdf.py",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",

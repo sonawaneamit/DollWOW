@@ -102,15 +102,137 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   starpery: {
     positioning:
-      "Starpery Dolls is often evaluated for realistic styling, silicone-focused builds, and product-photo presentation.",
+      "Starpery is known for silicone-focused construction, detailed head systems, realistic surface presentation, and ongoing weight-reduction development on supported bodies.",
+    intro:
+      "Compare current Starpery dolls on DollWow by full-silicone or silicone-head construction, body and head pairing, height, listed weight, finish, skeleton, price, and supported options. Starpery is a Shenzhen-based manufacturer with hard, soft, and selected ROS-style silicone heads across its range. DollWow checks complex custom builds before production and can help confirm whether a specific feature is available on the exact body and head you choose.",
+    metaDescription:
+      "Shop Starpery dolls by material, head type, height, weight, finish, price, availability, and supported custom options with DollWow guidance.",
     guideHref: "/learn/starpery-dolls-buying-guide",
-    guideLabel: "Starpery Dolls buying guide"
+    guideLabel: "Starpery Dolls buying guide",
+    buyerNotes: [
+      {
+        title: "Separate body and head material",
+        body: "A silicone head does not automatically mean a full-silicone body. Confirm both materials, the connector, finish match, and care requirements."
+      },
+      {
+        title: "Check the head system",
+        body: "Hard, soft, and selected ROS-style heads can support different hair, mouth, and care options. Match every choice to the exact head."
+      },
+      {
+        title: "Verify the final weight",
+        body: "Weight-reduction systems are model-specific. Compare the finished weight in pounds and kilograms rather than assuming every Starpery body is lightweight."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Construction",
+        "Confirm whether the body is full silicone or uses another material with a silicone head.",
+        "DollWow keeps body material, head material, measurements, and current options tied to the exact product."
+      ],
+      [
+        "Head and appearance",
+        "Compare hard, soft, or supported ROS-style heads, then confirm hair, eyes, mouth details, and body compatibility.",
+        "Our Human Build Check reviews supported custom selections before production."
+      ],
+      [
+        "Weight and ownership",
+        "Check listed weight, weight-reduction version, delivery route, storage, and safe handling before ordering.",
+        "Ask our team to confirm any missing decision-critical detail before checkout."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What is Starpery known for?",
+        answer: "Starpery is known for silicone-focused dolls, detailed facial and surface presentation, several silicone head systems, and weight-reduction development on supported bodies."
+      },
+      {
+        question: "Where is Starpery based?",
+        answer: "Starpery's public company information identifies the manufacturer as Shenzhen Starpery Technology Co., Ltd. in Shenzhen, China."
+      },
+      {
+        question: "Are all Starpery dolls full silicone?",
+        answer: "No. DollWow carries full-silicone Starpery models and products with silicone heads on a different body-material path. Check body and head material separately."
+      },
+      {
+        question: "What is a Starpery ROS head?",
+        answer: "ROS is a selected-head system rather than a feature on every Starpery doll. Availability, body pairing, hair compatibility, price, and supported mouth details should be confirmed for the exact head."
+      },
+      {
+        question: "Are Starpery dolls lightweight?",
+        answer: "Weight varies by body, material, proportions, skeleton, and supported weight-reduction system. Compare the exact listed weight in pounds and kilograms before ordering."
+      },
+      {
+        question: "Can DollWow help find a Starpery model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
   },
   sedoll: {
     positioning:
-      "SE Doll is commonly compared by buyers looking at realistic face detail, body proportions, and silicone or hybrid build options.",
+      "SE Doll has produced dolls since 2016 and is known for a broad TPE range, full-silicone Silicone Pro models, detailed makeup, and varied body and head pairings.",
+    intro:
+      "Compare current SE Doll models on DollWow by TPE or full-silicone construction, body and head pairing, height, listed weight, makeup level, price, availability, and supported options. SE Doll is a Shenzhen-based manufacturer established in 2016, with compact and full-size products across several production and finish paths. DollWow reviews complex custom builds before production so the selected material, head, body, and options work together.",
+    metaDescription:
+      "Shop SE Doll TPE and Silicone Pro models by body, head, size, weight, makeup, price, availability, and supported custom options.",
     guideHref: "/learn/se-doll-buying-guide",
-    guideLabel: "SE Doll buying guide"
+    guideLabel: "SE Doll buying guide",
+    buyerNotes: [
+      {
+        title: "Choose TPE or Silicone Pro",
+        body: "Material changes feel, finish, weight, care, repair, and price. Confirm the body and head materials on the exact listing."
+      },
+      {
+        title: "Compare finish levels carefully",
+        body: "Standard, Body Makeup 2.0, and Master Makeup are not universal options. Confirm the supported finish and available skin tones for the selected build."
+      },
+      {
+        title: "Pair the exact body and head",
+        body: "Head shape, material, mouth type, hair, eyes, skeleton, hands, and feet can follow product-specific compatibility rules."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Material path",
+        "Compare established TPE models with supported full-silicone Silicone Pro builds by feel, finish, weight, care, and price.",
+        "DollWow identifies the body and head materials on each current product and can confirm unclear specifications."
+      ],
+      [
+        "Makeup and finish",
+        "Confirm whether standard makeup, Body Makeup 2.0, or Master Makeup is supported for the selected body and skin tone.",
+        "Our Human Build Check reviews supported appearance selections before production."
+      ],
+      [
+        "Size and handling",
+        "Read height and weight together, then plan the delivery route, cleaning space, and storage position.",
+        "Ask our team to confirm missing measurements or weight before checkout."
+      ]
+    ],
+    faqs: [
+      {
+        question: "When was SE Doll founded?",
+        answer: "SE Doll's official history dates the manufacturer to 2016 and identifies Shenzhen, China, as its main production base."
+      },
+      {
+        question: "Does SE Doll make TPE and silicone dolls?",
+        answer: "Yes. SE Doll has an established TPE range and a full-silicone Silicone Pro range. Confirm the exact body and head materials on the product page."
+      },
+      {
+        question: "What is SE Doll Silicone Pro?",
+        answer: "Silicone Pro is SE Doll's full-silicone product path. Exact softness, makeup, weight, head, skeleton, and available options can differ by model."
+      },
+      {
+        question: "What are SE Doll's makeup options?",
+        answer: "SE Doll publishes standard makeup, Body Makeup 2.0, and Master Makeup paths. Availability, price, finish, and supported skin tones depend on the selected product."
+      },
+      {
+        question: "Does every SE Doll support the same options?",
+        answer: "No. Available heads, mouths, hair, eyes, hands, feet, skeletons, makeup, and powered features can depend on the body, head, material, and current production rules."
+      },
+      {
+        question: "Can DollWow help find an SE Doll model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
   },
   zelex: {
     positioning:
@@ -132,9 +254,70 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   tantaly: {
     positioning:
-      "Tantaly is often compared by buyers looking for compact, storage-friendly, or budget-aware doll options.",
+      "Tantaly specializes in compact and torso-style products across several sizes, including female and male formats designed for buyers who do not necessarily want a conventional full-body doll.",
+    intro:
+      "Compare current Tantaly dolls on DollWow by product form, included body areas, complete dimensions, listed weight, material, price, and storage needs. Tantaly specializes in compact and torso-style products, including very small, mid-size, larger, female, and male formats. Because the word torso can describe very different products, DollWow keeps the exact photographs and specifications with each listing and can help confirm any missing measurement before you order.",
+    metaDescription:
+      "Shop Tantaly compact and torso dolls by product form, dimensions, weight, material, price, storage needs, and current availability.",
     guideHref: "/learn/tantaly-buying-guide",
-    guideLabel: "Tantaly buying guide"
+    guideLabel: "Tantaly buying guide",
+    buyerNotes: [
+      {
+        title: "Choose the product form first",
+        body: "Confirm exactly which body areas are included. A small insert, hips product, torso, and larger partial-body design are not interchangeable."
+      },
+      {
+        title: "Measure the full footprint",
+        body: "Height alone is not enough. Compare width, depth, weight, base design, cleaning access, and the intended storage position."
+      },
+      {
+        title: "Confirm material and removable parts",
+        body: "TPE, silicone, seams, openings, and removable components can require different care. Use the exact product instructions."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Product form",
+        "Confirm whether the listing is a small insert, hips product, compact torso, larger torso, male format, or another partial-body design.",
+        "DollWow keeps the full photographs, included body areas, and exact product link together."
+      ],
+      [
+        "Dimensions and weight",
+        "Compare height, width, depth, relevant circumferences, listed weight, base, and storage position.",
+        "Ask our team to confirm a missing measurement before you order."
+      ],
+      [
+        "Material and care",
+        "Check TPE or silicone, removable parts, cleaning access, compatible care products, and drying needs.",
+        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What is a Tantaly doll?",
+        answer: "Tantaly is known for compact and torso-style adult products in several sizes. The exact model may include different portions of the torso, hips, thighs, shoulders, or other anatomy."
+      },
+      {
+        question: "Are Tantaly dolls full-body dolls?",
+        answer: "Many Tantaly products are compact or torso formats rather than conventional head-to-toe dolls. Check the complete photographs and included body areas for the exact listing."
+      },
+      {
+        question: "What materials are Tantaly dolls made from?",
+        answer: "Tantaly discusses both TPE and silicone technologies, but material varies by product. Check the exact listing or ask DollWow for written confirmation."
+      },
+      {
+        question: "Are Tantaly dolls lightweight and easy to store?",
+        answer: "Some compact models may be easier to handle than many full-size dolls, but compact is not a weight rating. Compare height, width, depth, weight, and recommended storage position."
+      },
+      {
+        question: "Does Tantaly make male torso products?",
+        answer: "Yes. DollWow carries Tantaly male formats. Compare the exact included body areas, dimensions, material, weight, base design, and storage needs."
+      },
+      {
+        question: "Can DollWow help find a Tantaly model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
   },
   erovenus: {
     positioning:
