@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Schibsted_Grotesk } from "next/font/google";
+import "@fontsource/hanken-grotesk/400.css";
+import "@fontsource/hanken-grotesk/500.css";
+import "@fontsource/hanken-grotesk/600.css";
+import "@fontsource/hanken-grotesk/700.css";
+import "@fontsource/schibsted-grotesk/400.css";
+import "@fontsource/schibsted-grotesk/500.css";
+import "@fontsource/schibsted-grotesk/600.css";
+import "@fontsource/schibsted-grotesk/700.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
@@ -16,18 +23,6 @@ import "./globals.css";
 import "./v2-storefront.css";
 
 const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
-
-const display = Schibsted_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "500", "600", "700"]
-});
-
-const sans = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"]
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
@@ -106,7 +101,7 @@ gtag('config', '${measurementId}', {
           </>
         ) : null}
       </head>
-      <body className={`${display.variable} ${sans.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {siteStructuredData.map((entry) => (
           <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
         ))}
