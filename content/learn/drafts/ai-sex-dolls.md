@@ -1,9 +1,9 @@
 ---
-title: "AI Sex Dolls: What They Can Do and What to Verify"
+title: "AI Sex Dolls and AI Companion Dolls: What They Can Do"
 slug: "ai-sex-dolls"
 primaryKeyword: "ai sex dolls"
-secondaryKeywords: ["sexbot", "ai sexbot", "artificial intelligence sexbot", "ai dolls"]
-description: "Learn how AI sex dolls combine physical companions, apps, voice, memory, and electronic features, plus what to verify before buying."
+secondaryKeywords: ["sexbot", "ai sexbot", "artificial intelligence sexbot", "ai dolls", "ai love doll", "ai companion doll", "ai girlfriend doll"]
+description: "Learn what AI sex dolls, AI love dolls, and AI companion dolls can do, plus what to verify about hardware, software, privacy, subscriptions, and support."
 category: "Technology and Features"
 author: "alex"
 authorDisplayName: "Alex"
@@ -13,13 +13,13 @@ reviewOwner: catalog
 lastReviewed: "2026-08-11"
 ---
 
-# AI Sex Dolls: What They Can Do and What to Verify
+# AI Sex Dolls and AI Companion Dolls: What They Can Do
 
 By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
 ## Quick Answer
 
-An AI sex doll usually combines a physical adult companion with conversational software, an app, voice interaction, memory, personality settings, or an electronic head. The physical body may remain completely passive. AI does not automatically mean that a doll can walk, move its arms, see, recognize touch, or operate privately without an internet connection.
+An AI sex doll, AI love doll, or AI companion doll usually combines a physical adult companion with conversational software, an app, voice interaction, memory, personality settings, or an electronic head. The physical body may remain completely passive. AI does not automatically mean that a doll can walk, move its arms, see, recognize touch, or operate privately without an internet connection.
 
 Before buying, separate the physical doll from the software and electronics. Confirm what is included, where the AI runs, what data it collects, whether a subscription is required, what happens if the service closes, and who supports the hardware and software.
 
@@ -37,6 +37,12 @@ DollWow only describes an AI or connected feature when current product-level doc
 ## What Is an AI Sex Doll?
 
 An AI sex doll is an adult companion product paired with software that produces adaptive, conversational, or responsive behavior. The intelligence may run in a mobile app, cloud service, separate device, electronic head, or integrated robot platform.
+
+## Do AI Love Doll, AI Companion Doll, And AI Girlfriend Doll Mean The Same Thing?
+
+They are overlapping marketing terms, not standardized product specifications. An AI love doll may be a conventional physical doll paired with an app. An AI companion doll may refer to an electronic head, a complete doll, a humanoid robot, or even software with no physical body. AI girlfriend doll usually emphasizes a romantic or personalized conversation experience, but it does not prove that a physical doll, powered movement, touch sensors, long-term memory, or private local processing is included.
+
+Ignore the label long enough to identify what is actually being sold. Separate the physical body, electronic hardware, software service, and ownership support, then verify each layer in writing.
 
 | AI format | Physical product | Typical interaction | Main question |
 | --- | --- | --- | --- |
@@ -288,6 +294,10 @@ Motors, ports, speakers, and wiring require a separate routine. Obtain the exact
 ### What is an AI sex doll?
 
 An AI sex doll is a physical adult companion paired with software that provides conversation, memory, personality, or responsive behavior. The AI can run in an app, cloud service, electronic head, or robotic platform.
+
+### Are AI love dolls, AI companion dolls, and AI girlfriend dolls the same product?
+
+Not necessarily. Sellers use the terms for app companions, conventional dolls paired with software, electronic heads, and robotic systems. The name alone does not prove that a physical doll, conversation, memory, sensors, movement, or a subscription is included.
 
 ### Is an AI sex doll a robot?
 

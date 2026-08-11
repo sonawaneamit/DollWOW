@@ -44,6 +44,8 @@ const KEYWORD_TARGETS = {
   "best sex dolls": { pageType: "learning-guide", targetPath: "/learn/best-sex-dolls" },
   "sex doll cost": { pageType: "learning-guide", targetPath: "/learn/sex-doll-cost" },
   "sex doll reviews": { pageType: "learning-guide", targetPath: "/learn/sex-doll-reviews" },
+  "best sex doll reviews": { pageType: "learning-guide", targetPath: "/learn/sex-doll-reviews" },
+  "real sex doll reviews": { pageType: "learning-guide", targetPath: "/learn/sex-doll-reviews" },
   "ready to ship sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
   "in stock sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
   "fast shipping sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
@@ -90,7 +92,10 @@ const KEYWORD_TARGETS = {
   "plus size sex doll": { pageType: "collection", targetPath: "/shop/fuller-dolls" },
   "slim sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
   "skinny sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
-  "slender sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" }
+  "slender sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
+  "ai love doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" },
+  "ai companion doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" },
+  "ai girlfriend doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));

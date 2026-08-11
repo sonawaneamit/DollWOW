@@ -24,7 +24,8 @@ if (execute && (!process.env.DATAFORSEO_LOGIN || !process.env.DATAFORSEO_PASSWOR
   throw new Error("DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD are required for --execute.");
 }
 
-const prompt = `I am a US shopper comparing where to buy a full-size adult sex doll online. Which stores or source types should I consider, what warning signs should I avoid, and what proof should I verify before paying? Name examples only when supportable and cite current web sources.`;
+const prompt = args.prompt || `I am a US shopper comparing where to buy a full-size adult sex doll online. Which stores or source types should I consider, what warning signs should I avoid, and what proof should I verify before paying? Name examples only when supportable and cite current web sources.`;
+const systemMessage = args.systemMessage || "Answer as a neutral US consumer researcher. Prioritize verifiable buying criteria and current sources.";
 const calls = [
   {
     id: "chatgpt-live-response",
@@ -32,7 +33,7 @@ const calls = [
     endpoint: "/ai_optimization/chat_gpt/llm_responses/live",
     payload: [{
       user_prompt: prompt,
-      system_message: "Answer as a neutral US consumer researcher. Prioritize verifiable buying criteria and current sources.",
+      system_message: systemMessage,
       model_name: "gpt-5.4-nano",
       max_output_tokens: 1400,
       web_search: true,
@@ -46,7 +47,7 @@ const calls = [
     endpoint: "/ai_optimization/claude/llm_responses/live",
     payload: [{
       user_prompt: prompt,
-      system_message: "Answer as a neutral US consumer researcher. Prioritize verifiable buying criteria and current sources.",
+      system_message: systemMessage,
       model_name: "claude-haiku-4-5",
       max_output_tokens: 1400,
       web_search: true,
@@ -59,7 +60,7 @@ const calls = [
     endpoint: "/ai_optimization/gemini/llm_responses/live",
     payload: [{
       user_prompt: prompt,
-      system_message: "Answer as a neutral US consumer researcher. Prioritize verifiable buying criteria and current sources.",
+      system_message: systemMessage,
       model_name: "gemini-2.5-flash-lite",
       max_output_tokens: 1400,
       web_search: true,
