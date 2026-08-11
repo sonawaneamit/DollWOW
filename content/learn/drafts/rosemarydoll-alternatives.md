@@ -52,7 +52,7 @@ The buyer should compare what will actually be ordered and supported. A similar 
 
 | Decision area | What to verify on any seller | DollWow path |
 | --- | --- | --- |
-| Exact product | Brand, body, head, material, measurements, and product form | Live PDP facts plus [Compare a listing](/compare) |
+| Exact product | Brand, body, head, material, measurements, and product form | Current product details plus [Compare a listing](/compare) |
 | Catalog discovery | Filters for material, height, weight, body type, price, availability, and brand | [All sex dolls](/shop/sex-dolls) and the [DollWow finder](/help-me-choose) |
 | Custom build | Product-specific options, compatibility, price changes, and production status | [Custom dolls](/shop/custom) with Human Build Check on eligible orders |
 | Ready inventory | Exact unit, warehouse, fixed configuration, and dispatch expectation | [Ready-to-ship dolls](/shop/ready-to-ship) with stock confirmation |

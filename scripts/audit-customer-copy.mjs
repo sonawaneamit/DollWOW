@@ -2,6 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 const roots = ["app", "components", "lib/catalog"];
+const learningContentRoots = ["content/learn/drafts"];
 const excludedSegments = ["/api/", "/ops/", "/admin/", "/llms.txt/", ".test.", ".spec."];
 const rules = [
   ["backend order notes", /\border notes\b/gi],
@@ -23,8 +24,9 @@ const rules = [
   ["storefront self-description", /a premium storefront for/gi],
   ["raw validation error", /too_small|invalid_type|expected string to have/gi]
 ];
+const learningContentRules = [["internal PDP abbreviation", /\bPDPs?\b/g]];
 
-async function collectFiles(relativeDir) {
+async function collectFiles(relativeDir, extensionPattern = /\.(tsx?|jsx?)$/) {
   const absoluteDir = path.join(process.cwd(), relativeDir);
   const entries = await readdir(absoluteDir, { withFileTypes: true });
   const files = [];
@@ -33,14 +35,17 @@ async function collectFiles(relativeDir) {
     const relativePath = path.join(relativeDir, entry.name);
     const normalized = `/${relativePath.replaceAll("\\", "/")}`;
     if (excludedSegments.some((segment) => normalized.includes(segment))) continue;
-    if (entry.isDirectory()) files.push(...(await collectFiles(relativePath)));
-    if (entry.isFile() && /\.(tsx?|jsx?)$/.test(entry.name)) files.push(relativePath);
+    if (entry.isDirectory()) files.push(...(await collectFiles(relativePath, extensionPattern)));
+    if (entry.isFile() && extensionPattern.test(entry.name)) files.push(relativePath);
   }
 
   return files;
 }
 
-const files = (await Promise.all(roots.map(collectFiles))).flat();
+const files = (await Promise.all(roots.map((root) => collectFiles(root)))).flat();
+const learningContentFiles = (
+  await Promise.all(learningContentRoots.map((root) => collectFiles(root, /\.md$/)))
+).flat();
 const findings = [];
 
 for (const file of files) {
@@ -55,10 +60,24 @@ for (const file of files) {
   }
 }
 
+for (const file of learningContentFiles) {
+  const source = await readFile(path.join(process.cwd(), file), "utf8");
+  const lines = source.split("\n");
+  for (const [label, pattern] of learningContentRules) {
+    pattern.lastIndex = 0;
+    for (let index = 0; index < lines.length; index += 1) {
+      pattern.lastIndex = 0;
+      if (pattern.test(lines[index])) findings.push(`${file}:${index + 1} [${label}] ${lines[index].trim()}`);
+    }
+  }
+}
+
 if (findings.length > 0) {
   console.error("Customer-facing copy audit failed:\n");
   console.error(findings.join("\n"));
   process.exit(1);
 }
 
-console.log(`Customer-facing copy audit passed (${files.length} files checked).`);
+console.log(
+  `Customer-facing copy audit passed (${files.length} code files and ${learningContentFiles.length} learning articles checked).`
+);
