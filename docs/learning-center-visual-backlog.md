@@ -67,3 +67,4 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-cost` | Cost stack infographic | Vertical | Base price, options, shipping, stock path, support confirmation | No invented price ranges unless tied to catalog data. |
 | `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path diagram | Vertical | Ready-to-ship vs custom workflow | Make timing conditional, not guaranteed. |
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Text should match article claims. |
+| `/learn/irontech-dolls-buying-guide` | Irontech material and build comparison | Vertical | TPE, hybrid, full silicone, head systems, and handling weight using current carried products | Use one approved actual Irontech catalog image per product; do not imply universal option compatibility. Generate one sample first. |

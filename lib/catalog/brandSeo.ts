@@ -26,9 +26,43 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   irontech: {
     positioning:
-      "Irontech Dolls is often compared by buyers who care about detailed sculpting, fantasy styling, male dolls, and premium silicone-style presentation.",
+      "Irontech has produced dolls since 2015 and is known for a broad choice of full-silicone, TPE, hybrid, female, and male models, including advanced head and skeleton options on supported builds.",
+    intro:
+      "Compare current Irontech Dolls on DollWow by material, body size, listed weight, head system, price, availability, and supported options. Irontech has produced dolls since 2015 and offers full-silicone, TPE, hybrid, female, and male models. Because compatibility varies by body and head, DollWow reviews complex custom builds before production.",
     guideHref: "/learn/irontech-dolls-buying-guide",
-    guideLabel: "Irontech Dolls buying guide"
+    guideLabel: "Irontech Dolls buying guide",
+    buyerNotes: [
+      {
+        title: "Choose a construction path",
+        body: "Start with full silicone, TPE, or hybrid construction. Each path changes feel, care, finish, weight, and compatible options."
+      },
+      {
+        title: "Match the body and head",
+        body: "Hard, soft, ROS, ROS MAX, and TPE heads follow different compatibility rules. Confirm the exact body and head pairing before choosing hair, eyes, or functions."
+      },
+      {
+        title: "Plan for real handling weight",
+        body: "Compare pounds and kilograms, the delivery route, storage, and any weight added by selected options before approving the build."
+      }
+    ],
+    faqs: [
+      {
+        question: "When was Irontech Doll founded?",
+        answer: "Irontech's official company history dates the brand to 2015. The manufacturer is based in Zhongshan, Guangdong, China."
+      },
+      {
+        question: "Does Irontech make TPE and silicone dolls?",
+        answer: "Yes. Current Irontech and DollWow catalogs include TPE, full-silicone, and hybrid models. Material and option compatibility should be checked on the exact product."
+      },
+      {
+        question: "Can every Irontech doll use the same head and custom options?",
+        answer: "No. Head systems, hair, eyes, skeletons, feet, softness, and powered features can depend on the selected body, head, and material. DollWow reviews supported custom builds before production."
+      },
+      {
+        question: "Does Irontech make male dolls?",
+        answer: "Yes. DollWow carries current Irontech male models. Compare anatomy, proportions, height, weight, material, skeleton, and storage requirements before choosing."
+      }
+    ]
   },
   starpery: {
     positioning:

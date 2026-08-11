@@ -646,7 +646,7 @@ Use these profiles to decide which three or four brands deserve a closer look. T
 
 ### Irontech Dolls: sculpting, variety, and newer material systems
 
-[Irontech Dolls](/brands/irontech-dolls) entered the market around 2018 and developed a following for Western-inspired faces, curvier body sculpting, and detailed presentation. The manufacturer expanded from TPE into full silicone and now offers female and male bodies, specialty constructions, and advanced options on selected models.
+[Irontech Dolls](/brands/irontech-dolls) dates its founding to 2015. The manufacturer expanded from TPE into full silicone and hybrid construction and now offers female and male bodies, multiple silicone head systems, and advanced options on selected models.
 
 **Best starting point for:** buyers prioritizing expressive face sculpts, curvy proportions, full silicone choices, or one manufacturer with both female and male ranges.
 

@@ -1,18 +1,18 @@
 ---
-title: "Irontech Dolls Buying Guide"
+title: "Irontech Dolls Buying Guide: Materials, Options, And Models"
 slug: "irontech-dolls-buying-guide"
-primaryKeyword: "irontech doll"
-secondaryKeywords: ["irontech dolls", "irontech sex doll"]
-intent: "commercial"
+primaryKeyword: "irontech dolls buying guide"
+secondaryKeywords: ["irontech dolls review", "irontech doll review", "irontech doll options"]
+intent: "commercial investigation"
 category: "Brand Comparisons"
 pageType: "Learning Center"
 targetUrl: "/learn/irontech-dolls-buying-guide"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-16"
+lastReviewed: "2026-08-11"
 ---
 
 # Irontech Dolls Buying Guide

@@ -872,10 +872,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { brand: "wm" }
     },
     "irontech-dolls-buying-guide": {
-      title: "Compare Irontech Dolls listings",
-      description: "Compare current Irontech models by body type, material, size, availability, and options.",
+      title: "Compare six Irontech build paths",
+      description: "Use current products to compare TPE, hybrid, full silicone, female, male, compact, and heavier builds. This is a decision sample, not a bestseller ranking.",
       collectionHref: "/brands/irontech-dolls",
-      filters: { brand: "irontech" }
+      filters: { brand: "irontech" },
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "irontech-letitia-nell-165cm-g-cup-hybrid-companion-doll-18er7",
+        "irontech-alessia-154cm-i-cup-tpe-companion-doll-1ymco",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "irontech-abraham-176cm-silicone-companion-doll-1xmxj"
+      ]
     },
     "starpery-dolls-buying-guide": {
       title: "Compare Starpery Dolls listings",
@@ -1124,7 +1132,9 @@ function relatedCollections(slug: string) {
     ],
     "irontech-dolls-buying-guide": [
       { label: "Irontech Dolls brand hub", href: "/brands/irontech-dolls", description: "Compare current DollWow Irontech listings." },
-      { label: "Male doll guide", href: "/learn/male-sex-doll-buying-guide", description: "Review male body-type fit and measurements." }
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material and care tradeoffs." },
+      { label: "Male doll guide", href: "/learn/male-sex-doll-buying-guide", description: "Review male body-type fit and measurements." },
+      { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Plan standing support and storage safely." }
     ],
     "starpery-dolls-buying-guide": [
       { label: "Starpery Dolls brand hub", href: "/brands/starpery-dolls", description: "Compare current DollWow Starpery listings." },
