@@ -34,6 +34,12 @@ const DEFAULT_BRANDS = [
     keyword: "Dolls Castle sex doll",
     manufacturerDomain: "dolls-castle.com",
     dollwowUrl: "https://dollwow.com/brands/dolls-castle"
+  },
+  {
+    key: "real-lady",
+    keyword: "Real Lady sex doll",
+    manufacturerDomain: "real-lady.com",
+    dollwowUrl: "https://dollwow.com/brands/real-lady-dolls"
   }
 ];
 

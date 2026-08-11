@@ -311,6 +311,71 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       }
     ]
   },
+  "real-lady": {
+    positioning:
+      "Real Lady is an Irontech sub-brand focused on high-end silicone dolls, lighter-weight luxury bodies, detailed head systems, and selected interactive features.",
+    intro:
+      "Compare current Real Lady dolls on DollWow by height, body weight, silicone body, head system, measurements, skin tone, price, availability, and supported options. Real Lady is an Irontech sub-brand, but its bodies, ROS and ROS MAX heads, IRON AI compatibility, hair choices, and mechanical features follow model-specific rules. Start with the exact body and head combination, then ask DollWow to confirm every selected feature before production. DollWow's Irontech authorization applies to Real Lady, and the supporting certificate is available below.",
+    metaDescription:
+      "Shop Real Lady dolls by height, weight, silicone body, head system, skin tone, price, availability, and supported custom options.",
+    buyerNotes: [
+      {
+        title: "Compare body weight as well as height",
+        body: "Two Real Lady dolls at similar heights can handle differently. Check the listed body weight, head weight, dimensions, and your lifting route before choosing."
+      },
+      {
+        title: "Choose the head system carefully",
+        body: "Standard silicone, ROS, and ROS MAX heads can differ in structure, movement, weight, compatible features, and care. Confirm the exact head rather than relying on the face name alone."
+      },
+      {
+        title: "Verify interactive-feature compatibility",
+        body: "IRON AI, oral functions, heating, and other mechanical choices are available only on supported products and can affect other options. DollWow will review the combination before production."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Body and handling",
+        "Height, body weight, curves, balance, and storage route determine how practical a model feels at home.",
+        "Compare the complete measurements and listed weight in both US and metric units before ordering."
+      ],
+      [
+        "Head and appearance",
+        "Head model, standard or ROS construction, makeup, skin tone, eyes, wig, and implanted-hair choices can change the final look and care routine.",
+        "Use the exact product gallery, then ask DollWow to confirm which appearance choices are supported together."
+      ],
+      [
+        "Interactive options",
+        "IRON AI and mechanical functions are not universal, and some combinations have compatibility limits.",
+        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
+      ]
+    ],
+    faqs: [
+      {
+        question: "Is Real Lady part of Irontech Dolls?",
+        answer: "Yes. Real Lady identifies itself as an Irontech Doll sub-brand. DollWow's Irontech authorization applies to Real Lady, and the supporting certificate is displayed on this page."
+      },
+      {
+        question: "Are Real Lady dolls made from silicone?",
+        answer: "The current DollWow Real Lady collection focuses on silicone models. Confirm the exact body and head material on the product page because head construction and supported features can differ."
+      },
+      {
+        question: "What are ROS and ROS MAX heads?",
+        answer: "They are Real Lady silicone head systems with model-specific structures and functions. ROS MAX is a newer upgraded path on supported products. Compare the exact listing and ask DollWow to confirm compatibility before ordering."
+      },
+      {
+        question: "Does every Real Lady doll support IRON AI?",
+        answer: "No. IRON AI is limited to selected Real Lady products and requires the supported hardware and setup. It can also conflict with options such as implanted hair, so compatibility must be confirmed before production."
+      },
+      {
+        question: "How can I verify a Real Lady doll is genuine?",
+        answer: "Real Lady states that its dolls include an anti-fake code in the manual that can be checked through Irontech's anti-counterfeiting system. Keep the manual, order record, final build details, and supplied code together."
+      },
+      {
+        question: "Can DollWow add a Real Lady model that is missing?",
+        answer: "Yes. Send the product name or official link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
+  },
   climax: {
     positioning:
       "Climax Doll, also presented as CLM, offers a broad mix of full-size dolls, mini dolls, torsos, and other compact formats across TPE, silicone, and selected lightweight product lines.",

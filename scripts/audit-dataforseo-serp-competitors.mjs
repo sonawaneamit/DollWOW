@@ -59,7 +59,10 @@ const KEYWORD_TARGETS = {
   "latest sex dolls": { pageType: "collection", targetPath: "/shop/new-sex-dolls" },
   "dolls castle": { pageType: "collection", targetPath: "/brands/dolls-castle" },
   "dolls castle sex doll": { pageType: "collection", targetPath: "/brands/dolls-castle" },
-  "dolls castle dolls": { pageType: "collection", targetPath: "/brands/dolls-castle" }
+  "dolls castle dolls": { pageType: "collection", targetPath: "/brands/dolls-castle" },
+  "real lady": { pageType: "collection", targetPath: "/brands/real-lady-dolls" },
+  "real lady sex doll": { pageType: "collection", targetPath: "/brands/real-lady-dolls" },
+  "real lady dolls": { pageType: "collection", targetPath: "/brands/real-lady-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));
