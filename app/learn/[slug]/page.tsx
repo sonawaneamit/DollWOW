@@ -898,10 +898,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: {}
     },
     "siliconwives-alternatives": {
-      title: "Compare material-led listings",
-      description: "Compare materials alongside actual measurements, weight, availability, and confirmed product details.",
-      collectionHref: "/shop/silicone",
-      filters: { material: "silicone" }
+      title: "Compare TPE, hybrid, and silicone choices",
+      description: "These current products provide a practical material comparison across several brands, sizes, prices, and ordering paths. Open each product for current measurements, availability, and supported options.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "real-lady-sylvia-170cm-s43-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd"
+      ]
     },
     "joylovedolls-alternatives": {
       title: "Compare male doll listings",
