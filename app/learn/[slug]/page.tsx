@@ -428,23 +428,6 @@ type ArticleInfographicConfig = {
 
 function infographicConfig(slug: string): ArticleInfographicConfig | null {
   const map: Record<string, ArticleInfographicConfig> = {
-    "tpe-vs-silicone-sex-dolls": {
-      eyebrow: "Material comparison",
-      title: "Compare the whole build before choosing a material",
-      summary: "TPE and silicone are useful buying shortcuts, but the better decision comes from comparing material, size, care, weight, and configuration together.",
-      stats: [
-        { value: "2", label: "core materials to compare" },
-        { value: "5", label: "product facts to verify" }
-      ],
-      items: [
-        { title: "Feel and finish", body: "Compare softness, surface detail, firmness, and how the product is finished by the specific brand." },
-        { title: "Care routine", body: "Check cleaning, drying, powdering, and storage requirements before assuming one material is easier." },
-        { title: "Handling comfort", body: "Height and weight can matter more in daily use than the material label alone." },
-        { title: "Final configuration", body: "Confirm whether the listing is full TPE, full silicone, silicone-head, or another mixed build." }
-      ],
-      href: "/shop/tpe",
-      cta: "Compare TPE listings"
-    },
     "sex-doll-cost": {
       eyebrow: "Cost breakdown",
       title: "What changes the delivered price",
@@ -697,10 +680,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "tpe-vs-silicone-sex-dolls": {
-      title: "Compare TPE listings in the catalog",
-      description: "Use live catalog examples to compare size, price, stock status, and material details before choosing between TPE and silicone.",
-      collectionHref: "/shop/tpe",
-      filters: { material: "tpe" }
+      title: "Compare TPE and full-silicone examples",
+      description: "These live examples show why material alone does not predict price or handling weight. Compare the complete measurements, construction, options, and availability on each product page.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "real-lady-viki-150cm-r10-silicone-doll",
+        "irontech-alessia-154cm-i-cup-tpe-companion-doll-1ymco",
+        "starpery-xue-171cm-xue-4-full-silicone-doll"
+      ]
     },
     "sex-doll-cost": {
       title: "Price-check ready-to-ship listings",
@@ -923,7 +914,8 @@ function relatedCollections(slug: string) {
     ],
     "tpe-vs-silicone-sex-dolls": [
       { label: "Browse TPE dolls", href: "/shop/tpe", description: "Compare softer material builds and care tradeoffs." },
-      { label: "Browse silicone dolls", href: "/shop/silicone", description: "Compare firmer premium builds and detail." }
+      { label: "Browse silicone dolls", href: "/shop/silicone", description: "Compare full-silicone builds, detail, weight, and price." },
+      { label: "Browse hybrid dolls", href: "/shop/hybrid", description: "Compare silicone-head and TPE-body construction." }
     ],
     "ready-to-ship-vs-custom-sex-dolls": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare warehouse-style listings with fixed configurations." },
