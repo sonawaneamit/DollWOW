@@ -1241,12 +1241,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
-    "implanted-hair-vs-wig": {
-      title: "Start with custom-order listings",
-      description: "Hair choices are product-specific, so compare base models and ask support to confirm current wig or implanted hair options.",
-      collectionHref: "/shop/custom",
-      filters: { availability: "custom" }
-    },
     "standing-feet-sex-doll-guide": {
       title: "Compare custom builds before choosing standing feet",
       description: "Standing feet are not available on every doll. Check the exact body, skeleton, and material before adding this option.",
@@ -1589,7 +1583,10 @@ function relatedCollections(slug: string) {
     ],
     "implanted-hair-vs-wig": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare listings where hair options may be available." },
-      { label: "Custom sex dolls", href: "/learn/custom-sex-dolls", description: "Review the broader customization process." }
+      { label: "Custom sex dolls", href: "/learn/custom-sex-dolls", description: "Review the broader customization process." },
+      { label: "Ready or made to order", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "See when a hair choice becomes part of factory production." },
+      { label: "Care for Life", href: "/care-for-life", description: "Review first-year ownership help and ongoing repair coordination." },
+      { label: "Ask support", href: "/support", description: "Confirm the exact head, hair option, price, and compatibility before production." }
     ],
     "standing-feet-sex-doll-guide": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare option-led builds." },
