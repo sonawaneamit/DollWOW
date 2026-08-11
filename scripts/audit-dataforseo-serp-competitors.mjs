@@ -47,7 +47,10 @@ const KEYWORD_TARGETS = {
   "ready to ship sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
   "custom sex doll": { pageType: "collection", targetPath: "/shop/custom" },
   "asian sex dolls": { pageType: "collection", targetPath: "/shop/asian-dolls" },
-  "black sex dolls": { pageType: "collection", targetPath: "/shop/black-dolls" }
+  "black sex dolls": { pageType: "collection", targetPath: "/shop/black-dolls" },
+  "climax doll": { pageType: "collection", targetPath: "/brands/climax-dolls" },
+  "climax dolls": { pageType: "collection", targetPath: "/brands/climax-dolls" },
+  "climax sex doll": { pageType: "collection", targetPath: "/brands/climax-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));

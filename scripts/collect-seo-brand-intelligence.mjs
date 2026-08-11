@@ -22,6 +22,12 @@ const DEFAULT_BRANDS = [
     keyword: "SE Doll",
     manufacturerDomain: "sedoll.com",
     dollwowUrl: "https://dollwow.com/brands/se-doll"
+  },
+  {
+    key: "climax",
+    keyword: "Climax Doll",
+    manufacturerDomain: "climax-doll.com",
+    dollwowUrl: "https://dollwow.com/brands/climax-dolls"
   }
 ];
 

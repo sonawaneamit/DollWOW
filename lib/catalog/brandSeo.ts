@@ -246,6 +246,71 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     guideHref: "/learn/6ye-dolls-buying-guide",
     guideLabel: "6YE Dolls buying guide"
   },
+  climax: {
+    positioning:
+      "Climax Doll, also presented as CLM, offers a broad mix of full-size dolls, mini dolls, torsos, and other compact formats across TPE, silicone, and selected lightweight product lines.",
+    intro:
+      "Compare current Climax Doll models on DollWow by product form, TPE or silicone construction, complete dimensions, listed weight, body and head pairing, price, availability, and supported options. Climax Doll is also presented as CLM, and its range spans full-size dolls, mini dolls, torsos, and smaller compact products. Start with what the product physically includes, then compare material and handling so a polished photograph does not pull you toward the wrong ownership format.",
+    metaDescription:
+      "Shop Climax Doll and CLM models by full-size, mini, or torso form, TPE or silicone, dimensions, weight, price, availability, and options.",
+    buyerNotes: [
+      {
+        title: "Choose the product form first",
+        body: "A full-size doll, mini doll, torso, and smaller compact product have different uses, cleaning access, storage needs, handling, and prices."
+      },
+      {
+        title: "Confirm TPE or silicone",
+        body: "Climax products span multiple construction paths. Check the body and head materials, finish, softness, care routine, and repair path on the exact listing."
+      },
+      {
+        title: "Verify the finished weight",
+        body: "Ultra-lightweight applies only to supported product lines. Compare the listed pounds and kilograms for the exact body instead of assuming every CLM model is light."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Product form",
+        "Confirm whether the listing is a full-size doll, mini doll, torso, or another compact partial-body product.",
+        "DollWow keeps the complete photos, dimensions, material, price, and exact product link together so you can compare equivalent formats."
+      ],
+      [
+        "Material and build",
+        "Compare TPE, full silicone, or another stated construction, then confirm the exact body, head, skeleton, finish, and supported choices.",
+        "Ask our team to confirm any decision-critical build detail that is unclear before checkout."
+      ],
+      [
+        "Weight and storage",
+        "Read height, width, depth, and listed weight together, then plan delivery access, cleaning, drying, and private storage.",
+        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
+      ]
+    ],
+    faqs: [
+      {
+        question: "Is CLM the same as Climax Doll?",
+        answer: "Yes. The manufacturer presents the brand as CLM and Climax Doll. DollWow groups current products under the Climax Doll brand hub."
+      },
+      {
+        question: "What product types does Climax Doll make?",
+        answer: "The current range includes full-size dolls, mini dolls, torsos, and smaller compact formats. Check the complete photographs and included body areas for the exact product."
+      },
+      {
+        question: "Does Climax Doll make TPE and silicone products?",
+        answer: "Yes. Current Climax and DollWow catalogs include TPE and silicone product paths. Confirm the exact body and head materials because care, feel, weight, finish, and price can differ."
+      },
+      {
+        question: "Are all Climax dolls ultra-lightweight?",
+        answer: "No. Ultra-lightweight is associated with selected products or series, not every Climax model. Compare the exact listed weight in pounds and kilograms before ordering."
+      },
+      {
+        question: "How should I compare a Climax torso with a full doll?",
+        answer: "Compare what the product includes, height, width, depth, weight, material, cleaning access, storage, mobility, and price. A torso and full-size doll are different ownership products."
+      },
+      {
+        question: "Can DollWow help find a Climax model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
+  },
   piper: {
     positioning:
       "Piper Dolls is often compared by buyers looking for compact sizes, anime-inspired styling, and practical storage considerations.",
