@@ -246,6 +246,71 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     guideHref: "/learn/6ye-dolls-buying-guide",
     guideLabel: "6YE Dolls buying guide"
   },
+  "dolls-castle": {
+    positioning:
+      "Dolls Castle combines conventional realistic bodies with distinctive fantasy designs, custom development, and a broad mix of TPE, full-silicone, and hybrid construction paths.",
+    intro:
+      "Compare current Dolls Castle models on DollWow by realistic or fantasy design, TPE, full-silicone, or hybrid construction, body and head pairing, complete measurements, listed weight, price, availability, and supported options. The manufacturer's range includes conventional bodies, compact formats, and distinctive character-led designs, so start with the exact product rather than assuming every Dolls Castle model follows the same material or ownership path. DollWow is an approved Dolls Castle seller and can help verify authenticity and supported custom choices before production.",
+    metaDescription:
+      "Shop approved Dolls Castle models by fantasy or realistic design, TPE, silicone or hybrid build, size, weight, price, availability, and options.",
+    buyerNotes: [
+      {
+        title: "Choose realistic or fantasy styling",
+        body: "Dolls Castle spans conventional faces and bodies as well as fantasy colors, character-led sculpts, and unusual proportions. Compare the exact gallery and measurements."
+      },
+      {
+        title: "Confirm the construction",
+        body: "Current listings can use TPE, full silicone, or a silicone-head hybrid path. Check the body and head materials separately because feel, finish, care, weight, and price can change."
+      },
+      {
+        title: "Keep the authenticity record",
+        body: "DollWow is an approved Dolls Castle seller. Retain the final build record, supplier documentation, and anti-counterfeiting details supplied with the product."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Design and product form",
+        "A conventional full doll, fantasy body, compact product, torso, or hips product can solve a very different ownership need.",
+        "DollWow keeps the exact photographs, included body areas, dimensions, material, and product link together."
+      ],
+      [
+        "Material and custom build",
+        "TPE, full silicone, hybrids, skin colors, heads, skeletons, and appearance options can follow model-specific rules.",
+        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
+      ],
+      [
+        "Authenticity and ownership",
+        "Distinctive products and high-value custom orders need a clear seller, build record, care path, and authenticity trail.",
+        "DollWow publishes its Dolls Castle authorization certificate and includes Care 365 with every DollWow doll."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What is Dolls Castle known for?",
+        answer: "Dolls Castle is known for custom doll development, conventional realistic bodies, distinctive fantasy designs, and varied product formats across current TPE, silicone, and hybrid listings."
+      },
+      {
+        question: "Is DollWow approved to sell Dolls Castle?",
+        answer: "Yes. DollWow has a Dolls Castle authorization certificate on file and displays it on the brand hub and authorized-vendors page."
+      },
+      {
+        question: "Does Dolls Castle make TPE and silicone dolls?",
+        answer: "Yes. Current Dolls Castle and DollWow listings include TPE, full-silicone, and silicone-head hybrid paths. Confirm the exact body and head materials on the product page."
+      },
+      {
+        question: "Does Dolls Castle make fantasy dolls?",
+        answer: "Yes. The range includes fantasy colors, character-led sculpts, animal-inspired details, and other unconventional designs alongside more traditional realistic models. Availability varies by exact product."
+      },
+      {
+        question: "How can I check whether a Dolls Castle product is genuine?",
+        answer: "Buy through an approved seller, retain the order and final build record, and keep the manufacturer's supplied documentation or anti-counterfeiting details. Ask DollWow if any authenticity step is unclear."
+      },
+      {
+        question: "Can DollWow help find a Dolls Castle model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
+  },
   climax: {
     positioning:
       "Climax Doll, also presented as CLM, offers a broad mix of full-size dolls, mini dolls, torsos, and other compact formats across TPE, silicone, and selected lightweight product lines.",

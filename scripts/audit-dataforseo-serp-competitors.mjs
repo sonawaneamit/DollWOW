@@ -56,7 +56,10 @@ const KEYWORD_TARGETS = {
   "ultra lightweight sex doll": { pageType: "collection", targetPath: "/shop/lightweight-sex-dolls" },
   "new sex doll": { pageType: "collection", targetPath: "/shop/new-sex-dolls" },
   "new sex dolls": { pageType: "collection", targetPath: "/shop/new-sex-dolls" },
-  "latest sex dolls": { pageType: "collection", targetPath: "/shop/new-sex-dolls" }
+  "latest sex dolls": { pageType: "collection", targetPath: "/shop/new-sex-dolls" },
+  "dolls castle": { pageType: "collection", targetPath: "/brands/dolls-castle" },
+  "dolls castle sex doll": { pageType: "collection", targetPath: "/brands/dolls-castle" },
+  "dolls castle dolls": { pageType: "collection", targetPath: "/brands/dolls-castle" }
 };
 
 const args = parseArgs(process.argv.slice(2));

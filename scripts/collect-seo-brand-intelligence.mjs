@@ -28,6 +28,12 @@ const DEFAULT_BRANDS = [
     keyword: "Climax Doll",
     manufacturerDomain: "climax-doll.com",
     dollwowUrl: "https://dollwow.com/brands/climax-dolls"
+  },
+  {
+    key: "dolls-castle",
+    keyword: "Dolls Castle sex doll",
+    manufacturerDomain: "dolls-castle.com",
+    dollwowUrl: "https://dollwow.com/brands/dolls-castle"
   }
 ];
 
@@ -107,6 +113,7 @@ for (const call of calls) {
 const summary = {
   generatedAt,
   mode: execute ? "execute" : "dry-run",
+  brands: selectedBrands.map((brand) => brand.keyword),
   brandCount: selectedBrands.length,
   requestCount: records.length,
   successfulRequests: records.filter((record) => !record.error && record.executed).length,
@@ -236,7 +243,7 @@ function renderReport(summary) {
   const rows = summary.calls
     .map((record) => `| ${record.api} | \`${record.endpoint}\` | ${record.purpose} | $${record.cost.toFixed(4)} | ${record.statusMessage || ""} |`)
     .join("\n");
-  return `# Tier 1 Brand Multi-API Intelligence\n\nGenerated: ${summary.generatedAt}\n\n## Purpose\n\nUse DataForSEO beyond keyword and SERP discovery where another dataset can change the content, visual, citation, or technical decision. Calls are cached and recorded so the same decision is not purchased twice.\n\n## Run Summary\n\n- Mode: ${summary.mode}\n- Brands: Starpery, Tantaly, and SE Doll\n- Requests: ${summary.requestCount}\n- Failed requests: ${summary.failedRequests}\n- Recorded cost: $${summary.totalCost.toFixed(4)}\n\n## Requests\n\n| API | Endpoint | Decision supported | Cost | Status |\n| --- | --- | --- | ---: | --- |\n${rows}\n\n## Endpoint Policy\n\n- Labs and SERP evidence continue to own keyword demand, intent, ranking pages, and page-type decisions.\n- Content Analysis is used to find citation patterns, discussion themes, freshness, and useful source types.\n- Backlinks is used to identify link-earning pages and formats. It does not justify copying competitors.\n- AI Optimization establishes answer-engine mention and source baselines. Zero results are still a useful baseline.\n- OnPage validates the public URL before and after material changes. Resource-heavy rendering is omitted unless the lightweight scan identifies a reason to pay for it.\n- Domain Analytics is reserved for competitor technology or domain-infrastructure questions. It does not improve these brand descriptions.\n- Merchant data is used for shopping and price context only. Shopify remains authoritative for DollWow products and prices.\n- App Data and Business Data are not relevant to the current ecommerce content decision.\n`;
+  return `# Brand Multi-API Intelligence\n\nGenerated: ${summary.generatedAt}\n\n## Purpose\n\nUse DataForSEO beyond keyword and SERP discovery where another dataset can change the content, visual, citation, or technical decision. Calls are cached and recorded so the same decision is not purchased twice.\n\n## Run Summary\n\n- Mode: ${summary.mode}\n- Brands: ${summary.brands.join(", ")}\n- Requests: ${summary.requestCount}\n- Failed requests: ${summary.failedRequests}\n- Recorded cost: $${summary.totalCost.toFixed(4)}\n\n## Requests\n\n| API | Endpoint | Decision supported | Cost | Status |\n| --- | --- | --- | ---: | --- |\n${rows}\n\n## Endpoint Policy\n\n- Labs and SERP evidence continue to own keyword demand, intent, ranking pages, and page-type decisions.\n- Content Analysis is used to find citation patterns, discussion themes, freshness, and useful source types.\n- Backlinks is used to identify link-earning pages and formats. It does not justify copying competitors.\n- AI Optimization establishes answer-engine mention and source baselines. Zero results are still a useful baseline.\n- OnPage validates the public URL before and after material changes. Resource-heavy rendering is omitted unless the lightweight scan identifies a reason to pay for it.\n- Domain Analytics is reserved for competitor technology or domain-infrastructure questions. It does not improve these brand descriptions.\n- Merchant data is used for shopping and price context only. Shopify remains authoritative for DollWow products and prices.\n- App Data and Business Data are not relevant to the current ecommerce content decision.\n`;
 }
 
 async function loadEnvFile(filePath) {
