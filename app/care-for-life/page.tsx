@@ -95,10 +95,39 @@ export default function CareForLifePage() {
         <p>{careForLife.promise}</p>
         <div className="care-policy-actions">
           <Link href="/shop/sex-dolls">Shop dolls</Link>
-          <a href="#included">See the timeline</a>
+          <a href="#care-365-details">See what is included</a>
         </div>
         <Care365Seal />
       </header>
+
+      <section id="care-365-details" aria-labelledby="care-365-title" className="care-365-details-section">
+        <div className="care-365-details-heading">
+          <p className="alive-eyebrow"><span /> Included with every DollWOW doll</p>
+          <h2 id="care-365-title">Your first year has a support path.</h2>
+          <p>Care 365 gives you one place to ask about setup, everyday care, storage, troubleshooting, and the next practical step when something is not right.</p>
+        </div>
+        <div className="care-365-details-grid">
+          <article>
+            <span>01</span>
+            <h3>Care questions, answered</h3>
+            <p>Ask before using an unfamiliar cleaner, powder, lubricant, storage method, or repair product. We help you work from the material and model you actually own.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Help when a problem appears</h3>
+            <p>Share clear photos and a description. We help identify a sensible next step and coordinate compatible guidance or parts where available.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>An eligible damage rescue</h3>
+            <p>Care 365 includes an eligible accidental-damage rescue during the first year. Eligibility and the available resolution are reviewed under the published terms.</p>
+          </article>
+        </div>
+        <div className="care-365-details-footer">
+          <p><strong>After day 365:</strong> Repair Concierge continues to help you find the next practical route for as long as you own the doll.</p>
+          <Link href="/support">Ask a Care 365 question</Link>
+        </div>
+      </section>
 
       <section id="included" aria-labelledby="care-ownership-story" className="care-policy-story">
         <p className="alive-eyebrow"><span /> Your ownership timeline</p>

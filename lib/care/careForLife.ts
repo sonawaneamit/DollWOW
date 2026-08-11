@@ -1,4 +1,4 @@
-export const CARE_FOR_LIFE_HREF = "/care-for-life";
+export const CARE_FOR_LIFE_HREF = "/care-for-life#care-365-details";
 
 export const careForLife = {
   name: "DollWOW Care for Life",
