@@ -324,9 +324,9 @@ function phraseWithArticle(value: string, suffix: string) {
 
 export function formatHeightDual(heightCm: number | undefined) {
   if (!heightCm || !Number.isFinite(heightCm)) return "";
-  const totalInches = heightCm / 2.54;
+  const totalInches = Math.round(heightCm / 2.54);
   const feet = Math.floor(totalInches / 12);
-  const inches = Math.round(totalInches - feet * 12);
+  const inches = totalInches % 12;
   if (!feet) return `${Math.round(heightCm)} cm`;
   if (!inches) return `${feet} ft / ${Math.round(heightCm)} cm`;
   return `${feet} ft ${inches} in / ${Math.round(heightCm)} cm`;

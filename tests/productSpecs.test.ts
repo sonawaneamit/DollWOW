@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { descriptionSpecs, detailedProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
+import { descriptionSpecs, detailedProductSpecs, formatHeightDual, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("product spec display helpers", () => {
+  it("carries rounded inches into the next foot", () => {
+    expect(formatHeightDual(60)).toBe("2 ft / 60 cm");
+  });
+
   it("parses labeled body measurements from imported descriptions", () => {
     const specs = descriptionSpecs(
       "Height: 5 ft / 153 cm Weight: 98.1 lbs / 44.5 kg Bra Size: G-Cup Feet Length: 8 in / 20 cm Bust: 2 ft 7 in / 80 cm Waist: 1 ft 8 in / 52 cm Hip: 3 ft 1 in / 94 cm"
