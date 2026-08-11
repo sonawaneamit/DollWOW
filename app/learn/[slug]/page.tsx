@@ -878,10 +878,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { brand: "6ye" }
     },
     "yourdoll-alternatives": {
-      title: "Start with comparable DollWow listings",
-      description: "Compare material, price, measurements, availability, and support before choosing between stores.",
+      title: "Compare six current DollWow starting points",
+      description: "These products span TPE, hybrid, full silicone, ready-to-ship, made-to-order, female, and male choices. Use them to compare the details that matter before submitting an exact outside listing.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "starpery-xue-171cm-xue-4-full-silicone-doll",
+        "real-lady-viki-150cm-r10-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog"
+      ]
     },
     "bestrealdoll-alternatives": {
       title: "Compare current dolls for your priorities",
