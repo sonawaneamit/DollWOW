@@ -33,7 +33,14 @@ export type LearnArticle = {
 const ROOT = process.cwd();
 const DRAFT_DIR = path.join(ROOT, "content", "learn", "drafts");
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-const hiddenArticleSlugs = new Set(["zelex-dolls-buying-guide"]);
+const hiddenArticleSlugs = new Set([
+  "zelex-dolls-buying-guide",
+  "betterlovedoll-alternatives",
+  "realsexdoll-alternatives",
+  "sexdolltech-alternatives",
+  "myrobotdoll-alternatives",
+  "sexdollqueen-alternatives"
+]);
 const internalHeadings = [
   "DollWow Catalog Links To Add",
   "Product Links To Add",
