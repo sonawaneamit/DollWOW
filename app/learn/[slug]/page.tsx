@@ -943,6 +943,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "irontech-kevin-170cm-silicone-companion-doll-1kpog"
       ]
     },
+    "tantaly-buying-guide": {
+      title: "Compare six current Tantaly formats",
+      description: "These current Tantaly products span smaller, mid-size, larger, female, and male formats. Compare the complete dimensions, listed weight, material, base, and storage needs on each product page.",
+      collectionHref: "/brands/tantaly-dolls",
+      filters: {},
+      handles: [
+        "tantaly-rosie-29cm-companion-doll-860mx",
+        "tantaly-hannah-mini-41cm-d-cup-companion-doll-vs9yl",
+        "tantaly-mark-60cm-companion-doll-7k5kk",
+        "tantaly-badd-angel-74cm-i-cup-companion-doll-1odf7",
+        "tantaly-aurora-2-0-89cm-g-cup-companion-doll-1rjq0",
+        "tantaly-rebecca-92cm-tpe-companion-doll-1cjp1"
+      ]
+    },
     "tpe-vs-silicone-sex-dolls": {
       title: "Compare TPE and full-silicone examples",
       description: "These live examples show why material alone does not predict price or handling weight. Compare the complete measurements, construction, options, and availability on each product page.",
