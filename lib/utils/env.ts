@@ -29,7 +29,8 @@ const envSchema = z.object({
   GA_MEASUREMENT_ID: z.string().optional(),
   APIFY_API_TOKEN: z.string().optional(),
   APIFY_WEB_SCRAPER_ACTOR_ID: z.string().optional(),
-  APIFY_GOOGLE_LENS_ACTOR_ID: z.string().optional()
+  APIFY_GOOGLE_LENS_ACTOR_ID: z.string().optional(),
+  PASSPORT_SESSION_SECRET: z.string().min(32).optional()
 });
 
 export const env = envSchema.parse({
@@ -61,7 +62,8 @@ export const env = envSchema.parse({
   GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
   APIFY_API_TOKEN: process.env.APIFY_API_TOKEN,
   APIFY_WEB_SCRAPER_ACTOR_ID: process.env.APIFY_WEB_SCRAPER_ACTOR_ID,
-  APIFY_GOOGLE_LENS_ACTOR_ID: process.env.APIFY_GOOGLE_LENS_ACTOR_ID
+  APIFY_GOOGLE_LENS_ACTOR_ID: process.env.APIFY_GOOGLE_LENS_ACTOR_ID,
+  PASSPORT_SESSION_SECRET: process.env.PASSPORT_SESSION_SECRET
 });
 
 export function hasShopifyStorefrontEnv() {

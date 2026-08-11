@@ -28,6 +28,8 @@ import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
+import { Care365Seal } from "@/components/care/Care365Seal";
+import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
@@ -129,6 +131,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
+            <Care365Seal className="mt-5" />
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
               <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>
@@ -165,6 +168,10 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
         <div id="build-studio" className="scroll-mt-28">
           <ProductOptions product={publicProduct} />
         </div>
+      </ToneBand>
+
+      <ToneBand tone="deep" className="py-8">
+        <CareForLifePanel compact />
       </ToneBand>
 
       <ToneBand tone="deep" className="pdp-details-band">

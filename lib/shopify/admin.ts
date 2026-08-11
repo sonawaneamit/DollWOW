@@ -4,7 +4,7 @@ const API_VERSION = "2026-04";
 
 let tokenCache: { accessToken: string; expiresAt: number } | null = null;
 
-async function adminFetch<T>(query: string, variables: Record<string, unknown> = {}) {
+export async function adminFetch<T>(query: string, variables: Record<string, unknown> = {}) {
   if (!hasShopifyAdminEnv()) {
     throw new Error("Shopify Admin API is not configured.");
   }

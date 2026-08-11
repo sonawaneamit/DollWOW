@@ -10,6 +10,7 @@ import { useCart } from "@/components/cart/CartProvider";
 import { formatMoney } from "@/lib/utils/currency";
 import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
+import { Care365Seal } from "@/components/care/Care365Seal";
 
 export function CartDrawer() {
   const cart = useCart();
@@ -204,6 +205,7 @@ export function CartDrawer() {
               <strong className="text-lg text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
             </div>
             <p className="mt-1 text-sm leading-4 text-ivory-500">Shipping and any custom options are confirmed at checkout.</p>
+            <Care365Seal compact className="mt-3" />
             {cart.checkoutError ? <p className="mt-2 text-sm text-danger">{cart.checkoutError}</p> : null}
             <button
               type="button"

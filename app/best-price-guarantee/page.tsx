@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function BestPriceGuaranteePage() {
   return (
     <PolicyLayout
-      eyebrow="Best price support"
-      title="Find the same doll for less? Send it to us."
+      eyebrow="30-Day Price Lock"
+      title="A fair comparison before or after you order."
       intro="We compare the complete offer, including the doll, selected options, extras, shipping, and final price. If the same configuration qualifies, we will match it before purchase or refund the difference within 30 days of your DollWow order."
       ctas={[
         { label: "Request a price match", href: "/price-match", primary: true },
@@ -26,7 +26,7 @@ export default function BestPriceGuaranteePage() {
           body: "Coupons, seasonal discounts, free add-ons, and shipping terms all matter. We review the effective final price, including the headline number."
         },
         {
-          title: "30-day price protection",
+          title: "30-Day Price Lock",
           body: "If the same configuration shows up cheaper within 30 days of your purchase, send us the listing and we will review it for a refund of the difference."
         },
         {

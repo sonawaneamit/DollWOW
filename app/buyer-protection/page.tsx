@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
+import { Care365Seal } from "@/components/care/Care365Seal";
 
 export const metadata: Metadata = {
   title: "Sex Doll Buyer Protection",
@@ -92,6 +93,6 @@ export default function BuyerProtectionPage() {
         "Ready-to-ship items move faster, but that can mean fewer pre-release approval steps.",
         "Keep your order confirmation and factory approval messages until delivery is complete."
       ]}
-    />
+    ><Care365Seal /></PolicyLayout>
   );
 }

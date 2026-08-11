@@ -9,6 +9,7 @@ import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { WishlistButton } from "@/components/WishlistButton";
+import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
@@ -127,6 +128,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
       </section>
 
       <TrustBand />
+      <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
       <HomeDollWall products={products} />
 
       {rails.map((rail, index) => (

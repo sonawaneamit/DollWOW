@@ -12,6 +12,7 @@ import { formatMoney } from "@/lib/utils/currency";
 import { useMounted } from "@/lib/utils/storageStore";
 import { CompareButton } from "@/components/compare/CompareButton";
 import { compareEntryFromCartItem } from "@/lib/compare/products";
+import { Care365Seal } from "@/components/care/Care365Seal";
 
 export function CartPageClient() {
   const cart = useCart();
@@ -218,6 +219,7 @@ export function CartPageClient() {
           Shipping, taxes, and any custom options are confirmed at checkout. Custom builds include factory photo
           approval before anything ships.
         </p>
+        <Care365Seal compact className="mt-4" />
         {cart.checkoutError ? <p className="mt-3 text-sm text-danger">{cart.checkoutError}</p> : null}
         <button
           type="button"

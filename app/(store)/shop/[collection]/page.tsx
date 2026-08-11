@@ -6,6 +6,7 @@ import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyer
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
+import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 
 export async function generateMetadata({
   params,
@@ -98,6 +99,7 @@ export default async function CollectionPage({
           </div>
         </section>
       ) : null}
+      <div className="mb-8"><CareForLifePanel compact /></div>
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
           <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />

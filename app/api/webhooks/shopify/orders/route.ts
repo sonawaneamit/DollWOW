@@ -73,6 +73,7 @@ export async function POST(request: Request) {
     }
   }
 
+
   return NextResponse.json({ ok: true });
 }
 
@@ -83,6 +84,9 @@ type ShopifyOrderWebhook = {
   currency?: string;
   presentment_currency?: string;
   total_price?: string;
+  email?: string;
+  contact_email?: string;
+  customer?: { id?: number | string; email?: string };
   line_items?: Array<{
     id: number | string;
     title?: string;
@@ -91,5 +95,8 @@ type ShopifyOrderWebhook = {
     sku?: string | null;
     price?: string;
     quantity?: number;
+    product_id?: number | string;
+    vendor?: string;
+    properties?: Array<{ name: string; value: string }>;
   }>;
 };

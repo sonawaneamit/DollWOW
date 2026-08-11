@@ -22,6 +22,7 @@ const corePages = [
   ["Customize", "/customize"],
   ["Price Match", "/price-match"],
   ["Buyer Protection", "/buyer-protection"],
+  ["Care for Life", "/care-for-life"],
   ["Best Price Guarantee", "/best-price-guarantee"],
   ["Shipping", "/shipping"],
   ["Returns", "/returns"],

@@ -18,6 +18,7 @@ const staticRoutes = [
   "/authorized-vendors",
   "/how-ordering-works",
   "/buyer-protection",
+  "/care-for-life",
   "/best-price-guarantee",
   "/price-match",
   "/scam-alert",

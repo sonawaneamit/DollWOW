@@ -16,6 +16,7 @@ const priorityCollections = [
 ];
 
 const policies = [
+  { label: "DollWOW Care for Life", path: "/care-for-life" },
   { label: "Buyer Protection", path: "/buyer-protection" },
   { label: "Best Price Guarantee", path: "/best-price-guarantee" },
   { label: "Shipping", path: "/shipping" },

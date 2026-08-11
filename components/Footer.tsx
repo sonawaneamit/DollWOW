@@ -13,6 +13,7 @@ const footerGroups = [
       ["Compare dolls", "/compare"],
       ["Price Match", "/price-match"],
       ["Saved dolls", "/saved"]
+      ,["My Dolls", "/account/my-dolls"]
     ]
   },
   {
@@ -37,6 +38,7 @@ const footerGroups = [
     title: "Policies",
     links: [
       ["Buyer protection", "/buyer-protection"],
+      ["Care for Life", "/care-for-life"],
       ["Shipping protection", "/shipping-protection"],
       ["Best price guarantee", "/best-price-guarantee"],
       ["Shipping", "/shipping"],

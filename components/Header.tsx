@@ -24,6 +24,7 @@ const mobilePrimaryLinks = [
   { label: "Compare dolls", href: "/compare" },
   { label: "Help me choose", href: "/help-me-choose" },
   { label: "Support", href: "/support" }
+  ,{ label: "My Dolls", href: "/account/my-dolls" }
 ] as const;
 
 const helpLinks = [
@@ -35,6 +36,7 @@ const helpLinks = [
   { label: "About Us", href: "/why-dollwow" },
   { label: "Certificates", href: "/authorized-vendors" },
   { label: "Buyer protection", href: "/buyer-protection" },
+  { label: "Care for Life", href: "/care-for-life" },
   { label: "Shipping", href: "/shipping" },
   { label: "Returns", href: "/returns" },
   { label: "Scam alert", href: "/scam-alert" }
