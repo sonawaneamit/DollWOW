@@ -3,7 +3,7 @@ export const CARE_FOR_LIFE_HREF = "/care-for-life";
 export const careForLife = {
   name: "DollWOW Care for Life",
   promise:
-    "Every DollWOW doll is reviewed before production, approved before shipping, documented for ownership, and supported for as long as you own it.",
+    "Every DollWOW doll includes Care 365 for the first year, plus practical repair help for as long as you own it.",
   care365: {
     name: "DollWOW Care 365",
     seal: "CARE 365",
