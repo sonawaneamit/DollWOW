@@ -268,7 +268,7 @@ Before approving an Irontech order, confirm:
 - Cleaning, storage, and repair guidance
 - Final build record and support contacts
 
-## Frequently Asked Questions
+## FAQs
 
 ### When was Irontech Doll founded?
 
