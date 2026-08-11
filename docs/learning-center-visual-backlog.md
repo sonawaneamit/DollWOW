@@ -27,6 +27,14 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-scams` | Scam red flags checklist | Vertical | Low price, stolen photos, vague shipping, no support, unclear product facts | No competitor logos or external URLs. |
 | `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only, no underage-coded styling, check local rules, privacy is separate from legality | Keep legal wording cautious. |
 
+## Completed High-Intent Editorial Visuals
+
+| Page | Live visual | Catalog grounding | Status |
+| --- | --- | --- | --- |
+| `/learn/best-sex-dolls` | Choose by fit, not hype | Three distinct current catalog dolls from SE Doll, 6YE, and Zelex source sets | Live in code; names, prices, stock, and product links remain live HTML. |
+| `/learn/most-realistic-sex-dolls` | Inspect the evidence | Two distinct current catalog faces with eye, finish, and hair detail crops | Live in code; avoids declaring a universal realism winner. |
+| `/learn/male-sex-doll-buying-guide` | Compare the complete build | Male Starpery, WM Dolls, and Irontech products only | Live in code; teaches construction, handling, body/head pairing, delivery, and storage. |
+
 ## RealDoll Alternatives
 
 - Featured image: premium editorial comparison using one actual adult-looking full-silicone DollWow catalog product as the reference.

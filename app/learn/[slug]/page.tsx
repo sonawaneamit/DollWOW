@@ -315,6 +315,36 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
 
 function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
   const articleVisuals: Record<string, MarkdownSectionVisual[]> = {
+    "best-sex-dolls": [
+      {
+        afterHeading: "How DollWow Selected These Candidates",
+        src: "/images/learn/best-sex-dolls/choose-by-fit.webp",
+        alt: "Three current DollWow catalog dolls illustrating four factors for choosing by fit: material, handling, ready-to-ship or custom ordering, and support",
+        caption: "There is no universal winner. Compare the exact material and finish, size and handling weight, ready-to-ship or custom path, and ownership support for your needs.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "most-realistic-sex-dolls": [
+      {
+        afterHeading: "Realism Is a System, Not One Feature",
+        src: "/images/learn/most-realistic-sex-dolls/inspect-the-evidence.webp",
+        alt: "Two current catalog dolls and close-up details showing how to inspect facial sculpt, surface finish, eyes, hair, and multiple photo angles",
+        caption: "Realism should survive a closer look. Compare facial proportions, surface transitions, eyes, hair, and consistent evidence across several angles and lighting conditions.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "male-sex-doll-buying-guide": [
+      {
+        afterHeading: "Key Takeaways",
+        src: "/images/learn/male-sex-doll-buying-guide/compare-the-build.webp",
+        alt: "Starpery, WM Dolls, and Irontech male catalog dolls with a four-step framework for comparing construction, handling, body and head pairing, delivery, and storage",
+        caption: "Compare the complete male build. Material, listed height and weight, body and head pairing, delivery access, and storage all affect the ownership fit.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "tpe-vs-silicone-sex-dolls": [
       {
         afterHeading: "TPE, Full Silicone, and Hybrid Construction",
