@@ -1077,6 +1077,16 @@ function relatedCollections(slug: string) {
       { label: "Custom dolls", href: "/shop/custom", description: "Review factory-order listings where functions may be configurable." },
       { label: "Ask support", href: "/support", description: "Confirm product-specific heating compatibility." }
     ],
+    "sex-robots": [
+      { label: "Ai-Tech Dolls", href: "/brands/ai-tech-dolls", description: "Review current products without assuming every model includes AI or robotics." },
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare product-specific electronic options and compatibility." },
+      { label: "Compare a listing", href: "/compare", description: "Ask DollWow to verify the exact functions shown on another page." }
+    ],
+    "ai-sex-dolls": [
+      { label: "Ai-Tech Dolls", href: "/brands/ai-tech-dolls", description: "Review current products while verifying every electronic or AI capability separately." },
+      { label: "Custom dolls", href: "/shop/custom", description: "Compare product-specific electronic options and compatibility." },
+      { label: "Compare a listing", href: "/compare", description: "Ask DollWow to separate the body, electronics, software, and support claims." }
+    ],
     "sex-doll-skeleton-options": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings by body and option path." },
       { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Review how feet and skeleton choices interact." }

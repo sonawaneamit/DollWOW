@@ -32,6 +32,22 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 - Do not use RealDoll product imagery, imply the referenced DollWow product is a RealDoll, or add unsupported robotics.
 - Generate one sample only and wait for user approval before producing the final set.
 
+## Sex Robots
+
+- Featured image: editorial technology guide using a real adult-looking DollWow catalog doll only as a conventional-body reference, with clearly separate hardware and software layers.
+- Supporting visual: five product levels from conventional articulated doll to humanoid robot.
+- Supporting visual: AI software versus robotic hardware versus conventional doll comparison.
+- Do not add invented motors, screens, exposed circuits, or autonomous functions to a product reference.
+- Generate one sample only and wait for user approval before producing the final set.
+
+## AI Sex Dolls
+
+- Featured image: editorial connected-companion concept using an actual adult-looking DollWow catalog doll as the physical reference, with a clearly separate app or voice layer.
+- Supporting visual: physical doll versus electronic hardware versus AI software versus ownership support.
+- Supporting visual: six-level AI capability ladder from marketing label to integrated robotic platform.
+- Do not add invented screens, cameras, sensors, motors, or autonomous functions to a catalog product.
+- Generate one sample only and wait for user approval before producing the final set.
+
 ## Customization Cluster Visuals
 
 | Page | Asset Type | Format | What It Should Teach | Notes |
