@@ -2,7 +2,7 @@
 title: "Best Sex Dolls: Six Buyer-Fit Shortlists and How to Choose"
 slug: "best-sex-dolls"
 primaryKeyword: "best sex dolls"
-secondaryKeywords: ["best realistic sex dolls", "best sex doll for first time buyer", "best TPE sex doll", "best silicone sex doll"]
+secondaryKeywords: ["best realistic sex dolls", "best sex doll for first time buyer", "top sex dolls by buyer fit", "best silicone sex doll"]
 description: "Compare six current sex doll candidates by buyer need, with a transparent method covering material, size, weight, realism, price, stock, customization, care, and support."
 category: "Buying Guides"
 author: "alex"

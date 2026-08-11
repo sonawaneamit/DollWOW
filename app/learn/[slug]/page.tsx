@@ -18,6 +18,8 @@ import {
   learnArticleUrl
 } from "@/lib/learn/content";
 import { getProducts, getProductsByHandles } from "@/lib/shopify/storefront";
+import { productPublicTitle } from "@/lib/catalog/naming";
+import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 
@@ -94,6 +96,9 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               />
             </div>
           ) : null}
+          {article.slug === "best-tpe-sex-dolls" && productModule?.products.length ? (
+            <TpeGuideCatalogHero products={productModule.products.slice(0, 3)} />
+          ) : null}
           <div className="mt-8 max-w-3xl rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
             <p className="text-sm font-semibold text-ivory-50">
               By {article.authorDisplayName}, {article.authorTitle}
@@ -123,6 +128,27 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         </div>
       </section>
     </div>
+  );
+}
+
+function TpeGuideCatalogHero({ products }: { products: Product[] }) {
+  return (
+    <figure className="mt-8 max-w-5xl overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04]">
+      <div className="grid grid-cols-3">
+        {products.map((product) => {
+          const image = product.featuredImage ?? product.images[0] ?? null;
+          const imageUrl = protectedProductImageUrlFor(product, image, "card");
+          const title = productPublicTitle(product);
+          return (
+            <Link key={product.handle} href={`/products/${product.handle}`} className="group relative aspect-[4/5] overflow-hidden border-r border-gold-500/14 last:border-r-0" aria-label={`View ${title}`}>
+              {imageUrl ? <Image src={imageUrl} alt={`${title}, a current DollWow TPE catalog example`} fill sizes="(min-width: 1024px) 27rem, 33vw" className="object-cover object-top transition duration-300 group-hover:scale-[1.02]" /> : null}
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-3 pb-3 pt-12 text-xs font-semibold leading-5 text-white sm:px-5 sm:pb-5 sm:text-sm">{title}</span>
+            </Link>
+          );
+        })}
+      </div>
+      <figcaption className="px-5 py-4 text-sm leading-6 text-ivory-300">Current TPE catalog examples for comparison. Product facts and availability should be checked on each live listing.</figcaption>
+    </figure>
   );
 }
 
@@ -943,6 +969,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "irontech-kevin-170cm-silicone-companion-doll-1kpog"
       ]
     },
+    "best-tpe-sex-dolls": {
+      title: "Six current TPE dolls for different buyer priorities",
+      description: "This live shortlist compares ready-to-ship and factory-order TPE dolls across five manufacturers, varied heights, and a wide listed-weight range. It is a buyer-fit comparison, not a sales ranking or hands-on test.",
+      collectionHref: "/shop/tpe",
+      filters: { material: "tpe", productForm: "full-doll" },
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y",
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "sedoll-avery-b-153cm-f-cup-tpe-companion-doll-1jtw6",
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "6ye-cherry-noel-152cm-f-cup-tpe-companion-doll-wml82"
+      ]
+    },
     "tantaly-buying-guide": {
       title: "Compare six current Tantaly formats",
       description: "These current Tantaly products span smaller, mid-size, larger, female, and male formats. Compare the complete dimensions, listed weight, material, base, and storage needs on each product page.",
@@ -1392,6 +1432,12 @@ function relatedCollections(slug: string) {
       { label: "Browse TPE dolls", href: "/shop/tpe", description: "Compare softer material builds and care tradeoffs." },
       { label: "Browse silicone dolls", href: "/shop/silicone", description: "Compare full-silicone builds, detail, weight, and price." },
       { label: "Browse hybrid dolls", href: "/shop/hybrid", description: "Compare silicone-head and TPE-body construction." }
+    ],
+    "best-tpe-sex-dolls": [
+      { label: "Browse TPE dolls", href: "/shop/tpe", description: "Compare current full TPE dolls by size, weight, price, and availability." },
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Review material, care, feel, and ownership tradeoffs." },
+      { label: "Lightweight dolls", href: "/shop/lightweight-sex-dolls", description: "Start with listed weight when routine handling is the main constraint." },
+      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare current warehouse configurations and confirm dispatch details." }
     ],
     "ready-to-ship-vs-custom-sex-dolls": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare warehouse-style listings with fixed configurations." },
