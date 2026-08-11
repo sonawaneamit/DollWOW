@@ -128,7 +128,10 @@ const KEYWORD_TARGETS = {
   "evo skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
   "sex doll body heating": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
   "body heating sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
-  "heated sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" }
+  "heated sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
+  "sex doll customization": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" },
+  "customize sex doll": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" },
+  "custom sex doll options": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));

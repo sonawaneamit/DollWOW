@@ -1236,10 +1236,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "custom-sex-dolls": {
-      title: "Compare custom-order listings",
-      description: "Compare current base models by material, size, price, and available customization choices.",
+      title: "Choose a base model for your custom build",
+      description: "Compare current full-doll base models by material, height, listed weight, measurements, price, and product-specific option path before adding appearance or functions.",
       collectionHref: "/shop/custom",
-      filters: { availability: "custom" }
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "wm-dolls-buying-guide": {
       title: "Compare six WM body and material paths",
@@ -1561,7 +1569,10 @@ function relatedCollections(slug: string) {
     ],
     "custom-sex-dolls": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings and option paths." },
-      { label: "Customize", href: "/customize", description: "Review DollWow's customization workflow." }
+      { label: "Customize", href: "/customize", description: "Build from current product-specific choices and compatibility rules." },
+      { label: "Ready or made to order", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Choose between an existing configuration and a factory build." },
+      { label: "TPE or silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Choose the material and care path before appearance upgrades." },
+      { label: "Ask support", href: "/support", description: "Review the final build, conflicts, price changes, and manufacturer confirmations." }
     ],
     "implanted-hair-vs-wig": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare listings where hair options may be available." },
