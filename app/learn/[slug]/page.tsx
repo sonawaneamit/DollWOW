@@ -1241,12 +1241,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "real-lady-viki-150cm-r10-silicone-doll"
       ]
     },
-    "sex-doll-laws-us": {
-      title: "Compare adult-only catalog listings",
-      description: "DollWow keeps catalog comparison focused on adult products, clear facts, and support-confirmed order details.",
-      collectionHref: "/shop/sex-dolls",
-      filters: {}
-    },
     "custom-sex-dolls": {
       title: "Compare custom-order listings",
       description: "Compare current base models by material, size, price, and available customization choices.",
@@ -1588,7 +1582,9 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-laws-us": [
       { label: "Adult-only policy", href: "/adult-only", description: "Review DollWow's adult-only catalog standard." },
-      { label: "Buyer protection", href: "/buyer-protection", description: "Review purchase clarity and support expectations." }
+      { label: "Buyer protection", href: "/buyer-protection", description: "Review purchase clarity and support expectations." },
+      { label: "Discreet shipping", href: "/learn/discreet-sex-doll-shipping", description: "Plan packaging, delivery, and privacy without confusing discretion with legality." },
+      { label: "Ask support", href: "/support", description: "Confirm product, catalog, and order facts before checkout." }
     ],
     "custom-sex-dolls": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings and option paths." },

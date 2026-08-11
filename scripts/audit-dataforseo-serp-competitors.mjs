@@ -107,7 +107,10 @@ const KEYWORD_TARGETS = {
   "how to care for a sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
   "sex doll scam": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
   "sex doll scams": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
-  "fake sex doll website": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" }
+  "fake sex doll website": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
+  "are sex dolls legal": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
+  "are sex dolls legal in the us": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
+  "sex doll laws": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" }
 };
 
 const args = parseArgs(process.argv.slice(2));
