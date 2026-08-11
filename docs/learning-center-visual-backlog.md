@@ -25,7 +25,7 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-storage` | Safe vs risky storage guide | Vertical | Safe storage positions, drying first, light fabric, avoid heat/pressure/dark dye | Show full product forms only in neutral storage context. |
 | `/learn/sex-doll-maintenance-checklist` | Monthly checklist | Vertical | Confirm material, clean, dry, inspect, powder only if approved, and store supported | Complete full-doll visual live in code; all text and responsive behavior verified. |
 | `/learn/sex-doll-scams` | Listing trust check | Vertical | Product identity, facts, order path, written options, support, policies, and payment red flags | Complete visual live in code with no competitor logos, external URLs, or claims that every discount is a scam. |
-| `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only, no underage-coded styling, check local rules, privacy is separate from legality | Keep legal wording cautious. |
+| `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only product, location, import and shipping, current law, privacy, and qualified advice | Complete visual live in code; article now cites current official state statutes and distinguishes proposed federal legislation from enacted law. |
 
 ## Completed High-Intent Editorial Visuals
 

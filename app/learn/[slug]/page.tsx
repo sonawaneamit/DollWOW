@@ -435,6 +435,16 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "sex-doll-laws-us": [
+      {
+        afterHeading: "The Practical Answer",
+        src: "/images/learn/sex-doll-laws-us/legal-checklist.webp",
+        alt: "Six-step US legal and buying-safety checklist covering adult-only products, location, importing and shipping, current law, privacy, and qualified advice",
+        caption: "Treat legality as a checklist. Confirm the product is clearly adult, check current rules for your location, keep privacy separate from legality, and use qualified advice for legal questions.",
+        width: 864,
+        height: 1821
+      }
+    ],
     "ready-to-ship-vs-custom-sex-dolls": [
       {
         afterHeading: "Side-by-Side Comparison",

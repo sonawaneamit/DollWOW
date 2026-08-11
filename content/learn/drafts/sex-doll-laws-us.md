@@ -8,9 +8,9 @@ category: "Scams And Buyer Protection"
 author: "jesse"
 authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-28"
+lastReviewed: "2026-08-11"
 ---
 
 # Are Sex Dolls Legal In The US? What Buyers Should Know
@@ -19,7 +19,7 @@ By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
 
 ## Quick Answer
 
-Adult sex dolls are generally sold in the United States, but buyers should treat legality as a serious adult-only, jurisdiction-specific issue. Avoid anything underage-coded, school-themed, deceptive, or unlawful. State, local, import, platform, and payment rules can vary. DollWow is an adult-only storefront and does not support underage-coded products or content.
+Adult sex dolls are generally sold in the United States, but there is no single answer for every product and location. State laws, local rules, and import requirements can differ. Some states specifically prohibit child-like sex dolls. Choose clearly adult products, verify current rules for your location, and seek qualified legal advice when needed.
 
 ## Key Takeaways
 
@@ -52,7 +52,19 @@ Legal and practical rules may vary across:
 - Shipping carrier policies
 - Seller compliance standards
 
-This is why a general article cannot promise that every buyer in every location has the same risk profile. If you have a specific concern, check current local law or ask a qualified legal professional.
+This is why a general article cannot promise that every buyer in every location has the same risk profile. If you have a specific concern, check current official sources or ask a qualified legal professional.
+
+## Current US Examples
+
+The clearest restrictions concern products that resemble minors. The exact definitions and prohibited conduct are not identical from one state to another.
+
+- [Arizona Revised Statutes § 13-1429](https://www.azleg.gov/ars/13/01429.htm) prohibits knowingly possessing, trafficking, or importing a product that meets the statute's definition of a child sex doll.
+- [Florida Statutes § 847.011](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0800-0899%2F0847%2FSections%2F0847.011.html) addresses knowing possession and commercial activity involving an obscene, child-like sex doll.
+- [Louisiana Revised Statutes § 14:81.6](https://legis.la.gov/Legis/Law.aspx?d=1388453) prohibits possessing, trafficking, or importing a product that meets Louisiana's definition of a child sex doll.
+
+Federal proposals also appear in search results, so it is important to check their status. [H.R. 1186, the CREEPER Act 2.0](https://www.congress.gov/bill/119th-congress/house-bill/1186/all-info), was introduced in the House on February 11, 2025 and referred to the House Judiciary Committee. The Congress.gov status page does not show it as enacted law. A proposed bill and a current statute are not the same thing.
+
+This is not an exhaustive state-by-state list. Laws can change, and a statute's application depends on its exact language and the facts involved.
 
 ## Buyer Risk Table
 
@@ -61,7 +73,7 @@ This is why a general article cannot promise that every buyer in every location 
 | Product presentation | Underage-coded, school-themed, or ambiguous styling | Avoid completely |
 | Seller claims | Casual promises about legality | Verify independently if concerned |
 | Import path | Customs or carrier review | Prefer clear adult-only sellers with transparent policies |
-| Local rules | State or city restrictions | Check current local rules |
+| Local rules | State or city restrictions | Check current official sources |
 | Payment and shipping | Processor or carrier limitations | Use sellers with clear checkout and support |
 | Product copy | Fake reviews or deceptive claims | Rely on facts and support confirmation |
 
@@ -91,7 +103,7 @@ Before checkout, review:
 
 - Product presentation
 - Material and size
-- Stock or custom order path
+- Whether the item is in stock or made to order
 - Shipping destination
 - Delivery and packaging expectations
 - Support contact options
@@ -134,7 +146,11 @@ DollWow does not support underage-coded, school-themed, or unlawful product pres
 
 ### Can laws vary by state?
 
-Yes. State and local rules can vary, and laws can change. Verify current local rules if you have a specific concern.
+Yes. Arizona, Florida, and Louisiana are current examples of states with statutes addressing child-like sex dolls, but their definitions and prohibited conduct differ. Check current official sources for your location and get qualified legal advice when needed.
+
+### Is the CREEPER Act 2.0 federal law?
+
+Congress.gov currently lists H.R. 1186 as introduced and referred to the House Judiciary Committee, not enacted. Always check the official bill status because search results and older articles may discuss a proposal as if it were current law.
 
 ### Does discreet shipping affect legality?
 
