@@ -38,3 +38,20 @@ describe("ready-to-ship collection SEO", () => {
     expect(copy).not.toMatch(/\b\d+\s*(?:-|to)\s*\d+\s*(?:day|week)s?\b/i);
   });
 });
+
+describe("anime collection SEO", () => {
+  const preset = collectionPresets["anime-dolls"];
+
+  it("uses one adult-only collection for anime, manga, cosplay, and fantasy styling", () => {
+    const intro = collectionIntro(preset, "anime-dolls");
+    const faqs = collectionFaqItems("anime-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(preset.title).toBe("Anime sex dolls");
+    expect(preset.filters).toEqual({ look: "look-anime" });
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("visual category for adults");
+    expect(copy).toContain("ft/in and cm");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});

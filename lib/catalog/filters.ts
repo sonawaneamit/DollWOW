@@ -111,6 +111,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   ...lookCollectionPresets(),
   "asian-dolls": { title: "Asian sex dolls", filters: { look: "look-asian" } },
   "black-dolls": { title: "Black sex dolls", filters: { look: "skin-black" } },
+  "anime-dolls": { title: "Anime sex dolls", filters: { look: "look-anime" } },
   ...brandCollectionPresets(),
   tpe: { title: "TPE sex dolls", filters: { material: "tpe", productForm: "full-doll" } },
   silicone: { title: "Silicone sex dolls", filters: { material: "silicone" } },

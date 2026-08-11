@@ -81,7 +81,10 @@ const KEYWORD_TARGETS = {
   "soft silicone dolls reviews": { pageType: "no-action", targetPath: "none" },
   "sex doll stores": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
   "best sex doll stores": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
-  "where to buy sex dolls online": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" }
+  "where to buy sex dolls online": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
+  "anime love doll": { pageType: "collection", targetPath: "/shop/anime-dolls" },
+  "anime sex doll": { pageType: "collection", targetPath: "/shop/anime-dolls" },
+  "cosplay sex doll": { pageType: "collection", targetPath: "/shop/anime-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));

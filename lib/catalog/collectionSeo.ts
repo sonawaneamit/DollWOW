@@ -298,6 +298,8 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
   "black-dolls":
     "Shop Black sex dolls shown with deep or dark skin tones and Black-inspired styling across current DollWow brands. This is an appearance category, not a promise about one body type, hair texture, material, or feature set. Compare the pictured head and body, exact skin tone, measurements, listed weight, TPE or silicone construction, availability, and supported options. If you have another approved model in mind, send the name or supplier link and our team will check it quickly.",
+  "anime-dolls":
+    "Shop adult anime sex dolls with stylized, manga-inspired, cosplay, elf, and fantasy presentation across current DollWow brands. This is a visual category for adults, not an age, character-identity, or body-size label. Compare the exact face, body, product form, height, listed weight, TPE or silicone construction, photographs, availability, and supported styling options. If a particular approved design is missing, send our team the model name or supplier link and we will check whether it can be added.",
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
@@ -324,6 +326,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "new-sex-dolls": "Browse new sex dolls and recent catalog additions. Compare latest-supported models by material, size, weight, options, price, and availability.",
   "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
+  "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
@@ -457,6 +460,20 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     },
     {
       title: "Ask us to expand the choice",
+      body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "anime-dolls": [
+    {
+      title: "Style never describes age",
+      body: "Anime, manga, cosplay, elf, and fantasy describe adult product styling only. DollWow does not use underage-coded or school-themed merchandising."
+    },
+    {
+      title: "Check the exact photographed build",
+      body: "Hair, ears, eyes, makeup, clothing, props, and image editing can change the presentation. Confirm the head, body, material, measurements, listed weight, and included configuration."
+    },
+    {
+      title: "Ask us to find a missing design",
       body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
@@ -641,6 +658,14 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Explore custom builds", href: "/shop/custom" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+  ],
+  "anime-dolls": [
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Compare product size and weight", href: "/learn/mini-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Review the adult-only standard", href: "/adult-only" },
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
   ],
   "height-under-155": [
@@ -876,6 +901,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Choice beyond the current grid",
       whyItMatters: "A buyer may want an approved model, head, or configuration that is not published yet.",
       dollWowAdvantage: "Send live chat or hello@dollwow.com the model name or supplier link. Most approved additions can go live within 4 to 6 hours after confirmation."
+    }
+  ],
+  "anime-dolls": [
+    {
+      factor: "Adult-only styling",
+      whyItMatters: "Anime and fantasy labels can be used carelessly to imply age or to mix unrelated novelty products into the same result set.",
+      dollWowAdvantage: "DollWow treats anime, manga, cosplay, elf, and fantasy as adult visual styles and excludes underage-coded or school-themed merchandising."
+    },
+    {
+      factor: "Exact product evidence",
+      whyItMatters: "Costumes, wigs, ears, makeup, props, and edited backgrounds can make the same body look like a different product.",
+      dollWowAdvantage: "Each listing keeps the current product photographs connected to the manufacturer, body, head, material, measurements, listed weight, and ordering path."
+    },
+    {
+      factor: "Build and styling support",
+      whyItMatters: "A pictured head, outfit, accessory, or fantasy detail is not automatically included or compatible with every body.",
+      dollWowAdvantage: "DollWow can confirm the exact configuration and supported styling choices before an eligible custom order enters production."
     }
   ],
   tpe: [
@@ -1249,6 +1291,32 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Can DollWow add a Black doll that is not listed?",
       answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "anime-dolls": [
+    {
+      question: "What is an anime sex doll?",
+      answer: "It is an adult doll with stylized features or presentation inspired by anime, manga, cosplay, elf, or fantasy aesthetics. The label describes visual style, not age, material, body size, or product form."
+    },
+    {
+      question: "Are anime sex dolls full size?",
+      answer: "Some are full size and others are compact or partial-body products. Check the product form, height in ft/in and cm, listed weight in lb and kg, and complete measurements before comparing price or storage fit."
+    },
+    {
+      question: "Are anime dolls made from TPE or silicone?",
+      answer: "Both material paths can appear, along with hybrid construction. Confirm the body and head materials because feel, finish, care, weight, repair, and price can differ."
+    },
+    {
+      question: "Is the costume or wig shown in the photos included?",
+      answer: "Do not assume so. Clothing, wigs, ears, props, and other styling can be photographic references or optional items. Check the exact product listing and ask DollWow to confirm what the order includes."
+    },
+    {
+      question: "Can I customize an anime or fantasy doll?",
+      answer: "Many factory-order products support selected head, hair, eye, makeup, skin-tone, skeleton, or styling choices, but availability and compatibility vary by exact body and manufacturer."
+    },
+    {
+      question: "Can DollWow add an anime doll that is not listed?",
+      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
   "height-under-155": [
