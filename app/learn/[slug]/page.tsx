@@ -892,10 +892,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "bestrealdoll-alternatives": {
-      title: "Compare current dolls for your priorities",
-      description: "These examples help you compare product facts instead of relying on rankings or promotional labels.",
+      title: "Six starting points for different buyer needs",
+      description: "Compare current candidates for value, lower listed weight, hybrid construction, full silicone, male anatomy, and a compact premium build. This is a buyer-fit shortlist, not a universal ranking.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "siliconwives-alternatives": {
       title: "Compare TPE, hybrid, and silicone choices",
