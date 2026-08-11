@@ -3,56 +3,119 @@ import Link from "next/link";
 import { Care365Seal } from "@/components/care/Care365Seal";
 import { careForLife } from "@/lib/care/careForLife";
 
-export const metadata: Metadata = { title: "DollWOW Care for Life", description: "Explore DollWOW's build review, factory approval, Care 365 ownership support, arrival protection, repair kits, and lifetime repair assistance." };
+export const metadata: Metadata = {
+  title: "DollWOW Care for Life",
+  description: "See how DollWOW supports your purchase from comparison and build review through factory approval, delivery, Care 365, and long-term repair guidance."
+};
+
+const stages = [
+  {
+    eyebrow: "Before you choose",
+    title: "Compare with clearer answers",
+    body: "Review the exact material, size, weight, options, delivery path, and care needs before you commit. When a listing leaves something unclear, our team checks the build details with you.",
+    program: "Human Build Check",
+    href: "/how-ordering-works"
+  },
+  {
+    eyebrow: "When you order",
+    title: "Your choices stay connected to the order",
+    body: "Your confirmed doll, selected options, and order details form one build record that follows the order from checkout into aftercare.",
+    program: "Recorded build details"
+  },
+  {
+    eyebrow: "Before production",
+    title: "A human reviews the build",
+    body: "We review the selected configuration for missing choices, visible conflicts, and details that need supplier confirmation before production begins.",
+    program: "Human Build Check",
+    href: "/how-ordering-works"
+  },
+  {
+    eyebrow: "During production",
+    title: "One record, fewer crossed wires",
+    body: "Confirmed build details remain attached to the order while the manufacturer completes the doll. If a material question or configuration issue needs attention, support has the same record you approved.",
+    program: "Order continuity"
+  },
+  {
+    eyebrow: "Before shipment",
+    title: "See the finished build before it travels",
+    body: "When factory photos or video are available for an eligible custom build, you can review the finished configuration before shipment and raise a visible concern.",
+    program: "Approve Before Shipping",
+    href: "/buyer-protection"
+  },
+  {
+    eyebrow: "Shipment and arrival",
+    title: "The handoff is still supported",
+    body: "Your order record, approved build details, and support path stay together through delivery, so the next step is clear if the package or doll arrives with a covered problem.",
+    program: "Arrival-Right",
+    href: "/shipping-protection"
+  },
+  {
+    eyebrow: "As soon as it arrives",
+    title: "Inspect first, then settle in",
+    body: "Check the packaging, doll, selected configuration, and any visible transit damage promptly after delivery. Keep the packaging and contact us through the published arrival process if something is not right.",
+    program: "Arrival-Right",
+    href: "/returns"
+  },
+  {
+    eyebrow: "Your first days",
+    title: "Start with the right care routine",
+    body: "Use the care guidance for the exact material and model, and ask before trying an unfamiliar cleaner, powder, lubricant, storage method, or repair product.",
+    program: "Care 365",
+    href: "/support"
+  },
+  {
+    eyebrow: "Your first 365 days",
+    title: "Ownership support is included",
+    body: "For the first 365 days, Care 365 gives you a clear place to ask about care, setup, storage, troubleshooting, and the next step when a problem appears.",
+    program: "Care 365",
+    href: "/support"
+  },
+  {
+    eyebrow: "For as long as you own it",
+    title: "You do not have to diagnose it alone",
+    body: "Send photos and a description when a cut, stain, joint concern, or care question appears. We will help identify a practical next step and coordinate compatible repair guidance or parts where available.",
+    program: "Repair Concierge",
+    href: "/support"
+  }
+];
+
+const programs = [
+  { name: "Human Build Check", summary: "A person reviews the supported configuration and the questions that need supplier confirmation before production." },
+  { name: "Care 365", summary: "A clear support path for care, setup, storage, troubleshooting, and eligible ownership issues during the first year." },
+  { name: "Repair Concierge", summary: "Practical guidance and help coordinating compatible instructions or parts where available throughout ownership." }
+];
 
 export default function CareForLifePage() {
-  const stages = [
-    {
-      eyebrow: "Before it ships",
-      title: "Human Build Check",
-      body: "We review supported choices and the build path before production. Eligible custom builds receive factory photos or video for approval before shipment."
-    },
-    {
-      eyebrow: "Your first 365 days",
-      title: "Care 365 included",
-      body: "You receive one year of ownership support, including help with care questions and an eligible accidental-damage rescue."
-    },
-    {
-      eyebrow: "For as long as you own it",
-      title: "Repair help that does not disappear",
-      body: "Request basic repair kits for life and pay only shipping. Our Repair Concierge can help identify the issue, find the right parts or instructions, and coordinate the next practical step."
-    }
-  ];
-
-  const supporting = careForLife.commitments.filter(({ name }) =>
-    ["Doll Passport", "30-Day Price Lock", "Arrival-Right Guarantee"].includes(name)
-  );
-
   return (
     <main className="care-policy-page">
       <header className="care-policy-hero">
         <p className="alive-eyebrow"><span /> Ownership support</p>
         <h1>DollWOW Care for Life</h1>
-        <h2>Support that stays with your doll.</h2>
+        <h2>Support before the build, at arrival, and through ownership.</h2>
         <p>{careForLife.promise}</p>
         <div className="care-policy-actions">
           <Link href="/shop/sex-dolls">Shop dolls</Link>
-          <a href="#included">See what is included</a>
+          <a href="#included">See the timeline</a>
         </div>
         <Care365Seal />
       </header>
 
       <section id="included" aria-labelledby="care-ownership-story" className="care-policy-story">
-        <p className="alive-eyebrow"><span /> The ownership journey</p>
-        <h2 id="care-ownership-story">Help before delivery—and after it.</h2>
+        <p className="alive-eyebrow"><span /> Your ownership timeline</p>
+        <h2 id="care-ownership-story">What happens—and when we step in.</h2>
+        <p className="care-policy-intro">From the first comparison to long-term care, each stage has a clear record, a practical check, or a person to ask.</p>
         <div className="care-stage-list">
           {stages.map((stage, index) => (
             <article key={stage.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <div>
+              <div className="care-stage-time">
+                <span>{String(index + 1).padStart(2, "0")}</span>
                 <p>{stage.eyebrow}</p>
+              </div>
+              <span className="care-stage-node" aria-hidden="true" />
+              <div className="care-stage-card">
                 <h3>{stage.title}</h3>
                 <p>{stage.body}</p>
+                {stage.href ? <Link href={stage.href}>{stage.program}</Link> : <span>{stage.program}</span>}
               </div>
             </article>
           ))}
@@ -60,17 +123,26 @@ export default function CareForLifePage() {
       </section>
 
       <section aria-labelledby="care-more" className="care-policy-supporting">
-        <p className="alive-eyebrow"><span /> More ways we help</p>
-        <h2 id="care-more">Practical reassurance, kept in one place.</h2>
+        <p className="alive-eyebrow"><span /> The support behind the timeline</p>
+        <h2 id="care-more">Three programs. One continuous handoff.</h2>
         <div className="care-policy-grid">
-          {supporting.map((item) => <article key={item.name}><h3>{item.name}</h3><p>{item.summary}</p></article>)}
+          {programs.map((item) => <article key={item.name}><h3>{item.name}</h3><p>{item.summary}</p></article>)}
         </div>
       </section>
 
+      <aside className="care-price-lock">
+        <div>
+          <p>For 30 days after purchase</p>
+          <h2>Your price stays protected</h2>
+          <span>If the same legitimate configuration is offered for less under the published terms, submit it for review.</span>
+        </div>
+        <Link href="/best-price-guarantee">30-Day Price Lock</Link>
+      </aside>
+
       <aside className="care-policy-closing">
         <div>
-          <p>Buying a doll should not mean figuring out ownership alone.</p>
-          <h2>Every DollWOW doll includes Care 365.</h2>
+          <p>Support is already part of the experience.</p>
+          <h2>Choose with support already built in.</h2>
         </div>
         <Link href="/shop/sex-dolls">Find your doll</Link>
       </aside>
