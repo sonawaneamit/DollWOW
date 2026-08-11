@@ -1241,12 +1241,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
-    "standing-feet-sex-doll-guide": {
-      title: "Compare custom builds before choosing standing feet",
-      description: "Standing feet are not available on every doll. Check the exact body, skeleton, and material before adding this option.",
-      collectionHref: "/shop/custom",
-      filters: { availability: "custom" }
-    },
     "body-heating-sex-doll-guide": {
       title: "Compare factory-order options",
       description: "Heating is product-specific and should be confirmed against the exact body, material, power setup, and production path.",
@@ -1590,7 +1584,10 @@ function relatedCollections(slug: string) {
     ],
     "standing-feet-sex-doll-guide": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare option-led builds." },
-      { label: "Skeleton options", href: "/learn/sex-doll-skeleton-options", description: "Review pose and handling tradeoffs." }
+      { label: "Skeleton options", href: "/learn/sex-doll-skeleton-options", description: "Review pose and handling tradeoffs." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan a supported storage position instead of assuming long-term standing is safe." },
+      { label: "Lightweight dolls", href: "/shop/lightweight-sex-dolls", description: "Compare listed weight when lifting and setup are major constraints." },
+      { label: "Ask support", href: "/support", description: "Confirm the body, foot system, support method, and storage guidance before production." }
     ],
     "body-heating-sex-doll-guide": [
       { label: "Custom dolls", href: "/shop/custom", description: "Review factory-order listings where functions may be configurable." },
