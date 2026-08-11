@@ -421,7 +421,7 @@ main {
   font-size: 16px;
 }
 
-.collection-hero-intro__toggle {
+.mobile-hero-intro__toggle {
   display: none;
 }
 
@@ -1338,17 +1338,19 @@ textarea {
 }
 
 @media (max-width: 760px) {
-  .collection-hero {
+  .collection-hero,
+  .brand-hero {
     margin-bottom: 1rem;
     padding: 1.15rem;
   }
 
-  .shop-visual-hero .collection-hero__title {
+  .shop-visual-hero .collection-hero__title,
+  .shop-visual-hero .brand-hero__title {
     font-size: clamp(2rem, 10vw, 2.65rem);
     line-height: 1.02;
   }
 
-  .shop-visual-hero .collection-hero-intro__copy {
+  .shop-visual-hero .mobile-hero-intro__copy {
     display: -webkit-box;
     overflow: hidden;
     font-size: 15px;
@@ -1357,13 +1359,13 @@ textarea {
     -webkit-line-clamp: 4;
   }
 
-  .shop-visual-hero .collection-hero-intro--expanded .collection-hero-intro__copy {
+  .shop-visual-hero .mobile-hero-intro--expanded .mobile-hero-intro__copy {
     display: block;
     overflow: visible;
     -webkit-line-clamp: unset;
   }
 
-  .collection-hero-intro__toggle {
+  .mobile-hero-intro__toggle {
     display: inline-flex;
     min-height: 44px;
     align-items: center;
@@ -1378,7 +1380,7 @@ textarea {
     text-underline-offset: 4px;
   }
 
-  .collection-hero-intro__toggle:focus-visible {
+  .mobile-hero-intro__toggle:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 3px;
   }

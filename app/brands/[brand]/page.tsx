@@ -9,6 +9,7 @@ import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand } from "@/lib/cata
 import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
+import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -63,11 +64,11 @@ export default async function BrandHubPage({
         <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
       ))}
 
-      <div className="shop-visual-hero">
+      <div className="shop-visual-hero brand-hero">
         <div>
           <p className="text-sm  text-gold-300">Brand hub</p>
-          <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
-          <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
+          <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
+          <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">Current DollWow collection</p>
         </div>
       </div>

@@ -2,18 +2,18 @@
 
 import { useId, useState } from "react";
 
-export function CollectionHeroIntro({ children }: { children: React.ReactNode }) {
+export function MobileHeroIntro({ children }: { children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(false);
   const introductionId = useId();
 
   return (
-    <div className={`collection-hero-intro${expanded ? " collection-hero-intro--expanded" : ""}`}>
-      <p id={introductionId} className="collection-hero-intro__copy mt-3 max-w-3xl text-ivory-400">
+    <div className={`mobile-hero-intro${expanded ? " mobile-hero-intro--expanded" : ""}`}>
+      <p id={introductionId} className="mobile-hero-intro__copy mt-3 max-w-3xl text-ivory-400">
         {children}
       </p>
       <button
         type="button"
-        className="collection-hero-intro__toggle"
+        className="mobile-hero-intro__toggle"
         aria-expanded={expanded}
         aria-controls={introductionId}
         onClick={() => setExpanded((current) => !current)}
