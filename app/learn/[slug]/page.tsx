@@ -920,10 +920,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "joylovedolls-alternatives": {
-      title: "Compare male doll listings",
-      description: "Compare body scale, material, measurements, availability, and delivery timing.",
+      title: "Compare six male doll formats",
+      description: "These current products span compact and full-body formats, TPE, silicone-head hybrid, and full silicone across several heights and brands. Open each product for current details.",
       collectionHref: "/shop/male-dolls",
-      filters: { bodyType: "male" }
+      filters: { bodyType: "male" },
+      handles: [
+        "tantaly-mark-60cm-companion-doll-7k5kk",
+        "wm-cyan-160cm-na-cup-tpe-companion-doll-vaz1z",
+        "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "irontech-tidiane-175cm-tpe-companion-doll-1pv82",
+        "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj"
+      ]
     },
     "rosemarydoll-alternatives": {
       title: "Compare six live DollWow starting points",
