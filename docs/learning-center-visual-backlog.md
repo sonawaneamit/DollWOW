@@ -13,6 +13,9 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 - Use actual product references only when provenance is approved.
 - For care and option guides, make the visual instructional: steps, comparison grids, warning callouts, or decision trees.
 - Generate one sample and inspect it before any batch.
+- Brand guides use only dolls from the featured brand unless the asset is explicitly a cross-brand comparison.
+- Build a product casting list before generation and rotate references across the article. Do not repeatedly use the same three dolls across unrelated guides.
+- Give each guide a distinct visual idea rather than reusing one infographic template. Consistency comes from factual accuracy, editorial polish, and DollWow identity, not identical layouts.
 
 ## Highest Priority Visuals
 
@@ -67,5 +70,7 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-cost` | Cost stack infographic | Vertical | Base price, options, shipping, stock path, support confirmation | No invented price ranges unless tied to catalog data. |
 | `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path diagram | Vertical | Ready-to-ship vs custom workflow | Make timing conditional, not guaranteed. |
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Text should match article claims. |
-| `/learn/irontech-dolls-buying-guide` | Irontech material and build comparison | Vertical | TPE, hybrid, full silicone, head systems, and handling weight using current carried products | Use one approved actual Irontech catalog image per product; do not imply universal option compatibility. Generate one sample first. |
-| `/learn/wm-dolls-buying-guide` | WM size, material, and weight comparison | Vertical | TPE and silicone paths plus the difference between height and handling weight | Use actual carried WM products and show pounds/kilograms plus feet-inches/centimeters. Generate one sample first. |
+| `/learn/irontech-dolls-buying-guide` | Technical atelier / build dossier | Mixed vertical and portrait | TPE, hybrid, full silicone, head systems, and handling weight using several current Irontech products | Irontech products only. Use distinct dolls for material, head-system, and handling sections where possible. Do not imply universal option compatibility. Sample 01 uses Irontech Evie. |
+| `/learn/wm-dolls-buying-guide` | Catalog archive / body-and-head matrix | Mixed vertical and landscape | TPE and silicone paths, authenticity, body/head choice, and the difference between height and handling weight | WM products only. Cast a varied set of female and male products rather than reusing Irontech or flagship-guide heroes. Generate one sample first. |
+| `/learn/starpery-dolls-buying-guide` | High-fashion realism laboratory | Portrait-led editorial | Surface realism, silicone and hybrid paths, head systems, weight reduction, hands, and finish | Starpery products only. Use several current Starpery products and a distinct lighter editorial rhythm instead of the Irontech dossier layout. Generate one sample first. |
+| `/learn/sex-doll-storage` | Private-space planning story | Vertical instructional sequence | Storage positions, clearance, lifting route, privacy, pressure, light fabric, and dry conditions | Cross-brand products are allowed because the topic is not brand-specific. Cast different sizes and constructions and avoid using the same flagship trio. |
