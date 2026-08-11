@@ -395,6 +395,16 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "6ye-dolls-buying-guide": [
+      {
+        afterHeading: "How To Compare 6YE Dolls",
+        src: "/images/learn/6ye-dolls-buying-guide/range-map.webp",
+        alt: "Three current 6YE catalog dolls showing TPE full-body, silicone-head, and male build paths with body, weight, options, and storage checks",
+        caption: "6YE covers more than one ownership path. Confirm the exact body and head, read height with listed weight, and verify supported options and storage needs.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",
@@ -1023,10 +1033,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { brand: "sedoll" }
     },
     "6ye-dolls-buying-guide": {
-      title: "Compare 6YE Dolls listings",
-      description: "Compare current 6YE models by price, material, size, availability, and total value.",
+      title: "Compare six 6YE build paths",
+      description: "Use current products to compare TPE and silicone-head construction, shorter and taller female bodies, different proportions, and a male build. This is a decision sample, not a bestseller ranking.",
       collectionHref: "/brands/6ye-dolls",
-      filters: { brand: "6ye" }
+      filters: { brand: "6ye" },
+      handles: [
+        "6ye-cherry-noel-152cm-f-cup-tpe-companion-doll-wml82",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "6ye-rozenn-161cm-l-cup-silicone-head-companion-doll-1emle",
+        "6ye-meniu-a-158cm-a-cup-silicone-head-companion-doll-8mmao",
+        "6ye-edith-irving-167cm-k-cup-silicone-head-companion-doll-2xjwx",
+        "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s"
+      ]
     },
     "yourdoll-alternatives": {
       title: "Compare six current DollWow starting points",
