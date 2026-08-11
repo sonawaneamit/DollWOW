@@ -293,7 +293,7 @@ const collectionIntroByHandle: Record<string, string> = {
   silicone:
     "Shop full silicone sex dolls by height, weight, body shape, finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. A silicone head on a TPE body is a hybrid build, not a full silicone doll. Check the material listed for both the head and body, then compare the exact measurements, carrying weight, photos, options, and production path before choosing a model.",
   "male-dolls":
-    "Compare male sex dolls by body proportions, material, weight, skeleton support, availability, and custom options. Each product page includes measurements and handling details, and our team can confirm any model-specific choice before checkout.",
+    "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
   "ready-to-ship":
     "Ready-to-ship sex dolls are the best place to start when timing matters. Compare warehouse dolls by material, size, price, body type, and location. Availability can change quickly, so we confirm the exact unit and expected dispatch time before payment.",
   custom:
@@ -309,7 +309,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   tpe: "Shop TPE dolls by height, weight, body shape, price, stock status, and options, with DollWow material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
-  "male-dolls": "Compare male dolls by body proportions, material, weight, measurements, stock status, and custom option limits.",
+  "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
   custom: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing.",
   customizable: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing."
@@ -402,16 +402,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   "male-dolls": [
     {
-      title: "Body scale matters first",
-      body: "Male dolls should be compared by height, shoulder width, waist, hips, material, skeleton support, and weight before aesthetics."
+      title: "Choose the product form first",
+      body: "Full-body dolls and compact male products differ in weight, storage, posing, cleaning, and price. Compare equivalent forms before judging value."
     },
     {
-      title: "Options can differ by body type",
-      body: "Options from another doll may not be available here. Choices can vary by body, head, and material."
+      title: "Weight determines daily fit",
+      body: "Height alone can be misleading. Check the listed weight, body proportions, carrying route, cleaning space, and storage setup for the exact model."
     },
     {
-      title: "Confirm the build path",
-      body: "Current stock, production timing, available photos, and supported options should be reviewed before a male doll order is finalized."
+      title: "Confirm anatomy and options",
+      body: "Intimate configuration, head pairing, skeleton features, hair, heating, and other choices vary by body and manufacturer. Confirm the selected build before production."
     }
   ],
   "ready-to-ship": [
@@ -509,8 +509,12 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   ],
   "male-dolls": [
     { label: "Male sex doll buying guide", href: "/learn/male-sex-doll-buying-guide" },
+    { label: "Compare TPE and silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
     { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Plan cleaning and care", href: "/learn/how-to-clean-a-sex-doll" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "JoyLoveDolls alternatives", href: "/learn/joylovedolls-alternatives" }
   ],
   "ready-to-ship": [
@@ -621,19 +625,19 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   "male-dolls": [
     {
-      factor: "Adult search intent",
-      whyItMatters: "Male doll searches can mix adult and non-adult results.",
-      dollWowAdvantage: "DollWow keeps this collection focused on adult male body-type listings and practical buyer details."
+      factor: "Comparable product form",
+      whyItMatters: "Full-body dolls and compact male products are different purchases even when they appear in the same search results.",
+      dollWowAdvantage: "DollWow shows the dimensions, weight, material, price, and product page needed to compare like with like."
     },
     {
-      factor: "Body scale",
-      whyItMatters: "Shoulder width, height, weight, material, and skeleton support shape the ownership experience.",
-      dollWowAdvantage: "Product cards and the male doll guide help buyers compare more than styling."
+      factor: "Practical ownership",
+      whyItMatters: "Height, weight, proportions, cleaning access, and storage space affect every day of ownership.",
+      dollWowAdvantage: "The collection connects live products with a male-specific guide, care guidance, shipping information, and support before checkout."
     },
     {
-      factor: "Option clarity",
-      whyItMatters: "Available choices can vary by body, head, and material.",
-      dollWowAdvantage: "DollWow prompts buyers to confirm product-specific options before checkout."
+      factor: "Build confidence",
+      whyItMatters: "Anatomy, head pairing, material, skeleton, functions, and styling options can vary by exact body.",
+      dollWowAdvantage: "DollWow reviews eligible custom selections before production and provides a factory-media approval path where supported."
     }
   ],
   "ready-to-ship": [
@@ -841,19 +845,39 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   ],
   "male-dolls": [
     {
-      question: "What should I check first on a male sex doll?",
+      question: "What should I check first when buying a male sex doll?",
       answer:
-        "Start with height, weight, shoulder width, waist, hips, material, stock status, and whether custom options are supported for that exact body."
+        "Start with full-body versus compact form, height, listed weight, body proportions, material, anatomy, storage fit, and whether the exact body supports the options you want."
     },
     {
-      question: "Do male dolls have the same options as other dolls?",
+      question: "How heavy is a full-size male sex doll?",
       answer:
-        "Not always. Available options vary by body, head, and material, so check the choices shown on the individual product page."
+        "Weight varies by height, body sculpt, material, and internal construction. Check the exact listing in pounds and kilograms because similar-height dolls can differ greatly in handling weight."
     },
     {
-      question: "Can DollWow confirm a male doll build before checkout?",
+      question: "Are male sex dolls available in TPE and silicone?",
       answer:
-        "Yes. Our team can confirm current availability, available options, production time, and delivery details before you order."
+        "Yes. The DollWow catalog includes TPE, full-silicone, and silicone-head/TPE-body hybrid male builds. Compare model-specific feel, weight, finish, care, and price rather than treating one material as universally better."
+    },
+    {
+      question: "Can male sex dolls be customized?",
+      answer:
+        "Many can, but anatomy, head pairing, skin tone, hair, skeleton features, and other options vary by manufacturer and body. Confirm compatibility for the exact product before production."
+    },
+    {
+      question: "Are male sex dolls only for gay men?",
+      answer:
+        "No. Adult buyers of different genders and orientations choose male dolls. Compare products around the body, experience, and features you want rather than a marketing label."
+    },
+    {
+      question: "How should I store a male sex doll?",
+      answer:
+        "Store the doll clean, fully dry, away from heat and direct sunlight, and without concentrated pressure or dark staining fabrics. Use the support position recommended for the exact build."
+    },
+    {
+      question: "Can DollWow review a custom male doll build before production?",
+      answer:
+        "Eligible custom orders receive a Human Build Check for selected options and obvious compatibility issues before production. Product and manufacturer limits still apply."
     }
   ],
   "ready-to-ship": [

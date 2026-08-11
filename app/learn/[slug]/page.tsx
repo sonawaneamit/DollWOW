@@ -498,17 +498,17 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
     },
     "male-sex-doll-buying-guide": {
       eyebrow: "Male doll fit",
-      title: "Body scale comes before styling",
-      summary: "Male dolls should be compared by proportions, measurements, material, skeleton support, and available options before choosing by image alone.",
+      title: "Use size and weight together",
+      summary: "A male doll's height describes its length. Its listed weight, proportions, and product form tell you far more about carrying, cleaning, positioning, and storage.",
       stats: [
-        { value: "6", label: "body facts to compare" },
-        { value: "1", label: "product-specific option check" }
+        { value: "160-186 cm", label: "5 ft 3 in-6 ft 1 in current full-body examples" },
+        { value: "59.5-125.7 lb", label: "27-57 kg current known-weight examples" }
       ],
       items: [
-        { title: "Body proportions", body: "Compare height, shoulders, waist, hips, and weight before focusing on styling." },
-        { title: "Material", body: "Review whether the body and head are TPE, silicone, or a mixed construction." },
-        { title: "Options", body: "Available choices can vary by body, head, and material." },
-        { title: "Delivery path", body: "Confirm stock, production timing, and final approval details before checkout." }
+        { title: "Product form", body: "Separate full-body dolls from compact and partial-body products before comparing price or capabilities." },
+        { title: "Handling", body: "Match the listed weight to your route from delivery, cleaning setup, and storage method." },
+        { title: "Construction", body: "Compare full TPE, full silicone, and silicone-head/TPE-body hybrid builds separately." },
+        { title: "Configuration", body: "Confirm anatomy, head pairing, skeleton, styling, and functions for the exact body." }
       ],
       href: "/shop/male-dolls",
       cta: "Compare male dolls"
@@ -718,10 +718,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { productForm: "full-doll", height: "0-120" }
     },
     "male-sex-doll-buying-guide": {
-      title: "Compare male doll listings",
-      description: "Use live catalog cards to check body scale, material, stock status, and product-specific details.",
+      title: "Six ways to compare male doll formats",
+      description: "This mixed live-catalog set spans compact and full-body products, TPE, full silicone, hybrid construction, several brands, and a wide handling-weight range. It is a comparison starting point, not a best-of ranking.",
       collectionHref: "/shop/male-dolls",
-      filters: { bodyType: "male" }
+      filters: { bodyType: "male" },
+      handles: [
+        "tantaly-mark-60cm-companion-doll-7k5kk",
+        "wm-cyan-160cm-na-cup-tpe-companion-doll-vaz1z",
+        "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "irontech-tidiane-175cm-tpe-companion-doll-1pv82",
+        "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj"
+      ]
     },
     "ready-to-ship-vs-custom-sex-dolls": {
       title: "See ready-to-ship examples",
