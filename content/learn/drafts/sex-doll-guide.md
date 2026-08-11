@@ -766,7 +766,7 @@ Use these profiles to decide which three or four brands deserve a closer look. T
 
 ### Erovenus Dolls: compact silicone and torso formats
 
-[Erovenus Dolls](/brands/erovenus-dolls) is a China-based brand founded around 2019. It became known for compact silicone products, hips, torsos, and upper-body formats designed for buyers who do not want the footprint of a full-size doll.
+[Erovenus Dolls](/brands/erovenus-dolls) describes its development as following the creation of LoveNestle in 2023. The current brand focuses on silicone products, including hips, compact bodies, and larger torso formats for buyers who do not want the footprint of a conventional full-size doll.
 
 **Best starting point for:** buyers comparing torso styles, travel-friendly scale, or compact silicone construction.
 

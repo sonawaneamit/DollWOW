@@ -11,9 +11,11 @@ export const brandHubHandles = catalogBrands.map((brand) => brand.collectionHand
 type BrandSeoProfile = {
   intro: string;
   positioning: string;
+  metaDescription?: string;
   guideHref?: string;
   guideLabel?: string;
   buyerNotes: Array<{ title: string; body: string }>;
+  comparisonRows?: Array<[string, string, string]>;
   faqs: Array<{ question: string; answer: string }>;
 };
 
@@ -133,12 +135,78 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Tantaly is often compared by buyers looking for compact, storage-friendly, or budget-aware doll options.",
     guideHref: "/learn/tantaly-buying-guide",
     guideLabel: "Tantaly buying guide"
+  },
+  erovenus: {
+    positioning:
+      "Erovenus focuses on silicone torso and compact body formats with detailed sculpting, layered body painting, and model-specific proportions.",
+    intro:
+      "Compare current Erovenus dolls on DollWow by product form, silicone construction, height, width, depth, proportions, starting price, and current ordering path. Erovenus describes its development as following the creation of LoveNestle in 2023, with a focus on silicone torso products and hand-finished surface detail. Confirm the exact model, dimensions, weight, included body areas, and care instructions before ordering.",
+    metaDescription:
+      "Shop Erovenus silicone torso and compact dolls by product form, dimensions, proportions, price, care needs, and current ordering details.",
+    buyerNotes: [
+      {
+        title: "Choose the form before the finish",
+        body: "Erovenus products span hips, smaller compact forms, and larger torsos. Confirm which body areas are included before comparing appearance or price."
+      },
+      {
+        title: "Measure the complete footprint",
+        body: "Height alone does not show how a torso will fit in storage or feel to handle. Compare width, depth, weight, base shape, and the cleaning route."
+      },
+      {
+        title: "Follow silicone-specific care",
+        body: "Use the instructions supplied for the exact product. Erovenus advises mild cleaning, complete drying, and avoiding silicone-based products that can damage its silicone material."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Product form",
+        "Confirm whether the listing is hips, a compact torso, a larger torso, or another partial-body format.",
+        "DollWow keeps the exact photographs, dimensions, material, and product link together so you can compare equivalent forms."
+      ],
+      [
+        "Scale and handling",
+        "Compare height, width, depth, listed weight, base design, cleaning access, and storage position.",
+        "Ask our team to confirm a missing decision-critical measurement before you order."
+      ],
+      [
+        "Finish and care",
+        "Layered painting and detailed surface work still need material-compatible cleaning, pressure protection, and repair guidance.",
+        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What is Erovenus known for?",
+        answer: "Erovenus is known for silicone torso and compact body formats, detailed sculpting, layered body painting, and several product sizes rather than one standard full-body design."
+      },
+      {
+        question: "When did Erovenus begin?",
+        answer: "Erovenus describes its development as following the creation of LoveNestle in 2023. Buyers should focus on the exact current model because product series and specifications continue to evolve."
+      },
+      {
+        question: "Are Erovenus dolls made from silicone?",
+        answer: "Erovenus presents its current doll range as silicone. DollWow also keeps the confirmed material tied to each product page, so ask support if a specific listing is unclear."
+      },
+      {
+        question: "Are all Erovenus products full-body dolls?",
+        answer: "No. The range includes hips, compact products, and larger torso formats. Check the photographs, included body areas, and complete dimensions for the exact listing."
+      },
+      {
+        question: "How should I clean an Erovenus silicone doll?",
+        answer: "Follow the exact product instructions. Erovenus recommends gentle cleaning with mild soap, complete rinsing where supported, and thorough drying, and warns against silicone-based products that can damage its silicone material."
+      },
+      {
+        question: "Can DollWow help find an Erovenus model that is not listed?",
+        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
   }
 };
 
 export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   const title = `${brandHubTitle(brand)}: Shop ${brand.label} Models`;
-  const description = `${brand.label} models on DollWow with current prices, materials, measurements, custom options, buyer guides, and discreet support.`;
+  const profile = brandSeoProfile(brand);
+  const description = profile.metaDescription ?? `${brand.label} models on DollWow with current prices, materials, measurements, custom options, buyer guides, and discreet support.`;
   const url = brandCanonicalUrl(brand);
 
   return {
@@ -220,9 +288,11 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
       custom.intro ??
       `Shop ${brand.label} models on DollWow and compare material, size, price, availability, and custom options in one place. ${positioning} Open any product page for full photos, exact measurements, available choices, and delivery information before checkout.`,
     positioning,
+    metaDescription: custom.metaDescription,
     guideHref: custom.guideHref,
     guideLabel: custom.guideLabel,
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),
+    comparisonRows: custom.comparisonRows,
     faqs: custom.faqs ?? defaultFaqs(brand)
   };
 }

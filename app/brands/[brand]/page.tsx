@@ -68,7 +68,7 @@ export default async function BrandHubPage({
           <p className="text-sm  text-gold-300">Brand hub</p>
           <h1 className="mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <p className="mt-3 max-w-3xl text-ivory-400">{profile.intro}</p>
-          <p className="mt-3 text-sm font-semibold text-gold-200">{orderedProducts.length} DollWow listings · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
+          <p className="mt-3 text-sm font-semibold text-gold-200">Current DollWow collection</p>
         </div>
       </div>
 
@@ -99,11 +99,11 @@ export default async function BrandHubPage({
               </tr>
             </thead>
             <tbody>
-              {[
+              {(profile.comparisonRows ?? [
                 ["Model fit", "Compare height, weight, measurements, body type, and material before judging the photos.", "Use filters and product pages to compare facts across current listings."],
                 ["Custom options", "Available choices can vary by body, head, and material.", "Each product page shows model-specific options, prices, and known conflicts."],
                 ["Final cost", "The starting price can change when you add custom options or accessories.", "The configurator updates the price as you build, and our price-match team can check a competitor quote."]
-              ].map(([factor, check, path]) => (
+              ]).map(([factor, check, path]) => (
                 <tr key={factor} className="border-b border-gold-500/10 last:border-b-0">
                   <td className="px-5 py-4 font-semibold text-ivory-100">{factor}</td>
                   <td className="px-5 py-4 leading-6 text-ivory-400">{check}</td>
