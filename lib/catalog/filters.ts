@@ -114,7 +114,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   silicone: { title: "Silicone sex dolls", filters: { material: "silicone" } },
   hybrid: { title: "Hybrid dolls", filters: { material: "hybrid" } },
   "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },
-  torsos: { title: "Torso dolls", filters: { productForm: "torso" } },
+  torsos: { title: "Torso sex dolls", filters: { productForm: "torso" } },
   hips: { title: "Hips", filters: { productForm: "hips" } },
   "mini-sex-dolls": { title: "Mini sex dolls", filters: { productForm: "full-doll", height: "0-120" } },
   "cheap-sex-dolls": { title: "Affordable sex dolls", filters: { price: "0-1000", sort: "price-asc" } },

@@ -294,6 +294,8 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop full silicone sex dolls by height, weight, body shape, finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. A silicone head on a TPE body is a hybrid build, not a full silicone doll. Check the material listed for both the head and body, then compare the exact measurements, carrying weight, photos, options, and production path before choosing a model.",
   "male-dolls":
     "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
+  torsos:
+    "Shop torso sex dolls by product form, material, height, width, depth, listed weight, body proportions, brand, and starting price. A torso is a partial-body product, not a lower-priced full doll, and this collection keeps separate hips products and full-body dolls on their own paths. Compare what the product physically includes, how it can be cleaned and stored, and whether the exact material and dimensions are confirmed before ordering.",
   "ready-to-ship":
     "Ready-to-ship sex dolls are the best place to start when timing matters. Compare warehouse dolls by material, size, price, body type, and location. Availability can change quickly, so we confirm the exact unit and expected dispatch time before payment.",
   custom:
@@ -310,6 +312,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
+  torsos: "Shop torso sex dolls by form, TPE or silicone, height, width, depth, weight, brand, price, cleaning access, and storage needs.",
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
   custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path.",
   customizable: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path."
@@ -414,6 +417,20 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
       body: "Intimate configuration, head pairing, skeleton features, hair, heating, and other choices vary by body and manufacturer. Confirm the selected build before production."
     }
   ],
+  torsos: [
+    {
+      title: "Compare the product form first",
+      body: "A torso, hips product, compact full doll, and standard full doll are different purchases. Check which body areas are included before comparing price or height."
+    },
+    {
+      title: "Use every available dimension",
+      body: "Torso height does not describe a full-body scale. Compare width, depth, weight, base shape, cleaning access, and the private storage position for the exact product."
+    },
+    {
+      title: "Confirm material-specific care",
+      body: "TPE and silicone products can need different cleaners, drying, surface treatment, stain prevention, and repair methods. Ask our team when the material or care path is unclear."
+    }
+  ],
   "ready-to-ship": [
     {
       title: "Fast comparison still needs confirmation",
@@ -485,6 +502,14 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Plan compact storage", href: "/learn/sex-doll-storage" },
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+  ],
+  torsos: [
+    { label: "Read the Tantaly buying guide", href: "/learn/tantaly-buying-guide" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Plan cleaning and drying", href: "/learn/how-to-clean-a-sex-doll" },
+    { label: "Plan private storage", href: "/learn/sex-doll-storage" },
+    { label: "Compare male doll formats", href: "/learn/male-sex-doll-buying-guide" },
+    { label: "Browse hips products", href: "/shop/hips" }
   ],
   "cheap-sex-dolls": [
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
@@ -604,6 +629,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Adult-only framing",
       whyItMatters: "A size label should never be used to imply age.",
       dollWowAdvantage: "Mini describes dimensions only. DollWow sells adult products to adults and avoids age-coded merchandising."
+    }
+  ],
+  torsos: [
+    {
+      factor: "Product-form clarity",
+      whyItMatters: "Torso search results often mix partial bodies, hips products, compact full dolls, and full-size dolls that are not equivalent purchases.",
+      dollWowAdvantage: "DollWow gives torso and hips products separate collection paths and keeps the included form tied to the exact product page."
+    },
+    {
+      factor: "Practical dimensions",
+      whyItMatters: "Height alone cannot predict storage fit, cleaning access, balance, or how manageable a dense torso will be.",
+      dollWowAdvantage: "Buyers can compare product photographs, available measurements, listed weight, material, and brand, then ask support to confirm a missing decision-critical fact."
+    },
+    {
+      factor: "Ownership support",
+      whyItMatters: "A compact product still needs the correct cleaning, drying, storage, stain prevention, and repair path for its material.",
+      dollWowAdvantage: "Every DollWow doll includes Care 365, with a clear first-year path for arrival questions, care guidance, and repair triage."
     }
   ],
   "cheap-sex-dolls": [
@@ -807,6 +849,43 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Does the mini collection include torsos or hips?",
       answer:
         "No. The mini collection is intended for compact full dolls with a known height. Torso and hips products have separate DollWow collection pages."
+    }
+  ],
+  torsos: [
+    {
+      question: "What is a torso sex doll?",
+      answer:
+        "A torso sex doll is a partial-body adult product that can include the chest, waist, hips, thighs, shoulders, or another defined body area. The included form varies, so check the complete photographs and dimensions for the exact product."
+    },
+    {
+      question: "Is a torso sex doll easier to store than a full doll?",
+      answer:
+        "It often needs less length than a full-body doll, but width, depth, weight, base shape, material, and the recommended resting position still determine whether it fits your storage space."
+    },
+    {
+      question: "Are torso dolls lightweight?",
+      answer:
+        "Not always. A short torso can still be dense because its material is concentrated in a smaller form. Compare the listed weight and plan the route between delivery, cleaning, drying, and storage."
+    },
+    {
+      question: "What is the difference between a torso and a hips product?",
+      answer:
+        "A torso generally includes more of the upper or central body, while a hips product focuses on the lower body. Product naming varies, so photographs, dimensions, and included body areas provide the clearest distinction."
+    },
+    {
+      question: "Are torso dolls made from TPE or silicone?",
+      answer:
+        "Both material paths exist. Check the exact listing because TPE and silicone can differ in feel, surface detail, stain risk, care, repair, weight, and price."
+    },
+    {
+      question: "How should I clean and store a torso doll?",
+      answer:
+        "Follow the instructions for the exact material and product. Use compatible cleaning products, rinse where supported, dry every surface and internal area completely, and store the product in a relaxed position away from heat, pressure, sunlight, and dye-transfer risks."
+    },
+    {
+      question: "Can DollWow help me find a torso that is not listed?",
+      answer:
+        "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once supplier authorization and product details are confirmed."
     }
   ],
   "cheap-sex-dolls": [
