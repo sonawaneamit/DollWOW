@@ -163,7 +163,7 @@ Here is a simple checklist you can use before you place an order.
 
 If timing matters, ask before checkout. If the answer depends on supplier confirmation, wait for the confirmation. That is the cleanest way to avoid later disputes.
 
-## DollWow Verification And Support Angle
+## What DollWow Can Help You Verify
 
 DollWow treats reviews as one input, not the final answer.
 
@@ -222,11 +222,3 @@ Yes. A negative review can be valuable if it explains the problem clearly. Look 
 ### What should I do if reviews and the product page do not match?
 
 Ask support to confirm the listing in writing before you order. If the answer stays vague, treat that as a risk. The product page should win over the brochure copy.
-
-
-## Editorial Review Notes
-
-- Confirm all product examples against live Shopify/catalog data before publication.
-- Keep health, legal, shipping, and supplier claims within approved DollWow knowledge files.
-- Keep Quick Answer and Key Facts near the top for snippets, AI answers, and agent extraction.
-- Do not publish fake reviews, fake product examples, unverified inventory claims, or exact shipping guarantees.

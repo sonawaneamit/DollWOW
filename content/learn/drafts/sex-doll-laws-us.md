@@ -27,7 +27,7 @@ Adult sex dolls are generally sold in the United States, but buyers should treat
 - Adult buyers should avoid underage-coded or unlawful products completely.
 - Laws, import rules, payment rules, and platform policies can vary by location.
 - Buyers should verify local rules if they have any legal concern.
-- DollWow's catalog and content standards prohibit underage-coded, school-themed, deceptive, or fake-review content.
+- DollWow does not offer underage-coded or school-themed products and does not use deceptive claims or fabricated reviews.
 
 ## The Practical Answer
 
@@ -35,7 +35,7 @@ Many adult doll products are sold openly in the US adult-commerce market. That d
 
 The safest buyer rule is simple: only consider adult products that are clearly presented as adult products. Do not buy anything that appears underage-coded, school-themed, or designed to blur adult status. Do not rely on a seller's casual assurance if the product presentation raises concerns.
 
-DollWow's adult-only standard is intentional. The site is for adult buyers and adult products. Product imagery and copy should not imply underage identity, school themes, deceptive buyers, or anything designed to dodge legal or platform standards.
+DollWow is exclusively for adult buyers and adult products. We do not use imagery or descriptions that imply underage identity, school themes, fabricated customers, or attempts to avoid applicable rules.
 
 Related page: [Adult-only policy](/adult-only).
 
@@ -69,7 +69,7 @@ The table is designed to help buyers slow down. If a product makes you pause, th
 
 ## DollWow's Standards
 
-DollWow should not publish or promote:
+DollWow does not publish or promote:
 
 - Underage-coded imagery or copy
 - School-themed sexualized product presentation
@@ -81,7 +81,7 @@ DollWow should not publish or promote:
 
 The goal is to keep the catalog adult, private, and factual. That protects customers and the brand.
 
-Related page: [Editorial policy](/editorial-policy).
+Related page: [Adult-only policy](/adult-only).
 
 ## Shipping And Privacy
 

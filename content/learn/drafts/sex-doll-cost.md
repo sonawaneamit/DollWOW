@@ -320,4 +320,4 @@ Match the exact brand, body, head, material, options, stock status, destination,
 
 ### Does DollWow match lower prices after purchase?
 
-The 30-Day Price Lock covers eligible comparable offers under the published terms. Review the canonical guarantee page or submit the listing for comparison rather than assuming two similar-looking products qualify.
+The 30-Day Price Lock covers eligible comparable offers under the published terms. Read the current [Price Lock terms](/best-price-guarantee) or submit the listing for comparison rather than assuming two similar-looking products qualify.

@@ -1005,7 +1005,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Does Care 365 apply to custom dolls?",
       answer:
-        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for canonical details."
+        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for the latest details."
     }
   ],
   customizable: [
@@ -1042,7 +1042,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Does Care 365 apply to custom dolls?",
       answer:
-        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for canonical details."
+        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for the latest details."
     }
   ]
 };

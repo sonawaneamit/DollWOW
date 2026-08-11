@@ -217,7 +217,7 @@ function GuideProductShortlists({ groups }: { groups: GuideProductGroup[] }) {
               <div key={product.handle} className="min-w-0">
                 <ProductCard product={product} priority={index < 2} />
                 <div className="border-x border-b border-border bg-surface-elevated px-4 py-4 text-sm leading-6 text-text-dim">
-                  <p className="font-semibold text-text">Why it is included</p>
+                  <p className="font-semibold text-text">Why consider it</p>
                   <p className="mt-1">{reason}</p>
                   <p className="mt-2 text-xs text-text-dim">{guideMeasurements(product)}</p>
                 </div>
@@ -328,7 +328,7 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
       afterHeading: "Size and Weight Matter More Than Buyers Expect",
       src: "/images/learn/sex-doll-guide/size-and-handling.webp",
       alt: "Starpery Yuan, WM Rhea Lynn, and Irontech Len Stilwell compared by height and handling weight",
-      caption: "These live catalog examples show why height alone does not predict handling weight. Recheck product measurements before ordering.",
+      caption: "These current products show why height alone does not predict handling weight. Check the latest measurements before ordering.",
       width: 928,
       height: 1695
     },
@@ -437,7 +437,7 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
         { value: "3", label: "prices to separate" }
       ],
       items: [
-        { title: "Starting price", body: "Use it to scan comparable product forms and materials in the live catalog." },
+        { title: "Starting price", body: "Use it to compare similar product forms and materials." },
         { title: "Configured price", body: "Add the exact body, head, material, and paid options you want." },
         { title: "Delivered cost", body: "Review shipping, taxes, destination charges, and the confirmed order total." },
         { title: "Ownership value", body: "Include handling, cleaning, storage, Care 365, and continuing repair support." }
@@ -451,7 +451,7 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
       summary: "DollWow selects current candidates from verifiable catalog facts and distinct buyer needs. The shortlist does not claim sales leadership, anonymous ratings, or hands-on testing.",
       stats: [
         { value: "6", label: "buyer-fit categories" },
-        { value: "7", label: "catalog evidence checks" }
+        { value: "7", label: "product details checked" }
       ],
       items: [
         { title: "Define the need", body: "Value, lower weight, hybrid construction, full silicone, male anatomy, and compact premium builds solve different problems." },
@@ -695,7 +695,7 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
     },
     "sex-doll-cost": {
       title: "Compare six live starting-price levels",
-      description: "These current full-doll examples span entry, mid-range, premium, ready-to-ship, made-to-order, TPE, hybrid, and silicone choices. Prices update from Shopify; compare the complete configuration on each product page.",
+      description: "These current full-doll examples span entry, mid-range, premium, ready-to-ship, made-to-order, TPE, hybrid, and silicone choices. Prices update automatically; compare the complete configuration on each product page.",
       collectionHref: "/shop/sex-dolls",
       filters: {},
       handles: [
@@ -783,7 +783,7 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
     },
     "how-to-clean-a-sex-doll": {
       title: "Compare material-specific care needs",
-      description: "Use catalog examples to compare material, size, weight, and product facts before choosing a care routine.",
+      description: "Use current products to compare material, size, weight, and care needs before choosing a routine.",
       collectionHref: "/shop/tpe",
       filters: { material: "tpe" }
     },
@@ -800,8 +800,8 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: {}
     },
     "sex-doll-scams": {
-      title: "Use live listings as a fact baseline",
-      description: "Real catalog examples make it easier to compare material, price, measurements, and support context against another seller's offer.",
+      title: "Compare another offer with current products",
+      description: "Current DollWow products make it easier to compare material, price, measurements, and support against another seller's offer.",
       collectionHref: "/shop/sex-dolls",
       filters: {}
     },
@@ -813,7 +813,7 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
     },
     "custom-sex-dolls": {
       title: "Compare custom-order listings",
-      description: "Use current catalog examples to compare base model, material, size, price, and product-specific option paths.",
+      description: "Compare current base models by material, size, price, and available customization choices.",
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
@@ -884,8 +884,8 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: {}
     },
     "bestrealdoll-alternatives": {
-      title: "Compare best-fit candidates with live catalog data",
-      description: "These examples keep best-doll research tied to product facts, not ranking labels or promo language.",
+      title: "Compare current dolls for your priorities",
+      description: "These examples help you compare product facts instead of relying on rankings or promotional labels.",
       collectionHref: "/shop/sex-dolls",
       filters: {}
     },
@@ -952,11 +952,11 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
 
 function relatedCollections(slug: string) {
   const common = [
-    { label: "Browse the catalog", href: "/shop/sex-dolls", description: "Compare live DollWow products, filters, and pricing." }
+    { label: "Browse all dolls", href: "/shop/sex-dolls", description: "Compare current DollWow products by material, size, price, and availability." }
   ];
   const map: Record<string, Array<{ label: string; href: string; description: string }>> = {
     "sex-doll-guide": [
-      { label: "Browse all sex dolls", href: "/shop/sex-dolls", description: "Compare the complete live catalog by material, size, price, and availability." },
+      { label: "Browse all sex dolls", href: "/shop/sex-dolls", description: "Compare current products by material, size, price, and availability." },
       { label: "Use the DollWow finder", href: "/help-me-choose", description: "Narrow products around material, size, body type, and delivery preferences." },
       { label: "Compare active brands", href: "/brands", description: "Review manufacturer hubs and current DollWow listings." }
     ],
@@ -988,7 +988,7 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-cost": [
       { label: "Affordable sex dolls", href: "/shop/cheap-sex-dolls", description: "Compare current products with starting prices up to $1,000." },
-      { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare the complete live catalog by material, size, price, and availability." },
+      { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare current products by material, size, price, and availability." },
       { label: "30-Day Price Lock", href: "/best-price-guarantee", description: "See how DollWow reviews eligible comparable offers before and after purchase." }
     ],
     "sex-doll-reviews": [

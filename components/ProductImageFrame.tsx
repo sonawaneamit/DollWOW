@@ -23,7 +23,7 @@ export function ProductImageFrame({ product, priority = false }: { product: Prod
         <div className="flex h-full flex-col items-center justify-center p-6 text-center">
           <div className="mb-5 h-24 w-24 rounded-full border border-gold-500/30 bg-gold-500/10" />
           <p className="text-sm font-semibold text-ivory-50">{displayTitle}</p>
-          <p className="mt-2 text-sm text-ivory-600">Product image appears when Shopify media is connected.</p>
+          <p className="mt-2 text-sm text-ivory-600">A product image is not available yet. Ask support if you need photos before ordering.</p>
         </div>
       )}
     </div>

@@ -97,7 +97,7 @@ Do not choose a path from the label alone. Compare the actual product, options, 
 
 ## Ready-to-Ship Stock Still Needs Confirmation
 
-Inventory changes. A product can be visible while an update is moving between a warehouse, supplier, Shopify, and the storefront. If timing affects your decision, ask DollWow to confirm the exact unit before relying on the listing.
+Inventory changes, and a recently sold unit may remain visible briefly while availability updates. If timing affects your decision, ask DollWow to confirm the exact unit before relying on the listing.
 
 Useful questions include:
 
@@ -195,7 +195,7 @@ Inspect the doll and included items promptly under the published arrival process
 
 Care 365 is included with every DollWow doll under the published coverage terms. It provides first-year ownership support, while Lifetime Repair Concierge continues as an ongoing diagnosis and repair-coordination path. The Doll Passport is intended to keep build details, factory approval, care documents, Care 365 status, and support history together.
 
-Review the canonical [Care for Life](/care-for-life) and [Buyer Protection](/buyer-protection) pages for current terms. Do not rely on summaries from old articles or screenshots.
+Review the current [Care for Life](/care-for-life) and [Buyer Protection](/buyer-protection) terms before ordering. Old articles and screenshots may no longer reflect the available coverage.
 
 ## A Practical Decision Sequence
 
@@ -317,4 +317,4 @@ Ready-to-ship can be simpler when a confirmed unit fits your needs. Made-to-orde
 
 ### Does Care 365 apply to ready-to-ship and custom dolls?
 
-Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for the canonical details.
+Care 365 is included with every DollWow doll under the current published coverage terms. Review [Care for Life](/care-for-life) for the latest details.

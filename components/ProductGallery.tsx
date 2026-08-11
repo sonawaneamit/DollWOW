@@ -44,7 +44,7 @@ export function ProductGallery({ product }: { product: Product }) {
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
             <ImageIcon className="mb-4 h-10 w-10 text-gold-300" />
             <p className="text-sm font-semibold text-ivory-50">{displayTitle}</p>
-            <p className="mt-2 text-sm text-ivory-600">Product image appears when Shopify media is connected.</p>
+            <p className="mt-2 text-sm text-ivory-600">A product image is not available yet. Ask support if you need photos before ordering.</p>
           </div>
         )}
 

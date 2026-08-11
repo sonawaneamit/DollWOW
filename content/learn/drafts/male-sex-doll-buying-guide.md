@@ -57,7 +57,7 @@ Before buying, measure:
 - the bed, sofa, chair, or support surface you expect to use
 - enough clear floor area for safe cleaning and dressing
 
-Current DollWow full-body male listings demonstrate why exact specifications matter. Known heights in the live catalog span approximately 160 to 186 cm (5 ft 3 in to 6 ft 1 in), while known weights span approximately 59.5 to 125.7 lb (27 to 57 kg). Those are catalog examples, not universal limits, and the selection changes over time.
+Current DollWow full-body male products demonstrate why exact specifications matter. Listed examples span approximately 160 to 186 cm (5 ft 3 in to 6 ft 1 in) and approximately 59.5 to 125.7 lb (27 to 57 kg). These are examples rather than universal limits, and the available selection changes over time.
 
 ### Height does not predict weight reliably
 
@@ -297,7 +297,7 @@ Start with product form, height, weight, material, body measurements, and storag
 
 ### How heavy is a full-size male sex doll?
 
-Weight varies widely by height, body sculpt, material, and internal construction. Current known-weight full-body examples in DollWow's live catalog range from about 59.5 to 125.7 lb (27 to 57 kg), but the exact listing is what matters. Confirm any missing or questionable weight before ordering.
+Weight varies widely by height, body sculpt, material, and internal construction. Current DollWow full-body examples with listed weights range from about 59.5 to 125.7 lb (27 to 57 kg), but the exact product is what matters. Confirm any missing or questionable weight before ordering.
 
 ### Are silicone male dolls better than TPE male dolls?
 

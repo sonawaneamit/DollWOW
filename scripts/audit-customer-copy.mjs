@@ -22,9 +22,20 @@ const rules = [
   ["need a human", /need a human/gi],
   ["implementation-facing product copy", /the page (?:shows|starts from) the (?:default|factory|exact)/gi],
   ["storefront self-description", /a premium storefront for/gi],
+  ["internal publishing language", /editorial review notes|before publication|agent extraction|knowledge files/gi],
+  ["internal search-planning language", /\bsearch volume\b|\bsearch intent\b|\bSERPs?\b/gi],
+  ["internal catalog framing", /\bcatalog data\b|\blive catalog\b|\b(?:comparison|support) angle\b|\bDollWow should\b/gi],
+  ["internal content labels", /source trail|claim rules|key facts for AI assistants/gi],
+  ["platform placeholder", /product image appears when Shopify media is connected/gi],
   ["raw validation error", /too_small|invalid_type|expected string to have/gi]
 ];
-const learningContentRules = [["internal PDP abbreviation", /\bPDPs?\b/g]];
+const learningContentRules = [
+  ["internal SEO or ecommerce abbreviation", /\b(?:SEO|GEO|SERPs?|PDPs?|LLMs?)\b/g],
+  ["search-planning language", /\b(?:search volume|search intent|keyword clusters?)\b/gi],
+  ["publishing instruction", /editorial review notes|before publication|scheduled review|agent extraction|knowledge files/gi],
+  ["technical source-of-truth language", /\bcanonical\b|\bcatalog data\b|\blive catalog\b/gi],
+  ["internal content framing", /\b(?:comparison|support) angle\b|\bDollWow should\b/gi]
+];
 
 async function collectFiles(relativeDir, extensionPattern = /\.(tsx?|jsx?)$/) {
   const absoluteDir = path.join(process.cwd(), relativeDir);

@@ -171,7 +171,7 @@ function buildStatusNote(request: VisualSearchRequestRecord, suggestionCount: nu
   if (request.status === "processed" && request.results.length) {
     return suggestionCount
       ? "We found public matches and translated them into the closest live DollWow listings below."
-      : "We found public matches, but none were strong enough to map cleanly into the live catalog yet.";
+      : "We found possible matches, but none were close enough to recommend confidently yet.";
   }
 
   if (request.status === "provider_unavailable") {

@@ -213,7 +213,7 @@ For an eligible made-to-order purchase, the Human Build Check reviews selected o
 
 After arrival, follow the published inspection process and keep the packaging until the initial review is complete. Care 365 is included with every DollWow doll under the current terms, with continuing Repair Concierge support after the first year. The Doll Passport keeps approved build and support records together for eligible orders.
 
-Read [Care for Life](/care-for-life), [Buyer Protection](/buyer-protection), and [how ordering works](/how-ordering-works) for the canonical program details.
+Read [Care for Life](/care-for-life), [Buyer Protection](/buyer-protection), and [how ordering works](/how-ordering-works) for the latest program details.
 
 ## Buyer Checklist
 
@@ -319,7 +319,7 @@ No. Compatibility depends on brand, neck connection, material, skin tone, functi
 
 ### Does DollWow test every shortlisted doll personally?
 
-No. The shortlist uses current DollWow catalog data, authorized product imagery, manufacturer information, buyer-use criteria, and editorial comparison. It does not claim hands-on or laboratory testing.
+No. The shortlist uses current product details, authorized imagery, manufacturer information, and practical buyer criteria. It does not claim hands-on or laboratory testing.
 
 ### How often is the shortlist updated?
 

@@ -96,7 +96,7 @@ If you find the same legitimate configuration for less, review the [DollWow Best
 
 Search results often make conflicting claims about whether TPE or silicone is heavier. The conflict exists because finished dolls are not solid blocks of one material.
 
-At the same volume, a particular silicone formulation may be denser than a particular TPE formulation. In a finished doll, however, the amount of material, body proportions, internal foam, hollow sections, skeleton, and weight-reduction engineering change the result. DollWow's live catalog includes full-silicone models that weigh less than larger TPE models, as well as heavy examples in every construction category.
+At the same volume, a particular silicone formulation may be denser than a particular TPE formulation. In a finished doll, however, the amount of material, body proportions, internal foam, hollow sections, skeleton, and weight-reduction engineering change the result. Current DollWow products include full-silicone models that weigh less than larger TPE models, as well as heavy examples in every construction category.
 
 Use the listed weight of the exact product. Then plan how you will lift, position, clean, and store it. A difference of 10 lb (4.5 kg) is noticeable in routine handling. A doll around 80 lb (36.3 kg) may require a very different setup from one around 55 lb (24.9 kg), regardless of material.
 
@@ -295,9 +295,3 @@ Only if the product is explicitly confirmed as compatible with the exact TPE or 
 ### Where can I compare TPE and silicone dolls side by side?
 
 Use the live DollWow product examples below, then compare the full [TPE collection](/shop/tpe), [silicone collection](/shop/silicone), and [hybrid collection](/shop/hybrid). Check exact height, weight, price, configuration, and availability on each product page.
-
-## Editorial Review Notes
-
-- Recheck material wording, links, and live product examples before each scheduled review.
-- Do not generalize brand-specific certifications, formulations, or care methods.
-- Refresh catalog-dependent examples when products or availability change.

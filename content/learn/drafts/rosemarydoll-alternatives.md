@@ -81,7 +81,7 @@ Start with the manufacturer and body. Record:
 
 If one listing does not provide the same data, the prices are not ready for comparison.
 
-Use the [DollWow listing comparison](/compare) when another seller's page is difficult to map. The review should use visible facts and current DollWow catalog data. It should not invent a match when the source listing is incomplete.
+Use the [DollWow listing comparison](/compare) when another seller's page is difficult to understand. The comparison uses visible product facts and current DollWow listings. If important details are missing, we will say that a reliable match cannot be confirmed.
 
 ## Compare TPE, Silicone, and Hybrid Correctly
 
@@ -153,7 +153,7 @@ Ask whether an image shows:
 - the selected body with a different head
 - a manufacturer reference configuration
 - optional styling or clothing
-- an editorial enhancement based on the real product
+- a clearly labeled promotional image based on the real product
 - factory approval media for a completed custom build
 
 Do not assume clothing, wigs, props, accessories, or background items are included. Keep enough unedited gallery imagery to inspect the actual product.
@@ -228,7 +228,7 @@ The strongest reason to choose DollWow is continuity. Product selection, build r
 
 Another seller may be the better choice when it has an exclusive or confirmed configuration DollWow does not carry, a verified ready unit in the required location, or published terms that fit the buyer better.
 
-DollWow should not claim to be the best fit when the exact product or supported option is unavailable. The useful response is to confirm what can be ordered and explain the tradeoff clearly.
+Another seller may be a better fit when DollWow does not carry the exact product or supported option you need. We will confirm what can be ordered and explain the tradeoff clearly.
 
 ## Current DollWow Products to Compare
 
@@ -319,12 +319,12 @@ Eligible custom DollWow builds can receive factory photos or video before shipme
 
 ### Does Care 365 apply to every DollWow doll?
 
-Care 365 is included with every DollWow doll under the current published terms. Review Care for Life for canonical coverage details and continuing Repair Concierge support.
+Care 365 is included with every DollWow doll under the current published terms. Review [Care for Life](/care-for-life) for the latest coverage details and continuing Repair Concierge support.
 
 ### What if I cannot find the exact model on DollWow?
 
-Submit the current product URL through Compare a listing. DollWow can check for the same body and head, a comparable configuration, or the closest alternatives supported by current catalog data.
+Submit the current product URL through [Compare a listing](/compare). DollWow can check for the same body and head, a comparable configuration, or the closest available alternatives.
 
 ### How current is this comparison?
 
-The SERP, DollWow catalog, and public comparison structure were reviewed on August 11, 2026. Competitor products and policies can change, so current written terms should decide any purchase-specific question.
+This comparison was last reviewed on August 11, 2026. Products and policies can change, so check the current product page and written terms before making a purchase decision.

@@ -268,7 +268,7 @@ Some dolls offer gel-filled breasts, buttocks, thighs, or other soft regions. Co
 - Repair path and approved materials.
 - Source date and any stated test conditions.
 
-When these details are unavailable, the honest description is that the feature needs confirmation. A high search volume or a competitor's confident paragraph does not close the evidence gap.
+When these details are unavailable, the honest answer is that the feature needs confirmation. Popularity and confident marketing language do not prove how a specific product works.
 
 ## How to Read Product Specifications
 
@@ -532,7 +532,7 @@ Confirm the supported function, power source, controls, operating limits, cleani
 
 AI-related features may involve a separate head, wearable device, speaker, app, or cloud service. Ask what works without a subscription, what data leaves the device, whether the service is available in the buyer's country, and what happens if the software is discontinued.
 
-Only feature electronic products that are live in the DollWow catalog and supported by verified brand documentation. Search volume for robotic products is meaningful, but demand does not justify publishing unverified capabilities.
+Only consider electronic products currently offered by DollWow and supported by verified brand documentation. Interest in robotic products does not make an unverified capability real.
 
 ### Heating is not one universal feature
 
@@ -598,7 +598,7 @@ The base price is only one part of the decision. Compare the configured total an
 | Setup | Storage support, care products, clothing, and safe handling equipment |
 | Ownership | Replacement wigs, inserts, repair materials, and manufacturer-approved care items |
 
-Exact prices should come from the live catalog and current configuration. Avoid creating universal price bands that become stale or imply the same inclusions across brands. Product examples in this guide should carry a visible snapshot date and link to the current page.
+Use the current product page and selected configuration for exact pricing. Broad price bands are useful for planning, but inclusions vary by brand and product. Check the review date on examples and follow the product link for the latest price.
 
 Read [how much a sex doll costs](/learn/sex-doll-cost) and use the [best price guarantee](/best-price-guarantee) for comparable offers.
 
@@ -819,7 +819,7 @@ Once three brands remain, compare one exact product from each using weight, body
 
 ## Curated Live Product Shortlists
 
-"Best" lists are useful only when the selection method is visible. DollWow shortlists should be based on a stated buyer need, such as lower listed weight, compact dimensions, silicone construction, male body type, current warehouse availability, or customization depth.
+"Best" lists are useful only when they explain who each choice may suit. DollWow shortlists are organized around practical needs such as lower listed weight, compact dimensions, silicone construction, male body type, current warehouse availability, or customization depth.
 
 Every recommendation needs:
 

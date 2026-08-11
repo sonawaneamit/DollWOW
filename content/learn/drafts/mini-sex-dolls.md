@@ -266,9 +266,3 @@ Measure the storage space, narrow doors, stairs, and the route from delivery to 
 ### Where can I compare mini sex dolls?
 
 Browse the live [mini sex doll collection](/shop/mini-sex-dolls) for full dolls up to 120 cm / 3 ft 11 in. Use the [petite collection](/shop/petite-dolls) for taller compact models and the [lighter dolls collection](/shop/lighter) when carrying weight is the main concern.
-
-## Editorial Review Notes
-
-- Recheck the mini and petite height boundaries, filters, product examples, and links before each scheduled review.
-- Keep all size language explicitly adult and remove age-coded merchandising terms.
-- Refresh catalog-dependent examples when products or availability change.
