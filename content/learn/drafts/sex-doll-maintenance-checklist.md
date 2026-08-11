@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: draft
 reviewOwner: catalog
-lastReviewed: "2026-06-28"
+lastReviewed: "2026-08-11"
 ---
 
 # Sex Doll Maintenance Checklist

@@ -415,6 +415,36 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "sex-doll-maintenance-checklist": [
+      {
+        afterHeading: "Routine Maintenance Checklist",
+        src: "/images/learn/sex-doll-maintenance-checklist/monthly-care.webp",
+        alt: "A fully supported clothed catalog doll beside a six-step monthly care checklist for material, cleaning, drying, inspection, approved powder, and storage",
+        caption: "Use the six-step check as a monthly reminder, then follow the care instructions for the exact material, finish, and construction.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "sex-doll-scams": [
+      {
+        afterHeading: "Red Flags To Watch",
+        src: "/images/learn/sex-doll-scams/listing-trust-check.webp",
+        alt: "A six-point listing trust check comparing verifiable product facts with common seller red flags",
+        caption: "A low price is not proof of a scam. Verify the exact product, how the order will be fulfilled, included options, support, policies, and payment method before deciding.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "ready-to-ship-vs-custom-sex-dolls": [
+      {
+        afterHeading: "Side-by-Side Comparison",
+        src: "/images/learn/ready-to-ship-vs-custom-sex-dolls/choose-order-path.webp",
+        alt: "A ready-to-ship Jarliet doll and a made-to-order SY doll with the four checks that define each ordering path",
+        caption: "Choose ready to ship when the confirmed existing build fits. Choose made to order when a supported non-negotiable detail is missing.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",

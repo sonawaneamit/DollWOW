@@ -23,8 +23,8 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | --- | --- | --- | --- | --- |
 | `/learn/how-to-clean-a-sex-doll` | Step-by-step infographic | Vertical | Apply mild wash, gently clean, rinse, dry, apply care powder, store dry | Step 6 must show a full doll/mannequin in a storage case, not a detached limb. |
 | `/learn/sex-doll-storage` | Safe vs risky storage guide | Vertical | Safe storage positions, drying first, light fabric, avoid heat/pressure/dark dye | Show full product forms only in neutral storage context. |
-| `/learn/sex-doll-maintenance-checklist` | Monthly checklist | Vertical | Clean, dry, inspect, powder if needed, store, recheck | Checklist style with exact text reviewed before publishing. |
-| `/learn/sex-doll-scams` | Scam red flags checklist | Vertical | Low price, stolen photos, vague shipping, no support, unclear product facts | No competitor logos or external URLs. |
+| `/learn/sex-doll-maintenance-checklist` | Monthly checklist | Vertical | Confirm material, clean, dry, inspect, powder only if approved, and store supported | Complete full-doll visual live in code; all text and responsive behavior verified. |
+| `/learn/sex-doll-scams` | Listing trust check | Vertical | Product identity, facts, order path, written options, support, policies, and payment red flags | Complete visual live in code with no competitor logos, external URLs, or claims that every discount is a scam. |
 | `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only, no underage-coded styling, check local rules, privacy is separate from legality | Keep legal wording cautious. |
 
 ## Completed High-Intent Editorial Visuals
@@ -76,7 +76,7 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | Brand buying guides | Brand comparison cards | Landscape or square | Catalog depth, material focus, body styles, customization checks | Use approved product images from the featured brand only. |
 | Competitor alternative pages | Comparison table graphic | Vertical | DollWow comparison process, not competitor links | Do not include competitor URLs. |
 | `/learn/sex-doll-cost` | Cost stack infographic | Vertical | Base price, options, shipping, stock path, support confirmation | Four-layer total-cost visual live in code without volatile prices. Additional imagery should use current product examples rather than repeat this framework. |
-| `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path diagram | Vertical | Ready-to-ship vs custom workflow | Make timing conditional, not guaranteed. |
+| `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path comparison | Vertical | Existing-build checks versus made-to-order build checks | Complete product-grounded visual live in code; no delivery time or unlimited-customization claim is baked into the asset. |
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Product-grounded ownership-path visual live in code. Additional care or repair imagery should add new information. |
 | `/learn/irontech-dolls-buying-guide` | Technical atelier / build dossier | Mixed vertical and portrait | TPE, hybrid, full silicone, head systems, and handling weight using several current Irontech products | First visual live in code using Irontech Evie. Additional material and head-system visuals remain pending. |
 | `/learn/wm-dolls-buying-guide` | Catalog archive / body-and-head matrix | Mixed vertical and landscape | TPE and silicone paths, authenticity, body/head choice, and the difference between height and handling weight | First visual live in code using two WM products. Additional size/weight and authenticity visuals remain pending. |
