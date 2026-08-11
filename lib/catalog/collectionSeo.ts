@@ -300,6 +300,10 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop Black sex dolls shown with deep or dark skin tones and Black-inspired styling across current DollWow brands. This is an appearance category, not a promise about one body type, hair texture, material, or feature set. Compare the pictured head and body, exact skin tone, measurements, listed weight, TPE or silicone construction, availability, and supported options. If you have another approved model in mind, send the name or supplier link and our team will check it quickly.",
   "anime-dolls":
     "Shop adult anime sex dolls with stylized, manga-inspired, cosplay, elf, and fantasy presentation across current DollWow brands. This is a visual category for adults, not an age, character-identity, or body-size label. Compare the exact face, body, product form, height, listed weight, TPE or silicone construction, photographs, availability, and supported styling options. If a particular approved design is missing, send our team the model name or supplier link and we will check whether it can be added.",
+  "fuller-dolls":
+    "Shop fuller and curvy sex dolls with a fuller bust, wider hips, softer midsection, or plus-size-inspired proportions in the current product data and styling. These traits can appear separately, so the category does not claim that every doll has the same body shape or physical weight. Compare the full gallery, bust, waist, hips, height, listed weight, material, product form, and supported options before choosing. If another approved body is missing, send our team the model name or supplier link and we will check whether it can be added.",
+  "slim-dolls":
+    "Shop slim sex dolls with a narrow waist, slender frame, or lean body proportions in the current product data and styling. Slim does not mean short, lightweight, small-busted, or easier to handle, and some designs combine a narrow waist with fuller curves. Compare the complete bust, waist, hips, height, listed weight, material, product form, and photographs before choosing. If another approved body is missing, send our team the model name or supplier link and we will check whether it can be added.",
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
@@ -327,6 +331,8 @@ const collectionMetaDescriptions: Record<string, string> = {
   "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
+  "fuller-dolls": "Shop fuller and curvy sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
+  "slim-dolls": "Shop slim sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
@@ -474,6 +480,34 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     },
     {
       title: "Ask us to find a missing design",
+      body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "fuller-dolls": [
+    {
+      title: "Compare all three body measurements",
+      body: "A fuller bust, waist, and hips do not always increase together. Read the exact measurements and several product angles instead of relying on one label."
+    },
+    {
+      title: "Do not confuse shape with weight",
+      body: "Material, height, internal construction, and body volume affect handling. Check pounds and kilograms separately from the visual proportions."
+    },
+    {
+      title: "Ask us to find another body",
+      body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "slim-dolls": [
+    {
+      title: "Use measurements, not one adjective",
+      body: "A narrow waist can appear with different heights, busts, hips, and overall proportions. Compare bust, waist, hips, and several gallery angles together."
+    },
+    {
+      title: "Slim does not guarantee lightweight",
+      body: "Material, height, skeleton, and internal construction affect handling. Check pounds and kilograms plus your delivery, cleaning, and storage route."
+    },
+    {
+      title: "Ask us to find another body",
       body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
@@ -666,6 +700,22 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Explore custom builds", href: "/shop/custom" },
     { label: "Review the adult-only standard", href: "/adult-only" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+  ],
+  "fuller-dolls": [
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Compare size and listed weight", href: "/learn/mini-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+  ],
+  "slim-dolls": [
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Compare lightweight dolls", href: "/shop/lightweight-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Plan private storage", href: "/learn/sex-doll-storage" },
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
   ],
   "height-under-155": [
@@ -918,6 +968,40 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Build and styling support",
       whyItMatters: "A pictured head, outfit, accessory, or fantasy detail is not automatically included or compatible with every body.",
       dollWowAdvantage: "DollWow can confirm the exact configuration and supported styling choices before an eligible custom order enters production."
+    }
+  ],
+  "fuller-dolls": [
+    {
+      factor: "Measurable proportions",
+      whyItMatters: "Fuller, curvy, plump, BBW, and plus size are used inconsistently and can refer to the bust, waist, hips, or overall silhouette.",
+      dollWowAdvantage: "DollWow keeps available bust, waist, hips, height, listed weight, product form, and photographs tied to each current product."
+    },
+    {
+      factor: "Handling fit",
+      whyItMatters: "A curvier shape does not predict the finished weight or whether the doll fits a buyer's delivery, cleaning, and storage route.",
+      dollWowAdvantage: "Buyers can compare dimensions, pounds and kilograms, material, and product form before judging practical fit."
+    },
+    {
+      factor: "Exact body confirmation",
+      whyItMatters: "A photographed head, body, skin tone, or softness option may not be the default configuration.",
+      dollWowAdvantage: "DollWow can confirm the exact body and supported options before an eligible custom order enters production."
+    }
+  ],
+  "slim-dolls": [
+    {
+      factor: "Measurable proportions",
+      whyItMatters: "Slim and skinny are used inconsistently, and a narrow waist can be paired with different bust, hip, height, and body-shape choices.",
+      dollWowAdvantage: "DollWow keeps available bust, waist, hips, height, listed weight, product form, and photographs tied to each current product."
+    },
+    {
+      factor: "Handling fit",
+      whyItMatters: "A lean silhouette does not prove that a doll is short, lightweight, compact, or easy for a particular buyer to carry.",
+      dollWowAdvantage: "Buyers can compare dimensions, pounds and kilograms, material, and the route from delivery to cleaning and storage."
+    },
+    {
+      factor: "Exact body confirmation",
+      whyItMatters: "Head, body, tone, softness, skeleton, and styling choices can change the final product and price.",
+      dollWowAdvantage: "DollWow can confirm the exact body and supported options before an eligible custom order enters production."
     }
   ],
   tpe: [
@@ -1316,6 +1400,58 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     },
     {
       question: "Can DollWow add an anime doll that is not listed?",
+      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "fuller-dolls": [
+    {
+      question: "What is a fuller or curvy sex doll?",
+      answer: "It is an adult doll with a fuller bust, wider hips, softer midsection, or plus-size-inspired proportions in the available product data and styling. The exact combination varies by body."
+    },
+    {
+      question: "Are fuller sex dolls heavier?",
+      answer: "Not always. Height, material, body volume, internal construction, skeleton, and options determine finished weight. Check the exact pounds and kilograms on the product page."
+    },
+    {
+      question: "Does fuller mean the same thing as BBW or plus size?",
+      answer: "Retailers use these labels differently. DollWow treats them as related search language, then asks buyers to rely on bust, waist, hips, height, listed weight, and photographs for the exact body."
+    },
+    {
+      question: "Are fuller dolls made from TPE or silicone?",
+      answer: "Both materials and hybrid construction can appear. Confirm the body and head materials because feel, finish, care, repair, weight, and price can differ."
+    },
+    {
+      question: "Can I customize a fuller or curvy doll?",
+      answer: "Many factory-order products support selected appearance or build choices, but availability and compatibility vary by exact body, head, material, and manufacturer."
+    },
+    {
+      question: "Can DollWow add a fuller body that is not listed?",
+      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "slim-dolls": [
+    {
+      question: "What is a slim sex doll?",
+      answer: "It is an adult doll with a narrow waist, slender frame, or lean body proportions in the available product data and styling. Slim does not define height, cup size, weight, or material."
+    },
+    {
+      question: "Are slim sex dolls lightweight?",
+      answer: "Not necessarily. Height, material, internal construction, skeleton, and options determine finished weight. Compare the exact pounds and kilograms before planning handling or storage."
+    },
+    {
+      question: "Can a slim doll have a fuller bust or hips?",
+      answer: "Yes. Body traits can overlap. A narrow waist may be paired with different bust and hip proportions, so compare all measurements and several product photographs."
+    },
+    {
+      question: "Are slim dolls made from TPE or silicone?",
+      answer: "Both materials and hybrid construction can appear. Confirm the body and head materials because feel, finish, care, repair, weight, and price can differ."
+    },
+    {
+      question: "Can I customize a slim doll?",
+      answer: "Many factory-order products support selected appearance or build choices, but availability and compatibility vary by exact body, head, material, and manufacturer."
+    },
+    {
+      question: "Can DollWow add a slim body that is not listed?",
       answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],

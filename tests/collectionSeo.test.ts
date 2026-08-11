@@ -55,3 +55,37 @@ describe("anime collection SEO", () => {
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
+
+describe("body-style collection SEO", () => {
+  it("keeps fuller intent on one female collection with measurement-first guidance", () => {
+    const preset = collectionPresets["fuller-dolls"];
+    const intro = collectionIntro(preset, "fuller-dolls");
+    const faqs = collectionFaqItems("fuller-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(preset).toEqual({
+      title: "Fuller and curvy sex dolls",
+      filters: { look: "shape-fuller", bodyType: "female" }
+    });
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("bust, waist, hips");
+    expect(copy).toMatch(/not always/i);
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+
+  it("keeps slim intent separate from lightweight claims", () => {
+    const preset = collectionPresets["slim-dolls"];
+    const intro = collectionIntro(preset, "slim-dolls");
+    const faqs = collectionFaqItems("slim-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(preset).toEqual({
+      title: "Slim sex dolls",
+      filters: { look: "shape-slim", bodyType: "female" }
+    });
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("Slim does not mean short, lightweight");
+    expect(copy).toContain("Body traits can overlap");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});

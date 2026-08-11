@@ -372,4 +372,36 @@ describe("catalog filters", () => {
       filters: { look: "skin-black" }
     });
   });
+
+  it("keeps female body-style collections free of misleading male shape tags", () => {
+    const femaleFuller = {
+      ...sampleProducts[0],
+      id: "female-fuller",
+      tags: ["female-doll", "shape-fuller"]
+    };
+    const maleFuller = {
+      ...sampleProducts[0],
+      id: "male-fuller",
+      tags: ["male-doll", "shape-fuller"]
+    };
+    const femaleSlimAndFuller = {
+      ...sampleProducts[0],
+      id: "female-slim-fuller",
+      tags: ["female-doll", "shape-slim", "shape-fuller"]
+    };
+    const maleSlim = {
+      ...sampleProducts[0],
+      id: "male-slim",
+      tags: ["male-doll", "shape-slim"]
+    };
+    const products = [femaleFuller, maleFuller, femaleSlimAndFuller, maleSlim];
+
+    expect(filterProducts(products, collectionPresets["fuller-dolls"].filters).map((product) => product.id)).toEqual([
+      "female-fuller",
+      "female-slim-fuller"
+    ]);
+    expect(filterProducts(products, collectionPresets["slim-dolls"].filters).map((product) => product.id)).toEqual([
+      "female-slim-fuller"
+    ]);
+  });
 });

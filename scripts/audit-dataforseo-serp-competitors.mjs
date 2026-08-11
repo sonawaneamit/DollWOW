@@ -84,7 +84,13 @@ const KEYWORD_TARGETS = {
   "where to buy sex dolls online": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
   "anime love doll": { pageType: "collection", targetPath: "/shop/anime-dolls" },
   "anime sex doll": { pageType: "collection", targetPath: "/shop/anime-dolls" },
-  "cosplay sex doll": { pageType: "collection", targetPath: "/shop/anime-dolls" }
+  "cosplay sex doll": { pageType: "collection", targetPath: "/shop/anime-dolls" },
+  "plump sex doll": { pageType: "collection", targetPath: "/shop/fuller-dolls" },
+  "bbw sex doll": { pageType: "collection", targetPath: "/shop/fuller-dolls" },
+  "plus size sex doll": { pageType: "collection", targetPath: "/shop/fuller-dolls" },
+  "slim sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
+  "skinny sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
+  "slender sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));
