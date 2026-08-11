@@ -104,7 +104,10 @@ const KEYWORD_TARGETS = {
   "how much is a sex robot": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
   "sex doll maintenance": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
   "sex doll care": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
-  "how to care for a sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" }
+  "how to care for a sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
+  "sex doll scam": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
+  "sex doll scams": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
+  "fake sex doll website": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" }
 };
 
 const args = parseArgs(process.argv.slice(2));

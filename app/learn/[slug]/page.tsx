@@ -1228,10 +1228,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "sex-doll-scams": {
-      title: "Compare another offer with current products",
-      description: "Current DollWow products make it easier to compare material, price, measurements, and support against another seller's offer.",
+      title: "Compare six current full-doll listings",
+      description: "Use these current TPE, hybrid, and full-silicone products to compare exact identity, material, measurements, listed weight, price, in-stock or made-to-order status, and support against another seller's offer.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "sex-doll-laws-us": {
       title: "Compare adult-only catalog listings",
@@ -1574,7 +1582,9 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-scams": [
       { label: "Scam alert", href: "/scam-alert", description: "Review DollWow's buyer-protection warning signs." },
-      { label: "Price match", href: "/price-match", description: "Submit another seller's offer for review." }
+      { label: "Compare a listing", href: "/compare", description: "Submit another seller's product, quote, or claim for a product-level check." },
+      { label: "Sex doll reviews", href: "/learn/sex-doll-reviews", description: "Learn how to judge testimonials, ratings, customer media, and seller feedback." },
+      { label: "Best sex doll stores", href: "/learn/best-sex-doll-stores", description: "Use a complete seller-vetting framework before checkout." }
     ],
     "sex-doll-laws-us": [
       { label: "Adult-only policy", href: "/adult-only", description: "Review DollWow's adult-only catalog standard." },
