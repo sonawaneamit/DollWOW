@@ -776,10 +776,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { availability: "ready_to_ship" }
     },
     "sex-doll-reviews": {
-      title: "Use product pages to verify review claims",
-      description: "Use current product pages to compare photos, measurements, availability, and confirmed details.",
+      title: "Practice with six current product pages",
+      description: "Use these varied listings to compare product identity, photos, materials, measurements, options, availability, and price. They are verification examples, not a ratings-based ranking.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "how-to-clean-a-sex-doll": {
       title: "Compare material-specific care needs",
@@ -1039,7 +1047,8 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-reviews": [
       { label: "Buyer protection", href: "/buyer-protection", description: "Review verification and purchase clarity expectations." },
-      { label: "Price match review", href: "/price-match", description: "Submit a listing for price review." }
+      { label: "Compare a listing", href: "/compare", description: "Send DollWow a review, product link, screenshot, or competing offer to check." },
+      { label: "Best sex dolls guide", href: "/learn/best-sex-dolls", description: "Use a transparent buyer-fit method instead of relying on ratings alone." }
     ],
     "how-to-clean-a-sex-doll": [
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material care before choosing a product." },
