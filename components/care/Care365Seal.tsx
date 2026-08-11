@@ -7,17 +7,20 @@ export function Care365Seal({ compact = false, className = "" }: { compact?: boo
     <div className={`care-365-lockup ${compact ? "is-compact" : ""} ${className}`} aria-label={careForLife.care365.accessibleLabel}>
       <div className="care-365-seal" aria-hidden="true">
         <Image
-          src="/images/brand/dollwow-black-gold-lockup.png"
+          src="/images/care/care-365-yuan-portrait.webp"
           alt=""
-          width={650}
-          height={235}
-          className="care-365-seal-logo"
+          width={530}
+          height={714}
+          className="care-365-seal-portrait"
         />
-        <span>{careForLife.care365.seal}</span>
-        <small>{careForLife.care365.ring}</small>
+        <div className="care-365-seal-type">
+          <span>CARE <em>365</em></span>
+          <i />
+          <small>{careForLife.care365.ring}</small>
+        </div>
       </div>
       <div className="care-365-copy">
-        <strong>Care 365 included</strong>
+        <strong>Care 365 is included</strong>
         {!compact ? <p>{careForLife.care365.summary}</p> : null}
         <Link href={CARE_FOR_LIFE_HREF}>{careForLife.care365.detailsLabel}</Link>
       </div>
