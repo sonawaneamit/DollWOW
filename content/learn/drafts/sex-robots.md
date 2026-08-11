@@ -2,8 +2,8 @@
 title: "Sex Robots: What Exists and What to Verify Before Buying"
 slug: "sex-robots"
 primaryKeyword: "sex robots"
-secondaryKeywords: ["robotic sex dolls", "sex robot for sale", "do sex robots exist", "robot sex dolls"]
-description: "Learn what sex robots can actually do, how they differ from conventional dolls and AI companions, and what to verify before buying."
+secondaryKeywords: ["robotic sex dolls", "sex robot for sale", "do sex robots exist", "robot sex dolls", "sex robot cost", "sex robot price", "how much is a sex robot"]
+description: "Learn what sex robots can do, what affects sex robot price, how they differ from conventional dolls and AI companions, and what to verify before buying."
 category: "Technology and Features"
 author: "alex"
 authorDisplayName: "Alex"

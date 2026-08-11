@@ -95,7 +95,13 @@ const KEYWORD_TARGETS = {
   "slender sex doll": { pageType: "collection", targetPath: "/shop/slim-dolls" },
   "ai love doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" },
   "ai companion doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" },
-  "ai girlfriend doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" }
+  "ai girlfriend doll": { pageType: "learning-guide", targetPath: "/learn/ai-sex-dolls" },
+  "gynoid": { pageType: "learning-guide", targetPath: "/learn/what-is-a-gynoid" },
+  "what is a gynoid": { pageType: "learning-guide", targetPath: "/learn/what-is-a-gynoid" },
+  "gynoid robot": { pageType: "learning-guide", targetPath: "/learn/what-is-a-gynoid" },
+  "sex robot cost": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
+  "sex robot price": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
+  "how much is a sex robot": { pageType: "learning-guide", targetPath: "/learn/sex-robots" }
 };
 
 const args = parseArgs(process.argv.slice(2));
