@@ -495,6 +495,36 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1821
       }
     ],
+    "mini-sex-dolls": [
+      {
+        afterHeading: "What Counts as a Mini Sex Doll?",
+        src: "/images/learn/mini-sex-dolls/size-and-fit.webp",
+        alt: "Three adult-coded full-doll size categories and a separate full-doll versus torso product-form check",
+        caption: "Use the size categories to narrow the catalog, then compare the exact product form, weight, width, depth, delivery route, storage position, material, and care needs.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "discreet-sex-doll-shipping": [
+      {
+        afterHeading: "Practical Comparison: What Buyers Should Compare",
+        src: "/images/learn/discreet-sex-doll-shipping/whole-journey.webp",
+        alt: "A plain shipping carton and six privacy checks across packaging, label, billing, messages, handoff, and customs, plus ready and custom fulfillment journeys",
+        caption: "Privacy is more than a plain box. Check the outer packaging, label, billing descriptor, messages, signature and handoff, and customs where applicable.",
+        width: 864,
+        height: 1821
+      }
+    ],
+    "sex-doll-reviews": [
+      {
+        afterHeading: "The Review Evidence Ladder",
+        src: "/images/learn/sex-doll-reviews/evidence-ladder.webp",
+        alt: "A six-level review evidence ladder from exact-order evidence to context-free ratings, with six questions to test relevance",
+        caption: "Specific, traceable details beat a star rating. Use reviews to find questions, then use current product facts and written confirmation to answer them.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",

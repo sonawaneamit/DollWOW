@@ -68,6 +68,9 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/standing-feet-sex-doll-guide` | Supported standing-option explainer | Vertical | Non-standing, bolt-standing, and boltless-standing foot, floor, support, and storage tradeoffs | Complete visual live in code; the full doll uses external support and the copy rejects unsupported long-term standing. |
 | `/learn/body-heating-sex-doll-guide` | Heating-system confirmation guide | Vertical | Exact body support, warming zone, power, controller, compatibility, cleaning, and cable storage | Complete visual live in code with no temperature, duration, medical, or performance claims. |
 | `/learn/sex-doll-skeleton-options` | Movement-by-use comparison | Vertical | Standard, flexible, advanced supplier-named, and standing-compatible movement, handling, and storage checks | Complete neutral full-body visual live in code; manufacturer names and features remain explicitly variable. |
+| `/learn/mini-sex-dolls` | Adult-only size and product-form guide | Vertical | Mini, petite, and standard category boundaries plus full-doll versus torso, weight, route, storage, and care checks | Complete measurement-led visual live in code; no ambiguous supplier imagery or age-coded styling. |
+| `/learn/discreet-sex-doll-shipping` | Whole-journey privacy check | Vertical | Packaging, label, billing, messages, signature and handoff, customs, and ready versus custom fulfillment stages | Complete visual live in code; no carrier, timing, or absolute privacy promise is baked into the asset. |
+| `/learn/sex-doll-reviews` | Review evidence ladder | Vertical | Exact-order evidence, product-specific owner reports, disclosed demonstrations, seller reviews, forums, and context-free ratings | Complete visual live in code with no fabricated review, customer, rating, or testing claim. |
 
 ## Brand And Buying Guide Visuals
 
