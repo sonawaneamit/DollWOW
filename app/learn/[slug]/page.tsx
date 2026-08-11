@@ -1165,12 +1165,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "real-lady-sylvia-170cm-s43-silicone-doll"
       ]
     },
-    "discreet-sex-doll-shipping": {
-      title: "Compare listings where timing matters",
-      description: "Ready-to-ship product examples help buyers discuss packaging, delivery path, and timing with support before checkout.",
-      collectionHref: "/shop/ready-to-ship",
-      filters: { availability: "ready_to_ship" }
-    },
     "sex-doll-reviews": {
       title: "Practice with six current product pages",
       description: "Use these varied listings to compare product identity, photos, materials, measurements, options, availability, and price. They are verification examples, not a ratings-based ranking.",
@@ -1544,7 +1538,10 @@ function relatedCollections(slug: string) {
     ],
     "discreet-sex-doll-shipping": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare listings where timing and warehouse confirmation matter." },
-      { label: "Shipping information", href: "/shipping", description: "Review DollWow delivery and privacy expectations." }
+      { label: "Shipping information", href: "/shipping", description: "Review DollWow delivery and privacy expectations." },
+      { label: "Shipping protection", href: "/shipping-protection", description: "See what to document when a shipment is delayed, misdelivered, or damaged." },
+      { label: "Ready or made to order", href: "/learn/ready-to-ship-vs-custom-sex-dolls", description: "Understand when production ends and the carrier journey begins." },
+      { label: "Ask support", href: "/support", description: "Confirm the privacy details that matter before checkout." }
     ],
     "sex-doll-cost": [
       { label: "Affordable sex dolls", href: "/shop/cheap-sex-dolls", description: "Compare current products with starting prices up to $1,000." },

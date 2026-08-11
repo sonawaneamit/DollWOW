@@ -110,7 +110,10 @@ const KEYWORD_TARGETS = {
   "fake sex doll website": { pageType: "learning-guide", targetPath: "/learn/sex-doll-scams" },
   "are sex dolls legal": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
   "are sex dolls legal in the us": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
-  "sex doll laws": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" }
+  "sex doll laws": { pageType: "learning-guide", targetPath: "/learn/sex-doll-laws-us" },
+  "discreet sex doll shipping": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" },
+  "sex doll shipping": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" },
+  "sex doll delivery": { pageType: "learning-guide", targetPath: "/learn/discreet-sex-doll-shipping" }
 };
 
 const args = parseArgs(process.argv.slice(2));
