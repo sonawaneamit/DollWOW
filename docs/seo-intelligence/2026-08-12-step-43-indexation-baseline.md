@@ -18,6 +18,7 @@ Reviewed: 2026-08-12
 - Submitted `https://dollwow.com/sitemap.xml` on August 12, 2026.
 - Bing accepted the sitemap for processing, reported zero errors and warnings, and initially discovered approximately 2,400 URLs.
 - Added a repository-owned IndexNow workflow so newly published, materially changed, redirected, or deleted DollWow URLs can be submitted after deployment.
+- Verified the production key file and submitted the first 34-URL release batch. The shared IndexNow endpoint accepted the batch with HTTP `202`.
 
 ## URL Findings
 
