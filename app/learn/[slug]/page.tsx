@@ -475,6 +475,26 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "body-heating-sex-doll-guide": [
+      {
+        afterHeading: "What To Compare",
+        src: "/images/learn/body-heating-sex-doll-guide/check-before-adding.webp",
+        alt: "A fully clothed companion-doll mannequin with example warming zones and seven checks for body support, power, controls, compatibility, cleaning, and storage",
+        caption: "The heating label alone does not explain the system. Confirm the exact body, warming zone, power and controls, compatible options, and supplied care instructions.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "custom-sex-dolls": [
+      {
+        afterHeading: "Common Custom Options",
+        src: "/images/learn/custom-sex-dolls/build-order.webp",
+        alt: "A fully clothed companion-doll mannequin surrounded by five custom-build stages: base model, appearance, structure, functions, and final checks",
+        caption: "Start with the right body, head, material, height, and weight. Add appearance, structure, and function choices only where the exact product supports them.",
+        width: 864,
+        height: 1821
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",

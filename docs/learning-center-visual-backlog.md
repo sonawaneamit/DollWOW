@@ -63,10 +63,10 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 
 | Page | Asset Type | Format | What It Should Teach | Notes |
 | --- | --- | --- | --- | --- |
-| `/learn/custom-sex-dolls` | Customization decision tree | Vertical | Base model first, then material, head/body, skin tone, hair, feet, skeleton, functions, support confirmation | Must show that options vary by brand and product. |
+| `/learn/custom-sex-dolls` | Custom-build order map | Vertical | Base model, appearance, structure, functions, and final compatibility, price, production, and delivery checks | Complete visual live in code; the exact product explicitly controls which options can be combined. |
 | `/learn/implanted-hair-vs-wig` | Hairline and ownership comparison | Vertical | Wig versus implanted hair flexibility, replacement, care, and exact-head compatibility | Complete product-grounded visual live in code; electronic-head compatibility remains explicitly model-specific. |
 | `/learn/standing-feet-sex-doll-guide` | Supported standing-option explainer | Vertical | Non-standing, bolt-standing, and boltless-standing foot, floor, support, and storage tradeoffs | Complete visual live in code; the full doll uses external support and the copy rejects unsupported long-term standing. |
-| `/learn/body-heating-sex-doll-guide` | Option explainer | Vertical | What to confirm: location, power, heating zone, timing, compatibility, safety notes | Avoid medical or performance claims. |
+| `/learn/body-heating-sex-doll-guide` | Heating-system confirmation guide | Vertical | Exact body support, warming zone, power, controller, compatibility, cleaning, and cable storage | Complete visual live in code with no temperature, duration, medical, or performance claims. |
 | `/learn/sex-doll-skeleton-options` | Movement-by-use comparison | Vertical | Standard, flexible, advanced supplier-named, and standing-compatible movement, handling, and storage checks | Complete neutral full-body visual live in code; manufacturer names and features remain explicitly variable. |
 
 ## Brand And Buying Guide Visuals
