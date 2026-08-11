@@ -122,7 +122,10 @@ const KEYWORD_TARGETS = {
   "sex doll wig": { pageType: "learning-guide", targetPath: "/learn/implanted-hair-vs-wig" },
   "sex doll standing feet": { pageType: "learning-guide", targetPath: "/learn/standing-feet-sex-doll-guide" },
   "standing feet sex doll": { pageType: "learning-guide", targetPath: "/learn/standing-feet-sex-doll-guide" },
-  "boltless standing feet sex doll": { pageType: "learning-guide", targetPath: "/learn/standing-feet-sex-doll-guide" }
+  "boltless standing feet sex doll": { pageType: "learning-guide", targetPath: "/learn/standing-feet-sex-doll-guide" },
+  "sex doll skeleton": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
+  "flexible skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
+  "evo skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" }
 };
 
 const args = parseArgs(process.argv.slice(2));

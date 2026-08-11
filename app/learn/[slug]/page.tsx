@@ -1247,12 +1247,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
-    "sex-doll-skeleton-options": {
-      title: "Compare custom listings by body and option path",
-      description: "Skeleton choices affect posing, handling, and storage, so start with product facts before choosing an upgrade.",
-      collectionHref: "/shop/custom",
-      filters: { availability: "custom" }
-    },
     "wm-dolls-buying-guide": {
       title: "Compare six WM body and material paths",
       description: "Use current products to compare TPE, silicone, female, male, shorter, taller, lighter, and heavier builds. This is a decision sample, not a bestseller ranking.",
@@ -1605,7 +1599,10 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-skeleton-options": [
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order listings by body and option path." },
-      { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Review how feet and skeleton choices interact." }
+      { label: "Standing feet guide", href: "/learn/standing-feet-sex-doll-guide", description: "Review how feet and skeleton choices interact." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan movement, pressure, and long-term support before choosing a body." },
+      { label: "Lightweight dolls", href: "/shop/lightweight-sex-dolls", description: "Compare listed weight separately from pose range." },
+      { label: "Ask support", href: "/support", description: "Translate supplier skeleton names into the movements supported on the exact body." }
     ],
     "wm-dolls-buying-guide": [
       { label: "WM Dolls brand hub", href: "/brands/wm-dolls", description: "Compare current DollWow WM listings." },
