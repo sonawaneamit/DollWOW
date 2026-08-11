@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         source: "/shop/fast-shipping-sex-dolls",
         destination: "/shop/ready-to-ship",
         permanent: true
+      },
+      {
+        source: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-i9zoa",
+        destination: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-1e7ds",
+        permanent: true
       }
     ];
   },
