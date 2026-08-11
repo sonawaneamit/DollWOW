@@ -30,7 +30,7 @@ export default function CartPage({ searchParams }: { searchParams: Promise<{ moc
             <p className="text-sm font-semibold  text-gold-300">Before you pay</p>
             <h2 className="mt-2 text-2xl font-semibold text-ivory-50">Private, clear, and reviewed by our team.</h2>
           </div>
-          <GoldButton href="/shop" variant="secondary">Keep shopping</GoldButton>
+          <GoldButton href="/shop/sex-dolls" variant="secondary">Keep shopping</GoldButton>
         </div>
         <div className="mt-5 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
           <TrustCard icon={<Lock className="h-5 w-5" />} title="Private checkout" body="Neutral billing, plain packaging, and discreet order updates." />

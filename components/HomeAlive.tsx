@@ -82,7 +82,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
               Explore real DollWow catalog picks with clear specs, private checkout, and practical support when you want a second look.
             </p>
             <div className="home-hero__actions">
-              <Link className="home-btn home-btn--primary" href="/shop">Shop all dolls <ArrowRight className="h-4 w-4" /></Link>
+              <Link className="home-btn home-btn--primary" href="/shop/sex-dolls">Shop all dolls <ArrowRight className="h-4 w-4" /></Link>
             </div>
           </div>
 
@@ -485,7 +485,7 @@ function PreviewShowcase({ products }: { products: Product[] }) {
             <li><BadgeCheck className="h-4 w-4" /> Compare materials and measurements</li>
             <li><Truck className="h-4 w-4" /> Check options and delivery before checkout</li>
           </ul>
-          <Link className="home-btn home-btn--primary" href="/shop">Explore all dolls</Link>
+          <Link className="home-btn home-btn--primary" href="/shop/sex-dolls">Explore all dolls</Link>
         </div>
       </div>
     </section>
@@ -513,7 +513,7 @@ function ClosingBand() {
         <h2>Find the one. Buy with confidence.</h2>
         <p>Browse freely, build exactly what you want, or ask us to help compare options before you order.</p>
         <div className="home-hero__actions">
-          <Link className="home-btn home-btn--primary" href="/shop">Shop all dolls</Link>
+          <Link className="home-btn home-btn--primary" href="/shop/sex-dolls">Shop all dolls</Link>
           <Link className="home-btn home-btn--ghost" href="/help-me-choose">Help me choose</Link>
         </div>
       </div>
@@ -564,7 +564,7 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       title: "Bestsellers",
       copy: "A strong place to start when you want the most browsed catalog picks first.",
       tone: "deep",
-      href: "/shop",
+      href: "/shop/sex-dolls",
       products: products.slice(0, 14)
     },
     {
@@ -573,7 +573,7 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       title: "New arrivals",
       copy: "Fresh catalog picks recently added to DollWow.",
       tone: "deep",
-      href: "/shop",
+      href: "/shop/sex-dolls",
       products: newArrivals
     },
     {
@@ -582,7 +582,7 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       title: "Rare finds",
       copy: "Less common sizes, materials, and specialty builds worth a closer look.",
       tone: "blush",
-      href: "/shop",
+      href: "/shop/sex-dolls",
       products: rare
     },
     {
@@ -592,7 +592,7 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       copy: "Discounted listings and special offers when available.",
       emptyCopy: "No markdowns are active right now. Price-match support is still available on product pages.",
       tone: "deep",
-      href: "/shop",
+      href: "/shop/sex-dolls",
       products: sale
     }
   ];

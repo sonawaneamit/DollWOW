@@ -82,7 +82,7 @@ export function ComparisonDrawer() {
             Compare {comparison.entries.length || "dolls"} <ArrowRight className="h-4 w-4" />
           </Link>
           <div className="mt-3 flex items-center justify-between text-sm">
-            <Link href="/shop" onClick={comparison.closeDrawer} className="font-semibold text-accent">Add another doll</Link>
+            <Link href="/shop/sex-dolls" onClick={comparison.closeDrawer} className="font-semibold text-accent">Add another doll</Link>
             {comparison.entries.length ? <button type="button" onClick={comparison.clear} className="text-text-dim hover:text-text">Clear all</button> : null}
           </div>
         </footer>

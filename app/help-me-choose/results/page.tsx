@@ -108,7 +108,7 @@ export default async function QuizResultsPage({ searchParams }: { searchParams: 
       )}
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <Link href="/shop" className="border border-gold-500/14 bg-ink-800/72 p-5 text-ivory-200 transition hover:border-gold-300/45">
+        <Link href="/shop/sex-dolls" className="border border-gold-500/14 bg-ink-800/72 p-5 text-ivory-200 transition hover:border-gold-300/45">
           <Filter className="h-5 w-5 text-gold-300" />
           <strong className="mt-4 block text-lg text-ivory-50">Browse more dolls</strong>
           <span className="mt-2 block text-sm leading-6 text-ivory-400">Use catalog filters for brand, body type, material, price, height, and availability.</span>

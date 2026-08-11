@@ -70,7 +70,7 @@ export function brandFilterOptions() {
 
 export function brandHubHref(value: string | undefined | null) {
   const brand = getCatalogBrand(value);
-  return brand ? `/brands/${brand.collectionHandle}` : "/shop";
+  return brand ? `/brands/${brand.collectionHandle}` : "/shop/sex-dolls";
 }
 
 export function normalizeBrandText(value: string | undefined | null) {

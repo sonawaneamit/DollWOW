@@ -74,7 +74,7 @@ export function SavedPageClient() {
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             <Link
-              href="/shop"
+              href="/shop/sex-dolls"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition"
             >
               Browse the catalog <ArrowRight className="h-4 w-4" />

@@ -37,7 +37,7 @@ export default async function HelpMeChoosePage({ searchParams }: { searchParams:
           eyebrow="Browse by fit"
           title="Start with a few real catalog examples."
           copy="The quiz narrows the catalog by size, timing, material, budget, and customization instead of making you scroll everything."
-          cta={{ label: "Browse all dolls", href: "/shop" }}
+          cta={{ label: "Browse all dolls", href: "/shop/sex-dolls" }}
           compact
         />
       </div>

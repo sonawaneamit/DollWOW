@@ -1,9 +1,9 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
-import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, requiresCatalogWideFetch, shopifyQueryForFilters } from "@/lib/catalog/filters";
+import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
 import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
-import { getProducts } from "@/lib/shopify/storefront";
+import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
 
@@ -31,11 +31,7 @@ export default async function CollectionPage({
   const paramsFilters = filtersFromSearchParams(rawSearchParams);
   const preset = collectionPresets[collection] || { title: collection.replace(/-/g, " "), filters: { brand: collection } };
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
-  const products = await getProducts({
-    query: shopifyQueryForFilters(filters),
-    first: requiresCatalogWideFetch(filters) ? 2200 : 600,
-    includeCustomizationGroups: false
-  });
+  const products = await getSeoCatalogProducts({ first: 5000 });
   const filtered = filterProducts(products, filters);
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });

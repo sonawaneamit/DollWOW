@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = getLearningArticle(slug);
   if (!article) return {};
+  const featuredImageDimensions = article.slug === "sex-doll-guide"
+    ? { width: 1672, height: 941 }
+    : { width: 1536, height: 1024 };
   return {
     title: article.title,
     description: article.description,
@@ -40,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: learnArticleUrl(article.slug),
       type: "article",
       siteName: "DollWow",
-      images: article.featuredImage ? [{ url: absoluteUrl(article.featuredImage)!, alt: article.featuredImageAlt, width: 1536, height: 1024 }] : undefined
+      images: article.featuredImage ? [{ url: absoluteUrl(article.featuredImage)!, alt: article.featuredImageAlt, ...featuredImageDimensions }] : undefined
     },
     twitter: {
       card: article.featuredImage ? "summary_large_image" : "summary",
@@ -59,6 +62,9 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   const schema = [buildArticleStructuredData(article), buildArticleBreadcrumbStructuredData(article), buildArticleFaqStructuredData(article)].filter(Boolean);
   const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
   const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
+  const featuredImageDimensions = article.slug === "sex-doll-guide"
+    ? { width: 1672, height: 941 }
+    : { width: 1536, height: 1024 };
 
   return (
     <div>
@@ -80,8 +86,8 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               <Image
                 src={article.featuredImage}
                 alt={article.featuredImageAlt}
-                width={1536}
-                height={1024}
+                width={featuredImageDimensions.width}
+                height={featuredImageDimensions.height}
                 priority
                 className="h-auto w-full object-cover"
                 sizes="(min-width: 1024px) 80rem, 100vw"
@@ -314,13 +320,57 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
       afterHeading: "TPE, Silicone, and Hybrid Construction",
       src: "/images/learn/sex-doll-guide/material-comparison.webp",
       alt: "DollWow visual comparison of a TPE doll and a silicone doll with practical material tradeoffs",
-      caption: "Use material as the start of the comparison, then verify the exact formulation, weight, care routine, and configuration."
+      caption: "Use material as the start of the comparison, then verify the exact formulation, weight, care routine, and configuration.",
+      width: 916,
+      height: 1717
     },
     {
       afterHeading: "Size and Weight Matter More Than Buyers Expect",
       src: "/images/learn/sex-doll-guide/size-and-handling.webp",
-      alt: "Three DollWow products compared by height, weight, material, and price",
-      caption: "Real catalog examples show why height alone does not predict handling weight. Product details and prices should be rechecked before ordering."
+      alt: "Starpery Yuan, WM Rhea Lynn, and Irontech Len Stilwell compared by height and handling weight",
+      caption: "These live catalog examples show why height alone does not predict handling weight. Recheck product measurements before ordering.",
+      width: 928,
+      height: 1695
+    },
+    {
+      afterHeading: "What Creates a Realistic Appearance",
+      src: "/images/learn/sex-doll-guide/realism-layers.webp",
+      alt: "DollWow visual guide to evaluating sculpt, finish, styling, and photographic evidence",
+      caption: "Evaluate realism in layers, then compare close-ups and multiple angles for the exact head and body combination.",
+      width: 1003,
+      height: 1568
+    },
+    {
+      afterHeading: "Customization Starts With the Exact Product",
+      src: "/images/learn/sex-doll-guide/customization-order.webp",
+      alt: "Five-step DollWow customization sequence from body and material through optional functions",
+      caption: "Choose the core body and head first, then verify which styling, skeleton, standing, and function options are compatible with that exact product.",
+      width: 1003,
+      height: 1568
+    },
+    {
+      afterHeading: "Ready-to-Ship vs Custom Order",
+      src: "/images/learn/sex-doll-guide/ready-vs-custom.webp",
+      alt: "DollWow comparison of ready-to-ship and custom-order purchasing paths",
+      caption: "Compare stock confirmation, production, transit, and delivery as separate timelines. Verify the exact order before checkout.",
+      width: 1003,
+      height: 1568
+    },
+    {
+      afterHeading: "Which Doll Brand Is Right for You?",
+      src: "/images/learn/sex-doll-guide/se-doll-brand-spotlight.webp",
+      alt: "SE Doll brand spotlight featuring a real SE Doll Xanthe product image",
+      caption: "Brand profiles help narrow the catalog, but the final decision should still be based on the exact body, head, material, options, and support path.",
+      width: 1122,
+      height: 1402
+    },
+    {
+      afterHeading: "How to Evaluate a Listing",
+      src: "/images/learn/sex-doll-guide/listing-audit.webp",
+      alt: "Three-pass DollWow checklist for auditing identity, practicality, and configuration in a doll listing",
+      caption: "Audit the listing in three passes and turn missing facts into questions before comparing configured totals.",
+      width: 887,
+      height: 1774
     },
     {
       afterHeading: "Cleaning by Material and Construction",
@@ -863,7 +913,7 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
 
 function relatedCollections(slug: string) {
   const common = [
-    { label: "Browse the catalog", href: "/shop", description: "Compare live DollWow products, filters, and pricing." }
+    { label: "Browse the catalog", href: "/shop/sex-dolls", description: "Compare live DollWow products, filters, and pricing." }
   ];
   const map: Record<string, Array<{ label: string; href: string; description: string }>> = {
     "sex-doll-guide": [

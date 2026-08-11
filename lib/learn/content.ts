@@ -144,7 +144,7 @@ function readArticle(filePath: string): LearnArticle {
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
     featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
-    featuredImageAlt: featuredImageAlt(stringValue(frontmatter.title)),
+    featuredImageAlt: featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),
     body: publicBody,
     excerpt: excerpt(publicBody)
   };
@@ -279,7 +279,10 @@ function featuredImagePath(slug: string) {
   return fs.existsSync(filePath) ? relativePath : "";
 }
 
-function featuredImageAlt(title: string) {
+function featuredImageAlt(title: string, slug: string) {
+  if (slug === "sex-doll-guide") {
+    return "The Complete Guide to Choosing a Sex Doll featuring a real Irontech Evie doll";
+  }
   return `Editorial featured image for ${title}`;
 }
 

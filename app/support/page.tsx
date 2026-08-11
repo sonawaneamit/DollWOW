@@ -27,7 +27,7 @@ export default function SupportPage() {
           eyebrow="Before you buy"
           title="Send the product and your question."
           copy="Our team can check sizing, timing, options, or whether two listings are really the same doll."
-          cta={{ label: "Browse catalog", href: "/shop" }}
+          cta={{ label: "Browse catalog", href: "/shop/sex-dolls" }}
           compact
         />
       </div>

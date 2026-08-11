@@ -26,7 +26,7 @@ export function RecentlyViewedRail({ excludeHandle, title = "Recently viewed" }:
           <h2 className="mt-1 text-xl font-semibold text-ivory-50">{title}</h2>
         </div>
         <Link
-          href="/shop"
+          href="/shop/sex-dolls"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-ivory-300 underline-offset-4 transition hover:text-gold-200 hover:underline"
         >
           Browse catalog <ArrowRight className="h-4 w-4" />

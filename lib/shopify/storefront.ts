@@ -56,7 +56,9 @@ type SeoProductNode = {
   heightCm: MetafieldValue;
   weightLb: MetafieldValue;
   cupSize: MetafieldValue;
+  measurements: MetafieldValue;
   warehouseCountry: MetafieldValue;
+  warehouseRegions: MetafieldValue;
   stockStatus: MetafieldValue;
   deliveryEstimate: MetafieldValue;
   stockLastCheckedAt: MetafieldValue;
@@ -270,7 +272,9 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }:
               heightCm: metafield(namespace: "custom", key: "height_cm") { value }
               weightLb: metafield(namespace: "custom", key: "weight_lb") { value }
               cupSize: metafield(namespace: "custom", key: "cup_size") { value }
+              measurements: metafield(namespace: "custom", key: "measurements") { value }
               warehouseCountry: metafield(namespace: "custom", key: "warehouse_country") { value }
+              warehouseRegions: metafield(namespace: "custom", key: "warehouse_regions") { value }
               stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
               deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
               stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
@@ -323,7 +327,9 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       heightCm: metafieldNumber(node.heightCm),
       weightLb: metafieldNumber(node.weightLb),
       cupSize: metafieldText(node.cupSize) || undefined,
+      measurements: metafieldRecord(node.measurements),
       warehouseCountry: metafieldText(node.warehouseCountry) || undefined,
+      warehouseRegions: metafieldStringArray(node.warehouseRegions),
       stockStatus: stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
       deliveryEstimate: customerDeliveryEstimate(
         stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
@@ -359,6 +365,20 @@ function metafieldStringArray(value: MetafieldValue) {
     if (Array.isArray(parsed)) return parsed.map((item) => String(item).trim()).filter(Boolean);
   } catch {
     return text.split(",").map((item) => item.trim()).filter(Boolean);
+  }
+  return undefined;
+}
+
+function metafieldRecord(value: MetafieldValue) {
+  const text = metafieldText(value);
+  if (!text) return undefined;
+  try {
+    const parsed = JSON.parse(text);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      return Object.fromEntries(Object.entries(parsed).map(([key, item]) => [key, String(item)]));
+    }
+  } catch {
+    return undefined;
   }
   return undefined;
 }

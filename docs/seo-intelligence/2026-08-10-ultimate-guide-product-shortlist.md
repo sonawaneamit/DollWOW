@@ -1,6 +1,6 @@
 # Ultimate Guide Product Shortlist
 
-Generated: 2026-08-10T20:08:16.323Z
+Generated: 2026-08-10T22:29:54.586Z
 
 ## Completion Gate
 
@@ -14,7 +14,7 @@ Six use-case groups contain 24 unique, live, image-backed products across at lea
 - Unique live products: 24
 - Carried brands represented: 16
 - Products requiring weight confirmation: 4
-- Product feed generated: 2026-08-10T19:32:23.934Z
+- Product feed generated: 2026-08-10T21:37:19.137Z
 
 | Group | Product | Brand | Material | Height | Weight | Starting price | Status | Warning |
 | --- | --- | --- | --- | --- | --- | ---: | --- | --- |

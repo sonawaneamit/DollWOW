@@ -6,7 +6,7 @@ import { ProductCard } from "./ProductCard";
 export function ProductGrid({
   products,
   filters,
-  resetHref = "/shop"
+  resetHref = "/shop/sex-dolls"
 }: {
   products: Product[];
   filters?: CatalogFilters;
@@ -42,10 +42,10 @@ export function ProductGrid({
               Reset filters
             </Link>
           ) : null}
-          <Link href="/shop?material=silicone" className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 text-[15px] font-semibold text-text hover:border-accent">
+          <Link href="/shop/sex-dolls?material=silicone" className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 text-[15px] font-semibold text-text hover:border-accent">
             Silicone dolls
           </Link>
-          <Link href="/shop?price=1500-1999" className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 text-[15px] font-semibold text-text hover:border-accent">
+          <Link href="/shop/sex-dolls?price=1500-1999" className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 text-[15px] font-semibold text-text hover:border-accent">
             $1,500-$1,999
           </Link>
           <Link href="/shop/ready-to-ship" className="inline-flex min-h-11 items-center rounded-sm border border-border px-4 text-[15px] font-semibold text-text hover:border-accent">

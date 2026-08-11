@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterProducts } from "@/lib/catalog/filters";
+import { collectionPresets, filterProducts } from "@/lib/catalog/filters";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("catalog filters", () => {
@@ -96,5 +96,43 @@ describe("catalog filters", () => {
     expect(filterProducts(products, { region: "eu" }).map((product) => product.id)).toEqual(["us-eu"]);
     expect(filterProducts(products, { region: "ca" }).map((product) => product.id)).toEqual(["canada"]);
     expect(filterProducts(products, { region: "au" }).map((product) => product.id)).toEqual(["australia"]);
+  });
+
+  it("keeps the mini collection at 120 cm and under", () => {
+    const mini = {
+      ...sampleProducts[0],
+      id: "mini",
+      extended: { ...sampleProducts[0].extended, heightCm: 120 }
+    };
+    const petiteButNotMini = {
+      ...sampleProducts[0],
+      id: "petite",
+      extended: { ...sampleProducts[0].extended, heightCm: 150 }
+    };
+
+    expect(collectionPresets["mini-sex-dolls"].filters.height).toBe("0-120");
+    expect(filterProducts([mini, petiteButNotMini], collectionPresets["mini-sex-dolls"].filters).map((product) => product.id)).toEqual(["mini"]);
+  });
+
+  it("keeps the affordable collection at a live starting price of $1,000 or less", () => {
+    const affordable = {
+      ...sampleProducts[0],
+      id: "affordable",
+      priceRange: {
+        ...sampleProducts[0].priceRange,
+        minVariantPrice: { amount: "1000.00", currencyCode: "USD" }
+      }
+    };
+    const aboveBoundary = {
+      ...sampleProducts[0],
+      id: "above-boundary",
+      priceRange: {
+        ...sampleProducts[0].priceRange,
+        minVariantPrice: { amount: "1000.01", currencyCode: "USD" }
+      }
+    };
+
+    expect(collectionPresets["cheap-sex-dolls"].filters).toEqual({ price: "0-1000", sort: "price-asc" });
+    expect(filterProducts([aboveBoundary, affordable], collectionPresets["cheap-sex-dolls"].filters).map((product) => product.id)).toEqual(["affordable"]);
   });
 });

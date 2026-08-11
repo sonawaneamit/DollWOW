@@ -47,6 +47,7 @@ export const catalogFilterOptions = {
     { label: "Hips", value: "hips" }
   ],
   heights: [
+    { label: "Up to 120 cm", value: "0-120" },
     { label: "Under 155 cm", value: "0-154" },
     { label: "155-159 cm", value: "155-159" },
     { label: "160-164 cm", value: "160-164" },
@@ -67,6 +68,7 @@ export const catalogFilterOptions = {
     { label: "M+ cup", value: "M-Z" }
   ],
   prices: [
+    { label: "Up to $1,000", value: "0-1000" },
     { label: "Under $1,500", value: "0-1499" },
     { label: "$1,500-$1,999", value: "1500-1999" },
     { label: "$2,000-$2,499", value: "2000-2499" },
@@ -114,7 +116,8 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },
   torsos: { title: "Torso dolls", filters: { productForm: "torso" } },
   hips: { title: "Hips", filters: { productForm: "hips" } },
-  "mini-sex-dolls": { title: "Mini sex dolls", filters: { height: "0-154" } },
+  "mini-sex-dolls": { title: "Mini sex dolls", filters: { height: "0-120" } },
+  "cheap-sex-dolls": { title: "Affordable sex dolls", filters: { price: "0-1000", sort: "price-asc" } },
   "height-under-155": { title: "Dolls under 155 cm", filters: { height: "0-154" } },
   "height-155-159": { title: "Dolls 155-159 cm", filters: { height: "155-159" } },
   "height-160-164": { title: "Dolls 160-164 cm", filters: { height: "160-164" } },

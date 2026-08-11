@@ -9,10 +9,11 @@ import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type Ca
 import { StyledSelect } from "./StyledSelect";
 
 const quickLinks = [
-  { label: "All", href: "/shop" },
+  { label: "All", href: "/shop/sex-dolls" },
   { label: "Sex dolls", href: "/shop/sex-dolls" },
   { label: "Realistic", href: "/shop/realistic-sex-dolls" },
   { label: "Mini", href: "/shop/mini-sex-dolls" },
+  { label: "Affordable", href: "/shop/cheap-sex-dolls" },
   ...catalogFilterOptions.brands.map((brand) => ({ label: brand.label, href: brandHubHref(brand.value) })),
   { label: "Female dolls", href: "/shop/female-dolls" },
   { label: "Male dolls", href: "/shop/male-dolls" },
@@ -28,8 +29,8 @@ const quickLinks = [
 
 export function ProductFilters({
   filters = {},
-  action = "/shop",
-  resetHref = "/shop",
+  action = "/shop/sex-dolls",
+  resetHref = "/shop/sex-dolls",
   variant = "bar",
   defaultSort,
   lockedBrand = false
@@ -213,7 +214,7 @@ function buildActiveFilterLinks(filters: CatalogFilters, action: string, exclude
         next.set(entryKey, entryValue);
       }
 
-      const pathname = action.startsWith("/") ? action : "/shop";
+      const pathname = action.startsWith("/") ? action : "/shop/sex-dolls";
       const href = next.size ? `${pathname}?${next.toString()}` : pathname;
       return {
         key,

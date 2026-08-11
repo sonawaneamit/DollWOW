@@ -38,7 +38,7 @@ export function ComparisonPageClient() {
         <Scale className="mx-auto h-10 w-10 text-accent" />
         <h1 className="mt-5 font-display text-4xl font-semibold text-text">Compare dolls side by side</h1>
         <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-text-dim">Choose at least two dolls from the catalog. You can compare up to four at once.</p>
-        <Link href="/shop" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-button bg-accent px-6 text-base font-semibold text-white shadow-card">Browse dolls <ArrowRight className="h-4 w-4" /></Link>
+        <Link href="/shop/sex-dolls" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-button bg-accent px-6 text-base font-semibold text-white shadow-card">Browse dolls <ArrowRight className="h-4 w-4" /></Link>
       </section>
     );
   }
@@ -101,7 +101,7 @@ export function ComparisonPageClient() {
         </table>
       </div>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <Link href="/shop" className="font-semibold text-accent">Add another doll</Link>
+        <Link href="/shop/sex-dolls" className="font-semibold text-accent">Add another doll</Link>
         <button type="button" onClick={comparison.clear} className="text-sm font-semibold text-text-dim hover:text-text">Clear comparison</button>
       </div>
     </section>

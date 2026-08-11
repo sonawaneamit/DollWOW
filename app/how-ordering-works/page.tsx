@@ -13,7 +13,7 @@ export default function HowOrderingWorksPage() {
       title="From choosing your doll to discreet delivery."
       intro="You should always know what happens next. Choose your doll, review the available options, approve factory photos for a custom order, and receive tracking when it ships."
       ctas={[
-        { label: "Browse the catalog", href: "/shop", primary: true },
+        { label: "Browse the catalog", href: "/shop/sex-dolls", primary: true },
         { label: "Help me choose", href: "/help-me-choose" }
       ]}
       sections={[

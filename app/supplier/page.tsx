@@ -124,7 +124,7 @@ export default function SupplierPage() {
           eyebrow="Catalog presentation"
           title="Real product pages, cleaner buying."
           copy="DollWow is designed to make brand photos, measurements, options, timing, and support easier for US and European buyers to understand."
-          cta={{ label: "View catalog", href: "/shop" }}
+          cta={{ label: "View catalog", href: "/shop/sex-dolls" }}
           compact
         />
       </div>

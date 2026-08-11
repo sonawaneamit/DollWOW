@@ -6,7 +6,8 @@ const footerGroups = [
   {
     title: "Shop",
     links: [
-      ["Shop all dolls", "/shop"],
+      ["Shop all dolls", "/shop/sex-dolls"],
+      ["Affordable dolls", "/shop/cheap-sex-dolls"],
       ["Ready to ship", "/warehouse"],
       ["Customize a doll", "/customize"],
       ["Compare dolls", "/compare"],
@@ -67,7 +68,7 @@ export function Footer() {
               Compare models, review custom options, and order with clear pricing, discreet delivery, and responsive support.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/shop" className="inline-flex min-h-11 items-center rounded-button bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover">Browse catalog</Link>
+              <Link href="/shop/sex-dolls" className="inline-flex min-h-11 items-center rounded-button bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover">Browse catalog</Link>
               <Link href="/support" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-[15px] font-semibold text-accent hover:bg-accent-tint">Ask our team</Link>
             </div>
           </div>

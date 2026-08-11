@@ -10,7 +10,7 @@ export default function AdultOnlyPage() {
       title="DollWow is for adults only."
       intro="This site is intended only for adults who are legally allowed to buy adult products in their location. We keep the catalog adult, clear, and responsible."
       ctas={[
-        { label: "Browse catalog", href: "/shop", primary: true },
+        { label: "Browse catalog", href: "/shop/sex-dolls", primary: true },
         { label: "Privacy policy", href: "/privacy-policy" }
       ]}
       sections={[

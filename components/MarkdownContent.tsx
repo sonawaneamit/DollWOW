@@ -7,6 +7,8 @@ export type MarkdownSectionVisual = {
   src: string;
   alt: string;
   caption: string;
+  width?: number;
+  height?: number;
 };
 
 export type MarkdownSectionInsertion = {
@@ -95,12 +97,12 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[],
 
 function SectionVisual({ visual }: { visual: MarkdownSectionVisual }) {
   return (
-    <figure className="my-8 overflow-hidden rounded-[8px] border border-border bg-surface shadow-card">
+    <figure className="my-8 overflow-hidden rounded-[8px] border border-border bg-surface shadow-card md:mx-auto md:max-w-[36rem]">
       <Image
         src={visual.src}
         alt={visual.alt}
-        width={1200}
-        height={1600}
+        width={visual.width ?? 1200}
+        height={visual.height ?? 1600}
         className="h-auto w-full"
         sizes="(min-width: 768px) 48rem, 100vw"
       />

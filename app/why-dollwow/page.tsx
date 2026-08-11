@@ -102,7 +102,7 @@ export default function WhyPage() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/shop"
+              href="/shop/sex-dolls"
               className="rounded-[14px] bg-gold-300 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-200"
             >
               Browse the catalog

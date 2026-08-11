@@ -146,7 +146,7 @@ export function CartDrawer() {
               <p className="mt-3 text-sm font-semibold text-ivory-100">Your cart is empty</p>
               <p className="mt-1 text-sm leading-5 text-ivory-400">Add a doll or an accessory and it will wait for you here.</p>
               <Link
-                href="/shop"
+                href="/shop/sex-dolls"
                 onClick={cart.closeDrawer}
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold  text-white"
               >

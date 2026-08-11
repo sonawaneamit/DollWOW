@@ -107,7 +107,7 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
           "@type": "ListItem",
           position: 2,
           name: "Shop",
-          item: `${siteUrl}/shop`
+          item: `${siteUrl}/shop/sex-dolls`
         },
         {
           "@type": "ListItem",
@@ -285,7 +285,9 @@ const collectionIntroByHandle: Record<string, string> = {
   "realistic-sex-dolls":
     "Realistic sex dolls should be compared by more than face photos. Use this collection to review body proportions, material, skin finish, measurements, weight, and customization options across DollWow listings. A realistic look can depend on the exact head, body, wig, eyes, faceup, and final configuration, so compare the product page carefully and ask support to confirm any detail that affects the finished build.",
   "mini-sex-dolls":
-    "Mini sex dolls and compact dolls can be easier to store, move, and plan around, but height alone does not tell the full story. Use this collection to compare smaller listings by weight, measurements, material, stock status, and customization options. Check length, boxed size, storage orientation, and handling needs before choosing a product, especially if privacy or room size is the main reason for buying compact.",
+    "Mini sex dolls in this collection measure up to 120 cm / 3 ft 11 in tall. Their shorter height can make storage and room planning easier, but height alone does not tell the full story. Compare weight, complete measurements, material, stock status, and customization options, then check boxed size, storage orientation, and handling needs before choosing a product.",
+  "cheap-sex-dolls":
+    "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
   tpe:
     "TPE dolls are often chosen for their softer feel, flexible posing, and lower starting price compared with many silicone dolls. Compare TPE sex dolls by height, weight, body shape, availability, and custom options, then read the material guide for cleaning, storage, and handling advice.",
   silicone:
@@ -303,7 +305,8 @@ const collectionIntroByHandle: Record<string, string> = {
 const collectionMetaDescriptions: Record<string, string> = {
   "sex-dolls": "Shop sex dolls by material, height, weight, price, stock status, and custom options with DollWow buyer guides and support links.",
   "realistic-sex-dolls": "Compare realistic sex dolls by proportions, material, measurements, finish, weight, and customization before choosing a DollWow listing.",
-  "mini-sex-dolls": "Compare mini sex dolls and compact models by height, weight, measurements, material, storage needs, stock status, and options.",
+  "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
+  "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   tpe: "Shop TPE dolls by height, weight, body shape, price, stock status, and options, with DollWow material and care guidance.",
   silicone: "Shop silicone dolls by sculpt detail, height, weight, material, customization, and stock status with DollWow buying guidance.",
   "male-dolls": "Compare male dolls by body proportions, material, weight, measurements, stock status, and custom option limits.",
@@ -348,11 +351,25 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     },
     {
       title: "Compare exact measurements",
-      body: "Height labels vary by brand. Review bust, waist, hips, shoulders, feet, and listed weight before deciding a compact model is the right fit."
+      body: "DollWow uses up to 120 cm / 3 ft 11 in as the mini collection boundary. Still review bust, waist, hips, shoulders, feet, and listed weight before deciding a compact model is the right fit."
     },
     {
       title: "Plan privacy and storage together",
       body: "Compact buyers often care about discretion. Confirm packaging, storage footprint, and delivery timing before checkout."
+    }
+  ],
+  "cheap-sex-dolls": [
+    {
+      title: "Start with the live product price",
+      body: "This collection updates from current catalog starting prices. Open the product page for the latest price and any option costs before checkout."
+    },
+    {
+      title: "Compare value, not price alone",
+      body: "Material, size, weight, product form, included features, care needs, shipping, and support all affect the real ownership value."
+    },
+    {
+      title: "Check full dolls and compact formats",
+      body: "Lower-priced results can include full dolls, torsos, hips, or smaller models. Use the product-form and measurement filters to compare like with like."
     }
   ],
   tpe: [
@@ -443,6 +460,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
 
 const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   "sex-dolls": [
+    { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
@@ -460,6 +478,12 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Mini sex dolls guide", href: "/learn/mini-sex-dolls" },
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+  ],
+  "cheap-sex-dolls": [
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
+    { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" }
   ],
   "height-under-155": [
     { label: "Mini sex dolls guide", href: "/learn/mini-sex-dolls" },
@@ -554,6 +578,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Usability",
       whyItMatters: "Height alone does not tell the buyer how a product will handle in a real room.",
       dollWowAdvantage: "DollWow encourages checking weight, measurements, storage orientation, and support-confirmed details."
+    }
+  ],
+  "cheap-sex-dolls": [
+    {
+      factor: "Current starting price",
+      whyItMatters: "Catalog prices and available configurations can change, so an old article or fixed list can become misleading.",
+      dollWowAdvantage: "This collection qualifies products from the current DollWow catalog and sorts them by live starting price."
+    },
+    {
+      factor: "Comparable product type",
+      whyItMatters: "A torso, hips model, mini doll, and full-size doll are different purchases even when their prices are similar.",
+      dollWowAdvantage: "Product-form, size, material, and body-type filters help buyers compare products with similar practical uses."
+    },
+    {
+      factor: "Delivered value",
+      whyItMatters: "Options, shipping path, care needs, storage, and support can matter more than a small difference in starting price.",
+      dollWowAdvantage: "DollWow connects live products with cost, material, fulfillment, and buyer-protection guidance before checkout."
     }
   ],
   "male-dolls": [
@@ -676,6 +717,28 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "What should I compare first on a mini sex doll?",
       answer:
         "Compare height, weight, bust, waist, hips, material, stock status, and storage needs. If a key measurement is missing, ask support before ordering."
+    }
+  ],
+  "cheap-sex-dolls": [
+    {
+      question: "What counts as an affordable sex doll in this collection?",
+      answer:
+        "The collection currently includes DollWow products with a live starting catalog price of $1,000 or less. The exact total can change with options, shipping, and catalog updates."
+    },
+    {
+      question: "Does a lower price mean lower quality?",
+      answer:
+        "Not by itself. Price can reflect product form, size, material, brand, included features, stock status, and customization. Compare those facts before judging value."
+    },
+    {
+      question: "Are all results full-size sex dolls?",
+      answer:
+        "No. Affordable results can include full dolls, mini dolls, torsos, or hips models. Check product form, height, weight, and measurements so you know exactly what you are comparing."
+    },
+    {
+      question: "Is the price shown on the collection page final?",
+      answer:
+        "It is the current starting catalog price. Open the product page to review the latest price, supported options, and any additional costs before checkout."
     }
   ],
   "height-under-155": [

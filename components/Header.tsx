@@ -15,7 +15,7 @@ import { brandHubHref } from "@/lib/catalog/brands";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 
 const primaryLinks = [
-  { label: "Shop all dolls", href: "/shop" },
+  { label: "Shop all dolls", href: "/shop/sex-dolls" },
   { label: "Ready to ship", href: "/warehouse" }
 ] as const;
 
@@ -44,6 +44,7 @@ const quickSearchLinks = [
   { label: "Sex dolls", href: "/shop/sex-dolls" },
   { label: "Realistic", href: "/shop/realistic-sex-dolls" },
   { label: "Mini", href: "/shop/mini-sex-dolls" },
+  { label: "Affordable", href: "/shop/cheap-sex-dolls" },
   { label: "WM Dolls", href: "/brands/wm-dolls" },
   { label: "Angelkiss", href: "/brands/angelkiss-dolls" },
   { label: "Irontech", href: "/brands/irontech-dolls" },
@@ -58,6 +59,7 @@ const suggestedSearchRoutes = [
   { label: "Sex dolls", href: "/shop/sex-dolls", keywords: ["sex", "doll", "dolls", "adult"] },
   { label: "Realistic sex dolls", href: "/shop/realistic-sex-dolls", keywords: ["realistic", "real", "lifelike"] },
   { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", keywords: ["mini", "petite", "small", "compact"] },
+  { label: "Affordable sex dolls", href: "/shop/cheap-sex-dolls", keywords: ["affordable", "cheap", "budget", "value", "under 1000"] },
   { label: "Ready to ship", href: "/shop/ready-to-ship", keywords: ["ready", "warehouse", "ships", "tomorrow", "stock"] },
   { label: "Custom builds", href: "/shop/custom", keywords: ["custom", "customize", "builder", "options"] },
   { label: "Male dolls", href: "/shop/male-dolls", keywords: ["male", "man", "men"] },
@@ -69,7 +71,7 @@ const suggestedSearchRoutes = [
 const brandLinks = catalogFilterOptions.brands.map((brand) => ({ label: brand.label, href: brandHubHref(brand.value) }));
 
 const prefetchTargets = [
-  "/shop",
+  "/shop/sex-dolls",
   "/warehouse",
   "/help-me-choose",
   "/support",
@@ -189,7 +191,7 @@ export function Header() {
     event.preventDefault();
     const trimmed = searchQuery.trim();
     if (trimmed) trackEvent(analyticsEvents.search, { search_term: trimmed });
-    router.push(trimmed ? `/shop?query=${encodeURIComponent(trimmed)}` : "/shop");
+    router.push(trimmed ? `/shop/sex-dolls?query=${encodeURIComponent(trimmed)}` : "/shop/sex-dolls");
     closeAll();
   }
 
@@ -224,7 +226,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary navigation">
-          <HeaderLink href="/shop" active={shopActive} onNavigate={closeAll}>Shop all dolls</HeaderLink>
+          <HeaderLink href="/shop/sex-dolls" active={shopActive} onNavigate={closeAll}>Shop all dolls</HeaderLink>
           <HeaderLink href="/warehouse" active={warehouseActive} onNavigate={closeAll}>Ready to ship</HeaderLink>
           <div className="relative" data-brands-menu-root>
             <button
@@ -389,7 +391,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
                 </Link>
               ))
             ) : (
-              <Link href={`/shop?query=${encodeURIComponent(searchQuery.trim())}`} onClick={onNavigate} className="block px-4 py-4 text-sm font-semibold text-accent">
+              <Link href={`/shop/sex-dolls?query=${encodeURIComponent(searchQuery.trim())}`} onClick={onNavigate} className="block px-4 py-4 text-sm font-semibold text-accent">
                 See all results for “{searchQuery.trim()}”
               </Link>
             )}
@@ -547,7 +549,7 @@ function buildSearchSuggestions(query: string) {
   const normalized = query.toLowerCase().trim();
   const suggestions: Array<{ label: string; href: string; kind: string }> = [];
 
-  if (normalized) suggestions.push({ label: `Search for “${query.trim()}”`, href: `/shop?query=${encodeURIComponent(query.trim())}`, kind: "Catalog" });
+  if (normalized) suggestions.push({ label: `Search for “${query.trim()}”`, href: `/shop/sex-dolls?query=${encodeURIComponent(query.trim())}`, kind: "Catalog" });
 
   for (const brand of catalogFilterOptions.brands) {
     const brandTerms = [brand.label.toLowerCase(), brand.value.toLowerCase()];
