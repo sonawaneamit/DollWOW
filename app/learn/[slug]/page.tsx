@@ -790,10 +790,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "how-to-clean-a-sex-doll": {
-      title: "Compare material-specific care needs",
-      description: "Use current products to compare material, size, weight, and care needs before choosing a routine.",
-      collectionHref: "/shop/tpe",
-      filters: { material: "tpe" }
+      title: "Compare care needs before choosing a doll",
+      description: "These current TPE, hybrid, and full-silicone examples show why the correct cleaning routine depends on the complete construction, finish, removable parts, and supported options.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "real-lady-viki-150cm-r10-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog"
+      ]
     },
     "sex-doll-storage": {
       title: "Compare storage-friendly sizes",
@@ -1052,7 +1060,8 @@ function relatedCollections(slug: string) {
     ],
     "how-to-clean-a-sex-doll": [
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material care before choosing a product." },
-      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan drying and storage as part of the same routine." }
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan drying and storage as part of the same routine." },
+      { label: "Care 365", href: "/care-for-life", description: "See the ownership help included with every DollWow doll under the published terms." }
     ],
     "sex-doll-storage": [
       { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact listings for smaller storage spaces." },
