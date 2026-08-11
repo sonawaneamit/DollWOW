@@ -78,7 +78,10 @@ const KEYWORD_TARGETS = {
   "best tpe dolls": { pageType: "learning-guide", targetPath: "/learn/best-tpe-sex-dolls" },
   "what is a silicone sex doll": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-guide" },
   "silicone sex doll guide": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-guide" },
-  "soft silicone dolls reviews": { pageType: "no-action", targetPath: "none" }
+  "soft silicone dolls reviews": { pageType: "no-action", targetPath: "none" },
+  "sex doll stores": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
+  "best sex doll stores": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" },
+  "where to buy sex dolls online": { pageType: "learning-guide", targetPath: "/learn/best-sex-doll-stores" }
 };
 
 const args = parseArgs(process.argv.slice(2));

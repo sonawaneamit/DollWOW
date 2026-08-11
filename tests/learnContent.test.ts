@@ -30,4 +30,13 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("Browse current [full-silicone sex dolls](/shop/silicone)");
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
+
+  it("publishes the store-selection guide as customer-facing buying guidance", () => {
+    const article = getLearningArticle("best-sex-doll-stores");
+    expect(article?.primaryKeyword).toBe("sex doll stores");
+    expect(article?.body).toContain("The Eight-Point Store Check");
+    expect(article?.body).toContain("Most approved requests can be added within 4 to 6 hours");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|search volume|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
 });

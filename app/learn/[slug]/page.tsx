@@ -162,6 +162,10 @@ function articleCatalogHero(slug: string) {
     "silicone-sex-doll-guide": {
       caption: "Current full-silicone catalog examples from three manufacturers. Compare the exact body, head, measurements, listed weight, finish, and supported options on each live product page.",
       imageContext: "a current DollWow full-silicone catalog example"
+    },
+    "best-sex-doll-stores": {
+      caption: "Current DollWow catalog examples from three manufacturers. A reputable store should connect every photograph to the exact product, specifications, ordering path, and continuing support.",
+      imageContext: "a current DollWow catalog product used to check seller and listing quality"
     }
   };
   return heroes[slug] ?? null;
@@ -766,6 +770,23 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
       href: "/help-me-choose",
       cta: "Use the DollWow finder"
     },
+    "best-sex-doll-stores": {
+      eyebrow: "Store check",
+      title: "Eight checks before you compare the final price",
+      summary: "A convincing storefront is only the beginning. Verify the seller, exact product, approval, availability, configuration, payment, arrival process, and ownership support as one buying path.",
+      stats: [
+        { value: "8", label: "store and order checks" },
+        { value: "1", label: "exact build to verify" }
+      ],
+      items: [
+        { title: "Identify the seller and product", body: "Confirm who supports the order and the exact manufacturer, body, head, material, form, and measurements." },
+        { title: "Verify approval and availability", body: "Check that the seller is approved for the brand and whether the exact configuration already exists or will be made." },
+        { title: "Protect the transaction", body: "Use a documented payment method and understand cancellation, arrival, and dispute terms before paying." },
+        { title: "Plan for ownership", body: "Compare care, parts, repair guidance, and access to support after the product arrives." }
+      ],
+      href: "/buyer-protection",
+      cta: "Review buyer protection"
+    },
     "most-realistic-sex-dolls": {
       eyebrow: "Realism checklist",
       title: "What makes a doll look realistic",
@@ -1010,6 +1031,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
         "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc",
         "real-lady-sylvia-170cm-s43-silicone-doll"
+      ]
+    },
+    "best-sex-doll-stores": {
+      title: "Six current products for testing a store's catalog quality",
+      description: "Use these varied full-doll examples to check whether a store clearly identifies the manufacturer, product form, body, head, material, measurements, availability, price, and support path. They are examples, not a sales ranking.",
+      collectionHref: "/shop/sex-dolls",
+      filters: { productForm: "full-doll" },
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "real-lady-viki-150cm-r10-silicone-doll",
+        "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog"
       ]
     },
     "tantaly-buying-guide": {
@@ -1473,6 +1508,12 @@ function relatedCollections(slug: string) {
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material, care, feel, weight, repair, and price tradeoffs." },
       { label: "Most realistic dolls", href: "/learn/most-realistic-sex-dolls", description: "Use a detailed visual inspection method instead of relying on the material label." },
       { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Build a gentle cleaning and drying routine around the exact product." }
+    ],
+    "best-sex-doll-stores": [
+      { label: "Browse all sex dolls", href: "/shop/sex-dolls", description: "Compare current products by material, size, price, availability, and manufacturer." },
+      { label: "Buyer protection", href: "/buyer-protection", description: "Review DollWow's purchase clarity and support commitments." },
+      { label: "Compare a listing", href: "/compare", description: "Send another current offer for a fact-by-fact comparison." },
+      { label: "30-Day Price Lock", href: "/best-price-guarantee", description: "Review eligible comparable offers before or after purchase under the published terms." }
     ],
     "ready-to-ship-vs-custom-sex-dolls": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare warehouse-style listings with fixed configurations." },
