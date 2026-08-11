@@ -14,7 +14,8 @@ if (args.help) {
   process.exit(0);
 }
 
-const products = args.shopify ? await fetchShopifyProducts(Number(args.limit || 1000)) : await readInputProducts(args.input);
+const sourceProducts = args.shopify ? await fetchShopifyProducts(Number(args.limit || 1000)) : await readInputProducts(args.input);
+const products = sourceProducts.filter(isCustomerVisibleProduct);
 if (!products.length) {
   throw new Error("No products found to audit.");
 }
@@ -24,7 +25,7 @@ const duplicates = duplicateGroups(findings);
 const duplicateTitles = titleDuplicateGroups(findings, (finding) => normalizeTitleForExactMatch(finding.title));
 const nearDuplicateTitles = titleDuplicateGroups(findings, (finding) => normalizePublicTitleForAudit(finding.title));
 const titleReview = titleReviewRows(duplicateTitles, nearDuplicateTitles);
-const summary = summarize(findings, duplicates);
+const summary = summarize(findings, duplicates, sourceProducts.length - products.length);
 const outputBase = path.resolve(ROOT, args.output || "data/exports/catalog-audit");
 
 await fs.mkdir(path.dirname(outputBase), { recursive: true });
@@ -85,6 +86,9 @@ function auditProduct(product) {
   return {
     handle: product.handle || "",
     title: product.title || "",
+    createdAt: product.createdAt || "",
+    updatedAt: product.updatedAt || "",
+    sourceHandle: product.sourceHandle || "",
     sourceUrl: product.sourceUrl || "",
     identityKey: product.extended?.catalogIdentityKey || identity.key,
     bodyIdentityKey: product.extended?.catalogBodyIdentityKey || identity.bodyKey,
@@ -108,7 +112,7 @@ function auditProduct(product) {
   };
 }
 
-function summarize(findings, duplicates) {
+function summarize(findings, duplicates, excludedSystemProductCount = 0) {
   const warningCounts = {};
   for (const finding of findings) {
     for (const warning of finding.warnings) warningCounts[warning] = (warningCounts[warning] || 0) + 1;
@@ -120,6 +124,7 @@ function summarize(findings, duplicates) {
   }
   return {
     productCount: findings.length,
+    excludedSystemProductCount,
     brandCounts: brands,
     warningCounts,
     duplicateIdentityGroups: duplicates.length,
@@ -156,7 +161,11 @@ function titleDuplicateGroups(findings, keyForFinding) {
       headModel: finding.headModel,
       brand: finding.brand,
       imageSetKey: finding.imageSetKey,
-      primaryImageKey: finding.primaryImageKey
+      primaryImageKey: finding.primaryImageKey,
+      createdAt: finding.createdAt,
+      updatedAt: finding.updatedAt,
+      sourceHandle: finding.sourceHandle,
+      sourceUrl: finding.sourceUrl
     });
   }
   return Array.from(grouped.entries())
@@ -498,7 +507,7 @@ async function fetchShopifyProducts(limit) {
         products(first: $first, after: $after, sortKey: TITLE) {
           edges {
             node {
-              handle title description vendor productType tags
+              handle title description vendor productType tags createdAt updatedAt
               seo { title description }
               featuredImage { url altText width height }
               images(first: 20) { edges { node { url altText width height } } }
@@ -514,6 +523,8 @@ async function fetchShopifyProducts(limit) {
               stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
               customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
               customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
+              sourceHandle: metafield(namespace: "custom", key: "source_handle") { value }
+              sourceUrl: metafield(namespace: "custom", key: "source_url") { value }
             }
           }
           pageInfo { hasNextPage endCursor }
@@ -550,6 +561,8 @@ function mapShopifyNode(node) {
   return {
     handle: node.handle,
     title: node.title,
+    createdAt: node.createdAt,
+    updatedAt: node.updatedAt,
     description: node.description,
     vendor: node.vendor,
     productType: node.productType,
@@ -570,8 +583,15 @@ function mapShopifyNode(node) {
       stockStatus: node.stockStatus?.value,
       customAvailable: node.customAvailable?.value === "true",
       customizationGroups
-    }
+    },
+    sourceHandle: node.sourceHandle?.value || "",
+    sourceUrl: node.sourceUrl?.value || ""
   };
+}
+
+function isCustomerVisibleProduct(product) {
+  const tags = Array.isArray(product.tags) ? product.tags : [];
+  return !tags.some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag));
 }
 
 function parseJson(value) {

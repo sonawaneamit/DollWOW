@@ -46,6 +46,7 @@
     "sync:rosemary-stock": "node scripts/reconcile-rosemary-stock.mjs",
     "sync:rosemary-stock:weekly": "node scripts/sync-rosemary-stock-weekly.mjs",
     "catalog:audit": "node scripts/catalog-audit.mjs",
+    "catalog:clean-source-copy": "node scripts/clean-shopify-source-copy.mjs",
     "copy:audit": "node scripts/audit-customer-copy.mjs",
     "generate:learning-banners": "node scripts/generate-learning-banner-composites.mjs",
     "audit:avant-source": "node scripts/audit-avant-source-pack.mjs",

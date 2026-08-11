@@ -32,3 +32,10 @@ Reviewed: 2026-08-12
 - Use IndexNow only for URLs changed from the integration date forward rather than resubmitting the complete catalog repeatedly.
 - Request manual Google indexing for a small number of highest-value canonical pages after the technical release is live.
 - Recheck Google page-indexing reasons and Bing sitemap processing after their reports finish processing.
+
+## Manual Request Result
+
+- The flagship guide was already indexed when checked through URL Inspection.
+- `/shop/sex-dolls` was discoverable through the XML sitemap but had not yet been crawled and was reported as `Discovered - currently not indexed`.
+- A manual indexing request for `/shop/sex-dolls` was attempted, but Search Console could not connect to its reCAPTCHA service and did not submit the request. This was a Google interface failure rather than a page validation failure.
+- The collection remains in the XML sitemap and was included in the accepted IndexNow release batch. Retry the Google request after Search Console's challenge service is available.
