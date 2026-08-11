@@ -115,16 +115,47 @@ describe("catalog filters", () => {
     const mini = {
       ...sampleProducts[0],
       id: "mini",
+      productType: "Custom silicone doll",
+      tags: ["silicone", "full-doll"],
       extended: { ...sampleProducts[0].extended, heightCm: 120 }
     };
     const petiteButNotMini = {
       ...sampleProducts[0],
       id: "petite",
+      productType: "Custom silicone doll",
+      tags: ["silicone", "full-doll"],
       extended: { ...sampleProducts[0].extended, heightCm: 150 }
+    };
+    const unknownHeight = {
+      ...sampleProducts[0],
+      id: "unknown-height",
+      productType: "Custom silicone doll",
+      tags: ["silicone", "full-doll"],
+      extended: { ...sampleProducts[0].extended, heightCm: 0 }
+    };
+    const compactTorsoWithWrongTag = {
+      ...sampleProducts[0],
+      id: "compact-torso",
+      title: "Climax Torsos 80cm TPE Doll",
+      productType: "Custom doll",
+      tags: ["tpe", "full-doll"],
+      extended: { ...sampleProducts[0].extended, heightCm: 80, sourceTitle: "" }
+    };
+    const compactStandaloneHead = {
+      ...sampleProducts[0],
+      id: "compact-head",
+      title: "Silicone Doll Head 28cm",
+      productType: "Custom doll",
+      tags: ["silicone", "full-doll"],
+      extended: { ...sampleProducts[0].extended, heightCm: 28, sourceTitle: "Standalone Head" }
     };
 
     expect(collectionPresets["mini-sex-dolls"].filters.height).toBe("0-120");
-    expect(filterProducts([mini, petiteButNotMini], collectionPresets["mini-sex-dolls"].filters).map((product) => product.id)).toEqual(["mini"]);
+    expect(collectionPresets["mini-sex-dolls"].filters.productForm).toBe("full-doll");
+    expect(filterProducts(
+      [mini, petiteButNotMini, unknownHeight, compactTorsoWithWrongTag, compactStandaloneHead],
+      collectionPresets["mini-sex-dolls"].filters
+    ).map((product) => product.id)).toEqual(["mini"]);
   });
 
   it("keeps the affordable collection at a live starting price of $1,000 or less", () => {

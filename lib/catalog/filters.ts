@@ -116,7 +116,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "silicone-head": { title: "Hybrid dolls", filters: { material: "hybrid" } },
   torsos: { title: "Torso dolls", filters: { productForm: "torso" } },
   hips: { title: "Hips", filters: { productForm: "hips" } },
-  "mini-sex-dolls": { title: "Mini sex dolls", filters: { height: "0-120" } },
+  "mini-sex-dolls": { title: "Mini sex dolls", filters: { productForm: "full-doll", height: "0-120" } },
   "cheap-sex-dolls": { title: "Affordable sex dolls", filters: { price: "0-1000", sort: "price-asc" } },
   "height-under-155": { title: "Dolls under 155 cm", filters: { height: "0-154" } },
   "height-155-159": { title: "Dolls 155-159 cm", filters: { height: "155-159" } },
@@ -276,12 +276,14 @@ function productMatchesMaterial(product: Product, material: string) {
 
 function productMatchesProductForm(product: Product, form: NonNullable<CatalogFilters["productForm"]>) {
   const tags = new Set(product.tags.map(tagForFilter));
-  if (tags.has("hips")) return form === "hips";
-  if (tags.has("torso")) return form === "torso";
+  const text = `${product.productType} ${product.title} ${product.extended.sourceTitle || ""}`.toLowerCase();
+  const isHips = /\b(hips?|hip torso|lower body|butt(?:ocks?)?)\b/.test(text);
+  const isTorso = !isHips && /\b(torsos?|upper body|half body)\b/.test(text);
+  const isStandaloneHead = /\b(replacement head|standalone head|doll head|head only)\b/.test(text);
+  if (isStandaloneHead) return false;
+  if (isHips || tags.has("hips")) return form === "hips";
+  if (isTorso || tags.has("torso")) return form === "torso";
   if (tags.has("full-doll")) return form === "full-doll";
-  const text = `${product.productType} ${product.title}`.toLowerCase();
-  const isHips = /\b(hips?|hip torso|lower body|butt)\b/.test(text);
-  const isTorso = !isHips && /\b(torso|upper body|half body)\b/.test(text);
   if (form === "hips") return isHips;
   if (form === "torso") return isTorso;
   return !isHips && !isTorso;
@@ -335,7 +337,7 @@ function brandCollectionPresets() {
 }
 
 function inRange(value: number | undefined, range: string) {
-  if (value === undefined || value === null || Number.isNaN(value)) return false;
+  if (value === undefined || value === null || Number.isNaN(value) || value <= 0) return false;
   const [min, max] = range.split("-").map(Number);
   return Number.isFinite(min) && Number.isFinite(max) && value >= min && value <= max;
 }

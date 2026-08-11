@@ -481,17 +481,17 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
     },
     "mini-sex-dolls": {
       eyebrow: "Compact fit",
-      title: "Small builds still need exact measurements",
-      summary: "Mini and compact dolls can be easier to plan around, but storage and handling depend on more than height.",
+      title: "Choose the size path that solves the real constraint",
+      summary: "Mini, petite, and lightweight describe different buying needs. Use the exact height and weight instead of treating the labels as synonyms.",
       stats: [
-        { value: "155", label: "cm and under is a useful starting filter" },
-        { value: "4", label: "storage facts to confirm" }
+        { value: "120 cm", label: "3 ft 11 in mini collection ceiling" },
+        { value: "121-154 cm", label: "4 ft-5 ft 1 in petite range" }
       ],
       items: [
-        { title: "Height", body: "Use height as a starting filter, then check the full measurement table." },
-        { title: "Weight", body: "Compact dolls can still be dense depending on material and internal structure." },
-        { title: "Storage footprint", body: "Review boxed size, orientation, and where the product will be stored." },
-        { title: "Privacy path", body: "Confirm delivery timing, packaging, and support notes if discretion is the reason for buying small." }
+        { title: "Mini", body: "Use the mini collection when a full doll must be 120 cm / 3 ft 11 in or shorter." },
+        { title: "Petite", body: "Use the petite collection for compact full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in." },
+        { title: "Lighter", body: "Use listed weight when carrying and positioning matter more than height." },
+        { title: "Product form", body: "Keep full dolls, torsos, hips, and standalone heads in separate comparisons." }
       ],
       href: "/shop/mini-sex-dolls",
       cta: "Compare mini dolls"
@@ -713,9 +713,9 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
     },
     "mini-sex-dolls": {
       title: "Compare compact catalog options",
-      description: "These examples help compare smaller builds by listed height, weight, material, and stock status.",
+      description: "Compare full mini dolls by exact height, listed weight, material, price, availability, and storage fit.",
       collectionHref: "/shop/mini-sex-dolls",
-      filters: { height: "0-154" }
+      filters: { productForm: "full-doll", height: "0-120" }
     },
     "male-sex-doll-buying-guide": {
       title: "Compare male doll listings",
@@ -926,8 +926,9 @@ function relatedCollections(slug: string) {
       { label: "Custom dolls", href: "/shop/custom", description: "Review made-to-order dolls and available options." }
     ],
     "mini-sex-dolls": [
-      { label: "Dolls under 155 cm", href: "/shop/height-under-155", description: "Compare smaller builds, weight, and storage needs." },
-      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Check fixed configurations with faster comparison paths." }
+      { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare full dolls up to 120 cm / 3 ft 11 in." },
+      { label: "Petite sex dolls", href: "/shop/petite-dolls", description: "Compare compact full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in." },
+      { label: "Lighter dolls", href: "/shop/lighter", description: "Start with listed weight when handling is the main constraint." }
     ],
     "most-realistic-sex-dolls": [
       { label: "Silicone dolls", href: "/shop/silicone", description: "Compare premium material builds and sculpt detail." },

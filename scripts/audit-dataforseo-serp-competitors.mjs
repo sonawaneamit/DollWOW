@@ -38,7 +38,7 @@ const KEYWORD_TARGETS = {
   "silicone sex dolls": { pageType: "collection", targetPath: "/shop/silicone" },
   "male sex doll": { pageType: "collection", targetPath: "/shop/male-dolls" },
   "male dolls": { pageType: "collection", targetPath: "/shop/male-dolls" },
-  "mini sex dolls": { pageType: "collection", targetPath: "/shop/height-under-155" },
+  "mini sex dolls": { pageType: "collection", targetPath: "/shop/mini-sex-dolls" },
   "torso sex dolls": { pageType: "collection", targetPath: "/shop/torso-sex-dolls" },
   "best sex dolls": { pageType: "learning-guide", targetPath: "/learn/best-sex-dolls" },
   "sex doll cost": { pageType: "learning-guide", targetPath: "/learn/sex-doll-cost" },
