@@ -602,7 +602,7 @@ export async function createCart(input: {
           {
             merchandiseId: input.merchandiseId,
             quantity: input.quantity,
-            attributes: input.attributes ?? []
+            attributes: withCare365Attribute(input.attributes)
           }
         ],
         discountCodes: input.discountCodes ?? []
@@ -652,7 +652,7 @@ export async function createCartWithLines(input: {
         lines: input.lines.map((line) => ({
           merchandiseId: line.merchandiseId,
           quantity: line.quantity,
-          attributes: line.attributes ?? []
+          attributes: withCare365Attribute(line.attributes)
         })),
         discountCodes: input.discountCodes ?? []
       }
@@ -678,6 +678,11 @@ type ShopifyCartLineInput = {
   quantity: number;
   attributes?: Array<{ key: string; value: string }>;
 };
+
+function withCare365Attribute(attributes: Array<{ key: string; value: string }> = []) {
+  if (attributes.some((attribute) => attribute.key.toLowerCase() === "dollwow care")) return attributes;
+  return [...attributes, { key: "DollWOW Care", value: "Care 365 included" }];
+}
 
 type ChargeVariant = {
   amount: number;

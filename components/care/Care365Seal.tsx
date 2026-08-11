@@ -2,7 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { CARE_FOR_LIFE_HREF, careForLife } from "@/lib/care/careForLife";
 
-export function Care365Seal({ compact = false, className = "" }: { compact?: boolean; className?: string }) {
+export function Care365Seal({ compact = false, purchase = false, className = "" }: { compact?: boolean; purchase?: boolean; className?: string }) {
+  if (purchase) {
+    return (
+      <Link
+        href={CARE_FOR_LIFE_HREF}
+        className={`care-365-purchase-assurance ${className}`}
+        aria-label={`${careForLife.care365.accessibleLabel}. See Care 365 details.`}
+      >
+        <Image src="/images/care/care-365-yuan-portrait.webp" alt="" width={400} height={539} />
+        <span>
+          <strong>Care 365 included with this doll</strong>
+          <small>First-year ownership support and an eligible damage rescue</small>
+        </span>
+        <b aria-hidden="true">→</b>
+      </Link>
+    );
+  }
+
   return (
     <div className={`care-365-lockup ${compact ? "is-compact" : ""} ${className}`} aria-label={careForLife.care365.accessibleLabel}>
       <div className="care-365-seal" aria-hidden="true">

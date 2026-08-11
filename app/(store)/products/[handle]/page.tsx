@@ -28,7 +28,6 @@ import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
-import { Care365Seal } from "@/components/care/Care365Seal";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 
@@ -131,7 +130,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
-            <Care365Seal className="mt-5" />
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
               <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>

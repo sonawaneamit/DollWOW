@@ -7,6 +7,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import type { ProductImage } from "@/types/product";
+import { Care365Seal } from "@/components/care/Care365Seal";
 
 type ProductBuyActionsProps = {
   merchandiseId: string;
@@ -123,6 +124,8 @@ export function ProductBuyActions({
             </button>
         ) : null}
       </div>
+
+      <Care365Seal purchase className="mt-4" />
 
       <div className="mt-5 flex items-start gap-3 rounded-md bg-surface-tint p-4">
         <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-stock-tint text-stock">
