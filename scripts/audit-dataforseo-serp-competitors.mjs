@@ -101,7 +101,10 @@ const KEYWORD_TARGETS = {
   "gynoid robot": { pageType: "learning-guide", targetPath: "/learn/what-is-a-gynoid" },
   "sex robot cost": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
   "sex robot price": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
-  "how much is a sex robot": { pageType: "learning-guide", targetPath: "/learn/sex-robots" }
+  "how much is a sex robot": { pageType: "learning-guide", targetPath: "/learn/sex-robots" },
+  "sex doll maintenance": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
+  "sex doll care": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" },
+  "how to care for a sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-maintenance-checklist" }
 };
 
 const args = parseArgs(process.argv.slice(2));

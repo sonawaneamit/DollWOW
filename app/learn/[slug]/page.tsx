@@ -1214,10 +1214,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "sex-doll-maintenance-checklist": {
-      title: "Start with material and size",
-      description: "Maintenance planning is easier when product size, weight, material, and storage needs are visible before checkout.",
+      title: "Compare six maintenance-planning examples",
+      description: "These current full dolls span TPE, hybrid, and full-silicone construction plus different heights and listed weights. Use each exact product to plan handling, cleaning, drying, storage, and feature-specific care.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "sex-doll-scams": {
       title: "Compare another offer with current products",
@@ -1549,16 +1557,20 @@ function relatedCollections(slug: string) {
     "how-to-clean-a-sex-doll": [
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material care before choosing a product." },
       { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan drying and storage as part of the same routine." },
+      { label: "Maintenance checklist", href: "/learn/sex-doll-maintenance-checklist", description: "Keep cleaning, inspection, storage, and repair decisions in one repeatable routine." },
       { label: "Care 365", href: "/care-for-life", description: "See the ownership help included with every DollWow doll under the published terms." }
     ],
     "sex-doll-storage": [
       { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact listings for smaller storage spaces." },
       { label: "Lightweight sex dolls", href: "/shop/lightweight-sex-dolls", description: "Start with listed weight when handling is the main constraint." },
-      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Clean and dry fully before storage." }
+      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Clean and dry fully before storage." },
+      { label: "Maintenance checklist", href: "/learn/sex-doll-maintenance-checklist", description: "Review material, handling, inspection, and repair steps as one ownership routine." }
     ],
     "sex-doll-maintenance-checklist": [
       { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Use a gentle cleaning routine matched to material." },
-      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Protect the material after cleaning." }
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Protect the material after cleaning." },
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material and care tradeoffs before choosing a doll." },
+      { label: "Care 365", href: "/care-for-life", description: "Review the ownership help included with every DollWow doll under the published terms." }
     ],
     "sex-doll-scams": [
       { label: "Scam alert", href: "/scam-alert", description: "Review DollWow's buyer-protection warning signs." },
