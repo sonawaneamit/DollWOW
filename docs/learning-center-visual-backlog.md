@@ -45,19 +45,19 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 
 ## Sex Robots
 
-- Featured image: editorial technology guide using a real adult-looking DollWow catalog doll only as a conventional-body reference, with clearly separate hardware and software layers.
-- Supporting visual: five product levels from conventional articulated doll to humanoid robot.
+- Featured image remains optional: use a real adult-looking DollWow catalog doll only as a conventional-body reference, with clearly separate hardware and software layers.
+- Complete supporting visual live in code: five product levels from conventional articulated doll to humanoid robot.
 - Supporting visual: AI software versus robotic hardware versus conventional doll comparison.
 - Do not add invented motors, screens, exposed circuits, or autonomous functions to a product reference.
-- Generate one sample only and wait for user approval before producing the final set.
+- The live product-type visual uses generic educational figures so no catalog doll is presented as robotic.
 
 ## AI Sex Dolls
 
-- Featured image: editorial connected-companion concept using an actual adult-looking DollWow catalog doll as the physical reference, with a clearly separate app or voice layer.
+- Featured image remains optional: use an actual adult-looking DollWow catalog doll only as the physical reference, with a clearly separate app or voice layer.
 - Supporting visual: physical doll versus electronic hardware versus AI software versus ownership support.
-- Supporting visual: six-level AI capability ladder from marketing label to integrated robotic platform.
+- Complete supporting visual live in code: six-level AI capability ladder from marketing label to integrated robotic platform.
 - Do not add invented screens, cameras, sensors, motors, or autonomous functions to a catalog product.
-- Generate one sample only and wait for user approval before producing the final set.
+- The live capability ladder uses generic educational figures and keeps every capability separate from the current catalog.
 
 ## Customization Cluster Visuals
 

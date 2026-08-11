@@ -525,6 +525,26 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "ai-sex-dolls": [
+      {
+        afterHeading: "A Capability Ladder for AI Dolls",
+        src: "/images/learn/ai-sex-dolls/capability-ladder.webp",
+        alt: "Six-level AI doll capability ladder from an unverified marketing label to a documented AI-controlled robot",
+        caption: "Identify the level you are actually buying. Conversation, physical connection, electronic movement, sensors, and robotics each need their own evidence.",
+        width: 864,
+        height: 1821
+      }
+    ],
+    "sex-robots": [
+      {
+        afterHeading: "What Counts as a Sex Robot?",
+        src: "/images/learn/sex-robots/product-types.webp",
+        alt: "Five product types separating a conventional doll, electronic option, AI companion, robotic head or upper body, and humanoid robot",
+        caption: "Define the product type before comparing features or prices. Movement, AI, sensors, power, privacy, cleaning, and repair must be verified separately.",
+        width: 916,
+        height: 1717
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",
