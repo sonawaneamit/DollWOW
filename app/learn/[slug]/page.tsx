@@ -405,6 +405,16 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "se-doll-buying-guide": [
+      {
+        afterHeading: "How To Compare SE Dolls",
+        src: "/images/learn/se-doll-buying-guide/material-and-finish.webp",
+        alt: "SE Doll Avery, Kiko, and Annika with four checks for material, makeup level, body and head pairing, and finish-specific care",
+        caption: "Compare the exact SE Doll material and makeup level, confirm the listed body and head pairing, and follow the care routine for that finish. Availability varies by product.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",
@@ -1027,10 +1037,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { brand: "zelex" }
     },
     "se-doll-buying-guide": {
-      title: "Compare SE Doll listings",
-      description: "Use current SE Doll product cards to compare material, measurements, finish, and support-confirmed order details.",
+      title: "Compare six SE Doll paths",
+      description: "Use current products to compare TPE and full silicone, made-to-order and ready-to-ship, full-size and compact builds. This is a decision sample, not a bestseller ranking.",
       collectionHref: "/brands/se-doll",
-      filters: { brand: "sedoll" }
+      filters: { brand: "sedoll" },
+      handles: [
+        "sedoll-avery-b-153cm-f-cup-tpe-companion-doll-1jtw6",
+        "sedoll-makoto-c-161cm-f-cup-tpe-companion-doll-3l5zo",
+        "sedoll-kiko-e-155cm-e-cup-silicone-companion-doll-1cobf",
+        "sedoll-annika-a-160cm-c-cup-silicone-companion-doll-gt6si",
+        "sedoll-yuuka-a-157cm-i-cup-silicone-companion-doll-1va6g",
+        "sedoll-nadia-voss-a-103cm-j-cup-silicone-companion-doll-1galc"
+      ]
     },
     "6ye-dolls-buying-guide": {
       title: "Compare six 6YE build paths",
