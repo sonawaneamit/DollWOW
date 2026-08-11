@@ -117,6 +117,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   torsos: { title: "Torso sex dolls", filters: { productForm: "torso" } },
   hips: { title: "Hips", filters: { productForm: "hips" } },
   "mini-sex-dolls": { title: "Mini sex dolls", filters: { productForm: "full-doll", height: "0-120" } },
+  "petite-dolls": { title: "Petite sex dolls", filters: { productForm: "full-doll", height: "121-154" } },
   "cheap-sex-dolls": { title: "Affordable sex dolls", filters: { price: "0-1000", sort: "price-asc" } },
   "height-under-155": { title: "Dolls under 155 cm", filters: { height: "0-154" } },
   "height-155-159": { title: "Dolls 155-159 cm", filters: { height: "155-159" } },

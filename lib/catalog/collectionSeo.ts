@@ -286,6 +286,8 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop full-body, full-silicone candidates for the most realistic sex doll based on proportions, face sculpt, skin finish, eyes, hands, feet, measurements, weight, and final configuration. Full silicone is a useful starting pool for fine sculpt detail, but material and price do not create an objective realism ranking. Compare several angles, verify the exact head-and-body pairing, and consider TPE or hybrid builds when softness, feel, or a different construction matters more to you.",
   "mini-sex-dolls":
     "Shop full mini sex dolls with a known height up to 120 cm / 3 ft 11 in. Mini describes physical size only, and every DollWow product is sold for adults. Compare listed weight, complete measurements, material, stock status, customization, storage orientation, and handling needs. If you can accommodate a taller compact body, compare the separate petite collection from 121 to 154 cm / 4 ft to 5 ft 1 in.",
+  "petite-dolls":
+    "Shop petite sex dolls with a known height from 121 to 154 cm / 4 ft to 5 ft 1 in. This collection is limited to complete dolls and keeps mini dolls up to 120 cm / 3 ft 11 in, torsos, hips products, and standalone heads on separate paths. Compare listed weight, body measurements, material, proportions, delivery route, cleaning space, storage, and supported options before choosing a compact full-body model.",
   "cheap-sex-dolls":
     "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
   tpe:
@@ -308,6 +310,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "sex-dolls": "Shop sex dolls by material, height, weight, price, stock status, and custom options with DollWow buyer guides and support links.",
   "realistic-sex-dolls": "Shop candidates for the most realistic sex dolls by proportions, face, skin finish, eyes, hands, weight, photos, and final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
+  "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
@@ -359,6 +362,20 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     {
       title: "Size never describes age",
       body: "Mini is a measurement category for adult products. DollWow does not use age-coded merchandising language."
+    }
+  ],
+  "petite-dolls": [
+    {
+      title: "Petite means a defined height range",
+      body: "DollWow uses 121 to 154 cm / 4 ft to 5 ft 1 in for this collection so buyers can compare compact full dolls within one consistent boundary."
+    },
+    {
+      title: "Shorter does not guarantee lighter",
+      body: "Material, body proportions, internal construction, and options affect weight. Check pounds and kilograms plus the route between delivery, cleaning, and storage."
+    },
+    {
+      title: "Keep product forms separate",
+      body: "This collection excludes torsos, hips products, and standalone heads. Use their dedicated paths when a partial-body product better fits your space or budget."
     }
   ],
   "cheap-sex-dolls": [
@@ -503,6 +520,14 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
   ],
+  "petite-dolls": [
+    { label: "Compare mini and petite sizes", href: "/learn/mini-sex-dolls" },
+    { label: "Browse mini sex dolls", href: "/shop/mini-sex-dolls" },
+    { label: "Browse torso sex dolls", href: "/shop/torsos" },
+    { label: "Plan private storage", href: "/learn/sex-doll-storage" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
+  ],
   torsos: [
     { label: "Read the Tantaly buying guide", href: "/learn/tantaly-buying-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
@@ -629,6 +654,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Adult-only framing",
       whyItMatters: "A size label should never be used to imply age.",
       dollWowAdvantage: "Mini describes dimensions only. DollWow sells adult products to adults and avoids age-coded merchandising."
+    }
+  ],
+  "petite-dolls": [
+    {
+      factor: "Stable size boundary",
+      whyItMatters: "Petite, mini, small, and compact are used inconsistently across retailers, which can mix very different heights and product forms.",
+      dollWowAdvantage: "DollWow limits this collection to full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in and gives mini and partial-body products separate paths."
+    },
+    {
+      factor: "Handling evidence",
+      whyItMatters: "A shorter body can still be dense, wide, or difficult to carry when material and internal construction add weight.",
+      dollWowAdvantage: "Product pages keep the available height, listed weight, measurements, material, photographs, and options tied to the exact model."
+    },
+    {
+      factor: "Practical ownership",
+      whyItMatters: "Delivery access, cleaning space, drying, storage, stain prevention, and support still matter for a compact doll.",
+      dollWowAdvantage: "The collection connects directly to size, storage, shipping, cost, and Care 365 guidance before checkout."
     }
   ],
   torsos: [
@@ -849,6 +891,38 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Does the mini collection include torsos or hips?",
       answer:
         "No. The mini collection is intended for compact full dolls with a known height. Torso and hips products have separate DollWow collection pages."
+    }
+  ],
+  "petite-dolls": [
+    {
+      question: "What height counts as a petite sex doll?",
+      answer:
+        "There is no universal industry definition. DollWow uses 121 to 154 cm / 4 ft to 5 ft 1 in for petite full dolls so the collection has a consistent comparison boundary."
+    },
+    {
+      question: "What is the difference between a mini and petite sex doll?",
+      answer:
+        "DollWow uses mini for full dolls up to 120 cm / 3 ft 11 in and petite for full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in. Both labels describe adult-product dimensions only."
+    },
+    {
+      question: "Does this petite collection include torso dolls?",
+      answer:
+        "No. This collection is limited to complete dolls in the petite height range. Torso and hips products have separate collection pages."
+    },
+    {
+      question: "Are petite sex dolls lightweight?",
+      answer:
+        "Not always. Material, proportions, internal construction, and options can make two dolls of similar height weigh very different amounts. Check pounds and kilograms for the exact model."
+    },
+    {
+      question: "Are petite dolls easier to store?",
+      answer:
+        "They may need less length than a taller doll, but complete measurements, listed weight, storage orientation, material care, and safe handling still determine the practical fit."
+    },
+    {
+      question: "Can petite sex dolls be customized?",
+      answer:
+        "Many can, but options vary by exact body, head, material, and manufacturer. Review the product page and ask DollWow to confirm any decision-critical option before production."
     }
   ],
   torsos: [
