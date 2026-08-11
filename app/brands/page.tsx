@@ -71,9 +71,9 @@ export default async function BrandsPage() {
           return (
             <article key={brand.value} className="overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64">
               {imageUrl && displayTitle ? (
-                <Link href={`/brands/${brand.collectionHandle}`} className="relative block aspect-[16/10] overflow-hidden bg-ink-950" aria-label={`Compare ${brand.label}`}>
-                  <Image src={imageUrl} alt={`${displayTitle}, an example from the current ${brand.label} catalog`} fill sizes="(min-width: 1280px) 30vw, (min-width: 768px) 46vw, 94vw" className="object-cover object-top transition duration-300 hover:scale-[1.02]" />
-                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-5 pb-4 pt-12 text-xs font-semibold text-ivory-100">Example: {displayTitle}</span>
+                <Link href={`/brands/${brand.collectionHandle}`} className="relative block aspect-[2/3] overflow-hidden bg-ink-950" aria-label={`Compare ${brand.label}`}>
+                  <Image src={imageUrl} alt={`${displayTitle}, an example from the current ${brand.label} catalog`} fill sizes="(min-width: 1280px) 30vw, (min-width: 768px) 46vw, 94vw" className="object-contain" />
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-5 pb-4 pt-12 text-xs font-semibold text-white">Example: {displayTitle}</span>
                 </Link>
               ) : null}
               <div className="p-6">
