@@ -11,7 +11,9 @@ export async function POST(request: Request) {
   const parsed = input.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: true });
   const next = safeAccountRedirect(parsed.data.next);
-  if (await hasPassportOrders(parsed.data.email)) {
+  const normalizedEmail = parsed.data.email.trim().toLowerCase();
+  const previewEmails = new Set((env.PASSPORT_PREVIEW_EMAILS ?? "").split(",").map((email) => email.trim().toLowerCase()).filter(Boolean));
+  if (previewEmails.has(normalizedEmail) || await hasPassportOrders(normalizedEmail)) {
     const token = createPassportAccessToken(parsed.data.email, next);
     const url = `${env.NEXT_PUBLIC_SITE_URL}/account/access?token=${encodeURIComponent(token)}`;
     await sendEmail({
