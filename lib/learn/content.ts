@@ -34,7 +34,9 @@ const ROOT = process.cwd();
 const DRAFT_DIR = path.join(ROOT, "content", "learn", "drafts");
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 const hiddenArticleSlugs = new Set([
-  "zelex-dolls-buying-guide"
+  "zelex-dolls-buying-guide",
+  "tpe-sex-doll-repair",
+  "silicone-sex-doll-repair"
 ]);
 const internalHeadings = [
   "DollWow Catalog Links To Add",

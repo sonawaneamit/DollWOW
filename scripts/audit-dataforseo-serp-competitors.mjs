@@ -131,7 +131,13 @@ const KEYWORD_TARGETS = {
   "heated sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
   "sex doll customization": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" },
   "customize sex doll": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" },
-  "custom sex doll options": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" }
+  "custom sex doll options": { pageType: "learning-guide", targetPath: "/learn/custom-sex-dolls" },
+  "tpe sex doll repair": { pageType: "learning-guide", targetPath: "/learn/tpe-sex-doll-repair" },
+  "how to repair tpe sex doll": { pageType: "learning-guide", targetPath: "/learn/tpe-sex-doll-repair" },
+  "tpe doll glue": { pageType: "learning-guide", targetPath: "/learn/tpe-sex-doll-repair" },
+  "silicone sex doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
+  "how to repair silicone sex doll": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
+  "silicone doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" }
 };
 
 const args = parseArgs(process.argv.slice(2));

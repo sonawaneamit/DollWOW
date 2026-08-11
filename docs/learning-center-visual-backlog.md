@@ -1,6 +1,6 @@
 # DollWow Learning Center Visual Backlog
 
-Last updated: 2026-08-11
+Last updated: 2026-08-12
 
 Use this list for future GPT Image 2 or designer-generated visual assets. Do not block article publishing on these visuals unless the page depends on the image to explain the concept.
 
@@ -26,6 +26,8 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-maintenance-checklist` | Monthly checklist | Vertical | Confirm material, clean, dry, inspect, powder only if approved, and store supported | Complete full-doll visual live in code; all text and responsive behavior verified. |
 | `/learn/sex-doll-scams` | Listing trust check | Vertical | Product identity, facts, order path, written options, support, policies, and payment red flags | Complete visual live in code with no competitor logos, external URLs, or claims that every discount is a scam. |
 | `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only product, location, import and shipping, current law, privacy, and qualified advice | Complete visual live in code; article now cites current official state statutes and distinguishes proposed federal legislation from enacted law. |
+| `/learn/tpe-sex-doll-repair` | Damage-triage and safe-repair map | Vertical | Identify tear, abrasion, stain, loose component, or structural concern; photograph and measure; confirm TPE; choose glue, manufacturer-approved heat support, or escalation | Use a real adult-looking TPE catalog doll only as context. Show close-up educational detail without making damage look graphic. Exact glue and heat instructions remain product-specific. Generate one sample and approve before publishing the prepared guide. |
+| `/learn/silicone-sex-doll-repair` | Silicone repair decision guide | Vertical | Separate minor tear, paint or finish loss, seam or joint damage, loose components, gel concerns, and electronics; document; confirm silicone system; choose home support or escalation | Use a different real adult-looking full-silicone catalog doll. Do not reuse the TPE composition. Keep adhesive, pigment, curing, injection, and internal work product-specific. Generate one sample and approve before publishing the prepared guide. |
 
 ## Completed High-Intent Editorial Visuals
 
