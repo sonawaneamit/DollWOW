@@ -1,237 +1,320 @@
 ---
-title: "Ready-To-Ship vs Custom Sex Dolls"
+title: "Ready-to-Ship vs Made-to-Order Sex Dolls"
 slug: "ready-to-ship-vs-custom-sex-dolls"
-primaryKeyword: "ready to ship sex dolls"
-secondaryKeywords: ["custom sex doll", "factory order sex doll"]
-description: "A practical comparison of ready-to-ship and custom sex dolls, including speed, customization, factory photo approval, stock checks, and delivery expectations."
+primaryKeyword: "ready to ship vs custom sex dolls"
+secondaryKeywords: ["ready to ship sex doll", "made to order sex doll", "factory order sex doll"]
+description: "Compare ready-to-ship and made-to-order sex dolls by configuration, timing, stock, options, price, build review, factory media, shipping, and support."
 category: "Shipping And Privacy"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-16"
+lastReviewed: "2026-08-11"
 ---
 
-# Ready-To-Ship vs Custom Sex Dolls
+# Ready-to-Ship vs Made-to-Order Sex Dolls
 
 By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
 ## Quick Answer
 
-**Ready to ship sex dolls** are the better fit for buyers who want speed, predictable pricing, and a fixed configuration that is already in warehouse stock. A **custom sex doll** makes more sense when the buyer wants specific options and is willing to wait for production and approval steps. A **factory order sex doll** usually sits between those two paths. It is built to order from supplier-supported options, so it can take longer than warehouse stock, but gives more control than an off-the-shelf listing.
+Choose a ready-to-ship sex doll when a confirmed existing configuration fits your needs and fulfillment speed matters more than customization. Choose a made-to-order doll when the exact head, body, material, skin tone, eyes, hair, skeleton, or supported functions matter more than speed. Ready-to-ship still requires unit and stock confirmation; made-to-order requires option compatibility, production, and final build review.
 
-The real decision is simple. Ask which matters more right now. Timing, or configuration. That is the part worth checking before you pay.
-
----
+DollWow uses custom and factory order to describe the made-to-order path. It is not a third product type between stock and custom. The practical choice is between an existing unit and a build produced after you select supported options.
 
 ## Key Takeaways
 
-- Ready-to-ship sex dolls are best when timing matters and the listed configuration already fits the buyer.
-- Custom sex dolls are better when material, head, body, color, or add-on choices matter more than speed.
-- Ready-to-ship still needs stock and warehouse confirmation before checkout.
-- Custom orders can involve production queues, option compatibility, factory photos, and approval steps.
-- The safest choice is the one with clear specs, transparent timing, and support before payment.
+- Ready-to-ship means an existing unit or configuration is associated with warehouse inventory, subject to final confirmation.
+- Made-to-order means the factory builds the doll after the order is reviewed and accepted.
+- Stock models usually offer fewer changes; custom models offer more choice within manufacturer limits.
+- Starting price and final configured price can differ when options add cost.
+- Custom selections need compatibility review before production.
+- Eligible custom builds can include factory media for approval before shipment.
+- Neither path should rely on an exact delivery promise until the order and route are confirmed.
 
+## Two Real Ordering Paths
 
-## Ready-To-Ship Sex Dolls vs Custom Sex Doll: Practical Comparison
+### Ready-to-ship
 
-Alex here. The cleanest way to compare these two paths is to strip away the marketing and look at the order pipeline.
+A ready-to-ship doll is already produced or allocated as a warehouse configuration. The buyer chooses the unit as it exists, sometimes with limited changes such as a wig or accessory. The value is a shorter fulfillment path, not unlimited flexibility.
 
-A **ready to ship sex doll** is already made, or at least already allocated in stock. That means the buyer is choosing from an existing configuration. The upside is speed. The downside is less freedom. If the doll is in the wrong size, material finish, or head style, the list price may look attractive but the fit for the buyer can be off.
+Confirm:
 
-A **custom sex doll** is built around selected options. That can include body type, skin tone, facial style, eyes, wigs, skeleton options, or standing-feet support if the brand offers it. The buyer gets more control, but the order now depends on option compatibility, production scheduling, and supplier confirmation. The product page should win over the brochure copy.
+- the exact unit is still available
+- the head, body, material, skin tone, and included configuration
+- warehouse region and expected dispatch path
+- listed height and dry weight
+- whether any photographed styling is included
+- packaging and delivery expectations
 
-A **factory order sex doll** is usually the middle lane. The retailer takes an order, the supplier builds it to spec, and the buyer waits for completion. It is not as immediate as warehouse stock. It is also not as open-ended as a fully bespoke request. For many buyers, that middle lane is the practical compromise.
+### Made-to-order or custom
 
-### Comparison Table
+A made-to-order doll enters production after supported options are selected. The buyer has more control, but the final build depends on manufacturer rules, compatibility, production capacity, and the approved order specification.
 
-| Factor | Ready-to-Ship Sex Dolls | Factory Order Sex Doll | Custom Sex Doll |
-| --- | --- | --- | --- |
-| Timing | Usually fastest if stock is current | Slower, depends on build queue | Slowest when multiple options are selected |
-| Configuration | Fixed or limited | Moderately flexible | Most flexible, within supplier rules |
-| Price behavior | Often easier to compare upfront | May change with options | Can vary the most with upgrades |
-| Approval steps | Usually fewer | May include confirmation points | Often includes more review before release |
-| Best for | Buyers who value speed and simplicity | Buyers who want a specific build without full bespoke complexity | Buyers who want the most control over the order |
+Confirm:
 
-### A simple decision rule
+- exact body and head pairing
+- head and body material
+- skin tone, eyes, hair, faceup, and body details
+- skeleton, standing, heating, or electronic options where supported
+- option price changes
+- production and factory-media process
+- what happens if an option is unavailable or incompatible
 
-- Pick **ready-to-ship** if you care about timing, privacy, and a clean checkout path.
-- Pick **factory order** if you want a few meaningful choices and can wait.
-- Pick **custom** if the exact configuration matters enough to justify the longer timeline.
+## Side-by-Side Comparison
 
-If timing matters, ask before checkout. Do not assume a listing marked ready is still physically available. Inventory changes fast in this category.
+| Factor | Ready-to-ship | Made-to-order / custom |
+| --- | --- | --- |
+| Physical status | Existing or allocated configuration | Built after order review |
+| Main advantage | Shorter fulfillment path | More control over supported options |
+| Configuration | Fixed or limited | Product-specific selection |
+| Price | Usually easier to see upfront | Changes with paid options |
+| Stock risk | Unit can sell before confirmation | Production capacity and option availability can change |
+| Review step | Confirm the exact unit | Human Build Check before production |
+| Factory media | May be unnecessary or unavailable for an existing unit | Available for eligible custom builds before shipment |
+| Best for | Buyers who like the listed configuration | Buyers who need a specific build |
 
----
+## Decide Which Tradeoff Matters More
 
-## Key Purchase Factors That Matter More Than the Marketing Copy
+Choose ready-to-ship when:
 
-Jesse here. Buyers often focus on the headline and miss the parts that affect the actual experience. The list below helps separate preference from fact.
+- you like the exact available configuration
+- a shorter fulfillment path is important
+- you do not need a particular head, color, or feature
+- you prefer fewer production variables
+- the current warehouse route fits your delivery needs
 
-### 1. Material and finish
+Choose made-to-order when:
 
-Check the body material, finish type, and any care notes from the product page. Some listings use similar language across multiple models, but the actual feel and maintenance can differ by brand and line. If the seller uses terms like soft-touch, matte, or skin-like, make sure those terms are backed by a specific product description.
+- a particular body and head pairing matters
+- material, skin tone, eyes, hair, or faceup are decision-critical
+- you need a supported skeleton or function option
+- you are willing to wait for production and review
+- you want the final build recorded in your Doll Passport
 
-### 2. Height and weight
+Do not choose a path from the label alone. Compare the actual product, options, final price, and order process.
 
-Two dolls can look similar in photos and feel very different in real use because of height and weight. A buyer with limited storage or limited lifting tolerance should treat these numbers as practical facts, not marketing details. Weight matters for unpacking, moving, cleaning, and storage.
+## Ready-to-Ship Stock Still Needs Confirmation
 
-### 3. Skeleton and pose support
+Inventory changes. A product can be visible while an update is moving between a warehouse, supplier, Shopify, and the storefront. If timing affects your decision, ask DollWow to confirm the exact unit before relying on the listing.
 
-If a doll needs standing support or a particular internal structure, confirm that the chosen configuration supports it. This is especially relevant for custom and factory order purchases, where not every feature is available on every build.
+Useful questions include:
 
-### 4. Storage and privacy
+- Is this exact head-and-body configuration currently allocated?
+- Which warehouse is associated with it?
+- Are the displayed material and measurements correct for that unit?
+- Does the gallery show the exact configuration or manufacturer reference photos?
+- What is included with the unit?
+- Is any customization still possible without moving the order into production?
 
-Plan storage before delivery. Buyers often underestimate box size and where the package will be received. If privacy matters, check whether the seller can use discreet outer packaging, how the billing descriptor may appear, and whether signature requirements are likely. Do not assume. Confirm.
+Ready-to-ship does not mean same-day shipping or a guaranteed arrival date. Warehouse handling, carrier collection, destination, customs where applicable, weather, and address access can affect delivery.
 
-### 5. Delivery timing
+## Custom Options Are Product-Specific
 
-A product marked ready to ship does not equal same-week delivery. Carrier method, warehouse processing, customs routing if applicable, and local handoff all affect timing. The safest approach is to treat any estimate as a range until it is confirmed by the seller.
+A custom collection can display thousands of products, but that does not mean every option belongs to every model. Availability can depend on brand, body, head, material, height, skeleton, and manufacturing method.
 
-### 6. Customization limits
+Common option groups may include:
 
-A custom sex doll still has boundaries. Buyers should verify which options are truly available and which are only shown as examples. If a supplier does not support a choice, the retailer cannot promise it.
+- compatible head
+- TPE, silicone, or hybrid construction
+- skin tone
+- eye color
+- wig, implanted hair, or facial hair
+- faceup or makeup
+- nail and body-detail choices
+- skeleton and standing support
+- heating or other electronic functions
+- care and storage accessories
 
----
+Some options are mutually exclusive. Implanted hair can conflict with certain electronic head systems, for example. A head may not fit every neck connection, and a feature offered on one body may be unavailable on another. The product configurator and manufacturer confirmation should decide the valid combination.
 
-## Buyer Checklist Before You Pay
+## Human Build Check Before Production
 
-Alex again. This is the checklist I would use before placing an order, especially if the buyer is privacy-conscious or working with a deadline.
+Eligible made-to-order DollWow purchases receive a Human Build Check before production. The purpose is to review the selected product and options for obvious incompatibilities, missing required choices, and order details that need clarification.
 
-### Before ordering a ready-to-ship sex doll
+The check does not override manufacturer limits or guarantee that every request can be produced. If an option requires supplier confirmation, it remains pending until confirmed. Resolve questions before the factory begins, because changes can become limited or impossible once production is underway.
 
-- Confirm current stock with the retailer or support team
-- Ask whether the exact photo shown matches the unit in stock
-- Confirm the size, weight, and material
-- Ask whether any accessories are included, but only rely on written confirmation
-- Check delivery estimates for your region
-- Ask about packaging discretion and billing descriptor
+## Factory Media and Approve Before Shipping
 
-### Before ordering a custom sex doll
+Eligible custom builds can receive factory photos or video before shipment. Use the media to compare the completed build with the confirmed order specification.
 
-- Verify every selected option is supported by the supplier
-- Confirm any compatibility rules, especially for head, body, skeleton, or standing-feet choices
-- Ask whether factory photos are available before shipment
-- Clarify whether revisions are possible after production begins
-- Request a written estimate for production time and delivery timing
-- Confirm how changes are handled if a selected option is unavailable
+Review:
 
-### Before ordering a factory order sex doll
+- selected body and head
+- skin tone
+- eyes, wig or hair, and faceup
+- visible skeleton or standing choices
+- included visible options
+- obvious damage or discrepancy
 
-- Ask which parts are fixed and which are selectable
-- Confirm whether the order enters a build queue immediately after payment
-- Request the expected approval process, if any
-- Confirm whether this is a supplier-built item or a warehouse transfer
-- Ask for a realistic timing range rather than a best-case promise
+Factory media is functional build-review evidence, not finished studio photography. Lighting, camera, pose, and surface preparation can differ from the product gallery. The goal is order accuracy, not a glamour shoot.
 
-### Privacy checklist
+Approval does not create unlimited redesign rights after production. Report a clear mismatch promptly and follow the order-specific support process.
 
-- Review how the order appears on your card statement
-- Ask whether tracking emails are branded or discreet
-- Confirm whether the box exterior is plain
-- Check who can sign for delivery if a signature is required
-- Make sure the delivery address is secure for the package size
+## Price: Compare the Final Build
 
-That is the part worth checking before you pay.
+Ready-to-ship pricing usually reflects a fixed configuration. A made-to-order page can display a starting price that changes as options are selected.
 
----
+Compare:
 
-## Common Mistakes and Red Flags
+- base product price
+- material choice
+- paid head or body upgrades
+- skeleton and function options
+- hair, eyes, or styling upgrades
+- accessories
+- delivery path and applicable taxes or duties
 
-Jesse here. A lot of ordering problems come from assumptions that should have been checked in writing.
+Use the final configured total rather than comparing one stock price with another product's base price. The [sex doll cost guide](/learn/sex-doll-cost) explains delivered value in more detail.
 
-### 1. Treating “ready to ship” as guaranteed stock
+The 30-Day Price Lock applies under the published eligibility and comparable-offer terms. Review the [Best Price Guarantee](/best-price-guarantee) rather than assuming every lower listing is equivalent.
 
-A listing can age quickly. If the warehouse count is stale, the buyer may be moved into a backorder or a different fulfillment path. Ask for stock confirmation before payment if the timing matters.
+## Size, Weight, and Product Form Still Come First
 
-### 2. Assuming all photos show the exact unit
+Ordering path does not change the physical reality of the product. Confirm full-body versus torso or hips, height, listed dry weight, measurements, and storage requirements before choosing stock or custom.
 
-Some product images are catalog images. Others are supplier samples. Unless the seller says the unit in stock matches the photo, do not assume it does.
+A ready unit is not a better choice if it is too heavy for your routine. A perfect custom appearance is not useful if the finished doll cannot fit through the delivery route or storage space. Measure first and use both US and metric specifications.
 
-### 3. Ignoring weight and delivery handling
+## Privacy and Delivery Planning
 
-A heavy box may require planning for transport, receiving, and storage. This is where buyers sometimes get caught off guard. The order looks simple online, then becomes a logistics problem at home.
+For either path, review:
 
-### 4. Overestimating customization options
+- billing and order communication expectations
+- outer packaging
+- carrier and signature expectations when known
+- package size and weight
+- delivery address access
+- a private inspection and storage area
 
-A custom sex doll is still limited by the supplier’s build rules. If a feature is not supported by the supplier, it should not be treated as available just because the website mentions it in general terms.
+Made-to-order purchases add production communication and factory media to the process. Decide where those messages should be received. Read the [discreet shipping guide](/learn/discreet-sex-doll-shipping) for a complete privacy checklist.
 
-### 5. Skipping privacy questions
+## What Happens After Arrival
 
-Billing, packaging, and handoff details matter. If privacy is a concern, ask early. It is easier to confirm before checkout than after the shipment is already in motion.
+Inspect the doll and included items promptly under the published arrival process. Compare the delivered product with the order confirmation and approved factory media where applicable. Keep packaging and documentation until the inspection is complete.
 
-### 6. Relying on a single timing estimate
+Care 365 is included with every DollWow doll under the published coverage terms. It provides first-year ownership support, while Lifetime Repair Concierge continues as an ongoing diagnosis and repair-coordination path. The Doll Passport is intended to keep build details, factory approval, care documents, Care 365 status, and support history together.
 
-Delivery timing can change based on stock, production queue, packing, customs, and carrier movement. A single date without a range or written confirmation is thin ice.
+Review the canonical [Care for Life](/care-for-life) and [Buyer Protection](/buyer-protection) pages for current terms. Do not rely on summaries from old articles or screenshots.
 
----
+## A Practical Decision Sequence
 
-## DollWow Verification and Support Angle
+### 1. Define the non-negotiables
 
-At DollWow, the useful part is verification, not hype. If a buyer is comparing **ready to ship sex dolls** with a **factory order sex doll** or a fully **custom sex doll**, the support process should confirm the facts that matter before the order is locked in.
+Write down maximum weight, available storage, material preference, budget, delivery constraints, and any appearance or function that must be present.
 
-That means checking:
+### 2. Check ready-to-ship first when timing matters
 
-- current stock status
-- exact configuration
-- option compatibility
-- delivery estimate
-- packaging discretion
-- whether supplier photos or other approval media are available
-- whether the listing is warehouse stock or a supplier build path
+If an existing unit meets every non-negotiable, confirm it. Do not customize for the sake of customization.
 
-If any of those points depend on supplier confirmation, they should be treated as pending until verified. The product page should win over the brochure copy.
+### 3. Move to made-to-order when a critical detail is missing
 
-For privacy-conscious buyers, that verification step matters just as much as price. A lower listing price is not a good deal if the item is out of stock, the configuration is wrong, or the timeline does not match the buyer’s need.
+Choose the closest body and head, then review only the options available for that product.
 
----
+### 4. Compare final totals
 
-## Related DollWow Guides And Next Steps
+Compare equivalent product forms, materials, dimensions, options, and delivery paths.
 
-- [Read discreet shipping guidance](/learn/discreet-sex-doll-shipping)
-- [Understand sex doll cost and delivered value](/learn/sex-doll-cost)
-- [Compare TPE vs silicone sex dolls](/learn/tpe-vs-silicone-sex-dolls)
-- [Review best sex doll buying factors](/learn/best-sex-dolls)
+### 5. Confirm before the order locks
+
+Resolve stock, compatibility, price, production, privacy, and delivery questions in writing.
+
+## Buyer Checklists
+
+### Ready-to-ship checklist
+
+- Confirm the exact unit and warehouse association.
+- Match the gallery to the fixed configuration.
+- Check product form, height, weight, measurements, and material.
+- Confirm included items and any limited changes.
+- Review expected dispatch and delivery path.
+- Plan receipt, inspection, cleaning, and storage.
+
+### Made-to-order checklist
+
+- Select the exact body and compatible head.
+- Confirm head and body material.
+- Review every option and price change.
+- Resolve compatibility warnings.
+- Confirm the Human Build Check and factory-media path.
+- Save the final configuration.
+- Review production, shipping, arrival, and ownership-support terms.
+
+## Common Mistakes
+
+### Treating ready-to-ship as guaranteed delivery
+
+It describes product status, not an exact arrival date. Confirm stock and route when timing matters.
+
+### Treating custom as unlimited bespoke design
+
+Customization stays within model and manufacturer rules. Unsupported requests are not orderable features.
+
+### Comparing stock price with a custom base price
+
+Use the final configured total and compare equivalent products.
+
+### Assuming every gallery image is the exact unit
+
+Some images are manufacturer references. Confirm the configuration associated with the listing.
+
+### Changing options after production starts
+
+Changes may be restricted once the order enters production. Resolve choices during the build check.
+
+### Ignoring weight because the order is faster
+
+Stock status does not make a heavy doll easier to carry, clean, or store.
+
+## Related DollWow Guides and Next Steps
+
 - [Browse ready-to-ship dolls](/shop/ready-to-ship)
-- [Browse custom dolls](/shop/custom)
-
-
----
+- [Browse custom sex dolls](/shop/custom)
+- [See how ordering works](/how-ordering-works)
+- [Review discreet shipping](/learn/discreet-sex-doll-shipping)
+- [Understand sex doll cost](/learn/sex-doll-cost)
+- [Compare TPE and silicone](/learn/tpe-vs-silicone-sex-dolls)
+- [Review Care for Life](/care-for-life)
+- [Review Buyer Protection](/buyer-protection)
 
 ## FAQs
 
+### What is the difference between ready-to-ship and custom sex dolls?
+
+Ready-to-ship uses an existing or allocated configuration. A custom doll is produced after supported options are selected and reviewed.
+
+### Is a factory order different from a custom order?
+
+At DollWow, factory order describes the made-to-order fulfillment path. The degree of customization depends on the exact product and manufacturer; it is not a separate middle product type.
+
 ### Is a ready-to-ship sex doll always faster?
 
-Usually, but not always. It depends on current warehouse stock, packing time, and carrier movement. If timing matters, confirm before checkout.
+It usually has a shorter path because production is complete, but stock confirmation, warehouse handling, carrier movement, destination, and address access still affect timing.
 
-### What is the main advantage of a custom sex doll?
+### Can ready-to-ship dolls be customized?
 
-Configuration control. Buyers can often choose options that are not available on stock listings, as long as the supplier supports them.
+Usually only in limited ways because the main configuration already exists. A change that requires rebuilding the doll may move the purchase to a made-to-order path.
 
-### What is a factory order sex doll?
+### How long does a custom sex doll take?
 
-It is an order that goes through the supplier’s build process instead of shipping from warehouse stock. It usually gives more control than a ready-to-ship item, but less immediacy.
+Timing varies by manufacturer, body, options, production queue, factory review, and shipping route. Use the current order-specific estimate rather than a universal promise.
 
-### Can I change a ready-to-ship order after payment?
+### Do custom dolls receive factory photos?
 
-Sometimes, but often the answer is no or limited. That depends on whether the item has already been allocated, packed, or transferred. Ask before placing the order.
+Eligible custom builds can receive factory photos or video before shipment. The available media and process depend on the product, order, and manufacturer.
 
-### Do custom orders always include factory photos?
+### Can all custom options be combined?
 
-Not always. When supplier materials are available, factory photos or videos may be shared before shipment, but that depends on the seller and supplier process.
+No. Compatibility depends on the body, head, material, skeleton, manufacturing method, and function. Resolve conflicts before production.
 
-### What should I check first if privacy is the main concern?
+### When does the custom price become final?
 
-Check the packaging description, billing descriptor, delivery method, and whether the shipment requires a signature. Those details matter more than the product headline.
+The product page updates as priced options are selected, but any supplier-dependent choice must still be confirmed. Review the configured total before checkout.
 
-### Which option is safer for avoiding order mistakes?
+### Which path is better for a first-time buyer?
 
-The one with fewer moving parts. For many buyers, that is a ready-to-ship sex doll if the stock is confirmed and the fixed configuration already fits their needs.
+Ready-to-ship can be simpler when a confirmed unit fits your needs. Made-to-order can be better when one or more appearance, material, or function choices are essential. Practical fit matters more than experience level.
 
+### Does Care 365 apply to ready-to-ship and custom dolls?
 
-## Editorial Review Notes
-
-- Confirm all product examples against live Shopify/catalog data before publication.
-- Keep health, legal, shipping, and supplier claims within approved DollWow knowledge files.
-- Keep Quick Answer and Key Facts near the top for snippets, AI answers, and agent extraction.
-- Do not publish fake reviews, fake product examples, unverified inventory claims, or exact shipping guarantees.
+Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for the canonical details.

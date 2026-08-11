@@ -297,9 +297,9 @@ const collectionIntroByHandle: Record<string, string> = {
   "ready-to-ship":
     "Ready-to-ship sex dolls are the best place to start when timing matters. Compare warehouse dolls by material, size, price, body type, and location. Availability can change quickly, so we confirm the exact unit and expected dispatch time before payment.",
   custom:
-    "Custom sex dolls give you more control over the final appearance and features. Compare body sizes, materials, starting prices, and available choices, then customize the exact doll you want. Options vary by model, and prices update as you build.",
+    "Shop full-body custom sex dolls by brand, material, body, head, height, listed weight, starting price, and supported options. Made-to-order choices can include skin tone, eyes, hair, faceup, skeleton features, standing support, heating, and other functions, but availability and compatibility vary by exact model. DollWow reviews eligible selections before production and provides a factory-media approval path where supported.",
   customizable:
-    "Custom sex dolls give you more control over the final appearance and features. Compare body sizes, materials, starting prices, and available choices, then customize the exact doll you want. Options vary by model, and prices update as you build."
+    "Shop full-body custom sex dolls by brand, material, body, head, height, listed weight, starting price, and supported options. Made-to-order choices can include skin tone, eyes, hair, faceup, skeleton features, standing support, heating, and other functions, but availability and compatibility vary by exact model. DollWow reviews eligible selections before production and provides a factory-media approval path where supported."
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
@@ -311,8 +311,8 @@ const collectionMetaDescriptions: Record<string, string> = {
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
-  custom: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing.",
-  customizable: "Compare custom sex dolls and factory-order listings by base model, material, size, options, compatibility, and production timing."
+  custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path.",
+  customizable: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path."
 };
 
 const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
@@ -430,30 +430,30 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   custom: [
     {
-      title: "Custom starts with compatibility",
-      body: "Custom choices depend on the brand, body, head, and material. Check the product page for the options available on that doll."
+      title: "Start with body and head",
+      body: "Choose the practical body first, then a compatible head. Material, height, weight, proportions, and storage fit matter before styling options."
     },
     {
-      title: "Production timing is part of the choice",
-      body: "Made-to-order dolls take time to build. We check your choices and send factory photos and videos for approval before shipment."
+      title: "Compatibility controls the build",
+      body: "Hair, eyes, tone, skeleton, standing, heating, and electronic choices can vary or conflict. The exact product rules decide what can be ordered."
     },
     {
-      title: "Confirm what is included",
-      body: "Do not assume accessories, wigs, eyes, functions, or upgrades are included unless the product page or support confirms them."
+      title: "Review before production and shipping",
+      body: "Eligible orders receive a Human Build Check before production and factory media before shipment where the manufacturer supports it."
     }
   ],
   customizable: [
     {
-      title: "Custom starts with compatibility",
-      body: "Custom choices depend on the brand, body, head, and material. Check the product page for the options available on that doll."
+      title: "Start with body and head",
+      body: "Choose the practical body first, then a compatible head. Material, height, weight, proportions, and storage fit matter before styling options."
     },
     {
-      title: "Production timing is part of the choice",
-      body: "Made-to-order dolls take time to build. We check your choices and send factory photos and videos for approval before shipment."
+      title: "Compatibility controls the build",
+      body: "Hair, eyes, tone, skeleton, standing, heating, and electronic choices can vary or conflict. The exact product rules decide what can be ordered."
     },
     {
-      title: "Confirm what is included",
-      body: "Do not assume accessories, wigs, eyes, functions, or upgrades are included unless the product page or support confirms them."
+      title: "Review before production and shipping",
+      body: "Eligible orders receive a Human Build Check before production and factory media before shipment where the manufacturer supports it."
     }
   ]
 };
@@ -534,14 +534,22 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   ],
   custom: [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
+    { label: "See how ordering works", href: "/how-ordering-works" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Review Care for Life", href: "/care-for-life" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   customizable: [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
+    { label: "See how ordering works", href: "/how-ordering-works" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Review Care for Life", href: "/care-for-life" },
+    { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ]
 };
@@ -685,36 +693,36 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   custom: [
     {
-      factor: "Option compatibility",
-      whyItMatters: "Custom choices can depend on the brand, body, head, and material.",
-      dollWowAdvantage: "Each DollWow product page shows the choices and prices available for that specific doll."
+      factor: "Product-specific options",
+      whyItMatters: "A generic option list cannot prove that a feature works with a particular body, head, material, or skeleton.",
+      dollWowAdvantage: "DollWow ties available choices and price changes to the exact product and reviews eligible selections before production."
     },
     {
-      factor: "Production timing",
-      whyItMatters: "Custom orders require production time and final photo approval before shipment.",
-      dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
+      factor: "Build approval",
+      whyItMatters: "The finished build should be compared with the confirmed order before it enters the shipping path.",
+      dollWowAdvantage: "Eligible custom builds receive factory photos or video for approval before shipment where supported."
     },
     {
-      factor: "Final value",
-      whyItMatters: "Options, accessories, shipping, and production path can change the real cost.",
-      dollWowAdvantage: "DollWow connects custom pages to cost guides and listing review."
+      factor: "Ownership continuity",
+      whyItMatters: "Build details, care documents, approval media, and support history are useful long after checkout.",
+      dollWowAdvantage: "The Doll Passport and Care for Life program keep the build and ownership support connected after purchase."
     }
   ],
   customizable: [
     {
-      factor: "Option compatibility",
-      whyItMatters: "Custom choices can depend on the brand, body, head, and material.",
-      dollWowAdvantage: "Each DollWow product page shows the choices and prices available for that specific doll."
+      factor: "Product-specific options",
+      whyItMatters: "A generic option list cannot prove that a feature works with a particular body, head, material, or skeleton.",
+      dollWowAdvantage: "DollWow ties available choices and price changes to the exact product and reviews eligible selections before production."
     },
     {
-      factor: "Production timing",
-      whyItMatters: "Custom orders require production time and final photo approval before shipment.",
-      dollWowAdvantage: "DollWow links custom buyers to timing and ready-to-ship comparison guidance."
+      factor: "Build approval",
+      whyItMatters: "The finished build should be compared with the confirmed order before it enters the shipping path.",
+      dollWowAdvantage: "Eligible custom builds receive factory photos or video for approval before shipment where supported."
     },
     {
-      factor: "Final value",
-      whyItMatters: "Options, accessories, shipping, and production path can change the real cost.",
-      dollWowAdvantage: "DollWow connects custom pages to cost guides and listing review."
+      factor: "Ownership continuity",
+      whyItMatters: "Build details, care documents, approval media, and support history are useful long after checkout.",
+      dollWowAdvantage: "The Doll Passport and Care for Life program keep the build and ownership support connected after purchase."
     }
   ]
 };
@@ -967,7 +975,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "What can be customized on a sex doll?",
       answer:
-        "Custom options may include the head, skin tone, eyes, hair, makeup, skeleton features, heating, standing feet, and accessories. Available choices vary by model."
+        "Depending on the exact model, choices may include the head, skin tone, eyes, hair, faceup, skeleton features, standing support, heating, functions, and accessories. Availability varies by product."
     },
     {
       question: "Are all custom options compatible?",
@@ -975,16 +983,36 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
         "No. Some options depend on the body, material, or head. The configurator shows the choices available for that specific doll."
     },
     {
-      question: "Do custom sex dolls take longer?",
+      question: "How long does a custom sex doll take?",
       answer:
-        "Yes. Custom dolls need production time, and factory photos and videos are sent for your approval before shipment."
+        "Timing varies by manufacturer, body, options, production queue, factory review, and shipping route. Use the current order-specific estimate rather than a universal promise."
+    },
+    {
+      question: "Does DollWow review custom options before production?",
+      answer:
+        "Eligible custom orders receive a Human Build Check for obvious compatibility issues, missing required choices, and details that need clarification before production."
+    },
+    {
+      question: "Do custom dolls receive factory photos?",
+      answer:
+        "Eligible custom builds can receive factory photos or video before shipment. Available media and process depend on the product, order, and manufacturer."
+    },
+    {
+      question: "Is the collection price the final custom price?",
+      answer:
+        "Collection pages show starting prices. The total changes as priced options are selected, and supplier-dependent choices may still require confirmation."
+    },
+    {
+      question: "Does Care 365 apply to custom dolls?",
+      answer:
+        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for canonical details."
     }
   ],
   customizable: [
     {
       question: "What can be customized on a sex doll?",
       answer:
-        "Custom options may include the head, skin tone, eyes, hair, makeup, skeleton features, heating, standing feet, and accessories. Available choices vary by model."
+        "Depending on the exact model, choices may include the head, skin tone, eyes, hair, faceup, skeleton features, standing support, heating, functions, and accessories. Availability varies by product."
     },
     {
       question: "Are all custom options compatible?",
@@ -992,9 +1020,29 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
         "No. Some options depend on the body, material, or head. The configurator shows the choices available for that specific doll."
     },
     {
-      question: "Do custom sex dolls take longer?",
+      question: "How long does a custom sex doll take?",
       answer:
-        "Yes. Custom dolls need production time, and factory photos and videos are sent for your approval before shipment."
+        "Timing varies by manufacturer, body, options, production queue, factory review, and shipping route. Use the current order-specific estimate rather than a universal promise."
+    },
+    {
+      question: "Does DollWow review custom options before production?",
+      answer:
+        "Eligible custom orders receive a Human Build Check for obvious compatibility issues, missing required choices, and details that need clarification before production."
+    },
+    {
+      question: "Do custom dolls receive factory photos?",
+      answer:
+        "Eligible custom builds can receive factory photos or video before shipment. Available media and process depend on the product, order, and manufacturer."
+    },
+    {
+      question: "Is the collection price the final custom price?",
+      answer:
+        "Collection pages show starting prices. The total changes as priced options are selected, and supplier-dependent choices may still require confirmation."
+    },
+    {
+      question: "Does Care 365 apply to custom dolls?",
+      answer:
+        "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for canonical details."
     }
   ]
 };

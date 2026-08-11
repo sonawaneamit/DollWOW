@@ -114,6 +114,32 @@ describe("catalog filters", () => {
     ]);
   });
 
+  it("keeps the custom collection focused on full dolls", () => {
+    const fullCustom = {
+      ...sampleProducts[0],
+      id: "custom-full",
+      productType: "Custom TPE doll",
+      tags: ["custom", "tpe", "full-doll"],
+      extended: { ...sampleProducts[0].extended, stockStatus: "custom" as const }
+    };
+    const customTorso = {
+      ...sampleProducts[0],
+      id: "custom-torso",
+      productType: "Custom TPE torso",
+      tags: ["custom", "tpe", "torso"],
+      extended: { ...sampleProducts[0].extended, stockStatus: "custom" as const }
+    };
+    const readyFull = {
+      ...sampleProducts[0],
+      id: "ready-full",
+      productType: "Ready TPE doll",
+      tags: ["ready_to_ship", "tpe", "full-doll"],
+      extended: { ...sampleProducts[0].extended, stockStatus: "ready_to_ship" as const }
+    };
+
+    expect(filterProducts([fullCustom, customTorso, readyFull], collectionPresets.custom.filters).map((product) => product.id)).toEqual(["custom-full"]);
+  });
+
   it("filters ready-to-ship products by every supported warehouse region", () => {
     const usAndEu = {
       ...sampleProducts[0],

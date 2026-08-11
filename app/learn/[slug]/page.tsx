@@ -532,17 +532,17 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
     },
     "ready-to-ship-vs-custom-sex-dolls": {
       eyebrow: "Ordering options",
-      title: "Ready-to-ship and custom solve different problems",
-      summary: "Ready-to-ship dolls favor speed and a fixed configuration. Made-to-order dolls offer more choices and take longer to produce.",
+      title: "Choose an existing unit or a made-to-order build",
+      summary: "Ready-to-ship favors a confirmed fixed configuration and a shorter fulfillment path. Made-to-order favors product-specific choices, build review, and factory approval.",
       stats: [
         { value: "2", label: "ways to order" },
-        { value: "1", label: "confirmation step before checkout" }
+        { value: "1", label: "exact configuration to confirm" }
       ],
       items: [
-        { title: "Ready-to-ship", body: "Useful when timing matters, but exact stock and configuration still need confirmation." },
-        { title: "Custom", body: "Useful when options matter, but production time and compatibility rules can vary." },
-        { title: "Photos", body: "Confirm whether images show the exact unit, a sample, or a reference build." },
-        { title: "Final check", body: "Ask us to confirm timing, included items, and any limits on your selected options." }
+        { title: "Ready-to-ship", body: "Confirm the unit, warehouse, fixed configuration, measurements, and dispatch path." },
+        { title: "Made-to-order", body: "Confirm body, head, material, options, compatibility, price changes, and production path." },
+        { title: "Build review", body: "Eligible custom selections receive a Human Build Check before production." },
+        { title: "Factory approval", body: "Eligible custom builds can receive factory media before shipment where supported." }
       ],
       href: "/shop/ready-to-ship",
       cta: "Compare ready-to-ship dolls"
@@ -740,10 +740,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "ready-to-ship-vs-custom-sex-dolls": {
-      title: "See ready-to-ship examples",
-      description: "Ready-to-ship listings are useful when timing matters, but current stock and exact configuration still need review.",
-      collectionHref: "/shop/ready-to-ship",
-      filters: { availability: "ready_to_ship" }
+      title: "Compare three ready and three custom examples",
+      description: "These live examples compare ready-to-ship and made-to-order options across TPE, silicone, and hybrid construction. Check the exact configuration and current availability before choosing.",
+      collectionHref: "/shop/custom",
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "jarliet-dolls-eve-163cm-g-cup-silicone-head-companion-doll-1k96a",
+        "jarliet-dolls-eve-163cm-g-cup-silicone-companion-doll-bt4pc",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "real-lady-sylvia-170cm-s43-silicone-doll"
+      ]
     },
     "discreet-sex-doll-shipping": {
       title: "Compare listings where timing matters",
