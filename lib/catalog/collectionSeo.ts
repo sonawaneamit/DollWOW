@@ -307,7 +307,7 @@ const collectionIntroByHandle: Record<string, string> = {
   torsos:
     "Shop torso sex dolls by product form, material, height, width, depth, listed weight, body proportions, brand, and starting price. A torso is a partial-body product, not a lower-priced full doll, and this collection keeps separate hips products and full-body dolls on their own paths. Compare what the product physically includes, how it can be cleaned and stored, and whether the exact material and dimensions are confirmed before ordering.",
   "ready-to-ship":
-    "Ready-to-ship sex dolls are the best place to start when timing matters. Compare warehouse dolls by material, size, price, body type, and location. Availability can change quickly, so we confirm the exact unit and expected dispatch time before payment.",
+    "Shop ready-to-ship and in-stock sex dolls that are listed against current warehouse inventory for faster dispatch than a made-to-order build. Compare the exact product form, body and head combination, material, height, listed weight, measurements, price, warehouse region, and included configuration. Ready to ship describes current availability, not a guaranteed delivery date. Ask DollWow to confirm the exact unit, warehouse location, dispatch estimate, carrier route, and any important detail before payment.",
   custom:
     "Shop full-body custom sex dolls by brand, material, body, head, height, listed weight, starting price, and supported options. Made-to-order choices can include skin tone, eyes, hair, faceup, skeleton features, standing support, heating, and other functions, but availability and compatibility vary by exact model. DollWow reviews eligible selections before production and provides a factory-media approval path where supported.",
   customizable:
@@ -328,7 +328,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   torsos: "Shop torso sex dolls by form, TPE or silicone, height, width, depth, weight, brand, price, cleaning access, and storage needs.",
-  "ready-to-ship": "Browse ready-to-ship sex dolls organized for faster fulfillment, with stock, configuration, shipping, and support details to confirm.",
+  "ready-to-ship": "Shop ready-to-ship and in-stock sex dolls by product form, material, size, weight, price, warehouse region, and included configuration.",
   custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path.",
   customizable: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path."
 };
@@ -518,16 +518,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   "ready-to-ship": [
     {
-      title: "Fast comparison still needs confirmation",
-      body: "Ready-to-ship dolls move faster, but we still confirm the exact unit, included configuration, and expected dispatch time before payment."
+      title: "Confirm the exact warehouse unit",
+      body: "Inventory can change quickly. Ask DollWow to confirm that the exact body, head, material, color, and listed configuration are still available before payment."
     },
     {
-      title: "Expect fewer changes",
-      body: "Warehouse-style listings may have less customization flexibility than factory-order builds. Compare what is fixed before checkout."
+      title: "Separate dispatch from delivery",
+      body: "Ready to ship can shorten the pre-dispatch path, but carrier transit, customs, destination, and appointment or signature requirements still affect arrival timing."
     },
     {
-      title: "Use timing as one factor",
-      body: "A faster path is useful, but material, size, weight, privacy, and support clarity still matter."
+      title: "Treat the configuration as mostly fixed",
+      body: "A warehouse unit usually offers fewer changes than a factory build. Confirm what can be adjusted without requiring a new made-to-order doll."
     }
   ],
   custom: [
@@ -681,7 +681,9 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
-    { label: "YourDoll alternatives", href: "/learn/yourdoll-alternatives" }
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review Care for Life", href: "/care-for-life" },
+    { label: "Review buyer protection", href: "/buyer-protection" }
   ],
   custom: [
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
@@ -929,19 +931,19 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   "ready-to-ship": [
     {
-      factor: "Timing",
-      whyItMatters: "Fast delivery only helps when the exact doll is confirmed as available.",
-      dollWowAdvantage: "DollWow separates ready-to-ship listings and tells buyers to confirm current availability before checkout."
+      factor: "Exact inventory",
+      whyItMatters: "A warehouse label is useful only when the precise body, head, material, color, and configuration are still available.",
+      dollWowAdvantage: "DollWow confirms the exact unit and included configuration before payment when timing is decision-critical."
     },
     {
-      factor: "Configuration",
-      whyItMatters: "Warehouse-style listings can have fewer change options than factory orders.",
-      dollWowAdvantage: "DollWow links ready-to-ship buyers to custom-order guidance so tradeoffs are clear."
+      factor: "Dispatch and arrival",
+      whyItMatters: "Warehouse availability can shorten pre-dispatch time, but it does not remove carrier, customs, destination, or delivery-handoff variables.",
+      dollWowAdvantage: "DollWow separates the warehouse dispatch estimate from the carrier delivery path and avoids promising an unsupported arrival date."
     },
     {
-      factor: "Privacy",
-      whyItMatters: "Timing and delivery details often matter most when discretion is important.",
-      dollWowAdvantage: "The collection links directly to shipping guidance and support."
+      factor: "Configuration and support",
+      whyItMatters: "Ready-to-ship units are commonly closer to fixed builds, so material, measurements, handling weight, privacy, and aftercare still need review.",
+      dollWowAdvantage: "DollWow connects the live unit to discreet-shipping guidance, buyer protection, Care 365, and direct support before checkout."
     }
   ],
   custom: [
@@ -1376,17 +1378,32 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Are ready-to-ship sex dolls available immediately?",
       answer:
-        "They are held in a warehouse for faster dispatch. We still confirm the exact doll, included configuration, and expected dispatch time before payment."
+        "They are listed against warehouse inventory for a faster dispatch path than a made-to-order build. Availability can change, so DollWow confirms the exact unit, included configuration, warehouse location, and current dispatch estimate before payment when timing matters."
     },
     {
       question: "How are ready-to-ship dolls different from custom orders?",
       answer:
-        "Ready-to-ship dolls usually offer fewer changes but dispatch faster. Made-to-order dolls offer more choices and usually take about 3–4 weeks from order to delivery."
+        "Ready-to-ship dolls are existing warehouse configurations and usually offer fewer changes. Made-to-order dolls can support more choices but require confirmation, production, review, and shipping. Exact timing depends on the product, supplier, queue, destination, and carrier."
     },
     {
-      question: "Should I ask for confirmation before buying ready-to-ship?",
+      question: "Does ready to ship mean fast delivery?",
       answer:
-        "Yes, especially if timing matters. Ask support to confirm the exact unit, current availability, and expected shipping path."
+        "It can reduce the time before dispatch, but it is not a guaranteed delivery date. Warehouse handling, carrier transit, customs, destination, signature requirements, and local delivery conditions can still affect arrival."
+    },
+    {
+      question: "Can I customize an in-stock sex doll?",
+      answer:
+        "Some small changes may be possible, but many warehouse units are sold in a mostly fixed configuration. Ask DollWow what can be changed without turning the order into a factory build."
+    },
+    {
+      question: "Where is a ready-to-ship doll stored?",
+      answer:
+        "Warehouse region varies by product. Check the listing and ask DollWow to confirm the current location, because a unit stored outside your destination country can follow a different carrier and customs path."
+    },
+    {
+      question: "What should I confirm before ordering an in-stock doll?",
+      answer:
+        "Confirm the exact body and head, material, skin tone, measurements, listed weight, included configuration, warehouse region, stock status, dispatch estimate, carrier path, packaging, and any signature or handoff requirement that matters to you."
     }
   ],
   custom: [

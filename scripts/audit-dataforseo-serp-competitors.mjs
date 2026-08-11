@@ -45,6 +45,8 @@ const KEYWORD_TARGETS = {
   "sex doll cost": { pageType: "learning-guide", targetPath: "/learn/sex-doll-cost" },
   "sex doll reviews": { pageType: "learning-guide", targetPath: "/learn/sex-doll-reviews" },
   "ready to ship sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
+  "in stock sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
+  "fast shipping sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
   "custom sex doll": { pageType: "collection", targetPath: "/shop/custom" },
   "asian sex dolls": { pageType: "collection", targetPath: "/shop/asian-dolls" },
   "black sex dolls": { pageType: "collection", targetPath: "/shop/black-dolls" },

@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
         source: "/shop/lighter",
         destination: "/shop/lightweight-sex-dolls",
         permanent: true
+      },
+      {
+        source: "/shop/in-stock-sex-dolls",
+        destination: "/shop/ready-to-ship",
+        permanent: true
+      },
+      {
+        source: "/shop/fast-shipping-sex-dolls",
+        destination: "/shop/ready-to-ship",
+        permanent: true
       }
     ];
   },

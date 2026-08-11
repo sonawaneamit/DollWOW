@@ -103,7 +103,7 @@ const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>
 export const collectionPresets: Record<string, { title: string; filters: CatalogFilters }> = {
   "sex-dolls": { title: "Sex dolls", filters: {} },
   "realistic-sex-dolls": { title: "Most realistic sex dolls", filters: { material: "silicone", productForm: "full-doll" } },
-  "ready-to-ship": { title: "Ready-to-ship dolls", filters: { availability: "ready_to_ship" } },
+  "ready-to-ship": { title: "Ready-to-ship sex dolls", filters: { availability: "ready_to_ship" } },
   custom: { title: "Custom sex dolls", filters: { availability: "custom", productForm: "full-doll" } },
   customizable: { title: "Custom sex dolls", filters: { availability: "custom", productForm: "full-doll" } },
   "female-dolls": { title: "Female dolls", filters: { bodyType: "female" } },
