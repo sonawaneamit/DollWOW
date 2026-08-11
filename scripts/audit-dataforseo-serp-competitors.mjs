@@ -125,7 +125,10 @@ const KEYWORD_TARGETS = {
   "boltless standing feet sex doll": { pageType: "learning-guide", targetPath: "/learn/standing-feet-sex-doll-guide" },
   "sex doll skeleton": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
   "flexible skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
-  "evo skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" }
+  "evo skeleton sex doll": { pageType: "learning-guide", targetPath: "/learn/sex-doll-skeleton-options" },
+  "sex doll body heating": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
+  "body heating sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" },
+  "heated sex doll": { pageType: "learning-guide", targetPath: "/learn/body-heating-sex-doll-guide" }
 };
 
 const args = parseArgs(process.argv.slice(2));

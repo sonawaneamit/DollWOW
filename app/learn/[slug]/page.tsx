@@ -1241,12 +1241,6 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       collectionHref: "/shop/custom",
       filters: { availability: "custom" }
     },
-    "body-heating-sex-doll-guide": {
-      title: "Compare factory-order options",
-      description: "Heating is product-specific and should be confirmed against the exact body, material, power setup, and production path.",
-      collectionHref: "/shop/custom",
-      filters: { availability: "custom" }
-    },
     "wm-dolls-buying-guide": {
       title: "Compare six WM body and material paths",
       description: "Use current products to compare TPE, silicone, female, male, shorter, taller, lighter, and heavier builds. This is a decision sample, not a bestseller ranking.",
@@ -1585,7 +1579,10 @@ function relatedCollections(slug: string) {
     ],
     "body-heating-sex-doll-guide": [
       { label: "Custom dolls", href: "/shop/custom", description: "Review factory-order listings where functions may be configurable." },
-      { label: "Ask support", href: "/support", description: "Confirm product-specific heating compatibility." }
+      { label: "Custom sex dolls", href: "/learn/custom-sex-dolls", description: "Review the complete made-to-order process and compatibility checks." },
+      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Start with the correct material routine, then add the system-specific care instructions." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Protect cables, connectors, material, and the complete body between uses." },
+      { label: "Ask support", href: "/support", description: "Confirm the exact body, warming zones, power setup, and instructions before production." }
     ],
     "sex-robots": [
       { label: "Ai-Tech Dolls", href: "/brands/ai-tech-dolls", description: "Review current products without assuming every model includes AI or robotics." },
