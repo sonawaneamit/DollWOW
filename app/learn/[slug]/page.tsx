@@ -866,10 +866,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { availability: "custom" }
     },
     "wm-dolls-buying-guide": {
-      title: "Compare WM Dolls listings",
-      description: "Compare current WM models by material, size, price, availability, and custom options.",
+      title: "Compare six WM body and material paths",
+      description: "Use current products to compare TPE, silicone, female, male, shorter, taller, lighter, and heavier builds. This is a decision sample, not a bestseller ranking.",
       collectionHref: "/brands/wm-dolls",
-      filters: { brand: "wm" }
+      filters: { brand: "wm" },
+      handles: [
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y",
+        "wm-head-198-163cm-h-cup-silicone-companion-doll-1gykh",
+        "wm-head-206-170cm-d-cup-silicone-companion-doll-1t3ox",
+        "wm-marvin-head-n6-175cm-tpe-companion-doll-nrr0c",
+        "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj"
+      ]
     },
     "irontech-dolls-buying-guide": {
       title: "Compare six Irontech build paths",
@@ -1128,6 +1136,8 @@ function relatedCollections(slug: string) {
     ],
     "wm-dolls-buying-guide": [
       { label: "WM Dolls brand hub", href: "/brands/wm-dolls", description: "Compare current DollWow WM listings." },
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material and care tradeoffs." },
+      { label: "Sex doll reviews", href: "/learn/sex-doll-reviews", description: "Check what a useful model review should prove." },
       { label: "Custom dolls", href: "/shop/custom", description: "Review made-to-order dolls and available options." }
     ],
     "irontech-dolls-buying-guide": [

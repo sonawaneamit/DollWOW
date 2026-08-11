@@ -638,7 +638,7 @@ Use these profiles to decide which three or four brands deserve a closer look. T
 
 ### WM Dolls: the established all-rounder
 
-[WM Dolls](/brands/wm-dolls) is one of the longest-established and most recognizable Chinese manufacturers in the category. Collectors know the brand for a very broad choice of TPE bodies, faces, proportions, and customization. Its newer ranges also include silicone and hybrid constructions, including silicone heads paired with softer bodies.
+[WM Dolls](/brands/wm-dolls) traces its manufacturing history to 2010 in Zhongshan, Guangdong, China. Collectors know the brand for a broad choice of TPE bodies, faces, proportions, and customization. Its newer ranges also include full-silicone products and selected mixed head-and-body constructions.
 
 **Best starting point for:** a first-time buyer who wants many body and head choices inside a familiar manufacturer system, or an experienced buyer who already knows the exact proportions and options wanted.
 

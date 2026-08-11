@@ -1,18 +1,18 @@
 ---
-title: "WM Dolls Buying Guide"
+title: "WM Dolls Buying Guide: Materials, Sizes, And Options"
 slug: "wm-dolls-buying-guide"
-primaryKeyword: "wm doll"
-secondaryKeywords: ["wm dolls", "wm sex doll"]
-intent: "commercial"
+primaryKeyword: "wm dolls buying guide"
+secondaryKeywords: ["wm doll review", "wm dolls review", "wm doll options"]
+intent: "commercial investigation"
 category: "Brand Comparisons"
 pageType: "Learning Center"
 targetUrl: "/learn/wm-dolls-buying-guide"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-16"
+lastReviewed: "2026-08-11"
 ---
 
 # WM Dolls Buying Guide

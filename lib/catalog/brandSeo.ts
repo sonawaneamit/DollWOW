@@ -20,9 +20,43 @@ type BrandSeoProfile = {
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   wm: {
     positioning:
-      "WM Dolls is usually compared for broad catalog depth, many body styles, and a wide range of customization paths.",
+      "WM Doll traces its manufacturing history to 2010 and is known for a broad choice of TPE and silicone bodies, heads, sizes, and customization paths.",
+    intro:
+      "Compare current WM Dolls on DollWow by TPE or silicone construction, body and head pairing, measurements, listed weight, price, and supported options. WM traces its manufacturing history to 2010 and offers female and male models across a wide size range. DollWow is an approved WM seller and reviews complex custom builds before production.",
     guideHref: "/learn/wm-dolls-buying-guide",
-    guideLabel: "WM Dolls buying guide"
+    guideLabel: "WM Dolls buying guide",
+    buyerNotes: [
+      {
+        title: "Set a handling limit",
+        body: "WM models can differ sharply in weight even at similar heights. Compare pounds and kilograms before choosing a face or options."
+      },
+      {
+        title: "Pair the exact body and head",
+        body: "Confirm body, head, neck connection, material, skin tone, hair, eyes, and supported options as one build."
+      },
+      {
+        title: "Keep the authenticity record",
+        body: "DollWow is an approved WM seller. Retain the final build details and the manufacturer's anti-counterfeiting code or supplied documentation."
+      }
+    ],
+    faqs: [
+      {
+        question: "When was WM Doll founded?",
+        answer: "WM traces its manufacturing history to 2010. The company is based in Zhongshan, Guangdong, China."
+      },
+      {
+        question: "Does WM make TPE and silicone dolls?",
+        answer: "Yes. Current WM and DollWow catalogs include TPE and full-silicone products. Material, body, head, and option compatibility should be checked on the exact listing."
+      },
+      {
+        question: "How can I check whether a WM doll is genuine?",
+        answer: "Buy through an approved seller, retain the final build record, and keep the manufacturer's anti-counterfeiting code or supplied documentation."
+      },
+      {
+        question: "Does WM make male dolls?",
+        answer: "Yes. DollWow carries current WM male models. Compare anatomy, proportions, height, weight, material, skeleton, and storage needs before choosing."
+      }
+    ]
   },
   irontech: {
     positioning:
