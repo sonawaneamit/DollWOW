@@ -10,7 +10,7 @@ authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: draft
 reviewOwner: catalog
-lastReviewed: "2026-06-28"
+lastReviewed: "2026-08-11"
 ---
 
 # Standing Feet On Sex Dolls: Pros, Cons, And Compatibility

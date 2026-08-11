@@ -445,6 +445,36 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         height: 1536
       }
     ],
+    "implanted-hair-vs-wig": [
+      {
+        afterHeading: "Comparison Table",
+        src: "/images/learn/implanted-hair-vs-wig/hair-choice.webp",
+        alt: "The same adult catalog doll shown with a removable wig and an implanted-hair example, with flexibility, care, and compatibility checks",
+        caption: "Wigs favor flexibility and replacement. Implanted hair favors an integrated look but needs gentler care and confirmation for the exact head.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "standing-feet-sex-doll-guide": [
+      {
+        afterHeading: "Pros And Tradeoffs",
+        src: "/images/learn/standing-feet-sex-doll-guide/standing-options.webp",
+        alt: "A fully clothed catalog doll using external support beside examples of non-standing, bolt-standing, and boltless-standing feet",
+        caption: "Standing options change the foot, floor contact, and support plan. Confirm the exact body, skeleton, and manufacturer guidance before choosing.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "sex-doll-skeleton-options": [
+      {
+        afterHeading: "Comparison Table",
+        src: "/images/learn/sex-doll-skeleton-options/choose-by-use.webp",
+        alt: "Four fully clothed companion-doll mannequins illustrating standard, flexible, advanced supplier-named, and standing-compatible movement paths",
+        caption: "Choose by the movement you will use, then confirm the exact body, weight, skeleton, standing option, and storage guidance.",
+        width: 1024,
+        height: 1536
+      }
+    ],
     "sex-doll-storage": [
       {
         afterHeading: "Choose Storage Before You Choose The Doll",

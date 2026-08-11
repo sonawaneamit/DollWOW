@@ -64,10 +64,10 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | Page | Asset Type | Format | What It Should Teach | Notes |
 | --- | --- | --- | --- | --- |
 | `/learn/custom-sex-dolls` | Customization decision tree | Vertical | Base model first, then material, head/body, skin tone, hair, feet, skeleton, functions, support confirmation | Must show that options vary by brand and product. |
-| `/learn/implanted-hair-vs-wig` | Comparison chart | Vertical or square | Wig vs implanted hair: maintenance, realism, flexibility, compatibility | Avoid implying implanted hair is always compatible with electronic head options. |
-| `/learn/standing-feet-sex-doll-guide` | Pros/cons diagram | Vertical | Standing feet can help posing, but may affect softness, realism, floors, and long-term storage | Do not show unsafe unsupported standing as recommended. |
+| `/learn/implanted-hair-vs-wig` | Hairline and ownership comparison | Vertical | Wig versus implanted hair flexibility, replacement, care, and exact-head compatibility | Complete product-grounded visual live in code; electronic-head compatibility remains explicitly model-specific. |
+| `/learn/standing-feet-sex-doll-guide` | Supported standing-option explainer | Vertical | Non-standing, bolt-standing, and boltless-standing foot, floor, support, and storage tradeoffs | Complete visual live in code; the full doll uses external support and the copy rejects unsupported long-term standing. |
 | `/learn/body-heating-sex-doll-guide` | Option explainer | Vertical | What to confirm: location, power, heating zone, timing, compatibility, safety notes | Avoid medical or performance claims. |
-| `/learn/sex-doll-skeleton-options` | Skeleton comparison | Vertical | Standard vs flexible/EVO-style skeleton: pose range, handling, weight, durability tradeoffs | Keep anatomy neutral and educational. |
+| `/learn/sex-doll-skeleton-options` | Movement-by-use comparison | Vertical | Standard, flexible, advanced supplier-named, and standing-compatible movement, handling, and storage checks | Complete neutral full-body visual live in code; manufacturer names and features remain explicitly variable. |
 
 ## Brand And Buying Guide Visuals
 
