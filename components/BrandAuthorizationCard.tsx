@@ -22,6 +22,8 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
   const hasCertificate = authorization?.status === "certificate" && authorization.certificateSrc && authorization.certificatePreviewSrc;
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
   const compact = variant === "product";
+  const statusEyebrow = hasCertificate ? "Brand certification" : "Approved seller";
+  const statusTitle = hasCertificate ? `Certified to sell ${label}` : `Approved to sell ${label}`;
 
   return (
     <section className={`overflow-hidden rounded-lg border border-border bg-surface text-text shadow-card ${variant === "brand" ? "my-8 md:grid md:grid-cols-[220px_1fr]" : "sm:grid sm:grid-cols-[96px_1fr]"}`} aria-label={`${label} authorization`}>
@@ -43,9 +45,9 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
       <div className={compact ? "p-4" : "p-5 sm:p-6"}>
         <p className="flex items-center gap-2 text-sm font-semibold text-accent">
           <BadgeCheck className="h-4 w-4" />
-          Brand certification
+          {statusEyebrow}
         </p>
-        <h2 className={`mt-2 font-semibold text-text ${compact ? "text-lg" : "text-xl"}`}>Certified to sell {label}</h2>
+        <h2 className={`mt-2 font-semibold text-text ${compact ? "text-lg" : "text-xl"}`}>{statusTitle}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-text-dim">
           {hasCertificate
             ? relatedBrandNote ?? `DollWow is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}.`
@@ -60,7 +62,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
             </a>
           ) : null}
           <Link href="/authorized-vendors" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-sm font-semibold text-accent transition-colors hover:bg-accent-tint">
-            All certifications
+            {hasCertificate ? "All certifications" : "All seller approvals"}
           </Link>
         </div>
       </div>
