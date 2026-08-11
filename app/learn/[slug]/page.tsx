@@ -447,20 +447,20 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
     },
     "best-sex-dolls": {
       eyebrow: "Buyer shortlist",
-      title: "A practical way to shortlist dolls",
-      summary: "The best choice is the listing that fits the buyer, not the one with the loudest promo banner.",
+      title: "Six buyer needs, six useful starting points",
+      summary: "DollWow selects current candidates from verifiable catalog facts and distinct buyer needs. The shortlist does not claim sales leadership, anonymous ratings, or hands-on testing.",
       stats: [
-        { value: "4", label: "shortlist filters" },
-        { value: "1", label: "final support check" }
+        { value: "6", label: "buyer-fit categories" },
+        { value: "7", label: "catalog evidence checks" }
       ],
       items: [
-        { title: "Start with constraints", body: "Budget, storage, privacy, weight, and timing narrow the catalog quickly." },
-        { title: "Compare facts", body: "Use material, height, measurements, availability, and custom options before judging photos." },
-        { title: "Read the product page", body: "Check what the exact listing includes and what requires confirmation." },
-        { title: "Ask before checkout", body: "If a detail affects the order, get support to confirm it before payment." }
+        { title: "Define the need", body: "Value, lower weight, hybrid construction, full silicone, male anatomy, and compact premium builds solve different problems." },
+        { title: "Check the body", body: "Compare product form, height, weight, measurements, material, and storage fit." },
+        { title: "Verify the build", body: "Review the exact head, skeleton, anatomy, options, images, and current availability." },
+        { title: "Compare ownership", body: "Include delivery, arrival, care, storage, and repair support in the final decision." }
       ],
-      href: "/shop/sex-dolls",
-      cta: "Browse the catalog"
+      href: "/help-me-choose",
+      cta: "Use the DollWow finder"
     },
     "most-realistic-sex-dolls": {
       eyebrow: "Realism checklist",
@@ -708,10 +708,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "best-sex-dolls": {
-      title: "Start with the main sex doll catalog",
-      description: "Use live product cards as a practical starting point, then narrow by material, height, body type, and delivery path.",
+      title: "Six current candidates for different buyer needs",
+      description: "This live shortlist spans value, lower listed weight, hybrid construction, full silicone, male anatomy, and a compact premium build. It is a transparent comparison set, not a universal ranking.",
       collectionHref: "/shop/sex-dolls",
-      filters: {}
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "most-realistic-sex-dolls": {
       title: "Six full-silicone realism candidates",
