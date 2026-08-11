@@ -902,10 +902,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: { bodyType: "male" }
     },
     "rosemarydoll-alternatives": {
-      title: "Compare TPE listings with clear product facts",
-      description: "Compare TPE dolls by material, height, weight, availability, and confirmed order details.",
-      collectionHref: "/shop/tpe",
-      filters: { material: "tpe" }
+      title: "Compare six live DollWow starting points",
+      description: "These examples span TPE, hybrid, full silicone, ready-to-ship, made-to-order, female, and male builds. Use them to compare facts before submitting an exact competing listing.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "betterlovedoll-alternatives": {
       title: "Compare silicone listings with clear product facts",
@@ -1068,8 +1076,9 @@ function relatedCollections(slug: string) {
       { label: "DollWow finder", href: "/help-me-choose", description: "Narrow the catalog with guided buyer preferences." }
     ],
     "rosemarydoll-alternatives": [
-      { label: "TPE dolls", href: "/shop/tpe", description: "Compare TPE dolls by size, weight, value, and availability." },
-      { label: "Price match", href: "/price-match", description: "Submit another offer for price review." }
+      { label: "Compare a listing", href: "/compare", description: "Submit the current product URL for a fact-by-fact comparison." },
+      { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare DollWow products by material, size, price, availability, and brand." },
+      { label: "30-Day Price Lock", href: "/best-price-guarantee", description: "Review the terms for eligible comparable offers before or after purchase." }
     ],
     "betterlovedoll-alternatives": [
       { label: "Silicone dolls", href: "/shop/silicone", description: "Compare silicone dolls by sculpt detail, weight, and availability." },
