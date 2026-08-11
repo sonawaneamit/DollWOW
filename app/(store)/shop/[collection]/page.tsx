@@ -7,6 +7,7 @@ import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
+import { CollectionHeroIntro } from "@/components/CollectionHeroIntro";
 
 export async function generateMetadata({
   params,
@@ -52,11 +53,11 @@ export default async function CollectionPage({
       {structuredData.map((entry) => (
         <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
       ))}
-      <div className="shop-visual-hero">
+      <div className="shop-visual-hero collection-hero">
         <div>
           <p className="text-sm  text-gold-300">Collection</p>
-          <h1 className="mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
-          <p className="mt-3 max-w-3xl text-ivory-400">{collectionIntro(preset, collection)}</p>
+          <h1 className="collection-hero__title mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
+          <CollectionHeroIntro>{collectionIntro(preset, collection)}</CollectionHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
         </div>
       </div>

@@ -421,6 +421,10 @@ main {
   font-size: 16px;
 }
 
+.collection-hero-intro__toggle {
+  display: none;
+}
+
 .shop-visual-sidebar {
   top: 6rem;
 }
@@ -1334,6 +1338,51 @@ textarea {
 }
 
 @media (max-width: 760px) {
+  .collection-hero {
+    margin-bottom: 1rem;
+    padding: 1.15rem;
+  }
+
+  .shop-visual-hero .collection-hero__title {
+    font-size: clamp(2rem, 10vw, 2.65rem);
+    line-height: 1.02;
+  }
+
+  .shop-visual-hero .collection-hero-intro__copy {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .shop-visual-hero .collection-hero-intro--expanded .collection-hero-intro__copy {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  .collection-hero-intro__toggle {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: 999px;
+    color: rgb(var(--color-accent));
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .collection-hero-intro__toggle:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+  }
+
   .tone-inner,
   .alive-inner,
   .home-band__inner,
