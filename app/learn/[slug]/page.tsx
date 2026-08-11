@@ -314,7 +314,80 @@ function ArticleProductExamples({ module }: { module: ArticleProductModule | nul
 }
 
 function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
-  if (slug !== "sex-doll-guide") return [];
+  const articleVisuals: Record<string, MarkdownSectionVisual[]> = {
+    "tpe-vs-silicone-sex-dolls": [
+      {
+        afterHeading: "TPE, Full Silicone, and Hybrid Construction",
+        src: "/images/learn/tpe-vs-silicone-sex-dolls/ownership-paths.webp",
+        alt: "WM Christy TPE doll and Starpery Candy full-silicone doll beside ownership factors for comparing material paths",
+        caption: "Material changes the ownership path, but the exact build still decides softness, detail, handling weight, care, options, and delivered price.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "sex-doll-cost": [
+      {
+        afterHeading: "Starting Price, Configured Price, and Delivered Cost",
+        src: "/images/learn/sex-doll-cost/total-cost.webp",
+        alt: "Four-layer sex doll cost guide covering starting price, configured price, delivered cost, and ownership setup",
+        caption: "Compare the same body, head, material, options, and destination through all four layers. A lower starting price is not automatically a lower delivered cost.",
+        width: 887,
+        height: 1774
+      }
+    ],
+    "irontech-dolls-buying-guide": [
+      {
+        afterHeading: "What Irontech Is Known For",
+        src: "/images/learn/irontech-dolls-buying-guide/exact-build.webp",
+        alt: "Irontech Evie product visual explaining material, head system, handling weight, and model-specific option checks",
+        caption: "Start with the exact Irontech body and head, then compare material, listed handling weight, and options supported for that build.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "wm-dolls-buying-guide": [
+      {
+        afterHeading: "What WM Dolls Is Known For",
+        src: "/images/learn/wm-dolls-buying-guide/compare-build.webp",
+        alt: "Female and male WM Dolls products with four checks for material, body and head pairing, handling, and options",
+        caption: "WM offers many body and head combinations. Read height and weight together, then confirm the exact material, pairing, and available options.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "starpery-dolls-buying-guide": [
+      {
+        afterHeading: "How To Compare Starpery Dolls",
+        src: "/images/learn/starpery-dolls-buying-guide/finished-build.webp",
+        alt: "Two current Starpery products with close-up checks for face, eyes, material, proportions, hands, weight, and model-specific options",
+        caption: "Compare the finished Starpery build in layers, then verify weight, material, and supported choices on the exact product page.",
+        width: 1024,
+        height: 1536
+      }
+    ],
+    "sex-doll-storage": [
+      {
+        afterHeading: "Choose Storage Before You Choose The Doll",
+        src: "/images/learn/sex-doll-storage/plan-storage.webp",
+        alt: "Five-step storage plan covering delivery route, supported positioning, surface protection, room conditions, and safe access",
+        caption: "Measure the route and rehearse access before delivery. Any hanging or standing method still needs approval for the exact product.",
+        width: 864,
+        height: 1821
+      }
+    ],
+    "how-to-clean-a-sex-doll": [
+      {
+        afterHeading: "The Safe Baseline Routine",
+        src: "/images/learn/how-to-clean-a-sex-doll/safe-baseline.webp",
+        alt: "Six-step care routine covering material identification, gentle cleaning, careful rinsing, drying, approved care, and supported storage",
+        caption: "Use this as a baseline sequence, then follow the manufacturer instructions for the exact material, construction, and powered features.",
+        width: 864,
+        height: 1821
+      }
+    ]
+  };
+
+  if (slug !== "sex-doll-guide") return articleVisuals[slug] ?? [];
   return [
     {
       afterHeading: "TPE, Silicone, and Hybrid Construction",
