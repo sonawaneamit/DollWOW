@@ -430,20 +430,20 @@ function infographicConfig(slug: string): ArticleInfographicConfig | null {
   const map: Record<string, ArticleInfographicConfig> = {
     "sex-doll-cost": {
       eyebrow: "Cost breakdown",
-      title: "What changes the delivered price",
-      summary: "A low catalog price can still become expensive if the listing is unclear, shipping is missing, or the configuration needs extra confirmation.",
+      title: "Compare the complete price, not the first number",
+      summary: "Starting price helps you scan. Product form, material, size, options, stock status, shipping, taxes, and ownership setup determine the useful comparison.",
       stats: [
-        { value: "$", label: "base price is only one layer" },
-        { value: "6", label: "cost factors to review" }
+        { value: "6", label: "current starting-price bands" },
+        { value: "3", label: "prices to separate" }
       ],
       items: [
-        { title: "Base model", body: "Brand, material, height, and body design set the first price range." },
-        { title: "Options", body: "Skin tone, eyes, wig, functions, skeleton upgrades, and accessories can affect the final total." },
-        { title: "Shipping path", body: "Ready-to-ship and factory-order listings can have different timing and logistics." },
-        { title: "Ask when unsure", body: "Our team can confirm unclear photos, measurements, options, or included items before you buy." }
+        { title: "Starting price", body: "Use it to scan comparable product forms and materials in the live catalog." },
+        { title: "Configured price", body: "Add the exact body, head, material, and paid options you want." },
+        { title: "Delivered cost", body: "Review shipping, taxes, destination charges, and the confirmed order total." },
+        { title: "Ownership value", body: "Include handling, cleaning, storage, Care 365, and continuing repair support." }
       ],
-      href: "/best-price-guarantee",
-      cta: "Review the price guarantee"
+      href: "/shop/cheap-sex-dolls",
+      cta: "Browse dolls up to $1,000"
     },
     "best-sex-dolls": {
       eyebrow: "Buyer shortlist",
@@ -694,10 +694,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "sex-doll-cost": {
-      title: "Price-check ready-to-ship listings",
-      description: "These catalog examples help anchor cost research in real DollWow listings instead of generic price ranges.",
-      collectionHref: "/shop/ready-to-ship",
-      filters: { availability: "ready_to_ship" }
+      title: "Compare six live starting-price levels",
+      description: "These current full-doll examples span entry, mid-range, premium, ready-to-ship, made-to-order, TPE, hybrid, and silicone choices. Prices update from Shopify; compare the complete configuration on each product page.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "irontech-xiaying-148cm-d-cup-silicone-companion-doll-1wvlv",
+        "starpery-xue-171cm-xue-4-full-silicone-doll",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "best-sex-dolls": {
       title: "Start with the main sex doll catalog",
@@ -963,8 +971,9 @@ function relatedCollections(slug: string) {
       { label: "Shipping information", href: "/shipping", description: "Review DollWow delivery and privacy expectations." }
     ],
     "sex-doll-cost": [
-      { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare fixed configurations and delivered value." },
-      { label: "Best price guarantee", href: "/best-price-guarantee", description: "See how DollWow reviews comparable offers." }
+      { label: "Affordable sex dolls", href: "/shop/cheap-sex-dolls", description: "Compare current products with starting prices up to $1,000." },
+      { label: "All sex dolls", href: "/shop/sex-dolls", description: "Compare the complete live catalog by material, size, price, and availability." },
+      { label: "30-Day Price Lock", href: "/best-price-guarantee", description: "See how DollWow reviews eligible comparable offers before and after purchase." }
     ],
     "sex-doll-reviews": [
       { label: "Buyer protection", href: "/buyer-protection", description: "Review verification and purchase clarity expectations." },
