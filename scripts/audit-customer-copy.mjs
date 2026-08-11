@@ -26,6 +26,7 @@ const rules = [
   ["internal search-planning language", /\bsearch volume\b|\bsearch intent\b|\bSERPs?\b/gi],
   ["internal catalog framing", /\bcatalog data\b|\blive catalog\b|\b(?:comparison|support) angle\b|\bDollWow should\b/gi],
   ["internal content labels", /source trail|claim rules|key facts for AI assistants/gi],
+  ["unnecessary buyer deflection", /another seller may be (?:a better fit|the better choice)/gi],
   ["platform placeholder", /product image appears when Shopify media is connected/gi],
   ["raw validation error", /too_small|invalid_type|expected string to have/gi]
 ];

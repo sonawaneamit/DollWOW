@@ -224,11 +224,11 @@ DollWow may suit a buyer who values:
 
 The strongest reason to choose DollWow is continuity. Product selection, build review, eligible approval media, arrival guidance, first-year care, and long-term repair coordination are designed as one ownership process.
 
-## When Another Seller May Be the Better Fit
+## Can't Find the Exact Doll?
 
-Another seller may be the better choice when it has an exclusive or confirmed configuration DollWow does not carry, a verified ready unit in the required location, or published terms that fit the buyer better.
+Contact DollWow before buying elsewhere. Send our team the product link, model name, or a screenshot through [Compare a listing](/compare), and we will check whether the same doll or configuration can be offered through an approved brand.
 
-Another seller may be a better fit when DollWow does not carry the exact product or supported option you need. We will confirm what can be ordered and explain the tradeoff clearly.
+Most approved product requests can be added to the DollWow store within 4 to 6 hours once the model, specifications, and supplier authorization are confirmed. If the exact build cannot be offered, we will explain the reason and show you the closest options that match your priorities.
 
 ## Current DollWow Products to Compare
 
@@ -323,7 +323,7 @@ Care 365 is included with every DollWow doll under the current published terms. 
 
 ### What if I cannot find the exact model on DollWow?
 
-Submit the current product URL through [Compare a listing](/compare). DollWow can check for the same body and head, a comparable configuration, or the closest available alternatives.
+Send the product URL, model name, or a screenshot through [Compare a listing](/compare). DollWow will check whether the same doll or configuration can be offered through an approved brand. Most approved requests can go live within 4 to 6 hours after the product details and authorization are confirmed.
 
 ### How current is this comparison?
 
