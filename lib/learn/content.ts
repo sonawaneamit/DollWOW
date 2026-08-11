@@ -300,7 +300,13 @@ function featuredImageAlt(title: string, slug: string) {
     "realsexdoll-alternatives": "Two current DollWow catalog dolls and five close-up checks for face, eyes and hair, skin finish, hands and feet, and the exact final build",
     "sexdolltech-alternatives": "Two current DollWow catalog dolls and four checks for material, measurements, supported options, and the delivered total",
     "myrobotdoll-alternatives": "Two current male DollWow catalog dolls beside four separate interaction levels from a conventional doll to verified robotics",
-    "sexdollqueen-alternatives": "Two current DollWow catalog dolls and four checks for confirming an exact ready-stock configuration"
+    "sexdollqueen-alternatives": "Two current DollWow catalog dolls and four checks for confirming an exact ready-stock configuration",
+    "yourdoll-alternatives": "A current Starpery doll and WM male doll with five checks for comparing the same body and head, material, options, delivered total, and ownership support",
+    "bestrealdoll-alternatives": "A current Starpery catalog doll in a home-planning studio with handling, space, material, timing, and budget checks",
+    "siliconwives-alternatives": "Two current SE Doll faces in an evidence desk showing exact-product photos, multiple angles, specifications, and written confirmation",
+    "joylovedolls-alternatives": "Current Irontech Tidiane and 6YE Claudy catalog examples beside five checks for comparing male doll formats",
+    "rosemarydoll-alternatives": "Current AngelKiss and Starpery catalog dolls beside an exact-match checklist for body and head, material, options, fulfillment, and ownership support",
+    "realdoll-alternatives": "A current Starpery catalog doll in a premium silicone inspection spread covering sculpt, finish, construction, measurements, handling, and options"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;

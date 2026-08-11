@@ -8,7 +8,7 @@ category: "Brand Comparisons"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: draft
+status: production
 reviewOwner: catalog
 lastReviewed: "2026-08-11"
 ---
