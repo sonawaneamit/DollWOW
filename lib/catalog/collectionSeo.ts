@@ -290,6 +290,10 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop petite sex dolls with a known height from 121 to 154 cm / 4 ft to 5 ft 1 in. This collection is limited to complete dolls and keeps mini dolls up to 120 cm / 3 ft 11 in, torsos, hips products, and standalone heads on separate paths. Compare listed weight, body measurements, material, proportions, delivery route, cleaning space, storage, and supported options before choosing a compact full-body model.",
   "cheap-sex-dolls":
     "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
+  "asian-dolls":
+    "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
+  "black-dolls":
+    "Shop Black sex dolls shown with deep or dark skin tones and Black-inspired styling across current DollWow brands. This is an appearance category, not a promise about one body type, hair texture, material, or feature set. Compare the pictured head and body, exact skin tone, measurements, listed weight, TPE or silicone construction, availability, and supported options. If you have another approved model in mind, send the name or supplier link and our team will check it quickly.",
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
@@ -312,6 +316,8 @@ const collectionMetaDescriptions: Record<string, string> = {
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
+  "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
+  "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
@@ -390,6 +396,34 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     {
       title: "Check full dolls and compact formats",
       body: "Lower-priced results can include full dolls, torsos, hips, or smaller models. Use the product-form and measurement filters to compare like with like."
+    }
+  ],
+  "asian-dolls": [
+    {
+      title: "Compare the exact face and body",
+      body: "Asian appearance covers many face shapes, body proportions, heights, and styles. Use the complete gallery and measurements instead of relying on the category label."
+    },
+    {
+      title: "Separate styling from construction",
+      body: "Hair, makeup, clothing, and photography can change the presentation. Confirm the head, body, material, skin tone, weight, and included configuration."
+    },
+    {
+      title: "Ask us to find a missing model",
+      body: "Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "black-dolls": [
+    {
+      title: "Check the pictured skin tone",
+      body: "Deep and dark tones vary by brand, material, lighting, and finish. Review several product photos and confirm the selected tone before production."
+    },
+    {
+      title: "Choose features individually",
+      body: "Black dolls are not one body type, face, hair texture, or material. Compare the exact proportions, head, hair, TPE or silicone build, weight, and options."
+    },
+    {
+      title: "Ask us to expand the choice",
+      body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
   tpe: [
@@ -541,6 +575,22 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Review buyer protection", href: "/buyer-protection" },
     { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" }
+  ],
+  "asian-dolls": [
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Learn how to judge realism", href: "/learn/most-realistic-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
+  ],
+  "black-dolls": [
+    { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+    { label: "Learn how to judge realism", href: "/learn/most-realistic-sex-dolls" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
   ],
   "height-under-155": [
     { label: "Mini sex dolls guide", href: "/learn/mini-sex-dolls" },
@@ -705,6 +755,40 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Delivered value",
       whyItMatters: "Options, shipping path, care needs, storage, and support can matter more than a small difference in starting price.",
       dollWowAdvantage: "DollWow connects live products with cost, material, fulfillment, and buyer-protection guidance before checkout."
+    }
+  ],
+  "asian-dolls": [
+    {
+      factor: "Appearance accuracy",
+      whyItMatters: "An Asian-style label cannot describe one face, body shape, nationality, skin tone, or finished configuration.",
+      dollWowAdvantage: "DollWow keeps the exact head, body, photographs, measurements, material, and current options tied to each product."
+    },
+    {
+      factor: "Practical ownership",
+      whyItMatters: "Styling does not predict weight, softness, cleaning, storage, stock status, or delivery timing.",
+      dollWowAdvantage: "Use filters and product pages to compare construction, dimensions, listed weight, price, availability, and care needs together."
+    },
+    {
+      factor: "Choice beyond the current grid",
+      whyItMatters: "The exact approved model or head a buyer wants may not be published yet.",
+      dollWowAdvantage: "Send live chat or hello@dollwow.com the model name or supplier link. Most approved additions can go live within 4 to 6 hours after confirmation."
+    }
+  ],
+  "black-dolls": [
+    {
+      factor: "Skin-tone confirmation",
+      whyItMatters: "Brand labels, studio lighting, image editing, material, and finish can make deep or dark tones appear different on screen.",
+      dollWowAdvantage: "DollWow keeps the selected product and its current photos together and can confirm the supported skin-tone path before production."
+    },
+    {
+      factor: "Individual product fit",
+      whyItMatters: "Black dolls can have different faces, body types, hair, materials, heights, weights, prices, and options.",
+      dollWowAdvantage: "Filters and product pages help buyers compare the complete build instead of relying on stereotypes or one category label."
+    },
+    {
+      factor: "Choice beyond the current grid",
+      whyItMatters: "A buyer may want an approved model, head, or configuration that is not published yet.",
+      dollWowAdvantage: "Send live chat or hello@dollwow.com the model name or supplier link. Most approved additions can go live within 4 to 6 hours after confirmation."
     }
   ],
   tpe: [
@@ -982,6 +1066,50 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Is the price shown on the collection page final?",
       answer:
         "It is the current starting catalog price. Open the product page to review the latest price, supported options, and any additional costs before checkout."
+    }
+  ],
+  "asian-dolls": [
+    {
+      question: "What does Asian sex doll mean on DollWow?",
+      answer: "It is a visual shopping category based on current catalog styling and product details. It does not imply one nationality, face, body type, material, or specification."
+    },
+    {
+      question: "Are Asian sex dolls made from TPE or silicone?",
+      answer: "Both materials and hybrid constructions can appear in the collection. Confirm the body and head materials on the exact product page before ordering."
+    },
+    {
+      question: "Can Asian dolls be customized?",
+      answer: "Many models support appearance or build choices, but options vary by brand, body, head, and material. Review the product page and ask DollWow to confirm any important selection."
+    },
+    {
+      question: "How should I compare Asian doll faces and bodies?",
+      answer: "Compare several gallery angles, the exact head and body pairing, height, weight, measurements, material, skin tone, hair, eyes, makeup, and supported options."
+    },
+    {
+      question: "Can DollWow add an Asian doll that is not listed?",
+      answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "black-dolls": [
+    {
+      question: "What is included in the Black sex dolls collection?",
+      answer: "The collection shows current DollWow products presented with deep or dark skin tones and Black-inspired styling. Exact faces, bodies, materials, hair, measurements, and options vary by model."
+    },
+    {
+      question: "Are Black sex dolls made from TPE or silicone?",
+      answer: "Both material paths can be available. Confirm the exact body and head materials because TPE, full silicone, and hybrid builds differ in feel, care, weight, finish, and price."
+    },
+    {
+      question: "Does every Black doll have the same body type or hair?",
+      answer: "No. Skin tone does not determine face, proportions, hair, height, cup size, material, or feature set. Compare each product individually."
+    },
+    {
+      question: "Can I choose a deep or dark skin tone on another doll?",
+      answer: "Some manufacturers support additional skin tones on selected bodies, but availability and the final finish are product-specific. Ask DollWow to confirm the exact build before production."
+    },
+    {
+      question: "Can DollWow add a Black doll that is not listed?",
+      answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
     }
   ],
   "height-under-155": [

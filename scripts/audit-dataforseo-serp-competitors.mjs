@@ -45,7 +45,9 @@ const KEYWORD_TARGETS = {
   "sex doll cost": { pageType: "learning-guide", targetPath: "/learn/sex-doll-cost" },
   "sex doll reviews": { pageType: "learning-guide", targetPath: "/learn/sex-doll-reviews" },
   "ready to ship sex dolls": { pageType: "collection", targetPath: "/shop/ready-to-ship" },
-  "custom sex doll": { pageType: "collection", targetPath: "/shop/custom" }
+  "custom sex doll": { pageType: "collection", targetPath: "/shop/custom" },
+  "asian sex dolls": { pageType: "collection", targetPath: "/shop/asian-dolls" },
+  "black sex dolls": { pageType: "collection", targetPath: "/shop/black-dolls" }
 };
 
 const args = parseArgs(process.argv.slice(2));
@@ -137,6 +139,8 @@ async function fetchSerp(keyword) {
   const task = data.tasks?.[0] || {};
   return {
     keyword: task.data?.keyword || keyword,
+    taskId: task.id || null,
+    cost: Number(task.cost || 0),
     statusCode: task.status_code,
     statusMessage: task.status_message,
     result: task.result || []
@@ -146,6 +150,8 @@ async function fetchSerp(keyword) {
 function dryRunTasks(keywordsToPrepare) {
   return keywordsToPrepare.map((keyword) => ({
     keyword,
+    taskId: null,
+    cost: 0,
     statusCode: 0,
     statusMessage: "dry-run",
     result: []
@@ -187,6 +193,8 @@ function buildAudit(tasks) {
   return {
     generatedAt,
     mode: execute ? "dataforseo" : "dry-run",
+    totalCost: Number(tasks.reduce((sum, task) => sum + Number(task.cost || 0), 0).toFixed(6)),
+    tasks: tasks.map(({ keyword, taskId, cost, statusCode, statusMessage }) => ({ keyword, taskId, cost, statusCode, statusMessage })),
     location: locationName,
     languageCode,
     device,
@@ -320,6 +328,7 @@ function renderMarkdown(audit) {
 
 Generated: ${audit.generatedAt}
 Mode: ${audit.mode}
+Recorded cost: $${audit.totalCost.toFixed(4)}
 Market: ${audit.location}, ${audit.languageCode}, ${audit.device}
 Depth: ${audit.depth}
 
@@ -402,7 +411,8 @@ function parseArgs(values) {
     if (key === "help" || key === "execute") {
       parsed[key] = true;
     } else {
-      parsed[key] = values[index + 1];
+      const normalizedKey = key === "out-dir" ? "outDir" : key === "keyword-file" ? "keywordFile" : key;
+      parsed[normalizedKey] = values[index + 1];
       index += 1;
     }
   }

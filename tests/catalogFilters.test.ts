@@ -236,4 +236,15 @@ describe("catalog filters", () => {
     expect(collectionPresets["cheap-sex-dolls"].filters).toEqual({ price: "0-1000", sort: "price-asc" });
     expect(filterProducts([aboveBoundary, affordable], collectionPresets["cheap-sex-dolls"].filters).map((product) => product.id)).toEqual(["affordable"]);
   });
+
+  it("keeps appearance collections on their researched canonical titles and filters", () => {
+    expect(collectionPresets["asian-dolls"]).toEqual({
+      title: "Asian sex dolls",
+      filters: { look: "look-asian" }
+    });
+    expect(collectionPresets["black-dolls"]).toEqual({
+      title: "Black sex dolls",
+      filters: { look: "skin-black" }
+    });
+  });
 });
