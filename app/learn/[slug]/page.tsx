@@ -957,6 +957,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "tantaly-rebecca-92cm-tpe-companion-doll-1cjp1"
       ]
     },
+    "erovenus-dolls-review-guide": {
+      title: "Compare six current Erovenus formats",
+      description: "These current Erovenus products span hips, smaller compact bodies, and larger torso formats. Compare the exact form, dimensions, silicone finish, care needs, price, and ordering details on each product page.",
+      collectionHref: "/brands/erovenus-dolls",
+      filters: {},
+      handles: [
+        "erovenus-lucy-20-5cm-silicone-hips-wcena",
+        "erovenus-lauren-54cm-d-cup-silicone-companion-doll-g16fo",
+        "erovenus-emma-72-5cm-g-cup-silicone-companion-doll-3svp9",
+        "erovenus-hot-kitty-aria-82cm-silicone-companion-doll-fvyv0",
+        "erovenus-chloe-wildd-85cm-f-cup-silicone-companion-doll-4sblg",
+        "erovenus-iris-112-5cm-d-cup-silicone-companion-doll-299ob"
+      ]
+    },
     "tpe-vs-silicone-sex-dolls": {
       title: "Compare TPE and full-silicone examples",
       description: "These live examples show why material alone does not predict price or handling weight. Compare the complete measurements, construction, options, and availability on each product page.",

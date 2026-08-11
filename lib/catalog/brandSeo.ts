@@ -143,6 +143,8 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Compare current Erovenus dolls on DollWow by product form, silicone construction, height, width, depth, proportions, starting price, and current ordering path. Erovenus describes its development as following the creation of LoveNestle in 2023, with a focus on silicone torso products and hand-finished surface detail. Confirm the exact model, dimensions, weight, included body areas, and care instructions before ordering.",
     metaDescription:
       "Shop Erovenus silicone torso and compact dolls by product form, dimensions, proportions, price, care needs, and current ordering details.",
+    guideHref: "/learn/erovenus-dolls-review-guide",
+    guideLabel: "Erovenus review guide",
     buyerNotes: [
       {
         title: "Choose the form before the finish",

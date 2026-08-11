@@ -271,6 +271,7 @@ function priority(slug: string) {
     "irontech-dolls-buying-guide",
     "starpery-dolls-buying-guide",
     "tantaly-buying-guide",
+    "erovenus-dolls-review-guide",
     "zelex-dolls-buying-guide",
     "se-doll-buying-guide",
     "6ye-dolls-buying-guide"
@@ -308,7 +309,8 @@ function featuredImageAlt(title: string, slug: string) {
     "joylovedolls-alternatives": "Current Irontech Tidiane and 6YE Claudy catalog examples beside five checks for comparing male doll formats",
     "rosemarydoll-alternatives": "Current AngelKiss and Starpery catalog dolls beside an exact-match checklist for body and head, material, options, fulfillment, and ownership support",
     "realdoll-alternatives": "A current Starpery catalog doll in a premium silicone inspection spread covering sculpt, finish, construction, measurements, handling, and options",
-    "tantaly-buying-guide": "Three current Tantaly torso formats with verified heights and a checklist for comparing width, depth, weight, and material"
+    "tantaly-buying-guide": "Three current Tantaly torso formats with verified heights and a checklist for comparing width, depth, weight, and material",
+    "erovenus-dolls-review-guide": "Three current Erovenus products illustrating product form, surface finish, complete scale, and the evidence a useful review should include"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;
