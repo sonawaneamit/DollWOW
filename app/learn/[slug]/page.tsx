@@ -64,6 +64,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   const schema = [buildArticleStructuredData(article), buildArticleBreadcrumbStructuredData(article), buildArticleFaqStructuredData(article)].filter(Boolean);
   const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
   const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
+  const catalogHero = articleCatalogHero(article.slug);
   const featuredImageDimensions = article.slug === "sex-doll-guide"
     ? { width: 1672, height: 941 }
     : { width: 1536, height: 1024 };
@@ -96,8 +97,8 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               />
             </div>
           ) : null}
-          {article.slug === "best-tpe-sex-dolls" && productModule?.products.length ? (
-            <TpeGuideCatalogHero products={productModule.products.slice(0, 3)} />
+          {catalogHero && productModule?.products.length ? (
+            <ArticleCatalogHero products={productModule.products.slice(0, 3)} {...catalogHero} />
           ) : null}
           <div className="mt-8 max-w-3xl rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
             <p className="text-sm font-semibold text-ivory-50">
@@ -131,7 +132,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   );
 }
 
-function TpeGuideCatalogHero({ products }: { products: Product[] }) {
+function ArticleCatalogHero({ products, caption, imageContext }: { products: Product[]; caption: string; imageContext: string }) {
   return (
     <figure className="mt-8 max-w-5xl overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04]">
       <div className="grid grid-cols-3">
@@ -141,15 +142,29 @@ function TpeGuideCatalogHero({ products }: { products: Product[] }) {
           const title = productPublicTitle(product);
           return (
             <Link key={product.handle} href={`/products/${product.handle}`} className="group relative aspect-[4/5] overflow-hidden border-r border-gold-500/14 last:border-r-0" aria-label={`View ${title}`}>
-              {imageUrl ? <Image src={imageUrl} alt={`${title}, a current DollWow TPE catalog example`} fill sizes="(min-width: 1024px) 27rem, 33vw" className="object-cover object-top transition duration-300 group-hover:scale-[1.02]" /> : null}
+              {imageUrl ? <Image src={imageUrl} alt={`${title}, ${imageContext}`} fill sizes="(min-width: 1024px) 27rem, 33vw" className="object-cover object-top transition duration-300 group-hover:scale-[1.02]" /> : null}
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-3 pb-3 pt-12 text-xs font-semibold leading-5 text-white sm:px-5 sm:pb-5 sm:text-sm">{title}</span>
             </Link>
           );
         })}
       </div>
-      <figcaption className="px-5 py-4 text-sm leading-6 text-ivory-300">Current TPE catalog examples for comparison. Product facts and availability should be checked on each live listing.</figcaption>
+      <figcaption className="px-5 py-4 text-sm leading-6 text-ivory-300">{caption}</figcaption>
     </figure>
   );
+}
+
+function articleCatalogHero(slug: string) {
+  const heroes: Record<string, { caption: string; imageContext: string }> = {
+    "best-tpe-sex-dolls": {
+      caption: "Current TPE catalog examples for comparison. Product facts and availability should be checked on each live listing.",
+      imageContext: "a current DollWow TPE catalog example"
+    },
+    "silicone-sex-doll-guide": {
+      caption: "Current full-silicone catalog examples from three manufacturers. Compare the exact body, head, measurements, listed weight, finish, and supported options on each live product page.",
+      imageContext: "a current DollWow full-silicone catalog example"
+    }
+  };
+  return heroes[slug] ?? null;
 }
 
 function GuideTableOfContents({ markdown }: { markdown: string }) {
@@ -983,6 +998,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "6ye-cherry-noel-152cm-f-cup-tpe-companion-doll-wml82"
       ]
     },
+    "silicone-sex-doll-guide": {
+      title: "Six current full-silicone products to compare",
+      description: "These live examples span six manufacturers, varied heights, a 63.9-101.4 lb / 29-46 kg listed-weight range, and different head and finish paths. They illustrate the buying checks in the guide rather than a universal ranking.",
+      collectionHref: "/shop/silicone",
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
+        "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc",
+        "real-lady-sylvia-170cm-s43-silicone-doll"
+      ]
+    },
     "tantaly-buying-guide": {
       title: "Compare six current Tantaly formats",
       description: "These current Tantaly products span smaller, mid-size, larger, female, and male formats. Compare the complete dimensions, listed weight, material, base, and storage needs on each product page.",
@@ -1438,6 +1467,12 @@ function relatedCollections(slug: string) {
       { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Review material, care, feel, and ownership tradeoffs." },
       { label: "Lightweight dolls", href: "/shop/lightweight-sex-dolls", description: "Start with listed weight when routine handling is the main constraint." },
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare current warehouse configurations and confirm dispatch details." }
+    ],
+    "silicone-sex-doll-guide": [
+      { label: "Browse full-silicone dolls", href: "/shop/silicone", description: "Compare current products by body, head, measurements, weight, price, and supported options." },
+      { label: "TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls", description: "Compare material, care, feel, weight, repair, and price tradeoffs." },
+      { label: "Most realistic dolls", href: "/learn/most-realistic-sex-dolls", description: "Use a detailed visual inspection method instead of relying on the material label." },
+      { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Build a gentle cleaning and drying routine around the exact product." }
     ],
     "ready-to-ship-vs-custom-sex-dolls": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare warehouse-style listings with fixed configurations." },

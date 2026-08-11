@@ -22,4 +22,12 @@ describe("Learning Center content ownership", () => {
     const article = getLearningArticle("best-tpe-sex-dolls");
     expect(article?.body).not.toMatch(/PDP|SERP|search volume|crawlable/i);
   });
+
+  it("keeps silicone education separate from the silicone collection", () => {
+    const article = getLearningArticle("silicone-sex-doll-guide");
+    expect(article?.primaryKeyword).toBe("what is a silicone sex doll");
+    expect(article?.body).toContain("A silicone head does not make a doll full silicone");
+    expect(article?.body).toContain("Browse current [full-silicone sex dolls](/shop/silicone)");
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
 });
