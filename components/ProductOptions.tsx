@@ -40,6 +40,7 @@ import type { Product } from "@/types/product";
 import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
+import { Care365Seal } from "./care/Care365Seal";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -396,6 +397,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               </div>
             )}
           </section>
+          <Care365Seal purchase className="mt-4" />
         </div>
       </div>
 
