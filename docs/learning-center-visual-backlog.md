@@ -24,6 +24,14 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-scams` | Scam red flags checklist | Vertical | Low price, stolen photos, vague shipping, no support, unclear product facts | No competitor logos or external URLs. |
 | `/learn/sex-doll-laws-us` | Adult-only standards checklist | Vertical | Adult-only, no underage-coded styling, check local rules, privacy is separate from legality | Keep legal wording cautious. |
 
+## RealDoll Alternatives
+
+- Featured image: premium editorial comparison using one actual adult-looking full-silicone DollWow catalog product as the reference.
+- Supporting visual: conventional companion versus verified robot-function decision aid.
+- Supporting visual: sculpt, finish, configuration, handling, and ownership comparison framework.
+- Do not use RealDoll product imagery, imply the referenced DollWow product is a RealDoll, or add unsupported robotics.
+- Generate one sample only and wait for user approval before producing the final set.
+
 ## Customization Cluster Visuals
 
 | Page | Asset Type | Format | What It Should Teach | Notes |
@@ -43,4 +51,3 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | `/learn/sex-doll-cost` | Cost stack infographic | Vertical | Base price, options, shipping, stock path, support confirmation | No invented price ranges unless tied to catalog data. |
 | `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path diagram | Vertical | Ready-to-ship vs custom workflow | Make timing conditional, not guaranteed. |
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Text should match article claims. |
-

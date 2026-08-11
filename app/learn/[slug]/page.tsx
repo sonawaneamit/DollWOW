@@ -947,6 +947,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "real-lady-viki-150cm-r10-silicone-doll"
       ]
     },
+    "realdoll-alternatives": {
+      title: "Compare six current full-silicone companions",
+      description: "These products span six DollWow brands and varied sculpting, proportions, finishes, measurements, handling weights, and supported options. They are comparison starting points, not RealDoll products or claimed equivalents.",
+      collectionHref: "/shop/realistic-sex-dolls",
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "real-lady-sylvia-170cm-s43-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0",
+        "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc"
+      ]
+    },
     "betterlovedoll-alternatives": {
       title: "Compare silicone listings with clear product facts",
       description: "Compare material, size, price, availability, and support before choosing a seller.",

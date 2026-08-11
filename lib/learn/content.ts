@@ -254,6 +254,7 @@ function priority(slug: string) {
     "siliconwives-alternatives",
     "joylovedolls-alternatives",
     "rosemarydoll-alternatives",
+    "realdoll-alternatives",
     "betterlovedoll-alternatives",
     "realsexdoll-alternatives",
     "sexdolltech-alternatives",
