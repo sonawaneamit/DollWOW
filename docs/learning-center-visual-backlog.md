@@ -77,7 +77,7 @@ Use this list for future GPT Image 2 or designer-generated visual assets. Do not
 | Page | Asset Type | Format | What It Should Teach | Notes |
 | --- | --- | --- | --- | --- |
 | Brand buying guides | Brand comparison cards | Landscape or square | Catalog depth, material focus, body styles, customization checks | Use approved product images from the featured brand only. |
-| Competitor alternative pages | Comparison table graphic | Vertical | DollWow comparison process, not competitor links | Do not include competitor URLs. |
+| Competitor alternative pages | Product-grounded comparison features | Landscape plus live product grid | Give each seller query a distinct buyer task instead of repeating one comparison template | BetterLoveDoll, RealSexDoll, SexDollTech, MyRobotDoll, and SexDollQueen featured visuals are live in code with six current catalog examples per page. No competitor URLs appear in the visuals. |
 | `/learn/sex-doll-cost` | Cost stack infographic | Vertical | Base price, options, shipping, stock path, support confirmation | Four-layer total-cost visual live in code without volatile prices. Additional imagery should use current product examples rather than repeat this framework. |
 | `/learn/ready-to-ship-vs-custom-sex-dolls` | Order path comparison | Vertical | Existing-build checks versus made-to-order build checks | Complete product-grounded visual live in code; no delivery time or unlimited-customization claim is baked into the asset. |
 | `/learn/tpe-vs-silicone-sex-dolls` | Material comparison | Vertical | Feel, care, detail, weight, price, storage | Product-grounded ownership-path visual live in code. Additional care or repair imagery should add new information. |

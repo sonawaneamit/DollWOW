@@ -164,7 +164,7 @@ async function getArticleProductModule(slug: string) {
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 600 : 80
   });
-  const picks = filterProducts(products, filters).slice(0, 3);
+  const picks = filterProducts(products, filters).slice(0, config.limit ?? 3);
   return { ...config, products: picks };
 }
 
@@ -913,6 +913,7 @@ type ArticleProductModule = {
   collectionHref: string;
   filters: CatalogFilters;
   handles?: string[];
+  limit?: number;
   products: Product[];
 };
 
@@ -1279,34 +1280,60 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "betterlovedoll-alternatives": {
-      title: "Compare silicone listings with clear product facts",
-      description: "Compare material, size, price, availability, and support before choosing a seller.",
-      collectionHref: "/shop/silicone",
-      filters: { material: "silicone" }
+      title: "Compare six product and ordering paths",
+      description: "These current products span TPE, hybrid, full silicone, compact and full-size builds, ready-stock and made-to-order routes, and female and male products. Compare the exact facts rather than treating the categories as interchangeable.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "tantaly-mark-60cm-companion-doll-7k5kk",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog"
+      ]
     },
     "realsexdoll-alternatives": {
-      title: "Compare realistic catalog options",
-      description: "Ground realism research in actual DollWow listings, measurements, material, weight, and product-specific details.",
+      title: "Compare six realism-focused starting points",
+      description: "These current full-silicone products span six manufacturers, different sculpting and finish directions, varied proportions, and different handling needs. They are starting points for inspection, not claimed equivalents or a universal ranking.",
       collectionHref: "/shop/realistic-sex-dolls",
-      filters: {}
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "real-lady-sylvia-170cm-s43-silicone-doll",
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0",
+        "starpery-xue-171cm-xue-4-full-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
+        "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc"
+      ]
     },
     "sexdolltech-alternatives": {
-      title: "Compare TPE listings by value and detail",
-      description: "Compare material and price alongside exact measurements, availability, and confirmed details.",
+      title: "Compare six current TPE starting points",
+      description: "These current TPE products span six brands, different heights and proportions, varied handling needs, and both ready-stock and made-to-order choices. Compare the exact build and delivered order rather than the material label alone.",
       collectionHref: "/shop/tpe",
-      filters: { material: "tpe" }
+      filters: { material: "tpe" },
+      handles: [
+        "wm-christy-148cm-l-cup-tpe-companion-doll-1eoz0",
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "6ye-cherry-noel-152cm-f-cup-tpe-companion-doll-wml82",
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "sedoll-avery-b-153cm-f-cup-tpe-companion-doll-1jtw6",
+        "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y"
+      ]
     },
     "myrobotdoll-alternatives": {
-      title: "Compare ready-to-ship examples",
-      description: "Compare ready-to-ship dolls by dispatch time, material, size, and included configuration.",
+      title: "Compare six current ready-to-ship examples",
+      description: "Use current ready-stock products to compare the physical doll first: exact configuration, material, measurements, handling, warehouse, dispatch stage, and any documented electronic option.",
       collectionHref: "/shop/ready-to-ship",
-      filters: { availability: "ready_to_ship" }
+      filters: { availability: "ready_to_ship" },
+      limit: 6
     },
     "sexdollqueen-alternatives": {
       title: "Review ready-to-ship listings",
       description: "Compare ready-to-ship dolls by warehouse location, expected dispatch time, and the exact included configuration.",
       collectionHref: "/shop/ready-to-ship",
-      filters: { availability: "ready_to_ship" }
+      filters: { availability: "ready_to_ship" },
+      limit: 6
     }
   };
 

@@ -34,12 +34,7 @@ const ROOT = process.cwd();
 const DRAFT_DIR = path.join(ROOT, "content", "learn", "drafts");
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 const hiddenArticleSlugs = new Set([
-  "zelex-dolls-buying-guide",
-  "betterlovedoll-alternatives",
-  "realsexdoll-alternatives",
-  "sexdolltech-alternatives",
-  "myrobotdoll-alternatives",
-  "sexdollqueen-alternatives"
+  "zelex-dolls-buying-guide"
 ]);
 const internalHeadings = [
   "DollWow Catalog Links To Add",
@@ -300,7 +295,12 @@ function featuredImageAlt(title: string, slug: string) {
     "male-sex-doll-buying-guide": "Male sex doll buying guide featuring a real DollWow catalog product",
     "sex-doll-reviews": "Sex doll review checklist for checking product photos, specifications, seller claims, and support",
     "ready-to-ship-vs-custom-sex-dolls": "Ready-to-ship and custom sex doll order paths compared",
-    "discreet-sex-doll-shipping": "Discreet sex doll shipping guide covering packaging, delivery, privacy, and order checks"
+    "discreet-sex-doll-shipping": "Discreet sex doll shipping guide covering packaging, delivery, privacy, and order checks",
+    "betterlovedoll-alternatives": "Two current DollWow catalog dolls and four checks for choosing product form, material, ready or custom ordering, and a realistic handling limit",
+    "realsexdoll-alternatives": "Two current DollWow catalog dolls and five close-up checks for face, eyes and hair, skin finish, hands and feet, and the exact final build",
+    "sexdolltech-alternatives": "Two current DollWow catalog dolls and four checks for material, measurements, supported options, and the delivered total",
+    "myrobotdoll-alternatives": "Two current male DollWow catalog dolls beside four separate interaction levels from a conventional doll to verified robotics",
+    "sexdollqueen-alternatives": "Two current DollWow catalog dolls and four checks for confirming an exact ready-stock configuration"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;
