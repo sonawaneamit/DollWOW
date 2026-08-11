@@ -10,9 +10,9 @@ targetUrl: "/learn/sex-doll-storage"
 author: "jesse"
 authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-16"
+lastReviewed: "2026-08-11"
 ---
 
 # Sex Doll Storage: How To Protect Material, Shape, And Privacy

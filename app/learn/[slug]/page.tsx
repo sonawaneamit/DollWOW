@@ -804,10 +804,18 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       ]
     },
     "sex-doll-storage": {
-      title: "Compare storage-friendly sizes",
-      description: "Compact listings help buyers think through height, weight, storage footprint, and privacy before checkout.",
-      collectionHref: "/shop/mini-sex-dolls",
-      filters: { height: "0-154" }
+      title: "Compare six storage-planning examples",
+      description: "These current listings span compact and full-size bodies, lighter and heavier builds, and TPE, hybrid, and full-silicone construction. Use exact measurements and weight to test your storage plan.",
+      collectionHref: "/shop/sex-dolls",
+      filters: {},
+      handles: [
+        "jarliet-dolls-besty-148cm-e-cup-tpe-companion-doll-1jscw",
+        "sedoll-clementine-148cm-d-cup-tpe-companion-doll-1pp2y",
+        "climax-sola-157cm-d-cup-hybrid-companion-doll-2bj7d",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-kevin-170cm-silicone-companion-doll-1kpog",
+        "real-lady-viki-150cm-r10-silicone-doll"
+      ]
     },
     "sex-doll-maintenance-checklist": {
       title: "Start with material and size",
@@ -1065,6 +1073,7 @@ function relatedCollections(slug: string) {
     ],
     "sex-doll-storage": [
       { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare compact listings for smaller storage spaces." },
+      { label: "Lighter dolls", href: "/shop/lighter", description: "Start with listed weight when handling is the main constraint." },
       { label: "Cleaning guide", href: "/learn/how-to-clean-a-sex-doll", description: "Clean and dry fully before storage." }
     ],
     "sex-doll-maintenance-checklist": [
