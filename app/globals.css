@@ -65,6 +65,13 @@
 .visualizer-error strong,.visualizer-error p,.visualizer-error small{display:block}
 .visualizer-error p{margin-top:3px}
 .visualizer-error small{margin-top:5px;color:inherit;line-height:1.45}
+.visualizer-wait-overlay{position:fixed;z-index:70;top:72px;right:0;left:0;display:flex;justify-content:center;padding:18px clamp(14px,4vw,42px) 72px;pointer-events:none;background:linear-gradient(180deg,rgb(var(--color-bg)/.96) 0%,rgb(var(--color-bg)/.82) 58%,transparent 100%)}
+.visualizer-wait-prominent{width:min(620px,100%);padding:18px 20px;border-color:rgb(var(--color-accent)/.68);background:rgb(var(--color-surface));box-shadow:0 18px 60px rgb(0 0 0/.25),0 0 0 1px rgb(var(--color-accent)/.12);pointer-events:auto}
+.visualizer-wait-prominent>svg{width:26px;height:26px}
+.visualizer-wait-prominent strong{font-size:16px}
+.visualizer-wait-prominent p{font-size:14px}
+.visualizer-wait-prominent small{font-size:12px}
+@media(max-width:900px){.visualizer-wait-overlay{top:64px;padding:12px 12px 52px}.visualizer-wait-prominent{padding:16px;border-radius:16px}.visualizer-wait-prominent strong{font-size:15px}}
 
 /* Care for Life + private Doll Passport */
 .care-365-lockup{display:grid;gap:14px;max-width:680px;padding:14px;border:1px solid rgb(var(--color-border));border-radius:14px;background:rgb(var(--color-surface-tint))}

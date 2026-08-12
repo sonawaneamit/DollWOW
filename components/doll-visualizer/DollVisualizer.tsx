@@ -133,6 +133,20 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         <p><b>{remaining}</b> of {freePreviews} previews</p>
       </header>
 
+      {loading ? (
+        <div className="visualizer-wait-overlay" role="status" aria-live="polite">
+          <div className="visualizer-wait visualizer-wait-prominent">
+            <Loader2 className="animate-spin" />
+            <div>
+              <strong>Preparing your Doll Visualizer™ preview</strong>
+              <p>{waitMessage(elapsedSeconds)}</p>
+              <small>{email ? `You can wait here or leave this page. We’ll email ${email} when your preview is ready.` : "Please keep this page open while your preview is created."}</small>
+              {email ? <Link className="visualizer-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link> : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="visualizer-main">
         <section className="visualizer-preview" aria-live="polite">
           <div className="visualizer-preview-frame">
@@ -212,12 +226,6 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                 {email ? <label className="visualizer-consent"><input type="checkbox" checked={emailConsent} onChange={(event) => setEmailConsent(event.target.checked)} /><span>Email me this Doll Visualizer™ preview.</span></label> : null}
                 <label className="visualizer-consent"><input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} /><span>Doll Visualizer™ creates an approximate visual preview. Your finished doll may vary in color, texture, styling, and option details.</span></label>
                 <p className="visualizer-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
-                {loading ? (
-                  <div className="visualizer-wait" role="status">
-                    <Loader2 className="animate-spin" />
-                    <div><strong>Preparing your Doll Visualizer™ preview</strong><p>{waitMessage(elapsedSeconds)}</p><small>{email ? `You can wait here or leave this page. We’ll email ${email} when your preview is ready.` : "Please keep this page open while your preview is created."}</small>{email ? <Link className="visualizer-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link> : null}</div>
-                  </div>
-                ) : null}
                 {!live ? <p className="visualizer-notice">Doll Visualizer™ is temporarily unavailable. Please try again shortly.</p> : null}
                 {error ? <div className="visualizer-error" role="alert"><strong>We couldn’t create this preview.</strong><p>{error}</p><small>Your selections are still here. Try again, choose another photo, or ask DollWOW for help.</small></div> : null}
               </div>
