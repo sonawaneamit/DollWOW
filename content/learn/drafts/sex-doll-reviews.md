@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # Sex Doll Reviews: How To Separate Evidence From Sales Copy
@@ -118,6 +118,8 @@ Useful signs include:
 - The review date and any later updates are visible
 
 Be cautious when a page claims products were “tested” without explaining what testing involved. Unboxing a doll, handling it for a video, comparing catalog specifications, and owning it for a year are four different levels of experience.
+
+The [Federal Trade Commission's guidance on evaluating online reviews](https://consumer.ftc.gov/articles/how-evaluate-online-reviews) recommends checking several sources, looking at reviewer history and recency, and watching for unusual review patterns. Its [Consumer Reviews and Testimonials Rule guidance](https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers) also explains the federal rules around fake reviews, undisclosed insider testimonials, and incentives tied to a particular sentiment. Those principles apply whether the review appears on a retailer, marketplace, video channel, forum, or affiliate site.
 
 DollWow's [best sex dolls guide](/learn/best-sex-dolls) uses a published selection method and current catalog facts. It does not claim hands-on or laboratory testing that did not occur.
 
@@ -285,6 +287,13 @@ A visually impressive review may say nothing about lifting, cleaning, drying, st
 Read several sources, but give the most weight to evidence that identifies the exact doll and can be checked against current details. Use owner reports for practical questions, videos for scale and appearance, review platforms for seller patterns, and current product and policy pages for the order you are about to place.
 
 The best sex doll reviews do not ask you to trust a conclusion. They give you enough context to reach your own.
+
+## Independent Review Sources
+
+- [FTC: How To Evaluate Online Reviews](https://consumer.ftc.gov/articles/how-evaluate-online-reviews)
+- [FTC: Consumer Reviews and Testimonials Rule Questions and Answers](https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers)
+
+These sources support the review-verification and disclosure framework above. They do not evaluate any specific doll, brand, seller, or customer account. Product-specific claims still need to be matched to the current model, configuration, seller, and order date.
 
 ## FAQs
 

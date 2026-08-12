@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # How To Clean a Sex Doll Safely: TPE And Silicone Care
@@ -304,6 +304,15 @@ Closing a case or dressing a damp doll can trap moisture and create fabric conta
 DollWow can help identify the product material, locate available manufacturer guidance, and review a cleaner, powder, stain, tear, or electronic concern before you act. Send clear photos, the product or order link, the brand and model, and what has already touched the surface through live chat or [hello@dollwow.com](mailto:hello@dollwow.com).
 
 Every DollWow doll includes [Care 365](/care-for-life) under the current published terms, with continuing Repair Concierge help after the first year. If cleaning reveals a cut, loose area, stain, joint concern, or electrical problem, stop and ask before attempting a repair that could make it harder to correct.
+
+## Manufacturer Care Sources
+
+- [Tantaly: official cleaning and maintenance guidance](https://www.tantaly.com/pages/cleaning-and-maintenance-guide-for-sex-doll)
+- [RealDoll: official Classics care and maintenance guide (PDF)](https://realdoll.com/wp-content/uploads/2025/08/Care-Guide-Realdoll-Classic-R2.pdf)
+- [Irontech: official silicone material guidance](https://www.irontechdoll.com/blog/what-is-a-silicone-sex-doll/)
+- [ZELEX: official doll care guide](https://www.zelexdoll.com/pages/dolls-guide)
+
+These manufacturer sources support the guide's cautious approach to material identification, mild cleaning, painted-detail protection, complete drying, and model-specific instructions. They also show why one brand's cleaner, temperature limit, powder, oil, insert method, or electronics boundary should not be treated as universal. Follow the manual supplied with your exact doll whenever it differs.
 
 ## FAQs
 
