@@ -19,10 +19,12 @@ import { ComparisonProvider } from "@/components/compare/ComparisonProvider";
 import { ComparisonDrawer } from "@/components/compare/ComparisonDrawer";
 import { ChatraWidget } from "@/components/ChatraWidget";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
+import { buildStorefrontThemeInitScript } from "@/lib/storefrontTheme";
 import "./globals.css";
 import "./v2-storefront.css";
 
 const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
+const STOREFRONT_THEME_INIT_SCRIPT = buildStorefrontThemeInitScript();
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
@@ -71,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           id="dollwow-theme-init"
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var saved=localStorage.getItem('dollwow-theme');var theme=saved==='dark'?'dark':'light';document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';}})();`
+            __html: STOREFRONT_THEME_INIT_SCRIPT
           }}
         />
         {measurementId ? (

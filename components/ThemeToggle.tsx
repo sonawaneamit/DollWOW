@@ -2,11 +2,14 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
-
-type StorefrontTheme = "light" | "dark";
+import {
+  DEFAULT_STOREFRONT_THEME,
+  STOREFRONT_THEME_STORAGE_KEY,
+  type StorefrontTheme
+} from "@/lib/storefrontTheme";
 
 function activeDocumentTheme(): StorefrontTheme {
-  if (typeof document === "undefined") return "light";
+  if (typeof document === "undefined") return DEFAULT_STOREFRONT_THEME;
   return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
@@ -16,13 +19,13 @@ function subscribeToThemeChange(onChange: () => void) {
 }
 
 export function ThemeToggle({ compact = false }: { compact?: boolean }) {
-  const theme = useSyncExternalStore(subscribeToThemeChange, activeDocumentTheme, () => "light");
+  const theme = useSyncExternalStore(subscribeToThemeChange, activeDocumentTheme, () => DEFAULT_STOREFRONT_THEME);
 
   function toggleTheme() {
     const nextTheme: StorefrontTheme = activeDocumentTheme() === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
     document.documentElement.style.colorScheme = nextTheme;
-    window.localStorage.setItem("dollwow-theme", nextTheme);
+    window.localStorage.setItem(STOREFRONT_THEME_STORAGE_KEY, nextTheme);
     window.dispatchEvent(new Event("dollwow-theme-change"));
   }
 
