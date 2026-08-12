@@ -9,10 +9,10 @@ import {
   resolveVisualizerSelections,
   visualizerConfigForProduct,
   isVisualizerProduct,
-  VISUALIZER_FREE_PREVIEWS,
 } from "@/lib/doll-visualizer/config";
 import { sendVisualizerLookEmail } from "@/lib/doll-visualizer/email";
-import { readVisualizerUsage, usageCookie } from "@/lib/doll-visualizer/usage";
+import { recordVisualizerPreview, visualizerUsageForEmail } from "@/lib/doll-visualizer/accountUsage";
+import { readVisualizerSession } from "@/lib/doll-visualizer/session";
 import { productDisplayName } from "@/lib/catalog/naming";
 import { productImageSources } from "@/lib/catalog/productImage";
 import { getProductByHandle } from "@/lib/shopify/storefront";
@@ -30,7 +30,6 @@ const requestWindows = new Map<string, { count: number; resetsAt: number }>();
 const schema = z.object({
   productHandle: z.string().min(1).max(180),
   sourcePosition: z.number().int().min(0).max(7),
-  email: z.string().email().max(180).optional(),
   selections: z.array(z.object({ groupId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) })).min(1).max(2)
 });
 
@@ -42,6 +41,8 @@ export async function POST(request: Request) {
   if (!isTrustedOrigin(request)) return apiError("This request could not be verified.", 403);
   if (!env.VENICE_API_KEY) return NextResponse.json({ error: "Doll Visualizer™ is not connected yet." }, { status: 503 });
   if (env.DOLL_VISUALIZER_ENABLED !== "true") return NextResponse.json({ error: "Doll Visualizer™ is temporarily unavailable. Please try again shortly." }, { status: 503 });
+  const session = readVisualizerSession(request.headers.get("cookie"));
+  if (!session) return NextResponse.json({ error: "Verify your email to use Doll Visualizer™." }, { status: 401 });
   const country = (request.headers.get("x-vercel-ip-country") || request.headers.get("cf-ipcountry") || "").toUpperCase();
   if (country && !ALLOWED_COUNTRIES.has(country)) return NextResponse.json({ error: "Doll Visualizer™ is not available in your region yet." }, { status: 403 });
   const clientKey = clientFingerprint(request);
@@ -50,8 +51,9 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Choose a photo and at least one available appearance option." }, { status: 400 });
   if (!isVisualizerProduct(parsed.data.productHandle)) return NextResponse.json({ error: "This preview choice is not currently available for this doll." }, { status: 404 });
-  const usage = readVisualizerUsage(request.headers.get("cookie"));
-  if (usage.count >= VISUALIZER_FREE_PREVIEWS) return NextResponse.json({ error: "You have used today’s preview limit. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
+  const usage = await visualizerUsageForEmail(session.email);
+  if (!usage.available) return NextResponse.json({ error: "Doll Visualizer™ usage tracking is temporarily unavailable. Please try again shortly." }, { status: 503 });
+  if (usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
   const product = await getProductByHandle(parsed.data.productHandle, { cache: "force-cache", revalidate: 3600 });
   if (!product) return NextResponse.json({ error: "This doll is not currently available in Doll Visualizer™." }, { status: 503 });
@@ -102,22 +104,31 @@ export async function POST(request: Request) {
   if (!previewDataUrl) return NextResponse.json({ error: "We couldn’t create this preview. Your selections are still here, so you can try again." }, { status: 502 });
   const displayName = productDisplayName(product) || product.title;
   const productUrl = `${env.NEXT_PUBLIC_SITE_URL}/products/${product.handle}`;
-  const email = parsed.data.email ? await sendVisualizerLookEmail({
-      to: parsed.data.email,
+  const recorded = await recordVisualizerPreview({
+    email: session.email,
+    model: generated?.model || "cache",
+    productHandle: product.handle,
+    selectionCount: selections.length,
+    cacheHit: Boolean(cachedPreview),
+    country
+  });
+  if (!recorded) return NextResponse.json({ error: "Doll Visualizer™ could not save this preview to your allowance. Please try again shortly." }, { status: 503 });
+  const updatedUsage = await visualizerUsageForEmail(session.email);
+  const email = await sendVisualizerLookEmail({
+      to: session.email,
       productName: displayName,
       productUrl,
       sourceImageUrl: source.url,
       previewDataUrl,
       selections: selections.map(({ group, option }) => ({ group: group.label, option: option.label }))
-    }) : { delivered: false as const };
+    });
   console.info("Doll Visualizer generation", JSON.stringify({ model: generated?.model || "cache", resolution: generated?.resolution || "cache", cacheHit: Boolean(cachedPreview), country: country || "unknown", selections: selections.length, emailDelivered: email.delivered, emailProvider: "provider" in email ? email.provider : "none" }));
-  const nextCount = usage.count + (cachedPreview ? 0 : 1);
   return NextResponse.json({
     previewDataUrl,
-    remaining: VISUALIZER_FREE_PREVIEWS - nextCount,
+    remaining: updatedUsage.remaining,
     emailDelivered: email.delivered,
     selections: selections.map(({ group, option }) => ({ groupId: group.id, group: group.label, optionId: option.id, option: option.label }))
-  }, { headers: { "Set-Cookie": usageCookie(nextCount), "Cache-Control": "no-store" } });
+  }, { headers: { "Cache-Control": "no-store" } });
 }
 
 function isTrustedOrigin(request: Request) {

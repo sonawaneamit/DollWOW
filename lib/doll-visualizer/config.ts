@@ -8,7 +8,6 @@ export const VISUALIZER_PRODUCT_HANDLES = [
 ] as const;
 export const VISUALIZER_DEFAULT_PRODUCT_HANDLE = VISUALIZER_PRODUCT_HANDLES[0];
 export const VISUALIZER_FREE_PREVIEWS = 5;
-export const VISUALIZER_COOKIE = "dw_visualizer_usage_v1";
 export const VISUALIZER_PROMPT_VERSION = "two-option-preview-v1";
 
 const visibleGroupIds = ["skin-tone", "hairstyle", "hair-color", "eye-color"] as const;

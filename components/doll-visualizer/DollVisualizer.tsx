@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
 import { visualizerDraftKey, visualizerSelectionKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
 
@@ -11,6 +11,8 @@ type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
   groups: VisualizerGroup[];
   freePreviews: number;
+  initialRemaining: number;
+  verifiedEmail: string;
   live: boolean;
 };
 
@@ -21,17 +23,15 @@ type Result = {
   selections: Array<{ groupId: string; group: string; optionId: string; option: string }>;
 };
 
-export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
+export function DollVisualizer({ product, groups, freePreviews, initialRemaining, verifiedEmail, live }: Props) {
   const resultStartRef = useRef<HTMLDivElement>(null);
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
   const [step, setStep] = useState(1);
   const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
   const [selections, setSelections] = useState<Record<string, string>>(initialDraft.selections ?? {});
-  const [email, setEmail] = useState(initialDraft.email ?? "");
-  const [emailConsent, setEmailConsent] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
-  const [remaining, setRemaining] = useState(freePreviews);
+  const [remaining, setRemaining] = useState(initialRemaining);
   const [loading, setLoading] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [showOriginal, setShowOriginal] = useState(false);
@@ -43,8 +43,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(visualizerDraftKey(product.handle), JSON.stringify({ photoPosition, selections, email }));
-  }, [email, photoPosition, product.handle, selections]);
+    localStorage.setItem(visualizerDraftKey(product.handle), JSON.stringify({ photoPosition, selections }));
+  }, [photoPosition, product.handle, selections]);
 
   useEffect(() => {
     if (!loading) {
@@ -69,8 +69,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     const option = group.options.find((item) => item.id === selections[group.id]);
     return option ? [{ group, option }] : [];
   }), [groups, selections]);
-  const emailIsValid = !email || /^\S+@\S+\.\S+$/.test(email);
-  const canGenerate = live && selectedItems.length > 0 && emailIsValid && (!email || emailConsent) && accepted && remaining > 0 && !loading;
+  const canGenerate = live && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
     if (!selections[groupId] && selectedItems.length >= 2) return;
@@ -91,7 +90,6 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         body: JSON.stringify({
           productHandle: product.handle,
           sourcePosition: photoPosition,
-          ...(email ? { email } : {}),
           selections: selectedItems.map(({ group, option }) => ({ groupId: group.id, optionId: option.id }))
         })
       });
@@ -155,8 +153,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
             <div>
               <strong>Preparing your Doll Visualizer™ preview</strong>
               <p>{waitMessage(elapsedSeconds)}</p>
-              <small>{email ? `You can wait here or leave this page. We’ll email ${email} when your preview is ready.` : "Please keep this page open while your preview is created."}</small>
-              {email ? <Link className="visualizer-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link> : null}
+              <small>You can wait here or leave this page. We’ll email {verifiedEmail} when your preview is ready.</small>
+              <Link className="visualizer-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link>
             </div>
           </div>
         </div>
@@ -166,7 +164,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         <section className="visualizer-preview" aria-live="polite">
           {result ? (
             <div ref={resultStartRef} className="visualizer-result-copy visualizer-result-copy-mobile">
-              <ResultIntro result={result} email={email} />
+              <ResultIntro result={result} verifiedEmail={verifiedEmail} />
             </div>
           ) : null}
           <div className="visualizer-preview-frame">
@@ -249,9 +247,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                     </div>
                   </fieldset>
                 ))}
-                <label className="visualizer-email"><Mail /><span><b>Email my preview</b><small>Optional. Add your email if you would like to leave this page and receive the finished preview.</small></span><input type="email" value={email} onChange={(event) => { setEmail(event.target.value); if (!event.target.value) setEmailConsent(false); }} placeholder="you@example.com" autoComplete="email" /></label>
-                {email && !emailIsValid ? <p className="visualizer-error">Enter a valid email or leave the field blank.</p> : null}
-                {email ? <label className="visualizer-consent"><input type="checkbox" checked={emailConsent} onChange={(event) => setEmailConsent(event.target.checked)} /><span>Email me this Doll Visualizer™ preview.</span></label> : null}
+                <p className="visualizer-verified-email"><ShieldCheck /><span><b>Verified access</b><small>Previews are connected to {verifiedEmail} across your devices.</small></span></p>
                 <label className="visualizer-consent"><input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} /><span>Doll Visualizer™ creates an approximate visual preview. Your finished doll may vary in color, texture, styling, and option details.</span></label>
                 <p className="visualizer-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
                 {!live ? <p className="visualizer-notice">Doll Visualizer™ is temporarily unavailable. Please try again shortly.</p> : null}
@@ -259,7 +255,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               </div>
             ) : result ? (
               <div className="visualizer-pane visualizer-result-copy">
-                <ResultSummary result={result} email={email} />
+                <ResultSummary result={result} verifiedEmail={verifiedEmail} />
               </div>
             ) : null}
           </div>
@@ -277,23 +273,23 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   );
 }
 
-function ResultSummary({ result, email }: { result: Result; email: string }) {
+function ResultSummary({ result, verifiedEmail }: { result: Result; verifiedEmail: string }) {
   return (
     <>
-      <ResultIntro result={result} email={email} />
+      <ResultIntro result={result} verifiedEmail={verifiedEmail} />
       <ResultNotes />
     </>
   );
 }
 
-function ResultIntro({ result, email }: { result: Result; email: string }) {
+function ResultIntro({ result, verifiedEmail }: { result: Result; verifiedEmail: string }) {
   return (
     <>
       <p className="visualizer-result-eyebrow">Doll Visualizer™</p>
       <h2>Your look is ready</h2>
       <strong className="visualizer-selection-heading">Previewed choices</strong>
       <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
-      {email ? <p>{result.emailDelivered ? `Sent to ${email}.` : "The email could not be sent. You can save the preview here."}</p> : null}
+      <p>{result.emailDelivered ? `Sent to ${verifiedEmail}.` : "The email could not be sent. You can save the preview here."}</p>
     </>
   );
 }
@@ -308,7 +304,7 @@ function omit(record: Record<string, string>, key: string) {
   return Object.fromEntries(Object.entries(record).filter(([entry]) => entry !== key));
 }
 
-function readDraft(handle: string): { photoPosition?: number; selections?: Record<string, string>; email?: string } {
+function readDraft(handle: string): { photoPosition?: number; selections?: Record<string, string> } {
   if (typeof window === "undefined") return {};
   try {
     return JSON.parse(localStorage.getItem(visualizerDraftKey(handle)) || "{}") as ReturnType<typeof readDraft>;

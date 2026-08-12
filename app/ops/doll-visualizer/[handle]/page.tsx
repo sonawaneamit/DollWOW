@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import { DollVisualizer } from "@/components/doll-visualizer/DollVisualizer";
+import { VisualizerAccessGate } from "@/components/doll-visualizer/VisualizerAccessGate";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { isVisualizerProduct, VISUALIZER_FREE_PREVIEWS, visualizerConfigForProduct, visualizerGroups } from "@/lib/doll-visualizer/config";
+import { visualizerUsageForEmail } from "@/lib/doll-visualizer/accountUsage";
+import { maskedEmail, verifyVisualizerSessionValue, VISUALIZER_SESSION_COOKIE } from "@/lib/doll-visualizer/session";
 import { productDisplayName } from "@/lib/catalog/naming";
 import { protectedProductImageUrl, productImageSources } from "@/lib/catalog/productImage";
 import { getProductByHandle } from "@/lib/shopify/storefront";
@@ -16,6 +20,9 @@ export const dynamic = "force-dynamic";
 export default async function DollVisualizerProductPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   if (!isVisualizerProduct(handle)) notFound();
+  const session = verifyVisualizerSessionValue((await cookies()).get(VISUALIZER_SESSION_COOKIE)?.value);
+  if (!session) return <div className="visualizer-access-shell"><VisualizerAccessGate handle={handle} /></div>;
+  const usage = await visualizerUsageForEmail(session.email);
   const product = await getProductByHandle(handle, { cache: "force-cache", revalidate: 3600 });
   if (!product) notFound();
   const groups = visualizerGroups(visualizerConfigForProduct(product, getCustomizationConfig(product)));
@@ -35,7 +42,9 @@ export default async function DollVisualizerProductPage({ params }: { params: Pr
       }}
       groups={groups}
       freePreviews={VISUALIZER_FREE_PREVIEWS}
-      live={Boolean(process.env.VENICE_API_KEY) && process.env.DOLL_VISUALIZER_ENABLED === "true"}
+      initialRemaining={usage.remaining}
+      verifiedEmail={maskedEmail(session.email)}
+      live={usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLL_VISUALIZER_ENABLED === "true"}
     />
   );
 }

@@ -144,6 +144,24 @@
 .visualizer-wait-prominent>svg{width:26px;height:26px}
 .visualizer-wait-prominent strong{font-size:16px}
 .visualizer-wait-prominent p{font-size:14px}
+.visualizer-access-shell{display:grid;min-height:100dvh;place-items:center;padding:24px;background:radial-gradient(circle at 50% 15%,rgb(var(--color-accent)/.09),transparent 34%),rgb(var(--color-bg));color:rgb(var(--color-text))}
+.visualizer-access-card{display:grid;width:min(520px,100%);justify-items:start;padding:clamp(24px,6vw,48px);border:1px solid rgb(var(--color-border-strong));border-radius:28px;background:rgb(var(--color-surface));box-shadow:var(--shadow-card)}
+.visualizer-access-card>svg{width:38px;height:38px;margin-bottom:22px;color:rgb(var(--color-accent))}
+.visualizer-access-card h1{margin-top:10px;font-size:clamp(34px,7vw,54px);font-weight:650;line-height:1;letter-spacing:-.035em}
+.visualizer-access-card>p:not(.alive-eyebrow){margin-top:16px;color:rgb(var(--color-text-dim));font-size:16px;line-height:1.6}
+.visualizer-access-card form{display:grid;width:100%;gap:9px;margin-top:28px}
+.visualizer-access-card label{font-size:13px;font-weight:800}
+.visualizer-access-card input{min-height:52px;border:1px solid rgb(var(--color-border-strong));border-radius:14px;background:rgb(var(--color-bg));padding:0 15px;color:rgb(var(--color-text));font-size:16px}
+.visualizer-access-card button{min-height:52px;margin-top:3px;border-radius:14px;background:rgb(var(--color-accent));color:white;font-weight:850}
+.visualizer-access-card button:disabled{opacity:.55}
+.visualizer-access-card>small{margin-top:12px;color:rgb(var(--color-text-faint));font-size:11px}
+.visualizer-access-sent{justify-items:center;text-align:center}
+.visualizer-verified-email{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid rgb(var(--color-border));border-radius:14px;background:rgb(var(--color-surface-tint))}
+.visualizer-verified-email>svg{width:20px;flex:0 0 20px;color:rgb(var(--color-success))}
+.visualizer-verified-email b,.visualizer-verified-email small{display:block}
+.visualizer-verified-email b{font-size:12px}
+.visualizer-verified-email small{margin-top:2px;color:rgb(var(--color-text-dim));font-size:10px}
+@media(max-width:640px){.visualizer-access-shell{align-items:start;padding:calc(20px + env(safe-area-inset-top)) 14px 20px}.visualizer-access-card{margin-top:8vh;padding:25px 20px;border-radius:22px}.visualizer-access-card h1{font-size:36px}.visualizer-access-card>p:not(.alive-eyebrow){font-size:14px}}
 .visualizer-wait-prominent small{font-size:12px}
 @media(max-width:900px){.visualizer-wait-overlay{top:64px;padding:12px 12px 52px}.visualizer-wait-prominent{padding:16px;border-radius:16px}.visualizer-wait-prominent strong{font-size:15px}}
 
