@@ -184,7 +184,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         <section className="visualizer-preview" aria-live="polite">
           {result ? (
             <div ref={resultStartRef} className="visualizer-result-copy visualizer-result-copy-mobile">
-              <ResultSummary result={result} email={email} />
+              <ResultIntro result={result} email={email} />
             </div>
           ) : null}
           <div className="visualizer-preview-frame">
@@ -217,6 +217,9 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                 </div>
               </div>
               {cartError ? <p className="visualizer-error" role="alert">{cartError}</p> : null}
+              <div className="visualizer-result-notes-mobile">
+                <ResultNotes />
+              </div>
             </div>
           ) : null}
         </section>
@@ -296,13 +299,28 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
 function ResultSummary({ result, email }: { result: Result; email: string }) {
   return (
     <>
-      <Sparkles />
+      <ResultIntro result={result} email={email} />
+      <ResultNotes />
+    </>
+  );
+}
+
+function ResultIntro({ result, email }: { result: Result; email: string }) {
+  return (
+    <>
       <p className="visualizer-result-eyebrow">Your Doll Visualizer™ preview</p>
       <h2>Here’s your doll with the look you chose</h2>
       <p>Compare your preview with the original product photo before making your selections.</p>
       <strong className="visualizer-selection-heading">Previewed choices</strong>
       <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
       {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
+    </>
+  );
+}
+
+function ResultNotes() {
+  return (
+    <>
       <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
       <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
       <p className="visualizer-support-note">Previews can sometimes get a detail wrong. <Link href="/support">Ask our team</Link> if you’d like help confirming your choices.</p>
