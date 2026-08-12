@@ -305,7 +305,7 @@ function ResultSummary({ result, email }: { result: Result; email: string }) {
       {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
       <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
       <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
-      <Link className="visualizer-help-link" href="/support">Ask DollWOW</Link>
+      <p className="visualizer-support-note">Previews can sometimes get a detail wrong. <Link href="/support">Ask our team</Link> if you’d like help confirming your choices.</p>
     </>
   );
 }

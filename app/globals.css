@@ -126,6 +126,8 @@
 .visualizer-privacy{color:rgb(var(--color-text-faint));font-size:10px;line-height:1.45}
 .visualizer-wait .visualizer-leave-link,.visualizer-help-link{display:inline-flex;margin-top:8px;color:rgb(var(--color-accent));font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
 .visualizer-selection-heading{font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.visualizer-result-copy .visualizer-support-note{padding:10px 12px;border-radius:11px;background:rgb(var(--color-surface-tint));color:rgb(var(--color-text-dim));font-size:11px;line-height:1.45}
+.visualizer-support-note a{color:rgb(var(--color-accent));font-weight:800;text-decoration:underline;text-underline-offset:3px}
 .visualizer-error strong,.visualizer-error p,.visualizer-error small{display:block}
 .visualizer-error p{margin-top:3px}
 .visualizer-error small{margin-top:5px;color:inherit;line-height:1.45}
