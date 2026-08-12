@@ -124,3 +124,19 @@ describe("body-style collection SEO", () => {
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
+
+describe("Asian and Japanese-style collection SEO", () => {
+  const preset = collectionPresets["asian-dolls"];
+
+  it("consolidates overlapping style intent without assigning nationality", () => {
+    const intro = collectionIntro(preset, "asian-dolls");
+    const faqs = collectionFaqItems("asian-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("Japanese-inspired styles");
+    expect(copy).toContain("does not assign a nationality or manufacturing origin");
+    expect(copy).toContain("4 to 6 hours");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});

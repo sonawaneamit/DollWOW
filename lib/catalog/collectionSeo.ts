@@ -297,7 +297,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "futa-sex-dolls":
     "Futa is short for futanari, an adult fantasy term commonly used when searching for a feminine doll with a penis option. FutaDoll is also the name of a separate seller and brand identity, but DollWow does not currently list FutaDoll products. The products below come from the actual manufacturers named on each card, including Irontech, Real Lady, WM Dolls, SE Doll, and Angelkiss. Every result is a full-body product whose current customization data offers a selectable insertable penis add-on. Compare the exact brand, body, head, material, height, listed weight, photographs, add-on size, price, compatibility, and care needs. The add-on is optional and must be selected on the product page; the standard build may not include it.",
   "asian-dolls":
-    "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
+    "Shop Asian sex dolls and Japanese-inspired styles selected from current catalog presentation and product details. The collection includes varied faces, bodies, heights, and proportions across TPE, silicone, and hybrid construction. Asian or Japanese-inspired appearance describes visual styling, not a model's nationality, manufacturing origin, quality, or technical specification. Compare the exact head and body, several gallery angles, measurements, listed weight, material, skin tone, hair, makeup, availability, and supported options before choosing. If a Japanese- or Korean-inspired model you want is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "black-dolls":
     "Shop Black sex dolls shown with deep or dark skin tones and Black-inspired styling across current DollWow brands. This is an appearance category, not a promise about one body type, hair texture, material, or feature set. Compare the pictured head and body, exact skin tone, measurements, listed weight, TPE or silicone construction, availability, and supported options. If you have another approved model in mind, send the name or supplier link and our team will check it quickly.",
   "anime-dolls":
@@ -331,7 +331,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
   "new-sex-dolls": "Shop new sex dolls and latest arrivals. Compare current models by brand, TPE or silicone, size, weight, options, price, and availability.",
   "futa-sex-dolls": "Compare dolls from established brands with a verified insertable penis option. Review brand, body, material, size, weight, price, care, and compatibility.",
-  "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
+  "asian-dolls": "Shop Asian sex dolls and Japanese-inspired styles by face, body, TPE or silicone, height, weight, price, availability, and custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
   "fuller-dolls": "Shop fuller and curvy sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
@@ -1407,7 +1407,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "asian-dolls": [
     {
       question: "What does Asian sex doll mean on DollWow?",
-      answer: "It is a visual shopping category based on current catalog styling and product details. It does not imply one nationality, face, body type, material, or specification."
+      answer: "It is a visual shopping category based on current catalog styling and product details. It can include Japanese-inspired and other East Asian presentation, but it does not assign a nationality or manufacturing origin to a product and does not imply one face, body type, material, or specification."
+    },
+    {
+      question: "Are Japanese sex dolls included in this collection?",
+      answer: "Japanese-inspired styles share this collection because current search results and catalog presentation overlap strongly with broader Asian styling. Confirm the exact face, head, body, photographs, and product details rather than relying on the regional label alone."
     },
     {
       question: "Are Asian sex dolls made from TPE or silicone?",

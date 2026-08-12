@@ -420,6 +420,9 @@ describe("catalog filters", () => {
       title: "Asian sex dolls",
       filters: { look: "look-asian" }
     });
+    expect(canonicalShopCollectionHandle("japanese-sex-dolls")).toBe("asian-dolls");
+    expect(canonicalShopCollectionHandle("japanese-dolls")).toBe("asian-dolls");
+    expect(isIndexableShopCollectionHandle("japanese-sex-dolls")).toBe(false);
     expect(collectionPresets["black-dolls"]).toEqual({
       title: "Black sex dolls",
       filters: { look: "skin-black" }
