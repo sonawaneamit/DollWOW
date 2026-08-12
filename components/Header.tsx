@@ -71,6 +71,7 @@ const suggestedSearchRoutes = [
 ];
 
 const brandLinks = catalogFilterOptions.brands.map((brand) => ({ label: brand.label, href: brandHubHref(brand.value) }));
+const brandMenuColumns = splitIntoBalancedColumns(brandLinks, 3);
 
 const prefetchTargets = [
   "/shop/sex-dolls",
@@ -334,18 +335,46 @@ function HeaderLink({ href, active, onNavigate, children }: { href: string; acti
 
 function BrandsDropdown({ onNavigate }: { onNavigate: () => void }) {
   return (
-    <div id="desktop-brands-menu" className="absolute left-1/2 top-[calc(100%+10px)] z-[85] w-[min(420px,calc(100vw-40px))] -translate-x-1/2 overflow-hidden rounded-lg bg-surface shadow-panel">
-      <div className="max-h-[min(65vh,620px)] overflow-y-auto p-2">
-        {brandLinks.map((link) => (
-          <Link key={link.href} href={link.href} onClick={onNavigate} className="flex min-h-12 items-center rounded-sm px-4 text-[17px] font-semibold text-text transition-colors hover:bg-surface-tint">
-            {link.label}
-          </Link>
+    <div
+      id="desktop-brands-menu"
+      className="absolute left-1/2 top-[calc(100%+10px)] z-[85] w-[min(880px,calc(100vw-32px))] -translate-x-1/2 overflow-hidden rounded-lg border border-border bg-surface shadow-panel"
+    >
+      <div className="flex items-end justify-between gap-6 border-b border-border px-6 py-4">
+        <div>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-accent">Brand directory</p>
+          <p className="mt-1 font-display text-[22px] font-semibold leading-tight text-text">Shop by brand</p>
+        </div>
+        <p className="pb-0.5 text-[14px] text-text-dim">{brandLinks.length} approved brands</p>
+      </div>
+
+      <div className="grid grid-cols-3 divide-x divide-border px-3 py-3" aria-label="Doll brands">
+        {brandMenuColumns.map((column, columnIndex) => (
+          <div key={`brand-column-${columnIndex}`} className="px-2">
+            {column.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onNavigate}
+                className="flex min-h-11 items-center border-l-2 border-transparent px-3 text-[16px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-tint focus-visible:border-accent focus-visible:bg-surface-tint"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         ))}
       </div>
-      <Link href="/brands" onClick={onNavigate} className="flex min-h-12 items-center justify-between border-t border-border bg-surface-tint px-6 text-[17px] font-semibold text-accent">
-        All brands <span aria-hidden="true">→</span>
+
+      <Link href="/brands" onClick={onNavigate} className="flex min-h-14 items-center justify-between border-t border-border bg-surface-tint px-6 text-[16px] font-semibold text-accent hover:bg-accent-tint">
+        Browse all brands <span className="text-xl" aria-hidden="true">→</span>
       </Link>
     </div>
+  );
+}
+
+function splitIntoBalancedColumns<T>(items: ReadonlyArray<T>, columnCount: number): T[][] {
+  const itemsPerColumn = Math.ceil(items.length / Math.max(1, columnCount));
+  return Array.from({ length: columnCount }, (_, index) => items.slice(index * itemsPerColumn, (index + 1) * itemsPerColumn)).filter(
+    (column) => column.length > 0
   );
 }
 

@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { brandCollectionRedirectHref, brandHubHref, catalogBrands } from "@/lib/catalog/brands";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 
@@ -22,5 +24,13 @@ describe("catalog brand navigation", () => {
     const realLady = catalogBrands.find((brand) => brand.value === "real-lady");
     expect(realLady).toMatchObject({ label: "Real Lady", collectionHandle: "real-lady-dolls" });
     expect(catalogFilterOptions.brands.some((brand) => brand.value === "real-lady")).toBe(true);
+  });
+
+  it("renders the desktop brand directory as balanced columns without an internal scroller", () => {
+    const headerSource = fs.readFileSync(path.join(process.cwd(), "components/Header.tsx"), "utf8");
+
+    expect(headerSource).toContain("splitIntoBalancedColumns(brandLinks, 3)");
+    expect(headerSource).toContain("grid grid-cols-3 divide-x divide-border");
+    expect(headerSource).not.toContain('max-h-[min(65vh,620px)] overflow-y-auto');
   });
 });
