@@ -131,7 +131,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "height-165-169": { title: "Dolls 165-169 cm", filters: { height: "165-169" } },
   "height-170-plus": { title: "Dolls 170 cm+", filters: { height: "170-999" } },
   "lightweight-sex-dolls": { title: "Lightweight sex dolls", filters: { productForm: "full-doll", weight: "0-74" } },
-  "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } },
+  "new-sex-dolls": { title: "New sex dolls and latest arrivals", filters: { sort: "latest" } },
   "futa-sex-dolls": {
     title: "Futa sex dolls by brand",
     filters: { bodyType: "female", productForm: "full-doll", capability: "insertable-penis-add-on" }
@@ -142,6 +142,9 @@ const collectionAliases: Record<string, string> = {
   customizable: "custom",
   "custom-0": "custom",
   "silicone-head": "hybrid",
+  "new-arrivals": "new-sex-dolls",
+  "newest-sex-dolls": "new-sex-dolls",
+  "latest-sex-dolls": "new-sex-dolls",
   "transgender-sex-dolls": "futa-sex-dolls",
   "trans-sex-dolls": "futa-sex-dolls"
 };

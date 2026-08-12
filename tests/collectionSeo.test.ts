@@ -74,6 +74,23 @@ describe("futa collection SEO", () => {
   });
 });
 
+describe("new sex dolls collection SEO", () => {
+  const preset = collectionPresets["new-sex-dolls"];
+
+  it("owns new, newest, and latest arrival intent without overstating release facts", () => {
+    const intro = collectionIntro(preset, "new-sex-dolls");
+    const faqs = collectionFaqItems("new-sex-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(preset.title).toBe("New sex dolls and latest arrivals");
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("available supplier release ordering");
+    expect(copy).toContain("New does not automatically mean more realistic");
+    expect(copy).toContain("4 to 6 hours");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
 describe("body-style collection SEO", () => {
   it("keeps fuller intent on one female collection with measurement-first guidance", () => {
     const preset = collectionPresets["fuller-dolls"];

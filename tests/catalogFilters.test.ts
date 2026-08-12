@@ -402,13 +402,17 @@ describe("catalog filters", () => {
     };
 
     expect(collectionPresets["new-sex-dolls"]).toEqual({
-      title: "New sex dolls",
+      title: "New sex dolls and latest arrivals",
       filters: { sort: "latest" }
     });
     expect(filterProducts([earlier, newer], collectionPresets["new-sex-dolls"].filters).map((product) => product.id)).toEqual([
       "newer-release",
       "earlier-release"
     ]);
+    expect(canonicalShopCollectionHandle("new-arrivals")).toBe("new-sex-dolls");
+    expect(canonicalShopCollectionHandle("newest-sex-dolls")).toBe("new-sex-dolls");
+    expect(canonicalShopCollectionHandle("latest-sex-dolls")).toBe("new-sex-dolls");
+    expect(isIndexableShopCollectionHandle("new-arrivals")).toBe(false);
   });
 
   it("keeps appearance collections on their researched canonical titles and filters", () => {
