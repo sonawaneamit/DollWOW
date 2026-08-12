@@ -90,7 +90,7 @@ Height is easy to scan but does not predict ownership effort. Review:
 
 A shorter doll can still be dense, wide, or difficult to turn during cleaning. A taller product can sometimes have a manageable listed weight because construction varies. Choose a maximum handling weight before falling in love with a photograph.
 
-Use [lighter dolls](/shop/lighter) when frequent movement is important, and measure the delivery route and storage opening before ordering.
+Use [lighter dolls](/shop/lightweight-sex-dolls) when frequent movement is important, and measure the delivery route and storage opening before ordering.
 
 ## Customization Should Follow the Base Product
 

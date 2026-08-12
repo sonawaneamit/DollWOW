@@ -39,3 +39,10 @@ Reviewed: 2026-08-12
 - `/shop/sex-dolls` was discoverable through the XML sitemap but had not yet been crawled and was reported as `Discovered - currently not indexed`.
 - A manual indexing request for `/shop/sex-dolls` was attempted, but Search Console could not connect to its reCAPTCHA service and did not submit the request. This was a Google interface failure rather than a page validation failure.
 - The collection remains in the XML sitemap and was included in the accepted IndexNow release batch. Retry the Google request after Search Console's challenge service is available.
+
+## August 12 Follow-Up
+
+- Search Console still reports the same one complete search day: 3 clicks, 49 impressions, 6.1% click-through rate, and average position 12.3.
+- The seven visible queries remain too sparse and brand-led to justify rewriting a collection or guide.
+- Google's page-indexing report is still processing and does not yet provide indexed or excluded URL counts.
+- Continue the planned launch monitoring. Use query-led content changes only after enough impressions exist to distinguish a real mismatch from first-day noise.

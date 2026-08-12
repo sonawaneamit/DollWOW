@@ -119,7 +119,7 @@ DollWow's [30-Day Price Lock](/best-price-guarantee) reviews eligible comparable
 
 Measure the route before ordering. Include the entrance, hallway, stairs, elevator, corners, cleaning space, storage opening, and the position in which the doll will be supported.
 
-Read height and weight together. A flexible doll can be harder to move than a rigid object with the same weight because the limbs and center of mass shift. If you cannot comfortably lift the listed weight, use the [lighter dolls collection](/shop/lighter), consider a more compact body, or ask the team to narrow the catalog around a firm handling limit.
+Read height and weight together. A flexible doll can be harder to move than a rigid object with the same weight because the limbs and center of mass shift. If you cannot comfortably lift the listed weight, use the [lighter dolls collection](/shop/lightweight-sex-dolls), consider a more compact body, or ask the team to narrow the catalog around a firm handling limit.
 
 For delivery, confirm plain outer packaging, the current billing descriptor, tracking messages, signature needs, customs where applicable, and the arrival reporting process. The [discreet shipping guide](/learn/discreet-sex-doll-shipping) explains the whole privacy journey.
 

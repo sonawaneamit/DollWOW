@@ -91,7 +91,7 @@ Clementine is included for its current listed weight of 48.5 lb / 22 kg at 148 c
 
 Listed weight should still be confirmed before purchase. Manufacturing changes, selected options, packaging, and accessories can affect what the buyer handles. Lower weight also does not mean the body will suit every storage plan or desired proportion.
 
-Choose this type of candidate when handling is a primary constraint. Compare it with the [lighter dolls collection](/shop/lighter) and verify the route from delivery point to storage area.
+Choose this type of candidate when handling is a primary constraint. Compare it with the [lighter dolls collection](/shop/lightweight-sex-dolls) and verify the route from delivery point to storage area.
 
 ## Best Hybrid-Value Candidate
 

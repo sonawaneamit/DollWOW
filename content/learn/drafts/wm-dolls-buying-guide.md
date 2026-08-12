@@ -102,7 +102,7 @@ Before choosing, plan these four movements:
 3. Cleaning area back to drying and storage
 4. Safe repositioning without pulling hands, feet, neck, or head
 
-If any movement feels unrealistic at the listed weight, choose a lighter body or plan two-person assistance. Our [size guide](/learn/sex-doll-size-guide) and [storage guide](/learn/sex-doll-storage) can help.
+If any movement feels unrealistic at the listed weight, choose a lighter body or plan two-person assistance. The [size and weight section of the complete buyer's guide](/learn/sex-doll-guide#size-and-weight-matter-more-than-buyers-expect) and [storage guide](/learn/sex-doll-storage) can help.
 
 ## WM Bodies, Heads, And Appearance Options
 

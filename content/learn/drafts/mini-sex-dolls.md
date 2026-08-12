@@ -71,7 +71,7 @@ Height and weight are related, but they are not interchangeable. Finished weight
 
 This is why a short doll can still be difficult to lift. Before ordering, picture the real movement rather than a single number. Can you lift the doll from the floor? Can you carry it around a bed or through a narrow doorway? Can you support it while cleaning and drying it?
 
-A difference of 10 lb / 4.5 kg is noticeable in repeated handling. If lifting is the main constraint, use the [lighter dolls collection](/shop/lighter) or ask support to confirm the complete product weight. Do not use the word mini as a substitute for the scale.
+A difference of 10 lb / 4.5 kg is noticeable in repeated handling. If lifting is the main constraint, use the [lighter dolls collection](/shop/lightweight-sex-dolls) or ask support to confirm the complete product weight. Do not use the word mini as a substitute for the scale.
 
 ## Measure the Room Before the Doll
 
@@ -265,4 +265,4 @@ Measure the storage space, narrow doors, stairs, and the route from delivery to 
 
 ### Where can I compare mini sex dolls?
 
-Browse the live [mini sex doll collection](/shop/mini-sex-dolls) for full dolls up to 120 cm / 3 ft 11 in. Use the [petite collection](/shop/petite-dolls) for taller compact models and the [lighter dolls collection](/shop/lighter) when carrying weight is the main concern.
+Browse the live [mini sex doll collection](/shop/mini-sex-dolls) for full dolls up to 120 cm / 3 ft 11 in. Use the [petite collection](/shop/petite-dolls) for taller compact models and the [lighter dolls collection](/shop/lightweight-sex-dolls) when carrying weight is the main concern.

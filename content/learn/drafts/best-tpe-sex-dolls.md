@@ -129,7 +129,7 @@ TPE stands for thermoplastic elastomer. In sex dolls, the label covers manufactu
 
 This is why a statement such as “TPE feels softer” can be directionally useful but cannot predict the exact feel of every doll. The amount of material, internal foam or hollow sections, skeleton, body geometry, and weight-reduction engineering also change the finished product.
 
-Ask about the exact model when formulation or firmness matters. Read [what TPE material is](/learn/what-is-tpe-material) and the [TPE versus silicone guide](/learn/tpe-vs-silicone-sex-dolls) before treating the material label as the whole buying decision.
+Ask about the exact model when formulation or firmness matters. Read the [TPE versus silicone guide](/learn/tpe-vs-silicone-sex-dolls) before treating the material label as the whole buying decision.
 
 ## The Five Checks That Matter Most
 

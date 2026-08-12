@@ -55,7 +55,7 @@ Alex’s rule is simple: if a page calls a doll best, it should explain best for
 | Buyer priority | What to compare | DollWow starting point |
 | --- | --- | --- |
 | Overall shortlist | Clear selection criteria and distinct buyer needs | [Best sex dolls](/learn/best-sex-dolls) |
-| Lower handling weight | Listed pounds and kilograms, body shape, and storage plan | [Lighter dolls](/shop/lighter) |
+| Lower handling weight | Listed pounds and kilograms, body shape, and storage plan | [Lighter dolls](/shop/lightweight-sex-dolls) |
 | Realistic appearance | Face, proportions, finish, hands, feet, hair, and exact configuration | [Realistic sex dolls](/shop/realistic-sex-dolls) |
 | Full silicone | Construction, firmness, detail, weight, care, and price | [Silicone dolls](/shop/silicone) |
 | Softer value | Exact TPE formulation, body design, care, and weight | [TPE dolls](/shop/tpe) |

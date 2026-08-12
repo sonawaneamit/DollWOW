@@ -151,7 +151,7 @@ Compare both US and metric measurements. Check height in feet and inches plus ce
 - storage length, width, and depth
 - how often the doll must be moved
 
-Use [mini sex dolls](/shop/mini-sex-dolls), [lighter dolls](/shop/lighter), or the [DollWow finder](/help-me-choose) when handling is a major concern. If a critical weight or measurement is missing, message live chat or email [hello@dollwow.com](mailto:hello@dollwow.com). We will request confirmation for the exact product.
+Use [mini sex dolls](/shop/mini-sex-dolls), [lighter dolls](/shop/lightweight-sex-dolls), or the [DollWow finder](/help-me-choose) when handling is a major concern. If a critical weight or measurement is missing, message live chat or email [hello@dollwow.com](mailto:hello@dollwow.com). We will request confirmation for the exact product.
 
 ## Compare Privacy and Delivery
 

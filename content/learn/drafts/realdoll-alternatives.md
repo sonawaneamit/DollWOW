@@ -70,7 +70,7 @@ An alternative should preserve the priority that matters to you. It does not nee
 | Premium silicone construction | Exact body and head material, firmness, finish, seams, weight, and care | [Silicone dolls](/shop/silicone) |
 | Realistic appearance | Proportions, sculpt, eyes, skin finish, hands, feet, hair, and final styling | [Realistic sex dolls](/shop/realistic-sex-dolls) |
 | Custom appearance | Supported head/body pairing, tone, eyes, hair, makeup, and product-specific options | [Custom dolls](/shop/custom) |
-| Lower handling burden | Listed pounds and kilograms, body size, weight-reduction options, and storage route | [Lighter dolls](/shop/lighter) |
+| Lower handling burden | Listed pounds and kilograms, body size, weight-reduction options, and storage route | [Lighter dolls](/shop/lightweight-sex-dolls) |
 | Faster arrival | Confirmed physical unit, warehouse, fixed configuration, and dispatch estimate | [Ready-to-ship dolls](/shop/ready-to-ship) |
 | Lower total cost | Equivalent material, configuration, shipping, taxes, and ownership needs | [Sex doll cost guide](/learn/sex-doll-cost) |
 | Help after delivery | Arrival process, care guidance, parts, and repair coordination | [Care for Life](/care-for-life) |

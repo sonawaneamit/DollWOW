@@ -108,7 +108,7 @@ Before checkout, confirm:
 - Whether the model has a lightweight or foam-core design
 - Where it will be stored and how far it must be carried
 
-Read the [sex doll size guide](/learn/sex-doll-size-guide) and [storage guide](/learn/sex-doll-storage) before buying a model near the upper end of what you can comfortably handle.
+Read the [size and weight section of the complete buyer's guide](/learn/sex-doll-guide#size-and-weight-matter-more-than-buyers-expect) and [storage guide](/learn/sex-doll-storage) before buying a model near the upper end of what you can comfortably handle.
 
 ## Cleaning and Hygiene
 

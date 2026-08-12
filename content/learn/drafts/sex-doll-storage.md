@@ -214,7 +214,7 @@ Consider:
 - What happens during travel, a move, fire inspection, or home repair
 - Whether powered features should be disconnected or batteries removed
 
-A smaller or lighter doll may offer more privacy because it can be moved and stored without assistance. Compare [mini sex dolls](/shop/mini-sex-dolls), [petite dolls](/shop/petite-dolls), and [lighter dolls](/shop/lighter) when space or handling is the main constraint.
+A smaller or lighter doll may offer more privacy because it can be moved and stored without assistance. Compare [mini sex dolls](/shop/mini-sex-dolls), [petite dolls](/shop/petite-dolls), and [lighter dolls](/shop/lightweight-sex-dolls) when space or handling is the main constraint.
 
 ## Safe Lifting And Access
 
