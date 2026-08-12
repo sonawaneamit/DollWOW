@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # Sex Doll Maintenance: A Practical Care Checklist
@@ -279,6 +279,14 @@ After purchase, use Care 365 and Repair Concierge for practical ownership help u
 - [ ] I know how wigs, implanted hair, eyes, and makeup should be handled.
 - [ ] I document changes before attempting a repair.
 - [ ] I know how to reach DollWow through live chat or hello@dollwow.com.
+
+## Manufacturer Care Sources
+
+- [Tantaly: official cleaning and maintenance guidance](https://www.tantaly.com/pages/cleaning-and-maintenance-guide-for-sex-doll)
+- [RealDoll: official Classics care and maintenance guide (PDF)](https://realdoll.com/wp-content/uploads/2025/08/Care-Guide-Realdoll-Classic-R2.pdf)
+- [ZELEX: official doll care guide](https://www.zelexdoll.com/pages/dolls-guide)
+
+These manufacturer sources support selected cleaning, drying, stain, pressure, storage, lubricant, and material-specific cautions. They also demonstrate why a maintenance routine approved for one formulation, product, insert, hanging system, or powered feature should not be generalized to another doll. The instructions supplied with the exact product take priority.
 
 ## FAQs
 

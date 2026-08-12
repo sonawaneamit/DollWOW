@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # How Discreet Sex Doll Shipping Works
@@ -260,6 +260,13 @@ At arrival:
 - Confirm the product and order details.
 - Photograph any damage or meaningful mismatch.
 - Contact DollWow promptly within the published reporting window if help is needed.
+
+## Shipping And Delivery Sources
+
+- [FedEx Delivery Manager](https://www.fedex.com/en-us/delivery-manager.html)
+- [US Customs and Border Protection: Internet Purchases](https://www.cbp.gov/trade/basic-import-export/internet-purchases)
+
+These official sources support the guide's distinction between seller-controlled privacy choices and carrier or customs processes. Available delivery controls depend on the carrier, shipment, address, and account, while international orders can still require customs information or inspection. DollWow's current [shipping information](/shipping), [shipping protection](/shipping-protection), and order confirmation control the support path for a DollWow order.
 
 ## FAQs
 
