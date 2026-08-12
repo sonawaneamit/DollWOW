@@ -143,7 +143,13 @@ const KEYWORD_TARGETS = {
   "silicone sex doll manufacturing process": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
   "us warehouse sex dolls": { pageType: "collection", targetPath: "/warehouse" },
   "usa warehouse sex dolls": { pageType: "collection", targetPath: "/warehouse" },
-  "sex dolls usa warehouse": { pageType: "collection", targetPath: "/warehouse" }
+  "sex dolls usa warehouse": { pageType: "collection", targetPath: "/warehouse" },
+  "piper doll": { pageType: "collection", targetPath: "/brands/piper-dolls" },
+  "piper sex doll": { pageType: "collection", targetPath: "/brands/piper-dolls" },
+  "piper sex dolls": { pageType: "collection", targetPath: "/brands/piper-dolls" },
+  "piper dolls review": { pageType: "learning-guide", targetPath: "/learn/piper-dolls-buying-guide" },
+  "piper sex doll review": { pageType: "learning-guide", targetPath: "/learn/piper-dolls-buying-guide" },
+  "piper doll buying guide": { pageType: "learning-guide", targetPath: "/learn/piper-dolls-buying-guide" }
 };
 
 const args = parseArgs(process.argv.slice(2));

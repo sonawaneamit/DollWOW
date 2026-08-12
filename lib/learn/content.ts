@@ -33,12 +33,6 @@ export type LearnArticle = {
 const ROOT = process.cwd();
 const DRAFT_DIR = path.join(ROOT, "content", "learn", "drafts");
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-const hiddenArticleSlugs = new Set([
-  "zelex-dolls-buying-guide",
-  "tpe-sex-doll-repair",
-  "silicone-sex-doll-repair",
-  "how-silicone-sex-dolls-are-made"
-]);
 const internalHeadings = [
   "DollWow Catalog Links To Add",
   "Product Links To Add",
@@ -63,7 +57,7 @@ export function getLearningArticles() {
     .readdirSync(DRAFT_DIR)
     .filter((file) => file.endsWith(".md"))
     .map((file) => readArticle(path.join(DRAFT_DIR, file)))
-    .filter((article) => !hiddenArticleSlugs.has(article.slug))
+    .filter((article) => article.status === "production")
     .sort((a, b) => priority(a.slug) - priority(b.slug) || a.title.localeCompare(b.title));
 }
 

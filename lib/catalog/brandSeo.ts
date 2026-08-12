@@ -504,9 +504,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   piper: {
     positioning:
-      "Piper Dolls is often compared by buyers looking for compact sizes, anime-inspired styling, and practical storage considerations.",
-    guideHref: "/learn/piper-dolls-buying-guide",
-    guideLabel: "Piper Dolls buying guide"
+      "Piper Dolls is often compared by buyers looking for compact sizes, anime-inspired styling, and practical storage considerations."
   },
   tantaly: {
     positioning:

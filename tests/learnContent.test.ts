@@ -2,6 +2,12 @@ import { describe, expect, it } from "vitest";
 import { buildArticleFaqStructuredData, getLearningArticle } from "@/lib/learn/content";
 
 describe("Learning Center content ownership", () => {
+  it("keeps every non-production article out of public routes", () => {
+    expect(getLearningArticle("piper-dolls-buying-guide")).toBeNull();
+    expect(getLearningArticle("how-silicone-sex-dolls-are-made")).toBeNull();
+    expect(getLearningArticle("zelex-dolls-buying-guide")).toBeNull();
+  });
+
   it("keeps the best TPE guide distinct from the broad best-dolls guide", () => {
     const tpeGuide = getLearningArticle("best-tpe-sex-dolls");
     const broadGuide = getLearningArticle("best-sex-dolls");

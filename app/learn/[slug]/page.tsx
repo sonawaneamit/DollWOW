@@ -1075,6 +1075,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "erovenus-iris-112-5cm-d-cup-silicone-companion-doll-299ob"
       ]
     },
+    "piper-dolls-buying-guide": {
+      title: "Compare six current Piper doll builds",
+      description: "These current Piper examples span compact and full-size builds, TPE and silicone, and varied handling weights. They are comparison starting points, not a bestseller list or hands-on ranking.",
+      collectionHref: "/brands/piper-dolls",
+      filters: {},
+      handles: [
+        "piper-akira-75cm-c-cup-tpe-companion-doll-1alay",
+        "piper-akira-150cm-b-cup-tpe-companion-doll-18tol",
+        "piper-akira-150cm-c-cup-silicone-companion-doll-1pjdo-6",
+        "piper-eimi-155cm-c-cup-silicone-companion-doll-1ae2u",
+        "piper-akira-160cm-g-cup-tpe-companion-doll-qyv1k",
+        "piper-akira-160cm-g-cup-silicone-companion-doll-1uolz"
+      ]
+    },
     "tpe-vs-silicone-sex-dolls": {
       title: "Compare TPE and full-silicone examples",
       description: "These live examples show why material alone does not predict price or handling weight. Compare the complete measurements, construction, options, and availability on each product page.",
