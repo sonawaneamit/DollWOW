@@ -295,6 +295,7 @@ function featuredImageAlt(title: string, slug: string) {
     "best-sex-doll-stores": "Guide to choosing a reputable sex doll store using seller approval, exact product facts, protected payment, fulfillment, arrival support, and ownership care",
     "best-tpe-sex-dolls": "Six current TPE sex dolls compared by size, listed weight, availability, manufacturer, and buyer fit",
     "silicone-sex-doll-guide": "Full-silicone sex doll guide using current DollWow products to explain material, feel, care, weight, repair, and cost",
+    "sex-doll-size-weight-guide": "Sex doll size and weight guide using original data from current full-size DollWow catalog listings",
     "most-realistic-sex-dolls": "Guide to evaluating realistic sex doll proportions, finish, face detail, and configuration",
     "mini-sex-dolls": "Mini sex doll size, weight, handling, and private storage guide",
     "male-sex-doll-buying-guide": "Male sex doll buying guide featuring a real DollWow catalog product",

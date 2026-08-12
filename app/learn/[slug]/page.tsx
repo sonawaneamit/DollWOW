@@ -22,6 +22,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
+import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
 
 export function generateStaticParams() {
   return getLearningArticles().map((article) => ({ slug: article.slug }));
@@ -114,14 +115,18 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
             {article.slug === "sex-doll-guide" ? <GuideTableOfContents markdown={article.body} /> : null}
-            <MarkdownContent
-              markdown={article.body}
-              sectionVisuals={guideSectionVisuals(article.slug)}
-              sectionInsertions={guideProductGroups.length ? [{
-                afterHeading: "Curated Live Product Shortlists",
-                content: <GuideProductShortlists groups={guideProductGroups} />
-              }] : []}
-            />
+            {article.slug === "sex-doll-size-weight-guide" ? (
+              <SizeWeightArticle markdown={article.body} />
+            ) : (
+              <MarkdownContent
+                markdown={article.body}
+                sectionVisuals={guideSectionVisuals(article.slug)}
+                sectionInsertions={guideProductGroups.length ? [{
+                  afterHeading: "Curated Live Product Shortlists",
+                  content: <GuideProductShortlists groups={guideProductGroups} />
+                }] : []}
+              />
+            )}
             <ArticleInfographic slug={article.slug} />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
@@ -163,12 +168,74 @@ function articleCatalogHero(slug: string) {
       caption: "Current full-silicone catalog examples from three manufacturers. Compare the exact body, head, measurements, listed weight, finish, and supported options on each live product page.",
       imageContext: "a current DollWow full-silicone catalog example"
     },
+    "sex-doll-size-weight-guide": {
+      caption: "Three current full-size catalog examples at different points in the size and handling range. Open each listing for its complete measurements, current price, configuration, and availability.",
+      imageContext: "a current DollWow full-size catalog example"
+    },
     "best-sex-doll-stores": {
       caption: "Current DollWow catalog examples from three manufacturers. A reputable store should connect every photograph to the exact product, specifications, ordering path, and continuing support.",
       imageContext: "a current DollWow catalog product used to check seller and listing quality"
     }
   };
   return heroes[slug] ?? null;
+}
+
+function SizeWeightCatalogIndex() {
+  const data = sizeWeightIndexData;
+  const maxHeightBand = Math.max(...data.heightBands.map((band) => band.count));
+  const maxWeightBand = Math.max(...data.weightBands.map((band) => band.count));
+  return (
+    <section className="mb-12 border-y border-border py-10" aria-labelledby="catalog-index-heading">
+      <p className="text-sm font-semibold text-accent">Original DollWow catalog analysis</p>
+      <h2 id="catalog-index-heading" className="mt-2 text-3xl font-semibold leading-tight text-text">What {data.methodology.analyzedListings.toLocaleString("en-US")} current full-size listings show</h2>
+      <p className="mt-4 max-w-2xl text-base leading-7 text-text-dim">Reviewed August 12, 2026. These figures describe current DollWow listings with usable height, weight, and price data. They are not a universal market average.</p>
+
+      <div className="mt-8 grid gap-px overflow-hidden rounded-[8px] border border-border bg-border sm:grid-cols-3">
+        <CatalogIndexStat value={`${data.summary.medianHeightImperial} / ${data.summary.medianHeightCm} cm`} label="Median listed height" />
+        <CatalogIndexStat value={`${data.summary.medianWeightLb} lb / ${data.summary.medianWeightKg} kg`} label="Median listed weight" />
+        <CatalogIndexStat value={`${data.summary.middleHalfWeightLb[0]}-${data.summary.middleHalfWeightLb[1]} lb`} label={`${data.summary.middleHalfWeightKg[0]}-${data.summary.middleHalfWeightKg[1]} kg middle-half range`} />
+      </div>
+
+      <div className="mt-10 grid gap-10 lg:grid-cols-2">
+        <CatalogDistribution title="Listings by height" rows={data.heightBands.map((band) => ({ label: band.label, secondary: band.imperial, count: band.count, share: band.sharePercent, width: (band.count / maxHeightBand) * 100 }))} />
+        <CatalogDistribution title="Listings by weight" rows={data.weightBands.map((band) => ({ label: band.label, secondary: band.metric, count: band.count, share: band.sharePercent, width: (band.count / maxWeightBand) * 100 }))} />
+      </div>
+
+      <div className="mt-10 overflow-x-auto">
+        <table className="w-full min-w-[680px] border-collapse text-left text-sm">
+          <caption className="mb-4 text-left text-xl font-semibold text-text">Material snapshot</caption>
+          <thead><tr className="border-y border-border text-text-dim"><th className="px-3 py-3 font-semibold">Construction</th><th className="px-3 py-3 font-semibold">Listings</th><th className="px-3 py-3 font-semibold">Median height</th><th className="px-3 py-3 font-semibold">Median weight</th><th className="px-3 py-3 font-semibold">Median starting price</th></tr></thead>
+          <tbody>{data.materials.map((material) => <tr key={material.label} className="border-b border-border"><th className="px-3 py-4 font-semibold text-text">{material.label}</th><td className="px-3 py-4 text-text-dim">{material.count.toLocaleString("en-US")}</td><td className="px-3 py-4 text-text-dim">{material.medianHeightImperial} / {material.medianHeightCm} cm</td><td className="px-3 py-4 text-text-dim">{material.medianWeightLb} lb / {material.medianWeightKg} kg</td><td className="px-3 py-4 text-text-dim">${material.medianPrice.toLocaleString("en-US")}</td></tr>)}</tbody>
+        </table>
+      </div>
+
+      <details className="mt-8 border-t border-border pt-5 text-sm text-text-dim">
+        <summary className="cursor-pointer font-semibold text-text">How this catalog snapshot was built</summary>
+        <p className="mt-3 leading-6">{data.methodology.rule} {data.methodology.limitation}</p>
+      </details>
+    </section>
+  );
+}
+
+function SizeWeightArticle({ markdown }: { markdown: string }) {
+  const boundary = "\n## How To Read Sex Doll Height";
+  const boundaryIndex = markdown.indexOf(boundary);
+  if (boundaryIndex === -1) return <MarkdownContent markdown={markdown} />;
+  return (
+    <>
+      <MarkdownContent markdown={markdown.slice(0, boundaryIndex)} />
+      <SizeWeightCatalogIndex />
+      <MarkdownContent markdown={markdown.slice(boundaryIndex + 1)} />
+    </>
+  );
+}
+
+function CatalogIndexStat({ value, label }: { value: string; label: string }) {
+  return <div className="bg-surface-elevated p-5"><strong className="block text-2xl font-semibold text-accent">{value}</strong><span className="mt-2 block text-sm leading-5 text-text-dim">{label}</span></div>;
+}
+
+function CatalogDistribution({ title, rows }: { title: string; rows: Array<{ label: string; secondary: string; count: number; share: number; width: number }> }) {
+  return <div><h3 className="text-xl font-semibold text-text">{title}</h3><div className="mt-5 space-y-5">{rows.map((row) => <div key={row.label}><div className="flex items-end justify-between gap-4 text-sm"><span className="font-semibold text-text">{row.label}<small className="ml-2 font-normal text-text-dim">{row.secondary}</small></span><span className="shrink-0 text-text-dim">{row.count.toLocaleString("en-US")} · {row.share}%</span></div><div className="mt-2 h-2 overflow-hidden rounded-full bg-border" aria-hidden="true"><div className="h-full rounded-full bg-accent" style={{ width: `${row.width}%` }} /></div></div>)}</div></div>;
 }
 
 function GuideTableOfContents({ markdown }: { markdown: string }) {
@@ -991,6 +1058,13 @@ type ArticleProductModule = {
 
 function productModuleConfig(slug: string): Omit<ArticleProductModule, "products"> | null {
   const map: Record<string, Omit<ArticleProductModule, "products">> = {
+    "sex-doll-size-weight-guide": {
+      title: "Three current sizes to compare",
+      description: "These current full-size examples show why height and listed weight must be read together. They are comparison references, not a universal ranking or a claim that one size is right for every buyer.",
+      collectionHref: "/shop/sex-dolls",
+      filters: { productForm: "full-doll" },
+      handles: sizeWeightIndexData.representativeListings.map((product) => product.handle)
+    },
     "sex-doll-guide": {
       title: "Six useful starting points",
       description: "This mixed set spans TPE and silicone, compact and full-size builds, ready-to-ship and custom orders, and female and male dolls. It is a comparison starting point, not a best-of ranking.",

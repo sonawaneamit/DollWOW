@@ -1,0 +1,207 @@
+{
+  "generatedAt": "2026-08-12T05:47:31.243Z",
+  "catalogReviewedAt": "2026-08-12T05:40:49.635Z",
+  "sourceUrl": "https://dollwow.com/product-feed.json",
+  "methodology": {
+    "catalogListings": 2960,
+    "analyzedListings": 2615,
+    "excludedListings": 345,
+    "minimumHeightCm": 121,
+    "rule": "Includes current DollWow listings at least 121 cm tall with a positive listed weight and price. The 121 cm boundary removes compact partial-body products from the full-size distribution.",
+    "limitation": "The unit of analysis is a catalog listing, not a unique body mold or the entire market. One body can appear with several heads or configurations. Listed measurements come from current product data and may change."
+  },
+  "summary": {
+    "medianHeightCm": 163,
+    "medianHeightImperial": "5 ft 4 in",
+    "middleHalfHeightCm": [
+      158,
+      167
+    ],
+    "medianWeightLb": 81.5,
+    "medianWeightKg": 37,
+    "middleHalfWeightLb": [
+      73.9,
+      90.4
+    ],
+    "middleHalfWeightKg": [
+      33.5,
+      41
+    ]
+  },
+  "heightBands": [
+    {
+      "label": "121-154 cm",
+      "imperial": "4 ft 0 in-5 ft 1 in",
+      "count": 330,
+      "sharePercent": 12.6,
+      "medianWeightLb": 72.1,
+      "medianWeightKg": 32.7,
+      "medianHeightCm": 151,
+      "medianHeightImperial": "4 ft 11 in"
+    },
+    {
+      "label": "155-159 cm",
+      "imperial": "5 ft 1 in-5 ft 3 in",
+      "count": 418,
+      "sharePercent": 16,
+      "medianWeightLb": 77.2,
+      "medianWeightKg": 35,
+      "medianHeightCm": 158,
+      "medianHeightImperial": "5 ft 2 in"
+    },
+    {
+      "label": "160-164 cm",
+      "imperial": "5 ft 3 in-5 ft 5 in",
+      "count": 855,
+      "sharePercent": 32.7,
+      "medianWeightLb": 81.6,
+      "medianWeightKg": 37,
+      "medianHeightCm": 162,
+      "medianHeightImperial": "5 ft 4 in"
+    },
+    {
+      "label": "165-169 cm",
+      "imperial": "5 ft 5 in-5 ft 7 in",
+      "count": 586,
+      "sharePercent": 22.4,
+      "medianWeightLb": 81.5,
+      "medianWeightKg": 37,
+      "medianHeightCm": 166,
+      "medianHeightImperial": "5 ft 5 in"
+    },
+    {
+      "label": "170 cm and taller",
+      "imperial": "5 ft 7 in and taller",
+      "count": 426,
+      "sharePercent": 16.3,
+      "medianWeightLb": 84.9,
+      "medianWeightKg": 38.5,
+      "medianHeightCm": 171,
+      "medianHeightImperial": "5 ft 7 in"
+    }
+  ],
+  "weightBands": [
+    {
+      "label": "Under 75 lb",
+      "metric": "Under 34 kg",
+      "count": 668,
+      "sharePercent": 25.5,
+      "medianWeightLb": 68.3,
+      "medianWeightKg": 31,
+      "medianHeightCm": 158,
+      "medianHeightImperial": "5 ft 2 in"
+    },
+    {
+      "label": "75-89 lb",
+      "metric": "34-40.4 kg",
+      "count": 1272,
+      "sharePercent": 48.6,
+      "medianWeightLb": 81.5,
+      "medianWeightKg": 37,
+      "medianHeightCm": 163,
+      "medianHeightImperial": "5 ft 4 in"
+    },
+    {
+      "label": "90-109 lb",
+      "metric": "40.8-49.4 kg",
+      "count": 534,
+      "sharePercent": 20.4,
+      "medianWeightLb": 95.9,
+      "medianWeightKg": 43.5,
+      "medianHeightCm": 164,
+      "medianHeightImperial": "5 ft 5 in"
+    },
+    {
+      "label": "110 lb and heavier",
+      "metric": "49.9 kg and heavier",
+      "count": 141,
+      "sharePercent": 5.4,
+      "medianWeightLb": 116.8,
+      "medianWeightKg": 53,
+      "medianHeightCm": 163,
+      "medianHeightImperial": "5 ft 4 in"
+    }
+  ],
+  "materials": [
+    {
+      "label": "TPE",
+      "count": 1331,
+      "medianHeightCm": 163,
+      "medianHeightImperial": "5 ft 4 in",
+      "medianWeightLb": 82,
+      "medianWeightKg": 37.2,
+      "medianPrice": 1733
+    },
+    {
+      "label": "Silicone",
+      "count": 701,
+      "medianHeightCm": 163,
+      "medianHeightImperial": "5 ft 4 in",
+      "medianWeightLb": 77.2,
+      "medianWeightKg": 35,
+      "medianPrice": 2333
+    },
+    {
+      "label": "Hybrid",
+      "count": 582,
+      "medianHeightCm": 164,
+      "medianHeightImperial": "5 ft 5 in",
+      "medianWeightLb": 81.5,
+      "medianWeightKg": 37,
+      "medianPrice": 1949
+    }
+  ],
+  "representativeListings": [
+    {
+      "handle": "real-lady-viki-150cm-r10-silicone-doll",
+      "title": "Real Lady Viki 150cm Silicone",
+      "brand": "Real Lady",
+      "material": "Silicone",
+      "heightCm": 150,
+      "weightLb": 57.3,
+      "price": 3181,
+      "canonicalUrl": "https://dollwow.com/products/real-lady-viki-150cm-r10-silicone-doll",
+      "image": {
+        "url": "https://dollwow.com/product-media/v4/real-lady-viki-150cm-r10-silicone-doll/0",
+        "altText": "Viki 150cm R10 manufacturer photo 1"
+      },
+      "role": "Compact full-size example",
+      "weightKg": 26,
+      "heightImperial": "4 ft 11 in"
+    },
+    {
+      "handle": "starpery-yedda-167cm-e-cup-silicone-head-companion-doll-1mzjd",
+      "title": "Starpery Yedda 167cm E-Cup Silicone Head",
+      "brand": "Starpery Dolls",
+      "material": "Hybrid",
+      "heightCm": 167,
+      "weightLb": 81.5,
+      "price": 1799,
+      "canonicalUrl": "https://dollwow.com/products/starpery-yedda-167cm-e-cup-silicone-head-companion-doll-1mzjd",
+      "image": {
+        "url": "https://dollwow.com/product-media/v4/starpery-yedda-167cm-e-cup-silicone-head-companion-doll-1mzjd/0",
+        "altText": "Yedda 167cm E-Cup Silicone Head Customizable Companion Doll"
+      },
+      "role": "Middle-range handling example",
+      "weightKg": 37,
+      "heightImperial": "5 ft 6 in"
+    },
+    {
+      "handle": "doll-castle-zarina-175cm-x-cup-tpe-companion-doll-1ct53",
+      "title": "Dolls Castle Zarina 175cm X-Cup TPE",
+      "brand": "Dolls Castle",
+      "material": "TPE",
+      "heightCm": 175,
+      "weightLb": 152.1,
+      "price": 2199,
+      "canonicalUrl": "https://dollwow.com/products/doll-castle-zarina-175cm-x-cup-tpe-companion-doll-1ct53",
+      "image": {
+        "url": "https://dollwow.com/product-media/v4/doll-castle-zarina-175cm-x-cup-tpe-companion-doll-1ct53/0",
+        "altText": "Zarina 175cm X-Cup TPE Customizable Companion Doll"
+      },
+      "role": "Taller full-size example",
+      "weightKg": 69,
+      "heightImperial": "5 ft 9 in"
+    }
+  ]
+}

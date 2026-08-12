@@ -45,4 +45,14 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).not.toMatch(/PDP|SERP|crawlable|search volume|keyword cluster/i);
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
+
+  it("publishes one distinct size-and-weight owner with dated methodology", () => {
+    const article = getLearningArticle("sex-doll-size-weight-guide");
+    expect(article?.primaryKeyword).toBe("sex doll sizes");
+    expect(article?.body).toContain("current full-size DollWow listings");
+    expect(article?.body).toContain("unit of analysis is a catalog listing");
+    expect(article?.body).toContain("[sex doll cost guide](/learn/sex-doll-cost)");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(10);
+  });
 });
