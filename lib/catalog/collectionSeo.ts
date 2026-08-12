@@ -244,8 +244,11 @@ function collectionTitle(preset: CollectionPreset) {
 
 function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
   const titleByHandle: Record<string, string> = {
-    "sex-dolls": "Sex Dolls for Sale: TPE, Silicone & Custom",
-    silicone: "Silicone Sex Dolls for Sale: Full Silicone"
+    "sex-dolls": "Sex Dolls for Sale | TPE, Silicone & Custom Dolls",
+    silicone: "Silicone Sex Dolls for Sale | Full Silicone Dolls",
+    tpe: "TPE Sex Dolls for Sale | Full-Body TPE Dolls",
+    "mini-sex-dolls": "Mini Sex Dolls for Sale | Full Dolls Up to 120 cm",
+    "male-dolls": "Male Sex Dolls for Sale | TPE, Silicone & Custom"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -293,7 +296,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "realistic-sex-dolls":
     "Shop full-body, full-silicone candidates for the most realistic sex doll based on proportions, face sculpt, skin finish, eyes, hands, feet, measurements, weight, and final configuration. Full silicone is a useful starting pool for fine sculpt detail, but material and price do not create an objective realism ranking. Compare several angles, verify the exact head-and-body pairing, and consider TPE or hybrid builds when softness, feel, or a different construction matters more to you.",
   "mini-sex-dolls":
-    "Shop full mini sex dolls with a known height up to 120 cm / 3 ft 11 in. Mini describes physical size only, and every DollWow product is sold for adults. Compare listed weight, complete measurements, material, stock status, customization, storage orientation, and handling needs. If you can accommodate a taller compact body, compare the separate petite collection from 121 to 154 cm / 4 ft to 5 ft 1 in.",
+    "Compare full mini sex dolls with a known height up to 120 cm / 3 ft 11 in. Mini describes physical size only, and every DollWow product is sold for adults. DollWow keeps torsos, hips, unknown-height products, and taller petite dolls out of this collection rather than filling it with misleading results. Compare listed weight, complete measurements, material, availability, customization, storage orientation, and handling needs. If no matching model is currently shown, ask our team to check an approved product or compare the separate petite collection from 121 to 154 cm / 4 ft to 5 ft 1 in.",
   "petite-dolls":
     "Shop petite sex dolls with a known height from 121 to 154 cm / 4 ft to 5 ft 1 in. This collection is limited to complete dolls and keeps mini dolls up to 120 cm / 3 ft 11 in, torsos, hips products, and standalone heads on separate paths. Compare listed weight, body measurements, material, proportions, delivery route, cleaning space, storage, and supported options before choosing a compact full-body model.",
   "cheap-sex-dolls":
@@ -1182,6 +1185,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "What if the sex doll I want is not listed?",
       answer:
         "Send the product name or supplier link through live chat or hello@dollwow.com. If it is from a supported, approved brand, DollWow will verify the product details and check whether it can be added. Most approved requests can go live within 4 to 6 hours once authorization and product information are confirmed."
+    },
+    {
+      question: "What support is included after I buy a doll from DollWow?",
+      answer:
+        "Every DollWow doll includes Care 365 for ownership guidance during the first year, plus continuing help through the lifetime repair concierge. Eligible orders can also include Human Build Check, factory media before shipment where supported, a Doll Passport, and the 30-Day Price Lock. The linked program pages explain the exact terms and eligibility."
     }
   ],
   "realistic-sex-dolls": [
@@ -1246,6 +1254,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Does the mini collection include torsos or hips?",
       answer:
         "No. The mini collection is intended for compact full dolls with a known height. Torso and hips products have separate DollWow collection pages."
+    },
+    {
+      question: "What if no mini sex doll is currently listed?",
+      answer:
+        "DollWow will not fill this collection with torsos, hips products, unknown-height listings, or taller dolls just to show results. Send an approved model name or supplier link through live chat or hello@dollwow.com and the team will verify its full-body form, adult presentation, height, availability, and authorization. You can also compare petite or lightweight full dolls while we check."
     }
   ],
   "petite-dolls": [
@@ -1599,6 +1612,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "What should I compare before buying a TPE sex doll?",
       answer:
         "Compare full-body versus compact form, height, listed weight, measurements, manufacturer, material notes, skeleton, supported options, availability, care needs, storage space, and final configured price."
+    },
+    {
+      question: "What ownership help comes with a TPE doll from DollWow?",
+      answer:
+        "Every DollWow doll includes Care 365 for first-year ownership guidance and continuing access to the lifetime repair concierge. Because TPE formulations vary, support follows the instructions and repair methods confirmed for the exact product rather than a universal TPE rule."
     }
   ],
   silicone: [
@@ -1636,6 +1654,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Can DollWow confirm a silicone model or option before I order?",
       answer:
         "Yes. Ask through live chat or hello@dollwow.com if the exact body material, head pairing, firmness, weight, option, or availability affects your decision. If an approved model is missing, send its product name or supplier link and the team will check whether it can be added."
+    },
+    {
+      question: "What ownership help comes with a silicone doll from DollWow?",
+      answer:
+        "Every DollWow doll includes Care 365 for first-year ownership guidance and continuing access to the lifetime repair concierge. Support remains product-specific, so follow the exact manufacturer's instructions for cleaning, storage, powered features, and repairs."
     }
   ],
   "male-dolls": [
@@ -1673,6 +1696,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Can DollWow review a custom male doll build before production?",
       answer:
         "Eligible custom orders receive a Human Build Check for selected options and obvious compatibility issues before production. Product and manufacturer limits still apply."
+    },
+    {
+      question: "What support comes with a male doll from DollWow?",
+      answer:
+        "Every DollWow doll includes Care 365 for first-year ownership guidance and continuing access to the lifetime repair concierge. Eligible custom orders can also receive Human Build Check and factory media before shipment where the manufacturer supports it."
     }
   ],
   "ready-to-ship": [

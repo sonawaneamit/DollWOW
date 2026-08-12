@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? { width: 1672, height: 941 }
     : { width: 1536, height: 1024 };
   const metadataTitle = article.slug === "sex-doll-guide"
-    ? "Sex Doll Buying Guide: How to Choose the Right Doll"
+    ? "2026 Sex Doll Buying Guide: How to Choose the Right Doll"
     : article.title;
   return {
     title: metadataTitle,

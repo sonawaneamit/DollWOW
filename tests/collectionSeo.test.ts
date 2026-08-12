@@ -47,7 +47,7 @@ describe("Wave 1 head collection SEO", () => {
     const faqs = collectionFaqItems("sex-dolls", preset);
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
-    expect(metadata.title).toBe("Sex Dolls for Sale: TPE, Silicone & Custom");
+    expect(metadata.title).toBe("Sex Dolls for Sale | TPE, Silicone & Custom Dolls");
     expect(intro).toContain("complete current DollWow sex doll catalog");
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).toContain("4 to 6 hours");
@@ -61,9 +61,30 @@ describe("Wave 1 head collection SEO", () => {
     const faqs = collectionFaqItems("silicone", preset);
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
-    expect(metadata.title).toBe("Silicone Sex Dolls for Sale: Full Silicone");
+    expect(metadata.title).toBe("Silicone Sex Dolls for Sale | Full Silicone Dolls");
     expect(intro).toContain("Every product in this collection has a full silicone body");
     expect(intro).toContain("hybrid build");
+    expect(copy).toContain("live chat or hello@dollwow.com");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
+describe("Wave 2 collection SEO", () => {
+  it("gives TPE and male collections descriptive commercial titles and qualified support copy", () => {
+    const tpe = collectionPresets.tpe;
+    const male = collectionPresets["male-dolls"];
+    expect(buildCollectionMetadata("tpe", tpe).title).toBe("TPE Sex Dolls for Sale | Full-Body TPE Dolls");
+    expect(buildCollectionMetadata("male-dolls", male).title).toBe("Male Sex Dolls for Sale | TPE, Silicone & Custom");
+    expect(collectionFaqItems("tpe", tpe).map((item) => item.answer).join(" ")).toContain("Care 365");
+    expect(collectionFaqItems("male-dolls", male).map((item) => item.answer).join(" ")).toContain("lifetime repair concierge");
+  });
+
+  it("keeps the mini boundary honest when no matching inventory is available", () => {
+    const preset = collectionPresets["mini-sex-dolls"];
+    const copy = `${collectionIntro(preset, "mini-sex-dolls")} ${collectionFaqItems("mini-sex-dolls", preset).map((item) => item.answer).join(" ")}`;
+    expect(buildCollectionMetadata("mini-sex-dolls", preset).title).toBe("Mini Sex Dolls for Sale | Full Dolls Up to 120 cm");
+    expect(copy).toContain("up to 120 cm / 3 ft 11 in");
+    expect(copy).toContain("will not fill this collection");
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
