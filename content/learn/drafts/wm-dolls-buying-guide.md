@@ -271,6 +271,12 @@ Before approving a WM order, confirm:
 - Authenticity and final build records
 - Care and repair support after arrival
 
+## Primary WM Source
+
+- [Zhongshan Municipal Government: WMDOLL company profile and development](https://www.zs.gov.cn/ywb/economy/content/post_2567159.html)
+
+This government-published company profile independently supports the 2010 founding date and Zhongshan manufacturing identity used in this guide. Current material, body, head, measurements, weight, options, price, and availability still need confirmation on the exact DollWow product.
+
 ## FAQs
 
 ### When was WM Doll founded?

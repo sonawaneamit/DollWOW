@@ -89,6 +89,7 @@ describe("Learning Center content ownership", () => {
   it("exposes official evidence on major brand guides without competitor retailers", () => {
     const sourceExpectations = {
       "irontech-dolls-buying-guide": "https://www.irontechdoll.com/about-us/",
+      "wm-dolls-buying-guide": "https://www.zs.gov.cn/ywb/economy/content/post_2567159.html",
       "starpery-dolls-buying-guide": "https://www.starpery.com/starpery-weight-reduction-tech",
       "tantaly-buying-guide": "https://www.tantaly.com/pages/about-us",
       "se-doll-buying-guide": "https://www.sedoll.com/about-sedoll/",
