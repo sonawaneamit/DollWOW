@@ -62,7 +62,13 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   const article = getLearningArticle(slug);
   if (!article) notFound();
   const author = getLearnAuthor(article.author);
-  const schema = [buildArticleStructuredData(article), buildArticleBreadcrumbStructuredData(article), buildArticleFaqStructuredData(article)].filter(Boolean);
+  const schema: Array<{ "@type": string; [key: string]: unknown }> = [
+    buildArticleStructuredData(article),
+    buildArticleBreadcrumbStructuredData(article)
+  ];
+  const faqSchema = buildArticleFaqStructuredData(article);
+  if (faqSchema) schema.push(faqSchema);
+  if (article.slug === "sex-doll-size-weight-guide") schema.push(sizeWeightDatasetStructuredData());
   const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
   const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
   const catalogHero = articleCatalogHero(article.slug);
@@ -213,8 +219,36 @@ function SizeWeightCatalogIndex() {
         <summary className="cursor-pointer font-semibold text-text">How this catalog snapshot was built</summary>
         <p className="mt-3 leading-6">{data.methodology.rule} {data.methodology.limitation}</p>
       </details>
+      <p className="mt-5 text-sm leading-6 text-text-dim">
+        Researchers and publishers can use the <a href="/datasets/sex-doll-size-weight-2026.json" className="font-semibold text-accent underline underline-offset-4">machine-readable aggregate dataset</a> with attribution to this guide.
+      </p>
     </section>
   );
+}
+
+function sizeWeightDatasetStructuredData() {
+  const data = sizeWeightIndexData;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "DollWow Sex Doll Size and Weight Index 2026",
+    description: "A dated aggregate analysis of current full-size DollWow catalog listings with usable height, listed weight, and price data.",
+    url: "https://dollwow.com/learn/sex-doll-size-weight-guide",
+    sameAs: "https://dollwow.com/datasets/sex-doll-size-weight-2026.json",
+    datePublished: "2026-08-12",
+    dateModified: "2026-08-12",
+    creator: { "@type": "Organization", name: "DollWow", url: "https://dollwow.com" },
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    isAccessibleForFree: true,
+    measurementTechnique: data.methodology.rule,
+    temporalCoverage: "2026-08-12",
+    variableMeasured: ["listed height", "listed weight", "starting price", "construction material"],
+    distribution: [{
+      "@type": "DataDownload",
+      encodingFormat: "application/json",
+      contentUrl: "https://dollwow.com/datasets/sex-doll-size-weight-2026.json"
+    }]
+  };
 }
 
 function SizeWeightArticle({ markdown }: { markdown: string }) {

@@ -76,7 +76,8 @@ export function GET() {
     feeds: [
       { label: "Sitemap", url: `${siteUrl}/sitemap.xml` },
       { label: "LLMs text map", url: `${siteUrl}/llms.txt` },
-      { label: "Product feed", url: `${siteUrl}/product-feed.json` }
+      { label: "Product feed", url: `${siteUrl}/product-feed.json` },
+      { label: "Sex doll size and weight aggregate dataset", url: `${siteUrl}/datasets/sex-doll-size-weight-2026.json` }
     ]
   };
 
