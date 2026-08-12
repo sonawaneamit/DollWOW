@@ -88,7 +88,7 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
           to: recipient,
           bcc: message.bcc,
           from,
-          replyTo: message.replyTo,
+          ...(message.replyTo ? { reply_to: message.replyTo } : {}),
           subject: message.subject,
           html: message.html,
           text: message.text,
