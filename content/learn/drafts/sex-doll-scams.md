@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # Sex Doll Scams: How To Check A Seller Before You Buy
@@ -39,6 +39,23 @@ Before comparing hundreds of products, answer these ten questions:
 10. Would you still feel comfortable if a problem required several messages and clear evidence?
 
 One missing detail may be fixable. Several evasive answers are a reason to stop.
+
+## Normal Industry Practice Or A Real Warning Sign?
+
+Some sex doll stores use uncertainty to frighten buyers away from every competitor. That is not a reliable way to evaluate a seller. The industry has several practices that can look unusual from the outside but have legitimate explanations. The question is whether the seller can explain the offer and support it with consistent facts.
+
+| What you notice | Often normal in this industry | When it becomes a meaningful concern |
+| --- | --- | --- |
+| The same photographs appear on several stores | Approved retailers commonly receive the same manufacturer media | The photographs are attached to different bodies, heads, materials, dimensions, or product forms without explanation |
+| The product has a different retailer name | Stores sometimes shorten or reorganize manufacturer naming | The seller cannot identify the actual manufacturer, body, and head behind the new name |
+| The doll is made after you order | Full-size customized dolls are commonly produced to order | The page claims the exact unit is in stock but support cannot confirm its configuration or location |
+| Another store has a much lower price | Promotions, margins, base configurations, shipping, and included options can differ | The seller cannot reconcile the lower price with the exact product and complete delivered offer |
+| No public authorization certificate appears | Manufacturer approval systems vary, and some brands do not issue public certificates | The seller claims approval but cannot provide a reasonable verification route when asked |
+| Factory photographs are not promised for every order | Media availability varies by manufacturer, product, and order path | Generic media is presented as proof of the buyer's exact finished doll |
+| Returns are limited | Customized and intimate products often have cancellation and return restrictions | The seller has no clear process for documented arrival damage, wrong items, or material mismatch |
+| The store is small, new, or uses imperfect English | None of those facts proves dishonesty | Answers remain evasive, contradictory, or unrelated to the exact product after a fair chance to clarify |
+
+Good verification separates an unfamiliar business practice from an unsupported claim. It does not turn every difference into a scare tactic.
 
 ## Red Flags To Watch
 
@@ -240,6 +257,19 @@ If the exact approved product is not on DollWow, send the supplier link or model
 
 The goal is not to call every lower price a scam. It is to help you identify whether the offers are truly comparable and whether the purchase path makes sense.
 
+### What our team can check
+
+Send the clearest product link, photographs, quoted configuration, and price you have. DollWow can help:
+
+- identify the probable manufacturer, body, head, material, and product form
+- compare measurements, listed weight, included options, and fulfillment path
+- check seller approval when the manufacturer provides a practical verification route
+- separate a starting price from the complete configured and delivered offer
+- flag contradictions that need a direct answer before payment
+- ask an approved supplier about a missing adult product and prepare a verified DollWow listing
+
+We will tell you what matches, what differs, and what remains unconfirmed. We will not invent certainty to win the sale.
+
 ## If You Already Paid And Something Feels Wrong
 
 Act calmly and preserve evidence.
@@ -318,3 +348,11 @@ Preserve the listing, policies, receipt, messages, and tracking; write a timelin
 ### Can DollWow review another seller's offer?
 
 Yes. Submit the URL, screenshot, or quote through [Compare a listing](/compare), live chat, or [hello@dollwow.com](mailto:hello@dollwow.com). DollWow can identify what matches, what differs, and what still needs confirmation.
+
+## Buyer-Protection Sources
+
+- [Federal Trade Commission: Online Shopping](https://consumer.ftc.gov/online-shopping)
+- [Federal Trade Commission: How To Evaluate Online Reviews](https://consumer.ftc.gov/articles/how-evaluate-online-reviews)
+- [Consumer Financial Protection Bureau: Credit-Card Purchase Disputes](https://www.consumerfinance.gov/ask-cfpb/how-can-i-get-a-refund-on-a-product-or-service-i-purchased-with-my-credit-card-en-1969/)
+
+These sources explain general shopping, review, and payment protections. They do not verify a particular sex doll seller or replace the current terms of a payment provider.

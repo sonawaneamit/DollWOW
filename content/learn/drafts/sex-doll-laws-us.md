@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # Are Sex Dolls Legal In The US? What Buyers Should Know
@@ -21,7 +21,7 @@ By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
 
 Clearly adult sex dolls are generally available for adults to buy and own in the United States. However, there is no single answer for every product, buyer, and location. Several states prohibit products defined by their laws as child-like sex dolls, while import, obscenity, and local rules can also matter. Choose products that are unmistakably adult and check current law if you have a location-specific concern.
 
-This guide provides general information, not legal advice. It was reviewed on August 11, 2026. Laws can change after publication.
+This guide provides general information, not legal advice. It was reviewed on August 12, 2026. Laws can change after publication.
 
 ## Key Takeaways
 
@@ -70,7 +70,7 @@ This is not a complete state-by-state legal survey. It is a set of current examp
 
 Search results often mix current law with proposed legislation. That distinction matters.
 
-[H.R. 1186, the CREEPER Act 2.0](https://www.congress.gov/bill/119th-congress/house-bill/1186/all-info), was introduced in the House on February 11, 2025 and referred to the House Judiciary Committee. As of this guide's August 11, 2026 review, Congress.gov does not list it as enacted law.
+[H.R. 1186, the CREEPER Act 2.0](https://www.congress.gov/bill/119th-congress/house-bill/1186/all-info), was introduced in the House on February 11, 2025 and referred to the House Judiciary Committee. As of this guide's August 12, 2026 review, Congress.gov does not list it as enacted law.
 
 The responsible way to check a bill is to use its official status page. A news story, seller article, social post, or older search result may discuss a proposal without making clear whether it passed.
 
@@ -97,6 +97,8 @@ Rules can depend on where the buyer lives and where the product is delivered. If
 Buying from an overseas seller can introduce customs review and a more complicated support path. Do not assume that discreet packaging, a vague customs description, or the seller's willingness to ship proves that an item can lawfully enter the country.
 
 Ask where the order ships from, how the product is described accurately, and who handles a customs or delivery problem. Avoid any seller that encourages a false declaration.
+
+[US Customs and Border Protection's internet-purchase guidance](https://www.help.cbp.gov/s/article/Article-1174) explains that the seller and carrier, not CBP, normally provide ordinary tracking updates. If CBP detains or seizes an international package, the importer is notified through the applicable process. A message claiming “customs has your package” is not a reason to send an unfamiliar third party more money without independent verification.
 
 ### 5. Keep Privacy And Legality Separate
 
@@ -209,7 +211,7 @@ Many adult products are imported, but customs review and applicable laws can aff
 
 ### Is the CREEPER Act 2.0 federal law?
 
-As of August 11, 2026, Congress.gov lists H.R. 1186 as introduced and referred to the House Judiciary Committee, not enacted. Check the official bill page for later changes.
+As of August 12, 2026, Congress.gov lists H.R. 1186 as introduced and referred to the House Judiciary Committee, not enacted. Check the official bill page for later changes.
 
 ### Does discreet shipping make a product legal?
 
