@@ -7,15 +7,17 @@ const API_BASE = "https://api.dataforseo.com/v3";
 const execute = process.argv.includes("--execute");
 const retryMiniChatgpt = process.argv.includes("--retry-mini-chatgpt");
 const fetchMerchant = process.argv.includes("--fetch-merchant");
+const tier2Appearance = process.argv.includes("--tier2-appearance");
 const generatedAt = new Date().toISOString();
-const outputDir = path.join(ROOT, "data/exports/seo-intelligence/2026-08-12/step-71-wave2-collections");
+const batchTag = tier2Appearance ? "tier2-appearance" : "wave2";
+const outputDir = path.join(ROOT, tier2Appearance ? "data/exports/seo-intelligence/2026-08-12/step-75-tier2-appearance" : "data/exports/seo-intelligence/2026-08-12/step-71-wave2-collections");
 
 await loadEnv(path.join(ROOT, ".env.local"));
 if (execute && (!process.env.DATAFORSEO_LOGIN || !process.env.DATAFORSEO_PASSWORD)) {
   throw new Error("DataForSEO credentials are required.");
 }
 
-const topics = [
+const wave2Topics = [
   {
     key: "tpe",
     keyword: "tpe sex dolls",
@@ -54,10 +56,39 @@ const topics = [
   }
 ];
 
+const tier2AppearanceTopics = [
+  {
+    key: "new-arrivals",
+    keyword: "new sex dolls",
+    keywords: ["new sex dolls", "new sex doll", "newest sex dolls", "latest sex dolls"],
+    url: "https://dollwow.com/shop/new-sex-dolls",
+    prompt: "How should a US buyer compare newly released sex dolls? Cover release evidence, exact product form, material, size, weight, current availability, custom options, seller proof, care, and support. Cite current sources.",
+    competitors: { 1: "https://www.yourdoll.com/collections/new-sex-dolls", 2: "https://www.rosemarydoll.com/collections/new-sex-dolls", 3: "https://www.joylovedolls.com/collections/new-sex-dolls" }
+  },
+  {
+    key: "asian",
+    keyword: "asian sex dolls",
+    keywords: ["asian sex dolls", "asian sex doll", "japanese sex dolls", "japanese sex doll"],
+    url: "https://dollwow.com/shop/asian-dolls",
+    prompt: "How should a US buyer compare adult Asian-style or Japanese-style sex dolls respectfully? Cover exact facial styling, body, material, size, weight, options, seller evidence, care, and support without assigning nationality. Cite current sources.",
+    competitors: { 1: "https://www.yourdoll.com/collections/asian-sex-dolls", 2: "https://www.rosemarydoll.com/collections/asian-sex-dolls", 3: "https://www.siliconwives.com/collections/asian-sex-dolls" }
+  },
+  {
+    key: "black",
+    keyword: "black sex dolls",
+    keywords: ["black sex dolls", "black sex doll", "ebony sex dolls", "dark skin sex doll"],
+    url: "https://dollwow.com/shop/black-dolls",
+    prompt: "How should a US buyer compare adult Black or deep-skin-tone sex dolls respectfully? Cover exact skin tone and finish, face and body, material, size, weight, options, seller evidence, care, and support without assigning identity. Cite current sources.",
+    competitors: { 1: "https://www.yourdoll.com/collections/black-sex-dolls", 2: "https://www.rosemarydoll.com/collections/black-sex-dolls", 3: "https://www.joylovedolls.com/collections/black-sex-dolls" }
+  }
+];
+
+const topics = tier2Appearance ? tier2AppearanceTopics : wave2Topics;
+
 const allKeywords = [...new Set(topics.flatMap((topic) => topic.keywords))];
 const calls = [
-  call("bing-keywords", "Bing Keyword Data", "/keywords_data/bing/search_volume/live", [{ keywords: allKeywords, location_code: 2840, language_code: "en", tag: "dollwow-wave2-bing" }]),
-  call("ai-keywords", "AI Keyword Data", "/ai_optimization/ai_keyword_data/keywords_search_volume/live", [{ keywords: allKeywords, location_code: 2840, language_code: "en", tag: "dollwow-wave2-ai-keywords" }]),
+  call("bing-keywords", "Bing Keyword Data", "/keywords_data/bing/search_volume/live", [{ keywords: allKeywords, location_code: 2840, language_code: "en", tag: `dollwow-${batchTag}-bing` }]),
+  call("ai-keywords", "AI Keyword Data", "/ai_optimization/ai_keyword_data/keywords_search_volume/live", [{ keywords: allKeywords, location_code: 2840, language_code: "en", tag: `dollwow-${batchTag}-ai-keywords` }]),
   ...topics.flatMap((topic) => [
     call(`bing-serp-${topic.key}`, "Bing SERP", "/serp/bing/organic/live/advanced", [{ keyword: topic.keyword, location_code: 2840, language_code: "en", device: "desktop", os: "windows", depth: 20, tag: `dollwow-wave2-bing-serp-${topic.key}` }]),
     call(`ai-mode-${topic.key}`, "Google AI Mode", "/serp/google/ai_mode/live/advanced", [{ keyword: topic.prompt, location_code: 2840, language_code: "en", device: "desktop", tag: `dollwow-wave2-ai-mode-${topic.key}` }]),
