@@ -1675,7 +1675,7 @@ This guide separates product-specific evidence from general buying advice. Curre
 - [Starpery: Weight Reduction 4.0 development and supported bodies](https://www.starpery.com/starpery-weight-reduction-tech)
 - [SE Doll: official company history and range development](https://www.sedoll.com/about-sedoll/)
 - [Tantaly: official brand and product-format background](https://www.tantaly.com/pages/about-us)
-- [Erovenus Help Center: current doll-care documentation](https://support.erovenus.com/hc/en-us/categories/31948293769115-Doll-Care)
+- [Erovenus: current doll-care documentation](https://www.erovenus.com/sex-doll-care/)
 
 DollWow's own commitments and procedures are published in [Buyer Protection](/buyer-protection), [How Ordering Works](/how-ordering-works), [Shipping](/shipping), [30-Day Price Lock](/best-price-guarantee), and [Care 365](/care-for-life). These pages control DollWow-specific service claims. A manufacturer page controls only claims about that manufacturer's products, and an older article never overrides the current product configuration or written support confirmation.
 

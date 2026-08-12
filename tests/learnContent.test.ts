@@ -81,8 +81,23 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("https://www.starpery.com/starpery-weight-reduction-tech");
     expect(article?.body).toContain("https://www.sedoll.com/about-sedoll/");
     expect(article?.body).toContain("https://www.tantaly.com/pages/about-us");
-    expect(article?.body).toContain("https://support.erovenus.com/hc/en-us/categories/31948293769115-Doll-Care");
+    expect(article?.body).toContain("https://www.erovenus.com/sex-doll-care/");
     expect(article?.body).toContain("[Buyer Protection](/buyer-protection)");
     expect(article?.body).toContain("[Care 365](/care-for-life)");
+  });
+
+  it("exposes official evidence on major brand guides without competitor retailers", () => {
+    const sourceExpectations = {
+      "irontech-dolls-buying-guide": "https://www.irontechdoll.com/about-us/",
+      "starpery-dolls-buying-guide": "https://www.starpery.com/starpery-weight-reduction-tech",
+      "tantaly-buying-guide": "https://www.tantaly.com/pages/about-us",
+      "se-doll-buying-guide": "https://www.sedoll.com/about-sedoll/",
+      "erovenus-dolls-review-guide": "https://www.erovenus.com/about-us/"
+    };
+    for (const [slug, source] of Object.entries(sourceExpectations)) {
+      const body = getLearningArticle(slug)?.body;
+      expect(body, slug).toContain(source);
+      expect(body, slug).not.toMatch(/rosemarydoll\.com|yourdoll\.com|siliconwives\.com|joylovedolls\.com/i);
+    }
   });
 });

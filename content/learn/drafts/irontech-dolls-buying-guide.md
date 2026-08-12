@@ -268,6 +268,14 @@ Before approving an Irontech order, confirm:
 - Cleaning, storage, and repair guidance
 - Final build record and support contacts
 
+## Primary Irontech Sources
+
+- [Irontech Doll: official brand history](https://www.irontechdoll.com/about-us/)
+- [Irontech Doll: skeleton and movement systems](https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/)
+- [Irontech Doll: ultra-lightweight technology](https://www.irontechdoll.com/ultra-lightweight-technology-ulw/)
+
+These manufacturer pages support selected history and technology statements. Availability, measurements, weight, head and body pairing, options, and price still need confirmation on the exact current DollWow product.
+
 ## FAQs
 
 ### When was Irontech Doll founded?

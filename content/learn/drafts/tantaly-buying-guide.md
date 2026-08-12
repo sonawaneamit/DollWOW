@@ -221,6 +221,13 @@ Before ordering, confirm:
 - Any supported customization
 - Who to contact if the delivered product does not match the confirmed order
 
+## Primary Tantaly Sources
+
+- [Tantaly: official brand and product-format background](https://www.tantaly.com/pages/about-us)
+- [Tantaly: cleaning and maintenance guidance](https://www.tantaly.com/pages/cleaning-and-maintenance-guide-for-sex-doll)
+
+These official sources explain Tantaly's format focus and selected care guidance. Use the current DollWow listing for the exact included body area, material, dimensions, weight, openings, removable parts, and configuration.
+
 ## FAQs
 
 ### What is a Tantaly doll?

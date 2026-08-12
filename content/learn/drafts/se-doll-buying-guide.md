@@ -286,6 +286,12 @@ Before checkout, confirm:
 
 The strongest choice is the SE Doll build that fits your desired appearance and the practical realities of ownership.
 
+## Primary SE Doll Sources
+
+- [SE Doll: official company history and range development](https://www.sedoll.com/about-sedoll/)
+
+This manufacturer page supports the establishment date and selected range milestones used in this guide. Current material, finish, makeup, head, body, option, weight, and price facts must still be checked on the exact DollWow product.
+
 ## FAQs
 
 ### When was SE Doll founded?

@@ -205,6 +205,13 @@ Before ordering, confirm:
 - Current price, availability, and ordering path
 - The support process for mismatch, arrival damage, or later repair questions
 
+## Primary Erovenus Sources
+
+- [Erovenus: official brand and construction background](https://www.erovenus.com/about-us/)
+- [Erovenus: current doll-care documentation](https://www.erovenus.com/sex-doll-care/)
+
+These official pages support selected brand, construction, and care statements. Current product form, material, measurements, included parts, configuration, price, and availability remain product-specific.
+
 ## FAQs
 
 ### What is Erovenus known for?

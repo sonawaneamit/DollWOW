@@ -269,6 +269,12 @@ Before checkout, confirm:
 
 The goal is not to select the most dramatic image. It is to choose a finished Starpery build that fits your preferences, space, strength, budget, and care routine.
 
+## Primary Starpery Sources
+
+- [Starpery: Weight Reduction 4.0 development](https://www.starpery.com/starpery-weight-reduction-tech)
+
+These official pages explain selected construction and configuration language. They do not prove that every Starpery body supports the same material, head, skeleton, soft-area, or weight-reduction option. Confirm the exact product before ordering.
+
 ## FAQs
 
 ### Are Starpery dolls full silicone?
