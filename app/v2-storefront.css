@@ -1504,11 +1504,6 @@ textarea {
   color: rgb(var(--color-accent));
 }
 
-.pdp-mobile-build-dock {
-  background: rgb(var(--color-surface));
-  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
-}
-
 @media (max-width: 1080px) {
   .product-filters--sidebar .product-filters__mobile-toggle {
     display: inline-flex;
