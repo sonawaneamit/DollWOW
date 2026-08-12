@@ -125,9 +125,11 @@ export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
 
 export function buildPdpTrustSignals(product: Product): TrustSignal[] {
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
-  const timing = readyToShip
-    ? "Stock is confirmed first, then warehouse release usually follows in 2-3 business days."
-    : `Custom builds usually take about ${product.extended.deliveryEstimate ?? "3–4 weeks"} before release, with approval before shipment.`;
+  const timing = product.extended.deliveryEstimate
+    ? `The current estimate for this product is ${product.extended.deliveryEstimate}. We confirm it before payment.`
+    : readyToShip
+      ? "We confirm the exact warehouse unit and its current dispatch estimate before payment."
+      : "We confirm production and delivery timing for your exact build before payment.";
 
   return [
     {
@@ -206,8 +208,12 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
         : "Mid-range size profile that usually balances presence, handling, and storage more easily.";
   const orderNote =
     stockStatus === "ready_to_ship"
-      ? "Ready-to-ship orders usually leave within 1-3 business days after stock confirmation, and tracking is issued once the shipment is booked."
-      : "Custom orders usually take about 3–4 weeks from order to delivery, with option review and factory approval before shipment is released.";
+      ? product.extended.deliveryEstimate
+        ? `The current estimate for this warehouse product is ${product.extended.deliveryEstimate}. We reconfirm the unit and timing before payment.`
+        : "We reconfirm the warehouse unit and its current dispatch estimate before payment. Tracking is shared after dispatch."
+      : product.extended.deliveryEstimate
+        ? `The current estimate for this build is ${product.extended.deliveryEstimate}. We confirm it with your selected options before payment.`
+        : "Production and delivery timing are confirmed for your exact build before payment. You review factory media before shipment.";
 
   return [
     {

@@ -136,7 +136,7 @@ function mapProduct(official, reference, pair, releaseRank) {
       measurements,
       warehouseCountry: null,
       stockStatus: "custom",
-      deliveryEstimate: "Usually 3-5 weeks from order to delivery",
+      deliveryEstimate: null,
       stockLastCheckedAt: new Date().toISOString(),
       customAvailable: false,
       customizationGroups: [],

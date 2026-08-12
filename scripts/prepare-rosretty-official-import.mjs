@@ -170,7 +170,7 @@ function mapProduct(source, releaseRank, adjustment) {
     measurements,
     warehouseCountry: undefined,
     stockStatus,
-    deliveryEstimate: stockStatus === "ready_to_ship" ? "Ships within 1-3 business days after stock confirmation" : "Usually 3-5 weeks from order to delivery",
+    deliveryEstimate: undefined,
     stockLastCheckedAt: new Date().toISOString(),
     customAvailable: false,
     customizationGroups: [],

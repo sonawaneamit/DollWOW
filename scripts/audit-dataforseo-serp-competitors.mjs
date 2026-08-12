@@ -140,7 +140,10 @@ const KEYWORD_TARGETS = {
   "silicone doll repair": { pageType: "learning-guide", targetPath: "/learn/silicone-sex-doll-repair" },
   "how are silicone sex dolls made": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
   "how sex dolls are made": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
-  "silicone sex doll manufacturing process": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" }
+  "silicone sex doll manufacturing process": { pageType: "learning-guide", targetPath: "/learn/how-silicone-sex-dolls-are-made" },
+  "us warehouse sex dolls": { pageType: "collection", targetPath: "/warehouse" },
+  "usa warehouse sex dolls": { pageType: "collection", targetPath: "/warehouse" },
+  "sex dolls usa warehouse": { pageType: "collection", targetPath: "/warehouse" }
 };
 
 const args = parseArgs(process.argv.slice(2));

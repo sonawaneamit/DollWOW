@@ -20,8 +20,8 @@ export default function FaqPage() {
         {
           title: "Ordering",
           items: [
-            "Ready-to-ship dolls usually leave the warehouse within 2-3 business days after stock is confirmed.",
-            "Custom builds usually take about 3–4 weeks before release because the doll is built, checked, and approved before shipment.",
+            "For ready-to-ship dolls, we confirm the exact warehouse unit and its current dispatch estimate before payment.",
+            "For custom builds, we confirm production and delivery timing for the exact configuration before payment.",
             "Product pages show the base setup first. If customization is available, option prices are shown before checkout."
           ]
         },

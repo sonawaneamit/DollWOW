@@ -49,6 +49,7 @@
     "catalog:audit": "node scripts/catalog-audit.mjs",
     "catalog:audit-rendered-metadata": "node scripts/audit-rendered-product-metadata.mjs",
     "catalog:clean-source-copy": "node scripts/clean-shopify-source-copy.mjs",
+    "catalog:clean-delivery-defaults": "node scripts/clean-shopify-delivery-estimates.mjs",
     "catalog:set-display-names": "node scripts/set-shopify-display-name-overrides.mjs",
     "copy:audit": "node scripts/audit-customer-copy.mjs",
     "generate:learning-banners": "node scripts/generate-learning-banner-composites.mjs",

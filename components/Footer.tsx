@@ -8,7 +8,8 @@ const footerGroups = [
     links: [
       ["Shop all dolls", "/shop/sex-dolls"],
       ["Affordable dolls", "/shop/cheap-sex-dolls"],
-      ["Ready to ship", "/warehouse"],
+      ["Ready to ship", "/shop/ready-to-ship"],
+      ["Warehouse stock", "/warehouse"],
       ["Customize a doll", "/customize"],
       ["Compare dolls", "/compare"],
       ["Price Match", "/price-match"],

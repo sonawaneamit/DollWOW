@@ -149,7 +149,6 @@ export const sampleProducts: Product[] = [
       cupSize: "E",
       warehouseCountry: "Factory order",
       stockStatus: "custom",
-      deliveryEstimate: "3–4 weeks",
       stockLastCheckedAt: now,
       customAvailable: true,
       qcNote: "Custom selections are confirmed before production begins."
@@ -176,7 +175,6 @@ export const sampleProducts: Product[] = [
       cupSize: "E",
       warehouseCountry: "Factory order",
       stockStatus: "custom",
-      deliveryEstimate: "3–4 weeks",
       stockLastCheckedAt: now,
       customAvailable: true,
       qcNote: "Useful for the Customize page and Help Me Choose recommendations."
@@ -203,7 +201,6 @@ export const sampleProducts: Product[] = [
       cupSize: "E",
       warehouseCountry: "Factory order",
       stockStatus: "custom",
-      deliveryEstimate: "3–4 weeks",
       stockLastCheckedAt: now,
       customAvailable: true,
       qcNote: "Premium demo build with pre-ship confirmation where available."
@@ -230,7 +227,6 @@ export const sampleProducts: Product[] = [
       cupSize: "D",
       warehouseCountry: "Factory order",
       stockStatus: "custom",
-      deliveryEstimate: "3–4 weeks",
       stockLastCheckedAt: now,
       customAvailable: true,
       qcNote: "Good demo fit for taller custom recommendations."

@@ -16,7 +16,7 @@ import { catalogFilterOptions } from "@/lib/catalog/filters";
 
 const primaryLinks = [
   { label: "Shop all dolls", href: "/shop/sex-dolls" },
-  { label: "Ready to ship", href: "/warehouse" }
+  { label: "Ready to ship", href: "/shop/ready-to-ship" }
 ] as const;
 
 const mobilePrimaryLinks = [
@@ -74,7 +74,7 @@ const brandLinks = catalogFilterOptions.brands.map((brand) => ({ label: brand.la
 
 const prefetchTargets = [
   "/shop/sex-dolls",
-  "/warehouse",
+  "/shop/ready-to-ship",
   "/help-me-choose",
   "/support",
   "/cart",
@@ -203,7 +203,7 @@ export function Header() {
   }
 
   const shopActive = pathname?.startsWith("/shop") || pathname?.startsWith("/products");
-  const warehouseActive = pathname?.startsWith("/warehouse");
+  const readyToShipActive = pathname?.startsWith("/shop/ready-to-ship");
   const brandActive = pathname?.startsWith("/brands");
   const chooseActive = pathname?.startsWith("/help-me-choose");
 
@@ -229,7 +229,7 @@ export function Header() {
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary navigation">
           <HeaderLink href="/shop/sex-dolls" active={shopActive} onNavigate={closeAll}>Shop all dolls</HeaderLink>
-          <HeaderLink href="/warehouse" active={warehouseActive} onNavigate={closeAll}>Ready to ship</HeaderLink>
+          <HeaderLink href="/shop/ready-to-ship" active={readyToShipActive} onNavigate={closeAll}>Ready to ship</HeaderLink>
           <div className="relative" data-brands-menu-root>
             <button
               type="button"

@@ -1,10 +1,19 @@
 import type { Product } from "@/types/product";
 
-export const CUSTOM_ORDER_DELIVERY_ESTIMATE = "3–4 weeks";
+const LEGACY_DELIVERY_DEFAULTS = new Set([
+  "4-8 weeks",
+  "usually 3-5 weeks from order to delivery",
+  "fast shipping after stock confirmation",
+  "ships within 1-3 business days after stock confirmation",
+  "3-5 weeks from order to delivery"
+]);
 
 export function customerDeliveryEstimate(
-  stockStatus: Product["extended"]["stockStatus"],
+  _stockStatus: Product["extended"]["stockStatus"],
   supplierEstimate?: string
 ) {
-  return stockStatus === "ready_to_ship" ? supplierEstimate : CUSTOM_ORDER_DELIVERY_ESTIMATE;
+  const estimate = supplierEstimate?.trim();
+  if (!estimate) return undefined;
+  const normalized = estimate.toLowerCase().replaceAll("–", "-").replace(/\s+/g, " ");
+  return LEGACY_DELIVERY_DEFAULTS.has(normalized) ? undefined : estimate;
 }

@@ -50,8 +50,8 @@ export default function HowOrderingWorksPage() {
         {
           title: "5. Discreet dispatch and tracking",
           items: [
-            "Ready-to-ship warehouse dolls usually leave within 2-3 business days after stock confirmation.",
-            "Custom builds usually take about 3–4 weeks before release because approval happens before shipment.",
+            "For ready-to-ship dolls, we confirm the exact warehouse unit and its current dispatch estimate before payment.",
+            "For custom builds, we confirm production and delivery timing for the exact configuration before payment.",
             "Orders move in plain packaging with neutral billing and privacy-conscious communication.",
             "Tracking details are shared once the shipment is active."
           ]

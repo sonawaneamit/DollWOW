@@ -239,7 +239,7 @@ function toStorefrontProduct(product, vendor) {
       measurements: product.specs?.measurements || {},
       warehouseCountry: product.warehouseCountry || (product.stockStatus === "custom" ? "Factory order" : null),
       stockStatus: product.stockStatus || "check_stock",
-      deliveryEstimate: product.stockStatus === "ready_to_ship" ? "Fast shipping after stock confirmation" : "4-8 weeks",
+      deliveryEstimate: undefined,
       stockLastCheckedAt: product.importedAt || new Date().toISOString(),
       customAvailable: Boolean(product.customAvailable),
       customizationGroups: normalizeCustomizationGroups(product.optionGroups || []),

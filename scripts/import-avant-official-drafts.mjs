@@ -158,7 +158,6 @@ function metafieldsFor(product, { priceConfirmed }) {
     metafield("cup_size", identity.cupSize),
     metafield("measurements", JSON.stringify(product.measurements || {}), "json"),
     metafield("stock_status", "custom"),
-    metafield("delivery_estimate", "3-5 weeks from order to delivery"),
     metafield("custom_available", "true", "boolean"),
     metafield("customization_groups", JSON.stringify(avantCustomizationGroups(identity)), "json"),
     metafield("documented_customization_options", JSON.stringify(product.documentedOptions), "json"),

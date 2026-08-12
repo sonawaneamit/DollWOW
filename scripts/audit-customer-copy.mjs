@@ -37,6 +37,15 @@ const learningContentRules = [
   ["technical source-of-truth language", /\bcanonical\b|\bcatalog data\b|\blive catalog\b/gi],
   ["internal content framing", /\b(?:comparison|support) angle\b|\bDollWow should\b/gi]
 ];
+const timingRoots = ["app", "components", "lib", "scripts"];
+const timingExclusions = new Set([
+  "lib/catalog/delivery.ts",
+  "scripts/clean-shopify-delivery-estimates.mjs"
+]);
+const timingRules = [
+  ["unsupported business-day range", /\b\d+\s*[-–]\s*\d+\s+business days?\b/gi],
+  ["unsupported week range", /\b\d+\s*[-–]\s*\d+\s+weeks?\b/gi]
+];
 
 async function collectFiles(relativeDir, extensionPattern = /\.(tsx?|jsx?)$/) {
   const absoluteDir = path.join(process.cwd(), relativeDir);
@@ -58,6 +67,9 @@ const files = (await Promise.all(roots.map((root) => collectFiles(root)))).flat(
 const learningContentFiles = (
   await Promise.all(learningContentRoots.map((root) => collectFiles(root, /\.md$/)))
 ).flat();
+const timingFiles = (
+  await Promise.all(timingRoots.map((root) => collectFiles(root, /\.(?:tsx?|jsx?|mjs)$/)))
+).flat().filter((file) => !timingExclusions.has(file));
 const findings = [];
 
 for (const file of files) {
@@ -84,6 +96,18 @@ for (const file of learningContentFiles) {
   }
 }
 
+for (const file of timingFiles) {
+  const source = await readFile(path.join(process.cwd(), file), "utf8");
+  const lines = source.split("\n");
+  for (const [label, pattern] of timingRules) {
+    pattern.lastIndex = 0;
+    for (let index = 0; index < lines.length; index += 1) {
+      pattern.lastIndex = 0;
+      if (pattern.test(lines[index])) findings.push(`${file}:${index + 1} [${label}] ${lines[index].trim()}`);
+    }
+  }
+}
+
 if (findings.length > 0) {
   console.error("Customer-facing copy audit failed:\n");
   console.error(findings.join("\n"));
@@ -91,5 +115,5 @@ if (findings.length > 0) {
 }
 
 console.log(
-  `Customer-facing copy audit passed (${files.length} code files and ${learningContentFiles.length} learning articles checked).`
+  `Customer-facing copy audit passed (${files.length} code files, ${learningContentFiles.length} learning articles, and ${timingFiles.length} timing sources checked).`
 );

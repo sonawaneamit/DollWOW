@@ -20,7 +20,7 @@ export default function ShippingPage() {
         {
           title: "Ready-to-ship orders",
           items: [
-            "Ready-to-ship products usually leave the warehouse within 2-3 business days after stock confirmation.",
+            "We confirm the exact warehouse unit and its current dispatch estimate before payment.",
             "These orders are prioritized for fast release, so customization is limited and factory approval photos may not be available.",
             "Final release still depends on stock confirmation and order review."
           ]
@@ -28,7 +28,7 @@ export default function ShippingPage() {
         {
           title: "Made-to-order builds",
           items: [
-            "Custom orders usually take about 3–4 weeks before release because the build moves through production, review, and final approval before shipment.",
+            "Production and delivery timing are confirmed for your exact custom build before payment.",
             "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
             "We confirm the expected production and shipping dates after reviewing your final choices."
           ]

@@ -144,7 +144,7 @@ export function ProductBuyActions({
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {readyToShip
-              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}${canCustomize ? "The available options below are supported for this stock unit. " : "This is the fixed configuration shown; factory options do not apply. "}Leaves the warehouse in 1-3 business days after stock confirmation.`
+              ? `${deliveryEstimate ? `Current estimate: ${deliveryEstimate}. ` : "The current dispatch estimate is confirmed before payment. "}${canCustomize ? "The available options below are supported for this stock unit." : "This is the fixed configuration shown; factory options do not apply."}`
               : "You approve detailed factory photos and videos before anything ships. Timing is confirmed before you pay."}
           </p>
         </div>

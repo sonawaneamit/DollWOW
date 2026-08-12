@@ -215,7 +215,7 @@ function ProductRail({ rail, index }: { rail: Rail; index: number }) {
             </div>
           </div>
           <div className="home-rail-tools">
-            {rail.key === "ready" ? <span className="home-countdown">1-3 business days</span> : null}
+            {rail.key === "ready" ? <span className="home-countdown">Timing confirmed</span> : null}
             <Link href={rail.href}>See all <ArrowRight className="h-4 w-4" /></Link>
             <button type="button" onClick={() => scrollBy(-1)} aria-label={`Previous ${rail.title}`}><ChevronLeft className="h-5 w-5" /></button>
             <button type="button" onClick={() => scrollBy(1)} aria-label={`Next ${rail.title}`}><ChevronRight className="h-5 w-5" /></button>
@@ -442,7 +442,7 @@ function buildLookTiles(products: Product[]): LookTile[] {
       key: "ready",
       label: "Ready to ship",
       eyebrow: "Availability",
-      href: "/warehouse",
+      href: "/shop/ready-to-ship",
       match: (product: Product) => product.extended.stockStatus === "ready_to_ship"
     },
   ];
@@ -536,9 +536,9 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       key: "ready",
       eyebrow: "In the warehouse now",
       title: "Ready to ship",
-      copy: "Warehouse listings that usually leave in 1-3 business days after stock confirmation.",
+      copy: "Existing warehouse listings with the exact unit, location, configuration, and dispatch estimate confirmed before payment.",
       tone: "blush",
-      href: "/warehouse",
+      href: "/shop/ready-to-ship",
       products: ready
     },
     {

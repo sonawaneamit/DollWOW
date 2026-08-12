@@ -753,6 +753,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "JoyLoveDolls alternatives", href: "/learn/joylovedolls-alternatives" }
   ],
   "ready-to-ship": [
+    { label: "Filter stock by warehouse region", href: "/warehouse" },
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },

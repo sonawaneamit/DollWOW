@@ -33,7 +33,7 @@ const questions: Array<{
   { key: "delivery", label: "Timing", helper: "Ready-to-ship dolls move faster; custom orders give you more control.", options: [
     { value: "fast", label: "As soon as possible", hint: "Prioritize warehouse dolls" },
     { value: "balanced", label: "Balanced", hint: "Good mix of stock and custom" },
-    { value: "custom", label: "Custom is fine", hint: "3-5 week custom timing is okay" }
+    { value: "custom", label: "Custom is fine", hint: "I am comfortable with timing confirmed for my build" }
   ] },
   { key: "material", label: "Material", helper: "Pick a preference if you already know it. Otherwise we will keep both.", options: [
     { value: "tpe", label: "TPE", hint: "Softer, often lower price" },

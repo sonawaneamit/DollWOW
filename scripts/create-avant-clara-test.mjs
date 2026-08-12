@@ -50,7 +50,6 @@ const product = {
       "json"
     ),
     metafield("stock_status", "custom"),
-    metafield("delivery_estimate", "3-5 weeks from order to delivery"),
     metafield("custom_available", "true", "boolean"),
     metafield("source_title", "Avant Clara 165cm F-Cup Ros Head Full Silicone Doll (Wheat)"),
     metafield("source_handle", "avant-clara-165cm-f-cup-ros-wheat"),

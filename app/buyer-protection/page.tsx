@@ -57,8 +57,8 @@ export default function BuyerProtectionPage() {
         {
           title: "Ready-to-ship vs custom orders",
           items: [
-            "Ready-to-ship warehouse dolls usually leave within 2-3 business days after stock confirmation, with limited customization and no promise of factory approval photos.",
-            "Custom builds usually take about 3–4 weeks before release and always include factory photos and videos before shipment."
+            "For ready-to-ship dolls, we confirm the exact warehouse unit and its current dispatch estimate before payment. Customization is usually limited, and factory approval photos may not be available.",
+            "For custom builds, we confirm production and delivery timing for the exact configuration before payment and share factory photos and videos before shipment."
           ]
         },
         {

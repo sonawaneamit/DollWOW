@@ -170,7 +170,7 @@ export default function WhyPage() {
                 <strong className="text-sm font-semibold text-ivory-100">Ready to ship</strong>
               </div>
               <p className="mt-2 text-sm leading-6 text-ivory-300">
-                Usually released from the warehouse in 2-3 business days after stock confirmation, with fewer approval steps.
+                We confirm the exact warehouse unit and its current dispatch estimate before payment, with fewer approval steps than a custom build.
               </p>
             </div>
             <div className="rounded-[16px] border border-gold-500/10 bg-surface-tint p-4">
@@ -179,7 +179,7 @@ export default function WhyPage() {
                 <strong className="text-sm font-semibold text-ivory-100">Custom build</strong>
               </div>
               <p className="mt-2 text-sm leading-6 text-ivory-300">
-                Usually takes about 3–4 weeks before release, with factory photo and video approval before shipment.
+                Production and delivery timing are confirmed for your exact build before payment, with factory photo and video approval before shipment.
               </p>
             </div>
           </div>

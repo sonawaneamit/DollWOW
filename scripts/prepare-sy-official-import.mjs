@@ -180,7 +180,7 @@ function mapProduct(source, details, stock, releaseRank, retailAdjustment) {
     measurements: details.measurements,
     warehouseCountry: stock?.country,
     stockStatus,
-    deliveryEstimate: stock ? "Ships within 1-3 business days after stock confirmation" : "Usually 3-5 weeks from order to delivery",
+    deliveryEstimate: undefined,
     stockLastCheckedAt: new Date().toISOString(),
     customAvailable: Boolean(details.options.length),
     customizationGroups: details.options,
