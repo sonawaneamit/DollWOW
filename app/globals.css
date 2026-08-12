@@ -149,6 +149,26 @@
 .visualizer-preview-frame>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
 @media(max-width:900px){.visualizer-preview-frame{width:100%;height:min(62dvh,560px);min-height:360px;aspect-ratio:auto}.visualizer-preview-frame>img{object-fit:contain}}
 
+.visualizer-option-row{scrollbar-width:none}
+.visualizer-option-row::-webkit-scrollbar{display:none}
+
+/* On phones, move shoppers directly from photo choice to appearance choices. */
+@media(max-width:900px){
+  .visualizer-step-2:not(.has-result) .visualizer-preview,
+  .visualizer-step-2:not(.has-result) .visualizer-title{display:none}
+  .visualizer-step-2:not(.has-result) .visualizer-controls{padding-top:0}
+  .visualizer-step-2:not(.has-result) .visualizer-steps{margin-top:0}
+}
+
+@media(max-width:360px){
+  .visualizer-header{grid-template-columns:42px minmax(0,1fr) auto;gap:8px;padding-inline:8px}
+  .visualizer-header div strong{overflow:hidden;font-size:14px;text-overflow:ellipsis;white-space:nowrap}
+  .visualizer-header>p{font-size:9px;white-space:nowrap}
+  .visualizer-header>p b{font-size:13px}
+  .visualizer-compare-toggle{grid-template-columns:1fr 1fr}
+  .visualizer-compare-toggle button{font-size:11px}
+}
+
 /* Care for Life + private Doll Passport */
 .care-365-lockup{display:grid;gap:14px;max-width:680px;padding:14px;border:1px solid rgb(var(--color-border));border-radius:14px;background:rgb(var(--color-surface-tint))}
 .care-365-seal{display:grid;width:100%;min-width:0;grid-template-columns:82px minmax(0,1fr);gap:17px;align-items:center;color:rgb(var(--color-text))}

@@ -159,7 +159,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   }
 
   return (
-    <div className="visualizer-shell">
+    <div className={`visualizer-shell visualizer-step-${step}${result ? " has-result" : ""}`} aria-busy={loading}>
       <header className="visualizer-header">
         <Link href={`/products/${product.handle}`} aria-label="Back to product"><ArrowLeft /></Link>
         <div><span>Doll Visualizer™</span><strong>See your doll your way</strong></div>
@@ -245,8 +245,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                 </div>
                 <div className="visualizer-photo-grid">
                   {product.photos.map((photo) => (
-                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-pressed={photo.position === photoPosition}>
-                      <Image src={photo.url} alt={photo.alt} fill sizes="30vw" />
+                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={`Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
+                      <Image src={photo.url} alt={`${photo.alt} — photo ${photo.position}`} fill sizes="30vw" />
                       {photo.position === photoPosition ? <Check /> : null}
                     </button>
                   ))}
