@@ -1,8 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { collectionPresets, filterProducts } from "@/lib/catalog/filters";
+import { canonicalShopCollectionHandle, collectionPresets, filterProducts, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("catalog filters", () => {
+  it("keeps one indexable owner for collection aliases and utility sizes", () => {
+    expect(canonicalShopCollectionHandle("hair-black")).toBe("black-hair-dolls");
+    expect(canonicalShopCollectionHandle("shape-fuller")).toBe("fuller-dolls");
+    expect(canonicalShopCollectionHandle("customizable")).toBe("custom");
+    expect(canonicalShopCollectionHandle("silicone-head")).toBe("hybrid");
+    expect(isIndexableShopCollectionHandle("black-hair-dolls")).toBe(true);
+    expect(isIndexableShopCollectionHandle("hair-black")).toBe(false);
+    expect(isIndexableShopCollectionHandle("height-160-164")).toBe(true);
+  });
+
   it("trusts the canonical product brand before noisy imported tags", () => {
     const irontechWithStrayWmTag = {
       ...sampleProducts[0],

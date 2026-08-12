@@ -133,6 +133,21 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } }
 };
 
+const collectionAliases: Record<string, string> = {
+  customizable: "custom",
+  "silicone-head": "hybrid"
+};
+
+export function canonicalShopCollectionHandle(handle: string) {
+  const look = getCatalogLook(handle);
+  if (look && handle !== look.collectionHandle) return look.collectionHandle;
+  return collectionAliases[handle] || handle;
+}
+
+export function isIndexableShopCollectionHandle(handle: string) {
+  return canonicalShopCollectionHandle(handle) === handle;
+}
+
 export function filtersFromSearchParams(params: Record<string, string | string[] | undefined> = {}): CatalogFilters {
   const valueFor = (key: keyof CatalogFilters) => {
     const value = params[key];

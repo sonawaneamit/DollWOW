@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
-import type { CatalogFilters } from "./filters";
+import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
 
 type CollectionPreset = {
@@ -47,7 +47,7 @@ export function buildCollectionMetadata(
     title,
     description,
     alternates: { canonical: canonicalUrl },
-    robots: isFacetView ? { index: false, follow: true } : { index: true, follow: true },
+    robots: isFacetView || !isIndexableShopCollectionHandle(handle) ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
       title,
       description,

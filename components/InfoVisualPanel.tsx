@@ -41,9 +41,9 @@ const curatedVisuals: VisualItem[] = [
     video: "/videos/home-spotlight/freya.mp4",
     poster: "/images/home-hero/video-posters/freya.webp",
     title: "Starpery Freya",
-    subtitle: "165 cm · Silicone",
+    subtitle: "165 cm · Silicone head",
     brand: "Starpery Dolls",
-    href: "/products/starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra"
+    href: "/products/starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg"
   },
   {
     video: "/videos/home-spotlight/doris.mp4",
@@ -67,7 +67,7 @@ const curatedVisuals: VisualItem[] = [
     title: "SE Doll Carry",
     subtitle: "150 cm · TPE",
     brand: "SE Doll",
-    href: "/products/sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4"
+    href: "/products/sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o"
   },
   {
     video: "/videos/home-spotlight/zeki.mp4",

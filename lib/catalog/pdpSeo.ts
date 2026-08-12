@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
-import { productDisplayNameForUi, productPublicTitle, productSeoAliases, productSeoTitle } from "./naming";
+import { productDisplayNameForUi, productPublicTitle, productSeoAliases } from "./naming";
 import { productMeasurementSpecs } from "./productSpecs";
 
 type IntentChip = {
@@ -37,7 +37,7 @@ const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = productSeoTitle(product);
+  const title = productPublicTitle(product);
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);

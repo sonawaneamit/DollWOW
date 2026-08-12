@@ -31,8 +31,7 @@ export function ComparisonPageClient() {
     ? rows.filter((row) => new Set(comparison.entries.map((entry) => String(row.label === "Price" ? entry.unitPrice : row.value(entry) ?? ""))).size > 1)
     : rows;
 
-  if (!mounted) return <div className="min-h-[420px]" />;
-  if (comparison.entries.length < 2) {
+  if (!mounted || comparison.entries.length < 2) {
     return (
       <section className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-6">
         <Scale className="mx-auto h-10 w-10 text-accent" />

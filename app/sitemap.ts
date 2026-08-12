@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { brandHubHandles } from "@/lib/catalog/brandSeo";
-import { collectionPresets } from "@/lib/catalog/filters";
+import { collectionPresets, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
 import { getLearningArticles } from "@/lib/learn/content";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
+import { getCatalogBrand } from "@/lib/catalog/brands";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -36,21 +37,23 @@ export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const today = new Date(`${now.toISOString().slice(0, 10)}T00:00:00.000Z`);
   const products = await getSeoCatalogProducts({ first: 5000 });
   const articles = getLearningArticles();
 
   const staticEntries = staticRoutes.map((path) => ({
     url: `${siteUrl}${path}`,
-    lastModified: now,
     changeFrequency: path === "" ? "daily" : "weekly",
     priority: path === "" ? 1 : 0.7
   })) satisfies MetadataRoute.Sitemap;
 
   const collectionEntries = Object.keys(collectionPresets)
+    .filter((handle) => !getCatalogBrand(handle))
+    .filter(isIndexableShopCollectionHandle)
     .sort()
     .map((handle) => ({
       url: `${siteUrl}/shop/${handle}`,
-      lastModified: now,
+      lastModified: today,
       changeFrequency: "daily",
       priority: 0.8
     })) satisfies MetadataRoute.Sitemap;
@@ -59,7 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .sort()
     .map((handle) => ({
       url: `${siteUrl}/brands/${handle}`,
-      lastModified: now,
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.78
     })) satisfies MetadataRoute.Sitemap;
@@ -68,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((product) => product.handle)
     .map((product) => ({
       url: `${siteUrl}/products/${product.handle}`,
-      lastModified: product.extended.stockLastCheckedAt ? new Date(product.extended.stockLastCheckedAt) : now,
+      ...(product.extended.stockLastCheckedAt ? { lastModified: new Date(product.extended.stockLastCheckedAt) } : {}),
       changeFrequency: "weekly",
       priority: 0.65
     })) satisfies MetadataRoute.Sitemap;

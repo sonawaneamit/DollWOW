@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
         source: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-i9zoa",
         destination: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-1e7ds",
         permanent: true
+      },
+      {
+        source: "/products/sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
+        destination: "/products/sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
+        permanent: true
+      },
+      {
+        source: "/products/starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+        destination: "/products/starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
+        permanent: true
       }
     ];
   },

@@ -1,13 +1,15 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
-import { activeFilterCount, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
+import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
 import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
+import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
+import { notFound, permanentRedirect } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -17,7 +19,8 @@ export async function generateMetadata({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { collection } = await params;
-  const preset = collectionPresets[collection] || { title: collection.replace(/-/g, " "), filters: { brand: collection } };
+  const preset = collectionPresets[collection];
+  if (!preset) notFound();
   return buildCollectionMetadata(collection, preset, await searchParams);
 }
 
@@ -29,9 +32,14 @@ export default async function CollectionPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { collection } = await params;
+  const brandDestination = brandCollectionRedirectHref(collection);
+  if (brandDestination) permanentRedirect(brandDestination);
+  const canonicalCollection = canonicalShopCollectionHandle(collection);
+  if (canonicalCollection !== collection) permanentRedirect(`/shop/${canonicalCollection}`);
   const rawSearchParams = await searchParams;
   const paramsFilters = filtersFromSearchParams(rawSearchParams);
-  const preset = collectionPresets[collection] || { title: collection.replace(/-/g, " "), filters: { brand: collection } };
+  const preset = collectionPresets[collection];
+  if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
   const products = await getSeoCatalogProducts({ first: 5000 });
   const filtered = filterProducts(products, filters);

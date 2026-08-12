@@ -39,20 +39,20 @@ type LookDefinition = Omit<LookTile, "product" | "count"> & {
 const HERO_VIDEO_MEDIA: Record<string, { video: string; poster: string }> = {
   "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7": { video: "/videos/home-spotlight/quine.mp4", poster: "/images/home-hero/video-posters/quine.webp" },
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli": { video: "/videos/home-spotlight/vivian.mp4", poster: "/images/home-hero/video-posters/vivian.webp" },
-  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra": { video: "/videos/home-spotlight/freya.mp4", poster: "/images/home-hero/video-posters/freya.webp" },
+  "starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg": { video: "/videos/home-spotlight/freya.mp4", poster: "/images/home-hero/video-posters/freya.webp" },
   "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l": { video: "/videos/home-spotlight/doris.mp4", poster: "/images/home-hero/video-posters/doris.webp" },
   "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg": { video: "/videos/home-spotlight/isla.mp4", poster: "/images/home-hero/video-posters/isla.webp" },
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4": { video: "/videos/home-spotlight/carry.mp4", poster: "/images/home-hero/video-posters/carry.webp" },
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o": { video: "/videos/home-spotlight/carry.mp4", poster: "/images/home-hero/video-posters/carry.webp" },
   "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn": { video: "/videos/home-spotlight/zeki.mp4", poster: "/images/home-hero/video-posters/zeki.webp" }
 };
 
 const SPOTLIGHT_HANDLE_PRIORITY = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
-  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+  "starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
   "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
   "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l",
   "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg",
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
   "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
 ];
 

@@ -1,5 +1,5 @@
 ---
-title: "Tantaly Dolls Buying Guide: Compare Compact And Torso Formats"
+title: "Tantaly Dolls Guide: Compact and Torso Formats"
 slug: "tantaly-buying-guide"
 primaryKeyword: "tantaly doll"
 secondaryKeywords: ["tantaly dolls", "tantaly torso", "tantaly dolls review"]
@@ -13,7 +13,7 @@ reviewOwner: catalog
 lastReviewed: "2026-08-11"
 ---
 
-# Tantaly Dolls Buying Guide: Compare Compact And Torso Formats
+# Tantaly Dolls Guide: Compact and Torso Formats
 
 By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 

@@ -73,6 +73,12 @@ export function brandHubHref(value: string | undefined | null) {
   return brand ? `/brands/${brand.collectionHandle}` : "/shop/sex-dolls";
 }
 
+export function brandCollectionRedirectHref(value: string | undefined | null) {
+  const brand = getCatalogBrand(value);
+  if (!brand || hiddenCatalogBrandValues.has(brand.value)) return null;
+  return `/brands/${brand.collectionHandle}`;
+}
+
 export function normalizeBrandText(value: string | undefined | null) {
   return String(value || "")
     .toLowerCase()

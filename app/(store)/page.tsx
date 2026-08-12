@@ -6,11 +6,11 @@ import { withProtectedProductImages } from "@/lib/catalog/productImage";
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
-  "starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
+  "starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
   "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
   "erovenus-doris-112-5cm-d-cup-silicone-companion-doll-fhw2l",
   "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg",
-  "sedoll-carry-150cm-g-cup-tpe-companion-doll-4lkf4",
+  "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
   "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
 ];
 
