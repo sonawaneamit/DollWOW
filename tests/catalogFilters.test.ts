@@ -7,6 +7,7 @@ describe("catalog filters", () => {
     expect(canonicalShopCollectionHandle("hair-black")).toBe("black-hair-dolls");
     expect(canonicalShopCollectionHandle("shape-fuller")).toBe("fuller-dolls");
     expect(canonicalShopCollectionHandle("customizable")).toBe("custom");
+    expect(canonicalShopCollectionHandle("custom-0")).toBe("custom");
     expect(canonicalShopCollectionHandle("silicone-head")).toBe("hybrid");
     expect(isIndexableShopCollectionHandle("black-hair-dolls")).toBe(true);
     expect(isIndexableShopCollectionHandle("hair-black")).toBe(false);

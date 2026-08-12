@@ -135,6 +135,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
 
 const collectionAliases: Record<string, string> = {
   customizable: "custom",
+  "custom-0": "custom",
   "silicone-head": "hybrid"
 };
 

@@ -19,9 +19,10 @@ export async function generateMetadata({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { collection } = await params;
-  const preset = collectionPresets[collection];
+  const canonicalCollection = canonicalShopCollectionHandle(collection);
+  const preset = collectionPresets[canonicalCollection];
   if (!preset) notFound();
-  return buildCollectionMetadata(collection, preset, await searchParams);
+  return buildCollectionMetadata(canonicalCollection, preset, await searchParams);
 }
 
 export default async function CollectionPage({
