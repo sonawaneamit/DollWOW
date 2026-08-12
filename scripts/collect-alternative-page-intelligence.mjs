@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_BASE = "https://api.dataforseo.com/v3";
 const execute = process.argv.includes("--execute");
+const retryFailed = process.argv.includes("--retry-failed");
 const key = arg("key") || "betterlovedoll";
 const configPath = path.join(ROOT, "data/seo/alternative-page-targets.json");
 
@@ -44,11 +45,20 @@ const calls = [
 ];
 
 await fs.mkdir(outputDir, { recursive: true });
+let previousManifest = null;
+let selectedCalls = calls;
+if (retryFailed) {
+  previousManifest = JSON.parse(await fs.readFile(path.join(outputDir, "request-manifest.json"), "utf8"));
+  const failedIds = new Set(previousManifest.records.filter((item) => item.error).map((item) => item.id));
+  selectedCalls = calls.filter((item) => failedIds.has(item.id));
+}
 const records = [];
-for (const item of calls) records.push(await executeCall(item));
-const merchant = await executeMerchant();
-records.push(merchant);
-const manifest = { generatedAt: new Date().toISOString(), key, target, execute, totalCost: records.reduce((sum, item) => sum + Number(item.cost || 0), 0), requestCount: records.length, failedRequests: records.filter((item) => item.error).length, records };
+for (const item of selectedCalls) records.push(await executeCall(item));
+if (!retryFailed || previousManifest.records.some((item) => item.id === "merchant" && item.error)) records.push(await executeMerchant());
+const mergedRecords = previousManifest
+  ? previousManifest.records.map((item) => records.find((retry) => retry.id === item.id) || item)
+  : records;
+const manifest = { generatedAt: new Date().toISOString(), key, target, execute, totalCost: mergedRecords.reduce((sum, item) => sum + Number(item.cost || 0), 0), requestCount: mergedRecords.length, failedRequests: mergedRecords.filter((item) => item.error).length, records: mergedRecords };
 await fs.writeFile(path.join(outputDir, "request-manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(JSON.stringify({ outputDir: path.relative(ROOT, outputDir), totalCost: manifest.totalCost, requestCount: manifest.requestCount, failedRequests: manifest.failedRequests, records: records.map(({ id, api, cost, statusCode, statusMessage }) => ({ id, api, cost, statusCode, statusMessage })) }, null, 2));
 process.exit(0);
