@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
-import { visualizerDraftKey, type VisualizerGroup } from "@/lib/doll-visualizer/config";
+import { visualizerDraftKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
 
 type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };

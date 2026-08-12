@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createHash } from "node:crypto";
 import sharp from "sharp";
 import { z } from "zod";
 import { getCustomizationConfig } from "@/lib/customization/configs";
@@ -23,6 +24,7 @@ const generationCache = new Map<string, { previewDataUrl: string; createdAt: num
 const CACHE_TTL_MS = 30 * 60 * 1000;
 let generationDay = new Date().toISOString().slice(0, 10);
 let generatedToday = 0;
+const requestWindows = new Map<string, { count: number; resetsAt: number }>();
 
 const schema = z.object({
   productHandle: z.string().min(1).max(180),
@@ -36,10 +38,13 @@ const ALLOWED_COUNTRIES = new Set([
 ]);
 
 export async function POST(request: Request) {
+  if (!isTrustedOrigin(request)) return apiError("This request could not be verified.", 403);
   if (!env.VENICE_API_KEY) return NextResponse.json({ error: "Doll Visualizer™ is not connected yet." }, { status: 503 });
   if (env.DOLL_VISUALIZER_ENABLED !== "true") return NextResponse.json({ error: "Live previews are paused for this private pilot." }, { status: 503 });
   const country = (request.headers.get("x-vercel-ip-country") || request.headers.get("cf-ipcountry") || "").toUpperCase();
   if (country && !ALLOWED_COUNTRIES.has(country)) return NextResponse.json({ error: "Doll Visualizer™ is not available in your region yet." }, { status: 403 });
+  const clientKey = clientFingerprint(request);
+  if (!allowRequest(clientKey)) return apiError("Too many preview requests. Please wait a little before trying again.", 429);
 
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Choose a photo, at least one visual option, and a valid email." }, { status: 400 });
@@ -84,7 +89,7 @@ export async function POST(request: Request) {
   if (generated && !generated.ok) {
     console.error("Venice Doll Visualizer generation failed", generated.status, generated.detail.slice(0, 500));
     const message = generated.status === 402 ? "The preview balance needs a top-up." : generated.status === 429 ? "The visualizer is busy. Please try again shortly." : "The preview could not be generated. Your preview was not counted.";
-    return NextResponse.json({ error: message }, { status: generated.status === 429 ? 429 : 502 });
+    return apiError(message, generated.status === 429 ? 429 : 502);
   }
   let previewDataUrl = cachedPreview;
   if (!previewDataUrl && generated?.ok) {
@@ -111,6 +116,41 @@ export async function POST(request: Request) {
     emailDelivered: email.delivered,
     selections: selections.map(({ group, option }) => ({ groupId: group.id, group: group.label, optionId: option.id, option: option.label }))
   }, { headers: { "Set-Cookie": usageCookie(nextCount), "Cache-Control": "no-store" } });
+}
+
+function isTrustedOrigin(request: Request) {
+  const origin = request.headers.get("origin");
+  if (!origin) return false;
+  try {
+    const expected = new URL(env.NEXT_PUBLIC_SITE_URL).origin;
+    const actual = new URL(origin).origin;
+    if (actual === expected) return true;
+    return process.env.NODE_ENV !== "production" && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(actual);
+  } catch {
+    return false;
+  }
+}
+
+function clientFingerprint(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const ip = forwarded || request.headers.get("x-real-ip") || "unknown";
+  return createHash("sha256").update(`${ip}:${new Date().toISOString().slice(0, 10)}`).digest("hex");
+}
+
+function allowRequest(key: string) {
+  const now = Date.now();
+  const existing = requestWindows.get(key);
+  if (!existing || existing.resetsAt <= now) {
+    requestWindows.set(key, { count: 1, resetsAt: now + 10 * 60 * 1000 });
+    return true;
+  }
+  if (existing.count >= 6) return false;
+  existing.count += 1;
+  return true;
+}
+
+function apiError(message: string, status: number) {
+  return NextResponse.json({ error: message }, { status, headers: { "Cache-Control": "no-store" } });
 }
 
 async function generatePreview({ images, prompt, aspectRatio }: {

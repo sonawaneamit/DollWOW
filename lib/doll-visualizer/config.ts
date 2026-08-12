@@ -1,5 +1,6 @@
-import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from "@/types/customization";
+import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
+import type { VisualizerGroup } from "./public";
 
 export const VISUALIZER_PRODUCT_HANDLES = [
   "irontech-luna-152cm-a-cup-silicone-companion-doll-12nvb",
@@ -21,10 +22,6 @@ export function isVisualizerProduct(handle: string): handle is (typeof VISUALIZE
 export function visualizerUrl(handle: string) {
   return `/ops/doll-visualizer/${handle}`;
 }
-
-export type VisualizerGroup = Pick<CustomizationGroup, "id" | "label"> & {
-  options: Array<Pick<CustomizationOption, "id" | "label" | "swatch">>;
-};
 
 export function visualizerConfigForProduct(product: Product, fallback: BrandCustomizationConfig): BrandCustomizationConfig {
   const supplierGroups = product.extended.customizationGroups?.filter(
@@ -103,10 +100,6 @@ function referenceProperty(groupId: string) {
   if (groupId === "hair-color") return "the visible wig color only";
   if (groupId === "eye-color") return "the visible iris color only";
   return "the approved finishing-detail placement, density, scale, and color only";
-}
-
-export function visualizerDraftKey(handle: string) {
-  return `dollwow-visualizer-draft-v1:${handle}`;
 }
 
 function cleanLabel(value: string) {
