@@ -11,6 +11,7 @@ export const brandHubHandles = catalogBrands.map((brand) => brand.collectionHand
 type BrandSeoProfile = {
   intro: string;
   positioning: string;
+  metaTitle?: string;
   metaDescription?: string;
   guideHref?: string;
   guideLabel?: string;
@@ -25,6 +26,9 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "WM Doll traces its manufacturing history to 2010 and is known for a broad choice of TPE and silicone bodies, heads, sizes, and customization paths.",
     intro:
       "Compare current WM Dolls on DollWow by TPE or silicone construction, body and head pairing, measurements, listed weight, price, and supported options. WM traces its manufacturing history to 2010 and offers female and male models across a wide size range. DollWow is an approved WM seller and reviews complex custom builds before production.",
+    metaTitle: "WM Dolls: TPE & Silicone Sex Dolls",
+    metaDescription:
+      "Shop approved WM Dolls by TPE or silicone material, body, head, size, weight, price, availability, and supported custom options.",
     guideHref: "/learn/wm-dolls-buying-guide",
     guideLabel: "WM Dolls buying guide",
     buyerNotes: [
@@ -40,6 +44,23 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
         title: "Keep the authenticity record",
         body: "DollWow is an approved WM seller. Retain the final build details and the manufacturer's anti-counterfeiting code or supplied documentation."
       }
+    ],
+    comparisonRows: [
+      [
+        "TPE or silicone",
+        "Compare the exact body and head materials by feel, finish, listed weight, care needs, repair path, and price.",
+        "DollWow keeps the confirmed construction and current choices tied to the exact WM product."
+      ],
+      [
+        "Body and head pairing",
+        "Check the body number, head number, neck fitting, skin tone, measurements, and supported appearance or powered options as one build.",
+        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
+      ],
+      [
+        "Authenticity and ownership",
+        "Keep the order record, final build details, supplied anti-counterfeiting code, care instructions, and arrival evidence together.",
+        "DollWow is an approved WM seller and includes Care 365 with every DollWow doll."
+      ]
     ],
     faqs: [
       {
@@ -130,6 +151,9 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Irontech has produced dolls since 2015 and is known for a broad choice of full-silicone, TPE, hybrid, female, and male models, including advanced head and skeleton options on supported builds.",
     intro:
       "Compare current Irontech Dolls on DollWow by material, body size, listed weight, head system, price, availability, and supported options. Irontech has produced dolls since 2015 and offers full-silicone, TPE, hybrid, female, and male models. Because compatibility varies by body and head, DollWow reviews complex custom builds before production.",
+    metaTitle: "Irontech Dolls: Silicone, TPE & Hybrid",
+    metaDescription:
+      "Shop Irontech dolls by silicone, TPE or hybrid build, body, head system, size, weight, price, availability, and supported options.",
     guideHref: "/learn/irontech-dolls-buying-guide",
     guideLabel: "Irontech Dolls buying guide",
     buyerNotes: [
@@ -145,6 +169,23 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
         title: "Plan for real handling weight",
         body: "Compare pounds and kilograms, the delivery route, storage, and any weight added by selected options before approving the build."
       }
+    ],
+    comparisonRows: [
+      [
+        "Construction",
+        "Compare full silicone, TPE, and hybrid builds by body and head material, feel, finish, listed weight, care, and price.",
+        "DollWow keeps construction, measurements, photographs, and current choices tied to the exact Irontech product."
+      ],
+      [
+        "Head and body system",
+        "Confirm the exact body, standard or supported ROS-style head, connector, hair, eyes, mouth details, and compatible functions.",
+        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
+      ],
+      [
+        "Handling and support",
+        "Use the finished weight, delivery route, storage plan, arrival evidence, care instructions, and repair path to judge ownership fit.",
+        "DollWow can confirm a missing decision-critical detail before checkout and includes Care 365 with every DollWow doll."
+      ]
     ],
     faqs: [
       {
@@ -172,6 +213,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Compare current Starpery dolls on DollWow by full-silicone or silicone-head construction, body and head pairing, height, listed weight, finish, skeleton, price, and supported options. Starpery is a Shenzhen-based manufacturer with hard, soft, and selected ROS-style silicone heads across its range. DollWow checks complex custom builds before production and can help confirm whether a specific feature is available on the exact body and head you choose.",
     metaDescription:
       "Shop Starpery dolls by material, head type, height, weight, finish, price, availability, and supported custom options with DollWow guidance.",
+    metaTitle: "Starpery Dolls: Silicone Models & Options",
     guideHref: "/learn/starpery-dolls-buying-guide",
     guideLabel: "Starpery Dolls buying guide",
     buyerNotes: [
@@ -239,6 +281,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Compare current SE Doll models on DollWow by TPE or full-silicone construction, body and head pairing, height, listed weight, makeup level, price, availability, and supported options. SE Doll is a Shenzhen-based manufacturer established in 2016, with compact and full-size products across several production and finish paths. DollWow reviews complex custom builds before production so the selected material, head, body, and options work together.",
     metaDescription:
       "Shop SE Doll TPE and Silicone Pro models by body, head, size, weight, makeup, price, availability, and supported custom options.",
+    metaTitle: "SE Doll: TPE & Silicone Sex Dolls",
     guideHref: "/learn/se-doll-buying-guide",
     guideLabel: "SE Doll buying guide",
     buyerNotes: [
@@ -578,6 +621,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Compare current Tantaly dolls on DollWow by product form, included body areas, complete dimensions, listed weight, material, price, and storage needs. Tantaly specializes in compact and torso-style products, including very small, mid-size, larger, female, and male formats. Because the word torso can describe very different products, DollWow keeps the exact photographs and specifications with each listing and can help confirm any missing measurement before you order.",
     metaDescription:
       "Shop Tantaly compact and torso dolls by product form, dimensions, weight, material, price, storage needs, and current availability.",
+    metaTitle: "Tantaly Dolls: Torso & Compact Models",
     guideHref: "/learn/tantaly-buying-guide",
     guideLabel: "Tantaly buying guide",
     buyerNotes: [
@@ -645,6 +689,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       "Compare current Erovenus dolls on DollWow by product form, silicone construction, height, width, depth, proportions, starting price, and current ordering path. Erovenus describes its development as following the creation of LoveNestle in 2023, with a focus on silicone torso products and hand-finished surface detail. Confirm the exact model, dimensions, weight, included body areas, and care instructions before ordering.",
     metaDescription:
       "Shop Erovenus silicone torso and compact dolls by product form, dimensions, proportions, price, care needs, and current ordering details.",
+    metaTitle: "Erovenus Dolls: Silicone Torso Models",
     guideHref: "/learn/erovenus-dolls-review-guide",
     guideLabel: "Erovenus review guide",
     buyerNotes: [
@@ -708,8 +753,8 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
 };
 
 export function buildBrandMetadata(brand: CatalogBrand): Metadata {
-  const title = `${brandHubTitle(brand)}: Shop ${brand.label} Models`;
   const profile = brandSeoProfile(brand);
+  const title = profile.metaTitle ?? `${brandHubTitle(brand)}: Shop ${brand.label} Models`;
   const description = profile.metaDescription ?? `${brand.label} models on DollWow with current prices, materials, measurements, custom options, buyer guides, and discreet support.`;
   const url = brandCanonicalUrl(brand);
 
@@ -792,6 +837,7 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
       custom.intro ??
       `Shop ${brand.label} models on DollWow and compare material, size, price, availability, and custom options in one place. ${positioning} Open any product page for full photos, exact measurements, available choices, and delivery information before checkout.`,
     positioning,
+    metaTitle: custom.metaTitle,
     metaDescription: custom.metaDescription,
     guideHref: custom.guideHref,
     guideLabel: custom.guideLabel,
