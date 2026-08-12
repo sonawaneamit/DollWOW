@@ -1,8 +1,8 @@
 ---
 title: "Silicone Sex Doll Repair: Tears, Finish Damage, And Safe Support"
 slug: "silicone-sex-doll-repair"
-primaryKeyword: "silicone sex doll repair"
-secondaryKeywords: ["how to repair silicone sex doll", "silicone doll repair", "silicone doll repair glue", "silicone sex doll tear"]
+primaryKeyword: "silicone doll repair glue"
+secondaryKeywords: ["silicone doll repair", "silicone sex doll repair", "how to repair silicone sex doll", "silicone sex doll tear"]
 description: "Learn how to assess silicone doll damage, protect painted finishes, choose compatible repair support, document tears, and know when a repair needs expert help."
 category: "Materials And Care"
 author: "jesse"
@@ -302,4 +302,3 @@ The original purchaser can request an appropriate basic repair kit for a documen
 ### Can DollWow help with a repair after the first year?
 
 Yes. Lifetime Repair Concierge continues to help with diagnosis, compatible instructions, parts sourcing, and repair coordination under the published [Care for Life terms](/care-for-life).
-

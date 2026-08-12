@@ -1,8 +1,8 @@
 ---
 title: "TPE Sex Doll Repair: Tears, Glue, Stains, And Safe Next Steps"
 slug: "tpe-sex-doll-repair"
-primaryKeyword: "tpe sex doll repair"
-secondaryKeywords: ["how to repair tpe sex doll", "tpe doll glue", "tpe doll tear repair", "tpe doll repair kit"]
+primaryKeyword: "tpe doll glue"
+secondaryKeywords: ["tpe sex doll repair", "how to repair tpe sex doll", "tpe doll tear repair", "tpe doll repair kit"]
 description: "Learn how to assess a TPE doll tear, choose compatible repair support, avoid common glue and heat mistakes, document damage, and know when to stop." 
 category: "Materials And Care"
 author: "jesse"
@@ -282,4 +282,3 @@ The original purchaser can request an appropriate basic repair kit for a documen
 ### Can DollWow help after Care 365 ends?
 
 Yes. Lifetime Repair Concierge continues to help with diagnosis, compatible instructions, parts sourcing, and repair coordination under the published [Care for Life terms](/care-for-life).
-

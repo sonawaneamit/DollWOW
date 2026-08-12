@@ -214,5 +214,53 @@
       "https://www.tantaly.com/pages/breast-options-guide-for-sex-doll-torsos",
       "https://realsexdoll.com/ultra-realistic-gel-filled-breasts/"
     ]
+  },
+  "tpe-repair-guide": {
+    "brand": "TPE doll repair",
+    "domain": "irontechdoll.com",
+    "url": "https://dollwow.com/learn/tpe-sex-doll-repair",
+    "keywords": [
+      "tpe sex doll repair",
+      "how to repair tpe sex doll",
+      "tpe doll glue",
+      "tpe doll tear repair",
+      "tpe doll repair kit",
+      "tpe doll stain repair"
+    ],
+    "serpKeywords": [
+      "tpe sex doll repair",
+      "tpe doll glue",
+      "how to repair tpe sex doll"
+    ],
+    "prompt": "Compare manufacturer guidance for repairing flexible thermoplastic elastomer products. Cover surface tears, abrasion, stains, seams, embedded hardware, documentation, tension removal, approved bonding materials, heat risks, cure support, escalation, and prevention. Explain why temperatures, solvents, adhesives, and cure times are formulation-specific. Cite current manufacturers and primary technical sources.",
+    "comparisonUrls": [
+      "https://support.tantaly.com/hc/en-us/articles/52200362118169-How-to-use-a-TPE-repair-kit-to-fix-common-problems-with-dolls",
+      "https://www.irontechdoll.com/blog/how-to-repair-a-sex-doll-irontech-doll-repair-instruction/",
+      "https://www.yourdoll.com/mending-minor-tears-a-guide-to-repairing-silicone-and-tpe-love-dolls/"
+    ]
+  },
+  "silicone-repair-guide": {
+    "brand": "silicone doll repair",
+    "domain": "irontechdoll.com",
+    "url": "https://dollwow.com/learn/silicone-sex-doll-repair",
+    "keywords": [
+      "silicone sex doll repair",
+      "how to repair silicone sex doll",
+      "silicone doll repair",
+      "silicone doll repair glue",
+      "silicone sex doll tear",
+      "silicone doll paint repair"
+    ],
+    "serpKeywords": [
+      "silicone sex doll repair",
+      "silicone doll repair",
+      "how to repair silicone sex doll"
+    ],
+    "prompt": "Summarize technical guidance for maintaining and repairing flexible silicone exhibits and props. Cover surface tears, finish loss, loose components, seams, embedded hardware, internal-fill concerns, documentation, tension removal, compatible bonding and pigment systems, cure support, escalation, and prevention. Explain why solvents, adhesives, pigments, and cure times are formulation-specific. Cite manufacturers and primary technical sources.",
+    "comparisonUrls": [
+      "https://www.irontechdoll.com/blog/how-to-repair-a-sex-doll-irontech-doll-repair-instruction/",
+      "https://www.yourdoll.com/mending-minor-tears-a-guide-to-repairing-silicone-and-tpe-love-dolls/",
+      "https://www.myrobotdoll.com/tpe-and-silicone-sex-doll-repair"
+    ]
   }
 }
