@@ -9,6 +9,7 @@ const priorityCollections = [
   "tpe",
   "silicone",
   "male-dolls",
+  "futa-sex-dolls",
   "mini-sex-dolls",
   "ready-to-ship",
   "custom"

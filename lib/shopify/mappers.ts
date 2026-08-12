@@ -45,6 +45,7 @@ type ShopifyProductNode = {
   deliveryEstimate?: { value?: string };
   stockLastCheckedAt?: { value?: string };
   customAvailable?: { value?: string };
+  penisAddOnAvailable?: { value?: string };
   customizationGroups?: { value?: string };
   qcNote?: { value?: string };
 };
@@ -172,6 +173,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value),
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
       customAvailable: booleanValue(node.customAvailable?.value),
+      penisAddOnAvailable: booleanValue(node.penisAddOnAvailable?.value),
       customizationGroups,
       qcNote: node.qcNote?.value
     }

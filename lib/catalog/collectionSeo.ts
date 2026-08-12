@@ -294,6 +294,8 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop full-body lightweight sex dolls with a listed weight under 75 lb / 34 kg. This is DollWow's consistent shopping boundary, not a universal industry standard or a promise that every model will feel easy for every buyer to lift. Compare exact weight, height, width, material, grip points, delivery access, cleaning route, and storage position before choosing. If a reduced-weight option matters, ask our team to confirm that it is supported on the exact body.",
   "new-sex-dolls":
     "Browse new sex dolls and recent catalog additions with the latest supported releases shown first. New does not automatically mean better for your needs, and a release order is not proof of current stock or a universal manufacturer launch date. Compare the exact material, height, listed weight, body and head pairing, options, starting price, availability, and production path. If you have seen a newer approved model elsewhere, send our team the name or supplier link and we will check whether it can be added.",
+  "futa-sex-dolls":
+    "Shop adult futa sex dolls from feminine full-body products that currently offer a selectable insertable penis add-on. Some buyers also search for transgender sex dolls, but a product configuration is not a person's gender identity. Compare the exact body, head, material, height, listed weight, photographs, add-on size, price, compatibility, and care needs. The add-on is optional and must be selected on the product page; the standard build may not include it.",
   "asian-dolls":
     "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
   "black-dolls":
@@ -328,6 +330,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
   "new-sex-dolls": "Browse new sex dolls and recent catalog additions. Compare latest-supported models by material, size, weight, options, price, and availability.",
+  "futa-sex-dolls": "Shop futa sex dolls with a verified insertable penis option. Compare body, material, size, weight, add-on choices, price, care, and compatibility.",
   "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
@@ -439,6 +442,20 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
     {
       title: "Ask for a model you have seen",
       body: "Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "futa-sex-dolls": [
+    {
+      title: "Confirm the selected configuration",
+      body: "Every result has a current insertable penis option, but it is not necessarily included by default. Open the product and select the supported size before checkout."
+    },
+    {
+      title: "Compare the complete body",
+      body: "Height, weight, material, body measurements, head pairing, storage, and cleaning remain important even when this add-on is your starting requirement."
+    },
+    {
+      title: "Ask before production",
+      body: "Add-on sizes, pricing, fit, care, and compatibility can vary. DollWow can confirm the exact combination during Human Build Check before an eligible order enters production."
     }
   ],
   "asian-dolls": [
@@ -679,6 +696,14 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Browse ready-to-ship dolls", href: "/shop/ready-to-ship" },
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" }
   ],
+  "futa-sex-dolls": [
+    { label: "Explore custom builds", href: "/shop/custom" },
+    { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+    { label: "Read the complete buying guide", href: "/learn/sex-doll-guide" },
+    { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
+    { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
+    { label: "Ask how ordering works", href: "/how-ordering-works" }
+  ],
   "asian-dolls": [
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
     { label: "Learn how to judge realism", href: "/learn/most-realistic-sex-dolls" },
@@ -763,6 +788,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Review buyer protection", href: "/buyer-protection" }
   ],
   custom: [
+    { label: "Browse dolls with an insertable penis option", href: "/shop/futa-sex-dolls" },
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "See how ordering works", href: "/how-ordering-works" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
@@ -919,6 +945,23 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
       factor: "Missing release",
       whyItMatters: "A recently announced model may not yet be published in every approved retailer catalog.",
       dollWowAdvantage: "Send live chat or hello@dollwow.com the model name or supplier link. Most approved additions can go live within 4 to 6 hours after confirmation."
+    }
+  ],
+  "futa-sex-dolls": [
+    {
+      factor: "Verified option",
+      whyItMatters: "A product title or category label does not prove that an insertable penis is available on the exact body.",
+      dollWowAdvantage: "This collection only includes products whose current customization data exposes the add-on as a selectable option."
+    },
+    {
+      factor: "Exact configuration",
+      whyItMatters: "The add-on may be optional, offered in more than one size, and priced separately from the standard body.",
+      dollWowAdvantage: "Each product keeps the option, current price effect, body, head, material, measurements, and photographs together before checkout."
+    },
+    {
+      factor: "Build confirmation",
+      whyItMatters: "Compatibility and production details can change by brand, body, and selected options.",
+      dollWowAdvantage: "Human Build Check can confirm an eligible configuration before production instead of asking you to rely on a category name."
     }
   ],
   "asian-dolls": [
@@ -1333,6 +1376,32 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Can DollWow add a new model that is missing?",
       answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+    }
+  ],
+  "futa-sex-dolls": [
+    {
+      question: "What is a futa sex doll?",
+      answer: "In adult-product search language, it usually means a feminine doll configured with a penis. DollWow uses the term for product discovery and only includes full-body products with a current selectable insertable penis add-on."
+    },
+    {
+      question: "Are futa and transgender sex dolls the same thing?",
+      answer: "Not exactly. Futa is an adult fantasy and product-search term, while transgender describes a person's gender identity. Some shoppers use both phrases for similar products, but DollWow describes the physical configuration rather than assigning a human identity to a doll."
+    },
+    {
+      question: "Is the insertable penis included in the displayed price?",
+      answer: "Not always. The collection proves the option is available, not that it is included by default. Open the product page to select a supported size and review the current price change."
+    },
+    {
+      question: "Are all products in this collection full dolls?",
+      answer: "Yes. This collection is limited to feminine full-body products with the verified add-on option. Torso and compact product formats remain in their own collections."
+    },
+    {
+      question: "Can I choose TPE, silicone, or hybrid construction?",
+      answer: "Available materials vary by product and brand. Use the material filter, then confirm the body and head construction on the exact listing before ordering."
+    },
+    {
+      question: "Can DollWow confirm the add-on before production?",
+      answer: "Yes. Ask live chat or hello@dollwow.com to confirm the supported size, price, care, compatibility, and exact build before checkout or during Human Build Check for an eligible custom order."
     }
   ],
   "asian-dolls": [

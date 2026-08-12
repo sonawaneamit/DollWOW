@@ -493,6 +493,8 @@ Before paying for a custom build:
 
 Use the live [custom doll collection](/shop/custom), the [customization guide](/learn/custom-sex-dolls), and the DollWow [customization workflow](/customize) together.
 
+If a feminine full-body doll with a selectable insertable penis is part of the intended build, use the [futa sex dolls collection](/shop/futa-sex-dolls) to start with products whose current customization data confirms that option. The add-on may still require a separate size selection and price, so confirm the complete configuration before checkout.
+
 ### Start with the body and head, then add options
 
 Choose the body around handling, proportions, material, and intended use. Choose the head around sculpt, compatibility, and maintenance. Only then evaluate cosmetic, structural, and electronic upgrades. This order keeps optional features from distracting from the two components that define most of the finished product.

@@ -16,6 +16,7 @@ export type CatalogFilters = {
   weight?: string;
   cup?: string;
   price?: string;
+  capability?: "insertable-penis-add-on";
   sort?: string;
 };
 
@@ -130,13 +131,19 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "height-165-169": { title: "Dolls 165-169 cm", filters: { height: "165-169" } },
   "height-170-plus": { title: "Dolls 170 cm+", filters: { height: "170-999" } },
   "lightweight-sex-dolls": { title: "Lightweight sex dolls", filters: { productForm: "full-doll", weight: "0-74" } },
-  "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } }
+  "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } },
+  "futa-sex-dolls": {
+    title: "Futa sex dolls",
+    filters: { bodyType: "female", productForm: "full-doll", capability: "insertable-penis-add-on" }
+  }
 };
 
 const collectionAliases: Record<string, string> = {
   customizable: "custom",
   "custom-0": "custom",
-  "silicone-head": "hybrid"
+  "silicone-head": "hybrid",
+  "transgender-sex-dolls": "futa-sex-dolls",
+  "trans-sex-dolls": "futa-sex-dolls"
 };
 
 export function canonicalShopCollectionHandle(handle: string) {
@@ -168,6 +175,7 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
     weight: valueFor("weight"),
     cup: valueFor("cup"),
     price: valueFor("price"),
+    capability: valueFor("capability") as CatalogFilters["capability"],
     sort: valueFor("sort") || "featured"
   });
 }
@@ -226,6 +234,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.weight && !inRange(product.extended.weightLb, filters.weight)) return false;
     if (filters.cup && !cupMatches(product.extended.cupSize, filters.cup)) return false;
     if (filters.price && !inRange(price(product), filters.price)) return false;
+    if (filters.capability === "insertable-penis-add-on" && product.extended.penisAddOnAvailable !== true) return false;
     return true;
   });
 
@@ -239,6 +248,7 @@ export function activeFilterCount(filters: CatalogFilters) {
 export function getCatalogFilterLabel(key: keyof CatalogFilters, value?: string) {
   if (!value) return undefined;
   if (key === "query") return `Search: ${value}`;
+  if (key === "capability" && value === "insertable-penis-add-on") return "Insertable penis option available";
   const label = filterLabelMaps[key]?.get(value);
   if (label) return label;
   return value;
@@ -252,6 +262,7 @@ export function requiresCatalogWideFetch(filters: CatalogFilters) {
       filters.cup ||
       filters.price ||
       filters.region ||
+      filters.capability ||
       (filters.sort && filters.sort !== "featured")
   );
 }

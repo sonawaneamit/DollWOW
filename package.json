@@ -43,6 +43,7 @@
     "backfill:source-release-order": "node scripts/backfill-source-release-order.mjs",
     "backfill:display-names": "node scripts/backfill-shopify-display-names.mjs",
     "backfill:body-type": "node scripts/backfill-shopify-body-type.mjs",
+    "backfill:penis-add-on-capability": "node scripts/backfill-shopify-penis-add-on-capability.mjs",
     "enrich:look-tags": "node scripts/enrich-shopify-look-tags.mjs",
     "generate:human-display-names": "node scripts/generate-shopify-human-display-names.mjs",
     "refresh:public-copy": "node scripts/refresh-shopify-public-copy.mjs",

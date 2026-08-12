@@ -56,6 +56,22 @@ describe("anime collection SEO", () => {
   });
 });
 
+describe("futa collection SEO", () => {
+  const preset = collectionPresets["futa-sex-dolls"];
+
+  it("uses one respectful canonical collection backed by a verified product option", () => {
+    const intro = collectionIntro(preset, "futa-sex-dolls");
+    const faqs = collectionFaqItems("futa-sex-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(preset.title).toBe("Futa sex dolls");
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("product configuration is not a person's gender identity");
+    expect(copy).toContain("the standard build may not include it");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
 describe("body-style collection SEO", () => {
   it("keeps fuller intent on one female collection with measurement-first guidance", () => {
     const preset = collectionPresets["fuller-dolls"];

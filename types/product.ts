@@ -65,6 +65,7 @@ export type ProductExtended = {
   deliveryEstimate?: string;
   stockLastCheckedAt?: string;
   customAvailable?: boolean;
+  penisAddOnAvailable?: boolean;
   customizationGroups?: CustomizationGroup[];
   qcNote?: string;
 };

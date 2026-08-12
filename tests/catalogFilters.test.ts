@@ -9,9 +9,47 @@ describe("catalog filters", () => {
     expect(canonicalShopCollectionHandle("customizable")).toBe("custom");
     expect(canonicalShopCollectionHandle("custom-0")).toBe("custom");
     expect(canonicalShopCollectionHandle("silicone-head")).toBe("hybrid");
+    expect(canonicalShopCollectionHandle("transgender-sex-dolls")).toBe("futa-sex-dolls");
+    expect(canonicalShopCollectionHandle("trans-sex-dolls")).toBe("futa-sex-dolls");
     expect(isIndexableShopCollectionHandle("black-hair-dolls")).toBe(true);
     expect(isIndexableShopCollectionHandle("hair-black")).toBe(false);
     expect(isIndexableShopCollectionHandle("height-160-164")).toBe(true);
+  });
+
+  it("only includes full feminine dolls with a verified insertable penis option", () => {
+    const eligible = {
+      ...sampleProducts[0],
+      id: "eligible-futa",
+      productType: "Custom TPE doll",
+      tags: ["female-doll", "full-doll", "tpe"],
+      extended: { ...sampleProducts[0].extended, bodyType: "female" as const, penisAddOnAvailable: true }
+    };
+    const noOption = {
+      ...eligible,
+      id: "no-option",
+      extended: { ...eligible.extended, penisAddOnAvailable: false }
+    };
+    const male = {
+      ...eligible,
+      id: "male-with-option",
+      tags: ["male-doll", "full-doll", "tpe"],
+      extended: { ...eligible.extended, bodyType: "male" as const }
+    };
+    const torso = {
+      ...eligible,
+      id: "torso-with-option",
+      productType: "Custom TPE torso doll",
+      tags: ["female-doll", "torso", "tpe"]
+    };
+
+    expect(collectionPresets["futa-sex-dolls"].filters).toEqual({
+      bodyType: "female",
+      productForm: "full-doll",
+      capability: "insertable-penis-add-on"
+    });
+    expect(filterProducts([eligible, noOption, male, torso], collectionPresets["futa-sex-dolls"].filters).map((product) => product.id)).toEqual([
+      "eligible-futa"
+    ]);
   });
 
   it("trusts the canonical product brand before noisy imported tags", () => {

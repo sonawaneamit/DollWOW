@@ -63,6 +63,7 @@ type SeoProductNode = {
   deliveryEstimate: MetafieldValue;
   stockLastCheckedAt: MetafieldValue;
   customAvailable: MetafieldValue;
+  penisAddOnAvailable: MetafieldValue;
 };
 
 type SeoProductListData = {
@@ -151,6 +152,7 @@ function productFieldsBase(imageFirst: number) {
   deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
   stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
   customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
+  penisAddOnAvailable: metafield(namespace: "custom", key: "has_insertable_penis_add_on") { value }
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
 `;
 }
@@ -279,6 +281,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }:
               deliveryEstimate: metafield(namespace: "custom", key: "delivery_estimate") { value }
               stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
               customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
+              penisAddOnAvailable: metafield(namespace: "custom", key: "has_insertable_penis_add_on") { value }
             } }
             pageInfo { hasNextPage endCursor }
           }
@@ -336,7 +339,8 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
         metafieldText(node.deliveryEstimate) || undefined
       ),
       stockLastCheckedAt: metafieldText(node.stockLastCheckedAt) || undefined,
-      customAvailable: metafieldBoolean(node.customAvailable)
+      customAvailable: metafieldBoolean(node.customAvailable),
+      penisAddOnAvailable: metafieldBoolean(node.penisAddOnAvailable)
     }
   };
 }
