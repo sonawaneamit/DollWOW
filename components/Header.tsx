@@ -404,27 +404,28 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
           <div className="mt-2 overflow-hidden rounded-md border border-border bg-surface shadow-card" aria-live="polite">
             {searchLoading ? (
               <p className="px-4 py-4 text-sm text-text-dim">Looking through the catalog...</p>
-            ) : searchResults.length ? (
-              searchResults.map((result) => (
-                <Link
-                  key={result.id}
-                  href={`/products/${result.handle}`}
-                  onClick={onNavigate}
-                  className="flex min-h-16 items-center justify-between gap-3 border-b border-border px-4 py-3 last:border-b-0"
-                >
-                  <span className="min-w-0">
-                    <span className="block truncate font-semibold text-text">{result.title}</span>
-                    <span className="mt-0.5 block text-sm text-text-dim">
-                      {[result.brand, result.heightCm ? `${result.heightCm} cm` : "", result.material].filter(Boolean).join(" · ")}
-                    </span>
-                  </span>
-                  {result.price?.amount ? <strong className="shrink-0 text-sm text-text"><DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} /></strong> : null}
-                </Link>
-              ))
             ) : (
-              <Link href={`/shop/sex-dolls?query=${encodeURIComponent(searchQuery.trim())}`} onClick={onNavigate} className="block px-4 py-4 text-sm font-semibold text-accent">
-                See all results for “{searchQuery.trim()}”
-              </Link>
+              <>
+                {searchResults.length ? searchResults.map((result) => (
+                  <Link
+                    key={result.id}
+                    href={`/products/${result.handle}`}
+                    onClick={onNavigate}
+                    className="flex min-h-16 items-center justify-between gap-3 border-b border-border px-4 py-3"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate font-semibold text-text">{result.title}</span>
+                      <span className="mt-0.5 block text-sm text-text-dim">
+                        {[result.brand, result.heightCm ? `${result.heightCm} cm` : "", result.material].filter(Boolean).join(" · ")}
+                      </span>
+                    </span>
+                    {result.price?.amount ? <strong className="shrink-0 text-sm text-text"><DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} /></strong> : null}
+                  </Link>
+                )) : (
+                  <p className="border-b border-border px-4 py-3 text-sm text-text-dim">No direct matches in the quick list.</p>
+                )}
+                <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact />
+              </>
             )}
           </div>
         ) : null}
@@ -517,8 +518,9 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                 <div className="grid gap-2" aria-live="polite">
                   {searchLoading ? (
                     <div className="flex min-h-14 items-center rounded-sm bg-surface-tint px-4 text-[15px] text-text-dim">Looking through the catalog...</div>
-                  ) : searchResults.length ? (
-                    searchResults.map((result) => (
+                  ) : (
+                    <>
+                      {searchResults.length ? searchResults.map((result) => (
                       <Link key={result.id} href={`/products/${result.handle}`} onClick={onNavigate} className="group flex min-h-20 items-center gap-3 rounded-sm border border-border p-2.5 hover:border-accent hover:bg-accent-tint sm:gap-4 sm:p-3">
                         <span className="relative h-20 w-16 shrink-0 overflow-hidden rounded-sm bg-surface-tint sm:h-24 sm:w-20">
                           {result.image?.url ? (
@@ -542,9 +544,11 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                           {result.price?.amount ? <DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} className="shrink-0 text-base font-semibold text-text" /> : null}
                         </div>
                       </Link>
-                    ))
-                  ) : (
-                    <div className="flex min-h-14 items-center rounded-sm bg-surface-tint px-4 text-[15px] text-text-dim">No direct matches yet. Try a brand, material, height, body type, or price range.</div>
+                      )) : (
+                        <div className="flex min-h-14 items-center rounded-sm bg-surface-tint px-4 text-[15px] text-text-dim">No direct matches in the quick list. Search the full catalog to keep looking.</div>
+                      )}
+                      <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} />
+                    </>
                   )}
                 </div>
               </div>
@@ -568,6 +572,23 @@ function CartBadge({ count }: { count: number }) {
   return <span className="absolute -right-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-stock px-1 text-sm font-bold leading-none text-white">{count}</span>;
 }
 
+function AllSearchResultsLink({ query, onNavigate, compact = false }: { query: string; onNavigate: () => void; compact?: boolean }) {
+  const trimmedQuery = query.trim();
+  return (
+    <Link
+      href={`/shop/sex-dolls?query=${encodeURIComponent(trimmedQuery)}`}
+      onClick={onNavigate}
+      className={`flex items-center justify-between font-semibold text-accent transition-colors hover:bg-accent hover:text-white ${
+        compact ? "min-h-12 px-4 text-[15px]" : "min-h-14 rounded-sm border-2 border-accent px-4 text-base"
+      }`}
+      data-testid="search-all-results"
+    >
+      <span>See all results for “{trimmedQuery}”</span>
+      <span className="text-xl" aria-hidden="true">→</span>
+    </Link>
+  );
+}
+
 function cartLabel(count: number) {
   return count ? `Open cart, ${count} item${count === 1 ? "" : "s"}` : "Open cart";
 }
@@ -579,8 +600,6 @@ function compareLabel(count: number) {
 function buildSearchSuggestions(query: string) {
   const normalized = query.toLowerCase().trim();
   const suggestions: Array<{ label: string; href: string; kind: string }> = [];
-
-  if (normalized) suggestions.push({ label: `Search for “${query.trim()}”`, href: `/shop/sex-dolls?query=${encodeURIComponent(query.trim())}`, kind: "Catalog" });
 
   for (const brand of catalogFilterOptions.brands) {
     const brandTerms = [brand.label.toLowerCase(), brand.value.toLowerCase()];
