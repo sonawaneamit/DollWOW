@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
         source: "/products/starpery-freya-165cm-g-cup-silicone-companion-doll-j6lra",
         destination: "/products/starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
         permanent: true
+      },
+      {
+        source: "/products/irontech-doll-163cm-e-cup-silicone-companion-doll-1tl7n",
+        destination: "/brands/irontech-dolls",
+        permanent: true
       }
     ];
   },
