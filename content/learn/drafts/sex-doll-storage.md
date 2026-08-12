@@ -10,7 +10,7 @@ authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-08-12"
 ---
 
 # Sex Doll Storage: How To Protect Material, Shape, And Privacy
@@ -294,6 +294,13 @@ A hidden location fails if retrieval requires dangerous lifting, damaged furnitu
 Send DollWow the product link and your available space through live chat or [hello@dollwow.com](mailto:hello@dollwow.com). Include internal case or furniture dimensions, doorway clearance, lifting limits, and whether privacy, weight, or long-term protection is the main priority. We can compare current products and check available manufacturer guidance before you order.
 
 Every DollWow doll includes [Care 365](/care-for-life) under the current published terms, with continuing Repair Concierge help after the first year. If storage causes a pressure mark, stain, tear, joint concern, or hardware issue, photograph it and ask before applying heat, chemicals, or a repair product.
+
+## Manufacturer Care Sources
+
+- [Tantaly: official cleaning and maintenance guidance](https://www.tantaly.com/pages/cleaning-and-maintenance-guide-for-sex-doll)
+- [RealDoll: official Classics care and maintenance guide (PDF)](https://realdoll.com/wp-content/uploads/2025/08/Care-Guide-Realdoll-Classic-R2.pdf)
+
+These manufacturer documents support selected drying, staining, pressure, clothing, sunlight, hanging, and long-term storage cautions. They also demonstrate why storage instructions must stay product-specific: a hanging method approved for one model and its supplied hardware is not permission to hang a different doll. Use the instructions supplied with your exact product and ask DollWow to confirm anything unclear before relying on a storage method.
 
 ## FAQs
 
