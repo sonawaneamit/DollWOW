@@ -6,6 +6,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_BASE = "https://api.dataforseo.com/v3";
 const execute = process.argv.includes("--execute");
 const retryFailed = process.argv.includes("--retry-failed");
+const fetchMerchant = process.argv.includes("--fetch-merchant");
 const key = arg("key") || "betterlovedoll";
 const configPath = path.join(ROOT, "data/seo/alternative-page-targets.json");
 
@@ -45,6 +46,22 @@ const calls = [
 ];
 
 await fs.mkdir(outputDir, { recursive: true });
+if (fetchMerchant) {
+  const record = await fetchMerchantResult();
+  const merchantManifest = {
+    generatedAt: new Date().toISOString(),
+    key,
+    target,
+    execute,
+    totalCost: 0,
+    requestCount: 1,
+    failedRequests: record.error ? 1 : 0,
+    records: [record]
+  };
+  await fs.writeFile(path.join(outputDir, "request-manifest-merchant-results.json"), `${JSON.stringify(merchantManifest, null, 2)}\n`);
+  console.log(JSON.stringify({ outputDir: path.relative(ROOT, outputDir), ...merchantManifest }, null, 2));
+  process.exit(0);
+}
 let previousManifest = null;
 let selectedCalls = calls;
 if (retryFailed) {
@@ -67,6 +84,26 @@ function arg(name) { return process.argv.find((value) => value.startsWith(`--${n
 function call(id, api, endpoint, payload) { return { id, api, endpoint, payload }; }
 async function executeCall(item) { const record = { ...item, executed: execute, cost: 0, statusCode: null, statusMessage: execute ? null : "Dry run" }; if (!execute) return record; try { const response = await post(item.endpoint, item.payload); const task = response.tasks?.[0] || {}; Object.assign(record, { taskId: task.id || null, cost: Number(task.cost || 0), statusCode: task.status_code || response.status_code || null, statusMessage: task.status_message || response.status_message || null }); await fs.writeFile(path.join(outputDir, `${item.id}.json`), `${JSON.stringify(response, null, 2)}\n`); } catch (error) { record.error = true; record.statusMessage = error instanceof Error ? error.message : String(error); } return record; }
 async function executeMerchant() { const item = call("merchant", "Merchant", "/merchant/google/products/task_post", [{ keyword: target.brand, location_code: 2840, language_code: "en", depth: 40, priority: 2, tag: `dollwow-alt-${key}-merchant` }]); return executeCall(item); }
+async function fetchMerchantResult() {
+  const posted = JSON.parse(await fs.readFile(path.join(outputDir, "merchant.json"), "utf8"));
+  const taskId = posted.tasks?.[0]?.id;
+  if (!taskId) throw new Error("The Merchant task response does not contain a task ID.");
+  const endpoint = `/merchant/google/products/task_get/advanced/${taskId}`;
+  const record = { id: "merchant-result", api: "Merchant", endpoint, executed: execute, taskId, cost: 0, statusCode: null, statusMessage: execute ? null : "Dry run" };
+  if (!execute) return record;
+  try {
+    const response = await fetch(`${API_BASE}${endpoint}`, { headers: authHeaders(), signal: AbortSignal.timeout(180000) });
+    const body = await response.json();
+    const task = body.tasks?.[0] || {};
+    Object.assign(record, { statusCode: task.status_code || body.status_code || null, statusMessage: task.status_message || body.status_message || null });
+    if (!response.ok || Number(body.status_code || 0) >= 40000 || Number(task.status_code || 0) >= 40000) throw new Error(record.statusMessage || `HTTP ${response.status}`);
+    await fs.writeFile(path.join(outputDir, "merchant-results.json"), `${JSON.stringify(body, null, 2)}\n`);
+  } catch (error) {
+    record.error = true;
+    record.statusMessage = error instanceof Error ? error.message : String(error);
+  }
+  return record;
+}
 async function post(endpoint, payload) { const response = await fetch(`${API_BASE}${endpoint}`, { method: "POST", headers: authHeaders(), body: JSON.stringify(payload), signal: AbortSignal.timeout(180000) }); const body = await response.json(); const failed = body.tasks?.find((task) => Number(task.status_code || 0) >= 40000); if (!response.ok || Number(body.status_code || 0) >= 40000 || failed) throw new Error(failed?.status_message || body.status_message || `HTTP ${response.status}`); return body; }
 function authHeaders() { return { Authorization: `Basic ${Buffer.from(`${process.env.DATAFORSEO_LOGIN}:${process.env.DATAFORSEO_PASSWORD}`).toString("base64")}`, "Content-Type": "application/json" }; }
 async function loadEnv(file) { const text = await fs.readFile(file, "utf8"); for (const line of text.split(/\r?\n/)) { const trimmed = line.trim(); if (!trimmed || trimmed.startsWith("#")) continue; const equals = trimmed.indexOf("="); if (equals < 1) continue; const envKey = trimmed.slice(0, equals).trim(); const value = trimmed.slice(equals + 1).trim().replace(/^['"]|['"]$/g, ""); if (!(envKey in process.env)) process.env[envKey] = value; } }

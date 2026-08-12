@@ -2,7 +2,9 @@
 
 Date: 2026-08-12
 Market: United States
-Status: Research pending; DataForSEO balance blocked
+Status: Superseded by the completed Step 88 pass
+
+The isolated retry completed on 2026-08-12 after the account balance was restored. See `docs/seo-intelligence/2026-08-12-step-88-piper-guide-complete.md` for the final evidence record and release decision.
 
 ## Canonical Owners
 

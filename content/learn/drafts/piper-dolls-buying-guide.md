@@ -1,8 +1,8 @@
 ---
 title: "Piper Dolls Buying Guide: Materials, Sizes, Reviews, And Models"
 slug: "piper-dolls-buying-guide"
-primaryKeyword: "piper sex doll review"
-secondaryKeywords: ["piper dolls review", "piper sex doll", "piper doll buying guide", "piper silicone doll", "piper tpe doll"]
+primaryKeyword: "piper sex doll"
+secondaryKeywords: ["piper sex doll review", "piper dolls review", "piper doll buying guide", "piper silicone doll", "piper tpe doll"]
 description: "Compare adult Piper dolls by TPE or silicone construction, size, weight, body and head pairing, product evidence, care, options, and buyer fit."
 category: "Brand Comparisons"
 author: "alex"

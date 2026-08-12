@@ -1,7 +1,7 @@
 ---
 title: "Piper Dolls Buying Guide"
 slug: "piper-dolls-buying-guide"
-primaryKeyword: "piper doll"
+primaryKeyword: "piper sex doll"
 secondaryKeywords: ["piper dolls", "piper sex doll"]
 intent: "commercial"
 category: "Brand Comparisons"
