@@ -73,6 +73,11 @@
 .visualizer-wait-prominent small{font-size:12px}
 @media(max-width:900px){.visualizer-wait-overlay{top:64px;padding:12px 12px 52px}.visualizer-wait-prominent{padding:16px;border-radius:16px}.visualizer-wait-prominent strong{font-size:15px}}
 
+/* Keep original and preview images in one stable, viewport-sized stage. */
+.visualizer-preview-frame{height:min(72vh,840px);min-height:420px}
+.visualizer-preview-frame>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+@media(max-width:900px){.visualizer-preview-frame{width:100%;height:min(62dvh,560px);min-height:360px;aspect-ratio:auto}.visualizer-preview-frame>img{object-fit:contain}}
+
 /* Care for Life + private Doll Passport */
 .care-365-lockup{display:grid;gap:14px;max-width:680px;padding:14px;border:1px solid rgb(var(--color-border));border-radius:14px;background:rgb(var(--color-surface-tint))}
 .care-365-seal{display:grid;width:100%;min-width:0;grid-template-columns:82px minmax(0,1fr);gap:17px;align-items:center;color:rgb(var(--color-text))}
