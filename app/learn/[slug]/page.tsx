@@ -35,13 +35,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const featuredImageDimensions = article.slug === "sex-doll-guide"
     ? { width: 1672, height: 941 }
     : { width: 1536, height: 1024 };
+  const metadataTitle = article.slug === "sex-doll-guide"
+    ? "Sex Doll Buying Guide: How to Choose the Right Doll"
+    : article.title;
   return {
-    title: article.title,
+    title: metadataTitle,
     description: article.description,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
     alternates: { canonical: learnArticleUrl(article.slug) },
     openGraph: {
-      title: article.title,
+      title: metadataTitle,
       description: article.description,
       url: learnArticleUrl(article.slug),
       type: "article",
@@ -50,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: article.featuredImage ? "summary_large_image" : "summary",
-      title: article.title,
+      title: metadataTitle,
       description: article.description,
       images: article.featuredImage ? [absoluteUrl(article.featuredImage)!] : undefined
     }

@@ -93,6 +93,7 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("https://www.erovenus.com/sex-doll-care/");
     expect(article?.body).toContain("[Buyer Protection](/buyer-protection)");
     expect(article?.body).toContain("[Care 365](/care-for-life)");
+    expect(article?.body).toContain("https://www.consumerfinance.gov/ask-cfpb/how-can-i-get-a-refund-on-a-product-or-service-i-purchased-with-my-credit-card-en-1969/");
   });
 
   it("exposes official evidence on major brand guides without competitor retailers", () => {

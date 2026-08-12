@@ -38,7 +38,7 @@ export function buildCollectionMetadata(
   preset: CollectionPreset,
   searchParams: Record<string, string | string[] | undefined> = {}
 ): Metadata {
-  const title = collectionTitle(preset);
+  const title = collectionMetadataTitle(handle, preset);
   const description = collectionDescription(handle, preset);
   const canonicalUrl = collectionCanonicalUrl(handle);
   const isFacetView = hasFacetParams(searchParams);
@@ -242,6 +242,14 @@ function collectionTitle(preset: CollectionPreset) {
   return preset.title;
 }
 
+function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
+  const titleByHandle: Record<string, string> = {
+    "sex-dolls": "Sex Dolls for Sale: TPE, Silicone & Custom",
+    silicone: "Silicone Sex Dolls for Sale: Full Silicone"
+  };
+  return titleByHandle[handle] ?? collectionTitle(preset);
+}
+
 function collectionDescription(handle: string, preset: CollectionPreset) {
   const handleDescription = collectionMetaDescriptions[handle];
   if (handleDescription) return handleDescription;
@@ -281,7 +289,7 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 
 const collectionIntroByHandle: Record<string, string> = {
   "sex-dolls":
-    "Shop sex dolls across the full DollWow catalog with filters for material, body type, height, weight, price, availability, and custom options. Compare measurements, photos, delivery timing, and buyer protection before making a private purchase. If a specific detail matters, ask our team to confirm it before checkout.",
+    "Browse the complete current DollWow sex doll catalog and filter by material, body type, height, weight, price, availability, brand, and custom options. Open any product to compare its exact measurements, photos, starting price, configuration, and ordering path. If a model or detail you need is missing, ask our team through live chat or hello@dollwow.com and we will check it for you.",
   "realistic-sex-dolls":
     "Shop full-body, full-silicone candidates for the most realistic sex doll based on proportions, face sculpt, skin finish, eyes, hands, feet, measurements, weight, and final configuration. Full silicone is a useful starting pool for fine sculpt detail, but material and price do not create an objective realism ranking. Compare several angles, verify the exact head-and-body pairing, and consider TPE or hybrid builds when softness, feel, or a different construction matters more to you.",
   "mini-sex-dolls":
@@ -309,7 +317,7 @@ const collectionIntroByHandle: Record<string, string> = {
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
-    "Shop full silicone sex dolls by height, weight, body shape, finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. A silicone head on a TPE body is a hybrid build, not a full silicone doll. Check the material listed for both the head and body, then compare the exact measurements, carrying weight, photos, options, and production path before choosing a model.",
+    "Every product in this collection has a full silicone body. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
   "male-dolls":
     "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
   torsos:
@@ -323,7 +331,7 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
-  "sex-dolls": "Shop sex dolls by material, height, weight, price, stock status, and custom options with DollWow buyer guides and support links.",
+  "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
   "realistic-sex-dolls": "Shop candidates for the most realistic sex dolls by proportions, face, skin finish, eyes, hands, weight, photos, and final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
@@ -337,7 +345,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "fuller-dolls": "Shop fuller and curvy sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   "slim-dolls": "Shop slim sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
-  silicone: "Shop full silicone sex dolls by height, weight, finish, stock status, and custom options. Compare construction, care, handling, and product details.",
+  silicone: "Shop full silicone sex dolls by size, weight, finish, availability, and options. Compare exact construction, handling, care, and Care 365 support.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   torsos: "Shop torso sex dolls by form, TPE or silicone, height, width, depth, weight, brand, price, cleaning access, and storage needs.",
   "ready-to-ship": "Shop ready-to-ship and in-stock sex dolls by product form, material, size, weight, price, warehouse region, and included configuration.",
@@ -1169,6 +1177,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Can DollWow help confirm the exact product before I order?",
       answer:
         "Yes. Ask us to confirm current availability, custom options, or delivery timing whenever those details affect your decision."
+    },
+    {
+      question: "What if the sex doll I want is not listed?",
+      answer:
+        "Send the product name or supplier link through live chat or hello@dollwow.com. If it is from a supported, approved brand, DollWow will verify the product details and check whether it can be added. Most approved requests can go live within 4 to 6 hours once authorization and product information are confirmed."
     }
   ],
   "realistic-sex-dolls": [
@@ -1618,6 +1631,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "What should I compare before buying a silicone sex doll?",
       answer:
         "Compare full-silicone versus hybrid construction, height, listed weight, measurements, firmness, surface finish, stock or production status, supported options, care needs, storage space, and the final configured price."
+    },
+    {
+      question: "Can DollWow confirm a silicone model or option before I order?",
+      answer:
+        "Yes. Ask through live chat or hello@dollwow.com if the exact body material, head pairing, firmness, weight, option, or availability affects your decision. If an approved model is missing, send its product name or supplier link and the team will check whether it can be added."
     }
   ],
   "male-dolls": [

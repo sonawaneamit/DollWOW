@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { collectionFaqItems, collectionIntro } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionFaqItems, collectionIntro } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -36,6 +36,36 @@ describe("ready-to-ship collection SEO", () => {
     expect(copy).toContain("not a guaranteed delivery date");
     expect(copy).toContain("warehouse region");
     expect(copy).not.toMatch(/\b\d+\s*(?:-|to)\s*\d+\s*(?:day|week)s?\b/i);
+  });
+});
+
+describe("Wave 1 head collection SEO", () => {
+  it("gives the broad commercial owner a descriptive title and proactive missing-product path", () => {
+    const preset = collectionPresets["sex-dolls"];
+    const metadata = buildCollectionMetadata("sex-dolls", preset);
+    const intro = collectionIntro(preset, "sex-dolls");
+    const faqs = collectionFaqItems("sex-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(metadata.title).toBe("Sex Dolls for Sale: TPE, Silicone & Custom");
+    expect(intro).toContain("complete current DollWow sex doll catalog");
+    expect(copy).toContain("live chat or hello@dollwow.com");
+    expect(copy).toContain("4 to 6 hours");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+
+  it("keeps full silicone distinct from silicone-head hybrids", () => {
+    const preset = collectionPresets.silicone;
+    const metadata = buildCollectionMetadata("silicone", preset);
+    const intro = collectionIntro(preset, "silicone");
+    const faqs = collectionFaqItems("silicone", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(metadata.title).toBe("Silicone Sex Dolls for Sale: Full Silicone");
+    expect(intro).toContain("Every product in this collection has a full silicone body");
+    expect(intro).toContain("hybrid build");
+    expect(copy).toContain("live chat or hello@dollwow.com");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
 

@@ -913,6 +913,8 @@ Treat reviews as one source of context, not proof that the same product will fit
 
 Use payment methods with appropriate buyer protection and confirm the merchant shown at checkout. Be cautious when a seller pushes an unusual payment route, asks to move the transaction away from its documented checkout, or changes the final terms through private messages.
 
+Try to resolve a problem with the seller first and keep the order, payment, delivery, and support records together. If a credit-card purchase is defective, not what you ordered, or never arrives, the [Consumer Financial Protection Bureau explains when to ask the card issuer about a dispute or billing error](https://www.consumerfinance.gov/ask-cfpb/how-can-i-get-a-refund-on-a-product-or-service-i-purchased-with-my-credit-card-en-1969/). The exact rights, deadlines, and process depend on the payment method and circumstances, so contact the provider rather than assuming a chargeback is automatic.
+
 Countdowns, dramatic stock alerts, and oversized discount percentages should not replace verification. A genuine sale can still be evaluated calmly by comparing the complete configuration and written terms.
 
 ### Counterfeit and lookalike listings
