@@ -32,6 +32,7 @@
     "seo:audit-onpage-site": "node scripts/audit-dataforseo-onpage-site.mjs",
     "seo:audit-linkable-formats": "node scripts/audit-seo-linkable-formats.mjs",
     "seo:build-size-weight-index": "node scripts/build-catalog-size-weight-index.mjs",
+    "seo:export-backlink-prospects": "node scripts/export-seo-backlink-prospects.mjs",
     "seo:guide:products": "node scripts/validate-ultimate-guide-products.mjs",
     "pdf:guide": "python3 scripts/build-ultimate-guide-pdf.py",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
