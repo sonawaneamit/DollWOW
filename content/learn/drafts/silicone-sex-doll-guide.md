@@ -278,7 +278,7 @@ Program terms and product eligibility control. Ask support to confirm anything t
 
 Choose a silicone doll by exact construction, not the category label. Confirm the body and head materials, set a realistic handling limit, compare the complete configuration, inspect several product images, understand care and repair, and pay only for the finish or features you genuinely value.
 
-Browse current [full-silicone sex dolls](/shop/silicone), compare [TPE and silicone](/learn/tpe-vs-silicone-sex-dolls), or use the [DollWow finder](/help-me-choose). If a supported brand or model is missing, contact live chat or [hello@dollwow.com](mailto:hello@dollwow.com). Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.
+Browse current [full-silicone sex dolls](/shop/silicone), compare the [best sex dolls by buyer fit](/learn/best-sex-dolls), review [TPE and silicone](/learn/tpe-vs-silicone-sex-dolls), or use the [DollWow finder](/help-me-choose). If a supported brand or model is missing, contact live chat or [hello@dollwow.com](mailto:hello@dollwow.com). Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.
 
 ## FAQs
 

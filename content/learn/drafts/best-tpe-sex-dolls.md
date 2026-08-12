@@ -216,6 +216,8 @@ Start with your hardest constraint. If handling matters most, compare Rayna, Chr
 
 Then compare the live [TPE sex doll collection](/shop/tpe), use the [DollWow finder](/help-me-choose), or contact live chat or [hello@dollwow.com](mailto:hello@dollwow.com). If the exact approved model is missing, the team can check supplier details and authorization. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.
 
+For a broader shortlist across TPE, silicone, lightweight, ready-to-ship, male, and custom options, see the [best sex dolls by buyer fit](/learn/best-sex-dolls).
+
 ## FAQs
 
 ### What is the best TPE sex doll for a first-time buyer?

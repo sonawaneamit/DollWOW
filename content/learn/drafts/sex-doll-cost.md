@@ -265,6 +265,7 @@ Catalog prices, stock, promotions, and options change. Open the live product pag
 - [Compare TPE sex dolls](/shop/tpe)
 - [Compare full-silicone dolls](/shop/silicone)
 - [Compare hybrid dolls](/shop/hybrid)
+- [See the best sex dolls by buyer fit](/learn/best-sex-dolls)
 - [Read the complete sex doll guide](/learn/sex-doll-guide)
 - [Compare TPE and silicone](/learn/tpe-vs-silicone-sex-dolls)
 - [Compare ready-to-ship and custom orders](/learn/ready-to-ship-vs-custom-sex-dolls)

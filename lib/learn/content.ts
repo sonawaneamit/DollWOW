@@ -249,11 +249,11 @@ function priority(slug: string) {
   const order = [
     "sex-doll-guide",
     "sex-doll-size-weight-guide",
+    "best-sex-dolls",
     "sex-robots",
     "ai-sex-dolls",
     "tpe-vs-silicone-sex-dolls",
     "sex-doll-cost",
-    "best-sex-dolls",
     "best-sex-doll-stores",
     "best-tpe-sex-dolls",
     "silicone-sex-doll-guide",
