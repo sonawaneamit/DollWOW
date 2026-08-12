@@ -442,7 +442,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, contentSearchR
                   !contentSearchResults.length ? <p className="border-b border-border px-4 py-3 text-sm text-text-dim">No direct matches in the quick list.</p> : null
                 )}
                 {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} compact />)}
-                <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact />
+                {searchResults.length ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact /> : null}
               </>
             )}
           </div>
@@ -572,7 +572,7 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                           {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} />)}
                         </div>
                       ) : null}
-                      <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} />
+                      {searchResults.length ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} /> : null}
                     </>
                   )}
                 </div>
