@@ -83,7 +83,20 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <ProductGallery product={publicProduct} />
+          <div className="min-w-0">
+            <ProductGallery product={publicProduct} />
+            {isVisualizerProduct(product.handle) ? (
+              <Link href={visualizerUrl(product.handle)} className="visualizer-pdp-entry visualizer-pdp-star">
+                <span className="visualizer-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
+                <span>
+                  <small className="visualizer-pdp-kicker">New · Exclusive to DollWOW</small>
+                  <strong>See this doll with your options</strong>
+                  <small>Try Doll Visualizer™ — 5 complimentary previews</small>
+                </span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            ) : null}
+          </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
@@ -131,13 +144,6 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
-            {isVisualizerProduct(product.handle) ? (
-              <Link href={visualizerUrl(product.handle)} className="visualizer-pdp-entry">
-                <span className="visualizer-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
-                <span><strong>Try Doll Visualizer™</strong><small>Preview selected exterior options on this exact doll</small></span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            ) : null}
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
               <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>
