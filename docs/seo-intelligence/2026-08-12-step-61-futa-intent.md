@@ -90,3 +90,11 @@ Fresh US metrics exist and at least 95% of selected keywords have successful des
 - Collection membership confirms that the option is selectable on the current product configuration data.
 - It does not claim that the add-on is included in the starting price or standard build.
 - Size, price, material, compatibility, care, and production details remain product-specific and should be confirmed before production when they affect the decision.
+
+## Customer-Language Correction
+
+- The page title and H1 now read `Futa sex dolls by brand`, preserving the measured generic query while making the mixed-brand catalog structure explicit.
+- The opening explains that futa is short for the adult fantasy term futanari and that FutaDoll is separately used as a commercial name.
+- DollWow does not currently list FutaDoll products. A future authorized assortment should receive a dedicated `/brands/futadoll` hub rather than being mixed into this capability collection.
+- The copy tells buyers that every product comes from the actual manufacturer named on its card, with examples including Irontech, Real Lady, WM Dolls, SE Doll, and Angelkiss.
+- Operating rule: when a generic query also overlaps a commercial name, state the distinction clearly and keep the product manufacturer visible.

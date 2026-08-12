@@ -295,7 +295,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "new-sex-dolls":
     "Browse new sex dolls and recent catalog additions with the latest supported releases shown first. New does not automatically mean better for your needs, and a release order is not proof of current stock or a universal manufacturer launch date. Compare the exact material, height, listed weight, body and head pairing, options, starting price, availability, and production path. If you have seen a newer approved model elsewhere, send our team the name or supplier link and we will check whether it can be added.",
   "futa-sex-dolls":
-    "Shop adult futa sex dolls from feminine full-body products that currently offer a selectable insertable penis add-on. Some buyers also search for transgender sex dolls, but a product configuration is not a person's gender identity. Compare the exact body, head, material, height, listed weight, photographs, add-on size, price, compatibility, and care needs. The add-on is optional and must be selected on the product page; the standard build may not include it.",
+    "Futa is short for futanari, an adult fantasy term commonly used when searching for a feminine doll with a penis option. FutaDoll is also the name of a separate seller and brand identity, but DollWow does not currently list FutaDoll products. The products below come from the actual manufacturers named on each card, including Irontech, Real Lady, WM Dolls, SE Doll, and Angelkiss. Every result is a full-body product whose current customization data offers a selectable insertable penis add-on. Compare the exact brand, body, head, material, height, listed weight, photographs, add-on size, price, compatibility, and care needs. The add-on is optional and must be selected on the product page; the standard build may not include it.",
   "asian-dolls":
     "Shop Asian sex dolls selected from current catalog styling and product details, with full-body and compact choices across TPE, silicone, and hybrid construction. Asian appearance is a visual category, not one face, body shape, nationality, or specification. Compare the exact head, body, measurements, listed weight, material, skin tone, photographs, availability, and supported options before choosing. If the model you want is missing, send our team the name or supplier link and we will check whether it can be added.",
   "black-dolls":
@@ -330,7 +330,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
   "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
   "new-sex-dolls": "Browse new sex dolls and recent catalog additions. Compare latest-supported models by material, size, weight, options, price, and availability.",
-  "futa-sex-dolls": "Shop futa sex dolls with a verified insertable penis option. Compare body, material, size, weight, add-on choices, price, care, and compatibility.",
+  "futa-sex-dolls": "Compare dolls from established brands with a verified insertable penis option. Review brand, body, material, size, weight, price, care, and compatibility.",
   "asian-dolls": "Shop Asian sex dolls by face and body styling, material, height, weight, skin tone, price, availability, and supported custom options.",
   "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
   "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
@@ -1381,7 +1381,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "futa-sex-dolls": [
     {
       question: "What is a futa sex doll?",
-      answer: "In adult-product search language, it usually means a feminine doll configured with a penis. DollWow uses the term for product discovery and only includes full-body products with a current selectable insertable penis add-on."
+      answer: "Futa is short for futanari, an adult fantasy term commonly used for a feminine doll configured with a penis. FutaDoll is also a separate commercial name. This DollWow collection contains products from the manufacturer shown on each card, not FutaDoll products, and only includes full-body dolls with a current selectable insertable penis add-on."
     },
     {
       question: "Are futa and transgender sex dolls the same thing?",

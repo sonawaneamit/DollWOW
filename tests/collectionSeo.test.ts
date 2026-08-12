@@ -64,9 +64,11 @@ describe("futa collection SEO", () => {
     const faqs = collectionFaqItems("futa-sex-dolls", preset);
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
-    expect(preset.title).toBe("Futa sex dolls");
+    expect(preset.title).toBe("Futa sex dolls by brand");
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("product configuration is not a person's gender identity");
+    expect(copy).toContain("Futa is short for futanari");
+    expect(copy).toContain("does not currently list FutaDoll products");
+    expect(copy).toContain("actual manufacturers named on each card");
     expect(copy).toContain("the standard build may not include it");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });

@@ -133,7 +133,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "lightweight-sex-dolls": { title: "Lightweight sex dolls", filters: { productForm: "full-doll", weight: "0-74" } },
   "new-sex-dolls": { title: "New sex dolls", filters: { sort: "latest" } },
   "futa-sex-dolls": {
-    title: "Futa sex dolls",
+    title: "Futa sex dolls by brand",
     filters: { bodyType: "female", productForm: "full-doll", capability: "insertable-penis-add-on" }
   }
 };

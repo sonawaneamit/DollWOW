@@ -493,7 +493,7 @@ Before paying for a custom build:
 
 Use the live [custom doll collection](/shop/custom), the [customization guide](/learn/custom-sex-dolls), and the DollWow [customization workflow](/customize) together.
 
-If a feminine full-body doll with a selectable insertable penis is part of the intended build, use the [futa sex dolls collection](/shop/futa-sex-dolls) to start with products whose current customization data confirms that option. The add-on may still require a separate size selection and price, so confirm the complete configuration before checkout.
+If a feminine full-body doll with a selectable insertable penis is part of the intended build, browse [futa sex dolls by brand](/shop/futa-sex-dolls) to start with products whose current customization data confirms that choice. Futa is short for the adult fantasy term futanari, while FutaDoll is also used as a separate commercial name. The DollWow collection identifies every product by its actual manufacturer and does not currently contain FutaDoll products. The add-on may still require a separate size selection and price, so confirm the complete configuration before checkout.
 
 ### Start with the body and head, then add options
 
