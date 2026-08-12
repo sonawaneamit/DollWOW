@@ -95,6 +95,14 @@ type SearchResultSuggestion = {
   image?: { url: string; altText: string | null; width?: number | null; height?: number | null } | null;
 };
 
+type ContentSearchResult = {
+  id: string;
+  href: string;
+  title: string;
+  description: string;
+  kind: "Guide" | "Page";
+};
+
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
@@ -105,6 +113,7 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResultSuggestion[]>([]);
+  const [contentSearchResults, setContentSearchResults] = useState<ContentSearchResult[]>([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const shouldQueryRemote = (searchOpen || mobileMenuOpen) && searchQuery.trim().length >= 2;
@@ -160,12 +169,14 @@ export function Header() {
         setSearchLoading(true);
         const response = await fetch(`/api/search?query=${encodeURIComponent(trimmed)}&limit=4`, { signal: controller.signal });
         if (!response.ok) throw new Error(`Search failed (${response.status})`);
-        const payload = (await response.json()) as { results?: SearchResultSuggestion[] };
+        const payload = (await response.json()) as { results?: SearchResultSuggestion[]; contentResults?: ContentSearchResult[] };
         setSearchResults(payload.results || []);
+        setContentSearchResults(payload.contentResults || []);
       } catch (error) {
         if (!controller.signal.aborted) {
           console.error(error);
           setSearchResults([]);
+          setContentSearchResults([]);
         }
       } finally {
         if (!controller.signal.aborted) setSearchLoading(false);
@@ -194,7 +205,7 @@ export function Header() {
     event.preventDefault();
     const trimmed = searchQuery.trim();
     if (trimmed) trackEvent(analyticsEvents.search, { search_term: trimmed });
-    router.push(trimmed ? `/shop/sex-dolls?query=${encodeURIComponent(trimmed)}` : "/shop/sex-dolls");
+    router.push(trimmed ? `/search?q=${encodeURIComponent(trimmed)}` : "/search");
     closeAll();
   }
 
@@ -311,6 +322,7 @@ export function Header() {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           searchResults={searchResults}
+          contentSearchResults={contentSearchResults}
           searchLoading={searchLoading}
           onSubmit={handleSearchSubmit}
           onNavigate={closeAll}
@@ -322,6 +334,7 @@ export function Header() {
           setSearchQuery={setSearchQuery}
           searchSuggestions={searchSuggestions}
           searchResults={searchResults}
+          contentSearchResults={contentSearchResults}
           searchLoading={searchLoading}
           onClose={() => setSearchOpen(false)}
           onNavigate={closeAll}
@@ -381,10 +394,11 @@ function splitIntoBalancedColumns<T>(items: ReadonlyArray<T>, columnCount: numbe
   );
 }
 
-function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading, onSubmit, onNavigate }: {
+function MobileMenu({ searchQuery, setSearchQuery, searchResults, contentSearchResults, searchLoading, onSubmit, onNavigate }: {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   searchResults: SearchResultSuggestion[];
+  contentSearchResults: ContentSearchResult[];
   searchLoading: boolean;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onNavigate: () => void;
@@ -425,8 +439,9 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
                     {result.price?.amount ? <strong className="shrink-0 text-sm text-text"><DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} /></strong> : null}
                   </Link>
                 )) : (
-                  <p className="border-b border-border px-4 py-3 text-sm text-text-dim">No direct matches in the quick list.</p>
+                  !contentSearchResults.length ? <p className="border-b border-border px-4 py-3 text-sm text-text-dim">No direct matches in the quick list.</p> : null
                 )}
+                {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} compact />)}
                 <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact />
               </>
             )}
@@ -472,11 +487,12 @@ function MobileDetails({ title, links, onNavigate }: { title: string; links: Rea
   );
 }
 
-function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchResults, searchLoading, onClose, onNavigate, onSubmit }: {
+function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchResults, contentSearchResults, searchLoading, onClose, onNavigate, onSubmit }: {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   searchSuggestions: Array<{ label: string; href: string; kind: string }>;
   searchResults: SearchResultSuggestion[];
+  contentSearchResults: ContentSearchResult[];
   searchLoading: boolean;
   onClose: () => void;
   onNavigate: () => void;
@@ -489,7 +505,7 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
           <div className="flex items-start justify-between gap-4 px-5 py-5 sm:px-7">
             <div>
               <h2 className="font-display text-2xl font-semibold">Search the catalog</h2>
-              <p className="mt-1 text-[15px] leading-6 text-text-dim">Use a brand, height, material, or part of a model name.</p>
+              <p className="mt-1 text-[15px] leading-6 text-text-dim">Search dolls, brands, guides, and help pages.</p>
             </div>
             <button type="button" onClick={onClose} className="v2-icon-control shrink-0" aria-label="Close search"><X className="h-5 w-5" /></button>
           </div>
@@ -547,9 +563,15 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                           {result.price?.amount ? <DisplayMoney amount={result.price.amount} currencyCode={result.price.currencyCode} className="shrink-0 text-base font-semibold text-text" /> : null}
                         </div>
                       </Link>
-                      )) : (
+                      )) : !contentSearchResults.length ? (
                         <div className="flex min-h-14 items-center rounded-sm bg-surface-tint px-4 text-[15px] text-text-dim">No direct matches in the quick list. Search the full catalog to keep looking.</div>
-                      )}
+                      ) : null}
+                      {contentSearchResults.length ? (
+                        <div className="mt-2 grid gap-2 border-t border-border pt-3">
+                          <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-text-faint">Guides & pages</p>
+                          {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} />)}
+                        </div>
+                      ) : null}
                       <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} />
                     </>
                   )}
@@ -571,6 +593,18 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
   );
 }
 
+function ContentResultLink({ result, onNavigate, compact = false }: { result: ContentSearchResult; onNavigate: () => void; compact?: boolean }) {
+  return (
+    <Link href={result.href} onClick={onNavigate} className={`flex items-center justify-between gap-3 border-border hover:bg-accent-tint ${compact ? "min-h-14 border-b px-4 py-2.5" : "min-h-16 rounded-sm border px-4 py-3"}`}>
+      <span className="min-w-0">
+        <span className="block font-semibold text-text">{result.title}</span>
+        <span className={`mt-0.5 block text-text-dim ${compact ? "line-clamp-1 text-[13px]" : "line-clamp-2 text-sm"}`}>{result.description}</span>
+      </span>
+      <span className="shrink-0 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">{result.kind}</span>
+    </Link>
+  );
+}
+
 function CartBadge({ count }: { count: number }) {
   return <span className="absolute -right-1 -top-1 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-stock px-1 text-sm font-bold leading-none text-white">{count}</span>;
 }
@@ -586,7 +620,7 @@ function AllSearchResultsLink({ query, onNavigate, compact = false }: { query: s
       }`}
       data-testid="search-all-results"
     >
-      <span>See all results for “{trimmedQuery}”</span>
+      <span>See all dolls for “{trimmedQuery}”</span>
       <span className="text-xl" aria-hidden="true">→</span>
     </Link>
   );

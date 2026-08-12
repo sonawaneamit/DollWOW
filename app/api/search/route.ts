@@ -5,6 +5,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { parseCatalogSearchQuery, rankCatalogProducts } from "@/lib/search/catalog";
 import { shopifyQueryForCatalogSearch } from "@/lib/catalog/filters";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
+import { searchSiteContent } from "@/lib/search/content";
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("query")?.trim() || "";
@@ -40,6 +41,7 @@ export async function GET(request: NextRequest) {
     {
       query,
       parsed,
+      contentResults: searchSiteContent(query, 6),
       results: ranked.map(({ product, score }) => ({
         score,
         id: product.id,
