@@ -1667,6 +1667,20 @@ Product cards use current catalog information when the page loads. Price, availa
 | Custom order | A product built or configured after the order is confirmed |
 | Factory photos | Images of a completed custom build provided before shipment when available |
 
+## Primary Sources And Review Standard
+
+This guide separates product-specific evidence from general buying advice. Current DollWow listings provide the product measurements, materials, prices, images, and configurations used in the live examples. Manufacturer-owned pages support selected brand-history, technology, and care statements:
+
+- [Irontech Doll: brand history and manufacturing background](https://www.irontechdoll.com/about-us/)
+- [Starpery: Weight Reduction 4.0 development and supported bodies](https://www.starpery.com/starpery-weight-reduction-tech)
+- [SE Doll: official company history and range development](https://www.sedoll.com/about-sedoll/)
+- [Tantaly: official brand and product-format background](https://www.tantaly.com/pages/about-us)
+- [Erovenus Help Center: current doll-care documentation](https://support.erovenus.com/hc/en-us/categories/31948293769115-Doll-Care)
+
+DollWow's own commitments and procedures are published in [Buyer Protection](/buyer-protection), [How Ordering Works](/how-ordering-works), [Shipping](/shipping), [30-Day Price Lock](/best-price-guarantee), and [Care 365](/care-for-life). These pages control DollWow-specific service claims. A manufacturer page controls only claims about that manufacturer's products, and an older article never overrides the current product configuration or written support confirmation.
+
+Sources are reviewed for ownership, specificity, recency, and relevance before they are used. Retailer summaries, answer-engine responses, forum posts, and videos can reveal useful questions, but they do not establish a product fact by themselves. Where reliable sources disagree or a detail cannot be verified, this guide leaves the detail unresolved and directs the buyer to confirm it before checkout.
+
 ## Next Steps
 
 Use the [DollWow finder](/help-me-choose) to narrow the catalog, [browse all sex dolls](/shop/sex-dolls), compare [active brands](/brands), or [ask support](/support) to verify a product-specific detail before checkout.

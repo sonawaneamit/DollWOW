@@ -73,4 +73,16 @@ describe("Learning Center content ownership", () => {
     const collectionSeo = fs.readFileSync(path.join(process.cwd(), "lib/catalog/collectionSeo.ts"), "utf8");
     expect(collectionSeo).toContain('{ label: "Read the size and weight guide", href: "/learn/sex-doll-size-weight-guide" }');
   });
+
+  it("exposes primary manufacturer and DollWow policy sources in the flagship guide", () => {
+    const article = getLearningArticle("sex-doll-guide");
+    expect(article?.body).toContain("## Primary Sources And Review Standard");
+    expect(article?.body).toContain("https://www.irontechdoll.com/about-us/");
+    expect(article?.body).toContain("https://www.starpery.com/starpery-weight-reduction-tech");
+    expect(article?.body).toContain("https://www.sedoll.com/about-sedoll/");
+    expect(article?.body).toContain("https://www.tantaly.com/pages/about-us");
+    expect(article?.body).toContain("https://support.erovenus.com/hc/en-us/categories/31948293769115-Doll-Care");
+    expect(article?.body).toContain("[Buyer Protection](/buyer-protection)");
+    expect(article?.body).toContain("[Care 365](/care-for-life)");
+  });
 });
