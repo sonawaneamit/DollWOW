@@ -71,4 +71,5 @@ describe("Doll Visualizer™ option safety", () => {
     expect(prompt).toContain("Verify no unselected attribute changed");
     expect(prompt).not.toContain("SKIN-TONE AUTHORITY");
   });
+
 });

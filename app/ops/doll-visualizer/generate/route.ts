@@ -31,7 +31,7 @@ const schema = z.object({
   productHandle: z.string().min(1).max(180),
   sourcePosition: z.number().int().min(0).max(7),
   email: z.string().email().max(180).optional(),
-  selections: z.array(z.object({ groupId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) })).min(1).max(5)
+  selections: z.array(z.object({ groupId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) })).min(1).max(2)
 });
 
 const ALLOWED_COUNTRIES = new Set([
@@ -66,7 +66,8 @@ export async function POST(request: Request) {
     if (option.swatch?.kind !== "image") return "";
     return normalizeOptionReference(option.swatch.value);
   }));
-  const images = [source.url, ...optionImages.filter(Boolean)];
+  const references = optionImages.filter(Boolean);
+  const images = [source.url, ...references];
   const cacheKey = `${VISUALIZER_PROMPT_VERSION}:${product.handle}:${parsed.data.sourcePosition}:${selections.map(({ group, option }) => `${group.id}:${option.id}`).sort().join("|")}`;
   const cached = generationCache.get(cacheKey);
   const cachedPreview = cached && Date.now() - cached.createdAt < CACHE_TTL_MS ? cached.previewDataUrl : null;
@@ -172,28 +173,28 @@ async function generatePreview({ images, prompt, aspectRatio }: {
     resolution: "2K"
   });
   if (seedream.ok) return { ok: true, bytes: await normalizePreview(seedream.bytes), model: "seedream-v5-pro-edit", resolution: "2K" };
-  if (seedream.status === 422) {
-    const seedreamLite = await requestVeniceEdit({
-      modelId: "seedream-v5-lite-edit",
-      images,
-      prompt,
-      aspectRatio,
-      resolution: "2K"
-    });
-    if (seedreamLite.ok) return { ok: true, bytes: await normalizePreview(seedreamLite.bytes), model: "seedream-v5-lite-edit", resolution: "2K" };
-    console.error("Venice Doll Visualizer Seedream Lite fallback failed", seedreamLite.status, seedreamLite.detail.slice(0, 500));
-    const uncensoredFallback = await requestVeniceEdit({
-      modelId: "qwen-edit-uncensored",
-      images,
-      prompt,
-      aspectRatio,
-      resolution: "2K"
-    });
-    if (uncensoredFallback.ok) return { ok: true, bytes: await normalizePreview(uncensoredFallback.bytes), model: "qwen-edit-uncensored", resolution: "2K" };
-    console.error("Venice Doll Visualizer uncensored fallback failed", uncensoredFallback.status, uncensoredFallback.detail.slice(0, 500));
-    return uncensoredFallback;
-  }
-  return seedream;
+  if (seedream.status !== 422) return seedream;
+
+  const seedreamLite = await requestVeniceEdit({
+    modelId: "seedream-v5-lite-edit",
+    images,
+    prompt,
+    aspectRatio,
+    resolution: "2K"
+  });
+  if (seedreamLite.ok) return { ok: true, bytes: await normalizePreview(seedreamLite.bytes), model: "seedream-v5-lite-edit", resolution: "2K" };
+  console.error("Venice Doll Visualizer Seedream Lite fallback failed", seedreamLite.status, seedreamLite.detail.slice(0, 500));
+
+  const qwen = await requestVeniceEdit({
+    modelId: "qwen-edit-uncensored",
+    images,
+    prompt,
+    aspectRatio,
+    resolution: "2K"
+  });
+  if (qwen.ok) return { ok: true, bytes: await normalizePreview(qwen.bytes), model: "qwen-edit-uncensored", resolution: "2K" };
+  console.error("Venice Doll Visualizer Qwen fallback failed", qwen.status, qwen.detail.slice(0, 500));
+  return qwen;
 }
 
 async function requestVeniceEdit({ modelId, images, prompt, aspectRatio, resolution, quality }: {

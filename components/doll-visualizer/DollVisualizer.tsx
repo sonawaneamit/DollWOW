@@ -73,6 +73,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   const canGenerate = live && selectedItems.length > 0 && emailIsValid && (!email || emailConsent) && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
+    if (!selections[groupId] && selectedItems.length >= 2) return;
     setSelections((current) => current[groupId] === optionId ? omit(current, groupId) : { ...current, [groupId]: optionId });
     setResult(null);
   }
@@ -234,13 +235,13 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               </div>
             ) : step === 2 ? (
               <div className="visualizer-pane visualizer-options">
-                <div className="visualizer-option-intro"><strong>Choose the look</strong><p>Only appearance choices the Visualizer can preview well are shown here. You can add functions, accessories, and all other available options on the product page afterward.</p></div>
+                <div className="visualizer-option-intro"><strong>Choose up to 2 appearance options</strong><p>You have 5 free previews to explore different combinations. Other functions and accessories remain available on the product page.</p><small>{selectedItems.length} of 2 selected</small></div>
                 {groups.map((group) => (
                   <fieldset key={group.id}>
                     <legend>{group.label}<small>{selections[group.id] ? "1 selected" : "Optional"}</small></legend>
                     <div className="visualizer-option-row">
                       {group.options.map((option) => (
-                        <button type="button" key={option.id} className={selections[group.id] === option.id ? "is-selected" : ""} onClick={() => choose(group.id, option.id)} aria-pressed={selections[group.id] === option.id}>
+                        <button type="button" key={option.id} className={selections[group.id] === option.id ? "is-selected" : ""} onClick={() => choose(group.id, option.id)} aria-pressed={selections[group.id] === option.id} disabled={!selections[group.id] && selectedItems.length >= 2}>
                           {option.swatch?.kind === "image" ? <Image src={option.swatch.value} alt="" width={72} height={72} /> : null}
                           <span>{option.label}</span>{selections[group.id] === option.id ? <Check /> : null}
                         </button>
@@ -288,23 +289,18 @@ function ResultSummary({ result, email }: { result: Result; email: string }) {
 function ResultIntro({ result, email }: { result: Result; email: string }) {
   return (
     <>
-      <p className="visualizer-result-eyebrow">Your Doll Visualizer™ preview</p>
-      <h2>Here’s your doll with the look you chose</h2>
-      <p>Compare your preview with the original product photo before making your selections.</p>
+      <p className="visualizer-result-eyebrow">Doll Visualizer™</p>
+      <h2>Your look is ready</h2>
       <strong className="visualizer-selection-heading">Previewed choices</strong>
       <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
-      {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
+      {email ? <p>{result.emailDelivered ? `Sent to ${email}.` : "The email could not be sent. You can save the preview here."}</p> : null}
     </>
   );
 }
 
 function ResultNotes() {
   return (
-    <>
-      <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
-      <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
-      <p className="visualizer-support-note">Previews can sometimes get a detail wrong. <Link href="/support">Ask our team</Link> if you’d like help confirming your choices.</p>
-    </>
+    <p className="visualizer-support-note">Approximate preview—colors and details may vary, and the Visualizer can sometimes make a mistake. Use the original photos for product details, or <Link href="/support">ask our team</Link> for help.</p>
   );
 }
 

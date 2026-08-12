@@ -9,7 +9,7 @@ export const VISUALIZER_PRODUCT_HANDLES = [
 export const VISUALIZER_DEFAULT_PRODUCT_HANDLE = VISUALIZER_PRODUCT_HANDLES[0];
 export const VISUALIZER_FREE_PREVIEWS = 5;
 export const VISUALIZER_COOKIE = "dw_visualizer_usage_v1";
-export const VISUALIZER_PROMPT_VERSION = "pre-identity-lock-v2-retest";
+export const VISUALIZER_PROMPT_VERSION = "two-option-preview-v1";
 
 const visibleGroupIds = ["skin-tone", "hairstyle", "hair-color", "eye-color"] as const;
 const visualOnlyOptionIds = new Set(["add-moles-freckles"]);
@@ -65,7 +65,7 @@ export function resolveVisualizerSelections(config: BrandCustomizationConfig, se
     return group && option ? [{ group, option }] : [];
   });
   const unique = new Map(resolved.map((item) => [`${item.group.id}:${item.option.id}`, item]));
-  return [...unique.values()].slice(0, 5);
+  return [...unique.values()].slice(0, 2);
 }
 
 export function buildVisualizerPrompt(product: Product, selections: ReturnType<typeof resolveVisualizerSelections>) {
