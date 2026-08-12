@@ -5,7 +5,6 @@ import Script from "next/script";
 export function ChatraWidget({ chatraId }: { chatraId: string }) {
   const setup = JSON.stringify({
     buttonStyle: "tab",
-    buttonPosition: "br",
     zIndex: 70,
     colors: {
       buttonText: "#ffffff",
@@ -20,7 +19,7 @@ export function ChatraWidget({ chatraId }: { chatraId: string }) {
       id="chatra-widget"
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
-        __html: `window.ChatraSetup=${setup};window.ChatraID=${JSON.stringify(chatraId)};(function(d,w,c){w[c]=w[c]||function(){(w[c].q=w[c].q||[]).push(arguments)};var s=d.createElement('script');s.async=true;s.src='https://call.chatra.io/chatra.js';if(d.head)d.head.appendChild(s);})(document,window,'Chatra');`
+        __html: `window.ChatraSetup=Object.assign(${setup},{buttonPosition:window.innerWidth<1024?'rm':'br'});window.ChatraID=${JSON.stringify(chatraId)};(function(d,w,c){w[c]=w[c]||function(){(w[c].q=w[c].q||[]).push(arguments)};var s=d.createElement('script');s.async=true;s.src='https://call.chatra.io/chatra.js';if(d.head)d.head.appendChild(s);})(document,window,'Chatra');`
       }}
     />
   );
