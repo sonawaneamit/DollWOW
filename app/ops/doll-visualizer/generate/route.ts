@@ -89,7 +89,7 @@ export async function POST(request: Request) {
 
   if (generated && !generated.ok) {
     console.error("Venice Doll Visualizer generation failed", generated.status, generated.detail.slice(0, 500));
-    const message = generated.status === 402 ? "Doll Visualizer™ is temporarily unavailable. Please try again shortly." : generated.status === 429 ? "Doll Visualizer™ is busy. Please try again shortly." : "We couldn’t create this preview. Your selections are still here, so you can try again.";
+    const message = generated.status === 402 ? "Doll Visualizer™ is temporarily unavailable. Please try again shortly." : generated.status === 429 ? "Doll Visualizer™ is busy. Please try again shortly." : generated.status === 422 ? "This photo could not be processed. Try again or choose another product photo." : "We couldn’t create this preview. Your selections are still here, so you can try again.";
     return apiError(message, generated.status === 429 ? 429 : 502);
   }
   let previewDataUrl = cachedPreview;
@@ -172,6 +172,27 @@ async function generatePreview({ images, prompt, aspectRatio }: {
     resolution: "2K"
   });
   if (seedream.ok) return { ok: true, bytes: await normalizePreview(seedream.bytes), model: "seedream-v5-pro-edit", resolution: "2K" };
+  if (seedream.status === 422) {
+    const seedreamLite = await requestVeniceEdit({
+      modelId: "seedream-v5-lite-edit",
+      images,
+      prompt,
+      aspectRatio,
+      resolution: "2K"
+    });
+    if (seedreamLite.ok) return { ok: true, bytes: await normalizePreview(seedreamLite.bytes), model: "seedream-v5-lite-edit", resolution: "2K" };
+    console.error("Venice Doll Visualizer Seedream Lite fallback failed", seedreamLite.status, seedreamLite.detail.slice(0, 500));
+    const uncensoredFallback = await requestVeniceEdit({
+      modelId: "qwen-edit-uncensored",
+      images,
+      prompt,
+      aspectRatio,
+      resolution: "2K"
+    });
+    if (uncensoredFallback.ok) return { ok: true, bytes: await normalizePreview(uncensoredFallback.bytes), model: "qwen-edit-uncensored", resolution: "2K" };
+    console.error("Venice Doll Visualizer uncensored fallback failed", uncensoredFallback.status, uncensoredFallback.detail.slice(0, 500));
+    return uncensoredFallback;
+  }
   return seedream;
 }
 

@@ -41,6 +41,7 @@ import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
+import { visualizerSelectionKey } from "@/lib/doll-visualizer/public";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -63,6 +64,24 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const [error, setError] = useState("");
   const [isMobileDockVisible, setMobileDockVisible] = useState(false);
   const [isPreviewOpen, setPreviewOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      const key = visualizerSelectionKey(product.handle);
+      const saved = JSON.parse(window.localStorage.getItem(key) || "null") as { selections?: Record<string, string>; savedAt?: number } | null;
+      if (!saved?.selections || !saved.savedAt || Date.now() - saved.savedAt > 24 * 60 * 60 * 1000) return;
+      const supported = Object.fromEntries(Object.entries(saved.selections).filter(([groupId, optionId]) =>
+        config.groups.some((group) => group.id === groupId && group.options.some((option) => option.id === optionId))
+      ));
+      if (!Object.keys(supported).length) return;
+      setSelected((current) => ({ ...current, ...supported }));
+      const firstSelectedGroup = config.groups.find((group) => supported[group.id]);
+      if (firstSelectedGroup) setActiveGroupId(firstSelectedGroup.id);
+      window.localStorage.removeItem(key);
+    } catch {
+      // Keep factory defaults if a saved Visualizer choice cannot be restored.
+    }
+  }, [config.groups, product.handle]);
 
   const variant = product.variants.find((item) => item.id === variantId) ?? firstAvailable;
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
