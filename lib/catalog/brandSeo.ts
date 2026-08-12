@@ -60,6 +60,71 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       }
     ]
   },
+  angelkiss: {
+    positioning:
+      "Angelkiss is a silicone-focused doll brand with full-silicone and silicone-head construction paths, varied body proportions, and model-specific customization choices.",
+    intro:
+      "Compare current Angelkiss dolls on DollWow by full-silicone or silicone-head construction, exact body and head pairing, height, listed weight, proportions, price, and supported options. Angel Kiss is also written as two words in some searches, but both names refer to the same brand hub here. Start with the body construction and handling needs, then confirm the appearance and build choices supported by the exact product. DollWow reviews complex custom orders before production and can help locate an approved Angelkiss model that is not yet listed.",
+    metaDescription:
+      "Shop Angelkiss and Angel Kiss dolls by silicone construction, body, head, height, weight, price, availability, and supported custom options.",
+    buyerNotes: [
+      {
+        title: "Check body and head construction",
+        body: "A silicone head does not automatically mean a full-silicone body. Confirm both materials, their care needs, the connector, and the final pairing."
+      },
+      {
+        title: "Compare the finished weight",
+        body: "Similar heights can have different listed weights and proportions. Check pounds and kilograms, the delivery route, cleaning space, and storage before choosing."
+      },
+      {
+        title: "Confirm every selected option",
+        body: "Skin tone, head, hair, eyes, skeleton, feet, softness, and other choices can be model-specific. DollWow can verify the supported combination before production."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Construction",
+        "Separate full-silicone bodies from products that use a silicone head on another supported body construction.",
+        "DollWow keeps body material, head material, measurements, and current choices tied to the exact product."
+      ],
+      [
+        "Body and head pairing",
+        "Compare the exact face, body, connector, skin tone, proportions, and supported appearance options as one build.",
+        "Our Human Build Check reviews supported custom selections before an eligible order enters production."
+      ],
+      [
+        "Handling and ownership",
+        "Read height and listed weight together, then plan delivery access, lifting, cleaning, drying, and storage.",
+        "Ask our team to confirm a missing decision-critical detail before checkout."
+      ]
+    ],
+    faqs: [
+      {
+        question: "Is Angel Kiss the same brand as Angelkiss?",
+        answer: "Yes. Buyers and sellers use both spellings for the brand. DollWow keeps current products under the canonical Angelkiss Dolls hub."
+      },
+      {
+        question: "Are Angelkiss dolls made from silicone?",
+        answer: "The current DollWow Angelkiss range is silicone-focused and includes full-silicone products plus products listed with a silicone head. Confirm the body and head materials separately on the exact product."
+      },
+      {
+        question: "Does a silicone head mean the entire Angelkiss doll is silicone?",
+        answer: "No. A silicone-head label describes the head, not automatically the body. Check the body material, head material, connector, finish match, care needs, and price before ordering."
+      },
+      {
+        question: "Can every Angelkiss head and option fit every body?",
+        answer: "Do not assume so. Body size, neck fitting, connector, material, skin tone, hair, skeleton, feet, softness, and other choices can follow product-specific compatibility rules."
+      },
+      {
+        question: "How should I compare Angelkiss doll sizes?",
+        answer: "Compare height, listed weight, bust, waist, hips, shoulders where available, delivery access, cleaning space, and storage. Height or cup size alone does not describe handling."
+      },
+      {
+        question: "Can DollWow add an Angelkiss model that is missing?",
+        answer: "Yes. Send the product name or official link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      }
+    ]
+  },
   irontech: {
     positioning:
       "Irontech has produced dolls since 2015 and is known for a broad choice of full-silicone, TPE, hybrid, female, and male models, including advanced head and skeleton options on supported builds.",
