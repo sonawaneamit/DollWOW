@@ -1519,7 +1519,8 @@ textarea {
   }
 
   .product-filters--sidebar:not(.product-filters--mobile-open) .product-filters__quicklinks,
-  .product-filters--sidebar:not(.product-filters--mobile-open) .product-filters__form {
+  .product-filters--sidebar:not(.product-filters--mobile-open) .product-filters__form,
+  .product-filters--sidebar:not(.product-filters--mobile-open) .product-filters__active {
     display: none;
   }
 }

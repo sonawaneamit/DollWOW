@@ -31,13 +31,44 @@ export function ComparisonPageClient() {
     ? rows.filter((row) => new Set(comparison.entries.map((entry) => String(row.label === "Price" ? entry.unitPrice : row.value(entry) ?? ""))).size > 1)
     : rows;
 
-  if (!mounted || comparison.entries.length < 2) {
+  if (!mounted || comparison.entries.length === 0) {
     return (
       <section className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-6">
         <Scale className="mx-auto h-10 w-10 text-accent" />
         <h1 className="mt-5 font-display text-4xl font-semibold text-text">Compare dolls side by side</h1>
         <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-text-dim">Choose at least two dolls from the catalog. You can compare up to four at once.</p>
         <Link href="/shop/sex-dolls" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-button bg-accent px-6 text-base font-semibold text-white shadow-card">Browse dolls <ArrowRight className="h-4 w-4" /></Link>
+      </section>
+    );
+  }
+
+  if (comparison.entries.length === 1) {
+    const entry = comparison.entries[0];
+    return (
+      <section className="mx-auto max-w-4xl px-5 py-12 sm:px-6 sm:py-16">
+        <div className="text-center">
+          <Scale className="mx-auto h-10 w-10 text-accent" />
+          <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-accent">1 doll selected</p>
+          <h1 className="mt-2 font-display text-4xl font-semibold text-text">Choose one more to compare</h1>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-text-dim">Your first doll is saved below. Add another from the catalog to see their details side by side.</p>
+        </div>
+
+        <article className="mx-auto mt-8 grid max-w-2xl grid-cols-[88px_minmax(0,1fr)] gap-4 border-y border-border bg-surface py-4 sm:grid-cols-[104px_minmax(0,1fr)_auto] sm:items-center sm:px-4">
+          <Link href={`/products/${entry.productHandle}`} className="relative block aspect-[4/5] w-[88px] overflow-hidden rounded-sm bg-surface-tint sm:w-[104px]">
+            {entry.imageUrl ? <Image src={entry.imageUrl} alt={entry.productTitle} fill sizes="104px" className="object-contain object-top" /> : <Scale className="m-auto h-7 w-7 text-accent" />}
+          </Link>
+          <div className="min-w-0">
+            {entry.brand ? <p className="text-xs font-semibold uppercase tracking-wider text-accent">{entry.brand}</p> : null}
+            <Link href={`/products/${entry.productHandle}`} className="mt-1 block font-semibold leading-6 text-text hover:text-accent">{entry.productTitle}</Link>
+            <p className="mt-2 font-semibold text-text"><DisplayMoney amount={entry.unitPrice} currencyCode={entry.currencyCode} /></p>
+          </div>
+          <div className="col-span-2 flex gap-3 sm:col-span-1 sm:flex-col">
+            <Link href="/shop/sex-dolls" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-button bg-accent px-4 text-sm font-semibold text-white">Add another doll</Link>
+            <button type="button" onClick={() => comparison.remove(entry.productHandle)} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-button border border-border-strong px-4 text-sm font-semibold text-text-dim hover:text-danger">
+              <Trash2 className="h-4 w-4" /> Remove
+            </button>
+          </div>
+        </article>
       </section>
     );
   }

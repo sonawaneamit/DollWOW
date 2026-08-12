@@ -53,7 +53,8 @@ export function readCompareEntries() {
 export function writeCompareEntries(entries: CompareEntry[]) {
   if (typeof window === "undefined") return;
   const next = entries.slice(0, MAX_COMPARE_ENTRIES);
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  if (next.length) window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  else window.localStorage.removeItem(STORAGE_KEY);
   window.dispatchEvent(new CustomEvent(UPDATED_EVENT, { detail: next }));
 }
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BadgeCheck, ChevronDown, SlidersHorizontal } from "lucide-react";
-import { useRef, useState, type FormEvent } from "react";
+import { useId, useRef, useState, type FormEvent } from "react";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 import { StyledSelect } from "./StyledSelect";
@@ -46,7 +46,8 @@ export function ProductFilters({
   const count = Math.max(0, activeFilterCount(filters) - (lockedBrand && filters.brand ? 1 : 0));
   const activeFilters = buildActiveFilterLinks(filters, action, lockedBrand ? ["brand"] : []);
   const isSidebar = variant === "sidebar";
-  const [mobileOpen, setMobileOpen] = useState(count > 0);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const mobilePanelId = useId();
 
   function applyFilters(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -73,6 +74,7 @@ export function ProductFilters({
               type="button"
               className="product-filters__mobile-toggle"
               aria-expanded={mobileOpen}
+              aria-controls={mobilePanelId}
               onClick={() => setMobileOpen((current) => !current)}
             >
               {mobileOpen ? "Hide filters" : "Filter & sort"}
@@ -98,7 +100,7 @@ export function ProductFilters({
         ) : null}
       </div>
 
-      <form action={action} onSubmit={applyFilters} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
+      <form id={mobilePanelId} action={action} onSubmit={applyFilters} className={`product-filters__form ${isSidebar ? "product-filters__form--sidebar" : ""}`}>
         {filters.region ? <input type="hidden" name="region" value={filters.region} /> : null}
         <label className="product-filter-control product-filter-control--search">
           <span>Search</span>
