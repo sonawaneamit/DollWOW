@@ -1,8 +1,8 @@
 ---
 title: "Sex Doll Breast Options: Solid, Hollow, Gel, And Softness"
 slug: "sex-doll-breast-options"
-primaryKeyword: "sex doll breast options"
-secondaryKeywords: ["sex doll breasts", "gel breast sex doll", "hollow breast sex doll", "soft breast sex doll"]
+primaryKeyword: "sex doll breasts"
+secondaryKeywords: ["sex doll breast options", "gel breast sex doll", "hollow breast sex doll", "soft breast sex doll"]
 description: "Compare solid, hollow, gel-filled, and ultra-soft sex doll breast options by feel, movement, weight, care, pressure sensitivity, and product compatibility."
 category: "Customization"
 author: "alex"
@@ -25,7 +25,7 @@ Choose the complete body first. Then ask what each available breast option chang
 
 ## What DollWow's Current Catalog Shows
 
-An August 12, 2026 review of 3,267 Shopify products found 2,492 customization-group occurrences that mention breast construction or softness. Current supplier language includes solid, gel, hollow, jelly, ultra-soft gel, ultra-soft breast, and combined breast-and-butt softness choices.
+An August 12, 2026 review of 3,267 products in DollWow's Shopify catalog found 2,492 customization-group occurrences that mention breast construction or softness. This counts option-group occurrences, not unique products or buyer selections. Current supplier language includes solid, gel, hollow, jelly, ultra-soft gel, ultra-soft breast, and combined breast-and-butt softness choices.
 
 The important finding is variety, not a popularity ranking. The labels do not prove that two manufacturers use the same materials or construction. Some products expose a dedicated breast menu, while others include softness inside a larger premium body-option group. Product-specific availability must control the order.
 
@@ -198,3 +198,10 @@ It is a supplier-specific label that may describe fill, local material softness,
 ### Can DollWow confirm the option before production?
 
 Yes. Ask through live chat or hello@dollwow.com. Human Build Check reviews supported selections for an eligible custom order before production.
+
+## Source Notes
+
+- [Tantaly breast options guide](https://www.tantaly.com/pages/breast-options-guide-for-sex-doll-torsos): current manufacturer terminology for solid, hollow, and gel options on supported torso products
+- DollWow Shopify catalog option-group review, August 12, 2026: 3,267 products inspected and 2,492 relevant option-group occurrences; counts document catalog coverage at the review date rather than popularity or sales
+
+Supplier terminology is used only to explain the named manufacturer's option. It is not treated as a universal standard for other brands or bodies.
