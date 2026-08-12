@@ -47,7 +47,7 @@ Use the [WM Dolls collection](/brands/wm-dolls) for current products and filters
 
 ## WM Dolls Brand History
 
-WM Doll traces its manufacturing history to **2010**. The company, Zhongshan Jinsan Mannequin Co., Ltd., is based in Zhongshan, Guangdong, China. An official Zhongshan government profile also dates the manufacturer to 2010 and describes its development from bionic-skin products into newer technical systems.
+WM Doll traces its manufacturing history to **2010**. The company behind the brand, Zhongshan Jinsan Mannequin Co., Ltd., is based in Zhongshan, Guangdong, China. A 2025 article published on the Zhongshan Municipal Government website independently reports that WMDOLL was founded in 2010 and describes its development from bionic-skin products into newer technical systems. Publication on that website does not imply government ownership, funding, endorsement, or backing of the company.
 
 WM became widely known for TPE dolls and a large body-and-head catalog. The manufacturer later added silicone products, newer TPE material names, lightweight constructions, revised hand and skeleton systems, and selected powered or AI-related projects.
 
@@ -273,9 +273,9 @@ Before approving a WM order, confirm:
 
 ## Primary WM Source
 
-- [Zhongshan Municipal Government: WMDOLL company profile and development](https://www.zs.gov.cn/ywb/economy/content/post_2567159.html)
+- [Zhongshan Municipal Government website: 2025 article about WMDOLL's development](https://www.zs.gov.cn/ywb/economy/content/post_2567159.html)
 
-This government-published company profile independently supports the 2010 founding date and Zhongshan manufacturing identity used in this guide. Current material, body, head, measurements, weight, options, price, and availability still need confirmation on the exact DollWow product.
+This municipal-government website article independently supports the 2010 founding date and Zhongshan manufacturing identity used in this guide. It is cited as an independent publication, not as evidence that WMDOLL or Jinsan is government-owned, funded, endorsed, or backed. Current material, body, head, measurements, weight, options, price, and availability still need confirmation on the exact DollWow product.
 
 ## FAQs
 
