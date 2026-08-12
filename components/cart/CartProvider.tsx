@@ -113,7 +113,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
           lines: bag.map((item) => ({
             merchandiseId: item.merchandiseId,
             quantity: item.quantity,
-            attributes: item.attributes ?? []
+            attributes: item.attributes ?? [],
+            customizationCharge: item.customizationCharge
           }))
         })
       });

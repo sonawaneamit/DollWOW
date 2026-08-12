@@ -628,6 +628,12 @@ export async function createCartWithLines(input: {
     merchandiseId: string;
     quantity: number;
     attributes?: Array<{ key: string; value: string }>;
+    customizationCharge?: {
+      amount: number;
+      currencyCode: string;
+      title?: string;
+      items?: Array<{ group?: string; label: string; amount: number }>;
+    };
   }>;
   discountCodes?: string[];
 }) {
@@ -653,11 +659,14 @@ export async function createCartWithLines(input: {
     }`,
     {
       input: {
-        lines: input.lines.map((line) => ({
-          merchandiseId: line.merchandiseId,
-          quantity: line.quantity,
-          attributes: withCare365Attribute(line.attributes)
-        })),
+        lines: input.lines.flatMap((line) => [
+          ...customizationChargeLines(line.customizationCharge),
+          {
+            merchandiseId: line.merchandiseId,
+            quantity: line.quantity,
+            attributes: withCare365Attribute(line.attributes)
+          }
+        ]),
         discountCodes: input.discountCodes ?? []
       }
     }

@@ -16,7 +16,7 @@ const rawAttributeSchema = z.object({
   value: z.string().max(1000)
 });
 
-const customizationChargeSchema = z.object({
+export const customizationChargeSchema = z.object({
   amount: z.number().min(0).max(20_000),
   currencyCode: z.string().min(3).max(3),
   title: z.string().max(180).optional(),
@@ -47,7 +47,8 @@ export type CartCreateRequest = z.infer<typeof cartCreateRequestSchema>;
 export const cartLineSchema = z.object({
   merchandiseId: merchandiseIdSchema,
   quantity: z.number().int().min(1).max(10).default(1),
-  attributes: z.array(rawAttributeSchema).max(50).optional()
+  attributes: z.array(rawAttributeSchema).max(50).optional(),
+  customizationCharge: customizationChargeSchema.optional()
 });
 
 /**
@@ -63,7 +64,8 @@ export const cartCheckoutRequestSchema = z
   .transform((input) => ({
     lines: input.lines.map((line) => ({
       ...line,
-      attributes: normalizeLineAttributes(line.attributes)
+      attributes: normalizeLineAttributes(line.attributes),
+      customizationCharge: normalizeCustomizationCharge(line.customizationCharge)
     })),
     discountCodes: normalizeDiscountCodes(input.discountCodes)
   }));

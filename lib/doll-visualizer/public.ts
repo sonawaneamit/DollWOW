@@ -9,7 +9,3 @@ export type VisualizerGroup = {
 export function visualizerDraftKey(handle: string) {
   return `dollwow-visualizer-draft-v1:${handle}`;
 }
-
-export function visualizerSelectionKey(handle: string) {
-  return `dollwow-visualizer-selections-v1:${handle}`;
-}

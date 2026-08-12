@@ -16,6 +16,12 @@ export type BagItem = {
   quantity: number;
   readyToShip?: boolean;
   attributes?: Array<{ key: string; value: string }>;
+  customizationCharge?: {
+    amount: number;
+    currencyCode: string;
+    title?: string;
+    items?: Array<{ group?: string; label: string; amount: number }>;
+  };
   addedAt: string;
 };
 

@@ -109,7 +109,7 @@ export async function POST(request: Request) {
       previewDataUrl,
       selections: selections.map(({ group, option }) => ({ group: group.label, option: option.label }))
     }) : { delivered: false as const };
-  console.info("Doll Visualizer generation", JSON.stringify({ model: generated?.model || "cache", resolution: generated?.resolution || "cache", cacheHit: Boolean(cachedPreview), country: country || "unknown", selections: selections.length, emailDelivered: email.delivered }));
+  console.info("Doll Visualizer generation", JSON.stringify({ model: generated?.model || "cache", resolution: generated?.resolution || "cache", cacheHit: Boolean(cachedPreview), country: country || "unknown", selections: selections.length, emailDelivered: email.delivered, emailProvider: "provider" in email ? email.provider : "none" }));
   const nextCount = usage.count + (cachedPreview ? 0 : 1);
   return NextResponse.json({
     previewDataUrl,

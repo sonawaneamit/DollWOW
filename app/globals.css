@@ -53,6 +53,56 @@
   color-scheme: light;
 }
 
+/* Visualizer result hierarchy: buying action first, navigation secondary. */
+.visualizer-result-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.visualizer-result-actions .visualizer-result-primary {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgb(var(--color-accent));
+  border-radius: 14px;
+  background: rgb(var(--color-accent));
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: var(--shadow-card);
+}
+
+.visualizer-result-actions .visualizer-result-primary:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.visualizer-result-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.visualizer-result-actions .visualizer-result-links a,
+.visualizer-result-actions .visualizer-result-links button {
+  display: inline-flex;
+  min-height: 44px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-text-dim));
+  font-size: 12px;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Doll Visualizer customer-copy support */
 .visualizer-title>small{display:block;margin-top:8px;color:rgb(var(--color-text-dim));font-size:12px;line-height:1.45}
 .visualizer-title>.visualizer-product-context{margin-top:5px;color:rgb(var(--color-text-faint));font-size:10px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}

@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, ShoppingBag, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
-import { visualizerDraftKey, visualizerSelectionKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
+import { useCart } from "@/components/cart/CartProvider";
+import { visualizerDraftKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
+import type { BagItem } from "@/lib/cart/bag";
 
 type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
@@ -22,6 +24,7 @@ type Result = {
 };
 
 export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
+  const cart = useCart();
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
   const [step, setStep] = useState(1);
   const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
@@ -35,6 +38,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [showOriginal, setShowOriginal] = useState(false);
   const [error, setError] = useState("");
+  const [cartLoading, setCartLoading] = useState(false);
+  const [cartError, setCartError] = useState("");
 
   useEffect(() => {
     document.body.classList.add("visualizer-mode");
@@ -107,9 +112,28 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     trackEvent("doll_visualizer_download", { product_handle: product.handle });
   }
 
-  function useChoices() {
-    localStorage.setItem(visualizerSelectionKey(product.handle), JSON.stringify(selections));
-    trackEvent("doll_visualizer_continue", { product_handle: product.handle, option_count: selectedItems.length });
+  async function addPreviewToCart() {
+    if (!result || cartLoading) return;
+    setCartLoading(true);
+    setCartError("");
+    try {
+      const response = await fetch("/ops/doll-visualizer/cart", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          productHandle: product.handle,
+          selections: result.selections.map(({ groupId, optionId }) => ({ groupId, optionId }))
+        })
+      });
+      const payload = await response.json() as { item?: Omit<BagItem, "addedAt" | "quantity">; error?: string };
+      if (!response.ok || !payload.item) throw new Error(payload.error || "We couldn’t add this look to the cart.");
+      cart.addItem({ ...payload.item, quantity: 1 });
+      trackEvent("doll_visualizer_add_to_cart", { product_handle: product.handle, option_count: result.selections.length });
+    } catch (caught) {
+      setCartError(caught instanceof Error ? caught.message : "We couldn’t add this look to the cart.");
+    } finally {
+      setCartLoading(false);
+    }
   }
 
   async function sharePreview() {
@@ -170,9 +194,15 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                 <button type="button" onClick={downloadPreview}><Download /> Download preview</button>
               </div>
               <div className="visualizer-result-actions">
-                <button type="button" onClick={() => { setResult(null); setStep(2); setShowOriginal(false); }}><RotateCcw /> Try different choices</button>
-                <Link href={`/products/${product.handle}#build-studio`} onClick={useChoices}>Use these choices <ArrowRight /></Link>
+                <button className="visualizer-result-primary" type="button" onClick={addPreviewToCart} disabled={cartLoading}>
+                  {cartLoading ? <Loader2 className="animate-spin" /> : <ShoppingBag />} {cartLoading ? "Adding…" : "Add to Cart"}
+                </button>
+                <div className="visualizer-result-links">
+                  <Link href={`/products/${product.handle}`}>Back to product</Link>
+                  <button type="button" onClick={() => { setResult(null); setStep(1); setShowOriginal(false); setCartError(""); }}><RotateCcw /> Start over</button>
+                </div>
               </div>
+              {cartError ? <p className="visualizer-error" role="alert">{cartError}</p> : null}
             </div>
           ) : null}
         </section>
