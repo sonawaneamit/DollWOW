@@ -30,6 +30,7 @@
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "seo:audit-learning-links": "node scripts/audit-learning-center-links.mjs",
     "seo:audit-onpage-site": "node scripts/audit-dataforseo-onpage-site.mjs",
+    "seo:audit-linkable-formats": "node scripts/audit-seo-linkable-formats.mjs",
     "seo:guide:products": "node scripts/validate-ultimate-guide-products.mjs",
     "pdf:guide": "python3 scripts/build-ultimate-guide-pdf.py",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
