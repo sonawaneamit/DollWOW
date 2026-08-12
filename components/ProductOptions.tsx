@@ -24,6 +24,7 @@ import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
+import { visualizerSelectionKey } from "@/lib/doll-visualizer/public";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   defaultMultipleOptionId,
@@ -78,6 +79,24 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
   const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+
+  useEffect(() => {
+    const key = visualizerSelectionKey(product.handle);
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return;
+    try {
+      const restored = JSON.parse(raw) as Record<string, string>;
+      const valid = Object.fromEntries(config.groups.flatMap((group) => {
+        const optionId = restored[group.id];
+        return optionId && group.options.some((option) => option.id === optionId) ? [[group.id, optionId]] : [];
+      }));
+      if (Object.keys(valid).length) setSelected((current) => ({ ...current, ...valid }));
+    } catch {
+      // Ignore stale or malformed browser state.
+    } finally {
+      window.localStorage.removeItem(key);
+    }
+  }, [config.groups, product.handle]);
 
   useEffect(() => {
     if (!didMountRef.current) {

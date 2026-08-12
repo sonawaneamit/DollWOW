@@ -53,6 +53,19 @@
   color-scheme: light;
 }
 
+/* Doll Visualizer customer-copy support */
+.visualizer-title>small{display:block;margin-top:8px;color:rgb(var(--color-text-dim));font-size:12px;line-height:1.45}
+.visualizer-title>.visualizer-product-context{margin-top:5px;color:rgb(var(--color-text-faint));font-size:10px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
+.visualizer-option-intro{padding:14px;border:1px solid rgb(var(--color-border));border-radius:15px;background:rgb(var(--color-surface-tint))}
+.visualizer-option-intro strong{font-size:16px}
+.visualizer-option-intro p{margin-top:4px;color:rgb(var(--color-text-dim));font-size:12px;line-height:1.5}
+.visualizer-privacy{color:rgb(var(--color-text-faint));font-size:10px;line-height:1.45}
+.visualizer-wait .visualizer-leave-link,.visualizer-help-link{display:inline-flex;margin-top:8px;color:rgb(var(--color-accent));font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.visualizer-selection-heading{font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.visualizer-error strong,.visualizer-error p,.visualizer-error small{display:block}
+.visualizer-error p{margin-top:3px}
+.visualizer-error small{margin-top:5px;color:inherit;line-height:1.45}
+
 /* Care for Life + private Doll Passport */
 .care-365-lockup{display:grid;gap:14px;max-width:680px;padding:14px;border:1px solid rgb(var(--color-border));border-radius:14px;background:rgb(var(--color-surface-tint))}
 .care-365-seal{display:grid;width:100%;min-width:0;grid-template-columns:82px minmax(0,1fr);gap:17px;align-items:center;color:rgb(var(--color-text))}

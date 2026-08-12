@@ -29,7 +29,7 @@ const requestWindows = new Map<string, { count: number; resetsAt: number }>();
 const schema = z.object({
   productHandle: z.string().min(1).max(180),
   sourcePosition: z.number().int().min(0).max(7),
-  email: z.string().email().max(180),
+  email: z.string().email().max(180).optional(),
   selections: z.array(z.object({ groupId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) })).min(1).max(5)
 });
 
@@ -40,23 +40,23 @@ const ALLOWED_COUNTRIES = new Set([
 export async function POST(request: Request) {
   if (!isTrustedOrigin(request)) return apiError("This request could not be verified.", 403);
   if (!env.VENICE_API_KEY) return NextResponse.json({ error: "Doll Visualizer™ is not connected yet." }, { status: 503 });
-  if (env.DOLL_VISUALIZER_ENABLED !== "true") return NextResponse.json({ error: "Live previews are paused for this private pilot." }, { status: 503 });
+  if (env.DOLL_VISUALIZER_ENABLED !== "true") return NextResponse.json({ error: "Doll Visualizer™ is temporarily unavailable. Please try again shortly." }, { status: 503 });
   const country = (request.headers.get("x-vercel-ip-country") || request.headers.get("cf-ipcountry") || "").toUpperCase();
   if (country && !ALLOWED_COUNTRIES.has(country)) return NextResponse.json({ error: "Doll Visualizer™ is not available in your region yet." }, { status: 403 });
   const clientKey = clientFingerprint(request);
   if (!allowRequest(clientKey)) return apiError("Too many preview requests. Please wait a little before trying again.", 429);
 
   const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Choose a photo, at least one visual option, and a valid email." }, { status: 400 });
-  if (!isVisualizerProduct(parsed.data.productHandle)) return NextResponse.json({ error: "That doll is not available in the private Visualizer preview." }, { status: 404 });
+  if (!parsed.success) return NextResponse.json({ error: "Choose a photo and at least one available appearance option." }, { status: 400 });
+  if (!isVisualizerProduct(parsed.data.productHandle)) return NextResponse.json({ error: "This preview choice is not currently available for this doll." }, { status: 404 });
   const usage = readVisualizerUsage(request.headers.get("cookie"));
-  if (usage.count >= VISUALIZER_FREE_PREVIEWS) return NextResponse.json({ error: "This pilot has used its five complimentary previews." }, { status: 429 });
+  if (usage.count >= VISUALIZER_FREE_PREVIEWS) return NextResponse.json({ error: "You have used today’s preview limit. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
   const product = await getProductByHandle(parsed.data.productHandle, { cache: "force-cache", revalidate: 3600 });
-  if (!product) return NextResponse.json({ error: "Pilot product is unavailable." }, { status: 503 });
+  if (!product) return NextResponse.json({ error: "This doll is not currently available in Doll Visualizer™." }, { status: 503 });
   const sources = productImageSources(product);
   const source = sources[parsed.data.sourcePosition];
-  if (!source?.url) return NextResponse.json({ error: "That reference photo is unavailable." }, { status: 400 });
+  if (!source?.url) return NextResponse.json({ error: "This photo could not be used for a preview. Choose another product photo and try again." }, { status: 400 });
 
   const config = visualizerConfigForProduct(product, getCustomizationConfig(product));
   const selections = resolveVisualizerSelections(config, parsed.data.selections);
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
   }
   const dailyLimit = Math.max(1, Number.parseInt(env.DOLL_VISUALIZER_DAILY_LIMIT || "25", 10) || 25);
   if (!cachedPreview && generatedToday >= dailyLimit) {
-    return NextResponse.json({ error: "Today’s private preview allowance has been reached. Please try again tomorrow." }, { status: 429 });
+    return NextResponse.json({ error: "Doll Visualizer™ has reached today’s preview limit. Please try again tomorrow." }, { status: 429 });
   }
 
   const generated = cachedPreview ? null : await generatePreview({
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
 
   if (generated && !generated.ok) {
     console.error("Venice Doll Visualizer generation failed", generated.status, generated.detail.slice(0, 500));
-    const message = generated.status === 402 ? "The preview balance needs a top-up." : generated.status === 429 ? "The visualizer is busy. Please try again shortly." : "The preview could not be generated. Your preview was not counted.";
+    const message = generated.status === 402 ? "Doll Visualizer™ is temporarily unavailable. Please try again shortly." : generated.status === 429 ? "Doll Visualizer™ is busy. Please try again shortly." : "We couldn’t create this preview. Your selections are still here, so you can try again.";
     return apiError(message, generated.status === 429 ? 429 : 502);
   }
   let previewDataUrl = cachedPreview;
@@ -97,17 +97,17 @@ export async function POST(request: Request) {
     generationCache.set(cacheKey, { previewDataUrl, createdAt: Date.now() });
     generatedToday += 1;
   }
-  if (!previewDataUrl) return NextResponse.json({ error: "The preview could not be generated. Your preview was not counted." }, { status: 502 });
+  if (!previewDataUrl) return NextResponse.json({ error: "We couldn’t create this preview. Your selections are still here, so you can try again." }, { status: 502 });
   const displayName = productDisplayName(product) || product.title;
   const productUrl = `${env.NEXT_PUBLIC_SITE_URL}/products/${product.handle}`;
-  const email = await sendVisualizerLookEmail({
-    to: parsed.data.email,
-    productName: displayName,
-    productUrl,
-    sourceImageUrl: source.url,
-    previewDataUrl,
-    selections: selections.map(({ group, option }) => ({ group: group.label, option: option.label }))
-  });
+  const email = parsed.data.email ? await sendVisualizerLookEmail({
+      to: parsed.data.email,
+      productName: displayName,
+      productUrl,
+      sourceImageUrl: source.url,
+      previewDataUrl,
+      selections: selections.map(({ group, option }) => ({ group: group.label, option: option.label }))
+    }) : { delivered: false as const };
   console.info("Doll Visualizer generation", JSON.stringify({ model: generated?.model || "cache", resolution: generated?.resolution || "cache", cacheHit: Boolean(cachedPreview), country: country || "unknown", selections: selections.length, emailDelivered: email.delivered }));
   const nextCount = usage.count + (cachedPreview ? 0 : 1);
   return NextResponse.json({

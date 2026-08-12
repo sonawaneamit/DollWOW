@@ -8,7 +8,7 @@ import { protectedProductImageUrl, productImageSources } from "@/lib/catalog/pro
 import { getProductByHandle } from "@/lib/shopify/storefront";
 
 export const metadata: Metadata = {
-  title: "Doll Visualizer™ private preview",
+  title: "Doll Visualizer™ | See Your Doll Your Way",
   robots: { index: false, follow: false, nocache: true }
 };
 export const dynamic = "force-dynamic";

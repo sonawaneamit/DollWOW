@@ -89,9 +89,9 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
               <Link href={visualizerUrl(product.handle)} className="visualizer-pdp-entry visualizer-pdp-star">
                 <span className="visualizer-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
                 <span>
-                  <small className="visualizer-pdp-kicker">New · Exclusive to DollWOW</small>
-                  <strong>See this doll with your options</strong>
-                  <small>Try Doll Visualizer™ — 5 complimentary previews</small>
+                  <small className="visualizer-pdp-kicker">New: Doll Visualizer™</small>
+                  <strong>Picture this doll your way</strong>
+                  <small>Preview available appearance choices on a real photo of this doll.</small>
                 </span>
                 <span aria-hidden="true">→</span>
               </Link>

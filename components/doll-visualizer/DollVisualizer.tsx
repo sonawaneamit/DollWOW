@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
-import { visualizerDraftKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
+import { visualizerDraftKey, visualizerSelectionKey, type VisualizerGroup } from "@/lib/doll-visualizer/public";
 
 type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
@@ -27,6 +27,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
   const [selections, setSelections] = useState<Record<string, string>>(initialDraft.selections ?? {});
   const [email, setEmail] = useState(initialDraft.email ?? "");
+  const [emailConsent, setEmailConsent] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
   const [remaining, setRemaining] = useState(freePreviews);
@@ -59,7 +60,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     const option = group.options.find((item) => item.id === selections[group.id]);
     return option ? [{ group, option }] : [];
   }), [groups, selections]);
-  const canGenerate = live && selectedItems.length > 0 && /^\S+@\S+\.\S+$/.test(email) && accepted && remaining > 0 && !loading;
+  const emailIsValid = !email || /^\S+@\S+\.\S+$/.test(email);
+  const canGenerate = live && selectedItems.length > 0 && emailIsValid && (!email || emailConsent) && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
     setSelections((current) => current[groupId] === optionId ? omit(current, groupId) : { ...current, [groupId]: optionId });
@@ -79,18 +81,18 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         body: JSON.stringify({
           productHandle: product.handle,
           sourcePosition: photoPosition,
-          email,
+          ...(email ? { email } : {}),
           selections: selectedItems.map(({ group, option }) => ({ groupId: group.id, optionId: option.id }))
         })
       });
       const payload = await response.json() as Result & { error?: string };
-      if (!response.ok) throw new Error(payload.error || "The preview could not be generated.");
+      if (!response.ok) throw new Error(payload.error || "We couldn’t create this preview.");
       setResult(payload);
       setRemaining(payload.remaining);
       setStep(3);
       trackEvent("doll_visualizer_complete", { product_handle: product.handle, option_count: payload.selections.length, email_delivered: payload.emailDelivered });
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "The preview could not be generated.");
+      setError(caught instanceof Error ? caught.message : "We couldn’t create this preview.");
     } finally {
       setLoading(false);
     }
@@ -103,6 +105,11 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     link.download = `dollwow-${product.handle}-visualizer.webp`;
     link.click();
     trackEvent("doll_visualizer_download", { product_handle: product.handle });
+  }
+
+  function useChoices() {
+    localStorage.setItem(visualizerSelectionKey(product.handle), JSON.stringify(selections));
+    trackEvent("doll_visualizer_continue", { product_handle: product.handle, option_count: selectedItems.length });
   }
 
   async function sharePreview() {
@@ -122,7 +129,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     <div className="visualizer-shell">
       <header className="visualizer-header">
         <Link href={`/products/${product.handle}`} aria-label="Back to product"><ArrowLeft /></Link>
-        <div><span>Private pilot</span><strong>Doll Visualizer™</strong></div>
+        <div><span>Doll Visualizer™</span><strong>See your doll your way</strong></div>
         <p><b>{remaining}</b> of {freePreviews} previews</p>
       </header>
 
@@ -134,23 +141,23 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
             ) : result ? (
               // Generated data is intentionally rendered directly; it never leaves this private route.
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={result.previewDataUrl} alt={`AI-generated styling preview for ${product.name}`} />
+              <img src={result.previewDataUrl} alt={`Doll Visualizer preview for ${product.name}`} />
             ) : selectedPhoto ? (
               <Image src={selectedPhoto.url} alt={selectedPhoto.alt} fill priority sizes="(max-width: 900px) 100vw, 56vw" />
             ) : <ImageIcon aria-hidden="true" />}
-            <div className="visualizer-preview-badge"><Sparkles /> {result ? (showOriginal ? "Before" : "Your preview") : "Reference photo"}</div>
+            <div className="visualizer-preview-badge"><Sparkles /> {result ? (showOriginal ? "Original" : "Your preview") : "Selected photo"}</div>
           </div>
           {result ? (
             <div>
-              <div className="visualizer-compare-toggle" aria-label="Compare original and generated preview">
-                <button type="button" className={showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(true)}>Before</button>
-                <button type="button" className={!showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(false)}>Preview</button>
+              <div className="visualizer-compare-toggle" aria-label="Compare original and your preview">
+                <button type="button" className={showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(true)}>Original</button>
+                <button type="button" className={!showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(false)}>Your preview</button>
                 <button type="button" onClick={sharePreview}><Share2 /> Share</button>
-                <button type="button" onClick={downloadPreview}><Download /> Save</button>
+                <button type="button" onClick={downloadPreview}><Download /> Download preview</button>
               </div>
               <div className="visualizer-result-actions">
-                <button type="button" onClick={() => { setResult(null); setStep(2); setShowOriginal(false); }}><RotateCcw /> Adjust look</button>
-                <Link href={`/products/${product.handle}`} onClick={() => trackEvent("doll_visualizer_continue", { product_handle: product.handle })}>Continue customizing <ArrowRight /></Link>
+                <button type="button" onClick={() => { setResult(null); setStep(2); setShowOriginal(false); }}><RotateCcw /> Try different choices</button>
+                <Link href={`/products/${product.handle}#build-studio`} onClick={useChoices}>Use these choices <ArrowRight /></Link>
               </div>
             </div>
           ) : null}
@@ -158,9 +165,11 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
 
         <section className="visualizer-controls">
           <div className="visualizer-title">
-            <p>{product.brand} · {product.name}</p>
-            <h1>See the look before you choose.</h1>
-            <span>Try exterior factory options together on a real product photo.</span>
+            <p>Doll Visualizer™</p>
+            <h1>See your doll your way</h1>
+            <span>Start with a real DollWOW product photo, then preview different hair, eyes, skin tone, and other available appearance choices before you decide.</span>
+            <small>A private, no-pressure way to explore the look you have in mind.</small>
+            <small className="visualizer-product-context">{product.brand} · {product.name}</small>
           </div>
           <ol className="visualizer-steps" aria-label="Visualizer progress">
             {[1, 2, 3].map((number) => <li key={number} className={step >= number ? "is-active" : ""}><span>{step > number ? <Check /> : number}</span>{number === 1 ? "Photo" : number === 2 ? "Look" : "Preview"}</li>)}
@@ -171,7 +180,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               <div className="visualizer-pane">
                 <div className="visualizer-instructions">
                   <ShieldCheck />
-                  <div><strong>Make sure the feature is clearly visible</strong><p>Choose a photo where every area you want to change is unobstructed and in clear, neutral light. Hands, hair, clothing, deep shadows, or a tight crop over that feature can make the preview inaccurate. Used previews are not refundable when the selected feature is hidden.</p></div>
+                  <div><strong>Choose a photo to personalize</strong><p>Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.</p></div>
                 </div>
                 <div className="visualizer-photo-grid">
                   {product.photos.map((photo) => (
@@ -184,6 +193,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               </div>
             ) : step === 2 ? (
               <div className="visualizer-pane visualizer-options">
+                <div className="visualizer-option-intro"><strong>Choose the look</strong><p>Select the appearance choices you would like to preview. Only options available for this doll are shown.</p></div>
                 {groups.map((group) => (
                   <fieldset key={group.id}>
                     <legend>{group.label}<small>{selections[group.id] ? "1 selected" : "Optional"}</small></legend>
@@ -197,31 +207,38 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
                     </div>
                   </fieldset>
                 ))}
-                <label className="visualizer-email"><Mail /><span><b>Email this look</b><small>We’ll send the preview and selected options.</small></span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" autoComplete="email" /></label>
-                <label className="visualizer-consent"><input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} /><span>I understand this is an AI-generated illustration. Actual factory colors and shades may vary slightly. Generated previews may be retained and used by DollWOW without displaying my identity.</span></label>
+                <label className="visualizer-email"><Mail /><span><b>Email my preview</b><small>Optional. Add your email if you would like to leave this page and receive the finished preview.</small></span><input type="email" value={email} onChange={(event) => { setEmail(event.target.value); if (!event.target.value) setEmailConsent(false); }} placeholder="you@example.com" autoComplete="email" /></label>
+                {email && !emailIsValid ? <p className="visualizer-error">Enter a valid email or leave the field blank.</p> : null}
+                {email ? <label className="visualizer-consent"><input type="checkbox" checked={emailConsent} onChange={(event) => setEmailConsent(event.target.checked)} /><span>Email me this Doll Visualizer™ preview.</span></label> : null}
+                <label className="visualizer-consent"><input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} /><span>Doll Visualizer™ creates an approximate visual preview. Your finished doll may vary in color, texture, styling, and option details.</span></label>
+                <p className="visualizer-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
                 {loading ? (
                   <div className="visualizer-wait" role="status">
                     <Loader2 className="animate-spin" />
-                    <div><strong>Creating your look</strong><p>{waitMessage(elapsedSeconds)}</p><small>You can wait here or leave this page. We’ll email the finished preview to {email} when it is ready.</small></div>
+                    <div><strong>Preparing your Doll Visualizer™ preview</strong><p>{waitMessage(elapsedSeconds)}</p><small>{email ? `You can wait here or leave this page. We’ll email ${email} when your preview is ready.` : "Please keep this page open while your preview is created."}</small>{email ? <Link className="visualizer-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link> : null}</div>
                   </div>
                 ) : null}
-                {!live ? <p className="visualizer-notice">Preview generation is safely paused until the private pilot is enabled.</p> : null}
-                {error ? <p className="visualizer-error" role="alert">{error}</p> : null}
+                {!live ? <p className="visualizer-notice">Doll Visualizer™ is temporarily unavailable. Please try again shortly.</p> : null}
+                {error ? <div className="visualizer-error" role="alert"><strong>We couldn’t create this preview.</strong><p>{error}</p><small>Your selections are still here. Try again, choose another photo, or ask DollWOW for help.</small></div> : null}
               </div>
             ) : result ? (
               <div className="visualizer-pane visualizer-result-copy">
-                <Sparkles /><h2>Your Doll Visualizer™ look</h2>
+                <Sparkles /><p className="visualizer-result-eyebrow">Your Doll Visualizer™ preview</p><h2>Here’s your doll with the look you chose</h2>
+                <p>Compare your preview with the original product photo before making your selections.</p>
+                <strong className="visualizer-selection-heading">Previewed choices</strong>
                 <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
-                <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready. Email delivery is not connected in this pilot environment yet."}</p>
-                <p className="visualizer-disclaimer">AI-generated preview for illustration only. Colors, shades, textures, and small details may vary, and AI can occasionally misinterpret a feature. The finished doll follows your confirmed factory options—not this image. Contact support if a result looks wrong.</p>
+                {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
+                <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
+                <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
+                <Link className="visualizer-help-link" href="/support">Ask DollWOW</Link>
               </div>
             ) : null}
           </div>
 
           {!result ? (
             <footer className="visualizer-actionbar">
-              {step === 1 ? <button type="button" className="visualizer-primary" onClick={() => setStep(2)}>Choose styling <ArrowRight /></button> : (
-                <><button type="button" className="visualizer-back" onClick={() => setStep(1)}><ArrowLeft /> Photo</button><button type="button" className="visualizer-primary" onClick={generate} disabled={!canGenerate}>{loading ? <Loader2 className="animate-spin" /> : <Sparkles />}{loading ? "Creating…" : "Create preview"}</button></>
+              {step === 1 ? <button type="button" className="visualizer-primary" onClick={() => setStep(2)}>Choose this photo <ArrowRight /></button> : (
+                <><button type="button" className="visualizer-back" onClick={() => setStep(1)}><ArrowLeft /> Photo</button><button type="button" className="visualizer-primary" onClick={generate} disabled={!canGenerate}>{loading ? <Loader2 className="animate-spin" /> : <Sparkles />}{loading ? "Preparing…" : "Create my preview"}</button></>
               )}
             </footer>
           ) : null}
@@ -245,7 +262,8 @@ function readDraft(handle: string): { photoPosition?: number; selections?: Recor
 }
 
 function waitMessage(seconds: number) {
-  if (seconds < 12) return "Preparing the product photo and selected factory references…";
-  if (seconds < 30) return "Applying only your chosen visual options…";
-  return "Checking the finished preview and preparing your email…";
+  if (seconds < 8) return "Checking your selections…";
+  if (seconds < 18) return "Preparing the product photo…";
+  if (seconds < 35) return "Applying your chosen look…";
+  return "Finishing your preview…";
 }
