@@ -6,6 +6,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_BASE = "https://api.dataforseo.com/v3";
 const args = parseArgs(process.argv.slice(2));
 const execute = Boolean(args.execute);
+const skipAi = Boolean(args.skipAi);
+const skipContent = Boolean(args.skipContent);
 const topic = args.topic || "best sex doll stores";
 const slug = args.slug || "store-selection";
 const generatedAt = new Date().toISOString();
@@ -26,6 +28,8 @@ if (execute && (!process.env.DATAFORSEO_LOGIN || !process.env.DATAFORSEO_PASSWOR
 
 const prompt = args.prompt || `I am a US shopper comparing where to buy a full-size adult sex doll online. Which stores or source types should I consider, what warning signs should I avoid, and what proof should I verify before paying? Name examples only when supportable and cite current web sources.`;
 const systemMessage = args.systemMessage || "Answer as a neutral US consumer researcher. Prioritize verifiable buying criteria and current sources.";
+if (!skipAi && prompt.length > 500) throw new Error(`AI user prompt is ${prompt.length} characters; DataForSEO allows at most 500.`);
+if (!skipAi && systemMessage.length > 500) throw new Error(`AI system message is ${systemMessage.length} characters; DataForSEO allows at most 500.`);
 const calls = [
   {
     id: "chatgpt-live-response",
@@ -78,7 +82,7 @@ const calls = [
       tag: `dollwow-${slug}-content-search`
     }]
   }
-];
+].filter((call) => call.api === "Content Analysis" ? !skipContent : !skipAi);
 
 await fs.mkdir(outputDir, { recursive: true });
 await fs.mkdir(path.dirname(reportPath), { recursive: true });

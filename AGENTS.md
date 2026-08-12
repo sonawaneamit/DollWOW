@@ -17,6 +17,14 @@ Handle product images like commerce assets:
 
 Because many approved vendors receive similar factory images, DollWow should differentiate through the web app experience: comparison tooling, guided selection, customization flow, price-match support, warehouse clarity, privacy/discreet delivery messaging, and high-touch customer support.
 
+## SEO And AI/GEO Content Gate
+
+Every new or materially refreshed indexable page must follow `docs/seo-intelligence/ai-geo-dataforseo-release-protocol.md`. AI/GEO optimization is part of research, canonical ownership, page-type selection, drafting, citations, schema, internal linking, publishing, and monitoring rather than an optional final edit.
+
+Use every relevant DataForSEO intelligence layer, including AI Keyword Data, Google AI Overview and AI Mode, ChatGPT/Claude/Gemini/Perplexity responses, LLM Scraper and Mentions, Content Analysis, Keyword Data, Labs, organic SERPs, OnPage, Backlinks/Domain Analytics, and Merchant data where applicable. Specialized APIs such as Business Data, App Data, and Amazon Labs remain conditional on page intent.
+
+Store the endpoint, run date, result status, cost, artifact path, adopted findings, and rejected polluted evidence. Do not mark a page complete while required AI/GEO evidence is missing. AI responses are competitive evidence, not factual authority; verify public claims against current DollWow catalog and policies, primary manufacturer sources, law or regulation where relevant, or a disclosed original methodology.
+
 ## Customization Architecture
 
 Avoid depending on clumsy generic Shopify option apps for the core product customization experience. DollWow needs first-party control over how configuration options are displayed, priced, validated, and attached to checkout/cart line-item properties.
