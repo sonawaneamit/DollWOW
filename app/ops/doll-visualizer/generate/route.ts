@@ -5,6 +5,7 @@ import { z } from "zod";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   buildVisualizerPrompt,
+  VISUALIZER_PROMPT_VERSION,
   resolveVisualizerSelections,
   visualizerConfigForProduct,
   isVisualizerProduct,
@@ -66,7 +67,7 @@ export async function POST(request: Request) {
     return normalizeOptionReference(option.swatch.value);
   }));
   const images = [source.url, ...optionImages.filter(Boolean)];
-  const cacheKey = `${product.handle}:${parsed.data.sourcePosition}:${selections.map(({ group, option }) => `${group.id}:${option.id}`).sort().join("|")}`;
+  const cacheKey = `${VISUALIZER_PROMPT_VERSION}:${product.handle}:${parsed.data.sourcePosition}:${selections.map(({ group, option }) => `${group.id}:${option.id}`).sort().join("|")}`;
   const cached = generationCache.get(cacheKey);
   const cachedPreview = cached && Date.now() - cached.createdAt < CACHE_TTL_MS ? cached.previewDataUrl : null;
   if (cached && !cachedPreview) generationCache.delete(cacheKey);

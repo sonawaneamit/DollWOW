@@ -61,6 +61,9 @@ describe("Doll Visualizer™ option safety", () => {
     expect(prompt).toContain("exact original geometry, boundaries, scale, placement, and proportions");
     expect(prompt).toContain("same exact adult-proportioned DollWOW catalog doll");
     expect(prompt).toContain("Keep every unselected attribute unchanged");
+    expect(prompt).toContain("Do not stop at the body or leave the face in the original tone");
+    expect(prompt).toContain("Do not create a new face");
+    expect(prompt).toContain("the same camera immediately took the same photograph again");
   });
 
   it("locks all unselected product attributes without adding area-specific prompt logic", () => {
