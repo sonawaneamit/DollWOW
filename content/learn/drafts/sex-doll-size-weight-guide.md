@@ -91,6 +91,12 @@ Plan the supported storage position before ordering. Measure length, width, dept
 
 Think through the complete movement: unpacking, inspecting, cleaning, drying, dressing, repositioning, and returning the doll to storage. A manageable purchase is one you can care for without risky lifting or dragging.
 
+### For support surfaces and lifting access
+
+Check the stated capacity of the bed, chair, bench, shelf, or storage platform you intend to use. Leave enough room to stand close to the doll rather than reaching across furniture or lifting from an awkward angle. The same listed weight can feel very different when the body is wide, flexible, difficult to grip, or positioned below knee height.
+
+There is no honest universal cutoff for what one person can handle. Use your own physical limits, the complete movement route, and the exact product measurements. Plan assistance when any step would require you to strain, twist under load, or lift without stable footing.
+
 ## Three Real Catalog Examples
 
 The product panel below shows three current listings at different points in the size and weight range. They are examples, not universal recommendations. Open each product page for its current price, configuration, availability, measurements, and support path.
