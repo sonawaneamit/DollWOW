@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { buildArticleFaqStructuredData, getLearningArticle } from "@/lib/learn/content";
+import { buildArticleFaqStructuredData, getLearningArticle, getLearningArticles } from "@/lib/learn/content";
 
 describe("Learning Center content ownership", () => {
   it("keeps every non-production article out of public routes", () => {
@@ -56,6 +56,13 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("[sex doll cost guide](/learn/sex-doll-cost)");
     expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(10);
+  });
+
+  it("places the size-and-weight guide directly after the flagship buyer guide", () => {
+    expect(getLearningArticles().slice(0, 2).map((article) => article.slug)).toEqual([
+      "sex-doll-guide",
+      "sex-doll-size-weight-guide"
+    ]);
   });
 
   it("links established buyer guides to the size-and-weight owner", () => {

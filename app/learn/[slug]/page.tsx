@@ -1568,6 +1568,13 @@ function relatedCollections(slug: string) {
       { label: "Use the DollWow finder", href: "/help-me-choose", description: "Narrow products around material, size, body type, and delivery preferences." },
       { label: "Compare active brands", href: "/brands", description: "Review manufacturer hubs and current DollWow listings." }
     ],
+    "sex-doll-size-weight-guide": [
+      { label: "Lightweight sex dolls", href: "/shop/lightweight-sex-dolls", description: "Compare current full dolls by listed weight and handling fit." },
+      { label: "Mini sex dolls", href: "/shop/mini-sex-dolls", description: "Compare full dolls up to 120 cm / 3 ft 11 in." },
+      { label: "Storage guide", href: "/learn/sex-doll-storage", description: "Plan support, clearance, privacy, and access before delivery." },
+      { label: "Cost guide", href: "/learn/sex-doll-cost", description: "Compare starting price, configured price, and delivered cost." },
+      { label: "Browse all sex dolls", href: "/shop/sex-dolls", description: "Compare current products by material, measurements, weight, price, and availability." }
+    ],
     "tpe-vs-silicone-sex-dolls": [
       { label: "Browse TPE dolls", href: "/shop/tpe", description: "Compare softer material builds and care tradeoffs." },
       { label: "Browse silicone dolls", href: "/shop/silicone", description: "Compare full-silicone builds, detail, weight, and price." },
