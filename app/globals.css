@@ -103,6 +103,20 @@
   text-underline-offset: 3px;
 }
 
+.visualizer-result-copy-mobile{display:none}
+.visualizer-compare-toggle button{min-width:0;padding-inline:8px;white-space:nowrap}
+.visualizer-compare-toggle button span{white-space:nowrap}
+
+@media(max-width:900px){
+  .visualizer-result-copy-mobile{display:grid;gap:13px;margin-bottom:16px;padding:8px 4px 4px;scroll-margin-top:76px}
+  .visualizer-controls:has(.visualizer-result-copy){display:none}
+  .visualizer-compare-toggle{grid-template-columns:1fr 1fr .82fr .72fr}
+  .visualizer-compare-toggle button{min-height:46px;padding:7px 5px;font-size:10.5px;line-height:1;white-space:nowrap}
+  .visualizer-compare-toggle button svg{width:15px;flex:0 0 15px}
+  .visualizer-result-actions .visualizer-result-primary{min-height:56px;font-size:15px;line-height:1.15;white-space:nowrap}
+  .visualizer-result-links{gap:14px}
+}
+
 /* Doll Visualizer customer-copy support */
 .visualizer-title>small{display:block;margin-top:8px;color:rgb(var(--color-text-dim));font-size:12px;line-height:1.45}
 .visualizer-title>.visualizer-product-context{margin-top:5px;color:rgb(var(--color-text-faint));font-size:10px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}

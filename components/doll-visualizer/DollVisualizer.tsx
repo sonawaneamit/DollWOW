@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, Mail, RotateCcw, Share2, ShieldCheck, ShoppingBag, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
 import { useCart } from "@/components/cart/CartProvider";
@@ -25,6 +25,7 @@ type Result = {
 
 export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
   const cart = useCart();
+  const resultStartRef = useRef<HTMLDivElement>(null);
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
   const [step, setStep] = useState(1);
   const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
@@ -59,6 +60,14 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
     const timer = window.setInterval(() => setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000)), 1000);
     return () => window.clearInterval(timer);
   }, [loading]);
+
+  useEffect(() => {
+    if (!result) return;
+    const frame = window.requestAnimationFrame(() => {
+      resultStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [result]);
 
   const selectedPhoto = product.photos.find((photo) => photo.position === photoPosition) || product.photos[0];
   const selectedItems = useMemo(() => groups.flatMap((group) => {
@@ -173,6 +182,11 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
 
       <div className="visualizer-main">
         <section className="visualizer-preview" aria-live="polite">
+          {result ? (
+            <div ref={resultStartRef} className="visualizer-result-copy visualizer-result-copy-mobile">
+              <ResultSummary result={result} email={email} />
+            </div>
+          ) : null}
           <div className="visualizer-preview-frame">
             {result && showOriginal && selectedPhoto ? (
               <Image src={selectedPhoto.url} alt={selectedPhoto.alt} fill priority sizes="(max-width: 900px) 100vw, 56vw" />
@@ -190,8 +204,8 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               <div className="visualizer-compare-toggle" aria-label="Compare original and your preview">
                 <button type="button" className={showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(true)}>Original</button>
                 <button type="button" className={!showOriginal ? "is-active" : ""} onClick={() => setShowOriginal(false)}>Your preview</button>
-                <button type="button" onClick={sharePreview}><Share2 /> Share</button>
-                <button type="button" onClick={downloadPreview}><Download /> Download preview</button>
+                <button type="button" onClick={sharePreview}><Share2 /> <span>Share</span></button>
+                <button type="button" onClick={downloadPreview} aria-label="Download preview"><Download /> <span>Save</span></button>
               </div>
               <div className="visualizer-result-actions">
                 <button className="visualizer-result-primary" type="button" onClick={addPreviewToCart} disabled={cartLoading}>
@@ -261,14 +275,7 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
               </div>
             ) : result ? (
               <div className="visualizer-pane visualizer-result-copy">
-                <Sparkles /><p className="visualizer-result-eyebrow">Your Doll Visualizer™ preview</p><h2>Here’s your doll with the look you chose</h2>
-                <p>Compare your preview with the original product photo before making your selections.</p>
-                <strong className="visualizer-selection-heading">Previewed choices</strong>
-                <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
-                {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
-                <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
-                <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
-                <Link className="visualizer-help-link" href="/support">Ask DollWOW</Link>
+                <ResultSummary result={result} email={email} />
               </div>
             ) : null}
           </div>
@@ -283,6 +290,23 @@ export function DollVisualizer({ product, groups, freePreviews, live }: Props) {
         </section>
       </div>
     </div>
+  );
+}
+
+function ResultSummary({ result, email }: { result: Result; email: string }) {
+  return (
+    <>
+      <Sparkles />
+      <p className="visualizer-result-eyebrow">Your Doll Visualizer™ preview</p>
+      <h2>Here’s your doll with the look you chose</h2>
+      <p>Compare your preview with the original product photo before making your selections.</p>
+      <strong className="visualizer-selection-heading">Previewed choices</strong>
+      <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
+      {email ? <p>{result.emailDelivered ? `A copy was sent to ${email}.` : "Your preview is ready, but the email could not be sent. You can download it here."}</p> : null}
+      <p className="visualizer-disclaimer">This preview is an interpretation of your selected appearance choices, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm your final selections before the order moves forward.</p>
+      <p className="visualizer-disclaimer">Use the original product photos and specifications to evaluate the doll’s body, proportions, material, and included features.</p>
+      <Link className="visualizer-help-link" href="/support">Ask DollWOW</Link>
+    </>
   );
 }
 
