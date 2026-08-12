@@ -140,3 +140,19 @@ describe("Asian and Japanese-style collection SEO", () => {
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
+
+describe("Black dolls collection SEO", () => {
+  const preset = collectionPresets["black-dolls"];
+
+  it("consolidates skin-tone synonyms without assigning identity", () => {
+    const intro = collectionIntro(preset, "black-dolls");
+    const faqs = collectionFaqItems("black-dolls", preset);
+    const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
+
+    expect(faqs).toHaveLength(6);
+    expect(copy).toContain("ebony as a search synonym");
+    expect(copy).toContain("not an assigned ethnicity, nationality");
+    expect(copy).toContain("4 to 6 hours");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});

@@ -299,7 +299,7 @@ const collectionIntroByHandle: Record<string, string> = {
   "asian-dolls":
     "Shop Asian sex dolls and Japanese-inspired styles selected from current catalog presentation and product details. The collection includes varied faces, bodies, heights, and proportions across TPE, silicone, and hybrid construction. Asian or Japanese-inspired appearance describes visual styling, not a model's nationality, manufacturing origin, quality, or technical specification. Compare the exact head and body, several gallery angles, measurements, listed weight, material, skin tone, hair, makeup, availability, and supported options before choosing. If a Japanese- or Korean-inspired model you want is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "black-dolls":
-    "Shop Black sex dolls shown with deep or dark skin tones and Black-inspired styling across current DollWow brands. This is an appearance category, not a promise about one body type, hair texture, material, or feature set. Compare the pictured head and body, exact skin tone, measurements, listed weight, TPE or silicone construction, availability, and supported options. If you have another approved model in mind, send the name or supplier link and our team will check it quickly.",
+    "Shop Black sex dolls presented with deep or dark skin tones across current DollWow brands. Some shoppers and retailers use ebony as a search synonym; DollWow uses Black dolls and the exact supported skin-tone name in customer-facing descriptions. This is an appearance category, not an assigned ethnicity, nationality, body type, hair texture, material, or feature set. Compare several photographs, the pictured head and body, available skin tone, measurements, listed weight, TPE or silicone construction, hair, availability, and supported options. If another approved model or tone is missing, send the name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "anime-dolls":
     "Shop adult anime sex dolls with stylized, manga-inspired, cosplay, elf, and fantasy presentation across current DollWow brands. This is a visual category for adults, not an age, character-identity, or body-size label. Compare the exact face, body, product form, height, listed weight, TPE or silicone construction, photographs, availability, and supported styling options. If a particular approved design is missing, send our team the model name or supplier link and we will check whether it can be added.",
   "fuller-dolls":
@@ -332,7 +332,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "new-sex-dolls": "Shop new sex dolls and latest arrivals. Compare current models by brand, TPE or silicone, size, weight, options, price, and availability.",
   "futa-sex-dolls": "Compare dolls from established brands with a verified insertable penis option. Review brand, body, material, size, weight, price, care, and compatibility.",
   "asian-dolls": "Shop Asian sex dolls and Japanese-inspired styles by face, body, TPE or silicone, height, weight, price, availability, and custom options.",
-  "black-dolls": "Shop Black sex dolls by skin tone, face and body styling, TPE or silicone, height, weight, price, availability, and custom options.",
+  "black-dolls": "Shop Black sex dolls with deep and dark skin tones. Compare face, body, TPE or silicone, height, weight, price, availability, and options.",
   "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
   "fuller-dolls": "Shop fuller and curvy sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   "slim-dolls": "Shop slim sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
@@ -1433,7 +1433,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "black-dolls": [
     {
       question: "What is included in the Black sex dolls collection?",
-      answer: "The collection shows current DollWow products presented with deep or dark skin tones and Black-inspired styling. Exact faces, bodies, materials, hair, measurements, and options vary by model."
+      answer: "The collection shows current DollWow products presented with deep or dark skin tones. Exact faces, bodies, materials, hair, measurements, and options vary by model, and the category does not assign an ethnicity or nationality to a product."
+    },
+    {
+      question: "Are ebony sex dolls included here?",
+      answer: "Yes. Ebony is commonly used as a search synonym for dolls with deep or dark skin tones. DollWow keeps those products in this one collection and uses the exact supported skin-tone name when confirming a custom build."
     },
     {
       question: "Are Black sex dolls made from TPE or silicone?",

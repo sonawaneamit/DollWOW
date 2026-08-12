@@ -427,6 +427,9 @@ describe("catalog filters", () => {
       title: "Black sex dolls",
       filters: { look: "skin-black" }
     });
+    expect(canonicalShopCollectionHandle("ebony-sex-dolls")).toBe("black-dolls");
+    expect(canonicalShopCollectionHandle("dark-skin-sex-dolls")).toBe("black-dolls");
+    expect(isIndexableShopCollectionHandle("ebony-sex-dolls")).toBe(false);
   });
 
   it("keeps female body-style collections free of misleading male shape tags", () => {

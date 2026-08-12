@@ -147,6 +147,8 @@ const collectionAliases: Record<string, string> = {
   "latest-sex-dolls": "new-sex-dolls",
   "japanese-sex-dolls": "asian-dolls",
   "japanese-dolls": "asian-dolls",
+  "ebony-sex-dolls": "black-dolls",
+  "dark-skin-sex-dolls": "black-dolls",
   "transgender-sex-dolls": "futa-sex-dolls",
   "trans-sex-dolls": "futa-sex-dolls"
 };
