@@ -1,12 +1,12 @@
 # DollWow Learning Center Link Audit
 
-Generated: 2026-08-12T16:36:52.446Z
+Generated: 2026-08-12T16:42:20.327Z
 Production site: https://dollwow.com
 
 ## Summary
 
 - Public articles audited: 44
-- Internal link references: 863
+- Internal link references: 864
 - Unique internal destinations: 136
 - Broken destinations: 0
 - Redirected destinations: 0
