@@ -30,7 +30,8 @@ const staticRoutes = [
   "/faq",
   "/support",
   "/supplier",
-  "/adult-only"
+  "/adult-only",
+  "/datasets/sex-doll-size-weight-2026.json"
 ];
 
 export const revalidate = 3600;

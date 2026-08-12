@@ -72,6 +72,7 @@ export function GET() {
     `- Sitemap: ${siteUrl}/sitemap.xml`,
     `- Agent index: ${siteUrl}/agent-index.json`,
     `- Product feed: ${siteUrl}/product-feed.json`,
+    `- Sex doll size and weight aggregate dataset: ${siteUrl}/datasets/sex-doll-size-weight-2026.json`,
     "",
     "## Content Boundaries",
     "",
