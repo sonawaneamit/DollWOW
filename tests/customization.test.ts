@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getCustomizationConfig } from "@/lib/customization/configs";
-import { getDefaultSelections, getOptionConflict, isOptionAvailableForCheckout, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
+import { getCustomizationConfig, getFactoryCustomizationConfig } from "@/lib/customization/configs";
+import { getDefaultSelections, getOptionConflict, isOptionAvailableForCheckout, isOptionPriceVerified, nextMultipleSelection, resolveCustomization } from "@/lib/customization/resolve";
 import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
 import { sampleProducts } from "@/lib/data/sample-products";
@@ -125,6 +125,37 @@ describe("customization config", () => {
     expect(config.groups[0]?.options.map((option) => option.id)).toEqual(["none", "kit"]);
   });
 
+  it("retains legitimate factory options even when checkout pricing is absent", () => {
+    const source = sampleProducts[4];
+    const product: Product = {
+      ...source,
+      title: "Irontech option integrity fixture",
+      vendor: "Irontech Dolls",
+      extended: {
+        ...source.extended,
+        brand: "Irontech Dolls",
+        customizationGroups: [
+          {
+            id: "skin-tone",
+            label: "Skin tone",
+            display: "swatches",
+            options: [
+              { id: "as-shown", label: "As shown", priceDelta: 0 },
+              { id: "tan", label: "Tan", swatch: { kind: "image", value: "/tan.jpg" } },
+              { id: "deep", label: "Deep", swatch: { kind: "image", value: "/deep.jpg" } }
+            ]
+          }
+        ]
+      }
+    };
+
+    const factory = getFactoryCustomizationConfig(product);
+    const checkout = getCustomizationConfig(product);
+
+    expect(factory.groups[0]?.options.map((option) => option.id)).toEqual(["as-shown", "tan", "deep"]);
+    expect(checkout.groups).toHaveLength(0);
+  });
+
   it("keeps unpriced imported upgrades out of the checkout selection", () => {
     const config: BrandCustomizationConfig = {
       id: "quote-required",
@@ -151,6 +182,33 @@ describe("customization config", () => {
     expect(resolved.selections.upgrade).toBe("as-shown");
     expect(resolved.cartAttributes.find((attribute) => attribute.key === "DollWow Upgrade")?.value).toBe("As shown");
     expect(isOptionAvailableForCheckout(config, "upgrade", "quote-only")).toBe(false);
+  });
+
+  it("keeps factory existence, price verification, and purchase eligibility independent", () => {
+    const config: BrandCustomizationConfig = {
+      id: "eligibility",
+      brandLabel: "Eligibility fixture",
+      leadTimeNote: "",
+      rules: [],
+      groups: [
+        {
+          id: "finish",
+          label: "Finish",
+          display: "cards",
+          options: [
+            { id: "default", label: "Factory default", priceDelta: 0 },
+            { id: "known-included", label: "Known included", factoryExists: true, displayable: true, priceVerified: true, purchasable: true },
+            { id: "visual-only", label: "Visual only", factoryExists: true, displayable: true, visualizable: true, priceVerified: false, purchasable: false },
+            { id: "paused", label: "Paused option", factoryExists: true, priceDelta: 95, priceVerified: true, purchasable: false }
+          ]
+        }
+      ]
+    };
+
+    expect(isOptionPriceVerified(config.groups[0].options[1])).toBe(true);
+    expect(isOptionAvailableForCheckout(config, "finish", "known-included")).toBe(true);
+    expect(isOptionAvailableForCheckout(config, "finish", "visual-only")).toBe(false);
+    expect(isOptionAvailableForCheckout(config, "finish", "paused")).toBe(false);
   });
 
   it("treats imported factory defaults as included even when the supplier omitted a numeric price", () => {

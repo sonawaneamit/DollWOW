@@ -134,8 +134,19 @@ export function describeOption(config: BrandCustomizationConfig, groupId: string
 export function isOptionAvailableForCheckout(config: BrandCustomizationConfig, groupId: string, optionId: string) {
   const match = findOption(config, groupId, optionId);
   if (!match) return false;
+  if (match.option.purchasable === false) return false;
   const includedByDefault = selectionIds(getDefaultSelections(config)[groupId]).includes(optionId);
-  return includedByDefault || hasCheckoutPrice(match.option);
+  return includedByDefault || isOptionPurchasable(match.option);
+}
+
+export function isOptionPriceVerified(option: CustomizationOption) {
+  if (option.priceVerified !== undefined) return option.priceVerified;
+  return hasCheckoutPrice(option);
+}
+
+export function isOptionPurchasable(option: CustomizationOption) {
+  if (option.purchasable !== undefined) return option.purchasable;
+  return isOptionPriceVerified(option);
 }
 
 export function defaultMultipleOptionId(options: CustomizationOption[]) {

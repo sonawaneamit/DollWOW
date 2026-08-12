@@ -247,6 +247,18 @@ const configs = {
 } satisfies Record<string, BrandCustomizationConfig>;
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
+  return customizationConfig(product, "checkout");
+}
+
+/**
+ * Complete known supplier option universe for audits, sourcing, and visual tools.
+ * Unlike the checkout config, missing price data never erases a real option here.
+ */
+export function getFactoryCustomizationConfig(product: Product): BrandCustomizationConfig {
+  return customizationConfig(product, "factory");
+}
+
+function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
   // Catalog imports are not perfectly consistent about where a brand lands.
   // Include stable product identifiers so a valid brand-specific configuration
   // never falls through to a generic or no-options experience.
@@ -267,7 +279,8 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
   );
   if (importedGroups?.length) {
     const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
-    const onlineGroups = withIronAi(product, withIrontechUlw(product, onlineCheckoutGroups(sourceGroups)));
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
+    const onlineGroups = withIronAi(product, withIrontechUlw(product, availableGroups));
     return {
       id: "imported",
       brandLabel: product.extended.brand ?? product.vendor,

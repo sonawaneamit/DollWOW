@@ -8,6 +8,16 @@ export type CustomizationOption = {
   label: string;
   description?: string;
   priceDelta?: number;
+  /** Supplier/manufacturer evidence says this option exists. Defaults to true for imported options. */
+  factoryExists?: boolean;
+  /** Safe to explain in customer-facing UI. This is independent of checkout eligibility. */
+  displayable?: boolean;
+  /** Has a usable visual reference for Doll Visualizer. */
+  visualizable?: boolean;
+  /** DollWOW has verified the current incremental price. */
+  priceVerified?: boolean;
+  /** Can be selected and paid for in the current online checkout. */
+  purchasable?: boolean;
   productionNote?: string;
   swatch?: CustomizationSwatch;
 };
