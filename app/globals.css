@@ -50,6 +50,11 @@
   --cta-text: #ffffff;
   --stock-tone: rgb(var(--color-stock));
   --shadow-card: 0 6px 24px rgba(41, 32, 27, 0.07);
+  /* Shape hierarchy: panels 2-8px, compact controls 4-6px, media 6-8px.
+     Use a full pill/circle only for status, filter, avatar, or step semantics. */
+  --radius-structure: 2px;
+  --radius-control: 6px;
+  --radius-media: 8px;
   color-scheme: light;
 }
 
@@ -868,6 +873,18 @@ textarea {
   min-width: 0;
 }
 
+.product-builder-groups {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-builder-group,
+.product-builder-group__trigger {
+  border-radius: var(--radius-control);
+}
+
 .product-option-grid {
   align-items: stretch;
 }
@@ -897,6 +914,51 @@ textarea {
 
 .product-builder-step-actions {
   padding-top: 0.9rem;
+}
+
+/* On phones the configurator reads as one ordered form, not a stack of
+   rounded cards. Dividers define inactive rows; only the active decision is
+   framed. */
+@media (max-width: 767px) {
+  .product-builder {
+    border-radius: var(--radius-structure);
+  }
+
+  .product-builder-groups {
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .product-builder-variant {
+    margin-bottom: 0.75rem;
+  }
+
+  .product-builder-group {
+    border-width: 0 0 1px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .product-builder-group__trigger {
+    border-radius: 0;
+  }
+
+  .product-builder-group.is-active {
+    margin: 0.75rem 0;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    box-shadow: none;
+  }
+
+  .product-builder-group.is-active .product-builder-group__trigger {
+    border-radius: calc(var(--radius-control) - 1px);
+  }
+
+  .product-builder-group.is-active + .product-builder-group {
+    border-top-width: 1px;
+  }
 }
 
 .product-builder .option-tile {

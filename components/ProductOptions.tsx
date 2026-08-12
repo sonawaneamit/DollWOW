@@ -280,9 +280,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           </div>
         </aside>
 
-        <div className="space-y-3 lg:col-span-7">
+        <div className="product-builder-groups lg:col-span-7">
           {product.variants.length > 1 ? (
-            <label className="block rounded-md bg-surface-tint p-4">
+            <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
               <StyledSelect value={variantId} onValueChange={setVariantId} ariaLabel="Choose a build" className="product-builder-variant-select" options={product.variants.map((item) => ({ label: item.title, value: item.id }))} />
             </label>
@@ -294,12 +294,12 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               <section
                 key={group.id}
                 id={`custom-step-${group.id}`}
-                className={clsx("scroll-mt-24 rounded-md border bg-surface transition-colors", active ? "border-accent shadow-card" : "border-border")}
+                className={clsx("product-builder-group scroll-mt-24 rounded-md border bg-surface transition-colors", active ? "is-active border-accent shadow-card" : "border-border")}
               >
                 <button
                   type="button"
                   onClick={() => goToGroup(group.id)}
-                  className="flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 py-3 text-left sm:px-5"
+                  className="product-builder-group__trigger flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 py-3 text-left sm:px-5"
                   aria-expanded={active}
                   aria-controls={`custom-options-${group.id}`}
                 >
@@ -341,9 +341,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             );
           })}
 
-          <section id="custom-step-review" className={clsx("scroll-mt-24 rounded-md border bg-surface", isReviewing ? "border-accent shadow-card" : "border-border")}>
+          <section id="custom-step-review" className={clsx("product-builder-group product-builder-review scroll-mt-24 rounded-md border bg-surface", isReviewing ? "is-active border-accent shadow-card" : "border-border")}>
             {!isReviewing ? (
-              <button type="button" onClick={showReview} className="flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 text-left sm:px-5" aria-expanded="false">
+              <button type="button" onClick={showReview} className="product-builder-group__trigger flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 text-left sm:px-5" aria-expanded="false">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-tint text-text"><Check className="h-5 w-5" /></span>
                 <span className="min-w-0 flex-1 text-[17px] font-semibold">Review your build</span>
                 <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Review</span>

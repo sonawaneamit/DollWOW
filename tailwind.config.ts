@@ -59,10 +59,16 @@ const config: Config = {
         soft: "0 12px 40px rgba(41, 32, 27, 0.10)"
       },
       borderRadius: {
-        sm: "12px",
-        md: "16px",
-        lg: "20px",
-        button: "14px"
+        /* DollWOW radius hierarchy:
+           - structure stays nearly square;
+           - controls and media get a restrained soft edge;
+           - pills/circles must use rounded-full intentionally.
+           This keeps the interface editorial instead of turning every layer
+           into a nested app card. */
+        sm: "4px",
+        md: "6px",
+        lg: "8px",
+        button: "6px"
       }
     }
   },
