@@ -110,6 +110,7 @@ gtag('config', '${measurementId}', {
             <CartProvider>
             <a href="#main-content" className="skip-link">Skip to main content</a>
             <Header />
+            {chatraId ? <ChatraWidget chatraId={chatraId} /> : null}
             <StorefrontZipper />
             <main id="main-content" tabIndex={-1}>{children}</main>
             <Footer />
@@ -120,7 +121,6 @@ gtag('config', '${measurementId}', {
         </CurrencyProvider>
         <ConsentBanner />
         <Analytics measurementId={measurementId} />
-        {chatraId ? <ChatraWidget chatraId={chatraId} /> : null}
       </body>
     </html>
   );
