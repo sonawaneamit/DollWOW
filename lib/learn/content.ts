@@ -71,6 +71,7 @@ export function learnArticleUrl(slug: string) {
 
 export function buildArticleStructuredData(article: LearnArticle) {
   const author = getLearnAuthor(article.author);
+  const citations = extractExternalCitationUrls(article.body);
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -92,7 +93,8 @@ export function buildArticleStructuredData(article: LearnArticle) {
     },
     mainEntityOfPage: learnArticleUrl(article.slug),
     image: absoluteUrl(article.featuredImage),
-    keywords: [article.primaryKeyword, ...article.secondaryKeywords].join(", ")
+    keywords: [article.primaryKeyword, ...article.secondaryKeywords].join(", "),
+    citation: citations.length ? citations : undefined
   };
 }
 
@@ -208,6 +210,20 @@ function extractFaqItems(markdown: string) {
       };
     })
     .filter((item) => item.question && item.answer);
+}
+
+function extractExternalCitationUrls(markdown: string) {
+  return [...new Set(
+    [...markdown.matchAll(/\[[^\]]+\]\((https:\/\/[^)]+)\)/g)]
+      .map((match) => match[1])
+      .filter((url) => {
+        try {
+          return new URL(url).hostname !== new URL(siteUrl).hostname;
+        } catch {
+          return false;
+        }
+      })
+  )];
 }
 
 function excerpt(markdown: string) {

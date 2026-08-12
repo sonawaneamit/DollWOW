@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { buildArticleFaqStructuredData, getLearningArticle, getLearningArticles } from "@/lib/learn/content";
+import { buildArticleFaqStructuredData, buildArticleStructuredData, getLearningArticle, getLearningArticles } from "@/lib/learn/content";
 
 describe("Learning Center content ownership", () => {
   it("keeps every non-production article out of public routes", () => {
@@ -99,5 +99,18 @@ describe("Learning Center content ownership", () => {
       expect(body, slug).toContain(source);
       expect(body, slug).not.toMatch(/rosemarydoll\.com|yourdoll\.com|siliconwives\.com|joylovedolls\.com/i);
     }
+  });
+
+  it("publishes external evidence as machine-readable article citations", () => {
+    const article = getLearningArticle("sex-doll-guide")!;
+    const schema = buildArticleStructuredData(article);
+    expect(schema.citation).toEqual(expect.arrayContaining([
+      "https://www.irontechdoll.com/about-us/",
+      "https://www.starpery.com/starpery-weight-reduction-tech",
+      "https://www.sedoll.com/about-sedoll/",
+      "https://www.tantaly.com/pages/about-us",
+      "https://www.erovenus.com/sex-doll-care/"
+    ]));
+    expect(schema.citation).not.toContain("https://dollwow.com/buyer-protection");
   });
 });
