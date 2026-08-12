@@ -3,7 +3,7 @@ title: "Sex Doll Size and Weight Guide: What 2,615 Listings Show"
 slug: "sex-doll-size-weight-guide"
 primaryKeyword: "sex doll sizes"
 secondaryKeywords: ["sex doll weight", "how much do sex dolls weigh", "sex doll measurements", "sex doll height", "sex doll size chart"]
-description: "Compare sex doll sizes and listed weights using a dated analysis of 2,615 current full-size DollWow listings, with pounds, kilograms, feet, inches, and centimeters."
+description: "Compare sex doll size and weight using 2,615 current full-size DollWow listings, with pounds, kilograms, feet, inches, centimeters, and handling guidance."
 category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
@@ -119,6 +119,8 @@ This analysis used the public DollWow product feed reviewed on August 12, 2026. 
 The unit of analysis is a catalog listing, not a unique body mold or the entire sex doll market. One body can appear with several heads or configurations. Supplier measurements may be rounded. Product data, prices, materials, and availability can change after the review date.
 
 The index reports medians and distribution bands because a single average can be distorted by unusually light or heavy products. It does not measure quality, popularity, sales, realism, durability, or independent hands-on testing.
+
+For outside context, a 2024 peer-reviewed study in *Archives of Sexual Behavior* systematically compared specifications from dolls marketed in the United States with human body characteristics. Its research question differs from DollWow's catalog and handling analysis, so its figures are not combined with this dataset. See [Sex Doll Specifications versus Human Body Characteristics](https://pmc.ncbi.nlm.nih.gov/articles/PMC11176238/) and the published [2025 correction](https://pmc.ncbi.nlm.nih.gov/articles/PMC12753550/).
 
 ## FAQs
 

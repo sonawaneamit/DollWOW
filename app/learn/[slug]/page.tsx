@@ -35,9 +35,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const featuredImageDimensions = article.slug === "sex-doll-guide"
     ? { width: 1672, height: 941 }
     : { width: 1536, height: 1024 };
-  const metadataTitle = article.slug === "sex-doll-guide"
-    ? "2026 Sex Doll Buying Guide: How to Choose the Right Doll"
-    : article.title;
+  const metadataTitles: Record<string, string> = {
+    "sex-doll-guide": "2026 Sex Doll Buying Guide: How to Choose the Right Doll",
+    "sex-doll-size-weight-guide": "Sex Doll Size & Weight Guide | 2,615 Listings Analyzed"
+  };
+  const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
     title: metadataTitle,
     description: article.description,

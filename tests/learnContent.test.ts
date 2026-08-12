@@ -63,8 +63,18 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("current full-size DollWow listings");
     expect(article?.body).toContain("unit of analysis is a catalog listing");
     expect(article?.body).toContain("[sex doll cost guide](/learn/sex-doll-cost)");
+    expect(article?.body).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC11176238/");
+    expect(article?.body).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC12753550/");
     expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(10);
+  });
+
+  it("keeps focused guide search descriptions concise and customer-forward", () => {
+    for (const slug of ["best-sex-dolls", "sex-doll-size-weight-guide"]) {
+      const article = getLearningArticle(slug);
+      expect(article?.description.length, slug).toBeLessThanOrEqual(160);
+      expect(article?.description, slug).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    }
   });
 
   it("places the size-and-weight guide directly after the flagship buyer guide", () => {
