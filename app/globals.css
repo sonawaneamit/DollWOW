@@ -552,6 +552,17 @@ textarea {
   opacity: 0.9;
 }
 
+@media (max-width: 419px) {
+  .site-header__wordmark {
+    font-size: 17px;
+    letter-spacing: 0.055em;
+  }
+
+  .site-header__menu-control {
+    gap: 0.3rem;
+  }
+}
+
 .v2-header-link:hover {
   background: rgb(var(--color-surface-tint));
 }

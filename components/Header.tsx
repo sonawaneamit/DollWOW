@@ -210,9 +210,9 @@ export function Header() {
 
   return (
     <header className={`site-header sticky top-0 z-[80] h-[72px] bg-surface text-text ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="mx-auto flex h-full max-w-[1440px] items-center gap-2 px-3 sm:gap-4 sm:px-5 lg:px-8">
-        <Link href="/" onClick={closeAll} className="flex shrink-0 items-center" aria-label="DollWow home">
-          <span className="relative block h-12 w-12 shrink-0 overflow-hidden" aria-hidden="true">
+      <div className="mx-auto flex h-full max-w-[1440px] items-center gap-1 px-2 sm:gap-4 sm:px-5 lg:px-8">
+        <Link href="/" onClick={closeAll} className="site-header__logo flex min-w-0 shrink-0 items-center" aria-label="DollWow home">
+          <span className="relative block h-12 w-10 shrink-0 overflow-hidden sm:w-12" aria-hidden="true">
             <Image
               src="/images/brand/dollwow-black-gold-lockup.png"
               alt=""
@@ -223,7 +223,7 @@ export function Header() {
               className="absolute -top-1 left-0 h-14 w-[155px] max-w-none object-contain object-left [clip-path:polygon(0_0,40%_0,40%_50%,28%_50%,28%_78%,40%_78%,40%_100%,0_100%)]"
             />
           </span>
-          <span className="-ml-1 font-display text-[20px] font-semibold uppercase tracking-[0.12em] text-accent sm:text-[22px]">
+          <span className="site-header__wordmark -ml-1 font-display text-[18px] font-semibold uppercase tracking-[0.08em] text-accent sm:text-[22px] sm:tracking-[0.12em]">
             DollWow
           </span>
         </Link>
@@ -277,6 +277,9 @@ export function Header() {
         </div>
 
         <div className="ml-auto flex items-center gap-1 sm:gap-2 lg:hidden">
+          <button type="button" onClick={openSearch} className="v2-icon-control" aria-label="Search products">
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </button>
           <Link href="/compare" onClick={closeAll} className="v2-icon-control relative" aria-label={compareLabel(compareCount)}>
             <Scale className="h-5 w-5" aria-hidden="true" />
             {compareCount ? <CartBadge count={compareCount} /> : null}
@@ -292,7 +295,7 @@ export function Header() {
               setBrandsOpen(false);
               setMobileMenuOpen((value) => !value);
             }}
-            className="v2-control px-3"
+            className="site-header__menu-control v2-control px-2 sm:px-3"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -387,7 +390,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, searchLoading,
   onNavigate: () => void;
 }) {
   return (
-    <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] z-[79] overflow-y-auto bg-bg px-5 py-5 lg:hidden">
+    <div id="mobile-menu" className="absolute inset-x-0 top-full z-[79] h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain bg-bg px-5 py-5 shadow-panel lg:hidden">
       <div className="mx-auto max-w-2xl pb-10">
         <form onSubmit={onSubmit} className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-dim" aria-hidden="true" />
