@@ -143,6 +143,7 @@
 @media(max-width:1023px){
   .chatra-mobile-launcher{position:sticky;z-index:70;top:72px;display:flex;width:100%;min-height:36px;align-items:center;justify-content:center;gap:7px;border-block:1px solid rgb(var(--color-accent)/.24);background:rgb(var(--color-accent-tint));color:rgb(var(--color-text));font-size:12px;font-weight:750;box-shadow:0 4px 14px rgb(41 32 27/.06)}
   .chatra-mobile-launcher>svg{width:14px;height:14px;color:rgb(var(--color-accent))}
+  #chatra.chatra--custom-button:not(.chatra--expanded){visibility:hidden!important;opacity:0!important;pointer-events:none!important}
 }
 
 /* Keep original and preview images in one stable, viewport-sized stage. */
