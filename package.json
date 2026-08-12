@@ -29,6 +29,7 @@
     "seo:intelligence:brands": "node scripts/collect-seo-brand-intelligence.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "seo:audit-learning-links": "node scripts/audit-learning-center-links.mjs",
+    "seo:pull-domain-gaps": "node scripts/pull-seo-domain-gaps.mjs",
     "seo:audit-onpage-site": "node scripts/audit-dataforseo-onpage-site.mjs",
     "seo:audit-linkable-formats": "node scripts/audit-seo-linkable-formats.mjs",
     "seo:build-size-weight-index": "node scripts/build-catalog-size-weight-index.mjs",

@@ -19,6 +19,15 @@ describe("Learning Center content ownership", () => {
     expect(broadGuide?.secondaryKeywords).not.toContain("best TPE sex doll");
   });
 
+  it("publishes the broad best-dolls guide with dated catalog evidence and buyer routing", () => {
+    const article = getLearningArticle("best-sex-dolls");
+    expect(article?.title).toContain("2026");
+    expect(article?.body).toContain("2,615 current full-size listings");
+    expect(article?.body).toContain("[Lightweight dolls](/shop/lightweight-sex-dolls)");
+    expect(article?.body).toContain("[underlying DollWow dataset](/datasets/sex-doll-size-weight-2026.json)");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+
   it("publishes a complete FAQ schema for the best TPE guide", () => {
     const article = getLearningArticle("best-tpe-sex-dolls");
     expect(article).not.toBeNull();
