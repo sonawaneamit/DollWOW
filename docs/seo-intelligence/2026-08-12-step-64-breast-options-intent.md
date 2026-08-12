@@ -22,6 +22,8 @@ Fresh US metrics exist and at least 95% of selected keywords have successful des
 - Normalized organic result rows: 183
 - Recorded DataForSEO cost: $0.1270
 
+The usable retained run cost $0.1270. An earlier invocation ended before its artifacts were available and may have incurred another $0.1270, so operational spend should conservatively allow $0.2540 for this validation package.
+
 ## Battlefield Coverage
 
 | Battlefield | Keywords |
