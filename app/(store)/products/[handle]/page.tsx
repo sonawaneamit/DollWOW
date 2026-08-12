@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Truck } from "lucide-react";
+import { CheckCircle2, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
@@ -30,6 +30,7 @@ import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
+import { isVisualizerProduct, visualizerUrl } from "@/lib/doll-visualizer/config";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -130,6 +131,13 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
+            {isVisualizerProduct(product.handle) ? (
+              <Link href={visualizerUrl(product.handle)} className="visualizer-pdp-entry">
+                <span className="visualizer-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
+                <span><strong>Try Doll Visualizer™</strong><small>Preview selected exterior options on this exact doll</small></span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            ) : null}
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
               <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>

@@ -31,7 +31,10 @@ const envSchema = z.object({
   APIFY_WEB_SCRAPER_ACTOR_ID: z.string().optional(),
   APIFY_GOOGLE_LENS_ACTOR_ID: z.string().optional(),
   PASSPORT_SESSION_SECRET: z.string().min(32).optional(),
-  PASSPORT_PREVIEW_EMAILS: z.string().optional()
+  PASSPORT_PREVIEW_EMAILS: z.string().optional(),
+  VENICE_API_KEY: z.string().optional(),
+  DOLL_VISUALIZER_ENABLED: z.string().optional(),
+  DOLL_VISUALIZER_DAILY_LIMIT: z.string().optional()
 });
 
 export const env = envSchema.parse({
@@ -65,7 +68,10 @@ export const env = envSchema.parse({
   APIFY_WEB_SCRAPER_ACTOR_ID: process.env.APIFY_WEB_SCRAPER_ACTOR_ID,
   APIFY_GOOGLE_LENS_ACTOR_ID: process.env.APIFY_GOOGLE_LENS_ACTOR_ID,
   PASSPORT_SESSION_SECRET: process.env.PASSPORT_SESSION_SECRET,
-  PASSPORT_PREVIEW_EMAILS: process.env.PASSPORT_PREVIEW_EMAILS
+  PASSPORT_PREVIEW_EMAILS: process.env.PASSPORT_PREVIEW_EMAILS,
+  VENICE_API_KEY: process.env.VENICE_API_KEY,
+  DOLL_VISUALIZER_ENABLED: process.env.DOLL_VISUALIZER_ENABLED,
+  DOLL_VISUALIZER_DAILY_LIMIT: process.env.DOLL_VISUALIZER_DAILY_LIMIT
 });
 
 export function hasShopifyStorefrontEnv() {

@@ -5,10 +5,12 @@ import { env } from "@/lib/utils/env";
 
 export type EmailMessage = {
   to: string;
+  bcc?: string;
   subject: string;
   html: string;
   text: string;
   replyTo?: string;
+  attachments?: Array<{ filename: string; content: string; contentType: string; cid?: string }>;
 };
 
 export type EmailDelivery = {
@@ -45,10 +47,18 @@ async function sendWithGoogleWorkspace(message: EmailMessage): Promise<EmailDeli
     await transporter.sendMail({
       from: `DollWow <${env.GOOGLE_WORKSPACE_EMAIL}>`,
       to: message.to,
+      bcc: message.bcc,
       replyTo: message.replyTo,
       subject: message.subject,
       text: message.text,
-      html: message.html
+      html: message.html,
+      attachments: message.attachments?.map((attachment) => ({
+        filename: attachment.filename,
+        content: attachment.content,
+        encoding: "base64",
+        contentType: attachment.contentType,
+        cid: attachment.cid
+      }))
     });
 
     return { delivered: true, provider: "google_workspace" };
@@ -76,11 +86,18 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
         },
         body: JSON.stringify({
           to: recipient,
+          bcc: message.bcc,
           from,
           replyTo: message.replyTo,
           subject: message.subject,
           html: message.html,
-          text: message.text
+          text: message.text,
+          attachments: message.attachments?.map((attachment) => ({
+            filename: attachment.filename,
+            content: attachment.content,
+            type: attachment.contentType,
+            disposition: "attachment"
+          }))
         })
       }
     );

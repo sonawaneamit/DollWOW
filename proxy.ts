@@ -8,6 +8,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(checkoutUrl, 307);
   }
 
+  if (request.nextUrl.pathname.startsWith("/ops/doll-visualizer")) {
+    return NextResponse.next();
+  }
+
   if (!request.nextUrl.pathname.startsWith("/admin") && !request.nextUrl.pathname.startsWith("/ops")) {
     return NextResponse.next();
   }
