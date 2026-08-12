@@ -297,7 +297,7 @@ Start with product form, height, weight, material, body measurements, and storag
 
 ### How heavy is a full-size male sex doll?
 
-Weight varies widely by height, body sculpt, material, and internal construction. Current DollWow full-body examples with listed weights range from about 59.5 to 125.7 lb (27 to 57 kg), but the exact product is what matters. Confirm any missing or questionable weight before ordering.
+Weight varies widely by height, body sculpt, material, and internal construction. Current DollWow male full-body examples with listed weights range from about 59.5 to 125.7 lb (27 to 57 kg), but the exact product is what matters. Use the broader [sex doll size and weight guide](/learn/sex-doll-size-weight-guide) for dated full-size distributions, then confirm any missing or questionable weight before ordering.
 
 ### Are silicone male dolls better than TPE male dolls?
 

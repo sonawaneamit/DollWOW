@@ -84,8 +84,24 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[],
       continue;
     }
 
+    if (/^\d+\.\s+/.test(line)) {
+      const items = [];
+      while (/^\d+\.\s+/.test(lines[index] || "")) {
+        items.push(lines[index].replace(/^\d+\.\s+/, ""));
+        index += 1;
+      }
+      blocks.push(
+        <ol key={blocks.length}>
+          {items.map((item, itemIndex) => (
+            <li key={itemIndex}>{renderInline(item)}</li>
+          ))}
+        </ol>
+      );
+      continue;
+    }
+
     const paragraph = [];
-    while (lines[index]?.trim() && !/^(#{2,3}\s+|\||-\s+)/.test(lines[index])) {
+    while (lines[index]?.trim() && !/^(#{2,3}\s+|\||-\s+|\d+\.\s+)/.test(lines[index])) {
       paragraph.push(lines[index]);
       index += 1;
     }

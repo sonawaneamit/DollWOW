@@ -21,7 +21,7 @@ By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experienc
 
 DollWow uses **120 cm / 3 ft 11 in and under** as the working boundary for a mini sex doll. Mini describes the doll's height, not its age, body shape, material, or weight. It is also different from petite: DollWow uses petite for compact full dolls from 121 to 154 cm / 4 ft to 5 ft 1 in.
 
-A mini doll may take up less room, but it is not automatically lightweight or easy to carry. Compare the exact height, listed weight, body measurements, material, product form, storage orientation, and included configuration before ordering.
+A mini doll may take up less room, but it is not automatically lightweight or easy to carry. Compare the exact height, listed weight, body measurements, material, product form, storage orientation, and included configuration before ordering. The [sex doll size and weight guide](/learn/sex-doll-size-weight-guide) shows how current full-size listings are distributed and why height cannot replace listed weight.
 
 ## Key Takeaways
 

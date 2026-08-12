@@ -354,7 +354,7 @@ Height changes visual scale. Weight changes the entire ownership routine. A doll
 
 Height should always appear in `ft/in + cm`, and weight in `lb + kg`. Body measurements should show `in + cm` where available. Conversions help comparison, but they do not improve an inaccurate source value. If a supplier measurement looks inconsistent, ask for confirmation before publishing or ordering.
 
-Compact models can reduce storage demand, but height does not guarantee low weight. Material, internal foam, skeleton, head construction, and manufacturer weight-reduction methods all matter. Use [mini sex dolls](/shop/mini-sex-dolls) for smaller builds and compare each listed weight separately.
+Compact models can reduce storage demand, but height does not guarantee low weight. Material, internal foam, skeleton, head construction, and manufacturer weight-reduction methods all matter. Use [mini sex dolls](/shop/mini-sex-dolls) for smaller builds, compare each listed weight separately, and review the original [sex doll size and weight guide](/learn/sex-doll-size-weight-guide) for current full-size distributions.
 
 ### Build a handling plan before choosing a height
 

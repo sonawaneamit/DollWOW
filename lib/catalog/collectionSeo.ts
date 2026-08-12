@@ -663,6 +663,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare ready-to-ship and custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" }
   ],
   "lightweight-sex-dolls": [
+    { label: "Read the size and weight guide", href: "/learn/sex-doll-size-weight-guide" },
     { label: "Compare mini and petite sizes", href: "/learn/mini-sex-dolls" },
     { label: "Plan private storage", href: "/learn/sex-doll-storage" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },

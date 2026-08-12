@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildArticleFaqStructuredData, getLearningArticle } from "@/lib/learn/content";
 
@@ -54,5 +56,14 @@ describe("Learning Center content ownership", () => {
     expect(article?.body).toContain("[sex doll cost guide](/learn/sex-doll-cost)");
     expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(10);
+  });
+
+  it("links established buyer guides to the size-and-weight owner", () => {
+    for (const slug of ["sex-doll-guide", "mini-sex-dolls", "sex-doll-storage", "tpe-vs-silicone-sex-dolls", "male-sex-doll-buying-guide"]) {
+      const article = getLearningArticle(slug);
+      expect(article?.body, slug).toContain("/learn/sex-doll-size-weight-guide");
+    }
+    const collectionSeo = fs.readFileSync(path.join(process.cwd(), "lib/catalog/collectionSeo.ts"), "utf8");
+    expect(collectionSeo).toContain('{ label: "Read the size and weight guide", href: "/learn/sex-doll-size-weight-guide" }');
   });
 });

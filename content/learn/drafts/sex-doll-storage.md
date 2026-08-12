@@ -220,7 +220,7 @@ A smaller or lighter doll may offer more privacy because it can be moved and sto
 
 Storage only works when you can use it without injuring yourself or dropping the product.
 
-Use the exact listed weight, then include the case, base, and accessories. Plan where your hands go, where the doll is supported, and how you will open doors or navigate stairs. Do not pull the doll by the head, neck, fingers, wrists, ankles, or feet.
+Use the exact listed weight, then include the case, base, and accessories. The original [sex doll size and weight guide](/learn/sex-doll-size-weight-guide) provides current full-size weight bands for context. Plan where your hands go, where the doll is supported, and how you will open doors or navigate stairs. Do not pull the doll by the head, neck, fingers, wrists, ankles, or feet.
 
 A 10 lb (4.5 kg) difference is noticeable during awkward lifting. A 75 lb (34 kg) doll in a 25 lb (11.3 kg) case creates a 100 lb (45.4 kg) move before other accessories are added. Wheels help on level floors but do not solve stairs, thresholds, tight turns, or lifting into a vehicle.
 
