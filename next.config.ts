@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/irontech-doll-163cm-e-cup-silicone-companion-doll-1tl7n",
-        destination: "/brands/irontech-dolls",
+        destination: "/products/irontech-penny-164cm-f-cup-silicone-head-companion-doll-1ttey",
         permanent: true
       }
     ];
