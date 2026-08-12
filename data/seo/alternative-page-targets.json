@@ -70,5 +70,29 @@
       "https://www.yourdoll.com/",
       "https://www.rosemarydoll.com/"
     ]
+  },
+  "myrobotdoll": {
+    "brand": "MyRobotDoll",
+    "domain": "myrobotdoll.com",
+    "url": "https://dollwow.com/learn/myrobotdoll-alternatives",
+    "keywords": [
+      "myrobotdoll",
+      "my robot doll",
+      "myrobotdoll alternatives",
+      "my robot doll alternatives",
+      "myrobotdoll reviews",
+      "my robot doll reviews"
+    ],
+    "serpKeywords": [
+      "myrobotdoll alternatives",
+      "myrobotdoll reviews",
+      "myrobotdoll"
+    ],
+    "prompt": "What should a US buyer compare when considering MyRobotDoll alternatives in 2026? Distinguish conventional dolls, powered options, connected features, conversational AI, and robotic movement. Compare exact product identity, verified capabilities, materials, dimensions, availability, customization, software and privacy requirements, delivered price, arrival resolution, care, repair support, and seller verification. Separate facts from marketing claims and cite current sources.",
+    "comparisonUrls": [
+      "https://www.myrobotdoll.com/",
+      "https://www.yourdoll.com/",
+      "https://www.rosemarydoll.com/"
+    ]
   }
 }
