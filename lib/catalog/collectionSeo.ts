@@ -248,7 +248,10 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     silicone: "Silicone Sex Dolls for Sale | Full Silicone Dolls",
     tpe: "TPE Sex Dolls for Sale | Full-Body TPE Dolls",
     "mini-sex-dolls": "Mini Sex Dolls for Sale | Full Dolls Up to 120 cm",
-    "male-dolls": "Male Sex Dolls for Sale | TPE, Silicone & Custom"
+    "male-dolls": "Male Sex Dolls for Sale | TPE, Silicone & Custom",
+    "cheap-sex-dolls": "Affordable Sex Dolls for Sale | Options Under $1,000",
+    "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
+    custom: "Custom Sex Dolls for Sale | Build & Compare Options"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -335,10 +338,10 @@ const collectionIntroByHandle: Record<string, string> = {
 
 const collectionMetaDescriptions: Record<string, string> = {
   "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
-  "realistic-sex-dolls": "Shop candidates for the most realistic sex dolls by proportions, face, skin finish, eyes, hands, weight, photos, and final configuration.",
+  "realistic-sex-dolls": "Shop realistic sex dolls and compare proportions, face sculpt, skin finish, eyes, hands, weight, product photos, and the exact final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
-  "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare material, size, weight, product form, stock, and options.",
+  "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare product form, material, size, weight, stock, options, and support.",
   "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
   "new-sex-dolls": "Shop new sex dolls and latest arrivals. Compare current models by brand, TPE or silicone, size, weight, options, price, and availability.",
   "futa-sex-dolls": "Compare dolls from established brands with a verified insertable penis option. Review brand, body, material, size, weight, price, care, and compatibility.",
@@ -352,7 +355,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
   torsos: "Shop torso sex dolls by form, TPE or silicone, height, width, depth, weight, brand, price, cleaning access, and storage needs.",
   "ready-to-ship": "Shop ready-to-ship and in-stock sex dolls by product form, material, size, weight, price, warehouse region, and included configuration.",
-  custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path.",
+  custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, Human Build Check, and production path.",
   customizable: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, build review, and production path."
 };
 
@@ -1227,6 +1230,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Can custom options improve realism?",
       answer:
         "They can when the eyes, hair, skin tone, faceup, head, and body work together. A mismatched or incompatible option set can make the finished build less coherent."
+    },
+    {
+      question: "Can I preview appearance options before ordering?",
+      answer:
+        "Eligible product pages include Doll Visualizer™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll, and DollWow confirms supported options before production."
     }
   ],
   "mini-sex-dolls": [
@@ -1350,6 +1358,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Is the price shown on the collection page final?",
       answer:
         "It is the current starting catalog price. Open the product page to review the latest price, supported options, and any additional costs before checkout."
+    },
+    {
+      question: "Do affordable dolls include the same DollWow ownership support?",
+      answer:
+        "Yes. Every DollWow doll includes Care 365 under the current published terms, regardless of its starting price. You can also ask our team to compare the complete delivered value before ordering."
     }
   ],
   "lightweight-sex-dolls": [
@@ -1770,6 +1783,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
       question: "Does Care 365 apply to custom dolls?",
       answer:
         "Care 365 is included with every DollWow doll under the current published coverage terms. Review the Care for Life page for the latest details."
+    },
+    {
+      question: "Can I preview custom appearance options before ordering?",
+      answer:
+        "Eligible product pages include Doll Visualizer™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll. DollWow confirms which options are supported before production."
     }
   ],
   customizable: [

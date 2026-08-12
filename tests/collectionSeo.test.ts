@@ -90,6 +90,32 @@ describe("Wave 2 collection SEO", () => {
   });
 });
 
+describe("Wave 3 collection SEO", () => {
+  it("aligns affordable intent with the live price boundary and ownership support", () => {
+    const preset = collectionPresets["cheap-sex-dolls"];
+    const metadata = buildCollectionMetadata("cheap-sex-dolls", preset);
+    const copy = `${collectionIntro(preset, "cheap-sex-dolls")} ${collectionFaqItems("cheap-sex-dolls", preset).map((item) => item.answer).join(" ")}`;
+
+    expect(metadata.title).toBe("Affordable Sex Dolls for Sale | Options Under $1,000");
+    expect(copy).toContain("$1,000 or less");
+    expect(copy).toContain("Care 365");
+    expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+
+  it("adds decision support to realistic and custom pages without promising an exact preview", () => {
+    const realistic = collectionPresets["realistic-sex-dolls"];
+    const custom = collectionPresets.custom;
+    const realisticCopy = collectionFaqItems("realistic-sex-dolls", realistic).map((item) => item.answer).join(" ");
+    const customCopy = collectionFaqItems("custom", custom).map((item) => item.answer).join(" ");
+
+    expect(buildCollectionMetadata("realistic-sex-dolls", realistic).title).toBe("Most Realistic Sex Dolls for Sale | Compare Realism");
+    expect(buildCollectionMetadata("custom", custom).title).toBe("Custom Sex Dolls for Sale | Build & Compare Options");
+    expect(realisticCopy).toContain("Doll Visualizer™");
+    expect(customCopy).toContain("approximate visual preview");
+    expect(`${realisticCopy} ${customCopy}`).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
 describe("anime collection SEO", () => {
   const preset = collectionPresets["anime-dolls"];
 
