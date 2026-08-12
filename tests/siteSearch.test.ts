@@ -24,8 +24,10 @@ describe("site content search", () => {
     expect(header).not.toContain("router.push(trimmed ? `/shop/sex-dolls?query=");
   });
 
-  it("only offers the product catalog action when products matched", () => {
+  it("routes the single all-results action to unified search", () => {
     const header = fs.readFileSync(path.join(process.cwd(), "components/Header.tsx"), "utf8");
-    expect(header.match(/searchResults\.length \? <AllSearchResultsLink/g)).toHaveLength(2);
+    expect(header).toContain('href={`/search?q=${encodeURIComponent(trimmedQuery)}`}');
+    expect(header).toContain('<span>See all results for “{trimmedQuery}”</span>');
+    expect(header).not.toContain('<span>See all dolls for');
   });
 });

@@ -442,7 +442,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, contentSearchR
                   !contentSearchResults.length ? <p className="border-b border-border px-4 py-3 text-sm text-text-dim">No direct matches in the quick list.</p> : null
                 )}
                 {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} compact />)}
-                {searchResults.length ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact /> : null}
+                {(searchResults.length || contentSearchResults.length) ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} compact /> : null}
               </>
             )}
           </div>
@@ -572,7 +572,7 @@ function SearchDialog({ searchQuery, setSearchQuery, searchSuggestions, searchRe
                           {contentSearchResults.map((result) => <ContentResultLink key={result.id} result={result} onNavigate={onNavigate} />)}
                         </div>
                       ) : null}
-                      {searchResults.length ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} /> : null}
+                      {(searchResults.length || contentSearchResults.length) ? <AllSearchResultsLink query={searchQuery} onNavigate={onNavigate} /> : null}
                     </>
                   )}
                 </div>
@@ -613,14 +613,14 @@ function AllSearchResultsLink({ query, onNavigate, compact = false }: { query: s
   const trimmedQuery = query.trim();
   return (
     <Link
-      href={`/shop/sex-dolls?query=${encodeURIComponent(trimmedQuery)}`}
+      href={`/search?q=${encodeURIComponent(trimmedQuery)}`}
       onClick={onNavigate}
       className={`flex items-center justify-between font-semibold text-accent transition-colors hover:bg-accent hover:text-white ${
         compact ? "min-h-12 px-4 text-[15px]" : "min-h-14 rounded-sm border-2 border-accent px-4 text-base"
       }`}
       data-testid="search-all-results"
     >
-      <span>See all dolls for “{trimmedQuery}”</span>
+      <span>See all results for “{trimmedQuery}”</span>
       <span className="text-xl" aria-hidden="true">→</span>
     </Link>
   );

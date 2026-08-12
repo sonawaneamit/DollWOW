@@ -15,15 +15,14 @@ export const metadata: Metadata = {
 export default async function SearchPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const params = await searchParams;
   const query = typeof params.q === "string" ? params.q.trim() : "";
-  const contentResults = query ? searchSiteContent(query, 12) : [];
+  const contentResults = query ? searchSiteContent(query, 100) : [];
   const productCandidates = query
-    ? await getSearchProducts({ first: 48, query: shopifyQueryForCatalogSearch(query), revalidate: 86_400 })
+    ? await getSearchProducts({ first: 250, query: shopifyQueryForCatalogSearch(query), revalidate: 86_400 })
     : [];
   const products = productCandidates
     .map((product) => ({ product, score: productSearchScore(product, query) }))
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 12)
     .map((item) => item.product);
   const totalResults = contentResults.length + products.length;
 
@@ -64,7 +63,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         <section className="mt-12" aria-labelledby="product-results-heading">
           <div className="flex items-end justify-between gap-4 border-b border-border pb-3">
             <h2 id="product-results-heading" className="font-display text-2xl font-semibold text-text">Dolls</h2>
-            <Link href={`/shop/sex-dolls?query=${encodeURIComponent(query)}`} className="text-sm font-semibold text-accent underline underline-offset-4">See all dolls</Link>
+            <span className="text-sm text-text-dim">{products.length} matches</span>
           </div>
           <div className="catalog-grid mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {products.map((product, index) => <ProductCard key={product.id} product={product} priority={index < 3} />)}
