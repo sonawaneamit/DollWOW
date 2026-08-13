@@ -38,6 +38,16 @@ describe("Learning Center content ownership", () => {
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
 
+  it("publishes the approved silicone repair guide with separate bond and finish paths", () => {
+    const article = getLearningArticle("silicone-sex-doll-repair");
+    expect(article?.featuredImage).toBe("/images/learn/silicone-sex-doll-repair.webp");
+    expect(article?.body).toContain("Review the bond and finish separately");
+    expect(article?.body).toContain("https://www.irontechdoll.com/blog/how-to-repair-a-sex-doll-irontech-doll-repair-instruction/");
+    expect(article?.body).toContain("Do not inject or open the body without manufacturer support");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
+
   it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {
     const article = getLearningArticle("piper-dolls-buying-guide");
     expect(article?.primaryKeyword).toBe("piper sex doll");

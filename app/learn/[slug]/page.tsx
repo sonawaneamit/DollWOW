@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models",
     "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process",
     "sex-doll-breast-options": "Sex Doll Breast Options: Solid, Hollow & Gel",
-    "tpe-sex-doll-repair": "TPE Sex Doll Repair: Tears, Glue & Safe Steps"
+    "tpe-sex-doll-repair": "TPE Sex Doll Repair: Tears, Glue & Safe Steps",
+    "silicone-sex-doll-repair": "Silicone Doll Repair: Tears, Glue & Finish Care"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
@@ -157,6 +158,7 @@ function articleFeaturedImageDimensions(slug: string) {
   if (slug === "how-silicone-sex-dolls-are-made") return { width: 1003, height: 1923 };
   if (slug === "sex-doll-breast-options") return { width: 1024, height: 1920 };
   if (slug === "tpe-sex-doll-repair") return { width: 1080, height: 1620 };
+  if (slug === "silicone-sex-doll-repair") return { width: 1080, height: 1620 };
   return { width: 1536, height: 1024 };
 }
 
@@ -1164,6 +1166,17 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
         "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y",
         "sedoll-avery-b-153cm-f-cup-tpe-companion-doll-1jtw6"
+      ]
+    },
+    "silicone-sex-doll-repair": {
+      title: "Compare three current full-silicone dolls",
+      description: "These live product pages provide the exact brand, model, construction, measurements, finish, and support context a repair diagnosis needs. They are catalog examples, not evidence that one adhesive, pigment, or internal repair method works across silicone systems.",
+      collectionHref: "/shop/silicone",
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "real-lady-sylvia-170cm-s43-silicone-doll"
       ]
     },
     "best-tpe-sex-dolls": {

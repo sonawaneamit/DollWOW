@@ -2,7 +2,7 @@
 
 Date: 2026-08-12  
 Market: United States  
-Status: TPE guide released; silicone visual package pending
+Status: TPE and silicone guides released
 
 ## Canonical Owners
 
@@ -75,6 +75,8 @@ Each hidden guide needs a distinct mobile-first instructional visual before rele
 Use explanatory illustration rather than explicit repair photography. Keep exact warnings and all decision steps in rendered HTML. Generate one sample at a time and stop for owner approval.
 
 The TPE visual was approved on 2026-08-13. It uses a current Irontech TPE catalog product for material context and illustrated synthetic-material examples for a small surface split, high-stress damage, and exposed internal components. The guide preserves the exact decision steps in HTML and labels the product as context rather than a damaged unit.
+
+The silicone visual was approved on 2026-08-13. It uses a current Starpery full-silicone catalog product for material context and a distinct repair map separating bond repair from finish repair. Six illustrated paths cover clean surface splits, finish loss, loose cosmetic parts, seams or hardware, gel or internal changes, and powered areas, while the complete decision guidance remains in HTML.
 
 ## Release Gate
 
