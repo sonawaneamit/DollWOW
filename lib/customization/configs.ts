@@ -2,7 +2,7 @@ import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
-import { getStarperyCustomizationGroups } from "@/lib/customization/starpery";
+import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -277,6 +277,15 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   const importedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
+  if (text.includes("starpery")) {
+    const groups = getStarperyCustomizationGroups(product, importedGroups);
+    return {
+      ...configs.starpery,
+      id: "starpery-official",
+      groups,
+      rules: getStarperyCustomizationRules(groups)
+    };
+  }
   if (importedGroups?.length) {
     const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
@@ -310,12 +319,6 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   }
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
-  if (text.includes("starpery")) {
-    return {
-      ...configs.starpery,
-      groups: getStarperyCustomizationGroups(product)
-    };
-  }
   if (isIrontechProduct(product)) {
     return {
       id: "irontech",

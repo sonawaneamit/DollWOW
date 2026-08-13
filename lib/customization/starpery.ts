@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
-import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import type { CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
+import starperyHeads from "@/data/starpery-heads.json";
 
 const rosemaryAsset = (path: string) => `https://www.rosemarydoll.com/wp-content/uploads/${path}`;
 
@@ -9,49 +10,31 @@ function imageOption(id: string, label: string, path: string, priceDelta = 0, de
     label,
     description,
     priceDelta,
+    visualizable: true,
+    priceVerified: true,
+    purchasable: true,
     swatch: { kind: "image", value: rosemaryAsset(path), label }
   };
 }
 
-const recentHeadOptions: CustomizationOption[] = [
-  imageOption("jane-bennet-ros-2", "Jane Bennet ROS-2", "2021/03/Jane-Bennet-ROS-2.jpeg"),
-  imageOption("jin-5", "Jin-5", "2021/03/Jin-5.jpeg"),
-  imageOption("seraphina-ros", "Seraphina ROS", "2021/03/Seraphina-ROS.jpeg"),
-  imageOption("snow", "Snow", "2021/03/Snow.jpeg"),
-  imageOption("asuka-eva-2", "Asuka Eva-2", "2021/03/Asuka-Eva-2.jpeg"),
-  imageOption("xue-4", "Xue-4", "2021/03/Xue-4.jpeg"),
-  imageOption("xue-5", "Xue-5", "2021/03/Xue-5.jpeg"),
-  imageOption("yuan-2", "Yuan-2", "2021/03/Yuan-2.jpeg"),
-  imageOption("ashley-ros", "Ashley ROS", "2021/03/Ashley-ROS.jpeg"),
-  imageOption("jane-bennet-ros", "Jane Bennet ROS", "2021/03/Jane-Bennet.jpg"),
-  imageOption("qingwen-ros-4", "Qingwen ROS-4", "2021/03/Qingwen-ROS-4.jpg"),
-  imageOption("kelly-3", "Kelly-3", "2021/03/Kelly-3.jpg"),
-  imageOption("ivory-2", "Ivory-2", "2021/03/Ivory-2.jpg"),
-  imageOption("keqing-qin", "Keqing Qin", "2021/03/Keqing-Qin.jpg"),
-  imageOption("nina-3", "Nina-3", "2021/03/Nina-3.jpg"),
-  imageOption("jia-lin", "Jia Lin", "2021/03/Jia-Lin.jpg"),
-  imageOption("misa-2", "Misa-2", "2021/03/Misa-2.jpg"),
-  imageOption("iris-4", "Iris-4", "2021/03/Iris-4.jpg"),
-  imageOption("amber-ros", "Amber ROS", "2021/03/Amber-ROS.jpg"),
-  imageOption("adele-3", "Adele-3", "2021/03/Adele-3.jpg"),
-  imageOption("takiyah-2", "Takiyah-2", "2021/03/Takiyah-2.jpg"),
-  imageOption("natalia-4", "Natalia-4", "2021/03/Natalia-4.jpg"),
-  imageOption("mio-2", "Mio-2", "2021/03/Mio-2.jpg"),
-  imageOption("miaoyu", "Miaoyu", "2021/03/Miaoyu.jpg"),
-  imageOption("elysia-ros", "Elysia ROS", "2021/03/Elysia-ROS.jpg"),
-  imageOption("bao-chai-ros", "Baochai ROS", "2021/03/Baochai-ROS.jpg")
-];
+type StarperyHeadRecord = { id: string; label: string; imagePath: string; ros: boolean };
+
+const currentHeadOptions: CustomizationOption[] = (starperyHeads as StarperyHeadRecord[]).map((head) => ({
+  ...imageOption(head.id, head.label, head.imagePath),
+  description: head.ros ? "ROS-compatible head; select ROS under Head type to add the movable-jaw construction." : undefined,
+  visualizable: false
+}));
 
 const headModel: CustomizationGroup = {
   id: "head-model",
-  label: "Head model",
-  description: "Keep the photographed head or switch to another current Starpery head at no extra charge.",
+  label: "Choose a Head",
+  description: "Choose exactly one head. Switching to another current Starpery head is included; ROS construction is priced separately under Head type.",
   required: true,
+  selectionMode: "single",
   display: "swatches",
   options: [
-    imageOption("shown-head", "Keep the head shown", "2020/04/default-300x300.jpg"),
-    ...recentHeadOptions,
-    imageOption("other-head", "Another Starpery head", "2021/11/other-1.jpg", 0, "Enter the exact Starpery head name in the order note after adding to cart.")
+    { ...imageOption("shown-head", "Keep the head shown", "2020/04/default-300x300.jpg"), visualizable: false },
+    ...currentHeadOptions
   ]
 };
 
@@ -245,14 +228,17 @@ const premiumOptions = (silicone: boolean): CustomizationGroup => ({
 
 const additionalHead: CustomizationGroup = {
   id: "additional-head",
-  label: "Additional head",
-  description: "A second Starpery head ordered with the doll is $500. Choose its model here.",
-  required: true,
+  label: "Add Extra Head",
+  description: "Add one or more distinct Starpery heads. Standard heads are $500 each; ROS-compatible heads include the $100 ROS construction upgrade.",
+  selectionMode: "multiple",
   display: "swatches",
   options: [
     { id: "none", label: "No additional head", priceDelta: 0 },
-    ...recentHeadOptions.map((option) => ({ ...option, id: `extra-${option.id}`, priceDelta: 500 })),
-    imageOption("extra-other-head", "Another Starpery head", "2021/11/other-1.jpg", 500, "Enter the exact Starpery head name in the order note after adding to cart.")
+    ...(starperyHeads as StarperyHeadRecord[]).map((head) => ({
+      ...imageOption(`extra-${head.id}`, head.label, head.imagePath, head.ros ? 600 : 500),
+      description: head.ros ? "Includes this extra head plus ROS movable-jaw construction." : "Additional standard Starpery head ordered with the doll.",
+      visualizable: false
+    }))
   ]
 };
 
@@ -271,11 +257,15 @@ const accessories: CustomizationGroup = {
   ]
 };
 
-export function getStarperyCustomizationGroups(product: Product): CustomizationGroup[] {
+export function getStarperyCustomizationGroups(product: Product, importedGroups?: CustomizationGroup[]): CustomizationGroup[] {
   const material = `${product.extended.material ?? ""} ${product.productType} ${product.title}`.toLowerCase();
   const silicone = material.includes("silicone");
   const body = `${product.extended.heightCm ?? ""}${product.extended.cupSize ?? ""} ${product.title}`.replace(/\s+/g, "").toLowerCase();
   const supportsGelBelly = silicone && (body.includes("161cmh") || body.includes("168cmh") || body.includes("161h") || body.includes("168h"));
+
+  if (importedGroups?.length) {
+    return mergeImportedStarperyGroups(importedGroups);
+  }
 
   return [
     headModel,
@@ -296,4 +286,159 @@ export function getStarperyCustomizationGroups(product: Product): CustomizationG
     additionalHead,
     accessories
   ];
+}
+
+export function getStarperyCustomizationRules(groups: CustomizationGroup[]): CustomizationRule[] {
+  const headGroup = groups.find((group) => group.id === "head-model" || /choose a head/i.test(group.label));
+  const constructionGroup = groups.find((group) => /head type|head construction/i.test(group.label));
+  if (!headGroup || !constructionGroup) return [];
+
+  const rosHeadIds = new Set((starperyHeads as StarperyHeadRecord[]).filter((head) => head.ros).map((head) => head.id));
+  const rosConstruction = constructionGroup.options.find((option) => /\bros\b|oral sex|movable jaw/i.test(option.label));
+  if (!rosConstruction) return [];
+
+  const standardConstructions = constructionGroup.options.filter((option) => option.id !== rosConstruction.id);
+  const rules: CustomizationRule[] = [];
+
+  for (const head of headGroup.options) {
+    if (head.id === "shown-head") continue;
+    if (rosHeadIds.has(head.id)) {
+      for (const construction of standardConstructions) {
+        rules.push({
+          id: `starpery-${head.id}-requires-ros-${construction.id}`,
+          type: "incompatible",
+          when: { groupId: headGroup.id, optionId: head.id },
+          conflictsWith: { groupId: constructionGroup.id, optionId: construction.id },
+          message: `${head.label} is an ROS-compatible head. Select the ROS movable-jaw head type for this head.`
+        });
+      }
+    } else {
+      rules.push({
+        id: `starpery-${head.id}-standard-only`,
+        type: "incompatible",
+        when: { groupId: headGroup.id, optionId: head.id },
+        conflictsWith: { groupId: constructionGroup.id, optionId: rosConstruction.id },
+        message: `${head.label} is listed as a standard head. Choose a head marked ROS before selecting the ROS movable-jaw head type.`
+      });
+    }
+  }
+
+  return rules;
+}
+
+const removedImportedGroups = [
+  /extra (free )?head/i,
+  /for extra head/i
+];
+
+function mergeImportedStarperyGroups(importedGroups: CustomizationGroup[]) {
+  const normalized = importedGroups
+    .filter((group) => !removedImportedGroups.some((pattern) => pattern.test(group.label)))
+    .map(normalizeImportedStarperyGroup)
+    .map((group) => ({ ...group, options: group.options.filter((option) => option.priceDelta !== undefined || isIncludedDefault(option)) }))
+    .filter((group) => group.options.length >= 2);
+
+  return mergeDuplicateGroups([headModel, ...normalized, additionalHead]);
+}
+
+function normalizeImportedStarperyGroup(group: CustomizationGroup): CustomizationGroup {
+  const groupLabel = group.label.toLowerCase();
+  const multiple = /\b(multiple|accessories)\b/i.test(group.label);
+  return {
+    ...group,
+    selectionMode: multiple ? "multiple" : "single",
+    required: multiple ? false : group.required,
+    options: group.options.map((option) => normalizeImportedStarperyOption(groupLabel, option))
+  };
+}
+
+function normalizeImportedStarperyOption(groupLabel: string, option: CustomizationOption): CustomizationOption {
+  const label = option.label.toLowerCase();
+  let priceDelta = option.priceDelta;
+
+  // The official Starpery 2026 price list is authoritative when a dealer promotion conflicts.
+  if (groupLabel === "head type") {
+    priceDelta = /\bros\b|oral sex|movable jaw/.test(label) ? 100 : 0;
+  } else if (groupLabel === "hair implanted") {
+    if (/human/.test(label)) priceDelta = 300;
+    else if (/synthetic/.test(label)) priceDelta = 150;
+    else if (/no thanks|none|factory default/.test(label)) priceDelta = 0;
+  } else if (/vagina hair|pubic hair/.test(groupLabel)) {
+    if (/no\.\s*[123]|custom/.test(label)) priceDelta = 50;
+    else if (/paster|adhesive/.test(label)) priceDelta = 80;
+    else if (/none|no thanks|factory default/.test(label)) priceDelta = 0;
+  } else if (/reduce weight/.test(groupLabel)) {
+    if (/no need|full.?weight|without/.test(label)) priceDelta = 150;
+    else if (/need|reduce|factory default|free/.test(label)) priceDelta = 0;
+  } else if (/hand \/ foot skeleton/.test(groupLabel)) {
+    if (/2\.0|enhanced/.test(label)) priceDelta = 165;
+  } else if (/standing add-on/.test(groupLabel)) {
+    if (/hard feet|no bolts/.test(label)) priceDelta = 100;
+    else if (/standing|factory default|none|no thanks/.test(label)) priceDelta = 0;
+  } else if (/premium head & body|premium body/.test(groupLabel)) {
+    if (/moaning/.test(label)) priceDelta = 100;
+    else if (/heating/.test(label)) priceDelta = 200;
+    else if (/clamping|sucking/.test(label)) priceDelta = 150;
+    else if (/custom face/.test(label)) priceDelta = 200;
+    else if (/custom body/.test(label)) priceDelta = 250;
+    else if (/gel belly/.test(label)) priceDelta = 100;
+    else if (/hard hand/.test(label)) priceDelta = 100;
+    else if (/finger bone 2\.0|enhanced articulated finger/.test(label)) priceDelta = 165;
+    else if (/body realism(?!.*custom)/.test(label)) priceDelta = 80;
+    else if (/male chest hair/.test(label)) priceDelta = 50;
+  }
+
+  if (priceDelta === undefined && includedReferenceGroup(groupLabel, label)) priceDelta = 0;
+
+  const verified = priceDelta !== undefined;
+  return {
+    ...option,
+    priceDelta,
+    priceVerified: verified,
+    purchasable: verified,
+    visualizable: Boolean(option.swatch?.kind === "image") && isVisualizerFriendlyGroup(groupLabel)
+  };
+}
+
+function includedReferenceGroup(groupLabel: string, optionLabel: string) {
+  if (isIncludedDefault({ id: "", label: optionLabel })) return true;
+  return /^(skin tone|hairstyle|hair implanted color|eye color|eye type|nail color|toe nail color|breast options|vagina|vagina texture|vagina width & depth|areola color|labia color)$/.test(groupLabel);
+}
+
+function isVisualizerFriendlyGroup(groupLabel: string) {
+  return /^(skin tone|hairstyle|hair implanted color|eye color|nail color|toe nail color|areola color|labia color)$/.test(groupLabel);
+}
+
+function isIncludedDefault(option: Pick<CustomizationOption, "id" | "label" | "productionNote">) {
+  return /\bfree\b|^(no add-on|no thanks|none|no change|factory default|default supplier selection)$/i.test(option.label) ||
+    /default supplier selection/i.test(option.productionNote || "");
+}
+
+function mergeDuplicateGroups(groups: CustomizationGroup[]) {
+  const merged = new Map<string, CustomizationGroup>();
+  for (const group of groups) {
+    const key = group.label.trim().toLowerCase();
+    const current = merged.get(key);
+    if (!current) {
+      merged.set(key, group);
+      continue;
+    }
+    const options = new Map(current.options.map((option) => [option.label.trim().toLowerCase(), option]));
+    for (const option of group.options) {
+      const optionKey = option.label.trim().toLowerCase();
+      const existing = options.get(optionKey);
+      if (!existing || optionScore(option) > optionScore(existing)) options.set(optionKey, option);
+    }
+    merged.set(key, {
+      ...current,
+      required: current.required || group.required,
+      selectionMode: current.selectionMode === "multiple" || group.selectionMode === "multiple" ? "multiple" : "single",
+      options: [...options.values()]
+    });
+  }
+  return [...merged.values()];
+}
+
+function optionScore(option: CustomizationOption) {
+  return Number(option.priceDelta !== undefined) * 4 + Number(option.swatch?.kind === "image") * 2 + Number(Boolean(option.description));
 }
