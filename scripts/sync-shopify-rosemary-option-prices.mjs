@@ -1,13 +1,17 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { compareOptionCoverage } from "./lib/option-coverage.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
 const args = parseArgs(process.argv.slice(2));
 const execute = Boolean(args.execute);
+const reconcileOptions = Boolean(args["reconcile-options"]);
 const limit = Math.max(0, Number(args.limit || 0));
 const concurrency = Math.min(10, Math.max(1, Number(args.concurrency || 5)));
+const sourceTimeoutMs = Math.max(2_000, Number(args["source-timeout-ms"] || 12_000));
+const sourceAttempts = Math.min(4, Math.max(1, Number(args["source-attempts"] || 2)));
 const match = String(args.match || "").trim().toLowerCase();
 const brand = String(args.brand || "").trim().toLowerCase();
 const titlePrefix = String(args["title-prefix"] || "").trim().toLowerCase();
@@ -41,7 +45,7 @@ const products = await fetchProducts(limit || 5000, args.handle ? String(args.ha
 if (args["list-vendors"] || args["list-brands"]) {
   const counts = new Map();
   for (const product of products) {
-    if (!isRosemaryUrl(product.sourceUrl?.value || "") || !parseGroups(product.customizationGroups?.value).length) continue;
+    if (!isRosemaryUrl(product.sourceUrl?.value || "")) continue;
     const value = args["list-brands"] ? product.catalogBrand?.value || "(blank)" : product.vendor || "(blank)";
     counts.set(value, (counts.get(value) || 0) + 1);
   }
@@ -53,9 +57,10 @@ const candidates = products.filter((product) => {
   const groups = parseGroups(product.customizationGroups?.value);
   const searchable = `${product.title} ${product.handle} ${product.vendor}`.toLowerCase();
   const normalizedVendor = normalize(product.vendor || "");
-  return isRosemaryUrl(sourceUrl) && groups.length &&
+  const normalizedBrand = normalize(product.catalogBrand?.value || "");
+  return isRosemaryUrl(sourceUrl) &&
     (!match || searchable.includes(match)) &&
-    (!brand || normalizedVendor === normalize(brand)) &&
+    (!brand || normalizedVendor === normalize(brand) || normalizedBrand === normalize(brand)) &&
     (!titlePrefix || product.title.toLowerCase().startsWith(titlePrefix)) &&
     (!excludeTitlePrefix || !product.title.toLowerCase().startsWith(excludeTitlePrefix)) &&
     (!catalogBrand || normalize(product.catalogBrand?.value || "") === normalize(catalogBrand));
@@ -67,6 +72,7 @@ const changed = results.filter((result) => result.status === "changed");
 const noPriceData = results.filter((result) => result.status === "no-price-data");
 const unmatched = results.filter((result) => result.status === "unmatched");
 const failed = results.filter((result) => result.status === "failed");
+const coverageIncomplete = results.filter((result) => result.reconciledCoverage && !result.reconciledCoverage.complete);
 
 const report = {
   generatedAt: new Date().toISOString(),
@@ -76,6 +82,7 @@ const report = {
   noPriceData: noPriceData.length,
   unmatched: unmatched.length,
   failed: failed.length,
+  coverageIncomplete: coverageIncomplete.length,
   products: results
 };
 
@@ -100,6 +107,7 @@ console.log(JSON.stringify({
   noPriceData: noPriceData.length,
   unmatched: unmatched.length,
   failed: failed.length,
+  coverageIncomplete: coverageIncomplete.length,
   reportPath: path.relative(ROOT, reportPath)
 }, null, 2));
 
@@ -108,8 +116,15 @@ async function refreshCandidate(product) {
   const groups = parseGroups(product.customizationGroups.value);
   try {
     const html = await fetchText(sourceUrl);
-    const sourceGroups = extractOptionGroups(html);
-    const { groups: nextGroups, pricedMatches, unmatchedOptions } = mergePriceDeltas(groups, sourceGroups);
+    const sourceGroups = extractOptionGroups(html, sourceUrl);
+    const priceMerge = mergePriceDeltas(groups, sourceGroups);
+    const nextGroups = reconcileOptions
+      ? mergeSourceCoverage(priceMerge.groups, sourceGroups)
+      : priceMerge.groups;
+    const { pricedMatches, unmatchedOptions } = priceMerge;
+    const relevantSourceGroups = sourceGroups.filter(isStoredSourceGroup);
+    const optionCoverage = compareOptionCoverage(groups, relevantSourceGroups);
+    const reconciledCoverage = compareOptionCoverage(nextGroups, relevantSourceGroups);
     if (!pricedMatches) {
       return {
         status: sourceGroups.length ? "no-price-data" : "unmatched",
@@ -120,6 +135,8 @@ async function refreshCandidate(product) {
         sourceUrl,
         pricedMatches,
         unmatchedOptions,
+        optionCoverage,
+        reconciledCoverage,
         productId: product.id,
         groups
       };
@@ -133,6 +150,8 @@ async function refreshCandidate(product) {
       sourceUrl,
       pricedMatches,
       unmatchedOptions,
+      optionCoverage,
+      reconciledCoverage,
       productId: product.id,
       groups: nextGroups
     };
@@ -179,7 +198,7 @@ function mergePriceDeltas(groups, sourceGroups) {
   return { groups: nextGroups, pricedMatches, unmatchedOptions };
 }
 
-function extractOptionGroups(html) {
+function extractOptionGroups(html, sourceUrl) {
   const labelMatches = [...html.matchAll(/<span[^>]+class=["'][^"']*\btc-epo-element-label-text\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/gi)].map((match) => ({
     label: cleanText(match[1]),
     index: match.index || 0
@@ -187,18 +206,109 @@ function extractOptionGroups(html) {
   return labelMatches.map((match, index) => {
     const section = html.slice(match.index, labelMatches[index + 1]?.index ?? html.length);
     const options = [...section.matchAll(/<li\b[^>]*class=["'][^"']*\btmcp-field-wrap\b[^"']*["'][^>]*>[\s\S]*?<\/li>/gi)]
-      .map((option) => extractOption(option[0]))
+      .map((option) => extractOption(option[0], sourceUrl))
       .filter(Boolean);
-    return { label: cleanText(match.label.replace(/^select\s+/i, "")), options };
+    const label = cleanText(match.label.replace(/^select\s+/i, ""));
+    return {
+      id: slugify(label),
+      label,
+      display: options.some((option) => option.swatch?.kind === "image") ? "swatches" : "cards",
+      selectionMode: options.some((option) => option.inputType === "checkbox") ? "multiple" : "single",
+      options,
+    };
   }).filter((group) => group.label && group.options.length >= 2);
 }
 
-function extractOption(html) {
+function extractOption(html, sourceUrl) {
   const label = cleanText(html.match(/<span[^>]+class=["'][^"']*\btc-label-text\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i)?.[1] || "") ||
     cleanText(html.match(/<img[^>]+alt=["']([^"']+)["']/i)?.[1] || "") ||
     cleanText(html.match(/\bvalue=["']([^"']+)["']/i)?.[1] || "").replace(/_\d+$/, "");
   if (!label) return null;
-  return { label, priceDelta: extractOptionPriceDelta(html) };
+  const rawImage = decodeHtml(html.match(/\bdata-image=["']([^"']+)["']/i)?.[1] || "") ||
+    decodeHtml(html.match(/<img[^>]+class=["'][^"']*\btc-image\b[^"']*["'][^>]+src=["']([^"']+)["']/i)?.[1] || "");
+  const imageUrl = absolutizeUrl(rawImage, sourceUrl);
+  return {
+    id: slugify(label),
+    label,
+    priceDelta: extractOptionPriceDelta(html),
+    inputType: html.match(/<input\b[^>]*\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase() || null,
+    selected: /<input\b[^>]*(?:\schecked(?:=["']checked["'])?)(?=[\s>])/i.test(html),
+    swatch: imageUrl ? { kind: "image", value: imageUrl, label } : undefined,
+  };
+}
+
+function mergeSourceCoverage(storedGroups, sourceGroups) {
+  // The current supplier page is authoritative for non-head option groups.
+  // Retaining source-absent stored choices is what allowed stale/unpriced
+  // options to survive earlier imports. WM head libraries are injected by the
+  // storefront's compatibility rules instead of being duplicated here.
+  return sourceGroups.filter(isStoredSourceGroup).map(sourceGroupForStorage);
+}
+
+function isStoredSourceGroup(group) {
+  return !/^(head|other heads)$/i.test(String(group?.label || "").trim());
+}
+
+function enrichStoredOption(stored, source) {
+  return {
+    ...stored,
+    priceDelta: source.priceDelta,
+    priceVerified: true,
+    purchasable: true,
+    swatch: source.swatch || stored.swatch,
+    productionNote: source.selected ? "Default supplier selection." : stored.productionNote,
+  };
+}
+
+function normalizeStoredOption(option) {
+  const neutral = /^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown|as shown in product photos)$/i.test(String(option?.label || "").trim()) ||
+    /default supplier selection|no paid add-on/i.test(option?.productionNote || "");
+  const free = /\bfree\b/i.test(option?.label || "");
+  if (option?.priceDelta !== undefined || (!neutral && !free)) return option;
+  return { ...option, priceDelta: 0, priceVerified: true, purchasable: true };
+}
+
+function sourceGroupForStorage(group) {
+  return {
+    id: group.id || slugify(group.label),
+    label: titleCase(group.label),
+    display: group.display || "cards",
+    selectionMode: group.selectionMode || "single",
+    options: group.options.map(sourceOptionForStorage),
+  };
+}
+
+function sourceOptionForStorage(option) {
+  return {
+    id: option.id || slugify(option.label),
+    label: /^no change$/i.test(option.label) ? "Factory default" : option.label,
+    priceDelta: option.priceDelta ?? 0,
+    priceVerified: true,
+    purchasable: true,
+    swatch: option.swatch,
+    productionNote: option.selected ? "Default supplier selection." : undefined,
+  };
+}
+
+function canonicalOptionKey(label) {
+  if (/^(no change|factory default|as shown|as shown in product photos)$/i.test(String(label || "").trim())) return "__default__";
+  if (/^(no add-on|no thanks|none)$/i.test(String(label || "").trim())) return "__none__";
+  return normalize(label);
+}
+
+function absolutizeUrl(value, sourceUrl) {
+  if (!value || value === "no-image") return null;
+  try {
+    const url = new URL(value, sourceUrl);
+    const nitroPath = url.pathname.match(/\/www\.rosemarydoll\.com(\/wp-content\/uploads\/.*)$/i)?.[1];
+    if (/nitrocdn\.com$/i.test(url.hostname) && nitroPath) {
+      return `https://www.rosemarydoll.com${nitroPath}`;
+    }
+    if (url.hostname === "rosemarydoll.com") url.hostname = "www.rosemarydoll.com";
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 function extractOptionPriceDelta(html) {
@@ -284,7 +394,7 @@ async function getAdminAccessToken(domain) {
 
 async function fetchText(url) {
   let lastError;
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
+  for (let attempt = 1; attempt <= sourceAttempts; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: {
@@ -292,7 +402,7 @@ async function fetchText(url) {
           "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
           "Accept-Language": "en-US,en;q=0.9"
         },
-        signal: AbortSignal.timeout(20_000)
+        signal: AbortSignal.timeout(sourceTimeoutMs)
       });
       if (!response.ok) {
         const error = new Error(`Source returned HTTP ${response.status}`);
@@ -304,7 +414,7 @@ async function fetchText(url) {
     } catch (error) {
       lastError = error;
       const retryable = error?.status === 403 || error?.status === 429 || error?.status === 503 || error?.name === "TimeoutError";
-      if (!retryable || attempt === 4) break;
+      if (!retryable || attempt === sourceAttempts) break;
       const delayMs = error.retryAfter ? error.retryAfter * 1000 : Math.min(8_000, 750 * (2 ** (attempt - 1)));
       await new Promise((resolve) => setTimeout(resolve, delayMs));
     }
@@ -330,8 +440,17 @@ function parseGroups(value) {
 }
 function isRosemaryUrl(value) { try { return new URL(value).hostname.endsWith("rosemarydoll.com"); } catch { return false; } }
 function normalize(value) { return cleanText(value).toLowerCase().replace(/\bselect\b/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+function slugify(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+function titleCase(value) { return cleanText(value).toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase()); }
 function cleanText(value) { return decodeHtml(String(value || "").replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim(); }
-function decodeHtml(value) { return String(value || "").replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&amp;/g, "&"); }
+function decodeHtml(value) {
+  return String(value || "")
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
 function parseArgs(values) { return Object.fromEntries(values.flatMap((value, index) => value.startsWith("--") ? [[value.slice(2), values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true]] : [])); }
 function assertShopifyAdminEnv() { if (!process.env.SHOPIFY_STORE_DOMAIN || !process.env.SHOPIFY_CLIENT_ID || !process.env.SHOPIFY_CLIENT_SECRET) throw new Error("SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID, and SHOPIFY_CLIENT_SECRET are required."); }
 async function loadLocalEnv() { try { const text = await fs.readFile(path.join(ROOT, ".env.local"), "utf8"); for (const rawLine of text.split(/\r?\n/)) { const line = rawLine.trim(); if (!line || line.startsWith("#")) continue; const separator = line.indexOf("="); if (separator < 0) continue; const key = line.slice(0, separator).trim(); const value = line.slice(separator + 1).trim().replace(/^['"]|['"]$/g, ""); process.env[key] ||= value; } } catch {} }

@@ -11,7 +11,8 @@ const WM_INCLUDED_IMAGE_GROUPS = [
   "areola size", "vagina color", "vagina type", "pubic hair", "standing feet"
 ] as const;
 
-const WM_VISUALIZER_GROUPS = /^(skin tone|hairstyle|eye color|lip finish|nail color|toe nail color|nipple color|areola size|vagina color|pubic hair)$/;
+const WM_VISUALIZER_GROUPS = /^(skin tone|hairstyle|hair color|eye color|lip finish|lipstick color|nail color|toe nail color|nipple color|areola size|vagina color|vagina hair type|pubic hair)$/;
+const WM_AS_SHOWN_LABEL = "As shown in product photos";
 
 const HEAD_GROUP = /^(a head|an extra (free )?head|get an extra (free )?head|choose a head|included extra head|add extra head)$/i;
 const EXTRA_HEAD_DEPENDENCY = /for extra head/i;
@@ -51,7 +52,7 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
   const groups = importedGroups
     .filter((group) => !HEAD_GROUP.test(group.label))
     .filter((group) => !EXTRA_HEAD_DEPENDENCY.test(group.label))
-    .map(normalizeWmGroup)
+    .map((group) => normalizeWmGroup(product, group))
     .filter((group) => group.options.length >= 2);
 
   return mergeGroups([
@@ -108,8 +109,14 @@ function buildChooseHead(options: CustomizationOption[]): CustomizationGroup | u
     selectionMode: "single",
     display: "swatches",
     options: [
-      { id: "factory-default", label: "As shown", description: "Keep the head shown in the product photos.", priceDelta: 0, priceVerified: true, purchasable: true, visualizable: false },
-      ...options.map((option) => ({ ...option, priceDelta: option.priceDelta ?? 0, priceVerified: true, purchasable: true, visualizable: false }))
+      asShownOption("head", undefined),
+      ...options.map((option) => ({
+        ...option,
+        priceDelta: option.priceDelta ?? 0,
+        priceVerified: true,
+        purchasable: true,
+        visualizable: option.swatch?.kind === "image",
+      }))
     ]
   };
 }
@@ -184,14 +191,52 @@ function normalizeProductHeadOptions(options: CustomizationOption[], fallback: n
   }));
 }
 
-function normalizeWmGroup(group: CustomizationGroup): CustomizationGroup {
+function normalizeWmGroup(product: Product, group: CustomizationGroup): CustomizationGroup {
   const label = group.label.trim().toLowerCase();
   const multiple = group.selectionMode === "multiple" || /multiple|accessories|add-ons?|lingerie/i.test(group.label);
+  const options = group.options.map((option) => normalizeWmOption(label, option));
+  const hasNeutralDefault = options.some(isNeutralDefault);
+  const normalizedOptions = hasNeutralDefault
+    ? options
+    : multiple
+      ? [noAddOnOption(group.id), ...options]
+      : [asShownOption(group.id, product.featuredImage?.url), ...options];
   return {
     ...group,
     selectionMode: multiple ? "multiple" : "single",
     required: multiple ? false : group.required,
-    options: group.options.map((option) => normalizeWmOption(label, option))
+    options: normalizedOptions,
+  };
+}
+
+function asShownOption(groupId: string, imageUrl?: string): CustomizationOption {
+  return {
+    id: `as-shown-${groupId}`,
+    label: WM_AS_SHOWN_LABEL,
+    description: "Keep this feature exactly as shown in the product photos.",
+    priceDelta: 0,
+    priceVerified: true,
+    purchasable: true,
+    visualizable: false,
+    productionNote: "Use the photographed product configuration for this feature.",
+    swatch: imageUrl ? {
+      kind: "image",
+      value: imageUrl,
+      label: WM_AS_SHOWN_LABEL,
+    } : undefined,
+  };
+}
+
+function noAddOnOption(groupId: string): CustomizationOption {
+  return {
+    id: `no-add-on-${groupId}`,
+    label: "No add-on",
+    description: "Do not add an option from this group.",
+    priceDelta: 0,
+    priceVerified: true,
+    purchasable: true,
+    visualizable: false,
+    productionNote: "No paid add-on selected.",
   };
 }
 
@@ -215,8 +260,13 @@ function isIncludedImageOption(groupLabel: string, option: CustomizationOption) 
 }
 
 function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote">) {
-  return /\bfree\b|^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown)$/i.test(option.label) ||
+  return /\bfree\b|^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown|as shown in product photos)$/i.test(option.label) ||
     /default supplier selection|no paid add-on/i.test(option.productionNote || "");
+}
+
+function isNeutralDefault(option: Pick<CustomizationOption, "label" | "productionNote">) {
+  return /^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown|as shown in product photos|same as (?:the )?(?:website )?(?:picture|photo))$/i.test(option.label.trim()) ||
+    /default supplier selection|no paid add-on|photographed product configuration/i.test(option.productionNote || "");
 }
 
 function isStandardTpeBuild(product: Product, groups: CustomizationGroup[]) {

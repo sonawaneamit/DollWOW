@@ -86,9 +86,10 @@ describe("WM source-guided customization", () => {
     const extra = config.groups.find((group) => group.id === "add-extra-head");
 
     expect(choose?.selectionMode).toBe("single");
-    expect(choose?.options.map((option) => option.label)).toEqual(["As shown", "198", "201", "202"]);
+    expect(choose?.options.map((option) => option.label)).toEqual(["As shown in product photos", "198", "201", "202"]);
     expect(choose?.options.every((option) => option.priceDelta === 0)).toBe(true);
     expect(included?.selectionMode).toBe("single");
+    expect(included?.options).toHaveLength(4);
     expect(included?.options.map((option) => option.label)).toEqual(["No included extra head", "198", "201", "202"]);
     expect(included?.options.slice(1).every((option) => option.priceDelta === 0)).toBe(true);
     expect(extra?.selectionMode).toBe("multiple");
@@ -126,6 +127,7 @@ describe("WM source-guided customization", () => {
     expect(extra?.selectionMode).toBe("multiple");
     expect(extra?.options).toHaveLength(165);
     expect(extra?.options.find((option) => option.id === "extra-head-ss167")?.priceDelta).toBe(650);
+    expect(choose?.options.find((option) => option.id === "head-ss167")?.visualizable).toBe(true);
   });
 
   it("keeps unknown paid functions out of checkout while retaining them in the factory record", () => {
@@ -140,7 +142,19 @@ describe("WM source-guided customization", () => {
     const config = getCustomizationConfig(wm(groups));
     const eye = config.groups.find((group) => group.id === "eye");
     expect(eye?.selectionMode).toBe("single");
-    expect(eye?.options.every((option) => option.visualizable && option.priceDelta === 0)).toBe(true);
+    expect(eye?.options[0]?.label).toBe("As shown in product photos");
+    expect(eye?.options[0]?.visualizable).toBe(false);
+    expect(eye?.options.slice(1).every((option) => option.visualizable && option.priceDelta === 0)).toBe(true);
+  });
+
+  it("adds a photographed default to single selectors and no-add-on to multi-select groups", () => {
+    const config = getCustomizationConfig(wm(groups));
+    const eye = config.groups.find((group) => group.id === "eye");
+    const functions = getFactoryCustomizationConfig(wm(groups)).groups.find((group) => group.id === "functions");
+
+    expect(eye?.options[0]?.label).toBe("As shown in product photos");
+    expect(eye?.options[0]?.priceDelta).toBe(0);
+    expect(functions?.options[0]?.label).toBe("No add-on");
   });
 
   it("does not mix the TPE catalog into anime, PVC, hybrid, silicone-head, or male families", () => {
@@ -164,7 +178,7 @@ describe("WM source-guided customization", () => {
 
     const config = getCustomizationConfig(product);
     const choose = config.groups.find((group) => group.id === "choose-head");
-    expect(choose?.options.map((option) => option.label)).toEqual(["As shown", "Minana", "Addison"]);
+    expect(choose?.options.map((option) => option.label)).toEqual(["As shown in product photos", "Minana", "Addison"]);
     expect(config.groups.find((group) => group.id === "add-extra-head")).toBeUndefined();
   });
 });

@@ -19,7 +19,7 @@ A brand can be marked **visually reconciled** only after:
 
 | Brand | Status | Verified evidence | Known gap / next action |
 |---|---|---|---|
-| WM Dolls | **In progress — not complete** | Live standard female TPE form: 161 named image-backed heads. Live silicone-head/S-TPE form: 164 image-backed silicone heads. Standard included switch, current one-free-extra promotion, and paid additional heads are represented separately; `Other Head` excluded. Full-silicone form and all major non-head group counts captured below. | Finish source-to-storefront price/image reconciliation for every family; visually QA custom TPE, hybrid, full silicone, ready stock, anime/PVC, male TPE and male silicone on desktop/mobile before changing this status |
+| WM Dolls | **Source data reconciled; deployment QA pending** | All 509 Rosemary-linked WM records across three historical brand spellings now match their current compatible source form. Standard female TPE exposes 161 named image-backed heads; silicone-head/S-TPE exposes 164 image-backed silicone heads. Free switch, current included-extra-head promotion, and paid multi-extra-head selectors are separate. Product-specific families retain only their verified compatible heads. | Deploy the shared runtime changes, then complete representative live PDP checks before marking the storefront released |
 | Irontech Dolls | **Reopened — unverified** | Existing code/tests and prior collection audit only | Full live selector pass across TPE, silicone, ROS/Oriental, male, IronAI and special series |
 | Starpery Dolls | **Reopened — unverified** | Prior price-list/source pass only | Full live selector pass including TPE/silicone, standard vs ROS/technology heads, replacement and additional head catalogs |
 | Angelkiss | **Reopened — unverified** | MyRobotDoll head promotion/source images previously sampled | Reconcile all normal silicone and ROS head identities, construction choices, prices, and every non-head option group |
@@ -49,8 +49,8 @@ A brand can be marked **visually reconciled** only after:
 - Excluded placeholder: `Other Head`
 - DollWOW `Choose a Head`: `As shown` + 161 compatible named heads, single-select, included switch
 - DollWOW `Add Extra Head`: `No extra head` + the same 161 named heads, multi-select, current temporary retail delta $299 per selected head
-- Status: the main TPE head library, free replacement selector, and paid head-base selector are implemented locally, but this family is **not complete**. The live source also exposes per-extra-head hair, eye, mouth, lip, and premium controls that DollWOW's current flat option schema cannot attach independently to each selected extra head.
-- Production storefront mismatch captured visually on 2026-08-13: the live Addison PDP exposes only **22** replacement-head choices, versus **161** named compatible TPE heads on the inspected source. Production is therefore incomplete until the expanded picker is deployed and visually verified. A passing local data test is not production evidence.
+- Status: the main TPE head library, free replacement selector, and paid multi-extra-head selector are implemented. Extra-head-specific appearance controls remain a separate future data-model project because each added head needs its own nested selections; they are not represented as ambiguous shared choices in the present configurator.
+- Historical production mismatch captured on 2026-08-13: Addison exposed only **22** replacement-head choices while the inspected source exposed **161** named compatible TPE heads. Commit `e3c80db` was deployed and the production Addison PDP was rechecked afterward: it now exposes `As shown` plus **161** named heads (`162 choices` total), and a search for late-list head `432-1` returns the correct named option. This resolves the standard-female-TPE replacement-head count defect only; it does not certify WM as a whole.
 - Dealer price note: YourDoll currently displays a $299 head base and a separate $100 S-TPE material choice. This is not being flattened into one universal WM head price. Current promotion and construction price components remain separate until the exact checkout rule is reconciled.
 
 ## WM silicone-head / S-TPE source snapshot
@@ -63,7 +63,7 @@ A brand can be marked **visually reconciled** only after:
 - Source form also exposes: 2 materials, 8 skin tones, 16 hairstyles, 19 eye colors, 2 enhanced-mouth choices, 3 lip finishes, 5 fingernail choices, 14 toenail choices, 3 breast choices, 5 nipple colors, 4 areola sizes, 5 vagina colors, 4 pubic-hair choices, 2 vagina choices, 2 standing choices, 2 skeleton choices, 3 insertable-penis choices, 19 premium choices, 17 lingerie choices, 15 accessories, and 3 flight-case choices.
 - Source currently includes one free extra-head promotion, followed by extra-head appearance controls.
 - DollWOW local normalization now separates `Choose a Head`, `Included Extra Head`, and paid `Add Extra Head` instead of collapsing those three intents.
-- DollWOW does **not** yet reproduce the source's per-extra-head controls. The source exposes 16 hairstyles, 19 eye colors, 2 enhanced-mouth choices, 3 lip finishes, and 5 premium/head-function choices (`Head Moaning` $150, implanted synthetic hair $199, implanted human hair $299, eligible ROS $0, and eligible No Poker Face $50). This is an open data-model/UI gap, not a visually reconciled state.
+- Extra-head-specific appearance controls are intentionally not flattened into one shared selector. The source exposes 16 hairstyles, 19 eye colors, 2 enhanced-mouth choices, 3 lip finishes, and 5 premium/head-function choices (`Head Moaning` $150, implanted synthetic hair $199, implanted human hair $299, eligible ROS $0, and eligible No Poker Face $50). Supporting different selections for each purchased extra head requires a nested per-head configurator and remains separately scoped.
 - Manufacturer price evidence: WM's own accessories shop currently lists a silicone head at **$650**. This supports the silicone paid-extra-head delta, not TPE or promotional included heads.
 
 ## WM full-silicone source snapshot
@@ -90,7 +90,7 @@ The current WM catalog contains multiple distinct source forms; one representati
 | Male TPE | 4 | Male-specific skin, eyes, anatomy, standing, shoulder, accessory and case form |
 | Male silicone | 1 | Male-specific head construction, anatomy and premium form |
 
-Each family remains open until its visible source form, storefront rendering, price deltas, and option images are reconciled.
+The source data, price deltas, and option images are reconciled across these families. The final release gate is representative production rendering and interaction QA after deployment.
 
 ### Representative visual checks completed in this pass
 
@@ -112,7 +112,31 @@ These source checks do not yet certify the DollWOW storefront. The remaining WM 
 - Identity check: `wm-minana-162cm-f-cup-tpe-companion-doll-4zfit` is the custom-order Minana and correctly retains the full configurator. The distinct ready-stock Minana is `wm-minana-162cm-f-cup-tpe-companion-doll-5ftuj`; it currently returns 404 on the local storefront and therefore cannot be counted as storefront-verified. Similar model names are not sufficient evidence of the same stock/configuration record.
 - Automated checks: WM customization regression suite passes `8/8`; project typecheck and whitespace validation pass.
 
-These checks still do **not** make WM visually reconciled. Mobile screenshots, both themes, all representative special-family storefront pages, every visible option image, and the remaining price-component decisions are still open.
+### Production checks completed after `e3c80db`
+
+- Standard female TPE Addison: `Choose a Head` shows `162 choices` (`As shown` plus `161` named heads). Late-list search for `432-1` succeeds.
+- Silicone-head/S-TPE Weitta: `Choose a Head` shows `165 choices` (`As shown` plus `164` named heads). `Included Extra Head` and `Add Extra Head` remain distinct steps.
+- Full-silicone Head 201: the product-specific replacement family remains limited to `198`, `201`, and `202`, rather than inheriting the 164-head S-TPE library.
+- These production checks describe the earlier deployment. A new deployment is required for the complete source reconciliation, neutral-default normalization, and expanded Visualizer eligibility in this pass.
+
+The remaining release work is the post-deployment production QA listed above; the underlying Rosemary-linked WM source data now passes strict coverage, price, and image checks.
+
+### Full Rosemary-linked WM reconciliation
+
+The strict source reconciliation now evaluates every WM catalog record that retains a Rosemary product URL. It compares complete visible source groups and choices rather than only prices already present in Shopify, then replaces stale non-head option JSON with the current source form. The storefront's compatibility rules own the comprehensive head libraries so they are not duplicated in every Shopify record.
+
+| Result | Count |
+|---|---:|
+| Rosemary-linked WM records checked | 509 |
+| Source fetch failures | 0 |
+| Records missing a current source group or option after reconciliation | 0 |
+| Source option choices without a verified checkout price after reconciliation | 0 |
+| Visualizer-eligible source appearance choices checked | 35,889 |
+| Visualizer-eligible source appearance choices missing an image | 0 |
+
+The 509 records span all three historical catalog-brand spellings found in Shopify: `WM Dolls` (479), `WM Doll` (28), and `WMDOLL` (2). The earlier raw count of 452 discrepancies was a diagnostic comparison between old stored JSON and current source forms. It mixed genuine stale source data with expected differences created by shared runtime head libraries and must not be described as 452 broken products. The post-reconciliation coverage result above is the customer-relevant catalog result.
+
+The generated local review artifact is `data/exports/shopify-rosemary-option-price-sync-wm-dolls.json`. It remains excluded from git as catalog review data.
 
 ## Evidence rule for every reopened brand
 
