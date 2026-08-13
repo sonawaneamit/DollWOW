@@ -32,7 +32,7 @@ const products = [
   },
   {
     handle: "piper-lana-155cm-f-cup-silicone-companion-doll-1d7qv",
-    facts: ["Piper Lana", "clearly adult doll", "full silicone", "155 cm (5 ft 1 in)", "F-cup"],
+    facts: ["Brand: Piper", "Doll name: Lana", "clearly adult doll", "full silicone", "155 cm (5 ft 1 in)", "F-cup"],
   },
   {
     handle: "irontech-kevin-176cm-silicone-companion-doll-is1mv",
@@ -79,6 +79,7 @@ Requirements:
 - Match the reference's confident cadence, specificity, sensual escalation, factual restraint, and memorable final line. Do not copy its baseball scenario, phrases, sentence openings, or props.
 - Let the fantasy unfold naturally. The doll may have a voice, personality, agency, and initiative within the fictional scene.
 - Every factual detail about appearance, clothing, measurements, material, or product construction must come from the verified facts or neutral visual evidence. You may freely invent the adult fantasy's actions, private setting, dialogue, mood, and encounter.
+- Address the doll by the supplied Doll name. Never combine the Brand and Doll name into a personal name.
 - Do not invent tactile qualities, temperature, scent, realism, performance, capabilities, included accessories, availability, or guarantees.
 - Use the styling and surroundings to inspire the fantasy, but do not narrate a plain photography setup. The finished copy must not discuss photographs, galleries, studios, source material, analysis, prompts, SEO, or content production.
 - Use US and metric measurements exactly as supplied if measurements appear.
@@ -499,8 +500,9 @@ async function productFromUrl(rawUrl) {
   const preferredProperty = (name) => propertyValues(name).find((value) => String(value).includes("/")) || propertyValues(name)[0];
   const eligibility = fullBodyEligibility(product, propertyValues, preferredProperty);
   const facts = [
-    product.brand?.name,
-    product.name,
+    product.brand?.name ? `Brand: ${product.brand.name}` : null,
+    dollNameFromProduct(product) ? `Doll name: ${dollNameFromProduct(product)}` : null,
+    product.name ? `Catalog title: ${product.name}` : null,
     product.material || preferredProperty("Material"),
     preferredProperty("Height"),
     preferredProperty("Weight"),
@@ -521,6 +523,23 @@ async function productFromUrl(rawUrl) {
   const contactSheet = path.join("output/pdp-pilot-contact-sheets", `${handle}-contact-auto.jpg`);
   await buildContactSheet(sourceImages, contactSheet);
   return { handle, facts, sourceUrl: url.toString(), sourceImages, contactSheet, eligibility };
+}
+
+function dollNameFromProduct(product) {
+  let name = String(product.name || "").trim();
+  const brand = String(product.brand?.name || "").trim();
+  if (brand) {
+    const leadingBrand = new RegExp(`^(?:${escapeRegExp(brand)}\\s*)+`, "i");
+    name = name.replace(leadingBrand, "").trim();
+  }
+  return name
+    .replace(/\s+\d+(?:\.\d+)?\s*cm\b.*$/i, "")
+    .replace(/\s+(?:customizable|ready-to-ship|companion|sex)\s+doll\b.*$/i, "")
+    .trim();
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function fullBodyEligibility(product, propertyValues, preferredProperty) {

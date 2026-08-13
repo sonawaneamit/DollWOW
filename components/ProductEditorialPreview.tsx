@@ -57,11 +57,11 @@ const editorialPreviews: Record<string, EditorialPreview> = {
   },
   "piper-lana-155cm-f-cup-silicone-companion-doll-1d7qv": {
     imageIndex: 0,
-    imageAlt: "Piper Lana with long blonde hair wearing lavender lingerie in a bedroom",
+    imageAlt: "Lana by Piper with long blonde hair wearing lavender lingerie in a bedroom",
     imagePosition: "center 15%",
     eyebrow: "A private sanctuary",
-    heading: "The quiet allure of Piper Lana",
-    paragraph: "Piper Lana waits in the dim light of the bedroom, her long blonde hair cascading over her shoulders against the white sheets. Dressed in a muted lavender two-piece that barely contains her F-cup silhouette, she watches you with dark, expectant eyes. At 155 cm (5 ft 1 in), her 60.6 lb (27.5 kg) silicone frame brings generous curves to the fantasy. She leans back, arching her spine to invite your touch, her lips parted in a silent plea for your attention. The world outside fades until only her curves remain. Tonight, Piper Lana claims your full focus, demanding everything you have to give.",
+    heading: "The quiet allure of Lana",
+    paragraph: "Lana waits in the dim light of the bedroom, her long blonde hair cascading over her shoulders against the white sheets. Dressed in a muted lavender two-piece that barely contains her F-cup silhouette, she watches you with dark, expectant eyes. At 155 cm (5 ft 1 in), her 60.6 lb (27.5 kg) silicone frame brings generous curves to the fantasy. She leans back, arching her spine to invite your touch, her lips parted in a silent plea for your attention. The world outside fades until only her curves remain. Tonight, Lana claims your full focus, demanding everything you have to give.",
     facts: [
       { label: "Height", value: "5 ft 1 in / 155 cm" },
       { label: "Material", value: "Silicone" },
