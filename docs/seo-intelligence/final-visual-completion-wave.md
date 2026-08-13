@@ -2,37 +2,13 @@
 
 Date: August 13, 2026
 Scope: Launch work only
-Status: One new visual family awaiting sample approval; three approved families completed and integrated
+Status: Complete. Three approved brand-guide extensions integrated; proposed size-and-weight asset rejected as unnecessary.
 
 ## 1. Size And Weight Guide
 
 URL: `/learn/sex-doll-size-weight-guide`
-New visual family: Data-led catalog comparison
-Approval rule: Generate one sample and stop for approval before further variants.
 
-### Sample Concept
-
-Create a vertical magazine infographic called **Sex Doll Size & Weight** using three current DollWOW catalog listings as recognizable product anchors. The graphic must make handling differences immediately understandable without suggesting that height alone predicts weight.
-
-Verified dataset:
-
-- 2,615 current full-size DollWOW listings analyzed.
-- Median height: 5 ft 4 in / 163 cm.
-- Middle half of heights: 5 ft 2 in to 5 ft 6 in / 158-167 cm.
-- Median listed weight: 81.5 lb / 37 kg.
-- Middle half of listed weights: 73.9-90.4 lb / 33.5-41 kg.
-
-Catalog anchors:
-
-| Role | Product | Brand | Material | Height | Weight | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| Compact full-size | Real Lady Viki 150cm Silicone | Real Lady | Silicone | 4 ft 11 in / 150 cm | 57.3 lb / 26 kg | `/product-media/v4/real-lady-viki-150cm-r10-silicone-doll/0` |
-| Middle-range handling | Starpery Yedda 167cm E-Cup Silicone Head | Starpery Dolls | Hybrid | 5 ft 6 in / 167 cm | 81.5 lb / 37 kg | `/product-media/v4/starpery-yedda-167cm-e-cup-silicone-head-companion-doll-1mzjd/0` |
-| Taller full-size | Dolls Castle Zarina 175cm X-Cup TPE | Dolls Castle | TPE | 5 ft 9 in / 175 cm | 152.1 lb / 69 kg | `/product-media/v4/doll-castle-zarina-175cm-x-cup-tpe-companion-doll-1ct53/0` |
-
-Required takeaway: **Choose by listed weight and measurements, not height alone.**
-
-The visible note must state that this is a current DollWOW catalog analysis, not the entire market, and that one body may appear in more than one listing. Critical data remains in HTML on the guide.
+No additional visual will be published. The proposed catalog infographic repeated information already communicated by the guide and the flagship visual without adding enough buyer value. The sample was rejected and is not a launch blocker or future task.
 
 ## 2. Irontech Buying Guide
 
