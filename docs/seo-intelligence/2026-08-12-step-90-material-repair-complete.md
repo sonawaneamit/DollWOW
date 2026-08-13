@@ -79,3 +79,5 @@ The TPE visual was approved on 2026-08-13. It uses a current Irontech TPE catalo
 ## Release Gate
 
 Focused OnPage correctly returned 404 for both hidden URLs. After visual approval and publication, require 200 responses, canonicals, indexability, rendered titles/H1s, author/review dates, Article and visible FAQ schema, manufacturer citations, internal links, accurate alt/captions, and no internal SEO language. Then submit IndexNow and monitor GSC, Bing, AI search volume, LLM Mentions, and citations.
+
+The TPE guide completed its post-release gate on 2026-08-13. DataForSEO Instant Pages returned an OnPage score of 97.07 with HTTP 200, a self-referencing canonical, 2,590 rendered words, and valid title, description, and H1 checks. The final call cost `$0.00015` and used task `08130810-1783-0275-0000-743f6e343496`. The Learning Center audit covered 886 references across 47 public articles with zero broken or redirected destinations, and IndexNow accepted the exact canonical URL with HTTP 200.
