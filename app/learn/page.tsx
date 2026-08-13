@@ -105,6 +105,8 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
               const author = getLearnAuthor(article.author);
               const cardImage = article.slug === "piper-dolls-buying-guide"
                 ? "/images/learn/piper-dolls-buying-guide-card.webp"
+                : article.slug === "how-silicone-sex-dolls-are-made"
+                  ? "/images/learn/how-silicone-sex-dolls-are-made-card.webp"
                 : article.featuredImage;
               return (
                 <article key={article.slug} className="tone-card overflow-hidden rounded-[8px]">

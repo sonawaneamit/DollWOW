@@ -38,7 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "sex-doll-size-weight-guide": "Sex Doll Size & Weight Guide | 2,615 Listings Analyzed",
     "sex-doll-storage": "Sex Doll Storage: Safe, Private Storage Guide",
     "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims",
-    "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models"
+    "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models",
+    "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
@@ -151,6 +152,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
 function articleFeaturedImageDimensions(slug: string) {
   if (slug === "sex-doll-guide") return { width: 1672, height: 941 };
   if (slug === "piper-dolls-buying-guide") return { width: 1122, height: 1402 };
+  if (slug === "how-silicone-sex-dolls-are-made") return { width: 1003, height: 1923 };
   return { width: 1536, height: 1024 };
 }
 
@@ -1122,6 +1124,20 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "real-lady-viki-150cm-r10-silicone-doll",
         "6ye-claudy-170cm-na-cup-silicone-head-companion-doll-c6f1s",
         "irontech-kevin-170cm-silicone-companion-doll-1kpog"
+      ]
+    },
+    "how-silicone-sex-dolls-are-made": {
+      title: "Compare six current full-silicone builds",
+      description: "Use these current products to apply the guide: compare the exact sculpt, body and head construction, measurements, listed weight, finish, options, and approval path. They are varied examples, not a quality ranking.",
+      collectionHref: "/shop/silicone",
+      filters: { material: "silicone", productForm: "full-doll" },
+      handles: [
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
+        "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc",
+        "real-lady-sylvia-170cm-s43-silicone-doll"
       ]
     },
     "best-tpe-sex-dolls": {

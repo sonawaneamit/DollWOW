@@ -5,8 +5,17 @@ import { buildArticleFaqStructuredData, buildArticleStructuredData, getLearningA
 
 describe("Learning Center content ownership", () => {
   it("keeps every non-production article out of public routes", () => {
-    expect(getLearningArticle("how-silicone-sex-dolls-are-made")).toBeNull();
     expect(getLearningArticle("zelex-dolls-buying-guide")).toBeNull();
+  });
+
+  it("publishes the approved silicone manufacturing guide with visual and source evidence", () => {
+    const article = getLearningArticle("how-silicone-sex-dolls-are-made");
+    expect(article?.featuredImage).toBe("/images/learn/how-silicone-sex-dolls-are-made.webp");
+    expect(article?.body).toContain("The Manufacturing Process at a Glance");
+    expect(article?.body).toContain("https://www.irontechdoll.com/blog/how-to-make-a-sex-doll/");
+    expect(article?.body).toContain("Exact methods vary by manufacturer and product");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
 
   it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {

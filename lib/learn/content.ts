@@ -257,6 +257,7 @@ function priority(slug: string) {
     "best-sex-doll-stores",
     "best-tpe-sex-dolls",
     "silicone-sex-doll-guide",
+    "how-silicone-sex-dolls-are-made",
     "most-realistic-sex-dolls",
     "mini-sex-dolls",
     "male-sex-doll-buying-guide",
@@ -332,7 +333,8 @@ function featuredImageAlt(title: string, slug: string) {
     "realdoll-alternatives": "A current Starpery catalog doll in a premium silicone inspection spread covering sculpt, finish, construction, measurements, handling, and options",
     "tantaly-buying-guide": "Three current Tantaly torso formats with verified heights and a checklist for comparing width, depth, weight, and material",
     "erovenus-dolls-review-guide": "Three current Erovenus products illustrating product form, surface finish, complete scale, and the evidence a useful review should include",
-    "piper-dolls-buying-guide": "Piper Dolls buying guide featuring the current adult Piper Lana silicone doll with TPE, silicone, compact, and full-size comparison prompts"
+    "piper-dolls-buying-guide": "Piper Dolls buying guide featuring the current adult Piper Lana silicone doll with TPE, silicone, compact, and full-size comparison prompts",
+    "how-silicone-sex-dolls-are-made": "Visual guide to silicone doll production from sculpting and mold preparation through skeleton placement, silicone casting, hand finishing, inspection, and packing"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;

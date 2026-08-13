@@ -8,9 +8,9 @@ category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: visual-review
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-12"
+lastReviewed: "2026-08-13"
 ---
 
 # How Silicone Sex Dolls Are Made: From Sculpt to Final Inspection
