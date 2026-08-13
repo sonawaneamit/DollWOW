@@ -28,6 +28,16 @@ describe("Learning Center content ownership", () => {
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
 
+  it("publishes the approved TPE repair guide with diagnosis before intervention", () => {
+    const article = getLearningArticle("tpe-sex-doll-repair");
+    expect(article?.featuredImage).toBe("/images/learn/tpe-sex-doll-repair.webp");
+    expect(article?.body).toContain("The safest first step is diagnosis, not glue");
+    expect(article?.body).toContain("https://support.tantaly.com/hc/en-us/articles/52200362118169");
+    expect(article?.body).toContain("There is no universal time");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
+
   it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {
     const article = getLearningArticle("piper-dolls-buying-guide");
     expect(article?.primaryKeyword).toBe("piper sex doll");

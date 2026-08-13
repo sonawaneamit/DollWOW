@@ -2,7 +2,7 @@
 
 Date: 2026-08-12  
 Market: United States  
-Status: AI/GEO validated; visual packages pending
+Status: TPE guide released; silicone visual package pending
 
 ## Canonical Owners
 
@@ -73,6 +73,8 @@ Each hidden guide needs a distinct mobile-first instructional visual before rele
 - Silicone: damage-type pathway separating tear, finish loss, loose component, seam/joint, gel/internal, and powered concerns.
 
 Use explanatory illustration rather than explicit repair photography. Keep exact warnings and all decision steps in rendered HTML. Generate one sample at a time and stop for owner approval.
+
+The TPE visual was approved on 2026-08-13. It uses a current Irontech TPE catalog product for material context and illustrated synthetic-material examples for a small surface split, high-stress damage, and exposed internal components. The guide preserves the exact decision steps in HTML and labels the product as context rather than a damaged unit.
 
 ## Release Gate
 

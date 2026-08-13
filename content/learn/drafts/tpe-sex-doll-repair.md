@@ -8,7 +8,7 @@ category: "Materials And Care"
 author: "jesse"
 authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
-status: visual-review
+status: production
 reviewOwner: catalog
 lastReviewed: "2026-08-12"
 ---

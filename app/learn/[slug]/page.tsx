@@ -40,7 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims",
     "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models",
     "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process",
-    "sex-doll-breast-options": "Sex Doll Breast Options: Solid, Hollow & Gel"
+    "sex-doll-breast-options": "Sex Doll Breast Options: Solid, Hollow & Gel",
+    "tpe-sex-doll-repair": "TPE Sex Doll Repair: Tears, Glue & Safe Steps"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
@@ -155,6 +156,7 @@ function articleFeaturedImageDimensions(slug: string) {
   if (slug === "piper-dolls-buying-guide") return { width: 1122, height: 1402 };
   if (slug === "how-silicone-sex-dolls-are-made") return { width: 1003, height: 1923 };
   if (slug === "sex-doll-breast-options") return { width: 1024, height: 1920 };
+  if (slug === "tpe-sex-doll-repair") return { width: 1080, height: 1620 };
   return { width: 1536, height: 1024 };
 }
 
@@ -1151,6 +1153,17 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
         "starpery-yuan-154cm-yuan-2-full-silicone-doll",
         "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0"
+      ]
+    },
+    "tpe-sex-doll-repair": {
+      title: "Compare three current TPE dolls",
+      description: "These live product pages provide the exact brand, model, body material, measurements, and support context a repair diagnosis needs. They are catalog examples, not evidence that one repair method works across TPE formulations.",
+      collectionHref: "/shop/tpe",
+      filters: { material: "tpe", productForm: "full-doll" },
+      handles: [
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+        "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y",
+        "sedoll-avery-b-153cm-f-cup-tpe-companion-doll-1jtw6"
       ]
     },
     "best-tpe-sex-dolls": {
