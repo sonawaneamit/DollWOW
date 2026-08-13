@@ -121,6 +121,7 @@ function parseArgs(argv) {
     else if (token === "--urls-file") parsed.urlsFile = argv[++index];
     else if (token === "--output") parsed.output = argv[++index];
     else if (token === "--concurrency") parsed.concurrency = argv[++index];
+    else if (token === "--resume") parsed.resume = true;
     else if (token === "--theme-only") parsed.themeOnly = true;
     else if (token === "--eligibility-only") parsed.eligibilityOnly = true;
     else if (token === "--resolve-theme") parsed.resolveTheme = true;
@@ -237,8 +238,15 @@ async function main() {
   const inputUrls = args.urlsFile
     ? (await fs.readFile(args.urlsFile, "utf8")).split(/\r?\n/).map((value) => value.trim()).filter(Boolean)
     : args.url ? [args.url] : [];
+  const existingResults = args.resume ? await readExistingResults() : [];
+  const completedHandles = new Set(
+    existingResults
+      .filter((result) => ["draft_needs_human_review", "excluded_not_full_body"].includes(result.provenance?.status))
+      .map((result) => result.handle)
+  );
+  const pendingUrls = inputUrls.filter((url) => !completedHandles.has(handleFromUrl(url)));
   const runProducts = inputUrls.length
-    ? await mapWithConcurrency(inputUrls, 4, productFromUrl)
+    ? await mapWithConcurrency(pendingUrls, 12, safeProductFromUrl)
     : products.map((product) => ({ ...product, eligibility: { eligible: true, reason: "approved_pilot_fixture" } }));
 
   if (args.eligibilityOnly) {
@@ -252,10 +260,13 @@ async function main() {
     return;
   }
 
-  const results = [];
+  const results = [...existingResults];
   const concurrency = Math.max(1, Number(args.concurrency || 2));
   for (let offset = 0; offset < runProducts.length; offset += concurrency) {
     const batch = await Promise.all(runProducts.slice(offset, offset + concurrency).map(async (product) => {
+    if (product.inputError) {
+      return failedResult(product, "input_failed", product.inputError);
+    }
     if (product.eligibility?.eligible !== true) {
       return {
         handle: product.handle,
@@ -271,6 +282,7 @@ async function main() {
       };
     }
 
+    try {
     const contactSheet = product.contactSheet || path.join("output/pdp-pilot-contact-sheets", `${product.handle}-contact.jpg`);
     const image = await fs.readFile(contactSheet, "base64");
     const extraction = await callVenice({
@@ -438,14 +450,68 @@ async function main() {
         status: "draft_needs_human_review",
       },
     };
+    } catch (error) {
+      return failedResult(product, "generation_failed", error instanceof Error ? error.message : String(error));
+    }
     }));
-    results.push(...batch);
+    for (const result of batch) {
+      const priorIndex = results.findIndex((entry) => entry.handle === result.handle);
+      if (priorIndex >= 0) results[priorIndex] = result;
+      else results.push(result);
+    }
     await writeResults(results);
+    console.log(`Checkpoint: ${results.length} total results, ${Math.min(offset + concurrency, runProducts.length)}/${runProducts.length} pending products processed`);
   }
 
   console.log(`Wrote ${results.length} review-only drafts to ${OUTPUT}`);
   for (const result of results) {
     console.log(`${result.handle}: ${result.publishable ? "machine gates pass" : "review required"}`);
+  }
+}
+
+async function readExistingResults() {
+  try {
+    const existing = JSON.parse(await fs.readFile(OUTPUT, "utf8"));
+    return Array.isArray(existing.results) ? existing.results : [];
+  } catch (error) {
+    if (error?.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
+async function safeProductFromUrl(url) {
+  try {
+    return await productFromUrl(url);
+  } catch (error) {
+    return {
+      handle: handleFromUrl(url),
+      sourceUrl: url,
+      inputError: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
+function failedResult(product, status, error) {
+  return {
+    handle: product.handle,
+    sourceUrl: product.sourceUrl || null,
+    verifiedFacts: product.facts || [],
+    eligibility: product.eligibility || null,
+    publishable: false,
+    error,
+    provenance: {
+      promptVersion: "pdp-editorial-fantasy-v5",
+      generatedAt: new Date().toISOString(),
+      status,
+    },
+  };
+}
+
+function handleFromUrl(rawUrl) {
+  try {
+    return new URL(rawUrl).pathname.match(/^\/products\/([^/]+)\/?$/)?.[1] || rawUrl;
+  } catch {
+    return rawUrl;
   }
 }
 
