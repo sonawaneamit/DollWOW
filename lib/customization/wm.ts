@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import { WM_SILICONE_HEADS, WM_STANDARD_TPE_HEADS } from "@/lib/customization/wm-heads";
 
 export const WM_TPE_EXTRA_HEAD_PRICE = 299;
 export const WM_SILICONE_EXTRA_HEAD_PRICE = 650;
@@ -12,33 +13,7 @@ const WM_INCLUDED_IMAGE_GROUPS = [
 
 const WM_VISUALIZER_GROUPS = /^(skin tone|hairstyle|eye color|lip finish|nail color|toe nail color|nipple color|areola size|vagina color|pubic hair)$/;
 
-// Image-backed standard TPE head catalog found in WM's current dealer form on
-// 2026-08-13. It is deliberately not reused for silicone, PVC/anime, or male
-// builds because those head connections and materials are different.
-const WM_STANDARD_TPE_HEADS: CustomizationOption[] = [
-  ["36", "2021/05/36-1.png"], ["56", "2021/05/56.jpeg"], ["70", "2021/05/70-1.png"],
-  ["159", "2021/10/159.png"], ["162", "2021/10/162.png"], ["173", "2020/07/173.jpg"],
-  ["198", "2021/05/198.jpeg"], ["203", "2020/07/203.jpg"], ["233", "2021/05/233-light-tan-1.png"],
-  ["266", "2020/12/266.png"], ["273", "2020/12/273.webp"], ["302", "2021/05/302.png"],
-  ["335", "2022/06/335.png"], ["368", "2021/05/368.png"], ["370", "2021/05/370.png"],
-  ["382", "2020/12/382.png"], ["394", "2022/06/394.jpg"], ["398", "2021/06/398.jpg"],
-  ["400", "2022/06/400.jpg"], ["406", "2022/06/406.jpg"], ["414", "2022/03/414.jpg"],
-  ["418", "2021/11/418-1.jpg"]
-].map(([head, path]) => ({
-  id: `head-${head}`,
-  label: `Head ${head} · TPE`,
-  priceDelta: 0,
-  priceVerified: true,
-  purchasable: true,
-  visualizable: false,
-  swatch: {
-    kind: "image",
-    value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,
-    label: `WM TPE head ${head}`
-  }
-}));
-
-const HEAD_GROUP = /^(a head|an extra (free )?head|get an extra (free )?head|choose a head|add extra head)$/i;
+const HEAD_GROUP = /^(a head|an extra (free )?head|get an extra (free )?head|choose a head|included extra head|add extra head)$/i;
 const EXTRA_HEAD_DEPENDENCY = /for extra head/i;
 
 /** Normalize WM dealer data into a checkout-safe, brand-aware configuration. */
@@ -46,18 +21,30 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
   if (!importedGroups?.length) return [];
 
   const specialFamily = isSpecialHeadFamily(product);
-  const importedHead = importedGroups.find((group) => /^a head$/i.test(group.label));
+  const importedHead = importedGroups.find((group) => /^(a head|choose a head)$/i.test(group.label));
   const importedExtraHead = importedGroups.find((group) => /^(an extra head|add extra head)$/i.test(group.label));
   const primaryHeadOptions = importedHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const verifiedExtraHeadOptions = importedExtraHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const standardTpe = !specialFamily && isStandardTpeBuild(product, importedGroups);
-  const chosenOptions = standardTpe
+  const siliconeHeadTpe = isSiliconeHeadTpeBuild(product, importedGroups);
+  const chosenOptions = siliconeHeadTpe
+    ? WM_SILICONE_HEADS
+    : standardTpe
     ? WM_STANDARD_TPE_HEADS
     : primaryHeadOptions.length
       ? normalizeProductHeadOptions(primaryHeadOptions, 0)
       : normalizeIncludedReplacementOptions(verifiedExtraHeadOptions);
   const chooseHead = buildChooseHead(chosenOptions);
-  const extraHead = standardTpe
+  const includedExtraHead = standardTpe
+    ? buildIncludedExtraHead(WM_STANDARD_TPE_HEADS)
+    : siliconeHeadTpe
+      ? buildIncludedExtraHead(WM_SILICONE_HEADS)
+      : buildVerifiedIncludedExtraHead(importedGroups, {
+          allowPricedSourceOptions: isCustomFullSiliconeBuild(product),
+        });
+  const extraHead = siliconeHeadTpe
+    ? buildExtraHead(WM_SILICONE_HEADS, WM_SILICONE_EXTRA_HEAD_PRICE)
+    : standardTpe
     ? buildExtraHead(WM_STANDARD_TPE_HEADS, WM_TPE_EXTRA_HEAD_PRICE)
     : buildVerifiedProductExtraHead(importedGroups);
 
@@ -70,8 +57,45 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
   return mergeGroups([
     ...(chooseHead ? [chooseHead] : []),
     ...groups,
+    ...(includedExtraHead ? [includedExtraHead] : []),
     ...(extraHead ? [extraHead] : [])
   ]);
+}
+
+function buildIncludedExtraHead(options: CustomizationOption[]): CustomizationGroup | undefined {
+  if (!options.length) return undefined;
+  return {
+    id: "included-extra-head",
+    label: "Included Extra Head",
+    description: "Current WM promotion: choose one compatible extra head at no additional charge. This is separate from paid additional heads.",
+    selectionMode: "single",
+    display: "swatches",
+    options: [
+      { id: "none", label: "No included extra head", priceDelta: 0, priceVerified: true, purchasable: true },
+      ...options.map((option) => ({
+        ...option,
+        id: `included-extra-${option.id}`,
+        priceDelta: 0,
+        priceVerified: true,
+        purchasable: true,
+        visualizable: false,
+      })),
+    ],
+  };
+}
+
+function buildVerifiedIncludedExtraHead(
+  groups: CustomizationGroup[],
+  { allowPricedSourceOptions = false }: { allowPricedSourceOptions?: boolean } = {},
+) {
+  const source = groups.find((group) => /^(an extra free head|get an extra free head)$/i.test(group.label)) ??
+    groups.find((group) => /^included extra head$/i.test(group.label)) ??
+    (allowPricedSourceOptions
+      ? groups.find((group) => /^(an extra head|add extra head)$/i.test(group.label))
+      : undefined);
+  if (!source) return undefined;
+  const options = source.options.filter((option) => !isPlaceholder(option) && option.swatch?.kind === "image");
+  return buildIncludedExtraHead(options);
 }
 
 function buildChooseHead(options: CustomizationOption[]): CustomizationGroup | undefined {
@@ -197,8 +221,33 @@ function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "production
 
 function isStandardTpeBuild(product: Product, groups: CustomizationGroup[]) {
   const text = productIdentity(product);
-  return /\btpe\b/.test(text) && !/silicone head|hybrid|pvc|anime|\bmale\b|\bman\b/.test(text) &&
+  return /\btpe\b/.test(text) && !isReadyStockUnit(product) &&
+    !/silicone head|hybrid|pvc|anime|\bmale\b|\bman\b/.test(text) &&
     groups.some((group) => /^(skin tone|hairstyle|eye color)$/i.test(group.label));
+}
+
+function isSiliconeHeadTpeBuild(product: Product, groups: CustomizationGroup[]) {
+  const text = productIdentity(product);
+  const importedMaterials = groups
+    .filter((group) => /^material$/i.test(group.label))
+    .flatMap((group) => group.options.map((option) => option.label))
+    .join(" ")
+    .toLowerCase();
+  return /silicone head/.test(text) && !isReadyStockUnit(product) &&
+    (/\btpe\b|s-tpe|hybrid/.test(text) || /\btpe\b|s-tpe/.test(importedMaterials)) &&
+    !/pvc|anime|\bmale\b|\bman\b|torso|hips?/.test(text) &&
+    groups.some((group) => /^(skin tone|hairstyle|eye color)$/i.test(group.label));
+}
+
+function isCustomFullSiliconeBuild(product: Product) {
+  const text = productIdentity(product);
+  return /silicone/.test(text) && !isReadyStockUnit(product) &&
+    !/silicone head.*(?:tpe|s-tpe)|(?:tpe|s-tpe).*silicone head|hybrid|pvc|anime|\bmale\b|\bman\b|torso|hips?/.test(text);
+}
+
+function isReadyStockUnit(product: Product) {
+  if (product.extended.stockStatus === "ready_to_ship") return true;
+  return /\b(?:ready[- ]?to[- ]?ship|in[- ]?stock|warehouse)\b/.test(productIdentity(product));
 }
 
 function isSpecialHeadFamily(product: Product) {

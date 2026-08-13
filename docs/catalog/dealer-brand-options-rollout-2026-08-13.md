@@ -1,5 +1,7 @@
 # Dealer brand option rollout — 2026-08-13
 
+> **Reconciliation warning:** this document records catalog data writes and normalization behavior. It is not evidence that any brand is visually complete. The source-to-storefront audit in `docs/catalog/brand-option-visual-reconciliation-2026-08-13.md` is authoritative for completion status; every brand remains open until it passes that audit's full visual gate.
+
 ## Released data scope
 
 Exact Rosemary option labels, current price deltas, and source option images were applied to Shopify for:
@@ -22,7 +24,7 @@ Exact Rosemary option labels, current price deltas, and source option images wer
 | WM aliases | 3 |
 | **Total catalog writes** | **1,270** |
 
-6YE's complete 121-product report was already current and required no catalog writes. Angelkiss's Rosemary source pass was blocked on 19 pages by an anti-bot response; a fresh MyRobotDoll product form was therefore used to verify the live Angelkiss head promotion and photographed compatible head library.
+6YE's 121-product data report was already current and required no catalog writes in this batch; it is still reopened for source-to-storefront visual reconciliation. Angelkiss's Rosemary source pass was blocked on 19 pages by an anti-bot response; a fresh MyRobotDoll product form was therefore used to verify the sampled live Angelkiss head promotion and photographed compatible head library. Neither statement is a brand-completion claim.
 
 ## Storefront behavior added
 
@@ -61,7 +63,7 @@ These policies are temporary dealer guidance until manufacturer price lists repl
 
 ## Visualizer readiness
 
-The post-update Shopify audit is stored in `docs/catalog/customization-coverage-audit-2026-08-13.md`. Across the active option-bearing catalog, 97% of stored choices have image swatches. Image presence alone is not approval for the Visualizer: only supported appearance categories with accurate source images are exposed.
+The post-update Shopify data snapshot is stored in `docs/catalog/customization-coverage-audit-2026-08-13.md`. Across the active option-bearing catalog, 97% of stored choices have image swatches. This number measures only whether an image URL is stored. It does **not** prove that the image is current, accurate, compatible with the product family, successfully loaded in the storefront, visually matched to the live source, or approved for the Visualizer. No brand may be called visually complete from this percentage.
 
 ## Deliberately gated
 

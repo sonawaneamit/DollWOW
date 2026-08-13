@@ -449,7 +449,7 @@ function isCatalogImage(url) {
 
 function extractOptionGroupLabels(html) {
   const text = cleanText(html.replace(/<[^>]+>/g, " "));
-  return unique([...text.matchAll(/\b(SELECT [A-Z0-9\s\-&/]+?)(?=\s{2,}| NOTE| Image:|$)/g)].map((match) => cleanText(match[1]))).slice(0, 30);
+  return unique([...text.matchAll(/\b(SELECT [A-Z0-9\s\-&/]+?)(?=\s{2,}| NOTE| Image:|$)/g)].map((match) => cleanText(match[1])));
 }
 
 function extractOptionGroups(html, sourceUrl) {
@@ -475,8 +475,7 @@ function extractOptionGroups(html, sourceUrl) {
       };
     })
     .filter(Boolean)
-    .filter((group) => isUsefulOptionGroup(group))
-    .slice(0, 40);
+    .filter((group) => isUsefulOptionGroup(group));
 }
 
 function extractOption(html, sourceUrl) {

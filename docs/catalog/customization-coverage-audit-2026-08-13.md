@@ -1,8 +1,8 @@
-# Customization coverage audit
+# Customization data-presence audit
 
 Generated: 2026-08-13T10:43:48.313Z
 
-This is a read-only snapshot of active Shopify products. It measures the stored manufacturer/dealer option data before the storefront applies brand-specific compatibility rules.
+This is a read-only snapshot of active Shopify products. It measures only the presence of stored manufacturer/dealer option data before the storefront applies brand-specific compatibility rules. It is **not** a visual audit and must never be used to call a brand complete.
 
 ## Coverage by brand
 
@@ -38,11 +38,11 @@ This is a read-only snapshot of active Shopify products. It measures the stored 
 ## Interpretation
 
 - **Priced** means the stored choice has a numeric price delta, including a verified zero-dollar choice.
-- **With photos** means a choice contains an image swatch suitable for customer-facing selection. Visualizer eligibility remains more restrictive and is applied by the storefront.
+- **With photos** means only that a choice contains an image-swatch URL. It does not prove the image is current, accurate, compatible, successfully loaded, source-matched, customer-ready, or Visualizer-ready.
 - **Unpriced non-default choices** are retained in the manufacturer record but must not interrupt checkout. They require a current manufacturer, Rosemary, or YourDoll price before becoming purchasable.
 - A head image is not automatically Visualizer-ready. Identity-preserving head replacement remains gated until its dedicated workflow passes QA.
 
-## Definition of done
+## Data-quality target — not a completion claim
 
 - One included replacement head choice is single-select where the body supports compatible heads.
 - Additional heads are a separately priced multi-select group and charge once for every selected head.
@@ -50,3 +50,5 @@ This is a read-only snapshot of active Shopify products. It measures the stored 
 - Every public paid choice has a numeric source-backed delta.
 - Appearance choices have accurate option photos before Visualizer exposure.
 - Unsupported, incompatible, or unverified choices remain out of checkout without replacing the purchase CTA with a contact-team detour.
+
+The actual completion gate is maintained in `docs/catalog/brand-option-visual-reconciliation-2026-08-13.md` and requires source counts, prices, images, compatibility, selection rules, rendered desktop/mobile behavior, both themes, and regression evidence for every relevant product family.

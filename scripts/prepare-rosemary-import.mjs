@@ -414,10 +414,13 @@ function reviewWarnings(product) {
 }
 
 function normalizeCustomizationGroups(groups) {
-  return groups
+  return annotateHeadGroupRoles(groups)
     .filter(shouldExposeCustomizationGroup)
     .map((group) => {
-      const options = normalizedCustomizationOptions(group).slice(0, 48);
+      // Dealer forms routinely contain more than 48 named heads. Truncating here
+      // made the review artifact look healthy while silently dropping customer
+      // choices from Shopify, so retain the complete reviewed source group.
+      const options = normalizedCustomizationOptions(group);
       const multiple = isMultiSelectGroup(group);
       return {
         id: group.id,
@@ -428,8 +431,31 @@ function normalizeCustomizationGroups(groups) {
         options
       };
     })
-    .filter((group) => group.id && group.label && group.options.length >= 2)
-    .slice(0, 36);
+    .filter((group) => group.id && group.label && group.options.length >= 2);
+}
+
+function annotateHeadGroupRoles(groups) {
+  let afterIncludedExtraHeadGate = false;
+
+  return groups.map((group) => {
+    const label = String(group?.label || "").trim();
+    if (/^(an extra free head|get an extra free head)$/i.test(label)) {
+      afterIncludedExtraHeadGate = true;
+      return group;
+    }
+
+    const namedOptions = (group?.options || []).filter((option) => !/^other heads?$/i.test(String(option?.label || "").trim()));
+    if (/^other heads?$/i.test(label) && namedOptions.length >= 2) {
+      return { ...group, id: "choose-head", label: "Choose a Head", options: namedOptions };
+    }
+
+    if (/^heads?$/i.test(label) && namedOptions.length >= 2 && afterIncludedExtraHeadGate) {
+      afterIncludedExtraHeadGate = false;
+      return { ...group, id: "included-extra-head", label: "Included Extra Head", options: namedOptions };
+    }
+
+    return group;
+  });
 }
 
 function normalizedCustomizationOptions(group) {
@@ -482,8 +508,7 @@ function hasNoAddOnOption(options) {
 
 function shouldExposeCustomizationGroup(group) {
   if (!group?.label) return false;
-  if (/^other heads?$/i.test(group.label)) return false;
-  if (/^heads?$/i.test(group.label) && ((group.options || []).length <= 3 || (group.options || []).some((option) => /other heads?/i.test(option.label)))) return false;
+  if (/^heads?$/i.test(group.label) && (group.options || []).length <= 3) return false;
   return true;
 }
 

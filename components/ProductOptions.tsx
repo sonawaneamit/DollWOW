@@ -16,6 +16,7 @@ import {
   MapPin,
   Maximize2,
   PackageCheck,
+  Search,
   ShoppingBag
 } from "lucide-react";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
@@ -473,6 +474,22 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
   config: ReturnType<typeof getCustomizationConfig>;
   currencyCode: string;
 }) {
+  const [query, setQuery] = useState("");
+  const searchable = group.options.length >= 24;
+  const visibleOptions = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) return group.options;
+    return group.options.filter((option) =>
+      [option.label, option.description, option.swatch?.label]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(normalized)
+    );
+  }, [group.options, query]);
+
+  useEffect(() => setQuery(""), [group.id]);
+
   return (
     <div>
       {group.resources?.length ? (
@@ -484,8 +501,25 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
           ))}
         </div>
       ) : null}
+      {searchable ? (
+        <div className="mb-4">
+          <label className="relative block">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-text-dim" aria-hidden="true" />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={`Find a ${group.label.toLowerCase().replace(/^(choose|add)\s+(an?\s+)?/, "")}`}
+              className="min-h-12 w-full rounded-sm border border-border bg-surface pl-11 pr-4 text-base text-text outline-none transition-colors placeholder:text-text-faint focus:border-accent focus:ring-2 focus:ring-accent/20"
+            />
+          </label>
+          <p className="mt-2 text-sm text-text-dim" aria-live="polite">
+            {query ? `${visibleOptions.length} of ${group.options.length} choices` : `${group.options.length} choices`}
+          </p>
+        </div>
+      ) : null}
       <div className={clsx("product-option-grid grid grid-cols-1 gap-3", group.options.length >= 8 && "product-option-grid--scroll") }>
-        {group.options.map((option) => {
+        {visibleOptions.map((option) => {
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
@@ -494,6 +528,9 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
           return <OptionTile key={option.id} option={option} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} onClick={() => onSelect(option.id)} />;
         })}
       </div>
+      {searchable && !visibleOptions.length ? (
+        <p className="rounded-sm border border-border bg-surface-tint p-4 text-[15px] text-text-dim">No matching choices. Try a head number or a shorter name.</p>
+      ) : null}
     </div>
   );
 }
