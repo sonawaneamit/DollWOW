@@ -54,3 +54,5 @@ The approved visual uses a current WM Rayna catalog image as a clearly labeled n
 ## Release Gate
 
 Focused OnPage correctly returned 404 because the URL is hidden. After visual approval and publication, require a 200 response, canonical, indexability, rendered title/H1, author and review date, Article and visible FAQ schema, primary consumer-protection or platform citations where a specific claim requires them, internal links, accurate alt/caption text, and no internal SEO language. Then submit IndexNow and monitor GSC, Bing, AI demand, mentions, and citations.
+
+The guide completed its post-release gate on 2026-08-13. DataForSEO Instant Pages returned an OnPage score of 97.07 with HTTP 200, a self-referencing canonical, 2,480 rendered words, and valid title, description, and H1 checks. The final call cost `$0.00015` and used task `08130838-1783-0275-0000-fed5e4d562e2`. The Learning Center audit covered 899 references across 49 public articles with zero broken or redirected destinations, the full repository passed 50 test files and 264 tests, and IndexNow accepted the exact canonical URL with HTTP 200.
