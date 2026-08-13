@@ -4,6 +4,8 @@ import type { Product } from "@/types/product";
 
 type Props = {
   product: Product;
+  editorial?: Product["extended"]["editorialIntro"];
+  preview?: boolean;
 };
 
 type EditorialPreview = {
@@ -74,33 +76,39 @@ export function supportsProductEditorialPreview(product: Product) {
   return Boolean(editorialPreviews[product.handle]);
 }
 
-export function ProductEditorialPreview({ product }: Props) {
-  const preview = editorialPreviews[product.handle];
-  if (!preview) return null;
+export function ProductEditorialPreview({ product, editorial, preview = false }: Props) {
+  const testPreview = editorialPreviews[product.handle];
+  const content = preview ? testPreview : editorial;
+  if (!content) return null;
+  const media = testPreview || {
+    imageIndex: Math.min(3, Math.max(0, product.images.length - 1)),
+    imageAlt: `${product.title} editorial product portrait`,
+    facts: [],
+  };
 
   return (
     <section className="pdp-editorial-preview" aria-labelledby="pdp-editorial-preview-title">
-      <div className="pdp-editorial-preview__notice">Preview only · Not published</div>
+      {preview ? <div className="pdp-editorial-preview__notice">Preview only · Not published</div> : null}
       <div className="pdp-editorial-preview__inner">
         <div className="pdp-editorial-preview__media">
           <Image
-            src={protectedProductImageUrl(product.handle, preview.imageIndex)}
-            alt={preview.imageAlt}
+            src={protectedProductImageUrl(product.handle, media.imageIndex)}
+            alt={media.imageAlt}
             fill
             sizes="(min-width: 1024px) 48vw, 100vw"
             className="pdp-editorial-preview__image"
-            style={{ objectPosition: preview.imagePosition }}
+            style={{ objectPosition: media.imagePosition }}
           />
         </div>
         <div className="pdp-editorial-preview__copy">
-          <p className="pdp-editorial-preview__eyebrow">{preview.eyebrow}</p>
-          <h2 id="pdp-editorial-preview-title">{preview.heading}</h2>
-          <p>{preview.paragraph}</p>
-          <dl className="pdp-editorial-preview__facts">
-            {preview.facts.map((fact) => (
+          <p className="pdp-editorial-preview__eyebrow">{content.eyebrow}</p>
+          <h2 id="pdp-editorial-preview-title">{content.heading}</h2>
+          <p>{content.paragraph}</p>
+          {media.facts.length ? <dl className="pdp-editorial-preview__facts">
+            {media.facts.map((fact) => (
               <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>
             ))}
-          </dl>
+          </dl> : null}
         </div>
       </div>
     </section>

@@ -68,4 +68,11 @@ export type ProductExtended = {
   penisAddOnAvailable?: boolean;
   customizationGroups?: CustomizationGroup[];
   qcNote?: string;
+  editorialIntro?: {
+    eyebrow: string;
+    heading: string;
+    paragraph: string;
+    promptVersion?: string;
+    generatedAt?: string;
+  };
 };

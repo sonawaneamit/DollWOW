@@ -145,12 +145,14 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
       productByHandle: {
         measurements?: { value?: string | null } | null;
         headModel?: { value?: string | null } | null;
+        editorialIntro?: { value?: string | null } | null;
       } | null;
     }>(
       `query ProductAdminMetafields($handle: String!) {
         productByHandle(handle: $handle) {
           measurements: metafield(namespace: "custom", key: "measurements") { value }
           headModel: metafield(namespace: "custom", key: "head_model") { value }
+          editorialIntro: metafield(namespace: "custom", key: "editorial_intro") { value }
         }
       }`,
       { handle }
@@ -158,9 +160,16 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
 
     const measurements = parseJson<Record<string, string>>(data.productByHandle?.measurements?.value);
     const headModel = data.productByHandle?.headModel?.value || undefined;
+    const editorialIntro = parseJson<{
+      eyebrow: string;
+      heading: string;
+      paragraph: string;
+      promptVersion?: string;
+      generatedAt?: string;
+    }>(data.productByHandle?.editorialIntro?.value);
 
-    if (!measurements && !headModel) return null;
-    return { measurements, headModel };
+    if (!measurements && !headModel && !editorialIntro) return null;
+    return { measurements, headModel, editorialIntro };
   } catch {
     return null;
   }

@@ -80,6 +80,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productBrand = product.extended.brand ?? product.vendor;
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
+  const showLiveEditorial = Boolean(product.extended.editorialIntro);
 
   return (
     <div>
@@ -180,7 +181,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         </div>
       </ToneBand>
 
-      {showEditorialPreview ? <ProductEditorialPreview product={publicProduct} /> : null}
+      {showEditorialPreview || showLiveEditorial ? (
+        <ProductEditorialPreview product={publicProduct} editorial={product.extended.editorialIntro} preview={showEditorialPreview} />
+      ) : null}
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
@@ -219,7 +222,8 @@ function mergeAdminMetafields(
     extended: {
       ...product.extended,
       measurements: adminData.measurements || product.extended.measurements,
-      headModel: adminData.headModel || product.extended.headModel
+      headModel: adminData.headModel || product.extended.headModel,
+      editorialIntro: adminData.editorialIntro || product.extended.editorialIntro
     }
   };
 }
