@@ -77,10 +77,12 @@ Requirements:
 - Paragraph must be 90-130 words.
 - Use the verified facts and visual brief as creative inspiration for an adult fantasy that could only have been written for this particular doll.
 - Match the reference's confident cadence, specificity, sensual escalation, factual restraint, and memorable final line. Do not copy its baseball scenario, phrases, sentence openings, or props.
+- Preserve that overall voice without repeating stock openings or endings. Avoid defaulting to "waits for you," a knowing gaze, demanding attention, the outside world fading, a private sanctuary, or "the only rule." Let the supplied creative structure shape the paragraph.
 - Let the fantasy unfold naturally. The doll may have a voice, personality, agency, and initiative within the fictional scene.
 - Every factual detail about appearance, clothing, measurements, material, or product construction must come from the verified facts or neutral visual evidence. You may freely invent the adult fantasy's actions, private setting, dialogue, mood, and encounter.
 - Address the doll by the supplied Doll name. Never combine the Brand and Doll name into a personal name.
 - Do not invent tactile qualities, temperature, scent, realism, performance, capabilities, included accessories, availability, or guarantees.
+- "Silicone head" describes the head only. Never describe the body or full frame as silicone unless the verified material explicitly says Silicone.
 - Use the styling and surroundings to inspire the fantasy, but do not narrate a plain photography setup. The finished copy must not discuss photographs, galleries, studios, source material, analysis, prompts, SEO, or content production.
 - Use US and metric measurements exactly as supplied if measurements appear.
 - Keep it seductive and confident without sounding cheap, repetitive, or mechanically generated.
@@ -108,6 +110,7 @@ Score each candidate from 1-10 on:
 - factual fidelity to verified facts and neutral visual evidence, including exact hair, eye, wardrobe, body, and measurement details;
 - specificity to this particular doll;
 - similarity in cadence and polish to the approved DollWOW Evie voice reference supplied in the writer prompt;
+- originality relative to common AI copy patterns, especially "waits for you," "knowing gaze," "demands your full attention," "world outside fades," "private sanctuary," "masterpiece," and "the only rule";
 - sensual persuasion without cheap, repetitive, awkward, generic, or mechanically generated prose;
 - customer-facing language with no photography, gallery, analysis, SEO, or content-production terminology.
 
@@ -195,6 +198,24 @@ function runStaticChecks(draft) {
     "supple skin",
     "skin feels warm",
     "warmth of her skin",
+    "warmth of his skin",
+    "tpe texture",
+    "silicone texture",
+    "yields perfectly",
+    "feels exactly",
+    "waits for you",
+    "waits for your",
+    "waiting for you",
+    "knowing gaze",
+    "demands your full attention",
+    "demands your undivided attention",
+    "the world outside fades",
+    "world outside fades",
+    "forget the world outside",
+    "private sanctuary",
+    "the only rule",
+    "masterpiece of",
+    "ready for you",
     "innocence",
     "innocent",
     "schoolgirl",
@@ -344,7 +365,7 @@ async function main() {
               themeConfidence: theme.content.confidence || null,
               themeEvidence: theme.content.themeEvidence || [],
               excludedUncertainDetails: extraction.content.uncertainDetails || [],
-              creativeDirection: `Candidate ${attempt}: choose your own distinct fantasy angle and phrasing.`,
+              creativeDirection: creativeDirection(product.handle, attempt),
             }),
           },
         ],
@@ -527,6 +548,21 @@ function themeEvidenceRecord(extraction) {
   };
 }
 
+function creativeDirection(handle, attempt) {
+  const structures = [
+    "Open with a decisive action inspired by a visible prop or garment, then bring the shopper into the fantasy.",
+    "Open with a direct invitation or command to the shopper, then reveal the doll's most distinctive visible details.",
+    "Open on the most distinctive environment or object, then turn it into a private adult encounter.",
+    "Begin immediately after an imagined event suggested by the styling, then escalate toward privacy.",
+    "Open with one memorable wardrobe detail in motion, then move from visual tension to physical closeness.",
+    "Open with a short provocative proposition, then support it with specific appearance and product facts.",
+    "Begin with the shopper entering the scene while the doll takes the initiative.",
+    "Open mid-encounter with a specific gesture, avoiding generic arrival, waiting, gaze, and room-setting language.",
+  ];
+  const seed = [...handle].reduce((total, character) => total + character.charCodeAt(0), 0);
+  return `Candidate ${attempt}: ${structures[(seed + attempt - 1) % structures.length]} End with a product-specific callback, not a generic promise.`;
+}
+
 async function writeResults(results) {
   await fs.mkdir(path.dirname(OUTPUT), { recursive: true });
   await fs.writeFile(OUTPUT, `${JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2)}\n`);
@@ -565,16 +601,23 @@ async function productFromUrl(rawUrl) {
   const propertyValues = (name) => (product.additionalProperty || []).filter((entry) => entry.name === name).map((entry) => entry.value).filter(Boolean);
   const preferredProperty = (name) => propertyValues(name).find((value) => String(value).includes("/")) || propertyValues(name)[0];
   const eligibility = fullBodyEligibility(product, propertyValues, preferredProperty);
+  const dollName = dollNameFromProduct(product, handle);
+  const heightCm = metricNumber(preferredProperty("Height"), "cm");
+  const weightLb = imperialNumber(preferredProperty("Weight"), "lb");
+  const material = product.material || preferredProperty("Material");
+  const materialFact = /silicone\s+head/i.test(String(material || ""))
+    ? "Head material: Silicone. Body material is not verified and must not be stated."
+    : material ? `Body material: ${material}` : null;
   const facts = [
     product.brand?.name ? `Brand: ${product.brand.name}` : null,
-    dollNameFromProduct(product) ? `Doll name: ${dollNameFromProduct(product)}` : null,
+    dollName ? `Doll name: ${dollName}` : null,
     product.name ? `Catalog title: ${product.name}` : null,
-    product.material || preferredProperty("Material"),
-    preferredProperty("Height"),
-    preferredProperty("Weight"),
-    preferredProperty("Cup size"),
-    preferredProperty("Body type"),
-    preferredProperty("Head model"),
+    materialFact,
+    heightCm ? `Height: ${dualHeight(heightCm)}` : null,
+    weightLb ? `Weight: ${dualWeight(weightLb)}` : null,
+    usefulFact(preferredProperty("Cup size")) ? `Cup size: ${usefulFact(preferredProperty("Cup size"))}` : null,
+    preferredProperty("Body type") ? `Body type: ${preferredProperty("Body type")}` : null,
+    preferredProperty("Head model") ? `Head model: ${preferredProperty("Head model")}` : null,
   ].filter(Boolean);
   if (!eligibility.eligible || args.eligibilityOnly) {
     return { handle, facts, sourceUrl: url.toString(), sourceImages: [], eligibility };
@@ -591,17 +634,31 @@ async function productFromUrl(rawUrl) {
   return { handle, facts, sourceUrl: url.toString(), sourceImages, contactSheet, eligibility };
 }
 
-function dollNameFromProduct(product) {
+function dollNameFromProduct(product, handle) {
   let name = String(product.name || "").trim();
   const brand = String(product.brand?.name || "").trim();
-  if (brand) {
-    const leadingBrand = new RegExp(`^(?:${escapeRegExp(brand)}\\s*)+`, "i");
-    name = name.replace(leadingBrand, "").trim();
+  const brandRoots = new Set([
+    brand,
+    brand.replace(/\s+dolls?$/i, ""),
+    brand.replace(/\s+castle$/i, ""),
+  ].filter(Boolean));
+  for (const root of [...brandRoots].sort((a, b) => b.length - a.length)) {
+    name = name.replace(new RegExp(`^(?:${escapeRegExp(root)}\\s*)+`, "i"), "").trim();
   }
-  return name
+  name = name
+    .replace(/^\d+(?:\.\d+)?\s*cm\b.*$/i, "")
     .replace(/\s+\d+(?:\.\d+)?\s*cm\b.*$/i, "")
     .replace(/\s+(?:customizable|ready-to-ship|companion|sex)\s+doll\b.*$/i, "")
     .trim();
+  if (name && !brandRoots.has(name)) return name;
+
+  const handleName = handle
+    .replace(new RegExp(`^(?:${[...brandRoots].map(slugify).filter(Boolean).map(escapeRegExp).join("|")})-`, "i"), "")
+    .replace(/-head-[a-z0-9]+.*$/i, "")
+    .replace(/-\d+(?:-\d+)?cm.*$/i, "")
+    .replace(/-/g, " ")
+    .trim();
+  return titleCase(handleName);
 }
 
 function escapeRegExp(value) {
@@ -635,6 +692,34 @@ function fullBodyEligibility(product, propertyValues, preferredProperty) {
 function metricNumber(value, unit) {
   const match = String(value || "").match(new RegExp(`([0-9]+(?:\\.[0-9]+)?)\\s*${unit}\\b`, "i"));
   return match ? Number(match[1]) : 0;
+}
+
+function imperialNumber(value, unit) {
+  const match = String(value || "").match(new RegExp(`([0-9]+(?:\\.[0-9]+)?)\\s*${unit}s?\\b`, "i"));
+  return match ? Number(match[1]) : 0;
+}
+
+function dualHeight(heightCm) {
+  const totalInches = Math.round(heightCm / 2.54);
+  const feet = Math.floor(totalInches / 12);
+  const inches = totalInches % 12;
+  return `${feet} ft${inches ? ` ${inches} in` : ""} / ${heightCm} cm`;
+}
+
+function dualWeight(weightLb) {
+  return `${weightLb.toFixed(1)} lb / ${(weightLb / 2.2046226218).toFixed(1)} kg`;
+}
+
+function usefulFact(value) {
+  return /^(?:ask us|n\/?a|none|unknown|not available|-)?$/i.test(String(value || "").trim()) ? null : value;
+}
+
+function slugify(value) {
+  return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function titleCase(value) {
+  return String(value || "").replace(/\b\w/g, (character) => character.toUpperCase());
 }
 
 function isAvailableMeasurement(value) {
