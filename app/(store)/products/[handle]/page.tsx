@@ -11,6 +11,7 @@ import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
+import { ProductEditorialPreview, supportsProductEditorialPreview } from "@/components/ProductEditorialPreview";
 import { ResponsiveDetails } from "@/components/ResponsiveDetails";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
@@ -32,19 +33,21 @@ import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isVisualizerProduct, visualizerUrl } from "@/lib/doll-visualizer/config";
 
-export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
+  const { editorialPreview } = await searchParams;
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
-  if ((product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
+export default async function ProductPage({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }) {
   const { handle } = await params;
+  const { editorialPreview } = await searchParams;
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
@@ -76,6 +79,7 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const faqStructuredData = buildProductFaqStructuredData(product);
   const productBrand = product.extended.brand ?? product.vendor;
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
+  const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
 
   return (
     <div>
@@ -175,6 +179,8 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           </div>
         </div>
       </ToneBand>
+
+      {showEditorialPreview ? <ProductEditorialPreview product={publicProduct} /> : null}
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">

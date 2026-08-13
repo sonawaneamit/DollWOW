@@ -25,7 +25,7 @@ These snippets are factual and intentionally separate from the visual editorial 
 **Handle:** `irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd`  
 **Heading:** Meet Evie
 
-Evie's racing-inspired styling gives this Irontech gallery a bright, energetic identity. Her long brown waves and blue eyes are framed by red glasses, while the vivid red, white, and blue palette runs through the visor, jacket, fitted top, and striped socks. Silver headphones and colorful bracelets add playful detail without competing with her softly parted expression. At 161 cm (5 ft 3 in), her full-silicone F-cup build carries the sporty look with strong curves and a confident silhouette. The clean blue studio setting keeps every color crisp, moving from close portraits to relaxed seated poses for a look that feels polished, modern, and unmistakably Evie.
+Evie's baseball-inspired styling gives this Irontech gallery a bright, energetic identity. Her long brown waves and blue eyes are framed by red glasses, while the vivid red, white, and blue palette runs through the visor, jacket, fitted top, and striped socks. Silver headphones and colorful bracelets add playful detail without competing with her softly parted expression. At 161 cm (5 ft 3 in), her full-silicone F-cup build carries the sporty look with strong curves and a confident silhouette. The clean blue studio setting keeps every color crisp, moving from close portraits to relaxed seated poses for a look that feels polished, modern, and unmistakably Evie.
 
 ## WM Lila Dane
 
@@ -77,14 +77,14 @@ The order below follows each live product gallery from image one through image e
 
 ### Irontech Evie
 
-1. Irontech Evie seated in red racing jacket with blue top and silver headphones
-2. Irontech Evie holding red phone in visor, glasses, and blue racing top
+1. Irontech Evie seated in red baseball jacket with blue top and silver headphones
+2. Irontech Evie holding red phone in visor, glasses, and blue baseball top
 3. Irontech Evie front portrait in red visor, glasses, and silver headphones
 4. Irontech Evie side portrait with long brown hair against blue studio background
 5. Irontech Evie close portrait with headphones, red glasses, and blue top
 6. Irontech Evie adjusting red visor in blue top, black shorts, and bracelets
 7. Irontech Evie seated in open red jacket while holding a red phone
-8. Irontech Evie holding red phone in visor, glasses, and draped racing jacket
+8. Irontech Evie holding red phone in visor, glasses, and draped baseball jacket
 
 ### WM Lila Dane
 

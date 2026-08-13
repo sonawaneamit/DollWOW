@@ -1546,3 +1546,126 @@ textarea {
     margin-inline: -0.25rem;
   }
 }
+.pdp-editorial-preview {
+  position: relative;
+  overflow: hidden;
+  background: #fff8f3;
+  color: #291f1b;
+}
+
+.pdp-editorial-preview__notice {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  top: 1rem;
+  border: 1px solid rgba(255, 248, 243, 0.5);
+  border-radius: 999px;
+  background: rgba(27, 19, 15, 0.84);
+  padding: 0.5rem 0.75rem;
+  color: #fff8f3;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pdp-editorial-preview__inner {
+  display: grid;
+  min-height: 42rem;
+  grid-template-columns: minmax(0, 1.05fr) minmax(25rem, 0.95fr);
+}
+
+.pdp-editorial-preview__media {
+  position: relative;
+  min-height: 42rem;
+  background: #1b130f;
+}
+
+.pdp-editorial-preview__image {
+  object-fit: cover;
+  object-position: center 16%;
+}
+
+.pdp-editorial-preview__copy {
+  align-self: center;
+  max-width: 43rem;
+  padding: clamp(3rem, 7vw, 7.5rem);
+}
+
+.pdp-editorial-preview__eyebrow {
+  color: #b5471f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pdp-editorial-preview__copy h2 {
+  margin-top: 0.75rem;
+  font-family: Georgia, serif;
+  font-size: clamp(3.25rem, 6vw, 6rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.pdp-editorial-preview__copy > p:last-of-type {
+  margin-top: 1.75rem;
+  color: #5d4c45;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.pdp-editorial-preview__facts {
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #dec9bf;
+}
+
+.pdp-editorial-preview__facts div {
+  padding: 1rem 0.75rem 0 0;
+}
+
+.pdp-editorial-preview__facts dt {
+  color: #806c62;
+  font-size: 0.75rem;
+}
+
+.pdp-editorial-preview__facts dd {
+  margin-top: 0.3rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .pdp-editorial-preview__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-editorial-preview__media {
+    min-height: min(132vw, 42rem);
+  }
+
+  .pdp-editorial-preview__copy {
+    padding: 2.75rem 1.25rem 3.25rem;
+  }
+
+  .pdp-editorial-preview__copy h2 {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+
+  .pdp-editorial-preview__copy > p:last-of-type {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .pdp-editorial-preview__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-editorial-preview__facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid #eadbd4;
+    padding: 0.85rem 0;
+  }
+}

@@ -111,7 +111,7 @@ The pilot deliberately covers different brands, settings, materials, and custome
 
 | Product | Verified catalog facts | Gallery-led direction |
 | --- | --- | --- |
-| Irontech Evie | 161 cm / 5 ft 3 in, F-cup, full silicone | Bright blue racing-editorial set with red sports styling, long brown hair, glasses, headphones, and energetic close portraits |
+| Irontech Evie | 161 cm / 5 ft 3 in, F-cup, full silicone | Bright blue baseball-editorial set with red sports styling, long brown hair, glasses, headphones, and energetic close portraits |
 | WM Lila Dane | 157 cm / 5 ft 2 in, B-cup, full silicone | Blue-and-white fantasy styling in a warm library interior, with long white hair, vivid blue eyes, and composed full-length portraits |
 | Starpery Keisha | 174 cm / 5 ft 9 in, D-cup, full silicone | Warm resort setting with wicker furniture, light curtains, plants, turquoise styling, and strong indoor-outdoor portraiture |
 | SE Doll Aryana B | 160 cm / 5 ft 3 in, C-cup, full silicone | Dark gold fantasy set with pointed-ear styling, dramatic makeup, ornate furniture, and theatrical lighting |
