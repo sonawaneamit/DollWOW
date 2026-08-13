@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "sex-doll-guide": "2026 Sex Doll Buying Guide: How to Choose the Right Doll",
     "sex-doll-size-weight-guide": "Sex Doll Size & Weight Guide | 2,615 Listings Analyzed",
     "sex-doll-storage": "Sex Doll Storage: Safe, Private Storage Guide",
-    "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims"
+    "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims",
+    "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {

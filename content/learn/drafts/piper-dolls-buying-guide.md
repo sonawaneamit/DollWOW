@@ -53,7 +53,7 @@ DollWow has not physically tested every Piper model. Our role is to organize cur
 
 ## What Piper Currently Offers
 
-The official Piper storefront currently separates products by several height categories and shows both silicone and S-TPE listings. DollWow's current Piper catalog likewise includes compact TPE products and larger TPE and silicone builds.
+The [official Piper website](https://www.piperdolls.com/) currently separates products by several height categories and shows both silicone and S-TPE listings. DollWow's current Piper catalog likewise includes compact TPE products and larger TPE and silicone builds.
 
 That range matters because “Piper doll” does not describe one construction. The product name can refer to a compact body or a full-size build, and the same model name may appear with different heights, cup profiles, materials, heads, skin tones, or galleries.
 

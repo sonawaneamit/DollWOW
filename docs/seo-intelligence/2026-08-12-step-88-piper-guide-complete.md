@@ -82,5 +82,8 @@ The August 13 production build and local rendered route passed the release check
 - The page source contained no customer-facing `PDP`, `SERP`, `crawlable`, or `keyword cluster` language.
 - The portrait cover and landscape Learning Center crop were compressed to approximately 125 KB and 73 KB respectively.
 - The test suite passed 246 tests across 49 files, TypeScript passed, and the production build passed.
+- Post-deploy DataForSEO Instant Pages returned an OnPage score of 95.24 with HTTP 200, a self-referencing canonical, one H1, 2,712 words, 44 internal links, eight images, no broken links, and no duplicate title, description, or content signal. The first pass cost `$0.00015` and used task `08130642-1783-0275-0000-2eb14990fab8`.
+- IndexNow accepted the exact guide URL with HTTP 200.
+- The search title was shortened after the first post-deploy scan, and a visible primary manufacturer citation was added to strengthen source transparency for readers and answer engines.
 
 The in-app localhost preview bridge did not attach during final responsive inspection. The approved source artwork and deterministic Learning Center crop were inspected directly, and remote deployment should still receive a desktop/mobile browser smoke test before IndexNow submission.
