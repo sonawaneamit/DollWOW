@@ -4,6 +4,7 @@ import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups } from "@/lib/customization/irontech";
+import { getWmCustomizationGroups } from "@/lib/customization/wm";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -310,6 +311,17 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       rules: []
     };
   }
+  if (isWmProduct(product) && importedGroups?.length) {
+    const groups = getWmCustomizationGroups(product, importedGroups);
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
+    return {
+      id: "wm-source-verified",
+      brandLabel: "WM Dolls",
+      leadTimeNote: "WM custom builds and option compatibility are reviewed before production begins.",
+      groups: uniqueCustomizationGroups(availableGroups),
+      rules: []
+    };
+  }
   if (importedGroups?.length) {
     const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
@@ -434,6 +446,14 @@ function isIrontechProduct(product: Product) {
     .join(" ")
     .toLowerCase()
     .includes("irontech");
+}
+
+function isWmProduct(product: Product) {
+  const text = [product.extended.brand, product.vendor, product.title, product.handle, ...product.tags]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return /(^|\s|-)wm(\s|-|$)|wm dolls|wmdoll/.test(text);
 }
 
 function isRealLadyProduct(product: Product) {
