@@ -5,6 +5,15 @@ import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups } from "@/lib/customization/irontech";
 import { getWmCustomizationGroups } from "@/lib/customization/wm";
+import {
+  getAngelkissCustomizationGroups,
+  getErovenusCustomizationGroups,
+  getPiperCustomizationGroups,
+  getSeCustomizationGroups,
+  getSixYeCustomizationGroups,
+  getTantalyCustomizationGroups,
+  getYlCustomizationGroups
+} from "@/lib/customization/dealer-brands";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -322,6 +331,30 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       rules: []
     };
   }
+  if (isSeProduct(product) && importedGroups?.length) {
+    const groups = getSeCustomizationGroups(product, importedGroups);
+    return importedBrandConfig(product, purpose, "se-source-verified", "SE Doll", groups);
+  }
+  if (isSixYeProduct(product) && importedGroups?.length) {
+    const groups = getSixYeCustomizationGroups(product, importedGroups);
+    return importedBrandConfig(product, purpose, "6ye-source-verified", "6YE Dolls", groups);
+  }
+  if (isAngelkissProduct(product) && importedGroups?.length) {
+    const groups = getAngelkissCustomizationGroups(product, importedGroups);
+    return importedBrandConfig(product, purpose, "angelkiss-source-verified", "Angelkiss", groups);
+  }
+  if (isYlProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "yl-source-verified", "YL Dolls", getYlCustomizationGroups(product, importedGroups));
+  }
+  if (isErovenusProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "erovenus-source-verified", "Erovenus", getErovenusCustomizationGroups(product, importedGroups));
+  }
+  if (isPiperProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "piper-source-verified", "Piper Dolls", getPiperCustomizationGroups(product, importedGroups));
+  }
+  if (isTantalyProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "tantaly-source-verified", "Tantaly", getTantalyCustomizationGroups(product, importedGroups));
+  }
   if (importedGroups?.length) {
     const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
@@ -374,6 +407,16 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     };
   }
   return configs.generic;
+}
+
+function importedBrandConfig(product: Product, purpose: "checkout" | "factory", id: string, brandLabel: string, groups: CustomizationGroup[]): BrandCustomizationConfig {
+  return {
+    id,
+    brandLabel,
+    leadTimeNote: `${brandLabel} custom builds and option compatibility are reviewed before production begins.`,
+    groups: uniqueCustomizationGroups(purpose === "checkout" ? onlineCheckoutGroups(groups) : groups),
+    rules: []
+  };
 }
 
 function withIronAi(product: Product, groups: CustomizationGroup[]) {
@@ -454,6 +497,39 @@ function isWmProduct(product: Product) {
     .join(" ")
     .toLowerCase();
   return /(^|\s|-)wm(\s|-|$)|wm dolls|wmdoll/.test(text);
+}
+
+function isSeProduct(product: Product) {
+  return /\bse[ -]?doll\b|\bsedoll\b/.test(productSearchText(product));
+}
+
+function isSixYeProduct(product: Product) {
+  return /\b6ye\b/.test(productSearchText(product));
+}
+
+function isAngelkissProduct(product: Product) {
+  return /\bangel[ -]?kiss\b|\bangelkiss\b/.test(productSearchText(product));
+}
+
+function isYlProduct(product: Product) {
+  return /(^|\s|-)yl(\s|-|$)|\byl dolls?\b/.test(productSearchText(product));
+}
+
+function isErovenusProduct(product: Product) {
+  return /\berovenus\b/.test(productSearchText(product));
+}
+
+function isPiperProduct(product: Product) {
+  return /\bpiper dolls?\b/.test(productSearchText(product));
+}
+
+function isTantalyProduct(product: Product) {
+  return /\btantaly\b/.test(productSearchText(product));
+}
+
+function productSearchText(product: Product) {
+  return [product.extended.brand, product.vendor, product.productType, product.extended.sourceTitle, product.title, product.handle, ...product.tags]
+    .filter(Boolean).join(" ").toLowerCase();
 }
 
 function isRealLadyProduct(product: Product) {

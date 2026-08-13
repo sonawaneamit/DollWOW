@@ -52,6 +52,7 @@
     "sync:shopify-products": "node scripts/sync-shopify-products.mjs",
     "sync:rosemary-option-prices": "node scripts/sync-shopify-rosemary-option-prices.mjs",
     "audit:customization-checkout": "node scripts/audit-customization-checkout-blockers.mjs",
+    "audit:customization-coverage": "node scripts/audit-shopify-customization-coverage.mjs",
     "sync:rosemary-stock": "node scripts/reconcile-rosemary-stock.mjs",
     "sync:rosemary-stock:weekly": "node scripts/sync-rosemary-stock-weekly.mjs",
     "catalog:audit": "node scripts/catalog-audit.mjs",
