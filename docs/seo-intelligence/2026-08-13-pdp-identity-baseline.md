@@ -80,6 +80,18 @@ This is a review-first result. A shared character name does not prove duplicatio
 
 The first remediation batch should therefore prioritize Irontech, Starpery, Piper, and SE Doll, while keeping WM represented because it is strategically important and has the largest live DollWOW assortment.
 
+## Pilot Search Evidence
+
+A bounded DataForSEO pass checked six exact US product-name phrases through Google Ads Keyword Data and top-20 desktop organic results. Cost was `$0.2220`.
+
+- None of the six exact phrases returned measurable Google Ads search volume. These are long-tail identity pages, not standalone traffic forecasts.
+- Irontech Evie, Starpery Keisha, SE Doll Aryana B, Piper Lana, and Irontech Kevin all returned product-led result sets owned by manufacturers, retailers, video, or forum pages.
+- DollWOW did not appear in the top 20 for any of the six sampled phrases.
+- WM Lila Dane returned an unrelated, polluted result set. Her page should establish exact product identity rather than mirror current result language.
+- The pilot remains strategically useful because it tests duplicate control, exact model/entity clarity, image discovery, and product-led long-tail visibility across five competitive result sets.
+
+Search phrases must not be forced into editorial paragraphs or every image alt. Product identity belongs in the title, heading, structured data, and selected high-value image descriptions; the sensual introduction should remain natural and conversion-focused.
+
 ## Six-Product Visual Pilot
 
 The pilot deliberately covers different brands, settings, materials, and customer audiences. Every gallery was fetched from the live DollWOW product-media route and reviewed as a complete set.
