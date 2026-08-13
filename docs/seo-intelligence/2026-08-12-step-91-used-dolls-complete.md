@@ -2,7 +2,7 @@
 
 Date: 2026-08-12  
 Market: United States  
-Status: AI/GEO validated; visual package pending
+Status: Released; monitoring pending
 
 ## Canonical Owner
 
@@ -48,6 +48,8 @@ Raw evidence and manifests are stored under `data/exports/seo-intelligence/2026-
 ## Visual Gate
 
 The hidden guide requires one mobile-first inspection visual before release. It should show a tasteful non-explicit full-doll condition-check sequence using supplier-authorized product imagery or clean illustration: identity, dated full views, joints and high-stress areas, surface/repair history, packaging/parts, and written terms. Keep all critical facts in rendered HTML. Generate one sample only and stop for owner approval.
+
+The approved visual uses a current WM Rayna catalog image as a clearly labeled new-product reference and states that supplier campaign imagery cannot establish a used unit's identity or condition. Its evidence-dossier layout covers exact identity, dated full views, high-stress close-ups, history and repairs, packaging and parts, written terms, walk-away signals, and comparison with a supported new option. All decision-critical guidance remains in rendered HTML.
 
 ## Release Gate
 

@@ -48,6 +48,16 @@ describe("Learning Center content ownership", () => {
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
 
+  it("publishes the approved used-dolls guide without claiming third-party certification", () => {
+    const article = getLearningArticle("used-sex-dolls");
+    expect(article?.featuredImage).toBe("/images/learn/used-sex-dolls.webp");
+    expect(article?.body).toContain("A used sex doll can cost less than a new one");
+    expect(article?.body).toContain("DollWow does not currently sell or certify pre-owned dolls");
+    expect(article?.body).toContain("current dated photographs");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
+
   it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {
     const article = getLearningArticle("piper-dolls-buying-guide");
     expect(article?.primaryKeyword).toBe("piper sex doll");

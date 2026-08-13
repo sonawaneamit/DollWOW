@@ -260,6 +260,7 @@ function priority(slug: string) {
     "how-silicone-sex-dolls-are-made",
     "tpe-sex-doll-repair",
     "silicone-sex-doll-repair",
+    "used-sex-dolls",
     "most-realistic-sex-dolls",
     "mini-sex-dolls",
     "male-sex-doll-buying-guide",
@@ -339,7 +340,8 @@ function featuredImageAlt(title: string, slug: string) {
     "how-silicone-sex-dolls-are-made": "Visual guide to silicone doll production from sculpting and mold preparation through skeleton placement, silicone casting, hand finishing, inspection, and packing",
     "sex-doll-breast-options": "Sex doll breast options guide using a current Irontech silicone product and conceptual solid, hollow, and gel-filled construction diagrams",
     "tpe-sex-doll-repair": "TPE damage triage guide using a current Irontech TPE doll and illustrated examples of a small surface split, high-stress damage, and exposed internal components",
-    "silicone-sex-doll-repair": "Silicone repair decision map using a current Starpery full-silicone doll and illustrated paths for tears, finish loss, loose components, seams, internal changes, and powered areas"
+    "silicone-sex-doll-repair": "Silicone repair decision map using a current Starpery full-silicone doll and illustrated paths for tears, finish loss, loose components, seams, internal changes, and powered areas",
+    "used-sex-dolls": "Used sex doll inspection dossier using a current WM catalog product and six evidence checks for identity, dated views, condition, repair history, packaging, and written transaction terms"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;

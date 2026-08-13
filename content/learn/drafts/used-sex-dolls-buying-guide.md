@@ -8,7 +8,7 @@ category: "Scams And Buyer Protection"
 author: "jesse"
 authorDisplayName: "Jesse"
 authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
-status: visual-review
+status: production
 reviewOwner: "Jesse, Licensed Sexologist and DollWow Intimacy Education Editor"
 lastReviewed: "2026-08-12"
 ---

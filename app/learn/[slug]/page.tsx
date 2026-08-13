@@ -42,7 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process",
     "sex-doll-breast-options": "Sex Doll Breast Options: Solid, Hollow & Gel",
     "tpe-sex-doll-repair": "TPE Sex Doll Repair: Tears, Glue & Safe Steps",
-    "silicone-sex-doll-repair": "Silicone Doll Repair: Tears, Glue & Finish Care"
+    "silicone-sex-doll-repair": "Silicone Doll Repair: Tears, Glue & Finish Care",
+    "used-sex-dolls": "Used Sex Dolls: What to Check Before Buying"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
@@ -159,6 +160,7 @@ function articleFeaturedImageDimensions(slug: string) {
   if (slug === "sex-doll-breast-options") return { width: 1024, height: 1920 };
   if (slug === "tpe-sex-doll-repair") return { width: 1080, height: 1620 };
   if (slug === "silicone-sex-doll-repair") return { width: 1080, height: 1620 };
+  if (slug === "used-sex-dolls") return { width: 1080, height: 1620 };
   return { width: 1536, height: 1024 };
 }
 
@@ -1177,6 +1179,17 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "starpery-yuan-154cm-yuan-2-full-silicone-doll",
         "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
         "real-lady-sylvia-170cm-s43-silicone-doll"
+      ]
+    },
+    "used-sex-dolls": {
+      title: "Compare three supported new alternatives",
+      description: "These current DollWOW products provide a documented new-product alternative to a third-party used listing. Compare the exact format, material, measurements, price, availability, and ownership support. They are not pre-owned inventory or evidence about another seller's unit.",
+      collectionHref: "/shop/cheap-sex-dolls",
+      filters: {},
+      handles: [
+        "6ye-rowan-165cm-f-cup-tpe-companion-doll-1ldwi",
+        "wm-rayna-155cm-l-cup-tpe-companion-doll-vpv6y",
+        "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu"
       ]
     },
     "best-tpe-sex-dolls": {
