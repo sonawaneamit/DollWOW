@@ -6,8 +6,10 @@ import sharp from "sharp";
 
 const VENICE_ENDPOINT = "https://api.venice.ai/api/v1/chat/completions";
 const EXTRACTOR_MODEL = process.env.PDP_EDITORIAL_EXTRACTOR_MODEL || "qwen3-vl-235b-a22b";
+const THEME_MODEL = process.env.PDP_EDITORIAL_THEME_MODEL || "openai-gpt-54-mini";
 const WRITER_MODEL = process.env.PDP_EDITORIAL_WRITER_MODEL || "gemma-4-uncensored";
-const REVIEWER_MODEL = process.env.PDP_EDITORIAL_REVIEWER_MODEL || "qwen3-235b-a22b-instruct-2507";
+const REVIEWER_MODEL = process.env.PDP_EDITORIAL_REVIEWER_MODEL || "venice-uncensored-1-2";
+const SELECTOR_MODEL = process.env.PDP_EDITORIAL_SELECTOR_MODEL || "openai-gpt-54-mini";
 const args = parseArgs(process.argv.slice(2));
 const OUTPUT = args.output || "data/exports/pdp-phase/pdp-editorial-pilot-drafts.json";
 
@@ -39,48 +41,88 @@ const products = [
 ];
 
 const extractorPrompt = `Analyze this supplier-authorized contact sheet for one clearly adult doll product. Return strict JSON only with:
-- visibleStyling: hair, eyes, makeup, expression, clothing, props, pose, lighting, color palette, and setting that are visibly consistent
-- dominantTheme: one concise, specific scenario or aesthetic label supported by at least two non-text visual cues. Name a recognizable sport or activity specifically rather than using a generic label like athletic or sporty
-- themeEvidence: the concrete objects, clothing, and surroundings that support the dominant theme
+- appearance: hair, eyes, makeup, expression, and visible body presentation
+- wardrobe: visible garment shapes, colors, patterns, and accessories described neutrally without naming an occupation, sport, role, or aesthetic
+- sceneAnchors: large or distinctive physical objects, each with objectName, confidence, framesSeen, and visualEvidence
+- environment: recognizable furniture, room type, architecture, landscape, and surroundings
+- printedText: words, logos, numbers, and labels visible on clothing or props, kept separate from physical evidence
+- poses: consistently visible body positions and gestures
+- lightingAndPalette: lighting and dominant colors
 - uncertainDetails: anything partly obscured, inconsistent, or unsafe to state confidently
 - prohibitedInferences: personality, feelings, agency, function, movement, realism, included items, performance, or buyer outcomes that must not be inferred
 
-Describe only visible evidence. Do not interpret a prop as an included accessory. Do not identify a real person. Resolve theme conflicts from the overall scene and prominent objects. Physical objects and recognizable uniform shapes outweigh printed words or logos. For example, a full-size baseball bat plus a visor, varsity jacket, striped socks, and athletic uniform supports a baseball theme even when a garment contains the word "racing." Printed text cannot establish or override the dominant theme by itself.`;
+Describe only visible evidence. Do not interpret a prop as an included accessory. Do not identify a real person. Do not force a theme when evidence is ambiguous.`;
+
+const themePrompt = `Resolve the dominant visual theme of this clearly adult doll gallery from a neutral visual evidence record. Return strict JSON with dominantTheme, confidence, themeEvidence, conflictingEvidence, and rationale.
+
+Use these general evidence rules:
+- Prefer distinctive physical objects, recognizable environments, and coherent cues repeated across multiple frames.
+- Map a specialized implement to its conventional activity when confidence is high.
+- Preserve a recognizable room or environment in the result when it meaningfully shapes the scene.
+- Use wardrobe as supporting context after physical anchors and environment.
+- Give moderate weight to garment shapes, color systems, and specialized accessories when they reinforce the scene-defining evidence.
+- Give low weight to everyday objects such as phones, headphones, bracelets, generic furniture, and plain clothing unless several of them jointly establish an unmistakable context.
+- Printed words and logos are intentionally excluded from this evidence record and must not be guessed.
+- Combine compatible activity, environment, and wardrobe evidence into a useful specific label rather than reducing the result to generic fashion, product display, studio portrait, or casual streetwear.
+- Choose the most specific defensible theme. Return "no clear theme" with low confidence when no interpretation has sufficient support.
+- Do not identify a real person or infer product capabilities, included accessories, personality, or buyer outcomes.`;
 
 const writerPrompt = `You are the senior adult-commerce copywriter for DollWOW. Write premium, sensual, erotically persuasive American English for a clearly adult sex doll.
+
+Approved DollWOW voice reference:
+"Imagine the final inning is over and Evie has saved the real game for somewhere private. Her red visor sits above long brown waves, red glasses frame her blue eyes, and an open baseball jacket reveals the fitted blue top beneath. Softly parted lips and an F-cup silhouette give the sporty look a distinctly adult edge. At 161 cm (5 ft 3 in), her full-silicone build brings bold curves to the fantasy. Pull her close by the waist, slip the silver headphones from her neck, and take your time with every playful detail. With Evie, the scoreboard can wait. This is the kind of extra inning meant to be enjoyed behind closed doors."
 
 Requirements:
 - Return strict JSON with eyebrow, heading, and paragraph only.
 - Paragraph must be 90-130 words.
 - Use the verified facts and visual brief as creative inspiration for an adult fantasy that could only have been written for this particular doll.
+- Match the reference's confident cadence, specificity, sensual escalation, factual restraint, and memorable final line. Do not copy its baseball scenario, phrases, sentence openings, or props.
 - Let the fantasy unfold naturally. The doll may have a voice, personality, agency, and initiative within the fictional scene.
-- Do not present invented details as real specifications, capabilities, materials, included accessories, availability, or guarantees.
-- The finished copy must not discuss photographs, galleries, studios, source material, analysis, prompts, SEO, or content production.
+- Every factual detail about appearance, clothing, measurements, material, or product construction must come from the verified facts or neutral visual evidence. You may freely invent the adult fantasy's actions, private setting, dialogue, mood, and encounter.
+- Do not invent tactile qualities, temperature, scent, realism, performance, capabilities, included accessories, availability, or guarantees.
+- Use the styling and surroundings to inspire the fantasy, but do not narrate a plain photography setup. The finished copy must not discuss photographs, galleries, studios, source material, analysis, prompts, SEO, or content production.
 - Use US and metric measurements exactly as supplied if measurements appear.
 - Keep it seductive and confident without sounding cheap, repetitive, or mechanically generated.
+- Every subject is an adult. Never use youth-coded, school-coded, childlike, innocent, barely legal, teen, girl-next-door, petite-girl, or age-ambiguous framing.
 - Do not use an em dash or the construction "not just X, but Y."
 - The eyebrow and heading should extend the fantasy, not label the section as an editorial description.`;
 
-const reviewerPrompt = `Audit only the supplied draft against the verified facts and locked visible evidence. Return strict JSON with passed, violations, and notes.
+const reviewerPrompt = `Audit only the supplied adult fantasy copy for false commerce claims and internal-language leakage. Return strict JSON with passed, violations, and notes.
 
 Fail the draft if it:
 - contradicts the verified identity, appearance, or dominant visual theme;
-- states an invented specification, capability, material, accessory, availability claim, or guarantee as a real product fact;
+- states a false or invented height, weight, material, cup size, body type, mechanical or electronic function, included accessory, price, stock status, delivery promise, warranty, or guarantee as a real product fact;
 - describes the photography using production language;
 - contains an em dash, internal terminology, cheap generic filler, or obviously mechanical prose.
 
-Fictional locations, actions, dialogue, personality, agency, tactile sensations, and erotic scenarios are allowed. They are creative fantasy, not product claims. Do not compare fictional actions with static source poses and do not reject a draft because the fantasy extends beyond what is literally pictured. Only flag sensory language when it is presented as a factual material claim, such as promising that silicone feels exactly like human skin.
+Treat every narrative detail as fiction unless it explicitly claims to be a product specification, included item, capability, price, stock status, delivery promise, warranty, or guarantee. Fictional locations, actions, dialogue, personality, movement, atmosphere, touch, warmth, softness, erotic interaction, and emotional language always pass. The doll may act autonomously inside the fantasy.
 
-Do not flag fictional expressions, movement, atmosphere, interaction, invitation, seduction, anticipation, or behavior. Those elements are the purpose of the fantasy. A visual expression may inspire a different fictional expression within the imagined scene without contradicting the real product.`;
+Verified facts may be woven naturally into the fantasy without labels or citations. Never fail a correct height, weight, material, cup size, body type, hair color, eye color, or wardrobe detail merely because it appears in narrative prose. Fail only when it contradicts or goes beyond the supplied facts and visual evidence.
 
 Review the draft only. Do not flag words or punctuation that appear solely inside the evidence supplied for comparison. Do not rewrite the draft. Be strict and concise.`;
+
+const selectorPrompt = `Select the stronger of two adult-commerce drafts. Return strict JSON with selectedCandidate (1 or 2), scores, rejectionReasons, and rationale.
+
+Score each candidate from 1-10 on:
+- factual fidelity to verified facts and neutral visual evidence, including exact hair, eye, wardrobe, body, and measurement details;
+- specificity to this particular doll;
+- similarity in cadence and polish to the approved DollWOW Evie voice reference supplied in the writer prompt;
+- sensual persuasion without cheap, repetitive, awkward, generic, or mechanically generated prose;
+- customer-facing language with no photography, gallery, analysis, SEO, or content-production terminology.
+
+Reject any candidate that contradicts a visible fact, repeats a conspicuous word or idea, misuses grammar, introduces youth-coded language, or makes a false commerce claim. Fictional action, agency, dialogue, atmosphere, touch, warmth, and erotic scenarios are allowed. Choose the better candidate even when both need later human review.`;
 
 function parseArgs(argv) {
   const parsed = {};
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (token === "--url") parsed.url = argv[++index];
+    else if (token === "--urls-file") parsed.urlsFile = argv[++index];
     else if (token === "--output") parsed.output = argv[++index];
+    else if (token === "--concurrency") parsed.concurrency = argv[++index];
+    else if (token === "--theme-only") parsed.themeOnly = true;
+    else if (token === "--eligibility-only") parsed.eligibilityOnly = true;
+    else if (token === "--resolve-theme") parsed.resolveTheme = true;
     else if (!token.startsWith("--") && !parsed.output) parsed.output = token;
   }
   return parsed;
@@ -92,34 +134,45 @@ function extractJson(raw) {
 }
 
 async function callVenice({ model, messages, maxCompletionTokens = 1200 }) {
-  const response = await fetch(VENICE_ENDPOINT, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.VENICE_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.55,
-      max_completion_tokens: maxCompletionTokens,
-      messages,
-      response_format: { type: "json_object" },
-      venice_parameters: {
-        include_venice_system_prompt: false,
-        disable_thinking: true,
-        strip_thinking_response: true,
-        enable_web_search: "off",
-      },
-    }),
-  });
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(VENICE_ENDPOINT, {
+        method: "POST",
+        signal: AbortSignal.timeout(45_000),
+        headers: {
+          Authorization: `Bearer ${process.env.VENICE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          temperature: 0.55,
+          max_completion_tokens: maxCompletionTokens,
+          messages,
+          response_format: { type: "json_object" },
+          venice_parameters: {
+            include_venice_system_prompt: false,
+            disable_thinking: true,
+            strip_thinking_response: true,
+            enable_web_search: "off",
+          },
+        }),
+      });
 
-  const body = await response.json();
-  if (!response.ok) throw new Error(`${model} returned ${response.status}: ${JSON.stringify(body)}`);
-  return {
-    content: extractJson(body.choices?.[0]?.message?.content || "{}"),
-    usage: body.usage || null,
-    cost: body.cost || null,
-  };
+      const body = await response.json();
+      if (!response.ok) throw new Error(`${model} returned ${response.status}: ${JSON.stringify(body)}`);
+      return {
+        content: extractJson(body.choices?.[0]?.message?.content || "{}"),
+        usage: body.usage || null,
+        cost: body.cost || null,
+        attempts: attempt,
+      };
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
+    }
+  }
+  throw lastError;
 }
 
 function wordCount(value) {
@@ -133,16 +186,37 @@ function runStaticChecks(draft) {
     "—",
     "not just",
     "unforgettable",
-    "photos",
-    "photo",
-    "image",
-    "gallery",
+    "realistic presence",
+    "realistic experience",
+    "tactile luxury",
+    "tactile reality",
+    "supple skin",
+    "skin feels warm",
+    "warmth of her skin",
+    "innocence",
+    "innocent",
+    "schoolgirl",
+    "school girl",
+    "school-girl",
+    "childlike",
+    "child-like",
+    "barely legal",
+    "teen",
+    "girl next door",
+    "girl-next-door",
+    "in this photo",
+    "in the photo",
+    "product photo",
+    "product image",
+    "the image shows",
+    "the gallery shows",
+    "this gallery",
+    "contact sheet",
     "studio",
-    "backdrop",
-    "setting",
-    "pose",
-    "styling",
-    "editorial",
+    "studio lighting",
+    "editorial copy",
+    "visual evidence",
+    "source material",
     "seo",
     "product data",
     "visual narrative",
@@ -157,11 +231,45 @@ function runStaticChecks(draft) {
 }
 
 async function main() {
-  if (!process.env.VENICE_API_KEY) throw new Error("VENICE_API_KEY is required");
+  if (!args.eligibilityOnly && !process.env.VENICE_API_KEY) throw new Error("VENICE_API_KEY is required");
 
-  const runProducts = args.url ? [await productFromUrl(args.url)] : products;
+  const inputUrls = args.urlsFile
+    ? (await fs.readFile(args.urlsFile, "utf8")).split(/\r?\n/).map((value) => value.trim()).filter(Boolean)
+    : args.url ? [args.url] : [];
+  const runProducts = inputUrls.length
+    ? await mapWithConcurrency(inputUrls, 4, productFromUrl)
+    : products.map((product) => ({ ...product, eligibility: { eligible: true, reason: "approved_pilot_fixture" } }));
+
+  if (args.eligibilityOnly) {
+    const eligibilityResults = runProducts.map((product) => ({
+      handle: product.handle,
+      sourceUrl: product.sourceUrl || null,
+      eligibility: product.eligibility,
+    }));
+    await writeResults(eligibilityResults);
+    console.log(`Wrote ${eligibilityResults.length} eligibility results to ${OUTPUT}`);
+    return;
+  }
+
   const results = [];
-  for (const product of runProducts) {
+  const concurrency = Math.max(1, Number(args.concurrency || 2));
+  for (let offset = 0; offset < runProducts.length; offset += concurrency) {
+    const batch = await Promise.all(runProducts.slice(offset, offset + concurrency).map(async (product) => {
+    if (product.eligibility?.eligible !== true) {
+      return {
+        handle: product.handle,
+        sourceUrl: product.sourceUrl || null,
+        verifiedFacts: product.facts,
+        eligibility: product.eligibility,
+        publishable: false,
+        provenance: {
+          promptVersion: "pdp-editorial-fantasy-v5",
+          generatedAt: new Date().toISOString(),
+          status: "excluded_not_full_body",
+        },
+      };
+    }
+
     const contactSheet = product.contactSheet || path.join("output/pdp-pilot-contact-sheets", `${product.handle}-contact.jpg`);
     const image = await fs.readFile(contactSheet, "base64");
     const extraction = await callVenice({
@@ -178,12 +286,39 @@ async function main() {
       ],
     });
 
-    const attempts = [];
-    let writing;
-    let review;
-    let staticChecks;
-    for (let attempt = 1; attempt <= 3; attempt += 1) {
-      writing = await callVenice({
+    const neutralEvidence = themeEvidenceRecord(extraction.content);
+    const theme = args.resolveTheme
+      ? await callVenice({
+          model: THEME_MODEL,
+          messages: [
+            { role: "system", content: "You are an independent visual evidence judge for adult commerce. Return JSON only." },
+            { role: "user", content: `${themePrompt}\n\nNeutral visual evidence:\n${JSON.stringify(neutralEvidence)}` },
+          ],
+        })
+      : { content: { dominantTheme: null, confidence: null, themeEvidence: [], rationale: "Writer receives neutral visual evidence directly." }, usage: null, cost: null, attempts: 0 };
+
+    if (args.themeOnly) {
+      return {
+        handle: product.handle,
+        sourceUrl: product.sourceUrl || null,
+        verifiedFacts: product.facts,
+        extraction: extraction.content,
+        theme: theme.content,
+        publishable: false,
+        provenance: {
+          extractorModel: EXTRACTOR_MODEL,
+          themeModel: THEME_MODEL,
+          promptVersion: "pdp-editorial-theme-v1",
+          generatedAt: new Date().toISOString(),
+          extractorCost: extraction.cost,
+          themeCost: theme.cost,
+          status: "theme_review_only",
+        },
+      };
+    }
+
+    const attempts = await Promise.all([1, 2].map(async (attempt) => {
+      const writing = await callVenice({
         model: WRITER_MODEL,
         messages: [
           { role: "system", content: writerPrompt },
@@ -191,17 +326,18 @@ async function main() {
             role: "user",
             content: JSON.stringify({
               verifiedFacts: product.facts,
-              lockedVisibleEvidence: extraction.content.visibleStyling || [],
-              dominantTheme: extraction.content.dominantTheme || null,
-              themeEvidence: extraction.content.themeEvidence || [],
+              neutralVisualEvidence: neutralEvidence,
+              dominantTheme: theme.content.dominantTheme || null,
+              themeConfidence: theme.content.confidence || null,
+              themeEvidence: theme.content.themeEvidence || [],
               excludedUncertainDetails: extraction.content.uncertainDetails || [],
-              previousRejection: attempts.at(-1)?.review?.violations || attempts.at(-1)?.staticChecks?.failures || [],
+              creativeDirection: `Candidate ${attempt}: choose your own distinct fantasy angle and phrasing.`,
             }),
           },
         ],
       });
 
-      review = await callVenice({
+      const review = await callVenice({
         model: REVIEWER_MODEL,
         messages: [
           { role: "system", content: reviewerPrompt },
@@ -209,9 +345,10 @@ async function main() {
             role: "user",
             content: JSON.stringify({
               verifiedFacts: product.facts,
-              lockedVisibleEvidence: extraction.content.visibleStyling || [],
-              dominantTheme: extraction.content.dominantTheme || null,
-              themeEvidence: extraction.content.themeEvidence || [],
+              neutralVisualEvidence: neutralEvidence,
+              dominantTheme: theme.content.dominantTheme || null,
+              themeConfidence: theme.content.confidence || null,
+              themeEvidence: theme.content.themeEvidence || [],
               uncertainDetails: extraction.content.uncertainDetails || [],
               draft: writing.content,
             }),
@@ -219,47 +356,125 @@ async function main() {
         ],
       });
 
-      staticChecks = runStaticChecks(writing.content);
-      attempts.push({ attempt, draft: writing.content, staticChecks, review: review.content });
-      if (staticChecks.passed && review.content.passed === true) break;
-    }
+      const staticChecks = runStaticChecks(writing.content);
+      return {
+        attempt,
+        draft: writing.content,
+        staticChecks,
+        review: review.content,
+        writerCost: writing.cost,
+        reviewerCost: review.cost,
+      };
+    }));
+
+    const passingAttempts = attempts.filter((attempt) => attempt.staticChecks.passed && attempt.review.passed === true);
+    const selection = passingAttempts.length === 2
+      ? await callVenice({
+          model: SELECTOR_MODEL,
+          messages: [
+            { role: "system", content: selectorPrompt },
+            {
+              role: "user",
+              content: JSON.stringify({
+                verifiedFacts: product.facts,
+                neutralVisualEvidence: neutralEvidence,
+                candidates: attempts.map(({ attempt, draft, staticChecks, review }) => ({ attempt, draft, staticChecks, review })),
+              }),
+            },
+          ],
+        })
+      : {
+          content: {
+            selectedCandidate: passingAttempts[0]?.attempt || 1,
+            rationale: passingAttempts.length === 1
+              ? "Selected the only candidate that passed both machine gates."
+              : "No candidate passed both machine gates; retained candidate 1 for human review only.",
+          },
+          usage: null,
+          cost: null,
+        };
+
+    const selectedIndex = selection.content.selectedCandidate === 2 ? 1 : 0;
+    const selected = attempts[selectedIndex];
+    const writing = { content: selected.draft, cost: selected.writerCost, usage: null };
+    const review = { content: selected.review, cost: selected.reviewerCost, usage: null };
+    const staticChecks = selected.staticChecks;
 
     const reviewerPassed = review.content.passed === true;
 
-    results.push({
+    return {
       handle: product.handle,
       sourceUrl: product.sourceUrl || null,
       verifiedFacts: product.facts,
+      eligibility: product.eligibility,
       sourceImages: product.sourceImages || Array.from({ length: 8 }, (_, index) => `/product-media/v4/${product.handle}/${index}?size=card`),
       extraction: extraction.content,
+      theme: theme.content,
       draft: writing.content,
       staticChecks,
       reviewer: review.content,
+      selection: selection.content,
       attempts,
       publishable: staticChecks.passed && reviewerPassed,
       provenance: {
         extractorModel: EXTRACTOR_MODEL,
+        themeModel: THEME_MODEL,
         writerModel: WRITER_MODEL,
         reviewerModel: REVIEWER_MODEL,
-        promptVersion: "pdp-editorial-fantasy-v3",
+        selectorModel: SELECTOR_MODEL,
+        promptVersion: "pdp-editorial-fantasy-v5",
         generatedAt: new Date().toISOString(),
         extractorUsage: extraction.usage,
         writerUsage: writing.usage,
         extractorCost: extraction.cost,
+        themeUsage: theme.usage,
+        themeCost: theme.cost,
         writerCost: writing.cost,
         reviewerUsage: review.usage,
         reviewerCost: review.cost,
+        selectorUsage: selection.usage,
+        selectorCost: selection.cost,
         status: "draft_needs_human_review",
       },
-    });
+    };
+    }));
+    results.push(...batch);
+    await writeResults(results);
   }
 
-  await fs.mkdir(path.dirname(OUTPUT), { recursive: true });
-  await fs.writeFile(OUTPUT, `${JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2)}\n`);
   console.log(`Wrote ${results.length} review-only drafts to ${OUTPUT}`);
   for (const result of results) {
     console.log(`${result.handle}: ${result.publishable ? "machine gates pass" : "review required"}`);
   }
+}
+
+function themeEvidenceRecord(extraction) {
+  return {
+    appearance: extraction.appearance || extraction.visibleStyling || null,
+    wardrobe: extraction.wardrobe || null,
+    sceneAnchors: extraction.sceneAnchors || [],
+    environment: extraction.environment || null,
+    poses: extraction.poses || null,
+    lightingAndPalette: extraction.lightingAndPalette || null,
+    uncertainDetails: extraction.uncertainDetails || [],
+  };
+}
+
+async function writeResults(results) {
+  await fs.mkdir(path.dirname(OUTPUT), { recursive: true });
+  await fs.writeFile(OUTPUT, `${JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2)}\n`);
+}
+
+async function mapWithConcurrency(values, concurrency, worker) {
+  const results = new Array(values.length);
+  let nextIndex = 0;
+  await Promise.all(Array.from({ length: Math.min(concurrency, values.length) }, async () => {
+    while (nextIndex < values.length) {
+      const index = nextIndex++;
+      results[index] = await worker(values[index]);
+    }
+  }));
+  return results;
 }
 
 async function productFromUrl(rawUrl) {
@@ -282,6 +497,7 @@ async function productFromUrl(rawUrl) {
 
   const propertyValues = (name) => (product.additionalProperty || []).filter((entry) => entry.name === name).map((entry) => entry.value).filter(Boolean);
   const preferredProperty = (name) => propertyValues(name).find((value) => String(value).includes("/")) || propertyValues(name)[0];
+  const eligibility = fullBodyEligibility(product, propertyValues, preferredProperty);
   const facts = [
     product.brand?.name,
     product.name,
@@ -292,6 +508,10 @@ async function productFromUrl(rawUrl) {
     preferredProperty("Body type"),
     preferredProperty("Head model"),
   ].filter(Boolean);
+  if (!eligibility.eligible || args.eligibilityOnly) {
+    return { handle, facts, sourceUrl: url.toString(), sourceImages: [], eligibility };
+  }
+
   const sourceImages = (Array.isArray(product.image) ? product.image : [product.image])
     .filter(Boolean)
     .slice(0, 8)
@@ -300,20 +520,67 @@ async function productFromUrl(rawUrl) {
 
   const contactSheet = path.join("output/pdp-pilot-contact-sheets", `${handle}-contact-auto.jpg`);
   await buildContactSheet(sourceImages, contactSheet);
-  return { handle, facts, sourceUrl: url.toString(), sourceImages, contactSheet };
+  return { handle, facts, sourceUrl: url.toString(), sourceImages, contactSheet, eligibility };
+}
+
+function fullBodyEligibility(product, propertyValues, preferredProperty) {
+  const text = [
+    product.name,
+    product.description,
+    product.category,
+    product.material,
+    ...propertyValues("Body type"),
+  ].filter(Boolean).join(" ").toLowerCase();
+  if (/\b(replacement head|standalone head|doll head|head only|torsos?|upper body|half body|partial body|body only|hips?|hip torso|lower body|butt(?:ocks?)?)\b/.test(text)) {
+    return { eligible: false, reason: "explicit_partial_body_signal" };
+  }
+
+  const heightCm = metricNumber(preferredProperty("Height"), "cm");
+  if (!heightCm) return { eligible: false, reason: "height_unverified" };
+  if (heightCm > 120) return { eligible: true, reason: "verified_full_size_height", heightCm };
+
+  const limbMeasurements = ["Feet Length", "Legs Length", "Arms Length"]
+    .map((name) => preferredProperty(name));
+  const hasCompleteLimbProfile = limbMeasurements.every(isAvailableMeasurement);
+  return hasCompleteLimbProfile
+    ? { eligible: true, reason: "verified_compact_full_body_measurements", heightCm }
+    : { eligible: false, reason: "compact_product_without_full_limb_profile", heightCm };
+}
+
+function metricNumber(value, unit) {
+  const match = String(value || "").match(new RegExp(`([0-9]+(?:\\.[0-9]+)?)\\s*${unit}\\b`, "i"));
+  return match ? Number(match[1]) : 0;
+}
+
+function isAvailableMeasurement(value) {
+  return Boolean(value) && !/^(?:n\/?a|none|unknown|not available|-|0)$/i.test(String(value).trim());
 }
 
 async function buildContactSheet(urls, outputPath) {
   const tileWidth = 420;
   const tileHeight = 560;
   const columns = 4;
-  const rows = Math.ceil(urls.length / columns);
-  const tiles = await Promise.all(urls.map(async (url, index) => {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Could not read catalog image ${index + 1} (${response.status})`);
-    const input = Buffer.from(await response.arrayBuffer());
-    const buffer = await sharp(input).rotate().resize(tileWidth, tileHeight, { fit: "contain", background: "#f4eee9" }).jpeg({ quality: 88 }).toBuffer();
-    return { input: buffer, left: (index % columns) * tileWidth, top: Math.floor(index / columns) * tileHeight };
+  const settled = await Promise.allSettled(urls.map(async (url, sourceIndex) => {
+    let lastStatus = 0;
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      const response = await fetch(url, { signal: AbortSignal.timeout(20_000) });
+      lastStatus = response.status;
+      if (response.ok) {
+        const input = Buffer.from(await response.arrayBuffer());
+        const buffer = await sharp(input).rotate().resize(tileWidth, tileHeight, { fit: "contain", background: "#f4eee9" }).jpeg({ quality: 88 }).toBuffer();
+        return { input: buffer, sourceIndex };
+      }
+      if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 750));
+    }
+    throw new Error(`Could not read catalog image ${sourceIndex + 1} (${lastStatus})`);
+  }));
+  const usable = settled.filter((result) => result.status === "fulfilled").map((result) => result.value);
+  if (usable.length < 3) throw new Error(`Only ${usable.length} usable catalog images remained; at least 3 are required`);
+  const rows = Math.ceil(usable.length / columns);
+  const tiles = usable.map(({ input }, index) => ({
+    input,
+    left: (index % columns) * tileWidth,
+    top: Math.floor(index / columns) * tileHeight,
   }));
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
   await sharp({ create: { width: columns * tileWidth, height: rows * tileHeight, channels: 3, background: "#f4eee9" } })
