@@ -12,7 +12,10 @@ const BRAND_START_URLS = {
   wm: "https://www.rosemarydoll.com/sex-doll-brands/wm-sex-dolls/",
   angelkiss: "https://www.rosemarydoll.com/sex-doll-brands/angelkiss-dolls/",
   zelex: "https://www.rosemarydoll.com/sex-doll-brands/zelex-dolls/",
-  irontech: "https://www.rosemarydoll.com/sex-doll-brands/irontech-doll/",
+  irontech: [
+    "https://www.rosemarydoll.com/sex-doll-brands/irontech-doll/",
+    "https://www.rosemarydoll.com/sex-doll-brands/irontech-silicone-doll/"
+  ],
   "real-lady": "https://www.rosemarydoll.com/sex-doll-brands/real-lady-sex-dolls/",
   starpery: "https://www.rosemarydoll.com/sex-doll-brands/starpery-dolls/",
   "doll-castle": "https://www.rosemarydoll.com/sex-doll-brands/dolls-castle-sex-dolls/"
@@ -65,7 +68,10 @@ const brand = String(args.brand || "").toLowerCase();
 const urlsFile = args["urls-file"] ? path.resolve(ROOT, String(args["urls-file"])) : null;
 const urlManifest = urlsFile ? JSON.parse(await fs.readFile(urlsFile, "utf8")) : null;
 const productUrlOverride = urlManifest ? (Array.isArray(urlManifest) ? urlManifest : urlManifest.urls || []) : null;
-const startUrl = args.url || urlManifest?.categoryUrl || productUrlOverride?.[0] || BRAND_START_URLS[brand];
+const configuredStartUrls = BRAND_START_URLS[brand];
+const explicitStartUrl = args.url || urlManifest?.categoryUrl || productUrlOverride?.[0];
+const startUrls = unique((explicitStartUrl ? [explicitStartUrl] : Array.isArray(configuredStartUrls) ? configuredStartUrls : [configuredStartUrls]).filter(Boolean));
+const startUrl = startUrls[0];
 const limit = Number(args.limit || 24);
 const concurrency = Math.max(1, Number(args.concurrency || 4));
 
@@ -80,8 +86,9 @@ class ApifyPermissionError extends Error {
   }
 }
 
-const fetchLimit = isProductUrl(startUrl) ? limit : Math.max(limit * 2, limit);
-const items = await getScrapeItems(startUrl, fetchLimit, brand);
+const fetchLimit = startUrls.every(isProductUrl) ? limit : Math.max(limit * 2, limit);
+const itemGroups = await mapWithConcurrency(startUrls, Math.min(concurrency, startUrls.length), (url) => getScrapeItems(url, fetchLimit, brand));
+const items = interleaveUniqueItems(itemGroups);
 const normalized = items
   .map((item) => normalizeRosemaryProduct(item, brand))
   .filter(Boolean)
@@ -95,6 +102,7 @@ await fs.writeFile(
     {
       source: "rosemarydoll.com",
       startUrl,
+      startUrls,
       brand: brand || null,
       scrapedAt: new Date().toISOString(),
       mode: args.local || !process.env.APIFY_API_TOKEN ? "local" : "apify",
@@ -124,6 +132,23 @@ async function getScrapeItems(startUrl, limit, brand) {
     }
     throw error;
   }
+}
+
+function interleaveUniqueItems(groups) {
+  const results = [];
+  const seen = new Set();
+  const maxLength = Math.max(0, ...groups.map((group) => group.length));
+
+  for (let index = 0; index < maxLength; index += 1) {
+    for (const group of groups) {
+      const item = group[index];
+      if (!item?.sourceUrl || seen.has(item.sourceUrl)) continue;
+      seen.add(item.sourceUrl);
+      results.push(item);
+    }
+  }
+
+  return results;
 }
 
 async function runApifyScrape(startUrl, limit, brandSlug) {
