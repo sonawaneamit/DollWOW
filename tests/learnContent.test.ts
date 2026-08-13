@@ -18,6 +18,16 @@ describe("Learning Center content ownership", () => {
     expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
   });
 
+  it("publishes the approved breast-options guide without turning supplier labels into standards", () => {
+    const article = getLearningArticle("sex-doll-breast-options");
+    expect(article?.featuredImage).toBe("/images/learn/sex-doll-breast-options.webp");
+    expect(article?.body).toContain("Cup size describes a proportion, not firmness");
+    expect(article?.body).toContain("https://www.tantaly.com/pages/breast-options-guide-for-sex-doll-torsos");
+    expect(article?.body).toContain("These are manufacturer option names, not universal technical standards");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+    expect(buildArticleFaqStructuredData(article!)?.mainEntity).toHaveLength(12);
+  });
+
   it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {
     const article = getLearningArticle("piper-dolls-buying-guide");
     expect(article?.primaryKeyword).toBe("piper sex doll");

@@ -39,7 +39,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "sex-doll-storage": "Sex Doll Storage: Safe, Private Storage Guide",
     "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims",
     "piper-dolls-buying-guide": "Piper Sex Doll Buying Guide: Materials, Sizes & Models",
-    "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process"
+    "how-silicone-sex-dolls-are-made": "How Silicone Sex Dolls Are Made | Factory Process",
+    "sex-doll-breast-options": "Sex Doll Breast Options: Solid, Hollow & Gel"
   };
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
@@ -153,6 +154,7 @@ function articleFeaturedImageDimensions(slug: string) {
   if (slug === "sex-doll-guide") return { width: 1672, height: 941 };
   if (slug === "piper-dolls-buying-guide") return { width: 1122, height: 1402 };
   if (slug === "how-silicone-sex-dolls-are-made") return { width: 1003, height: 1923 };
+  if (slug === "sex-doll-breast-options") return { width: 1024, height: 1920 };
   return { width: 1536, height: 1024 };
 }
 
@@ -1138,6 +1140,17 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
         "sedoll-mariko-160cm-e-cup-silicone-companion-doll-cgdxn",
         "wm-y019-157cm-b-cup-silicone-companion-doll-txhmc",
         "real-lady-sylvia-170cm-s43-silicone-doll"
+      ]
+    },
+    "sex-doll-breast-options": {
+      title: "Compare three current builds with breast or softness options",
+      description: "These live product pages currently expose relevant gel-breast or breast-option choices. Use them to compare the exact body, supplier terminology, included or paid status, compatibility, weight, care, and final written configuration. They do not prove one shared internal construction.",
+      collectionHref: "/shop/custom",
+      filters: { productForm: "full-doll" },
+      handles: [
+        "irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd",
+        "starpery-yuan-154cm-yuan-2-full-silicone-doll",
+        "angelkiss-flora-ciruka-160cm-a-cup-silicone-companion-doll-1g2b0"
       ]
     },
     "best-tpe-sex-dolls": {

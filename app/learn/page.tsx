@@ -107,6 +107,8 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
                 ? "/images/learn/piper-dolls-buying-guide-card.webp"
                 : article.slug === "how-silicone-sex-dolls-are-made"
                   ? "/images/learn/how-silicone-sex-dolls-are-made-card.webp"
+                  : article.slug === "sex-doll-breast-options"
+                    ? "/images/learn/sex-doll-breast-options-card.webp"
                 : article.featuredImage;
               return (
                 <article key={article.slug} className="tone-card overflow-hidden rounded-[8px]">

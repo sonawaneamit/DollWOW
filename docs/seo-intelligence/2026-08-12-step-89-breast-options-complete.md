@@ -2,7 +2,7 @@
 
 Date: 2026-08-12  
 Market: United States  
-Status: AI/GEO validated; visual package pending
+Status: Released after AI/GEO validation and approved visual QA
 
 ## Canonical Owner
 
@@ -42,10 +42,10 @@ Raw evidence and endpoint-level manifests are stored under `data/exports/seo-int
 - Backlink intersection returned no common opportunity; LLM Mentions returned a zero-mention baseline.
 - Answer-engine citations included retailers and generic material pages. They informed question coverage but were not adopted as authority for product specifications.
 
-## Visual Gate
+## Release Evidence
 
-The hidden guide requires one mobile-first instructional visual before release. The approved sample should compare solid, hollow, and gel-filled construction conceptually using clean cutaway illustration, not explicit photography or fake factory internals. Important labels and tradeoffs must remain in rendered HTML. Generate one sample only and stop for owner approval before any derivative sizes.
+The owner approved the single mobile-first instructional visual on August 13, 2026. It combines a real, clothed Irontech Evie catalog photograph for body context with explicitly conceptual skin-toned cross-sections for solid, hollow, and gel-filled construction. Its cup-profile row keeps every size rounded and states that cup size changes proportion rather than firmness or construction. The image does not claim to reveal Evie's internal build or a universal factory method.
 
-## Release Gate
+The public manuscript retains the comparison table, product-specific questions, care boundaries, dated original catalog analysis, one current Tantaly manufacturer source, twelve visible FAQs, and all important tradeoffs in HTML. Three current live product pages with breast or gel-softness options are included as configuration examples, not construction proof or a quality ranking.
 
-Focused OnPage correctly returned 404 because the page is hidden. After visual approval and publication, require a 200 response, canonical, indexability, rendered title/H1, author and review date, Article and visible-content-backed FAQ schema, source links, internal links, accurate alt/caption text, and zero customer-facing SEO language.
+Pre-release QA passed on August 13, 2026: TypeScript, 49 test files and 254 tests, production build, customer-copy audit, and Learning Center link audit. Mobile and desktop rendering returned HTTP 200 with no horizontal overflow or browser errors, the canonical URL, Article, BreadcrumbList, and FAQPage structured data, the approved portrait visual, and all three catalog images loaded. The link audit covered 881 references across 46 public articles with zero broken or redirected destinations.

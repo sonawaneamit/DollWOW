@@ -8,9 +8,9 @@ category: "Customization"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: visual-review
+status: production
 reviewOwner: "Jesse, Licensed Sexologist and DollWow Intimacy Education Editor"
-lastReviewed: "2026-08-12"
+lastReviewed: "2026-08-13"
 ---
 
 # Sex Doll Breast Options: Solid, Hollow, Gel, And Softness

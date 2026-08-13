@@ -334,7 +334,8 @@ function featuredImageAlt(title: string, slug: string) {
     "tantaly-buying-guide": "Three current Tantaly torso formats with verified heights and a checklist for comparing width, depth, weight, and material",
     "erovenus-dolls-review-guide": "Three current Erovenus products illustrating product form, surface finish, complete scale, and the evidence a useful review should include",
     "piper-dolls-buying-guide": "Piper Dolls buying guide featuring the current adult Piper Lana silicone doll with TPE, silicone, compact, and full-size comparison prompts",
-    "how-silicone-sex-dolls-are-made": "Visual guide to silicone doll production from sculpting and mold preparation through skeleton placement, silicone casting, hand finishing, inspection, and packing"
+    "how-silicone-sex-dolls-are-made": "Visual guide to silicone doll production from sculpting and mold preparation through skeleton placement, silicone casting, hand finishing, inspection, and packing",
+    "sex-doll-breast-options": "Sex doll breast options guide using a current Irontech silicone product and conceptual solid, hollow, and gel-filled construction diagrams"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;
