@@ -23,9 +23,11 @@ These snippets are factual and intentionally separate from the visual editorial 
 ## Irontech Evie
 
 **Handle:** `irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd`  
-**Heading:** Meet Evie
+**Eyebrow:** A private game begins
 
-Evie's baseball-inspired styling gives this Irontech gallery a bright, energetic identity. Her long brown waves and blue eyes are framed by red glasses, while the vivid red, white, and blue palette runs through the visor, jacket, fitted top, and striped socks. Silver headphones and colorful bracelets add playful detail without competing with her softly parted expression. At 161 cm (5 ft 3 in), her full-silicone F-cup build carries the sporty look with strong curves and a confident silhouette. The clean blue studio setting keeps every color crisp, moving from close portraits to relaxed seated poses for a look that feels polished, modern, and unmistakably Evie.
+**Heading:** Evie after the final inning
+
+Imagine the final inning is over and Evie has saved the real game for somewhere private. Her red visor sits above long brown waves, red glasses frame her blue eyes, and an open baseball jacket reveals the fitted blue top beneath. Softly parted lips and an F-cup silhouette give the sporty look a distinctly adult edge. At 161 cm (5 ft 3 in), her full-silicone build brings bold curves to the fantasy. Pull her close by the waist, slip the silver headphones from her neck, and take your time with every playful detail. With Evie, the scoreboard can wait. This is the kind of extra inning meant to be enjoyed behind closed doors.
 
 ## WM Lila Dane
 
