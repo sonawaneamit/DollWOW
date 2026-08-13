@@ -7,6 +7,19 @@
 
 These samples test six distinct visual directions and include one male doll. Clothing, props, and scenery are editorial styling references and are not described as included items. Existing factual descriptions, specifications, options, and schema remain unchanged.
 
+## Proposed Search Metadata
+
+These snippets are factual and intentionally separate from the visual editorial voice. Product structured data should use the approved description rather than the sensual paragraph.
+
+| Product | SEO title | Meta and schema description |
+| --- | --- | --- |
+| Irontech Evie | `Irontech Evie 161cm Full Silicone Doll \| DollWOW` | `Shop Irontech Evie, a 161 cm (5 ft 3 in) F-cup full-silicone doll. Compare verified measurements, current options, and ordering details.` |
+| WM Lila Dane | `WM Lila Dane 157cm Full Silicone Doll \| DollWOW` | `Explore WM Lila Dane, a 157 cm (5 ft 2 in) B-cup full-silicone doll. Review verified dimensions, customization, and ordering details.` |
+| Starpery Keisha | `Starpery Keisha 174cm Silicone Doll \| DollWOW` | `Explore Starpery Keisha, a 174 cm (5 ft 9 in) D-cup full-silicone doll. Compare verified measurements, customization, and ordering details.` |
+| SE Doll Aryana B | `SE Doll Aryana B 160cm Silicone Doll \| DollWOW` | `Explore SE Doll Aryana B, a 160 cm (5 ft 3 in) C-cup full-silicone doll with fantasy styling. Review verified specs and current options.` |
+| Piper Lana | `Piper Lana 155cm Full Silicone Doll \| DollWOW` | `Explore Piper Lana, a 155 cm (5 ft 1 in) F-cup full-silicone doll. Compare verified measurements, current customization, and ordering details.` |
+| Irontech Kevin | `Irontech Kevin 176cm Male Silicone Doll \| DollWOW` | `Explore Irontech Kevin, a 176 cm (5 ft 9 in) full-silicone male doll. Compare verified measurements, customization, and ordering details.` |
+
 ## Irontech Evie
 
 **Handle:** `irontech-evie-161cm-f-cup-silicone-t4-ros-max-companion-doll-mpyhd`  
