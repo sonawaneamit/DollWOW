@@ -540,6 +540,14 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         caption: "Start with the exact Irontech body and head, then compare material, listed handling weight, and options supported for that build.",
         width: 1024,
         height: 1536
+      },
+      {
+        afterHeading: "Irontech Materials Compared",
+        src: "/images/learn/irontech-dolls-buying-guide/three-build-paths.webp",
+        alt: "Irontech TPE, silicone-head hybrid, and full-silicone products compared with verified height and listed weight",
+        caption: "Irontech construction paths can change handling and configuration. Compare the exact material, body and head, listed weight, and supported options before ordering.",
+        width: 1024,
+        height: 1536
       }
     ],
     "wm-dolls-buying-guide": [
@@ -550,6 +558,14 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         caption: "WM offers many body and head combinations. Read height and weight together, then confirm the exact material, pairing, and available options.",
         width: 1024,
         height: 1536
+      },
+      {
+        afterHeading: "Size And Weight: Read Both",
+        src: "/images/learn/wm-dolls-buying-guide/material-and-weight.webp",
+        alt: "WM TPE, full-silicone, and male products showing why height and listed weight must be compared together",
+        caption: "A taller WM doll is not automatically heavier. Read the exact material, body volume, listed weight, delivery route, and storage needs together.",
+        width: 1024,
+        height: 1536
       }
     ],
     "starpery-dolls-buying-guide": [
@@ -558,6 +574,14 @@ function guideSectionVisuals(slug: string): MarkdownSectionVisual[] {
         src: "/images/learn/starpery-dolls-buying-guide/finished-build.webp",
         alt: "Two current Starpery products with close-up checks for face, eyes, material, proportions, hands, weight, and model-specific options",
         caption: "Compare the finished Starpery build in layers, then verify weight, material, and supported choices on the exact product page.",
+        width: 1024,
+        height: 1536
+      },
+      {
+        afterHeading: "Height And Handling Weight",
+        src: "/images/learn/starpery-dolls-buying-guide/construction-and-handling.webp",
+        alt: "Starpery silicone-head, full-silicone, and ROS full-silicone products compared by height and listed weight",
+        caption: "Starpery construction and head paths can change the handling plan. Confirm the complete configuration, listed weight, skeleton, and supported standing choices.",
         width: 1024,
         height: 1536
       }
