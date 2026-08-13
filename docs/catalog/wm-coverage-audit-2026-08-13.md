@@ -30,8 +30,9 @@
 - Standard female TPE builds use the current image-backed 22-head dealer catalog.
 - `Choose a Head` is single-select; switching among those compatible TPE heads is included.
 - `Add Extra Head` is multi-select; each selected TPE head is charged **$299**.
-- Silicone, silicone-head/TPE-body, PVC/anime, male, torso, and hips products do not inherit the standard TPE library.
-- A silicone extra head has verified external guidance of **$650**, but it is not exposed without a clean, comprehensive, identity-matched silicone-head image library.
+- Silicone products do not inherit the standard TPE library. Their product-source-verified compatible silicone heads appear as included replacement choices and separately priced extra heads. The current 163 cm and 170 cm Rosemary forms expose heads 198, 201, and 202 at **$399 each** as extras.
+- Silicone-head/TPE-body, PVC/anime, male, torso, and hips products do not inherit the standard TPE library.
+- A broader silicone extra-head catalog has external price guidance, but it is not exposed without a clean, comprehensive compatibility map and identity-matched image library.
 - Product-bound special heads remain product-bound. Unknown extra-head prices are not guessed.
 - Appearance choices with current image evidence are Visualizer-ready. Head switching stays non-Visualizer until the later head-identity Visualizer project.
 - Single-choice appearance groups remain single-select. Paid add-on/accessory groups can remain multi-select.

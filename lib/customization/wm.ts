@@ -47,9 +47,15 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
 
   const specialFamily = isSpecialHeadFamily(product);
   const importedHead = importedGroups.find((group) => /^a head$/i.test(group.label));
-  const productHeadOptions = importedHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
+  const importedExtraHead = importedGroups.find((group) => /^(an extra head|add extra head)$/i.test(group.label));
+  const primaryHeadOptions = importedHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
+  const verifiedExtraHeadOptions = importedExtraHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const standardTpe = !specialFamily && isStandardTpeBuild(product, importedGroups);
-  const chosenOptions = standardTpe ? WM_STANDARD_TPE_HEADS : normalizeProductHeadOptions(productHeadOptions, 0);
+  const chosenOptions = standardTpe
+    ? WM_STANDARD_TPE_HEADS
+    : primaryHeadOptions.length
+      ? normalizeProductHeadOptions(primaryHeadOptions, 0)
+      : normalizeIncludedReplacementOptions(verifiedExtraHeadOptions);
   const chooseHead = buildChooseHead(chosenOptions);
   const extraHead = standardTpe
     ? buildExtraHead(WM_STANDARD_TPE_HEADS, WM_TPE_EXTRA_HEAD_PRICE)
@@ -110,7 +116,37 @@ function buildVerifiedProductExtraHead(groups: CustomizationGroup[]) {
   const source = groups.find((group) => /^(an extra head|add extra head)$/i.test(group.label));
   if (!source) return undefined;
   const priced = source.options.filter((option) => !isPlaceholder(option) && typeof option.priceDelta === "number" && option.priceDelta > 0);
-  return buildExtraHead(priced, 0);
+  if (!priced.length) return undefined;
+  return {
+    id: "add-extra-head",
+    label: "Add Extra Head",
+    description: "Optional paid add-on. Every selected head is charged separately; select more than one distinct head if needed.",
+    selectionMode: "multiple" as const,
+    display: "swatches" as const,
+    options: [
+      { id: "none", label: "No extra head", priceDelta: 0, priceVerified: true, purchasable: true },
+      ...priced.map((option) => ({
+        ...option,
+        id: `extra-${option.id}`,
+        priceVerified: true,
+        purchasable: true,
+        visualizable: false
+      }))
+    ]
+  };
+}
+
+function normalizeIncludedReplacementOptions(options: CustomizationOption[]) {
+  return options
+    .filter((option) => Boolean(option.swatch?.kind === "image" && /^https?:\/\//i.test(option.swatch.value)))
+    .map((option) => ({
+      ...option,
+      id: `current-${option.id}`,
+      priceDelta: 0,
+      priceVerified: true,
+      purchasable: true,
+      visualizable: false
+    }));
 }
 
 function normalizeProductHeadOptions(options: CustomizationOption[], fallback: number) {
@@ -175,7 +211,7 @@ function productIdentity(product: Product) {
 }
 
 function isPlaceholder(option: CustomizationOption) {
-  return /^(factory default|no change|no add-on|no thanks|none|as shown)$/i.test(option.label);
+  return /^(factory default|no change|no add-on|no thanks|none|as shown|other head)$/i.test(option.label);
 }
 
 function mergeGroups(groups: CustomizationGroup[]) {

@@ -52,6 +52,36 @@ describe("WM source-guided customization", () => {
     expect(resolveCustomization(config, selections, 1600).optionPriceDelta).toBe(598);
   });
 
+  it("offers source-verified silicone heads as free replacements and paid extras", () => {
+    const siliconeGroups: CustomizationGroup[] = [
+      { id: "head-type", label: "Head Type", selectionMode: "single", display: "swatches", options: [
+        { id: "hard", label: "Hard Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/hard.jpg" } },
+        { id: "soft", label: "Soft Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/soft.jpg" } }
+      ] },
+      { id: "extra", label: "An Extra Head", selectionMode: "single", display: "swatches", options: [
+        { id: "none", label: "No add-on" },
+        { id: "198", label: "198", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/198.jpg" } },
+        { id: "201", label: "201", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/201.jpg" } },
+        { id: "202", label: "202", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/202.jpg" } },
+        { id: "other", label: "Other Head", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/other.jpg" } }
+      ] }
+    ];
+    const product = wm(siliconeGroups, { material: "Silicone" });
+    product.title = "WM Clara Vale 163cm D-Cup Silicone";
+    product.handle = "wm-head-201-163cm-d-cup-silicone-companion-doll";
+
+    const config = getCustomizationConfig(product);
+    const choose = config.groups.find((group) => group.id === "choose-head");
+    const extra = config.groups.find((group) => group.id === "add-extra-head");
+
+    expect(choose?.selectionMode).toBe("single");
+    expect(choose?.options.map((option) => option.label)).toEqual(["As shown", "198", "201", "202"]);
+    expect(choose?.options.every((option) => option.priceDelta === 0)).toBe(true);
+    expect(extra?.selectionMode).toBe("multiple");
+    expect(extra?.options.map((option) => option.label)).toEqual(["No extra head", "198", "201", "202"]);
+    expect(extra?.options.slice(1).every((option) => option.priceDelta === 399)).toBe(true);
+  });
+
   it("keeps unknown paid functions out of checkout while retaining them in the factory record", () => {
     const product = wm(groups);
     const factory = getFactoryCustomizationConfig(product);
