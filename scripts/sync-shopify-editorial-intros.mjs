@@ -9,7 +9,7 @@ const input = process.argv.includes("--input")
 const execute = process.argv.includes("--execute");
 const expectedCount = Number(process.env.PDP_EDITORIAL_EXPECTED_COUNT || 2702);
 const domain = process.env.SHOPIFY_STORE_DOMAIN?.replace(/^https?:\/\//, "");
-const token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
+let token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
 
 const payload = JSON.parse(await fs.readFile(input, "utf8"));
 const records = Array.isArray(payload.records) ? payload.records : [];
@@ -26,7 +26,8 @@ if (!execute) {
   console.log("Dry run only. Add --execute after reviewing the approved and held artifacts.");
   process.exit(0);
 }
-if (!domain || !token) throw new Error("SHOPIFY_STORE_DOMAIN and SHOPIFY_ADMIN_ACCESS_TOKEN are required.");
+if (!domain) throw new Error("SHOPIFY_STORE_DOMAIN is required.");
+if (!token) token = await mintAdminAccessToken();
 
 const productsByHandle = new Map();
 let cursor = null;
@@ -85,4 +86,24 @@ async function adminFetch(query, variables) {
   const body = await response.json();
   if (!response.ok || body.errors?.length) throw new Error(body.errors?.[0]?.message || `Shopify returned ${response.status}`);
   return body.data;
+}
+
+async function mintAdminAccessToken() {
+  const clientId = process.env.SHOPIFY_CLIENT_ID;
+  const clientSecret = process.env.SHOPIFY_CLIENT_SECRET;
+  if (!clientId || !clientSecret) {
+    throw new Error("SHOPIFY_ADMIN_ACCESS_TOKEN or SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET is required.");
+  }
+  const response = await fetch(`https://${domain}/admin/oauth/access_token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      client_id: clientId,
+      client_secret: clientSecret,
+    }),
+  });
+  const body = await response.json();
+  if (!response.ok || !body.access_token) throw new Error(body.error_description || body.error || "Could not mint Shopify Admin token.");
+  return body.access_token;
 }
