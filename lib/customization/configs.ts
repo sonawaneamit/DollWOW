@@ -9,6 +9,13 @@ import {
   getAngelkissCustomizationGroups,
   getErovenusCustomizationGroups,
   getPiperCustomizationGroups,
+  getHrCustomizationGroups,
+  getJarlietCustomizationGroups,
+  getClimaxCustomizationGroups,
+  getDollsCastleCustomizationGroups,
+  getRealLadyCustomizationGroups,
+  getIlCustomizationGroups,
+  getAiTechCustomizationGroups,
   getSeCustomizationGroups,
   getSixYeCustomizationGroups,
   getTantalyCustomizationGroups,
@@ -355,8 +362,30 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   if (isTantalyProduct(product) && importedGroups?.length) {
     return importedBrandConfig(product, purpose, "tantaly-source-verified", "Tantaly", getTantalyCustomizationGroups(product, importedGroups));
   }
+  if (isHrProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "hr-source-verified", "HR Dolls", getHrCustomizationGroups(product, importedGroups));
+  }
+  if (isJarlietProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "jarliet-source-verified", "Jarliet Dolls", getJarlietCustomizationGroups(product, importedGroups));
+  }
+  if (isClimaxProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "climax-source-verified", "Climax Doll", getClimaxCustomizationGroups(product, importedGroups));
+  }
+  if (isDollsCastleProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "dolls-castle-source-verified", "Dolls Castle", getDollsCastleCustomizationGroups(product, importedGroups));
+  }
+  if (isRealLadyProduct(product) && importedGroups?.length) {
+    const sourceGroups = normalizeRealLadyImportedGroups(importedGroups);
+    return importedBrandConfig(product, purpose, "real-lady-source-verified", "Real Lady", getRealLadyCustomizationGroups(product, sourceGroups));
+  }
+  if (isIlProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "il-source-verified", "IL Doll", getIlCustomizationGroups(product, importedGroups));
+  }
+  if (isAiTechProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "ai-tech-source-verified", "Ai-Tech", getAiTechCustomizationGroups(product, importedGroups));
+  }
   if (importedGroups?.length) {
-    const sourceGroups = isRealLadyProduct(product) ? normalizeRealLadyImportedGroups(importedGroups) : importedGroups;
+    const sourceGroups = importedGroups;
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
     const onlineGroups = withIronAi(product, withIrontechUlw(product, availableGroups));
     return {
@@ -429,7 +458,7 @@ function withIronAi(product: Product, groups: CustomizationGroup[]) {
 }
 
 function normalizeRealLadyImportedGroups(groups: CustomizationGroup[]) {
-  const removedLegacyGroups = /extra free head|custom options for extra head|head type for extra head|hairstyle for extra head|hair color for extra head|eye color for extra head|premium head options for extra head/i;
+  const removedLegacyGroups = /custom options for extra head|head type for extra head|hairstyle for extra head|hair color for extra head|eye color for extra head|premium head options for extra head/i;
 
   return groups
     .filter((group) => !removedLegacyGroups.test(group.label))
@@ -525,6 +554,30 @@ function isPiperProduct(product: Product) {
 
 function isTantalyProduct(product: Product) {
   return /\btantaly\b/.test(productSearchText(product));
+}
+
+function isHrProduct(product: Product) {
+  return /\bhr dolls?\b/.test(productSearchText(product));
+}
+
+function isJarlietProduct(product: Product) {
+  return /\bjarliet(?: dolls?)?\b/.test(productSearchText(product));
+}
+
+function isClimaxProduct(product: Product) {
+  return /\bclimax dolls?\b/.test(productSearchText(product));
+}
+
+function isDollsCastleProduct(product: Product) {
+  return /\bdolls? castle\b/.test(productSearchText(product));
+}
+
+function isIlProduct(product: Product) {
+  return /\bil dolls?\b/.test(productSearchText(product));
+}
+
+function isAiTechProduct(product: Product) {
+  return /\bai[ -]?tech\b/.test(productSearchText(product));
 }
 
 function productSearchText(product: Product) {

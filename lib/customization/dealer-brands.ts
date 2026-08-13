@@ -57,6 +57,65 @@ export function getTantalyCustomizationGroups(product: Product, groups: Customiz
   });
 }
 
+export function getHrCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible HR head where the product offers a replacement-head library.",
+    freeHeadLibraryMode: "included-extra",
+    includedExtraDescription: "This product includes one optional additional HR head from the compatible choices shown.",
+    extraDescription: "Optional paid HR head. Each selected additional head is charged separately."
+  });
+}
+
+export function getJarlietCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible Jarliet head where the product offers a replacement-head library.",
+    freeHeadLibraryMode: "included-extra",
+    includedExtraDescription: "This product includes one optional additional Jarliet head from the compatible choices shown.",
+    extraDescription: "Optional paid Jarliet head. Only choices with a verified current price are available for online checkout."
+  });
+}
+
+export function getClimaxCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible Climax head where a replacement-head library is offered.",
+    freeHeadLibraryMode: "included-extra",
+    includedExtraDescription: "This product includes one optional additional Climax head from the compatible choices shown.",
+    extraDescription: "Optional paid Climax head. Each selected additional head is charged separately."
+  });
+}
+
+export function getDollsCastleCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible Dolls Castle head where a replacement-head library is offered.",
+    freeHeadLibraryMode: "included-extra",
+    includedExtraDescription: "This product includes one optional additional Dolls Castle head from the compatible choices shown.",
+    extraDescription: "Optional paid Dolls Castle head. Only choices with a verified current price are available for online checkout."
+  });
+}
+
+export function getRealLadyCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible Real Lady head where a replacement-head library is offered.",
+    freeHeadLibraryMode: "included-extra",
+    includedExtraDescription: "This product includes one optional additional Real Lady head from the compatible choices shown.",
+    extraDescription: "Optional paid Real Lady head. Only choices with a verified current price are available for online checkout."
+  });
+}
+
+export function getIlCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible IL Doll head where a replacement-head library is offered.",
+    extraDescription: "Optional paid IL Doll head. Each selected additional head is charged separately."
+  });
+}
+
+export function getAiTechCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  return normalizeDealerHeadGroups(product, groups, {
+    chooseDescription: "Choose one compatible Ai-Tech head where supported by this product.",
+    extraDescription: "Optional paid Ai-Tech head. Only choices with a verified current price are available for online checkout."
+  });
+}
+
 function identity(product: Product) {
   return [product.title, product.handle, product.productType, product.extended.brand, product.extended.material, product.extended.sourceTitle, ...product.tags]
     .filter(Boolean).join(" ").toLowerCase();

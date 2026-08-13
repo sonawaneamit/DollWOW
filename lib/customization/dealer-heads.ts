@@ -4,6 +4,8 @@ import type { CustomizationGroup, CustomizationOption } from "@/types/customizat
 type DealerHeadPolicy = {
   chooseDescription: string;
   extraDescription: string;
+  freeHeadLibraryMode?: "replacement" | "included-extra";
+  includedExtraDescription?: string;
   fallbackExtraPrice?: number;
   fallbackExtraPriceApplies?: (product: Product) => boolean;
 };
@@ -15,8 +17,9 @@ const VISUAL_GROUP = /^(skin tone|hair(?:style| type| color)|eye color|lipstick 
 
 /**
  * Dealer forms often call a compatible head library an "extra free head".
- * Public checkout needs two distinct concepts instead: one included head
- * switch, and separately charged additional heads.
+ * Preserve that literal promotion where it is offered; otherwise expose an
+ * ordinary included head switch. Paid additional heads always remain a
+ * separate multi-select purchase.
  */
 export function normalizeDealerHeadGroups(
   product: Product,
@@ -25,8 +28,11 @@ export function normalizeDealerHeadGroups(
 ) {
   const library = mostCompleteHeadLibrary(importedGroups);
   const paidSource = importedGroups.find((group) => PAID_EXTRA_HEAD.test(group.label));
-  const chooseHead = library ? buildChooseHead(library.options, policy.chooseDescription) : undefined;
-  const extraHead = buildExtraHead(product, library?.options ?? [], paidSource, policy);
+  const includedExtra = library && policy.freeHeadLibraryMode === "included-extra"
+    ? buildIncludedExtraHead(library.options, policy.includedExtraDescription ?? "Choose one included additional head where this product promotion offers one.")
+    : undefined;
+  const chooseHead = library && !includedExtra ? buildChooseHead(library.options, policy.chooseDescription) : undefined;
+  const extraHead = buildExtraHead(product, includedExtra ? [] : library?.options ?? [], paidSource, policy);
 
   const groups = importedGroups
     .filter((group) => !HEAD_LIBRARY.test(group.label))
@@ -37,9 +43,33 @@ export function normalizeDealerHeadGroups(
 
   return [
     ...(chooseHead ? [chooseHead] : []),
+    ...(includedExtra ? [includedExtra] : []),
     ...groups,
     ...(extraHead ? [extraHead] : [])
   ];
+}
+
+function buildIncludedExtraHead(options: CustomizationOption[], description: string): CustomizationGroup | undefined {
+  if (!options.length) return undefined;
+  return {
+    id: "included-extra-head",
+    label: "Included Extra Head",
+    description,
+    required: false,
+    selectionMode: "single",
+    display: "swatches",
+    options: [
+      { id: "none", label: "No extra head", priceDelta: 0, priceVerified: true, purchasable: true },
+      ...options.map((option) => ({
+        ...option,
+        id: `included-extra-${option.id}`,
+        priceDelta: 0,
+        priceVerified: true,
+        purchasable: true,
+        visualizable: false
+      }))
+    ]
+  };
 }
 
 function mostCompleteHeadLibrary(groups: CustomizationGroup[]) {

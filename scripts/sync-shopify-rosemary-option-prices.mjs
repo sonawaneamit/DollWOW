@@ -37,7 +37,7 @@ if (args["apply-report"]) {
   process.exit(0);
 }
 
-const products = await fetchProducts(limit || 2000, args.handle ? String(args.handle) : "");
+const products = await fetchProducts(limit || 5000, args.handle ? String(args.handle) : "");
 if (args["list-vendors"] || args["list-brands"]) {
   const counts = new Map();
   for (const product of products) {
@@ -287,7 +287,11 @@ async function fetchText(url) {
   for (let attempt = 1; attempt <= 4; attempt += 1) {
     try {
       const response = await fetch(url, {
-        headers: { "User-Agent": "DollWow catalog price sync/1.0" },
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.9"
+        },
         signal: AbortSignal.timeout(20_000)
       });
       if (!response.ok) {
@@ -299,7 +303,7 @@ async function fetchText(url) {
       return await response.text();
     } catch (error) {
       lastError = error;
-      const retryable = error?.status === 429 || error?.status === 503 || error?.name === "TimeoutError";
+      const retryable = error?.status === 403 || error?.status === 429 || error?.status === 503 || error?.name === "TimeoutError";
       if (!retryable || attempt === 4) break;
       const delayMs = error.retryAfter ? error.retryAfter * 1000 : Math.min(8_000, 750 * (2 ** (attempt - 1)));
       await new Promise((resolve) => setTimeout(resolve, delayMs));
