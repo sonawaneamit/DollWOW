@@ -727,6 +727,13 @@ function isAvailableMeasurement(value) {
 }
 
 async function buildContactSheet(urls, outputPath) {
+  try {
+    const existing = await fs.stat(outputPath);
+    if (existing.size > 10_000) return;
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
   const tileWidth = 420;
   const tileHeight = 560;
   const columns = 4;
