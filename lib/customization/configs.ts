@@ -3,6 +3,7 @@ import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption,
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
+import { getIrontechCustomizationGroups } from "@/lib/customization/irontech";
 
 const skinTones: CustomizationGroup = {
   id: "skin-tone",
@@ -277,6 +278,18 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   const importedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
+  // IronAI is a standalone Irontech head product with a manufacturer-limited
+  // model list. Keep that exact path ahead of the broader Irontech normalizer.
+  if (isIronAiHeadProduct(product)) {
+    const headStand = importedGroups?.find((group) => group.id === "sex-doll-head-stand");
+    return {
+      id: "ironai-head",
+      brandLabel: "Irontech Dolls",
+      leadTimeNote: "IronAI head compatibility is confirmed before production begins.",
+      groups: headStand ? [ironAiHeadModels, headStand] : [ironAiHeadModels],
+      rules: []
+    };
+  }
   if (text.includes("starpery")) {
     const groups = getStarperyCustomizationGroups(product, importedGroups);
     return {
@@ -284,6 +297,17 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       id: "starpery-official",
       groups,
       rules: getStarperyCustomizationRules(groups)
+    };
+  }
+  if (isIrontechProduct(product) && importedGroups?.length) {
+    const groups = getIrontechCustomizationGroups(product, importedGroups);
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
+    return {
+      id: "irontech-dealer-verified",
+      brandLabel: "Irontech Dolls",
+      leadTimeNote: "Irontech custom builds and compatibility are reviewed before production begins.",
+      groups: uniqueCustomizationGroups(withIrontechUlw(product, availableGroups)),
+      rules: []
     };
   }
   if (importedGroups?.length) {
