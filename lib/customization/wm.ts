@@ -4,6 +4,7 @@ import { WM_SILICONE_HEADS, WM_STANDARD_TPE_HEADS } from "@/lib/customization/wm
 
 export const WM_TPE_EXTRA_HEAD_PRICE = 299;
 export const WM_SILICONE_EXTRA_HEAD_PRICE = 650;
+export const WM_FULL_SILICONE_EXTRA_HEAD_PRICE = 399;
 
 const WM_INCLUDED_IMAGE_GROUPS = [
   "material", "skin tone", "hairstyle", "eye color", "enhanced mouth add-on",
@@ -23,11 +24,12 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
 
   const specialFamily = isSpecialHeadFamily(product);
   const importedHead = importedGroups.find((group) => /^(a head|choose a head)$/i.test(group.label));
-  const importedExtraHead = importedGroups.find((group) => /^(an extra head|add extra head)$/i.test(group.label));
+  const importedExtraHead = importedGroups.find((group) => /^(an extra (?:free )?head|get an extra free head|included extra head|add extra head)$/i.test(group.label));
   const primaryHeadOptions = importedHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const verifiedExtraHeadOptions = importedExtraHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const standardTpe = !specialFamily && isStandardTpeBuild(product, importedGroups);
   const siliconeHeadTpe = isSiliconeHeadTpeBuild(product, importedGroups);
+  const fullSilicone = isCustomFullSiliconeBuild(product);
   const chosenOptions = siliconeHeadTpe
     ? WM_SILICONE_HEADS
     : standardTpe
@@ -47,6 +49,8 @@ export function getWmCustomizationGroups(product: Product, importedGroups?: Cust
     ? buildExtraHead(WM_SILICONE_HEADS, WM_SILICONE_EXTRA_HEAD_PRICE)
     : standardTpe
     ? buildExtraHead(WM_STANDARD_TPE_HEADS, WM_TPE_EXTRA_HEAD_PRICE)
+    : !specialFamily && fullSilicone && verifiedExtraHeadOptions.length
+      ? buildExtraHead(normalizeIncludedReplacementOptions(verifiedExtraHeadOptions), WM_FULL_SILICONE_EXTRA_HEAD_PRICE)
     : buildVerifiedProductExtraHead(importedGroups);
 
   const groups = importedGroups

@@ -157,10 +157,12 @@ describe("WM source-guided customization", () => {
     expect(functions?.options[0]?.label).toBe("No add-on");
   });
 
-  it("does not mix the TPE catalog into anime, PVC, hybrid, silicone-head, or male families", () => {
+  it("keeps anime, PVC, hybrid, and male families on their product-specific head choices", () => {
     const product = wm(groups, { material: "PVC head / TPE body", sourceTitle: "Anime doll Y007" });
     product.title = "WM Y007 Anime Doll";
-    expect(getCustomizationConfig(product).groups.some((group) => group.id === "choose-head")).toBe(false);
+    const choose = getCustomizationConfig(product).groups.find((group) => group.id === "choose-head");
+    expect(choose?.options.map((option) => option.label)).toEqual(["As shown in product photos", "159"]);
+    expect(choose?.options.some((option) => option.label === "Head 432-1 · TPE")).toBe(false);
     expect(getCustomizationConfig(product).groups.some((group) => group.id === "add-extra-head")).toBe(false);
   });
 
