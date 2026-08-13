@@ -402,17 +402,13 @@ function buildPdpMetaDescription(product: Product) {
   const stock = product.extended.stockStatus === "ready_to_ship" ? "ready to ship" : product.extended.customAvailable ? "customizable" : "made to order";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
   const weight = product.extended.weightLb ? `${product.extended.weightLb} lb` : "";
-  const cup = product.extended.cupSize ? `${normalizeCup(product.extended.cupSize)}-Cup` : "";
+  const normalizedCup = normalizeCup(product.extended.cupSize);
+  const cup = normalizedCup ? `${normalizedCup}-Cup` : "";
   const factLine = [height, weight, cup].filter(Boolean).join(", ");
-  const compareTerms = buildIntentChips(product)
-    .slice(0, 4)
-    .map((chip) => chip.label.toLowerCase())
-    .join(", ");
 
   const description = [
     `${publicTitle} is a ${stock} ${material.toLowerCase()} ${bodyLabel}.`,
     factLine ? `Compare ${factLine}, detailed measurements, and option depth before checkout.` : "Compare detailed measurements and option depth before checkout.",
-    compareTerms ? `Useful for ${compareTerms} searches.` : "",
     "Private checkout and personal order support included."
   ]
     .filter(Boolean)
