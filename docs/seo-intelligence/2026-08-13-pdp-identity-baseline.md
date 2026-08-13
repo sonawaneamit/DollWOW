@@ -92,6 +92,19 @@ A bounded DataForSEO pass checked six exact US product-name phrases through Goog
 
 Search phrases must not be forced into editorial paragraphs or every image alt. Product identity belongs in the title, heading, structured data, and selected high-value image descriptions; the sensual introduction should remain natural and conversion-focused.
 
+## Pre-Release Technical Baseline
+
+DataForSEO Instant Pages checked all six live pilot URLs before any editorial or image-alt publication for `$0.0018`.
+
+- All six returned HTTP 200.
+- All six scored 97.07.
+- All six used a canonical URL and exactly one H1.
+- Current visible text ranged from 937 to 2,383 words, so this is a differentiation project rather than a thin-page rescue.
+- The current titles and descriptions are relevant and technically valid, but the descriptions remain specification-led and generic.
+- DataForSEO flagged missing image alt text even though the rendered gallery contains title-plus-number alt attributes. This discrepancy should be retested after the image-specific Shopify alt update rather than treated as proof that the attributes are absent.
+
+This snapshot is the before-state for the pilot. The same six URLs should be recrawled after deployment, with title, description, schema, visible word count, image-alt extraction, and canonical behavior compared directly.
+
 ## Six-Product Visual Pilot
 
 The pilot deliberately covers different brands, settings, materials, and customer audiences. Every gallery was fetched from the live DollWOW product-media route and reviewed as a complete set.
