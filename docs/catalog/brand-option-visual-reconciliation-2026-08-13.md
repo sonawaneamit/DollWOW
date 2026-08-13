@@ -19,7 +19,7 @@ A brand can be marked **visually reconciled** only after:
 
 | Brand | Status | Verified evidence | Known gap / next action |
 |---|---|---|---|
-| WM Dolls | **Source data reconciled; deployment QA pending** | All 509 Rosemary-linked WM records across three historical brand spellings now match their current compatible source form. Standard female TPE exposes 161 named image-backed heads; silicone-head/S-TPE exposes 164 image-backed silicone heads. Free switch, current included-extra-head promotion, and paid multi-extra-head selectors are separate. Product-specific families retain only their verified compatible heads. | Deploy the shared runtime changes, then complete representative live PDP checks before marking the storefront released |
+| WM Dolls | **Released** | All 509 Rosemary-linked WM records across three historical brand spellings match their current compatible source form. Standard female TPE exposes 161 named image-backed heads; silicone-head/S-TPE exposes 164 image-backed silicone heads. Free switch, current included-extra-head promotion, and paid multi-extra-head selectors are separate. Product-specific families retain only their verified compatible heads. | Nested appearance customization for each separately purchased extra head remains a future configurator enhancement; it is not flattened into an ambiguous shared selector |
 | Irontech Dolls | **Reopened — unverified** | Existing code/tests and prior collection audit only | Full live selector pass across TPE, silicone, ROS/Oriental, male, IronAI and special series |
 | Starpery Dolls | **Reopened — unverified** | Prior price-list/source pass only | Full live selector pass including TPE/silicone, standard vs ROS/technology heads, replacement and additional head catalogs |
 | Angelkiss | **Reopened — unverified** | MyRobotDoll head promotion/source images previously sampled | Reconcile all normal silicone and ROS head identities, construction choices, prices, and every non-head option group |
@@ -116,10 +116,10 @@ These source checks do not yet certify the DollWOW storefront. The remaining WM 
 
 - Standard female TPE Addison: `Choose a Head` shows `162 choices` (`As shown` plus `161` named heads). Late-list search for `432-1` succeeds.
 - Silicone-head/S-TPE Weitta: `Choose a Head` shows `165 choices` (`As shown` plus `164` named heads). `Included Extra Head` and `Add Extra Head` remain distinct steps.
-- Full-silicone Head 201: the product-specific replacement family remains limited to `198`, `201`, and `202`, rather than inheriting the 164-head S-TPE library.
-- These production checks describe the earlier deployment. A new deployment is required for the complete source reconciliation, neutral-default normalization, and expanded Visualizer eligibility in this pass.
+- Full-silicone Head 201: the product-specific replacement, included-extra, and paid-extra families remain limited to `198`, `201`, and `202`, rather than inheriting the incompatible 164-head S-TPE library.
+- Post-deployment production checks confirm the complete source reconciliation, neutral-default normalization, and expanded Visualizer eligibility on representative WM families.
 
-The remaining release work is the post-deployment production QA listed above; the underlying Rosemary-linked WM source data now passes strict coverage, price, and image checks.
+The release is live. Standard TPE Addison exposes 162 replacement choices (`As shown` plus 161 named heads); silicone-head/TPE Weitta exposes 165 (`As shown` plus 164 named silicone heads); full-silicone Head 201 restores its product-specific switch/included/paid selectors; and anime/PVC remains isolated from incompatible generic libraries.
 
 ### Full Rosemary-linked WM reconciliation
 
