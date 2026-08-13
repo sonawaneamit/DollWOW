@@ -42,9 +42,14 @@ The 330 title-warning products were fetched from the live storefront.
 | Products in duplicate rendered title groups | 330 |
 | Duplicate rendered description groups | 115 |
 | Products in duplicate rendered description groups | 267 |
+| Duplicate schema-description groups | 115 |
+| Products in duplicate schema-description groups | 267 |
+| Reviewed products using title-plus-number gallery alt text only | 330 |
 | Duplicate canonical groups | 0 |
 
 The shared metadata source was corrected during this phase so no-cup products omit cup fragments and customer descriptions no longer expose internal search-language such as `Useful for ... searches`.
+
+Structured Product descriptions currently inherit the same meta-description collisions. All 330 reviewed galleries use accessible but generic title-plus-image-number alt text. The remediation should therefore generate image-specific alt text from locked visible evidence, keeping each description concise and useful rather than repeating the same keyword phrase across every image.
 
 ## Collision Interpretation
 
@@ -98,8 +103,9 @@ Clothing, props, scenery, and accessories may inform mood and visual description
 4. Generate one 80-140-word introduction per pilot product from the verified facts and full gallery.
 5. Use a customer-facing heading such as `Meet Evie`, `Meet Keisha`, or `Kevin's Look and Presence`.
 6. Run factual, visual, customer-copy, and semantic-similarity checks before publication.
-7. Review the six samples together before any brand-wide or catalog-wide batch.
-8. Re-crawl released pilot pages with DataForSEO OnPage and monitor indexing, engagement, and search/AI extraction before expansion.
+7. Add concise, image-specific alt text from the locked visual evidence, with one visible pose, framing, or styling distinction per image.
+8. Review the six samples together before any brand-wide or catalog-wide batch.
+9. Re-crawl released pilot pages with DataForSEO OnPage and monitor indexing, engagement, image discovery, and search/AI extraction before expansion.
 
 ## Release Decisions
 

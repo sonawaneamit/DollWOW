@@ -24,7 +24,9 @@ await Promise.all(Array.from({ length: Math.min(concurrency, candidates.length) 
 const successful = rows.filter((row) => row.status === 200);
 const titleGroups = duplicateGroups(successful, (row) => normalize(row.title));
 const descriptionGroups = duplicateGroups(successful, (row) => normalize(row.description));
+const schemaDescriptionGroups = duplicateGroups(successful, (row) => normalize(row.schemaDescription));
 const canonicalGroups = duplicateGroups(successful, (row) => normalize(row.canonical));
+const imageAltGroups = duplicateImageAltGroups(successful);
 const payload = {
   generatedAt: new Date().toISOString(),
   baseUrl,
@@ -37,10 +39,17 @@ const payload = {
     productsWithDuplicateRenderedTitles: countProducts(titleGroups),
     duplicateRenderedDescriptionGroups: descriptionGroups.length,
     productsWithDuplicateRenderedDescriptions: countProducts(descriptionGroups),
+    duplicateSchemaDescriptionGroups: schemaDescriptionGroups.length,
+    productsWithDuplicateSchemaDescriptions: countProducts(schemaDescriptionGroups),
+    duplicateImageAltGroups: imageAltGroups.length,
+    productsWithDuplicateImageAlts: countUniqueProducts(imageAltGroups),
+    productsUsingNumberOnlyGalleryAlts: successful.filter((row) => row.usesNumberOnlyGalleryAlts).length,
     duplicateCanonicalGroups: canonicalGroups.length
   },
   duplicateRenderedTitles: titleGroups,
   duplicateRenderedDescriptions: descriptionGroups,
+  duplicateSchemaDescriptions: schemaDescriptionGroups,
+  duplicateImageAlts: imageAltGroups,
   duplicateCanonicals: canonicalGroups,
   rows
 };
@@ -53,6 +62,8 @@ async function inspectProduct(finding) {
   try {
     const response = await fetch(url, { headers: { "User-Agent": "DollWow rendered metadata audit/1.0" } });
     const html = await response.text();
+    const productSchema = extractProductSchema(html);
+    const imageAltTexts = extractImageAlts(html).filter((alt) => /image \d+ of \d+|product photo/i.test(alt));
     return {
       handle: finding.handle,
       brand: finding.brand,
@@ -60,6 +71,9 @@ async function inspectProduct(finding) {
       status: response.status,
       title: extract(html, /<title>([\s\S]*?)<\/title>/i),
       description: extract(html, /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']\s*\/?>/i),
+      schemaDescription: cleanValue(productSchema?.description),
+      imageAltTexts,
+      usesNumberOnlyGalleryAlts: imageAltTexts.length > 0 && imageAltTexts.every((alt) => /image \d+ of \d+$/i.test(alt)),
       canonical: extract(html, /<link\s+rel=["']canonical["']\s+href=["']([\s\S]*?)["']\s*\/?>/i),
       url
     };
@@ -90,6 +104,51 @@ function duplicateGroups(rows, valueForRow) {
 
 function countProducts(groups) {
   return groups.reduce((total, group) => total + group.products.length, 0);
+}
+
+function countUniqueProducts(groups) {
+  return new Set(groups.flatMap((group) => group.products.map((product) => product.handle))).size;
+}
+
+function duplicateImageAltGroups(rows) {
+  const groups = new Map();
+  for (const row of rows) {
+    for (const alt of row.imageAltTexts || []) {
+      const key = normalize(alt);
+      if (!key) continue;
+      const products = groups.get(key) || [];
+      if (!products.some((product) => product.handle === row.handle)) {
+        products.push({ handle: row.handle, brand: row.brand, alt, url: row.url });
+      }
+      groups.set(key, products);
+    }
+  }
+  return Array.from(groups.entries())
+    .filter(([, products]) => products.length > 1)
+    .map(([value, products]) => ({ value, count: products.length, products }))
+    .sort((left, right) => right.count - left.count || left.value.localeCompare(right.value));
+}
+
+function extractProductSchema(html) {
+  for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const payload = JSON.parse(decodeEntities(match[1]));
+      const entries = Array.isArray(payload) ? payload : payload?.["@graph"] || [payload];
+      const product = entries.find((entry) => entry?.["@type"] === "Product");
+      if (product) return product;
+    } catch {
+      // Ignore unrelated or malformed JSON-LD blocks and continue searching.
+    }
+  }
+  return null;
+}
+
+function extractImageAlts(html) {
+  return Array.from(html.matchAll(/<img\b[^>]*\balt=["']([\s\S]*?)["'][^>]*>/gi), (match) => cleanValue(match[1])).filter(Boolean);
+}
+
+function cleanValue(value) {
+  return decodeEntities(String(value || "")).replace(/\s+/g, " ").trim();
 }
 
 function normalize(value) {
