@@ -85,7 +85,7 @@ The pilot deliberately covers different brands, settings, materials, and custome
 | WM Lila Dane | 157 cm / 5 ft 2 in, B-cup, full silicone | Blue-and-white fantasy styling in a warm library interior, with long white hair, vivid blue eyes, and composed full-length portraits |
 | Starpery Keisha | 174 cm / 5 ft 9 in, D-cup, full silicone | Warm resort setting with wicker furniture, light curtains, plants, turquoise styling, and strong indoor-outdoor portraiture |
 | SE Doll Aryana B | 160 cm / 5 ft 3 in, C-cup, full silicone | Dark gold fantasy set with pointed-ear styling, dramatic makeup, ornate furniture, and theatrical lighting |
-| Piper Akira | 150 cm / 4 ft 11 in, D-cup, TPE | Soft white-bedroom gallery with a short purple bob and intimate, minimal styling; selected specifically to test differentiation across repeated Akira photo sets |
+| Piper Lana | 155 cm / 5 ft 1 in, F-cup, full silicone | Warm bedroom gallery with long blonde hair, lilac styling, and a clearly mature presentation; selected as Piper's publishing sample after Akira was retained only for duplicate-gallery review |
 | Irontech Kevin | 176 cm / 5 ft 9 in, full silicone male doll | Dark studio and martial-arts styling with a muscular build, long dark hair, red accents, and clean full-body reference views |
 
 Clothing, props, scenery, and accessories may inform mood and visual description, but must not be presented as included unless the live product record confirms inclusion.
@@ -113,3 +113,5 @@ Clothing, props, scenery, and accessories may inform mood and visual description
 ## Current Gate
 
 The baseline and visual selection are complete. The next gate is the approved Venice text model and Shopify metafield/provenance contract. The frontend task has been asked to confirm the existing API wiring, model path, storage key, and rendered placement before implementation begins.
+
+The first model evaluation also established a two-pass generation rule. A vision model must first extract locked visible evidence from the complete supplier gallery. A separate writer receives only that evidence and verified Shopify facts. Drafts remain unpublished until a human review removes psychological inference, unsupported material or function claims, overly clinical language, and repetitive catalog-like phrasing. The inexpensive one-pass model was rejected after it inferred advanced technology and buyer experience from a catalog configuration label. Piper Akira was removed from editorial generation because its visual presentation read too youthful for this layer; it remains valid only as an identity-collision audit case.
