@@ -68,11 +68,12 @@ describe("dealer brand head normalization", () => {
     expect(includedExtra?.selectionMode).toBe("single");
     expect(includedExtra?.required).toBe(false);
     expect(includedExtra?.options[0].label).toBe("No extra head");
-    expect(includedExtra?.options).toHaveLength(20);
+    expect(includedExtra?.options).toHaveLength(69);
     expect(includedExtra?.options.some((option) => option.label === "H1")).toBe(false);
     expect(includedExtra?.options.slice(1).every((option) => option.priceDelta === 0 && option.priceVerified && option.purchasable)).toBe(true);
     expect(includedExtra?.options.some((option) => option.label === "LS45")).toBe(false);
-    expect(includedExtra?.options.some((option) => option.label === "LS54" && option.swatch?.kind === "image")).toBe(true);
+    expect(includedExtra?.options.some((option) => option.label === "Standard Silicone · LS54" && option.swatch?.kind === "image")).toBe(true);
+    expect(includedExtra?.options.some((option) => option.label === "ROS Silicone · LS54" && option.swatch?.kind === "image")).toBe(true);
     expect(config.groups.some((group) => group.id === "add-extra-head")).toBe(false);
     expect(choose?.options.slice(1).every((option) => option.visualizable === false)).toBe(true);
   });

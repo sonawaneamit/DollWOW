@@ -9,6 +9,8 @@ type DealerHeadPolicy = {
   freeExtraAlongsideReplacement?: boolean;
   includedExtraDescription?: string;
   additionalHeadOptions?: CustomizationOption[];
+  /** Use a reviewed external library as the complete customer-facing head set. */
+  authoritativeHeadOptions?: CustomizationOption[];
   /** Limit a free-extra promotion to the choices explicitly verified by its source. */
   includedExtraOptions?: CustomizationOption[];
   fallbackExtraPrice?: number;
@@ -32,7 +34,9 @@ export function normalizeDealerHeadGroups(
   policy: DealerHeadPolicy
 ) {
   const sourceLibrary = mostCompleteHeadLibrary(importedGroups);
-  const libraryOptions = mergeHeadOptions(sourceLibrary?.options ?? [], policy.additionalHeadOptions ?? []);
+  const libraryOptions = policy.authoritativeHeadOptions
+    ? mergeHeadOptions([], policy.authoritativeHeadOptions)
+    : mergeHeadOptions(sourceLibrary?.options ?? [], policy.additionalHeadOptions ?? []);
   const includedExtraOptions = policy.includedExtraOptions
     ? mergeHeadOptions([], policy.includedExtraOptions)
     : libraryOptions;
@@ -216,7 +220,15 @@ function mergeHeadOptions(source: CustomizationOption[], additional: Customizati
 function headIdentity(label: string) {
   const normalized = label.trim().toUpperCase();
   const primaryCode = normalized.match(/\b(?:LS\d+(?:-\d+)?|SS\d+)\b/)?.[0];
-  return primaryCode ?? normalized.toLowerCase();
+  // The same sculpt code can be offered as both a standard silicone head and
+  // an ROS head. Keep those as separate, truthful customer choices rather
+  // than collapsing them merely because the identity code matches.
+  const construction = normalized.startsWith("ROS SILICONE")
+    ? "ros"
+    : normalized.startsWith("STANDARD SILICONE")
+      ? "standard"
+      : "unspecified";
+  return `${construction}:${primaryCode ?? normalized.toLowerCase()}`;
 }
 
 function positivePrice(value: number | undefined) {

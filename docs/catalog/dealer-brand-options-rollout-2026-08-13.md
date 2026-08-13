@@ -44,7 +44,7 @@ The source data for SE Doll, 6YE, Angelkiss, YL, Erovenus, Piper, Tantaly, HR Do
 |---|---|---|
 | SE Doll | Included standard replacement head; compatible TPE extra heads $399 each | SE Doll official single TPE head listing |
 | 6YE | Included standard replacement head; compatible TPE extra heads $299 each | Current dealer listing describing the extra TPE head as a $299 value |
-| Angelkiss | Included standard replacement head plus one optional promotional extra head at $0 | MyRobotDoll Angelkiss product form; 19 photographed named heads in both single-select fields |
+| Angelkiss | Included standard replacement head plus one optional promotional extra head at $0 | MyRobotDoll Angelkiss product form; 49 standard silicone and 19 ROS silicone photographed identities, plus separate hard/soft/ROS construction choices |
 | YL | Exact source-priced extra heads only | Product-specific source options |
 | Erovenus | Exact source-priced extra heads only; current imported choices include $275 heads | Product-specific source options |
 | Piper | No head library was present in the reviewed source data | — |
