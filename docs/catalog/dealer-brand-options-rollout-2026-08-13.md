@@ -22,7 +22,7 @@ Exact Rosemary option labels, current price deltas, and source option images wer
 | WM aliases | 3 |
 | **Total catalog writes** | **1,270** |
 
-6YE's complete 121-product report was already current and required no catalog writes. Angelkiss's fresh source pass was blocked on 19 pages by Rosemary's anti-bot response, so that partial report was not applied.
+6YE's complete 121-product report was already current and required no catalog writes. Angelkiss's Rosemary source pass was blocked on 19 pages by an anti-bot response; a fresh MyRobotDoll product form was therefore used to verify the live Angelkiss head promotion and photographed compatible head library.
 
 ## Storefront behavior added
 
@@ -44,7 +44,7 @@ The source data for SE Doll, 6YE, Angelkiss, YL, Erovenus, Piper, Tantaly, HR Do
 |---|---|---|
 | SE Doll | Included standard replacement head; compatible TPE extra heads $399 each | SE Doll official single TPE head listing |
 | 6YE | Included standard replacement head; compatible TPE extra heads $299 each | Current dealer listing describing the extra TPE head as a $299 value |
-| Angelkiss | Included standard replacement head; no generic paid extra-head price published | No sufficiently broad, current source evidence found |
+| Angelkiss | Included standard replacement head plus one optional promotional extra head at $0 | MyRobotDoll Angelkiss product form; 19 photographed named heads in both single-select fields |
 | YL | Exact source-priced extra heads only | Product-specific source options |
 | Erovenus | Exact source-priced extra heads only; current imported choices include $275 heads | Product-specific source options |
 | Piper | No head library was present in the reviewed source data | — |
@@ -65,7 +65,7 @@ The post-update Shopify audit is stored in `docs/catalog/customization-coverage-
 
 ## Deliberately gated
 
-- Angelkiss paid extra heads until a broad compatible price is verified.
+- Angelkiss permits one free promotional extra head, not unlimited extra heads. Recheck this temporary promotion before changing its price or quantity rule.
 - The seven Tantaly products whose old Rosemary source URLs return 404.
 - Head swaps in Doll Visualizer™ until identity preservation and option-to-head compatibility pass QA.
 - Product-specific options whose current source does not prove a numeric price.

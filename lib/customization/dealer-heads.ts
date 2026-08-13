@@ -5,7 +5,12 @@ type DealerHeadPolicy = {
   chooseDescription: string;
   extraDescription: string;
   freeHeadLibraryMode?: "replacement" | "included-extra";
+  /** Offer the same compatible library as both an included switch and one free promotional extra head. */
+  freeExtraAlongsideReplacement?: boolean;
   includedExtraDescription?: string;
+  additionalHeadOptions?: CustomizationOption[];
+  /** Limit a free-extra promotion to the choices explicitly verified by its source. */
+  includedExtraOptions?: CustomizationOption[];
   fallbackExtraPrice?: number;
   fallbackExtraPriceApplies?: (product: Product) => boolean;
 };
@@ -26,13 +31,20 @@ export function normalizeDealerHeadGroups(
   importedGroups: CustomizationGroup[],
   policy: DealerHeadPolicy
 ) {
-  const library = mostCompleteHeadLibrary(importedGroups);
+  const sourceLibrary = mostCompleteHeadLibrary(importedGroups);
+  const libraryOptions = mergeHeadOptions(sourceLibrary?.options ?? [], policy.additionalHeadOptions ?? []);
+  const includedExtraOptions = policy.includedExtraOptions
+    ? mergeHeadOptions([], policy.includedExtraOptions)
+    : libraryOptions;
   const paidSource = importedGroups.find((group) => PAID_EXTRA_HEAD.test(group.label));
-  const includedExtra = library && policy.freeHeadLibraryMode === "included-extra"
-    ? buildIncludedExtraHead(library.options, policy.includedExtraDescription ?? "Choose one included additional head where this product promotion offers one.")
+  const hasIncludedExtra = policy.freeHeadLibraryMode === "included-extra" || policy.freeExtraAlongsideReplacement;
+  const includedExtra = includedExtraOptions.length && hasIncludedExtra
+    ? buildIncludedExtraHead(includedExtraOptions, policy.includedExtraDescription ?? "Choose one included additional head where this product promotion offers one.")
     : undefined;
-  const chooseHead = library && !includedExtra ? buildChooseHead(library.options, policy.chooseDescription) : undefined;
-  const extraHead = buildExtraHead(product, includedExtra ? [] : library?.options ?? [], paidSource, policy);
+  const chooseHead = libraryOptions.length && (!includedExtra || policy.freeExtraAlongsideReplacement)
+    ? buildChooseHead(libraryOptions, policy.chooseDescription)
+    : undefined;
+  const extraHead = buildExtraHead(product, includedExtra ? [] : libraryOptions, paidSource, policy);
 
   const groups = importedGroups
     .filter((group) => !HEAD_LIBRARY.test(group.label))
@@ -184,6 +196,27 @@ function dedupeOptions(options: CustomizationOption[]) {
     if (!seen.has(key)) seen.set(key, option);
   }
   return [...seen.values()];
+}
+
+function mergeHeadOptions(source: CustomizationOption[], additional: CustomizationOption[]) {
+  const merged = new Map<string, CustomizationOption>();
+  for (const option of [...source, ...additional]) {
+    if (isPlaceholder(option) || option.swatch?.kind !== "image") continue;
+    const key = headIdentity(option.label);
+    const existing = merged.get(key);
+    // Prefer the option carrying the stronger visual reference while retaining
+    // a verified source surcharge for genuinely special replacement heads.
+    if (!existing || (!existing.swatch && option.swatch)) {
+      merged.set(key, option);
+    }
+  }
+  return [...merged.values()];
+}
+
+function headIdentity(label: string) {
+  const normalized = label.trim().toUpperCase();
+  const primaryCode = normalized.match(/\b(?:LS\d+(?:-\d+)?|SS\d+)\b/)?.[0];
+  return primaryCode ?? normalized.toLowerCase();
 }
 
 function positivePrice(value: number | undefined) {

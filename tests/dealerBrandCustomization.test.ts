@@ -59,10 +59,22 @@ describe("dealer brand head normalization", () => {
     expect(config.groups.find((group) => group.id === "choose-head")?.options.find((option) => option.id === "choose-premium")?.priceDelta).toBe(180);
   });
 
-  it("keeps Angelkiss extra heads hidden until a compatible price is verified", () => {
+  it("offers one free promotional Angelkiss extra head alongside the included head switch", () => {
     const config = getFactoryCustomizationConfig(product("Angelkiss", "Silicone", [headLibrary]));
-    expect(config.groups.some((group) => group.id === "choose-head")).toBe(true);
+    const choose = config.groups.find((group) => group.id === "choose-head");
+    const includedExtra = config.groups.find((group) => group.id === "included-extra-head");
+    expect(choose?.selectionMode).toBe("single");
+    expect(choose?.required).toBe(true);
+    expect(includedExtra?.selectionMode).toBe("single");
+    expect(includedExtra?.required).toBe(false);
+    expect(includedExtra?.options[0].label).toBe("No extra head");
+    expect(includedExtra?.options).toHaveLength(20);
+    expect(includedExtra?.options.some((option) => option.label === "H1")).toBe(false);
+    expect(includedExtra?.options.slice(1).every((option) => option.priceDelta === 0 && option.priceVerified && option.purchasable)).toBe(true);
+    expect(includedExtra?.options.some((option) => option.label === "LS45")).toBe(false);
+    expect(includedExtra?.options.some((option) => option.label === "LS54" && option.swatch?.kind === "image")).toBe(true);
     expect(config.groups.some((group) => group.id === "add-extra-head")).toBe(false);
+    expect(choose?.options.slice(1).every((option) => option.visualizable === false)).toBe(true);
   });
 
   it("marks image-backed appearance choices visualizer-ready while keeping head swaps gated", () => {
