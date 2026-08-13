@@ -2,7 +2,7 @@
 
 Date: 2026-08-12  
 Market: United States  
-Status: AI/GEO validated; visual package pending
+Status: Released after AI/GEO and visual validation
 
 ## Canonical Owners
 
@@ -63,8 +63,24 @@ Raw evidence, exact payloads, endpoint status, task IDs, costs, and results are 
 
 Focused OnPage correctly returned 404 because the draft is intentionally absent from production. Repeat OnPage after publication and require a 200 response, canonical, indexable status, rendered title/H1, Article schema, visible author/review date, internal links, image alt text/caption, and no customer-facing SEO language.
 
-The 2,706-word manuscript remains hidden. It requires one approved Piper-only, supplier-authorized product visual and mobile crop before publication. Do not substitute dolls from another brand and do not generate a visual batch before sample approval.
+The Piper-only visual was approved on August 13, 2026. It uses the current adult Piper Lana silicone doll as the supplier-authorized product reference, preserves a clearly adult presentation, includes dual-unit catalog context, and provides material and size comparison cues. The portrait asset is constrained on desktop and remains legible on mobile. The live product module was diversified across current compact, TPE, silicone, Jessica, Lana, Akira, and Jenna examples.
 
 ## Release Decision
 
-The manuscript already matches and exceeds the useful evidence. No broad rewrite is justified. Release only after the visual gate, then run OnPage, link validation, IndexNow, sitemap verification, and recurring GSC/Bing/LLM citation monitoring.
+The manuscript already matches and exceeds the useful evidence, so no broad rewrite was justified. It was released after the visual gate. Post-release work requires OnPage, link validation, IndexNow, sitemap verification, and recurring GSC/Bing/LLM citation monitoring.
+
+## Local Release Verification
+
+The August 13 production build and local rendered route passed the release checks:
+
+- `/learn/piper-dolls-buying-guide` returned 200.
+- The canonical resolved to `https://dollwow.com/learn/piper-dolls-buying-guide`.
+- The sitemap included the canonical guide URL.
+- Article, breadcrumb, and FAQ structured data rendered with the public page.
+- The Piper brand hub linked to the guide.
+- Current Piper Lana, Jessica, Akira, and Jenna examples resolved in the live product module.
+- The page source contained no customer-facing `PDP`, `SERP`, `crawlable`, or `keyword cluster` language.
+- The portrait cover and landscape Learning Center crop were compressed to approximately 125 KB and 73 KB respectively.
+- The test suite passed 246 tests across 49 files, TypeScript passed, and the production build passed.
+
+The in-app localhost preview bridge did not attach during final responsive inspection. The approved source artwork and deterministic Learning Center crop were inspected directly, and remote deployment should still receive a desktop/mobile browser smoke test before IndexNow submission.

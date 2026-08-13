@@ -32,9 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = getLearningArticle(slug);
   if (!article) return {};
-  const featuredImageDimensions = article.slug === "sex-doll-guide"
-    ? { width: 1672, height: 941 }
-    : { width: 1536, height: 1024 };
+  const featuredImageDimensions = articleFeaturedImageDimensions(article.slug);
   const metadataTitles: Record<string, string> = {
     "sex-doll-guide": "2026 Sex Doll Buying Guide: How to Choose the Right Doll",
     "sex-doll-size-weight-guide": "Sex Doll Size & Weight Guide | 2,615 Listings Analyzed",
@@ -79,9 +77,8 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
   const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
   const catalogHero = articleCatalogHero(article.slug);
-  const featuredImageDimensions = article.slug === "sex-doll-guide"
-    ? { width: 1672, height: 941 }
-    : { width: 1536, height: 1024 };
+  const featuredImageDimensions = articleFeaturedImageDimensions(article.slug);
+  const portraitFeaturedImage = featuredImageDimensions.height > featuredImageDimensions.width;
 
   return (
     <div>
@@ -99,7 +96,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">{article.description}</p>
           {article.slug === "sex-doll-guide" ? <GuideDownloadButton /> : null}
           {article.featuredImage ? (
-            <div className="mt-8 max-w-5xl overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04]">
+            <div className={`mt-8 overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04] ${portraitFeaturedImage ? "max-w-3xl" : "max-w-5xl"}`}>
               <Image
                 src={article.featuredImage}
                 alt={article.featuredImageAlt}
@@ -148,6 +145,12 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
       </section>
     </div>
   );
+}
+
+function articleFeaturedImageDimensions(slug: string) {
+  if (slug === "sex-doll-guide") return { width: 1672, height: 941 };
+  if (slug === "piper-dolls-buying-guide") return { width: 1122, height: 1402 };
+  return { width: 1536, height: 1024 };
 }
 
 function ArticleCatalogHero({ products, caption, imageContext }: { products: Product[]; caption: string; imageContext: string }) {
@@ -1197,11 +1200,11 @@ function productModuleConfig(slug: string): Omit<ArticleProductModule, "products
       filters: {},
       handles: [
         "piper-akira-75cm-c-cup-tpe-companion-doll-1alay",
-        "piper-akira-150cm-b-cup-tpe-companion-doll-18tol",
+        "piper-jessica-150cm-k-cup-tpe-companion-doll-exogy",
         "piper-akira-150cm-c-cup-silicone-companion-doll-1pjdo-6",
-        "piper-eimi-155cm-c-cup-silicone-companion-doll-1ae2u",
+        "piper-lana-155cm-g-cup-silicone-companion-doll-tjjlv",
         "piper-akira-160cm-g-cup-tpe-companion-doll-qyv1k",
-        "piper-akira-160cm-g-cup-silicone-companion-doll-1uolz"
+        "piper-jenna-160cm-g-cup-silicone-companion-doll-1utge"
       ]
     },
     "tpe-vs-silicone-sex-dolls": {

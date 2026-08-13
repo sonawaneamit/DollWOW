@@ -8,9 +8,9 @@ category: "Brand Comparisons"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: visual-review
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-12"
+lastReviewed: "2026-08-13"
 ---
 
 # Piper Dolls Buying Guide: Materials, Sizes, Reviews, And Models

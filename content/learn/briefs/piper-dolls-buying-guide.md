@@ -10,9 +10,9 @@ targetUrl: "/learn/piper-dolls-buying-guide"
 author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
-status: draft
+status: production
 reviewOwner: catalog
-lastReviewed: "2026-06-16"
+lastReviewed: "2026-08-13"
 ---
 
 # Piper Dolls Buying Guide
@@ -35,13 +35,16 @@ Write in DollWow's editorial voice: discreet, practical, premium adult-commerce 
 
 Primary intent: commercial
 
-The reader is trying to understand piper doll before making a private, high-consideration purchase. The page should answer the query quickly, then move into practical comparison criteria and clear next steps.
+The reader is researching adult Piper sex dolls before making a private, high-consideration purchase. The unqualified phrase is polluted by children's toys, collectibles, sewing patterns, and unrelated characters, so the page should answer the qualified adult query quickly, then move into practical comparison criteria and clear next steps.
 
 ## Target Keywords
 
-- Primary: piper doll
-- Secondary: piper dolls
-- Secondary: piper sex doll
+- Primary: piper sex doll
+- Secondary: piper sex doll review
+- Secondary: piper dolls review
+- Secondary: piper doll buying guide
+- Secondary: piper silicone doll
+- Secondary: piper tpe doll
 
 ## Required Facts
 

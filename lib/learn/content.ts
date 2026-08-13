@@ -331,7 +331,8 @@ function featuredImageAlt(title: string, slug: string) {
     "rosemarydoll-alternatives": "Current AngelKiss and Starpery catalog dolls beside an exact-match checklist for body and head, material, options, fulfillment, and ownership support",
     "realdoll-alternatives": "A current Starpery catalog doll in a premium silicone inspection spread covering sculpt, finish, construction, measurements, handling, and options",
     "tantaly-buying-guide": "Three current Tantaly torso formats with verified heights and a checklist for comparing width, depth, weight, and material",
-    "erovenus-dolls-review-guide": "Three current Erovenus products illustrating product form, surface finish, complete scale, and the evidence a useful review should include"
+    "erovenus-dolls-review-guide": "Three current Erovenus products illustrating product form, surface finish, complete scale, and the evidence a useful review should include",
+    "piper-dolls-buying-guide": "Piper Dolls buying guide featuring the current adult Piper Lana silicone doll with TPE, silicone, compact, and full-size comparison prompts"
   };
   if (altBySlug[slug]) return altBySlug[slug];
   return `Editorial featured image for ${title}`;

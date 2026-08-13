@@ -103,11 +103,14 @@ export default async function LearnPage({ searchParams }: { searchParams: Promis
           <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {visibleArticles.map((article, index) => {
               const author = getLearnAuthor(article.author);
+              const cardImage = article.slug === "piper-dolls-buying-guide"
+                ? "/images/learn/piper-dolls-buying-guide-card.webp"
+                : article.featuredImage;
               return (
                 <article key={article.slug} className="tone-card overflow-hidden rounded-[8px]">
-                  {article.featuredImage ? (
+                  {cardImage ? (
                     <Link href={`/learn/${article.slug}`} className="relative block aspect-[3/2] bg-ink-900">
-                      <Image src={article.featuredImage} alt={article.featuredImageAlt} fill priority={index === 0} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
+                      <Image src={cardImage} alt={article.featuredImageAlt} fill priority={index === 0} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
                     </Link>
                   ) : null}
                   <div className="p-5">

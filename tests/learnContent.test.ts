@@ -5,9 +5,16 @@ import { buildArticleFaqStructuredData, buildArticleStructuredData, getLearningA
 
 describe("Learning Center content ownership", () => {
   it("keeps every non-production article out of public routes", () => {
-    expect(getLearningArticle("piper-dolls-buying-guide")).toBeNull();
     expect(getLearningArticle("how-silicone-sex-dolls-are-made")).toBeNull();
     expect(getLearningArticle("zelex-dolls-buying-guide")).toBeNull();
+  });
+
+  it("publishes the approved Piper guide with qualified adult intent and visual evidence", () => {
+    const article = getLearningArticle("piper-dolls-buying-guide");
+    expect(article?.primaryKeyword).toBe("piper sex doll");
+    expect(article?.featuredImage).toBe("/images/learn/piper-dolls-buying-guide.webp");
+    expect(article?.body).toContain("The unqualified phrase “Piper doll” is ambiguous");
+    expect(article?.body).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 
   it("keeps the best TPE guide distinct from the broad best-dolls guide", () => {
