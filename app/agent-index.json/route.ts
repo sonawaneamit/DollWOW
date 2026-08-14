@@ -34,6 +34,12 @@ export function GET() {
     canonicalBaseUrl: siteUrl,
     description:
       "DollWow helps adults compare, customize, and order premium companion dolls with clear catalog details, private support, price-match review, and buyer protection.",
+    retrieval: {
+      markdownPattern: `${siteUrl}/markdown/{canonical-path}`,
+      contentNegotiation: "Public canonical HTML pages honor Accept: text/markdown.",
+      canonicalInventory: `${siteUrl}/sitemap.xml`,
+      catalogInventory: `${siteUrl}/product-feed.json`
+    },
     contentBoundaries: [
       "Catalog and policy pages are the source of truth for product, price, stock, shipping, and support claims.",
       "Generated editorial visuals are educational or decorative and should not be treated as actual product photography.",
@@ -63,7 +69,8 @@ export function GET() {
       primaryKeyword: article.primaryKeyword,
       author: article.authorDisplayName,
       lastReviewed: article.lastReviewed,
-      url: `${siteUrl}/learn/${article.slug}`
+      url: `${siteUrl}/learn/${article.slug}`,
+      markdownUrl: `${siteUrl}/markdown/learn/${article.slug}`
     })),
     policies: policies.map((policy) => ({
       ...policy,
@@ -77,6 +84,9 @@ export function GET() {
     feeds: [
       { label: "Sitemap", url: `${siteUrl}/sitemap.xml` },
       { label: "LLMs text map", url: `${siteUrl}/llms.txt` },
+      { label: "Plain-text knowledge query", url: `${siteUrl}/llms?query={buyer-question}` },
+      { label: "JSON knowledge query", url: `${siteUrl}/llms/json?query={buyer-question}` },
+      { label: "Sitewide Markdown pattern", url: `${siteUrl}/markdown/{canonical-path}` },
       { label: "Product feed", url: `${siteUrl}/product-feed.json` },
       { label: "Sex doll size and weight aggregate dataset", url: `${siteUrl}/datasets/sex-doll-size-weight-2026.json` }
     ]

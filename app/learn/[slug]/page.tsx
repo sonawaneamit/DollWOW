@@ -50,7 +50,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: metadataTitle,
     description: article.description,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
-    alternates: { canonical: learnArticleUrl(article.slug) },
+    alternates: {
+      canonical: learnArticleUrl(article.slug),
+      types: {
+        "text/markdown": `${(process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "")}/markdown/learn/${article.slug}`
+      }
+    },
     openGraph: {
       title: metadataTitle,
       description: article.description,

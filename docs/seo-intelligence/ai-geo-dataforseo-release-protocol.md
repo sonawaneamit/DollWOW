@@ -1,6 +1,6 @@
 # AI/GEO DataForSEO Release Protocol
 
-Updated: 2026-08-12
+Updated: 2026-08-14
 
 ## Rule
 
@@ -29,6 +29,9 @@ Business Data, App Data, Amazon Labs, and other specialized endpoints are condit
 - Direct answer near the top and natural conversational question coverage.
 - Clear entities, definitions, dates, units, product identity, and source ownership.
 - Important facts in server-rendered HTML, not only images or interactive controls.
+- Standards-based discovery of `/llms.txt` and `/agent-index.json`, plus a Markdown alternate when the page family has an approved representation.
+- A source-HTML check confirming that the direct answer, identity, principal facts, and canonical next step remain usable without JavaScript.
+- Privacy-safe search and AI crawler observability on public content routes, with a post-release baseline where available.
 - Extractable headings, lists, comparisons, FAQs, and next steps where useful.
 - Primary or controlling citations for factual claims and matching Article citations when applicable.
 - Current catalog facts and live handling of price, availability, quantity, and delivery claims.
@@ -36,6 +39,8 @@ Business Data, App Data, Amazon Labs, and other specialized endpoints are condit
 - Original information gain through catalog analysis, real examples, expert interpretation, maintained data, policies, or tools.
 - Descriptive image alt text/captions and equivalent important facts in HTML.
 - Customer-forward copy with no internal SEO, schema, prompt, PDP, SERP, or crawlability language.
+
+`llms.txt`, query endpoints, sitewide Markdown alternates, and content negotiation are retrieval aids, not ranking claims. Keep canonical HTML authoritative, generate Markdown from the same public server-rendered main content, make alternate representations factually equivalent, and mark noncanonical Markdown `noindex, follow`.
 
 ## Evidence Record
 

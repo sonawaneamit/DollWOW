@@ -1,4 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { identifyAgentCrawler, requestedRepresentation } from "@/lib/seo/agentCrawler";
+import { isPublicMarkdownPath, markdownPathFor } from "@/lib/seo/publicMarkdownPath";
 import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
 
 export function proxy(request: NextRequest) {
@@ -12,27 +14,57 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!request.nextUrl.pathname.startsWith("/admin") && !request.nextUrl.pathname.startsWith("/ops")) {
+  if (request.nextUrl.pathname.startsWith("/admin") || request.nextUrl.pathname.startsWith("/ops")) {
+    if (!hasAdminBasicAuthEnv()) {
+      return new NextResponse("Admin auth is not configured.", { status: 503 });
+    }
+
+    const auth = request.headers.get("authorization");
+    if (!auth?.startsWith("Basic ")) return unauthorized();
+
+    const decoded = atob(auth.slice(6));
+    const [username, password] = decoded.split(":");
+    if (username !== env.ADMIN_BASIC_AUTH_USERNAME || password !== env.ADMIN_BASIC_AUTH_PASSWORD) return unauthorized();
+
     return NextResponse.next();
   }
 
-  if (!hasAdminBasicAuthEnv()) {
-    return new NextResponse("Admin auth is not configured.", { status: 503 });
+  const accept = request.headers.get("accept");
+  const publicPage = isPublicMarkdownPath(request.nextUrl.pathname);
+  const crawler = identifyAgentCrawler(request.headers.get("user-agent"));
+
+  if (crawler && publicPage) {
+    console.info(JSON.stringify({
+      event: "public_agent_request",
+      crawler,
+      method: request.method,
+      path: request.nextUrl.pathname,
+      representation: requestedRepresentation(accept),
+      timestamp: new Date().toISOString()
+    }));
   }
 
-  const auth = request.headers.get("authorization");
-  if (!auth?.startsWith("Basic ")) {
-    return unauthorized();
+  if (
+    publicPage &&
+    request.method === "GET" &&
+    accept?.toLowerCase().includes("text/markdown") &&
+    request.headers.get("x-dollwow-markdown-source") !== "1"
+  ) {
+    const markdownUrl = request.nextUrl.clone();
+    markdownUrl.pathname = markdownPathFor(request.nextUrl.pathname);
+    markdownUrl.search = "";
+    return NextResponse.rewrite(markdownUrl);
   }
 
-  const decoded = atob(auth.slice(6));
-  const [username, password] = decoded.split(":");
-
-  if (username !== env.ADMIN_BASIC_AUTH_USERNAME || password !== env.ADMIN_BASIC_AUTH_PASSWORD) {
-    return unauthorized();
+  const response = NextResponse.next();
+  if (publicPage) {
+    response.headers.set(
+      "Link",
+      `<${markdownPathFor(request.nextUrl.pathname)}>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\"`
+    );
+    response.headers.set("Vary", "Accept");
   }
-
-  return NextResponse.next();
+  return response;
 }
 
 function unauthorized() {
@@ -45,5 +77,43 @@ function unauthorized() {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/ops/:path*", "/cart/c/:path*", "/checkouts/:path*"]
+  matcher: [
+    "/admin/:path*",
+    "/ops/:path*",
+    "/cart/c/:path*",
+    "/checkouts/:path*",
+    "/",
+    "/adult-only",
+    "/authorized-vendors",
+    "/best-price-guarantee",
+    "/brands",
+    "/brands/:path*",
+    "/buyer-protection",
+    "/care-for-life",
+    "/compare",
+    "/customize",
+    "/faq",
+    "/help-me-choose",
+    "/how-ordering-works",
+    "/learn",
+    "/learn/:path*",
+    "/price-match",
+    "/privacy-policy",
+    "/products/:path*",
+    "/returns",
+    "/scam-alert",
+    "/shipping",
+    "/shipping-protection",
+    "/shop",
+    "/shop/:path*",
+    "/supplier",
+    "/support",
+    "/warehouse",
+    "/why-dollwow",
+    "/llms.txt",
+    "/llms/:path*",
+    "/agent-index.json",
+    "/product-feed.json",
+    "/datasets/:path*"
+  ]
 };
