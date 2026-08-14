@@ -181,10 +181,6 @@ Body:
 
 > Use the filters to see how different views can support a visible review. The archive is organized by what a buyer may need to check, not by old customer, product, or order identity.
 
-Proof line, replacing the public numeric count:
-
-> This selected public preview represents only part of the fulfilled-order history handled through our team's prior business experience.
-
 ### Gallery filters
 
 Merge the sparse current categories into four useful review purposes:

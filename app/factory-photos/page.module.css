@@ -156,14 +156,6 @@
 
 .archiveToolbar > div:first-child > p:last-child { max-width: 760px; margin-top: 16px; }
 
-.archiveCount {
-  display: block;
-  margin-top: 14px;
-  color: rgb(var(--color-accent));
-  font-size: 12px;
-  font-weight: 800;
-}
-
 .filters {
   display: flex;
   flex-wrap: wrap;

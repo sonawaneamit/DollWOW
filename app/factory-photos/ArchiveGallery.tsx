@@ -69,7 +69,6 @@ export function ArchiveGallery({ manifestEntries }: { manifestEntries: ArchiveEn
           <p className={styles.eyebrow}>Selected historical examples</p>
           <h2 id="archive-gallery-title">Browse sex doll factory photos by review purpose</h2>
           <p>Use the filters to see how different views can support a visible review. The archive is organized by what a buyer may need to check, not by old customer, product, or order identity.</p>
-          <strong className={styles.archiveCount}>This selected public preview represents only part of the fulfilled-order history handled through our team&apos;s prior business experience.</strong>
         </div>
         <div className={styles.filters} aria-label="Filter factory approval examples">
           {filters.map((filter) => (
