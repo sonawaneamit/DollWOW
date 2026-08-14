@@ -179,6 +179,7 @@ export default function CareForLifePage() {
       <nav className="care-policy-details" aria-label="Care and ownership details">
         <Link href="/buyer-protection">Buyer protection</Link>
         <Link href="/best-price-guarantee">Price protection</Link>
+        <Link href="/factory-photos">Prior factory approval examples</Link>
         <Link href="/account/my-dolls">Open My Dolls</Link>
         <Link href="/support">Ask our team</Link>
       </nav>

@@ -13,6 +13,7 @@ import { useMounted } from "@/lib/utils/storageStore";
 import { CompareButton } from "@/components/compare/CompareButton";
 import { compareEntryFromCartItem } from "@/lib/compare/products";
 import { Care365Seal } from "@/components/care/Care365Seal";
+import { FactoryApprovalCartPreview } from "@/components/factory-approval/FactoryApprovalPreview";
 
 export function CartPageClient() {
   const cart = useCart();
@@ -229,6 +230,7 @@ export function CartPageClient() {
           {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
           Secure checkout
         </button>
+        <FactoryApprovalCartPreview />
         <Care365Seal disclosure className="mt-3" />
         <p className="mt-3 text-center text-sm leading-4 text-ivory-500">
           Plain packaging · neutral billing · buyer protection

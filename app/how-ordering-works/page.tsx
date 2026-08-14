@@ -14,7 +14,8 @@ export default function HowOrderingWorksPage() {
       intro="You should always know what happens next. Choose your doll, review the available options, approve factory photos for a custom order, and receive tracking when it ships."
       ctas={[
         { label: "Browse the catalog", href: "/shop/sex-dolls", primary: true },
-        { label: "Help me choose", href: "/help-me-choose" }
+        { label: "Help me choose", href: "/help-me-choose" },
+        { label: "See historical factory approval examples", href: "/factory-photos" }
       ]}
       sections={[
         {

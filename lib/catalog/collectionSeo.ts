@@ -803,6 +803,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
   ],
   custom: [
     { label: "Browse dolls with an insertable penis option", href: "/shop/futa-sex-dolls" },
+    { label: "See historical factory approval examples", href: "/factory-photos" },
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "See how ordering works", href: "/how-ordering-works" },
     { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },

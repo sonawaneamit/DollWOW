@@ -9,7 +9,8 @@ describe("sitewide Markdown representations", () => {
     "/brands/irontech-dolls",
     "/products/example-product",
     "/learn/sex-doll-guide",
-    "/care-for-life"
+    "/care-for-life",
+    "/factory-photos"
   ])("allows the public page %s", (path) => {
     expect(isPublicMarkdownPath(path)).toBe(true);
   });

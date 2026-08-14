@@ -76,6 +76,19 @@ export function GET() {
       ...policy,
       url: `${siteUrl}${policy.path}`
     })),
+    evidenceCollections: [
+      {
+        label: "Factory Approval Archive",
+        pageType: "visual_archive",
+        url: `${siteUrl}/factory-photos`,
+        markdownUrl: `${siteUrl}/markdown/factory-photos`,
+        topics: ["sex doll factory photos", "pre-shipment approval", "visible configuration review"],
+        provenance:
+          "Selected anonymized historical examples from real customer orders handled by members of the DollWOW team through a previous business before DollWOW launched.",
+        limits:
+          "Historical examples are not current DollWOW orders or exact product references. Photographs cannot establish hidden construction, material feel, long-term durability, precise color under every light, or condition after transit."
+      }
+    ],
     tools: [
       { label: "Price match", url: `${siteUrl}/price-match` },
       { label: "Help me choose", url: `${siteUrl}/help-me-choose` },
@@ -83,6 +96,7 @@ export function GET() {
     ],
     feeds: [
       { label: "Sitemap", url: `${siteUrl}/sitemap.xml` },
+      { label: "Image sitemap", url: `${siteUrl}/sitemap-images.xml` },
       { label: "LLMs text map", url: `${siteUrl}/llms.txt` },
       { label: "Plain-text knowledge query", url: `${siteUrl}/llms?query={buyer-question}` },
       { label: "JSON knowledge query", url: `${siteUrl}/llms/json?query={buyer-question}` },

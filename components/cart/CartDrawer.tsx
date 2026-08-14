@@ -11,6 +11,7 @@ import { formatMoney } from "@/lib/utils/currency";
 import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { Care365Seal } from "@/components/care/Care365Seal";
+import { FactoryApprovalCartPreview } from "@/components/factory-approval/FactoryApprovalPreview";
 
 export function CartDrawer() {
   const cart = useCart();
@@ -215,6 +216,7 @@ export function CartDrawer() {
               {cart.checkoutPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
               Secure checkout
             </button>
+            <FactoryApprovalCartPreview />
             <Care365Seal disclosure className="mt-3" />
             <div className="mt-3 flex items-center justify-between text-sm text-ivory-500">
               <Link href="/cart" onClick={cart.closeDrawer} className="inline-flex min-h-11 items-center font-semibold text-ivory-300 underline-offset-2 hover:underline">

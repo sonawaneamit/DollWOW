@@ -13,6 +13,7 @@ export function GET() {
     "",
     `Host: ${siteUrl}`,
     `Sitemap: ${siteUrl}/sitemap.xml`,
+    `Sitemap: ${siteUrl}/sitemap-images.xml`,
     ""
   ].join("\n");
 

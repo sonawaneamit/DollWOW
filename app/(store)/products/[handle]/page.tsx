@@ -30,6 +30,7 @@ import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/c
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
+import { FactoryApprovalPdpPreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isVisualizerProduct, visualizerUrl } from "@/lib/doll-visualizer/config";
 
@@ -149,6 +150,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
+            {product.extended.stockStatus !== "ready_to_ship" ? (
+              <FactoryApprovalPdpPreview />
+            ) : null}
             <nav aria-label="Product page sections" className="pdp-quick-nav">
               <a href="#overview">Overview</a>
               <a href="#build-studio">{product.extended.stockStatus === "ready_to_ship" ? "Included" : "Options"}</a>

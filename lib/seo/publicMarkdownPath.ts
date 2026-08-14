@@ -9,6 +9,7 @@ const exactPublicPaths = new Set([
   "/compare",
   "/customize",
   "/faq",
+  "/factory-photos",
   "/help-me-choose",
   "/how-ordering-works",
   "/learn",

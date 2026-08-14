@@ -20,6 +20,7 @@ const staticRoutes = [
   "/how-ordering-works",
   "/buyer-protection",
   "/care-for-life",
+  "/factory-photos",
   "/best-price-guarantee",
   "/price-match",
   "/scam-alert",

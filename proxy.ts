@@ -102,6 +102,7 @@ export const config = {
     "/compare",
     "/customize",
     "/faq",
+    "/factory-photos",
     "/help-me-choose",
     "/how-ordering-works",
     "/learn",

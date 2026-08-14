@@ -10,6 +10,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { WishlistButton } from "@/components/WishlistButton";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
+import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
@@ -128,6 +129,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
       </section>
 
       <TrustBand />
+      <FactoryApprovalHomepagePreview />
       <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
       <HomeDollWall products={products} />
 
