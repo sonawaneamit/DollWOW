@@ -108,16 +108,34 @@
 }
 
 .pdpImages {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 3px;
+  position: relative;
+  min-height: 126px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--color-border-strong));
+  border-radius: 2px;
+  background: rgb(var(--color-surface-tint));
 }
 
 .pdpImages span {
-  position: relative;
-  min-height: 96px;
-  overflow: hidden;
-  background: rgb(var(--color-surface-tint));
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: pdpFactoryPhoto 16s ease-in-out infinite;
+}
+
+.pdpImages span:nth-child(1) { opacity: 1; }
+.pdpImages span:nth-child(2) { animation-delay: 4s; }
+.pdpImages span:nth-child(3) { animation-delay: 8s; }
+.pdpImages span:nth-child(4) { animation-delay: 12s; }
+
+.pdpImages img {
+  object-fit: contain;
+  object-position: center;
+}
+
+@keyframes pdpFactoryPhoto {
+  0%, 21% { opacity: 1; }
+  27%, 100% { opacity: 0; }
 }
 
 .pdpCopy {
@@ -181,21 +199,52 @@
 .cartCopy small { margin-top: 4px; color: rgb(var(--color-text-dim)); font-size: 10px; }
 
 .cartFilmstrip {
-  display: flex;
-  width: 88px;
-  height: 52px;
+  position: relative;
+  display: block;
+  width: 58px;
+  height: 70px;
+  flex: 0 0 58px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--color-border-strong));
+  border-radius: 2px;
+  background: rgb(var(--color-surface));
 }
 
 .cartFilmstrip i {
-  position: relative;
-  width: 42px;
-  height: 52px;
-  overflow: hidden;
-  border: 1px solid rgb(var(--color-surface));
-  background: rgb(var(--color-surface-tint));
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: cartFactoryPhoto 12s ease-in-out infinite;
 }
 
-.cartFilmstrip i + i { margin-left: -18px; }
+.cartFilmstrip i:nth-child(1) {
+  opacity: 1;
+}
+
+.cartFilmstrip i:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.cartFilmstrip i:nth-child(3) {
+  animation-delay: 8s;
+}
+
+.cartFilmstrip img {
+  object-fit: contain;
+  object-position: center;
+}
+
+@keyframes cartFactoryPhoto {
+  0%, 28% { opacity: 1; }
+  35%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartFilmstrip i { animation: none; }
+  .cartFilmstrip i:not(:first-child) { opacity: 0; }
+  .pdpImages span { animation: none; }
+  .pdpImages span:not(:first-child) { opacity: 0; }
+}
 
 @media (max-width: 900px) {
   .homeInner { grid-template-columns: 1fr; }
@@ -224,5 +273,5 @@
     margin-top: 14px;
   }
 
-  .pdpImages span { min-height: 78px; }
+  .pdpImages { min-height: 124px; }
 }
