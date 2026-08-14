@@ -57,7 +57,6 @@ const processSteps = [
 ] as const;
 
 const faqs = [
-  ["Are these photographs from current DollWOW orders?", "No. They are selected, anonymized examples from real customer orders handled by members of the DollWOW team through a previous business before DollWOW launched. They show prior team experience, not current DollWOW fulfillment history."],
   ["Are these photographs of products currently sold by DollWOW?", "Do not use the archive to identify a current product, brand, or configuration. Customer, order, brand, and product identities have been removed, and an historical image is not proof that the same product or option is currently available."],
   ["Does every DollWOW order receive factory photos?", "No. Factory media may be available for eligible custom builds where the product and manufacturer support it. Ready-to-ship orders and some custom products may follow a different release process. Ask our team to confirm the path for the exact product before checkout."],
   ["What can factory approval photos help me check?", "Clear media may help you review the visible head and body combination, appearance selections, overall finish, and an obvious cosmetic concern. What can be confirmed depends on what the supplied photographs or video actually show."],

@@ -269,9 +269,6 @@ Inline action: `Read the complete ordering process` → `/how-ordering-works`
 
 ### FAQs
 
-**Are these photographs from current DollWOW orders?**
-No. They are selected, anonymized examples from real customer orders handled by members of the DollWOW team through a previous business before DollWOW launched. They show prior team experience, not current DollWOW fulfillment history.
-
 **Are these photographs of products currently sold by DollWOW?**
 Do not use the archive to identify a current product, brand, or configuration. Customer, order, brand, and product identities have been removed, and an historical image is not proof that the same product or option is currently available.
 
