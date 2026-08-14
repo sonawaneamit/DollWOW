@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { identifyAgentCrawler, requestedRepresentation } from "@/lib/seo/agentCrawler";
+import { CONTENT_SIGNAL, isPublicAgentResourcePath } from "@/lib/seo/contentSignals";
 import { isPublicMarkdownPath, markdownPathFor } from "@/lib/seo/publicMarkdownPath";
 import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
 
@@ -31,6 +32,7 @@ export function proxy(request: NextRequest) {
 
   const accept = request.headers.get("accept");
   const publicPage = isPublicMarkdownPath(request.nextUrl.pathname);
+  const publicAgentResource = publicPage || isPublicAgentResourcePath(request.nextUrl.pathname);
   const crawler = identifyAgentCrawler(request.headers.get("user-agent"));
 
   if (crawler && publicPage) {
@@ -53,7 +55,9 @@ export function proxy(request: NextRequest) {
     const markdownUrl = request.nextUrl.clone();
     markdownUrl.pathname = markdownPathFor(request.nextUrl.pathname);
     markdownUrl.search = "";
-    return NextResponse.rewrite(markdownUrl);
+    const response = NextResponse.rewrite(markdownUrl);
+    setAgentAccessHeaders(response);
+    return response;
   }
 
   const response = NextResponse.next();
@@ -64,7 +68,12 @@ export function proxy(request: NextRequest) {
     );
     response.headers.set("Vary", "Accept");
   }
+  if (publicAgentResource) setAgentAccessHeaders(response);
   return response;
+}
+
+function setAgentAccessHeaders(response: NextResponse) {
+  response.headers.set("Content-Signal", CONTENT_SIGNAL);
 }
 
 function unauthorized() {
@@ -112,6 +121,7 @@ export const config = {
     "/why-dollwow",
     "/llms.txt",
     "/llms/:path*",
+    "/markdown/:path*",
     "/agent-index.json",
     "/product-feed.json",
     "/datasets/:path*"
