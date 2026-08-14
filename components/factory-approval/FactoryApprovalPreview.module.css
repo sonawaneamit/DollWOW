@@ -147,14 +147,6 @@
   font-weight: 800;
 }
 
-.pdpCopy > small {
-  display: block;
-  margin-top: 8px;
-  color: rgb(var(--color-text-faint));
-  font-size: 9px;
-  line-height: 1.45;
-}
-
 .cart {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

@@ -56,7 +56,6 @@ export function FactoryApprovalPdpPreview() {
         <h2 id="factory-approval-pdp-title">Experienced eyes on your custom build</h2>
         <p>Our team brings years of hands-on custom-order and factory-approval experience to DollWOW.</p>
         <Link href="/factory-photos">See anonymized approval examples <span aria-hidden="true">→</span></Link>
-        <small>Historical examples may show different products, options, manufacturers, and production processes.</small>
       </div>
     </aside>
   );
