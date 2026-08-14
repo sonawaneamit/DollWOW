@@ -256,26 +256,14 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
 
   return (
     <article className="home-product-card">
-      <Link href={`/products/${product.handle}`} className="home-product-card__media" aria-label={`View ${displayTitle}`}>
+      <Link href={`/products/${product.handle}`} className="home-product-card__link" aria-label={`View ${displayTitle}`} />
+      <div className="home-product-card__media">
         <HomeProductImage product={product} priority={priority} />
         <span className={`home-product-badge ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
-        <WishlistButton
-          entry={{
-            productHandle: product.handle,
-            productTitle: displayTitle,
-            brand: product.extended.brand ?? product.vendor,
-            imageUrl,
-            imageAlt: image?.altText ?? displayTitle,
-            unitPrice: Number(price.amount),
-            currencyCode: price.currencyCode,
-            readyToShip: ready
-          }}
-          className="home-heart"
-        />
-      </Link>
+      </div>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <Link href={`/products/${product.handle}`}>{shortTitle(displayTitle)}</Link>
+        <h3>{shortTitle(displayTitle)}</h3>
         <div className="home-spec-row">
           {specs.slice(0, 3).map((spec) => (
             <span key={spec}>{spec}</span>
@@ -286,6 +274,19 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
           <span>View <ArrowRight className="h-3.5 w-3.5" /></span>
         </div>
       </div>
+      <WishlistButton
+        entry={{
+          productHandle: product.handle,
+          productTitle: displayTitle,
+          brand: product.extended.brand ?? product.vendor,
+          imageUrl,
+          imageAlt: image?.altText ?? displayTitle,
+          unitPrice: Number(price.amount),
+          currencyCode: price.currencyCode,
+          readyToShip: ready
+        }}
+        className="home-heart"
+      />
     </article>
   );
 }

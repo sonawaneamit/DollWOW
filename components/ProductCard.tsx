@@ -23,13 +23,14 @@ export function ProductCard({ product, priority = false }: { product: Product; p
 
   return (
     <article className="catalog-product-card group">
-      <Link className="catalog-product-card__media" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
+      <Link className="catalog-product-card__link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`} />
+      <div className="catalog-product-card__media">
         {publicImageUrl ? <Image src={publicImageUrl} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" priority={priority} loading={priority ? "eager" : "lazy"} /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
         <span className={`catalog-product-card__status ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
-      </Link>
+      </div>
       <div className="catalog-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <Link href={`/products/${product.handle}`}><h2>{displayTitle}</h2></Link>
+        <h2>{displayTitle}</h2>
         <div className="catalog-product-card__specs">
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>
@@ -40,7 +41,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         ) : null}
         <footer>
           <strong><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
-          <Link href={`/products/${product.handle}`}>View doll <ArrowRight className="h-4 w-4" /></Link>
+          <span>View doll <ArrowRight className="h-4 w-4" /></span>
         </footer>
       </div>
       <CompareButton
