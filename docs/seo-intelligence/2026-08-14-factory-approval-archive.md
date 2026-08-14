@@ -169,7 +169,7 @@ Show this disclosure once immediately before the gallery and a shorter disclosur
 
 Short disclosure:
 
-> Historical prior-team examples. Factory media and available views vary by product, order, and manufacturer.
+> Factory media and available views vary by product, order, and manufacturer.
 
 ### Gallery introduction
 

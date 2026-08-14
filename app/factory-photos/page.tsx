@@ -259,7 +259,7 @@ export default function FactoryPhotosPage() {
         </div>
       </section>
 
-      <p className={styles.disclosure}>Historical prior-team examples. Factory media and available views vary by product, order, and manufacturer.</p>
+      <p className={styles.disclosure}>Factory media and available views vary by product, order, and manufacturer.</p>
     </main>
   );
 }

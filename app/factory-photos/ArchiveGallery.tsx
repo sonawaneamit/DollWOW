@@ -101,7 +101,7 @@ export function ArchiveGallery({ manifestEntries }: { manifestEntries: ArchiveEn
           <p className={styles.galleryProgress}>{visibleEntries.length} of {filteredEntries.length} selected examples</p>
         )}
       </div>
-      <p className={styles.shortDisclosure}>Historical prior-team examples. Factory media and available views vary by product, order, and manufacturer.</p>
+      <p className={styles.shortDisclosure}>Factory media and available views vary by product, order, and manufacturer.</p>
     </section>
   );
 }
