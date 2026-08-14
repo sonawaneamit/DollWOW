@@ -70,7 +70,7 @@ const faqs = [
 ] as const;
 
 export const archiveDisclosure =
-  "Every image in this public preview is an anonymized historical example from a real customer order handled by members of our team through a previous business before DollWOW launched. These are not current DollWOW orders, photographs of the exact product you may be viewing, or a guarantee that the same media, views, or approval step will be available for every order.";
+  "Every image in this public preview is an anonymized historical example from a real customer order handled by members of our team.";
 
 function safeJson(data: unknown) {
   return JSON.stringify(data).replace(/</g, "\\u003c");
