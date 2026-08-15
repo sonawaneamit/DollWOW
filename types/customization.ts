@@ -16,6 +16,8 @@ export type CustomizationOption = {
   dollVueEnabled?: boolean;
   /** DollWOW has verified the current incremental price. */
   priceVerified?: boolean;
+  /** Use a service-style price label even when the numeric checkout value is zero. */
+  priceLabel?: "included";
   /** Can be selected and paid for in the current online checkout. */
   purchasable?: boolean;
   productionNote?: string;
