@@ -183,6 +183,23 @@ describe("Irontech dealer-guided customization", () => {
     expect(groups.find((group) => group.id === "choose-head")?.options.every((option) => option.dollVueEnabled === false)).toBe(true);
   });
 
+  it("corrects the supplier's Natural Skin spelling across Irontech configurators", () => {
+    const product = irontech([
+      {
+        id: "skin-tone",
+        label: "Skin Tone",
+        display: "swatches",
+        options: [
+          { id: "default", label: "Factory default" },
+          { id: "natural", label: "Natrual Skin", swatch: { kind: "image", value: "https://example.com/natural.jpg" } }
+        ]
+      }
+    ]);
+
+    const skinTone = getCustomizationConfig(product).groups.find((group) => group.id === "skin-tone");
+    expect(skinTone?.options.find((option) => option.id === "natural")?.label).toBe("Natural Skin");
+  });
+
   it("enables image-backed freckles and makeup without exposing non-visual upgrades", () => {
     const product = irontech([
       ...sourceGroups,

@@ -262,7 +262,8 @@ function normalizeIrontechGroup(group: CustomizationGroup): CustomizationGroup {
 }
 
 function normalizeIrontechOption(groupLabel: string, option: CustomizationOption): CustomizationOption {
-  const label = option.label.toLowerCase();
+  const normalizedLabel = option.label.replace(/^Natrual\b/i, "Natural");
+  const label = normalizedLabel.toLowerCase();
   let priceDelta = option.priceDelta;
 
   if (/hairstyle/.test(groupLabel)) {
@@ -302,6 +303,7 @@ function normalizeIrontechOption(groupLabel: string, option: CustomizationOption
   const verified = priceDelta !== undefined;
   return {
     ...option,
+    label: normalizedLabel,
     priceDelta,
     priceVerified: verified,
     purchasable: verified,
