@@ -316,11 +316,11 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       rules: getStarperyCustomizationRules(groups)
     };
   }
-  if (isIrontechProduct(product) && importedGroups?.length) {
+  if (isIrontechProduct(product)) {
     const groups = getIrontechCustomizationGroups(product, importedGroups);
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
     return {
-      id: "irontech-dealer-verified",
+      id: "irontech-family-profile",
       brandLabel: "Irontech Dolls",
       leadTimeNote: "Irontech custom builds and compatibility are reviewed before production begins.",
       groups: uniqueCustomizationGroups(withIrontechUlw(product, availableGroups)),
@@ -417,15 +417,6 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   }
   if (text.includes("zelex")) return configs.zelex;
   if (text.includes("doll castle")) return configs.dollCastle;
-  if (isIrontechProduct(product)) {
-    return {
-      id: "irontech",
-      brandLabel: "Irontech Dolls",
-      leadTimeNote: "Irontech custom builds and ULW compatibility are confirmed before production begins.",
-      groups: withIronAi(product, withIrontechUlw(product, configs.generic.groups)),
-      rules: []
-    };
-  }
   if (isRealLadyProduct(product)) {
     return {
       id: "real-lady",

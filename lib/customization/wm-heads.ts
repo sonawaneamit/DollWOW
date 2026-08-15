@@ -177,7 +177,7 @@ export const WM_STANDARD_TPE_HEADS: CustomizationOption[] =
     priceDelta: 0,
     priceVerified: true,
     purchasable: true,
-    visualizable: true,
+    dollVueEnabled: true,
     swatch: {
       kind: "image",
       value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,
@@ -215,7 +215,7 @@ export const WM_SILICONE_HEADS: CustomizationOption[] = [
     priceDelta: 0,
     priceVerified: true,
     purchasable: true,
-    visualizable: true,
+    dollVueEnabled: true,
     swatch: {
       kind: "image" as const,
       value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,

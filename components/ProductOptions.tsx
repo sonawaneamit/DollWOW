@@ -42,7 +42,7 @@ import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
-import { visualizerSelectionKey } from "@/lib/doll-visualizer/public";
+import { dollVueSelectionKey } from "@/lib/dollvue/public";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -66,7 +66,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
 
   useEffect(() => {
     try {
-      const key = visualizerSelectionKey(product.handle);
+      const key = dollVueSelectionKey(product.handle);
       const saved = JSON.parse(window.localStorage.getItem(key) || "null") as { selections?: Record<string, string>; savedAt?: number } | null;
       if (!saved?.selections || !saved.savedAt || Date.now() - saved.savedAt > 24 * 60 * 60 * 1000) return;
       const supported = Object.fromEntries(Object.entries(saved.selections).filter(([groupId, optionId]) =>
@@ -78,7 +78,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
       if (firstSelectedGroup) setActiveGroupId(firstSelectedGroup.id);
       window.localStorage.removeItem(key);
     } catch {
-      // Keep factory defaults if a saved Visualizer choice cannot be restored.
+      // Keep factory defaults if a saved DollVue choice cannot be restored.
     }
   }, [config.groups, product.handle]);
 
@@ -572,7 +572,7 @@ function OptionTile({ option, selected, disabled, notice, currencyCode, onClick 
 }
 
 function optionPriceLabel(option: CustomizationOption, currencyCode: string) {
-  if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : "Included";
+  if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : formatMoney(0, currencyCode);
   return "Included";
 }
 

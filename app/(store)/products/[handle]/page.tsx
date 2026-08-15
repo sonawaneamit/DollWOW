@@ -32,7 +32,8 @@ import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalPdpPreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
-import { isVisualizerProduct, visualizerUrl } from "@/lib/doll-visualizer/config";
+import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
+import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -91,11 +92,11 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="min-w-0">
             <ProductGallery product={publicProduct} />
-            {isVisualizerProduct(product.handle) ? (
-              <Link href={visualizerUrl(product.handle)} className="visualizer-pdp-entry visualizer-pdp-star">
-                <span className="visualizer-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
+            {isDollVueCatalogProduct(product) ? (
+              <Link href={dollVueUrl(product.handle)} className="dollvue-pdp-entry dollvue-pdp-star">
+                <span className="dollvue-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
                 <span>
-                  <small className="visualizer-pdp-kicker">New: Doll Visualizer™</small>
+                  <small className="dollvue-pdp-kicker">New: DollVue™</small>
                   <strong>Picture this doll your way</strong>
                   <small>Preview available appearance choices on a real photo of this doll.</small>
                 </span>
@@ -117,7 +118,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               />
             </div>
             {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
-            <h1 className="mt-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">{displayNameUi ? pdpTitle : displayTitle}</h1>
+            <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
+              <span>{displayNameUi ? pdpTitle : displayTitle}</span>
+              {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
+            </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>

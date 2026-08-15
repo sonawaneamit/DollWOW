@@ -82,7 +82,7 @@ function buildIncludedExtraHead(options: CustomizationOption[], description: str
         priceDelta: 0,
         priceVerified: true,
         purchasable: true,
-        visualizable: false
+        dollVueEnabled: false
       }))
     ]
   };
@@ -113,7 +113,7 @@ function buildChooseHead(options: CustomizationOption[], description: string): C
         priceDelta: 0,
         priceVerified: true,
         purchasable: true,
-        visualizable: false
+        dollVueEnabled: false
       },
       ...options.map((option) => ({
         ...option,
@@ -123,9 +123,9 @@ function buildChooseHead(options: CustomizationOption[], description: string): C
         priceDelta: positivePrice(option.priceDelta) ?? 0,
         priceVerified: true,
         purchasable: true,
-        // Head replacement needs a dedicated identity-preserving Visualizer
+        // Head replacement needs a dedicated identity-preserving DollVue
         // module. Keep the photo ready without exposing it prematurely.
-        visualizable: false
+        dollVueEnabled: false
       }))
     ]
   };
@@ -152,7 +152,7 @@ function buildExtraHead(
       priceDelta: price,
       priceVerified: true,
       purchasable: true,
-      visualizable: false
+      dollVueEnabled: false
     }];
   });
   if (!normalized.length) return undefined;
@@ -183,7 +183,7 @@ function normalizeDealerGroup(group: CustomizationGroup): CustomizationGroup {
         priceDelta,
         priceVerified: priceDelta !== undefined,
         purchasable: priceDelta !== undefined,
-        visualizable: Boolean(option.swatch?.kind === "image") && VISUAL_GROUP.test(group.label)
+        dollVueEnabled: Boolean(option.swatch?.kind === "image") && VISUAL_GROUP.test(group.label)
       };
     })
   };

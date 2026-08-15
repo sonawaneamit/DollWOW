@@ -125,18 +125,67 @@ describe("Starpery factory customization", () => {
     expect(groups.find((group) => group.id === "areola-color")?.options.find((option) => option.id === "no-6")).toMatchObject({
       priceDelta: 0,
       purchasable: true,
-      visualizable: true
+      dollVueEnabled: true
     });
     expect(groups.some((group) => group.label === "An Extra Free Head")).toBe(false);
     expect(groups.find((group) => group.id === "additional-head")?.selectionMode).toBe("multiple");
   });
 
-  it("never marks an option Visualizer-ready without a real image reference", () => {
+  it("inherits absent family steps without expanding a product-specific choice", () => {
+    const product = starpery();
+    product.extended.customizationGroups = [
+      {
+        id: "supplier-eye-color",
+        label: "Eye Color",
+        display: "swatches",
+        options: [
+          { id: "factory", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
+          { id: "blue", label: "Blue", swatch: { kind: "image", value: "https://example.com/blue.jpg" } }
+        ]
+      }
+    ];
+
+    const groups = getCustomizationConfig(product).groups;
+    expect(groups.find((group) => group.id === "supplier-eye-color")?.options.map((option) => option.label)).toEqual(["Factory default", "Blue"]);
+    expect(groups.find((group) => group.id === "supplier-eye-color")?.options.some((option) => option.label === "Green")).toBe(false);
+    expect(groups.some((group) => group.id === "skin-tone")).toBe(true);
+    expect(groups.some((group) => group.id === "head-construction")).toBe(true);
+    expect(groups.some((group) => group.id === "additional-head")).toBe(true);
+  });
+
+  it("never marks an option DollVue-ready without a real image reference", () => {
     const groups = getCustomizationConfig(starpery()).groups;
-    const visualizable = groups.flatMap((group) => group.options.filter((option) => option.visualizable));
-    expect(visualizable.length).toBeGreaterThan(0);
-    expect(visualizable.every((option) => option.swatch?.kind === "image" && /^https:\/\//.test(option.swatch.value))).toBe(true);
-    expect(groups.find((group) => group.id === "head-model")?.options.every((option) => option.visualizable === false)).toBe(true);
+    const dollVueEnabled = groups.flatMap((group) => group.options.filter((option) => option.dollVueEnabled));
+    expect(dollVueEnabled.length).toBeGreaterThan(0);
+    expect(dollVueEnabled.every((option) => option.swatch?.kind === "image" && /^https:\/\//.test(option.swatch.value))).toBe(true);
+    expect(groups.find((group) => group.id === "head-model")?.options.every((option) => option.dollVueEnabled === false)).toBe(true);
+  });
+
+  it("enables image-backed finishing details while leaving functional upgrades out of DollVue", () => {
+    const product = starpery();
+    product.extended.customizationGroups = [
+      {
+        id: "finishing",
+        label: "Finishing Details",
+        display: "swatches",
+        options: [
+          { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
+          { id: "freckles", label: "Facial Freckles", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/freckles.jpg" } }
+        ]
+      },
+      {
+        id: "premium",
+        label: "Premium Body Options",
+        display: "swatches",
+        options: [
+          { id: "default", label: "Factory default" },
+          { id: "heating", label: "Body Heating", priceDelta: 200, swatch: { kind: "image", value: "https://example.com/heating.jpg" } }
+        ]
+      }
+    ];
+    const groups = getCustomizationConfig(product).groups;
+    expect(groups.find((group) => group.id === "finishing")?.options.find((option) => option.id === "freckles")?.dollVueEnabled).toBe(true);
+    expect(groups.find((group) => group.id === "premium")?.options.find((option) => option.id === "heating")?.dollVueEnabled).toBe(false);
   });
 
   it("merges duplicate supplier groups without repeating configurator steps", () => {

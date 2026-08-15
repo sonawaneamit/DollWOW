@@ -11,6 +11,8 @@ import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { WishlistButton } from "@/components/WishlistButton";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
+import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 
@@ -128,6 +130,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
         </div>
       </section>
 
+      <DollVueHomepageStrip />
       <TrustBand />
       <FactoryApprovalHomepagePreview />
       <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
@@ -140,6 +143,35 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
       <PreviewShowcase products={products} />
       <ClosingBand />
     </div>
+  );
+}
+
+function DollVueHomepageStrip() {
+  return (
+    <section className="home-dollvue-strip" aria-label="DollVue personalized appearance previews">
+      <Link
+        href="/dollvue"
+        className="home-dollvue-strip__link"
+        aria-label="Explore DollVue personalized doll previews"
+      >
+        <Image
+          className="home-dollvue-strip__image home-dollvue-strip__image--desktop"
+          src="/images/dollvue/home/dollvue-skin-tone-strip-desktop.png"
+          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
+          width={1774}
+          height={300}
+          sizes="100vw"
+        />
+        <Image
+          className="home-dollvue-strip__image home-dollvue-strip__image--mobile"
+          src="/images/dollvue/home/dollvue-skin-tone-strip-mobile.png"
+          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
+          width={1774}
+          height={887}
+          sizes="100vw"
+        />
+      </Link>
+    </section>
   );
 }
 
@@ -263,7 +295,10 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
       </div>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <h3>{shortTitle(displayTitle)}</h3>
+        <h3 className={isDollVueCatalogProduct(product) ? "has-dollvue-badge" : undefined}>
+          <span>{shortTitle(displayTitle)}</span>
+          {isDollVueCatalogProduct(product) ? <DollVueBadge size="compact" /> : null}
+        </h3>
         <div className="home-spec-row">
           {specs.slice(0, 3).map((spec) => (
             <span key={spec}>{spec}</span>

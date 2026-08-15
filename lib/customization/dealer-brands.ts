@@ -190,7 +190,7 @@ const ANGELKISS_PROMOTIONAL_HEADS: CustomizationOption[] = [
   priceDelta: 0,
   priceVerified: true,
   purchasable: true,
-  visualizable: false,
+  dollVueEnabled: false,
   swatch: {
     kind: "image" as const,
     value: `https://cdn.myrobotdoll.com/wp-content/uploads/2025/03/${file}`,

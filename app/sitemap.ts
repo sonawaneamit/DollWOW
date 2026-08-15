@@ -24,6 +24,7 @@ const staticRoutes = [
   "/care-for-life",
   "/factory-photos",
   "/dollvue",
+  "/shop/dollvue-enabled",
   "/best-price-guarantee",
   "/price-match",
   "/scam-alert",

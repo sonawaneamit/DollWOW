@@ -198,7 +198,7 @@ describe("customization config", () => {
           options: [
             { id: "default", label: "Factory default", priceDelta: 0 },
             { id: "known-included", label: "Known included", factoryExists: true, displayable: true, priceVerified: true, purchasable: true },
-            { id: "visual-only", label: "Visual only", factoryExists: true, displayable: true, visualizable: true, priceVerified: false, purchasable: false },
+            { id: "visual-only", label: "Visual only", factoryExists: true, displayable: true, dollVueEnabled: true, priceVerified: false, purchasable: false },
             { id: "paused", label: "Paused option", factoryExists: true, priceDelta: 95, priceVerified: true, purchasable: false }
           ]
         }

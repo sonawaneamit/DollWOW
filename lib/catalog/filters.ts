@@ -1,6 +1,7 @@
 import type { Product } from "@/types/product";
 import { brandFilterOptions, brandFromText, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { getCatalogLook, lookCollectionPresets, lookFilterOptions, productMatchesLook } from "@/lib/catalog/lookTags";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
 
 export type CatalogFilters = {
@@ -16,6 +17,7 @@ export type CatalogFilters = {
   weight?: string;
   cup?: string;
   price?: string;
+  dollVue?: "enabled";
   capability?: "insertable-penis-add-on";
   sort?: string;
 };
@@ -98,6 +100,7 @@ const filterLabelMaps: Partial<Record<keyof CatalogFilters, Map<string, string>>
   weight: new Map(catalogFilterOptions.weights.map((option) => [option.value, option.label])),
   cup: new Map(catalogFilterOptions.cups.map((option) => [option.value, option.label])),
   price: new Map(catalogFilterOptions.prices.map((option) => [option.value, option.label])),
+  dollVue: new Map([["enabled", "DollVue enabled"]]),
   sort: new Map(catalogFilterOptions.sorts.map((option) => [option.value, option.label]))
 } satisfies Record<string, Map<string, string>>;
 
@@ -182,6 +185,7 @@ export function filtersFromSearchParams(params: Record<string, string | string[]
     weight: valueFor("weight"),
     cup: valueFor("cup"),
     price: valueFor("price"),
+    dollVue: valueFor("dollVue") as CatalogFilters["dollVue"],
     capability: valueFor("capability") as CatalogFilters["capability"],
     sort: valueFor("sort") || "featured"
   });
@@ -241,6 +245,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.weight && !inRange(product.extended.weightLb, filters.weight)) return false;
     if (filters.cup && !cupMatches(product.extended.cupSize, filters.cup)) return false;
     if (filters.price && !inRange(price(product), filters.price)) return false;
+    if (filters.dollVue === "enabled" && !isDollVueCatalogProduct(product)) return false;
     if (filters.capability === "insertable-penis-add-on" && product.extended.penisAddOnAvailable !== true) return false;
     return true;
   });
@@ -269,6 +274,7 @@ export function requiresCatalogWideFetch(filters: CatalogFilters) {
       filters.cup ||
       filters.price ||
       filters.region ||
+      filters.dollVue ||
       filters.capability ||
       (filters.sort && filters.sort !== "featured")
   );

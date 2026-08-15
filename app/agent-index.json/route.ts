@@ -93,6 +93,7 @@ export function GET() {
     ],
     tools: [
       { label: "DollVue", url: `${siteUrl}/dollvue` },
+      { label: "DollVue-enabled dolls", url: `${siteUrl}/shop/dollvue-enabled` },
       { label: "Price match", url: `${siteUrl}/price-match` },
       { label: "Help me choose", url: `${siteUrl}/help-me-choose` },
       { label: "Support", url: `${siteUrl}/support` }

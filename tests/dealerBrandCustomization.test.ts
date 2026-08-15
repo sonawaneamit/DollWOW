@@ -75,10 +75,10 @@ describe("dealer brand head normalization", () => {
     expect(includedExtra?.options.some((option) => option.label === "Standard Silicone · LS54" && option.swatch?.kind === "image")).toBe(true);
     expect(includedExtra?.options.some((option) => option.label === "ROS Silicone · LS54" && option.swatch?.kind === "image")).toBe(true);
     expect(config.groups.some((group) => group.id === "add-extra-head")).toBe(false);
-    expect(choose?.options.slice(1).every((option) => option.visualizable === false)).toBe(true);
+    expect(choose?.options.slice(1).every((option) => option.dollVueEnabled === false)).toBe(true);
   });
 
-  it("marks image-backed appearance choices visualizer-ready while keeping head swaps gated", () => {
+  it("marks image-backed appearance choices dollvue-ready while keeping head swaps gated", () => {
     const appearance: CustomizationGroup = {
       id: "eye-color", label: "Eye Color", required: true, display: "swatches", options: [
         { id: "default", label: "Factory default", productionNote: "Default supplier selection." },
@@ -86,8 +86,8 @@ describe("dealer brand head normalization", () => {
       ]
     };
     const config = getFactoryCustomizationConfig(product("6YE Dolls", "TPE", [headLibrary, appearance]));
-    expect(config.groups.find((group) => group.id === "eye-color")?.options[1].visualizable).toBe(true);
-    expect(config.groups.find((group) => group.id === "choose-head")?.options[1].visualizable).toBe(false);
+    expect(config.groups.find((group) => group.id === "eye-color")?.options[1].dollVueEnabled).toBe(true);
+    expect(config.groups.find((group) => group.id === "choose-head")?.options[1].dollVueEnabled).toBe(false);
   });
 
   it("does not mistake YL's yes/no promotion control for a head catalog", () => {

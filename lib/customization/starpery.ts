@@ -10,7 +10,7 @@ function imageOption(id: string, label: string, path: string, priceDelta = 0, de
     label,
     description,
     priceDelta,
-    visualizable: true,
+    dollVueEnabled: true,
     priceVerified: true,
     purchasable: true,
     swatch: { kind: "image", value: rosemaryAsset(path), label }
@@ -22,7 +22,7 @@ type StarperyHeadRecord = { id: string; label: string; imagePath: string; ros: b
 const currentHeadOptions: CustomizationOption[] = (starperyHeads as StarperyHeadRecord[]).map((head) => ({
   ...imageOption(head.id, head.label, head.imagePath),
   description: head.ros ? "ROS-compatible head; select ROS under Head type to add the movable-jaw construction." : undefined,
-  visualizable: false
+  dollVueEnabled: false
 }));
 
 const headModel: CustomizationGroup = {
@@ -33,7 +33,7 @@ const headModel: CustomizationGroup = {
   selectionMode: "single",
   display: "swatches",
   options: [
-    { ...imageOption("shown-head", "Keep the head shown", "2020/04/default-300x300.jpg"), visualizable: false },
+    { ...imageOption("shown-head", "Keep the head shown", "2020/04/default-300x300.jpg"), dollVueEnabled: false },
     ...currentHeadOptions
   ]
 };
@@ -237,7 +237,7 @@ const additionalHead: CustomizationGroup = {
     ...(starperyHeads as StarperyHeadRecord[]).map((head) => ({
       ...imageOption(`extra-${head.id}`, head.label, head.imagePath, head.ros ? 600 : 500),
       description: head.ros ? "Includes this extra head plus ROS movable-jaw construction." : "Additional standard Starpery head ordered with the doll.",
-      visualizable: false
+      dollVueEnabled: false
     }))
   ]
 };
@@ -263,11 +263,7 @@ export function getStarperyCustomizationGroups(product: Product, importedGroups?
   const body = `${product.extended.heightCm ?? ""}${product.extended.cupSize ?? ""} ${product.title}`.replace(/\s+/g, "").toLowerCase();
   const supportsGelBelly = silicone && (body.includes("161cmh") || body.includes("168cmh") || body.includes("161h") || body.includes("168h"));
 
-  if (importedGroups?.length) {
-    return mergeImportedStarperyGroups(importedGroups);
-  }
-
-  return [
+  const profile = [
     headModel,
     headConstruction,
     skinTone,
@@ -286,6 +282,12 @@ export function getStarperyCustomizationGroups(product: Product, importedGroups?
     additionalHead,
     accessories
   ];
+
+  if (importedGroups?.length) {
+    return mergeImportedStarperyGroups(importedGroups, profile);
+  }
+
+  return profile;
 }
 
 export function getStarperyCustomizationRules(groups: CustomizationGroup[]): CustomizationRule[] {
@@ -331,14 +333,42 @@ const removedImportedGroups = [
   /for extra head/i
 ];
 
-function mergeImportedStarperyGroups(importedGroups: CustomizationGroup[]) {
+function mergeImportedStarperyGroups(importedGroups: CustomizationGroup[], profile: CustomizationGroup[]) {
   const normalized = importedGroups
     .filter((group) => !removedImportedGroups.some((pattern) => pattern.test(group.label)))
     .map(normalizeImportedStarperyGroup)
     .map((group) => ({ ...group, options: group.options.filter((option) => option.priceDelta !== undefined || isIncludedDefault(option)) }))
     .filter((group) => group.options.length >= 2);
 
-  return mergeDuplicateGroups([headModel, ...normalized, additionalHead]);
+  const importedKeys = new Set(normalized.map(starperyGroupKey));
+  const inherited = profile.filter((group) => !importedKeys.has(starperyGroupKey(group)));
+
+  // A product-specific group is authoritative for that entire choice. Shared
+  // profile groups only fill genuinely absent steps; they never inject extra
+  // choices into a supplier-limited SKU.
+  return mergeDuplicateGroups([...normalized, ...inherited]);
+}
+
+function starperyGroupKey(group: Pick<CustomizationGroup, "id" | "label">) {
+  const label = group.label.trim().toLowerCase();
+  if (/choose a head|head model/.test(label)) return "head-model";
+  if (/head type|head construction/.test(label)) return "head-construction";
+  if (/skin tone/.test(label)) return "skin-tone";
+  if (/^eye color$/.test(label)) return "eye-color";
+  if (/eye type|eye detail/.test(label)) return "eye-type";
+  if (/wig style|^hairstyle$/.test(label)) return "hairstyle";
+  if (/hair finish|hair implanted$/.test(label)) return "hair-finish";
+  if (/finger.*nail|^nail color$/.test(label)) return "nail-color";
+  if (/toe.*nail/.test(label)) return "toe-nail-color";
+  if (/breast/.test(label)) return "breast-type";
+  if (/^vagina( type)?$/.test(label)) return "vagina-type";
+  if (/vagina texture|internal texture/.test(label)) return "vagina-texture";
+  if (/pubic hair|vagina hair/.test(label)) return "pubic-hair";
+  if (/body construction/.test(label)) return "body-construction";
+  if (/premium/.test(label)) return "premium-options";
+  if (/extra head|additional head/.test(label)) return "additional-head";
+  if (/accessories/.test(label)) return "accessories";
+  return group.id.trim().toLowerCase() || label;
 }
 
 function normalizeImportedStarperyGroup(group: CustomizationGroup): CustomizationGroup {
@@ -396,7 +426,7 @@ function normalizeImportedStarperyOption(groupLabel: string, option: Customizati
     priceDelta,
     priceVerified: verified,
     purchasable: verified,
-    visualizable: Boolean(option.swatch?.kind === "image") && isVisualizerFriendlyGroup(groupLabel)
+    dollVueEnabled: Boolean(option.swatch?.kind === "image") && isDollVueFriendlyOption(groupLabel, label)
   };
 }
 
@@ -405,8 +435,10 @@ function includedReferenceGroup(groupLabel: string, optionLabel: string) {
   return /^(skin tone|hairstyle|hair implanted color|eye color|eye type|nail color|toe nail color|breast options|vagina|vagina texture|vagina width & depth|areola color|labia color)$/.test(groupLabel);
 }
 
-function isVisualizerFriendlyGroup(groupLabel: string) {
-  return /^(skin tone|hairstyle|hair implanted color|eye color|nail color|toe nail color|areola color|labia color)$/.test(groupLabel);
+function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {
+  if (/^(skin tone|hairstyle|hair implanted color|eye color|nail color|toe nail color|areola color|labia color|vagina hair|pubic hair)$/.test(groupLabel)) return true;
+  if (/makeup|finishing detail|^premium\b/.test(groupLabel)) return /makeup|painting|realism|moles|freckles|bikini line/i.test(optionLabel);
+  return false;
 }
 
 function isIncludedDefault(option: Pick<CustomizationOption, "id" | "label" | "productionNote">) {

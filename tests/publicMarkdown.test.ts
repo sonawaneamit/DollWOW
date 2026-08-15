@@ -10,7 +10,8 @@ describe("sitewide Markdown representations", () => {
     "/products/example-product",
     "/learn/sex-doll-guide",
     "/care-for-life",
-    "/factory-photos"
+    "/factory-photos",
+    "/dollvue"
   ])("allows the public page %s", (path) => {
     expect(isPublicMarkdownPath(path)).toBe(true);
   });
@@ -20,7 +21,7 @@ describe("sitewide Markdown representations", () => {
     "/admin/price-match",
     "/api/search",
     "/cart",
-    "/ops/doll-visualizer",
+    "/dollvue/irontech-luna-example",
     "/search"
   ])("rejects private, transactional, or temporary route %s", (path) => {
     expect(isPublicMarkdownPath(path)).toBe(false);

@@ -110,7 +110,7 @@ describe("Wave 3 collection SEO", () => {
 
     expect(buildCollectionMetadata("realistic-sex-dolls", realistic).title).toBe("Most Realistic Sex Dolls for Sale | Compare Realism");
     expect(buildCollectionMetadata("custom", custom).title).toBe("Custom Sex Dolls for Sale | Build & Compare Options");
-    expect(realisticCopy).toContain("Doll Visualizer™");
+    expect(realisticCopy).toContain("DollVue™");
     expect(customCopy).toContain("approximate visual preview");
     expect(`${realisticCopy} ${customCopy}`).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });

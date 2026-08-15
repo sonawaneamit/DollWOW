@@ -42,6 +42,14 @@ const staticRecords: AgentKnowledgeRecord[] = [
     summary: "A guided product finder for narrowing the catalog around a buyer's priorities."
   },
   {
+    id: "dollvue",
+    type: "tool",
+    title: "DollVue",
+    url: `${siteUrl}/dollvue`,
+    markdownUrl: `${siteUrl}/markdown/dollvue`,
+    summary: "Preview supported appearance choices on real DollWow product photography before ordering."
+  },
+  {
     id: "compare",
     type: "tool",
     title: "Compare products",

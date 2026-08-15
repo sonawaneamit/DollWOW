@@ -5,6 +5,13 @@ const DEALER_TPE_EXTRA_HEAD_PRICE = 375;
 const DEALER_SILICONE_HEAD_PRICE = 299;
 const DOLLWOW_IRONAI_PRICE = 119;
 
+export type IrontechCustomizationProfile =
+  | "female-tpe"
+  | "female-silicone"
+  | "female-hybrid"
+  | "male"
+  | "special";
+
 const IRONTECH_INCLUDED_REFERENCE_GROUPS = [
   "skin tone",
   "eye color",
@@ -96,11 +103,12 @@ const removedHeadGroups = [
  * one chosen head, separately priced additional heads, and no unpriced choices.
  */
 export function getIrontechCustomizationGroups(product: Product, importedGroups?: CustomizationGroup[]) {
-  if (!importedGroups?.length) return [];
+  const sourceGroups = importedGroups?.length ? importedGroups : irontechFamilyDefaults(product);
+  if (!sourceGroups.length) return [];
 
-  const chooseHead = buildChooseHeadGroup(product, importedGroups);
-  const extraHead = buildExtraHeadGroup(product, importedGroups);
-  const groups = importedGroups
+  const chooseHead = buildChooseHeadGroup(product, sourceGroups);
+  const extraHead = buildExtraHeadGroup(product, sourceGroups);
+  const groups = sourceGroups
     .filter((group) => !removedHeadGroups.some((pattern) => pattern.test(group.label)))
     .filter((group) => !isMaterialHeadTypeGroup(group))
     .filter((group) => !/weight reduction|body weight technology/i.test(group.label))
@@ -112,6 +120,30 @@ export function getIrontechCustomizationGroups(product: Product, importedGroups?
     ...groups,
     ...(extraHead ? [extraHead] : [])
   ]);
+}
+
+export function getIrontechCustomizationProfile(product: Product): IrontechCustomizationProfile {
+  const identity = [product.title, product.handle, product.productType, product.extended.material, product.extended.bodyType, ...product.tags]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (/\b(male|man)\b/.test(identity)) return "male";
+  if (/\b(ironai|oriental|robot|torso|hips?|head only|head-only)\b/.test(identity)) return "special";
+  if (/hybrid/.test(identity) || (/silicone/.test(identity) && /\btpe\b/.test(identity))) return "female-hybrid";
+  if (/silicone/.test(identity)) return "female-silicone";
+  if (/\btpe\b/.test(identity)) return "female-tpe";
+  return "special";
+}
+
+function irontechFamilyDefaults(product: Product): CustomizationGroup[] {
+  const profile = getIrontechCustomizationProfile(product);
+  if (profile === "female-tpe") return [standardTpeHeadGroup()];
+  if (profile === "female-silicone") return [standardSiliconeHeadGroup()];
+  if (profile === "female-hybrid") return [standardTpeHeadGroup(), standardSiliconeHeadGroup()];
+  // Male and special series need their own manufacturer-confirmed head family;
+  // never leak the standard female library onto those products.
+  return [];
 }
 
 function buildChooseHeadGroup(product: Product, groups: CustomizationGroup[]): CustomizationGroup | undefined {
@@ -129,7 +161,7 @@ function buildChooseHeadGroup(product: Product, groups: CustomizationGroup[]): C
     priceDelta: 0,
     priceVerified: true,
     purchasable: true,
-    visualizable: false
+    dollVueEnabled: false
   });
 
   const add = (option: CustomizationOption, family: "TPE" | "Silicone" | "Current series", priceDelta: number) => {
@@ -146,7 +178,7 @@ function buildChooseHeadGroup(product: Product, groups: CustomizationGroup[]): C
       priceDelta,
       priceVerified: true,
       purchasable: true,
-      visualizable: false
+      dollVueEnabled: false
     });
   };
 
@@ -194,7 +226,7 @@ function buildExtraHeadGroup(product: Product, groups: CustomizationGroup[]): Cu
       priceDelta,
       priceVerified: true,
       purchasable: true,
-      visualizable: false
+      dollVueEnabled: false
     };
     if (!current || priceDelta > (current.priceDelta ?? 0)) options.set(normalizedId, candidate);
   };
@@ -273,7 +305,7 @@ function normalizeIrontechOption(groupLabel: string, option: CustomizationOption
     priceDelta,
     priceVerified: verified,
     purchasable: verified,
-    visualizable: Boolean(option.swatch?.kind === "image") && isVisualizerFriendlyGroup(groupLabel)
+    dollVueEnabled: Boolean(option.swatch?.kind === "image") && isDollVueFriendlyOption(groupLabel, label)
   };
 }
 
@@ -284,8 +316,12 @@ function isIncludedReferenceGroup(groupLabel: string, option: CustomizationOptio
   return !option.swatch || /^https?:\/\//i.test(option.swatch.value);
 }
 
-function isVisualizerFriendlyGroup(groupLabel: string) {
-  return /^(skin tone|hairstyle|hair color|eye color|nail color|toe nail color|nipple color|areola color|vagina color)$/.test(groupLabel);
+function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {
+  if (/^(skin tone|hairstyle|hair color|eye color|nail color|toe nail color|nipple color|areola color|vagina color|vagina hair|pubic hair)$/.test(groupLabel)) return true;
+  if (/makeup options/.test(groupLabel)) return /makeup|painting|realism/i.test(optionLabel);
+  if (/^premium\b/.test(groupLabel)) return /moles|freckles|bikini line/i.test(optionLabel);
+  if (/hair implant add-on/.test(groupLabel)) return /moustache|goatee|chest hair|arms hair|pubic hair|armpit hair/i.test(optionLabel);
+  return false;
 }
 
 function isIncludedDefault(option: Pick<CustomizationOption, "label" | "productionNote">) {
@@ -324,6 +360,15 @@ function standardSiliconeHeadGroup(): CustomizationGroup {
     label: "Your Custom Silicone Head",
     display: "swatches",
     options: IRONTECH_STANDARD_SILICONE_HEADS
+  };
+}
+
+function standardTpeHeadGroup(): CustomizationGroup {
+  return {
+    id: "irontech-standard-tpe-heads",
+    label: "Your Custom TPE Head",
+    display: "swatches",
+    options: IRONTECH_STANDARD_TPE_HEADS
   };
 }
 

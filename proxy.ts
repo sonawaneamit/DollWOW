@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(checkoutUrl, 307);
   }
 
-  if (request.nextUrl.pathname.startsWith("/ops/doll-visualizer")) {
+  if (request.nextUrl.pathname.startsWith("/dollvue/")) {
     return NextResponse.next();
   }
 
@@ -101,6 +101,7 @@ export const config = {
     "/care-for-life",
     "/compare",
     "/customize",
+    "/dollvue",
     "/faq",
     "/factory-photos",
     "/help-me-choose",

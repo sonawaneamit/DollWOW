@@ -22,6 +22,7 @@ const corePages = [
   ["Help Me Choose", "/help-me-choose"],
   ["Customize", "/customize"],
   ["DollVue", "/dollvue"],
+  ["DollVue-enabled dolls", "/shop/dollvue-enabled"],
   ["Price Match", "/price-match"],
   ["Buyer Protection", "/buyer-protection"],
   ["Care for Life", "/care-for-life"],

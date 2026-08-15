@@ -1,0 +1,104 @@
+.badge {
+  position: relative;
+  z-index: 7;
+  display: inline-grid;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  place-items: center;
+  vertical-align: -.18em;
+  cursor: help;
+  outline: none;
+}
+
+.badge img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.compact {
+  width: 20px;
+  height: 20px;
+  flex-basis: 20px;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 8px);
+  width: max-content;
+  max-width: min(240px, calc(100vw - 32px));
+  padding: 8px 10px;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 6px;
+  background: rgb(var(--color-text));
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.18);
+  color: rgb(var(--color-surface));
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  text-align: left;
+  text-transform: none;
+  transform: translateY(-3px);
+  transition: opacity 140ms ease, transform 140ms ease;
+  visibility: hidden;
+  white-space: normal;
+}
+
+.alignStart .tooltip {
+  right: auto;
+  left: 0;
+}
+
+.alignCenter .tooltip {
+  left: 50%;
+  transform: translate(-50%, -3px);
+}
+
+.alignEnd .tooltip {
+  right: 0;
+  left: auto;
+}
+
+.badge:hover .tooltip,
+.badge:focus .tooltip,
+.badge:focus-visible .tooltip,
+.badge.open .tooltip,
+.badge[data-open="true"] .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.alignCenter:hover .tooltip,
+.alignCenter:focus .tooltip,
+.alignCenter:focus-visible .tooltip,
+.alignCenter.open .tooltip,
+.alignCenter[data-open="true"] .tooltip {
+  transform: translate(-50%, 0);
+}
+
+.badge:focus-visible {
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgb(36 152 227 / 0.24);
+}
+
+@media (max-width: 640px) {
+  .badge {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  .compact {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+}

@@ -4,7 +4,7 @@ import { getDefaultSelections, resolveCustomization } from "@/lib/customization/
 import type { CustomizationGroup } from "@/types/customization";
 import type { Product } from "@/types/product";
 
-function irontech(groups: CustomizationGroup[]): Product {
+function irontech(groups: CustomizationGroup[] = []): Product {
   return {
     id: "gid://shopify/Product/irontech-test",
     handle: "irontech-penny-164cm-f-cup-silicone-head-companion-doll-test",
@@ -176,10 +176,75 @@ describe("Irontech dealer-guided customization", () => {
     expect(groups.some((group) => group.id === "weight")).toBe(false);
   });
 
-  it("marks only image-backed superficial options Visualizer-ready", () => {
+  it("marks only image-backed superficial options DollVue-ready", () => {
     const groups = getCustomizationConfig(irontech(sourceGroups)).groups;
-    expect(groups.find((group) => group.id === "eye-color")?.options.every((option) => option.visualizable)).toBe(true);
+    expect(groups.find((group) => group.id === "eye-color")?.options.every((option) => option.dollVueEnabled)).toBe(true);
     expect(groups.find((group) => group.id === "eye-color")?.options.find((option) => option.id === "green")?.priceDelta).toBe(0);
-    expect(groups.find((group) => group.id === "choose-head")?.options.every((option) => option.visualizable === false)).toBe(true);
+    expect(groups.find((group) => group.id === "choose-head")?.options.every((option) => option.dollVueEnabled === false)).toBe(true);
+  });
+
+  it("enables image-backed freckles and makeup without exposing non-visual upgrades", () => {
+    const product = irontech([
+      ...sourceGroups,
+      {
+        id: "appearance-details",
+        label: "Premium Head & Body Options (Multiple)",
+        selectionMode: "multiple",
+        display: "swatches",
+        options: [
+          { id: "freckles", label: "Moles & Freckles", swatch: { kind: "image", value: "https://example.com/freckles.jpg" } },
+          { id: "heating", label: "Body Heating", swatch: { kind: "image", value: "https://example.com/heating.jpg" } }
+        ]
+      },
+      {
+        id: "makeup",
+        label: "Makeup Options",
+        display: "swatches",
+        options: [
+          { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default-makeup.jpg" } },
+          { id: "realism", label: "Hyper-realism Painting", swatch: { kind: "image", value: "https://example.com/painting.jpg" } }
+        ]
+      }
+    ]);
+    const groups = getCustomizationConfig(product).groups;
+    const premium = groups.find((group) => /^premium head/i.test(group.label));
+    expect(premium?.options.find((option) => option.id === "freckles")?.dollVueEnabled).toBe(true);
+    expect(premium?.options.find((option) => option.id === "heating")?.dollVueEnabled).toBe(false);
+    expect(groups.find((group) => group.id === "makeup")?.options.find((option) => option.id === "realism")?.dollVueEnabled).toBe(true);
+  });
+
+  it("uses the shared silicone family profile when a female SKU has no imported groups", () => {
+    const product = irontech();
+    product.extended.material = "Full silicone";
+    product.extended.bodyType = "female";
+    const config = getCustomizationConfig(product);
+    expect(config.id).toBe("irontech-family-profile");
+    expect(config.groups.find((group) => group.id === "choose-head")?.options).toHaveLength(38);
+    expect(config.groups.find((group) => group.id === "add-extra-head")?.options).toHaveLength(38);
+    expect(config.groups.find((group) => group.id === "choose-head")?.options.find((option) => option.id === "silicone-s48")?.priceDelta).toBe(0);
+  });
+
+  it("uses the shared TPE family profile when a female SKU has no imported groups", () => {
+    const product = irontech();
+    product.title = "Irontech test 164cm TPE doll";
+    product.handle = "irontech-test-164cm-tpe-doll";
+    product.extended.material = "TPE";
+    product.extended.bodyType = "female";
+    const config = getCustomizationConfig(product);
+    expect(config.id).toBe("irontech-family-profile");
+    expect(config.groups.find((group) => group.id === "choose-head")?.options).toHaveLength(66);
+    expect(config.groups.find((group) => group.id === "add-extra-head")?.options).toHaveLength(66);
+    expect(config.groups.find((group) => group.id === "choose-head")?.options.find((option) => option.id === "tpe-102")?.priceDelta).toBe(0);
+  });
+
+  it("does not leak standard female head libraries onto male products", () => {
+    const product = irontech();
+    product.title = "Irontech Drake Von 175cm Male Silicone Doll";
+    product.handle = "irontech-drake-von-175cm-male-silicone-doll";
+    product.extended.material = "Silicone";
+    product.extended.bodyType = "male";
+    const config = getCustomizationConfig(product);
+    expect(config.id).toBe("irontech-family-profile");
+    expect(config.groups.some((group) => group.id === "choose-head" || group.id === "add-extra-head")).toBe(false);
   });
 });

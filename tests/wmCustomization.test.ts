@@ -127,7 +127,7 @@ describe("WM source-guided customization", () => {
     expect(extra?.selectionMode).toBe("multiple");
     expect(extra?.options).toHaveLength(165);
     expect(extra?.options.find((option) => option.id === "extra-head-ss167")?.priceDelta).toBe(650);
-    expect(choose?.options.find((option) => option.id === "head-ss167")?.visualizable).toBe(true);
+    expect(choose?.options.find((option) => option.id === "head-ss167")?.dollVueEnabled).toBe(true);
   });
 
   it("keeps unknown paid functions out of checkout while retaining them in the factory record", () => {
@@ -138,13 +138,13 @@ describe("WM source-guided customization", () => {
     expect(checkout.groups.some((group) => group.id === "functions")).toBe(false);
   });
 
-  it("marks image-backed appearance options visualizable and keeps them single-select", () => {
+  it("marks image-backed appearance options as DollVue-enabled and keeps them single-select", () => {
     const config = getCustomizationConfig(wm(groups));
     const eye = config.groups.find((group) => group.id === "eye");
     expect(eye?.selectionMode).toBe("single");
     expect(eye?.options[0]?.label).toBe("As shown in product photos");
-    expect(eye?.options[0]?.visualizable).toBe(false);
-    expect(eye?.options.slice(1).every((option) => option.visualizable && option.priceDelta === 0)).toBe(true);
+    expect(eye?.options[0]?.dollVueEnabled).toBe(false);
+    expect(eye?.options.slice(1).every((option) => option.dollVueEnabled && option.priceDelta === 0)).toBe(true);
   });
 
   it("adds a photographed default to single selectors and no-add-on to multi-select groups", () => {

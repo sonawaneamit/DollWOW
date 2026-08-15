@@ -12,8 +12,8 @@ export type CustomizationOption = {
   factoryExists?: boolean;
   /** Safe to explain in customer-facing UI. This is independent of checkout eligibility. */
   displayable?: boolean;
-  /** Has a usable visual reference for Doll Visualizer. */
-  visualizable?: boolean;
+  /** Has a usable visual reference for DollVue. */
+  dollVueEnabled?: boolean;
   /** DollWOW has verified the current incremental price. */
   priceVerified?: boolean;
   /** Can be selected and paid for in the current online checkout. */

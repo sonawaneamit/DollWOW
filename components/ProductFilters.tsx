@@ -6,6 +6,7 @@ import { BadgeCheck, ChevronDown, SlidersHorizontal } from "lucide-react";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
+import { DollVueBadge } from "./dollvue/DollVueBadge";
 import { StyledSelect } from "./StyledSelect";
 
 const quickLinks = [
@@ -33,7 +34,8 @@ export function ProductFilters({
   resetHref = "/shop/sex-dolls",
   variant = "bar",
   defaultSort,
-  lockedBrand = false
+  lockedBrand = false,
+  lockedDollVue = false
 }: {
   filters?: CatalogFilters;
   action?: string;
@@ -41,10 +43,21 @@ export function ProductFilters({
   variant?: "bar" | "sidebar";
   defaultSort?: string;
   lockedBrand?: boolean;
+  lockedDollVue?: boolean;
 }) {
   const router = useRouter();
-  const count = Math.max(0, activeFilterCount(filters) - (lockedBrand && filters.brand ? 1 : 0));
-  const activeFilters = buildActiveFilterLinks(filters, action, lockedBrand ? ["brand"] : []);
+  const count = Math.max(
+    0,
+    activeFilterCount(filters) -
+      (lockedBrand && filters.brand ? 1 : 0) -
+      (lockedDollVue && filters.dollVue ? 1 : 0) -
+      (defaultSort && filters.sort === defaultSort ? 1 : 0)
+  );
+  const excludedKeys: Array<keyof CatalogFilters> = [];
+  if (lockedBrand) excludedKeys.push("brand");
+  if (lockedDollVue) excludedKeys.push("dollVue");
+  if (defaultSort && filters.sort === defaultSort) excludedKeys.push("sort");
+  const activeFilters = buildActiveFilterLinks(filters, action, excludedKeys);
   const isSidebar = variant === "sidebar";
   const [mobileOpen, setMobileOpen] = useState(false);
   const mobilePanelId = useId();
@@ -112,6 +125,7 @@ export function ProductFilters({
             className="product-filter-input"
           />
         </label>
+        <DollVueFilter enabled={filters.dollVue === "enabled"} locked={lockedDollVue} />
         {isSidebar ? <FilterActions resetHref={resetHref} autoApply /> : null}
         {lockedBrand && filters.brand ? (
           <div className="product-filter-control">
@@ -157,6 +171,40 @@ export function ProductFilters({
         </div>
       ) : null}
     </div>
+  );
+}
+
+function DollVueFilter({ enabled, locked }: { enabled: boolean; locked: boolean }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function submitSelection() {
+    window.requestAnimationFrame(() => inputRef.current?.form?.requestSubmit());
+  }
+
+  return (
+    <label className={`product-filter-dollvue ${enabled ? "product-filter-dollvue--active" : ""} ${locked ? "product-filter-dollvue--locked" : ""}`}>
+      {locked ? <input type="hidden" name="dollVue" value="enabled" /> : null}
+      <input
+        ref={inputRef}
+        className="product-filter-dollvue__input"
+        type="checkbox"
+        name={locked ? undefined : "dollVue"}
+        value="enabled"
+        defaultChecked={enabled}
+        disabled={locked}
+        onChange={submitSelection}
+      />
+      <DollVueBadge
+        size="compact"
+        tooltipAlign="start"
+        tooltip="DollVue lets you preview supported appearance choices on a real product photo before ordering."
+      />
+      <span className="product-filter-dollvue__copy">
+        <strong>DollVue enabled</strong>
+        <small>{locked ? "This collection only" : "Show dolls with visual previews"}</small>
+      </span>
+      <span className="product-filter-dollvue__switch" aria-hidden="true"><span /></span>
+    </label>
   );
 }
 

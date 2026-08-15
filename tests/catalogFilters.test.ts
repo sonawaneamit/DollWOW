@@ -1,8 +1,28 @@
 import { describe, expect, it } from "vitest";
-import { canonicalShopCollectionHandle, collectionPresets, filterProducts, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
+import { canonicalShopCollectionHandle, collectionPresets, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("catalog filters", () => {
+  it("filters DollVue-enabled products with the shared eligibility rule", () => {
+    const customExtended = { ...sampleProducts[0].extended, stockStatus: "custom" as const };
+    const irontech = { ...sampleProducts[0], id: "dollvue-irontech", handle: "irontech-luna-152cm-a-cup-silicone-companion-doll-12nvb", extended: customExtended };
+    const starpery = { ...sampleProducts[0], id: "dollvue-starpery", handle: "starpery-xue-171cm-xue-4-full-silicone-doll", extended: customExtended };
+    const readyToShipIrontech = {
+      ...sampleProducts[0],
+      id: "ready-dollvue-irontech",
+      handle: "irontech-ready-ship-example",
+      extended: { ...sampleProducts[0].extended, stockStatus: "ready_to_ship" as const }
+    };
+    const otherBrand = { ...sampleProducts[0], id: "not-dollvue", handle: "wm-example-165cm-tpe-doll" };
+
+    expect(filtersFromSearchParams({ dollVue: "enabled" }).dollVue).toBe("enabled");
+    expect(getCatalogFilterLabel("dollVue", "enabled")).toBe("DollVue enabled");
+    expect(filterProducts([irontech, starpery, readyToShipIrontech, otherBrand], { dollVue: "enabled" }).map((product) => product.id)).toEqual([
+      "dollvue-irontech",
+      "dollvue-starpery"
+    ]);
+  });
+
   it("keeps one indexable owner for collection aliases and utility sizes", () => {
     expect(canonicalShopCollectionHandle("hair-black")).toBe("black-hair-dolls");
     expect(canonicalShopCollectionHandle("shape-fuller")).toBe("fuller-dolls");

@@ -7,6 +7,8 @@ import { DisplayMoney } from "@/components/CurrencyProvider";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
+import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import type { Product } from "@/types/product";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
@@ -30,7 +32,10 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       </div>
       <div className="catalog-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <h2>{displayTitle}</h2>
+        <h2 className={isDollVueCatalogProduct(product) ? "has-dollvue-badge" : undefined}>
+          <span>{displayTitle}</span>
+          {isDollVueCatalogProduct(product) ? <DollVueBadge size="compact" /> : null}
+        </h2>
         <div className="catalog-product-card__specs">
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>

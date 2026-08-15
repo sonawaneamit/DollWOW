@@ -1235,7 +1235,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Can I preview appearance options before ordering?",
       answer:
-        "Eligible product pages include Doll Visualizer™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll, and DollWow confirms supported options before production."
+        "Eligible product pages include DollVue™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll, and DollWow confirms supported options before production."
     }
   ],
   "mini-sex-dolls": [
@@ -1788,7 +1788,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
     {
       question: "Can I preview custom appearance options before ordering?",
       answer:
-        "Eligible product pages include Doll Visualizer™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll. DollWow confirms which options are supported before production."
+        "Eligible product pages include DollVue™ so you can preview selected appearance choices on a real product photo. The result is an approximate visual preview, not a photograph of the finished doll. DollWow confirms which options are supported before production."
     }
   ],
   customizable: [

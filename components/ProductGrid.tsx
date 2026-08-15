@@ -22,7 +22,8 @@ export function ProductGrid({
         filters?.height ||
         filters?.weight ||
         filters?.cup ||
-        filters?.price
+        filters?.price ||
+        filters?.dollVue
     );
 
     return (

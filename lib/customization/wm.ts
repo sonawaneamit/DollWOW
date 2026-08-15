@@ -12,7 +12,7 @@ const WM_INCLUDED_IMAGE_GROUPS = [
   "areola size", "vagina color", "vagina type", "pubic hair", "standing feet"
 ] as const;
 
-const WM_VISUALIZER_GROUPS = /^(skin tone|hairstyle|hair color|eye color|lip finish|lipstick color|nail color|toe nail color|nipple color|areola size|vagina color|vagina hair type|pubic hair)$/;
+const WM_DOLLVUE_GROUPS = /^(skin tone|hairstyle|hair color|eye color|lip finish|lipstick color|nail color|toe nail color|nipple color|areola size|vagina color|vagina hair type|pubic hair)$/;
 const WM_AS_SHOWN_LABEL = "As shown in product photos";
 
 const HEAD_GROUP = /^(a head|an extra (free )?head|get an extra (free )?head|choose a head|included extra head|add extra head)$/i;
@@ -83,7 +83,7 @@ function buildIncludedExtraHead(options: CustomizationOption[]): CustomizationGr
         priceDelta: 0,
         priceVerified: true,
         purchasable: true,
-        visualizable: false,
+        dollVueEnabled: false,
       })),
     ],
   };
@@ -119,7 +119,7 @@ function buildChooseHead(options: CustomizationOption[]): CustomizationGroup | u
         priceDelta: option.priceDelta ?? 0,
         priceVerified: true,
         purchasable: true,
-        visualizable: option.swatch?.kind === "image",
+        dollVueEnabled: option.swatch?.kind === "image",
       }))
     ]
   };
@@ -141,7 +141,7 @@ function buildExtraHead(options: CustomizationOption[], price: number): Customiz
         priceDelta: price,
         priceVerified: true,
         purchasable: true,
-        visualizable: false
+        dollVueEnabled: false
       }))
     ]
   };
@@ -165,7 +165,7 @@ function buildVerifiedProductExtraHead(groups: CustomizationGroup[]) {
         id: `extra-${option.id}`,
         priceVerified: true,
         purchasable: true,
-        visualizable: false
+        dollVueEnabled: false
       }))
     ]
   };
@@ -180,7 +180,7 @@ function normalizeIncludedReplacementOptions(options: CustomizationOption[]) {
       priceDelta: 0,
       priceVerified: true,
       purchasable: true,
-      visualizable: false
+      dollVueEnabled: false
     }));
 }
 
@@ -191,7 +191,7 @@ function normalizeProductHeadOptions(options: CustomizationOption[], fallback: n
     priceDelta: option.priceDelta ?? fallback,
     priceVerified: option.priceDelta !== undefined || fallback === 0,
     purchasable: option.priceDelta !== undefined || fallback === 0,
-    visualizable: false
+    dollVueEnabled: false
   }));
 }
 
@@ -221,7 +221,7 @@ function asShownOption(groupId: string, imageUrl?: string): CustomizationOption 
     priceDelta: 0,
     priceVerified: true,
     purchasable: true,
-    visualizable: false,
+    dollVueEnabled: false,
     productionNote: "Use the photographed product configuration for this feature.",
     swatch: imageUrl ? {
       kind: "image",
@@ -239,7 +239,7 @@ function noAddOnOption(groupId: string): CustomizationOption {
     priceDelta: 0,
     priceVerified: true,
     purchasable: true,
-    visualizable: false,
+    dollVueEnabled: false,
     productionNote: "No paid add-on selected.",
   };
 }
@@ -254,7 +254,7 @@ function normalizeWmOption(groupLabel: string, option: CustomizationOption): Cus
     priceDelta,
     priceVerified: verified,
     purchasable: verified,
-    visualizable: Boolean(option.swatch?.kind === "image") && WM_VISUALIZER_GROUPS.test(groupLabel)
+    dollVueEnabled: Boolean(option.swatch?.kind === "image") && WM_DOLLVUE_GROUPS.test(groupLabel)
   };
 }
 

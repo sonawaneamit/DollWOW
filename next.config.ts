@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/ops/doll-visualizer/:path*",
+        source: "/dollvue/:path+",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet, noimageindex" },
           { key: "X-Frame-Options", value: "DENY" },
