@@ -147,7 +147,7 @@ export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProdu
       <section className={styles.blueCheck}>
         <DollVueBadge className={styles.largeBadge} />
         <div><p className={styles.eyebrow}>Look for the blue check</p><h2>The dolls you can preview before you commit.</h2></div>
-        <div><p>A blue check beside a doll’s name means DollVue™ is available for supported appearance choices on that product.</p><TrackedLink event="dollvue_enabled_catalog_cta" href="#dollvue-enabled" tone="primary">Shop blue-check dolls <ArrowRight /></TrackedLink><small>No blue check yet? Ask the brand to join DollVue™.</small></div>
+        <div><p>A blue check beside a doll’s name means DollVue™ is available for supported appearance choices on that product.</p><TrackedLink event="dollvue_enabled_catalog_cta" href="/shop/sex-dolls?dollVue=enabled" tone="primary">Shop blue-check dolls <ArrowRight /></TrackedLink><small>No blue check yet? Ask the brand to join DollVue™.</small></div>
       </section>
 
       <section className={styles.manufacturer}>
