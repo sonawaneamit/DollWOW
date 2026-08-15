@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { GoldButton } from "@/components/GoldButton";
+import { dollWowContactChannels } from "@/components/ContactChannels";
 import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { SupportLeadForm } from "@/components/SupportLeadForm";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
@@ -36,21 +37,30 @@ export default function SupportPage() {
           <SupportLeadForm />
         </Suspense>
       </div>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
-          <Mail className="h-6 w-6 text-gold-400" />
-          <h2 className="mt-4 text-xl font-semibold text-ivory-50">Email</h2>
-          <p className="mt-2 text-sm text-ivory-400">Use this for product questions, quotes, and private recommendations.</p>
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="border border-border bg-surface p-6">
+          <Mail className="h-6 w-6 text-accent" />
+          <h2 className="mt-4 text-xl font-semibold text-text">Email</h2>
+          <p className="mt-2 text-sm text-text-dim">Product questions, quotes, and private recommendations.</p>
           <div className="mt-4">
-            <GoldButton href="mailto:hello@dollwow.com">hello@dollwow.com</GoldButton>
+            <GoldButton href={dollWowContactChannels.email.href}>{dollWowContactChannels.email.label}</GoldButton>
           </div>
         </div>
-        <div className="rounded-[20px] border border-gold-500/16 bg-ink-800/72 p-6">
-          <Phone className="h-6 w-6 text-gold-400" />
-          <h2 className="mt-4 text-xl font-semibold text-ivory-50">Prefer a call?</h2>
-          <p className="mt-2 text-sm text-ivory-400">Send us a note with your question and the best way to reach you. We can arrange a private follow-up when needed.</p>
+        <div className="border border-border bg-surface p-6">
+          <Phone className="h-6 w-6 text-accent" />
+          <h2 className="mt-4 text-xl font-semibold text-text">Call or SMS</h2>
+          <p className="mt-2 text-sm text-text-dim">Speak with our team or send a discreet text message.</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <GoldButton href={dollWowContactChannels.phone.href}>Call {dollWowContactChannels.phone.label}</GoldButton>
+            <GoldButton href={dollWowContactChannels.phone.smsHref} variant="secondary">Send SMS</GoldButton>
+          </div>
+        </div>
+        <div className="border border-border bg-surface p-6">
+          <MessageCircle className="h-6 w-6 text-accent" />
+          <h2 className="mt-4 text-xl font-semibold text-text">WhatsApp</h2>
+          <p className="mt-2 text-sm text-text-dim">Message us privately from your phone or computer.</p>
           <div className="mt-4">
-            <GoldButton href="mailto:hello@dollwow.com?subject=DollWow%20call%20request" variant="secondary">Email to schedule</GoldButton>
+            <GoldButton href={dollWowContactChannels.whatsapp.href}>{dollWowContactChannels.whatsapp.label}</GoldButton>
           </div>
         </div>
       </div>

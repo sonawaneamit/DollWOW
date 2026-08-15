@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PrivacySettingsButton } from "@/components/PrivacySettingsButton";
+import { FooterContactLinks } from "@/components/ContactChannels";
 
 const footerGroups = [
   {
@@ -70,6 +71,7 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-base leading-7 text-text-dim">
               Compare models, review custom options, and order with clear pricing, discreet delivery, and responsive support.
             </p>
+            <FooterContactLinks />
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/shop/sex-dolls" className="inline-flex min-h-11 items-center rounded-button bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover">Browse catalog</Link>
               <Link href="/support" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-[15px] font-semibold text-accent hover:bg-accent-tint">Ask our team</Link>
