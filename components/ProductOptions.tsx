@@ -59,7 +59,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const [activeGroupId, setActiveGroupId] = useState(config.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
   const [selected, setSelected] = useState(() => getDefaultSelections(config));
-  const [reviewedGroupIds, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
+  const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isPreviewOpen, setPreviewOpen] = useState(false);
@@ -235,11 +235,11 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           <p className="text-[15px] font-semibold text-text-dim">{productBuilderHeading(product)}</p>
           <h2 className="mt-1 font-display text-[clamp(1.75rem,3vw,2.25rem)] font-semibold leading-tight">Customize your doll</h2>
           <p className="mt-2 max-w-2xl text-base leading-7 text-text-dim">
-            Work through the steps below — defaults are already selected, so change only what you care about.
+            Defaults are ready. Change only what matters to you, then review and checkout at any time.
           </p>
         </div>
         <p className="rounded-sm bg-accent-tint px-4 py-2 text-[15px] font-semibold text-text">
-          {reviewedGroupIds.size} of {config.groups.length} steps done
+          Add to Cart anytime
         </p>
       </div>
 
@@ -250,7 +250,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             <span className="text-sm text-text-dim">Starting total</span>
             <strong className="text-xl text-text" aria-live="polite">{formatMoney(resolved.totalPrice, currencyCode)}</strong>
           </div>
-          <p className="mt-2 text-sm leading-5 text-text-dim">Review the choice groups below; a full summary appears before checkout.</p>
+          <p className="mt-2 text-sm leading-5 text-text-dim">Your default build is ready. Customize as much or as little as you want.</p>
         </div>
         <aside className="hidden lg:col-span-5 lg:block">
           <div className="lg:sticky lg:top-24">
@@ -278,6 +278,15 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               currencyCode={currencyCode}
               leadTimeNote={config.leadTimeNote}
             />
+            <button
+              type="button"
+              onClick={isReviewing && canCheckout ? addToCart : showReview}
+              disabled={loading}
+              className="mt-4 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
+              {isReviewing && canCheckout ? "Add to Cart" : "Review & Add to Cart"}
+            </button>
           </div>
         </aside>
 
@@ -288,6 +297,26 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               <StyledSelect value={variantId} onValueChange={setVariantId} ariaLabel="Choose a build" className="product-builder-variant-select" options={product.variants.map((item) => ({ label: item.title, value: item.id }))} />
             </label>
           ) : null}
+
+          <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">
+            <div className="flex items-center gap-3">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
+                <p className="mt-0.5 truncate text-base font-semibold text-text" aria-live="polite">
+                  {formatMoney(resolved.totalPrice, currencyCode)} · defaults included
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={isReviewing && canCheckout ? addToCart : showReview}
+                disabled={loading}
+                className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
+                {isReviewing && canCheckout ? "Add to Cart" : "Review & Add to Cart"}
+              </button>
+            </div>
+          </div>
 
           {config.groups.map((group, index) => {
             const active = !isReviewing && group.id === activeGroupId;
@@ -379,7 +408,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                 <div className="mt-6 grid gap-3">
                   <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
                     {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-                    Continue to secure checkout — {formatMoney(resolved.totalPrice, currencyCode)}
+                    {loading ? "Adding to Cart…" : "Add to Cart"}
                   </button>
                   {disabledReason ? <p className="text-[15px] leading-6 text-danger">{disabledReason}</p> : null}
                   <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
@@ -572,6 +601,7 @@ function OptionTile({ option, selected, disabled, notice, currencyCode, onClick 
 }
 
 function optionPriceLabel(option: CustomizationOption, currencyCode: string) {
+  if (option.priceLabel === "included") return "Included";
   if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : formatMoney(0, currencyCode);
   return "Included";
 }
@@ -665,7 +695,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
             <div className="mt-5 flex flex-wrap gap-3">
               <GoldButton disabled={!canCheckout || loading} onClick={addToCart}>
                 {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-                {loading ? "Starting checkout" : `Add to Cart — ${formatMoney(basePrice, currencyCode)}`}
+                {loading ? "Adding to Cart…" : "Add to Cart"}
               </GoldButton>
               <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="inline-flex min-h-[52px] items-center justify-center rounded-button border-2 border-accent px-5 text-[17px] font-semibold text-accent hover:bg-accent-tint">Ask about this doll</a>
             </div>

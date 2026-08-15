@@ -91,7 +91,7 @@ export function ProductBuyActions({
             className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
           >
             <ShoppingBag className="h-5 w-5" />
-            Add to Cart · {formatMoney(unitPrice, currencyCode)}
+            Add to Cart
           </button>
         ) : (
           <button
