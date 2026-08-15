@@ -50,12 +50,14 @@ export function GET() {
         id: "jesse",
         name: "Jesse",
         title: "Licensed Sexologist and DollWow Intimacy Education Editor",
+        url: `${siteUrl}/authors/jesse`,
         topics: ["care", "privacy", "buyer questions", "safety", "intimacy education"]
       },
       {
         id: "alex",
         name: "Alex",
         title: "Doll Collector and DollWow Product Educator with 20+ Years of Experience",
+        url: `${siteUrl}/authors/alex`,
         topics: ["product comparison", "brand comparisons", "materials", "measurements", "customization"]
       }
     ],
@@ -90,6 +92,7 @@ export function GET() {
       }
     ],
     tools: [
+      { label: "DollVue", url: `${siteUrl}/dollvue` },
       { label: "Price match", url: `${siteUrl}/price-match` },
       { label: "Help me choose", url: `${siteUrl}/help-me-choose` },
       { label: "Support", url: `${siteUrl}/support` }

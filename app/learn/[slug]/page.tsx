@@ -122,12 +122,19 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           {catalogHero && productModule?.products.length ? (
             <ArticleCatalogHero products={productModule.products.slice(0, 3)} {...catalogHero} />
           ) : null}
-          <div className="mt-8 max-w-3xl rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
-            <p className="text-sm font-semibold text-ivory-50">
-              By {article.authorDisplayName}, {article.authorTitle}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-ivory-300">{author?.bio}</p>
-            <p className="mt-3 text-sm  text-gold-300">Last reviewed {article.lastReviewed}</p>
+          <div className="mt-8 grid max-w-3xl grid-cols-[64px_minmax(0,1fr)] gap-4 rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
+            {author?.image ? (
+              <Link href={author.profilePath} className="relative h-20 w-16 overflow-hidden rounded-[6px] border border-gold-500/18" aria-label={`About ${article.authorDisplayName}`}>
+                <Image src={author.image} alt="" fill sizes="64px" className="object-cover" style={{ objectPosition: author.imagePosition }} />
+              </Link>
+            ) : null}
+            <div>
+              <p className="text-sm font-semibold text-ivory-50">
+                By <Link href={author?.profilePath ?? `/authors/${article.author}`} className="underline decoration-gold-300/55 underline-offset-4 hover:text-gold-300">{article.authorDisplayName}</Link>, {article.authorTitle}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-ivory-300">{author?.bio}</p>
+              <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>
+            </div>
           </div>
         </div>
       </section>

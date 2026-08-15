@@ -6,6 +6,13 @@ import { env } from "@/lib/utils/env";
 export type LearnAuthor = {
   displayName: string;
   title: string;
+  gender: "female" | "male";
+  pronouns: string;
+  profilePath: string;
+  image: string;
+  imageAlt: string;
+  imagePosition: string;
+  privacyNote: string;
   shortBio: string;
   bio: string;
   voice: string;
@@ -51,6 +58,11 @@ export function getLearnAuthor(key: string) {
   return getLearnAuthors()[key];
 }
 
+export function learnAuthorUrl(key: string) {
+  const author = getLearnAuthor(key);
+  return `${siteUrl}${author?.profilePath ?? `/authors/${key}`}`;
+}
+
 export function getLearningArticles() {
   if (!fs.existsSync(DRAFT_DIR)) return [];
   return fs
@@ -84,7 +96,9 @@ export function buildArticleStructuredData(article: LearnArticle) {
       "@type": "Person",
       name: article.authorDisplayName,
       jobTitle: article.authorTitle,
-      description: author?.shortBio ?? undefined
+      description: author?.shortBio ?? undefined,
+      url: learnAuthorUrl(article.author),
+      image: author?.image ? absoluteUrl(author.image) : undefined
     },
     publisher: {
       "@type": "Organization",
