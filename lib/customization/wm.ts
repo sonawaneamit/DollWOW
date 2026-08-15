@@ -18,18 +18,46 @@ const WM_AS_SHOWN_LABEL = "As shown in product photos";
 const HEAD_GROUP = /^(a head|an extra (free )?head|get an extra (free )?head|choose a head|included extra head|add extra head)$/i;
 const EXTRA_HEAD_DEPENDENCY = /for extra head/i;
 
-/** Normalize WM dealer data into a checkout-safe, brand-aware configuration. */
-export function getWmCustomizationGroups(product: Product, importedGroups?: CustomizationGroup[]) {
-  if (!importedGroups?.length) return [];
+/**
+ * WM dealer configurators use repeatable option sets for the two common female
+ * TPE constructions. Everything else remains product-specific until we have
+ * a matching source profile rather than applying a plausible-but-unverified
+ * default across a materially different build.
+ */
+export type WmCustomizationFamily =
+  | "female-standard-tpe"
+  | "female-silicone-head-tpe"
+  | "female-full-silicone"
+  | "product-specific";
 
-  const specialFamily = isSpecialHeadFamily(product);
+export function getWmCustomizationFamily(
+  product: Product,
+  importedGroups: CustomizationGroup[] = [],
+): WmCustomizationFamily {
+  if (isReadyStockUnit(product) || isProductSpecificFamily(product)) return "product-specific";
+  if (isSiliconeHeadTpeBuild(product, importedGroups)) return "female-silicone-head-tpe";
+  if (isStandardTpeBuild(product)) return "female-standard-tpe";
+  if (isCustomFullSiliconeBuild(product)) return "female-full-silicone";
+  return "product-specific";
+}
+
+/** Normalize WM dealer data into a checkout-safe, brand-aware configuration. */
+export function getWmCustomizationGroups(product: Product, importedGroups: CustomizationGroup[] = []) {
+  const family = getWmCustomizationFamily(product, importedGroups);
+  // No proven family template exists for this product yet. Do not manufacture
+  // checkout choices from a brand name alone.
+  if (!importedGroups.length && family !== "female-standard-tpe" && family !== "female-silicone-head-tpe") {
+    return [];
+  }
+
+  const specialFamily = family === "product-specific";
   const importedHead = importedGroups.find((group) => /^(a head|choose a head)$/i.test(group.label));
   const importedExtraHead = importedGroups.find((group) => /^(an extra (?:free )?head|get an extra free head|included extra head|add extra head)$/i.test(group.label));
   const primaryHeadOptions = importedHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
   const verifiedExtraHeadOptions = importedExtraHead?.options.filter((option) => !isPlaceholder(option)) ?? [];
-  const standardTpe = !specialFamily && isStandardTpeBuild(product, importedGroups);
-  const siliconeHeadTpe = isSiliconeHeadTpeBuild(product, importedGroups);
-  const fullSilicone = isCustomFullSiliconeBuild(product);
+  const standardTpe = family === "female-standard-tpe";
+  const siliconeHeadTpe = family === "female-silicone-head-tpe";
+  const fullSilicone = family === "female-full-silicone";
   const chosenOptions = siliconeHeadTpe
     ? WM_SILICONE_HEADS
     : standardTpe
@@ -273,11 +301,10 @@ function isNeutralDefault(option: Pick<CustomizationOption, "label" | "productio
     /default supplier selection|no paid add-on|photographed product configuration/i.test(option.productionNote || "");
 }
 
-function isStandardTpeBuild(product: Product, groups: CustomizationGroup[]) {
+function isStandardTpeBuild(product: Product) {
   const text = productIdentity(product);
   return /\btpe\b/.test(text) && !isReadyStockUnit(product) &&
-    !/silicone head|hybrid|pvc|anime|\bmale\b|\bman\b/.test(text) &&
-    groups.some((group) => /^(skin tone|hairstyle|eye color)$/i.test(group.label));
+    !/silicone head|hybrid|pvc|anime|\bmale\b|\bman\b|torso|hips?/.test(text);
 }
 
 function isSiliconeHeadTpeBuild(product: Product, groups: CustomizationGroup[]) {
@@ -289,8 +316,7 @@ function isSiliconeHeadTpeBuild(product: Product, groups: CustomizationGroup[]) 
     .toLowerCase();
   return /silicone head/.test(text) && !isReadyStockUnit(product) &&
     (/\btpe\b|s-tpe|hybrid/.test(text) || /\btpe\b|s-tpe/.test(importedMaterials)) &&
-    !/pvc|anime|\bmale\b|\bman\b|torso|hips?/.test(text) &&
-    groups.some((group) => /^(skin tone|hairstyle|eye color)$/i.test(group.label));
+    !/pvc|anime|\bmale\b|\bman\b|torso|hips?/.test(text);
 }
 
 function isCustomFullSiliconeBuild(product: Product) {
@@ -304,8 +330,8 @@ function isReadyStockUnit(product: Product) {
   return /\b(?:ready[- ]?to[- ]?ship|in[- ]?stock|warehouse)\b/.test(productIdentity(product));
 }
 
-function isSpecialHeadFamily(product: Product) {
-  return /\b(pvc|anime|male|man|boy|silicone head|hybrid|head-only|head only|torso|hips?)\b/.test(productIdentity(product));
+function isProductSpecificFamily(product: Product) {
+  return /\b(pvc|anime|male|man|boy|hybrid|head-only|head only|torso|hips?)\b/.test(productIdentity(product));
 }
 
 function productIdentity(product: Product) {

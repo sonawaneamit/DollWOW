@@ -4,7 +4,7 @@ import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups } from "@/lib/customization/irontech";
-import { getWmCustomizationGroups } from "@/lib/customization/wm";
+import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import {
   getAngelkissCustomizationGroups,
   getErovenusCustomizationGroups,
@@ -327,16 +327,19 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       rules: []
     };
   }
-  if (isWmProduct(product) && importedGroups?.length) {
-    const groups = getWmCustomizationGroups(product, importedGroups);
-    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
-    return {
-      id: "wm-source-verified",
-      brandLabel: "WM Dolls",
-      leadTimeNote: "WM custom builds and option compatibility are reviewed before production begins.",
-      groups: uniqueCustomizationGroups(availableGroups),
-      rules: []
-    };
+  if (isWmProduct(product)) {
+    const sourceGroups = importedGroups ?? [];
+    const groups = getWmCustomizationGroups(product, sourceGroups);
+    if (groups.length) {
+      const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
+      return {
+        id: `wm-${getWmCustomizationFamily(product, sourceGroups)}`,
+        brandLabel: "WM Dolls",
+        leadTimeNote: "WM custom builds and option compatibility are reviewed before production begins.",
+        groups: uniqueCustomizationGroups(availableGroups),
+        rules: []
+      };
+    }
   }
   if (isSeProduct(product) && importedGroups?.length) {
     const groups = getSeCustomizationGroups(product, importedGroups);

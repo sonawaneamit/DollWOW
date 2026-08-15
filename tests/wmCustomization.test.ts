@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getCustomizationConfig, getFactoryCustomizationConfig } from "@/lib/customization/configs";
+import { getWmCustomizationFamily } from "@/lib/customization/wm";
 import { getDefaultSelections, resolveCustomization } from "@/lib/customization/resolve";
 import type { CustomizationGroup } from "@/types/customization";
 import type { Product } from "@/types/product";
@@ -32,6 +33,42 @@ const groups: CustomizationGroup[] = [
 ];
 
 describe("WM source-guided customization", () => {
+  it("applies the dealer-verified standard TPE family even before a new product has imported options", () => {
+    const product = wm([], { customizationGroups: [] });
+    const config = getCustomizationConfig(product);
+
+    expect(getWmCustomizationFamily(product)).toBe("female-standard-tpe");
+    expect(config.id).toBe("wm-female-standard-tpe");
+    expect(config.groups.find((group) => group.id === "choose-head")?.options).toHaveLength(162);
+    expect(config.groups.find((group) => group.id === "included-extra-head")?.options).toHaveLength(162);
+    expect(config.groups.find((group) => group.id === "add-extra-head")?.options.find((option) => option.id === "extra-head-418")?.priceDelta).toBe(299);
+  });
+
+  it("applies the dealer-verified silicone-head TPE family without needing imported appearance groups", () => {
+    const product = wm([], { material: "Silicone head", customizationGroups: [] });
+    product.title = "WM Weitta 175cm Silicone Head Doll";
+    product.handle = "wm-weitta-175cm-silicone-head-s-tpe-doll";
+    product.productType = "Custom silicone-head TPE doll";
+
+    const config = getCustomizationConfig(product);
+    expect(getWmCustomizationFamily(product)).toBe("female-silicone-head-tpe");
+    expect(config.id).toBe("wm-female-silicone-head-tpe");
+    expect(config.groups.find((group) => group.id === "choose-head")?.options).toHaveLength(165);
+    expect(config.groups.find((group) => group.id === "add-extra-head")?.options.find((option) => option.id === "extra-head-ss167")?.priceDelta).toBe(650);
+  });
+
+  it("does not apply a generic family to a new ready-to-ship or special WM listing", () => {
+    const ready = wm([], { stockStatus: "ready_to_ship", customizationGroups: [] });
+    ready.title = "WM Anae 156cm TPE Ready-To-Ship Companion Doll";
+    const anime = wm([], { material: "PVC head / TPE body", customizationGroups: [] });
+    anime.title = "WM Y007 Anime Doll";
+
+    expect(getWmCustomizationFamily(ready)).toBe("product-specific");
+    expect(getWmCustomizationFamily(anime)).toBe("product-specific");
+    expect(getCustomizationConfig(ready).groups.some((group) => group.id === "choose-head")).toBe(false);
+    expect(getCustomizationConfig(anime).groups.some((group) => group.id === "choose-head")).toBe(false);
+  });
+
   it("uses one free standard TPE head switch and separately paid multi-select extra heads", () => {
     const config = getCustomizationConfig(wm(groups));
     const choose = config.groups.find((group) => group.id === "choose-head");
@@ -76,9 +113,14 @@ describe("WM source-guided customization", () => {
         { id: "other", label: "Other Head", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/other.jpg" } }
       ] }
     ];
-    const product = wm(siliconeGroups, { material: "Silicone" });
+    const product = wm(siliconeGroups, {
+      material: "Silicone",
+      customizationGroups: siliconeGroups,
+    });
     product.title = "WM Clara Vale 163cm D-Cup Silicone";
     product.handle = "wm-head-201-163cm-d-cup-silicone-companion-doll";
+    product.productType = "Custom silicone doll";
+    product.tags = ["wm", "female-doll", "silicone", "full-doll"];
 
     const config = getCustomizationConfig(product);
     const choose = config.groups.find((group) => group.id === "choose-head");
