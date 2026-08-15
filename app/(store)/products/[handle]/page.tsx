@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, MessageCircle, PackageCheck, Ruler, Scale, ShieldCheck, Truck } from "lucide-react";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
@@ -93,14 +94,42 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           <div className="min-w-0">
             <ProductGallery product={publicProduct} />
             {isDollVueCatalogProduct(product) ? (
-              <Link href={dollVueUrl(product.handle)} className="dollvue-pdp-entry dollvue-pdp-star">
-                <span className="dollvue-pdp-entry-icon"><Sparkles aria-hidden="true" /></span>
-                <span>
-                  <small className="dollvue-pdp-kicker">New: DollVue™</small>
-                  <strong>Picture this doll your way</strong>
-                  <small>Preview available appearance choices on a real photo of this doll.</small>
+              <Link
+                href={dollVueUrl(product.handle)}
+                className="dollvue-pdp-entry dollvue-pdp-star"
+                aria-label={`Preview ${displayTitle} with DollVue`}
+              >
+                <span className="dollvue-pdp-entry-copy">
+                  <span className="dollvue-pdp-wordmark">
+                    DollVue<sup>™</sup>
+                    <Image
+                      className="dollvue-pdp-wordmark-badge"
+                      src="/images/dollvue/landing/dollvue-verified-check-transparent.png"
+                      alt=""
+                      width={24}
+                      height={24}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <strong>See every choice before you choose.</strong>
+                  <small>Preview this doll <span aria-hidden="true">→</span></small>
                 </span>
-                <span aria-hidden="true">→</span>
+                <span className="dollvue-pdp-entry-art" aria-hidden="true">
+                  <Image
+                    className="dollvue-pdp-entry-art-image dollvue-pdp-entry-art-image--desktop"
+                    src="/images/dollvue/home/dollvue-skin-tone-strip-desktop.png"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 34vw, 56vw"
+                  />
+                  <Image
+                    className="dollvue-pdp-entry-art-image dollvue-pdp-entry-art-image--mobile"
+                    src="/images/dollvue/home/dollvue-skin-tone-strip-mobile.png"
+                    alt=""
+                    fill
+                    sizes="56vw"
+                  />
+                </span>
               </Link>
             ) : null}
           </div>

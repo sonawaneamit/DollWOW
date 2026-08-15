@@ -160,7 +160,7 @@ function DollVueHomepageStrip() {
           alt="DollVue preview showing the same Luna doll in four selectable skin tones"
           width={1774}
           height={300}
-          sizes="100vw"
+          sizes="80vw"
         />
         <Image
           className="home-dollvue-strip__image home-dollvue-strip__image--mobile"
@@ -168,7 +168,7 @@ function DollVueHomepageStrip() {
           alt="DollVue preview showing the same Luna doll in four selectable skin tones"
           width={1774}
           height={887}
-          sizes="100vw"
+          sizes="80vw"
         />
       </Link>
     </section>

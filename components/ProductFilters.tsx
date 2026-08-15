@@ -70,7 +70,7 @@ export function ProductFilters({
       if (!value || (key === "sort" && value === "featured")) continue;
       next.set(key, value);
     }
-    router.push(next.size ? `${action}?${next.toString()}` : action);
+    router.push(next.size ? `${action}?${next.toString()}` : action, { scroll: false });
   }
 
   return (
@@ -153,7 +153,7 @@ export function ProductFilters({
         <div className="product-filters__active">
           <div className="product-filters__active-head">
             <p>Active filters</p>
-            <Link href={resetHref}>
+            <Link href={resetHref} scroll={false}>
               Clear all
             </Link>
           </div>
@@ -162,6 +162,7 @@ export function ProductFilters({
               <Link
                 key={`${item.key}:${item.value}`}
                 href={item.href}
+                scroll={false}
                 className="product-filters__active-pill"
               >
                 {item.label} <span className="ml-1 text-ivory-500">x</span>
@@ -214,7 +215,7 @@ function FilterActions({ resetHref, autoApply = false }: { resetHref: string; au
       <button type="submit" className="product-filters__submit">
         Apply filters
       </button>
-      <Link href={resetHref} className="product-filters__reset">
+      <Link href={resetHref} scroll={false} className="product-filters__reset">
         Reset
       </Link>
       {autoApply ? <span className="product-filters__auto-note">Dropdowns update automatically</span> : null}

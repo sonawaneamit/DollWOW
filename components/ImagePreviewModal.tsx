@@ -3,12 +3,47 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string; alt: string; onClose: () => void }) {
+type PreviewImage = {
+  imageUrl: string;
+  alt: string;
+};
+
+export function ImagePreviewModal({
+  images: suppliedImages,
+  imageUrl,
+  alt,
+  index = 0,
+  onIndexChange,
+  onClose
+}: {
+  images?: PreviewImage[];
+  imageUrl?: string;
+  alt?: string;
+  index?: number;
+  onIndexChange?: (index: number) => void;
+  onClose: () => void;
+}) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const activeIndexRef = useRef(index);
+  const imageCountRef = useRef(0);
+  const onIndexChangeRef = useRef(onIndexChange);
+  const images = suppliedImages?.length ? suppliedImages : imageUrl ? [{ imageUrl, alt: alt ?? "Product image preview" }] : [];
+  const activeIndex = Math.min(index, Math.max(0, images.length - 1));
+  const activeImage = images[activeIndex];
+  const hasMultipleImages = images.length > 1;
+  activeIndexRef.current = activeIndex;
+  imageCountRef.current = images.length;
+  onIndexChangeRef.current = onIndexChange;
+
+  function move(direction: -1 | 1) {
+    if (!hasMultipleImages) return;
+    onIndexChange?.((activeIndex + direction + images.length) % images.length);
+  }
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -29,9 +64,23 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
+      if ((event.key === "ArrowLeft" || event.key === "ArrowRight") && imageCountRef.current > 1) {
+        const direction = event.key === "ArrowLeft" ? -1 : 1;
+        const nextIndex = (activeIndexRef.current + direction + imageCountRef.current) % imageCountRef.current;
+        onIndexChangeRef.current?.(nextIndex);
+      }
       if (event.key === "Tab") {
-        event.preventDefault();
-        closeButtonRef.current?.focus();
+        const controls = Array.from(dialog?.querySelectorAll<HTMLElement>("button:not([disabled])") ?? []);
+        if (controls.length === 0) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     }
 
@@ -48,7 +97,7 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
     };
   }, [onClose]);
 
-  if (typeof document === "undefined") return null;
+  if (typeof document === "undefined" || !activeImage) return null;
 
   return createPortal(
     <div
@@ -71,7 +120,48 @@ export function ImagePreviewModal({ imageUrl, alt, onClose }: { imageUrl: string
         <X className="h-5 w-5" />
       </button>
       <div className="relative h-[calc(100svh-2rem)] w-[calc(100vw-1.5rem)] max-w-6xl overflow-hidden rounded-[20px] border border-gold-500/25 bg-ink-950 shadow-soft sm:h-[calc(100svh-3rem)] sm:w-[calc(100vw-3rem)] sm:rounded-[24px]">
-        <Image src={imageUrl} alt={alt} fill sizes="96vw" className="object-contain" priority unoptimized />
+        <div
+          className="relative h-full w-full touch-pan-y"
+          onTouchStart={(event) => {
+            touchStartXRef.current = event.touches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(event) => {
+            const startX = touchStartXRef.current;
+            const endX = event.changedTouches[0]?.clientX;
+            touchStartXRef.current = null;
+            if (startX === null || endX === undefined) return;
+            const distance = endX - startX;
+            if (Math.abs(distance) < 50) return;
+            move(distance > 0 ? -1 : 1);
+          }}
+        >
+          <Image src={activeImage.imageUrl} alt={activeImage.alt} fill sizes="96vw" className="object-contain" priority unoptimized />
+        </div>
+
+        {hasMultipleImages && (
+          <>
+            <button
+              type="button"
+              aria-label="View previous product image"
+              onClick={() => move(-1)}
+              className="absolute left-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/35 bg-ink-950/82 text-ivory-50 shadow-soft backdrop-blur-sm transition hover:border-gold-300 sm:left-5 sm:h-14 sm:w-14"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              type="button"
+              aria-label="View next product image"
+              onClick={() => move(1)}
+              className="absolute right-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold-500/35 bg-ink-950/82 text-ivory-50 shadow-soft backdrop-blur-sm transition hover:border-gold-300 sm:right-5 sm:h-14 sm:w-14"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </>
+        )}
+
+        <div aria-live="polite" className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full border border-gold-500/25 bg-ink-950/82 px-3 py-1.5 text-sm font-semibold text-ivory-50 backdrop-blur-sm">
+          {activeIndex + 1} / {images.length}
+        </div>
       </div>
     </div>,
     document.body

@@ -23,6 +23,8 @@ type Result = {
   selections: Array<{ groupId: string; group: string; optionId: string; option: string }>;
 };
 
+const MAX_PREVIEW_OPTIONS = 2;
+
 export function DollVue({ product, groups, freePreviews, initialRemaining, verifiedEmail, live }: Props) {
   const resultStartRef = useRef<HTMLDivElement>(null);
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
@@ -69,10 +71,11 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
     const option = group.options.find((item) => item.id === selections[group.id]);
     return option ? [{ group, option }] : [];
   }), [groups, selections]);
+  const optionLimitReached = selectedItems.length >= MAX_PREVIEW_OPTIONS;
   const canGenerate = live && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
-    if (!selections[groupId] && selectedItems.length >= 2) return;
+    if (!selections[groupId] && optionLimitReached) return;
     setSelections((current) => current[groupId] === optionId ? omit(current, groupId) : { ...current, [groupId]: optionId });
     setResult(null);
   }
@@ -215,6 +218,23 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
             {[1, 2, 3].map((number) => <li key={number} className={step >= number ? "is-active" : ""}><span>{step > number ? <Check /> : number}</span>{number === 1 ? "Photo" : number === 2 ? "Look" : "Preview"}</li>)}
           </ol>
 
+          {step === 2 ? (
+            <div className={`dollvue-option-intro${optionLimitReached ? " is-limit-reached" : ""}`}>
+              <div>
+                <strong>Choose up to {MAX_PREVIEW_OPTIONS} appearance options</strong>
+                <small>{selectedItems.length} of {MAX_PREVIEW_OPTIONS} selected</small>
+              </div>
+              <p>Each preview combines up to two visible changes. Use another free preview to explore a different combination.</p>
+              {optionLimitReached ? (
+                <p className="dollvue-option-limit" role="status" aria-live="polite">
+                  Limit reached — remove one selected choice to unlock the greyed-out options.
+                </p>
+              ) : (
+                <p className="dollvue-option-limit-hint">Choose one or two options below.</p>
+              )}
+            </div>
+          ) : null}
+
           <div className="dollvue-scroll-area">
             {step === 1 ? (
               <div className="dollvue-pane">
@@ -233,15 +253,25 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
               </div>
             ) : step === 2 ? (
               <div className="dollvue-pane dollvue-options">
-                <div className="dollvue-option-intro"><strong>Choose up to 2 appearance options</strong><p>You have 5 free previews to explore different combinations. Other functions and accessories remain available on the product page.</p><small>{selectedItems.length} of 2 selected</small></div>
                 {groups.map((group) => (
                   <fieldset key={group.id}>
                     <legend>{group.label}<small>{selections[group.id] ? "1 selected" : "Optional"}</small></legend>
                     <div className="dollvue-option-row">
                       {group.options.map((option) => (
-                        <button type="button" key={option.id} className={selections[group.id] === option.id ? "is-selected" : ""} onClick={() => choose(group.id, option.id)} aria-pressed={selections[group.id] === option.id} disabled={!selections[group.id] && selectedItems.length >= 2}>
+                        <button
+                          type="button"
+                          key={option.id}
+                          className={`${selections[group.id] === option.id ? "is-selected" : ""}${!selections[group.id] && optionLimitReached ? " is-limit-locked" : ""}`}
+                          onClick={() => choose(group.id, option.id)}
+                          aria-pressed={selections[group.id] === option.id}
+                          aria-label={!selections[group.id] && optionLimitReached ? `${option.label}. Unavailable until you remove one of your two selected choices.` : option.label}
+                          title={!selections[group.id] && optionLimitReached ? "Remove one selected choice to unlock this option" : undefined}
+                          disabled={!selections[group.id] && optionLimitReached}
+                        >
                           {option.swatch?.kind === "image" ? <Image src={option.swatch.value} alt="" width={72} height={72} /> : null}
-                          <span>{option.label}</span>{selections[group.id] === option.id ? <Check /> : null}
+                          <span>{option.label}</span>
+                          {!selections[group.id] && optionLimitReached ? <small className="dollvue-option-lock-label">2-choice limit</small> : null}
+                          {selections[group.id] === option.id ? <Check /> : null}
                         </button>
                       ))}
                     </div>

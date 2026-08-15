@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { ImagePreviewModal } from "./ImagePreviewModal";
@@ -16,10 +16,38 @@ export function ProductGallery({ product }: { product: Product }) {
   const active = media[index] ?? null;
   const hasControls = media.length > 1;
   const displayTitle = productPublicTitle(product);
+  const previewImages = useMemo(
+    () =>
+      media.flatMap((item, mediaIndex) =>
+        item.type === "image"
+          ? [
+              {
+                mediaIndex,
+                imageUrl: protectedProductImageUrlFor(product, item.image)!,
+                alt: `${displayTitle} — image ${mediaIndex + 1} of ${media.length}`
+              }
+            ]
+          : []
+      ),
+    [displayTitle, media, product]
+  );
+  const previewIndex = Math.max(
+    0,
+    previewImages.findIndex((image) => image.mediaIndex === index)
+  );
 
   function move(direction: -1 | 1) {
     setIndex((current) => (current + direction + media.length) % media.length);
   }
+
+  const closePreview = useCallback(() => setPreviewOpen(false), []);
+  const selectPreviewImage = useCallback(
+    (nextPreviewIndex: number) => {
+      const nextImage = previewImages[nextPreviewIndex];
+      if (nextImage) setIndex(nextImage.mediaIndex);
+    },
+    [previewImages]
+  );
 
   return (
     <section className="min-w-0 max-w-full space-y-3 overflow-hidden">
@@ -101,7 +129,12 @@ export function ProductGallery({ product }: { product: Product }) {
         </div>
       )}
       {isPreviewOpen && active?.type === "image" && (
-        <ImagePreviewModal imageUrl={protectedProductImageUrlFor(product, active.image)!} alt={displayTitle} onClose={() => setPreviewOpen(false)} />
+        <ImagePreviewModal
+          images={previewImages}
+          index={previewIndex}
+          onIndexChange={selectPreviewImage}
+          onClose={closePreview}
+        />
       )}
     </section>
   );
