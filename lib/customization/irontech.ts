@@ -111,15 +111,29 @@ export function getIrontechCustomizationGroups(product: Product, importedGroups?
   const groups = sourceGroups
     .filter((group) => !removedHeadGroups.some((pattern) => pattern.test(group.label)))
     .filter((group) => !isMaterialHeadTypeGroup(group))
-    .filter((group) => !/weight reduction|body weight technology/i.test(group.label))
+    .map((group) => ({
+      ...group,
+      options: group.options.filter((option) => !isExplicitIrontechUlwOption(group, option))
+    }))
     .map(normalizeIrontechGroup)
-    .filter((group) => group.options.length >= 2);
+    .filter((group) => group.options.length > 0);
 
   return mergeDuplicateGroups([
     ...(chooseHead ? [chooseHead] : []),
     ...groups,
     ...(extraHead ? [extraHead] : [])
   ]);
+}
+
+export function isExplicitIrontechUlwGroup(group: CustomizationGroup) {
+  const identity = `${group.id} ${group.label}`.toLowerCase().replace(/[^a-z0-9]+/g, " ");
+  return /\bbody weight\b|\bweight reduction\b/.test(identity);
+}
+
+export function isExplicitIrontechUlwOption(group: CustomizationGroup, option: CustomizationOption) {
+  if (!isExplicitIrontechUlwGroup(group)) return false;
+  const identity = `${option.id} ${option.label}`.toLowerCase().replace(/[^a-z0-9]+/g, " ");
+  return /\bulw\b|\bultra lightweight\b|\bultra light (?:weight|version)\b/.test(identity);
 }
 
 export function getIrontechCustomizationProfile(product: Product): IrontechCustomizationProfile {

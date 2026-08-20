@@ -28,8 +28,8 @@ type CartContextValue = {
   openDrawer: () => void;
   closeDrawer: () => void;
   addItem: (item: AddItemInput, options?: { openDrawer?: boolean }) => void;
-  updateQuantity: (merchandiseId: string, quantity: number) => void;
-  removeItem: (merchandiseId: string) => void;
+  updateQuantity: (identity: string, quantity: number) => void;
+  removeItem: (identity: string) => void;
   clear: () => void;
   checkout: () => Promise<void>;
   checkoutPending: boolean;
@@ -90,12 +90,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [openDrawer]
   );
 
-  const updateQuantity = useCallback((merchandiseId: string, quantity: number) => {
-    writeBag(updateBagItemQuantity(readBag(), merchandiseId, quantity));
+  const updateQuantity = useCallback((identity: string, quantity: number) => {
+    writeBag(updateBagItemQuantity(readBag(), identity, quantity));
   }, []);
 
-  const removeItem = useCallback((merchandiseId: string) => {
-    writeBag(removeBagItem(readBag(), merchandiseId));
+  const removeItem = useCallback((identity: string) => {
+    writeBag(removeBagItem(readBag(), identity));
   }, []);
 
   const clear = useCallback(() => writeBag([]), []);
@@ -113,6 +113,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           lines: bag.map((item) => ({
             merchandiseId: item.merchandiseId,
             quantity: item.quantity,
+            selections: item.selections,
             attributes: item.attributes ?? [],
             customizationCharge: item.customizationCharge
           }))

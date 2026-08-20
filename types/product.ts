@@ -66,6 +66,12 @@ export type ProductExtended = {
   stockLastCheckedAt?: string;
   customAvailable?: boolean;
   penisAddOnAvailable?: boolean;
+  irontechUlwEligibility?: {
+    status: "verified";
+    bodyModel: string;
+    source: "irontech-production-data";
+    verifiedAt?: string;
+  };
   customizationGroups?: CustomizationGroup[];
   qcNote?: string;
   editorialIntro?: {

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
-import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
+import { bagItemIdentity, MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { clearBrowserCartState, useLegacyCartState } from "@/lib/cart/browser";
 import { formatMoney } from "@/lib/utils/currency";
 import { useMounted } from "@/lib/utils/storageStore";
@@ -81,7 +81,7 @@ export function CartPageClient() {
       <div>
         <ul className="grid gap-3">
           {cart.items.map((item) => (
-            <li key={item.merchandiseId} className="rounded-[18px] border border-gold-500/14 bg-ink-800/72 p-4">
+            <li key={bagItemIdentity(item)} className="rounded-[18px] border border-gold-500/14 bg-ink-800/72 p-4">
               <div className="flex gap-4">
                 <Link
                   href={`/products/${item.productHandle}`}
@@ -122,7 +122,7 @@ export function CartPageClient() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => cart.removeItem(item.merchandiseId)}
+                      onClick={() => cart.removeItem(bagItemIdentity(item))}
                       className="flex h-11 w-11 items-center justify-center rounded-[10px] text-ivory-500 transition hover:bg-ivory-50/[0.06] hover:text-danger"
                       aria-label={`Remove ${item.productDisplayName || item.productTitle}`}
                     >
@@ -133,7 +133,7 @@ export function CartPageClient() {
                     <div className="inline-flex items-center rounded-full border border-gold-500/18">
                       <button
                         type="button"
-                        onClick={() => cart.updateQuantity(item.merchandiseId, item.quantity - 1)}
+                        onClick={() => cart.updateQuantity(bagItemIdentity(item), item.quantity - 1)}
                         className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                         aria-label="Decrease quantity"
                       >
@@ -142,7 +142,7 @@ export function CartPageClient() {
                       <span className="min-w-7 text-center text-sm font-semibold text-ivory-100">{item.quantity}</span>
                       <button
                         type="button"
-                        onClick={() => cart.updateQuantity(item.merchandiseId, Math.min(MAX_ITEM_QUANTITY, item.quantity + 1))}
+                        onClick={() => cart.updateQuantity(bagItemIdentity(item), Math.min(MAX_ITEM_QUANTITY, item.quantity + 1))}
                         className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                         aria-label="Increase quantity"
                       >

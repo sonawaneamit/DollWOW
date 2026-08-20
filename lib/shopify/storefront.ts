@@ -153,6 +153,7 @@ function productFieldsBase(imageFirst: number) {
   stockLastCheckedAt: metafield(namespace: "custom", key: "stock_last_checked_at") { value }
   customAvailable: metafield(namespace: "custom", key: "custom_available") { value }
   penisAddOnAvailable: metafield(namespace: "custom", key: "has_insertable_penis_add_on") { value }
+  irontechUlwEligibility: metafield(namespace: "custom", key: "irontech_ulw_eligibility") { value }
   qcNote: metafield(namespace: "custom", key: "qc_note") { value }
 `;
 }
@@ -508,6 +509,114 @@ export async function getProductByHandle(handle: string, options: { cache?: Requ
     console.error(error);
     return sampleProducts.find((product) => product.handle === handle) ?? null;
   }
+}
+
+type CheckoutVariantNode = Product["variants"][number] & {
+  product: {
+    id: string;
+    handle: string;
+    title: string;
+    vendor: string;
+    productType: string;
+    tags: string[];
+    featuredImage: Product["featuredImage"];
+    displayName?: MetafieldValue;
+    bodyType?: MetafieldValue;
+    brand?: MetafieldValue;
+    sourceTitle?: MetafieldValue;
+    material?: MetafieldValue;
+    heightCm?: MetafieldValue;
+    cupSize?: MetafieldValue;
+    stockStatus?: MetafieldValue;
+    irontechUlwEligibility?: MetafieldValue;
+    customizationGroups?: MetafieldValue;
+  };
+};
+
+const checkoutVariantFields = `
+  id
+  title
+  availableForSale
+  price { amount currencyCode }
+  selectedOptions { name value }
+  product {
+    id
+    handle
+    title
+    vendor
+    productType
+    tags
+    featuredImage { url altText width height }
+    displayName: metafield(namespace: "custom", key: "display_name") { value }
+    bodyType: metafield(namespace: "custom", key: "body_type") { value }
+    brand: metafield(namespace: "custom", key: "brand") { value }
+    sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
+    material: metafield(namespace: "custom", key: "material") { value }
+    heightCm: metafield(namespace: "custom", key: "height_cm") { value }
+    cupSize: metafield(namespace: "custom", key: "cup_size") { value }
+    stockStatus: metafield(namespace: "custom", key: "stock_status") { value }
+    irontechUlwEligibility: metafield(namespace: "custom", key: "irontech_ulw_eligibility") { value }
+    customizationGroups: metafield(namespace: "custom", key: "customization_groups") { value }
+  }
+`;
+
+export async function getProductsByVariantIds(variantIds: string[]) {
+  const uniqueVariantIds = [...new Set(variantIds.filter(Boolean))].slice(0, 20);
+  if (!uniqueVariantIds.length) return new Map<string, Product>();
+  if (!hasShopifyStorefrontEnv()) {
+    const products = new Map<string, Product>();
+    for (const variantId of uniqueVariantIds) {
+      const product = sampleProducts.find((item) => item.variants.some((variant) => variant.id === variantId));
+      if (product) products.set(variantId, product);
+    }
+    return products;
+  }
+
+  const data = await storefrontFetch<{
+    nodes: Array<CheckoutVariantNode | null>;
+  }>(
+    `query CheckoutVariants($ids: [ID!]!) {
+      nodes(ids: $ids) {
+        ... on ProductVariant { ${checkoutVariantFields} }
+      }
+    }`,
+    { ids: uniqueVariantIds },
+    { cache: "no-store" }
+  );
+  const products = new Map<string, Product>();
+  const requestedIds = new Set(uniqueVariantIds);
+  for (const node of data.nodes ?? []) {
+    if (!node?.product || !requestedIds.has(node.id)) continue;
+    const product = mapCheckoutVariantProduct(node);
+    if (isCustomerVisibleProduct(product)) products.set(node.id, product);
+  }
+  return products;
+}
+
+export async function getProductByVariantId(variantId: string) {
+  return (await getProductsByVariantIds([variantId])).get(variantId) ?? null;
+}
+
+function mapCheckoutVariantProduct(node: CheckoutVariantNode): Product {
+  const product = node.product;
+  return mapShopifyProduct({
+    ...product,
+    displayName: product.displayName ?? undefined,
+    bodyType: product.bodyType ?? undefined,
+    brand: product.brand ?? undefined,
+    sourceTitle: product.sourceTitle ?? undefined,
+    material: product.material ?? undefined,
+    heightCm: product.heightCm ?? undefined,
+    cupSize: product.cupSize ?? undefined,
+    stockStatus: product.stockStatus ?? undefined,
+    irontechUlwEligibility: product.irontechUlwEligibility ?? undefined,
+    customizationGroups: product.customizationGroups ?? undefined,
+    description: "",
+    featuredImage: product.featuredImage ?? null,
+    images: { edges: product.featuredImage ? [{ node: product.featuredImage }] : [] },
+    variants: { edges: [{ node: { id: node.id, title: node.title, availableForSale: node.availableForSale, price: node.price, selectedOptions: node.selectedOptions } }] },
+    priceRange: { minVariantPrice: node.price, maxVariantPrice: node.price }
+  });
 }
 
 export async function getProductsByHandles(

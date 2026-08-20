@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     }
     const configGroup = config.groups.find((item) => item.id === group.id);
     selections[group.id] = configGroup?.selectionMode === "multiple"
-      ? nextMultipleSelection("", selections[group.id], option.id)
+      ? nextMultipleSelection(configGroup.options, selections[group.id], option.id)
       : option.id;
   }
 
@@ -84,10 +84,10 @@ export async function POST(request: Request) {
       unitPrice: resolved.totalPrice,
       currencyCode,
       readyToShip: product.extended.stockStatus === "ready_to_ship",
+      selections: resolved.selections,
       attributes: [
         ...(displayName ? [{ key: "DollWow Reference Name", value: displayName }] : []),
-        ...resolved.cartAttributes,
-        { key: "DollVue", value: "Appearance choices added from DollVue™" }
+        ...resolved.cartAttributes
       ],
       customizationCharge: resolved.optionPriceDelta > 0 ? {
         amount: resolved.optionPriceDelta,

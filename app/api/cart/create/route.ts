@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { cartCreateRequestSchema } from "@/lib/cart/input";
+import { serverValidateAndRepriceLine } from "@/lib/cart/server-validation";
 import { createCart } from "@/lib/shopify/storefront";
 import { analyticsEvents, trackServerEvent } from "@/lib/analytics/events";
 
 export async function POST(request: Request) {
   try {
     const input = cartCreateRequestSchema.parse(await request.json());
-    const cart = await createCart(input);
+    const line = await serverValidateAndRepriceLine(input);
+    const cart = await createCart({ ...line, discountCodes: input.discountCodes });
     trackServerEvent(analyticsEvents.addToCart, {
       params: {
         variant_id: input.merchandiseId,

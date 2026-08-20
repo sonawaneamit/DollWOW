@@ -27,7 +27,6 @@ import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
-  defaultMultipleOptionId,
   getDefaultSelections,
   getOptionConflict,
   isOptionAvailableForCheckout,
@@ -124,6 +123,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
         body: JSON.stringify({
           merchandiseId: variantId,
           quantity: 1,
+          selections: resolved.selections,
           attributes: displayName ? [{ key: "DollWow Reference Name", value: displayName }, ...resolved.cartAttributes] : resolved.cartAttributes,
           customizationCharge: resolved.optionPriceDelta
             ? {
@@ -191,7 +191,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     setSelected((current) => ({
       ...current,
       [groupId]: group?.selectionMode === "multiple"
-        ? nextMultipleSelection(defaultMultipleOptionId(group.options), current[groupId], optionId)
+        ? nextMultipleSelection(group.options, current[groupId], optionId)
         : optionId
     }));
   }

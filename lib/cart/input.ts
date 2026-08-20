@@ -3,6 +3,7 @@ import { z } from "zod";
 const MAX_ATTRIBUTES = 20;
 const MAX_DISCOUNT_CODES = 5;
 const MAX_CHECKOUT_LINES = 20;
+const MAX_SELECTION_GROUPS = 40;
 
 const merchandiseIdSchema = z
   .string()
@@ -14,6 +15,13 @@ const merchandiseIdSchema = z
 const rawAttributeSchema = z.object({
   key: z.string().min(1).max(120),
   value: z.string().max(1000)
+});
+
+const customizationSelectionsSchema = z.record(
+  z.string().min(1).max(100),
+  z.union([z.string().min(1).max(100), z.array(z.string().min(1).max(100)).max(20)])
+).refine((selections) => Object.keys(selections).length <= MAX_SELECTION_GROUPS, {
+  message: `No more than ${MAX_SELECTION_GROUPS} customization groups are allowed.`
 });
 
 export const customizationChargeSchema = z.object({
@@ -31,6 +39,7 @@ export const cartCreateRequestSchema = z
   .object({
     merchandiseId: merchandiseIdSchema,
     quantity: z.number().int().min(1).max(10).default(1),
+    selections: customizationSelectionsSchema.optional(),
     attributes: z.array(rawAttributeSchema).max(50).optional(),
     customizationCharge: customizationChargeSchema.optional(),
     discountCodes: z.array(z.string().max(120)).max(10).optional()
@@ -47,6 +56,7 @@ export type CartCreateRequest = z.infer<typeof cartCreateRequestSchema>;
 export const cartLineSchema = z.object({
   merchandiseId: merchandiseIdSchema,
   quantity: z.number().int().min(1).max(10).default(1),
+  selections: customizationSelectionsSchema.optional(),
   attributes: z.array(rawAttributeSchema).max(50).optional(),
   customizationCharge: customizationChargeSchema.optional()
 });

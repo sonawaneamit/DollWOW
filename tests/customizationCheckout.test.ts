@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
-import { defaultMultipleOptionId, nextMultipleSelection } from "@/lib/customization/resolve";
-import type { CustomizationOption } from "@/types/customization";
+import { defaultMultipleOptionId, getDefaultSelections, nextMultipleSelection } from "@/lib/customization/resolve";
+import type { BrandCustomizationConfig, CustomizationOption } from "@/types/customization";
 import type { Product } from "@/types/product";
 
 describe("customization checkout support", () => {
@@ -80,15 +80,49 @@ describe("customization checkout support", () => {
 
   it("treats imported default choices as exclusive in multi-select groups", () => {
     const options: CustomizationOption[] = [
-      { id: "factory-default", label: "Factory default" },
+      { id: "supplier-choice", label: "Standard accessory package", productionNote: "Default supplier selection" },
       { id: "implanted-human-hair", label: "Implanted human hair", priceDelta: 180 },
       { id: "extra-storage-case", label: "Flight case", priceDelta: 699 }
     ];
     const defaultId = defaultMultipleOptionId(options);
 
-    expect(defaultId).toBe("factory-default");
-    expect(nextMultipleSelection(defaultId, ["factory-default"], "implanted-human-hair")).toEqual(["implanted-human-hair"]);
-    expect(nextMultipleSelection(defaultId, ["implanted-human-hair"], "factory-default")).toEqual(["factory-default"]);
+    expect(defaultId).toBe("supplier-choice");
+    expect(nextMultipleSelection(options, ["supplier-choice"], "implanted-human-hair")).toEqual(["implanted-human-hair"]);
+    expect(nextMultipleSelection(options, ["implanted-human-hair"], "supplier-choice")).toEqual(["supplier-choice"]);
+  });
+
+  it("initializes one deterministic neutral and removes every neutral when a paid option is selected", () => {
+    const options: CustomizationOption[] = [
+      { id: "none", label: "No add-on", priceDelta: 0 },
+      { id: "supplier-choice", label: "Standard accessory package", productionNote: "Default supplier selection", priceDelta: 0 },
+      { id: "factory-selection", label: "Factory default", priceDelta: 0 },
+      { id: "implanted-human-hair", label: "Implanted human hair", priceDelta: 180 }
+    ];
+    const config: BrandCustomizationConfig = {
+      id: "multiple-neutral-defaults",
+      brandLabel: "Test",
+      leadTimeNote: "",
+      rules: [],
+      groups: [{
+        id: "accessories",
+        label: "Accessories",
+        display: "cards",
+        selectionMode: "multiple",
+        options
+      }]
+    };
+
+    expect(getDefaultSelections(config).accessories).toEqual(["none"]);
+    expect(nextMultipleSelection(
+      options,
+      ["none", "supplier-choice", "factory-selection"],
+      "implanted-human-hair"
+    )).toEqual(["implanted-human-hair"]);
+    expect(nextMultipleSelection(
+      [...options, { id: "flight-case", label: "Flight case", priceDelta: 699 }],
+      ["none", "implanted-human-hair", "flight-case"],
+      "flight-case"
+    )).toEqual(["implanted-human-hair"]);
   });
 
   it("normalizes duplicate imported option group ids before rendering the builder", () => {

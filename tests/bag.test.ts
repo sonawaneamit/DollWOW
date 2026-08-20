@@ -38,6 +38,31 @@ describe("bag helpers", () => {
     expect(second[0].quantity).toBe(3);
   });
 
+  it("keeps the same variant as separate lines when structured configurations differ", () => {
+    const first = upsertBagItem([], makeItem({ selections: { "skin-tone": "light" } }));
+    const second = upsertBagItem(first, makeItem({ selections: { "skin-tone": "tan" } }));
+
+    expect(second).toHaveLength(2);
+    expect(second.map((item) => item.selections)).toEqual([
+      { "skin-tone": "light" },
+      { "skin-tone": "tan" }
+    ]);
+  });
+
+  it("merges semantically identical configurations regardless of key or multi-select order", () => {
+    const first = upsertBagItem([], makeItem({
+      quantity: 1,
+      selections: { "skin-tone": "tan", accessories: ["care-kit", "storage-bag"] }
+    }));
+    const second = upsertBagItem(first, makeItem({
+      quantity: 2,
+      selections: { accessories: ["storage-bag", "care-kit"], "skin-tone": "tan" }
+    }));
+
+    expect(second).toHaveLength(1);
+    expect(second[0].quantity).toBe(3);
+  });
+
   it("clamps quantity to the per-item maximum", () => {
     const items = upsertBagItem([], makeItem({ quantity: 99 }));
     expect(items[0].quantity).toBe(MAX_ITEM_QUANTITY);
