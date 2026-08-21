@@ -128,7 +128,7 @@ const torsoCareAddOns: CustomizationGroup = {
 const irontechUlw: CustomizationGroup = {
   id: "body-weight",
   label: "Body weight technology",
-  description: "ULW is available for supported full-size Irontech silicone bodies and is designed to make lifting, repositioning, dressing, cleaning, and storage easier.",
+  description: "ULW is available for verified full-size Irontech silicone, TPE, and hybrid bodies and is designed to make lifting, repositioning, dressing, cleaning, and storage easier.",
   required: true,
   display: "cards",
   resources: [
@@ -628,13 +628,18 @@ function supportsIronAiUpgrade(product: Product) {
 
 function supportsIrontechUlw(product: Product) {
   const eligibility = product.extended.irontechUlwEligibility;
-  const material = (product.extended.material ?? "").toLowerCase();
-  const form = [product.productType, product.title, product.handle, ...product.tags].filter(Boolean).join(" ").toLowerCase();
-  const fullSiliconeBody = material.includes("silicone") && !material.includes("head") && !material.includes("hybrid") && !material.includes("tpe");
-  const fullBody = !/\b(torso|hips?|body-part)\b/.test(form);
-  const madeToOrder = product.extended.stockStatus !== "ready_to_ship";
+  const material = (product.extended.material ?? "").toLowerCase().replace(/^full\s+/, "").trim();
+  const productType = product.productType.trim().toLowerCase();
+  const productTypeByMaterial = new Map([
+    ["silicone", "custom silicone doll"],
+    ["tpe", "custom tpe doll"],
+    ["hybrid", "custom hybrid doll"]
+  ]);
+  const irontechProductIdentity = /^irontech-/.test(product.handle.trim().toLowerCase());
+  const matchingFullBodyPair = productTypeByMaterial.get(material) === productType;
+  const madeToOrder = product.extended.stockStatus === "custom";
   const productionVerified = eligibility?.status === "verified" && Boolean(eligibility.bodyModel.trim());
-  return productionVerified && fullSiliconeBody && fullBody && madeToOrder;
+  return irontechProductIdentity && productionVerified && matchingFullBodyPair && madeToOrder;
 }
 
 /**
