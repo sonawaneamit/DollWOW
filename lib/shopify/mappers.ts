@@ -46,6 +46,7 @@ type ShopifyProductNode = {
   stockLastCheckedAt?: { value?: string };
   customAvailable?: { value?: string };
   penisAddOnAvailable?: { value?: string };
+  irontechUlwEligibility?: { value?: string };
   customizationGroups?: { value?: string };
   qcNote?: { value?: string };
 };
@@ -67,6 +68,25 @@ function jsonValue<T>(value?: string): T | undefined {
   } catch {
     return undefined;
   }
+}
+
+function irontechUlwEligibilityValue(value?: string): Product["extended"]["irontechUlwEligibility"] {
+  const eligibility = jsonValue<Record<string, unknown>>(value);
+  if (
+    eligibility?.status !== "verified" ||
+    eligibility.source !== "irontech-production-data" ||
+    typeof eligibility.bodyModel !== "string" ||
+    !eligibility.bodyModel.trim()
+  ) {
+    return undefined;
+  }
+
+  return {
+    status: "verified",
+    bodyModel: eligibility.bodyModel.trim(),
+    source: "irontech-production-data",
+    verifiedAt: typeof eligibility.verifiedAt === "string" ? eligibility.verifiedAt : undefined
+  };
 }
 
 function normalizeImportedAssetUrl(value: string) {
@@ -174,6 +194,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
       customAvailable: booleanValue(node.customAvailable?.value),
       penisAddOnAvailable: booleanValue(node.penisAddOnAvailable?.value),
+      irontechUlwEligibility: irontechUlwEligibilityValue(node.irontechUlwEligibility?.value),
       customizationGroups,
       qcNote: node.qcNote?.value
     }

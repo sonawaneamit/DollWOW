@@ -286,8 +286,9 @@ describe("customization config", () => {
     };
 
     const defaults = getDefaultSelections(config);
-    const withCareKit = nextMultipleSelection("no-add-on", defaults.accessories, "care-kit");
-    const withTwoAddOns = nextMultipleSelection("no-add-on", withCareKit, "head-stand");
+    const options = config.groups.find((group) => group.id === "accessories")!.options;
+    const withCareKit = nextMultipleSelection(options, defaults.accessories, "care-kit");
+    const withTwoAddOns = nextMultipleSelection(options, withCareKit, "head-stand");
     const resolved = resolveCustomization(config, { accessories: withTwoAddOns }, 1666);
 
     expect(withTwoAddOns).toEqual(["care-kit", "head-stand"]);

@@ -8,7 +8,7 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { compareEntryFromCartItem } from "@/lib/compare/products";
 import { useCart } from "@/components/cart/CartProvider";
 import { formatMoney } from "@/lib/utils/currency";
-import { MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
+import { bagItemIdentity, MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { Care365Seal } from "@/components/care/Care365Seal";
 import { FactoryApprovalCartPreview } from "@/components/factory-approval/FactoryApprovalPreview";
@@ -80,7 +80,7 @@ export function CartDrawer() {
           {cart.items.length ? (
             <ul className="grid gap-3">
               {cart.items.map((item) => (
-                <li key={item.merchandiseId} className="rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.035] p-3">
+                <li key={bagItemIdentity(item)} className="rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.035] p-3">
                   <div className="flex gap-3">
                     <Link href={`/products/${item.productHandle}`} onClick={cart.closeDrawer} className="relative h-24 w-20 shrink-0 overflow-hidden rounded-[12px] bg-ink-900">
                       {item.imageUrl ? (
@@ -102,7 +102,7 @@ export function CartDrawer() {
                         </div>
                         <button
                           type="button"
-                          onClick={() => cart.removeItem(item.merchandiseId)}
+                          onClick={() => cart.removeItem(bagItemIdentity(item))}
                           className="flex h-11 w-11 items-center justify-center rounded-[10px] text-ivory-500 transition hover:bg-ivory-50/[0.06] hover:text-danger"
                           aria-label={`Remove ${item.productDisplayName || item.productTitle}`}
                         >
@@ -113,7 +113,7 @@ export function CartDrawer() {
                         <div className="inline-flex items-center rounded-full border border-gold-500/18">
                           <button
                             type="button"
-                            onClick={() => cart.updateQuantity(item.merchandiseId, item.quantity - 1)}
+                            onClick={() => cart.updateQuantity(bagItemIdentity(item), item.quantity - 1)}
                             className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                             aria-label="Decrease quantity"
                           >
@@ -122,7 +122,7 @@ export function CartDrawer() {
                           <span className="min-w-6 text-center text-sm font-semibold text-ivory-100">{item.quantity}</span>
                           <button
                             type="button"
-                            onClick={() => cart.updateQuantity(item.merchandiseId, Math.min(MAX_ITEM_QUANTITY, item.quantity + 1))}
+                            onClick={() => cart.updateQuantity(bagItemIdentity(item), Math.min(MAX_ITEM_QUANTITY, item.quantity + 1))}
                             className="flex h-11 w-11 items-center justify-center text-ivory-300 hover:text-ivory-50"
                             aria-label="Increase quantity"
                           >

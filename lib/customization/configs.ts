@@ -3,7 +3,7 @@ import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption,
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
-import { getIrontechCustomizationGroups } from "@/lib/customization/irontech";
+import { getIrontechCustomizationGroups, isExplicitIrontechUlwOption } from "@/lib/customization/irontech";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import {
   getAngelkissCustomizationGroups,
@@ -141,7 +141,7 @@ const irontechUlw: CustomizationGroup = {
     {
       id: "ultra-lightweight",
       label: "Ultra Light Weight (ULW)",
-      description: "Up to 30% lighter depending on the body configuration and production batch.",
+      description: "Weight reduction varies by body and configuration. Compatibility and expected finished weight are confirmed before production.",
       priceDelta: 195,
       productionNote: "Factory compatibility and final weight are confirmed before production.",
       swatch: { kind: "image", value: "/option-swatches/irontech/ultra-lightweight.png", label: "Irontech ULW" }
@@ -318,7 +318,12 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   }
   if (isIrontechProduct(product)) {
     const groups = getIrontechCustomizationGroups(product, importedGroups);
-    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
+    const groupsWithImportedUlw = new Set(
+      (importedGroups ?? [])
+        .filter((group) => group.options.some((option) => isExplicitIrontechUlwOption(group, option)))
+        .map((group) => group.id)
+    );
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups, groupsWithImportedUlw) : groups;
     return {
       id: "irontech-family-profile",
       brandLabel: "Irontech Dolls",
@@ -462,7 +467,7 @@ function normalizeRealLadyImportedGroups(groups: CustomizationGroup[]) {
           ...group,
           label: "Body weight",
           options: group.options.map((option) =>
-            /ultra light/i.test(option.label)
+            isExplicitIrontechUlwOption(group, option)
               ? { ...option, label: "Ultra Light Weight", priceDelta: 265 }
               : { ...option, priceDelta: option.priceDelta ?? 0 }
           )
@@ -502,9 +507,30 @@ function normalizeRealLadyImportedGroups(groups: CustomizationGroup[]) {
 }
 
 function withIrontechUlw(product: Product, groups: CustomizationGroup[]) {
-  if (!isIrontechProduct(product) || !supportsIrontechUlw(product) || groups.some((group) => group.id === irontechUlw.id)) return groups;
-  return [...groups, irontechUlw];
+  if (!isIrontechProduct(product)) return groups;
+  const withoutImportedUlw = groups.flatMap((group) => removeImportedIrontechUlw(group));
+  if (!supportsIrontechUlw(product)) return withoutImportedUlw;
+
+  const canonicalSiblings = withoutImportedUlw.filter((group) => group.id === irontechUlw.id);
+  if (!canonicalSiblings.length) return [...withoutImportedUlw, irontechUlw];
+
+  const preservedOptions = new Map<string, CustomizationOption>();
+  for (const option of canonicalSiblings.flatMap((group) => group.options)) {
+    preservedOptions.set(option.id, option);
+  }
+  const canonicalUlwOption = irontechUlw.options.find((option) => option.id === "ultra-lightweight")!;
+  return [
+    ...withoutImportedUlw.filter((group) => group.id !== irontechUlw.id),
+    { ...irontechUlw, options: [...preservedOptions.values(), canonicalUlwOption] }
+  ];
 }
+
+function removeImportedIrontechUlw(group: CustomizationGroup): CustomizationGroup[] {
+  const options = group.options.filter((option) => !isExplicitIrontechUlwOption(group, option));
+  if (!options.length) return [];
+  return options.length === group.options.length ? [group] : [{ ...group, options }];
+}
+
 
 function isIrontechProduct(product: Product) {
   return [product.extended.brand, product.vendor, product.title, product.handle, ...product.tags]
@@ -601,11 +627,14 @@ function supportsIronAiUpgrade(product: Product) {
 }
 
 function supportsIrontechUlw(product: Product) {
+  const eligibility = product.extended.irontechUlwEligibility;
   const material = (product.extended.material ?? "").toLowerCase();
   const form = [product.productType, product.title, product.handle, ...product.tags].filter(Boolean).join(" ").toLowerCase();
   const fullSiliconeBody = material.includes("silicone") && !material.includes("head") && !material.includes("hybrid") && !material.includes("tpe");
   const fullBody = !/\b(torso|hips?|body-part)\b/.test(form);
-  return fullSiliconeBody && fullBody;
+  const madeToOrder = product.extended.stockStatus !== "ready_to_ship";
+  const productionVerified = eligibility?.status === "verified" && Boolean(eligibility.bodyModel.trim());
+  return productionVerified && fullSiliconeBody && fullBody && madeToOrder;
 }
 
 /**
@@ -615,13 +644,13 @@ function supportsIrontechUlw(product: Product) {
  * Keep only online-orderable choices (priced, included/default, or explicitly
  * free) and drop a group entirely when it no longer offers a real choice.
  */
-function onlineCheckoutGroups(groups: CustomizationGroup[]) {
+function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupIds = new Set<string>()) {
   return groups
     .map((group) => ({
       ...group,
       options: group.options.filter(isOnlineCheckoutOption)
     }))
-    .filter((group) => group.options.length >= 2);
+    .filter((group) => group.options.length >= 2 || (group.options.length > 0 && preserveSingleGroupIds.has(group.id)));
 }
 
 function isOnlineCheckoutOption(option: CustomizationOption) {

@@ -143,6 +143,8 @@ For example, a gel-filled area may add weight and may need more careful long-ter
 
 Some full-size Irontech silicone bodies may support the manufacturer's ULW weight-reduction path. Compatibility is not brand-wide, and the final weight can depend on the exact body and configuration. When ULW appears on a DollWow product, we confirm support before production and show the price impact in the configurator.
 
+Verified production figures come from completed body records. Projections are planning estimates, not measured finished-product outcomes, and should not be presented as equivalent evidence.
+
 Irontech also publishes selected electronic and powered features. A listing, head image, or brand name alone does not prove that a body includes AI, robotics, heating, movement, or sound. Each function needs four separate checks: exact hardware, power requirements, compatibility, and after-sales support. See the [AI doll guide](/learn/ai-sex-dolls) for a sober way to compare those claims.
 
 ## Six Current Irontech Examples

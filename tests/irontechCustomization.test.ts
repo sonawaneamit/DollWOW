@@ -87,7 +87,8 @@ const sourceGroups: CustomizationGroup[] = [
     display: "cards",
     options: [
       { id: "regular", label: "Regular Version", priceDelta: 0 },
-      { id: "ulw", label: "Ultra Lightweight Version", priceDelta: 150 }
+      { id: "ulw", label: "Ultra Lightweight Version", priceDelta: 150 },
+      { id: "soft-butt", label: "Soft butt", priceDelta: 120 }
     ]
   }
 ];
@@ -173,7 +174,7 @@ describe("Irontech dealer-guided customization", () => {
     const groups = getCustomizationConfig(irontech(sourceGroups)).groups;
     expect(groups.find((group) => group.id === "premium")?.options.find((option) => option.id === "ironai")?.priceDelta).toBe(119);
     expect(groups.some((group) => group.id === "body-weight")).toBe(false);
-    expect(groups.some((group) => group.id === "weight")).toBe(false);
+    expect(groups.find((group) => group.id === "weight")?.options.map((option) => option.id)).toEqual(["regular", "soft-butt"]);
   });
 
   it("marks only image-backed superficial options DollVue-ready", () => {

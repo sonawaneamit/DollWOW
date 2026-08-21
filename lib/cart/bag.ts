@@ -2,6 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 import { createStorageStore } from "@/lib/utils/storageStore";
+import type { CustomizationSelections } from "@/types/customization";
+import { customizationSelectionIdentity } from "@/lib/customization/identity";
 
 export type BagItem = {
   merchandiseId: string;
@@ -15,6 +17,7 @@ export type BagItem = {
   currencyCode: string;
   quantity: number;
   readyToShip?: boolean;
+  selections?: CustomizationSelections;
   attributes?: Array<{ key: string; value: string }>;
   customizationCharge?: {
     amount: number;
@@ -36,7 +39,7 @@ export const BAG_UPDATED_EVENT = "dollwow:bag-updated";
 export function upsertBagItem(items: BagItem[], item: Omit<BagItem, "addedAt"> & { addedAt?: string }): BagItem[] {
   const quantity = clampQuantity(item.quantity);
   const nextItem: BagItem = { ...item, quantity, addedAt: item.addedAt ?? new Date().toISOString() };
-  const existingIndex = items.findIndex((entry) => entry.merchandiseId === item.merchandiseId);
+  const existingIndex = items.findIndex((entry) => bagItemIdentity(entry) === bagItemIdentity(nextItem));
 
   if (existingIndex === -1) {
     return [...items, nextItem].slice(-MAX_BAG_ITEMS);
@@ -49,13 +52,19 @@ export function upsertBagItem(items: BagItem[], item: Omit<BagItem, "addedAt"> &
   );
 }
 
-export function updateBagItemQuantity(items: BagItem[], merchandiseId: string, quantity: number): BagItem[] {
-  if (quantity <= 0) return removeBagItem(items, merchandiseId);
-  return items.map((entry) => (entry.merchandiseId === merchandiseId ? { ...entry, quantity: clampQuantity(quantity) } : entry));
+export function bagItemIdentity(item: Pick<BagItem, "merchandiseId" | "selections">) {
+  return `${item.merchandiseId}::${customizationSelectionIdentity(item.selections)}`;
 }
 
-export function removeBagItem(items: BagItem[], merchandiseId: string): BagItem[] {
-  return items.filter((entry) => entry.merchandiseId !== merchandiseId);
+export function updateBagItemQuantity(items: BagItem[], identity: string, quantity: number): BagItem[] {
+  if (quantity <= 0) return removeBagItem(items, identity);
+  const resolvedIdentity = resolveBagIdentity(items, identity);
+  return items.map((entry) => (bagItemIdentity(entry) === resolvedIdentity ? { ...entry, quantity: clampQuantity(quantity) } : entry));
+}
+
+export function removeBagItem(items: BagItem[], identity: string): BagItem[] {
+  const resolvedIdentity = resolveBagIdentity(items, identity);
+  return items.filter((entry) => bagItemIdentity(entry) !== resolvedIdentity);
 }
 
 export function bagItemCount(items: BagItem[]): number {
@@ -73,6 +82,12 @@ export function bagCurrency(items: BagItem[], fallback = "USD"): string {
 function clampQuantity(quantity: number) {
   if (!Number.isFinite(quantity)) return 1;
   return Math.min(MAX_ITEM_QUANTITY, Math.max(1, Math.round(quantity)));
+}
+
+function resolveBagIdentity(items: BagItem[], identity: string) {
+  if (items.some((entry) => bagItemIdentity(entry) === identity)) return identity;
+  const merchandiseMatches = items.filter((entry) => entry.merchandiseId === identity);
+  return merchandiseMatches.length === 1 ? bagItemIdentity(merchandiseMatches[0]) : identity;
 }
 
 // ---------- Browser persistence ----------

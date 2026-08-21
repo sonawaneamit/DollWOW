@@ -12,10 +12,8 @@ export function getDefaultSelections(config: BrandCustomizationConfig): Customiz
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
-        const selectedDefaults = group.options.filter((option) => /default supplier selection/i.test(option.productionNote || "")).map((option) => option.id);
-        if (selectedDefaults.length) return [group.id, selectedDefaults];
-        const noAddOn = group.options.find((option) => isNoAddOnOption(option.id, option.label));
-        return [group.id, noAddOn ? [noAddOn.id] : []];
+        const neutralDefault = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote));
+        return [group.id, neutralDefault ? [neutralDefault.id] : []];
       }
       return [group.id, group.options[0]?.id ?? ""];
     })
@@ -115,7 +113,7 @@ export function getOptionConflict(
 ) {
   const group = config.groups.find((item) => item.id === groupId);
   const currentValue = selections[groupId] ?? getDefaultSelections(config)[groupId];
-  const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(defaultMultipleOptionId(group.options), currentValue, optionId) : optionId;
+  const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(group.options, currentValue, optionId) : optionId;
   const nextSelections = normalizedSelections(config, { ...selections, [groupId]: nextValue });
   const conflict = config.rules.find((rule) => {
     const whenSelected = selectionIds(nextSelections[rule.when.groupId]).includes(rule.when.optionId);
@@ -150,10 +148,7 @@ export function isOptionPurchasable(option: CustomizationOption) {
 }
 
 export function defaultMultipleOptionId(options: CustomizationOption[]) {
-  return (
-    options.find((option) => isNoAddOnOption(option.id, option.label) || /default supplier selection/i.test(option.productionNote || ""))?.id ??
-    ""
-  );
+  return options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote))?.id ?? "";
 }
 
 export function selectionIds(value: CustomizationSelectionValue | undefined): string[] {
@@ -161,15 +156,20 @@ export function selectionIds(value: CustomizationSelectionValue | undefined): st
   return value ? [value] : [];
 }
 
-export function nextMultipleSelection(firstOptionId: string, currentValue: CustomizationSelectionValue | undefined, optionId: string) {
+export function nextMultipleSelection(options: CustomizationOption[], currentValue: CustomizationSelectionValue | undefined, optionId: string) {
   const current = selectionIds(currentValue);
-  const noAddOnId = current.find((id) => isNoAddOnOption(id)) || (isNoAddOnOption(firstOptionId) ? firstOptionId : "");
-  if (noAddOnId && optionId === noAddOnId) return [noAddOnId];
+  const neutralIds = new Set(
+    options
+      .filter((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote))
+      .map((option) => option.id)
+  );
+  const defaultId = options.find((option) => neutralIds.has(option.id))?.id ?? "";
+  if (neutralIds.has(optionId)) return [optionId];
   if (current.includes(optionId)) {
-    const next = current.filter((id) => id !== optionId);
-    return next.length ? next : noAddOnId ? [noAddOnId] : [];
+    const next = current.filter((id) => id !== optionId && !neutralIds.has(id));
+    return next.length ? next : defaultId ? [defaultId] : [];
   }
-  return [...current.filter((id) => id !== noAddOnId), optionId];
+  return [...current.filter((id) => !neutralIds.has(id)), optionId];
 }
 
 function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
@@ -188,16 +188,21 @@ function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
   }));
 }
 
-function isNoAddOnOption(id: string, label = "") {
+export function isNeutralDefaultOption(id: string, label = "", productionNote = "") {
   return (
     id === "no-add-on" ||
     id === "none" ||
     id === "default" ||
     id === "factory-default" ||
-    /^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(label)
+    /^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(label) ||
+    /default supplier selection|no paid add-on/i.test(productionNote)
   );
 }
 
+export function isNoAddOnOption(id: string, label = "", productionNote = "") {
+  return isNeutralDefaultOption(id, label, productionNote);
+}
+
 function hasCheckoutPrice(option: CustomizationOption) {
-  return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) || isNoAddOnOption(option.id, option.label);
+  return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) || isNeutralDefaultOption(option.id, option.label, option.productionNote);
 }
