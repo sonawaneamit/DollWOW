@@ -16,17 +16,18 @@ function irontech(overrides: {
   groups?: CustomizationGroup[];
 } = {}): Product {
   const source = sampleProducts[0];
+  const material = overrides.material ?? "Full silicone";
   return {
     ...source,
     title: "Irontech 165cm full body doll",
     handle: "irontech-165cm-full-body-doll",
     vendor: "Irontech Dolls",
-    productType: overrides.productType ?? "Doll",
+    productType: overrides.productType ?? `Custom ${material.replace(/^Full /, "")} doll`,
     tags: ["irontech", "customizable"],
     extended: {
       ...source.extended,
       brand: "Irontech Dolls",
-      material: overrides.material ?? "Full silicone",
+      material,
       stockStatus: overrides.stockStatus ?? "custom",
       customizationGroups: overrides.groups,
       irontechUlwEligibility: overrides.verified
@@ -195,9 +196,64 @@ describe("Irontech Ultra Light Weight customization", () => {
     expect(getCustomizationConfig(product).groups.find((group) => group.id === "body-weight")?.options).toEqual(imported.options);
   });
 
-  it.each(["TPE", "Silicone head", "Hybrid"])("does not offer ULW for %s bodies even with eligibility metadata", (material) => {
-    expect(bodyWeightGroups(irontech({ material, verified: true }))).toHaveLength(0);
+  it("fails closed when only descriptive fields mention Irontech", () => {
+    const product = irontech({ verified: true });
+    product.title = "Other Brand Irontech-compatible full body doll";
+    product.handle = "other-brand-irontech-compatible-full-body-doll";
+    product.vendor = "Other Brand";
+    product.tags = ["other-brand", "irontech-compatible"];
+    product.extended.brand = "Other Brand";
+
+    expect(bodyWeightGroups(product)).toHaveLength(0);
   });
+
+  it("accepts the verified live Irontech handle identity when the storefront vendor is DollWow", () => {
+    const product = irontech({ verified: true });
+    product.vendor = "DollWow";
+    product.extended.brand = undefined;
+
+    expect(bodyWeightGroups(product)).toHaveLength(1);
+  });
+
+  it.each([
+    ["Full silicone", "Custom Silicone doll"],
+    ["TPE", "Custom TPE doll"],
+    ["Hybrid", "Custom Hybrid doll"]
+  ])("offers canonical ULW for the verified material/type pair %s ↔ %s", (material, productType) => {
+    const [group] = bodyWeightGroups(irontech({ material, productType, verified: true }));
+
+    expect(group?.options.find((option) => option.id === "ultra-lightweight")?.priceDelta).toBe(195);
+  });
+
+  it.each([
+    ["Full silicone", "Custom TPE doll"],
+    ["Full silicone", "Custom Hybrid doll"],
+    ["TPE", "Custom Silicone doll"],
+    ["TPE", "Custom Hybrid doll"],
+    ["Hybrid", "Custom Silicone doll"],
+    ["Hybrid", "Custom TPE doll"]
+  ])("fails closed for the mismatched material/type pair %s ↔ %s", (material, productType) => {
+    expect(bodyWeightGroups(irontech({ material, productType, verified: true }))).toHaveLength(0);
+  });
+
+  it.each([
+    ["Silicone / TPE", "Custom Silicone doll"],
+    ["Silicone", "Custom doll"],
+    ["", "Custom TPE doll"]
+  ])("fails closed for the ambiguous material/type pair %s ↔ %s", (material, productType) => {
+    expect(bodyWeightGroups(irontech({ material, productType, verified: true }))).toHaveLength(0);
+  });
+
+  it("does not offer ULW for a silicone-head product even with eligibility metadata", () => {
+    expect(bodyWeightGroups(irontech({ material: "Silicone head", verified: true }))).toHaveLength(0);
+  });
+
+  it.each(["Head", "Head only", "Partial body", "Half body", "Bust", "Accessory"])(
+    "does not offer ULW for a %s product whose material alone looks eligible",
+    (productType) => {
+      expect(bodyWeightGroups(irontech({ material: "TPE", productType, verified: true }))).toHaveLength(0);
+    }
+  );
 
   it.each(["Torso", "Hips"])("does not offer ULW for %s products even with eligibility metadata", (productType) => {
     expect(bodyWeightGroups(irontech({ productType, verified: true }))).toHaveLength(0);
@@ -205,6 +261,17 @@ describe("Irontech Ultra Light Weight customization", () => {
 
   it("does not offer ULW for ready-to-ship products even with eligibility metadata", () => {
     expect(bodyWeightGroups(irontech({ stockStatus: "ready_to_ship", verified: true }))).toHaveLength(0);
+  });
+
+  it("does not offer ULW for check-stock products even with eligibility metadata", () => {
+    expect(bodyWeightGroups(irontech({ stockStatus: "check_stock", verified: true }))).toHaveLength(0);
+  });
+
+  it("fails closed when the product has no stock/order state", () => {
+    const product = irontech({ verified: true });
+    product.extended.stockStatus = undefined;
+
+    expect(bodyWeightGroups(product)).toHaveLength(0);
   });
 
   it("propagates the canonical ULW label and $195 charge into cart resolution", () => {

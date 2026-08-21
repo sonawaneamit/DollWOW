@@ -31,7 +31,7 @@ function verifiedIrontech(): Product {
     title: "Irontech 165cm full body doll",
     handle: "irontech-165cm-full-body-doll",
     vendor: "Irontech Dolls",
-    productType: "Doll",
+    productType: "Custom Silicone doll",
     tags: ["irontech", "customizable"],
     variants: [{ ...source.variants[0], id: VARIANT_ID, price: { amount: "2000", currencyCode: "USD" } }],
     extended: {
