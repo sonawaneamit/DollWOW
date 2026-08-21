@@ -36,6 +36,40 @@ describe("Shopify product metadata mapping", () => {
     });
   });
 
+  it("maps direct Irontech confirmation without relabeling its provenance", () => {
+    const product = mapShopifyProduct({
+      id: "gid://shopify/Product/2",
+      handle: "irontech-directly-confirmed-body",
+      title: "Irontech directly confirmed body",
+      description: "",
+      vendor: "Irontech Dolls",
+      productType: "Doll",
+      tags: ["irontech"],
+      featuredImage: null,
+      images: { edges: [] },
+      variants: { edges: [] },
+      priceRange: {
+        minVariantPrice: { amount: "2000", currencyCode: "USD" },
+        maxVariantPrice: { amount: "2000", currencyCode: "USD" }
+      },
+      irontechUlwEligibility: {
+        value: JSON.stringify({
+          status: "verified",
+          bodyModel: " Irontech 165F ",
+          source: "irontech-direct-confirmation",
+          verifiedAt: "2026-08-21"
+        })
+      }
+    });
+
+    expect(product.extended.irontechUlwEligibility).toEqual({
+      status: "verified",
+      bodyModel: "Irontech 165F",
+      source: "irontech-direct-confirmation",
+      verifiedAt: "2026-08-21"
+    });
+  });
+
   it("fails closed on malformed Irontech ULW eligibility JSON", () => {
     const product = mapShopifyProduct({
       id: "gid://shopify/Product/2",

@@ -72,9 +72,10 @@ function jsonValue<T>(value?: string): T | undefined {
 
 function irontechUlwEligibilityValue(value?: string): Product["extended"]["irontechUlwEligibility"] {
   const eligibility = jsonValue<Record<string, unknown>>(value);
+  const source = eligibility?.source;
   if (
     eligibility?.status !== "verified" ||
-    eligibility.source !== "irontech-production-data" ||
+    (source !== "irontech-production-data" && source !== "irontech-direct-confirmation") ||
     typeof eligibility.bodyModel !== "string" ||
     !eligibility.bodyModel.trim()
   ) {
@@ -84,7 +85,7 @@ function irontechUlwEligibilityValue(value?: string): Product["extended"]["iront
   return {
     status: "verified",
     bodyModel: eligibility.bodyModel.trim(),
-    source: "irontech-production-data",
+    source,
     verifiedAt: typeof eligibility.verifiedAt === "string" ? eligibility.verifiedAt : undefined
   };
 }

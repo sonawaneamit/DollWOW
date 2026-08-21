@@ -69,7 +69,7 @@ export type ProductExtended = {
   irontechUlwEligibility?: {
     status: "verified";
     bodyModel: string;
-    source: "irontech-production-data";
+    source: "irontech-production-data" | "irontech-direct-confirmation";
     verifiedAt?: string;
   };
   customizationGroups?: CustomizationGroup[];
