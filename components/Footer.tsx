@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PrivacySettingsButton } from "@/components/PrivacySettingsButton";
 import { FooterContactLinks } from "@/components/ContactChannels";
+import { PaymentLogos } from "@/components/PaymentLogos";
 
 const footerGroups = [
   {
@@ -93,7 +94,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-2 pt-6 text-sm leading-6 text-text-faint md:flex-row md:items-center md:justify-between">
+        <div className="border-t border-border py-6">
+          <PaymentLogos />
+        </div>
+
+        <div className="flex flex-col gap-2 text-sm leading-6 text-text-faint md:flex-row md:items-center md:justify-between">
           <p>Adults only. Product details, prices, and availability are reviewed before checkout.</p>
           <p>Discreet billing and plain packaging by default.</p>
         </div>
