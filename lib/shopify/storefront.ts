@@ -337,7 +337,8 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       stockStatus: stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
       deliveryEstimate: customerDeliveryEstimate(
         stockStatus === "ready_to_ship" || stockStatus === "custom" || stockStatus === "check_stock" ? stockStatus : undefined,
-        metafieldText(node.deliveryEstimate) || undefined
+        metafieldText(node.deliveryEstimate) || undefined,
+        metafieldText(node.material) || undefined
       ),
       stockLastCheckedAt: metafieldText(node.stockLastCheckedAt) || undefined,
       customAvailable: metafieldBoolean(node.customAvailable),
