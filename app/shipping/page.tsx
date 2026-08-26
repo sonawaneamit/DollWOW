@@ -20,17 +20,17 @@ export default function ShippingPage() {
         {
           title: "Ready-to-ship orders",
           items: [
-            "We confirm the exact warehouse unit and its current dispatch estimate before payment.",
+            "Estimated delivery is typically 3 business days.",
             "These orders are prioritized for fast release, so customization is limited and factory approval photos may not be available.",
-            "Final release still depends on stock confirmation and order review."
+            "Final release still depends on stock verification and order review."
           ]
         },
         {
           title: "Made-to-order builds",
           items: [
-            "Production and delivery timing are confirmed for your exact custom build before payment.",
+            "Estimated production and delivery is typically 3 weeks.",
             "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
-            "We confirm the expected production and shipping dates after reviewing your final choices."
+            "Production timing varies by selected build and current factory schedule."
           ]
         },
         {

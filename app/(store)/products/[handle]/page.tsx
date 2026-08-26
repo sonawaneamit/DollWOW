@@ -177,6 +177,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 unitPrice={Number(price.amount)}
                 currencyCode={price.currencyCode}
                 deliveryEstimate={product.extended.deliveryEstimate}
+                stockStatus={product.extended.stockStatus}
                 readyToShip={product.extended.stockStatus === "ready_to_ship"}
                 customAvailable={product.extended.customAvailable}
                 warehouseCountry={product.extended.warehouseCountry}

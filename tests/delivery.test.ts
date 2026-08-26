@@ -4,42 +4,27 @@ import { buildPdpFitChecks, buildPdpTrustSignals } from "@/lib/catalog/pdpSeo";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("customer delivery estimates", () => {
-  it("generates warehouse window for ready-to-ship products", () => {
-    expect(customerDeliveryEstimate("ready_to_ship", undefined, "TPE")).toBe(
-      "Typically 3–5 business days after we confirm the unit"
-    );
-    expect(customerDeliveryEstimate("ready_to_ship", undefined, "Silicone")).toBe(
-      "Typically 3–5 business days after we confirm the unit"
-    );
+  it("generates 3 business days for ready-to-ship products", () => {
+    expect(customerDeliveryEstimate("ready_to_ship", undefined, "TPE")).toBe("Est. 3 business days");
+    expect(customerDeliveryEstimate("ready_to_ship", undefined, "Silicone")).toBe("Est. 3 business days");
+    expect(customerDeliveryEstimate("ready_to_ship", undefined, undefined)).toBe("Est. 3 business days");
   });
 
-  it("generates TPE production window for custom TPE products", () => {
-    expect(customerDeliveryEstimate("custom", undefined, "TPE")).toBe(
-      "Typically 2–4 weeks from order to delivery"
-    );
+  it("generates 3 weeks for all custom products regardless of material", () => {
+    expect(customerDeliveryEstimate("custom", undefined, "TPE")).toBe("Est. 3 weeks");
+    expect(customerDeliveryEstimate("custom", undefined, "Silicone")).toBe("Est. 3 weeks");
+    expect(customerDeliveryEstimate("custom", undefined, "Full silicone")).toBe("Est. 3 weeks");
+    expect(customerDeliveryEstimate("custom", undefined, "Silicone head / TPE body")).toBe("Est. 3 weeks");
+    expect(customerDeliveryEstimate("custom", undefined, "Hybrid")).toBe("Est. 3 weeks");
+    expect(customerDeliveryEstimate("custom", undefined, undefined)).toBe("Est. 3 weeks");
   });
 
-  it("generates silicone/hybrid production window for custom silicone products", () => {
-    expect(customerDeliveryEstimate("custom", undefined, "Silicone")).toBe(
-      "Typically 4–7 weeks from order to delivery"
-    );
-    expect(customerDeliveryEstimate("custom", undefined, "Full silicone")).toBe(
-      "Typically 4–7 weeks from order to delivery"
-    );
-    expect(customerDeliveryEstimate("custom", undefined, "Silicone head / TPE body")).toBe(
-      "Typically 4–7 weeks from order to delivery"
-    );
-    expect(customerDeliveryEstimate("custom", undefined, "Hybrid")).toBe(
-      "Typically 4–7 weeks from order to delivery"
-    );
+  it("returns undefined when stock status is unknown", () => {
+    expect(customerDeliveryEstimate("check_stock", undefined, "TPE")).toBeUndefined();
+    expect(customerDeliveryEstimate(undefined, undefined, "TPE")).toBeUndefined();
   });
 
-  it("returns undefined when material is unknown for custom products", () => {
-    expect(customerDeliveryEstimate("custom", undefined, undefined)).toBeUndefined();
-    expect(customerDeliveryEstimate("custom", undefined, "")).toBeUndefined();
-  });
-
-  it("preserves a product-specific supplier estimate over generated windows", () => {
+  it("preserves a product-specific supplier estimate over generated estimates", () => {
     expect(customerDeliveryEstimate("custom", "Quoted after configuration review", "TPE")).toBe(
       "Quoted after configuration review"
     );
@@ -48,22 +33,20 @@ describe("customer delivery estimates", () => {
     );
   });
 
-  it("hides known legacy defaults imported across the catalog and falls back to generated windows", () => {
-    expect(customerDeliveryEstimate("custom", "4-8 weeks", "TPE")).toBe(
-      "Typically 2–4 weeks from order to delivery"
-    );
+  it("hides known legacy defaults imported across the catalog and falls back to generated estimates", () => {
+    expect(customerDeliveryEstimate("custom", "4-8 weeks", "TPE")).toBe("Est. 3 weeks");
     expect(customerDeliveryEstimate("custom", "Usually 3-5 weeks from order to delivery", "Silicone")).toBe(
-      "Typically 4–7 weeks from order to delivery"
+      "Est. 3 weeks"
     );
     expect(customerDeliveryEstimate("ready_to_ship", "Fast shipping after stock confirmation", "TPE")).toBe(
-      "Typically 3–5 business days after we confirm the unit"
+      "Est. 3 business days"
     );
     expect(customerDeliveryEstimate("ready_to_ship", "Ships within 1-3 business days after stock confirmation", "Silicone")).toBe(
-      "Typically 3–5 business days after we confirm the unit"
+      "Est. 3 business days"
     );
   });
 
-  it("uses confirmation language when a product has no live estimate", () => {
+  it("does not include confirmed before payment language", () => {
     const product = {
       ...sampleProducts[0],
       extended: {
@@ -77,7 +60,6 @@ describe("customer delivery estimates", () => {
       ...buildPdpFitChecks(product).map((item) => item.body ?? item.lines?.join(" ") ?? "")
     ].join(" ");
 
-    expect(copy).toContain("before payment");
-    expect(copy).not.toMatch(/\b\d+\s*[-–]\s*\d+\s+(?:business days?|weeks?)\b/i);
+    expect(copy).not.toMatch(/\b(confirmed?|confirm)\b.*\b(before|payment|checkout)\b/i);
   });
 });
