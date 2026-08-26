@@ -8,6 +8,7 @@ import { productBodyType } from "@/lib/catalog/bodyType";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
+import { productUrl } from "@/lib/catalog/productUrl";
 import { WishlistButton } from "@/components/WishlistButton";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
@@ -96,7 +97,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
                 <Link
                   key={activeProduct.id}
                   className="home-spot__slide home-spot__slide--video is-active"
-                  href={`/products/${activeProduct.handle}`}
+                  href={productUrl(activeProduct.handle)}
                   aria-label={`View ${productPublicTitle(activeProduct)}`}
                 >
                   <HomeSpotlightVideo product={activeProduct} />
@@ -288,7 +289,7 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
 
   return (
     <article className="home-product-card">
-      <Link href={`/products/${product.handle}`} className="home-product-card__link" aria-label={`View ${displayTitle}`} />
+      <Link href={productUrl(product.handle)} className="home-product-card__link" aria-label={`View ${displayTitle}`} />
       <div className="home-product-card__media">
         <HomeProductImage product={product} priority={priority} />
         <span className={`home-product-badge ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
@@ -538,7 +539,7 @@ function VisualPreviewTile({ product, wide = false }: { product: Product; wide?:
   const displayTitle = productPublicTitle(product);
 
   return (
-    <Link className={`home-preview__tile home-preview__tile--image ${wide ? "home-preview__tile--wide" : ""}`} href={`/products/${product.handle}`}>
+    <Link className={`home-preview__tile home-preview__tile--image ${wide ? "home-preview__tile--wide" : ""}`} href={productUrl(product.handle)}>
       {imageUrl ? <Image src={imageUrl} alt={displayTitle} fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /> : null}
       <span>{shortTitle(displayTitle)}</span>
     </Link>

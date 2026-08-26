@@ -6,6 +6,7 @@ import { ArrowRight, Heart, X } from "lucide-react";
 import { RecentlyViewedRail } from "@/components/RecentlyViewedRail";
 import { removeFromWishlist, useWishlist } from "@/lib/cart/wishlist";
 import { formatMoney } from "@/lib/utils/currency";
+import { productUrl } from "@/lib/catalog/productUrl";
 import { useMounted } from "@/lib/utils/storageStore";
 
 export function SavedPageClient() {
@@ -25,7 +26,7 @@ export function SavedPageClient() {
               key={entry.productHandle}
               className="group relative overflow-hidden rounded-[18px] border border-gold-500/14 bg-ivory-50/[0.035] transition hover:border-gold-300/50"
             >
-              <Link href={`/products/${entry.productHandle}`} className="block">
+              <Link href={productUrl(entry.productHandle)} className="block">
                 <div className="relative aspect-[4/5] bg-ink-900">
                   {entry.imageUrl ? (
                     <Image

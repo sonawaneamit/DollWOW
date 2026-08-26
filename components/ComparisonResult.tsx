@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { formatMoney } from "@/lib/utils/currency";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { productUrl } from "@/lib/catalog/productUrl";
 import type { ComparisonRequest } from "@/types/comparison";
 import type { Product } from "@/types/product";
 import { GoldButton } from "./GoldButton";
@@ -139,7 +140,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
           </p>
 
           {(showSuggestedMatch || showRequestedProduct) && product ? (
-            <Link href={`/products/${product.handle}`} className="mt-6 block rounded-md border border-border bg-surface p-4 shadow-soft transition hover:border-accent">
+            <Link href={productUrl(product.handle)} className="mt-6 block rounded-md border border-border bg-surface p-4 shadow-soft transition hover:border-accent">
               <span className="text-sm font-semibold text-text-dim">{showSuggestedMatch ? "Closest DollWow match" : "Related DollWow product"}</span>
               <span className="mt-1 block text-lg font-semibold leading-6 text-text">{productPublicTitle(product)}</span>
               <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent">View product <ArrowRight className="h-4 w-4" /></span>
@@ -168,7 +169,7 @@ export function ComparisonResult({ request, product }: { request: ComparisonRequ
           ) : null}
 
           <div className="mt-7 flex flex-wrap gap-3">
-            {showSuggestedMatch && product ? <GoldButton href={`/products/${product.handle}`}>Open match</GoldButton> : null}
+            {showSuggestedMatch && product ? <GoldButton href={productUrl(product.handle)}>Open match</GoldButton> : null}
             <GoldButton href="/support?source=price-match" variant={showSuggestedMatch ? "secondary" : "primary"}>Ask our team</GoldButton>
           </div>
 

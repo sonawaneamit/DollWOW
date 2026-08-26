@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useRecentlyViewed } from "@/lib/cart/recentlyViewed";
 import { formatMoney } from "@/lib/utils/currency";
+import { productUrl } from "@/lib/catalog/productUrl";
 import { useMounted } from "@/lib/utils/storageStore";
 
 /**
@@ -36,7 +37,7 @@ export function RecentlyViewedRail({ excludeHandle, title = "Recently viewed" }:
         {items.map((entry) => (
           <Link
             key={entry.productHandle}
-            href={`/products/${entry.productHandle}`}
+            href={productUrl(entry.productHandle)}
             className="group overflow-hidden rounded-[16px] border border-gold-500/14 bg-ivory-50/[0.035] transition hover:border-gold-300/50"
           >
             <div className="relative aspect-[4/5] bg-ink-900">

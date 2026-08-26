@@ -9,6 +9,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
@@ -25,7 +26,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
 
   return (
     <article className="catalog-product-card group">
-      <Link className="catalog-product-card__link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`} />
+      <Link className="catalog-product-card__link" href={productUrl(product.handle)} aria-label={`View ${displayTitle}`} />
       <div className="catalog-product-card__media">
         {publicImageUrl ? <Image src={publicImageUrl} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" priority={priority} loading={priority ? "eager" : "lazy"} /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
         <span className={`catalog-product-card__status ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>

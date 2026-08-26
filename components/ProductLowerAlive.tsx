@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Camera, ChevronDown, PackageCheck, ShieldCheck, Truck } from "lucide-react";
 import { ProductImageFrame } from "@/components/ProductImageFrame";
+import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { formatMoney } from "@/lib/utils/currency";
@@ -134,7 +135,7 @@ function SimilarDollCard({ product }: { product: Product }) {
   const displayTitle = productPublicTitle(product);
   return (
     <article className="alive-sim-card">
-      <Link className="alive-sim-link" href={`/products/${product.handle}`} aria-label={`View ${displayTitle}`}>
+      <Link className="alive-sim-link" href={productUrl(product.handle)} aria-label={`View ${displayTitle}`}>
         <ProductImageFrame product={product} />
         <span className="alive-sim-scrim" aria-hidden="true" />
         {product.extended.stockStatus === "ready_to_ship" ? <span className="alive-sim-status">Ready to ship</span> : null}

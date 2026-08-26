@@ -344,9 +344,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   },
   zelex: {
     positioning:
-      "Zelex Dolls is often compared for premium realism, detailed facial work, and silicone-focused catalog options.",
-    guideHref: "/learn/zelex-dolls-buying-guide",
-    guideLabel: "Zelex Dolls buying guide"
+      "Zelex Dolls is often compared for premium realism, detailed facial work, and silicone-focused catalog options."
   },
   "6ye": {
     positioning:
