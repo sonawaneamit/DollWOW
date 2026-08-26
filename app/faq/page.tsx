@@ -26,6 +26,15 @@ export default function FaqPage() {
           ]
         },
         {
+          title: "Cancellation",
+          items: [
+            "You can cancel within 4 hours for a full refund, within 8 hours for 95%, or within 24 hours for 80%.",
+            "After 24 hours, custom orders lock because production has started.",
+            "Once shipped, orders cannot be canceled.",
+            "See the Returns page for complete cancellation terms and refund timing."
+          ]
+        },
+        {
           title: "Factory photos",
           items: [
             "Custom builds include detailed factory photos and videos before shipment.",
