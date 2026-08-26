@@ -119,4 +119,53 @@ describe("Shopify product metadata mapping", () => {
 
     expect(product.extended.irontechUlwEligibility).toBeUndefined();
   });
+
+  it("forces customAvailable to false for ready-to-ship warehouse products", () => {
+    const product = mapShopifyProduct({
+      id: "gid://shopify/Product/100",
+      handle: "irontech-len-stilwell-158cm-l-cup-tpe-companion-doll-1g8uu",
+      title: "Irontech Len Stilwell 158cm L-Cup TPE Companion Doll",
+      description: "Ready to ship from US warehouse",
+      vendor: "Irontech Dolls",
+      productType: "Custom TPE Doll",
+      tags: ["irontech", "warehouse", "ready-to-ship"],
+      featuredImage: null,
+      images: { edges: [] },
+      variants: { edges: [] },
+      priceRange: {
+        minVariantPrice: { amount: "1899", currencyCode: "USD" },
+        maxVariantPrice: { amount: "1899", currencyCode: "USD" }
+      },
+      stockStatus: { value: "ready_to_ship" },
+      warehouseCountry: { value: "US" },
+      customAvailable: { value: "true" }
+    });
+
+    expect(product.extended.stockStatus).toBe("ready_to_ship");
+    expect(product.extended.customAvailable).toBe(false);
+  });
+
+  it("preserves customAvailable for custom-order products even when explicitly set", () => {
+    const product = mapShopifyProduct({
+      id: "gid://shopify/Product/101",
+      handle: "irontech-fenny-162cm-g-cup-hybrid-companion-doll-1if4v",
+      title: "Irontech Fenny 162cm G-Cup Hybrid Companion Doll",
+      description: "Made to order",
+      vendor: "Irontech Dolls",
+      productType: "Custom Hybrid Doll",
+      tags: ["irontech", "custom"],
+      featuredImage: null,
+      images: { edges: [] },
+      variants: { edges: [] },
+      priceRange: {
+        minVariantPrice: { amount: "2555", currencyCode: "USD" },
+        maxVariantPrice: { amount: "2555", currencyCode: "USD" }
+      },
+      stockStatus: { value: "custom" },
+      customAvailable: { value: "true" }
+    });
+
+    expect(product.extended.stockStatus).toBe("custom");
+    expect(product.extended.customAvailable).toBe(true);
+  });
 });

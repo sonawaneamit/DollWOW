@@ -194,7 +194,7 @@ export function isNeutralDefaultOption(id: string, label = "", productionNote = 
     id === "none" ||
     id === "default" ||
     id === "factory-default" ||
-    /^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(label) ||
+    /^(no add-on|no thanks|none|as shown|factory default|default supplier selection)$/i.test(label) ||
     /default supplier selection|no paid add-on/i.test(productionNote)
   );
 }

@@ -386,17 +386,20 @@ function normalizeImportedStarperyOption(groupLabel: string, option: Customizati
   const label = option.label.toLowerCase();
   let priceDelta = option.priceDelta;
 
+  // Neutral defaults are always free regardless of group
+  if (priceDelta === undefined && isIncludedDefault(option)) {
+    priceDelta = 0;
+  }
+
   // The official Starpery 2026 price list is authoritative when a dealer promotion conflicts.
   if (groupLabel === "head type") {
     priceDelta = /\bros\b|oral sex|movable jaw/.test(label) ? 100 : 0;
   } else if (groupLabel === "hair implanted") {
     if (/human/.test(label)) priceDelta = 300;
     else if (/synthetic/.test(label)) priceDelta = 150;
-    else if (/no thanks|none|factory default/.test(label)) priceDelta = 0;
   } else if (/vagina hair|pubic hair/.test(groupLabel)) {
     if (/no\.\s*[123]|custom/.test(label)) priceDelta = 50;
     else if (/paster|adhesive/.test(label)) priceDelta = 80;
-    else if (/none|no thanks|factory default/.test(label)) priceDelta = 0;
   } else if (/reduce weight/.test(groupLabel)) {
     if (/no need|full.?weight|without/.test(label)) priceDelta = 150;
     else if (/need|reduce|factory default|free/.test(label)) priceDelta = 0;
@@ -404,7 +407,6 @@ function normalizeImportedStarperyOption(groupLabel: string, option: Customizati
     if (/2\.0|enhanced/.test(label)) priceDelta = 165;
   } else if (/standing add-on/.test(groupLabel)) {
     if (/hard feet|no bolts/.test(label)) priceDelta = 100;
-    else if (/standing|factory default|none|no thanks/.test(label)) priceDelta = 0;
   } else if (/premium head & body|premium body/.test(groupLabel)) {
     if (/moaning/.test(label)) priceDelta = 100;
     else if (/heating/.test(label)) priceDelta = 200;
@@ -442,7 +444,7 @@ function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {
 }
 
 function isIncludedDefault(option: Pick<CustomizationOption, "id" | "label" | "productionNote">) {
-  return /\bfree\b|^(no add-on|no thanks|none|no change|factory default|default supplier selection)$/i.test(option.label) ||
+  return /\bfree\b|^(no add-on|no thanks|none|no change|as shown|factory default|default supplier selection)$/i.test(option.label) ||
     /default supplier selection/i.test(option.productionNote || "");
 }
 
