@@ -161,9 +161,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 <Spec key={spec.label} label={spec.label} value={spec.value} />
               ))}
             </div>
-            <div className="mt-5 grid gap-2 text-sm text-ivory-300 sm:grid-cols-3">
+            <div className="mt-5 grid gap-2 text-sm text-ivory-300 sm:grid-cols-2">
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
-              <TrustLine icon={<Truck className="h-4 w-4" />} text="Timing confirmed" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
             {firstAvailable && (

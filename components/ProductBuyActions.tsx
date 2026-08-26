@@ -9,6 +9,7 @@ import { formatMoney } from "@/lib/utils/currency";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
 import type { ProductImage, Product } from "@/types/product";
 import { Care365Seal } from "@/components/care/Care365Seal";
+import { PaymentLogos } from "@/components/PaymentLogos";
 
 type ProductBuyActionsProps = {
   merchandiseId: string;
@@ -161,7 +162,9 @@ export function ProductBuyActions({
         </div>
       </div>
 
-      <p className="mt-4 flex items-center justify-center gap-2 text-center text-[15px] text-text-dim">
+      <PaymentLogos className="mt-4" />
+
+      <p className="mt-3 flex items-center justify-center gap-2 text-center text-[15px] text-text-dim">
         <Lock className="h-4 w-4" /> Secure checkout by Shopify · plain packaging · neutral billing
       </p>
 
