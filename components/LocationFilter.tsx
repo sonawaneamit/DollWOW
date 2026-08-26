@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { MapPin } from "lucide-react";
 import type { CatalogFilters } from "@/lib/catalog/filters";
 
@@ -12,6 +13,20 @@ const locationOptions = [
 ] as const;
 
 export function LocationFilter({ currentRegion, basePath }: { currentRegion?: CatalogFilters["region"]; basePath: string }) {
+  const searchParams = useSearchParams();
+
+  function buildHref(regionValue: string | undefined) {
+    const params = new URLSearchParams(searchParams?.toString() || "");
+    
+    if (regionValue) {
+      params.set("region", regionValue);
+    } else {
+      params.delete("region");
+    }
+    
+    return params.size > 0 ? `${basePath}?${params.toString()}` : basePath;
+  }
+
   return (
     <div className="location-filter">
       <div className="location-filter__header">
@@ -21,7 +36,7 @@ export function LocationFilter({ currentRegion, basePath }: { currentRegion?: Ca
       <div className="location-filter__options" role="group" aria-label="Warehouse location filter">
         {locationOptions.map((option) => {
           const isActive = currentRegion === option.value;
-          const href = option.value ? `${basePath}?region=${option.value}` : basePath;
+          const href = buildHref(option.value);
           
           return (
             <Link
