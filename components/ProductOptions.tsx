@@ -290,6 +290,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
               {isReviewing && canCheckout ? "Add to Cart" : "Review & Add to Cart"}
             </button>
+            <div className="mt-4">
+              <PaymentLogos />
+            </div>
           </div>
         </aside>
 
