@@ -1745,6 +1745,7 @@ textarea {
 .location-filter__chip {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   min-height: 44px;
   padding: 0 1.25rem;
   border: 1px solid rgb(var(--color-border));
@@ -1755,6 +1756,11 @@ textarea {
   font-weight: 600;
   transition: all 0.15s ease;
   cursor: pointer;
+}
+
+.location-filter__chip-flag {
+  font-size: 18px;
+  line-height: 1;
 }
 
 .location-filter__chip:hover {

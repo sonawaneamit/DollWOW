@@ -19,10 +19,10 @@ const primaryLinks = [
 ] as const;
 
 const readyToShipLinks = [
-  { label: "All", href: "/shop/ready-to-ship" },
-  { label: "United States", href: "/shop/ready-to-ship?region=us" },
-  { label: "Canada", href: "/shop/ready-to-ship?region=ca" },
-  { label: "Europe", href: "/shop/ready-to-ship?region=eu" }
+  { label: "All", href: "/shop/ready-to-ship", flag: "🌐" },
+  { label: "United States", href: "/shop/ready-to-ship?region=us", flag: "🇺🇸" },
+  { label: "Canada", href: "/shop/ready-to-ship?region=ca", flag: "🇨🇦" },
+  { label: "Europe", href: "/shop/ready-to-ship?region=eu", flag: "🇪🇺" }
 ] as const;
 
 const mobilePrimaryLinks = [
@@ -404,8 +404,9 @@ function ReadyToShipDropdown({ onNavigate }: { onNavigate: () => void }) {
             key={link.href}
             href={link.href}
             onClick={onNavigate}
-            className="flex min-h-11 items-center border-l-2 border-transparent px-3 text-[16px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-tint focus-visible:border-accent focus-visible:bg-surface-tint"
+            className="flex min-h-11 items-center gap-2 border-l-2 border-transparent px-3 text-[16px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-tint focus-visible:border-accent focus-visible:bg-surface-tint"
           >
+            <span className="text-[18px]" aria-hidden="true">{link.flag}</span>
             {link.label}
           </Link>
         ))}

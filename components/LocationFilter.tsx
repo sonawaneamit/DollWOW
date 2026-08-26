@@ -6,10 +6,10 @@ import { MapPin } from "lucide-react";
 import type { CatalogFilters } from "@/lib/catalog/filters";
 
 const locationOptions = [
-  { label: "All", value: undefined },
-  { label: "United States", value: "us" },
-  { label: "Canada", value: "ca" },
-  { label: "Europe", value: "eu" }
+  { label: "All", value: undefined, flag: "🌐" },
+  { label: "United States", value: "us", flag: "🇺🇸" },
+  { label: "Canada", value: "ca", flag: "🇨🇦" },
+  { label: "Europe", value: "eu", flag: "🇪🇺" }
 ] as const;
 
 export function LocationFilter({ currentRegion, basePath }: { currentRegion?: CatalogFilters["region"]; basePath: string }) {
@@ -46,6 +46,7 @@ export function LocationFilter({ currentRegion, basePath }: { currentRegion?: Ca
               className={`location-filter__chip ${isActive ? "location-filter__chip--active" : ""}`}
               aria-current={isActive ? "true" : undefined}
             >
+              <span className="location-filter__chip-flag" aria-hidden="true">{option.flag}</span>
               {option.label}
             </Link>
           );
