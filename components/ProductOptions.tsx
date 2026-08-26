@@ -43,6 +43,7 @@ import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
 import { dollVueSelectionKey } from "@/lib/dollvue/public";
+import { PaymentLogos } from "./PaymentLogos";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -417,6 +418,11 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                     <ChevronLeft className="h-5 w-5" /> Back to {activeGroup.label}
                   </button>
                 </div>
+
+                <div className="mt-5 border-t border-border pt-5">
+                  <PaymentLogos />
+                </div>
+
                 <p className="mt-5 text-center text-[15px] text-text-dim">Secure checkout by Shopify</p>
                 <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="mt-2 flex min-h-11 items-center justify-center text-[15px] font-semibold text-accent underline underline-offset-4">Questions? Talk to a real person</a>
               </div>
