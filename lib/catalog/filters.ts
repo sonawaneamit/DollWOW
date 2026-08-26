@@ -287,10 +287,22 @@ function productMatchesWarehouseRegion(product: Product, region: NonNullable<Cat
   const aliases: Record<NonNullable<CatalogFilters["region"]>, string[]> = {
     us: ["united states", "united states of america", "usa", "us", "u.s."],
     eu: ["european union", "eu", "europe"],
-    ca: ["canada"],
+    ca: ["canada", "ca", "can"],
     au: ["australia"]
   };
-  return values.some((value) => aliases[region].includes(value));
+  
+  if (values.some((value) => aliases[region].includes(value))) {
+    return true;
+  }
+  
+  const handleSuffixMap: Record<NonNullable<CatalogFilters["region"]>, string> = {
+    us: "-rts-us",
+    eu: "-rts-eu",
+    ca: "-rts-ca",
+    au: "-rts-au"
+  };
+  
+  return product.handle.endsWith(handleSuffixMap[region]);
 }
 
 function productMatchesBrand(product: Product, brand: string) {

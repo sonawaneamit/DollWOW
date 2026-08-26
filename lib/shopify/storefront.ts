@@ -237,7 +237,7 @@ export async function getProducts({
   }
 }
 
-export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }: { first?: number; revalidate?: number } = {}) {
+export async function getSeoCatalogProducts({ first = 5000, revalidate = 300 }: { first?: number; revalidate?: number } = {}) {
   const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
@@ -249,7 +249,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 3600 }:
     while (products.length < target) {
       const pageSize = Math.min(250, target - products.length);
       const data: SeoProductListData = await storefrontFetch<SeoProductListData>(
-        `# seo-catalog-v1
+        `# seo-catalog-v2
         query SeoCatalogProducts($first: Int!, $after: String) {
           products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
             edges { cursor node {
