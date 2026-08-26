@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
 import { dollVueDraftKey, dollVueSelectionKey, type DollVueGroup } from "@/lib/dollvue/public";
+import { productUrl } from "@/lib/catalog/productUrl";
 
 type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
@@ -125,7 +126,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
       savedAt: Date.now()
     }));
     trackEvent("dollvue_use_choices", { product_handle: product.handle, option_count: result.selections.length });
-    window.location.assign(`/products/${product.handle}#build-studio`);
+    window.location.assign(`${productUrl(product.handle)}#build-studio`);
   }
 
   async function sharePreview() {
@@ -144,7 +145,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
   return (
     <div className={`dollvue-shell dollvue-step-${step}${result ? " has-result" : ""}`} aria-busy={loading}>
       <header className="dollvue-header">
-        <Link href={`/products/${product.handle}`} aria-label="Back to product"><ArrowLeft /></Link>
+        <Link href={productUrl(product.handle)} aria-label="Back to product"><ArrowLeft /></Link>
         <div><span>DollVue™</span><strong>See your doll your way</strong></div>
         <p><b>{remaining}</b> of {freePreviews} previews</p>
       </header>
@@ -195,7 +196,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
                   Use these choices <ArrowRight />
                 </button>
                 <div className="dollvue-result-links">
-                  <Link href={`/products/${product.handle}`}>Back to product</Link>
+                  <Link href={productUrl(product.handle)}>Back to product</Link>
                   <button type="button" onClick={() => { setResult(null); setStep(1); setShowOriginal(false); }}><RotateCcw /> Start over</button>
                 </div>
               </div>

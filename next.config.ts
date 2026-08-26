@@ -20,6 +20,31 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/products/null",
+        destination: "/shop/sex-dolls",
+        permanent: false
+      },
+      {
+        source: "/dollvue/null",
+        destination: "/dollvue",
+        permanent: false
+      },
+      {
+        source: "/shop/null",
+        destination: "/shop/sex-dolls",
+        permanent: false
+      },
+      {
+        source: "/products/irontech-fenny",
+        destination: "/products/irontech-fenny-162cm-g-cup-hybrid-companion-doll-1if4v",
+        permanent: true
+      },
+      {
+        source: "/learn/zelex-dolls-buying-guide",
+        destination: "/brands/zelex",
+        permanent: false
+      },
+      {
         source: "/shop/lighter",
         destination: "/shop/lightweight-sex-dolls",
         permanent: true

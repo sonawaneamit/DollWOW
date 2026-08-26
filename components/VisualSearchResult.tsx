@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon, Mail, MessageCircle, SearchCheck } from "lucide-react";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
 import type { VisualSearchRequestRecord } from "@/types/visualSearch";
 import { GoldButton } from "./GoldButton";
@@ -110,7 +111,7 @@ export function VisualSearchResult({
               product ? (
                 <div key={product.id} className="rounded-[16px] bg-ink-950/50 p-4">
                   <p className="text-sm  text-gold-300">{product.extended.brand || product.vendor}</p>
-                  <Link href={`/products/${product.handle}`} className="mt-1 block text-lg font-semibold text-ivory-50 hover:text-gold-200">
+                  <Link href={productUrl(product.handle)} className="mt-1 block text-lg font-semibold text-ivory-50 hover:text-gold-200">
                     {productPublicTitle(product)}
                   </Link>
                   <p className="mt-2 text-sm text-ivory-400">
@@ -123,7 +124,7 @@ export function VisualSearchResult({
                     <span className="rounded-full border border-gold-500/18 px-3 py-1 text-sm font-semibold text-gold-200">
                       Catalog score {score}
                     </span>
-                    <GoldButton href={`/products/${product.handle}`} className="min-h-0 px-4 py-2 text-sm">
+                    <GoldButton href={productUrl(product.handle)} className="min-h-0 px-4 py-2 text-sm">
                       View doll
                     </GoldButton>
                   </div>
