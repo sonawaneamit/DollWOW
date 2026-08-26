@@ -237,7 +237,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.brand && !productMatchesBrand(product, filters.brand)) return false;
     if (filters.look && !productMatchesLook(product, filters.look)) return false;
     if (filters.bodyType && !productMatchesBodyType(product, filters.bodyType)) return false;
-    if (filters.availability && product.extended.stockStatus !== filters.availability) return false;
+    if (filters.availability && !productMatchesAvailability(product, filters.availability)) return false;
     if (filters.region && !productMatchesWarehouseRegion(product, filters.region)) return false;
     if (filters.material && !productMatchesMaterial(product, filters.material)) return false;
     if (filters.productForm && !productMatchesProductForm(product, filters.productForm)) return false;
@@ -291,6 +291,11 @@ function productMatchesWarehouseRegion(product: Product, region: NonNullable<Cat
     au: ["australia"]
   };
   return values.some((value) => aliases[region].includes(value));
+}
+
+function productMatchesAvailability(product: Product, availability: NonNullable<CatalogFilters["availability"]>) {
+  if (product.extended.stockStatus === availability) return true;
+  return product.tags.includes(availability) || product.tags.includes(tagForFilter(availability));
 }
 
 function productMatchesBrand(product: Product, brand: string) {

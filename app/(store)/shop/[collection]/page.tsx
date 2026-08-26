@@ -1,6 +1,7 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
+import { LocationFilter } from "@/components/LocationFilter";
 import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
 import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
@@ -56,6 +57,7 @@ export default async function CollectionPage({
     .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 0;
+  const isReadyToShip = collection === "ready-to-ship";
 
   return (
     <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -110,6 +112,11 @@ export default async function CollectionPage({
         </section>
       ) : null}
       <div className="mb-8"><CareForLifePanel compact /></div>
+      {isReadyToShip ? (
+        <div className="mb-6">
+          <LocationFilter currentRegion={filters.region} basePath={`/shop/${collection}`} />
+        </div>
+      ) : null}
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
           <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />

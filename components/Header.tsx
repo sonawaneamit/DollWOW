@@ -15,12 +15,19 @@ import { brandHubHref } from "@/lib/catalog/brands";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 
 const primaryLinks = [
-  { label: "Shop all dolls", href: "/shop/sex-dolls" },
-  { label: "Ready to ship", href: "/shop/ready-to-ship" }
+  { label: "Shop all dolls", href: "/shop/sex-dolls" }
+] as const;
+
+const readyToShipLinks = [
+  { label: "All", href: "/shop/ready-to-ship", flag: "🌐" },
+  { label: "United States", href: "/shop/ready-to-ship?region=us", flag: "🇺🇸" },
+  { label: "Canada", href: "/shop/ready-to-ship?region=ca", flag: "🇨🇦" },
+  { label: "Europe", href: "/shop/ready-to-ship?region=eu", flag: "🇪🇺" }
 ] as const;
 
 const mobilePrimaryLinks = [
   ...primaryLinks,
+  { label: "Ready to ship", href: "/shop/ready-to-ship" },
   { label: "Compare dolls", href: "/compare" },
   { label: "Help me choose", href: "/help-me-choose" },
   { label: "Support", href: "/support" }
@@ -110,6 +117,7 @@ export function Header() {
   const comparison = useComparison();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
+  const [readyToShipOpen, setReadyToShipOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResultSuggestion[]>([]);
@@ -160,6 +168,16 @@ export function Header() {
   }, [brandsOpen]);
 
   useEffect(() => {
+    if (!readyToShipOpen) return;
+    function onPointerDown(event: PointerEvent) {
+      const target = event.target as Element | null;
+      if (!target?.closest("[data-ready-to-ship-menu-root]")) setReadyToShipOpen(false);
+    }
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => window.removeEventListener("pointerdown", onPointerDown);
+  }, [readyToShipOpen]);
+
+  useEffect(() => {
     if (!shouldQueryRemote) return;
 
     const trimmed = searchQuery.trim();
@@ -192,12 +210,14 @@ export function Header() {
   function closeAll() {
     setMobileMenuOpen(false);
     setBrandsOpen(false);
+    setReadyToShipOpen(false);
     setSearchOpen(false);
   }
 
   function openSearch() {
     setMobileMenuOpen(false);
     setBrandsOpen(false);
+    setReadyToShipOpen(false);
     setSearchOpen(true);
   }
 
@@ -241,13 +261,31 @@ export function Header() {
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary navigation">
           <HeaderLink href="/shop/sex-dolls" active={shopActive} onNavigate={closeAll}>Shop all dolls</HeaderLink>
-          <HeaderLink href="/shop/ready-to-ship" active={readyToShipActive} onNavigate={closeAll}>Ready to ship</HeaderLink>
+          <div className="relative" data-ready-to-ship-menu-root>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchOpen(false);
+                setMobileMenuOpen(false);
+                setBrandsOpen(false);
+                setReadyToShipOpen((value) => !value);
+              }}
+              className={`v2-header-link ${readyToShipActive || readyToShipOpen ? "is-active" : ""}`}
+              aria-expanded={readyToShipOpen}
+              aria-controls="desktop-ready-to-ship-menu"
+            >
+              Ready to ship
+              <ChevronDown className={`h-4 w-4 transition-transform ${readyToShipOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+            </button>
+            {readyToShipOpen ? <ReadyToShipDropdown onNavigate={closeAll} /> : null}
+          </div>
           <div className="relative" data-brands-menu-root>
             <button
               type="button"
               onClick={() => {
                 setSearchOpen(false);
                 setMobileMenuOpen(false);
+                setReadyToShipOpen(false);
                 setBrandsOpen((value) => !value);
               }}
               className={`v2-header-link ${brandActive || brandsOpen ? "is-active" : ""}`}
@@ -347,6 +385,34 @@ export function Header() {
 
 function HeaderLink({ href, active, onNavigate, children }: { href: string; active?: boolean; onNavigate: () => void; children: React.ReactNode }) {
   return <Link href={href} onClick={onNavigate} className={`v2-header-link ${active ? "is-active" : ""}`}>{children}</Link>;
+}
+
+function ReadyToShipDropdown({ onNavigate }: { onNavigate: () => void }) {
+  return (
+    <div
+      id="desktop-ready-to-ship-menu"
+      className="absolute left-1/2 top-[calc(100%+10px)] z-[85] w-[280px] -translate-x-1/2 overflow-hidden rounded-lg border border-border bg-surface shadow-panel"
+    >
+      <div className="border-b border-border px-5 py-4">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-accent">Filter by location</p>
+        <p className="mt-1 font-display text-[20px] font-semibold leading-tight text-text">Warehouse location</p>
+      </div>
+
+      <div className="px-2 py-2" aria-label="Warehouse locations">
+        {readyToShipLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={onNavigate}
+            className="flex min-h-11 items-center gap-2 border-l-2 border-transparent px-3 text-[16px] font-semibold text-text transition-colors hover:border-accent hover:bg-surface-tint focus-visible:border-accent focus-visible:bg-surface-tint"
+          >
+            <span className="text-[18px]" aria-hidden="true">{link.flag}</span>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function BrandsDropdown({ onNavigate }: { onNavigate: () => void }) {
