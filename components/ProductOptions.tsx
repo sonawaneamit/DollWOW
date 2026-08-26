@@ -23,6 +23,7 @@ import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productBuilderHeading } from "@/lib/catalog/bodyType";
+import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { getCustomizationConfig } from "@/lib/customization/configs";
@@ -277,6 +278,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               totalPrice={resolved.totalPrice}
               currencyCode={currencyCode}
               leadTimeNote={config.leadTimeNote}
+              stockStatus={product.extended.stockStatus}
             />
             <button
               type="button"
@@ -430,7 +432,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   );
 }
 
-function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, leadTimeNote }: {
+function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, leadTimeNote, stockStatus }: {
   groups: CustomizationGroup[];
   selected: CustomizationSelections;
   selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
@@ -439,7 +441,10 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
   totalPrice: number;
   currencyCode: string;
   leadTimeNote?: string;
+  stockStatus?: Product["extended"]["stockStatus"];
 }) {
+  const estimatedDate = stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
+
   return (
     <div className="mt-5 rounded-md bg-surface-tint p-5">
       <h3 className="text-xl font-semibold">Your build</h3>
@@ -451,6 +456,11 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
       </div>
       <PriceSummary basePrice={basePrice} optionPriceDelta={optionPriceDelta} totalPrice={totalPrice} currencyCode={currencyCode} compact />
       <div aria-live="polite" className="sr-only">Current total {formatMoney(totalPrice, currencyCode)}</div>
+      {estimatedDate ? (
+        <p className="mt-4 text-sm leading-6 text-text-dim">
+          Est. delivery <span className="font-semibold text-text">{estimatedDate.formatted}</span>
+        </p>
+      ) : null}
       {leadTimeNote ? <p className="mt-4 text-sm leading-6 text-text-dim"><Clock3 className="mr-2 inline h-4 w-4" />{leadTimeNote}</p> : null}
       <p className="mt-3 text-sm leading-6 text-text-dim">Our team reviews every configuration before anything is made or shipped.</p>
     </div>
