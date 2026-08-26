@@ -265,4 +265,32 @@ describe("Irontech dealer-guided customization", () => {
     expect(config.id).toBe("irontech-family-profile");
     expect(config.groups.some((group) => group.id === "choose-head" || group.id === "add-extra-head")).toBe(false);
   });
+
+  it("does not charge for vagina hair neutral default options like None or No thanks", () => {
+    const product = irontech([
+      {
+        id: "vagina-hair",
+        label: "Vagina Hair",
+        display: "cards",
+        options: [
+          { id: "none", label: "None" },
+          { id: "no-thanks", label: "No thanks" },
+          { id: "factory-default", label: "Factory default" },
+          { id: "as-shown", label: "As shown" },
+          { id: "natural", label: "Natural pubic hair" },
+          { id: "trimmed", label: "Trimmed" }
+        ]
+      }
+    ]);
+    
+    const config = getCustomizationConfig(product);
+    const vaginaHair = config.groups.find((group) => /vagina hair/i.test(group.label));
+    
+    expect(vaginaHair?.options.find((option) => option.id === "none")?.priceDelta).toBe(0);
+    expect(vaginaHair?.options.find((option) => option.id === "no-thanks")?.priceDelta).toBe(0);
+    expect(vaginaHair?.options.find((option) => option.id === "factory-default")?.priceDelta).toBe(0);
+    expect(vaginaHair?.options.find((option) => option.id === "as-shown")?.priceDelta).toBe(0);
+    expect(vaginaHair?.options.find((option) => option.id === "natural")?.priceDelta).toBe(30);
+    expect(vaginaHair?.options.find((option) => option.id === "trimmed")?.priceDelta).toBe(30);
+  });
 });

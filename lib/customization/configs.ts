@@ -661,7 +661,7 @@ function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupI
 function isOnlineCheckoutOption(option: CustomizationOption) {
   if (option.priceDelta !== undefined) return true;
   if (/\bfree\b/i.test(option.label)) return true;
-  if (/^(no add-on|no thanks|none|factory default|default supplier selection)$/i.test(option.label)) return true;
+  if (/^(no add-on|no thanks|none|as shown|factory default|default supplier selection)$/i.test(option.label)) return true;
   return /default supplier selection/i.test(option.productionNote || "");
 }
 

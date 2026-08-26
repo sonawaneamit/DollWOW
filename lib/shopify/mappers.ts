@@ -150,6 +150,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
   );
 
   const stockStatus = node.stockStatus?.value as Product["extended"]["stockStatus"];
+  const customAvailableRaw = booleanValue(node.customAvailable?.value);
 
   return {
     id: node.id,
@@ -193,7 +194,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       stockStatus,
       deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value),
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
-      customAvailable: booleanValue(node.customAvailable?.value),
+      customAvailable: stockStatus === "ready_to_ship" ? false : customAvailableRaw,
       penisAddOnAvailable: booleanValue(node.penisAddOnAvailable?.value),
       irontechUlwEligibility: irontechUlwEligibilityValue(node.irontechUlwEligibility?.value),
       customizationGroups,
