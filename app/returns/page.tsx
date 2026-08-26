@@ -18,6 +18,18 @@ export default function ReturnsPage() {
       ]}
       sections={[
         {
+          title: "Cancellation",
+          items: [
+            "Within 4 hours of payment: full refund (100%)",
+            "Within 8 hours of payment: 95% refund",
+            "Within 24 hours of payment: 80% refund",
+            "After 24 hours: order is locked because custom production has started",
+            "Once shipped: order cannot be canceled",
+            "Approved refunds return to the original payment method within 5–10 business days.",
+            "Ready-to-ship orders may ship within a few business days, so the window to cancel can be short."
+          ]
+        },
+        {
           title: "Custom-order expectations",
           items: [
             "Custom items may not be returnable once production begins.",
