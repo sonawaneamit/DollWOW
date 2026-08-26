@@ -176,10 +176,10 @@ function faqItems(product: Product, readyToShip: boolean) {
     return [
       {
         question: "Is this exact doll currently in stock?",
-        answer: `This listing is marked ready to ship${product.extended.warehouseRegions?.length ? ` from ${product.extended.warehouseRegions.join(", ")}` : product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. We reconfirm the unit before warehouse release.`
+        answer: `This listing is marked ready to ship${product.extended.warehouseRegions?.length ? ` from ${product.extended.warehouseRegions.join(", ")}` : product.extended.warehouseCountry ? ` from ${product.extended.warehouseCountry}` : ""}. We verify the unit before warehouse release.`
       },
       { question: "Can I customize this warehouse doll?", answer: product.extended.customAvailable ? "Only the options shown on this page are supported for this stock unit." : "No. This warehouse unit is sold in the fixed configuration shown so it can dispatch quickly." },
-      { question: "When does it leave the warehouse?", answer: product.extended.deliveryEstimate ? `The current estimate shown for this unit is ${product.extended.deliveryEstimate}. We reconfirm it before payment, and tracking is shared after dispatch.` : "We confirm the current dispatch estimate for this exact unit before payment. Tracking is shared after dispatch." },
+      { question: "When does it leave the warehouse?", answer: product.extended.deliveryEstimate ? `Estimated delivery: ${product.extended.deliveryEstimate}. Tracking is shared after dispatch.` : "Tracking is shared after dispatch." },
       { question: "What if it arrives damaged?", answer: "Contact us within 24 hours with photos of the product, carton, and packaging so the delivery claim can be reviewed." }
     ];
   }
@@ -187,7 +187,7 @@ function faqItems(product: Product, readyToShip: boolean) {
     { question: "Can I buy the standard configuration?", answer: "Yes. Use Add standard configuration if the default build suits you, or open the configurator to personalize it." },
     { question: "When is the final price shown?", answer: "Supported paid options update the build total before you add the configured doll to your cart." },
     { question: "Do I approve the finished doll?", answer: "Yes. We share detailed factory photos and videos before shipment and review cosmetic revision requests before approval." },
-    { question: "How long does production take?", answer: product.extended.deliveryEstimate ? `The current estimate shown for this build is ${product.extended.deliveryEstimate}. We reconfirm it with your selected options before payment.` : "Production timing depends on the selected build. We confirm the current estimate with your options before payment." }
+    { question: "How long does production take?", answer: product.extended.deliveryEstimate ? `Estimated production and delivery: ${product.extended.deliveryEstimate}.` : "Production timing depends on the selected build." }
   ];
 }
 

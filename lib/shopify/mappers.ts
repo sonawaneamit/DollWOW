@@ -151,6 +151,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
 
   const stockStatus = node.stockStatus?.value as Product["extended"]["stockStatus"];
   const customAvailableRaw = booleanValue(node.customAvailable?.value);
+  const material = node.material?.value;
 
   return {
     id: node.id,
@@ -184,7 +185,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       sourceTitle: node.sourceTitle?.value,
       sourceHandle: node.sourceHandle?.value,
       sourceReleaseRank: numberValue(node.sourceReleaseRank?.value),
-      material: node.material?.value,
+      material,
       heightCm: numberValue(node.heightCm?.value),
       weightLb: numberValue(node.weightLb?.value),
       cupSize: node.cupSize?.value,
@@ -192,7 +193,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       warehouseCountry: node.warehouseCountry?.value,
       warehouseRegions: jsonValue<string[]>(node.warehouseRegions?.value),
       stockStatus,
-      deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value),
+      deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value, material),
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
       customAvailable: stockStatus === "ready_to_ship" ? false : customAvailableRaw,
       penisAddOnAvailable: booleanValue(node.penisAddOnAvailable?.value),

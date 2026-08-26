@@ -80,7 +80,7 @@ export function primaryProductSpecs(product: Product): DisplaySpec[] {
   const fallbackWeight = formatWeightDual(product.extended.weightLb) || specFromDescription(product, "Weight") || "Confirm";
   return [
     { label: "Material", value: product.extended.material ?? "Confirm" },
-    { label: "Delivery", value: product.extended.deliveryEstimate ?? "Confirm" },
+    { label: "Delivery", value: product.extended.deliveryEstimate ?? "Typical timing depends on the build" },
     {
       label: "Height",
       value: measurements.get("Height") ?? fallbackHeight

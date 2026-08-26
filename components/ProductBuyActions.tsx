@@ -6,7 +6,8 @@ import { useCart } from "@/components/cart/CartProvider";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
-import type { ProductImage } from "@/types/product";
+import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
+import type { ProductImage, Product } from "@/types/product";
 import { Care365Seal } from "@/components/care/Care365Seal";
 
 type ProductBuyActionsProps = {
@@ -19,6 +20,7 @@ type ProductBuyActionsProps = {
   unitPrice: number;
   currencyCode: string;
   deliveryEstimate?: string;
+  stockStatus?: Product["extended"]["stockStatus"];
   readyToShip: boolean;
   customAvailable?: boolean;
   warehouseCountry?: string;
@@ -39,6 +41,7 @@ export function ProductBuyActions({
   unitPrice,
   currencyCode,
   deliveryEstimate,
+  stockStatus,
   readyToShip,
   customAvailable,
   warehouseCountry,
@@ -52,6 +55,8 @@ export function ProductBuyActions({
     ...(productDisplayName ? [{ key: "DollWow Reference Name", value: productDisplayName }] : []),
     { key: "Selected configuration", value: "As shown" }
   ];
+  
+  const estimatedDate = stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
 
   function addToBag() {
     cart.addItem({
@@ -124,6 +129,12 @@ export function ProductBuyActions({
             </button>
         ) : null}
       </div>
+      
+      {estimatedDate ? (
+        <p className="mt-3 text-center text-[15px] text-text-dim">
+          Est. delivery <span className="font-semibold text-text">{estimatedDate.formatted}</span>
+        </p>
+      ) : null}
 
       <Care365Seal purchase className="mt-4" />
 
@@ -144,8 +155,8 @@ export function ProductBuyActions({
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {readyToShip
-              ? `${deliveryEstimate ? `Current estimate: ${deliveryEstimate}. ` : "The current dispatch estimate is confirmed before payment. "}${canCustomize ? "The available options below are supported for this stock unit." : "This is the fixed configuration shown; factory options do not apply."}`
-              : "You approve detailed factory photos and videos before anything ships. Timing is confirmed before you pay."}
+              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}${canCustomize ? "The available options below are supported for this stock unit." : "This is the fixed configuration shown; factory options do not apply."}`
+              : "You approve detailed factory photos and videos before anything ships."}
           </p>
         </div>
       </div>

@@ -96,7 +96,7 @@ export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
   const cupPhrase = cup === "profile" ? cup : phraseWithArticle(cup, "profile");
   const material = product.extended.material || inferredMaterial(product);
   const bodyLabel = productBodyLabel(product);
-  const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation." : "Built to order with timing confirmed before production.";
+  const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : "Built to order.";
   const custom = product.extended.customAvailable === false
     ? "This configuration is sold as listed."
     : "Start with the included configuration, then review available custom choices and pricing.";
@@ -126,10 +126,10 @@ export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
 export function buildPdpTrustSignals(product: Product): TrustSignal[] {
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
   const timing = product.extended.deliveryEstimate
-    ? `The current estimate for this product is ${product.extended.deliveryEstimate}. We confirm it before payment.`
+    ? `Estimated delivery: ${product.extended.deliveryEstimate}.`
     : readyToShip
-      ? "We confirm the exact warehouse unit and its current dispatch estimate before payment."
-      : "We confirm production and delivery timing for your exact build before payment.";
+      ? "Typical warehouse delivery is 3–5 business days."
+      : "Typical production timing varies by build and material.";
 
   return [
     {
@@ -209,16 +209,16 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
   const orderNote =
     stockStatus === "ready_to_ship"
       ? product.extended.deliveryEstimate
-        ? `The current estimate for this warehouse product is ${product.extended.deliveryEstimate}. We reconfirm the unit and timing before payment.`
-        : "We reconfirm the warehouse unit and its current dispatch estimate before payment. Tracking is shared after dispatch."
+        ? `Estimated delivery: ${product.extended.deliveryEstimate}.`
+        : "Typical warehouse delivery is 3–5 business days. Tracking is shared after dispatch."
       : product.extended.deliveryEstimate
-        ? `The current estimate for this build is ${product.extended.deliveryEstimate}. We confirm it with your selected options before payment.`
-        : "Production and delivery timing are confirmed for your exact build before payment. You review factory media before shipment.";
+        ? `Estimated production and delivery: ${product.extended.deliveryEstimate}.`
+        : "Production and delivery timing vary by build and material. You review factory media before shipment.";
 
   return [
     {
       title: "Core size reference",
-      body: sizeLine ? undefined : "Height, carrying weight, and cup profile are confirmed before checkout.",
+      body: sizeLine ? undefined : "Height, carrying weight, and cup profile vary by model.",
       lines: sizeLine ? sizeLine.split(" • ") : undefined
     },
     {
@@ -234,7 +234,7 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
       title: "Shoes and depth",
       body: [feetLine, depthLine].filter(Boolean).length
         ? "Feet length helps with shoe sizing. Depth measurements help compare inserts and fit preferences."
-        : `${orderNote} Feet length and depth specs can be confirmed with our team before checkout.`,
+        : `${orderNote} Feet length and depth specs can be requested from our team.`,
       lines: [feetLine, depthLine].filter(Boolean).length
         ? [feetLine, depthLine].filter(Boolean).flatMap((entry) => String(entry).split(" • ").filter(Boolean))
         : undefined
@@ -366,14 +366,14 @@ export function buildProductFaqStructuredData(product: Product) {
 export function pdpFaqItems(product: Product): FaqItem[] {
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
   const hasCustom = product.extended.customAvailable !== false;
-  const delivery = product.extended.deliveryEstimate || (readyToShip ? "warehouse timing is confirmed after stock check" : "timing depends on the selected build");
+  const delivery = product.extended.deliveryEstimate || (readyToShip ? "Typical warehouse delivery is 3–5 business days" : "Typical timing depends on the build");
 
   return [
     {
       question: "How does delivery work for this build?",
       answer: readyToShip
-        ? `This model is listed as ready to ship. Our team confirms stock, timing, and release details before it moves out for discreet delivery. Current timing: ${delivery}.`
-        : `This model is built to order. We confirm the available timing and selected options before production starts. Current timing: ${delivery}.`
+        ? `This model is listed as ready to ship. Our team verifies stock and release details before discreet delivery. ${delivery}.`
+        : `This model is built to order. ${delivery}.`
     },
     {
       question: "Can I customize this doll before checkout?",
@@ -390,7 +390,7 @@ export function pdpFaqItems(product: Product): FaqItem[] {
     {
       question: "Can DollWow check a lower price on another site?",
       answer:
-        "Yes. Send us the listing and our team can compare the product match, shipping, and total price before we confirm any price-match support."
+        "Yes. Send us the listing and our team can compare the product match, shipping, and total price."
     }
   ];
 }

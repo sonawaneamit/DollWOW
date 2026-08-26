@@ -5,12 +5,12 @@ import type { Product } from "@/types/product";
 export function DollDetailsCard({ product }: { product: Product }) {
   const details = [
     ["Brand", product.extended.brand ?? product.vendor],
-    ["Material", product.extended.material ?? "Confirm before checkout"],
-    ["Height", formatHeightDual(product.extended.heightCm) || "Confirm before checkout"],
-    ["Weight", formatWeightDual(product.extended.weightLb) || "Confirm before checkout"],
-    ["Cup size", product.extended.cupSize || "Confirm before checkout"],
-    ["Delivery", product.extended.deliveryEstimate ?? "We verify before checkout"],
-    ["Warehouse", product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Confirm before checkout"]
+    ["Material", product.extended.material ?? "Ask us"],
+    ["Height", formatHeightDual(product.extended.heightCm) || "Ask us"],
+    ["Weight", formatWeightDual(product.extended.weightLb) || "Ask us"],
+    ["Cup size", product.extended.cupSize || "Ask us"],
+    ["Delivery", product.extended.deliveryEstimate ?? "Typical timing depends on the build"],
+    ["Warehouse", product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Ask us"]
   ];
 
   return (
