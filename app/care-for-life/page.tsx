@@ -119,12 +119,22 @@ export default function CareForLifePage() {
           </article>
           <article>
             <span>03</span>
-            <h3>An eligible damage rescue</h3>
-            <p>Care 365 includes an eligible accidental-damage rescue during the first year. Eligibility and the available resolution are reviewed under the published terms.</p>
+            <h3>One accidental-damage rescue, first year</h3>
+            <p>During the first 365 days after delivery, one eligible accidental-damage rescue is included. Send clear photos and a short description of the issue. DollWOW reviews eligibility and chooses the resolution—repair kit, compatible parts, or replacement—based on the documented damage.</p>
           </article>
         </div>
+        <div className="care-365-rescue-details">
+          <h3>What qualifies as accidental damage</h3>
+          <p>Accidental damage means a covered mishap during normal ownership: a tear, joint concern, or similar accident that happened while you were caring for or using the doll as intended. It does not include change of mind, buyer's remorse, or damage from misuse, neglect, or unauthorized repair attempts.</p>
+          <h3>How the rescue works</h3>
+          <p>Send clear photographs showing the damaged area and a short written description of what happened. Our team reviews the submission to confirm eligibility under Care 365. When a rescue is approved, DollWOW selects the resolution that fits the documented damage: a repair kit with instructions, compatible replacement parts, or—in cases where repair is not practical—replacement. The resolution decision remains with DollWOW.</p>
+          <h3>What is not covered by the rescue</h3>
+          <p>User damage from misuse, neglect, or unauthorized repair may not qualify. Arrival defects, lost packages, and transit damage are handled separately under Returns and Shipping Protection; report those issues within 24 hours of delivery.</p>
+          <h3>After day 365</h3>
+          <p>The included accidental-damage rescue is available during the first year only. After day 365, Repair Concierge continues—you still have access to care guidance, compatible parts help, and practical repair support for as long as you own the doll. Free basic repair kits for life remain available; shipping, taxes, and duties on kits are the customer's responsibility.</p>
+        </div>
         <div className="care-365-details-footer">
-          <p><strong>After day 365:</strong> Repair Concierge continues to help you find the next practical route for as long as you own the doll.</p>
+          <p><strong>Questions about Care 365?</strong> Our team can walk you through what is covered, how to document an issue, and what to expect during the eligibility review.</p>
           <Link href="/support">Ask a Care 365 question</Link>
         </div>
       </section>
