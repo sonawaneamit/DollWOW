@@ -43,6 +43,7 @@ import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
 import { dollVueSelectionKey } from "@/lib/dollvue/public";
+import { PaymentLogos } from "./PaymentLogos";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -289,6 +290,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
               {isReviewing && canCheckout ? "Add to Cart" : "Review & Add to Cart"}
             </button>
+            <div className="mt-4">
+              <PaymentLogos />
+            </div>
           </div>
         </aside>
 
