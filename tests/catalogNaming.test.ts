@@ -245,4 +245,79 @@ describe("DollWow catalog naming", () => {
     expect(productPdpTitle(product)).toBe("165cm D-Cup Silicone Head Customizable Companion Doll");
     expect(productSeoTitle(product)).toBe("6YE Ella Grace 165cm D-Cup Silicone Head 218 Customizable Companion Doll");
   });
+
+  it("extracts display names from titles with decimal cm heights like 112.5cm", () => {
+    const ellenProduct = {
+      ...sampleProducts[0],
+      title: "Erovenus Ellen 112.5cm D-Cup Silicone Customizable Companion Doll",
+      handle: "erovenus-ellen-112-5cm-d-cup-silicone-companion-doll-i55oo",
+      productType: "Custom silicone doll",
+      vendor: "Erovenus",
+      tags: ["custom", "silicone", "erovenus"],
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Erovenus",
+        material: "Silicone",
+        heightCm: 112.5,
+        cupSize: "D",
+        customAvailable: true,
+        stockStatus: "custom" as const,
+        displayName: "Ellen"
+      }
+    };
+
+    expect(productDisplayName(ellenProduct)).toBe("Ellen");
+    expect(productDisplayNameForUi(ellenProduct)).toBe("Ellen");
+    expect(productPublicTitle(ellenProduct)).toBe("Erovenus Ellen 113cm D-Cup Silicone");
+    expect(productPdpTitle(ellenProduct)).toBe("113cm D-Cup Silicone Customizable Companion Doll");
+  });
+
+  it("extracts display names from titles with decimal cm heights when displayName metafield is not set", () => {
+    const ellenProduct = {
+      ...sampleProducts[0],
+      title: "Erovenus Ellen 112.5cm D-Cup Silicone Customizable Companion Doll",
+      handle: "erovenus-ellen-112-5cm-d-cup-silicone-companion-doll-i55oo",
+      productType: "Custom silicone doll",
+      vendor: "Erovenus",
+      tags: ["custom", "silicone", "erovenus"],
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Erovenus",
+        material: "Silicone",
+        heightCm: 112.5,
+        cupSize: "D",
+        customAvailable: true,
+        stockStatus: "custom" as const,
+        displayName: ""
+      }
+    };
+
+    expect(productDisplayName(ellenProduct)).toBe("Ellen");
+    expect(productDisplayNameForUi(ellenProduct)).toBe("Ellen");
+    expect(productPublicTitle(ellenProduct)).toBe("Erovenus Ellen 113cm D-Cup Silicone");
+  });
+
+  it("handles both integer and decimal cm heights consistently", () => {
+    const blairProduct = {
+      ...sampleProducts[0],
+      title: "Erovenus Blair 107cm I-Cup Silicone Customizable Companion Doll",
+      handle: "erovenus-blair-107cm-i-cup-silicone-companion-doll-y0i7q",
+      productType: "Custom silicone doll",
+      vendor: "Erovenus",
+      tags: ["custom", "silicone", "erovenus"],
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Erovenus",
+        material: "Silicone",
+        heightCm: 107,
+        cupSize: "I",
+        customAvailable: true,
+        stockStatus: "custom" as const,
+        displayName: ""
+      }
+    };
+
+    expect(productDisplayName(blairProduct)).toBe("Blair");
+    expect(productPublicTitle(blairProduct)).toBe("Erovenus Blair 107cm I-Cup Silicone");
+  });
 });
