@@ -94,7 +94,11 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
       ...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)
     },
     body: JSON.stringify({ query, variables }),
-    ...(options.cache ? { cache: options.cache } : { next: { revalidate: options.revalidate ?? 120 } })
+    ...(options.cache === "force-cache" || options.cache === "only-if-cached"
+      ? { cache: options.cache }
+      : options.cache === "no-store" || options.cache === "reload"
+        ? { cache: options.cache }
+        : { next: { revalidate: options.revalidate ?? 120 } })
   });
 
   const payload = (await response.json()) as ShopifyResponse<T>;
