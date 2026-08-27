@@ -426,7 +426,7 @@ main {
 }
 
 .shop-visual-sidebar {
-  top: 6rem;
+  top: 8.25rem;
 }
 
 .product-filters {
@@ -525,7 +525,7 @@ main {
 
 @media (max-width: 1080px) {
   .product-filters__form--sidebar .product-filters__actions {
-    top: 5rem;
+    top: 7.25rem;
   }
 }
 
@@ -1510,7 +1510,7 @@ textarea {
 .pdp-quick-nav {
   position: sticky;
   z-index: 22;
-  top: 72px;
+  top: 108px;
   display: flex;
   gap: 0.4rem;
   margin-top: 1rem;
@@ -1585,7 +1585,7 @@ textarea {
   }
 
   .pdp-quick-nav {
-    top: 68px;
+    top: 104px;
     margin-inline: -0.25rem;
   }
 }

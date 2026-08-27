@@ -18,6 +18,7 @@ import { CurrencyProvider } from "@/components/CurrencyProvider";
 import { ComparisonProvider } from "@/components/compare/ComparisonProvider";
 import { ComparisonDrawer } from "@/components/compare/ComparisonDrawer";
 import { ChatraWidget } from "@/components/ChatraWidget";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import { buildStorefrontThemeInitScript } from "@/lib/storefrontTheme";
 import "./globals.css";
@@ -113,6 +114,7 @@ gtag('config', '${measurementId}', {
           <ComparisonProvider>
             <CartProvider>
             <a href="#main-content" className="skip-link">Skip to main content</a>
+            <AnnouncementBar />
             <Header />
             {chatraId ? <ChatraWidget chatraId={chatraId} /> : null}
             <StorefrontZipper />

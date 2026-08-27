@@ -240,7 +240,7 @@ export function Header() {
   const chooseActive = pathname?.startsWith("/help-me-choose");
 
   return (
-    <header className={`site-header sticky top-0 z-[80] h-[72px] bg-surface text-text ${scrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header sticky top-[36px] z-[80] h-[72px] bg-surface text-text ${scrolled ? "is-scrolled" : ""}`}>
       <div className="mx-auto flex h-full max-w-[1440px] items-center gap-1 px-2 sm:gap-4 sm:px-5 lg:px-8">
         <Link href="/" onClick={closeAll} className="site-header__logo flex min-w-0 shrink-0 items-center" aria-label="DollWow home">
           <span className="relative block h-12 w-10 shrink-0 overflow-hidden sm:w-12" aria-hidden="true">
@@ -470,7 +470,7 @@ function MobileMenu({ searchQuery, setSearchQuery, searchResults, contentSearchR
   onNavigate: () => void;
 }) {
   return (
-    <div id="mobile-menu" className="absolute inset-x-0 top-full z-[79] h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain bg-bg px-5 py-5 shadow-panel lg:hidden">
+    <div id="mobile-menu" className="absolute inset-x-0 top-full z-[79] h-[calc(100dvh-108px)] overflow-y-auto overscroll-contain bg-bg px-5 py-5 shadow-panel lg:hidden">
       <div className="mx-auto max-w-2xl pb-10">
         <form onSubmit={onSubmit} className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-dim" aria-hidden="true" />
