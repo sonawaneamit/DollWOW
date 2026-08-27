@@ -288,7 +288,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
               className="mt-4 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
             >
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-              {isReviewing && canCheckout ? "Add to Cart" : "Buy As Shown In Photos"}
+              Add to Cart
             </button>
             <div className="mt-4">
               <PaymentLogos />
@@ -319,7 +319,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                 className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-                {isReviewing && canCheckout ? "Add to Cart" : "Buy As Shown In Photos"}
+                Add to Cart
               </button>
             </div>
           </div>
