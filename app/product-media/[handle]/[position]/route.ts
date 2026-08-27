@@ -10,9 +10,19 @@ let watermarkLogoPromise: Promise<Buffer> | null = null;
 
 export async function GET(request: Request, { params }: { params: Promise<{ handle: string; position: string }> }) {
   const { handle, position: rawPosition } = await params;
-  if (!/^[a-z0-9][a-z0-9-]{0,180}$/i.test(handle)) return new Response("Invalid product", { status: 400 });
+  if (!/^[a-z0-9][a-z0-9-]{0,180}$/i.test(handle)) {
+    return new Response("Invalid product", {
+      status: 400,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
   const position = Number.parseInt(rawPosition, 10);
-  if (!Number.isInteger(position) || position < 0 || position > 100) return new Response("Invalid image", { status: 400 });
+  if (!Number.isInteger(position) || position < 0 || position > 100) {
+    return new Response("Invalid image", {
+      status: 400,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
   const requestedSize = new URL(request.url).searchParams.get("size");
   const bounds = requestedSize === "thumb"
     ? { width: 240, height: 320 }
@@ -20,16 +30,36 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
       ? { width: 720, height: 960 }
       : { width: 1800, height: 2400 };
 
-  const product = await getProductByHandle(handle, { cache: "force-cache", revalidate: 3600 });
+  const product = await getProductByHandle(handle, { revalidate: 120 });
   const source = product ? productImageSources(product)[position] : null;
-  if (!source?.url) return new Response("Image not found", { status: 404 });
+  if (!source?.url) {
+    return new Response("Image not found", {
+      status: 404,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
 
   const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
-  if (!upstream.ok) return new Response("Image unavailable", { status: 502 });
+  if (!upstream.ok) {
+    return new Response("Image unavailable", {
+      status: 502,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
   const declaredLength = Number(upstream.headers.get("content-length") || 0);
-  if (declaredLength > MAX_SOURCE_BYTES) return new Response("Image too large", { status: 413 });
+  if (declaredLength > MAX_SOURCE_BYTES) {
+    return new Response("Image too large", {
+      status: 413,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
   const input = Buffer.from(await upstream.arrayBuffer());
-  if (input.byteLength > MAX_SOURCE_BYTES) return new Response("Image too large", { status: 413 });
+  if (input.byteLength > MAX_SOURCE_BYTES) {
+    return new Response("Image too large", {
+      status: 413,
+      headers: { "Cache-Control": "no-store" }
+    });
+  }
 
   const normalized = await sharp(input)
     .rotate()
