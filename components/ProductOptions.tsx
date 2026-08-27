@@ -305,18 +305,20 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           ) : null}
 
           <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">
-            <div className="flex items-center gap-3">
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
-                <p className="mt-0.5 truncate text-base font-semibold text-text" aria-live="polite">
-                  {formatMoney(resolved.totalPrice, currencyCode)} · defaults included
-                </p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
+                  <p className="mt-0.5 text-base font-semibold text-text" aria-live="polite">
+                    {formatMoney(resolved.totalPrice, currencyCode)} · defaults included
+                  </p>
+                </div>
               </div>
               <button
                 type="button"
                 onClick={isReviewing && canCheckout ? addToCart : showReview}
                 disabled={loading}
-                className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
                 {isReviewing && canCheckout ? "Add to Cart" : "Review & Add to Cart"}
