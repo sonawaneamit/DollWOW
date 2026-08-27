@@ -307,9 +307,9 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">
             <div className="flex items-center gap-3">
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
-                <p className="mt-0.5 truncate text-base font-semibold text-text" aria-live="polite">
-                  {formatMoney(resolved.totalPrice, currencyCode)} · defaults included
+                <p className="leading-tight text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
+                <p className="mt-0.5 text-base font-semibold text-text" aria-live="polite">
+                  {formatMoney(resolved.totalPrice, currencyCode)}
                 </p>
               </div>
               <button
