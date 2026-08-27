@@ -295,7 +295,7 @@ function extractNamedSuffix(value: string | undefined | null) {
 function extractLeadingName(value: string | undefined | null) {
   const cleaned = cleanText(value);
   if (!cleaned) return "";
-  const match = cleaned.match(/^([A-Za-z][A-Za-z'\-]*(?:\s+[A-Za-z][A-Za-z'\-]*){0,2})\s+\d{2,3}\s*cm\b/i);
+  const match = cleaned.match(/^([A-Za-z][A-Za-z'\-]*(?:\s+[A-Za-z][A-Za-z'\-]*){0,2})\s+\d{2,3}(?:\.\d+)?\s*cm\b/i);
   return match ? cleanText(match[1]) : "";
 }
 
@@ -307,7 +307,7 @@ function extractBrandQualifiedName(value: string | undefined | null, brand: stri
   const compactBrand = escapeRegExp(brandLabel.replace(/\s+dolls$/i, "").trim());
   if (!compactBrand) return "";
 
-  const match = cleaned.match(new RegExp(`^${compactBrand}\\s+([A-Za-z][A-Za-z'\\-]*(?:\\s+[A-Za-z][A-Za-z'\\-]*){0,1})\\s+\\d{2,3}\\s*cm\\b`, "i"));
+  const match = cleaned.match(new RegExp(`^${compactBrand}\\s+([A-Za-z][A-Za-z'\\-]*(?:\\s+[A-Za-z][A-Za-z'\\-]*){0,1})\\s+\\d{2,3}(?:\\.\\d+)?\\s*cm\\b`, "i"));
   return match ? cleanText(match[1]) : "";
 }
 
@@ -317,7 +317,7 @@ function sanitizePublicModelName(value: string, series: string) {
     .replace(/\([^)]*\)/g, " ")
     .replace(/\b(rosemary|rosemarydoll|joy\s*love|joylovedolls?)\b/gi, "")
     .replace(/\b(ready[-\s]?to[-\s]?ship|customizable|companion|doll|dolls|sex|adult|silicone|tpe|hybrid|head|torso)\b/gi, "")
-    .replace(/\b\d{2,3}\s*cm\b/gi, "")
+    .replace(/\b\d{2,3}(?:\.\d+)?\s*cm\b/gi, "")
     .replace(/\b\d+\s*ft\s*\d*\b/gi, "")
     .replace(/\b[a-z]{1,3}\s*-?\s*cup\b/gi, "")
     .replace(/\s+/g, " ")
