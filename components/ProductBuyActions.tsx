@@ -126,7 +126,7 @@ export function ProductBuyActions({
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-button border-2 border-accent bg-transparent px-4 py-2.5 text-[15px] font-semibold text-accent transition-colors hover:bg-accent-tint"
             >
               <ShoppingBag className="h-4 w-4" />
-              Add standard configuration · {formatMoney(unitPrice, currencyCode)}
+              Buy As Shown In Photos · {formatMoney(unitPrice, currencyCode)}
             </button>
         ) : null}
       </div>

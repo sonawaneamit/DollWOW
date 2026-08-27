@@ -185,7 +185,7 @@ function faqItems(product: Product, readyToShip: boolean) {
     ];
   }
   return [
-    { question: "Can I buy the standard configuration?", answer: "Yes. Use Add standard configuration if the default build suits you, or open the configurator to personalize it." },
+    { question: "Can I buy the standard configuration?", answer: "Yes. Use Buy As Shown In Photos if the default build suits you, or open the configurator to personalize it." },
     { question: "When is the final price shown?", answer: "Supported paid options update the build total before you add the configured doll to your cart." },
     { question: "Do I approve the finished doll?", answer: "Yes. We share detailed factory photos and videos before shipment and review cosmetic revision requests before approval." },
     { question: "How long does production take?", answer: product.extended.deliveryEstimate ? `Estimated production and delivery: ${product.extended.deliveryEstimate}.` : "Production timing depends on the selected build." }
