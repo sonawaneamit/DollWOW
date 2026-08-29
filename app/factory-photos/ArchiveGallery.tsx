@@ -36,10 +36,10 @@ function labelFor(category: Exclude<Category, "all">) {
 }
 
 function altFor(category: Exclude<Category, "all">) {
-  if (category === "build") return "Anonymized historical factory photo showing a completed doll build for visible configuration review.";
-  if (category === "face") return "Anonymized historical factory photo showing the face and visible finish before shipment.";
-  if (category === "release") return "Anonymized historical pre-shipment photo from a final visible release review.";
-  return "Anonymized historical factory photo selected to review a visible customization or finishing detail.";
+  if (category === "build") return "Anonymized factory photo showing a completed doll build for visible configuration review.";
+  if (category === "face") return "Anonymized factory photo showing the face and visible finish before shipment.";
+  if (category === "release") return "Anonymized pre-shipment photo from a final visible release review.";
+  return "Anonymized factory photo selected to review a visible customization or finishing detail.";
 }
 
 type ArchiveEntry = { src: string; category: string };
@@ -66,7 +66,7 @@ export function ArchiveGallery({ manifestEntries }: { manifestEntries: ArchiveEn
     <section className={styles.archiveSection} aria-labelledby="archive-gallery-title">
       <div className={styles.archiveToolbar}>
         <div>
-          <p className={styles.eyebrow}>Selected historical examples</p>
+          <p className={styles.eyebrow}>Selected approval examples</p>
           <h2 id="archive-gallery-title">Browse sex doll factory photos by review purpose</h2>
           <p>Use the filters to see how different views can support a visible review. The archive is organized by what a buyer may need to check, not by old customer, product, or order identity.</p>
         </div>
@@ -87,7 +87,7 @@ export function ArchiveGallery({ manifestEntries }: { manifestEntries: ArchiveEn
             <div className={styles.archiveImage}>
               <Image src={entry.src} alt={entry.alt} fill sizes="(max-width: 760px) 50vw, (max-width: 1100px) 33vw, 280px" />
             </div>
-            <figcaption><strong>{entry.label} · Historical prior-team example</strong><small>Factory lighting and available views vary by order.</small></figcaption>
+            <figcaption><strong>{entry.label}</strong><small>Factory lighting and available views vary by order.</small></figcaption>
           </figure>
         ))}
       </div>

@@ -1750,7 +1750,7 @@ function relatedCollections(slug: string) {
     "ready-to-ship-vs-custom-sex-dolls": [
       { label: "Ready-to-ship dolls", href: "/shop/ready-to-ship", description: "Compare warehouse-style listings with fixed configurations." },
       { label: "Custom dolls", href: "/shop/custom", description: "Compare factory-order options and customization depth." },
-      { label: "Factory Approval Archive", href: "/factory-photos", description: "See anonymized historical examples of the visible review checkpoint before release." }
+      { label: "Factory Approval Archive", href: "/factory-photos", description: "See anonymized examples of the visible review checkpoint before release." }
     ],
     "male-sex-doll-buying-guide": [
       { label: "Male dolls", href: "/shop/male-dolls", description: "Compare male body-type listings and build details." },

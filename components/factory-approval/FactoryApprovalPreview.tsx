@@ -19,11 +19,10 @@ export function FactoryApprovalHomepagePreview() {
       <div className={styles.homeInner}>
         <div className={styles.homeCopy}>
           <p className={styles.eyebrow}>Factory Approval Archive</p>
-          <h2 id="factory-approval-home-title">A small selection from years of hands-on factory approval work.</h2>
+          <h2 id="factory-approval-home-title">4,000 factory builds. Same check you get before we ship.</h2>
           <p>
-            These anonymized photographs offer a glimpse into the production media our team has reviewed while helping
-            customers navigate custom doll orders. That experience now informs DollWOW’s Human Build Check and Approve
-            Before Shipping process.
+            These are photos our team has approved on real custom orders. Faces and customer details are removed.
+            Eligible custom builds still get this visual checkpoint before release.
           </p>
           <div className={styles.homeActions}>
             <Link href="/factory-photos">Explore the Factory Approval Archive</Link>
@@ -79,4 +78,4 @@ export function FactoryApprovalCartPreview() {
 }
 
 export const archiveDisclosure =
-  "Selected anonymized examples from real customer orders handled through our team's prior business experience before DollWOW launched. They are not current DollWOW orders or exact product examples.";
+  "Use this anonymized archive to understand the approval checkpoint, not to choose a current SKU.";

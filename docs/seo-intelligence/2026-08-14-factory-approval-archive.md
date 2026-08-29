@@ -1,9 +1,17 @@
 # Factory Approval Archive: SEO, GEO, and AIO Release Package
 
-Date: 2026-08-14
+Date: 2026-08-14; copy ownership refresh approved 2026-08-29
 Canonical candidate: `https://dollwow.com/factory-photos`
-Status: `owner approved; release QA passed; approved for publication`
+Status: `owner approved; refresh QA passed; approved for publication`
 Research cost: `$0.746432` across 30 successful decision-specific requests after one isolated Google SERP retry
+
+## 2026-08-29 Ownership Copy Refresh
+
+Amit approved a source-truth correction for the archive: the public photographs are from real custom orders approved by the team, so customer-facing copy must not distance them as prior-business or non-DollWOW work. The research, canonical ownership, page type, keyword map, limitations, citations, and supporting artifacts below remain applicable; no new competitive claim was adopted and no additional DataForSEO request was needed for this factual copy correction.
+
+The approved public count is `4,000 factory builds`. A quick check of `/Volumes/Extreme Pro/Projects/DollWOW Factory Photos` found zero image files because the source folder is still empty/downloading, so it did not provide evidence to override the owner-supplied count. The count describes the approval archive, not units sold or shipped by DollWOW.
+
+Adopted findings: first-party approval provenance, anonymization of faces and customer details, the eligible-custom-build checkpoint, and the archive-not-product-picker boundary. Retained limitations: photographs cannot guarantee hidden construction, material feel, durability, transit condition, or identical future results; ready-to-ship orders may not receive factory media. Rejected framing: prior-team, prior-business, and “not current DollWOW orders” language.
 
 ## Release Decision
 
@@ -98,15 +106,15 @@ Page response: use these terms naturally in metadata, the gallery introduction, 
 export const metadata: Metadata = {
   title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
   description:
-    "Browse anonymized sex doll factory photos from prior team approval work and learn what pre-shipment pictures can help you review before release.",
+    "Explore 4,000 anonymized factory builds approved by our team and learn how eligible custom orders receive a visual checkpoint before release.",
   alternates: {
     canonical: "https://dollwow.com/factory-photos",
-    types: { "text/markdown": "https://dollwow.com/factory-photos.md" }
+    types: { "text/markdown": "https://dollwow.com/markdown/factory-photos" }
   },
   openGraph: {
     title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
     description:
-      "A selected archive of historical factory approval pictures, with a practical guide to what buyers can and cannot review before release.",
+      "Explore factory builds approved by our team and learn what a pre-shipment visual checkpoint can and cannot show.",
     url: "https://dollwow.com/factory-photos",
     type: "website",
     images: [{
@@ -119,7 +127,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
-    description: "See historical approval examples and learn how to review pre-shipment factory pictures.",
+    description: "See anonymized factory builds approved by our team and learn how to review pre-shipment pictures.",
     images: ["https://dollwow.com/images/factory-approval-archive/factory-approval-cover.webp"]
   },
   robots: { index: true, follow: true }
@@ -132,24 +140,24 @@ Keep `noindex, nofollow` and the production `notFound()` gate until the owner ex
 
 ### Hero
 
-Eyebrow: `Factory photos from prior approval work`
+Eyebrow: `Factory Approval Archive`
 
-H1: `Factory Approval Archive`
+H1: `4,000 factory builds. Same check you get before we ship.`
 
 Lead:
 
-> Browse a selected, anonymized archive of sex doll factory photos from real customer orders handled by members of our team through a previous business before DollWOW launched.
+> These are photos our team has approved on real custom orders. Faces and customer details are removed. Eligible custom builds still get this visual checkpoint before release.
 
 Support:
 
-> These historical examples show the visible details pre-shipment pictures can help a buyer review. They are not current DollWOW orders, exact product references, or a promise that factory media will be available for every order.
+> Use the archive to understand what the visual checkpoint can show, not to choose a current SKU. Ready-to-ship orders may follow a different release process.
 
 Primary action: `See how approval works` → `/how-ordering-works`
 Secondary action: `Shop customizable dolls` → `/shop/custom`
 
 Hero mosaic accessible label:
 
-`Selected anonymized sex doll factory photos from prior approval work`
+`Selected anonymized sex doll factory photos approved by our team`
 
 ### Direct answer
 
@@ -163,7 +171,7 @@ Body:
 
 ### Required archive disclosure
 
-> Every image in this public preview is an anonymized historical example from a real customer order handled by members of our team.
+> Every image in this public preview comes from a real custom order approved by our team. Faces and customer details are removed.
 
 Show this disclosure once immediately before the gallery and a shorter disclosure after the gallery. Do not repeat it under every image.
 
@@ -173,7 +181,7 @@ Short disclosure:
 
 ### Gallery introduction
 
-Eyebrow: `Selected historical examples`
+Eyebrow: `Selected approval examples`
 
 H2: `Browse sex doll factory photos by review purpose`
 
@@ -270,7 +278,7 @@ Inline action: `Read the complete ordering process` → `/how-ordering-works`
 ### FAQs
 
 **Are these photographs of products currently sold by DollWOW?**
-Do not use the archive to identify a current product, brand, or configuration. Customer, order, brand, and product identities have been removed, and an historical image is not proof that the same product or option is currently available.
+Use the archive to understand the approval checkpoint, not to identify or choose a current product, brand, or configuration. Faces and customer details are removed, and current availability must be confirmed from the live catalog or with our team.
 
 **Does every DollWOW order receive factory photos?**
 No. Factory media may be available for eligible custom builds where the product and manufacturer support it. Ready-to-ship orders and some custom products may follow a different release process. Ask our team to confirm the path for the exact product before checkout.
@@ -317,10 +325,10 @@ Do not use the same generic alt text for every image and do not invent a brand, 
 
 Safe base templates:
 
-- Completed build: `Anonymized historical factory photo showing a completed doll build for visible configuration review.`
-- Face and finish: `Anonymized historical factory photo showing the face and visible finish before shipment.`
-- Visible details: `Anonymized historical factory photo selected to review a visible customization or finishing detail.`
-- Release review: `Anonymized historical pre-shipment photo from a final visible release review.`
+- Completed build: `Anonymized factory photo showing a completed doll build for visible configuration review.`
+- Face and finish: `Anonymized factory photo showing the face and visible finish before shipment.`
+- Visible details: `Anonymized factory photo selected to review a visible customization or finishing detail.`
+- Release review: `Anonymized pre-shipment photo from a final visible release review.`
 
 If the manually approved view is known, add only one factual phrase, such as `front view`, `face close-up`, `hand detail`, or `completed build in factory lighting`.
 
@@ -328,7 +336,7 @@ If the manually approved view is known, add only one factual phrase, such as `fr
 
 Visible caption format:
 
-`{Review purpose} · Historical prior-team example`
+`{Review purpose}`
 
 Optional second line:
 
@@ -387,24 +395,24 @@ Add contextual links with these customer-facing anchors:
 - `Shop customizable dolls` → `/shop/custom`
 - `Ask the DollWOW team` → `/support`
 
-Add links back to `/factory-photos` from `/how-ordering-works`, `/care-for-life`, `/shop/custom`, and `/learn/ready-to-ship-vs-custom-sex-dolls` using `See historical factory approval examples` or similarly plain language. Do not place it sitewide solely for SEO.
+Add links back to `/factory-photos` from `/how-ordering-works`, `/care-for-life`, `/shop/custom`, and `/learn/ready-to-ship-vs-custom-sex-dolls` using `Explore the Factory Approval Archive` or similarly plain language. Do not place it sitewide solely for SEO.
 
 ## Markdown, llms.txt, and Agent Discovery
 
 - Add `/factory-photos` to `/llms.txt` under buying confidence or ordering support.
-- Add an `agent-index.json` record with canonical URL, title, summary, page type `visual_archive`, topics, historical provenance, and explicit limits.
-- Add a factually equivalent `/factory-photos.md` representation generated from the same public source data.
+- Add an `agent-index.json` record with canonical URL, title, summary, page type `visual_archive`, topics, first-party approval provenance, and explicit limits.
+- Add a factually equivalent `/markdown/factory-photos` representation generated from the same public source data.
 - Mark the Markdown alternate `noindex, follow`; keep canonical HTML authoritative.
 - Include the definition, provenance, categories, review checklist, limitations, FAQs, and canonical next steps in Markdown. Do not serialize 300 repeated captions. Include the canonical gallery URL and representative public image URLs.
-- Ensure HTML and Markdown both state that the images are historical prior-team examples, not current DollWOW orders or exact current products.
-- Verify content negotiation and `Link: <https://dollwow.com/factory-photos.md>; rel="alternate"; type="text/markdown"` on the canonical response.
+- Ensure HTML and Markdown both state that the images are anonymized real custom-order examples approved by the team and that the archive is not a product picker for a current SKU.
+- Verify content negotiation and `Link: <https://dollwow.com/markdown/factory-photos>; rel="alternate"; type="text/markdown"` on the canonical response.
 
 ## Claims That Must Stay Gated or Absent
 
 Do not publish any of the following without separate current operational and legal approval:
 
-- a count of dolls shipped by DollWOW or the prior business;
-- that the historical images are current DollWOW orders;
+- a count of dolls sold or shipped by DollWOW inferred from the archive count;
+- that an archived image identifies a current DollWOW SKU;
 - that an archived image identifies a current product, brand, model, or option;
 - that every order receives photos, videos, a fixed number of views, or a fixed timing;
 - that factory photos are unedited, always show the exact shipped unit, or always include customer-specific proof;
@@ -419,7 +427,7 @@ Do not publish any of the following without separate current operational and leg
 ### Before release
 
 - Owner approves the copy, representative images, cover image, disclosure placement, and all public derivatives.
-- Confirm every source folder represents a fulfilled historical customer order, while still avoiding a public count.
+- Confirm every source folder represents a real custom order approved by the team; publish only the separately owner-approved archive count.
 - Re-run privacy review for faces of real people, customer data, order IDs, labels, screens, documents, QR codes, shipping labels, source-store logos, and metadata.
 - Strip EXIF and source filenames; preserve the permanent DollWOW watermark on all approved derivatives.
 - Confirm no brand or product identity is implied by grouping or caption.
