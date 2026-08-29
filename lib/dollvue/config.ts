@@ -7,7 +7,8 @@ export const DOLLVUE_PRODUCT_HANDLES = [
   "irontech-penny-164cm-f-cup-silicone-head-companion-doll-1ttey",
   "irontech-dark-164cm-f-cup-silicone-companion-doll-1k1t7",
   "real-lady-shizuka-159cm-h-cup-silicone-companion-doll-1ldrw",
-  "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj"
+  "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj",
+  "lusandy-nadia-159cm-g-cup-silicone-companion-doll"
 ] as const;
 const DOLLVUE_PRODUCT_HANDLE_PREFIXES = ["irontech-", "starpery-"] as const;
 export const DOLLVUE_DEFAULT_PRODUCT_HANDLE = DOLLVUE_PRODUCT_HANDLES[0];
@@ -22,7 +23,8 @@ export function isDollVueProduct(handle: string) {
 }
 
 export function isDollVueCatalogProduct(product: Product) {
-  return DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => product.handle.startsWith(prefix)) &&
+  const explicitlyEnabledLusandy = product.handle === "lusandy-nadia-159cm-g-cup-silicone-companion-doll";
+  return (explicitlyEnabledLusandy || DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => product.handle.startsWith(prefix))) &&
     product.extended.stockStatus !== "ready_to_ship";
 }
 
@@ -53,7 +55,7 @@ export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] 
 }
 
 function isAppearancePreview(groupLabel: string, optionLabel: string) {
-  const group = groupLabel.trim().toLowerCase();
+  const group = groupLabel.trim().toLowerCase().replace(/^select\s+/, "");
   if (/^(skin tone|hairstyle|wig style|hair color|hair implanted color|eye color|nail color|toe nail color|nipple color|areola color|labia color|vagina color|vagina hair|vagina hair type|pubic hair|pubic hair type)$/.test(group)) return true;
   if (/makeup|finishing detail|^premium\b|hair implant add-on/.test(group)) {
     return /makeup|painting|realism|moles|freckles|bikini line|moustache|goatee|chest hair|arms hair|pubic hair|armpit hair/i.test(optionLabel);
