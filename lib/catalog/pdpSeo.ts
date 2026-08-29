@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
-import { productDisplayNameForUi, productPublicTitle, productSeoAliases } from "./naming";
+import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import { productMeasurementSpecs } from "./productSpecs";
 
 type IntentChip = {
@@ -396,6 +396,11 @@ export function pdpFaqItems(product: Product): FaqItem[] {
 }
 
 function buildPdpMetaDescription(product: Product) {
+  const lockedTitle = productLockedPdpTitle(product);
+  if (lockedTitle) {
+    return `${lockedTitle}. Compare specs and availability with discreet US/UK/CA/AU/EU shipping.`;
+  }
+
   const publicTitle = productPublicTitle(product);
   const material = product.extended.material || inferredMaterial(product);
   const bodyLabel = productBodyLabel(product);

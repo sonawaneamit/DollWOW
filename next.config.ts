@@ -20,6 +20,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/learn/sex-doll-storage-1",
+        destination: "/learn/sex-doll-storage",
+        permanent: true
+      },
+      {
+        source: "/learn/most-realistic-sex-dolls-1",
+        destination: "/learn/most-realistic-sex-dolls",
+        permanent: true
+      },
+      {
+        source: "/learn/sex-doll-body-heating",
+        destination: "/learn/body-heating-sex-doll-guide",
+        permanent: true
+      },
+      {
         source: "/products/null",
         destination: "/shop/sex-dolls",
         permanent: false

@@ -34,7 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!article) return {};
   const featuredImageDimensions = articleFeaturedImageDimensions(article.slug);
   const metadataTitles: Record<string, string> = {
-    "sex-doll-guide": "How to Choose a Sex Doll: 2026 Buyer Checklist",
+    "sex-doll-guide": "Sex Doll Buying Guide (2026): Size, Weight, TPE vs Silicone",
+    "body-heating-sex-doll-guide": "Sex Doll Body Heating: Zones, Power, and Safety",
     "sex-doll-size-weight-guide": "Sex Doll Size & Weight Guide | 2,615 Listings Analyzed",
     "sex-doll-storage": "Sex Doll Storage: Safe, Private Storage Guide",
     "sex-doll-reviews": "Sex Doll Reviews: How to Verify Buyer Claims",

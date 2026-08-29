@@ -1,9 +1,9 @@
 ---
-title: "Sex Doll Body Heating: Safety & Buyer Checklist"
+title: "Sex Doll Body Heating: Zones, Power, and Safety | DollWow"
 slug: "body-heating-sex-doll-guide"
 primaryKeyword: "sex doll body heating"
 secondaryKeywords: ["body heating sex doll", "heated sex doll"]
-description: "Check heating zones, controls, power, compatibility, cleaning, and manufacturer instructions before adding body heating to a sex doll."
+description: "Compare sex doll heating zones, power and plug requirements by country (US/UK/CA/AU/EU), compatibility, controls, and safety."
 category: "Customization"
 author: "alex"
 authorDisplayName: "Alex"
@@ -13,7 +13,7 @@ reviewOwner: catalog
 lastReviewed: "2026-08-12"
 ---
 
-# Sex Doll Body Heating: Safety & Buyer Checklist
+# Sex Doll Body Heating: Zones, Power, and Safety | DollWow
 
 By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
