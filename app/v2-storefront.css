@@ -351,6 +351,20 @@ main {
   display: none;
 }
 
+.home-product-card__warehouse {
+  position: absolute;
+  z-index: 3;
+  left: 0.85rem;
+  top: 3.45rem;
+}
+
+.home-product-card__warehouse .warehouse-location-badge {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(18, 10, 8, 0.66);
+  color: rgba(255, 248, 242, 0.94);
+  backdrop-filter: blur(12px);
+}
+
 .home-product-card__body {
   position: static;
   padding: 1rem;
@@ -1795,4 +1809,3 @@ textarea {
     font-size: 14px;
   }
 }
-

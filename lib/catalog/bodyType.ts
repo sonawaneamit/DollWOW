@@ -12,7 +12,7 @@ export function productBodyType(product: Product): CatalogBodyType {
 
   const text = `${product.title} ${product.vendor} ${product.productType} ${product.extended.brand ?? ""} ${product.tags.join(" ")}`.toLowerCase();
 
-  if (/\b(male|man|men|masculine|torso)\b/.test(text)) return "male";
+  if (/\b(male|man|men|masculine)\b/.test(text)) return "male";
   if (/\b(female|woman|women|feminine)\b/.test(text)) return "female";
 
   return "unknown";
