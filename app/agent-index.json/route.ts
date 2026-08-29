@@ -86,9 +86,9 @@ export function GET() {
         markdownUrl: `${siteUrl}/markdown/factory-photos`,
         topics: ["sex doll factory photos", "pre-shipment approval", "visible configuration review"],
         provenance:
-          "Selected anonymized historical examples from real customer orders handled by members of the DollWOW team through a previous business before DollWOW launched.",
+          "4,000 anonymized factory builds from real custom orders approved by the DollWOW team.",
         limits:
-          "Historical examples are not current DollWOW orders or exact product references. Photographs cannot establish hidden construction, material feel, long-term durability, precise color under every light, or condition after transit."
+          "Use the archive to understand the visual checkpoint, not to choose a current SKU. Photographs cannot establish hidden construction, material feel, long-term durability, precise color under every light, or condition after transit."
       }
     ],
     tools: [

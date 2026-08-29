@@ -15,7 +15,7 @@ export default function HowOrderingWorksPage() {
       ctas={[
         { label: "Browse the catalog", href: "/shop/sex-dolls", primary: true },
         { label: "Help me choose", href: "/help-me-choose" },
-        { label: "See historical factory approval examples", href: "/factory-photos" }
+        { label: "Explore the Factory Approval Archive", href: "/factory-photos" }
       ]}
       sections={[
         {

@@ -12,7 +12,7 @@ const coverUrl = `${siteUrl}/images/factory-approval-archive/factory-approval-co
 export const metadata: Metadata = {
   title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
   description:
-    "Browse anonymized sex doll factory photos from prior team approval work and learn what pre-shipment pictures can help you review before release.",
+    "Explore 4,000 anonymized factory builds approved by our team and learn how eligible custom orders receive a visual checkpoint before release.",
   alternates: {
     canonical: canonicalUrl,
     types: { "text/markdown": `${siteUrl}/markdown/factory-photos` }
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
     description:
-      "A selected archive of historical factory approval pictures, with a practical guide to what buyers can and cannot review before release.",
+      "Explore factory builds approved by our team and learn what a pre-shipment visual checkpoint can and cannot show.",
     url: canonicalUrl,
     type: "website",
     images: [{ url: coverUrl, width: 1200, height: 630, alt: "DollWOW Factory Approval Archive" }]
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sex Doll Factory Photos & Approval Archive | DollWOW",
-    description: "See historical approval examples and learn how to review pre-shipment factory pictures.",
+    description: "See anonymized factory builds approved by our team and learn how to review pre-shipment pictures.",
     images: [coverUrl]
   },
   robots: { index: true, follow: true }
@@ -57,7 +57,7 @@ const processSteps = [
 ] as const;
 
 const faqs = [
-  ["Are these photographs of products currently sold by DollWOW?", "Do not use the archive to identify a current product, brand, or configuration. Customer, order, brand, and product identities have been removed, and an historical image is not proof that the same product or option is currently available."],
+  ["Are these photographs of products currently sold by DollWOW?", "Use the archive to understand the approval checkpoint, not to identify or choose a current product, brand, or configuration. Faces and customer details are removed, and current availability must be confirmed from the live catalog or with our team."],
   ["Does every DollWOW order receive factory photos?", "No. Factory media may be available for eligible custom builds where the product and manufacturer support it. Ready-to-ship orders and some custom products may follow a different release process. Ask our team to confirm the path for the exact product before checkout."],
   ["What can factory approval photos help me check?", "Clear media may help you review the visible head and body combination, appearance selections, overall finish, and an obvious cosmetic concern. What can be confirmed depends on what the supplied photographs or video actually show."],
   ["What can factory photos not verify?", "Photographs cannot prove internal construction, joint durability, exact material feel, hidden components, electronics, long-term performance, precise measurements, seller authenticity, or condition after transportation. Lighting, camera settings, angles, and screens can also affect color."],
@@ -69,7 +69,7 @@ const faqs = [
 ] as const;
 
 export const archiveDisclosure =
-  "Every image in this public preview is an anonymized historical example from a real customer order handled by members of our team.";
+  "Every image in this public preview comes from a real custom order approved by our team. Faces and customer details are removed.";
 
 function safeJson(data: unknown) {
   return JSON.stringify(data).replace(/</g, "\\u003c");
@@ -80,7 +80,7 @@ function structuredData() {
     "@type": "ImageObject",
     contentUrl: `${siteUrl}${entry.src}`,
     thumbnailUrl: `${siteUrl}${entry.src}`,
-    caption: `Historical factory approval example for ${reviewPurpose(entry.category).toLowerCase()}.`,
+    caption: `Anonymized factory approval example for ${reviewPurpose(entry.category).toLowerCase()}.`,
     representativeOfPage: index < 4,
     creditText: "DollWOW Factory Approval Archive"
   }));
@@ -88,7 +88,7 @@ function structuredData() {
     "@type": "ImageGallery",
     "@id": `${canonicalUrl}#gallery`,
     name: "Factory Approval Archive",
-    description: "Anonymized historical factory photos from prior team approval work.",
+    description: "Anonymized factory photos from real custom orders approved by the DollWOW team.",
     associatedMedia: representativeImages,
     mainEntity: {
       "@type": "ItemList",
@@ -148,19 +148,19 @@ export default function FactoryPhotosPage() {
 
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Factory photos from prior approval work</p>
-          <h1>Factory Approval Archive</h1>
-          <p className={styles.heroLead}>Browse a selected, anonymized archive of sex doll factory photos from real customer orders handled by members of our team through a previous business before DollWOW launched.</p>
-          <p className={styles.heroSupport}>These historical examples show the visible details pre-shipment pictures can help a buyer review. They are not current DollWOW orders, exact product references, or a promise that factory media will be available for every order.</p>
+          <p className={styles.eyebrow}>Factory Approval Archive</p>
+          <h1>4,000 factory builds. Same check you get before we ship.</h1>
+          <p className={styles.heroLead}>These are photos our team has approved on real custom orders. Faces and customer details are removed. Eligible custom builds still get this visual checkpoint before release.</p>
+          <p className={styles.heroSupport}>Use the archive to understand what the visual checkpoint can show, not to choose a current SKU. Ready-to-ship orders may follow a different release process.</p>
           <div className={styles.heroActions}>
             <Link href="/how-ordering-works">See how approval works</Link>
             <Link href="/shop/custom">Shop customizable dolls</Link>
           </div>
         </div>
-        <div className={styles.heroMosaic} aria-label="Selected anonymized sex doll factory photos from prior approval work">
+        <div className={styles.heroMosaic} aria-label="Selected anonymized sex doll factory photos approved by our team">
           {heroImages.map((src, index) => (
             <figure key={src}>
-              <Image src={src} alt="Anonymized historical factory approval photo" fill sizes="(max-width: 760px) 50vw, 300px" priority={index < 2} />
+              <Image src={src} alt="Anonymized factory approval photo from a real custom order" fill sizes="(max-width: 760px) 50vw, 300px" priority={index < 2} />
             </figure>
           ))}
         </div>

@@ -12,10 +12,10 @@ function escapeXml(value: string) {
 }
 
 function categoryCaption(category: string) {
-  if (category === "build") return "Completed build shown in an anonymized historical factory approval photo.";
-  if (category === "face") return "Face and visible finish shown in an anonymized historical factory approval photo.";
-  if (category === "release") return "Final visible release review shown in an anonymized historical factory approval photo.";
-  return "Visible customization or finishing detail shown in an anonymized historical factory approval photo.";
+  if (category === "build") return "Completed build shown in an anonymized factory approval photo.";
+  if (category === "face") return "Face and visible finish shown in an anonymized factory approval photo.";
+  if (category === "release") return "Final visible release review shown in an anonymized factory approval photo.";
+  return "Visible customization or finishing detail shown in an anonymized factory approval photo.";
 }
 
 export function GET() {
