@@ -323,7 +323,7 @@ function featuredImagePath(slug: string) {
 
 function featuredImageAlt(title: string, slug: string) {
   const altBySlug: Record<string, string> = {
-    "sex-doll-guide": "The Complete Guide to Choosing a Sex Doll featuring a real Irontech Evie doll",
+    "sex-doll-guide": "Irontech Evie silicone doll in the 2026 sex doll buying guide",
     "tpe-vs-silicone-sex-dolls": "TPE and silicone doll material comparison using real DollWow catalog products",
     "sex-doll-cost": "Sex doll cost guide comparing product price, options, fulfillment, and ownership factors",
     "best-sex-dolls": "Best sex dolls buying guide featuring a selection of real DollWow catalog products",
