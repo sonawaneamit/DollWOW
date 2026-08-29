@@ -33,10 +33,13 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       </div>
       <div className="catalog-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <h2 className={isDollVueCatalogProduct(product) ? "has-dollvue-badge" : undefined}>
-          <span>{displayTitle}</span>
-          {isDollVueCatalogProduct(product) ? <DollVueBadge size="compact" /> : null}
-        </h2>
+        <h2>{displayTitle}</h2>
+        {isDollVueCatalogProduct(product) ? (
+          <div className="product-card-dollvue-line">
+            <DollVueBadge size="compact" tooltipAlign="start" />
+            <span>DollVue enabled</span>
+          </div>
+        ) : null}
         <div className="catalog-product-card__specs">
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>

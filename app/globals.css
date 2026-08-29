@@ -4599,6 +4599,22 @@ a {
   -webkit-line-clamp: 2;
 }
 
+.product-card-dollvue-line {
+  display: flex;
+  min-height: 1.5rem;
+  align-items: center;
+  gap: 0.38rem;
+  margin-top: 0.34rem;
+  color: #70c5ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.product-card-dollvue-line > span:last-child {
+  text-transform: uppercase;
+}
+
 .home-product-card__body h3 {
   min-height: 3.1rem;
   margin-top: 0.38rem;

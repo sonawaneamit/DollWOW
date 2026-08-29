@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
-import { homepageNewArrivals, isHomepageMaleProduct } from "@/lib/catalog/homepage";
+import { homepageNewArrivals, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
@@ -62,7 +62,15 @@ const SPOTLIGHT_HANDLE_PRIORITY = [
   "hr-dolls-zeki-165cm-e-cup-silicone-companion-doll-1imsn"
 ];
 
-export function HomeAlive({ products, recentlyAddedProducts }: { products: Product[]; recentlyAddedProducts?: Product[] }) {
+export function HomeAlive({
+  products,
+  bestSellingProducts = [],
+  recentlyAddedProducts
+}: {
+  products: Product[];
+  bestSellingProducts?: Product[];
+  recentlyAddedProducts?: Product[];
+}) {
   const featuredProducts = useMemo(() => storefrontFeatureProducts(products), [products]);
   const featuredRecentlyAddedProducts = useMemo(
     () => storefrontFeatureProducts(recentlyAddedProducts ?? []),
@@ -70,8 +78,8 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   );
   const spotlight = useMemo(() => buildSpotlightProducts(featuredProducts), [featuredProducts]);
   const rails = useMemo(
-    () => buildRails(featuredProducts, featuredRecentlyAddedProducts),
-    [featuredProducts, featuredRecentlyAddedProducts]
+    () => buildRails(featuredProducts, storefrontFeatureProducts(bestSellingProducts), featuredRecentlyAddedProducts),
+    [featuredProducts, bestSellingProducts, featuredRecentlyAddedProducts]
   );
   const [activeSpot, setActiveSpot] = useState(0);
   useHomeMotion();
@@ -311,10 +319,13 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
       </div>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
-        <h3 className={isDollVueCatalogProduct(product) ? "has-dollvue-badge" : undefined}>
-          <span>{shortTitle(displayTitle)}</span>
-          {isDollVueCatalogProduct(product) ? <DollVueBadge size="compact" /> : null}
-        </h3>
+        <h3>{shortTitle(displayTitle)}</h3>
+        {isDollVueCatalogProduct(product) ? (
+          <div className="product-card-dollvue-line">
+            <DollVueBadge size="compact" tooltipAlign="start" />
+            <span>DollVue enabled</span>
+          </div>
+        ) : null}
         <div className="home-spec-row">
           {specs.slice(0, 3).map((spec) => (
             <span key={spec}>{spec}</span>
@@ -577,10 +588,10 @@ function ClosingBand() {
   );
 }
 
-function buildRails(products: Product[], recentlyAddedProducts: Product[] = []): Rail[] {
+function buildRails(products: Product[], bestSellingProducts: Product[] = [], recentlyAddedProducts: Product[] = []): Rail[] {
   const ready = products.filter((product) => product.extended.stockStatus === "ready_to_ship");
   const female = products.filter((product) => !isHomepageMaleProduct(product));
-  const male = products.filter(isHomepageMaleProduct);
+  const male = uniqueHomepageModels(products.filter(isHomepageMaleProduct));
   const rare = products.filter(isRareProduct);
   const sale = products.filter(isSaleProduct);
   const newArrivals = homepageNewArrivals(recentlyAddedProducts.length ? recentlyAddedProducts : products).slice(0, 14);
@@ -621,7 +632,7 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
       copy: "A strong place to start when you want the most browsed catalog picks first.",
       tone: "deep",
       href: "/shop/sex-dolls",
-      products: products.slice(0, 14)
+      products: bestSellingProducts.slice(0, 14)
     },
     {
       key: "new",
