@@ -1,8 +1,11 @@
 # Lusandy Nadia 159 PDP AI/GEO release gate
 
-Run date: 2026-08-29  
-Status: AI/GEO validated; release and focused post-release OnPage check pending  
-Canonical owner: `https://dollwow.com/products/lusandy-nadia-159cm-g-cup-silicone-companion-doll`  
+Run date: 2026-08-29
+
+Status: released; monitoring pending
+
+Canonical owner: `https://dollwow.com/products/lusandy-nadia-159cm-g-cup-silicone-companion-doll`
+
 Primary fact source: Amit-approved current Lusandy PDP, `https://lusandydoll.com/products/lusandy-nadia-thicc-silicone-doll-159cm`
 
 ## Decision
@@ -36,8 +39,9 @@ Raw artifacts are under `data/exports/seo-intelligence/2026-08-29/lusandy-nadia-
 | Manufacturer backlinks | `/backlinks/summary/live` · `manufacturer-backlinks.json` | 20000 | 0.024036 | Manufacturer domain rank 31 / 61 referring domains; supports manufacturer-primary sourcing. |
 | DollWow domain baseline | `/backlinks/summary/live` · `dollwow-domain.json` | 20000 | 0.024036 | Pre-release baseline: rank 0 / 10 referring domains; no ranking claim made. |
 | Merchant | `/merchant/google/products/task_post` + task result · `merchant-post.json`, `merchant-result.json` | task 20100; result 40102 No Search Results | 0.002000 | No exact shopping result exists; publish accurate Product data without inventing shopping demand. |
+| DollWow post-release OnPage | `/on_page/instant_pages` · `dollwow-onpage.json` | 20000; canonical HTTP 200 | 0.000150 | Canonical resolves, score 97.07, no broken links/resources, relevant title/description, 1,333 server-readable words. Catalog media has descriptive alt text; sitewide decorative artwork intentionally uses empty alt text. |
 
-Pre-release total: $0.553629, including the successful mobile retry. Request manifests preserve endpoint, run time, status, cost, and artifact paths.
+Release total: $0.553779, including the successful mobile retry and focused post-release OnPage call. Request manifests preserve endpoint, run time, status, cost, and artifact paths.
 
 ## Adopted findings
 
@@ -57,4 +61,4 @@ Pre-release total: $0.553629, including the successful mobile retry. Request man
 
 ## Conditional layers
 
-Business Data, App Data, and Amazon Labs are not relevant to an exact direct-store product PDP and were not called. Merchant data was relevant and returned no exact shopping results. A focused DollWow OnPage call is required immediately after the canonical URL returns HTTP 200; GSC/Bing indexing and AI/mention baselines then move the page to `released; monitoring pending`.
+Business Data, App Data, and Amazon Labs are not relevant to an exact direct-store product PDP and were not called. Merchant data was relevant and returned no exact shopping results. The focused post-release DollWow OnPage call passed. GSC/Bing indexing should be checked weekly, with AI demand, exact-product mentions, citations, Merchant appearance, and SERP ownership reviewed monthly.

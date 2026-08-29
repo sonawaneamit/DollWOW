@@ -71,7 +71,7 @@ const manifest = {
   failedRequests: records.filter((item) => item.error).length,
   records
 };
-const name = fetchMerchant ? "request-manifest-merchant-results.json" : only ? `request-manifest-retry-${only}.json` : postRelease ? "request-manifest-post-release.json" : "request-manifest.json";
+const name = fetchMerchant ? "request-manifest-merchant-results.json" : postRelease ? "request-manifest-post-release.json" : only ? `request-manifest-retry-${only}.json` : "request-manifest.json";
 await fs.writeFile(path.join(OUTPUT, name), `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(JSON.stringify({ output: path.relative(ROOT, OUTPUT), manifest: name, totalCost: manifest.totalCost, requestCount: manifest.requestCount, failedRequests: manifest.failedRequests, records: records.map(({ id, api, cost, statusCode, statusMessage }) => ({ id, api, cost, statusCode, statusMessage })) }, null, 2));
 
