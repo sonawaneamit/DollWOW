@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
 import { homepageNewArrivals, isHomepageMaleProduct } from "@/lib/catalog/homepage";
+import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -62,8 +63,16 @@ const SPOTLIGHT_HANDLE_PRIORITY = [
 ];
 
 export function HomeAlive({ products, recentlyAddedProducts }: { products: Product[]; recentlyAddedProducts?: Product[] }) {
-  const spotlight = useMemo(() => buildSpotlightProducts(products), [products]);
-  const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
+  const featuredProducts = useMemo(() => storefrontFeatureProducts(products), [products]);
+  const featuredRecentlyAddedProducts = useMemo(
+    () => storefrontFeatureProducts(recentlyAddedProducts ?? []),
+    [recentlyAddedProducts]
+  );
+  const spotlight = useMemo(() => buildSpotlightProducts(featuredProducts), [featuredProducts]);
+  const rails = useMemo(
+    () => buildRails(featuredProducts, featuredRecentlyAddedProducts),
+    [featuredProducts, featuredRecentlyAddedProducts]
+  );
   const [activeSpot, setActiveSpot] = useState(0);
   useHomeMotion();
 
@@ -73,7 +82,7 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
     return () => window.clearInterval(interval);
   }, [spotlight.length]);
 
-  const activeProduct = spotlight[activeSpot] ?? products[0];
+  const activeProduct = spotlight[activeSpot] ?? featuredProducts[0];
 
   return (
     <div className="home-alive">
@@ -136,13 +145,13 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
       <TrustBand />
       <FactoryApprovalHomepagePreview />
       <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
-      <HomeDollWall products={products} />
+      <HomeDollWall products={featuredProducts} />
 
       {rails.map((rail, index) => (
         <ProductRail key={rail.key} rail={rail} index={index} />
       ))}
 
-      <PreviewShowcase products={products} />
+      <PreviewShowcase products={featuredProducts} />
       <ClosingBand />
     </div>
   );

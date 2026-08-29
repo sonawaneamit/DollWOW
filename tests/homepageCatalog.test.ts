@@ -42,7 +42,7 @@ describe("homepage catalog classification", () => {
     expect(isHomepageMaleProduct(makeProduct({ title: "Masculine companion" }))).toBe(true);
   });
 
-  it("keeps the heads options-sheet SKU out of New Arrivals only", () => {
+  it("keeps the heads options-sheet SKU out of homepage features", () => {
     const heads = makeProduct({ id: "heads", handle: "lusandy-sex-doll-heads" });
     const doll = makeProduct({ id: "doll", handle: "published-doll" });
 
