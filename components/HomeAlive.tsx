@@ -10,6 +10,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import { productUrl } from "@/lib/catalog/productUrl";
 import { WishlistButton } from "@/components/WishlistButton";
+import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
@@ -305,6 +306,11 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
             <span key={spec}>{spec}</span>
           ))}
         </div>
+        {ready ? (
+          <div className="catalog-product-card__warehouse">
+            <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} compact />
+          </div>
+        ) : null}
         <div className="home-card-foot">
           <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
           <span>View <ArrowRight className="h-3.5 w-3.5" /></span>
