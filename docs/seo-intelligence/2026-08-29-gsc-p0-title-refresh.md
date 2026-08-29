@@ -2,12 +2,12 @@
 
 Date: 2026-08-29
 
-Status: released; monitoring pending
+Status: content ready; release verification pending
 
 ## Scope And Canonical Action
 
 - Refresh the title, description, and H1 on the existing canonical owners `/learn/sex-doll-guide` and `/learn/body-heating-sex-doll-guide`.
-- Align the Shopify SEO title and description for the Erovenus Thia, Hailey, and Hazel custom listings and their US, Canada, European Union, and Australia ready-to-ship records with the converting Marina pattern.
+- Lock the visible H1 and regional shipping description for Erovenus Thia, Hailey, and Hazel custom listings and their US, Canada, European Union, and Australia ready-to-ship records while leaving their document titles unchanged.
 - Keep all existing URLs, prices, product status, visible ready-to-ship titles, and page types. No thin URL or new canonical owner is justified.
 
 ## Evidence Record
@@ -19,19 +19,20 @@ Status: released; monitoring pending
 | Body-heating organic SERP research | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-40-body-heating-serp.md` | Preserve the existing heating guide as the single educational owner and lead with compatibility and safety checks. |
 | First-time buyer AI benchmark | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-50-first-time-buyer-ai.md` | Preserve the flagship guide as the canonical first-time-buyer owner; no new beginner URL. |
 | Wave-four guide intelligence | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-73-wave4-guides.md` | Keep material, handling, total price, stock versus custom, seller proof, and care as buyer decisions. |
-| Live Shopify Admin product query and storefront HTML verification | 2026-08-29 | success | $0 | production read and post-release verification | Marina, Thia, Hailey, and Hazel identity, status, price, stock path, region, current SEO fields, and rendered metadata were verified directly. All requested product fields already matched Marina, so no Shopify write was needed. |
+| Live sitemap and storefront HTML verification | 2026-08-29 | success | $0 | production read before release | The three custom handles and all twelve requested AU/CA/EU/US ready-to-ship handles are live. Their H1s omit the model name before this release; the worktree override is limited to those exact handle families. |
 
 ## Adopted Copy Decisions
 
-- `How to Choose a Sex Doll: 2026 Buyer Checklist | DollWow` makes the primary task explicit and replaces a broad “complete guide” formulation.
-- `Sex Doll Body Heating: Safety & Buyer Checklist | DollWow` keeps the exact query entity while stating the practical reason to click.
-- Descriptions name the decision checks already supported by each article and add no performance, temperature, delivery, or safety guarantee.
-- Product SEO reuses Marina's live factual structure with only the verified model, height, and cup changed.
+- `Sex Doll Buying Guide (2026): Size, Weight, TPE vs Silicone | DollWow` names the four principal comparison decisions in the locked ship copy.
+- `Sex Doll Body Heating: Zones, Power, and Safety | DollWow` keeps the exact query entity and identifies the checks already supported by the guide.
+- Descriptions name the requested country coverage and add no performance, temperature, delivery-time, or safety guarantee.
+- The Erovenus H1 override adds the verified model name, height, cup, material, and product type to the three custom records and their twelve regional ready-to-ship records. Document titles, price, and publication state remain unchanged.
 
 ## Rejected Evidence And Changes
 
 - No AI response was treated as factual authority.
-- No new claims, metrics, prices, availability promises, URLs, schemas, models, product handles, or product publication changes were adopted.
+- No new indexable URLs, claims, metrics, prices, availability promises, schemas, models, product handles, or product publication changes were adopted.
+- The three legacy learning URLs consolidate into their live canonical owners with permanent redirects. Product-populated `/compare?product=` URLs are noindexed and keep `/compare` as canonical.
 - Generic keyword variants that would weaken the exact buyer task or imply universal heating behavior were rejected.
 
 ## Monitoring

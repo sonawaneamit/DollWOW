@@ -19,7 +19,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
-import { productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
+import { productDisplayName, productDisplayNameForUi, productLockedPdpTitle, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildPdpFitChecks,
   buildPdpMetadata,
@@ -73,7 +73,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
-  const pdpTitle = productPdpTitle(product);
+  const lockedPdpTitle = productLockedPdpTitle(product);
+  const pdpTitle = lockedPdpTitle ?? productPdpTitle(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -148,7 +149,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             </div>
             {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
-              <span>{displayNameUi ? pdpTitle : displayTitle}</span>
+              <span>{lockedPdpTitle ?? (displayNameUi ? pdpTitle : displayTitle)}</span>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">

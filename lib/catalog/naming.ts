@@ -69,6 +69,28 @@ export function productPdpTitle(product: Product) {
   return preserveAcronyms(cleanText([...baseParts, ...suffixParts].join(" "))) || productPublicTitle(product);
 }
 
+const LOCKED_EROVENUS_PDP_TITLES = [
+  {
+    handle: "erovenus-thia-110cm-j-cup-silicone-companion-doll-ex5hm",
+    title: "Erovenus Thia 110cm J-Cup Silicone Companion Doll"
+  },
+  {
+    handle: "erovenus-hailey-106cm-f-cup-silicone-companion-doll-jwi54",
+    title: "Erovenus Hailey 106cm F-Cup Silicone Companion Doll"
+  },
+  {
+    handle: "erovenus-hazel-106cm-f-cup-silicone-companion-doll-c3k5y",
+    title: "Erovenus Hazel 106cm F-Cup Silicone Companion Doll"
+  }
+] as const;
+
+export function productLockedPdpTitle(product: Product) {
+  const match = LOCKED_EROVENUS_PDP_TITLES.find(
+    ({ handle }) => product.handle === handle || product.handle.match(new RegExp(`^${handle}-rts-(?:au|ca|eu|us)$`))
+  );
+  return match?.title ?? null;
+}
+
 function buildProductTitle(product: Product, { seo }: { seo: boolean }) {
   const { brand, series, model, height, cup, material, kind, availability, headTitlePart, includeSeoHead, includeVisibleHead } = buildProductNamingData(product);
   const publicModel = isReferenceLikeName(model) && !seo ? "" : model;
