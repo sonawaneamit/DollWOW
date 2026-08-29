@@ -16,12 +16,13 @@ const HOMEPAGE_SPOTLIGHT_HANDLES = [
 ];
 
 export default async function HomePage() {
-  const [spotlightProducts, products, femaleProducts, maleProducts, readyProducts, recentlyAddedProducts] = await Promise.all([
+  const [spotlightProducts, products, femaleProducts, maleProducts, readyProducts, bestSellingProducts, recentlyAddedProducts] = await Promise.all([
     Promise.all(HOMEPAGE_SPOTLIGHT_HANDLES.map((handle) => getProductByHandle(handle, { revalidate: 120 }))),
     getProducts({ first: 96 }),
     getProducts({ first: 36, query: shopifyQueryForFilters({ bodyType: "female" }) }),
     getProducts({ first: 36, query: shopifyQueryForFilters({ bodyType: "male" }) }),
     getProducts({ first: 36, query: shopifyQueryForFilters({ availability: "ready_to_ship" }) }),
+    getProducts({ first: 36, sortKey: "BEST_SELLING", reverse: false }),
     getProducts({ first: 14, sortKey: "CREATED_AT", reverse: true })
   ]);
 
@@ -30,7 +31,11 @@ export default async function HomePage() {
   return (
     <>
       <HomeContactStrip />
-      <HomeAlive products={curatedProducts.map(withProtectedProductImages)} recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages)} />
+      <HomeAlive
+        products={curatedProducts.map(withProtectedProductImages)}
+        bestSellingProducts={bestSellingProducts.map(withProtectedProductImages)}
+        recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages)}
+      />
     </>
   );
 }

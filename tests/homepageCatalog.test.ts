@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { productBodyType } from "@/lib/catalog/bodyType";
-import { homepageNewArrivals, isHomepageMaleProduct } from "@/lib/catalog/homepage";
+import { homepageNewArrivals, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
 import type { Product } from "@/types/product";
 
 function makeProduct(overrides: Partial<Product> & { extended?: Product["extended"] } = {}): Product {
@@ -47,5 +47,13 @@ describe("homepage catalog classification", () => {
     const doll = makeProduct({ id: "doll", handle: "published-doll" });
 
     expect(homepageNewArrivals([heads, doll])).toEqual([doll]);
+  });
+
+  it("shows one card per public model within a homepage rail", () => {
+    const firstBill = makeProduct({ id: "bill-1", handle: "irontech-bill-1", title: "Irontech Bill 176cm Silicone" });
+    const duplicateBill = makeProduct({ id: "bill-2", handle: "irontech-bill-2", title: "Irontech Bill 176cm Silicone" });
+    const james = makeProduct({ id: "james", handle: "irontech-james", title: "Irontech James 176cm Silicone" });
+
+    expect(uniqueHomepageModels([firstBill, duplicateBill, james])).toEqual([firstBill, james]);
   });
 });

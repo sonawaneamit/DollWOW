@@ -20,11 +20,11 @@ export const dynamic = "force-dynamic";
 export default async function DollVueProductPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   if (!isDollVueProduct(handle)) notFound();
+  const product = await getProductByHandle(handle, { cache: "force-cache", revalidate: 3600 });
+  if (!product || !isDollVueCatalogProduct(product)) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
   if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} /></div>;
   const usage = await dollVueUsageForEmail(session.email);
-  const product = await getProductByHandle(handle, { cache: "force-cache", revalidate: 3600 });
-  if (!product || !isDollVueCatalogProduct(product)) notFound();
   const groups = dollVueGroups(dollVueConfigForProduct(product, getCustomizationConfig(product)));
   const photos = productImageSources(product).slice(0, 8).map((image, position) => ({
     position,

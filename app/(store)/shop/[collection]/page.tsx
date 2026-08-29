@@ -11,6 +11,7 @@ import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
 import { notFound, permanentRedirect } from "next/navigation";
+import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 
 export async function generateMetadata({
   params,
@@ -44,7 +45,8 @@ export default async function CollectionPage({
   if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
   const products = await getSeoCatalogProducts({ first: 5000 });
-  const filtered = filterProducts(products, filters);
+  const filteredProducts = filterProducts(products, filters);
+  const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
   const relatedLinks = collectionRelatedLinks(collection, preset);
