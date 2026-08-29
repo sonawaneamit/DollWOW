@@ -109,4 +109,28 @@ describe("similar products", () => {
     });
     expect(scoreSimilarProducts(reference, [otherBrand], 4)).toHaveLength(0);
   });
+
+  it("keeps lusandy-sex-doll-heads out of the New arrivals from Lusandy brand rail", () => {
+    const lusandyDoll = makeProduct({
+      id: "lusandy-doll",
+      handle: "lusandy-doll",
+      vendor: "Lusandy",
+      extended: { brand: "Lusandy", material: "Silicone", bodyType: "female", heightCm: 157, stockStatus: "custom" }
+    });
+    const heads = makeProduct({
+      id: "lusandy-heads",
+      handle: "lusandy-sex-doll-heads",
+      vendor: "Lusandy",
+      price: "599",
+      extended: { brand: "Lusandy", material: "Silicone", bodyType: "female", stockStatus: "custom" }
+    });
+    const anotherDoll = makeProduct({
+      id: "another-lusandy-doll",
+      handle: "another-lusandy-doll",
+      vendor: "Lusandy",
+      extended: { brand: "Lusandy", material: "Silicone", bodyType: "female", heightCm: 160, stockStatus: "custom" }
+    });
+
+    expect(scoreSimilarProducts(lusandyDoll, [heads, anotherDoll], 5)).toEqual([anotherDoll]);
+  });
 });

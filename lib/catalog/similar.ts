@@ -1,3 +1,4 @@
+import { isStorefrontFeatureEligible } from "@/lib/catalog/featured";
 import type { Product } from "@/types/product";
 
 /**
@@ -54,6 +55,7 @@ export function similarityScore(reference: Product, candidate: Product): number 
 }
 
 function isEligibleAlternative(reference: Product, candidate: Product): boolean {
+  if (!isStorefrontFeatureEligible(candidate)) return false;
   if (candidate.id === reference.id || candidate.handle === reference.handle) return false;
   if (!candidate.featuredImage && !candidate.images.length) return false;
   if (!candidate.variants.some((variant) => variant.availableForSale)) return false;
