@@ -10,7 +10,10 @@ export const DOLLVUE_PRODUCT_HANDLES = [
   "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj",
   "lusandy-nadia-159cm-g-cup-silicone-companion-doll"
 ] as const;
-const DOLLVUE_PRODUCT_HANDLE_PREFIXES = ["irontech-", "starpery-"] as const;
+const DOLLVUE_PRODUCT_HANDLE_PREFIXES = ["irontech-", "starpery-", "lusandy-"] as const;
+const DOLLVUE_EXCLUDED_HANDLES = new Set([
+  "lusandy-sex-doll-heads"
+]);
 export const DOLLVUE_DEFAULT_PRODUCT_HANDLE = DOLLVUE_PRODUCT_HANDLES[0];
 export const DOLLVUE_FREE_PREVIEWS = 5;
 export const DOLLVUE_PROMPT_VERSION = "two-option-preview-v1";
@@ -18,14 +21,25 @@ export const DOLLVUE_PROMPT_VERSION = "two-option-preview-v1";
 export type DollVueSelection = { groupId: string; optionId: string };
 
 export function isDollVueProduct(handle: string) {
-  return DOLLVUE_PRODUCT_HANDLES.includes(handle as (typeof DOLLVUE_PRODUCT_HANDLES)[number]) ||
-    DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => handle.startsWith(prefix));
+  const normalizedHandle = handle.toLowerCase();
+  if (isExcludedLusandyHandle(normalizedHandle)) return false;
+  return DOLLVUE_PRODUCT_HANDLES.includes(normalizedHandle as (typeof DOLLVUE_PRODUCT_HANDLES)[number]) ||
+    DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => normalizedHandle.startsWith(prefix));
 }
 
 export function isDollVueCatalogProduct(product: Product) {
-  const explicitlyEnabledLusandy = product.handle === "lusandy-nadia-159cm-g-cup-silicone-companion-doll";
-  return (explicitlyEnabledLusandy || DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => product.handle.startsWith(prefix))) &&
-    product.extended.stockStatus !== "ready_to_ship";
+  const handle = product.handle.toLowerCase();
+  const excludedLusandyProduct = handle.startsWith("lusandy-") &&
+    (isExcludedLusandyHandle(handle) || String(product.extended.bodyType).toLowerCase() === "torso");
+
+  return DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => handle.startsWith(prefix)) &&
+    product.extended.stockStatus !== "ready_to_ship" &&
+    !excludedLusandyProduct;
+}
+
+function isExcludedLusandyHandle(handle: string) {
+  return DOLLVUE_EXCLUDED_HANDLES.has(handle) ||
+    (handle.startsWith("lusandy-") && handle.includes("torso"));
 }
 
 export function dollVueUrl(handle: string) {

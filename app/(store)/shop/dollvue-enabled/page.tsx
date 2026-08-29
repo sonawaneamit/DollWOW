@@ -41,7 +41,7 @@ export default async function DollVueEnabledCollection({
         <p className="text-sm font-semibold uppercase tracking-[.16em] text-accent">DollVue™ enabled</p>
         <h1 className="mt-2 text-4xl font-semibold text-text sm:text-6xl">Dolls you can preview before you choose</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">
-          Browse the latest Irontech and Starpery dolls with supported DollVue appearance previews.
+          Browse the latest custom dolls with supported DollVue appearance previews, including Lusandy, Irontech, and Starpery designs.
         </p>
         <Link
           href="/dollvue"

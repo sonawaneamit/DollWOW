@@ -4,6 +4,7 @@ import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups, isExplicitIrontechUlwOption } from "@/lib/customization/irontech";
+import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import {
   getAngelkissCustomizationGroups,
@@ -346,6 +347,15 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       };
     }
   }
+  if (isLusandyProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(
+      product,
+      purpose,
+      "lusandy-source-verified",
+      "Lusandy",
+      stampLusandyDollVueGroups(importedGroups)
+    );
+  }
   if (isSeProduct(product) && importedGroups?.length) {
     const groups = getSeCustomizationGroups(product, importedGroups);
     return importedBrandConfig(product, purpose, "se-source-verified", "SE Doll", groups);
@@ -546,6 +556,10 @@ function isWmProduct(product: Product) {
     .join(" ")
     .toLowerCase();
   return /(^|\s|-)wm(\s|-|$)|wm dolls|wmdoll/.test(text);
+}
+
+function isLusandyProduct(product: Product) {
+  return /\blusandy\b/.test(productSearchText(product));
 }
 
 function isSeProduct(product: Product) {
