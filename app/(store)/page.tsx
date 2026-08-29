@@ -6,6 +6,7 @@ import type { Product } from "@/types/product";
 import { withProtectedProductImages } from "@/lib/catalog/productImage";
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
+  "lusandy-belle-159cm-h-cup-silicone-companion-doll-us-rts",
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
   "starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
   "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",

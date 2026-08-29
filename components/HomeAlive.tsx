@@ -52,6 +52,7 @@ const HERO_VIDEO_MEDIA: Record<string, { video: string; poster: string }> = {
 };
 
 const SPOTLIGHT_HANDLE_PRIORITY = [
+  "lusandy-belle-159cm-h-cup-silicone-companion-doll-us-rts",
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
   "starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg",
   "jarliet-dolls-quine-167cm-b-cup-silicone-companion-doll-etgn7",
@@ -66,12 +67,6 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
   const rails = useMemo(() => buildRails(products, recentlyAddedProducts), [products, recentlyAddedProducts]);
   const [activeSpot, setActiveSpot] = useState(0);
   useHomeMotion();
-
-  useEffect(() => {
-    if (spotlight.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const interval = window.setInterval(() => setActiveSpot((current) => (current + 1) % spotlight.length), 6500);
-    return () => window.clearInterval(interval);
-  }, [spotlight.length]);
 
   const activeProduct = spotlight[activeSpot] ?? products[0];
 
@@ -88,7 +83,9 @@ export function HomeAlive({ products, recentlyAddedProducts }: { products: Produ
               Explore real DollWow catalog picks with clear specs, private checkout, and practical support when you want a second look.
             </p>
             <div className="home-hero__actions">
-              <Link className="home-btn home-btn--primary" href="/shop/sex-dolls">Shop all dolls <ArrowRight className="h-4 w-4" /></Link>
+              <Link className="home-btn home-btn--primary" href="/products/lusandy-belle-159cm-h-cup-silicone-companion-doll-us-rts">
+                Shop Belle — US ready to ship <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 
@@ -417,7 +414,7 @@ function escapeRegExp(value: string) {
 
 function buildSpotlightProducts(products: Product[]) {
   return SPOTLIGHT_HANDLE_PRIORITY.map((handle) => products.find((product) => product.handle === handle))
-    .filter((product): product is Product => Boolean(product && getHeroVideoMedia(product)));
+    .filter((product): product is Product => Boolean(product));
 }
 
 function getHeroVideoMedia(product: Product) {
