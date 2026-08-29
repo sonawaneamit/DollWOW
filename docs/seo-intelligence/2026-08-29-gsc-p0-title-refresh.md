@@ -2,7 +2,7 @@
 
 Date: 2026-08-29
 
-Status: content ready; release verification pending
+Status: released; monitoring pending
 
 ## Scope And Canonical Action
 
@@ -20,6 +20,7 @@ Status: content ready; release verification pending
 | First-time buyer AI benchmark | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-50-first-time-buyer-ai.md` | Preserve the flagship guide as the canonical first-time-buyer owner; no new beginner URL. |
 | Wave-four guide intelligence | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-73-wave4-guides.md` | Keep material, handling, total price, stock versus custom, seller proof, and care as buyer decisions. |
 | Live sitemap and storefront HTML verification | 2026-08-29 | success | $0 | production read before release | The three custom handles and all twelve requested AU/CA/EU/US ready-to-ship handles are live. Their H1s omit the model name before this release; the worktree override is limited to those exact handle families. |
+| Post-release source HTML and response verification | 2026-08-29 | success | $0 | production read after merge commit `3309941` | Exact title, H1, and description checks passed for both guides and all fifteen Erovenus URLs. The three legacy URLs return permanent redirects, populated compare URLs are noindexed, and the apex compare canonical is retained. |
 
 ## Adopted Copy Decisions
 
