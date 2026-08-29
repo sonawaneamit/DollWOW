@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { dollVueGroups, isDollVueCatalogProduct, isDollVueProduct } from "@/lib/dollvue/config";
@@ -27,6 +28,13 @@ function product(handle: string, extended: Partial<Product["extended"]> = {}) {
 }
 
 describe("Lusandy DollVue eligibility", () => {
+  it("checks catalog eligibility before returning the access gate", () => {
+    const source = readFileSync("app/dollvue/[handle]/page.tsx", "utf8");
+
+    expect(source.indexOf("if (!product || !isDollVueCatalogProduct(product)) notFound();"))
+      .toBeLessThan(source.indexOf("if (!session) return"));
+  });
+
   it("enables custom Belle and keeps Nadia enabled", () => {
     const belleHandle = "lusandy-belle-159cm-h-cup-silicone-companion-doll";
 
