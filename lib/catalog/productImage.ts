@@ -20,8 +20,16 @@ export function productImageSources(product: Product) {
 
 export type ProtectedImageSize = "full" | "card" | "thumb";
 
+const PRODUCT_IMAGE_CACHE_REVISIONS: Record<string, string> = {
+  "lusandy-himari-157cm-b-cup-silicone-companion-doll": "adult-factory-still-20260829"
+};
+
 export function protectedProductImageUrl(handle: string, position = 0, size: ProtectedImageSize = "full") {
-  const suffix = size === "full" ? "" : `?size=${size}`;
+  const params = new URLSearchParams();
+  if (size !== "full") params.set("size", size);
+  const revision = PRODUCT_IMAGE_CACHE_REVISIONS[handle];
+  if (revision) params.set("rev", revision);
+  const suffix = params.size ? `?${params.toString()}` : "";
   return `/product-media/v4/${encodeURIComponent(handle)}/${Math.max(0, position)}${suffix}`;
 }
 

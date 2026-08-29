@@ -39,4 +39,12 @@ describe("protected product images", () => {
     expect(protectedProduct.featuredImage?.url).toBe("/product-media/v4/sample-doll/0");
     expect(protectedProduct.images[1].url).toBe("/product-media/v4/sample-doll/1");
   });
+
+  it("revises the Himari proxy URL when its approved card still changes", () => {
+    const himari = { ...product, handle: "lusandy-himari-157cm-b-cup-silicone-companion-doll" };
+
+    expect(protectedProductImageUrlFor(himari, himari.featuredImage, "card")).toBe(
+      "/product-media/v4/lusandy-himari-157cm-b-cup-silicone-companion-doll/0?size=card&rev=adult-factory-still-20260829"
+    );
+  });
 });
