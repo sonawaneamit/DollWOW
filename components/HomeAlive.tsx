@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
-import { productBodyType } from "@/lib/catalog/bodyType";
+import { homepageNewArrivals, isHomepageMaleProduct } from "@/lib/catalog/homepage";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -294,6 +294,11 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
       <div className="home-product-card__media">
         <HomeProductImage product={product} priority={priority} />
         <span className={`home-product-badge ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
+        {ready ? (
+          <div className="home-product-card__warehouse">
+            <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} compact />
+          </div>
+        ) : null}
       </div>
       <div className="home-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>
@@ -306,11 +311,6 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
             <span key={spec}>{spec}</span>
           ))}
         </div>
-        {ready ? (
-          <div className="catalog-product-card__warehouse">
-            <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} compact />
-          </div>
-        ) : null}
         <div className="home-card-foot">
           <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
           <span>View <ArrowRight className="h-3.5 w-3.5" /></span>
@@ -474,14 +474,14 @@ function buildLookTiles(products: Product[]): LookTile[] {
       label: "Female dolls",
       eyebrow: "Gender",
       href: "/shop/female-dolls",
-      match: (product: Product) => !isMaleProduct(product)
+      match: (product: Product) => !isHomepageMaleProduct(product)
     },
     {
       key: "male",
       label: "Male dolls",
       eyebrow: "Gender",
       href: "/shop/male-dolls",
-      match: isMaleProduct
+      match: isHomepageMaleProduct
     },
     {
       key: "ready",
@@ -570,11 +570,11 @@ function ClosingBand() {
 
 function buildRails(products: Product[], recentlyAddedProducts: Product[] = []): Rail[] {
   const ready = products.filter((product) => product.extended.stockStatus === "ready_to_ship");
-  const female = products.filter((product) => !isMaleProduct(product));
-  const male = products.filter(isMaleProduct);
+  const female = products.filter((product) => !isHomepageMaleProduct(product));
+  const male = products.filter(isHomepageMaleProduct);
   const rare = products.filter(isRareProduct);
   const sale = products.filter(isSaleProduct);
-  const newArrivals = recentlyAddedProducts.length ? recentlyAddedProducts : products.slice(0, 14);
+  const newArrivals = homepageNewArrivals(recentlyAddedProducts.length ? recentlyAddedProducts : products).slice(0, 14);
 
   const rails: Rail[] = [
     {
@@ -649,14 +649,6 @@ function buildRails(products: Product[], recentlyAddedProducts: Product[] = []):
 
 function productSearchText(product: Product) {
   return `${product.title} ${product.vendor} ${product.productType} ${product.extended.brand ?? ""} ${product.extended.material ?? ""} ${product.extended.bodyType ?? ""} ${product.tags.join(" ")}`.toLowerCase();
-}
-
-function isMaleProduct(product: Product) {
-  const bodyType = productBodyType(product);
-  if (bodyType === "male") return true;
-  if (bodyType === "female") return false;
-  const text = productSearchText(product);
-  return /\b(male|man|men|masculine|torso)\b/.test(text);
 }
 
 function isRareProduct(product: Product) {
