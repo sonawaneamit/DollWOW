@@ -19,7 +19,7 @@ Status: released; monitoring pending
 | Body-heating organic SERP research | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-40-body-heating-serp.md` | Preserve the existing heating guide as the single educational owner and lead with compatibility and safety checks. |
 | First-time buyer AI benchmark | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-50-first-time-buyer-ai.md` | Preserve the flagship guide as the canonical first-time-buyer owner; no new beginner URL. |
 | Wave-four guide intelligence | 2026-08-12 | success | recorded in source artifact | `docs/seo-intelligence/2026-08-12-step-73-wave4-guides.md` | Keep material, handling, total price, stock versus custom, seller proof, and care as buyer decisions. |
-| Live Shopify Admin product query | 2026-08-29 | success | $0 | production read and post-write verification | Marina, Thia, Hailey, and Hazel identity, status, price, stock path, region, and current SEO fields were verified directly. |
+| Live Shopify Admin product query and storefront HTML verification | 2026-08-29 | success | $0 | production read and post-release verification | Marina, Thia, Hailey, and Hazel identity, status, price, stock path, region, current SEO fields, and rendered metadata were verified directly. All requested product fields already matched Marina, so no Shopify write was needed. |
 
 ## Adopted Copy Decisions
 
