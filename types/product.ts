@@ -47,6 +47,7 @@ export type ProductExtended = {
   catalogIdentityKey?: string;
   catalogBodyIdentityKey?: string;
   headModel?: string;
+  bodyCode?: string;
   displayName?: string;
   bodyType?: "male" | "female" | "unknown";
   lookTags?: string[];

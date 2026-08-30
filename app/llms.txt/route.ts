@@ -24,6 +24,7 @@ const corePages = [
   ["DollVue", "/dollvue"],
   ["DollVue-enabled dolls", "/shop/dollvue-enabled"],
   ["Price Match", "/price-match"],
+  ["Active Brand Promotions", "/promo"],
   ["Buyer Protection", "/buyer-protection"],
   ["Care for Life", "/care-for-life"],
   ["Factory Approval Archive", "/factory-photos"],

@@ -1,0 +1,480 @@
+{
+  "generatedAt": "2026-08-30T08:09:21.861Z",
+  "execute": true,
+  "totalCost": 0.534775,
+  "requestCount": 21,
+  "failedRequests": 0,
+  "records": [
+    {
+      "id": "google-keywords",
+      "api": "Google Keyword Data",
+      "endpoint": "/dataforseo_labs/google/keyword_overview/live",
+      "payload": [
+        {
+          "keywords": [
+            "se doll promotion",
+            "se doll sale",
+            "se doll tpe",
+            "se doll discount",
+            "sex doll promotions"
+          ],
+          "location_code": 2840,
+          "language_code": "en",
+          "include_serp_info": true,
+          "tag": "dollwow-dol25-google-keywords"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0607-0000-9dc6766c7388",
+      "cost": 0.012,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "bing-keywords",
+      "api": "Bing Keyword Data",
+      "endpoint": "/keywords_data/bing/search_volume/live",
+      "payload": [
+        {
+          "keywords": [
+            "se doll promotion",
+            "se doll sale",
+            "se doll tpe",
+            "se doll discount",
+            "sex doll promotions"
+          ],
+          "location_code": 2840,
+          "language_code": "en",
+          "tag": "dollwow-dol25-bing-keywords"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0440-0000-f0841c2c8a90",
+      "cost": 0.09,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "ai-keywords",
+      "api": "AI Keyword Data",
+      "endpoint": "/ai_optimization/ai_keyword_data/keywords_search_volume/live",
+      "payload": [
+        {
+          "keywords": [
+            "se doll promotion",
+            "se doll sale",
+            "se doll tpe",
+            "se doll discount",
+            "sex doll promotions"
+          ],
+          "location_code": 2840,
+          "language_code": "en",
+          "tag": "dollwow-dol25-ai-keywords"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0619-0000-56ba83643465",
+      "cost": 0.0105,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "labs-ranked",
+      "api": "DataForSEO Labs",
+      "endpoint": "/dataforseo_labs/google/ranked_keywords/live",
+      "payload": [
+        {
+          "target": "sedoll.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "item_types": [
+            "organic",
+            "featured_snippet"
+          ],
+          "include_serp_info": true,
+          "limit": 100,
+          "order_by": [
+            "keyword_data.keyword_info.search_volume,desc"
+          ],
+          "tag": "dollwow-dol25-sedoll-ranked"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0381-0000-09a34098cf53",
+      "cost": 0.01428,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "labs-gap",
+      "api": "DataForSEO Labs",
+      "endpoint": "/dataforseo_labs/google/domain_intersection/live",
+      "payload": [
+        {
+          "target1": "sedoll.com",
+          "target2": "dollwow.com",
+          "intersections": false,
+          "location_code": 2840,
+          "language_code": "en",
+          "item_types": [
+            "organic",
+            "featured_snippet"
+          ],
+          "include_serp_info": true,
+          "limit": 100,
+          "order_by": [
+            "keyword_data.keyword_info.search_volume,desc"
+          ],
+          "tag": "dollwow-dol25-sedoll-gap"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0389-0000-a501fd2c4c84",
+      "cost": 0.01428,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "google-serp-desktop",
+      "api": "Google Organic SERP",
+      "endpoint": "/serp/google/organic/live/advanced",
+      "payload": [
+        {
+          "keyword": "se doll promotion",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "desktop",
+          "os": "windows",
+          "depth": 50,
+          "tag": "dollwow-dol25-google-desktop"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0139-0000-b881182e52a8",
+      "cost": 0.008,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "google-serp-mobile",
+      "api": "Google Organic SERP",
+      "endpoint": "/serp/google/organic/live/advanced",
+      "payload": [
+        {
+          "keyword": "se doll promotion",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "mobile",
+          "os": "android",
+          "depth": 50,
+          "tag": "dollwow-dol25-google-mobile"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0139-0000-d33a1c97b007",
+      "cost": 0.008,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "bing-serp",
+      "api": "Bing Organic SERP",
+      "endpoint": "/serp/bing/organic/live/advanced",
+      "payload": [
+        {
+          "keyword": "se doll promotion",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "desktop",
+          "os": "windows",
+          "depth": 20,
+          "tag": "dollwow-dol25-bing-serp"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0139-0000-f1a2ffc7e174",
+      "cost": 0.0035,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "google-ai-mode",
+      "api": "Google AI Mode",
+      "endpoint": "/serp/google/ai_mode/live/advanced",
+      "payload": [
+        {
+          "keyword": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "desktop",
+          "tag": "dollwow-dol25-ai-mode"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0139-0000-ae917d041bf5",
+      "cost": 0.004,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "chatgpt-scraper",
+      "api": "ChatGPT LLM Scraper",
+      "endpoint": "/ai_optimization/chat_gpt/llm_scraper/live/advanced",
+      "payload": [
+        {
+          "keyword": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "location_code": 2840,
+          "language_code": "en",
+          "tag": "dollwow-dol25-chatgpt-scraper"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300809-1783-0629-0000-b0201576bed2",
+      "cost": 0.004,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "chatgpt-response",
+      "api": "ChatGPT Response",
+      "endpoint": "/ai_optimization/chat_gpt/llm_responses/live",
+      "payload": [
+        {
+          "user_prompt": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "system_message": "Answer as a neutral US buyer researcher. Use current sources and distinguish manufacturer facts from retailer claims.",
+          "model_name": "gpt-5.4-nano",
+          "max_output_tokens": 1200,
+          "web_search": true,
+          "web_search_country_iso_code": "US",
+          "tag": "dollwow-dol25-chatgpt-response"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0612-0000-4b496f847ee5",
+      "cost": 0.023688,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "claude-response",
+      "api": "Claude Response",
+      "endpoint": "/ai_optimization/claude/llm_responses/live",
+      "payload": [
+        {
+          "user_prompt": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "system_message": "Answer as a neutral US buyer researcher. Use current sources and distinguish manufacturer facts from retailer claims.",
+          "model_name": "claude-haiku-4-5",
+          "max_output_tokens": 1200,
+          "web_search": true,
+          "tag": "dollwow-dol25-claude"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0612-0000-ea8b3af829e3",
+      "cost": 0.023457,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "gemini-response",
+      "api": "Gemini Response",
+      "endpoint": "/ai_optimization/gemini/llm_responses/live",
+      "payload": [
+        {
+          "user_prompt": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "system_message": "Answer as a neutral US buyer researcher. Use current sources and distinguish manufacturer facts from retailer claims.",
+          "model_name": "gemini-2.5-flash-lite",
+          "max_output_tokens": 1200,
+          "web_search": true,
+          "tag": "dollwow-dol25-gemini"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0612-0000-07f44e262584",
+      "cost": 0.035728,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "perplexity-response",
+      "api": "Perplexity Response",
+      "endpoint": "/ai_optimization/perplexity/llm_responses/live",
+      "payload": [
+        {
+          "user_prompt": "What current SE Doll TPE promotions or free custom-order upgrades are available in September 2026? Give exact dates and separate verified factory bonuses from retailer discounts. Cite current sources.",
+          "system_message": "Answer as a neutral US buyer researcher. Use current sources and distinguish manufacturer facts from retailer claims.",
+          "model_name": "sonar",
+          "max_output_tokens": 1200,
+          "web_search_country_iso_code": "US",
+          "tag": "dollwow-dol25-perplexity"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0612-0000-7616f5f4b10a",
+      "cost": 0.0064,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "content-summary",
+      "api": "Content Analysis",
+      "endpoint": "/content_analysis/summary/live",
+      "payload": [
+        {
+          "keyword": "se doll promotion",
+          "internal_list_limit": 10,
+          "tag": "dollwow-dol25-content-summary"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0464-0000-b0f303722351",
+      "cost": 0.024036,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "content-search",
+      "api": "Content Analysis",
+      "endpoint": "/content_analysis/search/live",
+      "payload": [
+        {
+          "keyword": "se doll promotion",
+          "limit": 20,
+          "order_by": [
+            "content_info.date_published,desc"
+          ],
+          "tag": "dollwow-dol25-content-search"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0463-0000-8cc9f5fac44f",
+      "cost": 0.02472,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "backlinks-summary",
+      "api": "Backlinks",
+      "endpoint": "/backlinks/summary/live",
+      "payload": [
+        {
+          "target": "dollwow.com",
+          "include_subdomains": true,
+          "exclude_internal_backlinks": true,
+          "tag": "dollwow-dol25-backlinks"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0265-0000-8b155d248ca3",
+      "cost": 0.024036,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "onpage-pre-release",
+      "api": "OnPage",
+      "endpoint": "/on_page/instant_pages",
+      "payload": [
+        {
+          "url": "https://dollwow.com/promo",
+          "load_resources": false,
+          "enable_javascript": false,
+          "check_spell": false
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0275-0000-aa8b9925f1c7",
+      "cost": 0.00015,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "mentions-google",
+      "api": "LLM Mentions",
+      "endpoint": "/ai_optimization/llm_mentions/target_metrics/live",
+      "payload": [
+        {
+          "location_code": 2840,
+          "language_code": "en",
+          "platform": "google",
+          "target": [
+            {
+              "keyword": "dollwow.com",
+              "search_scope": [
+                "any"
+              ],
+              "match_type": "word_match"
+            },
+            {
+              "keyword": "SE Doll",
+              "search_scope": [
+                "any"
+              ],
+              "match_type": "word_match"
+            }
+          ],
+          "tag": "dollwow-dol25-mentions-google"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0651-0000-4ecd7548a461",
+      "cost": 0.101,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "mentions-chat_gpt",
+      "api": "LLM Mentions",
+      "endpoint": "/ai_optimization/llm_mentions/target_metrics/live",
+      "payload": [
+        {
+          "location_code": 2840,
+          "language_code": "en",
+          "platform": "chat_gpt",
+          "target": [
+            {
+              "keyword": "dollwow.com",
+              "search_scope": [
+                "any"
+              ],
+              "match_type": "word_match"
+            },
+            {
+              "keyword": "SE Doll",
+              "search_scope": [
+                "any"
+              ],
+              "match_type": "word_match"
+            }
+          ],
+          "tag": "dollwow-dol25-mentions-chat_gpt"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0651-0000-30ea046b7338",
+      "cost": 0.101,
+      "statusCode": 20000,
+      "statusMessage": "Ok."
+    },
+    {
+      "id": "merchant-post",
+      "api": "Merchant",
+      "endpoint": "/merchant/google/products/task_post",
+      "payload": [
+        {
+          "keyword": "SE Doll",
+          "location_code": 2840,
+          "language_code": "en",
+          "depth": 40,
+          "priority": 2,
+          "tag": "dollwow-dol25-merchant"
+        }
+      ],
+      "executed": true,
+      "taskId": "08300810-1783-0179-0000-356228dad4c4",
+      "cost": 0.002,
+      "statusCode": 20100,
+      "statusMessage": "Task Created."
+    }
+  ]
+}

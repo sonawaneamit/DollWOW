@@ -95,6 +95,7 @@ export function GET() {
       { label: "DollVue", url: `${siteUrl}/dollvue` },
       { label: "DollVue-enabled dolls", url: `${siteUrl}/shop/dollvue-enabled` },
       { label: "Price match", url: `${siteUrl}/price-match` },
+      { label: "Active brand promotions", url: `${siteUrl}/promo` },
       { label: "Help me choose", url: `${siteUrl}/help-me-choose` },
       { label: "Support", url: `${siteUrl}/support` }
     ],
