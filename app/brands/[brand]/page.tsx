@@ -10,6 +10,7 @@ import { brandHubTitle, brandRelatedLinks, brandSeoProfile, buildBrandMetadata, 
 import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
+import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -72,6 +73,8 @@ export default async function BrandHubPage({
           <p className="mt-3 text-sm font-semibold text-gold-200">Current DollWow collection</p>
         </div>
       </div>
+
+      {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
 
       <BrandAuthorizationCard brand={brand.value} variant="brand" />
 

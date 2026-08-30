@@ -15,6 +15,7 @@ const exactPublicPaths = new Set([
   "/how-ordering-works",
   "/learn",
   "/price-match",
+  "/promo",
   "/privacy-policy",
   "/returns",
   "/scam-alert",

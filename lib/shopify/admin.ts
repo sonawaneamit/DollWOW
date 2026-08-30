@@ -145,6 +145,7 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
       productByHandle: {
         measurements?: { value?: string | null } | null;
         headModel?: { value?: string | null } | null;
+        bodyCode?: { value?: string | null } | null;
         editorialIntro?: { value?: string | null } | null;
       } | null;
     }>(
@@ -152,6 +153,7 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
         productByHandle(handle: $handle) {
           measurements: metafield(namespace: "custom", key: "measurements") { value }
           headModel: metafield(namespace: "custom", key: "head_model") { value }
+          bodyCode: metafield(namespace: "custom", key: "body_code") { value }
           editorialIntro: metafield(namespace: "custom", key: "editorial_intro") { value }
         }
       }`,
@@ -160,6 +162,7 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
 
     const measurements = parseJson<Record<string, string>>(data.productByHandle?.measurements?.value);
     const headModel = data.productByHandle?.headModel?.value || undefined;
+    const bodyCode = data.productByHandle?.bodyCode?.value || undefined;
     const editorialIntro = parseJson<{
       eyebrow: string;
       heading: string;
@@ -168,8 +171,8 @@ export async function getProductAdminMetafieldsByHandle(handle: string) {
       generatedAt?: string;
     }>(data.productByHandle?.editorialIntro?.value);
 
-    if (!measurements && !headModel && !editorialIntro) return null;
-    return { measurements, headModel, editorialIntro };
+    if (!measurements && !headModel && !bodyCode && !editorialIntro) return null;
+    return { measurements, headModel, bodyCode, editorialIntro };
   } catch {
     return null;
   }

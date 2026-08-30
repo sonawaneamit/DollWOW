@@ -35,6 +35,7 @@ import { FactoryApprovalPdpPreview } from "@/components/factory-approval/Factory
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -184,6 +185,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
+            <SeDollPdpFreebieBlock product={product} />
             {product.extended.stockStatus !== "ready_to_ship" ? (
               <FactoryApprovalPdpPreview />
             ) : null}
@@ -261,6 +263,7 @@ function mergeAdminMetafields(
       ...product.extended,
       measurements: adminData.measurements || product.extended.measurements,
       headModel: adminData.headModel || product.extended.headModel,
+      bodyCode: adminData.bodyCode || product.extended.bodyCode,
       editorialIntro: adminData.editorialIntro || product.extended.editorialIntro
     }
   };

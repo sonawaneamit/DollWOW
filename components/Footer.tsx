@@ -11,6 +11,7 @@ const footerGroups = [
       ["Shop all dolls", "/shop/sex-dolls"],
       ["Affordable dolls", "/shop/cheap-sex-dolls"],
       ["Ready to ship", "/shop/ready-to-ship"],
+      ["Promotions", "/promo"],
       ["Warehouse stock", "/warehouse"],
       ["Customize a doll", "/customize"],
       ["Compare dolls", "/compare"],

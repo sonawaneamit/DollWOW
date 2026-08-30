@@ -109,6 +109,7 @@ export const config = {
     "/learn",
     "/learn/:path*",
     "/price-match",
+    "/promo",
     "/privacy-policy",
     "/products/:path*",
     "/returns",
