@@ -12,7 +12,8 @@ export const SE_DOLL_SEPTEMBER_PROMOTION = {
     "SE Doll custom TPE and STPE orders placed during September include six factory bonus upgrades.",
   dateLabel: "1–30 September 2026",
   startsAt: "2026-09-01T00:00:00.000Z",
-  endsAt: "2026-10-01T00:00:00.000Z",
+  // Cutoff is midnight 1 October US Pacific time for US customers.
+  endsAt: "2026-10-01T07:00:00.000Z",
   publishAt: "2026-08-30T00:00:00.000Z",
   heroImage: "/promo/se-doll/TPE-doll-1920x750-SEdoll.jpg",
   cardImage: "/promo/se-doll/TPE-doll-800x600-SEdoll.jpg",
