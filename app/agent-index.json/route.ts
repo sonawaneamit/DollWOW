@@ -92,6 +92,7 @@ export function GET() {
       }
     ],
     tools: [
+      { label: "Active brand promotions", url: `${siteUrl}/promo` },
       { label: "DollVue", url: `${siteUrl}/dollvue` },
       { label: "DollVue-enabled dolls", url: `${siteUrl}/shop/dollvue-enabled` },
       { label: "Price match", url: `${siteUrl}/price-match` },

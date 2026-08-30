@@ -18,6 +18,7 @@ const priorityCollections = [
 const corePages = [
   ["Home", "/"],
   ["Shop", "/shop/sex-dolls"],
+  ["Active brand promotions", "/promo"],
   ["Learning Center", "/learn"],
   ["Help Me Choose", "/help-me-choose"],
   ["Customize", "/customize"],

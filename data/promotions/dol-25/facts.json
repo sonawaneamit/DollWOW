@@ -1,0 +1,429 @@
+{
+  "pack": "DOL-25 brand collection promo banners + /promo index",
+  "prepared_at_pt": "2026-08-30 08:58 PT",
+  "do_not": [
+    "publish, deploy, merge",
+    "email factories",
+    "change Shopify prices",
+    "advertise extra factory % on any live page",
+    "interrupt DOL-23 Bina",
+    "use Rosemary or Your Doll banners",
+    "invent dates, frees, or percentages",
+    "ask Martin stack vs replace \u2014 extra % is already parked"
+  ],
+  "sitewide_10pct": {
+    "status": "stays at checkout",
+    "advertise": "SAFE TO SHOW NOW as the sitewide checkout 10% (live bar: Summer sale. 10% off everything. Applied at checkout.)",
+    "do_not_invent_stack": true,
+    "do_not_ask_stack_vs_replace": true
+  },
+  "promo_index": {
+    "url_intended": "https://dollwow.com/promo",
+    "live_status": "404 as of 2026-08-30 PT",
+    "copy_rule": "List every ACTIVE brand promo. First brands: Lusandy Sept (blocked on banners), SEDOLL Sept (TPE-safe now). Extra factory % stays parked. Irontech/Real Lady Aug is gallery refresh only unless a factory promo banner is in this pack (none is)."
+  },
+  "brands": [
+    {
+      "brand": "SEDOLL",
+      "linear": [
+        "DOL-25",
+        "DOL-20"
+      ],
+      "source": {
+        "gmail": {
+          "mailbox": "sales@dollwow.com",
+          "from": "sherry@sedoll.com",
+          "date_utc": "2026-08-28T11:20:00Z",
+          "date_west": "2026-08-28 12:20 WEST",
+          "subject": "SEDOLL monthly promotion in September 2026",
+          "threadId": "1a04819d8d73037d",
+          "unverified_vs_live_dollwow_checkout": true
+        },
+        "drive_folder": {
+          "url": "https://drive.google.com/drive/folders/1w9fZW8dBzibdNxQfa-LOUQGfMMjSO3NB",
+          "id": "1w9fZW8dBzibdNxQfa-LOUQGfMMjSO3NB",
+          "owner": "sedolltom@gmail.com",
+          "subfolders": [
+            "TPE dolls-9",
+            "Silicone pro dolls-9",
+            "Silicone torsos-9",
+            "US&EU stock-9"
+          ]
+        }
+      },
+      "dates": {
+        "start": "2026-09-01",
+        "end": "2026-09-30",
+        "as_printed_on_factory_banners": "Date: 2026 Sept. 1-30",
+        "source": "factory banners + factory mail"
+      },
+      "collection_url": "https://dollwow.com/brands/se-doll",
+      "collection_url_aliases": [
+        "https://dollwow.com/shop/se-dolls (200, redirects to /brands/se-doll)",
+        "https://dollwow.com/shop/sedoll (200, redirects to /brands/se-doll)",
+        "https://dollwow.com/brands/sedoll (200, separate URL \u2014 prefer canonical /brands/se-doll)",
+        "https://dollwow.com/brands/se-dolls (200, separate URL \u2014 prefer canonical /brands/se-doll)"
+      ],
+      "collection_url_live": true,
+      "safe_to_show_now": {
+        "dates": "1\u201330 September 2026",
+        "sitewide_10pct": "DollWOW sitewide 10% stays at checkout. Do not invent a stack.",
+        "tpe_stpe_custom_frees": [
+          "Free STPE upgrade",
+          "Free EVO skeleton",
+          "Free gel breasts",
+          "Free fixed tongue",
+          "Free lubricant-free vagina",
+          "Free realistic body painting"
+        ],
+        "silicone_pro_custom_frees": [
+          "Free realistic body painting",
+          "Free hard hands and hard feet",
+          "Free realistic oral structure",
+          "Free implanted eyebrow and eyelash",
+          "Free gel breasts",
+          "Free soft vagina",
+          "Free articulated fingers or ultra-flex fingers",
+          "Free soft belly (T148, T155, T159, T165, T175)"
+        ],
+        "implantation_notes": "Silicone Pro custom: free implanted eyebrow and eyelash (factory mail + Silicone Pro banner).",
+        "banner_ok_now": "banners/sedoll/TPE-doll-1920x750-SEdoll.jpg (and TPE 800 / 1200). TPE art lists frees and dates only \u2014 no extra factory %."
+      },
+      "hold_for_martin": {
+        "extra_pct_hold": [
+          "US/EU stock silicone pro: 10% off + free realistic skin texture (factory mail; same 10/15 printed on US&EU stock banners)",
+          "US/EU stock STPE: 15% off",
+          "Silicone Pro option discounts: Master Makeup 10% off, movable eyelids 30% off, gel butt 50% off, realistic skin texture 50% off",
+          "Silicone torso option discounts: movable eyelids 30% off, gel butt 50% off"
+        ],
+        "banners_with_pct_overlays": [
+          "Silicone-doll-* (option % on pixels)",
+          "Silicone-torso-* (option % on pixels)",
+          "US-EU-stock-* (stock 10/15% on pixels)"
+        ],
+        "pricing_note_unverified_vs_live": "Factory PS: STPE dolls from US and EU warehouses sold at the price without body makeup; any previously in-stock STPE with body makeup included at that price. Overseas inventory prices to be updated before Sept 1. Unverified vs live DollWOW checkout \u2014 do not rewrite Shopify prices in this task.",
+        "status": "PARKED extra %. Martin locked 30 Aug 2026. Sitewide 10% stays. Do not ask stack vs replace. OFF copy until Martin unparks.",
+        "parked_not_a_question": true
+      },
+      "frees": [
+        "TPE/STPE custom: STPE upgrade, EVO skeleton, gel breasts, fixed tongue, lubricant-free vagina, realistic body painting",
+        "Silicone Pro custom: realistic body painting, hard hands & hard feet, realistic oral structure, implanted eyebrow & eyelash, gel breasts, soft vagina, articulated or ultra-flex fingers, soft belly on T148/T155/T159/T165/T175",
+        "US/EU silicone stock: free realistic skin texture (tied to 10% stock off \u2014 HOLD the %; free skin is factory-mail but bundled with HOLD %)"
+      ],
+      "extra_pct_hold": [
+        "US/EU silicone stock 10%",
+        "US/EU STPE stock 15%",
+        "Master Makeup 10%",
+        "movable eyelids 30%",
+        "gel butt 50%",
+        "realistic skin texture 50% (custom option)"
+      ],
+      "banners": [
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/TPE-doll-1920x750-SEdoll.jpg",
+          "filename": "TPE-doll-1920x750-SEdoll.jpg",
+          "w": 1920,
+          "h": 750,
+          "mime": "image/jpeg",
+          "sha256": "f740fc16078366718adfa16e0e42f2ad7a70903b05b901ac5a83d8affa20697d",
+          "bytes": 798348,
+          "alt": "SEDOLL TPE September 2026 promo: adult companion doll with dark hair in high buns, white ruffled chemise, lace gloves and thigh-high stockings, reclining by a window. Dates 1\u201330 Sept 2026; free STPE, EVO skeleton, gel breasts, lubricant-free vagina, realistic body painting, fixed tongue.",
+          "role": "collection_hero_safe",
+          "extra_pct_baked_into_pixels": false,
+          "live_ok_now": true
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/TPE-doll-800x600-SEdoll.jpg",
+          "filename": "TPE-doll-800x600-SEdoll.jpg",
+          "w": 800,
+          "h": 600,
+          "mime": "image/jpeg",
+          "sha256": "54b7d5c7cee3117d34450968b4b938977a23fe68ac24db01810a7a17aa313d3a",
+          "bytes": 333343,
+          "alt": "SEDOLL TPE September 2026 promo card: adult companion doll in white ruffled lingerie and lace stockings; free STPE upgrade and listed TPE custom frees, 1\u201330 Sept 2026.",
+          "role": "card_safe",
+          "extra_pct_baked_into_pixels": false,
+          "live_ok_now": true
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/TPE-doll-1200x1800-SEdoll.jpg",
+          "filename": "TPE-doll-1200x1800-SEdoll.jpg",
+          "w": 1200,
+          "h": 1800,
+          "mime": "image/jpeg",
+          "sha256": "cbee5a43b6f26fcb71ed876a4d9bf511ca6311bce596b92bc889c4590ee9c868",
+          "bytes": 1133020,
+          "alt": "SEDOLL TPE September 2026 portrait promo: adult companion doll with dark hair buns in white lingerie; factory free upgrades for TPE custom orders, 1\u201330 Sept 2026.",
+          "role": "portrait_safe",
+          "extra_pct_baked_into_pixels": false,
+          "live_ok_now": true
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-doll-1920x750-SEdoll.jpg",
+          "filename": "Silicone-doll-1920x750-SEdoll.jpg",
+          "w": 1920,
+          "h": 750,
+          "mime": "image/jpeg",
+          "sha256": "94e1135daa1a7d49f0936dfd496d0ca04fc64859eddbaa1ddfe42f4e525abb1d",
+          "bytes": 921395,
+          "alt": "SEDOLL Silicone Pro September 2026 promo: adult blonde companion doll in a blue athletic top and dark leggings, gym portrait and kneeling pose. Factory art lists frees plus option discounts; do not advertise extra factory % extra factory % is parked \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-doll-800x600-SEdoll.jpg",
+          "filename": "Silicone-doll-800x600-SEdoll.jpg",
+          "w": 800,
+          "h": 600,
+          "mime": "image/jpeg",
+          "sha256": "374c397a3b2f0083727c311bb3563a1711905840cfebf26a2180cd036cd282c8",
+          "bytes": 330635,
+          "alt": "SEDOLL Silicone Pro September 2026 promo card: adult blonde companion doll in blue athletic wear. Extra option % is on the art \u2014 parked extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-doll-1200x1800-SEdoll.jpg",
+          "filename": "Silicone-doll-1200x1800-SEdoll.jpg",
+          "w": 1200,
+          "h": 1800,
+          "mime": "image/jpeg",
+          "sha256": "a8857a255fd98304a155ac4dfe9b9464b682427ab4fd1bf53e3bdef9a7c91f0d",
+          "bytes": 939666,
+          "alt": "SEDOLL Silicone Pro September 2026 portrait promo: adult blonde companion doll in gym athletic wear. Extra option % is on the art \u2014 parked extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-torso-1920x750-SEdoll.jpg",
+          "filename": "Silicone-torso-1920x750-SEdoll.jpg",
+          "w": 1920,
+          "h": 750,
+          "mime": "image/jpeg",
+          "sha256": "fd7c4b2c1029006bdff19e092fdddbf3ce96545081ef316d7af688a675e27d46",
+          "bytes": 964374,
+          "alt": "SEDOLL silicone torso September 2026 promo: adult blonde torso figure with grey cat ears and black lace lingerie. Factory art lists 30% movable eyelids and 50% gel butt \u2014 extra factory % is parked \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-torso-800x600-SEdoll.jpg",
+          "filename": "Silicone-torso-800x600-SEdoll.jpg",
+          "w": 800,
+          "h": 600,
+          "mime": "image/jpeg",
+          "sha256": "d7290fa0bbc368a7223a04f89f29a3fbfbd8db5c41513eda5ea7be6822b47ee9",
+          "bytes": 356794,
+          "alt": "SEDOLL silicone torso September 2026 promo card: adult blonde torso figure with cat ears and black lace. Extra option % on the art \u2014 parked extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/Silicone-torso-1200x1800-SEdoll.jpg",
+          "filename": "Silicone-torso-1200x1800-SEdoll.jpg",
+          "w": 1200,
+          "h": 1800,
+          "mime": "image/jpeg",
+          "sha256": "de10aec234c19e3536b4f5e814eda505044795025038cbaa3e142dde28442b0d",
+          "bytes": 1377043,
+          "alt": "SEDOLL silicone torso September 2026 portrait promo: adult blonde torso figure with cat ears and black lace. Extra option % on the art \u2014 parked extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/US-EU-stock-1920x750-SEdoll.jpg",
+          "filename": "US-EU-stock-1920x750-SEdoll.jpg",
+          "w": 1920,
+          "h": 750,
+          "mime": "image/jpeg",
+          "sha256": "ad75990340f6c6b3d3047f87c0efd8b6684ab200148db0d01778277c5fd81cd5",
+          "bytes": 967658,
+          "alt": "SEDOLL US and EU in-stock September 2026 promo: four adult companion dolls in casual tops, US flag backdrop left and EU flag backdrop right. Factory art lists 10% silicone and 15% STPE stock off \u2014 PARKED extra % \u2014 OFF copy; sitewide 10% stays.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/US-EU-stock-800x600-SEdoll.jpg",
+          "filename": "US-EU-stock-800x600-SEdoll.jpg",
+          "w": 800,
+          "h": 600,
+          "mime": "image/jpeg",
+          "sha256": "237f94de4243bb042713724d643ca69ac284c5560b6714ac66e5b8f33c84f415",
+          "bytes": 414906,
+          "alt": "SEDOLL US/EU stock September 2026 promo card: adult companion dolls, US and EU flags. Stock 10/15% off is on the art \u2014 PARKED extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        },
+        {
+          "path": "/workspace/audit/promo-2026-09/banners/sedoll/US-EU-stock-1200x1800-SEdoll.jpg",
+          "filename": "US-EU-stock-1200x1800-SEdoll.jpg",
+          "w": 1200,
+          "h": 1800,
+          "mime": "image/jpeg",
+          "sha256": "c7564780bbdf6ca0da80df4cc63835671aa630c537964ea8d1bf56a584dc5eee",
+          "bytes": 1348918,
+          "alt": "SEDOLL US/EU stock September 2026 portrait promo: adult companion dolls against US and EU flags. Stock 10/15% off is on the art \u2014 PARKED extra % \u2014 OFF copy.",
+          "role": "parked_extra_pct",
+          "extra_pct_baked_into_pixels": true,
+          "live_ok_now": false
+        }
+      ],
+      "notes": [
+        "Factory/brand art only. All 12 JPGs from SEDOLL Drive folder dated 2026-08-28 (sedolltom@gmail.com). Email also attached the four 1920x750 JPGs.",
+        "Do not use July 2026 SEDOLL banner set still in Drive (older US&EU / TPE files under other parent folders).",
+        "Adult catalog; no youth/school looks on these banners (lingerie, gym athletic, casual tops, cat-ear torso).",
+        "Unverified vs live DollWOW checkout: factory mail has not been checked SKU-by-SKU against Shopify option prices."
+      ],
+      "extra_pct_parked_details": {
+        "extra_pct_hold": [
+          "US/EU stock silicone pro: 10% off + free realistic skin texture (factory mail; same 10/15 printed on US&EU stock banners)",
+          "US/EU stock STPE: 15% off",
+          "Silicone Pro option discounts: Master Makeup 10% off, movable eyelids 30% off, gel butt 50% off, realistic skin texture 50% off",
+          "Silicone torso option discounts: movable eyelids 30% off, gel butt 50% off"
+        ],
+        "banners_with_pct_overlays": [
+          "Silicone-doll-* (option % on pixels)",
+          "Silicone-torso-* (option % on pixels)",
+          "US-EU-stock-* (stock 10/15% on pixels)"
+        ],
+        "pricing_note_unverified_vs_live": "Factory PS: STPE dolls from US and EU warehouses sold at the price without body makeup; any previously in-stock STPE with body makeup included at that price. Overseas inventory prices to be updated before Sept 1. Unverified vs live DollWOW checkout \u2014 do not rewrite Shopify prices in this task.",
+        "status": "PARKED extra %. Martin locked 30 Aug 2026. Sitewide 10% stays. Do not ask stack vs replace. OFF copy until Martin unparks."
+      }
+    },
+    {
+      "brand": "Lusandy",
+      "linear": [
+        "DOL-25",
+        "DOL-14"
+      ],
+      "source": {
+        "gmail": "NO Lusandy September promo thread with usable body/attachments. sales@: empty. hello@: thread 1a04e0ebd8d958fc subject Lusandy WeChat from amitvsonawane@gmail.com 2026-08-29 16:06 WEST \u2014 multipart/alternative with empty text/plain and empty text/html; no image attachments.",
+        "drive": "Lusandy - DollWOW Supplier Files (1SpM2Q5C5DSW3TtSPKsXGh0TO0jI-NkO2) has catalog PDF + price xlsx only. No factory banners. Shortcut 1SU1AovRBf3gEIr4bXwvRJmxXnUcmd9y0 (Lusandy doll) has no target metadata.",
+        "official_site": "lusandydoll.com has no September 2026 promo page as of 2026-08-30 PT. /pages/promotion and /collections/sale 404.",
+        "linear_claim_unverified": "DOL-14: Lusandy September 2026 US stock +5% and free-options promo. Not sourced from factory mail/Drive/official site.",
+        "wechat_email": {
+          "mailbox": "hello@dollwow.com",
+          "threadId": "1a04e0ebd8d958fc",
+          "subject": "Lusandy WeChat",
+          "from": "amitvsonawane@gmail.com",
+          "date_utc": "2026-08-29T15:06:12Z",
+          "usable_content": false,
+          "note": "Empty MIME. Not a source for Sept frees, dates, or banners."
+        }
+      },
+      "dates": {
+        "start": null,
+        "end": null,
+        "note": "Do not invent. Linear implies September 2026; factory banner/mail date range not found."
+      },
+      "collection_url": "https://dollwow.com/brands/lusandy-dolls",
+      "collection_url_live": false,
+      "collection_url_notes": [
+        "/brands/lusandy, /brands/lusandy-doll, /brands/lusandy-dolls, /shop/lusandy-dolls all 404 as of 2026-08-30 PT.",
+        "Live pattern for brand hubs is /brands/{handle} (e.g. /brands/se-doll, /brands/irontech-dolls). /shop/* is attribute collections.",
+        "Lusandy products ARE live, e.g. https://dollwow.com/products/lusandy-belle-159cm-h-cup-silicone-companion-doll",
+        "Codex should CREATE /brands/lusandy-dolls. Do not use /shop/lusandy-dolls."
+      ],
+      "safe_to_show_now": {
+        "sitewide_10pct": "DollWOW sitewide 10% stays at checkout (live bar on Lusandy PDP: Summer sale. 10% off everything. Applied at checkout.).",
+        "already_true_on_live_pdp_example_belle_159_custom": [
+          "ROS (FREE) \u2014 included",
+          "Soft Head (FREE) available",
+          "Gel breasts (FREE) \u2014 included",
+          "EVO skeleton (FREE)",
+          "Reduce weight: Yes I Need (FREE) / Super Weight Reduction (FREE) \u2014 included",
+          "Standing (FREE)",
+          "Standing Without Bolts/Hard Feet (FREE)",
+          "Hyper Realism Body Painting (FREE)",
+          "Realistic Head Painting (FREE)",
+          "Implanted Eyebrows (FREE)",
+          "Implanted Eyelashes (FREE)",
+          "Articulated Fingers (FREE)",
+          "Hard Hands (FREE)",
+          "Finger Puncture Protection (FREE)",
+          "Soft Vagina (FREE)",
+          "Toe Bones (FREE)"
+        ],
+        "note": "Those frees are already true at checkout on the sampled live Belle 159 custom PDP. Do not label them as a new September factory promo and do not invent a date range. Not a factory Sept letter.",
+        "live_pdps_sampled": [
+          "https://dollwow.com/products/lusandy-belle-159cm-h-cup-silicone-companion-doll"
+        ]
+      },
+      "hold_for_martin": {
+        "extra_pct_hold": [
+          "Lusandy +5% US stock (DOL-14). PARKED. Not going live."
+        ],
+        "missing_factory_banners": true,
+        "missing_factory_mail": true
+      },
+      "frees": "Unverified as a September factory list. Live Belle 159 custom already includes the FREE options listed in safe_to_show_now.",
+      "extra_pct_hold": [
+        "US stock +5%"
+      ],
+      "banners": [],
+      "notes": [
+        "BLOCKER: no factory/brand banner art. Do not pull Rosemary or Your Doll art.",
+        "Competitor sites list Lusandy frees + 5% in-stock \u2014 those are NOT our source.",
+        "hello@ WeChat email 1a04e0ebd8d958fc is empty \u2014 no factory banner screenshots."
+      ],
+      "extra_pct_parked_details": {
+        "extra_pct_hold": [
+          "Lusandy +5% US stock (DOL-14). We are NOT going live with the +5%."
+        ],
+        "missing_factory_banners": true,
+        "missing_factory_mail": true,
+        "status": "PARKED extra %. Martin locked 30 Aug 2026. Sitewide 10% stays. Do not ask stack vs replace. OFF copy until Martin unparks."
+      }
+    }
+  ],
+  "dol21_note_only": {
+    "issue": "DOL-21 Irontech/Real Lady August image packs",
+    "action_in_this_task": "none \u2014 do not swap galleries",
+    "factory_promo_banner_in_this_pack": false,
+    "standing": {
+      "pearl": "live (gallery refresh later, not this task)",
+      "vanessa": "live (gallery refresh later, not this task)",
+      "kurumi": "live (gallery refresh later, not this task)",
+      "yui": "parked \u2014 do not list"
+    },
+    "adela": {
+      "live": true,
+      "handles": [
+        "real-lady-adela-159cm-h-cup-silicone-companion-doll-1gb70",
+        "real-lady-adela-168cm-h-cup-silicone-companion-doll-tikoh"
+      ],
+      "urls": [
+        "https://dollwow.com/products/real-lady-adela-159cm-h-cup-silicone-companion-doll-1gb70",
+        "https://dollwow.com/products/real-lady-adela-168cm-h-cup-silicone-companion-doll-tikoh"
+      ],
+      "rl159_verified_2026_08_30_pt": {
+        "url": "https://dollwow.com/products/real-lady-adela-159cm-h-cup-silicone-companion-doll-1gb70",
+        "head": "Head #R1",
+        "size": "159cm H-Cup custom",
+        "price": "$3231",
+        "do_not_swap_gallery": true
+      },
+      "yui": "parked \u2014 do not list"
+    }
+  },
+  "extra_pct_parked": {
+    "status": "Martin locked extra-% park 30 Aug 2026. Sitewide 10% stays. Do not ask stack vs replace.",
+    "not_on_copy_until_martin_unparks": [
+      "Lusandy +5% US stock (DOL-14 Linear claim; no factory mail in sales@/hello@; WeChat thread 1a04e0ebd8d958fc is empty MIME)",
+      "SEDOLL US/EU stock 10% silicone + 15% STPE (factory mail + US/EU stock banners)",
+      "SEDOLL option discounts on Silicone Pro/torso banners: Master Makeup 10%, movable eyelids 30%, gel butt 50%, realistic skin texture 50%"
+    ],
+    "not_going_live_with_lusandy_plus5": true
+  },
+  "static_banners_only": true,
+  "banner_animation": "parked_until_after_static_live",
+  "banner_video_later": "cheap Venice image-to-video after static is live"
+}

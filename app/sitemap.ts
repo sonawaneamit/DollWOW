@@ -10,6 +10,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").repl
 const staticRoutes = [
   "",
   "/brands",
+  "/promo",
   "/learn",
   "/authors/jesse",
   "/authors/alex",

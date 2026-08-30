@@ -35,6 +35,8 @@ import { FactoryApprovalPdpPreview } from "@/components/factory-approval/Factory
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { SeSeptemberBonusBlock } from "@/components/promotions/SeSeptemberBonusBlock";
+import { isSeSeptemberPromotionPublished, seSeptemberPdpPromotion } from "@/lib/promotions/seSeptember2026";
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -85,6 +87,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = Boolean(product.extended.editorialIntro);
+  const septemberPromotion = isSeSeptemberPromotionPublished() ? seSeptemberPdpPromotion(product.handle) : null;
 
   return (
     <div>
@@ -166,6 +169,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
+            {septemberPromotion ? <SeSeptemberBonusBlock promotion={septemberPromotion} /> : null}
             {firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}

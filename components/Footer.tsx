@@ -9,6 +9,7 @@ const footerGroups = [
     title: "Shop",
     links: [
       ["Shop all dolls", "/shop/sex-dolls"],
+      ["Active promotions", "/promo"],
       ["Affordable dolls", "/shop/cheap-sex-dolls"],
       ["Ready to ship", "/shop/ready-to-ship"],
       ["Warehouse stock", "/warehouse"],
