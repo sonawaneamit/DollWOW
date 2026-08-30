@@ -79,6 +79,7 @@ describe("SE Doll September 2026 promotion", () => {
   it("publishes for launch and expires after September", () => {
     expect(isSeDollSeptemberPromotionVisible(new Date("2026-08-30T00:00:00.000Z"))).toBe(true);
     expect(isSeDollSeptemberPromotionVisible(duringPromotion)).toBe(true);
-    expect(isSeDollSeptemberPromotionVisible(new Date("2026-10-01T00:00:00.000Z"))).toBe(false);
+    expect(isSeDollSeptemberPromotionVisible(new Date("2026-10-01T00:00:00.000Z"))).toBe(true);
+    expect(isSeDollSeptemberPromotionVisible(new Date("2026-10-01T07:00:00.000Z"))).toBe(false);
   });
 });
