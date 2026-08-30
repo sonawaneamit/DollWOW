@@ -3,7 +3,7 @@
 - Run date: 2026-08-30
 - Canonical owner: `https://dollwow.com/promo`
 - Winning page type: maintained commercial promotion index
-- Status: AI/GEO validated; release verification pending
+- Status: released; monitoring pending
 
 ## Decision
 
@@ -48,6 +48,17 @@ The public page uses a direct, server-rendered answer: the promotion identity, e
 | ChatGPT LLM Mentions | `/ai_optimization/llm_mentions/target_metrics/live` | 20000 Ok; zero baseline | $0.101000 |
 | Google Merchant | `/merchant/google/products/task_post` + `/merchant/google/products/task_get/advanced/{id}` | 20100 created; 20000 result | $0.002000 |
 
+## Post-Release Verification
+
+- Production deployment completed from merge commit `47056860efc3b26596e01465b12a673322b939fe`.
+- `https://dollwow.com/promo`, `/brands/se-doll`, a listed TPE PDP, and a listed Silicone Pro PDP returned HTTP 200.
+- Production `/promo` source contains one H1, the self-referencing canonical, exact dates, all six TPE/STPE bonuses, RTS exclusion, checkout treatment, and visible-content-backed JSON-LD.
+- `Accept: text/markdown` returned the equivalent promotion identity, dates, bonuses, and checkout facts.
+- The approved 1920×750 banner rendered in source on `/brands/se-doll`; an eligible TPE PDP and a soft-belly proxy Silicone Pro PDP rendered the correct blocks. RTS and Sophie Lane exclusion checks remained clean.
+- Focused post-release OnPage call: `/on_page/instant_pages`, task `08300821-1783-0275-0000-a4b450d62088`, status `20000 Ok`, cost `$0.000150`.
+- OnPage confirmed HTTP 200, HTTPS, no redirect, one H1, canonical `https://dollwow.com/promo`, relevant title and description, 32 internal links, and no 4xx/5xx or broken-page flag.
+- Total recorded DOL-25 DataForSEO cost including post-release verification: `$0.534925`.
+
 ## Adopted Findings
 
 1. All five focused Google, Bing, and AI demand phrases returned zero measured volume. The page therefore serves a maintained customer-navigation need and exact campaign lookup rather than claiming broad demand.
@@ -73,8 +84,8 @@ The public page uses a direct, server-rendered answer: the promotion identity, e
 - Visible-content-backed `CollectionPage` and `ItemList` schema only.
 - Factory banner has descriptive alt text; all important banner facts are repeated in HTML.
 - No Silicone-doll, Silicone-torso, US-EU-stock, Rosemary, Your Doll, Lusandy, video, GIF, extra factory percentage, price change, or care-kit content in the live UI implementation.
-- Post-release checks required: production 200, canonical, HTML direct answer, Markdown alternate, sitemap discovery, responsive visual review, and focused OnPage rerun.
+- Production 200, canonical, HTML direct answer, Markdown alternate, sitemap discovery, and focused OnPage checks are complete. No browser screenshot review was requested for this release.
 
 ## Monitoring
 
-Capture the release baseline after deployment. Review GSC and Bing weekly through the promotion, and recheck AI mentions/citations if the page earns impressions. The promotion automatically leaves public surfaces after 30 September 2026; do not extend it without new supplier evidence.
+The release baseline is recorded above. Review GSC and Bing weekly through the promotion, and recheck AI mentions/citations if the page earns impressions. The promotion automatically leaves public surfaces after 30 September 2026; do not extend it without new supplier evidence.
