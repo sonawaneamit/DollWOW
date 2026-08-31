@@ -55,18 +55,21 @@ export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "han
   const isWarehouse = offer.kind.startsWith("warehouse_");
 
   return (
-    <section className="mt-6 overflow-hidden rounded-[16px] border border-gold-500/25 bg-ink-900/80" aria-labelledby="se-pdp-bonuses-heading">
-      <div className="relative isolate min-h-[148px] overflow-hidden border-b border-gold-500/20 px-5 py-5">
+    <section className="mt-6 overflow-hidden rounded-[16px] border border-gold-500/25 bg-ink-900" aria-labelledby="se-pdp-bonuses-heading">
+      <div className="w-full bg-ink-950" data-se-pdp-promotion-banner>
         <Image
           src={offer.image}
           alt=""
-          fill
+          width={1920}
+          height={750}
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="-z-20 object-cover object-center opacity-55"
+          className="h-auto w-full"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950 via-ink-950/90 to-ink-950/35" aria-hidden="true" />
-        <div className="relative">
+      </div>
+
+      <div className="border-t border-gold-500/20 bg-ink-900 px-5 py-5" data-se-pdp-promotion-details>
+        <div>
           <p className="flex items-center gap-2 text-sm font-semibold text-gold-200">
             {isWarehouse ? <BadgePercent className="h-4 w-4" aria-hidden="true" /> : <Gift className="h-4 w-4" aria-hidden="true" />}
             SE Doll September factory offer
@@ -78,21 +81,21 @@ export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "han
             {isWarehouse ? "For eligible ready-to-ship orders placed" : "For eligible custom orders placed"} 1–30 September 2026.
           </p>
         </div>
+
+        {included.length || offer.discounts.length ? (
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            {included.length ? <OfferList title="Included factory bonuses" items={included} /> : null}
+            {offer.discounts.length ? <OfferList title="Factory discount" items={offer.discounts} /> : null}
+          </div>
+        ) : null}
+
+        {offer.makeupPriceNote ? (
+          <div className="mt-5 flex gap-3 rounded-[12px] border border-gold-500/30 bg-gold-500/10 px-4 py-3 text-sm leading-6 text-ivory-100">
+            <CircleAlert className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
+            <p><strong className="text-gold-200">Warehouse STPE makeup pricing:</strong> {offer.makeupPriceNote}</p>
+          </div>
+        ) : null}
       </div>
-
-      {included.length || offer.discounts.length ? (
-        <div className="grid gap-5 px-5 py-5 sm:grid-cols-2">
-          {included.length ? <OfferList title="Included factory bonuses" items={included} /> : null}
-          {offer.discounts.length ? <OfferList title="Factory discount" items={offer.discounts} /> : null}
-        </div>
-      ) : null}
-
-      {offer.makeupPriceNote ? (
-        <div className="mx-5 mb-5 flex gap-3 rounded-[12px] border border-gold-500/30 bg-gold-500/10 px-4 py-3 text-sm leading-6 text-ivory-100">
-          <CircleAlert className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
-          <p><strong className="text-gold-200">Warehouse STPE makeup pricing:</strong> {offer.makeupPriceNote}</p>
-        </div>
-      ) : null}
     </section>
   );
 }

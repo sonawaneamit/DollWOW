@@ -140,6 +140,28 @@ describe("SE Doll September 2026 promotion", () => {
     }
   });
 
+  it("renders every PDP offer as a full-width 1920 banner above solid offer details", () => {
+    vi.setSystemTime(duringPromotion);
+    try {
+      for (const sample of [
+        product("sedoll-cecile-167cm-g-cup-tpe-companion-doll-bek49"),
+        product("sedoll-pearl-160cm-e-cup-silicone-companion-doll-17zfr"),
+        product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
+      ]) {
+        const markup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, { product: sample }));
+
+        expect(markup).toMatch(/data-se-pdp-promotion-banner[^>]*><img[^>]+width="1920"[^>]+height="750"/);
+        expect(markup).toMatch(/data-se-pdp-promotion-banner[\s\S]+data-se-pdp-promotion-details/);
+        expect(markup).toContain("bg-ink-900");
+        expect(markup).not.toContain("bg-ink-900/80");
+        expect(markup).not.toContain("opacity-55");
+        expect(markup).not.toContain("bg-gradient-to-r");
+      }
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("renders all four offer blocks and the warehouse note on the promo index", () => {
     vi.setSystemTime(duringPromotion);
     try {
