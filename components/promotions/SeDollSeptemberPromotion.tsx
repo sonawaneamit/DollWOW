@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, Check, Gift } from "lucide-react";
+import { BadgePercent, CalendarDays, Check, CircleAlert, Gift } from "lucide-react";
 import {
   isSeDollSeptemberPromotionVisible,
+  SE_DOLL_SEPTEMBER_OFFERS,
   SE_DOLL_SEPTEMBER_PROMOTION,
-  seDollSeptemberFreebiesForProduct,
+  seDollSeptemberOfferForProduct,
   seDollSeptemberPromotionStatus
 } from "@/lib/promotions/seDollSeptember2026";
 import type { Product } from "@/types/product";
@@ -33,11 +34,11 @@ export function SeDollBrandPromotionBanner() {
             {SE_DOLL_SEPTEMBER_PROMOTION.shortTitle}
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-ivory-300">
-            Custom TPE and STPE orders include the six factory bonuses shown above. DollWOW’s sitewide 10% is applied at checkout.
+            Custom TPE/STPE, custom Silicone Pro, silicone torso, and US/EU warehouse offers are available on eligible SE Doll orders. DollWOW’s sitewide 10% is applied at checkout.
           </p>
         </div>
         <Link href={SE_DOLL_SEPTEMBER_PROMOTION.promoHref} className="inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
-          View promotion details
+          View all four offers
         </Link>
       </div>
     </section>
@@ -45,18 +46,19 @@ export function SeDollBrandPromotionBanner() {
 }
 
 export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "handle" | "extended"> }) {
-  const promotion = seDollSeptemberFreebiesForProduct(product);
-  if (!promotion) return null;
+  const offer = seDollSeptemberOfferForProduct(product);
+  if (!offer) return null;
 
-  const freebies = promotion.includesSoftBelly
-    ? [...promotion.freebies, "Free soft belly"]
-    : promotion.freebies;
+  const included = offer.includesSoftBelly
+    ? [...offer.included, "Free soft belly"]
+    : offer.included;
+  const isWarehouse = offer.kind.startsWith("warehouse_");
 
   return (
     <section className="mt-6 overflow-hidden rounded-[16px] border border-gold-500/25 bg-ink-900/80" aria-labelledby="se-pdp-bonuses-heading">
-      <div className="relative isolate overflow-hidden border-b border-gold-500/20 px-5 py-4">
+      <div className="relative isolate min-h-[148px] overflow-hidden border-b border-gold-500/20 px-5 py-5">
         <Image
-          src={SE_DOLL_SEPTEMBER_PROMOTION.heroImage}
+          src={offer.image}
           alt=""
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
@@ -66,64 +68,116 @@ export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "han
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950 via-ink-950/90 to-ink-950/35" aria-hidden="true" />
         <div className="relative">
           <p className="flex items-center gap-2 text-sm font-semibold text-gold-200">
-            <Gift className="h-4 w-4" aria-hidden="true" /> SE Doll September bonus
+            {isWarehouse ? <BadgePercent className="h-4 w-4" aria-hidden="true" /> : <Gift className="h-4 w-4" aria-hidden="true" />}
+            SE Doll September factory offer
           </p>
           <h2 id="se-pdp-bonuses-heading" className="mt-1 text-xl font-semibold text-ivory-50">
-            Free {promotion.material} custom-order upgrades
+            {offer.title}
           </h2>
-          <p className="mt-1 text-sm leading-6 text-ivory-200">For custom orders placed 1–30 September 2026.</p>
+          <p className="mt-1 text-sm leading-6 text-ivory-200">
+            {isWarehouse ? "For eligible ready-to-ship orders placed" : "For eligible custom orders placed"} 1–30 September 2026.
+          </p>
         </div>
       </div>
-      <ul className="grid gap-x-5 gap-y-2 px-5 py-5 sm:grid-cols-2" aria-label="Included September upgrades">
-        {freebies.map((freebie) => (
-          <li key={freebie} className="flex items-start gap-2 text-sm leading-6 text-ivory-200">
-            <Check className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
-            <span>{freebie}</span>
-          </li>
-        ))}
-      </ul>
+
+      {included.length || offer.discounts.length ? (
+        <div className="grid gap-5 px-5 py-5 sm:grid-cols-2">
+          {included.length ? <OfferList title="Included factory bonuses" items={included} /> : null}
+          {offer.discounts.length ? <OfferList title="Factory discount" items={offer.discounts} /> : null}
+        </div>
+      ) : null}
+
+      {offer.makeupPriceNote ? (
+        <div className="mx-5 mb-5 flex gap-3 rounded-[12px] border border-gold-500/30 bg-gold-500/10 px-4 py-3 text-sm leading-6 text-ivory-100">
+          <CircleAlert className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
+          <p><strong className="text-gold-200">Warehouse STPE makeup pricing:</strong> {offer.makeupPriceNote}</p>
+        </div>
+      ) : null}
     </section>
   );
 }
 
-export function SeDollPromoIndexCard() {
-  const promo = SE_DOLL_SEPTEMBER_PROMOTION;
-
+function OfferList({ title, items }: { title: string; items: readonly string[] }) {
   return (
-    <article className="overflow-hidden rounded-[20px] border border-gold-500/18 bg-ink-900/72 shadow-panel">
-      <div className="relative aspect-[1920/750] min-h-[210px] w-full overflow-hidden bg-ink-950">
-        <Image
-          src={promo.heroImage}
-          alt={promo.heroAlt}
-          fill
-          priority
-          sizes="(min-width: 1280px) 1216px, 100vw"
-          className="object-contain"
-        />
-      </div>
-      <div className="p-6 sm:p-8">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full bg-gold-500/14 px-3 py-1 text-sm font-semibold text-gold-200">{seDollSeptemberPromotionStatus()}</span>
-          <span className="text-sm font-semibold text-ivory-400">{promo.dateLabel}</span>
-        </div>
-        <p className="mt-5 text-sm font-semibold text-gold-300">{promo.brand}</p>
-        <h2 className="mt-2 text-3xl font-semibold text-ivory-50">{promo.shortTitle}</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-ivory-300">{promo.summary}</p>
-        <h3 className="mt-6 text-base font-semibold text-ivory-100">Included on eligible custom TPE and STPE orders</h3>
-        <ul className="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">
-          {promo.tpeFreebies.map((freebie) => (
-            <li key={freebie} className="flex items-start gap-2 text-sm leading-6 text-ivory-300">
-              <Check className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" /> {freebie}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 rounded-[12px] border border-gold-500/14 bg-ink-950/55 px-4 py-3 text-sm leading-6 text-ivory-300">
-          DollWOW’s sitewide 10% is applied at checkout. Ready-to-ship dolls are already built and do not receive these custom-order upgrades.
-        </p>
-        <Link href={promo.brandHref} className="mt-6 inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
-          Shop SE Doll custom models
-        </Link>
-      </div>
-    </article>
+    <div>
+      <h3 className="text-sm font-semibold text-ivory-100">{title}</h3>
+      <ul className="mt-2 grid gap-2" aria-label={title}>
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-2 text-sm leading-6 text-ivory-200">
+            <Check className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
+
+export function SeDollPromoIndexCards() {
+  const offers = Object.values(SE_DOLL_SEPTEMBER_OFFERS);
+
+  return (
+    <div className="grid gap-8">
+      {offers.map((offer, index) => (
+        <article id={offer.id} key={offer.id} className="scroll-mt-24 overflow-hidden rounded-[20px] border border-gold-500/18 bg-ink-900/72 shadow-panel">
+          <div className="relative aspect-[1920/750] min-h-[210px] w-full overflow-hidden bg-ink-950">
+            <Image
+              src={offer.heroImage}
+              alt={offer.heroAlt}
+              fill
+              priority={index === 0}
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-contain"
+            />
+          </div>
+          <div className="p-6 sm:p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full bg-gold-500/14 px-3 py-1 text-sm font-semibold text-gold-200">{seDollSeptemberPromotionStatus()}</span>
+              <span className="text-sm font-semibold text-ivory-400">{SE_DOLL_SEPTEMBER_PROMOTION.dateLabel}</span>
+            </div>
+            <p className="mt-5 text-sm font-semibold text-gold-300">SE Doll factory offer {index + 1} of 4</p>
+            <h2 className="mt-2 text-3xl font-semibold text-ivory-50">{offer.shortTitle}</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-ivory-300">{offer.summary}</p>
+
+            {offer.included.length ? (
+              <div className="mt-6">
+                <h3 className="text-base font-semibold text-ivory-100">{offer.includedTitle}</h3>
+                <ul className="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+                  {offer.included.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm leading-6 text-ivory-300">
+                      <Check className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {offer.discounts.length ? (
+              <div className="mt-6">
+                <h3 className="text-base font-semibold text-ivory-100">Factory option discounts</h3>
+                <ul className="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+                  {offer.discounts.map((discount) => (
+                    <li key={discount} className="flex items-start gap-2 text-sm leading-6 text-ivory-300">
+                      <BadgePercent className="mt-1 h-4 w-4 shrink-0 text-gold-300" aria-hidden="true" /> {discount}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <p className={`mt-6 rounded-[12px] border px-4 py-3 text-sm leading-6 text-ivory-300 ${offer.kind === "warehouse" ? "border-gold-500/30 bg-gold-500/10" : "border-gold-500/14 bg-ink-950/55"}`}>
+              {offer.note}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-ivory-400">DollWOW’s sitewide 10% is applied at checkout.</p>
+            <Link href={SE_DOLL_SEPTEMBER_PROMOTION.brandHref} className="mt-6 inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
+              Shop SE Doll
+            </Link>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+// Backward-compatible name for any stale import during rolling deployments.
+export const SeDollPromoIndexCard = SeDollPromoIndexCards;

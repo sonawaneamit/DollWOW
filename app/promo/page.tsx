@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SeDollPromoIndexCard } from "@/components/promotions/SeDollSeptemberPromotion";
-import { isSeDollSeptemberPromotionVisible, SE_DOLL_SEPTEMBER_PROMOTION } from "@/lib/promotions/seDollSeptember2026";
+import { SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPromotion";
+import { isSeDollSeptemberPromotionVisible, SE_DOLL_SEPTEMBER_OFFERS } from "@/lib/promotions/seDollSeptember2026";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -29,14 +29,14 @@ export default function PromoIndexPage() {
     description: "Current brand promotion dates and eligible factory bonus upgrades at DollWOW.",
     mainEntity: {
       "@type": "ItemList",
-      numberOfItems: hasSeDollPromotion ? 1 : 0,
+      numberOfItems: hasSeDollPromotion ? 4 : 0,
       itemListElement: hasSeDollPromotion
-        ? [{
+        ? Object.values(SE_DOLL_SEPTEMBER_OFFERS).map((offer, index) => ({
             "@type": "ListItem",
-            position: 1,
-            name: SE_DOLL_SEPTEMBER_PROMOTION.shortTitle,
-            url: `${siteUrl}${SE_DOLL_SEPTEMBER_PROMOTION.brandHref}`
-          }]
+            position: index + 1,
+            name: offer.shortTitle,
+            url: `${siteUrl}/promo#${offer.id}`
+          }))
         : []
     }
   };
@@ -61,7 +61,7 @@ export default function PromoIndexPage() {
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
         {hasSeDollPromotion ? (
-          <SeDollPromoIndexCard />
+          <SeDollPromoIndexCards />
         ) : (
           <div className="rounded-[16px] border border-border bg-surface p-6 text-text-dim">
             No brand promotions are active right now. Browse the current catalog or ask our team about model-specific options.

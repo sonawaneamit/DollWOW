@@ -1,81 +1,180 @@
 import handleData from "@/data/promotions/se-doll-september-2026-handles.json";
 import type { Product } from "@/types/product";
 
-export const SE_DOLL_SEPTEMBER_PROMOTION = {
-  id: "se-doll-tpe-september-2026",
-  brand: "SE Doll",
-  brandHref: "/brands/se-doll",
-  promoHref: "/promo",
-  title: "SE Doll September custom-order bonuses",
-  shortTitle: "SE Doll TPE custom-order bonuses",
-  summary:
-    "SE Doll custom TPE and STPE orders placed during September include six factory bonus upgrades.",
+const promotionTiming = {
   dateLabel: "1–30 September 2026",
   startsAt: "2026-09-01T00:00:00.000Z",
   // Cutoff is midnight 1 October US Pacific time for US customers.
   endsAt: "2026-10-01T07:00:00.000Z",
-  publishAt: "2026-08-30T00:00:00.000Z",
-  heroImage: "/promo/se-doll/TPE-doll-1920x750-SEdoll.jpg",
-  cardImage: "/promo/se-doll/TPE-doll-800x600-SEdoll.jpg",
-  portraitImage: "/promo/se-doll/TPE-doll-1200x1800-SEdoll.jpg",
-  heroAlt:
-    "SE Doll TPE September 2026 factory promotion featuring an adult companion doll in white ruffled lingerie and the six included TPE custom-order bonuses, valid 1–30 September 2026.",
-  cardAlt:
-    "SE Doll TPE September 2026 factory promotion card featuring an adult companion doll and the included TPE custom-order bonuses.",
-  tpeFreebies: [
-    "Free STPE upgrade",
-    "Free EVO skeleton",
-    "Free gel breasts",
-    "Free lubricant-free vagina",
-    "Free realistic body painting",
-    "Free fixed tongue"
-  ],
-  siliconeProFreebies: [
-    "Free realistic body painting",
-    "Free hard hands and hard feet",
-    "Free realistic oral structure",
-    "Free implanted eyebrow and eyelash",
-    "Free gel breasts",
-    "Free soft vagina",
-    "Free articulated or ultra-flex fingers"
-  ]
+  publishAt: "2026-08-30T00:00:00.000Z"
 } as const;
 
-export type SeDollSeptemberFreebieSet = {
+export const SE_DOLL_WAREHOUSE_STPE_MAKEUP_NOTE =
+  "STPE dolls from the US and EU warehouses are sold at the price without body makeup, whether the unit has makeup or not. If a warehouse STPE already has body makeup, that makeup is included at no extra cost.";
+
+export const SE_DOLL_SEPTEMBER_OFFERS = {
+  tpeCustom: {
+    id: "se-doll-tpe-custom-september-2026",
+    kind: "tpe_custom",
+    shortTitle: "SE Doll TPE / STPE custom-order bonuses",
+    summary: "Six free factory upgrades on eligible custom TPE and STPE full-doll orders.",
+    heroImage: "/promo/se-doll/TPE-doll-1920x750-SEdoll.jpg",
+    heroAlt: "SE Doll TPE September 2026 factory promotion with an adult companion doll in white lingerie and six custom-order bonuses, valid 1–30 September 2026.",
+    includedTitle: "Free on eligible custom TPE and STPE full dolls",
+    included: [
+      "Free STPE upgrade",
+      "Free EVO skeleton",
+      "Free gel breasts",
+      "Free fixed tongue",
+      "Free lubricant-free vagina",
+      "Free realistic body painting"
+    ],
+    discounts: [],
+    note: "Custom full dolls only. Ready-to-ship dolls and torsos are not eligible."
+  },
+  siliconeCustom: {
+    id: "se-doll-silicone-pro-custom-september-2026",
+    kind: "silicone_custom",
+    shortTitle: "SE Doll Silicone Pro custom offer",
+    summary: "Factory bonuses and option discounts on eligible custom Silicone Pro full-doll orders.",
+    heroImage: "/promo/se-doll/Silicone-doll-1920x750-SEdoll.jpg",
+    heroAlt: "SE Doll Silicone Pro September 2026 promotion with an adult blonde companion doll in athletic wear, free custom upgrades, and option discounts.",
+    includedTitle: "Free on eligible custom Silicone Pro full dolls",
+    included: [
+      "Free realistic body painting",
+      "Free hard hands & feet",
+      "Free ROS",
+      "Free implanted brow/lash",
+      "Free gel breasts",
+      "Free soft vagina",
+      "Free articulated or ultra-flex fingers"
+    ],
+    discounts: [
+      "10% off master makeup",
+      "30% off movable eyelids",
+      "50% off gel butt",
+      "50% off realistic skin texture"
+    ],
+    note: "Custom Silicone Pro full dolls only. Free soft belly is also included on eligible T148, T155, T159, T165, and T175 bodies."
+  },
+  siliconeTorsoCustom: {
+    id: "se-doll-silicone-torso-custom-september-2026",
+    kind: "silicone_torso_custom",
+    shortTitle: "SE Doll silicone torso custom offer",
+    summary: "Factory option discounts for eligible custom silicone torso orders.",
+    heroImage: "/promo/se-doll/Silicone-torso-1920x750-SEdoll.jpg",
+    heroAlt: "SE Doll silicone torso September 2026 promotion with an adult blonde torso figure in black lace and discounts on movable eyelids and gel butt.",
+    includedTitle: "Discounted custom options",
+    included: [],
+    discounts: ["30% off movable eyelids", "50% off gel butt"],
+    note: "No eligible SE Doll silicone torso product page is currently live. Ask our team for availability."
+  },
+  warehouse: {
+    id: "se-doll-warehouse-september-2026",
+    kind: "warehouse",
+    shortTitle: "SE Doll US / EU warehouse offer",
+    summary: "Factory savings on eligible SE Doll ready-to-ship stock in US and EU warehouses.",
+    heroImage: "/promo/se-doll/US-EU-stock-1920x750-SEdoll.jpg",
+    heroAlt: "SE Doll September 2026 US and EU warehouse promotion with four adult companion dolls and separate Silicone Pro and STPE ready-to-ship offers.",
+    includedTitle: "Eligible ready-to-ship warehouse offers",
+    included: [
+      "Silicone Pro: 10% off + free realistic skin texture",
+      "TPE / STPE: 15% off"
+    ],
+    discounts: [],
+    note: SE_DOLL_WAREHOUSE_STPE_MAKEUP_NOTE
+  }
+} as const;
+
+export const SE_DOLL_SEPTEMBER_PROMOTION = {
+  id: "se-doll-september-2026",
+  brand: "SE Doll",
+  brandHref: "/brands/se-doll",
+  promoHref: "/promo",
+  title: "SE Doll September factory offers",
+  shortTitle: "Four SE Doll September factory offers",
+  summary: "Custom TPE/STPE, custom Silicone Pro, silicone torso, and US/EU warehouse offers from SE Doll.",
+  ...promotionTiming,
+  heroImage: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroImage,
+  heroAlt: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroAlt
+} as const;
+
+type SeDollSeptemberOfferKind = "tpe_custom" | "silicone_custom" | "warehouse_silicone" | "warehouse_tpe_stpe";
+
+export type SeDollSeptemberProductOffer = {
+  kind: SeDollSeptemberOfferKind;
+  title: string;
   material: "TPE / STPE" | "Silicone Pro";
-  freebies: readonly string[];
+  image: string;
+  included: readonly string[];
+  discounts: readonly string[];
   includesSoftBelly: boolean;
+  makeupPriceNote?: string;
 };
 
 const tpeCustomHandles = new Set(handleData.tpe_custom_handles);
 const siliconeProCustomHandles = new Set(handleData.silicone_pro_custom_handles);
 const softBellyProxyHandles = new Set(handleData.silicone_pro_soft_belly_height_proxy_handles);
+const siliconeRtsHandles = new Set(handleData.silicone_rts_handles);
+const tpeRtsHandles = new Set(handleData.tpe_rts_handles);
 const softBellyBodyCodes = new Set(["T148", "T155", "T159", "T165", "T175"]);
 
 export const SE_DOLL_PROMOTION_HANDLE_COUNTS = handleData.counts;
 
 export function isSeDollSeptemberPromotionVisible(now = new Date()) {
   const timestamp = now.getTime();
-  return timestamp >= Date.parse(SE_DOLL_SEPTEMBER_PROMOTION.publishAt) && timestamp < Date.parse(SE_DOLL_SEPTEMBER_PROMOTION.endsAt);
+  return timestamp >= Date.parse(promotionTiming.publishAt) && timestamp < Date.parse(promotionTiming.endsAt);
 }
 
 export function seDollSeptemberPromotionStatus(now = new Date()) {
   const timestamp = now.getTime();
-  if (timestamp < Date.parse(SE_DOLL_SEPTEMBER_PROMOTION.startsAt)) return "Starts 1 September";
-  if (timestamp < Date.parse(SE_DOLL_SEPTEMBER_PROMOTION.endsAt)) return "Active now";
+  if (timestamp < Date.parse(promotionTiming.startsAt)) return "Starts 1 September";
+  if (timestamp < Date.parse(promotionTiming.endsAt)) return "Active now";
   return "Ended";
 }
 
-export function seDollSeptemberFreebiesForProduct(
+export function seDollSeptemberOfferForProduct(
   product: Pick<Product, "handle" | "extended">,
   now = new Date()
-): SeDollSeptemberFreebieSet | null {
-  if (!isSeDollSeptemberPromotionVisible(now) || product.extended.stockStatus !== "custom") return null;
+): SeDollSeptemberProductOffer | null {
+  if (!isSeDollSeptemberPromotionVisible(now)) return null;
+
+  // The authoritative warehouse lists win over mutable catalog metadata so every listed PDP keeps its offer copy.
+  if (tpeRtsHandles.has(product.handle)) {
+    return {
+      kind: "warehouse_tpe_stpe",
+      title: "15% off SE Doll warehouse TPE / STPE",
+      material: "TPE / STPE",
+      image: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroImage,
+      included: [],
+      discounts: ["15% off this ready-to-ship warehouse doll"],
+      includesSoftBelly: false,
+      makeupPriceNote: SE_DOLL_WAREHOUSE_STPE_MAKEUP_NOTE
+    };
+  }
+
+  if (siliconeRtsHandles.has(product.handle)) {
+    return {
+      kind: "warehouse_silicone",
+      title: "SE Doll warehouse Silicone Pro offer",
+      material: "Silicone Pro",
+      image: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroImage,
+      included: ["Free realistic skin texture"],
+      discounts: ["10% off this ready-to-ship warehouse doll"],
+      includesSoftBelly: false
+    };
+  }
+
+  if (product.extended.stockStatus !== "custom") return null;
 
   if (tpeCustomHandles.has(product.handle)) {
     return {
+      kind: "tpe_custom",
+      title: "Free TPE / STPE custom-order upgrades",
       material: "TPE / STPE",
-      freebies: SE_DOLL_SEPTEMBER_PROMOTION.tpeFreebies,
+      image: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroImage,
+      included: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.included,
+      discounts: [],
       includesSoftBelly: false
     };
   }
@@ -88,11 +187,18 @@ export function seDollSeptemberFreebiesForProduct(
     : softBellyProxyHandles.has(product.handle);
 
   return {
+    kind: "silicone_custom",
+    title: "Silicone Pro custom factory extras",
     material: "Silicone Pro",
-    freebies: SE_DOLL_SEPTEMBER_PROMOTION.siliconeProFreebies,
+    image: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.heroImage,
+    included: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.included,
+    discounts: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.discounts,
     includesSoftBelly
   };
 }
+
+// Compatibility alias for existing imports; product offers now also include discounts.
+export const seDollSeptemberFreebiesForProduct = seDollSeptemberOfferForProduct;
 
 function normalizeBodyCode(value: string | undefined) {
   if (!value) return undefined;
