@@ -23,6 +23,31 @@ describe("product metadata", () => {
     expect(String(metadata.title)).not.toContain("Customizable Companion Doll");
   });
 
+  it("uses Shopify SEO fields for a unique look's search and social snippet", () => {
+    const product = {
+      ...sampleProducts[0],
+      title: "159cm H-Cup Silicone Customizable Companion Doll",
+      seo: {
+        title: "Adela - Rosy Allure | Real Lady",
+        description: "Meet Adela - Rosy Allure, a distinctive Real Lady look with private DollWow ordering support."
+      },
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Real Lady",
+        displayName: "Adela - Rosy Allure",
+        heightCm: 159,
+        cupSize: "H",
+        material: "Silicone"
+      }
+    };
+
+    const metadata = buildPdpMetadata(product);
+    expect(metadata.title).toBe(product.seo.title);
+    expect(metadata.description).toBe(product.seo.description);
+    expect(metadata.openGraph).toMatchObject({ title: product.seo.title, description: product.seo.description });
+    expect(metadata.twitter).toMatchObject({ title: product.seo.title, description: product.seo.description });
+  });
+
   it("omits no-cup placeholders and internal search language from metadata", () => {
     const product = {
       ...sampleProducts[0],

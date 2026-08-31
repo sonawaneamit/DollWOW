@@ -2,6 +2,36 @@ import { describe, expect, it } from "vitest";
 import { mapShopifyProduct } from "@/lib/shopify/mappers";
 
 describe("Shopify product metadata mapping", () => {
+  it("preserves Shopify SEO title and description for storefront rendering", () => {
+    const product = mapShopifyProduct({
+      id: "gid://shopify/Product/adela-look",
+      handle: "real-lady-adela-159cm-rosy-allure-honey-bronze",
+      title: "159cm H-Cup Silicone Customizable Companion Doll",
+      description: "",
+      seo: {
+        title: "Adela - Rosy Allure | Real Lady",
+        description: "Meet Adela - Rosy Allure."
+      },
+      vendor: "Real Lady",
+      productType: "Doll",
+      tags: ["real-lady"],
+      featuredImage: null,
+      images: { edges: [] },
+      variants: { edges: [] },
+      priceRange: {
+        minVariantPrice: { amount: "2000", currencyCode: "USD" },
+        maxVariantPrice: { amount: "2000", currencyCode: "USD" }
+      },
+      displayName: { value: "Adela - Rosy Allure" }
+    });
+
+    expect(product.seo).toEqual({
+      title: "Adela - Rosy Allure | Real Lady",
+      description: "Meet Adela - Rosy Allure."
+    });
+    expect(product.extended.displayName).toBe("Adela - Rosy Allure");
+  });
+
   it("maps body-specific Irontech ULW eligibility JSON", () => {
     const product = mapShopifyProduct({
       id: "gid://shopify/Product/1",

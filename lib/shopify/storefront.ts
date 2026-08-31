@@ -115,6 +115,7 @@ function productFieldsBase(imageFirst: number) {
   handle
   title
   description
+  seo { title description }
   vendor
   productType
   tags

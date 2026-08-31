@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildDollWowCatalogName, normalizeCup, normalizeMaterial, normalizePublicTitleForAudit, productDisplayName, productDisplayNameForUi, productPdpTitle, productPublicTitle, productSeoTitle } from "@/lib/catalog/naming";
+import { buildDollWowCatalogName, normalizeCup, normalizeMaterial, normalizePublicTitleForAudit, productDisplayName, productDisplayNameForUi, productPdpHeading, productPdpTitle, productPublicTitle, productSeoTitle } from "@/lib/catalog/naming";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("DollWow catalog naming", () => {
@@ -192,6 +192,46 @@ describe("DollWow catalog naming", () => {
     });
 
     expect(title).toBe("165cm D-Cup Silicone Head Customizable Companion Doll");
+  });
+
+  it("uses a model-qualified unique look name as the PDP heading", () => {
+    const product = {
+      ...sampleProducts[0],
+      title: "159cm H-Cup Silicone Customizable Companion Doll",
+      handle: "real-lady-adela-159cm-suite-temptress-honey-bronze",
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Real Lady",
+        displayName: "Adela - Suite Temptress",
+        heightCm: 159,
+        cupSize: "H",
+        material: "Silicone",
+        stockStatus: "custom" as const,
+        customAvailable: true
+      }
+    };
+
+    expect(productPdpHeading(product)).toBe("Adela - Suite Temptress");
+  });
+
+  it("keeps the generic model on its existing spec-led PDP heading", () => {
+    const product = {
+      ...sampleProducts[0],
+      title: "159cm H-Cup Silicone Customizable Companion Doll",
+      handle: "real-lady-adela-159cm-h-cup-silicone-companion-doll-1gb70",
+      extended: {
+        ...sampleProducts[0].extended,
+        brand: "Real Lady",
+        displayName: "Adela",
+        heightCm: 159,
+        cupSize: "H",
+        material: "Silicone",
+        stockStatus: "custom" as const,
+        customAvailable: true
+      }
+    };
+
+    expect(productPdpHeading(product)).toBe("159cm H-Cup Silicone Customizable Companion Doll");
   });
 
   it("hides generic reference-style names from the PDP name line and public title", () => {

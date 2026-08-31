@@ -37,7 +37,7 @@ const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = productPublicTitle(product);
+  const title = cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product);
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
@@ -396,6 +396,9 @@ export function pdpFaqItems(product: Product): FaqItem[] {
 }
 
 function buildPdpMetaDescription(product: Product) {
+  const shopifyDescription = cleanShopifySeoValue(product.seo?.description);
+  if (shopifyDescription) return shopifyDescription;
+
   const lockedTitle = productLockedPdpTitle(product);
   if (lockedTitle) {
     return `${lockedTitle}. Compare specs and availability with discreet US/UK/CA/AU/EU shipping.`;
@@ -420,6 +423,10 @@ function buildPdpMetaDescription(product: Product) {
     .join(" ");
 
   return truncate(description, 158);
+}
+
+function cleanShopifySeoValue(value: string | null | undefined) {
+  return value?.replace(/\s+/g, " ").trim() ?? "";
 }
 
 function buildFitPhrase(product: Product, height: string, cup: string) {

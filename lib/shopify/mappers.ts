@@ -10,6 +10,10 @@ type ShopifyProductNode = {
   handle: string;
   title: string;
   description: string;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+  };
   vendor: string;
   productType: string;
   tags: string[];
@@ -158,6 +162,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
     handle: node.handle,
     title: node.title,
     description: node.description,
+    seo: node.seo,
     vendor: node.vendor,
     productType: node.productType,
     tags: node.tags ?? [],
