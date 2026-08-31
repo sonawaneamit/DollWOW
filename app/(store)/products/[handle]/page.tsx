@@ -19,7 +19,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
-import { productDisplayName, productDisplayNameForUi, productLockedPdpTitle, productPdpTitle, productPublicTitle } from "@/lib/catalog/naming";
+import { productDisplayName, productDisplayNameForUi, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildPdpFitChecks,
   buildPdpMetadata,
@@ -74,8 +74,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
-  const lockedPdpTitle = productLockedPdpTitle(product);
-  const pdpTitle = lockedPdpTitle ?? productPdpTitle(product);
+  const pdpHeading = productPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -148,9 +147,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
             </div>
-            {displayNameUi ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
+            {displayNameUi && displayNameUi !== pdpHeading ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
-              <span>{lockedPdpTitle ?? (displayNameUi ? pdpTitle : displayTitle)}</span>
+              <span>{pdpHeading}</span>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">

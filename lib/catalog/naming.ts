@@ -69,6 +69,15 @@ export function productPdpTitle(product: Product) {
   return preserveAcronyms(cleanText([...baseParts, ...suffixParts].join(" "))) || productPublicTitle(product);
 }
 
+export function productPdpHeading(product: Product) {
+  const lockedTitle = productLockedPdpTitle(product);
+  if (lockedTitle) return lockedTitle;
+
+  const displayName = productDisplayNameForUi(product);
+  if (isUniqueLookName(displayName)) return displayName;
+  return displayName ? productPdpTitle(product) : productPublicTitle(product);
+}
+
 const LOCKED_EROVENUS_PDP_TITLES = [
   {
     handle: "erovenus-thia-110cm-j-cup-silicone-companion-doll-ex5hm",
@@ -147,6 +156,11 @@ export function productDisplayName(product: Product) {
 export function productDisplayNameForUi(product: Product) {
   const name = productDisplayName(product);
   return isReferenceLikeName(name) ? "" : name;
+}
+
+function isUniqueLookName(name: string) {
+  const parts = name.split(/\s+(?:-|–|—)\s+/).map((part) => cleanText(part)).filter(Boolean);
+  return parts.length >= 2;
 }
 
 export function productSeoAliases(product: Product) {

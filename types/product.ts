@@ -29,6 +29,10 @@ export type Product = {
   handle: string;
   title: string;
   description: string;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+  };
   vendor: string;
   productType: string;
   tags: string[];
