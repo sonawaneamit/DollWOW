@@ -15,9 +15,16 @@ describe("catalog authorization matching", () => {
     expect(getBrandAuthorization("il-doll")?.id).toBe("il-doll");
   });
 
+  it("uses the Ai-Tech authorization certificate for its brand collection", () => {
+    const authorization = getBrandAuthorization("AI Tech");
+
+    expect(authorization?.id).toBe("ai-tech");
+    expect(authorization?.certificateSrc).toBe("/images/authorizations/ai-tech-authorization.png");
+    expect(isLiveAuthorizedBrand("Ai-Tech")).toBe(true);
+  });
+
   it("does not advertise an authorization section without authorization on file", () => {
     expect(isLiveAuthorizedBrand("Climax Doll")).toBe(false);
-    expect(isLiveAuthorizedBrand("Ai-Tech")).toBe(false);
     expect(isLiveAuthorizedBrand("Zelex Dolls")).toBe(false);
   });
 });
