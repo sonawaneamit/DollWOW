@@ -53,6 +53,15 @@ export const brandAuthorizations: BrandAuthorization[] = [
     certificatePreviewSrc: "/images/authorizations/previews/starpery-authorization.jpg"
   },
   {
+    id: "ai-tech",
+    brand: "Ai-Tech",
+    brandValue: "ai-tech",
+    aliases: ["ai tech", "aitech", "ai tech doll", "ai tech dolls"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/ai-tech-authorization.png",
+    certificatePreviewSrc: "/images/authorizations/previews/ai-tech-authorization.webp"
+  },
+  {
     id: "herun-doll",
     brand: "Herun Doll",
     brandValue: "hr",
@@ -122,7 +131,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
   }
 ];
 
-const brandsWithoutAuthorizationOnFile = new Set(["zelex", "ai-tech", "climax"]);
+const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax"]);
 
 export const liveAuthorizedBrands = catalogBrands.filter((brand) => !brandsWithoutAuthorizationOnFile.has(brand.value));
 

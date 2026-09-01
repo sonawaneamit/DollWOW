@@ -63,7 +63,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     query: brandQuery,
     first: 600,
     imageFirst: 1,
-    cacheKey: `pdp-related-brand-v2-${(relatedBrand?.value ?? product.extended.brand ?? product.vendor).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    cacheKey: `pdp-related-brand-v3-${(relatedBrand?.value ?? product.extended.brand ?? product.vendor).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
     revalidate: 3600
   });
   const price = product.priceRange.minVariantPrice;
