@@ -12,14 +12,30 @@ const promotionTiming = {
 export const SE_DOLL_WAREHOUSE_STPE_MAKEUP_NOTE =
   "STPE dolls from the US and EU warehouses are sold at the price without body makeup, whether the unit has makeup or not. If a warehouse STPE already has body makeup, that makeup is included at no extra cost.";
 
+export const SE_DOLL_LOOSE_JOINT_SYSTEM = {
+  title: "Free Loose Joint System",
+  summary: "Lower-resistance shoulder, elbow, hip, and knee joints make the limbs easier to reposition and give them a more relaxed feel.",
+  note: "Choose this instead of standard joint tension. Loose joints are easier to move but provide less support for unsupported standing, sitting, and held poses.",
+  images: [
+    {
+      src: "/promo/se-doll/Option-Loose-Joints.jpg",
+      alt: "SE Doll factory Loose Joints option artwork highlighting the shoulder, elbow, hip, and knee joints."
+    },
+    {
+      src: "/promo/se-doll/4-limb-loose-joint.jpg",
+      alt: "SE Doll factory illustration of the four limb areas included in the Loose Joint System."
+    }
+  ]
+} as const;
+
 export const SE_DOLL_SEPTEMBER_OFFERS = {
   tpeCustom: {
     id: "se-doll-tpe-custom-september-2026",
     kind: "tpe_custom",
     shortTitle: "SE Doll TPE / STPE custom-order bonuses",
-    summary: "Six free factory upgrades on eligible custom TPE and STPE full-doll orders.",
+    summary: "Seven free factory upgrades on eligible custom TPE and STPE full-doll orders.",
     heroImage: "/promo/se-doll/TPE-doll-1920x750-SEdoll.jpg",
-    heroAlt: "SE Doll TPE September 2026 factory promotion with an adult companion doll in white lingerie and six custom-order bonuses, valid 1–30 September 2026.",
+    heroAlt: "SE Doll TPE September 2026 factory promotion with an adult companion doll in white lingerie and seven custom-order bonuses, valid 1–30 September 2026.",
     includedTitle: "Free on eligible custom TPE and STPE full dolls",
     included: [
       "Free STPE upgrade",
@@ -27,7 +43,8 @@ export const SE_DOLL_SEPTEMBER_OFFERS = {
       "Free gel breasts",
       "Free fixed tongue",
       "Free lubricant-free vagina",
-      "Free realistic body painting"
+      "Free realistic body painting",
+      SE_DOLL_LOOSE_JOINT_SYSTEM.title
     ],
     discounts: [],
     note: "Custom full dolls only. Ready-to-ship dolls and torsos are not eligible."
@@ -47,7 +64,8 @@ export const SE_DOLL_SEPTEMBER_OFFERS = {
       "Free implanted brow/lash",
       "Free gel breasts",
       "Free soft vagina",
-      "Free articulated or ultra-flex fingers"
+      "Free articulated or ultra-flex fingers",
+      SE_DOLL_LOOSE_JOINT_SYSTEM.title
     ],
     discounts: [
       "10% off master makeup",

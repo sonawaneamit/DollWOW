@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BadgePercent, CalendarDays, Check, CircleAlert, Gift } from "lucide-react";
 import {
   isSeDollSeptemberPromotionVisible,
+  SE_DOLL_LOOSE_JOINT_SYSTEM,
   SE_DOLL_SEPTEMBER_OFFERS,
   SE_DOLL_SEPTEMBER_PROMOTION,
   seDollSeptemberOfferForProduct,
@@ -34,7 +35,7 @@ export function SeDollBrandPromotionBanner() {
             {SE_DOLL_SEPTEMBER_PROMOTION.shortTitle}
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-ivory-300">
-            Custom TPE/STPE, custom Silicone Pro, silicone torso, and US/EU warehouse offers are available on eligible SE Doll orders. DollWOW’s sitewide 10% is applied at checkout.
+            Custom TPE/STPE and Silicone Pro full dolls now include the free Loose Joint System, alongside the other September factory offers. Torsos and ready-to-ship dolls are excluded from this free option. DollWOW’s sitewide 10% is applied at checkout.
           </p>
         </div>
         <Link href={SE_DOLL_SEPTEMBER_PROMOTION.promoHref} className="inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
@@ -88,6 +89,8 @@ export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "han
             {offer.discounts.length ? <OfferList title="Factory discount" items={offer.discounts} /> : null}
           </div>
         ) : null}
+
+        {included.some((item) => item === SE_DOLL_LOOSE_JOINT_SYSTEM.title) ? <LooseJointSystemDetails /> : null}
 
         {offer.makeupPriceNote ? (
           <div className="mt-5 flex gap-3 rounded-[12px] border border-gold-500/30 bg-gold-500/10 px-4 py-3 text-sm leading-6 text-ivory-100">
@@ -155,6 +158,8 @@ export function SeDollPromoIndexCards() {
               </div>
             ) : null}
 
+            {offer.included.some((item) => item === SE_DOLL_LOOSE_JOINT_SYSTEM.title) ? <LooseJointSystemDetails /> : null}
+
             {offer.discounts.length ? (
               <div className="mt-6">
                 <h3 className="text-base font-semibold text-ivory-100">Factory option discounts</h3>
@@ -179,6 +184,35 @@ export function SeDollPromoIndexCards() {
         </article>
       ))}
     </div>
+  );
+}
+
+function LooseJointSystemDetails() {
+  return (
+    <aside className="mt-6 rounded-[14px] border border-gold-500/20 bg-ink-950/55 p-4 sm:p-5" aria-label="Loose Joint System details">
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center">
+        <div>
+          <p className="text-sm font-semibold text-gold-300">September full-doll freebie</p>
+          <h3 className="mt-1 text-lg font-semibold text-ivory-50">Loose Joint System</h3>
+          <p className="mt-2 text-sm leading-6 text-ivory-300">{SE_DOLL_LOOSE_JOINT_SYSTEM.summary}</p>
+          <p className="mt-2 text-sm leading-6 text-ivory-400">{SE_DOLL_LOOSE_JOINT_SYSTEM.note}</p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-500">Custom full-size TPE / STPE and Silicone Pro only · Not torsos · Not ready to ship</p>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {SE_DOLL_LOOSE_JOINT_SYSTEM.images.map((image) => (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              width={500}
+              height={500}
+              sizes="(min-width: 640px) 20vw, 42vw"
+              className="h-auto w-full rounded-[10px] border border-white/10"
+            />
+          ))}
+        </div>
+      </div>
+    </aside>
   );
 }
 

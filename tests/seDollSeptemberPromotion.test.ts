@@ -1,7 +1,11 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
-import { SeDollPdpFreebieBlock, SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPromotion";
+import {
+  SeDollBrandPromotionBanner,
+  SeDollPdpFreebieBlock,
+  SeDollPromoIndexCards
+} from "@/components/promotions/SeDollSeptemberPromotion";
 import handleData from "@/data/promotions/se-doll-september-2026-handles.json";
 import {
   isSeDollSeptemberPromotionVisible,
@@ -35,7 +39,7 @@ describe("SE Doll September 2026 promotion", () => {
     expect(Object.values(SE_DOLL_SEPTEMBER_OFFERS)).toHaveLength(4);
   });
 
-  it("shows Cecile exactly the six TPE/STPE custom bonuses", () => {
+  it("shows Cecile exactly the seven TPE/STPE custom bonuses, including Loose Joint System", () => {
     const offer = seDollSeptemberOfferForProduct(
       product("sedoll-cecile-167cm-g-cup-tpe-companion-doll-bek49"),
       duringPromotion
@@ -49,7 +53,8 @@ describe("SE Doll September 2026 promotion", () => {
         "Free gel breasts",
         "Free fixed tongue",
         "Free lubricant-free vagina",
-        "Free realistic body painting"
+        "Free realistic body painting",
+        "Free Loose Joint System"
       ],
       discounts: [],
       includesSoftBelly: false
@@ -65,6 +70,7 @@ describe("SE Doll September 2026 promotion", () => {
 
     expect(offer?.kind).toBe("silicone_custom");
     expect(offer?.included).toContain("Free ROS");
+    expect(offer?.included).toContain("Free Loose Joint System");
     expect(offer?.included).not.toContain("Free STPE upgrade");
     expect(offer?.discounts).toEqual([
       "10% off master makeup",
@@ -188,6 +194,7 @@ describe("SE Doll September 2026 promotion", () => {
       expect(offer?.included, handle).toEqual(["Free realistic skin texture"]);
       expect(offer?.makeupPriceNote, handle).toBeUndefined();
       expect(offer?.included, handle).not.toContain("Free STPE upgrade");
+      expect(offer?.included, handle).not.toContain("Free Loose Joint System");
     }
   });
 
@@ -202,11 +209,49 @@ describe("SE Doll September 2026 promotion", () => {
       expect(offer?.kind, handle).toMatch(/^warehouse_/);
       expect(offer?.included, handle).not.toContain("Free EVO skeleton");
       expect(offer?.included, handle).not.toContain("Free gel breasts");
+      expect(offer?.included, handle).not.toContain("Free Loose Joint System");
     }
   });
 
   it("never shows an offer on the skipped Sophie Lane handle", () => {
     expect(seDollSeptemberOfferForProduct(product(handleData.skip_handles[0]), duringPromotion)).toBeNull();
+  });
+
+  it("renders Loose Joint System art and limitations only for eligible custom full dolls", () => {
+    vi.setSystemTime(duringPromotion);
+    try {
+      const customMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
+        product: product("sedoll-cecile-167cm-g-cup-tpe-companion-doll-bek49")
+      }));
+      const rtsMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
+        product: product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
+      }));
+
+      expect(customMarkup).toContain("Free Loose Joint System");
+      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2FOption-Loose-Joints.jpg");
+      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2F4-limb-loose-joint.jpg");
+      expect(customMarkup).toContain("Not torsos · Not ready to ship");
+      expect(customMarkup).toContain("less support for unsupported standing, sitting, and held poses");
+      expect(rtsMarkup).not.toContain("Loose Joint System");
+      expect(rtsMarkup).not.toContain("Option-Loose-Joints.jpg");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("shows Loose Joint System copy on the promo index and SE Doll brand banner", () => {
+    vi.setSystemTime(duringPromotion);
+    try {
+      const promoMarkup = renderToStaticMarkup(createElement(SeDollPromoIndexCards));
+      const brandMarkup = renderToStaticMarkup(createElement(SeDollBrandPromotionBanner));
+
+      expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(2);
+      expect(promoMarkup.match(/alt="SE Doll factory Loose Joints option artwork/g)).toHaveLength(2);
+      expect(brandMarkup).toContain("free Loose Joint System");
+      expect(brandMarkup).toContain("Torsos and ready-to-ship dolls are excluded");
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("publishes for launch and expires at the Pacific cutoff", () => {
