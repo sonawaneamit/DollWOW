@@ -16,7 +16,7 @@ export const SE_DOLL_LOOSE_JOINT_SYSTEM = {
   title: "Free Loose Joint System",
   summary: "Lower-resistance shoulder, elbow, hip, and knee joints make the limbs easier to reposition and give them a more relaxed feel.",
   note: "Choose this instead of standard joint tension. Loose joints are easier to move but provide less support for unsupported standing, sitting, and held poses.",
-  heroImage: "/promo/se-doll/factory-Loose-Joints-1200x900.jpg",
+  heroImage: "/promo/se-doll/factory-Loose-Joints-1920x750.jpg",
   mobileHeroImage: "/promo/se-doll/factory-Loose-Joints-1080x1350.jpg",
   heroAlt: "SE Doll factory promotion for the 4-Limb Loose Joint System, showing the flexible shoulder, elbow, hip, and knee joints."
 } as const;
@@ -110,16 +110,22 @@ export const SE_DOLL_SEPTEMBER_PROMOTION = {
   heroAlt: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroAlt
 } as const;
 
-type SeDollSeptemberOfferKind = "tpe_custom" | "silicone_custom" | "warehouse_silicone" | "warehouse_tpe_stpe";
+type SeDollSeptemberOfferKind =
+  | "tpe_custom"
+  | "silicone_custom"
+  | "silicone_torso_custom"
+  | "warehouse_silicone"
+  | "warehouse_tpe_stpe";
 
 export type SeDollSeptemberProductOffer = {
   kind: SeDollSeptemberOfferKind;
   title: string;
-  material: "TPE / STPE" | "Silicone Pro";
+  material: "TPE / STPE" | "Silicone Pro" | "Silicone torso";
   image: string;
-  mobileImage?: string;
+  imageAlt: string;
   included: readonly string[];
   discounts: readonly string[];
+  includesLooseJointSystem: boolean;
   includesSoftBelly: boolean;
   makeupPriceNote?: string;
 };
@@ -158,8 +164,10 @@ export function seDollSeptemberOfferForProduct(
       title: "15% off SE Doll warehouse TPE / STPE",
       material: "TPE / STPE",
       image: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroImage,
+      imageAlt: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroAlt,
       included: [],
       discounts: ["15% off this ready-to-ship warehouse doll"],
+      includesLooseJointSystem: false,
       includesSoftBelly: false,
       makeupPriceNote: SE_DOLL_WAREHOUSE_STPE_MAKEUP_NOTE
     };
@@ -171,23 +179,40 @@ export function seDollSeptemberOfferForProduct(
       title: "SE Doll warehouse Silicone Pro offer",
       material: "Silicone Pro",
       image: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroImage,
+      imageAlt: SE_DOLL_SEPTEMBER_OFFERS.warehouse.heroAlt,
       included: ["Free realistic skin texture"],
       discounts: ["10% off this ready-to-ship warehouse doll"],
+      includesLooseJointSystem: false,
       includesSoftBelly: false
     };
   }
 
   if (product.extended.stockStatus !== "custom") return null;
 
+  if (isSeDollSiliconeTorso(product)) {
+    return {
+      kind: "silicone_torso_custom",
+      title: "Silicone torso custom factory discounts",
+      material: "Silicone torso",
+      image: SE_DOLL_SEPTEMBER_OFFERS.siliconeTorsoCustom.heroImage,
+      imageAlt: SE_DOLL_SEPTEMBER_OFFERS.siliconeTorsoCustom.heroAlt,
+      included: [],
+      discounts: SE_DOLL_SEPTEMBER_OFFERS.siliconeTorsoCustom.discounts,
+      includesLooseJointSystem: false,
+      includesSoftBelly: false
+    };
+  }
+
   if (tpeCustomHandles.has(product.handle)) {
     return {
       kind: "tpe_custom",
       title: "Free TPE / STPE custom-order upgrades",
       material: "TPE / STPE",
-      image: SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage,
-      mobileImage: SE_DOLL_LOOSE_JOINT_SYSTEM.mobileHeroImage,
+      image: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroImage,
+      imageAlt: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroAlt,
       included: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.included,
       discounts: [],
+      includesLooseJointSystem: true,
       includesSoftBelly: false
     };
   }
@@ -203,10 +228,11 @@ export function seDollSeptemberOfferForProduct(
     kind: "silicone_custom",
     title: "Silicone Pro custom factory extras",
     material: "Silicone Pro",
-    image: SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage,
-    mobileImage: SE_DOLL_LOOSE_JOINT_SYSTEM.mobileHeroImage,
+    image: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.heroImage,
+    imageAlt: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.heroAlt,
     included: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.included,
     discounts: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.discounts,
+    includesLooseJointSystem: true,
     includesSoftBelly
   };
 }
@@ -217,4 +243,13 @@ export const seDollSeptemberFreebiesForProduct = seDollSeptemberOfferForProduct;
 function normalizeBodyCode(value: string | undefined) {
   if (!value) return undefined;
   return value.toUpperCase().match(/\bT(?:148|155|159|165|175)\b/)?.[0] ?? value.trim().toUpperCase();
+}
+
+function isSeDollSiliconeTorso(product: Pick<Product, "handle" | "extended">) {
+  const isSeDoll = product.handle.startsWith("sedoll-") || product.extended.brand?.toLowerCase() === "se doll";
+  if (!isSeDoll) return false;
+
+  return [product.extended.bodyCode, product.extended.sourceTitle, product.extended.displayName, product.handle]
+    .filter((value): value is string => Boolean(value))
+    .some((value) => /(?:^|[-\s])SET[-\s]?\d+/i.test(value));
 }
