@@ -16,16 +16,9 @@ export const SE_DOLL_LOOSE_JOINT_SYSTEM = {
   title: "Free Loose Joint System",
   summary: "Lower-resistance shoulder, elbow, hip, and knee joints make the limbs easier to reposition and give them a more relaxed feel.",
   note: "Choose this instead of standard joint tension. Loose joints are easier to move but provide less support for unsupported standing, sitting, and held poses.",
-  images: [
-    {
-      src: "/promo/se-doll/Option-Loose-Joints.jpg",
-      alt: "SE Doll factory Loose Joints option artwork highlighting the shoulder, elbow, hip, and knee joints."
-    },
-    {
-      src: "/promo/se-doll/4-limb-loose-joint.jpg",
-      alt: "SE Doll factory illustration of the four limb areas included in the Loose Joint System."
-    }
-  ]
+  heroImage: "/promo/se-doll/factory-Loose-Joints-1200x900.jpg",
+  mobileHeroImage: "/promo/se-doll/factory-Loose-Joints-1080x1350.jpg",
+  heroAlt: "SE Doll factory promotion for the 4-Limb Loose Joint System, showing the flexible shoulder, elbow, hip, and knee joints."
 } as const;
 
 export const SE_DOLL_SEPTEMBER_OFFERS = {
@@ -124,6 +117,7 @@ export type SeDollSeptemberProductOffer = {
   title: string;
   material: "TPE / STPE" | "Silicone Pro";
   image: string;
+  mobileImage?: string;
   included: readonly string[];
   discounts: readonly string[];
   includesSoftBelly: boolean;
@@ -190,7 +184,8 @@ export function seDollSeptemberOfferForProduct(
       kind: "tpe_custom",
       title: "Free TPE / STPE custom-order upgrades",
       material: "TPE / STPE",
-      image: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroImage,
+      image: SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage,
+      mobileImage: SE_DOLL_LOOSE_JOINT_SYSTEM.mobileHeroImage,
       included: SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.included,
       discounts: [],
       includesSoftBelly: false
@@ -208,7 +203,8 @@ export function seDollSeptemberOfferForProduct(
     kind: "silicone_custom",
     title: "Silicone Pro custom factory extras",
     material: "Silicone Pro",
-    image: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.heroImage,
+    image: SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage,
+    mobileImage: SE_DOLL_LOOSE_JOINT_SYSTEM.mobileHeroImage,
     included: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.included,
     discounts: SE_DOLL_SEPTEMBER_OFFERS.siliconeCustom.discounts,
     includesSoftBelly

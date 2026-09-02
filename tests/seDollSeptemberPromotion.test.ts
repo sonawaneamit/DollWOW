@@ -146,23 +146,29 @@ describe("SE Doll September 2026 promotion", () => {
     }
   });
 
-  it("renders every PDP offer as a full-width 1920 banner above solid offer details", () => {
+  it("renders every PDP offer as a full-width banner above solid offer details", () => {
     vi.setSystemTime(duringPromotion);
     try {
       for (const sample of [
         product("sedoll-cecile-167cm-g-cup-tpe-companion-doll-bek49"),
-        product("sedoll-pearl-160cm-e-cup-silicone-companion-doll-17zfr"),
-        product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
+        product("sedoll-pearl-160cm-e-cup-silicone-companion-doll-17zfr")
       ]) {
         const markup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, { product: sample }));
 
-        expect(markup).toMatch(/data-se-pdp-promotion-banner[^>]*><img[^>]+width="1920"[^>]+height="750"/);
+        expect(markup).toMatch(/data-se-pdp-promotion-banner[^>]*><picture><source media="\(max-width: 639px\)" srcSet="\/promo\/se-doll\/factory-Loose-Joints-1080x1350.jpg"\/><img[^>]+width="1200"[^>]+height="900"/);
         expect(markup).toMatch(/data-se-pdp-promotion-banner[\s\S]+data-se-pdp-promotion-details/);
         expect(markup).toContain("bg-ink-900");
         expect(markup).not.toContain("bg-ink-900/80");
         expect(markup).not.toContain("opacity-55");
         expect(markup).not.toContain("bg-gradient-to-r");
+        expect(markup).not.toContain("Option-Loose-Joints.jpg");
+        expect(markup).not.toContain("4-limb-loose-joint.jpg");
       }
+
+      const warehouseMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
+        product: product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
+      }));
+      expect(warehouseMarkup).toMatch(/data-se-pdp-promotion-banner[^>]*><img[^>]+width="1920"[^>]+height="750"/);
     } finally {
       vi.useRealTimers();
     }
@@ -228,12 +234,12 @@ describe("SE Doll September 2026 promotion", () => {
       }));
 
       expect(customMarkup).toContain("Free Loose Joint System");
-      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2FOption-Loose-Joints.jpg");
-      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2F4-limb-loose-joint.jpg");
+      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2Ffactory-Loose-Joints-1200x900.jpg");
+      expect(customMarkup).toContain("/promo/se-doll/factory-Loose-Joints-1080x1350.jpg");
       expect(customMarkup).toContain("Not torsos · Not ready to ship");
       expect(customMarkup).toContain("less support for unsupported standing, sitting, and held poses");
       expect(rtsMarkup).not.toContain("Loose Joint System");
-      expect(rtsMarkup).not.toContain("Option-Loose-Joints.jpg");
+      expect(rtsMarkup).not.toContain("factory-Loose-Joints");
     } finally {
       vi.useRealTimers();
     }
@@ -246,7 +252,11 @@ describe("SE Doll September 2026 promotion", () => {
       const brandMarkup = renderToStaticMarkup(createElement(SeDollBrandPromotionBanner));
 
       expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(2);
-      expect(promoMarkup.match(/alt="SE Doll factory Loose Joints option artwork/g)).toHaveLength(2);
+      expect(promoMarkup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(2);
+      expect(promoMarkup.match(/factory-Loose-Joints-1080x1350\.jpg/g)).toHaveLength(2);
+      expect(promoMarkup.match(/alt="SE Doll factory promotion for the 4-Limb Loose Joint System/g)).toHaveLength(2);
+      expect(promoMarkup).not.toContain("Option-Loose-Joints.jpg");
+      expect(promoMarkup).not.toContain("4-limb-loose-joint.jpg");
       expect(brandMarkup).toContain("free Loose Joint System");
       expect(brandMarkup).toContain("Torsos and ready-to-ship dolls are excluded");
     } finally {
