@@ -80,6 +80,17 @@ export function GET() {
     })),
     evidenceCollections: [
       {
+        label: "Customer Reviews",
+        pageType: "first_party_reviews",
+        url: `${siteUrl}/reviews`,
+        markdownUrl: `${siteUrl}/markdown/reviews`,
+        topics: ["customer reviews", "ordering experience", "delivery", "customer support"],
+        provenance:
+          "First-party DollWow review records, with watermarked customer photos shown only where supplied for the matching review ID.",
+        limits:
+          "Customer reviews describe individual experiences and do not guarantee product availability, delivery timing, or another customer's outcome."
+      },
+      {
         label: "Factory Approval Archive",
         pageType: "visual_archive",
         url: `${siteUrl}/factory-photos`,

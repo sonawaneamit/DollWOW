@@ -30,14 +30,16 @@ const mobilePrimaryLinks = [
   { label: "Ready to ship", href: "/shop/ready-to-ship" },
   { label: "Compare dolls", href: "/compare" },
   { label: "Help me choose", href: "/help-me-choose" },
-  { label: "Support", href: "/support" }
-  ,{ label: "My Dolls", href: "/account/my-dolls" }
+  { label: "Support", href: "/support" },
+  { label: "Customer reviews", href: "/reviews" },
+  { label: "My Dolls", href: "/account/my-dolls" }
 ] as const;
 
 const helpLinks = [
   { label: "How ordering works", href: "/how-ordering-works" },
   { label: "FAQ", href: "/faq" },
   { label: "Learning Center", href: "/learn" },
+  { label: "Customer reviews", href: "/reviews" },
   { label: "Compare dolls", href: "/compare" },
   { label: "Price Match", href: "/price-match" },
   { label: "About Us", href: "/why-dollwow" },

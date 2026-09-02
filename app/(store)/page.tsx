@@ -4,6 +4,7 @@ import { shopifyQueryForFilters } from "@/lib/catalog/filters";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 import { withProtectedProductImages } from "@/lib/catalog/productImage";
+import { getHomepageReviews } from "@/lib/reviews/reviews";
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
@@ -35,6 +36,7 @@ export default async function HomePage() {
         products={curatedProducts.map(withProtectedProductImages)}
         bestSellingProducts={bestSellingProducts.map(withProtectedProductImages)}
         recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages)}
+        customerReviews={getHomepageReviews()}
       />
     </>
   );

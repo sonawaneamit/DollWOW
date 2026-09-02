@@ -1,4 +1,5 @@
 import archiveManifest from "@/app/factory-photos/archive-manifest.json";
+import { getCustomerReviews } from "@/lib/reviews/reviews";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -19,11 +20,18 @@ function categoryCaption(category: string) {
 }
 
 export function GET() {
-  const images = archiveManifest.entries.map((entry) => [
+  const archiveImages = archiveManifest.entries.map((entry) => [
     "    <image:image>",
     `      <image:loc>${escapeXml(`${siteUrl}${entry.src}`)}</image:loc>`,
     "      <image:title>DollWOW Factory Approval Archive</image:title>",
     `      <image:caption>${escapeXml(categoryCaption(entry.category))}</image:caption>`,
+    "    </image:image>"
+  ].join("\n"));
+  const reviewImages = getCustomerReviews().filter((review) => review.photo).map((review) => [
+    "    <image:image>",
+    `      <image:loc>${escapeXml(`${siteUrl}${review.photo}`)}</image:loc>`,
+    `      <image:title>${escapeXml(`DollWOW customer photo — review by ${review.reviewerName}`)}</image:title>`,
+    "      <image:caption>Watermarked customer photo supplied with a first-party DollWOW review.</image:caption>",
     "    </image:image>"
   ].join("\n"));
 
@@ -32,7 +40,11 @@ export function GET() {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     "  <url>",
     `    <loc>${escapeXml(`${siteUrl}/factory-photos`)}</loc>`,
-    ...images,
+    ...archiveImages,
+    "  </url>",
+    "  <url>",
+    `    <loc>${escapeXml(`${siteUrl}/reviews`)}</loc>`,
+    ...reviewImages,
     "  </url>",
     "</urlset>",
     ""

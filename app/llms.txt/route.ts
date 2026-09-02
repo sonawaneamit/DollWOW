@@ -26,6 +26,7 @@ const corePages = [
   ["Price Match", "/price-match"],
   ["Active Brand Promotions", "/promo"],
   ["Buyer Protection", "/buyer-protection"],
+  ["Customer Reviews", "/reviews"],
   ["Care for Life", "/care-for-life"],
   ["Factory Approval Archive", "/factory-photos"],
   ["Best Price Guarantee", "/best-price-guarantee"],
