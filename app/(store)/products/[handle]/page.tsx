@@ -133,6 +133,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 </span>
               </Link>
             ) : null}
+            <SeDollPdpFreebieBlock product={product} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
@@ -184,7 +185,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 warehouseRegions={product.extended.warehouseRegions}
               />
             )}
-            <SeDollPdpFreebieBlock product={product} />
             {product.extended.stockStatus !== "ready_to_ship" ? (
               <FactoryApprovalPdpPreview />
             ) : null}

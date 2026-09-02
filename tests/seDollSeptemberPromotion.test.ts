@@ -4,7 +4,8 @@ import { describe, expect, it, vi } from "vitest";
 import {
   SeDollBrandPromotionBanner,
   SeDollPdpFreebieBlock,
-  SeDollPromoIndexCards
+  SeDollPromoIndexCards,
+  nextOpenSePromotionPanel
 } from "@/components/promotions/SeDollSeptemberPromotion";
 import handleData from "@/data/promotions/se-doll-september-2026-handles.json";
 import {
@@ -28,11 +29,11 @@ describe("SE Doll September 2026 promotion", () => {
       sil_rts: 26,
       tpe_rts: 28,
       tpe_custom: 268,
-      sil_custom: 100,
+      sil_custom: 101,
       skip: 1
     });
     expect(handleData.tpe_custom_handles).toHaveLength(268);
-    expect(handleData.silicone_pro_custom_handles).toHaveLength(100);
+    expect(handleData.silicone_pro_custom_handles).toHaveLength(101);
     expect(handleData.silicone_pro_soft_belly_height_proxy_handles).toHaveLength(26);
     expect(handleData.silicone_rts_handles).toHaveLength(26);
     expect(handleData.tpe_rts_handles).toHaveLength(28);
@@ -47,6 +48,7 @@ describe("SE Doll September 2026 promotion", () => {
 
     expect(offer).toMatchObject({
       kind: "tpe_custom",
+      image: "/promo/se-doll/TPE-doll-1920x750-SEdoll.jpg",
       included: [
         "Free STPE upgrade",
         "Free EVO skeleton",
@@ -57,6 +59,7 @@ describe("SE Doll September 2026 promotion", () => {
         "Free Loose Joint System"
       ],
       discounts: [],
+      includesLooseJointSystem: true,
       includesSoftBelly: false
     });
     expect(offer?.makeupPriceNote).toBeUndefined();
@@ -69,6 +72,7 @@ describe("SE Doll September 2026 promotion", () => {
     );
 
     expect(offer?.kind).toBe("silicone_custom");
+    expect(offer?.image).toBe("/promo/se-doll/Silicone-doll-1920x750-SEdoll.jpg");
     expect(offer?.included).toContain("Free ROS");
     expect(offer?.included).toContain("Free Loose Joint System");
     expect(offer?.included).not.toContain("Free STPE upgrade");
@@ -79,7 +83,65 @@ describe("SE Doll September 2026 promotion", () => {
       "50% off realistic skin texture"
     ]);
     expect(offer?.includesSoftBelly).toBe(false);
+    expect(offer?.includesLooseJointSystem).toBe(true);
     expect(offer?.makeupPriceNote).toBeUndefined();
+  });
+
+  it("keeps Annika on the September TPE hero and stacks loose joints separately", () => {
+    const offer = seDollSeptemberOfferForProduct(
+      product("sedoll-annika-d-165cm-c-cup-tpe-companion-doll-vzkdy"),
+      duringPromotion
+    );
+
+    expect(offer?.image).toBe(SE_DOLL_SEPTEMBER_OFFERS.tpeCustom.heroImage);
+    expect(offer?.image).not.toContain("Loose-Joints");
+    expect(offer?.includesLooseJointSystem).toBe(true);
+
+    vi.setSystemTime(duringPromotion);
+    try {
+      const markup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
+        product: product("sedoll-annika-d-165cm-c-cup-tpe-companion-doll-vzkdy")
+      }));
+      expect(markup.indexOf("TPE-doll-1920x750-SEdoll.jpg")).toBeLessThan(
+        markup.indexOf("factory-Loose-Joints-1920x750.jpg")
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("includes Jenny T163 in the Silicone Pro custom stack", () => {
+    const offer = seDollSeptemberOfferForProduct(
+      product("sedoll-jenny-163cm-c-cup-silicone-t163-ses115"),
+      duringPromotion
+    );
+
+    expect(offer).toMatchObject({
+      kind: "silicone_custom",
+      image: "/promo/se-doll/Silicone-doll-1920x750-SEdoll.jpg",
+      includesLooseJointSystem: true,
+      includesSoftBelly: false
+    });
+  });
+
+  it("gives SET-named custom silicone torsos only the torso offer", () => {
+    const offer = seDollSeptemberOfferForProduct(
+      product("sedoll-set01-custom-silicone-torso", {
+        stockStatus: "custom",
+        brand: "SE Doll",
+        bodyCode: "SET01"
+      }),
+      duringPromotion
+    );
+
+    expect(offer).toMatchObject({
+      kind: "silicone_torso_custom",
+      image: "/promo/se-doll/Silicone-torso-1920x750-SEdoll.jpg",
+      included: [],
+      discounts: ["30% off movable eyelids", "50% off gel butt"],
+      includesLooseJointSystem: false,
+      includesSoftBelly: false
+    });
   });
 
   it("adds soft belly only to eligible Silicone Pro bodies and prefers body code", () => {
@@ -146,7 +208,7 @@ describe("SE Doll September 2026 promotion", () => {
     }
   });
 
-  it("renders every PDP offer as a full-width banner above solid offer details", () => {
+  it("renders custom PDP offers as two same-width, closed banner accordions", () => {
     vi.setSystemTime(duringPromotion);
     try {
       for (const sample of [
@@ -155,8 +217,10 @@ describe("SE Doll September 2026 promotion", () => {
       ]) {
         const markup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, { product: sample }));
 
-        expect(markup).toMatch(/data-se-pdp-promotion-banner[^>]*><picture><source media="\(max-width: 639px\)" srcSet="\/promo\/se-doll\/factory-Loose-Joints-1080x1350.jpg"\/><img[^>]+width="1200"[^>]+height="900"/);
+        expect(markup.match(/aria-expanded="false"/g)).toHaveLength(2);
+        expect(markup.match(/aspect-\[1920\/750\]/g)).toHaveLength(2);
         expect(markup).toMatch(/data-se-pdp-promotion-banner[\s\S]+data-se-pdp-promotion-details/);
+        expect(markup).toContain("hidden=\"\"");
         expect(markup).toContain("bg-ink-900");
         expect(markup).not.toContain("bg-ink-900/80");
         expect(markup).not.toContain("opacity-55");
@@ -168,7 +232,9 @@ describe("SE Doll September 2026 promotion", () => {
       const warehouseMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
         product: product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
       }));
-      expect(warehouseMarkup).toMatch(/data-se-pdp-promotion-banner[^>]*><img[^>]+width="1920"[^>]+height="750"/);
+      expect(warehouseMarkup.match(/aria-expanded="false"/g)).toHaveLength(1);
+      expect(warehouseMarkup).toContain("US-EU-stock-1920x750-SEdoll.jpg");
+      expect(warehouseMarkup).not.toContain("factory-Loose-Joints");
     } finally {
       vi.useRealTimers();
     }
@@ -184,6 +250,16 @@ describe("SE Doll September 2026 promotion", () => {
       expect(markup).toContain("SE Doll silicone torso custom offer");
       expect(markup).toContain("SE Doll US / EU warehouse offer");
       expect(markup).toContain("sold at the price without body makeup");
+      expect(markup.match(/aria-expanded="false"/g)).toHaveLength(5);
+      expect(markup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(1);
+      for (const image of [
+        "TPE-doll-1920x750-SEdoll.jpg",
+        "Silicone-doll-1920x750-SEdoll.jpg",
+        "Silicone-torso-1920x750-SEdoll.jpg",
+        "US-EU-stock-1920x750-SEdoll.jpg"
+      ]) {
+        expect(markup).toContain(image);
+      }
     } finally {
       vi.useRealTimers();
     }
@@ -232,14 +308,24 @@ describe("SE Doll September 2026 promotion", () => {
       const rtsMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
         product: product("sedoll-tracy-b-160cm-c-cup-tpe-companion-doll-1suv1-rts-us", { stockStatus: "ready_to_ship" })
       }));
+      const torsoMarkup = renderToStaticMarkup(createElement(SeDollPdpFreebieBlock, {
+        product: product("sedoll-set01-custom-silicone-torso", {
+          stockStatus: "custom",
+          brand: "SE Doll",
+          bodyCode: "SET01"
+        })
+      }));
 
       expect(customMarkup).toContain("Free Loose Joint System");
-      expect(customMarkup).toContain("%2Fpromo%2Fse-doll%2Ffactory-Loose-Joints-1200x900.jpg");
-      expect(customMarkup).toContain("/promo/se-doll/factory-Loose-Joints-1080x1350.jpg");
+      expect(customMarkup).toContain("factory-Loose-Joints-1920x750.jpg");
+      expect(customMarkup).not.toContain("factory-Loose-Joints-1080x1350.jpg");
       expect(customMarkup).toContain("Not torsos · Not ready to ship");
       expect(customMarkup).toContain("less support for unsupported standing, sitting, and held poses");
       expect(rtsMarkup).not.toContain("Loose Joint System");
       expect(rtsMarkup).not.toContain("factory-Loose-Joints");
+      expect(torsoMarkup).toContain("Silicone-torso-1920x750-SEdoll.jpg");
+      expect(torsoMarkup).not.toContain("Loose Joint System");
+      expect(torsoMarkup).not.toContain("factory-Loose-Joints");
     } finally {
       vi.useRealTimers();
     }
@@ -251,10 +337,10 @@ describe("SE Doll September 2026 promotion", () => {
       const promoMarkup = renderToStaticMarkup(createElement(SeDollPromoIndexCards));
       const brandMarkup = renderToStaticMarkup(createElement(SeDollBrandPromotionBanner));
 
-      expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(2);
-      expect(promoMarkup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(2);
-      expect(promoMarkup.match(/factory-Loose-Joints-1080x1350\.jpg/g)).toHaveLength(2);
-      expect(promoMarkup.match(/alt="SE Doll factory promotion for the 4-Limb Loose Joint System/g)).toHaveLength(2);
+      expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(1);
+      expect(promoMarkup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(1);
+      expect(promoMarkup.match(/factory-Loose-Joints-1920x750\.jpg/g)).toHaveLength(9);
+      expect(promoMarkup.match(/alt="SE Doll factory promotion for the 4-Limb Loose Joint System/g)).toHaveLength(1);
       expect(promoMarkup).not.toContain("Option-Loose-Joints.jpg");
       expect(promoMarkup).not.toContain("4-limb-loose-joint.jpg");
       expect(brandMarkup).toContain("free Loose Joint System");
@@ -262,6 +348,12 @@ describe("SE Doll September 2026 promotion", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("opens one promotion panel at a time and collapses an open panel", () => {
+    expect(nextOpenSePromotionPanel(null, "september")).toBe("september");
+    expect(nextOpenSePromotionPanel("september", "loose-joints")).toBe("loose-joints");
+    expect(nextOpenSePromotionPanel("loose-joints", "loose-joints")).toBeNull();
   });
 
   it("publishes for launch and expires at the Pacific cutoff", () => {
