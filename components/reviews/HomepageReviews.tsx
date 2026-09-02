@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { StarRating } from "@/components/reviews/StarRating";
@@ -19,17 +20,33 @@ export function HomepageReviews({ reviews }: { reviews: CustomerReview[] }) {
         </div>
 
         <div className="home-reviews__rail reveal" data-d="2">
-          {reviews.map((review) => (
-            <article className="home-review-card" key={review.id}>
-              <StarRating rating={review.stars} size="sm" />
-              <h3>{review.title}</h3>
-              <blockquote>“{review.text}”</blockquote>
-              <footer>
-                <strong>{review.reviewerName}</strong>
-                <span>{formatReviewDate(review.date)}</span>
-              </footer>
-            </article>
-          ))}
+          {reviews.map((review) => {
+            if (!review.photo) {
+              throw new Error(`Homepage review ${review.id} must include its matching customer photo.`);
+            }
+
+            return (
+              <article className="home-review-card" key={review.id}>
+                <Link className="home-review-card__photo" href={`/reviews#review-${review.id}`} aria-label={`Read ${review.reviewerName}'s review`}>
+                  <Image
+                    src={review.photo}
+                    alt={`Watermarked customer photo submitted with ${review.reviewerName}'s DollWow review`}
+                    fill
+                    sizes="(min-width: 640px) 255px, 82vw"
+                  />
+                </Link>
+                <div className="home-review-card__content">
+                  <StarRating rating={review.stars} size="sm" />
+                  <h3>{review.title}</h3>
+                  <blockquote>“{review.text}”</blockquote>
+                  <footer>
+                    <strong>{review.reviewerName}</strong>
+                    <span>{formatReviewDate(review.date)}</span>
+                  </footer>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

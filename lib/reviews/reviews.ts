@@ -11,7 +11,7 @@ export type CustomerReview = {
 };
 
 const PHOTO_REVIEW_IDS = new Set(Array.from({ length: 53 }, (_, index) => index + 1));
-const HOMEPAGE_REVIEW_IDS = [37, 26, 52, 110, 16] as const;
+const HOMEPAGE_REVIEW_IDS = [37, 26, 52, 12, 16] as const;
 
 const reviews = reviewData.reviews.map((review) => ({
   ...review,

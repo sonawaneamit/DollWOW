@@ -21,6 +21,7 @@ export default function ReviewsPage() {
     right.date.localeCompare(left.date) || right.id - left.id
   );
   const summary = getReviewSummary(reviews);
+  const photoReviews = reviews.filter((review) => review.photo);
 
   return (
     <div className="reviews-page">
@@ -37,6 +38,33 @@ export default function ReviewsPage() {
           </div>
         </div>
       </header>
+
+      <section className="reviews-shell reviews-photos" aria-labelledby="customer-photos-title">
+        <div className="reviews-photos__head">
+          <div>
+            <p className="reviews-eyebrow">From real orders</p>
+            <h2 id="customer-photos-title">Customer photos</h2>
+          </div>
+          <span>{photoReviews.length} photos</span>
+        </div>
+        <div className="reviews-photos__rail" aria-label="Customer photo gallery">
+          {photoReviews.map((review) => (
+            <Link
+              className="reviews-photo-thumb"
+              href={`#review-${review.id}`}
+              aria-label={`Go to ${review.reviewerName}'s review`}
+              key={review.id}
+            >
+              <Image
+                src={review.photo!}
+                alt={`Watermarked customer photo submitted with ${review.reviewerName}'s DollWow review`}
+                fill
+                sizes="132px"
+              />
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="reviews-shell reviews-widget" aria-labelledby="reviews-list-title">
         <aside className="reviews-summary" aria-label="Review summary">

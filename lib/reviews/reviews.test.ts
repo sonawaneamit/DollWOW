@@ -27,8 +27,9 @@ describe("first-party review dataset", () => {
   it("uses five source reviews on the homepage with exactly one four-star quote", () => {
     const reviews = getHomepageReviews();
 
-    expect(reviews.map((review) => review.id)).toEqual([37, 26, 52, 110, 16]);
+    expect(reviews.map((review) => review.id)).toEqual([37, 26, 52, 12, 16]);
     expect(reviews).toHaveLength(5);
+    expect(reviews.every((review) => review.photo)).toBe(true);
     expect(reviews.filter((review) => review.stars === 4)).toHaveLength(1);
     expect(reviews.filter((review) => review.stars === 5)).toHaveLength(4);
   });
