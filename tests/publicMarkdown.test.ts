@@ -11,6 +11,7 @@ describe("sitewide Markdown representations", () => {
     "/learn/sex-doll-guide",
     "/care-for-life",
     "/factory-photos",
+    "/reviews",
     "/dollvue"
   ])("allows the public page %s", (path) => {
     expect(isPublicMarkdownPath(path)).toBe(true);

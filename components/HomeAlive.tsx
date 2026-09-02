@@ -14,10 +14,12 @@ import { WishlistButton } from "@/components/WishlistButton";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
+import { HomepageReviews } from "@/components/reviews/HomepageReviews";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
+import type { CustomerReview } from "@/lib/reviews/reviews";
 
 type Rail = {
   key: string;
@@ -65,11 +67,13 @@ const SPOTLIGHT_HANDLE_PRIORITY = [
 export function HomeAlive({
   products,
   bestSellingProducts = [],
-  recentlyAddedProducts
+  recentlyAddedProducts,
+  customerReviews
 }: {
   products: Product[];
   bestSellingProducts?: Product[];
   recentlyAddedProducts?: Product[];
+  customerReviews: CustomerReview[];
 }) {
   const featuredProducts = useMemo(() => storefrontFeatureProducts(products), [products]);
   const featuredRecentlyAddedProducts = useMemo(
@@ -151,6 +155,7 @@ export function HomeAlive({
 
       <DollVueHomepageStrip />
       <TrustBand />
+      <HomepageReviews reviews={customerReviews} />
       <FactoryApprovalHomepagePreview />
       <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
       <HomeDollWall products={featuredProducts} />

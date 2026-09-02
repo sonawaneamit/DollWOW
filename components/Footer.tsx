@@ -35,6 +35,7 @@ const footerGroups = [
       ["About Us", "/why-dollwow"],
       ["Certifications", "/authorized-vendors"],
       ["Brands", "/brands"],
+      ["Customer reviews", "/reviews"],
       ["Support", "/support"]
     ]
   },

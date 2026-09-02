@@ -1,0 +1,26 @@
+{
+  "page": "/reviews",
+  "runDate": "2026-09-02",
+  "status": "content ready; AI/GEO validation pending",
+  "canonicalOwner": "https://dollwow.com/reviews",
+  "pageType": "first-party customer review archive",
+  "sourceEvidence": [
+    {
+      "source": "DollWow customer review Google Sheet",
+      "artifactPath": "data/reviews/customer-reviews.json",
+      "status": "adopted",
+      "finding": "280 review records, including 53 review IDs with approved watermarked customer photos"
+    }
+  ],
+  "intelligenceRuns": [
+    {
+      "endpoint": "DataForSEO AI Keyword Data, AI Overview/AI Mode, LLM Responses/Scraper/Mentions, Content Analysis, Keyword Data, Labs, organic SERPs, OnPage, Backlinks/Domain Analytics, and Merchant layers",
+      "resultStatus": "not run: DataForSEO credentials are not available in this isolated worktree",
+      "cost": 0,
+      "artifactPath": null,
+      "adoptedFindings": [],
+      "rejectedPollutedEvidence": []
+    }
+  ],
+  "releaseNote": "Do not mark the page released or complete until the required relevant AI/GEO evidence is collected and reviewed. The DOL-13 pull request is an implementation review, not a production release."
+}

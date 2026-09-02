@@ -19,6 +19,7 @@ const staticRoutes = [
   "/help-me-choose",
   "/compare",
   "/why-dollwow",
+  "/reviews",
   "/authorized-vendors",
   "/how-ordering-works",
   "/buyer-protection",
