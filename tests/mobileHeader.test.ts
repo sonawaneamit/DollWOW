@@ -12,7 +12,7 @@ describe("mobile header", () => {
 
   it("anchors the open menu below the sticky header after scrolling", () => {
     expect(source).toContain('id="mobile-menu" className="absolute inset-x-0 top-full');
-    expect(source).toContain("h-[calc(100dvh-72px)]");
+    expect(source).toContain("h-[calc(100dvh-108px)]");
     expect(source).not.toContain('id="mobile-menu" className="fixed');
   });
 

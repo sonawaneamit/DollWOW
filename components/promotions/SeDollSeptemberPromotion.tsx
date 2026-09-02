@@ -148,12 +148,26 @@ function OfferList({ title, items }: { title: string; items: readonly string[] }
 
 export function SeDollPromoIndexCards() {
   const offers = Object.values(SE_DOLL_SEPTEMBER_OFFERS);
+  const [isLooseJointPanelOpen, setIsLooseJointPanelOpen] = useState(false);
 
   return (
     <div className="grid gap-8">
       {offers.map((offer, index) => (
         <PromoIndexOfferCard key={offer.id} offer={offer} index={index} />
       ))}
+      <PromotionAccordionPanel
+        id="se-doll-loose-joints-september-2026"
+        image={SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage}
+        imageAlt={SE_DOLL_LOOSE_JOINT_SYSTEM.heroAlt}
+        label="Free Loose Joint System — tap to view details"
+        isOpen={isLooseJointPanelOpen}
+        onToggle={() => setIsLooseJointPanelOpen((isOpen) => !isOpen)}
+        sizes="(min-width: 1280px) 1216px, 100vw"
+        containImage
+        bannerDataAttribute="loose-joint"
+      >
+        <LooseJointSystemDetails />
+      </PromotionAccordionPanel>
     </div>
   );
 }
@@ -163,7 +177,6 @@ function PromoIndexOfferCard({ offer, index }: {
   index: number;
 }) {
   const [openPanelId, setOpenPanelId] = useState<string | null>(null);
-  const hasLooseJoints = offer.included.some((item) => item === looseJointTitle);
   const septemberIncluded = offer.included.filter((item) => item !== looseJointTitle);
   const togglePanel = (panelId: string) => {
     setOpenPanelId((currentId) => nextOpenSePromotionPanel(currentId, panelId));
@@ -214,21 +227,6 @@ function PromoIndexOfferCard({ offer, index }: {
         </div>
       </PromotionAccordionPanel>
 
-      {hasLooseJoints ? (
-        <PromotionAccordionPanel
-          id={`${offer.id}-loose-joints`}
-          image={SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage}
-          imageAlt={SE_DOLL_LOOSE_JOINT_SYSTEM.heroAlt}
-          label="Free Loose Joint System — tap to view details"
-          isOpen={openPanelId === `${offer.id}-loose-joints`}
-          onToggle={() => togglePanel(`${offer.id}-loose-joints`)}
-          sizes="(min-width: 1280px) 1184px, 100vw"
-          containImage
-          bannerDataAttribute="loose-joint"
-        >
-          <LooseJointSystemDetails />
-        </PromotionAccordionPanel>
-      ) : null}
     </article>
   );
 }

@@ -250,8 +250,8 @@ describe("SE Doll September 2026 promotion", () => {
       expect(markup).toContain("SE Doll silicone torso custom offer");
       expect(markup).toContain("SE Doll US / EU warehouse offer");
       expect(markup).toContain("sold at the price without body makeup");
-      expect(markup.match(/aria-expanded="false"/g)).toHaveLength(6);
-      expect(markup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(2);
+      expect(markup.match(/aria-expanded="false"/g)).toHaveLength(5);
+      expect(markup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(1);
       for (const image of [
         "TPE-doll-1920x750-SEdoll.jpg",
         "Silicone-doll-1920x750-SEdoll.jpg",
@@ -337,10 +337,10 @@ describe("SE Doll September 2026 promotion", () => {
       const promoMarkup = renderToStaticMarkup(createElement(SeDollPromoIndexCards));
       const brandMarkup = renderToStaticMarkup(createElement(SeDollBrandPromotionBanner));
 
-      expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(2);
-      expect(promoMarkup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(2);
-      expect(promoMarkup.match(/factory-Loose-Joints-1920x750\.jpg/g)).toHaveLength(18);
-      expect(promoMarkup.match(/alt="SE Doll factory promotion for the 4-Limb Loose Joint System/g)).toHaveLength(2);
+      expect(promoMarkup.match(/Free Loose Joint System/g)).toHaveLength(1);
+      expect(promoMarkup.match(/data-loose-joint-promotion-banner/g)).toHaveLength(1);
+      expect(promoMarkup.match(/factory-Loose-Joints-1920x750\.jpg/g)).toHaveLength(9);
+      expect(promoMarkup.match(/alt="SE Doll factory promotion for the 4-Limb Loose Joint System/g)).toHaveLength(1);
       expect(promoMarkup).not.toContain("Option-Loose-Joints.jpg");
       expect(promoMarkup).not.toContain("4-limb-loose-joint.jpg");
       expect(brandMarkup).toContain("free Loose Joint System");
