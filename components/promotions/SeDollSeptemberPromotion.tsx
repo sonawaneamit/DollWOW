@@ -58,15 +58,19 @@ export function SeDollPdpFreebieBlock({ product }: { product: Pick<Product, "han
   return (
     <section className="mt-6 overflow-hidden rounded-[16px] border border-gold-500/25 bg-ink-900" aria-labelledby="se-pdp-bonuses-heading">
       <div className="w-full bg-ink-950" data-se-pdp-promotion-banner>
-        <Image
-          src={offer.image}
-          alt=""
-          width={1920}
-          height={750}
-          sizes="(min-width: 1024px) 55vw, 100vw"
-          className="h-auto w-full"
-          aria-hidden="true"
-        />
+        {offer.mobileImage ? (
+          <LooseJointHero sizes="(min-width: 1024px) 55vw, 100vw" />
+        ) : (
+          <Image
+            src={offer.image}
+            alt=""
+            width={1920}
+            height={750}
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="h-auto w-full"
+            aria-hidden="true"
+          />
+        )}
       </div>
 
       <div className="border-t border-gold-500/20 bg-ink-900 px-5 py-5" data-se-pdp-promotion-details>
@@ -158,7 +162,7 @@ export function SeDollPromoIndexCards() {
               </div>
             ) : null}
 
-            {offer.included.some((item) => item === SE_DOLL_LOOSE_JOINT_SYSTEM.title) ? <LooseJointSystemDetails /> : null}
+            {offer.included.some((item) => item === SE_DOLL_LOOSE_JOINT_SYSTEM.title) ? <LooseJointSystemDetails showHero /> : null}
 
             {offer.discounts.length ? (
               <div className="mt-6">
@@ -187,30 +191,36 @@ export function SeDollPromoIndexCards() {
   );
 }
 
-function LooseJointSystemDetails() {
+function LooseJointHero({ sizes }: { sizes: string }) {
   return (
-    <aside className="mt-6 rounded-[14px] border border-gold-500/20 bg-ink-950/55 p-4 sm:p-5" aria-label="Loose Joint System details">
-      <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center">
-        <div>
-          <p className="text-sm font-semibold text-gold-300">September full-doll freebie</p>
-          <h3 className="mt-1 text-lg font-semibold text-ivory-50">Loose Joint System</h3>
-          <p className="mt-2 text-sm leading-6 text-ivory-300">{SE_DOLL_LOOSE_JOINT_SYSTEM.summary}</p>
-          <p className="mt-2 text-sm leading-6 text-ivory-400">{SE_DOLL_LOOSE_JOINT_SYSTEM.note}</p>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-500">Custom full-size TPE / STPE and Silicone Pro only · Not torsos · Not ready to ship</p>
+    <picture>
+      <source media="(max-width: 639px)" srcSet={SE_DOLL_LOOSE_JOINT_SYSTEM.mobileHeroImage} />
+      <Image
+        src={SE_DOLL_LOOSE_JOINT_SYSTEM.heroImage}
+        alt={SE_DOLL_LOOSE_JOINT_SYSTEM.heroAlt}
+        width={1200}
+        height={900}
+        sizes={sizes}
+        className="h-auto w-full"
+      />
+    </picture>
+  );
+}
+
+function LooseJointSystemDetails({ showHero = false }: { showHero?: boolean }) {
+  return (
+    <aside className="mt-6 overflow-hidden rounded-[14px] border border-gold-500/20 bg-ink-950/55" aria-label="Loose Joint System details">
+      {showHero ? (
+        <div className="w-full bg-ink-950" data-loose-joint-promotion-banner>
+          <LooseJointHero sizes="(min-width: 1280px) 1120px, 100vw" />
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          {SE_DOLL_LOOSE_JOINT_SYSTEM.images.map((image) => (
-            <Image
-              key={image.src}
-              src={image.src}
-              alt={image.alt}
-              width={500}
-              height={500}
-              sizes="(min-width: 640px) 20vw, 42vw"
-              className="h-auto w-full rounded-[10px] border border-white/10"
-            />
-          ))}
-        </div>
+      ) : null}
+      <div className={`bg-ink-950/55 p-4 sm:p-5 ${showHero ? "border-t border-gold-500/20" : ""}`} data-loose-joint-promotion-details>
+        <p className="text-sm font-semibold text-gold-300">September full-doll freebie</p>
+        <h3 className="mt-1 text-lg font-semibold text-ivory-50">Loose Joint System</h3>
+        <p className="mt-2 text-sm leading-6 text-ivory-300">{SE_DOLL_LOOSE_JOINT_SYSTEM.summary}</p>
+        <p className="mt-2 text-sm leading-6 text-ivory-400">{SE_DOLL_LOOSE_JOINT_SYSTEM.note}</p>
+        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-ivory-500">Custom full-size TPE / STPE and Silicone Pro only · Not torsos · Not ready to ship</p>
       </div>
     </aside>
   );
