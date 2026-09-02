@@ -5,23 +5,23 @@ primaryKeyword: "ai sex dolls"
 secondaryKeywords: ["sexbot", "ai sexbot", "artificial intelligence sexbot", "ai dolls", "ai love doll", "ai companion doll", "ai girlfriend doll"]
 description: "Learn what AI sex dolls, AI love dolls, and AI companion dolls can do, plus what to verify about hardware, software, privacy, subscriptions, and support."
 category: "Technology and Features"
-author: "alex"
-authorDisplayName: "Alex"
-authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-09-02"
 ---
 
 # AI Sex Dolls and AI Companion Dolls: What They Can Do
 
-By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
+By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
 
 ## Quick Answer
 
 An AI sex doll, AI love doll, or AI companion doll usually combines a physical adult companion with conversational software, an app, voice interaction, memory, personality settings, or an electronic head. The physical body may remain completely passive. AI does not automatically mean that a doll can walk, move its arms, see, recognize touch, or operate privately without an internet connection.
 
-Before buying, separate the physical doll from the software and electronics. Confirm what is included, where the AI runs, what data it collects, whether a subscription is required, what happens if the service closes, and who supports the hardware and software.
+Before buying, separate the physical doll from the software and electronics. Confirm what is included, where the AI runs, what data it collects, how memory works, whether a subscription is required, what happens if the service changes or closes, and who supports the hardware and software.
 
 DollWow only describes an AI or connected feature when current product-level documentation supports it. Send a listing through [Compare a listing](/compare), use live chat, or email [hello@dollwow.com](mailto:hello@dollwow.com) if you want help verifying a claim.
 
@@ -30,8 +30,9 @@ DollWow only describes an AI or connected feature when current product-level doc
 - AI can exist in an app or electronic head while the body remains a conventional doll.
 - Conversation, memory, vision, touch response, facial movement, and full-body movement are separate functions.
 - “AI-enabled” does not tell you whether processing happens locally or in the cloud.
-- Accounts, subscriptions, privacy controls, software updates, and service continuity affect long-term value.
+- Accounts, subscriptions, memory controls, software updates, and service continuity affect long-term value.
 - A brand or product name containing “AI” does not prove that every model includes intelligent features.
+- Connected AI companions can raise unusually sensitive privacy questions because conversations, preferences, images, voice, and device data may be intimate.
 - Choose the simplest verified system that delivers the interaction you actually want.
 
 ## What Is an AI Sex Doll?
@@ -126,6 +127,26 @@ A product at level two can provide meaningful conversation. It should not be sol
 
 If the seller cannot answer these questions, treat the AI feature as uncertain rather than included value.
 
+## The 2026 Privacy and Continuity Check
+
+AI companion products are moving faster than conventional doll hardware. That matters because the software layer can change after you buy. A physical body may stay the same, while the app, account rules, cloud model, subscription, memory system, or regional access changes around it.
+
+Recent AI companion coverage shows why this belongs in the buying decision. New Chinese rules for generative AI services took effect on July 15, 2026. Associated Press reporting described major technology companies removing AI companion services as they complied, leaving some users without access to long-running virtual companions. That is not proof that every AI doll service has the same risk. It is a practical reminder that an intimate AI feature depends on policy, platform, server, and company decisions outside the physical doll.
+
+For most buyers, the question is not only "Can it talk?" A safer question is: "What still works if the app changes, the account is restricted, the subscription increases, or the cloud service shuts down?"
+
+| Buyer check | What to ask before paying | Why it matters |
+| --- | --- | --- |
+| Memory | Can I view, edit, export, disable, or delete remembered details? | Memory can become a stored intimate record, not just a convenience feature. |
+| Processing location | Which functions run on-device, in the app, or in the cloud? | Cloud processing can improve conversation, but it adds internet and data-policy dependence. |
+| Account control | Who owns the account, and can it be reset or transferred? | A used, gifted, repaired, or replaced component may need a clean account path. |
+| Subscription | Which features require payment after purchase? | The advertised experience may depend on a paid plan, usage credits, voice packs, or model upgrades. |
+| Offline behavior | Which functions work with no Wi-Fi, no app, or no active subscription? | The physical product should still have clear value if software access changes. |
+| Data use | Are voice, chat, images, sensor data, or profile details used for analytics, human review, advertising, or model training? | Intimate product data deserves stricter review than ordinary shopping data. |
+| Service continuity | What happens if the app is removed, the company closes, or regional access changes? | A replaceable or removable AI component can reduce long-term ownership risk. |
+
+Do not treat a privacy statement as a product feature until you can connect it to the exact app, head, account, and region being sold. If the seller cannot explain the software owner and data controls, price the AI feature as uncertain.
+
 ## Privacy Matters More in an Intimate Product
 
 AI companions can process conversations and preferences that buyers would not share with an ordinary shopping app. Connected heads or robots can add microphones, cameras, and sensors inside private spaces.
@@ -144,6 +165,8 @@ Review:
 - account transfer or device reset
 
 Use a unique password and enable the strongest account protection available. Do not enable cameras or microphones until you understand when they are active and where their data goes.
+
+This is especially important for products that advertise long-term memory or emotional companionship. Memory may make conversation feel more personal, but it can also mean the system retains sexual preferences, relationship details, private routines, voice clips, photos, or other sensitive records. Ask how to turn memory off before you need to use that control.
 
 ## Local AI Versus Cloud AI
 
@@ -276,6 +299,10 @@ Memory can mean stored personal data. Check where it lives and how to remove it.
 
 Apps, servers, and companies can change. Understand what the physical product can still do without them.
 
+### Letting the AI feature outrank the base doll
+
+An app can make a product feel more current, but the body, head, material, skeleton, weight, cleaning routine, and supported options still control daily ownership. Do not pay for software novelty if the physical doll is not the right fit.
+
 ### Cleaning an electronic head like a standard head
 
 Motors, ports, speakers, and wiring require a separate routine. Obtain the exact instructions before use.
@@ -288,6 +315,12 @@ Motors, ports, speakers, and wiring require a separate routine. Obtain the exact
 - [Implanted hair vs wig](/learn/implanted-hair-vs-wig)
 - [Custom sex dolls](/learn/custom-sex-dolls)
 - [The complete sex doll guide](/learn/sex-doll-guide)
+
+## Sources
+
+- [Associated Press: Chinese users of AI companions after new regulation](https://apnews.com/article/china-ai-virtual-companions-bytedance-wechat-22c4247031092c37b61b537dd809b658)
+- [Just Security: What to Know About China's First AI Companion Rules](https://www.justsecurity.org/148468/china-ai-companion-rules-relationships/)
+- [Latham & Watkins: China Introduces Rules for AI Companion and Emotional Interaction Services](https://www.lw.com/en/insights/china-introduces-rules-for-ai-companion-and-emotional-interaction-services)
 
 ## FAQs
 
@@ -311,6 +344,10 @@ Some systems provide text or voice conversation through an app, speaker, or elec
 
 Some services store profile details or conversation history, but “memory” varies widely. Ask what is retained, where it is stored, and whether you can view, export, correct, or delete it.
 
+### What happens if an AI companion app shuts down?
+
+The answer depends on the product. Some physical functions may still work, while conversation, memory, voice, personality, updates, or account features may stop. Ask what works offline and what depends on the company's servers before paying for the AI upgrade.
+
 ### Can an AI doll move on its own?
 
 AI alone cannot create physical movement. Independent movement requires motors, sensors, control systems, power, and supported software. Verify the exact hardware.
@@ -326,6 +363,10 @@ Some do. Check the included service period, recurring price, usage limits, paid 
 ### Are AI sex dolls private?
 
 Not automatically. They may process voice, text, images, account details, and sensor data. Review local versus cloud processing, retention, deletion, third-party access, and physical-off controls.
+
+### Should I choose local AI or cloud AI?
+
+Local AI can reduce internet dependence and may give you more control, but it may be less capable or require more expensive hardware. Cloud AI can improve conversation and updates, but it depends on accounts, servers, policy changes, and data controls. Compare function by function.
 
 ### Does every Ai-Tech doll include AI?
 
@@ -345,4 +386,4 @@ Clean the physical material according to its instructions, but keep water away f
 
 ### How current is this guide?
 
-This guide was last reviewed on August 11, 2026. AI models, apps, subscriptions, privacy terms, hardware, and product availability can change quickly, so verify the current system before ordering.
+This guide was last reviewed on September 2, 2026. AI models, apps, subscriptions, privacy terms, hardware, and product availability can change quickly, so verify the current system before ordering.

@@ -86,8 +86,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = window.gtag || gtag;
+var dollwowAnalyticsConsent = 'denied';
+try {
+  var storedConsent = JSON.parse(localStorage.getItem('dollwow-consent-v1') || 'null');
+  var consentUpdatedAt = storedConsent && new Date(storedConsent.updatedAt).getTime();
+  var consentIsCurrent = Number.isFinite(consentUpdatedAt) && Date.now() - consentUpdatedAt <= ${180 * 24 * 60 * 60 * 1000};
+  if (consentIsCurrent && storedConsent.state === 'granted') dollwowAnalyticsConsent = 'granted';
+} catch (error) {}
 gtag('consent', 'default', {
-  analytics_storage: 'denied',
+  analytics_storage: dollwowAnalyticsConsent,
   ad_storage: 'denied',
   ad_user_data: 'denied',
   ad_personalization: 'denied',

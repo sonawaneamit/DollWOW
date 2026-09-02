@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { productImageSources, protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
+import { productWatermarkWidth } from "@/app/product-media/[handle]/[position]/route";
 import type { Product } from "@/types/product";
 
 const product = {
@@ -38,5 +39,12 @@ describe("protected product images", () => {
     expect(JSON.stringify(protectedProduct)).not.toContain("cdn.shopify.com");
     expect(protectedProduct.featuredImage?.url).toBe("/product-media/v4/sample-doll/0");
     expect(protectedProduct.images[1].url).toBe("/product-media/v4/sample-doll/1");
+  });
+
+  it("keeps the watermark safely inside unusually small source images", () => {
+    expect(productWatermarkWidth(150)).toBe(66);
+    expect(productWatermarkWidth(200)).toBe(88);
+    expect(productWatermarkWidth(1800)).toBe(792);
+    expect(productWatermarkWidth(150)).toBeLessThan(150);
   });
 });

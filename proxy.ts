@@ -5,6 +5,15 @@ import { isPublicMarkdownPath, markdownPathFor } from "@/lib/seo/publicMarkdownP
 import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
 
 export function proxy(request: NextRequest) {
+  const requestHost = (request.headers.get("x-forwarded-host") || request.headers.get("host") || "").split(":")[0].toLowerCase();
+  if (requestHost === "www.dollwow.com") {
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.protocol = "https";
+    canonicalUrl.hostname = "dollwow.com";
+    canonicalUrl.port = "";
+    return NextResponse.redirect(canonicalUrl, 308);
+  }
+
   if (request.nextUrl.pathname.startsWith("/cart/c") || request.nextUrl.pathname.startsWith("/checkouts")) {
     const checkoutDomain = (env.SHOPIFY_CHECKOUT_DOMAIN || "checkout.dollwow.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
     const checkoutUrl = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, `https://${checkoutDomain}`);

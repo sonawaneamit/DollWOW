@@ -10,6 +10,9 @@ describe("AI content access signals", () => {
     expect(robots).toContain(`Content-Signal: ${CONTENT_SIGNAL}`);
     expect(robots).toContain("Allow: /");
     expect(robots).toContain("Disallow: /admin/");
+    expect(robots).toContain("Disallow: /admin\n");
+    expect(robots).toContain("Disallow: /ops\n");
+    expect(robots).toContain("Disallow: /ops/");
     expect(robots).toContain("Sitemap: https://dollwow.com/sitemap.xml");
   });
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPdpMetadata } from "@/lib/catalog/pdpSeo";
+import { buildPdpMetadata, buildProductStructuredData, productMerchantSku } from "@/lib/catalog/pdpSeo";
 import { sampleProducts } from "@/lib/data/sample-products";
 import { productPublicTitle } from "@/lib/catalog/naming";
 
@@ -63,5 +63,22 @@ describe("product metadata", () => {
 
     const metadata = buildPdpMetadata(product);
     expect(metadata.description).not.toMatch(/cup/i);
+  });
+
+  it("keeps merchant product identifiers stable and within Google's 50-character limit", () => {
+    const longHandle = "starpery-honey-148cm-j-cup-silicone-head-companion-doll-1dptr";
+    const product = { ...sampleProducts[0], handle: longHandle };
+    const sku = productMerchantSku(product);
+    const structuredData = buildProductStructuredData(product);
+
+    expect(sku).toBe("starpery-honey-148cm-j-cup-silicone-head-com-1dptr");
+    expect(sku).toHaveLength(50);
+    expect(structuredData.sku).toBe(sku);
+    expect(sku).toMatch(/^[A-Za-z0-9_-]+$/);
+  });
+
+  it("leaves already-valid merchant product identifiers unchanged", () => {
+    const handle = "wm-knox-head-n6-175cm-tpe-companion-doll-kf9md";
+    expect(productMerchantSku({ handle })).toBe(handle);
   });
 });

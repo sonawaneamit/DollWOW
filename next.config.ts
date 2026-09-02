@@ -35,6 +35,51 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
+        source: "/learn/sex-doll-storage-1",
+        destination: "/learn/sex-doll-storage",
+        permanent: true
+      },
+      {
+        source: "/learn/most-realistic-sex-dolls-1",
+        destination: "/learn/most-realistic-sex-dolls",
+        permanent: true
+      },
+      {
+        source: "/learn/most-realistic-sex-dolls-5",
+        destination: "/learn/most-realistic-sex-dolls",
+        permanent: true
+      },
+      {
+        source: "/learn/best-sex-doll-stores-1",
+        destination: "/learn/best-sex-doll-stores",
+        permanent: true
+      },
+      {
+        source: "/shipping-5",
+        destination: "/shipping",
+        permanent: true
+      },
+      {
+        source: "/shop/realistic-sex-dolls-3",
+        destination: "/shop/realistic-sex-dolls",
+        permanent: true
+      },
+      {
+        source: "/editorial-policy",
+        destination: "/why-dollwow",
+        permanent: true
+      },
+      {
+        source: "/products/starpery-honey-148cm-j-cup-silicone-companion-doll-17p4h",
+        destination: "/products/starpery-honey-148cm-j-cup-silicone-head-companion-doll-1dptr",
+        permanent: true
+      },
+      {
+        source: "/products/starpery-aurora-160cm-k-cup-silicone-companion-doll-1jkt2",
+        destination: "/products/starpery-aurora-160cm-k-cup-silicone-companion-doll-879qv",
+        permanent: true
+      },
+      {
         source: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-i9zoa",
         destination: "/products/sedoll-cecilia-lynd-161cm-f-cup-tpe-companion-doll-1e7ds",
         permanent: true

@@ -48,9 +48,17 @@ export function useConsent(): ConsentState {
 
 export function writeConsent(state: Exclude<ConsentState, "unknown">) {
   if (typeof window === "undefined") return;
+  const previous = readConsent();
   const payload: StoredConsent = { state, updatedAt: new Date().toISOString() };
   window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(payload));
   updateGtagConsent(state);
+  if (state === "granted" && previous !== "granted") {
+    window.gtag?.("event", "page_view", {
+      page_location: window.location.href,
+      page_path: `${window.location.pathname}${window.location.search}`,
+      page_title: document.title
+    });
+  }
   window.dispatchEvent(new CustomEvent("dollwow:consent-updated", { detail: state }));
 }
 

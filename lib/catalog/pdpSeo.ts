@@ -277,7 +277,7 @@ export function buildProductStructuredData(product: Product) {
     },
     category: material ? `${material} companion doll` : "Companion doll",
     material: material || undefined,
-    sku: product.handle,
+    sku: productMerchantSku(product),
     mpn: product.extended.catalogIdentityKey || product.extended.catalogBodyIdentityKey || undefined,
     keywords: keywords.join(", "),
     additionalProperty,
@@ -293,6 +293,18 @@ export function buildProductStructuredData(product: Product) {
       url: canonicalUrl
     }
   };
+}
+
+export function productMerchantSku(product: Pick<Product, "handle">) {
+  const normalized = product.handle
+    .normalize("NFKD")
+    .replace(/[^a-zA-Z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  if (normalized.length <= 50) return normalized;
+
+  const suffix = normalized.slice(-5);
+  return `${normalized.slice(0, 44)}-${suffix}`;
 }
 
 function productSchemaImages(product: Product) {

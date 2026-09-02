@@ -10,7 +10,7 @@ authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-12"
+lastReviewed: "2026-09-02"
 ---
 
 # Sex Robots in 2026: What Exists Before You Buy
@@ -79,6 +79,14 @@ Before treating an offer as a purchasable robotic doll, confirm all five points:
 5. Cleaning, replacement parts, software support, and repair have a documented owner.
 
 DollWow does not currently offer a dedicated robot collection. We would rather verify the feature you want than place conventional dolls beneath an inflated label. Send the product or capability through [Compare a listing](/compare), live chat, or [hello@dollwow.com](mailto:hello@dollwow.com). The team can check approved suppliers and explain the closest supported path.
+
+### A current example: IronAI Bionic VaginaX
+
+Irontech announced Bionic VaginaX in August 2026 as a responsive electronic feature used with its IronAI CoreAI system. The manufacturer describes sensing, tightening, heating, vibration, voice feedback, and controls in the Dollia app.
+
+This is a useful example of the difference between a responsive feature and a complete robot. A powered internal module may react to interaction, but that does not mean the doll can walk, move its body independently, see, or operate without connected hardware and software.
+
+DollWow has not confirmed this feature as available on a current product. Before treating it as a purchasable upgrade, we would verify the supported body and head, required hardware, app and account requirements, full price, cleaning instructions, repair path, and current supplier support.
 
 ## Realbotix and the Humanoid-Robot Market
 
@@ -313,6 +321,7 @@ Hair, makeup, material, head, neck connection, and other electronics can limit w
 - [Realbotix: robots designed for human interaction](https://realbotix.ai/) describes its current humanoid work across companionship, entertainment, and customer service.
 - [Realbotix CES 2026 demonstration](https://www.realbotix.ai/news/realbotix-showcases-first-public-embedded-ai-conversation-between-two-humanoid-robots-at-ces-2026) documents embedded AI conversation, vision, facial cues, and physical humanoid systems. A public demonstration still does not establish the specification of an unrelated retail product.
 - [SE Doll: electric hip feature](https://www.sedoll.com/sedoll-tpe-dolls-introducing-the-new-electric-hip-feature/) documents one product-specific powered function, including movement, operating, cleaning, and handling limits. It is evidence for that supported option, not proof that every SE Doll is robotic.
+- [Irontech: IronAI Bionic VaginaX](https://www.irontechdoll.com/blog/ironai-bionic-vaginax-ai-sex-doll-experience/) describes the manufacturer's announced responsive feature and its IronAI CoreAI dependency. It does not establish DollWow availability or compatibility with a specific product.
 
 These manufacturer pages support the specific statements beside them. Current DollWow product pages and written supplier confirmation remain the source of truth for products, compatible options, price, and availability.
 
@@ -368,4 +377,4 @@ Yes. Submit the current page through [Compare a listing](/compare). DollWow can 
 
 ### How current is this guide?
 
-This guide was last reviewed on August 12, 2026. Robotics products, software, prices, availability, and company plans change quickly, so verify the exact product again before ordering.
+This guide was last reviewed on September 2, 2026. Robotics products, software, prices, availability, and company plans change quickly, so verify the exact product again before ordering.

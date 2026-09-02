@@ -25,16 +25,7 @@ export function ConsentBanner() {
 
   useEffect(() => {
     if (!mounted || consent !== "unknown") return;
-
-    const revealAfterScroll = () => {
-      if (window.scrollY < 120) return;
-      setRevealed(true);
-      window.removeEventListener("scroll", revealAfterScroll);
-    };
-
-    revealAfterScroll();
-    window.addEventListener("scroll", revealAfterScroll, { passive: true });
-    return () => window.removeEventListener("scroll", revealAfterScroll);
+    setRevealed(true);
   }, [consent, mounted]);
 
   if (!mounted || (!managing && (consent !== "unknown" || !revealed))) return null;

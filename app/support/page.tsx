@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { GoldButton } from "@/components/GoldButton";
 import { dollWowContactChannels } from "@/components/ContactChannels";
@@ -6,9 +7,10 @@ import { InfoVisualPanel } from "@/components/InfoVisualPanel";
 import { SupportLeadForm } from "@/components/SupportLeadForm";
 import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Sex Doll Buying Help",
-  description: "Get private, personal help with sex doll sizing, materials, customization, delivery, price matching, and product comparisons from DollWow."
+  description: "Get private, personal help with sex doll sizing, materials, customization, delivery, price matching, and product comparisons from DollWow.",
+  alternates: { canonical: "/support" }
 };
 
 export default function SupportPage() {

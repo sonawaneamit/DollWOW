@@ -41,22 +41,30 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
   const shouldWatermark = requestedSize !== "thumb" && requestedSize !== "card";
   let output = normalized.data;
   if (shouldWatermark) {
-    const sourceLogo = await watermarkLogo(new URL("/images/brand/dollwow-black-gold-lockup.png", request.url));
-    const mark = await sharp(sourceLogo)
-      .resize({ width: Math.max(250, Math.round(width * 0.44)), withoutEnlargement: true })
-      .ensureAlpha()
-      .linear([0, 0, 0, 0.2], [215, 168, 70, 0])
-      .rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
-      .png()
-      .toBuffer({ resolveWithObject: true });
-    output = await sharp(normalized.data)
-      .composite([{
-        input: mark.data,
-        left: Math.max(0, Math.round((width - mark.info.width) / 2)),
-        top: Math.max(0, Math.min(height - mark.info.height, Math.round(height * 0.63 - mark.info.height / 2)))
-      }])
-      .webp({ quality: 86, effort: 4 })
-      .toBuffer();
+    try {
+      const sourceLogo = await watermarkLogo(new URL("/images/brand/dollwow-black-gold-lockup.png", request.url));
+      const mark = await sharp(sourceLogo)
+        .resize({ width: productWatermarkWidth(width), withoutEnlargement: true })
+        .ensureAlpha()
+        .linear([0, 0, 0, 0.2], [215, 168, 70, 0])
+        .rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
+        .png()
+        .toBuffer({ resolveWithObject: true });
+      output = await sharp(normalized.data)
+        .composite([{
+          input: mark.data,
+          left: Math.max(0, Math.round((width - mark.info.width) / 2)),
+          top: Math.max(0, Math.min(height - mark.info.height, Math.round(height * 0.63 - mark.info.height / 2)))
+        }])
+        .webp({ quality: 86, effort: 4 })
+        .toBuffer();
+    } catch (error) {
+      console.error("Product image watermark failed; serving the normalized image.", {
+        handle,
+        position,
+        message: error instanceof Error ? error.message : "Unknown watermark error"
+      });
+    }
   }
 
   return new Response(new Uint8Array(output), {
@@ -67,6 +75,11 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
       "X-Content-Type-Options": "nosniff"
     }
   });
+}
+
+export function productWatermarkWidth(imageWidth: number) {
+  const safeWidth = Math.max(1, Math.floor(imageWidth) - 16);
+  return Math.max(1, Math.min(safeWidth, Math.max(48, Math.round(imageWidth * 0.44))));
 }
 
 function watermarkLogo(url: URL) {
