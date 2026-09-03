@@ -4,6 +4,7 @@ import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups, isExplicitIrontechUlwOption } from "@/lib/customization/irontech";
+import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import {
@@ -324,7 +325,7 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
         .filter((group) => group.options.some((option) => isExplicitIrontechUlwOption(group, option)))
         .map((group) => group.id)
     );
-    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups, groupsWithImportedUlw) : groups;
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups, groupsWithImportedUlw, product) : groups;
     return {
       id: "irontech-family-profile",
       brandLabel: "Irontech Dolls",
@@ -337,7 +338,7 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     const sourceGroups = importedGroups ?? [];
     const groups = getWmCustomizationGroups(product, sourceGroups);
     if (groups.length) {
-      const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups) : groups;
+      const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(groups, new Set(), product) : groups;
       return {
         id: `wm-${getWmCustomizationFamily(product, sourceGroups)}`,
         brandLabel: "WM Dolls",
@@ -404,7 +405,7 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   }
   if (importedGroups?.length) {
     const sourceGroups = importedGroups;
-    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups) : sourceGroups;
+    const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups, new Set(), product) : sourceGroups;
     const onlineGroups = withIronAi(product, withIrontechUlw(product, availableGroups));
     return {
       id: "imported",
@@ -452,7 +453,7 @@ function importedBrandConfig(product: Product, purpose: "checkout" | "factory", 
     id,
     brandLabel,
     leadTimeNote: `${brandLabel} custom builds and option compatibility are reviewed before production begins.`,
-    groups: uniqueCustomizationGroups(purpose === "checkout" ? onlineCheckoutGroups(groups) : groups),
+    groups: uniqueCustomizationGroups(purpose === "checkout" ? onlineCheckoutGroups(groups, new Set(), product) : groups),
     rules: []
   };
 }
@@ -663,11 +664,13 @@ function supportsIrontechUlw(product: Product) {
  * Keep only online-orderable choices (priced, included/default, or explicitly
  * free) and drop a group entirely when it no longer offers a real choice.
  */
-function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupIds = new Set<string>()) {
+function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupIds = new Set<string>(), product?: Product) {
   return groups
     .map((group) => ({
       ...group,
-      options: group.options.filter(isOnlineCheckoutOption)
+      options: group.options.filter((option) =>
+        isOnlineCheckoutOption(option) || Boolean(product && promotionOptionPrice(product, group, option).eligible)
+      )
     }))
     .filter((group) => group.options.length >= 2 || (group.options.length > 0 && preserveSingleGroupIds.has(group.id)));
 }

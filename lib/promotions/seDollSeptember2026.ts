@@ -144,6 +144,11 @@ export function isSeDollSeptemberPromotionVisible(now = new Date()) {
   return timestamp >= Date.parse(promotionTiming.publishAt) && timestamp < Date.parse(promotionTiming.endsAt);
 }
 
+export function isSeDollSeptemberPromotionActive(now = new Date()) {
+  const timestamp = now.getTime();
+  return timestamp >= Date.parse(promotionTiming.startsAt) && timestamp < Date.parse(promotionTiming.endsAt);
+}
+
 export function seDollSeptemberPromotionStatus(now = new Date()) {
   const timestamp = now.getTime();
   if (timestamp < Date.parse(promotionTiming.startsAt)) return "Starts 1 September";
