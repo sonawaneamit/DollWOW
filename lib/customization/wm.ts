@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { WM_SILICONE_HEADS, WM_STANDARD_TPE_HEADS } from "@/lib/customization/wm-heads";
 
 export const WM_TPE_EXTRA_HEAD_PRICE = 299;
@@ -291,14 +292,16 @@ function isIncludedImageOption(groupLabel: string, option: CustomizationOption) 
     option.swatch?.kind === "image" && /^https?:\/\//i.test(option.swatch.value);
 }
 
-function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote">) {
+function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote" | "sourceProductionNoteSignals">) {
   return /\bfree\b|^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown|as shown in product photos)$/i.test(option.label) ||
-    /default supplier selection|no paid add-on/i.test(option.productionNote || "");
+    /default supplier selection|no paid add-on/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection", "noPaidAddOn");
 }
 
-function isNeutralDefault(option: Pick<CustomizationOption, "label" | "productionNote">) {
+function isNeutralDefault(option: Pick<CustomizationOption, "label" | "productionNote" | "sourceProductionNoteSignals">) {
   return /^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown|as shown in product photos|same as (?:the )?(?:website )?(?:picture|photo))$/i.test(option.label.trim()) ||
-    /default supplier selection|no paid add-on|photographed product configuration/i.test(option.productionNote || "");
+    /default supplier selection|no paid add-on|photographed product configuration/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection", "noPaidAddOn", "photographedProductConfiguration");
 }
 
 function isStandardTpeBuild(product: Product) {

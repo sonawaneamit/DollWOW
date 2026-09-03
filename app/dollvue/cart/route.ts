@@ -17,6 +17,7 @@ import {
 } from "@/lib/dollvue/config";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
+import { withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
 
 export const runtime = "nodejs";
 
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "This doll is not currently available to add to the cart." }, { status: 409 });
   }
 
-  const config = dollVueConfigForProduct(product, getCustomizationConfig(product));
+  const config = withPromotionOptionPricing(product, dollVueConfigForProduct(product, getCustomizationConfig(product)));
   const visualSelections = resolveDollVueSelections(config, parsed.data.selections);
   if (visualSelections.length !== parsed.data.selections.length) {
     return NextResponse.json({ error: "One of these appearance choices is no longer available." }, { status: 409 });

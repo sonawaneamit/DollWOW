@@ -44,53 +44,63 @@ import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
 import { dollVueSelectionKey } from "@/lib/dollvue/public";
 import { PaymentLogos } from "./PaymentLogos";
+import { promotionOptionPrice, withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
+import { PromotionalOptionPrice } from "./promotions/PromotionalOptionPrice";
 
-export function ProductOptions({ product }: { product: Product }) {
+export function ProductOptions({ product, promoClock }: { product: Product; promoClock?: string }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
   if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
-  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} /> : <ProductOptionsOnRequest product={product} />;
+  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} /> : <ProductOptionsOnRequest product={product} />;
 }
 
-function ProductOptionsBuilder({ product, config }: { product: Product; config: ReturnType<typeof getCustomizationConfig> }) {
+function ProductOptionsBuilder({ product, config, promoClock }: { product: Product; config: ReturnType<typeof getCustomizationConfig>; promoClock?: string }) {
   const router = useRouter();
   const didMountRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
+  const promotionNow = usePromotionClock(promoClock);
+  const pricedConfig = useMemo(() => withPromotionOptionPricing(product, config, promotionNow), [config, product, promotionNow]);
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
-  const [activeGroupId, setActiveGroupId] = useState(config.groups[0]?.id ?? "");
+  const [activeGroupId, setActiveGroupId] = useState(pricedConfig.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
-  const [selected, setSelected] = useState(() => getDefaultSelections(config));
+  const [selected, setSelected] = useState(() => getDefaultSelections(pricedConfig));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isPreviewOpen, setPreviewOpen] = useState(false);
 
   useEffect(() => {
+    let restoreFrame: number | undefined;
     try {
       const key = dollVueSelectionKey(product.handle);
       const saved = JSON.parse(window.localStorage.getItem(key) || "null") as { selections?: Record<string, string>; savedAt?: number } | null;
       if (!saved?.selections || !saved.savedAt || Date.now() - saved.savedAt > 24 * 60 * 60 * 1000) return;
       const supported = Object.fromEntries(Object.entries(saved.selections).filter(([groupId, optionId]) =>
-        config.groups.some((group) => group.id === groupId && group.options.some((option) => option.id === optionId))
+        pricedConfig.groups.some((group) => group.id === groupId && group.options.some((option) => option.id === optionId))
       ));
       if (!Object.keys(supported).length) return;
-      setSelected((current) => ({ ...current, ...supported }));
-      const firstSelectedGroup = config.groups.find((group) => supported[group.id]);
-      if (firstSelectedGroup) setActiveGroupId(firstSelectedGroup.id);
-      window.localStorage.removeItem(key);
+      restoreFrame = window.requestAnimationFrame(() => {
+        setSelected((current) => ({ ...current, ...supported }));
+        const firstSelectedGroup = pricedConfig.groups.find((group) => supported[group.id]);
+        if (firstSelectedGroup) setActiveGroupId(firstSelectedGroup.id);
+        window.localStorage.removeItem(key);
+      });
     } catch {
       // Keep factory defaults if a saved DollVue choice cannot be restored.
     }
-  }, [config.groups, product.handle]);
+    return () => {
+      if (restoreFrame !== undefined) window.cancelAnimationFrame(restoreFrame);
+    };
+  }, [pricedConfig.groups, product.handle]);
 
   const variant = product.variants.find((item) => item.id === variantId) ?? firstAvailable;
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = variant?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
-  const resolved = useMemo(() => resolveCustomization(config, selected, basePrice), [basePrice, config, selected]);
-  const activeGroupIndex = Math.max(0, config.groups.findIndex((group) => group.id === activeGroupId));
-  const activeGroup = config.groups[activeGroupIndex] ?? config.groups[0];
-  const previousGroup = config.groups[activeGroupIndex - 1] ?? null;
-  const nextGroup = config.groups[activeGroupIndex + 1] ?? null;
+  const resolved = useMemo(() => resolveCustomization(pricedConfig, selected, basePrice), [basePrice, pricedConfig, selected]);
+  const activeGroupIndex = Math.max(0, pricedConfig.groups.findIndex((group) => group.id === activeGroupId));
+  const activeGroup = pricedConfig.groups[activeGroupIndex] ?? pricedConfig.groups[0];
+  const previousGroup = pricedConfig.groups[activeGroupIndex - 1] ?? null;
+  const nextGroup = pricedConfig.groups[activeGroupIndex + 1] ?? null;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const heroImageUrl = protectedProductImageUrlFor(product, heroImage);
   const displayTitle = productPublicTitle(product);
@@ -187,8 +197,8 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   }
 
   function selectOption(groupId: string, optionId: string) {
-    if (!isOptionAvailableForCheckout(config, groupId, optionId)) return;
-    const group = config.groups.find((item) => item.id === groupId);
+    if (!isOptionAvailableForCheckout(pricedConfig, groupId, optionId)) return;
+    const group = pricedConfig.groups.find((item) => item.id === groupId);
     markGroupReviewed(groupId);
     setSelected((current) => ({
       ...current,
@@ -204,7 +214,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
 
   function goToPreviousGroup() {
     if (isReviewing) {
-      const finalGroup = config.groups.at(-1);
+      const finalGroup = pricedConfig.groups.at(-1);
       if (finalGroup) setActiveGroupId(finalGroup.id);
       setReviewing(false);
       return;
@@ -271,14 +281,14 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             <h3 className="mt-5 text-xl font-semibold leading-snug">{displayTitle}</h3>
             <p className="mt-1 text-[15px] text-text-dim">{product.extended.brand ?? product.vendor}</p>
             <BuildSummary
-              groups={config.groups}
-              selected={selected}
+              groups={pricedConfig.groups}
+              selected={resolved.selections}
               selectedOptions={resolved.selectedOptions}
               basePrice={basePrice}
               optionPriceDelta={resolved.optionPriceDelta}
               totalPrice={resolved.totalPrice}
               currencyCode={currencyCode}
-              leadTimeNote={config.leadTimeNote}
+              leadTimeNote={pricedConfig.leadTimeNote}
               stockStatus={product.extended.stockStatus}
             />
             <button
@@ -324,7 +334,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
             </div>
           </div>
 
-          {config.groups.map((group, index) => {
+          {pricedConfig.groups.map((group, index) => {
             const active = !isReviewing && group.id === activeGroupId;
             return (
               <section
@@ -342,23 +352,27 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                   <span className={clsx("flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold", active ? "bg-accent text-white" : "bg-surface-tint text-text")}>{index + 1}</span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-[17px] font-semibold text-text">{group.label}</span>
-                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, selected[group.id]) || "Factory default — included"}</span> : null}
+                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, resolved.selections[group.id]) || "Factory default — included"}</span> : null}
                   </span>
                   {!active ? <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</span> : null}
                 </button>
 
                 {active ? (
                   <div id={`custom-options-${group.id}`} className="border-t border-border px-4 pb-5 pt-5 sm:px-5">
-                    <p className="text-[15px] font-semibold text-text-dim">Step {index + 1} of {config.groups.length}</p>
+                    <p className="text-[15px] font-semibold text-text-dim">Step {index + 1} of {pricedConfig.groups.length}</p>
                     {group.description ? <p className="mt-2 text-[15px] leading-6 text-text-dim">{group.description}</p> : null}
                     <div className="mt-5">
                       <OptionPalette
+                        key={group.id}
+                        product={product}
+                        catalogConfig={config}
                         group={group}
-                        selected={selected[group.id]}
-                        selections={selected}
+                        selected={resolved.selections[group.id]}
+                        selections={resolved.selections}
                         onSelect={(optionId) => selectOption(group.id, optionId)}
-                        config={config}
+                        config={pricedConfig}
                         currencyCode={currencyCode}
+                        promotionNow={promotionNow}
                       />
                     </div>
                     <div className="product-builder-step-actions mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
@@ -390,7 +404,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
                 <h3 className="mt-1 font-display text-2xl font-semibold">Review your build</h3>
                 <p className="mt-2 text-[15px] leading-6 text-text-dim">Check each choice, then continue to checkout. You can still change anything.</p>
 
-                <ReviewRows groups={config.groups} selected={selected} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+                <ReviewRows groups={pricedConfig.groups} selected={resolved.selections} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
                 <PriceSummary basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} />
 
                 {hasIssues ? (
@@ -514,13 +528,16 @@ function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, c
   );
 }
 
-function OptionPalette({ group, selected, selections, onSelect, config, currencyCode }: {
+function OptionPalette({ product, catalogConfig, group, selected, selections, onSelect, config, currencyCode, promotionNow }: {
+  product: Product;
+  catalogConfig: ReturnType<typeof getCustomizationConfig>;
   group: CustomizationGroup;
   selected: CustomizationSelectionValue | undefined;
   selections: CustomizationSelections;
   onSelect: (optionId: string) => void;
   config: ReturnType<typeof getCustomizationConfig>;
   currencyCode: string;
+  promotionNow: Date;
 }) {
   const [query, setQuery] = useState("");
   const searchable = group.options.length >= 24;
@@ -535,8 +552,6 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
         .includes(normalized)
     );
   }, [group.options, query]);
-
-  useEffect(() => setQuery(""), [group.id]);
 
   return (
     <div>
@@ -568,12 +583,14 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
       ) : null}
       <div className={clsx("product-option-grid grid grid-cols-1 gap-3", group.options.length >= 8 && "product-option-grid--scroll") }>
         {visibleOptions.map((option) => {
+          const catalogGroup = catalogConfig.groups.find((item) => item.id === group.id);
+          const catalogOption = catalogGroup?.options.find((item) => item.id === option.id) ?? option;
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
           const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
-          return <OptionTile key={option.id} option={option} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} onClick={() => onSelect(option.id)} />;
+          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} onClick={() => onSelect(option.id)} />;
         })}
       </div>
       {searchable && !visibleOptions.length ? (
@@ -583,14 +600,19 @@ function OptionPalette({ group, selected, selections, onSelect, config, currency
   );
 }
 
-function OptionTile({ option, selected, disabled, notice, currencyCode, onClick }: {
+function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, onClick }: {
+  product: Product;
+  group: CustomizationGroup;
   option: CustomizationOption;
+  catalogOption: CustomizationOption;
   selected: boolean;
   disabled: boolean;
   notice: string | null;
   currencyCode: string;
+  promotionNow: Date;
   onClick: () => void;
 }) {
+  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow);
   return (
     <button
       type="button"
@@ -607,22 +629,18 @@ function OptionTile({ option, selected, disabled, notice, currencyCode, onClick 
       {selected ? <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-accent text-white"><Check className="h-4 w-4" /></span> : null}
       <OptionMark option={option} selected={selected} />
       <span className="min-w-0 flex-1 pr-5">
-        <span className="block text-[17px] font-semibold text-text">{option.label}</span>
+        <span className="block text-[17px] font-semibold text-text">{pricing.displayLabel}</span>
         {option.description ? <span className="mt-1 block text-sm leading-5 text-text-dim">{option.description}</span> : null}
         <span className="option-tile__price mt-2 inline-flex text-sm font-semibold">
-          {disabled && option.priceDelta === undefined && !/\bfree\b/i.test(option.label) ? "Unavailable online" : optionPriceLabel(option, currencyCode)}
+          {disabled && catalogOption.priceDelta === undefined && !pricing.active && !/\bfree\b/i.test(option.label)
+            ? "Unavailable online"
+            : <PromotionalOptionPrice pricing={pricing} currencyCode={currencyCode} included={option.priceLabel === "included"} />}
         </span>
         {option.productionNote ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-text-dim"><Info className="mt-0.5 h-4 w-4 shrink-0" />{option.productionNote}</span> : null}
         {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{notice}</span> : null}
       </span>
     </button>
   );
-}
-
-function optionPriceLabel(option: CustomizationOption, currencyCode: string) {
-  if (option.priceLabel === "included") return "Included";
-  if (option.priceDelta !== undefined) return option.priceDelta ? `+ ${formatMoney(option.priceDelta, currencyCode)}` : formatMoney(0, currencyCode);
-  return "Included";
 }
 
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
@@ -756,4 +774,17 @@ function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSe
   const options = selectedOptions.filter((option) => option.groupId === group.id);
   const delta = options.reduce((sum, option) => sum + option.priceDelta, 0);
   return delta ? `${label} (+${formatMoney(delta, currencyCode)})` : `${label} — included`;
+}
+
+function usePromotionClock(previewClock?: string) {
+  const previewTimestamp = previewClock ? Date.parse(previewClock) : Number.NaN;
+  const [now, setNow] = useState(() => new Date(Number.isFinite(previewTimestamp) ? previewTimestamp : Date.now()));
+
+  useEffect(() => {
+    if (Number.isFinite(previewTimestamp)) return;
+    const interval = window.setInterval(() => setNow(new Date()), 15_000);
+    return () => window.clearInterval(interval);
+  }, [previewTimestamp]);
+
+  return now;
 }

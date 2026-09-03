@@ -1,7 +1,78 @@
 import { describe, expect, it } from "vitest";
 import { mapShopifyProduct } from "@/lib/shopify/mappers";
+import { isNeutralDefaultOption, isOptionPriceVerified } from "@/lib/customization/resolve";
+
+function mapProductWithProductionNotes(productionNotes: string[]) {
+  return mapShopifyProduct({
+    id: "gid://shopify/Product/production-notes",
+    handle: "test-production-notes",
+    title: "Test customization product",
+    description: "",
+    vendor: "Test brand",
+    productType: "Doll",
+    tags: [],
+    featuredImage: null,
+    images: { edges: [] },
+    variants: { edges: [] },
+    priceRange: {
+      minVariantPrice: { amount: "2000", currencyCode: "USD" },
+      maxVariantPrice: { amount: "2000", currencyCode: "USD" }
+    },
+    customizationGroups: {
+      value: JSON.stringify([{
+        id: "test-group",
+        label: "Test group",
+        display: "cards",
+        options: productionNotes.map((productionNote, index) => ({
+          id: `option-${index}`,
+          label: `Option ${index}`,
+          productionNote
+        }))
+      }])
+    }
+  });
+}
 
 describe("Shopify product metadata mapping", () => {
+  it.each([
+    "Reseller price $50. Suggested retail $100. Factory URL: https://www.sedoll.com/options/loose-joint",
+    "Phoebe autumn list",
+    "Default supplier selection. This upgrade is opt-in.",
+    "Do not also add IronAI TalkX",
+    "See DOL-39 before publishing.",
+    "Internal launch date: 2026-09-15."
+  ])("drops an unsafe imported production note: %s", (productionNote) => {
+    const product = mapProductWithProductionNotes([productionNote]);
+    const option = product.extended.customizationGroups?.[0]?.options[0];
+
+    expect(option?.productionNote).toBeUndefined();
+    expect(JSON.stringify(product)).not.toContain(productionNote);
+  });
+
+  it.each([
+    "Adds approximately 3 kg.",
+    "Additional shipping may apply.",
+    "Requires a fixed vagina.",
+    "Electronic systems are not covered by factory after-sales support once shipped.",
+    "Default selection."
+  ])("preserves a customer-safe imported production note: %s", (productionNote) => {
+    const product = mapProductWithProductionNotes([productionNote]);
+    expect(product.extended.customizationGroups?.[0]?.options[0]?.productionNote).toBe(productionNote);
+  });
+
+  it.each([
+    "Default supplier selection.",
+    "No paid add-on selected."
+  ])("preserves default/free classification without retaining the raw imported note: %s", (productionNote) => {
+    const product = mapProductWithProductionNotes([productionNote]);
+    const option = product.extended.customizationGroups?.[0]?.options[0];
+
+    expect(option?.productionNote).toBeUndefined();
+    expect(JSON.stringify(option)).not.toContain(productionNote);
+    expect(isNeutralDefaultOption(option!.id, option!.label, option!.productionNote, option!.sourceProductionNoteSignals)).toBe(true);
+    expect(isOptionPriceVerified(option!)).toBe(true);
+  });
+
   it("preserves Shopify SEO title and description for storefront rendering", () => {
     const product = mapShopifyProduct({
       id: "gid://shopify/Product/adela-look",

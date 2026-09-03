@@ -37,8 +37,11 @@ import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
 import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
+import { previewPromotionClock } from "@/lib/promotions/optionPricing";
 
-export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
+type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
+
+export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<ProductPageSearchParams> }): Promise<Metadata> {
   const { handle } = await params;
   const { editorialPreview } = await searchParams;
   const product = await getProductByHandle(handle);
@@ -50,9 +53,10 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   return metadata;
 }
 
-export default async function ProductPage({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }) {
+export default async function ProductPage({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<ProductPageSearchParams> }) {
   const { handle } = await params;
-  const { editorialPreview } = await searchParams;
+  const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
+  const promoClock = previewPromotionClock(requestedPromoClock);
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
   const product = mergeAdminMetafields(storefrontProduct, adminProductData);
@@ -228,7 +232,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} />
+          <ProductOptions product={publicProduct} promoClock={promoClock} />
         </div>
       </ToneBand>
 

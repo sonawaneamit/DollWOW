@@ -5,6 +5,7 @@ import type { cartLineSchema } from "@/lib/cart/input";
 import { getProductsByVariantIds } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 import type { CustomizationSelections } from "@/types/customization";
+import { withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -66,7 +67,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
     };
   }
 
-  const config = getCustomizationConfig(product);
+  const config = withPromotionOptionPricing(product, getCustomizationConfig(product));
   validateStructuredSelections(config, input.selections);
   const resolved = resolveCustomization(config, input.selections, basePrice);
   if (resolved.issues.length || resolved.requiresPriceConfirmation) {
@@ -112,7 +113,7 @@ function validateStructuredSelections(
     const isMultiple = group.selectionMode === "multiple";
     const hasContradictoryNeutralSelection = isMultiple && optionIds.length > 1 && optionIds.some((optionId) => {
       const option = group.options.find((item) => item.id === optionId);
-      return Boolean(option && isNeutralDefaultOption(option.id, option.label, option.productionNote));
+      return Boolean(option && isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
     });
     if (
       !optionIds.length ||

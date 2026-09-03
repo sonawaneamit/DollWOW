@@ -34,9 +34,9 @@ describe("Irontech autumn 2026 promotion", () => {
       "Free IronAI TalkX Box + 60 Extra Mins AI Talk Time",
       "Softer Body",
       "Free Second Silicone Head",
-      "Free ROSmax or ROS Head Upgrade (on any one silicone head)",
+      "Free ROS / ROS MAX Upgrade (on any one silicone head)",
       "Free Gel Breast & Buttocks",
-      "Free Grace Fingers",
+      "Free Grace Fingers (GraceJoint)",
       "Free Hard Hand & Hard Feet",
       "Free Toe Joints (if available)",
       "Free S+ Makeup & S+ Body Painting"
@@ -85,6 +85,24 @@ describe("Irontech autumn 2026 promotion", () => {
 
     expect(offer).toEqual(IRONTECH_AUTUMN_OFFERS.siliconeSingleHead);
     expect(offer?.included).toEqual(["Free IronAI TalkX Box + 60 Extra Mins AI Talk Time"]);
+
+    expect(irontechAutumnOfferForProduct(product({
+      handle: "irontech-other-silicone-head-only",
+      title: "Irontech Other Silicone Head Only",
+      productType: "Standalone head",
+      extended: { brand: "Irontech Dolls", material: "Silicone", stockStatus: "custom" }
+    }), duringPromotion)).toBeNull();
+  });
+
+  it("classifies Luna's silicone-head body as hybrid rather than a single head", () => {
+    const offer = irontechAutumnOfferForProduct(product({
+      handle: "irontech-luna-164cm-silicone-head-tpe-body",
+      title: "Irontech Luna 164cm Silicone Head Doll",
+      productType: "Custom hybrid doll",
+      extended: { brand: "Irontech Dolls", material: "Silicone head / TPE body", stockStatus: "custom" }
+    }), duringPromotion);
+
+    expect(offer).toEqual(IRONTECH_AUTUMN_OFFERS.hybrid);
   });
 
   it("excludes Irontech warehouse stock, torsos, Real Lady, and unrelated brands", () => {
