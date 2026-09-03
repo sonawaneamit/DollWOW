@@ -23,7 +23,9 @@ export type PromotionOptionPrice = {
   displayLabel: string;
 };
 
-const IRONTECH_TALKX_PROMO_LABEL = "IronAI TalkX Box + 60 extra mins AI Talk Time";
+const IRONTECH_PROMO_LABEL = "Irontech Limited Time Promo (Ends: 7 Oct)";
+const IRONTECH_TALKX_PROMO_LABEL = `${IRONTECH_PROMO_LABEL} · TalkX + 60 extra mins`;
+const SE_PROMO_LABEL = "SE - Limited Time Promo (Ends: 1 Oct)";
 
 /**
  * Keeps Shopify/catalog priceDelta authoritative, and derives only the price
@@ -53,8 +55,8 @@ export function promotionOptionPrice(
       ? talkX
         ? IRONTECH_TALKX_PROMO_LABEL
         : irontechActive
-          ? "Irontech autumn offer"
-          : "SE Doll September offer"
+          ? IRONTECH_PROMO_LABEL
+          : SE_PROMO_LABEL
       : null,
     active,
     eligible: irontechEligible || seEligible,

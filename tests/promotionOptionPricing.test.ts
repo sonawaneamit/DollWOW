@@ -42,7 +42,8 @@ describe("promotion option pricing", () => {
     expect(markup).toContain("<s");
     expect(markup).toContain("$299");
     expect(markup).toContain("$0");
-    expect(markup).toContain("Irontech autumn offer");
+    expect(markup).toContain("Irontech Limited Time Promo (Ends: 7 Oct)");
+    expect(markup).not.toContain("offer");
   });
 
   it("returns Flora's catalog $299 automatically at the exact Irontech cutoff", () => {
@@ -97,7 +98,7 @@ describe("promotion option pricing", () => {
     const talkX = price(head, "IronAI", { id: "talkx-box", label: "IronAI TalkX Box", priceDelta: 119 });
 
     expect(talkX).toMatchObject({ active: true, displayDelta: 0, displayLabel: "IronAI TalkX Box" });
-    expect(talkX.promoLabel).toBe("IronAI TalkX Box + 60 extra mins AI Talk Time");
+    expect(talkX.promoLabel).toBe("Irontech Limited Time Promo (Ends: 7 Oct) · TalkX + 60 extra mins");
     for (const label of ["Internal Version", "External Version", "Version"]) {
       expect(price(head, "Suction", { id: label.toLowerCase().replace(/\s+/g, "-"), label, priceDelta: 50 }).eligible).toBe(false);
     }
@@ -114,7 +115,11 @@ describe("promotion option pricing", () => {
       extended: { brand: "SE Doll", material: "TPE", stockStatus: "custom" }
     };
     const option = { id: "evo-skeleton", label: "EVO Skeleton", priceDelta: 175 };
-    expect(price(annika, "Skeleton", option, insideSe)).toMatchObject({ displayDelta: 0, strike: true, promoLabel: "SE Doll September offer" });
+    expect(price(annika, "Skeleton", option, insideSe)).toMatchObject({
+      displayDelta: 0,
+      strike: true,
+      promoLabel: "SE - Limited Time Promo (Ends: 1 Oct)"
+    });
     expect(price(annika, "Skeleton", option, afterSe)).toMatchObject({ catalogDelta: 175, displayDelta: 175, active: false });
   });
 
