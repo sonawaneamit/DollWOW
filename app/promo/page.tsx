@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPromotion";
 import { isSeDollSeptemberPromotionVisible, SE_DOLL_SEPTEMBER_OFFERS } from "@/lib/promotions/seDollSeptember2026";
+import { IrontechAutumnPromoIndexCard } from "@/components/promotions/IrontechAutumnPromotion";
+import { IRONTECH_AUTUMN_PROMOTION, isIrontechAutumnPromotionVisible } from "@/lib/promotions/irontechAutumn2026";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -21,6 +23,11 @@ export const metadata: Metadata = {
 
 export default function PromoIndexPage() {
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
+  const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
+  const itemList = [
+    ...(hasIrontechPromotion ? [{ name: IRONTECH_AUTUMN_PROMOTION.title, url: `${siteUrl}/promo#${IRONTECH_AUTUMN_PROMOTION.id}` }] : []),
+    ...(hasSeDollPromotion ? Object.values(SE_DOLL_SEPTEMBER_OFFERS).map((offer) => ({ name: offer.shortTitle, url: `${siteUrl}/promo#${offer.id}` })) : [])
+  ];
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -29,15 +36,12 @@ export default function PromoIndexPage() {
     description: "Current brand promotion dates and eligible factory bonus upgrades at DollWOW.",
     mainEntity: {
       "@type": "ItemList",
-      numberOfItems: hasSeDollPromotion ? 4 : 0,
-      itemListElement: hasSeDollPromotion
-        ? Object.values(SE_DOLL_SEPTEMBER_OFFERS).map((offer, index) => ({
+      numberOfItems: itemList.length,
+      itemListElement: itemList.map((offer, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            name: offer.shortTitle,
-            url: `${siteUrl}/promo#${offer.id}`
+            ...offer
           }))
-        : []
     }
   };
 
@@ -60,8 +64,11 @@ export default function PromoIndexPage() {
           </div>
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
-        {hasSeDollPromotion ? (
-          <SeDollPromoIndexCards />
+        {hasSeDollPromotion || hasIrontechPromotion ? (
+          <div className="grid gap-8">
+            {hasIrontechPromotion ? <IrontechAutumnPromoIndexCard /> : null}
+            {hasSeDollPromotion ? <SeDollPromoIndexCards /> : null}
+          </div>
         ) : (
           <div className="rounded-[16px] border border-border bg-surface p-6 text-text-dim">
             No brand promotions are active right now. Browse the current catalog or ask our team about model-specific options.
