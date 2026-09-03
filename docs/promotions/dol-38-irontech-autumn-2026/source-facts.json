@@ -1,0 +1,40 @@
+{
+  "issue": "DOL-38",
+  "promotion": "Irontech autumn promotion",
+  "source": "Irontech factory art and factory facts supplied by Martin",
+  "period": {
+    "label": "7 September – 7 October 2026",
+    "startsAt": "2026-09-07T07:00:00.000Z",
+    "endsAt": "2026-10-08T07:00:00.000Z"
+  },
+  "eligibility": [
+    "Irontech silicone full-body custom products",
+    "Irontech TPE and hybrid custom products",
+    "Irontech silicone single heads"
+  ],
+  "excluded": [
+    "ready-to-ship and warehouse products",
+    "torsos and partial-body products",
+    "SE Doll",
+    "Lusandy",
+    "Real Lady"
+  ],
+  "assets": [
+    {
+      "path": "public/promo/irontech-autumn-2026/8.26-activity-banner-1920x1080.jpg",
+      "origin": "/workspace/audit/dol-38/drive/8.26-activity banner-1920x1080.jpg",
+      "dimensions": "1920x1080",
+      "sha256": "efa99272775ecc608736b3237e138d762f61419fbca81892740363d7cd00ee52",
+      "role": "reusable supplier-authorized catalog promotion art"
+    },
+    {
+      "path": "public/promo/irontech-autumn-2026/8.26-activity-banner-mobile.jpg",
+      "origin": "/workspace/audit/dol-38/drive/8.26-activity banner-mobile.jpg",
+      "dimensions": "1042x1563",
+      "sha256": "c4051db15b9227c7bb60f7a98761a404cbaf64412a241aacd776f8dc361da975",
+      "role": "reusable supplier-authorized mobile catalog promotion art"
+    }
+  ],
+  "artDecision": "Preserve the original factory art and use object-contain in the shared-width 1920:750 desktop banner box. No generated replacement or text reconstruction.",
+  "pricing": "DollWOW sitewide 10% remains applied at checkout; no Shopify price changes are part of DOL-38."
+}

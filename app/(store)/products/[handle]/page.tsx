@@ -36,6 +36,7 @@ import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
+import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -134,6 +135,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               </Link>
             ) : null}
             <SeDollPdpFreebieBlock product={product} />
+            <IrontechAutumnPdpPromotion product={product} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
