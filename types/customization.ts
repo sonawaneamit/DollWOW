@@ -20,6 +20,12 @@ export type CustomizationOption = {
   priceLabel?: "included";
   /** Can be selected and paid for in the current online checkout. */
   purchasable?: boolean;
+  /** Internal classifications derived from untrusted import notes. Never contains the source note text. */
+  sourceProductionNoteSignals?: {
+    defaultSupplierSelection?: true;
+    noPaidAddOn?: true;
+    photographedProductConfiguration?: true;
+  };
   productionNote?: string;
   swatch?: CustomizationSwatch;
 };
@@ -69,7 +75,6 @@ export type SelectedCustomizationOption = {
   optionLabel: string;
   priceDelta: number;
   priceConfirmed: boolean;
-  productionNote?: string;
 };
 
 export type ResolvedCustomization = {

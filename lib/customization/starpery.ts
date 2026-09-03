@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import starperyHeads from "@/data/starpery-heads.json";
 
 const rosemaryAsset = (path: string) => `https://www.rosemarydoll.com/wp-content/uploads/${path}`;
@@ -443,9 +444,10 @@ function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {
   return false;
 }
 
-function isIncludedDefault(option: Pick<CustomizationOption, "id" | "label" | "productionNote">) {
+function isIncludedDefault(option: Pick<CustomizationOption, "id" | "label" | "productionNote" | "sourceProductionNoteSignals">) {
   return /\bfree\b|^(no add-on|no thanks|none|no change|as shown|factory default|default supplier selection)$/i.test(option.label) ||
-    /default supplier selection/i.test(option.productionNote || "");
+    /default supplier selection/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection");
 }
 
 function mergeDuplicateGroups(groups: CustomizationGroup[]) {

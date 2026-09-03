@@ -7,12 +7,13 @@ import type {
   ResolvedCustomization,
   SelectedCustomizationOption
 } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 
 export function getDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
-        const neutralDefault = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote));
+        const neutralDefault = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
         return [group.id, neutralDefault ? [neutralDefault.id] : []];
       }
       return [group.id, group.options[0]?.id ?? ""];
@@ -64,8 +65,7 @@ export function resolveCustomization(
         optionId: option.id,
         optionLabel: option.label,
         priceDelta: option.priceDelta ?? 0,
-        priceConfirmed: includedByDefault || hasCheckoutPrice(option),
-        productionNote: option.productionNote
+        priceConfirmed: includedByDefault || hasCheckoutPrice(option)
       });
     }
   }
@@ -148,7 +148,7 @@ export function isOptionPurchasable(option: CustomizationOption) {
 }
 
 export function defaultMultipleOptionId(options: CustomizationOption[]) {
-  return options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote))?.id ?? "";
+  return options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals))?.id ?? "";
 }
 
 export function selectionIds(value: CustomizationSelectionValue | undefined): string[] {
@@ -160,7 +160,7 @@ export function nextMultipleSelection(options: CustomizationOption[], currentVal
   const current = selectionIds(currentValue);
   const neutralIds = new Set(
     options
-      .filter((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote))
+      .filter((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals))
       .map((option) => option.id)
   );
   const defaultId = options.find((option) => neutralIds.has(option.id))?.id ?? "";
@@ -188,21 +188,33 @@ function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
   }));
 }
 
-export function isNeutralDefaultOption(id: string, label = "", productionNote = "") {
+export function isNeutralDefaultOption(
+  id: string,
+  label = "",
+  productionNote = "",
+  sourceProductionNoteSignals?: CustomizationOption["sourceProductionNoteSignals"]
+) {
   return (
     id === "no-add-on" ||
     id === "none" ||
     id === "default" ||
     id === "factory-default" ||
     /^(no add-on|no thanks|none|as shown|factory default|default supplier selection)$/i.test(label) ||
-    /default supplier selection|no paid add-on/i.test(productionNote)
+    /default supplier selection|no paid add-on/i.test(productionNote) ||
+    hasSourceProductionNoteSignal({ sourceProductionNoteSignals }, "defaultSupplierSelection", "noPaidAddOn")
   );
 }
 
-export function isNoAddOnOption(id: string, label = "", productionNote = "") {
-  return isNeutralDefaultOption(id, label, productionNote);
+export function isNoAddOnOption(
+  id: string,
+  label = "",
+  productionNote = "",
+  sourceProductionNoteSignals?: CustomizationOption["sourceProductionNoteSignals"]
+) {
+  return isNeutralDefaultOption(id, label, productionNote, sourceProductionNoteSignals);
 }
 
 function hasCheckoutPrice(option: CustomizationOption) {
-  return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) || isNeutralDefaultOption(option.id, option.label, option.productionNote);
+  return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) ||
+    isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals);
 }

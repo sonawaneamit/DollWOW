@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 
 const DEALER_TPE_EXTRA_HEAD_PRICE = 375;
 const DEALER_SILICONE_HEAD_PRICE = 299;
@@ -302,7 +303,11 @@ function normalizeIrontechOption(groupLabel: string, option: CustomizationOption
   } else if (/robot options?/.test(groupLabel)) {
     if (/electric hip|auto blowjob/.test(label)) priceDelta = 250;
     else if (/auto vagina/.test(label)) priceDelta = 150;
-  } else if (/vagina hair/.test(groupLabel) && !isIncludedDefault({ label: normalizedLabel, productionNote: option.productionNote })) {
+  } else if (/vagina hair/.test(groupLabel) && !isIncludedDefault({
+    label: normalizedLabel,
+    productionNote: option.productionNote,
+    sourceProductionNoteSignals: option.sourceProductionNoteSignals
+  })) {
     priceDelta = 30;
   } else if (/hair implant add-on/.test(groupLabel)) {
     if (/moustache|goatee/.test(label)) priceDelta = 90;
@@ -340,9 +345,10 @@ function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {
   return false;
 }
 
-function isIncludedDefault(option: Pick<CustomizationOption, "label" | "productionNote">) {
+function isIncludedDefault(option: Pick<CustomizationOption, "label" | "productionNote" | "sourceProductionNoteSignals">) {
   return /\bfree\b|^(no add-on|no thanks|none|no change|as shown|factory default|default supplier selection|regular|standard)$/i.test(option.label) ||
-    /default supplier selection|no paid add-on/i.test(option.productionNote || "");
+    /default supplier selection|no paid add-on/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection", "noPaidAddOn");
 }
 
 function isHeadPlaceholder(option: CustomizationOption) {

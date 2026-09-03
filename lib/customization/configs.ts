@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
@@ -679,7 +680,8 @@ function isOnlineCheckoutOption(option: CustomizationOption) {
   if (option.priceDelta !== undefined) return true;
   if (/\bfree\b/i.test(option.label)) return true;
   if (/^(no add-on|no thanks|none|as shown|factory default|default supplier selection)$/i.test(option.label)) return true;
-  return /default supplier selection/i.test(option.productionNote || "");
+  return /default supplier selection/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection");
 }
 
 function uniqueCustomizationGroups(groups: CustomizationGroup[]) {

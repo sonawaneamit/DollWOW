@@ -1,6 +1,7 @@
 import type { Product, ProductMedia } from "@/types/product";
 import type { CustomizationGroup } from "@/types/customization";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
+import { importedProductionNoteSignals, sanitizeImportedProductionNote } from "@/lib/customization/production-notes";
 
 type Edge<T> = { node: T };
 type Connection<T> = { edges: Array<Edge<T>> };
@@ -137,6 +138,8 @@ function normalizeCustomizationGroups(groups: Product["extended"]["customization
     ...group,
     options: (group.options || []).map((option) => ({
       ...option,
+      productionNote: sanitizeImportedProductionNote(option.productionNote),
+      sourceProductionNoteSignals: importedProductionNoteSignals(option.productionNote),
       swatch:
         option.swatch?.kind === "image" && option.swatch.value
           ? {

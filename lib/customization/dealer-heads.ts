@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 
 type DealerHeadPolicy = {
   chooseDescription: string;
@@ -235,9 +236,10 @@ function positivePrice(value: number | undefined) {
   return typeof value === "number" && value > 0 ? value : undefined;
 }
 
-function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote">) {
+function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote" | "sourceProductionNoteSignals">) {
   return /\bfree\b|^(factory default|no change|no add-on|no thanks|none|standard|regular|as shown)$/i.test(option.label) ||
-    /default supplier selection|no paid add-on/i.test(option.productionNote || "");
+    /default supplier selection|no paid add-on/i.test(option.productionNote || "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection", "noPaidAddOn");
 }
 
 function isPlaceholder(option: CustomizationOption) {

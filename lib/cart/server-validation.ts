@@ -113,7 +113,7 @@ function validateStructuredSelections(
     const isMultiple = group.selectionMode === "multiple";
     const hasContradictoryNeutralSelection = isMultiple && optionIds.length > 1 && optionIds.some((optionId) => {
       const option = group.options.find((item) => item.id === optionId);
-      return Boolean(option && isNeutralDefaultOption(option.id, option.label, option.productionNote));
+      return Boolean(option && isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
     });
     if (
       !optionIds.length ||
