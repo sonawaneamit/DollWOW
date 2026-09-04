@@ -10,15 +10,7 @@ const promotionTiming = {
 } as const;
 
 export const FANREAL_SEPTEMBER_FREEBIES = [
-  "Hard Hand",
-  "Hard Feet",
-  "Movable Toes",
-  "Articulated Fingers",
-  "Soft Butt",
-  "Soft Vagina",
-  "Implanted Hair",
-  "Extra Silicone Head",
-  "Extra ROS Head"
+  "Extra Silicone Head"
 ] as const;
 
 export const FANREAL_SEPTEMBER_PROMOTION = {
@@ -60,23 +52,7 @@ export function matchesFanrealSeptemberOption(
   option: CustomizationOption
 ) {
   if (/^(no thanks|no add-on|none|as shown|factory default)$/i.test(option.label.trim())) return false;
-  const exactIds = new Set([
-    "hard-hand",
-    "standing-without-bolts",
-    "movable-toes",
-    "articulated-fingers",
-    "soft-butt",
-    "soft-vagina",
-    "implanted-hair",
-    "implanted-synthetic",
-    "extra-silicone-head",
-    "extra-ros-head"
-  ]);
-  if (!exactIds.has(option.id)) return false;
-
-  // Keep generic IDs from accidentally matching an unrelated option group.
-  const identity = `${group.id} ${group.label}`.toLowerCase();
-  if (option.id === "standing-without-bolts") return /standing|feet/.test(identity);
-  if (option.id === "implanted-synthetic") return /hair/.test(identity);
+  // MAP-backed September freebie lock: Extra Silicone Head only.
+  if (option.id !== "extra-silicone-head") return false;
   return group.id === "fanreal-sept-free-add-ons";
 }

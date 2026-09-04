@@ -27,8 +27,7 @@ function diana(stockStatus: Product["extended"]["stockStatus"] = "custom"): Prom
 describe("Fanreal September 2026 promotion", () => {
   it("uses the exact MAP-backed freebie list", () => {
     expect(FANREAL_SEPTEMBER_FREEBIES).toEqual([
-      "Hard Hand", "Hard Feet", "Movable Toes", "Articulated Fingers", "Soft Butt",
-      "Soft Vagina", "Implanted Hair", "Extra Silicone Head", "Extra ROS Head"
+      "Extra Silicone Head"
     ]);
     const text = FANREAL_SEPTEMBER_FREEBIES.join(" ");
     expect(text).not.toMatch(/EVO|Gel Breast|Hyper-Realism|TalkX|Loose Joint/i);
@@ -44,7 +43,8 @@ describe("Fanreal September 2026 promotion", () => {
     const insideMarkup = renderToStaticMarkup(createElement(FanrealSeptemberPdpPromotion, { product: diana(), promoClock: inside.toISOString() }));
     const endedMarkup = renderToStaticMarkup(createElement(FanrealSeptemberPdpPromotion, { product: diana(), promoClock: cutoff.toISOString() }));
     expect(insideMarkup).toContain("1–30 September 2026");
-    expect(insideMarkup).toContain("Free Hard Feet");
+    expect(insideMarkup).toContain("Free Extra Silicone Head");
+    expect(insideMarkup).not.toContain("Free Hard Feet");
     expect(insideMarkup).toContain("sitewide 10%");
     expect(insideMarkup).not.toMatch(/Official|href=/i);
     expect(endedMarkup).toBe("");
@@ -60,6 +60,7 @@ describe("Fanreal September 2026 promotion", () => {
     expect(pricing).toMatchObject({ catalogDelta: 550, displayDelta: 0, strike: true, active: true, promoLabel: "Fanreal - Limited Time Promo (Ends: 30 Sept)" });
     expect(promotionOptionPrice(diana(), { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" }, { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 }, cutoff))
       .toMatchObject({ catalogDelta: 550, displayDelta: 550, active: false });
-    expect(promotionOptionPrice(diana(), { id: "standing", label: "Standing / Feet" }, { id: "standing-without-bolts", label: "Standing without bolts (Hard feet)" }, inside).active).toBe(true);
+    expect(promotionOptionPrice(diana(), { id: "standing", label: "Standing / Feet" }, { id: "standing-without-bolts", label: "Standing without bolts (Hard feet)" }, inside).active).toBe(false);
+    expect(promotionOptionPrice(diana(), { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" }, { id: "hard-hand", label: "Hard Hand", priceDelta: 0 }, inside).active).toBe(false);
   });
 });

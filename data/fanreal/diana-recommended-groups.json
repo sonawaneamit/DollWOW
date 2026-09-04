@@ -1,15 +1,15 @@
 {
-  "status": "PREVIEW_ONLY — HARD STOP: do not productUpdate live Shopify",
+  "status": "PREVIEW_ONLY \u2014 HARD STOP: do not productUpdate live Shopify",
   "product_handle": "fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
   "product_id": "gid://shopify/Product/10564019224760",
   "source": "fanreal-options-gap-report.json#recommended_groups_json",
-  "built_at_utc": "2026-09-04T09:38:54Z",
+  "built_at_utc": "2026-09-04T10:22:04Z",
   "built_at_pt": "2026-09-04 10:38 PT",
   "stats": {
     "group_count": 22,
-    "option_count": 193,
+    "option_count": 187,
     "image_swatch_count": 187,
-    "free_this_month_option_count": 10,
+    "free_this_month_option_count": 1,
     "gap_report_stats": {
       "group_count": 22,
       "option_count": 193,
@@ -378,7 +378,7 @@
           "id": "hair-transplant-human",
           "label": "Hair transplant (Human hair)",
           "priceDelta": 300,
-          "productionNote": "Factory +$300. MAP Implanted Human Hair EXW $250; MAP RSP blank — using factory list price."
+          "productionNote": "Factory +$300. MAP Implanted Human Hair EXW $250; MAP RSP blank \u2014 using factory list price."
         }
       ]
     },
@@ -1891,7 +1891,7 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Standing_01.webp",
             "label": "Standing without bolts (Hard feet)"
           },
-          "productionNote": "Maps to MAP Standing Feet without Bolts / Hard Feet. Sept promo free Hard Feet when selected as upgrade path — included in Sept freebies group as hard-feet too."
+          "productionNote": "Maps to MAP Standing Feet without Bolts / Hard Feet. Sept promo free Hard Feet when selected as upgrade path \u2014 included in Sept freebies group as hard-feet too."
         },
         {
           "id": "standing-with-bolts",
@@ -1935,7 +1935,7 @@
             "say": "promo",
             "catalogPriceDelta": 550
           },
-          "productionNote": "Sept 1–30 2026 Fanreal promo. MAP Extra Silicone Head MAP/RSP $550. Free Second Head (excl. UniSeries). Fanreal - Limited Time Promo (Ends: 30 Sept)"
+          "productionNote": "Sept 1\u201330 2026 Fanreal promo. MAP Extra Silicone Head MAP/RSP $550. Free Second Head (excl. UniSeries). Fanreal - Limited Time Promo (Ends: 30 Sept)"
         }
       ]
     },
@@ -1952,6 +1952,17 @@
           "priceDelta": null
         },
         {
+          "id": "finger-skeleton-upgrade",
+          "label": "Finger skeleton upgrade",
+          "priceDelta": 100,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Finger_skeleton_upgrade.webp",
+            "label": "Finger skeleton upgrade"
+          },
+          "productionNote": "Factory diana_bklt More features +$100; MAP Articulated Fingers/Hand Skeleton RSP blank \u2014 using factory PDP USD"
+        },
+        {
           "id": "foot-joint-upgrade",
           "label": "Foot joint upgrade",
           "priceDelta": 100.0,
@@ -1960,7 +1971,7 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Foot_joint_upgrade.webp",
             "label": "Foot joint upgrade"
           },
-          "productionNote": "Factory Foot joint upgrade +$100. Related to MAP Articulated toes EXW $80 / Movable Toes EXW $30. Sept freebies also list Movable Toes FREE — prefer sept-freebies.movable-toes for promo path."
+          "productionNote": "Factory Foot joint upgrade +$100. Related to MAP Articulated toes EXW $80 / Movable Toes EXW $30. Sept freebies also list Movable Toes FREE \u2014 prefer sept-freebies.movable-toes for promo path."
         },
         {
           "id": "freckle",
@@ -1971,7 +1982,7 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Freckle.webp",
             "label": "Freckle"
           },
-          "productionNote": "MAP Freckle EXW $50; factory +$80; MAP RSP blank — factory list price."
+          "productionNote": "MAP Freckle EXW $50; factory +$80; MAP RSP blank \u2014 factory list price."
         },
         {
           "id": "nipple-piercing",
@@ -2026,7 +2037,18 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Bikini.webp",
             "label": "Bikini print"
           },
-          "productionNote": "MAP Tan Line EXW $60; factory Bikini print +$100; MAP RSP blank — factory list price."
+          "productionNote": "MAP Tan Line EXW $60; factory Bikini print +$100; MAP RSP blank \u2014 factory list price."
+        },
+        {
+          "id": "soft-buttocks",
+          "label": "Soft buttocks",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Soft_buttocks.webp",
+            "label": "Soft buttocks"
+          },
+          "productionNote": "Factory Soft buttocks +$100. MAP Soft Butt RSP blank \u2014 paid more-feature only, never September freebie."
         },
         {
           "id": "hymen",
@@ -2037,7 +2059,7 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Hymen.webp",
             "label": "Hymen"
           },
-          "productionNote": "On factory more_features; not a separate MAP row — factory list price $80."
+          "productionNote": "On factory more_features; not a separate MAP row \u2014 factory list price $80."
         }
       ]
     },
@@ -2067,7 +2089,7 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Packaging_02.webp",
             "label": "Premium"
           },
-          "productionNote": "Factory Premium +$700. MAP 航空箱/flight case EXW $120; MAP RSP blank — factory list price (verify before charge)."
+          "productionNote": "Factory Premium +$700. MAP \u822a\u7a7a\u7bb1/flight case EXW $120; MAP RSP blank \u2014 factory list price (verify before charge)."
         }
       ]
     },
@@ -2110,5 +2132,5 @@
       "do_not_write_yet": true
     }
   ],
-  "hard_stop": "No live Shopify writes in this task — report to disk only."
+  "hard_stop": "No live Shopify writes in this task \u2014 report to disk only."
 }
