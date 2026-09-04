@@ -94,7 +94,7 @@ export function irontechAutumnOfferForProduct(
   product: Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">,
   now = new Date()
 ): IrontechAutumnOffer | null {
-  if (!isIrontechAutumnPromotionVisible(now)) return null;
+  if (!isIrontechAutumnPromotionActive(now)) return null;
   if (canonicalBrandValue(product.extended.brand ?? product.vendor) !== "irontech") return null;
   if (product.extended.stockStatus !== "custom") return null;
 

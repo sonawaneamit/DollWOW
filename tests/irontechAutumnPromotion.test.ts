@@ -6,6 +6,7 @@ import { SeDollPdpFreebieBlock, SeDollPromoIndexCards } from "@/components/promo
 import {
   IRONTECH_AUTUMN_OFFERS,
   irontechAutumnOfferForProduct,
+  isIrontechAutumnPromotionActive,
   isIrontechAutumnPromotionVisible
 } from "@/lib/promotions/irontechAutumn2026";
 import type { Product } from "@/types/product";
@@ -26,6 +27,35 @@ function product(overrides: Partial<PromotionProduct> = {}): PromotionProduct {
 }
 
 describe("Irontech autumn 2026 promotion", () => {
+  it("keeps the PDP banner empty before Active and shows it with the TalkX freebie in-window", () => {
+    const beforeActiveMarkup = renderToStaticMarkup(createElement(IrontechAutumnPdpPromotion, {
+      product: product(),
+      promoClock: "2026-09-07T06:59:59.999Z"
+    }));
+    const activeMarkup = renderToStaticMarkup(createElement(IrontechAutumnPdpPromotion, {
+      product: product(),
+      promoClock: "2026-09-07T07:00:00.000Z"
+    }));
+
+    expect(beforeActiveMarkup).toBe("");
+    expect(activeMarkup).toContain("data-irontech-autumn-pdp-promotion");
+    expect(activeMarkup).toContain("Free IronAI TalkX Box + 60 Extra Mins AI Talk Time");
+  });
+
+  it("keeps the promo index card empty before Active and shows it in-window", () => {
+    vi.setSystemTime(new Date("2026-09-07T06:59:59.999Z"));
+    try {
+      expect(renderToStaticMarkup(createElement(IrontechAutumnPromoIndexCard))).toBe("");
+
+      vi.setSystemTime(duringPromotion);
+      const markup = renderToStaticMarkup(createElement(IrontechAutumnPromoIndexCard));
+      expect(markup).toContain("Irontech autumn factory promotion");
+      expect(markup).toContain("Free IronAI TalkX Box + 60 Extra Mins AI Talk Time");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("shows the authorized silicone full-body custom stack in a closed, shared-width accordion", () => {
     const offer = irontechAutumnOfferForProduct(product(), duringPromotion);
     expect(offer).toEqual(IRONTECH_AUTUMN_OFFERS.siliconeFullCustom);
@@ -172,5 +202,9 @@ describe("Irontech autumn 2026 promotion", () => {
     expect(isIrontechAutumnPromotionVisible(new Date("2026-09-03T00:00:00.000Z"))).toBe(true);
     expect(isIrontechAutumnPromotionVisible(new Date("2026-10-08T06:59:59.999Z"))).toBe(true);
     expect(isIrontechAutumnPromotionVisible(new Date("2026-10-08T07:00:00.000Z"))).toBe(false);
+    expect(isIrontechAutumnPromotionActive(new Date("2026-09-07T06:59:59.999Z"))).toBe(false);
+    expect(isIrontechAutumnPromotionActive(new Date("2026-09-07T07:00:00.000Z"))).toBe(true);
+    expect(isIrontechAutumnPromotionActive(new Date("2026-10-08T06:59:59.999Z"))).toBe(true);
+    expect(isIrontechAutumnPromotionActive(new Date("2026-10-08T07:00:00.000Z"))).toBe(false);
   });
 });

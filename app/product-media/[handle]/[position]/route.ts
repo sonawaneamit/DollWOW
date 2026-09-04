@@ -103,7 +103,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
 
 function watermarkLogo() {
   // Read from disk — never HTTP self-fetch. Preview deployments are SSO-protected, so
-  // fetching request.origin/images/... returns HTML and sharp throws (broken left PDP image).
+  // fetching request.origin/images/... returns HTML and sharp throws (broken PDP gallery).
   watermarkLogoPromise ??= readFile(join(process.cwd(), "public/images/brand/dollwow-black-gold-lockup.png"));
   return watermarkLogoPromise;
 }
