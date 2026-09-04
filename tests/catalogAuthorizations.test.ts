@@ -26,5 +26,7 @@ describe("catalog authorization matching", () => {
   it("does not advertise an authorization section without authorization on file", () => {
     expect(isLiveAuthorizedBrand("Climax Doll")).toBe(false);
     expect(isLiveAuthorizedBrand("Zelex Dolls")).toBe(false);
+    expect(getBrandAuthorization("Fanreal")).toBeNull();
+    expect(isLiveAuthorizedBrand("Fanreal")).toBe(false);
   });
 });

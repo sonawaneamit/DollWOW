@@ -45,6 +45,11 @@ const nextConfig: NextConfig = {
         permanent: false
       },
       {
+        source: "/go/fanreal",
+        destination: "https://www.fanreal.com/",
+        permanent: false
+      },
+      {
         source: "/shop/null",
         destination: "/shop/sex-dolls",
         permanent: false

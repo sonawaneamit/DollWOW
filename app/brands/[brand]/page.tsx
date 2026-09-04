@@ -11,6 +11,7 @@ import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
+import { ExternalLink } from "lucide-react";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -70,7 +71,20 @@ export default async function BrandHubPage({
           <p className="text-sm  text-gold-300">Brand hub</p>
           <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
-          <p className="mt-3 text-sm font-semibold text-gold-200">Current DollWow collection</p>
+          <div className="mt-5 flex flex-wrap items-center gap-4">
+            <p className="text-sm font-semibold text-gold-200">Current DollWow collection</p>
+            {profile.officialStoreHref && profile.officialStoreLabel ? (
+              <a
+                href={profile.officialStoreHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-button border border-gold-300/45 px-4 text-sm font-semibold text-ivory-50 transition-colors hover:border-gold-200 hover:bg-gold-500/10"
+              >
+                {profile.officialStoreLabel}
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
 

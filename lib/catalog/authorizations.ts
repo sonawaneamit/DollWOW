@@ -131,7 +131,7 @@ export const brandAuthorizations: BrandAuthorization[] = [
   }
 ];
 
-const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax"]);
+const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax", "fanreal"]);
 
 export const liveAuthorizedBrands = catalogBrands.filter((brand) => !brandsWithoutAuthorizationOnFile.has(brand.value));
 

@@ -42,6 +42,13 @@
     "aliases": ["avant", "avant doll", "avant dolls", "avantdoll"]
   },
   {
+    "value": "fanreal",
+    "label": "Fanreal",
+    "collectionHandle": "fanreal",
+    "tags": ["fanreal", "fanreal-doll", "fanreal-dolls", "fanrui"],
+    "aliases": ["fanreal", "fanreal doll", "fanrui"]
+  },
+  {
     "value": "sy",
     "label": "SY Dolls",
     "collectionHandle": "sy-dolls",

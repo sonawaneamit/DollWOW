@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { brandCollectionRedirectHref, brandHubHref, catalogBrands } from "@/lib/catalog/brands";
+import { brandCollectionRedirectHref, brandHubHref, canonicalBrandValue, catalogBrands } from "@/lib/catalog/brands";
 import { catalogFilterOptions } from "@/lib/catalog/filters";
 
 describe("catalog brand navigation", () => {
@@ -24,6 +24,19 @@ describe("catalog brand navigation", () => {
     const realLady = catalogBrands.find((brand) => brand.value === "real-lady");
     expect(realLady).toMatchObject({ label: "Real Lady", collectionHandle: "real-lady-dolls" });
     expect(catalogFilterOptions.brands.some((brand) => brand.value === "real-lady")).toBe(true);
+  });
+
+  it("registers Fanreal aliases separately from Avant", () => {
+    const fanreal = catalogBrands.find((brand) => brand.value === "fanreal");
+
+    expect(fanreal).toMatchObject({
+      value: "fanreal",
+      label: "Fanreal",
+      collectionHandle: "fanreal",
+      aliases: ["fanreal", "fanreal doll", "fanrui"]
+    });
+    expect(canonicalBrandValue("Fanrui")).toBe("fanreal");
+    expect(canonicalBrandValue("Avant Doll")).toBe("avant");
   });
 
   it("renders the desktop brand directory as balanced columns without an internal scroller", () => {

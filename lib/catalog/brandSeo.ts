@@ -13,6 +13,8 @@ type BrandSeoProfile = {
   positioning: string;
   metaTitle?: string;
   metaDescription?: string;
+  officialStoreHref?: string;
+  officialStoreLabel?: string;
   guideHref?: string;
   guideLabel?: string;
   buyerNotes: Array<{ title: string; body: string }>;
@@ -345,6 +347,74 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
   zelex: {
     positioning:
       "Zelex Dolls is often compared for premium realism, detailed facial work, and silicone-focused catalog options."
+  },
+  fanreal: {
+    positioning:
+      "Fanreal is a silicone-focused manufacturer whose official catalog includes conventional full dolls, torso formats, and integrated head-and-body UniSeries models.",
+    intro:
+      "Compare current Fanreal dolls on DollWow by product form, confirmed material, body and head construction, dimensions, listed weight, availability, and supported options. Fanreal's official range includes conventional full dolls, torso formats, and integrated head-and-body UniSeries models. Named finishes, head systems, and movement features are model-specific, so use the exact DollWow listing and confirm every selected build detail before checkout.",
+    metaTitle: "Fanreal Silicone Dolls & Torso Models",
+    metaDescription:
+      "Shop Fanreal silicone dolls and torso models by product form, size, weight, body and head construction, availability, and supported custom options.",
+    officialStoreHref: "https://www.fanreal.com/",
+    officialStoreLabel: "Official Fanreal store",
+    buyerNotes: [
+      {
+        title: "Choose the product form first",
+        body: "Fanreal's official range includes conventional full dolls, torso formats, and UniSeries models with an integrated head-and-body design. Confirm exactly what the product includes before comparing dimensions or price."
+      },
+      {
+        title: "Read named features carefully",
+        body: "Real Skin finishes, ROS-style heads, articulated details, hair, eyes, and other choices appear only on supported products. Do not assume one model's configuration applies across the brand."
+      },
+      {
+        title: "Plan around the finished build",
+        body: "Compare the listed dimensions and weight for the exact configuration, then account for delivery access, lifting, cleaning, drying, and private storage."
+      }
+    ],
+    comparisonRows: [
+      [
+        "Product form",
+        "Separate conventional full dolls, torso formats, and integrated UniSeries designs before comparing photographs or options.",
+        "DollWow keeps the exact product identity, included body areas, measurements, images, and current ordering details together."
+      ],
+      [
+        "Body and head construction",
+        "Confirm whether the head is separate or integrated, then check the stated material, connector, finish, hair, eyes, and supported functions.",
+        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
+      ],
+      [
+        "Finish and movement",
+        "Named skin finishes, ROS-style heads, articulated hands or feet, and other movement features are not universal across Fanreal models.",
+        "Ask our team to confirm any decision-critical feature that is unclear on the exact listing before checkout."
+      ]
+    ],
+    faqs: [
+      {
+        question: "What kinds of dolls does Fanreal make?",
+        answer: "Fanreal's official catalog includes silicone full dolls, torso formats, accessories, and UniSeries models. DollWow lists only the current products and configurations it can support."
+      },
+      {
+        question: "What is Fanreal UniSeries?",
+        answer: "Fanreal describes UniSeries as an integrated head-and-body design intended to remove the usual neck seam. Treat it as a distinct construction path and check the exact product's dimensions, weight, storage method, and available options."
+      },
+      {
+        question: "Are all Fanreal dolls the same material and construction?",
+        answer: "Do not assume so. Confirm the stated body and head material, whether the head is separate or integrated, and every care or compatibility detail on the exact DollWow listing."
+      },
+      {
+        question: "Does every Fanreal doll include Real Skin or ROS features?",
+        answer: "No. Real Skin and ROS appear as named features on selected official products. Availability can depend on the body, head, product form, and current configuration."
+      },
+      {
+        question: "How should I compare Fanreal doll sizes?",
+        answer: "Compare complete dimensions and listed weight, not height alone. Also plan for delivery access, lifting, positioning, cleaning space, drying, and private storage."
+      },
+      {
+        question: "Where can I see Fanreal's official catalog?",
+        answer: "Use the Official Fanreal store link on this page to open the manufacturer's current website in a new tab. Return to DollWow to compare supported listings and ordering details."
+      }
+    ]
   },
   "6ye": {
     positioning:
@@ -839,6 +909,8 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
     positioning,
     metaTitle: custom.metaTitle,
     metaDescription: custom.metaDescription,
+    officialStoreHref: custom.officialStoreHref,
+    officialStoreLabel: custom.officialStoreLabel,
     guideHref: custom.guideHref,
     guideLabel: custom.guideLabel,
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),

@@ -43,3 +43,23 @@ describe("Tier 1 brand SEO", () => {
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster|editorial process/i);
   });
 });
+
+describe("Fanreal brand SEO", () => {
+  const brand = catalogBrands.find((candidate) => candidate.value === "fanreal")!;
+
+  it("keeps Fanreal distinct and provides a factual official-store path", () => {
+    const profile = brandSeoProfile(brand);
+    const metadata = buildBrandMetadata(brand);
+    const copy = `${profile.intro} ${profile.positioning} ${profile.comparisonRows?.flat().join(" ")} ${profile.buyerNotes.flatMap((item) => [item.title, item.body]).join(" ")} ${profile.faqs.flatMap((item) => [item.question, item.answer]).join(" ")}`;
+
+    expect(brand).toMatchObject({ label: "Fanreal", collectionHandle: "fanreal" });
+    expect(brand.value).not.toBe("avant");
+    expect(metadata.title).toBe("Fanreal Silicone Dolls & Torso Models");
+    expect(metadata.description).not.toMatch(/\$|COGS/i);
+    expect(profile.officialStoreHref).toBe("https://www.fanreal.com/");
+    expect(profile.officialStoreLabel).toBe("Official Fanreal store");
+    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.faqs).toHaveLength(6);
+    expect(copy).not.toMatch(/authorized|certified|certificate|\$|COGS|PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
