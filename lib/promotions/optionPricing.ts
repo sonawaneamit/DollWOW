@@ -8,6 +8,11 @@ import {
   seDollSeptemberOfferForProduct,
   type SeDollSeptemberProductOffer
 } from "@/lib/promotions/seDollSeptember2026";
+import {
+  fanrealSeptemberOfferForProduct,
+  isFanrealSeptemberPromotionActive,
+  matchesFanrealSeptemberOption
+} from "@/lib/promotions/fanrealSeptember2026";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from "@/types/customization";
 import type { Product } from "@/types/product";
 
@@ -26,6 +31,7 @@ export type PromotionOptionPrice = {
 const IRONTECH_PROMO_LABEL = "Irontech Limited Time Promo (Ends: 7 Oct)";
 const IRONTECH_TALKX_PROMO_LABEL = `${IRONTECH_PROMO_LABEL} · TalkX + 60 extra mins`;
 const SE_PROMO_LABEL = "SE - Limited Time Promo (Ends: 1 Oct)";
+const FANREAL_PROMO_LABEL = "Fanreal - Limited Time Promo (Ends: 30 Sept)";
 
 /**
  * Keeps Shopify/catalog priceDelta authoritative, and derives only the price
@@ -40,11 +46,14 @@ export function promotionOptionPrice(
   const catalogDelta = option.priceDelta ?? 0;
   const irontechOffer = irontechAutumnOfferForProduct(product, activeIrontechReferenceDate(now));
   const seOffer = seDollSeptemberOfferForProduct(product, activeSeReferenceDate(now));
+  const fanrealOffer = fanrealSeptemberOfferForProduct(product, activeFanrealReferenceDate(now));
   const irontechEligible = Boolean(irontechOffer && matchesIrontechOption(irontechOffer, group, option));
   const seEligible = Boolean(seOffer && matchesSeOption(seOffer, group, option));
+  const fanrealEligible = Boolean(fanrealOffer && matchesFanrealSeptemberOption(group, option));
   const irontechActive = irontechEligible && isIrontechAutumnPromotionActive(now);
   const seActive = seEligible && isSeDollSeptemberPromotionActive(now);
-  const active = irontechActive || seActive;
+  const fanrealActive = fanrealEligible && isFanrealSeptemberPromotionActive(now);
+  const active = irontechActive || seActive || fanrealActive;
   const talkX = irontechEligible && isTalkXOption(group, option);
 
   return {
@@ -56,10 +65,12 @@ export function promotionOptionPrice(
         ? IRONTECH_TALKX_PROMO_LABEL
         : irontechActive
           ? IRONTECH_PROMO_LABEL
-          : SE_PROMO_LABEL
+          : seActive
+            ? SE_PROMO_LABEL
+            : FANREAL_PROMO_LABEL
       : null,
     active,
-    eligible: irontechEligible || seEligible,
+    eligible: irontechEligible || seEligible || fanrealEligible,
     displayLabel: talkX ? "IronAI TalkX Box" : option.label
   };
 }
@@ -201,4 +212,8 @@ function activeIrontechReferenceDate(now: Date) {
 
 function activeSeReferenceDate(now: Date) {
   return isSeDollSeptemberPromotionActive(now) ? now : new Date("2026-09-15T12:00:00.000Z");
+}
+
+function activeFanrealReferenceDate(now: Date) {
+  return isFanrealSeptemberPromotionActive(now) ? now : new Date("2026-09-15T12:00:00.000Z");
 }

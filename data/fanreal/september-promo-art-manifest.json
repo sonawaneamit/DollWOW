@@ -1,0 +1,69 @@
+{
+  "folder_id": "1ZcFi3cfjcOto__56RN35v7Hyh0f_8vIN",
+  "folder_name": "26年9月",
+  "parent_pack": "promotion_art",
+  "parent_id": "1VkHY_DDiwW4-y7Jg-4GTNRoOAjURGsbL",
+  "source": "embeddedfolderview HTML scrape (MCP parentId often empty)",
+  "dest": "/workspace/audit/dol-30/promo-art/sept",
+  "purpose": "DOL-30 Martin bar SE/Irontech-style PDP promo banner",
+  "files": [
+    {
+      "id": "15qMSB5MWbVUKJjs4aFrzW2RyABMGEprG",
+      "name": "横版banner.jpg",
+      "kind": "image",
+      "note_zh": "横版 = horizontal",
+      "path": "/workspace/audit/dol-30/promo-art/sept/横版banner.jpg",
+      "bytes": 1266242,
+      "downloaded": true,
+      "width": 2000,
+      "height": 1000,
+      "mode": "RGB",
+      "layout": "desktop",
+      "layout_reason": "name+aspect 2000x1000 (w/h=2.00)"
+    },
+    {
+      "id": "1suRmH-ut11rlJnobMF06Piim2nS7GP3U",
+      "name": "竖版banner.png",
+      "kind": "image",
+      "note_zh": "竖版 = vertical",
+      "path": "/workspace/audit/dol-30/promo-art/sept/竖版banner.png",
+      "bytes": 1889094,
+      "downloaded": true,
+      "width": 1200,
+      "height": 1500,
+      "mode": "RGB",
+      "layout": "mobile",
+      "layout_reason": "name+aspect 1200x1500 (w/h=0.80)"
+    },
+    {
+      "id": "1rO3XUpCKXtqlDiOuGjIobi-nwzwUjT_7",
+      "name": "September Promotion.docx",
+      "kind": "document",
+      "path": "/workspace/audit/dol-30/promo-art/sept/September Promotion.docx",
+      "bytes": 12658,
+      "downloaded": true
+    }
+  ],
+  "skipped": [
+    {
+      "id": "1WFAByUAbv-xnGrodvRPmf4CmLPpWGbug",
+      "name": "横版banner.psd",
+      "kind": "psd",
+      "downloaded": false,
+      "reason": "source PSD skipped"
+    },
+    {
+      "id": "1lInH6RiZKa2FXDmw0uGtrHD_L-gODoV8",
+      "name": "竖版banner.psd",
+      "kind": "psd",
+      "downloaded": false,
+      "reason": "source PSD skipped"
+    }
+  ],
+  "counts": {
+    "images_downloaded": 2,
+    "docs_downloaded": 1,
+    "desktop_banners": 1,
+    "mobile_banners": 1
+  }
+}

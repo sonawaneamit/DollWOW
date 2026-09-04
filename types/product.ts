@@ -78,6 +78,8 @@ export type ProductExtended = {
     verifiedAt?: string;
   };
   customizationGroups?: CustomizationGroup[];
+  /** Repo fixture marker used only in Vercel preview deployments. */
+  previewCustomizationFixture?: true;
   qcNote?: string;
   editorialIntro?: {
     eyebrow: string;

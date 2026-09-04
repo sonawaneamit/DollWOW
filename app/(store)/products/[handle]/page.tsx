@@ -38,7 +38,9 @@ import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
 import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
+import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
+import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
 
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
 
@@ -60,7 +62,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const promoClock = previewPromotionClock(requestedPromoClock);
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
-  const product = withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData));
+  const product = withPreviewCustomizationFixture(
+    withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
+  );
   const publicProduct = withProtectedProductImages(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -141,6 +145,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             ) : null}
             <SeDollPdpFreebieBlock product={product} />
             <IrontechAutumnPdpPromotion product={product} promoClock={promoClock} />
+            <FanrealSeptemberPdpPromotion product={product} promoClock={promoClock} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
