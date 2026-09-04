@@ -1,4 +1,5 @@
 import dianaFixture from "@/data/fanreal/diana-customization-groups.json";
+import dianaEditorialIntro from "@/data/fanreal/diana-editorial-intro.json";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import type { Product } from "@/types/product";
 
@@ -19,6 +20,7 @@ export function withPreviewCustomizationFixture(product: Product, vercelEnvironm
     extended: {
       ...product.extended,
       customizationGroups: normalizePreviewGroups(dianaFixture.customization_groups),
+      editorialIntro: product.extended.editorialIntro ?? dianaEditorialIntro,
       previewCustomizationFixture: true
     }
   };

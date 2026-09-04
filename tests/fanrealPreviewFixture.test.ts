@@ -15,6 +15,8 @@ function product(): Product {
 describe("Fanreal preview fixture", () => {
   it("overrides Diana only on Vercel preview with the full thumbnail customizer", () => {
     const preview = withPreviewCustomizationFixture(product(), "preview");
+    expect(preview.extended.editorialIntro?.eyebrow).toBe("Real Skin 168 F, factory still");
+    expect(preview.extended.editorialIntro?.heading).toBe("Diana in Tan");
     expect(preview.extended.customizationGroups).toHaveLength(21);
     expect(getCustomizationConfig(preview).groups).toHaveLength(21);
     expect(preview.extended.customizationGroups?.flatMap((group) => group.options).filter((option) => option.swatch?.kind === "image")).toHaveLength(202);
@@ -34,5 +36,16 @@ describe("Fanreal preview fixture", () => {
     expect(withPreviewCustomizationFixture(live, "production")).toBe(live);
     const other = { ...live, handle: "fanreal-other" };
     expect(withPreviewCustomizationFixture(other, "preview")).toBe(other);
+  });
+
+  it("preserves Admin-provided Diana editorial on Vercel preview", () => {
+    const live = product();
+    live.extended.editorialIntro = {
+      eyebrow: "Admin eyebrow",
+      heading: "Admin heading",
+      paragraph: "Admin paragraph"
+    };
+
+    expect(withPreviewCustomizationFixture(live, "preview").extended.editorialIntro).toBe(live.extended.editorialIntro);
   });
 });
