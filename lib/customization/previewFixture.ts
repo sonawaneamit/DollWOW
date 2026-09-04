@@ -40,16 +40,28 @@ function normalizePreviewOption(groupId: string, source: PreviewFixtureOption): 
   const option: CustomizationOption = {
     id: source.id,
     label: customerLabel,
-    ...(source.priceDelta !== null ? { priceDelta: source.priceDelta } : {}),
+    ...(source.priceDelta !== null ? { priceDelta: source.priceDelta } : { priceLabel: "included" }),
     ...(source.swatch ? { swatch: { ...source.swatch, label: source.swatch.label?.replace(/\s*\(FREE this month\)$/i, "") } as CustomizationOption["swatch"] } : {})
   };
 
   // The disk fixture carries source-working notes and in-window display prices.
   // Keep those out of customer UI and restore only the one MAP catalog delta supplied.
   if (groupId === "fanreal-sept-free-add-ons") {
-    if (source.id === "extra-silicone-head") option.priceDelta = 550;
-    else delete option.priceDelta;
+    if (source.id === "extra-silicone-head") {
+      option.priceDelta = 550;
+      delete option.priceLabel;
+    } else {
+      delete option.priceDelta;
+      option.priceLabel = "included";
+    }
   }
-  if (source.id === "implanted-synthetic") delete option.priceDelta;
+  if (source.id === "implanted-synthetic") {
+    delete option.priceDelta;
+    option.priceLabel = "included";
+  }
+  // Explicit $0 base choices (e.g. Standing with bolts) are included, not promo freebies.
+  if (option.priceDelta === 0 && groupId !== "fanreal-sept-free-add-ons") {
+    option.priceLabel = "included";
+  }
   return option;
 }

@@ -15,10 +15,12 @@ function product(): Product {
 describe("Fanreal preview fixture", () => {
   it("overrides Diana only on Vercel preview with the full thumbnail customizer", () => {
     const preview = withPreviewCustomizationFixture(product(), "preview");
-    expect(preview.extended.customizationGroups).toHaveLength(20);
-    expect(getCustomizationConfig(preview).groups).toHaveLength(20);
-    expect(preview.extended.customizationGroups?.flatMap((group) => group.options).filter((option) => option.swatch?.kind === "image")).toHaveLength(180);
-    expect(JSON.stringify(preview.extended.customizationGroups)).not.toMatch(/MAP|EXW|reseller|factory URL|FREE this month/i);
+    expect(preview.extended.customizationGroups).toHaveLength(21);
+    expect(getCustomizationConfig(preview).groups).toHaveLength(21);
+    expect(preview.extended.customizationGroups?.flatMap((group) => group.options).filter((option) => option.swatch?.kind === "image")).toHaveLength(181);
+    expect(preview.extended.customizationGroups?.some((group) => group.id === "order-notes")).toBe(false);
+    expect(preview.extended.customizationGroups?.find((group) => group.id === "standing")?.options.find((option) => option.id === "standing-without-bolts-hard-feet")?.priceLabel).toBe("included");
+    expect(JSON.stringify(preview.extended.customizationGroups)).not.toMatch(/MAP|EXW|reseller|factory URL|FREE this month|Order Notes|Message Board/i);
   });
 
   it("leaves the Shopify metafield path unchanged in production and outside Diana", () => {

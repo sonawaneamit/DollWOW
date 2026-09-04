@@ -4,9 +4,9 @@
     "handle": "fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
     "title": "Fanreal Diana 168cm F-Cup Real Skin Silicone Companion Doll"
   },
-  "status": "PREVIEW_ONLY_DISK \u2014 HARD STOP: do not productUpdate live Shopify",
-  "built_at_utc": "2026-09-04T10:22:04Z",
-  "built_at_pt": "2026-09-04 (rebuilt Extra Head lock + More features Finger/Hymen/Soft buttocks)",
+  "status": "PREVIEW_ONLY_DISK — HARD STOP: do not productUpdate live Shopify",
+  "built_at_utc": "2026-09-04T10:30:00Z",
+  "built_at_pt": "2026-09-04 (removed Order Notes; Extra Head promo lock)",
   "sources": [
     "diana-recommended-groups.json",
     "factory-diana-options-ui.json More features",
@@ -24,8 +24,8 @@
     "image_swatches": 0
   },
   "after": {
-    "group_count": 22,
-    "option_count": 187,
+    "group_count": 21,
+    "option_count": 186,
     "swatch_option_count": 181,
     "free_this_month_option_count": 1,
     "group_ids": [
@@ -49,8 +49,7 @@
       "standing",
       "fanreal-sept-free-add-ons",
       "more-features",
-      "packaging",
-      "order-notes"
+      "packaging"
     ]
   },
   "customization_groups": [
@@ -2093,20 +2092,6 @@
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Packaging_02.webp",
             "label": "Premium"
           }
-        }
-      ]
-    },
-    {
-      "id": "order-notes",
-      "label": "Order Notes",
-      "required": false,
-      "selectionMode": "single",
-      "display": "text",
-      "options": [
-        {
-          "id": "order-notes--free-text-field",
-          "label": "(free text field)",
-          "priceDelta": 0
         }
       ]
     }
