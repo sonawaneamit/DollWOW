@@ -6,11 +6,16 @@ import { SeDollPdpFreebieBlock, SeDollPromoIndexCards } from "@/components/promo
 import {
   IRONTECH_AUTUMN_OFFERS,
   irontechAutumnOfferForProduct,
+  isIrontechAutumnPromotionActive,
   isIrontechAutumnPromotionVisible
 } from "@/lib/promotions/irontechAutumn2026";
+import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import type { Product } from "@/types/product";
 
 const duringPromotion = new Date("2026-09-15T12:00:00.000Z");
+const beforeActive = new Date("2026-09-05T12:00:00.000Z"); // Visible (published) but not yet Active
+const justBeforeActive = new Date("2026-09-07T06:59:59.999Z");
+const activeStart = new Date("2026-09-07T07:00:00.000Z");
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
 function product(overrides: Partial<PromotionProduct> = {}): PromotionProduct {
@@ -172,5 +177,80 @@ describe("Irontech autumn 2026 promotion", () => {
     expect(isIrontechAutumnPromotionVisible(new Date("2026-09-03T00:00:00.000Z"))).toBe(true);
     expect(isIrontechAutumnPromotionVisible(new Date("2026-10-08T06:59:59.999Z"))).toBe(true);
     expect(isIrontechAutumnPromotionVisible(new Date("2026-10-08T07:00:00.000Z"))).toBe(false);
+    expect(isIrontechAutumnPromotionActive(beforeActive)).toBe(false);
+    expect(isIrontechAutumnPromotionActive(justBeforeActive)).toBe(false);
+    expect(isIrontechAutumnPromotionActive(activeStart)).toBe(true);
+  });
+
+  it("hides PDP banner offer until Active (Visible-but-not-Active returns null)", () => {
+    const flora = product({
+      handle: "irontech-flora-161cm-g-cup-hybrid-companion-doll-14dpc",
+      title: "Irontech Flora 161cm G-Cup Hybrid Customizable Companion Doll",
+      productType: "Custom hybrid doll",
+      extended: { brand: "Irontech Dolls", material: "Hybrid", stockStatus: "custom" }
+    });
+
+    expect(isIrontechAutumnPromotionVisible(beforeActive)).toBe(true);
+    expect(irontechAutumnOfferForProduct(flora, beforeActive)).toBeNull();
+    expect(irontechAutumnOfferForProduct(flora, justBeforeActive)).toBeNull();
+    expect(irontechAutumnOfferForProduct(product(), beforeActive)).toBeNull();
+
+    vi.setSystemTime(beforeActive);
+    try {
+      expect(renderToStaticMarkup(createElement(IrontechAutumnPdpPromotion, { product: flora }))).toBe("");
+      expect(renderToStaticMarkup(createElement(IrontechAutumnPromoIndexCard))).toBe("");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("returns hybrid Flora offer inside Active window and renders PDP banner", () => {
+    const flora = product({
+      handle: "irontech-flora-161cm-g-cup-hybrid-companion-doll-14dpc",
+      title: "Irontech Flora 161cm G-Cup Hybrid Customizable Companion Doll",
+      productType: "Custom hybrid doll",
+      extended: { brand: "Irontech Dolls", material: "Hybrid", stockStatus: "custom" }
+    });
+
+    expect(irontechAutumnOfferForProduct(flora, duringPromotion)).toEqual(IRONTECH_AUTUMN_OFFERS.hybrid);
+    expect(irontechAutumnOfferForProduct(flora, activeStart)?.kind).toBe("hybrid");
+
+    vi.setSystemTime(duringPromotion);
+    try {
+      const markup = renderToStaticMarkup(createElement(IrontechAutumnPdpPromotion, {
+        product: flora,
+        promoClock: duringPromotion.toISOString()
+      }));
+      expect(markup).toContain("data-irontech-autumn-pdp-promotion");
+      expect(markup).toContain("Free IronAI TalkX Box + 60 Extra Mins AI Talk Time");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("keeps TalkX free in-window via promotionOptionPrice while banner stays Active-gated", () => {
+    const flora = product({
+      handle: "irontech-flora-161cm-g-cup-hybrid-companion-doll-14dpc",
+      title: "Irontech Flora 161cm G-Cup Hybrid Customizable Companion Doll",
+      productType: "Custom hybrid doll",
+      extended: { brand: "Irontech Dolls", material: "Hybrid", stockStatus: "custom" }
+    });
+    const talkx = { id: "talkx", label: "IronAI TalkX Box", priceDelta: 119 };
+
+    expect(promotionOptionPrice(flora, { id: "ironai", label: "IronAI" }, talkx, beforeActive)).toMatchObject({
+      catalogDelta: 119,
+      displayDelta: 119,
+      strike: false,
+      active: false,
+      eligible: true
+    });
+    const inWindow = promotionOptionPrice(flora, { id: "ironai", label: "IronAI" }, talkx, duringPromotion);
+    expect(inWindow).toMatchObject({
+      catalogDelta: 119,
+      displayDelta: 0,
+      strike: true,
+      active: true
+    });
+    expect(inWindow.promoLabel).toContain("TalkX");
   });
 });

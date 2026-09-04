@@ -9,14 +9,15 @@ import {
   IRONTECH_AUTUMN_PROMOTION,
   irontechAutumnOfferForProduct,
   irontechAutumnPromotionStatus,
-  isIrontechAutumnPromotionVisible
+  isIrontechAutumnPromotionActive
 } from "@/lib/promotions/irontechAutumn2026";
 import type { Product } from "@/types/product";
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
-export function IrontechAutumnPdpPromotion({ product }: { product: PromotionProduct }) {
-  const offer = irontechAutumnOfferForProduct(product);
+export function IrontechAutumnPdpPromotion({ product, promoClock }: { product: PromotionProduct; promoClock?: string }) {
+  const now = promoClock ? new Date(promoClock) : new Date();
+  const offer = irontechAutumnOfferForProduct(product, now);
   const [isOpen, setIsOpen] = useState(false);
   if (!offer) return null;
 
@@ -44,7 +45,8 @@ export function IrontechAutumnPdpPromotion({ product }: { product: PromotionProd
 
 export function IrontechAutumnPromoIndexCard() {
   const [isOpen, setIsOpen] = useState(false);
-  if (!isIrontechAutumnPromotionVisible()) return null;
+  // Active only — do not advertise Free TalkX / freebie lists before the 7 Sept window.
+  if (!isIrontechAutumnPromotionActive()) return null;
 
   return (
     <article id={IRONTECH_AUTUMN_PROMOTION.id} className="scroll-mt-24 rounded-[20px] border border-gold-500/18 bg-ink-900/72 p-3 shadow-panel sm:p-4">
