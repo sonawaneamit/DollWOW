@@ -298,6 +298,18 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   const importedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
+  if (product.extended.previewCustomizationFixture) {
+    const previewGroups = product.extended.customizationGroups?.filter(
+      (group) => Array.isArray(group.options) && group.options.length >= 1 && Boolean(group.id) && Boolean(group.label)
+    ) ?? [];
+    return {
+      id: "preview-source-fixture",
+      brandLabel: product.extended.brand ?? product.vendor,
+      leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
+      groups: uniqueCustomizationGroups(previewGroups),
+      rules: []
+    };
+  }
   // IronAI is a standalone Irontech head product with a manufacturer-limited
   // model list. Keep that exact path ahead of the broader Irontech normalizer.
   if (isIronAiHeadProduct(product)) {

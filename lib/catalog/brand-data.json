@@ -21,6 +21,13 @@
     "aliases": ["irontech", "iron tech", "irontech doll", "irontech dolls", "iron tech doll", "iron tech dolls", "irontch doll", "irontch dolls"]
   },
   {
+    "value": "fanreal",
+    "label": "Fanreal",
+    "collectionHandle": "fanreal",
+    "tags": ["fanreal", "fanreal-doll", "fanreal-dolls", "fanrui", "fanrui-doll", "fanrui-dolls"],
+    "aliases": ["fanreal", "fan real", "fanreal doll", "fanreal dolls", "fanrui", "fan rui", "fanrui doll", "fanrui dolls"]
+  },
+  {
     "value": "real-lady",
     "label": "Real Lady",
     "collectionHandle": "real-lady-dolls",

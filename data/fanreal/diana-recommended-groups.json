@@ -1,0 +1,2114 @@
+{
+  "status": "PREVIEW_ONLY — HARD STOP: do not productUpdate live Shopify",
+  "product_handle": "fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
+  "product_id": "gid://shopify/Product/10564019224760",
+  "source": "fanreal-options-gap-report.json#recommended_groups_json",
+  "built_at_utc": "2026-09-04T09:38:54Z",
+  "built_at_pt": "2026-09-04 10:38 PT",
+  "stats": {
+    "group_count": 22,
+    "option_count": 193,
+    "image_swatch_count": 187,
+    "free_this_month_option_count": 10,
+    "gap_report_stats": {
+      "group_count": 22,
+      "option_count": 193,
+      "image_swatch_count": 187
+    }
+  },
+  "before_live_snapshot": {
+    "group_count": 4,
+    "option_count": 16,
+    "group_ids": [
+      "skin-tone",
+      "head-type",
+      "fanreal-paid-add-ons",
+      "order-notes"
+    ],
+    "image_swatches": 0
+  },
+  "customization_groups": [
+    {
+      "id": "headform",
+      "label": "Headform",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_same.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "xue",
+          "label": "Xue",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_09.webp",
+            "label": "Xue"
+          }
+        },
+        {
+          "id": "vivi",
+          "label": "Vivi",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_12.webp",
+            "label": "Vivi"
+          }
+        },
+        {
+          "id": "ling",
+          "label": "Ling",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_15.webp",
+            "label": "Ling"
+          }
+        },
+        {
+          "id": "fei",
+          "label": "Fei",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_13.webp",
+            "label": "Fei"
+          }
+        },
+        {
+          "id": "anne",
+          "label": "Anne",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_08.webp",
+            "label": "Anne"
+          }
+        },
+        {
+          "id": "jing",
+          "label": "Jing",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_14.webp",
+            "label": "Jing"
+          }
+        },
+        {
+          "id": "yao",
+          "label": "Yao",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_10.webp",
+            "label": "Yao"
+          }
+        },
+        {
+          "id": "josie",
+          "label": "Josie",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_11.webp",
+            "label": "Josie"
+          }
+        },
+        {
+          "id": "gina",
+          "label": "Gina",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_17.webp",
+            "label": "Gina"
+          }
+        },
+        {
+          "id": "della",
+          "label": "Della",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_18.webp",
+            "label": "Della"
+          }
+        },
+        {
+          "id": "maria",
+          "label": "Maria",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_16.webp",
+            "label": "Maria"
+          }
+        },
+        {
+          "id": "ellie",
+          "label": "Ellie",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_19.webp",
+            "label": "Ellie"
+          }
+        },
+        {
+          "id": "carlee",
+          "label": "Carlee",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_21.webp",
+            "label": "Carlee"
+          }
+        },
+        {
+          "id": "kelly",
+          "label": "Kelly",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_26.webp",
+            "label": "Kelly"
+          }
+        },
+        {
+          "id": "vanessa",
+          "label": "Vanessa",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_23.webp",
+            "label": "Vanessa"
+          }
+        },
+        {
+          "id": "maddy",
+          "label": "Maddy",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_25.webp",
+            "label": "Maddy"
+          }
+        },
+        {
+          "id": "lila",
+          "label": "Lila",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_24.webp",
+            "label": "Lila"
+          }
+        },
+        {
+          "id": "bellona",
+          "label": "Bellona",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_20.webp",
+            "label": "Bellona"
+          }
+        },
+        {
+          "id": "mirella",
+          "label": "Mirella",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_22.webp",
+            "label": "Mirella"
+          }
+        },
+        {
+          "id": "eva",
+          "label": "Eva",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_27.webp",
+            "label": "Eva"
+          }
+        },
+        {
+          "id": "melissa",
+          "label": "Melissa",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/08/Head_30.webp",
+            "label": "Melissa"
+          }
+        },
+        {
+          "id": "diana",
+          "label": "Diana",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/08/Head_29.webp",
+            "label": "Diana"
+          },
+          "productionNote": "Diana body default headform on factory PDP diana_bklt."
+        }
+      ]
+    },
+    {
+      "id": "head-upgrade",
+      "label": "Head Upgrade (Silicone)",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "hard-silicone-head-default",
+          "label": "Hard silicone head (Default)",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/None.webp",
+            "label": "Hard silicone head (Default)"
+          }
+        },
+        {
+          "id": "soft-silicone-head-moveable-jaw",
+          "label": "Soft silicone head (Moveable jaw)",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Moveable_jaw.webp",
+            "label": "Soft silicone head (Moveable jaw)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tongue",
+      "label": "Tongue (ROS heads)",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "none",
+          "label": "None",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/None.webp",
+            "label": "None"
+          }
+        },
+        {
+          "id": "style01",
+          "label": "Style01",
+          "priceDelta": 15.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Tongue_01.webp",
+            "label": "Style01"
+          }
+        },
+        {
+          "id": "style02",
+          "label": "Style02",
+          "priceDelta": 15.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Tongue_02.webp",
+            "label": "Style02"
+          }
+        },
+        {
+          "id": "style03",
+          "label": "Style03",
+          "priceDelta": 15.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Tongue_03.webp",
+            "label": "Style03"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hair-options",
+      "label": "Hair Options",
+      "required": true,
+      "selectionMode": "single",
+      "display": "cards",
+      "options": [
+        {
+          "id": "wig-cover",
+          "label": "Wig cover",
+          "priceDelta": 0,
+          "productionNote": "Detachable wig; pick style in Wig group."
+        },
+        {
+          "id": "wig-transplant-ht-fiber",
+          "label": "Wig transplant (High temperature fiber)",
+          "priceDelta": 0,
+          "promoClock": {
+            "start": "2026-09-01",
+            "end": "2026-09-30",
+            "endLabel": "Ends 30 Sept",
+            "promoLabel": "Fanreal - Limited Time Promo (Ends: 30 Sept)",
+            "displayDelta": 0,
+            "say": "promo",
+            "catalogPriceDelta": null
+          },
+          "productionNote": "Factory +$200. Sept promo: Implanted Synthetic Hair treated FREE this month (MAP Implanted Hair EXW $170; MAP RSP blank). Fanreal - Limited Time Promo (Ends: 30 Sept)"
+        },
+        {
+          "id": "hair-transplant-human",
+          "label": "Hair transplant (Human hair)",
+          "priceDelta": 300,
+          "productionNote": "Factory +$300. MAP Implanted Human Hair EXW $250; MAP RSP blank — using factory list price."
+        }
+      ]
+    },
+    {
+      "id": "wig",
+      "label": "Wig Style",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Hair_Same-200x300.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "wig-01",
+          "label": "Wig 01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_01.webp",
+            "label": "Wig 01"
+          }
+        },
+        {
+          "id": "wig-02",
+          "label": "Wig 02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_02.webp",
+            "label": "Wig 02"
+          }
+        },
+        {
+          "id": "wig-03",
+          "label": "Wig 03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_03.webp",
+            "label": "Wig 03"
+          }
+        },
+        {
+          "id": "wig-04",
+          "label": "Wig 04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_04.webp",
+            "label": "Wig 04"
+          }
+        },
+        {
+          "id": "wig-05",
+          "label": "Wig 05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_05.webp",
+            "label": "Wig 05"
+          }
+        },
+        {
+          "id": "wig-06",
+          "label": "Wig 06",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_06.webp",
+            "label": "Wig 06"
+          }
+        },
+        {
+          "id": "wig-07",
+          "label": "Wig 07",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_07.webp",
+            "label": "Wig 07"
+          }
+        },
+        {
+          "id": "wig-08",
+          "label": "Wig 08",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_08.webp",
+            "label": "Wig 08"
+          }
+        },
+        {
+          "id": "wig-09",
+          "label": "Wig 09",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_09.webp",
+            "label": "Wig 09"
+          }
+        },
+        {
+          "id": "wig-10",
+          "label": "Wig 10",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_10.webp",
+            "label": "Wig 10"
+          }
+        },
+        {
+          "id": "wig-11",
+          "label": "Wig 11",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_11.webp",
+            "label": "Wig 11"
+          }
+        },
+        {
+          "id": "wig-12",
+          "label": "Wig 12",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_12.webp",
+            "label": "Wig 12"
+          }
+        },
+        {
+          "id": "wig-13",
+          "label": "Wig 13",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_13.webp",
+            "label": "Wig 13"
+          }
+        },
+        {
+          "id": "wig-14",
+          "label": "Wig 14",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_14.webp",
+            "label": "Wig 14"
+          }
+        },
+        {
+          "id": "wig-15",
+          "label": "Wig 15",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_15.webp",
+            "label": "Wig 15"
+          }
+        },
+        {
+          "id": "wig-16",
+          "label": "Wig 16",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_16.webp",
+            "label": "Wig 16"
+          }
+        },
+        {
+          "id": "wig-17",
+          "label": "Wig 17",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_17.webp",
+            "label": "Wig 17"
+          }
+        },
+        {
+          "id": "wig-18",
+          "label": "Wig 18",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_18.webp",
+            "label": "Wig 18"
+          }
+        },
+        {
+          "id": "wig-19",
+          "label": "Wig 19",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_19.webp",
+            "label": "Wig 19"
+          }
+        },
+        {
+          "id": "wig-20",
+          "label": "Wig 20",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_20.webp",
+            "label": "Wig 20"
+          }
+        },
+        {
+          "id": "wig-21",
+          "label": "Wig 21",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_21.webp",
+            "label": "Wig 21"
+          }
+        },
+        {
+          "id": "wig-22",
+          "label": "Wig 22",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_22.webp",
+            "label": "Wig 22"
+          }
+        },
+        {
+          "id": "wig-23",
+          "label": "Wig 23",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_23.webp",
+            "label": "Wig 23"
+          }
+        },
+        {
+          "id": "wig-24",
+          "label": "Wig 24",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_24.webp",
+            "label": "Wig 24"
+          }
+        },
+        {
+          "id": "wig-25",
+          "label": "Wig 25",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_25.webp",
+            "label": "Wig 25"
+          }
+        },
+        {
+          "id": "wig-26",
+          "label": "Wig 26",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_26.webp",
+            "label": "Wig 26"
+          }
+        },
+        {
+          "id": "wig-27",
+          "label": "Wig 27",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_27.webp",
+            "label": "Wig 27"
+          }
+        },
+        {
+          "id": "wig-28",
+          "label": "Wig 28",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_28.webp",
+            "label": "Wig 28"
+          }
+        },
+        {
+          "id": "wig-29",
+          "label": "Wig 29",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_29.webp",
+            "label": "Wig 29"
+          }
+        },
+        {
+          "id": "wig-30",
+          "label": "Wig 30",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_30.webp",
+            "label": "Wig 30"
+          }
+        },
+        {
+          "id": "wig-31",
+          "label": "Wig 31",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_31.webp",
+            "label": "Wig 31"
+          }
+        },
+        {
+          "id": "wig-32",
+          "label": "Wig 32",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_32.webp",
+            "label": "Wig 32"
+          }
+        }
+      ]
+    },
+    {
+      "id": "high-temperature-fiber",
+      "label": "High Temperature Fiber Implant Style",
+      "required": false,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Hair_Same-200x300.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "dreadlocks",
+          "label": "Dreadlocks",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Wig_25.webp",
+            "label": "Dreadlocks"
+          }
+        },
+        {
+          "id": "wig-01",
+          "label": "Wig 01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_01.webp",
+            "label": "Wig 01"
+          }
+        },
+        {
+          "id": "wig-02",
+          "label": "Wig 02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_02.webp",
+            "label": "Wig 02"
+          }
+        },
+        {
+          "id": "wig-03",
+          "label": "Wig 03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_03.webp",
+            "label": "Wig 03"
+          }
+        },
+        {
+          "id": "wig-04",
+          "label": "Wig 04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_04.webp",
+            "label": "Wig 04"
+          }
+        },
+        {
+          "id": "wig-05",
+          "label": "Wig 05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_05.webp",
+            "label": "Wig 05"
+          }
+        },
+        {
+          "id": "wig-06",
+          "label": "Wig 06",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_06.webp",
+            "label": "Wig 06"
+          }
+        },
+        {
+          "id": "wig-07",
+          "label": "Wig 07",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_07.webp",
+            "label": "Wig 07"
+          }
+        },
+        {
+          "id": "wig-08",
+          "label": "Wig 08",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_08.webp",
+            "label": "Wig 08"
+          }
+        },
+        {
+          "id": "wig-09",
+          "label": "Wig 09",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_09.webp",
+            "label": "Wig 09"
+          }
+        },
+        {
+          "id": "wig-10",
+          "label": "Wig 10",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_10.webp",
+            "label": "Wig 10"
+          }
+        },
+        {
+          "id": "wig-11",
+          "label": "Wig 11",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_11.webp",
+            "label": "Wig 11"
+          }
+        },
+        {
+          "id": "wig-12",
+          "label": "Wig 12",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_12.webp",
+            "label": "Wig 12"
+          }
+        },
+        {
+          "id": "wig-13",
+          "label": "Wig 13",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_13.webp",
+            "label": "Wig 13"
+          }
+        },
+        {
+          "id": "wig-14",
+          "label": "Wig 14",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_14.webp",
+            "label": "Wig 14"
+          }
+        },
+        {
+          "id": "wig-15",
+          "label": "Wig 15",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_15.webp",
+            "label": "Wig 15"
+          }
+        },
+        {
+          "id": "wig-16",
+          "label": "Wig 16",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_16.webp",
+            "label": "Wig 16"
+          }
+        },
+        {
+          "id": "wig-17",
+          "label": "Wig 17",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_17.webp",
+            "label": "Wig 17"
+          }
+        },
+        {
+          "id": "wig-18",
+          "label": "Wig 18",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_18.webp",
+            "label": "Wig 18"
+          }
+        },
+        {
+          "id": "wig-19",
+          "label": "Wig 19",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_19.webp",
+            "label": "Wig 19"
+          }
+        },
+        {
+          "id": "wig-20",
+          "label": "Wig 20",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_20.webp",
+            "label": "Wig 20"
+          }
+        },
+        {
+          "id": "wig-21",
+          "label": "Wig 21",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_21.webp",
+            "label": "Wig 21"
+          }
+        },
+        {
+          "id": "wig-22",
+          "label": "Wig 22",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_22.webp",
+            "label": "Wig 22"
+          }
+        },
+        {
+          "id": "wig-23",
+          "label": "Wig 23",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_23.webp",
+            "label": "Wig 23"
+          }
+        },
+        {
+          "id": "wig-24",
+          "label": "Wig 24",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_24.webp",
+            "label": "Wig 24"
+          }
+        },
+        {
+          "id": "wig-25",
+          "label": "Wig 25",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_25.webp",
+            "label": "Wig 25"
+          }
+        },
+        {
+          "id": "wig-26",
+          "label": "Wig 26",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_26.webp",
+            "label": "Wig 26"
+          }
+        },
+        {
+          "id": "wig-27",
+          "label": "Wig 27",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_27.webp",
+            "label": "Wig 27"
+          }
+        },
+        {
+          "id": "wig-28",
+          "label": "Wig 28",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_28.webp",
+            "label": "Wig 28"
+          }
+        },
+        {
+          "id": "wig-29",
+          "label": "Wig 29",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_29.webp",
+            "label": "Wig 29"
+          }
+        },
+        {
+          "id": "wig-30",
+          "label": "Wig 30",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_30.webp",
+            "label": "Wig 30"
+          }
+        },
+        {
+          "id": "wig-31",
+          "label": "Wig 31",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_31.webp",
+            "label": "Wig 31"
+          }
+        },
+        {
+          "id": "wig-32",
+          "label": "Wig 32",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Wig_2026_32.webp",
+            "label": "Wig 32"
+          }
+        }
+      ]
+    },
+    {
+      "id": "human-hair",
+      "label": "Human Hair Implant Style",
+      "required": false,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "h05-example",
+          "label": "H05 (Example)",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_example.webp",
+            "label": "H05 (Example)"
+          }
+        },
+        {
+          "id": "h01",
+          "label": "H01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_H001.webp",
+            "label": "H01"
+          }
+        },
+        {
+          "id": "h02",
+          "label": "H02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_H02.webp",
+            "label": "H02"
+          }
+        },
+        {
+          "id": "h03",
+          "label": "H03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_H03.webp",
+            "label": "H03"
+          }
+        },
+        {
+          "id": "h04",
+          "label": "H04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_H04.webp",
+            "label": "H04"
+          }
+        },
+        {
+          "id": "h05",
+          "label": "H05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Human_hair_H05.webp",
+            "label": "H05"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eyes",
+      "label": "Eyes",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eye_Same.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "e01",
+          "label": "E01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E01.webp",
+            "label": "E01"
+          }
+        },
+        {
+          "id": "e02",
+          "label": "E02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E02.webp",
+            "label": "E02"
+          }
+        },
+        {
+          "id": "e03",
+          "label": "E03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E03.webp",
+            "label": "E03"
+          }
+        },
+        {
+          "id": "e04",
+          "label": "E04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E04.webp",
+            "label": "E04"
+          }
+        },
+        {
+          "id": "e05",
+          "label": "E05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E05.webp",
+            "label": "E05"
+          }
+        },
+        {
+          "id": "e06",
+          "label": "E06",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E06.webp",
+            "label": "E06"
+          }
+        },
+        {
+          "id": "e07",
+          "label": "E07",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E07.webp",
+            "label": "E07"
+          }
+        },
+        {
+          "id": "e08",
+          "label": "E08",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E08.webp",
+            "label": "E08"
+          }
+        },
+        {
+          "id": "e09",
+          "label": "E09",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E09.webp",
+            "label": "E09"
+          }
+        },
+        {
+          "id": "e10",
+          "label": "E10",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E10.webp",
+            "label": "E10"
+          }
+        },
+        {
+          "id": "e11",
+          "label": "E11",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E11.webp",
+            "label": "E11"
+          }
+        },
+        {
+          "id": "e12",
+          "label": "E12",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E12.webp",
+            "label": "E12"
+          }
+        },
+        {
+          "id": "e13",
+          "label": "E13",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E13.webp",
+            "label": "E13"
+          }
+        },
+        {
+          "id": "e14",
+          "label": "E14",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E14.webp",
+            "label": "E14"
+          }
+        },
+        {
+          "id": "e15",
+          "label": "E15",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E15.webp",
+            "label": "E15"
+          }
+        },
+        {
+          "id": "e16",
+          "label": "E16",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Eyes_E16.webp",
+            "label": "E16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "skin",
+      "label": "Skin",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Same_Skin.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "fair",
+          "label": "Fair",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Skin_Fair.webp",
+            "label": "Fair"
+          }
+        },
+        {
+          "id": "tan",
+          "label": "Tan",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Skin_Tan.webp",
+            "label": "Tan"
+          },
+          "productionNote": "Diana factory pack shown in Tan."
+        },
+        {
+          "id": "cocoa",
+          "label": "Cocoa",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Skin_Cocoa.webp",
+            "label": "Cocoa"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nail",
+      "label": "Nail",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Same_Nail.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "z01",
+          "label": "Z01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z01.webp",
+            "label": "Z01"
+          }
+        },
+        {
+          "id": "z02",
+          "label": "Z02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z02.webp",
+            "label": "Z02"
+          }
+        },
+        {
+          "id": "z03",
+          "label": "Z03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z03.webp",
+            "label": "Z03"
+          }
+        },
+        {
+          "id": "z04",
+          "label": "Z04",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z04.webp",
+            "label": "Z04"
+          }
+        },
+        {
+          "id": "z05",
+          "label": "Z05",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z05.webp",
+            "label": "Z05"
+          }
+        },
+        {
+          "id": "z06",
+          "label": "Z06",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z06.webp",
+            "label": "Z06"
+          }
+        },
+        {
+          "id": "z07",
+          "label": "Z07",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z07.webp",
+            "label": "Z07"
+          }
+        },
+        {
+          "id": "z08",
+          "label": "Z08",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z08.webp",
+            "label": "Z08"
+          }
+        },
+        {
+          "id": "z09",
+          "label": "Z09",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z09.webp",
+            "label": "Z09"
+          }
+        },
+        {
+          "id": "z10",
+          "label": "Z10",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z10.webp",
+            "label": "Z10"
+          }
+        },
+        {
+          "id": "z11",
+          "label": "Z11",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z11.webp",
+            "label": "Z11"
+          }
+        },
+        {
+          "id": "z12",
+          "label": "Z12",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z12.webp",
+            "label": "Z12"
+          }
+        },
+        {
+          "id": "z13",
+          "label": "Z13",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/FNail_Z13.webp",
+            "label": "Z13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "areola",
+      "label": "Areola",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Same_Areola.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "light-brown",
+          "label": "Light brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_01.webp",
+            "label": "Light brown"
+          }
+        },
+        {
+          "id": "pink",
+          "label": "Pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_02.webp",
+            "label": "Pink"
+          }
+        },
+        {
+          "id": "tan",
+          "label": "Tan",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_03.webp",
+            "label": "Tan"
+          }
+        },
+        {
+          "id": "dark-tan",
+          "label": "Dark tan",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_04.webp",
+            "label": "Dark tan"
+          }
+        }
+      ]
+    },
+    {
+      "id": "areola-width",
+      "label": "Areola Width",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_width.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "3cm",
+          "label": "3cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_width_01.webp",
+            "label": "3cm"
+          }
+        },
+        {
+          "id": "4cm",
+          "label": "4cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_width_02.webp",
+            "label": "4cm"
+          }
+        },
+        {
+          "id": "5cm",
+          "label": "5cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Areola_width_03.webp",
+            "label": "5cm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "labia",
+      "label": "Labia",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "same-as-photo",
+          "label": "Same as photo",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Same_Labia.webp",
+            "label": "Same as photo"
+          }
+        },
+        {
+          "id": "pink",
+          "label": "Pink",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Labia_Pink.webp",
+            "label": "Pink"
+          }
+        },
+        {
+          "id": "light-brown",
+          "label": "Light Brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Labia_Light_Brown.webp",
+            "label": "Light Brown"
+          }
+        },
+        {
+          "id": "brown",
+          "label": "Brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Labia_Brown.webp",
+            "label": "Brown"
+          }
+        },
+        {
+          "id": "dark-brown",
+          "label": "Dark Brown",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Labia_Dark_Brown.webp",
+            "label": "Dark Brown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pubic-hair",
+      "label": "Pubic Hair",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "none",
+          "label": "None",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/None.webp",
+            "label": "None"
+          }
+        },
+        {
+          "id": "style-01",
+          "label": "Style 01",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Pubic_Y01.webp",
+            "label": "Style 01"
+          },
+          "productionNote": "Factory style +$100. MAP Implanted Pubic Hair EXW $50 / MAP RSP blank."
+        },
+        {
+          "id": "style-02",
+          "label": "Style 02",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Pubic_Y02.webp",
+            "label": "Style 02"
+          },
+          "productionNote": "Factory style +$100. MAP Implanted Pubic Hair EXW $50 / MAP RSP blank."
+        },
+        {
+          "id": "style-03",
+          "label": "Style 03",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Pubic_Y03.webp",
+            "label": "Style 03"
+          },
+          "productionNote": "Factory style +$100. MAP Implanted Pubic Hair EXW $50 / MAP RSP blank."
+        },
+        {
+          "id": "style-04",
+          "label": "Style 04",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Pubic_Y04.webp",
+            "label": "Style 04"
+          },
+          "productionNote": "Factory style +$100. MAP Implanted Pubic Hair EXW $50 / MAP RSP blank."
+        },
+        {
+          "id": "style-05",
+          "label": "Style 05",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Pubic_Y05.webp",
+            "label": "Style 05"
+          },
+          "productionNote": "Factory style +$100. MAP Implanted Pubic Hair EXW $50 / MAP RSP blank."
+        }
+      ]
+    },
+    {
+      "id": "vagina",
+      "label": "Vagina",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "unibody",
+          "label": "Unibody",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Unibody_vagina.webp",
+            "label": "Unibody"
+          }
+        },
+        {
+          "id": "removable",
+          "label": "Removable",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Removable_vagina.webp",
+            "label": "Removable"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vagina-depth",
+      "label": "Vagina Depth",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "default-depth-15cm",
+          "label": "Default depth 15cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_depth.webp",
+            "label": "Default depth 15cm"
+          }
+        },
+        {
+          "id": "12cm",
+          "label": "12cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_depth01.webp",
+            "label": "12cm"
+          }
+        },
+        {
+          "id": "15cm",
+          "label": "15cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_depth02.webp",
+            "label": "15cm"
+          }
+        },
+        {
+          "id": "17cm",
+          "label": "17cm",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_depth03.webp",
+            "label": "17cm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vagina-texture",
+      "label": "Vagina Texture",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "texture-01",
+          "label": "Texture 01",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_texture_01.webp",
+            "label": "Texture 01"
+          }
+        },
+        {
+          "id": "texture-02",
+          "label": "Texture 02",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_texture_03.webp",
+            "label": "Texture 02"
+          }
+        },
+        {
+          "id": "texture-03",
+          "label": "Texture 03",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_texture_02.webp",
+            "label": "Texture 03"
+          }
+        }
+      ]
+    },
+    {
+      "id": "standing",
+      "label": "Standing / Feet",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "standing-without-bolts-hard-feet",
+          "label": "Standing without bolts (Hard feet)",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Standing_01.webp",
+            "label": "Standing without bolts (Hard feet)"
+          },
+          "productionNote": "Maps to MAP Standing Feet without Bolts / Hard Feet. Sept promo free Hard Feet when selected as upgrade path — included in Sept freebies group as hard-feet too."
+        },
+        {
+          "id": "standing-with-bolts",
+          "label": "Standing with bolts",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Standing_02.webp",
+            "label": "Standing with bolts"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sept-promo-freebies",
+      "label": "September Promo Freebies (Ends 30 Sept)",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-promo-add-on",
+          "label": "No promo add-on",
+          "priceDelta": null
+        },
+        {
+          "id": "extra-silicone-head",
+          "label": "Extra Silicone Head (FREE this month)",
+          "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_same.webp",
+            "label": "Extra Silicone Head (FREE this month)"
+          },
+          "promoClock": {
+            "start": "2026-09-01",
+            "end": "2026-09-30",
+            "endLabel": "Ends 30 Sept",
+            "promoLabel": "Fanreal - Limited Time Promo (Ends: 30 Sept)",
+            "displayDelta": 0,
+            "say": "promo",
+            "catalogPriceDelta": 550
+          },
+          "productionNote": "Sept 1–30 2026 Fanreal promo. MAP Extra Silicone Head MAP/RSP $550. Free Second Head (excl. UniSeries). Fanreal - Limited Time Promo (Ends: 30 Sept)"
+        }
+      ]
+    },
+    {
+      "id": "more-features",
+      "label": "More Features",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-more-features",
+          "label": "None",
+          "priceDelta": null
+        },
+        {
+          "id": "foot-joint-upgrade",
+          "label": "Foot joint upgrade",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Foot_joint_upgrade.webp",
+            "label": "Foot joint upgrade"
+          },
+          "productionNote": "Factory Foot joint upgrade +$100. Related to MAP Articulated toes EXW $80 / Movable Toes EXW $30. Sept freebies also list Movable Toes FREE — prefer sept-freebies.movable-toes for promo path."
+        },
+        {
+          "id": "freckle",
+          "label": "Freckle",
+          "priceDelta": 80.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Freckle.webp",
+            "label": "Freckle"
+          },
+          "productionNote": "MAP Freckle EXW $50; factory +$80; MAP RSP blank — factory list price."
+        },
+        {
+          "id": "nipple-piercing",
+          "label": "Nipple piercing",
+          "priceDelta": 20.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Nipple_piercing.webp",
+            "label": "Nipple piercing"
+          },
+          "productionNote": "MAP Nipples/Navel/Ear Piercing EXW $5; factory +$20."
+        },
+        {
+          "id": "navel-ring",
+          "label": "Navel ring",
+          "priceDelta": 20.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Navel_ring.webp",
+            "label": "Navel ring"
+          },
+          "productionNote": "MAP Nipples/Navel/Ear Piercing EXW $5; factory +$20."
+        },
+        {
+          "id": "pierce-ears",
+          "label": "Pierce Ears",
+          "priceDelta": 20.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/05/Pierce_Ears.webp",
+            "label": "Pierce Ears"
+          },
+          "productionNote": "MAP Nipples/Navel/Ear Piercing EXW $5; factory +$20."
+        },
+        {
+          "id": "replaceable-vagina-insert",
+          "label": "Replaceable vagina insert",
+          "priceDelta": 30.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Vagina_Insert.webp",
+            "label": "Replaceable vagina insert"
+          },
+          "productionNote": "MAP Extra Removable Sleeve EXW $15; factory +$30."
+        },
+        {
+          "id": "bikini-print",
+          "label": "Bikini print",
+          "priceDelta": 100.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Bikini.webp",
+            "label": "Bikini print"
+          },
+          "productionNote": "MAP Tan Line EXW $60; factory Bikini print +$100; MAP RSP blank — factory list price."
+        },
+        {
+          "id": "hymen",
+          "label": "Hymen",
+          "priceDelta": 80.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Hymen.webp",
+            "label": "Hymen"
+          },
+          "productionNote": "On factory more_features; not a separate MAP row — factory list price $80."
+        }
+      ]
+    },
+    {
+      "id": "packaging",
+      "label": "Packaging",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "carton",
+          "label": "Carton",
+          "priceDelta": null,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Packaging_01.webp",
+            "label": "Carton"
+          }
+        },
+        {
+          "id": "premium",
+          "label": "Premium",
+          "priceDelta": 700.0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Packaging_02.webp",
+            "label": "Premium"
+          },
+          "productionNote": "Factory Premium +$700. MAP 航空箱/flight case EXW $120; MAP RSP blank — factory list price (verify before charge)."
+        }
+      ]
+    },
+    {
+      "id": "order-notes",
+      "label": "Order Notes",
+      "required": false,
+      "selectionMode": "single",
+      "display": "text",
+      "options": [
+        {
+          "id": "order-notes--free-text-field",
+          "label": "(free text field)",
+          "priceDelta": 0
+        }
+      ]
+    }
+  ],
+  "recommended_next_shopify_writes": [
+    {
+      "action": "productUpdate metafield custom.customization_groups",
+      "targets": [
+        "gid://shopify/Product/10564019224760"
+      ],
+      "payload": "recommended_groups_json from this report (Diana first)",
+      "do_not_write_yet": true
+    },
+    {
+      "action": "After Diana QA, clone group structure to Melissa / Nora torso / Maria torso with skin-default and torso-appropriate standing omissions",
+      "targets": [
+        "gid://shopify/Product/10564011163832",
+        "gid://shopify/Product/10564019388600",
+        "gid://shopify/Product/10564019552440"
+      ],
+      "notes": "Torsos: omit or N/A standing/hard-feet if factory torso PDP lacks feet; keep sept freebies that apply to torsos (Extra Head etc.).",
+      "do_not_write_yet": true
+    },
+    {
+      "action": "Optional Store: add custom.promo_banner metafield + under-gallery component (SE/Irontech pattern)",
+      "do_not_write_yet": true
+    }
+  ],
+  "hard_stop": "No live Shopify writes in this task — report to disk only."
+}
