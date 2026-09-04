@@ -139,7 +139,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               </Link>
             ) : null}
             <SeDollPdpFreebieBlock product={product} />
-            <IrontechAutumnPdpPromotion product={product} />
+            <IrontechAutumnPdpPromotion product={product} promoClock={promoClock} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
