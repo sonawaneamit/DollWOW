@@ -51,8 +51,10 @@ export function matchesFanrealSeptemberOption(
   group: Pick<CustomizationGroup, "id" | "label">,
   option: CustomizationOption
 ) {
-  if (/^(no thanks|no add-on|none|as shown|factory default)$/i.test(option.label.trim())) return false;
-  // MAP-backed September freebie lock: Extra Silicone Head only.
-  if (option.id !== "extra-silicone-head") return false;
-  return group.id === "fanreal-sept-free-add-ons";
+  // MAP-backed September freebie lock: Extra Silicone Head only — presented inside
+  // the head flow as Add Extra Head (full photo list), never a junk free-addons step.
+  if (!/^(add-extra-head)$/i.test(group.id) && !/add extra head/i.test(group.label)) return false;
+  if (/^(no thanks|no add-on|none|no extra head|as shown|factory default)$/i.test(option.label.trim())) return false;
+  if (/^(none|no-extra-head|no-add-on)$/i.test(option.id)) return false;
+  return true;
 }

@@ -52,34 +52,38 @@ describe("Fanreal September 2026 promotion", () => {
     expect(endedMarkup).toBe("");
   });
 
-  it("matches only Extra Silicone Head in the Fanreal Sept free-add-ons group", () => {
+  it("matches Extra Silicone Head only inside Add Extra Head (not junk free-addons / Standing)", () => {
     expect(matchesFanrealSeptemberOption(
-      { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" },
-      { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 }
+      { id: "add-extra-head", label: "Add Extra Head" },
+      { id: "xue", label: "Xue", priceDelta: 550 }
     )).toBe(true);
+    expect(matchesFanrealSeptemberOption(
+      { id: "add-extra-head", label: "Add Extra Head" },
+      { id: "none", label: "No extra head", priceDelta: 0 }
+    )).toBe(false);
     expect(matchesFanrealSeptemberOption(
       { id: "standing", label: "Standing / Feet" },
       { id: "standing-without-bolts-hard-feet", label: "Standing without bolts (Hard feet)" }
     )).toBe(false);
     expect(matchesFanrealSeptemberOption(
       { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" },
-      { id: "hard-hand", label: "Hard Hand", priceDelta: 0 }
+      { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 }
     )).toBe(false);
     expect(matchesFanrealSeptemberOption(
-      { id: "standing", label: "Standing / Feet" },
-      { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 }
+      { id: "choose-head", label: "Choose a Head" },
+      { id: "xue", label: "Xue", priceDelta: 0 }
     )).toBe(false);
   });
 
-  it("maps real fixture option ids to derived free pricing without changing catalog price", () => {
+  it("maps Add Extra Head fixture options to strike $550→$0 without fake promo on Included defaults", () => {
     const pricing = promotionOptionPrice(
       diana(),
-      { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" },
-      { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 },
+      { id: "add-extra-head", label: "Add Extra Head" },
+      { id: "xue", label: "Xue", priceDelta: 550 },
       inside
     );
     expect(pricing).toMatchObject({ catalogDelta: 550, displayDelta: 0, strike: true, active: true, promoLabel: "Fanreal - Limited Time Promo (Ends: 30 Sept)" });
-    expect(promotionOptionPrice(diana(), { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" }, { id: "extra-silicone-head", label: "Extra Silicone Head", priceDelta: 550 }, cutoff))
+    expect(promotionOptionPrice(diana(), { id: "add-extra-head", label: "Add Extra Head" }, { id: "xue", label: "Xue", priceDelta: 550 }, cutoff))
       .toMatchObject({ catalogDelta: 550, displayDelta: 550, active: false });
 
     const standing = promotionOptionPrice(
@@ -94,7 +98,7 @@ describe("Fanreal September 2026 promotion", () => {
     expect(standingMarkup).not.toContain("Fanreal");
     expect(standingMarkup).not.toContain("$0");
 
-    expect(promotionOptionPrice(diana(), { id: "fanreal-sept-free-add-ons", label: "Fanreal Sept Free Add-Ons" }, { id: "hard-hand", label: "Hard Hand", priceDelta: 0 }, inside))
+    expect(promotionOptionPrice(diana(), { id: "add-extra-head", label: "Add Extra Head" }, { id: "none", label: "No extra head", priceDelta: 0 }, inside))
       .toMatchObject({ active: false, promoLabel: null });
 
     const headMarkup = renderToStaticMarkup(createElement(PromotionalOptionPrice, { pricing, currencyCode: "USD" }));

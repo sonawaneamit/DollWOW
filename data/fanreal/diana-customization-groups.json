@@ -5,8 +5,8 @@
     "title": "Fanreal Diana 168cm F-Cup Real Skin Silicone Companion Doll"
   },
   "status": "PREVIEW_ONLY_DISK — HARD STOP: do not productUpdate live Shopify",
-  "built_at_utc": "2026-09-04T10:30:00Z",
-  "built_at_pt": "2026-09-04 (removed Order Notes; Extra Head promo lock)",
+  "built_at_utc": "2026-09-04T10:51:49Z",
+  "built_at_pt": "2026-09-04 (shape: Choose a Head + Add Extra Head; kill Order Notes / Sept free-addons / Headform)",
   "sources": [
     "diana-recommended-groups.json",
     "factory-diana-options-ui.json More features",
@@ -25,11 +25,12 @@
   },
   "after": {
     "group_count": 21,
-    "option_count": 186,
-    "swatch_option_count": 181,
-    "free_this_month_option_count": 1,
+    "option_count": 207,
+    "swatch_option_count": 202,
+    "free_this_month_option_count": 22,
     "group_ids": [
-      "headform",
+      "choose-head",
+      "add-extra-head",
       "head-upgrade",
       "tongue",
       "hair-options",
@@ -47,15 +48,14 @@
       "vagina-depth",
       "vagina-texture",
       "standing",
-      "fanreal-sept-free-add-ons",
       "more-features",
       "packaging"
     ]
   },
   "customization_groups": [
     {
-      "id": "headform",
-      "label": "Headform",
+      "id": "choose-head",
+      "label": "Choose a Head",
       "required": true,
       "selectionMode": "single",
       "display": "swatches",
@@ -284,6 +284,242 @@
           "id": "diana",
           "label": "Diana",
           "priceDelta": 0,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/08/Head_29.webp",
+            "label": "Diana"
+          }
+        }
+      ],
+      "description": "Choose one Fanreal head for this doll. Switching the head identity is included with this build."
+    },
+    {
+      "id": "add-extra-head",
+      "label": "Add Extra Head",
+      "description": "Optional add-on. Choose one additional silicone head; photos match the main head picker. During the September factory promotion one eligible second head is included.",
+      "required": false,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "none",
+          "label": "No extra head",
+          "priceDelta": 0
+        },
+        {
+          "id": "xue",
+          "label": "Xue",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_09.webp",
+            "label": "Xue"
+          }
+        },
+        {
+          "id": "vivi",
+          "label": "Vivi",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_12.webp",
+            "label": "Vivi"
+          }
+        },
+        {
+          "id": "ling",
+          "label": "Ling",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_15.webp",
+            "label": "Ling"
+          }
+        },
+        {
+          "id": "fei",
+          "label": "Fei",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_13.webp",
+            "label": "Fei"
+          }
+        },
+        {
+          "id": "anne",
+          "label": "Anne",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_08.webp",
+            "label": "Anne"
+          }
+        },
+        {
+          "id": "jing",
+          "label": "Jing",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_14.webp",
+            "label": "Jing"
+          }
+        },
+        {
+          "id": "yao",
+          "label": "Yao",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_10.webp",
+            "label": "Yao"
+          }
+        },
+        {
+          "id": "josie",
+          "label": "Josie",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_11.webp",
+            "label": "Josie"
+          }
+        },
+        {
+          "id": "gina",
+          "label": "Gina",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_17.webp",
+            "label": "Gina"
+          }
+        },
+        {
+          "id": "della",
+          "label": "Della",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_18.webp",
+            "label": "Della"
+          }
+        },
+        {
+          "id": "maria",
+          "label": "Maria",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_16.webp",
+            "label": "Maria"
+          }
+        },
+        {
+          "id": "ellie",
+          "label": "Ellie",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_19.webp",
+            "label": "Ellie"
+          }
+        },
+        {
+          "id": "carlee",
+          "label": "Carlee",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_21.webp",
+            "label": "Carlee"
+          }
+        },
+        {
+          "id": "kelly",
+          "label": "Kelly",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_26.webp",
+            "label": "Kelly"
+          }
+        },
+        {
+          "id": "vanessa",
+          "label": "Vanessa",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_23.webp",
+            "label": "Vanessa"
+          }
+        },
+        {
+          "id": "maddy",
+          "label": "Maddy",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_25.webp",
+            "label": "Maddy"
+          }
+        },
+        {
+          "id": "lila",
+          "label": "Lila",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_24.webp",
+            "label": "Lila"
+          }
+        },
+        {
+          "id": "bellona",
+          "label": "Bellona",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_20.webp",
+            "label": "Bellona"
+          }
+        },
+        {
+          "id": "mirella",
+          "label": "Mirella",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_22.webp",
+            "label": "Mirella"
+          }
+        },
+        {
+          "id": "eva",
+          "label": "Eva",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_27.webp",
+            "label": "Eva"
+          }
+        },
+        {
+          "id": "melissa",
+          "label": "Melissa",
+          "priceDelta": 550,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.fanreal.com/wp-content/uploads/2026/08/Head_30.webp",
+            "label": "Melissa"
+          }
+        },
+        {
+          "id": "diana",
+          "label": "Diana",
+          "priceDelta": 550,
           "swatch": {
             "kind": "image",
             "value": "https://www.fanreal.com/wp-content/uploads/2026/08/Head_29.webp",
@@ -1915,39 +2151,6 @@
             "kind": "image",
             "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Standing_02.webp",
             "label": "Standing with bolts"
-          }
-        }
-      ]
-    },
-    {
-      "id": "fanreal-sept-free-add-ons",
-      "label": "Fanreal Sept Free Add-Ons",
-      "required": false,
-      "selectionMode": "multiple",
-      "display": "swatches",
-      "options": [
-        {
-          "id": "no-add-on",
-          "label": "No add-on",
-          "priceDelta": null
-        },
-        {
-          "id": "extra-silicone-head",
-          "label": "Extra Silicone Head (FREE this month)",
-          "priceDelta": 0,
-          "swatch": {
-            "kind": "image",
-            "value": "https://www.fanreal.com/wp-content/uploads/2026/01/Head_same.webp",
-            "label": "Extra Silicone Head (FREE this month)"
-          },
-          "promoClock": {
-            "start": "2026-09-01",
-            "end": "2026-09-30",
-            "endLabel": "Ends 30 Sept",
-            "promoLabel": "Fanreal - Limited Time Promo (Ends: 30 Sept)",
-            "displayDelta": 0,
-            "say": "promo",
-            "catalogPriceDelta": 550
           }
         }
       ]

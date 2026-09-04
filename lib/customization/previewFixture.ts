@@ -44,23 +44,26 @@ function normalizePreviewOption(groupId: string, source: PreviewFixtureOption): 
     ...(source.swatch ? { swatch: { ...source.swatch, label: source.swatch.label?.replace(/\s*\(FREE this month\)$/i, "") } as CustomizationOption["swatch"] } : {})
   };
 
-  // The disk fixture carries source-working notes and in-window display prices.
-  // Keep those out of customer UI and restore only the one MAP catalog delta supplied.
-  if (groupId === "fanreal-sept-free-add-ons") {
-    if (source.id === "extra-silicone-head") {
-      option.priceDelta = 550;
-      delete option.priceLabel;
-    } else {
-      delete option.priceDelta;
+  // Extra Silicone Head lives inside Add Extra Head. Keep MAP catalog $550 on real head
+  // choices so promotionOptionPrice can strike to $0 in-window; neutrals stay included.
+  if (groupId === "add-extra-head") {
+    if (/^(none|no-extra-head|no-add-on)$/i.test(source.id) || /^(no extra head|no add-on|none)$/i.test(customerLabel)) {
+      option.priceDelta = 0;
       option.priceLabel = "included";
+    } else {
+      option.priceDelta = source.priceDelta ?? 550;
+      delete option.priceLabel;
     }
   }
   if (source.id === "implanted-synthetic") {
     delete option.priceDelta;
     option.priceLabel = "included";
   }
-  // Explicit $0 base choices (e.g. Standing with bolts) are included, not promo freebies.
-  if (option.priceDelta === 0 && groupId !== "fanreal-sept-free-add-ons") {
+  // Explicit $0 base choices (e.g. Standing with bolts / No extra head) are included, not promo freebies.
+  if (option.priceDelta === 0 && groupId !== "add-extra-head") {
+    option.priceLabel = "included";
+  }
+  if (option.priceDelta === 0 && groupId === "add-extra-head" && /^(none|no-extra-head)$/i.test(source.id)) {
     option.priceLabel = "included";
   }
   return option;
