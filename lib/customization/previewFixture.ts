@@ -1,6 +1,7 @@
 import dianaFixture from "@/data/fanreal/diana-customization-groups.json";
 import dianaEditorialIntro from "@/data/fanreal/diana-editorial-intro.json";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
+import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import type { Product } from "@/types/product";
 
 export const FANREAL_DIANA_PREVIEW_HANDLE = "fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll";
@@ -20,7 +21,9 @@ export function withPreviewCustomizationFixture(product: Product, vercelEnvironm
     extended: {
       ...product.extended,
       customizationGroups: normalizePreviewGroups(dianaFixture.customization_groups),
-      editorialIntro: product.extended.editorialIntro ?? dianaEditorialIntro,
+      editorialIntro: hasEditorialIntro(product.extended.editorialIntro)
+        ? product.extended.editorialIntro
+        : dianaEditorialIntro,
       previewCustomizationFixture: true
     }
   };

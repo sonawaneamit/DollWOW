@@ -1603,10 +1603,17 @@ textarea {
     margin-inline: -0.25rem;
   }
 }
+section.pdp-editorial-preview,
 .pdp-editorial-preview {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   background: #fff8f3;
+  color: #291f1b;
+  isolation: isolate;
+}
+
+.pdp-editorial-preview__copy {
   color: #291f1b;
 }
 
