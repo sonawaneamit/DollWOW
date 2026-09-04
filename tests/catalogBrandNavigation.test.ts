@@ -26,6 +26,22 @@ describe("catalog brand navigation", () => {
     expect(catalogFilterOptions.brands.some((brand) => brand.value === "real-lady")).toBe(true);
   });
 
+  it("includes Fanreal in brand chrome and supports both requested hub routes", () => {
+    const fanreal = catalogBrands.find((brand) => brand.value === "fanreal");
+    expect(fanreal).toMatchObject({ label: "Fanreal", collectionHandle: "fanreal" });
+    expect(fanreal?.tags).toContain("fanrui");
+    expect(catalogFilterOptions.brands.some((brand) => brand.value === "fanreal")).toBe(true);
+    expect(brandHubHref("fanrui")).toBe("/brands/fanreal");
+    expect(brandCollectionRedirectHref("fanreal")).toBe("/brands/fanreal");
+
+    const headerSource = fs.readFileSync(path.join(process.cwd(), "components/Header.tsx"), "utf8");
+    const filtersSource = fs.readFileSync(path.join(process.cwd(), "components/ProductFilters.tsx"), "utf8");
+    const collectionRoute = fs.readFileSync(path.join(process.cwd(), "app/collections/[handle]/page.tsx"), "utf8");
+    expect(headerSource).toContain("catalogFilterOptions.brands.map");
+    expect(filtersSource).toContain('options={catalogFilterOptions.brands}');
+    expect(collectionRoute).toContain("getCatalogBrand(handle)");
+  });
+
   it("renders the desktop brand directory as balanced columns without an internal scroller", () => {
     const headerSource = fs.readFileSync(path.join(process.cwd(), "components/Header.tsx"), "utf8");
 

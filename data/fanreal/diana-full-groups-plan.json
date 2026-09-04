@@ -1,0 +1,88 @@
+{
+  "status": "ABORTED_LIVE_APPLY — Martin HARD STOP; preview fixture path only",
+  "checklist_drive_file": "1gq_6gl90PEAiEgtxviPx1Olr9sIykaGc",
+  "preview_only": true,
+  "do_not": [
+    "productUpdate on Diana/Melissa/torsos",
+    "any Admin mutation for Fanreal live products",
+    "invent Official store CTA / EVO / Gel Breast / Hyper-Realism"
+  ],
+  "pending_when_unblocked": [
+    {
+      "action": "productUpdate metafield custom.customization_groups",
+      "product_id": "gid://shopify/Product/10564019224760",
+      "source_file": "/workspace/audit/dol-30/diana-full-groups.json",
+      "value_path": "customization_groups"
+    },
+    {
+      "action": "productUpdate metafield custom.measurements — set Weight to Ask us if missing",
+      "note": "Factory chart Weight 35kg exists; DollWOW measurements should show Weight: Ask us per ticket if missing on PDP.",
+      "proposed_patch": {
+        "Weight": "Ask us"
+      }
+    },
+    {
+      "action": "promo banner metafields",
+      "finding": "Prior DOL-30 sept-promo-notes + SE/Irontech snapshot: live SE/Irontech do not expose custom.*promo* banner metafields for storefront; promoClock rides on options. Do not invent new banner UX. Re-check Flora/Annika custom.*promo* keys READ-ONLY before any write; only mirror if storefront already reads them.",
+      "decision": "SKIP inventing banner metafields unless live SE product confirms existing keys."
+    },
+    {
+      "action": "live-check",
+      "url": "https://dollwow.com/products/fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
+      "verify": [
+        "option labels",
+        "FREE this month count (>=8 sept freebies)",
+        "swatch image presence (not letter cards)"
+      ]
+    }
+  ],
+  "swatch_strategy": "Prefer factory fanreal.com/wp-content/uploads option WebP URLs (public https, Irontech-like). Drive lh3.googleusercontent.com/d/{id}=w400 used only where factory lacks a category thumb (implanted-hair detail, movable-toes). No Rosemary URLs required — Fanreal pack covers skin/eyes/nails/etc.",
+  "sept_freebies": [
+    "hard-hand",
+    "movable-toes",
+    "articulated-fingers",
+    "soft-butt",
+    "soft-vagina",
+    "implanted-hair",
+    "extra-silicone-head (catalogPriceDelta:550)",
+    "extra-ros-head"
+  ],
+  "map_pricing_rules_applied": {
+    "extra_silicone_head_RSP": 550,
+    "blank_RSP": "priceDelta null or 0 + productionNote Ask — never invent MAP USD",
+    "factory_site_prices_ignored_as_MAP": [
+      "wig transplant 200",
+      "human hair 300",
+      "pubic 100",
+      "tongue 15",
+      "more features factory USD"
+    ]
+  },
+  "before_after": {
+    "before_groups": 4,
+    "before_options": 16,
+    "before_swatches": 0,
+    "after_groups": 22,
+    "after_options": 193,
+    "after_swatches": 187,
+    "free_this_month": 10
+  },
+  "live_url": "https://dollwow.com/products/fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
+  "updated_at_pt": "2026-09-04 10:38 PT",
+  "live_write_executed": false,
+  "canonical_preview_fixture": "/workspace/audit/dol-30/diana-recommended-groups.json",
+  "agent_alternate_build": "/workspace/audit/dol-30/diana-full-groups.json",
+  "preview_stats": {
+    "group_count": 22,
+    "option_count": 193,
+    "image_swatch_count": 187,
+    "free_this_month_option_count": 10,
+    "gap_report_stats": {
+      "group_count": 22,
+      "option_count": 193,
+      "image_swatch_count": 187
+    }
+  },
+  "live_url_unchanged": "https://dollwow.com/products/fanreal-diana-168cm-f-cup-real-skin-silicone-companion-doll",
+  "note": "Live Shopify Diana still thin 4-group customizer. Codex/Vercel preview should override from diana-recommended-groups.json."
+}
