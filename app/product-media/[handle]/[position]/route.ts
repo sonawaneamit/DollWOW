@@ -1,3 +1,5 @@
+import { readFile } from "fs/promises";
+import { join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
@@ -71,7 +73,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
   const shouldWatermark = requestedSize !== "thumb" && requestedSize !== "card";
   let output = normalized.data;
   if (shouldWatermark) {
-    const sourceLogo = await watermarkLogo(new URL("/images/brand/dollwow-black-gold-lockup.png", request.url));
+    const sourceLogo = await watermarkLogo();
     const mark = await sharp(sourceLogo)
       .resize({ width: Math.max(250, Math.round(width * 0.44)), withoutEnlargement: true })
       .ensureAlpha()
@@ -99,10 +101,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
   });
 }
 
-function watermarkLogo(url: URL) {
-  watermarkLogoPromise ??= fetch(url, { next: { revalidate: 86400 } }).then(async (response) => {
-    if (!response.ok) throw new Error(`Watermark logo unavailable (${response.status})`);
-    return Buffer.from(await response.arrayBuffer());
-  });
+function watermarkLogo() {
+  // Read from disk — never HTTP self-fetch. Preview deployments are SSO-protected, so
+  // fetching request.origin/images/... returns HTML and sharp throws (broken PDP gallery).
+  watermarkLogoPromise ??= readFile(join(process.cwd(), "public/images/brand/dollwow-black-gold-lockup.png"));
   return watermarkLogoPromise;
 }
