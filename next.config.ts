@@ -108,6 +108,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cdn.shopify.com" },
       { protocol: "https", hostname: "img.staticdj.com" },
       { protocol: "https", hostname: "www.rosemarydoll.com" },
+      { protocol: "https", hostname: "www.fanreal.com" },
       { protocol: "https", hostname: "images.unsplash.com" }
     ]
   }
