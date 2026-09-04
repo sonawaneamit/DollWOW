@@ -28,6 +28,7 @@ import {
 } from "@/lib/catalog/pdpSeo";
 import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
+import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
@@ -59,7 +60,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const promoClock = previewPromotionClock(requestedPromoClock);
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
-  const product = mergeAdminMetafields(storefrontProduct, adminProductData);
+  const product = withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData));
   const publicProduct = withProtectedProductImages(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
