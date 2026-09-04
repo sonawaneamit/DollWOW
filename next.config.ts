@@ -99,6 +99,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd()
   },
+  // Ensure product-media watermark lockup is present in serverless traces (SSO previews).
+  outputFileTracingIncludes: {
+    "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
+    "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"]
+  },
   images: {
     // Catalog media is sourced from supplier-authorized Shopify files. Loading it
     // directly keeps a failed optimization request from hiding product galleries.

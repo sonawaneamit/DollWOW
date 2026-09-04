@@ -28,6 +28,7 @@ import {
 } from "@/lib/catalog/pdpSeo";
 import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
+import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -94,7 +95,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productBrand = product.extended.brand ?? product.vendor;
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
-  const showLiveEditorial = Boolean(product.extended.editorialIntro);
+  const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
 
   return (
     <div>

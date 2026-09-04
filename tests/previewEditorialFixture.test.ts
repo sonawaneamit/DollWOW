@@ -44,4 +44,15 @@ describe("Flora preview editorial fixture", () => {
     expect(withPreviewEditorialFixture(product, "preview")).toBe(product);
     expect(product.extended.editorialIntro.heading).toBe("Admin heading");
   });
+
+  it("replaces incomplete Admin editorial shells on Vercel preview", () => {
+    const product = floraProduct();
+    product.extended.editorialIntro = { eyebrow: "", heading: "", paragraph: "" };
+
+    const preview = withPreviewEditorialFixture(product, "preview");
+    expect(preview.extended.editorialIntro).toMatchObject({
+      eyebrow: "Unapologetic Elegance",
+      heading: "A Study in Crimson Ambition"
+    });
+  });
 });

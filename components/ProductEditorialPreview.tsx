@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { protectedProductImageUrl } from "@/lib/catalog/productImage";
+import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import type { Product } from "@/types/product";
 
 type Props = {
@@ -79,7 +80,8 @@ export function supportsProductEditorialPreview(product: Product) {
 export function ProductEditorialPreview({ product, editorial, preview = false }: Props) {
   const testPreview = editorialPreviews[product.handle];
   const content = preview ? testPreview : editorial;
-  if (!content) return null;
+  // Require real magazine copy — empty Admin shells must not paint a blank block.
+  if (!hasEditorialIntro(content)) return null;
   const media = testPreview || {
     imageIndex: Math.min(3, Math.max(0, product.images.length - 1)),
     imageAlt: `${product.title} editorial product portrait`,
@@ -87,7 +89,12 @@ export function ProductEditorialPreview({ product, editorial, preview = false }:
   };
 
   return (
-    <section className="pdp-editorial-preview" aria-labelledby="pdp-editorial-preview-title">
+    <section
+      className="pdp-editorial-preview"
+      aria-labelledby="pdp-editorial-preview-title"
+      data-testid="pdp-editorial-magazine"
+      data-editorial-mode={preview ? "test-preview" : "live"}
+    >
       {preview ? <div className="pdp-editorial-preview__notice">Preview only · Not published</div> : null}
       <div className="pdp-editorial-preview__inner">
         <div className="pdp-editorial-preview__media">
@@ -95,6 +102,8 @@ export function ProductEditorialPreview({ product, editorial, preview = false }:
             src={protectedProductImageUrl(product.handle, media.imageIndex)}
             alt={media.imageAlt}
             fill
+            priority
+            loading="eager"
             sizes="(min-width: 1024px) 48vw, 100vw"
             className="pdp-editorial-preview__image"
             style={{ objectPosition: media.imagePosition }}
