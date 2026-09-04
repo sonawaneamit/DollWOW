@@ -47,4 +47,19 @@ describe("protected product images", () => {
       "/product-media/v4/lusandy-himari-157cm-b-cup-silicone-companion-doll/0?size=card&rev=adult-factory-still-20260829"
     );
   });
+
+  it("revises gallery-qa Sophia/Nadia/Belle proxy URLs after studio-first reorder", () => {
+    const handles = [
+      "lusandy-sophia-170cm-g-cup-silicone-companion-doll-gallery-qa",
+      "lusandy-nadia-159cm-g-cup-silicone-companion-doll-gallery-qa",
+      "lusandy-belle-165cm-d-cup-silicone-companion-doll-gallery-qa"
+    ] as const;
+
+    for (const handle of handles) {
+      const doll = { ...product, handle };
+      expect(protectedProductImageUrlFor(doll, doll.featuredImage)).toBe(
+        `/product-media/v4/${handle}/0?rev=studio-first-20260904`
+      );
+    }
+  });
 });

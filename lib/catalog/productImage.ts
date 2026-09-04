@@ -21,7 +21,10 @@ export function productImageSources(product: Product) {
 export type ProtectedImageSize = "full" | "card" | "thumb";
 
 const PRODUCT_IMAGE_CACHE_REVISIONS: Record<string, string> = {
-  "lusandy-himari-157cm-b-cup-silicone-companion-doll": "adult-factory-still-20260829"
+  "lusandy-himari-157cm-b-cup-silicone-companion-doll": "adult-factory-still-20260829",
+  "lusandy-sophia-170cm-g-cup-silicone-companion-doll-gallery-qa": "studio-first-20260904",
+  "lusandy-nadia-159cm-g-cup-silicone-companion-doll-gallery-qa": "studio-first-20260904",
+  "lusandy-belle-165cm-d-cup-silicone-companion-doll-gallery-qa": "studio-first-20260904"
 };
 
 export function protectedProductImageUrl(handle: string, position = 0, size: ProtectedImageSize = "full") {
