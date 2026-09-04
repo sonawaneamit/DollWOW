@@ -39,6 +39,7 @@ import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPr
 import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
 import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
+import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
 
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
@@ -91,7 +92,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productBrand = product.extended.brand ?? product.vendor;
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
-  const showLiveEditorial = Boolean(product.extended.editorialIntro);
+  const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
 
   return (
     <div>

@@ -48,4 +48,12 @@ describe("Fanreal preview fixture", () => {
 
     expect(withPreviewCustomizationFixture(live, "preview").extended.editorialIntro).toBe(live.extended.editorialIntro);
   });
+
+  it("replaces incomplete Diana editorial shells on Vercel preview", () => {
+    const live = product();
+    live.extended.editorialIntro = { eyebrow: " ", heading: "", paragraph: "" };
+    const preview = withPreviewCustomizationFixture(live, "preview");
+    expect(preview.extended.editorialIntro?.eyebrow).toBe("Real Skin 168 F, factory still");
+    expect(preview.extended.editorialIntro?.heading).toBe("Diana in Tan");
+  });
 });

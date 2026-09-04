@@ -73,22 +73,29 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
   const shouldWatermark = requestedSize !== "thumb" && requestedSize !== "card";
   let output = normalized.data;
   if (shouldWatermark) {
-    const sourceLogo = await watermarkLogo();
-    const mark = await sharp(sourceLogo)
-      .resize({ width: Math.max(250, Math.round(width * 0.44)), withoutEnlargement: true })
-      .ensureAlpha()
-      .linear([0, 0, 0, 0.2], [215, 168, 70, 0])
-      .rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
-      .png()
-      .toBuffer({ resolveWithObject: true });
-    output = await sharp(normalized.data)
-      .composite([{
-        input: mark.data,
-        left: Math.max(0, Math.round((width - mark.info.width) / 2)),
-        top: Math.max(0, Math.min(height - mark.info.height, Math.round(height * 0.63 - mark.info.height / 2)))
-      }])
-      .webp({ quality: 86, effort: 4 })
-      .toBuffer();
+    try {
+      const sourceLogo = await watermarkLogo();
+      const mark = await sharp(sourceLogo)
+        .resize({ width: Math.max(250, Math.round(width * 0.44)), withoutEnlargement: true })
+        .ensureAlpha()
+        .linear([0, 0, 0, 0.2], [215, 168, 70, 0])
+        .rotate(-8, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
+        .png()
+        .toBuffer({ resolveWithObject: true });
+      output = await sharp(normalized.data)
+        .composite([{
+          input: mark.data,
+          left: Math.max(0, Math.round((width - mark.info.width) / 2)),
+          top: Math.max(0, Math.min(height - mark.info.height, Math.round(height * 0.63 - mark.info.height / 2)))
+        }])
+        .webp({ quality: 86, effort: 4 })
+        .toBuffer();
+    } catch {
+      // Prefer a solid unwatermarked hero over a 500 — SSO previews previously
+      // lost the whole gallery when watermark loading failed.
+      watermarkLogoPromise = null;
+      output = normalized.data;
+    }
   }
 
   return new Response(new Uint8Array(output), {
@@ -103,7 +110,11 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
 
 function watermarkLogo() {
   // Read from disk — never HTTP self-fetch. Preview deployments are SSO-protected, so
-  // fetching request.origin/images/... returns HTML and sharp throws (broken left PDP image).
-  watermarkLogoPromise ??= readFile(join(process.cwd(), "public/images/brand/dollwow-black-gold-lockup.png"));
+  // fetching request.origin/images/... returns HTML and sharp throws (broken PDP gallery).
+  // Keep the lockup on the serverless trace via next.config outputFileTracingIncludes.
+  watermarkLogoPromise ??= readFile(join(process.cwd(), "public/images/brand/dollwow-black-gold-lockup.png")).catch((error) => {
+    watermarkLogoPromise = null;
+    throw error;
+  });
   return watermarkLogoPromise;
 }
