@@ -38,6 +38,7 @@
     "seo:guide:products": "node scripts/validate-ultimate-guide-products.mjs",
     "pdf:guide": "python3 scripts/build-ultimate-guide-pdf.py",
     "import:shopify-drafts": "node scripts/import-shopify-drafts.mjs",
+    "create:us-rts-duplicates": "node scripts/create-us-rts-duplicates.mjs",
     "backfill:measurements": "node scripts/backfill-shopify-measurements.mjs",
     "backfill:irontech-release-order": "node scripts/backfill-irontech-release-order.mjs",
     "backfill:source-release-order": "node scripts/backfill-source-release-order.mjs",
