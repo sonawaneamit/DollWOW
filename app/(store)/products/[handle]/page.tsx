@@ -9,6 +9,7 @@ import { PdpTrackers } from "@/components/PdpTrackers";
 import { WishlistButton } from "@/components/WishlistButton";
 import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
+import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
@@ -170,6 +171,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
+            <AfterpayMessaging amount={Number(price.amount)} currencyCode={price.currencyCode} pageType="product" itemSkus={firstAvailable?.id} itemCategories={product.productType} eligible={Boolean(firstAvailable?.availableForSale)} usesDisplayCurrency />
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-ivory-300">
               {heroSpecs.map((spec) => (

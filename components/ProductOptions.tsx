@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
@@ -524,6 +525,7 @@ function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, c
       <div className="flex justify-between gap-4 text-[15px] text-text-dim"><span>Base</span><span>{formatMoney(basePrice, currencyCode)}</span></div>
       <div className="mt-2 flex justify-between gap-4 text-[15px] text-text-dim"><span>Options</span><span>{formatMoney(optionPriceDelta, currencyCode)}</span></div>
       <div className="mt-3 flex justify-between gap-4 border-t border-border pt-3 text-xl font-semibold text-text"><span>Total</span><span>{formatMoney(totalPrice, currencyCode)}</span></div>
+      <AfterpayMessaging amount={totalPrice} currencyCode={currencyCode} pageType="product" />
     </div>
   );
 }

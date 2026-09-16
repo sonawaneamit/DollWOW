@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AfterpayFooterBadge } from "@/components/AfterpayFooterBadge";
 import Link from "next/link";
 import { PrivacySettingsButton } from "@/components/PrivacySettingsButton";
 import { FooterContactLinks } from "@/components/ContactChannels";
@@ -98,6 +99,7 @@ export function Footer() {
 
         <div className="border-t border-border py-6">
           <PaymentLogos />
+          <AfterpayFooterBadge />
         </div>
 
         <div className="flex flex-col gap-2 text-sm leading-6 text-text-faint md:flex-row md:items-center md:justify-between">

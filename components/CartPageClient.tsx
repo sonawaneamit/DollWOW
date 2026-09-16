@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
@@ -216,6 +217,7 @@ export function CartPageClient() {
           <span>Subtotal ({cart.count} item{cart.count === 1 ? "" : "s"})</span>
           <strong className="text-xl text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
         </div>
+        <AfterpayMessaging amount={cart.subtotal} currencyCode={cart.currencyCode} pageType="cart" itemSkus={cart.items.map((item) => item.merchandiseId).join(",")} />
         <p className="mt-2 text-sm leading-5 text-ivory-500">
           Shipping, taxes, and any custom options are confirmed at checkout. Custom builds include factory photo
           approval before anything ships.
