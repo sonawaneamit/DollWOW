@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
@@ -205,6 +206,7 @@ export function CartDrawer() {
               <span className="text-ivory-400">Subtotal</span>
               <strong className="text-lg text-gold-200">{formatMoney(cart.subtotal, cart.currencyCode)}</strong>
             </div>
+            <AfterpayMessaging amount={cart.subtotal} currencyCode={cart.currencyCode} pageType="cart" itemSkus={cart.items.map((item) => item.merchandiseId).join(",")} />
             <p className="mt-1 text-sm leading-4 text-ivory-500">Shipping and any custom options are confirmed at checkout.</p>
             {cart.checkoutError ? <p className="mt-2 text-sm text-danger">{cart.checkoutError}</p> : null}
             <button
