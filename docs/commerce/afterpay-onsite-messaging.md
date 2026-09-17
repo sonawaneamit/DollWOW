@@ -1,5 +1,11 @@
 # Afterpay on-site messaging
 
+## September 17 release review
+
+Owner authorized release after successful review. Brave hosted-preview checks verified active Business Hub product/cart placements and matching public identifiers; $2,550 base and cart messaging, $2,715 configured messaging, the $5,100 eligibility-limit message, mobile layout at 390px, and the provider disclosure dialog. Standard Shopify checkout lists Afterpay after selecting the US market. No payment/order submitted; customer eligibility is still determined by Afterpay.
+
+Fixed After Dark logo contrast using the existing storefront theme event and remounting the provider element when appearance changes. Browser screenshots verified white branding in dark mode and black branding after switching to light. Earlier in-app-browser provider timeouts were not reproduced on the hosted Brave preview; they are not evidence of a merchant configuration failure. TypeScript and targeted lint passed. This PR contains no preset rollout or pricing/discount/payment-settings changes.
+
 Prepared 2026-09-16. Prepared for team PR review; production requires owner approval.
 
 ## Integration

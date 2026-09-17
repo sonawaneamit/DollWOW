@@ -42,7 +42,7 @@ export function AfterpayMessaging({ amount, currencyCode, pageType, itemSkus, it
     <div className="mt-1 text-sm text-text-dim" data-afterpay-messaging={pageType}>
       <Script id="afterpay-messaging-sdk" src="https://js.squarecdn.com/square-marketplace.js" strategy="afterInteractive" />
       {createElement("square-placement", {
-        key: `${pageType}:${itemSkus ?? ""}:${itemCategories ?? ""}`,
+        key: `${pageType}:${itemSkus ?? ""}:${itemCategories ?? ""}:${appearance}`,
         "data-mpid": merchantId,
         "data-placement-id": placements[pageType],
         "data-page-type": pageType,
