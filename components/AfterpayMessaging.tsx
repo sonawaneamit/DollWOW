@@ -1,8 +1,18 @@
 "use client";
 
-import { createElement } from "react";
+import { createElement, useSyncExternalStore } from "react";
 import Script from "next/script";
 import { useCurrency } from "@/components/CurrencyProvider";
+import { DEFAULT_STOREFRONT_THEME } from "@/lib/storefrontTheme";
+
+function subscribeToTheme(onChange: () => void) {
+  window.addEventListener("dollwow-theme-change", onChange);
+  return () => window.removeEventListener("dollwow-theme-change", onChange);
+}
+
+function currentTheme() {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
 
 // Public placement identifiers from DollWow's production Business Hub, 2026-09-16.
 const merchantId = "d32e9dfd-9b59-4645-9857-57c9ebbb8aec";
@@ -23,6 +33,7 @@ type Props = {
 
 export function AfterpayMessaging({ amount, currencyCode, pageType, itemSkus, itemCategories, eligible = true, usesDisplayCurrency = false }: Props) {
   const { currency } = useCurrency();
+  const appearance = useSyncExternalStore(subscribeToTheme, currentTheme, () => DEFAULT_STOREFRONT_THEME);
   // The currency switcher is an indicative conversion, not a Shopify market.
   // Do not imply approval in another country based on a display preference.
   if (!eligible || !Number.isFinite(amount) || amount <= 0 || currencyCode !== "USD" || (usesDisplayCurrency && currency !== "USD")) return null;
@@ -42,7 +53,7 @@ export function AfterpayMessaging({ amount, currencyCode, pageType, itemSkus, it
         "data-item-categories": itemCategories,
         "data-is-eligible": "true",
         "data-size": "xs",
-        "data-appearance": "light"
+        "data-appearance": appearance
       })}
     </div>
   );
