@@ -45,6 +45,10 @@ export function namedUpgradeOrderBuilds(order: NamedUpgradeOrder, bindings: Exac
     parentRelationship: null as { parent: { id: string } } | null }));
   for (const line of lines.filter(line => !isNamedUpgradeOrderLine(line))) {
     const reference = attribute(line, '_DollWOW_build_id');
+    // Deferred brands can share an order, but never masquerade as a named build.
+    if (attribute(line, '_DollWOW_checkout_model') === 'legacy-v1' && !reference &&
+        !bindings.some(binding => binding.merchandiseId === line.variant?.id) &&
+        !line.product?.tags.includes('exact-upgrade-pilot')) continue;
     const isCharge = bindings.some(binding => binding.merchandiseId === line.variant?.id) ||
       line.product?.tags.some(tag => ['custom-option-charge', 'exact-upgrade-pilot'].includes(tag.toLowerCase()));
     if (!reference && !isCharge) continue;

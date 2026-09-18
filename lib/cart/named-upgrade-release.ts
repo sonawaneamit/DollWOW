@@ -42,17 +42,21 @@ export function releasedNamedBindings(input: unknown, parentIds: string[]): Exac
   return output;
 }
 
-export async function createReleasedNamedUpgradeCart(lines: InputLine[], discountCodes: string[], request: Request) {
+export async function createReleasedNamedUpgradeCart(lines: InputLine[], discountCodes: string[], request: Request,
+  legacyCharges?: (charge: InputLine['customizationCharge']) => Array<{ merchandiseId: string; quantity: number; attributes?: { key: string; value: string }[] }>) {
   const release = registry as NamedUpgradeRelease;
   const mapped = lines.filter(line => Object.hasOwn(release.payload.parents, line.merchandiseId));
   const unmapped = lines.filter(line => !Object.hasOwn(release.payload.parents, line.merchandiseId));
-  if (unmapped.some(line => line.customizationCharge)) throw new Error('This doll needs a verified checkout configuration. Please contact our team.');
-  // Ordinary RTS/base-only orders do not need customization records.
+  // Deferred brands retain their existing checkout; reviewed parents never fall back.
   if (!mapped.length) return undefined;
+  const deferred = unmapped.filter(line => (line.customizationCharge?.amount ?? 0) > 0);
+  if (deferred.length && !legacyCharges) throw new Error('This doll needs a verified checkout configuration. Please contact our team.');
+  const preserved = deferred.map(line => ({ parent: line,
+    charges: legacyCharges!(line.customizationCharge) }));
   const bindings = releasedNamedBindings(release, mapped.map(line => line.merchandiseId));
-  return createVerifiedNamedUpgradeCart(lines.map(line => ({ ...line,
+  return createVerifiedNamedUpgradeCart(lines.filter(line => !deferred.includes(line)).map(line => ({ ...line,
     namedUpgradeAttributes: line.namedUpgradeAttributes ?? (!line.customizationCharge ? line.attributes ?? [] : undefined)
-  })), discountCodes, request, bindings, true);
+  })), discountCodes, request, bindings, true, preserved);
 }
 
 export function loadReleasedNamedUpgradeBindings(parentIds: string[]) {

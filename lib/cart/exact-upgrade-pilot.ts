@@ -12,6 +12,9 @@ export type InputLine = {
   customizationCharge?: Parameters<typeof exactUpgradeLines>[0]['charge'];
 };
 export type Request = <T>(query: string, variables: Record<string, unknown>, options: { cache: 'no-store' }) => Promise<T>;
+export type PreservedLegacyBuild = { parent: InputLine; charges: Array<{
+  merchandiseId: string; quantity: number; attributes?: Attribute[];
+}> };
 type Variant = { id: string; price: { amount: string; currencyCode: string }; availableForSale: boolean;
   requiresShipping: boolean; product: { title: string; tags: string[] } };
 type CartLine = { id: string; quantity: number; attributes: Attribute[]; merchandise: Variant;
@@ -120,7 +123,8 @@ export async function createExactUpgradePilotCart(
 
 /** Shared executor. Bindings must come from the reviewed pilot or approved release loader. */
 export async function createVerifiedNamedUpgradeCart(
-  lines: InputLine[], discountCodes: string[], request: Request, allBindings: ExactUpgradeBinding[], allowUnmappedBaseLines = false
+  lines: InputLine[], discountCodes: string[], request: Request, allBindings: ExactUpgradeBinding[], allowUnmappedBaseLines = false,
+  preserved: PreservedLegacyBuild[] = []
 ): Promise<{ id: string; checkoutUrl: string; totalQuantity: number }> {
   const isMapped = (id: string) => allBindings.some(binding => binding.parentVariantId === id);
   if (!lines.length || lines.length > 20 || lines.some(line => !isMapped(line.merchandiseId) &&
@@ -131,23 +135,48 @@ export async function createVerifiedNamedUpgradeCart(
     throw new Error('This configuration needs a verified included-choice summary before named-upgrade checkout.');
   }
   const parentIds = [...new Set(lines.map(line => line.merchandiseId))];
+  if (preserved.some(build => isMapped(build.parent.merchandiseId))) throw new Error('Reviewed dolls cannot use legacy charges.');
+  const legacyInputs = preserved.flatMap((build, index) => [...build.charges, build.parent].map((row, item) => ({
+    merchandiseId: row.merchandiseId, quantity: row.quantity,
+    attributes: [...(row.attributes ?? []), { key: '_DollWOW_checkout_model', value: 'legacy-v1' },
+      { key: '_DollWOW_legacy_line', value: `${index}:${item}` }]
+  })));
   const bindings = allBindings.filter(binding => parentIds.includes(binding.parentVariantId));
   // Read the chosen charges, not every possible upgrade for every doll in the cart.
   const selectedBindings = bindings.filter(binding => !binding.readOnly && lines.some(line =>
     line.merchandiseId === binding.parentVariantId && line.customizationCharge?.items?.some(item =>
       item.group === binding.group && upgradeBindingAcceptsChoice(binding, item.label))));
-  const ids = [...new Set([...parentIds, ...selectedBindings.map(b => b.merchandiseId)])];
+  const ids = [...new Set([...parentIds, ...selectedBindings.map(b => b.merchandiseId), ...legacyInputs.map(row => row.merchandiseId)])];
   if (ids.length > 250) throw new Error('Too many distinct configured items for one verified checkout.');
   const live = await request<{ nodes: Array<Variant | null> }>(
     `query($ids:[ID!]!){nodes(ids:$ids){... on ProductVariant{id price{amount currencyCode} availableForSale requiresShipping product{title tags}}}}`,
     { ids }, { cache: 'no-store' }
   );
   const parentVariants = new Map(parentIds.map(id => [id, live.nodes.find(v => v?.id === id)]));
+  let legacyTotal = 0;
+  for (const build of preserved) {
+    const parent = live.nodes.find(v => v?.id === build.parent.merchandiseId);
+    if (!parent?.availableForSale || !parent.requiresShipping || parent.price.currencyCode !== 'USD' ||
+        !Number.isFinite(Number(parent.price.amount)) || build.parent.customizationCharge?.currencyCode !== 'USD') {
+      throw new Error('A deferred doll is unavailable for checkout.');
+    }
+    let charges = 0;
+    for (const row of build.charges) {
+      const variant = live.nodes.find(v => v?.id === row.merchandiseId);
+      if (!variant?.availableForSale || variant.requiresShipping || variant.price.currencyCode !== 'USD' ||
+          !Number.isInteger(row.quantity) || row.quantity <= 0 || !Number.isFinite(Number(variant.price.amount))) {
+        throw new Error('A deferred customization charge is unavailable.');
+      }
+      charges += money(Number(variant.price.amount)) * row.quantity;
+    }
+    if (charges !== money(build.parent.customizationCharge!.amount)) throw new Error('Deferred customization prices changed.');
+    legacyTotal += money(Number(parent.price.amount)) * build.parent.quantity + charges;
+  }
   if ([...parentVariants.values()].some(parent => !parent?.availableForSale || !parent.requiresShipping || parent.price.currencyCode !== 'USD' || !Number.isFinite(Number(parent.price.amount)))) {
     throw new Error('The pilot doll is not available with verified USD pricing.');
   }
   const verifiedVariants: VerifiedUpgradeVariant[] = live.nodes.flatMap(variant => {
-    if (!variant || parentIds.includes(variant.id)) return [];
+    if (!variant || !selectedBindings.some(binding => binding.merchandiseId === variant.id)) return [];
     if (!variant.product.tags.includes('dollwow-system') || !variant.product.tags.includes('exact-upgrade-pilot')) throw new Error('Unexpected pilot merchandise.');
     return [{ id: variant.id, productTitle: variant.product.title, amount: Number(variant.price.amount),
       currencyCode: variant.price.currencyCode, availableForSale: variant.availableForSale, requiresShipping: variant.requiresShipping }];
@@ -165,7 +194,7 @@ export async function createVerifiedNamedUpgradeCart(
       { key: '_DollWOW_checkout_model', value: isMapped(line.merchandiseId) ? 'named-upgrades-v1' : 'standard-v1' }] }));
   const created = checked((await request<{ cartCreate: Mutation }>(
     `mutation($input:CartInput!){cartCreate(input:$input){cart{${CART_FIELDS}} userErrors{message}}}`,
-    { input: { lines: parentInputs, discountCodes } }, { cache: 'no-store' }
+    { input: { lines: [...parentInputs, ...legacyInputs], discountCodes } }, { cache: 'no-store' }
   )).cartCreate);
   const parents = parentInputs.map((input, index) => {
     const matches = created.lines.nodes.filter(node => node.merchandise.id === input.merchandiseId &&
@@ -182,8 +211,19 @@ export async function createVerifiedNamedUpgradeCart(
     `mutation($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{${CART_FIELDS}} userErrors{message}}}`,
     { cartId: created.id, lines: additions }, { cache: 'no-store' }
   )).cartLinesAdd) : created;
-  if (completed.lines.nodes.length !== parents.length + additions.length) throw new Error('Checkout is missing a configured item.');
+  if (completed.lines.nodes.length !== parents.length + additions.length + legacyInputs.length) throw new Error('Checkout is missing a configured item.');
   let actual = 0;
+  for (const input of legacyInputs) {
+    const rows = completed.lines.nodes.filter(row => row.merchandise.id === input.merchandiseId &&
+      input.attributes.every(a => row.attributes.some(b => a.key === b.key && a.value === b.value)));
+    const variant = live.nodes.find(v => v?.id === input.merchandiseId)!;
+    if (rows.length !== 1 || rows[0].quantity !== input.quantity || rows[0].parentRelationship ||
+        rows[0].attributes.length !== input.attributes.length || rows[0].merchandise.price.currencyCode !== 'USD' ||
+        money(Number(rows[0].merchandise.price.amount)) !== money(Number(variant.price.amount))) {
+      throw new Error('A deferred checkout item changed.');
+    }
+    actual += money(Number(variant.price.amount)) * input.quantity;
+  }
   for (const [index, original] of parents.entries()) {
     const row = completed.lines.nodes.find(n => n.id === original.id);
     if (!row || row.quantity !== lines[index].quantity || row.merchandise.id !== lines[index].merchandiseId || row.parentRelationship ||
@@ -203,7 +243,7 @@ export async function createVerifiedNamedUpgradeCart(
     actual += money(verified.amount) * rows[0].quantity;
   }
   const expected = lines.reduce((sum, line) => sum + money(Number(parentVariants.get(line.merchandiseId)!.price.amount)) * line.quantity + money(line.customizationCharge?.amount ?? 0), 0);
-  if (actual !== expected) throw new Error('Configured checkout prices do not match.');
+  if (actual !== expected + legacyTotal) throw new Error('Configured checkout prices do not match.');
   namedUpgradeBuilds({ ...completed, lines: { ...completed.lines, nodes: completed.lines.nodes.filter(node =>
     node.parentRelationship || isMapped(node.merchandise.id)) } }, bindings);
   if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_EXACT_UPGRADE_PILOT_JOURNAL === '1') {

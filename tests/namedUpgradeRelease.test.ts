@@ -27,10 +27,10 @@ describe('released checkout mappings', () => {
     expect(await createReleasedNamedUpgradeCart([{ merchandiseId: 'gid://shopify/ProductVariant/3', quantity: 1 }], [], request)).toBeUndefined();
     expect(request).not.toHaveBeenCalled();
   });
-  it('never sends unmapped paid options to denomination checkout', async () => {
+  it('leaves deferred-brand-only checkout on its existing path', async () => {
     const request = vi.fn();
-    await expect(createReleasedNamedUpgradeCart([{ merchandiseId: 'gid://shopify/ProductVariant/3', quantity: 1,
-      customizationCharge: { amount: 100, currencyCode: 'USD' } }], [], request)).rejects.toThrow('verified checkout');
+    expect(await createReleasedNamedUpgradeCart([{ merchandiseId: 'gid://shopify/ProductVariant/3', quantity: 1,
+      customizationCharge: { amount: 100, currencyCode: 'USD' } }], [], request)).toBeUndefined();
     expect(request).not.toHaveBeenCalled();
   });
 });

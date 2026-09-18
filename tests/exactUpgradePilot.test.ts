@@ -15,7 +15,10 @@ function fixture(mode = '') {
     { id: binding.merchandiseId, price: { amount: mode === 'price-drift' ? '151' : '150', currencyCode: 'USD' }, availableForSale: true, requiresShipping: false,
       product: { title: binding.productTitle, tags: ['dollwow-system', 'exact-upgrade-pilot'] } }
   ];
-  if(mode==='two-products') variants.push({...variants[0],id:'gid://shopify/ProductVariant/3',price:{amount:'1500',currencyCode:'USD'}});
+  if(mode==='two-products' || mode.startsWith('legacy')) variants.push({...variants[0],id:'gid://shopify/ProductVariant/3',price:{amount:'1500',currencyCode:'USD'}});
+  if(mode.startsWith('legacy')) variants.push({...variants[1],id:'gid://shopify/ProductVariant/4',
+    price:{amount:mode === 'legacy-price-drift' ? '51' : '50',currencyCode:'USD'},
+    product:{title:'Existing option charge',tags:['custom-option-charge']}});
   type Line = { id: string; quantity: number; attributes: { key: string; value: string }[]; merchandise: typeof variants[number]; parentRelationship: { parent: { id: string } } | null };
   let rows: Line[] = [];
   const cart = () => ({ id: 'cart-test', checkoutUrl: 'https://checkout.example.test', totalQuantity: rows.reduce((n, r) => n + r.quantity, 0),
@@ -89,6 +92,30 @@ describe('development-only exact-price pilot integration', () => {
     expect(await createVerifiedNamedUpgradeCart([input, base], [], f.request, [binding], true)).toMatchObject({ totalQuantity: 3 });
     expect(f.rows().filter(row => row.parentRelationship)).toHaveLength(1);
     expect(f.rows()[1].attributes).toContainEqual({ key: '_DollWOW_checkout_model', value: 'standard-v1' });
+  });
+  it('preserves deferred paid builds in a mixed cart without changing the named build', async () => {
+    const f = fixture('legacy');
+    const deferred = { merchandiseId: 'gid://shopify/ProductVariant/3', quantity: 1,
+      attributes: [{key:'Original choices',value:'Heating'}], customizationCharge: {amount:100,currencyCode:'USD'} };
+    const charges = [{merchandiseId:'gid://shopify/ProductVariant/4',quantity:2,attributes:[{key:'Customization',value:'Heating'}]}];
+    expect(await createVerifiedNamedUpgradeCart([input], [], f.request, [binding], true, [{parent:deferred,charges}]))
+      .toMatchObject({totalQuantity:5});
+    expect(f.rows().filter(row => row.parentRelationship)).toHaveLength(1);
+    expect(f.rows().filter(row => row.attributes.some(a => a.value === 'legacy-v1'))).toHaveLength(2);
+  });
+  it('rejects legacy price drift before any mixed cart is created', async () => {
+    const f = fixture('legacy-price-drift');
+    await expect(createVerifiedNamedUpgradeCart([input], [], f.request, [binding], true, [{
+      parent:{merchandiseId:'gid://shopify/ProductVariant/3',quantity:1,customizationCharge:{amount:100,currencyCode:'USD'}},
+      charges:[{merchandiseId:'gid://shopify/ProductVariant/4',quantity:2}]
+    }])).rejects.toThrow('prices changed');
+    expect(f.calls).toHaveLength(1);
+  });
+  it('cannot disguise reviewed parents as legacy builds', async () => {
+    const f = fixture();
+    await expect(createVerifiedNamedUpgradeCart([input], [], f.request, [binding], true, [{parent:input,charges:[]}]))
+      .rejects.toThrow('cannot use legacy');
+    expect(f.calls).toHaveLength(0);
   });
   it.each(['add-error', 'missing-child', 'wrong-parent', 'lost-included-choice'])('never redirects a partial or misattached %s cart', async mode => {
     const f = fixture(mode); await expect(createExactUpgradePilotCart([input], [], f.request, f.bindings)).rejects.toThrow();

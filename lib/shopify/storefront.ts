@@ -704,7 +704,7 @@ export async function createCart(input: {
     const { createReleasedNamedUpgradeCart } = await import('@/lib/cart/named-upgrade-release');
     const cart = await createReleasedNamedUpgradeCart([{ ...input,
       namedUpgradeAttributes: input.namedUpgradeAttributes && withCare365Attribute(input.namedUpgradeAttributes)
-    }], input.discountCodes ?? [], storefrontFetch);
+    }], input.discountCodes ?? [], storefrontFetch, customizationChargeLines);
     if (cart) return { ...cart, checkoutUrl: normalizeShopifyCheckoutUrl(cart.checkoutUrl) };
   }
 
@@ -790,7 +790,7 @@ export async function createCartWithLines(input: {
     const { createReleasedNamedUpgradeCart } = await import('@/lib/cart/named-upgrade-release');
     const cart = await createReleasedNamedUpgradeCart(input.lines.map(line => ({ ...line,
       namedUpgradeAttributes: line.namedUpgradeAttributes && withCare365Attribute(line.namedUpgradeAttributes)
-    })), input.discountCodes ?? [], storefrontFetch);
+    })), input.discountCodes ?? [], storefrontFetch, customizationChargeLines);
     if (cart) return { ...cart, checkoutUrl: normalizeShopifyCheckoutUrl(cart.checkoutUrl) };
   }
 

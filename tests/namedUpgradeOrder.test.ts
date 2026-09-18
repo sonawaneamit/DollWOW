@@ -47,6 +47,15 @@ describe('named order to factory handoff', () => {
       variant: { id: 'unrelated' }, product: { tags: [] }, customAttributes: [] });
     expect(namedUpgradeFactoryPacket(order, [binding])).toMatchObject({ scope: 'NAMED_UPGRADE_BUILDS_ONLY', otherOrderLineIds: ['ordinary-item'] });
   });
+  it('keeps explicitly deferred charges outside the named factory packet', () => {
+    const order = orderFixture();
+    order.lineItems.nodes.push({id:'legacy-charge',title:'Existing charge',quantity:1,currentQuantity:1,
+      variant:{id:'legacy'},product:{tags:['custom-option-charge']},
+      customAttributes:[{key:'_DollWOW_checkout_model',value:'legacy-v1'}]});
+    expect(namedUpgradeFactoryPacket(order,[binding]).otherOrderLineIds).toEqual(['legacy-charge']);
+    order.lineItems.nodes[2].variant!.id = 'head';
+    expect(() => namedUpgradeFactoryPacket(order,[binding])).toThrow();
+  });
   it.each(['unpaid', 'truncated', 'duplicate-reference', 'missing-reference', 'wrong-parent', 'quantity', 'unknown-variant', 'ambiguous-attribute', 'missing-current-quantity'])(
     'holds %s instead of guessing a factory build', mode => {
       const order = orderFixture(); const [parent, child] = order.lineItems.nodes;
