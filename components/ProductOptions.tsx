@@ -31,6 +31,7 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   getDefaultSelections,
   getOptionConflict,
+  isNeutralDefaultOption,
   isOptionAvailableForCheckout,
   nextMultipleSelection,
   resolveCustomization,
@@ -47,28 +48,39 @@ import { dollVueSelectionKey } from "@/lib/dollvue/public";
 import { PaymentLogos } from "./PaymentLogos";
 import { promotionOptionPrice, withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
 import { PromotionalOptionPrice } from "./promotions/PromotionalOptionPrice";
+import { configurationPresets, matchesConfigurationPreset, type PresetId } from "@/lib/customization/presets";
+import { ConfigurationPresets } from "./ConfigurationPresets";
+import { templateConfigurationPresets, type TemplatePresetDefinition } from "@/lib/customization/template-presets";
+import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetChoices } from "@/lib/customization/preset-choices";
+import { PresetChoiceDialog } from "./PresetChoiceDialog";
 
-export function ProductOptions({ product, promoClock }: { product: Product; promoClock?: string }) {
+export function ProductOptions({ product, promoClock, templateRecipe, presetChoicePreview = false }: { product: Product; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
   if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
-  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} /> : <ProductOptionsOnRequest product={product} />;
+  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} /> : <ProductOptionsOnRequest product={product} />;
 }
 
-function ProductOptionsBuilder({ product, config, promoClock }: { product: Product; config: ReturnType<typeof getCustomizationConfig>; promoClock?: string }) {
+function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview }: { product: Product; config: ReturnType<typeof getCustomizationConfig>; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean }) {
   const router = useRouter();
   const didMountRef = useRef(false);
+  const purchaseRef = useRef<HTMLDivElement>(null);
+  const scrollToPurchaseRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const promotionNow = usePromotionClock(promoClock);
   const pricedConfig = useMemo(() => withPromotionOptionPricing(product, config, promotionNow), [config, product, promotionNow]);
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(pricedConfig.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
+  const [manualExpanded, setManualExpanded] = useState(false);
   const [selected, setSelected] = useState(() => getDefaultSelections(pricedConfig));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isPreviewOpen, setPreviewOpen] = useState(false);
+  const [chosenPreset, setChosenPreset] = useState<PresetId | null>(null);
+  const [choiceDialogGroup, setChoiceDialogGroup] = useState<string | null>(null);
+  const [choiceDrafts, setChoiceDrafts] = useState<Record<string, string>>({});
 
   useEffect(() => {
     let restoreFrame: number | undefined;
@@ -98,35 +110,80 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
   const basePrice = Number(variant?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = variant?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
   const resolved = useMemo(() => resolveCustomization(pricedConfig, selected, basePrice), [basePrice, pricedConfig, selected]);
-  const activeGroupIndex = Math.max(0, pricedConfig.groups.findIndex((group) => group.id === activeGroupId));
-  const activeGroup = pricedConfig.groups[activeGroupIndex] ?? pricedConfig.groups[0];
-  const previousGroup = pricedConfig.groups[activeGroupIndex - 1] ?? null;
-  const nextGroup = pricedConfig.groups[activeGroupIndex + 1] ?? null;
+  const visibleGroups = pricedConfig.groups.filter(group => Object.hasOwn(resolved.selections, group.id) &&
+    (!/^(?:(?:select|selec)\s+)?tattoo\s+position$/i.test(group.label.trim()) ||
+      resolved.selectedOptions.some(option => /^(?:(?:select|selec)\s+)?tattoo$/i.test(option.groupLabel.trim()) &&
+        !isNeutralDefaultOption(option.optionId, option.optionLabel))));
+  const recipePresets = useMemo(() => templateRecipe === undefined
+    ? configurationPresets(product.handle, pricedConfig, basePrice, selected)
+    : templateConfigurationPresets(templateRecipe, config, pricedConfig, basePrice, selected),
+  [product.handle, config, pricedConfig, basePrice, selected, templateRecipe]);
+  const presets = useMemo(() => presetChoicePreview
+    ? withPresetChoices(recipePresets, pricedConfig, basePrice, selected, [litaHeadChoice], chosenPreset && chosenPreset !== "starter" ? [litaHeadChoice.groupId] : [])
+    : recipePresets.map(preset => ({ ...preset, choiceSlots: [], pendingChoices: [] })),
+  [recipePresets, pricedConfig, basePrice, selected, presetChoicePreview, chosenPreset]);
+  const activePreset = presets.find(preset => preset.id === chosenPreset && matchesConfigurationPreset(preset, selected));
+  const pendingChoices = activePreset?.pendingChoices ?? [];
+  const dialogSlot = activePreset?.choiceSlots.find(slot => slot.groupId === choiceDialogGroup);
+  const dialogOptions = dialogSlot ? presetChoiceOptions(pricedConfig, selected, dialogSlot)
+    .filter(option => !selectionIds(selected[dialogSlot.groupId]).slice(1).includes(option.id)) : [];
+  const purchaseTotal = pendingChoices.length ? activePreset!.totalPrice : resolved.totalPrice;
+  const manualVisible = presets.length !== 3 || manualExpanded;
+  const activeGroupIndex = Math.max(0, visibleGroups.findIndex((group) => group.id === activeGroupId));
+  const activeGroup = visibleGroups[activeGroupIndex];
+  const previousGroup = visibleGroups[activeGroupIndex - 1] ?? null;
+  const nextGroup = visibleGroups[activeGroupIndex + 1] ?? null;
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const heroImageUrl = protectedProductImageUrlFor(product, heroImage);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
-  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues && !resolved.requiresPriceConfirmation);
+
+  useEffect(() => {
+    if (!scrollToPurchaseRef.current) return;
+    let settledFrame: number | undefined;
+    const frame = window.requestAnimationFrame(() => {
+      // Let the preset radio's focus scroll and collapsed layout settle first.
+      settledFrame = window.requestAnimationFrame(() => {
+        const target = purchaseRef.current;
+        if (!target) return;
+        scrollToPurchaseRef.current = false;
+        target.scrollIntoView({
+          block: "center",
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+        });
+      });
+    });
+    return () => {
+      window.cancelAnimationFrame(frame);
+      if (settledFrame !== undefined) window.cancelAnimationFrame(settledFrame);
+    };
+  }, [selected]);
 
   useEffect(() => {
     if (!didMountRef.current) {
       didMountRef.current = true;
       return;
     }
-    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
-    const targetId = isReviewing ? "custom-step-review" : `custom-step-${activeGroupId}`;
-    window.requestAnimationFrame(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 1024 || !manualVisible) return;
+    const targetId = isReviewing ? "custom-step-review" : `custom-step-${activeGroup?.id}`;
+    const frame = window.requestAnimationFrame(() => {
       const panel = document.getElementById(targetId);
       if (!panel) return;
       const top = panel.getBoundingClientRect().top + window.scrollY - 92;
       const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
       window.scrollTo({ top: Math.max(0, top), behavior });
     });
-  }, [activeGroupId, isReviewing]);
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeGroup?.id, isReviewing, manualVisible]);
 
   async function addToCart() {
-    if (!canCheckout) return;
+    if (pendingChoices.length) {
+      setChoiceDialogGroup(pendingChoices[0].groupId);
+      return;
+    }
+    if (!canCheckout || loading) return;
     setLoading(true);
     setError("");
     try {
@@ -165,9 +222,11 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
         productImageUrl: heroImage?.url,
         productImageAlt: heroImage?.altText ?? displayTitle,
         currencyCode,
-        customizationSummary: cartCustomizationSummary(resolved.selectedOptions)
+        customizationSummary: cartCustomizationSummary(resolved.selectedOptions.filter(option => visibleGroups.some(group => group.id === option.groupId)))
       });
       trackEvent(analyticsEvents.addToCart, {
+        product_handle: product.handle,
+        configuration_preset: activePreset?.id ?? (chosenPreset ? "customized" : "none"),
         value: resolved.totalPrice,
         currency: currencyCode,
         items: [{
@@ -199,7 +258,15 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
 
   function selectOption(groupId: string, optionId: string) {
     if (!isOptionAvailableForCheckout(pricedConfig, groupId, optionId)) return;
+    if (chosenPreset) trackEvent("configuration_preset_edited", { product_handle: product.handle, preset: chosenPreset, group_id: groupId });
     const group = pricedConfig.groups.find((item) => item.id === groupId);
+    if (presetChoicePreview && groupId === litaHeadChoice.groupId) {
+      const next = group?.selectionMode === "multiple" ? nextMultipleSelection(group.options, selected[groupId], optionId) : optionId;
+      if (selectionIds(next).every(id => id === litaHeadChoice.emptyOptionId)) {
+        setChosenPreset(null);
+        setChoiceDialogGroup(null);
+      }
+    }
     markGroupReviewed(groupId);
     setSelected((current) => ({
       ...current,
@@ -215,7 +282,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
 
   function goToPreviousGroup() {
     if (isReviewing) {
-      const finalGroup = pricedConfig.groups.at(-1);
+      const finalGroup = visibleGroups.at(-1);
       if (finalGroup) setActiveGroupId(finalGroup.id);
       setReviewing(false);
       return;
@@ -230,6 +297,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
   }
 
   function goToGroup(groupId: string) {
+    setManualExpanded(true);
     setReviewing(false);
     setActiveGroupId(groupId);
   }
@@ -238,7 +306,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
     setReviewing(true);
   }
 
-  const disabledReason = resolved.issues[0]?.message || (!variant?.availableForSale ? "This build is not available to order online." : "");
+  const disabledReason = resolved.issues[0]?.message || (resolved.requiresPriceConfirmation ? "Please contact us to confirm the selected option prices." : !variant?.availableForSale ? "This build is not available to order online." : "");
 
   return (
     <section className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
@@ -246,26 +314,56 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{productBuilderHeading(product)}</p>
-          <h2 className="mt-1 font-display text-[clamp(1.75rem,3vw,2.25rem)] font-semibold leading-tight">Customize your doll</h2>
+          <h2 className="mt-1 break-words font-display text-2xl font-semibold leading-tight sm:text-3xl">Customize {displayName || "your doll"}</h2>
           <p className="mt-2 max-w-2xl text-base leading-7 text-text-dim">
-            Defaults are ready. Change only what matters to you, then review and checkout at any time.
+            {presets.length === 3 && visibleGroups[0] ? <>
+              Pick a popular setup below. Or skip to <a href={`#custom-step-${visibleGroups[0].id}`} aria-expanded={manualVisible} aria-controls={`manual-options-${product.handle}`} onClick={event => {
+                event.preventDefault();
+                const firstGroup = visibleGroups[0];
+                goToGroup(firstGroup.id);
+                window.requestAnimationFrame(() => {
+                  const panel = document.getElementById(`custom-step-${firstGroup.id}`);
+                  panel?.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
+                  panel?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+                });
+              }} className="font-semibold text-accent underline underline-offset-4">customize step-by-step</a>.
+            </> : "Choose each option below to make this build your own."}
           </p>
         </div>
-        <p className="rounded-sm bg-accent-tint px-4 py-2 text-[15px] font-semibold text-text">
-          Add to Cart anytime
-        </p>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-        <div className="rounded-md bg-surface-tint p-4 lg:hidden">
+      {presets.length === 3 && (
+        <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {
+                    scrollToPurchaseRef.current = preset.pendingChoices.length === 0;
+                    setManualExpanded(false);
+                    setReviewing(false);
+                    setSelected(preset.selections);
+                    setChosenPreset(preset.id);
+                    setChoiceDialogGroup(preset.pendingChoices[0]?.groupId ?? null);
+                    setError("");
+                    trackEvent("configuration_preset_selected", { product_handle: product.handle, preset: preset.id, value: preset.totalPrice, currency: currencyCode });
+                  }} />
+      )}
+
+      {activePreset?.choiceSlots.map(slot => {
+        const choice = pricedConfig.groups.find(group => group.id === slot.groupId)?.options.find(option => option.id === selectionIds(selected[slot.groupId])[0] && option.id !== slot.emptyOptionId);
+        return <div key={slot.groupId} className="mb-5 flex items-center gap-3 border-y border-border py-3" data-preset-choice-summary>
+          {choice?.swatch?.kind === "image" && <Image src={choice.swatch.value} alt={choice.label} width={52} height={52} className="h-[52px] w-[52px] rounded-sm object-contain" unoptimized />}
+          <div className="min-w-0 flex-1"><p className="text-sm font-semibold">{slot.label}{choice ? ` ${choice.label}` : ": choose your style"}</p><p className="text-xs text-text-dim">{choice ? "Your choice is saved with this setup." : "Choose to complete your setup. No style is preselected."}</p></div>
+          <button type="button" className="min-h-11 shrink-0 text-sm font-semibold text-accent underline underline-offset-4" onClick={() => { setChoiceDrafts(current => ({ ...current, [slot.groupId]: choice?.id ?? current[slot.groupId] })); setChoiceDialogGroup(slot.groupId); }}>{choice ? "Change" : "Choose head"}</button>
+        </div>;
+      })}
+
+      <div className={clsx("grid gap-8", manualVisible && "lg:grid-cols-12 lg:items-start")}>
+        {manualVisible && <div className="rounded-md bg-surface-tint p-4 lg:hidden">
           <p className="text-sm font-semibold text-text-dim">Current build</p>
           <div className="mt-2 flex items-center justify-between gap-4">
             <span className="text-sm text-text-dim">Starting total</span>
             <strong className="text-xl text-text" aria-live="polite">{formatMoney(resolved.totalPrice, currencyCode)}</strong>
           </div>
           <p className="mt-2 text-sm leading-5 text-text-dim">Your default build is ready. Customize as much or as little as you want.</p>
-        </div>
-        <aside className="hidden lg:col-span-5 lg:block">
+        </div>}
+        {manualVisible && <aside className="hidden lg:col-span-5 lg:block">
           <div className="lg:sticky lg:top-24">
             <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-surface-tint">
               {heroImageUrl ? (
@@ -282,7 +380,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
             <h3 className="mt-5 text-xl font-semibold leading-snug">{displayTitle}</h3>
             <p className="mt-1 text-[15px] text-text-dim">{product.extended.brand ?? product.vendor}</p>
             <BuildSummary
-              groups={pricedConfig.groups}
+              groups={visibleGroups}
               selected={resolved.selections}
               selectedOptions={resolved.selectedOptions}
               basePrice={basePrice}
@@ -292,22 +390,12 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
               leadTimeNote={pricedConfig.leadTimeNote}
               stockStatus={product.extended.stockStatus}
             />
-            <button
-              type="button"
-              onClick={isReviewing && canCheckout ? addToCart : showReview}
-              disabled={loading}
-              className="mt-4 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
-              Add to Cart
-            </button>
-            <div className="mt-4">
-              <PaymentLogos />
-            </div>
           </div>
-        </aside>
+        </aside>}
 
-        <div className="product-builder-groups lg:col-span-7">
+        <div className={clsx("product-builder-groups", manualVisible && "lg:col-span-7")}>
+          <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
+          {presets.length === 3 && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
             <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
@@ -323,20 +411,11 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
                   {formatMoney(resolved.totalPrice, currencyCode)}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={isReviewing && canCheckout ? addToCart : showReview}
-                disabled={loading}
-                className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-[15px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45"
-              >
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShoppingBag className="h-4 w-4" />}
-                Add to Cart
-              </button>
             </div>
           </div>
 
-          {pricedConfig.groups.map((group, index) => {
-            const active = !isReviewing && group.id === activeGroupId;
+          {visibleGroups.map((group, index) => {
+            const active = !isReviewing && group.id === activeGroup?.id;
             return (
               <section
                 key={group.id}
@@ -360,7 +439,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
 
                 {active ? (
                   <div id={`custom-options-${group.id}`} className="border-t border-border px-4 pb-5 pt-5 sm:px-5">
-                    <p className="text-[15px] font-semibold text-text-dim">Step {index + 1} of {pricedConfig.groups.length}</p>
+                    <p className="text-[15px] font-semibold text-text-dim">Step {index + 1} of {visibleGroups.length}</p>
                     {group.description ? <p className="mt-2 text-[15px] leading-6 text-text-dim">{group.description}</p> : null}
                     <div className="mt-5">
                       <OptionPalette
@@ -392,6 +471,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
             );
           })}
 
+          </div>
           <section id="custom-step-review" className={clsx("product-builder-group product-builder-review scroll-mt-24 rounded-md border bg-surface", isReviewing ? "is-active border-accent shadow-card" : "border-border")}>
             {!isReviewing ? (
               <button type="button" onClick={showReview} className="product-builder-group__trigger flex min-h-[72px] w-full items-center gap-4 rounded-md px-4 text-left sm:px-5" aria-expanded="false">
@@ -405,8 +485,24 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
                 <h3 className="mt-1 font-display text-2xl font-semibold">Review your build</h3>
                 <p className="mt-2 text-[15px] leading-6 text-text-dim">Check each choice, then continue to checkout. You can still change anything.</p>
 
-                <ReviewRows groups={pricedConfig.groups} selected={resolved.selections} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
-                <PriceSummary basePrice={basePrice} optionPriceDelta={resolved.optionPriceDelta} totalPrice={resolved.totalPrice} currencyCode={currencyCode} />
+                <ReviewRows groups={visibleGroups} selected={resolved.selections} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+              </div>
+            )}
+          </section>
+
+          <div ref={purchaseRef} data-configuration-purchase className="mt-5 scroll-mt-28 border-t border-border pt-5">
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                  <p role="status" aria-live="polite" aria-atomic="true" className="flex items-center gap-2 text-base font-semibold text-text">
+                    <Check className="h-5 w-5 text-accent" aria-hidden="true" />
+                    {pendingChoices.length ? `${activePreset!.label}: one choice left` : activePreset ? `${activePreset.label} applied` : chosenPreset ? "Your customized build" : "Your build"}
+                  </p>
+                  <button type="button" onClick={() => {
+                    showReview();
+                    window.requestAnimationFrame(() => document.getElementById("custom-step-review")?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+                  }} className="min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Review / edit options</button>
+                </div>
+                <PriceSummary basePrice={basePrice} optionPriceDelta={purchaseTotal - basePrice} totalPrice={purchaseTotal} currencyCode={currencyCode} />
+                {pendingChoices.length > 0 && <p className="mt-2 text-sm text-text-dim">Includes the extra-head upgrade. Choose your head before adding to cart.</p>}
 
                 {hasIssues ? (
                   <div className="mt-5 space-y-2">
@@ -424,7 +520,7 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
                   </p>
                 ) : null}
 
-                {error ? <p className="mt-4 text-[15px] text-danger">{error}</p> : null}
+                {error ? <p role="alert" className="mt-4 text-[15px] text-danger">{error}</p> : null}
 
                 <div className="mt-6 grid gap-3">
                   <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
@@ -432,9 +528,6 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
                     {loading ? "Adding to Cart…" : "Add to Cart"}
                   </button>
                   {disabledReason ? <p className="text-[15px] leading-6 text-danger">{disabledReason}</p> : null}
-                  <button type="button" onClick={goToPreviousGroup} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-button border border-border-strong px-5 text-[17px] font-semibold text-text hover:bg-surface-tint">
-                    <ChevronLeft className="h-5 w-5" /> Back to {activeGroup.label}
-                  </button>
                 </div>
 
                 <div className="mt-5 border-t border-border pt-5">
@@ -443,14 +536,27 @@ function ProductOptionsBuilder({ product, config, promoClock }: { product: Produ
 
                 <p className="mt-5 text-center text-[15px] text-text-dim">Secure checkout by Shopify</p>
                 <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="mt-2 flex min-h-11 items-center justify-center text-[15px] font-semibold text-accent underline underline-offset-4">Questions? Talk to a real person</a>
-              </div>
-            )}
-          </section>
+          </div>
           <Care365Seal purchase className="mt-4" />
         </div>
       </div>
 
       {isPreviewOpen && heroImageUrl ? <ImagePreviewModal imageUrl={heroImageUrl} alt={displayTitle} onClose={() => setPreviewOpen(false)} /> : null}
+      {dialogSlot && activePreset && <PresetChoiceDialog open title={dialogSlot.title} presetLabel={activePreset.label} dollName={displayName || displayTitle}
+        options={dialogOptions} selectedId={selectionIds(selected[dialogSlot.groupId])[0]} draftId={choiceDrafts[dialogSlot.groupId]}
+        onDraft={id => setChoiceDrafts(current => ({ ...current, [dialogSlot.groupId]: id }))}
+        totalWithoutChoice={resolveCustomization(pricedConfig, replacePresetChoice(pricedConfig, selected, dialogSlot, dialogSlot.emptyOptionId), basePrice).totalPrice}
+        currencyCode={currencyCode} step={activePreset.choiceSlots.findIndex(slot => slot.groupId === dialogSlot.groupId) + 1} steps={activePreset.choiceSlots.length}
+        onClose={() => setChoiceDialogGroup(null)} onConfirm={id => {
+          if (!dialogOptions.some(option => option.id === id)) return;
+          const next = resolveCustomization(pricedConfig, replacePresetChoice(pricedConfig, selected, dialogSlot, id), basePrice);
+          if (next.issues.length || next.requiresPriceConfirmation) return;
+          const nextSlot = pendingChoices.find(slot => slot.groupId !== dialogSlot.groupId);
+          scrollToPurchaseRef.current = !nextSlot;
+          setSelected(next.selections);
+          setChoiceDialogGroup(nextSlot?.groupId ?? null);
+          setError("");
+        }} />}
       </div>
     </section>
   );
@@ -592,7 +698,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
           const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
-          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} onClick={() => onSelect(option.id)} />;
+          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
         })}
       </div>
       {searchable && !visibleOptions.length ? (
@@ -602,7 +708,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
   );
 }
 
-function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, onClick }: {
+function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, allowPromotions, onClick }: {
   product: Product;
   group: CustomizationGroup;
   option: CustomizationOption;
@@ -612,9 +718,10 @@ function OptionTile({ product, group, option, catalogOption, selected, disabled,
   notice: string | null;
   currencyCode: string;
   promotionNow: Date;
+  allowPromotions: boolean;
   onClick: () => void;
 }) {
-  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow);
+  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions);
   return (
     <button
       type="button"
@@ -699,6 +806,14 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
         currencyCode,
         customizationSummary: []
       });
+      const eventParams = {
+        product_handle: product.handle,
+        value: basePrice,
+        currency: currencyCode,
+        items: [{ item_id: firstAvailable.id, item_name: displayName || displayTitle, price: basePrice, quantity: 1 }]
+      };
+      trackEvent(analyticsEvents.addToCart, eventParams);
+      trackEvent(analyticsEvents.beginCheckout, eventParams);
       router.push(checkoutUrl);
     } catch {
       setError("Could not start checkout. Please try again.");

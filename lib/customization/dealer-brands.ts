@@ -1,8 +1,22 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import { normalizeDealerHeadGroups } from "@/lib/customization/dealer-heads";
+import { restoreIlExtraHeadOwnership } from "@/lib/customization/il-source-ownership";
 
 export function getSeCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  {
+    groups = groups.map(group => ({ ...group, options: group.options.map(option => {
+      if (group.id === 'upgraded-flight-case-add-on') {
+        if (option.label === 'Flight Case (Doll Weight < 40kg)' || option.label === 'Flight Case (Doll Weight &lt; 40kg)') return { ...option, id: 'flight-case-under-40kg' };
+        if (option.label === 'Flight Case (Doll Weight ≥ 40kg)') return { ...option, id: 'flight-case-40kg-and-over' };
+      }
+      if (group.id === 'standing-add-on' && option.id === 'free' && option.swatch?.kind === 'image') {
+        if (option.swatch.value.endsWith('/Standing.jpg')) return { ...option, id: 'standing-feet', label: 'Standing feet (FREE)', sourceLabel: option.label };
+        if (option.swatch.value.endsWith('/Hard-Feet.jpg')) return { ...option, id: 'hard-feet', label: 'Hard feet (FREE)', sourceLabel: option.label };
+      }
+      return option;
+    }) }));
+  }
   return normalizeDealerHeadGroups(product, groups, {
     chooseDescription: "Choose one compatible SE Doll head. A standard head identity switch is included; any special construction is priced separately where offered.",
     extraDescription: "Optional paid add-on. Each selected additional head is charged separately.",
@@ -107,7 +121,7 @@ export function getRealLadyCustomizationGroups(product: Product, groups: Customi
 }
 
 export function getIlCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
-  return normalizeDealerHeadGroups(product, groups, {
+  return normalizeDealerHeadGroups(product, restoreIlExtraHeadOwnership(product, groups), {
     chooseDescription: "Choose one compatible IL Doll head where a replacement-head library is offered.",
     extraDescription: "Optional paid IL Doll head. Each selected additional head is charged separately."
   });

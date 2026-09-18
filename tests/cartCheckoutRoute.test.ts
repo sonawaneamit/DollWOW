@@ -225,12 +225,15 @@ describe("POST /api/cart/checkout", () => {
     expect(mocks.createCartWithLines).not.toHaveBeenCalled();
   });
 
-  it("rejects a productionNote-only neutral default combined with a paid multi-select choice", async () => {
+  it.each([
+    { productionNote: "No paid add-on selected", status: 400 },
+    { productionNote: "Default supplier selection", status: 200 }
+  ])("distinguishes no-add-on from a supplier-selected package: $productionNote", async ({ productionNote, status }) => {
     const configured = product(FIRST_VARIANT, "Aurora");
     configured.extended.customizationGroups![1].options[0] = {
       id: "supplier-choice",
       label: "Standard accessory package",
-      productionNote: "Default supplier selection",
+      productionNote,
       priceDelta: 0
     };
     mocks.getProductsByVariantIds.mockResolvedValue(new Map([[FIRST_VARIANT, configured]]));
@@ -243,8 +246,9 @@ describe("POST /api/cart/checkout", () => {
       }]
     }));
 
-    expect(response.status).toBe(400);
-    expect(mocks.createCartWithLines).not.toHaveBeenCalled();
+    expect(response.status).toBe(status);
+    if (status === 400) expect(mocks.createCartWithLines).not.toHaveBeenCalled();
+    else expect(mocks.createCartWithLines).toHaveBeenCalledOnce();
   });
 
   it("rejects an excessive number of customization selection groups before lookup", async () => {

@@ -683,6 +683,7 @@ export async function createCart(input: {
   merchandiseId: string;
   quantity: number;
   attributes?: Array<{ key: string; value: string }>;
+  namedUpgradeAttributes?: Array<{ key: string; value: string }>;
   customizationCharge?: {
     amount: number;
     currencyCode: string;
@@ -697,6 +698,30 @@ export async function createCart(input: {
       checkoutUrl: "/cart?mockCheckout=1",
       totalQuantity: input.quantity
     };
+  }
+
+  if (process.env.DOLLWOW_TEMPLATE_RELEASE === '1') {
+    const { createReleasedNamedUpgradeCart } = await import('@/lib/cart/named-upgrade-release');
+    const cart = await createReleasedNamedUpgradeCart([{ ...input,
+      namedUpgradeAttributes: input.namedUpgradeAttributes && withCare365Attribute(input.namedUpgradeAttributes)
+    }], input.discountCodes ?? [], storefrontFetch);
+    if (cart) return { ...cart, checkoutUrl: normalizeShopifyCheckoutUrl(cart.checkoutUrl) };
+  }
+
+  if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_FIXED_BUNDLE_PILOT === '1') {
+    const { createFixedBundlePilotCart } = await import('@/lib/cart/fixed-bundle-pilot');
+    const pilot = await createFixedBundlePilotCart([{ ...input, attributes: withCare365Attribute(input.attributes) }], input.discountCodes ?? [], storefrontFetch);
+    if (pilot) return { ...pilot, checkoutUrl: normalizeShopifyCheckoutUrl(pilot.checkoutUrl) };
+    throw new Error('Local bundle checkout is unavailable.');
+  }
+
+  if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === '1') {
+    const { createExactUpgradePilotCart } = await import('@/lib/cart/exact-upgrade-pilot');
+    const pilot = await createExactUpgradePilotCart([{ ...input,
+      namedUpgradeAttributes: input.namedUpgradeAttributes && withCare365Attribute(input.namedUpgradeAttributes)
+    }], input.discountCodes ?? [], storefrontFetch);
+    if (pilot) return { ...pilot, checkoutUrl: normalizeShopifyCheckoutUrl(pilot.checkoutUrl) };
+    throw new Error('Local exact-price checkout is unavailable.');
   }
 
   const data = await storefrontFetch<{
@@ -743,6 +768,7 @@ export async function createCartWithLines(input: {
     merchandiseId: string;
     quantity: number;
     attributes?: Array<{ key: string; value: string }>;
+    namedUpgradeAttributes?: Array<{ key: string; value: string }>;
     customizationCharge?: {
       amount: number;
       currencyCode: string;
@@ -758,6 +784,30 @@ export async function createCartWithLines(input: {
       checkoutUrl: "/cart?mockCheckout=1",
       totalQuantity: input.lines.reduce((sum, line) => sum + line.quantity, 0)
     };
+  }
+
+  if (process.env.DOLLWOW_TEMPLATE_RELEASE === '1') {
+    const { createReleasedNamedUpgradeCart } = await import('@/lib/cart/named-upgrade-release');
+    const cart = await createReleasedNamedUpgradeCart(input.lines.map(line => ({ ...line,
+      namedUpgradeAttributes: line.namedUpgradeAttributes && withCare365Attribute(line.namedUpgradeAttributes)
+    })), input.discountCodes ?? [], storefrontFetch);
+    if (cart) return { ...cart, checkoutUrl: normalizeShopifyCheckoutUrl(cart.checkoutUrl) };
+  }
+
+  if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_FIXED_BUNDLE_PILOT === '1') {
+    const { createFixedBundlePilotCart } = await import('@/lib/cart/fixed-bundle-pilot');
+    const pilot = await createFixedBundlePilotCart(input.lines.map(line => ({ ...line, attributes: withCare365Attribute(line.attributes) })), input.discountCodes ?? [], storefrontFetch);
+    if (pilot) return { ...pilot, checkoutUrl: normalizeShopifyCheckoutUrl(pilot.checkoutUrl) };
+    throw new Error('Local bundle checkout is unavailable.');
+  }
+
+  if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === '1') {
+    const { createExactUpgradePilotCart } = await import('@/lib/cart/exact-upgrade-pilot');
+    const pilot = await createExactUpgradePilotCart(input.lines.map(line => ({ ...line,
+      namedUpgradeAttributes: line.namedUpgradeAttributes && withCare365Attribute(line.namedUpgradeAttributes)
+    })), input.discountCodes ?? [], storefrontFetch);
+    if (pilot) return { ...pilot, checkoutUrl: normalizeShopifyCheckoutUrl(pilot.checkoutUrl) };
+    throw new Error('Local exact-price checkout is unavailable.');
   }
 
   const data = await storefrontFetch<{

@@ -3,18 +3,21 @@ import crypto from "node:crypto";
 import { adminFetch } from "@/lib/shopify/admin";
 import { env, hasShopifyAdminEnv } from "@/lib/utils/env";
 import type { DollPassport, PassportLifecycle } from "@/lib/passport/types";
+import { isPassportDollLine } from '@/lib/passport/order-line';
+import { isNamedUpgradeOrderLine, namedUpgradeOrderBuilds } from '@/lib/orders/named-upgrade-order';
 
 type ShopifyOrder = {
   id: string;
   name: string;
   createdAt: string;
+  displayFinancialStatus: string;
   email?: string | null;
   customer?: { id: string; email?: string | null } | null;
   passport?: { value?: string | null } | null;
-  lineItems: { nodes: Array<{
-    id: string; title: string; quantity: number; sku?: string | null; vendor?: string | null; variantTitle?: string | null;
+  lineItems: { pageInfo: { hasNextPage: boolean }; nodes: Array<{
+    id: string; title: string; quantity: number; currentQuantity: number; sku?: string | null; vendor?: string | null; variantTitle?: string | null;
     customAttributes: Array<{ key: string; value: string }>;
-    product?: { id: string; handle: string; featuredImage?: { url: string } | null } | null;
+    product?: { id: string; handle: string; tags: string[]; featuredImage?: { url: string } | null } | null;
     variant?: { id: string } | null;
   }> };
 };
@@ -31,19 +34,37 @@ function opaquePassportId(orderId: string, lineId: string, unit: number) {
 }
 
 function isDollLine(item: ShopifyOrder["lineItems"]["nodes"][number]) {
-  return Boolean(item.product?.id) && !/selected customization|custom option charge|accessor(?:y|ies)|care kit|repair kit/i.test(item.title);
+  return isPassportDollLine(item);
 }
 
 function parseOverrides(order: ShopifyOrder): PassportOverrides {
   try { return JSON.parse(order.passport?.value || "{}") as PassportOverrides; } catch { return {}; }
 }
 
-function passportsFromOrder(order: ShopifyOrder, ownerEmail: string) {
+async function passportsFromOrder(order: ShopifyOrder, ownerEmail: string) {
   const overrides = parseOverrides(order);
-  return order.lineItems.nodes.filter(isDollLine).flatMap((item) => Array.from({ length: Math.max(1, item.quantity) }, (_, index) => {
+  const named = new Map<string, ReturnType<typeof namedUpgradeOrderBuilds>[number]>();
+  if (order.lineItems.nodes.some(isNamedUpgradeOrderLine)) {
+    if (process.env.DOLLWOW_TEMPLATE_RELEASE === '1') {
+      const { loadReleasedNamedUpgradeBindings } = await import('@/lib/cart/named-upgrade-release');
+      const bindings = loadReleasedNamedUpgradeBindings(order.lineItems.nodes.filter(isNamedUpgradeOrderLine).map(line => line.variant?.id ?? ''));
+      for (const build of namedUpgradeOrderBuilds(order, bindings)) named.set(build.lineId, build);
+    } else if (process.env.NODE_ENV !== 'production' && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === '1') {
+      const { loadExactUpgradePilotBindings } = await import('@/lib/cart/exact-upgrade-pilot');
+      for (const build of namedUpgradeOrderBuilds(order, await loadExactUpgradePilotBindings())) named.set(build.lineId, build);
+    } else {
+      throw new Error('Named-upgrade order verification is not enabled.');
+    }
+  }
+  return order.lineItems.nodes.filter(isDollLine).flatMap((item) => Array.from({ length: isNamedUpgradeOrderLine(item) ? item.currentQuantity : Math.max(1, item.quantity) }, (_, index) => {
     const unit = index + 1;
     const line = overrides.lines?.[item.id] ?? {};
-    const build = Object.fromEntries(item.customAttributes.filter((attribute) => attribute.key && !attribute.key.startsWith("_")).map((attribute) => [attribute.key.replace(/^DollWOW\s*/i, ""), attribute.value]));
+    const actual = named.get(item.id);
+    const attributes = actual ? item.customAttributes.filter(attribute =>
+      attribute.key.startsWith('Included: ') || ['DollWow Reference Name', 'DollWOW Care', 'Selected configuration'].includes(attribute.key)
+    ) : item.customAttributes;
+    const build = Object.fromEntries(attributes.filter((attribute) => attribute.key && !attribute.key.startsWith("_")).map((attribute) => [attribute.key.replace(/^DollWOW\s*/i, ""), attribute.value]));
+    if (actual) build['Purchased upgrades'] = actual.upgrades.map(upgrade => upgrade.title).join(', ') || 'None';
     return {
       id: opaquePassportId(order.id, item.id, unit),
       owner_email: ownerEmail,
@@ -77,9 +98,9 @@ async function ordersForOwner(email: string): Promise<ShopifyOrder[]> {
     const data = await adminFetch<{ orders: { nodes: ShopifyOrder[] } }>(`query PassportOrders($query: String!) {
       orders(first: 50, query: $query, sortKey: CREATED_AT, reverse: true) {
         nodes {
-          id name createdAt email customer { id email }
+          id name createdAt displayFinancialStatus email customer { id email }
           passport: metafield(namespace: "dollwow", key: "passport") { value }
-          lineItems(first: 50) { nodes { id title quantity sku vendor variantTitle customAttributes { key value } product { id handle featuredImage { url } } variant { id } } }
+          lineItems(first: 250) { pageInfo { hasNextPage } nodes { id title quantity currentQuantity sku vendor variantTitle customAttributes { key value } product { id handle tags featuredImage { url } } variant { id } } }
         }
       }
     }`, { query: `email:${safeEmail} financial_status:paid` });
@@ -96,7 +117,7 @@ export async function hasPassportOrders(email: string) {
 
 export async function listPassportsForOwner(email: string): Promise<DollPassport[]> {
   const normalized = email.trim().toLowerCase();
-  return (await ordersForOwner(normalized)).flatMap((order) => passportsFromOrder(order, normalized));
+  return (await Promise.all((await ordersForOwner(normalized)).map((order) => passportsFromOrder(order, normalized)))).flat();
 }
 
 export async function getPassportForOwner(id: string, email: string): Promise<DollPassport | null> {

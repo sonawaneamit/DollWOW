@@ -69,7 +69,7 @@ describe("Shopify product metadata mapping", () => {
 
     expect(option?.productionNote).toBeUndefined();
     expect(JSON.stringify(option)).not.toContain(productionNote);
-    expect(isNeutralDefaultOption(option!.id, option!.label, option!.productionNote, option!.sourceProductionNoteSignals)).toBe(true);
+    expect(isNeutralDefaultOption(option!.id, option!.label, option!.productionNote, option!.sourceProductionNoteSignals)).toBe(productionNote === "No paid add-on selected.");
     expect(isOptionPriceVerified(option!)).toBe(true);
   });
 

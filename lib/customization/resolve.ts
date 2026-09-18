@@ -8,17 +8,24 @@ import type {
   SelectedCustomizationOption
 } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
+import { customizationVisibility } from './visibility';
 
-export function getDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
+function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
-        const neutralDefault = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
-        return [group.id, neutralDefault ? [neutralDefault.id] : []];
+        const defaultOption = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals) || isSupplierSelectedOption(option));
+        return [group.id, defaultOption ? [defaultOption.id] : []];
       }
       return [group.id, group.options[0]?.id ?? ""];
     })
   );
+}
+
+export function getDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
+  const defaults = rawDefaultSelections(config);
+  const { activeGroupIds } = customizationVisibility(config, defaults);
+  return Object.fromEntries(Object.entries(defaults).filter(([id]) => activeGroupIds.has(id)));
 }
 
 function findOption(config: BrandCustomizationConfig, groupId: string, optionId: string) {
@@ -27,12 +34,17 @@ function findOption(config: BrandCustomizationConfig, groupId: string, optionId:
   return group && option ? { group, option } : null;
 }
 
-function normalizedSelections(config: BrandCustomizationConfig, selections: CustomizationSelections) {
-  const defaults = getDefaultSelections(config);
+function normalizedSelections(config: BrandCustomizationConfig, selections: CustomizationSelections): CustomizationSelections {
+  const defaults = rawDefaultSelections(config);
+  const conditionalMenu = config.groups.some(group => group.visibleWhen !== undefined);
   return Object.fromEntries(
     config.groups.map((group) => {
       const defaultValue = defaults[group.id] ?? (group.selectionMode === "multiple" ? [] : "");
       const value = selections[group.id] ?? defaultValue;
+      // An explicit empty selection is a user choice, not a request for defaults.
+      if (group.selectionMode === "multiple" && Array.isArray(value) && value.length === 0) return [group.id, []];
+      // Do not silently replace a restored conditional choice whose price became unverified.
+      if (conditionalMenu) return [group.id, value];
       const allowedIds = selectionIds(value).filter((optionId) => isOptionAvailableForCheckout(config, group.id, optionId));
       if (group.selectionMode === "multiple") return [group.id, allowedIds.length ? allowedIds : selectionIds(defaultValue)];
       return [group.id, allowedIds[0] ?? selectionIds(defaultValue)[0] ?? ""];
@@ -45,13 +57,20 @@ export function resolveCustomization(
   selections: CustomizationSelections,
   basePrice: number
 ): ResolvedCustomization {
-  const normalized = normalizedSelections(config, selections);
+  const allSelections = normalizedSelections(config, selections);
+  const visibility = customizationVisibility(config, allSelections);
+  const normalized = Object.fromEntries(Object.entries(allSelections).filter(([id]) => visibility.activeGroupIds.has(id)));
   const defaults = getDefaultSelections(config);
-  const issues: CustomizationIssue[] = [];
+  const issues: CustomizationIssue[] = [...visibility.issues];
   const selectedOptions: SelectedCustomizationOption[] = [];
+  const conditionalMenu = config.groups.some(group => group.visibleWhen !== undefined);
 
   for (const group of config.groups) {
+    if (!visibility.activeGroupIds.has(group.id)) continue;
     const optionIds = selectionIds(normalized[group.id]);
+    if (conditionalMenu && optionIds.some(id => !group.options.some(option => option.id === id))) {
+      issues.push({ groupId: group.id, message: `Please review your ${group.label} selection.` });
+    }
     const options = optionIds.map((optionId) => group.options.find((item) => item.id === optionId)).filter((option): option is CustomizationOption => Boolean(option));
     if (group.required && !options.length) {
       issues.push({ groupId: group.id, message: `${group.label} is required.` });
@@ -65,7 +84,9 @@ export function resolveCustomization(
         optionId: option.id,
         optionLabel: option.label,
         priceDelta: option.priceDelta ?? 0,
-        priceConfirmed: includedByDefault || hasCheckoutPrice(option)
+        priceConfirmed: conditionalMenu
+          ? option.priceVerified === true && option.purchasable !== false && option.factoryExists !== false && option.displayable !== false && Number.isFinite(option.priceDelta) && option.priceDelta! >= 0
+          : includedByDefault || hasCheckoutPrice(option)
       });
     }
   }
@@ -80,6 +101,16 @@ export function resolveCustomization(
         optionId: rule.conflictsWith.optionId,
         message: rule.message
       });
+    }
+  }
+
+  if (config.id === 'starpery-official') {
+    const body = selectionIds(normalized['body-construction']);
+    if (body.includes('articulated-fingers') && selectionIds(normalized['hand-foot-skeleton']).includes('enhanced-articulated-fingers')) {
+      issues.push({ groupId: 'body-construction', optionId: 'articulated-fingers', message: 'Finger articulation is already selected under Hand / Foot Skeleton. Remove the duplicate Body construction upgrade.' });
+    }
+    if (body.includes('hard-feet') && config.groups.some(g => g.id === 'standing-add-on' && g.options.some(o => o.id === 'standing-no-bolts-hard-feet-free'))) {
+      issues.push({ groupId: 'body-construction', optionId: 'hard-feet', message: 'Choose hard feet under Standing Add-On instead of Body construction so the build has one clear standing choice.' });
     }
   }
 
@@ -114,7 +145,7 @@ export function getOptionConflict(
   const group = config.groups.find((item) => item.id === groupId);
   const currentValue = selections[groupId] ?? getDefaultSelections(config)[groupId];
   const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(group.options, currentValue, optionId) : optionId;
-  const nextSelections = normalizedSelections(config, { ...selections, [groupId]: nextValue });
+  const nextSelections = resolveCustomization(config, { ...selections, [groupId]: nextValue }, 0).selections;
   const conflict = config.rules.find((rule) => {
     const whenSelected = selectionIds(nextSelections[rule.when.groupId]).includes(rule.when.optionId);
     const conflictSelected = selectionIds(nextSelections[rule.conflictsWith.groupId]).includes(rule.conflictsWith.optionId);
@@ -133,7 +164,11 @@ export function isOptionAvailableForCheckout(config: BrandCustomizationConfig, g
   const match = findOption(config, groupId, optionId);
   if (!match) return false;
   if (match.option.purchasable === false) return false;
-  const includedByDefault = selectionIds(getDefaultSelections(config)[groupId]).includes(optionId);
+  if (config.groups.some(group => group.visibleWhen !== undefined)) {
+    return match.option.factoryExists !== false && match.option.displayable !== false &&
+      match.option.priceVerified === true && Number.isFinite(match.option.priceDelta) && match.option.priceDelta! >= 0;
+  }
+  const includedByDefault = selectionIds(rawDefaultSelections(config)[groupId]).includes(optionId);
   return includedByDefault || isOptionPurchasable(match.option);
 }
 
@@ -172,18 +207,21 @@ export function nextMultipleSelection(options: CustomizationOption[], currentVal
   return [...current.filter((id) => !neutralIds.has(id)), optionId];
 }
 
-function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[]) {
+export function groupedCartAttributes(selectedOptions: SelectedCustomizationOption[], prefix = 'DollWow ') {
   const byGroup = new Map<string, SelectedCustomizationOption[]>();
   for (const option of selectedOptions) {
     const key = option.groupLabel;
     byGroup.set(key, [...(byGroup.get(key) || []), option]);
   }
   return [...byGroup.entries()].map(([groupLabel, options]) => ({
-    key: `DollWow ${groupLabel}`,
+    key: `${prefix}${groupLabel}`,
     value: options
-      .map((option) =>
-        !option.priceConfirmed ? `${option.optionLabel} (price to confirm)` : option.priceDelta ? `${option.optionLabel} (+$${option.priceDelta})` : option.optionLabel
-      )
+      .map((option) => {
+        const reference = option.groupId === 'vagina-color' && /^(6ye|hr)-pink-source-[13]$/.test(option.optionId)
+          ? ` (supplier swatch Pink_${option.optionId.slice(-1)})` : '';
+        const label = `${option.optionLabel}${reference}`;
+        return !option.priceConfirmed ? `${label} (price to confirm)` : option.priceDelta ? `${label} (+$${option.priceDelta})` : label;
+      })
       .join(", ")
   }));
 }
@@ -200,8 +238,8 @@ export function isNeutralDefaultOption(
     id === "default" ||
     id === "factory-default" ||
     /^(no add-on|no thanks|none|as shown|factory default|default supplier selection)$/i.test(label) ||
-    /default supplier selection|no paid add-on/i.test(productionNote) ||
-    hasSourceProductionNoteSignal({ sourceProductionNoteSignals }, "defaultSupplierSelection", "noPaidAddOn")
+    /no paid add-on/i.test(productionNote) ||
+    hasSourceProductionNoteSignal({ sourceProductionNoteSignals }, "noPaidAddOn")
   );
 }
 
@@ -216,5 +254,11 @@ export function isNoAddOnOption(
 
 function hasCheckoutPrice(option: CustomizationOption) {
   return option.priceDelta !== undefined || /\bfree\b/i.test(option.label) ||
-    isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals);
+    isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals) || isSupplierSelectedOption(option);
+}
+
+// A supplier-selected feature can coexist with upgrades; it is not a "none" sentinel.
+function isSupplierSelectedOption(option: CustomizationOption) {
+  return /default supplier selection/i.test(option.productionNote ?? "") ||
+    hasSourceProductionNoteSignal(option, "defaultSupplierSelection");
 }

@@ -33,6 +33,33 @@ const IRONTECH_TALKX_PROMO_LABEL = `${IRONTECH_PROMO_LABEL} · TalkX + 60 extra 
 const SE_PROMO_LABEL = "SE - Limited Time Promo (Ends: 1 Oct)";
 const FANREAL_PROMO_LABEL = "Fanreal - Limited Time Promo (Ends: 30 Sept)";
 
+const SE_PERCENTAGE_OPTION_RULES = [
+  {
+    offer: "10% off master makeup",
+    percentage: 10,
+    optionIds: ["master-body-makeup"],
+    optionLabels: ["master body makeup"]
+  },
+  {
+    offer: "30% off movable eyelids",
+    percentage: 30,
+    optionIds: ["movable-eyelids"],
+    optionLabels: ["movable eyelids"]
+  },
+  {
+    offer: "50% off gel butt",
+    percentage: 50,
+    optionIds: ["gel-butt-free"],
+    optionLabels: []
+  },
+  {
+    offer: "50% off realistic skin texture",
+    percentage: 50,
+    optionIds: ["real-skin-texture"],
+    optionLabels: ["real skin texture"]
+  }
+] as const;
+
 /**
  * Keeps Shopify/catalog priceDelta authoritative, and derives only the price
  * shown and charged for a currently active factory promotion.
@@ -41,25 +68,38 @@ export function promotionOptionPrice(
   product: PromotionProduct,
   group: Pick<CustomizationGroup, "id" | "label">,
   option: CustomizationOption,
-  now = new Date()
+  now = new Date(),
+  allowPromotions = true
 ): PromotionOptionPrice {
   const catalogDelta = option.priceDelta ?? 0;
+  if (!allowPromotions) return {
+    catalogDelta, displayDelta: catalogDelta, strike: false, promoLabel: null,
+    active: false, eligible: false, displayLabel: option.label
+  };
   const irontechOffer = irontechAutumnOfferForProduct(product, activeIrontechReferenceDate(now));
   const seOffer = seDollSeptemberOfferForProduct(product, activeSeReferenceDate(now));
   const fanrealOffer = fanrealSeptemberOfferForProduct(product, activeFanrealReferenceDate(now));
   const irontechEligible = Boolean(irontechOffer && matchesIrontechOption(irontechOffer, group, option));
-  const seEligible = Boolean(seOffer && matchesSeOption(seOffer, group, option));
+  const seFreeEligible = Boolean(seOffer && matchesSeOption(seOffer, group, option));
+  const sePercentage = seOffer ? sePercentageForOption(seOffer, option) : null;
+  const seEligible = seFreeEligible || sePercentage !== null;
   const fanrealEligible = Boolean(fanrealOffer && matchesFanrealSeptemberOption(group, option));
   const irontechActive = irontechEligible && isIrontechAutumnPromotionActive(now);
   const seActive = seEligible && isSeDollSeptemberPromotionActive(now);
   const fanrealActive = fanrealEligible && isFanrealSeptemberPromotionActive(now);
   const active = irontechActive || seActive || fanrealActive;
+  const freeActive = irontechActive || (seActive && seFreeEligible) || fanrealActive;
+  const displayDelta = freeActive
+    ? 0
+    : seActive && sePercentage !== null
+      ? percentageDiscountedDelta(catalogDelta, sePercentage)
+      : catalogDelta;
   const talkX = irontechEligible && isTalkXOption(group, option);
 
   return {
     catalogDelta,
-    displayDelta: active ? 0 : catalogDelta,
-    strike: active && catalogDelta > 0,
+    displayDelta,
+    strike: active && displayDelta < catalogDelta,
     promoLabel: active
       ? talkX
         ? IRONTECH_TALKX_PROMO_LABEL
@@ -80,6 +120,9 @@ export function withPromotionOptionPricing(
   config: BrandCustomizationConfig,
   now = new Date()
 ): BrandCustomizationConfig {
+  // Legacy label matching is not evidence for branch-specific offers or extra-head charges.
+  // Conditional imports retain verified catalog prices until their promotions are reviewed.
+  if (config.groups.some((group) => group.visibleWhen !== undefined)) return config;
   return {
     ...config,
     groups: config.groups.map((group) => {
@@ -184,6 +227,25 @@ function matchesSeOption(
     || /\bsoft\b.*\bvagina\b/.test(identity)
     || /\b(articulated|ultra\s*flex)\b.*\bfingers?\b/.test(identity)
     || (offer.includesSoftBelly && /\bsoft\b.*\bbelly\b/.test(identity));
+}
+
+function sePercentageForOption(offer: SeDollSeptemberProductOffer, option: CustomizationOption) {
+  if (isNeutral(option)) return null;
+
+  const optionId = option.id.toLowerCase().trim();
+  const optionLabel = normalizedExactOptionValue(option.label);
+  const eligibleRules = SE_PERCENTAGE_OPTION_RULES.filter((rule) => offer.discounts.includes(rule.offer));
+  const rule = eligibleRules.find((item) => item.optionIds.some((id) => id === optionId))
+    ?? eligibleRules.find((item) => item.optionLabels.some((label) => label === optionLabel));
+  return rule?.percentage ?? null;
+}
+
+function normalizedExactOptionValue(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function percentageDiscountedDelta(catalogDelta: number, percentage: number) {
+  return Math.round(catalogDelta * (100 - percentage)) / 100;
 }
 
 function isTalkXOption(group: Pick<CustomizationGroup, "id" | "label">, option: CustomizationOption) {

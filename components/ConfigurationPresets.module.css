@@ -1,0 +1,36 @@
+.section { margin: 0 0 24px; min-width: 0; border: 0; padding: 0; }
+.legend { margin-bottom: 12px; font-size: 20px; font-weight: 600; }
+.grid { display: grid; gap: 10px; align-items: start; }
+.tile { position: relative; min-width: 0; border: 2px solid transparent; border-radius: 6px; color: #163d37; background: #dcebe6; }
+.popular { background: #f3b09b; color: #472017; }
+.premium { background: #262a29; color: #faf5ec; }
+.tile[data-selected="true"] { border-color: currentColor; box-shadow: inset 0 0 0 2px var(--preset-inset, #ffffff70); }
+.premium { --preset-inset: #d8bc75; }
+.choice { position: relative; display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 67px; padding: 10px 12px 5px; cursor: pointer; }
+.choice input { width: 17px; height: 17px; margin: 0; accent-color: #18493f; }
+.premium input { accent-color: #d8bc75; }
+.choice:has(input:focus-visible) { outline: 2px solid currentColor; outline-offset: 3px; }
+.copy { display: grid; gap: 3px; min-width: 0; }
+.title { font-family: Georgia, "Times New Roman", serif; font-size: 22px; line-height: 1.1; font-weight: 600; }
+.description { font-size: 12px; line-height: 1.35; }
+.price { font-size: 18px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.art { display: none; }
+.details { padding: 0 12px 9px 40px; font-size: 12px; line-height: 1.5; }
+.details summary { width: fit-content; padding: 3px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.details ul { padding: 8px 0 0 16px; margin: 0; }
+.note { margin-top: 10px; font-size: 12px; line-height: 1.5; color: var(--color-text-dim); }
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .choice { grid-template-columns: 18px minmax(0, 1fr); align-items: start; min-height: 145px; padding: 18px 16px 8px; }
+  .choice input { margin-top: 5px; }
+  .copy { gap: 7px; }
+  .title { font-size: 23px; }
+  .description { min-height: 34px; max-width: 210px; font-size: 13px; }
+  .price { grid-column: 2; font-size: 24px; align-self: end; }
+  .details { padding: 0 16px 13px 44px; }
+}
+@media (min-width: 1024px) {
+  .copy { padding-right: 36px; }
+  .title { font-size: 27px; }
+  .art { display: block; position: absolute; top: 16px; right: 12px; width: 32px; height: 32px; opacity: .6; pointer-events: none; }
+}

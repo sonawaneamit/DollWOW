@@ -43,6 +43,7 @@ import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutu
 import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
 import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
+import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
 
@@ -68,6 +69,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
   const publicProduct = withProtectedProductImages(product);
+  const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
   const brandQuery = brandTag ? `tag:${JSON.stringify(brandTag)}` : `title:${JSON.stringify(product.extended.brand ?? product.vendor)}`;
@@ -241,7 +243,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} promoClock={promoClock} />
+          <ProductOptions product={publicProduct} promoClock={promoClock} templateRecipe={templateRecipe}
+            presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
 
