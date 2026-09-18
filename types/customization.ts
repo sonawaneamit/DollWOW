@@ -6,6 +6,8 @@ export type CustomizationSwatch =
 export type CustomizationOption = {
   id: string;
   label: string;
+  /** Original supplier label when the customer-facing label is safely corrected. */
+  sourceLabel?: string;
   description?: string;
   priceDelta?: number;
   /** Supplier/manufacturer evidence says this option exists. Defaults to true for imported options. */
@@ -33,12 +35,16 @@ export type CustomizationOption = {
 export type CustomizationGroup = {
   id: string;
   label: string;
+  /** Original supplier label when the customer-facing label is safely corrected. */
+  sourceLabel?: string;
   description?: string;
   required?: boolean;
   selectionMode?: "single" | "multiple";
   display: "cards" | "swatches" | "compact";
   resources?: Array<{ label: string; href: string; kind?: "document" | "video" | "web" }>;
   options: CustomizationOption[];
+  /** OR between branches, AND within a branch. Referenced parents must also be visible. */
+  visibleWhen?: Array<Array<{ groupId: string; optionId: string }>>;
 };
 
 export type CustomizationRule = {

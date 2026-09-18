@@ -100,7 +100,7 @@ const hairFinish: CustomizationGroup = {
   display: "swatches",
   options: [
     imageOption("wig", "Supplier wig", "2020/04/default-300x300.jpg"),
-    imageOption("synthetic", "Implanted synthetic hair", "2021/04/Implanted-Hair.jpg", 150),
+    imageOption("synthetic", "Implanted synthetic hair", "2021/04/Implanted-Hair.jpg", 0),
     imageOption("human", "Implanted human hair", "2021/04/Implanted-Hair.jpg", 300)
   ]
 };
@@ -206,7 +206,7 @@ const bodyConstruction = (silicone: boolean, supportsGelBelly: boolean): Customi
     ...(silicone ? [{ id: "gel-butt", label: "Gel butt", priceDelta: 0 }] : []),
     ...(supportsGelBelly ? [{ id: "gel-belly", label: "Gel belly", priceDelta: 100 }] : []),
     { id: "standing-feet", label: "Standing feet with bolts", priceDelta: 0 },
-    ...(silicone ? [{ id: "hard-feet", label: "Hard feet without bolts", priceDelta: 100 }] : []),
+    ...(silicone ? [{ id: "hard-feet", label: "Hard feet without bolts", priceDelta: 0 }] : []),
     { id: "articulated-fingers", label: "Starpery 2.0 articulated fingers", priceDelta: 165 }
   ]
 });
@@ -392,12 +392,12 @@ function normalizeImportedStarperyOption(groupLabel: string, option: Customizati
     priceDelta = 0;
   }
 
-  // The official Starpery 2026 price list is authoritative when a dealer promotion conflicts.
+  // Use supplier pricing except for the owner's included synthetic-hair and hard-feet offers.
   if (groupLabel === "head type") {
     priceDelta = /\bros\b|oral sex|movable jaw/.test(label) ? 100 : 0;
   } else if (groupLabel === "hair implanted") {
     if (/human/.test(label)) priceDelta = 300;
-    else if (/synthetic/.test(label)) priceDelta = 150;
+    else if (/synthetic/.test(label)) priceDelta = 0;
   } else if (/vagina hair|pubic hair/.test(groupLabel)) {
     if (/no\.\s*[123]|custom/.test(label)) priceDelta = 50;
     else if (/paster|adhesive/.test(label)) priceDelta = 80;
@@ -407,7 +407,8 @@ function normalizeImportedStarperyOption(groupLabel: string, option: Customizati
   } else if (/hand \/ foot skeleton/.test(groupLabel)) {
     if (/2\.0|enhanced/.test(label)) priceDelta = 165;
   } else if (/standing add-on/.test(groupLabel)) {
-    if (/hard feet|no bolts/.test(label)) priceDelta = 100;
+    // Owner-approved included upgrade, September 17, 2026.
+    if (/hard feet|no bolts/.test(label)) priceDelta = 0;
   } else if (/premium head & body|premium body/.test(groupLabel)) {
     if (/moaning/.test(label)) priceDelta = 100;
     else if (/heating/.test(label)) priceDelta = 200;

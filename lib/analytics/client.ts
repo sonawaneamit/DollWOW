@@ -1,6 +1,7 @@
 "use client";
 
 import { analyticsEvents } from "@/lib/analytics/events";
+import { track } from "@vercel/analytics";
 
 declare global {
   interface Window {
@@ -21,8 +22,25 @@ export function trackEvent(event: string, params: AnalyticsEventParams = {}) {
   const cleaned = Object.fromEntries(Object.entries(params).filter(([, value]) => value !== undefined));
   window.dataLayer = window.dataLayer ?? [];
   window.gtag?.("event", event, cleaned);
+  trackVercelOnly(event, cleaned);
   if (!window.gtag && process.env.NODE_ENV !== "production") {
     console.info("[analytics:event]", event, cleaned);
+  }
+}
+
+export function trackVercelOnly(event: string, params: AnalyticsEventParams = {}) {
+  if (typeof window === "undefined") return;
+  const properties: Record<string, string | number | boolean> = {};
+  for (const [key, value] of Object.entries(params)) {
+    // Free-text searches and URLs may contain personal information.
+    if (/email|name|search_term|url|location|destination/i.test(key)) continue;
+    if (typeof value === "string") properties[key] = value.slice(0, 255);
+    else if (typeof value === "boolean" || (typeof value === "number" && Number.isFinite(value))) properties[key] = value;
+  }
+  try {
+    track(event, properties);
+  } catch {
+    // Telemetry must never interrupt checkout or hide a successful submission.
   }
 }
 

@@ -78,7 +78,7 @@ describe("customization checkout support", () => {
     }]);
   });
 
-  it("treats imported default choices as exclusive in multi-select groups", () => {
+  it("preserves imported substantive defaults alongside paid multi-select choices", () => {
     const options: CustomizationOption[] = [
       { id: "supplier-choice", label: "Standard accessory package", productionNote: "Default supplier selection" },
       { id: "implanted-human-hair", label: "Implanted human hair", priceDelta: 180 },
@@ -86,9 +86,9 @@ describe("customization checkout support", () => {
     ];
     const defaultId = defaultMultipleOptionId(options);
 
-    expect(defaultId).toBe("supplier-choice");
-    expect(nextMultipleSelection(options, ["supplier-choice"], "implanted-human-hair")).toEqual(["implanted-human-hair"]);
-    expect(nextMultipleSelection(options, ["implanted-human-hair"], "supplier-choice")).toEqual(["supplier-choice"]);
+    expect(defaultId).toBe("");
+    expect(nextMultipleSelection(options, ["supplier-choice"], "implanted-human-hair")).toEqual(["supplier-choice", "implanted-human-hair"]);
+    expect(nextMultipleSelection(options, ["implanted-human-hair"], "supplier-choice")).toEqual(["implanted-human-hair", "supplier-choice"]);
   });
 
   it("initializes one deterministic neutral and removes every neutral when a paid option is selected", () => {
@@ -117,7 +117,7 @@ describe("customization checkout support", () => {
       options,
       ["none", "supplier-choice", "factory-selection"],
       "implanted-human-hair"
-    )).toEqual(["implanted-human-hair"]);
+    )).toEqual(["supplier-choice", "implanted-human-hair"]);
     expect(nextMultipleSelection(
       [...options, { id: "flight-case", label: "Flight case", priceDelta: 699 }],
       ["none", "implanted-human-hair", "flight-case"],

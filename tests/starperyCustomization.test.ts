@@ -25,6 +25,32 @@ function starpery(material = "Full silicone", title = "Xue 171cm D-Cup Full Sili
 }
 
 describe("Starpery factory customization", () => {
+  it("rejects duplicate finger charges and conflicting fallback standing choices", () => {
+    const product = starpery();
+    product.extended.customizationGroups = [
+      { id: 'hand-foot-skeleton', label: 'Hand / Foot Skeleton', display: 'cards', options: [
+        { id: 'enhanced-articulated-fingers', label: 'Enhanced Articulated Fingers', priceDelta: 0 },
+        { id: 'articulated-toes', label: 'Articulated Toes', priceDelta: 0 }
+      ] },
+      { id: 'standing-add-on', label: 'Standing Add-On', display: 'cards', options: [
+        { id: 'non-standing', label: 'Non Standing', priceDelta: 0 },
+        { id: 'standing-no-bolts-hard-feet-free', label: 'Standing No Bolts/Hard Feet (FREE)', priceDelta: 100 }
+      ] }
+    ];
+    const config = getCustomizationConfig(product);
+    const selections = getDefaultSelections(config);
+    selections['body-construction'] = ['articulated-fingers', 'hard-feet'];
+    expect(resolveCustomization(config, selections, 2000).issues).toHaveLength(2);
+    selections['body-construction'] = [];
+    selections['standing-add-on'] = 'standing-no-bolts-hard-feet-free';
+    const resolved = resolveCustomization(config, selections, 2000);
+    expect(resolved.issues).toEqual([]);
+    expect(resolved.optionPriceDelta).toBe(165);
+    expect(resolved.selectedOptions.find(o => o.optionId === 'standing-no-bolts-hard-feet-free')?.priceDelta).toBe(0);
+    expect(config.groups.find(g => g.id === 'body-construction')?.options.find(o => o.id === 'hard-feet')?.priceDelta).toBe(0);
+    expect(resolved.selectedOptions.filter(o => /articulated fingers/i.test(o.optionLabel))).toHaveLength(1);
+  });
+
   it("keeps every eye color included", () => {
     const eyes = getCustomizationConfig(starpery()).groups.find((group) => group.id === "eye-color");
     expect(eyes?.options.map((option) => [option.label, option.priceDelta])).toEqual([
@@ -78,7 +104,7 @@ describe("Starpery factory customization", () => {
     expect(resolved.issues.some((issue) => /choose a head marked ros/i.test(issue.message))).toBe(true);
   });
 
-  it("overrides dealer promotions with official factory pricing and keeps included visual references purchasable", () => {
+  it("keeps owner-approved synthetic hair free while preserving other factory pricing", () => {
     const imported: CustomizationGroup[] = [
       {
         id: "head-type",
@@ -121,7 +147,8 @@ describe("Starpery factory customization", () => {
     product.extended.customizationGroups = imported;
     const groups = getCustomizationConfig(product).groups;
     expect(groups.find((group) => group.id === "head-type")?.options.find((option) => option.id === "ros")?.priceDelta).toBe(100);
-    expect(groups.find((group) => group.id === "hair-implanted")?.options.find((option) => option.id === "synthetic")?.priceDelta).toBe(150);
+    expect(groups.find((group) => group.id === "hair-implanted")?.options.find((option) => option.id === "synthetic")?.priceDelta).toBe(0);
+    expect(getCustomizationConfig(starpery()).groups.find((group) => group.id === "hair-finish")?.options.find((option) => option.id === "synthetic")?.priceDelta).toBe(0);
     expect(groups.find((group) => group.id === "areola-color")?.options.find((option) => option.id === "no-6")).toMatchObject({
       priceDelta: 0,
       purchasable: true,

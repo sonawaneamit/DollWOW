@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-13T14:02:09.471Z",
+  "sourceCaptureHash": "3d8814e3edcdd54263d4af1b5432b21fe93692bf2ce99fe509654d8230e453d3",
+  "purpose": "Bounded source-ownership repair only. Does not authorize new prices, supplier claims, or release.",
+  "finding": "The trailing material and premium groups are conditional extra-head controls. Preserve the main doll groups and route the trailing groups through the existing extra-head-dependency exclusion policy.",
+  "indexes": [
+    0,
+    17,
+    21,
+    22,
+    23
+  ],
+  "expectedGroupIds": [
+    "material",
+    "skin-tone",
+    "hairstyle",
+    "eye-color",
+    "lip-color",
+    "nail-color",
+    "toe-nail-color",
+    "breast-options",
+    "nipple-color",
+    "areola-size",
+    "vagina-color",
+    "vagina-hair-type",
+    "vagina",
+    "vagina-diameter",
+    "standing-add-on",
+    "shoulder-add-on",
+    "tattoo",
+    "premium-body-options-multiple",
+    "sexy-lingerie-add-on",
+    "accessories",
+    "upgraded-flight-case-add-on",
+    "an-extra-head",
+    "material",
+    "premium-body-options-multiple"
+  ],
+  "expectedGroups": [
+    {
+      "id": "material",
+      "label": "Material",
+      "required": true,
+      "selectionMode": "single",
+      "options": [
+        {
+          "id": "silicone",
+          "label": "Silicone",
+          "priceDelta": 0,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "hyper-realistic-silicone-free",
+          "label": "Hyper Realistic Silicone (FREE)",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        }
+      ]
+    },
+    {
+      "id": "premium-body-options-multiple",
+      "label": "Premium Body Options (Multiple)",
+      "required": false,
+      "selectionMode": "multiple",
+      "options": [
+        {
+          "id": "no-add-on",
+          "label": "No add-on",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "implanted-hair",
+          "label": "Implanted Hair",
+          "priceDelta": 599,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "body-moaning",
+          "label": "Body Moaning",
+          "priceDelta": 150,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "hymen",
+          "label": "Hymen",
+          "priceDelta": 70,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "ultra-soft-thigh-free",
+          "label": "Ultra Soft Thigh (FREE)",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "ultra-soft-butt-free",
+          "label": "Ultra Soft Butt (FREE)",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "ultra-soft-vagina-free",
+          "label": "Ultra Soft Vagina (FREE)",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "implanted-eyebrows",
+          "label": "Implanted Eyebrows",
+          "priceDelta": 70,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "movable-jaw-ros",
+          "label": "Movable Jaw (ROS)",
+          "priceDelta": 90,
+          "priceVerified": null,
+          "purchasable": null
+        }
+      ]
+    },
+    {
+      "id": "an-extra-head",
+      "label": "An Extra Head",
+      "required": true,
+      "selectionMode": "single",
+      "options": [
+        {
+          "id": "no-add-on",
+          "label": "No add-on",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c13",
+          "label": "C13",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c15",
+          "label": "C15",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c16",
+          "label": "C16",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c16-2",
+          "label": "C16-2",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c17",
+          "label": "C17",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c17-2",
+          "label": "C17-2",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c18",
+          "label": "C18",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c19",
+          "label": "C19",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c20",
+          "label": "C20",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c21",
+          "label": "C21",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c23",
+          "label": "C23",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c27",
+          "label": "C27",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c29",
+          "label": "C29",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c31",
+          "label": "C31",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c33",
+          "label": "C33",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "c35",
+          "label": "C35",
+          "priceDelta": 449,
+          "priceVerified": null,
+          "purchasable": null
+        }
+      ]
+    },
+    {
+      "id": "material",
+      "label": "Material",
+      "required": true,
+      "selectionMode": "single",
+      "options": [
+        {
+          "id": "silicone",
+          "label": "Silicone",
+          "priceDelta": 0,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "hyper-realistic-silicone",
+          "label": "Hyper Realistic Silicone",
+          "priceDelta": 150,
+          "priceVerified": null,
+          "purchasable": null
+        }
+      ]
+    },
+    {
+      "id": "premium-body-options-multiple",
+      "label": "Premium Body Options (Multiple)",
+      "required": false,
+      "selectionMode": "multiple",
+      "options": [
+        {
+          "id": "no-add-on",
+          "label": "No add-on",
+          "priceDelta": null,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "implanted-hair",
+          "label": "Implanted Hair",
+          "priceDelta": 599,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "implanted-eyebrows",
+          "label": "Implanted Eyebrows",
+          "priceDelta": 70,
+          "priceVerified": null,
+          "purchasable": null
+        },
+        {
+          "id": "movable-jaw-ros",
+          "label": "Movable Jaw (ROS)",
+          "priceDelta": 90,
+          "priceVerified": null,
+          "purchasable": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "handle": "il-doll-theresa-160cm-b-cup-silicone-companion-doll-104av",
+      "productId": "gid://shopify/Product/10518035169464",
+      "sourceUrl": "https://www.rosemarydoll.com/product/160cm-5ft3-b-cup-silicone-hyper-realistic-silicone-sex-doll-theresa/",
+      "observedAt": "2026-09-13T14:00:11.953Z",
+      "responseHash": "56b9d2847e379090d62b401e9feee98d570f147c5b4ea896e23b5d3d0c299f5a"
+    },
+    {
+      "handle": "il-doll-tachibana-170cm-i-cup-silicone-companion-doll-1spsa",
+      "productId": "gid://shopify/Product/10518035529912",
+      "sourceUrl": "https://www.rosemarydoll.com/product/170cm-5ft7-i-cup-silicone-hyper-realistic-silicone-sex-doll-tachibana/",
+      "observedAt": "2026-09-13T14:00:12.659Z",
+      "responseHash": "05474394142145a68305f4479e416ac934ada92c9514094e7a17d87aebdd4166"
+    },
+    {
+      "handle": "il-doll-krystal-170cm-i-cup-silicone-companion-doll-q972o",
+      "productId": "gid://shopify/Product/10518035562680",
+      "sourceUrl": "https://www.rosemarydoll.com/product/170cm-5ft7-i-cup-silicone-hyper-realistic-silicone-sex-doll-krystal/",
+      "observedAt": "2026-09-13T14:00:13.464Z",
+      "responseHash": "04e3deb194b5c3aecde9c1d7f49f3c1d87b567246f60ea595a042222fceaf685"
+    },
+    {
+      "handle": "il-doll-krystal-161cm-f-cup-silicone-companion-doll-30cow",
+      "productId": "gid://shopify/Product/10518035595448",
+      "sourceUrl": "https://www.rosemarydoll.com/product/161cm-5ft3-f-cup-silicone-hyper-realistic-silicone-sex-doll-krystal/",
+      "observedAt": "2026-09-13T14:00:14.363Z",
+      "responseHash": "f318e9b4f50f9b9adb4ca256631c49cf91dac1ad558265ded8b1ebc6a18ed456"
+    },
+    {
+      "handle": "il-doll-tina-betsy-155cm-i-cup-silicone-companion-doll-kwzv4",
+      "productId": "gid://shopify/Product/10518035628216",
+      "sourceUrl": "https://www.rosemarydoll.com/product/155cm-5ft1-i-cup-silicone-hyper-realistic-silicone-sex-doll-tina-betsy/",
+      "observedAt": "2026-09-13T14:00:14.981Z",
+      "responseHash": "0fe7f24c4c80cc02bb6c5baaa02c71e1479dfeaade868f4253e21774088b5025"
+    },
+    {
+      "handle": "il-doll-alva-nancy-160cm-e-cup-silicone-companion-doll-gk2k7",
+      "productId": "gid://shopify/Product/10518035660984",
+      "sourceUrl": "https://www.rosemarydoll.com/product/160cm-5ft3-e-cup-silicone-hyper-realistic-silicone-sex-doll-alva-nancy/",
+      "observedAt": "2026-09-13T14:00:15.640Z",
+      "responseHash": "763fbc8d99401c840908e390af9670e00aeab2dab336aca4cf83eff14b6a0717"
+    },
+    {
+      "handle": "il-doll-mona-hoyle-160cm-e-cup-silicone-companion-doll-cd9sc",
+      "productId": "gid://shopify/Product/10518035693752",
+      "sourceUrl": "https://www.rosemarydoll.com/product/160cm-5ft3-e-cup-silicone-hyper-realistic-silicone-sex-doll-mona-hoyle/",
+      "observedAt": "2026-09-13T14:00:16.240Z",
+      "responseHash": "1e1b420437745e45173deb98b194966a6308ece8d41426ecc9fa281977d990a5"
+    },
+    {
+      "handle": "il-doll-hiromi-156cm-a-cup-silicone-companion-doll-s9w8q",
+      "productId": "gid://shopify/Product/10518035726520",
+      "sourceUrl": "https://www.rosemarydoll.com/product/156cm-5ft1-a-cup-silicone-hyper-realistic-silicone-sex-doll-hiromi/",
+      "observedAt": "2026-09-13T14:00:17.375Z",
+      "responseHash": "bdc59163d76272686f448c4d0baa1bc117203b3edf45c7396456e3708505d8c4"
+    },
+    {
+      "handle": "il-doll-cecilia-noyes-151cm-e-cup-silicone-companion-doll-g7qxe",
+      "productId": "gid://shopify/Product/10518035792056",
+      "sourceUrl": "https://www.rosemarydoll.com/product/151cm-4ft11-e-cup-silicone-hyper-realistic-silicone-sex-doll-cecilia-noyes/",
+      "observedAt": "2026-09-13T14:00:18.061Z",
+      "responseHash": "6d4ca631db6953979aca621673df6dd5737fc8d4b0bca7603a8a99ba56753b2e"
+    },
+    {
+      "handle": "il-doll-susie-juliet-151cm-e-cup-silicone-companion-doll-1pjmr",
+      "productId": "gid://shopify/Product/10518035857592",
+      "sourceUrl": "https://www.rosemarydoll.com/product/151cm-4ft11-e-cup-silicone-hyper-realistic-silicone-sex-doll-susie-juliet/",
+      "observedAt": "2026-09-13T14:00:18.744Z",
+      "responseHash": "2ac45d09f4e9a2fb09610e2c48ead39e62d3bc1f7b79b38a0869f85af011d834"
+    },
+    {
+      "handle": "il-doll-severine-156cm-a-cup-silicone-companion-doll-eb9sj",
+      "productId": "gid://shopify/Product/10518035923128",
+      "sourceUrl": "https://www.rosemarydoll.com/product/156cm-5ft1-a-cup-silicone-hyper-realistic-silicone-sex-doll-severine/",
+      "observedAt": "2026-09-13T14:00:19.342Z",
+      "responseHash": "b33de6493220014a35d26c8fd38a39ce32ce454de191345770f6669baa7387fa"
+    },
+    {
+      "handle": "il-doll-youmei-156cm-a-cup-silicone-companion-doll-10f0g",
+      "productId": "gid://shopify/Product/10518035988664",
+      "sourceUrl": "https://www.rosemarydoll.com/product/156cm-5ft1-a-cup-silicone-hyper-realistic-silicone-sex-doll-youmei/",
+      "observedAt": "2026-09-13T14:00:20.486Z",
+      "responseHash": "eac06871abade4d4b2a5621f2f89d1821e94918d255e6ca5bc8adac0a75933f6"
+    },
+    {
+      "handle": "il-doll-pierrette-151cm-e-cup-silicone-companion-doll-1nuoh",
+      "productId": "gid://shopify/Product/10518036021432",
+      "sourceUrl": "https://www.rosemarydoll.com/product/151cm-4ft11-e-cup-silicone-hyper-realistic-silicone-sex-doll-pierrette/",
+      "observedAt": "2026-09-13T14:00:21.147Z",
+      "responseHash": "ae76c9e5481de0951bb5649167829166191a357b71483e1531bac46c076c3682"
+    },
+    {
+      "handle": "il-doll-rachele-156cm-a-cup-silicone-companion-doll-ouf2i",
+      "productId": "gid://shopify/Product/10518036054200",
+      "sourceUrl": "https://www.rosemarydoll.com/product/156cm-5ft1-a-cup-silicone-hyper-realistic-silicone-sex-doll-rachele/",
+      "observedAt": "2026-09-13T14:00:21.840Z",
+      "responseHash": "92139eb89b18066b11d377d736b7c446818fc801a1ad1879f720575302d2e5c6"
+    },
+    {
+      "handle": "il-doll-prescilla-160cm-b-cup-silicone-companion-doll-tsug9",
+      "productId": "gid://shopify/Product/10518036086968",
+      "sourceUrl": "https://www.rosemarydoll.com/product/160cm-5ft3-b-cup-silicone-hyper-realistic-silicone-sex-doll-prescilla/",
+      "observedAt": "2026-09-13T14:00:22.569Z",
+      "responseHash": "37a046a619d9e0d377ab93658efaf51f06e1527bb9dcc391fd8d2f01f0f09049"
+    },
+    {
+      "handle": "il-doll-cassie-162cm-f-cup-silicone-companion-doll-1uqrl",
+      "productId": "gid://shopify/Product/10518036119736",
+      "sourceUrl": "https://www.rosemarydoll.com/product/162cm-5ft4-f-cup-silicone-hyper-realistic-silicone-sex-doll-cassie/",
+      "observedAt": "2026-09-13T14:00:23.139Z",
+      "responseHash": "64ead40b6d8807cc2804cc98b37d701d0bd494bd5eceabed172d0c319c424037"
+    },
+    {
+      "handle": "il-doll-molly-170cm-i-cup-silicone-companion-doll-wnh1y",
+      "productId": "gid://shopify/Product/10518036185272",
+      "sourceUrl": "https://www.rosemarydoll.com/product/170cm-5ft7-i-cup-silicone-hyper-realistic-silicone-sex-doll-molly/",
+      "observedAt": "2026-09-13T14:00:23.789Z",
+      "responseHash": "cd51f27594cb3f32821dcc997336ccb9004dad0589f150dce7d50a32e88c1e5e"
+    },
+    {
+      "handle": "il-doll-katja-160cm-e-cup-silicone-companion-doll-129br",
+      "productId": "gid://shopify/Product/10518036218040",
+      "sourceUrl": "https://www.rosemarydoll.com/product/160cm-5ft3-e-cup-silicone-hyper-realistic-silicone-sex-doll-katja/",
+      "observedAt": "2026-09-13T14:00:24.511Z",
+      "responseHash": "084d6877ccf945e8853b4d6aaef587a915a3e6e1c65074398f77d264d37e4038"
+    },
+    {
+      "handle": "il-doll-snow-151cm-e-cup-silicone-companion-doll-1xyq5",
+      "productId": "gid://shopify/Product/10518036283576",
+      "sourceUrl": "https://www.rosemarydoll.com/product/151cm-4ft11-e-cup-silicone-hyper-realistic-silicone-sex-doll-snow/",
+      "observedAt": "2026-09-13T14:00:25.133Z",
+      "responseHash": "7eef202dc18aba8ee6a3f91c59531caeb1a4477209f7cd77e99a1d04a59629a2"
+    }
+  ]
+}

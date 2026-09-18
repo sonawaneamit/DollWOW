@@ -8,6 +8,8 @@ import { getIrontechCustomizationGroups, isExplicitIrontechUlwOption } from "@/l
 import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
+import { normalizeCustomerFacingCustomizationConfig } from "@/lib/customization/customer-labels";
+import { normalizeImportedCaseIdentities, normalizeImportedBrandColorIdentities } from '@/lib/customization/imported-option-identities';
 import {
   getAngelkissCustomizationGroups,
   getErovenusCustomizationGroups,
@@ -268,7 +270,7 @@ const configs = {
 } satisfies Record<string, BrandCustomizationConfig>;
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
-  return customizationConfig(product, "checkout");
+  return normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout"));
 }
 
 /**
@@ -276,7 +278,7 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
  * Unlike the checkout config, missing price data never erases a real option here.
  */
 export function getFactoryCustomizationConfig(product: Product): BrandCustomizationConfig {
-  return customizationConfig(product, "factory");
+  return normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "factory"));
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
@@ -295,9 +297,24 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
-  const importedGroups = product.extended.customizationGroups?.filter(
+  const validImportedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
   );
+  const importedGroups = validImportedGroups && !text.includes('fanreal')
+    ? normalizeImportedBrandColorIdentities(normalizeImportedCaseIdentities(validImportedGroups),
+        /\b6ye\b/.test(text) ? '6ye' : /\bhr\b/.test(text) ? 'hr' : '')
+    : validImportedGroups;
+  // Reviewed conditional imports own their complete graph. Legacy deduplication,
+  // inferred FREE prices and head-library enrichment must not rewrite its branches.
+  if (isIrontechProduct(product) && product.extended.customizationGroups?.some(group => group.visibleWhen !== undefined)) {
+    return {
+      id: "irontech-conditional-import-v1",
+      brandLabel: "Irontech Dolls",
+      leadTimeNote: "Custom details and compatibility are reviewed before production begins.",
+      groups: product.extended.customizationGroups,
+      rules: []
+    };
+  }
   if (product.extended.previewCustomizationFixture) {
     const previewGroups = product.extended.customizationGroups?.filter(
       (group) => Array.isArray(group.options) && group.options.length >= 1 && Boolean(group.id) && Boolean(group.label)
