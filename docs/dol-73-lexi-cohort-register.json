@@ -1,0 +1,22 @@
+{
+  "ticket": "DOL-73",
+  "registeredAt": "2026-09-22T07:25:42Z",
+  "entry": {
+    "productId": "gid://shopify/Product/10605707985080",
+    "handle": "irontech-lexi-sunset-171cm-s42-ros-max-dark-tanned-silicone-companion-doll",
+    "tag": "options:irontech-female-silicone-head-standard",
+    "bindingKey": "0e1327d220747cd469769f11e81bb521cb75c928301936ea300753dd483f17e1",
+    "runtimeHash": "ac1156058e30af98834cdf12fc1d6c5a9cd3ad80194ad8f95a6e6317823d1193"
+  },
+  "menuSha": "sha256:bd8c11c0fde51d4ea0db574928ff7823721e1216584fab636a0ebfe80b61fd2d",
+  "bindingKey": "0e1327d220747cd469769f11e81bb521cb75c928301936ea300753dd483f17e1",
+  "cohortSizeBefore": 17,
+  "cohortSizeAfter": 18,
+  "payloadHash": "ebed04c45fbe1ff1ab01fc1c9e7bdbe94779d7e097f7dea4eadac36db0e07a84",
+  "expectedPrices": {
+    "Starter": 2560,
+    "Enthusiast": 2660,
+    "Collector": 2860
+  },
+  "note": "Inherited existing head-standard recipe; no new tiers invented."
+}
