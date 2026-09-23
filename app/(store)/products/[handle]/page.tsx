@@ -426,7 +426,7 @@ function ProductSpecSummary({
 function formatHeadModel(value?: string) {
   const text = String(value || "").trim();
   if (!text) return "";
-  const normalized = text.match(/(?:head[-_\s]*)?([a-z]?\d+[a-z-]*)/i)?.[1];
+  const normalized = text.match(/^(?:head[-_\s#]*)?([a-z]*\d+[a-z-]*)$/i)?.[1];
   if (normalized) return `Head #${normalized.toUpperCase()}`;
   if (/^head\b/i.test(text)) return text.replace(/^head[-_\s]*/i, "Head #");
   return `Head #${text}`;

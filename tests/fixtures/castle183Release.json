@@ -1,0 +1,950 @@
+[
+  {
+    "id": "gid://shopify/Product/10608213590200",
+    "handle": "dolls-castle-nyla-183cm-e-cup-js061-hybrid-companion-doll",
+    "title": "Dolls Castle Nyla 183cm E-Cup Hybrid Companion Doll",
+    "seo": {
+      "title": "Dolls Castle Nyla 183cm E-Cup Hybrid Doll | DollWOW",
+      "description": "Meet Nyla: Dolls Castle's 183cm E-cup TPE body with JS061 silicone head. Compare three setups, edit your options and review clear upgrade prices."
+    },
+    "vendor": "DollWow",
+    "productType": "Custom hybrid doll",
+    "tags": [
+      "catalog-review-sep23",
+      "custom",
+      "customizable",
+      "dolls-castle",
+      "female-doll",
+      "full-doll",
+      "head-js061",
+      "height-180-plus",
+      "hybrid",
+      "options:dolls-castle-female-silicone-head-standard",
+      "silicone-head"
+    ],
+    "media": [],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54165645656248",
+        "title": "Default Title",
+        "availableForSale": true,
+        "price": {
+          "amount": "1999.0",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ]
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "catalogIdentityKey": "dolls-castle__nyla__183cm__e-cup__hybrid__head-js061",
+      "catalogBodyIdentityKey": "dolls-castle__183cm__e-cup__hybrid",
+      "headModel": "head-js061",
+      "displayName": "Nyla",
+      "brand": "Dolls Castle",
+      "material": "Silicone head",
+      "heightCm": 183,
+      "weightLb": 93.6965,
+      "cupSize": "E-Cup",
+      "measurements": {
+        "Height": "183 cm",
+        "Weight": "42.5 kg",
+        "Body material": "TPE",
+        "Head material": "Silicone",
+        "Bust": "83 cm",
+        "Under bust": "62 cm",
+        "Waist": "57 cm",
+        "Hip": "97.5 cm",
+        "Shoulder width": "37 cm",
+        "Arm length": "67 cm",
+        "Upper arm": "22.5 cm",
+        "Forearm": "20 cm",
+        "Inner leg": "101.5 cm",
+        "Thigh": "54 cm",
+        "Calf": "33 cm",
+        "Foot length": "21.5 cm"
+      },
+      "warehouseCountry": "Factory order",
+      "stockStatus": "custom",
+      "deliveryEstimate": "Est. 3 weeks",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As pictured (White)",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2020/04/default-300x300.jpg",
+                "label": "As pictured (White)"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Light-Tan-300x300.jpg",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Nature-300x300.jpg",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Tan-300x300.jpg",
+                "label": "Tan"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "body-makeup",
+          "label": "Body makeup",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "as-pictured",
+              "label": "As pictured",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-orig-150-free",
+              "label": "Detailed body painting",
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "vagina",
+          "label": "Insert type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Fixed-300x300.jpg",
+                "label": "Fixed"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "removable",
+              "label": "Removable",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Insert-300x300.jpg",
+                "label": "Removable"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "material",
+          "label": "Body material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "regular-tpe",
+              "label": "Regular TPE",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "s-tpe",
+              "label": "S-TPE",
+              "priceDelta": 199
+            }
+          ]
+        },
+        {
+          "id": "wired-toes",
+          "label": "Wired toes",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "wired-toes",
+              "label": "Wired toes",
+              "priceDelta": 29
+            }
+          ]
+        },
+        {
+          "id": "body-heating",
+          "label": "Body heating",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 169
+            }
+          ]
+        },
+        {
+          "id": "suction-function",
+          "label": "Suction function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "suction-function",
+              "label": "Suction function",
+              "priceDelta": 139
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "vagina",
+                "optionId": "fixed"
+              }
+            ]
+          ],
+          "description": "Available with fixed construction. Contact us to check compatibility with a removable insert."
+        },
+        {
+          "id": "movable-jaw",
+          "label": "Movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "movable-jaw",
+              "label": "Movable jaw",
+              "priceDelta": 59
+            }
+          ]
+        }
+      ],
+      "qcNote": "Your selected configuration is reviewed before production. Suction is currently offered with fixed construction only."
+    },
+    "images": [],
+    "featuredImage": null,
+    "description": "Factory-backed 183cm hybrid catalog fixture"
+  },
+  {
+    "id": "gid://shopify/Product/10608213721272",
+    "handle": "dolls-castle-lira-183cm-e-cup-js063-hybrid-companion-doll",
+    "title": "Dolls Castle Lira 183cm E-Cup Hybrid Companion Doll",
+    "seo": {
+      "title": "Dolls Castle Lira 183cm E-Cup Hybrid Doll | DollWOW",
+      "description": "Meet Lira: Dolls Castle's 183cm E-cup TPE body with JS063 silicone head. Compare three setups, edit your options and review clear upgrade prices."
+    },
+    "vendor": "DollWow",
+    "productType": "Custom hybrid doll",
+    "tags": [
+      "catalog-review-sep23",
+      "custom",
+      "customizable",
+      "dolls-castle",
+      "female-doll",
+      "full-doll",
+      "head-js063",
+      "height-180-plus",
+      "hybrid",
+      "options:dolls-castle-female-silicone-head-standard",
+      "silicone-head"
+    ],
+    "media": [],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54165645820088",
+        "title": "Default Title",
+        "availableForSale": true,
+        "price": {
+          "amount": "1999.0",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ]
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "catalogIdentityKey": "dolls-castle__lira__183cm__e-cup__hybrid__head-js063",
+      "catalogBodyIdentityKey": "dolls-castle__183cm__e-cup__hybrid",
+      "headModel": "head-js063",
+      "displayName": "Lira",
+      "brand": "Dolls Castle",
+      "material": "Silicone head",
+      "heightCm": 183,
+      "weightLb": 93.6965,
+      "cupSize": "E-Cup",
+      "measurements": {
+        "Height": "183 cm",
+        "Weight": "42.5 kg",
+        "Body material": "TPE",
+        "Head material": "Silicone",
+        "Bust": "83 cm",
+        "Under bust": "62 cm",
+        "Waist": "57 cm",
+        "Hip": "97.5 cm",
+        "Shoulder width": "37 cm",
+        "Arm length": "67 cm",
+        "Upper arm": "22.5 cm",
+        "Forearm": "20 cm",
+        "Inner leg": "101.5 cm",
+        "Thigh": "54 cm",
+        "Calf": "33 cm",
+        "Foot length": "21.5 cm"
+      },
+      "warehouseCountry": "Factory order",
+      "stockStatus": "custom",
+      "deliveryEstimate": "Est. 3 weeks",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As pictured (White)",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2020/04/default-300x300.jpg",
+                "label": "As pictured (White)"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Light-Tan-300x300.jpg",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Nature-300x300.jpg",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Tan-300x300.jpg",
+                "label": "Tan"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "body-makeup",
+          "label": "Body makeup",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "as-pictured",
+              "label": "As pictured",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-orig-150-free",
+              "label": "Detailed body painting",
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "vagina",
+          "label": "Insert type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Fixed-300x300.jpg",
+                "label": "Fixed"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "removable",
+              "label": "Removable",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Insert-300x300.jpg",
+                "label": "Removable"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "material",
+          "label": "Body material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "regular-tpe",
+              "label": "Regular TPE",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "s-tpe",
+              "label": "S-TPE",
+              "priceDelta": 199
+            }
+          ]
+        },
+        {
+          "id": "wired-toes",
+          "label": "Wired toes",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "wired-toes",
+              "label": "Wired toes",
+              "priceDelta": 29
+            }
+          ]
+        },
+        {
+          "id": "body-heating",
+          "label": "Body heating",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 169
+            }
+          ]
+        },
+        {
+          "id": "suction-function",
+          "label": "Suction function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "suction-function",
+              "label": "Suction function",
+              "priceDelta": 139
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "vagina",
+                "optionId": "fixed"
+              }
+            ]
+          ],
+          "description": "Available with fixed construction. Contact us to check compatibility with a removable insert."
+        },
+        {
+          "id": "movable-jaw",
+          "label": "Movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "movable-jaw",
+              "label": "Movable jaw",
+              "priceDelta": 59
+            }
+          ]
+        }
+      ],
+      "qcNote": "Your selected configuration is reviewed before production. Suction is currently offered with fixed construction only."
+    },
+    "images": [],
+    "featuredImage": null,
+    "description": "Factory-backed 183cm hybrid catalog fixture"
+  },
+  {
+    "id": "gid://shopify/Product/10608213819576",
+    "handle": "dolls-castle-lili-183cm-e-cup-js136-hybrid-companion-doll",
+    "title": "Dolls Castle Lili 183cm E-Cup Hybrid Companion Doll",
+    "seo": {
+      "title": "Dolls Castle Lili 183cm E-Cup Hybrid Doll | DollWOW",
+      "description": "Meet Lili: Dolls Castle's 183cm E-cup TPE body with JS136 silicone head. Compare three setups, edit your options and review clear upgrade prices."
+    },
+    "vendor": "DollWow",
+    "productType": "Custom hybrid doll",
+    "tags": [
+      "catalog-review-sep23",
+      "custom",
+      "customizable",
+      "dolls-castle",
+      "female-doll",
+      "full-doll",
+      "head-js136",
+      "height-180-plus",
+      "hybrid",
+      "options:dolls-castle-female-silicone-head-standard",
+      "silicone-head"
+    ],
+    "media": [],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54165645918392",
+        "title": "Default Title",
+        "availableForSale": true,
+        "price": {
+          "amount": "1999.0",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ]
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999.0",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "catalogIdentityKey": "dolls-castle__lili__183cm__e-cup__hybrid__head-js136",
+      "catalogBodyIdentityKey": "dolls-castle__183cm__e-cup__hybrid",
+      "headModel": "head-js136",
+      "displayName": "Lili",
+      "brand": "Dolls Castle",
+      "material": "Silicone head",
+      "heightCm": 183,
+      "weightLb": 93.6965,
+      "cupSize": "E-Cup",
+      "measurements": {
+        "Height": "183 cm",
+        "Weight": "42.5 kg",
+        "Body material": "TPE",
+        "Head material": "Silicone",
+        "Bust": "83 cm",
+        "Under bust": "62 cm",
+        "Waist": "57 cm",
+        "Hip": "97.5 cm",
+        "Shoulder width": "37 cm",
+        "Arm length": "67 cm",
+        "Upper arm": "22.5 cm",
+        "Forearm": "20 cm",
+        "Inner leg": "101.5 cm",
+        "Thigh": "54 cm",
+        "Calf": "33 cm",
+        "Foot length": "21.5 cm"
+      },
+      "warehouseCountry": "Factory order",
+      "stockStatus": "custom",
+      "deliveryEstimate": "Est. 3 weeks",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As pictured (White)",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2020/04/default-300x300.jpg",
+                "label": "As pictured (White)"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Light-Tan-300x300.jpg",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Nature-300x300.jpg",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Tan-300x300.jpg",
+                "label": "Tan"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "body-makeup",
+          "label": "Body makeup",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "as-pictured",
+              "label": "As pictured",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-orig-150-free",
+              "label": "Detailed body painting",
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "vagina",
+          "label": "Insert type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Fixed-300x300.jpg",
+                "label": "Fixed"
+              },
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "removable",
+              "label": "Removable",
+              "swatch": {
+                "kind": "image",
+                "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/09/Insert-300x300.jpg",
+                "label": "Removable"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "material",
+          "label": "Body material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "regular-tpe",
+              "label": "Regular TPE",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "s-tpe",
+              "label": "S-TPE",
+              "priceDelta": 199
+            }
+          ]
+        },
+        {
+          "id": "wired-toes",
+          "label": "Wired toes",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "wired-toes",
+              "label": "Wired toes",
+              "priceDelta": 29
+            }
+          ]
+        },
+        {
+          "id": "body-heating",
+          "label": "Body heating",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 169
+            }
+          ]
+        },
+        {
+          "id": "suction-function",
+          "label": "Suction function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "suction-function",
+              "label": "Suction function",
+              "priceDelta": 139
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "vagina",
+                "optionId": "fixed"
+              }
+            ]
+          ],
+          "description": "Available with fixed construction. Contact us to check compatibility with a removable insert."
+        },
+        {
+          "id": "movable-jaw",
+          "label": "Movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "compact",
+          "options": [
+            {
+              "id": "no-upgrade",
+              "label": "No upgrade",
+              "priceDelta": 0,
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "movable-jaw",
+              "label": "Movable jaw",
+              "priceDelta": 59
+            }
+          ]
+        }
+      ],
+      "qcNote": "Your selected configuration is reviewed before production. Suction is currently offered with fixed construction only."
+    },
+    "images": [],
+    "featuredImage": null,
+    "description": "Factory-backed 183cm hybrid catalog fixture"
+  }
+]
