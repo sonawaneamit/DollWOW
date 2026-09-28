@@ -21,6 +21,28 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  moonvale: {
+    metaTitle: "Moonvale Dolls: Silicone Fantasy Models",
+    metaDescription: "Compare Moonvale Lyora, Sorelle, Velara and Cerina silicone dolls by height, character styling, current price and product-specific options.",
+    positioning: "Moonvale's DollWow collection features silicone fantasy dolls with leopard, fox, panther and deer-inspired styling.",
+    intro: "Moonvale's DollWow collection features silicone fantasy dolls: Lyora, Sorelle, Velara and Cerina. Compare the exact character styling and listed measurements, then open the individual product for its photos, current price and available choices. Different looks can share a model name; the pictured styling does not by itself confirm which accessories are included.",
+    buyerNotes: [
+      { title: "Match the exact look", body: "Compare the full product title and gallery, not only Lyora, Sorelle, Velara or Cerina. Listings within a model family can show different colors and styling." },
+      { title: "Confirm handling weight", body: "Height is not a weight estimate. If the product has no listed weight, ask our team to confirm the exact build's weight before ordering." },
+      { title: "Separate styling from inclusions", body: "Check which head, finish, hair, clothing and accessories are included in your chosen configuration. Only use options offered for that exact product." }
+    ],
+    comparisonRows: [
+      ["Character and styling", "Compare the named look as well as the model family: Lyora, Sorelle, Velara or Cerina.", "Keep the exact product page and its gallery as your reference when discussing a build."],
+      ["Size and handling", "Read the listed height and body measurements; confirm weight separately when it is missing.", "Our team can check decision-critical specifications before you commit to an order."],
+      ["Configuration and price", "Distinguish the photographed presentation from included items and selectable upgrades.", "Review the available choices and current total on the individual product page."]
+    ],
+    faqs: [
+      { question: "Which Moonvale models does DollWow carry?", answer: "The current collection includes Lyora, Sorelle, Velara and Cerina. Open the individual listings to compare the available looks, measurements, prices and ordering details." },
+      { question: "Why do some Moonvale listings share the same model name?", answer: "A model family can have several named looks or color presentations. Compare the complete product title, photos and selected configuration rather than assuming that shared names mean identical orders." },
+      { question: "Does a Moonvale doll's height tell me its weight?", answer: "No. Height and weight are different measurements. Where weight is not listed, ask our team to confirm it for the exact build rather than estimating from a similar doll." },
+      { question: "Are all photographed accessories included?", answer: "Do not assume so. Confirm the included hair, clothing, accessories and finish against the exact listing and your final configuration before ordering." }
+    ]
+  },
   wm: {
     positioning:
       "WM Doll traces its manufacturing history to 2010 and is known for a broad choice of TPE and silicone bodies, heads, sizes, and customization paths.",
