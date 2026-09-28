@@ -1,6 +1,6 @@
 # Moonvale Research and Draft
 
-Status: content ready; AI/GEO validation pending. Preview only, not a release approval.
+Status: content ready; final hosted naming verification pending. Scoped research and local validation reviewed. Preview only, not a release approval or a claim of exhaustive optimization.
 
 ## Decision
 
@@ -30,12 +30,21 @@ Rejected as factual authority:
 
 One prompt per model/provider is a diagnostic sample, not a citation-share benchmark or proof of ranking causation.
 
-## Remaining Gates
+## Completed Follow-Up Checks
 
-1. Page/brand-specific LLM Mentions and focused competitor-page/canonical overlap evidence; existing domain-level calls are not full substitutes.
-2. Merchant evidence for the shopping-led intent, with documented availability or lack of useful results.
-3. Current manufacturer confirmation before adding weights, brand ownership, supported functions or other supplier claims. The present draft deliberately omits those claims.
-4. Hosted verification and retrieval/discovery checks of this draft. Local Brave confirmed the new title, introduction, comparison copy and production canonical at a 1470px viewport without document overflow. A direct HTTP response returned 200 with the model names, weight warning and FAQ present outside scripts. Nine focused brand tests and TypeScript validation passed; FAQ/schema answer parity is covered. Mobile visual review remains pending.
-5. Production release approval, then GSC/Bing and first-party engagement monitoring. Do not mark the page fully optimized before these gates are evaluated.
+- `moonvale/completion-ledger.json`: Google and ChatGPT LLM Mentions, three Labs relevant-page samples, and Merchant post/get. Additional cost $0.255; total Moonvale-specific research $0.389901. Both mentions queries returned no matching records. Do not equate this with no real-world AI visibility.
+- Labs relevant-page samples returned 8 DollWow, 40 FirstLoveDoll and 77 MyRobotDoll URLs. FirstLoveDoll's Moonvale collection appeared with two indexed keywords. No Moonvale URL appeared in the other returned samples. This supports retaining the existing commercial hub, but is not a full duplicate/cannibalization audit.
+- Merchant returned 40 offers. Only one title explicitly matched Moonvale (a Velara offer); other results were unrelated toy products. Reject the polluted set as pricing or demand evidence. The one offer is not proof of equivalent configuration or a reason to change DollWow prices.
+- Hosted Brave verified commit `9bc0156`: correct title, production canonical, model-specific introduction and comparison copy. Mobile screenshot at 390x844 showed readable text and existing expandable introduction, with no horizontal document overflow.
+- `moonvale/retrieval-checks.json`: local HTML, Markdown alternate, Accept negotiation, `/llms.txt` and `/agent-index.json` all returned 200. HTML and both Markdown responses include the model names, weight warning and distinct look labels. HTML advertises the Markdown alternate and llms discovery; llms and agent-index cross-link. Markdown is `noindex, follow`. Local Markdown headers reference the local HTML source; no preview URL is intended as a production canonical.
+- Preview inspection found the generic naming formatter discarded reviewed look suffixes. A Moonvale-only adjustment preserves the catalog's existing look names on cards, headings and schema. Ten fixture cases cover the current looks and preserve explicit editorial names. No Shopify names, handles, prices, descriptions or options are modified.
+- Local mobile checks confirmed all ten distinct card labels fit their containers without horizontal overflow. Temporary viewport override reset. TypeScript and focused naming/brand tests passed. Full suite: 693 passed, two skipped.
+
+## Release Boundaries
+
+1. Verify the final naming adjustment on the hosted preview before production approval.
+2. Manufacturer confirmation is required before adding weights, brand ownership, supported functions or material-performance claims. Those claims are deliberately omitted, so missing supplier data does not require inventing placeholders or rewriting the catalog.
+3. The existing authorization card, original product photographs, price feed and configurator are unchanged. No new visual asset is required for this copy/naming pass.
+4. Production release approval and post-release GSC/Bing/engagement monitoring remain pending. Third-party estimates do not replace actual indexed-page or conversion results.
 
 The separate guide/navigation changes at commit `3a4a09b` passed hosted Brave verification: canonical remains the production guide URL, 33 chapters start collapsed, and four links appear after the complete quick answer. That verification does not release this Moonvale draft.
