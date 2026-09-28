@@ -22,6 +22,7 @@ import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
+import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
 
 export function generateStaticParams() {
@@ -150,10 +151,12 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               <MarkdownContent
                 markdown={article.body}
                 sectionVisuals={guideSectionVisuals(article.slug)}
-                sectionInsertions={guideProductGroups.length ? [{
+                sectionInsertions={[
+                  ...(article.slug === "sex-doll-guide" ? [{ afterHeading: "Quick Answer", placement: "after-section" as const, content: <GuideShoppingLinks /> }] : []),
+                  ...(guideProductGroups.length ? [{
                   afterHeading: "Curated Live Product Shortlists",
                   content: <GuideProductShortlists groups={guideProductGroups} />
-                }] : []}
+                }] : [])]}
               />
             )}
             <ArticleInfographic slug={article.slug} />
@@ -314,8 +317,9 @@ function GuideTableOfContents({ markdown }: { markdown: string }) {
     .filter((heading) => !["Quick Answer", "What This Guide Covers"].includes(heading));
 
   return (
-    <nav aria-label="Guide chapters" className="mb-12 border-y border-gold-500/20 py-7">
-      <p className="text-sm font-semibold text-gold-700">Guide chapters</p>
+    <details className="mb-8 border-y border-gold-500/20 py-4">
+      <summary className="cursor-pointer py-2 text-base font-semibold text-text">Explore the {headings.length} chapters</summary>
+      <nav aria-label="Guide chapters">
       <ol className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
         {headings.map((heading, index) => (
           <li key={heading} className="text-sm leading-6 text-ink-700">
@@ -326,7 +330,8 @@ function GuideTableOfContents({ markdown }: { markdown: string }) {
           </li>
         ))}
       </ol>
-    </nav>
+      </nav>
+    </details>
   );
 }
 

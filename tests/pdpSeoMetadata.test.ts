@@ -1,9 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { buildPdpMetadata, buildProductStructuredData } from "@/lib/catalog/pdpSeo";
+import { buildPdpMetadata, buildProductStructuredData, buildProductFaqStructuredData, pdpFaqItems } from "@/lib/catalog/pdpSeo";
 import { sampleProducts } from "@/lib/data/sample-products";
 import { productPublicTitle } from "@/lib/catalog/naming";
 
 describe("product metadata", () => {
+  it("does not label an unconfirmed factory-order menu as a fixed warehouse configuration", () => {
+    const product = { ...sampleProducts[0], extended: { ...sampleProducts[0].extended, stockStatus: "custom" as const, customAvailable: false, customizationGroups: undefined } };
+    const faq = pdpFaqItems(product).find(item => item.question === "Can I customize this doll before checkout?");
+    expect(faq?.answer).toContain("only selectable choices");
+    expect(faq?.answer).not.toContain("fixed");
+    expect(buildProductStructuredData(product).additionalProperty).toContainEqual(expect.objectContaining({ name: "Customization available", value: "Confirm available options with our team" }));
+    expect(buildProductFaqStructuredData(product).mainEntity.find(item => item.name === faq?.question)?.acceptedAnswer.text).toBe(faq?.answer);
+    expect(product.extended.customAvailable).toBe(false);
+  });
   it("removes repeated imported brand suffixes, preserving the look title", () => {
     const product = { ...sampleProducts[0], seo: { title: "Irontech Lexi Sunset | DollWow | DollWow", description: "A complete description." } };
     expect(buildPdpMetadata(product).title).toBe("Irontech Lexi Sunset");

@@ -14,6 +14,7 @@ export type MarkdownSectionVisual = {
 export type MarkdownSectionInsertion = {
   afterHeading: string;
   content: ReactNode;
+  placement?: "after-heading" | "after-section";
 };
 
 export function MarkdownContent({
@@ -32,6 +33,7 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[],
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
   let index = 0;
+  let pendingInsertion: MarkdownSectionInsertion | undefined;
 
   while (index < lines.length) {
     const line = lines[index];
@@ -41,12 +43,17 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[],
     }
 
     if (line.startsWith("## ")) {
+      if (pendingInsertion) {
+        blocks.push(<div key={`${pendingInsertion.afterHeading}-section-end`}>{pendingInsertion.content}</div>);
+        pendingInsertion = undefined;
+      }
       const heading = line.replace(/^##\s+/, "");
       blocks.push(<h2 id={headingId(heading)} key={blocks.length}>{heading}</h2>);
       const visual = sectionVisuals.find((item) => item.afterHeading === heading);
       if (visual) blocks.push(<SectionVisual key={`${heading}-visual`} visual={visual} />);
       const insertion = sectionInsertions.find((item) => item.afterHeading === heading);
-      if (insertion) blocks.push(<div key={`${heading}-insertion`}>{insertion.content}</div>);
+      if (insertion?.placement === "after-section") pendingInsertion = insertion;
+      else if (insertion) blocks.push(<div key={`${heading}-insertion`}>{insertion.content}</div>);
       index += 1;
       continue;
     }
@@ -108,6 +115,7 @@ function renderBlocks(markdown: string, sectionVisuals: MarkdownSectionVisual[],
     blocks.push(<p key={blocks.length}>{renderInline(paragraph.join(" "))}</p>);
   }
 
+  if (pendingInsertion) blocks.push(<div key={`${pendingInsertion.afterHeading}-section-end`}>{pendingInsertion.content}</div>);
   return blocks;
 }
 

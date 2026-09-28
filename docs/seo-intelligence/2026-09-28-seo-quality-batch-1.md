@@ -1,6 +1,6 @@
 # SEO Quality Batch 1 - September 28, 2026
 
-Status: implemented and locally verified; not deployed or globally SEO/GEO release-validated.
+Status: first metadata/canonical commit hosted-preview verified; follow-up guide and customization-copy changes locally verified. Not deployed to production or globally SEO/GEO release-validated.
 
 ## Scope
 
@@ -16,11 +16,15 @@ Changes are based on current `origin/main` at `3ecb5e4`, in an isolated checkout
 - Round generated description weight to one decimal place without changing source measurements. Unknown ordering status is not labeled made-to-order by default.
 - Apply the shared sentence/title helpers to the documented Rosemary preparation and Shopify create/update import paths. This does not prove every external uploader uses them.
 
-No Shopify writes, price changes, preset changes, checkout changes, layout redesign or production deployment.
+The follow-up adds a collapsed chapter list and four tracked shopping links after the buying guide's complete quick answer. Article text, sources and publication dates are unchanged. The shared Markdown insertion supports placement after an entire section while preserving existing immediate-after-heading behavior.
+
+For custom-order products without confirmed customization availability, shared visible copy and schema now ask customers to confirm available choices instead of calling them fixed warehouse builds. Elena's Shopify record was read-only checked: `custom_available=false`, `stock_status=custom`, and no product-specific groups. The Rosretty fallback menu does not prove supplier compatibility; disabled/unverified options remain disabled. The underlying capability still requires confirmation.
+
+No Shopify writes, price changes, preset changes, checkout changes, global layout redesign or production deployment.
 
 ## Verification
 
-- Full test suite: 98 files passed, 1 skipped; 676 tests passed, 2 skipped.
+- Follow-up full test suite: 99 files passed, 1 skipped; 681 tests passed, 2 skipped.
 - TypeScript check passed.
 - Targeted tests cover title suffixes, authored descriptions, old truncated descriptions, decimals, long sentences, hybrid builds, unknown status, RTS and schema-description parity.
 - Local Next server with current catalog reads returned the support canonical for a product-report query URL.
@@ -29,14 +33,19 @@ No Shopify writes, price changes, preset changes, checkout changes, layout redes
 - Local Elena: one suffix; incomplete `This model is ava` tail removed; correct canonical.
 - Local Fanreal Carlee RTS: warehouse/fixed-configuration description retained; correct canonical. Read-only RTS verification does not change Fanreal's preset processing scope.
 
-These are local response checks, not assertions that Google has recrawled or indexed a changed release. No live checkout test was needed because checkout was not edited.
+- Authenticated Brave hosted-preview checks of commit `6b9f5ac`: support canonical and retained report context passed; Lexi's single title suffix, complete authored description and canonical passed.
+- Follow-up local Brave checks: guide's 33 chapters start collapsed and expand; shopping links follow the complete quick answer; mobile 390px viewport has no horizontal overflow and four 44px-high link targets. Temporary viewport override reset.
+- Guide chooser link opened the expected destination and emitted `guide_shopping_click`. This proves local event emission, not production reporting or attribution.
+- Tests cover insertion before the next section and at end of document, plus customization FAQ/schema parity without mutating product flags.
+
+These checks do not assert that Google has recrawled or indexed a changed release. No live checkout test was needed because checkout was not edited.
 
 ## Still Pending
 
 1. Hosted release-candidate verification and production release decision. Recheck support canonical and sampled PDP metadata after any deployment.
-2. Elena's underlying customization-availability versus menu/FAQ mismatch requires product-data and rendering-path reconciliation. Do not mark this resolved by the description fix or turn on unverified paid options.
+2. Elena's presentation mismatch is reconciled conservatively. Actual supplier customization compatibility remains unconfirmed; do not turn on unverified paid options.
 3. Expand recent-upload inventory QA beyond the sample. New batches still require factual, image, collection/filter, price and option compatibility checks; metadata generation is not that complete gate.
-4. Buying-guide navigation/measurement improvements, Moonvale entity/model differentiation, and evidence-backed collection/guide refreshes remain separate follow-up batches.
+4. Buying-guide navigation/measurement changes are locally complete, pending hosted verification. Moonvale entity/model differentiation and evidence-backed collection/guide refreshes remain follow-up batches.
 
 ## Research Boundary
 
