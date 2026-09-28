@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { brandedSeoTitle, conciseSeoDescription, unbrandedSeoTitle } from "../lib/catalog/seoText.mjs";
 import { reviewWarningsForRosemaryProduct, toDollWowImportProduct } from "./rosemary-guardrails.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -677,11 +678,11 @@ function canonicalBrandTag(value) {
 }
 
 function seoTitle(product) {
-  return `${product.title} | DollWow`;
+  return brandedSeoTitle(product.title);
 }
 
 function seoDescription(product) {
-  return cleanText(product.description || `${product.title} from DollWow`).slice(0, 155);
+  return conciseSeoDescription(cleanText(product.description), `${unbrandedSeoTitle(product.title)}. Compare photos and specifications at DollWow.`, 155);
 }
 
 function image(url, altText) {

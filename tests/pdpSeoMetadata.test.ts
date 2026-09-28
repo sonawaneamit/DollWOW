@@ -1,9 +1,38 @@
 import { describe, expect, it } from "vitest";
-import { buildPdpMetadata } from "@/lib/catalog/pdpSeo";
+import { buildPdpMetadata, buildProductStructuredData } from "@/lib/catalog/pdpSeo";
 import { sampleProducts } from "@/lib/data/sample-products";
 import { productPublicTitle } from "@/lib/catalog/naming";
 
 describe("product metadata", () => {
+  it("removes repeated imported brand suffixes, preserving the look title", () => {
+    const product = { ...sampleProducts[0], seo: { title: "Irontech Lexi Sunset | DollWow | DollWow", description: "A complete description." } };
+    expect(buildPdpMetadata(product).title).toBe("Irontech Lexi Sunset");
+    expect(buildPdpMetadata(product).openGraph).toMatchObject({ title: "Irontech Lexi Sunset" });
+  });
+
+  it("repairs old sliced descriptions equally in metadata and Product schema", () => {
+    const product = { ...sampleProducts[0], seo: { title: "Elena", description: "Compare Elena's photos and measurements. This model is ava" } };
+    expect(buildPdpMetadata(product).description).toBe("Compare Elena's photos and measurements.");
+    expect(buildProductStructuredData(product).description).toBe(buildPdpMetadata(product).description);
+  });
+
+  it("generates complete hybrid copy with rounded display weight, without inferring a TPE body", () => {
+    const product = { ...sampleProducts[0], title: "Dolls Castle Lili 183cm Hybrid Doll", seo: undefined,
+      extended: { ...sampleProducts[0].extended, displayName: "Lili", brand: "Dolls Castle", material: "silicone-head", heightCm: 183, cupSize: "E", weightLb: 93.6965, stockStatus: "custom" as const, customAvailable: true } };
+    const description = String(buildPdpMetadata(product).description);
+    expect(description).toContain("Hybrid");
+    expect(description).toContain("93.7 lb");
+    expect(description).not.toMatch(/silicone head female body|TPE|93\.6965/);
+    expect(description).toMatch(/\.$/);
+    expect(product.extended.weightLb).toBe(93.6965);
+  });
+
+  it("keeps RTS and unknown ordering states distinct", () => {
+    const product = { ...sampleProducts[0], seo: undefined, extended: { ...sampleProducts[0].extended, stockStatus: "ready_to_ship" as const, customAvailable: false } };
+    expect(buildPdpMetadata(product).description).toContain("Ready to ship.");
+    const unknown = { ...product, extended: { ...product.extended, stockStatus: undefined, customAvailable: undefined } };
+    expect(buildPdpMetadata(unknown).description).not.toMatch(/Ready to ship|Customizable build|made to order/);
+  });
   it("uses the concise public product name for the browser and search title", () => {
     const product = {
       ...sampleProducts[0],

@@ -195,7 +195,7 @@ export function normalizeCup(value: string | undefined | null) {
 
 export function normalizeMaterial(value: string | undefined | null) {
   const normalized = cleanText(value).toLowerCase();
-  if (normalized.includes("silicone head")) return MATERIAL_LABELS["silicone-head"];
+  if (/silicone[ -]head/.test(normalized)) return MATERIAL_LABELS["silicone-head"];
   if (normalized.includes("silicone")) return MATERIAL_LABELS.silicone;
   if (normalized.includes("tpe")) return MATERIAL_LABELS.tpe;
   if (normalized.includes("hybrid")) return MATERIAL_LABELS.hybrid;

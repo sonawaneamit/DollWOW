@@ -4,6 +4,7 @@ import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import { productMeasurementSpecs } from "./productSpecs";
+import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
 
 type IntentChip = {
   label: string;
@@ -37,7 +38,7 @@ const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product);
+  const title = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
@@ -397,32 +398,38 @@ export function pdpFaqItems(product: Product): FaqItem[] {
 
 function buildPdpMetaDescription(product: Product) {
   const shopifyDescription = cleanShopifySeoValue(product.seo?.description);
-  if (shopifyDescription) return shopifyDescription;
+  if (shopifyDescription) {
+    if (/[.!?]["')\]]?$/.test(shopifyDescription)) return shopifyDescription;
+    // Preserve authored copy; repair the fixed-length fragments from older imports.
+    const description = conciseSeoDescription(shopifyDescription);
+    if (description) return description;
+  }
 
   const lockedTitle = productLockedPdpTitle(product);
   if (lockedTitle) {
     return `${lockedTitle}. Compare specs and availability with discreet US/UK/CA/AU/EU shipping.`;
   }
 
-  const publicTitle = productPublicTitle(product);
-  const material = product.extended.material || inferredMaterial(product);
-  const bodyLabel = productBodyLabel(product);
-  const stock = product.extended.stockStatus === "ready_to_ship" ? "ready to ship" : product.extended.customAvailable ? "customizable" : "made to order";
+  const publicTitle = /\bhybrid\b/i.test(product.title)
+    ? productPublicTitle(product).replace(/silicone[ -]head/i, "Hybrid")
+    : productPublicTitle(product);
+  const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : product.extended.customAvailable ? "Customizable build." : "";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
-  const weight = product.extended.weightLb ? `${product.extended.weightLb} lb` : "";
+  const weight = product.extended.weightLb ? `${Number(product.extended.weightLb.toFixed(1))} lb` : "";
   const normalizedCup = normalizeCup(product.extended.cupSize);
   const cup = normalizedCup ? `${normalizedCup}-Cup` : "";
   const factLine = [height, weight, cup].filter(Boolean).join(", ");
 
   const description = [
-    `${publicTitle} is a ${stock} ${material.toLowerCase()} ${bodyLabel}.`,
-    factLine ? `Compare ${factLine}, detailed measurements, and option depth before checkout.` : "Compare detailed measurements and option depth before checkout.",
-    "Private checkout and personal order support included."
+    `${publicTitle}.`,
+    factLine ? `${factLine}.` : "",
+    stock,
+    "Compare photos and measurements."
   ]
     .filter(Boolean)
     .join(" ");
 
-  return truncate(description, 158);
+  return conciseSeoDescription(description);
 }
 
 function cleanShopifySeoValue(value: string | null | undefined) {
@@ -555,11 +562,6 @@ function inferredMaterial(product: Product) {
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";
   return "Companion Doll";
-}
-
-function truncate(value: string, max = 160) {
-  if (value.length <= max) return value;
-  return value.slice(0, max - 1).replace(/\s+\S*$/, "").trimEnd();
 }
 
 function cleanText(value: string | undefined | null) {

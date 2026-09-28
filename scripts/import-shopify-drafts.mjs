@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { brandedSeoTitle, conciseSeoDescription, unbrandedSeoTitle } from "../lib/catalog/seoText.mjs";
 import { findRosemaryExclusiveSignals } from "./rosemary-guardrails.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -229,8 +230,8 @@ async function createDraftProduct(product) {
         tags: product.tags || [],
         status: productStatus,
         seo: {
-          title: product.seo?.title || `${product.title} | DollWow`,
-          description: product.seo?.description || plainText(product.description).slice(0, 155)
+          title: brandedSeoTitle(product.seo?.title || product.title),
+          description: conciseSeoDescription(product.seo?.description || plainText(product.description), `${unbrandedSeoTitle(product.title)}. Compare photos and specifications at DollWow.`, 155)
         },
         metafields: productMetafields(product)
       },
@@ -272,8 +273,8 @@ async function updateExistingProduct(productId, product) {
         tags: product.tags || [],
         status: productStatus,
         seo: {
-          title: product.seo?.title || `${product.title} | DollWow`,
-          description: product.seo?.description || plainText(product.description).slice(0, 155)
+          title: brandedSeoTitle(product.seo?.title || product.title),
+          description: conciseSeoDescription(product.seo?.description || plainText(product.description), `${unbrandedSeoTitle(product.title)}. Compare photos and specifications at DollWow.`, 155)
         },
         metafields: productMetafields(product)
       }
