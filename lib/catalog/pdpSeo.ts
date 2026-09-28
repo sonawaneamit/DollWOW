@@ -4,6 +4,7 @@ import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import { productMeasurementSpecs } from "./productSpecs";
+import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
 
 type IntentChip = {
   label: string;
@@ -37,7 +38,7 @@ const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product);
+  const title = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
@@ -77,10 +78,7 @@ export function buildPdpSearchFit(product: Product) {
   const chips = buildIntentChips(product).slice(0, 6);
   const materialPhrase = materialLabel(material);
   const fitPhrase = buildFitPhrase(product, height, cup);
-  const customPhrase =
-    product.extended.customAvailable === false
-      ? "The listed price is for the configuration shown."
-      : "Available choices and pricing are shown before checkout.";
+  const customPhrase = customizationCopy(product);
 
   return {
     title: "At a glance",
@@ -97,9 +95,7 @@ export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
   const material = product.extended.material || inferredMaterial(product);
   const bodyLabel = productBodyLabel(product);
   const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : "Built to order.";
-  const custom = product.extended.customAvailable === false
-    ? "This configuration is sold as listed."
-    : "Start with the included configuration, then review available custom choices and pricing.";
+  const custom = customizationCopy(product);
   const sizeNote =
     product.extended.heightCm && product.extended.heightCm <= 155
       ? "Shorter frame that is easier to compare for storage, display, and handling."
@@ -311,7 +307,7 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
     { name: "Cup size", value: normalizeCup(product.extended.cupSize) },
     { name: "Ordering option", value: orderPathLabel(product) },
     { name: "Stock status", value: stockStatusLabel(product.extended.stockStatus) },
-    { name: "Customization available", value: product.extended.customAvailable === undefined ? undefined : product.extended.customAvailable ? "Yes" : "No" },
+    { name: "Customization available", value: product.extended.customAvailable === true ? "Yes" : product.extended.stockStatus === "ready_to_ship" ? "No" : "Confirm available options with our team" },
     { name: "Delivery estimate", value: product.extended.deliveryEstimate },
     { name: "Warehouse country", value: product.extended.warehouseCountry },
     { name: "Stock last checked", value: product.extended.stockLastCheckedAt }
@@ -365,7 +361,6 @@ export function buildProductFaqStructuredData(product: Product) {
 
 export function pdpFaqItems(product: Product): FaqItem[] {
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
-  const hasCustom = product.extended.customAvailable !== false;
   const delivery = product.extended.deliveryEstimate || (readyToShip ? "Typical warehouse delivery is 3–5 business days" : "Typical timing depends on the build");
 
   return [
@@ -377,9 +372,7 @@ export function pdpFaqItems(product: Product): FaqItem[] {
     },
     {
       question: "Can I customize this doll before checkout?",
-      answer: hasCustom
-        ? "Yes. Start with the included configuration, then review available options and price changes before checkout."
-        : "This listing is treated as a fixed configuration. If you need a different setup, our team can confirm whether another version is available."
+      answer: customizationCopy(product)
     },
     {
       question: "Do I get factory approval photos before shipment?",
@@ -395,34 +388,50 @@ export function pdpFaqItems(product: Product): FaqItem[] {
   ];
 }
 
+function customizationCopy(product: Product) {
+  if (product.extended.customAvailable === true) {
+    return "Start with the included configuration, then review available options and price changes before checkout.";
+  }
+  if (product.extended.stockStatus === "ready_to_ship") {
+    return "This listing is a fixed warehouse configuration. If you need a different setup, our team can confirm whether another version is available.";
+  }
+  return "Contact our team to confirm the available customizations for this build. Where options are shown, only selectable choices can be added online; unavailable choices require confirmation.";
+}
+
 function buildPdpMetaDescription(product: Product) {
   const shopifyDescription = cleanShopifySeoValue(product.seo?.description);
-  if (shopifyDescription) return shopifyDescription;
+  if (shopifyDescription) {
+    if (/[.!?]["')\]]?$/.test(shopifyDescription)) return shopifyDescription;
+    // Preserve authored copy; repair the fixed-length fragments from older imports.
+    const description = conciseSeoDescription(shopifyDescription);
+    if (description) return description;
+  }
 
   const lockedTitle = productLockedPdpTitle(product);
   if (lockedTitle) {
     return `${lockedTitle}. Compare specs and availability with discreet US/UK/CA/AU/EU shipping.`;
   }
 
-  const publicTitle = productPublicTitle(product);
-  const material = product.extended.material || inferredMaterial(product);
-  const bodyLabel = productBodyLabel(product);
-  const stock = product.extended.stockStatus === "ready_to_ship" ? "ready to ship" : product.extended.customAvailable ? "customizable" : "made to order";
+  const publicTitle = /\bhybrid\b/i.test(product.title)
+    ? productPublicTitle(product).replace(/silicone[ -]head/i, "Hybrid")
+    : productPublicTitle(product);
+  const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : product.extended.customAvailable ? "Customizable build." : "";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
-  const weight = product.extended.weightLb ? `${product.extended.weightLb} lb` : "";
+  const weight = product.extended.weightLb ? `${Number(product.extended.weightLb.toFixed(1))} lb` : "";
   const normalizedCup = normalizeCup(product.extended.cupSize);
   const cup = normalizedCup ? `${normalizedCup}-Cup` : "";
   const factLine = [height, weight, cup].filter(Boolean).join(", ");
 
   const description = [
-    `${publicTitle} is a ${stock} ${material.toLowerCase()} ${bodyLabel}.`,
-    factLine ? `Compare ${factLine}, detailed measurements, and option depth before checkout.` : "Compare detailed measurements and option depth before checkout.",
-    "Private checkout and personal order support included."
+    `${publicTitle}.`,
+    factLine ? `${factLine}.` : "",
+    stock,
+    "Compare photos and measurements."
   ]
     .filter(Boolean)
     .join(" ");
 
-  return truncate(description, 158);
+  return conciseSeoDescription(description);
 }
 
 function cleanShopifySeoValue(value: string | null | undefined) {
@@ -555,11 +564,6 @@ function inferredMaterial(product: Product) {
   if (text.includes("silicone")) return "Silicone";
   if (text.includes("tpe")) return "TPE";
   return "Companion Doll";
-}
-
-function truncate(value: string, max = 160) {
-  if (value.length <= max) return value;
-  return value.slice(0, max - 1).replace(/\s+\S*$/, "").trimEnd();
 }
 
 function cleanText(value: string | undefined | null) {

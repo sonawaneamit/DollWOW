@@ -1,6 +1,24 @@
 import { describe, expect, it } from "vitest";
-import { brandSeoProfile, buildBrandMetadata } from "@/lib/catalog/brandSeo";
+import { brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { catalogBrands } from "@/lib/catalog/brands";
+
+describe("Moonvale catalog-grounded brand copy", () => {
+  const brand = catalogBrands.find((candidate) => candidate.value === "moonvale")!;
+  it("identifies the model families without invented weights or blanket inclusions", () => {
+    const profile = brandSeoProfile(brand);
+    expect(buildBrandMetadata(brand).alternates?.canonical).toContain("/brands/moonvale-dolls");
+    for (const model of ["Lyora", "Sorelle", "Velara", "Cerina"]) expect(profile.intro).toContain(model);
+    const copy = JSON.stringify(profile);
+    expect(copy).toContain("Confirm handling weight");
+    expect(copy).not.toMatch(/\d+(?:\.\d+)?\s*(kg|lb)|platinum|heat-resistant|hypoallergenic/);
+    expect(copy).toContain("does not by itself confirm");
+  });
+  it("keeps visible FAQs and schema answers identical", () => {
+    const profile = brandSeoProfile(brand);
+    const schema = buildBrandStructuredData(brand, []).find((entry) => entry["@type"] === "FAQPage");
+    expect(schema?.mainEntity).toEqual(profile.faqs.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })));
+  });
+});
 
 describe("Angelkiss brand SEO", () => {
   const brand = catalogBrands.find((candidate) => candidate.value === "angelkiss")!;

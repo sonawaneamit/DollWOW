@@ -140,6 +140,13 @@ function buildProductNamingData(product: Product) {
 }
 
 export function productDisplayName(product: Product) {
+  // Preserve reviewed Moonvale look suffixes that the generic name parser drops.
+  if (getCatalogBrand(product.extended.brand || product.vendor)?.value === "moonvale") {
+    const look = cleanText(product.title).match(/^Moonvale (Lyora|Sorelle|Velara|Cerina) \d+\s*cm Silicone\s+-\s+(.+?) Companion Doll$/i);
+    if (look && (!product.extended.displayName || cleanText(product.extended.displayName).toLowerCase() === look[1].toLowerCase())) {
+      return `${look[1]} - ${look[2]}`;
+    }
+  }
   if (product.extended.displayName) return cleanText(product.extended.displayName);
 
   const brand = shortBrandLabel(product.extended.brand || product.vendor);
@@ -195,7 +202,7 @@ export function normalizeCup(value: string | undefined | null) {
 
 export function normalizeMaterial(value: string | undefined | null) {
   const normalized = cleanText(value).toLowerCase();
-  if (normalized.includes("silicone head")) return MATERIAL_LABELS["silicone-head"];
+  if (/silicone[ -]head/.test(normalized)) return MATERIAL_LABELS["silicone-head"];
   if (normalized.includes("silicone")) return MATERIAL_LABELS.silicone;
   if (normalized.includes("tpe")) return MATERIAL_LABELS.tpe;
   if (normalized.includes("hybrid")) return MATERIAL_LABELS.hybrid;

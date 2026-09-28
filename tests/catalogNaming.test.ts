@@ -3,6 +3,31 @@ import { buildDollWowCatalogName, normalizeCup, normalizeMaterial, normalizePubl
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("DollWow catalog naming", () => {
+  it.each([
+    ["Sorelle", 160, "White Fox"],
+    ["Sorelle", 160, "Red Fox"],
+    ["Sorelle", 160, "Red Fox Sporty"],
+    ["Lyora", 155, "White Leopard Anime"],
+    ["Lyora", 155, "Yellow Leopard"],
+    ["Lyora", 155, "Yellow Leopard Homebody"],
+    ["Velara", 165, "Black Panther"],
+    ["Velara", 165, "White Panther Office"],
+    ["Cerina", 170, "Deer"],
+    ["Cerina", 170, "Blonde Deer"]
+  ])("preserves the catalog look for %s %s %s", (model, height, look) => {
+    const product = {
+      ...sampleProducts[0],
+      title: `Moonvale ${model} ${height}cm Silicone - ${look} Companion Doll`,
+      vendor: "Moonvale",
+      extended: { ...sampleProducts[0].extended, brand: "Moonvale", displayName: model as string, heightCm: height as number, material: "Silicone" }
+    };
+    expect(productDisplayName(product)).toBe(`${model} - ${look}`);
+    expect(productPublicTitle(product)).toContain(`${model} - ${look}`);
+    expect(productPdpHeading(product)).toBe(`${model} - ${look}`);
+    expect(product.title).toBe(`Moonvale ${model} ${height}cm Silicone - ${look} Companion Doll`);
+    expect(productDisplayName({ ...product, extended: { ...product.extended, displayName: "Custom editorial name" } })).toBe("Custom editorial name");
+  });
+
   it("builds factual DollWow-owned public names", () => {
     const name = buildDollWowCatalogName({
       brand: "WM Dolls",

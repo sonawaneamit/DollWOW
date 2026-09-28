@@ -8,7 +8,8 @@ import { TrustLogoStrip } from "@/components/TrustLogoStrip";
 
 export const metadata = {
   title: "Sex Doll Buying Help",
-  description: "Get private, personal help with sex doll sizing, materials, customization, delivery, price matching, and product comparisons from DollWow."
+  description: "Get private, personal help with sex doll sizing, materials, customization, delivery, price matching, and product comparisons from DollWow.",
+  alternates: { canonical: "/support" }
 };
 
 export default function SupportPage() {
