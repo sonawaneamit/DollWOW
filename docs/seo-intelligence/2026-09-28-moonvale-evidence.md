@@ -1,6 +1,6 @@
 # Moonvale Research and Draft
 
-Status: content ready; final hosted naming verification pending. Scoped research and local validation reviewed. Preview only, not a release approval or a claim of exhaustive optimization.
+Status: scoped research and preview validation complete; production release approval pending. Not a claim of exhaustive optimization or measured ranking improvement.
 
 ## Decision
 
@@ -42,7 +42,7 @@ One prompt per model/provider is a diagnostic sample, not a citation-share bench
 
 ## Release Boundaries
 
-1. Verify the final naming adjustment on the hosted preview before production approval.
+1. Final hosted naming check passed at code commit `2f0ffef`: Vercel build succeeded, all ten distinct look names rendered with the production canonical, and the 390px mobile viewport had no overflowing headings or document width. Temporary viewport override reset. Documentation-only changes after this commit do not change the tested application.
 2. Manufacturer confirmation is required before adding weights, brand ownership, supported functions or material-performance claims. Those claims are deliberately omitted, so missing supplier data does not require inventing placeholders or rewriting the catalog.
 3. The existing authorization card, original product photographs, price feed and configurator are unchanged. No new visual asset is required for this copy/naming pass.
 4. Production release approval and post-release GSC/Bing/engagement monitoring remain pending. Third-party estimates do not replace actual indexed-page or conversion results.
