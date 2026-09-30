@@ -44,7 +44,7 @@ export function SeDollBrandPromotionBanner() {
             {SE_DOLL_SEPTEMBER_PROMOTION.shortTitle}
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-ivory-300">
-            Custom TPE/STPE and Silicone Pro full dolls now include the free Loose Joint System, alongside the other September factory offers. Torsos and ready-to-ship dolls are excluded from this free option. DollWOW’s sitewide 10% is applied at checkout.
+            Custom TPE/STPE and Silicone Pro full dolls now include the free Loose Joint System, alongside the other September factory offers. Torsos and ready-to-ship dolls are excluded from this free option. DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout. Ready-to-ship dolls are excluded from this checkout discount.
           </p>
         </div>
         <Link href={SE_DOLL_SEPTEMBER_PROMOTION.promoHref} className="inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
@@ -220,7 +220,7 @@ function PromoIndexOfferCard({ offer, index }: {
           <p className={`mt-6 rounded-[12px] border px-4 py-3 text-sm leading-6 text-ivory-300 ${offer.kind === "warehouse" ? "border-gold-500/30 bg-gold-500/10" : "border-gold-500/14 bg-ink-950/55"}`}>
             {offer.note}
           </p>
-          <p className="mt-3 text-sm leading-6 text-ivory-400">DollWOW’s sitewide 10% is applied at checkout.</p>
+          <p className="mt-3 text-sm leading-6 text-ivory-400">DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout. Ready-to-ship dolls are excluded from this checkout discount.</p>
           <Link href={SE_DOLL_SEPTEMBER_PROMOTION.brandHref} className="mt-6 inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
             Shop SE Doll
           </Link>
