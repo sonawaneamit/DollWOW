@@ -36,7 +36,7 @@ export function IrontechAutumnPdpPromotion({ product, promoClock }: { product: P
         <p className="mt-1 text-sm leading-6 text-ivory-200">For eligible custom orders placed {IRONTECH_AUTUMN_PROMOTION.dateLabel}.</p>
         <OfferList items={offer.included} />
         <BonusNote />
-        <p className="mt-3 text-sm leading-6 text-ivory-400">DollWOW’s sitewide 10% is applied at checkout.</p>
+        <p className="mt-3 text-sm leading-6 text-ivory-400">DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout. Ready-to-ship dolls are excluded.</p>
       </IrontechPromotionAccordion>
     </section>
   );
@@ -73,7 +73,7 @@ export function IrontechAutumnPromoIndexCard() {
             ))}
           </div>
           <BonusNote />
-          <p className="mt-3 text-sm leading-6 text-ivory-400">Custom full dolls and silicone single heads only. Ready-to-ship and warehouse products are not eligible. DollWOW’s sitewide 10% is applied at checkout.</p>
+          <p className="mt-3 text-sm leading-6 text-ivory-400">Custom full dolls and silicone single heads only. Ready-to-ship and warehouse products are not eligible. DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout.</p>
           <Link href={IRONTECH_AUTUMN_PROMOTION.brandHref} className="mt-6 inline-flex min-h-11 items-center justify-center rounded-button bg-accent px-5 text-sm font-semibold text-white hover:bg-accent-hover">
             Shop Irontech Dolls
           </Link>

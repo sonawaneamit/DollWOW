@@ -50,7 +50,7 @@ export function FanrealSeptemberPdpPromotion({ product, promoClock }: { product:
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm leading-6 text-ivory-400">Custom full-body and eligible torso builds only. Ready-to-ship and warehouse products are excluded. DollWOW’s sitewide 10% is applied at checkout.</p>
+          <p className="mt-4 text-sm leading-6 text-ivory-400">Custom full-body and eligible torso builds only. Ready-to-ship and warehouse products are excluded. DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout.</p>
         </div>
       </div>
     </section>
