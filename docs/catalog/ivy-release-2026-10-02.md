@@ -20,8 +20,12 @@ Source: factory Ivy release, manufacturer LN-T46-H6B-1 / H6B, and the exact Rose
 
 ## Release state
 
-Charge records are active and published to the existing Headless and Online Store channels. US availability verified. International availability, production deploy and final actual checkout checks are pending; this document is not a completed release certificate.
+Published after PR #89 deployed. The product and all nine named add-ons are available in US, PT, GB and DE storefront contexts (10/10 each). The live page passed 390px and 1440px gallery/editorial loading, overflow and JavaScript-error checks.
 
-The parent remains unpublished until code and checkout infrastructure are ready. Publication must not invent RTS stock, warehouse location or dispatch timing. No unrelated October promotion changes are included in this release.
+Actual production checkout passed base build (USD 1,659), selected Blair implanted-hair additional head (USD 2,084), and head removed (USD 1,659). The selected head is visibly named in Shopify checkout, linked to its parent, and charged USD 425 before the existing discount. No payment or order was submitted. These checks do not verify every shipping destination or a completed order.
 
-Evidence is retained under the main repository `data/exports/catalog-ops-five-2026-10-02/`, including `ivy-editorial-applied.json`, `ivy-named-charge-candidate.json`, menu source and draft revisions. Browser checks: `/tmp/ivy-preview-browser-check.json`, `/tmp/ivy-interaction-check.json`.
+The first paid checkout check detected a missing `exact-upgrade-pilot` system tag on the new records. It was added to all nine without changing prices, then all three checkout cases passed. Include this tag in future named-charge creation checks.
+
+Parent is ACTIVE and classified custom/made-to-order; no RTS stock, warehouse location or dispatch timing was invented. No unrelated October promotion changes are included in this release.
+
+Evidence is retained under the main repository `data/exports/catalog-ops-five-2026-10-02/`, including `ivy-editorial-applied.json`, `ivy-named-charge-candidate.json`, `ivy-current-market-availability.json`, `ivy-charge-tag-repair.json`, `ivy-live-checkout.json`, `ivy-preview-browser-check.json`, and the checkout screenshot/text. Checkout artifacts contain private cart identifiers and must not be committed.

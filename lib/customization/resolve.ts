@@ -9,8 +9,11 @@ import type {
 } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { customizationVisibility } from './visibility';
+import { sukiDefaultSelections } from './irontech-suki';
 
 function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
+  const suki = sukiDefaultSelections(config);
+  if (suki) return suki;
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
