@@ -11,7 +11,7 @@ function mapProductWithProductionNotes(productionNotes: string[], metadata: Part
     description: "",
     vendor: "Test brand",
     productType: "Doll",
-    tags: [],
+    tags: metadata.tags ?? [],
     featuredImage: null,
     images: { edges: [] },
     variants: { edges: [] },
