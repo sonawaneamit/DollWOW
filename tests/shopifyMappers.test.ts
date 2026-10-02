@@ -36,7 +36,8 @@ function mapProductWithProductionNotes(productionNotes: string[], metadata: Part
 
 describe("Shopify product metadata mapping", () => {
   it('preserves decimal centimeters from measured height when the integer field is absent', () => {
-    expect(mapProductWithProductionNotes([], {measurements:{value:JSON.stringify({Height:'3 ft 8 in / 112.5 cm'})}}).extended.heightCm).toBe(112.5);
+    expect(mapProductWithProductionNotes([], {tags:['options:erovenus-torso-max-v1'],measurements:{value:JSON.stringify({Height:'3 ft 8 in / 112.5 cm'})}}).extended.heightCm).toBe(112.5);
+    expect(mapProductWithProductionNotes([], {measurements:{value:JSON.stringify({Height:'3 ft 8 in / 112.5 cm'})}}).extended.heightCm).toBeUndefined();
     expect(mapProductWithProductionNotes([], {measurements:{value:JSON.stringify({Height:'3 ft 8 in'})}}).extended.heightCm).toBeUndefined();
     expect(mapProductWithProductionNotes([], {heightCm:{value:'166'},measurements:{value:JSON.stringify({Height:'112.5 cm'})}}).extended.heightCm).toBe(166);
   });

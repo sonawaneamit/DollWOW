@@ -160,11 +160,11 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
   const customAvailableRaw = booleanValue(node.customAvailable?.value);
   const material = node.material?.value;
   const measurements = jsonValue<Record<string, string>>(node.measurements?.value);
-  // Shopify's current height field is integer-only. Preserve exact factory
-  // centimeters from measurements when no integer height was supplied.
-  const measuredHeight = Object.entries(measurements ?? {})
+  // The reviewed torso has a fractional height but Shopify's height field is
+  // integer-only. Leave older products' identity-bound preset hashes unchanged.
+  const measuredHeight = node.tags?.includes('options:erovenus-torso-max-v1') ? Object.entries(measurements ?? {})
     .find(([key]) => key.trim().toLowerCase() === 'height')?.[1]
-    ?.match(/(\d+(?:\.\d+)?)\s*cm\b/i)?.[1];
+    ?.match(/(\d+(?:\.\d+)?)\s*cm\b/i)?.[1] : undefined;
 
   return {
     id: node.id,
