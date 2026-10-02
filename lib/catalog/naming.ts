@@ -238,7 +238,7 @@ function publicModelName(title: string | undefined | null, handle: string | unde
 function normalizeHeight(value: string | number | undefined | null) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed) || parsed <= 0) return "";
-  return `${Math.round(parsed)}cm`;
+  return `${parsed}cm`;
 }
 
 function normalizeProductKind(value: CatalogNamingInput["productKind"]) {

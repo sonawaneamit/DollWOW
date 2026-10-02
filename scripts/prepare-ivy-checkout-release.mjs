@@ -1,0 +1,18 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+const source=process.argv[2];
+assert(source,'Pass the reviewed Ivy named-charge candidate JSON path.');
+const candidate=JSON.parse(await fs.readFile(source,'utf8'));
+assert.equal(candidate.parentVariantId,'gid://shopify/ProductVariant/54234105643192');
+assert.equal(candidate.bindings.length,9);
+const file=new URL('../lib/cart/evidence/named-upgrades-release.json',import.meta.url);
+const registry=JSON.parse(await fs.readFile(file,'utf8'));
+assert.equal(registry.approval.payloadHash,crypto.createHash('sha256').update(JSON.stringify(registry.payload)).digest('hex'));
+const key='erovenus-ivy-torso-max-v1';
+registry.payload.parents[candidate.parentVariantId]=key;
+registry.payload.groups[key]=candidate.bindings.map(({status,...binding})=>binding);
+registry.payload.releaseId='named-upgrades-2026-10-02-ivy';
+registry.approval={payloadHash:crypto.createHash('sha256').update(JSON.stringify(registry.payload)).digest('hex'),evidenceRef:'docs/catalog/ivy-release-2026-10-02.md',reviewedAt:new Date().toISOString()};
+await fs.writeFile(file,JSON.stringify(registry)+'\n');
+console.log(JSON.stringify({parent:candidate.parentVariantId,bindings:9,otherParentsPreserved:true}));

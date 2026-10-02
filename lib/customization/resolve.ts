@@ -14,6 +14,10 @@ function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSe
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
+        if (config.id === 'erovenus-torso-max-v1') {
+          const includedDefaults = group.options.filter(option => option.priceDelta === 0 && isSupplierSelectedOption(option));
+          return [group.id, includedDefaults.map(option => option.id)];
+        }
         const defaultOption = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals) || isSupplierSelectedOption(option));
         return [group.id, defaultOption ? [defaultOption.id] : []];
       }

@@ -1,0 +1,848 @@
+{
+  "productId": "gid://shopify/Product/10630580240568",
+  "templateTag": "options:erovenus-torso-max-v1",
+  "source": "https://www.rosemarydoll.com/product/112-5cm-3ft8-d-cup-silicone-sex-doll-torso-ivy/",
+  "donorId": "gid://shopify/Product/10433914536120",
+  "groups": [
+    {
+      "id": "hair-type",
+      "label": "Hair Type",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "wig-as-shown-in-photos",
+          "label": "Wig as Shown in Photos",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/05/Erovenus-Wig.png",
+            "label": "Wig as Shown in Photos"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "realistic-implant-hair-free",
+          "label": "Realistic Implant Hair (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Handcrafted-Hair.jpeg",
+            "label": "Realistic Implant Hair (FREE)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "premium-head-body-options-multiple",
+      "label": "Premium Head & Body Options (Multiple)",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "implanted-eyebrows-eyelashes-free",
+          "label": "Implanted Eyebrows & Eyelashes (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Eyebrow-and-eyelash-implantation.png",
+            "label": "Implanted Eyebrows & Eyelashes (FREE)"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "5s-makeup-free",
+          "label": "5S Makeup (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/5S-Makeup-Erovenus.jpeg",
+            "label": "5S Makeup (FREE)"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "softer-internal-vagina-free",
+          "label": "Softer Internal Vagina (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Softer-Internal-Vagina.jpeg",
+            "label": "Softer Internal Vagina (FREE)"
+          },
+          "productionNote": "Default supplier selection."
+        }
+      ]
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "sex-doll-cleaning-kit-free",
+          "label": "Sex Doll Cleaning Kit (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/01/LoveNestle-Sex-Doll-Cleaning-Kit-300x300-1.jpeg",
+            "label": "Sex Doll Cleaning Kit (FREE)"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "premium-lingerie-free",
+          "label": "Premium Lingerie (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/01/Sex-doll-lingerie-300x300-1.jpeg",
+            "label": "Premium Lingerie (FREE)"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "premium-cleaning-set-orig-550",
+          "label": "Premium Cleaning Set (Orig. $550)",
+          "priceDelta": 99,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Premium-Cleaning-Set-2.0.png",
+            "label": "Premium Cleaning Set (Orig. $550)"
+          }
+        },
+        {
+          "id": "care-kit-orig-199",
+          "label": "Care Kit (Orig. $199)",
+          "priceDelta": 99,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-swatches/care-kit.svg",
+            "label": "Care Kit (Orig. $199)"
+          }
+        },
+        {
+          "id": "deluxe-care-kit-orig-299",
+          "label": "Deluxe Care Kit (Orig. $299)",
+          "priceDelta": 199,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-swatches/deluxe-care-kit.svg",
+            "label": "Deluxe Care Kit (Orig. $299)"
+          }
+        },
+        {
+          "id": "sex-doll-body-hanging-bracket",
+          "label": "Sex Doll Body Hanging Bracket",
+          "priceDelta": 399,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/06/Sex-Doll-Body-Hanging-Bracket.jpg",
+            "label": "Sex Doll Body Hanging Bracket"
+          }
+        },
+        {
+          "id": "heating-blanket",
+          "label": "Heating Blanket",
+          "priceDelta": 100,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2022/01/heating-blanket.jpg",
+            "label": "Heating Blanket"
+          }
+        }
+      ]
+    },
+    {
+      "id": "upgraded-flight-case-add-on",
+      "label": "Upgraded Flight Case Add On",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-thanks",
+          "label": "No Thanks",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2020/04/No_thanks-300x300.jpg",
+            "label": "No Thanks"
+          },
+          "productionNote": "Default supplier selection."
+        },
+        {
+          "id": "flight-case-under-40kg",
+          "label": "Flight Case (Doll Weight < 40kg)",
+          "priceDelta": 699,
+          "priceVerified": true,
+          "purchasable": true
+        },
+        {
+          "id": "flight-case-40kg-and-over",
+          "label": "Flight Case (Doll Weight ≥ 40kg)",
+          "priceDelta": 899,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2020/04/flight-case.jpg",
+            "label": "Flight Case (Doll Weight ≥ 40kg)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "an-extra-head",
+      "label": "An Extra Head",
+      "required": false,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "none",
+          "label": "No extra head",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "purchasable": true
+        },
+        {
+          "id": "blair-wig",
+          "label": "Blair - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Blair-head.jpg",
+            "label": "Blair"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "blair-implanted",
+          "label": "Blair - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Blair-head.jpg",
+            "label": "Blair"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "cecilia-wig",
+          "label": "Cecilia - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Cecilia-icon.jpg",
+            "label": "Cecilia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "cecilia-implanted",
+          "label": "Cecilia - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Cecilia-icon.jpg",
+            "label": "Cecilia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "charlotte-wig",
+          "label": "Charlotte - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Charlotte.jpg",
+            "label": "Charlotte"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "charlotte-implanted",
+          "label": "Charlotte - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Charlotte.jpg",
+            "label": "Charlotte"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "chloe-wig",
+          "label": "Chloe - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Chloe-1.jpg",
+            "label": "Chloe"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "chloe-implanted",
+          "label": "Chloe - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Chloe-1.jpg",
+            "label": "Chloe"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "cinna-wig",
+          "label": "Cinna - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/erovenus-Cinna.jpeg",
+            "label": "Cinna"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "cinna-implanted",
+          "label": "Cinna - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/erovenus-Cinna.jpeg",
+            "label": "Cinna"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "ellen-wig",
+          "label": "Ellen - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Ellen.jpg",
+            "label": "Ellen"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "ellen-implanted",
+          "label": "Ellen - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Ellen.jpg",
+            "label": "Ellen"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "iris-wig",
+          "label": "Iris - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Iris.jpg",
+            "label": "Iris"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "iris-implanted",
+          "label": "Iris - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Iris.jpg",
+            "label": "Iris"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "phoebe-wig",
+          "label": "Phoebe - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Phoebe.jpg",
+            "label": "Phoebe"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "phoebe-implanted",
+          "label": "Phoebe - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Phoebe.jpg",
+            "label": "Phoebe"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "bela-wig",
+          "label": "Bela - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/erovenus-bela.jpg",
+            "label": "Bela"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "bela-implanted",
+          "label": "Bela - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/erovenus-bela.jpg",
+            "label": "Bela"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "doris-wig",
+          "label": "Doris - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Doris-icon.jpg",
+            "label": "Doris"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "doris-implanted",
+          "label": "Doris - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Doris-icon.jpg",
+            "label": "Doris"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "lydia-wig",
+          "label": "Lydia - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Lydia-Icon.jpg",
+            "label": "Lydia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "lydia-implanted",
+          "label": "Lydia - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Lydia-Icon.jpg",
+            "label": "Lydia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "roxy-wig",
+          "label": "Roxy - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Roxy-Icon.jpg",
+            "label": "Roxy"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "roxy-implanted",
+          "label": "Roxy - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Erovenus-Roxy-Icon.jpg",
+            "label": "Roxy"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "grace-wig",
+          "label": "Grace - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Grace-icon.jpg",
+            "label": "Grace"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "grace-implanted",
+          "label": "Grace - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Grace-icon.jpg",
+            "label": "Grace"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "hailey-wig",
+          "label": "Hailey - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Hailey.jpg",
+            "label": "Hailey"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "hailey-implanted",
+          "label": "Hailey - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Hailey.jpg",
+            "label": "Hailey"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "hazel-wig",
+          "label": "Hazel - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Hazel.jpg",
+            "label": "Hazel"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "hazel-implanted",
+          "label": "Hazel - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Hazel.jpg",
+            "label": "Hazel"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "kelly-wig",
+          "label": "Kelly - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Kelly.jpg",
+            "label": "Kelly"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "kelly-implanted",
+          "label": "Kelly - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Kelly.jpg",
+            "label": "Kelly"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "kimberly-wig",
+          "label": "Kimberly - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Kimberly-2.jpg",
+            "label": "Kimberly"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "kimberly-implanted",
+          "label": "Kimberly - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Kimberly-2.jpg",
+            "label": "Kimberly"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "lana-wig",
+          "label": "Lana - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Lana.jpg",
+            "label": "Lana"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "lana-implanted",
+          "label": "Lana - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Lana.jpg",
+            "label": "Lana"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "marina-wig",
+          "label": "Marina - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Marina-1.jpg",
+            "label": "Marina"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "marina-implanted",
+          "label": "Marina - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Marina-1.jpg",
+            "label": "Marina"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "riko-wig",
+          "label": "Riko - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Riko-Head.jpg",
+            "label": "Riko"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "riko-implanted",
+          "label": "Riko - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Riko-Head.jpg",
+            "label": "Riko"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "skylar-wig",
+          "label": "Skylar - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Skylar.jpg",
+            "label": "Skylar"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "skylar-implanted",
+          "label": "Skylar - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Skylar.jpg",
+            "label": "Skylar"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "sydney-wig",
+          "label": "Sydney - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Sydney.jpg",
+            "label": "Sydney"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "sydney-implanted",
+          "label": "Sydney - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Sydney.jpg",
+            "label": "Sydney"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "thia-wig",
+          "label": "Thia - wig",
+          "priceDelta": 275,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Thia-Head.jpg",
+            "label": "Thia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        },
+        {
+          "id": "thia-implanted",
+          "label": "Thia - implanted hair",
+          "priceDelta": 425,
+          "priceVerified": true,
+          "purchasable": true,
+          "swatch": {
+            "kind": "image",
+            "value": "https://www.rosemarydoll.com/wp-content/uploads/2025/03/Thia-Head.jpg",
+            "label": "Thia"
+          },
+          "description": "Additional head. Implanted eyebrows, eyelashes and 5S makeup included."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Exact Ivy source corroborates existing Erovenus torso menu and prices.",
+    "Paid additional head and optional implanted hair form a single 275/425 choice, avoiding orphaned hair charges.",
+    "Source Other Head requires manual agreement and is not represented as a verified online choice.",
+    "Primary H6B head remains as photographed; this menu does not silently switch the primary head.",
+    "No free additional-head gift promised without dealer entitlement; paid selected-head add-on remains distinct.",
+    "No presets for this torso."
+  ]
+}

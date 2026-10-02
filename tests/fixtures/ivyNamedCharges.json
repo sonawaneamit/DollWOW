@@ -1,0 +1,177 @@
+{
+  "parentVariantId": "gid://shopify/ProductVariant/54234105643192",
+  "releaseStatus": "BLOCKED",
+  "reason": "Charge products unpublished; parent draft awaits preview/checkout approval",
+  "bindings": [
+    {
+      "group": "Accessories",
+      "label": "Premium Cleaning Set (Orig. $550)",
+      "unitAmount": 99,
+      "choiceLabels": [
+        "Premium Cleaning Set (Orig. $550)"
+      ],
+      "productTitle": "Erovenus - Premium Cleaning Set",
+      "handle": "dollwow-upgrade-erovenus-09f8290d5166747e",
+      "productId": "gid://shopify/Product/10630613500088",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170065080",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Accessories",
+      "label": "Care Kit (Orig. $199)",
+      "unitAmount": 99,
+      "choiceLabels": [
+        "Care Kit (Orig. $199)"
+      ],
+      "productTitle": "Erovenus - Care Kit",
+      "handle": "dollwow-upgrade-erovenus-ee9f7d209b05f390",
+      "productId": "gid://shopify/Product/10630613565624",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170130616",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Accessories",
+      "label": "Deluxe Care Kit (Orig. $299)",
+      "unitAmount": 199,
+      "choiceLabels": [
+        "Deluxe Care Kit (Orig. $299)"
+      ],
+      "productTitle": "Erovenus - Deluxe Care Kit",
+      "handle": "dollwow-upgrade-erovenus-1b6adfc9ac7b3a5d",
+      "productId": "gid://shopify/Product/10630613598392",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170163384",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Accessories",
+      "label": "Sex Doll Body Hanging Bracket",
+      "unitAmount": 399,
+      "choiceLabels": [
+        "Sex Doll Body Hanging Bracket"
+      ],
+      "productTitle": "Erovenus - Sex Doll Body Hanging Bracket",
+      "handle": "dollwow-upgrade-erovenus-9febb64f508c0fc0",
+      "productId": "gid://shopify/Product/10630613663928",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170261688",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Accessories",
+      "label": "Heating Blanket",
+      "unitAmount": 100,
+      "choiceLabels": [
+        "Heating Blanket"
+      ],
+      "productTitle": "Erovenus - Heating Blanket",
+      "handle": "dollwow-upgrade-erovenus-6d8b42ffddd5f14f",
+      "productId": "gid://shopify/Product/10630613696696",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170294456",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Upgraded Flight Case Add On",
+      "label": "Flight Case (Doll Weight < 40kg)",
+      "unitAmount": 699,
+      "choiceLabels": [
+        "Flight Case (Doll Weight < 40kg)"
+      ],
+      "productTitle": "Erovenus - Flight Case (Doll Weight < 40kg)",
+      "handle": "dollwow-upgrade-erovenus-699c1920e3aa41cf",
+      "productId": "gid://shopify/Product/10630613729464",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170327224",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Upgraded Flight Case Add On",
+      "label": "Flight Case (Doll Weight ≥ 40kg)",
+      "unitAmount": 899,
+      "choiceLabels": [
+        "Flight Case (Doll Weight ≥ 40kg)"
+      ],
+      "productTitle": "Erovenus - Flight Case (Doll Weight ≥ 40kg)",
+      "handle": "dollwow-upgrade-erovenus-9f9fa921a99409d8",
+      "productId": "gid://shopify/Product/10630613795000",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170392760",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Add Extra Head",
+      "label": "Additional Erovenus head with wig",
+      "unitAmount": 275,
+      "choiceLabels": [
+        "Blair - wig",
+        "Cecilia - wig",
+        "Charlotte - wig",
+        "Chloe - wig",
+        "Cinna - wig",
+        "Ellen - wig",
+        "Iris - wig",
+        "Phoebe - wig",
+        "Bela - wig",
+        "Doris - wig",
+        "Lydia - wig",
+        "Roxy - wig",
+        "Grace - wig",
+        "Hailey - wig",
+        "Hazel - wig",
+        "Kelly - wig",
+        "Kimberly - wig",
+        "Lana - wig",
+        "Marina - wig",
+        "Riko - wig",
+        "Skylar - wig",
+        "Sydney - wig",
+        "Thia - wig"
+      ],
+      "productTitle": "Erovenus additional head with wig",
+      "handle": "dollwow-upgrade-erovenus-42bf5164231b3137",
+      "productId": "gid://shopify/Product/10630613860536",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170491064",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    },
+    {
+      "group": "Add Extra Head",
+      "label": "Additional Erovenus head with implanted hair",
+      "unitAmount": 425,
+      "choiceLabels": [
+        "Blair - implanted hair",
+        "Cecilia - implanted hair",
+        "Charlotte - implanted hair",
+        "Chloe - implanted hair",
+        "Cinna - implanted hair",
+        "Ellen - implanted hair",
+        "Iris - implanted hair",
+        "Phoebe - implanted hair",
+        "Bela - implanted hair",
+        "Doris - implanted hair",
+        "Lydia - implanted hair",
+        "Roxy - implanted hair",
+        "Grace - implanted hair",
+        "Hailey - implanted hair",
+        "Hazel - implanted hair",
+        "Kelly - implanted hair",
+        "Kimberly - implanted hair",
+        "Lana - implanted hair",
+        "Marina - implanted hair",
+        "Riko - implanted hair",
+        "Skylar - implanted hair",
+        "Sydney - implanted hair",
+        "Thia - implanted hair"
+      ],
+      "productTitle": "Erovenus additional head with implanted hair",
+      "handle": "dollwow-upgrade-erovenus-fda09bf14b4887a8",
+      "productId": "gid://shopify/Product/10630613926072",
+      "merchandiseId": "gid://shopify/ProductVariant/54234170556600",
+      "currencyCode": "USD",
+      "status": "DRAFT"
+    }
+  ]
+}

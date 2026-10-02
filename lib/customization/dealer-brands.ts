@@ -55,10 +55,17 @@ export function getYlCustomizationGroups(product: Product, groups: Customization
 }
 
 export function getErovenusCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
-  return normalizeDealerHeadGroups(product, groups, {
+  const normalized = normalizeDealerHeadGroups(product, groups, {
     chooseDescription: "Choose one compatible Erovenus head where supported by this body.",
     extraDescription: "Optional paid Erovenus head. Each selected additional head is charged separately."
   });
+  // This reviewed torso menu combines head identity and hair into one removable
+  // purchase. Keep the source's one-additional-head limit after normalization.
+  return product.tags.includes('options:erovenus-torso-max-v1')
+    ? normalized.map(group => group.id === 'add-extra-head'
+      ? {...group, selectionMode: 'single' as const}
+      : group)
+    : normalized;
 }
 
 export function getPiperCustomizationGroups(product: Product, groups: CustomizationGroup[]) {

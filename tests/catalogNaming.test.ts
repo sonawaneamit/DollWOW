@@ -3,6 +3,10 @@ import { buildDollWowCatalogName, normalizeCup, normalizeMaterial, normalizePubl
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("DollWow catalog naming", () => {
+  it("preserves fractional factory heights in public names", () => {
+    expect(buildDollWowCatalogName({modelName:'Ivy',heightCm:112.5,productKind:'torso'}).title).toContain('112.5cm');
+    expect(buildDollWowCatalogName({modelName:'Example',heightCm:166,productKind:'full_doll'}).title).toContain('166cm');
+  });
   it.each([
     ["Sorelle", 160, "White Fox"],
     ["Sorelle", 160, "Red Fox"],
