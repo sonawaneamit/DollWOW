@@ -159,6 +159,12 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
   const stockStatus = node.stockStatus?.value as Product["extended"]["stockStatus"];
   const customAvailableRaw = booleanValue(node.customAvailable?.value);
   const material = node.material?.value;
+  const measurements = jsonValue<Record<string, string>>(node.measurements?.value);
+  // Shopify's current height field is integer-only. Preserve exact factory
+  // centimeters from measurements when no integer height was supplied.
+  const measuredHeight = Object.entries(measurements ?? {})
+    .find(([key]) => key.trim().toLowerCase() === 'height')?.[1]
+    ?.match(/(\d+(?:\.\d+)?)\s*cm\b/i)?.[1];
 
   return {
     id: node.id,
@@ -194,10 +200,10 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       sourceHandle: node.sourceHandle?.value,
       sourceReleaseRank: numberValue(node.sourceReleaseRank?.value),
       material,
-      heightCm: numberValue(node.heightCm?.value),
+      heightCm: numberValue(node.heightCm?.value) ?? numberValue(measuredHeight),
       weightLb: numberValue(node.weightLb?.value),
       cupSize: node.cupSize?.value,
-      measurements: jsonValue<Record<string, string>>(node.measurements?.value),
+      measurements,
       warehouseCountry: node.warehouseCountry?.value,
       warehouseRegions: jsonValue<string[]>(node.warehouseRegions?.value),
       stockStatus,

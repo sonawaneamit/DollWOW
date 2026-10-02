@@ -2,8 +2,9 @@ import { describe, expect, it } from "vitest";
 import { mapShopifyProduct } from "@/lib/shopify/mappers";
 import { isNeutralDefaultOption, isOptionPriceVerified } from "@/lib/customization/resolve";
 
-function mapProductWithProductionNotes(productionNotes: string[]) {
+function mapProductWithProductionNotes(productionNotes: string[], metadata: Partial<Parameters<typeof mapShopifyProduct>[0]> = {}) {
   return mapShopifyProduct({
+    ...metadata,
     id: "gid://shopify/Product/production-notes",
     handle: "test-production-notes",
     title: "Test customization product",
@@ -34,6 +35,11 @@ function mapProductWithProductionNotes(productionNotes: string[]) {
 }
 
 describe("Shopify product metadata mapping", () => {
+  it('preserves decimal centimeters from measured height when the integer field is absent', () => {
+    expect(mapProductWithProductionNotes([], {measurements:{value:JSON.stringify({Height:'3 ft 8 in / 112.5 cm'})}}).extended.heightCm).toBe(112.5);
+    expect(mapProductWithProductionNotes([], {measurements:{value:JSON.stringify({Height:'3 ft 8 in'})}}).extended.heightCm).toBeUndefined();
+    expect(mapProductWithProductionNotes([], {heightCm:{value:'166'},measurements:{value:JSON.stringify({Height:'112.5 cm'})}}).extended.heightCm).toBe(166);
+  });
   it.each([
     "Reseller price $50. Suggested retail $100. Factory URL: https://www.sedoll.com/options/loose-joint",
     "Phoebe autumn list",

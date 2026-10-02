@@ -327,9 +327,9 @@ export function formatHeightDual(heightCm: number | undefined) {
   const totalInches = Math.round(heightCm / 2.54);
   const feet = Math.floor(totalInches / 12);
   const inches = totalInches % 12;
-  if (!feet) return `${Math.round(heightCm)} cm`;
-  if (!inches) return `${feet} ft / ${Math.round(heightCm)} cm`;
-  return `${feet} ft ${inches} in / ${Math.round(heightCm)} cm`;
+  if (!feet) return `${heightCm} cm`;
+  if (!inches) return `${feet} ft / ${heightCm} cm`;
+  return `${feet} ft ${inches} in / ${heightCm} cm`;
 }
 
 export function formatWeightDual(weightLb: number | undefined) {

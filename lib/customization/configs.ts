@@ -403,7 +403,8 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     return importedBrandConfig(product, purpose, "yl-source-verified", "YL Dolls", getYlCustomizationGroups(product, importedGroups));
   }
   if (isErovenusProduct(product) && importedGroups?.length) {
-    return importedBrandConfig(product, purpose, "erovenus-source-verified", "Erovenus", getErovenusCustomizationGroups(product, importedGroups));
+    const profile = product.tags.includes('options:erovenus-torso-max-v1') ? 'erovenus-torso-max-v1' : 'erovenus-source-verified';
+    return importedBrandConfig(product, purpose, profile, "Erovenus", getErovenusCustomizationGroups(product, importedGroups));
   }
   if (isPiperProduct(product) && importedGroups?.length) {
     return importedBrandConfig(product, purpose, "piper-source-verified", "Piper Dolls", getPiperCustomizationGroups(product, importedGroups));
