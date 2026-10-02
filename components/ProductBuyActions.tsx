@@ -7,6 +7,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
+import { useMounted } from "@/lib/utils/storageStore";
 import type { ProductImage, Product } from "@/types/product";
 import { Care365Seal } from "@/components/care/Care365Seal";
 import { PaymentLogos } from "@/components/PaymentLogos";
@@ -57,7 +58,8 @@ export function ProductBuyActions({
     { key: "Selected configuration", value: "As shown" }
   ];
   
-  const estimatedDate = stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
+  const mounted = useMounted();
+  const estimatedDate = mounted && stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
 
   function addToBag() {
     cart.addItem({
