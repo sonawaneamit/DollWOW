@@ -1,0 +1,2687 @@
+{
+  "registryGroups": {
+    "afaadd50e138bc88b2f742fffc75231a0569af3d0dae40e6012a694769c2e28e": [
+      {
+        "group": "Premium Head & Body Options (Multiple)",
+        "label": "Oral Sex Function",
+        "unitAmount": 89,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111868715192",
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Oral Sex Function"
+      },
+      {
+        "group": "Premium Head & Body Options (Multiple)",
+        "label": "Oral Heating Function",
+        "unitAmount": 89,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111868453048",
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Oral Heating Function"
+      },
+      {
+        "group": "Premium Head & Body Options (Multiple)",
+        "label": "Bikini Line",
+        "unitAmount": 70,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111869305016",
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Bikini Line"
+      },
+      {
+        "group": "Premium Head & Body Options (Multiple)",
+        "label": "Add Moles & Freckles",
+        "unitAmount": 30,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111868289208",
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Add Moles & Freckles"
+      },
+      {
+        "group": "Robot Option",
+        "label": "Auto Blowjob",
+        "unitAmount": 250,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111871467704",
+        "productTitle": "Irontech Dolls - Robot Option: Auto Blowjob"
+      },
+      {
+        "group": "IronAI Bionic VaginaX",
+        "label": "IronAI Bionic VaginaX — anal unavailable once installed",
+        "unitAmount": 191,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111867142328",
+        "productTitle": "Irontech Dolls - IronAI Bionic VaginaX: IronAI Bionic VaginaX — anal unavailable once installed"
+      }
+    ],
+    "0ec8ba210b8824bd050d6aae23523cb20f44560796aae42b9721ea7a1c537ad3": [
+      {
+        "group": "Premium Head & Body Options (Multiple)",
+        "label": "Body Heating",
+        "unitAmount": 100,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111838863544",
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Body Heating"
+      }
+    ],
+    "6fe9df5ad7fab3370abe6126fdf94d7ef050faedf99e838421edd3f562dc35b5": [
+      {
+        "group": "Accessories",
+        "label": "Removable Tongue",
+        "unitAmount": 30,
+        "currencyCode": "USD",
+        "merchandiseId": "gid://shopify/ProductVariant/54111879233720",
+        "productTitle": "Irontech Dolls - Accessories: Removable Tongue"
+      }
+    ]
+  },
+  "previousTemplate": {
+    "productId": "gid://shopify/Product/10518042345656",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Care, S+ finish, and ball-jointed hands.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "vaginal-irrigator"
+          },
+          {
+            "groupId": "accessories",
+            "optionId": "reusable-drying-rod"
+          },
+          {
+            "groupId": "makeup-options",
+            "optionId": "s-makeup-upgrade"
+          },
+          {
+            "groupId": "makeup-options",
+            "optionId": "s-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ball-jointed-hand-skeleton-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Implanted brows, toe joints, and an ultra-soft butt.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "implanted-eyebrows-eyelashes-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "toe-joint-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ultra-soft-butt"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Body heating with body moaning.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "body-heating"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "body-moaning"
+          }
+        ],
+        "remove": []
+      }
+    ]
+  },
+  "source": {
+    "productId": "gid://shopify/Product/10630580273336",
+    "variantId": "gid://shopify/ProductVariant/54234105675960",
+    "basePrice": {
+      "amount": 2799,
+      "currencyCode": "USD"
+    },
+    "identity": {
+      "brand": "Irontech Dolls",
+      "bodyModel": "166cm 2.0",
+      "headModel": "S20",
+      "headFunction": "ROS MAX",
+      "skinTone": "Glow",
+      "material": "Silicone"
+    },
+    "sourceMenu": [
+      {
+        "id": "skin-color",
+        "label": "Skin Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "glow"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "natural",
+            "label": "Natural",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "glow",
+            "label": "Glow",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tanned",
+            "label": "Tanned",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "dark-tanned",
+            "label": "Dark Tanned",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "choose-a-head",
+        "label": "Choose A Head",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "default"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "others",
+            "label": "Others",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "silicone-head-type",
+        "label": "Silicone Head Type",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "ros-max"
+        ],
+        "options": [
+          {
+            "id": "hard-silicone",
+            "label": "Hard Silicone",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "soft-silicone",
+            "label": "Soft Silicone",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "ros",
+            "label": "ROS",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "ros-max",
+            "label": "ROS Max",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "wig-style",
+        "label": "Wig Style",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "default"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w1",
+            "label": "#W1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w2",
+            "label": "#W2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w3",
+            "label": "#W3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w4",
+            "label": "#W4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w5",
+            "label": "#W5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w6",
+            "label": "#W6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w7",
+            "label": "#W7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w8",
+            "label": "#W8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w9",
+            "label": "#W9",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w10",
+            "label": "#W10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w11",
+            "label": "#W11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w12",
+            "label": "#W12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w13",
+            "label": "#W13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w14",
+            "label": "#W14",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w15",
+            "label": "#W15",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w16",
+            "label": "#W16",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w17",
+            "label": "#W17",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "w18",
+            "label": "#W18",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j1",
+            "label": "#J1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j2",
+            "label": "#J2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j3",
+            "label": "#J3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j4",
+            "label": "#J4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j5",
+            "label": "#J5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j6",
+            "label": "#J6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j7",
+            "label": "#J7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j8",
+            "label": "#J8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j9",
+            "label": "#J9",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j10",
+            "label": "#J10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j11",
+            "label": "#J11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "j12",
+            "label": "#J12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "implanted-eyebrows-eyelashes",
+        "label": "Implanted Eyebrows & Eyelashes",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "no"
+        ],
+        "options": [
+          {
+            "id": "no",
+            "label": "No",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "yes",
+            "label": "Yes",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "hemisphere-eyes",
+        "label": "Hemisphere Eyes",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "default"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "shining-green",
+            "label": "Shining Green",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "bloodshot-green",
+            "label": "Bloodshot Green",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "blue",
+            "label": "Blue",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "blue-green",
+            "label": "Blue Green",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "brown",
+            "label": "Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "green",
+            "label": "Green",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "h-b",
+            "label": "H-B",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-1",
+            "label": "Handmade Eyes #1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-2",
+            "label": "Handmade Eyes #2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-3",
+            "label": "Handmade Eyes #3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-4",
+            "label": "Handmade Eyes #4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-5",
+            "label": "Handmade Eyes #5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-6",
+            "label": "Handmade Eyes #6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-7",
+            "label": "Handmade Eyes #7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-8",
+            "label": "Handmade Eyes #8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-9",
+            "label": "Handmade Eyes #9",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-10",
+            "label": "Handmade Eyes #10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-11",
+            "label": "Handmade Eyes #11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-12",
+            "label": "Handmade Eyes #12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-13",
+            "label": "Handmade Eyes #13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-14",
+            "label": "Handmade Eyes #14",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-15",
+            "label": "Handmade Eyes #15",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-16",
+            "label": "Handmade Eyes #16",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-17",
+            "label": "Handmade Eyes #17",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-18",
+            "label": "Handmade Eyes #18",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-19",
+            "label": "Handmade Eyes #19",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-20",
+            "label": "Handmade Eyes #20",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-21",
+            "label": "Handmade Eyes #21",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-22",
+            "label": "Handmade Eyes #22",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-23",
+            "label": "Handmade Eyes #23",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-24",
+            "label": "Handmade Eyes #24",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-25",
+            "label": "Handmade Eyes #25",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-26",
+            "label": "Handmade Eyes #26",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-27",
+            "label": "Handmade Eyes #27",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-28",
+            "label": "Handmade Eyes #28",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "handmade-eyes-29",
+            "label": "Handmade Eyes #29",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "breast-options",
+        "label": "Breast Options",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "gel-filled-breasts"
+        ],
+        "options": [
+          {
+            "id": "gel-filled-breasts",
+            "label": "Gel-Filled Breasts",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "areola-color",
+        "label": "Areola Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "default"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tender-rosa",
+            "label": "Tender Rosa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "graceful-daisy",
+            "label": "Graceful Daisy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "misty-rose",
+            "label": "Misty Rose",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "mysterious-lilac",
+            "label": "Mysterious Lilac",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "passion-peony",
+            "label": "Passion Peony",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "areola-size",
+        "label": "Areola Size",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "3cm"
+        ],
+        "options": [
+          {
+            "id": "3cm",
+            "label": "3cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "4cm",
+            "label": "4cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "5cm",
+            "label": "5cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "fingernail-color",
+        "label": "Fingernail Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "f-5"
+        ],
+        "options": [
+          {
+            "id": "f-1",
+            "label": "F-1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-2",
+            "label": "F-2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-3",
+            "label": "F-3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-4",
+            "label": "F-4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-5",
+            "label": "F-5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-6",
+            "label": "F-6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-7",
+            "label": "F-7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-8",
+            "label": "F-8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-9",
+            "label": "F-9",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-10",
+            "label": "F-10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-11",
+            "label": "F-11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "f-12",
+            "label": "F-12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "toenail-color",
+        "label": "Toenail Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "t-1"
+        ],
+        "options": [
+          {
+            "id": "t-1",
+            "label": "T-1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-2",
+            "label": "T-2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-3",
+            "label": "T-3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-4",
+            "label": "T-4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-5",
+            "label": "T-5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-6",
+            "label": "T-6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-7",
+            "label": "T-7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "t-8",
+            "label": "T-8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "vagina",
+        "label": "Vagina",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "built-in"
+        ],
+        "options": [
+          {
+            "id": "built-in",
+            "label": "Built-in",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "removable",
+            "label": "Removable",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "vaginal-canal-texture",
+        "label": "Vaginal Canal Texture",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "b1"
+        ],
+        "options": [
+          {
+            "id": "b1",
+            "label": "B1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "b2",
+            "label": "B2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "b3",
+            "label": "B3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "b4",
+            "label": "B4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "b5",
+            "label": "B5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "labia-color",
+        "label": "Labia Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "default"
+        ],
+        "options": [
+          {
+            "id": "default",
+            "label": "Default",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tender-rosa",
+            "label": "Tender Rosa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "graceful-daisy",
+            "label": "Graceful Daisy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "misty-rose",
+            "label": "Misty Rose",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "mysterious-lilac",
+            "label": "Mysterious Lilac",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "passion-peony",
+            "label": "Passion Peony",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "pubic-hair",
+        "label": "Pubic Hair",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "none"
+        ],
+        "options": [
+          {
+            "id": "none",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "original",
+            "label": "Original",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "bikini-wax",
+            "label": "Bikini Wax",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "freestyle",
+            "label": "Freestyle",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "heart",
+            "label": "Heart",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "striping",
+            "label": "Striping",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "martini-glass",
+            "label": "Martini Glass",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "natural",
+            "label": "Natural",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "wild",
+            "label": "Wild",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "standing",
+        "label": "Standing",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "standing"
+        ],
+        "options": [
+          {
+            "id": "no-standing",
+            "label": "No Standing",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "standing",
+            "label": "Standing",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "standing-without-screws",
+            "label": "Standing Without Screws",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "body-skeleton",
+        "label": "Body Skeleton",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "evo-skeleton"
+        ],
+        "options": [
+          {
+            "id": "evo-skeleton",
+            "label": "EVO Skeleton",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "joint-tightness",
+        "label": "Joint Tightness",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "standard-joints"
+        ],
+        "options": [
+          {
+            "id": "standard-joints",
+            "label": "Standard Joints",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tight-joints",
+            "label": "Tight Joints",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "slightly-loose-joints",
+            "label": "Slightly Loose Joints",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "fully-loose-joints",
+            "label": "Fully Loose Joints",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "hand-skeleton",
+        "label": "Hand Skeleton",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "ball-jointed-hand-skeleton"
+        ],
+        "options": [
+          {
+            "id": "ball-jointed-hand-skeleton",
+            "label": "Ball Jointed Hand Skeleton",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "premium-head-body-options",
+        "label": "Premium Head & Body Options",
+        "required": true,
+        "selectionMode": "multiple",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "s-makeup-upgrade",
+          "s-body-painting"
+        ],
+        "options": [
+          {
+            "id": "s-makeup-upgrade",
+            "label": "S+ Makeup Upgrade",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "s-body-painting",
+            "label": "S+ Body Painting",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "hard-hands",
+            "label": "Hard Hands",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "soft-vagina",
+            "label": "Soft Vagina",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "ultra-soft-body-free",
+            "label": "Ultra Soft Body Free",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "movable-toes",
+            "label": "Movable Toes",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "gel-butt",
+            "label": "Gel Butt",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "ultra-light-weight",
+            "label": "Ultra Light Weight",
+            "priceDelta": 199,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "soft-thigh",
+            "label": "Soft Thigh",
+            "priceDelta": 99,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "soft-belly",
+            "label": "Soft Belly",
+            "priceDelta": 59,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "oral-auto-sucking",
+            "label": "Oral Auto-Sucking",
+            "priceDelta": 89,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "oral-heating",
+            "label": "Oral Heating",
+            "priceDelta": 89,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "bikini-line",
+            "label": "Bikini Line",
+            "priceDelta": 70,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "facial-freckles",
+            "label": "Facial Freckles",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "heating",
+            "label": "Heating",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "electric-butt",
+            "label": "Electric Butt",
+            "priceDelta": 250,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "auto-blowjob",
+            "label": "Auto Blowjob",
+            "priceDelta": 250,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "ironai",
+            "label": "IronAI",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "ironai-bionic-vaginax",
+        "label": "IronAI Bionic VaginaX",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "no"
+        ],
+        "options": [
+          {
+            "id": "no",
+            "label": "No",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "yes",
+            "label": "Yes",
+            "priceDelta": 191,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "buy-2nd-head",
+        "label": "Buy 2ND Head",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "defaultOptionIds": [
+          "no"
+        ],
+        "options": [
+          {
+            "id": "no",
+            "label": "No",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "yes",
+            "label": "Yes",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      },
+      {
+        "id": "accessories",
+        "label": "Accessories",
+        "required": false,
+        "selectionMode": "multiple",
+        "display": "swatches",
+        "defaultOptionIds": [],
+        "options": [
+          {
+            "id": "wm-cleaning-set",
+            "label": "WM Cleaning Set",
+            "priceDelta": 380,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "teeth-inserts-normal",
+            "label": "Teeth Inserts - Normal",
+            "priceDelta": 135,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "teeth-inserts-vampire",
+            "label": "Teeth Inserts - Vampire",
+            "priceDelta": 135,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tpe-penis-15cm",
+            "label": "TPE Penis-15cm",
+            "priceDelta": 70,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "tpe-penis-19cm",
+            "label": "TPE Penis-19cm",
+            "priceDelta": 70,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "silicone-penis-15cm",
+            "label": "Silicone Penis-15cm",
+            "priceDelta": 120,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "silicone-penis-25cm",
+            "label": "Silicone Penis-25cm",
+            "priceDelta": 120,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "removable-tongue",
+            "label": "Removable Tongue",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "vagina-insert",
+            "label": "Vagina Insert",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "nipple-piercing",
+            "label": "Nipple Piercing",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "belly-piercing",
+            "label": "Belly Piercing",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "silicone-socks",
+            "label": "Silicone Socks",
+            "priceDelta": 20,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "head-standing",
+            "label": "Head Standing",
+            "priceDelta": 35,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "hooks",
+            "label": "Hooks",
+            "priceDelta": 35,
+            "priceVerified": true,
+            "purchasable": true
+          },
+          {
+            "id": "storage-case",
+            "label": "Storage Case",
+            "priceDelta": 799,
+            "priceVerified": true,
+            "purchasable": true
+          }
+        ]
+      }
+    ]
+  },
+  "selectedProof": {
+    "chosen": [
+      {
+        "group": "Skin Color",
+        "selected": [
+          {
+            "checked": true,
+            "value": "Glow_2"
+          }
+        ]
+      },
+      {
+        "group": "Silicone Head Type",
+        "selected": [
+          {
+            "checked": true,
+            "value": "ROS Max_3"
+          }
+        ]
+      }
+    ]
+  },
+  "extraHeadGroups": {
+    "31": {
+      "label": "Silicone Head Type",
+      "options": [
+        {
+          "label": "Hard Silicone",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "Soft Silicone",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "ROS",
+          "rules": "[\"180\"]"
+        },
+        {
+          "label": "ROS Max",
+          "rules": "[\"180\"]"
+        }
+      ]
+    },
+    "37": {
+      "label": "Implanted Hair",
+      "options": [
+        {
+          "label": "None",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "Implanted Synthetic Hair",
+          "rules": "[\"199\"]"
+        },
+        {
+          "label": "Implanted Long Straight Synthetic Hair",
+          "rules": "[\"199\"]"
+        },
+        {
+          "label": "Implanted Synthetic Hair with Dreadlocks",
+          "rules": "[\"199\"]"
+        }
+      ]
+    },
+    "39": {
+      "label": "Long Straight Hair Color",
+      "options": [
+        {
+          "label": "#1 Golden Brown",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "#2 Chestenut",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "#3 Jet Black",
+          "rules": "[\"\"]"
+        },
+        {
+          "label": "#4 Medium Blonde",
+          "rules": "[\"\"]"
+        }
+      ]
+    },
+    "43": {
+      "label": "Premium Options",
+      "options": [
+        {
+          "label": "Oral Sex Function",
+          "rules": "[\"89\"]"
+        },
+        {
+          "label": "Oral Heating",
+          "rules": "[\"89\"]"
+        },
+        {
+          "label": "Facial Freckles",
+          "rules": "[\"30\"]"
+        },
+        {
+          "label": "IronAI",
+          "rules": "[\"60\"]"
+        }
+      ]
+    }
+  },
+  "combinations": {
+    "status": "PASS_RETAILER_SUPPORTED_COMBINATIONS",
+    "scope": "ITD911 / 166cm 2.0 / default S20 / ROS MAX / Glow / no extra head",
+    "provenance": "Retailer-supported under authorized fallback, not factory-certified",
+    "states": [
+      {
+        "name": "enthusiast",
+        "choices": [
+          {
+            "value": "Ultra Light Weight_7",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "199"
+          },
+          {
+            "value": "Soft Thigh_8",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "99"
+          },
+          {
+            "value": "Heating_14",
+            "checked": false,
+            "disabled": false,
+            "visible": true,
+            "price": "100"
+          },
+          {
+            "value": "Soft Belly_9",
+            "checked": false,
+            "disabled": false,
+            "visible": true,
+            "price": "59"
+          }
+        ],
+        "premiumValidation": "{\"required\":true}",
+        "inspectedConditionalRuleCount": 27,
+        "tierConditionalReferences": []
+      },
+      {
+        "name": "collector",
+        "choices": [
+          {
+            "value": "Ultra Light Weight_7",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "199"
+          },
+          {
+            "value": "Soft Thigh_8",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "99"
+          },
+          {
+            "value": "Heating_14",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "100"
+          },
+          {
+            "value": "Soft Belly_9",
+            "checked": true,
+            "disabled": false,
+            "visible": true,
+            "price": "59"
+          }
+        ],
+        "premiumValidation": "{\"required\":true}",
+        "inspectedConditionalRuleCount": 27,
+        "tierConditionalReferences": []
+      }
+    ]
+  },
+  "namedCharges": {
+    "status": "FIXTURE_ONLY_NOT_A_RELEASE_BINDING",
+    "bindings": [
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Oral Auto-Sucking",
+        "unitAmount": 89,
+        "choiceLabels": [
+          "Oral Auto-Sucking"
+        ],
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Oral Sex Function",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000000",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "89",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Oral Heating",
+        "unitAmount": 89,
+        "choiceLabels": [
+          "Oral Heating"
+        ],
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Oral Heating Function",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000001",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "89",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Bikini Line",
+        "unitAmount": 70,
+        "choiceLabels": [
+          "Bikini Line"
+        ],
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Bikini Line",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000002",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "70",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Facial Freckles",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Facial Freckles"
+        ],
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Add Moles & Freckles",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000003",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Heating",
+        "unitAmount": 100,
+        "choiceLabels": [
+          "Heating"
+        ],
+        "productTitle": "Irontech Dolls - Premium Head & Body Options (Multiple): Body Heating",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000004",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "100",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Auto Blowjob",
+        "unitAmount": 250,
+        "choiceLabels": [
+          "Auto Blowjob"
+        ],
+        "productTitle": "Irontech Dolls - Robot Option: Auto Blowjob",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000005",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "250",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "IronAI Bionic VaginaX",
+        "label": "Yes",
+        "unitAmount": 191,
+        "choiceLabels": [
+          "Yes"
+        ],
+        "productTitle": "Irontech Dolls - IronAI Bionic VaginaX: IronAI Bionic VaginaX — anal unavailable once installed",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000006",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "191",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Removable Tongue",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Removable Tongue"
+        ],
+        "productTitle": "Irontech Dolls - Accessories: Removable Tongue",
+        "origin": "EXISTING_SEMANTIC_MATCH",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000007",
+        "status": "ACTIVE",
+        "tags": [
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Pubic Hair",
+        "label": "Pubic hair style",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Original",
+          "Bikini Wax",
+          "Freestyle",
+          "Heart",
+          "Striping",
+          "Martini Glass",
+          "Natural",
+          "Wild"
+        ],
+        "productTitle": "Irontech Dolls - Pubic hair style",
+        "descriptionHtml": "<p>Optional pubic hair style selected for the associated Irontech Suki doll. The customer-selected style is recorded in the Customization line-item details. This is one style family, not a general-purpose charge for unrelated options.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000008",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Soft Vagina option",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Soft Vagina"
+        ],
+        "productTitle": "Irontech Dolls - Soft Vagina option",
+        "descriptionHtml": "<p>The Soft Vagina configuration option selected for the associated Irontech Suki doll. This is a body configuration charge, distinct from a removable insert accessory.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000009",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Ultra Light Weight body option",
+        "unitAmount": 199,
+        "choiceLabels": [
+          "Ultra Light Weight"
+        ],
+        "productTitle": "Irontech Dolls - Ultra Light Weight body option",
+        "descriptionHtml": "<p>The Ultra Light Weight body option offered for the 166cm 2.0 S20 ROS MAX Suki configuration by the exact ITD911 retailer menu. This line records that selected option; no finished weight, reduction percentage or combined-performance result is promised.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000010",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "199",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Soft Thigh option",
+        "unitAmount": 99,
+        "choiceLabels": [
+          "Soft Thigh"
+        ],
+        "productTitle": "Irontech Dolls - Soft Thigh option",
+        "descriptionHtml": "<p>The Soft Thigh configuration option selected for the associated Irontech Suki doll. This line records that body option separately from the base doll.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000011",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "99",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Soft Belly option",
+        "unitAmount": 59,
+        "choiceLabels": [
+          "Soft Belly"
+        ],
+        "productTitle": "Irontech Dolls - Soft Belly option",
+        "descriptionHtml": "<p>The Soft Belly configuration option selected for the associated Irontech Suki doll. This line records that body option separately from the base doll.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000012",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "59",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Premium Head & Body Options",
+        "label": "Electric Butt option",
+        "unitAmount": 250,
+        "choiceLabels": [
+          "Electric Butt"
+        ],
+        "productTitle": "Irontech Dolls - Electric Butt option",
+        "descriptionHtml": "<p>The Electric Butt configuration option listed in the exact Irontech Suki source menu. This line does not represent the separate Auto Blowjob or Auto Vagina Clamping and Sucking options.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000013",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "250",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "WM Cleaning Set",
+        "unitAmount": 380,
+        "choiceLabels": [
+          "WM Cleaning Set"
+        ],
+        "productTitle": "Irontech Dolls - WM Cleaning Set",
+        "descriptionHtml": "<p>The WM Cleaning Set accessory selected from the Irontech Suki menu. This is the named cleaning-set option, not the Premium Cleaning Set, Care Kit or Deluxe Care Kit. Individual kit contents are not specified in the reviewed source.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000014",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "380",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Teeth inserts - normal",
+        "unitAmount": 135,
+        "choiceLabels": [
+          "Teeth Inserts - Normal"
+        ],
+        "productTitle": "Irontech Dolls - Teeth inserts - normal",
+        "descriptionHtml": "<p>The normal teeth-insert accessory selected from the Irontech Suki menu. This is distinct from the vampire teeth-insert option.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000015",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "135",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Teeth inserts - vampire",
+        "unitAmount": 135,
+        "choiceLabels": [
+          "Teeth Inserts - Vampire"
+        ],
+        "productTitle": "Irontech Dolls - Teeth inserts - vampire",
+        "descriptionHtml": "<p>The vampire teeth-insert accessory selected from the Irontech Suki menu. This is distinct from the normal teeth-insert option.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000016",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "135",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "TPE penis accessory - 15cm",
+        "unitAmount": 70,
+        "choiceLabels": [
+          "TPE Penis-15cm"
+        ],
+        "productTitle": "Irontech Dolls - TPE penis accessory - 15cm",
+        "descriptionHtml": "<p>The 15cm TPE penis accessory listed in the Irontech Suki menu. This line records the specified TPE material and 15cm size, not the 19cm TPE or silicone alternatives.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000017",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "70",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "TPE penis accessory - 19cm",
+        "unitAmount": 70,
+        "choiceLabels": [
+          "TPE Penis-19cm"
+        ],
+        "productTitle": "Irontech Dolls - TPE penis accessory - 19cm",
+        "descriptionHtml": "<p>The 19cm TPE penis accessory listed in the Irontech Suki menu. This line records the specified TPE material and 19cm size, not the 15cm TPE or silicone alternatives.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000018",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "70",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Silicone penis accessory - 15cm",
+        "unitAmount": 120,
+        "choiceLabels": [
+          "Silicone Penis-15cm"
+        ],
+        "productTitle": "Irontech Dolls - Silicone penis accessory - 15cm",
+        "descriptionHtml": "<p>The 15cm silicone penis accessory listed in the Irontech Suki menu. This line records the specified silicone material and 15cm size, not the 25cm silicone or TPE alternatives.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000019",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "120",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Silicone penis accessory - 25cm",
+        "unitAmount": 120,
+        "choiceLabels": [
+          "Silicone Penis-25cm"
+        ],
+        "productTitle": "Irontech Dolls - Silicone penis accessory - 25cm",
+        "descriptionHtml": "<p>The 25cm silicone penis accessory listed in the Irontech Suki menu. This line records the specified silicone material and 25cm size, not the 15cm silicone or TPE alternatives.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000020",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "120",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Vagina insert accessory",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Vagina Insert"
+        ],
+        "productTitle": "Irontech Dolls - Vagina insert accessory",
+        "descriptionHtml": "<p>The Vagina Insert accessory listed in the Irontech Suki menu. This is an insert accessory, distinct from the Soft Vagina body configuration option.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000021",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Nipple piercing option",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Nipple Piercing"
+        ],
+        "productTitle": "Irontech Dolls - Nipple piercing option",
+        "descriptionHtml": "<p>The Nipple Piercing option selected from the Irontech Suki accessories menu. Jewelry material, dimensions and quantity are not specified in the reviewed source.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000022",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Belly piercing option",
+        "unitAmount": 30,
+        "choiceLabels": [
+          "Belly Piercing"
+        ],
+        "productTitle": "Irontech Dolls - Belly piercing option",
+        "descriptionHtml": "<p>The Belly Piercing option selected from the Irontech Suki accessories menu. This is distinct from the nipple-piercing option; jewelry material and dimensions are not specified in the reviewed source.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000023",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "30",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Silicone socks",
+        "unitAmount": 20,
+        "choiceLabels": [
+          "Silicone Socks"
+        ],
+        "productTitle": "Irontech Dolls - Silicone socks",
+        "descriptionHtml": "<p>The Silicone Socks accessory selected from the Irontech Suki menu. The source specifies the accessory name but not dimensions or a load-support rating.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000024",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "20",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Head stand accessory",
+        "unitAmount": 35,
+        "choiceLabels": [
+          "Head Standing"
+        ],
+        "productTitle": "Irontech Dolls - Head stand accessory",
+        "descriptionHtml": "<p>The accessory labeled Head Standing in the Irontech Suki source menu. This line records the selected head-stand accessory, not an additional head or the standing-feet body option.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000025",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "35",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Hooks accessory",
+        "unitAmount": 35,
+        "choiceLabels": [
+          "Hooks"
+        ],
+        "productTitle": "Irontech Dolls - Hooks accessory",
+        "descriptionHtml": "<p>The Hooks accessory selected from the Irontech Suki menu. The reviewed source does not specify the hook count, material or load rating.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000026",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "35",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      },
+      {
+        "group": "Accessories",
+        "label": "Storage case",
+        "unitAmount": 799,
+        "choiceLabels": [
+          "Storage Case"
+        ],
+        "productTitle": "Irontech Dolls - Storage case",
+        "descriptionHtml": "<p>The Storage Case accessory selected from the Irontech Suki menu. This is the source-listed storage case, not either weight-tier flight-case option; dimensions and contents are not specified in the reviewed source.</p><p>Ordered with the associated doll and fulfilled with that order. This line is not a complete doll or a delivery charge.</p>",
+        "origin": "DRAFT_FIXTURE",
+        "merchandiseId": "gid://shopify/ProductVariant/90000000000027",
+        "status": "DRAFT",
+        "tags": [
+          "catalog-review-hold",
+          "custom-option-charge",
+          "dollwow-system",
+          "exact-upgrade-pilot",
+          "suki-menu-review-2026-10-02"
+        ],
+        "variant": {
+          "price": "799",
+          "taxable": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryItem": {
+            "requiresShipping": false,
+            "tracked": false
+          }
+        }
+      }
+    ]
+  }
+}

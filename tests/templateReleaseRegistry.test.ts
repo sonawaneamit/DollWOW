@@ -39,8 +39,8 @@ function fixture() {
 describe('coordinated template release boundary', () => {
   it('packages the entire reviewed cohort with evidence-bound approvals', () => {
     expect(templateReleaseIssues(blockedRegistry)).toEqual([]);
-    expect(blockedRegistry.payload.entries).toHaveLength(2583);
-    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2583);
+    expect(blockedRegistry.payload.entries).toHaveLength(2584);
+    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2584);
   });
   it('still rejects a blocked registry', () => {
     expect(templateReleaseIssues({ ...fixture(), releaseStatus: 'BLOCKED' })).toEqual(['release_not_approved']);

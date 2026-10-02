@@ -5,6 +5,7 @@ import { getAvantCustomizationGroups } from "@/lib/customization/avant";
 import { getRosrettyCustomizationGroups } from "@/lib/customization/rosretty";
 import { getStarperyCustomizationGroups, getStarperyCustomizationRules } from "@/lib/customization/starpery";
 import { getIrontechCustomizationGroups, isExplicitIrontechUlwOption } from "@/lib/customization/irontech";
+import { getSukiCustomizationConfig } from './irontech-suki';
 import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
@@ -282,6 +283,8 @@ export function getFactoryCustomizationConfig(product: Product): BrandCustomizat
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
+  const suki = getSukiCustomizationConfig(product);
+  if (suki) return suki;
   // Catalog imports are not perfectly consistent about where a brand lands.
   // Include stable product identifiers so a valid brand-specific configuration
   // never falls through to a generic or no-options experience.
