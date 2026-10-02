@@ -35,3 +35,11 @@ Named charges reuse eight existing semantic matches and add twenty specific reco
 - This document describes incremental release preparation, not completed production checkout. Final live checks and deployment are recorded below when completed. No order or payment was placed during preparation.
 
 Evidence: main repository `data/exports/catalog-ops-five-2026-10-02/`, especially `suki-specifications-verified.json`, `suki-retailer-tier-combinations.json`, `suki-prepared-menu.json`, `suki-named-charge-candidate.json`, `suki-menu-applied.json`, and `suki-charge-release-readback.json`.
+
+## Production checkpoint
+
+PR90 deployed and the parent was activated. All32 actual US cart cases passed: three presets,28 distinct named charges, and return to Starter. Shopify checkout visibly shows Collector's individual named upgrades; no order placed. Existing10% gives2519.10/2787.30/2930.40 respectively.
+
+The first activation required refreshing the preset runtime identity from the actual Storefront response: Admin exports `2799.00`, whereas Storefront exports `2799.0`. The new registration uses the actual live mapped product rather than assuming byte-identical money strings across APIs. Its selector passed an independent live-read test. Other products' signatures are unchanged.
+
+Final public-page and parent international checks remain required after this registry refresh. The earlier28/28 market pass covers add-ons, not the newly activated parent.
