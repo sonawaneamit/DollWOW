@@ -24,6 +24,9 @@ Owner subsequently clarified that supplier emails are dealer communications and 
 
 ## Verification
 
+- Follow-up: refreshed all 115 existing preset runtime bindings for the added body-weight group. Verified three presets per product, unchanged preset totals, standard weight retained, and no selection conflicts. No new preset recipes or automatic lightweight selection. Evidence: main workspace `data/exports/se-lightweight-preset-refresh.json`.
+- Authenticated Vercel CLI HTTP access works for the candidate (product request HTTP 200); this resolves the earlier preview sign-in obstacle, not visual browser QA.
+
 - 111 promotion regression tests passed; 12 focused identity, lightweight and charge-gate tests passed. TypeScript check passed.
 - Ten real Shopify cart checks passed using the local checkout handler: makeup and texture during/after October, plus each of the three lightweight body sizes during/after October. No orders placed. Evidence: main workspace `data/exports/se-october-live-cart-evidence.json`.
 - Read-only international checks at 09:42 UTC: all six records passed in US, PT, GB and DE (24/24). Earlier missing international results have cleared without additional writes. This verifies availability, not a completed international checkout or visual browser test.
