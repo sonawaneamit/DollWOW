@@ -4,6 +4,8 @@ import { SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPr
 import { isSeDollSeptemberPromotionVisible, SE_DOLL_SEPTEMBER_OFFERS } from "@/lib/promotions/seDollSeptember2026";
 import { IrontechAutumnPromoIndexCard } from "@/components/promotions/IrontechAutumnPromotion";
 import { IRONTECH_AUTUMN_PROMOTION, isIrontechAutumnPromotionVisible } from "@/lib/promotions/irontechAutumn2026";
+import { JinsanOctoberIndexCards } from "@/components/promotions/JinsanOctoberPromotion";
+import { isJinsanOctoberActive, JINSAN_OCTOBER_OFFERS } from "@/lib/promotions/jinsanOctober2026";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -22,9 +24,12 @@ export const metadata: Metadata = {
 };
 
 export default function PromoIndexPage() {
+  const promoClock = new Date().toISOString();
+  const hasJinsanPromotion = isJinsanOctoberActive(new Date(promoClock));
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
   const itemList = [
+    ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
     ...(hasIrontechPromotion ? [{ name: IRONTECH_AUTUMN_PROMOTION.title, url: `${siteUrl}/promo#${IRONTECH_AUTUMN_PROMOTION.id}` }] : []),
     ...(hasSeDollPromotion ? Object.values(SE_DOLL_SEPTEMBER_OFFERS).map((offer) => ({ name: offer.shortTitle, url: `${siteUrl}/promo#${offer.id}` })) : [])
   ];
@@ -64,8 +69,9 @@ export default function PromoIndexPage() {
           </div>
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
-        {hasSeDollPromotion || hasIrontechPromotion ? (
+        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion ? (
           <div className="grid gap-8">
+            {hasJinsanPromotion ? <JinsanOctoberIndexCards promoClock={promoClock} /> : null}
             {hasIrontechPromotion ? <IrontechAutumnPromoIndexCard /> : null}
             {hasSeDollPromotion ? <SeDollPromoIndexCards /> : null}
           </div>
