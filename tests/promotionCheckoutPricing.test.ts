@@ -104,4 +104,39 @@ describe("promotion checkout repricing", () => {
       ])
     }));
   });
+
+  it.each([
+    ["2026-10-08T07:00:00Z", 200],
+    ["2026-11-09T08:00:00Z", 375]
+  ])("reprices October silicone freebies and paid options on the server at %s", async (clock, amount) => {
+    vi.setSystemTime(new Date(clock));
+    const p = flora();
+    p.handle = "irontech-reviewed-silicone";
+    p.title = "Irontech reviewed silicone doll";
+    p.productType = "Custom silicone doll";
+    p.tags = ["irontech", "silicone", "customizable"];
+    p.extended.material = "Silicone";
+    p.extended.customizationGroups = [{
+      id: "skeleton-type-add-on", label: "Skeleton Type Add-on", display: "cards",
+      options: [{ id: "standard", label: "Standard", priceDelta: 0 }, { id: "evo", label: "EVO Skeleton", priceDelta: 175 }]
+    }, {
+      id: "body", label: "Body", display: "cards",
+      options: [{ id: "none", label: "No Thanks", priceDelta: 0 }, { id: "heating", label: "Body Heating", priceDelta: 200 }]
+    }];
+    mocks.getProductsByVariantIds.mockResolvedValue(new Map([[VARIANT_ID, p]]));
+    const response = await POST(new Request("https://dollwow.com/api/cart/create", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ merchandiseId: VARIANT_ID, quantity: 1,
+        selections: { "skeleton-type-add-on": "evo", body: "heating" },
+        promoClock: "2026-10-15T12:00:00Z",
+        customizationCharge: { amount: 1, currencyCode: "USD", title: "forged client price" }
+      })
+    }));
+    expect(response.status).toBe(200);
+    expect(mocks.createCart).toHaveBeenCalledWith(expect.objectContaining({
+      customizationCharge: expect.objectContaining({ amount, currencyCode: "USD" })
+    }));
+    expect(p.variants[0].price.amount).toBe("2000");
+    expect(p.extended.customizationGroups[0].options[1].priceDelta).toBe(175);
+  });
 });

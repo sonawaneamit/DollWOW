@@ -17,7 +17,7 @@ import {
 } from "@/lib/dollvue/config";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
-import { withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
+import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
 
 export const runtime = "nodejs";
 
@@ -43,7 +43,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "This doll is not currently available to add to the cart." }, { status: 409 });
   }
 
-  const config = withPromotionOptionPricing(product, dollVueConfigForProduct(product, getCustomizationConfig(product)));
+  const catalogConfig = dollVueConfigForProduct(product, getCustomizationConfig(product));
+  const promotionNow = new Date();
+  const config = promotionPricingForSelections(product, catalogConfig, {}, promotionNow).config;
   const visualSelections = resolveDollVueSelections(config, parsed.data.selections);
   if (visualSelections.length !== parsed.data.selections.length) {
     return NextResponse.json({ error: "One of these appearance choices is no longer available." }, { status: 409 });
@@ -62,7 +64,8 @@ export async function POST(request: Request) {
 
   const basePrice = Number(variant.price.amount || product.priceRange.minVariantPrice.amount);
   const currencyCode = variant.price.currencyCode || product.priceRange.minVariantPrice.currencyCode;
-  const resolved = resolveCustomization(config, selections, basePrice);
+  const pricedConfig = promotionPricingForSelections(product, catalogConfig, selections, promotionNow).config;
+  const resolved = resolveCustomization(pricedConfig, selections, basePrice);
   if (resolved.issues.length) {
     return NextResponse.json({ error: resolved.issues[0]?.message || "That combination is not available for this doll." }, { status: 409 });
   }

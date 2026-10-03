@@ -47,7 +47,9 @@ import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
 import { dollVueSelectionKey } from "@/lib/dollvue/public";
 import { PaymentLogos } from "./PaymentLogos";
-import { promotionOptionPrice, withPromotionOptionPricing } from "@/lib/promotions/optionPricing";
+import { promotionOptionPrice, promotionPricingForSelections } from "@/lib/promotions/optionPricing";
+import type { OctoberPricingContext } from "@/lib/promotions/october2026";
+import { OctoberSupplierPdpPromotion } from "./promotions/OctoberSupplierPromotion";
 import { PromotionalOptionPrice } from "./promotions/PromotionalOptionPrice";
 import { configurationPresets, matchesConfigurationPreset, type PresetId } from "@/lib/customization/presets";
 import { ConfigurationPresets } from "./ConfigurationPresets";
@@ -69,12 +71,13 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const scrollToPurchaseRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const promotionNow = usePromotionClock(promoClock);
-  const pricedConfig = useMemo(() => withPromotionOptionPricing(product, config, promotionNow), [config, product, promotionNow]);
+  const [selected, setSelected] = useState(() => getDefaultSelections(promotionPricingForSelections(product, config, {}, promotionNow).config));
+  const pricing = useMemo(() => promotionPricingForSelections(product, config, selected, promotionNow), [config, product, selected, promotionNow]);
+  const pricedConfig = pricing.config;
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(pricedConfig.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
   const [manualExpanded, setManualExpanded] = useState(false);
-  const [selected, setSelected] = useState(() => getDefaultSelections(pricedConfig));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -312,6 +315,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   return (
     <section className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
       <div className="product-builder__content">
+      <OctoberSupplierPdpPromotion product={product} promoClock={promotionNow.toISOString()} context={pricing.context} />
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{productBuilderHeading(product)}</p>
@@ -454,6 +458,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                         config={pricedConfig}
                         currencyCode={currencyCode}
                         promotionNow={promotionNow}
+                        promotionContext={pricing.context}
                       />
                     </div>
                     <div className="product-builder-step-actions mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
@@ -638,7 +643,7 @@ function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, c
   );
 }
 
-function OptionPalette({ product, catalogConfig, group, selected, selections, onSelect, config, currencyCode, promotionNow }: {
+function OptionPalette({ product, catalogConfig, group, selected, selections, onSelect, config, currencyCode, promotionNow, promotionContext }: {
   product: Product;
   catalogConfig: ReturnType<typeof getCustomizationConfig>;
   group: CustomizationGroup;
@@ -648,6 +653,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
   config: ReturnType<typeof getCustomizationConfig>;
   currencyCode: string;
   promotionNow: Date;
+  promotionContext: OctoberPricingContext;
 }) {
   const [query, setQuery] = useState("");
   const searchable = group.options.length >= 24;
@@ -700,7 +706,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
           const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
-          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
+          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} promotionContext={promotionContext} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
         })}
       </div>
       {searchable && !visibleOptions.length ? (
@@ -710,7 +716,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
   );
 }
 
-function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, allowPromotions, onClick }: {
+function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, promotionContext, allowPromotions, onClick }: {
   product: Product;
   group: CustomizationGroup;
   option: CustomizationOption;
@@ -720,10 +726,11 @@ function OptionTile({ product, group, option, catalogOption, selected, disabled,
   notice: string | null;
   currencyCode: string;
   promotionNow: Date;
+  promotionContext: OctoberPricingContext;
   allowPromotions: boolean;
   onClick: () => void;
 }) {
-  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions);
+  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions, promotionContext);
   return (
     <button
       type="button"
