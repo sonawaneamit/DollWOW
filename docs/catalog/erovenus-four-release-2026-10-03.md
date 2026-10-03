@@ -18,3 +18,11 @@ Scope: Cinna, Jody, Cassie and Bela. Four adult silicone torsos from unread fact
 Deploy shared parent bindings before activating the four drafts. Then check real public PDP rendering and actual cart names, prices and selected head properties. Do not place orders. If those checks fail, return only the affected new listing to draft.
 
 Dedicated paid keyword research is not part of this bounded intake release. Product identity, metadata and source-backed content are checked; no traffic/ranking claim is made.
+
+## Public verification complete
+
+PR #94 merged; production deployment `dpl_3QS1xH2e2arjow4YJoSyEiTEodot` READY and aliased to dollwow.com. All four Shopify products ACTIVE and published to Online Store and Headless.
+
+69 focused tests passed. Fifteen actual Shopify carts passed: defaults on all four, all distinct price/group combinations on Cinna, and named additional-head selection on each other parent. Exact prices, selected option properties and parent relationships survived; no orders placed. Eight Brave checks (1440px and 390px per product) passed: factual editorial and image rendered, no horizontal overflow, no full-size preset block. A real hosted checkout displayed the selected named care item.
+
+Evidence: `/tmp/erovenus-four-live-carts.json`, `/tmp/erovenus-four-browser.json`, and main workspace intake folder. Factory source HTML, 24 source photographs, specs and draft/publication records backed up in Drive file `17cpXIgSIWFvwndMORZ4gfzEOCLNZ-4j_`.
