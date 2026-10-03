@@ -1,0 +1,23 @@
+import {test,expect,vi} from 'vitest';
+import {readFile,writeFile} from 'node:fs/promises';
+import {parseEnv} from 'node:util';
+import {getCustomizationConfig} from '@/lib/customization/configs';
+import {getDefaultSelections} from '@/lib/customization/resolve';
+import {promotionPricingForSelections} from '@/lib/promotions/optionPricing';
+vi.mock('server-only',()=>({}));
+test.skipIf(process.env.OCTOBER_PUBLIC!=='1')('verifies Miyuki existing Autumn offer on public checkout before Halloween',async()=>{
+ expect(Date.now()).toBeLessThan(Date.parse('2026-10-08T07:00:00Z'));
+ Object.assign(process.env,parseEnv(await readFile('.env.local','utf8')));
+ const {getProductByHandle}=await import('@/lib/shopify/storefront');
+ const p=await getProductByHandle('irontech-miyuki-148cm-d-cup-silicone-companion-doll-11bvn');expect(p).toBeTruthy();
+ const config=promotionPricingForSelections(p!,getCustomizationConfig(p!)).config;
+ const selections={...getDefaultSelections(config),'head-type':'ros-max-upgrade-free','ironai-talkx-box':'ironai-talkx-box-free','add-extra-head':'silicone-s20'};
+ const r=await fetch('https://dollwow.com/api/cart/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lines:[{merchandiseId:p!.variants[0].id,quantity:1,selections}]})});
+ const result=await r.json();expect(r.status,JSON.stringify(result)).toBe(200);
+ const q=await fetch(`https://${process.env.SHOPIFY_STORE_DOMAIN!.replace(/^https?:\/\//,'')}/api/2026-04/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Storefront-Access-Token':process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!},body:JSON.stringify({query:'query($id:ID!){cart(id:$id){lines(first:20){nodes{attributes{key value}merchandise{...on ProductVariant{id price{amount currencyCode}product{title}}}}}}}',variables:{id:result.id}})});
+ const j=await q.json();expect(j.errors).toBeUndefined();const lines=j.data.cart.lines.nodes;
+ expect(lines).toHaveLength(1);
+ expect(lines[0].merchandise.id).toBe(p!.variants[0].id);
+ expect(lines.some((l:any)=>l.attributes.some((a:any)=>a.value.includes('S20')))).toBe(true);
+ await writeFile('/tmp/october-public-miyuki-cart.json',JSON.stringify({at:new Date().toISOString(),lines,checkoutUrl:result.checkoutUrl},null,2));
+},120000);
