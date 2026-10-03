@@ -12,6 +12,7 @@ test.skipIf(process.env.SE_OCTOBER_CART!=='1')('verifies SE promotional and rest
  const {POST}=await import('@/app/api/cart/checkout/route');
  const evidence=[];
  const cases=[
+  {handle:'sedoll-lita-b-163cm-c-cup-silicone-companion-doll-1fl7h',choices:{'head-silicone-type':'ros-free','premium-head-body-options-multiple':['movable-eyelids']},during:[62.3],after:[89]},
   {handle:'sedoll-lita-b-163cm-c-cup-silicone-companion-doll-1fl7h',choices:{'body-makeup':'master-body-makeup'},during:[135],after:[150]},
   {handle:'sedoll-lita-b-163cm-c-cup-silicone-companion-doll-1fl7h',choices:{'premium-head-body-options-multiple':['real-skin-texture']},during:[125],after:[250]},
   ...['sedoll-akina-157cm-h-cup-tpe-companion-doll-z7mv2','sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7','sedoll-annika-163cm-e-cup-tpe-companion-doll-1eowu'].map(handle=>({handle,choices:{material:'stpe-free','body-weight':'lstpe-lightweight'},during:[90],after:[100,100]}))

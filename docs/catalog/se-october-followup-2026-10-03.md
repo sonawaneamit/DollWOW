@@ -1,5 +1,28 @@
 # SE October follow-up
 
+## Eyelid release candidate: 3 October
+
+- Owner authorized publishing the two remaining upgrades. This candidate covers the ROS eyelid promotion only; no unverified silicone-head/body combination has been added.
+- 98 reviewed parents have both exact named eyelid prices: 62.30 October / 89 regular. Discount requires explicit ROS in the primary `head-silicone-type` group. Duplicate extra-head function groups do not qualify the main head. Unknown/default/non-ROS selections keep their existing price.
+- No menu/default/preset changes. No additional Shopify products or discount codes created.
+- Twelve real Shopify cart checks passed through the local checkout handler, including October and November eyelid prices. No orders placed. Focused tests cover absent/default/non-ROS selections, extra-head isolation, unavailable choices, unreviewed parents, conditional menus and expiry.
+- Silicone-head upgrade remains unverified: the official factory article explicitly says "selected silicone heads" and confirms only Light Tan cross-material matching. The linked general head catalogue does not identify which faces qualify for STPE/LSTPE. Do not equate a general silicone-head catalogue with a compatibility list.
+- Factory sources checked: https://www.sedoll.com/stpe-series-introduces-a-new-custom-option-lstpe-lightweight-upgrade/ and https://www.sedoll.com/product/single-silicone-head/.
+- Hosted candidate and production checks pending. Keep the associated SE launch email unread.
+
+## Production checkpoint: 3 October
+
+PR96 merged at `14f10f67147f8ae0e8d53d5c0032cb114a4aa9c8`; deployment `dpl_AwRhmwpGkuN1hBNE8THEvrPgLxoW` READY and aliased to dollwow.com. This supersedes the local/not-deployed notes below for the verified subset only.
+
+- LIVE: LSTPE optional upgrade on115 reviewed157H/161F/163E TPE products, October90/normal100, requiring STPE. Existing three presets preserved on all115 with unchanged preset totals/default weight.
+- LIVE: reviewed master makeup150->135 and real skin texture250->125 during October, with normal named-charge mappings restored after expiry.
+- Five authenticated hosted-preview carts and five production-domain carts passed; ten controlled-date real Shopify carts passed for October/November.24/24 charge availability checks across US/PT/GB/DE and four international carts also passed. No orders placed.
+- Evidence: main workspace `data/exports/se-october-production-cart-evidence.json` and `se-lightweight-preset-refresh.json`.59 focused regressions and TypeScript passed. Full suite previously940passed with one unrelated Fanreal wording assertion failure.
+- Fixed branch-preview configuration by enabling `DOLLWOW_TEMPLATE_RELEASE=1` only for this preview branch. No production environment setting changed.
+- Still withheld: separate silicone-head selection and ROS-dependent eyelid promotion, pending exact face/colour/head compatibility. Unsupported gel-butt choices were not invented. Do not mark the whole SE supplier request complete or its outstanding message read.
+- Lusandy was already live: fresh factory media audit and12 production carts passed for Sophia170, Nadia159 and Belle165. Gallery-QA drafts remain unpublished; no duplicate uploads or price changes.
+- No new visual browser QA performed; authenticated CLI/API verification only.
+
 ## Confirmed by owner
 
 3 October: LSTPE lightweight and silicone-head upgrades are independent choices, each +$100 retail; selecting both is +$200 before applicable discounts. Do not merge them into one upgrade.
