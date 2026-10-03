@@ -1,6 +1,7 @@
 import {test,expect,vi} from 'vitest';
 import {readFile,writeFile} from 'node:fs/promises';
 import {parseEnv} from 'node:util';
+import {execFileSync} from 'node:child_process';
 import {getCustomizationConfig} from '@/lib/customization/configs';
 import {getDefaultSelections} from '@/lib/customization/resolve';
 vi.mock('server-only',()=>({}));
@@ -19,9 +20,14 @@ test.skipIf(process.env.SE_OCTOBER_CART!=='1')('verifies SE promotional and rest
   const p=await getProductByHandle(spec.handle);expect(p).toBeTruthy();
   const config=getCustomizationConfig(p!);const defaults=getDefaultSelections(config);
   for(const [date,expected]of [['2026-10-15T12:00:00Z',spec.during],['2026-11-01T08:00:00Z',spec.after]] as const){
+   if(process.env.SE_CHECKOUT_DEPLOYMENT && expected===spec.after)continue;
    const selections={...defaults,...spec.choices};
    let response;
-   try{vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(new Date(date));
+   if(process.env.SE_CHECKOUT_DEPLOYMENT){
+    const body=execFileSync('vercel',['curl','/api/cart/checkout','--deployment',process.env.SE_CHECKOUT_DEPLOYMENT,'--','--silent','--request','POST','--header','Content-Type: application/json','--data',JSON.stringify({lines:[{merchandiseId:p!.variants[0].id,quantity:1,selections}]})],{encoding:'utf8',timeout:60000});
+    expect(JSON.parse(body).error,body).toBeUndefined();
+    response=new Response(body,{status:200});
+   }else try{vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(new Date(date));
     response=await POST(new Request('http://localhost/api/cart/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lines:[{merchandiseId:p!.variants[0].id,quantity:1,selections}]})}));
    }finally{vi.useRealTimers()}
    const cart=await response.json();expect(response.status,JSON.stringify({handle:spec.handle,date,cart})).toBe(200);
@@ -32,5 +38,5 @@ test.skipIf(process.env.SE_OCTOBER_CART!=='1')('verifies SE promotional and rest
    evidence.push({handle:spec.handle,date,prices,lines});
   }
  }
- await writeFile('/Volumes/Extreme Pro/Projects/DollWOW/data/exports/se-october-live-cart-evidence.json',JSON.stringify(evidence,null,2));
+ await writeFile(`/Volumes/Extreme Pro/Projects/DollWOW/data/exports/se-october-${process.env.SE_CHECKOUT_DEPLOYMENT?'hosted':'live'}-cart-evidence.json`,JSON.stringify(evidence,null,2));
 },240000);
