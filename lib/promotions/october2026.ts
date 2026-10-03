@@ -117,6 +117,21 @@ function selectedRosHead(context?: OctoberPricingContext) {
   return Boolean(option && safeOption(option) && ["ros", "realistic oral structure", "movable jaw ros"].includes(name(option)));
 }
 
+// The reviewed menus have separate primary and extra-head function groups.
+// Only the primary function selection qualifies the primary eyelid charge.
+function selectedReviewedSeRosHead(context?: OctoberPricingContext) {
+  if (!context || context.config.groups.some(g => g.visibleWhen !== undefined)) return false;
+  const functionGroup = context.config.groups.find(g => g.id === 'head-silicone-type');
+  const functionOption = functionGroup?.options.find(o => o.id === context.selections?.['head-silicone-type']);
+  return Boolean(functionOption && safeOption(functionOption) && name(functionOption) === 'ros');
+}
+
+function reviewedPaidChoice(product: OctoberProduct, group: Pick<CustomizationGroup, 'id' | 'label'>, option: CustomizationOption) {
+  const rows = (seOctoberReviewed.paid as Record<string, Array<{groupId:string;groupLabel:string;optionId:string;label:string;catalog:number;promo:number}>>)[product.handle];
+  return rows?.find(row => row.groupId === group.id && row.groupLabel === group.label
+    && row.optionId === option.id && row.label === option.label && row.catalog === option.priceDelta);
+}
+
 /** Calculation evidence only. Paid reductions require parent-specific checkout release. */
 export function octoberCandidateOptionAdjustment(product: OctoberProduct, group: Pick<CustomizationGroup, "id" | "label">,
   option: CustomizationOption, now = new Date(), context?: OctoberPricingContext) {
@@ -176,6 +191,9 @@ export function octoberCandidateOptionAdjustment(product: OctoberProduct, group:
     // Movable eyelids need the selected ROS head, not a ROS word in the PDP title.
     if (commonGroups.has(group.id) && option.id === "movable-eyelids" && value === "movable eyelids"
       && option.factoryExists === true && selectedRosHead(context)) percentage = 30;
+    if (group.id === 'premium-head-body-options-multiple' && option.id === 'movable-eyelids'
+      && value === 'movable eyelids' && reviewedPaidChoice(product, group, option)?.promo === 62.3
+      && selectedReviewedSeRosHead(context)) percentage = 30;
   }
   if (!percentage) return null;
   return { displayDelta: Math.round(option.priceDelta! * (100 - percentage)) / 100, label: offer.label, single, percentage };
