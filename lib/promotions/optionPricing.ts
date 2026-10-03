@@ -15,6 +15,7 @@ import {
 } from "@/lib/promotions/fanrealSeptember2026";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from "@/types/customization";
 import type { Product } from "@/types/product";
+import { jinsanOctoberBrandForProduct } from "@/lib/promotions/jinsanOctober2026";
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
@@ -75,6 +76,13 @@ export function promotionOptionPrice(
   if (!allowPromotions) return {
     catalogDelta, displayDelta: catalogDelta, strike: false, promoLabel: null,
     active: false, eligible: false, displayLabel: option.label
+  };
+  if (jinsanOctoberBrandForProduct(product, now) === "wm"
+    && option.id === "breathing-system"
+    && /^breathing system$/i.test(option.label.trim())) return {
+    catalogDelta, displayDelta: 0, strike: catalogDelta > 0,
+    promoLabel: "WM breathing included (Ends: 31 Oct)",
+    active: true, eligible: true, displayLabel: option.label
   };
   const irontechOffer = irontechAutumnOfferForProduct(product, activeIrontechReferenceDate(now));
   const seOffer = seDollSeptemberOfferForProduct(product, activeSeReferenceDate(now));

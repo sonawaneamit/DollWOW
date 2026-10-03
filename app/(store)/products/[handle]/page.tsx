@@ -41,6 +41,7 @@ import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
 import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
 import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
+import { JinsanOctoberPdpPromotion } from "@/components/promotions/JinsanOctoberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
 import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
@@ -150,6 +151,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <SeDollPdpFreebieBlock product={product} />
             <IrontechAutumnPdpPromotion product={product} promoClock={promoClock} />
             <FanrealSeptemberPdpPromotion product={product} promoClock={promoClock} />
+            <JinsanOctoberPdpPromotion product={product} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
