@@ -1,6 +1,10 @@
 # SE October follow-up
 
-## Eyelid release candidate: 3 October
+## Silicone-head compatibility confirmed
+
+The owner confirmed on3 October that all identified faces on the factory's single-silicone-head page work in Light Tan. This supersedes the silicone-head compatibility hold recorded below. The release and checks are documented in `se-silicone-head-release-2026-10-03.md`.
+
+## Eyelid production release: 3 October
 
 - Owner authorized publishing the two remaining upgrades. This candidate covers the ROS eyelid promotion only; no unverified silicone-head/body combination has been added.
 - 98 reviewed parents have both exact named eyelid prices: 62.30 October / 89 regular. Discount requires explicit ROS in the primary `head-silicone-type` group. Duplicate extra-head function groups do not qualify the main head. Unknown/default/non-ROS selections keep their existing price.
@@ -8,7 +12,8 @@
 - Twelve real Shopify cart checks passed through the local checkout handler, including October and November eyelid prices. No orders placed. Focused tests cover absent/default/non-ROS selections, extra-head isolation, unavailable choices, unreviewed parents, conditional menus and expiry.
 - Silicone-head upgrade remains unverified: the official factory article explicitly says "selected silicone heads" and confirms only Light Tan cross-material matching. The linked general head catalogue does not identify which faces qualify for STPE/LSTPE. Do not equate a general silicone-head catalogue with a compatibility list.
 - Factory sources checked: https://www.sedoll.com/stpe-series-introduces-a-new-custom-option-lstpe-lightweight-upgrade/ and https://www.sedoll.com/product/single-silicone-head/.
-- Hosted candidate and production checks pending. Keep the associated SE launch email unread.
+- LIVE: PR97 merged at `fc84050d1df99ba8ef1f685863fa35a9e6ffb206`; production `dpl_D7EkMuCD4YY28XsF2YBKwaATWdzo` READY and aliased to dollwow.com. Six hosted-preview carts and six public-production carts passed, including eyelids at62.30. Both eyelid charge records passed8/8 US/PT/GB/DE availability/non-shipping checks.64 focused regressions and TypeScript passed. No orders placed or new visual browser QA.
+- This supersedes the earlier eyelid hold below. The silicone-head upgrade remains withheld. Keep the associated SE launch email unread; no further owner pricing approval is needed, only the factory's supported silicone face numbers for Light Tan STPE/LSTPE.
 
 ## Production checkpoint: 3 October
 
