@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { withSeLightweight } from './se-lightweight';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
@@ -392,7 +393,7 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   }
   if (isSeProduct(product) && importedGroups?.length) {
     const groups = getSeCustomizationGroups(product, importedGroups);
-    return importedBrandConfig(product, purpose, "se-source-verified", "SE Doll", groups);
+    return withSeLightweight(product, importedBrandConfig(product, purpose, "se-source-verified", "SE Doll", groups));
   }
   if (isSixYeProduct(product) && importedGroups?.length) {
     const groups = getSixYeCustomizationGroups(product, importedGroups);

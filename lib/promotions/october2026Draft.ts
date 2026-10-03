@@ -82,9 +82,16 @@ export const SE_LIGHTWEIGHT_DRAFT = {
   bodies: {"157H": {standardKg:41,lightweightKg:31},"161F":{standardKg:35,lightweightKg:31.6},"163E":{standardKg:37,lightweightKg:26}},
   supplierSurchargeUSD:80,
   suggestedMinimumRetailSurchargeUSD:100,
+  // Owner confirmed on 3 October: the two upgrades are separately charged.
+  siliconeHeadRetailSurchargeUSD:100,
+  combinedRetailSurchargeUSD:200,
+  upgradesChargedSeparately:true,
   octoberUpgradeDiscountPercent:10,
+  octoberSupplierSurchargeUSD:72,
+  octoberRetailSurchargeUSD:90,
+  octoberCombinedRetailSurchargeUSD:190,
   chargeReady:false,
-  releaseHolds:["Confirm who receives factory 10% and permitted retail minimum", "Confirm lightweight plus silicone-head combination pricing", "Validate exact product menu and named charge"],
+  releaseHolds:["Validate exact product menu, named charge and automatic expiry"],
 } as const;
 
 export const OCTOBER_OPTION_RULES = {

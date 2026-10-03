@@ -15,8 +15,8 @@ const se = bindings.filter(binding => /^SE Doll/.test(binding.productTitle) && !
 
 describe("October named-charge release gate", () => {
   it("records existing SE amounts without interpreting them as approval of another discount", () => {
-    expect(new Set(se.filter(b => b.label === "Master Body Makeup").map(b => b.unitAmount))).toEqual(new Set([135]));
-    expect(new Set(se.filter(b => b.label === "Movable Eyelids").map(b => b.unitAmount))).toEqual(new Set([62.3]));
+    expect(new Set(se.filter(b => b.label === "Master Body Makeup").map(b => b.unitAmount))).toEqual(new Set([135, 150]));
+    expect(new Set(se.filter(b => b.label === "Movable Eyelids").map(b => b.unitAmount))).toEqual(new Set([62.3, 89]));
     expect(se.filter(b => /gel butt/i.test([b.label, ...(b.choiceLabels ?? [])].join(" ")))).toHaveLength(0);
   });
 

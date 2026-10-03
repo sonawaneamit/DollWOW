@@ -6,6 +6,10 @@ import {
 import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationSelections } from "@/types/customization";
 import { getOptionConflict } from "@/lib/customization/resolve";
+import seReviewedHandles from "@/data/promotions/se-doll-september-2026-handles.json";
+import seOctoberReviewed from '@/data/promotions/se-october-2026-reviewed.json';
+
+const reviewedSeSiliconePro = new Set(seReviewedHandles.silicone_pro_custom_handles);
 
 export type OctoberProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 export type OctoberPricingContext = { config: BrandCustomizationConfig; selections?: CustomizationSelections };
@@ -40,7 +44,10 @@ export function octoberProductFacts(product: OctoberProduct): OctoberProductFact
     material: hybrid ? "hybrid" : /^(?:full )?silicone(?: pro)?$/.test(material) ? "silicone" : /^(?:s?tpe|lstpe)$/.test(material) ? "tpe" : "unknown",
     fulfillment: product.extended.stockStatus === "custom" ? "custom" : "unknown",
     form: partial ? (/\btorso\b/.test(text) ? "torso" : "unknown") : fullBody ? "full-body" : head ? "head" : "unknown",
-    series: /\bsilicone[- ]pro\b/.test(`${material} ${text}`) ? "Silicone Pro" : undefined,
+    // Reuse verified series identity, not September's expired campaign dates.
+    series: /\bsilicone[- ]pro\b/.test(`${material} ${text}`)
+      || brand === "sedoll" && material === "silicone" && reviewedSeSiliconePro.has(product.handle)
+      ? "Silicone Pro" : undefined,
     bodyCode: product.extended.bodyCode
   };
 }
@@ -179,7 +186,17 @@ export const OCTOBER_PAID_OPTION_RELEASE_HOLD =
 
 export function octoberOptionAdjustment(product: OctoberProduct, group: Pick<CustomizationGroup, "id" | "label">,
   option: CustomizationOption, now = new Date(), context?: OctoberPricingContext) {
+  const offer = octoberOfferForProduct(product, now);
+  if (offer?.kind === 'se-tpe-full-body' && Object.hasOwn(seOctoberReviewed.lightweight, product.handle)
+    && group.id === 'body-weight' && group.label === 'Body Weight' && option.id === 'lstpe-lightweight'
+    && option.label === 'LSTPE Lightweight Upgrade' && option.priceDelta === 100 && safeOption(option)) {
+    return {displayDelta:90,label:offer.label,single:false,percentage:10};
+  }
   const candidate = octoberCandidateOptionAdjustment(product, group, option, now, context);
+  const approved = (seOctoberReviewed.paid as Record<string, Array<{groupId:string;groupLabel:string;optionId:string;label:string;catalog:number;promo:number}>>)[product.handle];
+  if (candidate && approved?.some(row => row.groupId === group.id && row.groupLabel === group.label
+    && row.optionId === option.id && row.label === option.label && row.catalog === option.priceDelta
+    && row.promo === candidate.displayDelta)) return candidate;
   // No fallback charge or second reduction of already-discounted catalog amounts.
   // Keep every paid option at its current amount until its named charge is released.
   return candidate?.percentage === 100 ? candidate : null;
@@ -210,13 +227,17 @@ export function seOctoberLightweightStatus(facts: OctoberProductFacts, now = new
     launchPromotionActive: octoberCampaignDay(now) >= "2026-10-01" && octoberCampaignDay(now) <= "2026-10-31",
     supplierSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.supplierSurchargeUSD,
     suggestedMinimumRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.suggestedMinimumRetailSurchargeUSD,
+    siliconeHeadRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.siliconeHeadRetailSurchargeUSD,
+    combinedRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.combinedRetailSurchargeUSD,
+    upgradesChargedSeparately: SE_LIGHTWEIGHT_DRAFT.upgradesChargedSeparately,
+    octoberSupplierSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.octoberSupplierSurchargeUSD,
+    octoberRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.octoberRetailSurchargeUSD,
+    octoberCombinedRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.octoberCombinedRetailSurchargeUSD,
     // Factory DOCX interpretation: docs/catalog/catalog-ops-five-updates-2026-09-30.md, lines 7/17.
     discountScope: "upgrade-surcharge" as const,
     chargeReady: false as const,
     unresolved: [
-      "Whether the confirmed 10% upgrade-surcharge discount applies to reseller cost or retail",
-      "Whether lightweight and silicone-head +$80 cost / +$100 retail surcharges are additive",
-      "Whether the suggested $100 retail minimum is before or after discounts, including DollWOW's existing 10%"
+      "Exact eligible product menu, named checkout charge and automatic expiry verification"
     ]
   };
 }
