@@ -12,10 +12,10 @@ export function PromotionalOptionPrice({ pricing, currencyCode, included = false
     <span className="flex max-w-full flex-col items-start gap-1">
       <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
         {pricing.strike ? <s className="text-text-dim">{priceText(pricing.catalogDelta, currencyCode)}</s> : null}
-        <span>{formatMoney(0, currencyCode)}</span>
+        <span>{priceText(pricing.displayDelta, currencyCode)}</span>
       </span>
       {pricing.promoLabel ? (
-        <span className="inline-block max-w-full truncate rounded-full bg-accent-tint px-2 py-0.5 text-xs font-medium leading-4 text-accent" title={pricing.promoLabel}>
+        <span className="inline-block max-w-full whitespace-normal break-words rounded-full bg-accent-tint px-2 py-0.5 text-xs font-medium leading-4 text-accent" title={pricing.promoLabel}>
           {pricing.promoLabel}
         </span>
       ) : null}

@@ -105,7 +105,7 @@ describe("promotion option pricing", () => {
     expect(price(head, "Skeleton", { id: "evo", label: "EVO Skeleton", priceDelta: 150 }).eligible).toBe(false);
   });
 
-  it("applies Annika's SE September free upgrade and reverts at midnight October 1 PT", () => {
+  it("transitions Annika from the September offer to the verified October offer", () => {
     const annika: PromotionProduct = {
       handle: "sedoll-annika-d-165cm-c-cup-tpe-companion-doll-vzkdy",
       title: "SE Doll Annika D",
@@ -120,7 +120,13 @@ describe("promotion option pricing", () => {
       strike: true,
       promoLabel: "SE - Limited Time Promo (Ends: 1 Oct)"
     });
-    expect(price(annika, "Skeleton", option, afterSe)).toMatchObject({ catalogDelta: 175, displayDelta: 175, active: false });
+    expect(price(annika, "Skeleton", option, afterSe)).toMatchObject({
+      catalogDelta: 175, displayDelta: 0, active: true,
+      promoLabel: "SE Doll Limited Time Promo (Ends: 2026-10-31)"
+    });
+    expect(price(annika, "Skeleton", option, new Date("2026-11-01T07:00:00Z"))).toMatchObject({
+      catalogDelta: 175, displayDelta: 175, active: false
+    });
   });
 
   it("derives a priced config without mutating the catalog delta", () => {

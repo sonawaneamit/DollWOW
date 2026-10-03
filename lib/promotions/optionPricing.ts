@@ -13,9 +13,11 @@ import {
   isFanrealSeptemberPromotionActive,
   matchesFanrealSeptemberOption
 } from "@/lib/promotions/fanrealSeptember2026";
-import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from "@/types/customization";
+import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationSelections } from "@/types/customization";
 import type { Product } from "@/types/product";
 import { jinsanOctoberBrandForProduct } from "@/lib/promotions/jinsanOctober2026";
+import { octoberOptionAdjustment, type OctoberPricingContext } from "@/lib/promotions/october2026";
+import { getDefaultSelections } from "@/lib/customization/resolve";
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
@@ -70,7 +72,8 @@ export function promotionOptionPrice(
   group: Pick<CustomizationGroup, "id" | "label">,
   option: CustomizationOption,
   now = new Date(),
-  allowPromotions = true
+  allowPromotions = true,
+  octoberContext?: OctoberPricingContext
 ): PromotionOptionPrice {
   const catalogDelta = option.priceDelta ?? 0;
   if (!allowPromotions) return {
@@ -82,6 +85,12 @@ export function promotionOptionPrice(
     && /^breathing system$/i.test(option.label.trim())) return {
     catalogDelta, displayDelta: 0, strike: catalogDelta > 0,
     promoLabel: "WM breathing included (Ends: 31 Oct)",
+    active: true, eligible: true, displayLabel: option.label
+  };
+  const october = octoberOptionAdjustment(product, group, option, now, octoberContext);
+  if (october) return {
+    catalogDelta, displayDelta: october.displayDelta,
+    strike: october.displayDelta < catalogDelta, promoLabel: october.label,
     active: true, eligible: true, displayLabel: option.label
   };
   const irontechOffer = irontechAutumnOfferForProduct(product, activeIrontechReferenceDate(now));
@@ -126,7 +135,10 @@ export function promotionOptionPrice(
 export function withPromotionOptionPricing(
   product: PromotionProduct,
   config: BrandCustomizationConfig,
-  now = new Date()
+  now = new Date(),
+  // Low-level callers must opt in together with their option-price renderer.
+  includeLimitedOctoberOptions = false,
+  selections?: CustomizationSelections
 ): BrandCustomizationConfig {
   // Legacy label matching is not evidence for branch-specific offers or extra-head charges.
   // Conditional imports retain verified catalog prices until their promotions are reviewed.
@@ -134,12 +146,14 @@ export function withPromotionOptionPricing(
   return {
     ...config,
     groups: config.groups.map((group) => {
-      const optionPrices = group.options.map((option) => promotionOptionPrice(product, group, option, now));
+      const octoberContext = includeLimitedOctoberOptions ? { config, selections } : undefined;
+      const optionPrices = group.options.map((option) => promotionOptionPrice(product, group, option, now, true, octoberContext));
+      const octoberSingle = group.options.some((option) => octoberOptionAdjustment(product, group, option, now, octoberContext)?.single);
       const onePromotionalHead = optionPrices.some((pricing) => pricing.active)
         && /\b(add|extra|second)\b.*\bhead\b/i.test(`${group.id} ${group.label}`);
       return {
         ...group,
-        selectionMode: onePromotionalHead ? "single" : group.selectionMode,
+        selectionMode: onePromotionalHead || octoberSingle ? "single" : group.selectionMode,
         description: onePromotionalHead
           ? "Choose one additional head. One eligible second head is included during the promotion."
           : group.description,
@@ -159,6 +173,20 @@ export function withPromotionOptionPricing(
         })
       };
     })
+  };
+}
+
+/** Shared PDP/cart entry point: original menu, effective selections, one clock. */
+export function promotionPricingForSelections(
+  product: PromotionProduct, catalogConfig: BrandCustomizationConfig,
+  selections: CustomizationSelections = {}, now = new Date()
+) {
+  const structuralConfig = withPromotionOptionPricing(product, catalogConfig, now, true);
+  const effectiveSelections = { ...getDefaultSelections(structuralConfig), ...selections };
+  const context: OctoberPricingContext = { config: catalogConfig, selections: effectiveSelections };
+  return {
+    config: withPromotionOptionPricing(product, catalogConfig, now, true, effectiveSelections),
+    context
   };
 }
 
