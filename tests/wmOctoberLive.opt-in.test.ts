@@ -16,6 +16,7 @@ test.skipIf(process.env.DOLLWOW_WM_LIVE !== "1")("verifies WM breathing in an ac
   expect(group).toBeTruthy();
   expect(group!.options.find(o => o.id === "breathing-system")!.priceDelta).toBe(0);
   const selections = { ...getDefaultSelections(config), [group!.id]: group!.selectionMode === "multiple" ? ["breathing-system"] : "breathing-system" };
+  await writeFile("/tmp/wm-october-cart-input.json", JSON.stringify({ lines: [{ merchandiseId: product!.variants[0].id, quantity: 1, selections }] }));
   const response = await fetch(`${process.env.DOLLWOW_PROBE_ORIGIN ?? "http://localhost:3230"}/api/cart/checkout`, {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ lines: [{ merchandiseId: product!.variants[0].id, quantity: 1, selections }] })
