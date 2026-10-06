@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import { normalizeDealerHeadGroups } from "@/lib/customization/dealer-heads";
 import { restoreIlExtraHeadOwnership } from "@/lib/customization/il-source-ownership";
@@ -10,9 +11,9 @@ export function getSeCustomizationGroups(product: Product, groups: Customization
         if (option.label === 'Flight Case (Doll Weight < 40kg)' || option.label === 'Flight Case (Doll Weight &lt; 40kg)') return { ...option, id: 'flight-case-under-40kg' };
         if (option.label === 'Flight Case (Doll Weight ≥ 40kg)') return { ...option, id: 'flight-case-40kg-and-over' };
       }
-      if (group.id === 'standing-add-on' && option.id === 'free' && option.swatch?.kind === 'image') {
-        if (option.swatch.value.endsWith('/Standing.jpg')) return { ...option, id: 'standing-feet', label: 'Standing feet (FREE)', sourceLabel: option.label };
-        if (option.swatch.value.endsWith('/Hard-Feet.jpg')) return { ...option, id: 'hard-feet', label: 'Hard feet (FREE)', sourceLabel: option.label };
+      if (group.id === 'standing-add-on' && option.id === 'free' && option.swatch?.kind === 'image' && option.swatch.value) {
+        if (option.swatch.value.endsWith('/Standing.jpg') || option.swatch.value === catalogOptionAsset('r','2023/12/Standing.jpg')) return { ...option, id: 'standing-feet', label: 'Standing feet (FREE)', sourceLabel: option.label };
+        if (option.swatch.value.endsWith('/Hard-Feet.jpg') || option.swatch.value === catalogOptionAsset('r','2023/12/Hard-Feet.jpg')) return { ...option, id: 'hard-feet', label: 'Hard feet (FREE)', sourceLabel: option.label };
       }
       return option;
     }) }));
@@ -214,7 +215,7 @@ const ANGELKISS_PROMOTIONAL_HEADS: CustomizationOption[] = [
   dollVueEnabled: false,
   swatch: {
     kind: "image" as const,
-    value: `https://cdn.myrobotdoll.com/wp-content/uploads/2025/03/${file}`,
+    value: catalogOptionAsset('m', `2025/03/${file}`),
     label: `${label} Angelkiss head reference`
   }
 }));

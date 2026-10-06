@@ -28,7 +28,6 @@ import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
 import { useMounted } from "@/lib/utils/storageStore";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
-import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   getDefaultSelections,
   getOptionConflict,
@@ -39,7 +38,7 @@ import {
   selectionIds
 } from "@/lib/customization/resolve";
 import { formatMoney } from "@/lib/utils/currency";
-import type { CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
+import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationSelections, CustomizationSelectionValue } from "@/types/customization";
 import type { Product } from "@/types/product";
 import { GoldButton } from "./GoldButton";
 import { ImagePreviewModal } from "./ImagePreviewModal";
@@ -57,14 +56,13 @@ import { templateConfigurationPresets, type TemplatePresetDefinition } from "@/l
 import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetChoices } from "@/lib/customization/preset-choices";
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
 
-export function ProductOptions({ product, promoClock, templateRecipe, presetChoicePreview = false }: { product: Product; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean }) {
-  const config = useMemo(() => getCustomizationConfig(product), [product]);
+export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
   if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
   return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} /> : <ProductOptionsOnRequest product={product} />;
 }
 
-function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview }: { product: Product; config: ReturnType<typeof getCustomizationConfig>; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean }) {
+function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean }) {
   const router = useRouter();
   const didMountRef = useRef(false);
   const purchaseRef = useRef<HTMLDivElement>(null);
@@ -645,12 +643,12 @@ function PriceSummary({ basePrice, optionPriceDelta, totalPrice, currencyCode, c
 
 function OptionPalette({ product, catalogConfig, group, selected, selections, onSelect, config, currencyCode, promotionNow, promotionContext }: {
   product: Product;
-  catalogConfig: ReturnType<typeof getCustomizationConfig>;
+  catalogConfig: BrandCustomizationConfig;
   group: CustomizationGroup;
   selected: CustomizationSelectionValue | undefined;
   selections: CustomizationSelections;
   onSelect: (optionId: string) => void;
-  config: ReturnType<typeof getCustomizationConfig>;
+  config: BrandCustomizationConfig;
   currencyCode: string;
   promotionNow: Date;
   promotionContext: OctoberPricingContext;

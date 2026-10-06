@@ -1,4 +1,4 @@
-import reviewed from '@/data/promotions/se-october-2026-reviewed.json';
+import reviewed from '@/data/promotions/se-october-2026-public.json';
 import type {Product} from '@/types/product';
 import type {BrandCustomizationConfig} from '@/types/customization';
 

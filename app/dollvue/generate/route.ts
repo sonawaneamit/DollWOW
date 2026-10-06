@@ -18,6 +18,7 @@ import { productDisplayName } from "@/lib/catalog/naming";
 import { productImageSources } from "@/lib/catalog/productImage";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
+import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -67,9 +68,10 @@ export async function POST(request: Request) {
   if (!selections.length) return NextResponse.json({ error: "Those visual options are not available for this doll." }, { status: 400 });
   const optionImages = await Promise.all(selections.map(async ({ option }) => {
     if (option.swatch?.kind !== "image") return "";
-    return normalizeOptionReference(option.swatch.value);
+    return normalizeOwnedOptionReference(option.swatch.value, new URL(request.url).origin);
   }));
   const references = optionImages.filter(Boolean);
+  if (references.length !== selections.length) return NextResponse.json({error:'One of these option photos is temporarily unavailable. Please choose another option or try again later.'}, {status:503});
   const images = [source.url, ...references];
   const cacheKey = `${DOLLVUE_PROMPT_VERSION}:${product.handle}:${parsed.data.sourcePosition}:${selections.map(({ group, option }) => `${group.id}:${option.id}`).sort().join("|")}`;
   const cached = generationCache.get(cacheKey);
@@ -267,20 +269,6 @@ function dollVueWatermark(width: number, height: number) {
     <rect width="100%" height="100%" rx="${Math.round(boxHeight / 2)}" fill="#160f0c" fill-opacity=".58"/>
     <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="#fff8f2" fill-opacity=".86" font-family="Arial,Helvetica,sans-serif" font-size="${fontSize}" font-weight="700" letter-spacing="${Math.max(1, Math.round(fontSize * 0.08))}">${label}</text>
   </svg>`);
-}
-
-async function normalizeOptionReference(url: string) {
-  try {
-    const response = await fetch(url, { cache: "force-cache", next: { revalidate: 86400 } });
-    if (!response.ok) return url;
-    const bytes = Buffer.from(await response.arrayBuffer());
-    const metadata = await sharp(bytes).metadata();
-    if ((metadata.width ?? 0) >= 256 && (metadata.height ?? 0) >= 256) return url;
-    const normalized = await sharp(bytes).resize(512, 512, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).webp({ quality: 92 }).toBuffer();
-    return `data:image/webp;base64,${normalized.toString("base64")}`;
-  } catch {
-    return url;
-  }
 }
 
 function closestDollVueAspectRatio(width?: number | null, height?: number | null) {

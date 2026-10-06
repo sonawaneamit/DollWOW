@@ -5,6 +5,8 @@ import { describe, expect, it, vi, afterAll } from 'vitest';
 import type { Product } from '@/types/product';
 import { ProductOptions } from '@/components/ProductOptions';
 import { CurrencyProvider } from '@/components/CurrencyProvider';
+import { getCustomizationConfig } from '@/lib/customization/configs';
+import { publicCustomizationConfig } from '@/lib/catalog/publicPayload';
 
 vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }) }));
 vi.stubGlobal('React', React);
@@ -32,7 +34,8 @@ function fixture(): Product {
 
 describe('conditional configurator rendering', () => {
   it('omits inactive steps and keeps purchase outside the collapsed review', () => {
-    const html = parse(renderToStaticMarkup(createElement(CurrencyProvider, { children: createElement(ProductOptions, { product: fixture(), templateRecipe: null }) })));
+    const product = fixture();
+    const html = parse(renderToStaticMarkup(createElement(CurrencyProvider, { children: createElement(ProductOptions, { product, config: publicCustomizationConfig(getCustomizationConfig(product)), templateRecipe: null }) })));
     expect(html.querySelector('#custom-step-main')).not.toBeNull();
     expect(html.querySelector('#custom-step-other-hair')).toBeNull();
     expect(html.text).toContain('Step 1 of 1');
@@ -46,7 +49,7 @@ describe('conditional configurator rendering', () => {
   it('disables purchase when the initial conditional price is not verified', () => {
     const product = fixture();
     product.extended.customizationGroups![0].options[0].priceVerified = false;
-    const html = parse(renderToStaticMarkup(createElement(CurrencyProvider, { children: createElement(ProductOptions, { product, templateRecipe: null }) })));
+    const html = parse(renderToStaticMarkup(createElement(CurrencyProvider, { children: createElement(ProductOptions, { product, config: publicCustomizationConfig(getCustomizationConfig(product)), templateRecipe: null }) })));
     const atc = html.querySelector('[data-configuration-purchase]')!.querySelectorAll('button').find(button => button.text.trim() === 'Add to Cart');
     expect(atc!.hasAttribute('disabled')).toBe(true);
   });

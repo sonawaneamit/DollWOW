@@ -1,4 +1,5 @@
 import type { CustomizationGroup } from '@/types/customization';
+import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 
 /** Source Pink_1 and Pink_3 were collapsed to the same imported slug. */
 export function normalizeImportedBrandColorIdentities(groups: CustomizationGroup[], brand: string): CustomizationGroup[] {
@@ -12,6 +13,8 @@ export function normalizeImportedBrandColorIdentities(groups: CustomizationGroup
     if (![1, 3].every((index, i) => {
       const option = group.options[index];
       if (option.label !== 'Pink' || option.priceDelta !== 0 || option.swatch?.kind !== 'image') return false;
+      const owned = catalogOptionAsset('r', paths[i].replace('/wp-content/uploads/', ''));
+      if (owned && option.swatch.value === owned) return true;
       try {
         const url = new URL(option.swatch.value);
         return ['rosemarydoll.com', 'www.rosemarydoll.com'].includes(url.hostname) && url.pathname === paths[i];

@@ -10,6 +10,7 @@ import { maskedEmail, verifyDollVueSessionValue, DOLLVUE_SESSION_COOKIE } from "
 import { productDisplayName } from "@/lib/catalog/naming";
 import { protectedProductImageUrl, productImageSources } from "@/lib/catalog/productImage";
 import { getProductByHandle } from "@/lib/shopify/storefront";
+import { publicCustomizationConfig } from '@/lib/catalog/publicPayload';
 
 export const metadata: Metadata = {
   title: "DollVue™ | See Your Doll Your Way",
@@ -25,7 +26,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
   if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} /></div>;
   const usage = await dollVueUsageForEmail(session.email);
-  const groups = dollVueGroups(dollVueConfigForProduct(product, getCustomizationConfig(product)));
+  const groups = dollVueGroups(publicCustomizationConfig(dollVueConfigForProduct(product, getCustomizationConfig(product))));
   const photos = productImageSources(product).slice(0, 8).map((image, position) => ({
     position,
     url: protectedProductImageUrl(product.handle, position, "card"),

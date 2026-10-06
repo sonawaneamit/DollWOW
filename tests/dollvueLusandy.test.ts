@@ -108,7 +108,7 @@ describe("Lusandy DollVue eligibility", () => {
       label,
       priceDelta: 0,
       swatch: kind === "image"
-        ? ({ kind: "image", value: `https://example.com/${id}.jpg` } as const)
+        ? ({ kind: "image", value: `https://cdn.shopify.com/s/files/1/0960/7531/7432/files/${id}.jpg` } as const)
         : ({ kind: "color", value: "#fff" } as const)
     });
     const configured = product(nadiaHandle, {

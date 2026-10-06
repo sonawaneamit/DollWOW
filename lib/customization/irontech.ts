@@ -1,6 +1,7 @@
 import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
+import { catalogOptionAsset, isMigratedOptionAsset } from '@/lib/assets/option-assets.mjs';
 
 const DEALER_TPE_EXTRA_HEAD_PRICE = 375;
 const DEALER_SILICONE_HEAD_PRICE = 299;
@@ -51,7 +52,7 @@ const IRONTECH_STANDARD_TPE_HEADS = [
   purchasable: true,
   swatch: {
     kind: "image" as const,
-    value: `https://www.rosemarydoll.com/wp-content/uploads/${head <= 88 ? "2021/05" : "2021/11"}/${head}.${head <= 88 ? "png" : "jpg"}`,
+    value: catalogOptionAsset('r', `${head <= 88 ? "2021/05" : "2021/11"}/${head}.${head <= 88 ? "png" : "jpg"}`),
     label: `Irontech TPE head ${head}`
   }
 } satisfies CustomizationOption));
@@ -84,7 +85,7 @@ const IRONTECH_STANDARD_SILICONE_HEADS = [
   purchasable: true,
   swatch: {
     kind: "image" as const,
-    value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,
+    value: catalogOptionAsset('r', path),
     label: `Irontech silicone head ${head}`
   }
 } satisfies CustomizationOption));
@@ -332,9 +333,9 @@ function normalizeIrontechOption(groupLabel: string, option: CustomizationOption
 
 function isIncludedReferenceGroup(groupLabel: string, option: CustomizationOption) {
   if (!IRONTECH_INCLUDED_REFERENCE_GROUPS.includes(groupLabel as (typeof IRONTECH_INCLUDED_REFERENCE_GROUPS)[number])) return false;
-  // Imported dealer options use remote supplier/dealer images. A local or
-  // generated swatch is not enough evidence to infer that an option is free.
-  return !option.swatch || /^https?:\/\//i.test(option.swatch.value);
+  // Preserve the existing imported-reference classification after verified
+  // rehosting. An arbitrary local/generated image still supplies no evidence.
+  return !option.swatch || /^https?:\/\//i.test(option.swatch.value) || isMigratedOptionAsset(option.swatch.value);
 }
 
 function isDollVueFriendlyOption(groupLabel: string, optionLabel: string) {

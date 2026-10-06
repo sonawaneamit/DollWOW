@@ -1,5 +1,14 @@
 # New listing release checklist
 
+## Owned image checks (live and draft)
+
+- Audit stored draft option groups, galleries and editorial images, not just the live crawl.
+- Rehost approved image sources on DollWOW-owned storage; preserve originals and provenance privately. Do not remove watermarks or bypass access controls.
+- Verify image bytes decode and every referenced local asset exists. Intentional missing thumbnails must retain an accurate text choice.
+- Check rendered option groups, public payloads, built JavaScript and DollVue references for external image links and private source metadata.
+- Run `npm run check:option-assets`, `npm run check:public-promotion-data`, focused tests and the production build before release.
+- Keep new brands unpublished during asset-only repairs; verify draft status after deployment.
+
 Use this before publishing a supplier upload. A populated page or passing unit test is not a completed listing.
 
 1. Match the exact brand, body version, head, material, skin finish and supplier SKU. Search active products and drafts for duplicates before creating anything.

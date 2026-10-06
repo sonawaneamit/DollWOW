@@ -2,6 +2,7 @@ import { expect, test } from 'vitest';
 import { normalizeImportedCaseIdentities, normalizeImportedBrandColorIdentities } from '@/lib/customization/imported-option-identities';
 import { groupedCartAttributes } from '@/lib/customization/resolve';
 import type { CustomizationGroup } from '@/types/customization';
+import { ownedOptionGroups } from '@/lib/assets/option-assets.mjs';
 
 function colors(): CustomizationGroup[] {
   return [{id:'vagina-color',label:'Vagina Color',display:'swatches',options:
@@ -30,6 +31,14 @@ test('leaves other brands and unrecognized or conditional swatches untouched',()
   expect(normalizeImportedBrandColorIdentities(source,'hr')).toEqual(source);
   const conditional=colors(); conditional[0].visibleWhen=[[{groupId:'other',optionId:'yes'}]];
   expect(normalizeImportedBrandColorIdentities(conditional,'6ye')).toEqual(conditional);
+});
+
+test.each(['6ye','hr'])('keeps %s identity repair identical after image rehosting',brand=>{
+  const raw=colors();
+  const migrated=ownedOptionGroups(raw);
+  expect(migrated[0].options.every(option=>option.swatch?.value.startsWith('/option-assets/'))).toBe(true);
+  expect(normalizeImportedBrandColorIdentities(migrated,brand).map(group=>group.options.map(option=>option.id)))
+    .toEqual(normalizeImportedBrandColorIdentities(raw,brand).map(group=>group.options.map(option=>option.id)));
 });
 
 function fixture(): CustomizationGroup[] {

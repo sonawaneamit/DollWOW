@@ -17,15 +17,15 @@ function wm(groups: CustomizationGroup[], overrides: Partial<Product["extended"]
 
 const groups: CustomizationGroup[] = [
   { id: "skin", label: "Skin Tone", required: true, display: "swatches", options: [
-    { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-    { id: "tan", label: "Tan", swatch: { kind: "image", value: "https://example.com/tan.jpg" } }
+    { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-default.jpg" } },
+    { id: "tan", label: "Tan", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-tan.jpg" } }
   ] },
   { id: "eye", label: "Eye Color", required: true, display: "swatches", options: [
-    { id: "brown", label: "Brown", swatch: { kind: "image", value: "https://example.com/brown.jpg" } },
-    { id: "blue", label: "Blue", swatch: { kind: "image", value: "https://example.com/blue.jpg" } }
+    { id: "brown", label: "Brown", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-brown.jpg" } },
+    { id: "blue", label: "Blue", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-blue.jpg" } }
   ] },
   { id: "extra", label: "An Extra Free Head", display: "swatches", options: [
-    { id: "none", label: "No thanks" }, { id: "159", label: "159", swatch: { kind: "image", value: "https://example.com/159.jpg" } }
+    { id: "none", label: "No thanks" }, { id: "159", label: "159", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-159.jpg" } }
   ] },
   { id: "functions", label: "Premium Functions (Multiple)", selectionMode: "multiple", display: "cards", options: [
     { id: "none", label: "No add-on" }, { id: "heating", label: "Body heating" }
@@ -102,15 +102,15 @@ describe("WM source-guided customization", () => {
   it("offers source-verified silicone heads as free replacements and paid extras", () => {
     const siliconeGroups: CustomizationGroup[] = [
       { id: "head-type", label: "Head Type", selectionMode: "single", display: "swatches", options: [
-        { id: "hard", label: "Hard Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/hard.jpg" } },
-        { id: "soft", label: "Soft Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/soft.jpg" } }
+        { id: "hard", label: "Hard Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-hard.jpg" } },
+        { id: "soft", label: "Soft Silicone", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-soft.jpg" } }
       ] },
       { id: "extra", label: "An Extra Head", selectionMode: "single", display: "swatches", options: [
         { id: "none", label: "No add-on" },
-        { id: "198", label: "198", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/198.jpg" } },
-        { id: "201", label: "201", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/201.jpg" } },
-        { id: "202", label: "202", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/202.jpg" } },
-        { id: "other", label: "Other Head", priceDelta: 399, swatch: { kind: "image", value: "https://example.com/other.jpg" } }
+        { id: "198", label: "198", priceDelta: 399, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-198.jpg" } },
+        { id: "201", label: "201", priceDelta: 399, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-201.jpg" } },
+        { id: "202", label: "202", priceDelta: 399, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-202.jpg" } },
+        { id: "other", label: "Other Head", priceDelta: 399, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-other.jpg" } }
       ] }
     ];
     const product = wm(siliconeGroups, {
@@ -211,8 +211,8 @@ describe("WM source-guided customization", () => {
   it("keeps ready-to-ship units on their product-specific stock selector", () => {
     const stockGroups: CustomizationGroup[] = [
       { id: "head", label: "A Head", selectionMode: "single", display: "swatches", options: [
-        { id: "minana", label: "Minana", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/minana.jpg" } },
-        { id: "addison", label: "Addison", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/addison.jpg" } },
+        { id: "minana", label: "Minana", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-minana.jpg" } },
+        { id: "addison", label: "Addison", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-addison.jpg" } },
       ] },
       ...groups,
     ];

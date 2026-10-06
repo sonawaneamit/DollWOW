@@ -104,6 +104,11 @@ const nextConfig: NextConfig = {
     "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
     "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"]
   },
+  // Option references are fetched over HTTP; never bundle the static library
+  // into functions whose unrelated local-image helpers use dynamic file paths.
+  outputFileTracingExcludes: {
+    "/*": ["./public/option-assets/**/*"]
+  },
   images: {
     // Catalog media is sourced from supplier-authorized Shopify files. Loading it
     // directly keeps a failed optimization request from hiding product galleries.

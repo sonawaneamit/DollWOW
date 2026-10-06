@@ -39,8 +39,8 @@ const sourceGroups: CustomizationGroup[] = [
     label: "Your Custom Tpe Head",
     display: "swatches",
     options: [
-      { id: "31", label: "31", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/31.png" } },
-      { id: "32", label: "32", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/32.png" } }
+      { id: "31", label: "31", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-31.png" } },
+      { id: "32", label: "32", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-32.png" } }
     ]
   },
   {
@@ -48,8 +48,8 @@ const sourceGroups: CustomizationGroup[] = [
     label: "Your Custom Silicone Head",
     display: "swatches",
     options: [
-      { id: "s1", label: "S1", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/s1.jpg" } },
-      { id: "s2", label: "S2", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/s2.jpg" } }
+      { id: "s1", label: "S1", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-s1.jpg" } },
+      { id: "s2", label: "S2", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-s2.jpg" } }
     ]
   },
   {
@@ -58,7 +58,7 @@ const sourceGroups: CustomizationGroup[] = [
     display: "swatches",
     options: [
       { id: "none", label: "No Thanks", priceDelta: 0 },
-      { id: "31", label: "31", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/31.png" } }
+      { id: "31", label: "31", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-31.png" } }
     ]
   },
   {
@@ -66,8 +66,8 @@ const sourceGroups: CustomizationGroup[] = [
     label: "Eye Color",
     display: "swatches",
     options: [
-      { id: "factory", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-      { id: "green", label: "Green", swatch: { kind: "image", value: "https://example.com/green.jpg" } }
+      { id: "factory", label: "Factory default", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-default.jpg" } },
+      { id: "green", label: "Green", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-green.jpg" } }
     ]
   },
   {
@@ -113,8 +113,8 @@ describe("Irontech dealer-guided customization", () => {
     const groups = sourceGroups.filter((group) => !/^your custom (tpe|silicone) head$/i.test(group.label));
     const promotional = groups.find((group) => group.id === "extra-free")!;
     promotional.options = [
-      { id: "31", label: "31", swatch: { kind: "image", value: "https://example.com/31.png" } },
-      { id: "32", label: "32", swatch: { kind: "image", value: "https://example.com/32.png" } }
+      { id: "31", label: "31", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-31.png" } },
+      { id: "32", label: "32", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-32.png" } }
     ];
     const head = getCustomizationConfig(irontech(groups)).groups.find((group) => group.id === "choose-head");
     const extra = getCustomizationConfig(irontech(groups)).groups.find((group) => group.id === "add-extra-head");
@@ -128,8 +128,8 @@ describe("Irontech dealer-guided customization", () => {
     const groups = sourceGroups.filter((group) => !/^your custom (tpe|silicone) head$/i.test(group.label));
     const promotional = groups.find((group) => group.id === "extra-free")!;
     promotional.options = [
-      { id: "a3", label: "A3 ROS MAX", swatch: { kind: "image", value: "https://example.com/a3.jpg" } },
-      { id: "a4", label: "A4 ROS MAX", swatch: { kind: "image", value: "https://example.com/a4.jpg" } }
+      { id: "a3", label: "A3 ROS MAX", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-a3.jpg" } },
+      { id: "a4", label: "A4 ROS MAX", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-a4.jpg" } }
     ];
     const normalized = getCustomizationConfig(irontech(groups)).groups;
     const chosen = normalized.find((group) => group.id === "choose-head");
@@ -192,7 +192,7 @@ describe("Irontech dealer-guided customization", () => {
         display: "swatches",
         options: [
           { id: "default", label: "Factory default" },
-          { id: "natural", label: "Natrual Skin", swatch: { kind: "image", value: "https://example.com/natural.jpg" } }
+          { id: "natural", label: "Natrual Skin", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-natural.jpg" } }
         ]
       }
     ]);
@@ -210,8 +210,8 @@ describe("Irontech dealer-guided customization", () => {
         selectionMode: "multiple",
         display: "swatches",
         options: [
-          { id: "freckles", label: "Moles & Freckles", swatch: { kind: "image", value: "https://example.com/freckles.jpg" } },
-          { id: "heating", label: "Body Heating", swatch: { kind: "image", value: "https://example.com/heating.jpg" } }
+          { id: "freckles", label: "Moles & Freckles", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-freckles.jpg" } },
+          { id: "heating", label: "Body Heating", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-heating.jpg" } }
         ]
       },
       {
@@ -219,8 +219,8 @@ describe("Irontech dealer-guided customization", () => {
         label: "Makeup Options",
         display: "swatches",
         options: [
-          { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default-makeup.jpg" } },
-          { id: "realism", label: "Hyper-realism Painting", swatch: { kind: "image", value: "https://example.com/painting.jpg" } }
+          { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-default-makeup.jpg" } },
+          { id: "realism", label: "Hyper-realism Painting", swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/test-fixture-painting.jpg" } }
         ]
       }
     ]);

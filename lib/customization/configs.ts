@@ -12,6 +12,7 @@ import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import { normalizeCustomerFacingCustomizationConfig } from "@/lib/customization/customer-labels";
+import { ownedOptionGroups, catalogOptionAsset } from "@/lib/assets/option-assets.mjs";
 import { normalizeImportedCaseIdentities, normalizeImportedBrandColorIdentities } from '@/lib/customization/imported-option-identities';
 import {
   getAngelkissCustomizationGroups,
@@ -186,7 +187,7 @@ const ironAiHeadUpgrade: CustomizationGroup = {
       productionNote: "Head-model compatibility is confirmed before production.",
       swatch: {
         kind: "image",
-        value: "https://www.real-lady.com/wp-content/uploads/2026/06/RIC_8823-scaled.jpg",
+        value: catalogOptionAsset('l', '/wp-content/uploads/2026/06/RIC_8823-scaled.jpg'),
         label: "Real Lady IronAI head"
       }
     }
@@ -273,7 +274,8 @@ const configs = {
 } satisfies Record<string, BrandCustomizationConfig>;
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
-  return normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout"));
+  const config = normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout"));
+  return {...config, groups: ownedOptionGroups(config.groups)};
 }
 
 /**
@@ -281,7 +283,8 @@ export function getCustomizationConfig(product: Product): BrandCustomizationConf
  * Unlike the checkout config, missing price data never erases a real option here.
  */
 export function getFactoryCustomizationConfig(product: Product): BrandCustomizationConfig {
-  return normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "factory"));
+  const config = normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "factory"));
+  return {...config, groups: ownedOptionGroups(config.groups)};
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
