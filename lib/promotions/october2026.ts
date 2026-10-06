@@ -2,12 +2,12 @@ import { canonicalBrandValue } from "@/lib/catalog/brands";
 import {
   OCTOBER_CAMPAIGNS, OCTOBER_OPTION_RULES, SE_LIGHTWEIGHT_DRAFT,
   inFactoryDateWindow, octoberOfferCandidate, seLightweightCandidate, type OctoberProductFacts
-} from "@/lib/promotions/october2026Draft";
+} from "@/lib/promotions/october2026Runtime";
 import type { Product } from "@/types/product";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationSelections } from "@/types/customization";
 import { getOptionConflict } from "@/lib/customization/resolve";
 import seReviewedHandles from "@/data/promotions/se-doll-september-2026-handles.json";
-import seOctoberReviewed from '@/data/promotions/se-october-2026-reviewed.json';
+import seOctoberReviewed from '@/data/promotions/se-october-2026-public.json';
 
 const reviewedSeSiliconePro = new Set(seReviewedHandles.silicone_pro_custom_handles);
 

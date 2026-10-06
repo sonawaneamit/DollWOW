@@ -1,4 +1,5 @@
 import type { CustomizationOption } from "@/types/customization";
+import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 
 const WM_STANDARD_TPE_HEAD_IMAGE_PATHS = [
   ["8", "2021/05/8.png"],
@@ -180,7 +181,7 @@ export const WM_STANDARD_TPE_HEADS: CustomizationOption[] =
     dollVueEnabled: true,
     swatch: {
       kind: "image",
-      value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,
+      value: catalogOptionAsset('r', path),
       label: `WM TPE head ${head}`
     }
   }));
@@ -218,7 +219,7 @@ export const WM_SILICONE_HEADS: CustomizationOption[] = [
     dollVueEnabled: true,
     swatch: {
       kind: "image" as const,
-      value: `https://www.rosemarydoll.com/wp-content/uploads/${path}`,
+      value: catalogOptionAsset('r', path),
       label: `WM silicone head ${head}`,
     },
   })),

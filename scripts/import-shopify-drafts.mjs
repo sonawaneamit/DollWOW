@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { brandedSeoTitle, conciseSeoDescription, unbrandedSeoTitle } from "../lib/catalog/seoText.mjs";
 import { findRosemaryExclusiveSignals } from "./rosemary-guardrails.mjs";
+import { ownedOptionGroups, optionAssetViolations } from '../lib/assets/option-assets.mjs';
+import { verifyLocalOptionAssets } from './lib/verify-local-option-assets.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API_VERSION = "2026-04";
@@ -53,6 +55,17 @@ if (blockedProducts.length) {
 }
 
 log(`${execute ? "Importing" : "Dry run for"} ${products.length} Shopify draft products from ${path.relative(ROOT, inputPath)}`);
+
+const imageFailures = products.flatMap(product => optionAssetViolations(product.extended?.customizationGroups)
+  .map(failure => ({handle: product.handle, ...failure})));
+if (imageFailures.length) {
+  throw new Error(`Option image ownership gate failed (${imageFailures.length} references). Ingest and verify assets before import: ${JSON.stringify(imageFailures.slice(0, 10))}`);
+}
+for (const product of products) {
+  if (product.extended?.customizationGroups) product.extended.customizationGroups = ownedOptionGroups(product.extended.customizationGroups);
+}
+
+await verifyLocalOptionAssets(products, path.join(ROOT, 'public'));
 
 if (!execute) {
   for (const product of products) {

@@ -59,7 +59,7 @@ describe("coordinated October PDP and server pricing", () => {
     const c = catalog([group("add-extra-head", [none, extra], "multiple")]);
     prepare(p, c);
     const html = renderToStaticMarkup(createElement(CurrencyProvider, null, createElement(ProductOptions, {
-      product: p, promoClock: during.toISOString(), templateRecipe: null
+      product: p, config: c, promoClock: during.toISOString(), templateRecipe: null
     })));
     expect(html).toContain("data-october-supplier-promotion");
     expect(html).toContain("One additional silicone head from the eligible choices");

@@ -8,6 +8,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "npm run check:option-assets && npm run check:public-promotion-data",
+    "postbuild": "node scripts/check-option-assets.mjs --build .next/static/chunks",
+    "check:option-assets": "node scripts/check-option-assets.mjs",
+    "check:public-promotion-data": "node scripts/generate-public-promotion-data.mjs --check",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

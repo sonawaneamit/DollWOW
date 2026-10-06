@@ -2,19 +2,21 @@ import type { Product } from "@/types/product";
 import type { CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import starperyHeads from "@/data/starpery-heads.json";
+import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 
-const rosemaryAsset = (path: string) => `https://www.rosemarydoll.com/wp-content/uploads/${path}`;
+const rosemaryAsset = (path: string) => catalogOptionAsset('r', path);
 
 function imageOption(id: string, label: string, path: string, priceDelta = 0, description?: string): CustomizationOption {
+  const image = rosemaryAsset(path);
   return {
     id,
     label,
     description,
     priceDelta,
-    dollVueEnabled: true,
+    dollVueEnabled: Boolean(image),
     priceVerified: true,
     purchasable: true,
-    swatch: { kind: "image", value: rosemaryAsset(path), label }
+    swatch: image ? { kind: "image", value: image, label } : undefined
   };
 }
 

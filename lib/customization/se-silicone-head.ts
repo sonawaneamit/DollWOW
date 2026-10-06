@@ -1,5 +1,6 @@
-import reviewed from '@/data/promotions/se-october-2026-reviewed.json';
-import library from '@/data/promotions/se-silicone-head-library.json';
+import reviewed from '@/data/promotions/se-october-2026-public.json';
+import library from '@/data/promotions/se-silicone-head-public.json';
+import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 import type {Product} from '@/types/product';
 import type {BrandCustomizationConfig, CustomizationRule} from '@/types/customization';
 
@@ -20,7 +21,7 @@ export function withSeSiliconeHead(product:Product, config:BrandCustomizationCon
       {id:'keep-original-head',label:'Keep the original head',priceDelta:0,priceVerified:true,purchasable:true},
       ...library.heads.map(head=>({id:`silicone-${head.id}`,label:`${head.label} (${head.ros?'ROS':'Non-ROS'})`,
         priceDelta:100,priceVerified:true,purchasable:true,factoryExists:true,dollVueEnabled:false,
-        swatch:{kind:'image' as const,value:head.image,label:head.label}}))
+        swatch:{kind:'image' as const,value:catalogOptionAsset('s',head.imagePath),label:head.label}}))
     ]
   };
   const restrictions = [

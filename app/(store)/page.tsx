@@ -5,6 +5,7 @@ import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 import { withProtectedProductImages } from "@/lib/catalog/productImage";
 import { getHomepageReviews } from "@/lib/reviews/reviews";
+import { homepageCardPayload } from '@/lib/catalog/publicPayload';
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",
@@ -33,9 +34,9 @@ export default async function HomePage() {
     <>
       <HomeContactStrip />
       <HomeAlive
-        products={curatedProducts.map(withProtectedProductImages)}
-        bestSellingProducts={bestSellingProducts.map(withProtectedProductImages)}
-        recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages)}
+        products={curatedProducts.map(withProtectedProductImages).map(homepageCardPayload)}
+        bestSellingProducts={bestSellingProducts.map(withProtectedProductImages).map(homepageCardPayload)}
+        recentlyAddedProducts={recentlyAddedProducts.map(withProtectedProductImages).map(homepageCardPayload)}
         customerReviews={getHomepageReviews()}
       />
     </>

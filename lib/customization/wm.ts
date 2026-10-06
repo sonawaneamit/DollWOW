@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { isMigratedOptionAsset } from '@/lib/assets/option-assets.mjs';
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { WM_SILICONE_HEADS, WM_STANDARD_TPE_HEADS } from "@/lib/customization/wm-heads";
@@ -202,7 +203,7 @@ function buildVerifiedProductExtraHead(groups: CustomizationGroup[]) {
 
 function normalizeIncludedReplacementOptions(options: CustomizationOption[]) {
   return options
-    .filter((option) => Boolean(option.swatch?.kind === "image" && /^https?:\/\//i.test(option.swatch.value)))
+    .filter((option) => Boolean(option.swatch?.kind === "image" && (/^https?:\/\//i.test(option.swatch.value) || isMigratedOptionAsset(option.swatch.value))))
     .map((option) => ({
       ...option,
       id: `current-${option.id}`,
@@ -289,7 +290,7 @@ function normalizeWmOption(groupLabel: string, option: CustomizationOption): Cus
 
 function isIncludedImageOption(groupLabel: string, option: CustomizationOption) {
   return WM_INCLUDED_IMAGE_GROUPS.includes(groupLabel as (typeof WM_INCLUDED_IMAGE_GROUPS)[number]) &&
-    option.swatch?.kind === "image" && /^https?:\/\//i.test(option.swatch.value);
+    option.swatch?.kind === "image" && (/^https?:\/\//i.test(option.swatch.value) || isMigratedOptionAsset(option.swatch.value));
 }
 
 function isDefaultOrFree(option: Pick<CustomizationOption, "label" | "productionNote" | "sourceProductionNoteSignals">) {

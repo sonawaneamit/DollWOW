@@ -82,7 +82,7 @@ describe("dealer brand head normalization", () => {
     const appearance: CustomizationGroup = {
       id: "eye-color", label: "Eye Color", required: true, display: "swatches", options: [
         { id: "default", label: "Factory default", productionNote: "Default supplier selection." },
-        { id: "green", label: "Green", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/green.jpg" } }
+        { id: "green", label: "Green", priceDelta: 0, swatch: { kind: "image", value: "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/green.jpg" } }
       ]
     };
     const config = getFactoryCustomizationConfig(product("6YE Dolls", "TPE", [headLibrary, appearance]));

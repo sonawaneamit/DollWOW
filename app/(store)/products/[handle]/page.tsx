@@ -45,6 +45,8 @@ import { JinsanOctoberPdpPromotion } from "@/components/promotions/JinsanOctober
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
 import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
+import { getCustomizationConfig } from "@/lib/customization/configs";
+import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
 
@@ -69,7 +71,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
-  const publicProduct = withProtectedProductImages(product);
+  const publicProduct = publicProductPayload(withProtectedProductImages(product));
+  const customizationConfig = publicCustomizationConfig(getCustomizationConfig(product));
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -148,10 +151,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 </span>
               </Link>
             ) : null}
-            <SeDollPdpFreebieBlock product={product} />
-            <IrontechAutumnPdpPromotion product={product} promoClock={promoClock} />
-            <FanrealSeptemberPdpPromotion product={product} promoClock={promoClock} />
-            <JinsanOctoberPdpPromotion product={product} promoClock={promoClock ?? new Date().toISOString()} />
+            <SeDollPdpFreebieBlock product={publicProduct} />
+            <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
+            <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />
+            <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
@@ -240,12 +243,12 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
       </ToneBand>
 
       {showEditorialPreview || showLiveEditorial ? (
-        <ProductEditorialPreview product={publicProduct} editorial={product.extended.editorialIntro} preview={showEditorialPreview} />
+        <ProductEditorialPreview product={publicProduct} editorial={publicProduct.extended.editorialIntro} preview={showEditorialPreview} />
       ) : null}
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} promoClock={promoClock} templateRecipe={templateRecipe}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
@@ -258,7 +261,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
-      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages)} />
+      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload)} />
       {hasAuthorizationSection ? (
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">

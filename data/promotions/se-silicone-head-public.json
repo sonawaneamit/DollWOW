@@ -1,0 +1,358 @@
+{
+  "heads": [
+    {
+      "id": "144so",
+      "label": "#144SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/SSmakeup.jpg"
+    },
+    {
+      "id": "145so",
+      "label": "#145SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/set002-makeup.jpg"
+    },
+    {
+      "id": "142so",
+      "label": "#142SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/set003-makeup.jpg"
+    },
+    {
+      "id": "146so",
+      "label": "#146SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/set004-makeup.jpg"
+    },
+    {
+      "id": "152so",
+      "label": "#152SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/set005-makeup.jpg"
+    },
+    {
+      "id": "153so",
+      "label": "#153SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/09/set006-n.jpg"
+    },
+    {
+      "id": "078so",
+      "label": "#078SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/078SO-SES002-300x300.png"
+    },
+    {
+      "id": "078so-2",
+      "label": "#078SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/078SO-SES010-300x300.png"
+    },
+    {
+      "id": "078so-3",
+      "label": "#078SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/078SO-SES017-300x300.png"
+    },
+    {
+      "id": "068so",
+      "label": "#068SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/SES005-51-300x300.png"
+    },
+    {
+      "id": "068so-2",
+      "label": "#068SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/068SO-SES008-300x300.png"
+    },
+    {
+      "id": "068so-3",
+      "label": "#068SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/068SO-SES014-300x300.png"
+    },
+    {
+      "id": "068so-4",
+      "label": "#068SO-4",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/068SO-SES016-300x300.png"
+    },
+    {
+      "id": "068so-5",
+      "label": "#068SO-5",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/068SO-SES021-300x300.png"
+    },
+    {
+      "id": "068so-6",
+      "label": "#068SO-6",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/068SO-SES078.jpg"
+    },
+    {
+      "id": "083so",
+      "label": "#083SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/083SO-SES011-300x300.png"
+    },
+    {
+      "id": "083so-2",
+      "label": "#083SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/083SO-SES013-300x300.png"
+    },
+    {
+      "id": "083so-3",
+      "label": "#083SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/083SO-SES015-300x300.png"
+    },
+    {
+      "id": "083so-4",
+      "label": "#083SO-4",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/083SO-SES022-300x300.png"
+    },
+    {
+      "id": "088so",
+      "label": "#088SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/088SO-SES018-300x300.png"
+    },
+    {
+      "id": "088so-2",
+      "label": "#088SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/088SO-SES020-300x300.png"
+    },
+    {
+      "id": "088so-3",
+      "label": "#088SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/088SO-SES025-300x300.png"
+    },
+    {
+      "id": "088so-4",
+      "label": "#088SO-4",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/88SO-SES058.jpg"
+    },
+    {
+      "id": "020so",
+      "label": "#020SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2024/06/020SO-SES023-300x300.png"
+    },
+    {
+      "id": "079so",
+      "label": "#079SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/079SO-SES034.jpg"
+    },
+    {
+      "id": "130so",
+      "label": "#130SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/130SO-SES059.jpg"
+    },
+    {
+      "id": "138so",
+      "label": "#138SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/138SO-SES055.jpg"
+    },
+    {
+      "id": "138so-2",
+      "label": "#138SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/138SO-SES069.jpg"
+    },
+    {
+      "id": "141so",
+      "label": "#141SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/141SO-SES070.jpg"
+    },
+    {
+      "id": "119so",
+      "label": "#119SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/119SO-SES068.jpg"
+    },
+    {
+      "id": "119so-2",
+      "label": "#119SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/119SO-SES065.jpg"
+    },
+    {
+      "id": "119so-3",
+      "label": "#119SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/119SO-SES072.jpg"
+    },
+    {
+      "id": "120so",
+      "label": "#120SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/120SO-SES064.jpg"
+    },
+    {
+      "id": "121so",
+      "label": "#121SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/121SO-SES053.jpg"
+    },
+    {
+      "id": "121so-2",
+      "label": "#121SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/121SO-SES073.jpg"
+    },
+    {
+      "id": "069so",
+      "label": "#069SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/69SO-SES071.jpg"
+    },
+    {
+      "id": "014so",
+      "label": "#014SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/14SO-SES050.jpg"
+    },
+    {
+      "id": "022so",
+      "label": "#022SO",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/22SO-SES063.jpg"
+    },
+    {
+      "id": "022so-2",
+      "label": "#022SO-2",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/22SO-SES062.jpg"
+    },
+    {
+      "id": "022so-3",
+      "label": "#022SO-3",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/22SO-SES061.jpg"
+    },
+    {
+      "id": "022so-4",
+      "label": "#022SO-4",
+      "ros": true,
+      "imagePath": "/wp-content/uploads/2025/10/022SO-SES075.jpg"
+    },
+    {
+      "id": "130sc",
+      "label": "#130SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/130SC-SES019-300x300.png"
+    },
+    {
+      "id": "076sc",
+      "label": "#076SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/076SC-SES001-300x300.png"
+    },
+    {
+      "id": "076sc-2",
+      "label": "#076SC-2",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/076SC-SES009-300x300.png"
+    },
+    {
+      "id": "079sc",
+      "label": "#079SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/SES003-11-300x300.png"
+    },
+    {
+      "id": "079sc-2",
+      "label": "#079SC-2",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/SES007-11-300x300.png"
+    },
+    {
+      "id": "079sc-3",
+      "label": "#079SC-3",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/079SC-SES012-300x300.png"
+    },
+    {
+      "id": "130sc-2",
+      "label": "#130SC-2",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/06/130SC-SES024-300x300.png"
+    },
+    {
+      "id": "134sc",
+      "label": "#134SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/12/134SC-300x300.jpg"
+    },
+    {
+      "id": "135sc",
+      "label": "#135SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2024/12/135SC-300x300.jpg"
+    },
+    {
+      "id": "021sc",
+      "label": "#021SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/21SC-SES056.jpg"
+    },
+    {
+      "id": "079sc-4",
+      "label": "#079SC-4",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/79SC-SES057.jpg"
+    },
+    {
+      "id": "130sc-3",
+      "label": "#130SC-3",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/130SC-SES041.jpg"
+    },
+    {
+      "id": "134sc-2",
+      "label": "#134SC-2",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/134SC-SES038.jpg"
+    },
+    {
+      "id": "135sc-2",
+      "label": "#135SC-2",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/135SC-SES039.jpg"
+    },
+    {
+      "id": "136sc",
+      "label": "#136SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/136SC-SES052.jpg"
+    },
+    {
+      "id": "149sc",
+      "label": "#149SC",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/149SC-SES074.jpg"
+    },
+    {
+      "id": "079sc-5",
+      "label": "#079SC-5",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/79SC-SES076.jpg"
+    },
+    {
+      "id": "130sc-4",
+      "label": "#130SC-4",
+      "ros": false,
+      "imagePath": "/wp-content/uploads/2025/10/130SC-SES077.jpg"
+    }
+  ]
+}

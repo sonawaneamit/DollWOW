@@ -45,6 +45,10 @@ Product-page work should therefore start with a reusable configuration schema an
 
 ## Catalog Import Workflow
 
+### Owned Image Release Gate
+
+All live and draft option thumbnails must resolve to verified DollWOW-owned assets. Audit Shopify draft records as well as live pages; a live crawler cannot establish draft coverage. Preserve source originals and provenance privately, never in customer payloads. Check downloaded image bytes, rendered option groups, serialized data, and built JavaScript for external image references. Follow `docs/catalog/hotlink-remediation-2026-10-06.md` and run the asset gates before import or release. Never publish draft brands as part of an unrelated asset repair.
+
 When importing products from RosemaryDoll or another owned/approved source, use a review-first pipeline:
 
 - Scrape brand/category pages into normalized JSON using `npm run scrape:rosemary -- --brand <brand> --limit <n>`.

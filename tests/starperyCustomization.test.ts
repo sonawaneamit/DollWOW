@@ -129,8 +129,8 @@ describe("Starpery factory customization", () => {
         label: "Areola Color",
         display: "swatches",
         options: [
-          { id: "factory", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-          { id: "no-6", label: "No.6", swatch: { kind: "image", value: "https://example.com/6.jpg" } }
+          { id: "factory", label: "Factory default", swatch: { kind: "image", value: "/option-assets/test-fixture-default.jpg" } },
+          { id: "no-6", label: "No.6", swatch: { kind: "image", value: "/option-assets/test-fixture-6.jpg" } }
         ]
       },
       {
@@ -166,8 +166,8 @@ describe("Starpery factory customization", () => {
         label: "Eye Color",
         display: "swatches",
         options: [
-          { id: "factory", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-          { id: "blue", label: "Blue", swatch: { kind: "image", value: "https://example.com/blue.jpg" } }
+          { id: "factory", label: "Factory default", swatch: { kind: "image", value: "/option-assets/test-fixture-default.jpg" } },
+          { id: "blue", label: "Blue", swatch: { kind: "image", value: "/option-assets/test-fixture-blue.jpg" } }
         ]
       }
     ];
@@ -184,7 +184,7 @@ describe("Starpery factory customization", () => {
     const groups = getCustomizationConfig(starpery()).groups;
     const dollVueEnabled = groups.flatMap((group) => group.options.filter((option) => option.dollVueEnabled));
     expect(dollVueEnabled.length).toBeGreaterThan(0);
-    expect(dollVueEnabled.every((option) => option.swatch?.kind === "image" && /^https:\/\//.test(option.swatch.value))).toBe(true);
+    expect(dollVueEnabled.every((option) => option.swatch?.kind === "image" && option.swatch.value.startsWith('/option-assets/'))).toBe(true);
     expect(groups.find((group) => group.id === "head-model")?.options.every((option) => option.dollVueEnabled === false)).toBe(true);
   });
 
@@ -196,8 +196,8 @@ describe("Starpery factory customization", () => {
         label: "Finishing Details",
         display: "swatches",
         options: [
-          { id: "default", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-          { id: "freckles", label: "Facial Freckles", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/freckles.jpg" } }
+          { id: "default", label: "Factory default", swatch: { kind: "image", value: "/option-assets/test-fixture-default.jpg" } },
+          { id: "freckles", label: "Facial Freckles", priceDelta: 0, swatch: { kind: "image", value: "/option-assets/test-fixture-freckles.jpg" } }
         ]
       },
       {
@@ -206,7 +206,7 @@ describe("Starpery factory customization", () => {
         display: "swatches",
         options: [
           { id: "default", label: "Factory default" },
-          { id: "heating", label: "Body Heating", priceDelta: 200, swatch: { kind: "image", value: "https://example.com/heating.jpg" } }
+          { id: "heating", label: "Body Heating", priceDelta: 200, swatch: { kind: "image", value: "/option-assets/test-fixture-heating.jpg" } }
         ]
       }
     ];
@@ -222,8 +222,8 @@ describe("Starpery factory customization", () => {
         label: "Hair Implanted Color",
         display: "swatches",
         options: [
-          { id: "factory-a", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default.jpg" } },
-          { id: "black-a", label: "Black", priceDelta: 0, swatch: { kind: "image", value: "https://example.com/black.jpg" } }
+          { id: "factory-a", label: "Factory default", swatch: { kind: "image", value: "/option-assets/test-fixture-default.jpg" } },
+          { id: "black-a", label: "Black", priceDelta: 0, swatch: { kind: "image", value: "/option-assets/test-fixture-black.jpg" } }
         ]
       },
       {
@@ -231,8 +231,8 @@ describe("Starpery factory customization", () => {
         label: "Hair Implanted Color",
         display: "swatches",
         options: [
-          { id: "factory-b", label: "Factory default", swatch: { kind: "image", value: "https://example.com/default-2.jpg" } },
-          { id: "white-b", label: "White", swatch: { kind: "image", value: "https://example.com/white.jpg" } }
+          { id: "factory-b", label: "Factory default", swatch: { kind: "image", value: "/option-assets/test-fixture-default-2.jpg" } },
+          { id: "white-b", label: "White", swatch: { kind: "image", value: "/option-assets/test-fixture-white.jpg" } }
         ]
       }
     ];
