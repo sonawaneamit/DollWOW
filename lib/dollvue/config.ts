@@ -31,11 +31,15 @@ export function isDollVueProduct(handle: string) {
 
 export function isDollVueCatalogProduct(product: Product) {
   if (typeof product.dollVueAvailable === 'boolean') return product.dollVueAvailable;
+  return isLegacyDollVueCatalogProduct(product);
+}
+
+export function isLegacyDollVueCatalogProduct(product: Product) {
   const handle = product.handle.toLowerCase();
   const excludedLusandyProduct = handle.startsWith("lusandy-") &&
     (isExcludedLusandyHandle(handle) || String(product.extended.bodyType).toLowerCase() === "torso");
 
-  return isDollVueProduct(handle) &&
+  return DOLLVUE_PRODUCT_HANDLE_PREFIXES.some(prefix => handle.startsWith(prefix)) &&
     product.extended.stockStatus !== "ready_to_ship" &&
     !excludedLusandyProduct;
 }

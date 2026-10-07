@@ -50,6 +50,15 @@ describe('shared DollVue eligibility', () => {
     expect(resolveDollVueEligibility(p).available).toBe(false);
     expect(isDollVueCatalogProduct(withDollVueCatalogEligibility(p))).toBe(false);
   });
+  it('does not silently widen legacy coverage to formerly blocked example handles', () => {
+    mocks.config.mockReturnValue(config);
+    for (const handle of ['wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj',
+      'real-lady-shizuka-159cm-h-cup-silicone-companion-doll-1ldrw']) {
+      const p = product(handle, handle);
+      expect(resolveDollVueEligibility(p).available).toBe(false);
+      expect(withDollVueCatalogEligibility(p).dollVueAvailable).toBe(false);
+    }
+  });
   it('preserves supported legacy products but rejects empty menus, holds and RTS', () => {
     mocks.config.mockReturnValue(config);
     const p = product('legacy', 'irontech-existing-example');

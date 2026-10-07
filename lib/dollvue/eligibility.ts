@@ -3,7 +3,7 @@ import type { Product } from '@/types/product';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { productImageSources } from '@/lib/catalog/productImage';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
-import { dollVueConfigForProduct, dollVueGroups, isDollVueProduct } from './config';
+import { dollVueConfigForProduct, dollVueGroups, isLegacyDollVueCatalogProduct } from './config';
 import { evaluateDollVueReadiness, reviewedDollVueConfig, type DollVueReadinessRecord } from './readiness';
 import registryData from './readiness-registry.json';
 import { getCurrentDollVueHold } from './currentHold';
@@ -31,7 +31,7 @@ export function resolveDollVueEligibility(product: Product) {
   // Preserve the already released pilot. New brands require an exact reviewed record.
   const sourcePositions = productImageSources(product).slice(0, 8)
     .flatMap((photo, position) => isOwnedOptionAsset(photo.url) ? [position] : []);
-  return { available: !isDollVueExcluded(product) && isDollVueProduct(product.handle) &&
+  return { available: !isDollVueExcluded(product) && isLegacyDollVueCatalogProduct(product) &&
     dollVueGroups(config).length > 0 && sourcePositions.length > 0,
     config, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined };
 }
@@ -47,6 +47,6 @@ export async function resolveCurrentDollVueEligibility(product: Product) {
 /** Lightweight lists never include the private review record or full option menus. */
 export function withDollVueCatalogEligibility(product: Product): Product {
   const record = registry[product.id];
-  const available = !isDollVueExcluded(product) && (record ? record.status === 'ready' : isDollVueProduct(product.handle));
+  const available = !isDollVueExcluded(product) && (record ? record.status === 'ready' : isLegacyDollVueCatalogProduct(product));
   return { ...product, dollVueAvailable: available };
 }

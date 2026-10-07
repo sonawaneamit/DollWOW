@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { checkRateLimit } from "@/lib/ai/rateLimit";
-import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { createDollVueAccessToken } from "@/lib/dollvue/session";
 import { sendEmail } from "@/lib/email/sendEmail";
 import { getProductByHandle } from "@/lib/shopify/storefront";
@@ -12,8 +11,6 @@ const input = z.object({ email: z.string().email().max(180), handle: z.string().
 export async function POST(request: Request) {
   const parsed = input.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: true });
-  const product = await getProductByHandle(parsed.data.handle, { cache: 'no-store', strict: true }).catch(() => null);
-  if (!product || !(await resolveCurrentDollVueEligibility(product)).available) return NextResponse.json({ ok: true });
   const email = parsed.data.email.trim().toLowerCase();
   const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
   const [emailLimit, ipLimit] = await Promise.all([
@@ -21,6 +18,9 @@ export async function POST(request: Request) {
     checkRateLimit({ scope: "dollvue-access-ip", identifier: forwarded, limit: 12, windowSeconds: 60 * 60 })
   ]);
   if (!emailLimit.allowed || !ipLimit.allowed) return NextResponse.json({ ok: true });
+
+  const product = await getProductByHandle(parsed.data.handle, { cache: 'no-store', strict: true }).catch(() => null);
+  if (!product?.dollVueAvailable) return NextResponse.json({ ok: true });
 
   const token = createDollVueAccessToken(email, parsed.data.handle);
   const url = `${env.NEXT_PUBLIC_SITE_URL}/dollvue/verify?token=${encodeURIComponent(token)}`;
