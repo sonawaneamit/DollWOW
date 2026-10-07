@@ -11,7 +11,7 @@ Scope remains preview-only. No Shopify writes, product publication, production d
 - 3,281 ordinary sitemap URLs retained exactly: zero additions, zero removals, zero duplicates.
 - 28 child files including the image sitemap: 23 product segments, pages (30), collections (37), brand hubs (22), Learn (50), images (2 page entries). Products total 3,142.
 - Lusandy's 45 products now belong in products-lusandy.xml. No products-other.xml is emitted when empty. No brand hub or navigation link is created by this correction.
-- Initial hosted release candidate: all 28 children parse with xmllint, return XML/200, and contain production URLs; robots unchanged and unknown route returns 404. Final hosted candidate with Lusandy mapping requires the final readback recorded in the PR.
+- Final hosted candidate: all 28 children parse with xmllint, return XML/200, and contain production URLs. Hosted union is exactly 3,281 URLs, with zero additions, removals or duplicates. Lusandy has 45 entries; the now-empty other route returns 404. Robots remains unchanged. Verified through the owner's authenticated Vercel CLI without changing protection settings.
 - 115 production product spot-checks (five per segment) matched their page's Product structured-data brand. The Lusandy group was initially named other; all 45 URLs are preserved in the explicit Lusandy segment in the final local comparison.
 - Full production crawl: all 3,281 URLs returned 200, no redirects or detected noindex. The JSON dataset is intentionally not subjected to HTML canonical-tag checks.
 - One initial product canonical miss (SE Melody D) passed on repeat fetch. Eighteen existing static pages still lack explicit canonicals; listed below. No page metadata changed in this PR.
@@ -32,6 +32,7 @@ Accordingly, the PDF's full-repository-green and every-page-canonical criteria a
 `data/exports/sitemap-split/production-crawl.json`: full initial production crawl.
 `data/exports/sitemap-split/canonical-rechecks.json`: repeat checks for all initial canonical misses.
 `data/exports/sitemap-split/brand-spot-checks.json`: 115 brand checks.
-`data/exports/sitemap-split/hosted/`: initial hosted XML and headers. See PR for final hosted readback.
+`data/exports/sitemap-split/hosted/`: initial hosted XML and headers.
+`data/exports/sitemap-split/hosted-final/results.json`: final hosted readback for https://doll-3ct9723xd-sonawaneamits-projects.vercel.app .
 
 These are ignored local evidence artifacts. This committed summary is the durable handoff; raw files contain only public-page evidence and should be retained until release review.
