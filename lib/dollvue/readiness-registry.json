@@ -38788,5 +38788,2293 @@
         "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
       }
     ]
+  },
+  "gid://shopify/Product/10433339228344": {
+    "productId": "gid://shopify/Product/10433339228344",
+    "policy": "appearance-v1",
+    "fingerprint": "e318dc36c6e63397b5defef705fc16e6641e21ecf1eff839986758d4822c3a0a",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/167cm5ft6-E-cup-Silicone-Sex-Doll-_E2_80_93-Hilda-Toki-3_02b806f7-e7ad-43d8-aa80-6715295d1087.jpg?v=1780659666": "0e88ea74261dc39d7b1a20463dc2254e844978776397af8c08a35961b3374f5a"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339326648": {
+    "productId": "gid://shopify/Product/10433339326648",
+    "policy": "appearance-v1",
+    "fingerprint": "383d58da2092f94711a042a7bbe9510d36cf4215e22ada670de0148c9915f816",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/167cm5ft6-E-cup-Silicone-Sex-Doll-_E2_80_93-Hilda-Toki-4_9cdf3a98-14ae-43e3-b703-b464e8036fbd.jpg?v=1780659668": "81573b4de80b4fc48f79105b7ea2ecd6013534bd6dfb4f67237646eb9d75c58b"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339556024": {
+    "productId": "gid://shopify/Product/10433339556024",
+    "policy": "appearance-v1",
+    "fingerprint": "6d11ab122be86dc302b6ecdd2a3c29f067bc0ac1a1974881e497a0acd7505f50",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/175cm5ft9-D-cup-Silicone-Sex-Doll-_E2_80_93-Roke-Pica-2.jpg?v=1780659674": "4d62e2fec552de639383ea3f4a7afb8a10db9b9b665258e3c953b726dde572d3"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339785400": {
+    "productId": "gid://shopify/Product/10433339785400",
+    "policy": "appearance-v1",
+    "fingerprint": "831186f856a130bbb65ad814409200c74f59dc1116d5f4ba792638c658a05229",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/Angelkiss-Doll-175cm5ft9-D-cup-Silicone-Sex-Doll-_E2_80_93-Eula-21.jpg?v=1780659681": "114657a5d155046ee755b4d2b81b6efd76c1ab58d3160dc0b10d715d3c6ad739"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339850936": {
+    "productId": "gid://shopify/Product/10433339850936",
+    "policy": "appearance-v1",
+    "fingerprint": "d21ce8670dc1fe07c3d9702fd644079c2a86c2d587346ca643851913df0bfedb",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/175cm5ft9-D-cup-Silicone-Sex-Doll-_E2_80_93-Kyomi-21.jpg?v=1780659683": "942f4c729221a77ebf2c92a44b016441129710bf97722adf9e65f9d1310d1a69"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339916472": {
+    "productId": "gid://shopify/Product/10433339916472",
+    "policy": "appearance-v1",
+    "fingerprint": "039e1fdff54428f5615e4c12c5dff0affc28c6c9ad95cf4af136265eec19c76e",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/175cm5ft9D-cupSiliconeSexDoll_E2_80_93LilithHaggai22-1.jpg?v=1780659685": "32a222ec27d8b0228a7fe4c5537a221f21a5d413b2dbfe194879a521ecc24c41"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433339982008": {
+    "productId": "gid://shopify/Product/10433339982008",
+    "policy": "appearance-v1",
+    "fingerprint": "f4ebc091d013891bb03721eec7ac261a080ff7379526264c64217a2f42ff714c",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/175cm5ft9-F-cup-Silicone-Sex-Doll-_E2_80_93-Deirdre-Arthur-2.jpg?v=1780659687": "1f07a3500fc36d020feb18e6714686317a1632f0aa10ef4e05183d22089c3076"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433340833976": {
+    "productId": "gid://shopify/Product/10433340833976",
+    "policy": "appearance-v1",
+    "fingerprint": "a7a17a31d2da8237b45f86dfca43d4ae945d036bbecabdee936451ef22a1f8de",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/162cm5ft4-C-cup-Silicone-Sex-Doll-Jennifer-Browning-5.jpg?v=1780659699": "fed2a304f7029725c9548db08d42042a5d6005b568bf9628bf8808bd722db6cc"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433341194424": {
+    "productId": "gid://shopify/Product/10433341194424",
+    "policy": "appearance-v1",
+    "fingerprint": "89ae534272bcd7bae3a1ba81535db63502da094eb1e00f94929d5e02104342d4",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/172cm5ft8-B-cup-Silicone-Sex-Doll-Sabina-Alice-1.jpg?v=1780659709": "dc99afe94f64235ef2ced530c5b29f5d3c91b8926c5ceca6fd932c4d519179ea"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433341391032": {
+    "productId": "gid://shopify/Product/10433341391032",
+    "policy": "appearance-v1",
+    "fingerprint": "2d979e7285eb233de47b1b21821e935add7b6b43ddd9c9b9cfa1c59c26c8d66c",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/162cm5ft4-E-cup-Silicone-Sex-Doll-Tahnee-3.jpg?v=1780659713": "3e9fde45af4f4636e0846300d3b1ae78232fc4ddd5cf9003b25da0df93c0d69e"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433341554872": {
+    "productId": "gid://shopify/Product/10433341554872",
+    "policy": "appearance-v1",
+    "fingerprint": "d69b3392dc19104504b2728bfbccff1051d504a8c4db7dd3722a044b5bc813d2",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/168cm5ft6-D-cup-Silicone-Sex-Doll-Pandora-Harrington-1.jpg?v=1780659717": "e2f4b2a4100d4de676882f445657e7549f8d5a84a0ec5ffe6e9468ce95ce8f79"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433347289272": {
+    "productId": "gid://shopify/Product/10433347289272",
+    "policy": "appearance-v1",
+    "fingerprint": "18dc37349be63c593685cad84274929201db7cdc8157730dc2df2fac3f13f59b",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Maurice-2.jpg?v=1780659803": "137651dfd1d4e617c65c20905107f236fdb985bff7c8fc3ec8fdfc8982dec8ae"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433347322040": {
+    "productId": "gid://shopify/Product/10433347322040",
+    "policy": "appearance-v1",
+    "fingerprint": "98a39d445e481411e9724ce7d8e5b33818dd499ddeb8729a4963cd6834e5329d",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Charli-17.jpg?v=1780659805": "31bd73001a78f9b348a22dc50461e922d584779264a990d1d09118f212c4bb9d"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433347453112": {
+    "productId": "gid://shopify/Product/10433347453112",
+    "policy": "appearance-v1",
+    "fingerprint": "5ce164fd9b259e19c56df6957cde0d4d31f06ba66ec109aded1d17eec53cf9a8",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/159cm5ft3-G-cup-Silicone-Sex-Doll-_E2_80_93-Abigail-Juliana-1.jpg?v=1780659814": "47ce6949630c87a87c06ce17786095491372cd544c12549fe2ec0c5de2523026"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433348829368": {
+    "productId": "gid://shopify/Product/10433348829368",
+    "policy": "appearance-v1",
+    "fingerprint": "dc6f45b11654f441401b10bad6dd1fcdec2f2b5d2d718369f0340a423b44fc04",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/159cm5ft3-G-cup-Silicone-Sex-Doll-_E2_80_93-Rae-Hodge-2.jpg?v=1780660037": "43b803f7509613d792b8c5c01aa62c99d2982cc9483e7b44e63d355afc0c1c0d"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433348993208": {
+    "productId": "gid://shopify/Product/10433348993208",
+    "policy": "appearance-v1",
+    "fingerprint": "a47f3d4a973691f28a32e2ea0ab468b971d20a4730dfdb6a7e67292188904a37",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/159cm5ft3-F-cup-Silicone-Sex-Doll-_E2_80_93-Gissing-12.jpg?v=1780660041": "35e234b5da3fe437e5f8405e0e52ee63d65124271ac0891ac33db265d9d66d61"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433349681336": {
+    "productId": "gid://shopify/Product/10433349681336",
+    "policy": "appearance-v1",
+    "fingerprint": "c5a1aa7b25e09c24db810b051e769c7af1c5d5476046796a0dfaf4599c18c655",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/164cm5ft5-H-cup-Silicone-Sex-Doll-_E2_80_93-Lussia-18.jpg?v=1780660059": "36a48cf799a32eb08b6c778428ce79f466a72c4a266844fef111e49fcf972863"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433349812408": {
+    "productId": "gid://shopify/Product/10433349812408",
+    "policy": "appearance-v1",
+    "fingerprint": "8f711cd2b1d5413e8410741f95b47a59866addf7c358f705b7e5662d326fbf7b",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Maddison-Sydney-1.jpg?v=1780660068": "c31de7920eacd01e0fce83ec1e1350b4579be648794d9f72fd7696b9873d4323"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433349877944": {
+    "productId": "gid://shopify/Product/10433349877944",
+    "policy": "appearance-v1",
+    "fingerprint": "9a89c0042d137040fe216e036b432f47b8089e5b356b715547347c7cf79dc3a1",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Maddison-6.jpg?v=1780660072": "6108d3f4e849ae380c77d3c34af69b3759a2d3a7b9cdb83d8bcc971a1de6d5e6"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433349943480": {
+    "productId": "gid://shopify/Product/10433349943480",
+    "policy": "appearance-v1",
+    "fingerprint": "d760e1f0418eaab8e378ab91e33ff00235fb84b1263f46a9e1118af25cf24472",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Yedda-Waters-4.jpg?v=1780660076": "f8501bdd234ff66de8d2c811ea514cf7ee2d2530b0eee81e3037ad4f32f98fb5"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433350074552": {
+    "productId": "gid://shopify/Product/10433350074552",
+    "policy": "appearance-v1",
+    "fingerprint": "dfc4551299fff81fd685dc7a31a6f8076d343408ecdc13125ad70c680637eccc",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Ruby-2.jpg?v=1780660082": "67d692d0c20e7db1fe3e98f042be9243a166a1bcc5ea043d110de054915f9d37"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
+  },
+  "gid://shopify/Product/10433350107320": {
+    "productId": "gid://shopify/Product/10433350107320",
+    "policy": "appearance-v1",
+    "fingerprint": "50586d965ef4323e6839d4d314376fc357af5058ebec29e7d4317726114f62e2",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "imageDigests": {
+      "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp": "96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e",
+      "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp": "5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0",
+      "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp": "8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397",
+      "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp": "d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f",
+      "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp": "e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e",
+      "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp": "833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90",
+      "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp": "9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425",
+      "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp": "3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429",
+      "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp": "a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e",
+      "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp": "c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc",
+      "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp": "b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb",
+      "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp": "f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b",
+      "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp": "9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09",
+      "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp": "dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e",
+      "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp": "edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7",
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-D-cup-Silicone-Sex-Doll-_E2_80_93-Titus-2.jpg?v=1780660084": "efda22ab7b3b3f5097451fd61d04d6460e473bfb8d6efe2a96048dca05dd059a"
+    },
+    "choices": [
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-1",
+        "reference": "/option-assets/96c7325314f2bf566f5431795d959fed33f89f5452470b0c5fcde28b373e4b6e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-2",
+        "reference": "/option-assets/5886522c7b7aad4ccede8e21cd58728e0bd2a105956b0d264a8d6816f300b9e0.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-3",
+        "reference": "/option-assets/8e0c7a008cee4930f07478964f9a07b8df1a61dc3548c7af1423b478ad6b3397.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-4",
+        "reference": "/option-assets/d4bf6b2a3be2889c75c064a88396e4031519febb688cad6479ad480132563f6f.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-5",
+        "reference": "/option-assets/e16adc4c6e3943ba5418c010505d747276308c485cccb9e3c5e0977c9a06f20e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-6",
+        "reference": "/option-assets/833fe4e8089d55594d112f8c1a9c884883f0804196ab065359a50c10eee4db90.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-7",
+        "reference": "/option-assets/9e03ad70f297e58aae59efd322b877531a56f5c25044f22493af66d893061425.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-8",
+        "reference": "/option-assets/3d86fb81a7d856217b1951296fa364ceefe4e7739622a79191bd0d2349b64429.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-9",
+        "reference": "/option-assets/a768944a3777e6af10d8805b7ad1caf19c052e1bb525f423b49779ce9d99955e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-10",
+        "reference": "/option-assets/c443c13c94886cb96d196d580b437d22cc084fbe005e82a846a6037f4c2f85fc.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-11",
+        "reference": "/option-assets/b7f71a011a85720d37f6543e60b6e1e44d2185fdb153e1b19981f0367b19bdeb.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-12",
+        "reference": "/option-assets/f2d0f91a1a1422b5b98222d281306edc2deccf033763098b22a94dab8e38b91b.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-13",
+        "reference": "/option-assets/9c52418a5ef8ed3aae661953bb3b2b83e79764a5f2082f4b83c896b3062fee09.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-14",
+        "reference": "/option-assets/dcaa8da7bd8cb32d15cbe499960aa9bbcc8832650b4e9b6832ca9a4bc094c09e.webp"
+      },
+      {
+        "groupId": "hairstyle",
+        "optionId": "hairstyle-15",
+        "reference": "/option-assets/edbb3e3a9020d986abba3e0ab5e37cc01cbb3005b9385771e1edfaa11eccade7.webp"
+      }
+    ]
   }
 }

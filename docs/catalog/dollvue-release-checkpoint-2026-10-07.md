@@ -8,13 +8,30 @@ Owner subsequently confirmed: "rest look good and visual test passed." Record th
 
 Owner additionally confirmed that minor generated visual variations are acceptable. The WM Audrey and SE Lita eye-colour samples were generated successfully and inspected: intended eye colours changed, with small facial rendering differences. Those minor differences are not a release blocker. Major changes to identity, proportions, or unselected features still need correction. This acceptance does not publish draft products or waive access, ownership, and checkout checks.
 
+Owner renewed autonomous continuation on 7 October: finish DollVue, then the agreed homepage improvements without waiting for another prompt. Homepage implementation follows DollVue; newly added draft brands remain unpublished. Velvet stays Coming soon, not a working demo. Preserve current site typography and style, factual newest-product ordering, authentic logos, approved-brand visual filtering, existing menus and confidence sections.
+
 UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #102 released shared eligibility and nine reviewed records. Only two of those records are public products; seven remain unpublished JK drafts. All-catalog coverage remains unfinished. No Shopify writes, mail or product publication changes were made. Do not release the much larger dirty supplier worktree.
 
 ## Reviewed expansion production release
 
-### Private draft family (local integration)
+### Angelkiss hairstyle family (release preparation)
 
-- Separate branch `codex/dollvue-private-draft-nine` follows the unmerged YL branch. Exactly nine additions: five WM, one JK and three OR. All 231 prior records are preserved; local registry has 240 entries, 234 ready and six unchanged exclusions. This is not deployed.
+- Current bulk reads prepared 78 public custom full-body candidates with exact matches to the 15 reviewed hairstyle references; six draft candidates used different bytes and were not included. Eye options are not approved by this batch.
+- Assistant review and parent-assistant inspection accepted 22 source photographs; no owner image review is claimed. Frozen reports cover all 78 rows. The remaining 56 source-zero photographs need alternatives or presentation clarification; product sale availability is unchanged.
+- The 22-record private proposal verifies 37 image hashes, 22 defaults, 330 individual choice and cart-attribute checks, current identity/fingerprints and initial/final holds. Choices are `hairstyle-1` through `hairstyle-15`, not the WM option IDs. Exact integration preserves all 240 deployed records; local total is 262 entries, 256 ready and six unchanged exclusions.
+- All 22 actual local cart handlers passed. An initial invocation without the environment file failed before network calls; its failed report is retained. The corrected environment-loaded run passed. Parent also ran 459 focused tests (two live opt-ins skipped), TypeScript, production build, 4,950 owned-asset checks and browser-bundle privacy checks across 36 chunks.
+- Generic finalizer now supports exact reviewed gallery positions 0-7, with bounds and mismatch regressions, and an explicit hair-only Angelkiss family. Other families are unchanged. No public runtime or checkout behavior change. Hosted/production verification remains pending for this batch.
+
+### YL and private draft release (PR #106)
+
+- GitHub recovered after the recorded server errors. PR #106 merged as `e1d8f750ce8dc52b3484d17586433da7c1413010`, source commit `0d469c97958448c6dea55e54a91be1a2e3e6a0e5`.
+- Hosted preview `dpl_AuXRbe3qF9FvgKWfR15NL2CXJYJN` passed 25 cases: four YL viewer/combined carts, all nine added draft viewer/cart rejections, and twelve legacy/pilot/access regressions.
+- Production `dpl_2Qs9PwyKiFBM5dnPEqLfNBxqTQUV` is Ready; dollwow.com HTML confirmed the new deployment and access gate. All 25 paced production cases passed: four YL viewers/carts, all nine new draft viewer/cart rejections, twelve legacy/pilot/access regressions. Both preview branch credentials removed. Evidence: `production-pr106-sample.json` under YL, and `production-pr106-check.json` / `production-pr106-regression.json` under draft-family preparation.
+- Deployed registry: 240 entries, 234 ready and six unchanged exclusions. Reviewed ready scope: 218 public products (154 WM, 35 SE, 29 YL), 16 unpublished drafts (5 WM, 8 JK, 3 OR). No Shopify product publication, prices, promotions, customer email or generation changes. Legacy Irontech/Starpery/Lusandy coverage remains unchanged and is not included in these expansion counts.
+
+### Private draft family (pre-release evidence)
+
+- Separate branch `codex/dollvue-private-draft-nine` followed the YL branch and was released together through PR #106. Exactly nine additions: five WM, one JK and three OR. All 231 prior records are preserved; registry has 240 entries, 234 ready and six unchanged exclusions.
 - Private proposal `draft-family-preparation/reviewed-draft-9-record-proposal.json` verifies fresh DRAFT/unpublished state, strict Storefront absence before/after, initial/final private holds, 38 image hashes, nine defaults, 261 individual choices and 1,890 combinations. Nine actual public cart handlers return 404. Four general catalog-review-hold tags remain unchanged.
 - Independent review passed. Parent ran 422 focused tests (one live opt-in skipped), TypeScript, production build and the 4,950-owned-asset gate. Thirty-six browser chunks expose none of the 234 ready fingerprints or private review filenames. An initial ad hoc privacy scan falsely matched the six excluded records' empty fingerprints; the corrected scan explicitly validates and scans all nonempty ready SHA-256 values.
 - No generation, Shopify mutation, publication, price or homepage changes. GitHub write outage prevents release; keep all draft products unpublished. YL branch-only preview credentials have now been removed after hosted verification; restore only if needed for a later branch rebuild.
