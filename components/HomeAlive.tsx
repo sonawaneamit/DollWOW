@@ -3,9 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Camera, ChevronLeft, ChevronRight, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
-import { homepageNewArrivals, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
-import { storefrontFeatureProducts } from "@/lib/catalog/featured";
+import { ArrowRight, BadgeCheck, Camera, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
+import { homepageNewArrivals, homepageBestSellers, homepageFeatureProducts, homepageBrandLogos, HOMEPAGE_FEED_SIZE, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -13,8 +12,8 @@ import { productUrl } from "@/lib/catalog/productUrl";
 import { WishlistButton } from "@/components/WishlistButton";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
-import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { HomepageReviews } from "@/components/reviews/HomepageReviews";
+import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { formatMoney } from "@/lib/utils/currency";
@@ -68,21 +67,23 @@ export function HomeAlive({
   products,
   bestSellingProducts = [],
   recentlyAddedProducts,
+  brands = [],
   customerReviews
 }: {
   products: Product[];
   bestSellingProducts?: Product[];
   recentlyAddedProducts?: Product[];
+  brands?: typeof homepageBrandLogos;
   customerReviews: CustomerReview[];
 }) {
-  const featuredProducts = useMemo(() => storefrontFeatureProducts(products), [products]);
+  const featuredProducts = useMemo(() => homepageFeatureProducts(products), [products]);
   const featuredRecentlyAddedProducts = useMemo(
-    () => storefrontFeatureProducts(recentlyAddedProducts ?? []),
+    () => homepageFeatureProducts(recentlyAddedProducts ?? []),
     [recentlyAddedProducts]
   );
   const spotlight = useMemo(() => buildSpotlightProducts(featuredProducts), [featuredProducts]);
   const rails = useMemo(
-    () => buildRails(featuredProducts, storefrontFeatureProducts(bestSellingProducts), featuredRecentlyAddedProducts),
+    () => buildRails(featuredProducts, homepageFeatureProducts(bestSellingProducts), featuredRecentlyAddedProducts),
     [featuredProducts, bestSellingProducts, featuredRecentlyAddedProducts]
   );
   const [activeSpot, setActiveSpot] = useState(0);
@@ -95,6 +96,10 @@ export function HomeAlive({
   }, [spotlight.length]);
 
   const activeProduct = spotlight[activeSpot] ?? featuredProducts[0];
+  const feed = (key: string) => {
+    const rail = rails.find(item => item.key === key);
+    return rail ? <ProductRail rail={rail} index={key === 'new' ? 0 : 1} /> : null;
+  };
 
   return (
     <div className="home-alive">
@@ -154,15 +159,19 @@ export function HomeAlive({
       </section>
 
       <DollVueHomepageStrip />
+      {feed('new')}
       <TrustBand />
+      {feed('ready')}
       <HomepageReviews reviews={customerReviews} />
+      {feed('female')}
       <FactoryApprovalHomepagePreview />
+      {feed('male')}
       <section className="home-care-band" data-tone="deep"><CareForLifePanel /></section>
+      {feed('bestsellers')}
+      <HomeBrands brands={brands} />
       <HomeDollWall products={featuredProducts} />
-
-      {rails.map((rail, index) => (
-        <ProductRail key={rail.key} rail={rail} index={index} />
-      ))}
+      {feed('rare')}
+      {feed('sale')}
 
       <PreviewShowcase products={featuredProducts} />
       <ClosingBand />
@@ -255,33 +264,24 @@ function TrustBand() {
 }
 
 function ProductRail({ rail, index }: { rail: Rail; index: number }) {
-  const railRef = useRef<HTMLDivElement>(null);
-
-  function scrollBy(direction: -1 | 1) {
-    railRef.current?.scrollBy({ left: direction * railRef.current.clientWidth * 0.82, behavior: "smooth" });
-  }
-
   return (
-    <section className="home-band" data-tone={rail.tone}>
+    <section className="home-band home-feed" data-tone={rail.tone} data-home-feed={rail.key} aria-labelledby={`home-feed-${rail.key}`}>
       <div className="home-band__inner">
         <div className="home-rail-head reveal">
           <div className="home-rail-head__title">
             <div>
               <p className="home-eyebrow">{rail.eyebrow}</p>
-              <h2>{rail.title}</h2>
+              <h2 id={`home-feed-${rail.key}`}>{rail.title}</h2>
               <p>{rail.copy}</p>
             </div>
           </div>
           <div className="home-rail-tools">
-            {rail.key === "ready" ? <span className="home-countdown">Timing confirmed</span> : null}
-            <Link href={rail.href}>See all <ArrowRight className="h-4 w-4" /></Link>
-            <button type="button" onClick={() => scrollBy(-1)} aria-label={`Previous ${rail.title}`}><ChevronLeft className="h-5 w-5" /></button>
-            <button type="button" onClick={() => scrollBy(1)} aria-label={`Next ${rail.title}`}><ChevronRight className="h-5 w-5" /></button>
+            <Link href={rail.href} aria-label={`Browse all ${rail.title.toLowerCase()}`}>Browse all <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
-        <div className="home-rail reveal" data-d={Math.min(index + 1, 4)} ref={railRef}>
+        <div className="home-feed-grid reveal" data-d={Math.min(index + 1, 4)}>
           {rail.products.length ? (
-            rail.products.slice(0, 14).map((product, productIndex) => (
+            rail.products.slice(0, HOMEPAGE_FEED_SIZE).map((product, productIndex) => (
               <HomeProductCard key={`${rail.key}-${product.id}`} product={product} priority={index === 0 && productIndex < 2} />
             ))
           ) : (
@@ -291,11 +291,6 @@ function ProductRail({ rail, index }: { rail: Rail; index: number }) {
               <p>{rail.emptyCopy ?? "We’ll add products here as soon as this collection is ready."}</p>
             </div>
           )}
-          <Link className="home-rail-peek" href={rail.href}>
-            <span>See all</span>
-            <strong>{rail.title}</strong>
-            <ArrowRight className="h-5 w-5" />
-          </Link>
         </div>
       </div>
     </section>
@@ -311,7 +306,7 @@ function HomeProductCard({ product, priority = false }: { product: Product; prio
   const imageUrl = protectedProductImageUrlFor(product, image, "card");
 
   return (
-    <article className="home-product-card">
+    <article className="home-product-card" data-product-id={product.id}>
       <Link href={productUrl(product.handle)} className="home-product-card__link" aria-label={`View ${displayTitle}`} />
       <div className="home-product-card__media">
         <HomeProductImage product={product} priority={priority} />
@@ -369,7 +364,7 @@ function HomeProductImage({ product, priority = false }: { product: Product; pri
           src={imageUrl}
           alt={displayTitle}
           fill
-          sizes="(min-width: 1100px) 360px, 82vw"
+          sizes="(min-width: 1024px) 24vw, (min-width: 380px) 46vw, 92vw"
           priority={priority}
           className="object-cover"
         />
@@ -588,18 +583,20 @@ function ClosingBand() {
           <Link className="home-btn home-btn--primary" href="/shop/sex-dolls">Shop all dolls</Link>
           <Link className="home-btn home-btn--ghost" href="/help-me-choose">Help me choose</Link>
         </div>
+        <p className="home-velvet-status">Velvet <span>Coming soon</span></p>
       </div>
     </section>
   );
 }
 
-function buildRails(products: Product[], bestSellingProducts: Product[] = [], recentlyAddedProducts: Product[] = []): Rail[] {
+export function buildRails(products: Product[], bestSellingProducts: Product[] = [], recentlyAddedProducts: Product[] = []): Rail[] {
+  products = homepageFeatureProducts(products);
   const ready = products.filter((product) => product.extended.stockStatus === "ready_to_ship");
   const female = products.filter((product) => !isHomepageMaleProduct(product));
   const male = uniqueHomepageModels(products.filter(isHomepageMaleProduct));
   const rare = products.filter(isRareProduct);
   const sale = products.filter(isSaleProduct);
-  const newArrivals = homepageNewArrivals(recentlyAddedProducts.length ? recentlyAddedProducts : products).slice(0, 14);
+  const newArrivals = homepageNewArrivals(recentlyAddedProducts);
 
   const rails: Rail[] = [
     {
@@ -632,12 +629,12 @@ function buildRails(products: Product[], bestSellingProducts: Product[] = [], re
     },
     {
       key: "bestsellers",
-      eyebrow: "Loved right now",
+      eyebrow: "Explore the collection",
       title: "Bestsellers",
-      copy: "A strong place to start when you want the most browsed catalog picks first.",
+      copy: "Find a look to make your own.",
       tone: "deep",
       href: "/shop/sex-dolls",
-      products: bestSellingProducts.slice(0, 14)
+      products: homepageBestSellers(bestSellingProducts)
     },
     {
       key: "new",
@@ -669,7 +666,20 @@ function buildRails(products: Product[], bestSellingProducts: Product[] = [], re
     }
   ];
 
-  return rails.filter((rail) => rail.products.length > 0);
+  return rails.filter((rail) => rail.products.length > 0).map(rail => ({...rail, products:rail.products.slice(0, HOMEPAGE_FEED_SIZE)}));
+}
+
+function HomeBrands({brands}: {brands: typeof homepageBrandLogos}) {
+  if (!brands.length) return null;
+  return <section className="home-band home-brands" data-tone="deep" aria-labelledby="home-brands-title">
+    <div className="home-band__inner">
+      <div className="home-section-head"><div><p className="home-eyebrow">Find your maker</p><h2 id="home-brands-title">Shop by brand</h2></div><Link href="/brands">Explore brands <ArrowRight size={16} /></Link></div>
+      <div className="home-brand-grid">{brands.map(brand => <Link key={brand.brand} href={brand.href} className="home-brand-link">
+        <span className={`home-brand-logo${brand.dark ? ' home-brand-logo--dark' : ''}`}><Image src={brand.src} alt="" width={brand.width} height={brand.height} sizes="180px" /></span>
+        <span>{brand.label}</span>
+      </Link>)}</div>
+    </div>
+  </section>;
 }
 
 function productSearchText(product: Product) {

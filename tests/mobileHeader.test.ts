@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import postcss from "postcss";
 
 describe("mobile header", () => {
   const source = fs.readFileSync(path.join(process.cwd(), "components/Header.tsx"), "utf8");
@@ -20,5 +21,29 @@ describe("mobile header", () => {
     expect(source).toContain("site-header__wordmark");
     expect(source).toContain("site-header__menu-control");
     expect(source).toContain('className="v2-icon-control" aria-label="Search products"');
+  });
+
+  it("limits the narrow-screen hiding rule to the duplicate shortcut and visible menu text", () => {
+    const css = postcss.parse(fs.readFileSync(path.join(process.cwd(), "app/globals.css"), "utf8"));
+    const rules: string[] = [];
+    css.walkAtRules("media", media => {
+      if (media.params !== "(max-width: 379px)") return;
+      media.walkRules(rule => {
+        if (!rule.selector.includes(".site-header")) return;
+        rules.push(...rule.selectors);
+        expect(rule.nodes.map(node => node.toString())).toEqual(["display: none"]);
+      });
+    });
+    expect(rules).toEqual([".site-header .site-header__mobile-compare", ".site-header__menu-control > span"]);
+  });
+
+  it("keeps Compare in the mobile menu and preserves the menu button's accessible state", () => {
+    expect(source.match(/className="site-header__mobile-compare v2-icon-control relative"/g)).toHaveLength(1);
+    const links = source.slice(source.indexOf("const mobilePrimaryLinks"), source.indexOf("const helpLinks"));
+    expect(links).toContain('{ label: "Compare dolls", href: "/compare" }');
+    expect(source).toContain('aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}');
+    expect(source).toContain('aria-expanded={mobileMenuOpen}');
+    expect(source).toContain('aria-controls="mobile-menu"');
+    expect(source).toContain('aria-label="DollWow home"');
   });
 });

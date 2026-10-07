@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { productBodyType } from "@/lib/catalog/bodyType";
-import { homepageNewArrivals, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
+import { homepageNewArrivals, homepageBestSellers, homepageFeatureProducts, homepageBrandKey, homepageBrandLogos, homepageBrands, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
+import { catalogBrands } from '@/lib/catalog/brands';
+import { existsSync } from 'node:fs';
 import type { Product } from "@/types/product";
 
 function makeProduct(overrides: Partial<Product> & { extended?: Product["extended"] } = {}): Product {
@@ -25,6 +27,42 @@ function makeProduct(overrides: Partial<Product> & { extended?: Product["extende
 }
 
 describe("homepage catalog classification", () => {
+  it('resolves every eligible catalog alias to its exact canonical value', () => {
+    const eligible = new Set(['wm','angelkiss','irontech','fanreal','starpery','avant','sy','yl','erovenus','sedoll','dolls-castle','jarliet','hr']);
+    for (const brand of catalogBrands) {
+      for (const name of [brand.value, brand.label, brand.collectionHandle, ...brand.tags, ...brand.aliases]) {
+        const product = makeProduct({vendor:name});
+        expect(homepageBrandKey(product)).toBe(brand.value);
+        expect(homepageFeatureProducts([product]).length, name).toBe(eligible.has(brand.value) ? 1 : 0);
+      }
+    }
+  });
+
+  it('does not guess brand identity from titles, partial names, or parent-brand relationships', () => {
+    for (const vendor of ['Unknown', 'Moonvale', 'Real Lady', 'Lusandy collaboration', 'S E Doll', 'Climax', 'Zelex']) {
+      expect(homepageFeatureProducts([makeProduct({vendor, title:'WM Dolls Irontech'})])).toEqual([]);
+    }
+    expect(homepageFeatureProducts([makeProduct({vendor:'WM Dolls', extended:{brand:'Unknown'}})])).toEqual([]);
+    expect(homepageFeatureProducts([makeProduct({vendor:'Lusandy'})])).toHaveLength(1);
+  });
+
+  it.each([homepageNewArrivals, homepageBestSellers])('filters before taking eight without changing upstream order', select => {
+    const products = Array.from({length:20}, (_, index) => makeProduct({id:String(index), vendor:index % 2 ? 'WM Dolls' : 'Piper'}));
+    expect(select(products).map(product => product.id)).toEqual(['1','3','5','7','9','11','13','15']);
+    expect(select([])).toEqual([]);
+    expect(select([makeProduct({vendor:'Unknown'})])).toEqual([]);
+  });
+
+  it('offers only exact official logo files for brands with an eligible live product', () => {
+    expect(homepageBrands([])).toEqual([]);
+    expect(homepageBrands([makeProduct({vendor:'Iron Tech'})]).map(brand => brand.brand)).toEqual(['irontech']);
+    expect(homepageBrands([makeProduct({vendor:'Moonvale'})])).toEqual([]);
+    for (const logo of homepageBrandLogos) {
+      expect(existsSync(`public${logo.src}`)).toBe(true);
+      expect(logo.href.startsWith('/brands/')).toBe(true);
+    }
+  });
+
   it.each([
     "lusandy-lsd-t01-pleasure-hip-silicone-torso-us-rts",
     "lusandy-lsd-t01-pleasure-hip-silicone-torso-eu-rts-599",
