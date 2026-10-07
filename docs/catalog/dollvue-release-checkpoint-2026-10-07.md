@@ -2,7 +2,7 @@
 
 ## Scope and release state
 
-Owner authorized sampled verification followed by live release when checks pass. Draft product publication remains forbidden and homepage rearrangement is paused.
+Owner authorized sampled verification followed by live release when checks pass. Draft product publication remains forbidden. Homepage work was subsequently authorized after DollVue, as recorded below.
 
 Owner subsequently confirmed: "rest look good and visual test passed." Record this as owner acceptance of the examples they tested, with the three UI adjustments handled locally. The supplied review links were the existing live Irontech Kevin, Starpery Leticia and Lusandy Mizuki experiences, not the new integration. Do not extend this approval to untested catalog records or claim hosted integration/deployment verification from it. No further owner visual sign-off is needed for those tested examples unless their output behavior changes.
 
@@ -13,6 +13,14 @@ Owner renewed autonomous continuation on 7 October: finish DollVue, then the agr
 UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #102 released shared eligibility and nine reviewed records. Only two of those records are public products; seven remain unpublished JK drafts. All-catalog coverage remains unfinished. No Shopify writes, mail or product publication changes were made. Do not release the much larger dirty supplier worktree.
 
 ## Reviewed expansion production release
+
+### Consolidated remaining families (local, not released)
+
+- The next local batch adds 206 exact records to the released 691: Real Lady 27 (26 public, one draft), Sanhui 11, XT/XY 17, SM four, IL one, Jiusheng seven, TOP-CYDOLL 34, Ai-Tech two, Elsa nine, SY 88 and six WM-handle alias records. This is 123 public-product records and 83 unpublished drafts. Local registry: 897 entries, 891 ready and six unchanged exclusions. All previous entries remain identical. Do not count these additions as deployed yet.
+- Per-source assistant review and exact reference/byte checks are bound privately; representative generated outputs received separate parent-assistant pilot-only review. Minor rendering differences are recorded. No claim of human visual approval or generation of every combination. Private `release112-all-reviewed.json` binds the exact proposals; `release112-hosted-sample.json` selects 32 records across 17 brand/reference/publication families, with 12 additional access/legacy regressions planned. Six alias additions reuse only their exact already-tested choices; the eleven final TOP/Real Lady drafts passed current checks after the menu fix.
+- The focused singleton-parent fix retains an orderable fixed group when another group depends on it. Unknown prices, invalid conditions and unavailable choices still fail closed. Current read-only checks passed four FUDOLL and ten TOP-CYDOLL menus. A cached before/after audit reproduced all 874 existing ready fingerprints with zero changes; the positive FUDOLL control detected its expected change. No blanket fingerprint refresh or Shopify menu edit occurred.
+- Parent checks: 1,257 DollVue/configuration tests passed, 105 live opt-ins skipped after the final seventeen additions; TypeScript, production build, 4,950 owned image assets and diff check passed after integration. Hosted/browser verification remains pending. FUDOLL still lacks accepted generated-preview evidence; the menu fix is not a preview approval.
+- SE's second exact-swatch skin pilot still failed target-colour fidelity. The experimental prompt and its tests were reverted; both failed samples remain private. No SE skin records are enabled. Firefly's pilot changed unselected eye geometry and hair occlusion and is likewise deferred. XY12's provider refusal was not retried or bypassed. These are preview limitations, not new sales/publication holds.
 
 ### Additional WM/SE and draft families (PR #109 live)
 
@@ -36,7 +44,11 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 - Credentialed hosted preview `dpl_5oFFJmHx7hd9DJmYBLwGRh5px37M` passed 32/32 cases: five Castle viewer/cart samples including Carny, four YL, both Angelkiss, all nine Gynoid public viewer/cart rejections, and 12 legacy/access regressions. No generation, mail, order or catalog writes occurred. PR #110 merged as `d219c3cb4266fd198834ed9484b18d63f4786d6a`, with the exact verified preview tree. Production deployment `dpl_BxRXTRa5CXT6HCtx4959rS3mJWky` is building; do not claim production checks passed yet.
 - Production verification subsequently passed the same 32/32 cases, paced sequentially. Deployment `dpl_BxRXTRa5CXT6HCtx4959rS3mJWky` is Ready and the actual live HTML identifies it. Temporary branch-only credentials were removed. The existing Google tracker was updated with 64 Castle, 24 Angelkiss, 43 YL public records and nine unpublished Gynoid records; other rows were untouched. Private `hosted-pr110-*` and `production-pr110-*` reports retain exact test scope. No draft products were published.
 
-### Next reviewed families (192 locally integrated, not released)
+### Next reviewed families (PR #111 live)
+
+- PR #111 merged as `e671ce22a06451b963960cba777bff17c6b50465`, with the same tree as verified source `4871a2747f5962556ff1d5aaf0cc741d0c6111a5`. Credentialed hosted deployment `dpl_3y2zqHABKvRiNyrMWV71GQCVuwcC` and production `dpl_9p9z3ZEpwybWUF4ijJE6LiJLunud` passed 39/39 checks each: 27 records across 14 exact choice families and 12 legacy/access regressions. Production is Ready and actual dollwow.com HTML identifies it. No generation, mail, order or catalog writes occurred during these checks.
+- Independent review verified all 192 additions, 499 preceding records unchanged, frozen proposal/source/reference evidence and 759 focused tests. All 4,950 owned asset references passed; none of the 685 private readiness fingerprints appeared in 36 public browser chunks. An earlier overbroad scan incorrectly included public asset hashes; that failed attempt is retained and is not evidence of a privacy leak.
+- Temporary branch-only Shopify client credentials were removed. Existing Google tracker rows 2, 4, 9, 16, 18, 24, 31 and 38 were updated and read back successfully, preserving formatting and separating public readiness from unpublished draft readiness. The following bullets retain preparation history; release and current verification are recorded above.
 
 - Integrated 192 exact reviewed additions while preserving all 499 released entries: 15 6YE, six HR, 58 Jarliet across two distinct option families, seven Piper, 51 FunWest drafts, 20 Sino drafts, 32 Aibei drafts and three EX drafts. Local total is 691 entries: 685 ready and six unchanged exclusions, comprising 522 public-product records and 163 unpublished drafts. Registry readiness is not product publication.
 - Real family-sampled generation outputs passed assistant inspection for Jarliet, FunWest, Piper, Sino and Aibei/EX. The 6YE/HR additions reuse their already-tested exact iris family. Minor rendering variation is recorded; no owner visual review is claimed. Source/reference byte checks, current menus/holds and individual selection/cart checks are retained in private proposals. The final FunWest proposal and explicit Sino registry-integration approval supersede provisional artifacts.
