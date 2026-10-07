@@ -12,6 +12,13 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 
 ## Reviewed expansion production release
 
+### Private draft family (local integration)
+
+- Separate branch `codex/dollvue-private-draft-nine` follows the unmerged YL branch. Exactly nine additions: five WM, one JK and three OR. All 231 prior records are preserved; local registry has 240 entries, 234 ready and six unchanged exclusions. This is not deployed.
+- Private proposal `draft-family-preparation/reviewed-draft-9-record-proposal.json` verifies fresh DRAFT/unpublished state, strict Storefront absence before/after, initial/final private holds, 38 image hashes, nine defaults, 261 individual choices and 1,890 combinations. Nine actual public cart handlers return 404. Four general catalog-review-hold tags remain unchanged.
+- Independent review passed. Parent ran 422 focused tests (one live opt-in skipped), TypeScript, production build and the 4,950-owned-asset gate. Thirty-six browser chunks expose none of the 234 ready fingerprints or private review filenames. An initial ad hoc privacy scan falsely matched the six excluded records' empty fingerprints; the corrected scan explicitly validates and scans all nonempty ready SHA-256 values.
+- No generation, Shopify mutation, publication, price or homepage changes. GitHub write outage prevents release; keep all draft products unpublished. YL branch-only preview credentials have now been removed after hosted verification; restore only if needed for a later branch rebuild.
+
 ### YL family (release preparation)
 
 - Prepared all 151 current public YL shared-family candidates through bulk identity/hold reads and byte-pinned source manifests. Assistant source review accepted 29; 122 source-zero photos need alternatives or adult-presentation clarification. No product sale/status changes.
