@@ -1,0 +1,62 @@
+/* One page scroll keeps the final action reachable on touchpads and phones. */
+.shell :global(.dollvue-controls) {
+  max-height: none;
+}
+
+.shell :global(.dollvue-scroll-area) {
+  overflow: visible;
+  overscroll-behavior: auto;
+  flex: none;
+  padding-bottom: 16px;
+}
+
+.shell :global(.dollvue-option-intro) {
+  position: static;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.shell :global(.dollvue-option-intro > div) {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shell :global(.dollvue-option-intro strong) {
+  font-size: 18px;
+}
+
+.shell :global(.dollvue-actionbar) {
+  position: static;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  flex-shrink: 0;
+  gap: 12px;
+  padding: 16px 0 max(20px, env(safe-area-inset-bottom));
+  margin: 0;
+  box-shadow: none;
+}
+
+.shell :global(.dollvue-actionbar > button:only-child) {
+  grid-column: 1 / -1;
+}
+
+.shell :global(.dollvue-primary[aria-disabled='true']) {
+  background: rgb(var(--color-border));
+  color: rgb(var(--color-text-dim));
+  border-color: transparent;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.agreement { grid-column: 1 / -1; min-width: 0; }
+.agreement :global(.dollvue-consent) { align-items: flex-start; font-size: 16px; line-height: 1.5; }
+.agreement :global(.dollvue-consent input) { flex-shrink: 0; margin-top: 3px; }
+.reminder { margin-top: 8px; color: rgb(var(--color-accent)); font-weight: 600; }
+
+@media (min-width: 901px) {
+  .shell:not(:global(.has-result)) :global(.dollvue-preview) {
+    position: sticky;
+    top: 72px;
+    align-self: start;
+  }
+}

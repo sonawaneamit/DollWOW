@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, RotateCcw, 
 import { trackEvent } from "@/lib/analytics/client";
 import { dollVueDraftKey, dollVueSelectionKey, type DollVueGroup } from "@/lib/dollvue/public";
 import { productUrl } from "@/lib/catalog/productUrl";
+import styles from './DollVue.module.css';
 
 type Props = {
   product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
@@ -28,6 +29,8 @@ const MAX_PREVIEW_OPTIONS = 2;
 
 export function DollVue({ product, groups, freePreviews, initialRemaining, verifiedEmail, live }: Props) {
   const resultStartRef = useRef<HTMLDivElement>(null);
+  const consentRef = useRef<HTMLInputElement>(null);
+  const [consentAttempts, setConsentAttempts] = useState(0);
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
   const [step, setStep] = useState(1);
   const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
@@ -44,6 +47,19 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
     document.body.classList.add("dollvue-mode");
     return () => document.body.classList.remove("dollvue-mode");
   }, []);
+
+  useEffect(() => {
+    if (!consentAttempts) return;
+    const checkbox = consentRef.current;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    checkbox?.focus({ preventScroll: true });
+    checkbox?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+    const animation = !reducedMotion ? checkbox?.closest('label')?.animate([
+      { transform: 'translateX(0)' }, { transform: 'translateX(-4px)' },
+      { transform: 'translateX(4px)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(0)' }
+    ], { duration: 240, easing: 'ease-in-out' }) : undefined;
+    return () => animation?.cancel();
+  }, [consentAttempts]);
 
   useEffect(() => {
     localStorage.setItem(dollVueDraftKey(product.handle), JSON.stringify({ photoPosition, selections }));
@@ -82,6 +98,10 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
   }
 
   async function generate() {
+    if (!accepted) {
+      setConsentAttempts(current => current + 1);
+      return;
+    }
     if (!canGenerate) return;
     setLoading(true);
     setError("");
@@ -143,7 +163,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
   }
 
   return (
-    <div className={`dollvue-shell dollvue-step-${step}${result ? " has-result" : ""}`} aria-busy={loading}>
+    <div className={`${styles.shell} dollvue-shell dollvue-step-${step}${result ? " has-result" : ""}`} aria-busy={loading}>
       <header className="dollvue-header">
         <Link href={productUrl(product.handle)} aria-label="Back to product"><ArrowLeft /></Link>
         <div><span>DollVue™</span><strong>See your doll your way</strong></div>
@@ -222,17 +242,14 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
           {step === 2 ? (
             <div className={`dollvue-option-intro${optionLimitReached ? " is-limit-reached" : ""}`}>
               <div>
-                <strong>Choose up to {MAX_PREVIEW_OPTIONS} appearance options</strong>
-                <small>{selectedItems.length} of {MAX_PREVIEW_OPTIONS} selected</small>
+                <strong>Choose up to {MAX_PREVIEW_OPTIONS} options</strong>
+                <small role="status" aria-live="polite">{selectedItems.length} of {MAX_PREVIEW_OPTIONS} selected</small>
               </div>
-              <p>Each preview combines up to two visible changes. Use another free preview to explore a different combination.</p>
               {optionLimitReached ? (
                 <p className="dollvue-option-limit" role="status" aria-live="polite">
-                  Limit reached — remove one selected choice to unlock the greyed-out options.
+                  Remove a selected choice to try another option.
                 </p>
-              ) : (
-                <p className="dollvue-option-limit-hint">Choose one or two options below.</p>
-              )}
+              ) : null}
             </div>
           ) : null}
 
@@ -279,8 +296,6 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
                   </fieldset>
                 ))}
                 <p className="dollvue-verified-email"><ShieldCheck /><span><b>Verified access</b><small>Previews are connected to {verifiedEmail} across your devices.</small></span></p>
-                <label className="dollvue-consent"><input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} /><span>DollVue™ creates an approximate visual preview. Your finished doll may vary in color, texture, styling, and option details.</span></label>
-                <p className="dollvue-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
                 {!live ? <p className="dollvue-notice">DollVue™ is temporarily unavailable. Please try again shortly.</p> : null}
                 {error ? <div className="dollvue-error" role="alert"><strong>We couldn’t create this preview.</strong><p>{error}</p><small>Your selections are still here. Try again, choose another photo, or ask DollWOW for help.</small></div> : null}
               </div>
@@ -294,7 +309,24 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
           {!result ? (
             <footer className="dollvue-actionbar">
               {step === 1 ? <button type="button" className="dollvue-primary" onClick={() => setStep(2)}>Choose this photo <ArrowRight /></button> : (
-                <><button type="button" className="dollvue-back" onClick={() => setStep(1)}><ArrowLeft /> Photo</button><button type="button" className="dollvue-primary" onClick={generate} disabled={!canGenerate}>{loading ? <Loader2 className="animate-spin" /> : <Sparkles />}{loading ? "Preparing…" : "Create my preview"}</button></>
+                <>
+                  <button type="button" className="dollvue-back" onClick={() => setStep(1)} disabled={loading}><ArrowLeft /> Photo</button>
+                  <button type="button" className="dollvue-primary" onClick={generate}
+                    disabled={!live || selectedItems.length === 0 || remaining <= 0 || loading}
+                    aria-disabled={!canGenerate} aria-describedby="dollvue-agreement">
+                    {loading ? <Loader2 className="animate-spin" /> : <Sparkles />}{loading ? "Preparing…" : "Create my preview"}
+                  </button>
+                  <div className={styles.agreement}>
+                    <label className="dollvue-consent" id="dollvue-agreement">
+                      <input ref={consentRef} type="checkbox" checked={accepted}
+                        aria-invalid={consentAttempts > 0 && !accepted ? true : undefined}
+                        onChange={(event) => { setAccepted(event.target.checked); setConsentAttempts(0); }} />
+                      <span>I understand this is an approximate preview. My finished doll may vary in color, texture, styling, and option details.</span>
+                    </label>
+                    {consentAttempts > 0 && !accepted ? <p className={styles.reminder} role="alert">Please tick the agreement to create your preview.</p> : null}
+                    <p className="dollvue-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
+                  </div>
+                </>
               )}
             </footer>
           ) : null}
