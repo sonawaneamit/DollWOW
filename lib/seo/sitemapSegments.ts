@@ -2,7 +2,7 @@ import { brandHubHandles } from "@/lib/catalog/brandSeo";
 import { collectionPresets, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
 import { getLearningArticles } from "@/lib/learn/content";
 import { getSeoCatalogProducts, isCustomerVisibleProduct } from "@/lib/shopify/storefront";
-import { brandFromText, getCatalogBrand } from "@/lib/catalog/brands";
+import { brandFromText, getCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 import type { Product } from "@/types/product";
 
 // Preview deployments must never advertise preview URLs to search engines.
@@ -44,10 +44,20 @@ const staticRoutes = [
   "/datasets/sex-doll-size-weight-2026.json"
 ];
 
+// Live manufacturer with no brand-hub registry entry yet. This must not create
+// navigation links to a nonexistent hub as a side effect of sitemap grouping.
+const sitemapOnlyBrands = new Map([
+  ["lusandy", "lusandy"], ["lusandy doll", "lusandy"], ["lusandy dolls", "lusandy"]
+]);
+
+function sitemapBrandValue(value: string | undefined) {
+  return getCatalogBrand(value)?.value ?? sitemapOnlyBrands.get(normalizeBrandText(value));
+}
+
 export function productSitemapBrand(product: Product) {
-  return (getCatalogBrand(product.extended.brand) ?? getCatalogBrand(product.vendor)
-    ?? product.tags.map((tag) => getCatalogBrand(tag.replace(/^brand:/i, ""))).find(Boolean)
-    ?? brandFromText(product.extended.brand, product.vendor))?.value ?? "other";
+  return sitemapBrandValue(product.extended.brand) ?? sitemapBrandValue(product.vendor)
+    ?? product.tags.map((tag) => sitemapBrandValue(tag.replace(/^brand:/i, ""))).find(Boolean)
+    ?? brandFromText(product.extended.brand, product.vendor)?.value ?? "other";
 }
 
 function validDate(value: string | undefined) {

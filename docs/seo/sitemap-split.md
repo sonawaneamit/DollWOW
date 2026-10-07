@@ -8,6 +8,8 @@ The shared manifest is `lib/seo/sitemapSegments.ts`. Product input is the public
 
 Brand mapping uses the brand field, vendor, tags and brand-text fallback, never handle prefixes. Unknown brands use products-other.xml until registered. A public product does not automatically create a brand hub; those remain controlled by the existing brand hub registry.
 
+Lusandy has an explicit sitemap-only alias mapping because its live products predate a brand-hub entry. They belong in products-lusandy.xml, not other. This does not create a broken /brands/lusandy link or alter navigation. When a complete brand hub is introduced, move the aliases into the shared catalog registry and remove the redundant sitemap-only mapping.
+
 ## Dates
 
 Static, collection and brand pages omit lastmod until a meaningful content timestamp exists. Learn entries use lastReviewed. Products use Shopify updatedAt, not the inventory-check metafield. Shopify updatedAt can also change for inventory or administrative updates, so it is not a precise editorial timestamp. If production checks show frequent non-content updates, omit product lastmod or introduce a dedicated significant-content timestamp in a separately approved task. Do not claim that splitting alone fixes every date-quality issue.
