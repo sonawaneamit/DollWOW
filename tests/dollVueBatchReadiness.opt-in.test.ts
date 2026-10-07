@@ -22,8 +22,8 @@ import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 // Opt in with DOLLVUE_BATCH_READINESS=1. All paths are absolute/private:
 // DOLLVUE_BATCH_MANIFEST, DOLLVUE_BATCH_REVIEWS (JSON array of file paths),
 // DOLLVUE_BATCH_OUTPUT (new JSON file), DOLLVUE_BATCH_INCLUDE_HAIR=1 (optional).
-// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, YL14, or AngelkissHAIR15.
-// SE4 never permits hair; AngelkissHAIR15 requires INCLUDE_HAIR=1 and excludes eyes.
+// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, YL14, AngelkissHAIR15, or WMHAIR15.
+// SE4 never permits hair; both HAIR15 families require INCLUDE_HAIR=1 and exclude eyes.
 // 6YE_EYE3 / HR_EYE3 forbid hair and require DOLLVUE_BATCH_REFERENCE_EVIDENCE
 // pointing to frozen private assistant-reviewed evidence for the fixed three iris references.
 // EYE3 accepts a full mixed-brand manifest; every row needs a decision before brand scoping.
@@ -87,10 +87,12 @@ const families = {
     eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
   AngelkissHAIR15:{seedProductId:'gid://shopify/Product/10431698337976',brand:'Angelkiss',
     eyeIds:[] as string[],allowHair:true},
+  WMHAIR15:{seedProductId:'gid://shopify/Product/10431698337976',brand:'WM Dolls',
+    eyeIds:[] as string[],allowHair:true},
   '6YE_EYE3':{seedProductId:null,brand:'6YE Dolls',eyeIds:['blue','brown','green'],allowHair:false},
   HR_EYE3:{seedProductId:null,brand:'HR Dolls',eyeIds:['blue','brown','green'],allowHair:false},
 };
-const familySchema = z.enum(['WM14','SE4','YL14','AngelkissHAIR15','6YE_EYE3','HR_EYE3']);
+const familySchema = z.enum(['WM14','SE4','YL14','AngelkissHAIR15','WMHAIR15','6YE_EYE3','HR_EYE3']);
 type SourceRow = z.infer<typeof manifestSchema>['rows'][number];
 function scopeReviewedRows(rows:SourceRow[],reviewedIds:Iterable<string>,name:z.infer<typeof familySchema>) {
   expect([...reviewedIds].sort(),'All manifest rows require explicit decisions before scoping')
@@ -103,13 +105,14 @@ function scopeReviewedRows(rows:SourceRow[],reviewedIds:Iterable<string>,name:z.
 function familyChoices(name:z.infer<typeof familySchema>,includeHair:boolean,seedChoices:Choice[],referenceEvidence?:unknown) {
   const family=families[name];
   expect(!includeHair||family.allowHair,'This family is eyes-only; hair is not authorized').toBe(true);
-  expect(name!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
+  const hairOnly=name==='AngelkissHAIR15'||name==='WMHAIR15';
+  expect(!hairOnly||includeHair,'HAIR15 families require INCLUDE_HAIR=1').toBe(true);
   if(family.seedProductId===null) {
     const evidence=parseEye3Evidence(referenceEvidence);
     const eyes=evidence.references.map(r=>({groupId:r.groupId,optionId:r.optionId,reference:r.url}));
     return {eyes,hair:[] as Choice[],choices:eyes};
   }
-  const eyes=name==='AngelkissHAIR15'?[]:seedChoices.filter(c=>c.groupId==='eye-color');
+  const eyes=hairOnly?[]:seedChoices.filter(c=>c.groupId==='eye-color');
   expect(eyes.map(c=>c.optionId)).toEqual(family.eyeIds);
   const seedHair=includeHair?seedChoices.filter(c=>c.groupId==='hairstyle'):[];
   if(includeHair) expect(seedHair.map(c=>c.optionId)).toEqual(Array.from({length:15},(_,i)=>`no-${i+1}`));
@@ -226,6 +229,19 @@ it('maps AngelkissHAIR15 to the 15 reviewed hair references only and requires th
     c.groupId==='hairstyle'&&c.optionId==='no-1'?{...c,optionId:'no-2'}:c))).toThrow();
   expect(wmChoiceFixture.find(c=>c.groupId==='hairstyle')!.optionId).toBe('no-1');
 });
+it('keeps WMHAIR15 hair-only with exact seed IDs even when no eye family matches',()=>{
+  const hair=wmChoiceFixture.filter(c=>c.groupId==='hairstyle');
+  expect(familySchema.parse('WMHAIR15')).toBe('WMHAIR15');
+  expect(families.WMHAIR15.brand).toBe('WM Dolls');
+  expect(families.WMHAIR15.seedProductId).toBe(families.WM14.seedProductId);
+  for(const seed of [wmChoiceFixture,hair,[...hair,{groupId:'eye-color',optionId:'unrelated',reference:'/option-assets/unrelated.webp'}]]) {
+    expect(familyChoices('WMHAIR15',true,seed)).toEqual({eyes:[],hair,choices:hair});
+  }
+  expect(()=>familyChoices('WMHAIR15',false,wmChoiceFixture)).toThrow();
+  expect(()=>familyChoices('WMHAIR15',true,hair.slice(1))).toThrow();
+  expect(()=>familyChoices('WMHAIR15',true,[...hair,hair[0]])).toThrow();
+  expect(()=>familyChoices('WMHAIR15',true,hair.map((c,i)=>({...c,optionId:`hairstyle-${i+1}`})))).toThrow();
+});
 it.each(['WM14','YL14'] as const)('preserves %s eyes and optional hair',(name)=>{
   expect(familyChoices(name,true,wmChoiceFixture).choices).toEqual(wmChoiceFixture);
   expect(familyChoices(name,false,wmChoiceFixture).choices).toEqual(wmChoiceFixture.filter(c=>c.groupId==='eye-color'));
@@ -334,7 +350,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   const familyName=familySchema.parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
   const family=families[familyName];
   expect(!includeHair||family.allowHair,'This family is eyes-only; hair is not authorized').toBe(true);
-  expect(familyName!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
+  expect(!['AngelkissHAIR15','WMHAIR15'].includes(familyName)||includeHair,'HAIR15 families require INCLUDE_HAIR=1').toBe(true);
   const manifestBytes = await fs.readFile(manifestPath);
   const {rows} = manifestSchema.parse(JSON.parse(manifestBytes.toString()));
   expect(new Set(rows.map(row=>row.id)).size).toBe(rows.length);
