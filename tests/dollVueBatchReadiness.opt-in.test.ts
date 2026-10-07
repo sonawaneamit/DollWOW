@@ -22,7 +22,7 @@ import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 // Opt in with DOLLVUE_BATCH_READINESS=1. All paths are absolute/private:
 // DOLLVUE_BATCH_MANIFEST, DOLLVUE_BATCH_REVIEWS (JSON array of file paths),
 // DOLLVUE_BATCH_OUTPUT (new JSON file), DOLLVUE_BATCH_INCLUDE_HAIR=1 (optional).
-// DOLLVUE_BATCH_FAMILY=WM14 (default) or SE4; SE4 never permits hair.
+// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, or YL14; SE4 never permits hair.
 // Manifest: {rows:[{id,handle,status:'ACTIVE',sourcePosition:0,sourceUrl,
 // sourceFile,sourceSha256,sourceBytes,decoded:{width,height},fingerprint}]}.
 // Each review file: {reviewer:{role:'assistant',name:'Euclid'|'Beauvoir'|...},
@@ -51,6 +51,8 @@ const families = {
     eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
   SE4:{seedProductId:'gid://shopify/Product/10433981612216',brand:'SE Doll',
     eyeIds:['handmade-01','handmade-02','handmade-03','handmade-04'],allowHair:false},
+  YL14:{seedProductId:'gid://shopify/Product/10431698337976',brand:'YL Dolls',
+    eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
 };
 function assertRequestedChoicesRetained(result:Pick<ReturnType<typeof resolveCustomization>,'selections'|'selectedOptions'|'cartAttributes'>,
   requested:Array<Pick<Choice,'groupId'|'optionId'>>) {
@@ -113,7 +115,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   expect(await fs.lstat(output).then(()=>true, error=>{if(error.code==='ENOENT') return false; throw error;})).toBe(false);
   expect(['0','1',undefined]).toContain(process.env.DOLLVUE_BATCH_INCLUDE_HAIR);
   const includeHair = process.env.DOLLVUE_BATCH_INCLUDE_HAIR === '1';
-  const familyName=z.enum(['WM14','SE4']).parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
+  const familyName=z.enum(['WM14','SE4','YL14']).parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
   const family=families[familyName];
   expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
   const manifestBytes = await fs.readFile(manifestPath);

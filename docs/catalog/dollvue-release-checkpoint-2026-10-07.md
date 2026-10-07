@@ -12,7 +12,14 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 
 ## Reviewed expansion production release
 
-### WM and SE family source pass (release preparation)
+### YL family (release preparation)
+
+- Prepared all 151 current public YL shared-family candidates through bulk identity/hold reads and byte-pinned source manifests. Assistant source review accepted 29; 122 source-zero photos need alternatives or adult-presentation clarification. No product sale/status changes.
+- The 29-record proposal passed 58 image bindings, 29 defaults, 841 individual choices and 6,090 combined eye/hair choices with retained checkout attributes. Initial/final current holds and frozen input hashes matched. All 29 actual cart-handler checks passed.
+- Exact local delta preserves all 202 deployed records and adds 29 YL records with 14 eye colours and 15 hairstyles. Total 231 entries: 225 ready and six unchanged exclusions. Independent review, 404 focused tests and TypeScript passed; two opt-in live tests skipped. Hosted and production verification remain pending for YL.
+- Private evidence is under `yl-family-preparation/` in the existing SSD readiness directory. No new generation, Shopify mutation, customer mail or draft publication.
+
+### WM and SE family source pass (PR #105 live)
 
 - All 418 additional public WM family candidates have current menu/source manifests and individual assistant source review. Together with Audrey, this is the 419-product family census, not all WM catalog records.
 - Source decisions permit 153 additional records in total: 16, 22, 23 and 92 across the four batches. The first 38 are already released. The next 115 are being checked for a consolidated release. The other 265 source-zero photos need alternatives or adult-presentation clarification for DollVue; these are private preview findings, not product publication or sale holds.
@@ -20,8 +27,10 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 - The generic opt-in finalizer consumes explicit byte-bound assistant reviews, rejects missing/conflicting decisions, and rechecks current holds before output. It verifies requested choices survive into resolved checkout selections and cart attributes. Unknown families and SE hairstyles are rejected. No inference from family membership to source approval is allowed.
 - Remaining batch evidence is in `wm-family-next80/` and `wm-family-remaining/` under the private SSD readiness directory. The 92-record batch passed 121 unique image bindings, 92 defaults, 2,668 single choices and 19,320 combined choices, with requested selections and attributes retained. All 92 actual cart-handler checks passed. Initial and final hold checks were clear. A prior attempt was interrupted to correct private attribution metadata; no proposal or runtime change came from that attempt.
 - SE4: 97 of 98 additional candidates received assistant source review; one current torso-tagged record was excluded from the full-body scope. Thirty-four source-approved records passed 38 image bindings, 34 defaults and 136 choices, plus initial/final hold checks. Four eye choices only, no hairstyles. Sixty-three source-zero photos need alternatives or adult-presentation clarification; these do not alter sale availability.
-- Consolidated runtime delta: exactly 149 additions (115 WM + 34 SE), preserving all 53 previous records. Registry totals: 202 entries, 196 ready and six unchanged explicit exclusions. Ready scope is 154 public WM, 35 public SE and seven unpublished JK; legacy support is unchanged. These new additions are local until hosted/production gates pass. Do not change tracker ready counts before then.
+- Consolidated runtime delta: exactly 149 additions (115 WM + 34 SE), preserving all 53 previous records. Registry totals: 202 entries, 196 ready and six unchanged explicit exclusions. Ready scope is 154 public WM, 35 public SE and seven unpublished JK; legacy support is unchanged.
 - All 149 actual local cart-handler checks passed (23 + 92 WM combined hair/eyes, 34 SE eyes). Independent exact-delta/source/evidence review passed; 375 focused tests passed and two live opt-ins skipped. TypeScript and production build passed. Thirty-six built browser chunks contained no private registry fingerprints or hold fields. No generation calls or Shopify mutations were made in these batches.
+- Released as PR #105, merge `cbe0d0b5e268ec270d8b6eed6b145a732501ea26`, deployment `dpl_2pLkQqApXdg7RrANx4WvFxbVrbjk` (`doll-go14kljck`), Ready and aliased to dollwow.com. Actual live HTML deployment ID matched. Twelve sampled new viewers/carts plus twelve legacy/pilot/draft/access regression cases passed on both hosted and paced production checks. Reports are `hosted-pr105-sample.json` / `production-pr105-sample.json` in each batch directory and corresponding regression reports in `wm-family-remaining/`.
+- Temporary preview-branch credentials removed. Google DollVue tracker updated and read back: WM 154 ready / 336 remaining, SE 35 ready / 365 remaining against its prior baseline. JK remains seven unpublished ready records. No product/tag/status/price changes. The rest of the catalog remains incomplete.
 
 ### WM shared-family follow-up (PR #103 live)
 
