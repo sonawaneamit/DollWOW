@@ -22,16 +22,17 @@ import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 // Opt in with DOLLVUE_BATCH_READINESS=1. All paths are absolute/private:
 // DOLLVUE_BATCH_MANIFEST, DOLLVUE_BATCH_REVIEWS (JSON array of file paths),
 // DOLLVUE_BATCH_OUTPUT (new JSON file), DOLLVUE_BATCH_INCLUDE_HAIR=1 (optional).
-// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, or YL14; SE4 never permits hair.
-// Manifest: {rows:[{id,handle,status:'ACTIVE',sourcePosition:0,sourceUrl,
+// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, YL14, or AngelkissHAIR15.
+// SE4 never permits hair; AngelkissHAIR15 requires INCLUDE_HAIR=1 and excludes eyes.
+// Manifest: {rows:[{id,handle,status:'ACTIVE',sourcePosition:0..7,sourceUrl,
 // sourceFile,sourceSha256,sourceBytes,decoded:{width,height},fingerprint}]}.
 // Each review file: {reviewer:{role:'assistant',name:'Euclid'|'Beauvoir'|...},
-// decisions:[{id,sourcePosition:0,sourceUrl,sourceSha256,
+// decisions:[{id,sourcePosition:0..7,sourceUrl,sourceSha256,
 // verdict:'PASS_ADULT_NON_EXPLICIT_SOURCE'|'EXCLUDE'|'HOLD',reason}]}.
 // Every row needs a byte-bound decision; there is no candidate-to-approval fallback.
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const pin = z.string().regex(/^[a-f0-9]{64}$/);
-const identity = { id:z.string().regex(/^gid:\/\/shopify\/Product\/\d+$/), sourcePosition:z.literal(0),
+const identity = { id:z.string().regex(/^gid:\/\/shopify\/Product\/\d+$/), sourcePosition:z.number().int().min(0).max(7),
   sourceUrl:z.string().url(), sourceSha256:pin };
 const manifestSchema = z.object({rows:z.array(z.object({...identity,handle:z.string().min(1),status:z.literal('ACTIVE'),
   sourceFile:z.string().min(1),sourceBytes:z.number().int().positive(),fingerprint:pin,
@@ -53,7 +54,38 @@ const families = {
     eyeIds:['handmade-01','handmade-02','handmade-03','handmade-04'],allowHair:false},
   YL14:{seedProductId:'gid://shopify/Product/10431698337976',brand:'YL Dolls',
     eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
+  AngelkissHAIR15:{seedProductId:'gid://shopify/Product/10431698337976',brand:'Angelkiss',
+    eyeIds:[] as string[],allowHair:true},
 };
+const familySchema = z.enum(['WM14','SE4','YL14','AngelkissHAIR15']);
+type SourceRow = z.infer<typeof manifestSchema>['rows'][number];
+function familyChoices(name:z.infer<typeof familySchema>,includeHair:boolean,seedChoices:Choice[]) {
+  const family=families[name];
+  expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
+  expect(name!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
+  const eyes=name==='AngelkissHAIR15'?[]:seedChoices.filter(c=>c.groupId==='eye-color');
+  expect(eyes.map(c=>c.optionId)).toEqual(family.eyeIds);
+  const seedHair=includeHair?seedChoices.filter(c=>c.groupId==='hairstyle'):[];
+  if(includeHair) expect(seedHair.map(c=>c.optionId)).toEqual(Array.from({length:15},(_,i)=>`no-${i+1}`));
+  const hair=name==='AngelkissHAIR15'?seedHair.map((c,i)=>({...c,optionId:`hairstyle-${i+1}`})):seedHair;
+  return {eyes,hair,choices:[...eyes,...hair]};
+}
+function assertSourceBinding(row:z.infer<typeof reviewSchema>['decisions'][number] | SourceRow,
+  decision:z.infer<typeof reviewSchema>['decisions'][number]) {
+  const schema=z.object(identity);
+  expect(schema.parse(decision)).toEqual(schema.parse(row));
+}
+function reviewedSource(sources:ReturnType<typeof productImageSources>,row:SourceRow) {
+  identity.sourcePosition.parse(row.sourcePosition);
+  const source=sources[row.sourcePosition];
+  expect(source,`Missing reviewed gallery position ${row.sourcePosition}`).toBeDefined();
+  expect([source.url,source.width,source.height]).toEqual([row.sourceUrl,row.decoded.width,row.decoded.height]);
+  return {source,sourcePositions:[row.sourcePosition],imageDigests:{[source.url]:row.sourceSha256}};
+}
+function assertSourceBytes(bytes:Buffer,row:SourceRow) {
+  expect(bytes.length).toBe(row.sourceBytes);
+  expect(sha(bytes)).toBe(row.sourceSha256);
+}
 function assertRequestedChoicesRetained(result:Pick<ReturnType<typeof resolveCustomization>,'selections'|'selectedOptions'|'cartAttributes'>,
   requested:Array<Pick<Choice,'groupId'|'optionId'>>) {
   for(const choice of requested) {
@@ -78,6 +110,84 @@ it('rejects dropped batch choices and missing cart attributes for single and com
     expect(()=>assertRequestedChoicesRetained({...result,cartAttributes:result.cartAttributes.slice(1)},choices)).toThrow();
     expect(()=>assertRequestedChoicesRetained({...result,cartAttributes:[{key:'DollWow Eye Color',value:'Factory default'},result.cartAttributes[1]]},choices)).toThrow();
   }
+});
+const sourceFixtureBytes=Buffer.from('offline reviewed source');
+function sourceFixture(position=0):SourceRow {
+  return {id:'gid://shopify/Product/123',handle:'reviewed-source',status:'ACTIVE',sourcePosition:position,
+    sourceUrl:`https://example.test/source-${position}.jpg`,sourceSha256:sha(sourceFixtureBytes),
+    sourceFile:'/private/source.jpg',sourceBytes:sourceFixtureBytes.length,fingerprint:'a'.repeat(64),
+    decoded:{width:800,height:1200}};
+}
+function decisionFixture(row:SourceRow):z.infer<typeof reviewSchema>['decisions'][number] {
+  return {...row,verdict:'PASS_ADULT_NON_EXPLICIT_SOURCE',reason:'Offline fixture only'};
+}
+it.each([0,7])('accepts gallery position %i in manifest and both review formats',(position)=>{
+  const row=sourceFixture(position);
+  expect(manifestSchema.parse({rows:[row]}).rows[0].sourcePosition).toBe(position);
+  expect(reviewSchema.parse({reviewer:{role:'assistant',name:'test'},decisions:[decisionFixture(row)]})
+    .decisions[0].sourcePosition).toBe(position);
+  expect(sourceReviewSchema.parse({reviewer:'assistant',ownerReviewed:false,
+    manifest:{file:'/private/manifest.json',sha256:'b'.repeat(64)},
+    rows:[{...row,reviewer:'assistant',ownerReviewed:false,decision:'approve',reason:'Offline fixture only'}]})
+    .rows[0].sourcePosition).toBe(position);
+});
+it.each([-1,8,0.5,'1',undefined])('rejects invalid gallery position %s in every input format',(sourcePosition)=>{
+  const row={...sourceFixture(),sourcePosition};
+  expect(manifestSchema.safeParse({rows:[row]}).success).toBe(false);
+  expect(reviewSchema.safeParse({reviewer:{role:'assistant',name:'test'},
+    decisions:[{...decisionFixture(sourceFixture()),sourcePosition}]}).success).toBe(false);
+  expect(sourceReviewSchema.safeParse({reviewer:'assistant',ownerReviewed:false,
+    manifest:{file:'/private/manifest.json',sha256:'b'.repeat(64)},
+    rows:[{...row,reviewer:'assistant',ownerReviewed:false,decision:'approve',reason:'Offline fixture only'}]}).success).toBe(false);
+});
+it('rejects mismatched review ID, gallery position, URL, or hash',()=>{
+  const row=sourceFixture(7),decision=decisionFixture(row);
+  expect(()=>assertSourceBinding(row,decision)).not.toThrow();
+  for(const changed of [{id:'gid://shopify/Product/124'},{sourcePosition:0},
+    {sourceUrl:'https://example.test/other.jpg'},{sourceSha256:'c'.repeat(64)}]) {
+    expect(()=>assertSourceBinding(row,{...decision,...changed})).toThrow();
+  }
+});
+it.each([0,7])('retains exact source position %i and its pin without source-zero fallback',(position)=>{
+  const sources=Array.from({length:8},(_,i)=>({url:sourceFixture(i).sourceUrl,altText:'Offline fixture',width:800,height:1200}));
+  const row=sourceFixture(position),selected=reviewedSource(sources,row);
+  expect(selected.source).toBe(sources[position]);
+  expect(selected.sourcePositions).toEqual([position]);
+  expect(selected.imageDigests).toEqual({[row.sourceUrl]:row.sourceSha256});
+  expect(()=>assertSourceBytes(sourceFixtureBytes,row)).not.toThrow();
+  expect(()=>assertSourceBytes(Buffer.from('wrong bytes'),row)).toThrow();
+  expect(()=>assertSourceBytes(Buffer.alloc(sourceFixtureBytes.length),row)).toThrow();
+  expect(()=>reviewedSource(sources.slice(0,position),row)).toThrow();
+  expect(()=>reviewedSource(sources,{...row,sourceUrl:'https://example.test/wrong.jpg'})).toThrow();
+  expect(()=>reviewedSource(sources,{...row,decoded:{width:801,height:1200}})).toThrow();
+  expect(()=>reviewedSource(sources,{...row,decoded:{width:800,height:1201}})).toThrow();
+});
+const wmChoiceFixture:Choice[]=[
+  ...families.WM14.eyeIds.map(optionId=>({groupId:'eye-color',optionId,reference:`/option-assets/eye-${optionId}.webp`})),
+  ...Array.from({length:15},(_,i)=>({groupId:'hairstyle',optionId:`no-${i+1}`,reference:`/option-assets/hair-${i+1}.webp`})),
+];
+it('maps AngelkissHAIR15 to the 15 reviewed hair references only and requires the hair flag',()=>{
+  const result=familyChoices('AngelkissHAIR15',true,wmChoiceFixture);
+  expect(families.AngelkissHAIR15.brand).toBe('Angelkiss');
+  expect(families.AngelkissHAIR15.seedProductId).toBe(families.WM14.seedProductId);
+  expect(result.eyes).toEqual([]);
+  expect(result.choices).toEqual(wmChoiceFixture.filter(c=>c.groupId==='hairstyle')
+    .map((c,i)=>({...c,optionId:`hairstyle-${i+1}`})));
+  expect(result.choices.every(c=>c.groupId==='hairstyle')).toBe(true);
+  expect(()=>familyChoices('AngelkissHAIR15',false,wmChoiceFixture)).toThrow();
+  expect(()=>familyChoices('AngelkissHAIR15',true,wmChoiceFixture.slice(0,-1))).toThrow();
+  expect(()=>familyChoices('AngelkissHAIR15',true,wmChoiceFixture.map(c=>
+    c.groupId==='hairstyle'&&c.optionId==='no-1'?{...c,optionId:'no-2'}:c))).toThrow();
+  expect(wmChoiceFixture.find(c=>c.groupId==='hairstyle')!.optionId).toBe('no-1');
+});
+it.each(['WM14','YL14'] as const)('preserves %s eyes and optional hair',(name)=>{
+  expect(familyChoices(name,true,wmChoiceFixture).choices).toEqual(wmChoiceFixture);
+  expect(familyChoices(name,false,wmChoiceFixture).choices).toEqual(wmChoiceFixture.filter(c=>c.groupId==='eye-color'));
+});
+it('preserves SE4 eyes-only choices and rejects hair',()=>{
+  const choices=families.SE4.eyeIds.map(optionId=>({groupId:'eye-color',optionId,reference:`/option-assets/${optionId}.webp`}));
+  expect(familyChoices('SE4',false,choices).choices).toEqual(choices);
+  expect(()=>familyChoices('SE4',true,choices)).toThrow();
 });
 const fields: Record<string,string> = {
   catalogIdentityKey:'catalog_identity_key',catalogBodyIdentityKey:'catalog_body_identity_key',headModel:'head_model',
@@ -115,9 +225,10 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   expect(await fs.lstat(output).then(()=>true, error=>{if(error.code==='ENOENT') return false; throw error;})).toBe(false);
   expect(['0','1',undefined]).toContain(process.env.DOLLVUE_BATCH_INCLUDE_HAIR);
   const includeHair = process.env.DOLLVUE_BATCH_INCLUDE_HAIR === '1';
-  const familyName=z.enum(['WM14','SE4','YL14']).parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
+  const familyName=familySchema.parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
   const family=families[familyName];
   expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
+  expect(familyName!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
   const manifestBytes = await fs.readFile(manifestPath);
   const {rows} = manifestSchema.parse(JSON.parse(manifestBytes.toString()));
   expect(new Set(rows.map(row=>row.id)).size).toBe(rows.length);
@@ -147,7 +258,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       const row = rows.find(row=>row.id===decision.id);
       expect(row,`Unknown reviewed ID ${decision.id}`).toBeDefined();
       expect(reviews.has(decision.id),`Duplicate/conflicting decision ${decision.id}`).toBe(false);
-      expect([decision.sourceUrl,decision.sourceSha256,decision.sourcePosition]).toEqual([row!.sourceUrl,row!.sourceSha256,row!.sourcePosition]);
+      assertSourceBinding(row!,decision);
       reviews.set(decision.id,{file,reviewer:review.reviewer.name,decision});
     }
   }
@@ -158,11 +269,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   const registry = JSON.parse(registryBytes.toString()) as Record<string,DollVueReadinessRecord>;
   const seed = registry[family.seedProductId];
   expect(seed.status).toBe('ready');
-  const eyes = seed.choices.filter(c=>c.groupId==='eye-color');
-  expect(eyes.map(c=>c.optionId)).toEqual(family.eyeIds);
-  const hair = includeHair ? seed.choices.filter(c=>c.groupId==='hairstyle') : [];
-  if(includeHair) expect(hair.map(c=>c.optionId)).toEqual(Array.from({length:15},(_,i)=>`no-${i+1}`));
-  const choices = [...eyes,...hair];
+  const {eyes,hair,choices}=familyChoices(familyName,includeHair,seed.choices);
   const ids = approved.map(row=>row.id);
   for(const id of ids) expect(registry[id],`Existing registry entry ${id}; never replace implicitly`).toBeUndefined();
   const allowedIds = new Set([...ids,seed.productId]);
@@ -222,10 +329,9 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       expect(product.extended.brand).toBe(family.brand); expect(product.extended.stockStatus).toBe('custom');
       expect(product.productType).toMatch(/^custom\b.*\bdoll\b/i);
       expect([product.productType,...product.tags].join(' ')).not.toMatch(/head[ -]?only|torso|accessor|ready.to.ship|hold|not-for-launch|excluded/i);
-      const source=productImageSources(product)[0];
-      expect([source.url,source.width,source.height]).toEqual([row.sourceUrl,row.decoded.width,row.decoded.height]);
+      const {source,sourcePositions,imageDigests}=reviewedSource(productImageSources(product),row);
       const bytes=await fs.readFile(await privateInput(row.sourceFile));
-      expect(bytes.length).toBe(row.sourceBytes); expect(sha(bytes)).toBe(row.sourceSha256);
+      assertSourceBytes(bytes,row);
       await verify(source.url,row.sourceSha256);
       const config=dollVueConfigForProduct(product,getCustomizationConfig(product));
       const fingerprint=dollVueReadinessFingerprint(product,config);
@@ -238,7 +344,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
         expect(option.swatch).toMatchObject({kind:'image',value:choice.reference});
       }
       const record:DollVueReadinessRecord={productId:row.id,policy:DOLLVUE_APPEARANCE_POLICY,fingerprint,status:'ready',
-        sourcePositions:[0],imageDigests:{...referencePins,[source.url]:row.sourceSha256},choices};
+        sourcePositions,imageDigests:{...referencePins,...imageDigests},choices};
       const ready=evaluateDollVueReadiness(product,config,record,{published:true,contentExcluded:false});
       expect(ready.ready).toBe(true);
       const menu=reviewedDollVueConfig(config,ready,'public'), now=new Date();
@@ -263,7 +369,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       const defaults=resolve([]), choiceChecks=choices.map(c=>({groupId:c.groupId,optionId:c.optionId,...resolve([c])}));
       let combinedChecks=0; for(const eye of eyes) for(const h of hair) {resolve([eye,h]);combinedChecks++;}
       records[row.id]=record;
-      verification.push({id:row.id,handle:row.handle,draft:false,sourcePosition:0,sourceUrl:source.url,sourceSha256:row.sourceSha256,
+      verification.push({id:row.id,handle:row.handle,draft:false,sourcePosition:row.sourcePosition,sourceUrl:source.url,sourceSha256:row.sourceSha256,
         sourceBytes:row.sourceBytes,currentHold:'clear',strictStorefrontIdentity:true,currentSourceBytesMatch:true,
         runtimeFingerprint:fingerprint,assistantVisualReview:reviews.get(row.id),localDefaultValidation:defaults,
         localChoiceValidation:choiceChecks,combinedChecks,merchandiseId:variant.id,currencyCode:variant.price.currencyCode});
@@ -276,7 +382,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     expect(await fs.readFile('lib/dollvue/readiness-registry.json')).toEqual(registryBytes);
     for(const input of inputs) expect(sha(await fs.readFile(input.file)),`Evidence changed during finalization: ${input.file}`).toBe(input.sha256);
     await fs.writeFile(output,JSON.stringify({checkedAt:new Date().toISOString(),privateProposalOnly:true,records,verification,
-      reviewDecision:{reviewer:'assistant',scope:'Explicit byte-bound source0 decisions only'},
+      reviewDecision:{reviewer:'assistant',scope:'Explicit byte-bound gallery-position decisions only (0..7)'},
       evidence:{inputs,registryInputSha256:sha(registryBytes),seedProductId:seed.productId,
         holdChecks:{productIds:readIds,firstHoldCheckStartedAt,firstHoldCheckedAt,lastHoldCheckStartedAt,lastHoldCheckedAt,
           firstAllClear:true,lastAllClear:true}},
