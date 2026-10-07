@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrl } from "@/lib/catalog/productImage";
-import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   getDefaultSelections,
   isOptionAvailableForCheckout,
@@ -10,14 +9,13 @@ import {
   resolveCustomization
 } from "@/lib/customization/resolve";
 import {
-  isDollVueProduct,
-  isDollVueCatalogProduct,
-  resolveDollVueSelections,
-  dollVueConfigForProduct
+  areDollVueSelectionsValid,
+  resolveDollVueSelections
 } from "@/lib/dollvue/config";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
+import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 
 export const runtime = "nodejs";
 
@@ -26,26 +24,31 @@ const schema = z.object({
   selections: z.array(z.object({
     groupId: z.string().min(1).max(100),
     optionId: z.string().min(1).max(100)
-  })).min(1).max(5)
+  })).min(1).max(2)
 });
 
 export async function POST(request: Request) {
   if (!isTrustedOrigin(request)) return NextResponse.json({ error: "This request could not be verified." }, { status: 403 });
   const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success || !isDollVueProduct(parsed.data.productHandle)) {
+  if (!parsed.success) {
     return NextResponse.json({ error: "These preview choices cannot be added to the cart." }, { status: 400 });
   }
 
-  const product = await getProductByHandle(parsed.data.productHandle, { cache: "force-cache", revalidate: 3600 });
-  if (!product || !isDollVueCatalogProduct(product)) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
+  const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
+  if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
+  const eligibility = await resolveCurrentDollVueEligibility(product);
+  if (!eligibility.available) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
   const variant = product.variants.find((item) => item.availableForSale) ?? product.variants[0];
   if (!variant?.id || !variant.availableForSale) {
     return NextResponse.json({ error: "This doll is not currently available to add to the cart." }, { status: 409 });
   }
 
-  const catalogConfig = dollVueConfigForProduct(product, getCustomizationConfig(product));
+  const catalogConfig = eligibility.config;
   const promotionNow = new Date();
   const config = promotionPricingForSelections(product, catalogConfig, {}, promotionNow).config;
+  if (!areDollVueSelectionsValid(config, parsed.data.selections)) {
+    return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 409 });
+  }
   const visualSelections = resolveDollVueSelections(config, parsed.data.selections);
   if (visualSelections.length !== parsed.data.selections.length) {
     return NextResponse.json({ error: "One of these appearance choices is no longer available." }, { status: 409 });

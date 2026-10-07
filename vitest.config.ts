@@ -8,6 +8,7 @@ export default defineConfig({
     }
   },
   test: {
+    setupFiles: ['./tests/server-only.setup.ts'],
     environment: "node"
   }
 });

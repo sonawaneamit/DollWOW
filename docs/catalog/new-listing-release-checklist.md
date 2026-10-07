@@ -1,5 +1,17 @@
 # New listing release checklist
 
+## DollVue readiness (live and draft)
+
+- Resolve the actual product menu before reviewing appearance choices. Jev classifications and template tags are triage, not image or supplier approval. Keep functional options, accessories and extra heads out of appearance previews.
+- Read both content-hold tags and `custom.catalog_image_review_hold` through the Admin inventory. A Storefront-only crawl misses unpublished records and private hold fields.
+- Bind suitable, non-explicit source photos and reviewed option references to exact product/group/option IDs. Preserve the byte/provenance chain through legitimate image re-encoding; different JPEG/WebP hashes alone do not prove changed imagery.
+- Record the current appearance policy and menu/photo fingerprint privately. A scheduled price change need not invalidate appearance review; changed meanings, compatibility, references or source photos do.
+- Check representative real generations for visible intended changes, retained product identity and unwanted additions. HTTP 200, decoded images and passing unit tests do not establish visual fidelity.
+- Minor rendering differences are acceptable under the owner's 7 October 2026 review. Do not hold an otherwise passing release for pixel-identical facial detail; investigate major identity, proportion or unselected-feature changes. Reuse a passed appearance-reference family across verified compatible products, with targeted representative generation rather than a paid generation for every SKU.
+- Public access requires a strict current Storefront lookup plus current readiness. Email verification must never authorize unpublished products. Keep draft review private; publication and readiness are separate states.
+- Verify the PDP, card, filter, viewer, access link, generation and cart agree. Only serialize the public capability flag and approved customer choices, never private review records or evidence.
+- Keep exact ready/excluded/review counts and remaining checks in the private launch tracker. Do not count prepared records as enabled products. New releases must not publish draft brands or change checkout prices.
+
 ## Sitemap checks for future uploads
 
 - Set the correct canonical brand/vendor and content type. Sitemaps group products by brand data, not product-handle prefixes.

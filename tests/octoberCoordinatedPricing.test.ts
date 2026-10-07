@@ -4,6 +4,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { sampleProducts } from "@/lib/data/sample-products";
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from "@/types/customization";
 import type { Product } from "@/types/product";
+vi.mock('server-only', () => ({}));
+vi.mock('@/lib/dollvue/currentHold', () => ({ getCurrentDollVueHold: vi.fn(async () => 'clear') }));
 
 const mocks = vi.hoisted(() => ({ getCustomizationConfig: vi.fn(), getProductsByVariantIds: vi.fn(), getProductByHandle: vi.fn() }));
 vi.mock("@/lib/customization/configs", () => ({ getCustomizationConfig: mocks.getCustomizationConfig }));
@@ -149,18 +151,17 @@ describe("coordinated October PDP and server pricing", () => {
     expect((await serverValidateAndRepriceLine(input)).customizationCharge?.amount).toBe(299);
   });
 
-  it.each([["2026-10-15T12:00:00Z", 0], ["2026-11-09T08:00:00Z", 75]])("keeps DollVue and cart validation aligned at %s", async (clock, delta) => {
+  it.each([["2026-10-15T12:00:00Z", 0], ["2026-11-09T08:00:00Z", 75]])("excludes undefined body-painting previews without changing normal checkout pricing at %s", async (clock, delta) => {
     vi.setSystemTime(new Date(clock)); const p = product();
     const paint: CustomizationOption = { ...option("s-body-painting-free", "S+ Body Painting", 75), dollVueEnabled: true,
-      swatch: { kind: "image", value: "https://supplier.test/painting.jpg" } };
+      swatch: { kind: "image", value: "/option-assets/painting.jpg" } };
     const c = catalog([group("makeup-options", [none, paint], "multiple")]); prepare(p, c);
     const response = await dollVueCart(new Request("http://localhost:3226/dollvue/cart", {
       method: "POST", headers: { "content-type": "application/json", origin: "http://localhost:3226" },
       body: JSON.stringify({ productHandle: p.handle, selections: [{ groupId: "makeup-options", optionId: paint.id }], promoClock: during.toISOString() })
     }));
-    expect(response.status).toBe(200);
-    const { item } = await response.json(); expect(item.unitPrice).toBe(2000 + delta);
-    const line = await serverValidateAndRepriceLine({ merchandiseId: variantId, quantity: 1, selections: item.selections });
+    expect(response.status).toBe(404);
+    const line = await serverValidateAndRepriceLine({ merchandiseId: variantId, quantity: 1, selections: { 'makeup-options': [paint.id] } });
     expect(line.customizationCharge?.amount ?? 0).toBe(delta);
   });
 });

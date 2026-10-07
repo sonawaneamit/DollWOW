@@ -44,7 +44,7 @@ export default async function CollectionPage({
   const preset = collectionPresets[collection];
   if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
-  const products = await getSeoCatalogProducts({ first: 5000 });
+  const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled' });
   const filteredProducts = filterProducts(products, filters);
   const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));

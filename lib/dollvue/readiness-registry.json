@@ -1,0 +1,186 @@
+{
+  "gid://shopify/Product/10433981612216": {
+    "productId": "gid://shopify/Product/10433981612216",
+    "policy": "appearance-v1",
+    "fingerprint": "d6e722403adb83fd48564c2c3d7fdedea3f9ceef7e7e9d3f6ec605ccb03e3a91",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "choices": [
+      {
+        "groupId": "eye-color",
+        "optionId": "handmade-01",
+        "reference": "/option-assets/ae658a71f2c48f82e84643fa5aec82c4056438572071e2c8a503411dc45ee84c.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "handmade-02",
+        "reference": "/option-assets/6c8a239ab78346d9cc7608038c6bf6753fa1dff38b9b3fdfa69116e120943e81.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "handmade-03",
+        "reference": "/option-assets/ada7446fe6e51f7b086b30ead2c6f10f580cbab76c930a13b26032db4fc975a9.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "handmade-04",
+        "reference": "/option-assets/4b9e067f39bbb09f466b0a89844ba791bd58befd0af861218be21524e7e6ed70.webp"
+      }
+    ],
+    "imageDigests": {
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/T163cm5ft4-C-cup-Silicone-Sex-Doll-_E2_80_93-Lita-7.jpg?v=1780688417": "1d0f73caec51085e543504f427fb0a61a19ec6e21e3b558c6b089238568c42a0",
+      "/option-assets/ae658a71f2c48f82e84643fa5aec82c4056438572071e2c8a503411dc45ee84c.webp": "ae658a71f2c48f82e84643fa5aec82c4056438572071e2c8a503411dc45ee84c",
+      "/option-assets/6c8a239ab78346d9cc7608038c6bf6753fa1dff38b9b3fdfa69116e120943e81.webp": "6c8a239ab78346d9cc7608038c6bf6753fa1dff38b9b3fdfa69116e120943e81",
+      "/option-assets/ada7446fe6e51f7b086b30ead2c6f10f580cbab76c930a13b26032db4fc975a9.webp": "ada7446fe6e51f7b086b30ead2c6f10f580cbab76c930a13b26032db4fc975a9",
+      "/option-assets/4b9e067f39bbb09f466b0a89844ba791bd58befd0af861218be21524e7e6ed70.webp": "4b9e067f39bbb09f466b0a89844ba791bd58befd0af861218be21524e7e6ed70"
+    }
+  },
+  "gid://shopify/Product/10633013887160": {
+    "productId": "gid://shopify/Product/10633013887160",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10634323591352": {
+    "productId": "gid://shopify/Product/10634323591352",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10634329522360": {
+    "productId": "gid://shopify/Product/10634329522360",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10634329653432": {
+    "productId": "gid://shopify/Product/10634329653432",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10634336469176": {
+    "productId": "gid://shopify/Product/10634336469176",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10634719363256": {
+    "productId": "gid://shopify/Product/10634719363256",
+    "policy": "appearance-v1",
+    "fingerprint": "",
+    "status": "excluded",
+    "sourcePositions": [],
+    "choices": []
+  },
+  "gid://shopify/Product/10431698337976": {
+    "productId": "gid://shopify/Product/10431698337976",
+    "policy": "appearance-v1",
+    "fingerprint": "c54eafa3a2b38a40ae23417ac8af0b6e6a6d865b8c5d033e1459e3b02e365a53",
+    "status": "ready",
+    "sourcePositions": [
+      0
+    ],
+    "choices": [
+      {
+        "groupId": "eye-color",
+        "optionId": "no-1",
+        "reference": "/option-assets/26b79427241b923ba66d850f17ed48dad045a762e11a6615f0c6237ff96a319c.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-2",
+        "reference": "/option-assets/98017f1c3632c2eee1c15b711aa5ed71cdbcb0e66be61bbd8f7b28addcd512e8.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-3",
+        "reference": "/option-assets/941baaad5df1ede2ac2609d9665804451c2cc765d65f012c9fe37aad6ad738aa.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-4",
+        "reference": "/option-assets/34e672e2b181a9b21813f230a5a827546181ab091d08b0858a79e8c141588d05.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-5",
+        "reference": "/option-assets/7cafa47f7a557a403467dc04aabbb8e39f3ef02fb3df586aae263e13b5f007ab.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-6",
+        "reference": "/option-assets/f88d750f7e1139267795b3f93b8d7be8b88d44c570d6bb1456465e9d26aec8b3.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-7",
+        "reference": "/option-assets/f7f67d096ee0b022c80573551eb9e1bd3d08a87719a0bf1773b2ac634b658708.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-8",
+        "reference": "/option-assets/d6e72344bde16a33dfbfde0a1af24f22241c4d62375fb80027465268f4a05349.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-9",
+        "reference": "/option-assets/e4d33e552907e56832d5ced126644b5e24c3e118916d8ca62dab3328ca1b8a74.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-14",
+        "reference": "/option-assets/34396ccbde89ac63d09c554e97941c3ca70ad3b00fe4559849bcadc2b575a33c.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-15",
+        "reference": "/option-assets/adf1f26c99796d787ef72fbfc5a02fcbc02f78deab072e193f32aec344e46d1e.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-16",
+        "reference": "/option-assets/0c604672673ddb123116d7fa708d32e698acede98bf43e07e20d50ca95e6a2b8.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-17",
+        "reference": "/option-assets/22cda12f5a8d58d292804c1f00e7c3c6a64b50bde972fa730a6f74100d679853.webp"
+      },
+      {
+        "groupId": "eye-color",
+        "optionId": "no-18",
+        "reference": "/option-assets/01266ad5c6034a1929e66e85498506f8cc07a801fe4871be8129a5a904142957.webp"
+      }
+    ],
+    "imageDigests": {
+      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/166cm-5ft5-C-cup-TPE-Sex-Doll-Audrey-1_e1c59f63-63cf-4007-8681-9271b2919c75.jpg?v=1780588541": "fb52b2be0d88ab369a8a5064e1da44e972c29051911a05cf6ae8d50abf7b8358",
+      "/option-assets/26b79427241b923ba66d850f17ed48dad045a762e11a6615f0c6237ff96a319c.webp": "26b79427241b923ba66d850f17ed48dad045a762e11a6615f0c6237ff96a319c",
+      "/option-assets/98017f1c3632c2eee1c15b711aa5ed71cdbcb0e66be61bbd8f7b28addcd512e8.webp": "98017f1c3632c2eee1c15b711aa5ed71cdbcb0e66be61bbd8f7b28addcd512e8",
+      "/option-assets/941baaad5df1ede2ac2609d9665804451c2cc765d65f012c9fe37aad6ad738aa.webp": "941baaad5df1ede2ac2609d9665804451c2cc765d65f012c9fe37aad6ad738aa",
+      "/option-assets/34e672e2b181a9b21813f230a5a827546181ab091d08b0858a79e8c141588d05.webp": "34e672e2b181a9b21813f230a5a827546181ab091d08b0858a79e8c141588d05",
+      "/option-assets/7cafa47f7a557a403467dc04aabbb8e39f3ef02fb3df586aae263e13b5f007ab.webp": "7cafa47f7a557a403467dc04aabbb8e39f3ef02fb3df586aae263e13b5f007ab",
+      "/option-assets/f88d750f7e1139267795b3f93b8d7be8b88d44c570d6bb1456465e9d26aec8b3.webp": "f88d750f7e1139267795b3f93b8d7be8b88d44c570d6bb1456465e9d26aec8b3",
+      "/option-assets/f7f67d096ee0b022c80573551eb9e1bd3d08a87719a0bf1773b2ac634b658708.webp": "f7f67d096ee0b022c80573551eb9e1bd3d08a87719a0bf1773b2ac634b658708",
+      "/option-assets/d6e72344bde16a33dfbfde0a1af24f22241c4d62375fb80027465268f4a05349.webp": "d6e72344bde16a33dfbfde0a1af24f22241c4d62375fb80027465268f4a05349",
+      "/option-assets/e4d33e552907e56832d5ced126644b5e24c3e118916d8ca62dab3328ca1b8a74.webp": "e4d33e552907e56832d5ced126644b5e24c3e118916d8ca62dab3328ca1b8a74",
+      "/option-assets/34396ccbde89ac63d09c554e97941c3ca70ad3b00fe4559849bcadc2b575a33c.webp": "34396ccbde89ac63d09c554e97941c3ca70ad3b00fe4559849bcadc2b575a33c",
+      "/option-assets/adf1f26c99796d787ef72fbfc5a02fcbc02f78deab072e193f32aec344e46d1e.webp": "adf1f26c99796d787ef72fbfc5a02fcbc02f78deab072e193f32aec344e46d1e",
+      "/option-assets/0c604672673ddb123116d7fa708d32e698acede98bf43e07e20d50ca95e6a2b8.webp": "0c604672673ddb123116d7fa708d32e698acede98bf43e07e20d50ca95e6a2b8",
+      "/option-assets/22cda12f5a8d58d292804c1f00e7c3c6a64b50bde972fa730a6f74100d679853.webp": "22cda12f5a8d58d292804c1f00e7c3c6a64b50bde972fa730a6f74100d679853",
+      "/option-assets/01266ad5c6034a1929e66e85498506f8cc07a801fe4871be8129a5a904142957.webp": "01266ad5c6034a1929e66e85498506f8cc07a801fe4871be8129a5a904142957"
+    }
+  }
+}

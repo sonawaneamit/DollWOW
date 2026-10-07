@@ -2,6 +2,8 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { sampleProducts } from "@/lib/data/sample-products";
 import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
+vi.mock('server-only', () => ({}));
+vi.mock('@/lib/dollvue/currentHold', () => ({ getCurrentDollVueHold: vi.fn(async () => 'clear') }));
 
 vi.hoisted(() => {
   process.env.NEXT_PUBLIC_SITE_URL = "https://dollwow.com";
@@ -52,7 +54,7 @@ const config: BrandCustomizationConfig = {
       priceVerified: true,
       purchasable: true,
       dollVueEnabled: true,
-      swatch: { kind: "image", value: "https://supplier.test/painted-freckles.jpg" }
+      swatch: { kind: "image", value: "/option-assets/painted-freckles.jpg" }
     }]
   }]
 };
@@ -63,6 +65,7 @@ function dollVueProduct(): Product {
     ...source,
     handle: "irontech-adversarial-dollvue-model",
     title: "Irontech DollVue Model",
+    featuredImage: { url: '/product-media/dollvue-fixture.webp', altText: 'Test product' },
     vendor: "Irontech Dolls",
     tags: ["irontech", "customizable"],
     variants: [{

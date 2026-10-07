@@ -86,7 +86,7 @@ describe("Lusandy DollVue eligibility", () => {
               label: "Tan",
               priceDelta: 0,
               dollVueEnabled: true,
-              swatch: { kind: "image", value: "https://example.com/tan.jpg", label: "Tan" }
+              swatch: { kind: "image", value: "/option-assets/tan.jpg", label: "Tan" }
             }
           ]
         }
@@ -97,7 +97,7 @@ describe("Lusandy DollVue eligibility", () => {
       {
         id: "select-skin-tone",
         label: "SELECT SKIN TONE",
-        options: [{ id: "tan", label: "Tan", swatch: { kind: "image", value: "https://example.com/tan.jpg", label: "Tan" } }]
+        options: [{ id: "tan", label: "Tan", swatch: { kind: "image", value: "/option-assets/tan.jpg", label: "Tan" } }]
       }
     ]);
   });

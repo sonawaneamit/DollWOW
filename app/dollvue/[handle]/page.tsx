@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { DollVue } from "@/components/dollvue/DollVue";
 import { DollVueAccessGate } from "@/components/dollvue/DollVueAccessGate";
-import { getCustomizationConfig } from "@/lib/customization/configs";
-import { isDollVueProduct, isDollVueCatalogProduct, DOLLVUE_FREE_PREVIEWS, dollVueConfigForProduct, dollVueGroups } from "@/lib/dollvue/config";
+import { DOLLVUE_FREE_PREVIEWS, dollVueGroups } from "@/lib/dollvue/config";
+import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { dollVueUsageForEmail } from "@/lib/dollvue/accountUsage";
 import { maskedEmail, verifyDollVueSessionValue, DOLLVUE_SESSION_COOKIE } from "@/lib/dollvue/session";
 import { productDisplayName } from "@/lib/catalog/naming";
@@ -20,17 +20,19 @@ export const dynamic = "force-dynamic";
 
 export default async function DollVueProductPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  if (!isDollVueProduct(handle)) notFound();
-  const product = await getProductByHandle(handle, { cache: "force-cache", revalidate: 3600 });
-  if (!product || !isDollVueCatalogProduct(product)) notFound();
+  const product = await getProductByHandle(handle, { cache: 'no-store', strict: true });
+  if (!product) notFound();
+  const eligibility = await resolveCurrentDollVueEligibility(product);
+  if (!eligibility.available) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
   if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} /></div>;
   const usage = await dollVueUsageForEmail(session.email);
-  const groups = dollVueGroups(publicCustomizationConfig(dollVueConfigForProduct(product, getCustomizationConfig(product))));
-  const photos = productImageSources(product).slice(0, 8).map((image, position) => ({
+  const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
+  const sources = productImageSources(product);
+  const photos = eligibility.sourcePositions.map(position => ({
     position,
     url: protectedProductImageUrl(product.handle, position, "card"),
-    alt: image.altText || `${productDisplayName(product) || product.title} reference photo ${position + 1}`
+    alt: sources[position].altText || `${productDisplayName(product) || product.title} reference photo ${position + 1}`
   }));
 
   return (
