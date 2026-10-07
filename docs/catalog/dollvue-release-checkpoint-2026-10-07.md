@@ -12,15 +12,22 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 
 ## Reviewed expansion production release
 
-### WM shared-family follow-up (local; release checks pending)
+### WM shared-family follow-up (PR #103 merged; production checks pending)
 
 - Scope: 38 additional existing public WM products, in reviewed batches of 16 and 22. Together with PR #102 this prepares 47 ready records: 40 public products and seven unpublished JK drafts. Six prior explicit exclusions remain unchanged.
 - Source photographs were reviewed by the assistant, not the owner. The owner's approval covers minor generated variation and shared-family reuse, not individual image sign-off.
 - Every new record binds its exact current product/menu fingerprint, approved source position zero, source-byte hash and 14 previously reviewed WM eye references. Eye choices 10-13 remain outside this colour-only scope.
-- Both batches passed fresh bulk Storefront identity/public availability, private-hold, owned-image byte, and local configuration checks. The second batch additionally passed 308 individual eye-choice compatibility/cart-attribute checks. All 38 actual local cart-handler checks passed, including exact totals, selections, attributes and charges. The 234 focused checks, TypeScript and production build passed. Hosted/production checks remain pending.
+- Both batches passed fresh bulk Storefront identity/public availability, private-hold, owned-image byte, and local configuration checks. The second batch additionally passed 308 individual eye-choice compatibility/cart-attribute checks. All 38 actual local cart-handler checks passed, including exact totals, selections, attributes and charges. The 234 focused checks, TypeScript and production build passed. Hosted checks passed for all 38 viewers and carts, plus 12 existing-example/draft/access regression checks. PR #103 merged as `e6b2ecd5a844a379d1a00a927ea461d3c7728676`; production verification is pending.
 - Sixty candidate sources were inspected. Twenty-two source exclusions are private DollVue-preview findings only; no catalog tags, sale availability or product publication were changed.
 - Private proposals are under `wm-family-preparation-20/reviewed-wm-16-record-proposal.json` and `wm-family-next40/reviewed-wm-22-record-proposal.json` in the existing SSD readiness evidence directory. No supplier URLs, notes or credentials were added to public payloads.
 - Shared hairstyle references are being evaluated separately. Do not claim hair support from the eye-only records or count family matches as ready products.
+
+### Shared main-head hairstyles (local; not released)
+
+- Two real Audrey generations passed assistant visual review: hairstyle No.8 alone and hairstyle No.8 with eye No.2. Minor facial/detail differences are within the owner's accepted tolerance. No individual human visual approval is claimed.
+- A separate proposal adds 15 visually reviewed, owned main-head hairstyle references to 39 WM and seven unpublished JK records. Existing eyes, source pins and product fingerprints are preserved; SE is unchanged. This adds choices, not 46 new products.
+- All 46 current family/configuration matches, private holds, 75 image byte bindings and combined-selection/default checks passed. All 39 current public cart handlers passed for hair No.8 plus eye No.2, with exact totals, selections, attributes and charges; a representative JK draft returned public 404. TypeScript and production build passed. Two generation calls total, no retries. The first generation's later checksum assertion detected a concurrent registry edit; generation itself succeeded, and the combined test passed. No customer email or product mutation occurred.
+- Private evidence: `wm-audrey-hair-pilot/private-report.json`, `reviewed-hair-46-record-proposal.json` and `cart-handler-read-1791386854865.json` in the existing SSD readiness directory. Hosted/production verification is required before releasing the extension.
 
 ### Initial nine-record release
 

@@ -106,7 +106,7 @@ it.skipIf(process.env.DOLLVUE_WM_FAMILY_PREPARATION !== 'propose')('proposes onl
   expect(choices).toHaveLength(14);
   const pilot = registry['gid://shopify/Product/10431698337976'];
   expect(pilot.status).toBe('ready');
-  expect(choices).toEqual(pilot.choices);
+  expect(choices).toEqual(pilot.choices.filter(choice => choice.groupId === 'eye-color'));
   expect(hasShopifyStorefrontEnv()).toBe(true);
   const fields: Record<string, string> = {
     catalogIdentityKey:'catalog_identity_key', catalogBodyIdentityKey:'catalog_body_identity_key', headModel:'head_model',

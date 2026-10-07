@@ -3,7 +3,7 @@ import path from 'node:path';
 import { expect, it, vi } from 'vitest';
 import { getProductByHandle } from '@/lib/shopify/storefront';
 import { resolveDollVueEligibility } from '@/lib/dollvue/eligibility';
-import { getDefaultSelections, resolveCustomization } from '@/lib/customization/resolve';
+import { getDefaultSelections, nextMultipleSelection, resolveCustomization } from '@/lib/customization/resolve';
 import { promotionPricingForSelections } from '@/lib/promotions/optionPricing';
 import { productDisplayName, productPublicTitle } from '@/lib/catalog/naming';
 import { env } from '@/lib/utils/env';
@@ -16,12 +16,18 @@ const root = '/Volumes/Extreme Pro/Projects/DollWOW/data/exports/dollvue-readine
 it.skipIf(process.env.DOLLVUE_WM_CART_READ !== '1')('validates all proposed WM cart handlers using current reads only', async () => {
   const proposalPath = process.env.DOLLVUE_WM_CART_PROPOSAL_FILE || path.join(root,'wm-family-preparation-20/reviewed-wm-16-record-proposal.json');
   const proposal = JSON.parse(await fs.readFile(proposalPath,'utf8')) as {
-    records: Record<string,DollVueReadinessRecord>; verification: Array<{id:string;handle:string}>;
+    records: Record<string,DollVueReadinessRecord>; verification: Array<{id:string;handle:string;draft?:boolean}>;
   };
   if (!process.env.DOLLVUE_WM_CART_PROPOSAL_FILE) expect(proposal.verification).toHaveLength(16);
   expect(proposal.verification.length).toBeGreaterThan(0);
   expect(proposal.verification.map(row => row.id).sort()).toEqual(Object.keys(proposal.records).sort());
   expect(new Set(proposal.verification.map(row => row.handle)).size).toBe(proposal.verification.length);
+  const requested = JSON.parse(process.env.DOLLVUE_WM_CART_SELECTIONS || '[{"groupId":"eye-color","optionId":"no-2"}]') as Array<{groupId:string;optionId:string}>;
+  expect(requested.length).toBeGreaterThan(0);
+  expect(requested.length).toBeLessThanOrEqual(2);
+  const active = proposal.verification.filter(row => !row.draft);
+  const drafts = proposal.verification.filter(row => row.draft);
+  const targets = [...active,...drafts.slice(0,1)];
   const output = path.join(path.dirname(proposalPath),`cart-handler-read-${Date.now()}.json`);
   const origin = new URL(env.NEXT_PUBLIC_SITE_URL).origin;
   const startedAt = new Date().toISOString();
@@ -45,18 +51,35 @@ it.skipIf(process.env.DOLLVUE_WM_CART_READ !== '1')('validates all proposed WM c
     return nativeFetch(input,init);
   });
   try {
-    for (const target of proposal.verification) {
-      const result: Record<string,unknown> = {...target,status:'FAIL'};
+    for (const target of targets) {
+      const result: Record<string,unknown> = {id:target.id,handle:target.handle,draft:Boolean(target.draft),status:'FAIL'};
       results.push(result);
       try {
         expect((registry as Record<string,DollVueReadinessRecord>)[target.id]).toEqual(proposal.records[target.id]);
         const product = await getProductByHandle(target.handle,{strict:true,cache:'no-store'});
+        if (target.draft) {
+          expect(product).toBeNull();
+          const response = await POST(new Request(`${origin}/dollvue/cart`,{method:'POST',
+            headers:{Origin:origin,'Content-Type':'application/json'},
+            body:JSON.stringify({productHandle:target.handle,selections:requested})}));
+          result.httpStatus = response.status;
+          result.payload = await response.json();
+          expect(response.status).toBe(404);
+          result.status = 'PASS';
+          continue;
+        }
         expect(product?.id).toBe(target.id);
         const eligibility = resolveDollVueEligibility(product!);
         expect(eligibility.available).toBe(true);
         const now = new Date();
         const initial = promotionPricingForSelections(product!,eligibility.config,{},now).config;
-        const selections = {...getDefaultSelections(initial),'eye-color':'no-2'};
+        const selections = getDefaultSelections(initial);
+        for (const choice of requested) {
+          const group = initial.groups.find(group => group.id === choice.groupId)!;
+          expect(group).toBeDefined();
+          selections[group.id] = group.selectionMode === 'multiple'
+            ? nextMultipleSelection(group.options,selections[group.id],choice.optionId) : choice.optionId;
+        }
         const priced = promotionPricingForSelections(product!,eligibility.config,selections,now).config;
         const variant = product!.variants.find(item => item.availableForSale)!;
         expect(variant).toBeDefined();
@@ -75,7 +98,7 @@ it.skipIf(process.env.DOLLVUE_WM_CART_READ !== '1')('validates all proposed WM c
         } : undefined;
         const response = await POST(new Request(`${origin}/dollvue/cart`,{method:'POST',
           headers:{Origin:origin,'Content-Type':'application/json'},
-          body:JSON.stringify({productHandle:target.handle,selections:[{groupId:'eye-color',optionId:'no-2'}]}),
+          body:JSON.stringify({productHandle:target.handle,selections:requested}),
         }));
         const payload = await response.json();
         Object.assign(result,{httpStatus:response.status,payload,expected:{basePrice,currencyCode,
@@ -102,7 +125,8 @@ it.skipIf(process.env.DOLLVUE_WM_CART_READ !== '1')('validates all proposed WM c
     vi.unstubAllGlobals();
     await fs.writeFile(output,JSON.stringify({startedAt,completedAt:new Date().toISOString(),proposalPath,
       route:'POST /dollvue/cart',execution:'Actual local handler; unmocked current Shopify reads and hold checks',
-      eyeChoice:'no-2',summary:{passed:results.filter(row=>row.status==='PASS').length,
+      requestedSelections:requested,privateDrafts: drafts.length,representativeDraftChecks:Math.min(drafts.length,1),
+      summary:{activeCases:active.length,passed:results.filter(row=>row.status==='PASS').length,
         failed:results.filter(row=>row.status==='FAIL').length,...counts},
       shopifyMutations:0,generationCalls:0,mailCalls:0,results},null,2),{mode:0o600,flag:'wx'});
     console.info(JSON.stringify({output,passed:results.filter(row=>row.status==='PASS').length,
