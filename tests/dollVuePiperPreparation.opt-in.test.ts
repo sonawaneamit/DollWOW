@@ -44,6 +44,105 @@ it('allows unrelated registry additions but rejects existing or assigned-family 
  for(const next of [{},{old:{status:'excluded'}},{old:{status:'ready'},own:{status:'ready'}}])expect(()=>assertRegistryAdditionOnly(before,bytes(next),['own'])).toThrow();
 });
 const nextOutput=path.join(output,'next-il-erovenus');
+it.skipIf(process.env.DOLLVUE_THREE_BRAND_FREEZE!=='1')('freezes native three-brand review and two iris inputs without provider access',async()=>{
+ vi.stubGlobal('fetch',async()=>{throw Error('Offline review freeze forbids network and generation');});
+ try{
+  const relative='avant-rosretty-moonvale',dir=path.join(output,relative),prepFile=path.join(dir,'attempt-4/preparation.json');
+  const prepBytes=await fs.readFile(prepFile),prep=JSON.parse(prepBytes.toString()),noteFile=path.join(dir,'native-review-decisions.json'),noteBytes=await fs.readFile(noteFile),notes=JSON.parse(noteBytes.toString());
+  const registryBytes=await fs.readFile('lib/dollvue/readiness-registry.json'),registry=JSON.parse(registryBytes.toString());
+  const categories=['pass','nudity','adultPresentationAmbiguous','sexualOrCoverageAmbiguous'];
+  expect(categories.flatMap(k=>notes[k]).sort((a:number,b:number)=>a-b)).toEqual(Array.from({length:78},(_,i)=>i+1));
+  expect(prep.rows).toHaveLength(78);expect(prep.freshBeforeAfterStateEqual).toBe(true);
+  for(const r of [...prep.referenceEvidence,...prep.rows.map((r:any)=>r.sources[0])])expect(hash(await fs.readFile(r.file))).toBe(r.sha256);
+  for(const s of [...prep.referenceSheets,...prep.sourceSheets])expect(hash(await fs.readFile(s.file))).toBe(s.sha256);
+  const save=async(name:string,value:unknown)=>{const bytes=Buffer.from(JSON.stringify(value,null,2)+'\n'),file=path.join(dir,name);await fs.writeFile(file,bytes,{flag:'wx',mode:0o600});return {file,sha256:hash(bytes)};};
+  const rows=prep.rows.map((r:any)=>{
+   const category=categories.find(k=>notes[k].includes(r.index))!;
+   const g=r.groups.find((g:any)=>g.attributes.includes('eye-color'));
+   return {...r,sourceDecision:category==='pass'?'PASS_NATIVE_ADULT_NONEXPLICIT_IRIS':'EXCLUDED_SOURCE_ZERO',reasonCategory:category,reason:notes.reasonDefinitions[category],nativeDetail:notes.sourceDetails[r.index]||null,approvedSourcePositions:category==='pass'?[0]:[],reviewedSourcePositions:[0],unreviewedSourcePositions:r.sources.slice(1).map((s:any)=>s.sourcePosition),candidateGroups:category==='pass'?[{groupId:g.groupId,familyHash:g.familyHash,optionIds:g.options.filter((o:any)=>o.classification.status==='candidate'&&!(r.brand==='Avant Doll'&&o.id==='eye-20')).map((o:any)=>o.id)}]:[],ready:false,ownerReviewed:false,parentAllSourcesReviewed:false};
+  });
+  const passing=rows.filter((r:any)=>r.approvedSourcePositions.length);expect(passing).toHaveLength(16);
+  const passOnlySheets=[];
+  for(let n=0;n<passing.length;n+=8){const tiles=[];for(const r of passing.slice(n,n+8))tiles.push(await tile(await fs.readFile(r.sources[0].file),`${r.index} | ${r.id.split('/').at(-1)} | p0`,300,420));passOnlySheets.push(await sheet(tiles,4,`${relative}/pass-only-${n+1}-${Math.min(n+8,passing.length)}.png`,300,420));}
+  const familyReuse=prep.families.map((f:any,i:number)=>{
+   const expected=new Map(f.choices.map((c:any)=>[c.reference,c.sha256]));
+   const exactExistingReadyIds=Object.entries(registry).filter(([,raw])=>{const rec=raw as any;return rec.status==='ready'&&(rec.groups||[]).some((g:any)=>{const refs=Object.values(g.references||{});return refs.length===expected.size&&refs.every((ref:any)=>expected.has(ref)&&rec.imageDigests?.[ref]===expected.get(ref));});}).map(([id])=>id);
+   return {familyNumber:i+1,familyHash:f.referenceFamilyHash,exactExistingReadyIds,referenceSetAndDigestsExact:exactExistingReadyIds.length>0,reuseApplied:false,reason:exactExistingReadyIds.length?'No native-approved Moonvale source; reference identity alone cannot grant readiness.':'No exact complete reference-set and digest match in current ready registry. New-family pilot required for any proposed subset.'};
+  });
+  const pilots=[];
+  for(const spec of notes.pilots){
+   const row=passing.find((r:any)=>r.index===spec.index);expect(row).toBeTruthy();expect(registry[row.id]).toBeUndefined();
+   const family=prep.families[spec.familyNumber-1],choice=family.choices.find((c:any)=>c.optionId===spec.optionId),reference=prep.referenceEvidence.find((r:any)=>r.reference===choice.reference),source=row.sources[0];
+   const group=row.groups.find((g:any)=>g.familyHash===family.referenceFamilyHash);expect(group.exactCensusReferences).toBe(true);expect(group.options.some((o:any)=>o.id===spec.optionId&&o.reference===reference.reference&&o.classification.status==='candidate')).toBe(true);
+   const inputSheet=await sheet([await tile(await fs.readFile(source.file),`${row.index} | ${row.id.split('/').at(-1)} | p0`,500,740),await tile(await fs.readFile(reference.file),`REF ${reference.index} | ${choice.label} | IRIS ONLY`,500,740)],2,`${relative}/pilot-input-${spec.name}.png`,500,740);
+   const input={frozen:true,generationAuthorized:false,ready:false,ownerReviewed:false,parentAllSourcesReviewed:false,productId:row.id,handle:row.handle,index:row.index,sourcePosition:0,fingerprint:row.fingerprint,familyHash:family.referenceFamilyHash,source,references:[{url:reference.reference,file:reference.file,sha256:reference.sha256}],choices:[{groupId:group.groupId,optionId:choice.optionId,reference:reference.reference}],meaning:spec.meaning,constraints:'Iris hue/texture only. Retain original face, eye opening/gaze, makeup, hair, clothing, pose, background, accessories and branding. Use actual normal route prompt after parent authorization, not a custom replacement prompt.',inputSheet,preparation:{file:prepFile,sha256:hash(prepBytes),stateCheckedAt:prep.checkedAt},nativeReview:{file:noteFile,sha256:hash(noteBytes)},requiredBeforeAnyCall:'Parent inspection and explicit exact-input authorization; new reservation, fresh current access/holds/menu/fingerprint/source/reference checks before and after. One call only if authorized; no retry.'};
+   pilots.push({...await save(`pilot-input-${spec.name}.json`,input),name:spec.name,inputSheet,sourceSha256:source.sha256,referenceSha256:reference.sha256});
+  }
+  const report={frozen:true,reviewedAt:new Date().toISOString(),reviewer:'assistant-native-image-review',ownerReviewed:false,parentAllSourcesReviewed:false,preparation:{file:prepFile,sha256:hash(prepBytes),stateCheckedAt:prep.checkedAt},nativeReview:{file:noteFile,sha256:hash(noteBytes)},rows,preservedProductScopeExclusions:prep.preservedExclusions,referenceEvidence:prep.referenceEvidence,referenceSheets:prep.referenceSheets,familyReview:notes.references,familyReuse,passOnlySheets,pilots,summary:{sourceZeroReviewed:78,uniqueReferenceBytesReviewed:prep.referenceEvidence.length,familySheetsReviewed:16,sourcePass:16,sourceExcluded:62,ready:0,brands:['Avant Doll','Rosretty','Moonvale'].map(brand=>({brand,reviewed:rows.filter((r:any)=>r.brand===brand).length,pass:passing.filter((r:any)=>r.brand===brand).length})),reasonCounts:Object.fromEntries(categories.map(k=>[k,notes[k].length])),preservedTorsoExclusions:prep.preservedExclusions.length},galleryReview:notes.galleryReview,currentRegistry:{count:Object.keys(registry).length,sha256:hash(registryBytes)},capturedLiveStateNotRecheckedOffline:true,registryWritten:false,newProductHolds:0,generationCalls:0,networkCalls:0,remoteMutations:0,remaining:'Two genuinely new iris-family input sheets await parent inspection/authorization. No ready proposal before pilot review and current-state runtime finalization. All later gallery sources remain unauthorized.'};
+  const result=await save('native-review-and-candidate-proposal.json',report);
+  expect(await fs.readFile('lib/dollvue/readiness-registry.json')).toEqual(registryBytes);console.info(JSON.stringify({result,summary:report.summary,pilots}));
+ }finally{vi.unstubAllGlobals();}
+},60000);
+it.skipIf(process.env.DOLLVUE_AI_BIND_PARENT_APPROVAL!=='1')('binds parent pilot-only approval and normalizes two captured current states offline',async()=>{
+ vi.stubGlobal('fetch',async()=>{throw Error('No network calls authorized for offline approval binding');});
+ try{
+  const dir=path.join(output,'next-ai-tech-tantaly'),proposalFile=path.join(dir,'ready-proposal-2-757-1791407792946.json'),proposalBytes=await fs.readFile(proposalFile);
+  expect(hash(proposalBytes)).toBe('65fd25a2c8d856108bbdc515004989da9a527fa154baca7dba4812ef2e7ef36f');const proposal=JSON.parse(proposalBytes.toString());
+  const approvalFile=path.join(dir,'parent-output-approval.json'),approvalBytes=await fs.readFile(approvalFile),approval=JSON.parse(approvalBytes.toString());
+  expect(approval).toMatchObject({frozen:true,reviewer:'parent-assistant',ownerReviewed:false,verdict:'PASS_MINOR_VARIATION_ACCEPTED',parentAllSourcesReviewed:false,productId:'gid://shopify/Product/10518035431608',outputSha256:'1c1b2de790856505f0e7beec227b5a66e466b713d37c069f57f359d7cb551453'});
+  expect(hash(await fs.readFile(path.join(dir,approval.outputFile)))).toBe(approval.outputSha256);expect(hash(await fs.readFile(path.join(dir,approval.comparisonFile)))).toBe(approval.comparisonSha256);
+  expect(hash(await fs.readFile(path.join(dir,'pilot-input-ai-iris.json')))).toBe(approval.inputSha256);
+  const verification=[];
+  for(const report of proposal.verificationReports){const bytes=await fs.readFile(report.file);expect(hash(bytes)).toBe(report.sha256);const detail=JSON.parse(bytes.toString());expect(detail.beforeState).toEqual(detail.afterState);
+   const state=detail.afterState;expect(state.status).toBe('ACTIVE');expect(state.publishedAt).toBeTruthy();expect(state.hold).toBeNull();expect(state.resourcePublications.pageInfo.hasNextPage).toBe(false);expect(state.resourcePublications.nodes.some((p:any)=>p.isPublished)).toBe(true);
+   expect(detail.records[state.id]).toEqual(proposal.records[state.id]);expect(proposal.records[state.id].status).toBe('ready');expect(detail.counts).toMatchObject({cartPasses:3,rejectionChecks:5,generationCalls:0,remoteWrites:0});
+   verification.push({id:state.id,handle:state.handle,draft:state.status==='DRAFT',status:state.status,publishedAt:state.publishedAt,privateHold:'clear',stateCheckedAt:detail.checkedAt,stateEvidence:{file:report.file,sha256:report.sha256},sourceReviewBy:'assistant-native-image-review'});
+  }
+  expect(verification).toHaveLength(2);
+  const registryBytes=await fs.readFile('lib/dollvue/readiness-registry.json'),registry=JSON.parse(registryBytes.toString());for(const v of verification)if(registry[v.id])expect(registry[v.id]).toEqual(proposal.records[v.id]);
+  const normalized={checkedAt:new Date().toISOString(),basis:'Previously captured before/after current Admin and strict Storefront state; not a new live read. Parent forbids new calls.',verification,networkCalls:0,generationCalls:0,ownerReviewed:false};
+  const normalizedFile=path.join(dir,'normalized-verification-parent-approved.json');await fs.writeFile(normalizedFile,JSON.stringify(normalized,null,2)+'\n',{flag:'wx',mode:0o600});
+  const file=path.join(dir,'ready-proposal-2-parent-approved.json');
+  proposal.authority='User authorized private two-record finalization; parent subsequently accepted only the Danielle green-iris pilot comparison. Other source/reference review remains native assistant review. Historical native verdict is retained as earlier evidence. No registry writes.';
+  await fs.writeFile(file,JSON.stringify({...proposal,parentOutputReviewed:true,parentOutputSpotcheck:approval.verdict,parentSourceReviewClaimed:false,parentAllSourcesReviewed:false,parentPilotApproval:{file:approvalFile,sha256:hash(approvalBytes),...approval},verification,normalizedVerification:{file:normalizedFile,sha256:hash(await fs.readFile(normalizedFile))},supersedes:{file:proposalFile,sha256:hash(proposalBytes)},approvalBoundAt:new Date().toISOString(),currentLocalRegistry:{count:Object.keys(registry).length,sha256:hash(registryBytes),candidateEntriesAbsentOrExact:true},newNetworkCalls:0,newGenerationCalls:0,registryWritten:false},null,2)+'\n',{flag:'wx',mode:0o600});
+  expect(await fs.readFile('lib/dollvue/readiness-registry.json')).toEqual(registryBytes);console.info(JSON.stringify({file,sha256:hash(await fs.readFile(file)),verification}));
+ }finally{vi.unstubAllGlobals();}
+},60000);
+it.skipIf(process.env.DOLLVUE_FINAL_TEXT_ELIGIBILITY!=='1')('reconciles Avant Rosretty Moonvale eligibility using text only',async()=>{
+ const input=path.join(root,'inventory.json'),inputBytes=await fs.readFile(input),inventory=JSON.parse(inputBytes.toString());
+ const coverageFile=path.join(root,'coverage-reconciliation-499.json'),coverageBytes=await fs.readFile(coverageFile),coverage=JSON.parse(coverageBytes.toString());
+ const selected=inventory.rows.filter((r:any)=>['Avant Doll','Rosretty','Moonvale'].includes(r.brand)),ids=selected.map((r:any)=>r.id);
+ expect(selected.filter((r:any)=>r.brand==='Avant Doll')).toHaveLength(14);expect(ids).toHaveLength(82);
+ const registryBytes=await fs.readFile('lib/dollvue/readiness-registry.json'),registry=JSON.parse(registryBytes.toString()),nativeFetch=globalThis.fetch;
+ const counts={adminReads:0,storefrontReads:0,imageReads:0,generationCalls:0,remoteWrites:0};
+ vi.stubGlobal('fetch',async(input:Parameters<typeof fetch>[0],init?:RequestInit)=>{
+  const u=new URL(input instanceof Request?input.url:String(input));expect(u.hostname).toBe(env.SHOPIFY_STORE_DOMAIN);expect(init?.method).toBe('POST');
+  if(u.pathname.endsWith('/graphql.json')){const body=JSON.parse(String(init?.body));expect(body.query.trim()).toMatch(/^query\b/);expect(body.query).not.toMatch(/\bmutation\b/);expect(body.variables.ids.every((id:string)=>ids.includes(id))).toBe(true);expect(body.variables.ids.length).toBeLessThanOrEqual(50);if(u.pathname.includes('/admin/'))counts.adminReads++;else counts.storefrontReads++;}
+  else expect(u.pathname).toBe('/admin/oauth/access_token');return nativeFetch(input,init);
+ });
+ const read=async()=>{const states:Array<AdminNode|null>=[],nodes:Array<Node|null>=[];for(let n=0;n<ids.length;n+=50){const chunk=ids.slice(n,n+50);
+  const admin=await adminFetch<{nodes:Array<AdminNode|null>}>(adminQuery,{ids:chunk});expect(admin.nodes).toHaveLength(chunk.length);states.push(...admin.nodes);
+  const response=await fetch(`https://${env.SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,{method:'POST',cache:'no-store',signal:AbortSignal.timeout(60000),headers:{'Content-Type':'application/json',...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)},body:JSON.stringify({query:sfQuery,variables:{ids:chunk}})});
+  expect(response.ok).toBe(true);const b=await response.json();expect(b.errors).toBeUndefined();expect(b.data.nodes).toHaveLength(chunk.length);nodes.push(...b.data.nodes);
+ }return {states,nodes};};
+ try{
+  const before=await read(),rows=selected.map((old:any,i:number)=>{
+   const state=before.states[i],node=before.nodes[i];if(state){expect(state.id).toBe(old.id);expect(state.handle).toBe(old.handle);}if(node)expect(node.id).toBe(old.id);
+   const prior=coverage.rows.find((r:any)=>r.id===old.id),holdKnown=!!state&&Object.hasOwn(state,'hold')&&(state.hold===null||typeof state.hold?.value==='string'),holdClear=holdKnown&&!(state!.hold?.value.trim());
+   const product=node?mapShopifyProduct(node):null,config=product?dollVueConfigForProduct(product,getCustomizationConfig(product)):null;
+   const type=product?.productType||state?.productType||'',tags=state?.tags||[];
+   const matchesHistoricalStrictTypeFilter=!!product&&product.extended.stockStatus==='custom'&&/^custom\b.*\bdoll\b/i.test(type)&&scopeFlags(type,tags).length===0;
+   const groups=config?.groups.map(g=>({groupId:g.id,label:g.label,selectionMode:g.selectionMode,visibleWhen:g.visibleWhen,candidateChoices:g.options.filter(o=>classifyAppearance(g,o).status==='candidate').map(o=>({optionId:o.id,label:o.label,attribute:classifyAppearance(g,o),ownedReference:o.swatch?.kind==='image'&&isOwnedOptionAsset(o.swatch.value),reference:o.swatch?.kind==='image'?o.swatch.value:null}))})).filter(g=>g.candidateChoices.length)||[];
+   const policyExcluded=product?isDollVueExcluded(product):null;
+   const runtimeAvailable=product?eligibilityModule.resolveDollVueEligibility(product).available:false;
+   return {id:old.id,handle:old.handle,brand:old.brand,cachedStatus:old.status,currentStatus:state?.status||null,publishedAt:state?.publishedAt||null,strictPublicLookupPresent:!!node,publicationState:state?.resourcePublications,holdKnown,holdClear,hold:state?.hold,currentProductType:type,currentStockStatus:product?.extended.stockStatus,currentCustomAvailable:product?.extended.customAvailable,currentTags:tags,matchesHistoricalStrictTypeFilter,policyExcluded,currentRuntimeAvailable:runtimeAvailable,customerVisible:product?isCustomerVisibleProduct(product):false,currentRegistryRecord:registry[old.id]||null,currentFingerprint:product&&config?dollVueReadinessFingerprint(product,config):null,groups,priorCoverage:prior||null,priorInventoryReasons:old.reasons,conclusion:!node?'not-publicly-available':!holdClear?'private-hold-not-clear':policyExcluded?'runtime-scope-excluded':product?.extended.stockStatus!=='custom'?'not-current-custom-stock':!groups.length?'no-current-appearance-candidates':'text-eligible-for-review-not-ready',sourceReviewPerformed:false,referenceByteReviewPerformed:false,newReadyApproval:false};
+  });
+  const after=await read();expect(after).toEqual(before);const registryVerification=assertRegistryAdditionOnly(registryBytes,await fs.readFile('lib/dollvue/readiness-registry.json'),ids);
+  const byBrand=Object.fromEntries(['Avant Doll','Rosretty','Moonvale'].map(brand=>[brand,rows.filter((r:any)=>r.brand===brand).reduce((a:Record<string,number>,r:any)=>{a[r.conclusion]=(a[r.conclusion]||0)+1;return a;},{})]));
+  const dir=path.join(output,'final-text-eligibility');await fs.mkdir(dir,{recursive:true,mode:0o700});const file=path.join(dir,`report-${registryVerification.beforeCount}-${Date.now()}.json`);
+  await fs.writeFile(file,JSON.stringify({checkedAt:new Date().toISOString(),scope:'Text-only read-only reconciliation; no images, visual approvals, generations, new product sale holds or catalog mutations. Existing family review ownership is not reassigned.',classificationBasis:'Current runtime exclusion policy and custom stock, not the historical census Custom-prefix type filter. Missing reviewed records still block runtime availability. Text eligibility is not full-body visual approval or a claim of no prior review.',supersedesClassificationOnly:'report-757-1791407693724.json retains valid current observations but grouped strict type-filter failures as its conclusion. This report separates that census filter from runtime policy.',ownerReviewed:false,inputs:[{file:input,sha256:hash(inputBytes)},{file:coverageFile,sha256:hash(coverageBytes)}],rows,byBrand,counts,registryVerification,registryWritten:false},null,2)+'\n',{flag:'wx',mode:0o600});console.info(JSON.stringify({file,byBrand,counts}));
+ }finally{vi.unstubAllGlobals();}
+},5*60*1000);
 it.skipIf(process.env.DOLLVUE_AI_TANTALY_FREEZE!=='1')('freezes queued Ai-Tech inputs and Tantaly scope exclusions without generation',async()=>{
  const dir=path.join(output,'next-ai-tech-tantaly'),bytes=await fs.readFile(path.join(dir,'preparation.json')),prep=JSON.parse(bytes.toString());
  const noteBytes=await fs.readFile(path.join(dir,'native-review-notes.json')),notes=JSON.parse(noteBytes.toString());expect(hash(bytes)).toBe(notes.preparationSha256);
@@ -95,16 +194,17 @@ it.skipIf(process.env.DOLLVUE_IL_EROVENUS_ALTERNATIVES!=='1')('inspects gallerie
  }
  await fs.writeFile(path.join(nextOutput,'alternatives.json'),JSON.stringify({rows,generationCalls:0,ownerReviewed:false},null,2)+'\n',{flag:'wx',mode:0o600});
 },10*60*1000);
-it.skipIf(process.env.DOLLVUE_IL_EROVENUS_PREPARE!=='1'&&process.env.DOLLVUE_AI_TANTALY_PREPARE!=='1')('reserves assigned compact families privately without generation',async()=>{
- const queued=process.env.DOLLVUE_AI_TANTALY_PREPARE==='1',brands=queued?['Ai-Tech','Tantaly']:['IL Doll','Erovenus'];
- const subdir=queued?'next-ai-tech-tantaly':'next-il-erovenus',nextOutput=path.join(output,subdir);
+it.skipIf(process.env.DOLLVUE_IL_EROVENUS_PREPARE!=='1'&&process.env.DOLLVUE_AI_TANTALY_PREPARE!=='1'&&process.env.DOLLVUE_AVANT_ROSRETTY_MOONVALE_PREPARE!=='1')('reserves assigned compact families privately without generation',async()=>{
+ const expanded=process.env.DOLLVUE_AVANT_ROSRETTY_MOONVALE_PREPARE==='1',queued=process.env.DOLLVUE_AI_TANTALY_PREPARE==='1',brands=expanded?['Avant Doll','Rosretty','Moonvale']:queued?['Ai-Tech','Tantaly']:['IL Doll','Erovenus'];
+ const subdir=expanded?'avant-rosretty-moonvale/attempt-4':queued?'next-ai-tech-tantaly':'next-il-erovenus',nextOutput=path.join(output,subdir);
  await fs.mkdir(nextOutput,{recursive:true,mode:0o700});
  const save=(name:string,data:unknown)=>fs.writeFile(path.join(nextOutput,name),JSON.stringify(data,null,2)+'\n',{flag:'wx',mode:0o600});
- await save('reservation.json',{brands,ownerReviewed:false,registryWrites:false,generationCalls:0,authority:queued?'User queued Ai-Tech9 and Tantaly8 only for true custom appearance candidates. Reconcile fixed torso/out-of-scope accurately; no catalog publication.':'User assigned after Piper7 finalization; one representative per distinct family only after native source/reference review and fresh access/holds/bytes.',reservedAt:new Date().toISOString()});
+ await save('reservation.json',{brands,ownerReviewed:false,registryWrites:false,generationCalls:0,authority:expanded?'User assigned Avant14 Rosretty54 Moonvale10 source/reference review. Reuse only exact validated families; genuinely new family requires parent representative-input inspection before any provider call.':queued?'User queued Ai-Tech9 and Tantaly8 only for true custom appearance candidates. Reconcile fixed torso/out-of-scope accurately; no catalog publication.':'User assigned after Piper7 finalization; one representative per distinct family only after native source/reference review and fresh access/holds/bytes.',reservedAt:new Date().toISOString()});
  const input=path.join(root,'remaining-family-census/other-family-reference-inventory.json'),inputBytes=await fs.readFile(input);
- const families=JSON.parse(inputBytes.toString()).groups.filter((g:any)=>g.brands.some((b:string)=>brands.includes(b)));
- const all=[...new Map<string,any>(families.flatMap((f:any)=>f.products).map((p:any)=>[p.id,p] as [string,any])).values()];
- const selected=all.filter(p=>brands.includes(p.brand)&&p.inV2Unmatched&&!p.excludedReasons.length&&!p.inventoryReasons.length);
+ const families=JSON.parse(inputBytes.toString()).groups.filter((g:any)=>g.brands.some((b:string)=>brands.includes(b))).map((g:any)=>({...g,choices:g.choices.map((r:any)=>({...r,sha256:r.sha256||r.auditSha256}))}));
+ const all=[...new Map<string,any>(families.flatMap((f:any)=>f.products).filter((p:any)=>brands.includes(p.brand)).map((p:any)=>[p.id,p] as [string,any])).values()];
+ const reconciled=expanded?JSON.parse(await fs.readFile(path.join(output,'final-text-eligibility/report-757-1791407876216.json'),'utf8')).rows.filter((r:any)=>r.conclusion==='text-eligible-for-review-not-ready').map((r:any)=>r.id):[];
+ const selected=all.filter(p=>expanded?reconciled.includes(p.id):p.inV2Unmatched&&!p.excludedReasons.length&&!p.inventoryReasons.length);if(expanded)expect(selected).toHaveLength(78);
  const ids=selected.map(p=>p.id),registryBytes=await fs.readFile('lib/dollvue/readiness-registry.json');
  const registry=JSON.parse(registryBytes.toString()),counts={adminReads:0,storefrontReads:0,imageReads:0,generationCalls:0,remoteMutations:0};
  const nativeFetch=globalThis.fetch;
@@ -116,12 +216,14 @@ it.skipIf(process.env.DOLLVUE_IL_EROVENUS_PREPARE!=='1'&&process.env.DOLLVUE_AI_
   return nativeFetch(input,init);
  });
  try{
-  const read=async()=>{const states=await adminFetch<{nodes:Array<AdminNode|null>;shop:{currencyCode:string}}>(adminQuery,{ids});
-   const r=await fetch(`https://${env.SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,{method:'POST',cache:'no-store',signal:AbortSignal.timeout(60000),headers:{'Content-Type':'application/json',...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)},body:JSON.stringify({query:sfQuery,variables:{ids}})});
-   expect(r.ok).toBe(true);const b=await r.json();expect(b.errors).toBeUndefined();expect(b.data.nodes).toHaveLength(ids.length);expect(states.nodes).toHaveLength(ids.length);return {states,nodes:b.data.nodes as Array<Node|null>};};
+  const read=async()=>{const states:{nodes:Array<AdminNode|null>;shop:{currencyCode:string}}={nodes:[],shop:{currencyCode:''}},nodes:Array<Node|null>=[];
+   for(let n=0;n<ids.length;n+=40){const chunk=ids.slice(n,n+40),part=await adminFetch<{nodes:Array<AdminNode|null>;shop:{currencyCode:string}}>(adminQuery,{ids:chunk});expect(part.nodes).toHaveLength(chunk.length);states.nodes.push(...part.nodes);states.shop=part.shop;
+    const r=await fetch(`https://${env.SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,{method:'POST',cache:'no-store',signal:AbortSignal.timeout(60000),headers:{'Content-Type':'application/json',...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)},body:JSON.stringify({query:sfQuery,variables:{ids:chunk}})});
+    expect(r.ok).toBe(true);const b=await r.json();expect(b.errors).toBeUndefined();expect(b.data.nodes).toHaveLength(chunk.length);nodes.push(...b.data.nodes);
+   }return {states,nodes};};
   const initial=await read(),refs=[...new Map<string,Ref>(families.flatMap((f:any)=>f.choices).map((r:Ref)=>[r.reference,r] as [string,Ref])).values()],referenceEvidence=[];
   for(const [i,ref]of refs.entries()){
-   expect(hash(await fs.readFile(path.join(process.cwd(),'public',ref.reference)))).toBe(ref.sha256);
+   if(ref.reference.startsWith('/'))expect(hash(await fs.readFile(path.join(process.cwd(),'public',decodeURIComponent(new URL(ref.reference,'https://dollwow.com').pathname))))).toBe(ref.sha256);
    const image=await boundedOwnedImage(new URL(ref.reference,'https://dollwow.com').href);expect(image.sha256).toBe(ref.sha256);
    const file=path.join(nextOutput,`reference-${i+1}.webp`);await fs.writeFile(file,image.bytes,{flag:'wx',mode:0o600});referenceEvidence.push({index:i+1,...ref,file,ownerReviewed:false,visualDecision:'NOT_REVIEWED'});
   }
@@ -320,11 +422,34 @@ async function parentApprovedInputs(){
 }
 
 function unusedProviderCall(calls:number){if(calls!==0)throw Error('Pilot authorization consumed; retry and fallback forbidden');}
-it.skipIf(process.env.DOLLVUE_IL_IRIS_RUNTIME!=='1')('checks nine IL iris candidate choices but persists no ready record',async()=>{
- const prep=JSON.parse(await fs.readFile(path.join(nextOutput,'preparation.json'),'utf8')),row=prep.rows.find((r:any)=>r.index===37);
- const pilotBytes=await fs.readFile(path.join(nextOutput,'pilot-input-il-iris.json'));expect(hash(pilotBytes)).toBe('0e86115158fcb64a945d2e40b753020ad369d6a229dcbb590b3d57946480610d');
- const source=row.sources[0],family=prep.families.find((f:any)=>f.referenceFamilyHash==='56628f5ba8d97c8ad7d0d5714982405c29898732f7efc007727a797786c812e7');
- const choices:DollVueReadinessRecord['choices']=family.choices.map((r:Ref)=>({groupId:'eye-color',optionId:r.optionId,reference:r.reference}));expect(choices).toHaveLength(9);
+it.skipIf(process.env.DOLLVUE_IL_IRIS_RUNTIME!=='1'&&process.env.DOLLVUE_AI_IRIS_RUNTIME!=='1'&&process.env.DOLLVUE_IL_FINALIZE!=='1'&&process.env.DOLLVUE_AI_FINALIZE!=='1')('checks assigned iris choices with separately gated finalization',async()=>{
+ const ai=process.env.DOLLVUE_AI_IRIS_RUNTIME==='1'||process.env.DOLLVUE_AI_FINALIZE==='1',directory=ai?path.join(output,'next-ai-tech-tantaly'):nextOutput;
+ const finalize=process.env.DOLLVUE_IL_FINALIZE==='1'||process.env.DOLLVUE_AI_FINALIZE==='1';expect(ai&&process.env.DOLLVUE_IL_FINALIZE==='1').toBe(false);
+ let parentVerdict:any=null,parentVerdictSha256:string|undefined;
+ let nativeFidelityReview:any=null,nativeFidelitySha256:string|undefined;
+ const batchRegistryBefore=await fs.readFile('lib/dollvue/readiness-registry.json'),finalizedReports:any[]=[];
+ if(finalize&&ai){
+  const bytes=await fs.readFile(path.join(directory,'pilot-ai-iris/native-output-review.json'));nativeFidelitySha256=hash(bytes);expect(nativeFidelitySha256).toBe('33ab2955e72d2d3bb2f97e515bc10247c368b7fe6d07916f71cb385d527c52c1');nativeFidelityReview=JSON.parse(bytes.toString());
+  expect(nativeFidelityReview).toMatchObject({frozen:true,reviewer:'assistant-native-image-review',ownerReviewed:false,parentOutputReviewed:false,verdict:'PASS_WITH_MINOR_VARIATION',providerCalls:1,routeCalls:1,postflightPassed:true});
+  expect(hash(await fs.readFile(path.join(directory,'parent-pilot-authorization.json')))).toBe(nativeFidelityReview.authorizationSha256);
+  expect(hash(await fs.readFile(path.join(directory,'pilot-input-ai-iris.json')))).toBe(nativeFidelityReview.inputSha256);expect(hash(await fs.readFile(path.join(directory,'pilot-ai-iris/output.webp')))).toBe(nativeFidelityReview.outputSha256);
+  const result=JSON.parse(await fs.readFile(path.join(directory,'pilot-ai-iris/result.json'),'utf8'));expect(result).toMatchObject({providerCalls:1,routeCalls:1,routeStatus:200,postflightPassed:true,inputSha256:nativeFidelityReview.inputSha256,outputSha256:nativeFidelityReview.outputSha256,providerRequestSha256:nativeFidelityReview.providerRequestSha256});
+ }
+ if(finalize&&!ai){
+  const bytes=await fs.readFile(path.join(directory,'parent-pilot-verdict.json'));parentVerdictSha256=hash(bytes);expect(parentVerdictSha256).toBe('4198ac56aebbae91d536ac858d4dd89266d83ee8c77e49fc41d1bef3eee59751');parentVerdict=JSON.parse(bytes.toString());
+  expect(parentVerdict).toMatchObject({frozen:true,reviewer:'parent-assistant',ownerReviewed:false,verdict:'PASS_MINOR_VARIATION_ACCEPTED',productId:'gid://shopify/Product/10518036086968',sourceIndex:37,sourcePosition:0,parentAllSourcesReviewed:false,finalizeSingleILSubsetAuthorized:true,registryMutationAuthorized:false});
+  expect(hash(await fs.readFile(path.join(directory,parentVerdict.inputFile)))).toBe(parentVerdict.inputSha256);expect(hash(await fs.readFile(path.join(directory,parentVerdict.outputFile)))).toBe(parentVerdict.outputSha256);
+  const result=JSON.parse(await fs.readFile(path.join(directory,'pilot-il-iris/result.json'),'utf8'));expect(result).toMatchObject({providerCalls:1,routeCalls:1,routeStatus:200,postflightPassed:true,inputSha256:parentVerdict.inputSha256,outputSha256:parentVerdict.outputSha256,providerRequestSha256:parentVerdict.providerRequestSha256});
+ }
+ const prepBytes=await fs.readFile(path.join(directory,'preparation.json')),prep=JSON.parse(prepBytes.toString());
+ const pilotBytes=await fs.readFile(path.join(directory,ai?'pilot-input-ai-iris.json':'pilot-input-il-iris.json'));expect(hash(pilotBytes)).toBe(ai?'e5ca4437e0272ef138a45a92e38f5888cae3563266689f05b4f609619a604bc6':'0e86115158fcb64a945d2e40b753020ad369d6a229dcbb590b3d57946480610d');
+ const pilot=JSON.parse(pilotBytes.toString()),reviewBytes=await fs.readFile(path.join(directory,'native-review-notes.json')),review=JSON.parse(reviewBytes.toString());
+ expect(hash(prepBytes)).toBe(pilot.preparationSha256);expect(hash(reviewBytes)).toBe(pilot.nativeReviewNotesSha256);expect(review.ownerReviewed).toBe(false);
+ const selected=prep.rows.filter((r:any)=>(ai?[5,6]:[37]).includes(r.index));expect(selected).toHaveLength(ai?2:1);
+ for(const row of selected){
+ const sourceReview=(ai?review.acceptedForPrivateInputReview:review.acceptedForPilot).find((r:any)=>r.index===row.index);expect(sourceReview).toMatchObject({sourcePosition:0,visiblyAdult:true,nonExplicit:true,irisVisible:true});
+ const source=row.sources[0],family=prep.families.find((f:any)=>f.referenceFamilyHash===pilot.familyHash);
+ const choices:DollVueReadinessRecord['choices']=family.choices.map((r:Ref)=>({groupId:'eye-color',optionId:r.optionId,reference:r.reference}));expect(choices).toHaveLength(ai?3:9);
  const pins:Record<string,string>={[source.url]:source.sha256,...Object.fromEntries(family.choices.map((r:Ref)=>[r.reference,r.sha256]))};
  const registryBefore=await fs.readFile('lib/dollvue/readiness-registry.json');expect(JSON.parse(registryBefore.toString())[row.id]).toBeUndefined();
  const nativeFetch=globalThis.fetch,counts={adminReads:0,storefrontReads:0,imageReads:0,cartPasses:0,rejectionChecks:0,generationCalls:0,remoteWrites:0};
@@ -337,7 +462,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_RUNTIME!=='1')('checks nine IL iris candid
  });
  const current=async()=>{
   const product=await storefrontModule.getProductByHandle(row.handle,{strict:true,cache:'no-store'}),state=await adminFetch<{nodes:Array<State|null>}>(`query ILRuntimeState($ids:[ID!]!){nodes(ids:$ids){... on Product{${stateFields}}}}`,{ids:[row.id]});
-  assertActiveState(state.nodes[0],row,product as unknown as Node);expect(product?.extended.brand).toBe('IL Doll');expect(product?.extended.stockStatus).toBe('custom');expect(isDollVueExcluded(product!)).toBe(false);expect(isCustomerVisibleProduct(product!)).toBe(true);expect(scopeFlags(product!.productType,[...product!.tags,...state.nodes[0]!.tags])).toEqual([]);
+  assertActiveState(state.nodes[0],row,product as unknown as Node);expect(product?.extended.brand).toBe(ai?'Ai-Tech':'IL Doll');expect(product?.extended.stockStatus).toBe('custom');expect(isDollVueExcluded(product!)).toBe(false);expect(isCustomerVisibleProduct(product!)).toBe(true);expect(scopeFlags(product!.productType,[...product!.tags,...state.nodes[0]!.tags])).toEqual([]);
   const config=dollVueConfigForProduct(product!,getCustomizationConfig(product!));expect(dollVueReadinessFingerprint(product!,config)).toBe(row.fingerprint);expect(productImageSources(product!)[0].url).toBe(source.url);
   const group=config.groups.find(g=>g.id==='eye-color')!;expect(group.selectionMode).toBe('single');expect(group.visibleWhen?.length||0).toBe(0);expect(group.options.filter(o=>classifyAppearance(group,o).status==='candidate').map(o=>({groupId:group.id,optionId:o.id,reference:o.swatch?.value}))).toEqual(choices);
   for(const [url,sha256]of Object.entries(pins)){const file=url===source.url?source.file:prep.referenceEvidence.find((r:any)=>r.reference===url).file;expect(hash(await fs.readFile(file))).toBe(sha256);expect((await boundedOwnedImage(new URL(url,'https://dollwow.com').href)).sha256).toBe(sha256);}
@@ -347,7 +472,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_RUNTIME!=='1')('checks nine IL iris candid
   const before=await current(),{product,config}=before;
   const prospective:DollVueReadinessRecord={productId:row.id,policy:DOLLVUE_APPEARANCE_POLICY,status:'ready',fingerprint:row.fingerprint,sourcePositions:[0],imageDigests:pins,choices};
   const evaluation=evaluateDollVueReadiness(product,config,prospective,{published:true,contentExcluded:false});expect(evaluation.ready).toBe(true);const menu=reviewedDollVueConfig(config,evaluation,'public');
-  const record={...prospective,status:'needs-review' as const};expect(evaluateDollVueReadiness(product,config,record,{published:true,contentExcluded:false}).ready).toBe(false);
+  const record:DollVueReadinessRecord={...prospective,status:finalize?'ready':'needs-review'};expect(evaluateDollVueReadiness(product,config,record,{published:true,contentExcluded:false}).ready).toBe(finalize);
   const lookup=vi.spyOn(storefrontModule,'getProductByHandle').mockImplementation(async(handle,opts)=>{expect(handle).toBe(row.handle);expect(opts).toMatchObject({strict:true,cache:'no-store'});return product;});
   const eligible=vi.spyOn(eligibilityModule,'resolveCurrentDollVueEligibility').mockResolvedValue({available:true,config:menu,sourcePositions:[0],revision:row.fingerprint,imageDigests:pins});
   const origin=new URL(env.NEXT_PUBLIC_SITE_URL).origin,variant=product.variants.find(v=>v.availableForSale)!;expect(variant).toBeDefined();const checks=[];
@@ -365,19 +490,38 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_RUNTIME!=='1')('checks nine IL iris candid
    eligible.mockResolvedValueOnce({available:false,config:menu,sourcePositions:[],revision:row.fingerprint,imageDigests:pins});expect((await cartPOST(request([choices[0]]))).status).toBe(404);counts.rejectionChecks++;
   }finally{lookup.mockRestore();eligible.mockRestore();}
   const after=await current();expect(after).toEqual(before);const registryVerification=assertRegistryAdditionOnly(registryBefore,await fs.readFile('lib/dollvue/readiness-registry.json'),[row.id]);
-  const reportFile=path.join(nextOutput,`runtime-candidate-checks-${registryVerification.beforeCount}-${Date.now()}.json`);
-  await fs.writeFile(reportFile,JSON.stringify({checkedAt:new Date().toISOString(),status:'PRIVATE_NEEDS_REVIEW_NOT_INTEGRATED',ownerReviewed:false,parentOutputSpotcheck:'pending',records:{[row.id]:record},beforeState:before.state,afterState:after.state,imageDigests:pins,counts,checks,registrySha256:hash(registryBefore),registryCount:registryVerification.beforeCount,registryVerification,registryWritten:false,actualGenerationCalls:0,remoteWrites:0,testScope:'Actual local cart handler with test-only prospective eligibility and fresh strict Storefront lookup. No hosted readiness, cart creation or ready-record persistence.'},null,2)+'\n',{flag:'wx',mode:0o600});
+  if(finalize&&!ai){expect(hash(await fs.readFile(path.join(directory,'parent-pilot-verdict.json')))).toBe(parentVerdictSha256);expect(hash(await fs.readFile(path.join(directory,parentVerdict.outputFile)))).toBe(parentVerdict.outputSha256);}
+  if(finalize&&ai){expect(hash(await fs.readFile(path.join(directory,'pilot-ai-iris/native-output-review.json')))).toBe(nativeFidelitySha256);expect(hash(await fs.readFile(path.join(directory,'pilot-ai-iris/output.webp')))).toBe(nativeFidelityReview.outputSha256);}
+  expect(hash(await fs.readFile(path.join(directory,'native-review-notes.json')))).toBe(hash(reviewBytes));
+  const reportFile=path.join(directory,`${finalize?'ready-proposal-1':'runtime-candidate-checks'}-${registryVerification.beforeCount}-${row.index}-${Date.now()}.json`);
+  await fs.writeFile(reportFile,JSON.stringify({checkedAt:new Date().toISOString(),status:finalize?'EXACT_ONE_READY_PRIVATE_PROPOSAL_NOT_INTEGRATED':'PRIVATE_NEEDS_REVIEW_NOT_INTEGRATED',ownerReviewed:false,sourceReviewer:'assistant-native-image-review',sourceReview,nativeReviewNotesSha256:hash(reviewBytes),pilotInputSha256:hash(pilotBytes),parentSourceReviewClaimed:false,parentOutputSpotcheck:finalize&&!ai?'PASS_MINOR_VARIATION_ACCEPTED':ai&&finalize?'pending':'NO_NEW_PARENT_OUTPUT_VERDICT',parentPilotVerdict:parentVerdict,parentPilotVerdictSha256:parentVerdictSha256,nativeFidelityReview,nativeFidelitySha256,records:{[row.id]:record},beforeState:before.state,afterState:after.state,imageDigests:pins,counts,checks,registrySha256:hash(registryBefore),registryCount:registryVerification.beforeCount,registryVerification,registryWritten:false,actualGenerationCalls:0,remoteWrites:0,testScope:finalize?'Private ready proposal under the explicitly bound finalization authority and fidelity review. Source/reference review is native assistant review. Actual local cart checks with test-only eligibility; no hosted activation, cart creation or registry mutation.':'Actual local cart handler with test-only prospective eligibility and fresh strict Storefront lookup. No hosted readiness, cart creation or ready-record persistence.'},null,2)+'\n',{flag:'wx',mode:0o600});
+  finalizedReports.push({file:reportFile,sha256:hash(await fs.readFile(reportFile)),records:{[row.id]:record},counts});
   console.info(JSON.stringify({reportFile,counts,registryVerification}));
  }finally{vi.restoreAllMocks();vi.unstubAllGlobals();}
+ }
+ if(ai&&finalize){
+  const registryVerification=assertRegistryAdditionOnly(batchRegistryBefore,await fs.readFile('lib/dollvue/readiness-registry.json'),selected.map((r:any)=>r.id));
+  const pilot=JSON.parse(pilotBytes.toString()),result=JSON.parse(await fs.readFile(path.join(directory,'pilot-ai-iris/result.json'),'utf8'));
+  const comparison=await sheet([await tile(await fs.readFile(pilot.source.file),'6 | 10518035431608 | p0 SOURCE',450,650),await tile(await fs.readFile(pilot.references[0].file),'GREEN IRIS REFERENCE',450,650),await tile(await fs.readFile(result.output),'ONE-CALL OUTPUT | NATIVE PASS',450,650)],3,'next-ai-tech-tantaly/pilot-ai-iris/comparison.png',450,650);
+  const records=Object.assign({},...finalizedReports.map(r=>r.records));expect(Object.keys(records)).toHaveLength(2);
+  const file=path.join(directory,`ready-proposal-2-${registryVerification.beforeCount}-${Date.now()}.json`);
+  await fs.writeFile(file,JSON.stringify({checkedAt:new Date().toISOString(),status:'EXACT_TWO_READY_PRIVATE_PROPOSAL_NOT_INTEGRATED',records,ownerReviewed:false,sourceReviewer:'assistant-native-image-review',parentSourceReviewClaimed:false,parentOutputReviewed:false,parentOutputSpotcheck:'pending',nativeFidelityReview,nativeFidelitySha256,pilotInputSha256:hash(pilotBytes),comparison,verificationReports:finalizedReports,registryVerification,registryWritten:false,generationCallsDuringFinalization:0,totalHistoricalPilotCalls:1,summary:{readyRecords:2,irisChoicesPerRecord:3,uniqueImageBindings:5,cartPasses:6,rejectionChecks:10},authority:'User authorized finishing two if native output passes. Parent reviewed representative input only; output comparison supplied for spotcheck. No registry writes.'},null,2)+'\n',{flag:'wx',mode:0o600});console.info(JSON.stringify({file,comparison}));
+ }
 },5*60*1000);
-it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed IL iris pilot with no retry',async()=>{
- const inputFile=path.join(nextOutput,'pilot-input-il-iris.json'),inputBytes=await fs.readFile(inputFile),inputSha256=hash(inputBytes);
- expect(inputSha256).toBe('0e86115158fcb64a945d2e40b753020ad369d6a229dcbb590b3d57946480610d');
- const pilot=JSON.parse(inputBytes.toString()),notes=await fs.readFile(path.join(nextOutput,'native-review-notes.json'));
- expect(hash(notes)).toBe(pilot.nativeReviewNotesSha256);expect(pilot.sourceReview).toMatchObject({index:37,sourcePosition:0,visiblyAdult:true,nonExplicit:true,irisVisible:true});
- expect(pilot.authority).toMatchObject({maxRouteCalls:1,maxProviderCalls:1,noRetries:true,noFallbacks:true});expect(pilot.choices).toEqual([{groupId:'eye-color',optionId:'no-2',reference:'/option-assets/155844f00641124801002fc81b6d40380668f1fd9f34b837d61bafa3b8123ef9.webp'}]);
+it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1'&&process.env.DOLLVUE_AI_IRIS_PILOT!=='1')('executes one authorized native-reviewed iris pilot with no retry',async()=>{
+ const ai=process.env.DOLLVUE_AI_IRIS_PILOT==='1',directory=ai?path.join(output,'next-ai-tech-tantaly'):nextOutput;
+ const inputFile=path.join(directory,ai?'pilot-input-ai-iris.json':'pilot-input-il-iris.json'),inputBytes=await fs.readFile(inputFile),inputSha256=hash(inputBytes);
+ expect(inputSha256).toBe(ai?'e5ca4437e0272ef138a45a92e38f5888cae3563266689f05b4f609619a604bc6':'0e86115158fcb64a945d2e40b753020ad369d6a229dcbb590b3d57946480610d');
+ const pilot=JSON.parse(inputBytes.toString()),notes=await fs.readFile(path.join(directory,'native-review-notes.json'));
+ expect(hash(notes)).toBe(pilot.nativeReviewNotesSha256);
+ let authorizationSha256:string|undefined;
+ if(ai){const bytes=await fs.readFile(path.join(directory,'parent-pilot-authorization.json'));authorizationSha256=hash(bytes);expect(authorizationSha256).toBe('5a600a18c647db93ef3f7cfa65df2b771be7962b9fe866f347735659e0c5bada');
+  const auth=JSON.parse(bytes.toString());expect(auth).toMatchObject({frozen:true,ownerReviewed:false,inputSha256,maxRouteCalls:1,maxProviderCalls:1,noRetries:true,noFallbacks:true,productId:pilot.productId,sourceIndex:6,sourcePosition:0});
+  expect(hash(await fs.readFile(pilot.inputSheet.file))).toBe(auth.inputSheetSha256);expect(JSON.parse(notes.toString()).acceptedForPrivateInputReview.find((r:any)=>r.index===6)).toMatchObject({visiblyAdult:true,nonExplicit:true,irisVisible:true,sourcePosition:0});
+  expect(pilot.choices).toEqual([{groupId:'eye-color',optionId:'green',reference:'/option-assets/cd59d8c43f47f6bd89505085b053b6319451ef0e1a440b2e8de2bc942a65e84e.webp'}]);
+ }else{expect(pilot.sourceReview).toMatchObject({index:37,sourcePosition:0,visiblyAdult:true,nonExplicit:true,irisVisible:true});expect(pilot.authority).toMatchObject({maxRouteCalls:1,maxProviderCalls:1,noRetries:true,noFallbacks:true});expect(pilot.choices).toEqual([{groupId:'eye-color',optionId:'no-2',reference:'/option-assets/155844f00641124801002fc81b6d40380668f1fd9f34b837d61bafa3b8123ef9.webp'}]);}
  const registryBefore=await fs.readFile('lib/dollvue/readiness-registry.json');expect(JSON.parse(registryBefore.toString())[pilot.productId]).toBeUndefined();
- const dir=path.join(nextOutput,'pilot-il-iris');await fs.mkdir(dir,{recursive:true,mode:0o700});
+ const dir=path.join(directory,ai?'pilot-ai-iris':'pilot-il-iris');await fs.mkdir(dir,{recursive:true,mode:0o700});
  const save=(name:string,data:unknown)=>fs.writeFile(path.join(dir,name),JSON.stringify(data,null,2)+'\n',{flag:'wx',mode:0o600});
  for(const name of ['route-reservation.json','provider-reservation.json'])expect(await fs.stat(path.join(dir,name)).then(()=>true,()=>false),'Existing reservation consumes authorization').toBe(false);
  const refs=pilot.references as Array<{url:string;file:string;sha256:string}>,origin=new URL(env.NEXT_PUBLIC_SITE_URL).origin;
@@ -385,7 +529,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed
  const pins:Record<string,string>={[pilot.source.url]:pilot.source.sha256,...Object.fromEntries(refs.map(r=>[r.url,r.sha256]))};
  let calls=0,routeCalls=0,expectedImages:string[]=[],normalPrompt='',caught:unknown;
  let eligible:ReturnType<typeof vi.spyOn>|undefined;
- const beforeMail=pilotFixture.mailCalls,beforeAccount=pilotFixture.accountWrites,result:Record<string,unknown>={inputSha256,productId:pilot.productId,sourceFile:pilot.source.file,sourceSha256:pilot.source.sha256,referenceSha256:refs.map(r=>r.sha256),ownerReviewed:false,parentSpotcheck:'pending',ready:false,registryWritten:false,remoteCatalogWrites:0,customerMailSent:false};
+ const beforeMail=pilotFixture.mailCalls,beforeAccount=pilotFixture.accountWrites,result:Record<string,unknown>={inputSha256,authorizationSha256,productId:pilot.productId,sourceFile:pilot.source.file,sourceSha256:pilot.source.sha256,referenceSha256:refs.map(r=>r.sha256),ownerReviewed:false,parentSpotcheck:'pending',ready:false,registryWritten:false,remoteCatalogWrites:0,customerMailSent:false};
  const nativeFetch=globalThis.fetch;
  vi.stubGlobal('fetch',async(input:Parameters<typeof fetch>[0],init?:RequestInit)=>{
   const u=new URL(input instanceof Request?input.url:String(input)),method=init?.method||(input instanceof Request?input.method:'GET');
@@ -395,7 +539,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed
    expect(body.prompt).toContain('Transfer only the visible iris color only');expect(body.prompt).toContain('Do not copy the reference image');expect(body.prompt).toContain('Keep every unselected attribute unchanged');
    const requestSha256=hash(bytes),imageSha256=body.images.map((s:string)=>hash(Buffer.from(s.split(',')[1],'base64')));
    expect(imageSha256[0]).toBe(pilot.source.sha256);
-   await save('provider-reservation.json',{reservedAt:new Date().toISOString(),inputSha256,requestSha256,maxProviderCalls:1,noRetries:true,noFallbacks:true,imageSha256,originalImageDigests:pins});
+   await save('provider-reservation.json',{reservedAt:new Date().toISOString(),inputSha256,authorizationSha256,requestSha256,maxProviderCalls:1,noRetries:true,noFallbacks:true,imageSha256,originalImageDigests:pins});
    await fs.writeFile(path.join(dir,'provider-request.json'),bytes,{flag:'wx',mode:0o600});
    await save('provider-request-summary.json',{requestSha256,model:body.modelId,prompt:body.prompt,promptSha256:hash(Buffer.from(body.prompt)),imageSha256});
    calls++;result.providerRequestSha256=requestSha256;const response=await nativeFetch(input,init);result.providerStatus=response.status;await save('provider-response-status.json',{status:response.status});return response;
@@ -408,7 +552,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed
  async function current(stage:string){
   const product=await storefrontModule.getProductByHandle(pilot.handle,{strict:true,cache:'no-store'});expect(product?.id).toBe(pilot.productId);
   const state=await adminFetch<{nodes:Array<State|null>}>(`query ILPilotState($ids:[ID!]!){nodes(ids:$ids){... on Product{${stateFields}}}}`,{ids:[pilot.productId]});
-  assertActiveState(state.nodes[0],{id:pilot.productId,handle:pilot.handle},product as unknown as Node);expect(isCustomerVisibleProduct(product!)).toBe(true);expect(isDollVueExcluded(product!)).toBe(false);expect(product!.extended.brand).toBe('IL Doll');expect(product!.extended.stockStatus).toBe('custom');expect(scopeFlags(product!.productType,[...product!.tags,...state.nodes[0]!.tags])).toEqual([]);
+  assertActiveState(state.nodes[0],{id:pilot.productId,handle:pilot.handle},product as unknown as Node);expect(isCustomerVisibleProduct(product!)).toBe(true);expect(isDollVueExcluded(product!)).toBe(false);expect(product!.extended.brand).toBe(ai?'Ai-Tech':'IL Doll');expect(product!.extended.stockStatus).toBe('custom');expect(scopeFlags(product!.productType,[...product!.tags,...state.nodes[0]!.tags])).toEqual([]);
   const config=dollVueConfigForProduct(product!,getCustomizationConfig(product!));expect(dollVueReadinessFingerprint(product!,config)).toBe(pilot.fingerprint);expect(productImageSources(product!)[0].url).toBe(pilot.source.url);
   const record:DollVueReadinessRecord={productId:pilot.productId,policy:DOLLVUE_APPEARANCE_POLICY,status:'ready',fingerprint:pilot.fingerprint,sourcePositions:[0],imageDigests:pins,choices:pilot.choices};
   const readiness=evaluateDollVueReadiness(product!,config,record,{published:true,contentExcluded:false});expect(readiness.ready).toBe(true);const menu=reviewedDollVueConfig(config,readiness,'public');expect(areDollVueSelectionsValid(menu,pilot.choices)).toBe(true);
@@ -423,7 +567,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed
   const before=await current('before');expectedImages=before.images;normalPrompt=before.prompt;
   eligible=vi.spyOn(eligibilityModule,'resolveCurrentDollVueEligibility').mockImplementation(async product=>{expect(product.id).toBe(pilot.productId);expect(dollVueReadinessFingerprint(product,dollVueConfigForProduct(product,getCustomizationConfig(product)))).toBe(pilot.fingerprint);return {available:true,config:before.menu,sourcePositions:[0],revision:pilot.fingerprint,imageDigests:pins};});
   const body=JSON.stringify({productHandle:pilot.handle,sourcePosition:0,selections:pilot.choices.map(({groupId,optionId}:{groupId:string;optionId:string})=>({groupId,optionId}))});
-  await save('route-reservation.json',{reservedAt:new Date().toISOString(),inputSha256,routeRequestSha256:hash(Buffer.from(body)),normalPromptSha256:hash(Buffer.from(normalPrompt)),maxRouteCalls:1});
+  await save('route-reservation.json',{reservedAt:new Date().toISOString(),inputSha256,authorizationSha256,routeRequestSha256:hash(Buffer.from(body)),normalPromptSha256:hash(Buffer.from(normalPrompt)),maxRouteCalls:1});
   await fs.writeFile(path.join(dir,'route-request.json'),body,{flag:'wx',mode:0o600});routeCalls++;
   const response=await generatePOST(new Request(`${origin}/dollvue/generate`,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','x-vercel-ip-country':'US'},body}));
   const payload=await response.json();result.routeStatus=response.status;result.routeError=payload.error;
@@ -435,6 +579,7 @@ it.skipIf(process.env.DOLLVUE_IL_IRIS_PILOT!=='1')('executes one native-reviewed
   const after=await fs.readFile('lib/dollvue/readiness-registry.json');result.registryBeforeSha256=hash(registryBefore);result.registryAfterSha256=hash(after);result.registryUnchanged=registryBefore.equals(after);
   try{result.registryVerification=assertRegistryAdditionOnly(registryBefore,after,[pilot.productId]);}catch(error){caught ||= error;result.registryVerificationError=error instanceof Error?error.message:String(error);}
   if(hash(await fs.readFile(inputFile))!==inputSha256)caught ||= Error('Frozen input changed');
+  if(ai&&hash(await fs.readFile(path.join(directory,'parent-pilot-authorization.json')))!==authorizationSha256)caught ||= Error('Authorization changed');
   Object.assign(result,{providerCalls:calls,routeCalls,testOnlyMailInvocations:pilotFixture.mailCalls-beforeMail,testOnlyAccountWrites:pilotFixture.accountWrites-beforeAccount,completedAt:new Date().toISOString()});
   await save('result.json',result);vi.unstubAllGlobals();
  }
