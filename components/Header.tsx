@@ -331,7 +331,7 @@ export function Header() {
           <button type="button" onClick={openSearch} className="v2-icon-control" aria-label="Search products">
             <Search className="h-5 w-5" aria-hidden="true" />
           </button>
-          <Link href="/compare" onClick={closeAll} className="v2-icon-control relative" aria-label={compareLabel(compareCount)}>
+          <Link href="/compare" onClick={closeAll} className="site-header__mobile-compare v2-icon-control relative" aria-label={compareLabel(compareCount)}>
             <Scale className="h-5 w-5" aria-hidden="true" />
             {compareCount ? <CartBadge count={compareCount} /> : null}
           </Link>

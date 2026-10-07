@@ -244,7 +244,8 @@ export async function getProducts({
   imageFirst = 8,
   cacheKey,
   cache,
-  revalidate
+  revalidate,
+  strict = false
 }: {
   query?: string;
   first?: number;
@@ -255,8 +256,9 @@ export async function getProducts({
   cacheKey?: string;
   cache?: RequestCache;
   revalidate?: number;
+  strict?: boolean;
 } = {}) {
-  const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
+  const fallbackProducts = strict ? [] : sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) return fallbackProducts;
 
   try {
