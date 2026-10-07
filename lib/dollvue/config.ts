@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import type { DollVueGroup } from "./public";
 import { appearanceReferenceProperty, classifyAppearance } from './appearance';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
+import { isDollVueGroupVisible } from './conditionalVisibility';
 
 export const DOLLVUE_PRODUCT_HANDLES = [
   "irontech-luna-152cm-a-cup-silicone-companion-doll-12nvb",
@@ -62,8 +63,9 @@ export function dollVueConfigForProduct(product: Product, fallback: BrandCustomi
 }
 
 export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] {
+  const selectableGroupIds = new Set(config.groups.filter(group => group.options.some(option => option.dollVueEnabled === true)).map(group => group.id));
   return config.groups.flatMap((group) => {
-    if (group.visibleWhen?.length) return [];
+    if (!isDollVueGroupVisible(config, group, selectableGroupIds)) return [];
     const options = group.options
       .filter((option) => option.dollVueEnabled === true && option.swatch?.kind === "image" && isOwnedOptionAsset(option.swatch.value) && classifyAppearance(group, option).status === 'candidate')
       .map(({ id, label, swatch }) => ({ id, label: cleanLabel(label), swatch }));
@@ -95,8 +97,7 @@ export function areDollVueSelectionsValid(config: BrandCustomizationConfig, sele
   for (const {group} of resolved) {
     const original = config.groups.find(g => g.id === group.id)!;
     if (original.selectionMode !== 'multiple' && selections.filter(s => s.groupId === group.id).length > 1) return false;
-    // The preview does not yet carry the customer's full configurator state.
-    if (original.visibleWhen?.length) return false;
+    // resolveDollVueSelections already applies the shared fixed-default visibility guard.
   }
   return !config.rules.some(rule => includes(rule.when) && includes(rule.conflictsWith));
 }
