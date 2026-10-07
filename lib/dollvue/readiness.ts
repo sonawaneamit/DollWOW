@@ -4,6 +4,7 @@ import type { BrandCustomizationConfig } from '@/types/customization';
 import { classifyAppearance, DOLLVUE_APPEARANCE_POLICY } from './appearance';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 import { productImageSources } from '@/lib/catalog/productImage';
+import { isDollVueGroupVisible } from './conditionalVisibility';
 
 export type DollVueReadinessRecord = {
   productId: string;
@@ -47,10 +48,11 @@ export function evaluateDollVueReadiness(product: Product, config: BrandCustomiz
   const photos = productImageSources(product);
   const validPhotos = record.sourcePositions.every(position => Number.isInteger(position) && position >= 0 && position < 8 &&
     isOwnedOptionAsset(photos[position]?.url));
+  const selectableGroupIds = new Set(record.choices.map(choice => choice.groupId));
   const validChoices = record.choices.every(choice => {
     const group = config.groups.find(item => item.id === choice.groupId);
     const option = group?.options.find(item => item.id === choice.optionId);
-    return group && option && !group.visibleWhen?.length && classifyAppearance(group, option).status === 'candidate' &&
+    return group && option && isDollVueGroupVisible(config, group, selectableGroupIds) && classifyAppearance(group, option).status === 'candidate' &&
       option.swatch?.kind === 'image' && option.swatch.value === choice.reference && isOwnedOptionAsset(choice.reference);
   });
   if (!validPhotos || !validChoices) return { ...unavailable, reason: 'invalid-reviewed-reference' };

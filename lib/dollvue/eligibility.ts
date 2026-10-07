@@ -29,11 +29,15 @@ export function resolveDollVueEligibility(product: Product) {
       imageDigests: record.imageDigests };
   }
   // Preserve the already released pilot. New brands require an exact reviewed record.
+  // Conditional appearance support requires a reviewed record, never legacy option flags.
+  const legacyConfig = { ...config, groups: config.groups.map(group => group.visibleWhen === undefined ? group : {
+    ...group, options: group.options.map(option => ({ ...option, dollVueEnabled: false })),
+  }) };
   const sourcePositions = productImageSources(product).slice(0, 8)
     .flatMap((photo, position) => isOwnedOptionAsset(photo.url) ? [position] : []);
   return { available: !isDollVueExcluded(product) && isLegacyDollVueCatalogProduct(product) &&
-    dollVueGroups(config).length > 0 && sourcePositions.length > 0,
-    config, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined };
+    dollVueGroups(legacyConfig).length > 0 && sourcePositions.length > 0,
+    config: legacyConfig, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined };
 }
 
 /** Check private holds at the point of use; never expose their contents publicly. */
