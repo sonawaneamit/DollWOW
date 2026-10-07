@@ -4,6 +4,7 @@
 
 - Resolve the actual product menu before reviewing appearance choices. Jev classifications and template tags are triage, not image or supplier approval. Keep functional options, accessories and extra heads out of appearance previews.
 - Read both content-hold tags and `custom.catalog_image_review_hold` through the Admin inventory. A Storefront-only crawl misses unpublished records and private hold fields.
+- Distinguish the ordinary `catalog-review-hold` draft-workflow tag from a specific image/content hold. It does not prevent private DollVue preparation. Retain all tags and draft state; `dollwow-test`, hidden-brand, specific content and publication exclusions still apply. Record the actual exclusion reason rather than describing every draft as an image hold.
 - Bind suitable, non-explicit source photos and reviewed option references to exact product/group/option IDs. Preserve the byte/provenance chain through legitimate image re-encoding; different JPEG/WebP hashes alone do not prove changed imagery.
 - Preview sources need one unambiguous adult-presenting edit target and a clear view of the intended feature. A two-doll photograph needs a suitable single-subject alternative. Record source-only exclusions privately; do not turn them into product publication or sales holds. Attribute assistant image review to the assistant, not the owner.
 - Record the current appearance policy and menu/photo fingerprint privately. A scheduled price change need not invalidate appearance review; changed meanings, compatibility, references or source photos do.
