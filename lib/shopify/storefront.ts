@@ -38,6 +38,7 @@ type ProductCountData = {
 type MetafieldValue = { value: string } | null;
 type SeoProductNode = {
   id: string;
+  updatedAt?: string;
   handle: string;
   title: string;
   vendor: string;
@@ -242,9 +243,12 @@ export async function getProducts({
   }
 }
 
-export async function getSeoCatalogProducts({ first = 5000, revalidate = 300 }: { first?: number; revalidate?: number } = {}) {
+export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, strict = false }: { first?: number; revalidate?: number; strict?: boolean } = {}) {
   const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
-  if (!hasShopifyStorefrontEnv()) return fallbackProducts;
+  if (!hasShopifyStorefrontEnv()) {
+    if (strict) throw new Error("Sitemap requires the public Shopify catalog");
+    return fallbackProducts;
+  }
 
   try {
     const products: Product[] = [];
@@ -254,11 +258,12 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300 }: 
     while (products.length < target) {
       const pageSize = Math.min(250, target - products.length);
       const data: SeoProductListData = await storefrontFetch<SeoProductListData>(
-        `# seo-catalog-v2
+        `# seo-catalog-v3
         query SeoCatalogProducts($first: Int!, $after: String) {
           products(first: $first, after: $after, sortKey: CREATED_AT, reverse: true) {
             edges { cursor node {
               id
+              updatedAt
               handle
               title
               vendor
@@ -302,8 +307,9 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300 }: 
       if (!after) break;
     }
 
-    return products.length ? products : fallbackProducts;
+    return strict ? products : products.length ? products : fallbackProducts;
   } catch (error) {
+    if (strict) throw error;
     console.error(error);
     return fallbackProducts;
   }
@@ -314,6 +320,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
   const stockStatus = metafieldText(node.stockStatus);
   return {
     id: node.id,
+    updatedAt: node.updatedAt,
     handle: node.handle,
     title: node.title,
     description: "",
@@ -460,7 +467,7 @@ export async function getSearchProducts({
   }
 }
 
-function isCustomerVisibleProduct(product: Product) {
+export function isCustomerVisibleProduct(product: Product) {
   if (isHiddenCatalogBrand(product.extended.brand ?? product.vendor)) return false;
   if ((product.tags || []).some((tag) => isHiddenCatalogBrand(tag))) return false;
   return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag));

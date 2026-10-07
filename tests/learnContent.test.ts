@@ -196,7 +196,7 @@ describe("Learning Center content ownership", () => {
     const page = fs.readFileSync(path.join(process.cwd(), "app/learn/[slug]/page.tsx"), "utf8");
     const agentIndex = fs.readFileSync(path.join(process.cwd(), "app/agent-index.json/route.ts"), "utf8");
     const llms = fs.readFileSync(path.join(process.cwd(), "app/llms.txt/route.ts"), "utf8");
-    const sitemap = fs.readFileSync(path.join(process.cwd(), "app/sitemap.ts"), "utf8");
+    const sitemap = fs.readFileSync(path.join(process.cwd(), "lib/seo/sitemapSegments.ts"), "utf8");
     expect(page).toContain("/datasets/sex-doll-size-weight-2026.json");
     expect(page).toContain('"@type": "Dataset"');
     expect(agentIndex).toContain("/datasets/sex-doll-size-weight-2026.json");
