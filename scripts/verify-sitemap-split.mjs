@@ -35,7 +35,7 @@ for (const canonicalFile of locs(index.body)) {
   const image = filePath === "/sitemap-images.xml";
   if (file.status !== 200 || !file.type?.includes("application/xml")) report.failures.push(`Bad response: ${filePath}`);
   if (entries.length > 50000 || Buffer.byteLength(file.body) > 50 * 1024 * 1024) report.failures.push(`Too large: ${filePath}`);
-  if (entries.some((url) => !url.startsWith("https://dollwow.com/"))) report.failures.push(`Wrong child host: ${filePath}`);
+  if (entries.some((url) => new URL(url).origin !== "https://dollwow.com")) report.failures.push(`Wrong child host: ${filePath}`);
   if (!image) urls.push(...entries);
   report.files.push({ path: filePath, status: file.status, entries: entries.length, bytes: Buffer.byteLength(file.body) });
   await fs.writeFile(path.join(output, path.basename(filePath)), file.body);
