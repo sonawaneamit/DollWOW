@@ -6,7 +6,8 @@ import { expect, it, vi } from 'vitest';
 import { env, hasShopifyStorefrontEnv } from '@/lib/utils/env';
 import { storefrontAuthHeaders } from '@/lib/shopify/auth';
 import { mapShopifyProduct } from '@/lib/shopify/mappers';
-import { isCustomerVisibleProduct } from '@/lib/shopify/storefront';
+import { adminFetch } from '@/lib/shopify/admin';
+import { POST as publicCart } from '@/app/dollvue/cart/route';
 import { getCurrentDollVueHolds } from '@/lib/dollvue/currentHold';
 import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
 import { productImageSources } from '@/lib/catalog/productImage';
@@ -19,21 +20,15 @@ import { dollVueReadinessFingerprint, evaluateDollVueReadiness, reviewedDollVueC
 import { promotionPricingForSelections } from '@/lib/promotions/optionPricing';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 
-// Opt in with DOLLVUE_BATCH_READINESS=1. All paths are absolute/private:
-// DOLLVUE_BATCH_MANIFEST, DOLLVUE_BATCH_REVIEWS (JSON array of file paths),
-// DOLLVUE_BATCH_OUTPUT (new JSON file), DOLLVUE_BATCH_INCLUDE_HAIR=1 (optional).
-// DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, or YL14; SE4 never permits hair.
-// Manifest: {rows:[{id,handle,status:'ACTIVE',sourcePosition:0,sourceUrl,
-// sourceFile,sourceSha256,sourceBytes,decoded:{width,height},fingerprint}]}.
-// Each review file: {reviewer:{role:'assistant',name:'Euclid'|'Beauvoir'|...},
-// decisions:[{id,sourcePosition:0,sourceUrl,sourceSha256,
-// verdict:'PASS_ADULT_NON_EXPLICIT_SOURCE'|'EXCLUDE'|'HOLD',reason}]}.
-// Every row needs a byte-bound decision; there is no candidate-to-approval fallback.
+// Separate private-DRAFT finalizer. Never accepts ACTIVE products or changes publication.
+// Opt in: DOLLVUE_DRAFT_READINESS=1, DOLLVUE_DRAFT_MANIFEST,
+// DOLLVUE_DRAFT_REVIEWS (JSON file-path array), DOLLVUE_DRAFT_OUTPUT (new private JSON).
+// Explicit assistant byte-bound source0 approval is mandatory. No public finalizer bypass.
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 const pin = z.string().regex(/^[a-f0-9]{64}$/);
 const identity = { id:z.string().regex(/^gid:\/\/shopify\/Product\/\d+$/), sourcePosition:z.literal(0),
   sourceUrl:z.string().url(), sourceSha256:pin };
-const manifestSchema = z.object({rows:z.array(z.object({...identity,handle:z.string().min(1),status:z.literal('ACTIVE'),
+const manifestSchema = z.object({rows:z.array(z.object({...identity,handle:z.string().min(1),status:z.literal('DRAFT'),brand:z.enum(['WM Dolls','WM Doll','JK Dolls','OR Dolls']),
   sourceFile:z.string().min(1),sourceBytes:z.number().int().positive(),fingerprint:pin,
   decoded:z.object({width:z.number().int().positive(),height:z.number().int().positive()}),
 })).min(1)});
@@ -46,14 +41,21 @@ const sourceReviewSchema = z.object({reviewer:z.literal('assistant'),ownerReview
     decision:z.enum(['approve','needsalternative','needsadultpresentationclarity']),reason:z.string().min(1)})).min(1)});
 type Choice = DollVueReadinessRecord['choices'][number];
 type Node = Parameters<typeof mapShopifyProduct>[0];
-const families = {
-  WM14:{seedProductId:'gid://shopify/Product/10431698337976',brand:'WM Dolls',
-    eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
-  SE4:{seedProductId:'gid://shopify/Product/10433981612216',brand:'SE Doll',
-    eyeIds:['handmade-01','handmade-02','handmade-03','handmade-04'],allowHair:false},
-  YL14:{seedProductId:'gid://shopify/Product/10431698337976',brand:'YL Dolls',
-    eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
+type AdminState = {id:string;handle:string;status:string;publishedAt:string|null;tags:string[];
+  resourcePublications:{nodes:Array<{isPublished:boolean}>;pageInfo:{hasNextPage:boolean}}};
+type AdminNode = Omit<Node,'priceRange'|'variants'|'media'> & AdminState & {
+  variants:{edges:Array<{node:Omit<Node['variants']['edges'][number]['node'],'price'> & {price:string}}>};
+  media?:{edges:Array<{node:NonNullable<Node['media']>['edges'][number]['node'] & {
+    preview?:{image?:NonNullable<Node['featuredImage']>|null}|null;
+  }}>};
 };
+const family={seedProductId:'gid://shopify/Product/10431698337976',
+  eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`)};
+function assertUnpublished(node:AdminState) {
+  expect(node.status).toBe('DRAFT');expect(node.publishedAt).toBeNull();
+  expect(node.resourcePublications.pageInfo.hasNextPage).toBe(false);
+  expect(node.resourcePublications.nodes.some(item=>item.isPublished)).toBe(false);
+}
 function assertRequestedChoicesRetained(result:Pick<ReturnType<typeof resolveCustomization>,'selections'|'selectedOptions'|'cartAttributes'>,
   requested:Array<Pick<Choice,'groupId'|'optionId'>>) {
   for(const choice of requested) {
@@ -88,17 +90,17 @@ const fields: Record<string,string> = {
   stockLastCheckedAt:'stock_last_checked_at',customAvailable:'custom_available',penisAddOnAvailable:'has_insertable_penis_add_on',
   irontechUlwEligibility:'irontech_ulw_eligibility',qcNote:'qc_note',customizationGroups:'customization_groups',
 };
-const query = `query DollVueBatchFinalizer($ids:[ID!]!){nodes(ids:$ids){... on Product{
-  id handle title description seo{title description} vendor productType tags
+const query = `query DollVueDraftFinalizer($ids:[ID!]!){nodes(ids:$ids){... on Product{
+  id handle title description seo{title description} vendor productType tags status publishedAt
+  resourcePublications(first:50){nodes{isPublished} pageInfo{hasNextPage}}
   featuredImage{url altText width height} images(first:50){edges{node{url altText width height}}}
-  priceRange{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}}
-  variants(first:30){edges{node{id title availableForSale price{amount currencyCode} selectedOptions{name value}}}}
+  variants(first:30){edges{node{id title availableForSale price selectedOptions{name value}}}}
   media(first:50){edges{node{mediaContentType alt ... on MediaImage{image{url altText width height}}
-    ... on Video{previewImage{url altText width height} sources{url mimeType}}}}}
+    ... on Video{preview{image{url altText width height}} sources{url mimeType}}}}}
   ${Object.entries(fields).map(([alias,key])=>`${alias}:metafield(namespace:"custom",key:"${key}"){value}`).join('\n')}
-}}}`;
+}} shop{currencyCode}}`;
 
-it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitly assistant-reviewed source bytes using bulk current reads', async () => {
+it.skipIf(process.env.DOLLVUE_DRAFT_READINESS !== '1')('finalizes only private DRAFT records and verifies public rejection with current reads', async () => {
   const privateRoot = await fs.realpath('/Volumes/Extreme Pro/Projects/DollWOW/data/exports');
   async function privateInput(file: string) {
     expect(path.isAbsolute(file)).toBe(true);
@@ -106,18 +108,14 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     expect(real.startsWith(privateRoot + path.sep)).toBe(true);
     return real;
   }
-  const manifestPath = await privateInput(process.env.DOLLVUE_BATCH_MANIFEST || '');
-  const reviewPaths = z.array(z.string()).min(1).parse(JSON.parse(process.env.DOLLVUE_BATCH_REVIEWS || '[]'));
-  const output = process.env.DOLLVUE_BATCH_OUTPUT || '';
+  const manifestPath = await privateInput(process.env.DOLLVUE_DRAFT_MANIFEST || '');
+  const reviewPaths = z.array(z.string()).min(1).parse(JSON.parse(process.env.DOLLVUE_DRAFT_REVIEWS || '[]'));
+  const output = process.env.DOLLVUE_DRAFT_OUTPUT || '';
   expect(path.isAbsolute(output)).toBe(true);
   const outputDir = await fs.realpath(path.dirname(output));
   expect(outputDir.startsWith(privateRoot + path.sep)).toBe(true);
   expect(await fs.lstat(output).then(()=>true, error=>{if(error.code==='ENOENT') return false; throw error;})).toBe(false);
-  expect(['0','1',undefined]).toContain(process.env.DOLLVUE_BATCH_INCLUDE_HAIR);
-  const includeHair = process.env.DOLLVUE_BATCH_INCLUDE_HAIR === '1';
-  const familyName=z.enum(['WM14','SE4','YL14']).parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
-  const family=families[familyName];
-  expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
+  const includeHair = true;
   const manifestBytes = await fs.readFile(manifestPath);
   const {rows} = manifestSchema.parse(JSON.parse(manifestBytes.toString()));
   expect(new Set(rows.map(row=>row.id)).size).toBe(rows.length);
@@ -167,7 +165,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   for(const id of ids) expect(registry[id],`Existing registry entry ${id}; never replace implicitly`).toBeUndefined();
   const allowedIds = new Set([...ids,seed.productId]);
   expect(hasShopifyStorefrontEnv()).toBe(true);
-  const counts = {storefrontBulkReads:0,currentHoldBulkReads:0,imageReads:0,generationCalls:0,remoteWrites:0};
+  const counts = {storefrontReads:0,adminReads:0,imageReads:0,public404Checks:0,generationCalls:0,remoteWrites:0};
   const nativeFetch = globalThis.fetch;
   vi.stubGlobal('fetch',async (input:Parameters<typeof fetch>[0],init?:RequestInit)=>{
     const url = new URL(input instanceof Request ? input.url : String(input));
@@ -175,29 +173,50 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     if(url.hostname===env.SHOPIFY_STORE_DOMAIN && url.pathname.endsWith('/graphql.json') && method==='POST') {
       const body = JSON.parse(String(init?.body));
       expect(body.query).toMatch(/^\s*query\b/); expect(body.query).not.toMatch(/\bmutation\b/);
-      expect(body.variables.ids.length).toBeGreaterThan(0); expect(body.variables.ids.length).toBeLessThanOrEqual(50);
-      expect(body.variables.ids.every((id:string)=>allowedIds.has(id))).toBe(true);
-      if(url.pathname.includes('/admin/')) counts.currentHoldBulkReads++; else counts.storefrontBulkReads++;
+      if(body.variables.ids) {
+        expect(body.variables.ids.length).toBeGreaterThan(0);expect(body.variables.ids.length).toBeLessThanOrEqual(50);
+        expect(body.variables.ids.every((id:string)=>allowedIds.has(id))).toBe(true);
+      } else {
+        expect(url.pathname.includes('/admin/')).toBe(false);
+        expect(approved.map(row=>row.handle)).toContain(body.variables.handle);
+      }
+      if(url.pathname.includes('/admin/')) counts.adminReads++; else counts.storefrontReads++;
     } else if(url.hostname===env.SHOPIFY_STORE_DOMAIN && url.pathname==='/admin/oauth/access_token' && method==='POST') {
       // Existing authentication renewal only; never a catalog mutation.
     } else { expect(method).toBe('GET'); expect(isOwnedOptionAsset(url.href)).toBe(true); counts.imageReads++; }
     return nativeFetch(input,init);
   });
   try {
-    const nodes = new Map<string,Node>();
+    const nodes = new Map<string,Node>(),states=new Map<string,AdminState>();
     const readIds = [...allowedIds];
     for(let offset=0;offset<readIds.length;offset+=50) {
-      const chunk = readIds.slice(offset,offset+50);
-      const response = await fetch(`https://${env.SHOPIFY_STORE_DOMAIN}/api/2026-04/graphql.json`,{
-        method:'POST',cache:'no-store',signal:AbortSignal.timeout(60000),
-        headers:{'Content-Type':'application/json',...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)},
-        body:JSON.stringify({query,variables:{ids:chunk}}),
+      const chunk=readIds.slice(offset,offset+50);
+      const body=await adminFetch<{nodes:Array<AdminNode|null>;shop:{currencyCode:string}}>(query,{ids:chunk});
+      expect(body.nodes).toHaveLength(chunk.length);
+      expect(body.shop.currencyCode).toMatch(/^[A-Z]{3}$/);
+      body.nodes.forEach((node,index)=>{
+        expect(node?.id).toBe(chunk[index]);states.set(chunk[index],node!);
+        const price={amount:node!.variants.edges[0]?.node.price||'0',currencyCode:body.shop.currencyCode};
+        nodes.set(chunk[index],{...node!,priceRange:{minVariantPrice:price,maxVariantPrice:price},
+          media:node!.media ? {edges:node!.media.edges.map(({node:media})=>({node:{...media,previewImage:media.preview?.image}}))} : undefined,
+          variants:{edges:node!.variants.edges.map(({node:v})=>({node:{...v,price:{amount:v.price,currencyCode:body.shop.currencyCode}}}))}});
       });
-      expect(response.ok).toBe(true);
-      const body = await response.json() as {errors?:unknown[];data?:{nodes:Array<Node|null>}};
-      expect(body.errors).toBeUndefined(); expect(body.data?.nodes).toHaveLength(chunk.length);
-      body.data!.nodes.forEach((node,index)=>{expect(node?.id).toBe(chunk[index]); nodes.set(chunk[index],node!);});
     }
+    async function assertPublicNull() {
+      for(let offset=0;offset<ids.length;offset+=50) {
+        const chunk=ids.slice(offset,offset+50);
+        const response=await fetch('https://'+env.SHOPIFY_STORE_DOMAIN+'/api/2026-04/graphql.json',{
+          method:'POST',cache:'no-store',signal:AbortSignal.timeout(60000),
+          headers:{'Content-Type':'application/json',...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)},
+          body:JSON.stringify({query:'query DraftPublicAbsence($ids:[ID!]!){nodes(ids:$ids){id}}',variables:{ids:chunk}}),
+        });
+        expect(response.ok).toBe(true);
+        const body=await response.json();expect(body.errors).toBeUndefined();
+        expect(body.data?.nodes).toEqual(chunk.map(()=>null));
+      }
+    }
+    for(const id of ids) assertUnpublished(states.get(id)!);
+    await assertPublicNull();
     const firstHoldCheckStartedAt = new Date().toISOString();
     const holds = await getCurrentDollVueHolds(readIds);
     const firstHoldCheckedAt = new Date().toISOString();
@@ -218,10 +237,10 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     for(const row of approved) {
       const product = mapShopifyProduct(nodes.get(row.id)!);
       expect(product.handle).toBe(row.handle);
-      expect(isCustomerVisibleProduct(product)).toBe(true); expect(isDollVueExcluded(product)).toBe(false);
-      expect(product.extended.brand).toBe(family.brand); expect(product.extended.stockStatus).toBe('custom');
+      expect(isDollVueExcluded(product)).toBe(false);
+      expect(product.extended.brand).toBe(row.brand); expect(product.extended.stockStatus).toBe('custom');
       expect(product.productType).toMatch(/^custom\b.*\bdoll\b/i);
-      expect([product.productType,...product.tags].join(' ')).not.toMatch(/head[ -]?only|torso|accessor|ready.to.ship|hold|not-for-launch|excluded/i);
+      expect([product.productType,...product.tags.filter(tag=>tag!=='catalog-review-hold')].join(' ')).not.toMatch(/head[ -]?only|torso|accessor|ready.to.ship|hold|not-for-launch|excluded/i);
       const source=productImageSources(product)[0];
       expect([source.url,source.width,source.height]).toEqual([row.sourceUrl,row.decoded.width,row.decoded.height]);
       const bytes=await fs.readFile(await privateInput(row.sourceFile));
@@ -239,11 +258,12 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       }
       const record:DollVueReadinessRecord={productId:row.id,policy:DOLLVUE_APPEARANCE_POLICY,fingerprint,status:'ready',
         sourcePositions:[0],imageDigests:{...referencePins,[source.url]:row.sourceSha256},choices};
-      const ready=evaluateDollVueReadiness(product,config,record,{published:true,contentExcluded:false});
-      expect(ready.ready).toBe(true);
-      const menu=reviewedDollVueConfig(config,ready,'public'), now=new Date();
+      const ready=evaluateDollVueReadiness(product,config,record,{published:false,privateReview:true,contentExcluded:false});
+      expect(ready).toMatchObject({ready:true,publiclyAvailable:false,privatelyAvailable:true});
+      expect(reviewedDollVueConfig(config,ready,'public').groups.every(g=>g.options.every(o=>!o.dollVueEnabled))).toBe(true);
+      const menu=reviewedDollVueConfig(config,ready,'private'), now=new Date();
       const initial=promotionPricingForSelections(product,menu,{},now).config;
-      const variant=product.variants.find(v=>v.availableForSale)!; expect(variant).toBeDefined();
+      const variant=product.variants.find(v=>v.availableForSale)||product.variants[0]; expect(variant).toBeDefined();
       const basePrice=Number(variant.price.amount); expect(basePrice).toBeGreaterThan(0);
       function resolve(selected:Choice[]) {
         if(selected.length) expect(areDollVueSelectionsValid(initial,selected)).toBe(true);
@@ -262,26 +282,43 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       }
       const defaults=resolve([]), choiceChecks=choices.map(c=>({groupId:c.groupId,optionId:c.optionId,...resolve([c])}));
       let combinedChecks=0; for(const eye of eyes) for(const h of hair) {resolve([eye,h]);combinedChecks++;}
+      const origin=new URL(env.NEXT_PUBLIC_SITE_URL).origin;
+      const response=await publicCart(new Request(origin+'/dollvue/cart',{method:'POST',
+        headers:{Origin:origin,'Content-Type':'application/json'},
+        body:JSON.stringify({productHandle:row.handle,selections:[{groupId:'eye-color',optionId:'no-2'},{groupId:'hairstyle',optionId:'no-8'}]})}));
+      const publicPayload=await response.json();
+      expect(response.status,JSON.stringify(publicPayload)).toBe(404);counts.public404Checks++;
       records[row.id]=record;
-      verification.push({id:row.id,handle:row.handle,draft:false,sourcePosition:0,sourceUrl:source.url,sourceSha256:row.sourceSha256,
-        sourceBytes:row.sourceBytes,currentHold:'clear',strictStorefrontIdentity:true,currentSourceBytesMatch:true,
+      verification.push({id:row.id,handle:row.handle,draft:true,published:false,publiclyAvailable:false,privatelyAvailable:true,publicCartStatus:404,
+        retainedHoldTags:product.tags.filter(tag=>/hold/i.test(tag)),sourcePosition:0,sourceUrl:source.url,sourceSha256:row.sourceSha256,
+        sourceBytes:row.sourceBytes,currentHold:'clear',strictStorefrontNull:true,currentSourceBytesMatch:true,
         runtimeFingerprint:fingerprint,assistantVisualReview:reviews.get(row.id),localDefaultValidation:defaults,
         localChoiceValidation:choiceChecks,combinedChecks,merchandiseId:variant.id,currencyCode:variant.price.currencyCode});
       if(verification.length%10===0) console.info(JSON.stringify({validated:verification.length,total:approved.length}));
     }
+    // Recheck publication state and absence after lengthy compatibility work.
+    for(let offset=0;offset<ids.length;offset+=50) {
+      const chunk=ids.slice(offset,offset+50);
+      const state=await adminFetch<{nodes:Array<AdminState|null>}>(
+        'query DraftFinalState($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle status publishedAt tags resourcePublications(first:50){nodes{isPublished} pageInfo{hasNextPage}}}}}',{ids:chunk});
+      expect(state.nodes).toHaveLength(chunk.length);
+      state.nodes.forEach((node,index)=>{expect(node?.id).toBe(chunk[index]);assertUnpublished(node!);
+        expect(node!.handle).toBe(states.get(chunk[index])!.handle);expect(node!.tags).toEqual(states.get(chunk[index])!.tags);});
+    }
+    await assertPublicNull();
     const lastHoldCheckStartedAt = new Date().toISOString();
     const finalHolds = await getCurrentDollVueHolds(readIds);
     const lastHoldCheckedAt = new Date().toISOString();
     expect(readIds.map(id=>finalHolds.get(id))).toEqual(readIds.map(()=>'clear'));
     expect(await fs.readFile('lib/dollvue/readiness-registry.json')).toEqual(registryBytes);
     for(const input of inputs) expect(sha(await fs.readFile(input.file)),`Evidence changed during finalization: ${input.file}`).toBe(input.sha256);
-    await fs.writeFile(output,JSON.stringify({checkedAt:new Date().toISOString(),privateProposalOnly:true,records,verification,
+    await fs.writeFile(output,JSON.stringify({checkedAt:new Date().toISOString(),privateProposalOnly:true,published:false,privateReview:true,publicActivationAllowed:false,records,verification,
       reviewDecision:{reviewer:'assistant',scope:'Explicit byte-bound source0 decisions only'},
       evidence:{inputs,registryInputSha256:sha(registryBytes),seedProductId:seed.productId,
         holdChecks:{productIds:readIds,firstHoldCheckStartedAt,firstHoldCheckedAt,lastHoldCheckStartedAt,lastHoldCheckedAt,
           firstAllClear:true,lastAllClear:true}},
       sourceExclusions:rows.filter(row=>!records[row.id]).map(row=>({id:row.id,handle:row.handle,...reviews.get(row.id)})),
-      summary:{family:familyName,readyRecords:approved.length,eyesPerRecord:eyes.length,hairPerRecord:hair.length,verifiedUniqueImages:verified.size,...counts},
+      summary:{family:'WM14-private-drafts',readyRecords:approved.length,eyesPerRecord:eyes.length,hairPerRecord:hair.length,verifiedUniqueImages:verified.size,...counts},
       registryChanged:false,publicationChanged:false},null,2),{mode:0o600,flag:'wx'});
   } finally {vi.unstubAllGlobals();}
 },30 * 60 * 1000);
