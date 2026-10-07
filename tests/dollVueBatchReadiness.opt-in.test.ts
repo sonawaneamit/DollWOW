@@ -24,6 +24,9 @@ import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 // DOLLVUE_BATCH_OUTPUT (new JSON file), DOLLVUE_BATCH_INCLUDE_HAIR=1 (optional).
 // DOLLVUE_BATCH_FAMILY=WM14 (default), SE4, YL14, or AngelkissHAIR15.
 // SE4 never permits hair; AngelkissHAIR15 requires INCLUDE_HAIR=1 and excludes eyes.
+// 6YE_EYE3 / HR_EYE3 forbid hair and require DOLLVUE_BATCH_REFERENCE_EVIDENCE
+// pointing to frozen private assistant-reviewed evidence for the fixed three iris references.
+// EYE3 accepts a full mixed-brand manifest; every row needs a decision before brand scoping.
 // Manifest: {rows:[{id,handle,status:'ACTIVE',sourcePosition:0..7,sourceUrl,
 // sourceFile,sourceSha256,sourceBytes,decoded:{width,height},fingerprint}]}.
 // Each review file: {reviewer:{role:'assistant',name:'Euclid'|'Beauvoir'|...},
@@ -35,6 +38,7 @@ const pin = z.string().regex(/^[a-f0-9]{64}$/);
 const identity = { id:z.string().regex(/^gid:\/\/shopify\/Product\/\d+$/), sourcePosition:z.number().int().min(0).max(7),
   sourceUrl:z.string().url(), sourceSha256:pin };
 const manifestSchema = z.object({rows:z.array(z.object({...identity,handle:z.string().min(1),status:z.literal('ACTIVE'),
+  brand:z.string().optional(),
   sourceFile:z.string().min(1),sourceBytes:z.number().int().positive(),fingerprint:pin,
   decoded:z.object({width:z.number().int().positive(),height:z.number().int().positive()}),
 })).min(1)});
@@ -47,6 +51,33 @@ const sourceReviewSchema = z.object({reviewer:z.literal('assistant'),ownerReview
     decision:z.enum(['approve','needsalternative','needsadultpresentationclarity']),reason:z.string().min(1)})).min(1)});
 type Choice = DollVueReadinessRecord['choices'][number];
 type Node = Parameters<typeof mapShopifyProduct>[0];
+const eye3References = [
+  {optionId:'blue',label:'Blue',sha256:'5d0d14251992d753a5f73b4cdee66b12c07bad149ab935490d84bcaf5c4e6bb0'},
+  {optionId:'brown',label:'Brown',sha256:'117c6ec3a9ba4343a0aa4a078961aa8dce12d740f156a4dba95b081219225074'},
+  {optionId:'green',label:'Green',sha256:'006702359260e1fd300c875cdb64bb59d622bde03043d0922829681b842d1265'},
+].map(r=>({...r,groupId:'eye-color',url:`/option-assets/${r.sha256}.webp`}));
+const evidenceFileSchema=z.object({file:z.string().min(1),sha256:pin});
+const eye3EvidenceSchema=z.object({
+  family:z.literal('6YE-HR-eye3'),frozen:z.literal(true),privateEvidenceOnly:z.literal(true),
+  status:z.literal('parent-assistant-reference-meaning-accepted'),reviewer:z.literal('parent-assistant'),
+  ownerReviewed:z.literal(false),humanApproval:z.literal(false),
+  sourceFamilyInventory:evidenceFileSchema,reviewedContactSheet:evidenceFileSchema,
+  references:z.array(z.object({groupId:z.literal('eye-color'),optionId:z.enum(['blue','brown','green']),
+    label:z.string(),url:z.string(),sha256:pin,cachedFile:z.string().min(1),
+    meaning:z.object({attribute:z.literal('eye-color'),property:z.literal('visible iris color only'),
+      label:z.string(),accepted:z.literal(true),visualMeaningVerified:z.literal(true),
+      reviewer:z.literal('parent-assistant'),ownerReviewed:z.literal(false)}),
+  })).length(3),
+  constraints:z.object({sourcePhotoApprovalGranted:z.literal(false),generatedFidelityApprovalGranted:z.literal(false),
+    readinessApprovalGranted:z.literal(false),registryChanged:z.literal(false),publicationChanged:z.literal(false)}),
+});
+function parseEye3Evidence(raw:unknown) {
+  const evidence=eye3EvidenceSchema.parse(raw);
+  expect(evidence.references.map(({groupId,optionId,label,url,sha256})=>({groupId,optionId,label,url,sha256})))
+    .toEqual(eye3References);
+  for(const ref of evidence.references) expect(ref.meaning.label).toBe(ref.label);
+  return evidence;
+}
 const families = {
   WM14:{seedProductId:'gid://shopify/Product/10431698337976',brand:'WM Dolls',
     eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
@@ -56,13 +87,28 @@ const families = {
     eyeIds:[1,2,3,4,5,6,7,8,9,14,15,16,17,18].map(n=>`no-${n}`),allowHair:true},
   AngelkissHAIR15:{seedProductId:'gid://shopify/Product/10431698337976',brand:'Angelkiss',
     eyeIds:[] as string[],allowHair:true},
+  '6YE_EYE3':{seedProductId:null,brand:'6YE Dolls',eyeIds:['blue','brown','green'],allowHair:false},
+  HR_EYE3:{seedProductId:null,brand:'HR Dolls',eyeIds:['blue','brown','green'],allowHair:false},
 };
-const familySchema = z.enum(['WM14','SE4','YL14','AngelkissHAIR15']);
+const familySchema = z.enum(['WM14','SE4','YL14','AngelkissHAIR15','6YE_EYE3','HR_EYE3']);
 type SourceRow = z.infer<typeof manifestSchema>['rows'][number];
-function familyChoices(name:z.infer<typeof familySchema>,includeHair:boolean,seedChoices:Choice[]) {
+function scopeReviewedRows(rows:SourceRow[],reviewedIds:Iterable<string>,name:z.infer<typeof familySchema>) {
+  expect([...reviewedIds].sort(),'All manifest rows require explicit decisions before scoping')
+    .toEqual(rows.map(row=>row.id).sort());
+  if(name!=='6YE_EYE3'&&name!=='HR_EYE3') return {scopedRows:rows,outsideScope:[] as SourceRow[]};
+  for(const row of rows) z.enum(['6YE Dolls','HR Dolls']).parse(row.brand);
+  return {scopedRows:rows.filter(row=>row.brand===families[name].brand),
+    outsideScope:rows.filter(row=>row.brand!==families[name].brand)};
+}
+function familyChoices(name:z.infer<typeof familySchema>,includeHair:boolean,seedChoices:Choice[],referenceEvidence?:unknown) {
   const family=families[name];
-  expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
+  expect(!includeHair||family.allowHair,'This family is eyes-only; hair is not authorized').toBe(true);
   expect(name!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
+  if(family.seedProductId===null) {
+    const evidence=parseEye3Evidence(referenceEvidence);
+    const eyes=evidence.references.map(r=>({groupId:r.groupId,optionId:r.optionId,reference:r.url}));
+    return {eyes,hair:[] as Choice[],choices:eyes};
+  }
   const eyes=name==='AngelkissHAIR15'?[]:seedChoices.filter(c=>c.groupId==='eye-color');
   expect(eyes.map(c=>c.optionId)).toEqual(family.eyeIds);
   const seedHair=includeHair?seedChoices.filter(c=>c.groupId==='hairstyle'):[];
@@ -189,6 +235,66 @@ it('preserves SE4 eyes-only choices and rejects hair',()=>{
   expect(familyChoices('SE4',false,choices).choices).toEqual(choices);
   expect(()=>familyChoices('SE4',true,choices)).toThrow();
 });
+function eye3EvidenceFixture() {
+  return {family:'6YE-HR-eye3',frozen:true,privateEvidenceOnly:true,
+    status:'parent-assistant-reference-meaning-accepted',reviewer:'parent-assistant',ownerReviewed:false,humanApproval:false,
+    sourceFamilyInventory:{file:'/private/inventory.json',sha256:'a'.repeat(64)},
+    reviewedContactSheet:{file:'/private/references.png',sha256:'b'.repeat(64)},
+    references:eye3References.map(r=>({...r,cachedFile:`/private/${r.optionId}.webp`,
+      meaning:{attribute:'eye-color',property:'visible iris color only',label:r.label,accepted:true,
+        visualMeaningVerified:true,reviewer:'parent-assistant',ownerReviewed:false}})),
+    constraints:{sourcePhotoApprovalGranted:false,generatedFidelityApprovalGranted:false,
+      readinessApprovalGranted:false,registryChanged:false,publicationChanged:false}};
+}
+it.each(['6YE_EYE3','HR_EYE3'] as const)('requires frozen exact references for %s without a seed or hair',(name)=>{
+  expect(families[name].seedProductId).toBeNull();
+  expect(families[name].brand).toBe(name==='6YE_EYE3'?'6YE Dolls':'HR Dolls');
+  const result=familyChoices(name,false,[],eye3EvidenceFixture());
+  expect(result.choices).toEqual(eye3References.map(r=>({groupId:r.groupId,optionId:r.optionId,reference:r.url})));
+  expect(result.hair).toEqual([]);
+  expect(()=>familyChoices(name,true,[],eye3EvidenceFixture())).toThrow();
+  expect(()=>familyChoices(name,false,wmChoiceFixture)).toThrow();
+});
+it('rejects unfrozen, unaccepted, wrong-family or human-attributed EYE3 evidence',()=>{
+  for(const changed of [{frozen:false},{frozen:undefined},{family:'WM14'},{status:'pending'},
+    {reviewer:'user'},{ownerReviewed:true},{humanApproval:true}]) {
+    expect(()=>parseEye3Evidence({...eye3EvidenceFixture(),...changed})).toThrow();
+  }
+});
+it('rejects missing, duplicate, extra, swapped or changed EYE3 reference mappings',()=>{
+  const evidence=eye3EvidenceFixture(),refs=evidence.references;
+  for(const references of [refs.slice(1),[refs[0],refs[0],refs[2]],[...refs,refs[0]],
+    [refs[1],refs[0],refs[2]],
+    refs.map((r,i)=>i===0?{...r,label:'Brown'}:r),
+    refs.map((r,i)=>i===0?{...r,url:refs[1].url}:r),
+    refs.map((r,i)=>i===0?{...r,sha256:'c'.repeat(64)}:r),
+    refs.map((r,i)=>i===0?{...r,groupId:'hairstyle'}:r),
+    refs.map((r,i)=>i===0?{...r,meaning:{...r.meaning,accepted:false}}:r),
+    refs.map((r,i)=>i===0?{...r,meaning:{...r.meaning,label:'Brown'}}:r)]) {
+    expect(()=>parseEye3Evidence({...evidence,references})).toThrow();
+  }
+  expect(()=>parseEye3Evidence({...evidence,constraints:{...evidence.constraints,sourcePhotoApprovalGranted:true}})).toThrow();
+});
+it.each(['6YE_EYE3','HR_EYE3'] as const)('scopes %s only after the entire mixed manifest is reviewed',(name)=>{
+  const rows:SourceRow[]=[{...sourceFixture(),brand:'6YE Dolls'},
+    {...sourceFixture(),id:'gid://shopify/Product/124',handle:'hr-source',brand:'HR Dolls'}];
+  const ids=rows.map(row=>row.id);
+  const result=scopeReviewedRows(rows,ids,name);
+  expect(result.scopedRows).toEqual(rows.filter(row=>row.brand===families[name].brand));
+  expect(result.outsideScope).toEqual(rows.filter(row=>row.brand!==families[name].brand));
+  // Even a missing decision for the other brand must block finalization.
+  expect(()=>scopeReviewedRows(rows,result.scopedRows.map(row=>row.id),name)).toThrow();
+  expect(()=>scopeReviewedRows(rows,[...ids,'gid://shopify/Product/125'],name)).toThrow();
+  expect(()=>scopeReviewedRows(rows.map(row=>({...row,brand:undefined})),ids,name)).toThrow();
+  expect(()=>scopeReviewedRows(rows.map(row=>({...row,brand:'WM Dolls'})),ids,name)).toThrow();
+  expect(manifestSchema.parse({rows}).rows.map(row=>row.brand)).toEqual(['6YE Dolls','HR Dolls']);
+});
+it('keeps existing families unfiltered, including manifests without brand metadata',()=>{
+  const rows=[sourceFixture()];
+  for(const name of ['WM14','SE4','YL14','AngelkissHAIR15'] as const) {
+    expect(scopeReviewedRows(rows,rows.map(row=>row.id),name)).toEqual({scopedRows:rows,outsideScope:[]});
+  }
+});
 const fields: Record<string,string> = {
   catalogIdentityKey:'catalog_identity_key',catalogBodyIdentityKey:'catalog_body_identity_key',headModel:'head_model',
   displayName:'display_name',bodyType:'body_type',lookTags:'look_tags',brand:'brand',sourceTitle:'source_title',
@@ -227,7 +333,7 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
   const includeHair = process.env.DOLLVUE_BATCH_INCLUDE_HAIR === '1';
   const familyName=familySchema.parse(process.env.DOLLVUE_BATCH_FAMILY || 'WM14');
   const family=families[familyName];
-  expect(!includeHair||family.allowHair,'SE4 is eyes-only; hair is not authorized').toBe(true);
+  expect(!includeHair||family.allowHair,'This family is eyes-only; hair is not authorized').toBe(true);
   expect(familyName!=='AngelkissHAIR15'||includeHair,'AngelkissHAIR15 requires INCLUDE_HAIR=1').toBe(true);
   const manifestBytes = await fs.readFile(manifestPath);
   const {rows} = manifestSchema.parse(JSON.parse(manifestBytes.toString()));
@@ -263,16 +369,31 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     }
   }
   expect(reviews.size,'All manifest rows require explicit decisions').toBe(rows.length);
-  const approved = rows.filter(row=>reviews.get(row.id)!.decision.verdict==='PASS_ADULT_NON_EXPLICIT_SOURCE');
+  const {scopedRows,outsideScope}=scopeReviewedRows(rows,reviews.keys(),familyName);
+  const approved = scopedRows.filter(row=>reviews.get(row.id)!.decision.verdict==='PASS_ADULT_NON_EXPLICIT_SOURCE');
   expect(approved.length).toBeGreaterThan(0);
   const registryBytes = await fs.readFile('lib/dollvue/readiness-registry.json');
   const registry = JSON.parse(registryBytes.toString()) as Record<string,DollVueReadinessRecord>;
-  const seed = registry[family.seedProductId];
-  expect(seed.status).toBe('ready');
-  const {eyes,hair,choices}=familyChoices(familyName,includeHair,seed.choices);
+  const seed = family.seedProductId===null?undefined:registry[family.seedProductId];
+  let referenceEvidence:z.infer<typeof eye3EvidenceSchema>|undefined;
+  let referenceEvidenceFile:string|undefined;
+  if(family.seedProductId===null) {
+    referenceEvidenceFile=await privateInput(process.env.DOLLVUE_BATCH_REFERENCE_EVIDENCE || '');
+    const bytes=await fs.readFile(referenceEvidenceFile);
+    referenceEvidence=parseEye3Evidence(JSON.parse(bytes.toString()));
+    inputs.push({file:referenceEvidenceFile,sha256:sha(bytes)});
+    const boundFiles=[referenceEvidence.sourceFamilyInventory,referenceEvidence.reviewedContactSheet,
+      ...referenceEvidence.references.map(r=>({file:r.cachedFile,sha256:r.sha256}))];
+    for(const bound of boundFiles) {
+      const file=await privateInput(bound.file);
+      expect(sha(await fs.readFile(file)),`Changed reference evidence: ${file}`).toBe(bound.sha256);
+      inputs.push({file,sha256:bound.sha256});
+    }
+  } else expect(seed?.status).toBe('ready');
+  const {eyes,hair,choices}=familyChoices(familyName,includeHair,seed?.choices || [],referenceEvidence);
   const ids = approved.map(row=>row.id);
   for(const id of ids) expect(registry[id],`Existing registry entry ${id}; never replace implicitly`).toBeUndefined();
-  const allowedIds = new Set([...ids,seed.productId]);
+  const allowedIds = new Set([...ids,...(seed?[seed.productId]:[])]);
   expect(hasShopifyStorefrontEnv()).toBe(true);
   const counts = {storefrontBulkReads:0,currentHoldBulkReads:0,imageReads:0,generationCalls:0,remoteWrites:0};
   const nativeFetch = globalThis.fetch;
@@ -309,9 +430,11 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     const holds = await getCurrentDollVueHolds(readIds);
     const firstHoldCheckedAt = new Date().toISOString();
     expect(readIds.map(id=>holds.get(id))).toEqual(readIds.map(()=>'clear'));
-    const seedProduct = mapShopifyProduct(nodes.get(seed.productId)!);
-    const seedConfig = dollVueConfigForProduct(seedProduct,getCustomizationConfig(seedProduct));
-    expect(dollVueReadinessFingerprint(seedProduct,seedConfig)).toBe(seed.fingerprint);
+    if(seed) {
+      const seedProduct = mapShopifyProduct(nodes.get(seed.productId)!);
+      const seedConfig = dollVueConfigForProduct(seedProduct,getCustomizationConfig(seedProduct));
+      expect(dollVueReadinessFingerprint(seedProduct,seedConfig)).toBe(seed.fingerprint);
+    }
     const verified = new Map<string,string>();
     async function verify(url:string,hash:string,optionReference=false) {
       pin.parse(hash);
@@ -320,7 +443,10 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       verified.set(url,hash);
     }
     const referencePins:Record<string,string> = {};
-    for(const choice of choices) {const hash=seed.imageDigests![choice.reference];await verify(choice.reference,hash,true);referencePins[choice.reference]=hash;}
+    for(const choice of choices) {
+      const hash=referenceEvidence?referenceEvidence.references.find(r=>r.url===choice.reference)!.sha256:seed!.imageDigests![choice.reference];
+      await verify(choice.reference,hash,true);referencePins[choice.reference]=hash;
+    }
     const records:Record<string,DollVueReadinessRecord> = {}, verification = [];
     for(const row of approved) {
       const product = mapShopifyProduct(nodes.get(row.id)!);
@@ -336,6 +462,13 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
       const config=dollVueConfigForProduct(product,getCustomizationConfig(product));
       const fingerprint=dollVueReadinessFingerprint(product,config);
       expect(fingerprint,`Changed menu/source identity ${row.handle}`).toBe(row.fingerprint);
+      if(referenceEvidence) {
+        const group=config.groups.find(g=>g.id==='eye-color');
+        expect(group?.selectionMode).toBe('single');
+        expect(group?.options.filter(o=>classifyAppearance(group,o).status==='candidate')
+          .map(o=>({optionId:o.id,label:o.label,reference:o.swatch?.value})))
+          .toEqual(eye3References.map(r=>({optionId:r.optionId,label:r.label,reference:r.url})));
+      }
       for(const choice of choices) {
         const group=config.groups.find(g=>g.id===choice.groupId)!;
         expect(group).toBeDefined(); expect(group.visibleWhen?.length || 0).toBe(0);
@@ -383,10 +516,13 @@ it.skipIf(process.env.DOLLVUE_BATCH_READINESS !== '1')('finalizes only explicitl
     for(const input of inputs) expect(sha(await fs.readFile(input.file)),`Evidence changed during finalization: ${input.file}`).toBe(input.sha256);
     await fs.writeFile(output,JSON.stringify({checkedAt:new Date().toISOString(),privateProposalOnly:true,records,verification,
       reviewDecision:{reviewer:'assistant',scope:'Explicit byte-bound gallery-position decisions only (0..7)'},
-      evidence:{inputs,registryInputSha256:sha(registryBytes),seedProductId:seed.productId,
+      evidence:{inputs,registryInputSha256:sha(registryBytes),
+        ...(seed?{seedProductId:seed.productId}:{referenceEvidenceFile,referenceFamily:'6YE-HR-eye3'}),
         holdChecks:{productIds:readIds,firstHoldCheckStartedAt,firstHoldCheckedAt,lastHoldCheckStartedAt,lastHoldCheckedAt,
           firstAllClear:true,lastAllClear:true}},
-      sourceExclusions:rows.filter(row=>!records[row.id]).map(row=>({id:row.id,handle:row.handle,...reviews.get(row.id)})),
+      sourceExclusions:scopedRows.filter(row=>!records[row.id]).map(row=>({id:row.id,handle:row.handle,...reviews.get(row.id)})),
+      outsideScope:outsideScope.map(row=>({id:row.id,handle:row.handle,brand:row.brand,
+        reason:'Outside selected exact-brand family; not a source exclusion',...reviews.get(row.id)})),
       summary:{family:familyName,readyRecords:approved.length,eyesPerRecord:eyes.length,hairPerRecord:hair.length,verifiedUniqueImages:verified.size,...counts},
       registryChanged:false,publicationChanged:false},null,2),{mode:0o600,flag:'wx'});
   } finally {vi.unstubAllGlobals();}
