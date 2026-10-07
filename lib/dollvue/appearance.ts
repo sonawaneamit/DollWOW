@@ -25,7 +25,7 @@ export function classifyAppearance(group: Pick<CustomizationGroup, 'label'>, opt
   if (/^(nail color|nail colour|toe nail color|toenail color)$/.test(groupName)) return {status: 'candidate', attribute: 'nail-color'};
   if (/makeup|finishing|premium|painting/.test(groupName)) {
     if (/freckle/.test(label)) return {status: 'candidate', attribute: 'freckles'};
-    if (/makeup|painting/.test(label) && !/body/.test(text)) return {status: 'candidate', attribute: 'makeup'};
+    if (/makeup|painting/.test(label) && !/body/.test(label)) return {status: 'candidate', attribute: 'makeup'};
   }
   return {status: 'review', reason: 'unclassified-meaning'};
 }

@@ -20,6 +20,9 @@ describe('DollVue appearance classification', () => {
     expect(classifyAppearance({label:'Premium'},{label:'Add freckles'}).status).toBe('candidate');
     expect(classifyAppearance({label:'Premium'},{label:'Body heating'}).status).toBe('excluded');
     expect(classifyAppearance({label:'Hair style'},{label:'Implanted human hair'}).status).toBe('review');
+    const mixed = { label: 'Select Premium Head & Body Options (Multiple)' };
+    expect(classifyAppearance(mixed, { label: 'Realistic Head Painting' })).toEqual({ status: 'candidate', attribute: 'makeup' });
+    expect(classifyAppearance(mixed, { label: 'Hyper Realism Body Painting' }).status).toBe('review');
   });
   it('never enables unavailable options', () => {
     expect(classifyAppearance({label:'Skin tone'}, {label:'Natural',factoryExists:false}).status).toBe('excluded');
