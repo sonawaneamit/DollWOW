@@ -1,5 +1,15 @@
 # New listing release checklist
 
+## Sitemap checks for future uploads
+
+- Set the correct canonical brand/vendor and content type. Sitemaps group products by brand data, not product-handle prefixes.
+- Drafts and private previews must never appear in public sitemaps. After owner-approved publication, confirm the product enters its brand sitemap after cache refresh (hourly revalidation, not an instant guarantee).
+- Check the canonical production URL, 200 status, no redirect and no noindex before counting an uploaded page as indexable. Keep test products, internal charge items and hidden brands excluded.
+- Published Learn articles go into `learn.xml`; collections and brand hubs use their dedicated files. A new brand hub still needs its normal content/registry implementation; sitemap generation does not create a page.
+- Add new brand aliases to the catalog registry. Unmapped public products appear in `products-other.xml` until mapped; review that segment rather than silently dropping products.
+- Submit newly appearing child sitemaps separately in Google Search Console after deployment for segmented reporting. Existing children update automatically; never submit a draft/preview host.
+- Do not stamp today's date on unchanged pages or use stock-check timestamps as content dates. See `docs/seo/sitemap-split.md` for date limitations and release checks.
+
 ## Owned image checks (live and draft)
 
 - Audit stored draft option groups, galleries and editorial images, not just the live crawl.

@@ -26,6 +26,7 @@ export type ProductMedia =
 
 export type Product = {
   id: string;
+  updatedAt?: string;
   handle: string;
   title: string;
   description: string;
