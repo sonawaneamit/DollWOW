@@ -1,6 +1,8 @@
 import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
 import type { DollVueGroup } from "./public";
+import { appearanceReferenceProperty, classifyAppearance } from './appearance';
+import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 
 export const DOLLVUE_PRODUCT_HANDLES = [
   "irontech-luna-152cm-a-cup-silicone-companion-doll-12nvb",
@@ -16,7 +18,7 @@ const DOLLVUE_EXCLUDED_HANDLES = new Set([
 ]);
 export const DOLLVUE_DEFAULT_PRODUCT_HANDLE = DOLLVUE_PRODUCT_HANDLES[0];
 export const DOLLVUE_FREE_PREVIEWS = 5;
-export const DOLLVUE_PROMPT_VERSION = "two-option-preview-v1";
+export const DOLLVUE_PROMPT_VERSION = "two-option-preview-appearance-v2";
 
 export type DollVueSelection = { groupId: string; optionId: string };
 
@@ -28,11 +30,16 @@ export function isDollVueProduct(handle: string) {
 }
 
 export function isDollVueCatalogProduct(product: Product) {
+  if (typeof product.dollVueAvailable === 'boolean') return product.dollVueAvailable;
+  return isLegacyDollVueCatalogProduct(product);
+}
+
+export function isLegacyDollVueCatalogProduct(product: Product) {
   const handle = product.handle.toLowerCase();
   const excludedLusandyProduct = handle.startsWith("lusandy-") &&
     (isExcludedLusandyHandle(handle) || String(product.extended.bodyType).toLowerCase() === "torso");
 
-  return DOLLVUE_PRODUCT_HANDLE_PREFIXES.some((prefix) => handle.startsWith(prefix)) &&
+  return DOLLVUE_PRODUCT_HANDLE_PREFIXES.some(prefix => handle.startsWith(prefix)) &&
     product.extended.stockStatus !== "ready_to_ship" &&
     !excludedLusandyProduct;
 }
@@ -56,8 +63,9 @@ export function dollVueConfigForProduct(product: Product, fallback: BrandCustomi
 
 export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] {
   return config.groups.flatMap((group) => {
+    if (group.visibleWhen?.length) return [];
     const options = group.options
-      .filter((option) => option.dollVueEnabled === true && option.swatch?.kind === "image" && isAppearancePreview(group.label, option.label))
+      .filter((option) => option.dollVueEnabled === true && option.swatch?.kind === "image" && isOwnedOptionAsset(option.swatch.value) && classifyAppearance(group, option).status === 'candidate')
       .map(({ id, label, swatch }) => ({ id, label: cleanLabel(label), swatch }));
     if (!options.length) return [];
     return [{
@@ -66,15 +74,6 @@ export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] 
       options
     }];
   });
-}
-
-function isAppearancePreview(groupLabel: string, optionLabel: string) {
-  const group = groupLabel.trim().toLowerCase().replace(/^select\s+/, "");
-  if (/^(skin tone|hairstyle|wig style|hair color|hair implanted color|eye color|nail color|toe nail color|nipple color|areola color|labia color|vagina color|vagina hair|vagina hair type|pubic hair|pubic hair type)$/.test(group)) return true;
-  if (/makeup|finishing detail|^premium\b|hair implant add-on/.test(group)) {
-    return /makeup|painting|realism|moles|freckles|bikini line|moustache|goatee|chest hair|arms hair|pubic hair|armpit hair/i.test(optionLabel);
-  }
-  return false;
 }
 
 export function resolveDollVueSelections(config: BrandCustomizationConfig, selections: DollVueSelection[]) {
@@ -88,9 +87,23 @@ export function resolveDollVueSelections(config: BrandCustomizationConfig, selec
   return [...unique.values()].slice(0, 2);
 }
 
+export function areDollVueSelectionsValid(config: BrandCustomizationConfig, selections: DollVueSelection[]) {
+  if (selections.length < 1 || selections.length > 2) return false;
+  const resolved = resolveDollVueSelections(config, selections);
+  if (resolved.length !== selections.length) return false;
+  const includes = (choice: DollVueSelection) => selections.some(s => s.groupId === choice.groupId && s.optionId === choice.optionId);
+  for (const {group} of resolved) {
+    const original = config.groups.find(g => g.id === group.id)!;
+    if (original.selectionMode !== 'multiple' && selections.filter(s => s.groupId === group.id).length > 1) return false;
+    // The preview does not yet carry the customer's full configurator state.
+    if (original.visibleWhen?.length) return false;
+  }
+  return !config.rules.some(rule => includes(rule.when) && includes(rule.conflictsWith));
+}
+
 export function buildDollVuePrompt(product: Product, selections: ReturnType<typeof resolveDollVueSelections>) {
   const imageMap = selections.map(({ group, option }, index) =>
-    `Image ${index + 2}: ${group.label} reference only. Transfer only ${referenceProperty(group.id)} for the selected ${option.label} option. Unless the selected attribute explicitly includes shape or size, preserve Image 1's exact original geometry, boundaries, scale, placement, and proportions. Do not copy the reference image's identity, anatomy, pose, clothing, accessories, setting, text, logo, watermark, or unselected properties.`
+    `Image ${index + 2}: ${group.label} reference only. Transfer only ${referenceProperty(group, option)} for the selected ${option.label} option. Unless the selected attribute explicitly includes shape or size, preserve Image 1's exact original geometry, boundaries, scale, placement, and proportions. Do not copy the reference image's identity, anatomy, pose, clothing, accessories, setting, text, logo, watermark, or unselected properties.`
   );
   const requestedEdits = selections.map(({ group, option }, index) =>
     `${group.label.toUpperCase()}: ${option.label}, guided only by Image ${index + 2}. Apply only this named selected attribute to its corresponding already-existing visible feature in Image 1. Adapt it naturally to Image 1's original product, material, local lighting, and presentation. Unless size, shape, placement, geometry, texture, or finish is explicitly named by this option, preserve those properties exactly as they appear in Image 1.`
@@ -115,12 +128,10 @@ export function buildDollVuePrompt(product: Product, selections: ReturnType<type
   ].join("\n\n");
 }
 
-function referenceProperty(groupId: string) {
-  if (groupId === "skin-tone") return "the synthetic-skin color and finish";
-  if (groupId === "hairstyle") return "the visible wig style, color, length, texture, part, and fringe";
-  if (groupId === "hair-color") return "the visible wig color only";
-  if (groupId === "eye-color") return "the visible iris color only";
-  return "the approved finishing-detail placement, density, scale, and color only";
+function referenceProperty(group: DollVueGroup, option: DollVueGroup['options'][number]) {
+  const decision = classifyAppearance(group, option);
+  if (decision.status !== 'candidate') throw new Error('Unsupported DollVue appearance selection');
+  return appearanceReferenceProperty(decision.attribute);
 }
 
 function cleanLabel(value: string) {

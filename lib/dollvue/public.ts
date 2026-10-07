@@ -6,6 +6,10 @@ export type DollVueGroup = {
   options: Array<Pick<CustomizationOption, "id" | "label" | "swatch">>;
 };
 
+export function dollVuePhotoPosition(photos: Array<{ position: number }>, saved?: number) {
+  return photos.some(photo => photo.position === saved) ? saved! : (photos[0]?.position ?? 0);
+}
+
 export function dollVueDraftKey(handle: string) {
   return `dollwow-dollvue-draft-v1:${handle}`;
 }

@@ -2,14 +2,11 @@ import { NextResponse } from "next/server";
 import { createHash } from "node:crypto";
 import sharp from "sharp";
 import { z } from "zod";
-import { getCustomizationConfig } from "@/lib/customization/configs";
 import {
   buildDollVuePrompt,
+  areDollVueSelectionsValid,
   DOLLVUE_PROMPT_VERSION,
   resolveDollVueSelections,
-  dollVueConfigForProduct,
-  isDollVueProduct,
-  isDollVueCatalogProduct,
 } from "@/lib/dollvue/config";
 import { sendDollVueLookEmail } from "@/lib/dollvue/email";
 import { recordDollVuePreview, dollVueUsageForEmail } from "@/lib/dollvue/accountUsage";
@@ -19,6 +16,8 @@ import { productImageSources } from "@/lib/catalog/productImage";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
+import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
+import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -52,28 +51,47 @@ export async function POST(request: Request) {
 
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Choose a photo and at least one available appearance option." }, { status: 400 });
-  if (!isDollVueProduct(parsed.data.productHandle)) return NextResponse.json({ error: "This preview choice is not currently available for this doll." }, { status: 404 });
   const usage = await dollVueUsageForEmail(session.email);
   if (!usage.available) return NextResponse.json({ error: "DollVue™ usage tracking is temporarily unavailable. Please try again shortly." }, { status: 503 });
   if (usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
-  const product = await getProductByHandle(parsed.data.productHandle, { cache: "force-cache", revalidate: 3600 });
-  if (!product || !isDollVueCatalogProduct(product)) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
+  const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
+  if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
+  const eligibility = await resolveCurrentDollVueEligibility(product);
+  if (!eligibility.available || !eligibility.sourcePositions.includes(parsed.data.sourcePosition)) return NextResponse.json({ error: 'This photo is not currently available for a preview.' }, { status: 409 });
   const sources = productImageSources(product);
   const source = sources[parsed.data.sourcePosition];
   if (!source?.url) return NextResponse.json({ error: "This photo could not be used for a preview. Choose another product photo and try again." }, { status: 400 });
 
-  const config = dollVueConfigForProduct(product, getCustomizationConfig(product));
+  const config = eligibility.config;
+  if (!areDollVueSelectionsValid(config, parsed.data.selections)) return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 400 });
   const selections = resolveDollVueSelections(config, parsed.data.selections);
   if (!selections.length) return NextResponse.json({ error: "Those visual options are not available for this doll." }, { status: 400 });
   const optionImages = await Promise.all(selections.map(async ({ option }) => {
     if (option.swatch?.kind !== "image") return "";
+    if (eligibility.imageDigests) {
+      return normalizeReviewedImage({ url: option.swatch.value,
+        sha256: eligibility.imageDigests[option.swatch.value], origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin,
+        optionReference: true }).catch(() => '');
+    }
     return normalizeOwnedOptionReference(option.swatch.value, new URL(request.url).origin);
   }));
   const references = optionImages.filter(Boolean);
   if (references.length !== selections.length) return NextResponse.json({error:'One of these option photos is temporarily unavailable. Please choose another option or try again later.'}, {status:503});
-  const images = [source.url, ...references];
-  const cacheKey = `${DOLLVUE_PROMPT_VERSION}:${product.handle}:${parsed.data.sourcePosition}:${selections.map(({ group, option }) => `${group.id}:${option.id}`).sort().join("|")}`;
+  const sourceImage = eligibility.imageDigests
+    ? await normalizeReviewedImage({ url: source.url, sha256: eligibility.imageDigests[source.url],
+      origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin }).catch(() => '') : source.url;
+  if (!sourceImage) return apiError('This photo has changed or is temporarily unavailable. Please try another photo.', 409);
+  const images = [sourceImage, ...references];
+  const cacheKey = createHash('sha256').update(JSON.stringify({
+    version: DOLLVUE_PROMPT_VERSION,
+    readiness: eligibility.revision,
+    productId: product.id,
+    source,
+    sourceDigest: eligibility.imageDigests?.[source.url],
+    references,
+    prompt: buildDollVuePrompt(product, selections)
+  })).digest('hex');
   const cached = generationCache.get(cacheKey);
   const cachedPreview = cached && Date.now() - cached.createdAt < CACHE_TTL_MS ? cached.previewDataUrl : null;
   if (cached && !cachedPreview) generationCache.delete(cacheKey);

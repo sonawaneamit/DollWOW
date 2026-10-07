@@ -26,6 +26,8 @@ export type ProductMedia =
 
 export type Product = {
   id: string;
+  /** Public capability only; private DollVue review evidence stays on the server. */
+  dollVueAvailable?: boolean;
   updatedAt?: string;
   handle: string;
   title: string;

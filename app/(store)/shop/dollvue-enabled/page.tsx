@@ -26,7 +26,7 @@ export default async function DollVueEnabledCollection({
     dollVue: "enabled",
     sort: selectedFilters.sort && selectedFilters.sort !== "featured" ? selectedFilters.sort : "latest"
   });
-  const products = await getSeoCatalogProducts({ first: 5000 });
+  const products = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true });
   const filtered = filterProducts(products, filters);
   const page = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
   const activeFilterLabels = Object.entries(filters)

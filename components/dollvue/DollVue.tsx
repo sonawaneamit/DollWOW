@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, RotateCcw, Share2, ShieldCheck, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
-import { dollVueDraftKey, dollVueSelectionKey, type DollVueGroup } from "@/lib/dollvue/public";
+import { dollVueDraftKey, dollVueSelectionKey, dollVuePhotoPosition, type DollVueGroup } from "@/lib/dollvue/public";
 import { productUrl } from "@/lib/catalog/productUrl";
 import styles from './DollVue.module.css';
 
@@ -33,7 +33,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
   const [consentAttempts, setConsentAttempts] = useState(0);
   const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
   const [step, setStep] = useState(1);
-  const [photoPosition, setPhotoPosition] = useState(initialDraft.photoPosition ?? product.photos[0]?.position ?? 0);
+  const [photoPosition, setPhotoPosition] = useState(dollVuePhotoPosition(product.photos, initialDraft.photoPosition));
   const [selections, setSelections] = useState<Record<string, string>>(initialDraft.selections ?? {});
   const [accepted, setAccepted] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
@@ -113,7 +113,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
         keepalive: true,
         body: JSON.stringify({
           productHandle: product.handle,
-          sourcePosition: photoPosition,
+          sourcePosition: selectedPhoto.position,
           selections: selectedItems.map(({ group, option }) => ({ groupId: group.id, optionId: option.id }))
         })
       });

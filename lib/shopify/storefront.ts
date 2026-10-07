@@ -6,6 +6,10 @@ import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
+import { resolveCurrentDollVueEligibility, resolveDollVueEligibility, withDollVueCatalogEligibility } from '@/lib/dollvue/eligibility';
+import { getCurrentDollVueHolds } from '@/lib/dollvue/currentHold';
+import dollVueRegistry from '@/lib/dollvue/readiness-registry.json';
+import type { DollVueReadinessRecord } from '@/lib/dollvue/readiness';
 
 const API_VERSION = "2026-04";
 
@@ -96,7 +100,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
     },
     body: JSON.stringify({ query, variables }),
     ...(options.cache === "force-cache" || options.cache === "only-if-cached"
-      ? { cache: options.cache }
+      ? { cache: options.cache, next: { revalidate: options.revalidate ?? 120 } }
       : options.cache === "no-store" || options.cache === "reload"
         ? { cache: options.cache }
         : { next: { revalidate: options.revalidate ?? 120 } })
@@ -187,6 +191,50 @@ const productDetailFields = `
   ${productListFields({ includeCustomizationGroups: true, imageFirst: 50, includeMedia: true })}
 `;
 
+async function withVerifiedDollVueCatalogEligibility(products: Product[]): Promise<Product[]> {
+  const registry = dollVueRegistry as Readonly<Record<string, DollVueReadinessRecord>>;
+  const cards = products.map(withDollVueCatalogEligibility);
+  const ids = [...new Set(products.filter(product => registry[product.id]?.status === 'ready').map(product => product.id))];
+  const verified = new Map<string, Product>();
+  // Detail data is used only for the exact PDP readiness check, never returned in cards.
+  for (let offset = 0; offset < ids.length; offset += 50) {
+    const batch = ids.slice(offset, offset + 50);
+    try {
+      const data = await storefrontFetch<{ nodes: Array<(ProductListNode & { __typename: string }) | null> }>(
+        `query DollVueCatalogReadiness($ids: [ID!]!) {
+          nodes(ids: $ids) { __typename ... on Product { ${productDetailFields} } }
+        }`,
+        { ids: batch },
+        { cache: 'no-store' }
+      );
+      for (const node of data.nodes) {
+        if (!node || node.__typename !== 'Product' || !batch.includes(node.id)) continue;
+        const product = mapShopifyProduct(node);
+        if (isCustomerVisibleProduct(product) && resolveDollVueEligibility(product).available) verified.set(product.id, product);
+      }
+    } catch (error) {
+      // Upstream failures must not promote a ready record or replace catalog results with samples.
+      for (const id of batch) verified.delete(id);
+      console.error('DollVue catalog readiness lookup failed', error);
+    }
+  }
+  const eligibleIds = [...new Set(cards.filter(product => product.dollVueAvailable === true &&
+    verified.get(product.id)?.handle === product.handle).map(product => product.id))];
+  const clearIds = new Set<string>();
+  if (eligibleIds.length) {
+    try {
+      const holds = await getCurrentDollVueHolds(eligibleIds);
+      for (const id of eligibleIds) if (holds.get(id) === 'clear') clearIds.add(id);
+    } catch {
+      // Missing or failed private hold checks cannot enable a badge.
+    }
+  }
+  return cards.map(product => registry[product.id]?.status === 'ready'
+    ? { ...product, dollVueAvailable: product.dollVueAvailable === true &&
+      verified.get(product.id)?.handle === product.handle && clearIds.has(product.id) }
+    : product);
+}
+
 export async function getProducts({
   query,
   first = 96,
@@ -236,14 +284,16 @@ export async function getProducts({
       if (!after) break;
     }
 
-    return products.length ? products : fallbackProducts;
+    return products.length ? await withVerifiedDollVueCatalogEligibility(products) : fallbackProducts;
   } catch (error) {
     console.error(error);
     return fallbackProducts;
   }
 }
 
-export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, strict = false }: { first?: number; revalidate?: number; strict?: boolean } = {}) {
+export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, strict = false, includeDollVueEligibility = false }: {
+  first?: number; revalidate?: number; strict?: boolean; includeDollVueEligibility?: boolean;
+} = {}) {
   const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) {
     if (strict) throw new Error("Sitemap requires the public Shopify catalog");
@@ -307,7 +357,11 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
       if (!after) break;
     }
 
-    return strict ? products : products.length ? products : fallbackProducts;
+    if (!strict && !products.length) return fallbackProducts;
+    // SEO consumers keep the lightweight hint; DollVue surfaces opt into current verification.
+    return includeDollVueEligibility
+      ? await withVerifiedDollVueCatalogEligibility(products)
+      : products.map(withDollVueCatalogEligibility);
   } catch (error) {
     if (strict) throw error;
     console.error(error);
@@ -451,7 +505,7 @@ export async function getSearchProducts({
       { revalidate }
     );
 
-    return data.products.edges
+    const products = data.products.edges
       .map(({ node }) =>
         mapShopifyProduct({
           ...node,
@@ -461,6 +515,7 @@ export async function getSearchProducts({
         } as ProductListNode)
       )
       .filter(isCustomerVisibleProduct);
+    return await withVerifiedDollVueCatalogEligibility(products);
   } catch (error) {
     console.error(error);
     return fallbackProducts;
@@ -502,8 +557,10 @@ export async function getProductCount({ query }: { query?: string } = {}) {
   }
 }
 
-export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number } = { cache: "no-store" }) {
+/** Strict lookups return null for unavailable products and throw on configuration or upstream failures. */
+export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number; strict?: boolean } = { cache: "no-store" }) {
   if (!hasShopifyStorefrontEnv()) {
+    if (options.strict) throw new Error("Shopify Storefront API is not configured.");
     return sampleProducts.find((product) => product.handle === handle) ?? null;
   }
 
@@ -516,9 +573,11 @@ export async function getProductByHandle(handle: string, options: { cache?: Requ
       options
     );
 
-    const product = data.product ? mapShopifyProduct(data.product) : (sampleProducts.find((item) => item.handle === handle) ?? null);
-    return product && isCustomerVisibleProduct(product) ? product : null;
+    const product = data.product ? mapShopifyProduct(data.product) : options.strict ? null : (sampleProducts.find((item) => item.handle === handle) ?? null);
+    return product && isCustomerVisibleProduct(product)
+      ? { ...product, dollVueAvailable: (await resolveCurrentDollVueEligibility(product)).available } : null;
   } catch (error) {
+    if (options.strict) throw error;
     console.error(error);
     return sampleProducts.find((product) => product.handle === handle) ?? null;
   }
@@ -654,11 +713,12 @@ export async function getProductsByHandles(
       variables,
       options
     );
-    return uniqueHandles
+    const products = uniqueHandles
       .map((_, index) => data[`product${index}`])
       .filter((node): node is ProductListNode => Boolean(node))
       .map(mapShopifyProduct)
       .filter(isCustomerVisibleProduct);
+    return await withVerifiedDollVueCatalogEligibility(products);
   } catch (error) {
     console.error(error);
     return [];

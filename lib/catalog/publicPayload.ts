@@ -49,7 +49,7 @@ export function publicCustomizationConfig(config: BrandCustomizationConfig): Bra
 /** Project only at the server/client boundary; never mutate checkout/source records. */
 export function publicProductPayload(product: Product): Product {
   return {
-    ...pick(product, ['id', 'handle', 'title', 'description', 'seo', 'vendor', 'productType', 'tags', 'featuredImage', 'images', 'media', 'variants', 'priceRange']),
+    ...pick(product, ['id', 'dollVueAvailable', 'handle', 'title', 'description', 'seo', 'vendor', 'productType', 'tags', 'featuredImage', 'images', 'media', 'variants', 'priceRange']),
     extended: {
       ...pick(product.extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable']),
       ...(product.extended.customizationGroups ? { customizationGroups: publicCustomizationGroups(product.extended.customizationGroups) } : {}),
@@ -61,7 +61,7 @@ export function publicProductPayload(product: Product): Product {
 /** Product-shaped card props keep shared naming/filter helpers usable without shipping PDP data. */
 export function homepageCardPayload(product: Product): Product {
   return {
-    ...pick(product, ['id', 'handle', 'title', 'vendor', 'productType', 'tags', 'featuredImage', 'priceRange']),
+    ...pick(product, ['id', 'dollVueAvailable', 'handle', 'title', 'vendor', 'productType', 'tags', 'featuredImage', 'priceRange']),
     description: '',
     images: product.featuredImage ? [product.featuredImage] : product.images.slice(0, 1),
     variants: [],

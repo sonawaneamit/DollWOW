@@ -36,7 +36,7 @@ function safeJson(value: unknown) {
 }
 
 export default async function DollVueLandingPage() {
-  const catalog = await getSeoCatalogProducts({ first: 5000 });
+  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true });
   const latestEligibleProducts = catalog
     .filter(isDollVueCatalogProduct)
     .sort((a, b) => (b.extended.sourceReleaseRank ?? 0) - (a.extended.sourceReleaseRank ?? 0))
