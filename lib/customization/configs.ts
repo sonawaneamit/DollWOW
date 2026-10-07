@@ -305,8 +305,9 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
+  const dependencyIds = customizationDependencyIds(product.extended.customizationGroups ?? []);
   const validImportedGroups = product.extended.customizationGroups?.filter(
-    (group) => Array.isArray(group.options) && group.options.length >= 2 && Boolean(group.id) && Boolean(group.label)
+    (group) => Array.isArray(group.options) && (group.options.length >= 2 || (group.options.length === 1 && dependencyIds.has(group.id))) && Boolean(group.id) && Boolean(group.label)
   );
   const importedGroups = validImportedGroups && !text.includes('fanreal')
     ? normalizeImportedBrandColorIdentities(normalizeImportedCaseIdentities(validImportedGroups),
@@ -701,9 +702,25 @@ function supportsIrontechUlw(product: Product) {
  * price data. Those references are useful during internal sourcing, but a
  * customer must never be shown a choice they cannot actually select and buy.
  * Keep only online-orderable choices (priced, included/default, or explicitly
- * free) and drop a group entirely when it no longer offers a real choice.
+ * free). Keep fixed dependency parents even when they offer only one choice.
  */
+function customizationDependencyIds(groups: CustomizationGroup[]) {
+  const ids = new Set<string>();
+  for (const group of groups) {
+    if (!Array.isArray(group.visibleWhen)) continue;
+    for (const branch of group.visibleWhen) {
+      if (!Array.isArray(branch)) continue;
+      for (const rule of branch) {
+        if (rule && typeof rule.groupId === "string") ids.add(rule.groupId);
+      }
+    }
+  }
+  return ids;
+}
+
 function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupIds = new Set<string>(), product?: Product) {
+  // A fixed, orderable parent still controls conditional checkout branches.
+  const dependencyIds = customizationDependencyIds(groups);
   return groups
     .map((group) => ({
       ...group,
@@ -711,7 +728,7 @@ function onlineCheckoutGroups(groups: CustomizationGroup[], preserveSingleGroupI
         isOnlineCheckoutOption(option) || Boolean(product && promotionOptionPrice(product, group, option).eligible)
       )
     }))
-    .filter((group) => group.options.length >= 2 || (group.options.length > 0 && preserveSingleGroupIds.has(group.id)));
+    .filter((group) => group.options.length >= 2 || (group.options.length > 0 && (preserveSingleGroupIds.has(group.id) || dependencyIds.has(group.id))));
 }
 
 function isOnlineCheckoutOption(option: CustomizationOption) {
