@@ -14,13 +14,23 @@ UI FIXES AND INITIAL REVIEWED EXPANSION RELEASED. PR #101 released the UI; PR #1
 
 ## Reviewed expansion production release
 
-### Angelkiss hairstyle family (release preparation)
+### 6YE/HR iris family and WM alternative photos (release preparation)
+
+- Prepared 225 current public 6YE/HR candidates; two additional cached HR identities have a current brand-alias mismatch and remain outside this batch. Frozen assistant reviews and parent-assistant image inspection accepted 100 source-zero photographs: 35 6YE and 65 HR. Three exact owned iris references (Blue/Brown/Green) received separate visual meaning review. Hair is not enabled by this family.
+- Separate proposals passed current identity/menu/source fingerprints, initial/final holds, all defaults and 300 individual eye selections. They verify 38 and 68 unique images respectively. One real Blue generation per brand passed parent-assistant visual inspection under the owner's minor-variation tolerance; eye-opening/facial rendering differences are recorded, not claimed absent. Two provider calls total, no retries or customer mail.
+- Five additional WM records use explicitly reviewed alternative gallery positions 5, 6 and 7, retaining the verified 14-eye/15-hair family. Their proposal checks 34 image hashes, five defaults, 145 individual choices and 1,050 combinations. A sixth alternative remains pending because its side-profile image obscures the eyes, not because of age presentation.
+- Exact integration adds 105 records and preserves all 262 deployed entries. Local total: 367 entries, 361 ready, six unchanged exclusions; 345 public products and 16 unpublished drafts. All 105 actual local cart handlers have passing evidence: 35 6YE, five WM, 64 HR on the initial run plus Cyril on a focused fresh recheck. The initial HR run's one availability 404 is retained; the recheck passed without code, policy or product changes. Include Cyril explicitly in hosted and production checks.
+- Independent integration review passed. Parent ran 572 focused tests (three live opt-ins skipped), TypeScript, production build, all 4,950 owned-asset checks and privacy checks across 36 browser chunks containing none of the 361 ready fingerprints. Private evidence is in `6ye-hr-eye3-preparation/` and `wm-alternative-gallery-30/`. Hosted/production verification remains pending. No Shopify publication, price, promotion, homepage or runtime behavior changes.
+
+### Angelkiss hairstyle family (PR #107 live)
 
 - Current bulk reads prepared 78 public custom full-body candidates with exact matches to the 15 reviewed hairstyle references; six draft candidates used different bytes and were not included. Eye options are not approved by this batch.
 - Assistant review and parent-assistant inspection accepted 22 source photographs; no owner image review is claimed. Frozen reports cover all 78 rows. The remaining 56 source-zero photographs need alternatives or presentation clarification; product sale availability is unchanged.
 - The 22-record private proposal verifies 37 image hashes, 22 defaults, 330 individual choice and cart-attribute checks, current identity/fingerprints and initial/final holds. Choices are `hairstyle-1` through `hairstyle-15`, not the WM option IDs. Exact integration preserves all 240 deployed records; local total is 262 entries, 256 ready and six unchanged exclusions.
 - All 22 actual local cart handlers passed. An initial invocation without the environment file failed before network calls; its failed report is retained. The corrected environment-loaded run passed. Parent also ran 459 focused tests (two live opt-ins skipped), TypeScript, production build, 4,950 owned-asset checks and browser-bundle privacy checks across 36 chunks.
-- Generic finalizer now supports exact reviewed gallery positions 0-7, with bounds and mismatch regressions, and an explicit hair-only Angelkiss family. Other families are unchanged. No public runtime or checkout behavior change. Hosted/production verification remains pending for this batch.
+- Generic finalizer now supports exact reviewed gallery positions 0-7, with bounds and mismatch regressions, and an explicit hair-only Angelkiss family. Other families are unchanged. No public runtime or checkout behavior change.
+- PR #107 merged as `b2a51a739288e9cad7ecd5b5daa69d063687cc74`. Preview `dpl_T1RX9uLazsj4GbP5MGLsTyRZGVQ3` and production `dpl_2nVLMZ6rHtc5naurJRxRF2RGv5ca` each passed 16 cases: four sampled Angelkiss viewers/hair carts plus twelve legacy/pilot/draft/access regressions. Production is Ready and actual dollwow.com HTML matched that deployment. Both branch-only preview credentials removed; tracker row 5 updated with 22 ready and 63 remaining against its previous baseline.
+- Deployed expansion now has 256 ready records: 240 public products and 16 unpublished drafts, plus six unchanged exclusions. Legacy coverage is unchanged and not counted here. All-catalog coverage remains unfinished. Private production reports are `production-pr107-sample.json` and `production-pr107-regression.json` under Angelkiss hair-family preparation.
 
 ### YL and private draft release (PR #106)
 
