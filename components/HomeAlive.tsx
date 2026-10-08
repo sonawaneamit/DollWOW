@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BadgeCheck, Camera, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
-import { homepageNewArrivals, homepageBestSellers, homepageFeatureProducts, homepageBrandLogos, HOMEPAGE_FEED_SIZE, isHomepageMaleProduct, uniqueHomepageModels } from "@/lib/catalog/homepage";
+import { homepageNewArrivals, homepageBestSellers, homepageFeatureProducts, homepageBrandLogos, HOMEPAGE_FEED_SIZE, isHomepageMaleProduct, uniqueHomepageModels, homepageModelKey, selectHomepageDiscovery } from "@/lib/catalog/homepage";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -531,15 +531,23 @@ function buildLookTiles(products: Product[]): LookTile[] {
 }
 
 function PreviewShowcase({ products }: { products: Product[] }) {
-  const picks = products.filter((product) => product.featuredImage || product.images[0]).slice(10, 13);
+  const stories = [
+    { handle: 'fanreal-kelly-170cm-g-cup-real-skin-silicone-companion-doll', name: 'Kelly', brand: 'Fanreal', label: 'The silhouette', position: 0 },
+    { handle: 'irontech-lexi-sunset-171cm-s42-ros-max-dark-tanned-silicone-companion-doll', name: 'Lexi', brand: 'Irontech', label: 'Eyes, hair & finishing touches', position: 3 }
+  ].filter(story => homepageFeatureProducts(products).some(product => product.handle === story.handle));
+
+  if (!stories.length) return null;
 
   return (
     <section className="home-band home-preview-band" data-tone="blush">
       <div className="home-band__inner home-preview">
-        <div className="home-preview__stage reveal">
-          {picks.map((product, index) => (
-            <VisualPreviewTile key={product.id} product={product} wide={index === 0} />
-          ))}
+        <div className="home-preview__editorial reveal">
+          {stories.map(story => <Link key={story.handle} href={productUrl(story.handle)} className="home-preview__story">
+            <div className="home-preview__portrait">
+              <Image src={`/product-media/v4/${story.handle}/${story.position}`} alt={`${story.brand} ${story.name}: ${story.label.toLowerCase()}`} width={1000} height={1500} sizes="(min-width: 1024px) 300px, 45vw" />
+            </div>
+            <div className="home-preview__caption"><div><p>{story.label}</p><strong>{story.name} <span>by {story.brand}</span></strong></div><ArrowRight size={22} aria-hidden="true" /></div>
+          </Link>)}
         </div>
         <div className="home-preview__copy reveal" data-d="2">
           <p className="home-eyebrow">Shop with confidence</p>
@@ -556,19 +564,6 @@ function PreviewShowcase({ products }: { products: Product[] }) {
         </div>
       </div>
     </section>
-  );
-}
-
-function VisualPreviewTile({ product, wide = false }: { product: Product; wide?: boolean }) {
-  const image = product.featuredImage ?? product.images[0] ?? null;
-  const imageUrl = protectedProductImageUrlFor(product, image, "card");
-  const displayTitle = productPublicTitle(product);
-
-  return (
-    <Link className={`home-preview__tile home-preview__tile--image ${wide ? "home-preview__tile--wide" : ""}`} href={productUrl(product.handle)}>
-      {imageUrl ? <Image src={imageUrl} alt={displayTitle} fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /> : null}
-      <span>{shortTitle(displayTitle)}</span>
-    </Link>
   );
 }
 
@@ -666,7 +661,19 @@ export function buildRails(products: Product[], bestSellingProducts: Product[] =
     }
   ];
 
-  return rails.filter((rail) => rail.products.length > 0).map(rail => ({...rail, products:rail.products.slice(0, HOMEPAGE_FEED_SIZE)}));
+  const exposure = new Map<string, number>();
+  for (const rail of rails.filter(rail => rail.key === 'new' || rail.key === 'bestsellers')) {
+    for (const product of rail.products) {
+      const key = homepageModelKey(product);
+      exposure.set(key, (exposure.get(key) ?? 0) + 1);
+    }
+  }
+  // Reserve specialty and stock picks before the broader discovery categories.
+  for (const key of ['rare', 'ready', 'male', 'female', 'sale']) {
+    const rail = rails.find(rail => rail.key === key)!;
+    rail.products = selectHomepageDiscovery(rail.products, exposure);
+  }
+  return rails.filter((rail) => rail.products.length > 0);
 }
 
 function HomeBrands({brands}: {brands: typeof homepageBrandLogos}) {
@@ -688,7 +695,7 @@ function productSearchText(product: Product) {
 
 function isRareProduct(product: Product) {
   const text = productSearchText(product);
-  return /\b(rare|limited|specialty|special|petite|plus|tall|elf|anime|hybrid)\b/.test(text) || Boolean(product.extended.heightCm && product.extended.heightCm >= 170);
+  return /\b(rare|limited|specialty|elf|anime|hybrid|torso)\b/.test(text) || Boolean(product.extended.heightCm && product.extended.heightCm >= 180);
 }
 
 function isSaleProduct(product: Product) {

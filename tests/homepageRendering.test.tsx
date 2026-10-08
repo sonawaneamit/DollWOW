@@ -35,4 +35,28 @@ describe('homepage rendering', () => {
     expect(html).not.toContain('most browsed');
     expect(html).not.toContain('home-rail-peek');
   });
+  it('reserves truthful ranked feeds and fills discovery with other models when available', () => {
+    const pool = Array.from({length:48}, (_,index)=>({...products[0],id:`variety-${index}`,handle:`variety-${index}`,title:`Unique ${index}`,extended:{brand:'WM Dolls',stockStatus:'ready_to_ship' as const}}));
+    const rails = buildRails(pool, pool.slice(0,8), pool.slice(0,8));
+    expect(rails.find(r=>r.key==='new')!.products.map(p=>p.id)).toEqual(pool.slice(0,8).map(p=>p.id));
+    expect(rails.find(r=>r.key==='bestsellers')!.products.map(p=>p.id)).toEqual(pool.slice(0,8).map(p=>p.id));
+    const ready = rails.find(r=>r.key==='ready')!.products;
+    const female = rails.find(r=>r.key==='female')!.products;
+    expect(new Set([...pool.slice(0,8),...ready,...female].map(p=>p.id)).size).toBe(24);
+  });
+  it('does not classify ordinary tall or special-offer listings as rare', () => {
+    const ordinary = {...products[0],title:'Ordinary special offer',extended:{brand:'WM Dolls',heightCm:170}};
+    expect(buildRails([ordinary]).find(r=>r.key==='rare')).toBeUndefined();
+    const specialty = {...ordinary,id:'specialty',title:'Elf model'};
+    expect(buildRails([ordinary,specialty]).find(r=>r.key==='rare')!.products.map(p=>p.id)).toEqual(['specialty']);
+  });
+  it('uses eligible curated portraits with short captions instead of arbitrary cropped products', () => {
+    const kelly = {...products[0],id:'kelly',handle:'fanreal-kelly-170cm-g-cup-real-skin-silicone-companion-doll',vendor:'Fanreal',extended:{brand:'Fanreal'}};
+    const html = renderToStaticMarkup(<HomeAlive products={[kelly,...products]} customerReviews={getHomepageReviews()} />);
+    expect(html).toContain('home-preview__portrait');
+    expect(html).toContain('The silhouette');
+    expect(html).toContain('by Fanreal');
+    expect(html).not.toContain('home-preview__tile--wide');
+    expect(html).not.toContain('Eyes, hair &amp; finishing touches');
+  });
 });
