@@ -532,8 +532,8 @@ function buildLookTiles(products: Product[]): LookTile[] {
 
 function PreviewShowcase({ products }: { products: Product[] }) {
   const stories = [
-    { handle: 'starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg', name: 'Freya', brand: 'Starpery', label: 'Find your look', image: '/images/home-hero/video-posters/freya.webp' },
-    { handle: 'irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli', name: 'Vivian', brand: 'Irontech', label: 'Get to know the details', image: '/images/home-hero/video-posters/vivian.webp' }
+    { handle: 'fanreal-kelly-170cm-g-cup-real-skin-silicone-companion-doll', name: 'Kelly', brand: 'Fanreal', label: 'The silhouette', position: 0 },
+    { handle: 'irontech-lexi-sunset-171cm-s42-ros-max-dark-tanned-silicone-companion-doll', name: 'Lexi', brand: 'Irontech', label: 'Eyes, hair & finishing touches', position: 3 }
   ].filter(story => homepageFeatureProducts(products).some(product => product.handle === story.handle));
 
   if (!stories.length) return null;
@@ -544,7 +544,7 @@ function PreviewShowcase({ products }: { products: Product[] }) {
         <div className="home-preview__editorial reveal">
           {stories.map(story => <Link key={story.handle} href={productUrl(story.handle)} className="home-preview__story">
             <div className="home-preview__portrait">
-              <Image src={story.image} alt={`${story.brand} ${story.name}, real doll portrait`} width={480} height={358} sizes="(min-width: 1024px) 360px, 80vw" />
+              <Image src={`/product-media/v4/${story.handle}/${story.position}`} alt={`${story.brand} ${story.name}: ${story.label.toLowerCase()}`} width={1000} height={1500} sizes="(min-width: 1024px) 300px, 45vw" />
             </div>
             <div className="home-preview__caption"><div><p>{story.label}</p><strong>{story.name} <span>by {story.brand}</span></strong></div><ArrowRight size={22} aria-hidden="true" /></div>
           </Link>)}

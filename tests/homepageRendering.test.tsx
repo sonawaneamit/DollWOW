@@ -51,12 +51,12 @@ describe('homepage rendering', () => {
     expect(buildRails([ordinary,specialty]).find(r=>r.key==='rare')!.products.map(p=>p.id)).toEqual(['specialty']);
   });
   it('uses eligible curated portraits with short captions instead of arbitrary cropped products', () => {
-    const freya = {...products[0],id:'freya',handle:'starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg',vendor:'Starpery',extended:{brand:'Starpery'}};
-    const html = renderToStaticMarkup(<HomeAlive products={[freya,...products]} customerReviews={getHomepageReviews()} />);
+    const kelly = {...products[0],id:'kelly',handle:'fanreal-kelly-170cm-g-cup-real-skin-silicone-companion-doll',vendor:'Fanreal',extended:{brand:'Fanreal'}};
+    const html = renderToStaticMarkup(<HomeAlive products={[kelly,...products]} customerReviews={getHomepageReviews()} />);
     expect(html).toContain('home-preview__portrait');
-    expect(html).toContain('Find your look');
-    expect(html).toContain('by Starpery');
+    expect(html).toContain('The silhouette');
+    expect(html).toContain('by Fanreal');
     expect(html).not.toContain('home-preview__tile--wide');
-    expect(html).not.toContain('Get to know the details');
+    expect(html).not.toContain('Eyes, hair &amp; finishing touches');
   });
 });

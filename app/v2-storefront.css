@@ -402,29 +402,38 @@ main {
 
 .home-preview__editorial {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
   gap: 1.5rem;
   min-width: 0;
 }
 
 .home-preview__story {
   display: block;
-  width: 86%;
+  width: 100%;
   max-width: 400px;
   color: inherit;
 }
 
 .home-preview__story:nth-child(even) {
   justify-self: end;
+  margin-top: 5rem;
 }
 
 .home-preview__portrait {
-  aspect-ratio: 480 / 358;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 48px 8px 48px 8px;
 }
 
 .home-preview__story:nth-child(even) .home-preview__portrait {
   border-radius: 8px 48px 8px 48px;
+  aspect-ratio: 1 / 1;
+}
+
+.home-preview__story:nth-child(even) img {
+  object-fit: cover;
+  object-position: 50% 20%;
 }
 
 .home-preview__portrait img {
