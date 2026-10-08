@@ -35,4 +35,28 @@ describe('homepage rendering', () => {
     expect(html).not.toContain('most browsed');
     expect(html).not.toContain('home-rail-peek');
   });
+  it('reserves truthful ranked feeds and fills discovery with other models when available', () => {
+    const pool = Array.from({length:48}, (_,index)=>({...products[0],id:`variety-${index}`,handle:`variety-${index}`,title:`Unique ${index}`,extended:{brand:'WM Dolls',stockStatus:'ready_to_ship' as const}}));
+    const rails = buildRails(pool, pool.slice(0,8), pool.slice(0,8));
+    expect(rails.find(r=>r.key==='new')!.products.map(p=>p.id)).toEqual(pool.slice(0,8).map(p=>p.id));
+    expect(rails.find(r=>r.key==='bestsellers')!.products.map(p=>p.id)).toEqual(pool.slice(0,8).map(p=>p.id));
+    const ready = rails.find(r=>r.key==='ready')!.products;
+    const female = rails.find(r=>r.key==='female')!.products;
+    expect(new Set([...pool.slice(0,8),...ready,...female].map(p=>p.id)).size).toBe(24);
+  });
+  it('does not classify ordinary tall or special-offer listings as rare', () => {
+    const ordinary = {...products[0],title:'Ordinary special offer',extended:{brand:'WM Dolls',heightCm:170}};
+    expect(buildRails([ordinary]).find(r=>r.key==='rare')).toBeUndefined();
+    const specialty = {...ordinary,id:'specialty',title:'Elf model'};
+    expect(buildRails([ordinary,specialty]).find(r=>r.key==='rare')!.products.map(p=>p.id)).toEqual(['specialty']);
+  });
+  it('uses eligible curated portraits with short captions instead of arbitrary cropped products', () => {
+    const freya = {...products[0],id:'freya',handle:'starpery-freya-165cm-g-cup-silicone-head-companion-doll-46ftg',vendor:'Starpery',extended:{brand:'Starpery'}};
+    const html = renderToStaticMarkup(<HomeAlive products={[freya,...products]} customerReviews={getHomepageReviews()} />);
+    expect(html).toContain('home-preview__portrait');
+    expect(html).toContain('Find your look');
+    expect(html).toContain('by Starpery');
+    expect(html).not.toContain('home-preview__tile--wide');
+    expect(html).not.toContain('Get to know the details');
+  });
 });

@@ -41,7 +41,7 @@ export default async function HomePage() {
       <HomeAlive
         products={homepageFeatureProducts(curatedProducts).map(withProtectedProductImages).map(homepageCardPayload)}
         bestSellingProducts={homepageBestSellers(bestSellingProducts).map(withProtectedProductImages).map(homepageCardPayload)}
-        recentlyAddedProducts={homepageNewArrivals(recentlyAddedProducts).map(withProtectedProductImages).map(homepageCardPayload)}
+        recentlyAddedProducts={homepageNewArrivals(recentlyAddedProducts, curatedProducts).map(withProtectedProductImages).map(homepageCardPayload)}
         brands={homepageBrands(brandProducts.flat())}
         customerReviews={getHomepageReviews()}
       />

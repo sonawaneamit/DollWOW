@@ -1,6 +1,5 @@
 import { productBodyType } from "@/lib/catalog/bodyType";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
-import { productPublicTitle } from "@/lib/catalog/naming";
 import type { Product } from "@/types/product";
 import { brandHubHref, getCatalogBrand, normalizeBrandText } from './brands';
 
@@ -45,7 +44,7 @@ export function homepageFeatureProducts(products: Product[]) {
 export const HOMEPAGE_FEED_SIZE = 8;
 
 export function homepageBestSellers(products: Product[]) {
-  return homepageFeatureProducts(products).slice(0, HOMEPAGE_FEED_SIZE);
+  return uniqueHomepageModels(homepageFeatureProducts(products)).slice(0, HOMEPAGE_FEED_SIZE);
 }
 
 export const homepageBrandLogos = [
@@ -72,18 +71,66 @@ export function isHomepageMaleProduct(product: Product) {
   return productBodyType(product) === "male";
 }
 
-export function homepageNewArrivals(products: Product[]) {
-  // Caller supplies CREATED_AT descending; filtering must never promote curated picks.
-  return homepageFeatureProducts(products).slice(0, HOMEPAGE_FEED_SIZE);
+export function homepageNewArrivals(products: Product[], catalog: Product[] = []) {
+  // Prefer the original model entry, not a newly imported warehouse copy.
+  // Preserve CREATED_AT order among the remaining candidates.
+  const customModels = new Set(homepageFeatureProducts([...catalog, ...products])
+    .filter(product => product.extended.stockStatus === 'custom')
+    .map(homepageModelKey));
+  const candidates = homepageFeatureProducts(products).filter(product =>
+    product.extended.stockStatus !== 'ready_to_ship' || !customModels.has(homepageModelKey(product)));
+  // In the newest-first feed, the last warehouse copy is the earliest listing.
+  return uniqueHomepageModels([...candidates].reverse()).reverse().slice(0, HOMEPAGE_FEED_SIZE);
+}
+
+export function homepageModelKey(product: Product) {
+  const title = product.title.toLowerCase()
+    .replace(/\b(?:ready[\s-]*to[\s-]*ship|in[\s-]*stock|rts|customizable|custom[\s-]*order)\b/g, ' ')
+    .replace(/\b(?:us|usa|uk|eu|ca|au|united states|canada|australia|europe)\b/g, ' ')
+    .replace(/\b(?:companion|sex|dolls?|custom)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
+  return `${homepageBrandKey(product)}:${title}`;
 }
 
 export function uniqueHomepageModels(products: Product[]) {
   const seen = new Set<string>();
 
   return products.filter((product) => {
-    const key = productPublicTitle(product).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const key = homepageModelKey(product);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
+}
+
+// Discovery feeds prefer less-exposed models, then balance brands and looks.
+// Sparse categories may repeat across feeds, but never repeat a model inside one.
+export function selectHomepageDiscovery(products: Product[], exposure: Map<string, number>) {
+  const remaining = uniqueHomepageModels(homepageFeatureProducts(products));
+  const selected: Product[] = [];
+  const brands = new Map<string, number>();
+  const looks = new Map<string, number>();
+  const lookKey = (product: Product) => [product.extended.material ?? '', ...(product.extended.lookTags ?? []).slice().sort()].join(':');
+  while (remaining.length && selected.length < HOMEPAGE_FEED_SIZE) {
+    const score = (product: Product) => [exposure.get(homepageModelKey(product)) ?? 0,
+      brands.get(homepageBrandKey(product)) ?? 0, looks.get(lookKey(product)) ?? 0];
+    let best = 0;
+    for (let index = 1; index < remaining.length; index++) {
+      const a = score(remaining[index]);
+      const b = score(remaining[best]);
+      const difference = a.findIndex((value, position) => value !== b[position]);
+      if (difference >= 0 && a[difference] < b[difference]) best = index;
+    }
+    const [product] = remaining.splice(best, 1);
+    selected.push(product);
+    const brand = homepageBrandKey(product);
+    brands.set(brand, (brands.get(brand) ?? 0) + 1);
+    const look = lookKey(product);
+    looks.set(look, (looks.get(look) ?? 0) + 1);
+  }
+  for (const product of selected) {
+    const key = homepageModelKey(product);
+    exposure.set(key, (exposure.get(key) ?? 0) + 1);
+  }
+  return selected;
 }
