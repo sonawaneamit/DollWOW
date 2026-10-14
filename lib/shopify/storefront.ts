@@ -528,7 +528,8 @@ export async function getSearchProducts({
 export function isCustomerVisibleProduct(product: Product) {
   if (isHiddenCatalogBrand(product.extended.brand ?? product.vendor)) return false;
   if ((product.tags || []).some((tag) => isHiddenCatalogBrand(tag))) return false;
-  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag));
+  const showTestProducts = process.env.VERCEL_ENV === "preview";
+  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || (!showTestProducts && /^dollwow-test$/i.test(tag)));
 }
 
 export async function getProductCount({ query }: { query?: string } = {}) {
