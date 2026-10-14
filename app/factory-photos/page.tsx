@@ -68,7 +68,7 @@ const faqs = [
   ["Can factory media be retained with my order records?", "Available build and approval records may be retained with the qualifying private Doll Passport where that service is supported for the order."]
 ] as const;
 
-export const archiveDisclosure =
+const archiveDisclosure =
   "Every image in this public preview comes from a real custom order approved by our team. Faces and customer details are removed.";
 
 function safeJson(data: unknown) {
