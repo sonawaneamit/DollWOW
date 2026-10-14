@@ -1,4 +1,4 @@
-import { catalogBrands, getCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
+import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 
 export type AuthorizationStatus = "certificate" | "written-confirmation" | "authorized";
 
@@ -15,7 +15,7 @@ export type BrandAuthorization = {
   certificatePreviewSrc?: string;
 };
 
-export const brandAuthorizations: BrandAuthorization[] = [
+const allBrandAuthorizations: BrandAuthorization[] = [
   {
     id: "ido-dolls",
     brand: "IDO Dolls",
@@ -150,6 +150,9 @@ export const brandAuthorizations: BrandAuthorization[] = [
     certificatePreviewSrc: "/images/authorizations/previews/avant-doll-authorized.webp"
   }
 ];
+// Public list: unlaunched (hidden) catalog brands are excluded until launch.
+export const brandAuthorizations: BrandAuthorization[] = allBrandAuthorizations.filter((entry) => !isHiddenCatalogBrand(entry.brandValue));
+
 
 const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax"]);
 

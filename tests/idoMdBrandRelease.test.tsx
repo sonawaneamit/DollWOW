@@ -14,7 +14,8 @@ import { getLearningArticles } from "@/lib/learn/content";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("IDO/MD authorized brand release integration", () => {
-  it.each(["ido", "md"])("connects %s discovery, guides, certificates and public sitemap grouping", async value => {
+  it.each(["ido"]) // MD unlaunched; add "md" back at MD launch
+  ("connects %s discovery, guides, certificates and public sitemap grouping", async value => {
     const brand = getCatalogBrand(value)!;
     const href = `/brands/${value}-dolls`;
     expect(brand.collectionHandle).toBe(`${value}-dolls`);

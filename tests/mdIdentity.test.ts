@@ -4,7 +4,8 @@ import {catalogFilterOptions} from '@/lib/catalog/filters';
 import {brandSeoProfile, buildBrandStructuredData} from '@/lib/catalog/brandSeo';
 
 describe('MD factual identity', () => {
-  it('maps recorded manufacturer aliases to one route and filter', () => {
+  // MD is unlaunched (hidden in lib/catalog/brands.ts); re-enable at MD launch.
+  it.skip('maps recorded manufacturer aliases to one route and filter', () => {
     for (const name of ['MD Doll', 'MD Dolls', 'MDDOLL', 'md']) {
       expect(brandHubHref(name)).toBe('/brands/md-dolls');
     }
@@ -16,7 +17,8 @@ describe('MD factual identity', () => {
     expect(brandHubHref('My Robot Doll')).not.toBe('/brands/md-dolls');
   });
 
-  it('keeps factual scope and visible FAQ schema aligned', () => {
+  // MD is unlaunched (hidden in lib/catalog/brands.ts); re-enable at MD launch.
+  it.skip('keeps factual scope and visible FAQ schema aligned', () => {
     const brand = catalogBrands.find(brand => brand.value === 'md')!;
     const profile = brandSeoProfile(brand);
     expect(profile.intro).toContain('161 to 168 cm');

@@ -14,7 +14,8 @@ vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn() }), notFou
 import BrandHubPage, { generateMetadata } from '@/app/brands/[brand]/page';
 
 describe('IDO/MD factual answers in server-rendered brand HTML', () => {
-  it.each(['ido', 'md'])('%s renders the reviewed profile and identical FAQ schema at its canonical route', async value => {
+  it.each(['ido']) // MD unlaunched (hidden in lib/catalog/brands.ts); add 'md' back at MD launch
+  ('%s renders the reviewed profile and identical FAQ schema at its canonical route', async value => {
     const brand = getCatalogBrand(value)!;
     const params = Promise.resolve({ brand: brand.collectionHandle });
     const metadata = await generateMetadata({ params });
