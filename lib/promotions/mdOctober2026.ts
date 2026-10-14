@@ -33,3 +33,27 @@ export function withMdOctoberPricing(product: PromotionProduct, config: BrandCus
   });
   return { ...config, groups };
 }
+
+// MD "US stock dolls / custom dolls special offer" October banner (sunny@mddoll.com, 8 Oct 2026).
+// Same US Pacific clock as the IDO and Jinsan October cards; reverts automatically after 31 Oct PT.
+export const MD_OCTOBER_TIMING = {
+  startsAt: '2026-10-01T07:00:00.000Z',
+  endsAt: '2026-11-01T07:00:00.000Z',
+  dateLabel: '1-31 October 2026'
+} as const;
+
+export const MD_OCTOBER_OFFER = {
+  id: 'md-october-2026', brand: 'MD Doll',
+  image: '/promo/md-october-2026/md.jpg', width: 1280, height: 720,
+  scope: 'Custom MD Doll full-silicone dolls made to order at the factory. The October benefits are applied to your build automatically.',
+  included: ['Bionic skin upgrade at no charge', 'AI box included', '3-in-1 head stand holder included'],
+  standardGifts: ['Hard hands with articulated fingers', 'Hard standing feet', 'Body makeup']
+} as const;
+
+export function isMdOctoberActive(now: Date) {
+  return now.getTime() >= Date.parse(MD_OCTOBER_TIMING.startsAt) && now.getTime() < Date.parse(MD_OCTOBER_TIMING.endsAt);
+}
+
+export function mdOctoberOfferForProduct(product: PromotionProduct, now: Date) {
+  return isMdOctoberActive(now) && mdOctoberActive(product, now);
+}
