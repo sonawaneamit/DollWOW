@@ -173,7 +173,7 @@ function productListFields(options: { includeCustomizationGroups?: boolean; imag
     ${productFieldsBase(options.imageFirst ?? 8)}
     ${
       options.includeMedia
-        ? `media(first: 50) {
+        ? `media(first: 100) {
             edges { node {
               mediaContentType
               alt
@@ -188,7 +188,7 @@ function productListFields(options: { includeCustomizationGroups?: boolean; imag
 }
 
 const productDetailFields = `
-  ${productListFields({ includeCustomizationGroups: true, imageFirst: 50, includeMedia: true })}
+  ${productListFields({ includeCustomizationGroups: true, imageFirst: 100, includeMedia: true })}
 `;
 
 async function withVerifiedDollVueCatalogEligibility(products: Product[]): Promise<Product[]> {
