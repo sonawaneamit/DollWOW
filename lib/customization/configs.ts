@@ -306,6 +306,18 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     .join(" ")
     .toLowerCase();
   const dependencyIds = customizationDependencyIds(product.extended.customizationGroups ?? []);
+  // Fixed included choices belong to this reviewed torso, not a generic upsell menu.
+  if (isClimaxProduct(product) && product.tags.includes('options:climax-ulw885-torso-v1') &&
+      product.extended.customizationGroups?.length &&
+      product.extended.customizationGroups.every(group => group.id && group.label && group.options?.length)) {
+    return {
+      id: 'climax-ulw885-torso-v1',
+      brandLabel: 'Climax Doll',
+      leadTimeNote: 'Your selected configuration is reviewed before production.',
+      groups: product.extended.customizationGroups,
+      rules: []
+    };
+  }
   const validImportedGroups = product.extended.customizationGroups?.filter(
     (group) => Array.isArray(group.options) && (group.options.length >= 2 || (group.options.length === 1 && dependencyIds.has(group.id))) && Boolean(group.id) && Boolean(group.label)
   );
@@ -431,7 +443,31 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
     return importedBrandConfig(product, purpose, "climax-source-verified", "Climax Doll", getClimaxCustomizationGroups(product, importedGroups));
   }
   if (isDollsCastleProduct(product) && importedGroups?.length) {
-    return importedBrandConfig(product, purpose, "dolls-castle-source-verified", "Dolls Castle", getDollsCastleCustomizationGroups(product, importedGroups));
+    const config = importedBrandConfig(product, purpose, "dolls-castle-source-verified", "Dolls Castle", getDollsCastleCustomizationGroups(product, importedGroups));
+    const reviewedCastleIntake = product.tags.some(tag => /^options:dolls-castle-(?:sz27-160|sz17-160|sz16-160|s21-120|s12-120)-20261014$/.test(tag));
+    const fixedCastleChoices = new Set(['included-head', 'evo', 'standing-feet', 'fingers', 'gel-breasts', 'gel-buttocks', 'shrugging', 'shown-painting']);
+    // Fixed construction is not a set of removable checkbox upgrades. Required
+    // single-choice groups preserve every included item through defaults/reset.
+    return {
+      ...config,
+      groups: config.groups.flatMap(group =>
+        group.id === 'included-construction' && importedGroups.some(source => source.id === group.id && source.required) && group.selectionMode === 'multiple' &&
+        // Shopify's mapper reconstructs signals from notes; reviewed imports
+        // without notes still retain their explicit fixed-construction contract.
+        group.options.every(option => option.priceDelta === 0 && (option.sourceProductionNoteSignals?.defaultSupplierSelection ||
+          (reviewedCastleIntake && fixedCastleChoices.has(option.id))))
+          ? group.options.map(option => ({
+            ...group,
+            id: `${group.id}-${option.id}`,
+            label: `Included: ${option.label}`,
+            required: true,
+            selectionMode: 'single' as const,
+            display: 'compact' as const,
+            options: [option]
+          }))
+          : [group]
+      )
+    };
   }
   if (isRealLadyProduct(product) && importedGroups?.length) {
     const sourceGroups = normalizeRealLadyImportedGroups(importedGroups);
