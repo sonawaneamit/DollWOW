@@ -1,3 +1,5 @@
+import type { DependencyDetails } from './ido-md-dependencies';
+
 export type ExactUpgradeBinding = {
   parentVariantId: string;
   group: string;
@@ -30,7 +32,7 @@ type Charge = {
   amount: number;
   currencyCode: string;
   title?: string;
-  items?: Array<{ group?: string; label: string; amount: number; tattooPosition?: string }>;
+  items?: Array<{ group?: string; label: string; amount: number; tattooPosition?: string; dependencyDetails?: DependencyDetails }>;
 };
 
 function cents(amount: number) {
@@ -82,6 +84,13 @@ export function exactUpgradeLines(input: {
       binding.currencyCode === charge.currencyCode && cents(binding.unitAmount) === amount / quantity);
     if (matches.length !== 1) throw new Error(`An exact checkout item is not verified for ${item.label}.`);
     const binding = matches[0];
+    const details = item.dependencyDetails;
+    if (details && (details.scope !== 'ido-md-v1' ||
+        !Array.isArray(details.included) || !Array.isArray(details.configured) ||
+        details.included.some(attribute => !attribute.key.startsWith('Included: ') || !attribute.value.trim()) ||
+        details.configured.some(attribute => !attribute.key.startsWith('Configured: ') || !attribute.value.trim()))) {
+      throw new Error('Invalid dependent customization details.');
+    }
     if (binding.tattooPositions ? !item.tattooPosition || !binding.tattooPositions.includes(item.tattooPosition) : item.tattooPosition !== undefined) {
       throw new Error('Tattoo placement needs a verified choice.');
     }
@@ -104,6 +113,7 @@ export function exactUpgradeLines(input: {
       attributes: [
         { key: 'Applies to', value: charge.title || 'Configured doll' },
         { key: 'Customization', value: `${item.group}: ${item.label}` },
+        ...(details ? [{ key: '_DollWOW_dependency_scope', value: details.scope }, ...details.included, ...details.configured] : []),
         ...(item.tattooPosition ? [{ key: 'Tattoo position', value: item.tattooPosition }] : [])
       ]
     };

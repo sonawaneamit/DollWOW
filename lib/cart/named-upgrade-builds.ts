@@ -55,6 +55,10 @@ export function namedUpgradeBuilds(
       seen.add(identity);
       return { lineId: child.id, merchandiseId: child.merchandise.id, title: matches[0].productTitle,
         group: binding.group, choice, quantity: child.quantity,
+        ...(child.attributes.some(attribute => attribute.key === '_DollWOW_dependency_scope' && attribute.value === 'ido-md-v1') ? {
+          includedChoices: child.attributes.filter(attribute => attribute.key.startsWith('Included: ')),
+          configuredChoices: child.attributes.filter(attribute => attribute.key.startsWith('Configured: '))
+        } : {}),
         ...(positions.length ? { tattooPosition: positions[0].value } : {}) };
     });
     return {

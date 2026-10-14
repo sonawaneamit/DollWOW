@@ -21,6 +21,54 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  md: {
+    metaTitle: "MD Doll: Silicone Dolls, Included Features & Options",
+    metaDescription: "Shop MD Doll silicone models from 161 to 168 cm. Compare body shapes, heads, included EVO skeleton and body makeup, plus model-specific custom options.",
+    positioning: "MD Doll combines silicone bodies, an included EVO skeleton and body makeup with a choice of heads and optional finishes.",
+    intro: "Explore MD Doll silicone dolls, also known as MDDOLL, in a collection spanning 161 to 168 cm with different body shapes and head designs. The factory's standard full-doll package includes an EVO skeleton, hard hands, articulated or wire fingers, hard standing feet, body makeup and jelly breasts. Compare the face, proportions and listed weight, then choose the appearance and additional features available for your model.",
+    buyerNotes: [
+      {title: "Start with the included build", body: "Body makeup, the EVO skeleton, hard hands, standing feet and jelly breasts are standard features, not separate paid upgrades. Finger construction follows the model; eyebrows are drawn or implanted, and ROS is included on heads that support it."},
+      {title: "Choose your finish and functions", body: "MD offers options such as implanted hair, mechanical closable eyelids, bionic skin and heating. Availability depends on the body and head. Real skin texture is included on the 161 cm body, while the 162 cm and 166B, 166C and 166D bodies list it as optional."},
+      {title: "Find the right proportions", body: "Compare height, bust, waist and hips alongside the head and gallery. Use the listed weight to plan handling; where it is simply labeled Weight, confirm what it includes before comparing it with body-only or shipping figures."}
+    ],
+    comparisonRows: [
+      ["Included construction", "EVO skeleton, hard hands, articulated or wire fingers, standing feet, body makeup and jelly breasts.", "Start with the standard build, then review any additional choices on your product."],
+      ["Skin and finish", "Compare body makeup, real skin texture and optional bionic skin as distinct features.", "Check which finish is included for your body and which selections change the total."],
+      ["Head and appearance", "Choose the face, eyebrow finish and available hair or eyelid options.", "Match your chosen head to its supported functions; ROS is included where the head supports it."]
+    ],
+    faqs: [
+      {question: "Are MD Doll and MDDOLL the same brand?", answer: "Yes. MD Doll and MDDOLL are names used for the same manufacturer. This collection brings its silicone models together for comparison by body, head, measurements and available options."},
+      {question: "What comes included with an MD full doll?", answer: "The factory lists hard hands, articulated or wire fingers, hard standing feet, body makeup, an EVO skeleton and jelly breasts as standard. Eyebrows are drawn or implanted, and ROS is included if the selected head supports it."},
+      {question: "Is real skin texture included on every MD doll?", answer: "No. The factory lists real skin texture as included on the 161 cm body and optional on the 162 cm and 166B, 166C and 166D bodies. Body makeup is part of the standard package; real skin texture and bionic skin are separate features. Check the inclusions for your chosen body."},
+      {question: "Which MD features can I customize?", answer: "Depending on the body and head, available options can include implanted synthetic or real hair, mechanical closable eyelids, bionic skin, heating and other functions. Choose from the options on your product page and review the final total."},
+      {question: "How do I compare MD bodies at the same height?", answer: "Compare the body version and complete bust, waist and hip measurements. The collection includes different proportions at similar heights, so use the measurement table and gallery together."},
+      {question: "Which MD weight should I use for handling?", answer: "Use the weight for your exact model. If the listing says only Weight, ask what that figure includes; body-only, complete-doll and packed shipping weights are different measurements."}
+    ]
+  },
+  ido: {
+    metaTitle: "IDO Dolls: Silicone Bodies & Included Factory Features",
+    metaDescription: "Shop IDO silicone dolls with included skin texture, body makeup, weight reduction 4.0 and EVO skeleton. Compare body shapes, ID-series heads and appearance.",
+    positioning: "IDO brings skin texture, capillary body makeup, weight reduction 4.0 and softness features together in its standard silicone build.",
+    intro: "Explore IDO silicone dolls with a factory-included feature package: realistic skin texture and capillary body makeup, weight reduction 4.0, super softness, gel breasts and buttocks, and an EVO skeleton. Implanted eyebrows and eyelashes, handmade eyes and a wig are included too. Choose your body shape, then compare the ID-series code and face, skin tone and available wig choices to find your preferred look.",
+    buyerNotes: [
+      {title: "Features included from the start", body: "IDO's factory package includes articulated fingers, hard hands with bionic finger bones, wired toes and hard standing feet without bolts, alongside its texture, makeup, softness and weight-reduction features. These standard features carry no separate option charge."},
+      {title: "Choose the body and face", body: "Compare height, bust, waist and hips with the head gallery. Select from the head, skin tone and wig choices offered for your model. ROS is standard on supported heads; ID1H does not have ROS."},
+      {title: "Plan for handling", body: "Weight reduction 4.0 is included, but the finished weight still varies by body. Use the listed weight for your chosen model and keep any before-reduction or packed shipping figure separate."}
+    ],
+    comparisonRows: [
+      ["Skin and softness", "Realistic skin texture, capillary body makeup, super softness, gel breasts and gel buttocks are included.", "Compare the finished appearance and body proportions without adding these standard features as paid upgrades."],
+      ["Structure and handling", "EVO skeleton, weight reduction 4.0, articulated fingers, hard hands, wired toes and bolt-free standing feet are included.", "Read the exact body measurements and listed weight when planning space and handling."],
+      ["Face and styling", "Implanted brows and lashes, handmade eyes and a wig are part of the standard package.", "Choose from the supported head and appearance options; ID1H has no ROS."]
+    ],
+    faqs: [
+      {question: "What is included with an IDO silicone doll?", answer: "The factory package includes skin texture and capillary body makeup, weight reduction 4.0, super softness, gel breasts and buttocks, an EVO skeleton, articulated fingers, hard hands, wired toes and hard standing feet without bolts. Implanted eyebrows and eyelashes, handmade eyes and a wig are also included."},
+      {question: "Does every IDO head include ROS?", answer: "ROS is a standard feature on supported IDO heads. The factory specifically identifies ID1H as a head without ROS, so keep the complete head code when choosing your face."},
+      {question: "Which IDO weight should I compare?", answer: "Use the listed weight for your exact body and configuration. Weight reduction 4.0 is already included; before-reduction and packed shipping figures are separate measurements, not the finished doll's handling weight."},
+      {question: "Do IDO's standard features cost extra?", answer: "No. The factory lists its standard feature package as included with no separate option charge. Head, skin tone and available wig choices personalize the look; they do not turn the included construction features into paid upgrades."},
+      {question: "How do I choose an IDO body and head?", answer: "Start with the height and bust, waist and hip measurements that suit your preferences and space. Then compare ID-series heads and the available skin tone and wig choices. The same face can be paired with different body proportions."},
+      {question: "Are photographed outfits included with an IDO doll?", answer: "A wig is part of the factory package. Other photographed outfits, jewelry and scene props are included only when the product or a current offer explicitly lists them."}
+    ]
+  },
   moonvale: {
     metaTitle: "Moonvale Dolls: Silicone Fantasy Models",
     metaDescription: "Compare Moonvale Lyora, Sorelle, Velara and Cerina silicone dolls by height, character styling, current price and product-specific options.",

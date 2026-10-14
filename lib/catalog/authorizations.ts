@@ -1,4 +1,4 @@
-import { catalogBrands, getCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
+import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 
 export type AuthorizationStatus = "certificate" | "written-confirmation" | "authorized";
 
@@ -15,7 +15,27 @@ export type BrandAuthorization = {
   certificatePreviewSrc?: string;
 };
 
-export const brandAuthorizations: BrandAuthorization[] = [
+const allBrandAuthorizations: BrandAuthorization[] = [
+  {
+    id: "ido-dolls",
+    brand: "IDO Dolls",
+    brandValue: "ido",
+    certificateIssuer: "AIDEROS ROBOT TECHNOLOGY CO., LTD",
+    aliases: ["ido", "ido doll", "idodoll", "idodolls"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/ido-dolls-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/ido-dolls-authorized.webp"
+  },
+  {
+    id: "md-dolls",
+    brand: "MD Doll",
+    brandValue: "md",
+    certificateIssuer: "MD DOLL",
+    aliases: ["md", "md dolls", "mddoll", "mddolls"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/md-dolls-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/md-dolls-authorized.webp"
+  },
   {
     id: "wm-dolls",
     brand: "WM Dolls",
@@ -130,6 +150,9 @@ export const brandAuthorizations: BrandAuthorization[] = [
     certificatePreviewSrc: "/images/authorizations/previews/avant-doll-authorized.webp"
   }
 ];
+// Public list: unlaunched (hidden) catalog brands are excluded until launch.
+export const brandAuthorizations: BrandAuthorization[] = allBrandAuthorizations.filter((entry) => !isHiddenCatalogBrand(entry.brandValue));
+
 
 const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax"]);
 

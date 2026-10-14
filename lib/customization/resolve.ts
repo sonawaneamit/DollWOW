@@ -10,6 +10,7 @@ import type {
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { customizationVisibility } from './visibility';
 import { sukiDefaultSelections } from './irontech-suki';
+import { idoMdFixedSelection, idoMdIncludedDefaults, mdIncludedSoftButt } from './ido-md';
 
 function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
   const suki = sukiDefaultSelections(config);
@@ -17,6 +18,8 @@ function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSe
   return Object.fromEntries(
     config.groups.map((group) => {
       if (group.selectionMode === "multiple") {
+        const idoMdDefaults = idoMdIncludedDefaults(config, group);
+        if (idoMdDefaults) return [group.id, idoMdDefaults];
         if (config.id === 'erovenus-torso-max-v1') {
           const includedDefaults = group.options.filter(option => option.priceDelta === 0 && isSupplierSelectedOption(option));
           return [group.id, includedDefaults.map(option => option.id)];
@@ -48,6 +51,8 @@ function normalizedSelections(config: BrandCustomizationConfig, selections: Cust
     config.groups.map((group) => {
       const defaultValue = defaults[group.id] ?? (group.selectionMode === "multiple" ? [] : "");
       const value = selections[group.id] ?? defaultValue;
+      const fixedSelection = idoMdFixedSelection(config, group, value);
+      if (fixedSelection) return [group.id, fixedSelection];
       // An explicit empty selection is a user choice, not a request for defaults.
       if (group.selectionMode === "multiple" && Array.isArray(value) && value.length === 0) return [group.id, []];
       // Do not silently replace a restored conditional choice whose price became unverified.
@@ -90,7 +95,7 @@ export function resolveCustomization(
         groupLabel: group.label,
         optionId: option.id,
         optionLabel: option.label,
-        priceDelta: option.priceDelta ?? 0,
+        priceDelta: mdIncludedSoftButt(config, normalized, group.id, option.id) ? 0 : option.priceDelta ?? 0,
         priceConfirmed: conditionalMenu
           ? option.priceVerified === true && option.purchasable !== false && option.factoryExists !== false && option.displayable !== false && Number.isFinite(option.priceDelta) && option.priceDelta! >= 0
           : includedByDefault || hasCheckoutPrice(option)

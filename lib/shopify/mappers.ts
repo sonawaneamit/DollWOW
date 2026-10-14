@@ -1,4 +1,5 @@
 import type { Product, ProductMedia } from "@/types/product";
+import { catalogWeightLb } from '@/lib/catalog/mdWeight';
 import type { CustomizationGroup } from "@/types/customization";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
 import { importedProductionNoteSignals, sanitizeImportedProductionNote } from "@/lib/customization/production-notes";
@@ -201,7 +202,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       sourceReleaseRank: numberValue(node.sourceReleaseRank?.value),
       material,
       heightCm: numberValue(node.heightCm?.value) ?? numberValue(measuredHeight),
-      weightLb: numberValue(node.weightLb?.value),
+      weightLb: catalogWeightLb(node.brand?.value || node.vendor, measurements, numberValue(node.weightLb?.value), node.tags),
       cupSize: node.cupSize?.value,
       measurements,
       warehouseCountry: node.warehouseCountry?.value,

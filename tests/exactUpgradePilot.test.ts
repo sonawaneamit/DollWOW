@@ -38,6 +38,8 @@ function fixture(mode = '') {
       parentRelationship: { parent: { id: mode === 'wrong-parent' ? 'bad' : line.parent.lineId } } }))];
     if (mode === 'missing-child') rows.pop();
     if (mode === 'lost-included-choice') rows[0].attributes = rows[0].attributes.filter(a => !a.key.startsWith('Included: '));
+    if (mode === 'lost-child-detail') rows[1].attributes = rows[1].attributes.filter(a => !a.key.startsWith('Included: '));
+    if (mode === 'added-child-detail') rows[1].attributes = [...rows[1].attributes, { key: 'Included: Unexpected', value: 'Unverified' }];
     return { cartLinesAdd: { cart: cart(), userErrors: [] } } as T;
   };
   return { request, calls, bindings: async () => mode==='two-products'?[binding,{...binding,parentVariantId:'gid://shopify/ProductVariant/3'}]:[binding], rows: () => rows };
@@ -73,6 +75,19 @@ describe('development-only exact-price pilot integration', () => {
     const f = fixture();
     await expect(createExactUpgradePilotCart([{ ...input, namedUpgradeAttributes: undefined }], [], f.request, f.bindings)).rejects.toThrow('included-choice');
     expect(f.calls).toHaveLength(0);
+  });
+  it.each(['', 'lost-child-detail', 'added-child-detail'])('verifies scoped child details in returned cart: %s', async mode => {
+    const f = fixture(mode);
+    const scopedInput = { ...input, customizationCharge: { ...input.customizationCharge,
+      items: [{ ...input.customizationCharge.items[0], dependencyDetails: { scope: 'ido-md-v1' as const,
+        included: [{ key: 'Included: Extra head type', value: 'ROS' }], configured: [] } }] } };
+    const result = createVerifiedNamedUpgradeCart([scopedInput], [], f.request, [binding]);
+    if (mode) await expect(result).rejects.toThrow('upgrade changed');
+    else {
+      await expect(result).resolves.toMatchObject({ id: 'cart-test' });
+      expect(f.rows()[1].attributes).toContainEqual({ key: 'Included: Extra head type', value: 'ROS' });
+      expect(f.rows()[0].attributes.some(attribute => attribute.value === 'ROS')).toBe(false);
+    }
   });
   it('keeps two builds of the same variant attached to separate parent line IDs', async () => {
     const f = fixture(); expect(await createExactUpgradePilotCart([input, input], [], f.request, f.bindings)).toMatchObject({ totalQuantity: 4 });

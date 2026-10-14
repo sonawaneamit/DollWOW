@@ -65,6 +65,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           material: product.extended.material,
           heightCm: product.extended.heightCm,
           weightLb: product.extended.weightLb,
+          tags: product.tags,
           cupSize: product.extended.cupSize,
           productType: product.productType,
           measurements: product.extended.measurements,

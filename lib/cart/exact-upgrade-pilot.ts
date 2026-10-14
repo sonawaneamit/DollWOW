@@ -238,6 +238,7 @@ export async function createVerifiedNamedUpgradeCart(
       row.merchandise.id === expected.merchandiseId && expected.attributes.every(a => row.attributes.some(b => a.key === b.key && a.value === b.value)));
     const verified = verifiedVariants.find(v => v.id === expected.merchandiseId)!;
     if (rows.length !== 1 || rows[0].quantity !== expected.quantity || rows[0].merchandise.requiresShipping ||
+        (expected.attributes.some(attribute => attribute.key === '_DollWOW_dependency_scope') && rows[0].attributes.length !== expected.attributes.length) ||
         rows[0].merchandise.product.title !== verified.productTitle || rows[0].merchandise.price.currencyCode !== verified.currencyCode ||
         money(Number(rows[0].merchandise.price.amount)) !== money(verified.amount)) throw new Error('A checkout upgrade changed.');
     actual += money(verified.amount) * rows[0].quantity;

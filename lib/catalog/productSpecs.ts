@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { isMdReleaseWeight, mdFactoryBodyKg, productWeightLabel } from './mdWeight';
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productPublicTitle } from "@/lib/catalog/naming";
 
@@ -26,6 +27,11 @@ const MEASUREMENT_LABELS = [
 const CRITICAL_MEASUREMENT_LABELS = new Set(["Height", "Weight", "Cup size", "Bust", "Waist", "Hip"]);
 
 const DESCRIPTION_SPEC_LABELS = [
+  "Factory body weight",
+  "Body weight",
+  "Packing weight",
+  "Listed weight (unverified)",
+  "Listed weight",
   "Height",
   "Weight",
   "Material",
@@ -86,8 +92,10 @@ export function primaryProductSpecs(product: Product): DisplaySpec[] {
       value: measurements.get("Height") ?? fallbackHeight
     },
     {
-      label: "Weight",
-      value: measurements.get("Weight") ?? fallbackWeight
+      label: productWeightLabel(product),
+      value: isMdReleaseWeight(product) && mdFactoryBodyKg(product.extended.brand || product.vendor, product.extended.measurements)
+        ? formatMeasurementDual('Body weight', product.extended.measurements?.['Factory body weight'])
+        : measurements.get('Listed weight') ?? measurements.get('Listed weight (unverified)') ?? measurements.get("Weight") ?? fallbackWeight
     }
   ];
 }
@@ -106,7 +114,13 @@ export function detailedProductSpecs(product: Product): DisplaySpec[] {
   const parsed = descriptionSpecs(product.description);
   const parsedMeasurements = parsed.filter((spec) => isMeasurementLabel(spec.label));
   const parsedDetails = parsed.filter((spec) => !isMeasurementLabel(spec.label) && !["Brand", "Material", "Delivery"].includes(spec.label));
-  return dedupeSpecs([...measurementSpecs, ...parsedMeasurements, ...base, ...parsedDetails])
+  const md = isMdReleaseWeight(product);
+  const bodyWeight = mdFactoryBodyKg(product.extended.brand || product.vendor, product.extended.measurements);
+  const specs = [...measurementSpecs, ...parsedMeasurements, ...base, ...parsedDetails]
+    .filter(spec => !md || !bodyWeight || !['Weight', 'Listed weight', 'Listed weight (unverified)'].includes(spec.label))
+    .map(spec => md && spec.label === 'Factory body weight' ? { ...spec, label: 'Body weight' }
+      : md && ['Weight', 'Listed weight (unverified)'].includes(spec.label) ? { ...spec, label: 'Listed weight' } : spec);
+  return dedupeSpecs(specs)
     .map((spec) => isMeasurementLabel(spec.label) ? { ...spec, value: formatMeasurementDual(spec.label, spec.value) } : spec)
     .filter((spec) => spec.value)
     .slice(0, 18);
@@ -120,7 +134,10 @@ export function productMeasurementSpecs(product: Product): DisplaySpec[] {
       .map((spec) => [normalizeMeasurementLabel(spec.label), spec.value])
   );
 
-  return MEASUREMENT_LABELS.map((label) => {
+  const labels = isMdReleaseWeight(product)
+    ? MEASUREMENT_LABELS.flatMap(label => label === 'Weight' ? [productWeightLabel(product), 'Packing weight'] : [label])
+    : MEASUREMENT_LABELS;
+  return labels.map((label) => {
     const normalized = normalizeMeasurementLabel(label);
     const value = values.get(normalized);
     if (value) return { label: normalized, value };
@@ -262,7 +279,7 @@ function normalizeMeasurementLabel(label: string) {
 }
 
 function isMeasurementLabel(label: string) {
-  return MEASUREMENT_LABELS.includes(normalizeMeasurementLabel(label));
+  return [...MEASUREMENT_LABELS, 'Factory body weight', 'Body weight', 'Packing weight', 'Listed weight', 'Listed weight (unverified)'].includes(normalizeMeasurementLabel(label));
 }
 
 function cleanDescription(description: string) {
@@ -344,7 +361,7 @@ export function formatMeasurementDual(label: string, rawValue: string | number |
 
   const normalizedLabel = normalizeMeasurementLabel(label);
   if (normalizedLabel === "Cup size") return value;
-  if (normalizedLabel === "Weight") return dualWeightFromText(value);
+  if (["Weight", "Body weight", "Factory body weight", "Packing weight", "Listed weight", "Listed weight (unverified)"].includes(normalizedLabel)) return dualWeightFromText(value);
   if (MEASUREMENT_LABELS.includes(normalizedLabel)) return dualLengthFromText(value);
   return value;
 }

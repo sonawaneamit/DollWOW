@@ -1,4 +1,5 @@
 import { sampleProducts } from "@/lib/data/sample-products";
+import { catalogWeightLb } from '@/lib/catalog/mdWeight';
 import type { Product } from "@/types/product";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
@@ -397,7 +398,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       headModel: metafieldText(node.headModel) || undefined,
       material: metafieldText(node.material) || undefined,
       heightCm: metafieldNumber(node.heightCm),
-      weightLb: metafieldNumber(node.weightLb),
+      weightLb: catalogWeightLb(metafieldText(node.brand) || node.vendor, metafieldRecord(node.measurements), metafieldNumber(node.weightLb), node.tags),
       cupSize: metafieldText(node.cupSize) || undefined,
       measurements: metafieldRecord(node.measurements),
       warehouseCountry: metafieldText(node.warehouseCountry) || undefined,
@@ -527,7 +528,8 @@ export async function getSearchProducts({
 export function isCustomerVisibleProduct(product: Product) {
   if (isHiddenCatalogBrand(product.extended.brand ?? product.vendor)) return false;
   if ((product.tags || []).some((tag) => isHiddenCatalogBrand(tag))) return false;
-  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || /^dollwow-test$/i.test(tag));
+  const showTestProducts = process.env.VERCEL_ENV === "preview";
+  return !(product.tags || []).some((tag) => /^dollwow-system$/i.test(tag) || /^custom-option-charge$/i.test(tag) || (!showTestProducts && /^dollwow-test$/i.test(tag)));
 }
 
 export async function getProductCount({ query }: { query?: string } = {}) {

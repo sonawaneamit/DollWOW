@@ -9,7 +9,9 @@ export type CatalogBrand = {
 };
 
 const allCatalogBrands = brandData satisfies CatalogBrand[];
-const hiddenCatalogBrandValues = new Set(["zelex"]);
+// Unlaunched brands keep their registry data but stay out of every public surface
+// (brand directory, filters, hubs, sitemap, authorizations). Remove "md" here to launch MD Doll.
+const hiddenCatalogBrandValues = new Set(["zelex", "md"]);
 
 export const catalogBrands = allCatalogBrands.filter((brand) => !hiddenCatalogBrandValues.has(brand.value));
 

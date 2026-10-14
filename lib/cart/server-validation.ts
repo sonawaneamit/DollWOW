@@ -6,6 +6,7 @@ import { getProductsByVariantIds } from "@/lib/shopify/storefront";
 import type { Product } from "@/types/product";
 import type { CustomizationSelections } from "@/types/customization";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
+import { idoMdDependencyPlan, type DependencyDetails } from './ido-md-dependencies';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -22,7 +23,7 @@ export type ServerValidatedCartLine = {
     amount: number;
     currencyCode: string;
     title: string;
-    items: Array<{ group: string; label: string; amount: number; tattooPosition?: string }>;
+    items: Array<{ group: string; label: string; amount: number; tattooPosition?: string; dependencyDetails?: DependencyDetails }>;
   };
 };
 
@@ -81,6 +82,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   }
 
   const paidOptions = resolved.selectedOptions.filter((option) => option.priceDelta > 0);
+  const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity);
   const optionAmount = money(resolved.optionPriceDelta * input.quantity);
   // Included choices must remain meaningful if a separately purchased upgrade is removed.
   // Conditional menus need an explicit dependency-aware migration, not stale copied text.
@@ -98,7 +100,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
     throw new Error('Please choose a verified tattoo position.');
   }
   const seenIncluded = new Set<string>();
-  const includedOptions = resolved.selectedOptions.filter(option => {
+  const includedOptions = (dependencyPlan?.included ?? resolved.selectedOptions).filter(option => {
     if (option.priceDelta !== 0 || ((noTattoo || paidTattoo) && isTattooPosition(option.groupLabel))) return false;
     const key = JSON.stringify([option.groupLabel, option.optionLabel]);
     if (seenIncluded.has(key)) return false;
@@ -113,7 +115,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
       ...referenceAttribute,
       ...resolved.cartAttributes
     ],
-    namedUpgradeAttributes: hasPaidDependencies ? undefined : [
+    namedUpgradeAttributes: hasPaidDependencies && !dependencyPlan ? undefined : [
       ...safeAttributes,
       ...referenceAttribute,
       { key: '_DollWOW_config_id', value: config.id },
@@ -123,7 +125,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
       amount: optionAmount,
       currencyCode,
       title,
-      items: paidOptions.map((option) => ({
+      items: dependencyPlan?.items ?? paidOptions.map((option) => ({
         group: option.groupLabel,
         label: option.optionLabel,
         amount: money(option.priceDelta * input.quantity),

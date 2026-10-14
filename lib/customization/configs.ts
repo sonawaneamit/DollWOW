@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import { withSeLightweight } from './se-lightweight';
+import { getIdoMdCustomizationConfig } from './ido-md';
 import { withSeSiliconeHead } from './se-silicone-head';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
@@ -288,6 +289,8 @@ export function getFactoryCustomizationConfig(product: Product): BrandCustomizat
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
+  const idoMd = getIdoMdCustomizationConfig(product);
+  if (idoMd) return idoMd;
   const suki = getSukiCustomizationConfig(product);
   if (suki) return suki;
   // Catalog imports are not perfectly consistent about where a brand lands.

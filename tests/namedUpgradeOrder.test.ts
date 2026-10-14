@@ -18,6 +18,22 @@ function orderFixture(): NamedUpgradeOrder {
   };
 }
 describe('named order to factory handoff', () => {
+  it('keeps scoped dependent details on purchased upgrades and removes them after refund', () => {
+    const order = orderFixture();
+    order.lineItems.nodes[1].customAttributes.push(
+      { key: '_DollWOW_dependency_scope', value: 'ido-md-v1' },
+      { key: 'Included: Extra head type', value: 'ROS' },
+      { key: 'Configured: Hair', value: 'Implanted human hair' }
+    );
+    const packet = namedUpgradeFactoryPacket(order, [binding]);
+    expect(packet.builds[0].purchasedUpgrades[0].includedChoices).toContainEqual({ key: 'Included: Extra head type', value: 'ROS' });
+    expect(packet.builds[0].purchasedUpgrades[0].configuredChoices).toContainEqual({ key: 'Configured: Hair', value: 'Implanted human hair' });
+    order.lineItems.nodes[1].currentQuantity = 0;
+    const after = namedUpgradeFactoryPacket(order, [binding]);
+    expect(after.builds[0].purchasedUpgrades).toEqual([]);
+    expect(JSON.stringify(after)).not.toContain('ROS');
+    expect(JSON.stringify(after)).not.toContain('Implanted human hair');
+  });
   it('lists only actual purchased merchandise and included choices, not stale build promises', () => {
     const order = orderFixture();
     const packet = namedUpgradeFactoryPacket(order, [binding]);
