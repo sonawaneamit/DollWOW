@@ -8,6 +8,9 @@ import { JinsanOctoberIndexCards } from "@/components/promotions/JinsanOctoberPr
 import { isJinsanOctoberActive, JINSAN_OCTOBER_OFFERS } from "@/lib/promotions/jinsanOctober2026";
 import { IdoOctoberIndexCard } from "@/components/promotions/IdoOctoberPromotion";
 import { IDO_OCTOBER_OFFER, isIdoOctoberActive } from "@/lib/promotions/idoOctober2026";
+import { MdOctoberIndexCard } from "@/components/promotions/MdOctoberPromotion";
+import { MD_OCTOBER_OFFER, isMdOctoberActive } from "@/lib/promotions/mdOctober2026";
+import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -29,11 +32,13 @@ export default function PromoIndexPage() {
   const promoClock = new Date().toISOString();
   const hasJinsanPromotion = isJinsanOctoberActive(new Date(promoClock));
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
+  const hasMdPromotion = !isHiddenCatalogBrand("md") && isMdOctoberActive(new Date(promoClock));
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
   const itemList = [
     ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
     ...(hasIdoPromotion ? [{ name: `${IDO_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${IDO_OCTOBER_OFFER.id}` }] : []),
+    ...(hasMdPromotion ? [{ name: `${MD_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${MD_OCTOBER_OFFER.id}` }] : []),
     ...(hasIrontechPromotion ? [{ name: IRONTECH_AUTUMN_PROMOTION.title, url: `${siteUrl}/promo#${IRONTECH_AUTUMN_PROMOTION.id}` }] : []),
     ...(hasSeDollPromotion ? Object.values(SE_DOLL_SEPTEMBER_OFFERS).map((offer) => ({ name: offer.shortTitle, url: `${siteUrl}/promo#${offer.id}` })) : [])
   ];
@@ -73,10 +78,11 @@ export default function PromoIndexPage() {
           </div>
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
-        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion ? (
+        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion || hasMdPromotion ? (
           <div className="grid gap-8">
             {hasJinsanPromotion ? <JinsanOctoberIndexCards promoClock={promoClock} /> : null}
             {hasIdoPromotion ? <IdoOctoberIndexCard promoClock={promoClock} /> : null}
+            {hasMdPromotion ? <MdOctoberIndexCard promoClock={promoClock} /> : null}
             {hasIrontechPromotion ? <IrontechAutumnPromoIndexCard /> : null}
             {hasSeDollPromotion ? <SeDollPromoIndexCards /> : null}
           </div>

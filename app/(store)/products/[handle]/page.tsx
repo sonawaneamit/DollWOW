@@ -43,6 +43,7 @@ import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutu
 import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
 import { JinsanOctoberPdpPromotion } from "@/components/promotions/JinsanOctoberPromotion";
 import { IdoOctoberPdpPromotion } from "@/components/promotions/IdoOctoberPromotion";
+import { MdOctoberPdpPromotion } from "@/components/promotions/MdOctoberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
 import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixture";
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
@@ -157,6 +158,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />
             <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
             <IdoOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
+            <MdOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
