@@ -164,7 +164,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
               ) : null}
               <CompareButton
-                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, imageUrl: heroImageUrl, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
+                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, tags: product.tags, imageUrl: heroImageUrl, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
                 label
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
@@ -439,7 +439,7 @@ function formatHeadModel(value?: string) {
 
 function groupMeasurements(measurements: Array<{ label: string; value: string }>) {
   const groups = [
-    { title: "Core size", labels: ["Height", "Weight", "Cup size", "Feet Length"] },
+    { title: "Core size", labels: ["Height", "Weight", "Body weight", "Listed weight", "Packing weight", "Cup size", "Feet Length"] },
     { title: "Body proportions", labels: ["Bust", "Waist", "Hip", "Shoulders Width", "Arms Length", "Legs Length"] },
     { title: "Depth and fit", labels: ["Vagina Depth", "Anus Depth", "Oral Depth"] }
   ];

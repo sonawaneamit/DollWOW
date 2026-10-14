@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { productWeightLabel } from '@/lib/catalog/mdWeight';
 import Image from "next/image";
 import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
@@ -418,7 +419,7 @@ function GuideProductShortlists({ groups }: { groups: GuideProductGroup[] }) {
 function guideMeasurements(product: Product) {
   const values = [];
   if (product.extended.heightCm) values.push(`${heightImperial(product.extended.heightCm)} / ${product.extended.heightCm} cm`);
-  if (product.extended.weightLb) values.push(`${trimNumber(product.extended.weightLb)} lb / ${trimNumber(product.extended.weightLb * 0.45359237)} kg`);
+  if (product.extended.weightLb) values.push(`${productWeightLabel(product) !== 'Weight' ? `${productWeightLabel(product)}: ` : ''}${trimNumber(product.extended.weightLb)} lb / ${trimNumber(product.extended.weightLb * 0.45359237)} kg`);
   else values.push("Current listed weight: ask support to confirm");
   if (product.extended.material) values.push(product.extended.material);
   return values.join(" | ");

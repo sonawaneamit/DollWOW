@@ -1,5 +1,19 @@
 [
   {
+    "value": "ido",
+    "label": "IDO Dolls",
+    "collectionHandle": "ido-dolls",
+    "tags": ["ido", "ido-doll", "ido-dolls"],
+    "aliases": ["ido", "ido doll", "ido dolls", "idodoll", "idodolls"]
+  },
+  {
+    "value": "md",
+    "label": "MD Doll",
+    "collectionHandle": "md-dolls",
+    "tags": ["md", "md-doll", "md-dolls", "mddoll"],
+    "aliases": ["md doll", "md dolls", "mddoll", "mddolls"]
+  },
+  {
     "value": "wm",
     "label": "WM Dolls",
     "collectionHandle": "wm-dolls",

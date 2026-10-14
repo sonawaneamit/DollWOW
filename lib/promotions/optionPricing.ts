@@ -18,6 +18,9 @@ import type { Product } from "@/types/product";
 import { jinsanOctoberBrandForProduct } from "@/lib/promotions/jinsanOctober2026";
 import { octoberOptionAdjustment, type OctoberPricingContext } from "@/lib/promotions/october2026";
 import { getDefaultSelections } from "@/lib/customization/resolve";
+import { mdOctoberBionic, withMdOctoberPricing } from './mdOctober2026';
+import { IDO_MENU_TAG, MD_MENU_TAG } from '@/lib/customization/ido-md';
+import { withIdoOctoberGift } from './idoOctober2026';
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
@@ -76,6 +79,10 @@ export function promotionOptionPrice(
   octoberContext?: OctoberPricingContext
 ): PromotionOptionPrice {
   const catalogDelta = option.priceDelta ?? 0;
+  if (mdOctoberBionic(product, group.id, option, now)) return {
+    catalogDelta, displayDelta: 0, strike: catalogDelta > 0,
+    promoLabel: 'MD October Offer (Ends: 31 Oct)', active: true, eligible: true, displayLabel: option.label
+  };
   if (!allowPromotions) return {
     catalogDelta, displayDelta: catalogDelta, strike: false, promoLabel: null,
     active: false, eligible: false, displayLabel: option.label
@@ -140,6 +147,8 @@ export function withPromotionOptionPricing(
   includeLimitedOctoberOptions = false,
   selections?: CustomizationSelections
 ): BrandCustomizationConfig {
+  if (config.id === MD_MENU_TAG.slice(8)) return withMdOctoberPricing(product, config, now);
+  if (config.id === IDO_MENU_TAG.slice(8)) return withIdoOctoberGift(product, config, now);
   // Legacy label matching is not evidence for branch-specific offers or extra-head charges.
   // Conditional imports retain verified catalog prices until their promotions are reviewed.
   if (config.groups.some((group) => group.visibleWhen !== undefined)) return config;

@@ -8,6 +8,7 @@ export type CompareEntry = {
   productHandle: string;
   productTitle: string;
   brand?: string;
+  tags?: string[];
   imageUrl?: string;
   unitPrice: number;
   currencyCode: string;

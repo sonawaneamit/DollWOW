@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isMdReleaseWeight, productWeightLabel } from '@/lib/catalog/mdWeight';
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
@@ -26,6 +27,7 @@ export async function GET() {
       lookTags: product.extended.lookTags || [],
       heightCm: product.extended.heightCm || null,
       weightLb: product.extended.weightLb || null,
+      ...(isMdReleaseWeight(product) ? { weightLabel: productWeightLabel(product) } : {}),
       cupSize: product.extended.cupSize || null,
       priceRange: {
         min: product.priceRange.minVariantPrice,

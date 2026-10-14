@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { productWeightLabel } from './mdWeight';
 import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
@@ -159,7 +160,7 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
   const hip = measurementMap.get("Hip");
   const legs = measurementMap.get("Legs Length");
   const height = measurementMap.get("Height");
-  const weight = measurementMap.get("Weight");
+  const weight = measurementMap.get(productWeightLabel(product));
   const cupSize = measurementMap.get("Cup size");
   const feet = measurementMap.get("Feet Length");
   const vaginaDepth = measurementMap.get("Vagina Depth");
@@ -170,7 +171,7 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
   const numericHeight = Number(product.extended.heightCm || 0);
   const numericWeight = Number(product.extended.weightLb || 0);
 
-  const sizeLine = [labeledMeasurement("Height", height), labeledMeasurement("Weight", weight), labeledMeasurement("Cup size", cupSize)]
+  const sizeLine = [labeledMeasurement("Height", height), labeledMeasurement(productWeightLabel(product), weight), labeledMeasurement("Cup size", cupSize)]
     .filter(Boolean)
     .join(" • ");
   const fitLine = [
@@ -303,7 +304,7 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
     { name: "Body type", value: productBodyLabel(product) },
     { name: "Head model", value: product.extended.headModel },
     { name: "Height", value: product.extended.heightCm ? `${product.extended.heightCm} cm` : undefined },
-    { name: "Weight", value: product.extended.weightLb ? `${product.extended.weightLb} lb` : undefined },
+    { name: productWeightLabel(product), value: product.extended.weightLb ? `${product.extended.weightLb} lb` : undefined },
     { name: "Cup size", value: normalizeCup(product.extended.cupSize) },
     { name: "Ordering option", value: orderPathLabel(product) },
     { name: "Stock status", value: stockStatusLabel(product.extended.stockStatus) },
@@ -417,7 +418,7 @@ function buildPdpMetaDescription(product: Product) {
     : productPublicTitle(product);
   const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : product.extended.customAvailable ? "Customizable build." : "";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
-  const weight = product.extended.weightLb ? `${Number(product.extended.weightLb.toFixed(1))} lb` : "";
+  const weight = product.extended.weightLb ? `${productWeightLabel(product) !== 'Weight' ? `${productWeightLabel(product)}: ` : ''}${Number(product.extended.weightLb.toFixed(1))} lb` : "";
   const normalizedCup = normalizeCup(product.extended.cupSize);
   const cup = normalizedCup ? `${normalizedCup}-Cup` : "";
   const factLine = [height, weight, cup].filter(Boolean).join(", ");

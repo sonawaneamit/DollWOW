@@ -55,6 +55,7 @@ import { ConfigurationPresets } from "./ConfigurationPresets";
 import { templateConfigurationPresets, type TemplatePresetDefinition } from "@/lib/customization/template-presets";
 import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetChoices } from "@/lib/customization/preset-choices";
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
+import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
@@ -116,10 +117,12 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
     (!/^(?:(?:select|selec)\s+)?tattoo\s+position$/i.test(group.label.trim()) ||
       resolved.selectedOptions.some(option => /^(?:(?:select|selec)\s+)?tattoo$/i.test(option.groupLabel.trim()) &&
         !isNeutralDefaultOption(option.optionId, option.optionLabel))));
+  // Expired MD campaign gifts must not survive as recipe input after repricing.
+  const presetSelections = config.id === MD_MENU_TAG.slice(8) ? resolved.selections : selected;
   const recipePresets = useMemo(() => templateRecipe === undefined
     ? configurationPresets(product.handle, pricedConfig, basePrice, selected)
-    : templateConfigurationPresets(templateRecipe, config, pricedConfig, basePrice, selected),
-  [product.handle, config, pricedConfig, basePrice, selected, templateRecipe]);
+    : templateConfigurationPresets(templateRecipe, config, pricedConfig, basePrice, presetSelections),
+  [product.handle, config, pricedConfig, basePrice, selected, presetSelections, templateRecipe]);
   const presets = useMemo(() => presetChoicePreview
     ? withPresetChoices(recipePresets, pricedConfig, basePrice, selected, [litaHeadChoice], chosenPreset && chosenPreset !== "starter" ? [litaHeadChoice.groupId] : [])
     : recipePresets.map(preset => ({ ...preset, choiceSlots: [], pendingChoices: [] })),
@@ -259,6 +262,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   }
 
   function selectOption(groupId: string, optionId: string) {
+    if (isIdoMdFixedInclusion(pricedConfig, groupId, optionId)) return;
     if (!isOptionAvailableForCheckout(pricedConfig, groupId, optionId)) return;
     if (chosenPreset) trackEvent("configuration_preset_edited", { product_handle: product.handle, preset: chosenPreset, group_id: groupId });
     const group = pricedConfig.groups.find((item) => item.id === groupId);
@@ -698,13 +702,16 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
       <div className={clsx("product-option-grid grid grid-cols-1 gap-3", group.options.length >= 8 && "product-option-grid--scroll") }>
         {visibleOptions.map((option) => {
           const catalogGroup = catalogConfig.groups.find((item) => item.id === group.id);
-          const catalogOption = catalogGroup?.options.find((item) => item.id === option.id) ?? option;
+          const sourceOption = catalogGroup?.options.find((item) => item.id === option.id) ?? option;
+          const includedSoftButt = mdIncludedSoftButt(config, selections, group.id, option.id);
+          const catalogOption = includedSoftButt ? { ...sourceOption, priceDelta: 0, priceLabel: 'included' as const } : sourceOption;
+          const fixedIncluded = isIdoMdFixedInclusion(config, group.id, option.id);
           const conflict = getOptionConflict(config, selections, group.id, option.id);
           const isSelected = selectionIds(selected).includes(option.id);
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
           const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
-          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={option} catalogOption={catalogOption} selected={isSelected} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} promotionContext={promotionContext} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
+          return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={includedSoftButt ? catalogOption : option} catalogOption={catalogOption} selected={isSelected || fixedIncluded} fixedIncluded={fixedIncluded} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} promotionContext={promotionContext} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
         })}
       </div>
       {searchable && !visibleOptions.length ? (
@@ -714,13 +721,14 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
   );
 }
 
-function OptionTile({ product, group, option, catalogOption, selected, disabled, notice, currencyCode, promotionNow, promotionContext, allowPromotions, onClick }: {
+export function OptionTile({ product, group, option, catalogOption, selected, disabled, fixedIncluded = false, notice, currencyCode, promotionNow, promotionContext, allowPromotions, onClick }: {
   product: Product;
   group: CustomizationGroup;
   option: CustomizationOption;
   catalogOption: CustomizationOption;
   selected: boolean;
   disabled: boolean;
+  fixedIncluded?: boolean;
   notice: string | null;
   currencyCode: string;
   promotionNow: Date;
@@ -733,7 +741,8 @@ function OptionTile({ product, group, option, catalogOption, selected, disabled,
     <button
       type="button"
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || fixedIncluded}
+      aria-label={fixedIncluded ? `${option.label}: included as standard` : undefined}
       aria-pressed={selected}
       className={clsx(
         "option-tile relative flex min-h-24 min-w-0 items-start gap-4 rounded-md border p-4 text-left transition-colors",
@@ -750,7 +759,7 @@ function OptionTile({ product, group, option, catalogOption, selected, disabled,
         <span className="option-tile__price mt-2 inline-flex text-sm font-semibold">
           {disabled && catalogOption.priceDelta === undefined && !pricing.active && !/\bfree\b/i.test(option.label)
             ? "Unavailable online"
-            : <PromotionalOptionPrice pricing={pricing} currencyCode={currencyCode} included={option.priceLabel === "included"} />}
+            : <PromotionalOptionPrice pricing={pricing} currencyCode={currencyCode} included={fixedIncluded || option.priceLabel === "included"} />}
         </span>
         {option.productionNote ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-text-dim"><Info className="mt-0.5 h-4 w-4 shrink-0" />{option.productionNote}</span> : null}
         {disabled ? <span className="mt-2 flex gap-1.5 text-sm leading-5 text-danger"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{notice}</span> : null}

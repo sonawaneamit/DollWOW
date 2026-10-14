@@ -1,4 +1,5 @@
 import type { Product } from '@/types/product';
+import { isMdReleaseWeight } from './mdWeight';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from '@/types/customization';
 import { sanitizeImportedProductionNote } from '@/lib/customization/production-notes';
 import { productDisplayName } from '@/lib/catalog/naming';
@@ -48,10 +49,22 @@ export function publicCustomizationConfig(config: BrandCustomizationConfig): Bra
 
 /** Project only at the server/client boundary; never mutate checkout/source records. */
 export function publicProductPayload(product: Product): Product {
+  const redactSourceIdentity = product.tags.some(tag =>
+    tag === 'options:ido-silicone-included-manual-v1' || tag === 'options:md-silicone-body-mvp-v1');
+  // Resolve customer-facing fallbacks before removing this release's supplier identity.
+  const extended = redactSourceIdentity ? {
+    ...product.extended,
+    displayName: productDisplayName(product),
+    lookTags: catalogLookOptions.filter(look => productMatchesLook(product, look.value)).map(look => look.value)
+  } : product.extended;
+  if (redactSourceIdentity) {
+    delete extended.sourceTitle;
+    delete extended.sourceHandle;
+  }
   return {
     ...pick(product, ['id', 'dollVueAvailable', 'handle', 'title', 'description', 'seo', 'vendor', 'productType', 'tags', 'featuredImage', 'images', 'media', 'variants', 'priceRange']),
     extended: {
-      ...pick(product.extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable']),
+      ...pick(extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable']),
       ...(product.extended.customizationGroups ? { customizationGroups: publicCustomizationGroups(product.extended.customizationGroups) } : {}),
       ...(product.extended.editorialIntro ? { editorialIntro: pick(product.extended.editorialIntro, ['eyebrow', 'heading', 'paragraph']) } : {})
     }
@@ -67,6 +80,7 @@ export function homepageCardPayload(product: Product): Product {
     variants: [],
     extended: {
       ...pick(product.extended, ['headModel', 'bodyType', 'lookTags', 'brand', 'material', 'heightCm', 'weightLb', 'cupSize', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'customAvailable']),
+      ...(isMdReleaseWeight(product) && product.extended.measurements?.['Factory body weight'] ? { measurements: { 'Factory body weight': product.extended.measurements['Factory body weight'] } } : {}),
       displayName: productDisplayName(product),
       lookTags: catalogLookOptions.filter(look => productMatchesLook(product, look.value)).map(look => look.value)
     }

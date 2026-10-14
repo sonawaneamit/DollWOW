@@ -8,6 +8,7 @@ import { brandHubHref } from "@/lib/catalog/brands";
 import { activeFilterCount, catalogFilterOptions, getCatalogFilterLabel, type CatalogFilters } from "@/lib/catalog/filters";
 import { DollVueBadge } from "./dollvue/DollVueBadge";
 import { StyledSelect } from "./StyledSelect";
+import { isMdWeightBrand } from '@/lib/catalog/mdWeight';
 
 const quickLinks = [
   { label: "All", href: "/shop/sex-dolls" },
@@ -142,7 +143,7 @@ export function ProductFilters({
         <SelectFilter label="Material" name="material" value={filters.material} options={catalogFilterOptions.materials} />
         <SelectFilter label="Product form" name="productForm" value={filters.productForm} options={catalogFilterOptions.productForms} />
         <SelectFilter label="Height" name="height" value={filters.height} options={catalogFilterOptions.heights} />
-        <SelectFilter label="Weight" name="weight" value={filters.weight} options={catalogFilterOptions.weights} />
+        <SelectFilter label={isMdWeightBrand(filters.brand) ? 'Body weight' : 'Weight'} name="weight" value={filters.weight} options={catalogFilterOptions.weights} />
         <SelectFilter label="Cup size" name="cup" value={filters.cup} options={catalogFilterOptions.cups} />
         <SelectFilter label="Price" name="price" value={filters.price} options={catalogFilterOptions.prices} />
         <SelectFilter label="Sort" name="sort" value={filters.sort === "featured" && defaultSort ? defaultSort : filters.sort || defaultSort || "featured"} options={catalogFilterOptions.sorts} />
