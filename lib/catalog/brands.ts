@@ -12,8 +12,8 @@ const allCatalogBrands = brandData satisfies CatalogBrand[];
 // Unlaunched brands keep their registry data but stay out of every public surface
 // (brand directory, filters, hubs, sitemap, authorizations, /promo).
 // Preview-only brands render on Vercel preview deployments (for review) and stay hidden in production.
-// To launch MD Doll, remove "md" from previewOnlyCatalogBrandValues.
-const previewOnlyCatalogBrandValues = ["md"];
+// MD Doll launched 2026-10-14. Add a brand value here to stage the next one.
+const previewOnlyCatalogBrandValues: string[] = [];
 const isPreviewDeployment = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
 const hiddenCatalogBrandValues = new Set(["zelex", ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
 
