@@ -29,7 +29,9 @@ export function withMdOctoberPricing(product: PromotionProduct, config: BrandCus
   if (!groups.some(group => group.id === 'md-october-gifts')) groups.push({
     id: 'md-october-gifts', label: 'October Included Gift', display: 'compact', selectionMode: 'multiple', required: true,
     options: [{ id: 'three-in-one-head-stand', label: '3-in-1 Head Stand', priceDelta: 0, priceVerified: true,
-      priceLabel: 'included', sourceProductionNoteSignals: { defaultSupplierSelection: true } }]
+      priceLabel: 'included', sourceProductionNoteSignals: { defaultSupplierSelection: true },
+      // Same factory head-stand image as the MD accessories menu.
+      swatch: { kind: 'image', value: '/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp', label: '3-in-1 Head Stand' } }]
   });
   return { ...config, groups };
 }
