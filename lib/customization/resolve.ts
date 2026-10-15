@@ -28,7 +28,10 @@ function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSe
         return [group.id, defaultOption ? [defaultOption.id] : []];
       }
       if (isTopFireRequiredPick(config, group.id)) return [group.id, ""];
-      return [group.id, group.options[0]?.id ?? ""];
+      // Prefer free options as defaults, then neutral defaults, then first option
+      const freeOption = group.options.find((option) => option.priceDelta === 0);
+      const neutralOption = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
+      return [group.id, freeOption?.id ?? neutralOption?.id ?? group.options[0]?.id ?? ""];
     })
   );
 }
