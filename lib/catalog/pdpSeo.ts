@@ -4,7 +4,7 @@ import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
-import { productMeasurementSpecs } from "./productSpecs";
+import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
 
 type IntentChip = {
@@ -211,6 +211,25 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
       : product.extended.deliveryEstimate
         ? `Estimated production and delivery: ${product.extended.deliveryEstimate}.`
         : "Production and delivery timing vary by build and material. You review factory media before shipment.";
+
+  if (isHeadOnlyProduct(product)) {
+    // Loose heads: no body, so no height, weight, cup, clothing or full-body handling copy.
+    const headFeatures = measurementMap.get("Head features") || "";
+    const headModel = measurementMap.get("Head") || "";
+    return [
+      {
+        title: "What's included",
+        body: `${headModel ? `Head ${headModel}, ` : ""}head only. No body is included; photos show the head on a factory body.`
+      },
+      ...(headFeatures ? [{ title: "Head features", body: headFeatures }] : []),
+      {
+        title: "Material",
+        body: `${product.extended.material || "Silicone"} head. Hair, eyes and makeup on the warehouse unit may differ slightly from the photos.`
+      },
+      ...(oralDepth ? [{ title: "Oral depth", lines: [labeledMeasurement("Oral depth", oralDepth)].filter(Boolean) }] : []),
+      { title: "Order timing", body: orderNote }
+    ];
+  }
 
   return [
     {

@@ -66,7 +66,25 @@ export function productPdpTitle(product: Product) {
   const { height, cup, material, headTitlePart, kind, availability, includeVisibleHead } = buildProductNamingData(product);
   const baseParts = [height, cup ? `${cup}-Cup` : "", material, includeVisibleHead ? headTitlePart : ""].filter(Boolean);
   const suffixParts = [availability, shouldAppendKind(baseParts.join(" "), kind) ? kind : ""].filter(Boolean);
-  return preserveAcronyms(cleanText([...baseParts, ...suffixParts].join(" "))) || productPublicTitle(product);
+  const features = topFireTitleFeatures(product);
+  const title = preserveAcronyms(cleanText([...baseParts, ...suffixParts].join(" "))) || productPublicTitle(product);
+  return features ? `${title} with ${features}` : title;
+}
+
+const TOP_FIRE_FEATURE_ALIASES: Record<string, string> = {
+  "ai": "AI Voice Chat",
+  "3-in-1": "3-in-1 Licking, Suction & Heating"
+};
+
+/** Top Fire warehouse titles carry the fitted functions in parentheses; surface them in the H1. */
+export function topFireTitleFeatures(product: Product) {
+  if (getCatalogBrand(product.extended.brand || product.vendor)?.value !== "top-fire") return "";
+  const match = cleanText(product.title).match(/\(([^)]+)\)/);
+  if (!match) return "";
+  const parts = match[1].split(/,\s*/).map((part) => cleanText(part))
+    .filter((part) => part && !/^(fair|light tan|dark tan|tan|bronze|white|natural|brown|black)( skin)?$/i.test(part))
+    .map((part) => TOP_FIRE_FEATURE_ALIASES[part.toLowerCase()] ?? part);
+  return parts.join(", ");
 }
 
 export function productPdpHeading(product: Product) {

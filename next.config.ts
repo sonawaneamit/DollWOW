@@ -50,6 +50,11 @@ const nextConfig: NextConfig = {
         permanent: false
       },
       {
+        source: "/products/top-fire-doll-edma",
+        destination: "/products/top-fire-doll-edma-165cm-c-cup-silicone-companion-doll",
+        permanent: false
+      },
+      {
         source: "/products/irontech-fenny",
         destination: "/products/irontech-fenny-162cm-g-cup-hybrid-companion-doll-1if4v",
         permanent: true

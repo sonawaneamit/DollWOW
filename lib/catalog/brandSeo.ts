@@ -216,6 +216,52 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       }
     ]
   },
+  "top-fire": {
+    // Keywords (DataForSEO, US, 2026-10-15): "top fire doll" / "top fire dolls" / "topfire doll" 320/mo each, "topfiredoll" 40/mo.
+    metaTitle: "Top Fire Dolls: Silicone Sex Dolls, Heads & In-Stock Bodies",
+    metaDescription:
+      "Shop Top Fire Doll (TopFire) silicone dolls at DollWow, an authorized retailer: 155-176 cm custom builds, US, Canada and EU warehouse stock, heads and bodies.",
+    positioning:
+      "Top Fire Doll (also written TopFire or topfiredoll) makes full-silicone female and male dolls with ROS heads and optional oral, AI and motorised functions.",
+    intro:
+      "Top Fire Dolls on DollWow: full-silicone female dolls from 155 to 176 cm and male dolls at 173 cm, built to order with Top Fire's own head, skin, wig, eye and function options. In-stock Top Fire dolls ship from US, Canada and EU warehouses, alongside loose Top Fire heads and headless bodies with auto blowjob or hip swing functions. DollWow is an authorized Top Fire Doll retailer; the certificate is shown on this page.",
+    buyerNotes: [
+      {
+        title: "Custom build or warehouse stock",
+        body: "Custom Top Fire dolls are made to order (estimated 3 weeks) with your choice of head and options. Warehouse dolls ship in about 3 business days in the fixed configuration shown."
+      },
+      {
+        title: "Pick the functions you need",
+        body: "Heads can add auto licking, oral suction, oral heating and an AI voice chat unit. Bodies can add auto blowjob or hip swing and rotation. Each product page lists exactly what is fitted."
+      },
+      {
+        title: "Plan for silicone weight",
+        body: "Full-silicone bodies listed at 27 to 38 kg (59.5 to 83.8 lbs) depending on height. Check the listed weight in kilograms and pounds before ordering."
+      }
+    ],
+    faqs: [
+      {
+        question: "Is DollWow an authorized Top Fire Doll retailer?",
+        answer: "Yes. DollWow is authorized by Top Fire Doll, and the authorization certificate is displayed on this page."
+      },
+      {
+        question: "Are Top Fire dolls TPE or silicone?",
+        answer: "The Top Fire dolls sold on DollWow are full silicone, including the heads."
+      },
+      {
+        question: "What sizes do Top Fire dolls come in?",
+        answer: "Female Top Fire bodies on DollWow range from 155 cm to 176 cm with B-Cup to I-Cup busts. Male Top Fire dolls are 173 cm."
+      },
+      {
+        question: "Can I buy a Top Fire doll in stock?",
+        answer: "Yes. Selected Top Fire dolls, heads and headless bodies are stocked in US, Canadian and EU warehouses with an estimated 3-business-day delivery."
+      },
+      {
+        question: "What functions can a Top Fire doll have?",
+        answer: "Depending on the model: auto licking, oral suction and oral heating heads, an AI voice chat unit, auto blowjob and hip swing and rotation bodies, body heating, breathing and touch sensors."
+      }
+    ]
+  },
   irontech: {
     positioning:
       "Irontech has produced dolls since 2015 and is known for a broad choice of full-silicone, TPE, hybrid, female, and male models, including advanced head and skeleton options on supported builds.",
