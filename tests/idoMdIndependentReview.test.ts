@@ -38,7 +38,8 @@ function product(): Product {
 
 afterEach(() => vi.useRealTimers());
 describe('independent IDO/MD release review', () => {
-  it('allows entering Other Heads from the included ROS default without enabling checkout of a placeholder', () => {
+  // Other Heads is paused sitewide (lib/customization/other-heads.ts) until it has a head-number input; re-enable with it.
+  it.skip('allows entering Other Heads from the included ROS default without enabling checkout of a placeholder', () => {
     const config = getCustomizationConfig(product());
     const defaults = getDefaultSelections(config);
     expect(defaults['head-type']).toBe('ros-head-movable-jaw');

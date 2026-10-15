@@ -22,9 +22,9 @@ function fixture(): Product {
     extended: { brand: 'Irontech', stockStatus: 'custom', customAvailable: true, customizationGroups: [
       { id: 'main', label: 'Main head', required: true, display: 'compact', options: [
         { id: 'shown', label: 'As shown', priceDelta: 0, priceVerified: true, purchasable: true },
-        { id: 'other', label: 'Other head', priceDelta: 100, priceVerified: true, purchasable: true }
+        { id: 'other', label: 'Alternate head', priceDelta: 100, priceVerified: true, purchasable: true }
       ] },
-      { id: 'other-hair', label: 'Other head hair', required: true, display: 'compact',
+      { id: 'other-hair', label: 'Alternate head hair', required: true, display: 'compact',
         visibleWhen: [[{ groupId: 'main', optionId: 'other' }]], options: [
           { id: 'wig', label: 'Wig', priceDelta: 0, priceVerified: true, purchasable: true }
         ] }
