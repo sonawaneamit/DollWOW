@@ -40,7 +40,7 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     id: "top-fire-dolls",
     brand: "Top Fire Doll",
     brandValue: "top-fire",
-    certificateIssuer: "Topfire",
+    certificateIssuer: "Top Fire Doll",
     aliases: ["top fire", "top fire doll", "topfire", "topfiredoll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/top-fire-dolls-authorized.jpg",
