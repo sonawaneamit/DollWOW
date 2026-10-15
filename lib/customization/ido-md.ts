@@ -5,6 +5,16 @@ import { mdRosRules } from './md-ros';
 
 export const IDO_MENU_TAG = 'options:ido-silicone-included-manual-v1';
 export const MD_MENU_TAG = 'options:md-silicone-body-mvp-v1';
+// Top Fire (DOL-152/161): same manual-menu pattern as IDO, rebuilt from the Top Fire agent price list.
+export const TOP_FIRE_MENU_TAG = 'options:top-fire-silicone-manual-v1';
+export const TOP_FIRE_HEADLESS_TAG = 'options:top-fire-headless-body-v1';
+const MENU_TAGS = [IDO_MENU_TAG, MD_MENU_TAG, TOP_FIRE_MENU_TAG, TOP_FIRE_HEADLESS_TAG];
+const MENU_IDS = MENU_TAGS.map(tag => tag.slice(8));
+const topFireFixed = {
+  'premium-head-body-options-multiple': ['realistic-body-painting-free', 'implanted-eyebrows-eyelashes-free', 'super-weight-reduction-free',
+    'articulated-fingers-free', 'soft-gel-buttocks-free', 'soft-vagina-inner-parts-free'],
+  accessories: ['cleaning-set-drying-heating-rod-free']
+};
 
 // Factory standard construction, not optional promotional upgrades.
 const fixedIds: Record<string, Record<string, string[]>> = {
@@ -15,8 +25,15 @@ const fixedIds: Record<string, Record<string, string[]>> = {
   },
   [MD_MENU_TAG.slice(8)]: {
     'premium-head-body-options-multiple': ['hyper-realism-body-painting-free', 'articulated-fingers-free', 'hard-hand', 'real-skin-texture']
-  }
+  },
+  [TOP_FIRE_MENU_TAG.slice(8)]: topFireFixed,
+  [TOP_FIRE_HEADLESS_TAG.slice(8)]: topFireFixed
 };
+
+/** Headless Top Fire bodies ship only with a head the customer picks; the head list has no default. */
+export function isTopFireRequiredPick(config: BrandCustomizationConfig, groupId: string): boolean {
+  return config.id === TOP_FIRE_HEADLESS_TAG.slice(8) && groupId === 'head';
+}
 
 export function isIdoMdFixedInclusion(config: BrandCustomizationConfig, groupId: string, optionId: string): boolean {
   const option = config.groups.find(group => group.id === groupId)?.options.find(option => option.id === optionId);
@@ -27,11 +44,12 @@ export function isIdoMdFixedInclusion(config: BrandCustomizationConfig, groupId:
 }
 
 export function getIdoMdCustomizationConfig(product: Product): BrandCustomizationConfig | undefined {
-  const tags = [IDO_MENU_TAG, MD_MENU_TAG].filter(tag => product.tags.includes(tag));
+  const tags = MENU_TAGS.filter(tag => product.tags.includes(tag));
   if (tags.length !== 1) return undefined;
   const tag = tags[0];
   const brand = (product.extended.brand || product.vendor).toLowerCase().replace(/[\s-]/g, '');
-  if (tag === IDO_MENU_TAG ? !['ido', 'idodoll', 'idodolls'].includes(brand) : !['md', 'mddoll', 'mddolls'].includes(brand)) return undefined;
+  const brands = tag === IDO_MENU_TAG ? ['ido', 'idodoll', 'idodolls'] : tag === MD_MENU_TAG ? ['md', 'mddoll', 'mddolls'] : ['topfire', 'topfiredoll', 'topfiredolls'];
+  if (!brands.includes(brand)) return undefined;
   const supplied = product.extended.customizationGroups;
   if (!supplied?.length || supplied.some(group => !group.id || !group.label || !group.options?.length)) return undefined;
   // The Shopify mapper intentionally strips saved signals. Restore only exact
@@ -54,14 +72,14 @@ export function getIdoMdCustomizationConfig(product: Product): BrandCustomizatio
   }
   if (tag === MD_MENU_TAG) rules.push(...mdRosRules(groups, product.extended.headModel));
   return {
-    id: tag.slice('options:'.length), brandLabel: tag === IDO_MENU_TAG ? 'IDO' : 'MD Doll',
+    id: tag.slice('options:'.length), brandLabel: tag === IDO_MENU_TAG ? 'IDO' : tag === MD_MENU_TAG ? 'MD Doll' : 'Top Fire Doll',
     leadTimeNote: 'Custom details and compatibility are reviewed before production begins.',
     groups, rules
   };
 }
 
 export function idoMdIncludedDefaults(config: BrandCustomizationConfig, group: CustomizationGroup): string[] | undefined {
-  if (![IDO_MENU_TAG.slice(8), MD_MENU_TAG.slice(8)].includes(config.id) || group.selectionMode !== 'multiple') return undefined;
+  if (!MENU_IDS.includes(config.id) || group.selectionMode !== 'multiple') return undefined;
   const included = group.options.filter(option => option.priceDelta === 0 && option.priceVerified === true &&
     option.purchasable !== false && option.factoryExists !== false && option.displayable !== false &&
     hasSourceProductionNoteSignal(option, 'defaultSupplierSelection'));

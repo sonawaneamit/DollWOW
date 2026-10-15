@@ -37,6 +37,16 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     certificatePreviewSrc: "/images/authorizations/previews/md-dolls-authorized.webp"
   },
   {
+    id: "top-fire-dolls",
+    brand: "Top Fire Doll",
+    brandValue: "top-fire",
+    certificateIssuer: "Topfire",
+    aliases: ["top fire", "top fire doll", "topfire", "topfiredoll"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/top-fire-dolls-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/top-fire-dolls-authorized.webp"
+  },
+  {
     id: "wm-dolls",
     brand: "WM Dolls",
     brandValue: "wm",

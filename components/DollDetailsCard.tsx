@@ -1,15 +1,18 @@
 import { CheckCircle2 } from "lucide-react";
-import { formatHeightDual, formatWeightDual } from "@/lib/catalog/productSpecs";
+import { formatHeightDual, formatWeightDual, isHeadOnlyProduct } from "@/lib/catalog/productSpecs";
 import type { Product } from "@/types/product";
 import { productWeightLabel } from '@/lib/catalog/mdWeight';
 
 export function DollDetailsCard({ product }: { product: Product }) {
+  const headOnly = isHeadOnlyProduct(product);
   const details = [
     ["Brand", product.extended.brand ?? product.vendor],
     ["Material", product.extended.material ?? "Ask us"],
-    ["Height", formatHeightDual(product.extended.heightCm) || "Ask us"],
-    [productWeightLabel(product), formatWeightDual(product.extended.weightLb) || "Ask us"],
-    ["Cup size", product.extended.cupSize || "Ask us"],
+    ...(headOnly ? [] : [
+      ["Height", formatHeightDual(product.extended.heightCm) || "Ask us"],
+      [productWeightLabel(product), formatWeightDual(product.extended.weightLb) || "Ask us"],
+      ["Cup size", product.extended.cupSize || "Ask us"]
+    ]),
     ["Delivery", product.extended.deliveryEstimate ?? "Typical timing depends on the build"],
     ["Warehouse", product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry || "Ask us"]
   ];

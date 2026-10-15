@@ -27,7 +27,7 @@ import {
   buildProductFaqStructuredData,
   buildProductStructuredData
 } from "@/lib/catalog/pdpSeo";
-import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
+import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
@@ -209,6 +209,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 customAvailable={product.extended.customAvailable}
                 warehouseCountry={product.extended.warehouseCountry}
                 warehouseRegions={product.extended.warehouseRegions}
+                requiresChoice={product.tags.includes("options:top-fire-headless-body-v1") ? "Choose your head" : undefined}
               />
             )}
             {product.extended.stockStatus !== "ready_to_ship" ? (
@@ -362,7 +363,7 @@ function ProductSpecSummary({
           <h2 id="product-specs-heading">Measurements and details</h2>
         </div>
         <div>
-          <p>Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout.</p>
+          <p>{isHeadOnlyProduct(product) ? "Head-only specs: model, functions, oral depth and delivery. No body is included." : "Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout."}</p>
           <span className="pdp-spec-toggle">View all measurements</span>
         </div>
       </summary>}

@@ -10,7 +10,7 @@ import type {
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { customizationVisibility } from './visibility';
 import { sukiDefaultSelections } from './irontech-suki';
-import { idoMdFixedSelection, idoMdIncludedDefaults, mdIncludedSoftButt } from './ido-md';
+import { idoMdFixedSelection, idoMdIncludedDefaults, isTopFireRequiredPick, mdIncludedSoftButt } from './ido-md';
 
 function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSelections {
   const suki = sukiDefaultSelections(config);
@@ -27,6 +27,7 @@ function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSe
         const defaultOption = group.options.find((option) => isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals) || isSupplierSelectedOption(option));
         return [group.id, defaultOption ? [defaultOption.id] : []];
       }
+      if (isTopFireRequiredPick(config, group.id)) return [group.id, ""];
       return [group.id, group.options[0]?.id ?? ""];
     })
   );

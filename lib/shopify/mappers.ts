@@ -210,7 +210,8 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       stockStatus,
       deliveryEstimate: customerDeliveryEstimate(stockStatus, node.deliveryEstimate?.value, material),
       stockLastCheckedAt: node.stockLastCheckedAt?.value,
-      customAvailable: stockStatus === "ready_to_ship" ? false : customAvailableRaw,
+      // Headless Top Fire bodies are in stock but need a head choice before checkout.
+      customAvailable: stockStatus === "ready_to_ship" ? (node.tags ?? []).includes("options:top-fire-headless-body-v1") : customAvailableRaw,
       penisAddOnAvailable: booleanValue(node.penisAddOnAvailable?.value),
       irontechUlwEligibility: irontechUlwEligibilityValue(node.irontechUlwEligibility?.value),
       customizationGroups,

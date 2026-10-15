@@ -80,8 +80,21 @@ export function productHeroIntro(product: Product) {
   return intro;
 }
 
+/** Loose heads: no body, so no height/weight/body copy. */
+export function isHeadOnlyProduct(product: Product) {
+  return product.tags.includes("head-only");
+}
+
 export function primaryProductSpecs(product: Product): DisplaySpec[] {
   const measurements = measurementValueMap(product);
+  if (isHeadOnlyProduct(product)) {
+    return [
+      { label: "Material", value: product.extended.material ?? "Confirm" },
+      { label: "Delivery", value: product.extended.deliveryEstimate ?? "Typical timing depends on the build" },
+      { label: "Includes", value: "Head only (no body)" },
+      { label: "Head features", value: measurements.get("Head features") ?? measurements.get("Head") ?? "As shown" }
+    ];
+  }
   const fallbackHeight = formatHeightDual(product.extended.heightCm) || specFromDescription(product, "Height") || "Confirm";
   const fallbackWeight = formatWeightDual(product.extended.weightLb) || specFromDescription(product, "Weight") || "Confirm";
   return [
@@ -141,7 +154,7 @@ export function productMeasurementSpecs(product: Product): DisplaySpec[] {
     const normalized = normalizeMeasurementLabel(label);
     const value = values.get(normalized);
     if (value) return { label: normalized, value };
-    if (CRITICAL_MEASUREMENT_LABELS.has(normalized)) return { label: normalized, value: "Ask us" };
+    if (CRITICAL_MEASUREMENT_LABELS.has(normalized) && !isHeadOnlyProduct(product)) return { label: normalized, value: "Ask us" };
     return null;
   }).filter((spec): spec is DisplaySpec => Boolean(spec));
 }
@@ -202,6 +215,11 @@ function isMetadataOnlyIntro(intro: string) {
 
 function productFallbackIntro(product: Product) {
   const brand = (product.extended.brand || product.vendor || "DollWow").replace(/\s+dolls$/i, "");
+  if (isHeadOnlyProduct(product)) {
+    const lead = productDisplayNameForUi(product) || productPublicTitle(product);
+    const material = product.extended.material ? `${product.extended.material.toLowerCase()} ` : "";
+    return `${lead} is a ${product.extended.stockStatus === "ready_to_ship" ? "ready-to-ship" : "made-to-order"} ${brand} ${material}head. Head only; no body is included.`;
+  }
   const availability = product.extended.stockStatus === "ready_to_ship" ? "ready-to-ship" : "made-to-order";
   const material = product.extended.material ? product.extended.material : "";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
