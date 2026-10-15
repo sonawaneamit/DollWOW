@@ -13,7 +13,10 @@ export const DOLLVUE_PRODUCT_HANDLES = [
   "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj",
   "lusandy-nadia-159cm-g-cup-silicone-companion-doll"
 ] as const;
-const DOLLVUE_PRODUCT_HANDLE_PREFIXES = ["irontech-", "starpery-", "lusandy-"] as const;
+// FunWest and Top Fire are preview-only brands: DollVue follows the same gate as their catalog visibility.
+const isPreviewDeployment = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
+const DOLLVUE_PRODUCT_HANDLE_PREFIXES: readonly string[] = ["irontech-", "starpery-", "lusandy-",
+  ...(isPreviewDeployment ? ["funwest-dolls-", "top-fire-doll-"] : [])];
 const DOLLVUE_EXCLUDED_HANDLES = new Set([
   "lusandy-sex-doll-heads"
 ]);
