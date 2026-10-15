@@ -13,6 +13,7 @@ import { promotionOptionPrice } from "@/lib/promotions/optionPricing";
 import { stampLusandyDollVueGroups } from "@/lib/customization/lusandy";
 import { getWmCustomizationFamily, getWmCustomizationGroups } from "@/lib/customization/wm";
 import { normalizeCustomerFacingCustomizationConfig } from "@/lib/customization/customer-labels";
+import { withoutOtherHeads } from "@/lib/customization/other-heads";
 import { ownedOptionGroups, catalogOptionAsset } from "@/lib/assets/option-assets.mjs";
 import { normalizeImportedCaseIdentities, normalizeImportedBrandColorIdentities } from '@/lib/customization/imported-option-identities';
 import {
@@ -275,7 +276,7 @@ const configs = {
 } satisfies Record<string, BrandCustomizationConfig>;
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
-  const config = normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout"));
+  const config = withoutOtherHeads(normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout")));
   return {...config, groups: ownedOptionGroups(config.groups)};
 }
 
