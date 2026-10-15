@@ -70,7 +70,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { handle } = await params;
   const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
   const promoClock = previewPromotionClock(requestedPromoClock);
-  const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
+  const [storefrontProduct, adminProductData] = await Promise.all([
+    getProductByHandle(handle, { cache: "reload", revalidate: 0 }),
+    getProductAdminMetafieldsByHandle(handle)
+  ]);
   if (!storefrontProduct) notFound();
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
