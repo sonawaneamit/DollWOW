@@ -154,7 +154,7 @@ export function productMeasurementSpecs(product: Product): DisplaySpec[] {
     const normalized = normalizeMeasurementLabel(label);
     const value = values.get(normalized);
     if (value) return { label: normalized, value };
-    if (CRITICAL_MEASUREMENT_LABELS.has(normalized)) return { label: normalized, value: "Ask us" };
+    if (CRITICAL_MEASUREMENT_LABELS.has(normalized) && !isHeadOnlyProduct(product)) return { label: normalized, value: "Ask us" };
     return null;
   }).filter((spec): spec is DisplaySpec => Boolean(spec));
 }
