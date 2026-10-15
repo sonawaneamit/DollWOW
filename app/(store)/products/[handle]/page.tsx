@@ -78,7 +78,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
-  const publicProduct = publicProductPayload(withProtectedProductImages(product));
+  const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
   const customizationConfig = stripSupplierFreeLabels(product.extended.brand ?? product.vendor, publicCustomizationConfig(getCustomizationConfig(product)));
@@ -491,7 +491,25 @@ function stripSupplierFreeLabels<T extends { groups: Array<{ options: Array<{ la
     ...config,
     groups: config.groups.map((group) => ({
       ...group,
-      options: group.options.map((option) => ({ ...option, label: option.label.replace(/\s*\(FREE\)/gi, "").trim() }))
+      options: group.options.map((option) => stripFreeOption(option))
     }))
   };
+}
+
+const supplierFreeLabel = /\s*\(FREE\)/gi;
+function stripFreeOption<O extends { label: string; swatch?: unknown }>(option: O): O {
+  const swatch = option.swatch as { label?: string } | undefined;
+  return {
+    ...option,
+    label: option.label.replace(supplierFreeLabel, "").trim(),
+    ...(swatch && typeof swatch.label === "string" ? { swatch: { ...swatch, label: swatch.label.replace(supplierFreeLabel, "").trim() } } : {})
+  };
+}
+
+// The public product payload also carries the raw imported menu (extended.customizationGroups).
+function stripSupplierFreeProductLabels<P extends { vendor?: string; extended: { brand?: string; customizationGroups?: Array<{ options: Array<{ label: string; swatch?: unknown }> }> } }>(product: P): P {
+  const brand = product.extended.brand ?? product.vendor;
+  const groups = product.extended.customizationGroups;
+  if (!brand || !/funwest|top[- ]?fire/i.test(brand) || !groups) return product;
+  return { ...product, extended: { ...product.extended, customizationGroups: groups.map((group) => ({ ...group, options: group.options.map(stripFreeOption) })) } };
 }
