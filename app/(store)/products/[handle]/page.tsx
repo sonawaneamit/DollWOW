@@ -79,7 +79,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
   const publicProduct = publicProductPayload(withProtectedProductImages(product));
-  const customizationConfig = publicCustomizationConfig(getCustomizationConfig(product));
+  // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
+  // Strip only the public payload so template runtime hashes keep binding to the source menu.
+  const customizationConfig = stripSupplierFreeLabels(product.extended.brand ?? product.vendor, publicCustomizationConfig(getCustomizationConfig(product)));
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -481,4 +483,15 @@ function measurementGroupVisual(title: string) {
     return { icon: <Ruler className="h-5 w-5" />, toneClass: "is-rose", note: "Useful for clothing fit and silhouette expectations." };
   }
   return { icon: <ShieldCheck className="h-5 w-5" />, toneClass: "is-olive", note: "Reference dimensions often checked before purchase." };
+}
+
+function stripSupplierFreeLabels<T extends { groups: Array<{ options: Array<{ label: string }> }> }>(brand: string | undefined | null, config: T): T {
+  if (!brand || !/funwest|top[- ]?fire/i.test(brand)) return config;
+  return {
+    ...config,
+    groups: config.groups.map((group) => ({
+      ...group,
+      options: group.options.map((option) => ({ ...option, label: option.label.replace(/\s*\(FREE\)/gi, "").trim() }))
+    }))
+  };
 }

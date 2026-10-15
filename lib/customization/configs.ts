@@ -279,7 +279,24 @@ const configs = {
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
   const config = withoutOtherHeads(normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout")));
-  return {...config, groups: ownedOptionGroups(config.groups)};
+  return withPreviewDealerDollVue(product, {...config, groups: ownedOptionGroups(config.groups)});
+}
+
+// FunWest/Top Fire (preview-only brands) imported menus never flagged DollVue appearance options,
+// so the PDP DollVue entry could not resolve any previewable group. Flag owned image swatches in
+// appearance groups only, on preview deployments only. dollVueEnabled is not part of the template signature.
+const previewDealerDollVueGroup = /^(skin tone|hairstyle|eye color|nail color|toe ?nail color|areola color|nipple color|labia color|vagina color|vagina hair type)$/i;
+function withPreviewDealerDollVue(product: Product, config: BrandCustomizationConfig): BrandCustomizationConfig {
+  const isPreview = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
+  if (!isPreview || !/^(funwest-dolls-|top-fire-doll-)/.test(product.handle)) return config;
+  return {
+    ...config,
+    groups: config.groups.map((group) => previewDealerDollVueGroup.test(group.label.trim()) ? {
+      ...group,
+      options: group.options.map((option) => option.swatch?.kind === "image" && option.dollVueEnabled === undefined
+        ? { ...option, dollVueEnabled: true } : option)
+    } : group)
+  };
 }
 
 /**
