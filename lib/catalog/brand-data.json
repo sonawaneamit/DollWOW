@@ -3,182 +3,459 @@
     "value": "ido",
     "label": "IDO Dolls",
     "collectionHandle": "ido-dolls",
-    "tags": ["ido", "ido-doll", "ido-dolls"],
-    "aliases": ["ido", "ido doll", "ido dolls", "idodoll", "idodolls"]
+    "tags": [
+      "ido",
+      "ido-doll",
+      "ido-dolls"
+    ],
+    "aliases": [
+      "ido",
+      "ido doll",
+      "ido dolls",
+      "idodoll",
+      "idodolls"
+    ]
   },
   {
     "value": "md",
     "label": "MD Doll",
     "collectionHandle": "md-dolls",
-    "tags": ["md", "md-doll", "md-dolls", "mddoll"],
-    "aliases": ["md doll", "md dolls", "mddoll", "mddolls"]
+    "tags": [
+      "md",
+      "md-doll",
+      "md-dolls",
+      "mddoll"
+    ],
+    "aliases": [
+      "md doll",
+      "md dolls",
+      "mddoll",
+      "mddolls"
+    ]
   },
   {
     "value": "wm",
     "label": "WM Dolls",
     "collectionHandle": "wm-dolls",
-    "tags": ["wm", "wm-dolls"],
-    "aliases": ["wm", "wm doll", "wm dolls", "wmdoll", "wmdolls"]
+    "tags": [
+      "wm",
+      "wm-dolls"
+    ],
+    "aliases": [
+      "wm",
+      "wm doll",
+      "wm dolls",
+      "wmdoll",
+      "wmdolls"
+    ]
   },
   {
     "value": "angelkiss",
     "label": "Angelkiss",
     "collectionHandle": "angelkiss-dolls",
-    "tags": ["angelkiss", "angelkiss-doll", "angelkiss-dolls", "anglekiss-doll", "anglekiss-dolls"],
-    "aliases": ["angelkiss", "anglekiss", "angel kiss", "angelkiss doll", "angelkiss dolls", "anglekiss doll", "anglekiss dolls", "angel kiss doll", "angel kiss dolls"]
+    "tags": [
+      "angelkiss",
+      "angelkiss-doll",
+      "angelkiss-dolls",
+      "anglekiss-doll",
+      "anglekiss-dolls"
+    ],
+    "aliases": [
+      "angelkiss",
+      "anglekiss",
+      "angel kiss",
+      "angelkiss doll",
+      "angelkiss dolls",
+      "anglekiss doll",
+      "anglekiss dolls",
+      "angel kiss doll",
+      "angel kiss dolls"
+    ]
   },
   {
     "value": "irontech",
     "label": "Irontech Dolls",
     "collectionHandle": "irontech-dolls",
-    "tags": ["irontech", "irontech-doll", "irontech-dolls"],
-    "aliases": ["irontech", "iron tech", "irontech doll", "irontech dolls", "iron tech doll", "iron tech dolls", "irontch doll", "irontch dolls"]
+    "tags": [
+      "irontech",
+      "irontech-doll",
+      "irontech-dolls"
+    ],
+    "aliases": [
+      "irontech",
+      "iron tech",
+      "irontech doll",
+      "irontech dolls",
+      "iron tech doll",
+      "iron tech dolls",
+      "irontch doll",
+      "irontch dolls"
+    ]
   },
   {
     "value": "fanreal",
     "label": "Fanreal",
     "collectionHandle": "fanreal",
-    "tags": ["fanreal", "fanreal-doll", "fanreal-dolls", "fanrui", "fanrui-doll", "fanrui-dolls"],
-    "aliases": ["fanreal", "fan real", "fanreal doll", "fanreal dolls", "fanrui", "fan rui", "fanrui doll", "fanrui dolls"]
+    "tags": [
+      "fanreal",
+      "fanreal-doll",
+      "fanreal-dolls",
+      "fanrui",
+      "fanrui-doll",
+      "fanrui-dolls"
+    ],
+    "aliases": [
+      "fanreal",
+      "fan real",
+      "fanreal doll",
+      "fanreal dolls",
+      "fanrui",
+      "fan rui",
+      "fanrui doll",
+      "fanrui dolls"
+    ]
   },
   {
     "value": "real-lady",
     "label": "Real Lady",
     "collectionHandle": "real-lady-dolls",
-    "tags": ["real-lady", "real-lady-doll", "real-lady-dolls", "reallady"],
-    "aliases": ["real lady", "real lady doll", "real lady dolls", "reallady"]
+    "tags": [
+      "real-lady",
+      "real-lady-doll",
+      "real-lady-dolls",
+      "reallady"
+    ],
+    "aliases": [
+      "real lady",
+      "real lady doll",
+      "real lady dolls",
+      "reallady"
+    ]
   },
   {
     "value": "starpery",
     "label": "Starpery Dolls",
     "collectionHandle": "starpery-dolls",
-    "tags": ["starpery", "starpery-dolls"],
-    "aliases": ["starpery", "star pery", "starpery doll", "starpery dolls", "star pery doll", "star pery dolls"]
+    "tags": [
+      "starpery",
+      "starpery-dolls"
+    ],
+    "aliases": [
+      "starpery",
+      "star pery",
+      "starpery doll",
+      "starpery dolls",
+      "star pery doll",
+      "star pery dolls"
+    ]
   },
   {
     "value": "avant",
     "label": "Avant Doll",
     "collectionHandle": "avant-dolls",
-    "tags": ["avant", "avant-doll", "avant-dolls"],
-    "aliases": ["avant", "avant doll", "avant dolls", "avantdoll"]
+    "tags": [
+      "avant",
+      "avant-doll",
+      "avant-dolls"
+    ],
+    "aliases": [
+      "avant",
+      "avant doll",
+      "avant dolls",
+      "avantdoll"
+    ]
   },
   {
     "value": "sy",
     "label": "SY Dolls",
     "collectionHandle": "sy-dolls",
-    "tags": ["sy", "sy-doll", "sy-dolls"],
-    "aliases": ["sy", "sy doll", "sy dolls", "sydoll", "sydolls"]
+    "tags": [
+      "sy",
+      "sy-doll",
+      "sy-dolls"
+    ],
+    "aliases": [
+      "sy",
+      "sy doll",
+      "sy dolls",
+      "sydoll",
+      "sydolls"
+    ]
   },
   {
     "value": "moonvale",
     "label": "Moonvale",
     "collectionHandle": "moonvale-dolls",
-    "tags": ["moonvale", "moonvale-doll", "moonvale-dolls"],
-    "aliases": ["moonvale", "moonvale doll", "moonvale dolls"]
+    "tags": [
+      "moonvale",
+      "moonvale-doll",
+      "moonvale-dolls"
+    ],
+    "aliases": [
+      "moonvale",
+      "moonvale doll",
+      "moonvale dolls"
+    ]
   },
   {
     "value": "rosretty",
     "label": "Rosretty",
     "collectionHandle": "rosretty-dolls",
-    "tags": ["rosretty", "rosretty-doll", "rosretty-dolls"],
-    "aliases": ["rosretty", "rosretty doll", "rosretty dolls"]
+    "tags": [
+      "rosretty",
+      "rosretty-doll",
+      "rosretty-dolls"
+    ],
+    "aliases": [
+      "rosretty",
+      "rosretty doll",
+      "rosretty dolls"
+    ]
   },
   {
     "value": "piper",
     "label": "Piper Dolls",
     "collectionHandle": "piper-dolls",
-    "tags": ["piper", "piper-dolls"],
-    "aliases": ["piper", "piper doll", "piper dolls"]
+    "tags": [
+      "piper",
+      "piper-dolls"
+    ],
+    "aliases": [
+      "piper",
+      "piper doll",
+      "piper dolls"
+    ]
   },
   {
     "value": "tantaly",
     "label": "Tantaly",
     "collectionHandle": "tantaly-dolls",
-    "tags": ["tantaly", "tantaly-dolls"],
-    "aliases": ["tantaly", "tantaly doll", "tantaly dolls"]
+    "tags": [
+      "tantaly",
+      "tantaly-dolls"
+    ],
+    "aliases": [
+      "tantaly",
+      "tantaly doll",
+      "tantaly dolls"
+    ]
   },
   {
     "value": "yl",
     "label": "YL Dolls",
     "collectionHandle": "yl-dolls",
-    "tags": ["yl", "yl-dolls"],
-    "aliases": ["yl", "yl doll", "yl dolls"]
+    "tags": [
+      "yl",
+      "yl-dolls"
+    ],
+    "aliases": [
+      "yl",
+      "yl doll",
+      "yl dolls"
+    ]
   },
   {
     "value": "erovenus",
     "label": "Erovenus",
     "collectionHandle": "erovenus-dolls",
-    "tags": ["erovenus", "erovenus-dolls"],
-    "aliases": ["erovenus", "erovenus doll", "erovenus dolls"]
+    "tags": [
+      "erovenus",
+      "erovenus-dolls"
+    ],
+    "aliases": [
+      "erovenus",
+      "erovenus doll",
+      "erovenus dolls"
+    ]
   },
   {
     "value": "sedoll",
     "label": "SE Doll",
     "collectionHandle": "se-doll",
-    "tags": ["sedoll", "se-doll", "se-dolls"],
-    "aliases": ["sedoll", "se doll", "se dolls", "sexdoll"]
+    "tags": [
+      "sedoll",
+      "se-doll",
+      "se-dolls"
+    ],
+    "aliases": [
+      "sedoll",
+      "se doll",
+      "se dolls",
+      "sexdoll"
+    ]
   },
   {
     "value": "6ye",
     "label": "6YE Dolls",
     "collectionHandle": "6ye-dolls",
-    "tags": ["6ye", "6ye-dolls"],
-    "aliases": ["6ye", "6ye doll", "6ye dolls", "sixye"]
+    "tags": [
+      "6ye",
+      "6ye-dolls"
+    ],
+    "aliases": [
+      "6ye",
+      "6ye doll",
+      "6ye dolls",
+      "sixye"
+    ]
   },
   {
     "value": "zelex",
     "label": "Zelex Dolls",
     "collectionHandle": "zelex-dolls",
-    "tags": ["zelex", "zelex-dolls"],
-    "aliases": ["zelex", "zelex doll", "zelex dolls", "zellix", "zellix doll", "zellix dolls"]
+    "tags": [
+      "zelex",
+      "zelex-dolls"
+    ],
+    "aliases": [
+      "zelex",
+      "zelex doll",
+      "zelex dolls",
+      "zellix",
+      "zellix doll",
+      "zellix dolls"
+    ]
   },
   {
     "value": "dolls-castle",
     "label": "Dolls Castle",
     "collectionHandle": "dolls-castle",
-    "tags": ["dolls-castle", "doll-castle"],
-    "aliases": ["dolls castle", "doll castle", "dollscastle"]
+    "tags": [
+      "dolls-castle",
+      "doll-castle"
+    ],
+    "aliases": [
+      "dolls castle",
+      "doll castle",
+      "dollscastle"
+    ]
   },
   {
     "value": "jarliet",
     "label": "Jarliet Dolls",
     "collectionHandle": "jarliet-dolls",
-    "tags": ["jarliet", "jarliet-doll", "jarliet-dolls", "jarlie", "jarlie-doll"],
-    "aliases": ["jarliet", "jarliet doll", "jarliet dolls", "jarlie", "jarlie doll", "jarlie dolls"]
+    "tags": [
+      "jarliet",
+      "jarliet-doll",
+      "jarliet-dolls",
+      "jarlie",
+      "jarlie-doll"
+    ],
+    "aliases": [
+      "jarliet",
+      "jarliet doll",
+      "jarliet dolls",
+      "jarlie",
+      "jarlie doll",
+      "jarlie dolls"
+    ]
   },
   {
     "value": "hr",
     "label": "HR Dolls",
     "collectionHandle": "hr-dolls",
-    "tags": ["hr", "hr-doll", "hr-dolls", "herun", "herun-doll", "herun-dolls"],
-    "aliases": ["hr", "hr doll", "hr dolls", "herun", "herun doll", "herun dolls"]
+    "tags": [
+      "hr",
+      "hr-doll",
+      "hr-dolls",
+      "herun",
+      "herun-doll",
+      "herun-dolls"
+    ],
+    "aliases": [
+      "hr",
+      "hr doll",
+      "hr dolls",
+      "herun",
+      "herun doll",
+      "herun dolls"
+    ]
   },
   {
     "value": "ai-tech",
     "label": "Ai-Tech",
     "collectionHandle": "ai-tech-dolls",
-    "tags": ["ai-tech", "ai-tech-doll", "ai-tech-dolls", "aitech"],
-    "aliases": ["ai-tech", "ai tech", "aitech", "ai-tech doll", "ai-tech dolls", "ai tech doll", "ai tech dolls"]
+    "tags": [
+      "ai-tech",
+      "ai-tech-doll",
+      "ai-tech-dolls",
+      "aitech"
+    ],
+    "aliases": [
+      "ai-tech",
+      "ai tech",
+      "aitech",
+      "ai-tech doll",
+      "ai-tech dolls",
+      "ai tech doll",
+      "ai tech dolls"
+    ]
   },
   {
     "value": "il-doll",
     "label": "IL Doll",
     "collectionHandle": "il-doll",
-    "tags": ["il-doll", "il-dolls", "ildoll"],
-    "aliases": ["il doll", "il dolls", "ildoll", "ildolls"]
+    "tags": [
+      "il-doll",
+      "il-dolls",
+      "ildoll"
+    ],
+    "aliases": [
+      "il doll",
+      "il dolls",
+      "ildoll",
+      "ildolls"
+    ]
   },
   {
     "value": "climax",
     "label": "Climax Doll",
     "collectionHandle": "climax-dolls",
-    "tags": ["climax", "climax-doll", "climax-dolls"],
-    "aliases": ["climax", "climax doll", "climax dolls"]
+    "tags": [
+      "climax",
+      "climax-doll",
+      "climax-dolls"
+    ],
+    "aliases": [
+      "climax",
+      "climax doll",
+      "climax dolls"
+    ]
   },
   {
     "value": "top-fire",
     "label": "Top Fire Doll",
     "collectionHandle": "top-fire-dolls",
-    "tags": ["top-fire", "top-fire-doll", "top-fire-dolls", "top-fire-doll-dolls"],
-    "aliases": ["top fire", "top fire doll", "top fire dolls", "topfire", "topfire doll", "topfiredoll"]
+    "tags": [
+      "top-fire",
+      "top-fire-doll",
+      "top-fire-dolls",
+      "top-fire-doll-dolls"
+    ],
+    "aliases": [
+      "top fire",
+      "top fire doll",
+      "top fire dolls",
+      "topfire",
+      "topfire doll",
+      "topfiredoll"
+    ]
+  },
+  {
+    "value": "funwest",
+    "label": "FunWest Doll",
+    "collectionHandle": "funwest-dolls",
+    "tags": [
+      "funwest",
+      "funwest-doll",
+      "funwest-dolls"
+    ],
+    "aliases": [
+      "funwest",
+      "funwest doll",
+      "funwest dolls",
+      "funwestdoll",
+      "fun west"
+    ]
   }
 ]
