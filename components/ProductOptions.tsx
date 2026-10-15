@@ -84,7 +84,9 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(pricedConfig.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
-  const [manualExpanded, setManualExpanded] = useState(false);
+  // FunWest/Top Fire previews must match the live listing structure (inline step-by-step wizard),
+  // so the wizard starts expanded under the preset picker instead of collapsed behind it.
+  const [manualExpanded, setManualExpanded] = useState(() => /^(funwest-dolls-|top-fire-doll-)/.test(product.handle));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
