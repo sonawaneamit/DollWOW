@@ -30,7 +30,9 @@ import {
   getSeCustomizationGroups,
   getSixYeCustomizationGroups,
   getTantalyCustomizationGroups,
-  getYlCustomizationGroups
+  getYlCustomizationGroups,
+  getFunwestCustomizationGroups,
+  getTopFireCustomizationGroups
 } from "@/lib/customization/dealer-brands";
 
 const skinTones: CustomizationGroup = {
