@@ -485,6 +485,12 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
   if (isAiTechProduct(product) && importedGroups?.length) {
     return importedBrandConfig(product, purpose, "ai-tech-source-verified", "Ai-Tech", getAiTechCustomizationGroups(product, importedGroups));
   }
+  if (isFunwestProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "funwest-source-verified", "FunWest Dolls", getFunwestCustomizationGroups(product, importedGroups));
+  }
+  if (isTopFireProduct(product) && importedGroups?.length) {
+    return importedBrandConfig(product, purpose, "top-fire-source-verified", "Top Fire Doll", getTopFireCustomizationGroups(product, importedGroups));
+  }
   if (importedGroups?.length) {
     const sourceGroups = importedGroups;
     const availableGroups = purpose === "checkout" ? onlineCheckoutGroups(sourceGroups, new Set(), product) : sourceGroups;
