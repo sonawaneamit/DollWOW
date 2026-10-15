@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
-import { keepsWizardOpen, presetSelectLayout } from "@/lib/customization/dealerPreviewBuilder";
+import { keepsWizardOpen, presetSelectLayout, dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
 
 const lily = "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052";
 const grace = "top-fire-doll-grace-162cm-i-cup-silicone-companion-doll";
@@ -23,5 +23,17 @@ describe("FunWest/Top Fire preset clicks keep the wizard open", () => {
     expect(onSelect).toContain("presetSelectLayout(product.handle");
     expect(onSelect).not.toMatch(/^\s*setManualExpanded\(false\);/m);
     expect(onSelect).not.toMatch(/router\.|location|href/);
+  });
+});
+
+describe("dealer preview PDP data", () => {
+  it("fetches FunWest/Top Fire products uncached so Shopify edits show up", () => {
+    expect(dealerPreviewProductFetch("funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052")).toEqual({ cache: "no-store" });
+    expect(dealerPreviewProductFetch("top-fire-doll-grace-162cm-i-cup-silicone-companion-doll")).toEqual({ cache: "no-store" });
+    expect(dealerPreviewProductFetch("irontech-fenny-162cm-g-cup-hybrid-companion-doll-1if4v")).toEqual({ cache: "reload", revalidate: 0 });
+  });
+  it("drops internal workflow tags from the public payload", () => {
+    expect(dealerPublicTags(["catalog-review-hold", "custom", "dollwow-test", "full-doll"])).toEqual(["custom", "full-doll"]);
+    expect(dealerPublicTags(undefined)).toBeUndefined();
   });
 });
