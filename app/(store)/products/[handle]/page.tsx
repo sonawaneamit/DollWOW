@@ -50,6 +50,8 @@ import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 
+export const revalidate = 60;
+
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<ProductPageSearchParams> }): Promise<Metadata> {
