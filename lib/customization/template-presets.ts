@@ -23,6 +23,7 @@ const labels = { starter: 'Starter', enthusiast: 'Enthusiast', collector: 'Colle
 export function presetChoiceLabel(label: string) {
   // Supplier sale badges can outlive their price. The tier total owns pricing;
   // retain construction/compatibility parentheses, not imported sale slogans.
+  // Also remove (FREE) since Included badge already shows it.
   return label.replace(/\s*\((?:Orig\.?\s*\$[\d,.]+(?:\s*\|\s*FREE)?|FREE)\)/gi, '').trim();
 }
 

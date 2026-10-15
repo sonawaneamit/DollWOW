@@ -176,7 +176,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             {displayNameUi && displayNameUi !== pdpHeading ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
             <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
               <span>{pdpHeading}</span>
-              {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
+              {isDollVueCatalogProduct(product) ? <DollVueBadge /> : isLiveAuthorizedBrand(productBrand) ? <DollVueBadge tooltip="Authorized seller" /> : null}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>

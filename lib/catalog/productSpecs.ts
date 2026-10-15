@@ -359,18 +359,22 @@ function phraseWithArticle(value: string, suffix: string) {
 
 export function formatHeightDual(heightCm: number | undefined) {
   if (!heightCm || !Number.isFinite(heightCm)) return "";
-  const totalInches = Math.round(heightCm / 2.54);
+  // Use half-cm precision: round to nearest 0.5
+  const rounded = Math.round(heightCm * 2) / 2;
+  const totalInches = Math.round(rounded / 2.54);
   const feet = Math.floor(totalInches / 12);
   const inches = totalInches % 12;
-  if (!feet) return `${heightCm} cm`;
-  if (!inches) return `${feet} ft / ${heightCm} cm`;
-  return `${feet} ft ${inches} in / ${heightCm} cm`;
+  if (!feet) return `${rounded} cm`;
+  if (!inches) return `${feet} ft / ${rounded} cm`;
+  return `${feet} ft ${inches} in / ${rounded} cm`;
 }
 
 export function formatWeightDual(weightLb: number | undefined) {
   if (!weightLb || !Number.isFinite(weightLb)) return "";
+  // Use half-cm equivalent precision for weight
   const kilograms = weightLb / 2.20462;
-  return `${weightLb.toFixed(1)} lb / ${kilograms.toFixed(1)} kg`;
+  const roundedKg = Math.round(kilograms * 2) / 2;
+  return `${weightLb.toFixed(1)} lb / ${roundedKg} kg`;
 }
 
 export function formatMeasurementDual(label: string, rawValue: string | number | undefined | null) {
