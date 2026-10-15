@@ -341,7 +341,7 @@ function ProductSpecSummary({
 }) {
   const detailRows = [
     ["Brand", product.extended.brand ?? product.vendor],
-    ["Head model", formatHeadModel(product.extended.headModel)],
+    ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
     ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
     ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
