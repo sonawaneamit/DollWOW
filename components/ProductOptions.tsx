@@ -710,7 +710,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
           const isSelected = selectionIds(selected).includes(option.id);
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
-          const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
+          const notice = conflict || (unavailableOnline ? "This option is currently unavailable. Please contact us for availability." : null);
           return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={includedSoftButt ? catalogOption : option} catalogOption={catalogOption} selected={isSelected || fixedIncluded} fixedIncluded={fixedIncluded} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} promotionContext={promotionContext} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
         })}
       </div>
