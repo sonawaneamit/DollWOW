@@ -5,6 +5,14 @@ import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
+
+function stripFreeLabel(label: string, brand?: string): string {
+  if (brand && /funwest|top[- ]?fire/i.test(brand)) {
+    return label.replace(/\s*\(FREE\)\s*/gi, '').trim();
+  }
+  return label;
+}
+
 import {
   AlertTriangle,
   Check,

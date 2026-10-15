@@ -11,7 +11,9 @@ describe('FunWest and Top Fire Customization Wiring', () => {
 
   it('should wire FunWest and Top Fire into customizationConfig', () => {
     const configsContent = require('fs').readFileSync('lib/customization/configs.ts', 'utf8');
-    expect(configsContent).toContain('isFunwestProduct(product) && importedGroups?.length');
-    expect(configsContent).toContain('isTopFireProduct(product) && importedGroups?.length');
+    expect(configsContent).toContain('isFunwestProduct(product)');
+    expect(configsContent).toContain('getFunwestCustomizationGroups');
+    expect(configsContent).toContain('isTopFireProduct(product)');
+    expect(configsContent).toContain('getTopFireCustomizationGroups');
   });
 });
