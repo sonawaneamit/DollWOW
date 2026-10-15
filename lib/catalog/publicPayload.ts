@@ -50,7 +50,8 @@ export function publicCustomizationConfig(config: BrandCustomizationConfig): Bra
 /** Project only at the server/client boundary; never mutate checkout/source records. */
 export function publicProductPayload(product: Product): Product {
   const redactSourceIdentity = product.tags.some(tag =>
-    tag === 'options:ido-silicone-included-manual-v1' || tag === 'options:md-silicone-body-mvp-v1');
+    tag === 'options:ido-silicone-included-manual-v1' || tag === 'options:md-silicone-body-mvp-v1' ||
+    tag === 'options:top-fire-silicone-manual-v1' || tag === 'options:top-fire-headless-body-v1');
   // Resolve customer-facing fallbacks before removing this release's supplier identity.
   const extended = redactSourceIdentity ? {
     ...product.extended,

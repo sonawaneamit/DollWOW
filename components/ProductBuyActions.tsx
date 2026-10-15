@@ -27,6 +27,8 @@ type ProductBuyActionsProps = {
   customAvailable?: boolean;
   warehouseCountry?: string;
   warehouseRegions?: string[];
+  /** In-stock unit that still needs a required pick (Top Fire headless body + head). */
+  requiresChoice?: string;
 };
 
 /**
@@ -47,7 +49,8 @@ export function ProductBuyActions({
   readyToShip,
   customAvailable,
   warehouseCountry,
-  warehouseRegions
+  warehouseRegions,
+  requiresChoice
 }: ProductBuyActionsProps) {
   const cart = useCart();
 
@@ -92,7 +95,16 @@ export function ProductBuyActions({
       </div>
 
       <div className="mt-4 grid gap-3">
-        {readyToShip ? (
+        {requiresChoice ? (
+          <button
+            type="button"
+            onClick={scrollToCustomizer}
+            className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 py-3 text-[17px] font-semibold text-white shadow-card transition-colors hover:bg-accent-hover"
+          >
+            <SlidersHorizontal className="h-5 w-5" />
+            {requiresChoice}
+          </button>
+        ) : readyToShip ? (
           <button
             type="button"
             onClick={addToBag}
@@ -111,7 +123,7 @@ export function ProductBuyActions({
             Customize your doll
           </button>
         )}
-        {readyToShip && canCustomize ? (
+        {readyToShip && canCustomize && !requiresChoice ? (
           <button
             type="button"
             onClick={scrollToCustomizer}
@@ -121,7 +133,7 @@ export function ProductBuyActions({
             Available customizations
           </button>
         ) : null}
-        {!readyToShip ? (
+        {!readyToShip && !requiresChoice ? (
             <button
               type="button"
               onClick={addToBag}

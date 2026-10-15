@@ -209,6 +209,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 customAvailable={product.extended.customAvailable}
                 warehouseCountry={product.extended.warehouseCountry}
                 warehouseRegions={product.extended.warehouseRegions}
+                requiresChoice={product.tags.includes("options:top-fire-headless-body-v1") ? "Choose your head" : undefined}
               />
             )}
             {product.extended.stockStatus !== "ready_to_ship" ? (
