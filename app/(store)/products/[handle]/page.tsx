@@ -491,6 +491,9 @@ function stripSupplierFreeLabels<T extends { groups: Array<{ options: Array<{ la
     ...config,
     groups: config.groups.map((group) => ({
       ...group,
+      ...(typeof (group as { description?: unknown }).description === "string"
+        ? { description: ((group as { description?: string }).description as string).replace(/\(FREE\)\s*items/gi, "included items").replace(supplierFreeLabel, "").trim() }
+        : {}),
       options: group.options.map((option) => stripFreeOption(option))
     }))
   };
