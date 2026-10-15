@@ -146,8 +146,9 @@ function buildProductNamingData(product: Product) {
   const cup = normalizeCup(product.extended.cupSize);
   const material = normalizeMaterial(product.extended.material || product.productType);
   const inferredKind = inferProductKind(product);
-  const kind = material === MATERIAL_LABELS["silicone-head"] && inferredKind === "head" ? "" : productKindLabel(inferredKind);
-  const availability = product.extended.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.extended.customAvailable ? "Customizable" : "";
+  const headlessBody = product.tags.includes("options:top-fire-headless-body-v1");
+  const kind = headlessBody ? "Body" : material === MATERIAL_LABELS["silicone-head"] && inferredKind === "head" ? "" : productKindLabel(inferredKind);
+  const availability = headlessBody ? "" : product.extended.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.extended.customAvailable ? "Customizable" : "";
   const head = product.extended.headModel ? readableHeadModel(product.extended.headModel) : "";
   const headTitlePart = formatHeadTitlePart(material, head);
   const includeHead = !hasSameHeadReference(model, head) && !hasSameHeadReference(series, head);
