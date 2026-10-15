@@ -514,5 +514,12 @@ function stripSupplierFreeProductLabels<P extends { vendor?: string; extended: {
   const brand = product.extended.brand ?? product.vendor;
   const groups = product.extended.customizationGroups;
   if (!brand || !/funwest|top[- ]?fire/i.test(brand) || !groups) return product;
-  return { ...product, extended: { ...product.extended, customizationGroups: groups.map((group) => ({ ...group, options: group.options.map(stripFreeOption) })) } };
+  return { ...product, extended: { ...product.extended, customizationGroups: groups.map((group) => ({ ...group, ...stripFreeDescription(group), options: group.options.map(stripFreeOption) })) } };
+}
+
+function stripFreeDescription(group: object): { description?: string } {
+  const description = (group as { description?: unknown }).description;
+  return typeof description === "string"
+    ? { description: description.replace(/\(FREE\)\s*items/gi, "included items").replace(supplierFreeLabel, "").trim() }
+    : {};
 }
