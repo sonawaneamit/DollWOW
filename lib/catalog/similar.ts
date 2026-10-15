@@ -82,6 +82,26 @@ function isEligibleAlternative(reference: Product, candidate: Product): boolean 
     refIdentity === candIdentity &&
     normalize(reference.extended.material) === normalize(candidate.extended.material)
   ) return false;
+  
+  // Dedupe FunWest/TopFire listings with same displayName and core specs
+  // (e.g. Lily FSD020/FSD046/FSD052, Adele 1og16/FWD049)
+  if (/\b(funwest|top.?fire)\b/i.test(refBrand)) {
+    const refName = normalize(reference.extended.displayName || reference.title);
+    const candName = normalize(candidate.extended.displayName || candidate.title);
+    const refHeight = reference.extended.heightCm;
+    const candHeight = candidate.extended.heightCm;
+    const refCup = normalize(reference.extended.cupSize);
+    const candCup = normalize(candidate.extended.cupSize);
+    const refMaterial = normalize(reference.extended.material);
+    const candMaterial = normalize(candidate.extended.material);
+    
+    if (refName && candName && refName === candName &&
+        refHeight && candHeight && refHeight === candHeight &&
+        refCup && candCup && refCup === candCup &&
+        refMaterial && candMaterial && refMaterial === candMaterial) {
+      return false;
+    }
+  }
 
   return true;
 }
