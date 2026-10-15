@@ -87,7 +87,9 @@ export function getFunwestCustomizationGroups(product: Product, groups: Customiz
             selectionMode: 'single' as const,
             display: 'cards' as const,
             options: [
-              { id: 'none', label: 'No bloodshot effect', priceDelta: 0 },
+              // Synthetic default: must be price-verified or the conditional menu flags every build for price confirmation
+              // (requiresPriceConfirmation), which empties template presets and blocks checkout.
+              { id: 'none', label: 'No bloodshot effect', priceDelta: 0, priceVerified: true },
               ...bloodshotEyes
             ]
           }
