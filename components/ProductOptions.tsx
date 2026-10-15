@@ -829,8 +829,6 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
         items: [{ item_id: firstAvailable.id, item_name: displayName || displayTitle, price: basePrice, quantity: 1 }]
       };
       trackEvent(analyticsEvents.addToCart, eventParams);
-      trackEvent(analyticsEvents.beginCheckout, eventParams);
-      router.push(checkoutUrl);
     } catch {
       setError("Could not start checkout. Please try again.");
     } finally {
