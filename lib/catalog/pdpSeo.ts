@@ -214,12 +214,13 @@ export function buildPdpFitChecks(product: Product): FitCheck[] {
 
   if (isHeadOnlyProduct(product)) {
     // Loose heads: no body, so no height, weight, cup, clothing or full-body handling copy.
-    const headFeatures = measurementMap.get("Head features") || "";
-    const headModel = measurementMap.get("Head") || "";
+    const raw = (product.extended.measurements ?? {}) as Record<string, unknown>;
+    const headFeatures = cleanText(String(raw["Head features"] ?? ""));
+    const headModel = cleanText(String(raw["Head"] ?? ""));
     return [
       {
         title: "What's included",
-        body: `${headModel ? `Head ${headModel}, ` : ""}head only. No body is included; photos show the head on a factory body.`
+        body: `${headModel ? `Head ${headModel}, head only` : "Head only"}. No body is included; photos show the head on a factory body.`
       },
       ...(headFeatures ? [{ title: "Head features", body: headFeatures }] : []),
       {

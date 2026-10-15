@@ -27,7 +27,7 @@ import {
   buildProductFaqStructuredData,
   buildProductStructuredData
 } from "@/lib/catalog/pdpSeo";
-import { primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
+import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
@@ -363,7 +363,7 @@ function ProductSpecSummary({
           <h2 id="product-specs-heading">Measurements and details</h2>
         </div>
         <div>
-          <p>Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout.</p>
+          <p>{isHeadOnlyProduct(product) ? "Head-only specs: model, functions, oral depth and delivery. No body is included." : "Use these specs for clothing fit, storage planning, lifting comfort, and overall size comparison before checkout."}</p>
           <span className="pdp-spec-toggle">View all measurements</span>
         </div>
       </summary>}

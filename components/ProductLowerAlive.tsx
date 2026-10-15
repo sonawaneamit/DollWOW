@@ -143,9 +143,9 @@ function SimilarDollCard({ product }: { product: Product }) {
           <div><span>{product.extended.brand ?? product.vendor}</span></div>
           <h3>{displayTitle}</h3>
           <p>
-            {product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height pending"}
+            {product.tags.includes("head-only") ? "Head only" : product.extended.heightCm ? `${product.extended.heightCm} cm` : "Height pending"}
             <span>{product.extended.material ?? "Material pending"}</span>
-            <span>{product.extended.cupSize ?? "Cup pending"}</span>
+            {product.tags.includes("head-only") ? null : <span>{product.extended.cupSize ?? "Cup pending"}</span>}
           </p>
           <footer>
             <strong>{formatMoney(price.amount, price.currencyCode)}</strong>
