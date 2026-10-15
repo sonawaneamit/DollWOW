@@ -13,6 +13,7 @@ function stripFreeLabel(label: string, brand?: string): string {
   return label;
 }
 
+import { keepsWizardOpen, presetSelectLayout } from "@/lib/customization/dealerPreviewBuilder";
 import {
   AlertTriangle,
   Check,
@@ -86,7 +87,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const [isReviewing, setReviewing] = useState(false);
   // FunWest/Top Fire previews must match the live listing structure (inline step-by-step wizard),
   // so the wizard starts expanded under the preset picker instead of collapsed behind it.
-  const [manualExpanded, setManualExpanded] = useState(() => /^(funwest-dolls-|top-fire-doll-)/.test(product.handle));
+  const [manualExpanded, setManualExpanded] = useState(() => keepsWizardOpen(product.handle));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -351,8 +352,9 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
       {presets.length === 3 && (
         <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {
-                    scrollToPurchaseRef.current = preset.pendingChoices.length === 0;
-                    setManualExpanded(false);
+                    const layout = presetSelectLayout(product.handle, preset.pendingChoices.length);
+                    scrollToPurchaseRef.current = layout.scrollToPurchase;
+                    if (layout.collapseWizard) setManualExpanded(false);
                     setReviewing(false);
                     setSelected(preset.selections);
                     setChosenPreset(preset.id);
@@ -412,7 +414,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
         <div className={clsx("product-builder-groups", manualVisible && "lg:col-span-7")}>
           <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
-          {presets.length === 3 && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
+          {presets.length === 3 && !keepsWizardOpen(product.handle) && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
             <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
