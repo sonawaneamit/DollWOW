@@ -173,5 +173,12 @@
     "collectionHandle": "climax-dolls",
     "tags": ["climax", "climax-doll", "climax-dolls"],
     "aliases": ["climax", "climax doll", "climax dolls"]
+  },
+  {
+    "value": "top-fire",
+    "label": "Top Fire Doll",
+    "collectionHandle": "top-fire-dolls",
+    "tags": ["top-fire", "top-fire-doll", "top-fire-dolls", "top-fire-doll-dolls"],
+    "aliases": ["top fire", "top fire doll", "top fire dolls", "topfire", "topfire doll", "topfiredoll"]
   }
 ]
