@@ -92,7 +92,7 @@ export function primaryProductSpecs(product: Product): DisplaySpec[] {
       { label: "Material", value: product.extended.material ?? "Confirm" },
       { label: "Delivery", value: product.extended.deliveryEstimate ?? "Typical timing depends on the build" },
       { label: "Includes", value: "Head only (no body)" },
-      { label: "Head features", value: measurements.get("Head") ?? "As shown" }
+      { label: "Head features", value: measurements.get("Head features") ?? measurements.get("Head") ?? "As shown" }
     ];
   }
   const fallbackHeight = formatHeightDual(product.extended.heightCm) || specFromDescription(product, "Height") || "Confirm";
