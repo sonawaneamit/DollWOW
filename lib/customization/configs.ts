@@ -697,6 +697,14 @@ function isAiTechProduct(product: Product) {
   return /\bai[ -]?tech\b/.test(productSearchText(product));
 }
 
+function isFunwestProduct(product: Product) {
+  return /\bfunwest\b/i.test(productSearchText(product));
+}
+
+function isTopFireProduct(product: Product) {
+  return /\btop[- ]?fire\b/i.test(productSearchText(product));
+}
+
 function productSearchText(product: Product) {
   return [product.extended.brand, product.vendor, product.productType, product.extended.sourceTitle, product.title, product.handle, ...product.tags]
     .filter(Boolean).join(" ").toLowerCase();
