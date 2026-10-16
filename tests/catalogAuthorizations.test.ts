@@ -23,8 +23,13 @@ describe("catalog authorization matching", () => {
     expect(isLiveAuthorizedBrand("Ai-Tech")).toBe(true);
   });
 
+  it("shows the Climax Doll and HR Doll certificates", () => {
+    expect(isLiveAuthorizedBrand("Climax Doll")).toBe(true);
+    expect(getBrandAuthorization("Climax Doll")?.certificateSrc).toBe("/images/authorizations/climax-doll-authorized.jpg");
+    expect(getBrandAuthorization("HR Dolls")?.status).toBe("certificate");
+  });
+
   it("does not advertise an authorization section without authorization on file", () => {
-    expect(isLiveAuthorizedBrand("Climax Doll")).toBe(false);
     expect(isLiveAuthorizedBrand("Zelex Dolls")).toBe(false);
   });
 });
