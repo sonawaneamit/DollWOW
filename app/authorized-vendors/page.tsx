@@ -99,11 +99,18 @@ export default function AuthorizedVendorsPage() {
           </div>
           <div className="certifications-written__grid">
             {writtenConfirmations.map((entry) => (
-              <article key={entry.id}>
-                <span className="certifications-written__icon"><ShieldCheck aria-hidden="true" /></span>
+              <article key={entry.id} id={entry.id}>
+                {entry.confirmationPreviewSrc && entry.confirmationSrc ? (
+                  <a href={entry.confirmationSrc} target="_blank" rel="noreferrer" className="relative block h-40 w-28 shrink-0 overflow-hidden rounded border border-border bg-[#f8efe8]" aria-label={`Open ${entry.brand} authorization confirmation`}>
+                    <Image src={entry.confirmationPreviewSrc} alt={`${entry.brand} letter confirming DollWow as an authorized reseller`} fill sizes="112px" className="object-contain p-1" />
+                  </a>
+                ) : (
+                  <span className="certifications-written__icon"><ShieldCheck aria-hidden="true" /></span>
+                )}
                 <div>
                   <h3>{entry.brand}</h3>
-                  <p>The manufacturer has confirmed in writing that DollWow is approved to sell its products.</p>
+                  <p>The manufacturer has confirmed in writing that DollWow is approved to sell its products.{entry.confirmationDate ? ` Confirmed ${entry.confirmationDate}; official certificate pending.` : ""}</p>
+                  {entry.confirmationSrc ? <a href={entry.confirmationSrc} target="_blank" rel="noreferrer">View confirmation <ExternalLink aria-hidden="true" /></a> : null}
                   {entry.brandValue ? <Link href={brandHubHref(entry.brandValue)}>Browse brand <ArrowRight aria-hidden="true" /></Link> : null}
                 </div>
               </article>

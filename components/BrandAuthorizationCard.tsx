@@ -21,6 +21,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
   const relatedBrandNote = catalogBrand?.value ? authorization?.relatedBrandNotes?.[catalogBrand.value] : undefined;
   const hasCertificate = authorization?.status === "certificate" && authorization.certificateSrc && authorization.certificatePreviewSrc;
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
+  const hasConfirmationLetter = isWrittenConfirmation && authorization?.confirmationSrc && authorization.confirmationPreviewSrc;
   const compact = variant === "product";
   const statusEyebrow = hasCertificate ? "Brand certification" : "Approved seller";
   const statusTitle = hasCertificate ? `Certified to sell ${label}` : `Approved to sell ${label}`;
@@ -32,6 +33,16 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
           <Image
             src={authorization.certificatePreviewSrc!}
             alt={`${label} certification authorizing DollWow as a retailer`}
+            fill
+            sizes={variant === "brand" ? "220px" : "96px"}
+            className="object-contain p-3 transition duration-300 group-hover:scale-[1.025]"
+          />
+        </a>
+      ) : hasConfirmationLetter ? (
+        <a href={authorization.confirmationSrc!} target="_blank" rel="noreferrer" className={`group relative block border-b border-border bg-[#f8efe8] sm:border-b-0 sm:border-r ${compact ? "min-h-28" : "min-h-40"}`} aria-label={`Open ${label} authorization confirmation`}>
+          <Image
+            src={authorization.confirmationPreviewSrc!}
+            alt={`${label} letter confirming DollWow as an authorized reseller`}
             fill
             sizes={variant === "brand" ? "220px" : "96px"}
             className="object-contain p-3 transition duration-300 group-hover:scale-[1.025]"
@@ -59,6 +70,10 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
           {hasCertificate ? (
             <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-button bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">
               View certificate <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          ) : hasConfirmationLetter ? (
+            <a href={authorization.confirmationSrc!} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-button bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">
+              View confirmation <ExternalLink className="h-3.5 w-3.5" />
             </a>
           ) : null}
           <Link href="/authorized-vendors" className="inline-flex min-h-11 items-center rounded-button border-2 border-accent px-4 text-sm font-semibold text-accent transition-colors hover:bg-accent-tint">
