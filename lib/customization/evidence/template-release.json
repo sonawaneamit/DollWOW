@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     }
   },
   "payload": {
@@ -2873,7 +2873,18 @@
       "gid://shopify/Product/10663304069304",
       "gid://shopify/Product/10663304167608",
       "gid://shopify/Product/10663304331448",
-      "gid://shopify/Product/10663295025336"
+      "gid://shopify/Product/10663295025336",
+      "gid://shopify/Product/10664705196216",
+      "gid://shopify/Product/10664705360056",
+      "gid://shopify/Product/10664705523896",
+      "gid://shopify/Product/10664705720504",
+      "gid://shopify/Product/10664705786040",
+      "gid://shopify/Product/10664706113720",
+      "gid://shopify/Product/10664706441400",
+      "gid://shopify/Product/10664706605240",
+      "gid://shopify/Product/10664706834616",
+      "gid://shopify/Product/10664707031224",
+      "gid://shopify/Product/10664680456376"
     ],
     "entries": [
       {
@@ -21907,7 +21918,7 @@
         "handle": "funwest-dolls-elina-157cm-c-cup-tpe-companion-doll-14tbm",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "e019e0fc000e48c4d8a668a18c5f90f03e6f935fb3342ad8a8d1b0daaf343a66"
+        "runtimeHash": "94ca937fa433e970fd5f09999f3f16575a011c35f011f6d65af721eb8fefba59"
       },
       {
         "productId": "gid://shopify/Product/10634336469176",
@@ -21921,14 +21932,14 @@
         "handle": "funwest-dolls-zoey-155cm-f-cup-tpe-companion-doll-zm0n9",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "aea41c068c2ee0aafbf8212c6f82066af1ceb51e1acecf58d17742d184e96d0c"
+        "runtimeHash": "d4a7964754860f7da05644578e60fa12b752d53728f2955e3008f180fea5a448"
       },
       {
         "productId": "gid://shopify/Product/10634350002360",
         "handle": "funwest-dolls-sophiemina-162cm-f-cup-tpe-companion-doll-ref3l",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "fb7311e7f94a24ff25d15e525260db8fd50889fa0168425c5cb525c25bcd2860"
+        "runtimeHash": "aa1e876faf43a7f989b17c0e1d31246afa058113fb0ffd5dbd81bfc7f86529b5"
       },
       {
         "productId": "gid://shopify/Product/10634696917176",
@@ -22061,7 +22072,7 @@
         "handle": "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-zlrtu",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "24f8d47279bb90785e8e4476455f7c5b945b9fbe069d134d0c2b09bab7172ab0"
+        "runtimeHash": "bbbbdd6525efd5b621a8ece86bdbe696dfc464bfa70338686651c9e5921e6276"
       },
       {
         "productId": "gid://shopify/Product/10634719461560",
@@ -22138,7 +22149,7 @@
         "handle": "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-qgq4t",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-9ecbc6f614e5",
-        "runtimeHash": "e422b5e31665f4f75ea4b96bc6e7702c27d3383e31ee752955d4fd0b5468b070"
+        "runtimeHash": "02d3e2d84c7f7ece67b96c9730052398251b69b67afe8fce6bd559022f34c0c4"
       },
       {
         "productId": "gid://shopify/Product/10634722476216",
@@ -22278,7 +22289,7 @@
         "handle": "funwest-dolls-assos-157cm-c-cup-tpe-companion-doll-fwd054",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "f07442a66ada0ccdf73bc9e90017f2e2e89a1986602928fbe9e9f73542088b74"
+        "runtimeHash": "4b98d264c9747d301d2a4c34762b94ce16e253c2d8be7dbfd1da7a8196a738e7"
       },
       {
         "productId": "gid://shopify/Product/10663297548472",
@@ -22425,7 +22436,7 @@
         "handle": "funwest-dolls-kylie-157cm-g-cup-tpe-companion-doll-fwd091",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "1f723781cab943d25b9a450e7d261a22d064e9391500ca557408b5d0b292128c"
+        "runtimeHash": "f3784c46efce565e253b7020f02c84657ccd10bb91cb52eebc49cf298c2d5002"
       },
       {
         "productId": "gid://shopify/Product/10663304954040",
@@ -22453,7 +22464,7 @@
         "handle": "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-fwd102",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "d2eec52ca54ee2b45e0cf24f3e511b997526388cb3574f190e6dc13bea79ae2c"
+        "runtimeHash": "b5395f9904320a053912d39cdb5277cb4ec62c6946e881fb4ad2584a58a8427f"
       },
       {
         "productId": "gid://shopify/Product/10663308067000",
@@ -22621,14 +22632,14 @@
         "handle": "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd037",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "2d8da22223c3f80d0876bfccde82761f60c5b110f778bd6172fdd3cf233af8e6"
+        "runtimeHash": "1190ca9a241b2154f7b0afe1415abb6f8c1acaddb7f3fbf3ef03f06a4c2e6c6c"
       },
       {
         "productId": "gid://shopify/Product/10663313604792",
         "handle": "funwest-dolls-bella-159cm-a-cup-silicone-companion-doll-fsd038",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "f86d93fbacef07d0c6563d68683e8c4b1b263b8ca876b10c8d175898027862c2"
+        "runtimeHash": "a3f7d81f3dff7a1ad0a0211b8e79a5ff27b2c383b68ef025ec36e3a94b88226c"
       },
       {
         "productId": "gid://shopify/Product/10663314391224",
@@ -22649,21 +22660,21 @@
         "handle": "funwest-dolls-lucy-157cm-g-cup-silicone-companion-doll-fsd044",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "411679d1f088c34e941ecb3cdc2e2ef545e413bde37e753f2f29395c18e7f14a"
+        "runtimeHash": "4d44940bda72e1f50e6c3fd0430db60847a5b794847b532dbcfa0706903d2924"
       },
       {
         "productId": "gid://shopify/Product/10663314849976",
         "handle": "funwest-dolls-alice-157cm-g-cup-silicone-companion-doll-fsd045",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "b6ae0be355490bea8ee387d6a1b870a66fa9d9981b1078b081701accc6dbf481"
+        "runtimeHash": "3a05ead19307e93a3be8ad128cfcb93579d7e6d63649bbfaed13f8c3c78c23bf"
       },
       {
         "productId": "gid://shopify/Product/10663315013816",
         "handle": "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd046",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "91cbbe5be53663571641bee7cd31635f1e13aea26e5065e2898b012a2f1463c8"
+        "runtimeHash": "8db783228efafdf9efa948185d353d173bded241c9a496170b9739e8b8032ad2"
       },
       {
         "productId": "gid://shopify/Product/10663315079352",
@@ -22818,6 +22829,83 @@
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-bea-reviewed-20261016",
         "runtimeHash": "cc77921b78abfcc69ed880d66c19abf9112c73515a34e944e1e3bc1e578170ff"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705196216",
+        "handle": "irontech-zia-blue-fairy-154cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "a971537f562938b57c4f02bfef421125b94407882577791936a188f71871812c"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705360056",
+        "handle": "irontech-zia-bunny-154cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "17b9a800483877359d2bf786935ff7a1a225b6cafb502cd5798573553f2fa37e"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705523896",
+        "handle": "irontech-momo-bridal-154cm-e-cup-n05-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "c3e0cc1ec4af4e79d0363a0a8d375852e1c3bf2a2af5f145bd4bcc143b3a9bc4"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705720504",
+        "handle": "irontech-mio-rising-star-165cm-e-cup-n01-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "ce8694f6ab2357b8ab62a27f19e1a814bd8fab0dd9515d4758d51ebe7b111c4b"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705786040",
+        "handle": "irontech-zia-cyber-dj-165cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "a9288cb2fbd0f542a6a7872616e61a473c208a188ea7dd6bb9c574d1d14bdad9"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706113720",
+        "handle": "irontech-sia-graceful-secretary-165cm-e-cup-n03-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "9b9f59ea5afe18397f39c6057fa77e11da6293fc31ea4c4136f769d91956ea00"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706441400",
+        "handle": "irontech-mio-sunshine-traveler-166cm-2-0-e-cup-n01-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "1654dbcbaf4844fc0a6134d305e1df2359216e01456cf58944228ee756cce855"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706605240",
+        "handle": "irontech-ria-striking-beauty-166cm-2-0-e-cup-n04-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "55efe730befa03974c1e7e4c44b11f5c7f5b9c24bd18da573a31815a0adad232"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706834616",
+        "handle": "irontech-kiri-icy-166cm-2-0-e-cup-n06-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "2d4c5671994ebaf1c156e9babc613863809a8c7982e0e36975a462483921dbaa"
+      },
+      {
+        "productId": "gid://shopify/Product/10664707031224",
+        "handle": "irontech-ria-cool-beauty-171cm-f-cup-n04-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "940b6bcc524c6e524a210a46d2c0bc30a742392efbce9196ec421774863fb61c"
+      },
+      {
+        "productId": "gid://shopify/Product/10664680456376",
+        "handle": "irontech-molly-166cm-2-0-s44-ros-max-silicone-doll",
+        "tag": "options:irontech-female-silicone-166v2-s20-ros-max",
+        "bindingKey": "345774989606d26919dd890b91d08b21f5ae54145c3681d712993ad1d7330f9b",
+        "runtimeHash": "7205db81f215034fa830ef136b3f7a4df9402e423504f6edbd3b26bacea9b5fd"
       }
     ],
     "bindings": {
@@ -32951,6 +33039,124 @@
               {
                 "groupId": "premium-head-body-options-multiple",
                 "optionId": "movable-eyelids"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03": {
+        "tag": "options:irontech-female-silicone-standard",
+        "signature": "sha256:86a740ef9dc95b6593682f4b09ef01bef51339a8d85847a38211fb8269099f48",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care, S+ finish, and ball-jointed hands.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-makeup-upgrade"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ball-jointed-hand-skeleton-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Implanted brows, toe joints, and an ultra-soft butt.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "toe-joint-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ultra-soft-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Body heating with body moaning.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-moaning"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "345774989606d26919dd890b91d08b21f5ae54145c3681d712993ad1d7330f9b": {
+        "tag": "options:irontech-female-silicone-166v2-s20-ros-max",
+        "signature": "sha256:cbc151031854d8d5fd472b463743289a95af0142402e0196b86a9d3d71bc66e1",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "S44 ROS MAX with the selected S+ makeup and body finish.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "s-makeup-upgrade"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "s-body-painting"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "ULW body option with soft thigh.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "ultra-light-weight"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "soft-thigh"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds body heating and soft belly to the ULW and soft-thigh build.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "heating"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "soft-belly"
               }
             ],
             "remove": []

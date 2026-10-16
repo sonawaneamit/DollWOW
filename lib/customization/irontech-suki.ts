@@ -7,6 +7,9 @@ import { customizationVisibility } from './visibility';
 
 export const SUKI_PRODUCT_ID = 'gid://shopify/Product/10630580273336';
 export const SUKI_VARIANT_ID = 'gid://shopify/ProductVariant/54234105675960';
+/** Molly ROS MAX: same Irontech 166 2.0 ROS MAX menu (S44 head), same verified option snapshot. */
+export const MOLLY_ROS_MAX_PRODUCT_ID = 'gid://shopify/Product/10664680456376';
+const SUKI_MENU_PRODUCT_IDS = new Set([SUKI_PRODUCT_ID, MOLLY_ROS_MAX_PRODUCT_ID]);
 export const SUKI_CONFIG_ID = 'irontech-suki-166-2-s20-ros-max-v1';
 export const SUKI_TEMPLATE_TAG = 'options:irontech-female-silicone-166v2-s20-ros-max';
 export const SUKI_LOCKED_SELECTIONS: Record<string, string> = {
@@ -16,7 +19,7 @@ export const SUKI_LOCKED_SELECTIONS: Record<string, string> = {
 export type SukiSourceGroup = CustomizationGroup & { defaultOptionIds: string[] };
 
 export function getSukiCustomizationConfig(product: Product): BrandCustomizationConfig | undefined {
-  if (product.id !== SUKI_PRODUCT_ID) return undefined;
+  if (!SUKI_MENU_PRODUCT_IDS.has(product.id)) return undefined;
   const groups = product.extended.customizationGroups;
   if (!groups?.every(g => Array.isArray((g as SukiSourceGroup).defaultOptionIds))) {
     throw new Error('The prepared Suki menu must be installed before enabling its config.');
