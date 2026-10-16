@@ -95,8 +95,21 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     id: "herun-doll",
     brand: "Herun Doll",
     brandValue: "hr",
+    certificateIssuer: "HR Doll",
     aliases: ["herun", "herun doll", "herun dolls", "hr", "hr doll", "hr dolls"],
-    status: "written-confirmation"
+    status: "certificate",
+    certificateSrc: "/images/authorizations/hr-doll-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/hr-doll-authorized.webp"
+  },
+  {
+    id: "climax-doll",
+    brand: "Climax Doll",
+    brandValue: "climax",
+    certificateIssuer: "Zhongshan CLM Plastics Co., Ltd.",
+    aliases: ["climax", "climax doll", "climax dolls", "clm", "clm doll"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/climax-doll-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/climax-doll-authorized.webp"
   },
   {
     id: "rosretty",
@@ -171,7 +184,7 @@ const allBrandAuthorizations: BrandAuthorization[] = [
 export const brandAuthorizations: BrandAuthorization[] = allBrandAuthorizations.filter((entry) => !isHiddenCatalogBrand(entry.brandValue));
 
 
-const brandsWithoutAuthorizationOnFile = new Set(["zelex", "climax"]);
+const brandsWithoutAuthorizationOnFile = new Set(["zelex"]);
 
 export const liveAuthorizedBrands = catalogBrands.filter((brand) => !brandsWithoutAuthorizationOnFile.has(brand.value));
 
