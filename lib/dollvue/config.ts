@@ -13,7 +13,7 @@ export const DOLLVUE_PRODUCT_HANDLES = [
   "wm-head-sn-01-186cm-na-cup-silicone-companion-doll-1y0cj",
   "lusandy-nadia-159cm-g-cup-silicone-companion-doll"
 ] as const;
-const DOLLVUE_PRODUCT_HANDLE_PREFIXES = ["irontech-", "starpery-", "lusandy-"] as const;
+const DOLLVUE_PRODUCT_HANDLE_PREFIXES: readonly string[] = ["irontech-", "starpery-", "lusandy-", "funwest-dolls-", "top-fire-doll-"];
 const DOLLVUE_EXCLUDED_HANDLES = new Set([
   "lusandy-sex-doll-heads"
 ]);

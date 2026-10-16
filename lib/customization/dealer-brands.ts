@@ -4,6 +4,119 @@ import type { CustomizationGroup, CustomizationOption } from "@/types/customizat
 import { normalizeDealerHeadGroups } from "@/lib/customization/dealer-heads";
 import { restoreIlExtraHeadOwnership } from "@/lib/customization/il-source-ownership";
 
+export function getFunwestCustomizationGroups(product: Product, groups: CustomizationGroup[]): CustomizationGroup[] {
+  return groups.map(group => {
+    // Eye color: add swatches
+    if (group.id === 'eye-color') {
+      return {
+        ...group,
+        display: 'swatches' as const,
+        options: group.options.map(option => {
+          // Split bloodshot eyes into separate group (handled below)
+          if (/bloodshot/i.test(option.label)) return option;
+          // Add color swatches for standard colors
+          const colorMap: Record<string, string> = {
+            'brown': '#59351f',
+            'blue': '#6d93bd',
+            'green': '#6f8f68',
+            'grey': '#8b9198',
+            'gray': '#8b9198',
+            'amber': '#d4a574',
+            'hazel': '#8e7547'
+          };
+          const colorKey = Object.keys(colorMap).find(key => 
+            new RegExp(`\\b${key}\\b`, 'i').test(option.label)
+          );
+          return colorKey ? {
+            ...option,
+            swatch: { kind: 'color' as const, value: colorMap[colorKey] }
+          } : option;
+        })
+      };
+    }
+    
+    // Remove poster/placeholder "As shown" thumbnails
+    if (group.id === 'choose-head' && group.options.some(opt => opt.swatch?.kind === 'image')) {
+      return {
+        ...group,
+        options: group.options.map(option => {
+          if (option.swatch?.kind === 'image' && 
+              (/as.shown|placeholder|poster/i.test(option.label) || 
+               option.swatch.value.includes('/placeholder') ||
+               option.swatch.value.includes('/poster'))) {
+            const { swatch, ...rest } = option;
+            return rest;
+          }
+          return option;
+        })
+      };
+    }
+    
+    // Letter tiles only for None options
+    if (group.options.some(opt => /^(none|no\s|not?\s)/i.test(opt.label))) {
+      return {
+        ...group,
+        options: group.options.map(option => {
+          if (/^(none|no\s|not?\s)/i.test(option.label) && !option.swatch) {
+            return {
+              ...option,
+              swatch: { kind: 'label' as const, label: option.label.slice(0, 1).toUpperCase() }
+            };
+          }
+          return option;
+        })
+      };
+    }
+    
+    return group;
+  })
+  // Extract bloodshot eyes into separate group
+  .flatMap(group => {
+    if (group.id === 'eye-color' && group.options.some(opt => /bloodshot/i.test(opt.label))) {
+      const standardEyes = group.options.filter(opt => !/bloodshot/i.test(opt.label));
+      const bloodshotEyes = group.options.filter(opt => /bloodshot/i.test(opt.label));
+      
+      if (bloodshotEyes.length > 0) {
+        return [
+          { ...group, options: standardEyes },
+          {
+            id: 'bloodshot-eyes',
+            label: 'Bloodshot Eyes',
+            description: 'Optional bloodshot eye effect.',
+            required: false,
+            selectionMode: 'single' as const,
+            display: 'cards' as const,
+            options: [
+              // Synthetic default: must be price-verified or the conditional menu flags every build for price confirmation
+              // (requiresPriceConfirmation), which empties template presets and blocks checkout.
+              { id: 'none', label: 'No bloodshot effect', priceDelta: 0, priceVerified: true },
+              ...bloodshotEyes
+            ]
+          }
+        ];
+      }
+    }
+    return [group];
+  })
+  // Dedupe Premium Head & Body options
+  .filter((group, index, arr) => {
+    if (group.id === 'premium-head-body-options-multiple' || 
+        (group.label && /premium.*head.*body.*option/i.test(group.label))) {
+      // Keep only the first occurrence
+      return arr.findIndex(g => 
+        g.id === group.id || 
+        (g.label && group.label && /premium.*head.*body.*option/i.test(g.label))
+      ) === index;
+    }
+    return true;
+  });
+}
+
+export function getTopFireCustomizationGroups(product: Product, groups: CustomizationGroup[]): CustomizationGroup[] {
+  // Apply same transformations as FunWest
+  return getFunwestCustomizationGroups(product, groups);
+}
+
 export function getSeCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
   {
     groups = groups.map(group => ({ ...group, options: group.options.map(option => {

@@ -11,6 +11,7 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
+import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { ProductEditorialPreview, supportsProductEditorialPreview } from "@/components/ProductEditorialPreview";
@@ -50,6 +51,8 @@ import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 
+export const revalidate = 60;
+
 type ProductPageSearchParams = { editorialPreview?: string; promoClock?: string | string[] };
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<ProductPageSearchParams> }): Promise<Metadata> {
@@ -68,13 +71,18 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { handle } = await params;
   const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
   const promoClock = previewPromotionClock(requestedPromoClock);
-  const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
+  const [storefrontProduct, adminProductData] = await Promise.all([
+    getProductByHandle(handle, dealerPreviewProductFetch(handle)),
+    getProductAdminMetafieldsByHandle(handle)
+  ]);
   if (!storefrontProduct) notFound();
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
-  const publicProduct = publicProductPayload(withProtectedProductImages(product));
-  const customizationConfig = publicCustomizationConfig(getCustomizationConfig(product));
+  const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
+  // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
+  // Strip only the public payload so template runtime hashes keep binding to the source menu.
+  const customizationConfig = stripSupplierFreeLabels(product.extended.brand ?? product.vendor, publicCustomizationConfig(getCustomizationConfig(product)));
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -168,7 +176,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
               ) : null}
               <CompareButton
-                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, tags: product.tags, imageUrl: heroImageUrl, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
+                entry={{ productHandle: product.handle, productTitle: displayTitle, brand: product.extended.brand ?? product.vendor, tags: publicProduct.tags, imageUrl: heroImageUrl, unitPrice: Number(price.amount), currencyCode: price.currencyCode, merchandiseId: firstAvailable?.id, material: product.extended.material, heightCm: product.extended.heightCm, weightLb: product.extended.weightLb, cupSize: product.extended.cupSize, productType: product.productType, measurements: product.extended.measurements, warehouseRegions: product.extended.warehouseRegions, stockStatus: product.extended.stockStatus, customAvailable: product.extended.customAvailable }}
                 label
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
@@ -266,7 +274,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
-      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload)} />
+      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload).map((item) => keepsWizardOpen(product.handle) ? { ...item, tags: dealerPublicTags(item.tags) ?? item.tags } : item)} />
       {hasAuthorizationSection ? (
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">
@@ -341,7 +349,7 @@ function ProductSpecSummary({
 }) {
   const detailRows = [
     ["Brand", product.extended.brand ?? product.vendor],
-    ["Head model", formatHeadModel(product.extended.headModel)],
+    ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
     ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
     ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
@@ -476,4 +484,50 @@ function measurementGroupVisual(title: string) {
     return { icon: <Ruler className="h-5 w-5" />, toneClass: "is-rose", note: "Useful for clothing fit and silhouette expectations." };
   }
   return { icon: <ShieldCheck className="h-5 w-5" />, toneClass: "is-olive", note: "Reference dimensions often checked before purchase." };
+}
+
+function stripSupplierFreeLabels<T extends { groups: Array<{ options: Array<{ label: string }> }> }>(brand: string | undefined | null, config: T): T {
+  if (!brand || !/funwest|top[- ]?fire/i.test(brand)) return config;
+  return {
+    ...config,
+    groups: config.groups.map((group) => ({
+      ...group,
+      ...(typeof (group as { description?: unknown }).description === "string"
+        ? { description: ((group as { description?: string }).description as string).replace(/\(FREE\)\s*items/gi, "included items").replace(supplierFreeLabel, "").replace(/\bFunwest\b/g, "FunWest").trim() }
+        : {}),
+      options: group.options.map((option) => stripFreeOption(option))
+    }))
+  };
+}
+
+const supplierFreeLabel = /\s*\(FREE\)/gi;
+// One brand spelling on the page: the FunWest import writes "Funwest" in add-on labels.
+const cleanDealerLabel = (label: string) => label.replace(supplierFreeLabel, "").replace(/\bFunwest\b/g, "FunWest").trim();
+function stripFreeOption<O extends { label: string; swatch?: unknown }>(option: O): O {
+  const swatch = option.swatch as { label?: string } | undefined;
+  return {
+    ...option,
+    label: cleanDealerLabel(option.label),
+    ...(swatch && typeof swatch.label === "string" ? { swatch: { ...swatch, label: cleanDealerLabel(swatch.label) } } : {})
+  };
+}
+
+// The public product payload also carries the raw imported menu (extended.customizationGroups).
+function stripSupplierFreeProductLabels<P extends { vendor?: string; extended: { brand?: string; customizationGroups?: Array<{ options: Array<{ label: string; swatch?: unknown }> }> } }>(product: P): P {
+  const brand = product.extended.brand ?? product.vendor;
+  const groups = product.extended.customizationGroups;
+  if (!brand || !/funwest|top[- ]?fire/i.test(brand)) return product;
+  const tags = dealerPublicTags((product as { tags?: string[] }).tags);
+  return {
+    ...product,
+    ...(tags ? { tags } : {}),
+    extended: { ...product.extended, ...(groups ? { customizationGroups: groups.map((group) => ({ ...group, ...stripFreeDescription(group), options: group.options.map(stripFreeOption) })) } : {}) }
+  };
+}
+
+function stripFreeDescription(group: object): { description?: string } {
+  const description = (group as { description?: unknown }).description;
+  return typeof description === "string"
+    ? { description: description.replace(/\(FREE\)\s*items/gi, "included items").replace(supplierFreeLabel, "").replace(/\bFunwest\b/g, "FunWest").trim() }
+    : {};
 }

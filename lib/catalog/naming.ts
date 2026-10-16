@@ -55,7 +55,9 @@ export function normalizePublicTitleForAudit(title: string | undefined | null) {
 }
 
 export function productPublicTitle(product: Product) {
-  return buildProductTitle(product, { seo: false });
+  const title = buildProductTitle(product, { seo: false });
+  // Remove SKU codes from title (FSD052, FWD041, DOL-161 patterns)
+  return title.replace(/\s+F[SW]D\d{3,}\b/gi, '').replace(/\s+DOL-\d+\b/gi, '').trim();
 }
 
 export function productSeoTitle(product: Product) {

@@ -39,7 +39,7 @@ export function ConfigurationPresets<T extends ConfigurationPreset>({ presets, a
           );
         })}
       </div>
-      <p className={styles.note}>Before shipping, tax and checkout discounts. Factory-installed features must be chosen before production.</p>
+      <p className={styles.note}>Enthusiast and Collector include all Starter items plus the listed upgrades. Prices shown before shipping, tax and checkout discounts. Factory-installed features must be chosen before production.</p>
     </fieldset>
   );
 }

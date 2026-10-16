@@ -120,6 +120,12 @@ export function promotionOptionPrice(
       : catalogDelta;
   const talkX = irontechEligible && isTalkXOption(group, option);
 
+  // Strip (FREE) from FunWest and Top Fire option labels
+  const brand = product.extended.brand || product.vendor;
+  const baseLabel = (brand && /funwest|top[- ]?fire/i.test(brand))
+    ? option.label.replace(/\s*\(FREE\)\s*/gi, '').trim()
+    : option.label;
+
   return {
     catalogDelta,
     displayDelta,
@@ -135,7 +141,7 @@ export function promotionOptionPrice(
       : null,
     active,
     eligible: irontechEligible || seEligible || fanrealEligible,
-    displayLabel: talkX ? "IronAI TalkX Box" : option.label
+    displayLabel: talkX ? "IronAI TalkX Box" : baseLabel
   };
 }
 

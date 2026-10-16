@@ -11,8 +11,12 @@ import { getCurrentDollVueHold } from './currentHold';
 const registry = registryData as Readonly<Record<string, DollVueReadinessRecord>>;
 
 export function isDollVueExcluded(product: Product) {
+  const isPreviewDeployment = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
   return product.extended.stockStatus === 'ready_to_ship' ||
-    product.tags.some(tag => /age.*hold|safety.*hold|content.*hold|^dollwow-system$|^custom-option-charge$|^dollwow-test$/i.test(tag)) ||
+    product.tags.some(tag => {
+      if (/^dollwow-test$/i.test(tag)) return !isPreviewDeployment;
+      return /age.*hold|safety.*hold|content.*hold|^dollwow-system$|^custom-option-charge$/i.test(tag);
+    }) ||
     /head only|head-only|torso|accessor|upgrade|customization|charge|^system\b/i.test(product.productType);
 }
 

@@ -948,12 +948,15 @@ export function customizationChargeLines(charge?: {
 
   const configuredCurrency = (env.SHOPIFY_CUSTOM_OPTION_CHARGE_CURRENCY || "USD").toUpperCase();
   if (charge.currencyCode.toUpperCase() !== configuredCurrency) {
-    throw new Error(`Custom option charges are configured for ${configuredCurrency}, but this product is priced in ${charge.currencyCode}.`);
+    console.error(`[Cart] Currency mismatch: configured ${configuredCurrency}, product ${charge.currencyCode}`);
+    throw new Error("Unable to process this order due to currency configuration. Please contact support for assistance.");
   }
 
   const variants = parseCustomizationChargeVariants();
   if (!variants.length) {
-    throw new Error("Custom option charges are not configured in Shopify yet. Add SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS before checking out paid customizations.");
+    // Internal configuration error - log it but show user-friendly message
+    console.error("[Cart] Custom option charge variants not configured. Set SHOPIFY_CUSTOM_OPTION_CHARGE_VARIANTS.");
+    throw new Error("Unable to process customization options at this time. Please contact support for assistance.");
   }
 
   const lines: ShopifyCartLineInput[] = [];
