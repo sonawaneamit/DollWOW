@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:49:31.309Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked | 2026-10-16 go-live: IRN 10 + Molly ROS MAX relinked on production data (dollwow-test removed).",
-      "payloadHash": "cd9282af5ae001b4767392789e4d06463040baccc3d2d1f2be5d271d36844bf0"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:49:31.309Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked | 2026-10-16 go-live: IRN 10 + Molly ROS MAX relinked on production data (dollwow-test removed).",
-      "payloadHash": "cd9282af5ae001b4767392789e4d06463040baccc3d2d1f2be5d271d36844bf0"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:49:31.309Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked | 2026-10-16 go-live: IRN 10 + Molly ROS MAX relinked on production data (dollwow-test removed).",
-      "payloadHash": "cd9282af5ae001b4767392789e4d06463040baccc3d2d1f2be5d271d36844bf0"
+      "reviewedAt": "2026-10-16T10:17:44.139Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
+      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
     }
   },
   "payload": {
@@ -21932,14 +21932,14 @@
         "handle": "funwest-dolls-zoey-155cm-f-cup-tpe-companion-doll-zm0n9",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "aea41c068c2ee0aafbf8212c6f82066af1ceb51e1acecf58d17742d184e96d0c"
+        "runtimeHash": "d4a7964754860f7da05644578e60fa12b752d53728f2955e3008f180fea5a448"
       },
       {
         "productId": "gid://shopify/Product/10634350002360",
         "handle": "funwest-dolls-sophiemina-162cm-f-cup-tpe-companion-doll-ref3l",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "fb7311e7f94a24ff25d15e525260db8fd50889fa0168425c5cb525c25bcd2860"
+        "runtimeHash": "aa1e876faf43a7f989b17c0e1d31246afa058113fb0ffd5dbd81bfc7f86529b5"
       },
       {
         "productId": "gid://shopify/Product/10634696917176",
@@ -22464,7 +22464,7 @@
         "handle": "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-fwd102",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "d2eec52ca54ee2b45e0cf24f3e511b997526388cb3574f190e6dc13bea79ae2c"
+        "runtimeHash": "b5395f9904320a053912d39cdb5277cb4ec62c6946e881fb4ad2584a58a8427f"
       },
       {
         "productId": "gid://shopify/Product/10663308067000",
@@ -22632,14 +22632,14 @@
         "handle": "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd037",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "2d8da22223c3f80d0876bfccde82761f60c5b110f778bd6172fdd3cf233af8e6"
+        "runtimeHash": "1190ca9a241b2154f7b0afe1415abb6f8c1acaddb7f3fbf3ef03f06a4c2e6c6c"
       },
       {
         "productId": "gid://shopify/Product/10663313604792",
         "handle": "funwest-dolls-bella-159cm-a-cup-silicone-companion-doll-fsd038",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "f86d93fbacef07d0c6563d68683e8c4b1b263b8ca876b10c8d175898027862c2"
+        "runtimeHash": "a3f7d81f3dff7a1ad0a0211b8e79a5ff27b2c383b68ef025ec36e3a94b88226c"
       },
       {
         "productId": "gid://shopify/Product/10663314391224",
