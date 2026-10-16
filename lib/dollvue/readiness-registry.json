@@ -71811,50 +71811,6 @@
       }
     ]
   },
-  "gid://shopify/Product/10633367191736": {
-    "productId": "gid://shopify/Product/10633367191736",
-    "policy": "appearance-v1",
-    "fingerprint": "81e697ed836ea0c4c86001fc8d55e8ee91ba0d6eda30216172c3c513931d2460",
-    "status": "ready",
-    "sourcePositions": [
-      0
-    ],
-    "choices": [
-      {
-        "groupId": "eye-color",
-        "optionId": "black",
-        "reference": "/option-assets/4a5f24d2c23dcb324b7ade54442cf3e9d7af935a261df1f1447c270742cfefa0.webp"
-      },
-      {
-        "groupId": "eye-color",
-        "optionId": "blue",
-        "reference": "/option-assets/0709bdb7fd60b3285fc05f60c09b30cd94d988e8c8cb2a4aede3762b7f7f9839.webp"
-      },
-      {
-        "groupId": "eye-color",
-        "optionId": "brown",
-        "reference": "/option-assets/56284273d67d1bea62a6531d56e243629453dc5708b80adeba5e925f3760f569.webp"
-      },
-      {
-        "groupId": "eye-color",
-        "optionId": "gray",
-        "reference": "/option-assets/34ba29f4b797c6e33522fafd0c94ca6dc36cc1eca0c0dd873e3b06f98ff70f19.webp"
-      },
-      {
-        "groupId": "eye-color",
-        "optionId": "green",
-        "reference": "/option-assets/98c4921687d4a45af8643a7cbe8ee8f49b955959e349000d5e919a488235016c.webp"
-      }
-    ],
-    "imageDigests": {
-      "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/170cm5ft7-C-cup-TPE-Sex-Doll-_E2_80_93-Anastasia-12.jpg?v=1791102547": "d2a90fd3e8147825df0e0da2964a4b13b28ce8718ad22f980f83183b0653248b",
-      "/option-assets/4a5f24d2c23dcb324b7ade54442cf3e9d7af935a261df1f1447c270742cfefa0.webp": "4a5f24d2c23dcb324b7ade54442cf3e9d7af935a261df1f1447c270742cfefa0",
-      "/option-assets/0709bdb7fd60b3285fc05f60c09b30cd94d988e8c8cb2a4aede3762b7f7f9839.webp": "0709bdb7fd60b3285fc05f60c09b30cd94d988e8c8cb2a4aede3762b7f7f9839",
-      "/option-assets/56284273d67d1bea62a6531d56e243629453dc5708b80adeba5e925f3760f569.webp": "56284273d67d1bea62a6531d56e243629453dc5708b80adeba5e925f3760f569",
-      "/option-assets/34ba29f4b797c6e33522fafd0c94ca6dc36cc1eca0c0dd873e3b06f98ff70f19.webp": "34ba29f4b797c6e33522fafd0c94ca6dc36cc1eca0c0dd873e3b06f98ff70f19",
-      "/option-assets/98c4921687d4a45af8643a7cbe8ee8f49b955959e349000d5e919a488235016c.webp": "98c4921687d4a45af8643a7cbe8ee8f49b955959e349000d5e919a488235016c"
-    }
-  },
   "gid://shopify/Product/10633367355576": {
     "productId": "gid://shopify/Product/10633367355576",
     "policy": "appearance-v1",
