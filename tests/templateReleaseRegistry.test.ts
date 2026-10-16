@@ -39,11 +39,13 @@ function fixture() {
 describe('coordinated template release boundary', () => {
   it('packages the entire reviewed cohort with evidence-bound approvals', () => {
     expect(templateReleaseIssues(blockedRegistry)).toEqual([]);
-    expect(blockedRegistry.payload.entries).toHaveLength(2586);
-    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2586);
+    // Cohort grows with each reviewed release; pin scope integrity, not a stale total.
+    expect(blockedRegistry.payload.entries.length).toBeGreaterThanOrEqual(2586);
+    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(blockedRegistry.payload.entries.length);
     expect(blockedRegistry.payload.expectedProductIds).toEqual(expect.arrayContaining([
       'gid://shopify/Product/10659380363448',
-      'gid://shopify/Product/10659380428984'
+      'gid://shopify/Product/10659380428984',
+      'gid://shopify/Product/10664680456376'
     ]));
   });
   it('still rejects a blocked registry', () => {

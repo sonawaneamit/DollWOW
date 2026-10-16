@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:43:07.682Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech Molly 166 2.0 S44 ROS MAX (preview, dollwow-test) bound to the Suki 166v2 ROS MAX recipe, tier wording S20->S44, recipe otherwise unchanged (DOL-165, 2026-10-16)",
+      "payloadHash": "3b658dcef9ce1142975e6eb7e91a805c978e82fd9a8a9ba198b3851b09cc3b51"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:43:07.683Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech Molly 166 2.0 S44 ROS MAX (preview, dollwow-test) bound to the Suki 166v2 ROS MAX recipe, tier wording S20->S44, recipe otherwise unchanged (DOL-165, 2026-10-16)",
+      "payloadHash": "3b658dcef9ce1142975e6eb7e91a805c978e82fd9a8a9ba198b3851b09cc3b51"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:43:07.683Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech Molly 166 2.0 S44 ROS MAX (preview, dollwow-test) bound to the Suki 166v2 ROS MAX recipe, tier wording S20->S44, recipe otherwise unchanged (DOL-165, 2026-10-16)",
+      "payloadHash": "3b658dcef9ce1142975e6eb7e91a805c978e82fd9a8a9ba198b3851b09cc3b51"
     }
   },
   "payload": {
@@ -2872,7 +2872,8 @@
       "gid://shopify/Product/10663303905464",
       "gid://shopify/Product/10663304069304",
       "gid://shopify/Product/10663304167608",
-      "gid://shopify/Product/10663304331448"
+      "gid://shopify/Product/10663304331448",
+      "gid://shopify/Product/10664680456376"
     ],
     "entries": [
       {
@@ -22810,6 +22811,13 @@
         "tag": "options:top-fire-silicone-manual-v1",
         "bindingKey": "topfire-female-e17ed253b743",
         "runtimeHash": "2bbf4b9eb6f1e8e52cd69e6935b40c0873e1b8daee9c01cd515b180cd3d7d40b"
+      },
+      {
+        "productId": "gid://shopify/Product/10664680456376",
+        "handle": "irontech-molly-166cm-2-0-s44-ros-max-silicone-doll",
+        "tag": "options:irontech-female-silicone-166v2-s20-ros-max",
+        "bindingKey": "345774989606d26919dd890b91d08b21f5ae54145c3681d712993ad1d7330f9b",
+        "runtimeHash": "350f843d77e3367472a37ca8f7efdcff8a64f541a5ce9e61f75d956f1ddf4588"
       }
     ],
     "bindings": {
@@ -32884,6 +32892,57 @@
               {
                 "groupId": "premium-head-body-options-multiple",
                 "optionId": "movable-eyelids"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "345774989606d26919dd890b91d08b21f5ae54145c3681d712993ad1d7330f9b": {
+        "tag": "options:irontech-female-silicone-166v2-s20-ros-max",
+        "signature": "sha256:cbc151031854d8d5fd472b463743289a95af0142402e0196b86a9d3d71bc66e1",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "S44 ROS MAX with the selected S+ makeup and body finish.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "s-makeup-upgrade"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "s-body-painting"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "ULW body option with soft thigh.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "ultra-light-weight"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "soft-thigh"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds body heating and soft belly to the ULW and soft-thigh build.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "heating"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "soft-belly"
               }
             ],
             "remove": []
