@@ -1,0 +1,37 @@
+import {test,expect,vi} from 'vitest';
+import {readFile,writeFile} from 'node:fs/promises';
+import {parseEnv} from 'node:util';
+import {createHash} from 'node:crypto';
+import {getCustomizationConfig} from '@/lib/customization/configs';
+import {getDefaultSelections,resolveCustomization} from '@/lib/customization/resolve';
+import {templateConfigurationPresets} from '@/lib/customization/template-presets';
+import {createReleasedTemplateSelector,templateRuntimeHash,templateReleasePayloadHash,templateReleaseIssues} from '@/lib/customization/template-release-registry';
+import registrySource from '@/lib/customization/evidence/template-release.json';
+vi.mock('server-only',()=>({}));
+const MOLLY='irontech-molly-166cm-2-0-s44-ros-max-silicone-doll', SUKI='irontech-suki-glow-166cm-2-0-s20-ros-max-silicone-doll';
+test.skipIf(process.env.MOLLY_REGISTRY!=='1')('binds Molly ROS MAX to the Suki recipe with S44 wording',async()=>{
+ Object.assign(process.env,parseEnv(await readFile('.env.local','utf8')));
+ const {getProductByHandle}=await import('@/lib/shopify/storefront');
+ const registry=structuredClone(registrySource) as any;
+ const s=await getProductByHandle(SUKI);const p=await getProductByHandle(MOLLY);expect(p).toBeTruthy();
+ const suki=registry.payload.entries.find((e:any)=>e.handle===SUKI);
+ const recipe=structuredClone(registry.payload.bindings[suki.bindingKey]);
+ recipe.tiers=recipe.tiers.map((t:any)=>({...t,description:t.description.replace('S20','S44')}));
+ const key=createHash('sha256').update(JSON.stringify(recipe)).digest('hex');
+ const config=getCustomizationConfig(p!);
+ registry.payload.bindings[key]=recipe;
+ registry.payload.expectedProductIds.push(p!.id);
+ registry.payload.entries.push({productId:p!.id,handle:MOLLY,tag:suki.tag,bindingKey:key,runtimeHash:templateRuntimeHash(p!,config)});
+ const hash=templateReleasePayloadHash(registry.payload);
+ for(const a of Object.values(registry.approvals) as any[]){a.payloadHash=hash;a.reviewedAt=new Date().toISOString();a.evidenceRef+='; Irontech Molly 166 2.0 S44 ROS MAX (preview, dollwow-test) bound to the Suki 166v2 ROS MAX recipe, tier wording S20->S44, recipe otherwise unchanged (DOL-165, 2026-10-16)';}
+ expect(templateReleaseIssues(registry)).toEqual([]);
+ const sel=createReleasedTemplateSelector(registry);
+ const r=sel(p!,config);expect(r).toBeTruthy();
+ expect(sel(s!,getCustomizationConfig(s!))).toBeTruthy();
+ const base=Number(p!.variants[0].price.amount);
+ const tiers=templateConfigurationPresets(r,config,config,base,getDefaultSelections(config));
+ expect(tiers.length).toBe(3);
+ for(const t of tiers) expect(resolveCustomization(config,t.selections,base).issues).toEqual([]);
+ console.log('MOLLY', base, JSON.stringify(getDefaultSelections(config)).slice(0,300), tiers.map(t=>[t.id,t.totalPrice]));
+ await writeFile('lib/customization/evidence/template-release.json',JSON.stringify(registry,null,2)+'\n');
+},120000);
