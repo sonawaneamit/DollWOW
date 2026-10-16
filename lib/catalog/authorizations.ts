@@ -40,7 +40,7 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     id: "top-fire-dolls",
     brand: "Top Fire Doll",
     brandValue: "top-fire",
-    certificateIssuer: "Topfire",
+    certificateIssuer: "Top Fire Doll",
     aliases: ["top fire", "top fire doll", "topfire", "topfiredoll"],
     status: "certificate",
     certificateSrc: "/images/authorizations/top-fire-dolls-authorized.jpg",
@@ -158,6 +158,13 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     status: "certificate",
     certificateSrc: "/images/authorizations/avant-doll-authorized.jpeg",
     certificatePreviewSrc: "/images/authorizations/previews/avant-doll-authorized.webp"
+  },
+  {
+    id: "funwest-dolls",
+    brand: "FunWest Dolls",
+    brandValue: "funwest",
+    aliases: ["funwest", "funwest doll", "funwest dolls", "fun west"],
+    status: "authorized"
   }
 ];
 // Public list: unlaunched (hidden) catalog brands are excluded until launch.

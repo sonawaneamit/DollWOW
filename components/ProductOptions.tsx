@@ -5,6 +5,15 @@ import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
+
+function stripFreeLabel(label: string, brand?: string): string {
+  if (brand && /funwest|top[- ]?fire/i.test(brand)) {
+    return label.replace(/\s*\(FREE\)\s*/gi, '').trim();
+  }
+  return label;
+}
+
+import { keepsWizardOpen, presetSelectLayout } from "@/lib/customization/dealerPreviewBuilder";
 import {
   AlertTriangle,
   Check,
@@ -76,7 +85,9 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const [variantId, setVariantId] = useState(firstAvailable?.id ?? "");
   const [activeGroupId, setActiveGroupId] = useState(pricedConfig.groups[0]?.id ?? "");
   const [isReviewing, setReviewing] = useState(false);
-  const [manualExpanded, setManualExpanded] = useState(false);
+  // FunWest/Top Fire previews must match the live listing structure (inline step-by-step wizard),
+  // so the wizard starts expanded under the preset picker instead of collapsed behind it.
+  const [manualExpanded, setManualExpanded] = useState(() => keepsWizardOpen(product.handle));
   const [, setReviewedGroupIds] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -341,8 +352,9 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
       {presets.length === 3 && (
         <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {
-                    scrollToPurchaseRef.current = preset.pendingChoices.length === 0;
-                    setManualExpanded(false);
+                    const layout = presetSelectLayout(product.handle, preset.pendingChoices.length);
+                    scrollToPurchaseRef.current = layout.scrollToPurchase;
+                    if (layout.collapseWizard) setManualExpanded(false);
                     setReviewing(false);
                     setSelected(preset.selections);
                     setChosenPreset(preset.id);
@@ -402,7 +414,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
         <div className={clsx("product-builder-groups", manualVisible && "lg:col-span-7")}>
           <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
-          {presets.length === 3 && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
+          {presets.length === 3 && !keepsWizardOpen(product.handle) && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
             <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
@@ -710,7 +722,7 @@ function OptionPalette({ product, catalogConfig, group, selected, selections, on
           const isSelected = selectionIds(selected).includes(option.id);
           const unavailableOnline = !isOptionAvailableForCheckout(config, group.id, option.id);
           const isDisabled = (Boolean(conflict) || unavailableOnline) && !isSelected;
-          const notice = conflict || (unavailableOnline ? "Supplier price not yet verified — unavailable for online checkout." : null);
+          const notice = conflict || (unavailableOnline ? "This option is currently unavailable. Please contact us for availability." : null);
           return <OptionTile key={option.id} product={product} group={catalogGroup ?? group} option={includedSoftButt ? catalogOption : option} catalogOption={catalogOption} selected={isSelected || fixedIncluded} fixedIncluded={fixedIncluded} disabled={isDisabled} notice={notice} currencyCode={currencyCode} promotionNow={promotionNow} promotionContext={promotionContext} allowPromotions={!catalogConfig.groups.some(item => item.visibleWhen !== undefined)} onClick={() => onSelect(option.id)} />;
         })}
       </div>
@@ -829,8 +841,6 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
         items: [{ item_id: firstAvailable.id, item_name: displayName || displayTitle, price: basePrice, quantity: 1 }]
       };
       trackEvent(analyticsEvents.addToCart, eventParams);
-      trackEvent(analyticsEvents.beginCheckout, eventParams);
-      router.push(checkoutUrl);
     } catch {
       setError("Could not start checkout. Please try again.");
     } finally {
