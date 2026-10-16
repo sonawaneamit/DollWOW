@@ -1,0 +1,290 @@
+[
+  {
+    "id": "NEW-01",
+    "week": 1,
+    "slug": "se-doll-lstpe-lightweight-upgrade",
+    "publishedAt": "2026-10-16T17:00:00.000Z"
+  },
+  {
+    "id": "NEW-02",
+    "week": 1,
+    "slug": "doll-clothing-measurements-fit",
+    "publishedAt": "2026-10-17T09:00:00.000Z"
+  },
+  {
+    "id": "NEW-03",
+    "week": 1,
+    "slug": "factory-photo-review-worked-example",
+    "publishedAt": "2026-10-18T09:00:00.000Z"
+  },
+  {
+    "id": "NEW-04",
+    "week": 1,
+    "slug": "warehouse-stock-vs-custom-made",
+    "publishedAt": "2026-10-18T17:00:00.000Z"
+  },
+  {
+    "id": "NEW-05",
+    "week": 2,
+    "slug": "se-doll-vs-starpery-build-comparison",
+    "publishedAt": "2026-10-19T09:00:00.000Z"
+  },
+  {
+    "id": "NEW-06",
+    "week": 2,
+    "slug": "irontech-head-types-ros-max",
+    "publishedAt": "2026-10-21T09:00:00.000Z"
+  },
+  {
+    "id": "NEW-07",
+    "week": 2,
+    "slug": "doll-delivery-damage-evidence",
+    "publishedAt": "2026-10-23T09:00:00.000Z"
+  },
+  {
+    "id": "NEW-08",
+    "week": 2,
+    "slug": "doll-body-painting-options",
+    "publishedAt": "2026-10-25T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-09",
+    "week": 3,
+    "slug": "md-doll-buying-guide",
+    "publishedAt": "2026-10-26T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-10",
+    "week": 3,
+    "slug": "wm-stpe-vs-tpe",
+    "publishedAt": "2026-10-28T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-11",
+    "week": 3,
+    "slug": "doll-replacement-head-compatibility",
+    "publishedAt": "2026-10-30T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-12",
+    "week": 3,
+    "slug": "doll-wig-cap-size-fit",
+    "publishedAt": "2026-11-01T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-13",
+    "week": 4,
+    "slug": "funwest-doll-buying-guide",
+    "publishedAt": "2026-11-02T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-14",
+    "week": 4,
+    "slug": "torso-with-head-vs-headless",
+    "publishedAt": "2026-11-04T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-15",
+    "week": 4,
+    "slug": "doll-annual-ownership-budget",
+    "publishedAt": "2026-11-06T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-16",
+    "week": 4,
+    "slug": "dollvue-two-looks-worked-example",
+    "publishedAt": "2026-11-08T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-17",
+    "week": 5,
+    "slug": "ido-doll-buying-guide",
+    "publishedAt": "2026-11-09T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-18",
+    "week": 5,
+    "slug": "irontech-vs-wm-build-comparison",
+    "publishedAt": "2026-11-11T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-19",
+    "week": 5,
+    "slug": "doll-net-vs-shipping-weight-data",
+    "publishedAt": "2026-11-13T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-20",
+    "week": 5,
+    "slug": "holiday-doll-delivery-checklist-2026",
+    "publishedAt": "2026-11-15T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-21",
+    "week": 6,
+    "slug": "fanreal-doll-buying-guide",
+    "publishedAt": "2026-11-16T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-22",
+    "week": 6,
+    "slug": "compare-doll-sale-prices-black-friday-2026",
+    "publishedAt": "2026-11-18T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-23",
+    "week": 6,
+    "slug": "doll-clothing-dye-transfer-prevention",
+    "publishedAt": "2026-11-20T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-24",
+    "week": 6,
+    "slug": "doll-eye-types-compatibility",
+    "publishedAt": "2026-11-22T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-25",
+    "week": 7,
+    "slug": "real-lady-doll-buying-guide",
+    "publishedAt": "2026-11-23T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-26",
+    "week": 7,
+    "slug": "fixed-vs-movable-jaw-doll-heads",
+    "publishedAt": "2026-11-25T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-27",
+    "week": 7,
+    "slug": "doll-joint-stiffness-on-arrival",
+    "publishedAt": "2026-11-27T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-28",
+    "week": 7,
+    "slug": "factory-upgrades-2026-model-support",
+    "publishedAt": "2026-11-29T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-29",
+    "week": 8,
+    "slug": "dolls-castle-buying-guide",
+    "publishedAt": "2026-11-30T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-30",
+    "week": 8,
+    "slug": "full-size-tpe-vs-silicone-torso",
+    "publishedAt": "2026-12-02T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-31",
+    "week": 8,
+    "slug": "reading-doll-material-test-reports",
+    "publishedAt": "2026-12-04T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-32",
+    "week": 8,
+    "slug": "doll-heating-breathing-feature-checks",
+    "publishedAt": "2026-12-06T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-33",
+    "week": 9,
+    "slug": "lusandy-doll-buying-guide",
+    "publishedAt": "2026-12-07T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-34",
+    "week": 9,
+    "slug": "doll-head-body-skin-tone-match",
+    "publishedAt": "2026-12-09T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-35",
+    "week": 9,
+    "slug": "male-doll-specification-sheet",
+    "publishedAt": "2026-12-11T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-36",
+    "week": 9,
+    "slug": "doll-replacement-parts-model-record",
+    "publishedAt": "2026-12-13T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-37",
+    "week": 10,
+    "slug": "top-fire-doll-buying-guide",
+    "publishedAt": "2026-12-14T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-38",
+    "week": 10,
+    "slug": "hybrid-vs-full-silicone-builds",
+    "publishedAt": "2026-12-16T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-39",
+    "week": 10,
+    "slug": "doll-product-photo-included-accessories",
+    "publishedAt": "2026-12-18T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-40",
+    "week": 10,
+    "slug": "doll-room-storage-fit-worksheet",
+    "publishedAt": "2026-12-20T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-41",
+    "week": 11,
+    "slug": "md-vs-ido-doll-build-comparison",
+    "publishedAt": "2026-12-21T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-42",
+    "week": 11,
+    "slug": "lightweight-tpe-vs-silicone-model-data",
+    "publishedAt": "2026-12-23T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-43",
+    "week": 11,
+    "slug": "doll-order-digital-privacy",
+    "publishedAt": "2026-12-25T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-44",
+    "week": 11,
+    "slug": "custom-doll-order-review-worksheet",
+    "publishedAt": "2026-12-27T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-45",
+    "week": 12,
+    "slug": "funwest-vs-dolls-castle-build-comparison",
+    "publishedAt": "2026-12-28T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-46",
+    "week": 12,
+    "slug": "doll-price-weight-benchmark",
+    "publishedAt": "2026-12-30T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-47",
+    "week": 12,
+    "slug": "doll-preset-prices-worked-example",
+    "publishedAt": "2027-01-01T10:00:00.000Z"
+  },
+  {
+    "id": "NEW-48",
+    "week": 12,
+    "slug": "doll-aftercare-replacement-worksheet",
+    "publishedAt": "2027-01-03T10:00:00.000Z"
+  }
+]

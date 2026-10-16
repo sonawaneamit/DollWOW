@@ -1,6 +1,6 @@
 import { brandHubHandles } from "@/lib/catalog/brandSeo";
 import { collectionPresets, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
-import { getLearningArticles } from "@/lib/learn/content";
+import { getLearningArticles, learnArticleModifiedAt } from "@/lib/learn/content";
 import { getSeoCatalogProducts, isCustomerVisibleProduct } from "@/lib/shopify/storefront";
 import { brandFromText, getCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 import type { Product } from "@/types/product";
@@ -84,7 +84,7 @@ export function buildSitemapSegments(products: Product[]): SitemapSegments {
     }
   }
   for (const handle of [...brandHubHandles].sort()) add("brands.xml", `/brands/${handle}`);
-  for (const article of getLearningArticles()) add("learn.xml", `/learn/${article.slug}`, article.lastReviewed);
+  for (const article of getLearningArticles()) add("learn.xml", `/learn/${article.slug}`, learnArticleModifiedAt(article));
   for (const product of products.filter(isCustomerVisibleProduct)) {
     if (!product.handle || !/^[a-z0-9][a-z0-9-]*$/i.test(product.handle)) continue;
     add(`products-${productSitemapBrand(product)}.xml`, `/products/${product.handle}`, product.updatedAt);

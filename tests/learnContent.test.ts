@@ -8,6 +8,12 @@ describe("Learning Center content ownership", () => {
     expect(getLearningArticle("zelex-dolls-buying-guide")).toBeNull();
   });
 
+  it("keeps calendar articles hidden before their approved release times", () => {
+    const beforeRelease = Date.parse("2026-10-16T16:59:59Z");
+    expect(getLearningArticle("se-doll-lstpe-lightweight-upgrade", beforeRelease)).toBeNull();
+    expect(getLearningArticle("dollvue-two-looks-worked-example", beforeRelease)).toBeNull();
+  });
+
   it("publishes the approved silicone manufacturing guide with visual and source evidence", () => {
     const article = getLearningArticle("how-silicone-sex-dolls-are-made");
     expect(article?.featuredImage).toBe("/images/learn/how-silicone-sex-dolls-are-made.webp");

@@ -36,7 +36,7 @@ const corePages = [
   ["Support", "/support"]
 ];
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export function GET() {
   const articles = getLearningArticles();
@@ -101,7 +101,7 @@ export function GET() {
   return new Response(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400"
+      "Cache-Control": "public, s-maxage=60, must-revalidate"
     }
   });
 }

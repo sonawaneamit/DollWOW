@@ -1,6 +1,6 @@
 import { getSitemapSegments, renderSitemap, sitemapResponse } from "@/lib/seo/sitemapSegments";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function GET(_request: Request, { params }: { params: Promise<{ file: string }> }) {
   const { file } = await params;
@@ -10,5 +10,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ fil
   const segments = await getSitemapSegments();
   const entries = Object.hasOwn(segments, file) ? segments[file] : undefined;
   if (!entries?.length) return new Response("Not found", { status: 404 });
-  return sitemapResponse(renderSitemap(entries));
+  const response = sitemapResponse(renderSitemap(entries));
+  if (file === "learn.xml") response.headers.set("Cache-Control", "public, s-maxage=60, must-revalidate");
+  return response;
 }

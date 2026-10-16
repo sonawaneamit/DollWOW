@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
     {
       headers: {
         ...rateLimitHeaders(rateLimit),
-        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800"
+        "Cache-Control": "public, s-maxage=60, must-revalidate"
       }
     }
   );

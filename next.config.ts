@@ -106,6 +106,7 @@ const nextConfig: NextConfig = {
   },
   // Ensure product-media watermark lockup is present in serverless traces (SSO previews).
   outputFileTracingIncludes: {
+    "/*": ["./content/learn/drafts/*.md"],
     "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
     "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"]
   },
