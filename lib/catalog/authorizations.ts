@@ -13,6 +13,9 @@ export type BrandAuthorization = {
   status: AuthorizationStatus;
   certificateSrc?: string;
   certificatePreviewSrc?: string;
+  confirmationSrc?: string;
+  confirmationPreviewSrc?: string;
+  confirmationDate?: string;
 };
 
 const allBrandAuthorizations: BrandAuthorization[] = [
@@ -177,7 +180,11 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     brand: "FunWest Dolls",
     brandValue: "funwest",
     aliases: ["funwest", "funwest doll", "funwest dolls", "fun west"],
-    status: "authorized"
+    certificateIssuer: "FunWest",
+    status: "written-confirmation",
+    confirmationSrc: "/images/authorizations/funwest-authorization-confirmation.jpg",
+    confirmationPreviewSrc: "/images/authorizations/previews/funwest-authorization-confirmation.webp",
+    confirmationDate: "16 Oct 2026"
   }
 ];
 // Public list: unlaunched (hidden) catalog brands are excluded until launch.
