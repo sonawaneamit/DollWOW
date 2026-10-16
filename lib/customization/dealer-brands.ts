@@ -27,7 +27,8 @@ export function getFunwestCustomizationGroups(product: Product, groups: Customiz
           const colorKey = Object.keys(colorMap).find(key => 
             new RegExp(`\\b${key}\\b`, 'i').test(option.label)
           );
-          return colorKey ? {
+          // Keep supplier eye photos (reviewed DollVue references); colour dots are only a fallback.
+          return colorKey && option.swatch?.kind !== 'image' ? {
             ...option,
             swatch: { kind: 'color' as const, value: colorMap[colorKey] }
           } : option;
