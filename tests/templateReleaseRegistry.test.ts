@@ -39,8 +39,8 @@ function fixture() {
 describe('coordinated template release boundary', () => {
   it('packages the entire reviewed cohort with evidence-bound approvals', () => {
     expect(templateReleaseIssues(blockedRegistry)).toEqual([]);
-    expect(blockedRegistry.payload.entries).toHaveLength(2849);
-    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2849);
+    expect(blockedRegistry.payload.entries).toHaveLength(2860);
+    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2860);
     expect(blockedRegistry.payload.expectedProductIds).toEqual(expect.arrayContaining([
       'gid://shopify/Product/10659380363448',
       'gid://shopify/Product/10659380428984',
