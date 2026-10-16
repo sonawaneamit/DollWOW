@@ -11,7 +11,7 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
-import { dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
+import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
 import { ProductEditorialPreview, supportsProductEditorialPreview } from "@/components/ProductEditorialPreview";
@@ -274,7 +274,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
       </ToneBand>
 
-      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload)} />
+      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload).map((item) => keepsWizardOpen(product.handle) ? { ...item, tags: dealerPublicTags(item.tags) ?? item.tags } : item)} />
       {hasAuthorizationSection ? (
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">
