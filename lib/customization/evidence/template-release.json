@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:56:54.093Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech IRN 10 dolls (preview, dollwow-test) bound to a copy of the standard Irontech silicone recipe (same tiers; menu without the body-weight/ULW group, eligibility unverified for these bodies) (2026-10-16)",
+      "payloadHash": "29a7119fa990c8a198b533a342ba213799a9e77dcaef70a933462e3c53e1f2ee"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:56:54.093Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech IRN 10 dolls (preview, dollwow-test) bound to a copy of the standard Irontech silicone recipe (same tiers; menu without the body-weight/ULW group, eligibility unverified for these bodies) (2026-10-16)",
+      "payloadHash": "29a7119fa990c8a198b533a342ba213799a9e77dcaef70a933462e3c53e1f2ee"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T07:56:54.093Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; Irontech IRN 10 dolls (preview, dollwow-test) bound to a copy of the standard Irontech silicone recipe (same tiers; menu without the body-weight/ULW group, eligibility unverified for these bodies) (2026-10-16)",
+      "payloadHash": "29a7119fa990c8a198b533a342ba213799a9e77dcaef70a933462e3c53e1f2ee"
     }
   },
   "payload": {
@@ -2872,7 +2872,17 @@
       "gid://shopify/Product/10663303905464",
       "gid://shopify/Product/10663304069304",
       "gid://shopify/Product/10663304167608",
-      "gid://shopify/Product/10663304331448"
+      "gid://shopify/Product/10663304331448",
+      "gid://shopify/Product/10664705196216",
+      "gid://shopify/Product/10664705360056",
+      "gid://shopify/Product/10664705523896",
+      "gid://shopify/Product/10664705720504",
+      "gid://shopify/Product/10664705786040",
+      "gid://shopify/Product/10664706113720",
+      "gid://shopify/Product/10664706441400",
+      "gid://shopify/Product/10664706605240",
+      "gid://shopify/Product/10664706834616",
+      "gid://shopify/Product/10664707031224"
     ],
     "entries": [
       {
@@ -22810,6 +22820,76 @@
         "tag": "options:top-fire-silicone-manual-v1",
         "bindingKey": "topfire-female-e17ed253b743",
         "runtimeHash": "2bbf4b9eb6f1e8e52cd69e6935b40c0873e1b8daee9c01cd515b180cd3d7d40b"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705196216",
+        "handle": "irontech-zia-blue-fairy-154cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "2c30360e779617c9bd2c397060c0569d5b1b3ae9effc2a18436aba4cefca2f58"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705360056",
+        "handle": "irontech-zia-bunny-154cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "30972bca25908b3ef980165ec420f12876e41446b21acc6561be9fe68fbb7713"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705523896",
+        "handle": "irontech-momo-bridal-154cm-e-cup-n05-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "cd1637b8cc733c6d32343ef37c45c698dbaa3b2fede1ce769b29ad01aae8fd38"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705720504",
+        "handle": "irontech-mio-rising-star-165cm-e-cup-n01-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "6af3824d49bfedd44b74ceeee8439aaf60c5ea005beb7eeb59b673ea50ecc78a"
+      },
+      {
+        "productId": "gid://shopify/Product/10664705786040",
+        "handle": "irontech-zia-cyber-dj-165cm-e-cup-n02-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "7d818b515329e07527863a1cefead45e7bc6e2bb3167cb2c459b02f6459dca25"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706113720",
+        "handle": "irontech-sia-graceful-secretary-165cm-e-cup-n03-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "7221a67988fff22d03cba4deb80138003bdb24ba6d1aaa653676257075c68f2c"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706441400",
+        "handle": "irontech-mio-sunshine-traveler-166cm-2-0-e-cup-n01-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "d488a81f889c244d9834742ab2927b1f1d3cdd9a784825880f5175075ea9544b"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706605240",
+        "handle": "irontech-ria-striking-beauty-166cm-2-0-e-cup-n04-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "23062ebd77d938f2ee190278337c25eb3b3c01fae53c96d61a585da7c10b80c1"
+      },
+      {
+        "productId": "gid://shopify/Product/10664706834616",
+        "handle": "irontech-kiri-icy-166cm-2-0-e-cup-n06-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "fd0d35ae92e70dee787cac060c9a535bb81b03ee18a850efa96d77af89878bed"
+      },
+      {
+        "productId": "gid://shopify/Product/10664707031224",
+        "handle": "irontech-ria-cool-beauty-171cm-f-cup-n04-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03",
+        "runtimeHash": "c709a9ccb2ae219154b64653737785852adc62f7ca08abd9973a1cb85f2ba153"
       }
     ],
     "bindings": {
@@ -32884,6 +32964,73 @@
               {
                 "groupId": "premium-head-body-options-multiple",
                 "optionId": "movable-eyelids"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "b837099ccbaa56eca88888ede5c4e87adf85f2de665c2abca178f454b0693e03": {
+        "tag": "options:irontech-female-silicone-standard",
+        "signature": "sha256:86a740ef9dc95b6593682f4b09ef01bef51339a8d85847a38211fb8269099f48",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care, S+ finish, and ball-jointed hands.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-makeup-upgrade"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ball-jointed-hand-skeleton-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Implanted brows, toe joints, and an ultra-soft butt.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "toe-joint-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ultra-soft-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Body heating with body moaning.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-moaning"
               }
             ],
             "remove": []
