@@ -4,6 +4,8 @@ import Link from "next/link";
 import { GoldButton } from "@/components/GoldButton";
 import { absoluteUrl, getLearnAuthor, getLearningArticles, learnArticleUrl } from "@/lib/learn/content";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Sex Doll Buying Guides, Care & Comparisons",
   description: "Research sex doll materials, cost, size, care, shipping, customization, brands, reviews, and buyer protection in the DollWow Learning Center.",

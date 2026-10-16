@@ -15,7 +15,8 @@ import {
   absoluteUrl,
   getLearnAuthor,
   getLearningArticle,
-  getLearningArticles,
+  LEARN_EDITORIAL_AUTHOR,
+  learnArticlePublishedAt,
   learnArticleUrl
 } from "@/lib/learn/content";
 import { getProducts, getProductsByHandles } from "@/lib/shopify/storefront";
@@ -26,9 +27,7 @@ import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
 
-export function generateStaticParams() {
-  return getLearningArticles().map((article) => ({ slug: article.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -64,6 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: article.description,
       url: learnArticleUrl(article.slug),
       type: "article",
+      publishedTime: learnArticlePublishedAt(article),
       siteName: "DollWow",
       images: article.featuredImage ? [{ url: absoluteUrl(article.featuredImage)!, alt: article.featuredImageAlt, ...featuredImageDimensions }] : undefined
     },
@@ -125,7 +125,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           {catalogHero && productModule?.products.length ? (
             <ArticleCatalogHero products={productModule.products.slice(0, 3)} {...catalogHero} />
           ) : null}
-          <div className="mt-8 grid max-w-3xl grid-cols-[64px_minmax(0,1fr)] gap-4 rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5">
+          <div className={`mt-8 grid max-w-3xl ${author?.image ? "grid-cols-[64px_minmax(0,1fr)]" : "grid-cols-1"} gap-4 rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.05] p-5`}>
             {author?.image ? (
               <Link href={author.profilePath} className="relative h-20 w-16 overflow-hidden rounded-[6px] border border-gold-500/18" aria-label={`About ${article.authorDisplayName}`}>
                 <Image src={author.image} alt="" fill sizes="64px" className="object-cover" style={{ objectPosition: author.imagePosition }} />
@@ -133,9 +133,10 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
             ) : null}
             <div>
               <p className="text-sm font-semibold text-ivory-50">
-                By <Link href={author?.profilePath ?? `/authors/${article.author}`} className="underline decoration-gold-300/55 underline-offset-4 hover:text-gold-300">{article.authorDisplayName}</Link>, {article.authorTitle}
+                {article.author === "editorial" ? <>By {LEARN_EDITORIAL_AUTHOR.displayName}</> : <>By <Link href={author?.profilePath ?? `/authors/${article.author}`} className="underline decoration-gold-300/55 underline-offset-4 hover:text-gold-300">{article.authorDisplayName}</Link>, {article.authorTitle}</>}
               </p>
-              <p className="mt-2 text-sm leading-6 text-ivory-300">{author?.bio}</p>
+              <p className="mt-2 text-sm leading-6 text-ivory-300">{article.author === "editorial" ? LEARN_EDITORIAL_AUTHOR.shortBio : author?.bio}</p>
+              {article.publishedAt ? <p className="mt-3 text-sm text-gold-300">Published <time dateTime={article.publishedAt}>{learnArticlePublishedAt(article).slice(0, 10)}</time></p> : null}
               <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>
             </div>
           </div>

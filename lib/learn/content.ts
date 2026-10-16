@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { z } from "zod";
 import authorsData from "@/content/editorial/authors.json";
 import { env } from "@/lib/utils/env";
 
@@ -31,6 +32,7 @@ export type LearnArticle = {
   status: string;
   reviewOwner: string;
   lastReviewed: string;
+  publishedAt?: string;
   featuredImage: string;
   featuredImageAlt: string;
   body: string;
@@ -40,6 +42,11 @@ export type LearnArticle = {
 const ROOT = process.cwd();
 const DRAFT_DIR = path.join(ROOT, "content", "learn", "drafts");
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+const publicationTimestamp = z.iso.datetime({ offset: true });
+export const LEARN_EDITORIAL_AUTHOR = {
+  displayName: "DollWOW Editorial",
+  shortBio: "Buying, comparison, and ownership guidance from DollWOW."
+};
 const internalHeadings = [
   "DollWow Catalog Links To Add",
   "Product Links To Add",
@@ -63,18 +70,25 @@ export function learnAuthorUrl(key: string) {
   return `${siteUrl}${author?.profilePath ?? `/authors/${key}`}`;
 }
 
-export function getLearningArticles() {
+export function isLearningArticleVisible(article: Pick<LearnArticle, "status" | "publishedAt">, now = Date.now()) {
+  if (article.status !== "production" && article.status !== "scheduled") return false;
+  if (article.publishedAt === undefined) return article.status === "production";
+  return publicationTimestamp.safeParse(article.publishedAt).success
+    && Number.isFinite(now) && Date.parse(article.publishedAt) <= now;
+}
+
+export function getLearningArticles(now = Date.now()) {
   if (!fs.existsSync(DRAFT_DIR)) return [];
   return fs
     .readdirSync(DRAFT_DIR)
     .filter((file) => file.endsWith(".md"))
     .map((file) => readArticle(path.join(DRAFT_DIR, file)))
-    .filter((article) => article.status === "production")
+    .filter((article) => isLearningArticleVisible(article, now))
     .sort((a, b) => priority(a.slug) - priority(b.slug) || a.title.localeCompare(b.title));
 }
 
-export function getLearningArticle(slug: string) {
-  return getLearningArticles().find((article) => article.slug === slug) ?? null;
+export function getLearningArticle(slug: string, now = Date.now()) {
+  return getLearningArticles(now).find((article) => article.slug === slug) ?? null;
 }
 
 export function learnArticleUrl(slug: string) {
@@ -90,9 +104,13 @@ export function buildArticleStructuredData(article: LearnArticle) {
     headline: article.title,
     description: article.description,
     url: learnArticleUrl(article.slug),
-    datePublished: article.lastReviewed,
-    dateModified: article.lastReviewed,
-    author: {
+    datePublished: learnArticlePublishedAt(article),
+    dateModified: learnArticleModifiedAt(article),
+    author: article.author === "editorial" ? {
+      "@type": "Organization",
+      name: LEARN_EDITORIAL_AUTHOR.displayName,
+      url: siteUrl
+    } : {
       "@type": "Person",
       name: article.authorDisplayName,
       jobTitle: article.authorTitle,
@@ -110,6 +128,16 @@ export function buildArticleStructuredData(article: LearnArticle) {
     keywords: [article.primaryKeyword, ...article.secondaryKeywords].join(", "),
     citation: citations.length ? citations : undefined
   };
+}
+
+export function learnArticlePublishedAt(article: Pick<LearnArticle, "publishedAt" | "lastReviewed">) {
+  return article.publishedAt && publicationTimestamp.safeParse(article.publishedAt).success
+    ? article.publishedAt : article.lastReviewed;
+}
+
+export function learnArticleModifiedAt(article: Pick<LearnArticle, "publishedAt" | "lastReviewed">) {
+  const published = learnArticlePublishedAt(article);
+  return Date.parse(article.lastReviewed) >= Date.parse(published) ? article.lastReviewed : published;
 }
 
 export function buildArticleBreadcrumbStructuredData(article: LearnArticle) {
@@ -153,13 +181,14 @@ function readArticle(filePath: string): LearnArticle {
     description: stringValue(frontmatter.description),
     category: stringValue(frontmatter.category),
     author: stringValue(frontmatter.author),
-    authorDisplayName: stringValue(frontmatter.authorDisplayName),
-    authorTitle: stringValue(frontmatter.authorTitle),
+    authorDisplayName: frontmatter.author === "editorial" ? LEARN_EDITORIAL_AUTHOR.displayName : stringValue(frontmatter.authorDisplayName),
+    authorTitle: frontmatter.author === "editorial" ? LEARN_EDITORIAL_AUTHOR.shortBio : stringValue(frontmatter.authorTitle),
     status: stringValue(frontmatter.status),
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
+    publishedAt: frontmatter.publishedAt === undefined ? undefined : stringValue(frontmatter.publishedAt),
     featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
-    featuredImageAlt: featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),
+    featuredImageAlt: stringValue(frontmatter.featuredImageAlt) || featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),
     body: publicBody,
     excerpt: excerpt(publicBody)
   };
@@ -167,7 +196,7 @@ function readArticle(filePath: string): LearnArticle {
 }
 
 function parseFrontmatter(raw: string) {
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { frontmatter: {} as Record<string, unknown>, markdown: raw };
   const frontmatter = Object.fromEntries(
     match[1].split("\n").flatMap((line) => {
@@ -189,7 +218,7 @@ function parseValue(value: string) {
       return [];
     }
   }
-  return value.replace(/^"|"$/g, "");
+  return value.replace(/^(["'])([\s\S]*)\1$/, "$2");
 }
 
 function publicMarkdown(markdown: string) {

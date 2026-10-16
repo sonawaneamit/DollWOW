@@ -1,5 +1,6 @@
 import { canonicalPathFromMarkdownSegments, isPublicMarkdownPath } from "@/lib/seo/publicMarkdownPath";
 import { publicMainHtmlToMarkdown } from "@/lib/seo/htmlToMarkdown";
+import { getLearningArticle } from "@/lib/learn/content";
 
 export const revalidate = 3600;
 
@@ -10,6 +11,13 @@ type RouteContext = {
 export async function GET(request: Request, context: RouteContext) {
   const { path } = await context.params;
   const canonicalPath = canonicalPathFromMarkdownSegments(path);
+  const isLearningPath = canonicalPath === "/learn" || canonicalPath.startsWith("/learn/");
+  if (canonicalPath.startsWith("/learn/") && !getLearningArticle(canonicalPath.slice("/learn/".length))) {
+    return new Response("Public page not found.", {
+      status: 404,
+      headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "private, no-store" }
+    });
+  }
 
   if (!isPublicMarkdownPath(canonicalPath)) {
     return new Response("Public page not found.", {
@@ -27,13 +35,13 @@ export async function GET(request: Request, context: RouteContext) {
       "X-DollWow-Markdown-Source": "1"
     },
     redirect: "follow",
-    next: { revalidate: 3600 }
+    ...(isLearningPath ? { cache: "no-store" as const } : { next: { revalidate: 3600 } })
   });
 
   if (!pageResponse.ok) {
     return new Response("Canonical page could not be retrieved.", {
       status: pageResponse.status === 404 ? 404 : 502,
-      headers: { "Content-Type": "text/plain; charset=utf-8" }
+      headers: { "Content-Type": "text/plain; charset=utf-8", ...(isLearningPath ? { "Cache-Control": "private, no-store" } : {}) }
     });
   }
 
@@ -49,7 +57,7 @@ export async function GET(request: Request, context: RouteContext) {
   return new Response(markdown, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      "Cache-Control": isLearningPath ? "private, no-store" : "public, s-maxage=3600, stale-while-revalidate=86400",
       "Link": `<${resolvedCanonicalUrl}>; rel=\"canonical\", <${resolvedCanonicalUrl}>; rel=\"alternate\"; type=\"text/html\"`,
       "Vary": "Accept",
       "X-Robots-Tag": "noindex, follow"
