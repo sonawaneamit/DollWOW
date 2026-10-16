@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T08:13:48.008Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
+      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T08:13:48.008Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
+      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T07:32:30.325Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked",
-      "payloadHash": "b501ce047a6693520118d9f567a456c65471ff2b99b5ee496db543d645ef6fce"
+      "reviewedAt": "2026-10-16T08:13:48.008Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
+      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
     }
   },
   "payload": {
     "releaseId": "md26-factory-reconciled-2026-10-14",
-    "sourceSnapshotHash": "996348463d912ef33d9d39399e5d84691e9f1e26875211d15ed1abeb61b103a2",
+    "sourceSnapshotHash": "4134833c49fff2bf662db7a1299660c55f082163ed62684a61e729059000d71c",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2872,7 +2872,8 @@
       "gid://shopify/Product/10663303905464",
       "gid://shopify/Product/10663304069304",
       "gid://shopify/Product/10663304167608",
-      "gid://shopify/Product/10663304331448"
+      "gid://shopify/Product/10663304331448",
+      "gid://shopify/Product/10663295025336"
     ],
     "entries": [
       {
@@ -22810,6 +22811,13 @@
         "tag": "options:top-fire-silicone-manual-v1",
         "bindingKey": "topfire-female-e17ed253b743",
         "runtimeHash": "2bbf4b9eb6f1e8e52cd69e6935b40c0873e1b8daee9c01cd515b180cd3d7d40b"
+      },
+      {
+        "productId": "gid://shopify/Product/10663295025336",
+        "handle": "funwest-dolls-bea-162cm-f-cup-tpe-companion-doll-fwd041",
+        "tag": "options:funwest-tpe-full-body-v1",
+        "bindingKey": "funwest-bea-reviewed-20261016",
+        "runtimeHash": "cc77921b78abfcc69ed880d66c19abf9112c73515a34e944e1e3bc1e578170ff"
       }
     ],
     "bindings": {
@@ -32880,6 +32888,65 @@
               {
                 "groupId": "premium-head-body-options-multiple",
                 "optionId": "auto-vagina-clamping-and-sucking"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "movable-eyelids"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "funwest-bea-reviewed-20261016": {
+        "tag": "options:funwest-tpe-full-body-v1",
+        "signature": "sha256:b7ec3b124fd5d8aa2ad073e899a937cd7b508948f678123c16f48eca68ab6292",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care set: head stand, spare vagina insert and reusable drying rod.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "head-stand-holder"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "replaceable-vagina-insert"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and moaning sound.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "heating"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "moaning"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds auto vagina clamping & sucking, articulated fingers and movable eyelids.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "auto-vagina-clamping-and-sucking"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "articulated-fingers"
               },
               {
                 "groupId": "premium-head-body-options-multiple",
