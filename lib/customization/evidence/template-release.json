@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T08:49:31.309Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked",
+      "payloadHash": "682dc63556ebb1b03dfa017c917c6669781f11940c2730f5eccd4e53d1873b63"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T08:49:31.309Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked",
+      "payloadHash": "682dc63556ebb1b03dfa017c917c6669781f11940c2730f5eccd4e53d1873b63"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T08:13:48.008Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 156 hashes relinked; docs/catalog/bea-one-product-release-2026-10-16.md",
-      "payloadHash": "847a528f51cef4dd219acafae190d37d51dcc3b616f34f3c98d8e8b333f9e3a4"
+      "reviewedAt": "2026-10-16T08:49:31.309Z",
+      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 8 hashes relinked",
+      "payloadHash": "682dc63556ebb1b03dfa017c917c6669781f11940c2730f5eccd4e53d1873b63"
     }
   },
   "payload": {
@@ -21907,7 +21907,7 @@
         "handle": "funwest-dolls-elina-157cm-c-cup-tpe-companion-doll-14tbm",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "e019e0fc000e48c4d8a668a18c5f90f03e6f935fb3342ad8a8d1b0daaf343a66"
+        "runtimeHash": "94ca937fa433e970fd5f09999f3f16575a011c35f011f6d65af721eb8fefba59"
       },
       {
         "productId": "gid://shopify/Product/10634336469176",
@@ -22061,7 +22061,7 @@
         "handle": "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-zlrtu",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-30708f48ee18",
-        "runtimeHash": "24f8d47279bb90785e8e4476455f7c5b945b9fbe069d134d0c2b09bab7172ab0"
+        "runtimeHash": "bbbbdd6525efd5b621a8ece86bdbe696dfc464bfa70338686651c9e5921e6276"
       },
       {
         "productId": "gid://shopify/Product/10634719461560",
@@ -22138,7 +22138,7 @@
         "handle": "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-qgq4t",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-9ecbc6f614e5",
-        "runtimeHash": "e422b5e31665f4f75ea4b96bc6e7702c27d3383e31ee752955d4fd0b5468b070"
+        "runtimeHash": "02d3e2d84c7f7ece67b96c9730052398251b69b67afe8fce6bd559022f34c0c4"
       },
       {
         "productId": "gid://shopify/Product/10634722476216",
@@ -22278,7 +22278,7 @@
         "handle": "funwest-dolls-assos-157cm-c-cup-tpe-companion-doll-fwd054",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "f07442a66ada0ccdf73bc9e90017f2e2e89a1986602928fbe9e9f73542088b74"
+        "runtimeHash": "4b98d264c9747d301d2a4c34762b94ce16e253c2d8be7dbfd1da7a8196a738e7"
       },
       {
         "productId": "gid://shopify/Product/10663297548472",
@@ -22425,7 +22425,7 @@
         "handle": "funwest-dolls-kylie-157cm-g-cup-tpe-companion-doll-fwd091",
         "tag": "options:funwest-tpe-full-body-v1",
         "bindingKey": "funwest-tpe-7664cde68726",
-        "runtimeHash": "1f723781cab943d25b9a450e7d261a22d064e9391500ca557408b5d0b292128c"
+        "runtimeHash": "f3784c46efce565e253b7020f02c84657ccd10bb91cb52eebc49cf298c2d5002"
       },
       {
         "productId": "gid://shopify/Product/10663304954040",
@@ -22649,21 +22649,21 @@
         "handle": "funwest-dolls-lucy-157cm-g-cup-silicone-companion-doll-fsd044",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "411679d1f088c34e941ecb3cdc2e2ef545e413bde37e753f2f29395c18e7f14a"
+        "runtimeHash": "4d44940bda72e1f50e6c3fd0430db60847a5b794847b532dbcfa0706903d2924"
       },
       {
         "productId": "gid://shopify/Product/10663314849976",
         "handle": "funwest-dolls-alice-157cm-g-cup-silicone-companion-doll-fsd045",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "b6ae0be355490bea8ee387d6a1b870a66fa9d9981b1078b081701accc6dbf481"
+        "runtimeHash": "3a05ead19307e93a3be8ad128cfcb93579d7e6d63649bbfaed13f8c3c78c23bf"
       },
       {
         "productId": "gid://shopify/Product/10663315013816",
         "handle": "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd046",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-ce3c933f3bfd",
-        "runtimeHash": "91cbbe5be53663571641bee7cd31635f1e13aea26e5065e2898b012a2f1463c8"
+        "runtimeHash": "8db783228efafdf9efa948185d353d173bded241c9a496170b9739e8b8032ad2"
       },
       {
         "productId": "gid://shopify/Product/10663315079352",
