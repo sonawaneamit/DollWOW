@@ -21,7 +21,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
-import { productDisplayName, productDisplayNameForUi, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
+import { productDisplayName, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
 import {
   buildPdpFitChecks,
   buildPdpMetadata,
@@ -101,7 +101,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
-  const displayNameUi = productDisplayNameForUi(product);
   const pdpHeading = productPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
@@ -168,7 +167,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <IdoOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
             <MdOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
-          <div id="overview" className="flex flex-col justify-center scroll-mt-24">
+          <div id="overview" className="flex min-w-0 flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
@@ -181,9 +180,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
             </div>
-            {displayNameUi && displayNameUi !== pdpHeading ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
-            <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
-              <span>{pdpHeading}</span>
+            <h1 className="mt-2 flex min-w-0 max-w-full flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
+              <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">{pdpHeading}</span>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">

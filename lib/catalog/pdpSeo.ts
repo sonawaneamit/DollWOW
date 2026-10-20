@@ -3,7 +3,8 @@ import { productWeightLabel } from './mdWeight';
 import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
-import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
+import { productDisplayNameForUi, productLockedPdpTitle, productPdpHeading, productPublicTitle, productSeoAliases } from "./naming";
+import duplicateSeoTitles from "./duplicate-seo-titles.json";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
 
@@ -37,9 +38,13 @@ type FitCheck = {
 
 const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
+const reviewedDuplicateSeoTitles = new Set(duplicateSeoTitles);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
+  const authoredTitle = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
+  // Keep unique authored look copy. Only the audited repeated values use the
+  // current product identity; never append an arbitrary handle or sequence.
+  const title = reviewedDuplicateSeoTitles.has(authoredTitle) ? productPdpHeading(product) : authoredTitle;
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);

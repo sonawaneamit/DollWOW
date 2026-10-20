@@ -27,7 +27,7 @@ describe("DollWow catalog naming", () => {
     };
     expect(productDisplayName(product)).toBe(`${model} - ${look}`);
     expect(productPublicTitle(product)).toContain(`${model} - ${look}`);
-    expect(productPdpHeading(product)).toBe(`${model} - ${look}`);
+    expect(productPdpHeading(product)).toContain(`Moonvale ${model} - ${look} ${height}cm`);
     expect(product.title).toBe(`Moonvale ${model} ${height}cm Silicone - ${look} Companion Doll`);
     expect(productDisplayName({ ...product, extended: { ...product.extended, displayName: "Custom editorial name" } })).toBe("Custom editorial name");
   });
@@ -240,10 +240,10 @@ describe("DollWow catalog naming", () => {
       }
     };
 
-    expect(productPdpHeading(product)).toBe("Adela - Suite Temptress");
+    expect(productPdpHeading(product)).toBe("Real Lady Adela - Suite Temptress 159cm H-Cup Silicone Customizable Companion Doll");
   });
 
-  it("keeps the generic model on its existing spec-led PDP heading", () => {
+  it("includes the generic model in the semantic PDP heading", () => {
     const product = {
       ...sampleProducts[0],
       title: "159cm H-Cup Silicone Customizable Companion Doll",
@@ -260,7 +260,7 @@ describe("DollWow catalog naming", () => {
       }
     };
 
-    expect(productPdpHeading(product)).toBe("159cm H-Cup Silicone Customizable Companion Doll");
+    expect(productPdpHeading(product)).toBe("Real Lady Adela 159cm H-Cup Silicone Customizable Companion Doll");
   });
 
   it("hides generic reference-style names from the PDP name line and public title", () => {

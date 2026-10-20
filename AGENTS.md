@@ -1,5 +1,17 @@
 # Agent Notes
 
+## Linear Coordination With Dolly
+
+Linear is the only work-coordination channel for DollWOW. Work from DOL tickets labelled `Codex` / `Owner: Codex`, not chat-only requests; record a chat request on the appropriate ticket before execution. Prioritize Urgent/High, then earliest due date.
+
+- At session start and every 15-30 minutes during work, read the queue and new comments on active tickets. Reply to Dolly on the same ticket.
+- Before starting, verify the expected deliverable, definition of Done, out-of-scope boundary, dependencies and due date. If missing or unrealistic, comment and tag Dolly; never silently change the commitment.
+- Comment when starting, at meaningful milestones, when blocked and when finished. Do not leave active work without a meaningful update for more than about an hour.
+- At completion, post PR, commit, preview/live URL, test results and evidence receipts, then move to `In Review`. Dolly reviews and closes; Codex never closes its own tickets.
+- Anything requiring Martin's approval, including production release, publishing, payment, commercial decisions or settings, requires `NEEDS MARTIN:` plus one clear question on the ticket. Wait for his explicit yes through the approval workflow; Dolly brings it to him.
+- For a genuine dependency, post `BLOCKED:` with the exact need and owner, then continue the next eligible Codex ticket. Never call partial work complete or relax acceptance criteria to clear the queue.
+- Never contact customers, suppliers or TDF, and never send emails or messages outside Linear.
+
 ## Product Imagery
 
 DollWow is an adult commerce storefront, so adult product photography is core catalog content rather than incidental NSFW decoration. It is acceptable for this repository to contain adult product images when they are part of product listings, supplier-provided assets, QA fixtures, or approved demo content.

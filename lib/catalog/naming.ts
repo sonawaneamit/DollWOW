@@ -90,12 +90,51 @@ export function topFireTitleFeatures(product: Product) {
 }
 
 export function productPdpHeading(product: Product) {
-  const lockedTitle = productLockedPdpTitle(product);
-  if (lockedTitle) return lockedTitle;
-
   const displayName = productDisplayNameForUi(product);
-  if (isUniqueLookName(displayName)) return displayName;
-  return displayName ? productPdpTitle(product) : productPublicTitle(product);
+  const brand = shortBrandLabel(product.extended.brand || product.vendor);
+  // A few reviewed display names already contain the complete product identity.
+  // Do not append the same height/material a second time to those titles.
+  const completeName = /\b\d+(?:\.\d+)?\s*cm\b/i.test(displayName) && /\b(?:silicone|tpe|hybrid)\b/i.test(displayName)
+    ? cleanText(`${brand && !displayName.toLowerCase().startsWith(brand.toLowerCase()) ? `${brand} ` : ""}${displayName}`) : "";
+  const title = productLockedPdpTitle(product) || completeName || productSeoTitle(product);
+  const features = productTitleConfiguration(product);
+  const region = productWarehouseTitleLabel(product);
+  return [features && !title.toLowerCase().includes(features.toLowerCase()) ? `${title} with ${features}` : title, region].filter(Boolean).join(" - ");
+}
+
+export function productTitleConfiguration(product: Product) {
+  const brand = getCatalogBrand(product.extended.brand || product.vendor)?.value;
+  if (brand === "top-fire") return topFireTitleFeatures(product);
+  if (brand === "md-doll" || brand === "md") {
+    const parts = (cleanText(product.title).match(/\(([^)]+)\)/)?.[1] || "").split(/,\s*/);
+    return parts.filter(part => /^(?:light tan|dark tan|natural|bronze|white|tan|fair) skin$|^(?:implanted brows|neck twist|movable eyelids)$/i.test(part)).join(", ");
+  }
+  if (brand === "irontech") {
+    return [
+      /\bROS MAX\b/i.test(product.title) ? "ROS MAX" : /\bROS\b/i.test(product.title) ? "ROS" : "",
+      /\b\d+(?:\.\d+)?\s*cm\s+2\.0\b/i.test(product.title) ? "2.0 Body" : ""
+    ].filter(Boolean).join(", ");
+  }
+  if (brand === "sy") {
+    return cleanText(product.title.match(/\s-\s(.+?)\s+Companion Doll$/i)?.[1]);
+  }
+  return "";
+}
+
+/** Warehouse is an offer distinction, not a promise to ship to every country. */
+export function productWarehouseTitleLabel(product: Product) {
+  if (product.extended.stockStatus !== "ready_to_ship") return "";
+  const aliases: Record<string, string> = {
+    "united states": "US", "united states of america": "US", usa: "US", us: "US",
+    "united kingdom": "UK", "great britain": "UK", gb: "UK", uk: "UK",
+    "european union": "EU", europe: "EU", eu: "EU",
+    canada: "Canada", ca: "Canada", australia: "Australia", au: "Australia"
+  };
+  const values = product.extended.warehouseRegions?.length
+    ? product.extended.warehouseRegions : [product.extended.warehouseCountry];
+  const regions = [...new Set(values.map(value => cleanText(value)).filter(value => value && !/^factory order$/i.test(value))
+    .map(value => aliases[value.toLowerCase()] || value))].sort();
+  return regions.length ? `${regions.join(" / ")} Warehouse` : "";
 }
 
 const LOCKED_EROVENUS_PDP_TITLES = [
@@ -144,7 +183,7 @@ function buildProductNamingData(product: Product) {
   const brand = shortBrandLabel(product.extended.brand || product.vendor);
   const series = sourceSeries(product.title);
   const model = productDisplayName(product);
-  const height = normalizeHeight(product.extended.heightCm);
+  const height = normalizeHeight(productTitleHeight(product));
   const cup = normalizeCup(product.extended.cupSize);
   const material = normalizeMaterial(product.extended.material || product.productType);
   const inferredKind = inferProductKind(product);
@@ -160,6 +199,16 @@ function buildProductNamingData(product: Product) {
   return { brand, series, model, height, cup, material, kind, availability, head, headTitlePart, includeHead, includeVisibleHead, includeSeoHead };
 }
 
+function productTitleHeight(product: Product) {
+  const height = product.extended.heightCm;
+  const titleHeight = Number(product.title.match(/\b(\d+\.\d+)\s*cm\b/i)?.[1]);
+  const measurement = Object.entries(product.extended.measurements || {}).find(([key]) => /^height$/i.test(key.trim()))?.[1];
+  const measuredHeight = Number(measurement?.match(/\b(\d+(?:\.\d+)?)\s*cm\b/i)?.[1]);
+  // Shopify's integer height field rounds a few torso heights. Retain the
+  // precision only when both the current title and measurement agree.
+  return titleHeight > 0 && titleHeight === measuredHeight && Math.round(titleHeight) === height ? titleHeight : height;
+}
+
 export function productDisplayName(product: Product) {
   // Preserve reviewed Moonvale look suffixes that the generic name parser drops.
   if (getCatalogBrand(product.extended.brand || product.vendor)?.value === "moonvale") {
@@ -169,6 +218,12 @@ export function productDisplayName(product: Product) {
     }
   }
   if (product.extended.displayName) return cleanText(product.extended.displayName);
+
+  // Climax uses H82-style torso model references; these are not head numbers.
+  if (getCatalogBrand(product.extended.brand || product.vendor)?.value === "climax") {
+    const torsoModel = cleanText(product.title).match(/^([A-Z]+\d+)\s+\d+(?:\.\d+)?cm\b/i)?.[1];
+    if (torsoModel) return torsoModel.toUpperCase();
+  }
 
   const brand = shortBrandLabel(product.extended.brand || product.vendor);
   const sourceOrTitle = product.extended.sourceTitle || product.title;
@@ -184,11 +239,6 @@ export function productDisplayName(product: Product) {
 export function productDisplayNameForUi(product: Product) {
   const name = productDisplayName(product);
   return isReferenceLikeName(name) ? "" : name;
-}
-
-function isUniqueLookName(name: string) {
-  const parts = name.split(/\s+(?:-|–|—)\s+/).map((part) => cleanText(part)).filter(Boolean);
-  return parts.length >= 2;
 }
 
 export function productSeoAliases(product: Product) {
@@ -299,8 +349,8 @@ function sourceSeries(title: string) {
 }
 
 function readableHeadModel(value: string) {
-  const match = value.match(/(?:head[-_\s]*)?([a-z]?\d+[a-z]?)/i);
-  return match ? `Head ${match[1].toUpperCase()}` : "";
+  const reference = normalizeHeadReference(value);
+  return reference ? `Head ${reference}` : "";
 }
 
 function formatHeadTitlePart(material: string, head: string) {
@@ -319,7 +369,7 @@ function hasSameHeadReference(left: string | undefined | null, right: string | u
 function normalizeHeadReference(value: string | undefined | null) {
   const cleaned = cleanText(value).toLowerCase();
   if (!cleaned) return "";
-  const match = cleaned.match(/(?:head[-_\s#]*)?([a-z]?\d+[a-z]?)/i);
+  const match = cleaned.match(/^(?:head[-_\s#]*)?#?([a-z]*\d+[a-z]*(?:[.-]\d+[a-z]*)*)$/i);
   return match ? match[1].toUpperCase() : "";
 }
 
