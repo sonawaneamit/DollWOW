@@ -35,9 +35,11 @@ All initially remaining 156 H1 groups had different gallery URL lists. That does
 
 The 149 current H1 groups / 143 metadata groups need gallery-grounded look naming or individually approved canonical decisions. No artificial adjective, handle suffix, sequence number or changed weight is added just to make a counter reach zero. Full records and before/after values are retained for every member.
 
-The ticket's primary strategy document (`1Qkk_fc36Cu80yL10RjAwfCVmltvBAFOcxxkTVo3QkBI`) returns 404 through the connected Drive account. Its referenced per-group canonical/merge instructions have therefore not been verified. Dolly must supply the current accessible specification before that part is implemented; retained local guidance says not to bulk-merge alternate galleries.
+The ticket's primary strategy document (`1Qkk_fc36Cu80yL10RjAwfCVmltvBAFOcxxkTVo3QkBI`) returns 404 through the connected Drive account, but was successfully retrieved through the owner's already-authenticated Brave session (HTTP 200). That access blocker is resolved. B1 permits per-group merge/canonical choices but supplies no pre-decided group map. Its older page-volume/timing assumptions do not replace the newer validated operating plan.
 
-**Decision owner: Dolly, with Martin approving customer-facing naming/canonical outcomes.** Confirm gallery-led naming as a scoped continuation of DOL-177, or assign the exact follow-up. DOL-177 must not be marked Done while these remain or before its full HTTP acceptance and release approval.
+An acceptance clarification is with Dolly in Linear: does the required zero-duplicate count exclude explicitly reviewed noncanonical copies, or must every rendered product URL have unique text even after canonicalization? No acceptance definition is silently changed. No canonical or merge is staged while this is clarified.
+
+**Decision owner: Dolly, with Martin approving customer-facing naming/canonical outcomes.** Resolve the canonical-copy acceptance definition and review per-group outcomes. DOL-177 must not be marked Done while these remain or before its full HTTP acceptance and release approval.
 
 ## Verification And Reproduction
 
