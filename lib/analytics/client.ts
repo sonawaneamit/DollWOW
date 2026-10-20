@@ -2,7 +2,7 @@
 
 import { analyticsEvents } from "@/lib/analytics/events";
 import { track } from "@vercel/analytics";
-import { readConsent } from "@/lib/analytics/consent";
+import { readConsent, updateGtagConsent } from "@/lib/analytics/consent";
 import { analyticsHostAllowed, analyticsPageLocation, type AnalyticsConfig } from "@/lib/analytics/config";
 
 declare global {
@@ -25,6 +25,7 @@ export function trackEvent(event: string, params: AnalyticsEventParams = {}) {
   if (event === analyticsEvents.purchase) return;
   const cleaned = Object.fromEntries(Object.entries(params).filter(([key, value]) => value !== undefined && !/email|search_term|query|message|page_location|page_referrer|destination_url/i.test(key)));
   if (analyticsHostAllowed(window.dollwowAnalytics ?? null, window.location.hostname) && readConsent() === "granted") {
+    updateGtagConsent("granted");
     window.gtag?.("event", event, { ...cleaned, page_location: analyticsPageLocation(window.location.href), send_to: window.dollwowAnalytics!.measurementId });
   }
   trackVercelOnly(event, cleaned);
