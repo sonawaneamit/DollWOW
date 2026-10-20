@@ -191,7 +191,7 @@ const allBrandAuthorizations: BrandAuthorization[] = [
 export const brandAuthorizations: BrandAuthorization[] = allBrandAuthorizations.filter((entry) => !isHiddenCatalogBrand(entry.brandValue));
 
 
-const brandsWithoutAuthorizationOnFile = new Set(["zelex"]);
+const brandsWithoutAuthorizationOnFile = new Set(["zelex", "lusandy"]);
 
 export const liveAuthorizedBrands = catalogBrands.filter((brand) => !brandsWithoutAuthorizationOnFile.has(brand.value));
 

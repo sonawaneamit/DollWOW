@@ -1,6 +1,27 @@
 import { describe, expect, it } from "vitest";
 import { brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { catalogBrands } from "@/lib/catalog/brands";
+import { env } from "@/lib/utils/env";
+
+describe("Lusandy brand hub", () => {
+  const brand = catalogBrands.find((candidate) => candidate.value === "lusandy")!;
+
+  it("uses a dedicated canonical and model-specific guidance without blanket claims", () => {
+    const profile = brandSeoProfile(brand);
+    const metadata = buildBrandMetadata(brand);
+    expect(metadata.alternates?.canonical).toBe(`${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/brands/lusandy-dolls`);
+    expect(metadata.title).toBe("Lusandy Dolls: Silicone Models, Sizes & Options");
+    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.faqs).toHaveLength(4);
+    expect(profile.intro).toContain("warehouse region");
+    expect(JSON.stringify(profile)).not.toMatch(/authorized|medical.grade|hypoallergenic|\b30kg\b|2026-10-31/i);
+    const schema = buildBrandStructuredData(brand, []);
+    expect(schema.find((entry) => entry["@type"] === "CollectionPage")?.url).toBe(metadata.alternates?.canonical);
+    expect(schema.find((entry) => entry["@type"] === "FAQPage")?.mainEntity).toEqual(profile.faqs.map((item) => ({
+      "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer }
+    })));
+  });
+});
 
 describe("Moonvale catalog-grounded brand copy", () => {
   const brand = catalogBrands.find((candidate) => candidate.value === "moonvale")!;

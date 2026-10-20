@@ -1,4 +1,4 @@
-export const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no, use=reference";
+export const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=yes, use=reference";
 
 export function isPublicAgentResourcePath(pathname: string) {
   return (

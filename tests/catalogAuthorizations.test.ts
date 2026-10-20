@@ -31,5 +31,7 @@ describe("catalog authorization matching", () => {
 
   it("does not advertise an authorization section without authorization on file", () => {
     expect(isLiveAuthorizedBrand("Zelex Dolls")).toBe(false);
+    expect(isLiveAuthorizedBrand("Lusandy")).toBe(false);
+    expect(getBrandAuthorization("Lusandy")).toBeNull();
   });
 });

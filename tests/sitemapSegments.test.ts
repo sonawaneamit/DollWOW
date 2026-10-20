@@ -21,7 +21,7 @@ describe("segmented sitemaps", () => {
     expect(productSitemapBrand(product({ vendor: "New Unmapped Brand" }))).toBe("other");
   });
 
-  it("assigns existing Lusandy products to their own sitemap without requiring a brand hub", () => {
+  it("keeps Lusandy products in their own sitemap and includes the registered brand hub", () => {
     for (const vendor of ["Lusandy", "LUSANDY Doll", "Lusandy Dolls"]) {
       expect(productSitemapBrand(product({ vendor }))).toBe("lusandy");
     }
@@ -30,7 +30,7 @@ describe("segmented sitemaps", () => {
     const segments = buildSitemapSegments([product({ vendor: "Lusandy" })]);
     expect(segments["products-lusandy.xml"]).toHaveLength(1);
     expect(segments["products-other.xml"]).toBeUndefined();
-    expect(segments["brands.xml"].some((entry) => entry.url.endsWith("/brands/lusandy"))).toBe(false);
+    expect(segments["brands.xml"].filter((entry) => entry.url.endsWith("/brands/lusandy-dolls"))).toHaveLength(1);
   });
 
   it("deduplicates globally and preserves canonical production hosts", () => {

@@ -28,7 +28,7 @@ function makeProduct(overrides: Partial<Product> & { extended?: Product["extende
 
 describe("homepage catalog classification", () => {
   it('resolves every eligible catalog alias to its exact canonical value', () => {
-    const eligible = new Set(['wm','angelkiss','irontech','fanreal','starpery','avant','sy','yl','erovenus','sedoll','dolls-castle','jarliet','hr','ido','md']);
+    const eligible = new Set(['wm','angelkiss','irontech','fanreal','starpery','avant','sy','yl','erovenus','sedoll','dolls-castle','jarliet','hr','ido','md','lusandy','top-fire','funwest']);
     for (const brand of catalogBrands) {
       for (const name of [brand.value, brand.label, brand.collectionHandle, ...brand.tags, ...brand.aliases]) {
         const product = makeProduct({vendor:name});
