@@ -323,7 +323,7 @@ const collectionIntroByHandle: Record<string, string> = {
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
-    "Every product in this collection has a full silicone body. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
+    "Compare full-body silicone dolls, torsos, and hips. Match the product form before comparing height, weight, or starting price. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
   "male-dolls":
     "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
   torsos:
@@ -774,6 +774,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "RosemaryDoll alternatives", href: "/learn/rosemarydoll-alternatives" }
   ],
   silicone: [
+    { label: "Silicone sex doll buying guide", href: "/learn/silicone-sex-doll-guide" },
     { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },

@@ -2,7 +2,7 @@ import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { LocationFilter } from "@/components/LocationFilter";
-import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
+import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isStandaloneHeadCatalogProduct } from "@/lib/catalog/filters";
 import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
@@ -47,7 +47,8 @@ export default async function CollectionPage({
   if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
   const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled' });
-  const filteredProducts = filterProducts(products, filters);
+  const collectionProducts = collection === "silicone" ? products.filter(product => !isStandaloneHeadCatalogProduct(product)) : products;
+  const filteredProducts = filterProducts(collectionProducts, filters);
   const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
   const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
