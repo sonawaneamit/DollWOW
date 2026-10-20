@@ -8,6 +8,16 @@ The existing /shop/tpe page has the reviewed PILOT-TPE-01 explanation inside its
 
 No metadata, product facts, product membership, options, price, promotion, filter rules, images, schema, scheduled posts or new indexable URLs are changed. An anchor ID is added to the existing grid wrapper. The explanation renders only for the TPE collection; no separate campaign layout or landing page is introduced.
 
+## Mobile review revision
+
+Martin's 20 October review and Dolly's DOL-195 comment supersede the initial placement-only scope: guide links become one horizontally scrollable row on mobile; the comparison table, ownership support, buying advice (including the TPE labels) and FAQs sit below the product grid in native, initially closed disclosures. The intro's existing Read more behavior is unchanged. The shared collection route carries this layout to the other collection-page first passes; brand hubs use a different template and must receive the same mobile acceptance check in their own first-pass tickets.
+
+All content and all original guide links remain in the initial server-rendered HTML. Native details/summary works without JavaScript; opening a panel does not fetch its copy. Closed panels are available on desktop too. The grid, filters, metadata, inventory and schema remain unchanged.
+
+Google explicitly permits equivalent mobile content in accordions/tabs, while warning not to load primary content only after interaction: https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing . That supports this accessible layout, not a claim that all placements have identical ranking weight or that text will necessarily be indexed. A short topic introduction remains above the products; there is no established SEO requirement to put this whole supporting table and link list first.
+
+Acceptance: at 390px width the first product starts no farther than approximately one viewport of scrolling below the header; guide links occupy one row without whole-page horizontal overflow; all eight TPE links are reachable; each disclosure opens and closes with keyboard and pointer; expanded comparison tables scroll internally; full answers/labels remain in HTML with JavaScript disabled. Apply that same product-first check during subsequent sprint page passes, rather than adding more pre-grid copy by default.
+
 ## Evidence and editorial decisions
 
 - Accepted copy: private retained `seo-validation-2026-10-19/pilot.json` and `reviewer-round-2.json` (copy passed; integration was untested).

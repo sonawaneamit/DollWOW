@@ -39,6 +39,7 @@ Business Data, App Data, Amazon Labs, and other specialized endpoints are condit
 - Original information gain through catalog analysis, real examples, expert interpretation, maintained data, policies, or tools.
 - Descriptive image alt text/captions and equivalent important facts in HTML.
 - Customer-forward copy with no internal SEO, schema, prompt, PDP, SERP, or crawlability language.
+- Product-first mobile shopping pages: keep the introduction concise, make supplementary guide links a compact scrollable row, and place comparison/buying guidance below the product grid in accessible disclosures where appropriate. At 390px width, verify the first products appear within approximately one viewport of scrolling below the header. Preserve all text/links in initial HTML; do not fetch primary copy only after expanding a panel. Check narrow screens, expanded tables, keyboard operation and no-JavaScript access as well as desktop. Apply this check to collection and brand-hub first passes, without treating higher placement of every supporting paragraph as an SEO requirement.
 
 `llms.txt`, query endpoints, sitewide Markdown alternates, and content negotiation are retrieval aids, not ranking claims. Keep canonical HTML authoritative, generate Markdown from the same public server-rendered main content, make alternate representations factually equivalent, and mark noncanonical Markdown `noindex, follow`.
 

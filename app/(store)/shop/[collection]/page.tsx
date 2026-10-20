@@ -13,6 +13,7 @@ import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
 import { notFound, permanentRedirect } from "next/navigation";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
+import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 
 export async function generateMetadata({
   params,
@@ -76,7 +77,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {relatedLinks.length ? (
-        <nav aria-label={`${preset.title} buying guides`} className="mb-6 flex flex-wrap gap-3">
+        <nav aria-label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0}>
           {relatedLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
               {link.label}
@@ -84,37 +85,6 @@ export default async function CollectionPage({
           ))}
         </nav>
       ) : null}
-      {comparisonRows.length ? (
-        <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="collection-comparison-heading">
-          <div className="border-b border-gold-500/12 p-5">
-            <p className="text-sm  text-gold-300">Buyer comparison</p>
-            <h2 id="collection-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-              Why compare this collection on DollWow
-            </h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
-              <thead className="bg-ink-950/60 text-ivory-100">
-                <tr>
-                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
-                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Why it matters</th>
-                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWow advantage</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map((row) => (
-                  <tr key={row.factor} className="border-b border-gold-500/10 last:border-b-0">
-                    <td className="px-5 py-4 font-semibold text-ivory-100">{row.factor}</td>
-                    <td className="px-5 py-4 leading-6 text-ivory-400">{row.whyItMatters}</td>
-                    <td className="px-5 py-4 leading-6 text-ivory-300">{row.dollWowAdvantage}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      ) : null}
-      <div className="mb-8"><CareForLifePanel compact /></div>
       {isReadyToShip ? (
         <div className="mb-6">
           <LocationFilter currentRegion={filters.region} basePath={`/shop/${collection}`} />
@@ -136,14 +106,33 @@ export default async function CollectionPage({
           <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>
-      {buyerNotes.length ? (
-        <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-buyer-notes-heading">
-          <div className="max-w-3xl">
-            <p className="text-sm  text-gold-300">How to compare</p>
-            <h2 id="collection-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-              What to check before choosing from this collection
-            </h2>
+      <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
+        {comparisonRows.length ? (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+              <thead className="bg-ink-950/60 text-ivory-100">
+                <tr>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Why it matters</th>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWow advantage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr key={row.factor} className="border-b border-gold-500/10 last:border-b-0">
+                    <td className="px-5 py-4 font-semibold text-ivory-100">{row.factor}</td>
+                    <td className="px-5 py-4 leading-6 text-ivory-400">{row.whyItMatters}</td>
+                    <td className="px-5 py-4 leading-6 text-ivory-300">{row.dollWowAdvantage}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        ) : null}
+        <div className="mt-6"><CareForLifePanel compact /></div>
+      </CollectionDisclosure>
+      {buyerNotes.length ? (
+        <CollectionDisclosure id="collection-buyer-notes-heading" eyebrow="How to compare" title="What to check before choosing from this collection">
           {collection === "tpe" ? <TpeMaterialLabels /> : null}
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {buyerNotes.map((item) => (
@@ -153,13 +142,10 @@ export default async function CollectionPage({
               </article>
             ))}
           </div>
-        </section>
+        </CollectionDisclosure>
       ) : null}
       {faqItems.length ? (
-        <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-faq-heading">
-          <h2 id="collection-faq-heading" className="text-2xl font-semibold text-ivory-50">
-            Buying questions
-          </h2>
+        <CollectionDisclosure id="collection-faq-heading" title="Buying questions">
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {faqItems.map((item) => (
               <article key={item.question} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -168,7 +154,7 @@ export default async function CollectionPage({
               </article>
             ))}
           </div>
-        </section>
+        </CollectionDisclosure>
       ) : null}
     </section>
   );
