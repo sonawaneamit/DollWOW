@@ -67,7 +67,7 @@ export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProdu
   const [reveal, setReveal] = useState(50);
 
   useEffect(() => {
-    trackEvent("dollvue_landing_page_view", { page_location: "/dollvue" });
+    trackEvent("dollvue_landing_page_view");
   }, []);
 
   return (

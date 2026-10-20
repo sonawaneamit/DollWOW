@@ -16,27 +16,24 @@ export const analyticsEvents = {
   downloadGuide: "download_guide"
 } as const;
 
-const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
 
 type ServerEventPayload = {
   clientId?: string;
   userId?: string;
   params?: Record<string, unknown>;
+  analyticsConsent?: boolean;
 };
 
 /**
  * Server-side event tracking via the GA4 Measurement Protocol. No-ops unless
- * both GA_MEASUREMENT_ID and GA_MP_API_SECRET are configured, so local
- * development stays quiet. Used for server-observed funnel events such as
- * begin_checkout and purchase (via the Shopify orders webhook).
+ * production deployment, a consented browser identity, and explicit GA4
+ * credentials are configured. Purchases are never emitted from this path.
  */
 export async function trackServerEvent(event: string, payload: ServerEventPayload = {}) {
-  if (process.env.NODE_ENV !== "production" && !process.env.GA_MP_API_SECRET) {
-    console.info("[analytics]", event, payload);
-    return;
-  }
+  // Purchases belong exclusively to the consent-aware Shopify checkout pixel.
+  if (event === analyticsEvents.purchase || process.env.VERCEL_ENV !== "production" || !payload.analyticsConsent || !payload.clientId) return;
 
-  const measurementId = process.env.GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
+  const measurementId = process.env.GA_MEASUREMENT_ID?.trim();
   const apiSecret = process.env.GA_MP_API_SECRET;
   if (!measurementId || !apiSecret) return;
 
@@ -45,7 +42,7 @@ export async function trackServerEvent(event: string, payload: ServerEventPayloa
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        client_id: payload.clientId ?? "dollwow.server",
+        client_id: payload.clientId,
         user_id: payload.userId,
         events: [{ name: event, params: payload.params ?? {} }]
       })

@@ -21,10 +21,10 @@ import { ChatraWidget } from "@/components/ChatraWidget";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import { buildStorefrontThemeInitScript } from "@/lib/storefrontTheme";
+import { analyticsBootstrap, analyticsConfig } from "@/lib/analytics/config";
 import "./globals.css";
 import "./v2-storefront.css";
 
-const DEFAULT_GA_MEASUREMENT_ID = "G-4V999366W5";
 const STOREFRONT_THEME_INIT_SCRIPT = buildStorefrontThemeInitScript();
 
 export const metadata: Metadata = {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const siteStructuredData = buildSiteStructuredData();
-  const measurementId = process.env.GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
+  const analytics = analyticsConfig(process.env);
   const chatraId = process.env.NEXT_PUBLIC_CHATRA_ID;
 
   return (
@@ -79,30 +79,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: STOREFRONT_THEME_INIT_SCRIPT
           }}
         />
-        {measurementId ? (
+        {analytics ? (
           <>
             <script
               id="ga4-consent-and-init"
               dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = window.gtag || gtag;
-gtag('consent', 'default', {
-  analytics_storage: 'denied',
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  wait_for_update: 500
-});
-gtag('js', new Date());
-gtag('config', '${measurementId}', {
-  send_page_view: true,
-  anonymize_ip: true,
-  linker: { domains: ['dollwow.com', 'checkout.dollwow.com'] }
-});`
+                __html: analyticsBootstrap(analytics)
               }}
             />
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
           </>
         ) : null}
       </head>
@@ -126,7 +110,7 @@ gtag('config', '${measurementId}', {
           </ComparisonProvider>
         </CurrencyProvider>
         <ConsentBanner />
-        <Analytics measurementId={measurementId} />
+        <Analytics measurementId={analytics?.measurementId} />
       </body>
     </html>
   );

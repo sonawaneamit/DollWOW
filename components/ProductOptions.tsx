@@ -1,4 +1,5 @@
 "use client";
+import { captureCheckoutAnalytics } from "@/lib/analytics/checkout-context";
 
 import Image from "next/image";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
@@ -203,6 +204,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
     setLoading(true);
     setError("");
     try {
+      await captureCheckoutAnalytics();
       const response = await fetch("/api/cart/create", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -812,6 +814,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
     setLoading(true);
     setError("");
     try {
+      await captureCheckoutAnalytics();
       const response = await fetch("/api/cart/create", {
         method: "POST",
         headers: { "content-type": "application/json" },

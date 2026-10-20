@@ -4,8 +4,9 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { readConsent, updateGtagConsent } from "@/lib/analytics/consent";
+import { useConsent, updateGtagConsent } from "@/lib/analytics/consent";
 import { trackPageView } from "@/lib/analytics/client";
+import { captureCheckoutAnalytics } from "@/lib/analytics/checkout-context";
 
 declare global {
   interface Window {
@@ -17,17 +18,26 @@ declare global {
 function PageViewTracker({ measurementId }: { measurementId?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const initialPageViewSentByConfig = useRef(false);
+  const consent = useConsent();
+  const lastPage = useRef("");
 
   useEffect(() => {
-    if (!measurementId) return;
-    if (!initialPageViewSentByConfig.current) {
-      initialPageViewSentByConfig.current = true;
-      return;
+    if (!measurementId || !window.dollwowAnalytics || consent !== "granted") { lastPage.current = ""; return; }
+    updateGtagConsent(consent);
+    if (!document.getElementById("dollwow-ga-loader")) {
+      const script = document.createElement("script");
+      script.id = "dollwow-ga-loader";
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${window.dollwowAnalytics.measurementId}`;
+      script.onload = () => { void captureCheckoutAnalytics(); };
+      document.head.appendChild(script);
     }
-    const query = searchParams?.toString();
-    trackPageView(query ? `${pathname}?${query}` : pathname);
-  }, [measurementId, pathname, searchParams]);
+    if (lastPage.current !== pathname) {
+      lastPage.current = pathname;
+      trackPageView(pathname);
+      void captureCheckoutAnalytics();
+    }
+  }, [measurementId, pathname, searchParams, consent]);
 
   return null;
 }
@@ -42,7 +52,6 @@ export function Analytics({ measurementId }: { measurementId?: string }) {
     <>
       {measurementId ? (
         <>
-          <ConsentRestore />
           <Suspense fallback={null}>
             <PageViewTracker measurementId={measurementId} />
           </Suspense>
@@ -52,12 +61,4 @@ export function Analytics({ measurementId }: { measurementId?: string }) {
       <SpeedInsights />
     </>
   );
-}
-
-function ConsentRestore() {
-  useEffect(() => {
-    const stored = readConsent();
-    if (stored !== "unknown") updateGtagConsent(stored);
-  }, []);
-  return null;
 }

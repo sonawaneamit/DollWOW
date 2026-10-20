@@ -87,7 +87,7 @@ type SearchProductData = {
   };
 };
 
-async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}, options: { cache?: RequestCache; revalidate?: number } = {}) {
+async function storefrontFetch<T>(query: string, variables: Record<string, unknown> = {}, options: { cache?: RequestCache; revalidate?: number; signal?: AbortSignal } = {}) {
   if (!hasShopifyStorefrontEnv()) {
     throw new Error("Shopify Storefront API is not configured.");
   }
@@ -100,6 +100,7 @@ async function storefrontFetch<T>(query: string, variables: Record<string, unkno
       ...storefrontAuthHeaders(env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!)
     },
     body: JSON.stringify({ query, variables }),
+    ...(options.signal ? { signal: options.signal } : {}),
     ...(options.cache === "force-cache" || options.cache === "only-if-cached"
       ? { cache: options.cache, next: { revalidate: options.revalidate ?? 120 } }
       : options.cache === "no-store" || options.cache === "reload"
@@ -920,6 +921,24 @@ export async function createCartWithLines(input: {
 export function normalizeShopifyCheckoutUrl(checkoutUrl: string) {
   const checkoutDomain = (env.SHOPIFY_CHECKOUT_DOMAIN || "checkout.dollwow.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
   return normalizeCheckoutUrl(checkoutUrl, checkoutDomain);
+}
+
+export async function updateCartAnalyticsAttribute(cartId: string, attribute: { key: string; value: string }) {
+  const signal = AbortSignal.timeout(2000);
+  const existing = await storefrontFetch<{ cart: { attributes: Array<{ key: string; value: string }> } | null }>(
+    `query CheckoutExistingAttributes($cartId: ID!) { cart(id: $cartId) { attributes { key value } } }`,
+    { cartId }, { cache: "no-store", signal }
+  );
+  if (!existing.cart) throw new Error("Checkout context cart unavailable");
+  const attributes = [...existing.cart.attributes.filter(x => x.key !== attribute.key), attribute];
+  const data = await storefrontFetch<{ cartAttributesUpdate: { userErrors: Array<{ message: string }> } }>(
+    `mutation CheckoutAnalyticsContext($cartId: ID!, $attributes: [AttributeInput!]!) {
+      cartAttributesUpdate(cartId: $cartId, attributes: $attributes) { userErrors { message } }
+    }`,
+    { cartId, attributes },
+    { cache: "no-store", signal }
+  );
+  if (data.cartAttributesUpdate.userErrors.length) throw new Error("Checkout context was not stored");
 }
 
 type ShopifyCartLineInput = {

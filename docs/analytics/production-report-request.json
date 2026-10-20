@@ -1,0 +1,7 @@
+{
+  "dateRanges": [{ "startDate": "2026-10-20", "endDate": "today" }],
+  "dimensions": [{ "name": "hostName" }, { "name": "eventName" }],
+  "metrics": [{ "name": "eventCount" }, { "name": "ecommercePurchases" }, { "name": "purchaseRevenue" }],
+  "dimensionFilter": { "filter": { "fieldName": "hostName", "inListFilter": { "values": ["dollwow.com", "www.dollwow.com", "checkout.dollwow.com"], "caseSensitive": false } } },
+  "limit": 1000
+}
