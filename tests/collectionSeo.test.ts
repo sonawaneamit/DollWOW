@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { buildCollectionMetadata, collectionFaqItems, collectionIntro } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -62,8 +62,10 @@ describe("Wave 1 head collection SEO", () => {
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
     expect(metadata.title).toBe("Silicone Sex Dolls for Sale | Full Silicone Dolls");
-    expect(intro).toContain("Every product in this collection has a full silicone body");
+    expect(intro).toContain("full-body silicone dolls, torsos, and hips");
+    expect(intro).toContain("Match the product form");
     expect(intro).toContain("hybrid build");
+    expect(collectionRelatedLinks("silicone",preset)).toContainEqual({label:"Silicone sex doll buying guide",href:"/learn/silicone-sex-doll-guide"});
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });

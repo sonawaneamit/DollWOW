@@ -253,6 +253,11 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
   return sortProducts(filtered, filters.sort, filters.query);
 }
 
+/** Positive accessory identity only; a silicone head on a complete doll is not a loose head. */
+export function isStandaloneHeadCatalogProduct(product: Product) {
+  return product.tags.includes("head-only") || /\b(?:replacement heads?|standalone heads?|doll heads?|head only)\b/i.test(product.productType);
+}
+
 export function activeFilterCount(filters: CatalogFilters) {
   return Object.keys(compactFilters(filters)).length;
 }

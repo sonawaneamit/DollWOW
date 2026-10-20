@@ -1,8 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { canonicalShopCollectionHandle, collectionPresets, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isIndexableShopCollectionHandle } from "@/lib/catalog/filters";
+import { canonicalShopCollectionHandle, collectionPresets, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isIndexableShopCollectionHandle, isStandaloneHeadCatalogProduct } from "@/lib/catalog/filters";
 import { sampleProducts } from "@/lib/data/sample-products";
 
 describe("catalog filters", () => {
+  it.each(["Silicone doll head","Standalone head","Replacement heads"])("identifies a loose-head accessory from %s",productType=>{
+    expect(isStandaloneHeadCatalogProduct({...sampleProducts[0],productType,tags:[]})).toBe(true);
+  });
+  it("does not mistake complete silicone-head dolls or headless bodies for loose heads",()=>{
+    for(const productType of ["Custom silicone-head doll","Silicone torso with head","Silicone body, choose your head"]){
+      expect(isStandaloneHeadCatalogProduct({...sampleProducts[0],productType,tags:[]})).toBe(false);
+    }
+    expect(isStandaloneHeadCatalogProduct({...sampleProducts[0],tags:["head-only"]})).toBe(true);
+  });
   it("filters DollVue-enabled products with the shared eligibility rule", () => {
     const customExtended = { ...sampleProducts[0].extended, stockStatus: "custom" as const };
     const irontech = { ...sampleProducts[0], id: "dollvue-irontech", handle: "irontech-luna-152cm-a-cup-silicone-companion-doll-12nvb", extended: customExtended };
