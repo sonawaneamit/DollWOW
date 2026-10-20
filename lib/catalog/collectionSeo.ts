@@ -249,6 +249,7 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     tpe: "TPE Sex Dolls for Sale | Full-Body TPE Dolls",
     "mini-sex-dolls": "Mini Sex Dolls for Sale | Full Dolls Up to 120 cm",
     "male-dolls": "Male Sex Dolls for Sale | TPE, Silicone & Custom",
+    "female-dolls": "Female Sex Dolls for Sale",
     "cheap-sex-dolls": "Affordable Sex Dolls for Sale | Options Under $1,000",
     "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
     custom: "Custom Sex Dolls for Sale | Build & Compare Options"
@@ -323,9 +324,11 @@ const collectionIntroByHandle: Record<string, string> = {
   tpe:
     "Shop full-body TPE sex dolls by height, listed weight, proportions, brand, starting price, availability, and custom options. TPE is often chosen for a softer, more flexible feel and a lower starting price than many comparable full-silicone builds, but formulations, firmness, weight, finish, and care needs vary by manufacturer and body. This collection excludes silicone-head/TPE-body hybrids, torsos, and hips so you can compare full TPE dolls with the same basic construction.",
   silicone:
-    "Every product in this collection has a full silicone body. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
+    "Compare full-body silicone dolls, torsos, and hips. Match the product form before comparing height, weight, or starting price. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
   "male-dolls":
     "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
+  "female-dolls":
+    "Shop female-bodied sex dolls across full-body, torso, and hips designs. Compare product form first, then height, listed weight, proportions, material, starting price, and warehouse or custom-made availability. Check each listing for its exact construction, anatomy, photos, measurements, supported options, and delivery information; these vary by model and manufacturer.",
   torsos:
     "Shop torso sex dolls by product form, material, height, width, depth, listed weight, body proportions, brand, and starting price. A torso is a partial-body product, not a lower-priced full doll, and this collection keeps separate hips products and full-body dolls on their own paths. Compare what the product physically includes, how it can be cleaned and stored, and whether the exact material and dimensions are confirmed before ordering.",
   "ready-to-ship":
@@ -353,6 +356,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
   silicone: "Shop full silicone sex dolls by size, weight, finish, availability, and options. Compare exact construction, handling, care, and Care 365 support.",
   "male-dolls": "Shop male sex dolls by full-body or compact form, height, weight, proportions, TPE or silicone, anatomy, skeleton, price, and custom options.",
+  "female-dolls": "Shop female-bodied sex dolls by full-body, torso or hips form. Compare materials, measurements, starting prices, warehouse stock and custom-made options.",
   torsos: "Shop torso sex dolls by form, TPE or silicone, height, width, depth, weight, brand, price, cleaning access, and storage needs.",
   "ready-to-ship": "Shop ready-to-ship and in-stock sex dolls by product form, material, size, weight, price, warehouse region, and included configuration.",
   custom: "Shop custom sex dolls by brand, material, body, head, size, weight, price, options, compatibility, Human Build Check, and production path.",
@@ -764,6 +768,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
   ],
   tpe: [
+    { label: "TPE sex doll buying guide", href: "/learn/best-tpe-sex-dolls" },
     { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
@@ -774,6 +779,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "RosemaryDoll alternatives", href: "/learn/rosemarydoll-alternatives" }
   ],
   silicone: [
+    { label: "Silicone sex doll buying guide", href: "/learn/silicone-sex-doll-guide" },
     { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Most realistic sex dolls guide", href: "/learn/most-realistic-sex-dolls" },

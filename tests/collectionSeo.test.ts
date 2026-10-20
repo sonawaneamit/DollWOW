@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { buildCollectionMetadata, collectionFaqItems, collectionIntro } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -62,18 +62,39 @@ describe("Wave 1 head collection SEO", () => {
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
     expect(metadata.title).toBe("Silicone Sex Dolls for Sale | Full Silicone Dolls");
-    expect(intro).toContain("Every product in this collection has a full silicone body");
+    expect(intro).toContain("full-body silicone dolls, torsos, and hips");
+    expect(intro).toContain("Match the product form");
     expect(intro).toContain("hybrid build");
+    expect(collectionRelatedLinks("silicone",preset)).toContainEqual({label:"Silicone sex doll buying guide",href:"/learn/silicone-sex-doll-guide"});
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
 
 describe("Wave 2 collection SEO", () => {
+  it("clarifies female-bodied product forms without changing the filter or other intent owners", () => {
+    const preset = collectionPresets["female-dolls"];
+    const metadata = buildCollectionMetadata("female-dolls", preset);
+    const intro = collectionIntro(preset, "female-dolls");
+    expect(metadata.title).toBe("Female Sex Dolls for Sale");
+    expect(metadata.description).toContain("full-body, torso or hips");
+    expect(metadata.alternates?.canonical).toMatch(/\/shop\/female-dolls$/);
+    expect(intro).toContain("Compare product form first");
+    expect(intro).toContain("listed weight");
+    expect(intro).toContain("vary by model and manufacturer");
+    expect(preset).toEqual({ title: "Female dolls", filters: { bodyType: "female" } });
+    expect(collectionRelatedLinks("female-dolls", preset)).toEqual([
+      { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+      { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+      { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" }
+    ]);
+    expect(buildCollectionMetadata("female-dolls", preset, { productForm: "torso" }).robots).toEqual({index:false, follow:true});
+  });
   it("gives TPE and male collections descriptive commercial titles and qualified support copy", () => {
     const tpe = collectionPresets.tpe;
     const male = collectionPresets["male-dolls"];
     expect(buildCollectionMetadata("tpe", tpe).title).toBe("TPE Sex Dolls for Sale | Full-Body TPE Dolls");
+    expect(collectionRelatedLinks("tpe", tpe)).toContainEqual({label:"TPE sex doll buying guide",href:"/learn/best-tpe-sex-dolls"});
     expect(buildCollectionMetadata("male-dolls", male).title).toBe("Male Sex Dolls for Sale | TPE, Silicone & Custom");
     expect(collectionFaqItems("tpe", tpe).map((item) => item.answer).join(" ")).toContain("Care 365");
     expect(collectionFaqItems("male-dolls", male).map((item) => item.answer).join(" ")).toContain("lifetime repair concierge");
