@@ -16,6 +16,7 @@ import {
 import type { UpsellSnapshot } from "@/lib/cart/upsell";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
+import { captureCheckoutAnalytics } from "@/lib/analytics/checkout-context";
 
 type AddItemInput = Omit<BagItem, "addedAt" | "quantity"> & { quantity?: number };
 
@@ -106,6 +107,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCheckoutPending(true);
     setCheckoutError("");
     try {
+      await captureCheckoutAnalytics();
       const response = await fetch("/api/cart/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },

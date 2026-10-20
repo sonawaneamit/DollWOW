@@ -20,7 +20,8 @@ export function readConsent(): ConsentState {
     if (!raw) return "unknown";
     const parsed = JSON.parse(raw) as StoredConsent;
     if (parsed.state !== "granted" && parsed.state !== "denied") return "unknown";
-    if (Date.now() - new Date(parsed.updatedAt).getTime() > CONSENT_MAX_AGE_MS) return "unknown";
+    const age = Date.now() - new Date(parsed.updatedAt).getTime();
+    if (!Number.isFinite(age) || age < 0 || age > CONSENT_MAX_AGE_MS) return "unknown";
     return parsed.state;
   } catch {
     return "unknown";
@@ -32,7 +33,8 @@ function parseConsent(raw: string | null): ConsentState {
   try {
     const parsed = JSON.parse(raw) as StoredConsent;
     if (parsed.state !== "granted" && parsed.state !== "denied") return "unknown";
-    if (Date.now() - new Date(parsed.updatedAt).getTime() > CONSENT_MAX_AGE_MS) return "unknown";
+    const age = Date.now() - new Date(parsed.updatedAt).getTime();
+    if (!Number.isFinite(age) || age < 0 || age > CONSENT_MAX_AGE_MS) return "unknown";
     return parsed.state;
   } catch {
     return "unknown";
@@ -56,6 +58,10 @@ export function writeConsent(state: Exclude<ConsentState, "unknown">) {
 
 export function updateGtagConsent(state: Exclude<ConsentState, "unknown">) {
   if (typeof window === "undefined") return;
+  if (state === "denied") {
+    document.cookie = "dollwow_ga_context=; Path=/; Max-Age=0; SameSite=Lax";
+    if (/(^|\.)dollwow\.com$/.test(location.hostname)) document.cookie = "dollwow_ga_context=; Path=/; Domain=dollwow.com; Max-Age=0; SameSite=Lax; Secure";
+  }
   const value = state === "granted" ? "granted" : "denied";
   window.gtag?.("consent", "update", {
     analytics_storage: value,

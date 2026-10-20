@@ -2,11 +2,14 @@
 
 import { analyticsEvents } from "@/lib/analytics/events";
 import { track } from "@vercel/analytics";
+import { readConsent, updateGtagConsent } from "@/lib/analytics/consent";
+import { analyticsHostAllowed, analyticsPageLocation, type AnalyticsConfig } from "@/lib/analytics/config";
 
 declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
+    dollwowAnalytics?: AnalyticsConfig;
   }
 }
 
@@ -19,9 +22,12 @@ export type AnalyticsEventParams = Record<string, string | number | boolean | ob
  */
 export function trackEvent(event: string, params: AnalyticsEventParams = {}) {
   if (typeof window === "undefined") return;
-  const cleaned = Object.fromEntries(Object.entries(params).filter(([, value]) => value !== undefined));
-  window.dataLayer = window.dataLayer ?? [];
-  window.gtag?.("event", event, cleaned);
+  if (event === analyticsEvents.purchase) return;
+  const cleaned = Object.fromEntries(Object.entries(params).filter(([key, value]) => value !== undefined && !/email|search_term|query|message|page_location|page_referrer|destination_url/i.test(key)));
+  if (analyticsHostAllowed(window.dollwowAnalytics ?? null, window.location.hostname) && readConsent() === "granted") {
+    updateGtagConsent("granted");
+    window.gtag?.("event", event, { ...cleaned, page_location: analyticsPageLocation(window.location.href), send_to: window.dollwowAnalytics!.measurementId });
+  }
   trackVercelOnly(event, cleaned);
   if (!window.gtag && process.env.NODE_ENV !== "production") {
     console.info("[analytics:event]", event, cleaned);
@@ -46,8 +52,11 @@ export function trackVercelOnly(event: string, params: AnalyticsEventParams = {}
 
 export function trackPageView(path: string, title?: string) {
   if (typeof window === "undefined") return;
+  if (!analyticsHostAllowed(window.dollwowAnalytics ?? null, window.location.hostname) || readConsent() !== "granted") return;
   window.gtag?.("event", "page_view", {
-    page_path: path,
+    page_location: analyticsPageLocation(new URL(path, window.location.origin).href),
+    page_referrer: document.referrer ? new URL(document.referrer).origin : "",
+    send_to: window.dollwowAnalytics!.measurementId,
     page_title: title ?? document.title
   });
 }

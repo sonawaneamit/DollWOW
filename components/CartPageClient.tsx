@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
+import { captureCheckoutAnalytics } from "@/lib/analytics/checkout-context";
 import { bagItemIdentity, MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { clearBrowserCartState, useLegacyCartState } from "@/lib/cart/browser";
 import { formatMoney } from "@/lib/utils/currency";
@@ -279,6 +280,12 @@ function LegacySavedCheckout({ onCleared }: { onCleared: () => void }) {
         <div className="flex flex-wrap gap-2">
           <a
             href={legacy.checkoutUrl}
+            onClick={async event => {
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              await captureCheckoutAnalytics();
+              window.location.assign(legacy.checkoutUrl);
+            }}
             className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold  text-white transition"
           >
             <Lock className="h-3.5 w-3.5" /> Resume checkout
