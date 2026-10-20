@@ -12,12 +12,12 @@ Read-only strict Storefront extraction at 19:08 UTC: 3,521 public products, join
 
 | Exact repeated values | Before groups / listings | Preview model groups / listings |
 | --- | --- | --- |
-| Metadata title | 194 / 508 | 139 / 327 |
-| H1 identity text | 463 / 3,194 | 144 / 339 |
+| Metadata title | 194 / 508 | 116 / 270 |
+| H1 identity text | 463 / 3,194 | 118 / 274 |
 
 508 metadata titles and 3,518 H1 identities change. Badge tooltip text is not used to claim a distinct product identity. Full Shopify product records were also fetched for all 363 candidates remaining after the first identity pass; the lightweight audit and complete records produce the same repaired titles/headings. No fallback sample records are accepted.
 
-Every original collision group has an explicit disposition in the private receipt: 417 fixed groups, 77 partially separated groups, 163 deferred groups. These are title/H1 groups, not unique products. The current remaining title/H1 inventories overlap and must not be added together as a product count.
+Every original collision group has an explicit disposition in the private receipt: 454 fixed groups, 63 partially separated groups, 140 deferred groups. These are title/H1 groups, not unique products. The current remaining title/H1 inventories overlap and must not be added together as a product count.
 
 ## What Changes
 
@@ -28,13 +28,15 @@ Every original collision group has an explicit disposition in the private receip
 - Avoid repeating specifications when a reviewed display name already contains the full product identity.
 - Retain a fractional height only when current title and measurement independently agree and the integer metafield is its rounded value. Do not mutate Shopify specifications.
 - Preserve unique authored metadata. Only the 194 audited repeated title values use the current identity generator; search and social titles share that output. The JSON contains public title strings only, not provenance, source URLs or supplier notes.
-- Ten inspected Irontech photo sets have descriptive gallery labels, explicitly naming the gallery rather than implying photographed clothing is included. The server-only registry checks product ID, handle and an exact image fingerprint; a replacement photo drops the old label pending re-review. The original image URL is not stored in the registry or exposed through it. Metadata uses the raw product for that match and separately protects the public social-image URL. Shared card naming is unchanged.
+- Seventy-four inspected Irontech photo sets have descriptive gallery labels, explicitly naming the gallery rather than implying photographed clothing is included. The server-only registry checks product ID, handle and an exact image fingerprint; a replacement photo drops the old label pending re-review. The original image URL is not stored in the registry or exposed through it. Metadata uses the raw product for that match and separately protects the public social-image URL. Shared card naming is unchanged.
 
 ## What Is Not Resolved
 
 All initially remaining 156 H1 groups had different gallery URL lists. That does not prove different physical products, but it rules out claiming exact gallery equivalence from these records. 107 groups had identical option records; other groups also have menu/spec differences. Neither condition justifies an automatic merge. The previous August identity review likewise found separate photo sets and no safe automatic merges.
 
-The 144 current H1 groups / 139 metadata groups still need gallery-grounded look naming or individually approved canonical decisions. No artificial adjective, handle suffix, sequence number or changed weight is added just to make a counter reach zero. Full records and before/after values are retained for every member. A fresh Admin read of the earlier 349 candidates found no additional body-code values to resolve these collisions; no unavailable identity fields are inferred.
+The 118 current H1 groups / 116 metadata groups still need gallery-grounded look naming or individually approved canonical decisions. No artificial adjective, handle suffix, sequence number or changed weight is added just to make a counter reach zero. Full records and before/after values are retained for every member. A fresh Admin read of the earlier 349 candidates found no additional body-code values to resolve these collisions; no unavailable identity fields are inferred.
+
+Two legacy Irontech records lack usable body/material identity and one is a head incorrectly classified as a full doll; Dolly has the exact private handles and the request for source identity. Nine visually ambiguous image candidates are excluded from new promotional labels pending separate review. Neither problem authorizes automatic unpublishing or canonical changes. The private contact-sheet records preserve each excluded handle; no affected listing or gallery is changed in Shopify.
 
 The ticket's primary strategy document (`1Qkk_fc36Cu80yL10RjAwfCVmltvBAFOcxxkTVo3QkBI`) returns 404 through the connected Drive account, but was successfully retrieved through the owner's already-authenticated Brave session (HTTP 200). That access blocker is resolved. B1 permits per-group merge/canonical choices but supplies no pre-decided group map. Its older page-volume/timing assumptions do not replace the newer validated operating plan.
 
