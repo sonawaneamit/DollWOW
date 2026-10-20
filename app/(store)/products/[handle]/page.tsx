@@ -21,7 +21,8 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
-import { productDisplayName, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
+import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
+import { productReviewedPdpHeading } from "@/lib/catalog/reviewedGalleryLooks";
 import {
   buildPdpFitChecks,
   buildPdpMetadata,
@@ -60,7 +61,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const { editorialPreview } = await searchParams;
   const product = await getProductByHandle(handle);
   if (!product) return {};
-  const metadata = buildPdpMetadata(withProtectedProductImages(product));
+  const metadata = buildPdpMetadata(product);
   if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -101,7 +102,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
-  const pdpHeading = productPdpHeading(product);
+  const pdpHeading = productReviewedPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);

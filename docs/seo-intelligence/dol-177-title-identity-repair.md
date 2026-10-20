@@ -12,12 +12,12 @@ Read-only strict Storefront extraction at 19:08 UTC: 3,521 public products, join
 
 | Exact repeated values | Before groups / listings | Preview model groups / listings |
 | --- | --- | --- |
-| Metadata title | 194 / 508 | 143 / 335 |
-| H1 identity text | 463 / 3,194 | 149 / 349 |
+| Metadata title | 194 / 508 | 139 / 327 |
+| H1 identity text | 463 / 3,194 | 144 / 339 |
 
 508 metadata titles and 3,518 H1 identities change. Badge tooltip text is not used to claim a distinct product identity. Full Shopify product records were also fetched for all 363 candidates remaining after the first identity pass; the lightweight audit and complete records produce the same repaired titles/headings. No fallback sample records are accepted.
 
-Every original collision group has an explicit disposition in the private receipt: 409 fixed groups, 81 partially separated groups, 167 deferred groups. These are title/H1 groups, not unique products. The current remaining title/H1 inventories overlap and must not be added together as a product count.
+Every original collision group has an explicit disposition in the private receipt: 417 fixed groups, 77 partially separated groups, 163 deferred groups. These are title/H1 groups, not unique products. The current remaining title/H1 inventories overlap and must not be added together as a product count.
 
 ## What Changes
 
@@ -28,18 +28,19 @@ Every original collision group has an explicit disposition in the private receip
 - Avoid repeating specifications when a reviewed display name already contains the full product identity.
 - Retain a fractional height only when current title and measurement independently agree and the integer metafield is its rounded value. Do not mutate Shopify specifications.
 - Preserve unique authored metadata. Only the 194 audited repeated title values use the current identity generator; search and social titles share that output. The JSON contains public title strings only, not provenance, source URLs or supplier notes.
+- Ten inspected Irontech photo sets have descriptive gallery labels, explicitly naming the gallery rather than implying photographed clothing is included. The server-only registry checks product ID, handle and an exact image fingerprint; a replacement photo drops the old label pending re-review. The original image URL is not stored in the registry or exposed through it. Metadata uses the raw product for that match and separately protects the public social-image URL. Shared card naming is unchanged.
 
 ## What Is Not Resolved
 
 All initially remaining 156 H1 groups had different gallery URL lists. That does not prove different physical products, but it rules out claiming exact gallery equivalence from these records. 107 groups had identical option records; other groups also have menu/spec differences. Neither condition justifies an automatic merge. The previous August identity review likewise found separate photo sets and no safe automatic merges.
 
-The 149 current H1 groups / 143 metadata groups need gallery-grounded look naming or individually approved canonical decisions. No artificial adjective, handle suffix, sequence number or changed weight is added just to make a counter reach zero. Full records and before/after values are retained for every member.
+The 144 current H1 groups / 139 metadata groups still need gallery-grounded look naming or individually approved canonical decisions. No artificial adjective, handle suffix, sequence number or changed weight is added just to make a counter reach zero. Full records and before/after values are retained for every member. A fresh Admin read of the earlier 349 candidates found no additional body-code values to resolve these collisions; no unavailable identity fields are inferred.
 
 The ticket's primary strategy document (`1Qkk_fc36Cu80yL10RjAwfCVmltvBAFOcxxkTVo3QkBI`) returns 404 through the connected Drive account, but was successfully retrieved through the owner's already-authenticated Brave session (HTTP 200). That access blocker is resolved. B1 permits per-group merge/canonical choices but supplies no pre-decided group map. Its older page-volume/timing assumptions do not replace the newer validated operating plan.
 
-An acceptance clarification is with Dolly in Linear: does the required zero-duplicate count exclude explicitly reviewed noncanonical copies, or must every rendered product URL have unique text even after canonicalization? No acceptance definition is silently changed. No canonical or merge is staged while this is clarified.
+Acceptance was clarified by Dolly with Martin's decision at 20:08 UTC on 20 October: explicitly reviewed copies canonicalized to a main version are exempt. Every other product URL must have a distinct title and H1; different photo sets get distinct identities. No automatic merges or canonicals are authorized. This dependency is resolved, not a current blocker.
 
-**Decision owner: Dolly, with Martin approving customer-facing naming/canonical outcomes.** Resolve the canonical-copy acceptance definition and review per-group outcomes. DOL-177 must not be marked Done while these remain or before its full HTTP acceptance and release approval.
+**Review owner: Dolly, with Martin approving release of the exact customer-facing version.** Finish and review per-group outcomes under the recorded decision. DOL-177 remains In Progress while these remain; it must not be represented as complete before its full HTTP acceptance and release approval.
 
 ## Verification And Reproduction
 
@@ -54,6 +55,7 @@ Private local evidence: `data/exports/title-audit-2026-10-20/` in this worktree.
 - Full suite has the same 11 pre-existing failing assertions as the DOL-198 baseline. Do not describe it as fully green.
 - Final focused run: 58 assertions passed, including the private inventory consistency check. Final full suite: 2,501 passed / the same 11 pre-existing assertion failures (and the same two pre-existing node:test/Vitest collection errors).
 - Local production-build QA passed 12 HTTP samples, six desktop/mobile viewport checks, and one no-JavaScript sample. A detected long-heading overflow was repaired with minimum-width/wrapping constraints, without changing typography. Final owned-asset build gate: 4,950 checked, zero failures.
+- Gallery continuation: 41 focused metadata/identity/inventory assertions pass; typecheck, scoped lint and production webpack build pass. All ten newly labelled pages plus twelve prior samples pass HTTP title/H1/canonical checks. Nine 320/390/1440px checks, including a gallery heading, and the no-JavaScript sample pass. The private registry has zero matches in 115 public JavaScript chunks. Full suite: 2,512 passed, the same 11 existing assertion failures and two existing collection errors. This is still sample HTTP coverage, not the final full-catalog crawl.
 
 The public repeated-value list can be reproduced mechanically from the retained baseline with `node scripts/prepare-duplicate-title-review.mjs <snapshot.json>`; review the resulting diff before committing. It is not an automatic live catalog update. New uploads need the same full-catalog collision check; the retained list is not a permanent guarantee against future duplicates.
 

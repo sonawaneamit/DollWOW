@@ -3,10 +3,12 @@ import { productWeightLabel } from './mdWeight';
 import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
-import { productDisplayNameForUi, productLockedPdpTitle, productPdpHeading, productPublicTitle, productSeoAliases } from "./naming";
+import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import duplicateSeoTitles from "./duplicate-seo-titles.json";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
+import { productReviewedPdpHeading } from "./reviewedGalleryLooks";
+import { protectedProductImageUrlFor } from "./productImage";
 
 type IntentChip = {
   label: string;
@@ -44,11 +46,11 @@ export function buildPdpMetadata(product: Product): Metadata {
   const authoredTitle = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
   // Keep unique authored look copy. Only the audited repeated values use the
   // current product identity; never append an arbitrary handle or sequence.
-  const title = reviewedDuplicateSeoTitles.has(authoredTitle) ? productPdpHeading(product) : authoredTitle;
+  const title = reviewedDuplicateSeoTitles.has(authoredTitle) ? productReviewedPdpHeading(product) : authoredTitle;
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
-  const image = product.featuredImage?.url;
+  const image = protectedProductImageUrlFor(product, product.featuredImage);
 
   return {
     title,

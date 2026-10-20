@@ -2,7 +2,7 @@
 
 ## Linear Coordination With Dolly
 
-Linear is the only work-coordination channel for DollWOW. Work from DOL tickets labelled `Codex` / `Owner: Codex`, not chat-only requests; record a chat request on the appropriate ticket before execution. Prioritize Urgent/High, then earliest due date.
+Linear is the only work-coordination channel for DollWOW. Work only from DOL tickets labelled `Codex` / `Owner: Codex`, never chat-only requests. A chat request must first enter the agreed ticket and ownership workflow before execution. Prioritize Urgent/High, then earliest due date.
 
 - At session start and every 15-30 minutes during work, read the queue and new comments on active tickets. Reply to Dolly on the same ticket.
 - Before starting, verify the expected deliverable, definition of Done, out-of-scope boundary, dependencies and due date. If missing or unrealistic, comment and tag Dolly; never silently change the commitment.
