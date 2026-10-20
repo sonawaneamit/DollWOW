@@ -764,6 +764,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
   ],
   tpe: [
+    { label: "TPE sex doll buying guide", href: "/learn/best-tpe-sex-dolls" },
     { label: "Read the complete sex doll guide", href: "/learn/sex-doll-guide" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
