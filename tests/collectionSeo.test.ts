@@ -72,6 +72,24 @@ describe("Wave 1 head collection SEO", () => {
 });
 
 describe("Wave 2 collection SEO", () => {
+  it("clarifies female-bodied product forms without changing the filter or other intent owners", () => {
+    const preset = collectionPresets["female-dolls"];
+    const metadata = buildCollectionMetadata("female-dolls", preset);
+    const intro = collectionIntro(preset, "female-dolls");
+    expect(metadata.title).toBe("Female Sex Dolls for Sale");
+    expect(metadata.description).toContain("full-body, torso or hips");
+    expect(metadata.alternates?.canonical).toMatch(/\/shop\/female-dolls$/);
+    expect(intro).toContain("Compare product form first");
+    expect(intro).toContain("listed weight");
+    expect(intro).toContain("vary by model and manufacturer");
+    expect(preset).toEqual({ title: "Female dolls", filters: { bodyType: "female" } });
+    expect(collectionRelatedLinks("female-dolls", preset)).toEqual([
+      { label: "Best sex dolls buying guide", href: "/learn/best-sex-dolls" },
+      { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
+      { label: "Discreet shipping guide", href: "/learn/discreet-sex-doll-shipping" }
+    ]);
+    expect(buildCollectionMetadata("female-dolls", preset, { productForm: "torso" }).robots).toEqual({index:false, follow:true});
+  });
   it("gives TPE and male collections descriptive commercial titles and qualified support copy", () => {
     const tpe = collectionPresets.tpe;
     const male = collectionPresets["male-dolls"];
