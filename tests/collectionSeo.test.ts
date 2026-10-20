@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { buildCollectionMetadata, collectionFaqItems, collectionIntro } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -74,6 +74,7 @@ describe("Wave 2 collection SEO", () => {
     const tpe = collectionPresets.tpe;
     const male = collectionPresets["male-dolls"];
     expect(buildCollectionMetadata("tpe", tpe).title).toBe("TPE Sex Dolls for Sale | Full-Body TPE Dolls");
+    expect(collectionRelatedLinks("tpe", tpe)).toContainEqual({label:"TPE sex doll buying guide",href:"/learn/best-tpe-sex-dolls"});
     expect(buildCollectionMetadata("male-dolls", male).title).toBe("Male Sex Dolls for Sale | TPE, Silicone & Custom");
     expect(collectionFaqItems("tpe", tpe).map((item) => item.answer).join(" ")).toContain("Care 365");
     expect(collectionFaqItems("male-dolls", male).map((item) => item.answer).join(" ")).toContain("lifetime repair concierge");
