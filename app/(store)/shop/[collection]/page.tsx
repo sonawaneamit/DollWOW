@@ -12,6 +12,8 @@ import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
 import { notFound, permanentRedirect } from "next/navigation";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
+import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
+import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 
 export async function generateMetadata({
   params,
@@ -75,7 +77,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {relatedLinks.length ? (
-        <nav aria-label={`${preset.title} buying guides`} className="mb-6 flex flex-wrap gap-3">
+        <nav aria-label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0}>
           {relatedLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
               {link.label}
@@ -83,14 +85,29 @@ export default async function CollectionPage({
           ))}
         </nav>
       ) : null}
-      {comparisonRows.length ? (
-        <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="collection-comparison-heading">
-          <div className="border-b border-gold-500/12 p-5">
-            <p className="text-sm  text-gold-300">Buyer comparison</p>
-            <h2 id="collection-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-              Why compare this collection on DollWow
-            </h2>
-          </div>
+      {isReadyToShip ? (
+        <div className="mb-6">
+          <LocationFilter currentRegion={filters.region} basePath={`/shop/${collection}`} />
+        </div>
+      ) : null}
+      <div className="shop-visual-layout">
+        <aside className="shop-visual-sidebar">
+          <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
+        </aside>
+        <div id="collection-products" className="shop-visual-main scroll-mt-28">
+          {hasActiveFilters ? (
+            <div className="shop-active-strip">
+              {activeFilterLabels.map((label) => (
+                <span key={label}>{label}</span>
+              ))}
+            </div>
+          ) : null}
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/shop/${collection}`} />
+          <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
+        </div>
+      </div>
+      <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
+        {comparisonRows.length ? (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead className="bg-ink-950/60 text-ivory-100">
@@ -111,38 +128,12 @@ export default async function CollectionPage({
               </tbody>
             </table>
           </div>
-        </section>
-      ) : null}
-      <div className="mb-8"><CareForLifePanel compact /></div>
-      {isReadyToShip ? (
-        <div className="mb-6">
-          <LocationFilter currentRegion={filters.region} basePath={`/shop/${collection}`} />
-        </div>
-      ) : null}
-      <div className="shop-visual-layout">
-        <aside className="shop-visual-sidebar">
-          <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
-        </aside>
-        <div className="shop-visual-main">
-          {hasActiveFilters ? (
-            <div className="shop-active-strip">
-              {activeFilterLabels.map((label) => (
-                <span key={label}>{label}</span>
-              ))}
-            </div>
-          ) : null}
-          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/shop/${collection}`} />
-          <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
-        </div>
-      </div>
+        ) : null}
+        <div className="mt-6"><CareForLifePanel compact /></div>
+      </CollectionDisclosure>
       {buyerNotes.length ? (
-        <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-buyer-notes-heading">
-          <div className="max-w-3xl">
-            <p className="text-sm  text-gold-300">How to compare</p>
-            <h2 id="collection-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-              What to check before choosing from this collection
-            </h2>
-          </div>
+        <CollectionDisclosure id="collection-buyer-notes-heading" eyebrow="How to compare" title="What to check before choosing from this collection">
+          {collection === "tpe" ? <TpeMaterialLabels /> : null}
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {buyerNotes.map((item) => (
               <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -151,13 +142,10 @@ export default async function CollectionPage({
               </article>
             ))}
           </div>
-        </section>
+        </CollectionDisclosure>
       ) : null}
       {faqItems.length ? (
-        <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="collection-faq-heading">
-          <h2 id="collection-faq-heading" className="text-2xl font-semibold text-ivory-50">
-            Buying questions
-          </h2>
+        <CollectionDisclosure id="collection-faq-heading" title="Buying questions">
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {faqItems.map((item) => (
               <article key={item.question} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -166,7 +154,7 @@ export default async function CollectionPage({
               </article>
             ))}
           </div>
-        </section>
+        </CollectionDisclosure>
       ) : null}
     </section>
   );
