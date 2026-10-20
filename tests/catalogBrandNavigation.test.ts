@@ -26,6 +26,16 @@ describe("catalog brand navigation", () => {
     expect(catalogFilterOptions.brands.some((brand) => brand.value === "real-lady")).toBe(true);
   });
 
+  it("includes Lusandy in the brand directory, menus, filters and collection redirects", () => {
+    const brand = catalogBrands.find((candidate) => candidate.value === "lusandy");
+    expect(brand).toMatchObject({ label: "Lusandy", collectionHandle: "lusandy-dolls" });
+    expect(catalogFilterOptions.brands.some((candidate) => candidate.value === "lusandy")).toBe(true);
+    for (const alias of ["lusandy", "Lusandy Doll", "Lusandy Dolls", "lusandy-dolls"]) {
+      expect(brandHubHref(alias)).toBe("/brands/lusandy-dolls");
+      expect(brandCollectionRedirectHref(alias)).toBe("/brands/lusandy-dolls");
+    }
+  });
+
   it("includes Fanreal in brand chrome and supports both requested hub routes", () => {
     const fanreal = catalogBrands.find((brand) => brand.value === "fanreal");
     expect(fanreal).toMatchObject({ label: "Fanreal", collectionHandle: "fanreal" });

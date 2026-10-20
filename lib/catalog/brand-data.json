@@ -17,6 +17,22 @@
     ]
   },
   {
+    "value": "lusandy",
+    "label": "Lusandy",
+    "collectionHandle": "lusandy-dolls",
+    "tags": [
+      "lusandy",
+      "lusandy-doll",
+      "lusandy-dolls"
+    ],
+    "aliases": [
+      "lusandy",
+      "lusandy doll",
+      "lusandy dolls",
+      "lusandydoll"
+    ]
+  },
+  {
     "value": "md",
     "label": "MD Doll",
     "collectionHandle": "md-dolls",

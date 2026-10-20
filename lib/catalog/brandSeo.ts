@@ -21,6 +21,28 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  lusandy: {
+    metaTitle: "Lusandy Dolls: Silicone Models, Sizes & Options",
+    metaDescription: "Shop Lusandy silicone dolls at DollWow. Compare full dolls and torsos by size, listed weight, head, supported custom options and ready-to-ship availability.",
+    positioning: "Lusandy's silicone range combines different body shapes and heads with model-specific appearance and construction choices.",
+    intro: "Explore Lusandy silicone dolls at DollWow, from full dolls to torso models. Compare the exact body and head, height, listed weight and gallery before choosing your look. Lusandy offers features such as weight reduction, skin texture and realistic makeup, but the features included with your order depend on the model and selected configuration. For ready-to-ship listings, check the warehouse region and fixed build separately from custom-made options.",
+    buyerNotes: [
+      { title: "Compare the exact body", body: "Use the body measurements and listed weight, not the model name or photos alone. Similar names can appear on different bodies, and weight-reduction claims do not establish the finished weight of every model." },
+      { title: "Match the head and features", body: "Compare the head, skin tone, hair and supported appearance choices together. Check your product's included features and option prices; a feature shown elsewhere in Lusandy's range is not automatically included." },
+      { title: "Choose how it ships", body: "Custom-made listings offer the selections shown in their configurator. Ready-to-ship listings describe a fixed configuration and warehouse region. Keep those details separate when comparing price and availability." }
+    ],
+    comparisonRows: [
+      ["Body and handling", "Compare full doll or torso construction, dimensions and the exact model's listed weight.", "Use the product measurements and filters to narrow the current collection."],
+      ["Head and finish", "Check the head, skin tone, hair, makeup and any supported functions as one configuration.", "Each product page shows its own photos, included features and available choices."],
+      ["Price and availability", "Distinguish a custom-made build from a fixed ready-to-ship listing and its warehouse region.", "Compare the current product price and selected options without assuming every photographed accessory is included."]
+    ],
+    faqs: [
+      { question: "What kinds of Lusandy dolls can I compare here?", answer: "This collection brings together Lusandy silicone listings, including full dolls and torso models. Use the current product grid to compare the available bodies, heads, measurements, prices and ordering options." },
+      { question: "Does every Lusandy model have the same weight reduction?", answer: "Do not assume a single weight or reduction applies across the range. Use the listed weight for the exact body and configuration; a factory weight-reduction example is not a handling-weight guarantee for another model." },
+      { question: "Are Lusandy's photographed features and accessories all included?", answer: "Only the features and accessories identified as included on your chosen listing or configuration form part of that order. Check the head, finish, hair and supported options separately from the photographed clothing and props." },
+      { question: "Can I customize a ready-to-ship Lusandy doll?", answer: "Ready-to-ship listings describe a fixed build in the stated warehouse region. Custom-made listings offer the supported choices shown on their product pages. Do not assume the custom-made configurator applies to a stocked unit." }
+    ]
+  },
   md: {
     metaTitle: "MD Doll: Silicone Dolls, Included Features & Options",
     metaDescription: "Shop MD Doll silicone models from 161 to 168 cm. Compare body shapes, heads, included EVO skeleton and body makeup, plus model-specific custom options.",
