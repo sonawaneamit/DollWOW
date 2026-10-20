@@ -11,6 +11,8 @@ import { getProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
+import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
+import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -50,6 +52,7 @@ export default async function BrandHubPage({
   const orderedProducts = !filters.sort || filters.sort === "latest" ? orderBySourceRelease(filtered) : filtered;
   const catalogPage = paginateCatalog(orderedProducts, catalogPageFromValue(rawSearchParams.page));
   const profile = brandSeoProfile(brand);
+  const compactBrowsing = usesCompactBrandLayout(brand.value);
   const relatedLinks = brandRelatedLinks(brand);
   const structuredData = buildBrandStructuredData(brand, orderedProducts);
   const activeFilterLabels = Object.entries(filters)
@@ -59,40 +62,8 @@ export default async function BrandHubPage({
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 1;
 
-  return (
-    <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      {structuredData.map((entry) => (
-        <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
-      ))}
-
-      <div className="shop-visual-hero brand-hero">
-        <div>
-          <p className="text-sm  text-gold-300">Brand hub</p>
-          <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
-          <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
-          <p className="mt-3 text-sm font-semibold text-gold-200">Current DollWow collection</p>
-        </div>
-      </div>
-
-      {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
-
-      <BrandAuthorizationCard brand={brand.value} variant="brand" />
-
-      <nav aria-label={`${brand.label} related guides`} className="mb-8 flex flex-wrap gap-3">
-        {relatedLinks.map((link) => (
-          <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-
-      <section className="mb-8 overflow-hidden rounded-[8px] border border-gold-500/14 bg-ink-900/64" aria-labelledby="brand-comparison-heading">
-        <div className="border-b border-gold-500/12 p-5">
-          <p className="text-sm  text-gold-300">Brand comparison</p>
-          <h2 id="brand-comparison-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-            How to evaluate {brand.label}
-          </h2>
-        </div>
+  const comparison = (
+      <BrandHubSection compact={compactBrowsing} comparison id="brand-comparison-heading" eyebrow="Brand comparison" title={`How to evaluate ${brand.label}`}>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
             <thead className="bg-ink-950/60 text-ivory-100">
@@ -117,7 +88,40 @@ export default async function BrandHubPage({
             </tbody>
           </table>
         </div>
-      </section>
+      </BrandHubSection>
+  );
+
+  return (
+    <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      {structuredData.map((entry) => (
+        <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
+      ))}
+
+      <div className="shop-visual-hero brand-hero">
+        <div>
+          <p className="text-sm  text-gold-300">Brand hub</p>
+          <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
+          <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
+          <p className="mt-3 text-sm font-semibold text-gold-200">
+            Current DollWow collection
+            {compactBrowsing ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
+          </p>
+        </div>
+      </div>
+
+      {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
+
+      {!compactBrowsing ? <BrandAuthorizationCard brand={brand.value} variant="brand" /> : null}
+
+      <nav aria-label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined}>
+        {relatedLinks.map((link) => (
+          <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+
+      {!compactBrowsing ? comparison : null}
 
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
@@ -130,7 +134,7 @@ export default async function BrandHubPage({
             lockedBrand
           />
         </aside>
-        <div className="shop-visual-main">
+        <div id="brand-products" className={`shop-visual-main scroll-mt-28 ${compactBrowsing ? "max-sm:[&_.catalog-product-card]:w-full" : ""}`}>
           {hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => <span key={label}>{label}</span>)}
@@ -141,13 +145,9 @@ export default async function BrandHubPage({
         </div>
       </div>
 
-      <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-buyer-notes-heading">
-        <div className="max-w-3xl">
-          <p className="text-sm  text-gold-300">Buyer notes</p>
-          <h2 id="brand-buyer-notes-heading" className="mt-2 text-2xl font-semibold text-ivory-50">
-            What to confirm before choosing {brand.label}
-          </h2>
-        </div>
+      {compactBrowsing ? comparison : null}
+
+      <BrandHubSection compact={compactBrowsing} id="brand-buyer-notes-heading" eyebrow="Buyer notes" title={`What to confirm before choosing ${brand.label}`}>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {profile.buyerNotes.map((item) => (
             <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -156,12 +156,9 @@ export default async function BrandHubPage({
             </article>
           ))}
         </div>
-      </section>
+      </BrandHubSection>
 
-      <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="brand-faq-heading">
-        <h2 id="brand-faq-heading" className="text-2xl font-semibold text-ivory-50">
-          {brand.label} buying questions
-        </h2>
+      <BrandHubSection compact={compactBrowsing} id="brand-faq-heading" title={`${brand.label} buying questions`}>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {profile.faqs.map((item) => (
             <article key={item.question} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -170,7 +167,13 @@ export default async function BrandHubPage({
             </article>
           ))}
         </div>
-      </section>
+      </BrandHubSection>
+
+      {compactBrowsing ? (
+        <CollectionDisclosure id="brand-authorization-heading" title="Seller authorization">
+          <BrandAuthorizationCard brand={brand.value} variant="brand" />
+        </CollectionDisclosure>
+      ) : null}
 
       <section className="mt-10 rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-6">
         <p className="text-sm  text-gold-300">Browse more brands</p>
