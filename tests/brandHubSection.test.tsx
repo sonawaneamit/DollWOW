@@ -4,9 +4,9 @@ import { describe, expect, it } from "vitest";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
 
 describe("brand hub compact browsing", () => {
-  it("opts only the audited Irontech hub into the new layout", () => {
-    expect(usesCompactBrandLayout("irontech")).toBe(true);
-    for (const brand of ["wm", "sedoll", "starpery", "lusandy", "evas"]) {
+  it("opts only the four independently audited sprint hubs into the new layout", () => {
+    for (const brand of ["irontech", "wm", "sedoll", "starpery"]) expect(usesCompactBrandLayout(brand)).toBe(true);
+    for (const brand of ["lusandy", "evas", "fanreal", "funwest"]) {
       expect(usesCompactBrandLayout(brand)).toBe(false);
     }
   });

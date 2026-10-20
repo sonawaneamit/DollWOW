@@ -4,13 +4,15 @@
 
 ## Exact Outcome
 
-Irontech alone opts into the existing compact collection browsing pattern. Its guide links scroll as one mobile row. The unchanged comparison, buyer notes, FAQ and full seller authorization appear below the grid in native collapsed disclosures. A visible authorization jump link remains above the products. The certificate is retained, opens normally and its image renders. A scoped width constraint fixes 320px product-card overflow without changing other brand pages or shared card typography.
+Irontech opts into the existing compact collection browsing pattern. Its guide links scroll as one mobile row. The unchanged comparison, buyer notes, FAQ and full seller authorization appear below the grid in native collapsed disclosures. A visible authorization jump link remains above the products. The certificate is retained, opens normally and its image renders. A scoped width constraint fixes 320px product-card overflow without changing shared card typography.
 
-All other brand hubs retain their existing section markup and positions. A small shared section wrapper reuses the established `CollectionDisclosure` for the opt-in hub and reproduces the prior section headers for legacy hubs. No products, ordering, prices, options, metadata, canonical, structured data, publication, promotions or homepage changes are included.
+The initial checkpoint c6397163 was Irontech-only. Subsequent independent audits in DOL-207/208/209 support the same opt-in for WM, SE and Starpery; the final shared PR explicitly covers those four hubs only. Other brand hubs retain their existing section markup and positions. A small shared section wrapper reuses the established `CollectionDisclosure` and reproduces prior section headers for legacy hubs. No product queries, ordering, prices, options, metadata, canonical, structured data, publication, promotions or homepage changes are included. See `dol-207-209-brand-hub-first-passes.md` for the other three audits.
 
 ## Evidence And Intent
 
 Current strict public catalog captured 21:36 UTC: 449 Irontech matches, all classified full-body; 81 TPE, 208 full silicone, 158 hybrid, two outside those material buckets. One warehouse offer, 29 male-bodied matches and 11 missing numeric weights. No missing values are invented or products silently reclassified. This is catalog membership evidence, not independent recertification of every SKU.
+
+**Important source reconciliation:** the actual live hub/Shopify brand-tag query contains 439, not 449. Nine recognized `Irontch Dolls` typo-tag records are omitted by the remote query; one further record has an Irontech title/brand but a WM tag/handle. Read-only `query-check.json` identifies every record. This is not a 600-item cap. The layout PR preserves the existing 439-item query result, not a silent catalog correction. Actual live full-silicone facet is 199, not the lightweight classifier's 208. Both live/preview query counts and all first-page records match. Dolly owns the alias and Alessia brand-conflict follow-up.
 
 [Irontech's official company page](https://www.irontechdoll.com/about-us/) corroborates its 2015 founding. Current catalog data supports the material and male/female shopping paths. No factory prose, sales superlatives or new compatibility claim was copied. Existing option qualifications stay model-specific; this bounded pass does not newly validate every option family or service-timing promise.
 
@@ -30,8 +32,8 @@ These are layout measurements, not a speed, conversion or SEO uplift experiment.
 
 ## Verification
 
-- 17 focused brand/section/disclosure/inventory tests pass, plus typecheck, scoped lint and final production webpack build. Owned-asset gate: 4,950 checked, zero failures.
-- Full suite: 2,499 passed, the same 11 existing assertion failures and two existing node:test/Vitest collection errors. Not an all-green result.
+- Final four-hub run: 20 focused brand/section/disclosure/inventory tests pass, plus typecheck, scoped lint and production webpack build. Owned-asset gate: 4,950 checked, zero failures.
+- Full suite: 2,502 passed, the same 11 existing assertion failures and two existing node:test/Vitest collection errors. Not an all-green result.
 - Live baseline versus local preview: exact first 36 product URLs/prices, title, H1, canonical, six guide targets and complete JSON-LD match at 390/320/1440px. No product or schema count change.
 - Four native disclosures start closed below the grid. Keyboard interaction, authorization jump link, full certificate link/image and no-JavaScript disclosure work. Guide targets and certificate return HTTP 200; no browser exceptions.
 - Full-silicone filter remains functional with unchanged brand canonical. Existing brand-facet robots policy is not changed by this layout task.
