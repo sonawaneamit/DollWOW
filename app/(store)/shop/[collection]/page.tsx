@@ -12,6 +12,7 @@ import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
 import { notFound, permanentRedirect } from "next/navigation";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
+import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
 
 export async function generateMetadata({
   params,
@@ -123,7 +124,7 @@ export default async function CollectionPage({
         <aside className="shop-visual-sidebar">
           <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
         </aside>
-        <div className="shop-visual-main">
+        <div id="collection-products" className="shop-visual-main scroll-mt-28">
           {hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => (
@@ -143,6 +144,7 @@ export default async function CollectionPage({
               What to check before choosing from this collection
             </h2>
           </div>
+          {collection === "tpe" ? <TpeMaterialLabels /> : null}
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {buyerNotes.map((item) => (
               <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
