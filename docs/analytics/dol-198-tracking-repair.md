@@ -122,7 +122,7 @@ and must be explicitly excluded from business order counts. The temporary
 one-use QA code targets only the existing non-shipping, non-inventory $1 system
 charge variant; it is not a change to advertised doll prices or promotions.
 
-58 focused assertions pass. The full suite has the same 11 failing assertions
+60 focused assertions pass. The full suite has the same 11 failing assertions
 and two node:test/Vitest suite errors reproduced on unchanged main; it is not
 claimed green. The private validation folder retains browser, Shopify, GA and
 failed-attempt receipts. Production release is a separate verification step.
