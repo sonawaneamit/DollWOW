@@ -18,6 +18,72 @@ const product = {
 };
 
 describe("reviewed gallery identity", () => {
+
+  it.each([
+    {
+      "id": "gid://shopify/Product/10500826071224",
+      "handle": "avant-sophia-165cm-f-cup-full-silicone-wheat",
+      "title": "Avant Sophia 165cm F-Cup Full Silicone Doll",
+      "seo": {
+        "title": "Avant Sophia 165cm F-Cup Full Silicone Doll | DollWow",
+        "description": "Explore Sophia, an Avant Doll 165 cm F-Cup full silicone model with detailed measurements and available custom options."
+      },
+      "featuredImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/IMG_0003.jpg?v=1785537380",
+        "altText": "Avant Sophia 165cm F-Cup Full Silicone Doll product photo",
+        "width": 2080,
+        "height": 3118
+      },
+      "extended": {
+        "brand": "Avant Doll",
+        "displayName": "Sophia Wheat Finish",
+        "heightCm": 165,
+        "cupSize": "F-Cup",
+        "material": "Silicone",
+        "stockStatus": "custom"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/10433941668024",
+      "handle": "sedoll-isla-kane-a-114cm-f-cup-silicone-companion-doll-1c46q",
+      "title": "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll",
+      "seo": {
+        "title": null,
+        "description": "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll with detailed measurements, ready to ship review, and private checkout at DollWow."
+      },
+      "featuredImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/114cm3ft9-F-cup-Silicone-Sex-Doll-_E2_80_93-Isla-Kane-16.jpg?v=1780687706",
+        "altText": "Isla Kane.A 114cm F-Cup Silicone Ready-To-Ship Companion Doll",
+        "width": 1000,
+        "height": 1500
+      },
+      "extended": {
+        "brand": "SE Doll",
+        "heightCm": 114,
+        "cupSize": "F-Cup",
+        "material": "Silicone",
+        "stockStatus": "ready_to_ship",
+        "warehouseCountry": "United States"
+      }
+    }
+  ] as const)("uses only the exact approved identity while preserving warehouse and commerce data", fixture => {
+    const current = { ...product, ...fixture, extended: { ...product.extended, ...fixture.extended } };
+    const before = JSON.stringify(current);
+    const heading = productReviewedPdpHeading(current);
+    expect(heading).toContain(fixture.handle.startsWith("avant-") ? "Avant Sophia 165cm F-Cup Full Silicone - Wheat Skin" : "SE Doll Isla Kane 114cm F-Cup Silicone Torso (RTS) - US Warehouse");
+    expect(buildPdpMetadata(current).title).toBe(heading);
+    expect(JSON.stringify(current)).toBe(before);
+    const replaced = { ...current, featuredImage: { ...current.featuredImage, url: "https://cdn.shopify.com/replaced.jpg" } };
+    expect(productReviewedPdpHeading(replaced)).toBe(productPdpHeading(replaced));
+    expect(buildPdpMetadata(replaced).title).not.toBe(heading);
+    const retitled = { ...current, title: "New supplier product identity" };
+    expect(productReviewedPdpHeading(retitled)).toBe(productPdpHeading(retitled));
+    if (fixture.extended.stockStatus === "ready_to_ship") {
+      const custom = { ...current, extended: { ...current.extended, stockStatus: "custom" as const } };
+      expect(productReviewedPdpHeading(custom)).toBe(productPdpHeading(custom));
+    }
+  });
+
   it("adds the inspected photo-set label without changing shared card naming", () => {
     expect(productReviewedGalleryLabel(product)).toBe("Denim Gallery");
     expect(productReviewedPdpHeading(product)).toBe(`${productPdpHeading(product)} - Denim Gallery`);

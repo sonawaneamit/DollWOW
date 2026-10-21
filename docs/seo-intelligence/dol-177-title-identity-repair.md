@@ -2,6 +2,40 @@
 
 Date: 21 October 2026. Status: partial repair for review, not release-ready and not a zero-duplicate result.
 
+## 22 October Decision Reconciliation
+
+Dolly's 21 October 22:53 UTC comment supplies 23 approved identities. All 23
+remaining collision groups are mapped to that comment's approved, unsure or held
+inventory; none is uncovered. The live-store and preview baselines differ because
+the preview already separates some head codes and named finishes.
+
+Staged those 23 exact records: 19 gallery-only labels and four explicit identity
+titles (two Avant finishes and the two named SE warehouse torsos). Each requires
+the current product ID, handle and image fingerprint. Explicit identity titles
+also expire on supplier title changes; the SE RTS wording expires when stock
+status changes. Warehouse qualifiers remain visible. The Lily label does not
+introduce a fitted ROS claim from a gallery description. Original photos,
+prices, options, authored descriptions and publication state remain unchanged.
+
+Fresh strict model: 3,521 public records, 31 full records checked. After the four
+approved canonical exceptions, titles and H1s each retain 17 groups / 53 listings.
+The remaining unsure/held records stay unchanged. Thera needs exact supported
+gallery labels or reconciliation with the separate DOL-139 duplicate request;
+Dolly is tagged. No automatic unlisting or canonical change is included here.
+
+The earlier-build HTTP crawl was deliberately superseded after 1,600+ records
+when these approvals arrived. Its partial receipts remain separate. It found
+one lightweight-model omission: Ivy's actual heading correctly preserves its
+112.5cm height, verified against the full product record. That is not a changed
+storefront fact. The final build requires its own full HTTP receipt; the older
+partial run must not be described as complete acceptance.
+
+Private receipts: `dolly-decisions-2253.json`, `dolly-current-records.json`,
+`dolly-staged-model-2026-10-22.json`, and the separately versioned `full-http-*`
+and `dolly-final-http-*` files in the existing audit folder. Focused tests:
+58 assertions in five files; typecheck and scoped lint pass. Final build and
+HTTP results are recorded below only after execution.
+
 ## 21 October Evening Decisions
 
 Staged Dolly's four 10:20 decisions and Martin's 10:25 gallery instruction,

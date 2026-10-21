@@ -1,12 +1,35 @@
 import "server-only";
 import { createHash } from "node:crypto";
 import type { Product } from "@/types/product";
-import { productPdpHeading } from "./naming";
+import { productPdpHeading, productWarehouseTitleLabel } from "./naming";
 
-type ReviewedLook = { id: string; handle: string; imageFingerprint: string; label: string };
+type ReviewedLook = { id: string; handle: string; imageFingerprint: string; label: string; heading?: string; sourceTitle?: string };
 
 // Image-bound visual labels describe a gallery, not included clothing or upgrades.
 const reviewedLooks: ReviewedLook[] = [
+  { id: "gid://shopify/Product/10500826071224", handle: "avant-sophia-165cm-f-cup-full-silicone-wheat", imageFingerprint: "0b0bc8d6741f2e7986aef07e997a9d3724ba11d4424ed83ea6d5fcd85084f36d", label: "", heading: "Avant Sophia 165cm F-Cup Full Silicone - Wheat Skin", sourceTitle: "Avant Sophia 165cm F-Cup Full Silicone Doll" },
+  { id: "gid://shopify/Product/10500826103992", handle: "avant-sophia-165cm-f-cup-full-silicone-white", imageFingerprint: "2c0d513efef6c5c8ac8a3a65dfbbb713cafc5aa80979e134631b66512a8c800f", label: "", heading: "Avant Sophia 165cm F-Cup Full Silicone - Fair Skin", sourceTitle: "Avant Sophia 165cm F-Cup Full Silicone Doll" },
+  { id: "gid://shopify/Product/10663303184568", handle: "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd086", imageFingerprint: "7af756552da3edce148588d4526ba5f5e07fff917198650ca4dc056cd17ce487", label: "Pink Gingham Apron Gallery" },
+  { id: "gid://shopify/Product/10663304954040", handle: "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd095", imageFingerprint: "541f3bf82d4b46881b031fd8ed325d93db56a10964fe721f54ab77859e7d9905", label: "Floral Bikini Gallery" },
+  { id: "gid://shopify/Product/10663311704248", handle: "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd020", imageFingerprint: "d9fe40d447a95cd2c3797195ff006d08e9798221725771341bc1556109330668", label: "Pink Hair Street-Style Gallery" },
+  { id: "gid://shopify/Product/10663315013816", handle: "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd046", imageFingerprint: "c656b39c28be533722f8e640bbe504255abc146a7c0c948ba0642da5e8a90828", label: "Pink Bunny Suit Gallery" },
+  { id: "gid://shopify/Product/10663310426296", handle: "funwest-dolls-lily-95cm-d-cup-silicone-torso-companion-doll-fwt002", imageFingerprint: "0bf231d838993aceae0d46b0692921935dbd0d30703e33b808e3e7f6e71643bb", label: "Brunette, Purple Bikini Gallery" },
+  { id: "gid://shopify/Product/10634723590328", handle: "funwest-dolls-lyra-103cm-g-cup-silicone-torso-14roh", imageFingerprint: "5ca3ef5f0a853063eb98d601d912b54fd2329b8e078e9ae8abad77ce7fb8e6c1", label: "Blonde Lace Bodysuit Gallery" },
+  { id: "gid://shopify/Product/10634723623096", handle: "funwest-dolls-lyra-103cm-g-cup-silicone-torso-ite4t", imageFingerprint: "94adfcf1a9e673377b9595cc6c4969e1489802daf0e30b53ac1ce1c06eaea984", label: "Brunette Red Corset Gallery" },
+  { id: "gid://shopify/Product/10634723655864", handle: "funwest-dolls-lyra-113cm-d-cup-silicone-torso-5g23k", imageFingerprint: "3bb291b870880056e8af0a436b88727541b4f02de0e5a93d7dac0be41a27a684", label: "Blonde Bob, Christmas Gallery" },
+  { id: "gid://shopify/Product/10634723688632", handle: "funwest-dolls-lyra-113cm-d-cup-silicone-torso-1br4x", imageFingerprint: "1bdad99dc128fcdfb0fa7c868aaf2fda7cd870524bc5f7833de593906e721956", label: "Auburn, Black Lace Gallery" },
+  { id: "gid://shopify/Product/10518021439672", handle: "doll-castle-luoyi-170cm-e-cup-silicone-companion-doll-1qc1r", imageFingerprint: "946b83ba11e53ee279f42755e02cef758e1c8b52eee74c9ec53cd1b68b28c7d6", label: "Strawberry Blonde with Glasses Gallery" },
+  { id: "gid://shopify/Product/10518021472440", handle: "doll-castle-luoyi-170cm-e-cup-silicone-companion-doll-1fvm7", imageFingerprint: "0b54a0a6bfbc19887cde136c5103eb6ea650aca2cb5459484c60d047ec86c89c", label: "Brunette with Glasses Gallery" },
+  { id: "gid://shopify/Product/10433876033720", handle: "piper-akira-150cm-c-cup-tpe-companion-doll-7rquy", imageFingerprint: "fe752ba708826e05cef509b0f8156306f1e7effad86f046b55b2fd3c9e1e6b72", label: "Blonde, Tan Skin, Sun-Hat Gallery" },
+  { id: "gid://shopify/Product/10433873739960", handle: "piper-akira-160cm-g-cup-tpe-companion-doll-1b5mc", imageFingerprint: "44905dfce2e3428ef0a8809bf63e1ac82ce1e22a71aa7a84710cc4c2ba4e68bd", label: "Brunette, White Lace Gallery" },
+  { id: "gid://shopify/Product/10433878261944", handle: "piper-akira-160cm-g-cup-tpe-companion-doll-qyv1k", imageFingerprint: "2d98eb47b9af443d62c1a7f2fa9c6edc9f4f1978ee93d067ab06c23ad9a30ca7", label: "Blonde, Tan Skin Gallery" },
+  { id: "gid://shopify/Product/10433877213368", handle: "piper-ariel-150cm-j-cup-tpe-companion-doll-6xfm2", imageFingerprint: "a806a3cdded09c8e27f6cb26c9c7df3eff5717690590b0ad0fcc232ef93ff175", label: "Tan Skin Gallery" },
+  { id: "gid://shopify/Product/10433877508280", handle: "piper-ariel-150cm-j-cup-tpe-companion-doll-1gmaz", imageFingerprint: "a1bf0805b65b3b382a93a17c4786e4e4b71c4535040bed4ac401335424e1a8c1", label: "Fair Skin Gallery" },
+  { id: "gid://shopify/Product/10433878720696", handle: "piper-mai-150cm-k-cup-silicone-companion-doll-1qaou", imageFingerprint: "9899bf2fc987ee360953da59f18f0d1857aa9db25fe6187e0e3bff894e8ecc14", label: "Brunette, Black Lace Gallery" },
+  { id: "gid://shopify/Product/10433878884536", handle: "piper-mai-150cm-k-cup-silicone-companion-doll-1ncif", imageFingerprint: "6f31ef8733d605c432ce8e17f824402b96315969c796a66d3944fec7f8d226bd", label: "Blonde, Red Lingerie Gallery" },
+  { id: "gid://shopify/Product/10433941668024", handle: "sedoll-isla-kane-a-114cm-f-cup-silicone-companion-doll-1c46q", imageFingerprint: "e609f45c99621c6c81d514c186bdb459de6d993aa0e4148d2a81384dfa7592aa", label: "", heading: "SE Doll Isla Kane 114cm F-Cup Silicone Torso (RTS)", sourceTitle: "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll" },
+  { id: "gid://shopify/Product/10433941799096", handle: "sedoll-zoe-ellis-a-114cm-f-cup-silicone-companion-doll-cclt3", imageFingerprint: "fd8705faa19caffc3c843ce2b554f10893ea74cce5a56dd899de81ac9a329b98", label: "", heading: "SE Doll Zoe Ellis 114cm F-Cup Silicone Torso (RTS)", sourceTitle: "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll" },
+  { id: "gid://shopify/Product/10517653487800", handle: "jarliet-dolls-shuyi-149cm-d-cup-silicone-head-companion-doll-ygn2m", imageFingerprint: "b82996378b96a59c77c7c34a377707ee9f6c881e2bedf599af9a99df17bf0263", label: "Grey Sweater Gallery" },
   { id: "gid://shopify/Product/10518049226936", handle: "irontech-rita-165cm-g-cup-hybrid-companion-doll-1laqf", imageFingerprint: "aff997591421d15eaf50e013b6eac76645cd8f3db23c45f671834963965acbba", label: "Denim Gallery" },
   { id: "gid://shopify/Product/10518045229240", handle: "irontech-rita-165cm-g-cup-hybrid-companion-doll-eli3u", imageFingerprint: "8e638d5d8032c01de53ae23f63373a91dd03432cd21fe08d636fa56545be4df8", label: "Cream Knit Gallery" },
   { id: "gid://shopify/Product/10518049063096", handle: "irontech-kitty-166cm-d-cup-silicone-companion-doll-1s0dp", imageFingerprint: "9ab0643ad484e4d6cfc29cb239804bd055e8bd6b7092a6878f0dd8f728f9158f", label: "White Halter Gallery" },
@@ -272,14 +295,27 @@ const reviewedLooks: ReviewedLook[] = [
   { id: "gid://shopify/Product/10433873608888", handle: "piper-jessica-150cm-k-cup-tpe-companion-doll-exogy", imageFingerprint: "5a4f18a3cd4349c14cab374bf3df480ef39670e65759fdf954a7b8b5778017da", label: "Studio Gallery" }
 ];
 
-export function productReviewedGalleryLabel(product: Product) {
+function reviewedLookFor(product: Product) {
   const look = reviewedLooks.find(item => item.id === product.id && item.handle === product.handle);
-  if (!look || !product.featuredImage?.url) return "";
+  if (!look || !product.featuredImage?.url) return undefined;
+  if (look.heading && (product.title !== look.sourceTitle ||
+    (/\(RTS\)/.test(look.heading) && product.extended.stockStatus !== "ready_to_ship"))) return undefined;
   const fingerprint = createHash("sha256").update(product.featuredImage.url).digest("hex");
-  return fingerprint === look.imageFingerprint ? look.label : "";
+  return fingerprint === look.imageFingerprint ? look : undefined;
+}
+
+export function productReviewedGalleryLabel(product: Product) {
+  return reviewedLookFor(product)?.label || "";
+}
+
+export function productReviewedIdentityTitle(product: Product) {
+  const heading = reviewedLookFor(product)?.heading;
+  return heading ? [heading, productWarehouseTitleLabel(product)].filter(Boolean).join(" - ") : "";
 }
 
 export function productReviewedPdpHeading(product: Product) {
+  const reviewedTitle = productReviewedIdentityTitle(product);
+  if (reviewedTitle) return reviewedTitle;
   const variant = product.id === "gid://shopify/Product/10433890779320" &&
     product.handle === "yl-vera-151cm-e-cup-tpe-companion-doll-1qghg" &&
     product.extended.customizationGroups?.some(group => group.id === "upgraded-flight-case-add-on" &&

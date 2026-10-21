@@ -7,7 +7,7 @@ import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, pro
 import duplicateSeoTitles from "./duplicate-seo-titles.json";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
-import { productReviewedPdpHeading } from "./reviewedGalleryLooks";
+import { productReviewedIdentityTitle, productReviewedPdpHeading } from "./reviewedGalleryLooks";
 import { protectedProductImageUrlFor } from "./productImage";
 import { productCanonicalHandle } from "./productCanonical";
 
@@ -45,9 +45,9 @@ const reviewedDuplicateSeoTitles = new Set(duplicateSeoTitles);
 
 export function buildPdpMetadata(product: Product): Metadata {
   const authoredTitle = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
-  // Keep unique authored look copy. Only the audited repeated values use the
-  // current product identity; never append an arbitrary handle or sequence.
-  const title = reviewedDuplicateSeoTitles.has(authoredTitle) ? productReviewedPdpHeading(product) : authoredTitle;
+  // Preserve authored copy except for exact, individually approved identities.
+  // Other repeated values use the current identity, never a handle or sequence.
+  const title = productReviewedIdentityTitle(product) || (reviewedDuplicateSeoTitles.has(authoredTitle) ? productReviewedPdpHeading(product) : authoredTitle);
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
