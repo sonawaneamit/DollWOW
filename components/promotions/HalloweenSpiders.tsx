@@ -65,9 +65,9 @@ export function HalloweenSpiders() {
         const top = Math.max(155, document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0) + 12;
         const safe: Position[] = [];
         const edges = innerWidth >= 1024 ? [2, innerWidth - 46] : [2];
-        for (const [index, x] of edges.entries()) {
+        for (const x of edges) {
           const previous = lastPositions.current.find(position => position.x === x);
-          const height = index === 0 ? 102 : 58;
+          const height = safe.length === 0 ? 102 : 58;
           const preferred = motion.matches ? top : previous ? previous.y + 4 : top + 48;
           const candidates = [preferred, ...Array.from({ length: Math.max(0, Math.floor((innerHeight - top - height - 56) / 24)) }, (_, i) => top + i * 24)];
           const isSafe = (y: number) => y >= top && y + height < innerHeight - 56 && [x + 1, x + 22, x + 43].every(px => [y + 1, y + 29, y + height - 1].every(py =>
