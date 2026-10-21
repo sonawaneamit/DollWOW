@@ -12,7 +12,7 @@ import { MdOctoberIndexCard } from "@/components/promotions/MdOctoberPromotion";
 import { MD_OCTOBER_OFFER, isMdOctoberActive } from "@/lib/promotions/mdOctober2026";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { isHalloweenPreview } from "@/lib/promotions/halloween2026";
-import { HalloweenCode } from "@/components/promotions/HalloweenCode";
+import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -62,25 +62,15 @@ export default function PromoIndexPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
+      {isHalloweenPreview() ? <HalloweenCampaignBanner /> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
         <h1 className="mt-2 font-display text-4xl font-semibold text-text sm:text-5xl">Active sex doll brand promotions</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
-      </header>
-
-      {isHalloweenPreview() ? <section id="halloween-2026" className="border-b border-border py-10" aria-labelledby="halloween-offer-heading">
-        <p className="text-sm font-semibold text-accent">Happy Halloween</p>
-        <h2 id="halloween-offer-heading" className="mt-2 font-display text-3xl font-semibold text-text">$299 off full-size dolls</h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-text-dim">Choose a ready-to-ship or custom-made full-size doll and take $299 USD off its base price. Eligible factory and brand bonuses stay included.</p>
-        <div className="mt-5"><HalloweenCode /></div>
-        <p className="mt-5 max-w-2xl text-sm leading-6 text-text-dim">One discount per order. Torsos, hips, minis, standalone heads, parts, accessories, paid add-ons and shipping are excluded. Shopify converts the fixed USD discount for your checkout currency.</p>
-        <p className="mt-3 text-sm text-text-faint">Preview only. Offer activation and campaign dates await approval; this code is not active at checkout.</p>
-        <Link href="/shop" className="mt-5 inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4">Explore dolls</Link>
-      </section> : null}
+      </header>}
 
       <section className="mt-8" aria-labelledby="active-promotions-heading">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">

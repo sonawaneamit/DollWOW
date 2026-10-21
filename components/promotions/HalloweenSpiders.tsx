@@ -9,6 +9,7 @@ import { HALLOWEEN_2026, isHalloweenSpiderPath } from "@/lib/promotions/hallowee
 import { HalloweenCode } from "./HalloweenCode";
 import { trackEvent } from "@/lib/analytics/client";
 import "./halloween.css";
+import "./halloween-campaign.css";
 
 type Position = { x: number; y: number; smooth: boolean };
 const protectedSelector = "a,button,input,select,textarea,img,video,canvas,iframe,[role=button],[role=dialog]";
@@ -64,13 +65,13 @@ export function HalloweenSpiders() {
       frame = requestAnimationFrame(() => {
         const top = Math.max(155, document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0) + 12;
         const safe: Position[] = [];
-        const edges = innerWidth >= 1024 ? [2, innerWidth - 46] : [2];
+        const edges = innerWidth >= 1024 ? [8, innerWidth - 72] : [8];
         for (const x of edges) {
           const previous = lastPositions.current.find(position => position.x === x);
-          const height = safe.length === 0 ? 102 : 58;
+          const height = safe.length === 0 ? 144 : 100;
           const preferred = motion.matches ? top : previous ? previous.y + 4 : top + 48;
           const candidates = [preferred, ...Array.from({ length: Math.max(0, Math.floor((innerHeight - top - height - 56) / 24)) }, (_, i) => top + i * 24)];
-          const isSafe = (y: number) => y >= top && y + height < innerHeight - 56 && [x + 1, x + 22, x + 43].every(px => [y + 1, y + 29, y + height - 1].every(py =>
+          const isSafe = (y: number) => y >= top && y + height < innerHeight - 56 && [x + 1, x + 16, x + 32, x + 48, x + 63].every(px => Array.from({ length: Math.ceil(height / 16) + 1 }, (_, i) => y + Math.min(height - 1, i * 16)).every(py =>
             !document.elementsFromPoint(px, py).some(el => !el.closest("[data-halloween-spiders]") && el.closest(protectedSelector))
           ));
           const y = candidates.find(isSafe);
@@ -127,22 +128,27 @@ export function HalloweenSpiders() {
   return <>
     {ready && !hidden && positions.length > 0 ? <div data-halloween-spiders>
       {positions.map((position, index) => <button key={index} type="button" className="halloween-spider" style={{ left: position.x, top: position.y, transitionDuration: position.smooth ? "700ms" : "0ms" }} aria-label="Halloween offer: reveal $299 discount" onPointerEnter={() => { paused.current = true; }} onPointerLeave={() => { paused.current = false; }} onFocus={() => { paused.current = true; }} onBlur={() => { paused.current = false; }} onClick={e => reveal(e.currentTarget)}>
-        <Image src="/promo/halloween-2026/spider.svg" alt="" width={24} height={28} style={{ width: 24, height: "auto" }} unoptimized draggable={false} />
+        <Image src="/promo/halloween-2026/spider.svg" alt="" width={48} height={56} style={{ width: 48, height: "auto" }} unoptimized draggable={false} />
+        <span className="halloween-spider-hint">Tap · $299</span>
       </button>)}
-      <button type="button" className="halloween-hide" style={{ left: positions[0].x, top: positions[0].y + 58 }} title="Hide spiders" aria-label="Hide spiders" onClick={() => retire("dismiss")}><X size={14} aria-hidden="true" /></button>
+      <button type="button" className="halloween-hide" style={{ left: positions[0].x + 10, top: positions[0].y + 100 }} title="Hide spiders" aria-label="Hide spiders" onClick={() => retire("dismiss")}><X size={16} aria-hidden="true" /></button>
     </div> : null}
     {open ? <div className="halloween-backdrop" data-halloween-card onClick={event => { if (event.target === event.currentTarget) setOpenAt(null); }}>
       <div ref={panel} className="halloween-card" role="dialog" aria-modal="true" aria-labelledby="halloween-heading" aria-describedby="halloween-details">
         <button ref={closeButton} type="button" onClick={() => setOpenAt(null)} className="halloween-close" aria-label="Close Halloween offer"><X size={21} /></button>
-        <p className="text-sm font-semibold text-accent">Happy Halloween</p>
-        <h2 id="halloween-heading" className="mt-3 font-display text-2xl font-semibold text-text">You caught the deal.</h2>
-        <p className="mt-4 font-display text-4xl font-semibold text-accent">$299 off</p>
-        <p className="mt-1 text-lg font-medium text-text">your full-size doll.</p>
-        <p id="halloween-details" className="mt-4 text-sm leading-6 text-text-dim">Ready-to-ship or custom-made. Plus the eligible factory bonuses.</p>
-        <div className="mt-5"><HalloweenCode /></div>
-        <Link href="/promo#halloween-2026" onClick={() => setOpenAt(null)} className="mt-5 inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4">Offer details</Link>
-        <p className="mt-4 border-t border-border pt-4 text-xs leading-5 text-text-dim">One $299 USD discount per order, on the doll’s base price. Excludes torsos, hips, minis and add-ons.</p>
-        <p className="mt-2 text-xs text-text-faint">Preview only. Not active at checkout.</p>
+        <div className="halloween-card-art" aria-hidden="true" />
+        <div className="halloween-card-copy">
+          <p className="halloween-eyebrow">A little Halloween magic</p>
+          <h2 id="halloween-heading" className="font-display text-2xl font-semibold">You caught the deal.</h2>
+          <p className="halloween-card-amount">$299 <span>off</span></p>
+          <p className="text-lg font-medium">your full-size doll.</p>
+          <p id="halloween-details" className="mt-3 text-sm leading-6">Ready-to-ship or custom-made.<br />Plus your eligible factory bonuses.</p>
+          <div className="mt-4"><HalloweenCode campaign /></div>
+          <Link href="/shop" onClick={() => setOpenAt(null)} className="halloween-shop">Find your doll</Link>
+          <Link href="/promo#halloween-2026" onClick={() => setOpenAt(null)} className="halloween-card-details">Offer details</Link>
+          <p className="mt-4 border-t border-[#e7b17744] pt-3 text-xs leading-5 text-[#e7cbb1]">One $299 USD discount per order, on the doll’s base price. Excludes torsos, hips, minis and add-ons.</p>
+          <p className="mt-2 text-xs text-[#e7cbb1]">Preview only. Not active at checkout.</p>
+        </div>
       </div>
     </div> : null}
   </>;

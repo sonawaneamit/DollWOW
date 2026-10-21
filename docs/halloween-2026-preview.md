@@ -33,6 +33,18 @@ exists, the spider is omitted and the ordinary promo link remains available.
   and independently verify live checkout. No automated return to an old offer.
 - Set a hard campaign end and a separate visual kill switch for the release.
 
+## Visual Revision, 21 October
+
+Martin rejected the original text-heavy treatment. The revised preview leads with
+a photographic Halloween campaign, dominant $299 offer, copyable coupon and a
+clear shopping action. Separate generated desktop/mobile still-life artwork uses
+pumpkins, red velvet and candles; it depicts no actual catalog product. Generated
+through the built-in image tool, then converted to owned WebP assets (126/112 KB).
+The reveal card reuses the campaign art. Spiders are now 48px artwork inside a
+64px-wide target with a visible offer hint, with matching collision bounds and
+the same persistent dismissal/reduced-motion safeguards. Factory offers and all
+commercial release dependencies above remain unchanged.
+
 ## QA Evidence
 
 Private browser receipts/screenshots live in `data/exports/dol-217/` on the SSD.

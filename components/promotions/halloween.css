@@ -1,12 +1,19 @@
-.halloween-spider{position:fixed;z-index:65;display:flex;align-items:center;justify-content:center;width:44px;height:58px;padding:0;background:transparent;border:0;cursor:pointer;transition:top 1.3s linear;touch-action:manipulation}
+.halloween-spider{position:fixed;z-index:65;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:64px;height:100px;padding:0;background:transparent;border:0;cursor:pointer;transition:top 1.3s linear;touch-action:manipulation}
 .halloween-spider:focus-visible{outline:2px solid var(--accent,#b5471f);outline-offset:-2px;border-radius:6px}
-.halloween-spider img{filter:drop-shadow(0 1px 1px #ffffff90)}
+.halloween-spider img{filter:drop-shadow(0 2px 2px #ffffffcc)}
+.halloween-spider-hint{display:block;width:64px;padding:4px 0;border-radius:4px;background:#641e29;color:#fff3df;font-size:10px;font-weight:700;line-height:16px;white-space:nowrap;box-shadow:0 2px 8px #0002}
 .halloween-hide{position:fixed;z-index:65;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--text-dim,#786354);cursor:pointer}
 .halloween-hide:hover,.halloween-hide:focus-visible{background:var(--surface-solid,#fff);outline:1px solid var(--accent,#b5471f)}
 .halloween-backdrop{position:fixed;inset:0;z-index:89;display:flex;align-items:flex-start;justify-content:flex-end;padding:124px 24px 24px;background:#29201b30}
-.halloween-card{position:relative;width:100%;max-width:380px;max-height:calc(100dvh - 148px);overflow:auto;overscroll-behavior:contain;border:1px solid var(--border,#ded5ce);border-radius:8px;padding:28px;background:var(--surface-solid,#fff);box-shadow:0 12px 40px #29201b22}
-.halloween-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:6px;background:transparent;color:var(--text,#29201b);cursor:pointer}
-.halloween-close:hover{background:var(--surface-tint,#f5eee9)}
-@media(max-width:639px){.halloween-backdrop{align-items:flex-end;padding:12px}.halloween-card{max-width:none;max-height:calc(100dvh - 132px);padding:24px}}
+.halloween-card{position:relative;width:100%;max-width:400px;max-height:calc(100dvh - 148px);overflow:auto;overscroll-behavior:contain;border:1px solid #ad784755;border-radius:8px;background:#100f11;color:#fff8ee;box-shadow:0 12px 60px #0006}
+.halloween-card-art{height:145px;background:url('/promo/halloween-2026/campaign-desktop.webp') right 58%/cover no-repeat}
+.halloween-card-copy{padding:22px 26px 24px}
+.halloween-card-copy .halloween-eyebrow{margin-bottom:8px}
+.halloween-card-amount{font-family:var(--font-display,Georgia,serif);font-size:72px;line-height:1.1;margin:14px 0 0;color:#ffd3a0}
+.halloween-card-amount span{font-size:32px}
+.halloween-card-details{display:inline-flex;align-items:center;min-height:44px;margin-left:15px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
+.halloween-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff55;border-radius:6px;background:#100f11bb;color:#fff8ee;cursor:pointer}
+.halloween-close:hover{background:#641e29}
+@media(max-width:639px){.halloween-backdrop{align-items:flex-end;padding:12px}.halloween-card{max-width:none;max-height:calc(100dvh - 132px)}.halloween-card-copy{padding:18px 20px}.halloween-card-art{height:115px}}
 @media(prefers-reduced-motion:reduce){.halloween-spider{transition:none}}
 [data-theme=dark] .halloween-spider img{filter:brightness(1.8)}
