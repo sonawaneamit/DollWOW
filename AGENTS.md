@@ -26,6 +26,15 @@ supplier photographs and code-native interactive animation remain distinct from
 generated campaign graphics. Never route a rejected image request through
 another provider to evade its moderation.
 
+Verified API IDs in official OpenAI documentation on 21 October 2026:
+`gpt-image-2.5-sunburst` (preferred for campaign graphics/precise editing) and
+`gpt-image-2.5-flare`. An API route is available through
+`treg catalog get replicate.image-gen.gpt-image-2-5-sunburst`; inspect the live
+price/schema and verify the returned `model` field. The installed local OpenAI
+credential failed read-only authentication on this date, so do not assume it is
+usable or expose its value. Do not label code-native interactive spider motion
+as image-model output.
+
 ## Differentiation
 
 Because many approved vendors receive similar factory images, DollWow should differentiate through the web app experience: comparison tooling, guided selection, customization flow, price-match support, warehouse clarity, privacy/discreet delivery messaging, and high-touch customer support.

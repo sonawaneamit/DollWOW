@@ -46,6 +46,26 @@ artwork workflow or AI image generation has passed.
 
 ## Next Step
 
+### Exact-Model API Resolution
+
+Martin subsequently required GPT Image 2.5 only and explicitly authorized API use.
+The installed OpenAI credential returned 401 on read-only lookup; the connected
+Replicate API route successfully produced one non-person campaign artwork plate.
+This did not retry the rejected photo edit. Returned model:
+`openai/gpt-image-2.5-sunburst`; prediction `yqbqzywpp1rmy0d1bs4sz0fr90`;
+status `succeeded`; high quality; 2048x1152; 30.3 seconds; $0.128. Request and
+raw provider receipt remain private in `data/exports/dol-217/` as
+`gpt25-campaign-plate-request.json` and `gpt25-api-receipt.json`.
+
+`campaign-plate-gpt25.webp` is the original model output, including the offer
+lettering. `banner-gpt25-concept.webp` composes it with the unchanged clothed
+supplier portrait. This supersedes the earlier manually drawn concept, which
+is retained for history, not claimed as GPT Image 2.5 output. The review page
+now points to the exact-model version. Only one generated concept was requested.
+Dolly supplied the design-bar attachment and summarized the requested artwork
+workflow on the ticket at 12:48; that reference was inspected. The mobile and
+storefront work are still paused at the concept-approval gate.
+
 Wait for Martin's banner/motion concept approval in DOL-217. Then return to
 DOL-177 as directed, and implement the approved creative only under the ticket's
 recorded priority. Separate mobile art and complete storefront safety, motion,
