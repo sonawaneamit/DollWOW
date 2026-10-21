@@ -36,6 +36,27 @@ and `dolly-final-http-*` files in the existing audit folder. Focused tests:
 58 assertions in five files; typecheck and scoped lint pass. Final build and
 HTTP results are recorded below only after execution.
 
+The optimized build and both 4,950-asset gates pass. Nine heading/layout checks
+at 320, 390 and 1440 pixels pass; those deliberately block images and external
+requests and are not a new product-image review. All 23 approved pages pass
+hosted title/H1/canonical readback at the exact deployment:
+`https://doll-7j6yklulr-sonawaneamits-projects.vercel.app` (code `d2aa52e4`).
+The hosted readback uses ordinary same-origin GETs in an already authenticated
+Brave tab. Anonymous HTTP receives Vercel's SSO redirect; no authentication
+settings, tokens or cookies were extracted or changed. Next can stream its
+HTML title outside the initial head, so readback checks the complete response
+for a non-SVG title instead of assuming `head > title` is present immediately.
+All 286 private registry fingerprints are absent from 115 public JS chunks.
+
+Final local HTTP crawl: all 3,521 public product pages return 200 and match the
+expected title, exactly one H1, canonical, Open Graph URL and Product/Offer URLs.
+The versioned receipt is `dolly-final-http-summary-2026-10-21.json`; elapsed
+time was 803 seconds. Actual raw title/H1 collisions are 21 groups / 61 listings;
+excluding only the four approved aliases leaves 17 groups / 53 listings for
+each field. Complete technical coverage is true; zero-duplicate acceptance is
+false. This is not permission to merge or a completed DOL-177. Dolly retains the
+remaining decisions and Martin must approve the final releasable preview.
+
 ## 21 October Evening Decisions
 
 Staged Dolly's four 10:20 decisions and Martin's 10:25 gallery instruction,
