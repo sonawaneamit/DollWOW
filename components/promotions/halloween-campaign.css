@@ -21,6 +21,7 @@
 .halloween-campaign-notes summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .halloween-campaign-notes details p{padding-top:8px}
 @media(min-width:1024px){.halloween-campaign-copy{padding-left:56px}}
+@media(min-width:768px) and (max-width:1023px){.halloween-campaign-copy{width:62%;padding:36px 28px}.halloween-amount{font-size:80px}.halloween-amount span{font-size:34px}.halloween-offer{font-size:30px}.halloween-tagline{font-size:21px}}
 @media(max-width:767px){
  .halloween-campaign{min-height:620px;background-image:url('/promo/halloween-2026/campaign-mobile.webp');background-position:center top;background-size:cover}
  .halloween-campaign-copy{padding:190px 24px 24px;width:100%;max-width:none}
