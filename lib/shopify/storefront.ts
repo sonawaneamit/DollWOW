@@ -7,6 +7,7 @@ import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
+import { withIronAiHeadClassification } from "@/lib/catalog/ironAiStandaloneHead";
 import { resolveCurrentDollVueEligibility, resolveDollVueEligibility, withDollVueCatalogEligibility } from '@/lib/dollvue/eligibility';
 import { getCurrentDollVueHolds } from '@/lib/dollvue/currentHold';
 import dollVueRegistry from '@/lib/dollvue/readiness-registry.json';
@@ -376,7 +377,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
 function mapSeoCatalogProduct(node: SeoProductNode): Product {
   const bodyType = metafieldText(node.bodyType);
   const stockStatus = metafieldText(node.stockStatus);
-  return {
+  return withIronAiHeadClassification({
     id: node.id,
     updatedAt: node.updatedAt,
     handle: node.handle,
@@ -414,7 +415,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       customAvailable: metafieldBoolean(node.customAvailable),
       penisAddOnAvailable: metafieldBoolean(node.penisAddOnAvailable)
     }
-  };
+  });
 }
 
 function metafieldText(value: MetafieldValue) {
