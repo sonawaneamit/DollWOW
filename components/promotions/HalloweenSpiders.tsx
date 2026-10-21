@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -10,6 +10,7 @@ import { trackEvent } from "@/lib/analytics/client";
 import { HalloweenSpiderGlyph } from "./HalloweenSpiderGlyph";
 import { startHalloweenWalkers } from "./halloweenSpiderRuntime";
 import { HalloweenCampaignArtwork } from "./HalloweenCampaignBanner";
+import { claimHalloweenReveal, halloweenFallbackDeadline, isSpiderBodyHit } from "@/lib/promotions/halloweenVisitor";
 import "./halloween.css";
 import "./halloween-campaign.css";
 
@@ -23,20 +24,27 @@ export function HalloweenSpiders() {
   const closeButton = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const spiderElements = useRef<(HTMLSpanElement | null)[]>([]);
+  const shown = useRef(false);
+  const deadline = useRef<number | null>(null);
+  const scurryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const eligible = isHalloweenSpiderPath(path);
   const open = openAt === path;
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      try { setHidden(localStorage.getItem(HALLOWEEN_2026.dismissalKey) === "1"); } catch { setHidden(false); }
+      try { shown.current = localStorage.getItem(HALLOWEEN_2026.dismissalKey) === "1"; setHidden(shown.current); } catch { setHidden(false); }
       setReady(true);
     }, 1500);
-    const onStorage = (event: StorageEvent) => { if (event.key === HALLOWEEN_2026.dismissalKey && event.newValue === "1") setHidden(true); };
+    const onStorage = (event: StorageEvent) => { if (event.key === HALLOWEEN_2026.dismissalKey && event.newValue === "1") { shown.current = true; setHidden(true); } };
     window.addEventListener("storage", onStorage);
-    const onHide = () => { setHidden(true); trackEvent("halloween_dismiss", { campaign: HALLOWEEN_2026.id }); };
-    window.addEventListener("dollwow:halloween-hide", onHide);
-    return () => { clearTimeout(timer); window.removeEventListener("storage", onStorage); window.removeEventListener("dollwow:halloween-hide", onHide); };
+    return () => { clearTimeout(timer); window.removeEventListener("storage", onStorage); };
   }, []);
+
+  useEffect(() => {
+    if (!eligible || deadline.current !== null) return;
+    try { deadline.current = halloweenFallbackDeadline(localStorage, Date.now()); }
+    catch { deadline.current = Date.now() + HALLOWEEN_2026.fallbackDelayMs; }
+  }, [eligible]);
 
   useEffect(() => {
     function check() {
@@ -60,22 +68,65 @@ export function HalloweenSpiders() {
   }, [ready, hidden, eligible, blocked, path]);
 
   function retire(action: "reveal" | "dismiss") {
+    shown.current = true;
     setHidden(true);
     try { localStorage.setItem(HALLOWEEN_2026.dismissalKey, "1"); } catch { /* Current visit still stays dismissed. */ }
     trackEvent(`halloween_${action}`, { campaign: HALLOWEEN_2026.id });
   }
+  const reveal = useCallback((source: "spider" | "fallback" | "manual") => {
+    if (!eligible || blocked || document.hidden) return;
+    const focus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const claim = () => {
+      if (document.hidden || window.location.pathname !== path) return;
+      if ([...document.querySelectorAll<HTMLElement>('[role="dialog"],[aria-modal="true"],#mobile-menu')].some(el => !el.closest("[data-halloween-card]") && el.getClientRects().length > 0)) return;
+      if (source !== "manual" && shown.current) return;
+      try { if (!claimHalloweenReveal(localStorage, source === "manual")) { shown.current = true; setHidden(true); return; } }
+      catch { /* Storage denial can only preserve once-per-visit behavior. */ }
+      shown.current = true;
+      previousFocus.current = focus;
+      setHidden(true); setOpenAt(path);
+      trackEvent("halloween_reveal", { campaign: HALLOWEEN_2026.id, source });
+    };
+    if (navigator.locks) void navigator.locks.request(HALLOWEEN_2026.id, claim).catch(() => claim());
+    else claim();
+  }, [eligible, blocked, path]);
+
   useEffect(() => {
-    function reveal() {
-      if (!eligible || blocked) return;
+    const manual = () => reveal("manual");
+    window.addEventListener("dollwow:halloween-reveal", manual);
+    return () => window.removeEventListener("dollwow:halloween-reveal", manual);
+  }, [reveal]);
+
+  useEffect(() => {
+    if (!ready || hidden || !eligible || blocked || deadline.current === null) return;
+    const timer = setTimeout(() => { if (scurryTimer.current === null) reveal("fallback"); }, Math.max(0, deadline.current - Date.now()));
+    return () => clearTimeout(timer);
+  }, [ready, hidden, eligible, blocked, path, reveal]);
+
+  useEffect(() => {
+    if (!ready || hidden || !eligible || blocked) return;
+    function tap(event: MouseEvent) {
+      // Observe ordinary clicks without preventing them. Shopping controls always
+      // win, even when the spider's body is directly above one.
+      if (event.defaultPrevented || !(event.target instanceof Element) || event.target.closest('a,button,input,select,textarea,label,summary,[role="button"],[role="link"],[contenteditable="true"],[tabindex]:not([tabindex="-1"])') || scurryTimer.current !== null) return;
+      const spider = spiderElements.current.find(el => {
+        if (!el || getComputedStyle(el).visibility !== "visible") return false;
+        const body = el.querySelector("ellipse")?.getBoundingClientRect();
+        return body && isSpiderBodyHit(event.clientX, event.clientY, body);
+      });
+      if (!spider) return;
       previousFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      setHidden(true);
-      try { localStorage.setItem(HALLOWEEN_2026.dismissalKey, "1"); } catch { /* Retire for this visit. */ }
-      trackEvent("halloween_reveal", { campaign: HALLOWEEN_2026.id });
-      setOpenAt(path);
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) { reveal("spider"); return; }
+      spider.dataset.scurry = String(performance.now());
+      scurryTimer.current = setTimeout(() => { scurryTimer.current = null; reveal("spider"); }, 420);
     }
-    window.addEventListener("dollwow:halloween-reveal", reveal);
-    return () => window.removeEventListener("dollwow:halloween-reveal", reveal);
-  }, [path, eligible, blocked]);
+    document.addEventListener("click", tap);
+    return () => {
+      document.removeEventListener("click", tap);
+      if (scurryTimer.current !== null) clearTimeout(scurryTimer.current);
+      scurryTimer.current = null;
+    };
+  }, [ready, hidden, eligible, blocked, path, reveal]);
   useEffect(() => {
     if (!open || !eligible || blocked) return;
     const overflow = document.body.style.overflow;

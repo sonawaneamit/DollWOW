@@ -1,6 +1,6 @@
 import { advanceSpider, spiderLegPose } from "@/lib/promotions/halloweenSpiderMotion";
 
-type Walker = { x: number; y: number; angle: number; phase: number; walking: boolean; nextChange: number; turn: number };
+type Walker = { x: number; y: number; angle: number; phase: number; walking: boolean; nextChange: number; turn: number; scurrying?: boolean };
 const own = "[data-halloween-spiders],[data-halloween-card]";
 
 // Decorative walkers may cross content; the entire layer is click-through.
@@ -28,7 +28,14 @@ export function startHalloweenWalkers(elements: HTMLElement[]) {
         s.x = left + (right - left) * ([.22, .75, .4, .88, .12, .6][i]);
         s.y = top + (bottom - top) * ([.18, .38, .68, .86, .5, .12][i]);
       }
-      if (!reduced.matches) {
+      const scurry = el.dataset.scurry ? Number(el.dataset.scurry) : null;
+      if (scurry !== null && !reduced.matches) {
+        if (!s.scurrying) { s.angle = s.x < innerWidth / 2 ? Math.PI : 0; s.scurrying = true; }
+        s.walking = true;
+        s.x += Math.cos(s.angle) * (mobile ? 650 : 850) * dt;
+        s.phase += dt * Math.PI * 2 / .12;
+        el.style.opacity = String(Math.max(0, 1 - (time - scurry) / 400));
+      } else if (!reduced.matches) {
         if (clock >= s.nextChange) { s.walking = !s.walking; s.nextChange = clock + (s.walking ? 2.5 + i % 3 * .5 : .65 + i % 3 * .3); s.turn = Math.sin(clock * .6 + i) * .4; }
         if (s.walking) {
           s.angle += s.turn * dt;

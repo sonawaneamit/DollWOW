@@ -3,7 +3,9 @@ export const HALLOWEEN_2026 = {
   code: "HALLOWEEN299",
   amountUsd: 299,
   headline: "$299 off full-size dolls this Halloween",
-  dismissalKey: "dollwow:halloween-2026:hidden"
+  dismissalKey: "dollwow:halloween-2026:hidden",
+  fallbackAtKey: "dollwow:halloween-2026:fallback-at",
+  fallbackDelayMs: 30000
 } as const;
 
 // This branch can be reviewed without enabling a production campaign or touching

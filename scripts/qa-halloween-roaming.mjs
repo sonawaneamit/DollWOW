@@ -96,7 +96,8 @@ try {
   await page.keyboard.press('Escape'); assert.equal(await dialog.count(), 0);
   await page.reload(); await page.waitForTimeout(2000); assert.equal(await page.locator('.halloween-spider').count(), 0);
   await page.evaluate(() => localStorage.removeItem('dollwow:halloween-2026:hidden')); await page.reload(); await waitForWalkers(page, 4);
-  await page.getByRole('button', { name: 'Hide spiders', exact: true }).click(); await page.reload(); await page.waitForTimeout(2000); assert.equal(await page.locator('.halloween-spider').count(), 0);
+  assert.equal(await page.getByRole('button', { name: 'Hide spiders', exact: true }).count(), 0);
+  await page.keyboard.press('Escape'); await page.reload(); await page.waitForTimeout(2000); assert.equal(await page.locator('.halloween-spider').count(), 0);
   for (const path of ['/cart', '/account/access', '/support']) {
     await page.evaluate(() => localStorage.removeItem('dollwow:halloween-2026:hidden')); await page.goto(base + path); await page.waitForTimeout(1800); assert.equal(await page.locator('.halloween-spider').count(), 0);
   }
