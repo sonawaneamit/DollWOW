@@ -1,5 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { HALLOWEEN_2026, isHalloweenPreview, isHalloweenSpiderPath } from "@/lib/promotions/halloween2026";
+import { HALLOWEEN_2026, isHalloweenPreview, isHalloweenSpiderPath, isHalloweenInWindow, isHalloweenVisible } from "@/lib/promotions/halloween2026";
+
+describe("approved production window", () => {
+  it("ends at the exact approved Lisbon winter-time boundary", () => {
+    expect(isHalloweenInWindow(Date.parse("2026-11-08T23:58:59Z"))).toBe(true);
+    expect(isHalloweenInWindow(Date.parse("2026-11-08T23:59:00Z"))).toBe(false);
+    expect(isHalloweenInWindow(Date.parse("2026-10-20T23:59:00Z"))).toBe(false);
+  });
+  it("supports a kill switch and never enables an expired production campaign", () => {
+    const now = Date.parse("2026-10-22T10:00:00Z");
+    expect(isHalloweenVisible({ NODE_ENV: "production", VERCEL_ENV: "production" }, now)).toBe(true);
+    expect(isHalloweenVisible({ NODE_ENV: "production", DOLLWOW_HALLOWEEN_ENABLED: "0" }, now)).toBe(false);
+    expect(isHalloweenVisible({ NODE_ENV: "production", VERCEL_ENV: "production", DOLLWOW_HALLOWEEN_PREVIEW: "1" }, Date.parse("2026-11-09T00:00:00Z"))).toBe(false);
+  });
+});
 
 describe("Halloween preview boundaries", () => {
   it("uses the locked flat USD offer, not either earlier tier", () => {

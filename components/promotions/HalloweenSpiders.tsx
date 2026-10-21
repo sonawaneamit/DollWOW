@@ -13,8 +13,10 @@ import { HalloweenCampaignArtwork } from "./HalloweenCampaignBanner";
 import { claimHalloweenReveal, halloweenFallbackDeadline, isSpiderBodyHit } from "@/lib/promotions/halloweenVisitor";
 import "./halloween.css";
 import "./halloween-campaign.css";
+import { useHalloweenWindow } from "./HalloweenWindow";
 
-export function HalloweenSpiders() {
+export function HalloweenSpiders({ preview = false }: { preview?: boolean }) {
+  const active = useHalloweenWindow(preview);
   const path = usePathname();
   const [ready, setReady] = useState(false);
   const [hidden, setHidden] = useState(true);
@@ -27,7 +29,7 @@ export function HalloweenSpiders() {
   const shown = useRef(false);
   const deadline = useRef<number | null>(null);
   const scurryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const eligible = isHalloweenSpiderPath(path);
+  const eligible = active && isHalloweenSpiderPath(path);
   const open = openAt === path;
 
   useEffect(() => {
@@ -174,7 +176,7 @@ export function HalloweenSpiders() {
           <Link href="/shop" onClick={() => setOpenAt(null)} className="halloween-shop">Find your doll</Link>
           <Link href="/promo#halloween-2026" onClick={() => setOpenAt(null)} className="halloween-card-details">Offer details</Link>
           <p className="mt-4 border-t border-[#e7b17744] pt-3 text-xs leading-5 text-[#e7cbb1]">One $299 USD discount per order, on the doll’s base price. Excludes torsos, hips, minis and add-ons.</p>
-          <p className="mt-2 text-xs text-[#e7cbb1]">Preview only. Not active at checkout.</p>
+          <p className="mt-2 text-xs text-[#e7cbb1]">{preview ? "Preview only. Not active at checkout." : `Ends ${HALLOWEEN_2026.endLabel}.`}</p>
         </div>
       </div>
     </div> : null}

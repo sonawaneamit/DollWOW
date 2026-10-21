@@ -11,19 +11,25 @@ import { IDO_OCTOBER_OFFER, isIdoOctoberActive } from "@/lib/promotions/idoOctob
 import { MdOctoberIndexCard } from "@/components/promotions/MdOctoberPromotion";
 import { MD_OCTOBER_OFFER, isMdOctoberActive } from "@/lib/promotions/mdOctober2026";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
-import { isHalloweenPreview } from "@/lib/promotions/halloween2026";
+import { isHalloweenPreview, isHalloweenVisible } from "@/lib/promotions/halloween2026";
+import { HalloweenWindow } from "@/components/promotions/HalloweenWindow";
 import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
 import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
-const halloween = isHalloweenPreview();
+function promoCopy() {
+const halloween = isHalloweenVisible();
 const title = halloween ? "Halloween Sex Doll Sale: $299 Off Full-Size Dolls" : "Active Sex Doll Brand Promotions & Bonuses";
-const description = halloween ? "Preview DollWOW's Halloween offer: $299 USD off full-size ready-to-ship and custom-made dolls. Explore styles, exclusions and eligible factory bonuses. Dates to be confirmed." : "See current sex doll brand promotions, exact dates, eligible custom orders, and factory-confirmed bonus upgrades at DollWOW.";
+const description = halloween ? "Save $299 USD on eligible full-size ready-to-ship and custom-made dolls with HALLOWEEN299. Ends 8 November 2026. Eligible factory bonuses stay included." : "See current sex doll brand promotions, exact dates, eligible custom orders, and factory-confirmed bonus upgrades at DollWOW.";
+return { halloween, title, description };
+}
 
-export const metadata: Metadata = {
+export function generateMetadata(): Metadata {
+  const { title, description } = promoCopy();
+  return {
   title,
   description,
   alternates: { canonical: "/promo" },
@@ -34,8 +40,11 @@ export const metadata: Metadata = {
     type: "website"
   }
 };
+}
 
 export default function PromoIndexPage() {
+  const { halloween, title, description } = promoCopy();
+  const preview = isHalloweenPreview();
   const promoClock = new Date().toISOString();
   const hasJinsanPromotion = isJinsanOctoberActive(new Date(promoClock));
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
@@ -69,7 +78,7 @@ export default function PromoIndexPage() {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      {halloween ? <><HalloweenCampaignBanner /><HalloweenLandingSections /></> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
+      {halloween ? <HalloweenWindow preview={preview}><HalloweenCampaignBanner preview={preview} /><HalloweenLandingSections preview={preview} /></HalloweenWindow> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
         <h1 className="mt-2 font-display text-4xl font-semibold text-text sm:text-5xl">Active sex doll brand promotions</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">

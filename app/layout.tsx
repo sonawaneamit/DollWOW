@@ -20,7 +20,7 @@ import { ComparisonDrawer } from "@/components/compare/ComparisonDrawer";
 import { ChatraWidget } from "@/components/ChatraWidget";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { HalloweenSpiders } from "@/components/promotions/HalloweenSpiders";
-import { isHalloweenPreview } from "@/lib/promotions/halloween2026";
+import { isHalloweenPreview, isHalloweenVisible } from "@/lib/promotions/halloween2026";
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import { buildStorefrontThemeInitScript } from "@/lib/storefrontTheme";
 import { analyticsBootstrap, analyticsConfig } from "@/lib/analytics/config";
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Footer />
             <CartDrawer />
             <ComparisonDrawer />
-            {isHalloweenPreview() ? <HalloweenSpiders /> : null}
+            {isHalloweenVisible() ? <HalloweenSpiders preview={isHalloweenPreview()} /> : null}
             </CartProvider>
           </ComparisonProvider>
         </CurrencyProvider>

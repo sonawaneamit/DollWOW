@@ -6,7 +6,7 @@ const base = process.env.HALLOWEEN_BASE || 'http://localhost:3249';
 const out = 'data/exports/dol-217';
 const hidden = 'dollwow:halloween-2026:hidden', deadline = 'dollwow:halloween-2026:fallback-at';
 await fs.mkdir(out, { recursive: true });
-const browser = await chromium.launch();
+const browser = await chromium.launch({ ...(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : {}) });
 const results = [];
 const block = r => /google-analytics|googletagmanager|chatra|clarity|\/_vercel\//i.test(r.request().url()) || !['GET', 'HEAD'].includes(r.request().method()) ? r.abort() : r.continue();
 const card = p => p.getByRole('dialog', { name: 'You caught the deal.' });
