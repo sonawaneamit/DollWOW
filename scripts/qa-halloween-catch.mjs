@@ -81,9 +81,9 @@ try {
   }
   {
     const c = await context({ viewport: { width: 390, height: 844 } }); const p = await c.newPage(); await p.goto(base + '/promo'); await walkers(p);
-    const until = Date.now() + 2500; await p.evaluate(({ deadline, until }) => localStorage.setItem(deadline, String(until)), { deadline, until });
+    const until = Date.now() + 10000; await p.evaluate(({ deadline, until }) => localStorage.setItem(deadline, String(until)), { deadline, until });
     await p.reload(); await walkers(p); assert.equal(await p.evaluate(k => Number(localStorage.getItem(k)), deadline), until);
-    await p.getByRole('button', { name: 'Open menu', exact: true }).click(); await p.waitForTimeout(2800); assert.equal(await card(p).count(), 0);
+    await p.getByRole('button', { name: 'Open menu', exact: true }).click(); await p.waitForTimeout(Math.max(0, until - Date.now()) + 500); assert.equal(await card(p).count(), 0);
     await p.getByRole('button', { name: 'Close menu', exact: true }).click(); await card(p).waitFor();
     results.push({ name: 'deadline survives reload; menu defers overdue fallback', passed: true }); await c.close();
   }
