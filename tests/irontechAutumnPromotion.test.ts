@@ -82,8 +82,8 @@ describe("Irontech autumn 2026 promotion", () => {
       expect(markup).toContain("8.26-activity-banner-1920x1080.jpg");
       expect(markup).toContain("8.26-activity-banner-mobile.jpg");
       expect(markup).toContain("hidden=\"\"");
-      expect(markup).toContain("DollWOW’s 10% off eligible custom dolls and paid options is applied at checkout");
-      expect(markup).toContain("Ready-to-ship dolls are excluded.");
+      expect(markup).not.toContain("10% off eligible custom dolls");
+      expect(markup).toContain("Free Grace Fingers");
     } finally {
       vi.useRealTimers();
     }

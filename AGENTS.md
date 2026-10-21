@@ -13,6 +13,28 @@ Handle product images like commerce assets:
 - AI-generated variants can help differentiate DollWow, but must not misrepresent the actual product, included accessories, shipping state, or supplier authorization.
 - Preserve enough original product-detail imagery for customers to inspect the product accurately.
 
+### Generated Graphics Model Requirement
+
+Martin's explicit instruction (21 October 2026): use GPT-image-2.5 for generated
+DollWOW graphics. Verify the actual provider model identifier before generation
+and record it with the asset provenance. A tool's generic image-generation label
+does not establish that model version. Do not silently substitute GPT Image 2,
+another model, or a manual composition as fulfillment of this requirement. If
+the exact model cannot be selected or verified, report the limitation on the
+Linear ticket and obtain an explicit decision before substituting. Existing
+supplier photographs and code-native interactive animation remain distinct from
+generated campaign graphics. Never route a rejected image request through
+another provider to evade its moderation.
+
+Verified API IDs in official OpenAI documentation on 21 October 2026:
+`gpt-image-2.5-sunburst` (preferred for campaign graphics/precise editing) and
+`gpt-image-2.5-flare`. An API route is available through
+`treg catalog get replicate.image-gen.gpt-image-2-5-sunburst`; inspect the live
+price/schema and verify the returned `model` field. The installed local OpenAI
+credential failed read-only authentication on this date, so do not assume it is
+usable or expose its value. Do not label code-native interactive spider motion
+as image-model output.
+
 ## Differentiation
 
 Because many approved vendors receive similar factory images, DollWow should differentiate through the web app experience: comparison tooling, guided selection, customization flow, price-match support, warehouse clarity, privacy/discreet delivery messaging, and high-touch customer support.
@@ -36,7 +58,7 @@ Design customization around brand/supplier option sets:
 - Do not assume every doll within a brand has the same customization set. Imported product-specific option groups should take precedence over brand defaults; brand-wide option sets are reusable starting points, not proof that every SKU supports every option.
 - Some options are conditional or mutually exclusive. Example: electronic head functions may be incompatible with implanted hair because implanted hair can interfere with wiring.
 - Product pages should present options visually where possible, using supplier images, DollWow-owned illustrations, or clearly labeled AI-generated visual aids.
-- When no supplier image exists, GPT Image 2 or another approved image workflow can generate tasteful, brand-consistent option illustrations, but generated visuals must not misrepresent the final product.
+- When no supplier image exists, use the generated graphics model requirement above for approved option illustrations; generated visuals must not misrepresent the final product.
 - Custom selections that map cleanly to Shopify variants can use variants; custom details that do not map cleanly should be stored as line-item properties/cart attributes and mirrored into Supabase/order support records where useful.
 - The admin workflow should support brand-wide updates such as "all WM dolls add this option" or "all Zelex dolls replace the tan skin reference image."
 - The product page configuration UI should expose price impacts, conflicts, missing required choices, and production-time implications before checkout.

@@ -1,0 +1,22 @@
+[data-halloween-spiders],.halloween-spider,.halloween-spider *{pointer-events:none!important}
+.halloween-spider{position:fixed;left:0;top:0;z-index:65;display:block;visibility:hidden;width:88px;height:88px;padding:0;background:transparent;border:0;will-change:transform}
+.halloween-spider svg{display:block;width:100%;height:100%;overflow:hidden}
+.halloween-spider-anatomy{filter:drop-shadow(0 3px 2px #0004)}
+body:has(.consent-banner) .halloween-spider{visibility:hidden!important}
+.halloween-spider[data-surface=dark] .halloween-spider-anatomy{filter:drop-shadow(0 0 1px #a6a4a188)}
+.halloween-spider[data-surface=dark] [data-leg-part=thin]{stroke:#57595b}
+.halloween-spider[data-surface=dark] [data-leg-part=shine]{stroke:#b0b1b2}
+.halloween-spider[data-surface=dark] ellipse{stroke:#747577;stroke-width:.7}
+.halloween-backdrop{position:fixed;inset:0;z-index:89;display:flex;align-items:flex-start;justify-content:flex-end;padding:124px 24px 24px;background:#29201b30}
+.halloween-card{position:relative;width:100%;max-width:400px;max-height:calc(100dvh - 148px);overflow:auto;overscroll-behavior:contain;border:1px solid #ad784755;border-radius:8px;background:#100f11;color:#fff8ee;box-shadow:0 12px 60px #0006}
+.halloween-card-art{height:145px;background:url('/promo/halloween-2026/campaign-desktop.webp') right 58%/cover no-repeat}
+.halloween-card-copy{padding:22px 26px 24px}
+.halloween-card-copy .halloween-eyebrow{margin-bottom:8px}
+.halloween-card-amount{font-family:var(--font-display,Georgia,serif);font-size:72px;line-height:1.1;margin:14px 0 0;color:#ffd3a0}
+.halloween-card-amount span{font-size:32px}
+.halloween-card-details{display:inline-flex;align-items:center;min-height:44px;margin-left:15px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
+.halloween-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff55;border-radius:6px;background:#100f11bb;color:#fff8ee;cursor:pointer}
+.halloween-close:hover{background:#641e29}
+@media(max-width:639px){.halloween-backdrop{align-items:flex-end;padding:12px}.halloween-card{max-width:none;max-height:calc(100dvh - 132px)}.halloween-card-copy{padding:18px 20px}.halloween-card-art{height:115px}}
+@media(prefers-reduced-motion:reduce){.halloween-spider{transition:none}}
+[data-theme=dark] .halloween-spider-anatomy{filter:drop-shadow(0 1px 1px #ffffff99)}
