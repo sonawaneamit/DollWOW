@@ -280,7 +280,11 @@ export function productReviewedGalleryLabel(product: Product) {
 }
 
 export function productReviewedPdpHeading(product: Product) {
-  const heading = productPdpHeading(product);
+  const variant = product.id === "gid://shopify/Product/10433890779320" &&
+    product.handle === "yl-vera-151cm-e-cup-tpe-companion-doll-1qghg" &&
+    product.extended.customizationGroups?.some(group => group.id === "upgraded-flight-case-add-on" &&
+      group.options.some(option => /flight case/i.test(option.label) && option.priceDelta === 699));
+  const heading = variant ? productPdpHeading(product).replace(/\bVera\b/, "Vera: $699 Flight Case Option") : productPdpHeading(product);
   const label = productReviewedGalleryLabel(product);
   return label ? `${heading} - ${label}` : heading;
 }

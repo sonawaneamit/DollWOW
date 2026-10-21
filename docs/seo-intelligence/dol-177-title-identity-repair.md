@@ -2,6 +2,39 @@
 
 Date: 21 October 2026. Status: partial repair for review, not release-ready and not a zero-duplicate result.
 
+## 21 October Evening Decisions
+
+Staged Dolly's four 10:20 decisions and Martin's 10:25 gallery instruction,
+preview only. Latest production main is merged without changing live data.
+
+- The generic Irontech record now has a source/image-bound 166cm C-cup silicone
+  identity and the dealer-backed measurements. No fitted ROS state is inferred;
+  original options, prices, descriptions and commerce fields stay unchanged.
+  This is a reviewed read-model repair, not a Shopify write or factory claim.
+- Vanora's legacy WM copy points to its YL twin in canonical, Open Graph,
+  schema and sitemap handling. Vera remains two self-canonical offers.
+- The actual $699 flight-case choice belongs to YL Vera, not the WM copy.
+  Its distinct Name: Variant wording is present only while the current full
+  option record supports that exact price. No price or option is invented.
+- Amy's exact rejected first image is filtered from featured, gallery and media
+  sources. The retained second source becomes the first, with an image cache
+  revision. Featured-only card/SEO reads use the same reviewed safe source.
+  Future empty galleries are not repopulated. Thera has no photo changes.
+- DollVue's visible badge remains, but its helper text is outside the H1.
+- The Zelex guide redirect still reaches an intentionally hidden brand. No
+  authorization or visibility policy is changed here; Dolly owns that decision.
+
+Fresh strict public catalog model at 18:20 UTC: 3,521 customer-visible records;
+27 raw title groups / 73 listings and 27 raw H1 groups / 73 listings. Excluding
+only the four explicitly approved canonical aliases leaves 23 groups / 65
+listings for each field. These are modeled counts, not a full HTTP crawl and
+not a zero-duplicate result. The remaining imagery review stays with Dolly;
+do not invent labels or clear it wholesale.
+
+Private receipts: `decision-review.test.ts` / `decision-review.json` and
+`decision-http.mjs` / `decision-http-qa.json` under the existing audit folder.
+The older sections below are retained checkpoint history.
+
 ## Scope And Approval
 
 Repair the shared product H1 and repeated metadata titles using existing product facts. Preserve unique authored SEO titles, editorial copy, descriptions, pricing, availability, region coverage and draft status. On 21 October Martin approved staging exactly three individually reviewed legacy-copy canonicals through Dolly's comment on DOL-177. No other canonical decisions, Shopify writes, redirects, product merges or publication changes are included. Martin must approve the exact hosted preview before merge; Dolly independently reviews the receipt.

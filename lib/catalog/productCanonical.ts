@@ -5,7 +5,8 @@ import type { Product } from "@/types/product";
 const reviewedAliases: Readonly<Record<string, string>> = {
   "wm-joanna-158cm-m-cup-tpe-companion-doll-honjb": "yl-joanna-158cm-m-cup-tpe-companion-doll-honjb",
   "wm-frantiska-153cm-n-cup-tpe-companion-doll-kq0mz": "yl-frantiska-153cm-n-cup-tpe-companion-doll-kq0mz",
-  "wm-alessia-154cm-i-cup-tpe-companion-doll-1ymco": "irontech-alessia-154cm-i-cup-tpe-companion-doll-1ymco"
+  "wm-alessia-154cm-i-cup-tpe-companion-doll-1ymco": "irontech-alessia-154cm-i-cup-tpe-companion-doll-1ymco",
+  "wm-vanora-151cm-e-cup-tpe-companion-doll-ve922": "yl-vanora-151cm-e-cup-tpe-companion-doll-ve922"
 };
 
 export function productCanonicalHandle(product: Pick<Product, "handle">): string {

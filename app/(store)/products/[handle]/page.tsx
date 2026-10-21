@@ -181,10 +181,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
             </div>
-            <h1 className="mt-2 flex min-w-0 max-w-full flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
-              <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">{pdpHeading}</span>
+            <div className="mt-2 flex min-w-0 max-w-full flex-wrap items-baseline gap-x-2">
+              <h1 className="min-w-0 max-w-full text-3xl font-semibold leading-tight text-ivory-50 [overflow-wrap:anywhere] sm:text-4xl">{pdpHeading}</h1>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
-            </h1>
+            </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
