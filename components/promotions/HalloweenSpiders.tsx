@@ -3,16 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { X } from "lucide-react";
 import { HALLOWEEN_2026, isHalloweenSpiderPath } from "@/lib/promotions/halloween2026";
 import { HalloweenCode } from "./HalloweenCode";
 import { trackEvent } from "@/lib/analytics/client";
+import { HalloweenSpiderGlyph } from "./HalloweenSpiderGlyph";
+import { startHalloweenWalkers } from "./halloweenSpiderRuntime";
+import { HalloweenCampaignArtwork } from "./HalloweenCampaignBanner";
 import "./halloween.css";
 import "./halloween-campaign.css";
-
-type Position = { x: number; y: number; smooth: boolean };
-const protectedSelector = "a,button,input,select,textarea,img,video,canvas,iframe,[role=button],[role=dialog]";
 
 export function HalloweenSpiders() {
   const path = usePathname();
@@ -20,12 +19,11 @@ export function HalloweenSpiders() {
   const [hidden, setHidden] = useState(true);
   const [blocked, setBlocked] = useState(false);
   const [openAt, setOpenAt] = useState<string | null>(null);
-  const [positions, setPositions] = useState<Position[]>([]);
   const panel = useRef<HTMLDivElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
-  const paused = useRef(false);
-  const lastPositions = useRef<Position[]>([]);
+  const paused = useRef(new Set<number>());
+  const spiderButtons = useRef<(HTMLButtonElement | null)[]>([]);
   const eligible = isHalloweenSpiderPath(path);
   const open = openAt === path;
 
@@ -33,15 +31,17 @@ export function HalloweenSpiders() {
     const timer = window.setTimeout(() => {
       try { setHidden(localStorage.getItem(HALLOWEEN_2026.dismissalKey) === "1"); } catch { setHidden(false); }
       setReady(true);
-    }, 5000);
+    }, 1500);
     const onStorage = (event: StorageEvent) => { if (event.key === HALLOWEEN_2026.dismissalKey && event.newValue === "1") setHidden(true); };
     window.addEventListener("storage", onStorage);
-    return () => { clearTimeout(timer); window.removeEventListener("storage", onStorage); };
+    const onHide = () => { setHidden(true); trackEvent("halloween_dismiss", { campaign: HALLOWEEN_2026.id }); };
+    window.addEventListener("dollwow:halloween-hide", onHide);
+    return () => { clearTimeout(timer); window.removeEventListener("storage", onStorage); window.removeEventListener("dollwow:halloween-hide", onHide); };
   }, []);
 
   useEffect(() => {
     function check() {
-      const modal = [...document.querySelectorAll<HTMLElement>('[aria-modal="true"],#mobile-menu,#chatra.chatra--expanded')]
+      const modal = [...document.querySelectorAll<HTMLElement>('[role="dialog"],[aria-modal="true"],#mobile-menu,#chatra.chatra--expanded')]
         .some(el => !el.closest("[data-halloween-card]") && el.getClientRects().length > 0);
       const chat = document.querySelector("#chatra")?.getBoundingClientRect();
       setBlocked(modal || Boolean(chat && chat.width > 180 && chat.height > 180) || document.hidden);
@@ -57,34 +57,8 @@ export function HalloweenSpiders() {
 
   useEffect(() => {
     if (!ready || hidden || !eligible || blocked) return;
-    let frame = 0;
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    function update() {
-      if (paused.current) return;
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const top = Math.max(155, document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0) + 12;
-        const safe: Position[] = [];
-        const edges = innerWidth >= 1024 ? [8, innerWidth - 72] : [8];
-        for (const x of edges) {
-          const previous = lastPositions.current.find(position => position.x === x);
-          const height = safe.length === 0 ? 144 : 100;
-          const preferred = motion.matches ? top : previous ? previous.y + 4 : top + 48;
-          const candidates = [preferred, ...Array.from({ length: Math.max(0, Math.floor((innerHeight - top - height - 56) / 24)) }, (_, i) => top + i * 24)];
-          const isSafe = (y: number) => y >= top && y + height < innerHeight - 56 && [x + 1, x + 16, x + 32, x + 48, x + 63].every(px => Array.from({ length: Math.ceil(height / 16) + 1 }, (_, i) => y + Math.min(height - 1, i * 16)).every(py =>
-            !document.elementsFromPoint(px, py).some(el => !el.closest("[data-halloween-spiders]") && el.closest(protectedSelector))
-          ));
-          const y = candidates.find(isSafe);
-          if (y !== undefined) safe.push({ x, y, smooth: !motion.matches && Boolean(previous && y >= previous.y && y - previous.y <= 8 && isSafe(previous.y)) });
-        }
-        lastPositions.current = safe;
-        setPositions(safe);
-      });
-    }
-    update();
-    const timer = window.setInterval(update, motion.matches ? 1500 : 700);
-    window.addEventListener("scroll", update, { passive: true }); window.addEventListener("resize", update); motion.addEventListener("change", update);
-    return () => { cancelAnimationFrame(frame); clearInterval(timer); window.removeEventListener("scroll", update); window.removeEventListener("resize", update); motion.removeEventListener("change", update); };
+    paused.current.clear();
+    return startHalloweenWalkers(spiderButtons.current.filter((el): el is HTMLButtonElement => Boolean(el)), index => paused.current.has(index));
   }, [ready, hidden, eligible, blocked, path]);
 
   function retire(action: "reveal" | "dismiss") {
@@ -126,23 +100,19 @@ export function HalloweenSpiders() {
 
   if (!eligible || blocked) return null;
   return <>
-    {ready && !hidden && positions.length > 0 ? <div data-halloween-spiders>
-      {positions.map((position, index) => <button key={index} type="button" className="halloween-spider" style={{ left: position.x, top: position.y, transitionDuration: position.smooth ? "700ms" : "0ms" }} aria-label="Halloween offer: reveal $299 discount" onPointerEnter={() => { paused.current = true; }} onPointerLeave={() => { paused.current = false; }} onFocus={() => { paused.current = true; }} onBlur={() => { paused.current = false; }} onClick={e => reveal(e.currentTarget)}>
-        <Image src="/promo/halloween-2026/spider.svg" alt="" width={48} height={56} style={{ width: 48, height: "auto" }} unoptimized draggable={false} />
-        <span className="halloween-spider-hint">Tap · $299</span>
+    {ready && !hidden ? <div data-halloween-spiders>
+      {[0, 1, 2, 3, 4, 5].map(index => <button key={index} ref={el => { spiderButtons.current[index] = el; }} type="button" className="halloween-spider" aria-label="Halloween offer: reveal $299 discount" title="Reveal the Halloween offer" onPointerEnter={() => { paused.current.add(index); }} onPointerLeave={() => { paused.current.delete(index); }} onFocus={() => { paused.current.add(index); }} onBlur={() => { paused.current.delete(index); }} onClick={e => reveal(e.currentTarget)}>
+        <HalloweenSpiderGlyph index={index} />
       </button>)}
-      <button type="button" className="halloween-hide" style={{ left: positions[0].x + 10, top: positions[0].y + 100 }} title="Hide spiders" aria-label="Hide spiders" onClick={() => retire("dismiss")}><X size={16} aria-hidden="true" /></button>
     </div> : null}
     {open ? <div className="halloween-backdrop" data-halloween-card onClick={event => { if (event.target === event.currentTarget) setOpenAt(null); }}>
       <div ref={panel} className="halloween-card" role="dialog" aria-modal="true" aria-labelledby="halloween-heading" aria-describedby="halloween-details">
         <button ref={closeButton} type="button" onClick={() => setOpenAt(null)} className="halloween-close" aria-label="Close Halloween offer"><X size={21} /></button>
-        <div className="halloween-card-art" aria-hidden="true" />
+        <HalloweenCampaignArtwork card />
         <div className="halloween-card-copy">
           <p className="halloween-eyebrow">A little Halloween magic</p>
           <h2 id="halloween-heading" className="font-display text-2xl font-semibold">You caught the deal.</h2>
-          <p className="halloween-card-amount">$299 <span>off</span></p>
-          <p className="text-lg font-medium">your full-size doll.</p>
-          <p id="halloween-details" className="mt-3 text-sm leading-6">Ready-to-ship or custom-made.<br />Plus your eligible factory bonuses.</p>
+          <p id="halloween-details" className="mt-3 text-sm leading-6">Save $299 on your full-size doll, ready-to-ship or custom-made. Your eligible factory bonuses stay included.</p>
           <div className="mt-4"><HalloweenCode campaign /></div>
           <Link href="/shop" onClick={() => setOpenAt(null)} className="halloween-shop">Find your doll</Link>
           <Link href="/promo#halloween-2026" onClick={() => setOpenAt(null)} className="halloween-card-details">Offer details</Link>
