@@ -9,6 +9,7 @@ import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
 import { productReviewedPdpHeading } from "./reviewedGalleryLooks";
 import { protectedProductImageUrlFor } from "./productImage";
+import { productCanonicalHandle } from "./productCanonical";
 
 type IntentChip = {
   label: string;
@@ -557,7 +558,7 @@ function searchableText(product: Product) {
 }
 
 function productCanonicalUrl(product: Product) {
-  return `${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/products/${product.handle}`;
+  return `${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/products/${productCanonicalHandle(product)}`;
 }
 
 function normalizeCup(value?: string | null) {
