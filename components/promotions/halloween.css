@@ -1,0 +1,12 @@
+.halloween-spider{position:fixed;z-index:65;display:flex;align-items:center;justify-content:center;width:44px;height:58px;padding:0;background:transparent;border:0;cursor:pointer;transition:top 1.3s linear;touch-action:manipulation}
+.halloween-spider:focus-visible{outline:2px solid var(--accent,#b5471f);outline-offset:-2px;border-radius:6px}
+.halloween-spider img{filter:drop-shadow(0 1px 1px #ffffff90)}
+.halloween-hide{position:fixed;z-index:65;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--text-dim,#786354);cursor:pointer}
+.halloween-hide:hover,.halloween-hide:focus-visible{background:var(--surface-solid,#fff);outline:1px solid var(--accent,#b5471f)}
+.halloween-backdrop{position:fixed;inset:0;z-index:89;display:flex;align-items:flex-start;justify-content:flex-end;padding:124px 24px 24px;background:#29201b30}
+.halloween-card{position:relative;width:100%;max-width:380px;max-height:calc(100dvh - 148px);overflow:auto;overscroll-behavior:contain;border:1px solid var(--border,#ded5ce);border-radius:8px;padding:28px;background:var(--surface-solid,#fff);box-shadow:0 12px 40px #29201b22}
+.halloween-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:6px;background:transparent;color:var(--text,#29201b);cursor:pointer}
+.halloween-close:hover{background:var(--surface-tint,#f5eee9)}
+@media(max-width:639px){.halloween-backdrop{align-items:flex-end;padding:12px}.halloween-card{max-width:none;max-height:calc(100dvh - 132px);padding:24px}}
+@media(prefers-reduced-motion:reduce){.halloween-spider{transition:none}}
+[data-theme=dark] .halloween-spider img{filter:brightness(1.8)}

@@ -11,6 +11,8 @@ import { IDO_OCTOBER_OFFER, isIdoOctoberActive } from "@/lib/promotions/idoOctob
 import { MdOctoberIndexCard } from "@/components/promotions/MdOctoberPromotion";
 import { MD_OCTOBER_OFFER, isMdOctoberActive } from "@/lib/promotions/mdOctober2026";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
+import { isHalloweenPreview } from "@/lib/promotions/halloween2026";
+import { HalloweenCode } from "@/components/promotions/HalloweenCode";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -69,6 +71,16 @@ export default function PromoIndexPage() {
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
       </header>
+
+      {isHalloweenPreview() ? <section id="halloween-2026" className="border-b border-border py-10" aria-labelledby="halloween-offer-heading">
+        <p className="text-sm font-semibold text-accent">Happy Halloween</p>
+        <h2 id="halloween-offer-heading" className="mt-2 font-display text-3xl font-semibold text-text">$299 off full-size dolls</h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-text-dim">Choose a ready-to-ship or custom-made full-size doll and take $299 USD off its base price. Eligible factory and brand bonuses stay included.</p>
+        <div className="mt-5"><HalloweenCode /></div>
+        <p className="mt-5 max-w-2xl text-sm leading-6 text-text-dim">One discount per order. Torsos, hips, minis, standalone heads, parts, accessories, paid add-ons and shipping are excluded. Shopify converts the fixed USD discount for your checkout currency.</p>
+        <p className="mt-3 text-sm text-text-faint">Preview only. Offer activation and campaign dates await approval; this code is not active at checkout.</p>
+        <Link href="/shop" className="mt-5 inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4">Explore dolls</Link>
+      </section> : null}
 
       <section className="mt-8" aria-labelledby="active-promotions-heading">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
