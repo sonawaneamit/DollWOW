@@ -13,18 +13,23 @@ import { MD_OCTOBER_OFFER, isMdOctoberActive } from "@/lib/promotions/mdOctober2
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { isHalloweenPreview } from "@/lib/promotions/halloween2026";
 import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
+import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
 export const revalidate = 3600;
 
+const halloween = isHalloweenPreview();
+const title = halloween ? "Halloween Sex Doll Sale: $299 Off Full-Size Dolls" : "Active Sex Doll Brand Promotions & Bonuses";
+const description = halloween ? "Preview DollWOW's Halloween offer: $299 USD off full-size ready-to-ship and custom-made dolls. Explore styles, exclusions and eligible factory bonuses. Dates to be confirmed." : "See current sex doll brand promotions, exact dates, eligible custom orders, and factory-confirmed bonus upgrades at DollWOW.";
+
 export const metadata: Metadata = {
-  title: "Active Sex Doll Brand Promotions & Bonuses",
-  description: "See current sex doll brand promotions, exact dates, eligible custom orders, and factory-confirmed bonus upgrades at DollWOW.",
+  title,
+  description,
   alternates: { canonical: "/promo" },
   openGraph: {
-    title: "Active Sex Doll Brand Promotions & Bonuses | DollWOW",
-    description: "Current sex doll brand promotion dates and eligible factory bonus upgrades at DollWOW.",
+    title: `${title} | DollWOW`,
+    description,
     url: `${siteUrl}/promo`,
     type: "website"
   }
@@ -47,9 +52,9 @@ export default function PromoIndexPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Active DollWOW brand promotions",
+    name: title,
     url: `${siteUrl}/promo`,
-    description: "Current brand promotion dates and eligible factory bonus upgrades at DollWOW.",
+    description,
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: itemList.length,
@@ -64,7 +69,7 @@ export default function PromoIndexPage() {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      {isHalloweenPreview() ? <HalloweenCampaignBanner /> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
+      {halloween ? <><HalloweenCampaignBanner /><HalloweenLandingSections /></> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
         <h1 className="mt-2 font-display text-4xl font-semibold text-text sm:text-5xl">Active sex doll brand promotions</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">

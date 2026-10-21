@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HALLOWEEN_2026, isHalloweenPreview } from "@/lib/promotions/halloween2026";
-import { HalloweenHideButton } from "@/components/promotions/HalloweenHideButton";
+import { HalloweenHideButton, HalloweenOfferButton } from "@/components/promotions/HalloweenHideButton";
 
 export function AnnouncementBar() {
   const halloween = isHalloweenPreview();
@@ -9,7 +9,7 @@ export function AnnouncementBar() {
       <p className={`text-[13px] text-center ${halloween ? "font-semibold" : "text-text-dim"}`} style={{ lineHeight: "16px" }}>
         {halloween ? <Link href="/promo" className="underline-offset-4 hover:underline">{HALLOWEEN_2026.headline}</Link> : "10% off Eligible Dolls! Hurry Offer Ends Soon!"}
       </p>
-      {halloween ? <HalloweenHideButton /> : null}
+      {halloween ? <><HalloweenOfferButton /><HalloweenHideButton /></> : null}
     </div>
   );
 }

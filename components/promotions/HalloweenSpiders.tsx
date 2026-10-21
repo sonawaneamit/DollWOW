@@ -22,8 +22,7 @@ export function HalloweenSpiders() {
   const panel = useRef<HTMLDivElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
-  const paused = useRef(new Set<number>());
-  const spiderButtons = useRef<(HTMLButtonElement | null)[]>([]);
+  const spiderElements = useRef<(HTMLSpanElement | null)[]>([]);
   const eligible = isHalloweenSpiderPath(path);
   const open = openAt === path;
 
@@ -57,8 +56,7 @@ export function HalloweenSpiders() {
 
   useEffect(() => {
     if (!ready || hidden || !eligible || blocked) return;
-    paused.current.clear();
-    return startHalloweenWalkers(spiderButtons.current.filter((el): el is HTMLButtonElement => Boolean(el)), index => paused.current.has(index));
+    return startHalloweenWalkers(spiderElements.current.filter((el): el is HTMLSpanElement => Boolean(el)));
   }, [ready, hidden, eligible, blocked, path]);
 
   function retire(action: "reveal" | "dismiss") {
@@ -66,10 +64,18 @@ export function HalloweenSpiders() {
     try { localStorage.setItem(HALLOWEEN_2026.dismissalKey, "1"); } catch { /* Current visit still stays dismissed. */ }
     trackEvent(`halloween_${action}`, { campaign: HALLOWEEN_2026.id });
   }
-  function reveal(button: HTMLButtonElement) {
-    previousFocus.current = button;
-    retire("reveal"); setOpenAt(path);
-  }
+  useEffect(() => {
+    function reveal() {
+      if (!eligible || blocked) return;
+      previousFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setHidden(true);
+      try { localStorage.setItem(HALLOWEEN_2026.dismissalKey, "1"); } catch { /* Retire for this visit. */ }
+      trackEvent("halloween_reveal", { campaign: HALLOWEEN_2026.id });
+      setOpenAt(path);
+    }
+    window.addEventListener("dollwow:halloween-reveal", reveal);
+    return () => window.removeEventListener("dollwow:halloween-reveal", reveal);
+  }, [path, eligible, blocked]);
   useEffect(() => {
     if (!open || !eligible || blocked) return;
     const overflow = document.body.style.overflow;
@@ -100,10 +106,10 @@ export function HalloweenSpiders() {
 
   if (!eligible || blocked) return null;
   return <>
-    {ready && !hidden ? <div data-halloween-spiders>
-      {[0, 1, 2, 3, 4, 5].map(index => <button key={index} ref={el => { spiderButtons.current[index] = el; }} type="button" className="halloween-spider" aria-label="Halloween offer: reveal $299 discount" title="Reveal the Halloween offer" onPointerEnter={() => { paused.current.add(index); }} onPointerLeave={() => { paused.current.delete(index); }} onFocus={() => { paused.current.add(index); }} onBlur={() => { paused.current.delete(index); }} onClick={e => reveal(e.currentTarget)}>
+    {ready && !hidden ? <div data-halloween-spiders aria-hidden="true">
+      {[0, 1, 2, 3, 4, 5].map(index => <span key={index} ref={el => { spiderElements.current[index] = el; }} className="halloween-spider">
         <HalloweenSpiderGlyph index={index} />
-      </button>)}
+      </span>)}
     </div> : null}
     {open ? <div className="halloween-backdrop" data-halloween-card onClick={event => { if (event.target === event.currentTarget) setOpenAt(null); }}>
       <div ref={panel} className="halloween-card" role="dialog" aria-modal="true" aria-labelledby="halloween-heading" aria-describedby="halloween-details">

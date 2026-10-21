@@ -1,5 +1,5 @@
-.halloween-spider{position:fixed;left:0;top:0;z-index:65;display:block;visibility:hidden;width:88px;height:88px;padding:0;background:transparent;border:0;cursor:pointer;touch-action:manipulation;will-change:transform}
-.halloween-spider:focus-visible{outline:2px solid var(--accent,#b5471f);outline-offset:-2px;border-radius:6px}
+[data-halloween-spiders],.halloween-spider,.halloween-spider *{pointer-events:none!important}
+.halloween-spider{position:fixed;left:0;top:0;z-index:65;display:block;visibility:hidden;width:88px;height:88px;padding:0;background:transparent;border:0;will-change:transform}
 .halloween-spider svg{display:block;width:100%;height:100%;overflow:hidden}
 .halloween-spider-anatomy{filter:drop-shadow(0 3px 2px #0004)}
 body:has(.consent-banner) .halloween-spider{visibility:hidden!important}

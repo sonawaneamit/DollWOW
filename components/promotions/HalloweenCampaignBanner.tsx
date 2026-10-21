@@ -13,8 +13,14 @@ export function HalloweenCampaignArtwork({ card = false }: { card?: boolean }) {
 
 export function HalloweenCampaignBanner() {
   return <section id="halloween-2026" aria-labelledby="halloween-offer-heading">
-    <h1 id="halloween-offer-heading" className="sr-only">$299 off full-size dolls this Halloween</h1>
+    <header className="halloween-page-heading">
+      <p>Halloween at DollWOW</p>
+      <h1 id="halloween-offer-heading">Halloween Sex Doll Sale: $299 Off Full-Size Dolls</h1>
+      <div>Find your full-size doll, ready to ship or custom made. Take $299 USD off the base price, with eligible factory bonuses still included.</div>
+    </header>
+    <div className="halloween-banner-art">
     <HalloweenCampaignArtwork />
+    </div>
     <div className="halloween-campaign-actions">
       <div><p className="halloween-bonus-line">Your Halloween treat. Plus your eligible factory bonuses.</p><HalloweenCode campaign /></div>
       <Link className="halloween-shop" href="/shop">Find your doll <ArrowRight size={19} aria-hidden="true" /></Link>

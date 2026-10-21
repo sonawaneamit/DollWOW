@@ -1,19 +1,12 @@
 export type SpiderRect = { left: number; top: number; right: number; bottom: number };
 export type SpiderPoint = { x: number; y: number };
 
-export function spiderFootprint(point: SpiderPoint, size: number): SpiderRect {
-  return { left: point.x - size / 2, top: point.y - size / 2, right: point.x + size / 2, bottom: point.y + size / 2 };
-}
-
-export function spiderRectsOverlap(a: SpiderRect, b: SpiderRect, gap = 5) {
-  return a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
-}
-
-// A swept bounding box protects the whole step, not only its destination.
-export function isSpiderStepSafe(from: SpiderPoint, to: SpiderPoint, size: number, bounds: SpiderRect, obstacles: SpiderRect[]) {
-  const a = spiderFootprint(from, size), b = spiderFootprint(to, size);
-  const swept = { left: Math.min(a.left, b.left), right: Math.max(a.right, b.right), top: Math.min(a.top, b.top), bottom: Math.max(a.bottom, b.bottom) };
-  return swept.left >= bounds.left && swept.right <= bounds.right && swept.top >= bounds.top && swept.bottom <= bounds.bottom && !obstacles.some(rect => spiderRectsOverlap(swept, rect));
+// Bounds are for the spider's centre; content is no longer an obstacle.
+export function advanceSpider(point: SpiderPoint, angle: number, distance: number, bounds: SpiderRect) {
+  let x = point.x + Math.cos(angle) * distance, y = point.y + Math.sin(angle) * distance;
+  if (x < bounds.left || x > bounds.right) { angle = Math.PI - angle; x = Math.max(bounds.left, Math.min(bounds.right, x)); }
+  if (y < bounds.top || y > bounds.bottom) { angle = -angle; y = Math.max(bounds.top, Math.min(bounds.bottom, y)); }
+  return { x, y, angle };
 }
 
 export function spiderLegPose(side: number, leg: number, phase: number, stride: number) {
