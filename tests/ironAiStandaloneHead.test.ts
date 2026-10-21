@@ -7,6 +7,7 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import { configurationPresets } from "@/lib/customization/presets";
 import { getDefaultSelections, resolveCustomization } from "@/lib/customization/resolve";
 import { isDollVueExcluded } from "@/lib/dollvue/eligibility";
+import { buildPdpSearchFit, buildPdpDecisionNotes, buildPdpFitChecks, buildProductStructuredData, pdpFaqItems } from "@/lib/catalog/pdpSeo";
 import type { Product } from "@/types/product";
 
 function legacyHead(): Product {
@@ -84,5 +85,17 @@ describe("reviewed IronAI standalone head", () => {
     }
     const repaired = withIronAiHeadClassification(legacyHead());
     expect(withIronAiHeadClassification(repaired)).toBe(repaired);
+  });
+
+  it("keeps lower-page copy and schema head-only without inventing body or material facts", () => {
+    const result = withIronAiHeadClassification(legacyHead());
+    const copy = JSON.stringify([buildPdpSearchFit(result), buildPdpDecisionNotes(result), buildPdpFitChecks(result), pdpFaqItems(result)]);
+    expect(copy).not.toMatch(/mid-height|full measurements|bust profile|silicone head|clothing/i);
+    expect(copy).toContain("A doll body is not included");
+    const schema = buildProductStructuredData(result);
+    expect(schema.category).toBe("Standalone smart head");
+    expect(schema.material).toBeUndefined();
+    expect(schema.offers.price).toBe("552.00");
+    expect(schema.keywords).not.toContain("realistic sex doll");
   });
 });
