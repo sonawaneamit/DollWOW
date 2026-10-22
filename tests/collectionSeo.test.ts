@@ -177,6 +177,19 @@ describe("futa collection SEO", () => {
   });
 });
 
+describe("petite collection buyer links", () => {
+  it("keeps each destination once without removing the size and care routes", () => {
+    const links = collectionRelatedLinks("petite-dolls", collectionPresets["petite-dolls"]);
+    expect(links).toHaveLength(6);
+    expect(new Set(links.map(link => link.href)).size).toBe(links.length);
+    expect(links.filter(link => link.href === "/shop/torsos")).toEqual([
+      { label: "Browse torso sex dolls", href: "/shop/torsos" }
+    ]);
+    expect(links).toContainEqual({ label: "Browse mini sex dolls", href: "/shop/mini-sex-dolls" });
+    expect(links).toContainEqual({ label: "Plan private storage", href: "/learn/sex-doll-storage" });
+  });
+});
+
 describe("new sex dolls collection SEO", () => {
   const preset = collectionPresets["new-sex-dolls"];
 

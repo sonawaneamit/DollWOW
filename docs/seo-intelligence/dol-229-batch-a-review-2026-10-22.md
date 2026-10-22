@@ -133,3 +133,25 @@ reason is unknown, not automatically an imagery/safety classification.
   remain outstanding. No growth impact or release-ledger deployment event exists.
 
 Do not mark DOL-229 complete or publish this branch from this checkpoint.
+
+## Existing Related-Link Audit (19:17 UTC)
+
+Checked the five current production guide rows and their 20 distinct destinations
+with scoped operator access. All 20 returned 200 without redirects or noindex;
+16 declare matching canonical URLs. Four utility/policy destinations do not declare
+a canonical: `/how-ordering-works`, `/care-for-life`, `/buyer-protection` and
+`/price-match`. This is missing metadata, not a detected conflicting canonical or
+a broken link. Keep useful policy links; flag utility metadata ownership to Dolly
+instead of broadening this batch into a policy-page rewrite.
+
+The Petite row renders `/shop/torsos` twice (same React key and caption), matching
+its source array. Remove only the second occurrence in preview. Six distinct
+destinations remain, with the size comparison, torso, mini, storage, shipping and
+cost paths preserved. No new linking pattern, additional destination or DOL-225
+rollout is introduced. A focused regression checks uniqueness and retained routes.
+
+Private production evidence: `links-audit.test.ts` / `links-audit.json` in the
+dated export directory. The production snapshot intentionally retains the old
+seven-link state; subsequent preview receipts must show six and must not overwrite
+that before evidence. This audit clears only the existing related-guide targets,
+not every site link, linked page's full accuracy or catalog imagery eligibility.

@@ -678,7 +678,6 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Compare mini and petite sizes", href: "/learn/mini-sex-dolls" },
     { label: "Browse torso sex dolls", href: "/shop/torsos" },
     { label: "Browse mini sex dolls", href: "/shop/mini-sex-dolls" },
-    { label: "Browse torso sex dolls", href: "/shop/torsos" },
     { label: "Plan private storage", href: "/learn/sex-doll-storage" },
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" }
