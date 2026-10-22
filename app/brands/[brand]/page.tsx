@@ -13,6 +13,7 @@ import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
+import { GuideLinkRow } from "@/components/GuideLinkRow";
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -113,13 +114,13 @@ export default async function BrandHubPage({
 
       {!compactBrowsing ? <BrandAuthorizationCard brand={brand.value} variant="brand" /> : null}
 
-      <nav aria-label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined}>
+      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && process.env.VERCEL_ENV === "preview"}>
         {relatedLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
             {link.label}
           </Link>
         ))}
-      </nav>
+      </GuideLinkRow>
 
       {!compactBrowsing ? comparison : null}
 

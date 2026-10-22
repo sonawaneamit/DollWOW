@@ -155,3 +155,25 @@ dated export directory. The production snapshot intentionally retains the old
 seven-link state; subsequent preview receipts must show six and must not overwrite
 that before evidence. This audit clears only the existing related-guide targets,
 not every site link, linked page's full accuracy or catalog imagery eligibility.
+
+## Preview Keyboard Repair (Dolly Scope, 19:39 UTC)
+
+Dolly explicitly assigned the clipped guide-row focus repair to DOL-229/PR159,
+not the closed DOL-195. The change must remain preview-only, preserve the existing
+appearance, and check TPE plus other consumers before Martin's release decision.
+
+`GuideLinkRow` preserves the existing server-rendered nav, classes, labels,
+tab order and links. With its preview flag enabled, focusing a clipped anchor
+scrolls only that nav horizontally by the missing distance, immediately. It does
+not scroll the page, change vertical position, add controls or change CSS. Visible
+links cause no movement. The collection and compact-brand routes enable it only
+for Vercel preview; unreviewed brand layouts and production keep it disabled.
+
+Five focused tests cover both clipped edges, no-op visible/exact-edge links,
+nonnegative positioning and identical server markup with the behavior on/off.
+The earlier 320 px failure remains recorded; new hosted keyboard/appearance checks
+must pass before calling it repaired. Full local typecheck still has the separate
+documented pre-existing fixture/generated-type failures.
+
+Per Dolly, lightweight threshold and New Arrivals ordering observations are noted
+on DOL-230 (comment `60a2cdb2-ee13-452a-b388-0d82648db006`), not changed here.
