@@ -7,7 +7,7 @@ import type { Product } from '@/types/product';
 export type ContextualLink = { href: string; label: string; kind: 'brand' | 'collection' | 'guide' };
 
 /** Preview-only sample. Production expansion requires the DOL-225 review decision. */
-export function contextualLinkSampleEnabled(path: string, environment: { VERCEL_ENV?: string } = process.env) {
+export function contextualLinkSampleEnabled(path: string, environment: Record<string, string | undefined> = process.env) {
   return environment.VERCEL_ENV === 'preview' && samplePaths.includes(path);
 }
 
