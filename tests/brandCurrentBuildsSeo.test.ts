@@ -3,6 +3,32 @@ import { getCatalogBrand } from "@/lib/catalog/brands";
 import { brandSeoProfile, brandRelatedLinks } from "@/lib/catalog/brandSeo";
 
 describe("current-build brand guidance", () => {
+  it("keeps Piper's existing guide and distinguishes partial-body dimensions", () => {
+    const brand = getCatalogBrand("piper-dolls")!, profile = brandSeoProfile(brand);
+    expect(profile.intro).toContain("complete dolls and torso products");
+    expect(brandRelatedLinks(brand)[0]).toEqual({ label: "Piper Dolls buying guide", href: "/learn/piper-dolls-buying-guide" });
+    expect(profile.faqs.map(item => item.answer).join(" ")).toContain("not a complete standing height");
+  });
+
+  it("does not invent handling weights for Rosretty", () => {
+    const profile = brandSeoProfile(getCatalogBrand("rosretty-dolls")!);
+    expect(profile.intro).toContain("rather than assuming every listing has complete specifications");
+    expect(profile.faqs[0].answer).toContain("Missing or zero weight is unknown");
+  });
+
+  it("separates SY forms and body versus head material", () => {
+    const profile = brandSeoProfile(getCatalogBrand("sy-dolls")!);
+    expect(profile.intro).toContain("complete dolls and torso products");
+    expect(profile.intro).toContain("separate head and body specifications");
+    expect(profile.faqs.map(item => item.answer).join(" ")).toContain("Missing weight is not a lightweight claim");
+  });
+
+  it("does not claim all YL builds are TPE or share one configuration", () => {
+    const profile = brandSeoProfile(getCatalogBrand("yl-dolls")!);
+    expect(profile.intro).toContain("TPE and silicone");
+    expect(profile.faqs[0].answer).toMatch(/^No\./);
+    expect(profile.faqs.map(item => item.answer).join(" ")).toContain("fixed configuration");
+  });
   it("separates HR body and head materials without uniform-build promises", () => {
     const profile = brandSeoProfile(getCatalogBrand("hr-dolls")!);
     expect(profile.intro).toContain("A silicone head does not by itself establish a full-silicone body");

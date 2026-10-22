@@ -21,6 +21,72 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  rosretty: {
+    metaTitle: "Rosretty Dolls | Compare Forms & Confirm Build Details",
+    metaDescription: "Compare Rosretty full dolls and torsos by exact materials, included body areas and supported choices. Confirm missing weight before planning handling.",
+    positioning: "Compare each Rosretty product's form and construction, confirming missing weight or material details before deciding how to handle it.",
+    intro: "Compare current Rosretty listings across complete dolls and torso products, checking the included body areas and exact head and body construction. Material labels can describe silicone, TPE or a silicone head, and a head label alone does not establish the body's material. If a usable finished weight or material detail is missing, ask for confirmation before planning lifting, cleaning or storage. Match the included build and appearance to the supported choices, configured price and ordering path rather than assuming every listing has complete specifications.",
+    buyerNotes: [
+      { title: "Confirm weight before handling plans", body: "A missing or zero weight is unknown, not a lightweight build. Ask for the exact finished weight before deciding how to lift, clean and store the product." },
+      { title: "Check form and materials together", body: "Confirm complete doll versus torso, included head and separate body and head materials. Ask for any missing material detail and use the exact product's supplied care guidance." },
+      { title: "Verify the included appearance", body: "A gallery does not establish every accessory or supported choice. Review the exact included configuration and ordering path before comparing totals." }
+    ],
+    comparisonRows: [
+      ["Known handling weight", "Missing specifications cannot establish lightness or easy handling.", "Confirm the actual finished weight and full dimensions before planning the lift and storage route."],
+      ["Form and construction", "A torso differs from a complete doll, and a silicone-head label is not a full-body specification.", "Check included body areas and both material specifications rather than guessing from the gallery."],
+      ["Included build", "Reference photos and other models' choices do not establish what is supplied here.", "Match the listing's included appearance, supported options, configured total and ordering path."]
+    ],
+    faqs: [
+      { question: "What if a Rosretty listing has no usable weight?", answer: "Ask for the exact finished build's weight before planning lifting, cleaning or storage. Missing or zero weight is unknown, not proof of a lightweight product." },
+      { question: "Does this collection contain only complete dolls?", answer: "No. Current Rosretty listings include complete dolls and torso products. Confirm which body areas and any head are included before comparing dimensions or price." },
+      { question: "Does a silicone-head label mean a full-silicone body?", answer: "No. Confirm head and body materials separately, asking for missing specifications. Use the exact product's supplied care instructions rather than inferring construction from appearance." },
+      { question: "Are the photographed styling and options all included?", answer: "Only what the listing or confirmed configuration identifies as included. Check supported choices and do not assume every photographed outfit, wig or prop is supplied." }
+    ]
+  },
+  sy: {
+    metaTitle: "SY Dolls | Compare Full Dolls, Torsos & Materials",
+    metaDescription: "Compare SY complete dolls and torsos by separate head and body materials, full measurements, listed weight, included features and supported choices.",
+    positioning: "Compare SY complete dolls and torso builds separately, using exact materials and included configuration rather than a brand-wide option list.",
+    intro: "Compare current SY listings across complete dolls and torso products, with TPE, silicone and silicone-head material labels in the collection. Confirm the included body areas and separate head and body specifications before treating different builds as equivalent. Use full dimensions and actual listed weight to plan handling; if a usable weight or material detail is missing, ask for it. Compare the included appearance, supported choices, configured total and ordering path without assuming similar names or photos describe the same product.",
+    buyerNotes: [
+      { title: "Compare equivalent product forms", body: "Check whether the product is a complete doll or a torso and which body areas and head are included before comparing price or dimensions." },
+      { title: "Read both material specifications", body: "A silicone-head label does not establish a full-silicone body. Use the exact construction and supplied care guidance; confirm missing details rather than guessing." },
+      { title: "Keep the final configuration together", body: "Review the included appearance, supported choices, actual weight, configured total and ordering path. Another SY model's options are not a universal specification." }
+    ],
+    comparisonRows: [
+      ["Included form", "A complete doll and a torso can include different body areas and dimensions.", "Start from the exact product form and included head when comparing current listings."],
+      ["Materials and handling", "Head material, body material and actual weight affect care and practical handling.", "Read both material details and confirm any missing weight before planning storage or lifting."],
+      ["Supported choices", "Similar names or galleries do not establish an identical option set.", "Use the exact listing's included build, compatible choices, total and ordering path."]
+    ],
+    faqs: [
+      { question: "Are all SY listings complete dolls?", answer: "No. The current collection includes complete dolls and torso products. Confirm included body areas and any head before comparing specifications or starting prices." },
+      { question: "Are all SY dolls the same material?", answer: "No. Current listings include TPE, silicone and silicone-head labels. Check body and head materials separately, including the exact product's supplied care instructions." },
+      { question: "What should I do if weight or material information is missing?", answer: "Ask for confirmation for the exact build. Missing weight is not a lightweight claim, and appearance alone does not establish construction or care requirements." },
+      { question: "Can every SY model use the same upgrades?", answer: "Do not assume so. Supported choices depend on the exact head, body, material and ordering path; a fixed warehouse build may not offer custom-made selections." }
+    ]
+  },
+  yl: {
+    metaTitle: "YL Dolls | Compare Current Materials & Builds",
+    metaDescription: "Compare current YL dolls by exact body and head construction, TPE or silicone labels, measurements, listed weight, included build and supported options.",
+    positioning: "Compare current YL builds by exact construction and measurements rather than assuming one material or option set across the brand.",
+    intro: "Compare current YL listings with TPE and silicone material labels, reading the exact body and head construction for the product you choose. Use full measurements and listed weight together: similar heights do not establish the same proportions, handling needs or supported options. Confirm the included head, appearance and accessories separately from custom choices, then compare the configured price and ordering path. A fixed warehouse build should be checked on its own terms rather than treated as the same selection as a custom-made order.",
+    buyerNotes: [
+      { title: "Check the exact material", body: "Current listings include more than one material label. Confirm separate body and head construction and use the supplied product-specific care guidance." },
+      { title: "Compare dimensions with weight", body: "Use complete measurements and actual listed weight rather than height or photos alone when planning handling and storage." },
+      { title: "Separate included and optional", body: "Review the included head, appearance, accessories and supported choices for the exact ordering path before comparing the configured total." }
+    ],
+    comparisonRows: [
+      ["Construction", "One brand name does not establish a single material or head and body pairing.", "Check both material specifications and the exact product's supplied care instructions."],
+      ["Proportions", "Similar heights can have different dimensions, weights and handling needs.", "Compare the full measurement table and listed weight alongside the gallery."],
+      ["Ordering path", "A fixed warehouse build may differ from a custom-made configuration.", "Match included features, supported options, configured price and current ordering details before checkout."]
+    ],
+    faqs: [
+      { question: "Are all current YL listings TPE?", answer: "No. Current YL listings include TPE and silicone material labels. Confirm body and head construction separately on the exact product." },
+      { question: "Are YL dolls at the same height equivalent builds?", answer: "No. Compare the full measurements, actual listed weight, exact head and body pairing and supported choices rather than height alone." },
+      { question: "Are photographed outfits and accessories included?", answer: "Only what the product listing or confirmed configuration identifies as included. Photographs alone do not establish every accessory or styling choice." },
+      { question: "Can I apply custom-made options to a YL warehouse listing?", answer: "Do not assume so. Check the stocked unit's fixed configuration and the supported choices for its exact ordering path rather than transferring another listing's configurator." }
+    ]
+  },
   hr: {
     metaTitle: "HR Dolls | Compare Body & Head Construction",
     metaDescription: "Compare current HR Dolls by separate body and head materials, measurements, listed weight, included features, supported choices and ordering path.",
@@ -884,8 +950,26 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     ]
   },
   piper: {
-    positioning:
-      "Piper Dolls is often compared by buyers looking for compact sizes, stylized or realistic presentations, and practical storage considerations.",
+    metaTitle: "Piper Dolls | Compare Product Forms & Materials",
+    metaDescription: "Compare Piper complete dolls and torso products by included body areas, TPE or silicone construction, measurements, listed weight and supported choices.",
+    positioning: "Compare Piper complete dolls and torso products using the exact included form, construction and handling measurements.",
+    intro: "Compare current Piper listings across complete dolls and torso products, with TPE and silicone material labels in the current collection. Start with the included body areas and head, then compare full dimensions, listed weight and material-specific care rather than assuming a shorter measurement describes a complete standing doll or easy handling. Match the included appearance and supported choices to the exact product and ordering path before comparing the configured total.",
+    buyerNotes: [
+      { title: "Confirm the complete product form", body: "Compare complete dolls and torsos separately. Check included body areas and any head before interpreting a listed dimension or starting price." },
+      { title: "Plan handling from actual measurements", body: "A short listed dimension does not establish a low weight or easy storage. Use complete dimensions, actual weight and the manufacturer's support guidance." },
+      { title: "Check materials and included styling", body: "Confirm body and head construction, supplied care guidance and included appearance separately from optional choices or photographed accessories." }
+    ],
+    comparisonRows: [
+      ["Product form", "A torso's dimensions do not describe a complete doll's standing height.", "Check the included body areas and head before comparing equivalent builds."],
+      ["Handling and care", "Material, full dimensions and actual weight affect lifting, cleaning and storage.", "Use the exact product specification and supplied material-specific care guidance."],
+      ["Included appearance", "A photograph does not establish all supplied accessories or supported alternatives.", "Match the included build, product-specific choices, total and ordering path together."]
+    ],
+    faqs: [
+      { question: "Does this collection contain only complete Piper dolls?", answer: "No. Current listings include complete dolls and torso products. Confirm the included body areas and head before comparing dimensions or starting prices." },
+      { question: "Are all Piper products the same material?", answer: "No. Current listings include TPE and silicone material labels. Confirm separate head and body construction and use the supplied care guidance for the exact product." },
+      { question: "Does a shorter listed dimension mean easy handling?", answer: "No. A partial-body dimension is not a complete standing height, and material, width, depth and actual weight still affect lifting and storage needs." },
+      { question: "Are photographed appearance choices all included?", answer: "Only what the listing or confirmed configuration identifies as included. Check supported options and do not assume every wig, outfit, accessory or alternative appearance is supplied." }
+    ],
     guideHref: "/learn/piper-dolls-buying-guide",
     guideLabel: "Piper Dolls buying guide"
   },
