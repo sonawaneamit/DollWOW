@@ -3,6 +3,23 @@ import { brandSeoProfile, buildBrandMetadata, buildBrandStructuredData } from "@
 import { catalogBrands } from "@/lib/catalog/brands";
 import { env } from "@/lib/utils/env";
 
+describe("IL Doll current-build guidance", () => {
+  it("preserves its owner and qualifies options, measurements and availability", () => {
+    const brand = catalogBrands.find(candidate => candidate.value === "il-doll")!;
+    const profile = brandSeoProfile(brand);
+    expect(buildBrandMetadata(brand).alternates?.canonical).toMatch(/\/brands\/il-doll$/);
+    expect(profile.faqs).toHaveLength(4);
+    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.intro).toContain("a feature shown on another model does not establish availability");
+    expect(JSON.stringify(profile)).toContain("guaranteed delivery date");
+    expect(JSON.stringify(profile)).toContain("decision-critical missing dimension or weight");
+    expect(JSON.stringify(profile)).not.toMatch(/4 to 6 hours|established in|founded in|medical.grade|hypoallergenic/i);
+    expect(buildBrandStructuredData(brand, []).find(item => item["@type"] === "FAQPage")?.mainEntity).toEqual(profile.faqs.map(item => ({
+      "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer }
+    })));
+  });
+});
+
 describe("Lusandy brand hub", () => {
   const brand = catalogBrands.find((candidate) => candidate.value === "lusandy")!;
 

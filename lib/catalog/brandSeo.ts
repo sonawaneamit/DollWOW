@@ -21,6 +21,28 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  "il-doll": {
+    metaTitle: "IL Doll Models | Compare Builds, Sizes & Options",
+    metaDescription: "Compare current IL Doll models by exact head and body pairing, material, measurements, listed weight, price, availability, and supported options.",
+    positioning: "Compare each IL Doll listing as its own build rather than assuming the same features or options across the brand.",
+    intro: "Compare current IL Doll listings by exact head and body pairing, material, full measurements, listed weight, current price, ordering path and supported options. Check the included build and product-specific choices together; a feature shown on another model does not establish availability on the one you choose. Where a measurement, material detail, option or timing requirement matters to your decision, confirm it for that exact listing before ordering.",
+    buyerNotes: [
+      { title: "Compare the complete pairing", body: "Use the exact head, body, material, measurements and listed weight rather than treating similar product names or photographs as identical builds." },
+      { title: "Separate included features from choices", body: "A feature shown on another IL Doll model is not proof that it is included or supported here. Review the current listing's build and option details together." },
+      { title: "Confirm the ordering path", body: "Check current availability and any fixed warehouse configuration separately from custom-made choices, and confirm important timing details before ordering." }
+    ],
+    comparisonRows: [
+      ["Exact model", "Head and body pairings, dimensions and materials can differ between listings.", "Keep the complete gallery, product specification and listed weight together when comparing current models."],
+      ["Configuration", "Included features and supported options are specific to the exact build, not guaranteed by the brand name.", "Review the product's choices and price effects, and confirm any unclear compatibility requirement."],
+      ["Availability", "A catalog listing does not establish immediate physical stock or a guaranteed delivery date.", "Check the ordering path, included build and current timing for the exact product before ordering."]
+    ],
+    faqs: [
+      { question: "How should I compare IL Doll models?", answer: "Compare the exact head and body pairing, construction, complete measurements, listed weight, current price, availability and supported choices. Similar names or photographs are not proof of the same build." },
+      { question: "Do all IL Doll models include the same upgrades?", answer: "Do not assume so. Included features, choices, compatibility and price changes depend on the exact product. A feature on another listing does not establish that it is included or available on yours." },
+      { question: "Can I infer a missing measurement from a similar model?", answer: "No. Ask for confirmation of a decision-critical missing dimension or weight for the exact head and body build rather than substituting another model's figures." },
+      { question: "Does an IL Doll listing mean it is ready to ship?", answer: "No. Check the current ordering path and any warehouse region or fixed configuration separately from custom-made choices. Confirm stock and important timing details before ordering." }
+    ]
+  },
   lusandy: {
     metaTitle: "Lusandy Dolls: Silicone Models, Sizes & Options",
     metaDescription: "Shop Lusandy silicone dolls at DollWow. Compare full dolls and torsos by size, listed weight, head, supported custom options and ready-to-ship availability.",
