@@ -258,7 +258,10 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "blonde-dolls": "Blonde Sex Dolls | Compare Hair & Styling",
     "tan-skin-dolls": "Tan Skin Sex Dolls | Compare Shades & Builds",
     hips: "Hips Sex Dolls | Compare Lower-Body Products",
-    "redhead-dolls": "Redhead Sex Dolls | Compare Hair & Styling"
+    "redhead-dolls": "Redhead Sex Dolls | Compare Hair & Styling",
+    "fair-skin-dolls": "Fair Skin Sex Dolls | Compare Shades & Builds",
+    "height-160-164": "160-164 cm Sex Dolls | Compare Listed Dimensions",
+    "height-under-155": "Dolls Under 155 cm | Compare Forms & Dimensions"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -301,6 +304,9 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  "fair-skin-dolls": "Compare sex dolls presented with fair, pale or light skin tones, using the exact manufacturer's shade name and product gallery. Lighting, photography, makeup and screen settings can change how a tone appears. Fair skin does not identify ethnicity or guarantee one universal shade, material, product form or option set. Check the included tone, head and body pairing, full measurements, listed weight and ordering path before comparing fixed warehouse builds with custom-made choices.",
+  "height-160-164": "Compare catalog listings with a positive recorded height from 160 to 164 cm inclusive. This is a listed-height band, not a guarantee that every result is a complete doll or that similarly tall builds have the same proportions or weight. Confirm the product form, included body areas and how the manufacturer measures the exact item. Compare width, depth, listed weight, head and body construction, starting price, supported options and storage route before choosing.",
+  "height-under-155": "Compare catalog listings with a positive recorded height up to 154 cm, the current boundary of this under 155 cm collection. Results include complete dolls as well as torsos and hips products, so a short listed measurement does not establish a complete doll's standing height. Confirm the included body areas and manufacturer measurement before comparing full dimensions, listed weight, material, handling and storage. Height alone does not establish appearance or suitability.",
   hips: "Compare lower-body hips products by the exact body areas included, complete dimensions, listed weight, material, starting price and ordering path. A hips model is not a complete doll or an upper-body torso, and product names or photographs do not guarantee identical anatomy, included accessories or supported options. Check width, depth and height together, then plan the space and handling needed for cleaning, drying and storage. Use the exact product specification rather than treating the category as a standard size or construction.",
   "redhead-dolls": "Compare sex dolls presented with red, auburn or similar hair in current catalog imagery and styling. Confirm the exact listing's included hair and supported choices: the photograph does not guarantee a red wig, fixed hair color, implanted construction or every alternative look. Compare the underlying head and body pairing, product form, material, complete measurements, listed weight, price and availability separately from the hairstyle.",
   "blonde-dolls": "Compare sex dolls presented with blonde or light-colored hair in current catalog imagery. The pictured look does not guarantee an included wig, a permanently fixed hair color, implanted hair, or every styling choice. Check the exact listing's included hair and supported alternatives, then compare head and body pairing, product form, material, measurements, listed weight, starting price, and ordering path. A hairstyle is one part of the presentation, not proof that the underlying doll or its available options match another model.",
@@ -352,6 +358,9 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  "fair-skin-dolls": "Compare fair-skin doll presentations, manufacturer shade names, body and head materials, measurements, listed weight, available builds and included options.",
+  "height-160-164": "Compare listings with a recorded height from 160 to 164 cm, including product form, width, weight, construction, starting price and ordering path.",
+  "height-under-155": "Compare listings with a positive recorded height up to 154 cm. Check complete versus partial-body form, dimensions, listed weight, material and ordering path.",
   hips: "Compare hips and lower-body doll products by included body areas, width, depth, height, listed weight, material, price, care needs, and availability.",
   "redhead-dolls": "Compare redhead sex dolls by pictured hair, included styling, supported choices, exact head and body, material, measurements, price, and availability.",
   "blonde-dolls": "Compare blonde sex dolls by pictured hair, included styling, supported choices, head and body pairing, material, measurements, price, and availability.",
@@ -1252,6 +1261,18 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  "fair-skin-dolls": [
+    { question: "Does fair skin mean the same shade across brands?", answer: "No. Shade names and finishes vary by manufacturer and material; compare the exact named tone and gallery rather than assuming matching labels look identical." },
+    { question: "Does this collection contain only complete silicone dolls?", answer: "No. The current appearance grouping includes different materials and product forms. Confirm which body areas are included and the separate head and body materials on the listing." },
+    { question: "Can the photographed skin tone be changed?", answer: "Only where the exact product supports that choice. A reference photograph does not establish alternative-tone availability, and a fixed warehouse build may differ from a custom-made order." },
+    { question: "Why can the same tone look different in photos?", answer: "Lighting, makeup, camera processing and screens affect appearance. Use the complete gallery and manufacturer shade information; do not treat a category image as a color guarantee." }
+  ],
+  "height-160-164": [
+    { question: "Is every result a complete doll?", answer: "No. This height filter does not restrict product form. Check whether the listing is a complete doll or a partial-body product and what the measurement describes." },
+    { question: "Are 160-164 cm dolls all similar to handle?", answer: "No. Material, body shape, internal construction, width and weight vary; height alone does not establish lifting or storage suitability." },
+    { question: "Does the band include 164.5 cm?", answer: "No. The current filter uses positive recorded heights from 160 through 164 cm inclusive. Do not round a different listed measurement into the range." },
+    { question: "What should I confirm before ordering?", answer: "Check the exact product, head and body combination, measurement method, full dimensions, listed weight, included items, supported options and ordering path." }
+  ],
   hips: [
     { question: "What is a hips doll product?", answer: "It is a lower-body product format, not a complete doll or an upper-body torso. Included body areas and proportions vary; check the exact product's full gallery and specification." },
     { question: "Do all hips products include the same anatomy or accessories?", answer: "Do not assume so. Confirm the exact included body areas, product features and accessories rather than inferring them from a category name or one photograph." },
@@ -1701,19 +1722,24 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   ],
   "height-under-155": [
     {
-      question: "Are dolls under 155 cm the same as mini sex dolls?",
-      answer:
-        "They often overlap, but the labels are not identical across brands. Compare exact height, weight, measurements, and storage needs before deciding."
+      question: "Is this the same as the petite or mini collection?",
+      answer: "No. This broad height filter does not restrict product form. The current Petite path uses complete dolls from 121 to 154 cm; Mini uses complete dolls with positive recorded height up to 120 cm. Compare the exact product form and measurements rather than treating these collections as interchangeable."
     },
     {
-      question: "Are shorter dolls easier to move?",
-      answer:
-        "Often, but material and internal structure still matter. A shorter doll can be dense, so use listed weight and boxed dimensions where available."
+      question: "Is a shorter listed item always lighter?",
+      answer: "No. Form, width, material and internal structure affect weight. Use the actual listed weight and complete dimensions; unknown weight is not a lightweight claim."
     },
     {
-      question: "What should I confirm before buying a compact doll?",
-      answer:
-        "Confirm height, weight, key measurements, material, stock status, packaging, and whether the selected options are available for that exact model."
+      question: "Does a torso's listed height describe a complete doll?",
+      answer: "No. Confirm which body areas are included and what the manufacturer measured; partial-body dimensions are not a complete doll's standing height."
+    },
+    {
+      question: "What is the exact height cutoff?",
+      answer: "Positive recorded heights up to 154 cm inclusive. The current filter is not a continuous less-than-155 rule for fractional measurements."
+    },
+    {
+      question: "What should I check besides height?",
+      answer: "Product form, full dimensions, listed weight, material, included parts, supported options, ordering path and practical handling and storage needs."
     }
   ],
   tpe: [
