@@ -244,6 +244,9 @@ function collectionTitle(preset: CollectionPreset) {
 
 function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
   const titleByHandle: Record<string, string> = {
+    "height-170-plus": "Sex Dolls 170 cm & Taller | Compare Dimensions",
+    hybrid: "Hybrid Sex Dolls | Compare Head & Body Materials",
+    "latina-dolls": "Latina Sex Dolls | Compare Styling & Builds",
     "black-hair-dolls": "Black Hair Sex Dolls | Compare Hair & Builds",
     "brown-skin-dolls": "Brown Skin Sex Dolls | Compare Shades & Builds",
     "height-155-159": "155-159 cm Sex Dolls | Compare Listed Dimensions",
@@ -308,6 +311,9 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  "height-170-plus": "Compare catalog listings with a recorded height of 170 cm or more. Check whether each result is a complete doll or a partial-body product, what its height measures and which body areas are included. Taller does not automatically mean the same proportions, construction or handling weight. Compare full width and depth, listed weight, exact head and body pairing, starting price, supported options and ordering path before planning cleaning space and storage.",
+  hybrid: "Compare hybrid doll listings by their confirmed head and body materials, exact pairing and included configuration. This collection groups products described with hybrid or silicone-head construction, but the category label alone does not verify every component's material. Check the individual specification before comparing product form, full dimensions, listed weight, starting price, supported choices and ordering path. Use the care instructions for the exact head and body rather than assuming one method suits every build.",
+  "latina-dolls": "Compare products grouped under DollWow's Latina styling category, then use each listing's full gallery and specification to assess the exact build. The label describes catalog presentation, not verified nationality, ancestry or a standardized body shape. Compare product form, head and body materials, full measurements, listed weight, included hair and skin tone, starting price and ordering path separately. Photographed styling does not establish that every accessory or alternative appearance is included or available.",
   "black-hair-dolls": "Compare sex dolls presented with black hair in current catalog imagery and styling. Check the exact listing's included hair and supported choices: a photograph does not establish an included wig, permanently fixed color or implanted hair. Compare the head and body pairing, product form, material, full measurements, listed weight, starting price and ordering path separately from the hairstyle. Similar hair does not mean the underlying builds or available options are the same.",
   "brown-skin-dolls": "Compare sex dolls presented with brown skin tones, using the exact manufacturer's shade name and product gallery. Lighting, photography, makeup and screen settings can change how a shade appears. This category does not identify ethnicity or guarantee one universal brown tone, material, product form or option set. Confirm the included shade and exact head and body pairing, then compare full measurements, listed weight and the choices supported by that specific warehouse or custom-made build.",
   "height-155-159": "Compare catalog listings with a positive recorded height from 155 to 159 cm inclusive. This listed-height band includes complete dolls and partial-body products; the measurement is not automatically a complete doll's standing height. Confirm the product form, included body areas and manufacturer's measurement method. Compare width, depth, listed weight, head and body construction, starting price, supported options and storage requirements rather than assuming similar heights mean similar builds.",
@@ -366,6 +372,9 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  "height-170-plus": "Compare listings with recorded heights of 170 cm or more. Check product form, complete dimensions, listed weight, construction, price and ordering path.",
+  hybrid: "Compare hybrid doll listings by confirmed head and body materials, exact pairing, product form, measurements, listed weight, included options and care.",
+  "latina-dolls": "Compare Latina-style doll listings by product photos, exact build, head and body materials, measurements, listed weight, included styling and options.",
   "black-hair-dolls": "Compare black hair sex dolls by pictured styling, included hair, supported choices, exact head and body, material, measurements, weight and availability.",
   "brown-skin-dolls": "Compare brown skin sex dolls by manufacturer shade, product photos, exact head and body, material, measurements, listed weight and supported choices.",
   "height-155-159": "Compare listings with a recorded height from 155 to 159 cm. Check complete or partial-body form, full dimensions, weight, construction and ordering path.",
@@ -1273,6 +1282,25 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  "height-170-plus": [
+    { question: "Where does this height collection start?", answer: "It starts at a positive recorded height of 170 cm. Check the exact listing rather than rounding a shorter measurement up or treating the currently tallest result as a permanent catalog maximum." },
+    { question: "Does every result measure a complete doll's standing height?", answer: "No. This height filter does not restrict product form. Confirm whether the listing is a complete doll or partial-body product and how the manufacturer measures it." },
+    { question: "Does taller always mean heavier?", answer: "Height alone does not establish weight. Proportions, material and internal construction vary, and some listings lack usable weight data. Confirm the exact weight before planning handling." },
+    { question: "What else should I measure before choosing?", answer: "Compare the product's full width, depth and included body areas with the space available for handling, cleaning, drying and storage. Check its supported storage position and supplied instructions rather than assuming height is the only constraint." }
+  ],
+  hybrid: [
+    { question: "What should I verify on a hybrid listing?", answer: "Confirm the exact head and body pairing, the material of each component, product form and included configuration. This category groups hybrid or silicone-head descriptions; the label alone is not proof of the complete construction." },
+    { question: "Does every result have a silicone head and TPE body?", answer: "Do not assume that from collection membership. Catalog material labels vary, so verify both components in the exact listing or ask for the missing specification before ordering." },
+    { question: "Can every head be swapped onto every body?", answer: "No compatibility is established by the category name. Verify the exact supported head and body pairing, connector and options rather than treating similar materials or dimensions as compatibility proof." },
+    { question: "Do all hybrid builds use the same care method?", answer: "Do not assume so. Use the supplied instructions for the confirmed head and body materials and build; confirm any missing care detail before choosing cleaning products or storage arrangements." },
+    { question: "Does hybrid mean lighter or more customizable?", answer: "Not by itself. Compare the actual listed weight and supported choices for the specific head, body and ordering path. Missing weight is not a lightness claim, and a fixed warehouse build may have different choices from a custom-made listing." }
+  ],
+  "latina-dolls": [
+    { question: "What does Latina mean in this collection?", answer: "It is an existing catalog styling and presentation category, not verified nationality, ancestry or a standardized body type. Use the individual gallery and specification to compare the actual product." },
+    { question: "Are all results complete dolls with the same material?", answer: "No. This grouping includes different product forms and material labels. Verify included body areas and separate head and body materials on the exact listing." },
+    { question: "Is every photographed hairstyle, tone or accessory included?", answer: "Do not assume so. Confirm the exact included hair, skin tone, clothing and accessories, together with any supported alternatives; styling in a photograph is not an option specification." },
+    { question: "How should I compare two listings in this category?", answer: "Compare full measurements, listed weight, product form, head and body pairing, starting price and ordering path. Check the actual included build rather than inferring proportions or options from the styling label." }
+  ],
   "black-hair-dolls": [
     { question: "What does the black hair category describe?", answer: "It groups products presented with black hair in current catalog imagery and styling. It does not establish a fixed hair color, included wig or every photographed accessory." },
     { question: "Is the pictured hair included?", answer: "Check the exact listing's included hair, clothing and accessories. Photographed styling can be a reference or optional item, rather than the included configuration." },
