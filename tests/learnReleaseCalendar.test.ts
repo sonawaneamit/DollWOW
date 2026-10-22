@@ -20,13 +20,14 @@ describe("approved October Learning Center release calendar", () => {
   });
 
   it("checks the actual source file, image, author and visibility boundary of every scheduled article", () => {
+    const approvedAlexBylines = new Set(["irontech-head-types-ros-max", "se-doll-lstpe-lightweight-upgrade", "se-doll-vs-starpery-build-comparison", "warehouse-stock-vs-custom-made", "factory-photo-review-worked-example", "doll-clothing-measurements-fit"]);
     for (const row of calendar) {
       const at = Date.parse(row.publishedAt);
       expect(getLearningArticle(row.slug, at - 1), row.slug).toBeNull();
       const article = getLearningArticle(row.slug, at);
       expect(article?.status, row.slug).toBe("scheduled");
       expect(article?.publishedAt, row.slug).toBe(row.publishedAt);
-      expect(article?.author, row.slug).toBe("editorial");
+      expect(article?.author, row.slug).toBe(approvedAlexBylines.has(row.slug) ? "alex" : "editorial");
       expect(article?.featuredImage, row.slug).toBe(`/images/learn/${row.slug}.webp`);
       expect(article?.featuredImageAlt.length, row.slug).toBeGreaterThan(20);
       expect(buildArticleStructuredData(article!).datePublished, row.slug).toBe(row.publishedAt);
