@@ -239,6 +239,30 @@ describe("lightweight collection current boundary", () => {
 });
 
 describe("body-style collection SEO", () => {
+  it("keeps curvy ownership separate from Fuller and qualifies mixed product forms", () => {
+    const handle = "curvy-dolls", preset = collectionPresets[handle];
+    const copy = `${collectionIntro(preset, handle)} ${JSON.stringify(collectionFaqItems(handle, preset))}`;
+    expect(preset.filters).toEqual({ look: "shape-curvy" });
+    expect(collectionPresets["fuller-dolls"].filters).toEqual({ look: "shape-fuller", bodyType: "female" });
+    expect(buildCollectionMetadata(handle, preset).alternates?.canonical).toMatch(/\/shop\/curvy-dolls$/);
+    expect(copy).toContain("appearance categories can overlap");
+    expect(copy).toContain("not a standardized size");
+    expect(copy).toContain("torso or another partial product");
+    expect(copy).not.toContain("4 to 6 hours");
+    expect(collectionFaqItems(handle, preset)).toHaveLength(5);
+  });
+
+  it("qualifies brunette hair presentation without guaranteeing included styling", () => {
+    const handle = "brunette-dolls", preset = collectionPresets[handle];
+    const copy = `${collectionIntro(preset, handle)} ${JSON.stringify(collectionFaqItems(handle, preset))}`;
+    expect(preset.filters).toEqual({ look: "hair-brunette" });
+    expect(buildCollectionMetadata(handle, preset).title).toBe("Brunette Sex Dolls | Compare Hair & Styling");
+    expect(copy).toContain("does not establish a permanently fixed color");
+    expect(copy).toContain("Do not assume so");
+    expect(copy).toContain("a wig or implanted");
+    expect(copy).not.toContain("4 to 6 hours");
+    expect(collectionFaqItems(handle, preset)).toHaveLength(5);
+  });
   it("keeps fuller intent on one female collection with measurement-first guidance", () => {
     const preset = collectionPresets["fuller-dolls"];
     const intro = collectionIntro(preset, "fuller-dolls");

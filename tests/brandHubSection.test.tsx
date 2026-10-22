@@ -12,8 +12,8 @@ describe("brand hub compact browsing", () => {
     }
   });
 
-  it("stages only the reviewed batch-A and batch-B layouts on preview", () => {
-    for (const brand of ["dolls-castle", "moonvale", "tantaly"]) {
+  it("stages only the scoped batch layouts on preview", () => {
+    for (const brand of ["dolls-castle", "moonvale", "tantaly", "erovenus", "climax"]) {
       expect(usesCompactBrandLayout(brand, "preview")).toBe(true);
       for (const deployment of ["production", "development", ""]) {
         expect(usesCompactBrandLayout(brand, deployment)).toBe(false);

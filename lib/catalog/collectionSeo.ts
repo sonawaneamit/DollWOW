@@ -252,7 +252,9 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "female-dolls": "Female Sex Dolls for Sale",
     "cheap-sex-dolls": "Affordable Sex Dolls for Sale | Options Under $1,000",
     "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
-    custom: "Custom Sex Dolls for Sale | Build & Compare Options"
+    custom: "Custom Sex Dolls for Sale | Build & Compare Options",
+    "curvy-dolls": "Curvy Sex Dolls | Compare Shapes & Measurements",
+    "brunette-dolls": "Brunette Sex Dolls | Compare Hair & Styling"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -295,6 +297,8 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  "curvy-dolls": "Compare sex dolls grouped by curvy or full-bust appearance cues in the current catalog. This category does not guarantee the same bust, waist, hip proportions, weight, or product form across results. Read the exact measurements and full gallery, then compare body and head construction, included body areas, starting price, availability, and supported options. The separate Fuller collection uses its own fuller-build grouping; appearance categories can overlap, so choose from the actual product details rather than treating either label as a standardized body size.",
+  "brunette-dolls": "Compare sex dolls presented with brown or brunette hair in current catalog imagery and styling. The photographed hairstyle does not establish a permanently fixed color, an included wig, an implanted-hair option, or availability of every styling choice. Check the exact listing's included hair and supported choices alongside the head and body pairing, product form, material, measurements, listed weight, price, and ordering path. Hair presentation does not determine the doll's construction, skin tone, size, or finished configuration.",
   "sex-dolls":
     "Browse the complete current DollWow sex doll catalog and filter by material, body type, height, weight, price, availability, brand, and custom options. Open any product to compare its exact measurements, photos, starting price, configuration, and ordering path. If a model or detail you need is missing, ask our team through live chat or hello@dollwow.com and we will check it for you.",
   "realistic-sex-dolls":
@@ -340,6 +344,8 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  "curvy-dolls": "Compare curvy sex dolls by exact bust, waist and hip measurements, product form, construction, listed weight, price, availability, and supported options.",
+  "brunette-dolls": "Compare brunette sex dolls by pictured hair, included styling, supported choices, head and body pairing, material, measurements, price, and availability.",
   "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
   "realistic-sex-dolls": "Shop realistic sex dolls and compare proportions, face sculpt, skin finish, eyes, hands, weight, product photos, and the exact final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
@@ -364,6 +370,16 @@ const collectionMetaDescriptions: Record<string, string> = {
 };
 
 const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
+  "curvy-dolls": [
+    { title: "Read the complete measurements", body: "Curvy and full-bust labels are appearance cues, not standard sizes. Compare bust, waist, hips, height and listed weight together rather than assuming one body shape." },
+    { title: "Compare equivalent product forms", body: "Full dolls, torsos and other partial products can share an appearance tag but include different body areas. Check the photographs and exact included form before comparing prices." },
+    { title: "Check the exact build", body: "Body proportions do not establish material, softness, handling needs or supported upgrades. Confirm the actual head, body, construction and current ordering options." }
+  ],
+  "brunette-dolls": [
+    { title: "Check what hair is included", body: "A brown-haired photograph is a styling reference, not proof that its wig or every pictured accessory comes with the order. Confirm the exact listing's inclusions." },
+    { title: "Separate wigs from implanted hair", body: "Do not infer hair construction from color. Wigs, implanted hair and supported alternatives vary by head, manufacturer and build; check the specific product." },
+    { title: "Compare the doll beyond the hairstyle", body: "Use the body and head pairing, material, product form, full measurements, weight, price and availability to decide whether the underlying product fits your needs." }
+  ],
   "sex-dolls": [
     {
       title: "Compare the full purchase, not the headline",
@@ -831,6 +847,16 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
 };
 
 const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]> = {
+  "curvy-dolls": [
+    { factor: "Body proportions", whyItMatters: "A full bust, narrow waist and fuller hips are different traits and do not occur together in every design.", dollWowAdvantage: "Compare the exact bust, waist and hip measurements with several product photographs instead of relying on an appearance label." },
+    { factor: "Product form and handling", whyItMatters: "A partial product and a complete doll are different purchases, and similar silhouettes do not imply similar weight.", dollWowAdvantage: "Keep included body areas, dimensions, listed weight and storage needs alongside the current product price." },
+    { factor: "Configuration", whyItMatters: "Material, head compatibility and supported options depend on the exact model, not a curvy tag.", dollWowAdvantage: "Review the current listing and ask support to confirm any decision-critical detail before ordering." }
+  ],
+  "brunette-dolls": [
+    { factor: "Photographed styling", whyItMatters: "The pictured hair color does not establish which wig, accessories or optional styling are included.", dollWowAdvantage: "Check the exact product inclusions and current supported choices before choosing a pictured look." },
+    { factor: "Hair construction", whyItMatters: "Color alone does not reveal whether the hair is a wig or implanted, or whether an alternative is supported.", dollWowAdvantage: "Confirm the head and build-specific hair arrangement rather than assuming every result offers the same options." },
+    { factor: "Underlying doll", whyItMatters: "Hair styling does not predict product form, material, weight, measurements or availability.", dollWowAdvantage: "Compare the complete product specification, price and ordering path along with the hairstyle." }
+  ],
   "sex-dolls": [
     {
       factor: "Catalog breadth",
@@ -1174,6 +1200,20 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  "curvy-dolls": [
+    { question: "What does curvy mean in this collection?", answer: "It groups current catalog products with curvy or full-bust appearance cues. It is not a standardized size or a promise that every result has the same bust, waist, hip proportions or weight. Compare the exact measurements and gallery." },
+    { question: "Are Curvy and Fuller the same collection?", answer: "No. They are separate appearance groupings in the catalog and can overlap. Fuller uses its existing fuller-build criteria, while Curvy uses curvy or full-bust cues. Exact proportions are more useful than either label alone." },
+    { question: "Are all curvy dolls full-body products?", answer: "No. The appearance category can include different product forms. Check whether the listing is a complete doll, torso or another partial product, and confirm the body areas and dimensions included." },
+    { question: "Does curvy mean heavier or softer?", answer: "Not necessarily. Finished weight and feel depend on the exact size, material and construction. Read the listed weight and product details; do not infer them from body styling." },
+    { question: "Can I change the body proportions or options?", answer: "Do not assume that a category label makes body proportions adjustable. Supported bodies, head pairings and options vary by model and manufacturer. Check the exact listing and confirm important requirements before ordering." }
+  ],
+  "brunette-dolls": [
+    { question: "What makes a doll part of the brunette collection?", answer: "Current catalog imagery and styling present the product with brown or brunette hair. This is an appearance grouping, not a guarantee of fixed hair color, an included wig or every pictured styling choice." },
+    { question: "Is the brown wig in the photographs included?", answer: "Do not assume so. Confirm the exact listing's included hair, clothing and accessories. Photographs can show styling references or optional items rather than the final order contents." },
+    { question: "Do brunette dolls have wigs or implanted hair?", answer: "Hair construction varies by head, manufacturer and build. Brown hair in a photograph does not establish whether it is a wig or implanted, or whether alternatives are supported. Check the exact product." },
+    { question: "Can I choose another hair color?", answer: "Some builds support hair choices, but availability and compatibility are product-specific. A brunette category label does not guarantee a color change or an implanted-hair upgrade." },
+    { question: "Does hair color affect the doll's material or size?", answer: "Hair presentation does not determine the body or head material, measurements, listed weight, skin tone or product form. Compare those specifications separately before choosing." }
+  ],
   "sex-dolls": [
     {
       question: "How should I compare sex dolls online?",
