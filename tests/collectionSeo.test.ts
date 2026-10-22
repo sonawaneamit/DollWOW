@@ -157,7 +157,7 @@ describe("anime collection SEO", () => {
 describe("futa collection SEO", () => {
   const preset = collectionPresets["futa-sex-dolls"];
 
-  it("uses one respectful canonical collection backed by a verified product option", () => {
+  it("uses one respectful owner without promising selectable options on fixed stock", () => {
     const intro = collectionIntro(preset, "futa-sex-dolls");
     const faqs = collectionFaqItems("futa-sex-dolls", preset);
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
@@ -168,6 +168,11 @@ describe("futa collection SEO", () => {
     expect(copy).toContain("does not currently list FutaDoll products");
     expect(copy).toContain("actual manufacturers named on each card");
     expect(copy).toContain("the standard build may not include it");
+    expect(copy).toContain("Fixed warehouse builds cannot be changed through the custom configurator");
+    expect(copy).toContain("Collection membership is not proof");
+    expect(copy).toContain("On a stock listing, check the included configuration");
+    expect(copy).not.toContain("Every result is a full-body product whose current customization data offers a selectable");
+    expect(copy).not.toContain("The collection proves the option is available");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
