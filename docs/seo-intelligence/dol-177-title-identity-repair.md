@@ -2,6 +2,43 @@
 
 Date: 21 October 2026. Status: partial repair for review, not release-ready and not a zero-duplicate result.
 
+## 22 October Approved Gallery Subset
+
+Martin approved Dolly's 07:22 UTC labels for preview only at 07:40 UTC
+(Linear comment `b9ae053b-aa1c-4760-96cb-9759a52b5ccd`). Applied 42 exact
+records: 40 new gallery labels and two revised FunWest labels. Each uses the
+existing product ID, handle and current image fingerprint guard. No helper,
+photo, price, option, canonical, Shopify data or publication state changed.
+The labels describe galleries, not included clothing. All 15 explicitly
+flagged records are excluded and retain their exact previous identities.
+
+Fresh strict catalog model: 3,521 public records, 73 complete-record controls.
+Actual modeled title/H1 collisions are eight groups / 16 listings raw, or
+four groups / eight listings after the four approved canonical aliases.
+The remaining groups contain only flagged records: FunWest Giselle, SE Hinata,
+two Piper Akira D records, and WM Matt Billy. No hold is cleared because another
+member of a group now has a unique title. Zero-duplicate acceptance remains false.
+
+Verification: 58 focused assertions; a separate whole-manifest comparison proving
+only the 42 approved identities changed and all 15 flagged identities stayed
+exact; typecheck; scoped lint; optimized webpack build; both 4,950-asset gates.
+Rendered HTTP checks pass on all 42 approved pages, 15 untouched flagged controls
+and three earlier identity controls (60 pages total), including title, one H1,
+canonical, Open Graph URL and Product/Offer URLs. Nine heading-only browser checks
+at 320/390/1440 pixels pass; product images and external requests are blocked in
+those layout tests. All 326 private fingerprints are absent from 115 public JS
+chunks. The only tracked runtime change is the server-only gallery registry.
+
+This is a fresh whole-catalog model plus complete affected-page HTTP coverage,
+not a newly repeated 3,521-page HTTP crawl. The earlier complete HTTP receipt is
+retained under its original build signature. Private current receipts are
+`dolly-decisions-2026-10-22.json`, `approved-current-2026-10-22.json`,
+`approved-staged-model-2026-10-22.json`, `approved-decision-qa-2026-10-22.test.ts`,
+`approved-http-qa-2026-10-22.json` and `approved-browser-qa-2026-10-22.json`.
+The exact new hosted URL and its separate readback belong on DOL-177 after the
+deployment completes. PR143 remains draft, pending the remaining flagged-record
+decisions and Martin's later release approval. Do not act on DOL-139 separately.
+
 ## 22 October Decision Reconciliation
 
 Dolly's 21 October 22:53 UTC comment supplies 23 approved identities. All 23
