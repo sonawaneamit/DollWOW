@@ -254,7 +254,9 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
     custom: "Custom Sex Dolls for Sale | Build & Compare Options",
     "curvy-dolls": "Curvy Sex Dolls | Compare Shapes & Measurements",
-    "brunette-dolls": "Brunette Sex Dolls | Compare Hair & Styling"
+    "brunette-dolls": "Brunette Sex Dolls | Compare Hair & Styling",
+    "blonde-dolls": "Blonde Sex Dolls | Compare Hair & Styling",
+    "tan-skin-dolls": "Tan Skin Sex Dolls | Compare Shades & Builds"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -297,6 +299,8 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  "blonde-dolls": "Compare sex dolls presented with blonde or light-colored hair in current catalog imagery. The pictured look does not guarantee an included wig, a permanently fixed hair color, implanted hair, or every styling choice. Check the exact listing's included hair and supported alternatives, then compare head and body pairing, product form, material, measurements, listed weight, starting price, and ordering path. A hairstyle is one part of the presentation, not proof that the underlying doll or its available options match another model.",
+  "tan-skin-dolls": "Compare sex dolls presented with tan skin tones, using the exact shade name and product gallery for the manufacturer and build you are considering. Lighting, photography, makeup and screen settings can change how a tone appears. This category does not assign ethnicity or guarantee one universal tan shade, material, product form or set of options. Confirm the included skin tone and exact head and body pairing; fixed warehouse builds and custom-made choices should be checked separately.",
   "curvy-dolls": "Compare sex dolls grouped by curvy or full-bust appearance cues in the current catalog. This category does not guarantee the same bust, waist, hip proportions, weight, or product form across results. Read the exact measurements and full gallery, then compare body and head construction, included body areas, starting price, availability, and supported options. The separate Fuller collection uses its own fuller-build grouping; appearance categories can overlap, so choose from the actual product details rather than treating either label as a standardized body size.",
   "brunette-dolls": "Compare sex dolls presented with brown or brunette hair in current catalog imagery and styling. The photographed hairstyle does not establish a permanently fixed color, an included wig, an implanted-hair option, or availability of every styling choice. Check the exact listing's included hair and supported choices alongside the head and body pairing, product form, material, measurements, listed weight, price, and ordering path. Hair presentation does not determine the doll's construction, skin tone, size, or finished configuration.",
   "sex-dolls":
@@ -344,6 +348,8 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  "blonde-dolls": "Compare blonde sex dolls by pictured hair, included styling, supported choices, head and body pairing, material, measurements, price, and availability.",
+  "tan-skin-dolls": "Compare tan skin sex dolls by exact supplier shade, product photographs, head and body pairing, material, measurements, price, and ordering options.",
   "curvy-dolls": "Compare curvy sex dolls by exact bust, waist and hip measurements, product form, construction, listed weight, price, availability, and supported options.",
   "brunette-dolls": "Compare brunette sex dolls by pictured hair, included styling, supported choices, head and body pairing, material, measurements, price, and availability.",
   "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
@@ -370,6 +376,16 @@ const collectionMetaDescriptions: Record<string, string> = {
 };
 
 const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
+  "blonde-dolls": [
+    { title: "Confirm the included hairstyle", body: "A blonde photograph is not a guarantee that its wig, clothing or accessories are included. Check the exact product's stated order contents." },
+    { title: "Check supported hair choices", body: "Color alone does not reveal whether hair is a wig or implanted. Supported colors, hair arrangements and compatibility depend on the specific head and build." },
+    { title: "Compare the complete product", body: "Keep material, product form, measurements, weight, availability and supported options separate from the photographed styling when comparing value." }
+  ],
+  "tan-skin-dolls": [
+    { title: "Use the exact shade name", body: "Tan is a broad appearance label. Compare the manufacturer's supported shade names and the exact product gallery rather than assuming shades match across brands." },
+    { title: "Allow for photographic differences", body: "Lighting, makeup, photography and display settings can change apparent color. A product image is not a calibrated guarantee of the finished tone." },
+    { title: "Check the included build", body: "Confirm the selected or included skin tone, head and body pairing, material and ordering path. Do not assume a fixed warehouse unit can use every custom-made choice." }
+  ],
   "curvy-dolls": [
     { title: "Read the complete measurements", body: "Curvy and full-bust labels are appearance cues, not standard sizes. Compare bust, waist, hips, height and listed weight together rather than assuming one body shape." },
     { title: "Compare equivalent product forms", body: "Full dolls, torsos and other partial products can share an appearance tag but include different body areas. Check the photographs and exact included form before comparing prices." },
@@ -847,6 +863,16 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
 };
 
 const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]> = {
+  "blonde-dolls": [
+    { factor: "Pictured hair", whyItMatters: "A hairstyle may be a reference or optional item rather than an included part of the order.", dollWowAdvantage: "Compare the exact listing's included hair and supported alternatives before choosing the photographed look." },
+    { factor: "Hair arrangement", whyItMatters: "A blonde color does not establish wig or implanted-hair construction, or compatibility with other head options.", dollWowAdvantage: "Review the specific head and build's supported choices instead of assuming one brand-wide hair package." },
+    { factor: "Underlying build", whyItMatters: "Hair styling does not determine body form, material, dimensions, weight or stock status.", dollWowAdvantage: "Keep the complete product specification, current price and ordering path alongside the styling reference." }
+  ],
+  "tan-skin-dolls": [
+    { factor: "Shade identity", whyItMatters: "Different manufacturers can use different names and finishes for tones described as tan.", dollWowAdvantage: "Check the exact supplier shade and model gallery rather than treating the category label as a universal color standard." },
+    { factor: "Photographic appearance", whyItMatters: "Lighting, makeup and screen settings can alter apparent color and contrast.", dollWowAdvantage: "Compare several product views and confirm any decision-critical tone detail before ordering." },
+    { factor: "Configuration", whyItMatters: "A pictured skin tone does not prove every head, body or stock unit supports a change.", dollWowAdvantage: "Separate the included warehouse configuration from supported custom-made choices and confirm the exact pairing." }
+  ],
   "curvy-dolls": [
     { factor: "Body proportions", whyItMatters: "A full bust, narrow waist and fuller hips are different traits and do not occur together in every design.", dollWowAdvantage: "Compare the exact bust, waist and hip measurements with several product photographs instead of relying on an appearance label." },
     { factor: "Product form and handling", whyItMatters: "A partial product and a complete doll are different purchases, and similar silhouettes do not imply similar weight.", dollWowAdvantage: "Keep included body areas, dimensions, listed weight and storage needs alongside the current product price." },
@@ -1200,6 +1226,20 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  "blonde-dolls": [
+    { question: "What does the blonde category describe?", answer: "It groups products presented with blonde or light-colored hair in current catalog imagery and styling. It does not guarantee a fixed color, included wig or every photographed accessory." },
+    { question: "Is the pictured blonde wig included?", answer: "Do not assume so. Check the exact product's included hair, clothing and accessories; photographed styling can be a reference or optional item." },
+    { question: "Do blonde dolls have wigs or implanted hair?", answer: "Hair arrangement varies by specific head and build. Color alone does not establish whether it is a wig or implanted, or which alternatives are supported." },
+    { question: "Can I choose a different hair color?", answer: "Some builds support hair choices, but availability and compatibility are product-specific. Confirm the exact listing rather than assuming a color change or implanted-hair upgrade is available." },
+    { question: "Does blonde hair mean a particular skin tone or material?", answer: "No. Hair presentation does not establish skin tone, body or head material, product form, measurements or weight. Compare those product details separately." }
+  ],
+  "tan-skin-dolls": [
+    { question: "Is tan the same shade for every brand?", answer: "No. Tan is a broad appearance grouping, not one standardized supplier shade. Check the exact manufacturer's supported tone name and the product gallery for the build you are considering." },
+    { question: "Will the finished tone look exactly like one photograph?", answer: "Do not treat a single photograph as a calibrated color guarantee. Lighting, makeup, photography and display settings can change apparent tone. Compare multiple views and confirm important details before ordering." },
+    { question: "Does tan skin describe the doll's ethnicity or material?", answer: "No. It describes skin-tone presentation, not an assigned ethnicity or a material specification. Check body and head construction, measurements, product form and available choices separately." },
+    { question: "Can I change the skin tone on every tan-skin listing?", answer: "No. Supported tones and compatible head and body pairings vary by exact build. A fixed warehouse unit has its included configuration; do not assume the custom-made configurator applies to that unit." },
+    { question: "What should I check when choosing a tan skin doll?", answer: "Confirm the exact shade name, current product photographs, head and body pairing, included or selected tone, material, measurements, listed weight, price and ordering path." }
+  ],
   "curvy-dolls": [
     { question: "What does curvy mean in this collection?", answer: "It groups current catalog products with curvy or full-bust appearance cues. It is not a standardized size or a promise that every result has the same bust, waist, hip proportions or weight. Compare the exact measurements and gallery." },
     { question: "Are Curvy and Fuller the same collection?", answer: "No. They are separate appearance groupings in the catalog and can overlap. Fuller uses its existing fuller-build criteria, while Curvy uses curvy or full-bust cues. Exact proportions are more useful than either label alone." },

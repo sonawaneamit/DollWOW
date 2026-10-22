@@ -239,6 +239,19 @@ describe("lightweight collection current boundary", () => {
 });
 
 describe("body-style collection SEO", () => {
+  it("qualifies blonde hair and tan skin presentation without changing filters", () => {
+    for (const [handle, look, phrase] of [
+      ["blonde-dolls", "hair-blonde", "does not guarantee an included wig"],
+      ["tan-skin-dolls", "skin-tan", "does not assign ethnicity"]
+    ]) {
+      const preset = collectionPresets[handle];
+      expect(preset.filters).toEqual({ look });
+      expect(collectionIntro(preset, handle)).toContain(phrase);
+      expect(collectionFaqItems(handle, preset)).toHaveLength(5);
+      expect(JSON.stringify({ intro: collectionIntro(preset, handle), notes: collectionBuyerNotes(handle, preset), faqs: collectionFaqItems(handle, preset) })).not.toContain("4 to 6 hours");
+    }
+    expect(collectionFaqItems("tan-skin-dolls", collectionPresets["tan-skin-dolls"]).map(item => item.answer).join(" ")).toContain("fixed warehouse unit");
+  });
   it("keeps curvy ownership separate from Fuller and qualifies mixed product forms", () => {
     const handle = "curvy-dolls", preset = collectionPresets[handle];
     const copy = `${collectionIntro(preset, handle)} ${JSON.stringify(collectionFaqItems(handle, preset))}`;
