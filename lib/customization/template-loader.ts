@@ -5,10 +5,13 @@ import { getCustomizationConfig } from './configs';
 import { loadLocalTemplateRecipe } from './template-review-loader';
 import { createReleasedTemplateSelector } from './template-release-registry';
 import releaseRegistry from './evidence/template-release.json';
+import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
 
 const selectReleased = createReleasedTemplateSelector(releaseRegistry);
 
 export async function loadTemplateRecipe(product: Product): Promise<TemplatePresetDefinition | null | undefined> {
+  const privateDraft = await getPrivateDraftPreview(product.handle);
+  if (privateDraft && privateDraft.id === product.id) return privateDraftRecipe(product, getCustomizationConfig(product));
   const local = await loadLocalTemplateRecipe(product);
   if (local !== undefined) return local;
   // An environment variable alone cannot promote ignored local review artifacts.
