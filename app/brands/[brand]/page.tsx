@@ -13,6 +13,8 @@ import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinkSampleEnabled } from '@/lib/catalog/contextualLinks';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -146,6 +148,7 @@ export default async function BrandHubPage({
       </div>
 
       {compactBrowsing ? comparison : null}
+      {contextualLinkSampleEnabled(`/brands/${brand.collectionHandle}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/brands/${brand.collectionHandle}`, filtered)} label="Compare materials across brands" /> : null}
 
       <BrandHubSection compact={compactBrowsing} id="brand-buyer-notes-heading" eyebrow="Buyer notes" title={`What to confirm before choosing ${brand.label}`}>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
