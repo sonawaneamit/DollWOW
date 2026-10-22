@@ -104,7 +104,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
-  const pdpHeading = isPrivateDraft ? productPublicTitle(product) : productPdpHeading(product);
+  const isCastleOct22 = product.tags.some(tag => tag.startsWith('options:dolls-castle-oct22-'));
+  const pdpHeading = isPrivateDraft || isCastleOct22 ? productPublicTitle(product) : productPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);

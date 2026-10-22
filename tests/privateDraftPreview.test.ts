@@ -4,9 +4,27 @@ import {getPrivateDraftPreview,privateDraftRecipe} from '@/lib/catalog/privateDr
 import {getCustomizationConfig} from '@/lib/customization/configs';
 import {getDefaultSelections,resolveCustomization} from '@/lib/customization/resolve';
 import {templateConfigurationPresets} from '@/lib/customization/template-presets';
+import templateRelease from '@/lib/customization/evidence/template-release.json';
+import namedRelease from '@/lib/cart/evidence/named-upgrades-release.json';
+import {releasedNamedBindings} from '@/lib/cart/named-upgrade-release';
+import {upgradeBindingAcceptsChoice} from '@/lib/cart/exact-upgrade-lines';
 
 afterEach(()=>vi.unstubAllEnvs());
 describe('Private Castle draft previews',()=>{
+ it('binds production checkout for the exact five parents and presets for the four supported models',()=>{
+  for(const raw of snapshots){
+   const config=getCustomizationConfig(raw as unknown as Parameters<typeof getCustomizationConfig>[0]);
+   const bindings=releasedNamedBindings(namedRelease,[raw.variants[0].id]);
+   for(const g of config.groups)for(const o of g.options.filter(o=>o.priceDelta>0)){
+    expect(bindings.filter(b=>b.group===g.label&&upgradeBindingAcceptsChoice(b,o.label)&&b.unitAmount===o.priceDelta)).toHaveLength(1);
+   }
+   const entries=templateRelease.payload.entries.filter(e=>e.productId===raw.id);
+   expect(entries).toHaveLength(raw.extended.bodyCode==='S112'?0:1);
+   if(entries[0])expect(entries[0].handle).toBe(raw.handle);
+  }
+  const natalie=snapshots.find(p=>p.extended.bodyCode==='S112')!;
+  expect(natalie.extended.measurements).toMatchObject({Waist:'24cm',Underbust:'29.5cm'});
+ });
  it('never provides preview records in production or development',async()=>{
   for(const value of ['production','development','']){
    vi.stubEnv('VERCEL_ENV',value);

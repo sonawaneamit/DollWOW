@@ -496,7 +496,9 @@
       "heightCm": 80,
       "weightLb": 56.2,
       "measurements": {
-        "Net weight": "25.5kg"
+        "Net weight": "25.5kg",
+        "Waist": "24cm",
+        "Underbust": "29.5cm"
       },
       "stockStatus": "custom",
       "customAvailable": true,

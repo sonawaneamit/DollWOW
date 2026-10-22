@@ -1,6 +1,8 @@
 # DOL-220 Private Castle Previews
 
-These are review drafts, not a production release or checkout approval.
+The five review drafts were approved for release by Martin on DOL-220,
+22 October 2026. The initial preview is preserved below; release verification
+must use the native Shopify records, not the unavailable preview snapshots.
 
 ## Scope
 
@@ -51,8 +53,8 @@ Only the three supplier-specified Galatea head codes are assigned as such.
 ## Release Follow-Ups
 
 - Review the exact private previews and remaining supplier measurement
-  questions. Natalie's unusually reported waist/underbust are retained in
-  private evidence, not presented as independently verified dimensions.
+  questions. Martin confirmed Natalie's factory waist 24cm and underbust
+  29.5cm; both are now recorded as supplier measurements, not independent tests.
 - Preserve the recorded Chiku landed-cost shortfall for Martin's commercial
   review; do not silently change the approved preview price.
 - Custom body painting has no verified price in the supplied Chiku sheet;
@@ -61,8 +63,27 @@ Only the three supplier-specified Galatea head codes are assigned as such.
   currency behavior before any release. No carts or orders were created by
   this preview QA, and real checkout readiness is not claimed.
 - DollVue eligibility is not inferred from a successful listing preview.
-- Publishing, production deployment, campaign membership and activation of
-  these drafts require a separate explicit approval. This branch stays draft.
+- Martin approved publication of these exact five records and PR155 on
+  22 October. Existing campaign rules remain unchanged; campaign membership
+  is not silently expanded by this catalog release.
+
+## Release Checks
+
+Four exact product/runtime-bound preset recipes and five parent-variant named
+checkout mappings are appended to the existing approved registries. Existing
+entries are preserved, not recalculated. Native records retain the approved
+base prices; charge products use the reviewed option prices. Existing semantic
+matches are reused without modifying their prices or descriptions. New on-doll
+customization services, the pictured wig and the additional head receive
+appropriate Shopify categories; they are not misclassified to bypass controls.
+
+Release evidence includes individual paid-choice binding coverage, default,
+preset and manual real Shopify carts with exact gross totals and nested-line
+removal, and country-context availability/price readbacks. Cart checks do not
+place orders or take payment. Storefront publication is required on both the
+Headless and Online Store channels used by the existing connection. The
+`dollwow-test` catalog hold remains until code deployment and checkout checks
+are ready; remove it only from these five explicitly approved records.
 
 The private work folder contains supplier workbooks, extracted source cells,
 asset provenance, native DRAFT/cost/media readback, pricing comparisons,
