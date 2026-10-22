@@ -1,0 +1,2096 @@
+[
+  {
+    "id": "gid://shopify/Product/10676884078776",
+    "handle": "dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll",
+    "title": "Dolls Castle Chiku SZ25 160cm Q-Cup Silicone Character Doll",
+    "description": "Chiku SZ25 is a 160cm silicone character doll with yellow skin, sculpted character hair and a fixed 12cm tail. Its EVO skeleton, articulated fingers, bolt-free hard standing feet, gel breasts and gel buttocks are included. Choose the listed skin and body-function options for a custom-made build. The photographed outfit is a separate optional addition.",
+    "seo": {
+      "title": "Dolls Castle Chiku SZ25 160cm Q-Cup Silicone Character Doll",
+      "description": "Chiku SZ25 is a 160cm silicone character doll with yellow skin, sculpted character hair and a fixed 12cm tail."
+    },
+    "vendor": "Dolls Castle",
+    "productType": "Character doll",
+    "tags": [
+      "dollwow-test",
+      "dolls-castle",
+      "options:dolls-castle-oct22-chiku"
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-01.webp?v=1792669056",
+      "altText": "Dolls Castle Chiku SZ25 supplier product view 1",
+      "width": 1466,
+      "height": 2250
+    },
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-01.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 1",
+        "width": 1466,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-02.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 2",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-03.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 3",
+        "width": 1500,
+        "height": 2185
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-04.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 4",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-05.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 5",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-06.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 6",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-07.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 7",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/chiku-08.webp?v=1792669056",
+        "altText": "Dolls Castle Chiku SZ25 supplier product view 8",
+        "width": 1479,
+        "height": 2250
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54492812640440",
+        "title": "Default",
+        "availableForSale": false,
+        "price": {
+          "amount": "1999",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "displayName": "Chiku",
+      "brand": "Dolls Castle",
+      "bodyCode": "SZ25",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 160,
+      "weightLb": 96.6,
+      "cupSize": "Q",
+      "measurements": {
+        "Bust": "96cm",
+        "Underbust": "49cm",
+        "Waist": "52cm",
+        "Hips": "115cm",
+        "Shoulders": "25cm",
+        "Tail length": "12cm",
+        "Head weight": "7.3kg",
+        "Body weight": "36.5kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "included-evo",
+          "label": "Included: EVO skeleton",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "evo",
+              "label": "EVO skeleton",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-standing-feet",
+          "label": "Included: Hard standing feet without bolts",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "standing-feet",
+              "label": "Hard standing feet without bolts",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fingers",
+          "label": "Included: Articulated fingers",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fingers",
+              "label": "Articulated fingers",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-breasts",
+          "label": "Included: Gel breasts",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-breasts",
+              "label": "Gel breasts",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-buttocks",
+          "label": "Included: Gel buttocks",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-buttocks",
+              "label": "Gel buttocks",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-shrugging",
+          "label": "Included: Shrugging shoulders",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "shrugging",
+              "label": "Shrugging shoulders",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-tail",
+          "label": "Included: Fixed, non-removable tail",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "tail",
+              "label": "Fixed, non-removable tail",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-teeth-tongue",
+          "label": "Included: Fixed teeth and tongue",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "teeth-tongue",
+              "label": "Fixed teeth and tongue",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "skin-color",
+          "label": "Skin color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "yellow",
+              "label": "Yellow",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "nature",
+              "label": "Nature",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "white",
+              "label": "White",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "cola",
+              "label": "Cola",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "red",
+              "label": "Red",
+              "priceDelta": 150,
+              "priceVerified": true
+            },
+            {
+              "id": "blue",
+              "label": "Blue",
+              "priceDelta": 150,
+              "priceVerified": true
+            },
+            {
+              "id": "pink",
+              "label": "Pink",
+              "priceDelta": 150,
+              "priceVerified": true
+            },
+            {
+              "id": "green",
+              "label": "Green",
+              "priceDelta": 150,
+              "priceVerified": true
+            },
+            {
+              "id": "purple",
+              "label": "Purple",
+              "priceDelta": 150,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "vagina",
+          "label": "Vagina construction",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "removable",
+              "label": "Removable insert",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "body-functions",
+          "label": "Body functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 90,
+              "priceVerified": true
+            },
+            {
+              "id": "moaning",
+              "label": "5-point touch moaning",
+              "priceDelta": 30,
+              "priceVerified": true
+            },
+            {
+              "id": "vaginal-suction",
+              "label": "Vaginal suction",
+              "priceDelta": 75,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pictured-outfit",
+          "label": "Pictured outfit",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "without",
+              "label": "Without the pictured outfit",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "pictured-outfit",
+              "label": "Add the pictured outfit",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Silicone Build",
+        "heading": "Distinctive Character Form",
+        "paragraph": "Chiku SZ25 presents a 160cm silicone character build with a clearly defined visual identity. The yellow skin, sculpted character hair, fixed 12cm tail, purple eyes, and golden-yellow styling create a look that stands apart from more conventional formats. The EVO skeleton, articulated fingers, bolt-free hard standing feet, gel breasts, and gel buttocks are part of the listed configuration, while the custom-made process allows selection from the stated skin and body-function options. The photographed outfit serves only as a separate styling reference, keeping the emphasis on the doll’s form and the factory’s tailored approach to the model."
+      }
+    }
+  },
+  {
+    "id": "gid://shopify/Product/10676884111544",
+    "handle": "dolls-castle-natalie-s112-80cm-silicone-bbw-doll",
+    "title": "Dolls Castle Natalie S112 80cm Silicone Doll",
+    "description": "Natalie S112 is an 80cm silicone BBW-format doll in the factory Nature skin tone. The supplier lists a net weight of 25.5kg. This model has a deliberately exaggerated sculpt and a limited option menu; the pictured wig can be added separately. The S112 model is distinct from the existing 120cm Natalie S12 listing.",
+    "seo": {
+      "title": "Dolls Castle Natalie S112 80cm Silicone Doll",
+      "description": "Natalie S112 is an 80cm silicone BBW-format doll in the factory Nature skin tone."
+    },
+    "vendor": "Dolls Castle",
+    "productType": "Miniature adult doll",
+    "tags": [
+      "dollwow-test",
+      "dolls-castle",
+      "options:dolls-castle-oct22-natalie"
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-01.webp?v=1792669067",
+      "altText": "Dolls Castle Natalie S112 supplier product view 1",
+      "width": 1500,
+      "height": 2250
+    },
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-01.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 1",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-02.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 2",
+        "width": 2250,
+        "height": 1500
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-03.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 3",
+        "width": 2250,
+        "height": 1500
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-04.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 4",
+        "width": 2250,
+        "height": 1500
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-05.webp?v=1792669068",
+        "altText": "Dolls Castle Natalie S112 supplier product view 5",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-06.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 6",
+        "width": 1492,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-07.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 7",
+        "width": 1500,
+        "height": 2250
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/natalie-08.webp?v=1792669067",
+        "altText": "Dolls Castle Natalie S112 supplier product view 8",
+        "width": 1500,
+        "height": 2250
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54492812673208",
+        "title": "Default",
+        "availableForSale": false,
+        "price": {
+          "amount": "1399",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1399",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1399",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "displayName": "Natalie",
+      "brand": "Dolls Castle",
+      "bodyCode": "S112",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 80,
+      "weightLb": 56.2,
+      "measurements": {
+        "Net weight": "25.5kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "included-skin",
+          "label": "Included: Nature skin tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "skin",
+              "label": "Nature skin tone",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pictured-wig",
+          "label": "Pictured wig",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "no-pictured-wig",
+              "label": "Without the pictured wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "pictured-wig",
+              "label": "Add the pictured wig",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Compact Format",
+        "heading": "A Small Scale With Presence",
+        "paragraph": "Natalie S112 is presented in an 80cm silicone BBW format with the factory Nature skin tone. The listing places emphasis on the model’s deliberate sculpt and on the compact scale, while the supplier’s net weight of 25.5kg underscores that this is a substantial piece within its size class. The pictured wig is offered separately, and the model is identified as distinct from the existing 120cm Natalie S12 listing. Auburn hair, defined cheekbones, dark lipstick, and dramatic eye makeup shape the photographed presentation, creating a polished reference for the head sculpt rather than a full outfit offer."
+      }
+    }
+  },
+  {
+    "id": "gid://shopify/Product/10676884177080",
+    "handle": "dolls-castle-galatea-alice-gt06-163cm-c-cup-silicone-doll",
+    "title": "Dolls Castle Galatea Alice GT06 163cm C-Cup Silicone Doll",
+    "description": "Galatea Alice pairs the GT06 163cm C-cup silicone body with head JS163. The factory Nature finish is shown. EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, movable jaw, soft thighs and a soft belly are standard. Pictured wigs and implanted pubic hair are optional extras. Auto-blowjob and twisting waist cannot be selected together.",
+    "seo": {
+      "title": "Dolls Castle Galatea Alice GT06 163cm C-Cup Silicone Doll",
+      "description": "Galatea Alice pairs the GT06 163cm C-cup silicone body with head JS163."
+    },
+    "vendor": "Dolls Castle",
+    "productType": "Full-size adult doll",
+    "tags": [
+      "dollwow-test",
+      "dolls-castle",
+      "options:dolls-castle-oct22-alice"
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-01.webp?v=1792669078",
+      "altText": "Dolls Castle Alice GT06 supplier product view 1",
+      "width": 830,
+      "height": 1246
+    },
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-01.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 1",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-02.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 2",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-03.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 3",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-04.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 4",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-05.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 5",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-06.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 6",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-07.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 7",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/alice-08.webp?v=1792669078",
+        "altText": "Dolls Castle Alice GT06 supplier product view 8",
+        "width": 831,
+        "height": 553
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54492812869816",
+        "title": "Default",
+        "availableForSale": false,
+        "price": {
+          "amount": "1999",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "displayName": "Alice",
+      "brand": "Dolls Castle",
+      "headModel": "JS163",
+      "bodyCode": "GT06",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 163,
+      "weightLb": 70.5,
+      "cupSize": "C",
+      "measurements": {
+        "Bust": "88cm",
+        "Underbust": "72cm",
+        "Waist": "60cm",
+        "Hips": "97cm",
+        "Shoulders": "28cm",
+        "Net weight": "32kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "included-included-head",
+          "label": "Included: Alice JS163 head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "included-head",
+              "label": "Alice JS163 head",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-evo",
+          "label": "Included: EVO skeleton",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "evo",
+              "label": "EVO skeleton",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-standing-feet",
+          "label": "Included: Hard standing feet",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "standing-feet",
+              "label": "Hard standing feet",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-hard-hands",
+          "label": "Included: Hard hands",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "hard-hands",
+              "label": "Hard hands",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fingers",
+          "label": "Included: Articulated fingers",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fingers",
+              "label": "Articulated fingers",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-breasts",
+          "label": "Included: Gel breasts",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-breasts",
+              "label": "Gel breasts",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-buttocks",
+          "label": "Included: Gel buttocks",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-buttocks",
+              "label": "Gel buttocks",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-ros",
+          "label": "Included: ROS with movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "ros",
+              "label": "ROS with movable jaw",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-thighs",
+          "label": "Included: Soft thighs",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-thighs",
+              "label": "Soft thighs",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-belly",
+          "label": "Included: Soft belly",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-belly",
+              "label": "Soft belly",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fixed-vagina",
+          "label": "Included: Fixed vagina",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fixed-vagina",
+              "label": "Fixed vagina",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "skin-color",
+          "label": "Skin color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "nature",
+              "label": "Nature",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "white",
+              "label": "White",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "cola",
+              "label": "Cola",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pictured-wig",
+          "label": "Pictured wig",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "no-pictured-wig",
+              "label": "Without the pictured wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "pictured-wig",
+              "label": "Add the pictured wig",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "hair-installation",
+          "label": "Hair installation",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-wig",
+              "label": "Implanted wig",
+              "priceDelta": 120,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pubic-hair",
+          "label": "Implanted pubic hair",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted pubic hair",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-pubic-hair",
+              "label": "Standard implanted pubic hair",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "mechanical-function",
+          "label": "Mechanical function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added mechanical function",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "auto-blowjob",
+              "label": "Auto-blowjob",
+              "priceDelta": 217,
+              "priceVerified": true
+            },
+            {
+              "id": "twisting-waist",
+              "label": "Twisting waist",
+              "priceDelta": 217,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "body-functions",
+          "label": "Body functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 90,
+              "priceVerified": true
+            },
+            {
+              "id": "moaning",
+              "label": "5-point touch moaning",
+              "priceDelta": 30,
+              "priceVerified": true
+            },
+            {
+              "id": "vaginal-suction",
+              "label": "Vaginal suction",
+              "priceDelta": 75,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-butt",
+              "label": "Jitter butt",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-breasts",
+              "label": "Jitter breasts",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "breathing",
+              "label": "Breathing system",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "oral-functions",
+          "label": "Oral functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-auto-suction",
+              "label": "Oral auto-suction",
+              "priceDelta": 60,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-heating",
+              "label": "Oral heating",
+              "priceDelta": 60,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "additional-head",
+          "label": "Additional silicone head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No additional head",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "additional-head",
+              "label": "Add one silicone head",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Gallery Piece",
+        "heading": "Balanced Detail, Refined Finish",
+        "paragraph": "Galatea Alice combines the GT06 163cm C-cup silicone body with the head JS163, shown here in the factory Nature finish. Standard features include the EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, a movable jaw, soft thighs, and a soft belly. The listing also notes optional pictured wigs and implanted pubic hair, with auto-blowjob and twisting waist unavailable together. In the supplied image, brown hair with bangs, blue eyes, and a white outfit with pink ribbon details create a composed studio impression, while the styling remains separate from the base configuration."
+      }
+    }
+  },
+  {
+    "id": "gid://shopify/Product/10676884242616",
+    "handle": "dolls-castle-galatea-ginger-gt06-163cm-c-cup-silicone-doll",
+    "title": "Dolls Castle Galatea Ginger GT06 163cm C-Cup Silicone Doll",
+    "description": "Galatea Ginger pairs the GT06 163cm C-cup silicone body with head JS043. The factory Nature finish is shown. EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, movable jaw, soft thighs and a soft belly are standard. Pictured wigs and implanted pubic hair are optional extras. Auto-blowjob and twisting waist cannot be selected together.",
+    "seo": {
+      "title": "Dolls Castle Galatea Ginger GT06 163cm C-Cup Silicone Doll",
+      "description": "Galatea Ginger pairs the GT06 163cm C-cup silicone body with head JS043."
+    },
+    "vendor": "Dolls Castle",
+    "productType": "Full-size adult doll",
+    "tags": [
+      "dollwow-test",
+      "dolls-castle",
+      "options:dolls-castle-oct22-ginger"
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-01.webp?v=1792669088",
+      "altText": "Dolls Castle Ginger GT06 supplier product view 1",
+      "width": 830,
+      "height": 1246
+    },
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-01.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 1",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-02.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 2",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-03.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 3",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-04.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 4",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-05.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 5",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-06.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 6",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-07.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 7",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/ginger-08.webp?v=1792669088",
+        "altText": "Dolls Castle Ginger GT06 supplier product view 8",
+        "width": 830,
+        "height": 1246
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54492813033656",
+        "title": "Default",
+        "availableForSale": false,
+        "price": {
+          "amount": "1999",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "displayName": "Ginger",
+      "brand": "Dolls Castle",
+      "headModel": "JS043",
+      "bodyCode": "GT06",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 163,
+      "weightLb": 70.5,
+      "cupSize": "C",
+      "measurements": {
+        "Bust": "88cm",
+        "Underbust": "72cm",
+        "Waist": "60cm",
+        "Hips": "97cm",
+        "Shoulders": "28cm",
+        "Net weight": "32kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "included-included-head",
+          "label": "Included: Ginger JS043 head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "included-head",
+              "label": "Ginger JS043 head",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-evo",
+          "label": "Included: EVO skeleton",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "evo",
+              "label": "EVO skeleton",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-standing-feet",
+          "label": "Included: Hard standing feet",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "standing-feet",
+              "label": "Hard standing feet",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-hard-hands",
+          "label": "Included: Hard hands",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "hard-hands",
+              "label": "Hard hands",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fingers",
+          "label": "Included: Articulated fingers",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fingers",
+              "label": "Articulated fingers",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-breasts",
+          "label": "Included: Gel breasts",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-breasts",
+              "label": "Gel breasts",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-buttocks",
+          "label": "Included: Gel buttocks",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-buttocks",
+              "label": "Gel buttocks",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-ros",
+          "label": "Included: ROS with movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "ros",
+              "label": "ROS with movable jaw",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-thighs",
+          "label": "Included: Soft thighs",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-thighs",
+              "label": "Soft thighs",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-belly",
+          "label": "Included: Soft belly",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-belly",
+              "label": "Soft belly",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fixed-vagina",
+          "label": "Included: Fixed vagina",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fixed-vagina",
+              "label": "Fixed vagina",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "skin-color",
+          "label": "Skin color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "nature",
+              "label": "Nature",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "white",
+              "label": "White",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "cola",
+              "label": "Cola",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pictured-wig",
+          "label": "Pictured wig",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "no-pictured-wig",
+              "label": "Without the pictured wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "pictured-wig",
+              "label": "Add the pictured wig",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "hair-installation",
+          "label": "Hair installation",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-wig",
+              "label": "Implanted wig",
+              "priceDelta": 120,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pubic-hair",
+          "label": "Implanted pubic hair",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted pubic hair",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-pubic-hair",
+              "label": "Standard implanted pubic hair",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "mechanical-function",
+          "label": "Mechanical function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added mechanical function",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "auto-blowjob",
+              "label": "Auto-blowjob",
+              "priceDelta": 217,
+              "priceVerified": true
+            },
+            {
+              "id": "twisting-waist",
+              "label": "Twisting waist",
+              "priceDelta": 217,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "body-functions",
+          "label": "Body functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 90,
+              "priceVerified": true
+            },
+            {
+              "id": "moaning",
+              "label": "5-point touch moaning",
+              "priceDelta": 30,
+              "priceVerified": true
+            },
+            {
+              "id": "vaginal-suction",
+              "label": "Vaginal suction",
+              "priceDelta": 75,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-butt",
+              "label": "Jitter butt",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-breasts",
+              "label": "Jitter breasts",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "breathing",
+              "label": "Breathing system",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "oral-functions",
+          "label": "Oral functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-auto-suction",
+              "label": "Oral auto-suction",
+              "priceDelta": 60,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-heating",
+              "label": "Oral heating",
+              "priceDelta": 60,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "additional-head",
+          "label": "Additional silicone head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No additional head",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "additional-head",
+              "label": "Add one silicone head",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Classic Styling",
+        "heading": "Warm Tone and Clear Structure",
+        "paragraph": "Galatea Ginger pairs the GT06 163cm C-cup silicone body with head JS043, shown in the factory Nature finish. Like the other models in this line, it includes the EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, a movable jaw, soft thighs, and a soft belly as standard. The listing also identifies pictured wigs and implanted pubic hair as optional extras, with auto-blowjob and twisting waist not selectable together. The supplied image uses long blonde hair, a red-and-blue outfit, and a football prop in a warmly lit interior, offering a styling reference rather than an included package."
+      }
+    }
+  },
+  {
+    "id": "gid://shopify/Product/10676884308152",
+    "handle": "dolls-castle-galatea-emma-gt06-163cm-c-cup-silicone-doll",
+    "title": "Dolls Castle Galatea Emma GT06 163cm C-Cup Silicone Doll",
+    "description": "Galatea Emma pairs the GT06 163cm C-cup silicone body with head JS098. The factory Nature finish is shown. EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, movable jaw, soft thighs and a soft belly are standard. Pictured wigs and implanted pubic hair are optional extras. Auto-blowjob and twisting waist cannot be selected together.",
+    "seo": {
+      "title": "Dolls Castle Galatea Emma GT06 163cm C-Cup Silicone Doll",
+      "description": "Galatea Emma pairs the GT06 163cm C-cup silicone body with head JS098."
+    },
+    "vendor": "Dolls Castle",
+    "productType": "Full-size adult doll",
+    "tags": [
+      "dollwow-test",
+      "dolls-castle",
+      "options:dolls-castle-oct22-emma"
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-01.webp?v=1792669098",
+      "altText": "Dolls Castle Emma GT06 supplier product view 1",
+      "width": 830,
+      "height": 1246
+    },
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-01.webp?v=1792669098",
+        "altText": "Dolls Castle Emma GT06 supplier product view 1",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-02.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 2",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-03.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 3",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-04.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 4",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-05.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 5",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-06.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 6",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-07.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 7",
+        "width": 830,
+        "height": 1246
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/emma-08.webp?v=1792669097",
+        "altText": "Dolls Castle Emma GT06 supplier product view 8",
+        "width": 830,
+        "height": 1246
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54492813328568",
+        "title": "Default",
+        "availableForSale": false,
+        "price": {
+          "amount": "1999",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1999",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "displayName": "Emma",
+      "brand": "Dolls Castle",
+      "headModel": "JS098",
+      "bodyCode": "GT06",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 163,
+      "weightLb": 70.5,
+      "cupSize": "C",
+      "measurements": {
+        "Bust": "88cm",
+        "Underbust": "72cm",
+        "Waist": "60cm",
+        "Hips": "97cm",
+        "Shoulders": "28cm",
+        "Net weight": "32kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "included-included-head",
+          "label": "Included: Emma JS098 head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "included-head",
+              "label": "Emma JS098 head",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-evo",
+          "label": "Included: EVO skeleton",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "evo",
+              "label": "EVO skeleton",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-standing-feet",
+          "label": "Included: Hard standing feet",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "standing-feet",
+              "label": "Hard standing feet",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-hard-hands",
+          "label": "Included: Hard hands",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "hard-hands",
+              "label": "Hard hands",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fingers",
+          "label": "Included: Articulated fingers",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fingers",
+              "label": "Articulated fingers",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-breasts",
+          "label": "Included: Gel breasts",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-breasts",
+              "label": "Gel breasts",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-gel-buttocks",
+          "label": "Included: Gel buttocks",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "gel-buttocks",
+              "label": "Gel buttocks",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-ros",
+          "label": "Included: ROS with movable jaw",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "ros",
+              "label": "ROS with movable jaw",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-thighs",
+          "label": "Included: Soft thighs",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-thighs",
+              "label": "Soft thighs",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-soft-belly",
+          "label": "Included: Soft belly",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "soft-belly",
+              "label": "Soft belly",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "included-fixed-vagina",
+          "label": "Included: Fixed vagina",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "fixed-vagina",
+              "label": "Fixed vagina",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "skin-color",
+          "label": "Skin color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "nature",
+              "label": "Nature",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "white",
+              "label": "White",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "cola",
+              "label": "Cola",
+              "priceDelta": 0,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pictured-wig",
+          "label": "Pictured wig",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "no-pictured-wig",
+              "label": "Without the pictured wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "pictured-wig",
+              "label": "Add the pictured wig",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "hair-installation",
+          "label": "Hair installation",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted wig",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-wig",
+              "label": "Implanted wig",
+              "priceDelta": 120,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "pubic-hair",
+          "label": "Implanted pubic hair",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No implanted pubic hair",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "implanted-pubic-hair",
+              "label": "Standard implanted pubic hair",
+              "priceDelta": 15,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "mechanical-function",
+          "label": "Mechanical function",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added mechanical function",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "auto-blowjob",
+              "label": "Auto-blowjob",
+              "priceDelta": 217,
+              "priceVerified": true
+            },
+            {
+              "id": "twisting-waist",
+              "label": "Twisting waist",
+              "priceDelta": 217,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "body-functions",
+          "label": "Body functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "body-heating",
+              "label": "Body heating",
+              "priceDelta": 90,
+              "priceVerified": true
+            },
+            {
+              "id": "moaning",
+              "label": "5-point touch moaning",
+              "priceDelta": 30,
+              "priceVerified": true
+            },
+            {
+              "id": "vaginal-suction",
+              "label": "Vaginal suction",
+              "priceDelta": 75,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-butt",
+              "label": "Jitter butt",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "jitter-breasts",
+              "label": "Jitter breasts",
+              "priceDelta": 15,
+              "priceVerified": true
+            },
+            {
+              "id": "breathing",
+              "label": "Breathing system",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "oral-functions",
+          "label": "Oral functions",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No added functions",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-auto-suction",
+              "label": "Oral auto-suction",
+              "priceDelta": 60,
+              "priceVerified": true
+            },
+            {
+              "id": "oral-heating",
+              "label": "Oral heating",
+              "priceDelta": 60,
+              "priceVerified": true
+            }
+          ]
+        },
+        {
+          "id": "additional-head",
+          "label": "Additional silicone head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "none",
+              "label": "No additional head",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "additional-head",
+              "label": "Add one silicone head",
+              "priceDelta": 145,
+              "priceVerified": true
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Nature Finish",
+        "heading": "Clean Lines in a Studio Setting",
+        "paragraph": "Galatea Emma is built around the GT06 163cm C-cup silicone body with head JS098, presented in the factory Nature finish. The standard feature set includes the EVO skeleton, hard standing feet and hands, articulated fingers, gel breasts and buttocks, ROS, a movable jaw, soft thighs, and a soft belly. The model description also notes that pictured wigs and implanted pubic hair are optional extras, while auto-blowjob and twisting waist cannot be selected together. In the supplied image, blonde hair with bangs, blue eyes, and a white open-knit outfit appear against a dark interior with small warm lights, giving the listing a restrained, polished tone."
+      }
+    }
+  }
+]

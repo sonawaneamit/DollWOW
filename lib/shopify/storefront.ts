@@ -1,4 +1,5 @@
 import { sampleProducts } from "@/lib/data/sample-products";
+import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { catalogWeightLb } from '@/lib/catalog/mdWeight';
 import type { Product } from "@/types/product";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
@@ -564,6 +565,8 @@ export async function getProductCount({ query }: { query?: string } = {}) {
 
 /** Strict lookups return null for unavailable products and throw on configuration or upstream failures. */
 export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number; strict?: boolean } = { cache: "no-store" }) {
+  const privateDraft = await getPrivateDraftPreview(handle);
+  if (privateDraft) return privateDraft;
   if (!hasShopifyStorefrontEnv()) {
     if (options.strict) throw new Error("Shopify Storefront API is not configured.");
     return sampleProducts.find((product) => product.handle === handle) ?? null;

@@ -31,6 +31,7 @@ import {
 import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
+import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -79,6 +80,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
+  const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
@@ -102,7 +104,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
-  const pdpHeading = productPdpHeading(product);
+  const pdpHeading = isPrivateDraft ? productPublicTitle(product) : productPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -116,6 +118,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
+      {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">
@@ -261,7 +264,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
