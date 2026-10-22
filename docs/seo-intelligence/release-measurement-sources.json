@@ -1,0 +1,197 @@
+{
+  "capturedAt": "2026-10-22T17:13:24.824Z",
+  "scope": {
+    "pages": 10,
+    "releaseUrlEvents": 13,
+    "auditEvents": 3,
+    "uniqueTickets": 11,
+    "baselineStart": "2026-09-22",
+    "baselineEnd": "2026-10-19"
+  },
+  "gsc": {
+    "endpoint": "searchanalytics.query",
+    "property": "sc-domain:dollwow.com",
+    "request": {
+      "startDate": "2026-09-22",
+      "endDate": "2026-10-19",
+      "type": "web",
+      "dataState": "final",
+      "dimensions": [
+        "page"
+      ],
+      "rowLimit": 25000,
+      "dimensionFilterGroups": [
+        {
+          "groupType": "and",
+          "filters": [
+            {
+              "dimension": "page",
+              "operator": "includingRegex",
+              "expression": "^https://dollwow\\.com(/shop/silicone|/shop/tpe|/shop/male-dolls|/shop/female-dolls|/shop/torsos|/shop/asian-dolls|/brands/irontech-dolls|/brands/wm-dolls|/brands/se-doll|/brands/starpery-dolls)$"
+            }
+          ]
+        }
+      ]
+    },
+    "rowsFetched": 9,
+    "rowsReturned": 9,
+    "capped": false,
+    "at": "2026-10-22T17:03:57.440Z"
+  },
+  "ga4": {
+    "endpoint": "properties/549359657:runReport",
+    "request": {
+      "dateRanges": [
+        {
+          "startDate": "2026-09-22",
+          "endDate": "2026-10-19"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "landingPage"
+        },
+        {
+          "name": "hostName"
+        }
+      ],
+      "metrics": [
+        {
+          "name": "sessions"
+        }
+      ],
+      "dimensionFilter": {
+        "andGroup": {
+          "expressions": [
+            {
+              "filter": {
+                "fieldName": "hostName",
+                "inListFilter": {
+                  "values": [
+                    "dollwow.com",
+                    "www.dollwow.com"
+                  ]
+                }
+              }
+            },
+            {
+              "filter": {
+                "fieldName": "landingPage",
+                "inListFilter": {
+                  "values": [
+                    "/shop/silicone",
+                    "/shop/tpe",
+                    "/shop/male-dolls",
+                    "/shop/female-dolls",
+                    "/shop/torsos",
+                    "/shop/asian-dolls",
+                    "/brands/irontech-dolls",
+                    "/brands/wm-dolls",
+                    "/brands/se-doll",
+                    "/brands/starpery-dolls"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "limit": "10000",
+      "returnPropertyQuota": true
+    },
+    "rowsReturned": 7,
+    "metadata": {
+      "currencyCode": "USD",
+      "timeZone": "America/New_York"
+    },
+    "at": "2026-10-22T17:03:58.952Z",
+    "scope": "Production-host landing sessions, not all pageviews, organic-only traffic or attributed sales"
+  },
+  "index": {
+    "endpoint": "urlInspection.index.inspect",
+    "property": "sc-domain:dollwow.com",
+    "snapshots": 10,
+    "at": [
+      "2026-10-22T17:04:53.754Z",
+      "2026-10-22T17:05:00.917Z",
+      "2026-10-22T17:05:08.080Z",
+      "2026-10-22T17:05:15.256Z",
+      "2026-10-22T17:05:22.589Z",
+      "2026-10-22T17:05:29.932Z",
+      "2026-10-22T17:05:37.146Z",
+      "2026-10-22T17:05:44.241Z",
+      "2026-10-22T17:05:51.425Z",
+      "2026-10-22T17:05:58.762Z"
+    ],
+    "historicalReleaseStatus": "not recorded; cannot reconstruct from current API verdict",
+    "allLastCrawlsBeforeRelease": true
+  },
+  "releaseProof": [
+    {
+      "sha": "af9697af4d36a59c96075a226b7edfb96ed2f747",
+      "deploymentId": 7204665809,
+      "environment": "Production",
+      "createdAt": "2026-10-20T16:01:14Z",
+      "statuses": [
+        {
+          "state": "success",
+          "at": "2026-10-20T16:01:14Z",
+          "url": "https://doll-6n055xo3n-sonawaneamits-projects.vercel.app"
+        }
+      ]
+    },
+    {
+      "sha": "281d9343e832bc6081abb7dbdd5437e6706f6d3c",
+      "deploymentId": 7210400656,
+      "environment": "Production",
+      "createdAt": "2026-10-20T20:33:22Z",
+      "statuses": [
+        {
+          "state": "success",
+          "at": "2026-10-20T20:33:23Z",
+          "url": "https://doll-rdzg0zsym-sonawaneamits-projects.vercel.app"
+        }
+      ]
+    },
+    {
+      "sha": "aa8627e008dd3c127c61a5fb30dc2723dfe74452",
+      "deploymentId": 7210412718,
+      "environment": "Production",
+      "createdAt": "2026-10-20T20:33:56Z",
+      "statuses": [
+        {
+          "state": "success",
+          "at": "2026-10-20T20:33:57Z",
+          "url": "https://doll-oadiawo6d-sonawaneamits-projects.vercel.app"
+        }
+      ]
+    },
+    {
+      "sha": "07b108ee9d7dd065c135489d46471cb575ec2910",
+      "deploymentId": 7211728508,
+      "environment": "Production",
+      "createdAt": "2026-10-20T21:38:56Z",
+      "statuses": [
+        {
+          "state": "success",
+          "at": "2026-10-20T21:38:56Z",
+          "url": "https://doll-f49wlr7u2-sonawaneamits-projects.vercel.app"
+        }
+      ]
+    },
+    {
+      "sha": "292772babdc7653d3a3bd882c071391fd1eba2d4",
+      "deploymentId": 7212564320,
+      "environment": "Production",
+      "createdAt": "2026-10-20T22:25:18Z",
+      "statuses": [
+        {
+          "state": "success",
+          "at": "2026-10-20T22:25:19Z",
+          "url": "https://doll-m31r7curd-sonawaneamits-projects.vercel.app"
+        }
+      ]
+    }
+  ],
+  "sourceArtifacts": "Private raw evidence retained in data/exports/dol-224-2026-10-22 on the external project drive; no credentials, customers or order data in tracked outputs."
+}
