@@ -212,10 +212,29 @@ describe("new sex dolls collection SEO", () => {
 
     expect(preset.title).toBe("New sex dolls and latest arrivals");
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("available supplier release ordering");
+    expect(copy).toContain("most recently created listings shown first");
+    expect(copy).toContain("not necessarily the manufacturer's announcement date");
+    expect(copy).not.toContain("available supplier release ordering");
     expect(copy).toContain("New does not automatically mean more realistic");
     expect(copy).toContain("4 to 6 hours");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
+describe("lightweight collection current boundary", () => {
+  it("describes the current range consistently without changing membership", () => {
+    const handle = "lightweight-sex-dolls", preset = collectionPresets[handle];
+    const metadata = buildCollectionMetadata(handle, preset);
+    const surfaces = [collectionIntro(preset, handle), metadata.description,
+      collectionBuyerNotes(handle, preset)[0].body,
+      collectionComparisonRows(handle, preset)[0].dollWowAdvantage,
+      collectionFaqItems(handle, preset)[0].answer];
+    expect(preset.filters).toEqual({ productForm: "full-doll", weight: "0-74" });
+    for (const text of surfaces) {
+      expect(text).toContain("74 lb or less (about 33.6 kg)");
+      expect(text).not.toContain("under 75");
+    }
+    expect(collectionFaqItems(handle, preset).map(item => item.answer).join(" ")).toContain("4 to 6 hours");
   });
 });
 

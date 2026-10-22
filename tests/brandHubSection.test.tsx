@@ -12,10 +12,12 @@ describe("brand hub compact browsing", () => {
     }
   });
 
-  it("stages only the Dolls Castle batch-A layout on preview", () => {
-    expect(usesCompactBrandLayout("dolls-castle", "preview")).toBe(true);
-    for (const deployment of ["production", "development", ""]) {
-      expect(usesCompactBrandLayout("dolls-castle", deployment)).toBe(false);
+  it("stages only the reviewed batch-A and batch-B layouts on preview", () => {
+    for (const brand of ["dolls-castle", "moonvale", "tantaly"]) {
+      expect(usesCompactBrandLayout(brand, "preview")).toBe(true);
+      for (const deployment of ["production", "development", ""]) {
+        expect(usesCompactBrandLayout(brand, deployment)).toBe(false);
+      }
     }
     for (const brand of ["lusandy", "evas", "fanreal", "funwest", "dolls-castle-other"]) {
       expect(usesCompactBrandLayout(brand, "preview")).toBe(false);

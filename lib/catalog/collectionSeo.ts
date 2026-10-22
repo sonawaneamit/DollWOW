@@ -306,9 +306,9 @@ const collectionIntroByHandle: Record<string, string> = {
   "cheap-sex-dolls":
     "Affordable sex dolls can offer a practical entry point without reducing the decision to price alone. This collection uses current DollWow starting prices to show models at $1,000 or less, sorted from lowest to highest. Compare material, size, weight, product form, availability, and included features, then open the product page to check the live price and exact configuration before ordering.",
   "lightweight-sex-dolls":
-    "Shop full-body lightweight sex dolls with a listed weight under 75 lb / 34 kg. This is DollWow's consistent shopping boundary, not a universal industry standard or a promise that every model will feel easy for every buyer to lift. Compare exact weight, height, width, material, grip points, delivery access, cleaning route, and storage position before choosing. If a reduced-weight option matters, ask our team to confirm that it is supported on the exact body.",
+    "Shop full-body lightweight sex dolls with a positive listed weight of 74 lb or less (about 33.6 kg). This is the collection's current filter boundary, not a universal industry standard or a promise that every model will feel easy for every buyer to lift. Compare exact weight, height, width, material, grip points, delivery access, cleaning route, and storage position before choosing. If a reduced-weight option matters, ask our team to confirm that it is supported on the exact body.",
   "new-sex-dolls":
-    "Browse new sex dolls and recent catalog additions with the latest supported models shown first. DollWow uses available supplier release ordering where it exists; this is more useful than treating the date a retailer uploaded a page as the product's universal launch date. New does not automatically mean more realistic, easier to handle, ready to ship, or better for your needs. Compare the exact brand, head and body pairing, TPE or silicone construction, measurements, listed weight, options, starting price, availability, and production path. If a newly announced model is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
+    "Browse new sex dolls and recent DollWow catalog additions, with the most recently created listings shown first. This is our catalog order, not a manufacturer's worldwide launch date. New does not automatically mean more realistic, easier to handle, ready to ship, or better for your needs. Compare the exact brand, head and body pairing, TPE or silicone construction, measurements, listed weight, options, starting price, availability, and production path. If a newly announced model is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "futa-sex-dolls":
     "Futa is short for futanari, an adult fantasy term commonly used when searching for a feminine doll with a penis option. Compare full-body models listed with support for an insertable penis add-on, from the actual manufacturers named on each card. On custom-made listings, review the available sizes and prices on the product page; the standard build may not include it. Fixed warehouse builds cannot be changed through the custom configurator: check the included configuration rather than assuming the add-on is supplied or selectable. Compare body and head pairing, material, height, weight, compatibility, and care. FutaDoll is a separate seller and brand identity; DollWow does not currently list FutaDoll products.",
   "asian-dolls":
@@ -345,7 +345,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
   "petite-dolls": "Shop petite sex dolls from 121 to 154 cm / 4 ft to 5 ft 1 in by weight, measurements, material, proportions, stock, and options.",
   "cheap-sex-dolls": "Shop affordable sex dolls with current starting prices up to $1,000. Compare product form, material, size, weight, stock, options, and support.",
-  "lightweight-sex-dolls": "Shop full-body lightweight sex dolls under 75 lb / 34 kg. Compare exact weight, size, material, handling, storage, stock, and options.",
+  "lightweight-sex-dolls": "Compare full-body lightweight sex dolls with a positive listed weight of 74 lb or less (about 33.6 kg), including size, material, handling, storage, and options.",
   "new-sex-dolls": "Shop new sex dolls and latest arrivals. Compare current models by brand, TPE or silicone, size, weight, options, price, and availability.",
   "futa-sex-dolls": "Compare full-body dolls listed with an insertable penis option. Check custom-made choices, fixed warehouse builds, materials, sizes, prices, and care.",
   "asian-dolls": "Shop Asian sex dolls and Japanese-inspired styles by face, body, TPE or silicone, height, weight, price, availability, and custom options.",
@@ -437,7 +437,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   "lightweight-sex-dolls": [
     {
       title: "Use the listed weight",
-      body: "DollWow includes products under 75 lb / 34 kg in this collection. Check the exact pounds and kilograms because a difference of 10 to 20 lb / 4.5 to 9 kg can materially change handling."
+      body: "This collection currently includes full dolls with a positive listed weight of 74 lb or less (about 33.6 kg). Check the exact pounds and kilograms because a difference of 10 to 20 lb / 4.5 to 9 kg can materially change handling."
     },
     {
       title: "Plan the full route",
@@ -450,8 +450,8 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   "new-sex-dolls": [
     {
-      title: "Newest supported models first",
-      body: "The catalog uses available source-release order to bring newer additions forward. Open the exact product for current specifications, options, price, and availability."
+      title: "Recent catalog additions first",
+      body: "This page orders listings by their creation date in DollWow's catalog, not a manufacturer's worldwide launch date. Open the exact product for current specifications, options, price, and availability."
     },
     {
       title: "Compare the improvement",
@@ -937,7 +937,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Exact handling weight",
       whyItMatters: "Lightweight is not standardized, and the same height can have very different finished weights across materials and internal construction.",
-      dollWowAdvantage: "DollWow uses a clear under-75-lb / 34-kg collection boundary and keeps the exact listed weight tied to each product."
+      dollWowAdvantage: "This collection currently uses a positive listed weight of 74 lb or less (about 33.6 kg), with the exact listed weight tied to each product."
     },
     {
       factor: "Size and balance",
@@ -954,7 +954,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Release context",
       whyItMatters: "New-arrival labels can refer to a manufacturer release, a retailer addition, a new head, or a new body, which are not always the same event.",
-      dollWowAdvantage: "DollWow shows recent supported catalog additions first and keeps the exact brand, head, body, materials, and photographs tied to each product."
+      dollWowAdvantage: "DollWow shows its most recently created catalog listings first and keeps the exact brand, head, body, materials, and photographs tied to each product."
     },
     {
       factor: "Practical improvement",
@@ -1374,7 +1374,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "lightweight-sex-dolls": [
     {
       question: "What counts as a lightweight sex doll on DollWow?",
-      answer: "DollWow uses a listed full-doll weight under 75 lb / 34 kg as the collection boundary. There is no universal industry definition, so compare the exact weight and dimensions rather than relying on the label alone."
+      answer: "This collection currently uses a positive listed full-doll weight of 74 lb or less (about 33.6 kg). There is no universal industry definition, so compare the exact weight and dimensions rather than relying on the label alone."
     },
     {
       question: "Are lightweight sex dolls easy to lift?",
@@ -1400,11 +1400,11 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "new-sex-dolls": [
     {
       question: "How does DollWow order new sex dolls?",
-      answer: "Products with available source-release information are shown with newer supported additions first. Release order can differ from a manufacturer's announcement date or the date another retailer added the same model."
+      answer: "Listings are ordered by their creation date in DollWow's catalog, with the most recently created first. That date is not necessarily the manufacturer's announcement date, the day the listing became public, or the date another retailer added the same model."
     },
     {
       question: "Are all products on this page newly released?",
-      answer: "The newest supported catalog additions appear first, while deeper pages can include earlier releases. Open the exact product and ask support if the release timing affects your decision."
+      answer: "No. The most recently created DollWow listings appear first, while deeper pages can include earlier products. A new listing does not establish a new manufacturer release. Open the exact product and ask support if release timing affects your decision."
     },
     {
       question: "Does new mean ready to ship?",

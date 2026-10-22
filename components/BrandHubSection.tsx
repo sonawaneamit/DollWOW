@@ -4,7 +4,7 @@ import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 export function usesCompactBrandLayout(brand: string, deployment = process.env.VERCEL_ENV) {
   if (["irontech", "wm", "sedoll", "starpery"].includes(brand)) return true;
   // DOL-229's next batch remains review-only until Martin approves its release.
-  return deployment === "preview" && brand === "dolls-castle";
+  return deployment === "preview" && ["dolls-castle", "moonvale", "tantaly"].includes(brand);
 }
 
 export function BrandHubSection({ compact, id, title, eyebrow, comparison = false, children }: {
