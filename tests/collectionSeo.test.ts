@@ -239,6 +239,17 @@ describe("lightweight collection current boundary", () => {
 });
 
 describe("body-style collection SEO", () => {
+  it("qualifies hips forms and redhead styling without membership or promise changes", () => {
+    const hips = collectionPresets.hips, red = collectionPresets["redhead-dolls"];
+    expect(hips.filters).toEqual({ productForm: "hips" });
+    expect(red.filters).toEqual({ look: "hair-red" });
+    expect(collectionIntro(hips, "hips")).toContain("not a complete doll");
+    expect(collectionIntro(red, "redhead-dolls")).toContain("does not guarantee a red wig");
+    for (const handle of ["hips", "redhead-dolls"]) {
+      expect(collectionFaqItems(handle, collectionPresets[handle])).toHaveLength(5);
+      expect(JSON.stringify(collectionFaqItems(handle, collectionPresets[handle]))).not.toContain("4 to 6 hours");
+    }
+  });
   it("qualifies blonde hair and tan skin presentation without changing filters", () => {
     for (const [handle, look, phrase] of [
       ["blonde-dolls", "hair-blonde", "does not guarantee an included wig"],

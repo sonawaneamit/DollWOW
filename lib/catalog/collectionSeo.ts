@@ -256,7 +256,9 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "curvy-dolls": "Curvy Sex Dolls | Compare Shapes & Measurements",
     "brunette-dolls": "Brunette Sex Dolls | Compare Hair & Styling",
     "blonde-dolls": "Blonde Sex Dolls | Compare Hair & Styling",
-    "tan-skin-dolls": "Tan Skin Sex Dolls | Compare Shades & Builds"
+    "tan-skin-dolls": "Tan Skin Sex Dolls | Compare Shades & Builds",
+    hips: "Hips Sex Dolls | Compare Lower-Body Products",
+    "redhead-dolls": "Redhead Sex Dolls | Compare Hair & Styling"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -299,6 +301,8 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  hips: "Compare lower-body hips products by the exact body areas included, complete dimensions, listed weight, material, starting price and ordering path. A hips model is not a complete doll or an upper-body torso, and product names or photographs do not guarantee identical anatomy, included accessories or supported options. Check width, depth and height together, then plan the space and handling needed for cleaning, drying and storage. Use the exact product specification rather than treating the category as a standard size or construction.",
+  "redhead-dolls": "Compare sex dolls presented with red, auburn or similar hair in current catalog imagery and styling. Confirm the exact listing's included hair and supported choices: the photograph does not guarantee a red wig, fixed hair color, implanted construction or every alternative look. Compare the underlying head and body pairing, product form, material, complete measurements, listed weight, price and availability separately from the hairstyle.",
   "blonde-dolls": "Compare sex dolls presented with blonde or light-colored hair in current catalog imagery. The pictured look does not guarantee an included wig, a permanently fixed hair color, implanted hair, or every styling choice. Check the exact listing's included hair and supported alternatives, then compare head and body pairing, product form, material, measurements, listed weight, starting price, and ordering path. A hairstyle is one part of the presentation, not proof that the underlying doll or its available options match another model.",
   "tan-skin-dolls": "Compare sex dolls presented with tan skin tones, using the exact shade name and product gallery for the manufacturer and build you are considering. Lighting, photography, makeup and screen settings can change how a tone appears. This category does not assign ethnicity or guarantee one universal tan shade, material, product form or set of options. Confirm the included skin tone and exact head and body pairing; fixed warehouse builds and custom-made choices should be checked separately.",
   "curvy-dolls": "Compare sex dolls grouped by curvy or full-bust appearance cues in the current catalog. This category does not guarantee the same bust, waist, hip proportions, weight, or product form across results. Read the exact measurements and full gallery, then compare body and head construction, included body areas, starting price, availability, and supported options. The separate Fuller collection uses its own fuller-build grouping; appearance categories can overlap, so choose from the actual product details rather than treating either label as a standardized body size.",
@@ -348,6 +352,8 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  hips: "Compare hips and lower-body doll products by included body areas, width, depth, height, listed weight, material, price, care needs, and availability.",
+  "redhead-dolls": "Compare redhead sex dolls by pictured hair, included styling, supported choices, exact head and body, material, measurements, price, and availability.",
   "blonde-dolls": "Compare blonde sex dolls by pictured hair, included styling, supported choices, head and body pairing, material, measurements, price, and availability.",
   "tan-skin-dolls": "Compare tan skin sex dolls by exact supplier shade, product photographs, head and body pairing, material, measurements, price, and ordering options.",
   "curvy-dolls": "Compare curvy sex dolls by exact bust, waist and hip measurements, product form, construction, listed weight, price, availability, and supported options.",
@@ -376,6 +382,16 @@ const collectionMetaDescriptions: Record<string, string> = {
 };
 
 const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
+  hips: [
+    { title: "Confirm included body areas", body: "Lower-body hips products, upper-body torsos and complete dolls are different formats. Check the complete gallery and listed inclusions before comparing price." },
+    { title: "Measure the full footprint", body: "Width, depth and height together describe space better than one dimension. Check listed weight and plan how the product will be moved, cleaned, dried and stored." },
+    { title: "Check material and choices", body: "Confirm the exact product's construction, care instructions, supported choices and included accessories rather than assuming every hips model shares the same features." }
+  ],
+  "redhead-dolls": [
+    { title: "Separate styling from inclusions", body: "A red-haired photograph does not prove which wig, clothing or accessories come with the order. Confirm the exact product's stated contents." },
+    { title: "Check hair construction", body: "Color alone does not establish whether hair is a wig or implanted, or which alternatives are supported on the chosen head and build." },
+    { title: "Compare the actual doll", body: "Use product form, body and head material, measurements, listed weight, current price and ordering path alongside the hairstyle." }
+  ],
   "blonde-dolls": [
     { title: "Confirm the included hairstyle", body: "A blonde photograph is not a guarantee that its wig, clothing or accessories are included. Check the exact product's stated order contents." },
     { title: "Check supported hair choices", body: "Color alone does not reveal whether hair is a wig or implanted. Supported colors, hair arrangements and compatibility depend on the specific head and build." },
@@ -863,6 +879,16 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
 };
 
 const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]> = {
+  hips: [
+    { factor: "Product form", whyItMatters: "A hips product does not include the same body areas as an upper torso or a complete doll.", dollWowAdvantage: "Compare the exact included areas and full gallery rather than assuming one standard form from the category name." },
+    { factor: "Footprint and handling", whyItMatters: "One height figure cannot establish storage fit or ease of moving a dense lower-body product.", dollWowAdvantage: "Read width, depth, height and listed weight together, then consider cleaning access and storage position." },
+    { factor: "Construction", whyItMatters: "Materials, finish, included accessories and supported options can differ between products.", dollWowAdvantage: "Check the exact specification, care guidance and current order contents before comparing total value." }
+  ],
+  "redhead-dolls": [
+    { factor: "Pictured hair", whyItMatters: "A photographed hairstyle can be a reference or optional item, not an included wig.", dollWowAdvantage: "Check the exact listing's included hair and styling before selecting a pictured look." },
+    { factor: "Supported choices", whyItMatters: "Hair construction and alternatives depend on the exact head, manufacturer and build.", dollWowAdvantage: "Confirm the specific product's choices and compatibility rather than assuming universal color or implanted-hair options." },
+    { factor: "Underlying product", whyItMatters: "Hair color does not predict body form, material, weight, size or availability.", dollWowAdvantage: "Compare the complete product specification, price and ordering path separately from styling." }
+  ],
   "blonde-dolls": [
     { factor: "Pictured hair", whyItMatters: "A hairstyle may be a reference or optional item rather than an included part of the order.", dollWowAdvantage: "Compare the exact listing's included hair and supported alternatives before choosing the photographed look." },
     { factor: "Hair arrangement", whyItMatters: "A blonde color does not establish wig or implanted-hair construction, or compatibility with other head options.", dollWowAdvantage: "Review the specific head and build's supported choices instead of assuming one brand-wide hair package." },
@@ -1226,6 +1252,20 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  hips: [
+    { question: "What is a hips doll product?", answer: "It is a lower-body product format, not a complete doll or an upper-body torso. Included body areas and proportions vary; check the exact product's full gallery and specification." },
+    { question: "Do all hips products include the same anatomy or accessories?", answer: "Do not assume so. Confirm the exact included body areas, product features and accessories rather than inferring them from a category name or one photograph." },
+    { question: "Which measurements matter for a hips product?", answer: "Compare width, depth, height and listed weight together, including any boxed dimensions available. Plan handling, cleaning access, drying and storage rather than relying on height alone." },
+    { question: "Are hips products all made from one material?", answer: "No. Confirm the exact material and construction on the listing and use its supplied care instructions. A similar appearance does not establish identical care, feel or weight." },
+    { question: "Can every hips model be customized?", answer: "No. Supported choices and included configurations depend on the exact product and ordering path. Check the listing rather than assuming the same options across the collection." }
+  ],
+  "redhead-dolls": [
+    { question: "What does the redhead category describe?", answer: "It groups current products presented with red, auburn or similar hair in catalog imagery and styling. It does not guarantee a fixed hair color or an included wig." },
+    { question: "Is the red wig in the photographs included?", answer: "Do not assume so. Check the exact listing's included hair, clothing and accessories; pictured styling may be a reference or optional item." },
+    { question: "Do redhead dolls have wigs or implanted hair?", answer: "Hair arrangement depends on the exact head and build. Color alone does not establish wig or implanted construction, or availability of alternative colors and options." },
+    { question: "Can I change the photographed hairstyle?", answer: "Some builds support hair choices, but availability and compatibility are product-specific. Confirm supported choices before ordering rather than assuming the pictured look can always be changed." },
+    { question: "Does red hair determine the skin tone, size or material?", answer: "No. Hair presentation does not determine the doll's skin tone, body or head material, product form, measurements or listed weight. Compare those details separately." }
+  ],
   "blonde-dolls": [
     { question: "What does the blonde category describe?", answer: "It groups products presented with blonde or light-colored hair in current catalog imagery and styling. It does not guarantee a fixed color, included wig or every photographed accessory." },
     { question: "Is the pictured blonde wig included?", answer: "Do not assume so. Check the exact product's included hair, clothing and accessories; photographed styling can be a reference or optional item." },
