@@ -20,6 +20,16 @@ export type BrandAuthorization = {
 
 const allBrandAuthorizations: BrandAuthorization[] = [
   {
+    id: "erovenus",
+    brand: "Erovenus",
+    brandValue: "erovenus",
+    certificateIssuer: "Erovenus",
+    aliases: ["erovenus", "ero venus"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/erovenus-authorized.jpg",
+    certificatePreviewSrc: "/images/authorizations/previews/erovenus-authorized.webp"
+  },
+  {
     id: "ido-dolls",
     brand: "IDO Dolls",
     brandValue: "ido",
