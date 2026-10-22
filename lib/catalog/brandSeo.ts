@@ -21,6 +21,52 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  hr: {
+    metaTitle: "HR Dolls | Compare Body & Head Construction",
+    metaDescription: "Compare current HR Dolls by separate body and head materials, measurements, listed weight, included features, supported choices and ordering path.",
+    positioning: "Compare each HR build's separate body and head construction rather than treating one material label as the complete specification.",
+    intro: "Compare current HR Dolls across TPE, silicone and silicone-head material labels, checking the body and head construction separately on the exact listing. A silicone head does not by itself establish a full-silicone body or identical care requirements. Use complete measurements, listed weight, the gallery and included features to compare builds. Check the supported choices and any fixed warehouse configuration separately from custom-made options before comparing the configured total and ordering path.",
+    buyerNotes: [
+      { title: "Read both material specifications", body: "A head material label is not a complete body specification. Check the body, head and exact product's supplied care guidance together." },
+      { title: "Confirm usable handling data", body: "Compare full dimensions and actual listed weight. Ask for missing weight rather than estimating from height or photographs." },
+      { title: "Separate included and optional", body: "Confirm the included head, body and appearance before adding supported choices. A fixed warehouse build does not automatically offer custom-made options." }
+    ],
+    comparisonRows: [
+      ["Body and head", "One material label may not describe both parts of the build.", "Check the exact body and head specification and use its supplied care guidance."],
+      ["Handling", "Similar heights or photographs do not establish the same weight or storage needs.", "Compare complete dimensions and usable listed weight, confirming missing details before ordering."],
+      ["Included build", "Photographed styling and another model's options do not establish what is included here.", "Review the exact configuration, supported choices, total and ordering path together."]
+    ],
+    faqs: [
+      { question: "Are all HR Dolls made from the same material?", answer: "No. Current listings include TPE, silicone and silicone-head labels. Check the exact body and head materials separately rather than treating one label as the entire construction." },
+      { question: "Does a silicone head mean the body is full silicone?", answer: "No. A head material label alone does not establish the body material. Read both specifications and the care instructions for the exact product." },
+      { question: "What if a usable weight is missing?", answer: "Ask for the exact build's weight before planning lifting, cleaning and storage. Missing or zero weight is not a lightweight claim." },
+      { question: "Are all photographed features and options included?", answer: "Only what the listing or confirmed build identifies as included. Check supported choices for the exact product and do not assume photographed clothing or props are supplied." },
+      { question: "Can I customize every HR warehouse listing?", answer: "Do not assume so. A warehouse listing describes its fixed build; custom-made options apply only where supported by that exact ordering path." }
+    ]
+  },
+  jarliet: {
+    metaTitle: "Jarliet Dolls | Compare Materials & Proportions",
+    metaDescription: "Compare current Jarliet dolls by exact head and body materials, proportions, full measurements, listed weight, included build and supported choices.",
+    positioning: "Compare Jarliet head and body pairings using material details and complete proportions, not just height or a reference photograph.",
+    intro: "Compare current Jarliet listings with TPE, silicone and silicone-head material labels by the exact head and body pairing. A similar height does not establish matching bust, waist and hip proportions, weight or construction. Use the complete measurements and gallery together, then confirm the included hair, appearance and accessories separately from supported choices. Check material-specific care, configured price and ordering path rather than transferring another model's build or options to your selection.",
+    buyerNotes: [
+      { title: "Compare complete proportions", body: "Use bust, waist and hip measurements with height and listed weight. Similar heights do not establish the same body shape or handling needs." },
+      { title: "Check each material", body: "Read the body and head specifications separately. A silicone-head label alone does not establish a full-silicone body or universal care instructions." },
+      { title: "Confirm the photographed build", body: "Match the head, body, hair and included appearance to the listing; accessories and other models' supported options are not automatically included." }
+    ],
+    comparisonRows: [
+      ["Proportions", "Similar heights can represent different bust, waist and hip measurements.", "Compare the complete measurement table, gallery and actual listed weight together."],
+      ["Material pairing", "A head-only material label does not establish the full body's construction.", "Check body and head materials and use the supplied product-specific care guidance."],
+      ["Included appearance", "A reference gallery does not establish every accessory or alternative styling choice.", "Review included features, supported choices, configured price and ordering path before ordering."]
+    ],
+    faqs: [
+      { question: "Are Jarliet dolls at the same height the same shape?", answer: "No. Compare bust, waist and hip measurements, the exact head and body pairing, listed weight and complete gallery rather than height alone." },
+      { question: "Are all Jarliet dolls one material?", answer: "No. Current listings include TPE, silicone and silicone-head material labels. Confirm body and head materials separately on the exact product." },
+      { question: "Does a silicone-head listing guarantee a full-silicone body?", answer: "No. That label alone describes a head material, not the complete body's construction. Check the exact specification and supplied care guidance." },
+      { question: "Does the gallery show the included wig and accessories?", answer: "Check what the product or confirmed configuration explicitly includes. A reference photograph does not establish every wig, outfit, prop or alternative appearance choice." },
+      { question: "Can another Jarliet model's options be used on my selection?", answer: "Only where supported for the exact body, head, material and ordering path. Do not assume the same custom choices or compatibility across the brand." }
+    ]
+  },
   "ai-tech": {
     metaTitle: "Ai-Tech Dolls | Compare Builds & Supported Features",
     metaDescription: "Compare current Ai-Tech dolls by exact head and body, material, dimensions, listed weight, included hardware, supported options and ordering path.",

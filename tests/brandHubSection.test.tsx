@@ -13,13 +13,13 @@ describe("brand hub compact browsing", () => {
   });
 
   it("stages only the scoped batch layouts on preview", () => {
-    for (const brand of ["dolls-castle", "moonvale", "tantaly", "erovenus", "climax", "il-doll", "angelkiss", "real-lady", "6ye", "ai-tech", "avant", "funwest"]) {
+    for (const brand of ["dolls-castle", "moonvale", "tantaly", "erovenus", "climax", "il-doll", "angelkiss", "real-lady", "6ye", "ai-tech", "avant", "funwest", "hr", "jarliet", "lusandy"]) {
       expect(usesCompactBrandLayout(brand, "preview")).toBe(true);
       for (const deployment of ["production", "development", ""]) {
         expect(usesCompactBrandLayout(brand, deployment)).toBe(false);
       }
     }
-    for (const brand of ["lusandy", "evas", "fanreal", "dolls-castle-other"]) {
+    for (const brand of ["ido", "md", "evas", "fanreal", "dolls-castle-other"]) {
       expect(usesCompactBrandLayout(brand, "preview")).toBe(false);
     }
   });
