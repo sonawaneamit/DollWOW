@@ -21,6 +21,75 @@ type BrandSeoProfile = {
 };
 
 const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
+  "ai-tech": {
+    metaTitle: "Ai-Tech Dolls | Compare Builds & Supported Features",
+    metaDescription: "Compare current Ai-Tech dolls by exact head and body, material, dimensions, listed weight, included hardware, supported options and ordering path.",
+    positioning: "Compare the included Ai-Tech build separately from any supported interactive hardware or optional features.",
+    intro: "Compare current Ai-Tech listings by the exact head and body pairing, construction, complete measurements, listed weight, included features and ordering path. The brand name alone does not establish that every model includes interactive hardware or the same functions. Check what your chosen listing includes, what costs extra and any compatibility or setup requirements. Compare the finished build and configured total rather than assuming another Ai-Tech model has identical features.",
+    buyerNotes: [
+      { title: "Separate the doll from interactive features", body: "Confirm any hardware, function, setup or additional service against the exact listing. A brand label is not an included-feature specification." },
+      { title: "Confirm handling information", body: "Use the exact listed weight and complete dimensions. Ask for a missing weight rather than estimating it from height or photographs." },
+      { title: "Check the included build", body: "Keep the head and body pairing, materials, options, current price and ordering path together." }
+    ],
+    comparisonRows: [
+      ["Included hardware", "A brand name does not establish which interactive functions or hardware are supplied.", "Check the exact listing's included features, required setup and any optional service before ordering."],
+      ["Handling", "Height and photographs do not establish the finished weight or storage needs.", "Compare the complete dimensions and actual listed weight, asking for missing information rather than estimating."],
+      ["Final build", "Different heads, bodies, materials and options can produce different configurations and totals.", "Keep the included build, supported choices, configured price and ordering path together."]
+    ],
+    faqs: [
+      { question: "Does every Ai-Tech doll include the same interactive features?", answer: "Do not assume so. Confirm the exact product's included hardware and functions, any required setup or service, and what is optional before ordering." },
+      { question: "Are Ai-Tech listings all one material?", answer: "Current listings include different material labels. Check body and head materials separately because the brand name does not establish one construction for every product." },
+      { question: "Can I estimate weight from the photos?", answer: "No. Height and appearance do not establish the finished weight. Use the exact recorded weight or ask for confirmation if it is missing." },
+      { question: "Can the same options be selected on every Ai-Tech model?", answer: "No. Check the exact head, body, material, supported choices and compatibility requirements rather than transferring another model's option list." },
+      { question: "What should I compare before checkout?", answer: "The complete build, included features, supported options, configured price, current availability and ordering path." }
+    ]
+  },
+  avant: {
+    metaTitle: "Avant Doll Models | Compare Silicone Builds & Dimensions",
+    metaDescription: "Compare current Avant listings by silicone construction, exact head and body, full dimensions, confirmed weight, supported options and ordering path.",
+    positioning: "Compare each Avant build using confirmed dimensions and weight rather than treating a similar height as the same handling requirement.",
+    intro: "Compare current Avant listings by the exact head and body pairing, silicone construction, full dimensions, included features, price and ordering path. A similar height or photograph does not establish the same weight or handling needs. Where a usable weight is not listed, ask for the finished build's weight before planning lifting, cleaning or storage. Verify the included appearance and supported choices for the exact product rather than treating the brand as one standard configuration.",
+    buyerNotes: [
+      { title: "Confirm missing weight first", body: "Do not interpret a missing or zero weight as a lightweight build. Get the actual finished weight before deciding how it will be moved and stored." },
+      { title: "Compare the complete construction", body: "Check head and body pairing, dimensions and material details, not just the face photograph or brand name." },
+      { title: "Check what the price includes", body: "Separate the listed build and supported extras, then compare the configured total and ordering path." }
+    ],
+    comparisonRows: [
+      ["Confirmed weight", "Missing or zero values do not establish a lightweight product or easy handling.", "Ask for the exact finished weight before planning lifting, cleaning and storage."],
+      ["Construction", "Similar photographs or height labels can hide different head and body pairings.", "Compare the full dimensions, materials and included build on the exact listing."],
+      ["Included configuration", "A photograph may show styling or accessories beyond the listed build.", "Review included features, supported choices, current price and ordering path together."]
+    ],
+    faqs: [
+      { question: "Are Avant dolls all the same weight?", answer: "No. Use the weight for the exact product and configuration. If it is missing or unusable, ask for confirmation rather than estimating from height or appearance." },
+      { question: "Does a missing weight mean the doll is lightweight?", answer: "No. Missing data does not establish a low weight or easy handling." },
+      { question: "What construction can I compare here?", answer: "The current collection is cataloged with silicone material labels. Confirm the exact head and body construction and supplied care instructions on the product you choose." },
+      { question: "Are photographed accessories and options included?", answer: "Only what the listing or confirmed configuration identifies as included. A product photograph alone does not establish every accessory or supported choice." },
+      { question: "What should I confirm for storage?", answer: "The finished build's weight, complete dimensions, suitable support and manufacturer storage guidance, along with the route used to move it." }
+    ]
+  },
+  funwest: {
+    metaTitle: "FunWest Dolls | Compare Materials & Product Forms",
+    metaDescription: "Compare current FunWest full dolls and torsos by head and body construction, measurements, listed weight, included features, options and ordering path.",
+    positioning: "Compare FunWest complete dolls and torso products by their exact form, construction and included build.",
+    intro: "Compare current FunWest listings across complete dolls and torso products, with TPE and silicone material labels in the current collection. Start with the included body areas and exact head and body construction so that different product forms are not mistaken for equivalent builds. Compare full dimensions, listed weight, included appearance, supported options, configured price and ordering path. A similar name, photograph or brand label does not guarantee identical construction or customization.",
+    buyerNotes: [
+      { title: "Start with the included form", body: "Compare complete dolls and torsos separately, checking which body areas and any head are included." },
+      { title: "Match construction and care", body: "Check body and head materials and the exact product's care instructions rather than relying on one brand-wide rule." },
+      { title: "Review the final build", body: "Confirm photographed versus included features, supported options and any fixed warehouse configuration before comparing totals." }
+    ],
+    comparisonRows: [
+      ["Product form", "A torso and a complete doll can have different included body areas and dimensions.", "Check the exact form and included head before comparing price or handling needs."],
+      ["Materials", "TPE and silicone labels do not establish every head and body detail or care requirement.", "Use the exact product specification and supplied care guidance."],
+      ["Configuration", "A similar name or gallery does not establish identical included features or supported extras.", "Review the listing's build, choices, configured total and ordering path together."]
+    ],
+    faqs: [
+      { question: "Does this collection contain only complete dolls?", answer: "No. Current FunWest listings include complete dolls and torso products. Confirm the included body areas and head before comparing price or dimensions." },
+      { question: "Are all FunWest products one material?", answer: "No. The current collection includes TPE and silicone material labels. Read the exact head and body specification and supplied care instructions." },
+      { question: "Does the photograph show everything included?", answer: "Not necessarily. Check the listing's included configuration and accessories rather than assuming photographed clothing or props are supplied." },
+      { question: "Can every FunWest listing use the same options?", answer: "No. Supported choices depend on the exact body, head, construction and ordering path. Do not transfer a custom-made option list to a fixed warehouse build." },
+      { question: "What should I compare besides price?", answer: "Product form, complete dimensions, listed weight, materials, included build, supported choices, availability and the configured total." }
+    ]
+  },
   "il-doll": {
     metaTitle: "IL Doll Models | Compare Builds, Sizes & Options",
     metaDescription: "Compare current IL Doll models by exact head and body pairing, material, measurements, listed weight, price, availability, and supported options.",
