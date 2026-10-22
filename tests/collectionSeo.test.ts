@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { buildCollectionMetadata, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -69,6 +69,7 @@ describe("Wave 1 head collection SEO", () => {
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
+
 });
 
 describe("Wave 2 collection SEO", () => {
@@ -156,6 +157,17 @@ describe("anime collection SEO", () => {
 
 describe("futa collection SEO", () => {
   const preset = collectionPresets["futa-sex-dolls"];
+
+  it("keeps the buyer notes and comparison consistent with fixed warehouse builds", () => {
+    const notes = collectionBuyerNotes("futa-sex-dolls", preset);
+    const rows = collectionComparisonRows("futa-sex-dolls", preset);
+    expect(notes[0].body).toContain("not an included or currently selectable add-on");
+    expect(notes[0].body).toContain("fixed warehouse builds");
+    expect(rows[0].factor).toBe("Listed option support");
+    expect(rows[0].dollWowAdvantage).toContain("does not verify inclusion or current selectability");
+    expect(rows[1].dollWowAdvantage).toContain("listed inclusions of a fixed warehouse build");
+    expect(JSON.stringify({ notes, rows })).not.toContain("Every result has a current");
+  });
 
   it("uses one respectful owner without promising selectable options on fixed stock", () => {
     const intro = collectionIntro(preset, "futa-sex-dolls");

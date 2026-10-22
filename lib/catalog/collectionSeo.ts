@@ -465,7 +465,7 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   "futa-sex-dolls": [
     {
       title: "Confirm the selected configuration",
-      body: "Every result has a current insertable penis option, but it is not necessarily included by default. Open the product and select the supported size before checkout."
+      body: "Collection membership indicates listed support, not an included or currently selectable add-on. On custom-made listings, review the supported size and price; on fixed warehouse builds, check the included configuration before checkout."
     },
     {
       title: "Compare the complete body",
@@ -969,14 +969,14 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   "futa-sex-dolls": [
     {
-      factor: "Verified option",
+      factor: "Listed option support",
       whyItMatters: "A product title or category label does not prove that an insertable penis is available on the exact body.",
-      dollWowAdvantage: "This collection only includes products whose current customization data exposes the add-on as a selectable option."
+      dollWowAdvantage: "Compare listings with recorded option support, then check whether the exact build is custom-made or fixed warehouse stock. Membership does not verify inclusion or current selectability."
     },
     {
       factor: "Exact configuration",
       whyItMatters: "The add-on may be optional, offered in more than one size, and priced separately from the standard body.",
-      dollWowAdvantage: "Each product keeps the option, current price effect, body, head, material, measurements, and photographs together before checkout."
+      dollWowAdvantage: "Use the product page to check custom choices and price changes, or the listed inclusions of a fixed warehouse build, alongside its body, head, material, measurements, and photographs."
     },
     {
       factor: "Build confirmation",

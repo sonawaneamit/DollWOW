@@ -111,8 +111,8 @@ reason is unknown, not automatically an imagery/safety classification.
 
 ## Validation And Remaining Gates
 
-- 33 focused tests passed across brand layout, collection disclosure, brand SEO
-  and collection SEO. Scoped lint passed.
+- 40 focused tests passed across brand layout, collection disclosure, brand SEO,
+  collection SEO and the guide-row focus helper. Scoped lint passed.
 - Full local typecheck failed on stale generated `.next` route references from
   the earlier DOL-226 branch and a pre-existing optional `priceDelta` assertion in
   `tests/privateDraftPreview.test.ts`. Neither is a runtime layout failure; this
@@ -123,8 +123,10 @@ reason is unknown, not automatically an imagery/safety classification.
   390 px disclosure check. All after layouts have no document overflow. First
   product Y changed from 1933 to 653, 1804 to 640 and 1252 to 592 respectively;
   the old 320 px overflow was absent in preview. All six first-card images decoded.
-- The Futa copy update requires a new hosted check. Do not attribute the earlier
-  unchanged-meta check to the subsequently changed description or FAQ.
+- The Futa copy update passed a separate hosted check: exact revised description,
+  visible introduction and all six FAQs match source; FAQ schema matches the
+  visible answers. The latest preview repeats those five-page identity/schema
+  and exact existing-guide-row checks successfully.
 - DataForSEO's existing credential returned task 40207 (IP not whitelisted),
   despite HTTP 200, at zero cost. Fresh required SERP/AI evidence is pending the
   explicit Martin/Dolly access request. Drafting may proceed; final AI/GEO gate
@@ -168,6 +170,22 @@ scrolls only that nav horizontally by the missing distance, immediately. It does
 not scroll the page, change vertical position, add controls or change CSS. Visible
 links cause no movement. The collection and compact-brand routes enable it only
 for Vercel preview; unreviewed brand layouts and production keep it disabled.
+
+The prior `00c75cff` failure remains saved: at 320 px, the focused torso link
+extended to X=428.56 outside its 288 px-wide row and stayed clipped after three
+seconds. In the `a99ed869` hosted preview, Tab traverses all six Petite links at
+320/390/1440 px with each focused link fully visible and no document overflow.
+Responsive parity checks against live TPE and other row consumers are recorded
+separately; this is not full-site visual clearance or production approval.
+
+## Copy Consistency Follow-Up
+
+A further source check found the same unsupported selectable-option claim in
+the Futa buyer note and comparison table, beyond the previously corrected intro
+and FAQ. These surfaces now distinguish recorded support, custom choices and
+fixed warehouse inclusions too. The comparison no longer labels membership a
+"Verified option." A regression covers both surfaces; a new hosted check must
+verify the revised text, rather than attributing it to the earlier preview.
 
 Five focused tests cover both clipped edges, no-op visible/exact-edge links,
 nonnegative positioning and identical server markup with the behavior on/off.
