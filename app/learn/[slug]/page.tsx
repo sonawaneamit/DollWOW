@@ -26,6 +26,7 @@ import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
+import { PriceSizeIndexReview } from "@/components/PriceSizeIndexReview";
 
 export const dynamic = "force-dynamic";
 
@@ -298,6 +299,7 @@ function SizeWeightArticle({ markdown }: { markdown: string }) {
     <>
       <MarkdownContent markdown={markdown.slice(0, boundaryIndex)} />
       <SizeWeightCatalogIndex />
+      <PriceSizeIndexReview />
       <MarkdownContent markdown={markdown.slice(boundaryIndex + 1)} />
     </>
   );
