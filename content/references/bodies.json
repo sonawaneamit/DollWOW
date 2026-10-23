@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "irontech-166cm-2-0-e",
+    "title": "Irontech 166cm 2.0 E-cup body",
+    "designation": "166cm 2.0 E-cup",
+    "material": "Silicone; metal skeleton",
+    "example": "Molly Natural with S44 ROS MAX",
+    "bodyOnlyKg": 37.5,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "Irontech's 166cm 2.0 E-cup body table lists 37.5kg for the body alone. The measurements below come from its Molly Natural listing with the S44 ROS MAX head, not a complete-doll weight or a specification for every Molly edition.",
+    "identityNote": "Keep the 2.0 body designation and E-cup factory label with this record. A shared height, model name or head code does not establish that another listing uses the same body or measurements.",
+    "sourceTitle": "Irontech: 166cm 2.0 S44 ROS MAX Molly Natural",
+    "sourceUrl": "https://www.irontechdoll.com/product/romantic-sex-doll-166cm-2-0-s44-ros-max-molly-natural/",
+    "measurements": [
+      { "label": "Height", "cm": 166 },
+      { "label": "Bust", "cm": 85 },
+      { "label": "Underbust", "cm": 65.3 },
+      { "label": "Waist", "cm": 59.6 },
+      { "label": "Hips", "cm": 98 },
+      { "label": "Shoulder width", "cm": 30 }
+    ]
+  },
+  {
+    "slug": "irontech-171cm-d",
+    "title": "Irontech 171cm D-cup body",
+    "designation": "171cm D-cup",
+    "material": "Silicone; metal skeleton",
+    "example": "Vivian Natural with S31 ROS MAX",
+    "bodyOnlyKg": 37.5,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "Irontech's 171cm D-cup body table lists 37.5kg for the body alone. This reference records the dimensions on its Vivian Natural listing with the S31 ROS MAX head, not a complete-doll weight or the specifications of a different-height Vivian.",
+    "identityNote": "Keep 171cm and the D-cup factory designation together when comparing this body. A 153cm or 160cm Vivian offer is a different starting point; do not copy this table to it because the face or model name looks familiar.",
+    "sourceTitle": "Irontech: 171cm S31 ROS MAX Vivian Natural",
+    "sourceUrl": "https://www.irontechdoll.com/product/d-cup-sex-doll-171cm-s31-ros-max-vivian-natural/",
+    "measurements": [
+      { "label": "Height", "cm": 171 },
+      { "label": "Bust", "cm": 82 },
+      { "label": "Underbust", "cm": 63.5 },
+      { "label": "Waist", "cm": 57.2 },
+      { "label": "Hips", "cm": 93.5 },
+      { "label": "Shoulder width", "cm": 37 }
+    ]
+  }
+]
