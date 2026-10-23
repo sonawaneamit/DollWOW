@@ -5,7 +5,9 @@ primaryKeyword: "custom doll order review"
 secondaryKeywords: ["doll configuration mismatch", "custom order checklist"]
 description: "Work through a hypothetical mismatch between a reference photo and a written doll configuration, with clear decisions before production starts."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

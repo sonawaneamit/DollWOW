@@ -5,7 +5,9 @@ primaryKeyword: "hybrid vs full silicone builds"
 secondaryKeywords: ["silicone head TPE body", "hybrid doll budget comparison"]
 description: "Compare a silicone-head TPE-body build with full silicone at the same budget, separating head choices, body construction, care and configured totals."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

@@ -5,7 +5,9 @@ primaryKeyword: "lightweight TPE vs silicone"
 secondaryKeywords: ["lightweight sex dolls", "doll net weight comparison"]
 description: "Use published lightweight-body figures correctly, separate body and complete-doll weights, and compare TPE and silicone without assuming a material winner."
 category: "Materials And Care"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

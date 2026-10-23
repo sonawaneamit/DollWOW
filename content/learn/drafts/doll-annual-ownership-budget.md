@@ -5,7 +5,9 @@ primaryKeyword: "sex doll maintenance cost"
 secondaryKeywords: ["doll annual ownership budget", "doll care costs"]
 description: "Plan supplies, styling, one-off equipment and repair reserves after year one with an unpriced worksheet, not invented annual costs or replacement rates."
 category: "Ownership"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

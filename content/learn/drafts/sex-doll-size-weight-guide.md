@@ -7,7 +7,7 @@ description: "Compare sex doll size and weight using 2,615 current full-size Dol
 category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
-authorTitle: "Doll Collector and Educator with 20+ Years of Experience"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "production"
 reviewOwner: "Alex"
 lastReviewed: "2026-08-12"
