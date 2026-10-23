@@ -22,7 +22,6 @@ export default async function SizeWeightFinder({ searchParams }: { searchParams:
   let catalog;
   try {
     catalog = await getSizeWeightSnapshot();
-    if (!Number.isFinite(Date.parse(catalog.checkedAt)) || Date.now() - Date.parse(catalog.checkedAt) > 86400000) throw new Error('Catalog snapshot expired');
   } catch {
     return <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6"><h1 className="text-3xl font-semibold">Doll Size &amp; Weight Finder</h1><p className="mt-4">Current listing data is temporarily unavailable. No estimated weights are shown.</p><Link className="mt-4 inline-block underline" href="/learn/sex-doll-size-weight-guide">Read the size and weight guide</Link></section>;
   }
