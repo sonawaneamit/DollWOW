@@ -94,13 +94,24 @@ describe("reviewed shopping copy", () => {
       const faqs = dom.querySelector("#brand-faq-heading")!.closest("details")!.querySelectorAll("article");
       expect(faqs.map(card => ({ question: card.querySelector("h3")?.textContent, answer: card.querySelector("p")?.textContent }))).toEqual(profile.faqs);
       if (handle === "moonvale-dolls") {
-        const authorization = dom.querySelector("#brand-authorization-heading")!.closest("details")!;
-        expect(authorization.textContent).not.toMatch(/certificate shared|SY Doll/);
-        expect(authorization.querySelector("img")).toBeNull();
+        expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
+        expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
+        expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
+        expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
       } else {
         expect(comparison.textContent).toContain("first-year ownership support and ongoing repair guidance");
         expect(comparison.querySelector('a[href="/care-for-life"]')).not.toBeNull();
+        expect(dom.querySelector("#brand-authorization-heading")).not.toBeNull();
       }
     });
   }
+
+  it("omits Moonvale authorization placeholders and navigation in production too", async () => {
+    vi.stubEnv("VERCEL_ENV", "production");
+    const dom = parse(renderToStaticMarkup(await BrandHubPage({params: Promise.resolve({brand: "moonvale-dolls"}), searchParams: Promise.resolve({})})));
+    expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
+    expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
+    expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
+    expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
+  });
 });

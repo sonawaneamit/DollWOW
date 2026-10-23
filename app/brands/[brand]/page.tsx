@@ -64,8 +64,8 @@ export default async function BrandHubPage({
     .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 1;
-  const authorization = brand.value === "moonvale" && profile.comparisonBullets
-    ? <p className="text-sm leading-6 text-text-dim">Ask our team about seller approval for the Moonvale model you are considering.</p>
+  const authorization = brand.value === "moonvale"
+    ? null
     : <BrandAuthorizationCard brand={brand.value} variant="brand" />;
 
   const comparison = (
@@ -113,7 +113,7 @@ export default async function BrandHubPage({
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">
             Current DollWow collection
-            {compactBrowsing ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
+            {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
           </p>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default async function BrandHubPage({
         </div>
       </BrandHubSection>
 
-      {compactBrowsing ? (
+      {compactBrowsing && authorization ? (
         <CollectionDisclosure id="brand-authorization-heading" title="Seller authorization">
           {authorization}
         </CollectionDisclosure>
