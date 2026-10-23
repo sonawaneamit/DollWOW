@@ -53,8 +53,9 @@ describe("source-bounded body reference previews", () => {
     expect(body.material).toBe("Silicone");
     expect(body.measurements.map(row => row.cm)).toEqual([164, 98, 67.8, 64.2, 121.2, 35.5, 68, 75, 68.8, 36.7, 23]);
     expect(body.sourceUrl).toBeUndefined();
-    expect(body.sourceNote).toContain("19 August 2026");
-    expect(body.identityNote).toContain("does not establish a head connector");
+    expect(body.sourceNote).toBeUndefined();
+    expect(body.sourceTitle).toBe("Irontech factory body chart");
+    expect(JSON.stringify(body)).not.toMatch(/M16|M12|M8|transcribed|19 August/);
     expect(JSON.stringify(body)).not.toMatch(/E-cup|D-cup|metal skeleton|2-5|assembledWeight|60\s*\+/);
   });
 
@@ -67,8 +68,10 @@ describe("source-bounded body reference previews", () => {
     expect(dom.querySelectorAll("table tbody tr")).toHaveLength(11);
     expect(dom.textContent).toContain("60kg");
     expect(dom.textContent).toContain("132.3lb");
-    expect(dom.textContent).toContain("body alone");
-    expect(dom.textContent).toContain("19 August 2026");
+    expect(dom.textContent).toContain("Weight without head");
+    expect(dom.textContent).toContain("Irontech factory body chart");
+    expect(dom.textContent).toContain("Fit with other head and body combinations isn't confirmed.");
+    expect(dom.textContent).not.toMatch(/Factory source checked|2026-10-23|19 August|transcribed|Factory evidence|Do not|does not establish|one dated manufacturer|1lb =|new factory measurements/);
     expect(dom.textContent).toContain("121.2");
     expect(html).not.toMatch(/drive\.google|mail\.google|href="undefined"|application\/ld\+json/);
     expect((await generateMetadata({ params })).robots).toEqual({ index: false, follow: false });
@@ -98,8 +101,9 @@ describe("source-bounded body reference previews", () => {
     expect(dom.querySelectorAll('th[scope="row"]')).toHaveLength(6);
     expect(dom.textContent).toContain("37.5kg");
     expect(dom.textContent).toContain("82.7lb");
-    expect(dom.textContent).toContain("body alone");
-    expect(dom.textContent).toContain("rounded to one decimal");
+    expect(dom.textContent).toContain("Weight without head");
+    expect(dom.textContent).toContain("Fit with other head and body combinations isn't confirmed.");
+    expect(dom.textContent).not.toMatch(/Factory source checked|2026-10-23|Factory evidence|Do not|does not establish|one dated manufacturer|1lb =|new factory measurements/);
     expect(html).toContain(`href="${reference.sourceUrl}"`);
     expect(html).not.toContain("application/ld+json");
     expect(fs.existsSync("public/images/home-brands/irontech.png")).toBe(true);
