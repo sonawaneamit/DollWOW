@@ -1,5 +1,27 @@
 # Release Measurement Tracker
 
+## Feature Guides, 23 October
+
+Martin approved the reviewed PR171 head on DOL-231. Production `cb421b99`
+was READY at 18:47:30.985 UTC. Both existing guides passed exact live
+Article/FAQ/canonical and visible-source checks, seven responsive layout
+cases, seven media SHA/MIME checks, twelve video playback cases and three
+decoded photo cases. This is not a new-page or model-compatibility claim.
+
+Two release events bring the ledger to 3,955 rows; all prior 3,953 rows are
+preserved. Fresh page-filtered GSC and production-host GA4 queries cover the
+same complete available 24 September-21 October window. Skeleton has one
+click/25 impressions and three all-channel landing sessions. Head-types has
+no returned row in either source, not zero. Earlier final-data gaps and
+overlapping byline/Halloween releases remain disclosed; no causal lift claim.
+
+One two-URL IndexNow batch was accepted HTTP200 at 18:49:51.924 UTC, not
+proof of crawling/indexing. The existing head-types Google queue entry was
+revised in place, and skeleton was appended after the prior queue. There are
+33 unique URLs, ten accepted requests and 23 remaining. No Google write was
+made under the 23 October quota stop; prior events/order/policy are preserved.
+The live implementation remains In Review for Dolly. Batch C is unpublished.
+
 ## Moonvale Corrective Release, 23 October
 
 Martin approved PR182's exact Moonvale correction on DOL-229. Production
