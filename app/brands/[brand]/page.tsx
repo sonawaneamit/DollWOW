@@ -64,6 +64,9 @@ export default async function BrandHubPage({
     .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 1;
+  const authorization = brand.value === "moonvale" && profile.comparisonBullets
+    ? <p className="text-sm leading-6 text-text-dim">Ask our team about seller approval for the Moonvale model you are considering.</p>
+    : <BrandAuthorizationCard brand={brand.value} variant="brand" />;
 
   const comparison = (
       <BrandHubSection compact={compactBrowsing} comparison id="brand-comparison-heading" eyebrow="Brand comparison" title={`How to evaluate ${brand.label}`}>
@@ -93,6 +96,7 @@ export default async function BrandHubPage({
             </tbody>
           </table>
         </div>}
+        {profile.comparisonBullets && brand.value === "tantaly" ? <p className="mt-4 text-sm"><Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the Care for Life coverage details.</Link></p> : null}
       </BrandHubSection>
   );
 
@@ -116,9 +120,9 @@ export default async function BrandHubPage({
 
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
 
-      {!compactBrowsing ? <BrandAuthorizationCard brand={brand.value} variant="brand" /> : null}
+      {!compactBrowsing ? authorization : null}
 
-      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (brand.value === "dolls-castle" || process.env.VERCEL_ENV === "preview")}>
+      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
             {link.label}
@@ -177,7 +181,7 @@ export default async function BrandHubPage({
 
       {compactBrowsing ? (
         <CollectionDisclosure id="brand-authorization-heading" title="Seller authorization">
-          <BrandAuthorizationCard brand={brand.value} variant="brand" />
+          {authorization}
         </CollectionDisclosure>
       ) : null}
 

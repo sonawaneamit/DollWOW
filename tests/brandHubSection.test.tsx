@@ -14,11 +14,13 @@ describe("brand hub compact browsing", () => {
     }
   });
 
-  it("releases only the approved Dolls Castle batch-A layout", () => {
-    expect(usesCompactBrandLayout("dolls-castle")).toBe(true);
-    for (const deployment of ["production", "development", ""]) {
-      vi.stubEnv("VERCEL_ENV", deployment);
-      expect(usesCompactBrandLayout("dolls-castle")).toBe(true);
+  it("releases only the approved batch-A and batch-B layouts", () => {
+    for (const brand of ["dolls-castle", "moonvale", "tantaly"]) {
+      expect(usesCompactBrandLayout(brand)).toBe(true);
+      for (const deployment of ["production", "development", ""]) {
+        vi.stubEnv("VERCEL_ENV", deployment);
+        expect(usesCompactBrandLayout(brand)).toBe(true);
+      }
     }
     for (const brand of ["lusandy", "evas", "fanreal", "funwest", "dolls-castle-other"]) {
       expect(usesCompactBrandLayout(brand)).toBe(false);
