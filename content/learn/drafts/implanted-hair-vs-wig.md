@@ -38,6 +38,23 @@ Implanted hair is installed into or through the scalp area as part of the head's
 
 The real choice is flexibility versus commitment. A wig lets you change course. Implanted hair asks you to be confident in one supported specification and willing to maintain it carefully.
 
+## Confirm The Hair Specification Before Paying
+
+Neither "wig" nor "implanted" identifies the fiber or the permitted styling method. Save these details with the selected head:
+
+| Detail | Confirmation to request |
+| --- | --- |
+| Identity | Exact head model and revision, hair option, and any powered functions |
+| Material | Human hair, synthetic fiber, or an unspecified material awaiting confirmation |
+| Appearance | Supported color, length, coverage, and a representative hairline photograph |
+| Care | Supplier-approved washing, drying, detangling, products, and heat limits for that hair and head |
+| Replacement | Wig size and attachment method, or the supplier's implanted-hair repair route |
+| Order total | Included item or paid upgrade, price change, and effect on production |
+
+If heat tolerance is not documented, do not choose a temperature by guesswork. Hair-fiber tolerance alone does not establish that the scalp, adhesive, paint, or electronics tolerate the same treatment.
+
+For example, [Irontech's own FAQ](https://www.irontechdoll.com/help-faq/) lists a wig among the accessories shipped with a doll. That general list does not identify the exact wig, fiber, or permitted heat treatment for your order. Confirm the selected model's included item; do not assume that a gallery hairstyle or a different manufacturer's package is the same.
+
 ## Comparison Table
 
 | Factor | Removable wig | Implanted hair |
