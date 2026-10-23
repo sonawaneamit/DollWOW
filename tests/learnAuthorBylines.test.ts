@@ -1,10 +1,33 @@
 import { describe, expect, it } from "vitest";
 import { buildArticleStructuredData, getLearnAuthors, getLearningArticles, learnAuthorUrl } from "@/lib/learn/content";
+import scheduledAuthors from "@/tests/fixtures/learn-author-assignments-october-2026.json";
 
 const auditTime = Date.parse("2026-10-22T23:54:00Z");
 const migrated = ["irontech-head-types-ros-max", "se-doll-lstpe-lightweight-upgrade", "se-doll-vs-starpery-build-comparison", "warehouse-stock-vs-custom-made", "factory-photo-review-worked-example", "doll-clothing-measurements-fit"];
 
 describe("approved existing guide authors", () => {
+  it("covers all 42 remaining scheduled owners with matching existing Person profiles", () => {
+    const profiles = getLearnAuthors();
+    const future = getLearningArticles(Date.parse("2030-01-01T00:00:00Z"))
+      .filter(article => !getLearningArticles(auditTime).some(current => current.slug === article.slug));
+    expect(future.map(article => article.slug).sort()).toEqual(Object.keys(scheduledAuthors).sort());
+    expect(future).toHaveLength(42);
+    expect(future.filter(article => article.author === "alex")).toHaveLength(36);
+    expect(future.filter(article => article.author === "jesse")).toHaveLength(6);
+    for (const article of future) {
+      expect(article.author, article.slug).toBe(scheduledAuthors[article.slug as keyof typeof scheduledAuthors]);
+      const profile = profiles[article.author];
+      expect(article.authorDisplayName).toBe(profile.displayName);
+      expect(article.authorTitle).toBe(profile.title);
+      expect(article.status).toBe("scheduled");
+      expect(article.lastReviewed).toBe("2026-10-16");
+      expect(buildArticleStructuredData(article).author).toMatchObject({
+        "@type": "Person", name: profile.displayName, jobTitle: profile.title,
+        url: learnAuthorUrl(article.author)
+      });
+    }
+  });
+
   it("uses only Alex and Jesse with their existing profiles for the audited visible guides", () => {
     const profiles = getLearnAuthors();
     const articles = getLearningArticles(auditTime);

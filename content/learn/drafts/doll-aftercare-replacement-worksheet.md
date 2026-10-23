@@ -5,7 +5,9 @@ primaryKeyword: "sex doll replacement parts"
 secondaryKeywords: ["doll aftercare request", "doll spare part compatibility"]
 description: "Prepare a useful replacement-part request with model details, clear photos and compatibility questions, using a hypothetical aftercare example."
 category: "Materials And Care"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

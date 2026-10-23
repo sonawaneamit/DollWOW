@@ -5,7 +5,9 @@ primaryKeyword: "doll head body skin tone match"
 secondaryKeywords: ["replacement doll head colour", "hybrid doll skin tone"]
 description: "Match a replacement head using the original body record, factory tone identifiers, material compatibility and useful comparison photographs."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

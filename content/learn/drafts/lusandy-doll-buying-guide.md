@@ -5,7 +5,9 @@ primaryKeyword: "Lusandy doll buying guide"
 secondaryKeywords: ["Lusandy body sizes", "Lusandy US stock"]
 description: "Compare Lusandy body families, read the Nadia 159 factory measurements and check exact options and warehouse configurations before ordering."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

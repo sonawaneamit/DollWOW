@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import calendar from "@/tests/fixtures/learn-release-october-2026.json";
+import scheduledAuthors from "@/tests/fixtures/learn-author-assignments-october-2026.json";
 import { getLearningArticle, getLearningArticles, buildArticleStructuredData } from "@/lib/learn/content";
 
 describe("approved October Learning Center release calendar", () => {
@@ -27,7 +28,10 @@ describe("approved October Learning Center release calendar", () => {
       const article = getLearningArticle(row.slug, at);
       expect(article?.status, row.slug).toBe("scheduled");
       expect(article?.publishedAt, row.slug).toBe(row.publishedAt);
-      expect(article?.author, row.slug).toBe(approvedAlexBylines.has(row.slug) ? "alex" : "editorial");
+      const expectedAuthor = approvedAlexBylines.has(row.slug) ? "alex"
+        : scheduledAuthors[row.slug as keyof typeof scheduledAuthors];
+      expect(expectedAuthor, row.slug).toBeDefined();
+      expect(article?.author, row.slug).toBe(expectedAuthor);
       expect(article?.featuredImage, row.slug).toBe(`/images/learn/${row.slug}.webp`);
       expect(article?.featuredImageAlt.length, row.slug).toBeGreaterThan(20);
       expect(buildArticleStructuredData(article!).datePublished, row.slug).toBe(row.publishedAt);

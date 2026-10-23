@@ -5,7 +5,9 @@ primaryKeyword: "sex doll body painting"
 secondaryKeywords: ["realistic doll makeup", "doll skin finish options"]
 description: "Inspect doll finish references by model, lighting and named painting option, with a checklist for useful follow-up views and limits to what photos can prove."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
