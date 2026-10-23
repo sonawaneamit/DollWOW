@@ -1,5 +1,25 @@
 # Release Measurement Tracker
 
+## Moonvale Corrective Release, 23 October
+
+Martin approved PR182's exact Moonvale correction on DOL-229. Production
+`959a757a` was READY at 18:33:40.053 UTC. The authorization placeholder, block
+and jump link are removed; no new authorization claim was added. Five B-page
+source/schema checks and 20 responsive/native-noJS regression cases passed.
+
+One corrective URL-event row brings the ledger to 3,953 rows. The previous
+3,952 rows are preserved. Its baseline is explicitly reused from
+`dol229b-20261023-02`, not a fresh measurement or independent release effect.
+The original 24 September-21 October window, earlier final-data limitation and
+overlapping Halloween/B-release context remain disclosed.
+
+One changed-URL IndexNow batch was accepted HTTP200 at 18:37:40.058 UTC;
+acceptance is not proof of crawling or indexing. The existing Moonvale Google
+queue entry now also covers this revision. The queue stays at 32 unique URLs,
+10 accepted requests and 22 remaining, with no Google write after today's
+quota stop and no change to prior receipts or priority. C and other previews
+are not release events.
+
 ## 23 October Shopping Batches A And B
 
 Martin approved A and B separately on DOL-229 after Dolly's copy review and

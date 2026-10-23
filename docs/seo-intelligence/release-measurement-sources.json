@@ -799,7 +799,7 @@
       "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
     },
     "googleQueue": {
-      "updatedAt": "2026-10-23T17:24:44.438Z",
+      "updatedAt": "2026-10-23T18:37:40.062Z",
       "urls": [
         {
           "url": "https://dollwow.com/learn/sex-doll-reviews",
@@ -939,7 +939,15 @@
           "ticket": "DOL-229",
           "batch": "B",
           "manualRequestEligible": true,
-          "releaseAt": "2026-10-23T17:21:32.950Z"
+          "releaseAt": "2026-10-23T17:21:32.950Z",
+          "approvedRevisions": [
+            {
+              "commit": "959a757abaad016b65bc8e71f54ef352a8dc286f",
+              "pullRequest": 182,
+              "releaseAt": "2026-10-23T18:33:40.053Z",
+              "change": "Remove held authorization block and jump link only"
+            }
+          ]
         },
         {
           "url": "https://dollwow.com/shop/lightweight-sex-dolls",
@@ -1756,5 +1764,56 @@
     },
     "google": "DOL237quotaSTOP23Oct,deduplicatedqueue;acceptancenotindexing",
     "reviewer": "Whole229InProgress;newreleaseawaitsDollyliveverification,neverCodexselfclosed"
+  },
+  "dol229MoonvaleCorrection": {
+    "approval": "DOL229b530068f Martin19:28Lisbon23Oct exactPR182",
+    "deployment": {
+      "id": "dpl_8HdmekLh3yej2t7jwUJSTLZTLo8T",
+      "url": "doll-rkyjw09rv-sonawaneamits-projects.vercel.app",
+      "commit": "959a757abaad016b65bc8e71f54ef352a8dc286f",
+      "readyAt": 1792780420053,
+      "target": "production",
+      "readyState": "READY",
+      "at": "2026-10-23T18:33:51.880Z",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ]
+    },
+    "eventId": "dol229-moonvale-correction-20261023-01",
+    "events": 1,
+    "reusedBaselineEvent": "dol229b-20261023-02",
+    "baselineStart": "2026-09-24",
+    "baselineEnd": "2026-10-21",
+    "originalEvidenceCapture": "2026-10-23T17:00:52.896Z",
+    "limits": "Baseline explicitly reused from dol229b-20261023-02 captured 2026-10-23T17:00:52.896Z; same complete24Sep-21Oct window, notfreshmeasurement. Prior22Octfinaldata gap retained. SameURL overlaps initialB andHalloween; noisolatedattribution/newpage/indexingclaim. Missingnotzero.",
+    "discovery": {
+      "at": "2026-10-23T18:37:40.058Z",
+      "approval": "DOL229b530068f Martin19:28Lisbon exactPR182; existingDOL224approvedaftereachrelease discoverypolicy",
+      "count": 1,
+      "urls": [
+        "https://dollwow.com/brands/moonvale-dolls"
+      ],
+      "attempts": 1,
+      "httpStatus": 200,
+      "accepted": true,
+      "limits": "One actual corrected URL only; notification accepted notindexed; no Googlewrite."
+    },
+    "googleQueue": {
+      "at": "2026-10-23T18:37:40.062Z",
+      "queueUrls": 32,
+      "accepted": 10,
+      "remaining": 22,
+      "added": 0,
+      "revisedExistingUrl": "https://dollwow.com/brands/moonvale-dolls",
+      "commit": "959a757abaad016b65bc8e71f54ef352a8dc286f",
+      "googleWrites": 0,
+      "priorEventsOrderPolicyPreserved": true
+    },
+    "reviewer": "Whole229InProgress;awaitDollyindependentlivecheck,C/laternotaccepted"
   }
 }
