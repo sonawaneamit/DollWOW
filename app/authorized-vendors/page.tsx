@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, ExternalLink, FileCheck2, ShieldCheck } from "lucide-react";
 import { brandAuthorizations, liveAuthorizedBrands } from "@/lib/catalog/authorizations";
 import { brandHubHref, getCatalogBrand } from "@/lib/catalog/brands";
+import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 
 export const metadata: Metadata = {
   title: "Brand Certifications | DollWow",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function AuthorizedVendorsPage() {
   const certificateEntries = brandAuthorizations.filter((entry) => entry.status === "certificate");
   const writtenConfirmations = brandAuthorizations.filter((entry) => entry.status === "written-confirmation");
+  const pendingCertificates = brandAuthorizations.filter((entry) => entry.status === "certificate-pending");
 
   return (
     <section className="certifications-page shop-visual-shell mx-auto min-h-screen max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -87,6 +89,20 @@ export default function AuthorizedVendorsPage() {
           })}
         </div>
       </section>
+
+      {pendingCertificates.length ? (
+        <section aria-labelledby="pending-certificates-heading">
+          <div className="certifications-section-heading">
+            <p className="certifications-eyebrow"><ShieldCheck aria-hidden="true" /> Certificate status</p>
+            <h2 id="pending-certificates-heading">Formal certificates pending</h2>
+          </div>
+          {pendingCertificates.map((entry) => (
+            <div key={entry.id} id={entry.id}>
+              <BrandAuthorizationCard brand={entry.brandValue} variant="brand" />
+            </div>
+          ))}
+        </section>
+      ) : null}
 
       {writtenConfirmations.length ? (
         <section className="certifications-written" aria-labelledby="written-confirmations-heading">
