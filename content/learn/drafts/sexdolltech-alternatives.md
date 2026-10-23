@@ -33,18 +33,26 @@ If you are comparing **SexDollTech alternatives**, separate three questions: whi
 
 ## Compare The Same Build, Not Two Store Names
 
-This is a buying checklist, not a hands-on SexDollTech review or a verified current price comparison. We have not established that another retailer lacks a service simply because it is not described here. Record the current offer URL and date for both sellers, then complete the same fields:
+This is a shopping checklist, not a hands-on SexDollTech review. Save both listing links and the date, then compare the details that change what you get:
 
-| Decision area | Evidence needed from each offer | If it is not documented |
+| What to compare | What to check on both listings | If something's missing |
 | --- | --- | --- |
-| Product identity | Manufacturer, exact body and head codes, revision, and material | Treat the match as unconfirmed |
-| Included configuration | Skin tone, hair, finish, installed functions, accessories, and paid options | Ask what the pictured build includes |
-| Handling | Measurements, listed weight, and whether the head or packaging is included | Do not compare unlike weight figures |
-| Availability | Existing unit or new production, location, and confirmed configuration | Do not equate a shipping label with a delivery promise |
-| Delivered price | Same currency, destination, options, shipping, taxes, and applicable duties | Leave the total unknown rather than infer a saving |
-| Aftercare | Published eligibility, exclusions, repair route, and seller contact details | Ask for the controlling terms |
+| The doll | Brand, exact body and head codes, version, and material | Ask whether it's the same build |
+| What's included | Skin tone, hair, finish, functions, accessories, and paid options | Check which pictured extras cost more |
+| Handling | Measurements and whether the head or packaging is counted in the weight | Ask for comparable figures |
+| Stock and delivery | Ready stock or new production, location, and exact configuration | Confirm dispatch and delivery separately |
+| Delivered price | Same currency, destination, options, shipping, taxes, and applicable duties | Get the full total before calling one cheaper |
+| Aftercare | Support contacts, coverage, exclusions, and repair options | Read the linked terms and ask questions |
 
-Only call an offer cheaper after those differences are resolved. An unanswered field is not proof of poor quality, missing support, or a saving. DollWow's [Compare a listing](/compare) is a route to request that check, not a guarantee that every competing offer qualifies for price protection.
+An unanswered question means you need more information, not that a seller lacks the feature or service. Once the builds match, compare the delivered totals.
+
+## What DollWow Can Help With
+
+- **Compare a listing:** send us the other offer through [Compare a listing](/compare). We can help check the build and included options before you compare prices. Price protection has its own [eligibility and terms](/best-price-guarantee).
+- **Human Build Check:** eligible [custom orders](/shop/custom) get a review of the selected options and obvious compatibility issues before production. It's a chance to clear up missing choices, not a promise that every option works together.
+- **Ownership support:** our [Care for Life page](/care-for-life) explains Care 365, repair help, and the current coverage terms. You can check what support includes before you order.
+
+Those are DollWow services you can check directly. They aren't claims about what another store does or doesn't offer.
 
 ## Start With the Exact Look You Want
 
@@ -87,7 +95,7 @@ Read [TPE versus silicone sex dolls](/learn/tpe-vs-silicone-sex-dolls), then com
 
 Height is easy to scan but does not predict ownership effort. Review:
 
-- listed weight in pounds and kilograms, with body-only, head-and-body, or packaged basis identified
+- listed weight in pounds and kilograms, including whether the head or packaging is counted
 - shoulder width
 - bust or chest, waist, and hips
 - torso and limb proportions

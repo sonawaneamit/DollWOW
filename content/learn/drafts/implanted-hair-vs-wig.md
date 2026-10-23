@@ -40,20 +40,20 @@ The real choice is flexibility versus commitment. A wig lets you change course. 
 
 ## Confirm The Hair Specification Before Paying
 
-Neither "wig" nor "implanted" identifies the fiber or the permitted styling method. Save these details with the selected head:
+Before you pay, find out what the hair is made of and how to care for it. "Wig" and "implanted" don't tell you either one. Keep these details with your head choice:
 
-| Detail | Confirmation to request |
+| Detail | What to ask |
 | --- | --- |
-| Identity | Exact head model and revision, hair option, and any powered functions |
-| Material | Human hair, synthetic fiber, or an unspecified material awaiting confirmation |
-| Appearance | Supported color, length, coverage, and a representative hairline photograph |
-| Care | Supplier-approved washing, drying, detangling, products, and heat limits for that hair and head |
-| Replacement | Wig size and attachment method, or the supplier's implanted-hair repair route |
-| Order total | Included item or paid upgrade, price change, and effect on production |
+| The head | Which model and version, hair option, and powered functions am I choosing? |
+| The hair | Is it human hair, synthetic, or still unconfirmed? |
+| The look | Which colors and lengths are supported? Can I see the hairline? |
+| Care | How should I wash, dry, and detangle it? Which products and heat limits are approved? |
+| Replacement | What wig size and attachment do I need, or who can repair the implanted hair? |
+| Your total | Is it included or an upgrade? Does it change the price or production time? |
 
-If heat tolerance is not documented, do not choose a temperature by guesswork. Hair-fiber tolerance alone does not establish that the scalp, adhesive, paint, or electronics tolerate the same treatment.
+Don't guess a styling temperature. Even if the hair can take heat, the scalp, glue, paint, or electronics may not.
 
-For example, [Irontech's own FAQ](https://www.irontechdoll.com/help-faq/) lists a wig among the accessories shipped with a doll. That general list does not identify the exact wig, fiber, or permitted heat treatment for your order. Confirm the selected model's included item; do not assume that a gallery hairstyle or a different manufacturer's package is the same.
+[Irontech lists a wig in its accessory package](https://www.irontechdoll.com/help-faq/). Ask which wig comes with your doll and how to care for it; the accessory list doesn't give those details.
 
 ## Comparison Table
 

@@ -41,7 +41,7 @@ Confirm first:
 - Brand and body model
 - Full doll, torso, hips, head, or another product form
 - Height in feet and inches and centimeters
-- Listed weight in pounds and kilograms, with body-only, complete-build, or packaged basis confirmed
+- Listed weight in pounds and kilograms, including whether the head or packaging is counted
 - Bust, waist, hips, shoulders, and other useful measurements
 - TPE, full silicone, or hybrid construction
 - Compatible head system
@@ -179,19 +179,19 @@ Ask for a written final specification showing what will be built and what will t
 
 ## A Build Record You Can Actually Check
 
-Keep one agreed record rather than separate screenshots of an option menu. The examples below describe fields to confirm, not features available on every doll.
+Put your final choices in one place so you don't have to piece them together from screenshots. Options vary by doll; here's what to save:
 
-| Record field | What to save | If the answer is missing |
+| Your build | What to save | What to ask |
 | --- | --- | --- |
-| Product identity | Manufacturer, body code, head code, material, and head revision | Do not assume two similar names describe the same build |
-| Physical fit | Measurements, weight basis, and whether the head is included | Ask before planning lifting, storage, or delivery |
-| Each selected option | Exact option name, included or paid status, and price change | Keep it pending rather than treating a photo as inclusion |
-| Compatibility | Confirmation for the exact combination, including exclusions | Resolve the conflict before production approval |
-| Reference appearance | Which images represent the selected tone, hair, and finish | Identify styling or accessories that are not included |
-| Fulfillment and total | Warehouse or factory path, destination, currency, delivery charges, and applicable taxes | Compare complete delivered offers, not starting prices |
-| Approval and changes | Accepted specification, approval date, change cutoff, and available factory checks | Ask which changes remain possible before authorizing them |
+| The doll itself | Brand, body code, head code and version, and material | Are these the exact parts shown in your photos? |
+| Size and handling | Measurements, weight, and whether the head is counted | What should I plan for lifting, storage, and delivery? |
+| Your options | Each choice, whether it's included, and any added cost | Is this pictured feature actually in my order? |
+| What works together | Confirmation of your exact combination | Do any of my choices conflict? |
+| The finished look | Reference images for your skin tone, hair, and finish | Which styling or accessories aren't included? |
+| Delivery and total | Stock or factory order, destination, currency, shipping, and taxes | What's the total for this build delivered to me? |
+| Your approval | Final choices, approval date, change deadline, and available factory checks | What can I still change, and until when? |
 
-Photographs can help verify visible choices, but cannot establish an internal heating system, connector specification, or material formulation by themselves. Keep the written confirmation alongside the images. Use [Compare a listing](/compare) for an offer check or [custom dolls](/shop/custom) for current shopping options; this guide is the configuration checklist, not an availability promise.
+Photos help with the look. Keep written confirmation for things you can't see, like internal heating or the head connector. Have another offer in mind? Try [Compare a listing](/compare). Ready to choose a base? Browse [custom dolls](/shop/custom) for the current options.
 
 ## Starting Price Versus Final Configured Price
 
