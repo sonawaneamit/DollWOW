@@ -6,6 +6,11 @@ import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
+import { isReviewedIronAiHead } from "./ironAiStandaloneHead";
+
+function isIronAiHeadOnly(product: Product) {
+  return isReviewedIronAiHead(product) && isHeadOnlyProduct(product);
+}
 
 type IntentChip = {
   label: string;
@@ -68,6 +73,11 @@ export function buildPdpMetadata(product: Product): Metadata {
 }
 
 export function buildPdpSearchFit(product: Product) {
+  if (isIronAiHeadOnly(product)) return {
+    title: "At a glance",
+    summary: "Standalone IronAI smart head for voice and text interaction over 2.4 GHz Wi-Fi. A doll body is not included. Selected M16 body compatibility depends on the head and body model.",
+    chips: buildIntentChips(product)
+  };
   const brand = product.extended.brand || product.vendor || "DollWow";
   const brandCopy = cleanText(brand).replace(/\s+dolls$/i, "");
   const orderType = product.extended.stockStatus === "ready_to_ship" ? "ready to ship" : product.extended.customAvailable ? "custom order" : "special order";
@@ -89,6 +99,11 @@ export function buildPdpSearchFit(product: Product) {
 }
 
 export function buildPdpDecisionNotes(product: Product): DecisionNote[] {
+  if (isIronAiHeadOnly(product)) return [
+    { title: "Head only", body: "This listing is for an IronAI smart head, not a full doll. A body is not included." },
+    { title: "Connectivity", body: "Voice and text interaction over 2.4 GHz Wi-Fi, with OTA updates. Some app features require a separate subscription." },
+    { title: "Compatibility", body: "Designed for selected M16-connected bodies. Fit depends on the specific head and body model, not the connector size alone." }
+  ];
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "Confirmed size";
   const normalizedCup = normalizeCup(product.extended.cupSize);
   const cup = normalizedCup ? `${normalizedCup}-Cup` : "profile";
@@ -153,6 +168,11 @@ export function buildPdpTrustSignals(product: Product): TrustSignal[] {
 }
 
 export function buildPdpFitChecks(product: Product): FitCheck[] {
+  if (isIronAiHeadOnly(product)) return [
+    { title: "What's included", body: "IronAI smart head only. A doll body is not included." },
+    { title: "Connection", body: "Selected M16 body compatibility; not a universal fit." },
+    { title: "Setup", body: "IronAI app and 2.4 GHz Wi-Fi are required for connected features." }
+  ];
   const measurements = productMeasurementSpecs(product);
   const measurementMap = new Map(measurements.map((item) => [item.label, item.value]));
   const bust = measurementMap.get("Bust");
@@ -275,7 +295,7 @@ export function buildProductStructuredData(product: Product) {
   const publicTitle = productPublicTitle(product);
   const canonicalUrl = productCanonicalUrl(product);
   const brand = product.extended.brand || product.vendor || "DollWow";
-  const material = product.extended.material || inferredMaterial(product);
+  const material = product.extended.material || (isIronAiHeadOnly(product) ? undefined : inferredMaterial(product));
   const measurements = productMeasurementSpecs(product);
   const keywords = productKeywordSet(product);
   const additionalProperty = productSchemaProperties(product, measurements);
@@ -292,7 +312,7 @@ export function buildProductStructuredData(product: Product) {
       "@type": "Brand",
       name: brand
     },
-    category: material ? `${material} companion doll` : "Companion doll",
+    category: isIronAiHeadOnly(product) ? "Standalone smart head" : material ? `${material} companion doll` : "Companion doll",
     material: material || undefined,
     sku: product.handle,
     mpn: product.extended.catalogIdentityKey || product.extended.catalogBodyIdentityKey || undefined,
@@ -320,7 +340,7 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
   const properties = [
     ...measurements.map((measurement) => ({ name: measurement.label, value: measurement.value })),
     { name: "Brand", value: product.extended.brand || product.vendor },
-    { name: "Material", value: product.extended.material || inferredMaterial(product) },
+    { name: "Material", value: product.extended.material || (isIronAiHeadOnly(product) ? undefined : inferredMaterial(product)) },
     { name: "Body type", value: productBodyLabel(product) },
     { name: "Head model", value: product.extended.headModel },
     { name: "Height", value: product.extended.heightCm ? `${product.extended.heightCm} cm` : undefined },
@@ -381,6 +401,12 @@ export function buildProductFaqStructuredData(product: Product) {
 }
 
 export function pdpFaqItems(product: Product): FaqItem[] {
+  if (isIronAiHeadOnly(product)) return [
+    { question: "Is a doll body included?", answer: "No. This is a standalone IronAI smart head listing; a doll body is not included." },
+    { question: "What connection does IronAI need?", answer: "Connected voice and text features use the IronAI app and 2.4 GHz Wi-Fi." },
+    { question: "Will this head fit any M16 body?", answer: "No. Compatibility is limited to selected head and body models; an M16 connector alone does not establish fit." },
+    { question: "Does IronAI require a subscription?", answer: "Some app features require a separate subscription. Included access and paid plans depend on the IronAI service." }
+  ];
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
   const delivery = product.extended.deliveryEstimate || (readyToShip ? "Typical warehouse delivery is 3–5 business days" : "Typical timing depends on the build");
 
@@ -471,6 +497,7 @@ function buildFitPhrase(product: Product, height: string, cup: string) {
 }
 
 function productKeywordSet(product: Product) {
+  if (isIronAiHeadOnly(product)) return ["Irontech IronAI smart head", "IronAI standalone head", "IronAI head only"];
   const aliases = productSeoAliases(product);
   const intentKeywords = buildIntentChips(product).map((chip) => chip.keyword);
   return Array.from(
@@ -483,6 +510,11 @@ function productKeywordSet(product: Product) {
 }
 
 function buildIntentChips(product: Product): IntentChip[] {
+  if (isIronAiHeadOnly(product)) return [
+    { label: "Head only", keyword: "IronAI standalone head" },
+    { label: "Voice + text", keyword: "IronAI smart head" },
+    { label: "2.4 GHz Wi-Fi", keyword: "IronAI connectivity" }
+  ];
   const text = searchableText(product);
   const chips: IntentChip[] = [];
   const material = (product.extended.material || inferredMaterial(product)).toLowerCase();
