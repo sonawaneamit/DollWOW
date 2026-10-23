@@ -120,7 +120,7 @@ describe("Wave 3 collection SEO", () => {
 
     expect(metadata.title).toBe("Affordable Sex Dolls for Sale | Options Under $1,000");
     expect(copy).toContain("$1,000 or less");
-    expect(copy).toContain("Care 365");
+    expect(copy).toContain("Care for Life");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 
@@ -214,10 +214,29 @@ describe("new sex dolls collection SEO", () => {
 
     expect(preset.title).toBe("New sex dolls and latest arrivals");
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("available supplier release ordering");
-    expect(copy).toContain("New does not automatically mean more realistic");
-    expect(copy).toContain("4 to 6 hours");
+    expect(copy).toContain("most recently created listings first");
+    expect(copy).toContain("including designs released earlier by their manufacturers");
+    expect(copy).not.toContain("available supplier release ordering");
+    expect(copy).not.toMatch(/New does not automatically|4 to 6 hours/);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
+describe("lightweight collection current boundary", () => {
+  it("describes the current range consistently without changing membership", () => {
+    const handle = "lightweight-sex-dolls", preset = collectionPresets[handle];
+    const metadata = buildCollectionMetadata(handle, preset);
+    const surfaces = [collectionIntro(preset, handle), metadata.description,
+      collectionBuyerNotes(handle, preset)[0].body,
+      collectionComparisonRows(handle, preset)[0].dollWowAdvantage,
+      collectionFaqItems(handle, preset)[0].answer];
+    expect(preset.filters).toEqual({ productForm: "full-doll", weight: "0-74" });
+    expect(surfaces[0]).toContain("74 lb or less (about 33.6 kg)");
+    expect(metadata.description).toContain("74 lb or less");
+    for (const text of surfaces) expect(text).not.toMatch(/under 75|positive listed weight|universal industry/i);
+    const buyerCopy = JSON.stringify({ intro: surfaces[0], notes: collectionBuyerNotes(handle, preset), rows: collectionComparisonRows(handle, preset), faqs: collectionFaqItems(handle, preset) });
+    expect(buyerCopy.match(/74 lb or less/g)).toHaveLength(1);
+    expect(buyerCopy).not.toContain("4 to 6 hours");
   });
 });
 
