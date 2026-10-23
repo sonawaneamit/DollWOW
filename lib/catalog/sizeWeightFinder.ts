@@ -32,7 +32,7 @@ export function buildFinderRows(products: Product[]) {
     seen.add(p.id);
     const bodyOnly = isMdReleaseWeight(p) && mdFactoryBodyKg(p.extended.brand || p.vendor, p.extended.measurements) !== undefined;
     rows.push({
-      id: p.id, handle: p.handle, title: p.extended.displayName || p.title,
+      id: p.id, handle: p.handle, title: p.title,
       heightCm: p.extended.heightCm!, material: matches[0].value,
       weightLb: Number.isFinite(p.extended.weightLb) && p.extended.weightLb! > 0 ? p.extended.weightLb! : null,
       basis: bodyOnly ? 'factory-body-only' : 'unspecified',

@@ -73,6 +73,10 @@ describe('size and weight Finder source contract', () => {
     const { rows } = buildFinderRows([product('a')]);
     expect(Object.keys(rows[0]).sort()).toEqual(['basis', 'handle', 'heightCm', 'id', 'material', 'title', 'weightLb']);
   });
+  it('keeps the full listing title so repeated first names remain distinguishable', () => {
+    const p = product('a'); p.title = 'Example Brand Alice 165cm TPE'; p.extended.displayName = 'Alice';
+    expect(buildFinderRows([p]).rows[0].title).toBe('Example Brand Alice 165cm TPE');
+  });
   it('converts both unit systems without changing input values', () => {
     expect(finderWeight(72.8)).toBe('33.0 kg / 72.8 lb');
     expect(finderHeight(165)).toBe('165 cm / 5 ft 5 in');
