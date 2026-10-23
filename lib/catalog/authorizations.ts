@@ -1,6 +1,6 @@
 import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 
-export type AuthorizationStatus = "certificate" | "written-confirmation" | "authorized";
+export type AuthorizationStatus = "certificate" | "written-confirmation" | "certificate-pending" | "authorized";
 
 export type BrandAuthorization = {
   id: string;
@@ -16,9 +16,18 @@ export type BrandAuthorization = {
   confirmationSrc?: string;
   confirmationPreviewSrc?: string;
   confirmationDate?: string;
+  certificatePendingStatement?: string;
 };
 
 const allBrandAuthorizations: BrandAuthorization[] = [
+  {
+    id: "se-doll",
+    brand: "SE Doll",
+    brandValue: "sedoll",
+    aliases: ["se doll", "sedoll", "se-doll"],
+    status: "certificate-pending",
+    certificatePendingStatement: "Certified SE Doll reseller. Formal authorization certificate pending our first order."
+  },
   {
     id: "erovenus",
     brand: "Erovenus",

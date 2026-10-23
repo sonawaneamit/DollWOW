@@ -5,7 +5,9 @@ primaryKeyword: "MD vs IDO doll"
 secondaryKeywords: ["MD silicone doll comparison", "IDO silicone build"]
 description: "Use Bonnie and Tatiana-1 factory pages to distinguish MD's selectable options from IDO's standard package, then record which choices still need confirmation."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

@@ -5,7 +5,9 @@ primaryKeyword: "sex doll shipping weight"
 secondaryKeywords: ["doll net weight", "doll boxed weight"]
 description: "Separate body, head, accessories and packaging weight with a practical worksheet, so delivery planning and everyday handling use the right figures."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

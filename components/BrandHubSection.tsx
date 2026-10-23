@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 
 export function usesCompactBrandLayout(brand: string) {
-  return ["irontech", "wm", "sedoll", "starpery"].includes(brand);
+  return ["irontech", "wm", "sedoll", "starpery", "dolls-castle", "moonvale", "tantaly"].includes(brand);
 }
 
 export function BrandHubSection({ compact, id, title, eyebrow, comparison = false, children }: {

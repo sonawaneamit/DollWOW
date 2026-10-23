@@ -5,7 +5,9 @@ primaryKeyword: "sex doll clothing size"
 secondaryKeywords: ["doll clothing measurements", "clothes for adult dolls"]
 description: "Use a practical measurement worksheet to compare doll proportions with a clothing size chart, garment opening and fabric before buying an outfit."
 category: "Ownership"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

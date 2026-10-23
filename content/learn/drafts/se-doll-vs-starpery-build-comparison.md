@@ -5,7 +5,9 @@ primaryKeyword: "SE Doll vs Starpery"
 secondaryKeywords: ["SE Doll Starpery comparison", "TPE doll build comparison"]
 description: "Contrast SE Alba A and Starpery Amy at the same listed height using dated proportions, head/body labels and starting prices, not a controlled brand test."
 category: "Brand Comparisons"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

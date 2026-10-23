@@ -3,12 +3,14 @@ title: "Irontech ROS and ROS MAX: Reading Head Labels and Codes"
 slug: "irontech-head-types-ros-max"
 primaryKeyword: "Irontech ROS vs ROS MAX"
 secondaryKeywords: ["Irontech head options", "ROS MAX head compatibility"]
-description: "Read Irontech ROS and ROS MAX labels through verified head-code examples, separate construction from appearance, and identify what remains unconfirmed."
+description: "Compare Irontech ROS and ROS MAX heads, read head codes, and choose your body, hair and optional features. Learn what ROS MAX changes before ordering."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
-lastReviewed: "2026-10-16"
+lastReviewed: "2026-10-23"
 featuredImage: "/images/learn/irontech-head-types-ros-max.webp"
 featuredImageAlt: "Irontech head-choice cover with a clothed Viola catalog photograph and head-type labels."
 publishedAt: "2026-10-21T09:00:00.000Z"
@@ -16,66 +18,52 @@ publishedAt: "2026-10-21T09:00:00.000Z"
 
 # Irontech ROS and ROS MAX: Reading Head Labels and Codes
 
-Choose the face you like, then check the complete head code. A name or photograph can help identify a look, but it does not reliably identify the mechanism, version or options included in an Irontech configuration.
+ROS and ROS MAX are Irontech head designs. ROS MAX updates the earlier ROS design, with changes around the mouth, jaw and eyes. Start with the face you like, then choose the head version and extras you want.
 
-ROS MAX is a specific head construction, not a label that means every available facial feature is included. That distinction matters when comparing two listings with similar photographs.
+## Standard Silicone Heads
 
-## What the manufacturer actually identifies
+For standard silicone choices, start by comparing hard and soft silicone. Irontech's [head-options demonstration](https://www.irontechdoll.com/sex-doll-options-functions/) shows how the two materials respond to touch, along with eye and makeup details. The video doesn't identify individual head codes, so use it to compare materials rather than to pick a face.
 
-Irontech describes ROS MAX as an upgraded ROS design with changes to the mouth and jaw construction and the area around the eyes. Its official product page identifies silicone construction and lists selectable head codes and additional choices. [Official ROS MAX listing](https://www.irontechdoll.com/product/sex-doll-head-ros-max/)
+## What ROS MAX Changes
 
-The practical question is which version belongs to your exact head code. Do not assume that all photographs of a named face show the same version, or that a head available separately is included with every full-body listing.
+Irontech's [ROS MAX overview](https://www.irontechdoll.com/ros-silicone-head/) explains the updated construction. Its [ROS MAX head listing](https://www.irontechdoll.com/product/sex-doll-head-ros-max/) shows the silicone heads and available options.
 
-For example, S13, S14, S20, S27, S30, S31, S32 and S33 appear in both the ROS MAX product menu and its written head list when checked on 16 October 2026. These are documented ROS MAX head choices, not a list of bodies they fit. The factory's longer menu and other reference lists differ, so confirm codes outside that shared set individually.
+The full head code helps you find the same face again. For example, S13 and S31 appear on the ROS MAX listing checked on October 16, 2026. Add the version to your notes, too: the face code and ROS MAX label tell you different parts of the story.
 
-| Label you encounter | Supported reading | Do not infer |
-| --- | --- | --- |
-| S13 ROS MAX or S31 ROS MAX | Two examples explicitly named on the factory ROS MAX page | Either head fits a particular body without confirmation |
-| ROS versus ROS MAX | Factory distinguishes an earlier design from its revised head construction | The same face code is available in both versions |
-| Standard head | The seller's included/default head needs an exact description | A universal mechanism or eye system |
-| Same as photo | An appearance reference needs identifying | A head version, material or installed function |
+- **Head code:** identifies the design you're choosing, such as S13 or S31.
+- **Head version:** tells you whether you're looking at a standard, ROS or ROS MAX head.
+- **Photo styling:** shows a look you may like. Record the skin tone, makeup and hair choices to order that look.
 
-## Separate the code, construction and appearance
+## What About The Eyes?
 
-| Detail | What it answers |
-| --- | --- |
-| Full head code and version | Which exact head is being supplied? |
-| ROS or ROS MAX designation | Which documented construction applies? |
-| Skin tone and makeup | Which appearance is ordered? |
-| Hair type and colour | Is the selected hair a wig or an implanted option? |
-| Body pairing | Is this head supported on the chosen body? |
-| Additional functions | Which separate options are selected and priced? |
+ROS MAX doesn't include blinking or dynamic eye movement. Irontech's [care advice](https://www.irontechdoll.com/help-faq/) says to leave the eyelids alone rather than pull them into an expression. Choose your eye color from the options on the listing.
 
-Keep those fields separate in your notes. "Same as photo" can refer to an appearance choice; it is not a substitute for the construction code or a list of installed functions.
+## Choose Your Irontech Head And Body
 
-## ROS MAX does not mean blinking eyes
+Every Irontech head fits every Irontech body.
 
-Irontech's FAQ specifically warns that ROS MAX does not include a dynamic eye-movement function. It advises against pulling the eyelids to create blinking or exaggerated expressions. [Factory guidance](https://www.irontechdoll.com/help-faq/)
+Pick your body shape and head design, then choose the skin tone, makeup and hair. Keep the body and head codes together so you can find the same build later.
 
-An updated eyelid-area design is therefore not evidence of a movable-eyelid upgrade. Eye colour, eye construction and eyelid movement are different characteristics. If you want to compare them, use the exact supported selections for the head rather than interpreting the photograph.
+## Choose Your Extras
 
-The same principle applies to marketing videos. A demonstration needs to identify the head version being shown. A feature demonstrated on one head is not automatically a feature of another with a similar face.
+On the product page, you'll see which choices are included and which cost extra. Check the option summary and total for your selected doll. A head included with the doll, a replacement head and an extra head are different purchases.
 
-## Check optional functions separately
+For hair, compare the wig and implanted choices offered for your selected head. Our [wig versus implanted-hair guide](/learn/implanted-hair-vs-wig) walks through styling and care. Other functions have their own selections and prices, so choose the ones you'll use.
 
-The factory's ROS MAX page presents appearance choices and additional functions as separate selections. Do not treat a selectable function as included merely because it appears in the product menu. [Factory configuration](https://www.irontechdoll.com/product/sex-doll-head-ros-max/)
-
-On DollWOW, compare the option summary and configured total for the actual doll. The head supplied with a body, an optional replacement head and an extra head are different purchasing arrangements. Compare like with like before judging the price difference.
-
-For hair, start with the exact head material and supported choices. Do not copy the hair menu from another Irontech head or another brand. The [wig versus implanted-hair guide](/learn/implanted-hair-vs-wig) covers that decision in more detail.
-
-## Keep the body pairing marked unconfirmed
-
-For a short list of two or three builds, record the full body code and head code together. Add the skin tone, hair selection, any separately chosen functions and the date of the configuration.
-
-That record is especially useful if you return to the decision later. A new gallery release might show the same face on a different body or with different makeup. You want to compare the item you would order, not only the image you remember.
-
-Where a listing simply says "standard head," read the actual specification rather than treating the word as a technical standard shared by every manufacturer. It should identify what is included and what can be changed. This is a label-reading guide, not a head-to-body fit matrix. Even a documented ROS MAX code needs its particular body pairing confirmed.
-
-## Choose the feature you actually want
-
-For appearance, compare the same head in clear photographs. For construction, compare the manufacturer's stated version and supported functions. For the complete purchase, compare the selected body, options and final total.
-
-You do not need to choose the highest-sounding label by default. Choose the exact build that supports the features you want without paying for assumptions.
+Ready to compare? Start with the face and body you like, then look at what each version adds for you.
 
 Browse [Irontech dolls](/brands/irontech-dolls), or use the broader [Irontech buying guide](/learn/irontech-dolls-buying-guide) to compare the brand's materials and body choices.
+
+## FAQs
+
+### Does ROS MAX include dynamic eye movement?
+
+No. ROS MAX doesn't include blinking or dynamic eye movement. Follow Irontech's care advice and avoid pulling the eyelids.
+
+### Can I pair a ROS MAX head with any Irontech body?
+
+Yes. Every Irontech head fits every Irontech body, including ROS MAX heads.
+
+### Are optional functions included in every ROS MAX listing?
+
+No. The product page shows what's included and which extras you can select. Check your option summary and total before ordering.

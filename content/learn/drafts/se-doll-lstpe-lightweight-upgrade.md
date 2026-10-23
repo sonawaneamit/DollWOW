@@ -5,7 +5,9 @@ primaryKeyword: "SE Doll LSTPE"
 secondaryKeywords: ["SEDOLL lightweight upgrade", "LSTPE vs STPE"]
 description: "Compare SE Doll's published LSTPE body weights, supported body codes and separate silicone-head choice before choosing your configuration."
 category: "Materials And Care"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
