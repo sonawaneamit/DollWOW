@@ -13,11 +13,12 @@ describe('scoped customer-facing guide dates', () => {
     vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-23T21:00:00Z')); vi.stubGlobal('React', React);
     const article = getLearningArticle(se)!;
     expect(article.hideReviewDate).toBe(true);
-    expect(article.lastReviewed).toBe('2026-10-16');
+    expect(article.lastReviewed).toBe('2026-10-23');
     expect(article.publishedAt).toBe('2026-10-19T09:00:00.000Z');
     const dom = parse(renderToStaticMarkup(await Page({ params: Promise.resolve({ slug: se }) })));
     const schema = dom.querySelectorAll('script[type="application/ld+json"]').map(node => JSON.parse(node.text)).find(value => value['@type'] === 'Article');
     expect(schema.datePublished).toBe(article.publishedAt);
+    expect(schema.dateModified.slice(0, 10)).toBe('2026-10-23');
     dom.querySelectorAll('script').forEach(node => node.remove());
     expect(dom.text).not.toMatch(/Last reviewed|basis not specified|basis unspecified|snapshot|Sources:|Starting price,|catalog comparison|review date|decision-critical/);
     for (const fact of ['35 kg / 77.2 lb', '52.5 kg / 115.7 lb', '83 / 50 / 89 cm', '109 / 102 / 125 cm', '$1,899', '$2,199', '$300', '52 cm', '36 cm']) expect(dom.text).toContain(fact);

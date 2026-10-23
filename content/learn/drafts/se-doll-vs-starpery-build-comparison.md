@@ -10,7 +10,7 @@ authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
-lastReviewed: "2026-10-16"
+lastReviewed: "2026-10-23"
 hideReviewDate: true
 featuredImage: "/images/learn/se-doll-vs-starpery-build-comparison.webp"
 featuredImageAlt: "SE Doll and Starpery comparison cover with two blank specification sheets."
