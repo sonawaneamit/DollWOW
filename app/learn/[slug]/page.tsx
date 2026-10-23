@@ -26,6 +26,8 @@ import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
+import { PriceSizeIndexReview } from "@/components/PriceSizeIndexReview";
+import { getPriceSizeIndexReview } from "@/lib/references/priceSizeIndex";
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const metadataTitle = metadataTitles[article.slug] ?? article.title;
   return {
     title: metadataTitle,
+    ...(article.slug === "sex-doll-size-weight-guide" && getPriceSizeIndexReview() ? { robots: { index: false, follow: false } } : {}),
     description: article.description,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
     alternates: {
@@ -298,6 +301,7 @@ function SizeWeightArticle({ markdown }: { markdown: string }) {
     <>
       <MarkdownContent markdown={markdown.slice(0, boundaryIndex)} />
       <SizeWeightCatalogIndex />
+      <PriceSizeIndexReview />
       <MarkdownContent markdown={markdown.slice(boundaryIndex + 1)} />
     </>
   );
