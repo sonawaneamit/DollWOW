@@ -138,7 +138,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               </p>
               <p className="mt-2 text-sm leading-6 text-ivory-300">{article.author === "editorial" ? LEARN_EDITORIAL_AUTHOR.shortBio : author?.bio}</p>
               {article.publishedAt ? <p className="mt-3 text-sm text-gold-300">Published <time dateTime={article.publishedAt}>{learnArticlePublishedAt(article).slice(0, 10)}</time></p> : null}
-              <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>
+              {!article.hideReviewDate && <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>}
             </div>
           </div>
         </div>
