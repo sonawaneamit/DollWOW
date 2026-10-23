@@ -964,13 +964,13 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
   ];
 }
 
-export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
+export function brandSeoProfile(brand: CatalogBrand, deployment = process.env.VERCEL_ENV): BrandSeoProfile {
   const custom = brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
     `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;
 
-  return {
+  const profile: BrandSeoProfile = {
     intro:
       custom.intro ??
       `Shop ${brand.label} models on DollWow and compare material, size, price, availability, and custom options in one place. ${positioning} Open any product page for full photos, exact measurements, available choices, and delivery information before checkout.`,
@@ -982,6 +982,24 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),
     comparisonRows: custom.comparisonRows,
     faqs: custom.faqs ?? defaultFaqs(brand)
+  };
+  if (deployment !== "preview" || !["ido", "md"].includes(brand.value)) return profile;
+
+  // Keep the existing factory-feature guidance, but distinguish it from an exact order.
+  const orderingQuestion = {
+    question: `Can I customize a ready-to-ship ${brand.label} listing?`,
+    answer: "A warehouse listing describes a particular build and location; do not assume that a custom-made menu applies to that unit. For a custom-made doll shipped from the factory, confirm the exact body, head, included features, supported selections and production timing. Check the current product's ordering path before comparing totals."
+  };
+  return {
+    ...profile,
+    intro: brand.value === "ido"
+      ? "Compare IDO silicone dolls by exact body, ID-series head, dimensions, listed weight and ordering path. Review the factory-feature guidance below alongside the individual listing: a feature package does not establish every head's functions or the choices available on a fixed warehouse build."
+      : "Compare MD Doll and MDDOLL silicone listings by exact body version, head, measurements, listed weight and ordering path. Check whether you are viewing a full doll or a partial-body model; full-doll feature guidance is not proof of what a torso or a fixed warehouse build includes.",
+    buyerNotes: [...profile.buyerNotes, {
+      title: "Keep the exact order record",
+      body: "Save the body and head codes, material, selected appearance, included features and final price together. Confirm whether a listed weight covers the body only, the complete doll or its shipping package; do not estimate a missing figure from height or a similar model."
+    }],
+    faqs: [...profile.faqs, orderingQuestion]
   };
 }
 

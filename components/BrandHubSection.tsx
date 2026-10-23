@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 
-export function usesCompactBrandLayout(brand: string) {
-  return ["irontech", "wm", "sedoll", "starpery"].includes(brand);
+export function usesCompactBrandLayout(brand: string, deployment = process.env.VERCEL_ENV) {
+  if (["irontech", "wm", "sedoll", "starpery"].includes(brand)) return true;
+  return deployment === "preview" && ["ido", "md"].includes(brand);
 }
 
 export function BrandHubSection({ compact, id, title, eyebrow, comparison = false, children }: {
