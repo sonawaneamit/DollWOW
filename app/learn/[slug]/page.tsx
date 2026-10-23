@@ -25,6 +25,7 @@ import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
+import { featureGuideMedia } from "@/components/FeatureGuideMedia";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
 
 export const dynamic = "force-dynamic";
@@ -154,6 +155,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
                 markdown={article.body}
                 sectionVisuals={guideSectionVisuals(article.slug)}
                 sectionInsertions={[
+                  ...featureGuideMedia(article.slug),
                   ...(article.slug === "sex-doll-guide" ? [{ afterHeading: "Quick Answer", placement: "after-section" as const, content: <GuideShoppingLinks /> }] : []),
                   ...(guideProductGroups.length ? [{
                   afterHeading: "Curated Live Product Shortlists",

@@ -5,7 +5,9 @@ primaryKeyword: "sex doll weight reduction"
 secondaryKeywords: ["2026 doll factory upgrades", "doll upgrade compatibility"]
 description: "Review documented SE LSTPE and Irontech ULW updates, their model limits and the difference between a factory announcement and the configuration you can order."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

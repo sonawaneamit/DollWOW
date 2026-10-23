@@ -13,6 +13,9 @@ import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptemberPromotion";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
+import { GuideLinkRow } from "@/components/GuideLinkRow";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -61,10 +64,15 @@ export default async function BrandHubPage({
     .map(([key, value]) => getCatalogFilterLabel(key as keyof typeof filters, value as string))
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 1;
+  const authorization = brand.value === "moonvale"
+    ? null
+    : <BrandAuthorizationCard brand={brand.value} variant="brand" />;
 
   const comparison = (
       <BrandHubSection compact={compactBrowsing} comparison id="brand-comparison-heading" eyebrow="Brand comparison" title={`How to evaluate ${brand.label}`}>
-        <div className="overflow-x-auto">
+        {profile.comparisonBullets ? <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">
+          {profile.comparisonBullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+        </ul> : <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
             <thead className="bg-ink-950/60 text-ivory-100">
               <tr>
@@ -87,7 +95,8 @@ export default async function BrandHubPage({
               ))}
             </tbody>
           </table>
-        </div>
+        </div>}
+        {profile.comparisonBullets && brand.value === "tantaly" ? <p className="mt-4 text-sm"><Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the Care for Life coverage details.</Link></p> : null}
       </BrandHubSection>
   );
 
@@ -104,22 +113,22 @@ export default async function BrandHubPage({
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">
             Current DollWow collection
-            {compactBrowsing ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
+            {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
           </p>
         </div>
       </div>
 
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
 
-      {!compactBrowsing ? <BrandAuthorizationCard brand={brand.value} variant="brand" /> : null}
+      {!compactBrowsing ? authorization : null}
 
-      <nav aria-label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined}>
+      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
             {link.label}
           </Link>
         ))}
-      </nav>
+      </GuideLinkRow>
 
       {!compactBrowsing ? comparison : null}
 
@@ -146,6 +155,7 @@ export default async function BrandHubPage({
       </div>
 
       {compactBrowsing ? comparison : null}
+      {contextualLinksEnabled(`/brands/${brand.collectionHandle}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/brands/${brand.collectionHandle}`, filtered)} label="Compare materials across brands" /> : null}
 
       <BrandHubSection compact={compactBrowsing} id="brand-buyer-notes-heading" eyebrow="Buyer notes" title={`What to confirm before choosing ${brand.label}`}>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
@@ -169,9 +179,9 @@ export default async function BrandHubPage({
         </div>
       </BrandHubSection>
 
-      {compactBrowsing ? (
+      {compactBrowsing && authorization ? (
         <CollectionDisclosure id="brand-authorization-heading" title="Seller authorization">
-          <BrandAuthorizationCard brand={brand.value} variant="brand" />
+          {authorization}
         </CollectionDisclosure>
       ) : null}
 

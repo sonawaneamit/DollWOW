@@ -5,7 +5,9 @@ primaryKeyword: "FunWest vs Dolls Castle"
 secondaryKeywords: ["FunWest TPE doll", "Dolls Castle hybrid build"]
 description: "Compare FunWest Bea and Dolls Castle Nyla by exact body, material, listed weight and current configuration, without turning two models into a brand-wide verdict."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

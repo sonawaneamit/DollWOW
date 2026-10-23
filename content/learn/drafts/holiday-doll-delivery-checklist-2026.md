@@ -5,7 +5,9 @@ primaryKeyword: "sex doll holiday shipping"
 secondaryKeywords: ["holiday doll delivery", "ready to ship holiday orders"]
 description: "Plan a time-sensitive holiday order around verified stock, production, dispatch and delivery steps, without mistaking an estimate for an arrival guarantee."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

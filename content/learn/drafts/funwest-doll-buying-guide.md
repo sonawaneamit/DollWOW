@@ -5,7 +5,9 @@ primaryKeyword: "FunWest doll buying guide"
 secondaryKeywords: ["FunWest body codes", "FunWest doll options"]
 description: "Use FunWest Bea as a dated example of reading product/SKU and head codes, separating material from styling, and checking the exact custom or warehouse offer."
 category: "Brand Comparisons"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

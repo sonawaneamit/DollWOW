@@ -21,10 +21,11 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
   const relatedBrandNote = catalogBrand?.value ? authorization?.relatedBrandNotes?.[catalogBrand.value] : undefined;
   const hasCertificate = authorization?.status === "certificate" && authorization.certificateSrc && authorization.certificatePreviewSrc;
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
+  const isCertificatePending = authorization?.status === "certificate-pending";
   const hasConfirmationLetter = isWrittenConfirmation && authorization?.confirmationSrc && authorization.confirmationPreviewSrc;
   const compact = variant === "product";
-  const statusEyebrow = hasCertificate ? "Brand certification" : "Approved seller";
-  const statusTitle = hasCertificate ? `Certified to sell ${label}` : `Approved to sell ${label}`;
+  const statusEyebrow = hasCertificate ? "Brand certification" : isCertificatePending ? "Certificate pending" : "Approved seller";
+  const statusTitle = hasCertificate ? `Certified to sell ${label}` : isCertificatePending ? `${label} reseller` : `Approved to sell ${label}`;
 
   return (
     <section className={`overflow-hidden rounded-lg border border-border bg-surface text-text shadow-card ${variant === "brand" ? "my-8 md:grid md:grid-cols-[220px_1fr]" : "sm:grid sm:grid-cols-[96px_1fr]"}`} aria-label={`${label} authorization`}>
@@ -55,12 +56,14 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
       )}
       <div className={compact ? "p-4" : "p-5 sm:p-6"}>
         <p className="flex items-center gap-2 text-sm font-semibold text-accent">
-          <BadgeCheck className="h-4 w-4" />
+          {isCertificatePending ? <ShieldCheck className="h-4 w-4" /> : <BadgeCheck className="h-4 w-4" />}
           {statusEyebrow}
         </p>
         <h2 className={`mt-2 font-semibold text-text ${compact ? "text-lg" : "text-xl"}`}>{statusTitle}</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-text-dim">
-          {hasCertificate
+          {isCertificatePending
+            ? authorization.certificatePendingStatement
+            : hasCertificate
             ? relatedBrandNote ?? `DollWow is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}.`
             : isWrittenConfirmation
               ? `DollWow is an approved seller for ${label}. Brand confirmation is on file.`

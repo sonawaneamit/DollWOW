@@ -5,7 +5,9 @@ primaryKeyword: "sex doll head types"
 secondaryKeywords: ["fixed vs movable jaw doll heads", "doll head construction"]
 description: "Compare fixed and movable-jaw head choices by exact construction, supported body pairing, appearance and care, without assuming a feature label guarantees more."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

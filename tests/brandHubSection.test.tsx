@@ -1,12 +1,28 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
+afterEach(() => vi.unstubAllEnvs());
 
 describe("brand hub compact browsing", () => {
-  it("opts only the four independently audited sprint hubs into the new layout", () => {
-    for (const brand of ["irontech", "wm", "sedoll", "starpery"]) expect(usesCompactBrandLayout(brand)).toBe(true);
-    for (const brand of ["lusandy", "evas", "fanreal", "funwest"]) {
+  it("preserves the four released sprint hubs in every deployment", () => {
+    for (const deployment of ["production", "preview", "development"]) {
+      vi.stubEnv("VERCEL_ENV", deployment);
+      for (const brand of ["irontech", "wm", "sedoll", "starpery"]) {
+        expect(usesCompactBrandLayout(brand)).toBe(true);
+      }
+    }
+  });
+
+  it("releases only the approved batch-A and batch-B layouts", () => {
+    for (const brand of ["dolls-castle", "moonvale", "tantaly"]) {
+      expect(usesCompactBrandLayout(brand)).toBe(true);
+      for (const deployment of ["production", "development", ""]) {
+        vi.stubEnv("VERCEL_ENV", deployment);
+        expect(usesCompactBrandLayout(brand)).toBe(true);
+      }
+    }
+    for (const brand of ["lusandy", "evas", "fanreal", "funwest", "dolls-castle-other"]) {
       expect(usesCompactBrandLayout(brand)).toBe(false);
     }
   });
