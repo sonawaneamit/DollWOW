@@ -23,7 +23,8 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
-import { productDisplayName, productDisplayNameForUi, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
+import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
+import { productReviewedPdpHeading } from "@/lib/catalog/reviewedGalleryLooks";
 import {
   buildPdpFitChecks,
   buildPdpMetadata,
@@ -63,7 +64,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const { editorialPreview } = await searchParams;
   const product = await getProductByHandle(handle);
   if (!product) return {};
-  const metadata = buildPdpMetadata(withProtectedProductImages(product));
+  const metadata = buildPdpMetadata(product);
   if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -105,9 +106,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
-  const displayNameUi = productDisplayNameForUi(product);
   const isCastleOct22 = product.tags.some(tag => tag.startsWith('options:dolls-castle-oct22-'));
-  const pdpHeading = isPrivateDraft || isCastleOct22 ? productPublicTitle(product) : productPdpHeading(product);
+  const pdpHeading = isPrivateDraft || isCastleOct22 ? productPublicTitle(product) : productReviewedPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -176,7 +176,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <IdoOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
             <MdOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
-          <div id="overview" className="flex flex-col justify-center scroll-mt-24">
+          <div id="overview" className="flex min-w-0 flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{contextualBrand ? <Link data-contextual-brand href={contextualBrand.href} className="underline underline-offset-4">{productBrand}</Link> : productBrand}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
@@ -189,11 +189,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
             </div>
-            {displayNameUi && displayNameUi !== pdpHeading ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
-            <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
-              <span>{pdpHeading}</span>
+            <div className="mt-2 flex min-w-0 max-w-full flex-wrap items-baseline gap-x-2">
+              <h1 className="min-w-0 max-w-full text-3xl font-semibold leading-tight text-ivory-50 [overflow-wrap:anywhere] sm:text-4xl">{pdpHeading}</h1>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
-            </h1>
+            </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>

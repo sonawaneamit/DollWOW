@@ -14,6 +14,18 @@ function product(overrides: Partial<Product> = {}): Product {
 }
 
 describe("segmented sitemaps", () => {
+  it("advertises the canonical main record, without changing other offer URLs", () => {
+    const alias = "wm-joanna-158cm-m-cup-tpe-companion-doll-honjb";
+    const main = "yl-joanna-158cm-m-cup-tpe-companion-doll-honjb";
+    const regional = `${alias}-rts-uk`;
+    const input = [product({ handle: alias }), product({ handle: main, vendor: "YL Doll" }), product({ handle: regional })];
+    const urls = Object.values(buildSitemapSegments(input)).flat().map((entry) => entry.url);
+    expect(urls).not.toContain(`https://dollwow.com/products/${alias}`);
+    expect(urls).toContain(`https://dollwow.com/products/${main}`);
+    expect(urls).toContain(`https://dollwow.com/products/${regional}`);
+    expect(input).toHaveLength(3);
+    expect(Object.values(buildSitemapSegments([product({ handle: alias })])).flat().map((entry) => entry.url)).toContain(`https://dollwow.com/products/${alias}`);
+  });
   it("groups by canonical brand fields and aliases, not handle prefixes", () => {
     expect(productSitemapBrand(product({ handle: "irontch-typo", vendor: "Irontech Dolls" }))).toBe("irontech");
     expect(productSitemapBrand(product({ vendor: "unknown", tags: ["brand:wm"] }))).toBe("wm");

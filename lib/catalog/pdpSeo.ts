@@ -4,8 +4,12 @@ import { env } from "@/lib/utils/env";
 import type { Product } from "@/types/product";
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
+import duplicateSeoTitles from "./duplicate-seo-titles.json";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
+import { productReviewedIdentityTitle, productReviewedPdpHeading } from "./reviewedGalleryLooks";
+import { protectedProductImageUrlFor } from "./productImage";
+import { productCanonicalHandle } from "./productCanonical";
 
 type IntentChip = {
   label: string;
@@ -37,13 +41,17 @@ type FitCheck = {
 
 const HIGH_CUPS = new Set(["F", "G", "H", "I", "J", "K", "L", "M"]);
 const SMALL_CUPS = new Set(["A", "B", "C"]);
+const reviewedDuplicateSeoTitles = new Set(duplicateSeoTitles);
 
 export function buildPdpMetadata(product: Product): Metadata {
-  const title = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
+  const authoredTitle = unbrandedSeoTitle(cleanShopifySeoValue(product.seo?.title) || productPublicTitle(product));
+  // Preserve authored copy except for exact, individually approved identities.
+  // Other repeated values use the current identity, never a handle or sequence.
+  const title = productReviewedIdentityTitle(product) || (reviewedDuplicateSeoTitles.has(authoredTitle) ? productReviewedPdpHeading(product) : authoredTitle);
   const description = buildPdpMetaDescription(product);
   const keywords = productKeywordSet(product);
   const canonicalUrl = productCanonicalUrl(product);
-  const image = product.featuredImage?.url;
+  const image = protectedProductImageUrlFor(product, product.featuredImage);
 
   return {
     title,
@@ -550,7 +558,7 @@ function searchableText(product: Product) {
 }
 
 function productCanonicalUrl(product: Product) {
-  return `${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/products/${product.handle}`;
+  return `${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/products/${productCanonicalHandle(product)}`;
 }
 
 function normalizeCup(value?: string | null) {

@@ -4,6 +4,7 @@ import { getLearningArticles, learnArticleModifiedAt } from "@/lib/learn/content
 import { getSeoCatalogProducts, isCustomerVisibleProduct } from "@/lib/shopify/storefront";
 import { brandFromText, getCatalogBrand, normalizeBrandText } from "@/lib/catalog/brands";
 import type { Product } from "@/types/product";
+import { productCanonicalHandle } from "@/lib/catalog/productCanonical";
 
 // Preview deployments must never advertise preview URLs to search engines.
 export const sitemapOrigin = "https://dollwow.com";
@@ -86,8 +87,12 @@ export function buildSitemapSegments(products: Product[]): SitemapSegments {
   }
   for (const handle of [...brandHubHandles].sort()) add("brands.xml", `/brands/${handle}`);
   for (const article of getLearningArticles()) add("learn.xml", `/learn/${article.slug}`, learnArticleModifiedAt(article));
-  for (const product of products.filter(isCustomerVisibleProduct)) {
+  const visibleProducts = products.filter(isCustomerVisibleProduct);
+  const visibleHandles = new Set(visibleProducts.map((product) => product.handle));
+  for (const product of visibleProducts) {
     if (!product.handle || !/^[a-z0-9][a-z0-9-]*$/i.test(product.handle)) continue;
+    const canonicalHandle = productCanonicalHandle(product);
+    if (canonicalHandle !== product.handle && visibleHandles.has(canonicalHandle)) continue;
     add(`products-${productSitemapBrand(product)}.xml`, `/products/${product.handle}`, product.updatedAt);
   }
   for (const entries of Object.values(segments)) entries.sort((a, b) => a.url.localeCompare(b.url));

@@ -6,6 +6,7 @@ import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { env, hasShopifyStorefrontEnv } from "@/lib/utils/env";
 import { storefrontAuthHeaders } from "./auth";
 import { mapShopifyProduct } from "./mappers";
+import { applyReviewedProductRepairs } from "@/lib/catalog/reviewedProductRepairs";
 import { isHiddenCatalogBrand } from "@/lib/catalog/brands";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
 import { resolveCurrentDollVueEligibility, resolveDollVueEligibility, withDollVueCatalogEligibility } from '@/lib/dollvue/eligibility';
@@ -377,7 +378,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
 function mapSeoCatalogProduct(node: SeoProductNode): Product {
   const bodyType = metafieldText(node.bodyType);
   const stockStatus = metafieldText(node.stockStatus);
-  return {
+  return applyReviewedProductRepairs({
     id: node.id,
     updatedAt: node.updatedAt,
     handle: node.handle,
@@ -415,7 +416,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       customAvailable: metafieldBoolean(node.customAvailable),
       penisAddOnAvailable: metafieldBoolean(node.penisAddOnAvailable)
     }
-  };
+  });
 }
 
 function metafieldText(value: MetafieldValue) {
