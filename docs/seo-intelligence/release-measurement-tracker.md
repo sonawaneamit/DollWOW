@@ -1,5 +1,41 @@
 # Release Measurement Tracker
 
+## 23 October Shopping Batches A And B
+
+Martin approved A and B separately on DOL-229 after Dolly's copy review and
+small nits. A / PR159 production `26bd7ff4` became READY at
+2026-10-23T17:07:23.673Z. B / production-promotion PR181 `f96475f9` became
+READY at 2026-10-23T17:21:32.950Z. PR160 was stacked on A's feature branch;
+its `13ec1b86` merge was not a production deployment and is not an anchor.
+
+Each five-page batch passed exact live copy, title/meta/H1/canonical,
+indexability and FAQ/schema checks plus 20 responsive/native-no-JavaScript
+browser cases. A's five source checks passed again after B deployed. Castle's
+certificate decoded with and without JavaScript; Moonvale's unconfirmed
+certificate remains held. Existing Cloudflare email protection was decoded
+only for source-text equivalence; native-no-JavaScript email placeholders
+remain an explicit limitation, not a site/security setting change.
+
+Ten release-event rows were appended, bringing the ledger to 3,952 rows; the
+prior 3,942 rows are byte/value preserved. Each batch has its own actual READY
+anchor and 28/56/84-day checks. Baselines use the same complete available
+24 September-21 October window, with the earlier 23 October 28-date coverage
+receipt reused explicitly. A has five GSC and five production GA4 landing
+rows; B has five GSC and four GA4 rows. Tantaly's missing GA4 row is unknown,
+not zero. These are all-channel sessions, not attributed organic sales or
+effects from the new copy. The earlier missing 22 October final-data limit
+remains disclosed.
+
+One five-URL IndexNow batch per release was accepted HTTP200: A at
+17:11:24.750Z and B at 17:24:40.059Z. All ten owners were checked in the
+collections/brands sitemaps. Acceptance is not crawl/indexing confirmation.
+Google writes during this handoff: zero, honoring the explicit 23 October
+quota stop. The deduplicated queue now has 32 URLs: ten previously accepted,
+22 remaining. Preserve the prior Sprint1/Irontech, warehouse and directory
+priority, then A and B; a later session must respect actual available quota.
+No C/later batch, draft product, pricing, filter, stock, campaign or calendar
+change is part of these releases. Whole DOL-229 remains In Progress.
+
 ## 23 October SE Authorization Disclosure
 
 DOL-243 / PR180 production commit
@@ -11,7 +47,7 @@ directory now declares its existing self-canonical. All 393 were individually
 checked for HTTP200, self-canonical, no noindex, sitemap membership and exact
 disclosure. Three routes also passed 12 responsive/native-no-JavaScript cases.
 Erovenus's correct existing letter remained byte-identical and has no invented
-new release row. The ledger now contains 3,942 rows; all prior 3,549 rows remain
+new release row. At this earlier handoff the ledger contained 3,942 rows; all prior 3,549 rows remain
 byte/value preserved in this append.
 
 One 393-URL IndexNow batch was accepted HTTP200 at 10:57:14.136Z. This is not
@@ -26,7 +62,7 @@ from earlier cohorts and must not be silently combined.
 Under Dolly's 23 October clarification, the 391 template-only PDPs use sitemap
 and IndexNow discovery, not individual Google UI submissions. The SE hub is
 already one deduplicated Sprint1 queue entry; the approvals directory is newly
-queued. There are 22 unique manual-queue URLs: ten accepted, twelve remaining.
+queued. At this earlier handoff there were 22 unique manual-queue URLs: ten accepted, twelve remaining.
 Next permitted session: ten Sprint1 URLs, Irontech first, then the warehouse
 guide, then the directory; stop again if Google limits requests. No retry on
 23 October. Review anchors for this release are 20 November, 18 December and

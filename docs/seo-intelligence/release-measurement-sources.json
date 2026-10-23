@@ -799,7 +799,7 @@
       "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
     },
     "googleQueue": {
-      "updatedAt": "2026-10-23T10:56:05.561651+00:00",
+      "updatedAt": "2026-10-23T17:24:44.438Z",
       "urls": [
         {
           "url": "https://dollwow.com/learn/sex-doll-reviews",
@@ -891,6 +891,76 @@
           "ticket": "DOL-243",
           "manualRequestEligible": true,
           "releaseAt": "2026-10-23T10:53:34.708000+00:00"
+        },
+        {
+          "url": "https://dollwow.com/shop/black-dolls",
+          "ticket": "DOL-229",
+          "batch": "A",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:07:23.673Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/futa-sex-dolls",
+          "ticket": "DOL-229",
+          "batch": "A",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:07:23.673Z"
+        },
+        {
+          "url": "https://dollwow.com/brands/dolls-castle",
+          "ticket": "DOL-229",
+          "batch": "A",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:07:23.673Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/petite-dolls",
+          "ticket": "DOL-229",
+          "batch": "A",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:07:23.673Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/custom",
+          "ticket": "DOL-229",
+          "batch": "A",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:07:23.673Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/new-sex-dolls",
+          "ticket": "DOL-229",
+          "batch": "B",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:21:32.950Z"
+        },
+        {
+          "url": "https://dollwow.com/brands/moonvale-dolls",
+          "ticket": "DOL-229",
+          "batch": "B",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:21:32.950Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/lightweight-sex-dolls",
+          "ticket": "DOL-229",
+          "batch": "B",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:21:32.950Z"
+        },
+        {
+          "url": "https://dollwow.com/brands/tantaly-dolls",
+          "ticket": "DOL-229",
+          "batch": "B",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:21:32.950Z"
+        },
+        {
+          "url": "https://dollwow.com/shop/cheap-sex-dolls",
+          "ticket": "DOL-229",
+          "batch": "B",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T17:21:32.950Z"
         }
       ],
       "events": [
@@ -1002,18 +1072,22 @@
           "reason": "help_outline\nHelp\nmanage_accounts\nUser settings\n\t\nnotifications\nMessages\n1\n\ue5c5\nhome\nOverview\nlightbulb_2\nInsights\ntrending_up\nPerformance\nkeyboard_arrow_down\nsearch\nURL inspection\nIndexing\nkeyboard_arrow_up\nfile_copy\nPages\nvideo_library\nVideos\naccount_tree\nSitemaps\nvisibility_off\nRemovals\nExperience\nkeyboard_arrow_up\nspeed\nCore Web Vitals\nlock\nHTTPS\nShopping\nkeyboard_arrow_up\nlayers\nProduct snippets\nlayers\nMerchant listings\nEnhancements\nkeyboard_arrow_up\nlayers\nBreadcrumbs\nlayers\nImage Metadata\nSecurity & Manual Actions\nkeyboard_arrow_down\nlink_2\nLinks\ntrophy\nAchievements\nsettings\nSettings\nfeedback\nSubmit feedback\ninfo\nAbout Search Console\nPrivacyTerms\nhttps://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected canonical\n\ue8fd\nN/A\nLEARN MORE\nEnhancements & Experience\nOnly indexed URLs can have enhancements\nerror_outline\nQuota Exceeded\nSorry--we couldn't process this request because you've exceeded your daily quota. Please try submitting this again tomorrow.\nDismiss"
         }
       ],
-      "nativeDocument": "https://linear.app/dollwow/document/dol-237-google-request-indexing-queue-and-submission-receipts-b144644d0126",
       "policy": {
         "approval": "DOL23731ab8841 plusDOL2242019f582",
         "remainingOrder": [
-          "ten pending Sprint1, Irontech first",
+          "pendingSprint1Irontechfirst",
           "warehouse-stock-vs-custom-made",
-          "authorized-vendors"
+          "authorized-vendors",
+          "fiveDOL229Aowners",
+          "fiveDOL229Bowners"
         ],
         "templatePDPs": "391SEexistingPDPs sitemap+IndexNowonly; no manual Google queue entries",
         "unchangedErovenus": "Verified existing correct certificate; not new release/request per latest manual limit",
-        "quota": "No retry23Oct; later session must respect Google quota, no guaranteed fixed reset clock"
-      }
+        "quota": "No retry23Oct; later session must respect Google quota, no guaranteed fixed reset clock",
+        "batchA": "DOL229c7488c54approved5AownersafterpriorSprint1/warehouse/directory;noB/later. No retry23Oct;laterquotaavailabilitynotguaranteed.",
+        "batchB": "DOL229dfb88d3d/9758dfdbapproved5BownersafterA;noC/later."
+      },
+      "nativeDocument": "https://linear.app/dollwow/document/dol-237-google-request-indexing-queue-and-submission-receipts-b144644d0126"
     },
     "weekly": {
       "firstMonday": "2026-10-26",
@@ -1586,5 +1660,101 @@
     },
     "google": "Dolly2019f582:391templatePDPs sitemap+IndexNowonly,notmanualrequests. SEhubdeduplicatedinSprint1 anddirectoryqueuedafterSprint1/warehouse;noGooglequeries todayafterquota. Erovenusunchangednotresubmitted.",
     "limits": "Template attribution/disclosure change, not new product publication or independent new supplier certificate, stock or media clearance. No ranking/indexing/sales impact claimed."
+  },
+  "dol229BatchARelease": {
+    "approval": "DOL229c7488c54 after3dfa0e3a nits;Aonly",
+    "deployment": {
+      "id": "dpl_7THoJD93BunaomMvejHcfLGxC1w8",
+      "url": "doll-9dgpaxuty-sonawaneamits-projects.vercel.app",
+      "commit": "26bd7ff45e87cc2473a73dbb26172e5ed4f00a08",
+      "readyAt": 1792775243673,
+      "target": "production",
+      "readyState": "READY",
+      "at": "2026-10-23T17:07:30.384Z",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ]
+    },
+    "events": 5,
+    "baseline": {
+      "start": "2026-09-24",
+      "end": "2026-10-21",
+      "gscCapture": "2026-10-23T16:55:19.970Z",
+      "ga4Capture": "2026-10-23T16:55:22.250Z",
+      "gscMatched": 5,
+      "ga4Matched": 5
+    },
+    "limits": "24Sep-21Oct is latest complete28date window verified earlier23Oct;22Oct final data absent then. Missing/suppressednotzero.5changedownersnotnewpages/models; no causal indexing/ranking/revenueclaim.",
+    "discovery": {
+      "at": "2026-10-23T17:11:24.750Z",
+      "approval": "DOL229c7488c54 Martin17:46Lisbon BatchAafterlistednits",
+      "count": 5,
+      "urls": [
+        "https://dollwow.com/shop/black-dolls",
+        "https://dollwow.com/shop/futa-sex-dolls",
+        "https://dollwow.com/brands/dolls-castle",
+        "https://dollwow.com/shop/petite-dolls",
+        "https://dollwow.com/shop/custom"
+      ],
+      "attempts": 1,
+      "httpStatus": 200,
+      "accepted": true,
+      "limits": "Bing/participatingenginesnotification,notGoogle/crawl/indexproof. GooglequotaSTOP23Oct,noGooglewrite. Only5Batchachangedowners;noother/later/draftURLs."
+    },
+    "google": "DOL237quotaSTOP23Oct,deduplicatedqueue;acceptancenotindexing",
+    "reviewer": "Whole229InProgress;newreleaseawaitsDollyliveverification,neverCodexselfclosed"
+  },
+  "dol229BatchBRelease": {
+    "approval": "DOL229dfb88d3d/9758dfdb;Bonly,Moonvalecertificateheld",
+    "deployment": {
+      "id": "dpl_7BEimGd2taJkRR6Muj3M7p3XveHf",
+      "url": "doll-fin5vv6ag-sonawaneamits-projects.vercel.app",
+      "commit": "f96475f9f0fd8715826964f4af663a4057f49fee",
+      "readyAt": 1792776092950,
+      "target": "production",
+      "readyState": "READY",
+      "at": "2026-10-23T17:21:35.696Z",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ]
+    },
+    "events": 5,
+    "baseline": {
+      "start": "2026-09-24",
+      "end": "2026-10-21",
+      "gscCapture": "2026-10-23T17:00:51.311Z",
+      "ga4Capture": "2026-10-23T17:00:52.896Z",
+      "gscMatched": 5,
+      "ga4Matched": 4
+    },
+    "limits": "24Sep-21Oct is latest complete28date window verified earlier23Oct;22Oct final data absent then. Missing/suppressednotzero.5changedownersnotnewpages/models; no causal indexing/ranking/revenueclaim.",
+    "discovery": {
+      "at": "2026-10-23T17:24:40.059Z",
+      "approval": "DOL229dfb88d3d/9758dfdb Martin17:53LisbonBatchBafterlistednits,Moonvalecertificateheld",
+      "count": 5,
+      "urls": [
+        "https://dollwow.com/shop/new-sex-dolls",
+        "https://dollwow.com/brands/moonvale-dolls",
+        "https://dollwow.com/shop/lightweight-sex-dolls",
+        "https://dollwow.com/brands/tantaly-dolls",
+        "https://dollwow.com/shop/cheap-sex-dolls"
+      ],
+      "attempts": 1,
+      "httpStatus": 200,
+      "accepted": true,
+      "limits": "Bing/participatingenginesnotification,notGoogle/crawl/indexproof. GooglequotaSTOP23Oct,noGooglewrite. Only5Batchbchangedowners;noother/later/draftURLs."
+    },
+    "google": "DOL237quotaSTOP23Oct,deduplicatedqueue;acceptancenotindexing",
+    "reviewer": "Whole229InProgress;newreleaseawaitsDollyliveverification,neverCodexselfclosed"
   }
 }
