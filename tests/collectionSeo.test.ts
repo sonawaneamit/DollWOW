@@ -133,7 +133,7 @@ describe("Wave 3 collection SEO", () => {
     expect(buildCollectionMetadata("realistic-sex-dolls", realistic).title).toBe("Most Realistic Sex Dolls for Sale | Compare Realism");
     expect(buildCollectionMetadata("custom", custom).title).toBe("Custom Sex Dolls for Sale | Build & Compare Options");
     expect(realisticCopy).toContain("DollVue™");
-    expect(customCopy).toContain("approximate visual preview");
+    expect(customCopy).toContain("approximate illustration");
     expect(`${realisticCopy} ${customCopy}`).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
@@ -161,11 +161,11 @@ describe("futa collection SEO", () => {
   it("keeps the buyer notes and comparison consistent with fixed warehouse builds", () => {
     const notes = collectionBuyerNotes("futa-sex-dolls", preset);
     const rows = collectionComparisonRows("futa-sex-dolls", preset);
-    expect(notes[0].body).toContain("not an included or currently selectable add-on");
-    expect(notes[0].body).toContain("fixed warehouse builds");
-    expect(rows[0].factor).toBe("Listed option support");
-    expect(rows[0].dollWowAdvantage).toContain("does not verify inclusion or current selectability");
-    expect(rows[1].dollWowAdvantage).toContain("listed inclusions of a fixed warehouse build");
+    expect(notes[0].body).toContain("penis options and prices");
+    expect(notes[0].body).toContain("what a warehouse doll includes");
+    expect(rows[0].factor).toBe("See the choices");
+    expect(rows[0].dollWowAdvantage).toContain("warehouse listings for their included build");
+    expect(JSON.stringify({ notes, rows })).not.toMatch(/collection membership|currently selectable/i);
     expect(JSON.stringify({ notes, rows })).not.toContain("Every result has a current");
   });
 
@@ -177,12 +177,13 @@ describe("futa collection SEO", () => {
     expect(preset.title).toBe("Futa sex dolls by brand");
     expect(faqs).toHaveLength(6);
     expect(copy).toContain("Futa is short for futanari");
-    expect(copy).toContain("does not currently list FutaDoll products");
-    expect(copy).toContain("actual manufacturers named on each card");
-    expect(copy).toContain("the standard build may not include it");
-    expect(copy).toContain("Fixed warehouse builds cannot be changed through the custom configurator");
-    expect(copy).toContain("Collection membership is not proof");
-    expect(copy).toContain("On a stock listing, check the included configuration");
+    expect(copy).toContain("FutaDoll is a separate seller and brand");
+    expect(copy).toContain("we do not currently list its products");
+    expect(copy).toContain("manufacturers are named on the product cards");
+    expect(copy).toContain("included build and any extra option price");
+    expect(copy).toContain("Warehouse dolls ship as listed.");
+    expect(intro).toContain("Most of these let you add a penis option at checkout.");
+    expect(copy).not.toMatch(/collection membership/i);
     expect(copy).not.toContain("Every result is a full-body product whose current customization data offers a selectable");
     expect(copy).not.toContain("The collection proves the option is available");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
@@ -297,9 +298,8 @@ describe("Black dolls collection SEO", () => {
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("ebony as a search synonym");
-    expect(copy).toContain("not an assigned ethnicity, nationality");
-    expect(copy).toContain("4 to 6 hours");
+    expect(copy).toContain("Ebony is another search term");
+    expect(copy).not.toMatch(/assigned ethnicity|nationality|skin-tone path|4 to 6 hours/i);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });

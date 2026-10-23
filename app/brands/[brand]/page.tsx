@@ -65,7 +65,9 @@ export default async function BrandHubPage({
 
   const comparison = (
       <BrandHubSection compact={compactBrowsing} comparison id="brand-comparison-heading" eyebrow="Brand comparison" title={`How to evaluate ${brand.label}`}>
-        <div className="overflow-x-auto">
+        {profile.comparisonBullets ? <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">
+          {profile.comparisonBullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+        </ul> : <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
             <thead className="bg-ink-950/60 text-ivory-100">
               <tr>
@@ -88,7 +90,7 @@ export default async function BrandHubPage({
               ))}
             </tbody>
           </table>
-        </div>
+        </div>}
       </BrandHubSection>
   );
 

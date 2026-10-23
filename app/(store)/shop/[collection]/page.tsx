@@ -3,7 +3,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { LocationFilter } from "@/components/LocationFilter";
 import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isStandaloneHeadCatalogProduct } from "@/lib/catalog/filters";
-import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks, collectionUsesPlainGuidance } from "@/lib/catalog/collectionSeo";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
@@ -57,6 +57,7 @@ export default async function CollectionPage({
   const buyerNotes = collectionBuyerNotes(collection, preset);
   const comparisonRows = collectionComparisonRows(collection, preset);
   const faqItems = collectionFaqItems(collection, preset);
+  const plainGuidance = collectionUsesPlainGuidance(collection);
   const activeFilterLabels = Object.entries(filters)
     .filter(([, value]) => Boolean(value))
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -109,7 +110,11 @@ export default async function CollectionPage({
         </div>
       </div>
       <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
-        {comparisonRows.length ? (
+        {plainGuidance ? (
+          <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">
+            {comparisonRows.map((row) => <li key={row.factor}><strong className="text-text">{row.factor}.</strong> {row.whyItMatters} {row.dollWowAdvantage}</li>)}
+          </ul>
+        ) : comparisonRows.length ? (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead className="bg-ink-950/60 text-ivory-100">
@@ -131,7 +136,9 @@ export default async function CollectionPage({
             </table>
           </div>
         ) : null}
-        <div className="mt-6"><CareForLifePanel compact /></div>
+        <div className="mt-6">
+          {plainGuidance ? <p className="text-sm leading-6 text-text-dim">Care for Life includes a year of ownership support and ongoing repair guidance. <Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the coverage details.</Link></p> : <CareForLifePanel compact />}
+        </div>
       </CollectionDisclosure>
       {buyerNotes.length ? (
         <CollectionDisclosure id="collection-buyer-notes-heading" eyebrow="How to compare" title="What to check before choosing from this collection">
