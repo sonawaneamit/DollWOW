@@ -14,6 +14,8 @@ import { SeDollBrandPromotionBanner } from "@/components/promotions/SeDollSeptem
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -120,7 +122,7 @@ export default async function BrandHubPage({
 
       {!compactBrowsing ? authorization : null}
 
-      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && process.env.VERCEL_ENV === "preview"}>
+      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (brand.value === "dolls-castle" || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
             {link.label}
@@ -153,6 +155,7 @@ export default async function BrandHubPage({
       </div>
 
       {compactBrowsing ? comparison : null}
+      {contextualLinksEnabled(`/brands/${brand.collectionHandle}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/brands/${brand.collectionHandle}`, filtered)} label="Compare materials across brands" /> : null}
 
       <BrandHubSection compact={compactBrowsing} id="brand-buyer-notes-heading" eyebrow="Buyer notes" title={`What to confirm before choosing ${brand.label}`}>
         <div className="mt-5 grid gap-4 md:grid-cols-3">

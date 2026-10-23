@@ -5,7 +5,9 @@ primaryKeyword: "full-size TPE vs silicone torso"
 secondaryKeywords: ["torso doll storage", "full body vs torso doll"]
 description: "Compare a full-size TPE doll and silicone torso by included body areas, real dimensions, handling weight, care and total ownership cost."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

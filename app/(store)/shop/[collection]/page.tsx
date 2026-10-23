@@ -15,6 +15,8 @@ import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 
 export async function generateMetadata({
   params,
@@ -80,7 +82,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {relatedLinks.length ? (
-        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={process.env.VERCEL_ENV === "preview"}>
+        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={plainGuidance || process.env.VERCEL_ENV === "preview"}>
           {relatedLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
               {link.label}
@@ -109,6 +111,7 @@ export default async function CollectionPage({
           <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>
+      {contextualLinksEnabled(`/shop/${collection}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/shop/${collection}`, filtered)} /> : null}
       <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
         {plainGuidance ? (
           <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">

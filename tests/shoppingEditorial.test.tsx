@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import CollectionPage from "@/app/(store)/shop/[collection]/page";
 import BrandHubPage from "@/app/brands/[brand]/page";
 import { collectionPresets } from "@/lib/catalog/filters";
-import { collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionUsesPlainGuidance } from "@/lib/catalog/collectionSeo";
+import { collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionRelatedLinks, collectionIntro, collectionUsesPlainGuidance } from "@/lib/catalog/collectionSeo";
 import { brandSeoProfile, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 
@@ -46,6 +46,14 @@ describe("reviewed shopping copy", () => {
     const preset = collectionPresets["petite-dolls"];
     const text = JSON.stringify({ intro: collectionIntro(preset, "petite-dolls"), notes: collectionBuyerNotes("petite-dolls", preset), faqs: collectionFaqItems("petite-dolls", preset), comparison: collectionComparisonRows("petite-dolls", preset) });
     expect(text.match(/121 to 154/g)).toHaveLength(1);
+    expect(collectionFaqItems("petite-dolls", preset)[0].answer).toContain("We call 4 ft to 5 ft 1 in petite");
+  });
+
+  it("keeps custom support once in the comparison and starts with body choices", () => {
+    const preset = collectionPresets.custom;
+    expect(collectionComparisonRows("custom", preset)[0].factor).toBe("Build around your favorite body");
+    expect(JSON.stringify(collectionComparisonRows("custom", preset))).not.toContain("Care for Life");
+    expect(collectionRelatedLinks("custom", preset)[0].href).not.toBe("/shop/futa-sex-dolls");
   });
 
   it("shows Dolls Castle's existing certificate and three plain bullets", async () => {

@@ -182,7 +182,8 @@ describe("futa collection SEO", () => {
     expect(copy).toContain("manufacturers are named on the product cards");
     expect(copy).toContain("included build and any extra option price");
     expect(copy).toContain("Warehouse dolls ship as listed.");
-    expect(intro).toContain("Most of these let you add a penis option at checkout.");
+    expect(intro).toContain("Most let you add it at checkout.");
+    expect(intro.match(/penis option/g)).toHaveLength(1);
     expect(copy).not.toMatch(/collection membership/i);
     expect(copy).not.toContain("Every result is a full-body product whose current customization data offers a selectable");
     expect(copy).not.toContain("The collection proves the option is available");

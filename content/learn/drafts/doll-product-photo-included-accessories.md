@@ -5,7 +5,9 @@ primaryKeyword: "sex doll photos vs reality"
 secondaryKeywords: ["doll included accessories", "doll product photos"]
 description: "Separate the photographed look from the included doll, wig, clothing and accessories with a practical listing check before you order."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
