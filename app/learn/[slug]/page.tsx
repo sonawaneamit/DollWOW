@@ -25,6 +25,7 @@ import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
 import type { Product } from "@/types/product";
 import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json";
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
+import { featureGuideMedia } from "@/components/FeatureGuideMedia";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
 
 export const dynamic = "force-dynamic";
@@ -137,7 +138,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               </p>
               <p className="mt-2 text-sm leading-6 text-ivory-300">{article.author === "editorial" ? LEARN_EDITORIAL_AUTHOR.shortBio : author?.bio}</p>
               {article.publishedAt ? <p className="mt-3 text-sm text-gold-300">Published <time dateTime={article.publishedAt}>{learnArticlePublishedAt(article).slice(0, 10)}</time></p> : null}
-              <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>
+              {!article.hideReviewDate && <p className="mt-3 text-sm text-gold-300">Last reviewed {article.lastReviewed}</p>}
             </div>
           </div>
         </div>
@@ -154,6 +155,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
                 markdown={article.body}
                 sectionVisuals={guideSectionVisuals(article.slug)}
                 sectionInsertions={[
+                  ...featureGuideMedia(article.slug),
                   ...(article.slug === "sex-doll-guide" ? [{ afterHeading: "Quick Answer", placement: "after-section" as const, content: <GuideShoppingLinks /> }] : []),
                   ...(guideProductGroups.length ? [{
                   afterHeading: "Curated Live Product Shortlists",

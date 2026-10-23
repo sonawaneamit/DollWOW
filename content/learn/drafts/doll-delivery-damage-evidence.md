@@ -5,7 +5,9 @@ primaryKeyword: "sex doll shipping damage"
 secondaryKeywords: ["doll unboxing checklist", "damaged doll delivery"]
 description: "Know which carton, packing and product photos to keep at delivery, what to include in a report and where to find DollWOW's current reporting instructions."
 category: "Shipping And Privacy"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

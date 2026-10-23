@@ -5,7 +5,9 @@ primaryKeyword: "doll order digital privacy"
 secondaryKeywords: ["private doll order", "shared device shopping privacy"]
 description: "Plan order emails, lock-screen notifications, account access and saved photos alongside discreet delivery, without relying on an anonymity promise."
 category: "Buying Guides"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

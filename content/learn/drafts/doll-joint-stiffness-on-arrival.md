@@ -5,7 +5,9 @@ primaryKeyword: "sex doll joint stiffness"
 secondaryKeywords: ["new doll stiff joints", "doll joint arrival support"]
 description: "Document a stiff joint on arrival, find the applicable manufacturer instructions and know when to pause, without forcing movement or attempting an internal repair."
 category: "Materials And Care"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
