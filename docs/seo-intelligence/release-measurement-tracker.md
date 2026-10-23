@@ -111,6 +111,9 @@ window and changed-page scope before deciding what to revise next.
    evidence capture time, promotion/stock context and measurement caveats.
 5. Post the ledger link on the release ticket. Dolly reviews the handoff; Codex
    does not self-close. No automation is created by updating this file.
+   Re-read state after a linked PR merge: DOL-225/226 moved automatically to
+   Done about two seconds after merge, before live checks. Restore In Review
+   for independent review; that completion timestamp is not a release anchor.
 6. Preserve raw source responses privately and add only privacy-safe aggregates
    and reproducible request metadata to the repository. Never commit credentials,
    customer records, order IDs or review-link capabilities.

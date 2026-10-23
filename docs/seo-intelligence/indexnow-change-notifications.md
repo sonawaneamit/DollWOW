@@ -62,6 +62,10 @@ product events. No recurring job is activated by this change.
 2. Release the exact reviewed commit only under fresh, specific Martin approval
    recorded on DOL-226; expired overnight or generic low-risk wording is not approval.
    Verify the key file and signature rejection on production.
+   Linked PR merges have been observed to move DOL tickets to Done before live
+   verification. Re-read the ticket state after merging and restore In Review
+   for Dolly's independent handoff; do not treat merge-state sync as her review
+   or change integration settings without approval.
 3. Inspect existing app subscriptions, create only missing PRODUCTS_CREATE /
    PRODUCTS_UPDATE callbacks at `/api/webhooks/shopify/products`, and preserve
    unrelated subscriptions. Record IDs privately; no signing secrets in Linear.
