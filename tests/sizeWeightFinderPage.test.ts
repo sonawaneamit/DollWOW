@@ -19,7 +19,7 @@ function fixture(index: number): Product {
 }
 describe('range Finder initial HTML', () => {
   beforeEach(() => { load.mockReset(); });
-  it('renders four native range handles, optional materials, photos, prices and a single qualification', async () => {
+  it('renders four native handles, materials, photos and prices without provenance copy or dates', async () => {
     load.mockResolvedValue([fixture(1), fixture(2)]);
     const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({}) }));
     const dom = parse(html);
@@ -29,7 +29,9 @@ describe('range Finder initial HTML', () => {
     expect(dom.querySelectorAll('[data-finder-card]')).toHaveLength(1);
     expect(dom.text).toContain('1 matching listing');
     expect(dom.text).toContain('36.3 kg / 80.0 lb');
-    expect(dom.text).toContain('Weights come from listing data, not factory-confirmed specs.');
+    expect(html).not.toMatch(/factory-confirmed|listing data|Listing data checked|checkedAt|Snapshot checked/);
+    expect(dom.querySelector('#minWeight')!.getAttribute('min')).toBe('36.3');
+    expect(dom.querySelector('#minWeight')!.getAttribute('value')).toBe('36.3');
     expect(dom.querySelector('noscript')?.text).toContain('Apply filters');
     expect(html).toContain('/products/finder-2');
     expect(html).not.toContain('/products/finder-1"');
@@ -49,7 +51,7 @@ describe('range Finder initial HTML', () => {
     expect(html).toContain('/products/finder-26');
     expect(html).not.toContain('/products/finder-0"');
     expect(html).toContain('Page 2 of 2');
-    expect(html).toContain('minHeight=160&amp;maxHeight=165&amp;minWeight=30&amp;maxWeight=37&amp;material=tpe');
+    expect(html).toContain('minHeight=160&amp;maxHeight=165&amp;minWeight=36.3&amp;maxWeight=37&amp;material=tpe');
   });
   it('shows an honest empty state and reset link, never estimated or missing weights', async () => {
     load.mockResolvedValue([fixture(1), fixture(2)]);

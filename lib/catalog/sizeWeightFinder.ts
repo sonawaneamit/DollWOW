@@ -62,7 +62,8 @@ export function finderCards(rows: FinderRow[]): FinderCard[] {
 
 export function finderBounds(rows: FinderCard[]): FinderBounds {
   return { minHeight: 140, maxHeight: Math.max(141, ...rows.map(row => Math.ceil(row.heightCm))),
-    minWeight: 0, maxWeight: Math.max(1, ...rows.map(row => Math.ceil(finderKg(row.weightLb)))) };
+    minWeight: rows.length ? Math.min(...rows.map(row => finderKg(row.weightLb))) : 0,
+    maxWeight: Math.max(1, ...rows.map(row => Math.ceil(finderKg(row.weightLb)))) };
 }
 
 export function finderRanges(params: FinderParams, bounds: FinderBounds): FinderRanges {

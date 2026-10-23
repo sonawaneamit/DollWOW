@@ -32,7 +32,7 @@ describe('Finder discovery stays scoped to its canonical owner', () => {
     expect(config.matcher).not.toContain('/tools/:path*');
   });
   it('renders dated source facts without controls and without stale Markdown caching', async () => {
-    const fetcher = vi.fn(async () => new Response('<html><main id="main-content"><h1>Doll Size &amp; Weight Finder</h1><p>2 matching listings</p><h2>Example doll</h2><p>165 cm / 5 ft 5 in; 36.3 kg / 80.0 lb; $1,899</p><form><select><option>Private control state</option></select></form><a href="/products/example">Matching listing</a><p>Weights come from listing data, not factory-confirmed specs. Listing data checked 2026-10-23.</p></main></html>'));
+    const fetcher = vi.fn(async () => new Response('<html><main id="main-content"><h1>Doll Size &amp; Weight Finder</h1><p>2 matching listings</p><h2>Example doll</h2><p>165 cm / 5 ft 5 in; 36.3 kg / 80.0 lb; $1,899</p><form><select><option>Private control state</option></select></form><a href="/products/example">Matching listing</a></main></html>'));
     vi.stubGlobal('fetch', fetcher);
     const response = await markdown(new Request(`https://dollwow.com/markdown${path}`), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) });
     expect(response.status).toBe(200);
@@ -42,7 +42,7 @@ describe('Finder discovery stays scoped to its canonical owner', () => {
     const text = await response.text();
     expect(text).toContain('2 matching listings');
     expect(text).toContain('36.3 kg / 80.0 lb; $1,899');
-    expect(text).toContain('not factory-confirmed specs');
+    expect(text).not.toMatch(/factory-confirmed|Listing data checked/);
     expect(text).toContain('Matching listing');
     expect(text).not.toContain('Private control state');
   });

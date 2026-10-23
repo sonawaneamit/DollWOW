@@ -10,7 +10,7 @@ describe('dual range Finder', () => {
     expect(cards[0]).not.toHaveProperty('basis');
   });
   it('derives inclusive safe bounds, including when no eligible weights exist', () => {
-    expect(finderBounds(finderCards([row('a')]))).toEqual({ minHeight: 140, maxHeight: 165, minWeight: 0, maxWeight: 37 });
+    expect(finderBounds(finderCards([row('a')]))).toEqual({ minHeight: 140, maxHeight: 165, minWeight: 36.3, maxWeight: 37 });
     expect(finderBounds([])).toEqual({ minHeight: 140, maxHeight: 141, minWeight: 0, maxWeight: 1 });
   });
   it('filters both height and displayed-kg boundaries inclusively with optional multiple materials', () => {

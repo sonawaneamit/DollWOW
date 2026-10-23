@@ -30,13 +30,13 @@ export default async function Page({ searchParams }: { searchParams: Promise<Fin
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dollwow.com').replace(/\/$/, '');
   const schema = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Doll Size & Weight Finder',
     url: `${siteUrl}/tools/doll-size-weight-finder`, applicationCategory: 'ShoppingApplication', operatingSystem: 'Web',
-    description: 'Find full dolls 140 cm and taller using height and listed-weight ranges and optional material filters. Weights come from listing data, not factory-confirmed specs.',
+    description: 'Find full dolls 140 cm and taller using height and weight ranges and optional material filters.',
     publisher: { '@type': 'Organization', name: 'DollWOW', url: siteUrl } };
   return <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
     <h1 className="text-3xl font-semibold text-text sm:text-4xl">Doll Size &amp; Weight Finder</h1>
     <p className="mt-3 text-text-dim">Find your fit. Full dolls, 140 cm and taller.</p>
-    <SizeWeightFinder rows={rows} bounds={bounds} initial={initial} initialPage={page} checkedAt={catalog.checkedAt} />
+    <SizeWeightFinder rows={rows} bounds={bounds} initial={initial} initialPage={page} />
     <nav aria-label="Related size and care guidance" className="mt-6 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-5 text-sm text-accent">
       <Link className="underline" href="/learn/sex-doll-size-weight-guide">Size and weight guide</Link><Link className="underline" href="/learn/sex-doll-storage">Storage guide</Link><Link className="underline" href="/shop/sex-dolls">Browse dolls</Link>
     </nav>

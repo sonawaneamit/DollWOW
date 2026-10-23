@@ -97,7 +97,7 @@ const staticRecords: AgentKnowledgeRecord[] = [
     title: "Doll Size & Weight Finder",
     url: `${siteUrl}/tools/doll-size-weight-finder`,
     markdownUrl: `${siteUrl}/markdown/tools/doll-size-weight-finder`,
-    summary: "Find full dolls 140 cm and taller by height and listed-weight ranges, with optional materials, product photos and prices. Listings without a weight are excluded; weights are not factory-confirmed specs."
+    summary: "Find full dolls 140 cm and taller by height and weight ranges, with optional material filters, product photos and prices."
   }
 ];
 

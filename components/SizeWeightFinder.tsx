@@ -35,8 +35,8 @@ function RangeControl({ label, name, min, max, step, values, format, onChange }:
   </fieldset>;
 }
 
-export function SizeWeightFinder({ rows, bounds, initial, initialPage = 1, checkedAt }: {
-  rows: FinderCard[]; bounds: FinderBounds; initial: FinderRanges; initialPage?: number; checkedAt: string;
+export function SizeWeightFinder({ rows, bounds, initial, initialPage = 1 }: {
+  rows: FinderCard[]; bounds: FinderBounds; initial: FinderRanges; initialPage?: number;
 }) {
   const [ranges, setRanges] = useState(initial);
   const [page, setPage] = useState(initialPage);
@@ -87,6 +87,5 @@ export function SizeWeightFinder({ rows, bounds, initial, initialPage = 1, check
       <span>Page {currentPage} of {pages}</span>
       {currentPage < pages ? <Link className="min-h-11 content-center text-accent underline" href={finderQuery(ranges, currentPage + 1)} onClick={event => { event.preventDefault(); setPage(currentPage + 1); }}>Next</Link> : <span />}
     </nav>}
-    <p className="mt-7 text-xs leading-5 text-text-dim">Weights come from listing data, not factory-confirmed specs. Confirm the selected doll&apos;s weight before ordering. Listing data checked <time dateTime={checkedAt}>{checkedAt.slice(0, 10)}</time>.</p>
   </>;
 }
