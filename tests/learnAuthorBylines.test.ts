@@ -66,7 +66,7 @@ describe("approved existing guide authors", () => {
       const article = articles.find(item => item.slug === slug)!;
       expect(article.author).toBe("alex");
       expect(article.status).toBe("scheduled");
-      expect(article.lastReviewed).toBe(slug === "irontech-head-types-ros-max" ? "2026-10-23" : "2026-10-16");
+      expect(article.lastReviewed).toBe(["irontech-head-types-ros-max", "se-doll-vs-starpery-build-comparison"].includes(slug) ? "2026-10-23" : "2026-10-16");
       expect(Date.parse(article.publishedAt!)).toBeLessThan(auditTime);
     }
   });
