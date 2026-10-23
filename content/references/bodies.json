@@ -64,7 +64,7 @@
       { "label": "Leg length", "cm": 75 },
       { "label": "Thigh line", "cm": 68.8 },
       { "label": "Calf line", "cm": 36.7 },
-      { "label": "Foot length", "cm": 23 }
+      { "label": "Foot size", "cm": 23 }
     ]
   }
 ]
