@@ -96,7 +96,8 @@ describe("reviewed shopping copy", () => {
       if (handle === "moonvale-dolls") {
         expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
         expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
-        expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared|SY Doll/);
+        expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
+        expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
       } else {
         expect(comparison.textContent).toContain("first-year ownership support and ongoing repair guidance");
         expect(comparison.querySelector('a[href="/care-for-life"]')).not.toBeNull();
@@ -110,6 +111,7 @@ describe("reviewed shopping copy", () => {
     const dom = parse(renderToStaticMarkup(await BrandHubPage({params: Promise.resolve({brand: "moonvale-dolls"}), searchParams: Promise.resolve({})})));
     expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
     expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
-    expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared|SY Doll/);
+    expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
+    expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
   });
 });
