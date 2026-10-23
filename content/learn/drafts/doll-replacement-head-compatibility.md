@@ -5,7 +5,9 @@ primaryKeyword: "sex doll head compatibility"
 secondaryKeywords: ["replacement doll head", "doll head connector compatibility"]
 description: "Check replacement-head compatibility through exact body and head codes, connector details, neck fit, material, tone and supported functions before ordering."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

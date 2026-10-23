@@ -3,27 +3,27 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T10:17:44.139Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
-      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
+      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
+      "reviewedAt": "2026-10-22T16:44:08.107Z",
+      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
+      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T10:17:44.139Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
-      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
+      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
+      "reviewedAt": "2026-10-22T16:44:08.107Z",
+      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
+      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex release review under owner authorization",
-      "reviewedAt": "2026-10-16T10:17:44.139Z",
-      "evidenceRef": "FunWest/Top Fire go-live relink 2026-10-16: 5 hashes relinked",
-      "payloadHash": "105cac187bd1bc8fccfec89b92fffc6dd151c63908d3107e18202ff0f60938fd"
+      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
+      "reviewedAt": "2026-10-22T16:44:08.107Z",
+      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
+      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
     }
   },
   "payload": {
-    "releaseId": "md26-factory-reconciled-2026-10-14",
-    "sourceSnapshotHash": "4134833c49fff2bf662db7a1299660c55f082163ed62684a61e729059000d71c",
+    "releaseId": "presets-2026-10-22-castle",
+    "sourceSnapshotHash": "1e070d854dbc85143cb232dfbd906bc60a135943ae5aaaf6e35ecb39aaf5f194",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2884,7 +2884,11 @@
       "gid://shopify/Product/10664706605240",
       "gid://shopify/Product/10664706834616",
       "gid://shopify/Product/10664707031224",
-      "gid://shopify/Product/10664680456376"
+      "gid://shopify/Product/10664680456376",
+      "gid://shopify/Product/10676884078776",
+      "gid://shopify/Product/10676884177080",
+      "gid://shopify/Product/10676884242616",
+      "gid://shopify/Product/10676884308152"
     ],
     "entries": [
       {
@@ -22906,6 +22910,34 @@
         "tag": "options:irontech-female-silicone-166v2-s20-ros-max",
         "bindingKey": "345774989606d26919dd890b91d08b21f5ae54145c3681d712993ad1d7330f9b",
         "runtimeHash": "7205db81f215034fa830ef136b3f7a4df9402e423504f6edbd3b26bacea9b5fd"
+      },
+      {
+        "productId": "gid://shopify/Product/10676884078776",
+        "handle": "dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll",
+        "tag": "options:dolls-castle-oct22-chiku",
+        "bindingKey": "d3b5e922b7924087063bed550e62240a117835e737a4fcb39968fab4ac38ce1e",
+        "runtimeHash": "7de6ea090df0cc5c8b1623f299259b14207c621d2dd1cf1b4486e2a0a830978d"
+      },
+      {
+        "productId": "gid://shopify/Product/10676884177080",
+        "handle": "dolls-castle-galatea-alice-gt06-163cm-c-cup-silicone-doll",
+        "tag": "options:dolls-castle-oct22-alice",
+        "bindingKey": "e15db250c353ae67730d9d2bbda45bd8aafb11a84840d0423ed7f95fd9a1a8d9",
+        "runtimeHash": "91ad2d790d988e6659670a333bfd227716e5813edbfa4f71004465f85b929543"
+      },
+      {
+        "productId": "gid://shopify/Product/10676884242616",
+        "handle": "dolls-castle-galatea-ginger-gt06-163cm-c-cup-silicone-doll",
+        "tag": "options:dolls-castle-oct22-ginger",
+        "bindingKey": "65998c9c1ab2efdc12b62cd3360fc7c44daf8a4f027b8aaec8c8de2e35248ea9",
+        "runtimeHash": "ea66d97935a11ecbd56b6e9a217410bf61cd4795a239c256e68389dd4a7859af"
+      },
+      {
+        "productId": "gid://shopify/Product/10676884308152",
+        "handle": "dolls-castle-galatea-emma-gt06-163cm-c-cup-silicone-doll",
+        "tag": "options:dolls-castle-oct22-emma",
+        "bindingKey": "87c4858d059763ea9d72a8114abaf39a670a262597b53fd8b0786df0d9f8369d",
+        "runtimeHash": "180fc74d8f00d8079b9ca11ae3568054d0f4fdab2843f191826feef3e0594f35"
       }
     ],
     "bindings": {
@@ -33157,6 +33189,178 @@
               {
                 "groupId": "premium-head-body-options",
                 "optionId": "soft-belly"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "d3b5e922b7924087063bed550e62240a117835e737a4fcb39968fab4ac38ce1e": {
+        "tag": "options:dolls-castle-oct22-chiku",
+        "signature": "{\"groups\":[{\"id\":\"skin-color\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"yellow\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"nature\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"light-tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"white\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"cola\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"red\",\"price\":150,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"blue\",\"price\":150,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"pink\",\"price\":150,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"green\",\"price\":150,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"purple\",\"price\":150,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"vagina\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"fixed\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"removable\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"body-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"body-heating\",\"price\":90,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"moaning\",\"price\":30,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"vaginal-suction\",\"price\":75,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pictured-outfit\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"without\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"pictured-outfit\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]}],\"rules\":[]}",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The factory-standard construction with your selected finish.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "none"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds factory-installed body heating.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "body-heating"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds 5-point touch moaning and vaginal suction to the heated build.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "moaning"
+              },
+              {
+                "groupId": "body-functions",
+                "optionId": "vaginal-suction"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "e15db250c353ae67730d9d2bbda45bd8aafb11a84840d0423ed7f95fd9a1a8d9": {
+        "tag": "options:dolls-castle-oct22-alice",
+        "signature": "{\"groups\":[{\"id\":\"skin-color\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"nature\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"light-tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"white\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"cola\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pictured-wig\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"no-pictured-wig\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"pictured-wig\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"hair-installation\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-wig\",\"price\":120,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pubic-hair\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-pubic-hair\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"mechanical-function\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"auto-blowjob\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"twisting-waist\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"body-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"body-heating\",\"price\":90,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"moaning\",\"price\":30,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"vaginal-suction\",\"price\":75,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-butt\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-breasts\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"breathing\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"oral-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-auto-suction\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-heating\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"additional-head\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"additional-head\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]}],\"rules\":[]}",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The factory-standard construction with your selected finish.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "none"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and 5-point touch moaning.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "body-functions",
+                "optionId": "moaning"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds the breathing system to the heated, touch-moaning build.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "breathing"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "65998c9c1ab2efdc12b62cd3360fc7c44daf8a4f027b8aaec8c8de2e35248ea9": {
+        "tag": "options:dolls-castle-oct22-ginger",
+        "signature": "{\"groups\":[{\"id\":\"skin-color\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"nature\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"light-tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"white\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"cola\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pictured-wig\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"no-pictured-wig\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"pictured-wig\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"hair-installation\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-wig\",\"price\":120,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pubic-hair\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-pubic-hair\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"mechanical-function\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"auto-blowjob\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"twisting-waist\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"body-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"body-heating\",\"price\":90,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"moaning\",\"price\":30,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"vaginal-suction\",\"price\":75,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-butt\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-breasts\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"breathing\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"oral-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-auto-suction\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-heating\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"additional-head\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"additional-head\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]}],\"rules\":[]}",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The factory-standard construction with your selected finish.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "none"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and 5-point touch moaning.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "body-functions",
+                "optionId": "moaning"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds the breathing system to the heated, touch-moaning build.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "breathing"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "87c4858d059763ea9d72a8114abaf39a670a262597b53fd8b0786df0d9f8369d": {
+        "tag": "options:dolls-castle-oct22-emma",
+        "signature": "{\"groups\":[{\"id\":\"skin-color\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"nature\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"light-tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"tan\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"white\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"cola\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pictured-wig\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"no-pictured-wig\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"pictured-wig\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"hair-installation\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-wig\",\"price\":120,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"pubic-hair\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"implanted-pubic-hair\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"mechanical-function\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"auto-blowjob\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"twisting-waist\",\"price\":217,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"body-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"body-heating\",\"price\":90,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"moaning\",\"price\":30,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"vaginal-suction\",\"price\":75,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-butt\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"jitter-breasts\",\"price\":15,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"breathing\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"oral-functions\",\"required\":false,\"multiple\":true,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-auto-suction\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"oral-heating\",\"price\":60,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]},{\"id\":\"additional-head\",\"required\":true,\"multiple\":false,\"options\":[{\"id\":\"none\",\"price\":0,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null},{\"id\":\"additional-head\",\"price\":145,\"purchasable\":true,\"verified\":true,\"exists\":null,\"displayable\":null,\"signals\":null}]}],\"rules\":[]}",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The factory-standard construction with your selected finish.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "none"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and 5-point touch moaning.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "body-functions",
+                "optionId": "moaning"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds the breathing system to the heated, touch-moaning build.",
+            "add": [
+              {
+                "groupId": "body-functions",
+                "optionId": "breathing"
               }
             ],
             "remove": []

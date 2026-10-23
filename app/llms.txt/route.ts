@@ -20,6 +20,7 @@ const corePages = [
   ["Shop", "/shop/sex-dolls"],
   ["Learning Center", "/learn"],
   ["Help Me Choose", "/help-me-choose"],
+  ["Doll Size & Weight Finder", "/tools/doll-size-weight-finder"],
   ["Customize", "/customize"],
   ["DollVue", "/dollvue"],
   ["DollVue-enabled dolls", "/shop/dollvue-enabled"],

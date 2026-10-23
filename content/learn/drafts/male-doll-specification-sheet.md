@@ -5,7 +5,9 @@ primaryKeyword: "male doll specification sheet"
 secondaryKeywords: ["male doll body measurements", "male doll net weight"]
 description: "Read male doll specifications field by field, separating head and body identity, assembled weight, clothing dimensions, shipping and supported options."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

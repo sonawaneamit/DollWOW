@@ -7,7 +7,7 @@ description: "Compare sex doll size and weight using 2,615 current full-size Dol
 category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
-authorTitle: "Doll Collector and Educator with 20+ Years of Experience"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "production"
 reviewOwner: "Alex"
 lastReviewed: "2026-08-12"
@@ -22,6 +22,8 @@ By Alex, Doll Collector and Educator with 20+ Years of Experience
 In a dated review of `2,615` current full-size DollWow listings with usable height, weight, and price data, the median listed doll was `5 ft 4 in / 163 cm` tall and weighed `81.5 lb / 37 kg`. The middle half of listings weighed between `73.9 and 90.4 lb / 33.5 and 41 kg`.
 
 Those figures describe the DollWow catalog on August 12, 2026. They are not a universal industry average, and they do not mean a doll near the median will be easy for you to move. Shape, rigidity, grip, stairs, doorways, storage position, and your own lifting ability matter alongside the number on the product page.
+
+Use the [Doll Size & Weight Finder](/tools/doll-size-weight-finder) to narrow full-doll listings by height and listed-weight ranges, with optional material filters. Listings without a recorded weight are left out.
 
 ## What Current DollWow Listings Show
 

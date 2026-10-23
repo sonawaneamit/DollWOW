@@ -12,6 +12,7 @@ const exactPublicPaths = new Set([
   "/faq",
   "/factory-photos",
   "/help-me-choose",
+  "/tools/doll-size-weight-finder",
   "/how-ordering-works",
   "/learn",
   "/price-match",

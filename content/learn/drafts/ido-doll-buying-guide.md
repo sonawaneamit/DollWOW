@@ -5,7 +5,9 @@ primaryKeyword: "IDO doll buying guide"
 secondaryKeywords: ["IDODOLL body options", "IDO included features"]
 description: "Read IDODOLL's body designations and standard construction, compare DollWOW examples, and distinguish factory specifications from a stock unit's actual offer."
 category: "Brand Comparisons"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

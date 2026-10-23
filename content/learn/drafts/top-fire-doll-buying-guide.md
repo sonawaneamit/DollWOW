@@ -5,7 +5,9 @@ primaryKeyword: "Top Fire doll buying guide"
 secondaryKeywords: ["Top Fire body codes", "Top Fire doll features"]
 description: "Decode Top Fire body and head identifiers, read a factory weight example and distinguish selectable features from confirmed included options."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

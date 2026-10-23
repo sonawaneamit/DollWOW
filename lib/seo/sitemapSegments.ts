@@ -21,6 +21,7 @@ const staticRoutes = [
   "/customize",
   "/warehouse",
   "/help-me-choose",
+  "/tools/doll-size-weight-finder",
   "/compare",
   "/why-dollwow",
   "/reviews",

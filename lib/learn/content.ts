@@ -32,6 +32,7 @@ export type LearnArticle = {
   status: string;
   reviewOwner: string;
   lastReviewed: string;
+  hideReviewDate?: boolean;
   publishedAt?: string;
   featuredImage: string;
   featuredImageAlt: string;
@@ -186,6 +187,7 @@ function readArticle(filePath: string): LearnArticle {
     status: stringValue(frontmatter.status),
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
+    ...(frontmatter.hideReviewDate === 'true' ? { hideReviewDate: true } : {}),
     publishedAt: frontmatter.publishedAt === undefined ? undefined : stringValue(frontmatter.publishedAt),
     featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
     featuredImageAlt: stringValue(frontmatter.featuredImageAlt) || featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),

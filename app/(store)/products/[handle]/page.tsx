@@ -11,6 +11,8 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { contextualLinksEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
 import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
@@ -32,6 +34,7 @@ import {
 import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasurementSpecs } from "@/lib/catalog/productSpecs";
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
+import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -80,6 +83,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
+  const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
@@ -102,7 +106,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
-  const pdpHeading = productReviewedPdpHeading(product);
+  const displayNameUi = productDisplayNameForUi(product);
+  const isCastleOct22 = product.tags.some(tag => tag.startsWith('options:dolls-castle-oct22-'));
+  const pdpHeading = isPrivateDraft || isCastleOct22 ? productPublicTitle(product) : productReviewedPdpHeading(product);
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -110,12 +116,15 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productStructuredData = buildProductStructuredData(publicProduct);
   const faqStructuredData = buildProductFaqStructuredData(product);
   const productBrand = product.extended.brand ?? product.vendor;
+  const contextualLinks = !isPrivateDraft && editorialPreview !== "1" && contextualLinksEnabled(`/products/${product.handle}`) ? productContextualLinks(product) : [];
+  const contextualBrand = contextualLinks.find(link => link.kind === 'brand');
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
 
   return (
     <div>
+      {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <ToneBand tone="deep" className="pt-8">
@@ -170,7 +179,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           </div>
           <div id="overview" className="flex min-w-0 flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
+              <p className="text-sm  text-gold-300">{contextualBrand ? <Link data-contextual-brand href={contextualBrand.href} className="underline underline-offset-4">{productBrand}</Link> : productBrand}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
               {product.extended.stockStatus === "ready_to_ship" ? (
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
@@ -260,7 +269,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
@@ -271,6 +280,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="deep" className="pdp-details-band">
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
+        <ContextualCatalogLinks links={contextualLinks.filter(link => link.kind !== 'brand')} label="Compare this doll" />
       </ToneBand>
 
       <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload).map((item) => keepsWizardOpen(product.handle) ? { ...item, tags: dealerPublicTags(item.tags) ?? item.tags } : item)} />

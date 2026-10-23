@@ -11,7 +11,7 @@ describe("Lusandy brand hub", () => {
     const metadata = buildBrandMetadata(brand);
     expect(metadata.alternates?.canonical).toBe(`${env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/brands/lusandy-dolls`);
     expect(metadata.title).toBe("Lusandy Dolls: Silicone Models, Sizes & Options");
-    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.comparisonBullets ?? profile.comparisonRows).toHaveLength(3);
     expect(profile.faqs).toHaveLength(4);
     expect(profile.intro).toContain("warehouse region");
     expect(JSON.stringify(profile)).not.toMatch(/authorized|medical.grade|hypoallergenic|\b30kg\b|2026-10-31/i);
@@ -30,9 +30,9 @@ describe("Moonvale catalog-grounded brand copy", () => {
     expect(buildBrandMetadata(brand).alternates?.canonical).toContain("/brands/moonvale-dolls");
     for (const model of ["Lyora", "Sorelle", "Velara", "Cerina"]) expect(profile.intro).toContain(model);
     const copy = JSON.stringify(profile);
-    expect(copy).toContain("Confirm handling weight");
+    expect(copy).toContain("Check the size and weight");
     expect(copy).not.toMatch(/\d+(?:\.\d+)?\s*(kg|lb)|platinum|heat-resistant|hypoallergenic/);
-    expect(copy).toContain("does not by itself confirm");
+    expect(copy).toContain("included hair, clothing and accessories");
   });
   it("keeps visible FAQs and schema answers identical", () => {
     const profile = brandSeoProfile(brand);
@@ -54,7 +54,7 @@ describe("Angelkiss brand SEO", () => {
     expect(metadata.title).toContain("Angelkiss Dolls");
     expect(metadata.description).toContain("Angel Kiss dolls");
     expect(profile.faqs).toHaveLength(6);
-    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.comparisonBullets ?? profile.comparisonRows).toHaveLength(3);
     expect(copy).toContain("silicone head does not automatically mean a full-silicone body");
     expect(copy).toContain("Most approved requests can be added within 4 to 6 hours");
     expect(copy).not.toMatch(/angelic doll|PDP|SERP|crawlable|keyword cluster/i);
@@ -78,7 +78,7 @@ describe("Tier 1 brand SEO", () => {
     const copy = `${profile.intro} ${profile.comparisonRows?.flat().join(" ")} ${profile.buyerNotes.flatMap((item) => [item.title, item.body]).join(" ")} ${profile.faqs.flatMap((item) => [item.question, item.answer]).join(" ")}`;
 
     expect(metadata.title).toBe(title);
-    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.comparisonBullets ?? profile.comparisonRows).toHaveLength(3);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster|editorial process/i);
   });
 });
