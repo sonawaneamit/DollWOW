@@ -81,7 +81,7 @@ describe("reviewed shopping copy", () => {
   });
 
   for (const handle of ["moonvale-dolls", "tantaly-dolls"]) {
-    it(`keeps ${handle} plain and holds unconfirmed issuer attribution`, async () => {
+    it(`keeps ${handle} plain and attributes authorization to the actual issuer`, async () => {
       vi.stubEnv("VERCEL_ENV", "preview");
       const brand = getCatalogBrand(handle)!;
       const profile = brandSeoProfile(brand);
@@ -94,10 +94,13 @@ describe("reviewed shopping copy", () => {
       const faqs = dom.querySelector("#brand-faq-heading")!.closest("details")!.querySelectorAll("article");
       expect(faqs.map(card => ({ question: card.querySelector("h3")?.textContent, answer: card.querySelector("p")?.textContent }))).toEqual(profile.faqs);
       if (handle === "moonvale-dolls") {
-        expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
-        expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
-        expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
-        expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
+        expect(dom.querySelector("#brand-authorization-heading")).not.toBeNull();
+        expect(dom.querySelector('a[href="#brand-authorization-heading"]')).not.toBeNull();
+        expect(dom.textContent).toContain("Moonvale is SY Doll's premium silicone line. DollWOW is an authorized SY Doll dealer.");
+        expect(dom.querySelector('a[href="https://www.sydolls.com/collections/moonvale-doll"]')).not.toBeNull();
+        expect(dom.querySelector('a[aria-label="Open SY Dolls authorization certificate"]')?.getAttribute("href")).toBe("/images/authorizations/sy-doll-authorized.jpg");
+        expect(dom.querySelector('a[aria-label="Open Moonvale Dolls authorization certificate"]')).toBeNull();
+        expect(dom.textContent).not.toMatch(/Certified to sell Moonvale|seller approval is confirmed|certificate names Moonvale/);
       } else {
         expect(comparison.textContent).toContain("first-year ownership support and ongoing repair guidance");
         expect(comparison.querySelector('a[href="/care-for-life"]')).not.toBeNull();
@@ -106,12 +109,14 @@ describe("reviewed shopping copy", () => {
     });
   }
 
-  it("omits Moonvale authorization placeholders and navigation in production too", async () => {
+  it("keeps Moonvale's approved statement tied to SY proof in production too", async () => {
     vi.stubEnv("VERCEL_ENV", "production");
     const dom = parse(renderToStaticMarkup(await BrandHubPage({params: Promise.resolve({brand: "moonvale-dolls"}), searchParams: Promise.resolve({})})));
-    expect(dom.querySelector("#brand-authorization-heading")).toBeNull();
-    expect(dom.querySelector('a[href="#brand-authorization-heading"]')).toBeNull();
-    expect(dom.textContent).not.toMatch(/seller approval|Seller authorization|certificate shared/);
-    expect(dom.querySelector('a[aria-label*="authorization certificate"]')).toBeNull();
+    expect(dom.querySelector("#brand-authorization-heading")).not.toBeNull();
+    expect(dom.querySelector('a[href="#brand-authorization-heading"]')).not.toBeNull();
+    expect(dom.querySelector('a[aria-label="Open SY Dolls authorization certificate"]')?.getAttribute("href")).toBe("/images/authorizations/sy-doll-authorized.jpg");
+    expect(dom.textContent).toContain("DollWOW is an authorized SY Doll dealer.");
+    expect(dom.querySelector('a[href="/images/authorizations/md-dolls-authorized.jpg"]')).toBeNull();
+    expect(dom.querySelector('a[href="/images/authorizations/rosretty-authorized.jpg"]')).toBeNull();
   });
 });

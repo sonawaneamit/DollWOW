@@ -65,7 +65,13 @@ export default async function BrandHubPage({
     .filter(Boolean) as string[];
   const hasActiveFilters = activeFilterCount(filters) > 1;
   const authorization = brand.value === "moonvale"
-    ? null
+    ? <div>
+        <p className="text-sm leading-6 text-text-dim">
+          Moonvale is SY Doll&apos;s premium silicone line. DollWOW is an authorized SY Doll dealer.{" "}
+          <a href="https://www.sydolls.com/collections/moonvale-doll" target="_blank" rel="noreferrer" className="underline underline-offset-4">Moonvale at SY Doll</a>.
+        </p>
+        <BrandAuthorizationCard brand="sy" variant="brand" />
+      </div>
     : <BrandAuthorizationCard brand={brand.value} variant="brand" />;
 
   const comparison = (
