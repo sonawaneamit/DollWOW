@@ -11,6 +11,8 @@ import { CompareButton } from "@/components/compare/CompareButton";
 import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { contextualLinksEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
 import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
@@ -113,6 +115,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productStructuredData = buildProductStructuredData(publicProduct);
   const faqStructuredData = buildProductFaqStructuredData(product);
   const productBrand = product.extended.brand ?? product.vendor;
+  const contextualLinks = !isPrivateDraft && editorialPreview !== "1" && contextualLinksEnabled(`/products/${product.handle}`) ? productContextualLinks(product) : [];
+  const contextualBrand = contextualLinks.find(link => link.kind === 'brand');
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
@@ -174,7 +178,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           </div>
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm  text-gold-300">{product.extended.brand ?? product.vendor}</p>
+              <p className="text-sm  text-gold-300">{contextualBrand ? <Link data-contextual-brand href={contextualBrand.href} className="underline underline-offset-4">{productBrand}</Link> : productBrand}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
               {product.extended.stockStatus === "ready_to_ship" ? (
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
@@ -276,6 +280,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="deep" className="pdp-details-band">
         <ProductSpecSummary product={product} measurements={measurements} fitChecks={fitChecks} />
+        <ContextualCatalogLinks links={contextualLinks.filter(link => link.kind !== 'brand')} label="Compare this doll" />
       </ToneBand>
 
       <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload).map((item) => keepsWizardOpen(product.handle) ? { ...item, tags: dealerPublicTags(item.tags) ?? item.tags } : item)} />
