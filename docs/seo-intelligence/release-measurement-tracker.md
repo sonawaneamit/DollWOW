@@ -1,5 +1,40 @@
 # Release Measurement Tracker
 
+## Release Discovery And Weekly Review
+
+Martin's 23 October direction is recorded on DOL-224 and DOL-237. After each
+approved release, including a scheduled guide becoming public on its original
+date: verify HTTP200, self-canonical and no noindex; confirm its canonical URL
+in the appropriate sitemap; submit one changed-URL IndexNow batch; add it to the
+DOL-237 Google queue and request indexing through the approved signed-in UI.
+Do not ping future/404 pages. An unchanged already-correct asset is not a new
+content release. The Shopify webhook covers product create/update only; it does
+not replace this guide/brand/collection handoff. Retain timestamped per-URL
+accepted, blocked and pending receipts. Never describe submission as indexing.
+
+Every Monday from 26 October, post a measurement comment on DOL-224 per release:
+GSC indexed verdict and its observation/crawl dates, inspected coverage versus
+eligible URLs, impressions/clicks/CTR/average position for the last complete week
+versus the previous complete week, data-through date, and Bing indexed count
+only where a comparable cohort is readable. Deduplicate URL lists, but do not
+sum overlapping release cohorts into site totals. Calculate CTR from total
+clicks/impressions and position weighted by impressions, not an average of page
+ratios. Keep unknown/missing/partial states explicit; no-returned row is not
+zero. A pre-release last crawl does not confirm revised content was indexed.
+Keep the existing 28/56/84-day reviews unchanged.
+Releases younger than a complete post-release week remain provisional; the
+first Monday log must not manufacture a full week or treat data lag as failure.
+
+The 3,500-plus-URL linking cohort cannot receive a fresh same-day full sweep
+under Google's published 2,000 URL Inspection API calls per property per day:
+https://developers.google.com/webmaster-tools/limits. Budget/cache inspections,
+report dated coverage, and do not bypass limits. Individual UI request quotas
+are a separate constraint; stop on a quota/challenge and retain the remainder.
+
+The temporary Linear heartbeat expires on 26 October and is not extended here.
+Permanent weekly wakeups await explicit approval; the operating cadence and
+first Monday's work are recorded without activating a new automation.
+
 ## 23 October Byline Release
 
 DOL-227 / PR170 was verified live on production commit

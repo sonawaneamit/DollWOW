@@ -705,5 +705,335 @@
     },
     "verification": "11 live HTML author/schema/canonical checks;41future404;3mobile screenshots; prior3538ledgerrows byte/value preserved.",
     "limits": "No new Google crawl/indexing/credential verification or causal growth claim; historical baseline gap20-22Oct. Source/Article rendering tested before release55focusedtests."
+  },
+  "releaseDiscoveryProcess": {
+    "approval": "DOL-224 comment3f54c13c; DOL-237commentcecb85ae",
+    "bylineIndexNow": {
+      "at": "2026-10-23T10:08:18.888Z",
+      "checks": [
+        {
+          "url": "https://dollwow.com/learn/doll-clothing-measurements-fit",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/doll-delivery-damage-evidence",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/factory-photo-review-worked-example",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/irontech-head-types-ros-max",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-lstpe-lightweight-upgrade",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/sex-doll-reviews",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/sex-doll-size-weight-guide",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/tpe-vs-silicone-sex-dolls",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/used-sex-dolls",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        },
+        {
+          "url": "https://dollwow.com/learn/warehouse-stock-vs-custom-made",
+          "status": 200,
+          "selfCanonical": true,
+          "noindex": false,
+          "sitemap": "https://dollwow.com/sitemaps/learn.xml"
+        }
+      ],
+      "sitemapIndex": "https://dollwow.com/sitemap.xml",
+      "sitemap": "https://dollwow.com/sitemaps/learn.xml",
+      "approval": "DOL224comment3f54c13c-b929-4be3-b818-ce6483837cf5",
+      "httpStatus": 200,
+      "accepted": true,
+      "attempts": 1,
+      "service": "IndexNow participating engines including Bing; not Google",
+      "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
+    },
+    "googleQueue": {
+      "updatedAt": "2026-10-23T10:17:50.117Z",
+      "urls": [
+        {
+          "url": "https://dollwow.com/learn/sex-doll-reviews",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/tpe-vs-silicone-sex-dolls",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/used-sex-dolls",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/doll-clothing-measurements-fit",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/doll-delivery-damage-evidence",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/factory-photo-review-worked-example",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/irontech-head-types-ros-max",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-lstpe-lightweight-upgrade",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/sex-doll-size-weight-guide",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/learn/warehouse-stock-vs-custom-made",
+          "ticket": "DOL-227"
+        },
+        {
+          "url": "https://dollwow.com/brands/irontech-dolls",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/silicone",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/tpe",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/male-dolls",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/female-dolls",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/torsos",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/shop/asian-dolls",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/brands/wm-dolls",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/brands/se-doll",
+          "ticket": "Sprint1"
+        },
+        {
+          "url": "https://dollwow.com/brands/starpery-dolls",
+          "ticket": "Sprint1"
+        }
+      ],
+      "events": [
+        {
+          "url": "https://dollwow.com/learn/sex-doll-reviews",
+          "ticket": "DOL-227",
+          "acceptedAt": "2026-10-23T10:09:18.716Z",
+          "status": "request_accepted",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue",
+          "inspectionBefore": "Crawled - currently not indexed; stored last crawl Jul3; not a fresh postrelease index result"
+        },
+        {
+          "url": "https://dollwow.com/learn/tpe-vs-silicone-sex-dolls",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:09:18.894Z",
+          "inspectionBefore": "https://dollwow.com/learn/tpe-vs-silicone-sex-dolls\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: Crawled - currently not indexed\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nhttps://dollwow.com/brands/dolls-castle\nhttps://dollwow.com/shop/blonde-dolls\nCrawl\nLast crawl\nJul 3, 2026, 11:10:37\u202fAM\nCrawled as\nGooglebot smartphone\nCrawl allowed?\nYes\nPage fetch\nSuccessful\nIndexing allowed?\n",
+          "requestStartedAt": "2026-10-23T10:09:24.550Z",
+          "acceptedAt": "2026-10-23T10:10:02.466Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/used-sex-dolls",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:10:02.671Z",
+          "inspectionBefore": "https://dollwow.com/learn/used-sex-dolls\nURL Inspection\nTEST LIVE URL\ncheck_circle\nURL is on Google\nIt can appear in Google Search results (if not subject to a manual action or removal request) with all relevant enhancements. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ncheck_circle\nPage indexing\nPage is indexed\n\ue313\nEnhancements & Experience\ncheck_circle\nHTTPS\nPage is served over HTTPS\n\ue315\ncheck_circle\nBreadcrumbs\n1 valid item detected\n\ue315\nLoading...",
+          "requestStartedAt": "2026-10-23T10:10:08.262Z",
+          "acceptedAt": "2026-10-23T10:10:56.912Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/doll-clothing-measurements-fit",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:10:57.084Z",
+          "inspectionBefore": "https://dollwow.com/learn/doll-clothing-measurements-fit\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: Discovered - currently not indexed\n\ue316\nDiscovery\nSitemaps\nhttps://dollwow.com/sitemap.xml\nhttps://dollwow.com/sitemaps/learn.xml\nReferring page\nNone detected\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected cano",
+          "requestStartedAt": "2026-10-23T10:11:02.614Z",
+          "acceptedAt": "2026-10-23T10:11:53.846Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/doll-delivery-damage-evidence",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:11:53.999Z",
+          "inspectionBefore": "https://dollwow.com/learn/doll-delivery-damage-evidence\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\n",
+          "requestStartedAt": "2026-10-23T10:11:56.864Z",
+          "acceptedAt": "2026-10-23T10:12:40.013Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/factory-photo-review-worked-example",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:12:40.165Z",
+          "inspectionBefore": "https://dollwow.com/learn/factory-photo-review-worked-example\nURL Inspection\nTEST LIVE URL\ncheck_circle\nURL is on Google\nIt can appear in Google Search results (if not subject to a manual action or removal request) with all relevant enhancements. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ncheck_circle\nPage indexing\nPage is indexed\n\ue313\nEnhancements & Experience\ncheck_circle\nHTTPS\nPage is served over HTTPS\n\ue315\ncheck_circle\nBreadcrumbs\n1 valid item detected\n\ue315\nURL Inspection",
+          "requestStartedAt": "2026-10-23T10:12:45.737Z",
+          "acceptedAt": "2026-10-23T10:13:26.213Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/irontech-head-types-ros-max",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:13:26.382Z",
+          "inspectionBefore": "https://dollwow.com/learn/irontech-head-types-ros-max\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\nN/",
+          "requestStartedAt": "2026-10-23T10:13:31.896Z",
+          "acceptedAt": "2026-10-23T10:14:12.362Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-lstpe-lightweight-upgrade",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:14:12.539Z",
+          "inspectionBefore": "https://dollwow.com/learn/se-doll-lstpe-lightweight-upgrade\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: Discovered - currently not indexed\n\ue316\nDiscovery\nSitemaps\nhttps://dollwow.com/sitemap.xml\nhttps://dollwow.com/sitemaps/learn.xml\nReferring page\nNone detected\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected c",
+          "requestStartedAt": "2026-10-23T10:14:18.079Z",
+          "acceptedAt": "2026-10-23T10:15:06.658Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:15:06.813Z",
+          "inspectionBefore": "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared can",
+          "requestStartedAt": "2026-10-23T10:15:12.409Z",
+          "acceptedAt": "2026-10-23T10:15:52.965Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/sex-doll-size-weight-guide",
+          "ticket": "DOL-227",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-23T10:15:53.134Z",
+          "inspectionBefore": "https://dollwow.com/learn/sex-doll-size-weight-guide\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: Crawled - currently not indexed\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nOct 14, 2026, 10:00:54\u202fPM\nCrawled as\nGooglebot smartphone\nCrawl allowed?\nYes\nPage fetch\nSuccessful\nIndexing a",
+          "requestStartedAt": "2026-10-23T10:15:56.017Z",
+          "acceptedAt": "2026-10-23T10:16:47.713Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/learn/warehouse-stock-vs-custom-made",
+          "ticket": "DOL-227",
+          "status": "blocked",
+          "inspectionStartedAt": "2026-10-23T10:16:47.894Z",
+          "inspectionBefore": "https://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical",
+          "requestStartedAt": "2026-10-23T10:16:53.480Z",
+          "reason": "help_outline\nHelp\nmanage_accounts\nUser settings\n\t\nnotifications\nMessages\n1\n\ue5c5\nhome\nOverview\nlightbulb_2\nInsights\ntrending_up\nPerformance\nkeyboard_arrow_down\nsearch\nURL inspection\nIndexing\nkeyboard_arrow_up\nfile_copy\nPages\nvideo_library\nVideos\naccount_tree\nSitemaps\nvisibility_off\nRemovals\nExperience\nkeyboard_arrow_up\nspeed\nCore Web Vitals\nlock\nHTTPS\nShopping\nkeyboard_arrow_up\nlayers\nProduct snippets\nlayers\nMerchant listings\nEnhancements\nkeyboard_arrow_up\nlayers\nBreadcrumbs\nlayers\nImage Metadata\nSecurity & Manual Actions\nkeyboard_arrow_down\nlink_2\nLinks\ntrophy\nAchievements\nsettings\nSettings\nfeedback\nSubmit feedback\ninfo\nAbout Search Console\nPrivacyTerms\nhttps://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected canonical\n\ue8fd\nN/A\nLEARN MORE\nEnhancements & Experience\nOnly indexed URLs can have enhancements\nerror_outline\nQuota Exceeded\nSorry--we couldn't process this request because you've exceeded your daily quota. Please try submitting this again tomorrow.\nDismiss"
+        }
+      ],
+      "nativeDocument": "https://linear.app/dollwow/document/dol-237-google-request-indexing-queue-and-submission-receipts-b144644d0126"
+    },
+    "weekly": {
+      "firstMonday": "2026-10-26",
+      "destination": "DOL-224 comments",
+      "metrics": [
+        "GSC indexed verdict and observed/last-crawl dates",
+        "impressions",
+        "clicks",
+        "CTR",
+        "impression-weighted average position",
+        "Bing indexed count only where comparable cohort readable"
+      ],
+      "limits": "Complete comparable weeks; new/lagged cohorts provisional. Missing/suppressed notzero. DuplicateURLcohorts notsum. GoogleAPIinspection2000/site/day; reportcoverage. Keep28/56/84anchors.",
+      "persistentAutomation": "Not activated; explicit approval requested without extending temporary heartbeat."
+    },
+    "schemaChange": "Nine additive discovery/cadence columns; all3549existing rows and every preexisting cell value preserved, including baseline/index verdict/review timestamps. Bytes necessarily change to add columns.",
+    "limits": "Submission does not guarantee index inclusion. UI verdicts may be historical. No future404guide notification.",
+    "bingSitemapRead": {
+      "at": "2026-10-23T10:13:31.329Z",
+      "knownSitemaps": 34,
+      "processingSuccess": 34,
+      "errors": 0,
+      "warnings": 0,
+      "learnLastCrawl": "2026-10-22",
+      "learnUrlsDiscovered": 56,
+      "indexedPageCount": null,
+      "limits": "Discovered/processed is not indexed; stored56guide count predates23Oct57visibleguides. No new sitemap submission."
+    },
+    "googleSitemapSubmission": {
+      "url": "https://dollwow.com/sitemap.xml",
+      "submittedAt": "2026-10-23T10:17:17.517Z",
+      "observedAt": "2026-10-23T10:17:57.483Z",
+      "attempts": 1,
+      "status": "ui_submission_accepted",
+      "message": "Sitemap submitted successfully",
+      "storedLastRead": "2026-10-20",
+      "storedDiscoveredPages": 3667,
+      "limits": "Submission date updated23Oct; last read and discovered count remain historical, not new crawl or indexed count."
+    }
   }
 }
