@@ -9,7 +9,7 @@ import { getLearningArticle } from '@/lib/learn/content';
 import { config } from '@/proxy';
 
 const path = '/tools/doll-size-weight-finder';
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 describe('Finder discovery stays scoped to its canonical owner', () => {
   it('lists the one root URL in the sitemap, feeds and existing guide', async () => {
     const urls = Object.values(buildSitemapSegments([])).flat().map(row => row.url);
@@ -44,5 +44,40 @@ describe('Finder discovery stays scoped to its canonical owner', () => {
     expect(text).toContain('Body-only weights stay separate.');
     expect(text).toContain('Matching listing');
     expect(text).not.toContain('Private control state');
+  });
+
+  it('forwards only existing preview authorization to the exact deployment host', async () => {
+    vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('VERCEL_URL', 'doll-preview.vercel.app');
+    const fetcher = vi.fn(async () => new Response('<main><h1>Finder</h1></main>'));
+    vi.stubGlobal('fetch', fetcher);
+    await markdown(new Request(`https://doll-preview.vercel.app/markdown${path}`, { headers: { Cookie: '_vercel_jwt=existing-preview-proof; customer_session=private' } }), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) });
+    expect(fetcher).toHaveBeenCalledWith(new URL(`https://doll-preview.vercel.app${path}`), expect.objectContaining({ headers: expect.objectContaining({ Cookie: '_vercel_jwt=existing-preview-proof' }), redirect: 'manual' }));
+  });
+
+  it.each(['production', 'preview'])('never forwards cookies on a nondeployment origin in %s', async environment => {
+    vi.stubEnv('VERCEL_ENV', environment); vi.stubEnv('VERCEL_URL', 'doll-preview.vercel.app');
+    const fetcher = vi.fn(async () => new Response('<main><h1>Finder</h1></main>'));
+    vi.stubGlobal('fetch', fetcher);
+    await markdown(new Request(`https://dollwow.com/markdown${path}`, { headers: { Cookie: '_vercel_jwt=preview-proof; customer_session=private' } }), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) });
+    expect(fetcher).toHaveBeenCalledWith(new URL(`https://dollwow.com${path}`), expect.objectContaining({ headers: expect.not.objectContaining({ Cookie: expect.anything() }) }));
+  });
+
+  it('does not turn an off-origin login redirect into public Markdown', async () => {
+    const fetcher = vi.fn(async () => new Response(null, { status: 302, headers: { Location: 'https://vercel.com/login' } }));
+    vi.stubGlobal('fetch', fetcher);
+    const response = await markdown(new Request(`https://dollwow.com/markdown${path}`), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) });
+    expect(response.status).toBe(502); expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(await response.text()).not.toContain('Log in');
+  });
+
+  it('follows bounded same-origin public redirects without fetching private paths', async () => {
+    const fetcher = vi.fn().mockResolvedValueOnce(new Response(null, { status: 302, headers: { Location: '/learn/sex-doll-size-weight-guide' } })).mockResolvedValueOnce(new Response('<main><h1>Guide</h1></main>'));
+    vi.stubGlobal('fetch', fetcher);
+    const response = await markdown(new Request(`https://dollwow.com/markdown${path}`), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) });
+    expect(response.status).toBe(200); expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(await response.text()).toContain('Canonical: https://dollwow.com/learn/sex-doll-size-weight-guide');
+    fetcher.mockReset().mockResolvedValue(new Response(null, { status: 302, headers: { Location: '/account/my-dolls' } }));
+    expect((await markdown(new Request(`https://dollwow.com/markdown${path}`), { params: Promise.resolve({ path: ['tools', 'doll-size-weight-finder'] }) })).status).toBe(502);
+    expect(fetcher).toHaveBeenCalledTimes(1);
   });
 });
