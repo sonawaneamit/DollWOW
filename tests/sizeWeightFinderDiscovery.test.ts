@@ -19,6 +19,7 @@ describe('Finder discovery stays scoped to its canonical owner', () => {
     expect(json.tools.filter((row: { url: string }) => row.url.endsWith(path))).toHaveLength(1);
     expect(await llms().text()).toContain(path);
     expect(getAgentKnowledgeRecords().filter(row => row.url.endsWith(path))).toHaveLength(1);
+    expect(getAgentKnowledgeRecords()[0].id).toBe('home');
     const guide = getLearningArticle('sex-doll-size-weight-guide')!;
     expect(guide.body).toContain(`](${path})`);
     expect(guide.lastReviewed).toBe('2026-08-12');
