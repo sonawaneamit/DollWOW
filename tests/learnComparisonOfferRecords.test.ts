@@ -31,7 +31,7 @@ describe("four existing comparison owners", () => {
     expect(article.lastReviewed).toBe("2026-10-16");
     expect(article.hideReviewDate).toBe(true);
     for (const fact of facts) expect(article.body, fact).toContain(fact);
-    expect(article.body).not.toMatch(/NEEDS MARTIN|SERP|GSC|DataForSEO|Sources:|checked on|checked the|snapshot|basis not specified|weight note above|not a confirmed complete weight|(?:15|16|23) October/);
+    expect(article.body).not.toMatch(/NEEDS MARTIN|SERP|GSC|DataForSEO|Sources:|checked on|checked the|snapshot|basis not specified|weight note above|not a confirmed complete weight|dated starting prices|What these two records show|(?:15|16|23) October/);
     expect(article.body).not.toMatch(/\bundefined\b|basis not specified|basis unspecified|decision-critical|Do not\b/);
     expect(article.body).toContain('| Listed weight |');
     const headings = article.body.split("\n").filter(line => line.startsWith("## "));

@@ -13,7 +13,7 @@ reviewOwner: catalog
 lastReviewed: "2026-10-16"
 hideReviewDate: true
 featuredImage: "/images/learn/se-doll-vs-starpery-build-comparison.webp"
-featuredImageAlt: "SE Doll and Starpery comparison cover with two blank specification records."
+featuredImageAlt: "SE Doll and Starpery comparison cover with two blank specification sheets."
 publishedAt: "2026-10-19T09:00:00.000Z"
 ---
 
@@ -62,12 +62,12 @@ On the review date, Amy's defaults were a hard silicone head, Light Tan skin and
 
 If only one model supports your must-have feature, that may make the choice easier. An unavailable upgrade is different from a free one; it's worth knowing which you're looking at.
 
-| Your shortlist question | What these two records show | What they do not show |
+| Your shortlist question | A useful starting point | What to keep in mind |
 | --- | --- | --- |
-| Will the silhouettes occupy similar space? | Equal height but substantially different bust, waist and hips | A shared clothing size or storage footprint |
-| Am I comparing full silicone with TPE? | Amy's default is a silicone head with TPE body; Alba's default material is Regular TPE | A controlled full-silicone-versus-TPE result |
+| Will the silhouettes occupy similar space? | Equal height but substantially different bust, waist and hips | Check clothing size and storage space for your chosen doll |
+| Am I comparing full silicone with TPE? | Amy's default is a silicone head with TPE body; Alba's default material is Regular TPE | Compare the head and body materials separately |
 | Is one easier for me to handle? | Compare the two weights and proportions | The weight and dimensions of your chosen build |
-| Does the $300 gap settle value? | Difference between dated starting prices | Difference between equally configured or delivered totals |
+| Does the $300 gap settle value? | Difference between starting prices | Compare equally configured and delivered totals |
 
 ## Start with what matters in your home
 
