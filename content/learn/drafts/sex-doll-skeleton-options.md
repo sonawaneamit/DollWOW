@@ -123,11 +123,13 @@ Before paying for an advanced option, request:
 
 Do not combine claims from different brands. A search result about one manufacturer's EVO system is not proof of what another factory supplies.
 
-### Irontech EVO: A Manufacturer-Specific Example
+### Irontech EVO: What It Changes
 
-Irontech's [body, hand and toe skeleton guide](https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/) describes EVO with geared knees and moving shoulders. It distinguishes normal from loose joint resistance: easier movement does not establish the same pose-holding ability. Its stated knee range is theoretical and limited by the surrounding material, not a target to force on a finished doll.
+With Irontech EVO, think about two jobs: getting the doll into a pose and keeping it there. Its geared knees and moving shoulders change how you position the body, while the selected joint resistance affects how easily it moves and holds a pose. Easier movement doesn't make the doll lighter to lift.
 
-The same source separates body, hand and toe systems. It excludes several named bodies from its toe option; EVO alone does not prove those separate parts are included or compatible. Checked on 23 October 2026, this page is not an exact ordering matrix: confirm the body code and installed systems in the [Irontech listing](/brands/irontech-dolls). Use the [storage guide](/learn/sex-doll-storage) alongside the instructions for that build.
+Hands and toes are separate choices. Don't assume an EVO body includes either upgrade; toe options also have body-specific limits. Check what's included on your [Irontech listing](/brands/irontech-dolls), especially if hand or toe movement is important to you.
+
+Use gentle, supported movements and stop at resistance. A published joint angle isn't a goal to push toward: the material around the joint limits the finished doll's movement. Irontech explains the separate systems in its [body, hand and toe guide](https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/). Plan a supported resting position with the [storage guide](/learn/sex-doll-storage), too.
 
 ## Pose Range Versus Practical Ownership
 
