@@ -3,7 +3,7 @@ title: "MD vs IDO: Selectable Options or a Fixed Factory Package?"
 slug: "md-vs-ido-doll-build-comparison"
 primaryKeyword: "MD vs IDO doll"
 secondaryKeywords: ["MD silicone doll comparison", "IDO silicone build"]
-description: "Use Bonnie and Tatiana-1 factory pages to distinguish MD's selectable options from IDO's standard package, then record which choices still need confirmation."
+description: "See how MD Bonnie and IDO factory packages differ, and why the Bonnie and WanZhi warehouse offers need their own configuration and price check."
 category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
@@ -18,11 +18,11 @@ publishedAt: "2026-12-21T10:00:00.000Z"
 
 # MD vs IDO: Selectable Options or a Fixed Factory Package?
 
-MD's Bonnie page presents a menu of selections; IDO describes its dolls as a standard factory package. Those are different ways to evaluate an offer. With a menu, identify the selected state of each choice. With a fixed package, establish whether the offered version already meets your needs rather than assuming you can redesign it.
+Do you enjoy choosing the details, or would you rather find a ready-defined build you love? MD's Bonnie factory page has a menu of selections, while IDO describes a standard factory package. With either approach, the important part is knowing what's actually offered on the doll you're buying.
 
-The worksheet below compares these purchase structures using two exact model identities. It does not rank their prices, weights or performance and is not a hands-on or matched-build test.
+Let's look at the factory examples and two warehouse listings separately. They're useful starting points, rather than identical builds or a hands-on test that could settle a brand-wide price, weight or performance ranking.
 
-## Do not transfer a factory menu onto a warehouse offer
+## A warehouse doll has its own configuration
 
 The manufacturer's product page and a specific DollWOW warehouse listing are different offers. On 23 October 2026, these two DollWOW records provided a nearby-height, same-listed-country starting point:
 
@@ -31,27 +31,29 @@ The manufacturer's product page and a specific DollWOW warehouse listing are dif
 | Exact head / body identity | M37, 166 cm F-cup | ID8H, 167 cm F-cup |
 | Listed material | Silicone | Silicone |
 | Bust / waist / hips | 84.5 / 60.5 / 94 cm | 85 / 65 / 103 cm |
-| Weight entry and basis | 41 kg factory body weight; 53 kg packing weight | 39 kg, labelled Weight without a complete-build definition |
+| Listed weight | 41 kg; 53 kg packed | 39 kg |
 | Listed USD price | $1,399 | $2,599 |
 | Purchase structure | Fixed warehouse configuration | Fixed warehouse configuration |
 
-Sources: [Bonnie's exact US offer](/products/md-bonnie-166cm-f-cup-silicone-companion-doll-in-stock-us) and [WanZhi's exact US offer](/products/ido-wanzhi-167cm-f-cup-silicone-companion-doll-in-stock-us). The records identify United States warehouse offers, but their retained stock-check timestamps are 15 October, not a fresh physical-stock confirmation on 23 October. Confirm the exact unit, appearance and availability before relying on a dispatch date.
+Bonnie's 41 kg is factory body weight; 53 kg is the packed weight. WanZhi's listing just says "Weight," without saying what's included. Those figures cover different things, so ask for the same weight details on both finished dolls before planning how to move them.
 
-These prices are dated seller offers, not permanent brand price rankings. The $1,200 gap does not establish what equal custom builds would cost, and neither price includes shipping, tax or any checkout discount. Bonnie's body weight must not be compared directly with WanZhi's undefined Weight field or with packed shipping weight.
+Sources: [Bonnie's exact US offer](/products/md-bonnie-166cm-f-cup-silicone-companion-doll-in-stock-us) and [WanZhi's exact US offer](/products/ido-wanzhi-167cm-f-cup-silicone-companion-doll-in-stock-us). Both are United States warehouse offers, with stock checks dated 15 October, not fresh warehouse confirmations on 23 October. Ask us to confirm the exact unit, appearance and availability before planning around a dispatch date.
 
-WanZhi's ID8H pairing is not the Tatiana-1 ID1(H) factory example below. Do not use Tatiana's face, model specifications or package description as proof of WanZhi's exact supplied configuration. Likewise, Bonnie's warehouse offer is not made customizable merely because the manufacturer's Bonnie page has a menu.
+The $1,200 gap is between these dated offers, rather than a permanent price difference between the brands or a quote for equal custom builds. Both prices are before shipping, tax and any checkout discount. The weight note above is just as important when comparing them.
+
+WanZhi's ID8H pairing is not the Tatiana-1 ID1(H) factory example below. Tatiana's face, specifications and package description don't tell us exactly how WanZhi is supplied. Bonnie's warehouse doll has its own fixed configuration too, even though the factory's Bonnie page offers choices.
 
 ## Start with the two documented identities
 
 MD's [official Bonnie M-37 listing](https://mddoll.com/index.php/product/md-doll-166bcm-5ft45-f-cup-bonnie-full-silicone-sex-doll-m-37/) identifies a 166(B) cm F-cup full-silicone build. IDO's [Tatiana-1 product page](https://www.idodoll.com/product/167cm-5ft57-f-cup-id1h-1-head/) identifies a 167 cm F-cup build with the ID1(H) head.
 
-These are real, nearby-height starting points checked on 16 October 2026. They are not proven matched bodies. A cup label is not a shared measurement standard between manufacturers, and one centimetre of height difference tells you little about width, body depth or weight.
+These factory pages were checked on 16 October 2026. The heights are close, but that doesn't make the bodies a match. Cup labels aren't standardized across manufacturers, and one centimeter says little about width, depth or weight.
 
 Write down full bust, waist and hip measurements before deciding that the silhouettes are comparable. Keep body and head identity together; changing the face on a similar-height body may change the rest of the comparison.
 
 ## Separate the included package from the menu
 
-IDO's [factory advantage page](https://www.idodoll.com/ido-advantage/) describes a standard package including weight reduction 4.0, EVO skeleton, articulated fingers, a wig and body makeup. It presents this as a fixed package rather than an open-ended custom-options menu. Confirm the exact offered version and appearance with DollWOW; do not invent configurable IDO upgrades from MD's menu. These are manufacturer package descriptions, not independent performance findings.
+IDO's [factory advantage page](https://www.idodoll.com/ido-advantage/) describes a standard package with weight reduction 4.0, EVO skeleton, articulated fingers, a wig and body makeup. It's a fixed-package description, rather than an open-ended menu or an independent performance test. We'll help you check the offered version and appearance; an option on MD's menu isn't automatically an IDO upgrade.
 
 MD's Bonnie page presents selectable head, appearance and function fields. A choice appearing in that menu does not mean it is included, needed or available in every combination. Read the selected state and resulting total rather than adding up feature names.
 
@@ -64,11 +66,11 @@ Your sheet should have one row for each feature that matters to you:
 | Handling | Weight figure, what it includes and dimensions |
 | Appearance | Selected skin, makeup, eyes and hair |
 | Added functions | Supported selection and separate charge, if any |
-| Purchase basis | Stock or factory order, currency and configured total |
+| Order and price | Stock or factory order, currency and configured total |
 
-An unresolved field is a question for support, not a reason to award the other brand a point automatically.
+Something missing? Ask us about that detail before you choose. A blank doesn't necessarily mean the other doll has an advantage.
 
-## Fill a choice-status record
+## What's included, and what can you choose?
 
 Here is a worked reading of the cited pages, not an order placed with either manufacturer:
 
@@ -80,13 +82,13 @@ Here is a worked reading of the cited pages, not an order placed with either man
 | How is hair recorded? | Record the selected wig/appearance field. | A premium wig is listed in the standard package; confirm the offered style. |
 | What remains open? | Supported combination and included/paid status of each selected field | Exact supplied generation, appearance and fulfillment offer |
 
-Now add a hypothetical preference: "I want Tatiana-1's pictured look, but I also want to replace its head with a different design." The pictured look and the swap are separate requirements. Mark the first "check offered appearance" and the second "not established by this fixed-package evidence." Do not turn the second into a free custom selection. On the MD side, an alternative head appearing in a menu is a candidate for confirmation, not proof that it reproduces Tatiana's appearance.
+Suppose you love Tatiana-1's pictured look but want a different head. Those are two separate requests: first check the supplied appearance, then ask whether a head change is available. It isn't a confirmed free selection in this package. An alternative head on MD's menu needs checking too; appearing in the menu doesn't mean it will recreate Tatiana's look.
 
-## Normalize price without inventing upgrades
+## Compare the price of the build you want
 
-Compare the [current MD collection](/brands/md-dolls) and [IDO collection](/brands/ido-dolls) on the same purchase basis. A warehouse unit with a fixed appearance is not equivalent to a factory order with additional selections simply because both use silicone.
+Browse the [current MD collection](/brands/md-dolls) and [IDO collection](/brands/ido-dolls), comparing the same kind of order. A fixed warehouse doll and a factory order with extra choices are different offers, even when both use silicone.
 
-For MD, record only supported selections and their confirmed included or paid status. For IDO, identify the price of the actual offered package before asking whether any requested departure is available. Mark an unconfirmed change "pending" rather than attaching an estimated charge. No price or weight winner follows from this worksheet.
+For MD, check which selections are supported and which cost extra. For IDO, start with the offered package price, then ask about any change you'd like. Mark an unconfirmed change "pending" rather than guessing its cost. This helps you compare your choices, not declare a brand-wide price or weight winner.
 
 Keep shipping, taxes, duties where applicable and discounts separate from the configured product subtotal. For broader budgeting, use the [cost guide](/learn/sex-doll-cost).
 
@@ -96,4 +98,4 @@ If the face is your first priority, confirm the exact head pairing and appearanc
 
 If neither candidate meets a must-have, widen the shortlist rather than forcing a brand winner. A fuller body you admire may still be the wrong practical fit, while a longer upgrade menu may offer nothing you need.
 
-Bring the two completed sheets to [Compare](/compare). A defensible decision is a supported build you understand, not a verdict based on marketing labels that happen to sound alike.
+Keep both candidates in [Compare](/compare). The aim is a build you understand and feel good about buying, rather than a decision based on labels that happen to sound alike.

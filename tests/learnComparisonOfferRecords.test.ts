@@ -12,13 +12,13 @@ vi.mock("@/lib/shopify/storefront", () => ({
 
 const cases = [
   { slug: "se-doll-vs-starpery-build-comparison", date: "2026-10-19T09:00:00.000Z",
-    facts: ["$1,899 Alba A", "$2,199 Amy", "head 129", "not newly measured dimensions"] },
+    facts: ["$1,899", "$2,199", "head 129", "not newly measured dimensions"] },
   { slug: "irontech-vs-wm-build-comparison", date: "2026-11-11T10:00:00.000Z",
     facts: ["166 cm 2.0 E-cup body, S44 ROS MAX head", "165 cm D-cup body, head 216", "$3,199", "$2,300", "body only", "Neither record establishes that this WM build uses S-TPE"] },
   { slug: "md-vs-ido-doll-build-comparison", date: "2026-12-21T10:00:00.000Z",
-    facts: ["M37, 166 cm F-cup", "ID8H, 167 cm F-cup", "$1,399", "$2,599", "15 October", "not the Tatiana-1", "not a fresh physical-stock confirmation"] },
+    facts: ["M37, 166 cm F-cup", "ID8H, 167 cm F-cup", "$1,399", "$2,599", "15 October", "not the Tatiana-1", "not fresh warehouse confirmations", "WanZhi's listing just says"] },
   { slug: "funwest-vs-dolls-castle-build-comparison", date: "2026-12-28T10:00:00.000Z",
-    facts: ["$1,349 Bea", "$1,999 Nyla", "head 006", "not a verified difference", "hip-measurement discrepancy"] }
+    facts: ["Bea's base price was still $1,349", "Nyla's $1,999", "head 006", "not weighing equivalent finished dolls", "hip-measurement discrepancy"] }
 ];
 
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
@@ -32,6 +32,8 @@ describe("four existing comparison owners", () => {
     expect(article.body).toContain("23 October 2026");
     for (const fact of facts) expect(article.body, fact).toContain(fact);
     expect(article.body).not.toMatch(/NEEDS MARTIN|SERP|GSC|DataForSEO/);
+    expect(article.body).not.toMatch(/\bundefined\b|basis not specified|basis unspecified|decision-critical|Do not\b/);
+    expect(article.body).toContain('| Listed weight |');
     const headings = article.body.split("\n").filter(line => line.startsWith("## "));
     expect(new Set(headings).size).toBe(headings.length);
   });

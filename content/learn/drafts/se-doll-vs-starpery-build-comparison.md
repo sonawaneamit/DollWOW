@@ -3,7 +3,7 @@ title: "SE Doll vs Starpery: Compare These Builds, Not Just the Brand Names"
 slug: "se-doll-vs-starpery-build-comparison"
 primaryKeyword: "SE Doll vs Starpery"
 secondaryKeywords: ["SE Doll Starpery comparison", "TPE doll build comparison"]
-description: "Contrast SE Alba A and Starpery Amy at the same listed height using dated proportions, head/body labels and starting prices, not a controlled brand test."
+description: "Compare SE Alba A and Starpery Amy at 161 cm, with listed measurements, head and body materials, dated prices and practical shopping tips."
 category: "Brand Comparisons"
 author: "alex"
 authorDisplayName: "Alex"
@@ -18,9 +18,9 @@ publishedAt: "2026-10-19T09:00:00.000Z"
 
 # SE Doll vs Starpery: Compare These Builds, Not Just the Brand Names
 
-The useful question is which complete build fits your preferences and budget. A brand name cannot answer that by itself. SE Doll and Starpery both have multiple configurations, and even two dolls at the same height can be substantially different purchases.
+Choosing between SE Doll and Starpery? Start with the doll that fits your taste, space and budget. Both brands offer different builds, so even two dolls at the same height can feel like very different purchases.
 
-Here is a concrete starting point using two DollWOW listings at 161 cm. This comparison matches height; it does not claim the bodies have identical proportions, head construction or included options. It is a catalog comparison, not a hands-on test.
+Let's look at two DollWOW listings at 161 cm. They share a height, but their proportions, heads and included options differ. We're comparing their listings here, rather than reporting a hands-on test.
 
 ## Two listings to compare
 
@@ -29,15 +29,17 @@ Here is a concrete starting point using two DollWOW listings at 161 cm. This com
 | Listed height | 161 cm | 161 cm |
 | Listed cup designation | F | H |
 | Bust / waist / hips | 83 / 50 / 89 cm | 109 / 102 / 125 cm |
-| Listed weight, basis not specified | 35 kg / 77.2 lb | 52.5 kg / 115.7 lb |
+| Listed weight | 35 kg / 77.2 lb | 52.5 kg / 115.7 lb |
 | Construction to examine | TPE listing with its selected head | Silicone-head listing with a TPE body in the default configuration |
 | Starting price, 16 October 2026 | US $1,899 | US $2,199 |
 
-Sources: [Alba A's product page](/products/sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7) and [Amy's product page](/products/starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0). Starting prices are a dated snapshot before selected upgrades, shipping, tax and any applicable checkout offer. Use the current configured total when shopping.
+Both listings simply say "Weight," without confirming whether the selected head and all fitted options are included. Ask for the same information on both dolls before using those figures to plan lifting or storage.
+
+Sources: [Alba A's product page](/products/sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7) and [Amy's product page](/products/starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0). These starting prices were checked on the date shown, before upgrades, shipping, tax and any checkout offer. Your selected build's current total is the one to budget for.
 
 ## Read past the material label
 
-Amy's listing is a useful example of why "silicone head" must not be read as "full silicone doll." Its default option summary identifies a TPE body. If you were comparing its card with a full-silicone product, the body material would be a decision-critical difference.
+Amy shows why it helps to read the head and body details separately. Its default options pair a silicone head with a TPE body, rather than a full-silicone doll. That's an important difference if you have a particular material in mind.
 
 For Alba A, check the actual selected head and the body options rather than assuming every SE configuration has the same construction. Keep head material and body material as two separate fields in your comparison.
 
@@ -45,9 +47,9 @@ The broader [materials guide](/learn/tpe-vs-silicone-sex-dolls) explains the mat
 
 ## Equal height does not mean an equal body
 
-The cup designations alone show that these are not two versions of an identical silhouette. Compare the full bust, waist and hip measurements and inspect the galleries before deciding which proportions you prefer. Do not use cup letters as if they were a standardized measurement across factories.
+The cup labels already hint at different silhouettes. The bust, waist and hip measurements and the galleries give you a much better feel for which you prefer: cup letters aren't standardized across factories.
 
-The listed measurements make the difference concrete: Amy's waist is 52 cm larger and its hips 36 cm larger in this catalog snapshot. Those are differences between the listed bodies, not effects of a brand name or material. The two weight fields are both labelled simply "Weight"; neither establishes whether the selected head and all installed options are included. Do not treat their numerical difference as a verified like-for-like handling comparison.
+In these listings, Amy's waist is 52 cm larger and its hips 36 cm larger. Those differences describe the two bodies, rather than something the brand or material does on its own. The weight note above matters too: the gap between the listed numbers isn't a tested comparison of how the finished dolls handle.
 
 For SE's supported lightweight bodies, check the specific upgrade rather than assuming that all SE models are lightweight or that every size saves the same amount. The [SE buying guide](/learn/se-doll-buying-guide) remains the broader brand reference.
 
@@ -55,29 +57,29 @@ For SE's supported lightweight bodies, check the specific upgrade rather than as
 
 The difference between the starting prices above is $300. That is a difference between two base offers, not proof of a $300 difference between equally configured purchases.
 
-Amy's default summary on the review date lists a hard silicone head, Light Tan skin and a TPE body. Alba A's default material selection reads Regular TPE, with Keep the original head selected for the separate silicone-head upgrade. Those defaults are not equivalent head constructions. Current offers can change, so make the same decisions on both sides where supported: preferred head type, hair arrangement, standing configuration and any finish or structural upgrades you actually want. Record each selected option and its price. Features already included should not be added again as paid extras.
+On the review date, Amy's defaults were a hard silicone head, Light Tan skin and a TPE body. Alba A showed Regular TPE and Keep the original head for the separate silicone-head upgrade, so their starting head constructions differ. As you shop, check the head, hair, standing setup and finish or structural upgrades you'd choose on each. Note any extra charge, and give included features credit without paying for them twice.
 
-If only one model supports a feature you consider essential, that can settle the shortlist without inventing an equivalent option for the other. Likewise, an unavailable upgrade should not be counted as free.
+If only one model supports your must-have feature, that may make the choice easier. An unavailable upgrade is different from a free one; it's worth knowing which you're looking at.
 
 | Your shortlist question | What these two records show | What they do not show |
 | --- | --- | --- |
 | Will the silhouettes occupy similar space? | Equal height but substantially different bust, waist and hips | A shared clothing size or storage footprint |
 | Am I comparing full silicone with TPE? | Amy's default is a silicone head with TPE body; Alba's default material is Regular TPE | A controlled full-silicone-versus-TPE result |
-| Is one easier for me to handle? | Two published weight entries with an unspecified basis | Equivalent configured weights or a tested lifting recommendation |
+| Is one easier for me to handle? | Two listed weights; ask what each includes | Weights for equivalent finished builds or a tested lifting recommendation |
 | Does the $300 gap settle value? | Difference between dated starting prices | Difference between equally configured or delivered totals |
 
-## Settle the decision-critical differences first
+## Start with what matters in your home
 
-A 23 October 2026 catalog spot-check returned the same $1,899 Alba A and $2,199 Amy starting prices as the dated table above. This confirms those displayed price fields, not newly measured dimensions, stock or an equally configured quote. Both records describe custom-made offers; do not read either as a warehouse dispatch promise.
+We checked the listings again on 23 October 2026: Alba A still started at $1,899 and Amy at $2,199. That was a price check, not newly measured dimensions, a stock check or a quote for matching builds. Both are custom-made offers, rather than promises of warehouse dispatch.
 
-| If this is your constraint | Resolve this before comparing extras |
+| What matters to you | A helpful next check |
 | --- | --- |
 | A TPE body is essential | Record the chosen body material on both offers; Amy's silicone-head label alone is insufficient |
 | Moving and storing the doll is the main concern | Obtain weights with the same head/body definition and check the actual proportions; equal height is not an equal footprint |
 | A particular face or head function is essential | Keep Alba A's head 129 identity and Amy's selected head construction explicit; a head menu is not proof that every combination is supplied |
 | Your budget is close to the starting price | Write the supported selected options and delivered total first; an option label alone does not establish whether its charge is included |
 
-If one unresolved field could change your choice, send that exact question with the product link rather than filling it with a brand-wide assumption. Do not treat an unverified option as free or an unavailable one as an equivalent substitute.
+If one detail could change your choice, send us that question with the product link. We'll help you check it; there's no need to guess that an option is free or that an unavailable feature has an equivalent substitute.
 
 ## There is no useful universal winner
 
