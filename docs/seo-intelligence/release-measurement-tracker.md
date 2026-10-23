@@ -1,5 +1,38 @@
 # Release Measurement Tracker
 
+## 23 October SE Authorization Disclosure
+
+DOL-243 / PR180 production commit
+`e1f3549622cbc80187d81a434582c13d05d99619` became READY at
+2026-10-23T10:53:34.708Z. The approved pending-certificate disclosure propagated
+to 391 existing SE product pages, the SE hub and the approvals directory:
+393 changed URL events, not 393 new products or new editorial pages. The
+directory now declares its existing self-canonical. All 393 were individually
+checked for HTTP200, self-canonical, no noindex, sitemap membership and exact
+disclosure. Three routes also passed 12 responsive/native-no-JavaScript cases.
+Erovenus's correct existing letter remained byte-identical and has no invented
+new release row. The ledger now contains 3,942 rows; all prior 3,549 rows remain
+byte/value preserved in this append.
+
+One 393-URL IndexNow batch was accepted HTTP200 at 10:57:14.136Z. This is not
+confirmed Bing indexing. The requested 25 September-22 October final GSC
+window lacked 22 October, so this release uses the complete available
+24 September-21 October window, with 28 property dates verified and a matched
+GA4 window. Twenty-one release URLs have returned GSC rows and nine have GA4
+production landing rows; missing values remain blank, not zero. GA4 is
+all-channel traffic, not organic sales attribution. These window dates differ
+from earlier cohorts and must not be silently combined.
+
+Under Dolly's 23 October clarification, the 391 template-only PDPs use sitemap
+and IndexNow discovery, not individual Google UI submissions. The SE hub is
+already one deduplicated Sprint1 queue entry; the approvals directory is newly
+queued. There are 22 unique manual-queue URLs: ten accepted, twelve remaining.
+Next permitted session: ten Sprint1 URLs, Irontech first, then the warehouse
+guide, then the directory; stop again if Google limits requests. No retry on
+23 October. Review anchors for this release are 20 November, 18 December and
+15 January at 10:53:34.708Z. No indexing, ranking, sales or supplier-document
+claim is inferred from the template update or submission receipt.
+
 ## Release Discovery And Weekly Review
 
 Martin's 23 October direction is recorded on DOL-224 and DOL-237. After each
