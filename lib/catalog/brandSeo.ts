@@ -17,6 +17,7 @@ type BrandSeoProfile = {
   guideLabel?: string;
   buyerNotes: Array<{ title: string; body: string }>;
   comparisonRows?: Array<[string, string, string]>;
+  comparisonBullets?: string[];
   faqs: Array<{ question: string; answer: string }>;
 };
 
@@ -552,67 +553,52 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     guideLabel: "6YE Dolls buying guide"
   },
   "dolls-castle": {
-    positioning:
-      "Dolls Castle combines conventional realistic bodies with distinctive fantasy designs, custom development, and a broad mix of TPE, full-silicone, and hybrid construction paths.",
-    intro:
-      "Compare current Dolls Castle models on DollWow by realistic or fantasy design, TPE, full-silicone, or hybrid construction, body and head pairing, complete measurements, listed weight, price, availability, and supported options. The manufacturer's range includes conventional bodies, compact formats, and distinctive character-led designs, so start with the exact product rather than assuming every Dolls Castle model follows the same material or ownership path. DollWow is an approved Dolls Castle seller and can help verify authenticity and supported custom choices before production.",
-    metaDescription:
-      "Shop approved Dolls Castle models by fantasy or realistic design, TPE, silicone or hybrid build, size, weight, price, availability, and options.",
-    buyerNotes: [
+    "positioning": "Browse realistic and fantasy Dolls Castle designs in different sizes and constructions.",
+    "intro": "Explore Dolls Castle's realistic faces, fantasy designs and varied body shapes. Compare photos, measurements, materials and custom choices to find your favorite. We are an approved Dolls Castle seller, and you can view our certificate below.",
+    "metaDescription": "Shop approved Dolls Castle models by fantasy or realistic design, TPE, silicone or hybrid build, size, weight, price, availability, and options.",
+    "buyerNotes": [
       {
-        title: "Choose realistic or fantasy styling",
-        body: "Dolls Castle spans conventional faces and bodies as well as fantasy colors, character-led sculpts, and unusual proportions. Compare the exact gallery and measurements."
+        "title": "Find your style",
+        "body": "Explore realistic faces, fantasy colors and unusual designs. The gallery and measurements help you see how each model differs."
       },
       {
-        title: "Confirm the construction",
-        body: "Current listings can use TPE, full silicone, or a silicone-head hybrid path. Check the body and head materials separately because feel, finish, care, weight, and price can change."
+        "title": "Compare the materials",
+        "body": "Check the head and body materials on the listing. The range includes TPE, silicone and silicone-head/TPE-body builds."
       },
       {
-        title: "Keep the authenticity record",
-        body: "DollWow is an approved Dolls Castle seller. Retain the final build record, supplier documentation, and anti-counterfeiting details supplied with the product."
+        "title": "Ask an approved seller",
+        "body": "Our Dolls Castle certificate is below. Ask us about a model, custom choice or detail you would like checked."
       }
     ],
-    comparisonRows: [
-      [
-        "Design and product form",
-        "A conventional full doll, fantasy body, compact product, torso, or hips product can solve a very different ownership need.",
-        "DollWow keeps the exact photographs, included body areas, dimensions, material, and product link together."
-      ],
-      [
-        "Material and custom build",
-        "TPE, full silicone, hybrids, skin colors, heads, skeletons, and appearance options can follow model-specific rules.",
-        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
-      ],
-      [
-        "Authenticity and ownership",
-        "Distinctive products and high-value custom orders need a clear seller, build record, care path, and authenticity trail.",
-        "DollWow publishes its Dolls Castle authorization certificate and includes Care 365 with every DollWow doll."
-      ]
+    "comparisonBullets": [
+      "Compare the photos, measurements and weight of the model you like.",
+      "Explore its custom choices and prices, and ask us about combinations that need checking.",
+      "View our seller certificate below and read about Care for Life for ownership support."
     ],
-    faqs: [
+    "faqs": [
       {
-        question: "What is Dolls Castle known for?",
-        answer: "Dolls Castle is known for custom doll development, conventional realistic bodies, distinctive fantasy designs, and varied product formats across current TPE, silicone, and hybrid listings."
+        "question": "What can I find in the Dolls Castle range?",
+        "answer": "Browse realistic and fantasy designs, from full-body dolls to compact and partial-body products. Each listing shows its construction, photos and measurements."
       },
       {
-        question: "Is DollWow approved to sell Dolls Castle?",
-        answer: "Yes. DollWow has a Dolls Castle authorization certificate on file and displays it on the brand hub and authorized-vendors page."
+        "question": "Is DollWow approved to sell Dolls Castle?",
+        "answer": "Yes. You can view our authorization certificate in the Seller authorization section below and on our authorized-vendors page."
       },
       {
-        question: "Does Dolls Castle make TPE and silicone dolls?",
-        answer: "Yes. Current Dolls Castle and DollWow listings include TPE, full-silicone, and silicone-head hybrid paths. Confirm the exact body and head materials on the product page."
+        "question": "Can I choose TPE or silicone?",
+        "answer": "The range includes TPE, silicone and silicone-head/TPE-body builds. Check the head and body materials on your chosen listing."
       },
       {
-        question: "Does Dolls Castle make fantasy dolls?",
-        answer: "Yes. The range includes fantasy colors, character-led sculpts, animal-inspired details, and other unconventional designs alongside more traditional realistic models. Availability varies by exact product."
+        "question": "Are fantasy designs available?",
+        "answer": "Yes. Browse the current listings for fantasy colors, distinctive faces and unusual body designs alongside realistic models."
       },
       {
-        question: "How can I check whether a Dolls Castle product is genuine?",
-        answer: "Buy through an approved seller, retain the order and final build record, and keep the manufacturer's supplied documentation or anti-counterfeiting details. Ask DollWow if any authenticity step is unclear."
+        "question": "Can you help check a product?",
+        "answer": "Send us the model or listing you are considering. We can help check its details and the choices available for your order."
       },
       {
-        question: "Can DollWow help find a Dolls Castle model that is not listed?",
-        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+        "question": "Can you find a model that is missing?",
+        "answer": "Send its name or a link through live chat or hello@dollwow.com and we will check whether we can add it."
       }
     ]
   },
@@ -981,6 +967,7 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
     guideLabel: custom.guideLabel,
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),
     comparisonRows: custom.comparisonRows,
+    comparisonBullets: custom.comparisonBullets,
     faqs: custom.faqs ?? defaultFaqs(brand)
   };
 }

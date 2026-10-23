@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "@/next.config";
-import { buildCollectionMetadata, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
 import { collectionPresets } from "@/lib/catalog/filters";
 
 describe("ready-to-ship collection SEO", () => {
@@ -69,6 +69,7 @@ describe("Wave 1 head collection SEO", () => {
     expect(copy).toContain("live chat or hello@dollwow.com");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
+
 });
 
 describe("Wave 2 collection SEO", () => {
@@ -132,7 +133,7 @@ describe("Wave 3 collection SEO", () => {
     expect(buildCollectionMetadata("realistic-sex-dolls", realistic).title).toBe("Most Realistic Sex Dolls for Sale | Compare Realism");
     expect(buildCollectionMetadata("custom", custom).title).toBe("Custom Sex Dolls for Sale | Build & Compare Options");
     expect(realisticCopy).toContain("DollVue™");
-    expect(customCopy).toContain("approximate visual preview");
+    expect(customCopy).toContain("approximate illustration");
     expect(`${realisticCopy} ${customCopy}`).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
@@ -157,7 +158,18 @@ describe("anime collection SEO", () => {
 describe("futa collection SEO", () => {
   const preset = collectionPresets["futa-sex-dolls"];
 
-  it("uses one respectful canonical collection backed by a verified product option", () => {
+  it("keeps the buyer notes and comparison consistent with fixed warehouse builds", () => {
+    const notes = collectionBuyerNotes("futa-sex-dolls", preset);
+    const rows = collectionComparisonRows("futa-sex-dolls", preset);
+    expect(notes[0].body).toContain("penis options and prices");
+    expect(notes[0].body).toContain("what a warehouse doll includes");
+    expect(rows[0].factor).toBe("See the choices");
+    expect(rows[0].dollWowAdvantage).toContain("warehouse listings for their included build");
+    expect(JSON.stringify({ notes, rows })).not.toMatch(/collection membership|currently selectable/i);
+    expect(JSON.stringify({ notes, rows })).not.toContain("Every result has a current");
+  });
+
+  it("uses one respectful owner without promising selectable options on fixed stock", () => {
     const intro = collectionIntro(preset, "futa-sex-dolls");
     const faqs = collectionFaqItems("futa-sex-dolls", preset);
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
@@ -165,10 +177,30 @@ describe("futa collection SEO", () => {
     expect(preset.title).toBe("Futa sex dolls by brand");
     expect(faqs).toHaveLength(6);
     expect(copy).toContain("Futa is short for futanari");
-    expect(copy).toContain("does not currently list FutaDoll products");
-    expect(copy).toContain("actual manufacturers named on each card");
-    expect(copy).toContain("the standard build may not include it");
+    expect(copy).toContain("FutaDoll is a separate seller and brand");
+    expect(copy).toContain("we do not currently list its products");
+    expect(copy).toContain("manufacturers are named on the product cards");
+    expect(copy).toContain("included build and any extra option price");
+    expect(copy).toContain("Warehouse dolls ship as listed.");
+    expect(intro).toContain("Most let you add it at checkout.");
+    expect(intro.match(/penis option/g)).toHaveLength(1);
+    expect(copy).not.toMatch(/collection membership/i);
+    expect(copy).not.toContain("Every result is a full-body product whose current customization data offers a selectable");
+    expect(copy).not.toContain("The collection proves the option is available");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
+  });
+});
+
+describe("petite collection buyer links", () => {
+  it("keeps each destination once without removing the size and care routes", () => {
+    const links = collectionRelatedLinks("petite-dolls", collectionPresets["petite-dolls"]);
+    expect(links).toHaveLength(6);
+    expect(new Set(links.map(link => link.href)).size).toBe(links.length);
+    expect(links.filter(link => link.href === "/shop/torsos")).toEqual([
+      { label: "Browse torso sex dolls", href: "/shop/torsos" }
+    ]);
+    expect(links).toContainEqual({ label: "Browse mini sex dolls", href: "/shop/mini-sex-dolls" });
+    expect(links).toContainEqual({ label: "Plan private storage", href: "/learn/sex-doll-storage" });
   });
 });
 
@@ -248,9 +280,8 @@ describe("Black dolls collection SEO", () => {
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("ebony as a search synonym");
-    expect(copy).toContain("not an assigned ethnicity, nationality");
-    expect(copy).toContain("4 to 6 hours");
+    expect(copy).toContain("Ebony is another search term");
+    expect(copy).not.toMatch(/assigned ethnicity|nationality|skin-tone path|4 to 6 hours/i);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
