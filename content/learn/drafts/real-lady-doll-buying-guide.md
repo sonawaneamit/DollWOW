@@ -5,7 +5,9 @@ primaryKeyword: "Real Lady doll buying guide"
 secondaryKeywords: ["Real Lady body codes", "Real Lady ROS MAX"]
 description: "Compare Real Lady body codes, head versions and weight-reduction choices, keeping factory specifications separate from the options included in your selected build."
 category: "Brand Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

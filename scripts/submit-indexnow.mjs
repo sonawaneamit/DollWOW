@@ -3,7 +3,7 @@ import path from "node:path";
 
 const SITE_ORIGIN = "https://dollwow.com";
 const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
-const DEFAULT_KEY = "d4d5fc24-2236-4ad3-be46-f806a537ff83";
+const { key: DEFAULT_KEY } = JSON.parse(await fs.readFile(new URL('../data/indexnow.json', import.meta.url), 'utf8'));
 const MAX_URLS_PER_REQUEST = 10_000;
 
 const args = parseArgs(process.argv.slice(2));
@@ -13,6 +13,7 @@ if (args.help) {
 }
 
 const key = String(process.env.INDEXNOW_KEY || DEFAULT_KEY).trim();
+if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) throw new Error('Invalid IndexNow key configuration.');
 const keyLocation = `${SITE_ORIGIN}/${key}.txt`;
 const urls = await collectUrls(args);
 
@@ -22,8 +23,8 @@ if (!urls.length) {
 
 for (const url of urls) {
   const parsed = new URL(url);
-  if (parsed.origin !== SITE_ORIGIN) {
-    throw new Error(`IndexNow URL must belong to ${SITE_ORIGIN}: ${url}`);
+  if (parsed.origin !== SITE_ORIGIN || parsed.username || parsed.password || parsed.search || parsed.hash) {
+    throw new Error('IndexNow requires canonical DollWOW URLs without private parameters.');
   }
 }
 
@@ -36,12 +37,15 @@ const payload = {
 
 if (!args.execute) {
   console.log(`Dry run: ${urls.length} changed URL${urls.length === 1 ? "" : "s"} ready for IndexNow.`);
-  console.log(JSON.stringify(payload, null, 2));
+  console.log(JSON.stringify({ ...payload, key: '[existing public key]', keyLocation: '[existing key file]' }, null, 2));
   console.log("Add --execute after the key file is live on dollwow.com.");
   process.exit(0);
 }
 
-const keyResponse = await fetch(keyLocation);
+const agentSecret = process.env.DOLLWOW_AGENT_SECRET || (process.env.DOLLWOW_AGENT_SECRET_FILE
+  ? (await fs.readFile(process.env.DOLLWOW_AGENT_SECRET_FILE, 'utf8')).trim() : '');
+if (!agentSecret) throw new Error('Set DOLLWOW_AGENT_SECRET_FILE or DOLLWOW_AGENT_SECRET for the own-site verification request.');
+const keyResponse = await fetch(keyLocation, { redirect: 'error', signal: AbortSignal.timeout(10_000), headers: { 'x-dollwow-agent': agentSecret } });
 if (!keyResponse.ok || (await keyResponse.text()).trim() !== key) {
   throw new Error(`IndexNow key file is not live or does not match: ${keyLocation}`);
 }
@@ -49,14 +53,13 @@ if (!keyResponse.ok || (await keyResponse.text()).trim() !== key) {
 for (let index = 0; index < urls.length; index += MAX_URLS_PER_REQUEST) {
   const urlList = urls.slice(index, index + MAX_URLS_PER_REQUEST);
   const response = await fetch(INDEXNOW_ENDPOINT, {
-    method: "POST",
+    method: "POST", redirect: 'error', signal: AbortSignal.timeout(10_000),
     headers: { "Content-Type": "application/json; charset=utf-8" },
     body: JSON.stringify({ ...payload, urlList })
   });
 
-  if (!response.ok) {
-    const detail = (await response.text()).trim();
-    throw new Error(`IndexNow returned HTTP ${response.status}${detail ? `: ${detail}` : ""}`);
+  if (response.status !== 200 && response.status !== 202) {
+    throw new Error(`IndexNow returned HTTP ${response.status}.`);
   }
 
   console.log(`Submitted ${urlList.length} changed URL${urlList.length === 1 ? "" : "s"} to IndexNow (HTTP ${response.status}).`);
@@ -78,7 +81,6 @@ function normalizeUrl(value) {
   const text = String(value || "").trim();
   if (!text || text.startsWith("#")) return "";
   const url = new URL(text, SITE_ORIGIN);
-  url.hash = "";
   return url.toString().replace(/\/$/, url.pathname === "/" ? "/" : "");
 }
 

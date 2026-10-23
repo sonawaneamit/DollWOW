@@ -5,7 +5,9 @@ primaryKeyword: "Dolls Castle buying guide"
 secondaryKeywords: ["Dolls Castle body types", "Dolls Castle standard features"]
 description: "Choose a Dolls Castle build by body code, head material, handling weight and included features, with a factory-sourced Nyla example."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

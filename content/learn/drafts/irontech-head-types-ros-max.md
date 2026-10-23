@@ -5,7 +5,9 @@ primaryKeyword: "Irontech ROS vs ROS MAX"
 secondaryKeywords: ["Irontech head options", "ROS MAX head compatibility"]
 description: "Read Irontech ROS and ROS MAX labels through verified head-code examples, separate construction from appearance, and identify what remains unconfirmed."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

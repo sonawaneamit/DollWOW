@@ -5,7 +5,9 @@ primaryKeyword: "sex doll wig size"
 secondaryKeywords: ["doll wig cap fit", "measure doll head for wig"]
 description: "Measure circumference, front-to-nape depth and ear-to-ear fit, then compare the exact wig cap's chart without assuming one size fits every doll head."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

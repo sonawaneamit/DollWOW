@@ -5,9 +5,9 @@ primaryKeyword: "sex doll reviews"
 secondaryKeywords: ["sex doll review", "best sex doll reviews", "real sex doll reviews", "sex doll customer reviews"]
 description: "Learn how to evaluate sex doll reviews, videos, customer photos, seller claims, product details, delivery reports, and support before buying."
 category: "Scams And Buyer Protection"
-author: "jesse"
-authorDisplayName: "Jesse"
-authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
 reviewOwner: catalog
 lastReviewed: "2026-08-12"
@@ -15,7 +15,7 @@ lastReviewed: "2026-08-12"
 
 # Sex Doll Reviews: How To Separate Evidence From Sales Copy
 
-By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
+By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
 ## Quick Answer
 

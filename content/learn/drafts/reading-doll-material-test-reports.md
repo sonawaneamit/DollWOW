@@ -5,7 +5,9 @@ primaryKeyword: "doll material test report"
 secondaryKeywords: ["material report scope", "doll authorization certificate"]
 description: "Learn to check a material report's sample identity, methods, results and limits, and distinguish laboratory evidence from seller authorization."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

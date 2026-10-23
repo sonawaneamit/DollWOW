@@ -5,7 +5,9 @@ primaryKeyword: "doll heating and breathing features"
 secondaryKeywords: ["powered doll options", "doll feature power requirements"]
 description: "Distinguish a heating accessory, an installed warming system and a breathing-feature demonstration, without assuming shared functions or model compatibility."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
