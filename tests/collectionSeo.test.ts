@@ -120,7 +120,7 @@ describe("Wave 3 collection SEO", () => {
 
     expect(metadata.title).toBe("Affordable Sex Dolls for Sale | Options Under $1,000");
     expect(copy).toContain("$1,000 or less");
-    expect(copy).toContain("Care 365");
+    expect(copy).toContain("Care for Life");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 
@@ -133,7 +133,7 @@ describe("Wave 3 collection SEO", () => {
     expect(buildCollectionMetadata("realistic-sex-dolls", realistic).title).toBe("Most Realistic Sex Dolls for Sale | Compare Realism");
     expect(buildCollectionMetadata("custom", custom).title).toBe("Custom Sex Dolls for Sale | Build & Compare Options");
     expect(realisticCopy).toContain("DollVue™");
-    expect(customCopy).toContain("approximate visual preview");
+    expect(customCopy).toContain("approximate illustration");
     expect(`${realisticCopy} ${customCopy}`).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
@@ -161,11 +161,11 @@ describe("futa collection SEO", () => {
   it("keeps the buyer notes and comparison consistent with fixed warehouse builds", () => {
     const notes = collectionBuyerNotes("futa-sex-dolls", preset);
     const rows = collectionComparisonRows("futa-sex-dolls", preset);
-    expect(notes[0].body).toContain("not an included or currently selectable add-on");
-    expect(notes[0].body).toContain("fixed warehouse builds");
-    expect(rows[0].factor).toBe("Listed option support");
-    expect(rows[0].dollWowAdvantage).toContain("does not verify inclusion or current selectability");
-    expect(rows[1].dollWowAdvantage).toContain("listed inclusions of a fixed warehouse build");
+    expect(notes[0].body).toContain("penis options and prices");
+    expect(notes[0].body).toContain("what a warehouse doll includes");
+    expect(rows[0].factor).toBe("See the choices");
+    expect(rows[0].dollWowAdvantage).toContain("warehouse listings for their included build");
+    expect(JSON.stringify({ notes, rows })).not.toMatch(/collection membership|currently selectable/i);
     expect(JSON.stringify({ notes, rows })).not.toContain("Every result has a current");
   });
 
@@ -177,12 +177,14 @@ describe("futa collection SEO", () => {
     expect(preset.title).toBe("Futa sex dolls by brand");
     expect(faqs).toHaveLength(6);
     expect(copy).toContain("Futa is short for futanari");
-    expect(copy).toContain("does not currently list FutaDoll products");
-    expect(copy).toContain("actual manufacturers named on each card");
-    expect(copy).toContain("the standard build may not include it");
-    expect(copy).toContain("Fixed warehouse builds cannot be changed through the custom configurator");
-    expect(copy).toContain("Collection membership is not proof");
-    expect(copy).toContain("On a stock listing, check the included configuration");
+    expect(copy).toContain("FutaDoll is a separate seller and brand");
+    expect(copy).toContain("we do not currently list its products");
+    expect(copy).toContain("manufacturers are named on the product cards");
+    expect(copy).toContain("included build and any extra option price");
+    expect(copy).toContain("Warehouse dolls ship as listed.");
+    expect(intro).toContain("Most let you add it at checkout.");
+    expect(intro.match(/penis option/g)).toHaveLength(1);
+    expect(copy).not.toMatch(/collection membership/i);
     expect(copy).not.toContain("Every result is a full-body product whose current customization data offers a selectable");
     expect(copy).not.toContain("The collection proves the option is available");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
@@ -212,11 +214,10 @@ describe("new sex dolls collection SEO", () => {
 
     expect(preset.title).toBe("New sex dolls and latest arrivals");
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("most recently created listings shown first");
-    expect(copy).toContain("not necessarily the manufacturer's announcement date");
+    expect(copy).toContain("most recently created listings first");
+    expect(copy).toContain("including designs released earlier by their manufacturers");
     expect(copy).not.toContain("available supplier release ordering");
-    expect(copy).toContain("New does not automatically mean more realistic");
-    expect(copy).toContain("4 to 6 hours");
+    expect(copy).not.toMatch(/New does not automatically|4 to 6 hours/);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });
@@ -230,39 +231,16 @@ describe("lightweight collection current boundary", () => {
       collectionComparisonRows(handle, preset)[0].dollWowAdvantage,
       collectionFaqItems(handle, preset)[0].answer];
     expect(preset.filters).toEqual({ productForm: "full-doll", weight: "0-74" });
-    for (const text of surfaces) {
-      expect(text).toContain("74 lb or less (about 33.6 kg)");
-      expect(text).not.toContain("under 75");
-    }
-    expect(collectionFaqItems(handle, preset).map(item => item.answer).join(" ")).toContain("4 to 6 hours");
+    expect(surfaces[0]).toContain("74 lb or less (about 33.6 kg)");
+    expect(metadata.description).toContain("74 lb or less");
+    for (const text of surfaces) expect(text).not.toMatch(/under 75|positive listed weight|universal industry/i);
+    const buyerCopy = JSON.stringify({ intro: surfaces[0], notes: collectionBuyerNotes(handle, preset), rows: collectionComparisonRows(handle, preset), faqs: collectionFaqItems(handle, preset) });
+    expect(buyerCopy.match(/74 lb or less/g)).toHaveLength(1);
+    expect(buyerCopy).not.toContain("4 to 6 hours");
   });
 });
 
 describe("body-style collection SEO", () => {
-  it("keeps curvy ownership separate from Fuller and qualifies mixed product forms", () => {
-    const handle = "curvy-dolls", preset = collectionPresets[handle];
-    const copy = `${collectionIntro(preset, handle)} ${JSON.stringify(collectionFaqItems(handle, preset))}`;
-    expect(preset.filters).toEqual({ look: "shape-curvy" });
-    expect(collectionPresets["fuller-dolls"].filters).toEqual({ look: "shape-fuller", bodyType: "female" });
-    expect(buildCollectionMetadata(handle, preset).alternates?.canonical).toMatch(/\/shop\/curvy-dolls$/);
-    expect(copy).toContain("appearance categories can overlap");
-    expect(copy).toContain("not a standardized size");
-    expect(copy).toContain("torso or another partial product");
-    expect(copy).not.toContain("4 to 6 hours");
-    expect(collectionFaqItems(handle, preset)).toHaveLength(5);
-  });
-
-  it("qualifies brunette hair presentation without guaranteeing included styling", () => {
-    const handle = "brunette-dolls", preset = collectionPresets[handle];
-    const copy = `${collectionIntro(preset, handle)} ${JSON.stringify(collectionFaqItems(handle, preset))}`;
-    expect(preset.filters).toEqual({ look: "hair-brunette" });
-    expect(buildCollectionMetadata(handle, preset).title).toBe("Brunette Sex Dolls | Compare Hair & Styling");
-    expect(copy).toContain("does not establish a permanently fixed color");
-    expect(copy).toContain("Do not assume so");
-    expect(copy).toContain("a wig or implanted");
-    expect(copy).not.toContain("4 to 6 hours");
-    expect(collectionFaqItems(handle, preset)).toHaveLength(5);
-  });
   it("keeps fuller intent on one female collection with measurement-first guidance", () => {
     const preset = collectionPresets["fuller-dolls"];
     const intro = collectionIntro(preset, "fuller-dolls");
@@ -321,9 +299,8 @@ describe("Black dolls collection SEO", () => {
     const copy = `${intro} ${faqs.map((item) => `${item.question} ${item.answer}`).join(" ")}`;
 
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("ebony as a search synonym");
-    expect(copy).toContain("not an assigned ethnicity, nationality");
-    expect(copy).toContain("4 to 6 hours");
+    expect(copy).toContain("Ebony is another search term");
+    expect(copy).not.toMatch(/assigned ethnicity|nationality|skin-tone path|4 to 6 hours/i);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });

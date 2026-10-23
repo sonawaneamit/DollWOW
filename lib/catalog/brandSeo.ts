@@ -17,6 +17,7 @@ type BrandSeoProfile = {
   guideLabel?: string;
   buyerNotes: Array<{ title: string; body: string }>;
   comparisonRows?: Array<[string, string, string]>;
+  comparisonBullets?: string[];
   faqs: Array<{ question: string; answer: string }>;
 };
 
@@ -91,26 +92,47 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       {question: "Are photographed outfits included with an IDO doll?", answer: "A wig is part of the factory package. Other photographed outfits, jewelry and scene props are included only when the product or a current offer explicitly lists them."}
     ]
   },
-  moonvale: {
-    metaTitle: "Moonvale Dolls: Silicone Fantasy Models",
-    metaDescription: "Compare Moonvale Lyora, Sorelle, Velara and Cerina silicone dolls by height, character styling, current price and product-specific options.",
-    positioning: "Moonvale's DollWow collection features silicone fantasy dolls with leopard, fox, panther and deer-inspired styling.",
-    intro: "Moonvale's DollWow collection features silicone fantasy dolls: Lyora, Sorelle, Velara and Cerina. Compare the exact character styling and listed measurements, then open the individual product for its photos, current price and available choices. Different looks can share a model name; the pictured styling does not by itself confirm which accessories are included.",
-    buyerNotes: [
-      { title: "Match the exact look", body: "Compare the full product title and gallery, not only Lyora, Sorelle, Velara or Cerina. Listings within a model family can show different colors and styling." },
-      { title: "Confirm handling weight", body: "Height is not a weight estimate. If the product has no listed weight, ask our team to confirm the exact build's weight before ordering." },
-      { title: "Separate styling from inclusions", body: "Check which head, finish, hair, clothing and accessories are included in your chosen configuration. Only use options offered for that exact product." }
+  "moonvale": {
+    "metaTitle": "Moonvale Dolls: Silicone Fantasy Models",
+    "metaDescription": "Compare Moonvale Lyora, Sorelle, Velara and Cerina silicone dolls by height, character styling, current price and product-specific options.",
+    "positioning": "Explore Moonvale's silicone fantasy dolls and their leopard, fox, panther and deer-inspired looks.",
+    "intro": "Meet Moonvale's Lyora, Sorelle, Velara and Cerina silicone fantasy dolls. Explore their character styling, colors and measurements to find your favorite look. Each product page shows its photos, price and available choices.",
+    "buyerNotes": [
+      {
+        "title": "Find your favorite look",
+        "body": "The same model family can have different colors and styling. Browse the full title and gallery for the version you like."
+      },
+      {
+        "title": "Check the size and weight",
+        "body": "Compare the measurements and listed weight. Ask us for a missing detail before choosing."
+      },
+      {
+        "title": "See what comes with it",
+        "body": "Check the listing for included hair, clothes and accessories. We can help you check a pictured item."
+      }
     ],
-    comparisonRows: [
-      ["Character and styling", "Compare the named look as well as the model family: Lyora, Sorelle, Velara or Cerina.", "Keep the exact product page and its gallery as your reference when discussing a build."],
-      ["Size and handling", "Read the listed height and body measurements; confirm weight separately when it is missing.", "Our team can check decision-critical specifications before you commit to an order."],
-      ["Configuration and price", "Distinguish the photographed presentation from included items and selectable upgrades.", "Review the available choices and current total on the individual product page."]
+    "comparisonBullets": [
+      "Browse each model's colors and styling in its full gallery.",
+      "Compare the measurements, weight and available choices on the product page.",
+      "Ask us to check included accessories or help compare two looks."
     ],
-    faqs: [
-      { question: "Which Moonvale models does DollWow carry?", answer: "The current collection includes Lyora, Sorelle, Velara and Cerina. Open the individual listings to compare the available looks, measurements, prices and ordering details." },
-      { question: "Why do some Moonvale listings share the same model name?", answer: "A model family can have several named looks or color presentations. Compare the complete product title, photos and selected configuration rather than assuming that shared names mean identical orders." },
-      { question: "Does a Moonvale doll's height tell me its weight?", answer: "No. Height and weight are different measurements. Where weight is not listed, ask our team to confirm it for the exact build rather than estimating from a similar doll." },
-      { question: "Are all photographed accessories included?", answer: "Do not assume so. Confirm the included hair, clothing, accessories and finish against the exact listing and your final configuration before ordering." }
+    "faqs": [
+      {
+        "question": "Which Moonvale models can I find here?",
+        "answer": "The collection includes Lyora, Sorelle, Velara and Cerina. Open their listings to explore the different looks and current choices."
+      },
+      {
+        "question": "Why do some listings share a model name?",
+        "answer": "A model family can have several colors or named looks. The full title and photos show the version on each listing."
+      },
+      {
+        "question": "Where can I check the weight?",
+        "answer": "Check your chosen listing. If the weight is missing, ask us to confirm it for that model."
+      },
+      {
+        "question": "Are the pictured accessories included?",
+        "answer": "Check the listing for its included hair, clothing and accessories. Ask us about a particular pictured item before ordering."
+      }
     ]
   },
   wm: {
@@ -552,67 +574,52 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     guideLabel: "6YE Dolls buying guide"
   },
   "dolls-castle": {
-    positioning:
-      "Dolls Castle combines conventional realistic bodies with distinctive fantasy designs, custom development, and a broad mix of TPE, full-silicone, and hybrid construction paths.",
-    intro:
-      "Compare current Dolls Castle models on DollWow by realistic or fantasy design, TPE, full-silicone, or hybrid construction, body and head pairing, complete measurements, listed weight, price, availability, and supported options. The manufacturer's range includes conventional bodies, compact formats, and distinctive character-led designs, so start with the exact product rather than assuming every Dolls Castle model follows the same material or ownership path. DollWow is an approved Dolls Castle seller and can help verify authenticity and supported custom choices before production.",
-    metaDescription:
-      "Shop approved Dolls Castle models by fantasy or realistic design, TPE, silicone or hybrid build, size, weight, price, availability, and options.",
-    buyerNotes: [
+    "positioning": "Browse realistic and fantasy Dolls Castle designs in different sizes and constructions.",
+    "intro": "Explore Dolls Castle's realistic faces, fantasy designs and varied body shapes. Compare photos, measurements, materials and custom choices to find your favorite. We are an approved Dolls Castle seller, and you can view our certificate below.",
+    "metaDescription": "Shop approved Dolls Castle models by fantasy or realistic design, TPE, silicone or hybrid build, size, weight, price, availability, and options.",
+    "buyerNotes": [
       {
-        title: "Choose realistic or fantasy styling",
-        body: "Dolls Castle spans conventional faces and bodies as well as fantasy colors, character-led sculpts, and unusual proportions. Compare the exact gallery and measurements."
+        "title": "Find your style",
+        "body": "Explore realistic faces, fantasy colors and unusual designs. The gallery and measurements help you see how each model differs."
       },
       {
-        title: "Confirm the construction",
-        body: "Current listings can use TPE, full silicone, or a silicone-head hybrid path. Check the body and head materials separately because feel, finish, care, weight, and price can change."
+        "title": "Compare the materials",
+        "body": "Check the head and body materials on the listing. The range includes TPE, silicone and silicone-head/TPE-body builds."
       },
       {
-        title: "Keep the authenticity record",
-        body: "DollWow is an approved Dolls Castle seller. Retain the final build record, supplier documentation, and anti-counterfeiting details supplied with the product."
+        "title": "Ask an approved seller",
+        "body": "Our Dolls Castle certificate is below. Ask us about a model, custom choice or detail you would like checked."
       }
     ],
-    comparisonRows: [
-      [
-        "Design and product form",
-        "A conventional full doll, fantasy body, compact product, torso, or hips product can solve a very different ownership need.",
-        "DollWow keeps the exact photographs, included body areas, dimensions, material, and product link together."
-      ],
-      [
-        "Material and custom build",
-        "TPE, full silicone, hybrids, skin colors, heads, skeletons, and appearance options can follow model-specific rules.",
-        "Our Human Build Check reviews supported selections before an eligible custom order enters production."
-      ],
-      [
-        "Authenticity and ownership",
-        "Distinctive products and high-value custom orders need a clear seller, build record, care path, and authenticity trail.",
-        "DollWow publishes its Dolls Castle authorization certificate and includes Care 365 with every DollWow doll."
-      ]
+    "comparisonBullets": [
+      "Compare the photos, measurements and weight of the model you like.",
+      "Explore its custom choices and prices, and ask us about combinations that need checking.",
+      "View our seller certificate below and read about Care for Life for ownership support."
     ],
-    faqs: [
+    "faqs": [
       {
-        question: "What is Dolls Castle known for?",
-        answer: "Dolls Castle is known for custom doll development, conventional realistic bodies, distinctive fantasy designs, and varied product formats across current TPE, silicone, and hybrid listings."
+        "question": "What can I find in the Dolls Castle range?",
+        "answer": "Browse realistic and fantasy designs, from full-body dolls to compact and partial-body products. Each listing shows its construction, photos and measurements."
       },
       {
-        question: "Is DollWow approved to sell Dolls Castle?",
-        answer: "Yes. DollWow has a Dolls Castle authorization certificate on file and displays it on the brand hub and authorized-vendors page."
+        "question": "Is DollWow approved to sell Dolls Castle?",
+        "answer": "Yes. You can view our authorization certificate in the Seller authorization section below and on our authorized-vendors page."
       },
       {
-        question: "Does Dolls Castle make TPE and silicone dolls?",
-        answer: "Yes. Current Dolls Castle and DollWow listings include TPE, full-silicone, and silicone-head hybrid paths. Confirm the exact body and head materials on the product page."
+        "question": "Can I choose TPE or silicone?",
+        "answer": "The range includes TPE, silicone and silicone-head/TPE-body builds. Check the head and body materials on your chosen listing."
       },
       {
-        question: "Does Dolls Castle make fantasy dolls?",
-        answer: "Yes. The range includes fantasy colors, character-led sculpts, animal-inspired details, and other unconventional designs alongside more traditional realistic models. Availability varies by exact product."
+        "question": "Are fantasy designs available?",
+        "answer": "Yes. Browse the current listings for fantasy colors, distinctive faces and unusual body designs alongside realistic models."
       },
       {
-        question: "How can I check whether a Dolls Castle product is genuine?",
-        answer: "Buy through an approved seller, retain the order and final build record, and keep the manufacturer's supplied documentation or anti-counterfeiting details. Ask DollWow if any authenticity step is unclear."
+        "question": "Can you help check a product?",
+        "answer": "Send us the model or listing you are considering. We can help check its details and the choices available for your order."
       },
       {
-        question: "Can DollWow help find a Dolls Castle model that is not listed?",
-        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+        "question": "Can you find a model that is missing?",
+        "answer": "Send its name or a link through live chat or hello@dollwow.com and we will check whether we can add it."
       }
     ]
   },
@@ -752,71 +759,56 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     guideHref: "/learn/piper-dolls-buying-guide",
     guideLabel: "Piper Dolls buying guide"
   },
-  tantaly: {
-    positioning:
-      "Tantaly specializes in compact and torso-style products across several sizes, including female and male formats designed for buyers who do not necessarily want a conventional full-body doll.",
-    intro:
-      "Compare current Tantaly dolls on DollWow by product form, included body areas, complete dimensions, listed weight, material, price, and storage needs. Tantaly specializes in compact and torso-style products, including very small, mid-size, larger, female, and male formats. Because the word torso can describe very different products, DollWow keeps the exact photographs and specifications with each listing and can help confirm any missing measurement before you order.",
-    metaDescription:
-      "Shop Tantaly compact and torso dolls by product form, dimensions, weight, material, price, storage needs, and current availability.",
-    metaTitle: "Tantaly Dolls: Torso & Compact Models",
-    guideHref: "/learn/tantaly-buying-guide",
-    guideLabel: "Tantaly buying guide",
-    buyerNotes: [
+  "tantaly": {
+    "metaTitle": "Tantaly Dolls: Torso & Compact Models",
+    "metaDescription": "Shop Tantaly compact and torso dolls by product form, dimensions, weight, material, price, storage needs, and current availability.",
+    "positioning": "Explore Tantaly torso and compact dolls in a range of shapes and sizes.",
+    "intro": "Explore Tantaly's torso and compact dolls in a range of shapes and sizes. Compare the photos, material, dimensions and weight to find one that suits your space. Our team can help you check what comes with the model you like.",
+    "guideHref": "/learn/tantaly-buying-guide",
+    "guideLabel": "Tantaly buying guide",
+    "buyerNotes": [
       {
-        title: "Choose the product form first",
-        body: "Confirm exactly which body areas are included. A small insert, hips product, torso, and larger partial-body design are not interchangeable."
+        "title": "Choose your shape",
+        "body": "Browse the photos to find the shape and format you like, then check the description for what you are buying."
       },
       {
-        title: "Measure the full footprint",
-        body: "Height alone is not enough. Compare width, depth, weight, base design, cleaning access, and the intended storage position."
+        "title": "Measure your space",
+        "body": "Compare length, width, depth and weight, and think about where you will clean and store the product."
       },
       {
-        title: "Confirm material and removable parts",
-        body: "TPE, silicone, seams, openings, and removable components can require different care. Use the exact product instructions."
+        "title": "Check the care instructions",
+        "body": "Use the instructions for your product's material and removable parts. Ask us if you are unsure about cleaning or storage."
       }
     ],
-    comparisonRows: [
-      [
-        "Product form",
-        "Confirm whether the listing is a small insert, hips product, compact torso, larger torso, male format, or another partial-body design.",
-        "DollWow keeps the full photographs, included body areas, and exact product link together."
-      ],
-      [
-        "Dimensions and weight",
-        "Compare height, width, depth, relevant circumferences, listed weight, base, and storage position.",
-        "Ask our team to confirm a missing measurement before you order."
-      ],
-      [
-        "Material and care",
-        "Check TPE or silicone, removable parts, cleaning access, compatible care products, and drying needs.",
-        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
-      ]
+    "comparisonBullets": [
+      "Compare the photos and description to find the shape and format you want.",
+      "Check the full dimensions, material and weight, or ask us for a missing measurement.",
+      "Care for Life includes first-year ownership support and ongoing repair guidance; see the coverage details for what is included."
     ],
-    faqs: [
+    "faqs": [
       {
-        question: "What is a Tantaly doll?",
-        answer: "Tantaly is known for compact and torso-style adult products in several sizes. The exact model may include different portions of the torso, hips, thighs, shoulders, or other anatomy."
+        "question": "What is a Tantaly doll?",
+        "answer": "Tantaly makes torso and compact adult products in several shapes and sizes. Browse the photos and description for each model."
       },
       {
-        question: "Are Tantaly dolls full-body dolls?",
-        answer: "Many Tantaly products are compact or torso formats rather than conventional head-to-toe dolls. Check the complete photographs and included body areas for the exact listing."
+        "question": "Are these full-body dolls?",
+        "answer": "Many are torsos or other compact formats. Check the photos, description and measurements to see exactly what you are buying."
       },
       {
-        question: "What materials are Tantaly dolls made from?",
-        answer: "Tantaly discusses both TPE and silicone technologies, but material varies by product. Check the exact listing or ask DollWow for written confirmation."
+        "question": "What materials can I choose?",
+        "answer": "Tantaly offers TPE and silicone products. Check the material on your chosen listing, or ask us to confirm it."
       },
       {
-        question: "Are Tantaly dolls lightweight and easy to store?",
-        answer: "Some compact models may be easier to handle than many full-size dolls, but compact is not a weight rating. Compare height, width, depth, weight, and recommended storage position."
+        "question": "Are they easy to store?",
+        "answer": "Compare the full dimensions and weight against your space. Follow the product's recommended resting position when storing it."
       },
       {
-        question: "Does Tantaly make male torso products?",
-        answer: "Yes. DollWow carries Tantaly male formats. Compare the exact included body areas, dimensions, material, weight, base design, and storage needs."
+        "question": "Are male Tantaly products available?",
+        "answer": "Yes. Browse the male models and compare their shape, dimensions, material and weight."
       },
       {
-        question: "Can DollWow help find a Tantaly model that is not listed?",
-        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+        "question": "Can you find a Tantaly model that is missing?",
+        "answer": "Send its name or a link through live chat or hello@dollwow.com and we will check whether we can add it."
       }
     ]
   },
@@ -981,6 +973,7 @@ export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
     guideLabel: custom.guideLabel,
     buyerNotes: custom.buyerNotes ?? defaultBuyerNotes(brand),
     comparisonRows: custom.comparisonRows,
+    comparisonBullets: custom.comparisonBullets,
     faqs: custom.faqs ?? defaultFaqs(brand)
   };
 }

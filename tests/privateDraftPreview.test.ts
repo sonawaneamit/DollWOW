@@ -15,7 +15,7 @@ describe('Private Castle draft previews',()=>{
   for(const raw of snapshots){
    const config=getCustomizationConfig(raw as unknown as Parameters<typeof getCustomizationConfig>[0]);
    const bindings=releasedNamedBindings(namedRelease,[raw.variants[0].id]);
-   for(const g of config.groups)for(const o of g.options.filter(o=>o.priceDelta>0)){
+   for(const g of config.groups)for(const o of g.options.filter(o=>(o.priceDelta??0)>0)){
     expect(bindings.filter(b=>b.group===g.label&&upgradeBindingAcceptsChoice(b,o.label)&&b.unitAmount===o.priceDelta)).toHaveLength(1);
    }
    const entries=templateRelease.payload.entries.filter(e=>e.productId===raw.id);

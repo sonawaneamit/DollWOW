@@ -5,7 +5,9 @@ primaryKeyword: "doll price weight comparison worksheet"
 secondaryKeywords: ["doll shortlist calculator", "doll catalog snapshot"]
 description: "Build and recalculate a dated shortlist using three verified October 2026 listings, explicit inclusion rules, sample medians and a worked budget-and-weight filter."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

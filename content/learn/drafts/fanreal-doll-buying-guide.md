@@ -5,7 +5,9 @@ primaryKeyword: "fanreal doll"
 secondaryKeywords: ["FANREAL Real Skin", "FANREAL body options"]
 description: "Understand FANREAL Real Skin, separate head and body choices, UniSeries construction and product-specific options before comparing complete builds."
 category: "Brand Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

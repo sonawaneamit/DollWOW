@@ -5,7 +5,9 @@ primaryKeyword: "sex doll measurements"
 secondaryKeywords: ["doll room fit", "doll storage dimensions"]
 description: "Measure the delivery route, storage opening and working space using real FunWest Bea specifications and a clearly hypothetical room example."
 category: "Buying Guides"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

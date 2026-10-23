@@ -6,6 +6,8 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel } from "@/lib/catalog/filters";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
+import { ContextualCatalogLinks } from "@/components/ContextualCatalogLinks";
+import { catalogContextualLinks, contextualLinksEnabled } from "@/lib/catalog/contextualLinks";
 
 export const metadata: Metadata = {
   title: "DollVue-enabled dolls | DollWOW",
@@ -71,6 +73,7 @@ export default async function DollVueEnabledCollection({
           <CatalogPagination {...page} basePath="/shop/dollvue-enabled" searchParams={rawSearchParams} />
         </div>
       </div>
+      {contextualLinksEnabled("/shop/dollvue-enabled") ? <ContextualCatalogLinks links={catalogContextualLinks("/shop/dollvue-enabled", filtered)} /> : null}
     </main>
   );
 }

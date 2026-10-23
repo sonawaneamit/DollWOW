@@ -5,7 +5,9 @@ primaryKeyword: "WM STPE vs TPE"
 secondaryKeywords: ["WM S-TPE", "WM material comparison"]
 description: "Understand WM's official S-TPE name, distinguish it from an exact model specification, and use a claim-checking worksheet without assuming measured advantages."
 category: "Materials"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

@@ -3,7 +3,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { LocationFilter } from "@/components/LocationFilter";
 import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isStandaloneHeadCatalogProduct } from "@/lib/catalog/filters";
-import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks } from "@/lib/catalog/collectionSeo";
+import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyerNotes, collectionComparisonRows, collectionFaqItems, collectionIntro, collectionRelatedLinks, collectionUsesPlainGuidance } from "@/lib/catalog/collectionSeo";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
@@ -15,6 +15,8 @@ import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 
 export async function generateMetadata({
   params,
@@ -57,6 +59,7 @@ export default async function CollectionPage({
   const buyerNotes = collectionBuyerNotes(collection, preset);
   const comparisonRows = collectionComparisonRows(collection, preset);
   const faqItems = collectionFaqItems(collection, preset);
+  const plainGuidance = collectionUsesPlainGuidance(collection);
   const activeFilterLabels = Object.entries(filters)
     .filter(([, value]) => Boolean(value))
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -79,7 +82,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {relatedLinks.length ? (
-        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={process.env.VERCEL_ENV === "preview"}>
+        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={plainGuidance || process.env.VERCEL_ENV === "preview"}>
           {relatedLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
               {link.label}
@@ -108,8 +111,13 @@ export default async function CollectionPage({
           <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>
+      {contextualLinksEnabled(`/shop/${collection}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/shop/${collection}`, filtered)} /> : null}
       <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
-        {comparisonRows.length ? (
+        {plainGuidance ? (
+          <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">
+            {comparisonRows.map((row) => <li key={row.factor}><strong className="text-text">{row.factor}.</strong> {row.whyItMatters} {row.dollWowAdvantage}</li>)}
+          </ul>
+        ) : comparisonRows.length ? (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead className="bg-ink-950/60 text-ivory-100">
@@ -131,7 +139,9 @@ export default async function CollectionPage({
             </table>
           </div>
         ) : null}
-        <div className="mt-6"><CareForLifePanel compact /></div>
+        <div className="mt-6">
+          {plainGuidance ? <p className="text-sm leading-6 text-text-dim">Care for Life includes a year of ownership support and ongoing repair guidance. <Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the coverage details.</Link></p> : <CareForLifePanel compact />}
+        </div>
       </CollectionDisclosure>
       {buyerNotes.length ? (
         <CollectionDisclosure id="collection-buyer-notes-heading" eyebrow="How to compare" title="What to check before choosing from this collection">
