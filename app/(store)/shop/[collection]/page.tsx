@@ -82,7 +82,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {relatedLinks.length ? (
-        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={process.env.VERCEL_ENV === "preview"}>
+        <GuideLinkRow label={`${preset.title} buying guides`} className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0} previewFocusScrolling={plainGuidance || process.env.VERCEL_ENV === "preview"}>
           {relatedLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
               {link.label}

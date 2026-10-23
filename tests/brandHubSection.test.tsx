@@ -1,24 +1,27 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { BrandHubSection, usesCompactBrandLayout } from "@/components/BrandHubSection";
+afterEach(() => vi.unstubAllEnvs());
 
 describe("brand hub compact browsing", () => {
   it("preserves the four released sprint hubs in every deployment", () => {
     for (const deployment of ["production", "preview", "development"]) {
+      vi.stubEnv("VERCEL_ENV", deployment);
       for (const brand of ["irontech", "wm", "sedoll", "starpery"]) {
-        expect(usesCompactBrandLayout(brand, deployment)).toBe(true);
+        expect(usesCompactBrandLayout(brand)).toBe(true);
       }
     }
   });
 
-  it("stages only the Dolls Castle batch-A layout on preview", () => {
-    expect(usesCompactBrandLayout("dolls-castle", "preview")).toBe(true);
+  it("releases only the approved Dolls Castle batch-A layout", () => {
+    expect(usesCompactBrandLayout("dolls-castle")).toBe(true);
     for (const deployment of ["production", "development", ""]) {
-      expect(usesCompactBrandLayout("dolls-castle", deployment)).toBe(false);
+      vi.stubEnv("VERCEL_ENV", deployment);
+      expect(usesCompactBrandLayout("dolls-castle")).toBe(true);
     }
     for (const brand of ["lusandy", "evas", "fanreal", "funwest", "dolls-castle-other"]) {
-      expect(usesCompactBrandLayout(brand, "preview")).toBe(false);
+      expect(usesCompactBrandLayout(brand)).toBe(false);
     }
   });
 
