@@ -96,7 +96,7 @@ export default async function BrandHubPage({
             </tbody>
           </table>
         </div>}
-        {profile.comparisonBullets && brand.value === "tantaly" ? <p className="mt-4 text-sm"><Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the Care for Life coverage details.</Link></p> : null}
+        {profile.comparisonBullets && ["tantaly", "erovenus", "climax"].includes(brand.value) ? <p className="mt-4 text-sm"><Link href="/care-for-life" className="text-accent underline underline-offset-4">Read the Care for Life coverage details.</Link></p> : null}
       </BrandHubSection>
   );
 
@@ -112,7 +112,7 @@ export default async function BrandHubPage({
           <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">
-            Current DollWow collection
+            Current {["erovenus", "climax"].includes(brand.value) ? "DollWOW" : "DollWow"} collection
             {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
           </p>
         </div>
@@ -122,7 +122,7 @@ export default async function BrandHubPage({
 
       {!compactBrowsing ? authorization : null}
 
-      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
+      <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} wrapWithoutJavaScript={["erovenus", "climax"].includes(brand.value)} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly", "erovenus", "climax"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (
           <Link key={`${link.href}-${link.label}`} href={link.href} className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">
             {link.label}

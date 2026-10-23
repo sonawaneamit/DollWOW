@@ -689,68 +689,53 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     ]
   },
   climax: {
-    positioning:
-      "Climax Doll, also presented as CLM, offers a broad mix of full-size dolls, mini dolls, torsos, and other compact formats across TPE, silicone, and selected lightweight product lines.",
-    intro:
-      "Compare current Climax Doll models on DollWow by product form, TPE or silicone construction, complete dimensions, listed weight, body and head pairing, price, availability, and supported options. Climax Doll is also presented as CLM, and its range spans full-size dolls, mini dolls, torsos, and smaller compact products. Start with what the product physically includes, then compare material and handling so a polished photograph does not pull you toward the wrong ownership format.",
-    metaDescription:
-      "Shop Climax Doll and CLM models by full-size, mini, or torso form, TPE or silicone, dimensions, weight, price, availability, and options.",
-    buyerNotes: [
+    "positioning": "Climax Doll, also called CLM, offers full dolls, mini dolls, torsos and smaller designs in TPE and silicone.",
+    "intro": "Explore Climax Doll, also called CLM, at DollWOW. Browse full dolls, mini dolls, torsos and smaller designs in TPE and silicone. Compare the photos, measurements and listed weight to choose the size and shape you want.",
+    "metaDescription": "Explore CLM and Climax Doll full dolls, mini dolls and torsos in TPE and silicone. Compare measurements, listed weights, prices and available choices.",
+    "buyerNotes": [
       {
-        title: "Choose the product form first",
-        body: "A full-size doll, mini doll, torso, and smaller compact product have different uses, cleaning access, storage needs, handling, and prices."
+        "title": "Choose what you want",
+        "body": "A full doll, mini doll and torso include different body areas. Compare the photos and measurements before choosing."
       },
       {
-        title: "Confirm TPE or silicone",
-        body: "Climax products span multiple construction paths. Check the body and head materials, finish, softness, care routine, and repair path on the exact listing."
+        "title": "Compare the materials",
+        "body": "Check the head and body materials, finish and available choices on the listing. Ask us about care or a detail you cannot find."
       },
       {
-        title: "Verify the finished weight",
-        body: "Ultra-lightweight applies only to supported product lines. Compare the listed pounds and kilograms for the exact body instead of assuming every CLM model is light."
+        "title": "Check the weight",
+        "body": "Some CLM models are sold as ultra-lightweight. Compare each model's listed pounds and kilograms rather than assuming they all weigh the same."
       }
     ],
-    comparisonRows: [
-      [
-        "Product form",
-        "Confirm whether the listing is a full-size doll, mini doll, torso, or another compact partial-body product.",
-        "DollWow keeps the complete photos, dimensions, material, price, and exact product link together so you can compare equivalent formats."
-      ],
-      [
-        "Material and build",
-        "Compare TPE, full silicone, or another stated construction, then confirm the exact body, head, skeleton, finish, and supported choices.",
-        "Ask our team to confirm any decision-critical build detail that is unclear before checkout."
-      ],
-      [
-        "Weight and storage",
-        "Read height, width, depth, and listed weight together, then plan delivery access, cleaning, drying, and private storage.",
-        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
-      ]
-    ],
-    faqs: [
+    "faqs": [
       {
-        question: "Is CLM the same as Climax Doll?",
-        answer: "Yes. The manufacturer presents the brand as CLM and Climax Doll. DollWow groups current products under the Climax Doll brand hub."
+        "question": "Is CLM the same as Climax Doll?",
+        "answer": "Yes. The manufacturer uses both CLM and Climax Doll. DollWOW groups its current listings in this brand collection."
       },
       {
-        question: "What product types does Climax Doll make?",
-        answer: "The current range includes full-size dolls, mini dolls, torsos, and smaller compact formats. Check the complete photographs and included body areas for the exact product."
+        "question": "What types of Climax dolls can I find?",
+        "answer": "The range includes full dolls, mini dolls, torsos and smaller designs. The photos and measurements show what each model includes."
       },
       {
-        question: "Does Climax Doll make TPE and silicone products?",
-        answer: "Yes. Current Climax and DollWow catalogs include TPE and silicone product paths. Confirm the exact body and head materials because care, feel, weight, finish, and price can differ."
+        "question": "Does Climax make TPE and silicone dolls?",
+        "answer": "Yes. Check the head and body materials on your chosen listing, along with its weight, finish, care instructions and available options."
       },
       {
-        question: "Are all Climax dolls ultra-lightweight?",
-        answer: "No. Ultra-lightweight is associated with selected products or series, not every Climax model. Compare the exact listed weight in pounds and kilograms before ordering."
+        "question": "Are all Climax dolls ultra-lightweight?",
+        "answer": "No. That label applies to selected models. Compare the listed weight in pounds and kilograms for the doll you want."
       },
       {
-        question: "How should I compare a Climax torso with a full doll?",
-        answer: "Compare what the product includes, height, width, depth, weight, material, cleaning access, storage, mobility, and price. A torso and full-size doll are different ownership products."
+        "question": "How do I compare a Climax torso with a full doll?",
+        "answer": "Start with the body areas you want, then compare measurements, weight and material. Think about where you will carry, clean and store it, too."
       },
       {
-        question: "Can DollWow help find a Climax model that is not listed?",
-        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+        "question": "Can DollWOW find a Climax model that is not listed?",
+        "answer": "Send us the model name or link and we'll check whether we can add it."
       }
+    ],
+    "comparisonBullets": [
+      "Compare full dolls, mini dolls and torsos by what they include and their measurements.",
+      "Check the exact model's materials, weight and available choices before comparing prices.",
+      "Care for Life includes first-year ownership support and ongoing repair guidance."
     ]
   },
   piper: {
@@ -813,71 +798,56 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     ]
   },
   erovenus: {
-    positioning:
-      "Erovenus focuses on silicone torso and compact body formats with detailed sculpting, layered body painting, and model-specific proportions.",
-    intro:
-      "Compare current Erovenus dolls on DollWow by product form, silicone construction, height, width, depth, proportions, starting price, and current ordering path. Erovenus describes its development as following the creation of LoveNestle in 2023, with a focus on silicone torso products and hand-finished surface detail. Confirm the exact model, dimensions, weight, included body areas, and care instructions before ordering.",
-    metaDescription:
-      "Shop Erovenus silicone torso and compact dolls by product form, dimensions, proportions, price, care needs, and current ordering details.",
-    metaTitle: "Erovenus Dolls: Silicone Torso Models",
-    guideHref: "/learn/erovenus-dolls-review-guide",
-    guideLabel: "Erovenus review guide",
-    buyerNotes: [
+    "positioning": "Erovenus describes its range as silicone torsos and compact designs with detailed sculpting and layered body painting.",
+    "intro": "Explore Erovenus silicone torsos and compact designs at DollWOW. Erovenus describes its range as detailed sculpts with layered body painting. Compare the photos, measurements and weight to find a model that fits your space.",
+    "metaDescription": "Explore Erovenus silicone torsos and compact designs at DollWOW. Compare photos, dimensions, listed weight, current prices and care needs.",
+    "metaTitle": "Erovenus Dolls: Silicone Torso Models",
+    "guideHref": "/learn/erovenus-dolls-review-guide",
+    "guideLabel": "Erovenus review guide",
+    "buyerNotes": [
       {
-        title: "Choose the form before the finish",
-        body: "Erovenus products span hips, smaller compact forms, and larger torsos. Confirm which body areas are included before comparing appearance or price."
+        "title": "Choose your shape",
+        "body": "Compare hips, compact designs and larger torsos. The photos show which body areas each model includes."
       },
       {
-        title: "Measure the complete footprint",
-        body: "Height alone does not show how a torso will fit in storage or feel to handle. Compare width, depth, weight, base shape, and the cleaning route."
+        "title": "Plan your space",
+        "body": "Check width, depth and weight as well as height. Think about carrying, cleaning and storage."
       },
       {
-        title: "Follow silicone-specific care",
-        body: "Use the instructions supplied for the exact product. Erovenus advises mild cleaning, complete drying, and avoiding silicone-based products that can damage its silicone material."
+        "title": "Follow the care instructions",
+        "body": "Use the instructions for your model. Erovenus recommends gentle cleaning and avoiding silicone-based products on its silicone."
       }
     ],
-    comparisonRows: [
-      [
-        "Product form",
-        "Confirm whether the listing is hips, a compact torso, a larger torso, or another partial-body format.",
-        "DollWow keeps the exact photographs, dimensions, material, and product link together so you can compare equivalent forms."
-      ],
-      [
-        "Scale and handling",
-        "Compare height, width, depth, listed weight, base design, cleaning access, and storage position.",
-        "Ask our team to confirm a missing decision-critical measurement before you order."
-      ],
-      [
-        "Finish and care",
-        "Layered painting and detailed surface work still need material-compatible cleaning, pressure protection, and repair guidance.",
-        "Every DollWow doll includes Care 365 for arrival questions, care guidance, and repair triage during the first year."
-      ]
-    ],
-    faqs: [
+    "faqs": [
       {
-        question: "What is Erovenus known for?",
-        answer: "Erovenus is known for silicone torso and compact body formats, detailed sculpting, layered body painting, and several product sizes rather than one standard full-body design."
+        "question": "What is Erovenus known for?",
+        "answer": "Erovenus describes its range as silicone torsos and compact designs with detailed sculpting and layered body painting."
       },
       {
-        question: "When did Erovenus begin?",
-        answer: "Erovenus describes its development as following the creation of LoveNestle in 2023. Buyers should focus on the exact current model because product series and specifications continue to evolve."
+        "question": "When did Erovenus begin?",
+        "answer": "Erovenus says its development followed the creation of LoveNestle in 2023. Its current listings show the models and choices available now."
       },
       {
-        question: "Are Erovenus dolls made from silicone?",
-        answer: "Erovenus presents its current doll range as silicone. DollWow also keeps the confirmed material tied to each product page, so ask support if a specific listing is unclear."
+        "question": "Are Erovenus dolls made from silicone?",
+        "answer": "Erovenus describes its current range as silicone. Check your chosen DollWOW listing for the material, or ask us about a missing detail."
       },
       {
-        question: "Are all Erovenus products full-body dolls?",
-        answer: "No. The range includes hips, compact products, and larger torso formats. Check the photographs, included body areas, and complete dimensions for the exact listing."
+        "question": "Are all Erovenus products full-body dolls?",
+        "answer": "No. You can find hips, compact designs and larger torsos. Check the photos and measurements to see what each model includes."
       },
       {
-        question: "How should I clean an Erovenus silicone doll?",
-        answer: "Follow the exact product instructions. Erovenus recommends gentle cleaning with mild soap, complete rinsing where supported, and thorough drying, and warns against silicone-based products that can damage its silicone material."
+        "question": "How should I clean an Erovenus silicone doll?",
+        "answer": "Follow your model's instructions. Erovenus recommends gentle cleaning with mild soap, rinsing where supported and thorough drying. Avoid silicone-based products that can damage its silicone."
       },
       {
-        question: "Can DollWow help find an Erovenus model that is not listed?",
-        answer: "Yes. Send the product name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+        "question": "Can DollWOW find an Erovenus model that is not listed?",
+        "answer": "Send us the model name or link and we'll check whether we can add it."
       }
+    ],
+    "comparisonBullets": [
+      "Compare the body areas included, full measurements and listed weight.",
+      "Check the finish, included accessories and care instructions on your chosen listing.",
+      "Care for Life includes first-year ownership support and ongoing repair guidance."
     ]
   }
 };

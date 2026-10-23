@@ -149,8 +149,9 @@ describe("anime collection SEO", () => {
     expect(preset.title).toBe("Anime sex dolls");
     expect(preset.filters).toEqual({ look: "look-anime" });
     expect(faqs).toHaveLength(6);
-    expect(copy).toContain("visual category for adults");
-    expect(copy).toContain("ft/in and cm");
+    expect(copy).toContain("adult designs");
+    expect(copy).toContain("no school-themed or underage-coded merchandising");
+    expect(copy).toContain("measurements and its weight");
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster/i);
   });
 });

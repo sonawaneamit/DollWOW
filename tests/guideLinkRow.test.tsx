@@ -43,4 +43,14 @@ describe("guide row focus visibility", () => {
     expect(GuideLinkRow(props).props.onFocusCapture).toBeUndefined();
     expect(GuideLinkRow({ ...props, previewFocusScrolling: true }).props.onFocusCapture).toBeTypeOf("function");
   });
+
+  it("offers an opt-in native wrapping fallback without changing other rows", () => {
+    const props = {label:"Guides",className:"collection-guide-links",children:<Link href="/learn/sex-doll-guide">Buying guide</Link>};
+    expect(renderToStaticMarkup(<GuideLinkRow {...props} />)).not.toContain("noscript");
+    const markup=renderToStaticMarkup(<GuideLinkRow {...props} wrapWithoutJavaScript />);
+    expect(markup).toContain('data-native-wrap="true"');
+    expect(markup).toContain("<noscript><style>");
+    expect(markup).toContain("flex-wrap: wrap; overflow-x: visible");
+    expect(markup).toContain('href="/learn/sex-doll-guide"');
+  });
 });

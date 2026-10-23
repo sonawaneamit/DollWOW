@@ -76,7 +76,7 @@ describe("reviewed shopping copy", () => {
 
   it("does not replace unreviewed collection or brand comparisons", () => {
     expect(collectionUsesPlainGuidance("tpe")).toBe(false);
-    expect(collectionUsesPlainGuidance("brunette-dolls")).toBe(false);
+    expect(collectionUsesPlainGuidance("slim-dolls")).toBe(false);
     expect(brandSeoProfile(getCatalogBrand("irontech")!).comparisonBullets).toBeUndefined();
   });
 

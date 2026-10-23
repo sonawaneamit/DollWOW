@@ -32,7 +32,7 @@ export type CollectionComparisonRow = {
 };
 
 export function collectionUsesPlainGuidance(handle: string) {
-  return ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom", "cheap-sex-dolls", "lightweight-sex-dolls", "new-sex-dolls"].includes(handle);
+  return ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom", "cheap-sex-dolls", "lightweight-sex-dolls", "new-sex-dolls", "curvy-dolls", "brunette-dolls", "anime-dolls"].includes(handle);
 }
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
@@ -256,7 +256,9 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "female-dolls": "Female Sex Dolls for Sale",
     "cheap-sex-dolls": "Affordable Sex Dolls for Sale | Options Under $1,000",
     "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
-    custom: "Custom Sex Dolls for Sale | Build & Compare Options"
+    custom: "Custom Sex Dolls for Sale | Build & Compare Options",
+    "curvy-dolls": "Curvy Sex Dolls | Compare Shapes & Measurements",
+    "brunette-dolls": "Brunette Sex Dolls | Compare Hair & Styling"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -299,6 +301,8 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+  "curvy-dolls": "Explore dolls with curvy shapes and fuller busts. Compare bust, waist and hip measurements to find the proportions you like. Curvy and Fuller are separate collections that can overlap, so check each model's photos and details.",
+  "brunette-dolls": "Explore dolls photographed with brown and brunette hair. The pictured wig may not be included, and hair color alone doesn't tell you whether it's a wig or implanted. Compare your favorite looks alongside the doll's measurements, material and weight.",
   "sex-dolls":
     "Browse the complete current DollWow sex doll catalog and filter by material, body type, height, weight, price, availability, brand, and custom options. Open any product to compare its exact measurements, photos, starting price, configuration, and ordering path. If a model or detail you need is missing, ask our team through live chat or hello@dollwow.com and we will check it for you.",
   "realistic-sex-dolls":
@@ -314,7 +318,7 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop Asian sex dolls and Japanese-inspired styles selected from current catalog presentation and product details. The collection includes varied faces, bodies, heights, and proportions across TPE, silicone, and hybrid construction. Asian or Japanese-inspired appearance describes visual styling, not a model's nationality, manufacturing origin, quality, or technical specification. Compare the exact head and body, several gallery angles, measurements, listed weight, material, skin tone, hair, makeup, availability, and supported options before choosing. If a Japanese- or Korean-inspired model you want is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "black-dolls": "Find your favorite Black sex doll, from rich skin tones and striking faces to the body shape you love. Compare photos, measurements, weight and custom choices, or ask us to help you find a particular look.",
   "anime-dolls":
-    "Shop adult anime sex dolls with stylized, manga-inspired, cosplay, elf, and fantasy presentation across current DollWow brands. This is a visual category for adults, not an age, character-identity, or body-size label. Compare the exact face, body, product form, height, listed weight, TPE or silicone construction, photographs, availability, and supported styling options. If a particular approved design is missing, send our team the model name or supplier link and we will check whether it can be added.",
+    "Explore adult anime dolls with manga-inspired, cosplay, elf and fantasy styling. These are adult designs, with no school-themed or underage-coded merchandising. Compare the face, body, measurements and choices on each listing.",
   "fuller-dolls":
     "Shop fuller and curvy sex dolls with a fuller bust, wider hips, softer midsection, or plus-size-inspired proportions in the current product data and styling. These traits can appear separately, so the category does not claim that every doll has the same body shape or physical weight. Compare the full gallery, bust, waist, hips, height, listed weight, material, product form, and supported options before choosing. If another approved body is missing, send our team the model name or supplier link and we will check whether it can be added.",
   "slim-dolls":
@@ -337,6 +341,8 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+  "curvy-dolls": "Compare curvy sex dolls by bust, waist and hip measurements, full doll or torso design, material, listed weight, price and available choices.",
+  "brunette-dolls": "Explore brunette sex dolls at DollWOW. Compare pictured looks, materials, measurements, weight, price and available hair choices.",
   "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
   "realistic-sex-dolls": "Shop realistic sex dolls and compare proportions, face sculpt, skin finish, eyes, hands, weight, product photos, and the exact final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
@@ -347,7 +353,7 @@ const collectionMetaDescriptions: Record<string, string> = {
   "futa-sex-dolls": "Compare full-body dolls listed with an insertable penis option. Check custom-made choices, fixed warehouse builds, materials, sizes, prices, and care.",
   "asian-dolls": "Shop Asian sex dolls and Japanese-inspired styles by face, body, TPE or silicone, height, weight, price, availability, and custom options.",
   "black-dolls": "Shop Black sex dolls with deep and dark skin tones. Compare face, body, TPE or silicone, height, weight, price, availability, and options.",
-  "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf, and fantasy styling. Compare product form, size, weight, material, price, and options.",
+  "anime-dolls": "Shop adult anime sex dolls with manga-inspired, cosplay, elf and fantasy styling. Compare full dolls and compact designs, measurements, materials and choices.",
   "fuller-dolls": "Shop fuller and curvy sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   "slim-dolls": "Shop slim sex dolls by bust, waist, hips, height, listed weight, material, product form, availability, price, and supported options.",
   tpe: "Shop full-body TPE sex dolls by height, weight, proportions, brand, price, availability, and custom options with material and care guidance.",
@@ -361,6 +367,34 @@ const collectionMetaDescriptions: Record<string, string> = {
 };
 
 const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
+  "curvy-dolls": [
+    {
+      "title": "Find your favorite proportions",
+      "body": "Compare bust, waist and hips together. Curvy dolls come in different shapes and sizes."
+    },
+    {
+      "title": "Choose a full doll or torso",
+      "body": "Check which body areas are included, then compare the full measurements and price."
+    },
+    {
+      "title": "Check the details",
+      "body": "Read the material, weight and options for the model you like. Ask us about a missing detail."
+    }
+  ],
+  "brunette-dolls": [
+    {
+      "title": "Start with your favorite look",
+      "body": "Browse several gallery photos to see the face, styling and body together."
+    },
+    {
+      "title": "Compare the whole doll",
+      "body": "Check the head and body, materials, measurements and weight as well as the hairstyle."
+    },
+    {
+      "title": "Plan your order",
+      "body": "Compare the current price and availability. Ask us about a particular look or model."
+    }
+  ],
   "sex-dolls": [
     {
       title: "Compare the full purchase, not the headline",
@@ -503,16 +537,16 @@ const collectionBuyerNotesByHandle: Record<string, CollectionBuyerNote[]> = {
   ],
   "anime-dolls": [
     {
-      title: "Style never describes age",
-      body: "Anime, manga, cosplay, elf, and fantasy describe adult product styling only. DollWow does not use underage-coded or school-themed merchandising."
+      "title": "Adult designs only",
+      "body": "Anime, manga, cosplay, elf and fantasy describe adult styling. DollWOW does not use underage-coded or school-themed merchandising."
     },
     {
-      title: "Check the exact photographed build",
-      body: "Hair, ears, eyes, makeup, clothing, props, and image editing can change the presentation. Confirm the head, body, material, measurements, listed weight, and included configuration."
+      "title": "Compare the complete look",
+      "body": "Check the head, body, material, measurements and weight. Ask about included clothes, hair or accessories before ordering."
     },
     {
-      title: "Ask us to find a missing design",
-      body: "Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      "title": "Ask us to find a missing design",
+      "body": "Send us the model name or link and we'll check whether we can add it."
     }
   ],
   "fuller-dolls": [
@@ -828,6 +862,40 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
 };
 
 const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]> = {
+  "curvy-dolls": [
+    {
+      "factor": "Choose your proportions",
+      "whyItMatters": "Compare bust, waist and hips, then browse the full gallery.",
+      "dollWowAdvantage": "We can help you compare your favorites."
+    },
+    {
+      "factor": "Check the full details",
+      "whyItMatters": "Look at the included body areas, materials, measurements and weight.",
+      "dollWowAdvantage": "Each listing shows its price and available choices."
+    },
+    {
+      "factor": "Get help after your order",
+      "whyItMatters": "Care for Life includes first-year ownership support and ongoing repair guidance.",
+      "dollWowAdvantage": "Read the coverage details below."
+    }
+  ],
+  "brunette-dolls": [
+    {
+      "factor": "Find a look you love",
+      "whyItMatters": "Compare the faces, hair styling and bodies across the gallery.",
+      "dollWowAdvantage": "Ask us about a particular photographed look."
+    },
+    {
+      "factor": "Compare the doll",
+      "whyItMatters": "Read the materials, measurements, weight, price and available choices.",
+      "dollWowAdvantage": "We can help you narrow your selection."
+    },
+    {
+      "factor": "Get help after your order",
+      "whyItMatters": "Care for Life includes first-year ownership support and ongoing repair guidance.",
+      "dollWowAdvantage": "Read the coverage details below."
+    }
+  ],
   "sex-dolls": [
     {
       factor: "Catalog breadth",
@@ -1017,19 +1085,19 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
   ],
   "anime-dolls": [
     {
-      factor: "Adult-only styling",
-      whyItMatters: "Anime and fantasy labels can be used carelessly to imply age or to mix unrelated novelty products into the same result set.",
-      dollWowAdvantage: "DollWow treats anime, manga, cosplay, elf, and fantasy as adult visual styles and excludes underage-coded or school-themed merchandising."
+      "factor": "Choose your adult fantasy style",
+      "whyItMatters": "Browse the face, body, ears and styling in the full gallery.",
+      "dollWowAdvantage": "We can help you compare your favorite adult designs."
     },
     {
-      factor: "Exact product evidence",
-      whyItMatters: "Costumes, wigs, ears, makeup, props, and edited backgrounds can make the same body look like a different product.",
-      dollWowAdvantage: "Each listing keeps the current product photographs connected to the manufacturer, body, head, material, measurements, listed weight, and ordering path."
+      "factor": "Check what comes with it",
+      "whyItMatters": "Compare the materials, measurements, weight and included accessories.",
+      "dollWowAdvantage": "Ask us about a choice you cannot find on the listing."
     },
     {
-      factor: "Build and styling support",
-      whyItMatters: "A pictured head, outfit, accessory, or fantasy detail is not automatically included or compatible with every body.",
-      dollWowAdvantage: "DollWow can confirm the exact configuration and supported styling choices before an eligible custom order enters production."
+      "factor": "Get help after your order",
+      "whyItMatters": "Care for Life includes first-year ownership support and ongoing repair guidance.",
+      "dollWowAdvantage": "Read the coverage details below."
     }
   ],
   "fuller-dolls": [
@@ -1171,6 +1239,46 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
 };
 
 const collectionFaqByHandle: Record<string, { question: string; answer: string }[]> = {
+  "curvy-dolls": [
+    {
+      "question": "What does curvy mean here?",
+      "answer": "It groups dolls with curvy shapes or fuller busts. Compare the exact bust, waist and hip measurements and photos to find the proportions you like."
+    },
+    {
+      "question": "Are Curvy and Fuller the same collection?",
+      "answer": "No. They are separate collections that can overlap. Browse both, then compare each model's actual proportions."
+    },
+    {
+      "question": "Are all curvy dolls full-body dolls?",
+      "answer": "No. You may also find torsos or other compact designs. Check the photos and measurements for the body areas included."
+    },
+    {
+      "question": "Does curvy mean heavier or softer?",
+      "answer": "Not necessarily. Weight and feel depend on the model's size, material and construction. Check its listed weight and details."
+    },
+    {
+      "question": "Can I change the body proportions or options?",
+      "answer": "Proportions and options depend on the model; check the listing or ask us."
+    }
+  ],
+  "brunette-dolls": [
+    {
+      "question": "What can I find in this collection?",
+      "answer": "Dolls photographed with brown and brunette hair, across a variety of faces, bodies and sizes."
+    },
+    {
+      "question": "Is the pictured hair included, and is it a wig or implanted?",
+      "answer": "Check the listing for included hair and whether it is a wig or implanted. A photographed look may use an optional wig or styling; ask us about the choices for your model."
+    },
+    {
+      "question": "Can I choose another hair color?",
+      "answer": "Some models offer hair choices. Open the product page for the available colors and prices, or ask us about the look you want."
+    },
+    {
+      "question": "How do I compare the dolls beyond their hairstyle?",
+      "answer": "Compare the head and body, materials, full measurements, listed weight and current price. Think about handling and storage, too."
+    }
+  ],
   "sex-dolls": [
     {
       question: "How should I compare sex dolls online?",
@@ -1489,28 +1597,28 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   ],
   "anime-dolls": [
     {
-      question: "What is an anime sex doll?",
-      answer: "It is an adult doll with stylized features or presentation inspired by anime, manga, cosplay, elf, or fantasy aesthetics. The label describes visual style, not age, material, body size, or product form."
+      "question": "What is an anime sex doll?",
+      "answer": "An adult doll with anime, manga, cosplay, elf or fantasy-inspired styling. The style label doesn't tell you the size or material."
     },
     {
-      question: "Are anime sex dolls full size?",
-      answer: "Some are full size and others are compact or partial-body products. Check the product form, height in ft/in and cm, listed weight in lb and kg, and complete measurements before comparing price or storage fit."
+      "question": "Are anime dolls full size?",
+      "answer": "Some are full dolls and others are compact designs or torsos. Compare what each listing includes, its measurements and its weight."
     },
     {
-      question: "Are anime dolls made from TPE or silicone?",
-      answer: "Both material paths can appear, along with hybrid construction. Confirm the body and head materials because feel, finish, care, weight, repair, and price can differ."
+      "question": "Are anime dolls made from TPE or silicone?",
+      "answer": "You can find TPE, silicone and hybrid designs. Check the head and body materials on your chosen listing."
     },
     {
-      question: "Is the costume or wig shown in the photos included?",
-      answer: "Do not assume so. Clothing, wigs, ears, props, and other styling can be photographic references or optional items. Check the exact product listing and ask DollWow to confirm what the order includes."
+      "question": "Is the costume or wig in the photos included?",
+      "answer": "Check the listing for included clothes, hair and accessories. Ask DollWOW about a particular pictured item before ordering."
     },
     {
-      question: "Can I customize an anime or fantasy doll?",
-      answer: "Many factory-order products support selected head, hair, eye, makeup, skin-tone, skeleton, or styling choices, but availability and compatibility vary by exact body and manufacturer."
+      "question": "Can I customize an anime or fantasy doll?",
+      "answer": "Many custom dolls offer choices for the head, hair, eyes, makeup or other features. The options and prices depend on the model."
     },
     {
-      question: "Can DollWow add an anime doll that is not listed?",
-      answer: "Yes. Send the model name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed."
+      "question": "Can DollWOW find an anime doll that is not listed?",
+      "answer": "Send us the model name or link and we'll check whether we can add it."
     }
   ],
   "fuller-dolls": [
