@@ -20,6 +20,25 @@ MD's Bonnie page presents a menu of selections; IDO describes its dolls as a sta
 
 The worksheet below compares these purchase structures using two exact model identities. It does not rank their prices, weights or performance and is not a hands-on or matched-build test.
 
+## Do not transfer a factory menu onto a warehouse offer
+
+The manufacturer's product page and a specific DollWOW warehouse listing are different offers. On 23 October 2026, these two DollWOW records provided a nearby-height, same-listed-country starting point:
+
+| Offer field | MD Bonnie US listing | IDO WanZhi US listing |
+| --- | --- | --- |
+| Exact head / body identity | M37, 166 cm F-cup | ID8H, 167 cm F-cup |
+| Listed material | Silicone | Silicone |
+| Bust / waist / hips | 84.5 / 60.5 / 94 cm | 85 / 65 / 103 cm |
+| Weight entry and basis | 41 kg factory body weight; 53 kg packing weight | 39 kg, labelled Weight without a complete-build definition |
+| Listed USD price | $1,399 | $2,599 |
+| Purchase structure | Fixed warehouse configuration | Fixed warehouse configuration |
+
+Sources: [Bonnie's exact US offer](/products/md-bonnie-166cm-f-cup-silicone-companion-doll-in-stock-us) and [WanZhi's exact US offer](/products/ido-wanzhi-167cm-f-cup-silicone-companion-doll-in-stock-us). The records identify United States warehouse offers, but their retained stock-check timestamps are 15 October, not a fresh physical-stock confirmation on 23 October. Confirm the exact unit, appearance and availability before relying on a dispatch date.
+
+These prices are dated seller offers, not permanent brand price rankings. The $1,200 gap does not establish what equal custom builds would cost, and neither price includes shipping, tax or any checkout discount. Bonnie's body weight must not be compared directly with WanZhi's undefined Weight field or with packed shipping weight.
+
+WanZhi's ID8H pairing is not the Tatiana-1 ID1(H) factory example below. Do not use Tatiana's face, model specifications or package description as proof of WanZhi's exact supplied configuration. Likewise, Bonnie's warehouse offer is not made customizable merely because the manufacturer's Bonnie page has a menu.
+
 ## Start with the two documented identities
 
 MD's [official Bonnie M-37 listing](https://mddoll.com/index.php/product/md-doll-166bcm-5ft45-f-cup-bonnie-full-silicone-sex-doll-m-37/) identifies a 166(B) cm F-cup full-silicone build. IDO's [Tatiana-1 product page](https://www.idodoll.com/product/167cm-5ft57-f-cup-id1h-1-head/) identifies a 167 cm F-cup build with the ID1(H) head.

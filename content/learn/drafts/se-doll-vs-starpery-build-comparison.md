@@ -64,6 +64,19 @@ If only one model supports a feature you consider essential, that can settle the
 | Is one easier for me to handle? | Two published weight entries with an unspecified basis | Equivalent configured weights or a tested lifting recommendation |
 | Does the $300 gap settle value? | Difference between dated starting prices | Difference between equally configured or delivered totals |
 
+## Settle the decision-critical differences first
+
+A 23 October 2026 catalog spot-check returned the same $1,899 Alba A and $2,199 Amy starting prices as the dated table above. This confirms those displayed price fields, not newly measured dimensions, stock or an equally configured quote. Both records describe custom-made offers; do not read either as a warehouse dispatch promise.
+
+| If this is your constraint | Resolve this before comparing extras |
+| --- | --- |
+| A TPE body is essential | Record the chosen body material on both offers; Amy's silicone-head label alone is insufficient |
+| Moving and storing the doll is the main concern | Obtain weights with the same head/body definition and check the actual proportions; equal height is not an equal footprint |
+| A particular face or head function is essential | Keep Alba A's head 129 identity and Amy's selected head construction explicit; a head menu is not proof that every combination is supplied |
+| Your budget is close to the starting price | Write the supported selected options and delivered total first; an option label alone does not establish whether its charge is included |
+
+If one unresolved field could change your choice, send that exact question with the product link rather than filling it with a brand-wide assumption. Do not treat an unverified option as free or an unavailable one as an equivalent substitute.
+
 ## There is no useful universal winner
 
 If you prefer Alba A's proportions and configuration, the lower starting price leaves a different budget for supported choices. If you prefer Amy's body and selected head construction, compare that complete offer rather than trying to reduce the decision to a brand ranking.

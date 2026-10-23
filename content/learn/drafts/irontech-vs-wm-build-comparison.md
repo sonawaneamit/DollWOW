@@ -20,6 +20,24 @@ The useful choice is between two complete builds, not two brand names. Match the
 
 This is a comparison of documented feature labels with a hypothetical buyer worksheet, not a pair of matched product quotations or a hands-on review. It does not invent equal specifications, prices or a winner. Use it with products from [Irontech](/brands/irontech-dolls) and [WM](/brands/wm-dolls) that genuinely suit you.
 
+## A concrete near-height shortlist
+
+Two DollWOW offers checked on 23 October 2026 show why the complete identity matters:
+
+| Offer field | Irontech Molly | WM head 216 build |
+| --- | --- | --- |
+| Exact listed pairing | 166 cm 2.0 E-cup body, S44 ROS MAX head | 165 cm D-cup body, head 216 |
+| Listed material | Silicone | Silicone |
+| Bust / waist / hips | 85 / 59.6 / 98 cm | 85 / 59 / 93 cm |
+| Weight entry and basis | 37.5 kg, explicitly body only | 23 kg, labelled Weight without a complete-build definition |
+| Listed USD starting price | $3,199 | $2,300 |
+
+Sources: [Molly's exact offer](/products/irontech-molly-166cm-2-0-s44-ros-max-silicone-doll) and [the WM head 216 offer](/products/wm-head-216-165cm-d-cup-silicone-companion-doll-62ttx). These are dated catalog records, not new factory measurements, normalized configurations or checkout quotations. Prices exclude selected extras, shipping, tax and checkout discounts. Recheck the actual offers before ordering.
+
+The $899 starting-price difference does not price the ROS MAX head in isolation: the bodies, heads and supplied configurations differ. Nor does subtracting 23 from 37.5 produce a valid handling advantage; one number is body-only and the other has no matching definition. Do not add Molly's separate head-weight range to create a supposedly verified complete weight.
+
+Molly's offer identifies ROS MAX as its supplied head version. That does not make every head choice shown elsewhere in the menu interchangeable. For the WM candidate, confirm the selected head construction and written inclusion rather than translating ROS MAX into a generic WM option. Neither record establishes that this WM build uses S-TPE.
+
 ## Define one buyer's requirements
 
 Imagine a buyer who wants an adult-presenting full-body doll, removable hair for different looks, manageable handling weight and no powered functions. Those are illustrative preferences, not a description of either brand's standard package.

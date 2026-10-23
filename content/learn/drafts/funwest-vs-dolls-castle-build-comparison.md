@@ -68,6 +68,16 @@ For a fair personal budget, select the supported choices you would genuinely ord
 
 Do not use a supplier's direct promotion as the DollWOW selling price. The seller, configuration and offer terms all need to match.
 
+## Keep the offer and the weight definition together
+
+A 23 October 2026 DollWOW catalog spot-check returned the same $1,349 Bea and $1,999 Nyla base prices shown above. Both records describe custom-made offers. That is a dated price-field check, not a fresh factory measurement, physical-stock confirmation or delivery guarantee.
+
+The current product records label 37 kg and 42.5 kg simply as Weight. The earlier factory references use net figures, but those labels alone do not demonstrate that both totals include the selected head and the same installed options. Treat the stated 5.5 kg difference as arithmetic between source entries, not a verified difference between the complete dolls you would receive. Ask for the same weight definition before deciding which you can comfortably handle.
+
+Bea's head 006 and Nyla's JS061 pairing should stay on the comparison record. Nyla's documented silicone-head/TPE-body construction is not proof that a similar-looking head on another product has the same material or functions. Keep the previously identified hip-measurement discrepancy open rather than averaging the figures.
+
+For the price decision, write two separate lines: what is supplied in the chosen offer, and what you are adding. Record each extra as included, a confirmed charge, unavailable or awaiting confirmation. This avoids charging twice for an included feature without assuming a menu choice is already part of the base package.
+
 ## Choose between the actual dolls
 
 Bea deserves closer attention if its shorter proportions and lower listed weight suit your space. Nyla deserves closer attention if the taller silhouette and identified hybrid pairing are what you want. Neither point establishes a universal quality or durability winner.
