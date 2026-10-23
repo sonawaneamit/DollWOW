@@ -73,5 +73,8 @@ describe("bounded head reference previews", () => {
     expect(html).toContain('href="/learn/irontech-head-types-ros-max"');
     expect(html).toContain('href="/brands/irontech-dolls"');
     expect(html).not.toMatch(/application\/ld\+json|164cm-title|IP.not.whitelisted|BLOCKED/);
+    const main = parse(html).querySelector('section')!;
+    expect(main.textContent).toContain("Fit with other bodies isn't confirmed.");
+    expect(main.textContent).not.toMatch(/Factory source checked|2026-10-23|Do not|does not establish|Factory evidence|not a certificate|hands-on fit test|stock, price or availability promise/);
   });
 });

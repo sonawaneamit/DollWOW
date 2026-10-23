@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const reference = getHeadReferencePreview(slug);
   return {
-    title: reference ? `${reference.title}: Factory Pairing Reference` : "Head reference not found",
+    title: reference ? `${reference.title}: Head and Body` : "Head reference not found",
     description: reference?.answer,
     robots: { index: false, follow: false }
   };
@@ -26,8 +26,8 @@ export default async function HeadReferencePage({ params }: Props) {
     ["Manufacturer", reference.brand],
     ["Head code", reference.code],
     ...(reference.designation ? [["Head designation", reference.designation]] : []),
-    ["Documented body", reference.body],
-    ["Factory example", reference.example]
+    ["Body pairing", reference.body],
+    ["Model", reference.example]
   ];
 
   return (
@@ -39,12 +39,11 @@ export default async function HeadReferencePage({ params }: Props) {
           <p className="mt-4 text-sm font-semibold text-text-dim">Head reference</p>
           <h1 className="mt-2 break-words text-3xl font-semibold leading-tight sm:text-4xl">{reference.title}</h1>
           <p className="mt-4 max-w-3xl text-base leading-7">{reference.answer}</p>
-          <p className="mt-4 text-sm text-text-dim">Factory source checked <time dateTime={reference.sourceCheckedAt}>{reference.sourceCheckedAt}</time></p>
         </div>
 
         <div className="grid gap-10 py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <section aria-labelledby="identity-heading" className="min-w-0">
-            <h2 id="identity-heading" className="text-xl font-semibold">The documented configuration</h2>
+            <h2 id="identity-heading" className="text-xl font-semibold">Head and body</h2>
             <dl className="mt-4 divide-y divide-border border-y border-border">
               {facts.map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4 py-3 text-sm leading-6">
@@ -56,16 +55,15 @@ export default async function HeadReferencePage({ params }: Props) {
           </section>
 
           <section aria-labelledby="reading-heading" className="min-w-0">
-            <h2 id="reading-heading" className="text-xl font-semibold">Read the code with the body</h2>
+            <h2 id="reading-heading" className="text-xl font-semibold">Choosing your build</h2>
             <p className="mt-4 leading-7">{reference.detail}</p>
             <p className="mt-4 leading-7">{reference.boundary}</p>
           </section>
         </div>
 
         <section aria-labelledby="source-heading" className="border-y border-border py-6">
-          <h2 id="source-heading" className="text-xl font-semibold">Factory evidence</h2>
+          <h2 id="source-heading" className="text-xl font-semibold">Explore the model</h2>
           <p className="mt-3 leading-7"><a href={reference.sourceUrl} className="break-words font-semibold underline underline-offset-4">{reference.sourceTitle}</a></p>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-text-dim">The source identifies this specific configuration. It is not a DollWOW stock, price or availability promise, a hands-on fit test, or a complete list of supported replacements.</p>
         </section>
 
         <nav aria-label="Related head references" className="flex flex-wrap gap-x-6 gap-y-3 py-6 text-sm font-semibold">
