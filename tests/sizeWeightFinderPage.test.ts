@@ -5,6 +5,7 @@ import { sampleProducts } from '@/lib/data/sample-products';
 import type { Product } from '@/types/product';
 const { load } = vi.hoisted(() => ({ load: vi.fn() }));
 vi.mock('@/lib/shopify/storefront', () => ({ getSeoCatalogProducts: load }));
+vi.mock('next/cache', () => ({ unstable_cache: (fn: unknown) => fn }));
 vi.mock('next/link', () => ({ default: ({ children, href, ...props }: { children: ReactNode; href: string }) => createElement('a', { href, ...props }, children) }));
 import Page, { generateMetadata } from '@/app/tools/doll-size-weight-finder/page';
 
