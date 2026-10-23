@@ -6,8 +6,21 @@ import { PriceSizeIndexReview } from "@/components/PriceSizeIndexReview";
 import { getPriceSizeIndexReview, priceSizeIndexPayload, priceSizeIndexCsvText, priceSizeIndexSchema } from "@/lib/references/priceSizeIndex";
 import { GET as jsonGET } from "@/app/datasets/doll-price-size-review.json/route";
 import { GET as csvGET } from "@/app/datasets/doll-price-size-review.csv/route";
+import { generateMetadata } from "@/app/learn/[slug]/page";
 
 afterEach(() => vi.unstubAllEnvs());
+
+test("guide review metadata is explicitly noindex only in preview", async () => {
+  const params = Promise.resolve({ slug: "sex-doll-size-weight-guide" });
+  vi.stubEnv("VERCEL_ENV", "preview");
+  const preview = await generateMetadata({ params });
+  expect(preview.robots).toEqual({ index: false, follow: false });
+  vi.stubEnv("VERCEL_ENV", "production");
+  const production = await generateMetadata({ params });
+  expect(production.robots).toBeUndefined();
+  expect(production.title).toEqual(preview.title);
+  expect(production.alternates).toEqual(preview.alternates);
+});
 
 test.each(["production", "development", ""])("review is unavailable in %s", async mode => {
   vi.stubEnv("VERCEL_ENV", mode);
