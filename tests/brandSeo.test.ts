@@ -78,7 +78,7 @@ describe("Tier 1 brand SEO", () => {
     const copy = `${profile.intro} ${profile.comparisonRows?.flat().join(" ")} ${profile.buyerNotes.flatMap((item) => [item.title, item.body]).join(" ")} ${profile.faqs.flatMap((item) => [item.question, item.answer]).join(" ")}`;
 
     expect(metadata.title).toBe(title);
-    expect(profile.comparisonRows).toHaveLength(3);
+    expect(profile.comparisonBullets ?? profile.comparisonRows).toHaveLength(3);
     expect(copy).not.toMatch(/PDP|SERP|crawlable|keyword cluster|editorial process/i);
   });
 });
