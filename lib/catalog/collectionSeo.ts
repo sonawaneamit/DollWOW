@@ -927,7 +927,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       "factor": "Get help choosing",
       "whyItMatters": "We can help compare your favorites.",
-      "dollWowAdvantage": "Care for Life includes ownership support after your purchase."
+      "dollWowAdvantage": "We can help you compare the details before ordering."
     }
   ],
   "lightweight-sex-dolls": [
