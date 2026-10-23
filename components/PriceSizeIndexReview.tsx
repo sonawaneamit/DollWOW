@@ -16,10 +16,10 @@ export function PriceSizeIndexReview() {
       <p className="mt-4 leading-7">Among {number(data.includedListingCount)} listings meeting the stated screening rules, the median listed base price was {dollars(summary.medianListedBasePrice)} and the median listed height was {summary.medianListedHeightCm}cm.</p>
       <p className="mt-3 leading-7 text-text-dim">These are catalog listings, not unique models, confirmed stock or a market-wide average. The middle half of listed base prices fell between {dollars(summary.middleHalfListedBasePrice[0])} and {dollars(summary.middleHalfListedBasePrice[1])}; listed heights between {summary.middleHalfListedHeightCm[0]}cm and {summary.middleHalfListedHeightCm[1]}cm. Options, promotions, shipping, taxes and duties are not calculated.</p>
       <div className="mt-6 max-w-full overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" role="region" aria-label="October price and height table" tabIndex={0}>
-        <table className="w-full min-w-[420px] border-collapse text-left text-sm">
-          <caption className="mb-3 text-left text-sm text-text-dim">Listing-weighted USD base prices by reported height; five non-overlapping bands.</caption>
-          <thead><tr className="border-b border-border"><th scope="col" className="py-3 pr-4">Height (cm)</th><th scope="col" className="py-3 pr-4">Listings</th><th scope="col" className="py-3">Median base price</th></tr></thead>
-          <tbody>{data.heightBands.map(b => <tr key={b.band} className="border-b border-border"><th scope="row" className="py-3 pr-4 font-normal">{b.band.replace("under", "under ")}</th><td className="py-3 pr-4">{number(b.listingCount)}</td><td className="py-3">{dollars(b.medianListedBasePrice)}</td></tr>)}</tbody>
+        <table className="w-full min-w-0 table-fixed border-collapse text-left text-xs sm:text-sm">
+          <caption className="mb-3 whitespace-normal text-left text-sm text-text-dim">Listing-weighted USD base prices by reported height; five non-overlapping bands.</caption>
+          <thead><tr className="border-b border-border"><th scope="col" className="w-[44%] py-3 pr-3">Height (cm)</th><th scope="col" className="w-[20%] py-3 pr-2">Listings</th><th scope="col" className="w-[36%] py-3">Median base price</th></tr></thead>
+          <tbody>{data.heightBands.map(b => <tr key={b.band} className="border-b border-border"><th scope="row" className="py-3 pr-3 font-normal">{b.band.replace("under", "under ")}</th><td className="py-3 pr-2">{number(b.listingCount)}</td><td className="py-3">{dollars(b.medianListedBasePrice)}</td></tr>)}</tbody>
         </table>
       </div>
       <details className="mt-6 border-t border-border pt-4">
