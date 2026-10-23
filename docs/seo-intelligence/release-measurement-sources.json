@@ -799,7 +799,7 @@
       "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
     },
     "googleQueue": {
-      "updatedAt": "2026-10-23T18:49:51.929Z",
+      "updatedAt": "2026-10-23T21:13:04.595Z",
       "urls": [
         {
           "url": "https://dollwow.com/learn/sex-doll-reviews",
@@ -989,6 +989,20 @@
               "pullRequest": 171,
               "releaseAt": "2026-10-23T18:47:30.985Z",
               "change": "Approved two-guide copy and manufacturer media"
+            }
+          ]
+        },
+        {
+          "url": "https://dollwow.com/tools/doll-size-weight-finder",
+          "ticket": "DOL-230",
+          "manualRequestEligible": true,
+          "releaseAt": "2026-10-23T21:11:34.712Z",
+          "approvedRevisions": [
+            {
+              "commit": "87bc0877ccf904e0da4b35eb0aa63bce31528fe6",
+              "pullRequest": 172,
+              "releaseAt": "2026-10-23T21:11:34.712Z",
+              "change": "Approved new Finder tool; note-free range/card revision"
             }
           ]
         }
@@ -1947,6 +1961,121 @@
       "urls": [
         "https://dollwow.com/learn/irontech-head-types-ros-max",
         "https://dollwow.com/learn/sex-doll-skeleton-options"
+      ],
+      "attempts": 1,
+      "httpStatus": 200,
+      "accepted": true,
+      "limits": "Notification accepted is not indexing/crawl confirmation. No Google write."
+    },
+    "reviewer": "In Review for Dolly;not self-closed"
+  },
+  "dol230FinderRelease": {
+    "approval": "DOL230579ff450 Martin conditional approval;Dolly1a6318cc finalad85PASS/ship",
+    "deployment": {
+      "id": "dpl_D1gNNqAyvyFMwHYJdh2eZzh44g2c",
+      "url": "doll-lj0vi2dhr-sonawaneamits-projects.vercel.app",
+      "commit": "87bc0877ccf904e0da4b35eb0aa63bce31528fe6",
+      "readyAt": 1792789894712,
+      "target": "production",
+      "readyState": "READY",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ],
+      "at": "2026-10-23T21:11:44.412Z"
+    },
+    "events": 1,
+    "gsc": {
+      "request": {
+        "startDate": "2026-09-24",
+        "endDate": "2026-10-21",
+        "type": "web",
+        "dataState": "final",
+        "dimensions": [
+          "page"
+        ],
+        "rowLimit": 25000,
+        "dimensionFilterGroups": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https://dollwow[.]com/tools/doll-size-weight-finder$"
+              }
+            ]
+          }
+        ]
+      },
+      "capture": "2026-10-23T21:10:05.914Z",
+      "rows": 0
+    },
+    "ga4": {
+      "request": {
+        "dateRanges": [
+          {
+            "startDate": "2026-09-24",
+            "endDate": "2026-10-21"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "landingPage"
+          },
+          {
+            "name": "hostName"
+          }
+        ],
+        "metrics": [
+          {
+            "name": "sessions"
+          }
+        ],
+        "dimensionFilter": {
+          "andGroup": {
+            "expressions": [
+              {
+                "filter": {
+                  "fieldName": "hostName",
+                  "inListFilter": {
+                    "values": [
+                      "dollwow.com",
+                      "www.dollwow.com"
+                    ]
+                  }
+                }
+              },
+              {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "inListFilter": {
+                    "values": [
+                      "/tools/doll-size-weight-finder"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "limit": "10000",
+        "returnPropertyQuota": true
+      },
+      "capture": "2026-10-23T21:10:07.631Z",
+      "rows": 0
+    },
+    "limits": "Same complete available24Sep-21Oct window; earlier23Oct property-date completeness evidence retained, not freshly queried. Earlier22Oct final-data gap remains. No customer/order data; GA4 production-host all-channel landing sessions, not organic sales. Missing/suppressed not zero; overlaps byline/Halloween releases, not causal attribution.",
+    "discovery": {
+      "at": "2026-10-23T21:13:04.590Z",
+      "approval": "DOL230579ff450 Martin conditional approval satisfied by Dolly1a6318cc exactad85 verification and ship/indexnow instruction",
+      "count": 1,
+      "urls": [
+        "https://dollwow.com/tools/doll-size-weight-finder"
       ],
       "attempts": 1,
       "httpStatus": 200,
