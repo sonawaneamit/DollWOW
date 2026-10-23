@@ -17,7 +17,10 @@ it("renders every scheduled attribution at its release boundary without changing
   vi.useFakeTimers();
   vi.stubGlobal("React", React);
   const profiles = getLearnAuthors();
-  for (const [slug, key] of Object.entries(owners)) {
+  const scheduled = Object.entries(owners).filter(([slug]) =>
+    getLearningArticle(slug, Date.parse("2030-01-01T00:00:00Z"))?.status === "scheduled");
+  expect(scheduled).toHaveLength(42);
+  for (const [slug, key] of scheduled) {
     const article = getLearningArticle(slug, Date.parse("2030-01-01T00:00:00Z"))!;
     const params = Promise.resolve({ slug });
     const boundary = Date.parse(article.publishedAt!);

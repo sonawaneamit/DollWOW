@@ -3,6 +3,7 @@ import { buildArticleStructuredData, getLearnAuthors, getLearningArticles, learn
 import scheduledAuthors from "@/tests/fixtures/learn-author-assignments-october-2026.json";
 
 const auditTime = Date.parse("2026-10-22T23:54:00Z");
+const productTopicOverrides = ["sex-doll-reviews", "tpe-vs-silicone-sex-dolls", "used-sex-dolls"];
 const migrated = ["irontech-head-types-ros-max", "se-doll-lstpe-lightweight-upgrade", "se-doll-vs-starpery-build-comparison", "warehouse-stock-vs-custom-made", "factory-photo-review-worked-example", "doll-clothing-measurements-fit"];
 
 describe("approved existing guide authors", () => {
@@ -10,7 +11,7 @@ describe("approved existing guide authors", () => {
     const profiles = getLearnAuthors();
     const future = getLearningArticles(Date.parse("2030-01-01T00:00:00Z"))
       .filter(article => !getLearningArticles(auditTime).some(current => current.slug === article.slug));
-    expect(future.map(article => article.slug).sort()).toEqual(Object.keys(scheduledAuthors).sort());
+    expect(future.map(article => article.slug).sort()).toEqual(Object.keys(scheduledAuthors).filter(slug => !productTopicOverrides.includes(slug)).sort());
     expect(future).toHaveLength(42);
     expect(future.filter(article => article.author === "alex")).toHaveLength(36);
     expect(future.filter(article => article.author === "jesse")).toHaveLength(6);
@@ -32,6 +33,8 @@ describe("approved existing guide authors", () => {
     const profiles = getLearnAuthors();
     const articles = getLearningArticles(auditTime);
     expect(articles.length).toBe(56);
+    expect(articles.filter(article => article.author === "alex")).toHaveLength(48);
+    expect(articles.filter(article => article.author === "jesse")).toHaveLength(8);
     for (const article of articles) {
       expect(["alex", "jesse"]).toContain(article.author);
       const author = profiles[article.author];
@@ -42,6 +45,19 @@ describe("approved existing guide authors", () => {
         url: learnAuthorUrl(article.author)
       });
     }
+  });
+
+  it("applies Martin's three product-topic overrides without claiming a new review", () => {
+    const articles = getLearningArticles(auditTime);
+    for (const slug of productTopicOverrides) {
+      const article = articles.find(article => article.slug === slug)!;
+      expect(scheduledAuthors[slug as keyof typeof scheduledAuthors]).toBe("alex");
+      expect(article.author, slug).toBe("alex");
+      expect(article.status).toBe("production");
+      expect(article.lastReviewed).toBe(slug === "tpe-vs-silicone-sex-dolls" ? "2026-08-11" : "2026-08-12");
+    }
+    expect(articles.find(article => article.slug === "used-sex-dolls")?.reviewOwner)
+      .toBe("Jesse, Licensed Sexologist and DollWow Intimacy Education Editor");
   });
 
   it("assigns the six approved topic-fit previews to Alex without changing schedules", () => {
