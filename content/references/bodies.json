@@ -40,5 +40,31 @@
       { "label": "Hips", "cm": 93.5 },
       { "label": "Shoulder width", "cm": 37 }
     ]
+  },
+  {
+    "slug": "irontech-164ln",
+    "title": "Irontech 164LN body",
+    "designation": "164LN",
+    "material": "Silicone",
+    "example": "Manufacturer 164LN body chart, August 2026",
+    "bodyOnlyKg": 60,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "Irontech's SILICONE 164LN factory chart lists 60kg for the body without the head. Its 164cm height and the dimensions below belong to that exact body designation, not a similarly named 164cm or 166cm Eileen listing.",
+    "identityNote": "Keep the LN suffix with this body record. The chart's 164cm height is the manufacturer's listed height, not a separately verified headless-body length. The chart does not establish a head connector specification, compatibility with every S19 or S40 head version, a different production generation or the mass of a complete selected doll.",
+    "sourceTitle": "Irontech: SILICONE 164LN factory body chart, August 2026",
+    "sourceNote": "Dimensions and the explicit weight-without-head label are transcribed from the manufacturer's SILICONE 164LN chart supplied with its 19 August 2026 body-data update. The chart is not a measurement of every option package.",
+    "measurements": [
+      { "label": "Height", "cm": 164 },
+      { "label": "Bust", "cm": 98 },
+      { "label": "Underbust", "cm": 67.8 },
+      { "label": "Waist", "cm": 64.2 },
+      { "label": "Hips", "cm": 121.2 },
+      { "label": "Shoulder width", "cm": 35.5 },
+      { "label": "Arm length", "cm": 68 },
+      { "label": "Leg length", "cm": 75 },
+      { "label": "Thigh line", "cm": 68.8 },
+      { "label": "Calf line", "cm": 36.7 },
+      { "label": "Foot length", "cm": 23 }
+    ]
   }
 ]

@@ -12,7 +12,8 @@ export type BodyReference = {
   answer: string;
   identityNote: string;
   sourceTitle: string;
-  sourceUrl: string;
+  sourceUrl?: string;
+  sourceNote?: string;
   measurements: { label: string; cm: number }[];
 };
 

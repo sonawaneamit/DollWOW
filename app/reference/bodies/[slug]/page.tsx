@@ -87,7 +87,10 @@ export default async function BodyReferencePage({ params }: Props) {
         </section>
         <section aria-labelledby="source-heading" className="border-y border-border py-6">
           <h2 id="source-heading" className="text-xl font-semibold">Factory evidence</h2>
-          <p className="mt-3 leading-7"><a href={reference.sourceUrl} className="break-words font-semibold underline underline-offset-4">{reference.sourceTitle}</a></p>
+          <p className="mt-3 leading-7">{reference.sourceUrl
+            ? <a href={reference.sourceUrl} className="break-words font-semibold underline underline-offset-4">{reference.sourceTitle}</a>
+            : <span className="font-semibold">{reference.sourceTitle}</span>}</p>
+          {reference.sourceNote && <p className="mt-3 max-w-3xl text-sm leading-6 text-text-dim">{reference.sourceNote}</p>}
           <p className="mt-3 max-w-3xl text-sm leading-6 text-text-dim">This is one dated manufacturer reference, not a hands-on test, a current DollWOW stock or price promise, or a universal specification for every option package.</p>
         </section>
 

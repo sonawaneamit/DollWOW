@@ -15,19 +15,18 @@ describe("source-bounded body reference previews", () => {
     expect(getBodyReferencePreview("irontech-166cm-2-0-e")).toBeNull();
   });
 
-  it("exposes exactly two sourced bodies, not a placeholder for the blocked third", () => {
-    expect(getBodyReferencePreviews("preview").map(row => row.slug)).toEqual(["irontech-166cm-2-0-e", "irontech-171cm-d"]);
-    expect(getBodyReferencePreview("irontech-164ln", "preview")).toBeNull();
+  it("exposes exactly three sourced bodies after the original 164LN chart was located", () => {
+    expect(getBodyReferencePreviews("preview").map(row => row.slug)).toEqual(["irontech-166cm-2-0-e", "irontech-171cm-d", "irontech-164ln"]);
     expect(getBodyReferencePreview("../irontech-171cm-d", "preview")).toBeNull();
   });
 
   it("preserves the exact distinct factory dimensions and body-only masses", () => {
-    const bodies = getBodyReferencePreviews("preview");
+    const bodies = getBodyReferencePreviews("preview").slice(0, 2);
     expect(bodies.map(row => row.measurements.map(m => m.cm))).toEqual([[166, 85, 65.3, 59.6, 98, 30], [171, 82, 63.5, 57.2, 93.5, 37]]);
     expect(bodies.map(row => row.bodyOnlyKg)).toEqual([37.5, 37.5]);
     for (const body of bodies) {
       expect(body.sourceCheckedAt).toBe("2026-10-23");
-      expect(new URL(body.sourceUrl).origin).toBe("https://www.irontechdoll.com");
+      expect(new URL(body.sourceUrl!).origin).toBe("https://www.irontechdoll.com");
     }
   });
 
@@ -42,9 +41,39 @@ describe("source-bounded body reference previews", () => {
 
   it("has no unverified assembled mass, commercial data or private source questions", () => {
     const json = JSON.stringify(getBodyReferencePreviews("preview"));
-    expect(json).not.toMatch(/164LN|60\s*kg|2.?5\s*kg|\$|40207|BLOCKED|NEEDS|Kaia|agent-bypass|factoryVerifiedBodyOnlyKg/);
+    expect(json).not.toMatch(/2.?5\s*kg|\$|40207|BLOCKED|NEEDS|Kaia|agent-bypass|factoryVerifiedBodyOnlyKg|drive\.google|mail\.google/);
     expect(json).not.toContain('"assembledWeight');
     expect(json).not.toContain('"price');
+  });
+
+  it("transcribes the exact 164LN chart without borrowing a head mass, cup or public URL", () => {
+    const body = getBodyReferencePreview("irontech-164ln", "preview")!;
+    expect(body.designation).toBe("164LN");
+    expect(body.bodyOnlyKg).toBe(60);
+    expect(body.material).toBe("Silicone");
+    expect(body.measurements.map(row => row.cm)).toEqual([164, 98, 67.8, 64.2, 121.2, 35.5, 68, 75, 68.8, 36.7, 23]);
+    expect(body.sourceUrl).toBeUndefined();
+    expect(body.sourceNote).toContain("19 August 2026");
+    expect(body.identityNote).toContain("does not establish a head connector");
+    expect(JSON.stringify(body)).not.toMatch(/E-cup|D-cup|metal skeleton|2-5|assembledWeight|60\s*\+/);
+  });
+
+  it("renders the third chart with explicit body-only weight and a non-linked source", async () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    const { default: Page, generateMetadata } = await import("@/app/reference/bodies/[slug]/page");
+    const params = Promise.resolve({ slug: "irontech-164ln" });
+    const html = renderToStaticMarkup(await Page({ params }));
+    const dom = parse(html);
+    expect(dom.querySelectorAll("table tbody tr")).toHaveLength(11);
+    expect(dom.textContent).toContain("60kg");
+    expect(dom.textContent).toContain("132.3lb");
+    expect(dom.textContent).toContain("body alone");
+    expect(dom.textContent).toContain("19 August 2026");
+    expect(dom.textContent).toContain("121.2");
+    expect(html).not.toMatch(/drive\.google|mail\.google|href="undefined"|application\/ld\+json/);
+    expect((await generateMetadata({ params })).robots).toEqual({ index: false, follow: false });
+    vi.stubEnv("VERCEL_ENV", "production");
+    await expect(Page({ params })).rejects.toThrow("NEXT_HTTP_ERROR_FALLBACK;404");
   });
 
   it("returns framework404 outside preview and keeps metadata noindex", async () => {
