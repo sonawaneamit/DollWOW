@@ -14,6 +14,7 @@ import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination"
 import Link from "next/link";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
+import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { buildWarehouseMetadata, buildWarehouseStructuredData, warehouseBuyerNotes, warehouseFaqItems, warehouseIntro } from "@/lib/catalog/warehouseSeo";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
@@ -49,7 +50,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
         </div>
       </div>
 
-      <nav aria-label="Warehouse buying guides" className="mb-6 flex flex-wrap gap-3">
+      <nav aria-label="Warehouse buying guides" className="collection-guide-links mb-6 flex flex-wrap gap-3" tabIndex={0}>
         <Link href="/shop/ready-to-ship" className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">All ready-to-ship dolls</Link>
         <Link href="/learn/ready-to-ship-vs-custom-sex-dolls" className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">Ready stock or custom build</Link>
         <Link href="/learn/discreet-sex-doll-shipping" className="rounded-full border border-gold-500/18 bg-ink-900/72 px-4 py-2 text-sm font-semibold text-ivory-200 hover:border-gold-300/45 hover:text-ivory-50">Discreet delivery guide</Link>
@@ -61,7 +62,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
           <p>Ship from</p>
           <span>Choose the warehouse closest to you</span>
         </div>
-        <div className="warehouse-region-switcher__options">
+        <div className="warehouse-region-switcher__options" role="group" aria-label="Warehouse locations" tabIndex={0}>
           <Link href={warehouseRegionHref(rawSearchParams)} className={!filters.region ? "is-active" : ""} aria-current={!filters.region ? "page" : undefined}>
             <span className="warehouse-region-switcher__globe" aria-hidden="true">◎</span>
             <span>All locations</span>
@@ -82,26 +83,11 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
         </div>
       </nav>
 
-      <section className="mb-8 border-t border-gold-500/12 pt-8" aria-labelledby="warehouse-checks-heading">
-        <p className="text-sm text-gold-300">Before you choose</p>
-        <h2 id="warehouse-checks-heading" className="mt-2 text-2xl font-semibold text-ivory-50">Three checks for warehouse inventory</h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          {warehouseBuyerNotes.map((item) => (
-            <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
-              <h3 className="text-base font-semibold text-ivory-100">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-ivory-400">{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <div className="mb-8"><CareForLifePanel compact /></div>
-
       <div className="shop-visual-layout">
         <aside className="shop-visual-sidebar">
           <ProductFilters filters={filters} action="/warehouse" resetHref="/warehouse" variant="sidebar" defaultSort="latest" />
         </aside>
-        <div className="shop-visual-main">
+        <div id="collection-products" className="shop-visual-main scroll-mt-28">
           <div className="shop-active-strip">
             {activeFilterLabels.map((label) => (
               <span key={label}>{label}</span>
@@ -112,8 +98,19 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
         </div>
       </div>
 
-      <section className="mt-10 border-t border-gold-500/12 pt-8" aria-labelledby="warehouse-faq-heading">
-        <h2 id="warehouse-faq-heading" className="text-2xl font-semibold text-ivory-50">Warehouse buying questions</h2>
+      <CollectionDisclosure id="warehouse-checks-heading" eyebrow="Before you choose" title="Three checks for warehouse inventory">
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {warehouseBuyerNotes.map((item) => (
+            <article key={item.title} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
+              <h3 className="text-base font-semibold text-ivory-100">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-ivory-400">{item.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6"><CareForLifePanel compact /></div>
+      </CollectionDisclosure>
+
+      <CollectionDisclosure id="warehouse-faq-heading" title="Warehouse buying questions">
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {warehouseFaqItems.map((item) => (
             <article key={item.question} className="rounded-[8px] border border-gold-500/14 bg-ink-900/64 p-5">
@@ -122,7 +119,7 @@ export default async function WarehousePage({ searchParams }: { searchParams: Pr
             </article>
           ))}
         </div>
-      </section>
+      </CollectionDisclosure>
     </section>
   );
 }
