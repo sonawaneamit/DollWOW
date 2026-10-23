@@ -103,6 +103,7 @@ export function GET() {
       }
     ],
     tools: [
+      { label: "Doll Size & Weight Finder", url: `${siteUrl}/tools/doll-size-weight-finder`, markdownUrl: `${siteUrl}/markdown/tools/doll-size-weight-finder` },
       { label: "DollVue", url: `${siteUrl}/dollvue` },
       { label: "DollVue-enabled dolls", url: `${siteUrl}/shop/dollvue-enabled` },
       { label: "Price match", url: `${siteUrl}/price-match` },
