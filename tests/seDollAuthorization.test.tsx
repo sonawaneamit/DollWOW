@@ -1,13 +1,16 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import AuthorizedVendorsPage from "@/app/authorized-vendors/page";
+import AuthorizedVendorsPage, { metadata } from "@/app/authorized-vendors/page";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { brandAuthorizations, getBrandAuthorization } from "@/lib/catalog/authorizations";
 
 const statement = "Certified SE Doll reseller. Formal authorization certificate pending our first order.";
 
 describe("SE Doll pending certificate disclosure", () => {
+  it("declares the approvals directory's existing canonical owner", () => {
+    expect(metadata.alternates?.canonical).toBe("/authorized-vendors");
+  });
   it.each(["sedoll", "se-doll", "SE Doll"])("matches %s without inventing a certificate or letter", brand => {
     const entry = getBrandAuthorization(brand)!;
     expect(entry.status).toBe("certificate-pending");

@@ -8,6 +8,7 @@ import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 
 export const metadata: Metadata = {
   title: "Brand Certifications | DollWow",
+  alternates: { canonical: "/authorized-vendors" },
   description: "View certificates and written confirmations issued by brands authorizing DollWow to sell their products."
 };
 
