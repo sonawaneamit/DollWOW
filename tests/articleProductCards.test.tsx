@@ -43,11 +43,23 @@ describe('live catalog cards in guides', () => {
   });
   it('preserves unavailable measurements/prices instead of estimating them', () => {
     const p = product('one', 1);
-    p.extended.heightCm = undefined; p.extended.weightLb = NaN; p.priceRange.minVariantPrice.amount = '0';
+    p.extended.heightCm = undefined; p.extended.weightLb = NaN; p.extended.measurements = {}; p.priceRange.minVariantPrice.amount = '0';
     expect(articleListing(p)).toMatchObject({ heightCm: null, weightLb: null, price: null });
     const html = renderToStaticMarkup(<CatalogListingCard row={articleListing(p)} heading="h3" />);
     expect(html).toContain('Height not listed'); expect(html).toContain('Weight not listed'); expect(html).toContain('Price unavailable');
     expect(html).not.toContain('cdn.shopify.com');
+  });
+  it('uses explicit measurement fields when the numeric shortcut is absent, keeping body and packing weights separate', () => {
+    const md = product('md-example', 1);
+    md.extended.brand = 'MD Doll'; md.extended.weightLb = undefined;
+    md.extended.measurements = { 'Factory body weight': '41kg', 'Packing weight': '116.8 lbs / 53 kg' };
+    expect(articleListing(md)).toMatchObject({ weightLb: null, weightText: 'Body weight: 90.4 lb / 41.0 kg' });
+    const ido = product('ido-example', 2);
+    ido.extended.brand = 'IDO Doll'; ido.extended.weightLb = undefined;
+    ido.extended.measurements = { Weight: '86.0 lbs / 39 kg' };
+    expect(articleListing(ido)).toMatchObject({ weightLb: null, weightText: '86.0 lb / 39.0 kg' });
+    ido.extended.measurements = { 'Packing weight': '116.8 lbs / 53 kg' };
+    expect(articleListing(ido).weightText).toBeUndefined();
   });
   it.each(slugs)('shows every linked doll in top/inline/end cards and actual-photo hero for %s', async slug => {
     vi.useFakeTimers();

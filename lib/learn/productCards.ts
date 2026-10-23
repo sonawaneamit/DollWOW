@@ -1,6 +1,8 @@
 import exclusions from '@/data/contextual-link-exclusions.json';
 import { productPublicTitle } from '@/lib/catalog/naming';
 import { protectedProductImageUrlFor } from '@/lib/catalog/productImage';
+import { mdFactoryBodyKg } from '@/lib/catalog/mdWeight';
+import { formatMeasurementDual } from '@/lib/catalog/productSpecs';
 import type { Product } from '@/types/product';
 import type { CatalogListing } from '@/components/CatalogListingCard';
 
@@ -27,10 +29,20 @@ export function articleProducts(handles: string[], products: Product[]) {
 export function articleListing(product: Product): CatalogListing {
   const positive = (value: number | undefined) => Number.isFinite(value) && value! > 0 ? value! : null;
   const price = product.priceRange.minVariantPrice;
+  const measurements = product.extended.measurements;
+  const bodyKg = mdFactoryBodyKg(product.extended.brand || product.vendor, measurements);
+  const listed = measurements?.Weight;
+  const bodyOnly = bodyKg !== undefined || Boolean(listed && /without\s+(?:the\s+)?head|body\s*only/i.test(listed));
+  const text = bodyKg ? formatMeasurementDual('Body weight', `${bodyKg}kg`)
+    : listed ? formatMeasurementDual('Weight', listed) : '';
+  const weightText = /^\d+(?:\.\d+)? lb \/ \d+(?:\.\d+)? kg$/.test(text) &&
+    (bodyOnly || positive(product.extended.weightLb) === null)
+    ? `${bodyOnly ? 'Body weight: ' : ''}${text}` : undefined;
   return {
     handle: product.handle, title: productPublicTitle(product),
     image: protectedProductImageUrlFor(product, product.featuredImage ?? product.images[0], 'card') ?? null,
     heightCm: positive(product.extended.heightCm), weightLb: positive(product.extended.weightLb),
+    ...(weightText ? { weightText } : {}),
     price: positive(Number(price.amount)) === null ? null : price.amount, currency: price.currencyCode
   };
 }

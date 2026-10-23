@@ -9,6 +9,7 @@ import styles from './CatalogListingCard.module.css';
 export type CatalogListing = {
   handle: string; title: string; image: string | null;
   heightCm: number | null; weightLb: number | null;
+  weightText?: string;
   price: string | null; currency: string;
 };
 
@@ -20,7 +21,7 @@ export function CatalogListingCard({ row, heading = 'h2' }: { row: CatalogListin
     </div>
     <Heading className={`mt-3 break-words text-sm font-semibold leading-5 sm:text-base ${styles.title}`}>{row.title}</Heading>
     <p className={`mt-2 text-xs leading-5 text-text-dim sm:text-sm ${styles.measurement}`}>{row.heightCm === null ? 'Height not listed' : finderHeight(row.heightCm)}</p>
-    <p className={`text-xs leading-5 text-text-dim sm:text-sm ${styles.weight}`}>{row.weightLb === null ? 'Weight not listed' : finderWeight(row.weightLb)}</p>
+    <p className={`text-xs leading-5 text-text-dim sm:text-sm ${styles.weight}`}>{row.weightText ?? (row.weightLb === null ? 'Weight not listed' : finderWeight(row.weightLb))}</p>
     <p className={`mt-2 text-sm font-semibold ${styles.price}`}>{row.price ? <DisplayMoney amount={row.price} currencyCode={row.currency} /> : 'Price unavailable'}</p>
   </Link>;
 }
