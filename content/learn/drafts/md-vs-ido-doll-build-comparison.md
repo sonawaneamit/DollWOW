@@ -12,8 +12,9 @@ status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
 hideReviewDate: true
+productCards: true
 featuredImage: "/images/learn/md-vs-ido-doll-build-comparison.webp"
-featuredImageAlt: "Blank green and gray comparison folios beneath MD vs IDO."
+featuredImageAlt: "MD Bonnie and IDO WanZhi in their actual catalog photographs."
 publishedAt: "2026-12-21T10:00:00.000Z"
 ---
 

@@ -12,7 +12,7 @@ vi.mock("@/lib/shopify/storefront", () => ({
 
 const cases = [
   { slug: "se-doll-vs-starpery-build-comparison", date: "2026-10-19T09:00:00.000Z",
-    facts: ["$1,899", "$2,199", "head 129", "35 kg / 77.2 lb", "52.5 kg / 115.7 lb", "custom-made offers"] },
+    facts: ["$1,899", "$2,199", "Keep the original head", "35 kg / 77.2 lb", "52.5 kg / 115.7 lb"] },
   { slug: "irontech-vs-wm-build-comparison", date: "2026-11-11T10:00:00.000Z",
     facts: ["166 cm 2.0 E-cup body, S44 ROS MAX head", "165 cm D-cup body, head 216", "$3,199", "$2,300", "37.5 kg body only", "23 kg", "rather than assuming ROS MAX and S-TPE are equivalent options", "not to pull the eyelids"] },
   { slug: "md-vs-ido-doll-build-comparison", date: "2026-12-21T10:00:00.000Z",
@@ -28,7 +28,7 @@ describe("four existing comparison owners", () => {
     const article = getLearningArticle(slug, Date.parse(date))!;
     expect(article.publishedAt).toBe(date);
     expect(article.status).toBe("scheduled");
-    expect(article.lastReviewed).toBe("2026-10-16");
+    expect(article.lastReviewed).toBe(slug === "se-doll-vs-starpery-build-comparison" ? "2026-10-23" : "2026-10-16");
     expect(article.hideReviewDate).toBe(true);
     for (const fact of facts) expect(article.body, fact).toContain(fact);
     expect(article.body).not.toMatch(/NEEDS MARTIN|SERP|GSC|DataForSEO|Sources:|checked on|checked the|snapshot|basis not specified|weight note above|not a confirmed complete weight|dated starting prices|What these two records show|(?:15|16|23) October/);

@@ -617,6 +617,7 @@ function frontmatter(draft) {
     `authorTitle: "${draft.author.title}"`,
     "status: draft",
     "reviewOwner: catalog",
+    "productCards: true",
     `lastReviewed: "${TODAY}"`,
     "---"
   ].join("\n");

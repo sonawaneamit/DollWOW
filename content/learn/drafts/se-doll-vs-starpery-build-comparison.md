@@ -12,8 +12,9 @@ status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-23"
 hideReviewDate: true
+productCards: true
 featuredImage: "/images/learn/se-doll-vs-starpery-build-comparison.webp"
-featuredImageAlt: "SE Doll and Starpery comparison cover with two blank specification sheets."
+featuredImageAlt: "SE Doll Alba A and Starpery Amy in their actual catalog photographs."
 publishedAt: "2026-10-19T09:00:00.000Z"
 ---
 

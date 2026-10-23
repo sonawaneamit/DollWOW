@@ -12,8 +12,9 @@ status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
 hideReviewDate: true
+productCards: true
 featuredImage: "/images/learn/funwest-vs-dolls-castle-build-comparison.webp"
-featuredImageAlt: "Two blank build-comparison sheets beneath FunWest vs Dolls Castle."
+featuredImageAlt: "FunWest Bea and Dolls Castle Nyla in their actual catalog photographs."
 publishedAt: "2026-12-28T10:00:00.000Z"
 ---
 

@@ -27,6 +27,8 @@ import guideProductGroupsData from "@/content/learn/sex-doll-guide-products.json
 import { GuideShoppingLinks } from "@/components/GuideShoppingLinks";
 import { featureGuideMedia } from "@/components/FeatureGuideMedia";
 import sizeWeightIndexData from "@/content/learn/sex-doll-size-weight-index.json";
+import { ArticleProductCards, ArticleProductHero } from "@/components/ArticleProductCards";
+import { articleProductHandles, articleProducts, articleProductInsertionHeading } from "@/lib/learn/productCards";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = getLearningArticle(slug);
   if (!article) return {};
-  const featuredImageDimensions = articleFeaturedImageDimensions(article.slug);
+  const featuredImageDimensions = article.productCards ? { width: 1200, height: 630 } : articleFeaturedImageDimensions(article.slug);
   const metadataTitles: Record<string, string> = {
     "sex-doll-guide": "Sex Doll Buying Guide (2026): Size, Weight, TPE vs Silicone",
     "body-heating-sex-doll-guide": "Sex Doll Body Heating: Zones, Power, and Safety",
@@ -90,6 +92,11 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
   if (faqSchema) schema.push(faqSchema);
   if (article.slug === "sex-doll-size-weight-guide") schema.push(sizeWeightDatasetStructuredData());
   const productModule = article.slug === "sex-doll-guide" ? null : await getArticleProductModule(article.slug);
+  const linkedHandles = article.productCards ? articleProductHandles(article.body) : [];
+  const linkedProducts = linkedHandles.length
+    ? articleProducts(linkedHandles, await getProductsByHandles(linkedHandles, { revalidate: 120 }))
+    : [];
+  const inlineProductHeading = articleProductInsertionHeading(article.body);
   const guideProductGroups = article.slug === "sex-doll-guide" ? await getGuideProductGroups() : [];
   const catalogHero = articleCatalogHero(article.slug);
   const featuredImageDimensions = articleFeaturedImageDimensions(article.slug);
@@ -110,7 +117,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight text-ivory-50 sm:text-5xl">{article.title}</h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-ivory-300">{article.description}</p>
           {article.slug === "sex-doll-guide" ? <GuideDownloadButton /> : null}
-          {article.featuredImage ? (
+          {article.productCards ? <ArticleProductHero products={linkedProducts} /> : article.featuredImage ? (
             <div className={`mt-8 overflow-hidden rounded-[8px] border border-gold-500/18 bg-ivory-50/[0.04] ${portraitFeaturedImage ? "max-w-3xl" : "max-w-5xl"}`}>
               <Image
                 src={article.featuredImage}
@@ -147,6 +154,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
       <section className="tone-section" data-tone="blush">
         <div className="tone-inner">
           <article className="mx-auto max-w-3xl">
+            <ArticleProductCards products={linkedProducts} label="Dolls in this guide" />
             {article.slug === "sex-doll-guide" ? <GuideTableOfContents markdown={article.body} /> : null}
             {article.slug === "sex-doll-size-weight-guide" ? (
               <SizeWeightArticle markdown={article.body} />
@@ -155,6 +163,10 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
                 markdown={article.body}
                 sectionVisuals={guideSectionVisuals(article.slug)}
                 sectionInsertions={[
+                  ...(inlineProductHeading && linkedProducts.length ? [{
+                    afterHeading: inlineProductHeading, placement: "after-section" as const,
+                    content: <ArticleProductCards products={linkedProducts} label="Compare these dolls" />
+                  }] : []),
                   ...featureGuideMedia(article.slug),
                   ...(article.slug === "sex-doll-guide" ? [{ afterHeading: "Quick Answer", placement: "after-section" as const, content: <GuideShoppingLinks /> }] : []),
                   ...(guideProductGroups.length ? [{
@@ -164,6 +176,7 @@ export default async function LearnArticlePage({ params }: { params: Promise<{ s
               />
             )}
             <ArticleInfographic slug={article.slug} />
+            <ArticleProductCards products={linkedProducts} label="Explore these dolls" />
             <ArticleProductExamples module={productModule} />
             <ArticleActions slug={article.slug} />
           </article>

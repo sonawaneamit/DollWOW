@@ -12,8 +12,9 @@ status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
 hideReviewDate: true
+productCards: true
 featuredImage: "/images/learn/irontech-vs-wm-build-comparison.webp"
-featuredImageAlt: "Irontech versus WM cover with two actual brand catalog references, illustrating a complete-build comparison."
+featuredImageAlt: "Irontech Molly S44 ROS MAX and WM head 216 in their actual catalog photographs."
 publishedAt: "2026-11-11T10:00:00.000Z"
 ---
 

@@ -1,10 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { RotateCcw } from 'lucide-react';
-import { DisplayMoney } from '@/components/CurrencyProvider';
+import { CatalogListingCard } from '@/components/CatalogListingCard';
 import { filterFinderCards, finderHeight, finderMaterials, finderQuery, finderWeight, type FinderBounds, type FinderCard, type FinderRanges } from '@/lib/catalog/sizeWeightFinder';
 import styles from './SizeWeightFinder.module.css';
 
@@ -71,15 +70,7 @@ export function SizeWeightFinder({ rows, bounds, initial, initialPage = 1 }: {
     {!matches.length ? <div className="border-y border-border py-10"><h2 className="text-lg font-semibold">No matching listings</h2><p className="mt-2 text-text-dim">No dolls with a listed weight match these ranges.</p><Link href="/tools/doll-size-weight-finder" onClick={event => { event.preventDefault(); reset(); }} className="mt-4 inline-block min-h-11 text-accent underline">Reset filters</Link></div> :
       <ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 lg:grid-cols-4" aria-label="Matching dolls" data-finder-results>
         {visible.map(row => <li key={row.id} className="min-w-0" data-finder-card data-height={row.heightCm} data-weight={row.weightLb}>
-          <Link href={`/products/${row.handle}`} className="group block h-full rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-border bg-white">
-              {row.image ? <Image src={row.image} alt={row.title} fill sizes="(min-width: 1024px) 260px, 45vw" className="object-contain transition-transform group-hover:scale-[1.02]" /> : <div className="flex h-full items-center justify-center p-3 text-center text-sm text-text-dim">Photo unavailable</div>}
-            </div>
-            <h2 className="mt-3 break-words text-sm font-semibold leading-5 sm:text-base">{row.title}</h2>
-            <p className="mt-2 text-xs leading-5 text-text-dim sm:text-sm">{finderHeight(row.heightCm)}</p>
-            <p className="text-xs leading-5 text-text-dim sm:text-sm">{finderWeight(row.weightLb)}</p>
-            <p className="mt-2 text-sm font-semibold">{row.price ? <DisplayMoney amount={row.price} currencyCode={row.currency} /> : 'Price unavailable'}</p>
-          </Link>
+          <CatalogListingCard row={row} />
         </li>)}
       </ul>}
     {pages > 1 && <nav aria-label="Matching listing pages" className="mt-7 flex items-center justify-between gap-3 text-sm">

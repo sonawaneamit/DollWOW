@@ -33,6 +33,7 @@ export type LearnArticle = {
   reviewOwner: string;
   lastReviewed: string;
   hideReviewDate?: boolean;
+  productCards?: boolean;
   publishedAt?: string;
   featuredImage: string;
   featuredImageAlt: string;
@@ -188,8 +189,11 @@ function readArticle(filePath: string): LearnArticle {
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
     ...(frontmatter.hideReviewDate === 'true' ? { hideReviewDate: true } : {}),
+    ...(frontmatter.productCards === 'true' ? { productCards: true } : {}),
     publishedAt: frontmatter.publishedAt === undefined ? undefined : stringValue(frontmatter.publishedAt),
-    featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
+    featuredImage: frontmatter.productCards === 'true'
+      ? `/learn/${stringValue(frontmatter.slug)}/comparison-image`
+      : featuredImagePath(stringValue(frontmatter.slug)),
     featuredImageAlt: stringValue(frontmatter.featuredImageAlt) || featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),
     body: publicBody,
     excerpt: excerpt(publicBody)

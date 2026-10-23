@@ -25,13 +25,19 @@ describe('scoped customer-facing guide dates', () => {
     expect(dom.querySelectorAll('a').map(node => node.getAttribute('href'))).toContain('/products/sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7');
     expect(dom.querySelectorAll('a').map(node => node.getAttribute('href'))).toContain('/products/starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0');
   });
-  it.each(['irontech-vs-wm-build-comparison', 'md-vs-ido-doll-build-comparison', 'funwest-vs-dolls-castle-build-comparison'])('preserves the default review-date display and release gate for untouched %s', async slug => {
+  it.each(['irontech-vs-wm-build-comparison', 'md-vs-ido-doll-build-comparison', 'funwest-vs-dolls-castle-build-comparison'])('omits internal dates while preserving the future release gate for %s', async slug => {
     vi.useFakeTimers(); vi.stubGlobal('React', React);
     const article = getLearningArticle(slug, Date.parse('2030-01-01T00:00:00Z'))!;
-    expect(article.hideReviewDate).toBeUndefined();
+    expect(article.hideReviewDate).toBe(true);
     vi.setSystemTime(Date.parse(article.publishedAt!) - 1);
     await expect(Page({ params: Promise.resolve({ slug }) })).rejects.toThrow('NEXT_HTTP_ERROR_FALLBACK;404');
     vi.setSystemTime(Date.parse(article.publishedAt!));
+    expect(renderToStaticMarkup(await Page({ params: Promise.resolve({ slug }) }))).not.toContain('Last reviewed');
+  });
+  it('retains review dates on an unrelated guide', async () => {
+    vi.useFakeTimers(); vi.setSystemTime(new Date('2026-10-23T21:00:00Z')); vi.stubGlobal('React', React);
+    const slug = 'sex-doll-size-weight-guide';
+    expect(getLearningArticle(slug)?.hideReviewDate).toBeUndefined();
     expect(renderToStaticMarkup(await Page({ params: Promise.resolve({ slug }) }))).toContain('Last reviewed');
   });
 });
