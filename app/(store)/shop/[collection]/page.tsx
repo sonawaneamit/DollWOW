@@ -14,6 +14,8 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { storefrontFeatureProducts } from "@/lib/catalog/featured";
 import { TpeMaterialLabels } from "@/components/TpeMaterialLabels";
 import { CollectionDisclosure } from "@/components/CollectionDisclosure";
+import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
+import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 
 export async function generateMetadata({
   params,
@@ -107,6 +109,7 @@ export default async function CollectionPage({
           <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>
+      {contextualLinksEnabled(`/shop/${collection}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/shop/${collection}`, filtered)} /> : null}
       <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
         {comparisonRows.length ? (
           <div className="overflow-x-auto">
