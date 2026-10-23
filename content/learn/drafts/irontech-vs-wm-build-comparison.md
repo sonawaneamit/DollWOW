@@ -11,6 +11,7 @@ authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Expe
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
+hideReviewDate: true
 featuredImage: "/images/learn/irontech-vs-wm-build-comparison.webp"
 featuredImageAlt: "Irontech versus WM cover with two actual brand catalog references, illustrating a complete-build comparison."
 publishedAt: "2026-11-11T10:00:00.000Z"
@@ -24,23 +25,23 @@ Below, we'll compare two listings and work through common head and material labe
 
 ## Two similar-height listings
 
-Two DollWOW offers checked on 23 October 2026 show why the complete identity matters:
+These two similar-height dolls have different proportions, heads and included features:
 
 | Offer field | Irontech Molly | WM head 216 build |
 | --- | --- | --- |
 | Exact listed pairing | 166 cm 2.0 E-cup body, S44 ROS MAX head | 165 cm D-cup body, head 216 |
 | Listed material | Silicone | Silicone |
 | Bust / waist / hips | 85 / 59.6 / 98 cm | 85 / 59 / 93 cm |
-| Listed weight | 37.5 kg | 23 kg |
+| Listed weight | 37.5 kg body only | 23 kg |
 | Listed USD starting price | $3,199 | $2,300 |
 
-Molly's 37.5 kg is body only. The WM listing just says "Weight," without saying what's included. Ask for weights that cover the same parts before comparing how the dolls would handle.
+Molly's 37.5 kg body will need space for the head and your chosen accessories too. Ask us to help confirm the size and weight of the doll you'd like to order.
 
-Sources: [Molly's exact offer](/products/irontech-molly-166cm-2-0-s44-ros-max-silicone-doll) and [the WM head 216 offer](/products/wm-head-216-165cm-d-cup-silicone-companion-doll-62ttx). These dated listings aren't new factory measurements or quotes for matching builds. Prices are before selected extras, shipping, tax and checkout discounts; check the current offers when you're ready to order.
+Explore [Molly's exact offer](/products/irontech-molly-166cm-2-0-s44-ros-max-silicone-doll) and [the WM head 216 offer](/products/wm-head-216-165cm-d-cup-silicone-companion-doll-62ttx). Prices are before selected extras, shipping, tax and checkout discounts; check the current offers when you're ready to order.
 
-The $899 price gap covers different bodies, heads and included features, rather than the ROS MAX head alone. Subtracting 23 from 37.5 won't tell you which finished doll is easier to move, either. Adding Molly's separate head-weight range would still be an estimate, not a confirmed complete weight.
+The $899 price gap covers different bodies, heads and included features, rather than the ROS MAX head alone. The 23 kg WM doll and Molly's 37.5 kg body also deserve a closer look if handling is your priority. Ask us to confirm your chosen complete build before planning how you'll move it.
 
-Molly's listed head is ROS MAX; other menu choices aren't automatically interchangeable. For the WM doll, ask which head construction is supplied rather than looking for a generic equivalent to ROS MAX. Neither record establishes that this WM build uses S-TPE.
+Molly's head is ROS MAX; other menu choices aren't automatically interchangeable. For the WM doll, ask which head construction and body material come with your chosen build rather than assuming ROS MAX and S-TPE are equivalent options.
 
 ## Start with your everyday preferences
 
@@ -64,7 +65,7 @@ If your preferred bodies require different materials, keep the comparison but na
 | --- | --- | --- |
 | Identity | Exact body, head and version | Exact body, head and version |
 | Construction | Separate head and body materials | Separate head and body materials |
-| Handling | Weight, what it includes and dimensions | Weight covering the same parts |
+| Handling | Weight and dimensions of your chosen doll | Weight and dimensions of your chosen doll |
 | Included structure | Skeleton, hands and feet actually supplied | Skeleton, hands and feet actually supplied |
 | Appearance | Selected tone, finish, eyes and hair | Selected tone, finish, eyes and hair |
 | Extras | Only supported choices you would buy | Only supported choices you would buy |

@@ -3,7 +3,7 @@ title: "SE Doll vs Starpery: Compare These Builds, Not Just the Brand Names"
 slug: "se-doll-vs-starpery-build-comparison"
 primaryKeyword: "SE Doll vs Starpery"
 secondaryKeywords: ["SE Doll Starpery comparison", "TPE doll build comparison"]
-description: "Compare SE Alba A and Starpery Amy at 161 cm, with listed measurements, head and body materials, dated prices and practical shopping tips."
+description: "Compare SE Alba A and Starpery Amy at 161 cm by proportions, head and body materials, starting prices and the options that suit your home."
 category: "Brand Comparisons"
 author: "alex"
 authorDisplayName: "Alex"
@@ -11,6 +11,7 @@ authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Expe
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
+hideReviewDate: true
 featuredImage: "/images/learn/se-doll-vs-starpery-build-comparison.webp"
 featuredImageAlt: "SE Doll and Starpery comparison cover with two blank specification records."
 publishedAt: "2026-10-19T09:00:00.000Z"
@@ -31,11 +32,11 @@ Let's look at two DollWOW listings at 161 cm. They share a height, but their pro
 | Bust / waist / hips | 83 / 50 / 89 cm | 109 / 102 / 125 cm |
 | Listed weight | 35 kg / 77.2 lb | 52.5 kg / 115.7 lb |
 | Construction to examine | TPE listing with its selected head | Silicone-head listing with a TPE body in the default configuration |
-| Starting price, 16 October 2026 | US $1,899 | US $2,199 |
+| Starting price | US $1,899 | US $2,199 |
 
-Both listings simply say "Weight," without confirming whether the selected head and all fitted options are included. Ask for the same information on both dolls before using those figures to plan lifting or storage.
+Ask us to confirm your chosen doll's head, body and options before planning how you'll move and store it.
 
-Sources: [Alba A's product page](/products/sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7) and [Amy's product page](/products/starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0). These starting prices were checked on the date shown, before upgrades, shipping, tax and any checkout offer. Your selected build's current total is the one to budget for.
+Explore [Alba A's product page](/products/sedoll-alba-a-161cm-f-cup-tpe-companion-doll-11id7) and [Amy's product page](/products/starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0). Budget for your selected build's current total with upgrades, shipping, tax and any checkout offer.
 
 ## Read past the material label
 
@@ -49,7 +50,7 @@ The broader [materials guide](/learn/tpe-vs-silicone-sex-dolls) explains the mat
 
 The cup labels already hint at different silhouettes. The bust, waist and hip measurements and the galleries give you a much better feel for which you prefer: cup letters aren't standardized across factories.
 
-In these listings, Amy's waist is 52 cm larger and its hips 36 cm larger. Those differences describe the two bodies, rather than something the brand or material does on its own. The weight note above matters too: the gap between the listed numbers isn't a tested comparison of how the finished dolls handle.
+Amy's waist is 52 cm larger and its hips 36 cm larger. Those differences belong to these two bodies, rather than the brand or material alone. Choose the proportions and configuration that fit your home and preferences.
 
 For SE's supported lightweight bodies, check the specific upgrade rather than assuming that all SE models are lightweight or that every size saves the same amount. The [SE buying guide](/learn/se-doll-buying-guide) remains the broader brand reference.
 
@@ -65,17 +66,17 @@ If only one model supports your must-have feature, that may make the choice easi
 | --- | --- | --- |
 | Will the silhouettes occupy similar space? | Equal height but substantially different bust, waist and hips | A shared clothing size or storage footprint |
 | Am I comparing full silicone with TPE? | Amy's default is a silicone head with TPE body; Alba's default material is Regular TPE | A controlled full-silicone-versus-TPE result |
-| Is one easier for me to handle? | Two listed weights; ask what each includes | Weights for equivalent finished builds or a tested lifting recommendation |
+| Is one easier for me to handle? | Compare the two weights and proportions | The weight and dimensions of your chosen build |
 | Does the $300 gap settle value? | Difference between dated starting prices | Difference between equally configured or delivered totals |
 
 ## Start with what matters in your home
 
-We checked the listings again on 23 October 2026: Alba A still started at $1,899 and Amy at $2,199. That was a price check, not newly measured dimensions, a stock check or a quote for matching builds. Both are custom-made offers, rather than promises of warehouse dispatch.
+Alba A starts at $1,899 and Amy at $2,199 before your selected extras, shipping, tax and any checkout offer. Both are custom-made offers. Ask us about the current production and delivery options for your chosen build.
 
 | What matters to you | A helpful next check |
 | --- | --- |
 | A TPE body is essential | Record the chosen body material on both offers; Amy's silicone-head label alone is insufficient |
-| Moving and storing the doll is the main concern | Obtain weights with the same head/body definition and check the actual proportions; equal height is not an equal footprint |
+| Moving and storing the doll is the main concern | Confirm your chosen doll's weight, proportions and storage space; equal height is not an equal footprint |
 | A particular face or head function is essential | Keep Alba A's head 129 identity and Amy's selected head construction explicit; a head menu is not proof that every combination is supplied |
 | Your budget is close to the starting price | Write the supported selected options and delivered total first; an option label alone does not establish whether its charge is included |
 

@@ -3,7 +3,7 @@ title: "FunWest vs Dolls Castle: Comparing Two Real TPE-Body Builds"
 slug: "funwest-vs-dolls-castle-build-comparison"
 primaryKeyword: "FunWest vs Dolls Castle"
 secondaryKeywords: ["FunWest TPE doll", "Dolls Castle hybrid build"]
-description: "Compare FunWest Bea and Dolls Castle Nyla by size, listed weight, head and body materials, included features and dated prices."
+description: "Compare FunWest Bea and Dolls Castle Nyla by size, weight, head and body materials, included features and starting prices."
 category: "Buying Guides"
 author: "alex"
 authorDisplayName: "Alex"
@@ -11,6 +11,7 @@ authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Expe
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
+hideReviewDate: true
 featuredImage: "/images/learn/funwest-vs-dolls-castle-build-comparison.webp"
 featuredImageAlt: "Two blank build-comparison sheets beneath FunWest vs Dolls Castle."
 publishedAt: "2026-12-28T10:00:00.000Z"
@@ -24,7 +25,7 @@ If these two are on your shortlist, let's look at what the differences mean for 
 
 ## The two builds being compared
 
-These DollWOW listing details were checked on 16 October 2026. Prices are in USD for the base configurations, before shipping, tax and checkout discounts. They aren't totals for matching upgraded builds.
+Prices are in USD for the base configurations, before shipping, tax and checkout discounts. Add your preferred options to compare the builds you'd actually order.
 
 | Detail | FunWest Bea | Dolls Castle Nyla |
 | --- | --- | --- |
@@ -34,19 +35,19 @@ These DollWOW listing details were checked on 16 October 2026. Prices are in USD
 | Listed weight | 37 kg | 42.5 kg |
 | DollWOW base price | $1,349 | $1,999 |
 
-The factory references call these net weights, while the DollWOW listings simply say "Weight." Neither label confirms that both figures include the selected head and the same fitted options. Ask for matching weight details before deciding which doll will be easier to handle.
+Ask us to confirm your chosen doll's head, body and options before planning how you'll move and store it.
 
 See the actual [Bea configuration](/products/funwest-dolls-bea-162cm-f-cup-tpe-companion-doll-fwd041) and [Nyla configuration](/products/dolls-castle-nyla-183cm-e-cup-js061-hybrid-companion-doll). These are two examples to explore, not necessarily either brand's cheapest doll.
 
 ## Check the size difference first
 
-Nyla is 21 cm taller and 5.5 kg heavier by the listed figures. Those arithmetic differences are useful when planning space; they are not measured handling-test results.
+Nyla is 21 cm taller, and the listed weights differ by 5.5 kg. Give the proportions, space available and your preferred configuration a little attention before choosing.
 
 The factories' published tables also show different proportions. [FunWest's Bea page](https://funwestdoll.com/product/fwd041-006-european-bea/) lists an 80 cm bust, 55 cm waist and 85 cm hips. [Dolls Castle's Nyla page](https://dolls-castle.com/product/curvy-slim-tpe-sex-doll-183cm-nyla/) lists 83 cm, 57 cm and 97 cm respectively.
 
 Nyla isn't just the same shape made taller. Alongside the face you love, give the silhouette, storage space and clothing fit a little attention: this is the doll you'll be moving and caring for.
 
-One measurement needs clarification: Nyla's factory table gives 97 cm hips, while the checked DollWOW specification gives 97.5 cm. The factory's prose also rounds its weight to 42 kg, while its table and DollWOW list 42.5 kg. This comparison uses the table's weight and keeps each source's hip figure separate; confirm the current build's measurements before buying a tightly fitted garment or case.
+Nyla has hip figures of 97 cm and 97.5 cm, and weight figures of 42 kg and 42.5 kg. Ask us to confirm your selected build's measurements before buying a tightly fitted garment or case.
 
 ## Understand Nyla's hybrid construction
 
@@ -58,7 +59,7 @@ Similarly, compare the precise head version and written selections rather than i
 
 ## Compare the included configuration before upgrades
 
-Nyla's factory page identifies the EVO skeleton and articulated fingers in its included configuration, consistent with the checked DollWOW listing. That is not a reason to assume the two dolls' skeletons or hands perform identically.
+Nyla includes the EVO skeleton and articulated fingers. Check which hands and skeleton come with your preferred Bea configuration too, so each doll has the features you want.
 
 Start with the features you want, then check what's included and what costs extra. Nyla's included features shouldn't be charged twice, and a feature in a higher Bea preset may not come with her base build.
 
@@ -74,9 +75,9 @@ A supplier's direct promotion may differ from the DollWOW offer. Check that the 
 
 ## Check the current offer before you choose
 
-We checked the DollWOW listings again on 23 October 2026: Bea's base price was still $1,349 and Nyla's $1,999. Both are custom-made offers. We checked the displayed prices, rather than taking new factory measurements, confirming physical stock or guaranteeing delivery.
+Bea starts at $1,349 and Nyla at $1,999 before your selected extras, shipping, tax and any checkout offer. Both are custom-made offers. Ask us about the current production and delivery options for your chosen build.
 
-As the weight note above explains, the 5.5 kg gap comes from subtracting the listed figures, not weighing equivalent finished dolls. Matching weight details will give you a better idea of which you can comfortably handle.
+The 5.5 kg difference is worth considering alongside the proportions of each doll. Ask us to confirm your chosen configuration before planning how you'll move it.
 
 Keep Bea's head 006 and Nyla's JS061 pairing on your shortlist. A similar-looking head on another product may have different materials or functions from Nyla's silicone-head/TPE-body build. The hip-measurement discrepancy still needs clarification, too; averaging the two figures wouldn't tell us which is right.
 

@@ -11,6 +11,7 @@ authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Expe
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
+hideReviewDate: true
 featuredImage: "/images/learn/md-vs-ido-doll-build-comparison.webp"
 featuredImageAlt: "Blank green and gray comparison folios beneath MD vs IDO."
 publishedAt: "2026-12-21T10:00:00.000Z"
@@ -24,7 +25,7 @@ Let's look at the factory examples and two warehouse listings separately. They'r
 
 ## A warehouse doll has its own configuration
 
-The manufacturer's product page and a specific DollWOW warehouse listing are different offers. On 23 October 2026, these two DollWOW records provided a nearby-height, same-listed-country starting point:
+A factory order and a warehouse doll can have different configurations. These two United States offers are a useful place to start if you'd prefer a warehouse doll:
 
 | Offer field | MD Bonnie US listing | IDO WanZhi US listing |
 | --- | --- | --- |
@@ -35,11 +36,11 @@ The manufacturer's product page and a specific DollWOW warehouse listing are dif
 | Listed USD price | $1,399 | $2,599 |
 | Purchase structure | Fixed warehouse configuration | Fixed warehouse configuration |
 
-Bonnie's 41 kg is factory body weight; 53 kg is the packed weight. WanZhi's listing just says "Weight," without saying what's included. Those figures cover different things, so ask for the same weight details on both finished dolls before planning how to move them.
+Bonnie's body weighs 41 kg; the packed weight is 53 kg. Ask us to confirm the head, body, accessories and delivery details for your chosen doll before planning how you'll move it.
 
-Sources: [Bonnie's exact US offer](/products/md-bonnie-166cm-f-cup-silicone-companion-doll-in-stock-us) and [WanZhi's exact US offer](/products/ido-wanzhi-167cm-f-cup-silicone-companion-doll-in-stock-us). Both are United States warehouse offers, with stock checks dated 15 October, not fresh warehouse confirmations on 23 October. Ask us to confirm the exact unit, appearance and availability before planning around a dispatch date.
+Explore [Bonnie's exact US offer](/products/md-bonnie-166cm-f-cup-silicone-companion-doll-in-stock-us) and [WanZhi's exact US offer](/products/ido-wanzhi-167cm-f-cup-silicone-companion-doll-in-stock-us). Both are United States warehouse offers. Ask us to confirm the exact unit, appearance and availability before planning around a dispatch date.
 
-The $1,200 gap is between these dated offers, rather than a permanent price difference between the brands or a quote for equal custom builds. Both prices are before shipping, tax and any checkout discount. The weight note above is just as important when comparing them.
+The $1,200 gap is between these two offers, rather than a permanent price difference between the brands or a quote for equal custom builds. Both prices are before shipping, tax and any checkout discount. Choose the configuration and proportions that fit your plans.
 
 WanZhi's ID8H pairing is not the Tatiana-1 ID1(H) factory example below. Tatiana's face, specifications and package description don't tell us exactly how WanZhi is supplied. Bonnie's warehouse doll has its own fixed configuration too, even though the factory's Bonnie page offers choices.
 
@@ -47,7 +48,7 @@ WanZhi's ID8H pairing is not the Tatiana-1 ID1(H) factory example below. Tatiana
 
 MD's [official Bonnie M-37 listing](https://mddoll.com/index.php/product/md-doll-166bcm-5ft45-f-cup-bonnie-full-silicone-sex-doll-m-37/) identifies a 166(B) cm F-cup full-silicone build. IDO's [Tatiana-1 product page](https://www.idodoll.com/product/167cm-5ft57-f-cup-id1h-1-head/) identifies a 167 cm F-cup build with the ID1(H) head.
 
-These factory pages were checked on 16 October 2026. The heights are close, but that doesn't make the bodies a match. Cup labels aren't standardized across manufacturers, and one centimeter says little about width, depth or weight.
+The heights are close, but that doesn't make the bodies a match. Cup labels aren't standardized across manufacturers, and one centimeter says little about width, depth or weight.
 
 Write down full bust, waist and hip measurements before deciding that the silhouettes are comparable. Keep body and head identity together; changing the face on a similar-height body may change the rest of the comparison.
 
@@ -63,7 +64,7 @@ Your sheet should have one row for each feature that matters to you:
 | --- | --- |
 | Identity | Body version, head code and current production version |
 | Construction | Exact materials and standard feature package |
-| Handling | Weight figure, what it includes and dimensions |
+| Handling | Weight and dimensions of your chosen doll |
 | Appearance | Selected skin, makeup, eyes and hair |
 | Added functions | Supported selection and separate charge, if any |
 | Order and price | Stock or factory order, currency and configured total |
@@ -94,7 +95,7 @@ Keep shipping, taxes, duties where applicable and discounts separate from the co
 
 ## Decide by your priorities
 
-If the face is your first priority, confirm the exact head pairing and appearance before paying for extra construction features. If handling is the constraint, obtain the complete-weight definition and plan storage before deciding on finish.
+If the face is your first priority, confirm the exact head pairing and appearance before paying for extra construction features. If handling is the constraint, ask us about your chosen doll's weight and plan storage before deciding on finish.
 
 If neither candidate meets a must-have, widen the shortlist rather than forcing a brand winner. A fuller body you admire may still be the wrong practical fit, while a longer upgrade menu may offer nothing you need.
 
