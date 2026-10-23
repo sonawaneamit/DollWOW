@@ -32,7 +32,9 @@ describe("approved October Learning Center release calendar", () => {
         : scheduledAuthors[row.slug as keyof typeof scheduledAuthors];
       expect(expectedAuthor, row.slug).toBeDefined();
       expect(article?.author, row.slug).toBe(expectedAuthor);
-      expect(article?.featuredImage, row.slug).toBe(`/images/learn/${row.slug}.webp`);
+      const photoComparisons = ['se-doll-vs-starpery-build-comparison', 'irontech-vs-wm-build-comparison', 'md-vs-ido-doll-build-comparison', 'funwest-vs-dolls-castle-build-comparison'];
+      expect(article?.featuredImage, row.slug).toBe(photoComparisons.includes(row.slug)
+        ? `/learn/${row.slug}/comparison-image` : `/images/learn/${row.slug}.webp`);
       expect(article?.featuredImageAlt.length, row.slug).toBeGreaterThan(20);
       expect(buildArticleStructuredData(article!).datePublished, row.slug).toBe(row.publishedAt);
     }

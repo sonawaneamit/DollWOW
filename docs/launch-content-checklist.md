@@ -25,6 +25,11 @@ Use this as the review list before broad product publishing. The goal is to borr
 
 ## Imagery
 
+- [ ] New comparison and guide posts use `productCards: true` (the draft generator default).
+- [ ] Link every named doll to its exact approved public product. The shared renderer resolves these links to current catalog cards near the top, inline and at the end, with real photos, height, weight and price.
+- [ ] Check the two actual catalog photographs in the hero and matching social image. No blank frames, fabricated product imagery or private/held product examples.
+- [ ] Missing catalog measurements stay unknown; review the complete card and social-image route before publishing. Do not activate cards on unrelated existing posts as part of a narrow refresh.
+
 - [ ] Confirm launch images are supplier-authorized, DollWow-owned, or approved demo assets.
 - [ ] Keep product inspection images accurate and do not AI-alter actual product details.
 - [ ] Label AI-generated editorial or option illustrations internally by provenance.
