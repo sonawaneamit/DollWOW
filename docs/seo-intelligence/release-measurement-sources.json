@@ -799,7 +799,7 @@
       "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
     },
     "googleQueue": {
-      "updatedAt": "2026-10-23T21:13:04.595Z",
+      "updatedAt": "2026-10-23T21:50:24.618Z",
       "urls": [
         {
           "url": "https://dollwow.com/learn/sex-doll-reviews",
@@ -843,7 +843,15 @@
         },
         {
           "url": "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison",
-          "ticket": "DOL-227"
+          "ticket": "DOL-227",
+          "approvedRevisions": [
+            {
+              "commit": "9dcbe72016a007535ce703f508d848750bf9c37c",
+              "pullRequest": 184,
+              "releaseAt": "2026-10-23T21:45:00.947Z",
+              "change": "Approved isolated existingSE customer-copy cleanup;original19Oct publication preserved"
+            }
+          ]
         },
         {
           "url": "https://dollwow.com/learn/sex-doll-size-weight-guide",
@@ -2076,6 +2084,121 @@
       "count": 1,
       "urls": [
         "https://dollwow.com/tools/doll-size-weight-finder"
+      ],
+      "attempts": 1,
+      "httpStatus": 200,
+      "accepted": true,
+      "limits": "Notification accepted is not indexing/crawl confirmation. No Google write."
+    },
+    "reviewer": "In Review for Dolly;not self-closed"
+  },
+  "dol232SeCleanupRelease": {
+    "approval": "DOL23225c0e04f Dolly exactf5PASS/onepage goaheadunderMartinRemove;ec8onlyapprovedmainandactual23Octmetadata",
+    "deployment": {
+      "id": "dpl_4AcHuTHf3pQ5s296HzTpjhSRqN4R",
+      "url": "doll-1n1dcvyds-sonawaneamits-projects.vercel.app",
+      "commit": "9dcbe72016a007535ce703f508d848750bf9c37c",
+      "readyAt": 1792791900947,
+      "target": "production",
+      "readyState": "READY",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ],
+      "at": "2026-10-23T21:45:04.522Z"
+    },
+    "events": 1,
+    "gsc": {
+      "request": {
+        "startDate": "2026-09-24",
+        "endDate": "2026-10-21",
+        "type": "web",
+        "dataState": "final",
+        "dimensions": [
+          "page"
+        ],
+        "rowLimit": 25000,
+        "dimensionFilterGroups": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https://dollwow[.]com/learn/se-doll-vs-starpery-build-comparison$"
+              }
+            ]
+          }
+        ]
+      },
+      "capture": "2026-10-23T21:38:37.732Z",
+      "rows": 0
+    },
+    "ga4": {
+      "request": {
+        "dateRanges": [
+          {
+            "startDate": "2026-09-24",
+            "endDate": "2026-10-21"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "landingPage"
+          },
+          {
+            "name": "hostName"
+          }
+        ],
+        "metrics": [
+          {
+            "name": "sessions"
+          }
+        ],
+        "dimensionFilter": {
+          "andGroup": {
+            "expressions": [
+              {
+                "filter": {
+                  "fieldName": "hostName",
+                  "inListFilter": {
+                    "values": [
+                      "dollwow.com",
+                      "www.dollwow.com"
+                    ]
+                  }
+                }
+              },
+              {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "inListFilter": {
+                    "values": [
+                      "/learn/se-doll-vs-starpery-build-comparison"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "limit": "10000",
+        "returnPropertyQuota": true
+      },
+      "capture": "2026-10-23T21:38:39.072Z",
+      "rows": 0
+    },
+    "limits": "Same complete available24Sep-21Oct window; earlier23Oct property-date completeness evidence retained, not freshly queried. Earlier22Oct final-data gap remains. No customer/order data; GA4 production-host all-channel landing sessions, not organic sales. Missing/suppressed not zero; overlaps byline/Halloween releases, not causal attribution.",
+    "discovery": {
+      "at": "2026-10-23T21:50:24.613Z",
+      "approval": "DOL23225c0e04f Dolly verifiedf5b41461/explicitSE-only goahead underMartin21:38Remove;ec8onlyapprovedmainintegration/actual23Octmetadata",
+      "count": 1,
+      "urls": [
+        "https://dollwow.com/learn/se-doll-vs-starpery-build-comparison"
       ],
       "attempts": 1,
       "httpStatus": 200,
