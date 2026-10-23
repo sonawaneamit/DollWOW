@@ -3,6 +3,7 @@ import { sampleProducts } from '@/lib/data/sample-products';
 import { MD_MENU_TAG } from '@/lib/customization/ido-md';
 import type { Product } from '@/types/product';
 import { buildFinderRows, finderHeight, finderSummary, finderWeight } from '@/lib/catalog/sizeWeightFinder';
+import { productPublicTitle } from '@/lib/catalog/naming';
 
 function product(id: string, height = 165, weight: number | undefined = 80): Product {
   const p = structuredClone(sampleProducts[0]);
@@ -69,13 +70,14 @@ describe('size and weight Finder source contract', () => {
     expect(result.matches).toHaveLength(3); expect(result.missing).toBe(1);
     expect(result.ranges[0]).toEqual({ basis: 'unspecified', count: 2, minLb: 60, maxLb: 100 });
   });
-  it('does not include product images or private measurement records in output', () => {
+  it('includes only protected image paths and display price fields, not private measurement records', () => {
     const { rows } = buildFinderRows([product('a')]);
-    expect(Object.keys(rows[0]).sort()).toEqual(['basis', 'handle', 'heightCm', 'id', 'material', 'title', 'weightLb']);
+    expect(Object.keys(rows[0]).sort()).toEqual(['basis', 'currency', 'handle', 'heightCm', 'id', 'image', 'material', 'price', 'title', 'weightLb']);
+    expect(rows[0]).not.toHaveProperty('measurements');
   });
   it('keeps the full listing title so repeated first names remain distinguishable', () => {
     const p = product('a'); p.title = 'Example Brand Alice 165cm TPE'; p.extended.displayName = 'Alice';
-    expect(buildFinderRows([p]).rows[0].title).toBe('Example Brand Alice 165cm TPE');
+    expect(buildFinderRows([p]).rows[0].title).toBe(productPublicTitle(p));
   });
   it('converts both unit systems without changing input values', () => {
     expect(finderWeight(72.8)).toBe('33.0 kg / 72.8 lb');
