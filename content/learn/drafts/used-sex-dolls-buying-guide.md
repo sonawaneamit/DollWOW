@@ -5,9 +5,9 @@ primaryKeyword: "used sex dolls"
 secondaryKeywords: ["used sexdolls", "second hand sex doll", "pre owned sex doll", "should I buy a used sex doll"]
 description: "Compare used, pre-owned, returned, display, and liquidation sex dolls with a practical inspection, price, hygiene, condition, identity, and support checklist."
 category: "Scams And Buyer Protection"
-author: "jesse"
-authorDisplayName: "Jesse"
-authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
 reviewOwner: "Jesse, Licensed Sexologist and DollWow Intimacy Education Editor"
 lastReviewed: "2026-08-12"
@@ -15,7 +15,7 @@ lastReviewed: "2026-08-12"
 
 # Used Sex Dolls: What To Check Before You Buy
 
-By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
+By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
 ## Quick Answer
 

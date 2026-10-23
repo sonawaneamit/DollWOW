@@ -5,7 +5,9 @@ primaryKeyword: "sex doll option prices"
 secondaryKeywords: ["Black Friday doll deals", "compare doll sale prices"]
 description: "Compare seasonal doll offers using the same body, head, options, stock location and delivered total, with a hypothetical worksheet rather than invented deals."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

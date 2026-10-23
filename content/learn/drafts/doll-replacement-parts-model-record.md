@@ -5,7 +5,9 @@ primaryKeyword: "doll replacement parts model record"
 secondaryKeywords: ["replacement doll parts", "doll connector record"]
 description: "Keep a printable model and component record for replacement heads, connectors, controllers and accessories without assuming universal compatibility."
 category: "Materials And Care"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

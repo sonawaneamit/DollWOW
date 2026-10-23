@@ -9,8 +9,9 @@ author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
+publishedAt: "2026-08-11T00:00:00.000Z"
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-10-23"
 ---
 
 # Sex Doll Skeleton Guide: Standard, Flexible, And EVO Options
@@ -123,6 +124,14 @@ Before paying for an advanced option, request:
 
 Do not combine claims from different brands. A search result about one manufacturer's EVO system is not proof of what another factory supplies.
 
+### Irontech EVO: What It Changes
+
+With Irontech EVO, think about two jobs: getting the doll into a pose and keeping it there. Its geared knees and moving shoulders change how you position the body, while the selected joint resistance affects how easily it moves and holds a pose. Easier movement doesn't make the doll lighter to lift.
+
+Hands and toes are separate choices. Don't assume an EVO body includes either upgrade; toe options also have body-specific limits. Check what's included on your [Irontech listing](/brands/irontech-dolls), especially if hand or toe movement is important to you.
+
+Use gentle, supported movements and stop at resistance. A published joint angle isn't a goal to push toward: the material around the joint limits the finished doll's movement. Irontech explains the separate systems in its [body, hand and toe guide](https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/). Plan a supported resting position with the [storage guide](/learn/sex-doll-storage), too.
+
 ## Pose Range Versus Practical Ownership
 
 The most advanced-sounding skeleton is not automatically the best choice.
@@ -222,7 +231,7 @@ If movement changes unexpectedly:
 4. Find the product, body, and skeleton specification in the order record.
 5. Contact DollWow before opening the body or attempting an internal repair.
 
-Care 365 and Lifetime Repair Concierge can help eligible DollWow owners identify the correct support path under the published terms. The Doll Passport is intended to keep the build specification and support history together.
+Care for Life and Lifetime Repair Concierge can help eligible DollWow owners identify the correct support path under the published terms. The Doll Passport is intended to keep the build specification and support history together.
 
 ## Ready-To-Ship And Made-To-Order Differences
 

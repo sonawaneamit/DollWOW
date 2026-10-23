@@ -5,7 +5,9 @@ primaryKeyword: "DollVue"
 secondaryKeywords: ["DollVue appearance preview", "Irontech Dark customization"]
 description: "Read Dark's original photo and one historical DollVue AI preview labelled Medium Blonde hair and Amber eyes, not a promise of current orderable options."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

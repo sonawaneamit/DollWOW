@@ -105,6 +105,7 @@ export const config = {
     "/faq",
     "/factory-photos",
     "/help-me-choose",
+    "/tools/doll-size-weight-finder",
     "/how-ordering-works",
     "/learn",
     "/learn/:path*",

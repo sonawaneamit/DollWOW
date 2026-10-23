@@ -90,6 +90,14 @@ const staticRecords: AgentKnowledgeRecord[] = [
     title: "Returns",
     url: `${siteUrl}/returns`,
     summary: "Current DollWow return and resolution terms."
+  },
+  {
+    id: "doll-size-weight-finder",
+    type: "tool",
+    title: "Doll Size & Weight Finder",
+    url: `${siteUrl}/tools/doll-size-weight-finder`,
+    markdownUrl: `${siteUrl}/markdown/tools/doll-size-weight-finder`,
+    summary: "Find full dolls 140 cm and taller by height and weight ranges, with optional material filters, product photos and prices."
   }
 ];
 

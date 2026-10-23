@@ -5,7 +5,9 @@ primaryKeyword: "sex doll eye color"
 secondaryKeywords: ["movable doll eyes", "doll eye compatibility"]
 description: "Separate eye colour, gaze adjustment, replaceability and eyelid movement, then check the exact head before choosing or changing an eye option."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
