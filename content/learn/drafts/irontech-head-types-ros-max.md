@@ -20,6 +20,10 @@ publishedAt: "2026-10-21T09:00:00.000Z"
 
 ROS and ROS MAX are Irontech head designs. ROS MAX updates the earlier ROS design, with changes around the mouth, jaw and eyes. Start with the face you like, then choose the head version and extras you want.
 
+## Standard Silicone Heads
+
+For standard silicone choices, start by comparing hard and soft silicone. Irontech's [head-options demonstration](https://www.irontechdoll.com/sex-doll-options-functions/) shows how the two materials respond to touch, along with eye and makeup details. The video doesn't identify individual head codes, so use it to compare materials rather than to pick a face.
+
 ## What ROS MAX Changes
 
 Irontech's [ROS MAX overview](https://www.irontechdoll.com/ros-silicone-head/) explains the updated construction. Its [ROS MAX head listing](https://www.irontechdoll.com/product/sex-doll-head-ros-max/) shows the silicone heads and available options.
