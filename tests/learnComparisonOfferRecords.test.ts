@@ -18,7 +18,7 @@ const cases = [
   { slug: "md-vs-ido-doll-build-comparison", date: "2026-12-21T10:00:00.000Z",
     facts: ["M37, 166 cm F-cup", "ID8H, 167 cm F-cup", "$1,399", "$2,599", "not the Tatiana-1", "Bonnie's body weighs 41 kg", "packed weight is 53 kg", "39 kg", "availability before planning around a dispatch date"] },
   { slug: "funwest-vs-dolls-castle-build-comparison", date: "2026-12-28T10:00:00.000Z",
-    facts: ["Bea starts at $1,349", "Nyla at $1,999", "head 006", "37 kg", "42.5 kg", "97 cm and 97.5 cm", "hip-measurement discrepancy"] }
+    facts: ["Bea starts at $1,349", "Nyla at $1,999", "head 006", "37.2 kg / 82 lb", "5.3 kg", "42.5 kg", "97 cm and 97.5 cm", "hip-measurement discrepancy"] }
 ];
 
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });

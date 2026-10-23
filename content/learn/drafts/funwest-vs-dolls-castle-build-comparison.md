@@ -33,7 +33,7 @@ Prices are in USD for the base configurations, before shipping, tax and checkout
 | Identity | FWD041, head 006 | 183 cm E-cup, JS061 head |
 | Body material | TPE | TPE with silicone head |
 | Listed height | 162 cm | 183 cm |
-| Listed weight | 37 kg | 42.5 kg |
+| Listed weight | 37.2 kg / 82 lb | 42.5 kg |
 | DollWOW base price | $1,349 | $1,999 |
 
 Ask us to confirm your chosen doll's head, body and options before planning how you'll move and store it.
@@ -42,7 +42,7 @@ See the actual [Bea configuration](/products/funwest-dolls-bea-162cm-f-cup-tpe-c
 
 ## Check the size difference first
 
-Nyla is 21 cm taller, and the listed weights differ by 5.5 kg. Give the proportions, space available and your preferred configuration a little attention before choosing.
+Nyla is 21 cm taller, and the listed weights differ by 5.3 kg. Give the proportions, space available and your preferred configuration a little attention before choosing.
 
 The factories' published tables also show different proportions. [FunWest's Bea page](https://funwestdoll.com/product/fwd041-006-european-bea/) lists an 80 cm bust, 55 cm waist and 85 cm hips. [Dolls Castle's Nyla page](https://dolls-castle.com/product/curvy-slim-tpe-sex-doll-183cm-nyla/) lists 83 cm, 57 cm and 97 cm respectively.
 
