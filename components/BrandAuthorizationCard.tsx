@@ -18,6 +18,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
 
   const label = catalogBrand?.label ?? authorization?.brand ?? brand ?? "this brand";
   const certificateIssuer = authorization?.certificateIssuer ?? label;
+  const retailerName = variant === "brand" && ["erovenus", "climax"].includes(catalogBrand?.value ?? "") ? "DollWOW" : "DollWow";
   const relatedBrandNote = catalogBrand?.value ? authorization?.relatedBrandNotes?.[catalogBrand.value] : undefined;
   const hasCertificate = authorization?.status === "certificate" && authorization.certificateSrc && authorization.certificatePreviewSrc;
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
@@ -33,7 +34,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
         <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className={`group relative block border-b border-border bg-[#f8efe8] sm:border-b-0 sm:border-r ${compact ? "min-h-28" : "min-h-40"}`} aria-label={`Open ${label} authorization certificate`}>
           <Image
             src={authorization.certificatePreviewSrc!}
-            alt={`${label} certification authorizing DollWow as a retailer`}
+            alt={`${label} certification authorizing ${retailerName} as a retailer`}
             fill
             sizes={variant === "brand" ? "220px" : "96px"}
             className="object-contain p-3 transition duration-300 group-hover:scale-[1.025]"
@@ -64,7 +65,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
           {isCertificatePending
             ? authorization.certificatePendingStatement
             : hasCertificate
-            ? relatedBrandNote ?? `DollWow is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}.`
+            ? relatedBrandNote ?? `${retailerName} is an approved seller for ${label}. View the authorization certificate shared by ${certificateIssuer}${certificateIssuer.endsWith(".") ? "" : "."}`
             : isWrittenConfirmation
               ? `DollWow is an approved seller for ${label}. Brand confirmation is on file.`
               : `DollWow is an approved seller for ${label}.`}
