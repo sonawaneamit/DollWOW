@@ -12,7 +12,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   return {
     title: 'Doll Size & Weight Finder',
     description: 'Compare observed listed weights for full dolls 140cm and taller by height and material, with missing data and body-only weights shown separately.',
-    alternates: { canonical: '/tools/doll-size-weight-finder' },
+    alternates: { canonical: '/tools/doll-size-weight-finder', types: { 'text/markdown': '/markdown/tools/doll-size-weight-finder' } },
     robots: { index: Object.keys(params).length === 0, follow: true },
   };
 }
@@ -36,9 +36,18 @@ export default async function SizeWeightFinder({ searchParams }: { searchParams:
   const visibleMatches = summary.matches.slice((page - 1) * 24, page * 24);
   const pageHref = (value: number) => `/tools/doll-size-weight-finder?${new URLSearchParams({ height: String(height), material, page: String(value) })}`;
   const checked = catalog.checkedAt;
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dollwow.com').replace(/\/$/, '');
+  const schema = {
+    '@context': 'https://schema.org', '@type': 'WebApplication',
+    name: 'Doll Size & Weight Finder', url: `${siteUrl}/tools/doll-size-weight-finder`,
+    applicationCategory: 'ShoppingApplication', operatingSystem: 'Web',
+    description: 'Compare dated listing weights for full dolls 140 cm and taller at an exact height and material. Missing and body-only weights are shown separately; weights are not estimated.',
+    publisher: { '@type': 'Organization', name: 'DollWOW', url: siteUrl },
+  };
   const basisLabel = (basis: string) => basis === 'factory-body-only' ? 'Factory body only' : 'Listed weight: basis unspecified';
   return (
     <section className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
       <div className="flex items-center gap-3 text-accent"><Ruler className="h-6 w-6" aria-hidden="true" /><p className="text-sm">Size &amp; Weight</p></div>
       <h1 className="mt-3 text-3xl font-semibold text-text sm:text-4xl">Doll Size &amp; Weight Finder</h1>
       <p className="mt-4 max-w-3xl leading-7 text-text-dim">Height alone does not determine weight. Compare observed listing weights for full dolls 140 cm and taller. Body-only weights stay separate; missing weights are never estimated.</p>

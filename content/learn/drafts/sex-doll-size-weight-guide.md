@@ -23,6 +23,8 @@ In a dated review of `2,615` current full-size DollWow listings with usable heig
 
 Those figures describe the DollWow catalog on August 12, 2026. They are not a universal industry average, and they do not mean a doll near the median will be easy for you to move. Shape, rigidity, grip, stairs, doorways, storage position, and your own lifting ability matter alongside the number on the product page.
 
+For a dated lookup at an exact height and material, use the [Doll Size & Weight Finder](/tools/doll-size-weight-finder). It keeps missing and body-only weights separate rather than estimating a total.
+
 ## What Current DollWow Listings Show
 
 The clearest pattern is not that taller always means heavier. The `160-164 cm / 5 ft 3 in-5 ft 5 in` band contains the largest share of the analyzed listings, but substantial weights appear across several height bands. Some compact full-size bodies are dense, while selected larger bodies use weight-reduction construction.

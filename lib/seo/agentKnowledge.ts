@@ -14,6 +14,14 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").repl
 
 const staticRecords: AgentKnowledgeRecord[] = [
   {
+    id: "doll-size-weight-finder",
+    type: "tool",
+    title: "Doll Size & Weight Finder",
+    url: `${siteUrl}/tools/doll-size-weight-finder`,
+    markdownUrl: `${siteUrl}/markdown/tools/doll-size-weight-finder`,
+    summary: "Compare dated listing weights at an exact height and material for full dolls 140 cm and taller. Missing weights and body-only measurements stay separate; no estimated weights."
+  },
+  {
     id: "home",
     type: "core",
     title: "DollWow",

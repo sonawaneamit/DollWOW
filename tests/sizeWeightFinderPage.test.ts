@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { createElement, type ReactNode } from 'react';
 import { sampleProducts } from '@/lib/data/sample-products';
 import type { Product } from '@/types/product';
+import { parse } from 'node-html-parser';
 const { load } = vi.hoisted(() => ({ load: vi.fn() }));
 vi.mock('@/lib/shopify/storefront', () => ({ getSeoCatalogProducts: load }));
 vi.mock('next/cache', () => ({ unstable_cache: (fn: unknown) => fn }));
@@ -25,6 +26,10 @@ describe('Finder server-rendered page', () => {
     expect(html).toContain('Listed weight: basis unspecified'); expect(html).toContain('36.3 kg / 80.0 lb');
     expect(html).toContain('/products/finder-2'); expect(html).not.toContain('<img');
     expect(load).toHaveBeenCalledWith({ first: 5000, strict: true, revalidate: 0 });
+    const schema = JSON.parse(parse(html).querySelector('script[type="application/ld+json"]')!.text);
+    expect(schema).toMatchObject({ '@type': 'WebApplication', name: 'Doll Size & Weight Finder', applicationCategory: 'ShoppingApplication' });
+    expect(schema).not.toHaveProperty('aggregateRating');
+    expect(schema).not.toHaveProperty('offers');
   });
   it('paginates matching links and keeps selection in each link', async () => {
     load.mockResolvedValue(Array.from({ length: 25 }, (_, index) => fixture(index)));
@@ -49,6 +54,7 @@ describe('Finder server-rendered page', () => {
     const root = await generateMetadata({ searchParams: Promise.resolve({}) });
     const query = await generateMetadata({ searchParams: Promise.resolve({ height: '165' }) });
     expect(root.alternates?.canonical).toBe('/tools/doll-size-weight-finder');
+    expect(root.alternates?.types).toEqual({ 'text/markdown': '/markdown/tools/doll-size-weight-finder' });
     expect(root.robots).toEqual({ index: true, follow: true });
     expect(query.robots).toEqual({ index: false, follow: true });
   });
