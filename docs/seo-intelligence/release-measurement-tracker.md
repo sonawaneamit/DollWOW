@@ -1,5 +1,29 @@
 # Release Measurement Tracker
 
+## 23 October Byline Release
+
+DOL-227 / PR170 was verified live on production commit
+`b9e86504368b1d87553c81fececaf91f44c3c86a`, deployment
+`dpl_6i64QuqkujVSTC1zLAF58eUbmLTf`, READY at
+2026-10-23T09:44:32.360Z. Eleven changed, already-visible guides add eleven
+URL-event rows; all previous 3,538 rows remain byte/value preserved, for 3,549
+total rows. These are author-attribution changes, not new factual reviews.
+
+All eleven live bylines/profile links/Article authors and canonicals match;
+the three requested Alex corrections were also checked on mobile. Forty-one
+other changed guides remain 404 until their original scheduled instants and
+are recorded only as pending visibility in the source manifest. They have no
+invented current release row, first-publication baseline or growth result.
+
+The same historical 22 September-19 October window returned three GSC page
+rows and three GA4 host/landing rows covering two distinct landing paths.
+Missing values remain blank, not zero; the 20-22 October gap and all-channel
+GA4 scope remain explicit. Google indexing/revised-crawl status was not newly
+inspected. Review dates for these eleven events are 20 November, 18 December
+and 15 January at 09:44:32.360Z. Future scheduled observations begin no sooner
+than max(actual deployment, original publication instant), after visibility
+is verified. No calendar dates or monitoring automations changed.
+
 Owner: Codex. Reviewer: Dolly / Martin. DOL-224, 22 October 2026.
 
 The authoritative ledger is [release-measurement-tracker.csv](release-measurement-tracker.csv).

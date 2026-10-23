@@ -381,5 +381,329 @@
     "beforeAfterAttachmentId": "c3d433a3-3a1e-4f7a-94f3-b8c9ba7b9a55",
     "limits": "Historical22Sep-19Oct window;20-22Oct gap; missing/suppressed rows are not zero. Only five live source samples, not full source HTTP crawl. No individual Google indexing inspection or organic sales attribution.",
     "privateEvidence": "data/exports/dol-225-2026-10-23; no credentials, customers, orders or private capabilities in tracked data"
+  },
+  "dol227BylineRelease": {
+    "deployment": {
+      "id": "dpl_6i64QuqkujVSTC1zLAF58eUbmLTf",
+      "url": "doll-eo6tsjmlj-sonawaneamits-projects.vercel.app",
+      "readyAt": 1792748672360,
+      "createdAt": 1792748517796,
+      "gitCommit": "b9e86504368b1d87553c81fececaf91f44c3c86a",
+      "target": "production",
+      "readyState": "READY",
+      "alias": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-sonawaneamits-projects.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ]
+    },
+    "liveVerifiedAt": "2026-10-23T09:46:23.186Z",
+    "releasedChangedGuides": 11,
+    "futureChangesNotYetPublished": [
+      {
+        "url": "https://dollwow.com/learn/compare-doll-sale-prices-black-friday-2026",
+        "originalPublishedAt": "2026-11-18T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/custom-doll-order-review-worksheet",
+        "originalPublishedAt": "2026-12-27T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-aftercare-replacement-worksheet",
+        "originalPublishedAt": "2027-01-03T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-annual-ownership-budget",
+        "originalPublishedAt": "2026-11-06T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-body-painting-options",
+        "originalPublishedAt": "2026-10-25T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-clothing-dye-transfer-prevention",
+        "originalPublishedAt": "2026-11-20T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-eye-types-compatibility",
+        "originalPublishedAt": "2026-11-22T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-head-body-skin-tone-match",
+        "originalPublishedAt": "2026-12-09T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-heating-breathing-feature-checks",
+        "originalPublishedAt": "2026-12-06T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-joint-stiffness-on-arrival",
+        "originalPublishedAt": "2026-11-27T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-net-vs-shipping-weight-data",
+        "originalPublishedAt": "2026-11-13T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-order-digital-privacy",
+        "originalPublishedAt": "2026-12-25T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-preset-prices-worked-example",
+        "originalPublishedAt": "2027-01-01T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-price-weight-benchmark",
+        "originalPublishedAt": "2026-12-30T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-product-photo-included-accessories",
+        "originalPublishedAt": "2026-12-18T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-replacement-head-compatibility",
+        "originalPublishedAt": "2026-10-30T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-replacement-parts-model-record",
+        "originalPublishedAt": "2026-12-13T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-room-storage-fit-worksheet",
+        "originalPublishedAt": "2026-12-20T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/doll-wig-cap-size-fit",
+        "originalPublishedAt": "2026-11-01T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/dolls-castle-buying-guide",
+        "originalPublishedAt": "2026-11-30T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/dollvue-two-looks-worked-example",
+        "originalPublishedAt": "2026-11-08T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/factory-upgrades-2026-model-support",
+        "originalPublishedAt": "2026-11-29T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/fanreal-doll-buying-guide",
+        "originalPublishedAt": "2026-11-16T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/fixed-vs-movable-jaw-doll-heads",
+        "originalPublishedAt": "2026-11-25T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/full-size-tpe-vs-silicone-torso",
+        "originalPublishedAt": "2026-12-02T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/funwest-doll-buying-guide",
+        "originalPublishedAt": "2026-11-02T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/funwest-vs-dolls-castle-build-comparison",
+        "originalPublishedAt": "2026-12-28T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/holiday-doll-delivery-checklist-2026",
+        "originalPublishedAt": "2026-11-15T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/hybrid-vs-full-silicone-builds",
+        "originalPublishedAt": "2026-12-16T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/ido-doll-buying-guide",
+        "originalPublishedAt": "2026-11-09T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/irontech-vs-wm-build-comparison",
+        "originalPublishedAt": "2026-11-11T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/lightweight-tpe-vs-silicone-model-data",
+        "originalPublishedAt": "2026-12-23T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/lusandy-doll-buying-guide",
+        "originalPublishedAt": "2026-12-07T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/male-doll-specification-sheet",
+        "originalPublishedAt": "2026-12-11T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/md-doll-buying-guide",
+        "originalPublishedAt": "2026-10-26T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/md-vs-ido-doll-build-comparison",
+        "originalPublishedAt": "2026-12-21T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/reading-doll-material-test-reports",
+        "originalPublishedAt": "2026-12-04T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/real-lady-doll-buying-guide",
+        "originalPublishedAt": "2026-11-23T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/top-fire-doll-buying-guide",
+        "originalPublishedAt": "2026-12-14T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/torso-with-head-vs-headless",
+        "originalPublishedAt": "2026-11-04T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      },
+      {
+        "url": "https://dollwow.com/learn/wm-stpe-vs-tpe",
+        "originalPublishedAt": "2026-10-28T10:00:00.000Z",
+        "state": "404 verified; not a current release row"
+      }
+    ],
+    "futureMeasurementRule": "Earliest visibility=max(actual deployment,original publishedAt); verify visibility before recording release/assessment. No first-publication baseline invented.",
+    "gsc": {
+      "at": "2026-10-23T09:44:05.783Z",
+      "request": {
+        "startDate": "2026-09-22",
+        "endDate": "2026-10-19",
+        "type": "web",
+        "dataState": "final",
+        "dimensions": [
+          "page"
+        ],
+        "rowLimit": 25000,
+        "dimensionFilterGroups": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https://dollwow[.]com(/learn/doll-clothing-measurements-fit|/learn/doll-delivery-damage-evidence|/learn/factory-photo-review-worked-example|/learn/irontech-head-types-ros-max|/learn/se-doll-lstpe-lightweight-upgrade|/learn/se-doll-vs-starpery-build-comparison|/learn/sex-doll-reviews|/learn/sex-doll-size-weight-guide|/learn/tpe-vs-silicone-sex-dolls|/learn/used-sex-dolls|/learn/warehouse-stock-vs-custom-made)$"
+              }
+            ]
+          }
+        ]
+      },
+      "rowsReturned": 3,
+      "matchedUrls": 3
+    },
+    "ga4": {
+      "at": "2026-10-23T09:44:07.668Z",
+      "request": {
+        "dateRanges": [
+          {
+            "startDate": "2026-09-22",
+            "endDate": "2026-10-19"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "landingPage"
+          },
+          {
+            "name": "hostName"
+          }
+        ],
+        "metrics": [
+          {
+            "name": "sessions"
+          }
+        ],
+        "dimensionFilter": {
+          "andGroup": {
+            "expressions": [
+              {
+                "filter": {
+                  "fieldName": "hostName",
+                  "inListFilter": {
+                    "values": [
+                      "dollwow.com",
+                      "www.dollwow.com"
+                    ]
+                  }
+                }
+              },
+              {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "inListFilter": {
+                    "values": [
+                      "/learn/doll-clothing-measurements-fit",
+                      "/learn/doll-delivery-damage-evidence",
+                      "/learn/factory-photo-review-worked-example",
+                      "/learn/irontech-head-types-ros-max",
+                      "/learn/se-doll-lstpe-lightweight-upgrade",
+                      "/learn/se-doll-vs-starpery-build-comparison",
+                      "/learn/sex-doll-reviews",
+                      "/learn/sex-doll-size-weight-guide",
+                      "/learn/tpe-vs-silicone-sex-dolls",
+                      "/learn/used-sex-dolls",
+                      "/learn/warehouse-stock-vs-custom-made"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "limit": "10000",
+        "returnPropertyQuota": true
+      },
+      "rowsReturned": 3,
+      "matchedUrls": 2,
+      "scope": "Production landing sessions across all channels; not organic sales"
+    },
+    "verification": "11 live HTML author/schema/canonical checks;41future404;3mobile screenshots; prior3538ledgerrows byte/value preserved.",
+    "limits": "No new Google crawl/indexing/credential verification or causal growth claim; historical baseline gap20-22Oct. Source/Article rendering tested before release55focusedtests."
   }
 }
