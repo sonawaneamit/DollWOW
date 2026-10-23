@@ -5,7 +5,9 @@ primaryKeyword: "sex doll option prices"
 secondaryKeywords: ["doll preset prices", "Dolls Castle Nyla options"]
 description: "Compare Nyla's real Starter, Enthusiast and Collector configurations, their listed USD totals and what each step adds before checkout charges or discounts."
 category: "Customization"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

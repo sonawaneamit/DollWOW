@@ -5,7 +5,9 @@ primaryKeyword: "warehouse stock vs custom-made dolls"
 secondaryKeywords: ["ready to ship doll availability", "made to order dolls"]
 description: "Audit one doll listing by URL, SKU, warehouse region and fixed configuration, then record what needs confirmation before comparing it with a custom-made order."
 category: "Shipping And Privacy"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

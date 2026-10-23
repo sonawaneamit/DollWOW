@@ -5,9 +5,9 @@ primaryKeyword: "tpe vs silicone sex dolls"
 secondaryKeywords: ["tpe vs silicone", "silicone vs tpe", "tpe vs silicone difference", "tpe material vs silicone", "silicone or tpe sex doll"]
 description: "Compare TPE vs silicone sex dolls by feel, price, care, weight, durability, staining, repair, and hybrid construction before you buy."
 category: "Materials And Care"
-author: "jesse"
-authorDisplayName: "Jesse"
-authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
 reviewOwner: catalog
 lastReviewed: "2026-08-11"
@@ -15,7 +15,7 @@ lastReviewed: "2026-08-11"
 
 # TPE vs Silicone Sex Dolls: Which Material Should You Choose?
 
-By Jesse, Licensed Sexologist and DollWow Intimacy Education Editor
+By Alex, Doll Collector and DollWow Product Educator with 20+ Years of Experience
 
 ## Quick Answer
 

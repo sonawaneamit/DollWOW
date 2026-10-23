@@ -5,7 +5,9 @@ primaryKeyword: "sex doll color transfer"
 secondaryKeywords: ["doll clothing dye transfer", "prevent doll clothing stains"]
 description: "Choose clothing and storage contact materials with TPE, silicone, painted finishes and hybrid builds in mind, without relying on a universal stain-removal recipe."
 category: "Materials And Care"
-author: "editorial"
+author: "jesse"
+authorDisplayName: "Jesse"
+authorTitle: "Licensed Sexologist and DollWow Intimacy Education Editor"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

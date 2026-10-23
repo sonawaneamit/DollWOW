@@ -5,7 +5,9 @@ primaryKeyword: "factory photo review"
 secondaryKeywords: ["sex doll approval photos", "factory photo quality checks"]
 description: "Follow three anonymized factory-photo examples to see what a wide view, closer photograph and appearance reference can help you check before shipping."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"

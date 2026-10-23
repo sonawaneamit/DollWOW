@@ -5,7 +5,9 @@ primaryKeyword: "torso with head vs headless"
 secondaryKeywords: ["Climax Renata torso", "doll torso weight comparison"]
 description: "Read Renata's dated factory figures and separate net from packed weight, with head/storage questions and an explicit unresolved retail-weight caveat."
 category: "Buying Guides"
-author: "editorial"
+author: "alex"
+authorDisplayName: "Alex"
+authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: "scheduled"
 reviewOwner: catalog
 lastReviewed: "2026-10-16"
