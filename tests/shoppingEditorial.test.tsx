@@ -14,7 +14,7 @@ vi.mock("@/components/ProductGrid", () => ({ ProductGrid: () => <div>Product gri
 vi.mock("@/components/ProductFilters", () => ({ ProductFilters: () => <div>Filters</div> }));
 afterEach(() => vi.unstubAllEnvs());
 
-const collections = ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom"];
+const collections = ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom", "cheap-sex-dolls", "lightweight-sex-dolls", "new-sex-dolls"];
 const banned = /4 to 6 hours|collection membership|not a universal|does not prove|not a promise|Human Build Check|Doll Passport|Lifetime Repair Concierge|Arrival-Right Guarantee|approval path|supported path|Care 365/i;
 
 describe("reviewed shopping copy", () => {
@@ -71,4 +71,28 @@ describe("reviewed shopping copy", () => {
     expect(collectionUsesPlainGuidance("brunette-dolls")).toBe(false);
     expect(brandSeoProfile(getCatalogBrand("irontech")!).comparisonBullets).toBeUndefined();
   });
+
+  for (const handle of ["moonvale-dolls", "tantaly-dolls"]) {
+    it(`keeps ${handle} plain and holds unconfirmed issuer attribution`, async () => {
+      vi.stubEnv("VERCEL_ENV", "preview");
+      const brand = getCatalogBrand(handle)!;
+      const profile = brandSeoProfile(brand);
+      expect(profile.intro.split(/(?<=[.!?])\s+/)).toHaveLength(3);
+      expect(JSON.stringify(profile)).not.toMatch(banned);
+      const dom = parse(renderToStaticMarkup(await BrandHubPage({params: Promise.resolve({brand: handle}), searchParams: Promise.resolve({})})));
+      const comparison = dom.querySelector("#brand-comparison-heading")!.closest("details")!;
+      expect(comparison.querySelectorAll("li")).toHaveLength(3);
+      expect(comparison.querySelector("table")).toBeNull();
+      const faqs = dom.querySelector("#brand-faq-heading")!.closest("details")!.querySelectorAll("article");
+      expect(faqs.map(card => ({ question: card.querySelector("h3")?.textContent, answer: card.querySelector("p")?.textContent }))).toEqual(profile.faqs);
+      if (handle === "moonvale-dolls") {
+        const authorization = dom.querySelector("#brand-authorization-heading")!.closest("details")!;
+        expect(authorization.textContent).not.toMatch(/certificate shared|SY Doll/);
+        expect(authorization.querySelector("img")).toBeNull();
+      } else {
+        expect(comparison.textContent).toContain("first-year ownership support and ongoing repair guidance");
+        expect(comparison.querySelector('a[href="/care-for-life"]')).not.toBeNull();
+      }
+    });
+  }
 });
