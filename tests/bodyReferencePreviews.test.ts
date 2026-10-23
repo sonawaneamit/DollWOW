@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { getBodyReferencePreview, getBodyReferencePreviews, referenceInches, referencePounds } from "@/lib/references/bodyReferences";
 import { buildSitemapSegments } from "@/lib/seo/sitemapSegments";
 import { isPublicMarkdownPath } from "@/lib/seo/publicMarkdownPath";
+vi.mock("@/lib/shopify/storefront", async importOriginal => ({ ...await importOriginal<typeof import('@/lib/shopify/storefront')>(), getProductsByHandles: vi.fn().mockResolvedValue([]) }));
 
 afterEach(() => vi.unstubAllEnvs());
 

@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBodyReferencePreview, getBodyReferencePreviews, referenceInches, referencePounds } from "@/lib/references/bodyReferences";
+import { ArticleProductCards } from "@/components/ArticleProductCards";
+import { articleProducts } from "@/lib/learn/productCards";
+import { getProductsByHandles } from "@/lib/shopify/storefront";
+import productHandles from "@/content/references/body-products.json";
 
 export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ slug: string }> };
@@ -21,6 +25,8 @@ export default async function BodyReferencePage({ params }: Props) {
   const { slug } = await params;
   const reference = getBodyReferencePreview(slug);
   if (!reference) notFound();
+  const handles = productHandles[slug as keyof typeof productHandles] ?? [];
+  const products = articleProducts(handles, await getProductsByHandles(handles, { revalidate: 120 }));
 
   return (
     <section className="tone-section" data-tone="blush">
@@ -83,6 +89,7 @@ export default async function BodyReferencePage({ params }: Props) {
           <h2 id="use-heading" className="text-xl font-semibold">Plan your space</h2>
           <p className="mt-3 max-w-3xl leading-7">Compare these measurements with the space you have for dressing, moving and storing your doll. Cup labels vary between brands, so use the measurements when choosing clothing. Ask us to help with sizes for your chosen build.</p>
         </section>
+        <ArticleProductCards products={products} label={`Explore ${reference.designation}`} />
         <section aria-labelledby="source-heading" className="border-y border-border py-6">
           <h2 id="source-heading" className="text-xl font-semibold">Model details</h2>
           <p className="mt-3 leading-7">{reference.sourceUrl
