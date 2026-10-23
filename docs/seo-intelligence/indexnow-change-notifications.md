@@ -1,7 +1,12 @@
 # IndexNow Change Notifications
 
-Owner: Codex. Delivery and review: DOL-226. Status: implementation under review;
-subscription activation and production receipts must be recorded on the ticket.
+Owner: Codex. Delivery and review: DOL-226. Status: production code and two
+product-event subscriptions active from 23 October 2026 under Martin's fresh
+ticket approval. One real IndexNow notification was accepted with HTTP200 at
+07:05:50.783 UTC; an identical repeat was unchanged. Actual Shopify-origin
+delivery remains to be observed independently; operator HMAC tests are not that
+proof. Exact receipts and rollback subscription IDs are retained on the ticket
+and private evidence, with no credentials in this document.
 
 ## Scope
 
@@ -54,7 +59,8 @@ product events. No recurring job is activated by this change.
 1. Run the focused IndexNow, webhook, persistence, feed-sync and analytics
    isolation tests; typecheck, lint and build. Confirm protected preview key
    bytes match the existing file and invalid callback signatures fail closed.
-2. Release the exact reviewed commit under DOL-226's low-risk authorization.
+2. Release the exact reviewed commit only under fresh, specific Martin approval
+   recorded on DOL-226; expired overnight or generic low-risk wording is not approval.
    Verify the key file and signature rejection on production.
 3. Inspect existing app subscriptions, create only missing PRODUCTS_CREATE /
    PRODUCTS_UPDATE callbacks at `/api/webhooks/shopify/products`, and preserve

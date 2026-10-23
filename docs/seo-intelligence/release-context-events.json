@@ -46,13 +46,40 @@
         "gsc": "not_applicable_non_content_infrastructure_event; no invented page metrics",
         "ga4": "not_applicable_non_content_infrastructure_event; no invented sales attribution",
         "indexing": "accepted notification is not proof of crawling or indexing",
-        "contentCohort": "Existing 16-row ten-page ledger unchanged"
+        "contentCohort": "This infrastructure event adds no content-baseline rows; original16 preserved. Subsequent DOL225 rows are a separate release."
       },
       "remaining": [
         "Observe an actual Shopify-origin publish/update delivery; no product/price change manufactured for a test",
         "Dolly independent handoff review"
       ],
       "evidenceArtifacts": "Private data/exports/dol-226-2026-10-23; no signing credentials, full request payloads, supplier/customer/order records or private subscription IDs in this file"
+    },
+    {
+      "eventId": "dol225-sprint1-indexnow-2026-10-23",
+      "ticket": "DOL-226 / DOL-225",
+      "eventType": "external_submission",
+      "atUtc": "2026-10-23T07:50:55.995Z",
+      "approvalComment": "e4f625b7-3b9a-4c10-b8a3-40ed1148f93b",
+      "relatedReleaseCommit": "a4e88e1518e1d03e5923f355de08d0bcd720c9be",
+      "service": "IndexNow / participating Bing notification",
+      "httpStatus": 200,
+      "count": 10,
+      "attempts": 1,
+      "prechecks": "All10 canonical Sprint1 URLs200, self-canonical and no noindex on production",
+      "urls": [
+        "https://dollwow.com/shop/silicone",
+        "https://dollwow.com/shop/tpe",
+        "https://dollwow.com/shop/male-dolls",
+        "https://dollwow.com/shop/female-dolls",
+        "https://dollwow.com/shop/torsos",
+        "https://dollwow.com/shop/asian-dolls",
+        "https://dollwow.com/brands/irontech-dolls",
+        "https://dollwow.com/brands/wm-dolls",
+        "https://dollwow.com/brands/se-doll",
+        "https://dollwow.com/brands/starpery-dolls"
+      ],
+      "googleIndexingRequested": false,
+      "limitation": "Only10 requested key pages, not all3522 rollout URLs; acceptance is not crawling/indexing proof. No Google indexing request or sitemap resubmission is implied."
     }
   ]
 }

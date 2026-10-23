@@ -194,5 +194,192 @@
     }
   ],
   "operationalContextEvents": "release-context-events.json; infrastructure and external-service acceptance are separate from canonical content-release rows and carry no invented GSC/GA4 baselines.",
-  "sourceArtifacts": "Private raw evidence retained in data/exports/dol-224-2026-10-22 on the external project drive; no credentials, customers or order data in tracked outputs."
+  "sourceArtifacts": "Private raw evidence retained in data/exports/dol-224-2026-10-22 on the external project drive; no credentials, customers or order data in tracked outputs.",
+  "rollout225": {
+    "capturedAt": "2026-10-23T07:36:51.139Z",
+    "coverage": {
+      "newRows": 3522,
+      "combinedRows": 3538,
+      "uniqueUrls": 3522,
+      "gscMatchedSourceUrls": 451,
+      "ga4MatchedSourceUrls": 83,
+      "original16RowsByteAndValuePreserved": true,
+      "releaseAtUtc": "2026-10-23T07:40:30.694Z"
+    },
+    "gsc": {
+      "endpoint": "searchanalytics.query",
+      "property": "sc-domain:dollwow.com",
+      "request": {
+        "startDate": "2026-09-22",
+        "endDate": "2026-10-19",
+        "type": "web",
+        "dataState": "final",
+        "dimensions": [
+          "page"
+        ],
+        "rowLimit": 25000,
+        "dimensionFilterGroups": [
+          {
+            "groupType": "and",
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "^https://dollwow[.]com/(products|brands|shop)/[^/?#]+$"
+              }
+            ]
+          }
+        ]
+      },
+      "rowsReturned": 475,
+      "calls": 1,
+      "capped": false,
+      "at": "2026-10-23T07:36:51.139Z"
+    },
+    "ga4": {
+      "endpoint": "properties/549359657:runReport",
+      "request": {
+        "dateRanges": [
+          {
+            "startDate": "2026-09-22",
+            "endDate": "2026-10-19"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "landingPage"
+          },
+          {
+            "name": "hostName"
+          }
+        ],
+        "metrics": [
+          {
+            "name": "sessions"
+          }
+        ],
+        "dimensionFilter": {
+          "andGroup": {
+            "expressions": [
+              {
+                "filter": {
+                  "fieldName": "hostName",
+                  "inListFilter": {
+                    "values": [
+                      "dollwow.com",
+                      "www.dollwow.com"
+                    ]
+                  }
+                }
+              },
+              {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "stringFilter": {
+                    "matchType": "FULL_REGEXP",
+                    "value": "/(products|brands|shop)/[^/?#]+"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "limit": "10000",
+        "returnPropertyQuota": true
+      },
+      "rowsReturned": 86,
+      "metadata": {
+        "currencyCode": "USD",
+        "timeZone": "America/New_York"
+      },
+      "at": "2026-10-23T07:35:12.630Z"
+    },
+    "releaseProof": {
+      "id": "dpl_5bAZQKRzQ5vpggL3G5MKu5aTpyPY",
+      "readyState": "READY",
+      "readyAt": 1792741230694,
+      "target": "production",
+      "gitCommit": "a4e88e1518e1d03e5923f355de08d0bcd720c9be",
+      "branch": "main",
+      "url": "doll-2qojerbnd-sonawaneamits-projects.vercel.app",
+      "releaseAtUtc": "2026-10-23T07:40:30.694Z"
+    },
+    "liveVerification": {
+      "at": "2026-10-23T07:44:07.912Z",
+      "rows": [
+        {
+          "path": "/shop/tpe",
+          "status": 200,
+          "contextualLinks": [
+            "/brands/se-doll",
+            "/brands/wm-dolls",
+            "/shop/sex-dolls"
+          ],
+          "canonical": "https://dollwow.com/shop/tpe",
+          "noindex": false,
+          "at": "2026-10-23T07:43:48.120Z"
+        },
+        {
+          "path": "/brands/irontech-dolls",
+          "status": 200,
+          "contextualLinks": [
+            "/shop/hybrid",
+            "/shop/sex-dolls",
+            "/shop/silicone"
+          ],
+          "canonical": "https://dollwow.com/brands/irontech-dolls",
+          "noindex": false,
+          "at": "2026-10-23T07:43:51.367Z"
+        },
+        {
+          "path": "/products/irontech-kevin-176cm-silicone-companion-doll-is1mv",
+          "status": 200,
+          "contextualLinks": [
+            "/brands/irontech-dolls",
+            "/learn/male-sex-doll-buying-guide",
+            "/learn/sex-doll-size-weight-guide",
+            "/shop/male-dolls"
+          ],
+          "canonical": "https://dollwow.com/products/irontech-kevin-176cm-silicone-companion-doll-is1mv",
+          "noindex": false,
+          "at": "2026-10-23T07:43:52.937Z"
+        },
+        {
+          "path": "/shop/dollvue-enabled",
+          "status": 200,
+          "contextualLinks": [
+            "/brands/irontech-dolls",
+            "/brands/starpery-dolls",
+            "/shop/sex-dolls"
+          ],
+          "canonical": "https://dollwow.com/shop/dollvue-enabled",
+          "noindex": false,
+          "at": "2026-10-23T07:44:04.954Z"
+        },
+        {
+          "path": "/products/wm-head-583-165cm-d-cup-silicone-companion-doll-2j3mm",
+          "status": 200,
+          "contextualLinks": [],
+          "canonical": "https://dollwow.com/products/wm-head-583-165cm-d-cup-silicone-companion-doll-2j3mm",
+          "noindex": false,
+          "at": "2026-10-23T07:44:07.589Z"
+        }
+      ],
+      "indexNowSignatureRejectionPreserved": 401,
+      "limitation": "Five exact live source checks, including one held source with no new links; not a full HTTP crawl of3,590 inventory rows or new media/indexing clearance."
+    },
+    "inventory": {
+      "evaluatedSources": 3590,
+      "receivingSources": 3522,
+      "plannedContextualPlacements": 13979,
+      "newCanonicalTargetsChecked": 37,
+      "brokenTargets": 0,
+      "noindexTargets": 0,
+      "detailMapperSamples": 27,
+      "limits": "Catalog/modelled source plan, not a full HTTP crawl of every product. Zero new contextual placements before is verified from pre-rollout production source, not a count of all existing header/footer/grid links. Brand loaders match routes; per-brand detail mapper parity is sampled, not every PDP. Dedicated DollVue requires hosted exact checks and is excluded from these totals until then."
+    },
+    "beforeAfterAttachmentId": "c3d433a3-3a1e-4f7a-94f3-b8c9ba7b9a55",
+    "limits": "Historical22Sep-19Oct window;20-22Oct gap; missing/suppressed rows are not zero. Only five live source samples, not full source HTTP crawl. No individual Google indexing inspection or organic sales attribution.",
+    "privateEvidence": "data/exports/dol-225-2026-10-23; no credentials, customers, orders or private capabilities in tracked data"
+  }
 }
