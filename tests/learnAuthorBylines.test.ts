@@ -21,7 +21,7 @@ describe("approved existing guide authors", () => {
       expect(article.authorDisplayName).toBe(profile.displayName);
       expect(article.authorTitle).toBe(profile.title);
       expect(article.status).toBe("scheduled");
-      expect(article.lastReviewed).toBe("2026-10-16");
+      expect(article.lastReviewed).toBe(slug === "irontech-head-types-ros-max" ? "2026-10-23" : "2026-10-16");
       expect(buildArticleStructuredData(article).author).toMatchObject({
         "@type": "Person", name: profile.displayName, jobTitle: profile.title,
         url: learnAuthorUrl(article.author)

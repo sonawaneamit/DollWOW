@@ -10,7 +10,7 @@ authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
 reviewOwner: catalog
-lastReviewed: "2026-08-11"
+lastReviewed: "2026-10-23"
 ---
 
 # Sex Doll Skeleton Guide: Standard, Flexible, And EVO Options
@@ -230,7 +230,7 @@ If movement changes unexpectedly:
 4. Find the product, body, and skeleton specification in the order record.
 5. Contact DollWow before opening the body or attempting an internal repair.
 
-Care 365 and Lifetime Repair Concierge can help eligible DollWow owners identify the correct support path under the published terms. The Doll Passport is intended to keep the build specification and support history together.
+Care for Life and Lifetime Repair Concierge can help eligible DollWow owners identify the correct support path under the published terms. The Doll Passport is intended to keep the build specification and support history together.
 
 ## Ready-To-Ship And Made-To-Order Differences
 
