@@ -193,5 +193,6 @@
       ]
     }
   ],
+  "operationalContextEvents": "release-context-events.json; infrastructure and external-service acceptance are separate from canonical content-release rows and carry no invented GSC/GA4 baselines.",
   "sourceArtifacts": "Private raw evidence retained in data/exports/dol-224-2026-10-22 on the external project drive; no credentials, customers or order data in tracked outputs."
 }

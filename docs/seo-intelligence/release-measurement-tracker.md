@@ -17,6 +17,21 @@ This is measurement infrastructure, not approval to publish or activate a monito
 - Repeated URLs represent successive real changes, not extra pages. Never sum
   repeated baseline values across event rows to report business totals.
 
+## Operational Context
+
+Separate [operational context events](release-context-events.json) record the
+DOL-226 IndexNow integration released on 23 October 2026 at 07:05:20.080 UTC
+(production-ready timestamp, commit `24146764`). One real production notification
+was accepted with HTTP200 at 07:05:50.783 UTC; an identical repeat was unchanged.
+Two product-event subscriptions were read back at 07:06:16.160 UTC. The public
+key and callback authentication are reachable without the operator header.
+Actual Shopify-origin delivery remains to be observed independently.
+
+This is infrastructure, not another indexable page or a price/publication change
+to the test product. The sixteen CSV rows, ten-page cohort and captured baselines
+remain unchanged. No endpoint traffic or organic-sales figures are manufactured;
+IndexNow acceptance does not establish crawling, indexing or growth.
+
 ## Baseline Definitions
 
 The baseline is 22 September through 19 October 2026 inclusive, the 28 complete

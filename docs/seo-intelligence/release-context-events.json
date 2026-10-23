@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "eventId": "dol-226-indexnow-2026-10-23",
+      "ticket": "DOL-226",
+      "eventType": "infrastructure_release",
+      "releaseAtUtc": "2026-10-23T07:05:20.080Z",
+      "anchorBasis": "Vercel production deployment ready timestamp; not merge time",
+      "productionCommit": "24146764a41389b7d163ff16ced15279d8a9157c",
+      "pullRequest": "https://github.com/sonawaneamit/DollWOW/pull/157",
+      "deploymentId": "dpl_9gh2zEy5oW7tau2X6sJeX4ocgVac",
+      "deploymentUrl": "https://doll-hf02b8tg9-sonawaneamits-projects.vercel.app",
+      "callbackUrl": "https://dollwow.com/api/webhooks/shopify/products",
+      "approvalComment": "3c741aa8-61a2-4e89-ab6a-9b1bddcde2c7",
+      "productionAcceptance": {
+        "atUtc": "2026-10-23T07:05:50.783Z",
+        "indexNowHttpStatus": 200,
+        "submittedUrlCount": 1,
+        "validationPending": false,
+        "identicalRepeat": "unchanged; no second notification",
+        "invalidSignatureStatus": 401
+      },
+      "anonymousAcceptance": {
+        "atUtc": "2026-10-23T07:05:59.472Z",
+        "keyStatus": 200,
+        "keyBytesMatch": true,
+        "invalidCallbackSignatureStatus": 401,
+        "actualShopifyOriginDelivery": false
+      },
+      "subscriptionReadback": {
+        "atUtc": "2026-10-23T07:06:16.160Z",
+        "topics": [
+          "PRODUCTS_CREATE",
+          "PRODUCTS_UPDATE"
+        ],
+        "count": 2,
+        "callbackFields": [
+          "id",
+          "admin_graphql_api_id",
+          "updated_at"
+        ],
+        "unrelatedPreserved": true
+      },
+      "baseline": {
+        "gsc": "not_applicable_non_content_infrastructure_event; no invented page metrics",
+        "ga4": "not_applicable_non_content_infrastructure_event; no invented sales attribution",
+        "indexing": "accepted notification is not proof of crawling or indexing",
+        "contentCohort": "Existing 16-row ten-page ledger unchanged"
+      },
+      "remaining": [
+        "Observe an actual Shopify-origin publish/update delivery; no product/price change manufactured for a test",
+        "Dolly independent handoff review"
+      ],
+      "evidenceArtifacts": "Private data/exports/dol-226-2026-10-23; no signing credentials, full request payloads, supplier/customer/order records or private subscription IDs in this file"
+    }
+  ]
+}
