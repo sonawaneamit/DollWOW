@@ -36,6 +36,8 @@ describe("manufacturer-specific feature explainers", () => {
     expect(article.body).toContain("Don't assume an EVO body includes either upgrade");
     expect(article.lastReviewed).toBe("2026-10-23");
     expect(article.body).toContain("Care for Life and Lifetime Repair Concierge");
+    expect(buildArticleStructuredData(article).datePublished).toBe("2026-08-11T00:00:00.000Z");
+    expect(buildArticleStructuredData(article).dateModified).toBe("2026-10-23");
     expect(article.author).toBe("alex");
     expect(buildArticleStructuredData(article).citation).toContain("https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/");
     expect(article.body).toContain("/learn/sex-doll-storage");

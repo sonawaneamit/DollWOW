@@ -9,6 +9,7 @@ author: "alex"
 authorDisplayName: "Alex"
 authorTitle: "Doll Collector and DollWow Product Educator with 20+ Years of Experience"
 status: production
+publishedAt: "2026-08-11T00:00:00.000Z"
 reviewOwner: catalog
 lastReviewed: "2026-10-23"
 ---
