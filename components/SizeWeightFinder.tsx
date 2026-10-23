@@ -29,7 +29,7 @@ function RangeControl({ label, name, min, max, step, values, format, onChange }:
       <div className={styles.selection} style={{ left: `${(values[0] - min) / (max - min) * 100}%`, right: `${(max - values[1]) / (max - min) * 100}%` }} />
       {values.map((value, index) => <input key={index} id={`${index ? 'max' : 'min'}${name}`} name={`${index ? 'max' : 'min'}${name}`} type="range" min={min} max={max} step={step} value={value}
         aria-label={`${label} ${index ? 'maximum' : 'minimum'}`} aria-valuetext={format(value)}
-        className={styles.handle} style={{ zIndex: index === 0 && value === max ? 3 : index + 1 }}
+        className={styles.handle} style={{ zIndex: index === 0 && value === max ? 3 : index + 1, transform: values[0] === values[1] ? `translateY(${index ? 8 : -8}px)` : undefined }}
         onChange={event => update(index, event.target.value)} />)}
     </div>
   </fieldset>;
