@@ -312,7 +312,7 @@ const collectionIntroByHandle: Record<string, string> = {
     "Shop full-body lightweight sex dolls with a listed weight under 75 lb / 34 kg. This is DollWow's consistent shopping boundary, not a universal industry standard or a promise that every model will feel easy for every buyer to lift. Compare exact weight, height, width, material, grip points, delivery access, cleaning route, and storage position before choosing. If a reduced-weight option matters, ask our team to confirm that it is supported on the exact body.",
   "new-sex-dolls":
     "Browse new sex dolls and recent catalog additions with the latest supported models shown first. DollWow uses available supplier release ordering where it exists; this is more useful than treating the date a retailer uploaded a page as the product's universal launch date. New does not automatically mean more realistic, easier to handle, ready to ship, or better for your needs. Compare the exact brand, head and body pairing, TPE or silicone construction, measurements, listed weight, options, starting price, availability, and production path. If a newly announced model is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
-  "futa-sex-dolls": "Explore feminine full-body dolls with a penis option. Most of these let you add a penis option at checkout. Warehouse dolls ship as listed.",
+  "futa-sex-dolls": "Explore feminine full-body dolls with a penis option. Most let you add it at checkout. Warehouse dolls ship as listed.",
   "asian-dolls":
     "Shop Asian sex dolls and Japanese-inspired styles selected from current catalog presentation and product details. The collection includes varied faces, bodies, heights, and proportions across TPE, silicone, and hybrid construction. Asian or Japanese-inspired appearance describes visual styling, not a model's nationality, manufacturing origin, quality, or technical specification. Compare the exact head and body, several gallery angles, measurements, listed weight, material, skin tone, hair, makeup, availability, and supported options before choosing. If a Japanese- or Korean-inspired model you want is missing, send its name or supplier link through live chat or hello@dollwow.com. Most approved requests can be added within 4 to 6 hours once authorization and product details are confirmed.",
   "black-dolls": "Find your favorite Black sex doll, from rich skin tones and striking faces to the body shape you love. Compare photos, measurements, weight and custom choices, or ask us to help you find a particular look.",
@@ -807,7 +807,6 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Review buyer protection", href: "/buyer-protection" }
   ],
   custom: [
-    { label: "Browse dolls with an insertable penis option", href: "/shop/futa-sex-dolls" },
     { label: "Explore the Factory Approval Archive", href: "/factory-photos" },
     { label: "Ready-to-ship vs custom orders", href: "/learn/ready-to-ship-vs-custom-sex-dolls" },
     { label: "See how ordering works", href: "/how-ordering-works" },
@@ -816,6 +815,7 @@ const collectionLinksByHandle: Record<string, RelatedLink[]> = {
     { label: "Review discreet shipping", href: "/learn/discreet-sex-doll-shipping" },
     { label: "Review Care for Life", href: "/care-for-life" },
     { label: "Review buyer protection", href: "/buyer-protection" },
+    { label: "Browse dolls with an insertable penis option", href: "/shop/futa-sex-dolls" },
     { label: "Silicon Wives alternatives", href: "/learn/siliconwives-alternatives" }
   ],
   customizable: [
@@ -1151,7 +1151,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       "factor": "Get help before production",
       "whyItMatters": "We review qualifying orders and clarify the build details.",
-      "dollWowAdvantage": "Care for Life also provides ownership support after your purchase."
+      "dollWowAdvantage": "Ask us to check anything you want clarified before your build starts."
     }
   ],
   customizable: [
@@ -1278,7 +1278,7 @@ const collectionFaqByHandle: Record<string, { question: string; answer: string }
   "petite-dolls": [
     {
       "question": "What height counts as petite?",
-      "answer": "The range in the introduction is how we group petite full-body dolls. Each listing gives the exact height for that model."
+      "answer": "We call 4 ft to 5 ft 1 in petite. Each listing gives the exact height for that model."
     },
     {
       "question": "How is petite different from mini?",
