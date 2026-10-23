@@ -1,6 +1,9 @@
 # Contextual Internal Links: DOL-225 Sample
 
-Status: preview-only, awaiting Martin's review. No production rollout authorized.
+Status: sample retained as historical evidence. Martin approved the full-site
+pattern and production rollout on 23 October through DOL-225 comment
+`d62fe502-19c1-4ed1-8ddc-0f29f9a857ef`. Implementation is being verified; approval
+is not a claim that the full rollout is already live.
 
 ## Boundaries
 
@@ -11,9 +14,21 @@ of noindex on22Oct. The unresolved IronAI listing was excluded; the other sample
 handles were cross-checked against DOL-177's flagged/excluded identity records.
 No product identity, price, image, checkout behavior, hold or draft status changes.
 
-`contextualLinkSampleEnabled` requires Vercel Preview and an exact source path.
-Production, local development and all other pages retain existing behavior.
-This gate must not be removed until the sample decision and full-rollout check.
+The approved `contextualLinksEnabled` gate covers canonical product, brand-hub
+and collection paths on Preview and Production, not arbitrary paths, query
+variants or draft articles. Local development/unset remain disabled. The
+dedicated DollVue collection uses the same links after its existing verified
+product grid; its eligibility/readiness source is unchanged. `/shop` still
+redirects to its existing canonical owner.
+
+Eighteen retained source exclusions (the fifteen pending DOL-177 identities,
+two unresolved form/model records, and DOL-240's WM identity conflict) remain
+outside new contextual links. This is a server-only navigation exclusion, not
+a product-status, legal, media, title or canonical decision. Current hold tags
+and hidden-brand exclusions apply as before. Private draft previews and
+editorial-preview pages receive no new contextual links. No new product-page
+targets are generated, so pending duplicate listings are not newly promoted
+as destinations by this block.
 
 ## Rules
 

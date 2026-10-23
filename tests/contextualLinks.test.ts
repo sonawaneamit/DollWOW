@@ -1,18 +1,32 @@
 import { describe, expect, it } from 'vitest';
 import sample from '@/data/internal-link-sample.json';
+import excludedHandles from '@/data/contextual-link-exclusions.json';
 import { sampleProducts } from '@/lib/data/sample-products';
-import { catalogContextualLinks, contextualLinkSampleEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
+import { catalogContextualLinks, contextualLinksEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
 
 const product = { ...sampleProducts[0], handle: 'sample-doll', vendor: 'Irontech', productType: 'Custom silicone doll', tags: ['silicone', 'full-doll'],
   extended: { ...sampleProducts[0].extended, brand: 'Irontech', material: 'silicone', bodyType: 'female' as const } };
-describe('DOL-225 bounded contextual-link sample', () => {
-  it('has exactly twenty public source paths and is preview-only', () => {
+describe('DOL-225 approved contextual-link rollout', () => {
+  it('preserves the twenty-page sample and enables canonical route families only', () => {
     expect(sample).toHaveLength(20); expect(new Set(sample).size).toBe(20);
     for (const path of sample) {
-      expect(contextualLinkSampleEnabled(path, { VERCEL_ENV: 'preview' })).toBe(true);
-      for (const env of ['production', 'development', '']) expect(contextualLinkSampleEnabled(path, { VERCEL_ENV: env })).toBe(false);
+      for (const env of ['preview', 'production']) expect(contextualLinksEnabled(path, { VERCEL_ENV: env })).toBe(true);
+      for (const env of ['development', '']) expect(contextualLinksEnabled(path, { VERCEL_ENV: env })).toBe(false);
     }
-    expect(contextualLinkSampleEnabled('/products/outside-sample', { VERCEL_ENV: 'preview' })).toBe(false);
+    for (const env of ['preview', 'production']) {
+      expect(contextualLinksEnabled('/products/outside-sample', { VERCEL_ENV: env })).toBe(true);
+      for (const path of ['/learn/draft', '/products/x?preview=1', '/products/x#section', '/shop/x/y', '/brands/', '//products/x']) {
+        expect(contextualLinksEnabled(path, { VERCEL_ENV: env })).toBe(false);
+      }
+    }
+  });
+  it('keeps every retained identity-review source out of the rollout without changing products', () => {
+    expect(excludedHandles).toHaveLength(18);
+    for (const handle of excludedHandles) {
+      const source = { ...product, handle };
+      expect(productContextualLinks(source)).toEqual([]);
+      expect(catalogContextualLinks('/shop/silicone', [source])).toEqual([]);
+    }
   });
   it('links known brands to their preferred brand hub and a matching parent', () => {
     const links = productContextualLinks(product);

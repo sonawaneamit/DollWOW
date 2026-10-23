@@ -12,7 +12,7 @@ import { ProductBuyActions } from "@/components/ProductBuyActions";
 import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
-import { contextualLinkSampleEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
+import { contextualLinksEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
 import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import { ProductLowerAlive } from "@/components/ProductLowerAlive";
 import { ProductOptions } from "@/components/ProductOptions";
@@ -115,7 +115,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const productStructuredData = buildProductStructuredData(publicProduct);
   const faqStructuredData = buildProductFaqStructuredData(product);
   const productBrand = product.extended.brand ?? product.vendor;
-  const contextualLinks = contextualLinkSampleEnabled(`/products/${product.handle}`) ? productContextualLinks(product) : [];
+  const contextualLinks = !isPrivateDraft && editorialPreview !== "1" && contextualLinksEnabled(`/products/${product.handle}`) ? productContextualLinks(product) : [];
   const contextualBrand = contextualLinks.find(link => link.kind === 'brand');
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);

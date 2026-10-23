@@ -1,4 +1,5 @@
-import samplePaths from '@/data/internal-link-sample.json';
+import 'server-only';
+import excludedHandles from '@/data/contextual-link-exclusions.json';
 import { catalogBrands, getCatalogBrand, isHiddenCatalogBrand } from './brands';
 import { collectionPresets, filterProducts, isStandaloneHeadCatalogProduct } from './filters';
 import { getLearningArticle } from '@/lib/learn/content';
@@ -6,13 +7,15 @@ import type { Product } from '@/types/product';
 
 export type ContextualLink = { href: string; label: string; kind: 'brand' | 'collection' | 'guide' };
 
-/** Preview-only sample. Production expansion requires the DOL-225 review decision. */
-export function contextualLinkSampleEnabled(path: string, environment: Record<string, string | undefined> = process.env) {
-  return environment.VERCEL_ENV === 'preview' && samplePaths.includes(path);
+/** DOL-225's approved rollout retains the same canonical page families. */
+export function contextualLinksEnabled(path: string, environment: Record<string, string | undefined> = process.env) {
+  return ['preview', 'production'].includes(environment.VERCEL_ENV || '')
+    && /^\/(?:products|brands|shop)\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(path);
 }
 
+const excludedSources = new Set(excludedHandles);
 function eligible(product: Product) {
-  return !isHiddenCatalogBrand(product.extended.brand ?? product.vendor) && !product.tags.some(tag =>
+  return !excludedSources.has(product.handle) && !isHiddenCatalogBrand(product.extended.brand ?? product.vendor) && !product.tags.some(tag =>
     isHiddenCatalogBrand(tag) || /^(?:dollwow-test|dollwow-system|custom-option-charge)$/i.test(tag) || /(?:^|[-_:])hold(?:$|[-_:])/i.test(tag));
 }
 
