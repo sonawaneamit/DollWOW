@@ -123,6 +123,12 @@ Before paying for an advanced option, request:
 
 Do not combine claims from different brands. A search result about one manufacturer's EVO system is not proof of what another factory supplies.
 
+### Irontech EVO: A Manufacturer-Specific Example
+
+Irontech's [body, hand and toe skeleton guide](https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/) describes EVO with geared knees and moving shoulders. It distinguishes normal from loose joint resistance: easier movement does not establish the same pose-holding ability. Its stated knee range is theoretical and limited by the surrounding material, not a target to force on a finished doll.
+
+The same source separates body, hand and toe systems. It excludes several named bodies from its toe option; EVO alone does not prove those separate parts are included or compatible. Checked on 23 October 2026, this page is not an exact ordering matrix: confirm the body code and installed systems in the [Irontech listing](/brands/irontech-dolls). Use the [storage guide](/learn/sex-doll-storage) alongside the instructions for that build.
+
 ## Pose Range Versus Practical Ownership
 
 The most advanced-sounding skeleton is not automatically the best choice.
