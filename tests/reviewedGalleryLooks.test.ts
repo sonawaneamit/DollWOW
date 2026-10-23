@@ -70,7 +70,8 @@ describe("reviewed gallery identity", () => {
     const current = { ...product, ...fixture, extended: { ...product.extended, ...fixture.extended } };
     const before = JSON.stringify(current);
     const heading = productReviewedPdpHeading(current);
-    expect(heading).toContain(fixture.handle.startsWith("avant-") ? "Avant Sophia 165cm F-Cup Full Silicone - Wheat Skin" : "SE Doll Isla Kane 114cm F-Cup Silicone Torso (RTS) - US Warehouse");
+    expect(heading).toContain(fixture.handle.startsWith("avant-") ? "Avant Sophia 165cm F-Cup Full Silicone - Wheat Skin" : "SE Doll Isla Kane 114cm F-Cup Silicone Torso - Ready to Ship - US Warehouse");
+    expect(heading).not.toContain('(RTS)');
     expect(buildPdpMetadata(current).title).toBe(heading);
     expect(JSON.stringify(current)).toBe(before);
     const replaced = { ...current, featuredImage: { ...current.featuredImage, url: "https://cdn.shopify.com/replaced.jpg" } };
@@ -80,13 +81,16 @@ describe("reviewed gallery identity", () => {
     expect(productReviewedPdpHeading(retitled)).toBe(productPdpHeading(retitled));
     if (fixture.extended.stockStatus === "ready_to_ship") {
       const custom = { ...current, extended: { ...current.extended, stockStatus: "custom" as const } };
-      expect(productReviewedPdpHeading(custom)).toBe(productPdpHeading(custom));
+      expect(productReviewedPdpHeading(custom)).toBe("SE Doll Isla Kane 114cm F-Cup Silicone Torso");
+      const unavailable = { ...current, variants: current.variants.map(variant => ({ ...variant, availableForSale: false })) };
+      expect(productReviewedPdpHeading(unavailable)).not.toMatch(/RTS|Ready[ -]to[ -]Ship|In Stock/i);
+      expect(productReviewedPdpHeading(unavailable)).toContain("US Warehouse");
     }
   });
 
   it("adds the inspected photo-set label without changing shared card naming", () => {
-    expect(productReviewedGalleryLabel(product)).toBe("Denim Gallery");
-    expect(productReviewedPdpHeading(product)).toBe(`${productPdpHeading(product)} - Denim Gallery`);
+    expect(productReviewedGalleryLabel(product)).toBe("Denim Look");
+    expect(productReviewedPdpHeading(product)).toBe(`${productPdpHeading(product)} - Denim Look`);
     expect(productPdpHeading(product)).not.toContain("Gallery");
   });
 

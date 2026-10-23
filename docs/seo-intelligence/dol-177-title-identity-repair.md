@@ -2,6 +2,56 @@
 
 Date: 21 October 2026. Status: partial repair for review, not release-ready and not a zero-duplicate result.
 
+## 23 October Wording Revision
+
+Dolly's review `b332e8e5` requests expanded stock wording and factual title
+distinctions without Gallery suffixes. The current revision is preview-only.
+Approved production `9dcbe720` is integrated; private Castle heading behavior,
+all existing canonicals, the 42 unchanged editorial mirrors and held identities
+are preserved.
+
+The two exact SE Isla Kane / Zoe Ellis records currently have a United States
+ready-to-ship declaration and an available variant. Their stable, source-bound
+names no longer contain RTS. Ready to Ship is added only while both current
+conditions hold; the warehouse qualifier remains independently meaningful.
+Source-title, product-ID, handle and photograph guards still apply.
+
+Previously reviewed appearance descriptors remain bound to the same photographs.
+Customer headings say, for example, Red Curly Hair, Teal Neon Look or Denim Look,
+rather than Gallery. These are the previously recorded visual details, not new
+head, skin, hair, included-clothing or upgrade claims. No tags are invented.
+
+The repeated-height report matches two exact Sophia Lane 103cm records.
+The shared builder omits a second copy of the same height already present in
+an incomplete model name. The source value is unchanged; a conflicting height
+is not silently removed. Already-complete reviewed names and the frozen
+FanReal records are untouched. The same narrowly validated correction affects
+13 additional records, each differing only by one redundant height token.
+
+Strict current source extraction: 3,526 public products with active Admin SEO,
+two complete SE stock controls and two full option-dependent Vera controls.
+The lightweight catalog omits Vera's flight-case option groups; the full current
+YL record still supports the approved $699 distinction. It is not a fifth
+duplicate group. Raw modeled title/H1 collisions are eight groups / 16 listings;
+excluding only the four already-approved aliases leaves four groups / eight
+listings, all still held. All 15 flagged identities stay exact. Zero-duplicate
+acceptance is false.
+
+The model has 339 changed display records: 322 guarded appearance labels, two
+conditional stock headings and 15 redundant-height repairs. Products,
+photographs, prices, options, source tags, authored descriptions, canonicals,
+editorial text and all 48 publication instants are unchanged. Current regional
+counts remain Australia 25, Canada 31 and European Union 55, plus three Europe
+records. This source snapshot returns no UK warehouse product; that is not a
+promise of UK stock. UK formatting and regional-offer behavior remain tested.
+
+Verification so far: 80 focused tests, full TypeScript, scoped lint and a
+complete source/model preservation audit pass. This is a fresh catalog model,
+not a fresh whole-catalog HTTP crawl. Exact deployment, affected-page readback
+and responsive receipts will be posted only after completion. The original
+29 October 11:34 UTC review expiry is retained, not extended. Dolly's fresh
+review and Martin's explicit preview approval remain required before release.
+
 ## 22 October Approved Gallery Subset
 
 Martin approved Dolly's 07:22 UTC labels for preview only at 07:40 UTC

@@ -164,11 +164,14 @@ function buildProductTitle(product: Product, { seo }: { seo: boolean }) {
   const publicModel = isReferenceLikeName(model) && !seo ? "" : model;
   const normalizedSeries = cleanText(series).toLowerCase();
   const normalizedModel = cleanText(publicModel).toLowerCase();
+  const namedHeight = !/\b(?:silicone|tpe|hybrid)\b/i.test(`${publicModel} ${series}`) &&
+    [...`${publicModel} ${series}`.matchAll(/\b(\d+(?:\.\d+)?)\s*cm\b/gi)]
+    .some(match => Number(match[1]) === Number.parseFloat(height));
   const baseParts = [
     brand,
     publicModel,
     normalizedSeries && normalizedSeries === normalizedModel ? "" : series,
-    height,
+    namedHeight ? "" : height,
     cup ? `${cup}-Cup` : "",
     material,
     seo ? (includeSeoHead ? headTitlePart : "") : includeVisibleHead ? headTitlePart : ""

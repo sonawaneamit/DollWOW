@@ -1,6 +1,6 @@
 import {describe, expect, it} from "vitest";
 import {sampleProducts} from "@/lib/data/sample-products";
-import {productPdpHeading, productSeoTitle, productTitleConfiguration, productWarehouseTitleLabel} from "@/lib/catalog/naming";
+import {productPdpHeading, productPublicTitle, productSeoTitle, productTitleConfiguration, productWarehouseTitleLabel} from "@/lib/catalog/naming";
 import {buildPdpMetadata} from "@/lib/catalog/pdpSeo";
 
 const fixture = {
@@ -68,6 +68,16 @@ describe("product identity titles",()=>{
   it("does not repeat specifications in already complete reviewed display names",()=>{
     const p={...fixture,title:"Irontech Bailey 161cm ROS MAX Silicone Doll",extended:{...fixture.extended,brand:"Irontech Dolls",displayName:"Irontech Bailey 161cm ROS MAX Silicone Doll"}};
     expect(productPdpHeading(p)).toBe("Irontech Bailey 161cm ROS MAX Silicone Doll");
+  });
+  it("does not append the same verified height already present in the model name", () => {
+    const p = {...fixture, title:"Sophia Lane SET008 - ST2 103cm", extended:{...fixture.extended,brand:"SE Doll",displayName:"Sophia Lane SET008 - ST2 103cm",heightCm:103,cupSize:"J",headModel:"head-142so"}};
+    expect(productPdpHeading(p).match(/103\s*cm/gi)).toHaveLength(1);
+    expect(productPublicTitle(p).match(/103\s*cm/gi)).toHaveLength(1);
+    expect(productPdpHeading(p)).toContain("SET008 - ST2");
+    expect(p.extended.displayName).toBe("Sophia Lane SET008 - ST2 103cm");
+    const mismatch = {...p, extended:{...p.extended,displayName:"Sophia Lane 102cm"}};
+    expect(productPdpHeading(mismatch)).toContain("102cm");
+    expect(productPdpHeading(mismatch)).toContain("103cm");
   });
   it("retains fractional heights only when title and measurement corroborate integer rounding",()=>{
     const p={...fixture,title:"Ellen 112.5cm Silicone Torso",extended:{...fixture.extended,heightCm:113,measurements:{Height:"3 ft 8 in / 112.5 cm"}}};
