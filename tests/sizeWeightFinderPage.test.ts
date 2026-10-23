@@ -24,6 +24,7 @@ describe('Finder server-rendered page', () => {
     expect(html).toContain('method="get"'); expect(html).toContain('name="height"');
     expect(html).toContain('name="material"'); expect(html).toContain('1 missing weight');
     expect(html).toContain('Listed weight: basis unspecified'); expect(html).toContain('36.3 kg / 80.0 lb');
+    expect(html).toContain('Classifications and weights are based on listing data, not factory-confirmed specs.');
     expect(html).toContain('/products/finder-2'); expect(html).not.toContain('<img');
     expect(load).toHaveBeenCalledWith({ first: 5000, strict: true, revalidate: 0 });
     const schema = JSON.parse(parse(html).querySelector('script[type="application/ld+json"]')!.text);

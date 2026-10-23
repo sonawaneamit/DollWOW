@@ -41,7 +41,7 @@ export default async function SizeWeightFinder({ searchParams }: { searchParams:
     '@context': 'https://schema.org', '@type': 'WebApplication',
     name: 'Doll Size & Weight Finder', url: `${siteUrl}/tools/doll-size-weight-finder`,
     applicationCategory: 'ShoppingApplication', operatingSystem: 'Web',
-    description: 'Compare dated listing weights for full dolls 140 cm and taller at an exact height and material. Missing and body-only weights are shown separately; weights are not estimated.',
+    description: 'Compare dated listing weights for full dolls 140 cm and taller at an exact height and material. Classifications and weights are based on listing data, not factory-confirmed specs. Missing and body-only weights are shown separately; weights are not estimated.',
     publisher: { '@type': 'Organization', name: 'DollWOW', url: siteUrl },
   };
   const basisLabel = (basis: string) => basis === 'factory-body-only' ? 'Factory body only' : 'Listed weight: basis unspecified';
@@ -51,6 +51,7 @@ export default async function SizeWeightFinder({ searchParams }: { searchParams:
       <div className="flex items-center gap-3 text-accent"><Ruler className="h-6 w-6" aria-hidden="true" /><p className="text-sm">Size &amp; Weight</p></div>
       <h1 className="mt-3 text-3xl font-semibold text-text sm:text-4xl">Doll Size &amp; Weight Finder</h1>
       <p className="mt-4 max-w-3xl leading-7 text-text-dim">Height alone does not determine weight. Compare observed listing weights for full dolls 140 cm and taller. Body-only weights stay separate; missing weights are never estimated.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-text-dim">Classifications and weights are based on listing data, not factory-confirmed specs.</p>
       <form action="/tools/doll-size-weight-finder" method="get" className="mt-6 grid items-end gap-4 border-y border-border py-5 sm:grid-cols-[1fr_1fr_auto]">
         <div className="min-w-0"><label htmlFor="finder-height" className="text-sm font-medium">Height</label><select id="finder-height" name="height" defaultValue={height} className="mt-2 block min-h-12 w-full min-w-0 rounded-md border border-border bg-surface px-3 text-base">{heights.map(cm => <option key={cm} value={cm}>{finderHeight(cm)}</option>)}</select></div>
         <div className="min-w-0"><label htmlFor="finder-material" className="text-sm font-medium">Material label</label><select id="finder-material" name="material" defaultValue={material} className="mt-2 block min-h-12 w-full min-w-0 rounded-md border border-border bg-surface px-3 text-base">{finderMaterials.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select></div>
