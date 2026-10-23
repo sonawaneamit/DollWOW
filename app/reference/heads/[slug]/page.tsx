@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getHeadReferencePreview, getHeadReferencePreviews } from "@/lib/references/headReferences";
+import { ArticleProductCards } from "@/components/ArticleProductCards";
+import { articleProducts } from "@/lib/learn/productCards";
+import { getProductsByHandles } from "@/lib/shopify/storefront";
+import productHandles from "@/content/references/head-products.json";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +26,8 @@ export default async function HeadReferencePage({ params }: Props) {
   const { slug } = await params;
   const reference = getHeadReferencePreview(slug);
   if (!reference) notFound();
+  const handles = productHandles[slug as keyof typeof productHandles] ?? [];
+  const products = articleProducts(handles, await getProductsByHandles(handles, { revalidate: 120 }));
   const facts = [
     ["Manufacturer", reference.brand],
     ["Head code", reference.code],
@@ -61,6 +67,7 @@ export default async function HeadReferencePage({ params }: Props) {
           </section>
         </div>
 
+        <ArticleProductCards products={products} label={`Explore ${reference.example}`} />
         <section aria-labelledby="source-heading" className="border-y border-border py-6">
           <h2 id="source-heading" className="text-xl font-semibold">Explore the model</h2>
           <p className="mt-3 leading-7"><a href={reference.sourceUrl} className="break-words font-semibold underline underline-offset-4">{reference.sourceTitle}</a></p>

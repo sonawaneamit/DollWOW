@@ -5,6 +5,7 @@ import { parse } from "node-html-parser";
 import { getHeadReferencePreview, getHeadReferencePreviews } from "@/lib/references/headReferences";
 import { buildSitemapSegments } from "@/lib/seo/sitemapSegments";
 import { isPublicMarkdownPath } from "@/lib/seo/publicMarkdownPath";
+vi.mock("@/lib/shopify/storefront", async importOriginal => ({ ...await importOriginal<typeof import('@/lib/shopify/storefront')>(), getProductsByHandles: vi.fn().mockResolvedValue([]) }));
 
 afterEach(() => vi.unstubAllEnvs());
 
@@ -49,7 +50,7 @@ describe("bounded head reference previews", () => {
     expect(metadata.alternates).toBeUndefined();
     const page = fs.readFileSync("app/reference/heads/[slug]/page.tsx", "utf8");
     expect(page).toContain('if (!reference) notFound()');
-    expect(page).not.toMatch(/application\/ld\+json|ProductCard|dangerouslySetInnerHTML/);
+    expect(page).not.toMatch(/application\/ld\+json|dangerouslySetInnerHTML/);
     expect(fs.existsSync("public/images/home-brands/irontech.png")).toBe(true);
     expect(Object.values(buildSitemapSegments([])).flat().some(row => row.url.includes("/reference/heads/"))).toBe(false);
     expect(isPublicMarkdownPath("/reference/heads/irontech-s19")).toBe(false);
