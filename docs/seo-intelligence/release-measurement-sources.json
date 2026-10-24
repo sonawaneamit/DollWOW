@@ -799,7 +799,7 @@
       "limits": "Submission acceptance does not prove crawl or indexing. Only11currentlyvisible changedguides; no futureURLpings. No secrets in receipt."
     },
     "googleQueue": {
-      "updatedAt": "2026-10-23T21:50:24.618Z",
+      "updatedAt": "2026-10-24T00:14:20.505Z",
       "urls": [
         {
           "url": "https://dollwow.com/learn/sex-doll-reviews",
@@ -1115,13 +1115,23 @@
           "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
         },
         {
-          "url": "https://dollwow.com/learn/warehouse-stock-vs-custom-made",
-          "ticket": "DOL-227",
+          "url": "https://dollwow.com/brands/irontech-dolls",
+          "ticket": "Sprint1",
+          "status": "request_accepted",
+          "inspectionStartedAt": "2026-10-24T00:11:33.291Z",
+          "inspectionBefore": "https://dollwow.com/brands/irontech-dolls\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: Crawled - currently not indexed\n\ue316\nDiscovery\nSitemaps\nhttps://dollwow.com/sitemap.xml\nhttps://dollwow.com/sitemaps/brands.xml\nReferring page\nhttps://dollwow.com/shop/irontech\nhttps://dollwow.com/learn/joylovedolls-alternatives\nhttps://dollwow.com/products/yl-juliana-148cm-g-cup-tpe-companion-doll-evgiz\nCrawl\nLast crawl\n",
+          "requestStartedAt": "2026-10-24T00:11:38.838Z",
+          "acceptedAt": "2026-10-24T00:13:07.505Z",
+          "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+        },
+        {
+          "url": "https://dollwow.com/shop/silicone",
+          "ticket": "Sprint1",
           "status": "blocked",
-          "inspectionStartedAt": "2026-10-23T10:16:47.894Z",
-          "inspectionBefore": "https://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical",
-          "requestStartedAt": "2026-10-23T10:16:53.480Z",
-          "reason": "help_outline\nHelp\nmanage_accounts\nUser settings\n\t\nnotifications\nMessages\n1\n\ue5c5\nhome\nOverview\nlightbulb_2\nInsights\ntrending_up\nPerformance\nkeyboard_arrow_down\nsearch\nURL inspection\nIndexing\nkeyboard_arrow_up\nfile_copy\nPages\nvideo_library\nVideos\naccount_tree\nSitemaps\nvisibility_off\nRemovals\nExperience\nkeyboard_arrow_up\nspeed\nCore Web Vitals\nlock\nHTTPS\nShopping\nkeyboard_arrow_up\nlayers\nProduct snippets\nlayers\nMerchant listings\nEnhancements\nkeyboard_arrow_up\nlayers\nBreadcrumbs\nlayers\nImage Metadata\nSecurity & Manual Actions\nkeyboard_arrow_down\nlink_2\nLinks\ntrophy\nAchievements\nsettings\nSettings\nfeedback\nSubmit feedback\ninfo\nAbout Search Console\nPrivacyTerms\nhttps://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected canonical\n\ue8fd\nN/A\nLEARN MORE\nEnhancements & Experience\nOnly indexed URLs can have enhancements\nerror_outline\nQuota Exceeded\nSorry--we couldn't process this request because you've exceeded your daily quota. Please try submitting this again tomorrow.\nDismiss"
+          "inspectionStartedAt": "2026-10-24T00:13:07.679Z",
+          "inspectionBefore": "https://dollwow.com/shop/silicone\nURL Inspection\nTEST LIVE URL\ncheck_circle\nURL is on Google\nIt can appear in Google Search results (if not subject to a manual action or removal request) with all relevant enhancements. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ncheck_circle\nPage indexing\nPage is indexed\n\ue313\nEnhancements & Experience\ncheck_circle\nHTTPS\nPage is served over HTTPS\n\ue315\ncheck_circle\nBreadcrumbs\n1 valid item detected\n\ue315\nURL Inspection",
+          "requestStartedAt": "2026-10-24T00:13:13.288Z",
+          "reason": "help_outline\nHelp\nmanage_accounts\nUser settings\n\t\nnotifications\nMessages\n1\n\ue5c5\nhome\nOverview\nlightbulb_2\nInsights\ntrending_up\nPerformance\nkeyboard_arrow_down\nsearch\nURL inspection\nIndexing\nkeyboard_arrow_up\nfile_copy\nPages\nvideo_library\nVideos\naccount_tree\nSitemaps\nvisibility_off\nRemovals\nExperience\nkeyboard_arrow_up\nspeed\nCore Web Vitals\nlock\nHTTPS\nShopping\nkeyboard_arrow_up\nlayers\nProduct snippets\nlayers\nMerchant listings\nEnhancements\nkeyboard_arrow_up\nlayers\nBreadcrumbs\nlayers\nImage Metadata\nSecurity & Manual Actions\nkeyboard_arrow_down\nlink_2\nLinks\ntrophy\nAchievements\nsettings\nSettings\nfeedback\nSubmit feedback\ninfo\nAbout Search Console\nPrivacyTerms\nhttps://dollwow.com/shop/silicone\nURL Inspection\nTEST LIVE URL\ncheck_circle\nURL is on Google\nIt can appear in Google Search results (if not subject to a manual action or removal request) with all relevant enhancements. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ncheck_circle\nPage indexing\nPage is indexed\n\ue313\nEnhancements & Experience\ncheck_circle\nHTTPS\nPage is served over HTTPS\n\ue315\ncheck_circle\nBreadcrumbs\n1 valid item detected\n\ue315\nerror_outline\nQuota Exceeded\nSorry--we couldn't process this request because you've exceeded your daily quota. Please try submitting this again tomorrow.\nDismiss"
         }
       ],
       "policy": {
@@ -1139,7 +1149,42 @@
         "batchA": "DOL229c7488c54approved5AownersafterpriorSprint1/warehouse/directory;noB/later. No retry23Oct;laterquotaavailabilitynotguaranteed.",
         "batchB": "DOL229dfb88d3d/9758dfdbapproved5BownersafterA;noC/later."
       },
-      "nativeDocument": "https://linear.app/dollwow/document/dol-237-google-request-indexing-queue-and-submission-receipts-b144644d0126"
+      "nativeDocument": "https://linear.app/dollwow/document/dol-237-google-request-indexing-queue-and-submission-receipts-b144644d0126",
+      "attemptHistory": [
+        {
+          "url": "https://dollwow.com/learn/warehouse-stock-vs-custom-made",
+          "ticket": "DOL-227",
+          "status": "blocked",
+          "inspectionStartedAt": "2026-10-23T10:16:47.894Z",
+          "inspectionBefore": "https://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical",
+          "requestStartedAt": "2026-10-23T10:16:53.480Z",
+          "reason": "help_outline\nHelp\nmanage_accounts\nUser settings\n\t\nnotifications\nMessages\n1\n\ue5c5\nhome\nOverview\nlightbulb_2\nInsights\ntrending_up\nPerformance\nkeyboard_arrow_down\nsearch\nURL inspection\nIndexing\nkeyboard_arrow_up\nfile_copy\nPages\nvideo_library\nVideos\naccount_tree\nSitemaps\nvisibility_off\nRemovals\nExperience\nkeyboard_arrow_up\nspeed\nCore Web Vitals\nlock\nHTTPS\nShopping\nkeyboard_arrow_up\nlayers\nProduct snippets\nlayers\nMerchant listings\nEnhancements\nkeyboard_arrow_up\nlayers\nBreadcrumbs\nlayers\nImage Metadata\nSecurity & Manual Actions\nkeyboard_arrow_down\nlink_2\nLinks\ntrophy\nAchievements\nsettings\nSettings\nfeedback\nSubmit feedback\ninfo\nAbout Search Console\nPrivacyTerms\nhttps://dollwow.com/learn/warehouse-stock-vs-custom-made\nURL Inspection\nTEST LIVE URL\ninfo\nURL is not on Google\nThis page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more\nVIEW CRAWLED PAGE\nPage changed?\nREQUEST INDEXING\ninfo\nPage indexing\nPage is not indexed: URL is unknown to Google\n\ue316\nDiscovery\nSitemaps\nNo referring sitemaps detected\nReferring page\nNone detected\nURL might be known from other sources that are currently not reported\nCrawl\nLast crawl\nN/A\nCrawled as\nN/A\nCrawl allowed?\nN/A\nPage fetch\nN/A\nIndexing allowed?\ninfo\nN/A\nIndexing\nUser-declared canonical\nN/A\nGoogle-selected canonical\n\ue8fd\nN/A\nLEARN MORE\nEnhancements & Experience\nOnly indexed URLs can have enhancements\nerror_outline\nQuota Exceeded\nSorry--we couldn't process this request because you've exceeded your daily quota. Please try submitting this again tomorrow.\nDismiss"
+        }
+      ],
+      "resume24Oct": {
+        "at": "2026-10-24T00:15:28.063619+00:00",
+        "approval": "DOL237cecb85ae and31ab8841; Irontech first, normal existing authorized UI only",
+        "events": [
+          {
+            "url": "https://dollwow.com/brands/irontech-dolls",
+            "ticket": "Sprint1",
+            "status": "request_accepted",
+            "inspectionStartedAt": "2026-10-24T00:11:33.291Z",
+            "requestStartedAt": "2026-10-24T00:11:38.838Z",
+            "acceptedAt": "2026-10-24T00:13:07.505Z",
+            "observedMessage": "Indexing requested; URL was added to a priority crawl queue"
+          },
+          {
+            "url": "https://dollwow.com/shop/silicone",
+            "ticket": "Sprint1",
+            "status": "blocked",
+            "inspectionStartedAt": "2026-10-24T00:13:07.679Z",
+            "requestStartedAt": "2026-10-24T00:13:13.288Z"
+          }
+        ],
+        "priorAcceptedPreserved": 10,
+        "limits": "New UTC date is not proof of a quota reset. Stop on an actual quota/challenge response. No repeated accepted URLs, sitemap resubmission, settings/users change or unsupported Indexing API. Stored UI crawl/index verdicts are historical, not fresh post-release indexing proof."
+      }
     },
     "weekly": {
       "firstMonday": "2026-10-26",
