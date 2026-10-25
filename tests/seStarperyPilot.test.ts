@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { seStarperyPilot, seStarperyPilotEnabled, seStarperyPriceGap } from '@/lib/learn/seStarperyPilot';
+import { amyDollVueLooks,seStarperyPicks,seStarperyTradeoffs,seStarperyPilot, seStarperyPilotEnabled, seStarperyPriceGap } from '@/lib/learn/seStarperyPilot';
 
 describe('single SE versus Starpery reader pilot', () => {
   it('is available only on preview deployments', () => {
@@ -11,9 +11,17 @@ describe('single SE versus Starpery reader pilot', () => {
     expect(alba.handle).toContain('sedoll-alba-a-161cm');
     expect(amy.handle).toContain('starpery-amy-161cm');
     expect(amy.weight - alba.weight).toBe(17.5);
-    expect(amy.waist - alba.waist).toBe(52);
-    expect(amy.hips - alba.hips).toBe(36);
+    expect(amy).not.toHaveProperty('waist');
+    expect(amy).not.toHaveProperty('hips');
     expect(alba.height).toBe(amy.height);
+  });
+  it('represents both brands in four need-based picks and real tradeoffs',()=>{
+    expect(seStarperyPicks).toHaveLength(4);
+    expect(seStarperyPicks.filter(p=>p.modelIndex===0)).toHaveLength(2);
+    expect(seStarperyPicks.filter(p=>p.modelIndex===1)).toHaveLength(2);
+    for(const item of seStarperyTradeoffs){expect(item.pros).toHaveLength(4);expect(item.cons).toHaveLength(3);}
+    expect(amyDollVueLooks).toHaveLength(2);
+    expect(amyDollVueLooks[0].selections).toContainEqual({groupId:'eye-color',optionId:'green'});
   });
   it('gives each brand a concrete pick with an advantage and trade-off', () => {
     for (const model of seStarperyPilot.models) {
