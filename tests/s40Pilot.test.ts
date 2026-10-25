@@ -1,0 +1,19 @@
+import {describe,it,expect} from 'vitest';
+import {s40FeaturedLooks,s40PilotEnabled,s40PilotHandles} from '@/lib/learn/s40Pilot';
+
+describe('single S40 reference pilot',()=>{
+ it('keeps all fourteen reviewed handles distinct',()=>{
+  expect(s40PilotHandles).toHaveLength(14);
+  expect(new Set(s40PilotHandles).size).toBe(14);
+  expect(s40PilotHandles.every(h=>h.startsWith('irontech-eileen-'))).toBe(true);
+ });
+ it('features five real listed looks without replacing the full listing set',()=>{
+  expect(s40FeaturedLooks).toHaveLength(5);
+  expect(new Set(s40FeaturedLooks.map(l=>l.handle)).size).toBe(5);
+  for(const look of s40FeaturedLooks)expect(s40PilotHandles).toContain(look.handle);
+ });
+ it('does not open production or development reference routes',()=>{
+  expect(s40PilotEnabled('preview')).toBe(true);
+  for(const mode of ['production','development',undefined])expect(s40PilotEnabled(mode)).toBe(false);
+ });
+});
