@@ -3,14 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {ArrowRight,Sparkles} from 'lucide-react';
-import {getProductsByHandles} from '@/lib/shopify/storefront';
+import {getProductByHandle,getProductsByHandles} from '@/lib/shopify/storefront';
 import {getCurrentDollVueHolds} from '@/lib/dollvue/currentHold';
 import {protectedProductImageUrlFor} from '@/lib/catalog/productImage';
 import {productPublicTitle} from '@/lib/catalog/naming';
-import {dollVueUrl,isDollVueCatalogProduct} from '@/lib/dollvue/config';
+import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct} from '@/lib/dollvue/config';
+import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
 import {DisplayMoney} from '@/components/CurrencyProvider';
 import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
-import {s40FeaturedLooks,s40PilotEnabled,s40PilotHandles} from '@/lib/learn/s40Pilot';
+import {s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles} from '@/lib/learn/s40Pilot';
 
 export const dynamic='force-dynamic';
 export const metadata:Metadata={title:'Irontech S40: Eileen, Your Way',description:'Meet Eileen in five real factory looks, explore her listed builds and make your own version in DollVue.',robots:{index:false,follow:false}};
@@ -30,8 +31,12 @@ export default async function S40Pilot(){
     return entry?[{...look,image:entry.image}]:[];
   });
   if(looks.length!==5)notFound();
-  const muse=entries.find(e=>isDollVueCatalogProduct(e.product));
+  const muse=entries.find(e=>e.product.handle===s40PilotHandles[0]&&isDollVueCatalogProduct(e.product));
   if(!muse)notFound();
+  const fullMuse=await getProductByHandle(muse.product.handle,{cache:'no-store',strict:true}).catch(()=>null);
+  if(!fullMuse||fullMuse.id!==muse.product.id)notFound();
+  const museEligibility=await resolveCurrentDollVueEligibility(fullMuse);
+  if(!museEligibility.available||s40DollVueLooks.some(look=>!areDollVueSelectionsValid(museEligibility.config,[...look.selections])))notFound();
   return <div data-s40-pilot>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
       <Link href="/brands/irontech-dolls" className="text-sm font-semibold text-gold-300">Irontech Dolls</Link>
@@ -41,12 +46,20 @@ export default async function S40Pilot(){
     </div></section>
     <section className="tone-section" data-tone="blush"><div className="tone-inner">
       <h2 className="max-w-3xl text-3xl font-semibold">For the collector who loves a little range</h2>
-      <p className="mt-4 max-w-3xl text-base leading-8">I like S40 for the way she takes on a new mood without losing that recognizable face. Brunette waves feel warm and romantic; a neat bob is more casual; blonde hair and glasses bring a playful edge. If you enjoy changing a look with hair and styling, Eileen gives you a lovely place to start.</p>
+      <p className="mt-4 max-w-3xl text-base leading-8">We like S40 for the way she takes on a new mood without losing that recognizable face. Brunette waves feel warm and romantic; a neat bob is more casual; blonde hair and glasses bring a playful edge. If you enjoy changing a look with hair and styling, Eileen gives you a lovely place to start.</p>
       <p className="mt-4 max-w-3xl text-base leading-8">The photos above are different real product listings, not DollVue renders. Choose the body and material you want from the builds below, then use that product&apos;s customizer for the choices offered on that build.</p>
       <div className="mt-8 border-t border-current/20 pt-8">
         <p className="text-sm font-semibold">DollVue</p>
         <h2 className="mt-3 text-3xl font-semibold">Try this head your way in DollVue</h2>
-        <p className="mt-4 max-w-3xl text-base leading-8">Start with Eileen and explore her available appearance choices. See which look feels like yours, then return to the customizer to choose the actual build. DollVue images are labelled previews, separate from the factory photos.</p>
+        <p className="mt-4 max-w-3xl text-base leading-8">Start with Eileen and explore her available appearance choices. A warmer hair color and brighter eyes, or a deeper skin tone with jet-black hair: which Eileen feels like yours?</p>
+        <div className="mt-6 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2" data-s40-dollvue-looks>
+          {s40DollVueLooks.map(look=><figure key={look.image} className="min-w-0">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-md bg-black/10">
+              <Image src={look.image} alt={`DollVue preview of Eileen S40: ${look.title}`} fill sizes="(min-width:640px) 440px, 90vw" className="object-contain"/>
+            </div>
+            <figcaption className="mt-3"><span className="block text-sm font-semibold">DollVue preview</span><span className="mt-1 block text-base">{look.title}</span></figcaption>
+          </figure>)}
+        </div>
         <div className="mt-6 flex flex-wrap gap-5">
           <Link href={dollVueUrl(muse.product.handle)} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Try Eileen in DollVue<Sparkles className="h-5 w-5" aria-hidden="true"/></Link>
           <Link href={`/products/${muse.product.handle}#build-studio`} className="inline-flex items-center gap-2 py-3 font-semibold underline">Customize this Eileen<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>

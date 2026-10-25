@@ -24,3 +24,8 @@ export const s40FeaturedLooks = [
 ] as const;
 
 export function s40PilotEnabled(environment:string|undefined){return environment==='preview';}
+
+export const s40DollVueLooks = [
+  {image:'/images/dollvue/s40-reference-pilot/golden-brown-blue-green.webp',title:'Golden Brown hair, Blue Green eyes',selections:[{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]},
+  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Dark Tan skin, Jet Black hair',selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]}
+] as const;
