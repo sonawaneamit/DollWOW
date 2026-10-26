@@ -25,7 +25,14 @@ export const s40FeaturedLooks = [
 
 export function s40PilotEnabled(environment:string|undefined){return environment==='preview';}
 
+const s40Styles = ['Cozy Muse - 164LN','Midnight Tee','Gothic Black','Easygoing Overalls','Blonde and Glasses','White Bustier','Brunette Glamour','Gold Halter','Soft White','White V-neck','Corset Portrait','Outdoor White Bikini','Silver-haired Lace','Sunshine Yellow'] as const;
+export function s40CardLabel(handle:string){
+  const index=s40PilotHandles.findIndex(h=>h===handle);
+  return index<0?'Eileen S40':`Eileen - ${s40Styles[index]}`;
+}
+
 export const s40DollVueLooks = [
-  {image:'/images/dollvue/s40-reference-pilot/golden-brown-blue-green.webp',title:'Golden Brown hair, Blue Green eyes',selections:[{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]},
-  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Dark Tan skin, Jet Black hair',selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]}
+  {image:'/images/dollvue/s40-reference-pilot/golden-brown-blue-green.webp',title:'Golden Brown hair, Blue Green eyes',sourcePosition:1,selections:[{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]},
+  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Dark Tan skin, Jet Black hair',sourcePosition:3,selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]},
+  {image:'/images/dollvue/s40-reference-pilot/glow-chestnut.webp',title:'Glow skin, Chestnut hair',sourcePosition:2,selections:[{groupId:'skin-tone',optionId:'glow-skin'},{groupId:'hair-color',optionId:'2-chestnut'}]}
 ] as const;

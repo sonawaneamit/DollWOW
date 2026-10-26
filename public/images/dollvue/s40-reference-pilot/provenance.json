@@ -1,19 +1,67 @@
 {
   "kind": "Generated DollVue previews, not factory photographs",
-  "authorization": "DOL-233, Martin decision relayed 25 October 2026, f191549a-0cce-4004-8121-a82d41db5ad2",
-  "productHandle": "irontech-eileen-cozy-muse-164ln-s40-natural-silicone-companion-doll",
+  "authorization": "DOL23376d23e3d/f191549a",
   "provider": "Venice",
   "endpoint": "/api/v1/image/multi-edit",
   "requestedModel": "seedream-v5-pro-edit",
-  "modelNote": "Existing DollVue primary backend identifier selected under the explicit Venice-method approval; not GPT-image-2.5 output. Binary response does not independently attest the model revision.",
+  "modelNote": "Existing DollVue primary backend explicitly approved. Not GPT-image-2.5 output; binary response does not independently attest provider revision.",
+  "promptVersion": "two-option-preview-appearance-v2-editorial-watermark-exception-v1",
+  "editorialException": "Only factory watermark/logo removal permitted in addition to selected appearance options; original factory photographs unchanged.",
   "resolution": "2K",
-  "aspectRatio": "9:16",
-  "promptVersion": "two-option-preview-appearance-v2",
-  "sourceSha256": "928387bafde92f58ac1aa81d02e29e146557021175f9b08e93466f16a29e8216",
-  "review": "Codex visually inspected adult, non-explicit results against source and four option swatches on 25 October. Synthetic illustrations, not guarantees of exact manufactured color or geometry. Independent Dolly review pending.",
-  "cost": "Two successful authorized requests; no retries or fallback. Provider charge not returned in binary responses; not claimed free.",
+  "productHandle": "irontech-eileen-cozy-muse-164ln-s40-natural-silicone-companion-doll",
+  "review": "Codex inspected source bases1/3/2,option references and all3adult non-explicit outputs26Oct;no visible factory watermarks. Independent Dolly review pending.",
+  "cost": "3authorized200requests,no retries/fallback. Provider charges not returned,not claimed free.",
   "assets": [
-    {"file":"golden-brown-blue-green.webp","sha256":"d53634fb56e14a43378480844ff8b86b826d3ebe9e98858054c239de8e09a904","generatedAt":"2026-10-25T21:55:13.376Z","choices":[{"groupId":"hair-color","optionId":"1-golden-brown"},{"groupId":"eye-color","optionId":"blue-green"}]},
-    {"file":"dark-tan-jet-black.webp","sha256":"86ec954bd8ceb0e059d2ccb6fd54a2c74784dc8c74a25ce7cc3eee3f4a087f95","generatedAt":"2026-10-25T21:55:56.609Z","choices":[{"groupId":"skin-tone","optionId":"dark-tan-skin"},{"groupId":"hair-color","optionId":"3-jet-black"}]}
+    {
+      "file": "golden-brown-blue-green.webp",
+      "sha256": "8460f68bacc9f5bd95c41e0770f5dea73d9764b1213a8d1747ec99afe80c75da",
+      "at": "2026-10-26T00:37:13.613Z",
+      "sourcePosition": 1,
+      "sourceSha256": "9a65a7b521618595b3f0c0c96b611642cb3b1963d19a23683fc09ac64dc109a7",
+      "selections": [
+        {
+          "groupId": "hair-color",
+          "optionId": "1-golden-brown"
+        },
+        {
+          "groupId": "eye-color",
+          "optionId": "blue-green"
+        }
+      ]
+    },
+    {
+      "file": "dark-tan-jet-black.webp",
+      "sha256": "fb1f71729fa547a95e548558cf0bda574c2fcc935d1786a6d3d5c4407a0bc8c9",
+      "at": "2026-10-26T00:37:51.848Z",
+      "sourcePosition": 3,
+      "sourceSha256": "43d348405544d4f8dd7246c8d94b06473f15798a3e470f5a9945cc87cf3ffe8b",
+      "selections": [
+        {
+          "groupId": "skin-tone",
+          "optionId": "dark-tan-skin"
+        },
+        {
+          "groupId": "hair-color",
+          "optionId": "3-jet-black"
+        }
+      ]
+    },
+    {
+      "file": "glow-chestnut.webp",
+      "sha256": "be4debe8549e74eeb74c6f27d3e184b2486d500eb41a39fb59daebcbd5a92f53",
+      "at": "2026-10-26T00:38:29.778Z",
+      "sourcePosition": 2,
+      "sourceSha256": "4ebd66b2c2b77e14797631cca2b601b8d02a62830f1f064ae412864efd78958b",
+      "selections": [
+        {
+          "groupId": "skin-tone",
+          "optionId": "glow-skin"
+        },
+        {
+          "groupId": "hair-color",
+          "optionId": "2-chestnut"
+        }
+      ]
+    }
   ]
 }
