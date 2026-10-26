@@ -33,6 +33,6 @@ export function s40CardLabel(handle:string){
 
 export const s40DollVueLooks = [
   {image:'/images/dollvue/s40-reference-pilot/golden-brown-blue-green.webp',title:'Golden Brown hair, Blue Green eyes',sourcePosition:1,selections:[{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]},
-  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Dark Tan skin, Jet Black hair',sourcePosition:3,selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]},
-  {image:'/images/dollvue/s40-reference-pilot/glow-chestnut.webp',title:'Glow skin, Chestnut hair',sourcePosition:2,selections:[{groupId:'skin-tone',optionId:'glow-skin'},{groupId:'hair-color',optionId:'2-chestnut'}]}
+  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Jet Black hair',sourcePosition:3,selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]},
+  {image:'/images/dollvue/s40-reference-pilot/glow-chestnut.webp',title:'Deep brown hair',sourcePosition:2,selections:[{groupId:'skin-tone',optionId:'glow-skin'},{groupId:'hair-color',optionId:'2-chestnut'}]}
 ] as const;

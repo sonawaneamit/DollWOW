@@ -50,7 +50,7 @@ export default async function S40Pilot(){
       <div className="mt-8 border-t border-current/20 pt-8">
         <p className="text-sm font-semibold">DollVue</p>
         <h2 className="mt-3 text-3xl font-semibold">Try this head your way in DollVue</h2>
-        <p className="mt-4 max-w-3xl text-base leading-8">Keep the face you love. Change her hair, eyes or skin tone and see a new side of Eileen before you choose your build. Soft and romantic, sharp and dramatic, or somewhere entirely your own: make this S40 yours.</p>
+        <p className="mt-4 max-w-3xl text-base leading-8">This is where Eileen becomes yours. Swap her hair and eye colour, explore skin tones and try a different mood before you choose your build. Soft and romantic, sharp and dramatic, or somewhere entirely your own: make this S40 yours.</p>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-s40-dollvue-looks>
           {s40DollVueLooks.map(look=><figure key={look.image} className="min-w-0">
             <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10">
@@ -68,7 +68,7 @@ export default async function S40Pilot(){
     </div></section>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
       <h2 className="text-3xl font-semibold">Find your Eileen</h2>
-      <p className="mt-4 max-w-3xl text-base leading-8">Explore all {entries.length} S40 listings, from different body shapes to different materials. Start with the silhouette you love; check each listing for its measurements, options and current price.</p>
+      <p className="mt-4 max-w-3xl text-base leading-8">Explore S40 builds, from different body shapes to different materials. Start with the silhouette you love; check each listing for its measurements, options and current price.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">The same face comes on different body and material combinations, so these builds have different starting prices; selected upgrades change the final total.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">Silicone head describes the face material, not an all-silicone body. Check the body material on the build you choose.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">Blonde and Glasses, White Bustier, Brunette Glamour and Gold Halter share the same listed 164 cm F-cup specifications and starting price, with different photo styling.</p>

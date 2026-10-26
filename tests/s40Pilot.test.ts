@@ -8,6 +8,8 @@ describe('single S40 reference pilot',()=>{
   expect(s40DollVueLooks.map(l=>l.sourcePosition)).not.toContain(0);
   expect(s40DollVueLooks[0].selections).toEqual([{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]);
   expect(s40DollVueLooks[1].selections).toEqual([{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]);
+  expect(s40DollVueLooks[1].title).toBe('Jet Black hair');
+  expect(s40DollVueLooks[2].title).toBe('Deep brown hair');
   for(const look of s40DollVueLooks)expect(look.image).toMatch(/^\/images\/dollvue\/s40-reference-pilot\//);
  });
  it('distinguishes all fourteen cards without changing catalog titles',()=>{
