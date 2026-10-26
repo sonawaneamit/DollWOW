@@ -1,0 +1,114 @@
+{
+  "kind": "Three generated look previews and one ungenerated factory-photo crop",
+  "approval": "DOL233b1d4eca3 private-preview media PASS; integrated-page review still required",
+  "provider": "Venice",
+  "requestedModel": "seedream-v5-pro-edit",
+  "modelNote": "Explicit existing backend-method approval. Not GPT-image-2.5; binary response does not independently attest model revision.",
+  "sourceProduct": "irontech-eileen-165cm-g-cup-hybrid-companion-doll-8fs16",
+  "sourceEvidence": "https://www.rosemarydoll.com/product/165cm-5ft5-g-cup-silicone-sex-doll-eileen/",
+  "sourcePosition": 0,
+  "sourceCrop": {
+    "left": 160,
+    "top": 0,
+    "width": 675,
+    "height": 900
+  },
+  "identityCrop": {
+    "left": 235,
+    "top": 55,
+    "width": 405,
+    "height": 455
+  },
+  "sameReferenceAcrossAll": true,
+  "skinUnchanged": true,
+  "caveat": "Eyes may appear larger/brighter than the real doll; original factory photograph is displayed beside previews. Generated styling is illustrative, not an included-accessory promise. Third tee remains black, not the requested rose.",
+  "cost": "Three successful authorized calls; no retries/fallback. Provider charges not returned, not claimed free.",
+  "assets": [
+    {
+      "file": "blonde-blue-green.webp",
+      "sha256": "c5cedb681c81be648744d8aa24ea3bfb8a6679a00bdf1a570fc1060cbdca1822",
+      "sourceSha256": "3494fe4c469941d837737dd706387b18a57041b5a93f93ba21a6be940a16a0bb",
+      "cropSha256": "3cdaa39c723f5cdbe5d7dc1de3a36ef53f867df85f9b25037b9fc61a92f94cbd",
+      "identitySha256": "e4c1615bf439ee3379c9c2f4988f1d7cc7cfcf8b8de6eff90fc98703e9b20f8e",
+      "selections": [
+        {
+          "groupId": "hair-color",
+          "optionId": "4-medium-blonde"
+        },
+        {
+          "groupId": "eye-color",
+          "optionId": "blue-green"
+        }
+      ],
+      "promptSha256": "c62babfc613dd37b5968fba9a379bed6b42dcfdb0c56afd43f22bf418ea1114a",
+      "settings": {
+        "modelId": "seedream-v5-pro-edit",
+        "aspect_ratio": "3:4",
+        "resolution": "2K",
+        "output_format": "webp",
+        "safe_mode": true,
+        "enhance_prompt": false,
+        "disable_prompt_optimization_thinking": true
+      }
+    },
+    {
+      "file": "black-green.webp",
+      "sha256": "40224204786bba38193611ae3d43c39379f694a900dd083ccd4925fe042137cc",
+      "sourceSha256": "3494fe4c469941d837737dd706387b18a57041b5a93f93ba21a6be940a16a0bb",
+      "cropSha256": "3cdaa39c723f5cdbe5d7dc1de3a36ef53f867df85f9b25037b9fc61a92f94cbd",
+      "identitySha256": "e4c1615bf439ee3379c9c2f4988f1d7cc7cfcf8b8de6eff90fc98703e9b20f8e",
+      "selections": [
+        {
+          "groupId": "hair-color",
+          "optionId": "3-jet-black"
+        },
+        {
+          "groupId": "eye-color",
+          "optionId": "green"
+        }
+      ],
+      "promptSha256": "7f05c00c940876e104348c68e63718bd95fb3cb44272d2a1e1a22349f28c56f2",
+      "settings": {
+        "modelId": "seedream-v5-pro-edit",
+        "aspect_ratio": "3:4",
+        "resolution": "2K",
+        "output_format": "webp",
+        "safe_mode": true,
+        "enhance_prompt": false,
+        "disable_prompt_optimization_thinking": true
+      }
+    },
+    {
+      "file": "brown-amber.webp",
+      "sha256": "a388775257b1267391ca496d8c75136a336ff1352204b8fb5ee52af19e3aff6e",
+      "sourceSha256": "3494fe4c469941d837737dd706387b18a57041b5a93f93ba21a6be940a16a0bb",
+      "cropSha256": "3cdaa39c723f5cdbe5d7dc1de3a36ef53f867df85f9b25037b9fc61a92f94cbd",
+      "identitySha256": "e4c1615bf439ee3379c9c2f4988f1d7cc7cfcf8b8de6eff90fc98703e9b20f8e",
+      "selections": [
+        {
+          "groupId": "hair-color",
+          "optionId": "2-chestnut"
+        },
+        {
+          "groupId": "eye-color",
+          "optionId": "amber"
+        }
+      ],
+      "promptSha256": "b59629fc15cd7502a93454bc07fcd6157785f95cff9fa2e59c12aa163f614376",
+      "settings": {
+        "modelId": "seedream-v5-pro-edit",
+        "aspect_ratio": "3:4",
+        "resolution": "2K",
+        "output_format": "webp",
+        "safe_mode": true,
+        "enhance_prompt": false,
+        "disable_prompt_optimization_thinking": true
+      }
+    }
+  ],
+  "factoryReference": {
+    "file": "factory-reference.webp",
+    "originalSha256": "3494fe4c469941d837737dd706387b18a57041b5a93f93ba21a6be940a16a0bb",
+    "cropSha256": "3cdaa39c723f5cdbe5d7dc1de3a36ef53f867df85f9b25037b9fc61a92f94cbd"
+  }
+}

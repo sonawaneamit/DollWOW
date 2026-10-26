@@ -33,8 +33,16 @@ export function s40CardLabel(handle:string){
   return index<0?'Eileen S40':`Eileen - ${s40Styles[index]}`;
 }
 
+export const s40DollVueReference = {
+  image:'/images/dollvue/s40-reference-pilot/shared-identity/factory-reference.webp',
+  handle:s40PilotHandles[1],
+  productId:'gid://shopify/Product/10518046507192',
+  sourcePosition:0,
+  sourceUrl:'https://cdn.shopify.com/s/files/1/0960/7531/7432/files/165cm5ft5-G-cup-Silicone-Sex-Doll-_E2_80_93-Eileen-4.jpg?v=1786295846'
+} as const;
+
 export const s40DollVueLooks = [
-  {image:'/images/dollvue/s40-reference-pilot/golden-brown-blue-green.webp',title:'Golden Brown hair, Blue Green eyes',sourcePosition:1,selections:[{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]},
-  {image:'/images/dollvue/s40-reference-pilot/dark-tan-jet-black.webp',title:'Jet Black hair',sourcePosition:3,selections:[{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]},
-  {image:'/images/dollvue/s40-reference-pilot/glow-chestnut.webp',title:'Deep brown hair',sourcePosition:2,selections:[{groupId:'skin-tone',optionId:'glow-skin'},{groupId:'hair-color',optionId:'2-chestnut'}]}
+  {image:'/images/dollvue/s40-reference-pilot/shared-identity/blonde-blue-green.webp',title:'Blonde hair, Blue Green eyes',sourcePosition:0,selections:[{groupId:'hair-color',optionId:'4-medium-blonde'},{groupId:'eye-color',optionId:'blue-green'}]},
+  {image:'/images/dollvue/s40-reference-pilot/shared-identity/black-green.webp',title:'Black hair, Green eyes',sourcePosition:0,selections:[{groupId:'hair-color',optionId:'3-jet-black'},{groupId:'eye-color',optionId:'green'}]},
+  {image:'/images/dollvue/s40-reference-pilot/shared-identity/brown-amber.webp',title:'Brown hair, Amber eyes',sourcePosition:0,selections:[{groupId:'hair-color',optionId:'2-chestnut'},{groupId:'eye-color',optionId:'amber'}]}
 ] as const;

@@ -5,13 +5,13 @@ import {notFound} from 'next/navigation';
 import {ArrowRight,Sparkles} from 'lucide-react';
 import {getProductByHandle,getProductsByHandles} from '@/lib/shopify/storefront';
 import {getCurrentDollVueHolds} from '@/lib/dollvue/currentHold';
-import {protectedProductImageUrlFor} from '@/lib/catalog/productImage';
+import {productImageSources,protectedProductImageUrlFor} from '@/lib/catalog/productImage';
 import {productPublicTitle} from '@/lib/catalog/naming';
 import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct,DOLLVUE_FREE_PREVIEWS} from '@/lib/dollvue/config';
 import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
 import {DisplayMoney} from '@/components/CurrencyProvider';
 import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
-import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40ReaderHandles} from '@/lib/learn/s40Pilot';
 
 export const dynamic='force-dynamic';
 export const metadata:Metadata={title:'Irontech S40: Eileen, Your Way',description:'Meet Eileen in five real factory looks, explore her listed builds and make your own version in DollVue.',robots:{index:false,follow:false}};
@@ -31,12 +31,13 @@ export default async function S40Pilot(){
     return entry?[{...look,image:entry.image}]:[];
   });
   if(looks.length!==5)notFound();
-  const muse=entries.find(e=>e.product.handle===s40PilotHandles[0]&&isDollVueCatalogProduct(e.product));
-  if(!muse)notFound();
-  const fullMuse=await getProductByHandle(muse.product.handle,{cache:'no-store',strict:true}).catch(()=>null);
-  if(!fullMuse||fullMuse.id!==muse.product.id)notFound();
-  const museEligibility=await resolveCurrentDollVueEligibility(fullMuse);
-  if(!museEligibility.available||s40DollVueLooks.some(look=>!areDollVueSelectionsValid(museEligibility.config,[...look.selections])))notFound();
+  const preview=entries.find(e=>e.product.handle===s40DollVueReference.handle&&isDollVueCatalogProduct(e.product));
+  if(!preview)notFound();
+  const fullPreview=await getProductByHandle(preview.product.handle,{cache:'no-store',strict:true}).catch(()=>null);
+  if(!fullPreview||fullPreview.id!==s40DollVueReference.productId||fullPreview.id!==preview.product.id)notFound();
+  const eligibility=await resolveCurrentDollVueEligibility(fullPreview);
+  if(!eligibility.available||!eligibility.sourcePositions.includes(s40DollVueReference.sourcePosition)||productImageSources(fullPreview)[s40DollVueReference.sourcePosition]?.url!==s40DollVueReference.sourceUrl||s40DollVueLooks.some(look=>!areDollVueSelectionsValid(eligibility.config,[...look.selections])))notFound();
+  const comparison=[{image:s40DollVueReference.image,title:'Eileen in the original factory photograph',label:'Factory photograph'},...s40DollVueLooks.map(look=>({...look,label:'Look preview in DollVue'}))];
   return <div data-s40-pilot>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
       <Link href="/brands/irontech-dolls" className="text-sm font-semibold text-gold-300">Irontech Dolls</Link>
@@ -51,17 +52,17 @@ export default async function S40Pilot(){
         <p className="text-sm font-semibold">DollVue</p>
         <h2 className="mt-3 text-3xl font-semibold">Try this head your way in DollVue</h2>
         <p className="mt-4 max-w-3xl text-base leading-8">This is where Eileen becomes yours. Swap her hair and eye colour, explore skin tones and try a different mood before you choose your build. Soft and romantic, sharp and dramatic, or somewhere entirely your own: make this S40 yours.</p>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-s40-dollvue-looks>
-          {s40DollVueLooks.map(look=><figure key={look.image} className="min-w-0">
-            <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10">
-              <Image src={look.image} alt={`DollVue preview of Eileen S40: ${look.title}`} fill sizes="(min-width:640px) 440px, 90vw" className="object-contain"/>
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-s40-dollvue-looks>
+          {comparison.map(look=><figure key={look.image} className="min-w-0">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10" data-s40-comparison-frame>
+              <Image src={look.image} alt={`${look.label}: ${look.title}`} fill sizes="(min-width:1024px) 280px, (min-width:640px) 440px, 90vw" className="object-cover object-center"/>
             </div>
-            <figcaption className="mt-3"><span className="block text-sm font-semibold">DollVue preview</span><span className="mt-1 block text-base">{look.title}</span></figcaption>
+            <figcaption className="mt-3"><span className="block text-sm font-semibold">{look.label}</span><span className="mt-1 block text-base">{look.title}</span></figcaption>
           </figure>)}
         </div>
         <div className="mt-6 flex flex-wrap gap-5">
-          <Link href={dollVueUrl(muse.product.handle)} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Try this head your way in DollVue<Sparkles className="h-5 w-5" aria-hidden="true"/></Link>
-          <Link href={`/products/${muse.product.handle}#build-studio`} className="inline-flex items-center gap-2 py-3 font-semibold underline">Customize this Eileen<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
+          <Link href={dollVueUrl(preview.product.handle)} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Try your own look in DollVue<Sparkles className="h-5 w-5" aria-hidden="true"/></Link>
+          <Link href={`/products/${preview.product.handle}#build-studio`} className="inline-flex items-center gap-2 py-3 font-semibold underline">Customize this Eileen<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
         </div>
         <p className="mt-3 max-w-3xl text-sm leading-7">Free: {DOLLVUE_FREE_PREVIEWS} previews with your verified email. Preview outfits and settings are illustrative, not included accessories.</p>
       </div>

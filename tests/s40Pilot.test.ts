@@ -1,5 +1,5 @@
 import {describe,it,expect} from 'vitest';
-import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
 
 describe('single S40 reference pilot',()=>{
  it('defers only the Outdoor price card while retaining all source candidates',()=>{
@@ -9,14 +9,15 @@ describe('single S40 reference pilot',()=>{
   expect(s40PilotHandles).toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
   for(const look of s40FeaturedLooks)expect(s40ReaderHandles).toContain(look.handle);
  });
- it('keeps three supported generated looks on distinct non-primary bases',()=>{
+ it('keeps three approved looks pinned to the same confirmed factory identity',()=>{
   expect(s40DollVueLooks).toHaveLength(3);
-  expect(new Set(s40DollVueLooks.map(l=>l.sourcePosition)).size).toBe(3);
-  expect(s40DollVueLooks.map(l=>l.sourcePosition)).not.toContain(0);
-  expect(s40DollVueLooks[0].selections).toEqual([{groupId:'hair-color',optionId:'1-golden-brown'},{groupId:'eye-color',optionId:'blue-green'}]);
-  expect(s40DollVueLooks[1].selections).toEqual([{groupId:'skin-tone',optionId:'dark-tan-skin'},{groupId:'hair-color',optionId:'3-jet-black'}]);
-  expect(s40DollVueLooks[1].title).toBe('Jet Black hair');
-  expect(s40DollVueLooks[2].title).toBe('Deep brown hair');
+  expect(s40DollVueLooks.every(l=>l.sourcePosition===s40DollVueReference.sourcePosition)).toBe(true);
+  expect(s40DollVueReference.handle).toBe(s40PilotHandles[1]);
+  expect(s40DollVueReference.productId).toBe('gid://shopify/Product/10518046507192');
+  expect(s40DollVueLooks[0].selections).toEqual([{groupId:'hair-color',optionId:'4-medium-blonde'},{groupId:'eye-color',optionId:'blue-green'}]);
+  expect(s40DollVueLooks[1].selections).toEqual([{groupId:'hair-color',optionId:'3-jet-black'},{groupId:'eye-color',optionId:'green'}]);
+  expect(s40DollVueLooks[2].selections).toEqual([{groupId:'hair-color',optionId:'2-chestnut'},{groupId:'eye-color',optionId:'amber'}]);
+  expect(s40DollVueLooks.every(l=>!l.title.includes('skin'))).toBe(true);
   for(const look of s40DollVueLooks)expect(look.image).toMatch(/^\/images\/dollvue\/s40-reference-pilot\//);
  });
  it('distinguishes all fourteen cards without changing catalog titles',()=>{
