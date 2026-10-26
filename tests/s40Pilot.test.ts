@@ -1,7 +1,14 @@
 import {describe,it,expect} from 'vitest';
-import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
 
 describe('single S40 reference pilot',()=>{
+ it('defers only the Outdoor price card while retaining all source candidates',()=>{
+  expect(s40PilotHandles).toHaveLength(14);
+  expect(s40ReaderHandles).toHaveLength(13);
+  expect(s40ReaderHandles).not.toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
+  expect(s40PilotHandles).toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
+  for(const look of s40FeaturedLooks)expect(s40ReaderHandles).toContain(look.handle);
+ });
  it('keeps three supported generated looks on distinct non-primary bases',()=>{
   expect(s40DollVueLooks).toHaveLength(3);
   expect(new Set(s40DollVueLooks.map(l=>l.sourcePosition)).size).toBe(3);

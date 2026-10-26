@@ -11,17 +11,17 @@ import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct,DOLLVUE_FRE
 import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
 import {DisplayMoney} from '@/components/CurrencyProvider';
 import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
-import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
 
 export const dynamic='force-dynamic';
 export const metadata:Metadata={title:'Irontech S40: Eileen, Your Way',description:'Meet Eileen in five real factory looks, explore her listed builds and make your own version in DollVue.',robots:{index:false,follow:false}};
 
 export default async function S40Pilot(){
   if(!s40PilotEnabled(process.env.VERCEL_ENV))notFound();
-  const products=await getProductsByHandles([...s40PilotHandles],{revalidate:120});
+  const products=await getProductsByHandles([...s40ReaderHandles],{revalidate:120});
   const holds=await getCurrentDollVueHolds(products.map(p=>p.id));
   const cleared=products.filter(p=>p.extended.headModel==='head-s40'&&/irontech/i.test(p.extended.brand??p.vendor)&&holds.get(p.id)==='clear'&&!p.tags.some(t=>/hold|dollwow-test|dollwow-system/i.test(t)));
-  const entries=s40PilotHandles.flatMap(handle=>{
+  const entries=s40ReaderHandles.flatMap(handle=>{
     const product=cleared.find(p=>p.handle===handle);
     const image=product?protectedProductImageUrlFor(product,product.featuredImage??product.images[0],'card'):null;
     return product&&image?[{product,image}]:[];
