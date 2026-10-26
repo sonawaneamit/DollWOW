@@ -10,7 +10,8 @@ describe('single SE versus Starpery reader pilot', () => {
     const [alba, amy] = seStarperyPilot.models;
     expect(alba.handle).toContain('sedoll-alba-a-161cm');
     expect(amy.handle).toContain('starpery-amy-161cm');
-    expect(amy.weight - alba.weight).toBe(17.5);
+    expect(alba.weight).toBe(35);
+    expect(amy).not.toHaveProperty('weight');
     expect(amy).not.toHaveProperty('waist');
     expect(amy).not.toHaveProperty('hips');
     expect(alba.height).toBe(amy.height);

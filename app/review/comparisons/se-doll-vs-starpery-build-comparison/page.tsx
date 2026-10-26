@@ -39,14 +39,14 @@ export default async function SeStarperyPilotPage(){
       {photo?<Image src={photo} alt={`${model.brand} ${model.name}, factory photograph`} fill priority sizes="(min-width:1024px) 550px, 45vw" className="object-contain"/>:null}
      </Link>
      <p className="mt-4 text-xs font-semibold uppercase text-gold-300">{model.brand}</p><h2 className="mt-1 text-2xl font-semibold">{model.name}</h2>
-     <p className="mt-2 text-sm text-ivory-300"><span className="whitespace-nowrap">{model.height} cm</span> / <span className="whitespace-nowrap">{model.weight} kg</span></p>
+     <p className="mt-2 text-sm text-ivory-300"><span className="whitespace-nowrap">{model.height} cm</span>{'weight' in model?<> / <span className="whitespace-nowrap">{model.weight} kg</span></>:null}</p>
      <p className="mt-2 text-sm">From <strong><DisplayMoney amount={prices[i].amount} currencyCode={prices[i].currencyCode}/></strong></p>
     </article>;
    })}</div>
   </div></section>
   <section className="tone-section" data-tone="blush"><div className="tone-inner">
    <h2 className="text-3xl font-semibold">Our picks, by what matters to you</h2>
-   <p className="mt-4 max-w-3xl text-base leading-8">We would choose Alba A for a leaner, lower-weight build and Amy for a more generous silhouette. Here is where each earns her place.</p>
+   <p className="mt-4 max-w-3xl text-base leading-8">We would choose Alba A for a leaner, fashion-led build and Amy for a more generous silhouette. Here is where each earns her place.</p>
    <div className="mt-8 grid gap-x-10 gap-y-7 md:grid-cols-2">{seStarperyPicks.map(pick=><article key={pick.need} className="border-t border-current/20 pt-5" data-need-pick>
     <h3 className="text-lg font-semibold">{pick.need}</h3><Link href={pick.modelIndex?'#amy':'#alba-a'} className="mt-2 inline-flex items-center gap-2 text-xl font-semibold underline">{models[pick.modelIndex].brand} {models[pick.modelIndex].name}<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link><p className="mt-3 text-sm leading-7">{pick.reason}</p>
    </article>)}</div>
@@ -64,7 +64,7 @@ export default async function SeStarperyPilotPage(){
   </div></section>
   <section className="tone-section" data-tone="blush"><div className="tone-inner">
    <h2 className="text-3xl font-semibold">Where the build changes your decision</h2>
-   <p className="mt-4 max-w-3xl text-base leading-8">Alba A is <strong className="whitespace-nowrap">17.5 kg</strong> lighter in these listed builds.{gap?<> Her starting price is also <strong><DisplayMoney amount={gap.toFixed(2)} currencyCode={prices[0].currencyCode}/></strong> lower.</>:null} That is the practical case for Alba A; Amy makes her case with her shape and face.</p>
+   <p className="mt-4 max-w-3xl text-base leading-8">{gap?<>Alba A starts <strong><DisplayMoney amount={gap.toFixed(2)} currencyCode={prices[0].currencyCode}/></strong> lower. </>:null}That is the budget case for Alba A; Amy makes her case with her shape and face.</p>
    <div className="mt-6 overflow-x-auto"><table className="w-full min-w-[280px] text-left text-sm"><caption className="pb-4 text-left text-lg font-semibold">The base builds at a glance</caption>
     <thead><tr className="border-b border-current/25"><th className="p-3">Detail</th>{models.map(m=><th key={m.handle} className="p-3">{m.name}</th>)}</tr></thead>
     <tbody>
@@ -85,7 +85,7 @@ export default async function SeStarperyPilotPage(){
    <p className="text-sm font-semibold">DollVue</p><h2 className="mt-3 text-3xl font-semibold">Make her yours</h2><p className="mt-4 max-w-3xl text-base leading-8">Here is Amy in two different looks, using her available wig and eye choices.</p>
    <div className="mt-6 grid max-w-4xl gap-6 sm:grid-cols-2" data-amy-dollvue-looks>{amyDollVueLooks.map(look=><figure key={look.image} className="min-w-0"><div className="relative aspect-[2/3] overflow-hidden rounded-md bg-black/10"><Image src={look.image} alt={`DollVue preview of Amy: ${look.title}`} fill sizes="(min-width:640px) 440px, 90vw" className="object-contain"/></div><figcaption className="mt-3"><span className="block text-sm font-semibold">DollVue preview</span><span className="mt-1 block">{look.title}</span></figcaption></figure>)}</div>
    <Link href={dollVueUrl(models[1].handle)} className="mt-6 inline-flex items-center gap-2 font-semibold underline">Try Amy in DollVue<Sparkles className="h-4 w-4" aria-hidden="true"/></Link>
-   <div className="mt-10 border-t border-current/20 pt-8"><h2 className="text-2xl font-semibold">Choose the build that belongs in your life</h2><p className="mt-4 max-w-3xl text-base leading-8">Choose Alba A for the leaner, more manageable build. Choose Amy when you want the fuller figure. Pick your favorite, make the details yours, and let us help you get the build right.</p><div className="mt-6 flex flex-wrap gap-4">{models.map(m=><Link key={m.handle} href={`/products/${m.handle}#build-studio`} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Customize {m.name}<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>)}</div></div>
+   <div className="mt-10 border-t border-current/20 pt-8"><h2 className="text-2xl font-semibold">Choose the build that belongs in your life</h2><p className="mt-4 max-w-3xl text-base leading-8">Choose Alba A for the leaner, fashion-led build. Choose Amy when you want the fuller figure. Pick your favorite, make the details yours, and let us help you get the build right.</p><div className="mt-6 flex flex-wrap gap-4">{models.map(m=><Link key={m.handle} href={`/products/${m.handle}#build-studio`} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Customize {m.name}<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>)}</div></div>
   </div></section>
  </div>;
 }
