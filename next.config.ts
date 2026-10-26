@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/shop/mini-sex-dolls-0",
+        destination: "/shop/mini-sex-dolls",
+        statusCode: 301
+      },
+      {
         source: "/learn/sex-doll-storage-1",
         destination: "/learn/sex-doll-storage",
         permanent: true
