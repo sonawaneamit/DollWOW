@@ -1,0 +1,18 @@
+{
+ "kind":"Generated DollVue previews, not factory photographs",
+ "authorization":"DOL-232 Martin decision185fb132,25October2026",
+ "productHandle":"starpery-amy-161cm-h-cup-silicone-head-companion-doll-1l9j0",
+ "provider":"Venice",
+ "endpoint":"/api/v1/image/multi-edit",
+ "requestedModel":"seedream-v5-pro-edit",
+ "modelNote":"Existing DollVue primary backend under explicit Venice-method approval. Not GPT-image-2.5 output; binary responses do not independently attest provider model revision.",
+ "settings":{"resolution":"2K","aspectRatio":"2:3","promptVersion":"two-option-preview-appearance-v2"},
+ "sourcePosition":0,
+ "sourceSha256":"693433bd253ec40f57b654cb4eb1e9b1529eab38a43902a9075ebf11e498579f",
+ "review":"Codex visually inspected source,4optionreferences andbothadultnonexplicitoutputs25Oct. Illustrative previews,notexactmanufacturingcolor/geometryguarantees. Dollyreviewpending.",
+ "cost":"Two authorized200responses;no retries/fallback. Actual provider charge not returned;not claimed free.",
+ "assets":[
+  {"file":"amy-blonde-green.webp","sha256":"05b0d4d3c01ec345284cabe78d1b30c9304ab1d43bd2bbb1cd81b91322f44b4c","at":"2026-10-25T23:15:14.475Z","selections":[{"groupId":"hairstyle","optionId":"hairstyle-4"},{"groupId":"eye-color","optionId":"green"}]},
+  {"file":"amy-black-blue.webp","sha256":"b411e5362aa1a3e6d08f0d317ef33a2b77543b6537b6a0bf6b943433ac2b4c7b","at":"2026-10-25T23:15:56.029Z","selections":[{"groupId":"hairstyle","optionId":"hairstyle-1"},{"groupId":"eye-color","optionId":"blue"}]}
+ ]
+}
