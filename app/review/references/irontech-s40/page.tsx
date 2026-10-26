@@ -11,7 +11,7 @@ import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct,DOLLVUE_FRE
 import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
 import {DisplayMoney} from '@/components/CurrencyProvider';
 import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
-import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40ReaderHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles,s40SoftStyledHandles} from '@/lib/learn/s40Pilot';
 
 export const dynamic='force-dynamic';
 export const metadata:Metadata={title:'Irontech S40: Eileen, Your Way',description:'Meet Eileen in five real factory looks, explore her listed builds and make your own version in DollVue.',robots:{index:false,follow:false}};
@@ -37,12 +37,13 @@ export default async function S40Pilot(){
   if(!fullPreview||fullPreview.id!==s40DollVueReference.productId||fullPreview.id!==preview.product.id)notFound();
   const eligibility=await resolveCurrentDollVueEligibility(fullPreview);
   if(!eligibility.available||!eligibility.sourcePositions.includes(s40DollVueReference.sourcePosition)||productImageSources(fullPreview)[s40DollVueReference.sourcePosition]?.url!==s40DollVueReference.sourceUrl||s40DollVueLooks.some(look=>!areDollVueSelectionsValid(eligibility.config,[...look.selections])))notFound();
+  const makeupAvailable=areDollVueSelectionsValid(eligibility.config,[{groupId:'makeup-options',optionId:'s-makeup-upgrade'}]);
   const comparison=[{image:s40DollVueReference.image,title:'Eileen in the original factory photograph',label:'Factory photograph'},...s40DollVueLooks.map(look=>({...look,label:'Look preview in DollVue'}))];
   return <div data-s40-pilot>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
       <Link href="/brands/irontech-dolls" className="text-sm font-semibold text-gold-300">Irontech Dolls</Link>
       <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">Irontech S40: Eileen, Your Way</h1>
-      <p className="mt-5 max-w-3xl text-lg leading-8 text-ivory-300">Eileen has the quiet confidence of someone who can make a simple outfit feel like an entrance. At rest, her gaze is thoughtful rather than smiley; a change of hair or makeup brings out her softer or more dramatic side. Irontech calls this face S40, a useful name to look for across her different builds.</p>
+      <p className="mt-5 max-w-3xl text-lg leading-8 text-ivory-300">Eileen has the quiet confidence of someone who can make a simple outfit feel like an entrance. She has the stillness of a film-noir leading lady in the second before she delivers the line. At rest, her gaze is thoughtful rather than smiley; a change of hair or makeup brings out her softer or more dramatic side. Irontech calls this face S40, a useful name to look for across her different builds.</p>
       <div className="mt-8"><S40LookCarousel looks={looks}/></div>
     </div></section>
     <section className="tone-section" data-tone="blush"><div className="tone-inner">
@@ -51,7 +52,7 @@ export default async function S40Pilot(){
       <div className="mt-8 border-t border-current/20 pt-8">
         <p className="text-sm font-semibold">DollVue</p>
         <h2 className="mt-3 text-3xl font-semibold">Try this head your way in DollVue</h2>
-        <p className="mt-4 max-w-3xl text-base leading-8">This is where Eileen becomes yours. Swap her hair and eye colour, explore skin tones and try a different mood before you choose your build. Soft and romantic, sharp and dramatic, or somewhere entirely your own: make this S40 yours.</p>
+        <p className="mt-4 max-w-3xl text-base leading-8">She brings the face. You bring the attitude. Go blonde, go dark, change her eye color{makeupAvailable?' or try S+ makeup':''} in DollVue. See which version makes you look twice before you choose your build.</p>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-s40-dollvue-looks>
           {comparison.map(look=><figure key={look.image} className="min-w-0">
             <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10" data-s40-comparison-frame>
@@ -68,8 +69,8 @@ export default async function S40Pilot(){
       </div>
     </div></section>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
-      <h2 className="text-3xl font-semibold">Find your Eileen</h2>
-      <p className="mt-4 max-w-3xl text-base leading-8">Explore S40 builds, from different body shapes to different materials. Start with the silhouette you love; check each listing for its measurements, options and current price.</p>
+      <h2 className="text-3xl font-semibold">Explore all {entries.length} S40 builds</h2>
+      <p className="mt-4 max-w-3xl text-base leading-8">Start with the silhouette you love; check each listing for its measurements, options and current price. Hair, makeup, lighting and photo styling can give the same S40 head a softer or more dramatic look.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">The same face comes on different body and material combinations, so these builds have different starting prices; selected upgrades change the final total.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">Silicone head describes the face material, not an all-silicone body. Check the body material on the build you choose.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">Blonde and Glasses, White Bustier, Brunette Glamour and Gold Halter share the same listed 164 cm F-cup specifications and starting price, with different photo styling.</p>
@@ -83,7 +84,9 @@ export default async function S40Pilot(){
             </Link>
             <h3 className="mt-3 text-base font-semibold"><Link href={`/products/${product.handle}`} className="underline decoration-current/30 underline-offset-4">{s40CardLabel(product.handle)}</Link></h3>
             <p className="mt-2 text-sm text-ivory-300">{product.extended.cupSize} / {product.extended.heightCm} cm / {product.extended.material}</p>
+            {s40SoftStyledHandles.some(handle=>handle===product.handle)&&<p className="mt-2 text-sm leading-6">S40 head, photographed in a softer style.</p>}
             <p className="mt-2 text-sm">From <DisplayMoney amount={price.amount} currencyCode={price.currencyCode}/></p>
+            {product.handle===s40PilotHandles[11]&&<p className="mt-2 text-sm leading-6">Its listed weight and limb measurements differ from the higher-priced 164 cm F-cup configurations; this starting price is for this listing.</p>}
             <Link href={`/products/${product.handle}#build-studio`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gold-300">Explore this build<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
           </article>;
         })}

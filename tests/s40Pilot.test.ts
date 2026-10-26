@@ -1,13 +1,16 @@
 import {describe,it,expect} from 'vitest';
-import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles} from '@/lib/learn/s40Pilot';
+import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotEnabled,s40PilotHandles,s40ReaderHandles,s40SoftStyledHandles} from '@/lib/learn/s40Pilot';
 
 describe('single S40 reference pilot',()=>{
- it('defers only the Outdoor price card while retaining all source candidates',()=>{
+ it('restores all fourteen source candidates including the Outdoor card',()=>{
   expect(s40PilotHandles).toHaveLength(14);
-  expect(s40ReaderHandles).toHaveLength(13);
-  expect(s40ReaderHandles).not.toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
+  expect(s40ReaderHandles).toHaveLength(14);
+  expect(s40ReaderHandles).toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
   expect(s40PilotHandles).toContain('irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
   for(const look of s40FeaturedLooks)expect(s40ReaderHandles).toContain(look.handle);
+ });
+ it('identifies the three softer-styled S40 cards for the head explanation',()=>{
+  expect(s40SoftStyledHandles).toEqual([s40PilotHandles[8],s40PilotHandles[9],s40PilotHandles[10]]);
  });
  it('keeps three approved looks pinned to the same confirmed factory identity',()=>{
   expect(s40DollVueLooks).toHaveLength(3);

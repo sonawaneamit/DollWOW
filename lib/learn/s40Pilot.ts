@@ -15,7 +15,8 @@ export const s40PilotHandles = [
   'irontech-eileen-159cm-g-cup-silicone-head-companion-doll-7c8by'
 ] as const;
 
-export const s40ReaderHandles = s40PilotHandles.filter(handle=>handle!=='irontech-eileen-164cm-f-cup-silicone-head-companion-doll-1abea');
+export const s40ReaderHandles = [...s40PilotHandles];
+export const s40SoftStyledHandles = [s40PilotHandles[8],s40PilotHandles[9],s40PilotHandles[10]] as const;
 
 export const s40FeaturedLooks = [
   {handle:s40PilotHandles[0],title:'Soft waves, warm glamour',description:'Long brunette waves give Eileen a relaxed, romantic feel.'},
