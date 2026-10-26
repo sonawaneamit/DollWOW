@@ -1,21 +1,23 @@
 {
   "kind": "Generated DollVue previews, not factory photographs",
-  "authorization": "DOL23376d23e3d/f191549a",
+  "authorization": "DOL23301667c93/76d23e3d/f191549a",
   "provider": "Venice",
   "endpoint": "/api/v1/image/multi-edit",
   "requestedModel": "seedream-v5-pro-edit",
-  "modelNote": "Existing DollVue primary backend explicitly approved. Not GPT-image-2.5 output; binary response does not independently attest provider revision.",
-  "promptVersion": "two-option-preview-appearance-v2-editorial-watermark-exception-v1",
-  "editorialException": "Only factory watermark/logo removal permitted in addition to selected appearance options; original factory photographs unchanged.",
+  "modelNote": "Explicitly approved existing backend method. Not GPT-image-2.5. Binary response does not independently attest provider revision.",
+  "promptVersion": "two-option-preview-appearance-v2-editorial-watermark-exception-v1-reader-portrait-styling-v2",
+  "editorialException": "Dolly-requested consistent portrait framing, varied opaque outfits/settings, remove alcohol/foreground obstruction/factory watermark. Original factory photos unchanged; generated styling not included accessories.",
   "resolution": "2K",
+  "aspectRatio": "3:4",
+  "safeMode": true,
   "productHandle": "irontech-eileen-cozy-muse-164ln-s40-natural-silicone-companion-doll",
-  "review": "Codex inspected source bases1/3/2,option references and all3adult non-explicit outputs26Oct;no visible factory watermarks. Independent Dolly review pending.",
-  "cost": "3authorized200requests,no retries/fallback. Provider charges not returned,not claimed free.",
+  "review": "Codex inspected all three outputs; independent Dolly likeness/color review pending. Illustrative, not manufacturing-color or anatomy guarantees.",
+  "cost": "Three authorized successful requests; no retries/fallback. Provider charges not returned, not claimed free.",
   "assets": [
     {
       "file": "golden-brown-blue-green.webp",
-      "sha256": "8460f68bacc9f5bd95c41e0770f5dea73d9764b1213a8d1747ec99afe80c75da",
-      "at": "2026-10-26T00:37:13.613Z",
+      "sha256": "fde9347552d93e51e652ff81be9370fd25843aad5d13285b1d1ad607331609ae",
+      "at": "2026-10-26T01:33:35.060Z",
       "sourcePosition": 1,
       "sourceSha256": "9a65a7b521618595b3f0c0c96b611642cb3b1963d19a23683fc09ac64dc109a7",
       "selections": [
@@ -27,12 +29,13 @@
           "groupId": "eye-color",
           "optionId": "blue-green"
         }
-      ]
+      ],
+      "promptSha256": "13965f89f1d209d2cd68cfa50973d355e32944f8366fa80d9d94455c2a45fae5"
     },
     {
       "file": "dark-tan-jet-black.webp",
-      "sha256": "fb1f71729fa547a95e548558cf0bda574c2fcc935d1786a6d3d5c4407a0bc8c9",
-      "at": "2026-10-26T00:37:51.848Z",
+      "sha256": "3ab9637584548edd0a350abe0508a0da45b0bed46f50ece857fa74915a113324",
+      "at": "2026-10-26T01:34:21.647Z",
       "sourcePosition": 3,
       "sourceSha256": "43d348405544d4f8dd7246c8d94b06473f15798a3e470f5a9945cc87cf3ffe8b",
       "selections": [
@@ -44,12 +47,13 @@
           "groupId": "hair-color",
           "optionId": "3-jet-black"
         }
-      ]
+      ],
+      "promptSha256": "1ffe06829148cac0dfb4d7d3705fa6f23ddc120968e71a51a49db165fb70ac8a"
     },
     {
       "file": "glow-chestnut.webp",
-      "sha256": "be4debe8549e74eeb74c6f27d3e184b2486d500eb41a39fb59daebcbd5a92f53",
-      "at": "2026-10-26T00:38:29.778Z",
+      "sha256": "172632e231c62180ecd130e9bcae16fabbad783332e9c3ecbd50567990600b3b",
+      "at": "2026-10-26T01:35:08.901Z",
       "sourcePosition": 2,
       "sourceSha256": "4ebd66b2c2b77e14797631cca2b601b8d02a62830f1f064ae412864efd78958b",
       "selections": [
@@ -61,7 +65,8 @@
           "groupId": "hair-color",
           "optionId": "2-chestnut"
         }
-      ]
+      ],
+      "promptSha256": "2ba321d37478d8a2f833ddec5f2eba62baa02263caf5540ac589b87418eb390e"
     }
   ]
 }

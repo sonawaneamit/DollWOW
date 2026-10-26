@@ -7,7 +7,7 @@ import {getProductByHandle,getProductsByHandles} from '@/lib/shopify/storefront'
 import {getCurrentDollVueHolds} from '@/lib/dollvue/currentHold';
 import {protectedProductImageUrlFor} from '@/lib/catalog/productImage';
 import {productPublicTitle} from '@/lib/catalog/naming';
-import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct} from '@/lib/dollvue/config';
+import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct,DOLLVUE_FREE_PREVIEWS} from '@/lib/dollvue/config';
 import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
 import {DisplayMoney} from '@/components/CurrencyProvider';
 import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
@@ -53,7 +53,7 @@ export default async function S40Pilot(){
         <p className="mt-4 max-w-3xl text-base leading-8">Keep the face you love. Change her hair, eyes or skin tone and see a new side of Eileen before you choose your build. Soft and romantic, sharp and dramatic, or somewhere entirely your own: make this S40 yours.</p>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-s40-dollvue-looks>
           {s40DollVueLooks.map(look=><figure key={look.image} className="min-w-0">
-            <div className="relative aspect-[9/16] overflow-hidden rounded-md bg-black/10">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10">
               <Image src={look.image} alt={`DollVue preview of Eileen S40: ${look.title}`} fill sizes="(min-width:640px) 440px, 90vw" className="object-contain"/>
             </div>
             <figcaption className="mt-3"><span className="block text-sm font-semibold">DollVue preview</span><span className="mt-1 block text-base">{look.title}</span></figcaption>
@@ -63,12 +63,16 @@ export default async function S40Pilot(){
           <Link href={dollVueUrl(muse.product.handle)} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Try this head your way in DollVue<Sparkles className="h-5 w-5" aria-hidden="true"/></Link>
           <Link href={`/products/${muse.product.handle}#build-studio`} className="inline-flex items-center gap-2 py-3 font-semibold underline">Customize this Eileen<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
         </div>
+        <p className="mt-3 max-w-3xl text-sm leading-7">Free: {DOLLVUE_FREE_PREVIEWS} previews with your verified email. Preview outfits and settings are illustrative, not included accessories.</p>
       </div>
     </div></section>
     <section className="tone-section" data-tone="deep"><div className="tone-inner">
       <h2 className="text-3xl font-semibold">Find your Eileen</h2>
-      <p className="mt-4 max-w-3xl text-base leading-8">Explore {entries.length} listed S40 builds, from different body shapes to different materials. Start with the silhouette you love; each listing has its own measurements, options and current price.</p>
+      <p className="mt-4 max-w-3xl text-base leading-8">Explore all {entries.length} S40 listings, from different body shapes to different materials. Start with the silhouette you love; check each listing for its measurements, options and current price.</p>
       <p className="mt-3 max-w-3xl text-sm leading-7">The same face comes on different body and material combinations, so these builds have different starting prices; selected upgrades change the final total.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Silicone head describes the face material, not an all-silicone body. Check the body material on the build you choose.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Blonde and Glasses, White Bustier, Brunette Glamour and Gold Halter share the same listed 164 cm F-cup specifications and starting price, with different photo styling.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Starting prices are before any discount code: the Halloween $299 off has not been deducted. Any eligible code discount is applied at checkout.</p>
       <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
         {entries.map(({product,image})=>{
           const price=product.priceRange.minVariantPrice;
@@ -77,7 +81,7 @@ export default async function S40Pilot(){
               <Image src={image} alt={productPublicTitle(product)} fill sizes="(min-width:1024px) 280px, 45vw" className="object-contain"/>
             </Link>
             <h3 className="mt-3 text-base font-semibold"><Link href={`/products/${product.handle}`} className="underline decoration-current/30 underline-offset-4">{s40CardLabel(product.handle)}</Link></h3>
-            <p className="mt-2 text-sm text-ivory-300">{product.extended.heightCm} cm / {product.extended.material}</p>
+            <p className="mt-2 text-sm text-ivory-300">{product.extended.cupSize} / {product.extended.heightCm} cm / {product.extended.material}</p>
             <p className="mt-2 text-sm">From <DisplayMoney amount={price.amount} currencyCode={price.currencyCode}/></p>
             <Link href={`/products/${product.handle}#build-studio`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gold-300">Explore this build<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
           </article>;
