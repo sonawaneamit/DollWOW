@@ -897,7 +897,7 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
       description,
       url,
       type: "website",
-      siteName: "DollWow"
+      siteName: "DollWOW"
     },
     twitter: {
       card: "summary",
@@ -921,7 +921,7 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
       url,
       isPartOf: {
         "@type": "WebSite",
-        name: "DollWow",
+        name: "DollWOW",
         url: siteUrl
       },
       mainEntity: {

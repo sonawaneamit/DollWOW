@@ -8,10 +8,10 @@ export function buildSiteStructuredData() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      name: "DollWow",
+      name: "DollWOW",
       url: siteUrl,
       logo: `${siteUrl}/images/brand/dollwow-black-gold.png`,
-      description: "DollWow helps adults compare, customize, and buy companion dolls with clear product details, private checkout, and specialist support.",
+      description: "DollWOW helps adults compare, customize, and buy companion dolls with clear product details, private checkout, and specialist support.",
       foundingDate: "2026",
       contactPoint: [
         {
@@ -26,7 +26,7 @@ export function buildSiteStructuredData() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
-      name: "DollWow",
+      name: "DollWOW",
       url: siteUrl,
       publisher: {
         "@id": `${siteUrl}/#organization`

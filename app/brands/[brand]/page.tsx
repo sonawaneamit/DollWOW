@@ -78,7 +78,7 @@ export default async function BrandHubPage({
               <tr>
                 <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
                 <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">What to check</th>
-                <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">How DollWow helps</th>
+                <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">How DollWOW helps</th>
               </tr>
             </thead>
             <tbody>
@@ -112,7 +112,7 @@ export default async function BrandHubPage({
           <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">
-            Current DollWow collection
+            Current DollWOW collection
             {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
           </p>
         </div>

@@ -141,7 +141,7 @@ export function ProductFilters({
         <SelectFilter label="Gender" name="bodyType" value={filters.bodyType} options={catalogFilterOptions.bodyTypes} />
         <SelectFilter label="Availability" name="availability" value={filters.availability} options={catalogFilterOptions.availability} />
         <SelectFilter label="Material" name="material" value={filters.material} options={catalogFilterOptions.materials} />
-        <SelectFilter label="Product form" name="productForm" value={filters.productForm} options={catalogFilterOptions.productForms} />
+        <SelectFilter label="Doll type" name="productForm" value={filters.productForm} options={catalogFilterOptions.productForms} />
         <SelectFilter label="Height" name="height" value={filters.height} options={catalogFilterOptions.heights} />
         <SelectFilter label={isMdWeightBrand(filters.brand) ? 'Body weight' : 'Weight'} name="weight" value={filters.weight} options={catalogFilterOptions.weights} />
         <SelectFilter label="Cup size" name="cup" value={filters.cup} options={catalogFilterOptions.cups} />

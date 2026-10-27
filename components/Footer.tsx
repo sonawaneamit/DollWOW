@@ -62,10 +62,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16">
         <div className="grid gap-10 border-b border-border pb-10 md:grid-cols-2 lg:grid-cols-[1.35fr_repeat(4,1fr)]">
           <div className="md:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex" aria-label="DollWow home">
+            <Link href="/" className="inline-flex" aria-label="DollWOW home">
               <Image
                 src="/images/brand/dollwow-black-gold-lockup.png"
-                alt="DollWow.com"
+                alt="DollWOW.com"
                 width={650}
                 height={235}
                 sizes="220px"

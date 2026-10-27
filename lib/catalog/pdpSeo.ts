@@ -55,7 +55,7 @@ export function buildPdpMetadata(product: Product): Metadata {
       description,
       url: canonicalUrl,
       type: "website",
-      siteName: "DollWow",
+      siteName: "DollWOW",
       images: image ? [{ url: image, alt: product.featuredImage?.altText || title }] : undefined
     },
     twitter: {
