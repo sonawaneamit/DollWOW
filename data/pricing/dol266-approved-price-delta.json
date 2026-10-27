@@ -1,0 +1,98 @@
+[
+  {
+    "id": "gid://shopify/Product/10518019244216",
+    "handle": "doll-castle-luoyi-178cm-p-cup-silicone-companion-doll-1tnom",
+    "variantId": "gid://shopify/ProductVariant/53881274859704",
+    "before": 2199,
+    "after": 2499,
+    "menuHash": "6c41512f0d02b067d60a0975319bcec55ebe0f38e71f7fb281fe3fde2627ed4a",
+    "oldExpectedHash": "b27ba743ce7e5dd0c67c44c52bf402b747a726e21e5d2facaa6b52a1ee3c2ac7",
+    "actualBeforeHash": "b27ba743ce7e5dd0c67c44c52bf402b747a726e21e5d2facaa6b52a1ee3c2ac7",
+    "candidateHash": "92947dde3f28c04453417e71acab4f678ef33eccbda7c63f603c4e2215722aa9",
+    "recipeAvailable": true,
+    "beforePresets": [
+      2259,
+      2468,
+      2698
+    ],
+    "afterPresets": [
+      2559,
+      2768,
+      2998
+    ],
+    "missingNamed": [],
+    "dollVueFingerprintUnchanged": true
+  },
+  {
+    "id": "gid://shopify/Product/10518020423864",
+    "handle": "doll-castle-lyla-178cm-p-cup-silicone-companion-doll-1giz3",
+    "variantId": "gid://shopify/ProductVariant/53881277513912",
+    "before": 2199,
+    "after": 2499,
+    "menuHash": "6c41512f0d02b067d60a0975319bcec55ebe0f38e71f7fb281fe3fde2627ed4a",
+    "oldExpectedHash": "39834aa79aa2e8aa4ac9563c464992866929e78e11fe8ded187944ca31682cc4",
+    "actualBeforeHash": "39834aa79aa2e8aa4ac9563c464992866929e78e11fe8ded187944ca31682cc4",
+    "candidateHash": "253dcf89ef9dc7bccbb636c5e19357d0db7a9eb4b96e327ca975df7f89abacbe",
+    "recipeAvailable": true,
+    "beforePresets": [
+      2259,
+      2468,
+      2698
+    ],
+    "afterPresets": [
+      2559,
+      2768,
+      2998
+    ],
+    "missingNamed": [],
+    "dollVueFingerprintUnchanged": true
+  },
+  {
+    "id": "gid://shopify/Product/10518020489400",
+    "handle": "doll-castle-kirishima-eira-178cm-p-cup-silicone-companion-doll-a9ijy",
+    "variantId": "gid://shopify/ProductVariant/53881277579448",
+    "before": 2199,
+    "after": 2499,
+    "menuHash": "6c41512f0d02b067d60a0975319bcec55ebe0f38e71f7fb281fe3fde2627ed4a",
+    "oldExpectedHash": "a51e6a1e65f7dbb3950246ba788faba2c75ec9fa2a9221fc65566ae42a5a4801",
+    "actualBeforeHash": "a51e6a1e65f7dbb3950246ba788faba2c75ec9fa2a9221fc65566ae42a5a4801",
+    "candidateHash": "50bd5a2d95f493e617f3304347e02991b1afa4d8cd7c0e9ac029d1d17c5596f8",
+    "recipeAvailable": true,
+    "beforePresets": [
+      2259,
+      2468,
+      2698
+    ],
+    "afterPresets": [
+      2559,
+      2768,
+      2998
+    ],
+    "missingNamed": [],
+    "dollVueFingerprintUnchanged": true
+  },
+  {
+    "id": "gid://shopify/Product/10517656699064",
+    "handle": "jarliet-dolls-kate-148cm-e-cup-silicone-companion-doll-1knlr",
+    "variantId": "gid://shopify/ProductVariant/53880072372408",
+    "before": 1699,
+    "after": 1799,
+    "menuHash": "013e51444cf71eaeaf6ab7333e8ed30671bc9605b1714063bc753e80b260a8bf",
+    "oldExpectedHash": "808a68a45358d5c4bf40b3a2ce7639bc189981a1856ee83ddcaca680b4dc5726",
+    "actualBeforeHash": "808a68a45358d5c4bf40b3a2ce7639bc189981a1856ee83ddcaca680b4dc5726",
+    "candidateHash": "17e2e8b024b65703b5ea22746f2f1e4d18b9de2825b889105e3f102781fa6ff0",
+    "recipeAvailable": true,
+    "beforePresets": [
+      1759,
+      2057,
+      2207
+    ],
+    "afterPresets": [
+      1859,
+      2157,
+      2307
+    ],
+    "missingNamed": [],
+    "dollVueFingerprintUnchanged": true
+  }
+]

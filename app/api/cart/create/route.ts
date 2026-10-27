@@ -3,9 +3,11 @@ import { cartCreateRequestSchema } from "@/lib/cart/input";
 import { serverValidateAndRepriceLine } from "@/lib/cart/server-validation";
 import { createCart } from "@/lib/shopify/storefront";
 import { attachCheckoutAnalytics } from "@/lib/analytics/cart-context";
+import { assertDol266PricePreviewReadOnly } from '@/lib/catalog/dol266PricePreview';
 
 export async function POST(request: Request) {
   try {
+    assertDol266PricePreviewReadOnly();
     const input = cartCreateRequestSchema.parse(await request.json());
     const line = await serverValidateAndRepriceLine(input);
     const cart = await createCart({ ...line, discountCodes: input.discountCodes });
