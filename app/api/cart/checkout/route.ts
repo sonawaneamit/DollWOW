@@ -3,9 +3,11 @@ import { cartCheckoutRequestSchema } from "@/lib/cart/input";
 import { serverValidateAndRepriceLines } from "@/lib/cart/server-validation";
 import { createCartWithLines } from "@/lib/shopify/storefront";
 import { attachCheckoutAnalytics } from "@/lib/analytics/cart-context";
+import { assertPricePreviewReadOnly } from '@/lib/catalog/funwestPricePreview';
 
 export async function POST(request: Request) {
   try {
+    assertPricePreviewReadOnly();
     const input = cartCheckoutRequestSchema.parse(await request.json());
     const lines = await serverValidateAndRepriceLines(input.lines);
     const cart = await createCartWithLines({ lines, discountCodes: input.discountCodes });

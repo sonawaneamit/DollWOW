@@ -6,10 +6,12 @@ import { loadLocalTemplateRecipe } from './template-review-loader';
 import { createReleasedTemplateSelector } from './template-release-registry';
 import releaseRegistry from './evidence/template-release.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
+import { pricePreviewSourceProduct } from '@/lib/catalog/funwestPricePreview';
 
 const selectReleased = createReleasedTemplateSelector(releaseRegistry);
 
 export async function loadTemplateRecipe(product: Product): Promise<TemplatePresetDefinition | null | undefined> {
+  product = pricePreviewSourceProduct(product);
   const privateDraft = await getPrivateDraftPreview(product.handle);
   if (privateDraft && privateDraft.id === product.id) return privateDraftRecipe(product, getCustomizationConfig(product));
   const local = await loadLocalTemplateRecipe(product);
