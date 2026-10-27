@@ -2,6 +2,7 @@ import type { Product } from "@/types/product";
 import { withSeLightweight } from './se-lightweight';
 import { getIdoMdCustomizationConfig } from './ido-md';
 import { withSeSiliconeHead } from './se-silicone-head';
+import { withSeOct27PreviewRules } from './se-oct27-preview';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
 import { hasSourceProductionNoteSignal } from "@/lib/customization/production-notes";
 import { getAvantCustomizationGroups } from "@/lib/customization/avant";
@@ -279,7 +280,7 @@ const configs = {
 
 export function getCustomizationConfig(product: Product): BrandCustomizationConfig {
   const config = withoutOtherHeads(normalizeCustomerFacingCustomizationConfig(customizationConfig(product, "checkout")));
-  return withPreviewDealerDollVue(product, {...config, groups: ownedOptionGroups(config.groups)});
+  return withPreviewDealerDollVue(product, withSeOct27PreviewRules(product, {...config, groups: ownedOptionGroups(config.groups)}));
 }
 
 // FunWest/Top Fire imported menus never flagged DollVue appearance options, so the PDP DollVue entry

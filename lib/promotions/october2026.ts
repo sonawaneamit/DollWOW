@@ -8,6 +8,7 @@ import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption,
 import { getOptionConflict } from "@/lib/customization/resolve";
 import seReviewedHandles from "@/data/promotions/se-doll-september-2026-handles.json";
 import seOctoberReviewed from '@/data/promotions/se-october-2026-public.json';
+import { isSeHalloweenActive, seHalloweenCampaignDay, seHalloweenPreviewClockEnabled, SE_HALLOWEEN_2026 } from './seHalloween2026';
 
 const reviewedSeSiliconePro = new Set(seReviewedHandles.silicone_pro_custom_handles);
 
@@ -54,9 +55,15 @@ export function octoberProductFacts(product: OctoberProduct): OctoberProductFact
 
 export function octoberOfferForProduct(product: OctoberProduct, now = new Date()) {
   const facts = octoberProductFacts(product);
-  const kind = octoberOfferCandidate(facts, octoberCampaignDay(now));
+  const sePreview = facts.brand === 'se' && seHalloweenPreviewClockEnabled();
+  // Preview reuses October's exact eligibility/benefits with its approved Portugal window.
+  const kind = octoberOfferCandidate(facts, sePreview
+    ? isSeHalloweenActive(now.getTime()) ? OCTOBER_CAMPAIGNS.se.startsOn : ''
+    : octoberCampaignDay(now));
   if (!kind || facts.brand === "other") return null;
-  const campaign = OCTOBER_CAMPAIGNS[facts.brand];
+  const campaign = sePreview ? { ...OCTOBER_CAMPAIGNS.se,
+    endsOn: seHalloweenCampaignDay(new Date(Date.parse(SE_HALLOWEEN_2026.endsAt) - 1))
+  } : OCTOBER_CAMPAIGNS[facts.brand];
   const brandLabel = { se: "SE Doll", irontech: "Irontech", "real-lady": "Real Lady" }[facts.brand];
   const full = kind === "irontech-silicone-full-body" || kind === "real-lady-silicone-full-body";
   const included: string[] = kind === "se-tpe-full-body" ? [...OCTOBER_OPTION_RULES.seTpe.free]
@@ -240,9 +247,10 @@ export function octoberSupportedBenefits(product: OctoberProduct, context: Octob
 }
 
 export function seOctoberLightweightStatus(facts: OctoberProductFacts, now = new Date()) {
+  const day = octoberCampaignDay(now);
   return {
     eligible: seLightweightCandidate(facts),
-    launchPromotionActive: octoberCampaignDay(now) >= "2026-10-01" && octoberCampaignDay(now) <= "2026-10-31",
+    launchPromotionActive: seHalloweenPreviewClockEnabled() ? isSeHalloweenActive(now.getTime()) : day >= "2026-10-01" && day <= "2026-10-31",
     supplierSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.supplierSurchargeUSD,
     suggestedMinimumRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.suggestedMinimumRetailSurchargeUSD,
     siliconeHeadRetailSurchargeUSD: SE_LIGHTWEIGHT_DRAFT.siliconeHeadRetailSurchargeUSD,

@@ -16,6 +16,8 @@ import { HalloweenWindow } from "@/components/promotions/HalloweenWindow";
 import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
 import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
 import './compact-promo.css';
+import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
+import { isSeHalloweenActive, isSeHalloweenPreview } from '@/lib/promotions/seHalloween2026';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -51,8 +53,10 @@ export default function PromoIndexPage() {
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
   const hasMdPromotion = !isHiddenCatalogBrand("md") && isMdOctoberActive(new Date(promoClock));
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
+  const hasSeHalloween = isSeHalloweenPreview() && isSeHalloweenActive(Date.parse(promoClock));
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
   const itemList = [
+    ...(hasSeHalloween ? [{ name: 'SE Doll Halloween offers', url: `${siteUrl}/promo#se-halloween-2026` }] : []),
     ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
     ...(hasIdoPromotion ? [{ name: `${IDO_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${IDO_OCTOBER_OFFER.id}` }] : []),
     ...(hasMdPromotion ? [{ name: `${MD_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${MD_OCTOBER_OFFER.id}` }] : []),
@@ -86,6 +90,8 @@ export default function PromoIndexPage() {
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
       </header>}
+
+      <SeHalloweenPromotion enabled={hasSeHalloween} initialClock={promoClock} />
 
       <section className="mt-8" aria-labelledby="active-promotions-heading">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
