@@ -1,5 +1,25 @@
 # Release Measurement Tracker
 
+## Weekly Check, 26 October (Captured 27 October)
+
+[Catch-up report](weekly-release-measurement-2026-10-26.md) and
+[structured observations](weekly-release-measurement-2026-10-26.json) compare
+complete final GSC weeks 12-18 and 19-25 October. Site clicks rose from 57 to
+108 and impressions from 956 to 1,284. These are observations, not causal
+release lift or verified sales attribution. Twenty release/audit cohorts
+are reported separately; overlapping cohorts must not be summed.
+
+Ten Sprint1 URLs have current stored indexed PASS verdicts; three show
+post-release crawls. The rest of the rollout is not freshly inspected.
+No missing page row or unreadable Bing count is treated as zero. All 3,957
+ledger rows, original baseline windows and 28/56/84-day anchors remain
+byte-preserved. Scheduled-guide discovery and scheduler verification remain
+open; this report is not completion of the standing ticket.
+
+Dolly's 23 October 10:54 UTC comment approved separate Monday measurement;
+older approval-pending wording below is historical. This catch-up did not
+create a scheduler or extend the expired temporary heartbeat.
+
 ## Feature Guides, 23 October
 
 Martin approved the reviewed PR171 head on DOL-231. Production `cb421b99`
