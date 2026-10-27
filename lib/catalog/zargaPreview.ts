@@ -35,9 +35,9 @@ export function zargaPreviewProduct(): Product {
       weightLb: 10.18 * 2.2046226218, stockStatus: 'check_stock', customAvailable: true,
       previewCustomizationFixture: true,
       measurements: {
-        'Upper chest': '58.2 cm', 'Lower chest': '31 cm', Waist: '36.4 cm', Hips: '53 cm',
-        'Shoulder width': '23 cm', 'Neck circumference': '13.2 cm', 'Arm length': '28.8 cm',
-        'Upper arm circumference': '16.7 cm', 'Leg length': '35.6 cm', 'Thigh circumference': '30.1 cm', 'Foot length': '13 cm'
+        Height: '70 cm', Weight: '10.18 kg', Bust: '58.2 cm', Underbust: '31 cm', Waist: '36.4 cm', Hip: '53 cm',
+        'Shoulders Width': '23 cm', 'Neck circumference': '13.2 cm', 'Arms Length': '28.8 cm',
+        'Upper arm circumference': '16.7 cm', 'Legs Length': '35.6 cm', 'Thigh circumference': '30.1 cm', 'Feet Length': '13 cm'
       },
       customizationGroups: [
         { id: 'photographed-build', label: 'Build', required: true, selectionMode: 'single', display: 'cards', options: [
