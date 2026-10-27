@@ -1,4 +1,5 @@
 import { sampleProducts } from "@/lib/data/sample-products";
+import { applyTopfirePricePreview, assertTopfirePricePreviewReadOnly } from '@/lib/catalog/topfirePricePreview';
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { catalogWeightLb } from '@/lib/catalog/mdWeight';
 import type { Product } from "@/types/product";
@@ -377,7 +378,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
 function mapSeoCatalogProduct(node: SeoProductNode): Product {
   const bodyType = metafieldText(node.bodyType);
   const stockStatus = metafieldText(node.stockStatus);
-  return {
+  return applyTopfirePricePreview({
     id: node.id,
     updatedAt: node.updatedAt,
     handle: node.handle,
@@ -415,7 +416,7 @@ function mapSeoCatalogProduct(node: SeoProductNode): Product {
       customAvailable: metafieldBoolean(node.customAvailable),
       penisAddOnAvailable: metafieldBoolean(node.penisAddOnAvailable)
     }
-  };
+  });
 }
 
 function metafieldText(value: MetafieldValue) {
@@ -767,6 +768,7 @@ export async function createCart(input: {
   };
   discountCodes?: string[];
 }) {
+  assertTopfirePricePreviewReadOnly();
   if (!hasShopifyStorefrontEnv()) {
     return {
       id: "mock-cart",
@@ -853,6 +855,7 @@ export async function createCartWithLines(input: {
   }>;
   discountCodes?: string[];
 }) {
+  assertTopfirePricePreviewReadOnly();
   if (!hasShopifyStorefrontEnv()) {
     return {
       id: "mock-cart",
