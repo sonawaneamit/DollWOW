@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { basename, join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
@@ -45,7 +45,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
   const localPath = product ? zargaLocalImagePath(product, source.url) : null;
   let input: Buffer;
   if (localPath) {
-    input = await readFile(join(process.cwd(), localPath));
+    input = await readFile(join(process.cwd(), 'public/images/products/climax-zarga-halloween', basename(localPath)));
   } else {
     const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
     if (!upstream.ok) {
