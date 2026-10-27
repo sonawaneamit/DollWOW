@@ -345,4 +345,4 @@ Clean the physical material according to its instructions, but keep water away f
 
 ### How current is this guide?
 
-This guide was last reviewed on August 11, 2026. AI models, apps, subscriptions, privacy terms, hardware, and product availability can change quickly, so verify the current system before ordering.
+AI models, apps, subscriptions, privacy terms, hardware, and product availability can change quickly, so verify the current system before ordering.

@@ -218,4 +218,4 @@ Yes, under the current [Care for Life terms](/care-for-life), with continuing Re
 
 ### How current is this guide?
 
-This guide was last reviewed on August 12, 2026. Product details, prices, availability, options, and policies can change, so confirm the exact order before checkout.
+Product details, prices, availability, options, and policies can change, so confirm the exact order before checkout.

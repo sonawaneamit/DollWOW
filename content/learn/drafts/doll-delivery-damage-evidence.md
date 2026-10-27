@@ -20,7 +20,7 @@ publishedAt: "2026-10-23T09:00:00.000Z"
 
 If something looks wrong when your doll arrives, keep the packaging and document what you see before changing the product or attempting a repair. Clear pictures and a short factual description make the situation easier to review.
 
-DollWOW's published shipping instructions, checked on 16 October 2026, ask for damage reports within 24 hours of delivery. Use the current [shipping-protection instructions](/shipping-protection) for the reporting process and available support. Send the initial report promptly rather than waiting to assemble a perfect video. This guide explains how to assemble useful evidence; it does not promise a particular claim outcome.
+DollWOW asks for damage reports within 24 hours of delivery. Follow the [shipping-protection instructions](/shipping-protection) for the reporting process and available support. Send the initial report promptly rather than waiting to assemble a perfect video. The outcome depends on the damage and the applicable protection terms.
 
 ## Begin with the carton
 

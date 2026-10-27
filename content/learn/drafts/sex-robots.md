@@ -368,4 +368,4 @@ Yes. Submit the current page through [Compare a listing](/compare). DollWow can 
 
 ### How current is this guide?
 
-This guide was last reviewed on August 12, 2026. Robotics products, software, prices, availability, and company plans change quickly, so verify the exact product again before ordering.
+Robotics products, software, prices, availability, and company plans change quickly, so verify the exact product again before ordering.

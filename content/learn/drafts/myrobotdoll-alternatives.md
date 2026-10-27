@@ -229,4 +229,4 @@ Yes, under the current [Care for Life terms](/care-for-life). Powered-feature su
 
 ### How current is this guide?
 
-This guide was last reviewed on August 12, 2026. Technology, apps, subscriptions, product availability, and policies can change quickly, so verify the exact system before ordering.
+Technology, apps, subscriptions, product availability, and policies can change quickly, so verify the exact system before ordering.

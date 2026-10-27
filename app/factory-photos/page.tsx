@@ -45,7 +45,7 @@ const checklist = [
   ["Compare the confirmed build", "Check the visible head and body combination against the configuration confirmed for the order."],
   ["Review selected appearance details", "Look for clearly shown choices such as skin tone, eyes, hair or wig, makeup, nails, and other supported visible options."],
   ["Inspect the visible finish", "Look for an obvious mark, damage, finishing concern, or meaningful visible difference that should be raised before release."],
-  ["Ask when a view is unclear", "If a decision-critical detail is missing, cropped, out of focus, or difficult to judge under the available lighting, ask whether clearer media can be requested."],
+  ["Ask when a view is unclear", "If an important detail is missing, cropped, out of focus, or difficult to judge under the available lighting, ask whether clearer media can be requested."],
   ["Keep the approval record", "Save the supplied media and written confirmation with the order record so the approved visible details remain clear."]
 ] as const;
 
