@@ -53,6 +53,8 @@ import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixt
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
+import { isZargaPreviewProduct } from '@/lib/catalog/zargaPreview';
+import { ZargaHalloweenPromotion } from '@/components/promotions/ZargaHalloweenPromotion';
 
 export const revalidate = 60;
 
@@ -170,6 +172,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               </Link>
             ) : null}
             <SeDollPdpFreebieBlock product={publicProduct} />
+            <ZargaHalloweenPromotion enabled={isZargaPreviewProduct(product)} promoClock={promoClock ?? new Date().toISOString()} />
             <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />
             <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
@@ -180,6 +183,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{contextualBrand ? <Link data-contextual-brand href={contextualBrand.href} className="underline underline-offset-4">{productBrand}</Link> : productBrand}</p>
               <WarehouseStatusBadge status={product.extended.stockStatus} />
+              <ZargaHalloweenPromotion enabled={isZargaPreviewProduct(product)} variant="pill" promoClock={promoClock ?? new Date().toISOString()} />
               {product.extended.stockStatus === "ready_to_ship" ? (
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
               ) : null}
@@ -209,7 +213,12 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {firstAvailable && (
+            {isZargaPreviewProduct(product) ? (
+              <div className="mt-6 space-y-3">
+                <a href="#build-studio" className="inline-block py-3 font-semibold text-gold-200 underline underline-offset-4">Choose your build</a>
+                <p className="text-sm text-ivory-300">Availability and delivery timing: please confirm with our team.</p>
+              </div>
+            ) : firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
