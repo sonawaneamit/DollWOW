@@ -3,9 +3,11 @@ import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
 import type { TemplatePresetDefinition } from '@/lib/customization/template-presets';
 import { templateConfigSignature } from '@/lib/customization/template-config-signature';
+import { isZargaPreviewProduct, ZARGA_HANDLE, zargaPreviewEnabled, zargaPreviewProduct } from './zargaPreview';
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
+  if (zargaPreviewEnabled() && handle === ZARGA_HANDLE) return zargaPreviewProduct();
   const { default: snapshots } = await import('@/data/draft-previews/castle-oct22.json');
   const product = snapshots.find((entry) => entry.handle === handle);
   return product ? structuredClone(product) as unknown as Product : null;
@@ -14,6 +16,7 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
+  if (isZargaPreviewProduct(snapshot)) return null;
   if (snapshot.extended.bodyCode === 'S112') return null;
   const chiku = snapshot.extended.bodyCode === 'SZ25';
   return {
