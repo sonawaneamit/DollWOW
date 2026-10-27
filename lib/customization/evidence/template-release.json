@@ -15,7 +15,7 @@
       "payloadHash": "cf27180bc8ea30904060d987a2587794f52d44d4b2b57b22f374ea195d9685d1"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Martin: approved DOL-266 exact four prices; Codex: coordinated price-only delta, prior unchanged scope retained",
+      "reviewedBy": "Codex: verified preview candidate for Martin-approved four price proposals; prior unchanged scope retained; final live authorization is separate",
       "reviewedAt": "2026-10-27T19:56:16.144Z",
       "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
       "payloadHash": "cf27180bc8ea30904060d987a2587794f52d44d4b2b57b22f374ea195d9685d1"

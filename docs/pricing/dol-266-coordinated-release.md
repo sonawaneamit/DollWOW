@@ -1,9 +1,10 @@
 # DOL-266 Coordinated Price Release
 
-Martin approved the exact prices in Linear comment
-`59737b00-bde9-447b-a617-d508ba337667`; the ticket explicitly requests live
-application and was assigned in queue #6 on 27 October. This approval is distinct
-from DOL-257's newer preview-first hold. No Freya change is authorized until
+Martin approved the exact proposed prices in Linear comment
+`59737b00-bde9-447b-a617-d508ba337667`. The newer full queue instruction
+`5a4daffb-11f6-44be-963e-097b970c3a71` explicitly requires preview only and a
+final Martin yes before live. The coordinated rollout below is a held plan,
+not current permission to execute it. No Freya change is authorized until
 Dolly confirms actual supply.
 
 ## Exact Scope
@@ -44,6 +45,14 @@ No promotion or compare-at logic changes. The existing live promo continues to
 apply under its current eligibility rules. No net-margin claim is made.
 
 ## Coordinated Rollout
+
+Prerequisite: Dolly preview review and Martin's exact final live-release yes.
+The initially built production-target candidate used `--skip-domain`; it must
+not be promoted. The CLI still assigned its Vercel project alias despite that
+flag; that one alias was immediately restored to the prior deployment. The
+custom domains stayed on the prior live deployment throughout. No Shopify
+prices were written. Use the isolated flagged preview for review, not that
+production-target candidate.
 
 1. Validate the exact four-record registry delta, full typecheck, focused tests,
    owned-asset gates and hosted build.

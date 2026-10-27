@@ -53,6 +53,7 @@ import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixt
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
+import { dol266PricePreviewEnabled } from '@/lib/catalog/dol266PricePreview';
 
 export const revalidate = 60;
 
@@ -64,7 +65,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
-  if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  if (dol266PricePreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -123,6 +124,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
+      {dol266PricePreviewEnabled() ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Pricing preview only. Live prices are unchanged. Checkout is unavailable.</p> : null}
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
@@ -209,7 +211,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {firstAvailable && (
+            {!dol266PricePreviewEnabled() && firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
@@ -269,7 +271,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || dol266PricePreviewEnabled()}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
