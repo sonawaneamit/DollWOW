@@ -9,7 +9,8 @@ import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 export const metadata: Metadata = {
   title: "Brand Certifications | DollWow",
   alternates: { canonical: "/authorized-vendors" },
-  description: "View certificates and written confirmations issued by brands authorizing DollWow to sell their products."
+  description: "View certificates and written confirmations issued by brands authorizing DollWow to sell their products.",
+  ...(process.env.VERCEL_ENV === 'preview' && process.env.NEXT_PUBLIC_DOL273_PREVIEW === '1' ? { robots: { index: false, follow: false } } : {})
 };
 
 export default function AuthorizedVendorsPage() {
@@ -79,6 +80,7 @@ export default function AuthorizedVendorsPage() {
                   <p>
                     Issued by {entry.certificateIssuer ?? entry.brand} to confirm DollWow as an approved retailer.
                   </p>
+                  {entry.scopeStatement ? <p>{entry.scopeStatement}</p> : null}
                   {coveredBrands.length ? <p className="certification-card__covers">Also covers: {coveredBrands.join(", ")}</p> : null}
                   <div className="certification-card__actions">
                     {entry.brandValue ? <Link href={brandHubHref(entry.brandValue)}>Browse brand <ArrowRight aria-hidden="true" /></Link> : <span>Products coming soon</span>}

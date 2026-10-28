@@ -1,0 +1,475 @@
+{
+  "gynoid-ji-xiang-eye-closed-162cm-silicone-companion-doll-model-11": {
+    "tag": "options:gynoid-body-11-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-wan-ying-165cm-silicone-companion-doll-model-16": {
+    "tag": "options:gynoid-body-16-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-lisa-scott-168cm-silicone-companion-doll-model-18": {
+    "tag": "options:gynoid-body-18-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-lisa-170cm-silicone-companion-doll-model-13": {
+    "tag": "options:gynoid-body-13-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-jiayi-170cm-silicone-companion-doll-model-13": {
+    "tag": "options:gynoid-body-13-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-meiniang-164cm-silicone-companion-doll-model-21": {
+    "tag": "options:gynoid-body-21-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-elsa-164cm-silicone-companion-doll-model-21": {
+    "tag": "options:gynoid-body-21-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-gina-164cm-silicone-companion-doll-model-21": {
+    "tag": "options:gynoid-body-21-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-sylvia-wright-170cm-silicone-companion-doll-model-13": {
+    "tag": "options:gynoid-body-13-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-kelly-eveline-172cm-silicone-companion-doll-model-10": {
+    "tag": "options:gynoid-body-10-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  },
+  "gynoid-tanya-172cm-silicone-companion-doll-model-10": {
+    "tag": "options:gynoid-body-10-mvp-v1",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Standard body construction with hard standing feet.",
+        "add": [
+          {
+            "groupId": "standing-add-on",
+            "optionId": "hard-standing-feet-without-bolts-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the bionic breast construction.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "bionic-breast"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-excluding-butts"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "full-body-extra-softness-including-butts"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -69,6 +69,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
               ? `DollWow is an approved seller for ${label}. Brand confirmation is on file.`
               : `DollWow is an approved seller for ${label}.`}
         </p>
+        {authorization?.scopeStatement ? <p className="mt-2 text-sm leading-6 text-text-dim">{authorization.scopeStatement}</p> : null}
         <div className={`${compact ? "mt-3" : "mt-4"} flex flex-wrap gap-3`}>
           {hasCertificate ? (
             <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-button bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">

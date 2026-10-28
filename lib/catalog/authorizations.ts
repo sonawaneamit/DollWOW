@@ -17,9 +17,21 @@ export type BrandAuthorization = {
   confirmationPreviewSrc?: string;
   confirmationDate?: string;
   certificatePendingStatement?: string;
+  scopeStatement?: string;
 };
 
 const allBrandAuthorizations: BrandAuthorization[] = [
+  {
+    id: "gynoid",
+    brand: "Gynoid",
+    brandValue: "gynoid",
+    certificateIssuer: "Dongguan Gynoid Intelligent Technology Co., Ltd.",
+    aliases: ["gynoid", "gynoid dolls"],
+    status: "certificate",
+    certificateSrc: "/images/authorizations/gynoid-authorized.png",
+    certificatePreviewSrc: "/images/authorizations/previews/gynoid-authorized.webp",
+    scopeStatement: "Authorizes dollwow.com as sales agent for Gynoid companion products in Europe and the Americas. Valid 22 October 2026 to 21 October 2027."
+  },
   {
     id: "se-doll",
     brand: "SE Doll",

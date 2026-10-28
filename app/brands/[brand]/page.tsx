@@ -16,6 +16,7 @@ import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
+import { gynoidPreviewEnabled, gynoidPreviewProducts } from '@/lib/catalog/gynoidPreview';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) return {};
-  return buildBrandMetadata(brand);
+  return { ...buildBrandMetadata(brand), ...(brand.value === 'gynoid' && gynoidPreviewEnabled() ? { robots: { index: false, follow: false } } : {}) };
 }
 
 export default async function BrandHubPage({
@@ -45,7 +46,8 @@ export default async function BrandHubPage({
 
   const requestedFilters = filtersFromSearchParams(rawSearchParams);
   const filters = compactFilters({ ...requestedFilters, brand: brand.value });
-  const products = await getProducts({
+  const isGynoidPreview = brand.value === 'gynoid' && gynoidPreviewEnabled();
+  const products = isGynoidPreview ? gynoidPreviewProducts() : await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
     cacheKey: `${brand.value}-release-order-v1`,
@@ -57,7 +59,7 @@ export default async function BrandHubPage({
   const profile = brandSeoProfile(brand);
   const compactBrowsing = usesCompactBrandLayout(brand.value);
   const relatedLinks = brandRelatedLinks(brand);
-  const structuredData = buildBrandStructuredData(brand, orderedProducts);
+  const structuredData = isGynoidPreview ? [] : buildBrandStructuredData(brand, orderedProducts);
   const activeFilterLabels = Object.entries(filters)
     .filter(([key, value]) => Boolean(value) && key !== "brand")
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -121,6 +123,7 @@ export default async function BrandHubPage({
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
 
       {!compactBrowsing ? authorization : null}
+      {isGynoidPreview ? <p className="mb-6 text-sm leading-6">Gynoid confirms M8 connectors on all bodies currently on sale. Gynoid does not offer an adapter.</p> : null}
 
       <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (

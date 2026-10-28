@@ -1,5 +1,12 @@
 [
   {
+    "value": "gynoid",
+    "label": "Gynoid",
+    "collectionHandle": "gynoid-dolls",
+    "tags": ["gynoid", "gynoid-dolls"],
+    "aliases": ["gynoid", "gynoid dolls"]
+  },
+  {
     "value": "ido",
     "label": "IDO Dolls",
     "collectionHandle": "ido-dolls",
