@@ -1,5 +1,23 @@
 # DOL-273 Gynoid - 28 October 2026
 
+## Current Review Deployment
+
+https://doll-9c3jf7ub9-sonawaneamits-projects.vercel.app/brands/gynoid-dolls
+
+Deployment dpl_66EUVyQc1bigGPatHLPvCRtt18fq is READY, Preview only, source
+b253a243. It supersedes all earlier links below. Twelve private PDPs include
+the eleven retained drafts and separate Laura M11 candidate; no Shopify
+creation/publication. PR199 remains a draft. The original certificate decodes
+on collection and authorization directory; PDP authorization is present.
+Laura's manual Blue eye selection works, Collector is 5049, cart is disabled,
+robots are noindex/nofollow, and the unsupported generic delivery date is gone.
+Final desktop regression checked; do not count an attempted responsive rerun
+whose viewport reads stayed at 1319 as mobile coverage. The earlier 72 preset
+cases belong to source 1159f422, before the isolated delivery-date correction.
+31 focused tests across seven files, tsc and hosted build/4950 asset gate pass.
+Exact browser evidence and limitations: final-deployment-qa.json in private
+evidence folder. Whole catalog completion and commercial approvals remain open.
+
 Preview-only work from origin/main c21957c9. Existing eleven Shopify product
 drafts and 94 READY images were read back, not rebuilt or published. Eight
 separate upgrade charge drafts are not products and remain unpublished.
