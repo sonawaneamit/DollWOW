@@ -59,8 +59,9 @@ per SKU are reused. This is not a full source-gallery/video import. All variants
 use non-Shopify preview IDs and are unavailable for sale. Hero buy controls,
 Product/FAQ offer schema and PDP tracking are omitted; builder checkout and
 single/multi-line server cart validation fail closed. No Shopify drafts created.
-No inherited preset/charge approvals are transferred: these remain manual-menu
-previews until exact new-parent bindings are approved. The photographed head
+No inherited preset/charge approvals are transferred: three preview-only recipe
+selections are copied from each exact parent's released recipe and resolved
+against the copied menu. Exact new-parent bindings still need approval. The photographed head
 defaults to As shown; the inherited skin menu/defaults remain unchanged, not
 invented red/black swatches. Dolly should review that inherited skin presentation
 before live release, separately from the approved photographed base price.

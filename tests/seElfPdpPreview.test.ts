@@ -7,6 +7,7 @@ import {getCustomizationConfig} from '@/lib/customization/configs';
 import {getDefaultSelections,resolveCustomization} from '@/lib/customization/resolve';
 import {isOwnedOptionAsset} from '@/lib/assets/option-assets.mjs';
 import {serverValidateAndRepriceLine,serverValidateAndRepriceLines} from '@/lib/cart/server-validation';
+import {templateConfigurationPresets} from '@/lib/customization/template-presets';
 
 afterEach(()=>vi.unstubAllEnvs());
 function preview(){vi.stubEnv('VERCEL_ENV','preview');vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','preview');vi.stubEnv('NEXT_PUBLIC_DOL275_PREVIEW','1');}
@@ -41,7 +42,10 @@ describe('four SE Elf private PDPs',()=>{
    expect(head.options.some(o=>/^W0?(21|22)/i.test(o.id+' '+o.label))).toBe(false);
    for(const g of c.groups)for(const o of g.options)if(o.swatch?.kind==='image')expect(isOwnedOptionAsset(o.swatch.value)).toBe(true);
    expect(resolveCustomization(c,d,Number(p.priceRange.minVariantPrice.amount)).issues).toEqual([]);
-   expect(await privateDraftRecipe(p,c)).toBeNull();
+   const recipe = await privateDraftRecipe(p,c);
+   const presets = templateConfigurationPresets(recipe ?? null,c,c,Number(p.priceRange.minVariantPrice.amount),d);
+   expect(presets.map(t=>t.label)).toEqual(['Starter','Enthusiast','Collector']);
+   for(const preset of presets)expect(resolveCustomization(c,preset.selections,Number(p.priceRange.minVariantPrice.amount)).issues).toEqual([]);
   }
  });
  it('rejects preview carts before upstream lookup, single and multi line',async()=>{
