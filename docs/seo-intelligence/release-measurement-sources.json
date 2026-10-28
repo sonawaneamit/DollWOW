@@ -2402,5 +2402,37 @@
     "googleRequests": 0,
     "metrics": "Not applicable non-content authenticated POST endpoint",
     "receipt": "docs/seo-intelligence/dol-226-canonical-shop-live-receipt-2026-10-28.md"
+  },
+  "topfireSevenPriceRelease20261028": {
+    "anchor": "2026-10-28T15:36:21.365Z",
+    "previousRows": 4196,
+    "newRows": 7,
+    "totalRows": 4203,
+    "priorBytesPreserved": true,
+    "priorSha256": "32dd4228f23a6cf48a333740873914602adb79f04452fe7a3bd68f6f1505e537",
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "gscReturned": 1,
+    "ga4Returned": 2,
+    "commit": "fbdae7053f08a1df03107cc8b9f8a0f1e99d26d7",
+    "nativeSubmitted": 7,
+    "operatorNotifications": 0,
+    "googleWrites": 0,
+    "evidenceDirectory": "/Volumes/Extreme Pro/Projects/DollWOW-dol257-topfire-prices/data/exports/dol-257-2026-10-28"
   }
 }

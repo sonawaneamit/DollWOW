@@ -1,5 +1,20 @@
 # Release Measurement Tracker
 
+## Seven Top Fire Prices, 28 October
+
+[Live receipt](../pricing/dol-257-live-receipt-2026-10-28.md): approved exact7
+retail writes completed15:36:21.365UTC after productionfbdae705 was verified
+READY/custom-domain-bound. Independent7Admin/Storefront,14desktop/mobile
+PDP cases and required459head/2524total pass. All7 genuine native notifications
+accepted; no extra operator batch/Google request or order activity.
+
+Seven events bring4196 to4203 rows, preserving all prior bytes/values. Explicit
+reuse of13:43pre-release baseline29September-26October returns oneGSC/twoGA4
+landing rows; missing is unknown, notzero. No causal lift or paid-order match
+claim. Reviews25November/23December/20January15:36:21.365UTC. COGS remains
+separate: four verified body costs need the exact approval, torso shipping is
+assumed and held. WholeDOL257 stays open for those dependencies and Dolly review.
+
 ## Canonical Shop Callback Correction, 28 October
 
 [Functional release receipt](dol-226-canonical-shop-live-receipt-2026-10-28.md):
