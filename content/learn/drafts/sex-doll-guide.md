@@ -846,7 +846,7 @@ Each example is included only when these four basics are available:
 - Brand, price, material, and height could be connected to the product record.
 - The product added useful variety to its group rather than repeating the same brand and body format.
 
-Where the current catalog does not confirm weight, the card says so instead of estimating it. Prices and availability can change. Open the product page for current details and ask support to verify a decision-critical specification.
+Prices and availability can change. Open the product page for current details and ask support about any measurement or feature important to your choice.
 
 ### How to use the cards without shopping by appearance alone
 
@@ -1272,7 +1272,7 @@ Send a short, organized request that identifies the exact product URL and select
 - Which warranty terms apply to this exact product and options?
 - Who handles a manufacturer-specific repair or electronic fault?
 
-Written answers should be attached to the final configuration record. If a decision-critical question remains unresolved, delay checkout rather than filling the gap with an assumption.
+Keep written answers with your final configuration record. Resolve important questions before checkout so you can order with confidence.
 
 ## Common Buying Mistakes and Better Decisions
 
@@ -1461,7 +1461,7 @@ Generated illustrations can explain lifting, measuring, cleaning, or storage, bu
 
 ### Leave unknown details unknown
 
-If a decision-critical weight, material, option, or electronic function cannot be confirmed, remove the product from the shortlist or postpone the order. A plausible estimate is not useful when the purchase is expensive or difficult to return.
+Confirm the weight, material, options, and electronic functions important to you before ordering. If an essential detail is unavailable, choose another model or wait for an answer.
 
 ## Pre-Purchase Checklist
 

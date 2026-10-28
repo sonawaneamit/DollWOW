@@ -342,4 +342,4 @@ Care 365 is included with every DollWow doll under the current published terms. 
 
 ### How current is this guide?
 
-This guide was last reviewed on August 11, 2026. Brand ranges, products, prices, functions, and policies can change, so confirm the current product and written terms before ordering.
+Brand ranges, products, prices, functions, and policies can change, so confirm the current product and written terms before ordering.

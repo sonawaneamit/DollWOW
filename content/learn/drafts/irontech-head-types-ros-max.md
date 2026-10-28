@@ -28,7 +28,7 @@ For standard silicone choices, start by comparing hard and soft silicone. Ironte
 
 Irontech's [ROS MAX overview](https://www.irontechdoll.com/ros-silicone-head/) explains the updated construction. Its [ROS MAX head listing](https://www.irontechdoll.com/product/sex-doll-head-ros-max/) shows the silicone heads and available options.
 
-The full head code helps you find the same face again. For example, S13 and S31 appear on the ROS MAX listing checked on October 16, 2026. Add the version to your notes, too: the face code and ROS MAX label tell you different parts of the story.
+The full head code helps you find the same face again. For example, S13 and S31 are ROS MAX face choices. Add the version to your notes, too: the face code and ROS MAX label tell you different parts of the story.
 
 - **Head code:** identifies the design you're choosing, such as S13 or S31.
 - **Head version:** tells you whether you're looking at a standard, ROS or ROS MAX head.

@@ -112,7 +112,7 @@ export default async function CollectionPage({
         </div>
       </div>
       {contextualLinksEnabled(`/shop/${collection}`) ? <ContextualCatalogLinks links={catalogContextualLinks(`/shop/${collection}`, filtered)} /> : null}
-      <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWow">
+      <CollectionDisclosure id="collection-comparison-heading" eyebrow="Buyer comparison" title="Why compare this collection on DollWOW">
         {plainGuidance ? (
           <ul className="space-y-4 pl-5 text-base leading-7 text-text-dim list-disc">
             {comparisonRows.map((row) => <li key={row.factor}><strong className="text-text">{row.factor}.</strong> {row.whyItMatters} {row.dollWowAdvantage}</li>)}
@@ -124,7 +124,7 @@ export default async function CollectionPage({
                 <tr>
                   <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Factor</th>
                   <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">Why it matters</th>
-                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWow advantage</th>
+                  <th className="border-b border-gold-500/12 px-5 py-3 font-semibold">DollWOW advantage</th>
                 </tr>
               </thead>
               <tbody>

@@ -298,4 +298,4 @@ Use the live chat on DollWow, email [hello@dollwow.com](mailto:hello@dollwow.com
 
 ### How current is this comparison?
 
-This guide was last reviewed on August 11, 2026. Products, prices, stock, and policies can change, so use current product pages and written terms for the final decision.
+Products, prices, stock, and policies can change, so use current product pages and written terms for the final decision.

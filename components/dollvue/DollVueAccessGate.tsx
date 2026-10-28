@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Mail, ShieldCheck } from "lucide-react";
 
-export function DollVueAccessGate({ handle }: { handle: string }) {
+export function DollVueAccessGate({ handle, productName, headLabel }: { handle: string; productName?: string; headLabel?: string }) {
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -30,7 +30,8 @@ export function DollVueAccessGate({ handle }: { handle: string }) {
     <section className="dollvue-access-card">
       <ShieldCheck />
       <p className="alive-eyebrow"><span /> DollVue™</p>
-      <h1>Verify once. Preview anywhere.</h1>
+      <h1>{productName ? `Preview ${productName}` : 'Verify once. Preview anywhere.'}</h1>
+      {headLabel ? <p data-dollvue-head>Head {headLabel}</p> : null}
       <p>We’ll email you a private access link. Your five complimentary previews will stay connected across your phone and computer.</p>
       <form onSubmit={submit}>
         <label htmlFor="dollvue-access-email">Email address</label>

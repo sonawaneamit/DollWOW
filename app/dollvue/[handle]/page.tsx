@@ -25,7 +25,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const eligibility = await resolveCurrentDollVueEligibility(product);
   if (!eligibility.available) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
-  if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} /></div>;
+  if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} productName={productDisplayName(product) || product.title} headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()} /></div>;
   const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
   const sources = productImageSources(product);

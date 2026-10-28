@@ -30,7 +30,7 @@ SE describes LSTPE as its STPE construction with a lightweight internal foam cor
 | 161F | 35 kg / 77.2 lb | 31.6 kg / 69.7 lb | 3.4 kg / 7.5 lb |
 | 163E | 37 kg / 81.6 lb | 26 kg / 57.3 lb | 11 kg / 24.3 lb |
 
-These are the factory's published body-model figures, checked on 16 October 2026, not DollWOW scale measurements or packed shipping weights. Pounds are rounded conversions. SE also allows final weight variation within 5%; confirm the selected head and installed options before using a figure as a handling limit. [SE's official LSTPE explanation](https://www.sedoll.com/stpe-series-introduces-a-new-custom-option-lstpe-lightweight-upgrade/)
+These body weights exclude packaging; pounds are rounded conversions. SE allows final weight variation within 5%, and the selected head and installed options also matter for handling. Read [SE's LSTPE explanation](https://www.sedoll.com/stpe-series-introduces-a-new-custom-option-lstpe-lightweight-upgrade/) for the upgrade details.
 
 ## Compare the reduction for the body you want
 

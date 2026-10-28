@@ -302,4 +302,4 @@ Open the live chat, email [hello@dollwow.com](mailto:hello@dollwow.com), visit [
 
 ### How current is this comparison?
 
-This guide was last reviewed on August 11, 2026. Products, reviews, prices, stock, and policies can change, so use current product pages and written terms for the final decision.
+Products, reviews, prices, stock, and policies can change, so use current product pages and written terms for the final decision.

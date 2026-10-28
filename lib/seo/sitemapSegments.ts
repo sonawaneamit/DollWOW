@@ -20,6 +20,7 @@ const staticRoutes = [
   "/customize",
   "/warehouse",
   "/help-me-choose",
+  "/heads/irontech-s40",
   "/tools/doll-size-weight-finder",
   "/compare",
   "/why-dollwow",

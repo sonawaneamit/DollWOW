@@ -244,7 +244,7 @@ export function Header() {
   return (
     <header className={`site-header sticky top-[36px] z-[80] h-[72px] bg-surface text-text ${scrolled ? "is-scrolled" : ""}`}>
       <div className="mx-auto flex h-full max-w-[1440px] items-center gap-1 px-2 sm:gap-4 sm:px-5 lg:px-8">
-        <Link href="/" onClick={closeAll} className="site-header__logo flex min-w-0 shrink-0 items-center" aria-label="DollWow home">
+        <Link href="/" onClick={closeAll} className="site-header__logo flex min-w-0 shrink-0 items-center" aria-label="DollWOW home">
           <span className="relative block h-12 w-10 shrink-0 overflow-hidden sm:w-12" aria-hidden="true">
             <Image
               src="/images/brand/dollwow-black-gold-lockup.png"
@@ -257,7 +257,7 @@ export function Header() {
             />
           </span>
           <span className="site-header__wordmark -ml-1 font-display text-[18px] font-semibold uppercase tracking-[0.08em] text-accent sm:text-[22px] sm:tracking-[0.12em]">
-            DollWow
+            DollWOW
           </span>
         </Link>
 

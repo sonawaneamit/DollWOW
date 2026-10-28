@@ -121,7 +121,7 @@ export function buildArticleStructuredData(article: LearnArticle) {
     },
     publisher: {
       "@type": "Organization",
-      name: "DollWow",
+      name: "DollWOW",
       url: siteUrl
     },
     mainEntityOfPage: learnArticleUrl(article.slug),
@@ -187,7 +187,7 @@ function readArticle(filePath: string): LearnArticle {
     status: stringValue(frontmatter.status),
     reviewOwner: stringValue(frontmatter.reviewOwner),
     lastReviewed: stringValue(frontmatter.lastReviewed),
-    ...(frontmatter.hideReviewDate === 'true' ? { hideReviewDate: true } : {}),
+    hideReviewDate: true,
     publishedAt: frontmatter.publishedAt === undefined ? undefined : stringValue(frontmatter.publishedAt),
     featuredImage: featuredImagePath(stringValue(frontmatter.slug)),
     featuredImageAlt: stringValue(frontmatter.featuredImageAlt) || featuredImageAlt(stringValue(frontmatter.title), stringValue(frontmatter.slug)),

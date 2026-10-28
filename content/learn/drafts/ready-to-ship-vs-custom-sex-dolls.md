@@ -88,7 +88,7 @@ Choose ready-to-ship when:
 Choose made-to-order when:
 
 - a particular body and head pairing matters
-- material, skin tone, eyes, hair, or faceup are decision-critical
+- you want a particular material, skin tone, eyes, hair, or faceup
 - you need a supported skeleton or function option
 - you are willing to wait for production and review
 - you want the final build recorded in your Doll Passport

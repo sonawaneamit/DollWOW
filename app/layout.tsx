@@ -32,8 +32,8 @@ const STOREFRONT_THEME_INIT_SCRIPT = buildStorefrontThemeInitScript();
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
-    default: "DollWow | Find, compare, customize, and buy with confidence",
-    template: "%s | DollWow"
+    default: "DollWOW | Find, compare, customize, and buy with confidence",
+    template: "%s | DollWOW"
   },
   description: "A simpler way to find, compare, customize, and buy the right doll with clear pricing, delivery, and specialist support.",
   icons: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
         url: "/images/brand/dollwow-black-gold.png",
         width: 768,
         height: 512,
-        alt: "DollWow.com"
+        alt: "DollWOW.com"
       }
     ]
   },
@@ -73,8 +73,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="alternate" type="text/plain" href="/llms.txt" title="DollWow machine-readable site guide" />
-        <link rel="alternate" type="application/json" href="/agent-index.json" title="DollWow structured site index" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="DollWOW machine-readable site guide" />
+        <link rel="alternate" type="application/json" href="/agent-index.json" title="DollWOW structured site index" />
         <script
           id="dollwow-theme-init"
           dangerouslySetInnerHTML={{

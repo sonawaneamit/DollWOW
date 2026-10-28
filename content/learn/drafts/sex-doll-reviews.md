@@ -299,7 +299,7 @@ These sources support the review-verification and disclosure framework above. Th
 
 ### Are sex doll reviews reliable?
 
-Some are useful, but no review should stand alone. Give more weight to dated reviews that identify the exact product and configuration, disclose incentives, include relevant evidence, and explain delivery or support context. Confirm decision-critical details through the current listing or seller.
+Some are useful, but no review should stand alone. Give more weight to dated reviews that identify the exact product and configuration, disclose incentives, include relevant evidence, and explain delivery or support context. Confirm important details through the current listing or seller.
 
 ### What makes a sex doll review trustworthy?
 

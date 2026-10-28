@@ -84,7 +84,7 @@ Ask for dated photographs or video made for your inquiry, not only an existing m
 7. Original packaging, manuals, accessories, and identifying records.
 8. A handwritten date and seller identifier beside the product.
 
-Clear media does not eliminate risk, but refusal to show decision-critical areas is a reason to stop. Do not ask a seller to create explicit demonstration media. Condition can be documented without showing sexual use.
+Clear media does not eliminate risk, but refusal to show important areas is a reason to stop. Ask for condition photographs without explicit demonstrations or sexual use.
 
 ## Material And Repair Questions
 
@@ -162,7 +162,7 @@ DollWow cannot authenticate, inspect, sanitize, value, or guarantee a third-part
 - [ ] Packed size, weight, carrier, insurance, damage process, and discretion are confirmed.
 - [ ] Payment remains inside a process whose protections and limitations I understand.
 - [ ] I compared total cost with a suitable new product and current support.
-- [ ] I am willing to stop if one decision-critical fact remains unresolved.
+- [ ] I am willing to stop if an important question remains unanswered.
 
 ## FAQs
 
