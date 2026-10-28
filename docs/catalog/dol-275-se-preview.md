@@ -19,6 +19,32 @@ Earlier pricing1429/1599/1659/1659 and ng786i7fl are historical review evidence,
 not the current requested price/version. New hosted QA/link follows below.
 This remains preview-only and requires Martin's yes on the revised preview.
 
+### Revised Hosted Receipt
+
+Current preview: https://doll-6khkv4pk1-sonawaneamits-projects.vercel.app/review/se-elf
+Source `6cc10aed774782463508ea719536053db2d452d9`, rebased on production
+`98fa475c`. Deployment `dpl_Fj9zDgkKkGERESsfYTLUqhX7B1qT` independently
+reported READY with target preview at 16:25:53 UTC on 28 October.
+
+- 76 focused tests in seven files, full TypeScript check, scoped lint and
+  whitespace check passed. No non-price snapshot values changed.
+- Eight actual browser page checks at 1319px and 390px passed: all four
+  editorial sections and original photographs loaded, no horizontal overflow,
+  noindex retained and checkout disabled.
+- All 24 actual preset selections passed. SED338/339 totals are
+  1705/1774/1934 USD; SED340/341 totals are 1959/2028/2188 USD for
+  Starter/Enthusiast/Collector respectively. Existing option deltas remain
+  60/129/289 USD, before shipping, tax and checkout discounts.
+- Unobstructed desktop/mobile editorial screenshots and DOM observations are
+  retained privately beside the checkpoint. Cookie and Halloween overlays were
+  dismissed through their normal controls for visual inspection.
+
+This receipt supersedes earlier links/prices for review only. No Shopify,
+production, publishing, discount, indexing or order writes occurred. Dolly
+review and Martin's exact revised-preview release approval remain required;
+all gallery, menu/default, named-charge and compatibility qualifications below
+remain in force. Gynoid DOL-273 is the next active preview work item.
+
 ## Implemented For Review
 
 - Original SEDOLL Crimson Flame / Dark Temptation JPGs, with separate
