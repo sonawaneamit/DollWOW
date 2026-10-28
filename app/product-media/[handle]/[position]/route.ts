@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { basename, join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
@@ -44,7 +44,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
 
   const localPath = product ? seElfLocalImagePath(product, source.url) : null;
   const upstream = localPath
-    ? new Response(new Uint8Array(await readFile(join(process.cwd(), localPath))))
+    ? new Response(new Uint8Array(await readFile(join(process.cwd(), 'public/images/products/se-elf-2026', basename(localPath)))))
     : await fetch(source.url, { next: { revalidate: 86400 } });
   if (!upstream.ok) {
     return new Response("Image unavailable", {
