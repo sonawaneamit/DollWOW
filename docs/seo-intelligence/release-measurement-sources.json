@@ -2293,5 +2293,47 @@
     },
     "googleRequests": 0,
     "browserEvidence": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-246-247-2026-10-28/browser-qa.json"
+  },
+  "approvedFourPageRelease20261028": {
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "anchor": "2026-10-28T14:10:51.000Z",
+    "deployment": "dpl_2YFwvYKEGhgF3ePz7KUXXZrjPKtv",
+    "commit": "dd7fbd661da09ef0b231b0ca99da5ccc968cd04e",
+    "releasedOwners": 4,
+    "sharedHomepageRepresentative": 0,
+    "newEvents": 4,
+    "previousRows": 4027,
+    "totalRows": 4031,
+    "priorLedgerSha256": "4500f909859df786a96e2a2a63b492a9c1efb2a0c7c19279a5397a16ee8e6760",
+    "evidenceDirectory": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-223-2026-10-28",
+    "indexnow": {
+      "startedAt": "2026-10-28T14:13:55.645Z",
+      "attempts": 1,
+      "count": 4,
+      "sha256": "20783067cba12812df2fed38451c82f685dd97677312590e856a7ba066070206",
+      "state": "ACCEPTED_NOT_INDEXING_PROOF",
+      "finishedAt": "2026-10-28T14:13:56.787Z",
+      "exitCode": 0,
+      "output": "Submitted 4 changed URLs to IndexNow (HTTP 200).\n",
+      "httpStatus": 200
+    },
+    "googleRequests": 0,
+    "browserEvidence": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-223-2026-10-28/browser-qa.json"
   }
 }

@@ -1,5 +1,29 @@
 # Release Measurement Tracker
 
+## Four Existing Pages, 28 October
+
+Martin approved only PR173's non-comparison portion. Split PR200 released
+warehouse, realism, custom-build and hair guides at `dd7fbd66`, actual
+production READY 14:10:51 UTC. SexDollTech alternatives and all other
+comparison revisions are excluded. Four source/canonical/indexability/sitemap
+checks and eight desktop/mobile page cases pass. Warehouse products begin
+at 979px on 390px mobile; closed native disclosures remain below the grid
+and the first disclosure opens correctly. Three guides retain metadata/FAQ
+ownership and the previous live review-label cleanup.
+
+Four new release events bring the ledger to 4,031 rows, preserving all prior
+4,027 rows byte/value exactly. The explicitly reused 13:43 capture covers
+29 September-26 October, 28 complete final GSC dates, before this release.
+All four owners have returned GSC rows, two have production GA4 landing rows;
+missing rows are not zero. Dates/host/channel and overlapping-release caveats
+from the earlier copy batch remain. No causal lift or AI-visibility claim.
+
+One four-owner IndexNow batch was accepted HTTP200 at 14:13:56.787 UTC,
+not indexing proof. No Google requests or quota retries. Review anchors are
+25 November, 23 December and 20 January at 14:10:51 UTC. Evidence is in the
+release worktree's `data/exports/dol-223-2026-10-28/`. Whole DOL-223 stays
+open for the separately held persuasive alternatives preview and Martin's yes.
+
 ## Approved Copy Releases, 28 October
 
 PR197 / DOL-246 and PR190 / DOL-247 are live together at production
