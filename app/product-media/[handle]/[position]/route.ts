@@ -1,8 +1,9 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { basename, join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
+import { zargaLocalImagePath } from '@/lib/catalog/zargaPreview';
 
 export const runtime = "nodejs";
 
@@ -41,21 +42,27 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
     });
   }
 
-  const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
-  if (!upstream.ok) {
-    return new Response("Image unavailable", {
-      status: 502,
-      headers: { "Cache-Control": "no-store" }
-    });
+  const localPath = product ? zargaLocalImagePath(product, source.url) : null;
+  let input: Buffer;
+  if (localPath) {
+    input = await readFile(join(process.cwd(), 'public/images/products/climax-zarga-halloween', basename(localPath)));
+  } else {
+    const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
+    if (!upstream.ok) {
+      return new Response("Image unavailable", {
+        status: 502,
+        headers: { "Cache-Control": "no-store" }
+      });
+    }
+    const declaredLength = Number(upstream.headers.get("content-length") || 0);
+    if (declaredLength > MAX_SOURCE_BYTES) {
+      return new Response("Image too large", {
+        status: 413,
+        headers: { "Cache-Control": "no-store" }
+      });
+    }
+    input = Buffer.from(await upstream.arrayBuffer());
   }
-  const declaredLength = Number(upstream.headers.get("content-length") || 0);
-  if (declaredLength > MAX_SOURCE_BYTES) {
-    return new Response("Image too large", {
-      status: 413,
-      headers: { "Cache-Control": "no-store" }
-    });
-  }
-  const input = Buffer.from(await upstream.arrayBuffer());
   if (input.byteLength > MAX_SOURCE_BYTES) {
     return new Response("Image too large", {
       status: 413,

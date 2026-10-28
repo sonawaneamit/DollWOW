@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { isZargaReleasedProduct } from '@/lib/catalog/zargaRelease';
 import { withSeLightweight } from './se-lightweight';
 import { getIdoMdCustomizationConfig } from './ido-md';
 import { withSeSiliconeHead } from './se-silicone-head';
@@ -308,6 +309,19 @@ export function getFactoryCustomizationConfig(product: Product): BrandCustomizat
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
+  if (isZargaReleasedProduct(product)) {
+    const groups = product.extended.customizationGroups;
+    if (!product.tags.includes('options:zarga-halloween') || groups?.length !== 2 ||
+        groups[0].id !== 'photographed-build' || groups[0].options.length !== 1 ||
+        groups[0].options[0].id !== 'as-shown' || groups[0].options[0].priceDelta !== 0 ||
+        groups[1].id !== 'gel-butt' || groups[1].options.length !== 2 ||
+        groups[1].options[0].id !== 'none' || groups[1].options[0].priceDelta !== 0 ||
+        groups[1].options[1].id !== 'gel-butt' || groups[1].options[1].priceDelta !== 65) {
+      throw new Error('The approved Zarga configuration needs verification.');
+    }
+    return { id: 'climax-zarga-halloween-v1', brandLabel: 'Climax Doll', groups, rules: [],
+      leadTimeNote: 'Confirm availability and delivery timing with our team before ordering.' };
+  }
   const idoMd = getIdoMdCustomizationConfig(product);
   if (idoMd) return idoMd;
   const suki = getSukiCustomizationConfig(product);

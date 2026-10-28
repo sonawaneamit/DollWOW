@@ -15,6 +15,12 @@ import { isHalloweenPreview, isHalloweenVisible } from "@/lib/promotions/hallowe
 import { HalloweenWindow } from "@/components/promotions/HalloweenWindow";
 import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
 import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
+import { zargaPreviewEnabled } from '@/lib/catalog/zargaPreview';
+import { ZARGA_HANDLE } from '@/lib/catalog/zargaPreview';
+import { isZargaReleasedProduct } from '@/lib/catalog/zargaRelease';
+import { getProductByHandle } from '@/lib/shopify/storefront';
+import { isZargaHalloweenActive } from '@/lib/promotions/zargaHalloween2026';
+import { ZargaHalloweenPromotion } from '@/components/promotions/ZargaHalloweenPromotion';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -42,7 +48,7 @@ export function generateMetadata(): Metadata {
 };
 }
 
-export default function PromoIndexPage() {
+export default async function PromoIndexPage() {
   const { halloween, title, description } = promoCopy();
   const preview = isHalloweenPreview();
   const promoClock = new Date().toISOString();
@@ -51,7 +57,11 @@ export default function PromoIndexPage() {
   const hasMdPromotion = !isHiddenCatalogBrand("md") && isMdOctoberActive(new Date(promoClock));
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
+  const zargaActive = isZargaHalloweenActive(new Date(promoClock));
+  const zarga = zargaActive && !zargaPreviewEnabled() ? await getProductByHandle(ZARGA_HANDLE) : null;
+  const hasZargaPromotion = zargaActive && (zargaPreviewEnabled() || Boolean(zarga && isZargaReleasedProduct(zarga)));
   const itemList = [
+    ...(hasZargaPromotion ? [{ name: 'Zarga Halloween outfit and travel-bag gift', url: `${siteUrl}/promo#zarga-halloween-2026` }] : []),
     ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
     ...(hasIdoPromotion ? [{ name: `${IDO_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${IDO_OCTOBER_OFFER.id}` }] : []),
     ...(hasMdPromotion ? [{ name: `${MD_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${MD_OCTOBER_OFFER.id}` }] : []),
@@ -94,8 +104,9 @@ export default function PromoIndexPage() {
           </div>
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
-        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion || hasMdPromotion ? (
+        {hasZargaPromotion || hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion || hasMdPromotion ? (
           <div className="grid gap-8">
+            {hasZargaPromotion ? <ZargaHalloweenPromotion enabled variant="card" promoClock={promoClock} /> : null}
             {hasJinsanPromotion ? <JinsanOctoberIndexCards promoClock={promoClock} /> : null}
             {hasIdoPromotion ? <IdoOctoberIndexCard promoClock={promoClock} /> : null}
             {hasMdPromotion ? <MdOctoberIndexCard promoClock={promoClock} /> : null}
