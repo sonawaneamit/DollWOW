@@ -7,12 +7,12 @@ describe('DOL-266 approved four-price release', () => {
     expect(templateReleaseIssues(release)).toEqual([]);
   });
   it('binds exactly the four approved runtime snapshots when this delta is current', () => {
-    if (release.payload.releaseId !== 'presets-2026-10-28-dol266-price-only') return;
+    if (release.payload.releaseId !== 'presets-2026-10-28-dol266-shopify-money') return;
     const expected = [
-      ['10518019244216', '92947dde3f28c04453417e71acab4f678ef33eccbda7c63f603c4e2215722aa9'],
-      ['10518020423864', '253dcf89ef9dc7bccbb636c5e19357d0db7a9eb4b96e327ca975df7f89abacbe'],
-      ['10518020489400', '50bd5a2d95f493e617f3304347e02991b1afa4d8cd7c0e9ac029d1d17c5596f8'],
-      ['10517656699064', '17e2e8b024b65703b5ea22746f2f1e4d18b9de2825b889105e3f102781fa6ff0']
+      ['10518019244216', '05fc1d14227e70dcc2f7e22533f0c131f7152fc0368bb0ead906b5a796003eee'],
+      ['10518020423864', '9e49ccc39f28bb7a6ead765f1716299ab402021a610f44dd571e3413b3d0d2e9'],
+      ['10518020489400', 'c0ceb35cc515cd6cbec4b11162fde87eb478347db7995b0d9cd6e65dee7e132d'],
+      ['10517656699064', '9096e0aa8e6bff9d22cc560f404ace989001dbd957c8d023b8a1f0cdf27a2938']
     ];
     for (const [id, hash] of expected) {
       const rows = release.payload.entries.filter(entry => entry.productId === `gid://shopify/Product/${id}`);
