@@ -41,7 +41,7 @@ Confirm first:
 - Brand and body model
 - Full doll, torso, hips, head, or another product form
 - Height in feet and inches and centimeters
-- Listed dry weight in pounds and kilograms
+- Listed weight in pounds and kilograms, including whether the head or packaging is counted
 - Bust, waist, hips, shoulders, and other useful measurements
 - TPE, full silicone, or hybrid construction
 - Compatible head system
@@ -176,6 +176,22 @@ Every option should fall into one of four clear states:
 Product photography does not decide the state. A promotional image may show a paid upgrade, styling prop, accessory, or another configuration.
 
 Ask for a written final specification showing what will be built and what will travel with the order.
+
+## A Build Record You Can Actually Check
+
+Put your final choices in one place so you don't have to piece them together from screenshots. Options vary by doll; here's what to save:
+
+| Your build | What to save | What to ask |
+| --- | --- | --- |
+| The doll itself | Brand, body code, head code and version, and material | Are these the exact parts shown in your photos? |
+| Size and handling | Measurements, weight, and whether the head is counted | What should I plan for lifting, storage, and delivery? |
+| Your options | Each choice, whether it's included, and any added cost | Is this pictured feature actually in my order? |
+| What works together | Confirmation of your exact combination | Do any of my choices conflict? |
+| The finished look | Reference images for your skin tone, hair, and finish | Which styling or accessories aren't included? |
+| Delivery and total | Stock or factory order, destination, currency, shipping, and taxes | What's the total for this build delivered to me? |
+| Your approval | Final choices, approval date, change deadline, and available factory checks | What can I still change, and until when? |
+
+Photos help with the look. Keep written confirmation for things you can't see, like internal heating or the head connector. Have another offer in mind? Try [Compare a listing](/compare). Ready to choose a base? Browse [custom dolls](/shop/custom) for the current options.
 
 ## Starting Price Versus Final Configured Price
 

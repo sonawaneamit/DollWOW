@@ -23,6 +23,20 @@ A sex doll looks realistic when its face, head size, body proportions, skin fini
 
 Realism is partly visual and partly practical. A doll can photograph beautifully but feel wrong for your space, handling ability, or preferred softness. The strongest choice is the model that remains convincing in full-body images, close-ups, natural poses, and the exact configuration you can actually order.
 
+## Which Doll Is The Most Realistic?
+
+We haven't tested every doll side by side, so there's no universal winner here. Start with what makes a doll look convincing to you, then use this checklist to narrow your choices:
+
+| What matters to you | What to ask for | What to double-check |
+| --- | --- | --- |
+| A convincing face | Front, side, and three-quarter views of your chosen head | The head version matches the one you're ordering |
+| Balanced proportions | Full-body photos of your chosen head and body together | The pairing is supported, not just two separate photos |
+| Natural-looking detail | Close-ups with the lighting and makeup explained | Your selected skin tone and finish are represented |
+| Expressive posing | A video of the exact joint or head function | The movement shown applies to your model |
+| Easy everyday handling | Dimensions, storage needs, and weight with the head included or excluded | You can manage the actual doll, not just its listed number |
+
+Missing a detail? Mark it **unconfirmed** and ask. Then browse [realistic dolls](/shop/realistic-sex-dolls) with the same checklist beside you.
+
 ## Key Takeaways
 
 - Judge the whole head-and-body pairing, not a single face photo.
@@ -61,7 +75,7 @@ Useful measurements include:
 - inseam or leg length
 - arm length
 - foot size
-- listed dry weight
+- listed weight, including whether it covers the head and body or the body alone
 
 Supplier measurement methods can vary, so use the product's body diagram and full-body gallery alongside the numbers. If a critical measurement is absent, ask for it before placing a custom order.
 
@@ -165,7 +179,7 @@ A silicone head on a TPE body can combine facial sculpt detail with a softer or 
 | Fine sculpt detail | Full silicone or silicone head | Firmness, finish, weight, and exact photos |
 | Softer body feel | TPE | Formulation, weight, care, and staining precautions |
 | Detailed face with TPE body | Hybrid | Tone match, neck transition, and separate care needs |
-| Easier daily handling | Lower listed weight in any material | Exact dry weight, center of mass, and storage method |
+| Easier daily handling | Lower listed weight in any material | Whether the head is included, weight distribution, and storage method |
 
 Use the [TPE versus silicone guide](/learn/tpe-vs-silicone-sex-dolls) for a complete material comparison.
 
@@ -222,7 +236,7 @@ DollWow's Human Build Check reviews eligible custom selections and obvious compa
 
 A substantial weight can contribute to presence, but heavier is not automatically more realistic. Weight also changes carrying, positioning, dressing, cleaning, storage, and delivery planning.
 
-Compare the listed dry weight for the exact body in pounds and kilograms. Similar-height models can differ significantly because of sculpt volume, material, internal foam, and skeleton design. Test your practical lifting limit with a safe object, remembering that a doll's limbs and center of mass can make it harder to move than a rigid box.
+Compare the listed weight for the exact build in pounds and kilograms. Confirm whether it is body-only, head-and-body, or packaged shipping weight; an unspecified figure is not a verified complete-doll weight. Similar-height models can differ significantly because of sculpt volume, material, internal foam, and skeleton design. Do not treat lifting a compact box of the same weight as proof that you can safely move an articulated doll. Read the [size and weight guide](/learn/sex-doll-size-weight-guide) and plan appropriate assistance before ordering.
 
 Choose a doll you can manage safely. A model that is too heavy for your routine may spend more time in storage, regardless of how convincing the photographs look.
 
@@ -283,7 +297,7 @@ Wigs, clothing, eyes, faceup, and accessories may be presentation choices or opt
 
 ### Choosing weight by appearance
 
-Estimate nothing from a photograph. Use the listed dry weight for carrying and storage planning.
+Estimate nothing from a photograph. Confirm what the listed weight includes before using it for carrying and storage planning.
 
 ### Creating an incompatible custom build
 
