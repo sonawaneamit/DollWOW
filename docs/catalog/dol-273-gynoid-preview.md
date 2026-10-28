@@ -205,6 +205,12 @@ The source-review status file and regression test keep this photo-reviewed sourc
 out of the runtime cohort until exact M25 menu/construction and commercial gates
 are settled. Do not copy M11/M18 options, invent a cup size, equate deluxe with
 super-soft construction without evidence, or present an assembled weight.
+The original 28,591,106-byte video also decodes: 8.196 seconds, 1440x2560,
+H.264 at 60fps with AAC audio. Eight one-frame-per-second visual samples show
+a portrait with moving hair/camera changes. This is not evidence of robotic,
+ROS, jaw, breathing or hair-fiber capabilities. Audio and music rights were not
+reviewed and the video is not approved for publication; sampled review is not
+a claim that every frame and soundtrack were manually reviewed.
 Dolly/Eric retain head-price mapping, actual freight and early-bird/dealer-scope
 questions. Existing-family approved retail prices are not a M25 price decision.
 Private evidence is under `data/exports/dol-273-2026-10-28/` in the main checkout,
