@@ -3,8 +3,10 @@
 Status updated 28 October: Martin explicitly approved the verified public-token
 Shopify consent handoff and no-PII pixel diagnostics in chat (Linear approval
 `8612a9f8-3d39-4d0a-a95e-809224fa6ad9`). Diagnostics are installed and exact saved
-readback verified. The consent handoff source is being released separately;
-deployment and runtime verification receipts must confirm its live state.
+readback verified. PR 195 merged as `34d4929828154f32d65fb9a1233e827f1a344e01`;
+production deployment `dpl_ED2nunD48sVq2vZqfN9avYLmcDZg` is READY and serves
+the live domain. Explicit Accept, Decline after reload, then Accept after reload
+returned API readback `registered` in the in-app browser at 22:29-22:31 UTC.
 Historical statements below describe the earlier proposal and are not blockers
 for these now-approved steps. The missing USD 2,267 genuine
 purchase remains unresolved. One approved USD 0 QA checkout completed on 27 October
@@ -25,7 +27,7 @@ Do not create another order, replay events or backfill GA4.
 - Coalesce choices superseded during SDK load, serialize actual SDK requests,
   contain load/request failures, and verify current consent through the API.
   Callback success alone is not permission or purchase-delivery proof.
-- Returning visitors without a confirmed sync marker receive a fresh confirmation
+- Returning accepted visitors without a confirmed sync marker receive a fresh confirmation
   prompt. The marker contains only state/time and is not itself Shopify consent.
   A missing marker never silently registers an earlier stored choice.
 - The existing connected purchase pixel retains its Analytics-only requirement,
@@ -47,6 +49,19 @@ Revert the scoped source or promote the retained deployment if rollback is neede
 
 ## Evidence And Limits
 
+- Live in-app browser choices persisted as unknown -> yes -> no before the next
+  explicit choice. This was an existing browser context, not a fresh profile.
+  Internal QA visits were tagged; no checkout/cart interaction or order occurred.
+- Brave could not complete SDK setup. Browser protections were not changed and
+  the exact cause is not established. Fixed loader failure categories distinguish
+  load failure, timeout and API unavailability without logging raw errors.
+  Failed sync is dismissible without claiming success; a prior decline does not
+  repeatedly prompt, and manual Manage privacy settings remains available.
+- The admin pixel Test link redirected to the storefront; it did not expose an
+  actual checkout runtime. Pixel subscription and purchase delivery remain unproven.
+- 69 focused tests across nine files, TypeScript and scoped lint pass for the
+  follow-up. Local failure dismissal, manual reopen and declined-choice reload
+  were checked without real SDK requests (loopback host gate).
 - Retained QA cart and order preserve the actual consented browser client/session
   identity. This does not prove Shopify's checkout pixel consent was granted.
 - QA finished as a guest on checkout.dollwow.com after an initial Shop Pay redirect.
@@ -57,10 +72,11 @@ Revert the scoped source or promote the retained deployment if rollback is neede
   and delivery receipt are missing. No single historical root cause is established.
 - An emitted Google callback is not independently verified GA4 delivery.
 
-## Concrete Source Gap
+## Historical Source Gap (Repaired Prospectively)
 
-`writeConsent` currently writes DollWOW local storage and Google consent state.
-It does not call Shopify's Customer Privacy API. `captureCheckoutAnalytics`
+Before this release, `writeConsent` wrote DollWOW local storage and Google consent
+state without Shopify's Customer Privacy API. The explicit banner now separately
+forwards the current choice through the verified official SDK. `captureCheckoutAnalytics`
 transfers identifiers only; that attribute must never be treated as consent.
 The checkout pixel separately requires Shopify's analyticsProcessingAllowed flag.
 Thus a storefront acceptance can coexist with unregistered checkout consent.

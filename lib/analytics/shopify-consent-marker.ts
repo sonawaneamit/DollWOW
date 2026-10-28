@@ -34,5 +34,5 @@ export function useShopifyConsentMarker() {
 }
 
 export function needsShopifyConsentChoice(enabled: boolean, consent: ConsentState, synced: ConsentState) {
-  return enabled && (consent === 'unknown' || synced !== consent);
+  return enabled && (consent === 'unknown' || (consent === 'granted' && synced !== consent));
 }
