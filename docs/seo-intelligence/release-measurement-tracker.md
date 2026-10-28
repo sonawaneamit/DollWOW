@@ -1,5 +1,19 @@
 # Release Measurement Tracker
 
+## Canonical Shop Callback Correction, 28 October
+
+[Functional release receipt](dol-226-canonical-shop-live-receipt-2026-10-28.md):
+PR203 production `7c412b76` was READY15:01:48UTC. All164 genuine product
+notifications have accepted current fingerprints; bounded native callback
+samples changed from50HTTP403 to50HTTP200, not a full delivery-log census.
+Fresh Bing shows34 distinct successful feeds; agent maps represent60 guides.
+
+One infrastructure audit row brings the ledger to4196, preserving all4195
+prior rows byte/value exactly. Search/landing metrics and indexability are
+not applicable to the authenticated POST endpoint. No API URL notification
+or Google write. Reviews25November/23December/20January15:01:48UTC assess
+functional health, not ranking, AI citation or revenue lift. In Review for Dolly.
+
 ## FunWest Prices, 28 October
 
 [Live release receipt](../pricing/dol-276-live-receipt-2026-10-28.md): Martin's

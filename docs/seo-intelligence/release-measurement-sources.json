@@ -2376,5 +2376,31 @@
     },
     "productionBindingCommit": "60266ce284fb18d704c24238d8711296430d7f71",
     "googleRequests": 0
+  },
+  "canonicalShopWebhookCorrection20261028": {
+    "anchor": "2026-10-28T15:01:48.000Z",
+    "commit": "7c412b76889cbf576efc4210b667c3e11009e2ae",
+    "deployment": "dpl_HsdLk4wK4bmeSudkxo6fb7myHPiu",
+    "previousRows": 4195,
+    "newEvents": 1,
+    "totalRows": 4196,
+    "priorLedgerSha256": "377024e2bda537889bdb09546a9a5347c4e2457b64d7f61b40f3fcc483cb74af",
+    "priorBytesPreserved": true,
+    "genuineProductsChecked": 164,
+    "genuineCurrentSubmitted": 164,
+    "nativeLogSampleBefore": {
+      "count": 50,
+      "httpStatus": 403
+    },
+    "nativeLogSampleAfter": {
+      "count": 50,
+      "httpStatus": 200
+    },
+    "bingDistinctSuccessfulFeeds": 34,
+    "agentGuides": 60,
+    "endpointDiscoveryRequests": 0,
+    "googleRequests": 0,
+    "metrics": "Not applicable non-content authenticated POST endpoint",
+    "receipt": "docs/seo-intelligence/dol-226-canonical-shop-live-receipt-2026-10-28.md"
   }
 }
