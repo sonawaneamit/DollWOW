@@ -986,6 +986,7 @@ export function brandRelatedLinks(brand: CatalogBrand) {
   const profile = brandSeoProfile(brand);
   return [
     ...(profile.guideHref && profile.guideLabel ? [{ label: profile.guideLabel, href: profile.guideHref }] : []),
+    ...(brand.collectionHandle === 'irontech-dolls' ? [{ label: 'Irontech S40 Eileen head', href: '/heads/irontech-s40' }] : []),
     { label: "Compare all sex dolls", href: "/shop/sex-dolls" },
     { label: "Understand sex doll cost", href: "/learn/sex-doll-cost" },
     { label: "Compare TPE vs silicone", href: "/learn/tpe-vs-silicone-sex-dolls" },
