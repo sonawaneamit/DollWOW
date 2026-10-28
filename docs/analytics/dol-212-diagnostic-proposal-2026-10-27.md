@@ -1,9 +1,49 @@
 # DOL-212 Diagnostic Proposal
 
-Status: investigation and preview/test code only. The missing USD 2,267 genuine
+Status updated 28 October: Martin explicitly approved the verified public-token
+Shopify consent handoff and no-PII pixel diagnostics in chat (Linear approval
+`8612a9f8-3d39-4d0a-a95e-809224fa6ad9`). Diagnostics are installed and exact saved
+readback verified. The consent handoff source is being released separately;
+deployment and runtime verification receipts must confirm its live state.
+Historical statements below describe the earlier proposal and are not blockers
+for these now-approved steps. The missing USD 2,267 genuine
 purchase remains unresolved. One approved USD 0 QA checkout completed on 27 October
 at 18:39:19 UTC, then was tagged/canceled and its single-use discount deactivated.
 Do not create another order, replay events or backfill GA4.
+
+## Approved Implementation, 28 October
+
+- Load the official v0.2 Shopify privacy SDK only after a visitor presses Accept
+  or Decline. No saved-consent replay and no manual Shopify cookie manipulation.
+- Forward only explicit analytics choice; marketing, preferences and data sale
+  remain false. Send to `checkout.dollwow.com`, with storefront `dollwow.com`.
+- Require dedicated `SHOPIFY_PUBLIC_CONSENT_TOKEN`, independently verified against
+  Shopify's public Storefront token metadata, plus the explicit production
+  `SHOPIFY_CONSENT_HANDOFF_ENABLED=1` switch. Never fall back to an Admin or private
+  credential. Both production keys were added under Martin's exact approval;
+  values are not in Git, logs or Linear.
+- Coalesce choices superseded during SDK load, serialize actual SDK requests,
+  contain load/request failures, and verify current consent through the API.
+  Callback success alone is not permission or purchase-delivery proof.
+- Returning visitors without a confirmed sync marker receive a fresh confirmation
+  prompt. The marker contains only state/time and is not itself Shopify consent.
+  A missing marker never silently registers an earlier stored choice.
+- The existing connected purchase pixel retains its Analytics-only requirement,
+  no-data-sale classification, exact host/TTL/stream/deduplication gates and
+  purchase fields. Only fixed diagnostic reasons and script/error/callback
+  observability were enabled. Saved source hash:
+  `7c494ec1a353014e4a59fed96bb18e2ac4b047249da051cf62b2d9a244024dc8`.
+- Official SDK bytes inspected on 28 October have SHA-256
+  `3b597d5d8e66c799f844ac5bc748549bf06090bb63b0ba540c2ef958f11496c8`;
+  provenance: `https://cdn.shopify.com/shopifycloud/consent-tracking-api/v0.2/consent-tracking-api.js`.
+  Do not reverse-engineer or fabricate the SDK's cookies or consent requests.
+
+Rollback: previous production deployment is
+`dpl_6n9321f5zFyP6VLEMaWonnU9KG4h` (source `de9f0a1c`). Previous exact pixel source
+is retained privately as `pixel-before.js`, hash
+`042d0ba32797fbfe77bad291061bb994e42353485926947ae05e3ef32e900373`.
+Changing an environment flag alone does not change already-built deployments.
+Revert the scoped source or promote the retained deployment if rollback is needed.
 
 ## Evidence And Limits
 

@@ -9,12 +9,12 @@ export type HeadlessConsentConfig = {
 };
 
 export type ShopifyPrivacyApi = {
-  setTrackingConsent: (choice: { analytics: boolean; marketing: false; preferences: false; sale_of_data: false } & Omit<HeadlessConsentConfig, 'credentialType'>, callback: (result?: { error?: unknown }) => void) => void;
+  setTrackingConsent: (choice: { analytics: boolean; marketing: false; preferences: false; sale_of_data: false } & Omit<HeadlessConsentConfig, 'credentialType'>, callback: (result?: { error?: unknown }) => void) => void | Promise<unknown>;
 };
 
 export type ConsentBridgeResult = 'registered' | 'not-an-explicit-choice' | 'headless-config-unavailable' | 'api-unavailable' | 'failed' | 'timed-out';
 
-/** Candidate adapter only: not wired into production or used to replay stored consent. */
+/** Called only for explicit choices; never used to replay stored consent. */
 export function registerExplicitShopifyAnalyticsChoice(
   state: ConsentState,
   visitorInteraction: boolean,
@@ -23,7 +23,7 @@ export function registerExplicitShopifyAnalyticsChoice(
   config?: HeadlessConsentConfig
 ): Promise<ConsentBridgeResult> {
   if (!visitorInteraction || state === 'unknown') return Promise.resolve('not-an-explicit-choice');
-  // A server Storefront credential must never be reused in this browser contract.
+  // Only an independently verified public credential may enter this browser contract.
   if (!config || config.credentialType !== 'verified-public-storefront' ||
       config.headlessStorefront !== true || config.checkoutRootDomain !== 'checkout.dollwow.com' ||
       config.storefrontRootDomain !== 'dollwow.com' ||
@@ -48,8 +48,9 @@ export function registerExplicitShopifyAnalyticsChoice(
         storefrontRootDomain: config.storefrontRootDomain,
         storefrontAccessToken: config.storefrontAccessToken
       };
-      api.setTrackingConsent({ ...headless, analytics: state === 'granted', marketing: false, preferences: false, sale_of_data: false },
+      const pending = api.setTrackingConsent({ ...headless, analytics: state === 'granted', marketing: false, preferences: false, sale_of_data: false },
         result => finish(result?.error ? 'failed' : 'registered'));
+      if (pending && typeof pending.then === 'function') void pending.catch(() => finish('failed'));
     } catch {
       finish('failed');
     }
