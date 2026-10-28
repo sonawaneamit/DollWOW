@@ -6,11 +6,25 @@ import { getDefaultSelections, resolveCustomization } from '@/lib/customization/
 import { cartCreateRequestSchema, cartCheckoutRequestSchema } from '@/lib/cart/input';
 import { isZargaHalloweenActive, zargaHalloweenEndLabel } from '@/lib/promotions/zargaHalloween2026';
 import { withPromotionOptionPricing } from '@/lib/promotions/optionPricing';
+import { hasEditorialIntro } from '@/lib/catalog/editorialIntro';
 
 afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('DOLLWOW_ZARGA_PREVIEW', '1'); }
 
 describe('DOL-248 exact Zarga preview', () => {
+  it('supplies the shared editorial block using the retained fourth supplier photograph', () => {
+    const product = zargaPreviewProduct();
+    expect(hasEditorialIntro(product.extended.editorialIntro)).toBe(true);
+    const editorial = product.extended.editorialIntro!;
+    expect(editorial.heading).toBe('Zarga takes the Halloween spotlight');
+    expect(editorial.paragraph.split(/\s+/).length).toBeGreaterThanOrEqual(90);
+    expect(editorial.paragraph.split(/\s+/).length).toBeLessThanOrEqual(130);
+    expect(editorial.paragraph).toContain('70cm silicone');
+    expect(editorial.paragraph).not.toMatch(/ready to ship|arrives|heating|automatic|human hair|lifelike movement|factory approval|HALLOWEEN299/i);
+    expect(product.images[3].url).toBe('/images/products/climax-zarga-halloween/04.webp');
+    expect(product.images).toHaveLength(26);
+    expect(product.priceRange.minVariantPrice.amount).toBe('850.00');
+  });
   it('is absent from production, development and unflagged previews', async () => {
     for (const environment of ['production', 'development', '']) {
       vi.stubEnv('VERCEL_ENV', environment); vi.stubEnv('DOLLWOW_ZARGA_PREVIEW', '1');

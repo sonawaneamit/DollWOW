@@ -34,6 +34,11 @@ export function zargaPreviewProduct(): Product {
       brand: 'Climax Doll', displayName: 'Zarga', bodyCode: 'Si70cm GB', material: 'Silicone', heightCm: 70,
       weightLb: 10.18 * 2.2046226218, stockStatus: 'check_stock', customAvailable: true,
       previewCustomizationFixture: true,
+      editorialIntro: {
+        eyebrow: 'Pumpkin light, red and black',
+        heading: 'Zarga takes the Halloween spotlight',
+        paragraph: 'Zarga stands against an iron gate and a scatter of Halloween pumpkins, her red finish set off by a draped black outfit. Short silver-grey hair frames her yellow-green eyes, while long pointed ears and dark nails keep the look unmistakably her own. A ringed choker and matching thigh strap add small flashes of metal to the red-and-black palette. The 70cm silicone build gives this Halloween edition a compact, sculptural presence. It is a character-led look, with as much attention in the face and styling as in the silhouette. Zarga brings a little theatrical mischief to a collection, without needing a grand stage.'
+      },
       measurements: {
         Height: '70 cm', Weight: '10.18 kg', Bust: '58.2 cm', Underbust: '31 cm', Waist: '36.4 cm', Hip: '53 cm',
         'Shoulders Width': '23 cm', 'Neck circumference': '13.2 cm', 'Arms Length': '28.8 cm',
