@@ -53,7 +53,7 @@ describe('isolated SE Halloween preview',()=>{
   expect(renderToStaticMarkup(<SeHalloweenPromotion enabled={false} initialClock="2026-10-27T19:00:00Z" />)).toBe('');
  });
  it('preserves approved base prices and primary metric weights',()=>{
-  expect(listings.map(p=>p.priceUsd)).toEqual([1429,1599,1659,1659]);
+  expect(listings.map(p=>p.priceUsd)).toEqual([1645,1645,1899,1899]);
   expect(listings.map(p=>p.weightKg)).toEqual([28.7,41,35,37]);
   expect((listings[1].weightKg*2.2046226218).toFixed(1)).toBe('90.4');
  });

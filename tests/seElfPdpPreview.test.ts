@@ -8,6 +8,7 @@ import {getDefaultSelections,resolveCustomization} from '@/lib/customization/res
 import {isOwnedOptionAsset} from '@/lib/assets/option-assets.mjs';
 import {serverValidateAndRepriceLine,serverValidateAndRepriceLines} from '@/lib/cart/server-validation';
 import {templateConfigurationPresets} from '@/lib/customization/template-presets';
+import {hasEditorialIntro} from '@/lib/catalog/editorialIntro';
 
 afterEach(()=>vi.unstubAllEnvs());
 function preview(){vi.stubEnv('VERCEL_ENV','preview');vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','preview');vi.stubEnv('NEXT_PUBLIC_DOL275_PREVIEW','1');}
@@ -46,6 +47,21 @@ describe('four SE Elf private PDPs',()=>{
    const presets = templateConfigurationPresets(recipe ?? null,c,c,Number(p.priceRange.minVariantPrice.amount),d);
    expect(presets.map(t=>t.label)).toEqual(['Starter','Enthusiast','Collector']);
    for(const preset of presets)expect(resolveCustomization(c,preset.selections,Number(p.priceRange.minVariantPrice.amount)).issues).toEqual([]);
+  }
+ });
+ it('uses Martin28Oct revised prices and complete sourced editorial on all four PDPs',async()=>{
+  preview();
+  expect(specs.map(s=>s.priceUsd)).toEqual([1645,1645,1899,1899]);
+  for(const [i,raw] of snapshots.entries()){
+   const p=(await getPrivateDraftPreview(raw.handle))!;
+   expect(Number(p.variants[0].price.amount)).toBe(specs[i].priceUsd);
+   expect(Number(p.priceRange.maxVariantPrice.amount)).toBe(specs[i].priceUsd);
+   expect(hasEditorialIntro(p.extended.editorialIntro)).toBe(true);
+   expect(p.extended.editorialIntro!.paragraph).toContain(`${specs[i].heightCm} cm`);
+   expect(p.extended.editorialIntro!.paragraph).toContain(specs[i].head);
+   expect(p.extended.editorialIntro!.paragraph).toContain('TPE');
+   expect(p.extended.editorialIntro!.paragraph).not.toMatch(/in stock|US warehouse|included outfit|moves|robot/i);
+   expect(raw.extended.customizationGroups).toEqual(p.extended.customizationGroups);
   }
  });
  it('rejects preview carts before upstream lookup, single and multi line',async()=>{

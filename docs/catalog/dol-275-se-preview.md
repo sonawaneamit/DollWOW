@@ -3,6 +3,22 @@
 Preview-only branch: `codex/dol-275-se-elf-halloween`. No live Shopify,
 pricing, stock, discount, registry, settings or production writes.
 
+## Requested Revision, 28 October 15:20
+
+Martin's latest decision (Linear5b0bf172) supersedes the earlier preview bases:
+SED338/339 now1645USD, SED340/341 now1899USD. This changes only local preview
+manifests, not Shopify prices. The four shared PDP editorial sections now use
+the existing three-field editorialIntro contract, with the third original
+supplier image selected by the normal shared component. All four selected
+photographs were visually inspected for the new non-explicit styling copy.
+Head/body/height/TPE/colour facts remain Sherry's retained source values.
+No movement, tactile, included-accessory, stock or robot claim was invented.
+Loose Joint warnings and parent menus/defaults remain unchanged.
+
+Earlier pricing1429/1599/1659/1659 and ng786i7fl are historical review evidence,
+not the current requested price/version. New hosted QA/link follows below.
+This remains preview-only and requires Martin's yes on the revised preview.
+
 ## Implemented For Review
 
 - Original SEDOLL Crimson Flame / Dark Temptation JPGs, with separate
@@ -22,10 +38,10 @@ pricing, stock, discount, registry, settings or production writes.
 
 | SKU | Model | Body | Head | Skin | Approved USD | Net kg |
 |---|---|---|---|---|---:|---:|
-| SED338 | Samantha.L | 153 A | W022 | Red | 1,429 | 28.7 |
-| SED339 | Luis.G | 157 H | W021 | Red | 1,599 | 41 |
-| SED340 | Samantha.K | 161 F | W022 | Black | 1,659 | 35 |
-| SED341 | Luis.H | 163 E | W021 | Black | 1,659 | 37 |
+| SED338 | Samantha.L | 153 A | W022 | Red | 1,645 | 28.7 |
+| SED339 | Luis.G | 157 H | W021 | Red | 1,645 | 41 |
+| SED340 | Samantha.K | 161 F | W022 | Black | 1,899 | 35 |
+| SED341 | Luis.H | 163 E | W021 | Black | 1,899 | 37 |
 
 Source: Sherry's 27 October partner folders linked in DOL-275, exact
 Parameters text and original media IDs retained privately in
