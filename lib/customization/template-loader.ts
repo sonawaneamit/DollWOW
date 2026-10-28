@@ -7,6 +7,7 @@ import { createReleasedTemplateSelector } from './template-release-registry';
 import releaseRegistry from './evidence/template-release.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
 import { funwestApprovedPriceBinding } from '@/lib/catalog/funwestApprovedPriceBinding';
+import { topfireApprovedPriceBinding } from '@/lib/catalog/topfireApprovedPriceBinding';
 
 const selectReleased = createReleasedTemplateSelector(releaseRegistry);
 
@@ -18,5 +19,5 @@ export async function loadTemplateRecipe(product: Product): Promise<TemplatePres
   // An environment variable alone cannot promote ignored local review artifacts.
   if (process.env.DOLLWOW_TEMPLATE_RELEASE !== '1') return undefined;
   const config = getCustomizationConfig(product);
-  return selectReleased(funwestApprovedPriceBinding(product, config), config);
+  return selectReleased(topfireApprovedPriceBinding(funwestApprovedPriceBinding(product, config), config), config);
 }
