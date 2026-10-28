@@ -186,7 +186,26 @@ its central directory inventoried: 42 entries, 39 JPEG files, no unsafe paths,
 symlinks or encrypted entries. No file was extracted and no image was opened.
 Its two campaign directory labels correspond to the existing Elina/Jingjing
 holds; filenames alone do not establish exact photo identity or clear them.
-The other two archive contents remain unreviewed.
+The Model18 archive was subsequently inventoried on 28 October at 23:15 UTC:
+139,402,958 bytes, SHA-256
+`07f87a2322369301ed8462e98f7e299f87e7cc4d1377960279aef10c12c2e8ca`,
+24 central-directory entries (22 JPEGs, one XLSX and one directory), with no
+unsafe paths, symlinks or encrypted entries. Zero files were extracted and zero
+images opened; compressed payload CRCs were not verified. The directory label
+is Arina/body18, matching the name/body reference of historical safety-hold
+index30, not exact photographic identity proof. That hold stays closed; existing
+Lisa Scott/body18 remains in the twelve-product cohort, so this is not a body-wide
+exclusion. The enclosed workbook filename says 7 May 2022, not current price/menu
+authority; its content was not read.
+
+Model19/Leyla remains entirely unreviewed: its 608,341,494-byte connected Drive
+download was rejected before transfer with HTTP413 (268,435,456-byte connector
+limit). No alternate credential, cookie, base64 or quota workaround was attempted.
+Historical Leyla index33 and alias34 remain held; size access is not the reason
+for that safety hold. Do not request or imply a hold override. If a separately
+eligible source campaign needs review, Dolly/Eric must supply individual official
+files or a supported larger-file connector path. Private receipts are
+`archive-audit/model18-inventory.json` and `archive-audit/model19-download-blocked.json`.
 
 Lyra/M25 has no historical dealer disposition. A fresh official folder listing
 returns 17 JPEGs, one video and one PDF. All 17 original photo byte lengths and

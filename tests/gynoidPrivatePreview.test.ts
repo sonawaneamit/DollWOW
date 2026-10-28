@@ -19,6 +19,17 @@ afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
 
 describe('Gynoid saved draft previews', () => {
+  it('does not turn archive labels for held campaigns into products or a body-wide exclusion', async () => {
+    enable();
+    const products = gynoidPreviewProducts();
+    expect(products).toHaveLength(12);
+    expect(products.filter(product => product.handle === 'gynoid-lisa-scott-168cm-silicone-companion-doll-model-18')).toHaveLength(1);
+    for (const handle of [
+      'gynoid-arina-168cm-silicone-companion-doll-model-18',
+      'gynoid-leyla-168cm-silicone-companion-doll-model-19'
+    ]) expect(await getPrivateDraftPreview(handle)).toBeNull();
+    expect(products.some(product => /\b(?:Arina|Leyla)\b/i.test(product.title))).toBe(false);
+  });
   it('does not stage a photo-reviewed source while its exact menu and commercial gates remain open', async () => {
     enable();
     for (const review of sourceReviews) {
