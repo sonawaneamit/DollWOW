@@ -13,7 +13,25 @@ export function isGynoidPreviewProduct(product: Pick<Product, 'id' | 'handle'>) 
 }
 
 export function gynoidPreviewProducts(): Product[] {
-  return gynoidPreviewEnabled() ? structuredClone(allSnapshots) as unknown as Product[] : [];
+  if (!gynoidPreviewEnabled()) return [];
+  const products = structuredClone(allSnapshots) as unknown as Product[];
+  // The saved menu is not evidence of a free alternate-head entitlement.
+  for (const product of products) {
+    const head = product.extended.customizationGroups?.find(group => group.id === 'head');
+    for (const option of head?.options ?? []) {
+      if (option.id === 'no-change') continue;
+      option.priceDelta = undefined;
+      option.priceVerified = false;
+      option.purchasable = false;
+      option.productionNote = 'Alternate-head inclusion and incremental price await factory confirmation.';
+    }
+  }
+  return products;
+}
+
+export function gynoidPreviewStoreDiscount(product: Pick<Product, 'id' | 'handle'>, basePrice: number) {
+  if (!gynoidPreviewEnabled() || !isGynoidPreviewProduct(product)) return null;
+  return { eligible: false as const, percentage: 10, discountAmount: 0, totalPrice: basePrice };
 }
 
 export function gynoidPreviewProduct(handle: string): Product | null {

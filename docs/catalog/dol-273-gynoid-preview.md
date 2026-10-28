@@ -1,5 +1,72 @@
 # DOL-273 Gynoid - 28 October 2026
 
+## Dolly Revision In Progress, 28 October 16:06 Decision
+
+Prices remain exactly M11/M16/M21 4799, M18 4999, M10/M13 5299 USD.
+No price increase or Shopify write is part of this revision.
+
+The optional premium/accessory steps retain their real choices and original
+owned thumbnails. Their empty collapsed summaries now say no optional upgrades
+selected and show the available thumbnails, not a fictitious included package.
+Laura's hero and measurement table show 29kg body only, +/-3kg; no assembled
+weight is inferred. Alternate heads remain visible but unavailable pending
+factory confirmation of inclusion/incremental price. They no longer claim
+Included. The original eleven snapshots/94 images are unchanged; these are
+isolated runtime projections, not updates to Shopify or the retained evidence.
+
+The preview-only 10% policy excludes these exact private Gynoid IDs and leaves
+the retained base price unchanged. PDPs disclose the exclusion and explicitly
+say live checkout settings are unchanged. No Shopify discount setting or
+eligibility collection has been changed. This local quote policy is not proof
+of production checkout enforcement; exact live discount object/eligibility
+preflight and release approval remain required before launch.
+
+### Actual Preset Breakdown
+
+All retained templates resolve these existing option prices, not tier markups:
+
+| Tier | Paid selections | Increment |
+|---|---|---:|
+| Starter | None; hard standing feet without bolts retained at zero | 0 |
+| Enthusiast | Bionic Breast | 150 |
+| Collector | Bionic Breast 150 + Full Body Extra Softness Excluding Butts 100 | 250 |
+
+The retained 6 October menu/recipe is the source of the 100 softness increment;
+current workbook Purchasing Order A124/B124 corroborates bionic breasts 150.
+Do not claim that every retained menu price has been reconciled with the newer
+factory guide. Collector excludes the mutually exclusive including-butts
+construction. Current source/menu commercial approval is still open.
+
+### Per-Body Commercial Review
+
+USD. Guide: Purchasing Order A26/A38/H2/H38/A62/H74. Dealer cost is the
+explicitly requested 20% calculation, not an independently settled invoice.
+Freight is UNKNOWN, awaiting Dolly/Eric; none of these is a landed margin.
+Standard/deluxe alternatives stay separate until exact construction is proven.
+
+| Body | Guide + freight | Guide x80% | Freight | Retained sale | After 10% (comparison only) | Pre-freight margin after 10% | Pre-freight margin with exclusion |
+|---|---:|---:|---|---:|---:|---:|---:|
+| M10 | 4399 | 3519.20 | Unknown | 5299 | 4769.10 | 26.21% | 33.59% |
+| M11 | 4199 | 3359.20 | Unknown | 4799 | 4319.10 | 22.22% | 30.00% |
+| M13 Standard | 4399 | 3519.20 | Unknown | 5299 | 4769.10 | 26.21% | 33.59% |
+| M13 Deluxe | 4899 | 3919.20 | Unknown | 5299 | 4769.10 | 17.82% | 26.04% |
+| M16 | 4199 | 3359.20 | Unknown | 4799 | 4319.10 | 22.22% | 30.00% |
+| M18 | 4399 | 3519.20 | Unknown | 4999 | 4499.10 | 21.78% | 29.60% |
+| M21 Standard | 4199 | 3359.20 | Unknown | 4799 | 4319.10 | 22.22% | 30.00% |
+| M21 Deluxe | 4699 | 3759.20 | Unknown | 4799 | 4319.10 | 12.96% | 21.67% |
+
+Actual contribution margin before payment fees/tax/other variable costs is
+`(net sale - guide*0.8 - freight) / net sale`. The final two columns above are
+upper bounds excluding freight, not approval to target 30% or change prices.
+M11/M16 standard are only approximately 30% even before freight with no store
+discount; positive freight lowers that. Martin's keep-price decision is applied,
+not challenged with another repeated price question.
+
+BLOCKED source dependencies: Dolly/Eric for the one-standard-head entitlement,
+actual per-body freight and Early Bird/dealer stacking/M25 scope. No Codex
+supplier contact. Whole catalog completion and final revised hosted responsive
+verification remain unfinished; the old deployment below is not this revision.
+
 ## Current Review Deployment
 
 https://doll-9c3jf7ub9-sonawaneamits-projects.vercel.app/brands/gynoid-dolls

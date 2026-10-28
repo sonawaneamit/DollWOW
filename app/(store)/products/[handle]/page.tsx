@@ -34,6 +34,7 @@ import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasur
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
+import { gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -120,10 +121,12 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
+  const gynoidStoreDiscount = gynoidPreviewStoreDiscount(product, Number(product.priceRange.minVariantPrice.amount));
 
   return (
     <div>
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
+      {gynoidStoreDiscount ? <p className="mx-auto max-w-7xl px-4 pb-3 text-sm text-text-dim">Gynoid is excluded from the sitewide 10% discount. Preview policy only; live checkout settings are unchanged.</p> : null}
       {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />}
       {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">

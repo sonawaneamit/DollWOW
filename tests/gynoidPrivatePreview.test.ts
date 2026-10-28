@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
 import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
-import { gynoidLocalImagePath, gynoidPreviewProducts } from '@/lib/catalog/gynoidPreview';
+import { gynoidLocalImagePath, gynoidPreviewProducts, gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
 import rules from '@/data/draft-previews/gynoid-oct28-rules.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
 import { getCustomizationConfig } from '@/lib/customization/configs';
@@ -11,7 +11,7 @@ import { templateConfigurationPresets } from '@/lib/customization/template-prese
 import { publicProductPayload } from '@/lib/catalog/publicPayload';
 import { serverValidateAndRepriceLine, serverValidateAndRepriceLines } from '@/lib/cart/server-validation';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
-import { productMeasurementSpecs } from '@/lib/catalog/productSpecs';
+import { primaryProductSpecs, productMeasurementSpecs } from '@/lib/catalog/productSpecs';
 
 afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
@@ -49,6 +49,13 @@ describe('Gynoid saved draft previews', () => {
       const presets = templateConfigurationPresets(recipe ?? null, c, c, base, defaults);
       expect(presets.map(t => t.label), p.handle).toEqual(['Starter', 'Enthusiast', 'Collector']);
       expect(presets.map(t => t.totalPrice), p.handle).toEqual([base, base + 150, base + 250]);
+      const paidItems = presets.map(preset => resolveCustomization(c, preset.selections, base).selectedOptions
+        .filter(option => option.priceDelta > 0).map(option => [option.optionId, option.priceDelta]));
+      expect(paidItems, p.handle).toEqual([
+        [],
+        [['bionic-breast', 150]],
+        [['bionic-breast', 150], ['full-body-extra-softness-excluding-butts', 100]]
+      ]);
       for (const preset of presets) expect(resolveCustomization(c, preset.selections, base).issues, p.handle).toEqual([]);
     }
   });
@@ -56,6 +63,25 @@ describe('Gynoid saved draft previews', () => {
     const input = { merchandiseId: snapshots[0].variants[0].id, quantity: 1 };
     await expect(serverValidateAndRepriceLine(input)).rejects.toThrow('Preview products');
     await expect(serverValidateAndRepriceLines([input])).rejects.toThrow('Preview products');
+  });
+  it('fails closed on unverified alternate-head prices and preserves the photographed default', async () => {
+    enable();
+    for (const p of gynoidPreviewProducts()) {
+      const config = getCustomizationConfig(p), head = config.groups.find(g => g.id === 'head')!;
+      expect(head.options.find(o => o.id === 'no-change')).toMatchObject({ priceDelta: 0, priceVerified: true });
+      for (const option of head.options.filter(o => o.id !== 'no-change')) {
+        expect(option.priceDelta).toBeUndefined();
+        expect(option).toMatchObject({ priceVerified: false, purchasable: false });
+      }
+    }
+  });
+  it('projects the approved 10% exclusion only in the isolated preview', () => {
+    enable();
+    const p = gynoidPreviewProducts()[0];
+    expect(gynoidPreviewStoreDiscount(p, 4799)).toEqual({ eligible: false, percentage: 10, discountAmount: 0, totalPrice: 4799 });
+    expect(gynoidPreviewStoreDiscount({ id: 'live', handle: p.handle }, 4799)).toBeNull();
+    vi.stubEnv('VERCEL_ENV', 'production');
+    expect(gynoidPreviewStoreDiscount(p, 4799)).toBeNull();
   });
   it('retains the original certificate and its preview image', () => {
     for (const p of ['public/images/authorizations/gynoid-authorized.png', 'public/images/authorizations/previews/gynoid-authorized.webp']) expect(fs.statSync(p).size).toBeGreaterThan(10000);
@@ -69,6 +95,10 @@ describe('Gynoid saved draft previews', () => {
     expect(p.priceRange.minVariantPrice.amount).toBe('4799.00');
     expect(p.images).toHaveLength(4);
     expect(productMeasurementSpecs(p).map(s => s.label)).toEqual(expect.arrayContaining(['Feet Length', 'Shoulders Width']));
+    for (const specs of [primaryProductSpecs(p), productMeasurementSpecs(p)]) {
+      expect(specs.find(s => s.label === 'Body weight')?.value).toBe('29kg (body only; +/-3kg)');
+      expect(specs.some(s => s.label === 'Weight')).toBe(false);
+    }
     for (const i of p.images) {
       expect(gynoidLocalImagePath(p, i.url)).toBe(`public${i.url}`);
       expect(fs.existsSync(`public${i.url}`)).toBe(true);

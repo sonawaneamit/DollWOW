@@ -453,7 +453,16 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   <span className={clsx("flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold", active ? "bg-accent text-white" : "bg-surface-tint text-text")}>{index + 1}</span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-[17px] font-semibold text-text">{group.label}</span>
-                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, resolved.selections[group.id]) || "Factory default — included"}</span> : null}
+                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, resolved.selections[group.id]) || (product.id.startsWith('preview:gynoid:') && group.selectionMode === 'multiple' ? 'No optional upgrades selected' : "Factory default — included")}</span> : null}
+                    {!active && product.id.startsWith('preview:gynoid:') && group.selectionMode === 'multiple' ? (
+                      <span className="mt-3 flex flex-wrap gap-2" aria-label="Available option thumbnails">
+                        {group.options.filter(option => option.swatch?.kind === 'image').map(option => (
+                          <span key={option.id} title={option.label} className="relative block h-10 w-10 shrink-0 overflow-hidden rounded-sm border border-border">
+                            <Image src={option.swatch!.value} alt={option.label} fill sizes="40px" className="object-cover" unoptimized />
+                          </span>
+                        ))}
+                      </span>
+                    ) : null}
                   </span>
                   {!active ? <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</span> : null}
                 </button>
