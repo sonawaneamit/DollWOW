@@ -1,5 +1,20 @@
 # Release Measurement Tracker
 
+## One S40 Owner, 28 October
+
+[Live receipt](dol-233-s40-live-receipt-2026-10-28.md): S40 pageca9fdc7aREADY
+15:57:06UTC, followed by exact proxy/Markdown correction98fa475cREADY16:10:47.
+PublicHTML/directMarkdown/contentnegotiation/schema/sitemap/maps/incominglink
+and actual1319desktop/390mobile14cards/23decodedimages pass. One IndexNow
+owner acceptedHTTP20016:11:38.402UTC; no indexing/consumerAI/revenue proof.
+
+Two events on ONE owner bring4203to4205 rows, allpriorbytes/valuespreserved.
+They overlap and must not count as two independent pages or pings. Explicitly
+reused13:43baseline29September-26October returns noGSC/GA4row,unknown/notzero.
+Reviews25November/23December/20January use each actualREADYanchor; no Google
+write or quota retry. Other five reference owners remain held. Dolly review,
+never self-close the whole six-reference ticket.
+
 ## Seven Top Fire Prices, 28 October
 
 [Live receipt](../pricing/dol-257-live-receipt-2026-10-28.md): approved exact7

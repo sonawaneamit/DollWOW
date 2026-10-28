@@ -2434,5 +2434,69 @@
     "operatorNotifications": 0,
     "googleWrites": 0,
     "evidenceDirectory": "/Volumes/Extreme Pro/Projects/DollWOW-dol257-topfire-prices/data/exports/dol-257-2026-10-28"
+  },
+  "s40ReferenceRelease20261028": {
+    "initialAnchor": "2026-10-28T15:57:06.000Z",
+    "anchor": "2026-10-28T16:10:47.000Z",
+    "previousRows": 4203,
+    "newEvents": 2,
+    "distinctNewOwners": 1,
+    "totalRows": 4205,
+    "priorBytesPreserved": true,
+    "priorSha256": "fd4f839b74c075691ef26228a40054210739f7232b6759e1062762c9d32aa53e",
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "gscReturned": false,
+    "ga4Returned": false,
+    "deployment": {
+      "at": "2026-10-28T16:11:16.878Z",
+      "id": "dpl_G4UBqgRYNLHrrjDSoykWXNwNCMA8",
+      "url": "doll-6jxou3zw8-sonawaneamits-projects.vercel.app",
+      "target": "production",
+      "readyState": "READY",
+      "aliases": [
+        "dollwow.com",
+        "ops.dollwow.com",
+        "www.dollwow.com",
+        "doll-wow.vercel.app",
+        "doll-wow-git-main-sonawaneamits-projects.vercel.app"
+      ],
+      "commit": "98fa475c47d2a48c39b88e5e2ae3cd5bd16943a0",
+      "initialCommit": "ca9fdc7a1d7fcf139c610025e37ca81900dffbb4",
+      "initialDeployment": "dpl_DzRGJzhYQ4reMqP2UQMAzJzgJMuD",
+      "initialReadyAt": "2026-10-28T15:57:06.000Z",
+      "fixPr": 205,
+      "readyAt": "2026-10-28T16:10:47.000Z",
+      "githubDeployment": 7390770762
+    },
+    "discovery": {
+      "startedAt": "2026-10-28T16:11:37.169Z",
+      "url": "https://dollwow.com/heads/irontech-s40",
+      "count": 1,
+      "attempts": 1,
+      "state": "ACCEPTED_NOT_INDEXING_PROOF",
+      "finishedAt": "2026-10-28T16:11:38.402Z",
+      "httpStatus": 200,
+      "exitCode": 0,
+      "output": "Submitted 1 changed URL to IndexNow (HTTP 200).\n"
+    },
+    "liveProof": "/Volumes/Extreme Pro/Projects/DollWOW-halloween-preview/data/exports/dol-233-2026-10-28/live-source-qa.json",
+    "otherFiveOwners": "held/notreleased",
+    "googleWrites": 0
   }
 }
