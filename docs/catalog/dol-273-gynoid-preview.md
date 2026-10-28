@@ -1,5 +1,31 @@
 # DOL-273 Gynoid - 28 October 2026
 
+## Official Laura M10 Campaign Reconciliation
+
+28 October source continuation found that the official Laura + Model 10 folder
+`1ISQRQaVt5vmHRyTTScRyCboOqi9UgrWP` overlaps the already saved Tanya M10
+gallery. Thirteen originals were downloaded and contact-reviewed, with four
+selected originals inspected full size. Direct comparison against the retained
+Tanya contact sheet found the same photographic compositions. Five original
+files (_MG_0626/0640/0646/0657/0663) match resized/recompressed Tanya3/4/5/8/9
+copies with normalized greyscale pixel MAE of 1.35-2.01 on a 0-255 scale.
+This corroborates image overlap, not universal dealer-name/head equivalence.
+
+The tentative extra candidate in74a37a21 was withdrawn in8fd5908a before any
+review handoff or Shopify record. The source folder is now recorded in
+`data/draft-previews/gynoid-source-dispositions.json`; a regression test keeps
+the known duplicate handle absent and the existing Tanya present once.
+The current verified12PDP preview below remains authoritative. No new product,
+rename, merge, price change or gallery replacement has been approved or made.
+
+The eleven saved snapshots/94 assets and Laura M11 remain identical. All
+downloaded originals, hashes and comparison matrix are retained privately in
+`data/exports/dol-273-2026-10-28/laura-m10-source/`. Before appending another
+official candidate, compare original photo campaigns with existing dealer
+galleries; absence of a matching handle alone is not a duplicate check.
+The full catalog audit, source-name reconciliation and existing commercial
+dependencies remain open. No new catalog-completion claim follows from this.
+
 ## Revised Preview Verified, 28 October 16:06 Decision
 
 Current review: https://doll-lwd91n7cn-sonawaneamits-projects.vercel.app/brands/gynoid-dolls

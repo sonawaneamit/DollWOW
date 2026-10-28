@@ -1,0 +1,21 @@
+[
+  {
+    "checkedAt": "2026-10-28",
+    "officialFolderId": "1ISQRQaVt5vmHRyTTScRyCboOqi9UgrWP",
+    "officialFolderLabel": "Laura + Model 10 (172cm)",
+    "existingHandle": "gynoid-tanya-172cm-silicone-companion-doll-model-10",
+    "blockedDuplicateHandle": "gynoid-laura-172cm-silicone-companion-doll-model-10",
+    "status": "DUPLICATE_PHOTO_CAMPAIGN_HOLD",
+    "identityQualification": "Photo overlap supports retaining the existing Tanya product, not proof that all dealer head names or every image in the folder are equivalent. No rename, merge or additional product is approved.",
+    "originalsReviewed": 13,
+    "corroboratingPhotoPairs": [
+      { "officialFile": "_MG_0626.jpg", "existingDealerFile": "172cm5ft8F-cupHyperRealisticSiliconeSexDoll-Tanya3-1.jpg", "normalizedPixelMAE": 1.8156 },
+      { "officialFile": "_MG_0640.jpg", "existingDealerFile": "172cm5ft8F-cupHyperRealisticSiliconeSexDoll-Tanya4-1.jpg", "normalizedPixelMAE": 1.3486 },
+      { "officialFile": "_MG_0646.jpg", "existingDealerFile": "172cm5ft8F-cupHyperRealisticSiliconeSexDoll-Tanya5-1.jpg", "normalizedPixelMAE": 1.5557 },
+      { "officialFile": "_MG_0657.jpg", "existingDealerFile": "172cm5ft8F-cupHyperRealisticSiliconeSexDoll-Tanya8-1.jpg", "normalizedPixelMAE": 1.9176 },
+      { "officialFile": "_MG_0663.jpg", "existingDealerFile": "172cm5ft8F-cupHyperRealisticSiliconeSexDoll-Tanya9-1.jpg", "normalizedPixelMAE": 2.0078 }
+    ],
+    "comparisonMethod": "Visual composition comparison plus 64x96 normalized greyscale pixel MAE on a 0-255 scale. Original bytes differ due to resizing/recompression; not a facial identity classifier.",
+    "next": "Reconcile remaining official/dealer source names before any new product or rename. Preserve original eleven drafts and 94 images."
+  }
+]

@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
 import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
+import sourceDispositions from '@/data/draft-previews/gynoid-source-dispositions.json';
 import { gynoidLocalImagePath, gynoidPreviewProducts, gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
 import rules from '@/data/draft-previews/gynoid-oct28-rules.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
@@ -17,6 +18,17 @@ afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
 
 describe('Gynoid saved draft previews', () => {
+  it('does not append a known dealer-alias photo campaign as another product', async () => {
+    enable();
+    const products = gynoidPreviewProducts();
+    expect(products).toHaveLength(12);
+    for (const disposition of sourceDispositions) {
+      expect(disposition.status).toBe('DUPLICATE_PHOTO_CAMPAIGN_HOLD');
+      expect(disposition.corroboratingPhotoPairs).toHaveLength(5);
+      expect(products.filter(product => product.handle === disposition.existingHandle)).toHaveLength(1);
+      expect(await getPrivateDraftPreview(disposition.blockedDuplicateHandle)).toBeNull();
+    }
+  });
   it('is absent in production/development even with flag and in unflagged preview', async () => {
     for (const env of ['production', 'development', 'preview']) {
       vi.stubEnv('VERCEL_ENV', env); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', env === 'preview' ? '' : '1');
