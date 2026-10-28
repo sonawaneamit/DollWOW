@@ -87,8 +87,8 @@
         "Bust": "85cm",
         "Waist": "60cm",
         "Hip": "88cm",
-        "Foot length": "22cm",
-        "Shoulder width": "37.5cm",
+        "Feet Length": "22cm",
+        "Shoulders Width": "37.5cm",
         "Underbust": "67cm",
         "Factory body weight": "29kg (body only; +/-3kg)"
       },
@@ -98,7 +98,7 @@
       "editorialIntro": {
         "eyebrow": "Between One Thing and the Next",
         "heading": "A Pause in the Kitchen",
-        "paragraph": "The kettle is ready; the conversation is not quite finished. Laura stands beside the counter, her short silver-grey wig catching the light from the window. The room is ordinary, and that is its appeal: a quiet corner, a familiar routine, a moment with nowhere else to be. The original factory photograph shows the Laura head and Model 11 body; the outfit and kitchen accessories are styling, not confirmed inclusions."
+        "paragraph": "The kettle is ready; the conversation is not quite finished. Laura stands beside the counter, her short silver-grey wig catching the light from the window. The room is ordinary, and that is its appeal: a quiet corner, a familiar routine, a moment with nowhere else to be."
       },
       "customizationGroups": [
         {

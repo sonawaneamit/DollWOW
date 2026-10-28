@@ -11,6 +11,7 @@ import { templateConfigurationPresets } from '@/lib/customization/template-prese
 import { publicProductPayload } from '@/lib/catalog/publicPayload';
 import { serverValidateAndRepriceLine, serverValidateAndRepriceLines } from '@/lib/cart/server-validation';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
+import { productMeasurementSpecs } from '@/lib/catalog/productSpecs';
 
 afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
@@ -67,6 +68,7 @@ describe('Gynoid saved draft previews', () => {
     expect(p.extended).toMatchObject({ displayName: 'Laura', headModel: 'Laura', bodyCode: 'M11', heightCm: 162 });
     expect(p.priceRange.minVariantPrice.amount).toBe('4799.00');
     expect(p.images).toHaveLength(4);
+    expect(productMeasurementSpecs(p).map(s => s.label)).toEqual(expect.arrayContaining(['Feet Length', 'Shoulders Width']));
     for (const i of p.images) {
       expect(gynoidLocalImagePath(p, i.url)).toBe(`public${i.url}`);
       expect(fs.existsSync(`public${i.url}`)).toBe(true);

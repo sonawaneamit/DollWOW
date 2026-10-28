@@ -357,9 +357,13 @@ function ProductSpecSummary({
   measurements: Array<{ label: string; value: string }>;
   fitChecks: Array<{ title: string; body?: string; lines?: string[] }>;
 }) {
+  const namedGynoidHead = product.id.startsWith('preview:gynoid:');
   const detailRows = [
     ["Brand", product.extended.brand ?? product.vendor],
-    ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
+    ...(product.extended.headModel ? [["Head model", namedGynoidHead ? product.extended.headModel : formatHeadModel(product.extended.headModel)]] : []),
+    ...(namedGynoidHead && product.extended.bodyCode ? [["Body model", product.extended.bodyCode]] : []),
+    ...(namedGynoidHead && product.extended.measurements?.['Factory body weight'] ? [["Factory body weight", product.extended.measurements['Factory body weight']]] : []),
+    ...(namedGynoidHead && product.extended.measurements?.Underbust ? [["Underbust", product.extended.measurements.Underbust]] : []),
     ["Material", product.extended.material],
     ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
     ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
