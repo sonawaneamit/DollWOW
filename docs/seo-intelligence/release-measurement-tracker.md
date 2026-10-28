@@ -1,5 +1,37 @@
 # Release Measurement Tracker
 
+## Approved Copy Releases, 28 October
+
+PR197 / DOL-246 and PR190 / DOL-247 are live together at production
+`c500c393`, READY 13:44:42 UTC. Custom-domain inspection confirmed that
+deployment, not the later-finishing standalone PR197 build. Seventy source
+checks passed; collection filters and a guide passed representative desktop
+and mobile browser checks without horizontal overflow. No privacy-banner,
+product, price, factual research or publication-calendar change was included.
+
+Seventy appended events bring the ledger to 4,027 rows. All prior 3,957 rows
+are byte/value preserved. DOL-247 has 69 current copy URLs: the original 68
+plus an unchanged scheduled WM guide that became public at 10:00 UTC today.
+DOL-246 has one homepage representative, not a complete shared-template URL
+census. The cohorts overlap and must not be summed as independent effects.
+
+Fresh baselines cover 28 complete final GSC dates, 29 September-26 October.
+There are 56 returned GSC page rows and 20 returned production GA4 landing
+rows among these 70 events; missing rows are unknown, not zero. GA4 sums
+dollwow.com and www.dollwow.com, all channels, New York dates; GSC uses
+Pacific dates. These are not reconciled paid orders or proof of causal lift.
+Reviews are 25 November, 23 December and 20 January at 13:44:42 UTC;
+the next Monday check is 2 November.
+
+One 69-URL IndexNow batch was accepted HTTP200 at 13:58:06.974 UTC.
+A local encoded-path preflight error occurred before any network submission
+and is retained separately; there was only one actual submission. Acceptance
+does not prove crawling or indexing. No Google requests were made under the
+existing quota stop, and prior Google queue entries and receipts are unchanged.
+Evidence: release worktree `data/exports/dol-246-247-2026-10-28/`, including
+source/browser checks, raw baselines, IndexNow receipt and append receipt.
+Implementation receipts remain In Review for Dolly, not self-closed.
+
 ## Weekly Check, 26 October (Captured 27 October)
 
 [Catch-up report](weekly-release-measurement-2026-10-26.md) and

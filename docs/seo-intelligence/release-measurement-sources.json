@@ -2251,5 +2251,47 @@
       "limits": "Notification accepted is not indexing/crawl confirmation. No Google write."
     },
     "reviewer": "In Review for Dolly;not self-closed"
+  },
+  "approvedCopyRelease20261028": {
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "anchor": "2026-10-28T13:44:42.000Z",
+    "deployment": "dpl_HE9992vbgwNhZrcrQ9UxYxP2EFoa",
+    "commit": "c500c39395e801940a90a44c080a38009fbe8bbe",
+    "copyUrls": 69,
+    "sharedHomepageRepresentative": 1,
+    "newEvents": 70,
+    "previousRows": 3957,
+    "totalRows": 4027,
+    "priorLedgerSha256": "aecf443bd0efb9af986d6051ee7a683eb99856ff1ecc90d665edf3ea4d335554",
+    "evidenceDirectory": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-246-247-2026-10-28",
+    "indexnow": {
+      "startedAt": "2026-10-28T13:58:05.615Z",
+      "attempts": 1,
+      "count": 69,
+      "sha256": "1119a962e4b785225bf3e6fd4b895bf53ba5c60533253f6371aaf53ddf1e6441",
+      "state": "ACCEPTED_NOT_INDEXING_PROOF",
+      "finishedAt": "2026-10-28T13:58:06.974Z",
+      "exitCode": 0,
+      "output": "Submitted 69 changed URLs to IndexNow (HTTP 200).\n",
+      "httpStatus": 200
+    },
+    "googleRequests": 0,
+    "browserEvidence": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-246-247-2026-10-28/browser-qa.json"
   }
 }
