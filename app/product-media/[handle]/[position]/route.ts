@@ -1,8 +1,9 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { basename, join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
+import { gynoidLocalImagePath } from '@/lib/catalog/gynoidPreview';
 
 export const runtime = "nodejs";
 
@@ -41,21 +42,24 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
     });
   }
 
-  const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
-  if (!upstream.ok) {
+  const local = product ? gynoidLocalImagePath(product, source.url) : null;
+  const upstream = local ? null : await fetch(source.url, { next: { revalidate: 86400 } });
+  if (upstream && !upstream.ok) {
     return new Response("Image unavailable", {
       status: 502,
       headers: { "Cache-Control": "no-store" }
     });
   }
-  const declaredLength = Number(upstream.headers.get("content-length") || 0);
+  const declaredLength = Number(upstream?.headers.get("content-length") || 0);
   if (declaredLength > MAX_SOURCE_BYTES) {
     return new Response("Image too large", {
       status: 413,
       headers: { "Cache-Control": "no-store" }
     });
   }
-  const input = Buffer.from(await upstream.arrayBuffer());
+  const input = local
+    ? await readFile(join(process.cwd(), 'public/images/products/gynoid-oct28/laura-m11', basename(local)))
+    : Buffer.from(await upstream!.arrayBuffer());
   if (input.byteLength > MAX_SOURCE_BYTES) {
     return new Response("Image too large", {
       status: 413,

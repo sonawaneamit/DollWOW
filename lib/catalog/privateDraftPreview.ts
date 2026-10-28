@@ -20,7 +20,9 @@ export async function privateDraftRecipe(product: Product, config: BrandCustomiz
   if (!snapshot || snapshot.id !== product.id) return undefined;
   const gynoid = gynoidPreviewProduct(product.handle);
   if (gynoid?.id === product.id) {
-    const recipe = gynoidRecipes[product.handle as keyof typeof gynoidRecipes];
+    const recipe = gynoidRecipes[product.handle as keyof typeof gynoidRecipes]
+      ?? Object.values(gynoidRecipes).find(recipe => product.tags.includes(recipe.tag));
+    if (!recipe) return null;
     return { ...recipe, signature: templateConfigSignature(config) } as TemplatePresetDefinition;
   }
   if (snapshot.extended.bodyCode === 'S112') return null;

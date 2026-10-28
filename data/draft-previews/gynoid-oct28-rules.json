@@ -1424,5 +1424,137 @@
       },
       "message": "Loose joints cannot stand. Choose standard joints for standing feet."
     }
+  ],
+  "preview:gynoid:laura-m11-official": [
+    {
+      "id": "gynoid-exclusive-softness",
+      "type": "incompatible",
+      "when": {
+        "groupId": "premium-head-body-options-multiple",
+        "optionId": "full-body-extra-softness-including-butts"
+      },
+      "conflictsWith": {
+        "groupId": "premium-head-body-options-multiple",
+        "optionId": "full-body-extra-softness-excluding-butts"
+      },
+      "message": "Choose one body-softness construction."
+    },
+    {
+      "id": "gynoid-jaw-head-no-change",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "no-change"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-jaw-head-ji-xiang-eye-closed",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "ji-xiang-eye-closed"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-jaw-head-laura",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "laura"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-jaw-head-li-hui",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "li-hui"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-jaw-head-lisa",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "lisa"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-jaw-head-wan-ying",
+      "type": "incompatible",
+      "when": {
+        "groupId": "head-type",
+        "optionId": "movable-jaw-free"
+      },
+      "conflictsWith": {
+        "groupId": "head",
+        "optionId": "wan-ying"
+      },
+      "message": "Movable-jaw construction is not available for this head."
+    },
+    {
+      "id": "gynoid-loose-joint-standing-without-bolts-free",
+      "type": "incompatible",
+      "when": {
+        "groupId": "joint",
+        "optionId": "loose-joint-ideal-for-physical-contact"
+      },
+      "conflictsWith": {
+        "groupId": "standing-add-on",
+        "optionId": "standing-without-bolts-free"
+      },
+      "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+    },
+    {
+      "id": "gynoid-loose-joint-hard-standing-feet-without-bolts-free",
+      "type": "incompatible",
+      "when": {
+        "groupId": "joint",
+        "optionId": "loose-joint-ideal-for-physical-contact"
+      },
+      "conflictsWith": {
+        "groupId": "standing-add-on",
+        "optionId": "hard-standing-feet-without-bolts-free"
+      },
+      "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+    },
+    {
+      "id": "gynoid-loose-joint-standing-with-bolts-free",
+      "type": "incompatible",
+      "when": {
+        "groupId": "joint",
+        "optionId": "loose-joint-ideal-for-physical-contact"
+      },
+      "conflictsWith": {
+        "groupId": "standing-add-on",
+        "optionId": "standing-with-bolts-free"
+      },
+      "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+    }
   ]
 }

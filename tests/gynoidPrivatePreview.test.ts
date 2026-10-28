@@ -1,6 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
+import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
+import { gynoidLocalImagePath, gynoidPreviewProducts } from '@/lib/catalog/gynoidPreview';
 import rules from '@/data/draft-previews/gynoid-oct28-rules.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
 import { getCustomizationConfig } from '@/lib/customization/configs';
@@ -56,5 +58,29 @@ describe('Gynoid saved draft previews', () => {
   });
   it('retains the original certificate and its preview image', () => {
     for (const p of ['public/images/authorizations/gynoid-authorized.png', 'public/images/authorizations/previews/gynoid-authorized.webp']) expect(fs.statSync(p).size).toBeGreaterThan(10000);
+  });
+  it('adds Laura separately, reuses the M11 recipe and preserves her open-eye default', async () => {
+    enable();
+    expect(gynoidPreviewProducts()).toHaveLength(12);
+    expect(additions).toHaveLength(1);
+    const p = (await getPrivateDraftPreview(additions[0].handle))!, c = getCustomizationConfig(p);
+    expect(p.extended).toMatchObject({ displayName: 'Laura', headModel: 'Laura', bodyCode: 'M11', heightCm: 162 });
+    expect(p.priceRange.minVariantPrice.amount).toBe('4799.00');
+    expect(p.images).toHaveLength(4);
+    for (const i of p.images) {
+      expect(gynoidLocalImagePath(p, i.url)).toBe(`public${i.url}`);
+      expect(fs.existsSync(`public${i.url}`)).toBe(true);
+    }
+    expect(gynoidLocalImagePath(p, '/images/other.jpg')).toBeNull();
+    const defaults = getDefaultSelections(c);
+    const blue = resolveCustomization(c, { ...defaults, 'eye-color': 'blue' }, 4799);
+    expect(blue.issues).toEqual([]);
+    expect(blue.selections['eye-color']).toBe('blue');
+    const jaw = resolveCustomization(c, { ...defaults, 'head-type': 'movable-jaw-free' }, 4799);
+    expect(jaw.issues.length).toBeGreaterThan(0);
+    const recipe = await privateDraftRecipe(p, c);
+    expect(recipe?.tag).toBe('options:gynoid-body-11-mvp-v1');
+    const presets = templateConfigurationPresets(recipe ?? null, c, c, 4799, defaults);
+    expect(presets.map(t => t.totalPrice)).toEqual([4799, 4949, 5049]);
   });
 });
