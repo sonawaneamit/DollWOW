@@ -24,6 +24,7 @@ import { isHalloweenPreview, isHalloweenVisible } from "@/lib/promotions/hallowe
 import { buildSiteStructuredData } from "@/lib/seo/siteStructuredData";
 import { buildStorefrontThemeInitScript } from "@/lib/storefrontTheme";
 import { analyticsBootstrap, analyticsConfig } from "@/lib/analytics/config";
+import { headlessConsentConfig } from '@/lib/analytics/shopify-consent-config';
 import "./globals.css";
 import "./v2-storefront.css";
 
@@ -112,7 +113,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </CartProvider>
           </ComparisonProvider>
         </CurrencyProvider>
-        <ConsentBanner />
+        <ConsentBanner shopifyConfig={headlessConsentConfig(process.env)} />
         <Analytics measurementId={analytics?.measurementId} />
       </body>
     </html>

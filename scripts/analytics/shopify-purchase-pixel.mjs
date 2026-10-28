@@ -2,7 +2,6 @@
 export function installShopifyPurchasePixel(api, config, runtime = window) {
   const { analytics } = api;
   const log = reason => { if (config.diagnostics) runtime.console?.info("DollWOW purchase QA: " + reason); };
-  log("subscribed");
   let privacy = api.init.customerPrivacy;
   const active = new Set();
   api.customerPrivacy.subscribe("visitorConsentCollected", event => { privacy = event.customerPrivacy; });
@@ -10,10 +9,10 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
     log("checkout_completed received");
     if (!privacy?.analyticsProcessingAllowed) return log("analytics permission absent");
     const hostname = event.context?.document?.location?.hostname;
-    if (!["checkout.dollwow.com", "dollwow.com", "www.dollwow.com", "shopify.com"].includes(hostname)) return;
+    if (!["checkout.dollwow.com", "dollwow.com", "www.dollwow.com", "shopify.com"].includes(hostname)) return log("checkout host not allowed");
     const checkout = event.data?.checkout;
     const orderId = checkout?.order?.id;
-    if (!orderId || !/^(gid:\/\/shopify\/Order\/)?\d+$/.test(String(orderId))) return;
+    if (!orderId || !/^(gid:\/\/shopify\/Order\/)?\d+$/.test(String(orderId))) return log("order identity absent or invalid");
     let context;
     try {
       const attribute = checkout.attributes?.find(x => x.key === "_dollwow_analytics_context");
@@ -21,7 +20,8 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
     } catch { return log("checkout identity absent or invalid"); }
     if (!context || typeof context !== "object") return log("checkout identity absent");
     const age = Date.now() - context.at;
-    if (!Number.isFinite(age) || age < 0 || age > 1800000 || !/^\d+\.\d+$/.test(context.clientId) || !/^\d+$/.test(context.sessionId)) return;
+    if (!Number.isFinite(age) || age < 0 || age > 1800000) return log("checkout identity expired or timestamp invalid");
+    if (!/^\d+\.\d+$/.test(context.clientId) || !/^\d+$/.test(context.sessionId)) return log("client or session identity invalid");
     const mode = context.mode;
     const measurementId = mode === "test" ? config.testId : config.productionEnabled ? config.productionId : null;
     if (!measurementId || context.measurementId !== measurementId || (mode !== "production" && mode !== "test")) return log("stream isolation rejected event");
@@ -37,11 +37,11 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
     });
     if (items.some(item => !item.item_id || !Number.isFinite(item.price) || item.price < 0 || !Number.isInteger(item.quantity) || item.quantity < 1)) return log("checkout line incomplete");
     const key = `dollwow_purchase_v1:${measurementId}:${orderId}`;
-    if (active.has(key)) return;
+    if (active.has(key)) return log("duplicate in-flight event skipped");
     active.add(key);
     try {
-      if (await api.browser.localStorage.getItem(key)) return;
-      if (!privacy?.analyticsProcessingAllowed) return;
+      if (await api.browser.localStorage.getItem(key)) return log("previously queued purchase skipped");
+      if (!privacy?.analyticsProcessingAllowed) return log("analytics permission withdrawn before queue");
       runtime.dataLayer = runtime.dataLayer || [];
       runtime.gtag = runtime.gtag || function () { runtime.dataLayer.push(arguments); };
       const gtag = runtime.gtag;
@@ -51,6 +51,8 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
       const script = runtime.document.createElement("script");
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      script.onload = () => log("Google tag script loaded");
+      script.onerror = () => log("Google tag script load failed");
       runtime.document.head.appendChild(script);
       gtag("event", "purchase", {
         send_to: measurementId,
@@ -66,14 +68,17 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
         ...(mode === "test" ? { debug_mode: true, traffic_type: "dollwow_qa" } : {}),
         event_callback: async () => {
           await api.browser.localStorage.setItem(key, "sent");
+          log("Google event callback received; delivery not independently verified");
         }
       });
       log("purchase queued to isolated stream");
     } catch {
       active.delete(key);
+      log("pixel runtime operation failed");
       // Tracking must not affect checkout. GA transaction_id additionally deduplicates retries.
     }
   });
+  log("subscribed");
 }
 
 export function buildShopifyPurchasePixel(config) {
