@@ -1,5 +1,11 @@
 # DOL-266 Approved Four-Price Release
 
+Live decimal correction: the once-only Shopify write completed at 18:40:44 UTC.
+Shopify returns `2499.0` / `1799.0`, not the precomputed two-decimal strings.
+Fresh after-snapshot checks prove the only runtime difference is those money strings.
+The follow-up updates exactly four strict runtime hashes, preserving all recipes,
+2,860 unrelated entries, and the existing release scope. No repeat price writes.
+
 Final live authorization: Dolly relayed Martin's exact yes on 28 October
 18:06 UTC, Linear comment `1e6adec1-dece-4ea6-b89a-8d1651c86729`.
 This supersedes the previous preview hold for exactly these four products.
