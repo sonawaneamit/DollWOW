@@ -1,5 +1,17 @@
 # DOL-248 Zarga Preview
 
+## 28 October Editorial Revision
+
+Martin asked for the standard editorial section and Dolly requested this
+preview-only revision at13:05. The fixture now supplies the existing shared
+editorial fields; no one-off PDP component or generated asset was added.
+The standard component's fourth gallery image (04.webp) was visually inspected
+alongside01.webp. Copy describes its red finish, grey hair, yellow-green eyes,
+pointed ears, black outfit/choker/thigh strap and pumpkin/gate scene, plus the
+source-confirmed70cm silicone construction. No new specs, timing, stock,
+options, movement or accessories entitlement is invented. Base850/gel65,
+26original gallery files and all existing preview/release gates are unchanged.
+
 Preview-only implementation for the exact Si70cm GB Zarga Halloween build.
 Martin's 27 October decision is recorded in Linear comment
 `e2c18580-3c23-4a3d-a298-9645a9a4daf6`.
