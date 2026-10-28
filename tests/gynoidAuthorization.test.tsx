@@ -6,7 +6,7 @@ afterEach(() => { vi.unstubAllEnvs(); vi.resetModules(); });
 describe('Gynoid authorization preview boundaries', () => {
   it('excludes the new brand and certificate from production directories', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
-    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV', 'production');
+    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV', 'preview');
     vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1');
     vi.resetModules();
     const { brandAuthorizations } = await import('@/lib/catalog/authorizations');
