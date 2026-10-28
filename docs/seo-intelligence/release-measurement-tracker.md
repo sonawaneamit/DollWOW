@@ -1,5 +1,25 @@
 # Release Measurement Tracker
 
+## FunWest Prices, 28 October
+
+[Live release receipt](../pricing/dol-276-live-receipt-2026-10-28.md): Martin's
+exact164-price batch completed14:35:06.722 UTC after production binding
+60266ce2 was verified READY. All164 independent Admin and Storefront prices
+pass;153 existing presets and11 intentional absences preserved. The127 other
+FunWest-prefix records match their audited fields. No compare-at/promo/options/
+status/publication/MD writes, test orders or purchase replays.
+
+164 appended events bring the ledger to4195 rows, preserving all4031 prior
+rows byte/value exactly. Baseline explicitly reuses the13:43 pre-release
+capture for29September-26October;27 returned GSC rows and one returned
+all-channel production GA4 landing row. Missing rows are unknown, not zero;
+dates/consent/overlap caveats remain. No sales, profit or causal lift claim.
+Individual acknowledgement times are retained; the batch-completion anchor
+sets28/56/84-day reviews25November/23December/20January14:35:06.722UTC.
+
+One164URL IndexNow batch accepted HTTP200 at14:38:32.158UTC is discovery
+acceptance only. No Google requests or quota retries. Monday review2November.
+
 ## Four Existing Pages, 28 October
 
 Martin approved only PR173's non-comparison portion. Split PR200 released

@@ -2335,5 +2335,46 @@
     },
     "googleRequests": 0,
     "browserEvidence": "/Volumes/Extreme Pro/Projects/DollWOW-dol246-247-release/data/exports/dol-223-2026-10-28/browser-qa.json"
+  },
+  "funwestPriceRelease20261028": {
+    "at": "2026-10-28T14:35:06.722Z",
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "oldRows": 4031,
+    "newRows": 164,
+    "totalRows": 4195,
+    "priorBytesPreserved": true,
+    "priorSha256": "40b9c46d96d33efb74855939fb948eae04a32c3ea306678b98cf9788f75080b3",
+    "gscReturned": 27,
+    "ga4Returned": 1,
+    "evidence": "/Volumes/Extreme Pro/Projects/DollWOW-dol276-prices/data/exports/dol-276-2026-10-28",
+    "indexnow": {
+      "startedAt": "2026-10-28T14:38:30.722Z",
+      "attempts": 1,
+      "count": 164,
+      "sha256": "914d7ea0b19604018bb8db6d9acf343dbb49c9c2f19145a013628782ed0a02ab",
+      "state": "ACCEPTED_NOT_INDEXING_PROOF",
+      "finishedAt": "2026-10-28T14:38:32.158Z",
+      "exitCode": 0,
+      "httpStatus": 200,
+      "output": "Submitted 164 changed URLs to IndexNow (HTTP 200).\n"
+    },
+    "productionBindingCommit": "60266ce284fb18d704c24238d8711296430d7f71",
+    "googleRequests": 0
   }
 }
