@@ -21,6 +21,7 @@ import { isZargaReleasedProduct } from '@/lib/catalog/zargaRelease';
 import { getProductByHandle } from '@/lib/shopify/storefront';
 import { isZargaHalloweenActive } from '@/lib/promotions/zargaHalloween2026';
 import { ZargaHalloweenPromotion } from '@/components/promotions/ZargaHalloweenPromotion';
+import './compact-promo-preview.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -51,6 +52,7 @@ export function generateMetadata(): Metadata {
 export default async function PromoIndexPage() {
   const { halloween, title, description } = promoCopy();
   const preview = isHalloweenPreview();
+  const compactPreview = process.env.VERCEL_ENV === 'preview' && process.env.DOLLWOW_COMPACT_PROMO_PREVIEW === '1';
   const promoClock = new Date().toISOString();
   const hasJinsanPromotion = isJinsanOctoberActive(new Date(promoClock));
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
@@ -86,7 +88,7 @@ export default async function PromoIndexPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div className={`mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8${compactPreview ? ' compact-promo-preview' : ''}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       {halloween ? <HalloweenWindow preview={preview}><HalloweenCampaignBanner preview={preview} /><HalloweenLandingSections preview={preview} /></HalloweenWindow> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
