@@ -1,6 +1,30 @@
 # DOL-273 Gynoid - 28 October 2026
 
-## Dolly Revision In Progress, 28 October 16:06 Decision
+## Revised Preview Verified, 28 October 16:06 Decision
+
+Current review: https://doll-lwd91n7cn-sonawaneamits-projects.vercel.app/brands/gynoid-dolls
+Laura: https://doll-lwd91n7cn-sonawaneamits-projects.vercel.app/products/gynoid-laura-162cm-silicone-companion-doll-model-11
+Source f88d4c6a, deployment dpl_47rnrse5Mg1mG4Ym65xCb211DNBj independently
+READY/preview at 16:40:58 UTC. This supersedes the historical deployments below.
+
+Final verification: 17 focused tests/four files and full TypeScript pass;
+scoped lint has zero errors and two pre-existing unused-variable warnings.
+The wider productSpecs suite retains an existing 79lb conversion expectation
+failure (35.8 expected, 36.0 actual), reproduced on the untouched SE branch;
+it is not claimed clean or silently changed here. Hosted build and all
+4,950 owned-asset checks pass. Both snapshot JSON files are byte-identical
+to the prior reviewed head: eleven original drafts/94 images plus Laura4.
+
+All 72 actual final-host preset cases (12 PDPs x3 x1319/390px) passed exact
+base/options/total, noindex, no overflow, certificate text and disabled cart.
+Live Akina was checked at both same widths as a structural comparison, not
+as a source for Gynoid choices. Laura's four premium and six accessory
+thumbnails decoded at both widths. Manual phone accessory25 add/remove
+gave 5074/5049; Starter review correctly shows no optional upgrades selected.
+Nine alternate head choices are disabled and do not claim Included.
+Collection links all12 PDPs; original certificate thumbnail decoded on
+collection and the static authorization directory. This is a revised preview
+milestone, not whole-catalog completion or production discount enforcement.
 
 Prices remain exactly M11/M16/M21 4799, M18 4999, M10/M13 5299 USD.
 No price increase or Shopify write is part of this revision.
@@ -64,10 +88,11 @@ not challenged with another repeated price question.
 
 BLOCKED source dependencies: Dolly/Eric for the one-standard-head entitlement,
 actual per-body freight and Early Bird/dealer stacking/M25 scope. No Codex
-supplier contact. Whole catalog completion and final revised hosted responsive
-verification remain unfinished; the old deployment below is not this revision.
+supplier contact. Whole catalog completion remains unfinished; final revised
+hosted responsive verification is complete above. The old deployment below
+is not this revision.
 
-## Current Review Deployment
+## Historical Review Deployment
 
 https://doll-9c3jf7ub9-sonawaneamits-projects.vercel.app/brands/gynoid-dolls
 
