@@ -42,6 +42,7 @@ import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalPdpPreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
+import { isSeElfPreviewProduct } from '@/lib/catalog/seElfPreview';
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPromotion";
@@ -85,6 +86,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   );
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
+  const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
@@ -126,8 +128,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   return (
     <div>
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />}
+      {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="min-w-0">
@@ -211,7 +213,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {firstAvailable && (
+            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
@@ -294,7 +296,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           </div>
         </ToneBand>
       ) : null}
-      <PdpTrackers product={publicProduct} />
+      {!isElf && <PdpTrackers product={publicProduct} />}
     </div>
   );
 }

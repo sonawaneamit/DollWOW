@@ -3,6 +3,7 @@ import { join } from "path";
 import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
+import { seElfLocalImagePath } from '@/lib/catalog/seElfPreview';
 
 export const runtime = "nodejs";
 
@@ -41,7 +42,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
     });
   }
 
-  const upstream = await fetch(source.url, { next: { revalidate: 86400 } });
+  const localPath = product ? seElfLocalImagePath(product, source.url) : null;
+  const upstream = localPath
+    ? new Response(new Uint8Array(await readFile(join(process.cwd(), localPath))))
+    : await fetch(source.url, { next: { revalidate: 86400 } });
   if (!upstream.ok) {
     return new Response("Image unavailable", {
       status: 502,

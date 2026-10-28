@@ -32,13 +32,38 @@ Parameters text and original media IDs retained privately in
 `data/exports/dol-275-2026-10-27/source/provenance.json`. Asset hashes,
 decoded dimensions and MIME checks accompany the private checkpoint.
 
-## Unfinished Task A
+## Task A Continuation (28 October)
 
-These are not complete PDP or Shopify-draft deliverables. Needed from
-Dolly / supplier-provided evidence: exact new-SKU customization menus
-(especially the new 153A body) and a supported delivery range. The current
-shared PDP otherwise projects a fixed 21-day date, which must not become
-an unsupported commitment for these made-to-order China builds.
+Dolly's 27 October 20:15 decision and 28 October correction clear the menu
+and delivery dependencies: reuse the exact live same-body SE menus and
+Est. 3 weeks, photographed head as default. W021/W022 are existing head
+numbers, so no new head-menu options or swatch replacements are added.
+
+Four private PDP snapshots now extend the same isolated preview flag:
+
+| SKU | Preview path | Copied parent menu |
+|---|---|---|
+| SED338 | /products/sedoll-samantha-l-153cm-a-cup-red-tpe-elf-sed338 | sedoll-skyler-b-153cm-f-cup-tpe-companion-doll-11km0 |
+| SED339 | /products/sedoll-luis-g-157cm-h-cup-red-tpe-elf-sed339 | sedoll-akina-157cm-h-cup-tpe-companion-doll-z7mv2 |
+| SED340 | /products/sedoll-samantha-k-161cm-f-cup-black-tpe-elf-sed340 | sedoll-elodie-161cm-f-cup-tpe-companion-doll-13es3 |
+| SED341 | /products/sedoll-luis-h-163cm-e-cup-black-tpe-elf-sed341 | sedoll-luis-d-163cm-e-cup-tpe-companion-doll-1k068 |
+
+SED338's explicitly approved Skyler B151/153 menu source is currently titled
+153F in Shopify. Only its menu is copied, never its conflicting body specs;
+Elf 153A measurements remain from Sherry. Parent raw menu capture and mapping
+are private in data/exports/dol-275-2026-10-28. Image references are mechanically
+resolved through the existing owned-asset map without changing choice identity.
+
+The normal private-PDP path, configurator and original three reviewed photographs
+per SKU are reused. This is not a full source-gallery/video import. All variants
+use non-Shopify preview IDs and are unavailable for sale. Hero buy controls,
+Product/FAQ offer schema and PDP tracking are omitted; builder checkout and
+single/multi-line server cart validation fail closed. No Shopify drafts created.
+No inherited preset/charge approvals are transferred: these remain manual-menu
+previews until exact new-parent bindings are approved. The photographed head
+defaults to As shown; the inherited skin menu/defaults remain unchanged, not
+invented red/black swatches. Dolly should review that inherited skin presentation
+before live release, separately from the approved photographed base price.
 
 Existing STPE + silicone-head upgrade remains +100 USD retail and retains
 its verified STPE / Light Tan restriction. Red/black silicone-head
@@ -53,8 +78,9 @@ No factory kg/cm specification has been silently changed.
 
 ## Release Gate
 
-Whole DOL-275 remains unfinished while Task A lacks those dependencies.
-Dolly can review the banner component and specification/photo subset
-without treating that partial handoff as resolution. Martin's explicit
+The older menu/delivery blocker is superseded; do not ask it again. Hosted
+four-PDP verification and Dolly review are required before moving In Review.
+Source-gallery completion and any exact new-parent charge/preset bindings remain
+release qualifications, not inferred from reusing a live menu. Martin's explicit
 live approval is still required. Do not merge, publish, create purchasable
 products, submit indexing requests or send supplier/customer messages.
