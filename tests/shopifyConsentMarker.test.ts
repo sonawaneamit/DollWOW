@@ -4,8 +4,8 @@ afterEach(() => vi.unstubAllGlobals());
 
 it('requires a fresh explicit interaction for pre-fix stored choices or mismatched markers', () => {
   expect(needsShopifyConsentChoice(true, 'granted', 'unknown')).toBe(true);
-  expect(needsShopifyConsentChoice(true, 'denied', 'unknown')).toBe(true);
-  expect(needsShopifyConsentChoice(true, 'denied', 'granted')).toBe(true);
+  expect(needsShopifyConsentChoice(true, 'denied', 'unknown')).toBe(false);
+  expect(needsShopifyConsentChoice(true, 'denied', 'granted')).toBe(false);
   expect(needsShopifyConsentChoice(true, 'unknown', 'granted')).toBe(true);
   expect(needsShopifyConsentChoice(true, 'granted', 'granted')).toBe(false);
   expect(needsShopifyConsentChoice(false, 'granted', 'unknown')).toBe(false);

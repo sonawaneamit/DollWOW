@@ -82,6 +82,14 @@ describe('approved headless consent transport', () => {
     expect(await createConsentForwarder(async () => api)('granted', config)).toBe('failed');
     expect(await createConsentForwarder(async () => { throw new Error('private loader error'); })('granted', config)).toBe('failed');
   });
+  it.each([
+    ['SDK_LOAD_FAILED', 'sdk-load-failed'],
+    ['SDK_TIMEOUT', 'sdk-timeout'],
+    ['SDK_UNAVAILABLE', 'sdk-unavailable'],
+    ['private message with identifiers', 'failed']
+  ])('reports only the fixed SDK failure category for %s', async (message, result) => {
+    expect(await createConsentForwarder(async () => { throw new Error(message); })('granted', config)).toBe(result);
+  });
   it('refuses real API submission from localhost and preview hosts', async () => {
     vi.stubGlobal('window', { location: { hostname: 'localhost' } });
     expect(await forwardExplicitShopifyConsent('granted', config)).toBe('host-not-allowed');

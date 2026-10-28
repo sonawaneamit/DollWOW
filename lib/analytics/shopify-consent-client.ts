@@ -62,7 +62,14 @@ export function createConsentForwarder(load: () => Promise<ConsentPrivacyApi>) {
         if (result !== 'registered') return result;
         return api.currentVisitorConsent().analytics === (state === 'granted' ? 'yes' : 'no')
           ? 'registered' as const : 'readback-unverified' as const;
-      } catch { return 'failed' as const; }
+      } catch (error) {
+        if (error instanceof Error) {
+          if (error.message === 'SDK_LOAD_FAILED') return 'sdk-load-failed' as const;
+          if (error.message === 'SDK_TIMEOUT') return 'sdk-timeout' as const;
+          if (error.message === 'SDK_UNAVAILABLE') return 'sdk-unavailable' as const;
+        }
+        return 'failed' as const;
+      }
     });
     tail = operation;
     return operation;

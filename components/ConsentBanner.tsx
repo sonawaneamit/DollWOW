@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useConsent, writeConsent } from "@/lib/analytics/consent";
 import { useMounted } from "@/lib/utils/storageStore";
@@ -21,17 +21,18 @@ export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConse
   const mounted = useMounted();
   const [revealed, setRevealed] = useState(false);
   const [managing, setManaging] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'pending' | 'failed'>('idle');
   const choiceGeneration = useRef(0);
 
   useEffect(() => {
-    const openPreferences = () => setManaging(true);
+    const openPreferences = () => { setDismissed(false); setManaging(true); };
     window.addEventListener("dollwow:manage-consent", openPreferences);
     return () => window.removeEventListener("dollwow:manage-consent", openPreferences);
   }, []);
 
   useEffect(() => {
-    if (!mounted || (consent !== "unknown" && !needsCheckoutChoice)) return;
+    if (!mounted || dismissed || (consent !== "unknown" && !needsCheckoutChoice)) return;
 
     const revealAfterScroll = () => {
       if (window.scrollY < 120) return;
@@ -42,11 +43,12 @@ export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConse
     revealAfterScroll();
     window.addEventListener("scroll", revealAfterScroll, { passive: true });
     return () => window.removeEventListener("scroll", revealAfterScroll);
-  }, [consent, mounted, needsCheckoutChoice]);
+  }, [consent, mounted, needsCheckoutChoice, dismissed]);
 
-  if (!mounted || (!managing && ((consent !== "unknown" && !needsCheckoutChoice) || !revealed))) return null;
+  if (!mounted || (!managing && (dismissed || (consent !== "unknown" && !needsCheckoutChoice) || !revealed))) return null;
 
   function choose(state: "granted" | "denied") {
+    setDismissed(false);
     writeConsent(state);
     if (!shopifyConfig) { setManaging(false); return; }
     const generation = ++choiceGeneration.current;
@@ -88,6 +90,11 @@ export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConse
           </div>
         </div>
         <div className="consent-banner__actions">
+          {syncStatus === 'failed' ? <button type="button" aria-label="Close privacy preferences" title="Close privacy preferences"
+            onClick={() => { setDismissed(true); setManaging(false); }}
+            className="consent-banner__button consent-banner__button--decline">
+            <X size={18} aria-hidden="true" />
+          </button> : null}
           <button
             type="button"
             onClick={() => choose("denied")}
