@@ -1,5 +1,25 @@
 # Release Measurement Tracker
 
+## Four Castle And Kate Prices, 28 October
+
+[Live receipt](../pricing/dol-266-live-receipt-2026-10-28.md): four approved
+price writes completed once18:40:44.796UTC. Live QA caught Shopify decimal
+serialization hiding strict presets; the exact four-snapshot correction
+de9f0a1c reached productionREADY18:52:01UTC and sets the assessment anchor.
+Independent4Admin/Storefront,12preset totals and24actualdesktop/mobile
+selections pass. Freya stays held. No price replay, cart or order.
+
+Four events bring4205to4209 rows; all prior bytes/values preserved. Reused
+13:43baseline29September-26October returns oneGSCrow and noGA4landingrow;
+missing is unknown/notzero. Treg access is currently unavailable, so this is
+explicit baseline reuse, not a fresh report. No causal lift/paid-order claim.
+Reviews25November/23December/20January18:52:01UTC; Monday2November.
+All4genuine native callback states match current fingerprints; exact HTTP
+statuses are not retained in those state records. No extra notification,
+Google write or quota retry. Accepted state is not indexing or AI proof.
+Four owners, not independent price-plus-correction effects. Dolly review,
+never self-close the whole ticket while Freya supply remains unverified.
+
 ## One S40 Owner, 28 October
 
 [Live receipt](dol-233-s40-live-receipt-2026-10-28.md): S40 pageca9fdc7aREADY

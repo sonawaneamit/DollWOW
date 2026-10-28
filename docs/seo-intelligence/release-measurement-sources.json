@@ -2498,5 +2498,38 @@
     "liveProof": "/Volumes/Extreme Pro/Projects/DollWOW-halloween-preview/data/exports/dol-233-2026-10-28/live-source-qa.json",
     "otherFiveOwners": "held/notreleased",
     "googleWrites": 0
+  },
+  "castleKateFourPrices20261028": {
+    "previousRows": 4205,
+    "newEvents": 4,
+    "totalRows": 4209,
+    "priorBytesPreserved": true,
+    "priorSha256": "14a88f30e1d3d7d20060b8c96409cd4beafc68806db4533b220a5f5feb89abc9",
+    "baseline": {
+      "capturedAt": "2026-10-28T13:43:21.802Z",
+      "window": {
+        "startDate": "2026-09-29",
+        "endDate": "2026-10-26"
+      },
+      "completeFinalDates": 28,
+      "gscPageRows": 621,
+      "ga4Rows": 148,
+      "publication": "not a release receipt",
+      "caveats": [
+        "GSC Pacific dates versus GA4 property timezone",
+        "GSC page grouping suppression; absent rows are not zero",
+        "GA4 all-channel production sessions, not organic attribution or reconciled paid orders",
+        "Overlapping releases and changing promotions/catalog; no causal lift claim"
+      ]
+    },
+    "priceWriteCompletedAt": "2026-10-28T18:40:44.796Z",
+    "assessmentAnchor": "2026-10-28T18:52:01.000Z",
+    "gscReturned": 1,
+    "ga4Returned": 0,
+    "nativeSubmitted": 4,
+    "operatorNotifications": 0,
+    "googleWrites": 0,
+    "evidenceDirectory": "/Volumes/Extreme Pro/Projects/DollWOW-dol266-prices/data/exports/dol-266-2026-10-28",
+    "receipt": "docs/pricing/dol-266-live-receipt-2026-10-28.md"
   }
 }
