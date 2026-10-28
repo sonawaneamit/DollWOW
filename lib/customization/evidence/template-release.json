@@ -3,27 +3,27 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
-      "reviewedAt": "2026-10-22T16:44:08.107Z",
-      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
-      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
+      "reviewedBy": "Codex: fresh28Oct exact four price-only delta verified; menus, named charges and DollVue identity unchanged; prior unchanged scope retained",
+      "reviewedAt": "2026-10-28T18:21:18.909Z",
+      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
+      "payloadHash": "2aabc0da0c66732e8e78b66089f36c12e8bb38fc0d00e579346a5d84283a0613"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
-      "reviewedAt": "2026-10-22T16:44:08.107Z",
-      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
-      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
+      "reviewedBy": "Codex: fresh28Oct exact four price-only delta verified; menus, named charges and DollVue identity unchanged; prior unchanged scope retained",
+      "reviewedAt": "2026-10-28T18:21:18.909Z",
+      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
+      "payloadHash": "2aabc0da0c66732e8e78b66089f36c12e8bb38fc0d00e579346a5d84283a0613"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex: exact five-product source/menu and checkout verification; Martin go-live approval DOL-220",
-      "reviewedAt": "2026-10-22T16:44:08.107Z",
-      "evidenceRef": "docs/catalog/dol-220-private-preview-2026-10-22.md",
-      "payloadHash": "061b4e34afe9aa67d52bed5cd3af22b439ed10e82b169e2a1bc56b40bf48b94d"
+      "reviewedBy": "Martin via Dolly 28Oct18:06 Linear1e6adec1: release exactly four DOL-266 prices now; Freya excluded. Codex: exact four runtime delta only; prior unchanged scope retained",
+      "reviewedAt": "2026-10-28T18:21:18.909Z",
+      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
+      "payloadHash": "2aabc0da0c66732e8e78b66089f36c12e8bb38fc0d00e579346a5d84283a0613"
     }
   },
   "payload": {
-    "releaseId": "presets-2026-10-22-castle",
-    "sourceSnapshotHash": "1e070d854dbc85143cb232dfbd906bc60a135943ae5aaaf6e35ecb39aaf5f194",
+    "releaseId": "presets-2026-10-28-dol266-price-only",
+    "sourceSnapshotHash": "2a9863122bacc2ed39e6aa9c63dc463c0573f3a9cd59ceec630a449df004ca29",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -5038,7 +5038,7 @@
         "handle": "doll-castle-kirishima-eira-178cm-p-cup-silicone-companion-doll-a9ijy",
         "tag": "options:dolls-castle-female-silicone-standard",
         "bindingKey": "cfc05b9cbbd123c548df8db83e5993270c920f061fb76be163e711e0bc5b6f84",
-        "runtimeHash": "a51e6a1e65f7dbb3950246ba788faba2c75ec9fa2a9221fc65566ae42a5a4801"
+        "runtimeHash": "50bd5a2d95f493e617f3304347e02991b1afa4d8cd7c0e9ac029d1d17c5596f8"
       },
       {
         "productId": "gid://shopify/Product/10518024683704",
@@ -5080,7 +5080,7 @@
         "handle": "doll-castle-luoyi-178cm-p-cup-silicone-companion-doll-1tnom",
         "tag": "options:dolls-castle-female-silicone-standard",
         "bindingKey": "cfc05b9cbbd123c548df8db83e5993270c920f061fb76be163e711e0bc5b6f84",
-        "runtimeHash": "b27ba743ce7e5dd0c67c44c52bf402b747a726e21e5d2facaa6b52a1ee3c2ac7"
+        "runtimeHash": "92947dde3f28c04453417e71acab4f678ef33eccbda7c63f603c4e2215722aa9"
       },
       {
         "productId": "gid://shopify/Product/10518021177528",
@@ -5094,7 +5094,7 @@
         "handle": "doll-castle-lyla-178cm-p-cup-silicone-companion-doll-1giz3",
         "tag": "options:dolls-castle-female-silicone-standard",
         "bindingKey": "cfc05b9cbbd123c548df8db83e5993270c920f061fb76be163e711e0bc5b6f84",
-        "runtimeHash": "39834aa79aa2e8aa4ac9563c464992866929e78e11fe8ded187944ca31682cc4"
+        "runtimeHash": "253dcf89ef9dc7bccbb636c5e19357d0db7a9eb4b96e327ca975df7f89abacbe"
       },
       {
         "productId": "gid://shopify/Product/10518021701816",
@@ -9777,7 +9777,7 @@
         "handle": "jarliet-dolls-kate-148cm-e-cup-silicone-companion-doll-1knlr",
         "tag": "options:jarliet-female-silicone-standard",
         "bindingKey": "51f06a193211d41beb4a76d167929ba113259e9a1ff4c34f9779bdaa526d976d",
-        "runtimeHash": "808a68a45358d5c4bf40b3a2ce7639bc189981a1856ee83ddcaca680b4dc5726"
+        "runtimeHash": "17e2e8b024b65703b5ea22746f2f1e4d18b9de2825b889105e3f102781fa6ff0"
       },
       {
         "productId": "gid://shopify/Product/10517654864056",
