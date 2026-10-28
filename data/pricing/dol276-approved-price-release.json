@@ -1,0 +1,1809 @@
+{
+  "approval": "DOL-276 fdee86eb-73e7-4258-8a2f-8ede12b49140, 28 October 2026; exact Greenback v4 prices",
+  "rows": [
+    {
+      "id": "gid://shopify/Product/10663315374264",
+      "handle": "funwest-dolls-thalia-152cm-d-cup-silicone-companion-doll-fsd054",
+      "before": 1899,
+      "after": 2199,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355812417720"
+      ],
+      "beforeRuntimeHash": "ee2690a4e7e8afe93dae3c7a800f8ce5ddbabdc9dfdbe1e9582eff192f4e0e5f",
+      "afterRuntimeHash": "5a1c0c946aa67d4949f0e65a1e29f489a4b965544fdc6678efb29373fb5f7f6c"
+    },
+    {
+      "id": "gid://shopify/Product/10663315013816",
+      "handle": "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd046",
+      "before": 2299,
+      "after": 2599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355806453944"
+      ],
+      "beforeRuntimeHash": "8db783228efafdf9efa948185d353d173bded241c9a496170b9739e8b8032ad2",
+      "afterRuntimeHash": "236a48a7c888ccb96ff22f58a7984947ebc11e351b992b78f6e998a78e604ded"
+    },
+    {
+      "id": "gid://shopify/Product/10663314849976",
+      "handle": "funwest-dolls-alice-157cm-g-cup-silicone-companion-doll-fsd045",
+      "before": 2299,
+      "after": 2599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355803504824"
+      ],
+      "beforeRuntimeHash": "3a05ead19307e93a3be8ad128cfcb93579d7e6d63649bbfaed13f8c3c78c23bf",
+      "afterRuntimeHash": "167da26f6fd1811acd17b6d7f98ffcb59a58517a6bd839d12116b387d1f200b1"
+    },
+    {
+      "id": "gid://shopify/Product/10663314587832",
+      "handle": "funwest-dolls-lucy-157cm-g-cup-silicone-companion-doll-fsd044",
+      "before": 2299,
+      "after": 2599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355802456248"
+      ],
+      "beforeRuntimeHash": "4d44940bda72e1f50e6c3fd0430db60847a5b794847b532dbcfa0706903d2924",
+      "afterRuntimeHash": "82c77813906d92bb09533842e81622f0af27f0551600beaa3f5854aad4a69344"
+    },
+    {
+      "id": "gid://shopify/Product/10663314555064",
+      "handle": "funwest-dolls-bella-157cm-g-cup-silicone-companion-doll-fsd042",
+      "before": 2299,
+      "after": 2599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355802292408"
+      ],
+      "beforeRuntimeHash": "ccf5e46578fff97dc2f075eea8d8d5a4f76a6728ff0f0fbcbf960cd2f59dcb77",
+      "afterRuntimeHash": "29072e22cfc93712725e0a6e06e48192cb2d46eb957467cc06d223569532050c"
+    },
+    {
+      "id": "gid://shopify/Product/10663314391224",
+      "handle": "funwest-dolls-amy-157cm-g-cup-silicone-companion-doll-fsd040",
+      "before": 2299,
+      "after": 2599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355801505976"
+      ],
+      "beforeRuntimeHash": "778ba4c85fa68d418a7294a03e5cfd84f0ab2e5497dcbc8b608c6ea33cf97883",
+      "afterRuntimeHash": "3855a4effe05adcd0f66f757881740886e5b2e84194311cf05984169ff4f1612"
+    },
+    {
+      "id": "gid://shopify/Product/10663313604792",
+      "handle": "funwest-dolls-bella-159cm-a-cup-silicone-companion-doll-fsd038",
+      "before": 2299,
+      "after": 2549,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355796000952"
+      ],
+      "beforeRuntimeHash": "a3f7d81f3dff7a1ad0a0211b8e79a5ff27b2c383b68ef025ec36e3a94b88226c",
+      "afterRuntimeHash": "ede1a84010d9eb3ec3b5842eb8db689f8cde9033703a1e6fe957d726fe5806dd"
+    },
+    {
+      "id": "gid://shopify/Product/10663313244344",
+      "handle": "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd037",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355793772728"
+      ],
+      "beforeRuntimeHash": "1190ca9a241b2154f7b0afe1415abb6f8c1acaddb7f3fbf3ef03f06a4c2e6c6c",
+      "afterRuntimeHash": "be05a35c8727799adfcb2874513c32771824175c72c8704d8922e432045ac7b6"
+    },
+    {
+      "id": "gid://shopify/Product/10663313113272",
+      "handle": "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd036",
+      "before": 2299,
+      "after": 2549,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355793150136"
+      ],
+      "beforeRuntimeHash": "2622ff04ae988609896c8ddf9713f873d25f0ddfc754920b046c360012269827",
+      "afterRuntimeHash": "0c90f1b81e143002638854a7120c48a07ef25d3ae8e0943000592948e03d0485"
+    },
+    {
+      "id": "gid://shopify/Product/10663312818360",
+      "handle": "funwest-dolls-nika-152cm-d-cup-silicone-companion-doll-fsd034",
+      "before": 1899,
+      "after": 2199,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355792429240"
+      ],
+      "beforeRuntimeHash": "faf795b4f99636de98066e2f90c97ccfb26a27ec5e741c045f80dce5a2bf2d8d",
+      "afterRuntimeHash": "0b5047c1cd0182333dd69ff825f0f383cba2c56a420d378e87c6336ccc5ba61a"
+    },
+    {
+      "id": "gid://shopify/Product/10663312392376",
+      "handle": "funwest-dolls-nika-152cm-d-cup-silicone-companion-doll-fsd032",
+      "before": 1899,
+      "after": 2199,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355783319736"
+      ],
+      "beforeRuntimeHash": "45f9493dad445524b101dc3cb3d43dbdd0141e871f4c7fc659417f64500fe617",
+      "afterRuntimeHash": "7cfff25b0dbd7ce343c93ee7a2b5c7413ae503bf7d8ff98652d87c7abd4920b7"
+    },
+    {
+      "id": "gid://shopify/Product/10663312294072",
+      "handle": "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd029",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355782795448"
+      ],
+      "beforeRuntimeHash": "3744f01152b18db93235f856b5f8f061c887a6d5094963b64aa8592384b668ae",
+      "afterRuntimeHash": "35fa921e214877ddfd26f394859af23b5610701393fa49d728c9b77feaa9d4f7"
+    },
+    {
+      "id": "gid://shopify/Product/10663312130232",
+      "handle": "funwest-dolls-sophiemina-159cm-a-cup-silicone-companion-doll-fsd028",
+      "before": 2299,
+      "after": 2549,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355782238392"
+      ],
+      "beforeRuntimeHash": "f5045e9e5708f4fc7f262ff2a324fabaab6ebcc3827a9e004a599772abc173bd",
+      "afterRuntimeHash": "eaec9046598f31adcde0951e50c916640c2a7a293e8137204d00d2b7106372e1"
+    },
+    {
+      "id": "gid://shopify/Product/10663311999160",
+      "handle": "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd026",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355781419192"
+      ],
+      "beforeRuntimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f",
+      "afterRuntimeHash": "59be2a6935b11871aa381bae756da925fa2ed826f6a38994083c23fd5c56333c"
+    },
+    {
+      "id": "gid://shopify/Product/10663311769784",
+      "handle": "funwest-dolls-bella-156cm-f-cup-silicone-companion-doll-fsd021",
+      "before": 1899,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355780763832"
+      ],
+      "beforeRuntimeHash": "d71e41f029c614d5a9748e8f877dad7ce9876e2b05750eb2c6d666d1b1d89fdf",
+      "afterRuntimeHash": "b8800ace2fbbd895977627ef2c62e4256def2e247c332a338cf7433dd75b3f91"
+    },
+    {
+      "id": "gid://shopify/Product/10663311704248",
+      "handle": "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd020",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355780042936"
+      ],
+      "beforeRuntimeHash": "b83955be941303a4a49c067ed28bf0a418bcaa42b43dbce03a61b68220325ece",
+      "afterRuntimeHash": "ce303c2f44ca6d6c1e18ee2b2f691de3b76d885ba799d5d634e8730cd8c30256"
+    },
+    {
+      "id": "gid://shopify/Product/10663311638712",
+      "handle": "funwest-dolls-bella-157cm-g-cup-silicone-companion-doll-fsd018",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355779551416"
+      ],
+      "beforeRuntimeHash": "421d5549142d5b9125a35e75a0982440a33f8bbf600a5cac4755491a1f91a3ac",
+      "afterRuntimeHash": "2ff18107d94ea03bbba9e25ce11712fc125aa69863c1f3598067ba8eb7105499"
+    },
+    {
+      "id": "gid://shopify/Product/10663311573176",
+      "handle": "funwest-dolls-lily-160cm-e-cup-silicone-companion-doll-fsd017",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355779256504"
+      ],
+      "beforeRuntimeHash": "22827b2cc688ea95f21f3a966531d86426608058ccef9f167886bd5cd00caafd",
+      "afterRuntimeHash": "534ff096fb72e7f7e2502a5f1e6f4f7deb17b42d7669829a036c78e30b1edda6"
+    },
+    {
+      "id": "gid://shopify/Product/10663311507640",
+      "handle": "funwest-dolls-assos-157cm-g-cup-silicone-companion-doll-fsd012",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355778764984"
+      ],
+      "beforeRuntimeHash": "81c74fe74defab1e2d0403303e7f00c726c42a3794e6d280aeb467451b348361",
+      "afterRuntimeHash": "1a79f4577e2e44f961dc16f3698de139ba49840c852b4211309272e1c8c98f2f"
+    },
+    {
+      "id": "gid://shopify/Product/10663311147192",
+      "handle": "funwest-dolls-alice-159cm-a-cup-silicone-companion-doll-fsd010",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355777585336"
+      ],
+      "beforeRuntimeHash": "05beb3eb020be7136f8ffdf4926b063c68dfd9366edaeb33ac677edd3e1c6e41",
+      "afterRuntimeHash": "45fe17d59bfa94e43182714823c8dd78b2280b8b0c439e5a451c00829fbb07f7"
+    },
+    {
+      "id": "gid://shopify/Product/10663311081656",
+      "handle": "funwest-dolls-lucy-159cm-a-cup-silicone-companion-doll-fsd009",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355777519800"
+      ],
+      "beforeRuntimeHash": "08c1e9370a2d36e93b108e9b08686016b9da650ee1cfb1e55de4b4fafe4cf0d5",
+      "afterRuntimeHash": "da7a314e1dda3e75dff84ff29fce7901dd1f8b01ec403ca8516d4eb1c33ff62a"
+    },
+    {
+      "id": "gid://shopify/Product/10663310885048",
+      "handle": "funwest-dolls-lily-95cm-d-cup-silicone-torso-companion-doll-fwt011",
+      "before": 1199,
+      "after": 1349,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355776798904"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10663310688440",
+      "handle": "funwest-dolls-lucy-103cm-g-cup-silicone-torso-companion-doll-fwt010",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355776078008"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10663310590136",
+      "handle": "funwest-dolls-bella-95cm-d-cup-silicone-torso-companion-doll-fwt007",
+      "before": 1199,
+      "after": 1349,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355775357112"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10663310491832",
+      "handle": "funwest-dolls-amy-95cm-d-cup-silicone-torso-companion-doll-fwt005",
+      "before": 1199,
+      "after": 1349,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355775160504"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10663310426296",
+      "handle": "funwest-dolls-lily-95cm-d-cup-silicone-torso-companion-doll-fwt002",
+      "before": 1199,
+      "after": 1349,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355774668984"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10663310262456",
+      "handle": "funwest-dolls-giselle-157cm-g-cup-tpe-companion-doll-fwd111",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355773980856"
+      ],
+      "beforeRuntimeHash": "e87b9969a7609aab89c3d12fe7702ba0207af046e833efddc959e7f99e10000d",
+      "afterRuntimeHash": "707d31cb7e548d15c3919c4201e23f4978fef45271f313677f039c2849003ff8"
+    },
+    {
+      "id": "gid://shopify/Product/10663309967544",
+      "handle": "funwest-dolls-sheila-165cm-c-cup-tpe-companion-doll-fwd110",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355773358264"
+      ],
+      "beforeRuntimeHash": "c4cdcaacf1514638911adae111a271f6f1d7d859f4ee02d369d2635a77a20710",
+      "afterRuntimeHash": "baf1758a48597123c340a467857df857c1af46216517b5e65d164ab8b3ca93a3"
+    },
+    {
+      "id": "gid://shopify/Product/10663309672632",
+      "handle": "funwest-dolls-nika-155cm-f-cup-tpe-companion-doll-fwd107",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355772440760"
+      ],
+      "beforeRuntimeHash": "6c46aca5f7d10b971e4980ce5fca077b70c233f000dc8d783948c0da47b4d86e",
+      "afterRuntimeHash": "8ba554e56b3316b0de5adfd25f9fa0dae29d3834ecc3657f6ef69f4e35c9dea1"
+    },
+    {
+      "id": "gid://shopify/Product/10663308918968",
+      "handle": "funwest-dolls-clara-159cm-a-cup-tpe-companion-doll-fwd106",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355771162808"
+      ],
+      "beforeRuntimeHash": "b6014ef3e0729a5146dcfe936f98935d680740c4ef39dfd3b45162a407408e24",
+      "afterRuntimeHash": "03701e614f065a0878fc9d48bfe403fb16e997bd37e45d6c493f6a4c0c857803"
+    },
+    {
+      "id": "gid://shopify/Product/10663308067000",
+      "handle": "funwest-dolls-clara-163cm-g-cup-tpe-companion-doll-fwd103",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355769983160"
+      ],
+      "beforeRuntimeHash": "87016488a82840237bb8cba6e725cd5ca405ac5e59ed05d1cff942fbfc4f01dc",
+      "afterRuntimeHash": "5d3e3bb0b0fbab3dffa09443d9fa86d1452741e3ddee068ae51992d1342c487c"
+    },
+    {
+      "id": "gid://shopify/Product/10663307083960",
+      "handle": "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-fwd102",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355767853240"
+      ],
+      "beforeRuntimeHash": "b5395f9904320a053912d39cdb5277cb4ec62c6946e881fb4ad2584a58a8427f",
+      "afterRuntimeHash": "cc8279954afee69936c2c036d49d839301fca08c0b5232f7e0e898c9eb7968d8"
+    },
+    {
+      "id": "gid://shopify/Product/10663305511096",
+      "handle": "funwest-dolls-amy-152cm-d-cup-tpe-companion-doll-fwd099",
+      "before": 1199,
+      "after": 1399,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355761758392"
+      ],
+      "beforeRuntimeHash": "4f682b757785a14d503a4a49e0e6f25f8ad60c1725ec0bdf9c85258a4fb7f49f",
+      "afterRuntimeHash": "c7d27a52303c410e409043c21b5c384e08d4a81b56b22575022a65e1aee7d8d9"
+    },
+    {
+      "id": "gid://shopify/Product/10663304954040",
+      "handle": "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd095",
+      "before": 1199,
+      "after": 1399,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355761234104"
+      ],
+      "beforeRuntimeHash": "2528ec6aa3f4536ac06ba59a7b7cc417ec50bc332b24d4b8da5aef0cf2562026",
+      "afterRuntimeHash": "22d5349a344840ec04e223584a6a4e0997fb460ffee6154658861df91a872303"
+    },
+    {
+      "id": "gid://shopify/Product/10663303971000",
+      "handle": "funwest-dolls-kylie-157cm-g-cup-tpe-companion-doll-fwd091",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355758645432"
+      ],
+      "beforeRuntimeHash": "f3784c46efce565e253b7020f02c84657ccd10bb91cb52eebc49cf298c2d5002",
+      "afterRuntimeHash": "648cff481c1339deee5f5533170df2c886a35a576ff5de83c08b3ea166999971"
+    },
+    {
+      "id": "gid://shopify/Product/10663303708856",
+      "handle": "funwest-dolls-kylie-159cm-a-cup-tpe-companion-doll-fwd089",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355757859000"
+      ],
+      "beforeRuntimeHash": "d3b62cc31469a99156d6b9c22e123254a41fc7dcbc827255c8e7b5859846d147",
+      "afterRuntimeHash": "785fbac09aa7dfe36d71b63f0c7404a77bfb99ab0c70b202cc7f98f09e3f3022"
+    },
+    {
+      "id": "gid://shopify/Product/10663303512248",
+      "handle": "funwest-dolls-bella-155cm-f-cup-tpe-companion-doll-fwd088",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355757269176"
+      ],
+      "beforeRuntimeHash": "7a2f9cf102a846f3c0f35c499111b353fb72496d883f70959e603ebc5ec4dcb4",
+      "afterRuntimeHash": "c45d0c3b2b2e43405e595f51541776e1ef5b63aaf6f16de5a3b609d7fc20baee"
+    },
+    {
+      "id": "gid://shopify/Product/10663303381176",
+      "handle": "funwest-dolls-amy-157cm-g-cup-tpe-companion-doll-fwd087",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355757105336"
+      ],
+      "beforeRuntimeHash": "e8d45eb937318567b635f92cf4e024758ce3f5601db4bef9ed000f365e752e91",
+      "afterRuntimeHash": "2d57bb03d87ea087a7c596bde52ec54d6d73a710389f110b2d61f47c90ac1b72"
+    },
+    {
+      "id": "gid://shopify/Product/10663303184568",
+      "handle": "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd086",
+      "before": 1199,
+      "after": 1399,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355756253368"
+      ],
+      "beforeRuntimeHash": "dc7cd07b1d612e4e0ef80f877964d640bd1a5e6f71980eaea72606bece194d2a",
+      "afterRuntimeHash": "eff76acfd8e11c35a894b816ab68f1a8335c13a116729af263aa0add594967df"
+    },
+    {
+      "id": "gid://shopify/Product/10663302955192",
+      "handle": "funwest-dolls-amy-152cm-d-cup-tpe-companion-doll-fwd085",
+      "before": 1199,
+      "after": 1399,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355755172024"
+      ],
+      "beforeRuntimeHash": "a9e8c8ecd799a47f26e9718e0c0a27da329c834753a6d84f87f01ea875391de6",
+      "afterRuntimeHash": "4a9a88fecad5265292e68a7babee0eb520308fa98c614355c2aa97007dd06552"
+    },
+    {
+      "id": "gid://shopify/Product/10663302856888",
+      "handle": "funwest-dolls-luna-155cm-f-cup-tpe-companion-doll-fwd084",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355755073720"
+      ],
+      "beforeRuntimeHash": "0323424ccd58334eb0e865ad092b03bb4f878251bae56e7befa4b02d70e3c147",
+      "afterRuntimeHash": "90d37f1a52aaf77a715562fbaccc2010e53a70efd2c42d2d26780538b4a1a22b"
+    },
+    {
+      "id": "gid://shopify/Product/10663302660280",
+      "handle": "funwest-dolls-zoey-165cm-k-cup-tpe-companion-doll-fwd082",
+      "before": 1549,
+      "after": 1849,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355754451128"
+      ],
+      "beforeRuntimeHash": "4db4ced650f73225c9a5d03b0e62393e08345e1358d9563840196b0fc78f1658",
+      "afterRuntimeHash": "fc5e6f1749ece53688a509977986566d47398ce0bff1ddb921b8910bf492cf15"
+    },
+    {
+      "id": "gid://shopify/Product/10663302463672",
+      "handle": "funwest-dolls-chloe-157cm-g-cup-tpe-companion-doll-fwd081",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355751764152"
+      ],
+      "beforeRuntimeHash": "2f083060d36bd55c5d090d9d6ba3a70c08f4fef44a958ccb3186532ead7c4df0",
+      "afterRuntimeHash": "2e0d292d6b4da8ecc3c8032e14243c49adf5018eefcc834ed8f6b13ab623e6e0"
+    },
+    {
+      "id": "gid://shopify/Product/10663302398136",
+      "handle": "funwest-dolls-alice-159cm-a-cup-tpe-companion-doll-fwd079",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355751698616"
+      ],
+      "beforeRuntimeHash": "f671cad44bad7aac22648249c6d26b06bf70457e90969c9d360dc8bf72457e04",
+      "afterRuntimeHash": "8f78508e330dbedf28212c70756ecace8d29c77ef57a1f9e351694e8c7190edf"
+    },
+    {
+      "id": "gid://shopify/Product/10663302201528",
+      "handle": "funwest-dolls-alice-159cm-a-cup-tpe-companion-doll-fwd078",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355751076024"
+      ],
+      "beforeRuntimeHash": "65c703a1cd81a1b043b61de3ae14c621f31548e3b0b8b8d2f13dcefa3a70b80f",
+      "afterRuntimeHash": "c56d682cecded6e342972a57a09074fc7de18224fd1a6d6b8c60a88023fb3a89"
+    },
+    {
+      "id": "gid://shopify/Product/10663301808312",
+      "handle": "funwest-dolls-alice-155cm-f-cup-tpe-companion-doll-fwd075",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355750158520"
+      ],
+      "beforeRuntimeHash": "5c39598fc86b90b7bab8120ea059841bcbc39e8d043b20e9e7d51de0514d4cc3",
+      "afterRuntimeHash": "a3bb7ac5d3e8827b7921b228271fff6d2fcd07321a991db2a328b7e51ed10d02"
+    },
+    {
+      "id": "gid://shopify/Product/10663301349560",
+      "handle": "funwest-dolls-alice-157cm-c-cup-tpe-companion-doll-fwd074",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355749667000"
+      ],
+      "beforeRuntimeHash": "5af224c624a8ce85814dce57b9fbdfdeca941b35641d71a380426a2f79b92bfd",
+      "afterRuntimeHash": "fe1da6e4c7e3f6d29ea43707422635b03f9334823bca1f18852773bff45ff366"
+    },
+    {
+      "id": "gid://shopify/Product/10663300792504",
+      "handle": "funwest-dolls-bella-157cm-c-cup-tpe-companion-doll-fwd073",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355748454584"
+      ],
+      "beforeRuntimeHash": "ac0f92ea646891e8799ed3a422014b85aea635c2d8ac046aec9252089eb2ad54",
+      "afterRuntimeHash": "27cca85deaabe13bce2bfd60c4dc3497f0e1b42b146adcb85ad15c82e2b4e77e"
+    },
+    {
+      "id": "gid://shopify/Product/10663300169912",
+      "handle": "funwest-dolls-lily-159cm-a-cup-tpe-companion-doll-fwd070",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355747373240"
+      ],
+      "beforeRuntimeHash": "060e0d1f42a7909bdebfebd5bce8ab1f8a65ca84d4e528f8541147bea588f835",
+      "afterRuntimeHash": "54c8595e63c7c6a4f826f9edfaab905000c8efcaea7a2c0eb658916323a7dea6"
+    },
+    {
+      "id": "gid://shopify/Product/10663299743928",
+      "handle": "funwest-dolls-chloe-159cm-a-cup-tpe-companion-doll-fwd063",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355746881720"
+      ],
+      "beforeRuntimeHash": "68be568cd88afd29ec0ae4f0b5aec987a046d379fc88674a91532b234a53b272",
+      "afterRuntimeHash": "05512cd7cfb320649f975fcec59f4ed72053394ef2a36b1f461f67ec85f4c142"
+    },
+    {
+      "id": "gid://shopify/Product/10663299186872",
+      "handle": "funwest-dolls-assos-162cm-f-cup-tpe-companion-doll-fwd062",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355745833144"
+      ],
+      "beforeRuntimeHash": "acc0275c268fe2761513d0f4ddd25b6c4b8e7104fafdb4bdf0c7dbf792acab12",
+      "afterRuntimeHash": "30480ee49b539d2f7c3383e1e2ff103e96c8f6a6ecb81ce5ce87bb3a0417f969"
+    },
+    {
+      "id": "gid://shopify/Product/10663298662584",
+      "handle": "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-fwd058",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355745243320"
+      ],
+      "beforeRuntimeHash": "9bdc0a731f01ef321f506da180b5eac2af51de549f78d4c29852087ffc2f0227",
+      "afterRuntimeHash": "48bc3b970e6af89624e31a8c2f8f9f12f5541d45e6bb1dea807ba2e61fd9eae0"
+    },
+    {
+      "id": "gid://shopify/Product/10663298105528",
+      "handle": "funwest-dolls-eudora-157cm-c-cup-tpe-companion-doll-fwd057",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355744227512"
+      ],
+      "beforeRuntimeHash": "4dc801df7df1ee4658b0109a4ae28376263c76637fea154413e6915b19a79bf5",
+      "afterRuntimeHash": "7bfa75b2f4d8e84f73efb4ef5875e0d5b1f416d2e61b65b65f2d547f48c5de3f"
+    },
+    {
+      "id": "gid://shopify/Product/10663297548472",
+      "handle": "funwest-dolls-elina-159cm-a-cup-tpe-companion-doll-fwd056",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355743178936"
+      ],
+      "beforeRuntimeHash": "f89fa1e4b4c77d4e9c5080a32181ac0c44c016124a41744e07a8bb41b3cbc6a2",
+      "afterRuntimeHash": "b2016fcfd8d95769948514cfd48fc700e3a7fc62e44ead8bab2055d088f4c73b"
+    },
+    {
+      "id": "gid://shopify/Product/10663297155256",
+      "handle": "funwest-dolls-assos-157cm-c-cup-tpe-companion-doll-fwd054",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355742752952"
+      ],
+      "beforeRuntimeHash": "4b98d264c9747d301d2a4c34762b94ce16e253c2d8be7dbfd1da7a8196a738e7",
+      "afterRuntimeHash": "9080e4e4a27ca6664296bd60080cb18d3da446365f00fe9af723a4632dc0207b"
+    },
+    {
+      "id": "gid://shopify/Product/10663296762040",
+      "handle": "funwest-dolls-darlene-155cm-f-cup-tpe-companion-doll-fwd053",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355741933752"
+      ],
+      "beforeRuntimeHash": "000a7af2dbe1a8fd4dbb1f49fbb3ab7f2365ab4f871ebd592edc6775fd0d5913",
+      "afterRuntimeHash": "3a499d396074a5f1ce1b7474ec5936e8a770accf454ade53f9c0a90d96cb0941"
+    },
+    {
+      "id": "gid://shopify/Product/10663296663736",
+      "handle": "funwest-dolls-eudora-159cm-a-cup-tpe-companion-doll-fwd052",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355741769912"
+      ],
+      "beforeRuntimeHash": "f3fe6c4608f09c74a7fbe807d26c2cd037f6bce18be7f1a58a9f83a5cc5953bb",
+      "afterRuntimeHash": "314a6dcfc6e7e5e591b074cd91062343742a66539040573c0116609b297c57e7"
+    },
+    {
+      "id": "gid://shopify/Product/10663296336056",
+      "handle": "funwest-dolls-adele-165cm-c-cup-tpe-companion-doll-fwd049",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355740491960"
+      ],
+      "beforeRuntimeHash": "425187746a0824de449b1dbfa6b726990c084ea983a7dd60bc18e37d1e4bc24b",
+      "afterRuntimeHash": "8335fce10a7ab7f87be2db9a49cfb3d80b429c3093430e4d482bc7510fddf493"
+    },
+    {
+      "id": "gid://shopify/Product/10663296172216",
+      "handle": "funwest-dolls-darlene-165cm-c-cup-tpe-companion-doll-fwd047",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355739803832"
+      ],
+      "beforeRuntimeHash": "7b124e11b582032c16b58dd1cfad7382dacf4ba9b818bf7e9d7d11bf6759f95c",
+      "afterRuntimeHash": "ae5a6746d7cdb4eaf1829597d0634144b2132afd877b992b252ba8227c85bc7c"
+    },
+    {
+      "id": "gid://shopify/Product/10663295746232",
+      "handle": "funwest-dolls-assos-159cm-a-cup-tpe-companion-doll-fwd045",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355738755256"
+      ],
+      "beforeRuntimeHash": "ab312600a9ceac1fa35081aafec4296b8dcd3ec2fc91b8489542b41278a1d28d",
+      "afterRuntimeHash": "826bfdb2c8da5f1b8d3503323f74f04d201cacd5aa60070741679ca71e642f94"
+    },
+    {
+      "id": "gid://shopify/Product/10663295221944",
+      "handle": "funwest-dolls-lexie-157cm-c-cup-tpe-companion-doll-fwd042",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355737215160"
+      ],
+      "beforeRuntimeHash": "475ef7dd93129b37ea737fbb1f38c1415cf9e9ecceaea548c42889414becfe32",
+      "afterRuntimeHash": "fc576658a5bd507f8cfa7c3e9aead7813138d82bf8e665cf023888bf092df0e8"
+    },
+    {
+      "id": "gid://shopify/Product/10663295025336",
+      "handle": "funwest-dolls-bea-162cm-f-cup-tpe-companion-doll-fwd041",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355736527032"
+      ],
+      "beforeRuntimeHash": "cc77921b78abfcc69ed880d66c19abf9112c73515a34e944e1e3bc1e578170ff",
+      "afterRuntimeHash": "c008a2b35a6e5ae966ce51b79a3d8c49415c43f8d99d4659bf163f5edc301c13"
+    },
+    {
+      "id": "gid://shopify/Product/10663294795960",
+      "handle": "funwest-dolls-lexie-165cm-c-cup-tpe-companion-doll-fwd040",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355736264888"
+      ],
+      "beforeRuntimeHash": "8b6e9b7c11a79d7baaccc5a32feb05e3348aafc1380ed3f07e332fd26e3dc8a3",
+      "afterRuntimeHash": "010e6a11c5ef1c5ba7ed77f0959fcc169856f96d39bb4a3309673012e945cde5"
+    },
+    {
+      "id": "gid://shopify/Product/10663294533816",
+      "handle": "funwest-dolls-lexie-162cm-f-cup-tpe-companion-doll-fwd033",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355735347384"
+      ],
+      "beforeRuntimeHash": "74b19a0ec9787286b7370313d8c6c2726a71eebe708a9b0a52ae249f7a6d1e1e",
+      "afterRuntimeHash": "e5424c4b32cc1709fd459e89c1f03e6538c84d84194ab47e19fffb1a96ddce99"
+    },
+    {
+      "id": "gid://shopify/Product/10663294238904",
+      "handle": "funwest-dolls-jasmine-162cm-f-cup-tpe-companion-doll-fwd032",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355734233272"
+      ],
+      "beforeRuntimeHash": "a8f8ab17f252fdf39b940891c90c3dc810eed57499c7d78479bec76779fe6791",
+      "afterRuntimeHash": "a17a60b10f80117b81adddbb22ea0cc16edd0a9ebaecf75e032136c7764dcdcf"
+    },
+    {
+      "id": "gid://shopify/Product/10663294009528",
+      "handle": "funwest-dolls-bea-155cm-f-cup-tpe-companion-doll-fwd028",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355733610680"
+      ],
+      "beforeRuntimeHash": "89d17d58a42a208e0c204204f3518484b1d732566aeb75ddfd2f091c62f19be3",
+      "afterRuntimeHash": "cd4372bbc4e3099d0559fd8ac212f75e7375c34527c579909d8d67241ecb88b0"
+    },
+    {
+      "id": "gid://shopify/Product/10663293911224",
+      "handle": "funwest-dolls-dallas-155cm-f-cup-tpe-companion-doll-fwd024",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355733512376"
+      ],
+      "beforeRuntimeHash": "f82daad9428a4ba9ee6f24db8b104a45af43e6a5fc6a9aa47e3530167d4c0f05",
+      "afterRuntimeHash": "9a837da9afa873bddf6a6c30f17737bbfc7f7b64924920406ada5632f76afa28"
+    },
+    {
+      "id": "gid://shopify/Product/10634723721400",
+      "handle": "funwest-dolls-rose-113cm-d-cup-silicone-torso-1br8k",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024975544"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634723688632",
+      "handle": "funwest-dolls-lyra-113cm-d-cup-silicone-torso-1br4x",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024942776"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634723655864",
+      "handle": "funwest-dolls-lyra-113cm-d-cup-silicone-torso-5g23k",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024910008"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634723623096",
+      "handle": "funwest-dolls-lyra-103cm-g-cup-silicone-torso-ite4t",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024877240"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634723590328",
+      "handle": "funwest-dolls-lyra-103cm-g-cup-silicone-torso-14roh",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024844472"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634723557560",
+      "handle": "funwest-dolls-lexie-103cm-g-cup-silicone-torso-f1x29",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244024811704"
+      ],
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null
+    },
+    {
+      "id": "gid://shopify/Product/10634722640056",
+      "handle": "funwest-dolls-sophiemina-168cm-d-cup-silicone-companion-doll-138mt",
+      "before": 2299,
+      "after": 2699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244020027576"
+      ],
+      "beforeRuntimeHash": "bac2b1f846f33db381e6c39640db944ec183e998c3befd1771d95f4041099b7d",
+      "afterRuntimeHash": "41ef44c45e3243f2b7ed32f1d74288c3546bcf9225a7ad13abb79f68be1d514e"
+    },
+    {
+      "id": "gid://shopify/Product/10634722607288",
+      "handle": "funwest-dolls-skylar-168cm-d-cup-silicone-companion-doll-6jurd",
+      "before": 2299,
+      "after": 2699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019994808"
+      ],
+      "beforeRuntimeHash": "ab2ef6deabd2ce812d0ac3cf74a1e3fac4cc2269dee78234ca65a6f8233d8eed",
+      "afterRuntimeHash": "b601fecd40c0e50bb4b99c19ac2487208f282e168f6ae40038a1a51a80fda994"
+    },
+    {
+      "id": "gid://shopify/Product/10634722574520",
+      "handle": "funwest-dolls-rose-168cm-d-cup-silicone-companion-doll-fgcsg",
+      "before": 2299,
+      "after": 2699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019962040"
+      ],
+      "beforeRuntimeHash": "d948fa868ef690cecd62ead48734629df6f0e143d86d37dd849704a81b3ba0f8",
+      "afterRuntimeHash": "7970608f2faa86b515c87686ffd81de679203116236975d17f9bd5112199396c"
+    },
+    {
+      "id": "gid://shopify/Product/10634722541752",
+      "handle": "funwest-dolls-lyra-159cm-a-cup-silicone-companion-doll-5z8kd",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019929272"
+      ],
+      "beforeRuntimeHash": "9c331ea9e17e9b3cb8ddb98b248ac88c3c3b150954437e4b3f6529d28c42c550",
+      "afterRuntimeHash": "829d96764841b709eda425cec0e2bcbf2a56897f4237f74642af8286259ce8cc"
+    },
+    {
+      "id": "gid://shopify/Product/10634722508984",
+      "handle": "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-14myp",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019896504"
+      ],
+      "beforeRuntimeHash": "7c2582066595387c643c4b458b48ea7b942fdbb3859d447c5fb89cb0299bd468",
+      "afterRuntimeHash": "fe2a14b15e6e9ece9e95393231ff653781e5bffbd12c41225bbcd7667d0e129b"
+    },
+    {
+      "id": "gid://shopify/Product/10634722476216",
+      "handle": "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-1gsv4",
+      "before": 2299,
+      "after": 2699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019863736"
+      ],
+      "beforeRuntimeHash": "085447f33bb41717c0e8b9927f490f2547ba2726cf7a31fd57eb5089163ce103",
+      "afterRuntimeHash": "81c10a1e9bc94c3e7d4e685efb687cd35b55ee8f2997f70d7dbf9cdbbb0d649e"
+    },
+    {
+      "id": "gid://shopify/Product/10634722443448",
+      "handle": "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-qgq4t",
+      "before": 2299,
+      "after": 2699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244019830968"
+      ],
+      "beforeRuntimeHash": "02d3e2d84c7f7ece67b96c9730052398251b69b67afe8fce6bd559022f34c0c4",
+      "afterRuntimeHash": "fdb11b33862c13992b94dfaa7eacdd05b53eda6e5ffe212fe30365e02b035c78"
+    },
+    {
+      "id": "gid://shopify/Product/10634721951928",
+      "handle": "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-17pmn",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011344056"
+      ],
+      "beforeRuntimeHash": "dabff8534a8e22f59d9881c4187114845730e88c5a7811c5b34e4e76a535a3e3",
+      "afterRuntimeHash": "6aef797e734f7ea0b3844745f679d5ca5d5f77bdd84128e1acd61eba89fd8987"
+    },
+    {
+      "id": "gid://shopify/Product/10634721919160",
+      "handle": "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-1pjhu",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011311288"
+      ],
+      "beforeRuntimeHash": "aca1d3b4a17712acebdcbeaf1a024a279b276eb97e7ef010f3b9a958cd895419",
+      "afterRuntimeHash": "255a8c2862aa530ba945bd07e36f475d0a4ffd2f4210daeb9935d1a0bcadd83e"
+    },
+    {
+      "id": "gid://shopify/Product/10634721886392",
+      "handle": "funwest-dolls-juliette-160cm-e-cup-silicone-companion-doll-z2gh5",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011278520"
+      ],
+      "beforeRuntimeHash": "368fd49ad9deaeadc2b7cae3ee107bdec8efbe9f409d9c0525c3e23a5a45ecb4",
+      "afterRuntimeHash": "678586058b1db01b5fac5896f24b6742d4c9015eb31479421ca88a5c748905ab"
+    },
+    {
+      "id": "gid://shopify/Product/10634721853624",
+      "handle": "funwest-dolls-juliette-160cm-e-cup-silicone-companion-doll-1jebg",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011245752"
+      ],
+      "beforeRuntimeHash": "df7530d8ebe1aaebcf8c897f091a52c8458bd97a7a4df6a37a0b4231134dcb0a",
+      "afterRuntimeHash": "a8b7f3c939018fc995077534564b8ae83b0396bc6adce7b9bf58e3dc1473bb51"
+    },
+    {
+      "id": "gid://shopify/Product/10634721820856",
+      "handle": "funwest-dolls-eloise-157cm-g-cup-silicone-companion-doll-1qksy",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011212984"
+      ],
+      "beforeRuntimeHash": "16650fb27aff4a6b0980c3257c98c03a3ccbd862cf00dae62802d95627f1693a",
+      "afterRuntimeHash": "0866d91d11eda4637a9a85aaaec75c101a11b4b9e80a5824d6409a46a9fcbb55"
+    },
+    {
+      "id": "gid://shopify/Product/10634721755320",
+      "handle": "funwest-dolls-eloise-157cm-g-cup-silicone-companion-doll-197mt",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011147448"
+      ],
+      "beforeRuntimeHash": "dcf33444079b24b173b45162c111bf252a87f8ee257b865ddbee5f8df7105d4c",
+      "afterRuntimeHash": "78d481adf43deac61552182b56da19b0800f41d720845058f5b52806c7e0dd61"
+    },
+    {
+      "id": "gid://shopify/Product/10634721722552",
+      "handle": "funwest-dolls-alexa-157cm-d-cup-silicone-companion-doll-hopp9",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011114680"
+      ],
+      "beforeRuntimeHash": "8d8f210e20e90b803b31ec2d5779ab8ef05dc9c8c3ce1e8772568050a9a117e7",
+      "afterRuntimeHash": "afb713d83e7554bf585408ecf07186162178a5b50b4562b3d9ab72b680cc9c60"
+    },
+    {
+      "id": "gid://shopify/Product/10634721657016",
+      "handle": "funwest-dolls-alexa-157cm-d-cup-silicone-companion-doll-kc61z",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54244011049144"
+      ],
+      "beforeRuntimeHash": "82d6f1188ec769a2d699f555f53392833858cca25a8773d58028e3bc7c0ad6f3",
+      "afterRuntimeHash": "3ec598f77fe4a841b2cb8e1a48c2e2d23cc75332ec9cf1916050c40b87ecc91f"
+    },
+    {
+      "id": "gid://shopify/Product/10634719494328",
+      "handle": "funwest-dolls-mirabelle-161cm-e-cup-tpe-companion-doll-frjws",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243997122744"
+      ],
+      "beforeRuntimeHash": "f29f893bca4c2a1d99e3fd54802af6fe80741c6e99a1c7dbcf0531aec9038ec9",
+      "afterRuntimeHash": "c8914bfe4d721e9a7223017dbab405bbe307cd4fa19bb6eea7aa5c9127c40eff"
+    },
+    {
+      "id": "gid://shopify/Product/10634719461560",
+      "handle": "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-1ecp8",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243997089976"
+      ],
+      "beforeRuntimeHash": "e15caa4fb66805f0e7cdd316c96b6b28b7e668690868b50b5ac6cde9fc1af45b",
+      "afterRuntimeHash": "9b4e4bf4c5b1b91778a3687aca186e49c7d2305d17f7a606bda7e71f2459f2ae"
+    },
+    {
+      "id": "gid://shopify/Product/10634719428792",
+      "handle": "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-zlrtu",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243997057208"
+      ],
+      "beforeRuntimeHash": "bbbbdd6525efd5b621a8ece86bdbe696dfc464bfa70338686651c9e5921e6276",
+      "afterRuntimeHash": "4c596087ec53610cb4df4802cd1b568b09516816f6185a7ae3cd27d2d8d33d3e"
+    },
+    {
+      "id": "gid://shopify/Product/10634719363256",
+      "handle": "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-qdqgg",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996827832"
+      ],
+      "beforeRuntimeHash": "a404325438ab37235e168ad9aece4cb97e244b0ec01f98a21dbc12041df0e9cd",
+      "afterRuntimeHash": "f815c74f61e2d0e429b01157c2704a277f330e9d2c416e0a3a7cddaf77c5bc5f"
+    },
+    {
+      "id": "gid://shopify/Product/10634719297720",
+      "handle": "funwest-dolls-lexie-165cm-c-cup-tpe-companion-doll-1om3y",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996565688"
+      ],
+      "beforeRuntimeHash": "7e08cf47bba0c167c4f067f00fc6700244f66db1fd163e05526c6fd46d7e4d30",
+      "afterRuntimeHash": "0425c8d161585d3db84c007e4010958deb4ea0f7dd74342cfb68fc7d51613284"
+    },
+    {
+      "id": "gid://shopify/Product/10634719264952",
+      "handle": "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-1q0y8",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996532920"
+      ],
+      "beforeRuntimeHash": "e1e83d588ebf53ee1c4b4cd7838e65434fb15532d3197264a4a9aa9b133abbba",
+      "afterRuntimeHash": "aea0addc32ccd6d2ad663cc5e6310ac53b0da89e882fefae6bcc592829fdac85"
+    },
+    {
+      "id": "gid://shopify/Product/10634719232184",
+      "handle": "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-12a02",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996500152"
+      ],
+      "beforeRuntimeHash": "a9db1a95b421c3e621288000ace21ce841f948098873d9d6bdc212ce96abdf8e",
+      "afterRuntimeHash": "0a14a0141cf03ba6aecf634013bd82773b41c6dc42ba284b04f212f804f2205f"
+    },
+    {
+      "id": "gid://shopify/Product/10634719199416",
+      "handle": "funwest-dolls-leila-161cm-e-cup-tpe-companion-doll-1nrkj",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996467384"
+      ],
+      "beforeRuntimeHash": "8e30e18a012913e538a68ebdcaf86dbf69cc916bb9b2d2d2f36080721cdde220",
+      "afterRuntimeHash": "7c8bf2ba0b19f171378fea9f5827ce2cd6cccc8ae23efcb1345d8ae589aadd15"
+    },
+    {
+      "id": "gid://shopify/Product/10634719166648",
+      "handle": "funwest-dolls-doreen-155cm-f-cup-tpe-companion-doll-1ahap",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996434616"
+      ],
+      "beforeRuntimeHash": "f00dba3643b3765f13f89a33c6dad8d82c4b1e8a3fbf0307e6ee2f1dbc1be5d1",
+      "afterRuntimeHash": "1fb4718c99b0e6428c54f9ebcf2d12eb89f42ba212c9d6956174f5cc2d99a11d"
+    },
+    {
+      "id": "gid://shopify/Product/10634719101112",
+      "handle": "funwest-dolls-dallas-155cm-f-cup-tpe-companion-doll-1a9hw",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243996205240"
+      ],
+      "beforeRuntimeHash": "e3588729a65223e89fb31258cdb85ba8682d5969a35d3864c6a95a50305b5923",
+      "afterRuntimeHash": "a50db4dcadd9b0733c18348c4b9bcf236d116c1362dbfba764521901ab87b4e4"
+    },
+    {
+      "id": "gid://shopify/Product/10634719035576",
+      "handle": "funwest-dolls-adele-165cm-c-cup-tpe-companion-doll-1og16",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243995943096"
+      ],
+      "beforeRuntimeHash": "074927753aa368596db23166a809e1498ede348e6a4a8db3a7f4134db0b933a5",
+      "afterRuntimeHash": "87f8c49245192c736aceb8961341f34bd9b83d3da64d849bcdf6764aac38a692"
+    },
+    {
+      "id": "gid://shopify/Product/10634697212088",
+      "handle": "funwest-dolls-juliette-166cm-f-cup-silicone-companion-doll-1d3g1",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243950067896"
+      ],
+      "beforeRuntimeHash": "d4ab769ac1541881c756c5fecca9222e431fe83bc4aede3992039cbaf53c3d74",
+      "afterRuntimeHash": "289330001533a91afbecd682b938ef6cfffef64cdfd5a45c43482bf4ffdf4dff"
+    },
+    {
+      "id": "gid://shopify/Product/10634697179320",
+      "handle": "funwest-dolls-alexa-166cm-f-cup-silicone-companion-doll-fr4go",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243950035128"
+      ],
+      "beforeRuntimeHash": "7433ddfc569f9a97badd8449d58bfe6ba14c702a8506a7b234565487f6469061",
+      "afterRuntimeHash": "d36e9362c4a8612e15280487725202d71573b92e631b11d29a08bbf0661f24f0"
+    },
+    {
+      "id": "gid://shopify/Product/10634697146552",
+      "handle": "funwest-dolls-natalia-160cm-e-cup-silicone-companion-doll-15zbu",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243950002360"
+      ],
+      "beforeRuntimeHash": "952ea747afe71255c2932883428eb4029c815591f2379393794051e7ce56096b",
+      "afterRuntimeHash": "5d6bf0879ad67737cb4c7454729c8e37d73d1f96323c7a36efe6181329b4161b"
+    },
+    {
+      "id": "gid://shopify/Product/10634697113784",
+      "handle": "funwest-dolls-jasmine-160cm-e-cup-silicone-companion-doll-1iail",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949969592"
+      ],
+      "beforeRuntimeHash": "a8e1885961fd6b02eace7a82b62249f585cc1a6d79e8dbd3879cc1ad3c4fd65f",
+      "afterRuntimeHash": "1c7cddf25cecd6339da4c91bcbd7b8987c8b2ec7f1b407eca180202ae509e92d"
+    },
+    {
+      "id": "gid://shopify/Product/10634697081016",
+      "handle": "funwest-dolls-chloe-160cm-e-cup-silicone-companion-doll-1378i",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949936824"
+      ],
+      "beforeRuntimeHash": "56b72410a5bc80ad1eaa9dafb8f4ca6d2ec300ccff71240d21547020907d5ea4",
+      "afterRuntimeHash": "9bb20f4745dfbad3bcdd59d34fd4a1efa324980df69e858a62ec46429a248f16"
+    },
+    {
+      "id": "gid://shopify/Product/10634697048248",
+      "handle": "funwest-dolls-cherie-160cm-e-cup-silicone-companion-doll-7pabw",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949904056"
+      ],
+      "beforeRuntimeHash": "21b42f0100c578dc7e81f8207bfa115f64de56866cd0ed07182a773d982c908a",
+      "afterRuntimeHash": "b060bf597ab08d23e1b9417ae9fdca5dc8f1e059eca36dd39490c00b5f7eb6fd"
+    },
+    {
+      "id": "gid://shopify/Product/10634697015480",
+      "handle": "funwest-dolls-evelyn-159cm-f-cup-silicone-companion-doll-1wqzh",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949871288"
+      ],
+      "beforeRuntimeHash": "d2a4ac1fcb845b3978a1f3c9fd1e60061d9070ca12f5e526233e51c0d8c4f0c6",
+      "afterRuntimeHash": "278006c89abc50c04c3c90860a43f9290e95543f4893a48e3bbc2d5605ef040f"
+    },
+    {
+      "id": "gid://shopify/Product/10634696982712",
+      "handle": "funwest-dolls-sophiemina-159cm-f-cup-silicone-companion-doll-bsvw6",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949838520"
+      ],
+      "beforeRuntimeHash": "8c5b1b671ed17f1a97756df75c664b81cab193ff7528ed1ad8cbb33ad8a633db",
+      "afterRuntimeHash": "e86e6aa7cd2fb791f0aa017bf5cf495802dbb76215b2caa061e8bd85a9249511"
+    },
+    {
+      "id": "gid://shopify/Product/10634696949944",
+      "handle": "funwest-dolls-chloe-159cm-f-cup-silicone-companion-doll-tf253",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949805752"
+      ],
+      "beforeRuntimeHash": "15103eca7e08b812944fd4fd9972e18ce2a1f70504cc517aaebcfb4d988cb48f",
+      "afterRuntimeHash": "4a105e7f5abe48725ce0166efa9799be95d7f74f6eb4cef942d81f4200630a0e"
+    },
+    {
+      "id": "gid://shopify/Product/10634696917176",
+      "handle": "funwest-dolls-rose-157cm-g-cup-silicone-companion-doll-14n2b",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243949772984"
+      ],
+      "beforeRuntimeHash": "ad0824ce5a321cfadd78d70a34b0088a716f5e4abde913fd1d00cdf02b865e86",
+      "afterRuntimeHash": "fe1d4ce603105c759da5d862e45387ea8b974e1a71c3ccc61bfd300d5a874e95"
+    },
+    {
+      "id": "gid://shopify/Product/10634350002360",
+      "handle": "funwest-dolls-sophiemina-162cm-f-cup-tpe-companion-doll-ref3l",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243565928632"
+      ],
+      "beforeRuntimeHash": "aa1e876faf43a7f989b17c0e1d31246afa058113fb0ffd5dbd81bfc7f86529b5",
+      "afterRuntimeHash": "b9a2590e3b2f8a352d67e7385293cde0c8450e7298d7343ce8f498dd1e9ce12d"
+    },
+    {
+      "id": "gid://shopify/Product/10634336600248",
+      "handle": "funwest-dolls-zoey-155cm-f-cup-tpe-companion-doll-zm0n9",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243504619704"
+      ],
+      "beforeRuntimeHash": "d4a7964754860f7da05644578e60fa12b752d53728f2955e3008f180fea5a448",
+      "afterRuntimeHash": "09c9de0e9c2a7fe76a1360275ea9ccac4062c38c57fb98ad60944f5900e6f241"
+    },
+    {
+      "id": "gid://shopify/Product/10634336469176",
+      "handle": "funwest-dolls-lily-157cm-c-cup-tpe-companion-doll-f2g0r",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243504488632"
+      ],
+      "beforeRuntimeHash": "3107c8467352114b975fd9436083d560f228c8be5a172ee9433108e6de545f41",
+      "afterRuntimeHash": "bb4bce764d63ac1ed1f7b442d354dbf4102b39be46d2ac2f3de8312c102f7849"
+    },
+    {
+      "id": "gid://shopify/Product/10634336338104",
+      "handle": "funwest-dolls-elina-157cm-c-cup-tpe-companion-doll-14tbm",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243504324792"
+      ],
+      "beforeRuntimeHash": "94ca937fa433e970fd5f09999f3f16575a011c35f011f6d65af721eb8fefba59",
+      "afterRuntimeHash": "f7738a05f742d7caab7a6a24c0bd4f0e25ce16c4859e053b08abcb950825e16b"
+    },
+    {
+      "id": "gid://shopify/Product/10634336239800",
+      "handle": "funwest-dolls-jasmine-155cm-f-cup-tpe-companion-doll-upaw9",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243504226488"
+      ],
+      "beforeRuntimeHash": "c2937b457b477d1746aea1052c01a45e9e403c8f468bbb0b9c29eeb2caeca574",
+      "afterRuntimeHash": "25a707a30bc1d4e4c1744f26f3671659044af2e4832eea8dcad78c9dfc3a147e"
+    },
+    {
+      "id": "gid://shopify/Product/10634336075960",
+      "handle": "funwest-dolls-natural-rose-157cm-g-cup-tpe-companion-doll-1maka",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243503636664"
+      ],
+      "beforeRuntimeHash": "bbbf4dd4251757c93f3708afc2197653dd85553730e2d9f356b6138bb1450120",
+      "afterRuntimeHash": "97fb29b23aaafb751abab1375a174fcac3a7eacfa45c6da845222025f53def54"
+    },
+    {
+      "id": "gid://shopify/Product/10634335912120",
+      "handle": "funwest-dolls-sophiemina-157cm-c-cup-tpe-companion-doll-1onm6",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243502457016"
+      ],
+      "beforeRuntimeHash": "13a05aeebbea2387a41358cb47d2335eee7fe31581cec21da290aafcff638c20",
+      "afterRuntimeHash": "0d3fbc685ba0a3203328abc951b1c6e28dfc8c5d3064d1279bbf2c28501673b6"
+    },
+    {
+      "id": "gid://shopify/Product/10634329653432",
+      "handle": "funwest-dolls-bella-157cm-g-cup-tpe-companion-doll-10bz2",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243482894520"
+      ],
+      "beforeRuntimeHash": "f387e233187238883bcc82132c92371f39c0222196a7bec630139526eef68708",
+      "afterRuntimeHash": "1c7016d80b8e1c8525d20b213a628158ebb14cb5df6cc1ff90e2f275c5c339a8"
+    },
+    {
+      "id": "gid://shopify/Product/10634329620664",
+      "handle": "funwest-dolls-zoey-162cm-f-cup-tpe-companion-doll-1v760",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243482861752"
+      ],
+      "beforeRuntimeHash": "bbc3be86f6ee589ddf1cac77d9baac62462d9f717f045c19a17899f08146a760",
+      "afterRuntimeHash": "831500a6041ec4ca79d44b7a1b558be1bbdb57c0f6e3efee607adbed7b901fa0"
+    },
+    {
+      "id": "gid://shopify/Product/10634329522360",
+      "handle": "funwest-dolls-lily-162cm-f-cup-tpe-companion-doll-1v6wy",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243481616568"
+      ],
+      "beforeRuntimeHash": "131d42e5fe45f5f04ccc1348bdbf017842252f519009e4f7017c449208d40f6e",
+      "afterRuntimeHash": "6c43574c8c4b55216cc93903f1e8dd894a3584468166893911ffb7ce57b9b76c"
+    },
+    {
+      "id": "gid://shopify/Product/10634323591352",
+      "handle": "funwest-dolls-bella-162cm-f-cup-tpe-companion-doll-mwjjq",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243454582968"
+      ],
+      "beforeRuntimeHash": "a6f68a263652f299218bd1370ac8e1624c0fe0aeac79110a0bc4b53ec2c1961b",
+      "afterRuntimeHash": "901e9e617e104d53c444be6a1a62ea2e257537b168644c321a2a1f7b5e2cfe13"
+    },
+    {
+      "id": "gid://shopify/Product/10634323525816",
+      "handle": "funwest-dolls-chloe-162cm-f-cup-tpe-companion-doll-mx59c",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243454517432"
+      ],
+      "beforeRuntimeHash": "ed19dab744d9916bdc11f1a855530e64d2869350e192ed9cf118211e0ed49ee0",
+      "afterRuntimeHash": "ef9d142bc8b6427f823c4d2012d4d88ac617e7b782b333ee0a157c779fee220b"
+    },
+    {
+      "id": "gid://shopify/Product/10634323493048",
+      "handle": "funwest-dolls-jasmine-159cm-a-cup-tpe-companion-doll-1qtqx",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243454451896"
+      ],
+      "beforeRuntimeHash": "714710af408c9a60e08acb709d63efc03afb3060d75ffa08d11ce8f9e16b6495",
+      "afterRuntimeHash": "a750eeff1ec93dc2694a5a6ed0bbc668dd32fb93892aa898c5ed5797e5b4db4f"
+    },
+    {
+      "id": "gid://shopify/Product/10634323394744",
+      "handle": "funwest-dolls-sophiemina-159cm-a-cup-tpe-companion-doll-kpgav",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243454386360"
+      ],
+      "beforeRuntimeHash": "382c0df7b211adcf5a2a6557e8605ed4636211930877f7ec3405a9d2322bfe6d",
+      "afterRuntimeHash": "a009e1fd2a9adb00370b5639dfb06c0b3a3007aa0e98826bdc22ad3f327244c7"
+    },
+    {
+      "id": "gid://shopify/Product/10634311860408",
+      "handle": "funwest-dolls-trixie-161cm-e-cup-tpe-companion-doll-9x9j3",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243406217400"
+      ],
+      "beforeRuntimeHash": "26e24b2fb70132c4f3da88de98042da3f02d64ef10534a21088e738b8e44b936",
+      "afterRuntimeHash": "9ce7ee58f67cf50c8662683f358d221d07c883acf7fe4858a5341f43decf7f50"
+    },
+    {
+      "id": "gid://shopify/Product/10634311762104",
+      "handle": "funwest-dolls-kitty-161cm-e-cup-tpe-companion-doll-1nr3i",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243406119096"
+      ],
+      "beforeRuntimeHash": "ef7282958f0055c7ea0061135c97aa3accbb4f915a68d98a98769d5f95a5442b",
+      "afterRuntimeHash": "cd847564214d81dff62fb3610b55ce42aa91ab414da44d421678c5869cc07f07"
+    },
+    {
+      "id": "gid://shopify/Product/10634311696568",
+      "handle": "funwest-dolls-bernie-peg-155cm-f-cup-tpe-companion-doll-11v9x",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243406053560"
+      ],
+      "beforeRuntimeHash": "49ca72b99da7563e41e7aa23059e5eac9bb0ed5bff86e8a9671b9088d413c9f0",
+      "afterRuntimeHash": "4802a4abcf7f68cf67a7b2e40b503c03fb80b54e1487022c10992f7797e91a49"
+    },
+    {
+      "id": "gid://shopify/Product/10634311663800",
+      "handle": "funwest-dolls-kristen-165cm-kk-cup-tpe-companion-doll-w4ygo",
+      "before": 1699,
+      "after": 1849,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243406020792"
+      ],
+      "beforeRuntimeHash": "ad44719d45e24c4afde04cf06fe71a375db2e4dff4ac04bf5c6d7097937d53e7",
+      "afterRuntimeHash": "3aab443566fd5aec3da020774056b7e168da0daf6ca488b98fea381ee3c4d9f6"
+    },
+    {
+      "id": "gid://shopify/Product/10634311598264",
+      "handle": "funwest-dolls-chastity-160cm-h-cup-tpe-companion-doll-wy8iq",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405955256"
+      ],
+      "beforeRuntimeHash": "bce6c4448647bfc0dddacbd4f36db56cb73ebb6e55efac9e65eb3413a21ac3a4",
+      "afterRuntimeHash": "df62758f9b624414086c4ec8a047a41ef0eb1d64a0a4da094883490a4c6b2f59"
+    },
+    {
+      "id": "gid://shopify/Product/10634311532728",
+      "handle": "funwest-dolls-coco-159cm-k-cup-tpe-companion-doll-168gb",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405398200"
+      ],
+      "beforeRuntimeHash": "af58251cdbb78155631ce25a37b6122203c8f3bd6c91c367f2f894308c60e1b7",
+      "afterRuntimeHash": "a056fd15e98da224de5030ce64a2345b4c2145d6f0f0dc16ebae1040a5f3a3b6"
+    },
+    {
+      "id": "gid://shopify/Product/10634311467192",
+      "handle": "funwest-dolls-chyna-158cm-h-cup-tpe-companion-doll-1y5p5",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405299896"
+      ],
+      "beforeRuntimeHash": "6e2ade0ce3b585bfa462c35fc0f6048571745c06636002764fc34c98a8e76efc",
+      "afterRuntimeHash": "f54ea968c36ad3884a23c2896687f5183d1af80c21680827d11a8a99ad1394be"
+    },
+    {
+      "id": "gid://shopify/Product/10634311401656",
+      "handle": "funwest-dolls-skylar-159cm-a-cup-tpe-companion-doll-14ta5",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405234360"
+      ],
+      "beforeRuntimeHash": "adefcd9099135a7338435769c30c654b62bf1be62ff818d6b2deb90744576512",
+      "afterRuntimeHash": "260acf6ba922477a0c6c0f857cf474d937299a108acbfaa6afb17def5f460387"
+    },
+    {
+      "id": "gid://shopify/Product/10634311368888",
+      "handle": "funwest-dolls-skylar-157cm-g-cup-tpe-companion-doll-1wzt3",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405201592"
+      ],
+      "beforeRuntimeHash": "d4705f14e0cee2b78724c70a29637880784715065b09ad6b4a6c253639838688",
+      "afterRuntimeHash": "a0017fa547356d6d25125bbfe69b883184efd3375e3dcb28c295b83ac477cc07"
+    },
+    {
+      "id": "gid://shopify/Product/10634311270584",
+      "handle": "funwest-dolls-adele-157cm-c-cup-tpe-companion-doll-14qz8",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243405103288"
+      ],
+      "beforeRuntimeHash": "665fe3bac61f5d3848b82277498a9af4b9a79725d29a0a5e8e65041318a3422b",
+      "afterRuntimeHash": "818e5d7e69a4448dcbffd87fb82100c5ba2a4646a45b3b6f6644ed64a4e763ce"
+    },
+    {
+      "id": "gid://shopify/Product/10634311172280",
+      "handle": "funwest-dolls-princesa-150cm-f-cup-tpe-companion-doll-1yd8h",
+      "before": 1099,
+      "after": 1299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243404611768"
+      ],
+      "beforeRuntimeHash": "c411fbc5e64a3e15f376826960fdcd88fc0e9f4c5d064ec2acc80d385bb69795",
+      "afterRuntimeHash": "36f904d04654358ad68023cb6ab981d2217720f26f372f249695af4323247dff"
+    },
+    {
+      "id": "gid://shopify/Product/10634277847224",
+      "handle": "funwest-dolls-stella-162cm-f-cup-tpe-companion-doll-7zlgx",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230482616"
+      ],
+      "beforeRuntimeHash": "4893b60a3899419a1d5d9303fe968f89ff1f671898d3808c3d6dc008392d897c",
+      "afterRuntimeHash": "a203538b618988aec2880e6d469ba09b1077dbbd6df2b21c3be9c99fcc486bfc"
+    },
+    {
+      "id": "gid://shopify/Product/10634277814456",
+      "handle": "funwest-dolls-rose-162cm-f-cup-tpe-companion-doll-1v70w",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230449848"
+      ],
+      "beforeRuntimeHash": "85736bc9ab85741991ce7fa1fe213a5367cd78c2742fa7b75c467f13689b2cad",
+      "afterRuntimeHash": "f63bde56635e138f791d6d1e570a828455099522cdfce54caa3ec22c19af3744"
+    },
+    {
+      "id": "gid://shopify/Product/10634277748920",
+      "handle": "funwest-dolls-iris-162cm-f-cup-tpe-companion-doll-1v6v8",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230384312"
+      ],
+      "beforeRuntimeHash": "75c1acda76ece499b179b044aef9fe261b4d0f50c9c344b0d6f44ece58b698c8",
+      "afterRuntimeHash": "068ff7c26467fa74734449f1f4bfb27ef1e6f6db2777f0aca016120210395678"
+    },
+    {
+      "id": "gid://shopify/Product/10634277683384",
+      "handle": "funwest-dolls-lena-163cm-g-cup-tpe-companion-doll-1ij8z",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230318776"
+      ],
+      "beforeRuntimeHash": "8d7b21f4ba8e070480b1de6d24f05d1939b1ee930e8cd8aa1fa5bb4f95b54d3a",
+      "afterRuntimeHash": "370f7fc5b7714e8fedaa4f0e3adecd70b7a6b19df13a08f22a3df561d4db1c5e"
+    },
+    {
+      "id": "gid://shopify/Product/10634277650616",
+      "handle": "funwest-dolls-eira-163cm-g-cup-tpe-companion-doll-1ij4m",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230286008"
+      ],
+      "beforeRuntimeHash": "a3f5635e0fba6603385cfef61e8700c1f059dd1ca9a69f3d14c9b87722274c1d",
+      "afterRuntimeHash": "57071c98a6487c467f71ca430a6dcd0a8a13c5d8d9be0af8184b82311a71d711"
+    },
+    {
+      "id": "gid://shopify/Product/10634277585080",
+      "handle": "funwest-dolls-lyra-159cm-f-cup-tpe-companion-doll-1b0mg",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230220472"
+      ],
+      "beforeRuntimeHash": "0c1d50105ba4177cb83bbf1c0110ac664a92ba385cc95edaeb23ecf6b3f27cf0",
+      "afterRuntimeHash": "bd52bdd5b188efd02ff815ee418d08179dfc7264db6871339e0f98fc511b3c21"
+    },
+    {
+      "id": "gid://shopify/Product/10634277552312",
+      "handle": "funwest-dolls-sheila-159cm-f-cup-tpe-companion-doll-b1x0q",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230187704"
+      ],
+      "beforeRuntimeHash": "d87d1ee25d0880de6a74fdf818c804084304ac481f47b48f8ea58b82a8c2a2bd",
+      "afterRuntimeHash": "9527ec46b8ee480e6526c7bea74c9273490654470000a1a55ddc3956044d9998"
+    },
+    {
+      "id": "gid://shopify/Product/10634277486776",
+      "handle": "funwest-dolls-eve-159cm-f-cup-tpe-companion-doll-1ilhc",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230122168"
+      ],
+      "beforeRuntimeHash": "e0833cabd60db35565dc8878b484603e12cafe02242703c8ba03ffcadf04e8a6",
+      "afterRuntimeHash": "ced0f2d40d5074782f1083edb3fc267c8ec57734176831a3d2fe014e525a75cc"
+    },
+    {
+      "id": "gid://shopify/Product/10634277388472",
+      "handle": "funwest-dolls-vera-160cm-d-cup-tpe-companion-doll-1ju0r",
+      "before": 1399,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243230023864"
+      ],
+      "beforeRuntimeHash": "37e6b0bcfdc2807cf8d518d36d9e6c5065ced04c67c5b4ab05a8e214f154d6c4",
+      "afterRuntimeHash": "045f6f586d2905dacfdd7c74a75ce75a3ddac9145861c57e6a5ae53e4083a74e"
+    },
+    {
+      "id": "gid://shopify/Product/10634265067704",
+      "handle": "funwest-dolls-chyna-158cm-c-cup-tpe-companion-doll-4o20y",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210952888"
+      ],
+      "beforeRuntimeHash": "9c4ed6024f4c0985ca56021a3a32c796c27c1ea1284a638b5bb89f874bf21bb6",
+      "afterRuntimeHash": "96f62fada4685973df71dba5541e9fa7255ab2595577bbe61d26a595f396c711"
+    },
+    {
+      "id": "gid://shopify/Product/10634265034936",
+      "handle": "funwest-dolls-elise-155cm-f-cup-tpe-companion-doll-1269o",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210920120"
+      ],
+      "beforeRuntimeHash": "4b5ca85cf4d34f25626f85f01dc0d6d15d90c22bceadc09d6837f1646fa8ed1e",
+      "afterRuntimeHash": "1b34e141ff9abf7f33398db74a6532da99d718a42dcec839fab173cde4e1e6ba"
+    },
+    {
+      "id": "gid://shopify/Product/10634264969400",
+      "handle": "funwest-dolls-candace-155cm-f-cup-tpe-companion-doll-1xxu4",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210854584"
+      ],
+      "beforeRuntimeHash": "f46b5374165b667f3f2a825a88444612650975b6cea532c4c588dfac805f62b9",
+      "afterRuntimeHash": "bca8d5e436846b0befc994e75d0b7bbf0a003892bf629c5807e05384d354d44a"
+    },
+    {
+      "id": "gid://shopify/Product/10634264903864",
+      "handle": "funwest-dolls-adele-155cm-f-cup-tpe-companion-doll-123xb",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210789048"
+      ],
+      "beforeRuntimeHash": "6d5690d0e4aa68eac82d1db0727a921a8e4a0de6dea4afd3a769323429d80377",
+      "afterRuntimeHash": "1266ce43dadc3d5cc29f4ccae706b99ffb86be845188e1d9d41dd15203abf2eb"
+    },
+    {
+      "id": "gid://shopify/Product/10634264871096",
+      "handle": "funwest-dolls-trinity-155cm-k-cup-tpe-companion-doll-19vo7",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210756280"
+      ],
+      "beforeRuntimeHash": "7ff56e60a93a047f9ea232a1e72500916e972544e92b34794915ccef25fa54a0",
+      "afterRuntimeHash": "a1bec5036f00a50d6006446195ce4b01b50a5bce6008f1e1440290801d364909"
+    },
+    {
+      "id": "gid://shopify/Product/10634264805560",
+      "handle": "funwest-dolls-skylar-165cm-c-cup-tpe-companion-doll-zn3oa",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210690744"
+      ],
+      "beforeRuntimeHash": "d0c4799aa0c3c98b3eb3677d266e8d19690b8b3ec41e218de059af9f7386eb71",
+      "afterRuntimeHash": "dc4084d4032b6afdb4f71aff6a151352bc5af069939958444b5fd632462e3254"
+    },
+    {
+      "id": "gid://shopify/Product/10634264740024",
+      "handle": "funwest-dolls-jasmine-165cm-c-cup-tpe-companion-doll-18keg",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54243210625208"
+      ],
+      "beforeRuntimeHash": "0fbf8f614c6b8fe9891f6b4a12c86bad653c24538119114231708adc3c5f089d",
+      "afterRuntimeHash": "062bee0787162f69934672afb243f542b1d116c414f1f78ab78385704f441bc8"
+    },
+    {
+      "id": "gid://shopify/Product/10633383477432",
+      "handle": "funwest-dolls-dallas-162cm-f-cup-tpe-companion-doll-lliei",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240325599416"
+      ],
+      "beforeRuntimeHash": "8a10db6e719d71b9358aee24f47b4fff8a589ced7a1f3517f99ebfb1e837925e",
+      "afterRuntimeHash": "966c00252a90a7fe81872cf82136046a4f35bd2545b1e7032eed45dfd9887acb"
+    },
+    {
+      "id": "gid://shopify/Product/10633383346360",
+      "handle": "funwest-dolls-roxy-158cm-c-cup-tpe-companion-doll-1guwj",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240325140664"
+      ],
+      "beforeRuntimeHash": "d80b2be627c9a083bf5e5e7a12322bfbb8c649636435d4436afcdb195de4bc6b",
+      "afterRuntimeHash": "bc4b51d789da54884024076b0ce14b84e5d2f10d2df9f43d904b8a0ed6f3215d"
+    },
+    {
+      "id": "gid://shopify/Product/10633383248056",
+      "handle": "funwest-dolls-kristen-158cm-c-cup-tpe-companion-doll-1q3tg",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240324911288"
+      ],
+      "beforeRuntimeHash": "91140f40446f2e4632a22ff3512f9db25ee9921b309a79e7cfab234257e50874",
+      "afterRuntimeHash": "a2b521935cca7bc346949ad4c0c3531080b61e331b89eb9e2750eeb5c5cebe23"
+    },
+    {
+      "id": "gid://shopify/Product/10633383116984",
+      "handle": "funwest-dolls-coco-158cm-c-cup-tpe-companion-doll-1gumy",
+      "before": 1249,
+      "after": 1499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240324452536"
+      ],
+      "beforeRuntimeHash": "417d5721d3f2993a000df2ecb3b64a234d344a8df46c3aeb57f9e5a4d506b183",
+      "afterRuntimeHash": "a0c670f25eabbcdf94e899d6f87980ace98211aa658b096bdc0237f5203821ae"
+    },
+    {
+      "id": "gid://shopify/Product/10633383018680",
+      "handle": "funwest-dolls-monica-162cm-f-cup-tpe-companion-doll-52qg1",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240324223160"
+      ],
+      "beforeRuntimeHash": "e55a020709998b8813dd0802bc17b85da2c023a7d4ad981cbf19267983d1b085",
+      "afterRuntimeHash": "36ba7abe1b5e7450d7341ef95acc930a65b3d40ca298cbe35ceb1d97898c048f"
+    },
+    {
+      "id": "gid://shopify/Product/10633382920376",
+      "handle": "funwest-dolls-crystal-161cm-e-cup-tpe-companion-doll-1md6c",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240323797176"
+      ],
+      "beforeRuntimeHash": "7a9912aa2cddb0afca8887128c1a09e48c635045d2d544906861c343f7e9d616",
+      "afterRuntimeHash": "505497ea89cb7d695f4ed344c5dfc1cd37c73e85ba5217dbbdcd1c3d259886d6"
+    },
+    {
+      "id": "gid://shopify/Product/10633382822072",
+      "handle": "funwest-dolls-bambi-161cm-e-cup-tpe-companion-doll-1nm03",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240323502264"
+      ],
+      "beforeRuntimeHash": "d0ae3d8b98f7cfb69278045c0071a73c350b05c9ab9dbaa64825929be209a10d",
+      "afterRuntimeHash": "6b6f2d3ac4b91ae2f907966e35094f22fe676dcfd7f56533e3c86e104a70b9bb"
+    },
+    {
+      "id": "gid://shopify/Product/10633382756536",
+      "handle": "funwest-dolls-scarlett-161cm-e-cup-tpe-companion-doll-1e3ky",
+      "before": 1599,
+      "after": 1899,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240323305656"
+      ],
+      "beforeRuntimeHash": "483d85e377c32ca267b5bd118cb35d2122921ba94272ba2da4fcb6ed4230eaf1",
+      "afterRuntimeHash": "3e91f74b1cca48e22281619394b44600bef038d154165b4c0d909e62a195f3f6"
+    },
+    {
+      "id": "gid://shopify/Product/10633367748792",
+      "handle": "funwest-dolls-cherry-158cm-k-cup-tpe-companion-doll-bxvtg",
+      "before": 1349,
+      "after": 1599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240259965112"
+      ],
+      "beforeRuntimeHash": "ff999304a95b613632399c6ec208e83c3f94e7edc021df98f9fda201f9b9d6dd",
+      "afterRuntimeHash": "1e738d304d71b091313a72b52e6022826b88f7142a4628536fd40c29226735d4"
+    },
+    {
+      "id": "gid://shopify/Product/10633367650488",
+      "handle": "funwest-dolls-destiny-164cm-b-cup-tpe-companion-doll-dnv30",
+      "before": 1499,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240259899576"
+      ],
+      "beforeRuntimeHash": "750aaa7fcf3b381b9d5aec4621721a7640b81e6030bd180de54bd1ee8a19c465",
+      "afterRuntimeHash": "136db836056c47946b8be9fca84c5922808f20e1800754b71e57d245ec5a9795"
+    },
+    {
+      "id": "gid://shopify/Product/10633367552184",
+      "handle": "funwest-dolls-angel-165cm-k-cup-tpe-companion-doll-1fl23",
+      "before": 1549,
+      "after": 1849,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240259473592"
+      ],
+      "beforeRuntimeHash": "d0dbb6bc0a24a2ae13f096d1793ec83f1fbd79641893393570cf1e13bbad4da6",
+      "afterRuntimeHash": "b92d6d65ae58db3f4a7efa3a3be152f2ca289ae79bfcfc1308cfd6cc1995fe78"
+    },
+    {
+      "id": "gid://shopify/Product/10633367453880",
+      "handle": "funwest-dolls-chastity-165cm-j-cup-tpe-companion-doll-zv1gz",
+      "before": 1399,
+      "after": 1649,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240259211448"
+      ],
+      "beforeRuntimeHash": "5ef6d142a095fbc6b29c81f863886b67ed1cab80b0afd4709da972a47cd8c722",
+      "afterRuntimeHash": "ab8fd1f0f356171f5ac6f4be647f1aba1bb61fa4c4ca5241639a352c28c6b933"
+    },
+    {
+      "id": "gid://shopify/Product/10633367355576",
+      "handle": "funwest-dolls-desiree-170cm-c-cup-tpe-companion-doll-1gmrq",
+      "before": 1399,
+      "after": 1699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240258392248"
+      ],
+      "beforeRuntimeHash": "4fee0a594c60ec4f8846d3a232b054acd7791c03bb36ff7e6864c07ab83fb549",
+      "afterRuntimeHash": "ae7a3d1eea6786ddaac0902908e01d8a65b372d58861b9a3b1a2ac4071781876"
+    },
+    {
+      "id": "gid://shopify/Product/10633367191736",
+      "handle": "funwest-dolls-anastasia-170cm-c-cup-tpe-companion-doll-ogj5t",
+      "before": 1399,
+      "after": 1699,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54240257376440"
+      ],
+      "beforeRuntimeHash": "d03a1891bcb25612fc4b5d0226efb5c1c5109cb780704dfbb453aabade6611c3",
+      "afterRuntimeHash": "1ae739b9ff51a92d4c31550cc5596fc88af0092901ff426970781e96f67bf05b"
+    }
+  ]
+}
