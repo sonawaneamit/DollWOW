@@ -32,7 +32,7 @@ If a listing omits the body letter, ask for it before comparing measurements wit
 
 ## Three practical catalog comparisons
 
-These examples were listed on DollWOW when checked on 16 October 2026. They illustrate different buying questions, not a ranking or hands-on review.
+These MD examples highlight different build choices. Open each product for its available options and ordering details.
 
 | Example | What the listing identifies | The useful question |
 | --- | --- | --- |

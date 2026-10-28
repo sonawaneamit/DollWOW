@@ -235,7 +235,7 @@ Compare head sculpt, skin tone, styling, intimate configuration, and supported o
 
 ### Pass 4: order confidence
 
-Review the final price, production or stock status, approval process, delivery expectations, care requirements, and support terms. Ask for clarification before payment if any decision-critical fact is missing.
+Review the final price, production or stock status, approval process, delivery expectations, care requirements, and support terms. Ask for clarification before payment if an important detail is missing.
 
 ## Buyer Checklist
 
@@ -334,4 +334,4 @@ Choose ready-to-ship when a confirmed fixed configuration and faster fulfillment
 
 ### Can DollWow review my selected build before production?
 
-Eligible custom orders receive a Human Build Check to review selected options and obvious compatibility issues before production. Product and manufacturer limits still apply, so ask about any decision-critical feature before ordering.
+Eligible custom orders receive a Human Build Check to review selected options and obvious compatibility issues before production. Product and manufacturer limits still apply, so ask about any essential feature before ordering.

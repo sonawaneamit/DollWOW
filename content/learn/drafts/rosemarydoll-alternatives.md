@@ -327,4 +327,4 @@ Send the product URL, model name, or a screenshot through [Compare a listing](/c
 
 ### How current is this comparison?
 
-This comparison was last reviewed on August 11, 2026. Products and policies can change, so check the current product page and written terms before making a purchase decision.
+Products and policies can change, so check the current product page and written terms before making a purchase decision.

@@ -339,7 +339,7 @@ It should connect photographs to a named product with material, dimensions, list
 
 ### What should I do if a seller will not answer a product question?
 
-Do not pay until the decision-critical detail is clear. A seller who cannot confirm the exact product, configuration, stock path, or support terms is asking you to carry the uncertainty.
+Pay only when the exact product, configuration, availability, and support terms are clear. Ask the seller to resolve any uncertainty before you commit.
 
 ### What should I do if I think I have been scammed?
 

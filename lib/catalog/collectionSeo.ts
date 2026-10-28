@@ -324,7 +324,7 @@ const collectionIntroByHandle: Record<string, string> = {
   silicone:
     "Compare full-body silicone dolls, torsos, and hips. Match the product form before comparing height, weight, or starting price. A silicone head on a TPE body is a hybrid build and belongs on a separate shopping path. Compare these full silicone sex dolls by height, listed weight, body shape, surface finish, availability, and custom options. Silicone is often chosen for crisp sculpt detail, a firmer feel, and a less porous surface than many TPE formulations, but softness and handling vary by manufacturer and body design. Check the exact measurements, photos, supported options, and production path before choosing a model.",
   "male-dolls":
-    "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team to confirm any decision-critical detail before production.",
+    "Shop adult male sex dolls across full-body and compact designs from DollWow brands. Compare height, listed weight, shoulder and body proportions, TPE, full silicone, or hybrid construction, intimate configuration, skeleton support, starting price, and made-to-order status. Product-specific anatomy and options vary, so open the exact listing and ask our team about any important detail before production.",
   "female-dolls":
     "Shop female-bodied sex dolls across full-body, torso, and hips designs. Compare product form first, then height, listed weight, proportions, material, starting price, and warehouse or custom-made availability. Check each listing for its exact construction, anatomy, photos, measurements, supported options, and delivery information; these vary by model and manufacturer.",
   torsos:
@@ -905,7 +905,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Practical dimensions",
       whyItMatters: "Height alone cannot predict storage fit, cleaning access, balance, or how manageable a dense torso will be.",
-      dollWowAdvantage: "Buyers can compare product photographs, available measurements, listed weight, material, and brand, then ask support to confirm a missing decision-critical fact."
+      dollWowAdvantage: "Compare product photographs, available measurements, listed weight, material, and brand, then ask support about any important detail."
     },
     {
       factor: "Ownership support",
@@ -1121,7 +1121,7 @@ const collectionComparisonRowsByHandle: Record<string, CollectionComparisonRow[]
     {
       factor: "Exact inventory",
       whyItMatters: "A warehouse label is useful only when the precise body, head, material, color, and configuration are still available.",
-      dollWowAdvantage: "DollWow confirms the exact unit and included configuration before payment when timing is decision-critical."
+      dollWowAdvantage: "When you have a delivery deadline, DollWow confirms the exact unit and included configuration before payment."
     },
     {
       factor: "Dispatch and arrival",

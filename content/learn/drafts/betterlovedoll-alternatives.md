@@ -234,4 +234,4 @@ Yes, under the current [Care for Life terms](/care-for-life), with Repair Concie
 
 ### How current is this guide?
 
-This guide was last reviewed on August 11, 2026. Products, prices, stock, options, and policies can change, so confirm the exact order before checkout.
+Products, prices, stock, options, and policies can change, so confirm the exact order before checkout.

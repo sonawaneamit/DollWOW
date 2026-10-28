@@ -230,7 +230,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       [
         "Handling and ownership",
         "Read height and listed weight together, then plan delivery access, lifting, cleaning, drying, and storage.",
-        "Ask our team to confirm a missing decision-critical detail before checkout."
+        "Ask our team about any important detail before checkout."
       ]
     ],
     faqs: [
@@ -344,7 +344,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       [
         "Handling and support",
         "Use the finished weight, delivery route, storage plan, arrival evidence, care instructions, and repair path to judge ownership fit.",
-        "DollWow can confirm a missing decision-critical detail before checkout and includes Care 365 with every DollWow doll."
+        "DollWow can help with important details before checkout and includes Care 365 with every DollWow doll."
       ]
     ],
     faqs: [
@@ -404,7 +404,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       [
         "Weight and ownership",
         "Check listed weight, weight-reduction version, delivery route, storage, and safe handling before ordering.",
-        "Ask our team to confirm any missing decision-critical detail before checkout."
+        "Ask our team about any important detail before checkout."
       ]
     ],
     faqs: [
@@ -718,7 +718,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       [
         "Material and build",
         "Compare TPE, full silicone, or another stated construction, then confirm the exact body, head, skeleton, finish, and supported choices.",
-        "Ask our team to confirm any decision-critical build detail that is unclear before checkout."
+        "Ask our team about any build detail that is unclear before checkout."
       ],
       [
         "Weight and storage",
@@ -845,7 +845,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       [
         "Scale and handling",
         "Compare height, width, depth, listed weight, base design, cleaning access, and storage position.",
-        "Ask our team to confirm a missing decision-critical measurement before you order."
+        "Ask our team about any missing measurement before you order."
       ],
       [
         "Finish and care",
