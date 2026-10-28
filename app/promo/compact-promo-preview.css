@@ -1,0 +1,28 @@
+@media (min-width: 1024px) {
+  .compact-promo-preview #halloween-2026,
+  .compact-promo-preview section[aria-labelledby="active-promotions-heading"] {
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  .compact-promo-preview .halloween-banner-art picture {
+    width: min(100%, 570px);
+  }
+
+  .compact-promo-preview .halloween-banner-art .halloween-campaign-image {
+    max-height: 320px;
+  }
+
+  .compact-promo-preview section[aria-labelledby="active-promotions-heading"] > .grid {
+    gap: 24px;
+  }
+
+  .compact-promo-preview section[aria-labelledby="active-promotions-heading"] img {
+    max-height: 280px;
+    object-fit: contain;
+  }
+
+  .compact-promo-preview section[aria-labelledby="active-promotions-heading"] span[class*="aspect-"] {
+    max-height: 280px;
+  }
+}
