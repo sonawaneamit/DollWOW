@@ -15,6 +15,7 @@ import { isHalloweenPreview, isHalloweenVisible } from "@/lib/promotions/hallowe
 import { HalloweenWindow } from "@/components/promotions/HalloweenWindow";
 import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampaignBanner";
 import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
+import './compact-promo.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -76,7 +77,7 @@ export default function PromoIndexPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div className="compact-promo mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       {halloween ? <HalloweenWindow preview={preview}><HalloweenCampaignBanner preview={preview} /><HalloweenLandingSections preview={preview} /></HalloweenWindow> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
