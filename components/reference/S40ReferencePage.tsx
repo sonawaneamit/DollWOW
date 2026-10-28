@@ -1,0 +1,95 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import {notFound} from 'next/navigation';
+import {ArrowRight,Sparkles} from 'lucide-react';
+import {getProductByHandle,getProductsByHandles} from '@/lib/shopify/storefront';
+import {getCurrentDollVueHolds} from '@/lib/dollvue/currentHold';
+import {productImageSources,protectedProductImageUrlFor} from '@/lib/catalog/productImage';
+import {productPublicTitle} from '@/lib/catalog/naming';
+import {areDollVueSelectionsValid,dollVueUrl,isDollVueCatalogProduct,DOLLVUE_FREE_PREVIEWS} from '@/lib/dollvue/config';
+import {resolveCurrentDollVueEligibility} from '@/lib/dollvue/eligibility';
+import {DisplayMoney} from '@/components/CurrencyProvider';
+import {S40LookCarousel} from '@/components/reference/S40LookCarousel';
+import {s40CardLabel,s40DollVueLooks,s40DollVueReference,s40FeaturedLooks,s40PilotHandles,s40ReaderHandles,s40SoftStyledHandles} from '@/lib/learn/s40Pilot';
+import {s40ReferenceStructuredData} from '@/lib/learn/s40ReferenceSeo';
+
+export default async function S40ReferencePage(){
+  const products=await getProductsByHandles([...s40ReaderHandles],{revalidate:120});
+  const holds=await getCurrentDollVueHolds(products.map(p=>p.id));
+  const cleared=products.filter(p=>p.extended.headModel==='head-s40'&&/irontech/i.test(p.extended.brand??p.vendor)&&holds.get(p.id)==='clear'&&!p.tags.some(t=>/hold|dollwow-test|dollwow-system/i.test(t)));
+  const entries=s40ReaderHandles.flatMap(handle=>{
+    const product=cleared.find(p=>p.handle===handle);
+    const image=product?protectedProductImageUrlFor(product,product.featuredImage??product.images[0],'card'):null;
+    return product&&image?[{product,image}]:[];
+  });
+  const looks=s40FeaturedLooks.flatMap(look=>{
+    const entry=entries.find(e=>e.product.handle===look.handle);
+    return entry?[{...look,image:entry.image}]:[];
+  });
+  if(looks.length!==5)notFound();
+  const preview=entries.find(e=>e.product.handle===s40DollVueReference.handle&&isDollVueCatalogProduct(e.product));
+  if(!preview)notFound();
+  const fullPreview=await getProductByHandle(preview.product.handle,{cache:'no-store',strict:true}).catch(()=>null);
+  if(!fullPreview||fullPreview.id!==s40DollVueReference.productId||fullPreview.id!==preview.product.id)notFound();
+  const eligibility=await resolveCurrentDollVueEligibility(fullPreview);
+  if(!eligibility.available||!eligibility.sourcePositions.includes(s40DollVueReference.sourcePosition)||productImageSources(fullPreview)[s40DollVueReference.sourcePosition]?.url!==s40DollVueReference.sourceUrl||s40DollVueLooks.some(look=>!areDollVueSelectionsValid(eligibility.config,[...look.selections])))notFound();
+  const makeupAvailable=areDollVueSelectionsValid(eligibility.config,[{groupId:'makeup-options',optionId:'s-makeup-upgrade'}]);
+  const comparison=[{image:s40DollVueReference.image,title:'Eileen in the original factory photograph',label:'Factory photograph'},...s40DollVueLooks.map(look=>({...look,label:'Look preview in DollVue'}))];
+  const schema=s40ReferenceStructuredData(entries.map(({product})=>({handle:product.handle,name:s40CardLabel(product.handle)})));
+  return <div data-s40-pilot>
+    {schema.map(entry=><script key={entry['@type']} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(entry).replace(/</g,'\\u003c')}}/>)}
+    <section className="tone-section" data-tone="deep"><div className="tone-inner">
+      <Link href="/brands/irontech-dolls" className="text-sm font-semibold text-gold-300">Irontech Dolls</Link>
+      <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">Irontech S40: Eileen, Your Way</h1>
+      <p className="mt-5 max-w-3xl text-lg leading-8 text-ivory-300">Eileen has the quiet confidence of someone who can make a simple outfit feel like an entrance. She has the stillness of a film-noir leading lady in the second before she delivers the line. At rest, her gaze is thoughtful rather than smiley; a change of hair or makeup brings out her softer or more dramatic side. Irontech calls this face S40, a useful name to look for across her different builds.</p>
+      <div className="mt-8"><S40LookCarousel looks={looks}/></div>
+    </div></section>
+    <section className="tone-section" data-tone="blush"><div className="tone-inner">
+      <h2 className="max-w-3xl text-3xl font-semibold">For the collector who loves a little range</h2>
+      <p className="mt-4 max-w-3xl text-base leading-8">We like Eileen for a collector who wants one recognizable face with plenty of range. Brunette waves give her a romantic, screen-star mood; a neat bob makes her feel more everyday; blonde hair and glasses add a playful edge. Her full lips and steady gaze suit a composed, grown-up look. If you prefer an open smile or a more animated expression, another face may catch your eye first.</p>
+      <div className="mt-8 border-t border-current/20 pt-8">
+        <p className="text-sm font-semibold">DollVue</p>
+        <h2 className="mt-3 text-3xl font-semibold">Try this head your way in DollVue</h2>
+        <p className="mt-4 max-w-3xl text-base leading-8">She brings the face. You bring the attitude. Go blonde, go dark, change her eye color{makeupAvailable?' or try S+ makeup':''} in DollVue. See which version makes you look twice before you choose your build.</p>
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-s40-dollvue-looks>
+          {comparison.map(look=><figure key={look.image} className="min-w-0">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-md bg-black/10" data-s40-comparison-frame>
+              <Image src={look.image} alt={`${look.label}: ${look.title}`} fill sizes="(min-width:1024px) 280px, (min-width:640px) 440px, 90vw" className="object-cover object-center"/>
+            </div>
+            <figcaption className="mt-3"><span className="block text-sm font-semibold">{look.label}</span><span className="mt-1 block text-base">{look.title}</span></figcaption>
+          </figure>)}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-5">
+          <Link href={dollVueUrl(preview.product.handle)} className="inline-flex items-center gap-2 rounded-md bg-ink-950 px-5 py-3 font-semibold text-ivory-50">Try your own look in DollVue<Sparkles className="h-5 w-5" aria-hidden="true"/></Link>
+          <Link href={`/products/${preview.product.handle}#build-studio`} className="inline-flex items-center gap-2 py-3 font-semibold underline">Customize this Eileen<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
+        </div>
+        <p className="mt-3 max-w-3xl text-sm leading-7">Free: {DOLLVUE_FREE_PREVIEWS} previews with your verified email. Preview outfits and settings are illustrative, not included accessories.</p>
+      </div>
+    </div></section>
+    <section className="tone-section" data-tone="deep"><div className="tone-inner">
+      <h2 className="text-3xl font-semibold">Explore all {entries.length} S40 builds</h2>
+      <p className="mt-4 max-w-3xl text-base leading-8">Start with the silhouette you love; check each listing for its measurements, options and current price. Hair, makeup, lighting and photo styling can give the same S40 head a softer or more dramatic look.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">The same face comes on different body and material combinations, so these builds have different starting prices; selected upgrades change the final total.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Silicone head describes the face material, not an all-silicone body. Check the body material on the build you choose.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Blonde and Glasses, White Bustier, Brunette Glamour and Gold Halter share the same listed 164 cm F-cup specifications and starting price, with different photo styling.</p>
+      <p className="mt-3 max-w-3xl text-sm leading-7">Starting prices are before any discount code: the Halloween $299 off has not been deducted. Any eligible code discount is applied at checkout.</p>
+      <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+        {entries.map(({product,image})=>{
+          const price=product.priceRange.minVariantPrice;
+          return <article key={product.handle} className="min-w-0" data-s40-listing={product.handle}>
+            <Link href={`/products/${product.handle}`} className="relative block aspect-[3/4] overflow-hidden rounded-md bg-black/10" aria-label={`Explore ${productPublicTitle(product)}`}>
+              <Image src={image} alt={productPublicTitle(product)} fill sizes="(min-width:1024px) 280px, 45vw" className="object-contain"/>
+            </Link>
+            <h3 className="mt-3 text-base font-semibold"><Link href={`/products/${product.handle}`} className="underline decoration-current/30 underline-offset-4">{s40CardLabel(product.handle)}</Link></h3>
+            <p className="mt-2 text-sm text-ivory-300">{product.extended.cupSize} / {product.extended.heightCm} cm / {product.extended.material}</p>
+            {s40SoftStyledHandles.some(handle=>handle===product.handle)&&<p className="mt-2 text-sm leading-6">S40 head, photographed in a softer style.</p>}
+            <p className="mt-2 text-sm">From <DisplayMoney amount={price.amount} currencyCode={price.currencyCode}/></p>
+            {product.handle===s40PilotHandles[11]&&<p className="mt-2 text-sm leading-6">Its listed weight and limb measurements differ from the higher-priced 164 cm F-cup configurations; this starting price is for this listing.</p>}
+            <Link href={`/products/${product.handle}#build-studio`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-gold-300">Explore this build<ArrowRight className="h-4 w-4" aria-hidden="true"/></Link>
+          </article>;
+        })}
+      </div>
+      <nav aria-label="Explore more Irontech" className="mt-10 flex flex-wrap gap-6 border-t border-current/20 pt-6"><Link href="/brands/irontech-dolls" className="font-semibold underline">More Irontech dolls</Link><Link href="/dollvue" className="font-semibold underline">Explore DollVue</Link></nav>
+    </div></section>
+  </div>;
+}

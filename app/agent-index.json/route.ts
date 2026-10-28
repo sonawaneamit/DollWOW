@@ -74,6 +74,12 @@ export function GET() {
       url: `${siteUrl}/learn/${article.slug}`,
       markdownUrl: `${siteUrl}/markdown/learn/${article.slug}`
     })),
+    references: [{
+      label: 'Irontech S40 Eileen head',
+      url: `${siteUrl}/heads/irontech-s40`,
+      markdownUrl: `${siteUrl}/markdown/heads/irontech-s40`,
+      scope: 'Listed S40 builds and labelled factory versus illustrative looks; not universal head-to-body compatibility.'
+    }],
     policies: policies.map((policy) => ({
       ...policy,
       url: `${siteUrl}${policy.path}`
