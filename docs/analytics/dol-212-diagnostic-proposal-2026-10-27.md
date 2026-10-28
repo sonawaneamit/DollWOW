@@ -63,6 +63,47 @@ current SDK compatibility need verification before wiring the adapter.
 
 ## Needed To Resolve
 
+### 28 October Reconciliation Checkpoint
+
+The read-only collector at `scripts/analytics/collect-reconciliation.mjs` saves
+dated GA requests/responses for daily, device, page, source and hostname reports
+under ignored `data/exports/dol-212-reconciliation-2026-10-28/`. It neither sends
+events nor changes configuration. Production dates are 28 September through
+27 October in America/New_York. Do not sum users or sessions across dimensions.
+
+- Exact main hostname: 3,009 GA page views; mobile 2,590, desktop 381, tablet 38.
+- Vercel refreshed the same fixed range to 8,412 main-host views (previous capture
+  was 8,335). Its displayed device shares are rounded: mobile 54%, desktop 44%,
+  tablet 2%. The desktop discrepancy is disproportionately large; this is not
+  proof of bots, blockers or consent denial.
+- `/shop/sex-dolls` has 825 GA views versus 931 in the refreshed Vercel view.
+  A single global scaling factor would hide page-level differences.
+- All 30 GA days have recorded page views. No complete zero-collection day was
+  found; partial collection failures remain possible.
+- The Vercel CSV download could not be confirmed through the browser tooling.
+  No daily Vercel series was extracted; do not invent a date-level reconciliation.
+- Mature QA and production purchase reports for 27-28 October returned no rows.
+  The second day remains partial; no historical root cause or repair is proven.
+
+Local review: `http://127.0.0.1:3312/review/analytics`, enabled only with
+`VERCEL_ENV=preview` and `DOL212_LOCAL_REVIEW=1`. It uses the real banner and
+PageViewTracker with a separate QA stream, displaying only fixed command labels.
+It does not show identity values, event payloads or network delivery receipts.
+Eight observed browser cases covered unknown consent, accept, two navigations,
+withdrawal/navigation, denied reload, reaccept and granted reload. Expected page
+view queue behavior passed; the Shopify handoff remains unwired. This is not a
+purchase test and no new order was placed. The review route is unavailable in
+production; it must not be enabled there.
+
+The unwired adapter now requires the explicit headless domain contract and an
+attested public Storefront credential. Prefix checks are defense-in-depth, NOT
+proof a token is public. Existing server credentials have not been exposed or
+repurposed. SDK loading, checkout-domain transport and runtime permission
+readback still need supported integration and verification before release.
+
+Direct configured Google access works; the expired Treg connector does not block
+these reports. Production consent/pixel changes still need exact approval.
+
 1. Codex: finish supported headless consent transport in an isolated preview using
    the actual checkout domain and an approved public-token/restricted proxy design.
    Verify explicit accept, decline, reload and withdrawal without a new order.
