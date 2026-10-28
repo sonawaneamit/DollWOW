@@ -409,7 +409,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
               totalPrice={resolved.totalPrice}
               currencyCode={currencyCode}
               leadTimeNote={pricedConfig.leadTimeNote}
-              stockStatus={product.extended.stockStatus}
+              stockStatus={product.id.startsWith('preview:gynoid:') ? undefined : product.extended.stockStatus}
             />
           </div>
         </aside>}

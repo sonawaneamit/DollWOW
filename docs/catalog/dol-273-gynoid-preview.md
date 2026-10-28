@@ -113,3 +113,8 @@ default must not carry across. Laura is still incompatible with movable jaw.
 This candidate awaits Dolly's source/menu/visual review and release preflight.
 No generated editorial images or claimed supplier-menu completion are implied.
 Private source hashes and omissions: laura-m11-preview-source.json.
+
+Manual-edit browser QA also exposed the generic builder's three-week calendar
+estimate. Gynoid timing is not yet confirmed, so the preview suppresses that
+derived date while retaining truthful timing caveats. No production behavior or
+other brand estimate changes. A generic calendar date is not supplier evidence.
