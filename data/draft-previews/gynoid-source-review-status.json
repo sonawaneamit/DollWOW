@@ -1,0 +1,28 @@
+[
+  {
+    "reviewedAt": "2026-10-28T19:06:00Z",
+    "headName": "Lyra",
+    "bodyModel": 25,
+    "candidateHandle": "gynoid-lyra-170cm-silicone-companion-doll-model-25",
+    "status": "PHOTOS_REVIEWED_MENU_AND_COMMERCIAL_PENDING",
+    "sourceImageCount": 17,
+    "sourceImagesDecoded": 17,
+    "selectedOriginalsReviewedFullSize": [
+      "261015-002.jpg",
+      "261015-005.jpg",
+      "261015-014.jpg",
+      "261017-4K-003.jpg"
+    ],
+    "galleryScope": "All 17 official source photos inspected in two indexed contact sheets; selected four clothed originals also inspected full size. No generation, retouching or source-image cropping.",
+    "duplicateCheckScope": "17 original photos compared against 94 retained and four private preview images using normalized full-frame pixel difference. No near-exact photographic composition match; this does not establish head identity or exclude every crop/lighting variation.",
+    "runtimeCandidateAdded": false,
+    "shopifyRecordCreated": false,
+    "publicationAllowed": false,
+    "remaining": [
+      "Exact M25 configuration and standard/deluxe feature mapping; do not transplant another body's menu or recipes",
+      "Resolve source head-price/upgrade mapping differences and freight through Dolly/Eric",
+      "Record the exact M25 preview retail/construction decision separately from already approved existing-family prices",
+      "Dolly preview review and Martin exact release approval"
+    ]
+  }
+]

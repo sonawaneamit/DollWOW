@@ -15,7 +15,9 @@ const allCatalogBrands = brandData satisfies CatalogBrand[];
 // MD Doll launched 2026-10-14. Add a brand value here to stage the next one.
 const previewOnlyCatalogBrandValues: string[] = [];
 const isPreviewDeployment = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
-const hiddenCatalogBrandValues = new Set(["zelex", ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
+const gynoidPreview = (process.env.VERCEL_ENV === "preview" ||
+  (!process.env.VERCEL_ENV && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview")) && process.env.NEXT_PUBLIC_DOL273_PREVIEW === "1";
+const hiddenCatalogBrandValues = new Set(["zelex", ...(!gynoidPreview ? ["gynoid"] : []), ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
 
 export const catalogBrands = allCatalogBrands.filter((brand) => !hiddenCatalogBrandValues.has(brand.value));
 

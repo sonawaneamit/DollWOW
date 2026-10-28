@@ -34,6 +34,7 @@ import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasur
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
+import { gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -120,12 +121,14 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const hasAuthorizationSection = isLiveAuthorizedBrand(productBrand);
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
+  const gynoidStoreDiscount = gynoidPreviewStoreDiscount(product, Number(product.priceRange.minVariantPrice.amount));
 
   return (
     <div>
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      {gynoidStoreDiscount ? <p className="mx-auto max-w-7xl px-4 pb-3 text-sm text-text-dim">Gynoid is excluded from the sitewide 10% discount. Preview policy only; live checkout settings are unchanged.</p> : null}
+      {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />}
+      {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="min-w-0">
@@ -209,7 +212,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {firstAvailable && (
+            {isPrivateDraft ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
@@ -288,10 +291,11 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">
             <BrandAuthorizationCard brand={productBrand} />
+            {product.id.startsWith('preview:gynoid:') ? <p className="mt-4 text-sm leading-6 text-ivory-300">Gynoid confirms M8 connectors on all bodies currently on sale. Gynoid does not offer an adapter.</p> : null}
           </div>
         </ToneBand>
       ) : null}
-      <PdpTrackers product={publicProduct} />
+      {!isPrivateDraft && <PdpTrackers product={publicProduct} />}
     </div>
   );
 }
@@ -356,9 +360,13 @@ function ProductSpecSummary({
   measurements: Array<{ label: string; value: string }>;
   fitChecks: Array<{ title: string; body?: string; lines?: string[] }>;
 }) {
+  const namedGynoidHead = product.id.startsWith('preview:gynoid:');
   const detailRows = [
     ["Brand", product.extended.brand ?? product.vendor],
-    ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
+    ...(product.extended.headModel ? [["Head model", namedGynoidHead ? product.extended.headModel : formatHeadModel(product.extended.headModel)]] : []),
+    ...(namedGynoidHead && product.extended.bodyCode ? [["Body model", product.extended.bodyCode]] : []),
+    ...(namedGynoidHead && product.extended.measurements?.['Factory body weight'] ? [["Factory body weight", product.extended.measurements['Factory body weight']]] : []),
+    ...(namedGynoidHead && product.extended.measurements?.Underbust ? [["Underbust", product.extended.measurements.Underbust]] : []),
     ["Material", product.extended.material],
     ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
     ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],

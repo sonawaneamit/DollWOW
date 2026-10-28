@@ -3,9 +3,13 @@ import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
 import type { TemplatePresetDefinition } from '@/lib/customization/template-presets';
 import { templateConfigSignature } from '@/lib/customization/template-config-signature';
+import { gynoidPreviewProduct } from '@/lib/catalog/gynoidPreview';
+import gynoidRecipes from '@/data/draft-previews/gynoid-oct28-recipes.json';
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
+  const gynoid = gynoidPreviewProduct(handle);
+  if (gynoid) return gynoid;
   const { default: snapshots } = await import('@/data/draft-previews/castle-oct22.json');
   const product = snapshots.find((entry) => entry.handle === handle);
   return product ? structuredClone(product) as unknown as Product : null;
@@ -14,6 +18,13 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
+  const gynoid = gynoidPreviewProduct(product.handle);
+  if (gynoid?.id === product.id) {
+    const recipe = gynoidRecipes[product.handle as keyof typeof gynoidRecipes]
+      ?? Object.values(gynoidRecipes).find(recipe => product.tags.includes(recipe.tag));
+    if (!recipe) return null;
+    return { ...recipe, signature: templateConfigSignature(config) } as TemplatePresetDefinition;
+  }
   if (snapshot.extended.bodyCode === 'S112') return null;
   const chiku = snapshot.extended.bodyCode === 'SZ25';
   return {

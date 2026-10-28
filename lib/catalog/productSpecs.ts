@@ -85,6 +85,12 @@ export function isHeadOnlyProduct(product: Product) {
   return product.tags.includes("head-only");
 }
 
+function gynoidPreviewBodyWeight(product: Product) {
+  return product.id.startsWith('preview:gynoid:') && product.extended.measurements?.['Factory body weight']
+    ? product.extended.measurements['Factory body weight']
+    : null;
+}
+
 export function primaryProductSpecs(product: Product): DisplaySpec[] {
   const measurements = measurementValueMap(product);
   if (isHeadOnlyProduct(product)) {
@@ -105,10 +111,10 @@ export function primaryProductSpecs(product: Product): DisplaySpec[] {
       value: measurements.get("Height") ?? fallbackHeight
     },
     {
-      label: productWeightLabel(product),
-      value: isMdReleaseWeight(product) && mdFactoryBodyKg(product.extended.brand || product.vendor, product.extended.measurements)
+      label: gynoidPreviewBodyWeight(product) ? 'Body weight' : productWeightLabel(product),
+      value: gynoidPreviewBodyWeight(product) ?? (isMdReleaseWeight(product) && mdFactoryBodyKg(product.extended.brand || product.vendor, product.extended.measurements)
         ? formatMeasurementDual('Body weight', product.extended.measurements?.['Factory body weight'])
-        : measurements.get('Listed weight') ?? measurements.get('Listed weight (unverified)') ?? measurements.get("Weight") ?? fallbackWeight
+        : measurements.get('Listed weight') ?? measurements.get('Listed weight (unverified)') ?? measurements.get("Weight") ?? fallbackWeight)
     }
   ];
 }
@@ -151,6 +157,7 @@ export function productMeasurementSpecs(product: Product): DisplaySpec[] {
     ? MEASUREMENT_LABELS.flatMap(label => label === 'Weight' ? [productWeightLabel(product), 'Packing weight'] : [label])
     : MEASUREMENT_LABELS;
   return labels.map((label) => {
+    if (label === 'Weight' && gynoidPreviewBodyWeight(product)) return { label: 'Body weight', value: gynoidPreviewBodyWeight(product)! };
     const normalized = normalizeMeasurementLabel(label);
     const value = values.get(normalized);
     if (value) return { label: normalized, value };

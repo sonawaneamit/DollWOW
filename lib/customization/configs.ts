@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import gynoidPreviewRules from '@/data/draft-previews/gynoid-oct28-rules.json';
 import { withSeLightweight } from './se-lightweight';
 import { getIdoMdCustomizationConfig } from './ido-md';
 import { withSeSiliconeHead } from './se-silicone-head';
@@ -367,7 +368,9 @@ function customizationConfig(product: Product, purpose: "checkout" | "factory"):
       brandLabel: product.extended.brand ?? product.vendor,
       leadTimeNote: "Custom details are reviewed by our team before production or shipment.",
       groups: uniqueCustomizationGroups(previewGroups),
-      rules: []
+      rules: product.id.startsWith('preview:gynoid:')
+        ? (gynoidPreviewRules[product.id as keyof typeof gynoidPreviewRules] ?? []) as CustomizationRule[]
+        : []
     };
   }
   // IronAI is a standalone Irontech head product with a manufacturer-limited
