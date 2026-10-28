@@ -1,5 +1,24 @@
 # DOL-248 Zarga Preview
 
+## Editorial QA Receipt, 28 October
+
+Reviewed source `eb1b5d70`; hosted Preview deployment
+`dpl_BD7pUjVV5a8Cc62Vw1xPNfzJp12o`:
+https://doll-b35kvd5pn-sonawaneamits-projects.vercel.app/products/climax-zarga-70cm-silicone-halloween
+
+The shared editorial renders at 1319px desktop and 390px mobile without
+horizontal overflow. Its original fourth gallery image decodes at 1600x2400.
+Both views retain noindex/nofollow, no hero purchase action and disabled cart.
+An actual gel-butt selection shows base USD850, options USD65, total USD915;
+checkout remains disabled. The existing Halloween offer dialog initially
+covered the controls; normal dismissal allowed the successful interaction.
+
+Eighteen focused tests across four files, full typecheck, scoped lint and diff
+checks pass. The hosted build and 4950-asset gate pass. Private screenshots
+and structured QA are retained in `data/exports/dol-248-2026-10-28/`.
+This documentation-only receipt does not require redeploying the reviewed UI.
+All release gates below remain in force; no production or Shopify writes.
+
 ## 28 October Editorial Revision
 
 Martin asked for the standard editorial section and Dolly requested this
