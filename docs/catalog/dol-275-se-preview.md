@@ -80,8 +80,29 @@ No factory kg/cm specification has been silently changed.
 ## Release Gate
 
 The older menu/delivery blocker is superseded; do not ask it again. Hosted
-four-PDP verification and Dolly review are required before moving In Review.
+four-PDP verification passed on 28 October; Dolly review is pending in In Review.
 Source-gallery completion and any exact new-parent charge/preset bindings remain
 release qualifications, not inferred from reusing a live menu. Martin's explicit
 live approval is still required. Do not merge, publish, create purchasable
 products, submit indexing requests or send supplier/customer messages.
+
+## Hosted Verification - 28 October 2026
+
+Preview: https://doll-ng786i7fl-sonawaneamits-projects.vercel.app/review/se-elf
+Deployment dpl_9qnxzm2r4h4QCYfkdHbaRWwwfoe4 uses source 7d6acdb0 and has
+Preview target only. All four PDP links are on the review index.
+
+60 focused tests across 10 files, TypeScript, hosted build and the 4,950-asset
+gate passed. Browser verification covered 24 actual preset selections across
+four PDPs, three tiers and desktop/mobile widths; totals updated, checkout stayed
+disabled, no horizontal overflow, and noindex/nofollow remained present.
+Gallery navigation covered 24 states. Final 12 gallery decoding states all had
+complete images and nonzero natural dimensions, covering three photos per SKU.
+Unauthenticated CLI media probes returned preview sign-in HTML; those are not
+image response/decode passes. No authentication bypass or HTTP cart mutation
+was used. Private receipts and screenshots: data/exports/dol-275-2026-10-28.
+
+Sherry's 28 October stock reply, relayed by Dolly, confirms these four Elf SKUs
+are not on the US stock sheet. Keep made-to-order delivery; no US-stock claim.
+The separate November skin-colour promotion is outside this ticket's scope.
+No Shopify writes, live deployment, orders or external contacts were made.
