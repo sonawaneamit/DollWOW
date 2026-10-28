@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
 import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
 import sourceDispositions from '@/data/draft-previews/gynoid-source-dispositions.json';
+import sourceReviews from '@/data/draft-previews/gynoid-source-review-status.json';
 import { gynoidLocalImagePath, gynoidPreviewProducts, gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
 import rules from '@/data/draft-previews/gynoid-oct28-rules.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
@@ -18,6 +19,19 @@ afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
 
 describe('Gynoid saved draft previews', () => {
+  it('does not stage a photo-reviewed source while its exact menu and commercial gates remain open', async () => {
+    enable();
+    for (const review of sourceReviews) {
+      if (review.status !== 'PHOTOS_REVIEWED_MENU_AND_COMMERCIAL_PENDING') continue;
+      expect(review.sourceImageCount).toBe(review.sourceImagesDecoded);
+      expect(review.selectedOriginalsReviewedFullSize).toHaveLength(4);
+      expect(review.runtimeCandidateAdded).toBe(false);
+      expect(review.shopifyRecordCreated).toBe(false);
+      expect(review.publicationAllowed).toBe(false);
+      expect(gynoidPreviewProducts().some(product => product.handle === review.candidateHandle)).toBe(false);
+      expect(await getPrivateDraftPreview(review.candidateHandle)).toBeNull();
+    }
+  });
   it('does not append a known dealer-alias photo campaign as another product', async () => {
     enable();
     const products = gynoidPreviewProducts();

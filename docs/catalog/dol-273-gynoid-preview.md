@@ -173,6 +173,44 @@ the first gmj7ts3pc deployment is superseded pending corrected build inputs.
 
 ## Catalog Completion Still Open
 
+### Source Audit, 28 October Evening
+
+The eleven missing preview body families are not eleven automatically eligible
+imports. Retained dealer campaigns for ten of them (6, 9, 12, 14, 15, 19, 20,
+22, 23, 24) are safety holds or aliases of held campaigns. This is campaign-level
+accounting, not a blanket ban on every possible head or configuration of a body.
+No historical hold is removed and new official campaigns require their own checks.
+
+The 104,046,611-byte Model9 archive was downloaded through connected Drive and
+its central directory inventoried: 42 entries, 39 JPEG files, no unsafe paths,
+symlinks or encrypted entries. No file was extracted and no image was opened.
+Its two campaign directory labels correspond to the existing Elina/Jingjing
+holds; filenames alone do not establish exact photo identity or clear them.
+The other two archive contents remain unreviewed.
+
+Lyra/M25 has no historical dealer disposition. A fresh official folder listing
+returns 17 JPEGs, one video and one PDF. All 17 original photo byte lengths and
+decodes are verified, SHA-256 provenance retained privately, and all photos
+inspected in indexed contact sheets. Four clothed originals were also inspected
+full size: 261015-002, 261015-005, 261015-014 and 261017-4K-003.
+No generated or retouched product images were used.
+
+Full-frame 64x96 greyscale comparison against all 94 retained plus four private
+preview images finds no near-exact composition match (minimum MAE 35.836/255;
+near-exact threshold 3). This does not prove unique head identity or exclude
+every crop, lighting or pose variation. No thirteenth runtime product or Shopify
+record was added. The current twelve-PDP review URL remains unchanged.
+
+The source-review status file and regression test keep this photo-reviewed source
+out of the runtime cohort until exact M25 menu/construction and commercial gates
+are settled. Do not copy M11/M18 options, invent a cup size, equate deluxe with
+super-soft construction without evidence, or present an assembled weight.
+Dolly/Eric retain head-price mapping, actual freight and early-bird/dealer-scope
+questions. Existing-family approved retail prices are not a M25 price decision.
+Private evidence is under `data/exports/dol-273-2026-10-28/` in the main checkout,
+including `archive-audit/` and `lyra-m25-source/`. This is not catalog completion,
+a release approval or a reason to reopen held campaigns.
+
 Official PO Guidance-2026.8.5.xlsx, Drive ID
 1eZ1M4FVB3NRhRuYUhrxEoFc2LdFWWeaV (modified 21 October), was downloaded
 and parsed read-only. It has 17 body families (6, 9-24), including torso 17,
