@@ -29,6 +29,12 @@ hero purchase controls and PDP tracking are suppressed for these private drafts.
 The explicit DOL273 flag and Preview environment are required. Production brand
 surfaces remain hidden. This does not transfer any release approval.
 
+Set NEXT_PUBLIC_DOL273_PREVIEW=1 and NEXT_PUBLIC_VERCEL_ENV=preview for both
+build and runtime on the isolated deployment, with VERCEL_ENV=preview at build.
+Runtime-only flags render dynamic PDPs but omit Gynoid from the statically
+generated certifications directory. Hosted browser QA caught this discrepancy;
+the first gmj7ts3pc deployment is superseded pending corrected build inputs.
+
 ## Catalog Completion Still Open
 
 Official PO Guidance-2026.8.5.xlsx, Drive ID

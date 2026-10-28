@@ -25,7 +25,7 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     id: "gynoid",
     brand: "Gynoid",
     brandValue: "gynoid",
-    certificateIssuer: "Dongguan Gynoid Intelligent Technology Co., Ltd.",
+    certificateIssuer: "Dongguan Gynoid Intelligent Technology Co., Ltd",
     aliases: ["gynoid", "gynoid dolls"],
     status: "certificate",
     certificateSrc: "/images/authorizations/gynoid-authorized.png",
