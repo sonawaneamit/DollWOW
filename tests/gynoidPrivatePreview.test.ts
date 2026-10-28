@@ -88,8 +88,8 @@ describe('Gynoid saved draft previews', () => {
   });
   it('adds Laura separately, reuses the M11 recipe and preserves her open-eye default', async () => {
     enable();
-    expect(gynoidPreviewProducts()).toHaveLength(12);
-    expect(additions).toHaveLength(1);
+    expect(gynoidPreviewProducts()).toHaveLength(13);
+    expect(additions).toHaveLength(2);
     const p = (await getPrivateDraftPreview(additions[0].handle))!, c = getCustomizationConfig(p);
     expect(p.extended).toMatchObject({ displayName: 'Laura', headModel: 'Laura', bodyCode: 'M11', heightCm: 162 });
     expect(p.priceRange.minVariantPrice.amount).toBe('4799.00');
@@ -114,5 +114,23 @@ describe('Gynoid saved draft previews', () => {
     expect(recipe?.tag).toBe('options:gynoid-body-11-mvp-v1');
     const presets = templateConfigurationPresets(recipe ?? null, c, c, 4799, defaults);
     expect(presets.map(t => t.totalPrice)).toEqual([4799, 4949, 5049]);
+  });
+  it('keeps Laura M10 distinct from M11 with exact body facts and its own original gallery', async () => {
+    enable();
+    const p = (await getPrivateDraftPreview('gynoid-laura-172cm-silicone-companion-doll-model-10'))!;
+    expect(p.extended).toMatchObject({ displayName: 'Laura', headModel: 'Laura', bodyCode: 'M10', heightCm: 172 });
+    expect(p.priceRange.minVariantPrice.amount).toBe('5299.00');
+    expect(primaryProductSpecs(p)).toContainEqual({ label: 'Body weight', value: '33kg (body only; +/-3kg)' });
+    expect(p.images).toHaveLength(4);
+    for (const image of p.images) {
+      expect(image.url).toContain('/laura-m10/');
+      expect(fs.existsSync(gynoidLocalImagePath(p, image.url)!)).toBe(true);
+    }
+    const config = getCustomizationConfig(p), defaults = getDefaultSelections(config);
+    expect(resolveCustomization(config, { ...defaults, 'eye-color': 'blue' }, 5299).issues).toEqual([]);
+    expect(resolveCustomization(config, { ...defaults, 'head-type': 'movable-jaw-free' }, 5299).issues.length).toBeGreaterThan(0);
+    const recipe = await privateDraftRecipe(p, config);
+    expect(recipe?.tag).toBe('options:gynoid-body-10-mvp-v1');
+    expect(templateConfigurationPresets(recipe ?? null, config, config, 5299, defaults).map(t => t.totalPrice)).toEqual([5299, 5449, 5549]);
   });
 });
