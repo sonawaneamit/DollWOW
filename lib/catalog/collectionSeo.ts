@@ -57,7 +57,7 @@ export function buildCollectionMetadata(
       description,
       url: canonicalUrl,
       type: "website",
-      siteName: "DollWow"
+      siteName: "DollWOW"
     },
     twitter: {
       card: "summary",
@@ -83,7 +83,7 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
       url,
       isPartOf: {
         "@type": "WebSite",
-        name: "DollWow",
+        name: "DollWOW",
         url: siteUrl
       },
       mainEntity: {

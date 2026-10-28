@@ -121,7 +121,7 @@ export function buildArticleStructuredData(article: LearnArticle) {
     },
     publisher: {
       "@type": "Organization",
-      name: "DollWow",
+      name: "DollWOW",
       url: siteUrl
     },
     mainEntityOfPage: learnArticleUrl(article.slug),
