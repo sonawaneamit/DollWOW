@@ -26,6 +26,29 @@ subscription activation and production receipts must be recorded on the ticket.
 
 ## Guarantees And Limits
 
+### Canonical Shop Identity Follow-Up, 28 October
+
+The approved FunWest price rollout supplied genuine business events. A bounded
+13-minute production log query returned50 product-webhook POSTs, all403;
+the CLI returned50 despite a200 limit, so this is not full164-event coverage.
+No notification state was returned on164 named products. App subscriptions
+for PRODUCTS_CREATE and PRODUCTS_UPDATE remain registered, with no duplicates.
+
+Authenticated Admin reports a canonical myshopifyDomain different from the
+configured API alias. The old callback compared against the API hostname.
+Resolve the expected canonical identity through authenticated Admin after HMAC,
+topic and product-identity validation, with a five-minute/in-flight cache.
+Foreign shops still fail403, lookup failure is retryable503, and previews make
+no identity lookup or notification. No secret, global shop setting, firewall,
+subscription, HMAC algorithm or permissive hostname allowlist changes.
+
+This source mismatch and observed403s justify the correction, but are not a
+successful genuine-delivery receipt. Keep native Shopify retry/next genuine
+event verification open; never manufacture another product/price edit or replay
+an event to claim completion. The environment subprocess returned no domain;
+that incomplete read is not proof of missing deployed configuration. Private
+read-only evidence is data/exports/dol-226-2026-10-28/ in the isolated worktree.
+
 Shopify delivery is retryable, not exactly once. Active claims return HTTP503;
 success is saved only after IndexNow accepts the request. A process failure
 after acceptance but before persistence can repeat a notification on retry.

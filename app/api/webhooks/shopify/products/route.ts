@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { validShopifyWebhookSignature } from '@/lib/shopify/webhookSignature';
 import { notifyShopifyProductChange } from '@/lib/shopify/indexNowNotification';
+import { canonicalWebhookShopDomain, expectedWebhookShopDomain } from '@/lib/shopify/webhookShop';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -32,20 +33,29 @@ export async function POST(request: Request) {
   if (!validShopifyWebhookSignature(raw, request.headers.get('x-shopify-hmac-sha256'), secret)) {
     return NextResponse.json({ error: 'Invalid webhook signature.' }, { status: 401 });
   }
-  const shop = (process.env.SHOPIFY_STORE_DOMAIN ?? '').replace(/^https?:\/\//, '').replace(/\/$/, '').toLowerCase();
-  if (!shop || request.headers.get('x-shopify-shop-domain')?.toLowerCase() !== shop) {
+  const incomingShop = canonicalWebhookShopDomain(request.headers.get('x-shopify-shop-domain'));
+  if (!incomingShop) {
     return NextResponse.json({ error: 'Unexpected shop.' }, { status: 403 });
   }
   if (!['products/create', 'products/update'].includes(request.headers.get('x-shopify-topic') ?? '')) {
     return NextResponse.json({ error: 'Unexpected webhook topic.' }, { status: 400 });
   }
-  if (process.env.VERCEL_ENV !== 'production') return NextResponse.json({ status: 'preview_disabled' });
+  if (process.env.VERCEL_ENV !== 'production') {
+    const configured = (process.env.SHOPIFY_STORE_DOMAIN ?? '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+    if (incomingShop !== canonicalWebhookShopDomain(configured)) return NextResponse.json({ error: 'Unexpected shop.' }, { status: 403 });
+    return NextResponse.json({ status: 'preview_disabled' });
+  }
   let id: string;
   try {
     const data = JSON.parse(new TextDecoder().decode(raw));
     id = data.admin_graphql_api_id ?? (Number.isSafeInteger(data.id) ? `gid://shopify/Product/${data.id}` : '');
     if (!/^gid:\/\/shopify\/Product\/\d+$/.test(id)) throw new Error('identity');
   } catch { return NextResponse.json({ error: 'Invalid product identity.' }, { status: 400 }); }
+  let expectedShop: string;
+  try { expectedShop = await expectedWebhookShopDomain(); } catch {
+    return NextResponse.json({ error: 'Webhook shop validation unavailable.' }, { status: 503 });
+  }
+  if (incomingShop !== expectedShop) return NextResponse.json({ error: 'Unexpected shop.' }, { status: 403 });
   try {
     const result = await notifyShopifyProductChange(id);
     return NextResponse.json(result, { status: result.status === 'busy' ? 503 : 200 });

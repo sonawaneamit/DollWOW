@@ -1,11 +1,17 @@
 import { createHmac } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('@/lib/shopify/indexNowNotification', () => ({ notifyShopifyProductChange: vi.fn() }));
+vi.mock('@/lib/shopify/webhookShop', async importOriginal => ({
+  ...(await importOriginal<typeof import('@/lib/shopify/webhookShop')>()),
+  expectedWebhookShopDomain: vi.fn()
+}));
+import { expectedWebhookShopDomain } from '@/lib/shopify/webhookShop';
 import { notifyShopifyProductChange } from '@/lib/shopify/indexNowNotification';
 import { POST } from '@/app/api/webhooks/shopify/products/route';
 
 const secret = 'test-only-secret', productId = 'gid://shopify/Product/1';
 const notify = vi.mocked(notifyShopifyProductChange);
+const expectedShop = vi.mocked(expectedWebhookShopDomain);
 function request(body = JSON.stringify({ admin_graphql_api_id: productId }), headers: Record<string, string> = {}) {
   return new Request('https://dollwow.com/api/webhooks/shopify/products', { method: 'POST', body,
     headers: { 'x-shopify-hmac-sha256': createHmac('sha256', secret).update(body).digest('base64'),
@@ -15,6 +21,7 @@ beforeEach(() => {
   vi.stubEnv('SHOPIFY_CLIENT_SECRET', secret); vi.stubEnv('SHOPIFY_WEBHOOK_SECRET', '');
   vi.stubEnv('SHOPIFY_STORE_DOMAIN', 'sample.myshopify.com'); vi.stubEnv('VERCEL_ENV', 'production');
   notify.mockReset().mockResolvedValue({ status: 'unchanged' });
+  expectedShop.mockReset().mockResolvedValue('sample.myshopify.com');
 });
 afterEach(() => { vi.unstubAllEnvs(); vi.restoreAllMocks(); });
 describe('authenticated product-only webhook', () => {
@@ -29,6 +36,7 @@ describe('authenticated product-only webhook', () => {
   it.each(['{"id":9007199254740992}', '{"admin_graphql_api_id":"gid://shopify/Order/1"}', 'null', 'invalid'])('rejects invalid identities without reading Shopify: %s', async body => {
     expect((await POST(request(body))).status).toBe(400);
     expect(notify).not.toHaveBeenCalled();
+    expect(expectedShop).not.toHaveBeenCalled();
   });
   it.each([
     [{ 'x-shopify-hmac-sha256': 'invalid' }, 401],
@@ -47,6 +55,29 @@ describe('authenticated product-only webhook', () => {
     vi.stubEnv('VERCEL_ENV', 'preview');
     const result = await POST(request());
     expect(await result.json()).toEqual({ status: 'preview_disabled' });
+    expect(notify).not.toHaveBeenCalled();
+    expect(expectedShop).not.toHaveBeenCalled();
+  });
+  it('uses the authenticated canonical shop rather than an API alias', async () => {
+    vi.stubEnv('SHOPIFY_STORE_DOMAIN', 'api-alias.myshopify.com');
+    expectedShop.mockResolvedValue('permanent-shop.myshopify.com');
+    expect((await POST(request(undefined, { 'x-shopify-shop-domain': 'permanent-shop.myshopify.com' }))).status).toBe(200);
+    expect(notify).toHaveBeenCalledWith(productId);
+  });
+  it('does not keep accepting the API alias when the canonical shop differs', async () => {
+    expectedShop.mockResolvedValue('permanent-shop.myshopify.com');
+    expect((await POST(request())).status).toBe(403);
+    expect(notify).not.toHaveBeenCalled();
+  });
+  it('does not resolve shop identity before HMAC verification', async () => {
+    expect((await POST(request(undefined, { 'x-shopify-hmac-sha256': 'invalid' }))).status).toBe(401);
+    expect(expectedShop).not.toHaveBeenCalled();
+  });
+  it('fails retryably without exposing canonical identity lookup errors', async () => {
+    expectedShop.mockRejectedValue(new Error('private credential detail'));
+    const response = await POST(request());
+    expect(response.status).toBe(503);
+    expect(await response.text()).not.toContain('private credential');
     expect(notify).not.toHaveBeenCalled();
   });
   it('rejects oversized declared or streamed bodies', async () => {
