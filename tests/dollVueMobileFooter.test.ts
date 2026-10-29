@@ -24,6 +24,28 @@ async function decodeQR(imageBytes: Buffer): Promise<string | null> {
   return result?.data ?? null;
 }
 
+async function measureQRBbox(imageBytes: Buffer): Promise<{ width: number; height: number } | null> {
+  const { data, info } = await sharp(imageBytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const result = jsQR(new Uint8ClampedArray(data), info.width, info.height);
+  if (!result || !result.location) return null;
+  
+  // jsQR returns corner points; calculate bounding box
+  const topLeft = result.location.topLeftCorner;
+  const topRight = result.location.topRightCorner;
+  const bottomLeft = result.location.bottomLeftCorner;
+  const bottomRight = result.location.bottomRightCorner;
+  
+  const minX = Math.min(topLeft.x, topRight.x, bottomLeft.x, bottomRight.x);
+  const maxX = Math.max(topLeft.x, topRight.x, bottomLeft.x, bottomRight.x);
+  const minY = Math.min(topLeft.y, topRight.y, bottomLeft.y, bottomRight.y);
+  const maxY = Math.max(topLeft.y, topRight.y, bottomLeft.y, bottomRight.y);
+  
+  return {
+    width: maxX - minX,
+    height: maxY - minY
+  };
+}
+
 describe('Mobile-readable footer layout', () => {
   it.each([
     [1067, 1600, 'portrait (typical doll photo)'],
@@ -45,12 +67,23 @@ describe('Mobile-readable footer layout', () => {
     expect(brandedMeta.width).toBe(width);
     expect(brandedMeta.height).toBeGreaterThan(height);
     
-    // CRITICAL: QR must be >= 22% of image width (Martin's requirement)
-    // We verify this by checking that the implementation produces a QR at the right size
-    // The actual QR size is max(26% of width, min(240px, 22% of width))
-    const expectedMinQrSize = width * 0.22;
-    const expectedQrSize = Math.max(Math.round(width * 0.26), Math.min(240, Math.round(expectedMinQrSize)));
-    expect(expectedQrSize).toBeGreaterThanOrEqual(expectedMinQrSize - 1); // -1 for rounding tolerance
+    // CRITICAL: Measure actual QR module bounding box (not the PNG with margins)
+    const qrBbox = await measureQRBbox(branded);
+    expect(qrBbox).not.toBeNull();
+    
+    // QR modules must be >= 22% of image width (Martin's requirement)
+    const minQrWidth = width * 0.22;
+    const qrModulesWidth = qrBbox!.width;
+    const qrPercent = (qrModulesWidth / width) * 100;
+    
+    console.log(`QR bbox for ${width}x${height}: ${qrModulesWidth}px (${qrPercent.toFixed(1)}% of ${width}px)`);
+    
+    expect(qrModulesWidth).toBeGreaterThanOrEqual(minQrWidth);
+    
+    // At 1067px, also check >= 240px
+    if (width === 1067) {
+      expect(qrModulesWidth).toBeGreaterThanOrEqual(240);
+    }
     
     // Verify QR decodes at full resolution
     const qrUrl = await decodeQR(branded);

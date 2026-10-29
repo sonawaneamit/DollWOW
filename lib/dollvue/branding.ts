@@ -32,27 +32,32 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
   const padding = Math.max(24, Math.round(width * 0.024)); // 2.4% padding
   const columnGap = Math.max(20, Math.round(width * 0.02)); // 2% gap between columns
   
-  // QR: 26% of image width, minimum 150px for reliable long-URL decoding
-  // At narrow widths (400px), this gives 150px QR (37.5% of width)
-  // At typical widths (1067px), this gives 277px QR (26% of width)
-  const qrSize = Math.max(150, Math.round(width * 0.26));
+  // Target QR MODULE width (black squares): 24-26% of image width, min 240px at 1067px
+  // The qrcode library adds quiet zone, so we need to account for that
+  // QR quiet zone should be ~4 modules, so if modules are W wide, total is W + 8*moduleSize
+  const targetQrModulesWidth = Math.max(240, Math.round(width * 0.25)); // 25% target
   
-  // Right column: QR + caption
-  const rightColumnWidth = qrSize + padding * 2;
+  // Generate larger QR to ensure we get enough module density
+  // We'll measure and validate the actual QR bbox in tests
+  const qrRenderSize = Math.round(targetQrModulesWidth * 1.35); // Add space for margins
   
-  // Left column: logo + text lines
+  // Right column: QR + caption with proper spacing
+  const rightColumnWidth = qrRenderSize + padding * 2;
+  
+  // Left column: logo + text lines (can wrap more if needed)
   const leftColumnWidth = width - rightColumnWidth - columnGap;
   
   // Text sizing for mobile legibility: at 390px mobile width, text should be ~14px
   const mobileScale = 390 / width;
-  const titleSize = Math.max(40, Math.round(width * 0.038)); // ~40-60px
-  const bodySize = Math.max(28, Math.round(width * 0.028)); // ~28-45px  
-  const captionSize = Math.max(24, Math.round(width * 0.024)); // ~24-38px
-  const disclaimerSize = Math.max(20, Math.round(width * 0.020)); // ~20-32px
+  const titleSize = Math.max(36, Math.round(width * 0.034)); // Slightly smaller to fit
+  const bodySize = Math.max(26, Math.round(width * 0.026)); // Slightly smaller
+  const captionSize = Math.max(22, Math.round(width * 0.022)); // ~22-35px
+  const disclaimerSize = Math.max(18, Math.round(width * 0.018)); // ~18-29px
   
-  // Vertical spacing
-  const lineSpacing = Math.round(bodySize * 0.4);
-  const sectionSpacing = Math.round(bodySize * 0.8);
+  // Vertical spacing: at least 2% of height between elements
+  const verticalGap = Math.max(Math.round(height * 0.02), Math.round(bodySize * 0.5));
+  const lineSpacing = Math.round(bodySize * 0.3);
+  const sectionSpacing = verticalGap;
   
   // Load and resize logo to fit left column
   const logoBytes = await readFile(path.join(process.cwd(), 'public/images/brand/dollwow-black-gold-lockup.png'));
@@ -84,35 +89,45 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
     if (currentLine) selectionLines.push(currentLine);
   }
   
-  // Calculate footer height
-  let yPos = padding + logoHeight;
-  yPos += sectionSpacing + titleSize; // "Created with DollVue"
-  yPos += lineSpacing + bodySize; // "Powered by DollWOW.com"
-  if (selectionLines.length > 0) {
-    yPos += lineSpacing + bodySize * selectionLines.length;
-  }
-  yPos += sectionSpacing + disclaimerSize; // AI disclaimer
-  yPos += padding;
-  
-  // Ensure footer is tall enough for QR + caption
-  const qrColumnHeight = padding + qrSize + lineSpacing + captionSize + padding;
-  const footerHeight = Math.max(yPos, qrColumnHeight);
-  
-  // Generate QR code
+  // Generate QR code with minimal margin (4 modules quiet zone per spec)
   const qr = await QRCode.toBuffer(destination, {
     type: 'png',
-    width: qrSize,
-    margin: Math.max(4, Math.round(qrSize * 0.1)),
+    width: qrRenderSize,
+    margin: 4, // 4 modules quiet zone (QR code spec minimum)
     errorCorrectionLevel: 'H',
     color: { dark: '#101818', light: '#ffffff' },
   });
+  
+  // Measure actual QR size for positioning
+  const qrMeta = await sharp(qr).metadata();
+  const qrActualWidth = qrMeta.width ?? qrRenderSize;
+  const qrActualHeight = qrMeta.height ?? qrRenderSize;
+  
+  // Calculate footer height
+  let yPos = padding + logoHeight;
+  yPos += verticalGap; // Gap after logo
+  yPos += titleSize; // "Created with DollVue"
+  yPos += verticalGap; // Gap after title
+  yPos += bodySize; // "Powered by DollWOW.com"
+  if (selectionLines.length > 0) {
+    yPos += lineSpacing;
+    yPos += bodySize * selectionLines.length + lineSpacing * (selectionLines.length - 1);
+  }
+  yPos += sectionSpacing; // Gap before disclaimer
+  yPos += disclaimerSize; // AI disclaimer
+  yPos += padding;
+  
+  // Ensure footer is tall enough for QR + caption with proper spacing
+  const qrCaptionGap = Math.max(12, Math.round(height * 0.01)); // Small gap under QR
+  const qrColumnHeight = padding + qrActualHeight + qrCaptionGap + captionSize + padding;
+  const footerHeight = Math.max(yPos, qrColumnHeight);
   
   // Build footer SVG with two-column layout
   yPos = padding + logoHeight;
   const textLines: string[] = [];
   
-  // Left column text
-  yPos += sectionSpacing;
+  // Left column text with proper vertical gaps
+  yPos += verticalGap;
   textLines.push(outlinedText('Created with DollVue', {
     x: padding,
     y: yPos,
@@ -120,21 +135,21 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
     fill: '#17251f'
   }).svg);
   
-  yPos += lineSpacing + titleSize;
+  yPos += verticalGap;
   textLines.push(outlinedText('Powered by DollWOW.com', {
     x: padding,
-    y: yPos,
+    y: yPos + titleSize,
     size: bodySize,
     fill: '#17251f'
   }).svg);
   
   // Selection lines
   if (selectionLines.length > 0) {
-    yPos += lineSpacing + bodySize;
+    yPos += titleSize + lineSpacing;
     for (const line of selectionLines) {
       textLines.push(outlinedText(line, {
         x: padding,
-        y: yPos,
+        y: yPos + bodySize,
         size: bodySize,
         fill: '#465b54'
       }).svg);
@@ -145,14 +160,14 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
   // Disclaimer at bottom of left column
   textLines.push(outlinedText('AI preview - not the finished product', {
     x: padding,
-    y: footerHeight - padding - disclaimerSize,
+    y: footerHeight - padding,
     size: disclaimerSize,
     fill: '#6b7b74'
   }).svg);
   
-  // Right column: QR caption centered below QR
-  const qrCenterX = width - padding - qrSize / 2;
-  const qrCaptionY = padding + qrSize + lineSpacing + captionSize;
+  // Right column: QR caption centered directly below QR with small gap
+  const qrCenterX = width - padding - qrActualWidth / 2;
+  const qrCaptionY = padding + qrActualHeight + qrCaptionGap + captionSize;
   textLines.push(outlinedText('Scan to view this doll', {
     x: qrCenterX,
     y: qrCaptionY,
@@ -169,7 +184,7 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
   
   const footer = await sharp(footerSvg).composite([
     { input: logo, left: padding, top: padding },
-    { input: qr, left: width - padding - qrSize, top: padding },
+    { input: qr, left: width - padding - qrActualWidth, top: padding },
   ]).png().toBuffer();
   
   const canvas = await sharp({
