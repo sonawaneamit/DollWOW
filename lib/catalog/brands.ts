@@ -13,9 +13,9 @@ const allCatalogBrands = brandData satisfies CatalogBrand[];
 // (brand directory, filters, hubs, sitemap, authorizations, /promo).
 // Preview-only brands render on Vercel preview deployments (for review) and stay hidden in production.
 // MD Doll launched 2026-10-14. Add a brand value here to stage the next one.
-const previewOnlyCatalogBrandValues: string[] = [];
+const previewOnlyCatalogBrandValues: string[] = ['firefly'];
 const isPreviewDeployment = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
-const hiddenCatalogBrandValues = new Set(["zelex", ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
+const hiddenCatalogBrandValues = new Set(["zelex", ...(isPreviewDeployment && process.env.NEXT_PUBLIC_DOL262_PREVIEW === '1' ? [] : previewOnlyCatalogBrandValues)]);
 
 export const catalogBrands = allCatalogBrands.filter((brand) => !hiddenCatalogBrandValues.has(brand.value));
 

@@ -473,5 +473,12 @@
       "funwestdoll",
       "fun west"
     ]
+  },
+  {
+    "value": "firefly",
+    "label": "Firefly Doll",
+    "collectionHandle": "firefly-dolls",
+    "tags": ["firefly", "firefly-diary", "firefly-diary-dolls"],
+    "aliases": ["firefly", "firefly doll", "fireflydoll", "firefly diary", "firefly diary dolls"]
   }
 ]
