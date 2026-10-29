@@ -53,9 +53,12 @@ No fabricated author, hands-on review, release date or Product/Offer schema.
 - Actual Brave1319/390: no document overflow,12rows; disclosures open/close;
   keyboard horizontal table scrolling reaches38px. Infographic decodes864px
   natural width. Normal privacy Decline; no protection settings altered.
-- Hosted raw sourceHTML:200,noindex/nofollow, one main,12rows,five source links,
+- Local raw sourceHTML:200,noindex/nofollow, one main,12rows,five source links,
   two product links,direct answer present, exact visible/schema FAQ parity,
-  no Product/Offer schema. IAB mobile screenshot scaling was unsuitable, so full
+  no Product/Offer schema. Hosted browser DOM matches12rows/noindex; a separate
+  raw hosted request returned200 but no article/robots/rows and FAILED the source
+  check. Do not count that response as hosted raw-HTML proof or bypass protection.
+  IAB mobile screenshot scaling was unsuitable, so full
   browser screenshots are the visual evidence.
 
 ## Approval
