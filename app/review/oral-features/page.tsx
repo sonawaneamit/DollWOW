@@ -7,7 +7,7 @@ import { getProductByHandle } from "@/lib/shopify/storefront";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { includedBuildItems } from "@/lib/customization/chiku-preview";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
-import { oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
+import { oralGuideExampleMatches, oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +22,7 @@ export default async function OralFeaturesReview() {
   const examples = [];
   for (const example of oralGuideExamples) {
     const product = await getProductByHandle(example.handle, { cache: "no-store", strict: true });
-    if (!product || product.id !== example.id || !product.featuredImage) continue;
+    if (!product || !oralGuideExampleMatches(product, example) || !product.featuredImage) continue;
     const image = protectedProductImageUrlFor(product, product.featuredImage, "card");
     if (!image) continue;
     const config = getCustomizationConfig(product);
@@ -50,6 +50,7 @@ export default async function OralFeaturesReview() {
           <tbody>
             <tr><th scope="row">ROS / realistic oral structure</th><td>A shaped mouth and oral channel. Jaw, teeth and tongue details vary by head.</td><td>Automatic suction or powered head movement.</td></tr>
             <tr><th scope="row">Oral suction</th><td>A powered suction feature in a compatible head.</td><td>A head or neck that moves by itself.</td></tr>
+            <tr><th scope="row">Powered tongue / auto licking</th><td>A motor moves or vibrates the tongue on a head fitted with that option.</td><td>Powered neck movement, or a feature included with every realistic tongue.</td></tr>
             <tr><th scope="row">Auto blowjob / powered neck movement</th><td>A motor moves the head through the neck mechanism.</td><td>Compatibility with every body, head or other motorized option.</td></tr>
             <tr><th scope="row">Oral heating</th><td>Warms the mouth on a compatible head.</td><td>Movement, suction or a moving tongue.</td></tr>
           </tbody></table>
@@ -68,11 +69,21 @@ export default async function OralFeaturesReview() {
         <p>The neck-movement guide names 148E, 150E, 158E, 163E and 168F TPE/STPE bodies. That guide says neck movement cannot be combined with waist-spin, and both exclude heating. These restrictions are not a blanket rule for the separate ROS-head suction system.</p>
         <a href={oralGuideSources[2].href}>SE movement and compatibility guide <ArrowRight size={16} /></a>
       </div></div>
+      <div className={styles.brandRow}><h3>Top Fire</h3><div>
+        <p>For mouth features together, Top Fire lists a three-in-one package: tongue movement, oral suction and oral heating. Its Auto Blowjob robot choices are listed separately, with plug-in and rechargeable versions.</p>
+        <p>Choose by the movement you want, not by the word &ldquo;robot.&rdquo; The mouth package is not the same purchase as powered head movement, and a custom doll does not include either simply because they appear in the options.</p>
+        <a href={oralGuideSources[4].href}>Compare Wendy&apos;s build options <ArrowRight size={16} /></a>
+      </div></div>
+      <div className={styles.brandRow}><h3>Angelkiss</h3><div>
+        <p>Angelkiss offers oral suction and heating on selected ROS silicone heads. Its manufacturer announcement names S198, S266, S273, LS59 and LS60. A hard or standard head is not interchangeable with that feature choice.</p>
+        <p>This route suits buyers who want mouth functions rather than powered neck movement. Choose the exact compatible head first; do not assume a feature shown on one face comes with every Angelkiss doll.</p>
+        <a href={oralGuideSources[5].href}>Angelkiss ROS-head details <ArrowRight size={16} /></a>
+      </div></div>
     </section>
 
     <section id="dolls" className={styles.section}>
       <h2>Explore the head features on real dolls</h2>
-      <p>Base doll prices and separately listed add-ons are shown below. Select your complete build on the product page; shipping, taxes and any discounts are calculated separately.</p>
+      <p>Base doll prices and separately listed add-ons are shown below. These are alternatives, not a bundle to add together. Select your complete build on the product page; shipping, taxes and any discounts are calculated separately.</p>
       <p>Prices checked {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })} (UTC).</p>
       <div className={styles.products}>{examples.map(({ example, product, image, prices }) => <article key={example.id} className={styles.product}>
         <a className={styles.photo} href={`https://dollwow.com/products/${example.handle}`} aria-label={`Explore ${example.name}`}>

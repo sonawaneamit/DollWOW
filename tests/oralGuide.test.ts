@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { sampleProducts } from "@/lib/data/sample-products";
-import { oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
+import { oralGuideExampleMatches, oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
 import type { BrandCustomizationConfig, CustomizationOption } from "@/types/customization";
+import { canonicalBrandValue } from "@/lib/catalog/brands";
 
 const example = oralGuideExamples[0];
-const product = { ...sampleProducts[0], id: example.id, handle: example.handle };
+const product = { ...sampleProducts[0], id: example.id, handle: example.handle, tags: [], extended: { ...sampleProducts[0].extended, brand: "Irontech Dolls", stockStatus: "custom" as const } };
 function config(patch: Partial<CustomizationOption> = {}): BrandCustomizationConfig {
   return { id: "test", brandLabel: "Irontech", leadTimeNote: "", rules: [], groups: [{
     id: "premium-head-body-options", label: "Premium", selectionMode: "multiple", display: "cards",
@@ -47,10 +48,25 @@ describe("fresh oral guide catalog examples", () => {
     expect(chiku.description).toContain("not removable");
   });
   it("keeps primary source links and no unsupported universal or warehouse promise", () => {
-    expect(oralGuideSources).toHaveLength(4);
+    expect(oralGuideSources).toHaveLength(7);
     expect(oralGuideSources.every(source => new URL(source.href).protocol === "https:")).toBe(true);
     expect(oralGuideQuestions.map(item => item.answer).join(" ")).toContain("Not necessarily");
     expect(new Set(oralGuideExamples.map(item => item.id)).size).toBe(oralGuideExamples.length);
+  });
+  it("never infers installed warehouse equipment from a general add-on menu", () => {
+    expect(oralGuideOptionPrice({ ...product, extended: { ...product.extended, stockStatus: "ready_to_ship" } }, config(), example, "premium-head-body-options", "oral-auto-sucking")).toBeNull();
+    for (const tag of ["ready_to_ship", "in-stock", "warehouse-united-states"]) {
+      expect(oralGuideOptionPrice({ ...product, tags: [tag] }, config(), example, "premium-head-body-options", "oral-auto-sucking")).toBeNull();
+    }
+  });
+  it("fails closed on held records and brand drift without conflating YL with Yeloly", () => {
+    expect(canonicalBrandValue("YL")).toBe("yl");
+    expect(canonicalBrandValue("Yeloly")).not.toBe("yl");
+    for (const tag of ["catalog-review-hold", "source-hold", "safety:hold", "content-hold", "dollwow-test"]) {
+      expect(oralGuideExampleMatches({ ...product, tags: [tag] }, example)).toBe(false);
+    }
+    expect(oralGuideExampleMatches({ ...product, extended: { ...product.extended, brand: "YL" } }, example)).toBe(false);
+    expect(oralGuideExampleMatches({ ...product, extended: { ...product.extended, brand: "Yeloly" } }, example)).toBe(false);
   });
   it("keeps the working route private, noindex, live-card linked and separate from the rejected route", () => {
     const page = readFileSync("app/review/oral-features/page.tsx", "utf8");

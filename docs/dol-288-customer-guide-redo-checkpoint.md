@@ -15,6 +15,68 @@ below are complete.
 - Requires `DOL288_GUIDE_REDO=1`; explicitly rejects production even with flag.
 - No production setting, publication, Shopify write, cart, order or email.
 
+## Latest Expansion: 29 October 23:38 UTC
+
+Still In Progress, not a finished all-brand guide or a hosted acceptance preview.
+Continue this same branch; do not restart, resample the same48 products or patch
+PR213. Current local content has FOUR brand sections, FIVE useful mechanism rows,
+and FOUR real live-linked photo cards.
+
+- Added Top Fire and Angelkiss sections. Angelkiss's manufacturer-authored public
+  TDF post explicitly names ROS S198/S266/S273/LS59/LS60 and oral heat/suction.
+  Attachment access says permission required: only the visible post text was used;
+  no attachment request, login, contact or bypass. No battery/runtime claim.
+- Added exact current custom Wendy170H: base2063, oral suction99, three-in-one189,
+  plug-in Auto Blowjob309 OR rechargeable389. The two robot prices and mouth
+  bundle are alternatives, not a cumulative total or standard fitted equipment.
+  Current public menu/source is the authority for these itemized prices, not a
+  foreign-retailer quote or inaccessible TDF demo. No warehouse promise.
+- Added powered tongue as a distinct table row, and clarified that three-in-one
+  can mean three openings rather than three motors. Yeloly's current homepage
+  describes Violet's three openings. Its large product page could not be fetched;
+  no claim to have read it. No old3-in-1 powered package was inferred from that.
+- One NEW bounded read sampled six current public products for each of eight
+  exact registered brands: WM/SY/MD/Jarliet/Angelkiss/YL/TopFire/SE.48records are
+  retained privately in `brand-samples-private.json`, not an exhaustive census.
+  No reads are stock installation receipts and no record was changed.
+- Important rejected evidence: registered YL is NOT Yeloly. WM's five warehouse
+  examples inherit general250 robot menus; this is not proof of installed stock.
+  MD's first six samples are warehouse torsos, not proof custom options are absent.
+  SY's observed60/120 raw oral deltas lack `priceVerified`, so no price card is
+  granted. SE's generic robot menu on newer Elves does not override the primary
+  approved-body list. Jarliet generic165D/168 menus do not resolve the exact
+  construction/fit question against historical model lists.
+- New guide-only guards require exact canonical brand as well as ID+handle, reject
+  review/source/safety/content holds/test records, and never quote factory add-ons
+  as installed warehouse equipment. No shared catalog/cart behavior was changed.
+-22focused unit/Chiku assertions pass; both live read suites skipped normally.
+  Separate bounded48source read passed once. TSC/scoped lint pass. Configured
+  build/two4950asset gates pass; no remoteNode22 or CI claim yet.
+- Actual LOCAL1319/390/320 checks: four decoded original photos including Wendy,
+  four exact live product links/prices, no document/card overflow and noindex.
+  Wendy narrow-screen prices were visually reviewed; long labels wrap and all
+  prices remain visible. Five table rows/four brand sections present. Proof:
+  `expanded-local-browser-proof.json` and `expanded-local-mobile320.png`.
+  Viewport reset/dev server stopped. No hosted preview or all-brand acceptance.
+- Official MD homepage unavailable; its separate TDF announcement403. TopFire
+  official demo inaccessible and direct Bid product timed out. No unchanged
+  retry or bypass. WM's actual factory domain links to wmdollshop; its ROS text
+  confirms manual structure only, not universal powered-head features. The
+  self-labelled `wmdoll.org` search result was not treated as factory authority.
+  No stale supplier prices, anecdotes or claimed no-feature universals adopted.
+- Linear shared-notes endpoint advertised by tool metadata returned tool-not-found;
+  current repository/Linear/source evidence remained controlling. No retry loop.
+- Private305report23:25:45.131Z: two rows match bounded cells by independent dual
+  row fingerprints/length, approved permissions unchanged, correct limited folder,
+  effective date/top/wrap verified, no formulas/failed/pending; no Sheet write/PII.
+
+Next: use the retained48source snapshot. Target custom/non-warehouse WM and MD
+records when needed, exact head/body source evidence for SY/Jarliet, and remaining
+primary TopCY/Yeloly/Firefly scope without inventing a matching live DollWOW SKU.
+Do not import or promote private brands. Finish suitable approved media, FAQ/schema,
+source HTML and a NEW exact flagged hosted preview only when actual coverage is
+ready. No fourth active ticket or new approval question is needed for this work.
+
 ## Authority And Competitor Work
 
 Read Dolly's 29 October22:38 queue2 brief `ebbf28b1` and Martin's rejection
@@ -44,7 +106,7 @@ but its output was not recovered in the tool response; no GSC metrics are adopte
 or claimed. Full DataForSEO / AI / GEO coverage is still missing. The newer brief
 permits this private redo to proceed without falsely calling SEO research done.
 
-## Implemented So Far
+## First Foundation
 
 - Fresh four-row mechanism table, with useful content in every cell: ROS/manual,
   oral suction, powered neck movement, heating.
@@ -64,7 +126,7 @@ permits this private redo to proceed without falsely calling SEO research done.
   oral suction. Current included fixed-teeth/tongue fact is required to show it.
 - Four short FAQ disclosures. No current-stock or universal feature-fit promise.
 
-## Verification
+## First Foundation Verification
 
 Private artifacts: `data/exports/dol-288-redo-2026-10-29/`.
 
