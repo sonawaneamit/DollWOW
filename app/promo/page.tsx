@@ -18,13 +18,16 @@ import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandi
 import './compact-promo.css';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenActive, isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
+import { LusandyNovemberIndexCard } from '@/components/promotions/LusandyNovemberPromotion';
+import { isLusandyNovemberActive, lusandyNovemberPreviewEnabled, LUSANDY_NOVEMBER_OFFER } from '@/lib/promotions/lusandyNovember2026';
+import { previewPromotionClock } from '@/lib/promotions/optionPricing';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
 export const revalidate = 60;
 
-function promoCopy() {
-const halloween = isHalloweenVisible();
+function promoCopy(now = Date.now()) {
+const halloween = isHalloweenVisible(process.env, now);
 const title = halloween ? "Halloween Sex Doll Sale: $299 Off Full-Size Dolls" : "Active Sex Doll Brand Promotions & Bonuses";
 const description = halloween ? "Save $299 USD on eligible full-size ready-to-ship and custom-made dolls with HALLOWEEN299. Ends 8 November 2026. Eligible factory bonuses stay included." : "See current sex doll brand promotions, exact dates, eligible custom orders, and factory-confirmed bonus upgrades at DollWOW.";
 return { halloween, title, description };
@@ -35,6 +38,7 @@ export function generateMetadata(): Metadata {
   return {
   title,
   description,
+  ...(lusandyNovemberPreviewEnabled() ? { robots: { index: false, follow: false } } : {}),
   alternates: { canonical: "/promo" },
   openGraph: {
     title: `${title} | DollWOW`,
@@ -45,10 +49,13 @@ export function generateMetadata(): Metadata {
 };
 }
 
-export default function PromoIndexPage() {
-  const { halloween, title, description } = promoCopy();
+export default async function PromoIndexPage({ searchParams }: { searchParams: Promise<{ promoClock?: string | string[] }> }) {
+  const requestedClock = (await searchParams).promoClock;
+  const frozenClock = lusandyNovemberPreviewEnabled() ? previewPromotionClock(requestedClock) : undefined;
+  const promoClock = frozenClock ?? new Date().toISOString();
+  const { halloween, title, description } = promoCopy(Date.parse(promoClock));
   const preview = isHalloweenPreview();
-  const promoClock = new Date().toISOString();
+  const hasLusandyNovemberPromotion = isLusandyNovemberActive(new Date(promoClock));
   const hasJinsanPromotion = isJinsanOctoberActive(new Date(promoClock));
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
   const hasMdPromotion = !isHiddenCatalogBrand("md") && isMdOctoberActive(new Date(promoClock));
@@ -57,6 +64,7 @@ export default function PromoIndexPage() {
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
   const itemList = [
     ...(hasSeHalloween ? [{ name: 'SE Doll Halloween offers', url: `${siteUrl}/promo#se-halloween-2026` }] : []),
+    ...(hasLusandyNovemberPromotion ? [{name: 'Lusandy November factory promotion', url: `${siteUrl}/promo#${LUSANDY_NOVEMBER_OFFER.id}`}] : []),
     ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
     ...(hasIdoPromotion ? [{ name: `${IDO_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${IDO_OCTOBER_OFFER.id}` }] : []),
     ...(hasMdPromotion ? [{ name: `${MD_OCTOBER_OFFER.brand} October factory promotion`, url: `${siteUrl}/promo#${MD_OCTOBER_OFFER.id}` }] : []),
@@ -101,9 +109,10 @@ export default function PromoIndexPage() {
           </div>
           <Link href="/brands" className="text-sm font-semibold text-accent underline-offset-4 hover:underline">Browse all brands</Link>
         </div>
-        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion || hasMdPromotion ? (
+        {hasSeDollPromotion || hasIrontechPromotion || hasJinsanPromotion || hasIdoPromotion || hasMdPromotion || hasLusandyNovemberPromotion ? (
           <div className="grid gap-8">
-            {hasJinsanPromotion ? <JinsanOctoberIndexCards promoClock={promoClock} /> : null}
+            <LusandyNovemberIndexCard promoClock={promoClock} freezeClock={Boolean(frozenClock)} />
+            {hasJinsanPromotion ? <JinsanOctoberIndexCards promoClock={promoClock} freezeClock={Boolean(frozenClock)} /> : null}
             {hasIdoPromotion ? <IdoOctoberIndexCard promoClock={promoClock} /> : null}
             {hasMdPromotion ? <MdOctoberIndexCard promoClock={promoClock} /> : null}
             {hasIrontechPromotion ? <IrontechAutumnPromoIndexCard /> : null}

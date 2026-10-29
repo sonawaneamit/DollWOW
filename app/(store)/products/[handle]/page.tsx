@@ -49,6 +49,8 @@ import { SeDollPdpFreebieBlock } from "@/components/promotions/SeDollSeptemberPr
 import { IrontechAutumnPdpPromotion } from "@/components/promotions/IrontechAutumnPromotion";
 import { FanrealSeptemberPdpPromotion } from "@/components/promotions/FanrealSeptemberPromotion";
 import { JinsanOctoberPdpPromotion } from "@/components/promotions/JinsanOctoberPromotion";
+import { LusandyNovemberPdpPromotion } from '@/components/promotions/LusandyNovemberPromotion';
+import { lusandyNovemberPreviewEnabled } from '@/lib/promotions/lusandyNovember2026';
 import { IdoOctoberPdpPromotion } from "@/components/promotions/IdoOctoberPromotion";
 import { MdOctoberPdpPromotion } from "@/components/promotions/MdOctoberPromotion";
 import { previewPromotionClock } from "@/lib/promotions/optionPricing";
@@ -67,7 +69,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
-  if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  if (lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -77,6 +79,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { handle } = await params;
   const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
   const promoClock = previewPromotionClock(requestedPromoClock);
+  const promotionPreview = lusandyNovemberPreviewEnabled();
   const [storefrontProduct, adminProductData] = await Promise.all([
     getProductByHandle(handle, dealerPreviewProductFetch(handle)),
     getProductAdminMetafieldsByHandle(handle)
@@ -128,7 +131,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   return (
     <div>
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
-      {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />}
+      {!isElf && !promotionPreview ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} /> : null}
       {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -176,7 +179,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             <SeDollPdpFreebieBlock product={publicProduct} />
             <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />
-            <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
+            <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} />
+            <LusandyNovemberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} />
             <IdoOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
             <MdOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
           </div>
@@ -213,7 +217,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && (
+            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !promotionPreview && (
               <ProductBuyActions
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
@@ -274,7 +278,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
@@ -296,7 +300,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           </div>
         </ToneBand>
       ) : null}
-      {!isElf && <PdpTrackers product={publicProduct} />}
+      {!isElf && !promotionPreview ? <PdpTrackers product={publicProduct} /> : null}
     </div>
   );
 }
