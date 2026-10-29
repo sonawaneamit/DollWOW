@@ -1,5 +1,42 @@
 # DOL-314: Catalog Included Features
 
+## Newer Eye-Thumbnail Instruction
+
+Fresh Linear on 29 October22:47 revealed Martin's22:29 instruction, posted on
+DOL-313 as `c6a21eb8-8a4d-459a-8366-4a0f8e085360`: show the four real numbered
+eye crops and their different shapes, private preview first. The same approach
+applies to other brands only when their actual option images are available.
+This new work is being tracked here without reopening externally Done DOL-313.
+It takes priority over the remaining overnight queue. The earlier hosted
+included-feature milestone below remains valid but does not contain these new
+thumbnails. No new live release is approved.
+
+The four original PNGs were materialized from the exact supplied Drive IDs,
+size/SHA checked and visually reviewed against the original four-eye sheet.
+No image editing or generation. Four owned manifest entries were added.
+Only private Chiku preview choices acquire these images; production text/eye
+choices and all other products remain unchanged. The thumbnail layout contains
+the entire eye pair rather than cropping it to a square. All four stay free;
+purple#2 remains first/default, Blue#1/Amber#3/Green#4 identities retained.
+
+Current local proof: twelve actual eye clicks across1319/390/320 widths, each
+resolves1999 with all four images decoded. Final bounded-layout recheck shows
+158x102px contained images at all widths, no document/total overflow, disabled
+checkout. Tests compare original PNG digests and unchanged checkout menu
+signatures/paid heating+suction2164. Final build/hosted thumbnail proof pending.
+
+Martin already sent the customer reply22:36 and contacted Tena about shipping
+and minimum pricing; hold repricing until her answer. Codex sends no customer
+or supplier email. No Shopify writes or media uploads were performed.
+
+New overnight briefs22:38 supersede the older next303 plan: after this priority,
+DOL-288 queue#2 is a new private guide redo, not a patch of PR213. Use public
+competitor/GSC evidence if DataForSEO's known IP hold persists; no bypass.
+Then DOL-229 queue#3 and DOL-232 queue#4 per their fresh comments. Keep IDO/MD
+SEO hub edits held at DOL-151 and Top Fire catalog-review holds. Read each
+current ticket before work; DOL-303's earlier promo preview approval persists
+but is no longer the next item in this overnight order.
+
 ## Authority And Scope
 
 Martin authorized Chiku first, then the rest. Chiku was released through PR229

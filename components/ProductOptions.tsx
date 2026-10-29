@@ -66,7 +66,7 @@ import { templateConfigurationPresets, type TemplatePresetDefinition } from "@/l
 import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetChoices } from "@/lib/customization/preset-choices";
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
-import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
+import { includedBuildItems, isChikuPreview, isChikuEyeImage } from "@/lib/customization/chiku-preview";
 import { IncludedBuildSummary } from "./IncludedBuildSummary";
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, includedItems, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; includedItems?: Array<{ id: string; label: string }>; presetChoicePreview?: boolean; draftPreview?: boolean }) {
@@ -764,6 +764,7 @@ export function OptionTile({ product, group, option, catalogOption, selected, di
       aria-pressed={selected}
       className={clsx(
         "option-tile relative flex min-h-24 min-w-0 items-start gap-4 rounded-md border p-4 text-left transition-colors",
+        isChikuEyeImage(option) && "flex-col sm:flex-row",
         selected && "is-selected",
         selected ? "border-2 border-accent bg-accent-tint" : "border-border bg-surface hover:border-accent",
         disabled && "cursor-not-allowed border-dashed bg-bg hover:border-border"
@@ -788,7 +789,8 @@ export function OptionTile({ product, group, option, catalogOption, selected, di
 
 function OptionMark({ option, selected }: { option: CustomizationOption; selected: boolean }) {
   if (option.swatch?.kind === "image") {
-    return <span className={clsx("relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border bg-surface-tint", selected ? "border-accent" : "border-border")} aria-hidden="true"><Image src={option.swatch.value} alt="" fill sizes="64px" className="object-cover" loading="lazy" unoptimized /></span>;
+    const eyeImage = isChikuEyeImage(option);
+    return <span className={clsx("relative shrink-0 overflow-hidden rounded-sm border bg-surface-tint", eyeImage ? "aspect-[1000/648] w-40 max-w-full" : "h-16 w-16", selected ? "border-accent" : "border-border")} aria-hidden="true"><Image src={option.swatch.value} alt="" fill sizes={eyeImage ? "160px" : "64px"} className={eyeImage ? "object-contain" : "object-cover"} loading="lazy" unoptimized /></span>;
   }
   if (option.swatch?.kind === "color") {
     return <span className="h-12 w-12 shrink-0 rounded-full border-2 border-border" style={{ backgroundColor: option.swatch.value }} aria-hidden="true" />;
