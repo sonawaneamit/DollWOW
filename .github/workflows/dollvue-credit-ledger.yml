@@ -1,0 +1,25 @@
+name: DollVue credit accounting
+on:
+  pull_request:
+    paths:
+      - 'app/api/webhooks/shopify/dollvue-credits/**'
+      - 'app/api/internal/dollvue-credit-receipts/**'
+      - 'lib/dollvue/**'
+      - 'supabase/migrations/**'
+      - 'tests/dollVueCredit*.test.ts'
+      - 'tests/dollVueNonExplicit*.test.ts'
+      - 'scripts/test-dollvue-credit-ledger.mjs'
+      - 'package*.json'
+      - '.github/workflows/dollvue-credit-ledger.yml'
+jobs:
+  credit-accounting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx vitest run tests/dollVueCreditPacks.test.ts tests/dollVueCreditWebhook.test.ts tests/dollVueCreditReceipts.test.ts tests/dollVueNonExplicitProvider.test.ts tests/dollVueNonExplicitReview.test.ts tests/dollVueNonExplicitRequest.test.ts tests/dollVueNonExplicitPreparation.test.ts tests/dollVueNonExplicitInputs.test.ts tests/dollVueReviewedImages.test.ts
+      - run: npm run test:dollvue-ledger
