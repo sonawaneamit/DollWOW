@@ -34,9 +34,11 @@ arrived in Gmail at 08:33 UTC; opening its emailed link returned to verified
 Grace with five previews. No generation or order was performed.
 
 Preview logs show SMTP `EAUTH` and Cloudflare fallback acceptance. That is preview
-evidence, not proof that production has identical credentials. Hello test request
-at 08:34 UTC was accepted by Cloudflare; mailbox arrival was not yet established.
-Provider acceptance is not proof of inbox delivery.
+evidence, not proof that production has identical credentials. Hello test email
+arrived in the actual hello mailbox at 08:34 UTC. Its real link returned to exact
+Grace and displayed Unlimited test previews. Both approved inbox round-trips are
+directly observed. The connected mail API is sales, not hello; earlier empty API
+searches must not be treated as evidence of hello non-delivery.
 
 88 focused route, session, hold and mail tests plus four account-usage tests pass.
 Scoped lint, TypeScript and hosted build/4950-asset checks pass. Existing broad
