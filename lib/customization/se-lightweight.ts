@@ -1,9 +1,10 @@
 import reviewed from '@/data/promotions/se-october-2026-public.json';
 import type {Product} from '@/types/product';
 import type {BrandCustomizationConfig} from '@/types/customization';
+import { SE_ELF_FACTS } from './se-oct27-preview';
 
 export function withSeLightweight(product: Product, config: BrandCustomizationConfig): BrandCustomizationConfig {
-  const body = (reviewed.lightweight as Record<string,string>)[product.handle];
+  const body = (reviewed.lightweight as Record<string,string>)[product.handle] ?? SE_ELF_FACTS[product.handle]?.body;
   const material = config.groups.find(g => g.id === 'material');
   const currentBody = product.title.match(/\b(157|161|163)\s*cm\s*([HFE])-Cup\b/i);
   if (!body || product.extended.stockStatus !== 'custom' || !/^(?:s?tpe)$/i.test(product.extended.material ?? '')

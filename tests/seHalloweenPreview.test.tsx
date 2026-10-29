@@ -49,6 +49,7 @@ describe('isolated SE Halloween preview',()=>{
   vi.stubGlobal('React',React);
   const html=renderToStaticMarkup(<SeHalloweenPromotion enabled initialClock="2026-10-27T19:00:00Z" />);
   expect(html).toContain('crimson-mobile.jpg');expect(html).toContain('dark-desktop.jpg');expect(html).toContain('HALLOWEEN299');
+  expect(html).not.toContain('31 October');
   expect(renderToStaticMarkup(<SeHalloweenPromotion enabled initialClock="2026-11-01T00:00:00Z" />)).toBe('');
   expect(renderToStaticMarkup(<SeHalloweenPromotion enabled={false} initialClock="2026-10-27T19:00:00Z" />)).toBe('');
  });

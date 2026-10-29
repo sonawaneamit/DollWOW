@@ -2,7 +2,7 @@ import type { Product } from '@/types/product';
 import snapshots from '@/data/draft-previews/se-elf-pdps.json';
 import { isSeHalloweenPreview } from '@/lib/promotions/seHalloween2026';
 
-const editorial: Record<string, NonNullable<Product['extended']['editorialIntro']>> = {
+export const seElfEditorial: Record<string, NonNullable<Product['extended']['editorialIntro']>> = {
   SED338: {
     eyebrow: 'Red, copper and a little theatre',
     heading: 'Samantha.L makes her entrance',
@@ -34,7 +34,7 @@ export function seElfPreviewProduct(handle: string): Product | null {
   const product = snapshots.find(p => p.handle === handle);
   if (!product) return null;
   const result = structuredClone(product) as unknown as Product;
-  result.extended.editorialIntro = editorial[result.id.split(':').at(-1)!];
+  result.extended.editorialIntro = seElfEditorial[result.id.split(':').at(-1)!];
   return result;
 }
 

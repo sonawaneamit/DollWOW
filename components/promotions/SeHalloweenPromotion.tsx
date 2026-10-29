@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { isSeHalloweenActive, seHalloweenEndLabel, SE_HALLOWEEN_2026 } from '@/lib/promotions/seHalloween2026';
+import { isSeHalloweenActive, SE_HALLOWEEN_2026 } from '@/lib/promotions/seHalloween2026';
 
 export function SeHalloweenPromotion({ enabled, initialClock }: { enabled: boolean; initialClock: string }) {
   const [now, setNow] = useState(Date.parse(initialClock));
@@ -16,7 +16,7 @@ export function SeHalloweenPromotion({ enabled, initialClock }: { enabled: boole
   if (!enabled || !isSeHalloweenActive(now)) return null;
   return <section id={SE_HALLOWEEN_2026.id} className="my-6 border-y border-border py-5" aria-labelledby="se-halloween-heading" data-se-halloween>
     <h2 id="se-halloween-heading" className="text-xl font-semibold">SE Doll Halloween offers</h2>
-    <p className="mt-2 text-sm text-text-dim">Through {seHalloweenEndLabel()}. Eligible SE custom-order bonuses combine with HALLOWEEN299 on qualifying full-size dolls. Your selected body and head determine the available upgrades.</p>
+    <p className="mt-2 text-sm text-text-dim">Eligible SE custom-order bonuses combine with HALLOWEEN299 on qualifying full-size dolls. Your selected body and head determine the available upgrades.</p>
     <div className="mt-4 grid gap-4 lg:grid-cols-2">
       {(['crimson', 'dark'] as const).map(kind => <picture key={kind}>
         <source media="(max-width: 767px)" srcSet={`/promo/se-halloween-2026/${kind}-mobile.jpg`} width="900" height="1200" />

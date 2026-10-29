@@ -1,5 +1,31 @@
 # DOL-275 SE Elf And Halloween Preview
 
+## Approved Release Preparation, 29 October
+
+Martin's 09:58 approval (Linear b81fd5ef-fc1c-4c61-8d58-ff8a311eefd3)
+authorizes the four products at 1645/1645/1899/1899 USD, with the photographed
+skin included. Publish the retained initial gallery first; complete supplier
+galleries immediately afterward. This supersedes the older approval/gallery
+hold below. No new W021/W022 head choices are authorized or needed.
+
+The existing branch was rebased onto production 235026b8, preserving the newer
+compact promo layout and DollVue tracing. Read-only current Shopify preflight
+found no matching handle/SKU products for the four Elf listings. All four exact
+parent menus and prices were refreshed into the private 29 October export.
+The existing parent skin default is White, so the exact four Elf handles now
+default to included Red/Black as photographed; other skin choices and the 49
+existing head choices remain. Existing 157H/161F/163E STPE/lightweight and
+Light Tan-only silicone-head restrictions are retained. No 153A upgrade
+compatibility is inferred. The public Halloween end-date claim is removed;
+the artwork still disappears after 31 October under the owner removal policy.
+
+58 focused tests (including one opt-in real read-only preflight) and TypeScript
+pass. No Shopify writes or publication has occurred at this preparation stage.
+The prepared import is not a live release: assets, exact product/variant IDs,
+new-parent named charges/preset bindings and live cart/browser proof remain
+required. Fresh evidence: data/exports/dol-275-2026-10-29/live-preflight.json
+and prepared-products.json. Full-gallery follow-up is not silently waived.
+
 Preview-only branch: `codex/dol-275-se-elf-halloween`. No live Shopify,
 pricing, stock, discount, registry, settings or production writes.
 
