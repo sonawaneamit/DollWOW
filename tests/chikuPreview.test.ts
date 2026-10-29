@@ -1,9 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { sampleProducts } from "@/lib/data/sample-products";
 import { applyChikuPreview, CHIKU_ID, includedBuildItems, isChikuPreview, chikuCustomizationGroups } from "@/lib/customization/chiku-preview";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { getDefaultSelections, resolveCustomization } from "@/lib/customization/resolve";
 import type { Product } from "@/types/product";
+const mocks = vi.hoisted(() => ({ getProductsByVariantIds: vi.fn() }));
+vi.mock("@/lib/shopify/storefront", () => mocks);
+import { serverValidateAndRepriceLine } from "@/lib/cart/server-validation";
 
 const chiku: Product = {
   ...sampleProducts[4], id: CHIKU_ID,
@@ -66,5 +69,22 @@ describe("Chiku private pilot", () => {
       expect(quote.totalPrice).toBe(2164);
       expect(quote.cartAttributes.find((a) => /Eye color/.test(a.key))?.value).toContain(color === "blue" ? "Blue (#1)" : color === "purple" ? "Purple (#2)" : color === "amber" ? "Amber (#3)" : "Green (#4)");
     }
+  });
+  it("server-reprices every approved eye with named heating and suction, ignoring forged browser prices", async () => {
+    const product = { ...chiku, variants: chiku.variants.map(v => ({ ...v, availableForSale: true, price: { amount: "1999", currencyCode: "USD" } })) };
+    const variant = product.variants[0];
+    mocks.getProductsByVariantIds.mockResolvedValue(new Map([[variant.id, product]]));
+    const defaults = getDefaultSelections(getCustomizationConfig(product));
+    for (const eye of ["blue", "purple", "amber", "green"]) {
+      const line = await serverValidateAndRepriceLine({ merchandiseId: variant.id, quantity: 1,
+        selections: { ...defaults, "eye-color": eye, "body-functions": ["body-heating", "vaginal-suction"] },
+        customizationCharge: { amount: 1, currencyCode: "USD", title: "Forged", items: [] }
+      });
+      expect(line.customizationCharge?.amount).toBe(165);
+      expect(line.customizationCharge?.items.map(i => [i.label, i.amount])).toEqual([["Body heating", 90], ["Vaginal suction", 75]]);
+      expect(line.attributes.find(a => /Eye color/.test(a.key))?.value.toLowerCase()).toContain(eye);
+      expect(line.namedUpgradeAttributes?.find(a => /Eye color/.test(a.key))?.value.toLowerCase()).toContain(eye);
+    }
+    await expect(serverValidateAndRepriceLine({ merchandiseId: variant.id, quantity: 1, selections: { ...defaults, "eye-color": "unverified-grey" } })).rejects.toThrow();
   });
 });

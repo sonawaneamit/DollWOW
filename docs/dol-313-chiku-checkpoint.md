@@ -1,5 +1,34 @@
 # DOL-313 Chiku Pilot
 
+## Approved Release Preparation, 29 October 22:05
+
+Martin approved the exact preview with the mobile total truncation corrected,
+then explicitly requested live release. Approval recorded on313 comment
+39847227-77da-4807-a3bb-5aa11290a97f.
+
+Release branch codex/dol313-chiku-release uses current origin/main659cdcf6,
+NOT the pilot's old local-main basebfc2ee20. The old PR228 remains draft and must
+never be merged. Only the scoped Chiku changes were cherry-picked, conflicts
+reconciled against current production. New consent, promotions, checkout trust
+boundary, presets, media protections and DollVue code are preserved.
+
+The current production mobile toolbar already keeps the purchase action below
+the options. It now labels the full-width amount Current total, without ellipsis
+or the defaults-included suffix. Native Brave local320/390 verified the text
+and amount each fit240/310px with no document overflow. The old crowded inline
+button is not reintroduced.
+
+Exact ID+handle override in the existing Dolls Castle customization normalizer
+adds the approved four free eye choices to both UI and server config resolution.
+It does not mutate Shopify or alter other products. Fixed facts render only on
+Chiku from its existing verified source menu. Production is purchasable, while
+Vercel preview deployments retain the disabled checkout/noindex pilot marker.
+
+Server trust-boundary tests rederive all four eye selections and named heating90
+plus suction75; a forged browser charge1 becomes165, included eye properties are
+retained, and unknown eye IDs fail. Broader all-brand rollout is still deferred.
+Historical pilot evidence below is not current-production release proof.
+
 Martin redirected this chat on 29 October: Chiku first because a customer is
 waiting, other dolls afterwards. Private preview only; no publication or mail.
 
