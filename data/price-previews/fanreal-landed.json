@@ -9,7 +9,10 @@
     "torso": false,
     "currentUSD": 2880,
     "undiscountedMinimumUSD": 3186,
-    "if299AppliesUSD": 3485
+    "if299AppliesUSD": 3485,
+    "halloweenEligible": true,
+    "proposedUSD": 3485,
+    "singleItemAfterDiscountUSD": 3186
   },
   {
     "id": "gid://shopify/Product/10564019224760",
@@ -21,7 +24,10 @@
     "torso": false,
     "currentUSD": 2880,
     "undiscountedMinimumUSD": 3186,
-    "if299AppliesUSD": 3485
+    "if299AppliesUSD": 3485,
+    "halloweenEligible": true,
+    "proposedUSD": 3485,
+    "singleItemAfterDiscountUSD": 3186
   },
   {
     "id": "gid://shopify/Product/10564019388600",
@@ -33,7 +39,10 @@
     "torso": true,
     "currentUSD": 1580,
     "undiscountedMinimumUSD": 2329,
-    "if299AppliesUSD": 2628
+    "if299AppliesUSD": 2628,
+    "halloweenEligible": false,
+    "proposedUSD": 2329,
+    "singleItemAfterDiscountUSD": 2329
   },
   {
     "id": "gid://shopify/Product/10564019552440",
@@ -45,7 +54,10 @@
     "torso": true,
     "currentUSD": 1580,
     "undiscountedMinimumUSD": 2329,
-    "if299AppliesUSD": 2628
+    "if299AppliesUSD": 2628,
+    "halloweenEligible": false,
+    "proposedUSD": 2329,
+    "singleItemAfterDiscountUSD": 2329
   },
   {
     "id": "gid://shopify/Product/10564028465336",
@@ -57,7 +69,10 @@
     "torso": false,
     "currentUSD": 2880,
     "undiscountedMinimumUSD": 3186,
-    "if299AppliesUSD": 3485
+    "if299AppliesUSD": 3485,
+    "halloweenEligible": true,
+    "proposedUSD": 3485,
+    "singleItemAfterDiscountUSD": 3186
   },
   {
     "id": "gid://shopify/Product/10564028727480",
@@ -69,7 +84,10 @@
     "torso": false,
     "currentUSD": 2780,
     "undiscountedMinimumUSD": 3072,
-    "if299AppliesUSD": 3371
+    "if299AppliesUSD": 3371,
+    "halloweenEligible": true,
+    "proposedUSD": 3371,
+    "singleItemAfterDiscountUSD": 3072
   },
   {
     "id": "gid://shopify/Product/10564029022392",
@@ -81,7 +99,10 @@
     "torso": false,
     "currentUSD": 2880,
     "undiscountedMinimumUSD": 3186,
-    "if299AppliesUSD": 3485
+    "if299AppliesUSD": 3485,
+    "halloweenEligible": true,
+    "proposedUSD": 3485,
+    "singleItemAfterDiscountUSD": 3186
   },
   {
     "id": "gid://shopify/Product/10564029251768",
@@ -93,7 +114,10 @@
     "torso": false,
     "currentUSD": 2880,
     "undiscountedMinimumUSD": 3186,
-    "if299AppliesUSD": 3485
+    "if299AppliesUSD": 3485,
+    "halloweenEligible": true,
+    "proposedUSD": 3485,
+    "singleItemAfterDiscountUSD": 3186
   },
   {
     "id": "gid://shopify/Product/10564111892664",
@@ -105,7 +129,10 @@
     "torso": false,
     "currentUSD": 2380,
     "undiscountedMinimumUSD": 2380,
-    "if299AppliesUSD": 2380
+    "if299AppliesUSD": 2380,
+    "halloweenEligible": true,
+    "proposedUSD": 2380,
+    "singleItemAfterDiscountUSD": 2081
   },
   {
     "id": "gid://shopify/Product/10564111958200",
@@ -117,6 +144,9 @@
     "torso": false,
     "currentUSD": 2480,
     "undiscountedMinimumUSD": 2480,
-    "if299AppliesUSD": 2480
+    "if299AppliesUSD": 2480,
+    "halloweenEligible": true,
+    "proposedUSD": 2480,
+    "singleItemAfterDiscountUSD": 2181
   }
 ]

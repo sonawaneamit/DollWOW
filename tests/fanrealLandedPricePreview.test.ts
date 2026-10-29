@@ -31,6 +31,10 @@ describe('Fanreal approved landed-cost preview',()=>{
       else {expect(row.if299AppliesUSD-row.undiscountedMinimumUSD).toBe(299);}
     }
     expect(rows.filter(r=>r.inStock).map(r=>r.currentUSD)).toEqual([2380,2480]);
+    expect(rows.filter(r=>r.halloweenEligible)).toHaveLength(8);
+    for(const row of rows.filter(r=>!r.inStock)){
+      expect(row.proposedUSD-(row.halloweenEligible?299:0)).toBe(row.undiscountedMinimumUSD);
+    }
     expect(rows.filter(r=>!r.inStock&&!r.torso&&!r.handle.includes('-155cm-')).map(r=>r.undiscountedMinimumUSD)).toEqual([3186,3186,3186,3186,3186]);
   });
 });

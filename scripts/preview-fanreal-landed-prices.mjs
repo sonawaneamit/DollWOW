@@ -29,8 +29,13 @@ const body = await response.json();
 assert(response.ok && !body.errors, JSON.stringify(body.errors ?? response.status));
 assert(!body.data.products.pageInfo.hasNextPage, 'Incomplete vendor census');
 await fs.mkdir(directory, {recursive: true});
-await fs.writeFile(`${directory}/before-final-census-private.json`, JSON.stringify({at: new Date().toISOString(),
-  readOnly: true, products: body.data.products.nodes}, null, 2), {flag: 'wx'});
+if(process.argv.includes('--discount-only')) {
+  const before=JSON.parse(await fs.readFile(`${directory}/before-final-census-private.json`,'utf8'));
+  assert.deepEqual(body.data.products.nodes,before.products,'Census changed; create a new reviewed backup first');
+} else {
+  await fs.writeFile(`${directory}/before-final-census-private.json`, JSON.stringify({at: new Date().toISOString(),
+    readOnly: true, products: body.data.products.nodes}, null, 2), {flag: 'wx'});
+}
 console.log(JSON.stringify({readOnly: true, products: body.data.products.nodes.length,
   active: body.data.products.nodes.filter(p=>p.status === 'ACTIVE').map(p=>({
     id:p.id, handle:p.handle, title:p.title, variants:p.variants.nodes.map(v=>({id:v.id, price:v.price}))
@@ -47,7 +52,7 @@ async function read(query,variables={}) {
 const discount=await read(`query{codeDiscountNodeByCode(code:"HALLOWEEN299"){id codeDiscount{... on DiscountCodeBasic{
   title status startsAt endsAt customerGets{value{... on DiscountAmount{amount{amount currencyCode} appliesOnEachItem}}
   items{__typename ... on DiscountCollections{collections(first:10){nodes{id}pageInfo{hasNextPage}}}}}
-}}}`);
+}}}}`);
 const campaign=discount.codeDiscountNodeByCode?.codeDiscount;
 assert(campaign?.customerGets.items.__typename==='DiscountCollections','Review other campaign eligibility types separately');
 assert(!campaign.customerGets.items.collections.pageInfo.hasNextPage,'Incomplete campaign collection set');
