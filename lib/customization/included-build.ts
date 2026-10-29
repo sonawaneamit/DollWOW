@@ -7,6 +7,13 @@ export type IncludedBuildFact = {
   optionLabel: string;
 };
 
+export function includedBuildFactLabel(fact: IncludedBuildFact) {
+  const groupLabel = fact.groupLabel.replace(/^included\s*:\s*/i, "").trim();
+  return groupLabel.toLowerCase() === fact.optionLabel.toLowerCase()
+    ? fact.optionLabel
+    : `${groupLabel}: ${fact.optionLabel}`;
+}
+
 const placeholder = /^(?:no|none|n\/?a|not applicable|not selected|without|default|standard|factory default|as pictured|yes|included)(?:\s|$)/i;
 
 // Display-only candidates: never used to grant choices or calculate checkout prices.

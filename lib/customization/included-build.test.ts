@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
-import { verifiedFixedBuildFacts } from "./included-build";
+import { includedBuildFactLabel, verifiedFixedBuildFacts } from "./included-build";
 
 const group = (patch: Partial<CustomizationGroup> = {}): CustomizationGroup => ({
   id: "skeleton", label: "Skeleton", required: true, selectionMode: "single", display: "compact",
@@ -9,6 +9,11 @@ const group = (patch: Partial<CustomizationGroup> = {}): CustomizationGroup => (
 const option = (patch: Partial<CustomizationOption>) => group({ options: [{ ...group().options[0], ...patch }] });
 
 describe("verified fixed build facts (display-only preparation)", () => {
+  it("avoids duplicated inclusion labels but retains context for bare values", () => {
+    const fact = { groupId: "skeleton", optionId: "evo", groupLabel: "Included: EVO skeleton", optionLabel: "EVO skeleton" };
+    expect(includedBuildFactLabel(fact)).toBe("EVO skeleton");
+    expect(includedBuildFactLabel({ ...fact, groupLabel: "Eye color", optionLabel: "Blue" })).toBe("Eye color: Blue");
+  });
   it("preserves both group and option context without generating entitlements", () => {
     expect(verifiedFixedBuildFacts([group()], [])).toEqual([
       { groupId: "skeleton", optionId: "evo", groupLabel: "Skeleton", optionLabel: "EVO skeleton" }

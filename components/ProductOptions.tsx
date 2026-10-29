@@ -67,14 +67,15 @@ import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetCho
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
 import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
+import { IncludedBuildSummary } from "./IncludedBuildSummary";
 
-export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
+export function ProductOptions({ product, config, promoClock, templateRecipe, includedItems, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; includedItems?: Array<{ id: string; label: string }>; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
-  if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
-  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} />;
+  if (isFixedWarehouseUnit) return <><IncludedBuildSummary items={includedItems ?? []} /><ProductOptionsOnRequest product={product} fixedWarehouseUnit /></>;
+  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} includedItems={includedItems} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <><IncludedBuildSummary items={includedItems ?? []} /><ProductOptionsOnRequest product={product} /></>;
 }
 
-function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview, draftPreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean; draftPreview: boolean }) {
+function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, includedItems, presetChoicePreview, draftPreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; includedItems?: Array<{ id: string; label: string }>; presetChoicePreview: boolean; draftPreview: boolean }) {
   const router = useRouter();
   const didMountRef = useRef(false);
   const purchaseRef = useRef<HTMLDivElement>(null);
@@ -353,19 +354,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
         </div>
       </div>
 
-      {includedBuildItems(product).length ? (
-        <section className="mb-6 border-y border-border py-4" aria-labelledby="included-build-heading">
-          <h3 id="included-build-heading" className="text-base font-semibold">Included in this build</h3>
-          <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-            {includedBuildItems(product).map((item) => (
-              <li key={item.id} className="flex items-start gap-2 text-sm leading-6">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-stock" aria-hidden="true" />
-                <span>{item.label}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      <IncludedBuildSummary items={includedItems ?? includedBuildItems(product)} />
 
       {presets.length === 3 && (
         <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {

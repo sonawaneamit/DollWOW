@@ -14,31 +14,52 @@ Base: `7a2073aa8ea7fa092ffa8b1119901d75a907d264`
 
 ## Completed Internal Preparation
 
-`verifiedFixedBuildFacts` is a pure display-only extractor, not wired to any
-page, resolver, cart or production feature flag. It requires a product-recorded
+`verifiedFixedBuildFacts` is a pure display-only extractor, wired only to the
+explicit `DOL314_INCLUDED_BUILD_PREVIEW=1` private-preview flag. Production is
+excluded even if that flag is set. It requires a product-recorded
 required single choice with a verified zero price and no explicit availability
 restriction. Conditional groups and both sides of compatibility rules are
 excluded. Duplicate identities, generic placeholders, unknown prices and paid
 choices are excluded. Group and option labels remain separate so a bare color
 or ambiguous option does not become an invented feature label.
 
-34 focused assertions pass; full TypeScript check and scoped ESLint pass.
+48 focused assertions across three files pass, plus one explicitly enabled
+read-only source test. Full TypeScript check and scoped ESLint pass (two
+pre-existing ProductOptions unused-variable warnings). A configured build and
+both 4950-owned-asset gates pass; final source recheck is pending below.
 No Shopify, source-menu, pricing, eye-entitlement, image, checkout, production,
-settings, email or deployment change was performed. Chiku's accepted live
+settings or email change was performed. Chiku's accepted live
 eight-item presentation and four free eye colors are untouched.
+
+## Current Source And Browser Proof
+
+Read-only source sampling returned six current products across Irontech,
+SE Doll and Dolls Castle. Exact vendor queries for FunWest and Top Fire
+returned no records; those brands are not claimed covered. The private source
+snapshot records each original menu SHA256 and unchanged default quote.
+Irontech Molly/Suki have three eligible facts each; Dolls Castle Emma/Ginger
+have eleven each. SE Luis/Samantha have no qualifying records: this is not
+proof that the products lack included features.
+
+Ten actual local-browser cases passed: Molly and Emma at desktop 1319 and
+mobile 390/320; Luis and Chiku at mobile 390/320. All had no document overflow,
+noindex/nofollow and disabled checkout. Mobile totals occupy full 310/240px
+with no ellipsis or text overflow. Chiku still shows its eight accepted facts.
+`local-browser-proof.json` and two screenshots are saved privately. These
+are local results, not hosted or live proof. No cart was created.
 
 ## Unfinished Checkpoint
 
 1. Read fresh DOL-314 discussion and check other active chats before continuing.
-2. Review a bounded set of current product-specific source menus across brands.
-   Preserve missing-data qualifications; absence from a menu is not proof of
-   absence from the product. Do not infer standard features or new entitlements.
-3. Wire the reviewed extractor only into a private preview with noindex and
-   disabled checkout. Preserve the production Chiku behavior and all server
-   option/pricing contracts. No public-wide activation is approved.
-4. Exercise actual multi-brand PDPs at desktop and narrow mobile widths,
-   including empty/conditional/paid menus. Verify unchanged presets, prices,
-   checkout contracts and no overflow. No hosted or browser proof exists yet.
+2. Complete final-source build recheck, then deploy the exact flagged private
+   preview. Recheck actual hosted facts, mobile total, disabled checkout and
+   noindex. Do not count an unflagged Git preview as included-feature proof.
+3. Expand actual source/compatibility coverage if needed for review. Preserve
+   missing-data qualifications and product-specific prices/entitlements. The
+   existing shared clipped-total correction is already live via PR229; this
+   follow-up does not need another release just for that correction.
+4. Keep source snapshots private and excluded from deployment. No settings,
+   production flags, Shopify writes or new options are authorized here.
 5. Provide the exact preview and limitations for Dolly, then Martin. Do not
    call the whole catalog complete or release-ready based on this helper.
 
