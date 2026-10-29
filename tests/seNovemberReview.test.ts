@@ -45,6 +45,16 @@ describe('Comparison-only exact SE November menu quotes', () => {
   it('keeps named silicone heads paid instead of pretending they are random supplier heads', () => {
     expect(quote({ ...parent, cohort: 'silicone-pro-custom' }, { id: 'an-extra-head' }, { id: '010so', label: '#010SO', priceDelta: 225 })).toBeNull();
   });
+  it('does not turn free realistic oral structure into free paid functions or extra-head options', () => {
+    for (const [id, label, priceDelta] of [['oral-heating', 'Oral Heating', 79], ['oral-sucking', 'Oral Sucking', 99]] as const) {
+      for (const groupId of ['premium-head-body-options-multiple', 'premium-head-options-for-extra-head-multiple']) {
+        expect(quote({ ...parent, cohort: 'silicone-pro-custom' }, { id: groupId }, { id, label, priceDelta })).toBeNull();
+      }
+    }
+  });
+  it('does not grant silicone-only articulated fingers to the TPE campaign', () => {
+    expect(quote(parent, { id: 'premium-head-body-options-multiple' }, { id: 'articulated-fingers-free', label: 'Articulated Fingers', priceDelta: 69 })).toBeNull();
+  });
 });
 
 describe('LSTPE comparison retains existing body, material and skin compatibility', () => {
