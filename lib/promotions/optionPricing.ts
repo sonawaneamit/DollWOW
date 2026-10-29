@@ -21,6 +21,7 @@ import { getDefaultSelections } from "@/lib/customization/resolve";
 import { mdOctoberBionic, withMdOctoberPricing } from './mdOctober2026';
 import { IDO_MENU_TAG, MD_MENU_TAG } from '@/lib/customization/ido-md';
 import { withIdoOctoberGift } from './idoOctober2026';
+import { lusandyNovemberOptionBenefit } from './lusandyNovember2026';
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended">;
 
@@ -86,6 +87,11 @@ export function promotionOptionPrice(
   if (!allowPromotions) return {
     catalogDelta, displayDelta: catalogDelta, strike: false, promoLabel: null,
     active: false, eligible: false, displayLabel: option.label
+  };
+  const lusandyNovember = lusandyNovemberOptionBenefit(product, group, option, now);
+  if (lusandyNovember) return {
+    catalogDelta, displayDelta: 0, strike: false, promoLabel: lusandyNovember,
+    active: true, eligible: true, displayLabel: option.label
   };
   if (jinsanOctoberBrandForProduct(product, now) === "wm"
     && option.id === "breathing-system"

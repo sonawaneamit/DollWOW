@@ -6,14 +6,17 @@ import { useState } from "react";
 import { CalendarDays, Check, ChevronDown } from "lucide-react";
 import { isJinsanOctoberActive, jinsanOctoberBrandForProduct, JINSAN_OCTOBER_OFFERS, JINSAN_OCTOBER_TIMING, type JinsanOctoberBrand } from "@/lib/promotions/jinsanOctober2026";
 import type { Product } from "@/types/product";
+import { useCampaignClock } from '@/lib/promotions/useCampaignClock';
 
-export function JinsanOctoberPdpPromotion({ product, promoClock }: { product: Pick<Product, "title" | "handle" | "vendor" | "productType" | "tags" | "extended">; promoClock: string }) {
-  const brand = jinsanOctoberBrandForProduct(product, new Date(promoClock));
+export function JinsanOctoberPdpPromotion({ product, promoClock, freezeClock = false }: { product: Pick<Product, "title" | "handle" | "vendor" | "productType" | "tags" | "extended">; promoClock: string; freezeClock?: boolean }) {
+  const clock = useCampaignClock(promoClock, freezeClock);
+  const brand = jinsanOctoberBrandForProduct(product, clock);
   return brand ? <div className="mt-4"><FactoryOffer brand={brand} placement="pdp" /></div> : null;
 }
 
-export function JinsanOctoberIndexCards({ promoClock }: { promoClock: string }) {
-  if (!isJinsanOctoberActive(new Date(promoClock))) return null;
+export function JinsanOctoberIndexCards({ promoClock, freezeClock = false }: { promoClock: string; freezeClock?: boolean }) {
+  const clock = useCampaignClock(promoClock, freezeClock);
+  if (!isJinsanOctoberActive(clock)) return null;
   return <>{(["lusandy", "wm"] as const).map(brand => <FactoryOffer key={brand} brand={brand} placement="index" />)}</>;
 }
 
