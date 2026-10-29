@@ -29,6 +29,15 @@ plus suction75; a forged browser charge1 becomes165, included eye properties are
 retained, and unknown eye IDs fail. Broader all-brand rollout is still deferred.
 Historical pilot evidence below is not current-production release proof.
 
+Release verification:32 focused tests5files pass, plus opt-in read-only real
+variant/server preflight1test. Both real-source reads derive four eye properties
+and named90/75 upgrade items; no cart/order creation. FullTSC and configured
+local build pass; scoped lint0errors/3pre-existing unused warnings. Owned asset
+gate4950assets/0failures. A broader conditional suite fails1/13 at its existing
+FREE/default-price assertion; independently reproduced in the659-based285
+worktree. Resolver and conditional test have zero diff from origin/main, so this
+is not reported passed or changed by Chiku.
+
 Martin redirected this chat on 29 October: Chiku first because a customer is
 waiting, other dolls afterwards. Private preview only; no publication or mail.
 
