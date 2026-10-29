@@ -35,11 +35,19 @@ inside checkout.
   Vercel/GA discrepancy.
 - Vercel Analytics and Speed Insights integration is unchanged. Shopify's
   explicit handoff remains available when the visitor uses the controls.
-- No first-party Meta implementation was found in the bounded source review.
-  This does not audit Shopify-installed pixels or establish their behavior.
-- Actual Shopify region/privacy settings and checkout-installed pixels have not
-  been inspected here. Do not assert that all tracking or legal requirements
-  are verified. Obtain that inventory before a permanent consent redesign.
+- Read-only Shopify admin inspection: automated cookie-banner settings are
+  enabled for 19 regions (Austria and Belgium named; the other 17 were not
+  enumerated by the page). Show cookie banner in checkout is unchecked. This
+  patch does not toggle either Shopify setting or assert UK coverage.
+- Shopify Network Intelligence is enabled. Its description explicitly mentions
+  advertising targeting and personalization. That warrants a separate review
+  against the first-party banner's existing "do not share ... with advertisers"
+  wording; this patch does not change that setting or claim the wording audited.
+- The Customer events table lists one custom pixel, DollWOW GA4 purchase QA;
+  its status/data cells did not expose values. No Meta pixel was listed there,
+  nor was a first-party implementation found in the bounded source review.
+  This is not proof that no other app or channel injects tracking. No actual
+  checkout event firing or regional legal assessment is claimed.
 
 Google distinguishes blocking tags until consent from advanced consent-mode
 collection. This application's existing GA loader is gated by consent; removing
@@ -64,7 +72,8 @@ itself and does not change regional settings.
   threshold, no automatic dialog. Manual footer control opens Privacy
   preferences with Accept/Decline intact. Reload again has no automatic dialog.
 - Mobile viewport and document width are both 390px.
-- Screenshots are retained under `data/exports/dol-307-2026-10-29/`.
+- Before-production, after-preview and read-only Shopify settings screenshots
+  are retained under `data/exports/dol-307-2026-10-29/`.
 - These hosted checks used a new preview origin in a normal browser. Native
   fresh-private-window QA was interrupted by a browser focus change; it is NOT
   claimed complete. No browser security or extension settings were changed.
