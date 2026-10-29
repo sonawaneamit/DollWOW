@@ -11,6 +11,10 @@ export function isSeNovemberWindow(now: Date) {
     && now.getTime() < Date.parse(SE_NOVEMBER_TIMING.endsAt);
 }
 
+export function seNovemberReviewEnabled() {
+  return process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && process.env.NEXT_PUBLIC_DOL285_PREVIEW === '1';
+}
+
 export const SE_NOVEMBER_REVIEW_TERMS = {
   tpeCustom: {
     included: ['STPE upgrade', 'EVO skeleton', 'Gel breasts', 'Fixed tongue', 'Lubricant-free vagina', 'Realistic body painting'],
