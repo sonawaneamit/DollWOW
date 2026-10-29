@@ -1,8 +1,19 @@
 import type { Product } from "@/types/product";
-import type { CustomizationGroup } from "@/types/customization";
+import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 
 export const CHIKU_ID = "gid://shopify/Product/10676884078776";
 export const CHIKU_PREVIEW_TAG = "dol313-private-preview";
+export const CHIKU_EYE_IMAGES = {
+  blue: "/images/options/dolls-castle/chiku-eyes/blue-1.png",
+  purple: "/images/options/dolls-castle/chiku-eyes/purple-2.png",
+  amber: "/images/options/dolls-castle/chiku-eyes/amber-3.png",
+  green: "/images/options/dolls-castle/chiku-eyes/green-4.png"
+} as const;
+
+export function isChikuEyeImage(option: CustomizationOption) {
+  return option.swatch?.kind === "image" && Object.entries(CHIKU_EYE_IMAGES)
+    .some(([id, value]) => option.id === id && option.swatch?.value === value);
+}
 
 export function isChikuProduct(product: Product) {
   return product.id === CHIKU_ID && product.handle === "dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll";
@@ -23,17 +34,23 @@ export function chikuCustomizationGroups(product: Product, groups: Customization
       { id: "green", label: "Green (#4)", priceDelta: 0, priceVerified: true }
     ]
   };
+  if (isChikuPreview(product)) {
+    eyeColors.options = eyeColors.options.map(option => ({
+      ...option,
+      swatch: { kind: "image", value: CHIKU_EYE_IMAGES[option.id as keyof typeof CHIKU_EYE_IMAGES] }
+    }));
+  }
   return [...groups.filter((group) => group.id !== eyeColors.id), eyeColors];
 }
 
 export function applyChikuPreview(product: Product, enabled: boolean): Product {
   if (!enabled || !isChikuProduct(product)) return product;
+  const preview = { ...product, tags: [...product.tags.filter((tag) => tag !== CHIKU_PREVIEW_TAG), CHIKU_PREVIEW_TAG] };
   return {
-    ...product,
-    tags: [...product.tags.filter((tag) => tag !== CHIKU_PREVIEW_TAG), CHIKU_PREVIEW_TAG],
+    ...preview,
     extended: {
       ...product.extended,
-      customizationGroups: chikuCustomizationGroups(product, product.extended.customizationGroups ?? [])
+      customizationGroups: chikuCustomizationGroups(preview, product.extended.customizationGroups ?? [])
     }
   };
 }

@@ -59,6 +59,8 @@ import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
+import { includedBuildPreviewEnabled } from "@/lib/customization/included-build-preview";
+import { includedBuildFactLabel, verifiedFixedBuildFacts } from "@/lib/customization/included-build";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
   return applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"));
@@ -74,7 +76,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
-  if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
+  if (includedBuildPreviewEnabled() || isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
   if (lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -86,6 +88,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
   const promoClock = previewPromotionClock(requestedPromoClock);
   const promotionPreview = lusandyNovemberPreviewEnabled();
+  const includedPreview = includedBuildPreviewEnabled();
   const [storefrontProduct, adminProductData] = await Promise.all([
     getProductByHandle(handle, dealerPreviewProductFetch(handle)),
     getProductAdminMetafieldsByHandle(handle)
@@ -100,6 +103,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
   const customizationConfig = stripSupplierFreeLabels(product.extended.brand ?? product.vendor, publicCustomizationConfig(getCustomizationConfig(product)));
+  const includedItems = includedPreview && !isChikuProduct(product)
+    ? verifiedFixedBuildFacts(publicProduct.extended.customizationGroups ?? [], customizationConfig.rules)
+      .map((fact) => ({ id: fact.groupId, label: includedBuildFactLabel(fact) }))
+    : undefined;
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -226,7 +233,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             </div>
             {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !promotionPreview && (
               <ProductBuyActions
-                previewOnly={isChikuPreview(product)}
+                previewOnly={includedPreview || isChikuPreview(product)}
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
                 productDisplayName={displayName || undefined}
@@ -286,7 +293,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} includedItems={includedItems} draftPreview={isPrivateDraft || promotionPreview || includedPreview}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
