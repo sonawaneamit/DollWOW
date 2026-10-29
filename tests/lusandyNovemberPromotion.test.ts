@@ -3,9 +3,9 @@ import fs from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { LusandyNovemberPdpPromotion, LusandyNovemberIndexCard } from '@/components/promotions/LusandyNovemberPromotion';
-import { isLusandyNovemberActive, lusandyNovemberOfferForProduct, LUSANDY_NOVEMBER_OFFER } from '@/lib/promotions/lusandyNovember2026';
+import { isLusandyNovemberActive, lusandyNovemberOfferForProduct, lusandyNovemberPreviewEnabled, LUSANDY_NOVEMBER_OFFER } from '@/lib/promotions/lusandyNovember2026';
 import { isJinsanOctoberActive } from '@/lib/promotions/jinsanOctober2026';
-import { promotionOptionPrice, withPromotionOptionPricing } from '@/lib/promotions/optionPricing';
+import { promotionOptionPrice, withPromotionOptionPricing, previewPromotionClock } from '@/lib/promotions/optionPricing';
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig, CustomizationOption } from '@/types/customization';
 
@@ -18,7 +18,7 @@ const option: CustomizationOption = {id:group.id+'--implanted-eyebrows-free',lab
 beforeEach(() => {vi.stubEnv('NEXT_PUBLIC_DOL286_PREVIEW','1');vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','preview');});
 afterEach(() => vi.unstubAllEnvs());
 
-describe('Lusandy November preview', () => {
+describe('Lusandy November scheduled release', () => {
   it('guards both hero purchase and configured checkout in the private preview', () => {
     const source=fs.readFileSync('app/(store)/products/[handle]/page.tsx','utf8');
     expect(source).toContain('firstAvailable && !promotionPreview');
@@ -35,9 +35,16 @@ describe('Lusandy November preview', () => {
     expect([isJinsanOctoberActive(before),isLusandyNovemberActive(before)]).toEqual([true,false]);
     expect([isJinsanOctoberActive(after),isLusandyNovemberActive(after)]).toEqual([false,true]);
   });
-  it('fails closed outside the explicitly enabled preview', () => {
-    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','production'); expect(isLusandyNovemberActive(now)).toBe(false);
-    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','preview'); vi.stubEnv('NEXT_PUBLIC_DOL286_PREVIEW','');expect(isLusandyNovemberActive(now)).toBe(false);
+  it('activates on the approved production schedule without enabling preview controls', () => {
+    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','production');
+    expect(lusandyNovemberPreviewEnabled()).toBe(false);
+    expect(isLusandyNovemberActive(now)).toBe(true);
+    expect(isLusandyNovemberActive(new Date('2026-10-29T17:00:00Z'))).toBe(false);
+    expect(isLusandyNovemberActive(new Date('2026-12-01T08:00:00Z'))).toBe(false);
+    expect(previewPromotionClock(now.toISOString(),'production')).toBeUndefined();
+    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','preview'); vi.stubEnv('NEXT_PUBLIC_DOL286_PREVIEW','');
+    expect(lusandyNovemberPreviewEnabled()).toBe(false);
+    expect(isLusandyNovemberActive(now)).toBe(true);
   });
   it('targets only full-size custom Lusandy silicone dolls', () => {
     expect(lusandyNovemberOfferForProduct(product,now)).not.toBeNull();

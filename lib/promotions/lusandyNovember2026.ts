@@ -2,7 +2,7 @@ import { canonicalBrandValue } from '@/lib/catalog/brands';
 import type { Product } from '@/types/product';
 import type { CustomizationGroup, CustomizationOption } from '@/types/customization';
 
-// Tentative existing factory-Pacific clock; requires Martin's exact release yes.
+// Reviewed factory-Pacific window approved by Martin on 29 October (DOL-286).
 export const LUSANDY_NOVEMBER_TIMING = {
   startsAt: '2026-11-01T07:00:00.000Z',
   endsAt: '2026-12-01T08:00:00.000Z',
@@ -22,7 +22,7 @@ export function lusandyNovemberPreviewEnabled() {
 }
 
 export function isLusandyNovemberActive(now: Date) {
-  return lusandyNovemberPreviewEnabled() && now.getTime() >= Date.parse(LUSANDY_NOVEMBER_TIMING.startsAt)
+  return now.getTime() >= Date.parse(LUSANDY_NOVEMBER_TIMING.startsAt)
     && now.getTime() < Date.parse(LUSANDY_NOVEMBER_TIMING.endsAt);
 }
 

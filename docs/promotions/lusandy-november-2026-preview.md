@@ -1,9 +1,9 @@
-# DOL-286 Lusandy November Preview
+# DOL-286 Lusandy November Campaign
 
-Preview only. Nothing is approved for production or Shopify writes.
-Martin's 29 October instruction moves Gynoid to Blocked and prioritizes this
-preview. His 28 October clarification confirms back-to-back October/November
-offers, with no October conflict to reopen. Black Friday is excluded.
+Martin approved the reviewed scheduled release on 29 October09:47,
+Linear comment6b91bdb8-112f-4a58-968f-be5747e81e08. His28October clarification
+confirms back-to-back October/November offers, with no October conflict to
+reopen. Black Friday and Shopify price/discount writes remain excluded.
 
 ## Source And Timing
 
@@ -12,11 +12,11 @@ offers, with no October conflict to reopen. Black Friday is excluded.
 - Notice: Drive `1TPTCX-4gIkL61J6AjZ5U8x62jwlcvitr`, 370,093-byte PNG retained
   privately. Both originals were visually inspected against the ticket.
 - Eight campaign benefits and six standard inclusions match the notice.
-- Tentative clock follows the existing factory-Pacific convention:
+- The reviewed and approved clock follows the existing factory-Pacific convention:
   starts 1 November 00:00 PDT (`2026-11-01T07:00:00Z`), expires 1 December
   00:00 PST (`2026-12-01T08:00:00Z`, exclusive). This accounts for November DST.
   The factory provided dates, not an exact timezone/time. These constants are
-  easy to change and require explicit acceptance before release.
+  easy to change if the factory supplies a different exact time later.
 - Existing October ends at that same start instant. Components use a 15-second
   live clock unless a Preview-only review clock is explicitly frozen.
 
@@ -45,17 +45,18 @@ showing Halloween stacking copy after the existing Halloween end instant.
 
 ## Preview Guard
 
-Both NEXT_PUBLIC_VERCEL_ENV=preview and NEXT_PUBLIC_DOL286_PREVIEW=1 are required
-for November visibility and benefit labels. No production environment setting
-is changed. This gate needs a separately reviewed release change after approval.
+The campaign now uses the approved date window on production, without a new
+environment setting. Nothing appears before the start. Both
+NEXT_PUBLIC_VERCEL_ENV=preview and NEXT_PUBLIC_DOL286_PREVIEW=1 remain required
+only for isolated review controls, not for the production campaign schedule.
 PDPs are noindex, have no Product offer schema or PDP tracking, and checkout is
 disabled while the preview gate is on. The /promo page is also noindex.
 Frozen clocks use the existing Preview-only promoClock query; production ignores
 that query. This is campaign-clock QA, not a simulated checkout or order.
 
-Approval required on Linear: after Dolly reviews the exact hosted preview,
-does Martin approve the Lusandy-only release with this provisional Pacific
-start/end policy and catalog-zero prices preserved? No release on silence.
+Release rebased onto75ee30c9, preserving newer SE Halloween artwork/private-draft
+guards and all newer DollVue changes. Production ignores promoClock query
+overrides; no production clock settings, prices or menu records were changed.
 
 Private readback, menu census, source checks, responsive screenshots and durable
 checkpoint live under data/exports/dol-286-2026-10-29/ in the ticket worktree.
