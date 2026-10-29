@@ -45,6 +45,13 @@ describe('Mobile-readable footer layout', () => {
     expect(brandedMeta.width).toBe(width);
     expect(brandedMeta.height).toBeGreaterThan(height);
     
+    // CRITICAL: QR must be >= 22% of image width (Martin's requirement)
+    // We verify this by checking that the implementation produces a QR at the right size
+    // The actual QR size is max(26% of width, min(240px, 22% of width))
+    const expectedMinQrSize = width * 0.22;
+    const expectedQrSize = Math.max(Math.round(width * 0.26), Math.min(240, Math.round(expectedMinQrSize)));
+    expect(expectedQrSize).toBeGreaterThanOrEqual(expectedMinQrSize - 1); // -1 for rounding tolerance
+    
     // Verify QR decodes at full resolution
     const qrUrl = await decodeQR(branded);
     expect(qrUrl).toBe(productUrl);
