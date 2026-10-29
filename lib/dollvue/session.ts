@@ -6,7 +6,7 @@ const SESSION_TTL_SECONDS = 60 * 60 * 24 * 30;
 const ACCESS_TTL_SECONDS = 15 * 60;
 
 type SessionPayload = { email: string; exp: number };
-type AccessPayload = SessionPayload & { handle: string; nonce: string };
+type AccessPayload = SessionPayload & { handle: string; nonce: string; submissionId?: string };
 
 function secret() {
   if (!env.PASSPORT_SESSION_SECRET) throw new Error("DollVue access is not configured.");
@@ -37,10 +37,11 @@ function decode<T extends SessionPayload>(namespace: string, value?: string | nu
   }
 }
 
-export function createDollVueAccessToken(email: string, handle: string, now = Date.now()) {
+export function createDollVueAccessToken(email: string, handle: string, now = Date.now(), submissionId?: string) {
   return encode<AccessPayload>("dollvue-access", {
     email: normalizeEmail(email),
     handle,
+    ...(submissionId ? { submissionId } : {}),
     exp: Math.floor(now / 1000) + ACCESS_TTL_SECONDS,
     nonce: crypto.randomBytes(12).toString("base64url")
   });
