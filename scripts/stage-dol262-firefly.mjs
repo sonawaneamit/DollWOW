@@ -80,4 +80,17 @@ await fs.writeFile(`${directory}/fresh-readback.json`,JSON.stringify({at:new Dat
 await fs.mkdir('data/draft-previews',{recursive:true});
 await fs.writeFile('data/draft-previews/firefly-mary.json',JSON.stringify(products,null,2));
 await fs.writeFile('data/draft-previews/firefly-mary-recipes.json',JSON.stringify(recipes,null,2));
-console.log(JSON.stringify({products:products.length,media:products.reduce((n,p)=>n+p.images.length,0),unchangedMenus:true,shopifyWrites:0,comparisons}));
+const chargeIds=recent.products.nodes.filter(p=>!ids.includes(p.id)).map(p=>p.id);
+assert.equal(chargeIds.length,32,'Retained charge census required');
+const charges=await admin(`query($ids:[ID!]!){nodes(ids:$ids){... on Product{
+  id title handle status variants(first:10){nodes{id title price}}
+  resourcePublications(first:20){nodes{isPublished publication{name}}}
+}}}`,{ids:chargeIds});
+for(const charge of charges.nodes){
+  const old=recent.products.nodes.find(p=>p.id===charge?.id);
+  assert(old && charge.status==='DRAFT' && old.handle===charge.handle,'Exact existing draft charge required');
+  assert(charge.resourcePublications.nodes.every(p=>!p.isPublished),'Charge unexpectedly published');
+  assert.deepEqual(charge.variants.nodes.map(v=>({id:v.id,price:v.price})),old.variants.nodes.map(v=>({id:v.id,price:v.price})),'Charge price/identity changed');
+}
+await fs.writeFile(`${directory}/fresh-charge-readback-private.json`,JSON.stringify({at:new Date().toISOString(),readOnly:true,charges:charges.nodes},null,2));
+console.log(JSON.stringify({products:products.length,media:products.reduce((n,p)=>n+p.images.length,0),unchangedMenus:true,charges:charges.nodes.length,shopifyWrites:0,comparisons}));

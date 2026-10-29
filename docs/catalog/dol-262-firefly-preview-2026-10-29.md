@@ -27,10 +27,17 @@ Menus exactly match27October's retained census. No Shopify writes. Historical
 ## Review Holds
 
 -164Normal: saved36kg/79.4lb versus newer master30kg/66.14lb.
+-164Normal commercial hold: existing2555USD is below the visually verified June
+ Silicone164cm MAP2600USD. Other three saved bases match their June MAP rows:
+ MAX1602850,MAX1642950,MAX1652950. No automatic retail mutation or blanket
+ discount-below-MAP interpretation is made.
 -165MAX: saved37.5kg/D-Cup versus newer master34kg/65B.
 -21-30business days is production after payment, not verified destination delivery.
- Current air/DDP/transit/duties and the exact heating-option price require
- reconciliation; no shipping or MAP-discount promise is inferred.
+ Current air/DDP/transit/duties require reconciliation. The approved June sheet
+ gives heating WHOLESALE15USD, not a retail15USD offer; the January example90USD
+ is not the controlling price source after Amber's reconfirmation. Current
+ draft heating RETAIL150USD remains untouched. No shipping or MAP-discount
+ promise is inferred.
 -Head/makeup version and option-reference coverage stay qualified. No new head
  identities, menu options, DollVue eligibility or generated imagery are enabled.
 

@@ -33,6 +33,7 @@ describe('Firefly isolated draft review',()=>{
   it('shows exact body-version and delivery holds without silently rewriting Shopify',()=>{
     preview();const rows=fireflyDraftPreviewProducts();
     expect(rows[1].extended.qcNote).toContain('36kg differs');
+    expect(rows[1].extended.qcNote).toContain('MAP of $2,600');
     expect(rows[2].extended.qcNote).toContain('37.5kg/D-Cup');
     expect(rows.every(p=>p.extended.qcNote?.includes('transit and duties remain unconfirmed'))).toBe(true);
   });
