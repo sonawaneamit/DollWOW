@@ -1,0 +1,75 @@
+# DOL-306: Credit Fulfilment Preparation
+
+Not ready for paid activation or Martin's end-to-end checkout test yet.
+
+## Current Authority
+
+Dolly relayed Martin's 29 October 10:50 instruction in DOL-305 comment
+2372dd64-094f-455c-a741-d0e22b81fbd4: prepare non-explicit packs, keep them
+unpublished, and leave final checkout testing to Martin. This updates the earlier
+conditional-scope blocker for supported non-explicit preparation. It does not
+authorize an explicit-image generation switch or publication of these products.
+
+The existing three drafts remain the only approved products: 5/$5, 12/$10,
+30/$25. No additional draft, discount code, order, mail or paid credit was created.
+
+## Staged And Tested
+
+- Migration 0008 adds private order grants, reservations, refund/cancellation
+  review holds and receipt outbox tables. RLS is enabled; anonymous and signed-in
+  customer roles cannot read, write or invoke the service-only functions.
+- Grant and pending receipt are one database transaction. A repeated order does
+  not grant twice; conflicting grant facts are rejected instead of overwritten.
+- Atomic reservations count existing successful previews, five complimentary
+  previews and granted paid credits. Expired/failed reservations are released.
+  Successful completion writes usage once inside the same transaction. The
+  ordinary generation route is NOT wired to these functions yet.
+- Refund/cancellation holds persist even when callbacks arrive before payment.
+  Existing credited accounts cannot spend during review. This does not issue a
+  refund, choose a refund entitlement, or silently deduct a guessed amount.
+- The new dedicated webhook verifies HMAC, canonical shop, allowed topic,
+  exact approved product/variant, USD price and paid status. Body size is bounded.
+  Invalid grants never fall back to browser properties. Storage failures return
+  retryable errors; no raw body, recipient or credentials are logged.
+- Fulfilment is OFF unless explicitly enabled in production. It is always OFF
+  on preview. The original order analytics endpoint remains untouched.
+- The confirmation outbox is durable, but its sender/worker is NOT implemented
+  or scheduled. Do not mistake an outbox row for a sent confirmation email.
+
+Run `npm run test:dollvue-ledger` after installing the pinned PGlite dev dependency.
+The local proof used the same version already installed in an isolated QA folder
+via `PGLITE_TEST_MODULE`. It applied migrations only to in-memory PGlite, never
+to Supabase. Parallel client calls are serialized by that engine; a deployed
+multi-connection PostgreSQL concurrency test is still required before activation.
+
+## Remaining Before Ready
+
+1. Finish and test confirmation delivery/retry ownership without duplicate credit
+   grants; surface permanent failures privately. Receipt delivery is not inbox proof.
+2. Implement a verified non-explicit generation path and connect reservations to
+   it, including failures and retries. Current live generation source still sends
+   `safe_mode:false` and contains an uncensored fallback. No claim that a new
+   non-explicit filter is live has been made; do not connect paid credits to that
+   route unchanged. Do not use explicit customer attachments as QA fixtures.
+3. Finish the friendly out-of-free allowance state and authenticated checkout
+   path, recipient binding, supported $0 owner-test isolation and refund policy
+   review. A zero-dollar test cannot prove paid settlement. No test order needed
+   from Codex; Martin does the final checkout test.
+4. Verify product-specific channel exclusions, not merely zero current draft
+   publications. Preserve Copilot/Meta and normal catalog/search exclusions.
+5. Review/apply migration and register the authenticated callbacks only with the
+   exact release scope. Do not enable the environment flag or publish drafts as
+   an incidental part of a preview deployment.
+6. Re-test deployed Postgres concurrency, generation accounting, actual checkout
+   and confirmation. Only then provide the final ready=yes receipt and 3-line
+   Martin test script. Existing image footer and sender-isolation work on DOL-305
+   remain separate unfinished acceptance items.
+
+## Commercial And Cost Boundaries
+
+The retained 29 October primary model catalog quote was $0.11 for a 2K output,
+plus $0.00345 for each extra input: up to $0.1169 for three inputs on that model.
+That is not the full cost of retries/fallbacks, payment fees or tax, and must not
+be presented as guaranteed pack margin. Recalculate against the final supported
+non-explicit model path before activation. Refund/revocation policy is not
+invented by the review-hold mechanism.
