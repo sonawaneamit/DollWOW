@@ -113,7 +113,9 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./content/learn/drafts/*.md"],
     "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
-    "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"]
+    "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
+    "/dollvue/generate": ["./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"],
+    "/review/dollvue-branding": ["./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"]
   },
   // Option references are fetched over HTTP; never bundle the static library
   // into functions whose unrelated local-image helpers use dynamic file paths.

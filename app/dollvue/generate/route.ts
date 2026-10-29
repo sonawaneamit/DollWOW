@@ -18,6 +18,7 @@ import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
+import { dollVueWatermark,DOLLVUE_WATERMARK_VERSION } from '@/lib/dollvue/outlinedText';
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -85,6 +86,7 @@ export async function POST(request: Request) {
   const images = [sourceImage, ...references];
   const cacheKey = createHash('sha256').update(JSON.stringify({
     version: DOLLVUE_PROMPT_VERSION,
+    watermark: DOLLVUE_WATERMARK_VERSION,
     readiness: eligibility.revision,
     productId: product.id,
     source,
@@ -275,19 +277,6 @@ async function normalizePreview(bytes: Buffer) {
     .composite([{ input: dollVueWatermark(finalWidth, finalHeight), gravity: "southeast" }])
     .webp({ quality: 91, effort: 4 })
     .toBuffer();
-}
-
-function dollVueWatermark(width: number, height: number) {
-  const fontSize = Math.max(22, Math.round(Math.min(width, height) * 0.026));
-  const horizontal = Math.max(18, Math.round(fontSize * 0.72));
-  const vertical = Math.max(12, Math.round(fontSize * 0.44));
-  const label = "DOLLWOW.COM · DOLLVUE™";
-  const boxWidth = Math.round(label.length * fontSize * 0.61 + horizontal * 2);
-  const boxHeight = fontSize + vertical * 2;
-  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${boxWidth}" height="${boxHeight}">
-    <rect width="100%" height="100%" rx="${Math.round(boxHeight / 2)}" fill="#160f0c" fill-opacity=".58"/>
-    <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="#fff8f2" fill-opacity=".86" font-family="Arial,Helvetica,sans-serif" font-size="${fontSize}" font-weight="700" letter-spacing="${Math.max(1, Math.round(fontSize * 0.08))}">${label}</text>
-  </svg>`);
 }
 
 function closestDollVueAspectRatio(width?: number | null, height?: number | null) {
