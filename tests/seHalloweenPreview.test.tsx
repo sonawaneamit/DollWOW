@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { sampleProducts } from '@/lib/data/sample-products';
-import { isSeHalloweenActive, isSeHalloweenPreview, seHalloweenCampaignDay } from '@/lib/promotions/seHalloween2026';
+import { isSeHalloweenActive, isSeHalloweenPreview, isSeHalloweenArtworkEnabled, seHalloweenCampaignDay } from '@/lib/promotions/seHalloween2026';
 import { isHalloweenInWindow } from '@/lib/promotions/halloween2026';
 import { octoberOfferForProduct } from '@/lib/promotions/october2026';
 import { promotionOptionPrice } from '@/lib/promotions/optionPricing';
@@ -22,6 +22,12 @@ const menu:BrandCustomizationConfig={id:'review',brandLabel:'SE Doll',leadTimeNo
  {id:'robot',label:'Robot options',display:'cards',options:[{id:'none',label:'None',priceDelta:0},{id:'nodding',label:'Nodding',priceDelta:100},{id:'waist',label:'Waist-spin',priceDelta:100},{id:'hip',label:'Hip-thrusting',priceDelta:200},{id:'unknown',label:'Unconfirmed function',priceDelta:300}]}
 ]};
 describe('isolated SE Halloween preview',()=>{
+ it('releases artwork in production without enabling the pricing preview clock',()=>{
+  expect(isSeHalloweenArtworkEnabled({VERCEL_ENV:'production'})).toBe(true);
+  expect(isSeHalloweenArtworkEnabled({VERCEL_ENV:'preview'})).toBe(false);
+  expect(isSeHalloweenArtworkEnabled({VERCEL_ENV:'preview',NEXT_PUBLIC_DOL275_PREVIEW:'1'})).toBe(true);
+  expect(isSeHalloweenArtworkEnabled({})).toBe(false);
+ });
  it('requires explicit preview flag and environment, never production',()=>{
   expect(isSeHalloweenPreview({VERCEL_ENV:'preview',NEXT_PUBLIC_DOL275_PREVIEW:'1'})).toBe(true);
   for(const env of [{VERCEL_ENV:'production',NEXT_PUBLIC_DOL275_PREVIEW:'1'},{VERCEL_ENV:'preview'},{}])expect(isSeHalloweenPreview(env)).toBe(false);

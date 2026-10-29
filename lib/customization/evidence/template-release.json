@@ -3,27 +3,27 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex: fresh28Oct exact four price-only delta verified; menus, named charges and DollVue identity unchanged; prior unchanged scope retained",
-      "reviewedAt": "2026-10-28T18:42:04.139Z",
-      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
-      "payloadHash": "28a45007537b7f7645c2f0110191241c28d4cc7ec8c4229452600795e4992d5a"
+      "reviewedBy": "Codex incremental SE Elf checks; prior release entries preserved; Martin09:58 approval",
+      "reviewedAt": "2026-10-29T16:15:58.212Z",
+      "evidenceRef": "docs/catalog/dol-275-release-2026-10-29.md",
+      "payloadHash": "7a0cc525b72e542d68cca69b42e24b462ef3f06291003fda8122e5987431014e"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex: fresh28Oct exact four price-only delta verified; menus, named charges and DollVue identity unchanged; prior unchanged scope retained",
-      "reviewedAt": "2026-10-28T18:42:04.139Z",
-      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
-      "payloadHash": "28a45007537b7f7645c2f0110191241c28d4cc7ec8c4229452600795e4992d5a"
+      "reviewedBy": "Codex incremental SE Elf checks; prior release entries preserved; Martin09:58 approval",
+      "reviewedAt": "2026-10-29T16:15:58.212Z",
+      "evidenceRef": "docs/catalog/dol-275-release-2026-10-29.md",
+      "payloadHash": "7a0cc525b72e542d68cca69b42e24b462ef3f06291003fda8122e5987431014e"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Martin via Dolly 28Oct18:06 Linear1e6adec1: release exactly four DOL-266 prices now; Freya excluded. Codex: exact four runtime delta only; prior unchanged scope retained",
-      "reviewedAt": "2026-10-28T18:42:04.139Z",
-      "evidenceRef": "docs/pricing/dol-266-coordinated-release.md",
-      "payloadHash": "28a45007537b7f7645c2f0110191241c28d4cc7ec8c4229452600795e4992d5a"
+      "reviewedBy": "Codex incremental SE Elf checks; prior release entries preserved; Martin09:58 approval",
+      "reviewedAt": "2026-10-29T16:15:58.212Z",
+      "evidenceRef": "docs/catalog/dol-275-release-2026-10-29.md",
+      "payloadHash": "7a0cc525b72e542d68cca69b42e24b462ef3f06291003fda8122e5987431014e"
     }
   },
   "payload": {
-    "releaseId": "presets-2026-10-28-dol266-shopify-money",
-    "sourceSnapshotHash": "89d3b13de062cdfcc289e93b19e1dd50e103142fbabe29397967d5c4adeb208d",
+    "releaseId": "presets-2026-10-29-se-elf",
+    "sourceSnapshotHash": "6cb9c6e30d3c3c5688c0a9d44c0482c611a6f6ea039fdb57540527d4d5d1622c",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2888,7 +2888,11 @@
       "gid://shopify/Product/10676884078776",
       "gid://shopify/Product/10676884177080",
       "gid://shopify/Product/10676884242616",
-      "gid://shopify/Product/10676884308152"
+      "gid://shopify/Product/10676884308152",
+      "gid://shopify/Product/10691273261240",
+      "gid://shopify/Product/10691273719992",
+      "gid://shopify/Product/10691274014904",
+      "gid://shopify/Product/10691274342584"
     ],
     "entries": [
       {
@@ -22938,6 +22942,34 @@
         "tag": "options:dolls-castle-oct22-emma",
         "bindingKey": "87c4858d059763ea9d72a8114abaf39a670a262597b53fd8b0786df0d9f8369d",
         "runtimeHash": "180fc74d8f00d8079b9ca11ae3568054d0f4fdab2843f191826feef3e0594f35"
+      },
+      {
+        "productId": "gid://shopify/Product/10691273261240",
+        "handle": "sedoll-samantha-l-153cm-a-cup-red-tpe-elf-sed338",
+        "tag": "options:se-female-tpe-standard",
+        "bindingKey": "02c2b46bb622b1b238b41e92a256de323aab2aa7300bad5b85016489c2befe28",
+        "runtimeHash": "f7d7f4765aa03da57527060ab8f8a3c568e0f3b813ed3fd409eb7969baa8993c"
+      },
+      {
+        "productId": "gid://shopify/Product/10691273719992",
+        "handle": "sedoll-luis-g-157cm-h-cup-red-tpe-elf-sed339",
+        "tag": "options:se-female-tpe-standard",
+        "bindingKey": "e61f6ab37078895e80dc40046d09bf4ef4061c4b29371e7dd909eaf661375e79",
+        "runtimeHash": "03d524e1e58cce75217926a6f03df71ea3b60d70458303183f6d6aca0499f2fb"
+      },
+      {
+        "productId": "gid://shopify/Product/10691274014904",
+        "handle": "sedoll-samantha-k-161cm-f-cup-black-tpe-elf-sed340",
+        "tag": "options:se-female-tpe-standard",
+        "bindingKey": "e61f6ab37078895e80dc40046d09bf4ef4061c4b29371e7dd909eaf661375e79",
+        "runtimeHash": "aae4b69460ff0116128a5ceac09151170085ecc43ea1c898c6ec73b2a29e4c02"
+      },
+      {
+        "productId": "gid://shopify/Product/10691274342584",
+        "handle": "sedoll-luis-h-163cm-e-cup-black-tpe-elf-sed341",
+        "tag": "options:se-female-tpe-standard",
+        "bindingKey": "e61f6ab37078895e80dc40046d09bf4ef4061c4b29371e7dd909eaf661375e79",
+        "runtimeHash": "779dcd45c6ac95ddab6896faa309167daece228349af8d5868e670c5e943164b"
       }
     ],
     "bindings": {
@@ -33364,6 +33396,126 @@
               }
             ],
             "remove": []
+          }
+        ]
+      },
+      "02c2b46bb622b1b238b41e92a256de323aab2aa7300bad5b85016489c2befe28": {
+        "tag": "options:se-female-tpe-standard",
+        "signature": "sha256:d65741315da9c45c5be2c0b4ed9c473e2ad822c76b4b4cb48282e0b78286469b",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Cleaning and drying basics.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Hyper-realism body painting with articulated fingers.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "articulated-fingers-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Body painting with freckles and ultra-flex fingers.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-freckles"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ultra-flex-fingers"
+              }
+            ],
+            "remove": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "articulated-fingers-free"
+              }
+            ]
+          }
+        ]
+      },
+      "e61f6ab37078895e80dc40046d09bf4ef4061c4b29371e7dd909eaf661375e79": {
+        "tag": "options:se-female-tpe-standard",
+        "signature": "sha256:1611469749ff9e3b6700fcf947a4696be72bfb3cf2db059f164367a59f0840bb",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Cleaning and drying basics.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Hyper-realism body painting with articulated fingers.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "articulated-fingers-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Body painting with freckles and ultra-flex fingers.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-freckles"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ultra-flex-fingers"
+              }
+            ],
+            "remove": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "articulated-fingers-free"
+              }
+            ]
           }
         ]
       }

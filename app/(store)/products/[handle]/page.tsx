@@ -35,7 +35,7 @@ import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/c
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
-import { isSeHalloweenPreview } from '@/lib/promotions/seHalloween2026';
+import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -273,7 +273,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
-          <SeHalloweenPromotion enabled={isSeHalloweenPreview() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
+          <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
