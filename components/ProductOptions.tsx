@@ -66,6 +66,7 @@ import { templateConfigurationPresets, type TemplatePresetDefinition } from "@/l
 import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetChoices } from "@/lib/customization/preset-choices";
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
+import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
@@ -155,7 +156,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
-  const canCheckout = Boolean(!draftPreview && variantId && variant?.availableForSale && !hasIssues && !resolved.requiresPriceConfirmation);
+  const canCheckout = Boolean(!draftPreview && !isChikuPreview(product) && variantId && variant?.availableForSale && !hasIssues && !resolved.requiresPriceConfirmation);
 
   useEffect(() => {
     if (!scrollToPurchaseRef.current) return;
@@ -325,7 +326,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
     setReviewing(true);
   }
 
-  const disabledReason = resolved.issues[0]?.message || (resolved.requiresPriceConfirmation ? "Please contact us to confirm the selected option prices." : !variant?.availableForSale ? "This build is not available to order online." : "");
+  const disabledReason = isChikuPreview(product) ? "Private preview. Checkout is disabled." : resolved.issues[0]?.message || (resolved.requiresPriceConfirmation ? "Please contact us to confirm the selected option prices." : !variant?.availableForSale ? "This build is not available to order online." : "");
 
   return (
     <section className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
@@ -351,6 +352,20 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
           </p>
         </div>
       </div>
+
+      {includedBuildItems(product).length ? (
+        <section className="mb-6 border-y border-border py-4" aria-labelledby="included-build-heading">
+          <h3 id="included-build-heading" className="text-base font-semibold">Included in this build</h3>
+          <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+            {includedBuildItems(product).map((item) => (
+              <li key={item.id} className="flex items-start gap-2 text-sm leading-6">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-stock" aria-hidden="true" />
+                <span>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {presets.length === 3 && (
         <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {
@@ -427,8 +442,8 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
           <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">
             <div className="flex items-center gap-3">
               <div className="min-w-0 flex-1">
-                <p className="leading-tight text-xs font-semibold uppercase tracking-[0.12em] text-text-dim">Ready when you are</p>
-                <p className="mt-0.5 text-base font-semibold text-text" aria-live="polite">
+                <p className="text-xs font-semibold text-text-dim">Current total</p>
+                <p className="mt-0.5 break-words text-base font-semibold text-text" aria-live="polite">
                   {formatMoney(resolved.totalPrice, currencyCode)}
                 </p>
               </div>
