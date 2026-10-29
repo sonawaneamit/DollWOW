@@ -128,6 +128,21 @@ afterEach(() => {
 });
 
 describe('current private DollVue hold', () => {
+  it('allows an auth-flow deadline for a cold request while retaining the hold check', async () => {
+    vi.useFakeTimers();
+    vi.mocked(adminFetch).mockImplementation(() => new Promise(resolve => setTimeout(() => resolve(response(null)), 5000)));
+    const check = getCurrentDollVueHold(id, 8000);
+    await vi.advanceTimersByTimeAsync(5000);
+    await expect(check).resolves.toBe('clear');
+  });
+
+  it('caps any requested auth deadline at eight seconds and still fails closed', async () => {
+    vi.useFakeTimers();
+    vi.mocked(adminFetch).mockImplementation(() => new Promise(() => {}));
+    const check = getCurrentDollVueHold(id, 90000);
+    await vi.advanceTimersByTimeAsync(8000);
+    await expect(check).resolves.toBe('unavailable');
+  });
   it.each([null, { value: '' }, { value: ' \n\t ' }])('allows only a verified empty hold: %j', async hold => {
     vi.mocked(adminFetch).mockResolvedValue(response(hold));
     await expect(getCurrentDollVueHold(id)).resolves.toBe('clear');

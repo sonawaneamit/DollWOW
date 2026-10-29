@@ -22,7 +22,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const { handle } = await params;
   const product = await getProductByHandle(handle, { cache: 'no-store', strict: true });
   if (!product) notFound();
-  const eligibility = await resolveCurrentDollVueEligibility(product);
+  const eligibility = await resolveCurrentDollVueEligibility(product, { holdTimeoutMs: 8000 });
   if (!eligibility.available) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
   if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} productName={productDisplayName(product) || product.title} headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()} /></div>;
@@ -46,6 +46,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
       groups={groups}
       freePreviews={DOLLVUE_FREE_PREVIEWS}
       initialRemaining={usage.remaining}
+      unlimited={usage.unlimited === true}
       verifiedEmail={maskedEmail(session.email)}
       live={usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLLVUE_ENABLED === "true"}
     />

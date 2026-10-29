@@ -101,7 +101,7 @@ export async function POST(request: Request) {
     generatedToday = 0;
   }
   const dailyLimit = Math.max(1, Number.parseInt(env.DOLLVUE_DAILY_LIMIT || "25", 10) || 25);
-  if (!cachedPreview && generatedToday >= dailyLimit) {
+  if (!usage.unlimited && !cachedPreview && generatedToday >= dailyLimit) {
     return NextResponse.json({ error: "DollVue™ has reached today’s preview limit. Please try again tomorrow." }, { status: 429 });
   }
 
