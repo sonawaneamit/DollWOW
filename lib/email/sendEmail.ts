@@ -1,6 +1,7 @@
 import "server-only";
 
 import nodemailer from "nodemailer";
+import { z } from 'zod';
 import { env } from "@/lib/utils/env";
 
 export type EmailMessage = {
@@ -103,7 +104,8 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
             filename: attachment.filename,
             content: attachment.content,
             type: attachment.contentType,
-            disposition: "attachment"
+            disposition: attachment.cid ? "inline" : "attachment",
+            ...(attachment.cid ? { content_id: attachment.cid } : {})
           }))
         }),
         signal: AbortSignal.timeout(10_000)
@@ -111,15 +113,26 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
     );
 
     if (!response.ok) {
-      throw new Error(`Cloudflare email failed: ${response.status} ${await response.text()}`);
+      throw Object.assign(new Error('Cloudflare request rejected'), { code: `CF_HTTP_${response.status}` });
     }
 
+    const receipt = cloudflareReceipt.safeParse(await response.json());
+    const target = recipient.trim().toLowerCase();
+    if (!receipt.success || ![...receipt.data.result.delivered, ...receipt.data.result.queued]
+      .some(address => address.trim().toLowerCase() === target)) {
+      console.error('Cloudflare email failed', { code: 'RECIPIENT_NOT_ACCEPTED' });
+      return { delivered: false, provider: 'none' };
+    }
     return { delivered: true, provider: "cloudflare" };
   } catch (error) {
     console.error("Cloudflare email failed", safeMailError(error));
     return { delivered: false, provider: "none" };
   }
 }
+
+const cloudflareReceipt = z.object({ success: z.literal(true), result: z.object({
+  delivered: z.array(z.string()).default([]), queued: z.array(z.string()).default([]),
+}) });
 
 function safeMailError(error: unknown) {
   const code = error && typeof error === "object" && "code" in error ? String(error.code) : "unknown";
