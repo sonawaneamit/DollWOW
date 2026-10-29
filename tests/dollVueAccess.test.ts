@@ -21,6 +21,16 @@ beforeEach(()=>{
 });
 afterEach(()=>{expect(mocks.fetch).not.toHaveBeenCalled();vi.unstubAllGlobals();});
 describe('DollVue access delivery contract',()=>{
+ it.each([
+  ['PDP banner', 'https://dollwow.com/products/reviewed-doll'],
+  ['shared direct link', undefined],
+  ['catalog entry', 'https://dollwow.com/dollvue'],
+ ])('uses the same truthful send contract from %s',async (_entry,referer)=>{
+  const r=request();if(referer)r.headers.set('referer',referer);
+  expect(await (await POST(r)).json()).toEqual({ok:true,status:'sent'});
+  mocks.sendEmail.mockResolvedValue({delivered:false,provider:'none'});
+  const failed=await POST(request());expect(failed.status).toBe(503);expect((await failed.json()).code).toBe('send_failed');
+ });
  it('rejects invalid input instead of claiming an email was sent',async()=>{
   const r=await POST(request({email:'bad',handle:'reviewed-doll'}));expect(r.status).toBe(400);expect((await r.json()).ok).toBe(false);expect(mocks.sendEmail).not.toHaveBeenCalled();
  });

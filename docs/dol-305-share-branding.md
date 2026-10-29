@@ -11,6 +11,13 @@ It is NOT automatically wired into the unrestricted generation route. The explic
 attachment Martin supplied was not edited or processed. Existing supplier assets
 and historical downloaded/emailed files remain unchanged.
 
+Martin approved the preview conditional on a transparent logo on29Oct. The dark
+flatten/backing was removed; the existing logo's alpha channel is retained. Pixel
+tests require white footer pixels at the transparent logo corners, not a dark tile.
+Shared access-route tests cover PDP, direct shared-link and catalog referrers;
+these all use the same endpoint and truthful send/error contract. No claim is made
+that third-party inbox delivery or provider uptime can be guaranteed forever.
+
 Email preserves already-optimized preview bytes. Tests caught and corrected a
 QR-decoding failure caused by resizing a narrow attachment. Automatic branding
 across the production generation/export paths is not delivered by this prototype.

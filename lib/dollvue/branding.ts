@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import QRCode from 'qrcode';
 
-export const DOLLVUE_BRANDING_VERSION = 'share-footer-white-v2';
+export const DOLLVUE_BRANDING_VERSION = 'share-footer-white-v3-transparent-logo';
 
 export function dollVuePublicReturnUrl(handle: string) {
   if (!/^[a-z0-9_-]{1,180}$/.test(handle)) throw new Error('Invalid public product handle');
@@ -28,7 +28,7 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
   const qrSize = Math.round(174 * scale);
   const logoBytes = await readFile(path.join(process.cwd(), 'public/images/brand/dollwow-black-gold-lockup.png'));
   const logo = await sharp(logoBytes)
-    .resize({ width: Math.round(260 * scale) }).flatten({ background: '#17251f' }).png().toBuffer();
+    .resize({ width: Math.round(260 * scale) }).png().toBuffer();
   const qr = await QRCode.toBuffer(destination, {
     type: 'png', width: qrSize, margin: 4, errorCorrectionLevel: 'M',
     color: { dark: '#101818', light: '#ffffff' },

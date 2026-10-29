@@ -38,6 +38,9 @@ it.each([[800, 1200], [1600, 900], [800, 800], [400, 1600]])('embeds readable br
   // Pixel proof: photo remains intact, while the new footer is outside its bounds.
   const top = await sharp(branded).extract({ left: 0, top: 0, width: 1, height: 1 }).raw().toBuffer();
   expect(Math.abs(top[0] - 185)).toBeLessThan(10);
+  const logoCorner = await sharp(branded).extract({ left: Math.round(24 * width / 800) + 1,
+    top: height + Math.round(16 * width / 800) + 1, width: 1, height: 1 }).removeAlpha().raw().toBuffer();
+  expect([...logoCorner].every(channel => channel > 240)).toBe(true);
   if (process.env.DOLLVUE_BRANDING_EVIDENCE_DIR) {
     await fs.mkdir(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, { recursive: true });
     await fs.writeFile(path.join(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, `preview-${width}x${height}.webp`), branded);
