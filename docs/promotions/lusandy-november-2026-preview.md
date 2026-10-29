@@ -60,3 +60,30 @@ overrides; no production clock settings, prices or menu records were changed.
 
 Private readback, menu census, source checks, responsive screenshots and durable
 checkpoint live under data/exports/dol-286-2026-10-29/ in the ticket worktree.
+
+## Scheduled Production Receipt
+
+PR212 source08bd1833 merged659cdcf6 at29October17:47:53UTC. Production
+dpl_BWYdHnviAwUnt2Dhh1MVcnBEE5rc is READY and independently confirmed on
+apex/www. Schedule is installed, not early-visible: actual current-date index
+and Belle PDP retain October and show no November banner even with a future
+promoClock query. Desktop1319 and mobile390 have no overflow; Belle purchase
+control is enabled. No cart or order was submitted. Viewport restored.
+
+Exact dated review dpl_EnpVmgTynjyZiKpJJ34MtEwy3tzt on source08bd1833 verifies
+November artwork2048x1075, index/PDP desktop/mobile, accordion and before/after
+boundaries. These frozen preview checks are not proof that real November time
+has elapsed or a discount was redeemed. No production environment setting or
+Shopify price/discount/menu record changed.
+
+Fresh60-record read-only census confirms46active/34eligible, each with8exact
+catalog-zero primary benefits, and1496paid option occurrences unchanged.
+44focused tests including that census pass, fullTSC/scopedlint and hosted
+build/two4950asset gates/allCI pass. Broader promotions:127/128 pass; the lone
+Fanreal September assertion expects obsolete sitewide10percent copy and fails
+identically on pre-release main75ee30c9 in the separate170worktree. Its related
+files were not changed; this is not counted as a passing test or silently fixed.
+
+Linear receipt5c5b3efe-49a2-45d3-838b-7b5b24176b63 includes four screenshots
+clearly labeled current production versus dated preview. The ticket remains
+In Review for Dolly, not self-closed. Do not remerge/redeploy the schedule.
