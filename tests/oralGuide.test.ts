@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { sampleProducts } from "@/lib/data/sample-products";
-import { oralGuideExampleMatches, oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
+import { oralGuideExampleMatches, oralGuideExamples, oralGuideFaqSchema, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
 import type { BrandCustomizationConfig, CustomizationOption } from "@/types/customization";
 import { canonicalBrandValue } from "@/lib/catalog/brands";
 
@@ -48,10 +48,34 @@ describe("fresh oral guide catalog examples", () => {
     expect(chiku.description).toContain("not removable");
   });
   it("keeps primary source links and no unsupported universal or warehouse promise", () => {
-    expect(oralGuideSources).toHaveLength(7);
+    expect(oralGuideSources).toHaveLength(9);
     expect(oralGuideSources.every(source => new URL(source.href).protocol === "https:")).toBe(true);
     expect(oralGuideQuestions.map(item => item.answer).join(" ")).toContain("Not necessarily");
     expect(new Set(oralGuideExamples.map(item => item.id)).size).toBe(oralGuideExamples.length);
+  });
+  it("requires the reviewed zero-price ROS prerequisite without inventing head entitlement", () => {
+    const mary = oralGuideExamples.find(item => item.name === "Mary")!;
+    const source = { ...product, id: mary.id, handle: mary.handle, extended: { ...product.extended, brand: "MD Doll" } };
+    const value = config();
+    value.groups = [
+      { id: "head-type", label: "Head type", display: "cards", options: [{ id: "ros-head-movable-jaw", label: "ROS", priceDelta: 0, priceVerified: true }] },
+      { id: "premium-head-body-options-multiple", label: "Upgrades", display: "cards", options: [{ id: "auto-blowjob", label: "Auto Blowjob", priceDelta: 249, priceVerified: true }] }
+    ];
+    const price = () => oralGuideOptionPrice(source, value, mary, "premium-head-body-options-multiple", "auto-blowjob");
+    expect(price()).toBe(249);
+    value.groups[0].options[0].priceVerified = false;
+    expect(price()).toBeNull();
+    value.groups[0].options[0].priceVerified = true;
+    value.groups[0].options[0].priceDelta = 20;
+    expect(price()).toBeNull();
+    value.groups.shift();
+    expect(price()).toBeNull();
+  });
+  it("generates FAQ schema only from the same questions and answers rendered visibly", () => {
+    const schema = oralGuideFaqSchema();
+    expect(schema["@type"]).toBe("FAQPage");
+    expect(schema.mainEntity.map(item => [item.name, item.acceptedAnswer.text])).toEqual(oralGuideQuestions.map(item => [item.question, item.answer]));
+    expect(JSON.stringify(schema)).not.toMatch(/Offer|AggregateRating|Review|datePublished/);
   });
   it("never infers installed warehouse equipment from a general add-on menu", () => {
     expect(oralGuideOptionPrice({ ...product, extended: { ...product.extended, stockStatus: "ready_to_ship" } }, config(), example, "premium-head-body-options", "oral-auto-sucking")).toBeNull();

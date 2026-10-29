@@ -9,7 +9,9 @@ export const oralGuideSources = [
   { title: "SE Doll: head suction, sound and heating", href: "https://www.sedoll.com/silicone-doll-head-oral-heating-suction-sound-features-a-complete-guide/" },
   { title: "Top Fire: Wendy's current build options", href: "https://dollwow.com/products/top-fire-doll-wendy-170cm-h-cup-silicone-companion-doll" },
   { title: "Angelkiss: manufacturer's ROS-head announcement", href: "https://dollforum.com/forum/viewtopic.php?t=170072" },
-  { title: "Yeloly: model descriptions and three-opening terminology", href: "https://www.yeloly.com/" }
+  { title: "Yeloly: model descriptions and three-opening terminology", href: "https://www.yeloly.com/" },
+  { title: "WM: Karola's current custom build options", href: "https://dollwow.com/products/wm-karola-170cm-h-cup-tpe-companion-doll-1ckgq" },
+  { title: "MD: Mary's current custom build options", href: "https://dollwow.com/products/md-mary-168cm-silicone-companion-doll" }
 ] as const;
 
 export const oralGuideExamples = [
@@ -22,6 +24,22 @@ export const oralGuideExamples = [
       { groupId: "premium-head-body-options", optionId: "oral-auto-sucking", label: "Oral suction" },
       { groupId: "premium-head-body-options", optionId: "oral-heating", label: "Oral heating" }
     ]
+  },
+  {
+    id: "gid://shopify/Product/10433164214456",
+    handle: "wm-karola-170cm-h-cup-tpe-companion-doll-1ckgq",
+    name: "Karola", brand: "WM", catalogBrand: "wm", category: "Factory robot option",
+    description: "A 170cm H-cup custom TPE body with a separately priced Auto Blowjob Sex Robot option. Choose an oral-capable head and the ROS mouth option; do not confuse the separate vaginal suction feature with oral suction.",
+    prerequisites: [{ groupId: "premium-head-body-options", optionId: "real-oral-sex-ros-free", price: 0 }],
+    options: [{ groupId: "premium-head-body-options", optionId: "auto-blowjob-sex-robot", label: "Auto Blowjob Sex Robot" }]
+  },
+  {
+    id: "gid://shopify/Product/10640043442360",
+    handle: "md-mary-168cm-silicone-companion-doll",
+    name: "Mary", brand: "MD Doll", catalogBrand: "md", category: "Factory robot option",
+    description: "A 168cm custom silicone doll. Choose the ROS movable-jaw head type when configuring oral use; Auto Blowjob is a separate body upgrade, not a feature supplied by a hard head.",
+    prerequisites: [{ groupId: "head-type", optionId: "ros-head-movable-jaw", price: 0 }],
+    options: [{ groupId: "premium-head-body-options-multiple", optionId: "auto-blowjob", label: "Auto Blowjob" }]
   },
   {
     id: "gid://shopify/Product/10676884308152",
@@ -71,15 +89,19 @@ export function oralGuideOptionPrice(
   if (!oralGuideExampleMatches(product, example)) return null;
   if (product.extended.stockStatus === "ready_to_ship" || product.tags.some(tag => /^(?:ready_to_ship|in-stock|warehouse-.+)$/i.test(tag))) return null;
   if (!example.options.some(option => option.groupId === groupId && option.optionId === optionId)) return null;
-  const groups = config.groups.filter(group => group.id === groupId);
-  if (groups.length !== 1 || groups[0].visibleWhen !== undefined) return null;
-  const options = groups[0].options.filter(option => option.id === optionId);
-  if (options.length !== 1) return null;
-  const option = options[0];
-  if (option.priceVerified !== true || option.factoryExists === false || option.displayable === false || option.purchasable === false) return null;
-  if (typeof option.priceDelta !== "number" || !Number.isFinite(option.priceDelta) || option.priceDelta < 0) return null;
-  if (config.rules.some(rule => [rule.when, rule.conflictsWith].some(ref => ref.groupId === groupId && ref.optionId === optionId))) return null;
-  return option.priceDelta;
+  function verifiedPrice(groupId: string, optionId: string) {
+    const groups = config.groups.filter(group => group.id === groupId);
+    if (groups.length !== 1 || groups[0].visibleWhen !== undefined) return null;
+    const options = groups[0].options.filter(option => option.id === optionId);
+    if (options.length !== 1) return null;
+    const option = options[0];
+    if (option.priceVerified !== true || option.factoryExists === false || option.displayable === false || option.purchasable === false) return null;
+    if (typeof option.priceDelta !== "number" || !Number.isFinite(option.priceDelta) || option.priceDelta < 0) return null;
+    if (config.rules.some(rule => [rule.when, rule.conflictsWith].some(ref => ref.groupId === groupId && ref.optionId === optionId))) return null;
+    return option.priceDelta;
+  }
+  if ("prerequisites" in example && !example.prerequisites.every(ref => verifiedPrice(ref.groupId, ref.optionId) === ref.price)) return null;
+  return verifiedPrice(groupId, optionId);
 }
 
 export const oralGuideQuestions = [
@@ -89,3 +111,14 @@ export const oralGuideQuestions = [
   { question: "Can I add powered movement to any head and body?", answer: "No. The head needs a suitable oral channel, and the body must support the mechanism. Body version matters as well as height. Confirm the exact head and body combination before choosing motorized movement." },
   { question: "Does a US-stock listing include all these functions?", answer: "Not necessarily. A warehouse body listing may still need a head choice. Confirm the head, installed functions and current location together before relying on a delivery estimate." }
 ] as const;
+
+export function oralGuideFaqSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: oralGuideQuestions.map(item => ({
+      "@type": "Question", name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer }
+    }))
+  };
+}

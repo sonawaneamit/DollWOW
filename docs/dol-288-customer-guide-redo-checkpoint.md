@@ -15,7 +15,59 @@ below are complete.
 - Requires `DOL288_GUIDE_REDO=1`; explicitly rejects production even with flag.
 - No production setting, publication, Shopify write, cart, order or email.
 
-## Latest Expansion: 29 October 23:38 UTC
+## Latest Source And Media Pass: 29 October
+
+Still In Progress and private-only. Current local guide has SIX brand sections
+(Irontech/SE/TopFire/Angelkiss/WM/MD), SIX live-linked photo cards, FIVE useful
+mechanism rows, one credited manufacturer video and visible-content-backed FAQ
+schema. Wider all-brand coverage and hosted acceptance are unfinished.
+
+- Refined only WM/MD non-warehouse queries, six each, saved in
+  `custom-brand-samples-private.json`. The previous48record snapshot was not
+  rerun or replaced. Male WM examples without oral functions were not promoted.
+- Exact custom Karola170H:1777 base /250 robot option; exact custom Mary168/M44:
+  2599 base /249 Auto Blowjob. Both require the reviewed verified zero-price ROS
+  prerequisite to remain present. Missing, repriced, unavailable, conditional or
+  conflicting prerequisite hides the card. No head or cart entitlement changed.
+- Mary's general listing says oral depth N/A, so the guide does NOT represent its
+  photographed/default hard head as oral-ready. It explicitly calls for the ROS
+  movable-jaw selection. These are factory menu quotes, not installed warehouse
+  equipment or proof of an actual server-cart/physical-function test.
+- WM's exact owned99 `Blowjob Sucker` option reference was visually inspected: it
+  depicts vaginal anatomy, not a mouth. The guide excludes that99 from oral
+  pricing and explains the naming trap. The reference is NOT embedded/copied into
+  this page. No explicit media editing/generation or model call.
+- Reused existing `ros-comparison.mp4` and its poster via the existing
+  `ManufacturerVideo` component (only added an export; other consumers unchanged).
+  It is a manual S1/S31 head/jaw comparison, explicitly NOT a powered-motion demo.
+  Video SHA25686387cad481e07db97d14056f101ee191e74c4e6f75e8eb29fba0e8728e54d98;
+  poster SHA256f1298d1e07218743f8e28ae90bba7759643b544c77e090903231a5b8aef20888.
+  Bytes unchanged. Poster/head frames visually checked; actual native playback
+  decoded961x452, advanced beyond10s and naturally ended39.34s. ffprobe confirms
+  video-only stream (silent). No gallery or invented demo.
+- Source HTML check passed: all6cards/live URLs, five nonempty table rows, video
+  source, noindex and exact visible FAQ/schema equality before JavaScript. FAQ
+  markup does not invent publication dates, reviews, ratings or offers.
+-27unit/regression tests (24oral/Chiku +3existing media) pass,4live tests skip
+  normally; separate refined-source and source-HTML tests passed once each.
+  TSC/scoped lint/configured local build/two4950asset gates pass. No remoteNode22
+  or latest CI claim yet.
+- Actual LOCAL1319/390/320 checks: all6original photos decoded, exact six links
+  and prices, no document/card overflow, video widths924/350/280 with native
+  controls and full caption. Karola/Mary original photos visually reviewed.
+  Proof: `six-brand-local-proof.json`, `source-html-proof.json`,
+  `manual-video-mobile320.png`. Viewport reset/local dev server stopped.
+- Private305report23:41:53.976Z:2healthy rows match bounded cells through independent
+  dual row fingerprints/length; approved named sharing/limited parent/date/top-wrap
+  unchanged; no formulas/failed/pending, no Sheet write or PII output.
+
+Next remaining work: supported SY/Jarliet/TopCY/Yeloly/Firefly coverage and exact
+head/body evidence, no false brand/SKU mappings or private-brand publication.
+The current six-brand foundation is not an exhaustive market claim. Finish the
+actual scoped content and exact hosted private proof before requesting acceptance.
+Any new draft PR is WIP only; PR213 remains superseded and unmerged.
+
+## Previous Expansion: 29 October 23:38 UTC
 
 Still In Progress, not a finished all-brand guide or a hosted acceptance preview.
 Continue this same branch; do not restart, resample the same48 products or patch

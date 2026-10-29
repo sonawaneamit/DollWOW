@@ -3,11 +3,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, Minus } from "lucide-react";
 import { DisplayMoney } from "@/components/CurrencyProvider";
+import { ManufacturerVideo } from "@/components/FeatureGuideMedia";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { includedBuildItems } from "@/lib/customization/chiku-preview";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
-import { oralGuideExampleMatches, oralGuideExamples, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
+import { oralGuideExampleMatches, oralGuideExamples, oralGuideFaqSchema, oralGuideOptionPrice, oralGuideQuestions, oralGuideSources } from "@/lib/learn/oralGuide";
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -36,6 +37,7 @@ export default async function OralFeaturesReview() {
   }
 
   return <article className={styles.guide}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(oralGuideFaqSchema()).replace(/</g, "\\u003c") }} />
     <header className={styles.intro}>
       <p className={styles.eyebrow}>DollWOW Buying Guide</p>
       <h1>Oral features compared</h1>
@@ -63,6 +65,8 @@ export default async function OralFeaturesReview() {
         <p>ROS MAX is a head design with an opening jaw. Irontech sells powered oral movement separately. A ROS MAX head alone does not make a doll motorized.</p>
         <p>For powered movement, confirm the exact body version: Irontech&apos;s movement instructions exclude certain silicone bodies. Do not assume a feature fits because it appears in a general options list.</p>
         <a href={oralGuideSources[0].href}>Irontech movement instructions <ArrowRight size={16} /></a>
+        <ManufacturerVideo name="ros-comparison" label="Irontech S1 ROS and S31 ROS MAX manual jaw comparison" source={oralGuideSources[1].href}
+          caption="Irontech compares the S1 ROS and S31 ROS MAX heads and demonstrates the mouth and jaw by hand. This shows manual head structure, not a powered neck or suction function." />
       </div></div>
       <div className={styles.brandRow}><h3>SE Doll</h3><div>
         <p>SE&apos;s newer Blowjob Sexbot moves the head from a neck-mounted mechanism. Its separate silicone ROS-head system offers suction with sound, plus optional heating.</p>
@@ -78,6 +82,16 @@ export default async function OralFeaturesReview() {
         <p>Angelkiss offers oral suction and heating on selected ROS silicone heads. Its manufacturer announcement names S198, S266, S273, LS59 and LS60. A hard or standard head is not interchangeable with that feature choice.</p>
         <p>This route suits buyers who want mouth functions rather than powered neck movement. Choose the exact compatible head first; do not assume a feature shown on one face comes with every Angelkiss doll.</p>
         <a href={oralGuideSources[5].href}>Angelkiss ROS-head details <ArrowRight size={16} /></a>
+      </div></div>
+      <div className={styles.brandRow}><h3>WM</h3><div>
+        <p>Look for &ldquo;Auto Blowjob Sex Robot&rdquo; when comparing WM&apos;s factory robot option. The ROS mouth structure is a separate choice; it does not power the head by itself.</p>
+        <p>WM&apos;s &ldquo;Blowjob Sucker&rdquo; label is a naming trap: that separate option is vaginal suction, not an oral-head upgrade. Start with the head and named function, not that label alone.</p>
+        <a href={oralGuideSources[7].href}>Compare Karola&apos;s custom options <ArrowRight size={16} /></a>
+      </div></div>
+      <div className={styles.brandRow}><h3>MD Doll</h3><div>
+        <p>MD lists Auto Blowjob separately from the ROS movable-jaw head type. Choose the ROS head for oral use, then the powered upgrade; a hard silicone head is not the same configuration.</p>
+        <p>This is a custom-build choice, not a promise that an existing warehouse doll has a motor installed. Mary&apos;s current options below keep the head choice and the body upgrade distinct.</p>
+        <a href={oralGuideSources[8].href}>Compare Mary&apos;s head and body options <ArrowRight size={16} /></a>
       </div></div>
     </section>
 
