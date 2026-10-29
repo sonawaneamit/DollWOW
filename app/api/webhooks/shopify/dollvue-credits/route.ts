@@ -54,7 +54,7 @@ export async function POST(request:Request) {
   let payload:unknown;
   try {payload=JSON.parse(raw.toString('utf8'));} catch {return NextResponse.json({error:'Invalid JSON.'},{status:400});}
   if(topic!=='orders/paid') {
-    const parsed=z.object(topic==='refunds/create'?{order_id:orderId}:{id:orderId}).safeParse(payload);
+    const parsed=z.object(topic==='refunds/create'?{order_id:orderId}:{id:orderId,cancelled_at:z.iso.datetime({offset:true})}).safeParse(payload);
     if(!parsed.success) return NextResponse.json({error:'Invalid order identity.'},{status:400});
     const id='order_id' in parsed.data?parsed.data.order_id:parsed.data.id;
     const {error}=await db.rpc('dollvue_hold_credit_order',{

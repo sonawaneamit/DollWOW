@@ -61,7 +61,7 @@ it('keeps database errors and unexpected RPC responses retryable without exposin
   expect(await result.text()).not.toContain('private database detail');
   mocks.rpc.mockResolvedValue({data:null,error:null});expect((await POST(request())).status).toBe(503);
 });
-it.each([['refunds/create',{order_id:100},'refund'],['orders/cancelled',{id:100},'cancelled']] as const)(
+it.each([['refunds/create',{order_id:100},'refund'],['orders/cancelled',{id:100,cancelled_at:'2026-10-29T10:00:00Z'},'cancelled']] as const)(
   'records %s as review, not an invented refund or replay',async(topic,payload,reason)=>{
     mocks.rpc.mockResolvedValue({data:null,error:null});
     expect((await POST(request(payload,{'x-shopify-topic':topic}))).status).toBe(200);
@@ -70,4 +70,8 @@ it.each([['refunds/create',{order_id:100},'refund'],['orders/cancelled',{id:100}
 it('retries a refund hold failure instead of claiming it recorded',async()=>{
   mocks.rpc.mockResolvedValue({data:null,error:{message:'fixture'}});
   expect((await POST(request({order_id:100},{'x-shopify-topic':'refunds/create'}))).status).toBe(503);
+});
+it('does not treat a signed paid body with a changed topic header as cancellation',async()=>{
+  expect((await POST(request(paid(),{'x-shopify-topic':'orders/cancelled'}))).status).toBe(400);
+  expect(mocks.rpc).not.toHaveBeenCalled();
 });

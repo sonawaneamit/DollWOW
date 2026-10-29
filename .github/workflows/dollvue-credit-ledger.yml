@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'app/api/webhooks/shopify/dollvue-credits/**'
+      - 'app/api/internal/dollvue-credit-receipts/**'
       - 'lib/dollvue/**'
       - 'supabase/migrations/**'
       - 'tests/dollVueCredit*.test.ts'
@@ -19,5 +20,5 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx vitest run tests/dollVueCreditPacks.test.ts tests/dollVueCreditWebhook.test.ts
+      - run: npx vitest run tests/dollVueCreditPacks.test.ts tests/dollVueCreditWebhook.test.ts tests/dollVueCreditReceipts.test.ts
       - run: npm run test:dollvue-ledger

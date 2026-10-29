@@ -33,8 +33,15 @@ The existing three drafts remain the only approved products: 5/$5, 12/$10,
   retryable errors; no raw body, recipient or credentials are logged.
 - Fulfilment is OFF unless explicitly enabled in production. It is always OFF
   on preview. The original order analytics endpoint remains untouched.
-- The confirmation outbox is durable, but its sender/worker is NOT implemented
-  or scheduled. Do not mistake an outbox row for a sent confirmation email.
+- The confirmation worker is now staged and unit-tested, not enabled or
+  scheduled. It leases one pending receipt with a private claim token; other
+  workers cannot claim it again. Provider rejection, exception, expired sending
+  lease or lost persistence moves the item to manual review rather than blindly
+  duplicating a message. Provider acceptance is not inbox-delivery proof.
+- Its private POST route requires both production activation and a configured
+  32+ character bearer secret. No worker credential was generated/provisioned,
+  no scheduler registered, no actual mail sent, and no sender settings changed.
+  Activation still depends on the approved sender-isolation plan on DOL-305.
 
 Run `npm run test:dollvue-ledger` after installing the pinned PGlite dev dependency.
 The local proof used the same version already installed in an isolated QA folder
@@ -44,8 +51,10 @@ multi-connection PostgreSQL concurrency test is still required before activation
 
 ## Remaining Before Ready
 
-1. Finish and test confirmation delivery/retry ownership without duplicate credit
-   grants; surface permanent failures privately. Receipt delivery is not inbox proof.
+1. Verify the deployed confirmation worker with the approved sender configuration,
+   scheduler and private failure monitoring. Ambiguous/stale sends require an
+   operator to check provider/inbox evidence before requeuing; do not automatically
+   retry them. No manual requeue or schema application has been performed.
 2. Implement a verified non-explicit generation path and connect reservations to
    it, including failures and retries. Current live generation source still sends
    `safe_mode:false` and contains an uncensored fallback. No claim that a new

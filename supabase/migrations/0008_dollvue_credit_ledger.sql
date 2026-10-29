@@ -31,6 +31,9 @@ create table public.dollvue_credit_receipts (
   email text not null,
   credits integer not null,
   status text not null default 'pending' check (status in ('pending', 'sending', 'accepted', 'failed', 'review')),
+  claim_token uuid,
+  attempted_at timestamptz,
+  accepted_at timestamptz,
   created_at timestamptz not null default now(),
   primary key (shop, order_id),
   foreign key (shop, order_id) references public.dollvue_credit_orders(shop, order_id)
@@ -148,3 +151,36 @@ revoke all on function public.dollvue_grant_paid_credits(text,text,text,text,int
 grant execute on function public.dollvue_grant_paid_credits(text,text,text,text,integer,text),
   public.dollvue_hold_credit_order(text,text,text),public.dollvue_reserve_preview(text,uuid),
   public.dollvue_finish_preview(text,uuid,boolean,text,jsonb) to service_role;
+
+-- Lease one receipt. A crashed/ambiguous delivery goes to review, never blind resend.
+create function public.dollvue_claim_credit_receipt()
+returns setof public.dollvue_credit_receipts language plpgsql set search_path = public, pg_temp as $$
+begin
+  update dollvue_credit_receipts set status='review'
+    where status='sending' and attempted_at<=now()-interval '20 minutes';
+  return query
+    update dollvue_credit_receipts r set status='sending',claim_token=gen_random_uuid(),attempted_at=now()
+    where (r.shop,r.order_id) in (
+      select q.shop,q.order_id from dollvue_credit_receipts q
+      where q.status='pending' and not exists (
+        select 1 from dollvue_credit_holds h where h.shop=q.shop and h.order_id=q.order_id
+      ) order by q.created_at,q.shop,q.order_id for update of q skip locked limit 1
+    ) returning r.*;
+end $$;
+
+create function public.dollvue_complete_credit_receipt(
+  p_shop text,p_order_id text,p_claim_token uuid,p_accepted boolean
+) returns boolean language plpgsql set search_path = public, pg_temp as $$
+declare changed integer;
+begin
+  if p_accepted is null then raise exception 'Missing receipt outcome'; end if;
+  update dollvue_credit_receipts set status=case when p_accepted then 'accepted' else 'review' end,
+    accepted_at=case when p_accepted then now() else null end
+    where shop=p_shop and order_id=p_order_id and claim_token=p_claim_token and status='sending';
+  get diagnostics changed=row_count;
+  return changed=1;
+end $$;
+revoke all on function public.dollvue_claim_credit_receipt(),
+  public.dollvue_complete_credit_receipt(text,text,uuid,boolean) from public,anon,authenticated;
+grant execute on function public.dollvue_claim_credit_receipt(),
+  public.dollvue_complete_credit_receipt(text,text,uuid,boolean) to service_role;

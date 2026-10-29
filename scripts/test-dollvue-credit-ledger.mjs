@@ -46,6 +46,26 @@ try {
   await db.query("update dollvue_credit_reservations set expires_at=now()-interval '1 minute' where id=$1",[expired]);
   await eq(finish,[other,expired,true,'fixture',{}],'released');
   await eq('select count(*)::int from ai_usage_events where user_email_hash=$1',[other],0);
+  const receiptFinish='select dollvue_complete_credit_receipt($1,$2,$3,$4)';
+  const olderClaim=(await db.query('select * from dollvue_claim_credit_receipt()')).rows[0];
+  assert.equal(olderClaim.order_id,'100');assertions++;
+  await eq(receiptFinish,[olderClaim.shop,olderClaim.order_id,olderClaim.claim_token,false],true);
+  await eq('select status from dollvue_credit_receipts where order_id=$1',['100'],'review');
+  const receiptHash='d'.repeat(64);
+  await eq(grant,['fixture.myshopify.com','103',receiptHash,'receipt@example.invalid',12,fingerprint],'granted');
+  const firstClaim=(await db.query('select * from dollvue_claim_credit_receipt()')).rows[0];
+  assert.equal(firstClaim.order_id,'103');assert.equal(firstClaim.status,'sending');assertions+=2;
+  await eq('select count(*)::int from dollvue_claim_credit_receipt()',[],0);
+  await eq(receiptFinish,[firstClaim.shop,firstClaim.order_id,randomUUID(),true],false);
+  await eq(receiptFinish,[firstClaim.shop,firstClaim.order_id,firstClaim.claim_token,true],true);
+  await eq(receiptFinish,[firstClaim.shop,firstClaim.order_id,firstClaim.claim_token,true],false);
+  await eq('select status from dollvue_credit_receipts where order_id=$1',['103'],'accepted');
+  await eq(grant,['fixture.myshopify.com','104',receiptHash,'receipt@example.invalid',5,fingerprint],'granted');
+  const staleClaim=(await db.query('select * from dollvue_claim_credit_receipt()')).rows[0];
+  assert.equal(staleClaim.order_id,'104');assertions++;
+  await db.query("update dollvue_credit_receipts set attempted_at=now()-interval '21 minutes' where order_id='104'");
+  await eq('select count(*)::int from dollvue_claim_credit_receipt()',[],0);
+  await eq('select status from dollvue_credit_receipts where order_id=$1',['104'],'review');
   await assert.rejects(db.query(finish,[null,loser,true,'fixture',{}]),/Invalid completion/); assertions++;
   // A refund arriving before paid delivery cannot be followed by a grant.
   await db.query("select public.dollvue_hold_credit_order($1,$2,'refund')",['fixture.myshopify.com','101']);
@@ -65,6 +85,7 @@ try {
   await db.exec('reset role; set role anon');
   await assert.rejects(db.query('select * from dollvue_credit_receipts'),/permission denied/); assertions++;
   await assert.rejects(db.query(grant,args),/permission denied/); assertions++;
+  await assert.rejects(db.query('select * from dollvue_claim_credit_receipt()'),/permission denied/); assertions++;
   await db.exec('reset role; set role authenticated');
   await assert.rejects(db.query(reserve,[hash,randomUUID()]),/permission denied/); assertions++;
   console.log(JSON.stringify({status:'PASS',assertions,environment:'isolated PGlite; no live migration, order, email or grant'}));
