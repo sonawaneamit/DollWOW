@@ -114,8 +114,9 @@ wired to the public generation route or populated with product content approvals
 The adapter has one fixed model, filtered requests only, no URL inputs/fallback,
 bounded output, and rejects adult/unknown classification before reading images.
 The review validator binds product/menu fingerprint, source position and every
-owned input digest. Appearance-ready alone does not pass. No real image API call
-or explicit-attachment processing was used in these tests.
+owned input digest. Appearance-ready alone does not pass. Initial adapter tests
+were mocked; the later geometric live transport proof below is separate. No
+explicit attachment or customer image was processed.
 
 ## Pending Private Recovery Policy
 
@@ -144,3 +145,30 @@ changed in preparation; do not deploy callers against an older staged schema.
 No public generation route, model invocation, retention or paid activation was
 introduced. Next is authenticated reviewed-input orchestration and recovery,
 not more draft creation or a claim that end-to-end checkout is ready.
+
+## 29 October 13:14 Preparation And Transport Proof
+
+`prepareNonExplicitRequest` is now an internal server-only preparation helper,
+not a public route. It requires the signed session and matching canonical or
+configured preview origin, bounded strict JSON, fresh strict product lookup,
+current safety/appearance eligibility and compatible image-backed menu choices.
+It derives source/reference URLs, prompt and fingerprint from server facts;
+browser-supplied email, review pins and prompt overrides are rejected. The real
+separate non-explicit content registry is EMPTY, so no product is newly approved.
+The returned recipient/review details are private and must never be serialized
+as a browser response. Region/rate/daily guards, byte normalization, reservation,
+provider invocation, branded result recovery and delivery still require the
+future orchestration; preparation alone is not ready or live.
+
+One authorized real transport test at 13:13-13:14 used only a synthetic red square
+on white, asking for a green square. The fixed filtered adapter succeeded with
+`x-venice-is-blurred:false`, returned a valid 2048x2048 image, and visual inspection
+confirmed a green square on white. No fallback or customer/catalog image was
+used. The result hash is recorded privately in
+`data/exports/dol-306-2026-10-29/safe-transport/transport-result.json`.
+This proves one real clean-response transport, not recall/accuracy of adult
+classification, deployed checkout, a published filter or production fulfilment.
+The test is opt-in only (`DOLLVUE_SAFE_TRANSPORT_QA=1`) and skipped by default;
+ordinary CI never calls the provider. Do not repeat the model call unnecessarily.
+No order, confirmation email, retained customer image or database migration was
+created. The live free route and all pack publication holds remain unchanged.
