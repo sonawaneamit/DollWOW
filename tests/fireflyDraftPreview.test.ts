@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { fireflyDraftPreviewProducts, fireflyDraftPreviewProduct, fireflyDraftRecipe } from '@/lib/catalog/fireflyDraftPreview';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { templateConfigurationPresets } from '@/lib/customization/template-presets';
-import { getDefaultSelections } from '@/lib/customization/resolve';
+import { getDefaultSelections, getOptionConflict } from '@/lib/customization/resolve';
 
 function preview() {
   vi.stubEnv('VERCEL_ENV','preview');
@@ -48,6 +48,16 @@ describe('Firefly isolated draft review',()=>{
   it('preserves the exact supplier authorization original',()=>{
     expect(crypto.createHash('sha256').update(fs.readFileSync('public/images/authorizations/firefly-doll-authorized.png')).digest('hex'))
       .toBe('19cbfcb52b27a9b3aca5cfc7d753558428103801fee0f27400cad71785aa11fd');
+  });
+  it.each([0,1,2,3])('retains source-reviewed loose/standing conflicts in both selection orders for row%s',index=>{
+    preview();const p=fireflyDraftPreviewProducts()[index];const config=getCustomizationConfig(p);
+    for(const standing of ['standing-free','standing-without-bolts-orig-120-free']) {
+      expect(getOptionConflict(config, {'premium-body-options-multiple':['loose-joint-free']}, 'standing-add-on', standing)).toBeTruthy();
+      expect(getOptionConflict(config, {'standing-add-on':standing}, 'premium-body-options-multiple', 'loose-joint-free')).toBeTruthy();
+    }
+    expect(getCustomizationConfig({...p,id:'gid://shopify/Product/unreviewed'}).rules).toEqual([]);
+    vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','production');vi.stubEnv('VERCEL_ENV','production');
+    expect(getCustomizationConfig(p).rules).toEqual([]);
   });
   it('keeps Firefly hidden from production navigation and authorizations',async()=>{
     vi.resetModules();vi.stubEnv('VERCEL_ENV','production');vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV','production');vi.stubEnv('NEXT_PUBLIC_DOL262_PREVIEW','1');
