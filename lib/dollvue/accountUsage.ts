@@ -31,6 +31,7 @@ export async function recordDollVuePreview(input: {
   productHandle: string;
   selectionCount: number;
   cacheHit: boolean;
+  selectedOptions?: Array<{ group: string; option: string }>;
   country?: string;
 }) {
   const supabase = getSupabaseServerClient();
@@ -45,6 +46,7 @@ export async function recordDollVuePreview(input: {
     metadata: {
       product_handle: input.productHandle,
       selection_count: input.selectionCount,
+      selected_options: input.selectedOptions,
       cache_hit: input.cacheHit,
       country: input.country || "unknown"
     }

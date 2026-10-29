@@ -1,5 +1,6 @@
 import {afterEach,beforeEach,describe,expect,it,vi} from 'vitest';
-const mocks=vi.hoisted(()=>({rateLimit:vi.fn(),getProduct:vi.fn(),token:vi.fn(),sendEmail:vi.fn(),currentEligibility:vi.fn(),fetch:vi.fn()}));
+const mocks=vi.hoisted(()=>({rateLimit:vi.fn(),getProduct:vi.fn(),token:vi.fn(),sendEmail:vi.fn(),currentEligibility:vi.fn(),fetch:vi.fn(),begin:vi.fn(),update:vi.fn()}));
+vi.mock('@/lib/dollvue/submissions',()=>({beginDollVueSubmission:mocks.begin,updateDollVueSubmission:mocks.update}));
 vi.mock('@/lib/ai/rateLimit',()=>({checkRateLimit:mocks.rateLimit}));
 vi.mock('@/lib/shopify/storefront',()=>({getProductByHandle:mocks.getProduct}));
 vi.mock('@/lib/dollvue/session',()=>({createDollVueAccessToken:mocks.token}));
@@ -13,7 +14,8 @@ function request(body:unknown={email:'Customer@Example.test',handle:'reviewed-do
 beforeEach(()=>{
  vi.resetAllMocks();
  mocks.rateLimit.mockResolvedValue({allowed:true,resetAt:new Date(Date.now()+3600000).toISOString()});
- mocks.getProduct.mockResolvedValue({handle:'reviewed-doll',dollVueAvailable:true});
+ mocks.getProduct.mockResolvedValue({handle:'reviewed-doll',title:'Reviewed doll',extended:{},dollVueAvailable:true});
+ mocks.begin.mockResolvedValue(true);mocks.update.mockResolvedValue(true);
  mocks.currentEligibility.mockResolvedValue({available:true});
  mocks.token.mockReturnValue('signed+token/with=encoding');
  mocks.sendEmail.mockResolvedValue({delivered:true,provider:'google_workspace'});
@@ -45,7 +47,7 @@ describe('DollVue access delivery contract',()=>{
   mocks.getProduct.mockRejectedValue(new Error('Unavailable'));expect((await POST(request())).status).toBe(503);expect(mocks.sendEmail).not.toHaveBeenCalled();
  });
  it('rechecks a cold false flag and sends only when the fresh check succeeds',async()=>{
-  mocks.getProduct.mockResolvedValue({handle:'reviewed-doll',dollVueAvailable:false});const r=await POST(request());expect(r.status).toBe(200);expect(await r.json()).toEqual({ok:true,status:'sent'});expect(mocks.currentEligibility).toHaveBeenCalledWith(expect.anything(),{holdTimeoutMs:8000});expect(mocks.sendEmail).toHaveBeenCalledTimes(1);
+  mocks.getProduct.mockResolvedValue({handle:'reviewed-doll',title:'Reviewed doll',extended:{},dollVueAvailable:false});const r=await POST(request());expect(r.status).toBe(200);expect(await r.json()).toEqual({ok:true,status:'sent'});expect(mocks.currentEligibility).toHaveBeenCalledWith(expect.anything(),{holdTimeoutMs:8000});expect(mocks.sendEmail).toHaveBeenCalledTimes(1);
  });
  it.each([false,null])('never bypasses a current hold/unavailable check: %s',async available=>{
   mocks.currentEligibility.mockResolvedValue(available===null?null:{available});expect((await POST(request())).status).toBe(503);expect(mocks.token).not.toHaveBeenCalled();
@@ -62,6 +64,14 @@ describe('DollVue access delivery contract',()=>{
  });
  it('sends one encoded link only after eligibility and accepted delivery',async()=>{
   const r=await POST(request());expect(await r.json()).toEqual({ok:true,status:'sent'});expect(r.headers.get('cache-control')).toBe('no-store');
-  expect(mocks.token).toHaveBeenCalledWith('customer@example.test','reviewed-doll');expect(mocks.sendEmail).toHaveBeenCalledWith(expect.objectContaining({to:'customer@example.test',text:expect.stringContaining('token=signed%2Btoken%2Fwith%3Dencoding')}));
+  expect(mocks.token).toHaveBeenCalledWith('customer@example.test','reviewed-doll',expect.any(Number),expect.any(String));expect(mocks.sendEmail).toHaveBeenCalledWith(expect.objectContaining({to:'customer@example.test',text:expect.stringContaining('token=signed%2Btoken%2Fwith%3Dencoding')}));
+ });
+ it('does not send unrecorded requests when private storage is unavailable',async()=>{
+  mocks.begin.mockResolvedValue(false);const r=await POST(request());expect(r.status).toBe(503);expect((await r.json()).code).toBe('submission_unavailable');expect(mocks.sendEmail).not.toHaveBeenCalled();
+ });
+ it('records provider failure without exposing the email in diagnostic responses',async()=>{
+  mocks.sendEmail.mockResolvedValue({delivered:false,provider:'none'});const r=await POST(request());
+  expect(mocks.update).toHaveBeenCalledWith(expect.any(String),'customer@example.test',{delivery_status:'failed',delivery_provider:'none'});
+  expect(JSON.stringify(await r.json())).not.toContain('customer@');
  });
 });
