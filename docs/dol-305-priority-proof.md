@@ -19,10 +19,10 @@ Old delivered mail cannot be updated retrospectively.
   now redirect to the apex; queries are preserved without logging them. The
   redirect is no-store/no-referrer. POST requests are not redirected or replayed.
   No cookie-domain expansion or entitlement change is introduced.
-- Watermark text is shaped to SVG outlines using the already used Hanken font
+- Safe synthetic watermark text is shaped to SVG outlines using the already used Hanken font
   bundled from Fontsource, not looked up through server OS fonts. The existing
   watermark label remains attribution, not a new content-generation capability.
-  A separate cache-version key prevents reuse of the previous rendered label.
+  This is review-only: the unrestricted generation route is unchanged.
 - Safe footer prototype typography uses the same outlines. Its logo retains
   alpha and sits on white; option labels and public product QR remain unchanged.
   The full footer is NOT automatically wired to unrestricted generation.
