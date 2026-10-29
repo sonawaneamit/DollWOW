@@ -82,3 +82,19 @@ That is not the full cost of retries/fallbacks, payment fees or tax, and must no
 be presented as guaranteed pack margin. Recalculate against the final supported
 non-explicit model path before activation. Refund/revocation policy is not
 invented by the review-hold mechanism.
+
+## Next Integration: Verified Provider Behavior
+
+Read the current official multi-edit documentation on 29 October:
+https://docs.venice.ai/api-reference/endpoint/image/multi-edit
+
+Its documented `safe_mode:true` blurs images classified as adult content; the
+`x-venice-is-blurred` response header reports that result. It is not documented
+as an input-review policy or a guarantee of non-explicit generation. Therefore
+do not simply flip the existing flag and claim the whole path verified. The
+supported paid path must retain safety-reviewed non-explicit source/reference
+inputs, request the filter, reject blurred/unknown outcomes before delivery or
+credit completion, exclude the uncensored fallback, and isolate its cache from
+the old route. Test with non-explicit fixtures only, including missing/unknown
+filter headers and refusal paths. This is an implementation checkpoint, not a
+claim that these guards are already live or that safety holds can be removed.
