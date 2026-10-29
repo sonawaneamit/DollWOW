@@ -87,6 +87,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
+    "fontkit": "2.0.4",
     "lucide-react": "^0.561.0",
     "next": "16.2.11",
     "nodemailer": "^9.0.3",
@@ -99,6 +100,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
+    "@types/fontkit": "2.0.9",
     "@types/node": "^25.0.3",
     "@types/nodemailer": "^8.0.1",
     "@types/qrcode": "^1.5.6",

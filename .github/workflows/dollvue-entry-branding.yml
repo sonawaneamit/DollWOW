@@ -1,0 +1,24 @@
+name: DollVue entry and branding
+on:
+  pull_request:
+    paths:
+      - 'proxy.ts'
+      - 'next.config.ts'
+      - 'lib/dollvue/**'
+      - 'app/dollvue/**'
+      - 'app/review/dollvue-*/**'
+      - 'tests/dollVue*.test.ts'
+      - 'tests/dollVue*.test.tsx'
+      - 'package*.json'
+      - '.github/workflows/dollvue-entry-branding.yml'
+jobs:
+  entry-branding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx vitest run tests/dollVueBranding.test.ts tests/dollVueOutlinedText.test.ts tests/dollVueCanonicalEntry.test.ts tests/dollVueExhaustedReview.test.tsx tests/dollVueAccessOrigin.test.ts tests/dollVueSession.test.ts tests/dollVueAccess.test.ts tests/dollVueVerification.test.ts

@@ -5,6 +5,17 @@ import { isPublicMarkdownPath, markdownPathFor } from "@/lib/seo/publicMarkdownP
 import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
 
 export function proxy(request: NextRequest) {
+  if (request.nextUrl.hostname === 'www.dollwow.com' && request.nextUrl.pathname.startsWith('/dollvue/') &&
+    (request.method === 'GET' || request.method === 'HEAD')) {
+    const canonical = request.nextUrl.clone();
+    canonical.protocol = 'https:';
+    canonical.hostname = 'dollwow.com';
+    canonical.port = '';
+    const response = NextResponse.redirect(canonical, 307);
+    response.headers.set('Cache-Control', 'private, no-store');
+    response.headers.set('Referrer-Policy', 'no-referrer');
+    return response;
+  }
   if (request.nextUrl.pathname.startsWith("/cart/c") || request.nextUrl.pathname.startsWith("/checkouts")) {
     const checkoutDomain = (env.SHOPIFY_CHECKOUT_DOMAIN || "checkout.dollwow.com").replace(/^https?:\/\//, "").replace(/\/$/, "");
     const checkoutUrl = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, `https://${checkoutDomain}`);
@@ -102,6 +113,7 @@ export const config = {
     "/compare",
     "/customize",
     "/dollvue",
+    "/dollvue/:path*",
     "/faq",
     "/factory-photos",
     "/help-me-choose",

@@ -3,8 +3,9 @@ import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
 import QRCode from 'qrcode';
+import {outlinedText} from './outlinedText';
 
-export const DOLLVUE_BRANDING_VERSION = 'share-footer-white-v3-transparent-logo';
+export const DOLLVUE_BRANDING_VERSION = 'share-footer-white-v4-outlined-font';
 
 export function dollVuePublicReturnUrl(handle: string) {
   if (!/^[a-z0-9_-]{1,180}$/.test(handle)) throw new Error('Invalid public product handle');
@@ -36,13 +37,11 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
   const label = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${footerHeight}">
     <rect width="100%" height="100%" fill="#ffffff"/>
     <path d="M0 1H${width}" stroke="#d3ad63" stroke-width="2"/>
-    <g font-family="Arial,Helvetica,sans-serif" fill="#17251f">
-      ${lines.map((line, index) => `<text x="${inset}" y="${Math.round((142 + index * 24) * scale)}" font-size="${Math.round(18 * scale)}">${escapeSvg(line)}</text>`).join('')}
-      <text x="${inset}" y="${Math.round((166 + lines.length * 24) * scale)}" font-size="${Math.round(29 * scale)}" font-weight="700">Created with DollVue</text>
-      <text x="${inset}" y="${Math.round((198 + lines.length * 24) * scale)}" font-size="${Math.round(20 * scale)}">Powered by DollWOW.com</text>
-      <text x="${inset}" y="${Math.round((232 + lines.length * 24) * scale)}" font-size="${Math.round(16 * scale)}" fill="#4d6258">AI visual preview &#183; not the finished product</text>
-      <text x="${width - inset - qrSize / 2}" y="${Math.round(222 * scale)}" text-anchor="middle" font-size="${Math.round(15 * scale)}">Scan to view this doll</text>
-    </g>
+    ${lines.map((line,index)=>outlinedText(line,{x:inset,y:Math.round((142+index*24)*scale),size:Math.round(18*scale),fill:'#17251f'}).svg).join('')}
+    ${outlinedText('Created with DollVue',{x:inset,y:Math.round((166+lines.length*24)*scale),size:Math.round(29*scale),fill:'#17251f'}).svg}
+    ${outlinedText('Powered by DollWOW.com',{x:inset,y:Math.round((198+lines.length*24)*scale),size:Math.round(20*scale),fill:'#17251f'}).svg}
+    ${outlinedText('AI visual preview - not the finished product',{x:inset,y:Math.round((232+lines.length*24)*scale),size:Math.round(16*scale),fill:'#4d6258'}).svg}
+    ${outlinedText('Scan to view this doll',{x:width-inset-qrSize/2,y:Math.round(222*scale),size:Math.round(15*scale),fill:'#17251f',anchor:'middle'}).svg}
   </svg>`);
   const footer = await sharp(label).composite([
     { input: logo, left: inset, top: Math.round(16 * scale) },
@@ -56,8 +55,4 @@ export async function brandDollVuePreview(bytes: Buffer, productHandle: string, 
 function wrapFooterText(text: string) {
   const chunks = text.match(/.{1,44}(?:\s|$)|\S{1,44}/g) ?? [];
   return chunks.map(chunk => chunk.trim());
-}
-
-function escapeSvg(text: string) {
-  return text.replace(/[&<>"']/g, value => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[value]!));
 }
