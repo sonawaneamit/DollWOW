@@ -124,6 +124,7 @@ export default async function BrandHubPage({
 
       {!compactBrowsing ? authorization : null}
       {isGynoidPreview ? <p className="mb-6 text-sm leading-6">Gynoid confirms M8 connectors on all bodies currently on sale. Gynoid does not offer an adapter.</p> : null}
+      {isGynoidPreview ? <p className="mb-6 text-sm"><Link className="underline underline-offset-4" href="/review/gynoid-prices">Review the 29 October final price proposal</Link></p> : null}
 
       <GuideLinkRow label={`${brand.label} related guides`} className={`${compactBrowsing ? "collection-guide-links mb-6" : "mb-8"} flex flex-wrap gap-3`} tabIndex={compactBrowsing ? 0 : undefined} previewFocusScrolling={compactBrowsing && (["dolls-castle", "moonvale", "tantaly"].includes(brand.value) || process.env.VERCEL_ENV === "preview")}>
         {relatedLinks.map((link) => (

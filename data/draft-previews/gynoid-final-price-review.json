@@ -1,0 +1,10 @@
+[
+  {"model":"M10","version":"Standard","heightCm":172,"priorUSD":5299,"proposedUSD":5299,"referenceHandle":"gynoid-kelly-eveline-172cm-silicone-companion-doll-model-10"},
+  {"model":"M11","version":"Standard","heightCm":162,"priorUSD":4799,"proposedUSD":4799,"referenceHandle":"gynoid-ji-xiang-eye-closed-162cm-silicone-companion-doll-model-11"},
+  {"model":"M13","version":"Standard","heightCm":170,"priorUSD":5299,"proposedUSD":5299,"referenceHandle":"gynoid-lisa-170cm-silicone-companion-doll-model-13"},
+  {"model":"M13","version":"Deluxe","heightCm":170,"priorUSD":5299,"proposedUSD":5799,"referenceHandle":null},
+  {"model":"M16","version":"Standard","heightCm":165,"priorUSD":4799,"proposedUSD":4799,"referenceHandle":"gynoid-wan-ying-165cm-silicone-companion-doll-model-16"},
+  {"model":"M18","version":"Standard","heightCm":168,"priorUSD":4999,"proposedUSD":4999,"referenceHandle":"gynoid-lisa-scott-168cm-silicone-companion-doll-model-18"},
+  {"model":"M21","version":"Standard","heightCm":164,"priorUSD":4799,"proposedUSD":4799,"referenceHandle":"gynoid-elsa-164cm-silicone-companion-doll-model-21"},
+  {"model":"M21","version":"Deluxe","heightCm":164,"priorUSD":4799,"proposedUSD":5099,"referenceHandle":null}
+]
