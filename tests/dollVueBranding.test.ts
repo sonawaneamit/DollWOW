@@ -9,6 +9,8 @@ const mocks = vi.hoisted(() => ({ send: vi.fn() }));
 vi.mock('@/lib/email/sendEmail', () => ({ sendEmail: mocks.send }));
 import { sendDollVueLookEmail } from '@/lib/dollvue/email';
 import BrandingReview, { metadata as reviewMetadata } from '@/app/review/dollvue-branding/page';
+import {brandingReviewFixture,BRANDING_REVIEW_HANDLE,BRANDING_REVIEW_SELECTIONS} from '@/lib/dollvue/brandingReviewFixture';
+import {renderToStaticMarkup} from 'react-dom/server';
 
 const handle = 'top-fire-doll-grace-162cm-i-cup-silicone-companion-doll';
 beforeEach(() => { mocks.send.mockReset().mockResolvedValue({ delivered: true, provider: 'test-only' }); });
@@ -62,3 +64,21 @@ it('keeps the synthetic review noindex and inaccessible in production', async ()
   try { await expect(BrandingReview()).rejects.toThrow('NEXT_HTTP_ERROR_FALLBACK;404'); }
   finally { vi.unstubAllEnvs(); }
 });
+
+it('keeps the safe web image, downloaded file and normal email attachment byte-identical',async()=>{
+  const {preview}=await brandingReviewFixture();
+  vi.stubEnv('VERCEL_ENV','preview');
+  let html:string;
+  try {html=renderToStaticMarkup(await BrandingReview());} finally {vi.unstubAllEnvs();}
+  const dataUrl=`data:image/webp;base64,${preview.toString('base64')}`;
+  expect(html).toContain(`href="${dataUrl}"`);expect(html).toContain(`src="${dataUrl}"`);
+  expect(html).toContain('download="dollwow-dollvue-branded-preview.webp"');
+  await sendDollVueLookEmail({to:'fixture@example.invalid',productName:'Safe synthetic QA sample',
+    productUrl:dollVuePublicReturnUrl(BRANDING_REVIEW_HANDLE),sourceImageUrl:'invalid:no-source-fetch',
+    previewDataUrl:dataUrl,selections:BRANDING_REVIEW_SELECTIONS,downloadablePreview:true});
+  const mail=mocks.send.mock.calls[0][0];
+  const inline=mail.attachments.find((a:{cid?:string})=>a.cid==='dollwow-preview');
+  const download=mail.attachments.find((a:{cid?:string;filename:string})=>!a.cid&&a.filename==='dollwow-dollvue-branded-preview.webp');
+  expect(Buffer.from(download.content,'base64')).toEqual(preview);
+  expect(download.content).toBe(inline.content);expect(await decode(Buffer.from(download.content,'base64'))).toBe(dollVuePublicReturnUrl(handle));
+},15000);
