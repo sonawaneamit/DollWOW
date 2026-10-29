@@ -18,6 +18,7 @@ import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
+import { brandDollVuePreview } from '@/lib/dollvue/branding';
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -53,7 +54,7 @@ export async function POST(request: Request) {
   if (!parsed.success) return NextResponse.json({ error: "Choose a photo and at least one available appearance option." }, { status: 400 });
   const usage = await dollVueUsageForEmail(session.email);
   if (!usage.available) return NextResponse.json({ error: "DollVue™ usage tracking is temporarily unavailable. Please try again shortly." }, { status: 503 });
-  if (usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
+  if (!usage.unlimited && usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
   const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
   if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
@@ -102,18 +103,21 @@ export async function POST(request: Request) {
   }
   const dailyLimit = Math.max(1, Number.parseInt(env.DOLLVUE_DAILY_LIMIT || "25", 10) || 25);
   if (!usage.unlimited && !cachedPreview && generatedToday >= dailyLimit) {
-    return NextResponse.json({ error: "DollVue™ has reached today’s preview limit. Please try again tomorrow." }, { status: 429 });
+    return NextResponse.json({ error: "DollVue™ has reached today's preview limit. Please try again tomorrow." }, { status: 429 });
   }
 
+  const selectionLabels = selections.map(({ group, option }) => ({ group: group.label, option: option.label }));
   const generated = cachedPreview ? null : await generatePreview({
     images,
     prompt: buildDollVuePrompt(product, selections),
-    aspectRatio: closestDollVueAspectRatio(source.width, source.height)
+    aspectRatio: closestDollVueAspectRatio(source.width, source.height),
+    productHandle: product.handle,
+    selections: selectionLabels
   });
 
   if (generated && !generated.ok) {
     console.error("Venice DollVue generation failed", generated.status, generated.detail.slice(0, 500));
-    const message = generated.status === 402 ? "DollVue™ is temporarily unavailable. Please try again shortly." : generated.status === 429 ? "DollVue™ is busy. Please try again shortly." : generated.status === 422 ? "This photo could not be processed. Try again or choose another product photo." : "We couldn’t create this preview. Your selections are still here, so you can try again.";
+    const message = generated.status === 402 ? "DollVue™ is temporarily unavailable. Please try again shortly." : generated.status === 429 ? "DollVue™ is busy. Please try again shortly." : generated.status === 422 ? "This photo could not be processed. Try again or choose another product photo." : "We couldn't create this preview. Your selections are still here, so you can try again.";
     return apiError(message, generated.status === 429 ? 429 : 502);
   }
   let previewDataUrl = cachedPreview;
@@ -122,7 +126,7 @@ export async function POST(request: Request) {
     generationCache.set(cacheKey, { previewDataUrl, createdAt: Date.now() });
     generatedToday += 1;
   }
-  if (!previewDataUrl) return NextResponse.json({ error: "We couldn’t create this preview. Your selections are still here, so you can try again." }, { status: 502 });
+  if (!previewDataUrl) return NextResponse.json({ error: "We couldn't create this preview. Your selections are still here, so you can try again." }, { status: 502 });
   const displayName = productDisplayName(product) || product.title;
   const productUrl = `${env.NEXT_PUBLIC_SITE_URL}/products/${product.handle}`;
   const recorded = await recordDollVuePreview({
@@ -130,7 +134,7 @@ export async function POST(request: Request) {
     model: generated?.model || "cache",
     productHandle: product.handle,
     selectionCount: selections.length,
-    selectedOptions: selections.map(({ group, option }) => ({ group: group.label, option: option.label })),
+    selectedOptions: selectionLabels,
     cacheHit: Boolean(cachedPreview),
     country
   });
@@ -142,7 +146,7 @@ export async function POST(request: Request) {
       productUrl,
       sourceImageUrl: source.url,
       previewDataUrl,
-      selections: selections.map(({ group, option }) => ({ group: group.label, option: option.label }))
+      selections: selectionLabels
     });
   console.info("DollVue generation", JSON.stringify({ model: generated?.model || "cache", resolution: generated?.resolution || "cache", cacheHit: Boolean(cachedPreview), country: country || "unknown", selections: selections.length, emailDelivered: email.delivered, emailProvider: "provider" in email ? email.provider : "none" }));
   return NextResponse.json({
@@ -188,10 +192,12 @@ function apiError(message: string, status: number) {
   return NextResponse.json({ error: message }, { status, headers: { "Cache-Control": "no-store" } });
 }
 
-async function generatePreview({ images, prompt, aspectRatio }: {
+async function generatePreview({ images, prompt, aspectRatio, productHandle, selections }: {
   images: string[];
   prompt: string;
   aspectRatio: ReturnType<typeof closestDollVueAspectRatio>;
+  productHandle: string;
+  selections: Array<{ group: string; option: string }>;
 }): Promise<
   | { ok: true; bytes: Buffer; model: string; resolution: string }
   | { ok: false; status: number; detail: string }
@@ -205,7 +211,14 @@ async function generatePreview({ images, prompt, aspectRatio }: {
     aspectRatio,
     resolution: "2K"
   });
-  if (seedream.ok) return { ok: true, bytes: await normalizePreview(seedream.bytes), model: "seedream-v5-pro-edit", resolution: "2K" };
+  if (seedream.ok) {
+    try {
+      return { ok: true, bytes: await normalizeAndBrandPreview(seedream.bytes, productHandle, selections), model: "seedream-v5-pro-edit", resolution: "2K" };
+    } catch (brandingError) {
+      console.error("DollVue branding failed after successful generation", brandingError);
+      return { ok: false, status: 500, detail: "Failed to brand preview after generation" };
+    }
+  }
   if (seedream.status !== 422) return seedream;
 
   const seedreamLite = await requestVeniceEdit({
@@ -215,7 +228,14 @@ async function generatePreview({ images, prompt, aspectRatio }: {
     aspectRatio,
     resolution: "2K"
   });
-  if (seedreamLite.ok) return { ok: true, bytes: await normalizePreview(seedreamLite.bytes), model: "seedream-v5-lite-edit", resolution: "2K" };
+  if (seedreamLite.ok) {
+    try {
+      return { ok: true, bytes: await normalizeAndBrandPreview(seedreamLite.bytes, productHandle, selections), model: "seedream-v5-lite-edit", resolution: "2K" };
+    } catch (brandingError) {
+      console.error("DollVue branding failed after successful generation", brandingError);
+      return { ok: false, status: 500, detail: "Failed to brand preview after generation" };
+    }
+  }
   console.error("Venice DollVue Seedream Lite fallback failed", seedreamLite.status, seedreamLite.detail.slice(0, 500));
 
   const qwen = await requestVeniceEdit({
@@ -225,7 +245,14 @@ async function generatePreview({ images, prompt, aspectRatio }: {
     aspectRatio,
     resolution: "2K"
   });
-  if (qwen.ok) return { ok: true, bytes: await normalizePreview(qwen.bytes), model: "qwen-edit-uncensored", resolution: "2K" };
+  if (qwen.ok) {
+    try {
+      return { ok: true, bytes: await normalizeAndBrandPreview(qwen.bytes, productHandle, selections), model: "qwen-edit-uncensored", resolution: "2K" };
+    } catch (brandingError) {
+      console.error("DollVue branding failed after successful generation", brandingError);
+      return { ok: false, status: 500, detail: "Failed to brand preview after generation" };
+    }
+  }
   console.error("Venice DollVue Qwen fallback failed", qwen.status, qwen.detail.slice(0, 500));
   return qwen;
 }
@@ -260,7 +287,15 @@ async function requestVeniceEdit({ modelId, images, prompt, aspectRatio, resolut
   return { ok: true, bytes: Buffer.from(await response.arrayBuffer()) };
 }
 
-async function normalizePreview(bytes: Buffer) {
+/**
+ * Single choke point: normalize size and apply branded footer with QR code.
+ * This is the ONLY place where branding happens. The same bytes flow to:
+ * 1. Web preview/result screen
+ * 2. Save/download
+ * 3. Email inline image
+ * 4. Email attachment
+ */
+async function normalizeAndBrandPreview(bytes: Buffer, productHandle: string, selections: Array<{ group: string; option: string }>) {
   const metadata = await sharp(bytes).metadata();
   const width = metadata.width ?? 0;
   const height = metadata.height ?? 0;
@@ -268,26 +303,10 @@ async function normalizePreview(bytes: Buffer) {
     ? (width >= height ? { width: 3840 } : { height: 3840 })
     : undefined;
   const normalized = await sharp(bytes).resize(resize).webp({ quality: 91, effort: 4 }).toBuffer();
-  const finalMetadata = await sharp(normalized).metadata();
-  const finalWidth = finalMetadata.width ?? 1600;
-  const finalHeight = finalMetadata.height ?? 1600;
-  return sharp(normalized)
-    .composite([{ input: dollVueWatermark(finalWidth, finalHeight), gravity: "southeast" }])
-    .webp({ quality: 91, effort: 4 })
-    .toBuffer();
-}
-
-function dollVueWatermark(width: number, height: number) {
-  const fontSize = Math.max(22, Math.round(Math.min(width, height) * 0.026));
-  const horizontal = Math.max(18, Math.round(fontSize * 0.72));
-  const vertical = Math.max(12, Math.round(fontSize * 0.44));
-  const label = "DOLLWOW.COM · DOLLVUE™";
-  const boxWidth = Math.round(label.length * fontSize * 0.61 + horizontal * 2);
-  const boxHeight = fontSize + vertical * 2;
-  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${boxWidth}" height="${boxHeight}">
-    <rect width="100%" height="100%" rx="${Math.round(boxHeight / 2)}" fill="#160f0c" fill-opacity=".58"/>
-    <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="#fff8f2" fill-opacity=".86" font-family="Arial,Helvetica,sans-serif" font-size="${fontSize}" font-weight="700" letter-spacing="${Math.max(1, Math.round(fontSize * 0.08))}">${label}</text>
-  </svg>`);
+  
+  // Apply branded footer with logo, QR code, and outlined text.
+  // This replaces the old small corner watermark with a full white footer.
+  return brandDollVuePreview(normalized, productHandle, selections);
 }
 
 function closestDollVueAspectRatio(width?: number | null, height?: number | null) {
