@@ -1,5 +1,34 @@
 # DOL-313 Chiku Pilot
 
+## Live Receipt, 29 October 22:22
+
+Chiku live verified. PR229 source63f8e798 merged7a2073aa8ea7fa092ffa8b1119901d75a907d264
+at22:16:07UTC. ProductionREADY dpl_EGGpLPasgGzgPjWjp4dAaDstZx1s,
+doll-ckow804iz, apex/www aliases inspected, merge-commit Vercel status success.
+Receipt7d0a1980-2964-43d2-842e-b0fe785cbce6 has2live screenshots.
+
+Actual public desktop1319/mobile390+320: eight included facts, fixed teeth/tongue
+intro/specs, four eyes each; default1999, heating+suction2164, blue preserved in
+review. Full Current total fits310px at390 and240px at320, no document overflow,
+no ellipsis. Original1466x2250 image decoded. Production index/follow and checkout
+enabled; viewport reset. Live link:
+https://dollwow.com/products/dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll
+
+ONE actual configured UI cart submission reached Shopify/Shop Pay. Order summary
+shows Chiku Included: Eye color: Blue (#1), plus separate NAMED heating/suction
+items. Existing checkout market localized to EUR:1827.95/82.95/68.95 lines,
+subtotal1979.85+duties2.63=1982.48 total, including341.81tax. This is that market's
+observed result, not universal FX/tax/freight proof. No payment clicked, order,
+address/account changes or email. Left unpaid checkout and returned to PDP.
+Privacy-safe order-summary-only proof retained; never log checkout URL/account
+details. Do not repeat the successful QA cart.
+
+Dolly notified to prepare customer reply for Martin now that verified Chiku
+changes are live/purchasable. Soft belly/thigh remain unverified. Other dolls'
+included-feature rollout remains not started;313 wider ticket stays InProgress,
+Chiku milestone for Dolly review. Never self-close or merge old PR228. Zero
+Shopify product/menu/price/media mutations and no unrelated release/settings.
+
 ## Approved Release Preparation, 29 October 22:05
 
 Martin approved the exact preview with the mobile total truncation corrected,
