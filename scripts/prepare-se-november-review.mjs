@@ -6,7 +6,12 @@ const directory = 'data/exports/dol-285-2026-10-29';
 const source = JSON.parse(await fs.readFile(`${directory}/admin-census-private.json`, 'utf8'));
 const reviewed = JSON.parse(await fs.readFile('data/promotions/se-doll-september-2026-handles.json', 'utf8'));
 const tpe = new Set(reviewed.tpe_custom_handles), silicone = new Set(reviewed.silicone_pro_custom_handles);
-const elves = new Set(JSON.parse(await fs.readFile('data/draft-previews/se-elf-oct27.json', 'utf8')).map(item => item.sku));
+const elves = new Map([
+  ['gid://shopify/Product/10691273261240', '153A'],
+  ['gid://shopify/Product/10691273719992', '157H'],
+  ['gid://shopify/Product/10691274014904', '161F'],
+  ['gid://shopify/Product/10691274342584', '163E']
+]);
 const rows = source.products.filter(product => product.status === 'ACTIVE').map(product => {
   const bodyIdentity = product.catalog_body_identity_key?.value ?? '';
   const explicitBody = product.body_code?.value;
@@ -14,11 +19,10 @@ const rows = source.products.filter(product => product.status === 'ACTIVE').map(
   const torso = /^sedoll__st(?:[1-8]|2-long)__/.test(bodyIdentity);
   const stock = product.stock_status?.value;
   const material = product.material?.value;
-  const elfSku = product.handle.match(/-(sed\d+)$/)?.[1].toUpperCase();
   const cohort = stock === 'ready_to_ship' ? 'warehouse'
     : stock !== 'custom' ? 'held'
     : torso && material === 'Silicone' ? 'silicone-torso-custom'
-    : material === 'TPE' && (tpe.has(product.handle) || elves.has(elfSku)) ? 'tpe-custom'
+    : material === 'TPE' && (tpe.has(product.handle) || elves.has(product.id) && elves.get(product.id) === explicitBody) ? 'tpe-custom'
     : material === 'Silicone' && silicone.has(product.handle) ? 'silicone-pro-custom' : 'held';
   const menu = product.customization_groups?.value ?? '[]';
   const menuSha256 = createHash('sha256').update(menu).digest('hex');

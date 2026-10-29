@@ -38,3 +38,15 @@ export function seNovemberReviewQuote(parent: ParentFacts, group: GroupFacts, op
   return { current, proposed: Math.round(current * (100 - rule[3])) / 100,
     reductionPercent: rule[3], menuSha256: parent.menuSha256, checkoutReady: false as const };
 }
+
+export function seNovemberLightweightReviewQuote(parent: ParentFacts, group: GroupFacts & { label: string }, option: OptionFacts,
+  selections: { materialId: string; headMaterial: 'tpe' | 'silicone'; skinTone: string }) {
+  if (parent.cohort !== 'tpe-custom' || !['157H', '161F', '163E'].includes(parent.bodyCode ?? '')
+    || !parent.menuSha256 || group.visibleWhen != null || group.id !== 'body-weight' || group.label !== 'Body Weight'
+    || option.id !== 'lstpe-lightweight' || option.label !== 'LSTPE Lightweight Upgrade' || option.priceDelta !== 100
+    || option.factoryExists !== true || option.priceVerified !== true || option.purchasable !== true || option.displayable === false
+    || selections.materialId !== 'stpe-free'
+    || !['tpe', 'silicone'].includes(selections.headMaterial)
+    || selections.headMaterial === 'silicone' && selections.skinTone !== 'Light Tan') return null;
+  return { current: 100, proposed: 90, reductionPercent: 10, menuSha256: parent.menuSha256, checkoutReady: false as const };
+}

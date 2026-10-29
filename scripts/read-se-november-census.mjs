@@ -18,6 +18,22 @@ async function admin(query,variables={}){
   if(budget&&budget.currentlyAvailable<500)await new Promise(resolve=>setTimeout(resolve,Math.ceil((500-budget.currentlyAvailable)/budget.restoreRate*1000)));
   return body.data;
 }
+if(process.argv.includes('--warehouse-details')){
+  const original=JSON.parse(await fs.readFile(`${directory}/admin-census-private.json`,'utf8'));
+  const ids=original.products.filter(p=>p.status==='ACTIVE'&&p.stock_status?.value==='ready_to_ship').map(p=>p.id);
+  assert.equal(ids.length,7,'Reconcile changed warehouse cohort before expanding scope');
+  const details=await admin(`query($ids:[ID!]!){nodes(ids:$ids){... on Product{
+    id handle title descriptionHtml
+    source:metafield(namespace:"custom",key:"source_url"){value}
+    sourceTitle:metafield(namespace:"custom",key:"source_title"){value}
+    sourceSku:metafield(namespace:"custom",key:"source_sku"){value}
+    variants(first:10){nodes{id sku price selectedOptions{name value}}pageInfo{hasNextPage}}
+  }}}`,{ids});
+  assert(details.nodes.every(p=>p&&!p.variants.pageInfo.hasNextPage),'Incomplete warehouse identities');
+  await fs.writeFile(`${directory}/warehouse-identities-private.json`,JSON.stringify({at:new Date().toISOString(),products:details.nodes,shopifyWrites:0},null,2),{flag:'wx'});
+  console.log(JSON.stringify({warehouseIdentities:details.nodes.length,sourceUrls:details.nodes.filter(p=>p.source?.value).length,shopifyWrites:0}));
+  process.exit(0);
+}
 const {shop}=await admin('query{shop{ianaTimezone currencyCode}}');
 const fields=['brand','material','stock_status','warehouse_country','warehouse_regions','body_code','height_cm','customization_groups','catalog_identity_key','catalog_body_identity_key'];
 const aliases=fields.map(key=>`${key}:metafield(namespace:"custom",key:"${key}"){value}`).join('\n');

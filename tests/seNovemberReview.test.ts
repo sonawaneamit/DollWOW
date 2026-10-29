@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { seNovemberReviewQuote as quote } from '@/lib/promotions/seNovemberReview';
+import { seNovemberReviewQuote as quote, seNovemberLightweightReviewQuote as lightweight } from '@/lib/promotions/seNovemberReview';
 
 const parent = { cohort: 'tpe-custom' as const, menuSha256: 'observed-menu-digest' };
 const group = { id: 'skin-tone' };
@@ -44,5 +44,36 @@ describe('Comparison-only exact SE November menu quotes', () => {
   });
   it('keeps named silicone heads paid instead of pretending they are random supplier heads', () => {
     expect(quote({ ...parent, cohort: 'silicone-pro-custom' }, { id: 'an-extra-head' }, { id: '010so', label: '#010SO', priceDelta: 225 })).toBeNull();
+  });
+});
+
+describe('LSTPE comparison retains existing body, material and skin compatibility', () => {
+  const group = { id: 'body-weight', label: 'Body Weight' };
+  const option = { id: 'lstpe-lightweight', label: 'LSTPE Lightweight Upgrade', priceDelta: 100,
+    factoryExists: true, priceVerified: true, purchasable: true };
+  const selections = { materialId: 'stpe-free', headMaterial: 'tpe' as const, skinTone: 'Red' };
+  it.each(['157H', '161F', '163E'])('compares only reviewed body %s', bodyCode => {
+    expect(lightweight({ ...parent, bodyCode }, group, option, selections)?.proposed).toBe(90);
+  });
+  it.each(['153A', '157D', '163F', undefined])('does not infer compatibility for %s', bodyCode => {
+    expect(lightweight({ ...parent, bodyCode }, group, option, selections)).toBeNull();
+  });
+  it('requires STPE rather than discounting incompatible regular TPE', () => {
+    expect(lightweight({ ...parent, bodyCode: '157H' }, group, option, { ...selections, materialId: 'regular-tpe-default' })).toBeNull();
+    expect(lightweight({ ...parent, bodyCode: '157H' }, group, option, { ...selections, headMaterial: 'unknown' as never })).toBeNull();
+  });
+  it('keeps silicone head compatibility Light Tan only; no Red/Black inference', () => {
+    for (const skinTone of ['Red', 'Black', 'Natural']) expect(lightweight({ ...parent, bodyCode: '157H' }, group, option,
+      { ...selections, headMaterial: 'silicone', skinTone })).toBeNull();
+    expect(lightweight({ ...parent, bodyCode: '157H' }, group, option,
+      { ...selections, headMaterial: 'silicone', skinTone: 'Light Tan' })?.proposed).toBe(90);
+  });
+  it('does not discount an already adjusted amount or a combined head upgrade', () => {
+    for (const priceDelta of [90, 190, 200]) expect(lightweight({ ...parent, bodyCode: '157H' }, group,
+      { ...option, priceDelta }, selections)).toBeNull();
+  });
+  it('requires exact verified availability and a nonconditional primary group', () => {
+    expect(lightweight({ ...parent, bodyCode: '157H' }, { ...group, visibleWhen: {} }, option, selections)).toBeNull();
+    expect(lightweight({ ...parent, bodyCode: '157H' }, group, { ...option, priceVerified: false }, selections)).toBeNull();
   });
 });
