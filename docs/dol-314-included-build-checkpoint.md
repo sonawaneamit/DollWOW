@@ -19,11 +19,31 @@ choices and all other products remain unchanged. The thumbnail layout contains
 the entire eye pair rather than cropping it to a square. All four stay free;
 purple#2 remains first/default, Blue#1/Amber#3/Green#4 identities retained.
 
-Current local proof: twelve actual eye clicks across1319/390/320 widths, each
+Local proof: twelve actual eye clicks across1319/390/320 widths, each
 resolves1999 with all four images decoded. Final bounded-layout recheck shows
 158x102px contained images at all widths, no document/total overflow, disabled
 checkout. Tests compare original PNG digests and unchanged checkout menu
-signatures/paid heating+suction2164. Final build/hosted thumbnail proof pending.
+signatures/paid heating+suction2164.
+
+Thumbnail source `252fd954`, same draft PR230. Exact final READY deployment
+`dpl_FwBvpCJmWH5MASj5dnVrcwRT3FZF` at
+`https://doll-6f4r99edt-sonawaneamits-projects.vercel.app/products/dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll`.
+Actual hosted twelve eye clicks at1319/390/320 passed with all four original
+photos decoded/contained, no document overflow,1999each,noindex/disabled
+checkout. Actual hosted Blue#1+heating90+suction75 remains2164 with all eight
+fixed facts. Returned to purple/default1999; viewport reset. Two screenshots
+saved. Existing Halloween popup was dismissed normally before the hosted QA.
+
+144focused tests13files pass/1existing skip, TSC/scopedlint0errors2preexisting
+warnings/configuredlocalbuild/remoteNode22build/two4954owned-asset gates pass.
+Exact252 PR owned-assets/Vercel/comments independently all green; later docs
+CI is separate. Initial local run omitted the existing Chiku preview flag,
+corrected before local QA. No cart/order/email/source writes. Receipt
+`37eb2d4c-a2fe-476a-9cfd-d029e9b3669c`, with two hosted screenshots; linked back
+to the original DOL-313 thumbnail instruction. DOL-314 is In Review for Dolly.
+Exact preview yes is still required before production activation. This current
+6f4 preview includes both the broader included-feature work and the new Chiku
+thumbnails; q3987 below remains historical included-feature proof only.
 
 Martin already sent the customer reply22:36 and contacted Tena about shipping
 and minimum pricing; hold repricing until her answer. Codex sends no customer
