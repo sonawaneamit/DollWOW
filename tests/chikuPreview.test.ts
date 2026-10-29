@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { sampleProducts } from "@/lib/data/sample-products";
-import { applyChikuPreview, CHIKU_ID, includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
+import { applyChikuPreview, CHIKU_ID, includedBuildItems, isChikuPreview, chikuCustomizationGroups } from "@/lib/customization/chiku-preview";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { getDefaultSelections, resolveCustomization } from "@/lib/customization/resolve";
 import type { Product } from "@/types/product";
@@ -24,7 +24,7 @@ describe("Chiku private pilot", () => {
     expect(applyChikuPreview(chiku, false)).toBe(chiku);
     const other = { ...chiku, id: "another-product" };
     expect(applyChikuPreview(other, true)).toBe(other);
-    expect(includedBuildItems(chiku)).toEqual([]);
+    expect(includedBuildItems(other)).toEqual([]);
   });
   it("preserves original data and prices and adds exactly four free eyes", () => {
     const before = JSON.stringify(chiku);
@@ -50,6 +50,21 @@ describe("Chiku private pilot", () => {
       const bad = structuredClone(product);
       Object.assign(bad.extended.customizationGroups![0].options[0], patch);
       expect(includedBuildItems(bad)).toEqual([]);
+    }
+  });
+  it("enables only the approved Chiku production menu without preview tags", () => {
+    const config = getCustomizationConfig(chiku);
+    expect(isChikuPreview(chiku)).toBe(false);
+    expect(includedBuildItems(chiku)).toHaveLength(1);
+    expect(config.groups.find((g) => g.id === "eye-color")?.options).toHaveLength(4);
+    const other = { ...chiku, id: "other-doll" };
+    expect(chikuCustomizationGroups(other, chiku.extended.customizationGroups!)).toBe(chiku.extended.customizationGroups);
+    const wrongHandle = { ...chiku, handle: "other" };
+    expect(chikuCustomizationGroups(wrongHandle, chiku.extended.customizationGroups!)).toBe(chiku.extended.customizationGroups);
+    for (const color of ["blue", "purple", "amber", "green"]) {
+      const quote = resolveCustomization(config, { ...getDefaultSelections(config), "eye-color": color, "body-functions": ["body-heating", "vaginal-suction"] }, 1999);
+      expect(quote.totalPrice).toBe(2164);
+      expect(quote.cartAttributes.find((a) => /Eye color/.test(a.key))?.value).toContain(color === "blue" ? "Blue (#1)" : color === "purple" ? "Purple (#2)" : color === "amber" ? "Amber (#3)" : "Green (#4)");
     }
   });
 });

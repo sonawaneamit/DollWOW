@@ -3,6 +3,7 @@ import { catalogOptionAsset } from '@/lib/assets/option-assets.mjs';
 import type { CustomizationGroup, CustomizationOption } from "@/types/customization";
 import { normalizeDealerHeadGroups } from "@/lib/customization/dealer-heads";
 import { restoreIlExtraHeadOwnership } from "@/lib/customization/il-source-ownership";
+import { chikuCustomizationGroups } from "@/lib/customization/chiku-preview";
 
 export function getFunwestCustomizationGroups(product: Product, groups: CustomizationGroup[]): CustomizationGroup[] {
   return groups.map(group => {
@@ -225,7 +226,7 @@ export function getClimaxCustomizationGroups(product: Product, groups: Customiza
 }
 
 export function getDollsCastleCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
-  return normalizeDealerHeadGroups(product, groups, {
+  return normalizeDealerHeadGroups(product, chikuCustomizationGroups(product, groups), {
     chooseDescription: "Choose one compatible Dolls Castle head where a replacement-head library is offered.",
     freeHeadLibraryMode: "included-extra",
     includedExtraDescription: "This product includes one optional additional Dolls Castle head from the compatible choices shown.",
