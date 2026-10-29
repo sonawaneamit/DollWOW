@@ -49,7 +49,9 @@ Shopify facts. The certificate does not authorize every unsupported source item.
 Only Vercel preview plus explicit NEXT_PUBLIC_DOL262_PREVIEW=1 can expose these
 snapshots; Firefly stays absent from production navigation, filters, hub and
 authorization list even with a stray review flag. PDPs and hub are noindex;
-private PDP hero purchase, builder checkout, offer schema and tracking are off.
+private PDP hero purchase, builder checkout, offer schema and the PDP tracking
+component are off. This is not a claim that every UI analytics call is absent;
+the existing preset-selection event remains consent-controlled.
 Production behavior for existing products remains unchanged. Existing SE/Castle
 private guards are preserved and strengthened to cover every private draft.
 
@@ -61,3 +63,27 @@ Source snapshots and once-read evidence are under
 `data/exports/dol-262-2026-10-29/`; fresh raw Admin evidence stays ignored/private.
 Only public draft fields and owned/authorized catalog image references enter the
 review fixture. Dirty main and unrelated work were not changed.
+
+## Hosted QA Correction
+
+The first hosted candidate passed eight desktop/mobile PDP cases and 24 preset
+selections, but manual QA caught loose joints and standing simultaneously
+selectable. Historical 6 October candidates explicitly contain two incompatible
+rules for this combination; those rules were not in current main. Source
+ff1d2cf6 restores exactly those rules only for the four private preview IDs,
+fixture marker and preview flag. No supplier rule was inferred from appearance.
+Regression tests cover both selection orders for all four products, plus
+production and wrong-ID exclusion. The replacement deployment passed actual
+164MAX UI checks in both directions: both standing options disabled after loose
+joints, and loose joints disabled after standing. This is not exhaustive manual
+coverage of all options or proof of server cart registration.
+
+Final flagged source ff1d2cf6, READY deployment
+`dpl_77jxwCBxwVAha9JZdRRDio1t5V49`:
+https://doll-89fbcui4c-sonawaneamits-projects.vercel.app/brands/firefly
+Eight final desktop/mobile PDP cases and 24 actual preset selections passed;
+checkout remains disabled, robots noindex/nofollow, no horizontal overflow.
+Original certificate decoded 3511x2484 on the mobile hub. 62 focused tests,
+TypeScript, scoped lint, build, two 4950-asset gates and PR225 CI pass.
+The generic wizard estimated date is not verified destination-delivery evidence.
+No Shopify writes, production merge/release, email or orders occurred.
