@@ -18,4 +18,8 @@ describe('DollVue verification product context',()=>{
   const html=renderToStaticMarkup(<DollVueAccessGate handle="example"/>);
   expect(html).toContain('Verify once. Preview anywhere.');expect(html).not.toContain('data-dollvue-head');
  });
+ it('omits a model name masquerading as an unknown head code and shows known cup size',()=>{
+  const html=renderToStaticMarkup(<DollVueAccessGate handle="lusandy-nadia" productName="Nadia" headLabel="NADIA" productImage="/product-media/nadia/0" specs={['159 cm','G-Cup','Silicone']}/>);
+  expect(html).not.toContain('Head NADIA');expect(html).not.toContain('data-dollvue-head');expect(html).toContain('G-Cup');
+ });
 });

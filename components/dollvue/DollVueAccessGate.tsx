@@ -8,6 +8,7 @@ import styles from './DollVueAccessGate.module.css';
 export function DollVueAccessGate({ handle, productName, headLabel, productImage, bodyLabel, specs = [] }: {
   handle: string; productName?: string; headLabel?: string; productImage?: string; bodyLabel?: string; specs?: string[];
 }) {
+  const verifiedHeadCode = headLabel && /\d/.test(headLabel) ? headLabel : undefined;
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
 
@@ -49,13 +50,13 @@ export function DollVueAccessGate({ handle, productName, headLabel, productImage
       <ShieldCheck />
       <p className="alive-eyebrow"><span /> DollVue™</p>
       <h1>{productName ? `Preview ${productName}` : 'Verify once. Preview anywhere.'}</h1>
-      {headLabel ? <p data-dollvue-head>Head {headLabel}</p> : null}
+      {verifiedHeadCode ? <p data-dollvue-head>Head {verifiedHeadCode}</p> : null}
       <p>We’ll email you a private access link. Your five complimentary previews will stay connected across your phone and computer.</p>
       {productImage ? <div className={styles.product} data-dollvue-product>
         <div className={styles.photo}><Image src={productImage} alt={productName ? `${productName} reference photo` : 'Selected doll reference photo'} fill sizes="80px" /></div>
         <div className={styles.details}>
           <strong>{productName || 'Selected doll'}</strong>
-          {headLabel || bodyLabel ? <p>{[headLabel && `Head ${headLabel}`, bodyLabel && `Body ${bodyLabel}`].filter(Boolean).join(' · ')}</p> : null}
+          {verifiedHeadCode || bodyLabel ? <p>{[verifiedHeadCode && `Head ${verifiedHeadCode}`, bodyLabel && `Body ${bodyLabel}`].filter(Boolean).join(' · ')}</p> : null}
           {specs.length ? <p>{specs.join(' · ')}</p> : null}
         </div>
       </div> : null}

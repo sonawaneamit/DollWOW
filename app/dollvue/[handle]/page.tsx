@@ -30,7 +30,9 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
     headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()}
     bodyLabel={product.extended.bodyCode}
     productImage={eligibility.sourcePositions.length ? protectedProductImageUrl(handle, eligibility.sourcePositions[0], 'card') : undefined}
-    specs={[product.extended.heightCm && `${product.extended.heightCm} cm`, product.extended.material].filter((value): value is string => Boolean(value))}
+    specs={[product.extended.heightCm && `${product.extended.heightCm} cm`,
+      product.extended.cupSize && `${product.extended.cupSize.replace(/[-\s]*cup$/i, '')}-Cup`,
+      product.extended.material].filter((value): value is string => Boolean(value))}
   /></div>;
   const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
