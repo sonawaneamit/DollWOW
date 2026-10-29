@@ -29,9 +29,27 @@ it.each([[800, 1200], [1600, 900], [800, 800], [400, 1600]])('embeds readable br
     productUrl: dollVuePublicReturnUrl(handle), sourceImageUrl: 'invalid:test-only-no-fetch',
     previewDataUrl: `data:image/webp;base64,${branded.toString('base64')}`, selections: [] });
   const mail = mocks.send.mock.calls[0][0];
-  const attachment = mail.attachments.find((item: { cid: string }) => item.cid === 'dollwow-preview');
-  expect(Buffer.from(attachment.content, 'base64')).toEqual(branded);
-  expect(await decode(Buffer.from(attachment.content, 'base64'))).toBe(dollVuePublicReturnUrl(handle));
+  
+  // Verify BOTH inline (CID) AND separate downloadable attachment
+  const inlineAttachment = mail.attachments.find((item: { cid?: string; filename: string }) => 
+    item.cid === 'dollwow-preview');
+  const downloadAttachment = mail.attachments.find((item: { cid?: string; filename: string }) => 
+    item.filename === 'dollvue-preview.webp' && !item.cid);
+  
+  expect(inlineAttachment).toBeDefined();
+  expect(downloadAttachment).toBeDefined();
+  
+  // Both must have identical bytes (same SHA256)
+  const inlineBytes = Buffer.from(inlineAttachment.content, 'base64');
+  const downloadBytes = Buffer.from(downloadAttachment.content, 'base64');
+  expect(inlineBytes).toEqual(branded);
+  expect(downloadBytes).toEqual(branded);
+  expect(inlineBytes).toEqual(downloadBytes);
+  
+  // QR must work in both
+  expect(await decode(inlineBytes)).toBe(dollVuePublicReturnUrl(handle));
+  expect(await decode(downloadBytes)).toBe(dollVuePublicReturnUrl(handle));
+  
   expect(mail.text).toContain('Created with DollVue. Powered by DollWOW.');
   expect(mail.html).not.toContain('cid:dollwow-original');
   expect(mail.html).toContain('Image unavailable');
@@ -44,7 +62,8 @@ it.each([[800, 1200], [1600, 900], [800, 800], [400, 1600]])('embeds readable br
   if (process.env.DOLLVUE_BRANDING_EVIDENCE_DIR) {
     await fs.mkdir(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, { recursive: true });
     await fs.writeFile(path.join(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, `preview-${width}x${height}.webp`), branded);
-    await fs.writeFile(path.join(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, `email-${width}x${height}.webp`), Buffer.from(attachment.content, 'base64'));
+    await fs.writeFile(path.join(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, `email-inline-${width}x${height}.webp`), inlineBytes);
+    await fs.writeFile(path.join(process.env.DOLLVUE_BRANDING_EVIDENCE_DIR, `email-download-${width}x${height}.webp`), downloadBytes);
   }
 }, 15000);
 

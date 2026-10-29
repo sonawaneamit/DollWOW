@@ -36,8 +36,13 @@ export async function sendDollVueLookEmail(input: {
       <p>Have a question about an option? Reply to this email or ask the DollWOW team.</p>
     </div>`,
     attachments: [
+      // Original image: inline only
       ...(sourceAttachment ? [{ ...sourceAttachment, cid: "dollwow-original" }] : []),
-      ...(previewAttachment ? [{ ...previewAttachment, cid: "dollwow-preview" }] : [])
+      // Branded preview: BOTH inline (CID) AND separate downloadable attachment
+      ...(previewAttachment ? [
+        { ...previewAttachment, cid: "dollwow-preview" }, // Inline for HTML
+        { ...previewAttachment, filename: "dollvue-preview.webp" } // Separate download (no CID)
+      ] : [])
     ]
   });
 }
