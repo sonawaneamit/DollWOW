@@ -1,3 +1,5 @@
+import { SE_ELF_FACTS } from './se-oct27-preview';
+
 // FunWest/Top Fire previews keep the live listing structure: the step-by-step wizard stays
 // inline under the preset picker, including after a preset is chosen.
 const dealerPreviewHandle = /^(funwest-dolls-|top-fire-doll-)/;
@@ -22,7 +24,9 @@ export function presetSelectLayout(handle: string, pendingChoiceCount: number) {
  * data change kept rendering the old product (no head model, preset fingerprint mismatch).
  */
 export function dealerPreviewProductFetch(handle: string): { cache: RequestCache; revalidate?: number } {
-  return keepsWizardOpen(handle) ? { cache: "no-store" } : { cache: "reload", revalidate: 0 };
+  // Newly appended Elf galleries must not retain the initial three-photo response.
+  return keepsWizardOpen(handle) || Object.hasOwn(SE_ELF_FACTS, handle)
+    ? { cache: "no-store" } : { cache: "reload", revalidate: 0 };
 }
 
 // Internal workflow tags never belong in the public page payload.
@@ -30,3 +34,4 @@ const internalTag = /^(dollwow-test|catalog-review-hold)$/i;
 export function dealerPublicTags(tags: string[] | undefined) {
   return tags ? tags.filter((tag) => !internalTag.test(tag)) : undefined;
 }
+

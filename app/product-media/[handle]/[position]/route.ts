@@ -4,6 +4,7 @@ import sharp from "sharp";
 import { getProductByHandle } from "@/lib/shopify/storefront";
 import { productImageSources } from "@/lib/catalog/productImage";
 import { seElfLocalImagePath } from '@/lib/catalog/seElfPreview';
+import { SE_ELF_FACTS } from '@/lib/customization/se-oct27-preview';
 
 export const runtime = "nodejs";
 
@@ -33,7 +34,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ hand
       ? { width: 720, height: 960 }
       : { width: 1800, height: 2400 };
 
-  const product = await getProductByHandle(handle, { revalidate: 120 });
+  const product = await getProductByHandle(handle, Object.hasOwn(SE_ELF_FACTS, handle)
+    ? { cache: 'no-store' } : { revalidate: 120 });
   const source = product ? productImageSources(product)[position] : null;
   if (!source?.url) {
     return new Response("Image not found", {
