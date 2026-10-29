@@ -18,6 +18,7 @@ create table public.dollvue_credit_holds (
 create table public.dollvue_credit_reservations (
   id uuid primary key,
   email_hash text not null check (email_hash ~ '^[a-f0-9]{64}$'),
+  request_fingerprint text not null check (request_fingerprint ~ '^[a-f0-9]{64}$'),
   state text not null default 'reserved' check (state in ('reserved', 'completed', 'released')),
   expires_at timestamptz not null default (now() + interval '10 minutes'),
   created_at timestamptz not null default now(),
@@ -96,11 +97,12 @@ begin
   update dollvue_credit_receipts set status='review' where shop=p_shop and order_id=p_order_id;
 end $$;
 
-create function public.dollvue_reserve_preview(p_email_hash text,p_id uuid)
+create function public.dollvue_reserve_preview(p_email_hash text,p_id uuid,p_fingerprint text)
 returns text language plpgsql set search_path = public, pg_temp as $$
 declare used bigint; paid bigint; pending bigint; previous public.dollvue_credit_reservations;
 begin
-  if p_email_hash is null or p_email_hash !~ '^[a-f0-9]{64}$' or p_id is null then raise exception 'Invalid reservation'; end if;
+  if p_email_hash is null or p_email_hash !~ '^[a-f0-9]{64}$' or p_id is null
+    or p_fingerprint is null or p_fingerprint !~ '^[a-f0-9]{64}$' then raise exception 'Invalid reservation'; end if;
   perform pg_advisory_xact_lock(hashtextextended(p_email_hash, 2));
   if exists (select 1 from dollvue_credit_orders o join dollvue_credit_holds h
     on o.shop=h.shop and o.order_id=h.order_id where o.email_hash=p_email_hash) then return 'review'; end if;
@@ -109,6 +111,7 @@ begin
   select * into previous from dollvue_credit_reservations where id=p_id;
   if found then
     if previous.email_hash<>p_email_hash then raise exception 'Reservation identity mismatch'; end if;
+    if previous.request_fingerprint<>p_fingerprint then raise exception 'Reservation request mismatch'; end if;
     return case when previous.state='reserved' then 'busy' else previous.state end;
   end if;
   select count(*) into used from ai_usage_events
@@ -116,19 +119,21 @@ begin
   select coalesce(sum(credits),0) into paid from dollvue_credit_orders where email_hash=p_email_hash;
   select count(*) into pending from dollvue_credit_reservations where email_hash=p_email_hash and state='reserved';
   if used+pending>=5+paid then return 'exhausted'; end if;
-  insert into dollvue_credit_reservations(id,email_hash) values(p_id,p_email_hash);
+  insert into dollvue_credit_reservations(id,email_hash,request_fingerprint) values(p_id,p_email_hash,p_fingerprint);
   return 'reserved';
 end $$;
 
 create function public.dollvue_finish_preview(
-  p_email_hash text,p_id uuid,p_success boolean,p_model text,p_metadata jsonb
+  p_email_hash text,p_id uuid,p_success boolean,p_model text,p_metadata jsonb,p_fingerprint text
 ) returns text language plpgsql set search_path = public, pg_temp as $$
 declare previous public.dollvue_credit_reservations;
 begin
-  if p_email_hash is null or p_email_hash !~ '^[a-f0-9]{64}$' or p_id is null or p_success is null then raise exception 'Invalid completion'; end if;
+  if p_email_hash is null or p_email_hash !~ '^[a-f0-9]{64}$' or p_id is null or p_success is null
+    or p_fingerprint is null or p_fingerprint !~ '^[a-f0-9]{64}$' then raise exception 'Invalid completion'; end if;
   perform pg_advisory_xact_lock(hashtextextended(p_email_hash, 2));
   select * into previous from dollvue_credit_reservations where id=p_id;
   if not found or previous.email_hash<>p_email_hash then raise exception 'Unknown reservation'; end if;
+  if previous.request_fingerprint<>p_fingerprint then raise exception 'Reservation request mismatch'; end if;
   if previous.state<>'reserved' then return previous.state; end if;
   if not p_success or previous.expires_at<=now() then
     update dollvue_credit_reservations set state='released' where id=p_id;
@@ -146,11 +151,11 @@ begin
 end $$;
 
 revoke all on function public.dollvue_grant_paid_credits(text,text,text,text,integer,text),
-  public.dollvue_hold_credit_order(text,text,text),public.dollvue_reserve_preview(text,uuid),
-  public.dollvue_finish_preview(text,uuid,boolean,text,jsonb) from public,anon,authenticated;
+  public.dollvue_hold_credit_order(text,text,text),public.dollvue_reserve_preview(text,uuid,text),
+  public.dollvue_finish_preview(text,uuid,boolean,text,jsonb,text) from public,anon,authenticated;
 grant execute on function public.dollvue_grant_paid_credits(text,text,text,text,integer,text),
-  public.dollvue_hold_credit_order(text,text,text),public.dollvue_reserve_preview(text,uuid),
-  public.dollvue_finish_preview(text,uuid,boolean,text,jsonb) to service_role;
+  public.dollvue_hold_credit_order(text,text,text),public.dollvue_reserve_preview(text,uuid,text),
+  public.dollvue_finish_preview(text,uuid,boolean,text,jsonb,text) to service_role;
 
 -- Lease one receipt. A crashed/ambiguous delivery goes to review, never blind resend.
 create function public.dollvue_claim_credit_receipt()

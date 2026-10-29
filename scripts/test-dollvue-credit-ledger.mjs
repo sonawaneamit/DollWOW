@@ -26,25 +26,34 @@ try {
   // Nine historical successes leave exactly one of five free + five paid.
   for(let i=0;i<9;i++) await db.query("insert into ai_usage_events(feature,provider,user_email_hash) values('dollvue-preview','fixture',$1)",[hash]);
   const first = randomUUID(), second = randomUUID();
-  const reserve = 'select public.dollvue_reserve_preview($1,$2)';
-  const results = await Promise.all([db.query(reserve,[hash,first]),db.query(reserve,[hash,second])]);
+  const reserve = 'select public.dollvue_reserve_preview($1,$2,$3)';
+  const results = await Promise.all([db.query(reserve,[hash,first,fingerprint]),db.query(reserve,[hash,second,fingerprint])]);
   assert.deepEqual(results.map(r=>r.rows[0].dollvue_reserve_preview).sort(),['exhausted','reserved']); assertions++;
   const winner = results[0].rows[0].dollvue_reserve_preview==='reserved'?first:second;
   const loser = winner===first?second:first;
-  await eq(reserve,[hash,winner],'busy');
-  const finish = 'select public.dollvue_finish_preview($1,$2,$3,$4,$5)';
-  await eq(finish,[hash,winner,false,'fixture',{}],'released');
-  await eq(reserve,[hash,loser],'reserved');
-  await assert.rejects(db.query(finish,[other,loser,true,'fixture',{}]),/Unknown reservation/); assertions++;
-  await eq(finish,[hash,loser,true,'fixture',{}],'completed');
-  await eq(finish,[hash,loser,true,'fixture',{}],'completed');
+  await eq(reserve,[hash,winner,fingerprint],'busy');
+  await assert.rejects(db.query(reserve,[hash,winner,other]),/Reservation request mismatch/); assertions++;
+  await assert.rejects(db.query(reserve,[hash,randomUUID(),null]),/Invalid reservation/); assertions++;
+  await assert.rejects(db.query(reserve,[hash,randomUUID(),'bad']),/Invalid reservation/); assertions++;
+  const finish = 'select public.dollvue_finish_preview($1,$2,$3,$4,$5,$6)';
+  await assert.rejects(db.query(finish,[hash,winner,true,'fixture',{},other]),/Reservation request mismatch/); assertions++;
+  await eq(finish,[hash,winner,false,'fixture',{},fingerprint],'released');
+  await assert.rejects(db.query(reserve,[hash,winner,other]),/Reservation request mismatch/); assertions++;
+  await eq(reserve,[hash,loser,fingerprint],'reserved');
+  await assert.rejects(db.query(finish,[other,loser,true,'fixture',{},fingerprint]),/Unknown reservation/); assertions++;
+  await eq(finish,[hash,loser,true,'fixture',{},fingerprint],'completed');
+  await eq(finish,[hash,loser,true,'fixture',{},fingerprint],'completed');
+  await eq(reserve,[hash,loser,fingerprint],'completed');
+  await assert.rejects(db.query(reserve,[hash,loser,other]),/Reservation request mismatch/); assertions++;
+  await assert.rejects(db.query(finish,[hash,loser,true,'fixture',{},other]),/Reservation request mismatch/); assertions++;
+  await assert.rejects(db.query(finish,[hash,loser,true,'fixture',{},null]),/Invalid completion/); assertions++;
   await eq('select count(*)::int from ai_usage_events where user_email_hash=$1',[hash],10);
-  await eq(reserve,[hash,randomUUID()],'exhausted');
+  await eq(reserve,[hash,randomUUID(),fingerprint],'exhausted');
   // Expired reservations cannot charge after their capacity is released.
   const expired = randomUUID();
-  await eq(reserve,[other,expired],'reserved');
+  await eq(reserve,[other,expired,fingerprint],'reserved');
   await db.query("update dollvue_credit_reservations set expires_at=now()-interval '1 minute' where id=$1",[expired]);
-  await eq(finish,[other,expired,true,'fixture',{}],'released');
+  await eq(finish,[other,expired,true,'fixture',{},fingerprint],'released');
   await eq('select count(*)::int from ai_usage_events where user_email_hash=$1',[other],0);
   const receiptFinish='select dollvue_complete_credit_receipt($1,$2,$3,$4)';
   const olderClaim=(await db.query('select * from dollvue_claim_credit_receipt()')).rows[0];
@@ -66,27 +75,27 @@ try {
   await db.query("update dollvue_credit_receipts set attempted_at=now()-interval '21 minutes' where order_id='104'");
   await eq('select count(*)::int from dollvue_claim_credit_receipt()',[],0);
   await eq('select status from dollvue_credit_receipts where order_id=$1',['104'],'review');
-  await assert.rejects(db.query(finish,[null,loser,true,'fixture',{}]),/Invalid completion/); assertions++;
+  await assert.rejects(db.query(finish,[null,loser,true,'fixture',{},fingerprint]),/Invalid completion/); assertions++;
   // A refund arriving before paid delivery cannot be followed by a grant.
   await db.query("select public.dollvue_hold_credit_order($1,$2,'refund')",['fixture.myshopify.com','101']);
   await eq(grant,['fixture.myshopify.com','101',other,'qa@example.invalid',12,fingerprint],'review');
   await eq('select count(*)::int from dollvue_credit_orders where order_id=$1',['101'],0);
   // Cancellation freezes an already granted account and its queued receipt.
   await db.query("select public.dollvue_hold_credit_order($1,$2,'cancelled')",['fixture.myshopify.com','100']);
-  await eq(reserve,[hash,randomUUID()],'review');
+  await eq(reserve,[hash,randomUUID(),fingerprint],'review');
   await eq('select status from dollvue_credit_receipts where order_id=$1',['100'],'review');
   // A hold arriving after reservation must also prevent its completion.
   const held = randomUUID();
   await eq(grant,['fixture.myshopify.com','102',other,'qa@example.invalid',5,fingerprint],'granted');
-  await eq(reserve,[other,held],'reserved');
+  await eq(reserve,[other,held,fingerprint],'reserved');
   await db.query("select public.dollvue_hold_credit_order($1,$2,'refund')",['fixture.myshopify.com','102']);
-  await eq(finish,[other,held,true,'fixture',{}],'review');
+  await eq(finish,[other,held,true,'fixture',{},fingerprint],'review');
   await eq('select count(*)::int from ai_usage_events where user_email_hash=$1',[other],0);
   await db.exec('reset role; set role anon');
   await assert.rejects(db.query('select * from dollvue_credit_receipts'),/permission denied/); assertions++;
   await assert.rejects(db.query(grant,args),/permission denied/); assertions++;
   await assert.rejects(db.query('select * from dollvue_claim_credit_receipt()'),/permission denied/); assertions++;
   await db.exec('reset role; set role authenticated');
-  await assert.rejects(db.query(reserve,[hash,randomUUID()]),/permission denied/); assertions++;
+  await assert.rejects(db.query(reserve,[hash,randomUUID(),fingerprint]),/permission denied/); assertions++;
   console.log(JSON.stringify({status:'PASS',assertions,environment:'isolated PGlite; no live migration, order, email or grant'}));
 } finally { await db.close(); }

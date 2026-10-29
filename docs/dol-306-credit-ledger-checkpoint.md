@@ -27,6 +27,12 @@ The existing three drafts remain the only approved products: 5/$5, 12/$10,
 - A repeated still-pending reservation returns `busy`, not a second permission
   to invoke the model. Completed-result recovery still needs the private artifact
   policy and request-fingerprint integration before public activation.
+- Reservation and completion now require the same request fingerprint. Reusing
+  an ID with different inputs fails for reserved, released and completed rows.
+  The server-only fingerprint helper requires a matching non-explicit content
+  review and binds pinned inputs, product/menu revision, source position, chosen
+  options, actual prompt digest, aspect ratio, filter version and render version.
+  This remains staged, not authenticated public orchestration or result storage.
 - Refund/cancellation holds persist even when callbacks arrive before payment.
   Existing credited accounts cannot spend during review. This does not issue a
   refund, choose a refund entitlement, or silently deduct a guessed amount.
@@ -119,3 +125,22 @@ buyer access only, followed by deletion. No retention period/storage/deletion jo
 has been enabled. This is separate from submission-report metadata. Without
 durable result recovery, a credit commit followed by lost response/email can
 strand a paid preview; do not hide that failure or claim ready for checkout.
+
+## 29 October 12:56 Checkpoint
+
+DOL-305's narrow canonical entry repair is live via PR220. Its requested steps
+1/2/4 have receipts; unrestricted explicit-image branding remains unsupported,
+and sender review still waits on Martin. Supported non-explicit DOL-306
+preparation has resumed; the old conditional-scope blocker is not reinstated.
+
+Latest local proof: 70 focused unit tests and 54 isolated PGlite assertions,
+TypeScript and scoped lint pass. The default local ledger command initially
+could not find the declared PGlite dependency; the existing pinned isolated
+module at `/tmp/dol305-dbqa/node_modules/@electric-sql/pglite/dist/index.js`
+was used via `PGLITE_TEST_MODULE`. CI installs declared dependencies normally.
+This remains serialized local proof, not deployed multi-connection concurrency.
+Migration0008 has NEVER been applied. Its reservation/completion SQL signatures
+changed in preparation; do not deploy callers against an older staged schema.
+No public generation route, model invocation, retention or paid activation was
+introduced. Next is authenticated reviewed-input orchestration and recovery,
+not more draft creation or a claim that end-to-end checkout is ready.
