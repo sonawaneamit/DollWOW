@@ -55,6 +55,7 @@ describe('Firefly isolated draft review',()=>{
     expect(brands.isHiddenCatalogBrand('firefly')).toBe(true);
     expect(brands.brandFilterOptions().some(b=>b.value==='firefly')).toBe(false);
     expect(auth.getBrandAuthorization('Firefly Diary')).toBeNull();
+    expect(auth.isLiveAuthorizedBrand('Firefly Diary')).toBe(false);
   });
   it('protects every private draft from hero purchase, tracking and public offer schema',()=>{
     const source=fs.readFileSync('app/(store)/products/[handle]/page.tsx','utf8');

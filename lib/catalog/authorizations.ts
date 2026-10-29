@@ -239,5 +239,5 @@ export function getBrandAuthorization(value: string | undefined | null) {
 
 export function isLiveAuthorizedBrand(value: string | undefined | null) {
   const brand = getCatalogBrand(value);
-  return Boolean(brand && !brandsWithoutAuthorizationOnFile.has(brand.value));
+  return Boolean(brand && !isHiddenCatalogBrand(brand.value) && !brandsWithoutAuthorizationOnFile.has(brand.value));
 }
