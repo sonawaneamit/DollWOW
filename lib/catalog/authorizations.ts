@@ -21,6 +21,16 @@ export type BrandAuthorization = {
 
 const allBrandAuthorizations: BrandAuthorization[] = [
   {
+    id: 'firefly-doll',
+    brand: 'Firefly Doll',
+    brandValue: 'firefly',
+    aliases: ['firefly', 'firefly doll', 'firefly diary'],
+    certificateIssuer: 'FireflyDoll QIANXING LIMITED',
+    status: 'certificate',
+    certificateSrc: '/images/authorizations/firefly-doll-authorized.png',
+    certificatePreviewSrc: '/images/authorizations/firefly-doll-authorized.png'
+  },
+  {
     id: "se-doll",
     brand: "SE Doll",
     brandValue: "sedoll",
@@ -229,5 +239,5 @@ export function getBrandAuthorization(value: string | undefined | null) {
 
 export function isLiveAuthorizedBrand(value: string | undefined | null) {
   const brand = getCatalogBrand(value);
-  return Boolean(brand && !brandsWithoutAuthorizationOnFile.has(brand.value));
+  return Boolean(brand && !isHiddenCatalogBrand(brand.value) && !brandsWithoutAuthorizationOnFile.has(brand.value));
 }

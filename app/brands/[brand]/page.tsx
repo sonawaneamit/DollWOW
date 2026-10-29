@@ -18,6 +18,7 @@ import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
+import { fireflyDraftPreviewProducts, fireflyDraftPreviewEnabled } from '@/lib/catalog/fireflyDraftPreview';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) return {};
-  return buildBrandMetadata(brand);
+  return {...buildBrandMetadata(brand),...(brand.value === 'firefly' && fireflyDraftPreviewEnabled() ? {robots:{index:false,follow:false}} : {})};
 }
 
 export default async function BrandHubPage({
@@ -47,7 +48,7 @@ export default async function BrandHubPage({
 
   const requestedFilters = filtersFromSearchParams(rawSearchParams);
   const filters = compactFilters({ ...requestedFilters, brand: brand.value });
-  const products = await getProducts({
+  const products = brand.value === 'firefly' && fireflyDraftPreviewEnabled() ? fireflyDraftPreviewProducts() : await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
     cacheKey: `${brand.value}-release-order-v1`,
@@ -59,7 +60,7 @@ export default async function BrandHubPage({
   const profile = brandSeoProfile(brand);
   const compactBrowsing = usesCompactBrandLayout(brand.value);
   const relatedLinks = brandRelatedLinks(brand);
-  const structuredData = buildBrandStructuredData(brand, orderedProducts);
+  const structuredData = brand.value === 'firefly' ? [] : buildBrandStructuredData(brand, orderedProducts);
   const activeFilterLabels = Object.entries(filters)
     .filter(([key, value]) => Boolean(value) && key !== "brand")
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -104,6 +105,7 @@ export default async function BrandHubPage({
 
   return (
     <section className="shop-visual-shell mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      {brand.value === 'firefly' ? <p role="status" className="mb-6 border-b border-border pb-4 text-sm leading-6 text-text">Private draft review. Four existing Mary listings; body-version, destination delivery and final commercial checks remain open. Not for sale.</p> : null}
       {structuredData.map((entry) => (
         <script key={entry["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
       ))}
@@ -114,7 +116,7 @@ export default async function BrandHubPage({
           <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
           <p className="mt-3 text-sm font-semibold text-gold-200">
-            Current DollWOW collection
+            {brand.value === 'firefly' ? 'Draft review collection' : 'Current DollWOW collection'}
             {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}
           </p>
         </div>

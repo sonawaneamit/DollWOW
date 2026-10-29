@@ -1,0 +1,41 @@
+{
+  "options:firefly-mary-silicone-body-mvp-v1": {
+    "tag": "options:firefly-mary-silicone-body-mvp-v1",
+    "signature": "",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Adds the gel-butt option at no extra charge.",
+        "add": [
+          {
+            "groupId": "premium-body-options-multiple",
+            "optionId": "gel-butt-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Keeps the gel-butt option and adds body heating.",
+        "add": [
+          {
+            "groupId": "premium-body-options-multiple",
+            "optionId": "body-heating"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Adds body sound to the gel-butt and heating configuration.",
+        "add": [
+          {
+            "groupId": "premium-body-options-multiple",
+            "optionId": "body-moaning"
+          }
+        ],
+        "remove": []
+      }
+    ]
+  }
+}
