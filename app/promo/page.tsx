@@ -17,7 +17,7 @@ import { HalloweenCampaignBanner } from "@/components/promotions/HalloweenCampai
 import { HalloweenLandingSections } from "@/components/promotions/HalloweenLandingSections";
 import './compact-promo.css';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
-import { isSeHalloweenActive, isSeHalloweenPreview } from '@/lib/promotions/seHalloween2026';
+import { isSeHalloweenActive, isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 
@@ -53,7 +53,7 @@ export default function PromoIndexPage() {
   const hasIdoPromotion = isIdoOctoberActive(new Date(promoClock));
   const hasMdPromotion = !isHiddenCatalogBrand("md") && isMdOctoberActive(new Date(promoClock));
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
-  const hasSeHalloween = isSeHalloweenPreview() && isSeHalloweenActive(Date.parse(promoClock));
+  const hasSeHalloween = isSeHalloweenArtworkEnabled() && isSeHalloweenActive(Date.parse(promoClock));
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
   const itemList = [
     ...(hasSeHalloween ? [{ name: 'SE Doll Halloween offers', url: `${siteUrl}/promo#se-halloween-2026` }] : []),

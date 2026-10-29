@@ -25,6 +25,13 @@ export function isSeHalloweenActive(now = Date.now()) {
     && now < Date.parse(SE_HALLOWEEN_2026.endsAt);
 }
 
+// Artwork release is independent of the preview-only option-pricing clock.
+export function isSeHalloweenArtworkEnabled(environment: {VERCEL_ENV?: string; NEXT_PUBLIC_DOL275_PREVIEW?: string} = {
+  VERCEL_ENV: process.env.VERCEL_ENV, NEXT_PUBLIC_DOL275_PREVIEW: process.env.NEXT_PUBLIC_DOL275_PREVIEW
+}) {
+  return environment.VERCEL_ENV === 'production' || isSeHalloweenPreview(environment);
+}
+
 export function seHalloweenCampaignDay(now: Date) {
   if (!Number.isFinite(now.getTime())) return '';
   const parts = new Intl.DateTimeFormat('en-CA', {

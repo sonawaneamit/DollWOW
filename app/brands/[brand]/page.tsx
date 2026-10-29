@@ -17,7 +17,7 @@ import { GuideLinkRow } from "@/components/GuideLinkRow";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
-import { isSeHalloweenPreview } from '@/lib/promotions/seHalloween2026';
+import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -121,7 +121,7 @@ export default async function BrandHubPage({
       </div>
 
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
-      <SeHalloweenPromotion enabled={isSeHalloweenPreview() && brand.value === 'sedoll'} initialClock={new Date().toISOString()} />
+      <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && brand.value === 'sedoll'} initialClock={new Date().toISOString()} />
 
       {!compactBrowsing ? authorization : null}
 
