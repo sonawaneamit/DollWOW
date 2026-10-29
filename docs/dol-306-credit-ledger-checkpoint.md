@@ -172,3 +172,21 @@ The test is opt-in only (`DOLLVUE_SAFE_TRANSPORT_QA=1`) and skipped by default;
 ordinary CI never calls the provider. Do not repeat the model call unnecessarily.
 No order, confirmation email, retained customer image or database migration was
 created. The live free route and all pack publication holds remain unchanged.
+
+## 29 October 13:27 Byte-Verification Stage
+
+`normalizeNonExplicitInputs` now consumes prepared facts, checks their request
+fingerprint against the current separate content registry, re-derives server
+pins and calls the existing digest-verifying image normalizer for each image.
+Source/reference order and normalization roles are preserved. Facts/pins are
+snapshotted before I/O; changed or stale facts fail before fetch, and no partial
+bundle is returned on verification failure. It returns in-memory data URIs,
+prompt and aspect ratio, not remote URLs for an unverified second fetch.
+
+This is not model permission, a public endpoint, accounting completion or
+image retention. The registry remains empty. Regional/rate/daily controls,
+atomic reservations and policy-approved recoverable result delivery still need
+orchestration before public activation. No new provider call was made; the
+single geometric proof above remains the only transport test. Current focused
+batch: 131 tests across nine files pass, including 37 existing byte-normalizer
+tests and seven new integration-stage tests; TypeScript/lint/diff checks pass.

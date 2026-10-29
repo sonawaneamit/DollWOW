@@ -21,7 +21,7 @@ const bodySchema=z.object({
 const limit=16*1024;
 const ratios=[['1:1',1],['3:2',1.5],['16:9',16/9],['21:9',21/9],['9:16',9/16],['2:3',2/3],['3:4',.75],['4:5',.8]] as const;
 type Failure='forbidden'|'unauthenticated'|'invalid-request'|'unavailable'|'not-reviewed';
-type Prepared={
+export type PreparedNonExplicitRequest={
   requestId:string;emailHash:string;recipientEmail:string;productHandle:string;fingerprint:string;
   facts:NonExplicitRequest;inputs:NonNullable<ReturnType<typeof nonExplicitReviewedInputs>>;
   labels:Array<{group:string;option:string}>;
@@ -48,7 +48,7 @@ async function boundedJson(request:Request):Promise<unknown> {
  * provider call, image retention or entitlement bypass is enabled by this helper.
  */
 export async function prepareNonExplicitRequest(request:Request):Promise<
-  {ok:true;prepared:Prepared}|{ok:false;code:Failure}
+  {ok:true;prepared:PreparedNonExplicitRequest}|{ok:false;code:Failure}
 > {
   try {
     const origin=dollVueAccessOrigin(request.url,env.NEXT_PUBLIC_SITE_URL,process.env.VERCEL_ENV,process.env.VERCEL_URL);
