@@ -113,7 +113,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </CartProvider>
           </ComparisonProvider>
         </CurrencyProvider>
-        <ConsentBanner shopifyConfig={headlessConsentConfig(process.env)} />
+        <ConsentBanner shopifyConfig={headlessConsentConfig(process.env)} autoPrompt={false} />
         <Analytics measurementId={analytics?.measurementId} />
       </body>
     </html>
