@@ -10,6 +10,8 @@ export async function sendDollVueLookEmail(input: {
   sourceImageUrl: string;
   previewDataUrl: string;
   selections: Array<{ group: string; option: string }>;
+  /** Opt-in for reviewed non-explicit exports; the existing generation route stays unchanged. */
+  downloadablePreview?: boolean;
 }) {
   const optionText = input.selections.map((item) => `${item.group}: ${item.option}`).join(" · ");
   const disclaimer = "This is an approximate visual preview, not a photograph of the finished doll. Color, texture, styling, and option details can vary in production. DollWOW will confirm final selections before the order moves forward.";
@@ -23,13 +25,14 @@ export async function sendDollVueLookEmail(input: {
     bcc: input.to.toLowerCase() === "hello@dollwow.com" ? undefined : "hello@dollwow.com",
     replyTo: "hello@dollwow.com",
     subject: "Your DollVue™ preview is ready",
-    text: `Your preview is ready.\n\nCreated with DollVue. Powered by DollWOW.\n\nWe created a DollVue™ preview using the product photo and appearance choices you selected.\n\n${input.productName}\n${optionText}\n\nReturn to the doll: ${input.productUrl}\n\n${disclaimer}\n\nHave a question about an option? Reply to this email or ask the DollWOW team.`,
+    text: `Your preview is ready.\n\nCreated with DollVue. Powered by DollWOW.\n\nWe created a DollVue™ preview using the product photo and appearance choices you selected.\n\n${input.productName}\n${optionText}\n\n${input.downloadablePreview ? 'Your branded preview is also included as a downloadable attachment.\n\n' : ''}Return to the doll: ${input.productUrl}\n\n${disclaimer}\n\nHave a question about an option? Reply to this email or ask the DollWOW team.`,
     html: `<div style="font-family:Arial,sans-serif;color:#291f1b;max-width:620px;margin:auto">
       <p style="font-size:12px;color:#b5471f">DOLLVUE · Powered by DollWOW.com</p>
       <h1 style="font-size:28px">Your preview is ready</h1>
       <p>We created a DollVue preview using the product photo and appearance choices you selected.</p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>${imageColumn('ORIGINAL', Boolean(sourceAttachment), 'dollwow-original', 'Original product photo')}${imageColumn('YOUR PREVIEW', Boolean(previewAttachment), 'dollwow-preview', 'DollVue preview')}</tr></table>
       <p style="line-height:1.6"><strong>${escapeHtml(input.productName)}</strong><br>${escapeHtml(optionText)}</p>
+      ${input.downloadablePreview ? '<p>Your branded preview is also included as a downloadable attachment.</p>' : ''}
       <p><a href="${escapeHtml(input.productUrl)}" style="display:inline-block;padding:14px 20px;border-radius:8px;background:#b5471f;color:#fff;text-decoration:none;font-weight:700">Return to the doll</a></p>
       <p style="font-size:12px;line-height:1.5;color:#6e615a">${disclaimer}</p>
       <p style="font-size:12px;line-height:1.5;color:#6e615a">Your identity and account details are never displayed with a preview.</p>
@@ -37,7 +40,8 @@ export async function sendDollVueLookEmail(input: {
     </div>`,
     attachments: [
       ...(sourceAttachment ? [{ ...sourceAttachment, cid: "dollwow-original" }] : []),
-      ...(previewAttachment ? [{ ...previewAttachment, cid: "dollwow-preview" }] : [])
+      ...(previewAttachment ? [{ ...previewAttachment, cid: "dollwow-preview" }] : []),
+      ...(input.downloadablePreview && previewAttachment ? [{...previewAttachment,filename:'dollwow-dollvue-branded-preview.webp'}] : [])
     ]
   });
 }
