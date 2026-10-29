@@ -7,6 +7,8 @@ import { getProductByHandle } from "@/lib/shopify/storefront";
 import { env } from "@/lib/utils/env";
 import { resolveCurrentDollVueEligibility } from "@/lib/dollvue/eligibility";
 import { dollVueAccessOrigin } from "@/lib/dollvue/accessOrigin";
+import { randomUUID } from 'node:crypto';
+import { beginDollVueSubmission, updateDollVueSubmission } from '@/lib/dollvue/submissions';
 
 const input = z.object({ email: z.string().email().max(180), handle: z.string().min(1).max(180) });
 export const maxDuration = 60;
@@ -34,8 +36,13 @@ export async function POST(request: Request) {
   if (!eligibility?.available) return failure("eligibility_unavailable", "This doll cannot be verified for DollVue right now. Please try again shortly.", 503);
 
   let token: string;
-  try { token = createDollVueAccessToken(email, parsed.data.handle); }
+  const submissionId = randomUUID();
+  try { token = createDollVueAccessToken(email, parsed.data.handle, Date.now(), submissionId); }
   catch { return failure("access_unconfigured", "Email verification is temporarily unavailable. Please try again shortly.", 503); }
+  const stored = await beginDollVueSubmission({ id: submissionId, email,
+    handle: product.handle, name: product.title, brand: product.extended.brand || product.vendor,
+    head: product.extended.headModel, body: product.extended.bodyCode }).catch(() => false);
+  if (!stored) return failure('submission_unavailable', 'We could not save your access request. Please try again shortly.', 503);
   const origin = dollVueAccessOrigin(request.url, env.NEXT_PUBLIC_SITE_URL, process.env.VERCEL_ENV, process.env.VERCEL_URL);
   const url = `${origin}/dollvue/verify?token=${encodeURIComponent(token)}`;
   const delivery = await sendEmail({
@@ -44,6 +51,9 @@ export async function POST(request: Request) {
     text: `Open this private link within 15 minutes to verify your email and use DollVue™: ${url}`,
     html: `<p>Verify your email to use your five complimentary DollVue™ previews across your devices.</p><p><a href="${url}" style="display:inline-block;padding:12px 20px;border-radius:999px;background:#bd441d;color:#fff;text-decoration:none;font-weight:700">Open DollVue™</a></p><p style="color:#685b55">This private link expires in 15 minutes.</p>`
   }).catch(() => null);
+  await updateDollVueSubmission(submissionId, email, {
+    delivery_status: delivery?.delivered ? 'accepted' : 'failed', delivery_provider: delivery?.provider || 'none',
+  }).catch(() => false);
   if (!delivery?.delivered) return failure("send_failed", "We could not send your access link. Please try again shortly.", 503);
   console.info("DollVue access", JSON.stringify({ event: "email_accepted", provider: delivery.provider }));
   return NextResponse.json({ ok: true, status: "sent" }, { headers: { "Cache-Control": "no-store" } });

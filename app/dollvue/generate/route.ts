@@ -130,6 +130,7 @@ export async function POST(request: Request) {
     model: generated?.model || "cache",
     productHandle: product.handle,
     selectionCount: selections.length,
+    selectedOptions: selections.map(({ group, option }) => ({ group: group.label, option: option.label })),
     cacheHit: Boolean(cachedPreview),
     country
   });

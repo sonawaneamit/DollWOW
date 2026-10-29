@@ -1,6 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 
-const mocks = vi.hoisted(() => ({ getProduct: vi.fn(), token: vi.fn(), eligibility: vi.fn(), cookie: vi.fn() }));
+const mocks = vi.hoisted(() => ({ getProduct: vi.fn(), token: vi.fn(), eligibility: vi.fn(), cookie: vi.fn(), update: vi.fn() }));
+vi.mock('@/lib/dollvue/submissions', () => ({updateDollVueSubmission:mocks.update}));
 vi.mock('@/lib/shopify/storefront', () => ({ getProductByHandle: mocks.getProduct }));
 vi.mock('@/lib/dollvue/eligibility', () => ({ resolveCurrentDollVueEligibility: mocks.eligibility }));
 vi.mock('@/lib/dollvue/session', () => ({ verifyDollVueAccessToken: mocks.token, dollVueSessionCookie: mocks.cookie }));
@@ -10,6 +11,7 @@ beforeEach(() => {
   vi.resetAllMocks();
   mocks.token.mockReturnValue({ email: 'customer@example.test', handle: 'reviewed-doll' });
   mocks.cookie.mockReturnValue('session=verified; HttpOnly');
+  mocks.update.mockResolvedValue(true);
 });
 
 it('a valid email token cannot open a draft or unpublished product', async () => {
@@ -33,4 +35,10 @@ it('requires both current publication and current readiness', async () => {
 it('fails closed when Shopify is unavailable', async () => {
   mocks.getProduct.mockRejectedValue(new Error('unavailable'));
   expect((await GET(new Request('https://dollwow.com/dollvue/verify?token=valid'))).headers.has('set-cookie')).toBe(false);
+});
+it('links a verified submission only through the signed token identity',async()=>{
+  mocks.token.mockReturnValue({email:'customer@example.test',handle:'reviewed-doll',submissionId:'11111111-1111-4111-8111-111111111111'});
+  mocks.getProduct.mockResolvedValue({handle:'reviewed-doll'});mocks.eligibility.mockResolvedValue({available:true});
+  expect((await GET(new Request('https://dollwow.com/dollvue/verify?token=valid&submissionId=forged'))).headers.has('set-cookie')).toBe(true);
+  expect(mocks.update).toHaveBeenCalledWith('11111111-1111-4111-8111-111111111111','customer@example.test',{verified_at:expect.any(String)});
 });
