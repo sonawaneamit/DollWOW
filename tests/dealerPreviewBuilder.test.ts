@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import { keepsWizardOpen, presetSelectLayout, dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
+import { SE_ELF_FACTS } from '@/lib/customization/se-oct27-preview';
 
 const lily = "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052";
 const grace = "top-fire-doll-grace-162cm-i-cup-silicone-companion-doll";
@@ -27,6 +28,16 @@ describe("FunWest/Top Fire preset clicks keep the wizard open", () => {
 });
 
 describe("dealer preview PDP data", () => {
+  it("keeps all four new Elf galleries fresh without changing their wizard behavior or other SE products", () => {
+    expect(Object.keys(SE_ELF_FACTS)).toHaveLength(4);
+    for (const handle of Object.keys(SE_ELF_FACTS)) {
+      expect(dealerPreviewProductFetch(handle)).toEqual({cache: 'no-store'});
+      expect(keepsWizardOpen(handle)).toBe(false);
+      expect(presetSelectLayout(handle, 0)).toEqual({collapseWizard: true, scrollToPurchase: true});
+    }
+    expect(dealerPreviewProductFetch('sedoll-akina-157cm-h-cup-tpe-companion-doll-z7mv2'))
+      .toEqual({cache: 'reload', revalidate: 0});
+  });
   it("fetches FunWest/Top Fire products uncached so Shopify edits show up", () => {
     expect(dealerPreviewProductFetch("funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052")).toEqual({ cache: "no-store" });
     expect(dealerPreviewProductFetch("top-fire-doll-grace-162cm-i-cup-silicone-companion-doll")).toEqual({ cache: "no-store" });
