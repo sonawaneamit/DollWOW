@@ -29,6 +29,7 @@ type ProductBuyActionsProps = {
   warehouseRegions?: string[];
   /** In-stock unit that still needs a required pick (Top Fire headless body + head). */
   requiresChoice?: string;
+  previewOnly?: boolean;
 };
 
 /**
@@ -50,7 +51,8 @@ export function ProductBuyActions({
   customAvailable,
   warehouseCountry,
   warehouseRegions,
-  requiresChoice
+  requiresChoice,
+  previewOnly = false
 }: ProductBuyActionsProps) {
   const cart = useCart();
 
@@ -65,6 +67,7 @@ export function ProductBuyActions({
   const estimatedDate = mounted && stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
 
   function addToBag() {
+    if (previewOnly) return;
     cart.addItem({
       merchandiseId,
       productHandle,
@@ -133,7 +136,7 @@ export function ProductBuyActions({
             Available customizations
           </button>
         ) : null}
-        {!readyToShip && !requiresChoice ? (
+        {!readyToShip && !requiresChoice && !previewOnly ? (
             <button
               type="button"
               onClick={addToBag}

@@ -58,6 +58,11 @@ import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixt
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
+import { applyChikuPreview, isChikuPreview } from "@/lib/customization/chiku-preview";
+
+function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
+  return applyChikuPreview(product, process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview");
+}
 
 export const revalidate = 60;
 
@@ -69,6 +74,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
+  if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
   if (lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -85,9 +91,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     getProductAdminMetafieldsByHandle(handle)
   ]);
   if (!storefrontProduct) notFound();
-  const product = withPreviewCustomizationFixture(
+  const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
-  );
+  ));
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
@@ -208,6 +214,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             </div>
             <AfterpayMessaging amount={Number(price.amount)} currencyCode={price.currencyCode} pageType="product" itemSkus={firstAvailable?.id} itemCategories={product.productType} eligible={Boolean(firstAvailable?.availableForSale)} usesDisplayCurrency />
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
+            {isChikuPreview(product) ? <p className="mt-3 text-base leading-7 text-ivory-300">Fixed teeth and tongue included as standard. Both are non-removable.</p> : null}
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-ivory-300">
               {heroSpecs.map((spec) => (
                 <Spec key={spec.label} label={spec.label} value={spec.value} />
@@ -219,6 +226,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             </div>
             {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !promotionPreview && (
               <ProductBuyActions
+                previewOnly={isChikuPreview(product)}
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
                 productDisplayName={displayName || undefined}
@@ -366,6 +374,7 @@ function ProductSpecSummary({
   fitChecks: Array<{ title: string; body?: string; lines?: string[] }>;
 }) {
   const detailRows = [
+    ...(isChikuPreview(product) ? [["Teeth and tongue", "Fixed teeth and tongue included; non-removable"]] : []),
     ["Brand", product.extended.brand ?? product.vendor],
     ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
