@@ -14,7 +14,7 @@ import { markShopifyConsentSynced, needsShopifyConsentChoice, useShopifyConsentM
  * visitor accepts; the choice is stored for 180 days. Kept visually discreet
  * and copy is privacy-first, matching the brand's discretion positioning.
  */
-export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConsentConfig }) {
+export function ConsentBanner({ shopifyConfig, autoPrompt = true }: { shopifyConfig?: HeadlessConsentConfig; autoPrompt?: boolean }) {
   const consent = useConsent();
   const syncedConsent = useShopifyConsentMarker();
   const needsCheckoutChoice = needsShopifyConsentChoice(!!shopifyConfig, consent, syncedConsent);
@@ -32,7 +32,7 @@ export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConse
   }, []);
 
   useEffect(() => {
-    if (!mounted || dismissed || (consent !== "unknown" && !needsCheckoutChoice)) return;
+    if (!autoPrompt || !mounted || dismissed || (consent !== "unknown" && !needsCheckoutChoice)) return;
 
     const revealAfterScroll = () => {
       if (window.scrollY < 120) return;
@@ -43,9 +43,9 @@ export function ConsentBanner({ shopifyConfig }: { shopifyConfig?: HeadlessConse
     revealAfterScroll();
     window.addEventListener("scroll", revealAfterScroll, { passive: true });
     return () => window.removeEventListener("scroll", revealAfterScroll);
-  }, [consent, mounted, needsCheckoutChoice, dismissed]);
+  }, [autoPrompt, consent, mounted, needsCheckoutChoice, dismissed]);
 
-  if (!mounted || (!managing && (dismissed || (consent !== "unknown" && !needsCheckoutChoice) || !revealed))) return null;
+  if (!mounted || (!managing && (!autoPrompt || dismissed || (consent !== "unknown" && !needsCheckoutChoice) || !revealed))) return null;
 
   function choose(state: "granted" | "denied") {
     setDismissed(false);
