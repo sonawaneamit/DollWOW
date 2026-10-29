@@ -25,7 +25,13 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const eligibility = await resolveCurrentDollVueEligibility(product, { holdTimeoutMs: 8000 });
   if (!eligibility.available) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
-  if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate handle={handle} productName={productDisplayName(product) || product.title} headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()} /></div>;
+  if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate
+    handle={handle} productName={productDisplayName(product) || product.title}
+    headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()}
+    bodyLabel={product.extended.bodyCode}
+    productImage={eligibility.sourcePositions.length ? protectedProductImageUrl(handle, eligibility.sourcePositions[0], 'card') : undefined}
+    specs={[product.extended.heightCm && `${product.extended.heightCm} cm`, product.extended.material].filter((value): value is string => Boolean(value))}
+  /></div>;
   const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
   const sources = productImageSources(product);

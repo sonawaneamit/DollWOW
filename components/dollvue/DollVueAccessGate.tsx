@@ -2,8 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { Mail, ShieldCheck } from "lucide-react";
+import Image from 'next/image';
+import styles from './DollVueAccessGate.module.css';
 
-export function DollVueAccessGate({ handle, productName, headLabel }: { handle: string; productName?: string; headLabel?: string }) {
+export function DollVueAccessGate({ handle, productName, headLabel, productImage, bodyLabel, specs = [] }: {
+  handle: string; productName?: string; headLabel?: string; productImage?: string; bodyLabel?: string; specs?: string[];
+}) {
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
 
@@ -41,12 +45,20 @@ export function DollVueAccessGate({ handle, productName, headLabel }: { handle: 
   );
 
   return (
-    <section className="dollvue-access-card">
+    <section className={`dollvue-access-card ${styles.card}`}>
       <ShieldCheck />
       <p className="alive-eyebrow"><span /> DollVue™</p>
       <h1>{productName ? `Preview ${productName}` : 'Verify once. Preview anywhere.'}</h1>
       {headLabel ? <p data-dollvue-head>Head {headLabel}</p> : null}
       <p>We’ll email you a private access link. Your five complimentary previews will stay connected across your phone and computer.</p>
+      {productImage ? <div className={styles.product} data-dollvue-product>
+        <div className={styles.photo}><Image src={productImage} alt={productName ? `${productName} reference photo` : 'Selected doll reference photo'} fill sizes="80px" /></div>
+        <div className={styles.details}>
+          <strong>{productName || 'Selected doll'}</strong>
+          {headLabel || bodyLabel ? <p>{[headLabel && `Head ${headLabel}`, bodyLabel && `Body ${bodyLabel}`].filter(Boolean).join(' · ')}</p> : null}
+          {specs.length ? <p>{specs.join(' · ')}</p> : null}
+        </div>
+      </div> : null}
       <form onSubmit={submit}>
         <label htmlFor="dollvue-access-email">Email address</label>
         <input id="dollvue-access-email" name="email" type="email" autoComplete="email" required maxLength={180} placeholder="you@example.com" aria-invalid={Boolean(error)} aria-describedby={error ? "dollvue-access-error" : undefined} />
