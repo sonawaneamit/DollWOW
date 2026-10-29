@@ -35,6 +35,11 @@ import { FactoryApprovalPdpPreview } from "@/components/factory-approval/Factory
 import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { applyChikuPreview, isChikuPreview } from "@/lib/customization/chiku-preview";
+
+function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
+  return applyChikuPreview(product, process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview");
+}
 
 export async function generateMetadata({ params, searchParams }: { params: Promise<{ handle: string }>; searchParams: Promise<{ editorialPreview?: string }> }): Promise<Metadata> {
   const { handle } = await params;
@@ -42,6 +47,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
+  if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
   if (editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -53,7 +59,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { editorialPreview } = await searchParams;
   const [storefrontProduct, adminProductData] = await Promise.all([getProductByHandle(handle), getProductAdminMetafieldsByHandle(handle)]);
   if (!storefrontProduct) notFound();
-  const product = mergeAdminMetafields(storefrontProduct, adminProductData);
+  const product = previewProduct(mergeAdminMetafields(storefrontProduct, adminProductData));
   const publicProduct = withProtectedProductImages(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -156,6 +162,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
+            {isChikuPreview(product) ? <p className="mt-3 text-base leading-7 text-ivory-300">Fixed teeth and tongue included as standard. Both are non-removable.</p> : null}
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-ivory-300">
               {heroSpecs.map((spec) => (
                 <Spec key={spec.label} label={spec.label} value={spec.value} />
@@ -168,6 +175,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             </div>
             {firstAvailable && (
               <ProductBuyActions
+                previewOnly={isChikuPreview(product)}
                 merchandiseId={firstAvailable.id}
                 productTitle={displayTitle}
                 productDisplayName={displayName || undefined}
@@ -309,6 +317,7 @@ function ProductSpecSummary({
   fitChecks: Array<{ title: string; body?: string; lines?: string[] }>;
 }) {
   const detailRows = [
+    ...(isChikuPreview(product) ? [["Teeth and tongue", "Fixed teeth and tongue included; non-removable"]] : []),
     ["Brand", product.extended.brand ?? product.vendor],
     ["Head model", formatHeadModel(product.extended.headModel)],
     ["Material", product.extended.material],

@@ -43,6 +43,7 @@ import { ImagePreviewModal } from "./ImagePreviewModal";
 import { StyledSelect } from "./StyledSelect";
 import { Care365Seal } from "./care/Care365Seal";
 import { dollVueSelectionKey } from "@/lib/dollvue/public";
+import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
 
 export function ProductOptions({ product }: { product: Product }) {
   const config = useMemo(() => getCustomizationConfig(product), [product]);
@@ -95,7 +96,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const hasIssues = resolved.issues.length > 0;
-  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues);
+  const canCheckout = Boolean(variantId && variant?.availableForSale && !hasIssues && !isChikuPreview(product));
 
   useEffect(() => {
     if (!didMountRef.current) {
@@ -225,7 +226,7 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
     setReviewing(true);
   }
 
-  const disabledReason = resolved.issues[0]?.message || (!variant?.availableForSale ? "This build is not available to order online." : "");
+  const disabledReason = isChikuPreview(product) ? "Private preview. Checkout is disabled." : resolved.issues[0]?.message || (!variant?.availableForSale ? "This build is not available to order online." : "");
 
   return (
     <section className="product-builder relative rounded-lg bg-surface p-5 text-text shadow-card sm:p-7 lg:p-8">
@@ -242,6 +243,20 @@ function ProductOptionsBuilder({ product, config }: { product: Product; config: 
           Add to Cart anytime
         </p>
       </div>
+
+      {includedBuildItems(product).length ? (
+        <section className="mb-6 border-y border-border py-4" aria-labelledby="included-build-heading">
+          <h3 id="included-build-heading" className="text-base font-semibold">Included in this build</h3>
+          <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+            {includedBuildItems(product).map((item) => (
+              <li key={item.id} className="flex items-start gap-2 text-sm leading-6">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-stock" aria-hidden="true" />
+                <span>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
         <div className="rounded-md bg-surface-tint p-4 lg:hidden">

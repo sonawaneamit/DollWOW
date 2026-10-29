@@ -23,6 +23,7 @@ type ProductBuyActionsProps = {
   customAvailable?: boolean;
   warehouseCountry?: string;
   warehouseRegions?: string[];
+  previewOnly?: boolean;
 };
 
 /**
@@ -42,7 +43,8 @@ export function ProductBuyActions({
   readyToShip,
   customAvailable,
   warehouseCountry,
-  warehouseRegions
+  warehouseRegions,
+  previewOnly = false
 }: ProductBuyActionsProps) {
   const cart = useCart();
 
@@ -54,6 +56,7 @@ export function ProductBuyActions({
   ];
 
   function addToBag() {
+    if (previewOnly) return;
     cart.addItem({
       merchandiseId,
       productHandle,
@@ -113,7 +116,7 @@ export function ProductBuyActions({
             Available customizations
           </button>
         ) : null}
-        {!readyToShip ? (
+        {!readyToShip && !previewOnly ? (
             <button
               type="button"
               onClick={addToBag}
