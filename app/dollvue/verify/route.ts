@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     return NextResponse.redirect(new URL("/dollvue?access=invalid", request.url));
   }
   const product = await getProductByHandle(access.handle, { cache: 'no-store', strict: true }).catch(() => null);
-  if (!product || !(await resolveCurrentDollVueEligibility(product)).available) {
+  if (!product || !(await resolveCurrentDollVueEligibility(product, { holdTimeoutMs: 8000 })).available) {
     return NextResponse.redirect(new URL("/dollvue?access=invalid", request.url));
   }
   const response = NextResponse.redirect(new URL(dollVueUrl(access.handle), request.url));

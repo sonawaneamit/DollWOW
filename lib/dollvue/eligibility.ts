@@ -45,10 +45,10 @@ export function resolveDollVueEligibility(product: Product) {
 }
 
 /** Check private holds at the point of use; never expose their contents publicly. */
-export async function resolveCurrentDollVueEligibility(product: Product) {
+export async function resolveCurrentDollVueEligibility(product: Product, options: { holdTimeoutMs?: number } = {}) {
   const eligibility = resolveDollVueEligibility(product);
   if (!eligibility.available) return eligibility;
-  const hold = await getCurrentDollVueHold(product.id);
+  const hold = await getCurrentDollVueHold(product.id, options.holdTimeoutMs);
   return hold === 'clear' ? eligibility : { ...eligibility, available: false, sourcePositions: [] };
 }
 

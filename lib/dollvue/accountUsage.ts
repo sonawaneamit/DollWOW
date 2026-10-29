@@ -2,6 +2,7 @@ import "server-only";
 import { getSupabaseServerClient } from "@/lib/supabase/client";
 import { DOLLVUE_FREE_PREVIEWS } from "./config";
 import { dollVueEmailHash } from "./session";
+import { isDollVueUnlimitedTestEmail } from "./testEntitlement";
 
 const FEATURE = "dollvue-preview";
 
@@ -20,7 +21,8 @@ export async function dollVueUsageForEmail(email: string) {
     return { available: false, count: 0, remaining: 0 };
   }
   const used = Math.max(0, count ?? 0);
-  return { available: true, count: used, remaining: Math.max(0, DOLLVUE_FREE_PREVIEWS - used) };
+  const unlimited = isDollVueUnlimitedTestEmail(email, process.env.DOLLVUE_UNLIMITED_TEST_EMAILS);
+  return { available: true, count: used, unlimited, remaining: unlimited ? Number.MAX_SAFE_INTEGER : Math.max(0, DOLLVUE_FREE_PREVIEWS - used) };
 }
 
 export async function recordDollVuePreview(input: {

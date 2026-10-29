@@ -14,6 +14,7 @@ type Props = {
   groups: DollVueGroup[];
   freePreviews: number;
   initialRemaining: number;
+  unlimited?: boolean;
   verifiedEmail: string;
   live: boolean;
 };
@@ -27,7 +28,7 @@ type Result = {
 
 const MAX_PREVIEW_OPTIONS = 2;
 
-export function DollVue({ product, groups, freePreviews, initialRemaining, verifiedEmail, live }: Props) {
+export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live }: Props) {
   const resultStartRef = useRef<HTMLDivElement>(null);
   const consentRef = useRef<HTMLInputElement>(null);
   const [consentAttempts, setConsentAttempts] = useState(0);
@@ -66,10 +67,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
   }, [photoPosition, product.handle, selections]);
 
   useEffect(() => {
-    if (!loading) {
-      setElapsedSeconds(0);
-      return;
-    }
+    if (!loading) return;
     const startedAt = Date.now();
     const timer = window.setInterval(() => setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000)), 1000);
     return () => window.clearInterval(timer);
@@ -103,6 +101,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
       return;
     }
     if (!canGenerate) return;
+    setElapsedSeconds(0);
     setLoading(true);
     setError("");
     trackEvent("dollvue_generate", { product_handle: product.handle, option_count: selectedItems.length });
@@ -167,7 +166,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
       <header className="dollvue-header">
         <Link href={productUrl(product.handle)} aria-label="Back to product"><ArrowLeft /></Link>
         <div><span>DollVue™</span><strong>See your doll your way</strong></div>
-        <p><b>{remaining}</b> of {freePreviews} previews</p>
+        <p>{unlimited ? "Unlimited test previews" : <><b>{remaining}</b> of {freePreviews} previews</>}</p>
       </header>
 
       {loading ? (
@@ -186,6 +185,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, verif
 
       <div className="dollvue-main">
         <section className="dollvue-preview" aria-live="polite">
+          {!unlimited && remaining <= 0 ? <p role="status">You have used your five complimentary previews. <Link href="/support">Ask DollWOW about more previews</Link>.</p> : null}
           {result ? (
             <div ref={resultStartRef} className="dollvue-result-copy dollvue-result-copy-mobile">
               <ResultIntro result={result} verifiedEmail={verifiedEmail} />

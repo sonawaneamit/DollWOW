@@ -23,7 +23,7 @@ function validProductId(productId: string) {
  * Only `clear` permits continuing; this does not establish publication or readiness.
  * Query by the strict Storefront product ID. Never serialize private Admin data.
  */
-export async function getCurrentDollVueHold(productId: string): Promise<CurrentDollVueHold> {
+export async function getCurrentDollVueHold(productId: string, timeoutMs = TIMEOUT_MS): Promise<CurrentDollVueHold> {
   if (!validProductId(productId) || !hasShopifyAdminEnv()) {
     return 'unavailable';
   }
@@ -36,7 +36,7 @@ export async function getCurrentDollVueHold(productId: string): Promise<CurrentD
       }
     }`,
     { id: productId },
-    TIMEOUT_MS,
+    Number.isFinite(timeoutMs) ? Math.min(8000, Math.max(TIMEOUT_MS, timeoutMs)) : TIMEOUT_MS,
   );
   const parsed = responseSchema.safeParse(data);
   if (!parsed.success || !parsed.data.product || parsed.data.product.id !== productId) return 'unavailable';

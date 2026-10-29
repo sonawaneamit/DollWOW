@@ -38,13 +38,16 @@ async function sendWithGoogleWorkspace(message: EmailMessage): Promise<EmailDeli
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
       auth: {
         user: env.GOOGLE_WORKSPACE_EMAIL,
         pass: env.GOOGLE_WORKSPACE_APP_PASSWORD.replaceAll(" ", "")
       }
     });
 
-    await transporter.sendMail({
+    const receipt = await transporter.sendMail({
       from: `DollWow <${env.GOOGLE_WORKSPACE_EMAIL}>`,
       to: message.to,
       bcc: message.bcc,
@@ -61,9 +64,13 @@ async function sendWithGoogleWorkspace(message: EmailMessage): Promise<EmailDeli
       }))
     });
 
+    const accepted = receipt.accepted?.some((recipient: string | { address: string }) =>
+      (typeof recipient === "string" ? recipient : recipient.address).toLowerCase() === message.to.trim().toLowerCase()
+    );
+    if (!accepted) return { delivered: false, provider: "none" };
     return { delivered: true, provider: "google_workspace" };
   } catch (error) {
-    console.error("Google Workspace email failed", error);
+    console.error("Google Workspace email failed", safeMailError(error));
     return { delivered: false, provider: "none" };
   }
 }
@@ -98,7 +105,8 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
             type: attachment.contentType,
             disposition: "attachment"
           }))
-        })
+        }),
+        signal: AbortSignal.timeout(10_000)
       }
     );
 
@@ -108,7 +116,12 @@ async function sendWithCloudflare(message: EmailMessage): Promise<EmailDelivery>
 
     return { delivered: true, provider: "cloudflare" };
   } catch (error) {
-    console.error("Cloudflare email failed", error);
+    console.error("Cloudflare email failed", safeMailError(error));
     return { delivered: false, provider: "none" };
   }
+}
+
+function safeMailError(error: unknown) {
+  const code = error && typeof error === "object" && "code" in error ? String(error.code) : "unknown";
+  return { code: /^[A-Z0-9_]{1,24}$/.test(code) ? code : "unknown" };
 }

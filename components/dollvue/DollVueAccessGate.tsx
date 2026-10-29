@@ -5,17 +5,30 @@ import { Mail, ShieldCheck } from "lucide-react";
 
 export function DollVueAccessGate({ handle, productName, headLabel }: { handle: string; productName?: string; headLabel?: string }) {
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState("");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const email = String(new FormData(event.currentTarget).get("email") || "");
     setState("sending");
-    await fetch("/dollvue/access", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email, handle })
-    });
-    setState("sent");
+    setError("");
+    try {
+      const response = await fetch("/dollvue/access", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, handle })
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || payload?.ok !== true || payload?.status !== "sent") {
+        setError(accessFailureMessage(payload));
+        setState("idle");
+        return;
+      }
+      setState("sent");
+    } catch {
+      setError("We could not connect to send your link. Check your connection and try again.");
+      setState("idle");
+    }
   }
 
   if (state === "sent") return (
@@ -23,6 +36,7 @@ export function DollVueAccessGate({ handle, productName, headLabel }: { handle: 
       <Mail />
       <h1>Check your email</h1>
       <p>Open the private link we sent to verify your address and return to DollVue™. The link expires in 15 minutes.</p>
+      <button type="button" onClick={() => setState("idle")}>Use another email or resend</button>
     </section>
   );
 
@@ -35,10 +49,21 @@ export function DollVueAccessGate({ handle, productName, headLabel }: { handle: 
       <p>We’ll email you a private access link. Your five complimentary previews will stay connected across your phone and computer.</p>
       <form onSubmit={submit}>
         <label htmlFor="dollvue-access-email">Email address</label>
-        <input id="dollvue-access-email" name="email" type="email" autoComplete="email" required placeholder="you@example.com" />
+        <input id="dollvue-access-email" name="email" type="email" autoComplete="email" required maxLength={180} placeholder="you@example.com" aria-invalid={Boolean(error)} aria-describedby={error ? "dollvue-access-error" : undefined} />
+        {error ? <p id="dollvue-access-error" role="alert">{error}</p> : null}
         <button disabled={state === "sending"}>{state === "sending" ? "Sending…" : "Email my access link"}</button>
       </form>
       <small>No password needed. Your link expires in 15 minutes.</small>
     </section>
   );
+}
+
+export function accessFailureMessage(payload: { code?: string } | null) {
+  switch (payload?.code) {
+    case "rate_limited": return "Too many access-link requests. Please wait before trying again.";
+    case "invalid_input": return "Enter a valid email address and try again.";
+    case "product_unavailable":
+    case "eligibility_unavailable": return "We could not check this doll right now. Please try again shortly.";
+    default: return "We could not send your access link. Please try again shortly.";
+  }
 }
