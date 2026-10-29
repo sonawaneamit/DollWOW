@@ -7,6 +7,7 @@ on:
       - 'lib/dollvue/**'
       - 'supabase/migrations/**'
       - 'tests/dollVueCredit*.test.ts'
+      - 'tests/dollVueNonExplicit*.test.ts'
       - 'scripts/test-dollvue-credit-ledger.mjs'
       - 'package*.json'
       - '.github/workflows/dollvue-credit-ledger.yml'
@@ -20,5 +21,5 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx vitest run tests/dollVueCreditPacks.test.ts tests/dollVueCreditWebhook.test.ts tests/dollVueCreditReceipts.test.ts
+      - run: npx vitest run tests/dollVueCreditPacks.test.ts tests/dollVueCreditWebhook.test.ts tests/dollVueCreditReceipts.test.ts tests/dollVueNonExplicitProvider.test.ts tests/dollVueNonExplicitReview.test.ts
       - run: npm run test:dollvue-ledger

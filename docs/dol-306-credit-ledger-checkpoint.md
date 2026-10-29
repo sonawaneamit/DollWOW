@@ -24,6 +24,9 @@ The existing three drafts remain the only approved products: 5/$5, 12/$10,
   previews and granted paid credits. Expired/failed reservations are released.
   Successful completion writes usage once inside the same transaction. The
   ordinary generation route is NOT wired to these functions yet.
+- A repeated still-pending reservation returns `busy`, not a second permission
+  to invoke the model. Completed-result recovery still needs the private artifact
+  policy and request-fingerprint integration before public activation.
 - Refund/cancellation holds persist even when callbacks arrive before payment.
   Existing credited accounts cannot spend during review. This does not issue a
   refund, choose a refund entitlement, or silently deduct a guessed amount.
@@ -98,3 +101,21 @@ credit completion, exclude the uncensored fallback, and isolate its cache from
 the old route. Test with non-explicit fixtures only, including missing/unknown
 filter headers and refusal paths. This is an implementation checkpoint, not a
 claim that these guards are already live or that safety holds can be removed.
+
+The filtered provider adapter and distinct input-review validator are now staged
+and tested in `nonExplicitProvider.ts` and `nonExplicitReview.ts`. They are NOT
+wired to the public generation route or populated with product content approvals.
+The adapter has one fixed model, filtered requests only, no URL inputs/fallback,
+bounded output, and rejects adult/unknown classification before reading images.
+The review validator binds product/menu fingerprint, source position and every
+owned input digest. Appearance-ready alone does not pass. No real image API call
+or explicit-attachment processing was used in these tests.
+
+## Pending Private Recovery Policy
+
+On DOL-306, comment c299ffc5-ad21-4afc-84a2-2acabce443c0 asks Martin to approve
+private seven-day retention of completed non-explicit preview images, verified
+buyer access only, followed by deletion. No retention period/storage/deletion job
+has been enabled. This is separate from submission-report metadata. Without
+durable result recovery, a credit commit followed by lost response/email can
+strand a paid preview; do not hide that failure or claim ready for checkout.

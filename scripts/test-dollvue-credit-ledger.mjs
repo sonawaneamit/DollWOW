@@ -31,7 +31,7 @@ try {
   assert.deepEqual(results.map(r=>r.rows[0].dollvue_reserve_preview).sort(),['exhausted','reserved']); assertions++;
   const winner = results[0].rows[0].dollvue_reserve_preview==='reserved'?first:second;
   const loser = winner===first?second:first;
-  await eq(reserve,[hash,winner],'reserved');
+  await eq(reserve,[hash,winner],'busy');
   const finish = 'select public.dollvue_finish_preview($1,$2,$3,$4,$5)';
   await eq(finish,[hash,winner,false,'fixture',{}],'released');
   await eq(reserve,[hash,loser],'reserved');

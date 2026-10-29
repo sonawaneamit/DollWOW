@@ -109,7 +109,7 @@ begin
   select * into previous from dollvue_credit_reservations where id=p_id;
   if found then
     if previous.email_hash<>p_email_hash then raise exception 'Reservation identity mismatch'; end if;
-    return previous.state;
+    return case when previous.state='reserved' then 'busy' else previous.state end;
   end if;
   select count(*) into used from ai_usage_events
     where feature='dollvue-preview' and status='success' and user_email_hash=p_email_hash;
