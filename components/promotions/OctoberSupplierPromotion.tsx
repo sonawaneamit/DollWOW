@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import Image from 'next/image';
 import { CalendarDays, Check, ChevronDown, Gift } from "lucide-react";
 import { octoberOfferForProduct, octoberSupportedBenefits, type OctoberProduct, type OctoberPricingContext } from "@/lib/promotions/october2026";
+import { seHalloweenPreviewClockEnabled } from '@/lib/promotions/seHalloween2026';
 
 export function OctoberSupplierPdpPromotion({ product, promoClock, context }: {
   product: OctoberProduct; promoClock: string; context: OctoberPricingContext
@@ -24,7 +25,7 @@ export function OctoberSupplierPdpPromotion({ product, promoClock, context }: {
       </button>
       <div id={id} hidden={!isOpen} className="py-3 text-base leading-7 text-text-dim">
         <p className="flex items-start gap-2 text-accent"><CalendarDays className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
-          {offer.campaign.startsOn} through {offer.campaign.endsOn}, US Pacific time.
+          {offer.campaign.startsOn} through {offer.campaign.endsOn}, {offer.facts.brand === 'se' && seHalloweenPreviewClockEnabled() ? 'Portugal' : 'US Pacific'} time.
         </p>
         <p className="mt-3">Eligible custom {offer.facts.form === "head" ? "silicone heads" : offer.facts.form === "torso" ? "silicone torsos" : "full-body dolls"} only. Available upgrades depend on the selected body and head. Ready-to-ship stock is excluded.</p>
         <ul className="mt-3 grid gap-2">

@@ -112,8 +112,8 @@ const nextConfig: NextConfig = {
   // Ensure product-media watermark lockup is present in serverless traces (SSO previews).
   outputFileTracingIncludes: {
     "/*": ["./content/learn/drafts/*.md"],
-    "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
-    "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png"],
+    "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png", "./public/images/products/se-elf-2026/*.jpg"],
+    "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png", "./public/images/products/se-elf-2026/*.jpg"],
     "/review/dollvue-branding": ["./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"]
   },
   // Option references are fetched over HTTP; never bundle the static library

@@ -1,0 +1,242 @@
+[
+  {
+    "handle": "sedoll-samantha-l-153cm-a-cup-red-tpe-elf-sed338",
+    "tag": "options:se-female-tpe-standard",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Cleaning and drying basics.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "vaginal-irrigator"
+          },
+          {
+            "groupId": "accessories",
+            "optionId": "reusable-drying-rod"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Hyper-realism body painting with articulated fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Body painting with freckles and ultra-flex fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-freckles"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ultra-flex-fingers"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "handle": "sedoll-luis-g-157cm-h-cup-red-tpe-elf-sed339",
+    "tag": "options:se-female-tpe-standard",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Cleaning and drying basics.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "vaginal-irrigator"
+          },
+          {
+            "groupId": "accessories",
+            "optionId": "reusable-drying-rod"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Hyper-realism body painting with articulated fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Body painting with freckles and ultra-flex fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-freckles"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ultra-flex-fingers"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "handle": "sedoll-samantha-k-161cm-f-cup-black-tpe-elf-sed340",
+    "tag": "options:se-female-tpe-standard",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Cleaning and drying basics.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "vaginal-irrigator"
+          },
+          {
+            "groupId": "accessories",
+            "optionId": "reusable-drying-rod"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Hyper-realism body painting with articulated fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Body painting with freckles and ultra-flex fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-freckles"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ultra-flex-fingers"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "handle": "sedoll-luis-h-163cm-e-cup-black-tpe-elf-sed341",
+    "tag": "options:se-female-tpe-standard",
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "Cleaning and drying basics.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "vaginal-irrigator"
+          },
+          {
+            "groupId": "accessories",
+            "optionId": "reusable-drying-rod"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Hyper-realism body painting with articulated fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Body painting with freckles and ultra-flex fingers.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-freckles"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "ultra-flex-fingers"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hyper-realism-body-painting-free"
+          },
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "articulated-fingers-free"
+          }
+        ]
+      }
+    ]
+  }
+]

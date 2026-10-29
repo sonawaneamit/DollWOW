@@ -1,0 +1,5358 @@
+[
+  {
+    "id": "preview:se-elf:SED338",
+    "handle": "sedoll-samantha-l-153cm-a-cup-red-tpe-elf-sed338",
+    "title": "SE Doll Samantha.L 153cm A-Cup Red TPE Elf",
+    "description": "Samantha.L pairs the photographed red Elf look and W022 head with a 153 cm A-cup TPE body. The base price includes the photographed skin. Compare the existing SE options below. Made to order; estimated delivery is three weeks.",
+    "vendor": "SE Doll",
+    "productType": "TPE Doll",
+    "tags": [
+      "custom",
+      "sedoll",
+      "tpe",
+      "options:se-female-tpe-standard",
+      "dollwow-test"
+    ],
+    "featuredImage": {
+      "url": "/images/products/se-elf-2026/SED338-1.jpg",
+      "altText": "SE Doll Samantha.L Red TPE Elf, supplier photograph 1"
+    },
+    "images": [
+      {
+        "url": "/images/products/se-elf-2026/SED338-1.jpg",
+        "altText": "SE Doll Samantha.L Red TPE Elf, supplier photograph 1"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED338-2.jpg",
+        "altText": "SE Doll Samantha.L Red TPE Elf, supplier photograph 2"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED338-3.jpg",
+        "altText": "SE Doll Samantha.L Red TPE Elf, supplier photograph 3"
+      }
+    ],
+    "variants": [
+      {
+        "id": "preview:variant:se-elf:SED338",
+        "title": "Photographed build",
+        "availableForSale": false,
+        "price": {
+          "amount": "1645.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1645.00",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1645.00",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "SE Doll",
+      "displayName": "Samantha.L",
+      "bodyCode": "153A",
+      "headModel": "W022",
+      "bodyType": "female",
+      "material": "TPE",
+      "heightCm": 153,
+      "weightLb": 63.27266924566,
+      "cupSize": "A",
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "deliveryEstimate": "Est. 3 weeks",
+      "measurements": {
+        "Height": "153 cm",
+        "Weight": "28.7 kg",
+        "Bust": "70 cm",
+        "Underbust": "58 cm",
+        "Waist": "52 cm",
+        "Hip": "80 cm",
+        "Shoulders Width": "31 cm",
+        "Feet Length": "21 cm",
+        "Oral depth": "15 cm",
+        "Vagina Depth": "17 cm",
+        "Anus Depth": "15 cm"
+      },
+      "customizationGroups": [
+        {
+          "id": "material",
+          "label": "Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "regular-tpe-default",
+              "label": "Regular TPE (Default)",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d034a725cfe8b520ec5d672400b6ba87bc11063bcfea4ae81bae4e635a4ab364.webp",
+                "label": "Regular TPE (Default)"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "stpe-free",
+              "label": "STPE",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e04d53222a3420acd95ee4a9c40d305b36ac5ea83f6525cb04550169e0d34a0a.webp",
+                "label": "STPE (FREE)"
+              },
+              "priceDelta": 100
+            }
+          ]
+        },
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "white",
+              "label": "White",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/70e758373c5932d00489ff69922ddec5a92a46957eb79997c9385ca3b087cd41.webp",
+                "label": "White"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dbbd936183cad8a1daaaa7ce9b8c65e6887d7519686d201a55970e79d3e47e9d.webp",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/445457e0cd8f6b056bf23287e635218e2d361619edf2e79eff5ced29a34850c8.webp",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "dark-tan",
+              "label": "Dark Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2998d442d6c3f303d8003205f2259d664ee8556b4df1f1d376debf4262e5769b.webp",
+                "label": "Dark Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "custom-color",
+              "label": "Custom Color",
+              "priceDelta": 250,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b8d54de87cde381a89dc9b6ef6a0a7b5cc4e4258617643aabcc7a43b62a0b493.webp",
+                "label": "Custom Color"
+              }
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on",
+          "label": "Enhanced Mouth Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        },
+        {
+          "id": "breast-options",
+          "label": "Breast Options",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hollow",
+              "label": "Hollow",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/846b3b1029318cacd411af876294ee5d6cc472d178b0555503b6ff0b56b733e5.webp",
+                "label": "Hollow"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "solid",
+              "label": "Solid",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eb0fc6e042f78a04654c4111672cccda61bbdb591f81a81c603e6f34b226cbdf.webp",
+                "label": "Solid"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "gel-free",
+              "label": "Gel",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d5fffb7ed02b169123adb3876e89c1ecb6ea8ca04c1447bd2065d08ca3c3452b.webp",
+                "label": "Gel (FREE)"
+              },
+              "priceDelta": 69
+            }
+          ]
+        },
+        {
+          "id": "skeleton-type",
+          "label": "Skeleton Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fc03c28d052fd4d37b82a9c1514ee487724f03e515afa737adf4eb3fef9d7dc9.webp",
+                "label": "Standard"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "evo-free",
+              "label": "EVO",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1b98f9b02487b54dbc2a9520cd3363cf65c22c169c3af561ea753cb9d54c84b0.webp",
+                "label": "EVO (FREE)"
+              },
+              "priceDelta": 50
+            }
+          ]
+        },
+        {
+          "id": "insertable-penis-add-on",
+          "label": "Insertable Penis Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "dollVueEnabled": false
+            },
+            {
+              "id": "15cm-6",
+              "label": "15cm / 6\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "15cm / 6\""
+              }
+            },
+            {
+              "id": "19cm-7-5",
+              "label": "19cm / 7.5\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "19cm / 7.5\""
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium-head-body-options-multiple",
+          "label": "Premium Head & Body Options (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "loose-joint-system-free",
+              "label": "Loose Joint System",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/se-doll-option-loose-joints_2d49c988-4098-4f7b-a572-420198dfa5ec.jpg?v=1788337397",
+                "label": "Loose Joint System"
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-free",
+              "label": "Hyper-realism Body Painting",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting (FREE)"
+              },
+              "priceDelta": 99
+            },
+            {
+              "id": "articulated-fingers-free",
+              "label": "Articulated Fingers",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de7dd310f21fa7d302e725a07bd5cb3ea0845cf2ec2dac08a320bc180f326c9f.webp",
+                "label": "Articulated Fingers (FREE)"
+              },
+              "priceDelta": 69
+            },
+            {
+              "id": "hyper-realism-body-painting-freckles",
+              "label": "Hyper-realism Body Painting & Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting & Freckles"
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body Heating",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c445e29dd3edf1f6f8cfb173f8d742905ce6d95f2a0ebfa92b651ce7ec2a540b.webp",
+                "label": "Body Heating"
+              }
+            },
+            {
+              "id": "body-moaning",
+              "label": "Body Moaning",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d3fed9d41d29aec07c61f86bb566b1ea5fcd6f5e83ed5ddab6ad33fa90a0db04.webp",
+                "label": "Body Moaning"
+              }
+            },
+            {
+              "id": "ultra-flex-fingers",
+              "label": "Ultra-flex Fingers",
+              "priceDelta": 109,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8897f2a4f8770c249360e792c2cb38090733baa9229a8903c22aef11cbcc1fb9.webp",
+                "label": "Ultra-flex Fingers"
+              }
+            },
+            {
+              "id": "auto-blowjob-sex-robot",
+              "label": "Auto Blowjob Sex Robot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/433d8c386dfcf06b0cd1060535a0be4ff9c5b2f59a4169d2cee3d3c5479d5c71.webp",
+                "label": "Auto Blowjob Sex Robot"
+              }
+            },
+            {
+              "id": "waist-spin-sex-bot",
+              "label": "Waist-spin Sex Bot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/277fe698cd77b005480a5034a71ca4231e7f4ed0406262baf5280d206cd0b861.webp",
+                "label": "Waist-spin Sex Bot"
+              }
+            },
+            {
+              "id": "lubricant-free-free",
+              "label": "Lubricant-free",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6313462886f07dff0f7f7264b57dffebfb5db3aef0eb4dc0a3e22050db05be42.webp",
+                "label": "Lubricant-free (FREE)"
+              },
+              "priceDelta": 29
+            },
+            {
+              "id": "facial-freckle",
+              "label": "Facial Freckle",
+              "priceDelta": 49,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe4433b001688d6e9956571630be266de351986a5d58f3af2ad8f03f79fa42d7.webp",
+                "label": "Facial Freckle"
+              }
+            },
+            {
+              "id": "body-freckles",
+              "label": "Body Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55ff07e18d6a871d513c14336aec3124f3afc60854a4fcdb99e5641e230d6c15.webp",
+                "label": "Body Freckles"
+              }
+            },
+            {
+              "id": "auto-sucking-vagina",
+              "label": "Auto-Sucking Vagina",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b7890c6b06b4bab872bd3f7d4250e697bf5ec2c9e2ca5a393f560eacc369e63b.webp",
+                "label": "Auto-Sucking Vagina"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sexy-lingerie-add-on",
+          "label": "Sexy Lingerie Add-On",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef34329c8231928ce52dd5c1914b9fb566187ca9f0af3b854ea41fcce23b8d96.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6391d475d7cb576b0db10cd1d152396cb53224bbe3537d29f271ffd385a93d0a.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0e5eb34a4de3bc0a91f2d44caa96b13e4fe21175c40d6a4d28e12029006b256b.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6ecfdb53f67b9b0dfbd62df00cafc42bef090d363107ca06faf44074f39cb2c3.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/defd8f8523467b0f823b2ee680227a1ac5b84ebf678d406fc785154a32d99d6a.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e31da5af1b4851457eacc333ea5c4c0957e67840f566400bd5a572e6374c78a6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3aa7387b17d1bbb7583af3b1a2fa1b91cb974387f115ba9b6a73a6103f0a2f69.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/663ec028d76e396b58753ef2a78ff6426aa9418f46b312c030926f3c748b1981.webp",
+                "label": "No.8"
+              }
+            },
+            {
+              "id": "no-9",
+              "label": "No.9",
+              "priceDelta": 60,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4a44d57bc678312d32c3e2d22024c0e4a5bc63e9beef2eff0aaab7cdd7cfaa07.webp",
+                "label": "No.9"
+              }
+            },
+            {
+              "id": "no-10",
+              "label": "No.10",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4bf2182062c5c1fe7676a9b2a8bbc9c8e5ae7d8f35dbc9a5e9b9287549fcf96f.webp",
+                "label": "No.10"
+              }
+            },
+            {
+              "id": "no-11",
+              "label": "No.11",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/60deedeccb72d5057591c2add3b07771615743fbe5a0c6adda7d48cd4e6f9dd1.webp",
+                "label": "No.11"
+              }
+            },
+            {
+              "id": "no-12",
+              "label": "No.12",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/494dfde816880294ea4899ac285a8255b9a23347f34804b6278ca1e848827b91.webp",
+                "label": "No.12"
+              }
+            },
+            {
+              "id": "no-13",
+              "label": "No.13",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/22493491e56f0b0b8aadf9f3c7a3b65a2af8f540dbdb57a734a778f1e72cbacc.webp",
+                "label": "No.13"
+              }
+            },
+            {
+              "id": "no-14",
+              "label": "No.14",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/358f3a3f72033df07dccf94de0d8d668b40ae640af3a9bd3a9e7eca7037a51d5.webp",
+                "label": "No.14"
+              }
+            },
+            {
+              "id": "no-15",
+              "label": "No.15",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/beb18b6b771e429678871712d6b59aa845885f022fa8c54ef005ef04e4ef53a1.webp",
+                "label": "No.15"
+              }
+            },
+            {
+              "id": "no-16",
+              "label": "No.16",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ff940f04ab0cd5ab50e62bd7188d37e68795cad1205acf6ed0e510b6224d1e2a.webp",
+                "label": "No.16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "label": "Accessories",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "vaginal-irrigator",
+              "label": "Vaginal Irrigator",
+              "priceDelta": 35,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+                "label": "Vaginal Irrigator"
+              }
+            },
+            {
+              "id": "reusable-drying-rod",
+              "label": "Reusable Drying Rod",
+              "priceDelta": 25,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+                "label": "Reusable Drying Rod"
+              }
+            },
+            {
+              "id": "replaceable-vagina-insert",
+              "label": "Replaceable Vagina Insert",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+                "label": "Replaceable Vagina Insert"
+              }
+            },
+            {
+              "id": "teeth-tongue-set",
+              "label": "Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a213e14bfde23b9e9f020b4f7de8ca0ce71aa8ca088fba0248c5324751dfd235.webp",
+                "label": "Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "vampire-teeth-tongue-set",
+              "label": "Vampire Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/53cf894bc38338d0e983a2c8fa58e6fd968d93642497df2a6ede5aa840133347.webp",
+                "label": "Vampire Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "removable-tongue",
+              "label": "Removable Tongue",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4e42796fadafa6194eeb6fd078c8cb974c6237f52c1eb20e0b914dbf5b0e3dca.webp",
+                "label": "Removable Tongue"
+              }
+            },
+            {
+              "id": "premium-cleaning-set-orig-550",
+              "label": "Premium Cleaning Set (Orig. $550)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a608771483b646d5e5a184bf4ab64dd75dac3442da30b89bdc766dbe2155e4e6.webp",
+                "label": "Premium Cleaning Set (Orig. $550)"
+              }
+            },
+            {
+              "id": "care-kit-orig-199",
+              "label": "Care Kit (Orig. $199)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/care-kit.svg",
+                "label": "Care Kit (Orig. $199)"
+              }
+            },
+            {
+              "id": "deluxe-care-kit-orig-299",
+              "label": "Deluxe Care Kit (Orig. $299)",
+              "priceDelta": 199,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/deluxe-care-kit.svg",
+                "label": "Deluxe Care Kit (Orig. $299)"
+              }
+            },
+            {
+              "id": "sex-doll-body-hanging-bracket",
+              "label": "Sex Doll Body Hanging Bracket",
+              "priceDelta": 399,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+                "label": "Sex Doll Body Hanging Bracket"
+              }
+            },
+            {
+              "id": "head-stand-holder",
+              "label": "Head Stand Holder",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+                "label": "Head Stand Holder"
+              }
+            },
+            {
+              "id": "belly-piercing",
+              "label": "Belly Piercing",
+              "priceDelta": 20,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+                "label": "Belly Piercing"
+              }
+            },
+            {
+              "id": "doll-repair-kit",
+              "label": "Doll Repair Kit",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a6e1530a4cbbbc3e3642d2bd41c2d0cc41688aa5645dd3b615b54fec21a1667.webp",
+                "label": "Doll Repair Kit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "upgraded-flight-case-add-on",
+          "label": "Upgraded Flight Case Add On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "dollVueEnabled": false
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight < 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight < 40kg)"
+              }
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight ≥ 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight ≥ 40kg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "an-extra-free-head",
+          "label": "An Extra Free Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "3-1",
+              "label": "3-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a5c01d0ef1f4a3dc57e59a8ac33538fe4560b141f350f7260b76d908c5e94333.webp",
+                "label": "3-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "3-2",
+              "label": "3-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca8871c1715b78a62c1360c0a9e8676c7c4cbabc79d53db6a304da3f6b9846c.webp",
+                "label": "3-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10",
+              "label": "10",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7dab83ff837e06d92778064aeabafc37417153b60be4b0cca28704e4eba5015c.webp",
+                "label": "10"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-1",
+              "label": "10-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d350f4f9457e42b6a981456760fdf488e39f9345456f4cc3cd22f4a55f3de4d.webp",
+                "label": "10-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-2",
+              "label": "10-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cfdc926bd55901286f0c4d44fb63064acec947c6400909c39b371edf2cc2ed4d.webp",
+                "label": "10-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-3",
+              "label": "10-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef73f56a887710d7c8856b66cb2ff4ae83f323ddbaf85a3cf371a5d52d641a57.webp",
+                "label": "10-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "11",
+              "label": "11",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f8810967e16c8145617908b6c44b0bc3842a06324d8bd3361e50472ca7129c04.webp",
+                "label": "11"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "12",
+              "label": "12",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3559edd7d2ac61e74f00a19fab83c571e298e3bed7d7bbf4b9b8244216eec76b.webp",
+                "label": "12"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "13",
+              "label": "13",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de34354f6c55a0b4f6bb1ae4fbaed396cf1f3a673bfe0a8e6922634cf5dc2ba5.webp",
+                "label": "13"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-1",
+              "label": "14-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe7eb9568d0712d0d14ade8735ceb2826865c191dafcccf9b65ee9d94b1ad9fb.webp",
+                "label": "14-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-2",
+              "label": "14-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d02b8f29694f8d85af50cef024462e720b01a0f7013ad3983f3bf993facf537e.webp",
+                "label": "14-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-3",
+              "label": "14-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3b65c1c08fbb4cf04c83ff2a9548aabe53e48790c6c6cad2f9cb034f9c0da279.webp",
+                "label": "14-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-1",
+              "label": "18-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/48cb69431d7a9cc122de60a8385358c40a17adc9c2a80b6f9caf16520a3c4e02.webp",
+                "label": "18-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-2",
+              "label": "18-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ca69b4993bf9ada2337f942eb0ac8d42f4c954e891e7bdfd061ee4d4a1189d2.webp",
+                "label": "18-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-1",
+              "label": "21-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/243eadb085ccd0663332cc20c3e1d9d6294d37f395e34796671fae70f23b2d29.webp",
+                "label": "21-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-2",
+              "label": "21-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f2723236bc17acb25fe82c86181f0feac7463812327567b75b4ca850d04c9a58.webp",
+                "label": "21-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-1",
+              "label": "22-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/76350af35574e981ac390c3db360be039768d5d4d2c3c8f4cb82fa1497e7c3bc.webp",
+                "label": "22-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-2",
+              "label": "22-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7b934c49ee19d954b93967812b17a7718c010f596840d6f93c547bb8ba9e0a34.webp",
+                "label": "22-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-3",
+              "label": "22-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca6cced03254c36fedfcab053f281a5a26a45dec0885b8dad4b12fc20cd8aff.webp",
+                "label": "22-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-4",
+              "label": "22-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/35e41de809d77c41f33a344af869833af69e97fbe91564b1027d66be64ec0469.webp",
+                "label": "22-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-5",
+              "label": "22-5",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/68f1bcd58706d0126ae01247606e200b01da07a218d37585c3a2d8be3c11ab93.webp",
+                "label": "22-5"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "23",
+              "label": "23",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1955036f5d0394f7af07acb40bf6d78296283ba69df406353bb8f509589350d2.webp",
+                "label": "23"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "24",
+              "label": "24",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c2876c17aafcca28a32f2056f425cb69a385e581441cc516f6ff07678bae5ae5.webp",
+                "label": "24"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-1",
+              "label": "28-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b461bed8f7eef39cbeabfea862e52608c3bb3b4ee00cd1f7eec4f61edd950432.webp",
+                "label": "28-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-2",
+              "label": "28-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ef1b4f5cbd23f9a729182dddc7d5c7dcd2337f0ae3a06aec8972a8daecfd05d.webp",
+                "label": "28-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "33",
+              "label": "33",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b381e921636492c610e70bfb95545f3aae110d6cf917d653185100ff5fe10b0.webp",
+                "label": "33"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "34",
+              "label": "34",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ea2f7e62f1e52c1ac33e94ecb627a86e34e7eea3502d5ec5447426e46997a49c.webp",
+                "label": "34"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "35",
+              "label": "35",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0799f1ed293a650d698f36ff093d30da411f5931b2e750a6aed9ec45c93a9e32.webp",
+                "label": "35"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "36",
+              "label": "36",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b58bb8b6149b0a687e5c1aec50e732d72118a4610d6b53a65ca9a019f88289d2.webp",
+                "label": "36"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "45",
+              "label": "45",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f263f4727e64b0c781f76d4c97e776d7b11ccc744393f218006a9f4e6db7d7a2.webp",
+                "label": "45"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-1",
+              "label": "46-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/773d65c375061772b443b2533efd726355f4c30fb431cdc5de2d6d36e732e476.webp",
+                "label": "46-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-2",
+              "label": "46-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/77711616eb289f6da3b845caa623e31e2860cbefac4113cebf6742a785acf16e.webp",
+                "label": "46-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-3",
+              "label": "46-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/69d8d8e4fd12a6cd46e7908938423617e16a322b7b6c76a675ecaa226847746f.webp",
+                "label": "46-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "47",
+              "label": "47",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2989690a6328b1b157093a61e8264476d46b0f8352c4beaef7eea26c8e86ca69.webp",
+                "label": "47"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-1",
+              "label": "49-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3d62b68d0c97fc005f3c6ac25a4d8602b5109791cace75d9007cb203a63dbf14.webp",
+                "label": "49-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-2",
+              "label": "49-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d16b46d7052935d739897f20280ae86bbfc321dca7fff362eef7f57584857ba9.webp",
+                "label": "49-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-3",
+              "label": "49-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c3512d0190a2265432b444f1a9bbfeaa439873a00052e372cdc16d5d1299aca7.webp",
+                "label": "49-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-1",
+              "label": "50-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4f7b6c206e809261d004538553cb5e49221f9badc5d93cb69bd08abf0530c902.webp",
+                "label": "50-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-2",
+              "label": "50-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/99db880efaa2a8f0b8a35e747d27b7a858802b22418039f660ef0d74ffecff48.webp",
+                "label": "50-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "51",
+              "label": "51",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/492d7864c7e8825053d2b734af876525a2aaa8c554aca1136c0354aff961ae24.webp",
+                "label": "51"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-1",
+              "label": "55-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d881e254cd1b7d027789c2f395284b5cd8ab6b50dca5a2d370b861c2e779f88a.webp",
+                "label": "55-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-2",
+              "label": "55-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2863ff84ce0916b869736c52a6390cd8286466c16de34b32aed04431570770f4.webp",
+                "label": "55-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-3",
+              "label": "55-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4b102be7933a6fc61d46a245bede73bef5d0a4b821901b0bbcc12cade0229c7e.webp",
+                "label": "55-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-4",
+              "label": "55-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55530d8bb374fc3ba9ebad99021708653fdbc4e98137a15a9be0a06e240aba3b.webp",
+                "label": "55-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-1",
+              "label": "56-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fd3181cd0a127e47d889b73c757cb3232c6f1c0adeabb00801e4ec94171b4240.webp",
+                "label": "56-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-2",
+              "label": "56-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0364e7d474b0bb1f866b232f3272b3d7702616009965887720cb11c8da947cbe.webp",
+                "label": "56-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "58",
+              "label": "58",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/170046fe3c5c8b880d60097014278182887350d2386ce2513b088648d194b985.webp",
+                "label": "58"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "64",
+              "label": "64",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b77d52e5b5a88f6abaff7418d5d1eb64d99fe5e16b9e08005e18f8466250fccf.webp",
+                "label": "64"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "custom-options-for-extra-head",
+          "label": "Custom Options For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3173d36ca0a9608c3b52788ee90dd64551f3f25260d2f189328df450caf168c6.webp",
+                "label": "No Change"
+              }
+            },
+            {
+              "id": "yes-i-need",
+              "label": "Yes I Need",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/61637be3265ede831c86f7a4c6e2cc3d106c0a482f7c752b00e069ee2ac75037.webp",
+                "label": "Yes I Need"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on-for-extra-head",
+          "label": "Enhanced Mouth Add-On For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "preview:se-elf:SED339",
+    "handle": "sedoll-luis-g-157cm-h-cup-red-tpe-elf-sed339",
+    "title": "SE Doll Luis.G 157cm H-Cup Red TPE Elf",
+    "description": "Luis.G pairs the photographed red Elf look and W021 head with a 157 cm H-cup TPE body. The base price includes the photographed skin. Compare the existing SE options below. Made to order; estimated delivery is three weeks.",
+    "vendor": "SE Doll",
+    "productType": "TPE Doll",
+    "tags": [
+      "custom",
+      "sedoll",
+      "tpe",
+      "options:se-female-tpe-standard",
+      "dollwow-test"
+    ],
+    "featuredImage": {
+      "url": "/images/products/se-elf-2026/SED339-1.jpg",
+      "altText": "SE Doll Luis.G Red TPE Elf, supplier photograph 1"
+    },
+    "images": [
+      {
+        "url": "/images/products/se-elf-2026/SED339-1.jpg",
+        "altText": "SE Doll Luis.G Red TPE Elf, supplier photograph 1"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED339-2.jpg",
+        "altText": "SE Doll Luis.G Red TPE Elf, supplier photograph 2"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED339-3.jpg",
+        "altText": "SE Doll Luis.G Red TPE Elf, supplier photograph 3"
+      }
+    ],
+    "variants": [
+      {
+        "id": "preview:variant:se-elf:SED339",
+        "title": "Photographed build",
+        "availableForSale": false,
+        "price": {
+          "amount": "1645.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1645.00",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1645.00",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "SE Doll",
+      "displayName": "Luis.G",
+      "bodyCode": "157H",
+      "headModel": "W021",
+      "bodyType": "female",
+      "material": "TPE",
+      "heightCm": 157,
+      "weightLb": 90.3895274938,
+      "cupSize": "H",
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "deliveryEstimate": "Est. 3 weeks",
+      "measurements": {
+        "Height": "157 cm",
+        "Weight": "41 kg",
+        "Bust": "88 cm",
+        "Underbust": "62 cm",
+        "Waist": "56 cm",
+        "Hip": "97 cm",
+        "Shoulders Width": "32 cm",
+        "Feet Length": "21 cm",
+        "Oral depth": "15 cm",
+        "Vagina Depth": "17 cm",
+        "Anus Depth": "17 cm"
+      },
+      "customizationGroups": [
+        {
+          "id": "material",
+          "label": "Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "regular-tpe-default",
+              "label": "Regular TPE (Default)",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d034a725cfe8b520ec5d672400b6ba87bc11063bcfea4ae81bae4e635a4ab364.webp",
+                "label": "Regular TPE (Default)"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "stpe-free",
+              "label": "STPE",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e04d53222a3420acd95ee4a9c40d305b36ac5ea83f6525cb04550169e0d34a0a.webp",
+                "label": "STPE (FREE)"
+              },
+              "priceDelta": 100
+            }
+          ]
+        },
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "white",
+              "label": "White",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/70e758373c5932d00489ff69922ddec5a92a46957eb79997c9385ca3b087cd41.webp",
+                "label": "White"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dbbd936183cad8a1daaaa7ce9b8c65e6887d7519686d201a55970e79d3e47e9d.webp",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/445457e0cd8f6b056bf23287e635218e2d361619edf2e79eff5ced29a34850c8.webp",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "dark-tan",
+              "label": "Dark Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2998d442d6c3f303d8003205f2259d664ee8556b4df1f1d376debf4262e5769b.webp",
+                "label": "Dark Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "custom-color",
+              "label": "Custom Color",
+              "priceDelta": 250,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b8d54de87cde381a89dc9b6ef6a0a7b5cc4e4258617643aabcc7a43b62a0b493.webp",
+                "label": "Custom Color"
+              }
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on",
+          "label": "Enhanced Mouth Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        },
+        {
+          "id": "breast-options",
+          "label": "Breast Options",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hollow",
+              "label": "Hollow",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/846b3b1029318cacd411af876294ee5d6cc472d178b0555503b6ff0b56b733e5.webp",
+                "label": "Hollow"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "solid",
+              "label": "Solid",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eb0fc6e042f78a04654c4111672cccda61bbdb591f81a81c603e6f34b226cbdf.webp",
+                "label": "Solid"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "gel-free",
+              "label": "Gel",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d5fffb7ed02b169123adb3876e89c1ecb6ea8ca04c1447bd2065d08ca3c3452b.webp",
+                "label": "Gel (FREE)"
+              },
+              "priceDelta": 69
+            }
+          ]
+        },
+        {
+          "id": "skeleton-type",
+          "label": "Skeleton Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fc03c28d052fd4d37b82a9c1514ee487724f03e515afa737adf4eb3fef9d7dc9.webp",
+                "label": "Standard"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "evo-free",
+              "label": "EVO",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1b98f9b02487b54dbc2a9520cd3363cf65c22c169c3af561ea753cb9d54c84b0.webp",
+                "label": "EVO (FREE)"
+              },
+              "priceDelta": 50
+            }
+          ]
+        },
+        {
+          "id": "insertable-penis-add-on",
+          "label": "Insertable Penis Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "dollVueEnabled": false
+            },
+            {
+              "id": "15cm-6",
+              "label": "15cm / 6\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "15cm / 6\""
+              }
+            },
+            {
+              "id": "19cm-7-5",
+              "label": "19cm / 7.5\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "19cm / 7.5\""
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium-head-body-options-multiple",
+          "label": "Premium Head & Body Options (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "loose-joint-system-free",
+              "label": "Loose Joint System",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/se-doll-option-loose-joints_2d49c988-4098-4f7b-a572-420198dfa5ec.jpg?v=1788337397",
+                "label": "Loose Joint System"
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-free",
+              "label": "Hyper-realism Body Painting",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting (FREE)"
+              },
+              "priceDelta": 99
+            },
+            {
+              "id": "articulated-fingers-free",
+              "label": "Articulated Fingers",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de7dd310f21fa7d302e725a07bd5cb3ea0845cf2ec2dac08a320bc180f326c9f.webp",
+                "label": "Articulated Fingers (FREE)"
+              },
+              "priceDelta": 69
+            },
+            {
+              "id": "hyper-realism-body-painting-freckles",
+              "label": "Hyper-realism Body Painting & Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting & Freckles"
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body Heating",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c445e29dd3edf1f6f8cfb173f8d742905ce6d95f2a0ebfa92b651ce7ec2a540b.webp",
+                "label": "Body Heating"
+              }
+            },
+            {
+              "id": "body-moaning",
+              "label": "Body Moaning",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d3fed9d41d29aec07c61f86bb566b1ea5fcd6f5e83ed5ddab6ad33fa90a0db04.webp",
+                "label": "Body Moaning"
+              }
+            },
+            {
+              "id": "ultra-flex-fingers",
+              "label": "Ultra-flex Fingers",
+              "priceDelta": 109,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8897f2a4f8770c249360e792c2cb38090733baa9229a8903c22aef11cbcc1fb9.webp",
+                "label": "Ultra-flex Fingers"
+              }
+            },
+            {
+              "id": "auto-blowjob-sex-robot",
+              "label": "Auto Blowjob Sex Robot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/433d8c386dfcf06b0cd1060535a0be4ff9c5b2f59a4169d2cee3d3c5479d5c71.webp",
+                "label": "Auto Blowjob Sex Robot"
+              }
+            },
+            {
+              "id": "waist-spin-sex-bot",
+              "label": "Waist-spin Sex Bot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/277fe698cd77b005480a5034a71ca4231e7f4ed0406262baf5280d206cd0b861.webp",
+                "label": "Waist-spin Sex Bot"
+              }
+            },
+            {
+              "id": "lubricant-free-free",
+              "label": "Lubricant-free",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6313462886f07dff0f7f7264b57dffebfb5db3aef0eb4dc0a3e22050db05be42.webp",
+                "label": "Lubricant-free (FREE)"
+              },
+              "priceDelta": 29
+            },
+            {
+              "id": "facial-freckle",
+              "label": "Facial Freckle",
+              "priceDelta": 49,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe4433b001688d6e9956571630be266de351986a5d58f3af2ad8f03f79fa42d7.webp",
+                "label": "Facial Freckle"
+              }
+            },
+            {
+              "id": "body-freckles",
+              "label": "Body Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55ff07e18d6a871d513c14336aec3124f3afc60854a4fcdb99e5641e230d6c15.webp",
+                "label": "Body Freckles"
+              }
+            },
+            {
+              "id": "auto-sucking-vagina",
+              "label": "Auto-Sucking Vagina",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b7890c6b06b4bab872bd3f7d4250e697bf5ec2c9e2ca5a393f560eacc369e63b.webp",
+                "label": "Auto-Sucking Vagina"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sexy-lingerie-add-on",
+          "label": "Sexy Lingerie Add-On",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef34329c8231928ce52dd5c1914b9fb566187ca9f0af3b854ea41fcce23b8d96.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6391d475d7cb576b0db10cd1d152396cb53224bbe3537d29f271ffd385a93d0a.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0e5eb34a4de3bc0a91f2d44caa96b13e4fe21175c40d6a4d28e12029006b256b.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6ecfdb53f67b9b0dfbd62df00cafc42bef090d363107ca06faf44074f39cb2c3.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/defd8f8523467b0f823b2ee680227a1ac5b84ebf678d406fc785154a32d99d6a.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e31da5af1b4851457eacc333ea5c4c0957e67840f566400bd5a572e6374c78a6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3aa7387b17d1bbb7583af3b1a2fa1b91cb974387f115ba9b6a73a6103f0a2f69.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/663ec028d76e396b58753ef2a78ff6426aa9418f46b312c030926f3c748b1981.webp",
+                "label": "No.8"
+              }
+            },
+            {
+              "id": "no-9",
+              "label": "No.9",
+              "priceDelta": 60,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4a44d57bc678312d32c3e2d22024c0e4a5bc63e9beef2eff0aaab7cdd7cfaa07.webp",
+                "label": "No.9"
+              }
+            },
+            {
+              "id": "no-10",
+              "label": "No.10",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4bf2182062c5c1fe7676a9b2a8bbc9c8e5ae7d8f35dbc9a5e9b9287549fcf96f.webp",
+                "label": "No.10"
+              }
+            },
+            {
+              "id": "no-11",
+              "label": "No.11",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/60deedeccb72d5057591c2add3b07771615743fbe5a0c6adda7d48cd4e6f9dd1.webp",
+                "label": "No.11"
+              }
+            },
+            {
+              "id": "no-12",
+              "label": "No.12",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/494dfde816880294ea4899ac285a8255b9a23347f34804b6278ca1e848827b91.webp",
+                "label": "No.12"
+              }
+            },
+            {
+              "id": "no-13",
+              "label": "No.13",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/22493491e56f0b0b8aadf9f3c7a3b65a2af8f540dbdb57a734a778f1e72cbacc.webp",
+                "label": "No.13"
+              }
+            },
+            {
+              "id": "no-14",
+              "label": "No.14",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/358f3a3f72033df07dccf94de0d8d668b40ae640af3a9bd3a9e7eca7037a51d5.webp",
+                "label": "No.14"
+              }
+            },
+            {
+              "id": "no-15",
+              "label": "No.15",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/beb18b6b771e429678871712d6b59aa845885f022fa8c54ef005ef04e4ef53a1.webp",
+                "label": "No.15"
+              }
+            },
+            {
+              "id": "no-16",
+              "label": "No.16",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ff940f04ab0cd5ab50e62bd7188d37e68795cad1205acf6ed0e510b6224d1e2a.webp",
+                "label": "No.16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "label": "Accessories",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "vaginal-irrigator",
+              "label": "Vaginal Irrigator",
+              "priceDelta": 35,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+                "label": "Vaginal Irrigator"
+              }
+            },
+            {
+              "id": "reusable-drying-rod",
+              "label": "Reusable Drying Rod",
+              "priceDelta": 25,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+                "label": "Reusable Drying Rod"
+              }
+            },
+            {
+              "id": "replaceable-vagina-insert",
+              "label": "Replaceable Vagina Insert",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+                "label": "Replaceable Vagina Insert"
+              }
+            },
+            {
+              "id": "teeth-tongue-set",
+              "label": "Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a213e14bfde23b9e9f020b4f7de8ca0ce71aa8ca088fba0248c5324751dfd235.webp",
+                "label": "Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "vampire-teeth-tongue-set",
+              "label": "Vampire Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/53cf894bc38338d0e983a2c8fa58e6fd968d93642497df2a6ede5aa840133347.webp",
+                "label": "Vampire Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "removable-tongue",
+              "label": "Removable Tongue",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4e42796fadafa6194eeb6fd078c8cb974c6237f52c1eb20e0b914dbf5b0e3dca.webp",
+                "label": "Removable Tongue"
+              }
+            },
+            {
+              "id": "premium-cleaning-set-orig-550",
+              "label": "Premium Cleaning Set (Orig. $550)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a608771483b646d5e5a184bf4ab64dd75dac3442da30b89bdc766dbe2155e4e6.webp",
+                "label": "Premium Cleaning Set (Orig. $550)"
+              }
+            },
+            {
+              "id": "care-kit-orig-199",
+              "label": "Care Kit (Orig. $199)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/care-kit.svg",
+                "label": "Care Kit (Orig. $199)"
+              }
+            },
+            {
+              "id": "deluxe-care-kit-orig-299",
+              "label": "Deluxe Care Kit (Orig. $299)",
+              "priceDelta": 199,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/deluxe-care-kit.svg",
+                "label": "Deluxe Care Kit (Orig. $299)"
+              }
+            },
+            {
+              "id": "sex-doll-body-hanging-bracket",
+              "label": "Sex Doll Body Hanging Bracket",
+              "priceDelta": 399,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+                "label": "Sex Doll Body Hanging Bracket"
+              }
+            },
+            {
+              "id": "head-stand-holder",
+              "label": "Head Stand Holder",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+                "label": "Head Stand Holder"
+              }
+            },
+            {
+              "id": "belly-piercing",
+              "label": "Belly Piercing",
+              "priceDelta": 20,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+                "label": "Belly Piercing"
+              }
+            },
+            {
+              "id": "doll-repair-kit",
+              "label": "Doll Repair Kit",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a6e1530a4cbbbc3e3642d2bd41c2d0cc41688aa5645dd3b615b54fec21a1667.webp",
+                "label": "Doll Repair Kit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "upgraded-flight-case-add-on",
+          "label": "Upgraded Flight Case Add On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "dollVueEnabled": false
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight < 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight < 40kg)"
+              }
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight ≥ 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight ≥ 40kg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "an-extra-free-head",
+          "label": "An Extra Free Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "3-1",
+              "label": "3-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a5c01d0ef1f4a3dc57e59a8ac33538fe4560b141f350f7260b76d908c5e94333.webp",
+                "label": "3-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "3-2",
+              "label": "3-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca8871c1715b78a62c1360c0a9e8676c7c4cbabc79d53db6a304da3f6b9846c.webp",
+                "label": "3-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10",
+              "label": "10",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7dab83ff837e06d92778064aeabafc37417153b60be4b0cca28704e4eba5015c.webp",
+                "label": "10"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-1",
+              "label": "10-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d350f4f9457e42b6a981456760fdf488e39f9345456f4cc3cd22f4a55f3de4d.webp",
+                "label": "10-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-2",
+              "label": "10-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cfdc926bd55901286f0c4d44fb63064acec947c6400909c39b371edf2cc2ed4d.webp",
+                "label": "10-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-3",
+              "label": "10-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef73f56a887710d7c8856b66cb2ff4ae83f323ddbaf85a3cf371a5d52d641a57.webp",
+                "label": "10-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "11",
+              "label": "11",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f8810967e16c8145617908b6c44b0bc3842a06324d8bd3361e50472ca7129c04.webp",
+                "label": "11"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "12",
+              "label": "12",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3559edd7d2ac61e74f00a19fab83c571e298e3bed7d7bbf4b9b8244216eec76b.webp",
+                "label": "12"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "13",
+              "label": "13",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de34354f6c55a0b4f6bb1ae4fbaed396cf1f3a673bfe0a8e6922634cf5dc2ba5.webp",
+                "label": "13"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-1",
+              "label": "14-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe7eb9568d0712d0d14ade8735ceb2826865c191dafcccf9b65ee9d94b1ad9fb.webp",
+                "label": "14-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-2",
+              "label": "14-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d02b8f29694f8d85af50cef024462e720b01a0f7013ad3983f3bf993facf537e.webp",
+                "label": "14-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-3",
+              "label": "14-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3b65c1c08fbb4cf04c83ff2a9548aabe53e48790c6c6cad2f9cb034f9c0da279.webp",
+                "label": "14-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-1",
+              "label": "18-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/48cb69431d7a9cc122de60a8385358c40a17adc9c2a80b6f9caf16520a3c4e02.webp",
+                "label": "18-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-2",
+              "label": "18-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ca69b4993bf9ada2337f942eb0ac8d42f4c954e891e7bdfd061ee4d4a1189d2.webp",
+                "label": "18-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-1",
+              "label": "21-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/243eadb085ccd0663332cc20c3e1d9d6294d37f395e34796671fae70f23b2d29.webp",
+                "label": "21-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-2",
+              "label": "21-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f2723236bc17acb25fe82c86181f0feac7463812327567b75b4ca850d04c9a58.webp",
+                "label": "21-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-1",
+              "label": "22-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/76350af35574e981ac390c3db360be039768d5d4d2c3c8f4cb82fa1497e7c3bc.webp",
+                "label": "22-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-2",
+              "label": "22-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7b934c49ee19d954b93967812b17a7718c010f596840d6f93c547bb8ba9e0a34.webp",
+                "label": "22-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-3",
+              "label": "22-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca6cced03254c36fedfcab053f281a5a26a45dec0885b8dad4b12fc20cd8aff.webp",
+                "label": "22-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-4",
+              "label": "22-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/35e41de809d77c41f33a344af869833af69e97fbe91564b1027d66be64ec0469.webp",
+                "label": "22-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-5",
+              "label": "22-5",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/68f1bcd58706d0126ae01247606e200b01da07a218d37585c3a2d8be3c11ab93.webp",
+                "label": "22-5"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "23",
+              "label": "23",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1955036f5d0394f7af07acb40bf6d78296283ba69df406353bb8f509589350d2.webp",
+                "label": "23"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "24",
+              "label": "24",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c2876c17aafcca28a32f2056f425cb69a385e581441cc516f6ff07678bae5ae5.webp",
+                "label": "24"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-1",
+              "label": "28-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b461bed8f7eef39cbeabfea862e52608c3bb3b4ee00cd1f7eec4f61edd950432.webp",
+                "label": "28-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-2",
+              "label": "28-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ef1b4f5cbd23f9a729182dddc7d5c7dcd2337f0ae3a06aec8972a8daecfd05d.webp",
+                "label": "28-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "33",
+              "label": "33",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b381e921636492c610e70bfb95545f3aae110d6cf917d653185100ff5fe10b0.webp",
+                "label": "33"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "34",
+              "label": "34",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ea2f7e62f1e52c1ac33e94ecb627a86e34e7eea3502d5ec5447426e46997a49c.webp",
+                "label": "34"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "35",
+              "label": "35",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0799f1ed293a650d698f36ff093d30da411f5931b2e750a6aed9ec45c93a9e32.webp",
+                "label": "35"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "36",
+              "label": "36",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b58bb8b6149b0a687e5c1aec50e732d72118a4610d6b53a65ca9a019f88289d2.webp",
+                "label": "36"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "45",
+              "label": "45",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f263f4727e64b0c781f76d4c97e776d7b11ccc744393f218006a9f4e6db7d7a2.webp",
+                "label": "45"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-1",
+              "label": "46-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/773d65c375061772b443b2533efd726355f4c30fb431cdc5de2d6d36e732e476.webp",
+                "label": "46-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-2",
+              "label": "46-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/77711616eb289f6da3b845caa623e31e2860cbefac4113cebf6742a785acf16e.webp",
+                "label": "46-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-3",
+              "label": "46-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/69d8d8e4fd12a6cd46e7908938423617e16a322b7b6c76a675ecaa226847746f.webp",
+                "label": "46-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "47",
+              "label": "47",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2989690a6328b1b157093a61e8264476d46b0f8352c4beaef7eea26c8e86ca69.webp",
+                "label": "47"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-1",
+              "label": "49-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3d62b68d0c97fc005f3c6ac25a4d8602b5109791cace75d9007cb203a63dbf14.webp",
+                "label": "49-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-2",
+              "label": "49-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d16b46d7052935d739897f20280ae86bbfc321dca7fff362eef7f57584857ba9.webp",
+                "label": "49-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-3",
+              "label": "49-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c3512d0190a2265432b444f1a9bbfeaa439873a00052e372cdc16d5d1299aca7.webp",
+                "label": "49-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-1",
+              "label": "50-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4f7b6c206e809261d004538553cb5e49221f9badc5d93cb69bd08abf0530c902.webp",
+                "label": "50-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-2",
+              "label": "50-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/99db880efaa2a8f0b8a35e747d27b7a858802b22418039f660ef0d74ffecff48.webp",
+                "label": "50-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "51",
+              "label": "51",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/492d7864c7e8825053d2b734af876525a2aaa8c554aca1136c0354aff961ae24.webp",
+                "label": "51"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-1",
+              "label": "55-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d881e254cd1b7d027789c2f395284b5cd8ab6b50dca5a2d370b861c2e779f88a.webp",
+                "label": "55-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-2",
+              "label": "55-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2863ff84ce0916b869736c52a6390cd8286466c16de34b32aed04431570770f4.webp",
+                "label": "55-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-3",
+              "label": "55-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4b102be7933a6fc61d46a245bede73bef5d0a4b821901b0bbcc12cade0229c7e.webp",
+                "label": "55-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-4",
+              "label": "55-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55530d8bb374fc3ba9ebad99021708653fdbc4e98137a15a9be0a06e240aba3b.webp",
+                "label": "55-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-1",
+              "label": "56-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fd3181cd0a127e47d889b73c757cb3232c6f1c0adeabb00801e4ec94171b4240.webp",
+                "label": "56-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-2",
+              "label": "56-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0364e7d474b0bb1f866b232f3272b3d7702616009965887720cb11c8da947cbe.webp",
+                "label": "56-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "58",
+              "label": "58",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/170046fe3c5c8b880d60097014278182887350d2386ce2513b088648d194b985.webp",
+                "label": "58"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "64",
+              "label": "64",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b77d52e5b5a88f6abaff7418d5d1eb64d99fe5e16b9e08005e18f8466250fccf.webp",
+                "label": "64"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "custom-options-for-extra-head",
+          "label": "Custom Options For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3173d36ca0a9608c3b52788ee90dd64551f3f25260d2f189328df450caf168c6.webp",
+                "label": "No Change"
+              }
+            },
+            {
+              "id": "yes-i-need",
+              "label": "Yes I Need",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/61637be3265ede831c86f7a4c6e2cc3d106c0a482f7c752b00e069ee2ac75037.webp",
+                "label": "Yes I Need"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on-for-extra-head",
+          "label": "Enhanced Mouth Add-On For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "preview:se-elf:SED340",
+    "handle": "sedoll-samantha-k-161cm-f-cup-black-tpe-elf-sed340",
+    "title": "SE Doll Samantha.K 161cm F-Cup Black TPE Elf",
+    "description": "Samantha.K pairs the photographed black Elf look and W022 head with a 161 cm F-cup TPE body. The base price includes the photographed skin. Compare the existing SE options below. Made to order; estimated delivery is three weeks.",
+    "vendor": "SE Doll",
+    "productType": "TPE Doll",
+    "tags": [
+      "custom",
+      "sedoll",
+      "tpe",
+      "options:se-female-tpe-standard",
+      "dollwow-test"
+    ],
+    "featuredImage": {
+      "url": "/images/products/se-elf-2026/SED340-1.jpg",
+      "altText": "SE Doll Samantha.K Black TPE Elf, supplier photograph 1"
+    },
+    "images": [
+      {
+        "url": "/images/products/se-elf-2026/SED340-1.jpg",
+        "altText": "SE Doll Samantha.K Black TPE Elf, supplier photograph 1"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED340-2.jpg",
+        "altText": "SE Doll Samantha.K Black TPE Elf, supplier photograph 2"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED340-3.jpg",
+        "altText": "SE Doll Samantha.K Black TPE Elf, supplier photograph 3"
+      }
+    ],
+    "variants": [
+      {
+        "id": "preview:variant:se-elf:SED340",
+        "title": "Photographed build",
+        "availableForSale": false,
+        "price": {
+          "amount": "1899.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1899.00",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1899.00",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "SE Doll",
+      "displayName": "Samantha.K",
+      "bodyCode": "161F",
+      "headModel": "W022",
+      "bodyType": "female",
+      "material": "TPE",
+      "heightCm": 161,
+      "weightLb": 77.161791763,
+      "cupSize": "F",
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "deliveryEstimate": "Est. 3 weeks",
+      "measurements": {
+        "Height": "161 cm",
+        "Weight": "35 kg",
+        "Bust": "83 cm",
+        "Underbust": "61 cm",
+        "Waist": "50 cm",
+        "Hip": "89 cm",
+        "Shoulders Width": "32 cm",
+        "Feet Length": "21 cm",
+        "Oral depth": "15 cm",
+        "Vagina Depth": "17 cm",
+        "Anus Depth": "17 cm"
+      },
+      "customizationGroups": [
+        {
+          "id": "material",
+          "label": "Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "regular-tpe-default",
+              "label": "Regular TPE (Default)",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d034a725cfe8b520ec5d672400b6ba87bc11063bcfea4ae81bae4e635a4ab364.webp",
+                "label": "Regular TPE (Default)"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "stpe-free",
+              "label": "STPE",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e04d53222a3420acd95ee4a9c40d305b36ac5ea83f6525cb04550169e0d34a0a.webp",
+                "label": "STPE (FREE)"
+              },
+              "priceDelta": 100
+            }
+          ]
+        },
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "white",
+              "label": "White",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/70e758373c5932d00489ff69922ddec5a92a46957eb79997c9385ca3b087cd41.webp",
+                "label": "White"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dbbd936183cad8a1daaaa7ce9b8c65e6887d7519686d201a55970e79d3e47e9d.webp",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/445457e0cd8f6b056bf23287e635218e2d361619edf2e79eff5ced29a34850c8.webp",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "dark-tan",
+              "label": "Dark Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2998d442d6c3f303d8003205f2259d664ee8556b4df1f1d376debf4262e5769b.webp",
+                "label": "Dark Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "custom-color",
+              "label": "Custom Color",
+              "priceDelta": 250,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b8d54de87cde381a89dc9b6ef6a0a7b5cc4e4258617643aabcc7a43b62a0b493.webp",
+                "label": "Custom Color"
+              }
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on",
+          "label": "Enhanced Mouth Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        },
+        {
+          "id": "breast-options",
+          "label": "Breast Options",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hollow",
+              "label": "Hollow",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/846b3b1029318cacd411af876294ee5d6cc472d178b0555503b6ff0b56b733e5.webp",
+                "label": "Hollow"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "solid",
+              "label": "Solid",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eb0fc6e042f78a04654c4111672cccda61bbdb591f81a81c603e6f34b226cbdf.webp",
+                "label": "Solid"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "gel-free",
+              "label": "Gel",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d5fffb7ed02b169123adb3876e89c1ecb6ea8ca04c1447bd2065d08ca3c3452b.webp",
+                "label": "Gel (FREE)"
+              },
+              "priceDelta": 69
+            }
+          ]
+        },
+        {
+          "id": "skeleton-type",
+          "label": "Skeleton Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fc03c28d052fd4d37b82a9c1514ee487724f03e515afa737adf4eb3fef9d7dc9.webp",
+                "label": "Standard"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "evo-free",
+              "label": "EVO",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1b98f9b02487b54dbc2a9520cd3363cf65c22c169c3af561ea753cb9d54c84b0.webp",
+                "label": "EVO (FREE)"
+              },
+              "priceDelta": 50
+            }
+          ]
+        },
+        {
+          "id": "insertable-penis-add-on",
+          "label": "Insertable Penis Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "dollVueEnabled": false
+            },
+            {
+              "id": "15cm-6",
+              "label": "15cm / 6\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "15cm / 6\""
+              }
+            },
+            {
+              "id": "19cm-7-5",
+              "label": "19cm / 7.5\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "19cm / 7.5\""
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium-head-body-options-multiple",
+          "label": "Premium Head & Body Options (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "loose-joint-system-free",
+              "label": "Loose Joint System",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/se-doll-option-loose-joints_2d49c988-4098-4f7b-a572-420198dfa5ec.jpg?v=1788337397",
+                "label": "Loose Joint System"
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-free",
+              "label": "Hyper-realism Body Painting",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting (FREE)"
+              },
+              "priceDelta": 99
+            },
+            {
+              "id": "articulated-fingers-free",
+              "label": "Articulated Fingers",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de7dd310f21fa7d302e725a07bd5cb3ea0845cf2ec2dac08a320bc180f326c9f.webp",
+                "label": "Articulated Fingers (FREE)"
+              },
+              "priceDelta": 69
+            },
+            {
+              "id": "hyper-realism-body-painting-freckles",
+              "label": "Hyper-realism Body Painting & Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting & Freckles"
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body Heating",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c445e29dd3edf1f6f8cfb173f8d742905ce6d95f2a0ebfa92b651ce7ec2a540b.webp",
+                "label": "Body Heating"
+              }
+            },
+            {
+              "id": "body-moaning",
+              "label": "Body Moaning",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d3fed9d41d29aec07c61f86bb566b1ea5fcd6f5e83ed5ddab6ad33fa90a0db04.webp",
+                "label": "Body Moaning"
+              }
+            },
+            {
+              "id": "ultra-flex-fingers",
+              "label": "Ultra-flex Fingers",
+              "priceDelta": 109,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8897f2a4f8770c249360e792c2cb38090733baa9229a8903c22aef11cbcc1fb9.webp",
+                "label": "Ultra-flex Fingers"
+              }
+            },
+            {
+              "id": "auto-blowjob-sex-robot",
+              "label": "Auto Blowjob Sex Robot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/433d8c386dfcf06b0cd1060535a0be4ff9c5b2f59a4169d2cee3d3c5479d5c71.webp",
+                "label": "Auto Blowjob Sex Robot"
+              }
+            },
+            {
+              "id": "waist-spin-sex-bot",
+              "label": "Waist-spin Sex Bot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/277fe698cd77b005480a5034a71ca4231e7f4ed0406262baf5280d206cd0b861.webp",
+                "label": "Waist-spin Sex Bot"
+              }
+            },
+            {
+              "id": "lubricant-free-free",
+              "label": "Lubricant-free",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6313462886f07dff0f7f7264b57dffebfb5db3aef0eb4dc0a3e22050db05be42.webp",
+                "label": "Lubricant-free (FREE)"
+              },
+              "priceDelta": 29
+            },
+            {
+              "id": "facial-freckle",
+              "label": "Facial Freckle",
+              "priceDelta": 49,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe4433b001688d6e9956571630be266de351986a5d58f3af2ad8f03f79fa42d7.webp",
+                "label": "Facial Freckle"
+              }
+            },
+            {
+              "id": "body-freckles",
+              "label": "Body Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55ff07e18d6a871d513c14336aec3124f3afc60854a4fcdb99e5641e230d6c15.webp",
+                "label": "Body Freckles"
+              }
+            },
+            {
+              "id": "auto-sucking-vagina",
+              "label": "Auto-Sucking Vagina",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b7890c6b06b4bab872bd3f7d4250e697bf5ec2c9e2ca5a393f560eacc369e63b.webp",
+                "label": "Auto-Sucking Vagina"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sexy-lingerie-add-on",
+          "label": "Sexy Lingerie Add-On",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef34329c8231928ce52dd5c1914b9fb566187ca9f0af3b854ea41fcce23b8d96.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6391d475d7cb576b0db10cd1d152396cb53224bbe3537d29f271ffd385a93d0a.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0e5eb34a4de3bc0a91f2d44caa96b13e4fe21175c40d6a4d28e12029006b256b.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6ecfdb53f67b9b0dfbd62df00cafc42bef090d363107ca06faf44074f39cb2c3.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/defd8f8523467b0f823b2ee680227a1ac5b84ebf678d406fc785154a32d99d6a.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e31da5af1b4851457eacc333ea5c4c0957e67840f566400bd5a572e6374c78a6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3aa7387b17d1bbb7583af3b1a2fa1b91cb974387f115ba9b6a73a6103f0a2f69.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/663ec028d76e396b58753ef2a78ff6426aa9418f46b312c030926f3c748b1981.webp",
+                "label": "No.8"
+              }
+            },
+            {
+              "id": "no-9",
+              "label": "No.9",
+              "priceDelta": 60,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4a44d57bc678312d32c3e2d22024c0e4a5bc63e9beef2eff0aaab7cdd7cfaa07.webp",
+                "label": "No.9"
+              }
+            },
+            {
+              "id": "no-10",
+              "label": "No.10",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4bf2182062c5c1fe7676a9b2a8bbc9c8e5ae7d8f35dbc9a5e9b9287549fcf96f.webp",
+                "label": "No.10"
+              }
+            },
+            {
+              "id": "no-11",
+              "label": "No.11",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/60deedeccb72d5057591c2add3b07771615743fbe5a0c6adda7d48cd4e6f9dd1.webp",
+                "label": "No.11"
+              }
+            },
+            {
+              "id": "no-12",
+              "label": "No.12",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/494dfde816880294ea4899ac285a8255b9a23347f34804b6278ca1e848827b91.webp",
+                "label": "No.12"
+              }
+            },
+            {
+              "id": "no-13",
+              "label": "No.13",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/22493491e56f0b0b8aadf9f3c7a3b65a2af8f540dbdb57a734a778f1e72cbacc.webp",
+                "label": "No.13"
+              }
+            },
+            {
+              "id": "no-14",
+              "label": "No.14",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/358f3a3f72033df07dccf94de0d8d668b40ae640af3a9bd3a9e7eca7037a51d5.webp",
+                "label": "No.14"
+              }
+            },
+            {
+              "id": "no-15",
+              "label": "No.15",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/beb18b6b771e429678871712d6b59aa845885f022fa8c54ef005ef04e4ef53a1.webp",
+                "label": "No.15"
+              }
+            },
+            {
+              "id": "no-16",
+              "label": "No.16",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ff940f04ab0cd5ab50e62bd7188d37e68795cad1205acf6ed0e510b6224d1e2a.webp",
+                "label": "No.16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "label": "Accessories",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "vaginal-irrigator",
+              "label": "Vaginal Irrigator",
+              "priceDelta": 35,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+                "label": "Vaginal Irrigator"
+              }
+            },
+            {
+              "id": "reusable-drying-rod",
+              "label": "Reusable Drying Rod",
+              "priceDelta": 25,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+                "label": "Reusable Drying Rod"
+              }
+            },
+            {
+              "id": "replaceable-vagina-insert",
+              "label": "Replaceable Vagina Insert",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+                "label": "Replaceable Vagina Insert"
+              }
+            },
+            {
+              "id": "teeth-tongue-set",
+              "label": "Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a213e14bfde23b9e9f020b4f7de8ca0ce71aa8ca088fba0248c5324751dfd235.webp",
+                "label": "Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "vampire-teeth-tongue-set",
+              "label": "Vampire Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/53cf894bc38338d0e983a2c8fa58e6fd968d93642497df2a6ede5aa840133347.webp",
+                "label": "Vampire Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "removable-tongue",
+              "label": "Removable Tongue",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4e42796fadafa6194eeb6fd078c8cb974c6237f52c1eb20e0b914dbf5b0e3dca.webp",
+                "label": "Removable Tongue"
+              }
+            },
+            {
+              "id": "premium-cleaning-set-orig-550",
+              "label": "Premium Cleaning Set (Orig. $550)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a608771483b646d5e5a184bf4ab64dd75dac3442da30b89bdc766dbe2155e4e6.webp",
+                "label": "Premium Cleaning Set (Orig. $550)"
+              }
+            },
+            {
+              "id": "care-kit-orig-199",
+              "label": "Care Kit (Orig. $199)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/care-kit.svg",
+                "label": "Care Kit (Orig. $199)"
+              }
+            },
+            {
+              "id": "deluxe-care-kit-orig-299",
+              "label": "Deluxe Care Kit (Orig. $299)",
+              "priceDelta": 199,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/deluxe-care-kit.svg",
+                "label": "Deluxe Care Kit (Orig. $299)"
+              }
+            },
+            {
+              "id": "sex-doll-body-hanging-bracket",
+              "label": "Sex Doll Body Hanging Bracket",
+              "priceDelta": 399,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+                "label": "Sex Doll Body Hanging Bracket"
+              }
+            },
+            {
+              "id": "head-stand-holder",
+              "label": "Head Stand Holder",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+                "label": "Head Stand Holder"
+              }
+            },
+            {
+              "id": "belly-piercing",
+              "label": "Belly Piercing",
+              "priceDelta": 20,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+                "label": "Belly Piercing"
+              }
+            },
+            {
+              "id": "doll-repair-kit",
+              "label": "Doll Repair Kit",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a6e1530a4cbbbc3e3642d2bd41c2d0cc41688aa5645dd3b615b54fec21a1667.webp",
+                "label": "Doll Repair Kit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "upgraded-flight-case-add-on",
+          "label": "Upgraded Flight Case Add On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "dollVueEnabled": false
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight < 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight < 40kg)"
+              }
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight ≥ 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight ≥ 40kg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "an-extra-free-head",
+          "label": "An Extra Free Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "3-1",
+              "label": "3-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a5c01d0ef1f4a3dc57e59a8ac33538fe4560b141f350f7260b76d908c5e94333.webp",
+                "label": "3-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "3-2",
+              "label": "3-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca8871c1715b78a62c1360c0a9e8676c7c4cbabc79d53db6a304da3f6b9846c.webp",
+                "label": "3-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10",
+              "label": "10",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7dab83ff837e06d92778064aeabafc37417153b60be4b0cca28704e4eba5015c.webp",
+                "label": "10"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-1",
+              "label": "10-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d350f4f9457e42b6a981456760fdf488e39f9345456f4cc3cd22f4a55f3de4d.webp",
+                "label": "10-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-2",
+              "label": "10-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cfdc926bd55901286f0c4d44fb63064acec947c6400909c39b371edf2cc2ed4d.webp",
+                "label": "10-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-3",
+              "label": "10-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef73f56a887710d7c8856b66cb2ff4ae83f323ddbaf85a3cf371a5d52d641a57.webp",
+                "label": "10-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "11",
+              "label": "11",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f8810967e16c8145617908b6c44b0bc3842a06324d8bd3361e50472ca7129c04.webp",
+                "label": "11"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "12",
+              "label": "12",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3559edd7d2ac61e74f00a19fab83c571e298e3bed7d7bbf4b9b8244216eec76b.webp",
+                "label": "12"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "13",
+              "label": "13",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de34354f6c55a0b4f6bb1ae4fbaed396cf1f3a673bfe0a8e6922634cf5dc2ba5.webp",
+                "label": "13"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-1",
+              "label": "14-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe7eb9568d0712d0d14ade8735ceb2826865c191dafcccf9b65ee9d94b1ad9fb.webp",
+                "label": "14-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-2",
+              "label": "14-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d02b8f29694f8d85af50cef024462e720b01a0f7013ad3983f3bf993facf537e.webp",
+                "label": "14-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-3",
+              "label": "14-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3b65c1c08fbb4cf04c83ff2a9548aabe53e48790c6c6cad2f9cb034f9c0da279.webp",
+                "label": "14-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-1",
+              "label": "18-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/48cb69431d7a9cc122de60a8385358c40a17adc9c2a80b6f9caf16520a3c4e02.webp",
+                "label": "18-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-2",
+              "label": "18-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ca69b4993bf9ada2337f942eb0ac8d42f4c954e891e7bdfd061ee4d4a1189d2.webp",
+                "label": "18-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-1",
+              "label": "21-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/243eadb085ccd0663332cc20c3e1d9d6294d37f395e34796671fae70f23b2d29.webp",
+                "label": "21-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-2",
+              "label": "21-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f2723236bc17acb25fe82c86181f0feac7463812327567b75b4ca850d04c9a58.webp",
+                "label": "21-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-1",
+              "label": "22-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/76350af35574e981ac390c3db360be039768d5d4d2c3c8f4cb82fa1497e7c3bc.webp",
+                "label": "22-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-2",
+              "label": "22-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7b934c49ee19d954b93967812b17a7718c010f596840d6f93c547bb8ba9e0a34.webp",
+                "label": "22-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-3",
+              "label": "22-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca6cced03254c36fedfcab053f281a5a26a45dec0885b8dad4b12fc20cd8aff.webp",
+                "label": "22-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-4",
+              "label": "22-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/35e41de809d77c41f33a344af869833af69e97fbe91564b1027d66be64ec0469.webp",
+                "label": "22-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-5",
+              "label": "22-5",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/68f1bcd58706d0126ae01247606e200b01da07a218d37585c3a2d8be3c11ab93.webp",
+                "label": "22-5"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "23",
+              "label": "23",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1955036f5d0394f7af07acb40bf6d78296283ba69df406353bb8f509589350d2.webp",
+                "label": "23"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "24",
+              "label": "24",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c2876c17aafcca28a32f2056f425cb69a385e581441cc516f6ff07678bae5ae5.webp",
+                "label": "24"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-1",
+              "label": "28-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b461bed8f7eef39cbeabfea862e52608c3bb3b4ee00cd1f7eec4f61edd950432.webp",
+                "label": "28-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-2",
+              "label": "28-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ef1b4f5cbd23f9a729182dddc7d5c7dcd2337f0ae3a06aec8972a8daecfd05d.webp",
+                "label": "28-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "33",
+              "label": "33",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b381e921636492c610e70bfb95545f3aae110d6cf917d653185100ff5fe10b0.webp",
+                "label": "33"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "34",
+              "label": "34",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ea2f7e62f1e52c1ac33e94ecb627a86e34e7eea3502d5ec5447426e46997a49c.webp",
+                "label": "34"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "35",
+              "label": "35",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0799f1ed293a650d698f36ff093d30da411f5931b2e750a6aed9ec45c93a9e32.webp",
+                "label": "35"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "36",
+              "label": "36",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b58bb8b6149b0a687e5c1aec50e732d72118a4610d6b53a65ca9a019f88289d2.webp",
+                "label": "36"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "45",
+              "label": "45",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f263f4727e64b0c781f76d4c97e776d7b11ccc744393f218006a9f4e6db7d7a2.webp",
+                "label": "45"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-1",
+              "label": "46-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/773d65c375061772b443b2533efd726355f4c30fb431cdc5de2d6d36e732e476.webp",
+                "label": "46-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-2",
+              "label": "46-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/77711616eb289f6da3b845caa623e31e2860cbefac4113cebf6742a785acf16e.webp",
+                "label": "46-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-3",
+              "label": "46-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/69d8d8e4fd12a6cd46e7908938423617e16a322b7b6c76a675ecaa226847746f.webp",
+                "label": "46-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "47",
+              "label": "47",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2989690a6328b1b157093a61e8264476d46b0f8352c4beaef7eea26c8e86ca69.webp",
+                "label": "47"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-1",
+              "label": "49-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3d62b68d0c97fc005f3c6ac25a4d8602b5109791cace75d9007cb203a63dbf14.webp",
+                "label": "49-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-2",
+              "label": "49-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d16b46d7052935d739897f20280ae86bbfc321dca7fff362eef7f57584857ba9.webp",
+                "label": "49-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-3",
+              "label": "49-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c3512d0190a2265432b444f1a9bbfeaa439873a00052e372cdc16d5d1299aca7.webp",
+                "label": "49-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-1",
+              "label": "50-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4f7b6c206e809261d004538553cb5e49221f9badc5d93cb69bd08abf0530c902.webp",
+                "label": "50-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-2",
+              "label": "50-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/99db880efaa2a8f0b8a35e747d27b7a858802b22418039f660ef0d74ffecff48.webp",
+                "label": "50-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "51",
+              "label": "51",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/492d7864c7e8825053d2b734af876525a2aaa8c554aca1136c0354aff961ae24.webp",
+                "label": "51"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-1",
+              "label": "55-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d881e254cd1b7d027789c2f395284b5cd8ab6b50dca5a2d370b861c2e779f88a.webp",
+                "label": "55-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-2",
+              "label": "55-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2863ff84ce0916b869736c52a6390cd8286466c16de34b32aed04431570770f4.webp",
+                "label": "55-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-3",
+              "label": "55-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4b102be7933a6fc61d46a245bede73bef5d0a4b821901b0bbcc12cade0229c7e.webp",
+                "label": "55-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-4",
+              "label": "55-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55530d8bb374fc3ba9ebad99021708653fdbc4e98137a15a9be0a06e240aba3b.webp",
+                "label": "55-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-1",
+              "label": "56-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fd3181cd0a127e47d889b73c757cb3232c6f1c0adeabb00801e4ec94171b4240.webp",
+                "label": "56-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-2",
+              "label": "56-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0364e7d474b0bb1f866b232f3272b3d7702616009965887720cb11c8da947cbe.webp",
+                "label": "56-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "58",
+              "label": "58",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/170046fe3c5c8b880d60097014278182887350d2386ce2513b088648d194b985.webp",
+                "label": "58"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "64",
+              "label": "64",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b77d52e5b5a88f6abaff7418d5d1eb64d99fe5e16b9e08005e18f8466250fccf.webp",
+                "label": "64"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "custom-options-for-extra-head",
+          "label": "Custom Options For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3173d36ca0a9608c3b52788ee90dd64551f3f25260d2f189328df450caf168c6.webp",
+                "label": "No Change"
+              }
+            },
+            {
+              "id": "yes-i-need",
+              "label": "Yes I Need",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/61637be3265ede831c86f7a4c6e2cc3d106c0a482f7c752b00e069ee2ac75037.webp",
+                "label": "Yes I Need"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on-for-extra-head",
+          "label": "Enhanced Mouth Add-On For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "preview:se-elf:SED341",
+    "handle": "sedoll-luis-h-163cm-e-cup-black-tpe-elf-sed341",
+    "title": "SE Doll Luis.H 163cm E-Cup Black TPE Elf",
+    "description": "Luis.H pairs the photographed black Elf look and W021 head with a 163 cm E-cup TPE body. The base price includes the photographed skin. Compare the existing SE options below. Made to order; estimated delivery is three weeks.",
+    "vendor": "SE Doll",
+    "productType": "TPE Doll",
+    "tags": [
+      "custom",
+      "sedoll",
+      "tpe",
+      "options:se-female-tpe-standard",
+      "dollwow-test"
+    ],
+    "featuredImage": {
+      "url": "/images/products/se-elf-2026/SED341-1.jpg",
+      "altText": "SE Doll Luis.H Black TPE Elf, supplier photograph 1"
+    },
+    "images": [
+      {
+        "url": "/images/products/se-elf-2026/SED341-1.jpg",
+        "altText": "SE Doll Luis.H Black TPE Elf, supplier photograph 1"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED341-2.jpg",
+        "altText": "SE Doll Luis.H Black TPE Elf, supplier photograph 2"
+      },
+      {
+        "url": "/images/products/se-elf-2026/SED341-3.jpg",
+        "altText": "SE Doll Luis.H Black TPE Elf, supplier photograph 3"
+      }
+    ],
+    "variants": [
+      {
+        "id": "preview:variant:se-elf:SED341",
+        "title": "Photographed build",
+        "availableForSale": false,
+        "price": {
+          "amount": "1899.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": []
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "1899.00",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "1899.00",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "SE Doll",
+      "displayName": "Luis.H",
+      "bodyCode": "163E",
+      "headModel": "W021",
+      "bodyType": "female",
+      "material": "TPE",
+      "heightCm": 163,
+      "weightLb": 81.5710370066,
+      "cupSize": "E",
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "deliveryEstimate": "Est. 3 weeks",
+      "measurements": {
+        "Height": "163 cm",
+        "Weight": "37 kg",
+        "Bust": "88 cm",
+        "Underbust": "72 cm",
+        "Waist": "63 cm",
+        "Hip": "90 cm",
+        "Shoulders Width": "34 cm",
+        "Feet Length": "20 cm",
+        "Oral depth": "15 cm",
+        "Vagina Depth": "17 cm",
+        "Anus Depth": "15 cm"
+      },
+      "customizationGroups": [
+        {
+          "id": "material",
+          "label": "Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "regular-tpe-default",
+              "label": "Regular TPE (Default)",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d034a725cfe8b520ec5d672400b6ba87bc11063bcfea4ae81bae4e635a4ab364.webp",
+                "label": "Regular TPE (Default)"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "stpe-free",
+              "label": "STPE",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e04d53222a3420acd95ee4a9c40d305b36ac5ea83f6525cb04550169e0d34a0a.webp",
+                "label": "STPE (FREE)"
+              },
+              "priceDelta": 100
+            }
+          ]
+        },
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "white",
+              "label": "White",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/70e758373c5932d00489ff69922ddec5a92a46957eb79997c9385ca3b087cd41.webp",
+                "label": "White"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dbbd936183cad8a1daaaa7ce9b8c65e6887d7519686d201a55970e79d3e47e9d.webp",
+                "label": "Natural"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "light-tan",
+              "label": "Light Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/445457e0cd8f6b056bf23287e635218e2d361619edf2e79eff5ced29a34850c8.webp",
+                "label": "Light Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "dark-tan",
+              "label": "Dark Tan",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2998d442d6c3f303d8003205f2259d664ee8556b4df1f1d376debf4262e5769b.webp",
+                "label": "Dark Tan"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "custom-color",
+              "label": "Custom Color",
+              "priceDelta": 250,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b8d54de87cde381a89dc9b6ef6a0a7b5cc4e4258617643aabcc7a43b62a0b493.webp",
+                "label": "Custom Color"
+              }
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on",
+          "label": "Enhanced Mouth Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        },
+        {
+          "id": "breast-options",
+          "label": "Breast Options",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hollow",
+              "label": "Hollow",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/846b3b1029318cacd411af876294ee5d6cc472d178b0555503b6ff0b56b733e5.webp",
+                "label": "Hollow"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "solid",
+              "label": "Solid",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eb0fc6e042f78a04654c4111672cccda61bbdb591f81a81c603e6f34b226cbdf.webp",
+                "label": "Solid"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "gel-free",
+              "label": "Gel",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d5fffb7ed02b169123adb3876e89c1ecb6ea8ca04c1447bd2065d08ca3c3452b.webp",
+                "label": "Gel (FREE)"
+              },
+              "priceDelta": 69
+            }
+          ]
+        },
+        {
+          "id": "skeleton-type",
+          "label": "Skeleton Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fc03c28d052fd4d37b82a9c1514ee487724f03e515afa737adf4eb3fef9d7dc9.webp",
+                "label": "Standard"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "evo-free",
+              "label": "EVO",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1b98f9b02487b54dbc2a9520cd3363cf65c22c169c3af561ea753cb9d54c84b0.webp",
+                "label": "EVO (FREE)"
+              },
+              "priceDelta": 50
+            }
+          ]
+        },
+        {
+          "id": "insertable-penis-add-on",
+          "label": "Insertable Penis Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "dollVueEnabled": false
+            },
+            {
+              "id": "15cm-6",
+              "label": "15cm / 6\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "15cm / 6\""
+              }
+            },
+            {
+              "id": "19cm-7-5",
+              "label": "19cm / 7.5\"",
+              "priceDelta": 70,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f1e3f126745f9cb0411d57a6e11d1780aa06397ac4616ebb11897082ea4eb5ec.webp",
+                "label": "19cm / 7.5\""
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium-head-body-options-multiple",
+          "label": "Premium Head & Body Options (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "loose-joint-system-free",
+              "label": "Loose Joint System",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/se-doll-option-loose-joints_2d49c988-4098-4f7b-a572-420198dfa5ec.jpg?v=1788337397",
+                "label": "Loose Joint System"
+              }
+            },
+            {
+              "id": "hyper-realism-body-painting-free",
+              "label": "Hyper-realism Body Painting",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting (FREE)"
+              },
+              "priceDelta": 99
+            },
+            {
+              "id": "articulated-fingers-free",
+              "label": "Articulated Fingers",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de7dd310f21fa7d302e725a07bd5cb3ea0845cf2ec2dac08a320bc180f326c9f.webp",
+                "label": "Articulated Fingers (FREE)"
+              },
+              "priceDelta": 69
+            },
+            {
+              "id": "hyper-realism-body-painting-freckles",
+              "label": "Hyper-realism Body Painting & Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper-realism Body Painting & Freckles"
+              }
+            },
+            {
+              "id": "body-heating",
+              "label": "Body Heating",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c445e29dd3edf1f6f8cfb173f8d742905ce6d95f2a0ebfa92b651ce7ec2a540b.webp",
+                "label": "Body Heating"
+              }
+            },
+            {
+              "id": "body-moaning",
+              "label": "Body Moaning",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d3fed9d41d29aec07c61f86bb566b1ea5fcd6f5e83ed5ddab6ad33fa90a0db04.webp",
+                "label": "Body Moaning"
+              }
+            },
+            {
+              "id": "ultra-flex-fingers",
+              "label": "Ultra-flex Fingers",
+              "priceDelta": 109,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8897f2a4f8770c249360e792c2cb38090733baa9229a8903c22aef11cbcc1fb9.webp",
+                "label": "Ultra-flex Fingers"
+              }
+            },
+            {
+              "id": "auto-blowjob-sex-robot",
+              "label": "Auto Blowjob Sex Robot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/433d8c386dfcf06b0cd1060535a0be4ff9c5b2f59a4169d2cee3d3c5479d5c71.webp",
+                "label": "Auto Blowjob Sex Robot"
+              }
+            },
+            {
+              "id": "waist-spin-sex-bot",
+              "label": "Waist-spin Sex Bot",
+              "priceDelta": 350,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/277fe698cd77b005480a5034a71ca4231e7f4ed0406262baf5280d206cd0b861.webp",
+                "label": "Waist-spin Sex Bot"
+              }
+            },
+            {
+              "id": "lubricant-free-free",
+              "label": "Lubricant-free",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6313462886f07dff0f7f7264b57dffebfb5db3aef0eb4dc0a3e22050db05be42.webp",
+                "label": "Lubricant-free (FREE)"
+              },
+              "priceDelta": 29
+            },
+            {
+              "id": "facial-freckle",
+              "label": "Facial Freckle",
+              "priceDelta": 49,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe4433b001688d6e9956571630be266de351986a5d58f3af2ad8f03f79fa42d7.webp",
+                "label": "Facial Freckle"
+              }
+            },
+            {
+              "id": "body-freckles",
+              "label": "Body Freckles",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55ff07e18d6a871d513c14336aec3124f3afc60854a4fcdb99e5641e230d6c15.webp",
+                "label": "Body Freckles"
+              }
+            },
+            {
+              "id": "auto-sucking-vagina",
+              "label": "Auto-Sucking Vagina",
+              "priceDelta": 150,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b7890c6b06b4bab872bd3f7d4250e697bf5ec2c9e2ca5a393f560eacc369e63b.webp",
+                "label": "Auto-Sucking Vagina"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sexy-lingerie-add-on",
+          "label": "Sexy Lingerie Add-On",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef34329c8231928ce52dd5c1914b9fb566187ca9f0af3b854ea41fcce23b8d96.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6391d475d7cb576b0db10cd1d152396cb53224bbe3537d29f271ffd385a93d0a.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0e5eb34a4de3bc0a91f2d44caa96b13e4fe21175c40d6a4d28e12029006b256b.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6ecfdb53f67b9b0dfbd62df00cafc42bef090d363107ca06faf44074f39cb2c3.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/defd8f8523467b0f823b2ee680227a1ac5b84ebf678d406fc785154a32d99d6a.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e31da5af1b4851457eacc333ea5c4c0957e67840f566400bd5a572e6374c78a6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3aa7387b17d1bbb7583af3b1a2fa1b91cb974387f115ba9b6a73a6103f0a2f69.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 100,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/663ec028d76e396b58753ef2a78ff6426aa9418f46b312c030926f3c748b1981.webp",
+                "label": "No.8"
+              }
+            },
+            {
+              "id": "no-9",
+              "label": "No.9",
+              "priceDelta": 60,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4a44d57bc678312d32c3e2d22024c0e4a5bc63e9beef2eff0aaab7cdd7cfaa07.webp",
+                "label": "No.9"
+              }
+            },
+            {
+              "id": "no-10",
+              "label": "No.10",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4bf2182062c5c1fe7676a9b2a8bbc9c8e5ae7d8f35dbc9a5e9b9287549fcf96f.webp",
+                "label": "No.10"
+              }
+            },
+            {
+              "id": "no-11",
+              "label": "No.11",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/60deedeccb72d5057591c2add3b07771615743fbe5a0c6adda7d48cd4e6f9dd1.webp",
+                "label": "No.11"
+              }
+            },
+            {
+              "id": "no-12",
+              "label": "No.12",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/494dfde816880294ea4899ac285a8255b9a23347f34804b6278ca1e848827b91.webp",
+                "label": "No.12"
+              }
+            },
+            {
+              "id": "no-13",
+              "label": "No.13",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/22493491e56f0b0b8aadf9f3c7a3b65a2af8f540dbdb57a734a778f1e72cbacc.webp",
+                "label": "No.13"
+              }
+            },
+            {
+              "id": "no-14",
+              "label": "No.14",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/358f3a3f72033df07dccf94de0d8d668b40ae640af3a9bd3a9e7eca7037a51d5.webp",
+                "label": "No.14"
+              }
+            },
+            {
+              "id": "no-15",
+              "label": "No.15",
+              "priceDelta": 40,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/beb18b6b771e429678871712d6b59aa845885f022fa8c54ef005ef04e4ef53a1.webp",
+                "label": "No.15"
+              }
+            },
+            {
+              "id": "no-16",
+              "label": "No.16",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ff940f04ab0cd5ab50e62bd7188d37e68795cad1205acf6ed0e510b6224d1e2a.webp",
+                "label": "No.16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "label": "Accessories",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-add-on",
+              "label": "No add-on"
+            },
+            {
+              "id": "vaginal-irrigator",
+              "label": "Vaginal Irrigator",
+              "priceDelta": 35,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+                "label": "Vaginal Irrigator"
+              }
+            },
+            {
+              "id": "reusable-drying-rod",
+              "label": "Reusable Drying Rod",
+              "priceDelta": 25,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+                "label": "Reusable Drying Rod"
+              }
+            },
+            {
+              "id": "replaceable-vagina-insert",
+              "label": "Replaceable Vagina Insert",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+                "label": "Replaceable Vagina Insert"
+              }
+            },
+            {
+              "id": "teeth-tongue-set",
+              "label": "Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a213e14bfde23b9e9f020b4f7de8ca0ce71aa8ca088fba0248c5324751dfd235.webp",
+                "label": "Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "vampire-teeth-tongue-set",
+              "label": "Vampire Teeth&Tongue Set",
+              "priceDelta": 120,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/53cf894bc38338d0e983a2c8fa58e6fd968d93642497df2a6ede5aa840133347.webp",
+                "label": "Vampire Teeth&Tongue Set"
+              }
+            },
+            {
+              "id": "removable-tongue",
+              "label": "Removable Tongue",
+              "priceDelta": 30,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4e42796fadafa6194eeb6fd078c8cb974c6237f52c1eb20e0b914dbf5b0e3dca.webp",
+                "label": "Removable Tongue"
+              }
+            },
+            {
+              "id": "premium-cleaning-set-orig-550",
+              "label": "Premium Cleaning Set (Orig. $550)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a608771483b646d5e5a184bf4ab64dd75dac3442da30b89bdc766dbe2155e4e6.webp",
+                "label": "Premium Cleaning Set (Orig. $550)"
+              }
+            },
+            {
+              "id": "care-kit-orig-199",
+              "label": "Care Kit (Orig. $199)",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/care-kit.svg",
+                "label": "Care Kit (Orig. $199)"
+              }
+            },
+            {
+              "id": "deluxe-care-kit-orig-299",
+              "label": "Deluxe Care Kit (Orig. $299)",
+              "priceDelta": 199,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/deluxe-care-kit.svg",
+                "label": "Deluxe Care Kit (Orig. $299)"
+              }
+            },
+            {
+              "id": "sex-doll-body-hanging-bracket",
+              "label": "Sex Doll Body Hanging Bracket",
+              "priceDelta": 399,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+                "label": "Sex Doll Body Hanging Bracket"
+              }
+            },
+            {
+              "id": "head-stand-holder",
+              "label": "Head Stand Holder",
+              "priceDelta": 50,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+                "label": "Head Stand Holder"
+              }
+            },
+            {
+              "id": "belly-piercing",
+              "label": "Belly Piercing",
+              "priceDelta": 20,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+                "label": "Belly Piercing"
+              }
+            },
+            {
+              "id": "doll-repair-kit",
+              "label": "Doll Repair Kit",
+              "priceDelta": 99,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a6e1530a4cbbbc3e3642d2bd41c2d0cc41688aa5645dd3b615b54fec21a1667.webp",
+                "label": "Doll Repair Kit"
+              }
+            }
+          ]
+        },
+        {
+          "id": "upgraded-flight-case-add-on",
+          "label": "Upgraded Flight Case Add On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "dollVueEnabled": false
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight < 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight < 40kg)"
+              }
+            },
+            {
+              "id": "flight-case-doll-weight-40kg",
+              "label": "Flight Case (Doll Weight ≥ 40kg)",
+              "priceDelta": 899,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight ≥ 40kg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "an-extra-free-head",
+          "label": "An Extra Free Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "3-1",
+              "label": "3-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a5c01d0ef1f4a3dc57e59a8ac33538fe4560b141f350f7260b76d908c5e94333.webp",
+                "label": "3-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "3-2",
+              "label": "3-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca8871c1715b78a62c1360c0a9e8676c7c4cbabc79d53db6a304da3f6b9846c.webp",
+                "label": "3-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10",
+              "label": "10",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7dab83ff837e06d92778064aeabafc37417153b60be4b0cca28704e4eba5015c.webp",
+                "label": "10"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-1",
+              "label": "10-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d350f4f9457e42b6a981456760fdf488e39f9345456f4cc3cd22f4a55f3de4d.webp",
+                "label": "10-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-2",
+              "label": "10-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cfdc926bd55901286f0c4d44fb63064acec947c6400909c39b371edf2cc2ed4d.webp",
+                "label": "10-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "10-3",
+              "label": "10-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef73f56a887710d7c8856b66cb2ff4ae83f323ddbaf85a3cf371a5d52d641a57.webp",
+                "label": "10-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "11",
+              "label": "11",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f8810967e16c8145617908b6c44b0bc3842a06324d8bd3361e50472ca7129c04.webp",
+                "label": "11"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "12",
+              "label": "12",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3559edd7d2ac61e74f00a19fab83c571e298e3bed7d7bbf4b9b8244216eec76b.webp",
+                "label": "12"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "13",
+              "label": "13",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/de34354f6c55a0b4f6bb1ae4fbaed396cf1f3a673bfe0a8e6922634cf5dc2ba5.webp",
+                "label": "13"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-1",
+              "label": "14-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fe7eb9568d0712d0d14ade8735ceb2826865c191dafcccf9b65ee9d94b1ad9fb.webp",
+                "label": "14-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-2",
+              "label": "14-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d02b8f29694f8d85af50cef024462e720b01a0f7013ad3983f3bf993facf537e.webp",
+                "label": "14-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "14-3",
+              "label": "14-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3b65c1c08fbb4cf04c83ff2a9548aabe53e48790c6c6cad2f9cb034f9c0da279.webp",
+                "label": "14-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-1",
+              "label": "18-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/48cb69431d7a9cc122de60a8385358c40a17adc9c2a80b6f9caf16520a3c4e02.webp",
+                "label": "18-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "18-2",
+              "label": "18-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ca69b4993bf9ada2337f942eb0ac8d42f4c954e891e7bdfd061ee4d4a1189d2.webp",
+                "label": "18-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-1",
+              "label": "21-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/243eadb085ccd0663332cc20c3e1d9d6294d37f395e34796671fae70f23b2d29.webp",
+                "label": "21-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "21-2",
+              "label": "21-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f2723236bc17acb25fe82c86181f0feac7463812327567b75b4ca850d04c9a58.webp",
+                "label": "21-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-1",
+              "label": "22-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/76350af35574e981ac390c3db360be039768d5d4d2c3c8f4cb82fa1497e7c3bc.webp",
+                "label": "22-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-2",
+              "label": "22-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7b934c49ee19d954b93967812b17a7718c010f596840d6f93c547bb8ba9e0a34.webp",
+                "label": "22-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-3",
+              "label": "22-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3ca6cced03254c36fedfcab053f281a5a26a45dec0885b8dad4b12fc20cd8aff.webp",
+                "label": "22-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-4",
+              "label": "22-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/35e41de809d77c41f33a344af869833af69e97fbe91564b1027d66be64ec0469.webp",
+                "label": "22-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "22-5",
+              "label": "22-5",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/68f1bcd58706d0126ae01247606e200b01da07a218d37585c3a2d8be3c11ab93.webp",
+                "label": "22-5"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "23",
+              "label": "23",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1955036f5d0394f7af07acb40bf6d78296283ba69df406353bb8f509589350d2.webp",
+                "label": "23"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "24",
+              "label": "24",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c2876c17aafcca28a32f2056f425cb69a385e581441cc516f6ff07678bae5ae5.webp",
+                "label": "24"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-1",
+              "label": "28-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b461bed8f7eef39cbeabfea862e52608c3bb3b4ee00cd1f7eec4f61edd950432.webp",
+                "label": "28-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "28-2",
+              "label": "28-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5ef1b4f5cbd23f9a729182dddc7d5c7dcd2337f0ae3a06aec8972a8daecfd05d.webp",
+                "label": "28-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "33",
+              "label": "33",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b381e921636492c610e70bfb95545f3aae110d6cf917d653185100ff5fe10b0.webp",
+                "label": "33"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "34",
+              "label": "34",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ea2f7e62f1e52c1ac33e94ecb627a86e34e7eea3502d5ec5447426e46997a49c.webp",
+                "label": "34"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "35",
+              "label": "35",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0799f1ed293a650d698f36ff093d30da411f5931b2e750a6aed9ec45c93a9e32.webp",
+                "label": "35"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "36",
+              "label": "36",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b58bb8b6149b0a687e5c1aec50e732d72118a4610d6b53a65ca9a019f88289d2.webp",
+                "label": "36"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "45",
+              "label": "45",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f263f4727e64b0c781f76d4c97e776d7b11ccc744393f218006a9f4e6db7d7a2.webp",
+                "label": "45"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-1",
+              "label": "46-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/773d65c375061772b443b2533efd726355f4c30fb431cdc5de2d6d36e732e476.webp",
+                "label": "46-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-2",
+              "label": "46-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/77711616eb289f6da3b845caa623e31e2860cbefac4113cebf6742a785acf16e.webp",
+                "label": "46-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "46-3",
+              "label": "46-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/69d8d8e4fd12a6cd46e7908938423617e16a322b7b6c76a675ecaa226847746f.webp",
+                "label": "46-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "47",
+              "label": "47",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2989690a6328b1b157093a61e8264476d46b0f8352c4beaef7eea26c8e86ca69.webp",
+                "label": "47"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-1",
+              "label": "49-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3d62b68d0c97fc005f3c6ac25a4d8602b5109791cace75d9007cb203a63dbf14.webp",
+                "label": "49-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-2",
+              "label": "49-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d16b46d7052935d739897f20280ae86bbfc321dca7fff362eef7f57584857ba9.webp",
+                "label": "49-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "49-3",
+              "label": "49-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c3512d0190a2265432b444f1a9bbfeaa439873a00052e372cdc16d5d1299aca7.webp",
+                "label": "49-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-1",
+              "label": "50-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4f7b6c206e809261d004538553cb5e49221f9badc5d93cb69bd08abf0530c902.webp",
+                "label": "50-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "50-2",
+              "label": "50-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/99db880efaa2a8f0b8a35e747d27b7a858802b22418039f660ef0d74ffecff48.webp",
+                "label": "50-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "51",
+              "label": "51",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/492d7864c7e8825053d2b734af876525a2aaa8c554aca1136c0354aff961ae24.webp",
+                "label": "51"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-1",
+              "label": "55-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d881e254cd1b7d027789c2f395284b5cd8ab6b50dca5a2d370b861c2e779f88a.webp",
+                "label": "55-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-2",
+              "label": "55-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2863ff84ce0916b869736c52a6390cd8286466c16de34b32aed04431570770f4.webp",
+                "label": "55-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-3",
+              "label": "55-3",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4b102be7933a6fc61d46a245bede73bef5d0a4b821901b0bbcc12cade0229c7e.webp",
+                "label": "55-3"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "55-4",
+              "label": "55-4",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/55530d8bb374fc3ba9ebad99021708653fdbc4e98137a15a9be0a06e240aba3b.webp",
+                "label": "55-4"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-1",
+              "label": "56-1",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fd3181cd0a127e47d889b73c757cb3232c6f1c0adeabb00801e4ec94171b4240.webp",
+                "label": "56-1"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "56-2",
+              "label": "56-2",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0364e7d474b0bb1f866b232f3272b3d7702616009965887720cb11c8da947cbe.webp",
+                "label": "56-2"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "58",
+              "label": "58",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/170046fe3c5c8b880d60097014278182887350d2386ce2513b088648d194b985.webp",
+                "label": "58"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "64",
+              "label": "64",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b77d52e5b5a88f6abaff7418d5d1eb64d99fe5e16b9e08005e18f8466250fccf.webp",
+                "label": "64"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "custom-options-for-extra-head",
+          "label": "Custom Options For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "Factory default",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3173d36ca0a9608c3b52788ee90dd64551f3f25260d2f189328df450caf168c6.webp",
+                "label": "No Change"
+              }
+            },
+            {
+              "id": "yes-i-need",
+              "label": "Yes I Need",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/61637be3265ede831c86f7a4c6e2cc3d106c0a482f7c752b00e069ee2ac75037.webp",
+                "label": "Yes I Need"
+              },
+              "priceDelta": 0
+            }
+          ]
+        },
+        {
+          "id": "enhanced-mouth-add-on-for-extra-head",
+          "label": "Enhanced Mouth Add-On For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "textured",
+              "label": "Textured",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e3730ded0a78ae30cb6a6003f848bf960741d75abd19c2bb18aa0927af958fa5.webp",
+                "label": "Textured"
+              },
+              "priceDelta": 0
+            },
+            {
+              "id": "with-tongue-free",
+              "label": "With Tongue",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ffa587139d2794c2f14287b86eea2fd042a69e9e91fea0137aa03d370977e5c.webp",
+                "label": "With Tongue (FREE)"
+              },
+              "priceDelta": 49
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

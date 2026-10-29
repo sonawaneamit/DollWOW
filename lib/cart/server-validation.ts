@@ -33,11 +33,13 @@ export type ServerValidatedCartLine = {
  * properties are intentionally ignored.
  */
 export async function serverValidateAndRepriceLine(input: ParsedCartLine): Promise<ServerValidatedCartLine> {
+  if (input.merchandiseId.startsWith('preview:')) throw new Error('Preview products cannot be checked out.');
   const products = await getProductsByVariantIds([input.merchandiseId]);
   return validateAndRepriceLine(input, products.get(input.merchandiseId));
 }
 
 export async function serverValidateAndRepriceLines(inputs: ParsedCartLine[]): Promise<ServerValidatedCartLine[]> {
+  if (inputs.some(input => input.merchandiseId.startsWith('preview:'))) throw new Error('Preview products cannot be checked out.');
   const variantIds = [...new Set(inputs.map((line) => line.merchandiseId))];
   const products = await getProductsByVariantIds(variantIds);
   return inputs.map((input) => validateAndRepriceLine(input, products.get(input.merchandiseId)));
