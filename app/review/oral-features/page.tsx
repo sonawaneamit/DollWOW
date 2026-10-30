@@ -93,6 +93,21 @@ export default async function OralFeaturesReview() {
         <p>This is a custom-build choice, not a promise that an existing warehouse doll has a motor installed. Mary&apos;s current options below keep the head choice and the body upgrade distinct.</p>
         <a href={oralGuideSources[8].href}>Compare Mary&apos;s head and body options <ArrowRight size={16} /></a>
       </div></div>
+      <div className={styles.brandRow}><h3>Dolls Castle / Galatea</h3><div>
+        <p>Compare the exact doll, not just the brand name. Emma includes a ROS head with a movable jaw and lists oral suction and heating as separate choices. Chiku instead includes fixed teeth and tongue; those parts are not removable.</p>
+        <p>Choose Emma&apos;s head-function options if that is the feature you want to explore. Do not read Chiku&apos;s separate vaginal suction option as mouth suction.</p>
+        <a href={oralGuideSources[11].href}>Compare Emma&apos;s oral choices <ArrowRight size={16} /></a>
+      </div></div>
+      <div className={styles.brandRow}><h3>SY</h3><div>
+        <p>SY separates oral heating, oral sucking and vaginal suction in its menus. They are different functions, not interchangeable names for one upgrade.</p>
+        <p>Lirael below is a movable-jaw head with a silicone body. Start with the head you want, then its supported functions. A realistic mouth or movable jaw alone is not proof that a pictured doll has powered oral equipment installed.</p>
+        <a href={oralGuideSources[9].href}>Explore Lirael&apos;s head choices <ArrowRight size={16} /></a>
+      </div></div>
+      <div className={styles.brandRow}><h3>TOP-CYDOLL</h3><div>
+        <p>TOP-CYDOLL&apos;s Elva 176cm E-cup factory menu lists Auto Blowjob separately from Auto Sucking. ROS is a separate head choice, so the face, mouth structure and powered option must be considered together.</p>
+        <p>That factory example does not establish compatibility for every TOP-CYDOLL body, and its factory-store price is not a DollWOW delivered quote.</p>
+        <a href={oralGuideSources[10].href}>Read the factory&apos;s Elva options <ArrowRight size={16} /></a>
+      </div></div>
     </section>
 
     <section id="dolls" className={styles.section}>

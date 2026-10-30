@@ -11,7 +11,10 @@ export const oralGuideSources = [
   { title: "Angelkiss: manufacturer's ROS-head announcement", href: "https://dollforum.com/forum/viewtopic.php?t=170072" },
   { title: "Yeloly: model descriptions and three-opening terminology", href: "https://www.yeloly.com/" },
   { title: "WM: Karola's current custom build options", href: "https://dollwow.com/products/wm-karola-170cm-h-cup-tpe-companion-doll-1ckgq" },
-  { title: "MD: Mary's current custom build options", href: "https://dollwow.com/products/md-mary-168cm-silicone-companion-doll" }
+  { title: "MD: Mary's current custom build options", href: "https://dollwow.com/products/md-mary-168cm-silicone-companion-doll" },
+  { title: "SY: Lirael's head and oral choices", href: "https://dollwow.com/products/sy-doll-lirael-170cm-silicone-efd59b6" },
+  { title: "TOP-CYDOLL: Elva's factory upgrade menu", href: "https://www.topcydoll.com/shop/elva/" },
+  { title: "Dolls Castle / Galatea: Emma's head functions", href: "https://dollwow.com/products/dolls-castle-galatea-emma-gt06-163cm-c-cup-silicone-doll" }
 ] as const;
 
 export const oralGuideExamples = [
@@ -64,6 +67,14 @@ export const oralGuideExamples = [
     ]
   },
   {
+    id: "gid://shopify/Product/10512378364088",
+    handle: "sy-doll-lirael-170cm-silicone-efd59b6",
+    name: "Lirael", brand: "SY", catalogBrand: "sy", category: "Head choice first",
+    description: "A movable-jaw head on a 170cm silicone body. The price below is for the base doll, not powered oral functions. Choose head functions separately; a movable jaw alone does not make the head move automatically.",
+    requiredMeasurements: [{ key: "Material", value: "Movable jaw head+Silicone body" }],
+    options: []
+  },
+  {
     id: "gid://shopify/Product/10676884078776",
     handle: "dolls-castle-chiku-sz25-160cm-q-cup-silicone-character-doll",
     name: "Chiku", brand: "Dolls Castle", catalogBrand: "dolls-castle", category: "Manual oral structure",
@@ -75,7 +86,8 @@ export const oralGuideExamples = [
 export function oralGuideExampleMatches(product: Product, example: typeof oralGuideExamples[number]) {
   return product.id === example.id && product.handle === example.handle &&
     canonicalBrandValue(product.extended.brand ?? product.vendor) === example.catalogBrand &&
-    !product.tags.some(tag => /(?:review|source|safety|content)[-:]hold|dollwow-test/i.test(tag));
+    !product.tags.some(tag => /(?:review|source|safety|content)[-:]hold|dollwow-test/i.test(tag)) &&
+    (!("requiredMeasurements" in example) || example.requiredMeasurements.every(ref => product.extended.measurements?.[ref.key] === ref.value));
 }
 
 // A catalog label alone is not proof of a purchasable, unconditional price.

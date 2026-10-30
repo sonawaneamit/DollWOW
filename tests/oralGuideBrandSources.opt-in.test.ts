@@ -29,6 +29,7 @@ describe.skipIf(process.env.DOL288_CUSTOM_SOURCES !== "1")("non-warehouse oral-g
       const products = await getProducts({ query, first: 6, includeCustomizationGroups: true, imageFirst: 1, strict: true, cache: "no-store" });
       samples.push({ brand: value, query, sampled: products.length, records: products.map(product => ({ product, config: getCustomizationConfig(product) })) });
     }
+    await mkdir("data/exports/dol-288-redo-2026-10-29", { recursive: true });
     await writeFile("data/exports/dol-288-redo-2026-10-29/custom-brand-samples-private.json", JSON.stringify({ checkedAt: new Date().toISOString(), scope: "Two refined non-warehouse queries, six candidates each; not exhaustive or physical factory-fit verification", samples }, null, 2));
     expect(samples).toHaveLength(2);
   }, 60000);

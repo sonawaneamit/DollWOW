@@ -48,10 +48,19 @@ describe("fresh oral guide catalog examples", () => {
     expect(chiku.description).toContain("not removable");
   });
   it("keeps primary source links and no unsupported universal or warehouse promise", () => {
-    expect(oralGuideSources).toHaveLength(9);
+    expect(oralGuideSources).toHaveLength(12);
     expect(oralGuideSources.every(source => new URL(source.href).protocol === "https:")).toBe(true);
     expect(oralGuideQuestions.map(item => item.answer).join(" ")).toContain("Not necessarily");
     expect(new Set(oralGuideExamples.map(item => item.id)).size).toBe(oralGuideExamples.length);
+  });
+  it("shows the reviewed SY head description without quoting unverified oral deltas as free", () => {
+    const lirael = oralGuideExamples.find(item => item.name === "Lirael")!;
+    const source = { ...product, id: lirael.id, handle: lirael.handle, extended: { ...product.extended, brand: "SY Dolls", measurements: { Material: "Movable jaw head+Silicone body" } } };
+    expect(oralGuideExampleMatches(source, lirael)).toBe(true);
+    expect(lirael.options).toEqual([]);
+    expect(oralGuideOptionPrice(source, config(), lirael, "facial-details", "oral-sucking")).toBeNull();
+    expect(oralGuideExampleMatches({ ...source, extended: { ...source.extended, measurements: { Material: "Hard head" } } }, lirael)).toBe(false);
+    expect(oralGuideExampleMatches({ ...source, extended: { ...source.extended, measurements: {} } }, lirael)).toBe(false);
   });
   it("requires the reviewed zero-price ROS prerequisite without inventing head entitlement", () => {
     const mary = oralGuideExamples.find(item => item.name === "Mary")!;

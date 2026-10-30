@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { parse } from "node-html-parser";
 import { oralGuideExamples, oralGuideQuestions } from "@/lib/learn/oralGuide";
 
@@ -22,6 +22,7 @@ describe.skipIf(process.env.DOL288_SOURCE_HTML !== "1")("oral guide source HTML"
     expect(article.querySelectorAll("tbody tr")).toHaveLength(5);
     expect(article.querySelectorAll("th,td").every(cell => cell.textContent.trim().length > 0)).toBe(true);
     expect(article.querySelector("video source")?.getAttribute("src")).toBe("/images/learn/irontech-features/ros-comparison.mp4");
+    await mkdir("data/exports/dol-288-redo-2026-10-29", { recursive: true });
     await writeFile("data/exports/dol-288-redo-2026-10-29/source-html-proof.json", JSON.stringify({ checkedAt: new Date().toISOString(), status: response.status, sourceHtmlCards: cards.length, liveLinks: links, faqMatchesVisible: true, usefulRows: 5, manufacturerVideoInHtml: true, robots: "noindex, nofollow", scope: "Local current-source HTML only; not hosted or whole-market validation" }, null, 2));
   }, 60000);
 });

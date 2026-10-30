@@ -15,7 +15,37 @@ below are complete.
 - Requires `DOL288_GUIDE_REDO=1`; explicitly rejects production even with flag.
 - No production setting, publication, Shopify write, cart, order or email.
 
-## Latest Source And Media Pass: 29 October
+## Latest Supported Coverage Pass: 30 October
+
+Private WIP now has NINE source-supported brand sections and SEVEN real current
+PDP cards. Added Dolls Castle/Galatea, SY and TOP-CYDOLL. Not an exhaustive market
+or live-release claim. Same branch/PR231; no restart or patch to PR213.
+
+- Lirael2250 is a manual movable-jaw example, guarded by exact ID/handle/brand
+  and the current material field. No unverified SY60/120 oral deltas are quoted
+  as free/verified, no universal M/S-head fit claim.
+- Official `https://www.topcydoll.com/shop/elva/` separately lists Auto Blowjob,
+  Auto Sucking and ROS. The guide uses that limited distinction, not foreign
+  retail prices as DollWOW quotes or a universal body-compatibility list. The
+  older FAQ/stock contradiction and product measurement contradiction were not
+  adopted. No matching DollWOW SKU was invented.
+- Jarliet's official root showed an age gate only; no attestation/bypass. Its
+  generic165D menu does not establish the researched165Y/165M construction fit.
+  Yeloly's three-opening description is not powered3-in-1 evidence; registered
+  YL remains a different brand. Firefly's private drafts remain unpublished.
+  These unsupported recommendations are omitted per Dolly's brief, not turned
+  into empty customer-facing status rows or claims that the features do not exist.
+- LOCAL1319/390/320: nine sections/seven exact live links and original photos
+  decoded, itemized verified prices, no document/card overflow. New Lirael photo
+  visually reviewed, no edits/generation. Local HTML verifies seven cards, five
+  nonempty rows, video and visible FAQ/schema equality;28unit/media/Chiku tests,
+  TSC and scoped lint pass. An initial wrong `tsx --test` runner invocation failed
+  before tests; correct Vitest results are the verification, not that failed run.
+- Exact previous6fd CI was independently all green by23:56; this does not imply
+  checks for this newer source. Hosted acceptance still requires exact flagged
+  deployment/browser proof. Provider/GSC/YourDoll gaps remain qualified.
+
+## Previous Source And Media Pass: 29 October
 
 Still In Progress and private-only. Current local guide has SIX brand sections
 (Irontech/SE/TopFire/Angelkiss/WM/MD), SIX live-linked photo cards, FIVE useful
