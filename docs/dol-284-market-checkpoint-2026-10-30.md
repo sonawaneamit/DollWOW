@@ -79,6 +79,16 @@ for unchanged state. Five authorized corrections are already excluded from it.
 
 ## Remaining Gates
 
+30 October10:58 update: the unactivated text proposal is now prepared in
+`docs/dol-284-unactivated-settings-proposal-2026-10-30.md` and posted as Linear
+receipt `719956f4-84aa-469a-ae67-d665f221adcc`. It selects USD-only checkout,
+identifies ten requested EU destinations missing from the current shipping zone,
+and records Shopify's existing-managed-order edit and replacement-rate risks.
+An actual native status/fee excerpt was visually inspected, but Linear's browser
+remained Offline after a refresh and no screenshot attachment was delivered.
+The complete screenshot package remains unfinished; no settings were activated.
+The following original gate remains in force, not an instruction to redo baseline.
+
 Prepare, do not activate: US / Europe(EU+UK+CH/NO) / Rest of world, USD base with
 no price adjustment, display FX without rounding or USD checkout, no new VAT
 registrations, duties collectionOFF, and proposed included-shipping/duty/tax copy.
