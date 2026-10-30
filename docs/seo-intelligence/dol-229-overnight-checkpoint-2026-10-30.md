@@ -134,6 +134,22 @@ provider evidence is not zero demand or a passed AI/GEO release gate.
 
 ## Moonvale Certificate Risk
 
+30Oct follow-up, no repeat deployment or runtime change: a bounded fresh query
+found Tangle Joy's actual Curvy collection at
+https://tanglejoy.com/collections/curvy-sex-dolls . Its visible material, product
+form, height and weight filters plus named cards are real strengths. DollWOW's
+measurement-first guidance and explicit checkout qualification avoid adopting
+its broad included-feature wording, but do not prove a price or usability win.
+The search snapshot and fetched page showed different counts/prices, so neither
+is a configuration-equivalent price comparison or stable catalog baseline.
+Love Ai's Brunette category was found at
+https://www.loveaidolls.com/product-category/all-sex-dolls/brunette-sex-dolls/ ,
+but the direct read timed out. Only the search-visible filter/card excerpt is
+known; no full-page comparison or retry/bypass. Rosemary genre-filter discovery
+mostly returned nonmatching brand categories/translated navigation; rejected as
+Brunette category proof. All-competitor confidence remains Low. Continue the
+approved PR183 pass without pretending missing provider/page evidence passed.
+
 PR183440d7520 explicitly says Moonvale is SY Doll's premium silicone line and
 shows BrandAuthorizationCard brand=sy, linking to SY's Moonvale collection.
 Its authorization registry has relatedBrandValues=[moonvale] but the issuer and
