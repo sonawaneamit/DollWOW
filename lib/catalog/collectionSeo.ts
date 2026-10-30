@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
 import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
+import { batchFBuyerPreviewEnabled } from "./batchFBuyerPreview";
 
 type CollectionPreset = {
   title: string;
@@ -63,12 +64,12 @@ export function buildCollectionMetadata(
   };
 }
 
-export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext) {
+export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext, { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const title = collectionTitle(preset);
   const description = collectionDescription(handle, preset);
   const url = collectionCanonicalUrl(handle);
   const faq = collectionFaqItems(handle, preset);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -133,6 +134,10 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
 }
 
 export function collectionIntro(preset: CollectionPreset, handle = "") {
+  if (batchFBuyerPreviewEnabled(`/shop/${handle}`)) {
+    if (handle === "fair-skin-dolls") return "Compare dolls photographed with fair or light skin tones. Shade names differ between manufacturers, and lighting can change the appearance. Check the included shade, material and head-and-body pairing on the exact listing before choosing.";
+    if (handle === "height-160-164") return "Compare listings with a recorded height from 160 to 164 cm inclusive. Results can include complete dolls and partial-body products. Check what each listing includes, then compare width, listed weight and construction: height alone does not tell you how easy it is to handle.";
+  }
   const title = collectionTitle(preset);
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;

@@ -937,10 +937,10 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   };
 }
 
-export function buildBrandStructuredData(brand: CatalogBrand, products: Product[]) {
+export function buildBrandStructuredData(brand: CatalogBrand, products: Product[], { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const url = brandCanonicalUrl(brand);
   const profile = brandSeoProfile(brand);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
