@@ -4,6 +4,63 @@ In Progress. PR161 first, PR183 next, then the remaining approved batches.
 Not a completed five-page scorecard, not In Review, not live. Read the current
 Linear description and29Oct22:38 brief before continuing.
 
+## Latest Paginated Schema Correction
+
+Runtime bbf78400 continues the SAME PR161 branch. Source inspection established
+that the previous ItemList exposed only the first24 records of the whole filtered
+collection while the actual page renders36 cards. On page2 those identities were
+not the visible page. The four private-flagged paths now pass the actual paginated
+items and opt into a complete visible-page ItemList. Count, URLs, order and local
+positions match all visible cards. Existing non-flagged builder defaults retain
+their24-item behavior; production activation remains excluded.
+
+44focused tests pass, plus one separate final BUILT source-HTML test across eight
+routes (four paths, pages1and2), asserting exact card/ItemList URL/order/count and
+FAQ equality. TSC/scoped lint/configured local build/two4950asset gates pass.
+Initial new unit tests incorrectly hardcoded the production origin although the
+unit runtime uses localhost; corrected to compare URL paths. No runtime origin
+or canonical change was made. All local QA servers stopped.
+
+Private flagged deployment is being verified. Do not treat an automatic preview
+without the flag as feature proof or the local source test as hosted browser QA.
+Remaining competitor gaps, representative media and PR183 remain unfinished.
+Private305export00:52:29.670Z matched the bounded two rows and approved four named
+permissions/date/top-wrap/no-formula checks; no Sheet write or PII output.
+
+First flagged host j21dufvrj / dpl_5r2aUB3YMoFw9P9K6BvTMoVDqmMi is READY.
+Authenticated browser verified12desktop1319/mobile390/320 layout cases (no
+document overflow,36cards and correct price summaries) and eight page1/page2
+ItemList identity/count/order matches. Four first-image decodes640x960 were
+independently observed, not all144images. Early lazy-load zeros are retained in
+the raw proof and not counted as decoded. Existing old-stack seasonal decoration
+and automatic consent prompt were observed; declined normally, no bypass and no
+claim these represent current production's later consent release.
+
+Unauthenticated HTTP returned Vercel login HTML with200, NOT the article. The
+failed raw-HTTP schema test is not article proof or a broken article. No auth
+bypass was attempted. Authenticated DOM inspection found index/follow metadata
+on the private flag; Vercel login protection is not a substitute for an explicit
+indexing rule. Runtime9e48ee12 adds noindex/nofollow ONLY on the four flagged
+private pages, preserving production/default metadata. One new metadata guard
+test covers preview and production;45focused tests pass. A corrected flagged
+deployment is in progress; j21 is not final noindex acceptance proof.
+
+FINAL corrected host is READY:
+https://doll-p21u5n7y4-sonawaneamits-projects.vercel.app/brands/erovenus-dolls
+Deployment dpl_8oFW9NEop3YqgcpwPso2UMT5goPM, runtime9e48ee12. Same host also serves
+the Climax/Curvy/Brunette scoped paths. Actual authenticated native browser16cases:
+four paths at1319/390/320, plus each page2 at390; no document overflow,36cards each,
+exact ItemList identity/order/count and explicit noindex/nofollow everywhere.
+Canonical owners remain production URLs. Actual Brunette FAQ expansion works and
+its visible answers equal schema. Final proof is final-hosted-proof.json; raw
+HTTP remains login-protected, never counted as article/source-HTML verification.
+Final local built HTML separately passes eight routes/noindex/FAQ/card parity.
+Remote configured build/two4950asset gates passed; specific remote Node version
+is not independently asserted from the CLI's reduced inspect response.
+No repeat deploy is needed for unchanged runtime. All servers stopped and
+viewport reset. Whole229 is still In Progress, not a completed five-page
+competitive scorecard: remaining competitor gaps and PR183 are next.
+
 ## Worktree And Rollback
 
 - Worktree `/Volumes/Extreme Pro/Projects/DollWOW-dol229-batch-c`.
