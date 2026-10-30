@@ -19,6 +19,20 @@ afterEach(() => vi.unstubAllEnvs());
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW', '1'); }
 
 describe('Gynoid saved draft previews', () => {
+  it('prices all three retained tiers against each exact Standard/Deluxe base',async()=>{
+    enable();
+    for(const handle of ['gynoid-lisa-170cm-silicone-companion-doll-model-13','gynoid-elsa-164cm-silicone-companion-doll-model-21']){
+      const p=(await getPrivateDraftPreview(handle))!,c=getCustomizationConfig(p),defaults=getDefaultSelections(c);
+      const recipe=await privateDraftRecipe(p,c);
+      expect(p.variants).toHaveLength(2);
+      for(const variant of p.variants){
+        const base=Number(variant.price.amount),presets=templateConfigurationPresets(recipe??null,c,c,base,defaults);
+        expect(presets.map(preset=>preset.totalPrice)).toEqual([base,base+150,base+250]);
+        expect(variant.availableForSale).toBe(false);
+        expect(variant.id).toMatch(/^preview:variant:gynoid:/);
+      }
+    }
+  });
   it('does not turn archive labels for held campaigns into products or a body-wide exclusion', async () => {
     enable();
     const products = gynoidPreviewProducts();
