@@ -9,6 +9,7 @@ describe.skipIf(process.env.DOL229_SOURCE_HTML !== "1")("Batch C current-source 
       const response = await fetch(`http://localhost:3019${path}`);
       expect(response.status).toBe(200);
       const root = parse(await response.text());
+      expect(root.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex, nofollow");
       expect(root.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe(`https://dollwow.com${path.split("?")[0]}`);
       const summary = root.querySelector('[data-testid="catalog-selection-summary"]');
       expect(summary?.textContent).toContain("Starting prices on this page:");

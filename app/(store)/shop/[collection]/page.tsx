@@ -30,7 +30,10 @@ export async function generateMetadata({
   const canonicalCollection = canonicalShopCollectionHandle(collection);
   const preset = collectionPresets[canonicalCollection];
   if (!preset) notFound();
-  return buildCollectionMetadata(canonicalCollection, preset, await searchParams);
+  const metadata = buildCollectionMetadata(canonicalCollection, preset, await searchParams);
+  return batchCSelectionSummaryEnabled(`/shop/${canonicalCollection}`)
+    ? { ...metadata, robots: { index: false, follow: false } }
+    : metadata;
 }
 
 export default async function CollectionPage({

@@ -3,8 +3,8 @@ import fs from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { parse } from "node-html-parser";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import BrandHubPage from "@/app/brands/[brand]/page";
-import CollectionPage from "@/app/(store)/shop/[collection]/page";
+import BrandHubPage, { generateMetadata as brandMetadata } from "@/app/brands/[brand]/page";
+import CollectionPage, { generateMetadata as collectionMetadata } from "@/app/(store)/shop/[collection]/page";
 import { brandSeoProfile } from "@/lib/catalog/brandSeo";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { collectionPresets } from "@/lib/catalog/filters";
@@ -18,6 +18,17 @@ const support = "Care for Life includes first-year ownership support and ongoing
 const banned = /4 to 6 hours|Care 365|DollWow|product form|ordering path|decision-critical|appearance cues|fuller-build grouping|ownership format|ownership products|repair triage|eligible custom order/;
 
 describe("Batch C reviewed shopping copy", () => {
+  it("explicitly prevents indexing only for flagged private Batch C pages", async () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("DOL229_BUYER_SUMMARY", "1");
+    const brand = () => brandMetadata({params:Promise.resolve({brand:"erovenus-dolls"})});
+    const collection = () => collectionMetadata({params:Promise.resolve({collection:"curvy-dolls"}),searchParams:Promise.resolve({})});
+    expect((await brand()).robots).toEqual({index:false,follow:false});
+    expect((await collection()).robots).toEqual({index:false,follow:false});
+    vi.stubEnv("VERCEL_ENV", "production");
+    expect((await brand()).robots).not.toEqual({index:false,follow:false});
+    expect((await collection()).robots).not.toEqual({index:false,follow:false});
+  });
   for (const handle of ["erovenus-dolls", "climax-dolls", "curvy-dolls", "brunette-dolls", "anime-dolls"]) {
     it(`keeps ${handle} concise, plain and matched to visible schema`, async () => {
       vi.stubEnv("VERCEL_ENV", "preview");

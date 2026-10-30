@@ -29,7 +29,10 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) return {};
-  return buildBrandMetadata(brand);
+  const metadata = buildBrandMetadata(brand);
+  return batchCSelectionSummaryEnabled(`/brands/${brand.collectionHandle}`)
+    ? { ...metadata, robots: { index: false, follow: false } }
+    : metadata;
 }
 
 export default async function BrandHubPage({
