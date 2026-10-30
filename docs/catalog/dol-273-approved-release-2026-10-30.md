@@ -11,6 +11,75 @@ then the DOL315 ten-category preview, before further DOL229 work.
 Production runtime, complete configuration/preset and paid-charge bindings,
 discount exclusion, country/shipping checks and publication remain unfinished.
 
+## Latest Eligibility And Rate Checks
+
+30 Oct 16:39 UTC: eight dedicated adult-doll option/accessory charges were
+classified once as `Mature > Erotic > Sex Toys & Erotic Games` (`ma-1-4`).
+The current Admin taxonomy confirms that category. This preserves the adult
+context rather than accepting the generic AI Product Customization suggestion.
+All observed fields except category match the fresh before-read: prices, variant
+IDs, taxable/non-shipping treatment, tags, metafields, media and publications.
+All eight remain unpublished drafts. The shared care products were untouched.
+Do not rerun these category writes.
+
+Only the eight affected charges were temporarily staged for the changed-category
+check: actual US/DE/GB/FR reads each show 8/8 available. They were all restored
+DRAFT/unpublished with the adult category retained; zero carts in that check.
+The earlier eight-charge unavailability below is now superseded, not a current
+blocker. It does not establish unrestricted worldwide/platform policy clearance.
+
+A distinct four-cart shipping/presentment workflow then used Lisa Deluxe with
+Collector (+$250), country and synthetic city/postal data only. Actual subtotals
+and totals: US $6,049; DE EUR5,530.85; GB GBP4,637; FR EUR5,530.85. Each subtotal
+matches its three real merchandise lines; HALLOWEEN299 remains inapplicable.
+Each returns the existing named Free Express Shipping option at zero cost.
+These are actual static postal/country rate responses, not full-address delivery,
+carrier-calculated rate, final tax/duty settlement, payment or order proof.
+No person, street, email or phone was supplied. The four carts are new shipping
+workflows, not repeats of the 49 earlier US configurations.
+
+The shipping scope was only Lisa plus the eight specific charges (nine products),
+with the parent test-excluded. All nine were restored/read back DRAFT/unpublished,
+original tags/variant IDs/prices and retained categories equal, at16:43:24.788 UTC.
+The other ten parents and shared accessories were not staged for this workflow.
+Evidence: `category-dryrun-1640/` (actual16:39:08),
+`category-execute-1640/` (actual16:39:39), `category-eligibility-1641/`
+(final16:40:35.966), `shipping-1644/` (final16:43:24.788), all under the same
+private approved-release export directory. Both opt-in modes, TypeScript and
+scoped lint pass. No new app runtime/build/deploy or settings change this pass.
+
+Production-source parity is now verified at16:51:50 UTC. With only the eleven
+test-excluded parents staged, the real strict Storefront PDP mapper returns all
+eleven actual products and the real checkout lookup returns thirteen real IDs.
+All thirteen bases yield the three expected tier quotes (39 quotes). Saved
+`source-parity-normalized-1653/source-products.json` contains those actual mapped
+products with only the temporary test tag removed, for release-hash preparation.
+All eleven were restored DRAFT/unpublished; no carts in the source checks.
+
+Two earlier source attempts were not passes: the first initialized the hidden
+brand registry before preview flags, now caught by a pre-staging assertion; the
+second compared raw private-fixture annotations with production-normalized notes.
+The established mapper derives note signals from text, dropping old preview-only
+default annotations. The final comparison uses that exact normalization while
+separately requiring unchanged defaults, groups/prices/rules and all 39 quotes.
+No shared mapper or Gynoid runtime guard was weakened. Both failed attempts also
+restored all eleven drafts and created zero carts. These are test-harness/source
+normalization findings, not fresh merchant failures or source entitlements.
+
+Next is final registry integration from this actual production-source snapshot,
+followed by the already-authorized release/live checks. Do not sign recipes from
+dated private snapshots or label this work live. No new price/certificate/preview
+approval is needed. DOL284's 16:30 construction approval is valid, but its final
+check/screenshots and final preview yes still gate activation/Managed Markets-off.
+
+Primary references reviewed 30 Oct: Shopify says classification should follow
+the item's main function and AI suggestions can be reviewed rather than accepted
+automatically. Its Managed Markets guidance requires category data for review;
+that is not a promise of regional acceptance. No restricted item may be disguised
+through a generic category.
+[Taxonomy guidance](https://help.shopify.com/en/manual/products/details/product-category),
+[Managed Markets review](https://help.shopify.com/en/manual/international/managed-markets/prohibited-items).
+
 ## Latest Actual Checkout QA
 
 30 Oct 16:27 UTC: 49 actual US Shopify carts pass using the intended clean-base
