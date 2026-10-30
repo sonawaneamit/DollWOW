@@ -17,6 +17,17 @@ below are complete.
 
 ## Latest Supported Coverage Pass: 30 October
 
+HOSTED QA CAUGHT A REAL SOURCE-PARITY BUG: first flagged d84 deployment
+`dpl_HNUom2NBM65ucYHbh2H69E7bzZix` (`doll-179ezjxdq`) built successfully on
+Node22 but rendered only FIVE cards. On preview deployments the shared product
+getter prefers old Castle draft snapshots even with strict mode; those snapshots
+correctly failed the guide's current-source guards. Do NOT claim this host as a
+seven-card acceptance pass. The guide now explicitly requests `publishedOnly`,
+skipping that draft preference for this caller only. Existing PDP/private-draft
+consumers keep their default behavior. Three regression tests cover default
+preservation, absent published product and strict fetch failure. Combined31tests,
+TSC pass. Final rebuilt/redeployed exact source still requires fresh hosted QA.
+
 Private WIP now has NINE source-supported brand sections and SEVEN real current
 PDP cards. Added Dolls Castle/Galatea, SY and TOP-CYDOLL. Not an exhaustive market
 or live-release claim. Same branch/PR231; no restart or patch to PR213.

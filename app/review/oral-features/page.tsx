@@ -22,7 +22,7 @@ export default async function OralFeaturesReview() {
   if (process.env.VERCEL_ENV === "production" || process.env.DOL288_GUIDE_REDO !== "1") notFound();
   const examples = [];
   for (const example of oralGuideExamples) {
-    const product = await getProductByHandle(example.handle, { cache: "no-store", strict: true });
+    const product = await getProductByHandle(example.handle, { cache: "no-store", strict: true, publishedOnly: true });
     if (!product || !oralGuideExampleMatches(product, example) || !product.featuredImage) continue;
     const image = protectedProductImageUrlFor(product, product.featuredImage, "card");
     if (!image) continue;
