@@ -17,6 +17,35 @@ No settings or copy have been activated by this checkpoint correction.
 
 ## Latest Unactivated Construction
 
+### Pre-Activation Validation Constraint
+
+The19:15:32 UTC read (`price-inheritance-read-1916.json`) confirms all four
+new markets remain DRAFT/USD/local FX OFF/rounding OFF, with no directly
+assigned catalogs returned. The accessible global price-list connection also
+returns zero records, no next page. Four exact Lisa/Elsa Standard/Deluxe base
+variants remain5299/5799/4799/5099USD. This corroborates unchanged base prices
+and no returned custom price-list adjustment; it is **not** an effective
+draft-market contextual quote or independent proof of every inherited price.
+Actual schema inspection of `ContextualPricingContext` supports country,
+companyLocationId and locationId, not a draft market ID. A country-context
+quote would use the active market, as the earlier native graph check showed.
+
+The requested actual pre-activation draft checkout test therefore has no
+verified route in the available Shopify surfaces. Construction is not blocked
+by a new approval question, but the validation sequence needs clarification:
+keep every market/rate inactive, retain all unfinished tests, and ask Martin
+which pre-activation test route to use. This is **not** a request for activation
+or permission to turn Managed Markets off. Do not silently waive the test gate
+or replay already-accepted active-market carts as draft acceptance.
+
+The final saved/uploaded screenshot package also remains unfinished. Native
+inspection produced an inline market overview only; a local screenshot-save
+attempt produced no verified file, and the Screenshot app timed out. No image
+was uploaded or claimed delivered. No settings changed in these attempts;
+the owned inspection tab is closed. Do not keep repeating the same screenshot
+attempt or inspect unrelated user tabs. No new shipping/profile/market/cart/
+order/payment/email writes in this follow-up.
+
 ### Saved Dormant Shipping Profile
 
 At18:58:37 UTC a single custom shipping profile was created and read back:
