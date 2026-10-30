@@ -1,5 +1,17 @@
 # DOL-284 Markets Baseline And Category Milestone
 
+## Latest: Five-Market Plain-List Preview Submitted
+
+Martin12:12/12:13 superseded three markets with US / Canada / UK / EU / Rest of
+the World, all27EU countries including the ten missing zone entries. Updated
+plain-list preview posted14:38:46, receipt`5f03f25a-0dd7-4cc2-93c0-0ea64c3d2527`.
+See the Current Decision section of the unactivated proposal. Plain-list delivery
+is explicitly permitted: screenshots are not a submission blocker now. No EU
+country is established as unaddable; missing old-zone entries are not exclusions.
+Actual settings/rates are not saved/tested. STOP for exact preview yes and review
+existing managed orders before deactivation. No settings or copy activated.
+Older scope and screenshot requirements below are historical where superseded.
+
 ## Scope
 
 Martin's 30 October09:39 instruction (`64ab5b6e-b992-49b1-aadd-59844823744b`)

@@ -4,6 +4,37 @@ Prepared 30 October 2026. Nothing below has been activated. The five category
 corrections and Casey's earlier country-cart test are separate completed work;
 they are not repeated here. Martin's exact preview yes is still required.
 
+## Current Decision: Five Markets
+
+Martin's 12:12 decision (`43333027-9ce6-4486-a548-050a60dd95b2`) and 12:13
+EU instruction (`b47a1a8f-cc88-4709-a022-73c8a1f7d25c`) supersede the original
+three-market proposal below. The plain-list preview is explicitly accepted as
+the delivery format; screenshots are no longer a blocker to submitting it.
+Updated preview posted at14:38 as `5f03f25a-0dd7-4cc2-93c0-0ea64c3d2527`.
+
+| Proposed Market | Countries | Proposed Common Settings |
+| --- | --- | --- |
+| US | United States | USD-only display/checkout; local currencies off; rounding off; zero price adjustment |
+| Canada | Canada | Same |
+| UK | United Kingdom | Same |
+| EU | Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden | Same; include all27 in proposed free-shipping coverage |
+| Rest of the World | Remaining destinations outside those four markets, including previously covered AU/NZ/CH/NO | Same; actual country/product/shipping eligibility still applies |
+
+EU exclusions established: **none**. BG/HR/CY/CZ/HU/LV/LT/RO/SK/SI are now
+explicitly requested additions, not exclusions merely because absent from the
+old shipping zone. No country addition or replacement rate has been saved/tested.
+Any actual Admin/provider rejection must be named with its reason, not bypassed.
+No universal worldwide delivery or product clearance is inferred.
+
+No new VAT registrations, no standalone duty/import-tax collection, proposed
+included-shipping/duty/tax copy not released. Managed Markets remains on until
+exact preview yes and existing-managed-order review. No activation, category
+replay, cart, draft, order, payment or refund in this update.
+
+The remainder records the original10:58 proposal and its evidence. Its
+three-market structure and screenshot-delivery gate are historical, not current
+instructions. Existing-order, currency, rate and approval cautions still apply.
+
 ## Proposed Configuration
 
 | Setting | Current verified baseline | Proposed, not saved |
