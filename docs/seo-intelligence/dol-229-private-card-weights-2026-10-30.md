@@ -13,3 +13,39 @@ Exact independently inspected READY private preview https://doll-ejsmgt9os-sonaw
 Actual authenticated HOSTED16cases: four1319/390/320 plus four second pages390,36cards/36weightlabels each. Every displayed weight text equals separate built source for its exact page, not a claim to independently prove all manufacturer weight bases. Exact ItemList/count/order/noindex/production canonical/no document overflow/no weight-text horizontal overflow. Computed weight font12px; actual390/320 card captures visually inspected. Climax FAQ opened with Enter/schema equals visible. Two representative first photos640x960 actually decoded, not all-media audit. Inherited optional private consent declined normally; old seasonal stack not current production307 regression or clean integration proof. Viewport reset/tabs closed/all local servers stopped.
 
 Earlier p21 remains old card-weight-free proof, superseded for this new feature; no unchanged redeploy needed. Whole229 stays In Progress, no live/full competitive acceptance. Provider/GSC/supplier/media/matched competitor/clean production integration and Hybrid/151/157-238/Fanreal/DollVue boundaries remain open. Roshi CLM exact-series navigation remains unresolved, no category names promoted to SKU facts.
+
+## Series Evidence Follow-Up04:19
+
+Fresh decision-specific research, no runtime/UI/catalog change or redeployment:
+Roshi's actual current CLM collection separates four named series and specialized
+families. This confirms a navigation strength, not our SKU membership or a quality
+ladder. Official CLM root exposes series/model names in returned text but also
+explicit21+ Access Restricted/age-verification text. No attestation, entry click,
+gated deep-product read or bypass. Do not treat root navigation as a cleared
+current model-to-series certificate or retry gated pages unchanged.
+
+Two bounded read-only own Storefront investigations are retained separately:
+04:19:17 vendor="Climax Doll" returns only2 published records/no next page;
+this is NOT our hub query or complete catalog. Correct actual native hub query
+(tag:climax OR tag:climax-doll OR tag:climax-dolls) at04:19:42 returns24 latest
+records with hasNextPage=true, deliberately sampled rather than a new census.
+Only2 have explicit Classic/Pro/Ultra/ULW words in title/source-title/tags:
+ULW Renata104cm with head and84cm without head. The other22 lack those explicit
+words; this does not establish series absence. Bina156cm's public title is not a
+supplier-series mapping. Both generated artifacts are private exports,
+climax-series-source-sample.json and climax-series-native-query-sample.json.
+
+No Classic/Pro/Ultra mapping or new series filter is justified from that sample.
+Do not infer Pro from PA, Ultra from silicone, Classic from size, or ULW from
+weight. Keep the implemented weight scan and existing search/filter behavior;
+do not create a full-series UI from guessed taxonomy. No blanket catalog hold,
+supplier contact or repeated NEEDS MARTIN question.
+
+Fresh bounded matching-collection search still did not establish requested
+Rosemary/YourDoll exact Curvy/Brunette evidence. Aggregator DollAdvisor and2020PDF
+rejected as current merchant collection proof; TangleJoy remains previously read,
+not a fresh all-market win. ColaDolls Curvy direct read timed out once; snippet
+only, no unchanged retry or full-read claim. No media/copy adopted. The first
+query's malformed site qualifier is retained as a weak discovery attempt, not
+claimed domain-restricted evidence. Source/navigation investigation is partial,
+not implementation completion or full competitive acceptance.
