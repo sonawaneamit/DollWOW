@@ -2,10 +2,12 @@
 
 ## State
 
-In Progress. This is a new implementation, not a repair or merge of rejected
+Private content review package ready for Dolly. This is a new implementation, not a repair or merge of rejected
 PR213. A nine-brand supported private preview is hosted and verified, but wider
 all-brand evidence and SEO release acceptance remain unfinished. It is NOT live.
 Do not claim the complete market brief is accepted from this partial milestone.
+The supported scope and every omitted research lead are reconciled in
+`docs/dol-288-supported-scope-review.md`; status is content ready, AI/GEO pending.
 
 - Worktree: `/Volumes/Extreme Pro/Projects/DollWOW-dol288-guide`
 - Branch: `codex/dol288-customer-guide-redo`
@@ -44,7 +46,9 @@ module evidence using existing287 and retained snapshots, not unchanged access
 retries or inferred fit. Firefly remains a private-brand/public-SKU scope hold.
 Unsupported claims stay omitted per Dolly's brief; missing evidence is not
 absence. Final full-scope review/canonical/SEO-GEO release checks remain. Keep
-In Progress until that scope is honestly reconciled; no fourth active ticket.
+the wider scope open through Dolly's review; no fourth active ticket. The review
+dossier records exclusions per her omit-unverified instruction, not a false
+all-brand completion claim. No runtime change or repeat deployment is needed.
 
 ## Supported Coverage Pass: 30 October
 
