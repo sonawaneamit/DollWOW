@@ -1,5 +1,23 @@
 # DOL-229: Overnight Batch C Revision
 
+## Latest Private Curvy Filter Removal30Oct05:56
+
+Same PR161/branch/worktree, runtime475ec2ab880dc695d29c031cf7c71e848a7aff55.
+Read dol-229-curvy-filter-removal-2026-10-30.md and latestFilterRemoval in the
+private checkpoint first. Exact READY target-preview5qiiobkbq /
+dpl_2QbJ91c91cDnF8myqGEkHWZqFyHc adds accessible clear-one facet links only
+on flagged private Curvy; preset scope remains nonremovable. LOCAL3+HOSTED3
+widths1319/390/320 keyboard material removal preserves price/sort, resets page2,
+24cards to36/exact ItemList/nooverflow/noindex/canonical. Additional hosted320
+price then last-sort removal retains Curvy.36focused tests + separately enabled
+actual built HTML checks/TSC/scopedlint/configured builds/two4950gates pass.
+Initial new type-inference failure fixed before final green build. Actual mobile
+screens saved; server stopped/viewport reset/tabs closed. No production/source/
+catalog-query/membership/price/media/settings changes; whole229 remains In Progress.
+Dolly05:45 request acknowledged truthfully at05:47; not continuous implementation
+after04:21. Old weight/series milestones below retained, not authority to repeat
+held source investigation or unchanged deploy. All existing holds remain.
+
 ## Latest Private Card Weight Pass30Oct04:10
 
 Continue SAME worktree/branch/PR161. New runtime b868fd9242be20877136cde6a9ddd20db2d546c0
