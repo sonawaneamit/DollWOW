@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
 import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
+import { batchEBuyerPreviewEnabled } from "./batchEBuyerPreview";
 
 type CollectionPreset = {
   title: string;
@@ -63,12 +64,12 @@ export function buildCollectionMetadata(
   };
 }
 
-export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext) {
+export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext, { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const title = collectionTitle(preset);
   const description = collectionDescription(handle, preset);
   const url = collectionCanonicalUrl(handle);
   const faq = collectionFaqItems(handle, preset);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -133,6 +134,10 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
 }
 
 export function collectionIntro(preset: CollectionPreset, handle = "") {
+  if (batchEBuyerPreviewEnabled(`/shop/${handle}`)) {
+    if (handle === "hips") return "Explore lower-body doll designs and compare their photos, waist and hip measurements, listed weight and material. Hips and full torsos are different shapes, so check what is included on each listing. Match the dimensions to your space before choosing.";
+    if (handle === "redhead-dolls") return "Explore dolls photographed with red or auburn hair. The pictured wig may not be included, and each model offers its own hair choices. Compare the head, body measurements and listed weight, then check the included hair on your chosen product page.";
+  }
   const title = collectionTitle(preset);
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;

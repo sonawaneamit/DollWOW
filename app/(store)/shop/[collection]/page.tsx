@@ -7,6 +7,8 @@ import { buildCollectionMetadata, buildCollectionStructuredData, collectionBuyer
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
 import { catalogPageFromValue, paginateCatalog } from "@/lib/catalog/pagination";
 import Link from "next/link";
+import { CatalogSelectionSummary } from "@/components/CatalogSelectionSummary";
+import { batchEBuyerPreviewEnabled } from "@/lib/catalog/batchEBuyerPreview";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { MobileHeroIntro } from "@/components/MobileHeroIntro";
 import { brandCollectionRedirectHref } from "@/lib/catalog/brands";
@@ -27,7 +29,8 @@ export async function generateMetadata({
   const canonicalCollection = canonicalShopCollectionHandle(collection);
   const preset = collectionPresets[canonicalCollection];
   if (!preset) notFound();
-  return buildCollectionMetadata(canonicalCollection, preset, await searchParams);
+  const metadata = buildCollectionMetadata(canonicalCollection, preset, await searchParams);
+  return batchEBuyerPreviewEnabled(`/shop/${canonicalCollection}`) ? { ...metadata, robots: { index: false, follow: false } } : metadata;
 }
 
 export default async function CollectionPage({
@@ -47,12 +50,13 @@ export default async function CollectionPage({
   const preset = collectionPresets[collection];
   if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
-  const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled' });
+  const showBuyerSummary = batchEBuyerPreviewEnabled(`/shop/${canonicalCollection}`);
+  const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled', strict: showBuyerSummary });
   const collectionProducts = collection === "silicone" ? products.filter(product => !isStandaloneHeadCatalogProduct(product)) : products;
   const filteredProducts = filterProducts(collectionProducts, filters);
   const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
-  const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
+  const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: showBuyerSummary ? catalogPage.items : filtered }, { visiblePage: showBuyerSummary });
   const relatedLinks = collectionRelatedLinks(collection, preset);
   const buyerNotes = collectionBuyerNotes(collection, preset);
   const comparisonRows = collectionComparisonRows(collection, preset);
@@ -75,6 +79,7 @@ export default async function CollectionPage({
           <p className="text-sm  text-gold-300">Collection</p>
           <h1 className="collection-hero__title mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
           <MobileHeroIntro>{collectionIntro(preset, collection)}</MobileHeroIntro>
+          {showBuyerSummary ? <CatalogSelectionSummary products={catalogPage.items} /> : null}
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
         </div>
       </div>

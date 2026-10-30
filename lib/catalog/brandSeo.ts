@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { catalogBrands, type CatalogBrand } from "@/lib/catalog/brands";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { env } from "@/lib/utils/env";
+import { batchEBuyerPreviewEnabled } from "./batchEBuyerPreview";
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
@@ -937,10 +938,10 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   };
 }
 
-export function buildBrandStructuredData(brand: CatalogBrand, products: Product[]) {
+export function buildBrandStructuredData(brand: CatalogBrand, products: Product[], { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const url = brandCanonicalUrl(brand);
   const profile = brandSeoProfile(brand);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -987,7 +988,10 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
 }
 
 export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
-  const custom = brandProfiles[brand.value] ?? {};
+  const custom = batchEBuyerPreviewEnabled(`/brands/${brand.collectionHandle}`) ? {
+    ...brandProfiles[brand.value],
+    intro: "Explore Angelkiss dolls by body shape, photos, measurements and listed weight. A silicone head does not mean the whole body is silicone, so check the construction on your chosen listing. Each product page shows the included build, price and available choices."
+  } : brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
     `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;
