@@ -156,7 +156,7 @@ export default async function BrandHubPage({
               {activeFilterLabels.map((label) => <span key={label}>{label}</span>)}
             </div>
           ) : null}
-          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} />
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/brands/${brand.collectionHandle}`} showListedWeight={showSelectionSummary} />
           <CatalogPagination {...catalogPage} basePath={`/brands/${brand.collectionHandle}`} searchParams={rawSearchParams} />
         </div>
       </div>

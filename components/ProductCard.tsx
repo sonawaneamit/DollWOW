@@ -11,8 +11,9 @@ import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
+import { CatalogCardWeight } from "./CatalogCardWeight";
 
-export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+export function ProductCard({ product, priority = false, showListedWeight = false }: { product: Product; priority?: boolean; showListedWeight?: boolean }) {
   const price = product.priceRange.minVariantPrice;
   const displayTitle = productPublicTitle(product);
   const image = product.featuredImage ?? product.images[0] ?? null;
@@ -43,6 +44,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
         <div className="catalog-product-card__specs">
           {specs.slice(0, 3).map((spec) => <span key={spec}>{spec}</span>)}
         </div>
+        {showListedWeight ? <CatalogCardWeight product={product} /> : null}
         {ready ? (
           <div className="catalog-product-card__warehouse">
             <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} compact />

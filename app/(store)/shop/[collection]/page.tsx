@@ -113,7 +113,7 @@ export default async function CollectionPage({
               ))}
             </div>
           ) : null}
-          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/shop/${collection}`} />
+          <ProductGrid products={catalogPage.items} filters={filters} resetHref={`/shop/${collection}`} showListedWeight={showSelectionSummary} />
           <CatalogPagination {...catalogPage} basePath={`/shop/${collection}`} searchParams={rawSearchParams} />
         </div>
       </div>

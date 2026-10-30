@@ -6,11 +6,13 @@ import { ProductCard } from "./ProductCard";
 export function ProductGrid({
   products,
   filters,
-  resetHref = "/shop/sex-dolls"
+  resetHref = "/shop/sex-dolls",
+  showListedWeight = false
 }: {
   products: Product[];
   filters?: CatalogFilters;
   resetHref?: string;
+  showListedWeight?: boolean;
 }) {
   if (!products.length) {
     const hasActiveFilters = Boolean(
@@ -66,7 +68,7 @@ export function ProductGrid({
   return (
     <div className="catalog-grid grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {products.map((product, index) => (
-        <ProductCard key={product.id} product={product} priority={index < 3} />
+        <ProductCard key={product.id} product={product} priority={index < 3} showListedWeight={showListedWeight} />
       ))}
     </div>
   );

@@ -17,6 +17,9 @@ describe.skipIf(process.env.DOL229_SOURCE_HTML !== "1")("Batch C current-source 
       const cards = root.querySelectorAll(".catalog-product-card");
       expect(cards.length).toBeGreaterThan(0);
       expect(cards.every(card => card.querySelector('a[href^="/products/"]') && card.querySelector("img"))).toBe(true);
+      const weights = root.querySelectorAll('[data-testid="catalog-card-weight"]').map(node => node.textContent);
+      expect(weights.length).toBeGreaterThan(0);
+      expect(weights.every(text => /^(Listed|Body) weight: [\d.]+ lb \/ [\d.]+ kg$/.test(text))).toBe(true);
       const schemas = root.querySelectorAll('script[type="application/ld+json"]').map(script => JSON.parse(script.textContent));
       const page = schemas.find(schema => schema["@type"] === "CollectionPage");
       expect(page.mainEntity["@type"]).toBe("ItemList");
@@ -30,9 +33,9 @@ describe.skipIf(process.env.DOL229_SOURCE_HTML !== "1")("Batch C current-source 
       const prefix = path.startsWith("/brands") ? "brand" : "collection";
       const visible = root.querySelector(`#${prefix}-faq-heading`)!.closest("details")!.querySelectorAll("article").map(article => [article.querySelector("h3")?.textContent, article.querySelector("p")?.textContent]);
       expect(faq.mainEntity.map((q: { name: string; acceptedAnswer: { text: string } }) => [q.name, q.acceptedAnswer.text])).toEqual(visible);
-      proof.push({ path, status: response.status, title: root.querySelector("title")?.textContent, h1: root.querySelector("main h1")?.textContent, summary: summary?.textContent, cards: cards.length, types: schemas.map(schema => schema["@type"]), itemListMatchesVisiblePage: true, faqMatchesVisible: true });
+      proof.push({ path, status: response.status, title: root.querySelector("title")?.textContent, h1: root.querySelector("main h1")?.textContent, summary: summary?.textContent, cards: cards.length, weights, types: schemas.map(schema => schema["@type"]), itemListMatchesVisiblePage: true, faqMatchesVisible: true });
     }
     await mkdir("data/exports/dol-229-2026-10-30", { recursive: true });
-    await writeFile("data/exports/dol-229-2026-10-30/source-html-proof.json", JSON.stringify({ checkedAt: new Date().toISOString(), scope: "LOCAL built route / semantic JSON checks, not external rich-results validator or hosted release proof", proof }, null, 2));
+    await writeFile("data/exports/dol-229-2026-10-30/weight-source-html-proof.json", JSON.stringify({ checkedAt: new Date().toISOString(), scope: "LOCAL built route / semantic JSON checks, not external rich-results validator or hosted release proof", proof }, null, 2));
   }, 120000);
 });
