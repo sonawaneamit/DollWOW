@@ -46,3 +46,23 @@ describe("private Brunette active-filter removal",()=>{
     expect(html).toContain('aria-label="Remove Full silicone filter"');expect(html).not.toContain('aria-label="Remove Brunette');
   });
 });
+
+describe("private Erovenus active-filter removal",()=>{
+  const brandPreset={brand:"erovenus"};
+  it("preserves the brand route, other raw facets and brand-products anchor",()=>{
+    const rows=removableCatalogFilters({...brandPreset,material:"silicone",price:"1500-1999",sort:"price-asc"},brandPreset,{brand:"other",material:["silicone","tpe"],price:"1500-1999",sort:"price-asc",page:"2",utm_source:["one","two"]},"/brands/erovenus-dolls","brand-products");
+    const url=new URL(rows.find(row=>row.key==="material")!.href!,"https://dollwow.com");
+    expect(url.pathname).toBe("/brands/erovenus-dolls");expect(url.hash).toBe("#brand-products");
+    expect(url.searchParams.has("material")).toBe(false);expect(url.searchParams.has("page")).toBe(false);
+    expect(url.searchParams.get("price")).toBe("1500-1999");expect(url.searchParams.get("sort")).toBe("price-asc");
+    expect(url.searchParams.getAll("utm_source")).toEqual(["one","two"]);
+    expect(rows.find(row=>row.key==="brand")!.href).toBeNull();
+  });
+  it("leaves the fixed brand without removal links after the final facet is cleared",()=>{
+    const html=renderToStaticMarkup(<ActiveCatalogFilters filters={brandPreset} preset={brandPreset} raw={{brand:"erovenus"}} basePath="/brands/erovenus-dolls" anchor="brand-products"/>);
+    expect(html).not.toContain("<a ");expect(html).toContain("Erovenus");
+    const filtered=renderToStaticMarkup(<ActiveCatalogFilters filters={{...brandPreset,material:"silicone"}} preset={brandPreset} raw={{material:"silicone"}} basePath="/brands/erovenus-dolls" anchor="brand-products"/>);
+    expect(filtered).toContain('aria-label="Remove Full silicone filter"');expect(filtered).toContain('href="/brands/erovenus-dolls#brand-products"');
+    expect(filtered).not.toContain('aria-label="Remove Erovenus');
+  });
+});

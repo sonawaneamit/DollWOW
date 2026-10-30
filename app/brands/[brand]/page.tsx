@@ -17,6 +17,7 @@ import { GuideLinkRow } from "@/components/GuideLinkRow";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 import { CatalogSelectionSummary, batchCSelectionSummaryEnabled } from '@/components/CatalogSelectionSummary';
+import { ActiveCatalogFilters } from '@/components/ActiveCatalogFilters';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -151,7 +152,10 @@ export default async function BrandHubPage({
           />
         </aside>
         <div id="brand-products" className={`shop-visual-main scroll-mt-28 ${compactBrowsing ? "max-sm:[&_.catalog-product-card]:w-full" : ""}`}>
-          {hasActiveFilters ? (
+          {showSelectionSummary && brand.value === "erovenus" ? (
+            <ActiveCatalogFilters filters={filters} preset={{ brand: brand.value }} raw={rawSearchParams}
+              basePath={`/brands/${brand.collectionHandle}`} anchor="brand-products" />
+          ) : hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => <span key={label}>{label}</span>)}
             </div>

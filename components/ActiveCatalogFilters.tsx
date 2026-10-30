@@ -3,13 +3,14 @@ import { X } from "lucide-react";
 import type { CatalogFilters } from "@/lib/catalog/filters";
 import { removableCatalogFilters } from "@/lib/catalog/filterRemoval";
 
-export function ActiveCatalogFilters({ filters, preset, raw, basePath }: {
+export function ActiveCatalogFilters({ filters, preset, raw, basePath, anchor }: {
   filters: CatalogFilters;
   preset: CatalogFilters;
   raw: Record<string, string | string[] | undefined>;
   basePath: string;
+  anchor?: "collection-products" | "brand-products";
 }) {
-  const items = removableCatalogFilters(filters, preset, raw, basePath);
+  const items = removableCatalogFilters(filters, preset, raw, basePath, anchor);
   return <nav aria-label="Active filters" className="mb-4 flex flex-wrap gap-2">
     {items.map(item => item.href ? <Link key={item.key} href={item.href}
       aria-label={`Remove ${item.label} filter`} title={`Remove ${item.label} filter`}

@@ -4,7 +4,8 @@ export function removableCatalogFilters(
   filters: CatalogFilters,
   preset: CatalogFilters,
   raw: Record<string, string | string[] | undefined>,
-  basePath: string
+  basePath: string,
+  anchor: "collection-products" | "brand-products" = "collection-products"
 ) {
   return Object.entries(filters).flatMap<{ key: string; label: string; href: string | null }>(([key, value]) => {
     if (!value || (key === "sort" && value === "featured")) return [];
@@ -17,6 +18,6 @@ export function removableCatalogFilters(
       for (const item of Array.isArray(entry) ? entry : [entry]) params.append(name, item);
     }
     const query = params.toString();
-    return [{ key, label, href: `${basePath}${query ? `?${query}` : ""}#collection-products` }];
+    return [{ key, label, href: `${basePath}${query ? `?${query}` : ""}#${anchor}` }];
   });
 }

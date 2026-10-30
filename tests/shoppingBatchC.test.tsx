@@ -18,6 +18,22 @@ const support = "Care for Life includes first-year ownership support and ongoing
 const banned = /4 to 6 hours|Care 365|DollWow|product form|ordering path|decision-critical|appearance cues|fuller-build grouping|ownership format|ownership products|repair triage|eligible custom order/;
 
 describe("Batch C reviewed shopping copy", () => {
+  it.each([
+    ["preview","1","erovenus-dolls",true],
+    ["production","1","erovenus-dolls",false],
+    ["preview","0","erovenus-dolls",false],
+    ["preview","1","climax-dolls",false]
+  ])("scopes brand filter removal to %s/%s/%s",async(env,flag,handle,enabled)=>{
+    vi.stubEnv("VERCEL_ENV",env);vi.stubEnv("DOL229_BUYER_SUMMARY",flag);
+    const markup=renderToStaticMarkup(await BrandHubPage({params:Promise.resolve({brand:handle}),searchParams:Promise.resolve({material:"silicone",sort:"price-asc",page:"2"})}));
+    const root=parse(markup),nav=root.querySelector('nav[aria-label="Active filters"]');
+    expect(Boolean(nav)).toBe(enabled);
+    if(enabled){
+      expect(nav!.querySelector('a[aria-label="Remove Full silicone filter"]')!.getAttribute("href")).toBe("/brands/erovenus-dolls?sort=price-asc#brand-products");
+      expect(nav!.querySelector('a[aria-label*="Erovenus"]')).toBeNull();
+      expect(root.querySelector("#brand-products")).toBeTruthy();
+    }
+  });
   it("explicitly prevents indexing only for flagged private Batch C pages", async () => {
     vi.stubEnv("VERCEL_ENV", "preview");
     vi.stubEnv("DOL229_BUYER_SUMMARY", "1");
