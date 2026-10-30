@@ -17,6 +17,46 @@ No settings or copy have been activated by this checkpoint correction.
 
 ## Latest Unactivated Construction
 
+### Saved Dormant Shipping Profile
+
+At18:58:37 UTC a single custom shipping profile was created and read back:
+**138016915640**, `DOL284 UNASSIGNED PREVIEW - NOT LIVE`. It has zero product
+variants (EXACT), zero profile items, zero selling-plan groups and zero active
+methods. Five explicit zones contain34 distinct countries: US, Canada, UK,
+EU27 and previously covered RoW AU/NZ/CH/NO. All five saved methods are inactive
+and priced0USD. This provides no live shipping or new checkout availability.
+The existing General profile's observed fields, first item/count, complete
+zones/provinces/methods/rate amounts and location membership compare exactly
+equal before/after. No product was moved; no existing method was enabled or
+disabled. Four market drafts and active market/Managed Markets settings were not
+mutated by the shipping script. No cart/order/payment/email operation occurred.
+
+Immutable `shipping-execute-1900/response.json` records the one successful
+creation with no API errors; `after.json` is the actual readback. **Do not rerun
+creation.** The initial local post-write assertion incorrectly expected
+`zoneCountryCount:34`. The actual inactive profile reports that aggregate as0,
+while all34 countries are explicitly present in its five zones. The verifier
+now separately asserts the observed aggregate0, exact country membership per
+named zone, inactive methods, empty associations and unchanged General fields.
+`--verify-saved` reconciled the already-saved receipt without another API call
+or mutation; `verified.json` records that result. No rate was activated to make
+a count pass. `locationsWithoutRatesCount:1` is likewise retained, not hidden.
+Folder1900 is a label, not the actual request time.
+
+Seven local saved-receipt tests pass, including rejection of General changes,
+associated variants/selling plans, active rates, a missing EU country and nonzero
+prices. These tests skip explicitly when private receipts are absent; no remote
+CI/app-build claim. An initial test path URL-encoding issue was fixed before
+the clean seven-test run. `node --check` and diff-check pass.
+
+**Still unfinished:** actual draft-checkout preview is unavailable in the
+inspected native flow, zero-adjustment quote evidence and final screenshots are
+not complete, and dormant methods do not fix the EU draft's live-rate warning.
+Product assignment/rate enablement, market activation and Managed Markets-off
+remain prohibited before Martin's final approval. This is not the final check
+or a request to activate. The preceding local-candidate-only milestone below
+is historical for this shipping profile, not authority to recreate it.
+
 ### Shipping Candidate And Preview Feasibility Follow-Up
 
 The next read-only native check used Graph view -> View as -> Canada. It
