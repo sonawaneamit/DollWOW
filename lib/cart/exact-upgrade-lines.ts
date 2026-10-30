@@ -85,8 +85,9 @@ export function exactUpgradeLines(input: {
     if (matches.length !== 1) throw new Error(`An exact checkout item is not verified for ${item.label}.`);
     const binding = matches[0];
     const details = item.dependencyDetails;
-    if (details && (details.scope !== 'ido-md-v1' ||
+    if (details && ((!['ido-md-v1','firefly-free-details-v1'].includes(details.scope)) ||
         !Array.isArray(details.included) || !Array.isArray(details.configured) ||
+        (details.scope === 'firefly-free-details-v1' && details.configured.length !== 0) ||
         details.included.some(attribute => !attribute.key.startsWith('Included: ') || !attribute.value.trim()) ||
         details.configured.some(attribute => !attribute.key.startsWith('Configured: ') || !attribute.value.trim()))) {
       throw new Error('Invalid dependent customization details.');

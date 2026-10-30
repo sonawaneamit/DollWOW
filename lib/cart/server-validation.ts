@@ -7,6 +7,7 @@ import type { Product } from "@/types/product";
 import type { CustomizationSelections } from "@/types/customization";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
 import { idoMdDependencyPlan, type DependencyDetails } from './ido-md-dependencies';
+import { fireflyDependencyPlan } from './firefly-dependencies';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -84,7 +85,8 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   }
 
   const paidOptions = resolved.selectedOptions.filter((option) => option.priceDelta > 0);
-  const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity);
+  const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity) ??
+    fireflyDependencyPlan(product, config, resolved.selectedOptions, input.quantity);
   const optionAmount = money(resolved.optionPriceDelta * input.quantity);
   // Included choices must remain meaningful if a separately purchased upgrade is removed.
   // Conditional menus need an explicit dependency-aware migration, not stale copied text.

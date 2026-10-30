@@ -3,7 +3,7 @@ import { groupedCartAttributes } from '@/lib/customization/resolve';
 import type { BrandCustomizationConfig, SelectedCustomizationOption } from '@/types/customization';
 
 type Attribute = { key: string; value: string };
-export type DependencyDetails = { scope: 'ido-md-v1'; included: Attribute[]; configured: Attribute[] };
+export type DependencyDetails = { scope: 'ido-md-v1' | 'firefly-free-details-v1'; included: Attribute[]; configured: Attribute[] };
 export type DependencyChargeItem = { group: string; label: string; amount: number; dependencyDetails?: DependencyDetails };
 const headGroups = new Set([
   'custom-options-for-extra-head', 'head-type-for-extra-head', 'extra-head-choice', 'extra-head-type',

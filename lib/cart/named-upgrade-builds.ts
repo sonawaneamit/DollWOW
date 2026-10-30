@@ -55,7 +55,8 @@ export function namedUpgradeBuilds(
       seen.add(identity);
       return { lineId: child.id, merchandiseId: child.merchandise.id, title: matches[0].productTitle,
         group: binding.group, choice, quantity: child.quantity,
-        ...(child.attributes.some(attribute => attribute.key === '_DollWOW_dependency_scope' && attribute.value === 'ido-md-v1') ? {
+        ...(child.attributes.some(attribute => attribute.key === '_DollWOW_dependency_scope' &&
+          ['ido-md-v1','firefly-free-details-v1'].includes(attribute.value)) ? {
           includedChoices: child.attributes.filter(attribute => attribute.key.startsWith('Included: ')),
           configuredChoices: child.attributes.filter(attribute => attribute.key.startsWith('Configured: '))
         } : {}),

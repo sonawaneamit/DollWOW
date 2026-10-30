@@ -71,3 +71,27 @@ Initial diagnostic query used the wrong binding ID field and failed before cart
 creation; it was corrected before the recorded 59-case run. Full TSC currently
 fails for missing qrcode/fontkit/jsqr dependencies in the reused local runtime;
 no repository-wide compiler-green or configured-build claim is made here.
+
+## Local Free-Detail Fix (10:07 UTC)
+
+The four exact reviewed IDs now have a bounded dependency plan for free details
+owned by these paid options: main implanted synthetic hair, hard or soft movable
+jaw extra-head type, and implanted extra-head hair. It traverses active conditions
+through free intermediate groups. Those free details move to the owning upgrade
+line instead of remaining as stale facts on the doll after upgrade removal.
+Existing independent inclusions remain on the doll. Cycles, multiple paid owners,
+unknown roots and paid dependent choices fail closed. No new charge variant or
+combined-price identity is invented, and other brands retain their prior guard.
+
+112 focused tests in eight files pass, including actual line construction and
+cart-snapshot reconstruction before/after removal, tampering, quantity, identity
+isolation, and existing IDO/MD, named-line and release-registry regressions.
+An additional opt-in **local server repricing** check covers the previous eight
+failing cases across all four corrected intended-runtime snapshots: 16 now pass
+repricing and 16 paid-dependent cases remain explicitly blocked. This is not
+fresh Shopify cart or deployed-server/browser proof. No restaging or cart replay
+was performed. Production registries remain unsigned and unchanged.
+
+The remaining paid-on-paid branches need verified charge ownership/removal
+semantics before release. Prior supported-market failures and shipping proof also
+remain open. Do not re-stage while unchanged market gates prevent release.

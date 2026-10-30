@@ -12,6 +12,39 @@ import {storefrontAuthHeaders} from '@/lib/shopify/auth';
 const staged=vi.hoisted(()=>new Map<string,Product>());
 vi.mock('@/lib/shopify/storefront',()=>({getProductsByVariantIds:async()=>staged}));
 
+it.skipIf(process.env.DOL262_REPRICE!=='1')('checks affected intended-runtime server pricing without creating carts',async()=>{
+  const dir='data/exports/dol-262-2026-10-30';
+  const products=JSON.parse(await fs.readFile(`${dir}/products-runtime-private.json`,'utf8')) as Product[];
+  const previous=JSON.parse(await fs.readFile(`${dir}/checkout-qa-private.json`,'utf8'));
+  const affected=previous.results.filter((r:{pass:boolean})=>!r.pass);
+  const results=[];
+  for(const product of products){
+    staged.set(product.variants[0].id,product);
+    const config=getCustomizationConfig(product),base=Number(product.variants[0].price.amount);
+    for(const c of affected){
+      const [groupId,optionId]=c.case.split('/');
+      const selections=getDefaultSelections(config);
+      const enable=(id:string,choice:string)=>{const group=config.groups.find(g=>g.id===id)!;for(const condition of group.visibleWhen?.[0]??[])enable(condition.groupId,condition.optionId);selections[id]=group.selectionMode==='multiple'?[choice]:choice;};
+      enable(groupId,optionId);
+      const resolved=resolveCustomization(config,selections,base);
+      const paidDependent=groupId.startsWith('premium-head-options-for-extra-head');
+      try{
+        const line=await serverValidateAndRepriceLine({merchandiseId:product.variants[0].id,quantity:1,selections:resolved.selections});
+        expect(paidDependent).toBe(false);expect(line.namedUpgradeAttributes).toBeDefined();
+        expect(line.customizationCharge?.items.some(item=>item.dependencyDetails?.scope==='firefly-free-details-v1')).toBe(true);
+        results.push({handle:product.handle,case:c.case,state:'SERVER_REPRICE_PASS_NOT_SHOPIFY_CART'});
+      }catch(error){
+        if(!paidDependent)throw error;
+        expect(String(error)).toContain('verified exact-price');
+        results.push({handle:product.handle,case:c.case,state:'EXPECTED_PAID_DEPENDENCY_BLOCK',error:String(error)});
+      }
+    }
+  }
+  expect(results).toHaveLength(32);
+  await fs.writeFile(`${dir}/affected-server-repricing.json`,JSON.stringify({at:new Date().toISOString(),results},null,2));
+  console.log(JSON.stringify({affected:results.length,serverPasses:results.filter(r=>r.state==='SERVER_REPRICE_PASS_NOT_SHOPIFY_CART').length,retainedPaidDependencyBlocks:results.filter(r=>r.state==='EXPECTED_PAID_DEPENDENCY_BLOCK').length,shopifyWrites:0,cartsCreated:0}));
+});
+
 it.skipIf(process.env.DOL262_CHECKOUT!=='1')('verifies staged Firefly merchandise and exact Shopify cart charges',async()=>{
   const dir='data/exports/dol-262-2026-10-30';
   const read=async(p:string)=>JSON.parse(await fs.readFile(p,'utf8'));
