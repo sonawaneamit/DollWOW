@@ -9,6 +9,64 @@ then the DOL315 ten-category preview, before further DOL229 work.
 
 ## Latest Production Publication
 
+### Live Acceptance: 30 October
+
+PR233 merged18:11:07 UTC as `6badc4bb9fed86086627142e13605d88384dccfc`.
+Its exact432c71e5 owned-assets/Vercel/comments checks independently pass.
+Production `dpl_Gq4pCnC2LCnmJfEFQKciVP1eYCDs` (`doll-o3pjghrzt`)
+is READY with that exact main SHA; dollwow.com/www aliases are verified.
+`pr233-production-proof.json` records the deployment metadata. No publication,
+variant registration, prior cart matrix or staging operation was repeated.
+
+Actual hosted36cases: Lisa/Elsa x Standard/Deluxe x Starter/Enthusiast/Collector
+x1319/390/320. All totals equal approved base plus0/150/250, checkout controls
+enabled, index/follow and production canonicals, no document overflow/dialogs.
+An initial interaction was interrupted by the optional Halloween popup before
+any completed case; it was closed normally before the clean36. Primary-domain
+Lisa390 and Elsa320 also load, replacing the old404. Actual final purchase-panel
+screenshots were inspected inline (5549/5349 respectively), not saved/uploaded.
+No claim of a full94-image audit or settled financial checkout is made.
+
+One distinct deployed configured-checkout smoke used Elsa Deluxe Collector plus
+599 implanted hair: displayed5948USD, four actual lines, Deluxe body attribute
+on the parent and Black implanted-hair color on the paid hair child. Add to Cart
+automatically redirects to checkout in this existing flow. Shop Pay reused its
+existing signed-in session; no contact/address/payment fields were entered or
+submitted, and no Pay/Place order action occurred. The summary was EUR5439.80
+subtotal with a different final displayed total, not a settled USD shipping/tax
+promise. Existing Managed Markets/local FX settings were not changed.
+
+Cleanup qualification: only the isolated origin's saved QA checkout was cleared
+through its normal Clear control, and its cart page is empty. The unsubmitted
+server-side QA cart was NOT proven cleared: two scoped removal attempts (without
+a cart secret, then with the visible checkout-resume key) were rejected as cart
+not found. They changed no lines; the checkout key is not the cart mutation
+secret. No further credential guessing/retry or customer/account changes.
+Do not claim a deployed line-removal test passed or reuse/replay this QA checkout.
+Private files `browser-cart-owned-read-1820.json`, `browser-cart-remove-hair-1821.json`
+and `browser-cart-remove-hair-authenticated-1823.json` retain these exact results.
+
+Fresh bounded discount read (`discount-read-1813.json`) shows the prior automatic
+10% campaign EXPIRED, not currently applying. Halloween exclusion is separately
+proven by the earlier actual carts. This does not establish permanent exclusion
+from every future code: Gynoid charges can still be members of the expired
+10%-eligible collection, so any reactivation requires a fresh scoped exclusion
+review. No discount/settings mutation was made.
+
+Local final53tests/8files, TypeScript, configured production build/public promotion
+check and both4950asset gates pass; lint0errors/two existing ProductOptions warnings.
+Remote Node22.x is configured; local build Node26. Existing broader diagnostics
+remain. DOL273 was externally Done17:18:32; preserved, never reopened/self-closed.
+The approved retained cohort is now live; broader missing-source/Laura/alternate
+head holds and future-promotion/media-audit gaps are not completion claims.
+
+Live links:
+- https://dollwow.com/brands/gynoid-dolls
+- https://dollwow.com/products/gynoid-lisa-170cm-silicone-companion-doll-model-13
+- https://dollwow.com/products/gynoid-elsa-164cm-silicone-companion-doll-model-21
+
+### Earlier Publication Checkpoint
+
 PR232 merged as `4faea45e37a047343034d380420d76e1ff8224ed` at17:18:29 UTC.
 Exact production `dpl_E8KSA3SvZfXRJfRpbWuZVuebFujD` is READY and independently
 bound to dollwow.com/www. Final679c9b9c owned-assets, Vercel and comments checks
@@ -35,7 +93,7 @@ Brand listing is live with11real product links and original certificate. Actual
 certificate and nine initially visible card images decoded. Two lazy offscreen
 images were not decoded in that observation, not claimed a complete media audit.
 
-**Live acceptance unfinished:** actual Lisa PDP returned404 although an uncached
+At the earlier checkpoint, actual Lisa PDP returned404 although an uncached
 Storefront read returned both real variants available at5299/5799. PR233 applies
 the existing no-store lookup pattern only to the eleven approved Gynoid handles.
 Other brands/unreviewed handles are unchanged.30focused tests, scoped lint,
