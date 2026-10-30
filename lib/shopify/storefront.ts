@@ -12,6 +12,7 @@ import { resolveCurrentDollVueEligibility, resolveDollVueEligibility, withDollVu
 import { getCurrentDollVueHolds } from '@/lib/dollvue/currentHold';
 import dollVueRegistry from '@/lib/dollvue/readiness-registry.json';
 import type { DollVueReadinessRecord } from '@/lib/dollvue/readiness';
+import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 
 const API_VERSION = "2026-04";
 
@@ -669,6 +670,37 @@ export async function getProductsByVariantIds(variantIds: string[]) {
     if (!node?.product || !requestedIds.has(node.id)) continue;
     const product = mapCheckoutVariantProduct(node);
     if (isCustomerVisibleProduct(product)) products.set(node.id, product);
+  }
+  // These two approved parents need both real body versions for the server contract.
+  // Other products keep the exact-node path, including variants beyond position 30.
+  const versionParents = [...new Set([...products.values()].filter(gynoidBodyVersionMapping).map(p => p.id))];
+  if (versionParents.length) {
+    const versions = await storefrontFetch<{ nodes: Array<{
+      id: string; handle: string;
+      variants: { nodes: Product['variants']; pageInfo: { hasNextPage: boolean } };
+    } | null> }>(`query GynoidCheckoutBodyVersions($ids: [ID!]!) {
+      nodes(ids: $ids) { ... on Product {
+        id handle variants(first: 3) {
+          nodes { id title availableForSale price { amount currencyCode } selectedOptions { name value } }
+          pageInfo { hasNextPage }
+        }
+      } }
+    }`, { ids: versionParents }, { cache: 'no-store' });
+    for (const [id, product] of products) {
+      if (!gynoidBodyVersionMapping(product)) continue;
+      const parent = versions.nodes.find(node => node?.id === product.id && node.handle === product.handle);
+      const variant = parent?.variants.nodes.find(item => item.id === id);
+      const requested = product.variants[0];
+      if (!parent || parent.variants.pageInfo.hasNextPage || !variant ||
+          variant.title !== requested.title || variant.availableForSale !== requested.availableForSale ||
+          variant.price.amount !== requested.price.amount || variant.price.currencyCode !== requested.price.currencyCode ||
+          variant.selectedOptions.length !== requested.selectedOptions.length ||
+          variant.selectedOptions.some((option, index) => option.name !== requested.selectedOptions[index].name ||
+            option.value !== requested.selectedOptions[index].value)) {
+        throw new Error('The Gynoid body versions could not be verified.');
+      }
+      products.set(id, { ...product, variants: parent.variants.nodes });
+    }
   }
   return products;
 }

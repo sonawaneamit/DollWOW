@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { mapShopifyProduct } from "@/lib/shopify/mappers";
+import { gynoidBodyVersionMappings, verifiedGynoidBodyVersion } from '@/lib/catalog/gynoid-body-versions';
 
 vi.hoisted(() => {
   process.env.SHOPIFY_STORE_DOMAIN = "secure-test.myshopify.com";
@@ -12,6 +13,38 @@ afterEach(() => {
 });
 
 describe("checkout variant lookup", () => {
+  it.each(['complete', 'truncated', 'missing', 'drift'] as const)('verifies Gynoid sibling versions without the single-variant mapper trap: %s', async state => {
+    const row = gynoidBodyVersionMappings[0];
+    const variants = [
+      { id: row.standardVariantId, title: 'Standard', availableForSale: true,
+        price: { amount: '5299', currencyCode: 'USD' }, selectedOptions: [{ name: 'Body version', value: 'Standard' }] },
+      { id: row.deluxeVariantId, title: 'Deluxe', availableForSale: true,
+        price: { amount: '5799', currencyCode: 'USD' }, selectedOptions: [{ name: 'Body version', value: 'Deluxe' }] }
+    ];
+    const parent = { id: row.productId, handle: row.handle, title: 'Gynoid Lisa', vendor: 'Gynoid',
+      productType: 'Doll', tags: ['customizable'], stockStatus: { value: 'custom' } };
+    const reply = (data: unknown) => new Response(JSON.stringify({ data }), { status: 200, headers: { 'content-type': 'application/json' } });
+    const fresh = structuredClone(variants);
+    if (state === 'drift') fresh[1].price.amount = '1';
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(reply({ nodes: [{ ...variants[1], product: parent }] }))
+      .mockResolvedValueOnce(reply({ nodes: state === 'missing' ? [null] : [{ ...parent,
+        variants: { nodes: fresh, pageInfo: { hasNextPage: state === 'truncated' } } }] }));
+    vi.stubGlobal('fetch', fetchMock);
+    const { getProductsByVariantIds } = await import('@/lib/shopify/storefront');
+    if (state === 'complete') {
+      const result = await getProductsByVariantIds([variants[1].id]);
+      expect(result.get(variants[1].id)?.variants).toEqual(variants);
+      expect(verifiedGynoidBodyVersion(result.get(variants[1].id)!, variants[1].id)?.priceUSD).toBe(5799);
+    } else {
+      await expect(getProductsByVariantIds([variants[1].id])).rejects.toThrow('could not be verified');
+    }
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const request = JSON.parse(String(fetchMock.mock.calls[1][1].body));
+    expect(request.variables.ids).toEqual([row.productId]);
+    expect(request.query).toContain('variants(first: 3)');
+    expect(fetchMock.mock.calls[1][1].cache).toBe('no-store');
+  });
   it("uses one minimal exact-node query and validates a variant that would be beyond a 30-variant product connection", async () => {
     const requested = "gid://shopify/ProductVariant/999";
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({

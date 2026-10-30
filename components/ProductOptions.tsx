@@ -67,6 +67,7 @@ import { litaHeadChoice, presetChoiceOptions, replacePresetChoice, withPresetCho
 import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
 import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
+import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
@@ -75,6 +76,7 @@ export function ProductOptions({ product, config, promoClock, templateRecipe, pr
 }
 
 function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview, draftPreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean; draftPreview: boolean }) {
+  const VariantContainer = gynoidBodyVersionMapping(product) ? 'div' : 'label';
   const router = useRouter();
   const didMountRef = useRef(false);
   const purchaseRef = useRef<HTMLDivElement>(null);
@@ -433,10 +435,10 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
           <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
           {presets.length === 3 && !keepsWizardOpen(product.handle) && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
-            <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
+            <VariantContainer className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
               <StyledSelect value={variantId} onValueChange={setVariantId} ariaLabel="Choose a build" className="product-builder-variant-select" options={product.variants.map((item) => ({ label: item.title, value: item.id }))} />
-            </label>
+            </VariantContainer>
           ) : null}
 
           <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">

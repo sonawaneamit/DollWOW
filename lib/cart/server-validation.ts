@@ -7,6 +7,7 @@ import type { Product } from "@/types/product";
 import type { CustomizationSelections } from "@/types/customization";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
 import { idoMdDependencyPlan, type DependencyDetails } from './ido-md-dependencies';
+import { verifiedGynoidBodyVersion } from '@/lib/catalog/gynoid-body-versions';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -51,6 +52,8 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   const variant = product.variants.find((item) => item.id === input.merchandiseId);
   if (!variant?.availableForSale) throw new Error("This product option is not available for checkout.");
 
+  const gynoidVersion = verifiedGynoidBodyVersion(product, input.merchandiseId);
+
   const basePrice = Number(variant.price.amount);
   const currencyCode = variant.price.currencyCode.toUpperCase();
   if (!Number.isFinite(basePrice) || basePrice < 0 || !/^[A-Z]{3}$/.test(currencyCode)) {
@@ -60,7 +63,10 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   const displayName = product.extended.displayName?.trim();
   const title = displayName || product.title;
   const safeAttributes = allowlistedSafeAttributes(input.attributes);
-  const referenceAttribute = [{ key: "DollWow Reference Name", value: title }];
+  const referenceAttribute = [
+    { key: "DollWow Reference Name", value: title },
+    ...(gynoidVersion ? [{ key: 'Body version', value: gynoidVersion.version }] : [])
+  ];
 
   if (!input.selections) {
     return {
