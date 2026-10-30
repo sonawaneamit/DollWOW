@@ -107,8 +107,8 @@ export default async function CollectionPage({
           <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
         </aside>
         <div id="collection-products" className="shop-visual-main scroll-mt-28">
-          {showSelectionSummary && collection === "curvy-dolls" ? (
-            <ActiveCatalogFilters filters={filters} preset={preset.filters} raw={rawSearchParams} basePath="/shop/curvy-dolls" />
+          {showSelectionSummary && ["curvy-dolls", "brunette-dolls"].includes(collection) ? (
+            <ActiveCatalogFilters filters={filters} preset={preset.filters} raw={rawSearchParams} basePath={`/shop/${collection}`} />
           ) : hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => (

@@ -29,3 +29,20 @@ describe("private Curvy active-filter removal",()=>{
     expect(html).not.toContain('aria-label="Remove Curvy');
   });
 });
+
+describe("private Brunette active-filter removal",()=>{
+  const hairPreset=collectionPresets["brunette-dolls"].filters;
+  it("removes the material and page while preserving price, sort and raw query arrays",()=>{
+    const rows=removableCatalogFilters({...hairPreset,material:"silicone",price:"1500-1999",sort:"price-asc"},hairPreset,{material:"silicone",price:"1500-1999",sort:"price-asc",page:"2",utm_source:["one","two"]},"/shop/brunette-dolls");
+    const url=new URL(rows.find(row=>row.key==="material")!.href!,"https://dollwow.com");
+    expect(url.pathname).toBe("/shop/brunette-dolls");expect(url.searchParams.has("material")).toBe(false);expect(url.searchParams.has("page")).toBe(false);
+    expect(url.searchParams.get("price")).toBe("1500-1999");expect(url.searchParams.get("sort")).toBe("price-asc");expect(url.searchParams.getAll("utm_source")).toEqual(["one","two"]);
+    expect(url.hash).toBe("#collection-products");
+  });
+  it("does not make the fixed hair preset removable, even when repeated in the URL",()=>{
+    const rows=removableCatalogFilters(hairPreset,hairPreset,{look:hairPreset.look,bodyType:hairPreset.bodyType},"/shop/brunette-dolls");
+    expect(rows.length).toBeGreaterThan(0);expect(rows.every(row=>row.href===null)).toBe(true);
+    const html=renderToStaticMarkup(<ActiveCatalogFilters filters={{...hairPreset,material:"silicone"}} preset={hairPreset} raw={{material:"silicone"}} basePath="/shop/brunette-dolls"/>);
+    expect(html).toContain('aria-label="Remove Full silicone filter"');expect(html).not.toContain('aria-label="Remove Brunette');
+  });
+});
