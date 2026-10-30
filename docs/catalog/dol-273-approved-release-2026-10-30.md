@@ -11,6 +11,53 @@ then the DOL315 ten-category preview, before further DOL229 work.
 Production runtime, complete configuration/preset and paid-charge bindings,
 discount exclusion, country/shipping checks and publication remain unfinished.
 
+## Latest Private Integration
+
+30 Oct 16:18 UTC: the clean-base private PDP, brand and certificate integration
+is locally verified, not deployed or live. It requires both preview environment
+and `NEXT_PUBLIC_DOL273_RELEASE_PREVIEW=1`. Gynoid stays hidden in production and
+unflagged previews. Eleven retained source snapshots (94 gallery references) are
+byte-identical to the preserved preview branch; their projection uses the thirteen
+registered variant IDs and approved USD prices. All are unavailable for checkout.
+These dated snapshots are not a new Shopify read or production fallback.
+
+Lisa and Elsa show a Standard/Deluxe qualification in kg/lb and cm/in where
+applicable: factory life-cast hand/foot detail, not a different head or softness
+upgrade. Family photos and other dimensions remain explicitly Standard; no
+Deluxe photo is invented. Effective menus retain unavailable/unpriced alternate
+heads. No Laura addition or new product/source clearance is included.
+
+The original certificate PNG and its retained WebP are byte-identical to the old
+branch. The original was visually inspected: Europe/Americas agent scope,
+22 Oct 2026 through 21 Oct 2027. PDP, brand and vendor listing show this qualified
+scope, not a worldwide delivery or independent legal certification claim. Private
+brand/vendor metadata is noindex/nofollow with production canonical URLs.
+
+Actual local browser QA: 36 cases (two parents, two versions, three tiers, widths
+1319/390/320) have correct selected-body totals, disabled checkout, fitting notes,
+no document overflow and no dialogs. Six additional brand/vendor cases at those
+widths verify eleven brand links, original certificate links, scope/dates and
+metadata. The first 320px brand run overflowed by 8px; a Gynoid-only application
+of the existing compact-card width pattern fixes it, and all six cases were
+rechecked after the final build. Earlier overflowing output is not a pass.
+The final Elsa 390px Deluxe smoke shows $5,099. Certificate 320px and Elsa 390px
+views were visually inspected inline; no saved/uploaded screenshot is claimed.
+
+Final verification: 228 focused tests across seventeen files pass, including
+production/unflagged-preview hiding, exact original asset hashes, all thirteen
+variants and held heads, plus existing checkout/promotion regressions. TypeScript,
+scoped lint (zero errors/warnings), configured local build, promotion-data check
+and both 4,950-asset gates pass. Existing visual-index and DollVue static/dynamic
+diagnostics remain; no all-repository, remote CI, Node 22 or hosted proof claim.
+The local server is stopped, port 3031 has no listener, the viewport was reset
+and the owned QA tab closed. No merchant write, cart, order, payment, email,
+settings, merge or deployment occurred in this pass.
+
+Next: actual paid-charge, discount exclusion, supported-country and shipping QA,
+then proper evidence signing and authorized publication. Production registries
+remain unsigned/unchanged. Existing release approval is valid; do not reask it,
+replay variant creation, or resume SEO ahead of Gynoid/FU241/DOL315.
+
 ## Latest Menu Integration
 
 30 Oct 15:52 UTC: read all eleven exact parents and ten existing upgrade variants

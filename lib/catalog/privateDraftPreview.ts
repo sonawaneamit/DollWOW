@@ -5,9 +5,13 @@ import type { TemplatePresetDefinition } from '@/lib/customization/template-pres
 import { templateConfigSignature } from '@/lib/customization/template-config-signature';
 import { seElfPreviewProduct, isSeElfPreviewProduct } from './seElfPreview';
 import elfRecipes from '@/data/draft-previews/se-elf-recipes.json';
+import { gynoidReleasePreviewProducts } from './gynoidReleasePreview';
+import { prepareGynoidTemplateCandidate, reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
+  const gynoid = gynoidReleasePreviewProducts().find(product => product.handle === handle);
+  if (gynoid) return gynoid;
   const elf = seElfPreviewProduct(handle);
   if (elf) return elf;
   const { default: snapshots } = await import('@/data/draft-previews/castle-oct22.json');
@@ -18,6 +22,7 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
+  if (reviewedGynoidIdentity(snapshot)) return prepareGynoidTemplateCandidate(product, config);
   if (isSeElfPreviewProduct(snapshot)) {
     const recipe = elfRecipes.find(entry => entry.handle === product.handle);
     // Preview recipes copy parent selections only, never their runtime approvals.

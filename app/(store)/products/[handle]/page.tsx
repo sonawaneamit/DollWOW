@@ -34,6 +34,8 @@ import { isHeadOnlyProduct, primaryProductSpecs, productHeroIntro, productMeasur
 import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/catalog/productImage";
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
+import { GynoidBodyVersionNote } from '@/components/GynoidBodyVersionNote';
+import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
@@ -96,10 +98,12 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   ));
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
-  const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(product)));
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
   const customizationConfig = stripSupplierFreeLabels(product.extended.brand ?? product.vendor, publicCustomizationConfig(getCustomizationConfig(product)));
+  const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(
+    reviewedGynoidIdentity(product) ? { ...product, extended: { ...product.extended, customizationGroups: customizationConfig.groups } } : product
+  )));
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
@@ -286,6 +290,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
       <ToneBand tone="blush" className="pdp-builder-band">
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
+          <GynoidBodyVersionNote product={product} />
           <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>

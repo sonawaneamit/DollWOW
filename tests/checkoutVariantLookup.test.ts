@@ -10,10 +10,15 @@ vi.hoisted(() => {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
+  vi.resetModules();
 });
 
 describe("checkout variant lookup", () => {
   it.each(['complete', 'truncated', 'missing', 'drift'] as const)('verifies Gynoid sibling versions without the single-variant mapper trap: %s', async state => {
+    vi.stubEnv('VERCEL_ENV', 'preview');
+    vi.stubEnv('NEXT_PUBLIC_DOL273_RELEASE_PREVIEW', '1');
+    vi.resetModules();
     const row = gynoidBodyVersionMappings[0];
     const variants = [
       { id: row.standardVariantId, title: 'Standard', availableForSale: true,
