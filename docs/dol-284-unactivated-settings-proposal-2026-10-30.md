@@ -17,6 +17,39 @@ No settings or copy have been activated by this checkpoint correction.
 
 ## Latest Unactivated Construction
 
+### Shipping Candidate And Preview Feasibility Follow-Up
+
+The next read-only native check used Graph view -> View as -> Canada. It
+resolved to the existing active **Non-US** market with local currencies and
+collecting duties/import tax, not the Canada DRAFT. Exiting View as restored the
+EU Draft selection. Its product panel shows inherited store-default products in
+USD; that is not an independently verified zero-adjustment product quote.
+No Add products/checkout preview control was available in this inspected view.
+Shopify's [checkout-preview documentation](https://help.shopify.com/en/manual/markets/getting-started/cart-preview)
+currently explicitly labels that capability **Coming soon**. Do not mistake the
+active-country graph context for draft checkout acceptance or activate a market
+to manufacture a preview pass. No cart or order was created in this check.
+
+`scripts/dol284-prepare-shipping-plan.mjs` now produces the immutable local
+`unassigned-shipping-candidate.json` from the retained actual shipping read.
+It has no network or execute mode: five separate zones,34 unique country codes,
+all27 EU countries, preserving every previously covered destination. RoW rate
+scope is only AU/NZ/CH/NO, not all207 market members. The candidate adds the ten
+missing EU countries, associates no variants or selling-plan groups, and marks
+every proposed0USD method inactive. It has **not** been saved to Shopify and
+does not provide rates to existing products. Country/province and inactive-rate
+fields were checked against current2026-04 documentation; actual API acceptance
+and a fresh unchanged-General guard remain required before any save. It is not
+supplier delivery confirmation or checkout QA. Node syntax, local generation
+assertions and diff-check pass; no app build or remote test claim.
+
+References: [delivery profile input](https://shopify.dev/docs/api/admin-graphql/2026-04/input-objects/DeliveryProfileInput),
+[country input](https://shopify.dev/docs/api/admin-graphql/2026-04/input-objects/DeliveryCountryInput),
+[inactive method semantics](https://shopify.dev/docs/api/admin-graphql/2026-04/input-objects/DeliveryMethodDefinitionInput).
+Final screenshots, actual draft-checkout feasibility, zero adjustment, a safely
+saved unassigned candidate and final activation approval remain unfinished.
+Existing active settings and all four completed market drafts are untouched.
+
 30 October18:33:49 UTC: four new markets are saved **DRAFT**. The existing
 United States market is reused unchanged; no duplicate US market was created.
 Existing active United States/Non-US records compare equal before and after every
