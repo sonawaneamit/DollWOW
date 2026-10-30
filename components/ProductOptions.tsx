@@ -79,6 +79,9 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const purchaseRef = useRef<HTMLDivElement>(null);
   const scrollToPurchaseRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
+  // A label wrapping a button forwards a second mouse click and closes its menu.
+  const hasGynoidBodyVersions = draftPreview && product.variants.some(variant => variant.id.startsWith('preview:variant:gynoid:') && variant.id.endsWith(':deluxe'));
+  const VariantContainer = hasGynoidBodyVersions ? 'div' : 'label';
   const promotionNow = usePromotionClock(promoClock);
   const [selected, setSelected] = useState(() => getDefaultSelections(promotionPricingForSelections(product, config, {}, promotionNow).config));
   const pricing = useMemo(() => promotionPricingForSelections(product, config, selected, promotionNow), [config, product, selected, promotionNow]);
@@ -137,8 +140,8 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   [product.handle, config, pricedConfig, basePrice, selected, presetSelections, templateRecipe]);
   const presets = useMemo(() => presetChoicePreview
     ? withPresetChoices(recipePresets, pricedConfig, basePrice, selected, [litaHeadChoice], chosenPreset && chosenPreset !== "starter" ? [litaHeadChoice.groupId] : [])
-    : recipePresets.map(preset => ({ ...preset, choiceSlots: [], pendingChoices: [] })),
-  [recipePresets, pricedConfig, basePrice, selected, presetChoicePreview, chosenPreset]);
+    : recipePresets.map(preset => ({ ...preset, description: hasGynoidBodyVersions ? preset.description.replace('Standard body construction', 'Selected body construction') : preset.description, choiceSlots: [], pendingChoices: [] })),
+  [recipePresets, pricedConfig, basePrice, selected, presetChoicePreview, chosenPreset, hasGynoidBodyVersions]);
   const activePreset = presets.find(preset => preset.id === chosenPreset && matchesConfigurationPreset(preset, selected));
   const pendingChoices = activePreset?.pendingChoices ?? [];
   const dialogSlot = activePreset?.choiceSlots.find(slot => slot.groupId === choiceDialogGroup);
@@ -419,10 +422,10 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
           <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
           {presets.length === 3 && !keepsWizardOpen(product.handle) && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
-            <label className="product-builder-variant block rounded-md bg-surface-tint p-4">
+            <VariantContainer className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
               <StyledSelect value={variantId} onValueChange={setVariantId} ariaLabel="Choose a build" className="product-builder-variant-select" options={product.variants.map((item) => ({ label: item.title, value: item.id }))} />
-            </label>
+            </VariantContainer>
           ) : null}
 
           <div className="sticky top-24 z-30 -mx-1 mb-4 border-y border-border bg-surface/95 px-1 py-3 shadow-card backdrop-blur lg:hidden">

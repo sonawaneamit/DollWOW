@@ -35,6 +35,7 @@ import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/c
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
+import {gynoidVersionPreviewMappings} from '@/lib/catalog/gynoidVersionPreview';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
 import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
@@ -122,11 +123,13 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const showEditorialPreview = editorialPreview === "1" && supportsProductEditorialPreview(product);
   const showLiveEditorial = hasEditorialIntro(product.extended.editorialIntro);
   const gynoidStoreDiscount = gynoidPreviewStoreDiscount(product, Number(product.priceRange.minVariantPrice.amount));
+  const gynoidBodyVersion = isPrivateDraft && gynoidVersionPreviewMappings.find(row => row.productId === product.id && row.handle === product.handle);
 
   return (
     <div>
       {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       {gynoidStoreDiscount ? <p className="mx-auto max-w-7xl px-4 pb-3 text-sm text-text-dim">Gynoid is excluded from the sitewide 10% discount. Preview policy only; live checkout settings are unchanged.</p> : null}
+      {gynoidBodyVersion ? <p className="mx-auto max-w-7xl px-4 pb-3 text-sm text-text-dim">The family photos and measurements below describe the Standard body. Deluxe adds factory life-cast hand and foot detailing. {gynoidBodyVersion.model === 'M13' ? 'M13 body weight: Standard 30 kg, Deluxe 32 kg (+/-3 kg); bust: Standard 89 cm, Deluxe 91 cm.' : 'M21 body weight: Standard and Deluxe 30 kg (+/-3 kg).'} Body weights exclude the head. Choose the body version in the step-by-step build selector.</p> : null}
       {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} />}
       {!isPrivateDraft && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
