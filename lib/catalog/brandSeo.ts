@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { catalogBrands, type CatalogBrand } from "@/lib/catalog/brands";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { env } from "@/lib/utils/env";
+import { batchDBuyerPreviewEnabled } from "./batchDBuyerPreview";
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
@@ -937,10 +938,10 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   };
 }
 
-export function buildBrandStructuredData(brand: CatalogBrand, products: Product[]) {
+export function buildBrandStructuredData(brand: CatalogBrand, products: Product[], { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const url = brandCanonicalUrl(brand);
   const profile = brandSeoProfile(brand);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -987,7 +988,21 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
 }
 
 export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
-  const custom = brandProfiles[brand.value] ?? {};
+  const custom: Partial<BrandSeoProfile> = batchDBuyerPreviewEnabled(`/brands/${brand.collectionHandle}`) ? {
+    ...brandProfiles[brand.value],
+    intro: "Explore IL Doll's current models and compare their photos, measurements and listed weight. Each product page shows the price, included build and available choices. Check the warehouse location for a stocked doll, or choose the options offered for a custom build.",
+    buyerNotes: [
+      { title: "Choose the head and body", body: "Match the head, body, material and measurements on the listing you like." },
+      { title: "Check what is included", body: "Review the included features and any paid choices on that product page." },
+      { title: "Check how it ships", body: "Keep a fixed warehouse build separate from a custom order. Ask us about stock and timing before ordering." }
+    ],
+    faqs: [
+      { question: "How do I compare IL Doll models?", answer: "Start with the head, body, material, measurements and listed weight. Then compare the price, included features and available choices." },
+      { question: "Does every model include the same upgrades?", answer: "No. Check the included features and choices on the product page for the doll you want." },
+      { question: "What if a measurement is missing?", answer: "Ask us to confirm it for that model. Do not use another doll's measurements or weight." },
+      { question: "Are all IL Doll listings ready to ship?", answer: "No. Check whether the listing is a fixed warehouse build or a custom order, and confirm stock and timing before ordering." }
+    ]
+  } : brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
     `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;

@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
 import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
+import { batchDBuyerPreviewEnabled } from "./batchDBuyerPreview";
 
 type CollectionPreset = {
   title: string;
@@ -63,12 +64,12 @@ export function buildCollectionMetadata(
   };
 }
 
-export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext) {
+export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext, { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const title = collectionTitle(preset);
   const description = collectionDescription(handle, preset);
   const url = collectionCanonicalUrl(handle);
   const faq = collectionFaqItems(handle, preset);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -133,6 +134,10 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
 }
 
 export function collectionIntro(preset: CollectionPreset, handle = "") {
+  if (batchDBuyerPreviewEnabled(`/shop/${handle}`)) {
+    if (handle === "blonde-dolls") return "Explore dolls photographed with blonde hair. The pictured wig may not be included, and each model offers its own hair choices. Compare the photos, measurements and listed weight, then check the included hair on your chosen product page.";
+    if (handle === "tan-skin-dolls") return "Explore dolls photographed with tan skin tones. Shade names vary by manufacturer, and lighting can change how a color looks. Check the exact shade and included build on the product page, keeping fixed warehouse dolls separate from custom choices.";
+  }
   const title = collectionTitle(preset);
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;
