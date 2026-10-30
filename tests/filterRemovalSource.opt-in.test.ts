@@ -26,3 +26,23 @@ it.skipIf(process.env.DOL229_FILTER_HTML !== "1").each(["curvy-dolls","brunette-
   expect(list.itemListElement.map((i:{url:string})=>i.url)).toEqual(cards.map(c=>`https://dollwow.com${c.querySelector('a[href^="/products/"]')!.getAttribute("href")}`));
   await writeFile(`data/exports/dol-229-2026-10-30/${collection}-filter-removal-source-proof.json`,JSON.stringify({at:new Date().toISOString(),path,href,remainingCards:cards.length,noindex:true,canonicalPreserved:true,itemListMatches:true},null,2));
 },120000);
+
+it.skipIf(process.env.DOL229_FILTER_HTML !== "1")("checks private Erovenus brand removal in actual built HTML",async()=>{
+  const basePath="/brands/erovenus-dolls",path=`${basePath}?material=silicone&sort=price-asc&page=2`;
+  const first=await fetch(`http://localhost:3019${path}`);expect(first.status).toBe(200);
+  const root=parse(await first.text()),nav=root.querySelector('nav[aria-label="Active filters"]')!;
+  const href=nav.querySelector('a[aria-label="Remove Full silicone filter"]')!.getAttribute("href")!;
+  expect(href).toBe(`${basePath}?sort=price-asc#brand-products`);
+  expect(nav.querySelector('a[aria-label*="Erovenus"]')).toBeNull();
+  const next=await fetch(`http://localhost:3019${href}`);expect(next.status).toBe(200);
+  const after=parse(await next.text()),cards=after.querySelectorAll(".catalog-product-card");
+  expect(after.querySelector("#brand-products")).toBeTruthy();
+  expect(after.querySelector('link[rel="canonical"]')!.getAttribute("href")).toBe(`https://dollwow.com${basePath}`);
+  expect(after.querySelector('meta[name="robots"]')!.getAttribute("content")).toBe("noindex, nofollow");
+  const schema=after.querySelectorAll('script[type="application/ld+json"]').map(s=>JSON.parse(s.textContent)).find(s=>s["@type"]==="CollectionPage");
+  expect(schema.mainEntity.itemListElement.map((i:{url:string})=>i.url)).toEqual(cards.map(c=>`https://dollwow.com${c.querySelector('a[href^="/products/"]')!.getAttribute("href")}`));
+  const lastHref=after.querySelector('nav[aria-label="Active filters"] a')!.getAttribute("href")!;
+  const last=await fetch(`http://localhost:3019${lastHref}`),lastRoot=parse(await last.text());
+  expect(last.status).toBe(200);expect(lastRoot.querySelectorAll('nav[aria-label="Active filters"] a')).toHaveLength(0);
+  expect(lastRoot.querySelector('nav[aria-label="Active filters"]')!.text).toBe("Erovenus");
+},120000);

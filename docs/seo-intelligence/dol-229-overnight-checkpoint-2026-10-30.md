@@ -1,5 +1,22 @@
 # DOL-229: Overnight Batch C Revision
 
+## Latest Private Erovenus Filter Removal30Oct14:48
+
+Same PR161/runtimec58b1d0f; read dol-229-erovenus-filter-removal-2026-10-30.md
+and latestErovenusFilterRemoval in private checkpoint first. Exact READY preview
+dtexqwnv4/dpl_6686DVhKwH9q8mGKT7JboyzckoPU. New brand-products anchor is opt-in;
+fixed Erovenus brand cannot be removed. LOCAL3 and cleanHOSTED3 actual1319/390/320
+keyboard material removal clears page2/retains sort,36cards+weights/exactItemList/
+nooverflow/44px/noindex/canonical. Genuine page2 range37-72of123, not SEOgrowth.
+Final320sort removal leaves brand only. Initial hosted screenshot hit optional
+Halloween modal, not visualpass; normalClose then repeated clean3cases/zero
+dialogs. Clean320excerpt visually inspected/no screenshotfileclaim.43focused/
+TSC/lint/configuredlocal+remotebuilds/two4950gatesEACH+actualbuiltHTML pass.
+Restart14:41 start5cfda2f4; no229implementation10:46to14:41. DOL284five-market
+plainlistpreview separatelyposted14:38and9827d823,awaitexactyes; screenshots
+no longer block its submission. Whole229InProgress/notlive/notfullacceptance.
+Existing holds remain; don'trestartcompletedC-KMoonvale or redeployunchanged.
+
 ## Latest Private Brunette Filter Removal30Oct10:44
 
 Same PR161/branch/worktree, runtime2b6d9a52; exact READY targetpreviewrcpp14ns9 /
