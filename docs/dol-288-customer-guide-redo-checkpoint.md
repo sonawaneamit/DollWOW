@@ -3,9 +3,9 @@
 ## State
 
 In Progress. This is a new implementation, not a repair or merge of rejected
-PR213. It is not a finished all-brand guide, not hosted for acceptance, and not
-live. Do not move it to In Review until the remaining content and hosted checks
-below are complete.
+PR213. A nine-brand supported private preview is hosted and verified, but wider
+all-brand evidence and SEO release acceptance remain unfinished. It is NOT live.
+Do not claim the complete market brief is accepted from this partial milestone.
 
 - Worktree: `/Volumes/Extreme Pro/Projects/DollWOW-dol288-guide`
 - Branch: `codex/dol288-customer-guide-redo`
@@ -15,7 +15,38 @@ below are complete.
 - Requires `DOL288_GUIDE_REDO=1`; explicitly rejects production even with flag.
 - No production setting, publication, Shopify write, cart, order or email.
 
-## Latest Supported Coverage Pass: 30 October
+## Latest Exact Hosted Proof: 30 October
+
+- Runtime source `94a47542bc840a1139b8bdaf6743ca7a2b5619b3`; same draft PR231.
+- READY private deployment `dpl_4h4YxCoVNz7kmWw1BXJ37o4TxCVp`:
+  `https://doll-metwrjenz-sonawaneamits-projects.vercel.app/review/oral-features`.
+  Independently inspected preview target/Node22.x. Flag enabled only on this
+  deployment; no production/project environment change.
+- Actual hosted1319/390/320: all SEVEN exact current published cards, their
+  itemized prices/real live links, nine source-supported sections, five useful
+  rows. All seven original photos independently decoded after loading (640x960,
+  Emma639x960, Chiku625x960). No document/card overflow, noindex/nofollow.
+- Native FAQ expanded and visible FAQ/schema equality checked. Mobile table is
+  bounded348/278px with640px content; actual keyboard horizontal scroll40px.
+  Existing manual video decoded961x452, played14.6s, duration39.34s,350px mobile
+  width and was paused before closing. No fake powered demo or gallery.
+-31focused tests pass/4live tests skip normally; final built PREVIEW-environment
+  sourceHTML test passes with seven real published cards. TSC/scoped lint/final
+  configured local build/remote Node22 build/two4950asset gates pass. Exact94a
+  owned-assets/Vercel/comments all independently green. Later docs/test-only
+  commit checks are separate. Viewport reset, all local servers stopped.
+- Initial d84 host below is superseded after a real QA-caught snapshot-precedence
+  bug, not counted as acceptance. No repeated deployment needed for unchanged
+  runtime. Proof JSON/screens/deployment inspection are retained privately.
+
+NEXT: resolve the remaining supported Jarliet exact construction / Yeloly powered
+module evidence using existing287 and retained snapshots, not unchanged access
+retries or inferred fit. Firefly remains a private-brand/public-SKU scope hold.
+Unsupported claims stay omitted per Dolly's brief; missing evidence is not
+absence. Final full-scope review/canonical/SEO-GEO release checks remain. Keep
+In Progress until that scope is honestly reconciled; no fourth active ticket.
+
+## Supported Coverage Pass: 30 October
 
 HOSTED QA CAUGHT A REAL SOURCE-PARITY BUG: first flagged d84 deployment
 `dpl_HNUom2NBM65ucYHbh2H69E7bzZix` (`doll-179ezjxdq`) built successfully on

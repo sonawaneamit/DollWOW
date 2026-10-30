@@ -14,7 +14,7 @@ describe.skipIf(process.env.DOL288_READ_ONLY_PREFLIGHT !== "1")("oral guide curr
   it("reads three exact public products without creating carts, orders or metadata", async () => {
     const records = [];
     for (const handle of handles) {
-      const product = await getProductByHandle(handle, { cache: "no-store", strict: true });
+      const product = await getProductByHandle(handle, { cache: "no-store", strict: true, publishedOnly: true });
       expect(product?.handle).toBe(handle);
       expect(product?.featuredImage?.url).toBeTruthy();
       const config = getCustomizationConfig(product!);
