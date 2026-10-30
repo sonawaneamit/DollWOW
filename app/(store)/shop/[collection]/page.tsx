@@ -17,6 +17,7 @@ import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
+import { CatalogSelectionSummary, batchCSelectionSummaryEnabled } from '@/components/CatalogSelectionSummary';
 
 export async function generateMetadata({
   params,
@@ -49,7 +50,8 @@ export default async function CollectionPage({
   const preset = collectionPresets[collection];
   if (!preset) notFound();
   const filters = compactFilters({ ...preset.filters, ...paramsFilters });
-  const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled' });
+  const showSelectionSummary = batchCSelectionSummaryEnabled(`/shop/${canonicalCollection}`);
+  const products = await getSeoCatalogProducts({ first: 5000, includeDollVueEligibility: filters.dollVue === 'enabled', strict: showSelectionSummary });
   const collectionProducts = collection === "silicone" ? products.filter(product => !isStandaloneHeadCatalogProduct(product)) : products;
   const filteredProducts = filterProducts(collectionProducts, filters);
   const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
@@ -78,6 +80,7 @@ export default async function CollectionPage({
           <p className="text-sm  text-gold-300">Collection</p>
           <h1 className="collection-hero__title mt-2 text-4xl font-semibold capitalize text-ivory-50">{preset.title}</h1>
           <MobileHeroIntro>{collectionIntro(preset, collection)}</MobileHeroIntro>
+          {showSelectionSummary ? <CatalogSelectionSummary products={catalogPage.items} /> : null}
           <p className="mt-3 text-sm font-semibold text-gold-200">{filtered.length} dolls · showing {catalogPage.startItem}–{catalogPage.endItem}</p>
         </div>
       </div>

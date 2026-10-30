@@ -16,6 +16,7 @@ import { CollectionDisclosure } from "@/components/CollectionDisclosure";
 import { GuideLinkRow } from "@/components/GuideLinkRow";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
+import { CatalogSelectionSummary, batchCSelectionSummaryEnabled } from '@/components/CatalogSelectionSummary';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -45,11 +46,13 @@ export default async function BrandHubPage({
 
   const requestedFilters = filtersFromSearchParams(rawSearchParams);
   const filters = compactFilters({ ...requestedFilters, brand: brand.value });
+  const showSelectionSummary = batchCSelectionSummaryEnabled(`/brands/${brand.collectionHandle}`);
   const products = await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
     cacheKey: `${brand.value}-release-order-v1`,
-    cache: "no-store"
+    cache: "no-store",
+    strict: showSelectionSummary
   });
   const filtered = filterProducts(products, filters);
   const orderedProducts = !filters.sort || filters.sort === "latest" ? orderBySourceRelease(filtered) : filtered;
@@ -108,9 +111,10 @@ export default async function BrandHubPage({
 
       <div className="shop-visual-hero brand-hero">
         <div>
-          <p className="text-sm  text-gold-300">Brand hub</p>
+          {!showSelectionSummary ? <p className="text-sm  text-gold-300">Brand hub</p> : null}
           <h1 className="brand-hero__title mt-2 text-4xl font-semibold text-ivory-50">{brandHubTitle(brand)}</h1>
           <MobileHeroIntro>{profile.intro}</MobileHeroIntro>
+          {showSelectionSummary ? <CatalogSelectionSummary products={catalogPage.items} /> : null}
           <p className="mt-3 text-sm font-semibold text-gold-200">
             Current {["erovenus", "climax"].includes(brand.value) ? "DollWOW" : "DollWow"} collection
             {compactBrowsing && authorization ? <Link href="#brand-authorization-heading" className="ml-3 inline-block whitespace-nowrap underline underline-offset-4">Seller authorization</Link> : null}

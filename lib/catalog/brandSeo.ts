@@ -689,6 +689,7 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
     ]
   },
   climax: {
+    "metaTitle": "Climax Doll: TPE, Silicone & Hybrid Models",
     "positioning": "Climax Doll, also called CLM, offers full dolls, mini dolls, torsos and smaller designs in TPE and silicone.",
     "intro": "Explore Climax Doll, also called CLM, at DollWOW. Browse full dolls, mini dolls, torsos and smaller designs in TPE and silicone. Compare the photos, measurements and listed weight to choose the size and shape you want.",
     "metaDescription": "Explore CLM and Climax Doll full dolls, mini dolls and torsos in TPE and silicone. Compare measurements, listed weights, prices and available choices.",
@@ -710,6 +711,10 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       {
         "question": "Is CLM the same as Climax Doll?",
         "answer": "Yes. The manufacturer uses both CLM and Climax Doll. DollWOW groups its current listings in this brand collection."
+      },
+      {
+        "question": "What are Classic, Pro, Ultra and ULW?",
+        "answer": "These are Climax Doll series names, not a single quality ranking. Compare the exact head and body materials, body areas included and listed weight. ULW identifies selected lightweight models, not every Climax doll."
       },
       {
         "question": "What types of Climax dolls can I find?",
@@ -834,6 +839,10 @@ const brandProfiles: Record<string, Partial<BrandSeoProfile>> = {
       {
         "question": "Are all Erovenus products full-body dolls?",
         "answer": "No. You can find hips, compact designs and larger torsos. Check the photos and measurements to see what each model includes."
+      },
+      {
+        "question": "Does every Erovenus head have the same mouth features?",
+        "answer": "No. Check the exact head and the functions listed for your chosen doll. A mouth feature or hair choice shown on another model is not automatically included."
       },
       {
         "question": "How should I clean an Erovenus silicone doll?",
