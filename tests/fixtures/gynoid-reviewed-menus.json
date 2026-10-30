@@ -1,0 +1,1421 @@
+{
+  "source": "Retained reviewed 28 Oct menus on PR199; source fixture only, not current publication/availability evidence.",
+  "groups": {
+    "group0": {
+      "id": "head",
+      "label": "Head",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-change",
+          "label": "As shown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "elsa",
+          "label": "Elsa",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/08534d37ee6df9c6f2cdc81a3fb20d64c8f206bfe07a334d5099966d355ebe18.webp",
+            "label": "Elsa"
+          }
+        },
+        {
+          "id": "gina",
+          "label": "Gina",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/5aeabc60e62bd636ccd7d3b2c04b43011fbef74728c934564ba6b7cf7dd2d922.webp",
+            "label": "Gina"
+          }
+        },
+        {
+          "id": "ji-xiang-eye-closed",
+          "label": "Ji Xiang Eye-closed",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/af8273c2effa7217b63c1d300bd73173ae7efb9407ef333a6130996d7b0c0bd9.webp",
+            "label": "Ji Xiang Eye-closed"
+          }
+        },
+        {
+          "id": "ji-xiang",
+          "label": "Ji Xiang",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/0e0e124d35aa2f017883272ab5d1ece7b8e44fabfe4bbd1c5a7d4759dcd2bb46.webp",
+            "label": "Ji Xiang"
+          }
+        },
+        {
+          "id": "joey",
+          "label": "Joey",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/0d0460c66344bc126e50704efbcb0131b4c425755461f93d41f396fd0164d378.webp",
+            "label": "Joey"
+          }
+        },
+        {
+          "id": "laura",
+          "label": "Laura",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/5aaa8375f921ef98f01af1b1170e6076e5a7a4ed386473756a16e90e35f1a529.webp",
+            "label": "Laura"
+          }
+        },
+        {
+          "id": "li-hui",
+          "label": "Li Hui",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/c25208042095f416e3de5ccd51e1bfaa14dd9ca9ce101e91cfe3eefbddf73bcd.webp",
+            "label": "Li Hui"
+          }
+        },
+        {
+          "id": "lisa",
+          "label": "Lisa",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/4757a8723e007103b4e2df697e087cc7aa0f0ce5d73314ffeb133669f35b46d0.webp",
+            "label": "Lisa"
+          }
+        },
+        {
+          "id": "wan-ying",
+          "label": "Wan Ying",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/92a8cf20bf9444581b4cbd2f567ecdbd10b117e3a7524d5b7b303cd181727fd6.webp",
+            "label": "Wan Ying"
+          }
+        }
+      ]
+    },
+    "group1": {
+      "id": "head-type",
+      "label": "Head Type",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "hard-silicone",
+          "label": "Hard Silicone",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/cef6be40fdee767858672702b01df85c7742cbf057832509a670924a2d0a13ea.webp",
+            "label": "Hard Silicone"
+          },
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "soft-silicone-head-free",
+          "label": "Soft Silicone Head (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/ffcea4ae88d4765e142f33178ab03cbac44526b9cc9abde645bda5604f7fe61e.webp",
+            "label": "Soft Silicone Head (FREE)"
+          },
+          "productionNote": "No oral function. Makeup is less durable than on the hard head."
+        },
+        {
+          "id": "movable-jaw-free",
+          "label": "Movable Jaw (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/5adc239bc5ea04a0cfde54f3ad05ae9ccd297c4cc4ef91201ca1fe7d0b9cb1b5.webp",
+            "label": "Movable Jaw (FREE)"
+          }
+        }
+      ]
+    },
+    "group2": {
+      "id": "skin-tone",
+      "label": "Skin Tone",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-change",
+          "label": "As shown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "no-1",
+          "label": "No.1",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/7f479835862e67c702b94c039996cc58b3d499e8718017c36682aaa6b6df2aa8.webp",
+            "label": "No.1"
+          }
+        },
+        {
+          "id": "no-2",
+          "label": "No.2",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/991a8848ff671cd37ce2ee645d4e3b9a68a8b55c0a444b7e85d3a393c377e0c1.webp",
+            "label": "No.2"
+          }
+        },
+        {
+          "id": "no-3",
+          "label": "No.3",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/4f6f36e61d705ef3dd1444413d00646f8d4c1e319781cea2c5c3cd87c3052ea5.webp",
+            "label": "No.3"
+          }
+        },
+        {
+          "id": "no-4",
+          "label": "No.4",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/a3c6bbdbb7ad7c6eb9fae08135e880f8943c42d347065b54e148372c09715949.webp",
+            "label": "No.4"
+          }
+        },
+        {
+          "id": "no-5",
+          "label": "No.5",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/7507c2fed561121135fba2e99313d9b6d9b4031ce3ef7557f0436f3ec4f3ad4b.webp",
+            "label": "No.5"
+          }
+        }
+      ]
+    },
+    "group3": {
+      "id": "hairstyle",
+      "label": "Hairstyle",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-change",
+          "label": "As shown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "no-1",
+          "label": "No.1",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/6e354f1f10639155f8e208c71727ee0361247d67c7589516c759641de2d7fea3.webp",
+            "label": "No.1"
+          }
+        },
+        {
+          "id": "no-2",
+          "label": "No.2",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/694dbeab0f3424a10c77cd2925d55302fb6a5fea278688d287d64d587cabce16.webp",
+            "label": "No.2"
+          }
+        },
+        {
+          "id": "no-3",
+          "label": "No.3",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/a26e3e5137c20df02132c43db3dccfb20071479a3d793f2fb5dfd3d2e2267e74.webp",
+            "label": "No.3"
+          }
+        },
+        {
+          "id": "no-4",
+          "label": "No.4",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2408c43a45e1b2a99a9f5b0b781febdc10c506081104986453614ee4bac3d320.webp",
+            "label": "No.4"
+          }
+        },
+        {
+          "id": "no-5",
+          "label": "No.5",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/0d9aaaaee43ff7001d3b06fd624264abd33c8b3554a4d2e87b0cfbb606672bd6.webp",
+            "label": "No.5"
+          }
+        },
+        {
+          "id": "no-6",
+          "label": "No.6",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/24f5443be877790d05d123f63db16c0ef7e8019ee3b821e4d5ec38919159606c.webp",
+            "label": "No.6"
+          }
+        },
+        {
+          "id": "no-7",
+          "label": "No.7",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/e20cbc8405fadb5562ae5f2c6dcc316cbff7c9cc4c619dcbddcc50f03d77b498.webp",
+            "label": "No.7"
+          }
+        },
+        {
+          "id": "no-8",
+          "label": "No.8",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/43c4c989c986a68ce49c2a7150440b30a109881fd42e73f3692663790f9d1667.webp",
+            "label": "No.8"
+          }
+        },
+        {
+          "id": "no-9",
+          "label": "No.9",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/b72091997bc64601f204c0d52ffd3303db111ca2465ea2ce6ddb505a75e1ad78.webp",
+            "label": "No.9"
+          }
+        },
+        {
+          "id": "no-10",
+          "label": "No.10",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/9244a62f6a02e41e34c06b6b91d21735d491ba2a76e8d9fa133e392618a49fd7.webp",
+            "label": "No.10"
+          }
+        },
+        {
+          "id": "no-11",
+          "label": "No.11",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2c992cc0ccc3f9e5b7d35ddeb0d4092b53e972af6faec0f78c72acfe5d215434.webp",
+            "label": "No.11"
+          }
+        },
+        {
+          "id": "no-12",
+          "label": "No.12",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/bbce7661850a8090ae39b70141067eacd1fba42a370eaa500fc3ee41099550d3.webp",
+            "label": "No.12"
+          }
+        }
+      ]
+    },
+    "group4": {
+      "id": "eye-color",
+      "label": "Eye Color",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-change",
+          "label": "As shown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "brown",
+          "label": "Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2cea7a5a791ebf052c4c53b6d4dc95cfdc3ae7be65ad0a924dcab8f7127ead8a.webp",
+            "label": "Brown"
+          }
+        },
+        {
+          "id": "red-brown",
+          "label": "Red Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/b5061d6cacd8216a17d0c372e2daccdcf8fd1258546f0cbdc29314eecef8dce9.webp",
+            "label": "Red Brown"
+          }
+        },
+        {
+          "id": "purple",
+          "label": "Purple",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2dd96ea3234bbaa37612cb0ba5d138b4962f7235cc0624fc075f1a00217ee2d5.webp",
+            "label": "Purple"
+          }
+        },
+        {
+          "id": "blue",
+          "label": "Blue",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/e308c001ba1cd74b8125d7f38fa02ec487fcece1cc836d9a951dbfa27e808c7e.webp",
+            "label": "Blue"
+          }
+        },
+        {
+          "id": "gray",
+          "label": "Gray",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/a9b0bac880bb66cc15aafb1f47cfcc78d0bfd5242e7e6fd1db99b6d9f5987ba5.webp",
+            "label": "Gray"
+          }
+        },
+        {
+          "id": "bionic-brown",
+          "label": "Bionic Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/40c59732b8d0c4a447a17a83ba9627b77d2b9a913455683568954fad275fffe9.webp",
+            "label": "Bionic Brown"
+          }
+        },
+        {
+          "id": "bionic-blue",
+          "label": "Bionic Blue",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/3b44d19df27707cc4bd79f585534322253107401fa14bbed1ce01a03e5bf7481.webp",
+            "label": "Bionic Blue"
+          }
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "head",
+            "optionId": "elsa"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "gina"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "ji-xiang"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "joey"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "laura"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "li-hui"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "lisa"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "wan-ying"
+          }
+        ]
+      ]
+    },
+    "group5": {
+      "id": "vagina",
+      "label": "Vagina",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "fixed",
+          "label": "Fixed",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/26d723b156faf021d24a3ff96df9bffcdf196cbc843b6423ad28964664a9b9a7.webp",
+            "label": "Fixed"
+          },
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "removable-free",
+          "label": "Removable (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/fc20b9cf14f1f2b65c8c2a3268204c0469cb6b47831d8f804fb3047e2d0da725.webp",
+            "label": "Removable (FREE)"
+          }
+        }
+      ]
+    },
+    "group6": {
+      "id": "vagina-hair-type",
+      "label": "Vagina Hair Type",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "none",
+          "label": "None",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "pubic-hair-free",
+          "label": "Pubic Hair (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/f091791d97ba522e6abff0394667f31c84db641fd2a88f30c8d45758cb9049e2.webp",
+            "label": "Pubic Hair (FREE)"
+          }
+        }
+      ]
+    },
+    "group7": {
+      "id": "vagina-texture",
+      "label": "Vagina Texture",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "default",
+          "label": "Default",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "m10-12cm",
+          "label": "M10=12cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/6138982a0d1fdce0b07677401aaf7428065e6ed428c7e82e1fbef2f421f78b80.webp",
+            "label": "M10=12cm"
+          }
+        },
+        {
+          "id": "m11-12cm",
+          "label": "M11=12cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/61c956f8bf56cad4c06cff3a1bab106af788348fa6d668c3463dca7efcb09bac.webp",
+            "label": "M11=12cm"
+          }
+        },
+        {
+          "id": "m12-11cm",
+          "label": "M12=11cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/068b120a14ee552fe79e5f7b1094b5039bcdb54c536797a6e22d43f2b2e835ce.webp",
+            "label": "M12=11cm"
+          }
+        },
+        {
+          "id": "m13-12cm",
+          "label": "M13=12cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/3e3cbc58f315c1952d96158c22c074b174342d5afaf5a40b2a6b7c5874d8e5e9.webp",
+            "label": "M13=12cm"
+          }
+        },
+        {
+          "id": "m14-11cm",
+          "label": "M14=11cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/d149f1e0a3791a6791e98da51404be6c8c59db1b1f49c73d1fe4e338b5257231.webp",
+            "label": "M14=11cm"
+          }
+        },
+        {
+          "id": "m15-13cm",
+          "label": "M15=13cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/0a05d06cc0d60578f43ee730138756d0d3a52d874409b1a6d256d1a07a02485c.webp",
+            "label": "M15=13cm"
+          }
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "vagina",
+            "optionId": "fixed"
+          }
+        ]
+      ]
+    },
+    "group8": {
+      "id": "vagina-depth",
+      "label": "Vagina Depth",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "10cm",
+          "label": "10cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/06bd3a280a7563069dc1f6887fd5403f8ee639803047b72d0f0f6a3e941a58a9.webp",
+            "label": "10cm"
+          }
+        },
+        {
+          "id": "13cm",
+          "label": "13cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/fcb401318bb07619b210fbc7b6b0425e46a30d953a12d28dac54e40b99eecb9e.webp",
+            "label": "13cm"
+          }
+        },
+        {
+          "id": "15cm",
+          "label": "15cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/0396a0c15236d6a9c7bbc3e31cee4206c6fce770e571c52882c22cb8e05b6a2a.webp",
+            "label": "15cm"
+          }
+        },
+        {
+          "id": "18cm",
+          "label": "18cm",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/ff2b1a7e5f30a8694a1f8e6ed30b93244937286fe669aaded220b2d8448efb0d.webp",
+            "label": "18cm"
+          }
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "vagina",
+            "optionId": "fixed"
+          },
+          {
+            "groupId": "vagina-texture",
+            "optionId": "default"
+          }
+        ]
+      ]
+    },
+    "group9": {
+      "id": "joint",
+      "label": "Joint",
+      "required": true,
+      "selectionMode": "single",
+      "display": "cards",
+      "options": [
+        {
+          "id": "standard-ideal-for-posing",
+          "label": "Standard: Ideal For Posing",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "loose-joint-ideal-for-physical-contact",
+          "label": "Loose Joint: Ideal For Physical Contact",
+          "priceDelta": 0,
+          "priceVerified": true
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "vagina",
+            "optionId": "fixed"
+          },
+          {
+            "groupId": "vagina-texture",
+            "optionId": "default"
+          }
+        ]
+      ]
+    },
+    "group10": {
+      "id": "standing-add-on",
+      "label": "Standing Add-On",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "standing-without-bolts-free",
+          "label": "Standing Without Bolts (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2fdfc10e6815c0b19566e0969205c4f13bbeb012164b38cd427c145acb7b7773.webp",
+            "label": "Standing Without Bolts (FREE)"
+          },
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "hard-standing-feet-without-bolts-free",
+          "label": "Hard Standing Feet Without Bolts (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2fdfc10e6815c0b19566e0969205c4f13bbeb012164b38cd427c145acb7b7773.webp",
+            "label": "Hard Standing Feet Without Bolts (FREE)"
+          }
+        },
+        {
+          "id": "standing-with-bolts-free",
+          "label": "Standing With Bolts (FREE)",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/cac6584e55e52df0bfde597149c7a5fe4dada5b4a9fa3e855944113f436ad502.webp",
+            "label": "Standing With Bolts (FREE)"
+          }
+        }
+      ]
+    },
+    "group11": {
+      "id": "premium-head-body-options-multiple",
+      "label": "Premium Head & Body Options (Multiple)",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "implanted-synthetic-hair",
+          "label": "Implanted Synthetic Hair",
+          "priceDelta": 599,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/c4da77f29b27349db365e161a7335934be2fe71fb221c0d5ac8d699db2d7612d.webp",
+            "label": "Implanted Synthetic Hair"
+          }
+        },
+        {
+          "id": "bionic-breast",
+          "label": "Bionic Breast",
+          "priceDelta": 150,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/5f5c57ad5b5e5ac1af6388317ad81889cce9af986ccc167635c8d2e21348acd9.webp",
+            "label": "Bionic Breast"
+          }
+        },
+        {
+          "id": "full-body-extra-softness-including-butts",
+          "label": "Full Body Extra Softness Including Butts",
+          "priceDelta": 100,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2b1e1293417e7648af3c471c2a2ec966ddcbd9f8d3dd543f5bc6724a40a6d8a9.webp",
+            "label": "Full Body Extra Softness Including Butts"
+          },
+          "productionNote": "Adds approximately 4-6 kg. Support the buttocks with pillows during storage."
+        },
+        {
+          "id": "full-body-extra-softness-excluding-butts",
+          "label": "Full Body Extra Softness Excluding Butts",
+          "priceDelta": 100,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2b1e1293417e7648af3c471c2a2ec966ddcbd9f8d3dd543f5bc6724a40a6d8a9.webp",
+            "label": "Full Body Extra Softness Excluding Butts"
+          }
+        }
+      ]
+    },
+    "group12": {
+      "id": "implanted-hair-color",
+      "label": "Implanted Hair Color",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "black",
+          "label": "Black",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/26fbbf9fc255c1cf8b558bc876d239238d5814c4879e6c69bf7fe8a46939aa0f.webp",
+            "label": "Black"
+          }
+        },
+        {
+          "id": "brown",
+          "label": "Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/124b2692c4bd3b60809e40d59dfd2740a85168ddaf0b781277d625377a3cc79a.webp",
+            "label": "Brown"
+          }
+        },
+        {
+          "id": "yellow",
+          "label": "Yellow",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/b752dcefa24747047ef5a63579980734bfead61abb92b369f95925fdc1502623.webp",
+            "label": "Yellow"
+          }
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "implanted-synthetic-hair"
+          }
+        ]
+      ]
+    },
+    "group13": {
+      "id": "accessories",
+      "label": "Accessories",
+      "required": false,
+      "selectionMode": "multiple",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "vaginal-irrigator",
+          "label": "Vaginal Irrigator",
+          "priceDelta": 35,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+            "label": "Vaginal Irrigator"
+          }
+        },
+        {
+          "id": "reusable-drying-rod",
+          "label": "Reusable Drying Rod",
+          "priceDelta": 25,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+            "label": "Reusable Drying Rod"
+          }
+        },
+        {
+          "id": "sex-doll-body-hanging-bracket",
+          "label": "Sex Doll Body Hanging Bracket",
+          "priceDelta": 399,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+            "label": "Sex Doll Body Hanging Bracket"
+          }
+        },
+        {
+          "id": "head-stand-holder",
+          "label": "Head Stand Holder",
+          "priceDelta": 50,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+            "label": "Head Stand Holder"
+          }
+        },
+        {
+          "id": "heating-blanket",
+          "label": "Heating Blanket",
+          "priceDelta": 100,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/944372d3ba5f249df5051a8f53775a739cd149563f81febc55c188730f973b16.webp",
+            "label": "Heating Blanket"
+          }
+        },
+        {
+          "id": "belly-piercing",
+          "label": "Belly Piercing",
+          "priceDelta": 20,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+            "label": "Belly Piercing"
+          }
+        }
+      ]
+    },
+    "group14": {
+      "id": "eye-color",
+      "label": "Eye Color",
+      "required": true,
+      "selectionMode": "single",
+      "display": "swatches",
+      "options": [
+        {
+          "id": "no-change",
+          "label": "As shown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        },
+        {
+          "id": "brown",
+          "label": "Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2cea7a5a791ebf052c4c53b6d4dc95cfdc3ae7be65ad0a924dcab8f7127ead8a.webp",
+            "label": "Brown"
+          }
+        },
+        {
+          "id": "red-brown",
+          "label": "Red Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/b5061d6cacd8216a17d0c372e2daccdcf8fd1258546f0cbdc29314eecef8dce9.webp",
+            "label": "Red Brown"
+          }
+        },
+        {
+          "id": "purple",
+          "label": "Purple",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/2dd96ea3234bbaa37612cb0ba5d138b4962f7235cc0624fc075f1a00217ee2d5.webp",
+            "label": "Purple"
+          }
+        },
+        {
+          "id": "blue",
+          "label": "Blue",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/e308c001ba1cd74b8125d7f38fa02ec487fcece1cc836d9a951dbfa27e808c7e.webp",
+            "label": "Blue"
+          }
+        },
+        {
+          "id": "gray",
+          "label": "Gray",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/a9b0bac880bb66cc15aafb1f47cfcc78d0bfd5242e7e6fd1db99b6d9f5987ba5.webp",
+            "label": "Gray"
+          }
+        },
+        {
+          "id": "bionic-brown",
+          "label": "Bionic Brown",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/40c59732b8d0c4a447a17a83ba9627b77d2b9a913455683568954fad275fffe9.webp",
+            "label": "Bionic Brown"
+          }
+        },
+        {
+          "id": "bionic-blue",
+          "label": "Bionic Blue",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "swatch": {
+            "kind": "image",
+            "value": "/option-assets/3b44d19df27707cc4bd79f585534322253107401fa14bbed1ce01a03e5bf7481.webp",
+            "label": "Bionic Blue"
+          }
+        }
+      ],
+      "visibleWhen": [
+        [
+          {
+            "groupId": "head",
+            "optionId": "no-change"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "elsa"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "gina"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "ji-xiang"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "joey"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "laura"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "li-hui"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "lisa"
+          }
+        ],
+        [
+          {
+            "groupId": "head",
+            "optionId": "wan-ying"
+          }
+        ]
+      ]
+    },
+    "group15": {
+      "id": "body-version",
+      "label": "Body Version",
+      "required": true,
+      "selectionMode": "single",
+      "display": "cards",
+      "options": [
+        {
+          "id": "model-21",
+          "label": "Model 21",
+          "priceDelta": 0,
+          "priceVerified": true,
+          "sourceProductionNoteSignals": {
+            "defaultSupplierSelection": true
+          }
+        }
+      ]
+    }
+  },
+  "products": [
+    {
+      "productId": "gid://shopify/Product/10637906968760",
+      "handle": "gynoid-ji-xiang-eye-closed-162cm-silicone-companion-doll-model-11",
+      "tag": "options:gynoid-body-11-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group4",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637908443320",
+      "handle": "gynoid-wan-ying-165cm-silicone-companion-doll-model-16",
+      "tag": "options:gynoid-body-16-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637909885112",
+      "handle": "gynoid-lisa-scott-168cm-silicone-companion-doll-model-18",
+      "tag": "options:gynoid-body-18-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637911163064",
+      "handle": "gynoid-lisa-170cm-silicone-companion-doll-model-13",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637912375480",
+      "handle": "gynoid-jiayi-170cm-silicone-companion-doll-model-13",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637913784504",
+      "handle": "gynoid-meiniang-164cm-silicone-companion-doll-model-21",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "groupKeys": [
+        "group15",
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637915029688",
+      "handle": "gynoid-elsa-164cm-silicone-companion-doll-model-21",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "groupKeys": [
+        "group15",
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637916143800",
+      "handle": "gynoid-gina-164cm-silicone-companion-doll-model-21",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "groupKeys": [
+        "group15",
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637917487288",
+      "handle": "gynoid-sylvia-wright-170cm-silicone-companion-doll-model-13",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637918863544",
+      "handle": "gynoid-kelly-eveline-172cm-silicone-companion-doll-model-10",
+      "tag": "options:gynoid-body-10-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/10637919944888",
+      "handle": "gynoid-tanya-172cm-silicone-companion-doll-model-10",
+      "tag": "options:gynoid-body-10-mvp-v1",
+      "groupKeys": [
+        "group0",
+        "group1",
+        "group2",
+        "group3",
+        "group14",
+        "group5",
+        "group6",
+        "group7",
+        "group8",
+        "group9",
+        "group10",
+        "group11",
+        "group12",
+        "group13"
+      ]
+    }
+  ]
+}

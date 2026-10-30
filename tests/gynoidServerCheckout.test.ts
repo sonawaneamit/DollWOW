@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { sampleProducts } from '@/lib/data/sample-products';
 import { gynoidBodyVersionMappings } from '@/lib/catalog/gynoid-body-versions';
+import { gynoidProductFixture } from './fixtures/gynoid-product';
+import { getCustomizationConfig } from '@/lib/customization/configs';
+import { getDefaultSelections } from '@/lib/customization/resolve';
 
 const mocks = vi.hoisted(() => ({ lookup: vi.fn() }));
 vi.mock('@/lib/shopify/storefront', () => ({ getProductsByVariantIds: mocks.lookup }));
@@ -9,7 +11,7 @@ import { serverValidateAndRepriceLine, serverValidateAndRepriceLines } from '@/l
 const row = gynoidBodyVersionMappings[0];
 const deluxeId = row.deluxeVariantId;
 function fixture() {
-  return { ...structuredClone(sampleProducts[0]), id: row.productId, handle: row.handle,
+  return { ...gynoidProductFixture(3), id: row.productId, handle: row.handle,
     variants: [
       { id: row.standardVariantId, title: 'Standard', availableForSale: true,
         selectedOptions: [{ name: 'Body version', value: 'Standard' }], price: { amount: '5299', currencyCode: 'USD' } },
@@ -35,6 +37,22 @@ describe('Gynoid server checkout version binding', () => {
       { merchandiseId: row.standardVariantId, quantity: 1 }, { merchandiseId: deluxeId, quantity: 2 }
     ]);
     expect(results.map(r => r.attributes.find(a => a.key === 'Body version')?.value)).toEqual(['Standard', 'Deluxe']);
+  });
+  it('binds the hair color to the paid line and rejects held alternate heads server-side', async () => {
+    const defaults = getDefaultSelections(getCustomizationConfig(fixture()));
+    const result = await serverValidateAndRepriceLine({ merchandiseId: deluxeId, quantity: 1,
+      selections: { ...defaults, 'premium-head-body-options-multiple': ['implanted-synthetic-hair'], 'implanted-hair-color': 'brown' } });
+    expect(result.customizationCharge?.amount).toBe(599);
+    expect(result.customizationCharge?.items[0].dependencyDetails?.scope).toBe('gynoid-v1');
+    expect(result.namedUpgradeAttributes?.some(a => a.key.includes('Implanted hair color'))).toBe(false);
+    expect(result.namedUpgradeAttributes).toContainEqual({ key: 'Body version', value: 'Deluxe' });
+    await expect(serverValidateAndRepriceLine({ merchandiseId: deluxeId, quantity: 1,
+      selections: { ...defaults, head: 'elsa' } })).rejects.toThrow();
+  });
+  it('does not let missing menus bypass review through an uncustomized request', async () => {
+    const p = fixture(); p.extended.customizationGroups = undefined;
+    mocks.lookup.mockResolvedValue(new Map([[deluxeId, p]]));
+    await expect(serverValidateAndRepriceLine({ merchandiseId: deluxeId, quantity: 1 })).rejects.toThrow('configuration needs review');
   });
   it.each(['price', 'unavailable', 'unregistered'])('rejects an invalid %s even without structured selections', async failure => {
     const p = fixture();

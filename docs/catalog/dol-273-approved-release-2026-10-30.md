@@ -11,6 +11,62 @@ then the DOL315 ten-category preview, before further DOL229 work.
 Production runtime, complete configuration/preset and paid-charge bindings,
 discount exclusion, country/shipping checks and publication remain unfinished.
 
+## Latest Menu Integration
+
+30 Oct 15:52 UTC: read all eleven exact parents and ten existing upgrade variants
+without writes. All parents are still unpublished DRAFT, with thirteen total
+variants including the two registered Deluxe versions. The eight Gynoid-specific
+upgrade products remain DRAFT; the two shared accessories remain ACTIVE. All ten
+observed prices/titles match their retained mappings and require no shipping.
+All eleven customization metafield definitions are PUBLIC_READ, and effective
+menus equal the retained reviewed menus after owned-asset mapping.
+
+The clean runtime now preserves every reviewed fixed/conditional group and the
+two exact compatibility rule sets, scoped to eleven ID/handle pairs. It keeps
+alternate heads unavailable/unpriced instead of treating saved zero prices as
+free entitlements. Model 21's fixed supplier field is labelled Body model, distinct
+from the real Standard/Deluxe selector. All eleven photographed head identities
+and approved Standard variant IDs/USD prices are checked, including checkout
+requests without structured selections. Missing/drifted menus do not fall through
+to generic defaults.
+
+Retained Starter/Enthusiast/Collector recipes are prepared only as candidates;
+production template and named-upgrade registries remain unchanged. A private
+thirteen-parent-variant / ten-upgrade binding candidate is BLOCKED/unsigned:
+`data/exports/dol-273-approved-2026-10-30/named-upgrades-candidate-1552.json`.
+
+The Gynoid-only dependency plan attaches the free implanted-hair color to its
+verified $599 hair line. Removing that line removes its color, not independent
+free inclusions. Unknown, paid, multiple-owner and cyclic dependent details fail
+closed. The generic paid-group guard incorrectly flags the inactive hair branch
+when bionic breasts share its group; the scoped active-condition plan handles
+that case without weakening the guard for other brands. Existing IDO/MD planning
+is unchanged; the shared line renderer explicitly recognizes the new Gynoid scope.
+
+Actual read-only evidence: `menu-charge-read-1552/verified.json`, timestamp
+15:52:01.572 UTC. It includes 169 local server repricings: thirteen real variant
+bases times three tiers and ten paid options. A further 169 local checks of the
+final Standard/head guards use that saved Admin snapshot in `local-repricing-1555/`,
+not another merchant read or cart replay. Publication availability is explicitly
+simulated. These are not Storefront, actual cart, browser, discount, shipping or
+country acceptance. No Shopify mutation or staging occurred in this menu pass.
+
+New focused tests cover all eleven full menus, both Deluxe bases, head holds,
+compatibility, missing/drifted identity, dependent removal and legacy checkout
+regressions. The earlier 63-test milestone below is historical, not the final
+menu-pass count. Final scoped verification: 223 tests across sixteen files pass,
+including shared named-upgrade/order/template and promotion regressions;
+TypeScript and changed-module lint pass without errors/warnings. The configured
+local build, public promotion-data check and both 4,950-asset gates pass. Existing
+visual-index/DollVue static-render diagnostics remain, not an all-repository claim.
+No remote deploy, browser/canvas inspection or production acceptance is claimed.
+No brand/media/source hold, settings, order or email changed.
+
+Next: current-source private integration of PDP/version qualifications, brand and
+certificate, then complete paid-charge/discount/country/shipping actual QA and
+evidence signing before authorized publication. Do not replay the two variant
+registrations, ask again for approval, or resume DOL229 ahead of this release.
+
 ## Clean Integration
 
 Use `/Volumes/Extreme Pro/Projects/DollWOW-dol273-gynoid`, branch
@@ -117,3 +173,9 @@ in fresh A5:L6, numeric dates to eight decimals; approved four named permissions
 hash and Limited parent unchanged; fresh 1000x26 bounds, DATE_TIME format,
 top/wrap/no formulas and accepted delivery state healthy. No sheet write or PII
 output. Refresh next run, not again this run.
+
+Latest private305 check for the menu pass: 15:43:57.177 UTC, fresh two-row export
+equals all twelve A5:L6 cells to eight-decimal numeric dates. Four approved named
+permissions hash, Limited parent, fresh 1000x26 bounds, date format, top/wrap and
+no-formula/accepted state remain healthy. No sheet write or PII output; do not
+repeat this check within the same run.

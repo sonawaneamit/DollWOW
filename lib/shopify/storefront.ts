@@ -602,6 +602,7 @@ type CheckoutVariantNode = Product["variants"][number] & {
     tags: string[];
     featuredImage: Product["featuredImage"];
     displayName?: MetafieldValue;
+    headModel?: MetafieldValue;
     bodyType?: MetafieldValue;
     brand?: MetafieldValue;
     sourceTitle?: MetafieldValue;
@@ -629,6 +630,7 @@ const checkoutVariantFields = `
     tags
     featuredImage { url altText width height }
     displayName: metafield(namespace: "custom", key: "display_name") { value }
+    headModel: metafield(namespace: "custom", key: "head_model") { value }
     bodyType: metafield(namespace: "custom", key: "body_type") { value }
     brand: metafield(namespace: "custom", key: "brand") { value }
     sourceTitle: metafield(namespace: "custom", key: "source_title") { value }
@@ -714,6 +716,7 @@ function mapCheckoutVariantProduct(node: CheckoutVariantNode): Product {
   return mapShopifyProduct({
     ...product,
     displayName: product.displayName ?? undefined,
+    headModel: product.headModel ?? undefined,
     bodyType: product.bodyType ?? undefined,
     brand: product.brand ?? undefined,
     sourceTitle: product.sourceTitle ?? undefined,

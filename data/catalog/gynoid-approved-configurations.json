@@ -1,0 +1,396 @@
+{
+  "products": [
+    {
+      "productId": "gid://shopify/Product/10637906968760",
+      "handle": "gynoid-ji-xiang-eye-closed-162cm-silicone-companion-doll-model-11",
+      "headModel": "Ji Xiang Eye-closed",
+      "tag": "options:gynoid-body-11-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252184436920",
+      "standardUSD": 4799
+    },
+    {
+      "productId": "gid://shopify/Product/10637908443320",
+      "handle": "gynoid-wan-ying-165cm-silicone-companion-doll-model-16",
+      "headModel": "Wan Ying",
+      "tag": "options:gynoid-body-16-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252185944248",
+      "standardUSD": 4799
+    },
+    {
+      "productId": "gid://shopify/Product/10637909885112",
+      "handle": "gynoid-lisa-scott-168cm-silicone-companion-doll-model-18",
+      "headModel": "Lisa Scott",
+      "tag": "options:gynoid-body-18-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252187451576",
+      "standardUSD": 4999
+    },
+    {
+      "productId": "gid://shopify/Product/10637911163064",
+      "handle": "gynoid-lisa-170cm-silicone-companion-doll-model-13",
+      "headModel": "Lisa",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252188663992",
+      "standardUSD": 5299
+    },
+    {
+      "productId": "gid://shopify/Product/10637912375480",
+      "handle": "gynoid-jiayi-170cm-silicone-companion-doll-model-13",
+      "headModel": "Jiayi",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252189909176",
+      "standardUSD": 5299
+    },
+    {
+      "productId": "gid://shopify/Product/10637913784504",
+      "handle": "gynoid-meiniang-164cm-silicone-companion-doll-model-21",
+      "headModel": "Meiniang",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252191252664",
+      "standardUSD": 4799
+    },
+    {
+      "productId": "gid://shopify/Product/10637915029688",
+      "handle": "gynoid-elsa-164cm-silicone-companion-doll-model-21",
+      "headModel": "Elsa",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "ruleSet": "movableJaw",
+      "standardVariantId": "gid://shopify/ProductVariant/54252192497848",
+      "standardUSD": 4799
+    },
+    {
+      "productId": "gid://shopify/Product/10637916143800",
+      "handle": "gynoid-gina-164cm-silicone-companion-doll-model-21",
+      "headModel": "Gina",
+      "tag": "options:gynoid-body-21-mvp-v1",
+      "ruleSet": "movableJaw",
+      "standardVariantId": "gid://shopify/ProductVariant/54252193677496",
+      "standardUSD": 4799
+    },
+    {
+      "productId": "gid://shopify/Product/10637917487288",
+      "handle": "gynoid-sylvia-wright-170cm-silicone-companion-doll-model-13",
+      "headModel": "Sylvia Wright",
+      "tag": "options:gynoid-body-13-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252194988216",
+      "standardUSD": 5299
+    },
+    {
+      "productId": "gid://shopify/Product/10637918863544",
+      "handle": "gynoid-kelly-eveline-172cm-silicone-companion-doll-model-10",
+      "headModel": "Kelly Eveline",
+      "tag": "options:gynoid-body-10-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252196331704",
+      "standardUSD": 5299
+    },
+    {
+      "productId": "gid://shopify/Product/10637919944888",
+      "handle": "gynoid-tanya-172cm-silicone-companion-doll-model-10",
+      "headModel": "Tanya",
+      "tag": "options:gynoid-body-10-mvp-v1",
+      "ruleSet": "standard",
+      "standardVariantId": "gid://shopify/ProductVariant/54252197511352",
+      "standardUSD": 5299
+    }
+  ],
+  "rules": {
+    "standard": [
+      {
+        "id": "gynoid-exclusive-softness",
+        "type": "incompatible",
+        "when": {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-including-butts"
+        },
+        "conflictsWith": {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-excluding-butts"
+        },
+        "message": "Choose one body-softness construction."
+      },
+      {
+        "id": "gynoid-jaw-head-no-change",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "no-change"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-ji-xiang-eye-closed",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "ji-xiang-eye-closed"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-laura",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "laura"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-li-hui",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "li-hui"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-lisa",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "lisa"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-wan-ying",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "wan-ying"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-loose-joint-standing-without-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "standing-without-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      },
+      {
+        "id": "gynoid-loose-joint-hard-standing-feet-without-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "hard-standing-feet-without-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      },
+      {
+        "id": "gynoid-loose-joint-standing-with-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "standing-with-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      }
+    ],
+    "movableJaw": [
+      {
+        "id": "gynoid-exclusive-softness",
+        "type": "incompatible",
+        "when": {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-including-butts"
+        },
+        "conflictsWith": {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-excluding-butts"
+        },
+        "message": "Choose one body-softness construction."
+      },
+      {
+        "id": "gynoid-jaw-head-ji-xiang-eye-closed",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "ji-xiang-eye-closed"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-laura",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "laura"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-li-hui",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "li-hui"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-lisa",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "lisa"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-jaw-head-wan-ying",
+        "type": "incompatible",
+        "when": {
+          "groupId": "head-type",
+          "optionId": "movable-jaw-free"
+        },
+        "conflictsWith": {
+          "groupId": "head",
+          "optionId": "wan-ying"
+        },
+        "message": "Movable-jaw construction is not available for this head."
+      },
+      {
+        "id": "gynoid-loose-joint-standing-without-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "standing-without-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      },
+      {
+        "id": "gynoid-loose-joint-hard-standing-feet-without-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "hard-standing-feet-without-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      },
+      {
+        "id": "gynoid-loose-joint-standing-with-bolts-free",
+        "type": "incompatible",
+        "when": {
+          "groupId": "joint",
+          "optionId": "loose-joint-ideal-for-physical-contact"
+        },
+        "conflictsWith": {
+          "groupId": "standing-add-on",
+          "optionId": "standing-with-bolts-free"
+        },
+        "message": "Loose joints cannot stand. Choose standard joints for standing feet."
+      }
+    ]
+  },
+  "tiers": [
+    {
+      "id": "starter",
+      "description": "Standard body construction with hard standing feet.",
+      "add": [
+        {
+          "groupId": "standing-add-on",
+          "optionId": "hard-standing-feet-without-bolts-free"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "enthusiast",
+      "description": "Adds the bionic breast construction.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "bionic-breast"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "collector",
+      "description": "Combines bionic breasts with extra-soft body construction, retaining standard buttocks.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-excluding-butts"
+        }
+      ],
+      "remove": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "full-body-extra-softness-including-butts"
+        }
+      ]
+    }
+  ]
+}
