@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { batchDBuyerPreviewEnabled } from "@/lib/catalog/batchDBuyerPreview";
 import { CatalogSelectionSummary } from "@/components/CatalogSelectionSummary";
+import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
 import { sampleProducts } from "@/lib/data/sample-products";
 import { brandSeoProfile, buildBrandStructuredData } from "@/lib/catalog/brandSeo";
 import { getCatalogBrand } from "@/lib/catalog/brands";
@@ -16,6 +17,17 @@ const setup = () => { vi.stubEnv("VERCEL_ENV", "preview"); vi.stubEnv("DOL229_BA
 const product = (amount: string, currencyCode = "USD") => ({...sampleProducts[0],priceRange:{...sampleProducts[0].priceRange,minVariantPrice:{amount,currencyCode}}});
 
 describe("private Batch D buyer pass", () => {
+  it("uses an unchanged-PDF faithful preview only on the private IL brand card", () => {
+    setup();
+    const render=(brand:string,variant:"brand"|"product"="brand")=>renderToStaticMarkup(<BrandAuthorizationCard brand={brand} variant={variant}/>);
+    expect(render("il-doll")).toContain("il-doll-authorization-poppler.png");
+    expect(render("il-doll")).toContain('/images/authorizations/il-doll-authorization.pdf');
+    expect(render("il-doll","product")).not.toContain("authorization-poppler.png");
+    expect(render("sy")).not.toContain("authorization-poppler.png");
+    vi.stubEnv("VERCEL_ENV","production");
+    expect(render("il-doll")).toContain("il-doll-authorization-preview.webp");
+    expect(render("il-doll")).not.toContain("authorization-poppler.png");
+  });
   it("scopes activation to four paths and never production or Mini", () => {
     setup();
     for(const path of ["/shop/ready-to-ship","/shop/blonde-dolls","/shop/tan-skin-dolls","/brands/il-doll"]) expect(batchDBuyerPreviewEnabled(path)).toBe(true);

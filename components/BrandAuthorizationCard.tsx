@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BadgeCheck, ExternalLink, ShieldCheck } from "lucide-react";
 import { getBrandAuthorization, isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
 import { getCatalogBrand } from "@/lib/catalog/brands";
+import { batchDBuyerPreviewEnabled } from "@/lib/catalog/batchDBuyerPreview";
 
 type BrandAuthorizationCardProps = {
   brand: string | undefined | null;
@@ -23,6 +24,9 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
   const isWrittenConfirmation = authorization?.status === "written-confirmation";
   const hasConfirmationLetter = isWrittenConfirmation && authorization?.confirmationSrc && authorization.confirmationPreviewSrc;
   const compact = variant === "product";
+  const certificatePreviewSrc = catalogBrand?.value === "il-doll" && variant === "brand" && batchDBuyerPreviewEnabled("/brands/il-doll")
+    ? "/images/authorizations/previews/il-doll-authorization-poppler.png"
+    : authorization?.certificatePreviewSrc;
   const statusEyebrow = hasCertificate ? "Brand certification" : "Approved seller";
   const statusTitle = hasCertificate ? `Certified to sell ${label}` : `Approved to sell ${label}`;
 
@@ -31,7 +35,7 @@ export function BrandAuthorizationCard({ brand, variant = "product" }: BrandAuth
       {hasCertificate ? (
         <a href={authorization.certificateSrc!} target="_blank" rel="noreferrer" className={`group relative block border-b border-border bg-[#f8efe8] sm:border-b-0 sm:border-r ${compact ? "min-h-28" : "min-h-40"}`} aria-label={`Open ${label} authorization certificate`}>
           <Image
-            src={authorization.certificatePreviewSrc!}
+            src={certificatePreviewSrc!}
             alt={`${label} certification authorizing DollWow as a retailer`}
             fill
             sizes={variant === "brand" ? "220px" : "96px"}
