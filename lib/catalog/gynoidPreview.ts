@@ -1,6 +1,7 @@
 import type { Product } from '@/types/product';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
 import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
+import {applyGynoidVersionPreview} from './gynoidVersionPreview';
 
 const allSnapshots = [...snapshots, ...additions];
 
@@ -17,6 +18,7 @@ export function gynoidPreviewProducts(): Product[] {
   const products = structuredClone(allSnapshots) as unknown as Product[];
   // The saved menu is not evidence of a free alternate-head entitlement.
   for (const product of products) {
+    applyGynoidVersionPreview(product);
     const head = product.extended.customizationGroups?.find(group => group.id === 'head');
     for (const option of head?.options ?? []) {
       if (option.id === 'no-change') continue;

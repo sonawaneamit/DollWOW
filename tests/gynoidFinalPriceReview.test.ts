@@ -4,6 +4,8 @@ import rows from '@/data/draft-previews/gynoid-final-price-review.json';
 import snapshots from '@/data/draft-previews/gynoid-oct28.json';
 import additions from '@/data/draft-previews/gynoid-oct28-additions.json';
 import { gynoidPreviewEnabled, gynoidPreviewProducts, gynoidPreviewStoreDiscount } from '@/lib/catalog/gynoidPreview';
+import {applyGynoidVersionPreview,gynoidVersionPreviewMappings} from '@/lib/catalog/gynoidVersionPreview';
+import type {Product} from '@/types/product';
 
 afterEach(()=>vi.unstubAllEnvs());
 describe('Gynoid29October final price-only review',()=>{
@@ -21,11 +23,24 @@ describe('Gynoid29October final price-only review',()=>{
     const products=gynoidPreviewProducts();expect(products).toHaveLength(12);
     for(const p of products){
       const old=[...snapshots,...additions].find(s=>s.id===p.id)!;
-      expect(p.variants).toEqual(old.variants);expect(p.priceRange).toEqual(old.priceRange);
+      const mapped=gynoidVersionPreviewMappings.find(row=>row.handle===p.handle);
+      if(mapped){
+        expect(p.variants.map(v=>[v.title,Number(v.price.amount)])).toEqual([['Standard body',mapped.standardUSD],['Deluxe body',mapped.deluxeUSD]]);
+        expect(p.variants[0].id).toBe(old.variants[0].id);expect(p.variants[1].id).toBe(`${old.variants[0].id}:deluxe`);
+        expect(p.images).toEqual(old.images);
+        expect(p.extended.measurements?.['Body weight by version']).toContain('body only');
+      }else{expect(p.variants).toEqual(old.variants);expect(p.priceRange).toEqual(old.priceRange);}
       expect(gynoidPreviewStoreDiscount(p,Number(p.priceRange.minVariantPrice.amount))?.discountAmount).toBe(0);
       expect(p.variants.every(v=>!v.availableForSale)).toBe(true);
     }
     expect(snapshots.reduce((n,p)=>n+p.images.length,0)).toBe(94);
+  });
+  it('does not guess body versions from another product identity or price',()=>{
+    const original=structuredClone(snapshots.find(p=>p.handle===gynoidVersionPreviewMappings[0].handle)!) as unknown as Product;
+    const wrong={...original,id:'preview:gynoid:other'};
+    applyGynoidVersionPreview(wrong);expect(wrong.variants).toEqual(original.variants);
+    const changed=structuredClone(original);changed.variants[0].price.amount='1';
+    expect(()=>applyGynoidVersionPreview(changed)).toThrow('exact retained Standard');
   });
   it('is preview-only and explicitly noindex',()=>{
     vi.stubEnv('NEXT_PUBLIC_DOL273_PREVIEW','1');vi.stubEnv('VERCEL_ENV','production');
