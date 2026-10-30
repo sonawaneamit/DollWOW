@@ -89,8 +89,8 @@ authority on the Moonvale pass. No new certificate substituted or published.
 ## Verification / Remaining
 
 42focused tests, TSC, scoped lint and the configured local build/two4950asset
-gates pass including the final small FAQ/title edits. A separate actual LOCAL
-built source-HTML test covers the four routes; final rerun follows the last build.
+gates pass including the final small FAQ/title edits. The separate actual LOCAL
+built source-HTML test passed again over all four routes after the final build.
 Actual LOCAL1319/390/320 twelve cases: no document overflow,36 current linked cards
 per page, source FAQ/schema equality; CollectionPage with nested ItemList,
 BreadcrumbList, FAQPage, Organization/WebSite. This is semantic JSON validation,
@@ -103,7 +103,8 @@ At320:748.6/808.6px. Price ranges on initial selection:999-1795,294-1799,
 1399-2819,1200-2819USD. Not all-catalog minima or a frozen future price promise.
 Only the current Brunette first-card image was independently confirmed decoded
 640x960 this run. Representative media visual checks across all four pages and
-final hosted source match remain. Also check ItemList entries against the exact
+final hosted source match remain. All local servers stopped, viewport reset.
+Also check ItemList entries against the exact
 visible paginated grid before claiming complete structured-data acceptance.
 No page-wide/catalog-wide acceptance is claimed from a shallow check.
 
