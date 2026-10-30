@@ -1,5 +1,4 @@
 import brandData from "./brand-data.json";
-import { gynoidReleasePreviewEnabled } from './gynoid-release-preview-flag';
 
 export type CatalogBrand = {
   value: string;
@@ -16,7 +15,7 @@ const allCatalogBrands = brandData satisfies CatalogBrand[];
 // MD Doll launched 2026-10-14. Add a brand value here to stage the next one.
 const previewOnlyCatalogBrandValues: string[] = [];
 const isPreviewDeployment = process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
-const hiddenCatalogBrandValues = new Set(["zelex", ...(!gynoidReleasePreviewEnabled() ? ['gynoid'] : []), ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
+const hiddenCatalogBrandValues = new Set(["zelex", ...(isPreviewDeployment ? [] : previewOnlyCatalogBrandValues)]);
 
 export const catalogBrands = allCatalogBrands.filter((brand) => !hiddenCatalogBrandValues.has(brand.value));
 

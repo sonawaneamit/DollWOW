@@ -8,8 +8,32 @@ the certificate or preview approval. Dolly's 15:05 priority is Gynoid, FU241,
 then the DOL315 ten-category preview, before further DOL229 work.
 
 **Not live.** Real body variants are now registered on two unpublished drafts.
-Production runtime, complete configuration/preset and paid-charge bindings,
-discount exclusion, country/shipping checks and publication remain unfinished.
+The clean production runtime candidate now has verified preset/charge registries,
+country availability and representative postal-rate evidence. Remote CI, deployment,
+publication and live checks remain unfinished.
+
+## Production Runtime Candidate
+
+The approved release candidate registers Gynoid publicly in the brand/certificate
+registry. The dated draft fallback still requires both preview gates and is never
+a production source. Eleven actual production-mapped products supply recipe and
+runtime hashes, thirteen real variants map to 130 exact paid-choice bindings.
+All 2,868 prior template entries and all prior named bindings are preserved
+verbatim. The new source snapshot fingerprint combines the previous fingerprint
+with the actual Gynoid mapped products; it does not claim a fresh audit of the
+entire historical cohort. Approvals record Codex's scoped checks under Martin's
+existing release authority, not an invented new human review.
+
+The evidence-gated registry integration test passes. Final focused tests:
+229 tests across eighteen files pass, two opt-in tests skipped by default;
+actual merchant/source/cart opt-in runs are separately recorded above. TypeScript,
+scoped lint and the configured production-mode local build pass, including both
+4,950-asset gates and public promotion-data check. The build uses Node26, not
+the broken local Node22 installation. Existing broad visual-index and DollVue
+static/dynamic diagnostics remain. The cohort-count assertion was updated by the
+exact eleven additions, not removed; original JSON formatting is preserved.
+Fresh origin/main is still7a2073aa. Old PR199 is not merged. No remote CI/deploy
+or live acceptance is inferred from these local results.
 
 ## Latest Eligibility And Rate Checks
 

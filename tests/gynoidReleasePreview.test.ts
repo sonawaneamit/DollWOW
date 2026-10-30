@@ -8,7 +8,7 @@ afterEach(() => { vi.unstubAllEnvs(); vi.resetModules(); });
 function enable() { vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV', 'preview'); vi.stubEnv('NEXT_PUBLIC_DOL273_RELEASE_PREVIEW', '1'); }
 
 describe('clean-base Gynoid private release integration', () => {
-  it.each(['production', 'development', 'preview'])('stays hidden in %s without both required preview gates', async environment => {
+  it.each(['production', 'development', 'preview'])('keeps dated draft fallback private in %s while the approved brand is registered', async environment => {
     vi.stubEnv('VERCEL_ENV', environment); vi.stubEnv('NEXT_PUBLIC_VERCEL_ENV', 'preview');
     vi.stubEnv('NEXT_PUBLIC_DOL273_RELEASE_PREVIEW', environment === 'preview' ? '' : '1');
     const { gynoidReleasePreviewProducts } = await import('@/lib/catalog/gynoidReleasePreview');
@@ -17,9 +17,9 @@ describe('clean-base Gynoid private release integration', () => {
     const { getBrandAuthorization, isLiveAuthorizedBrand } = await import('@/lib/catalog/authorizations');
     expect(gynoidReleasePreviewProducts()).toEqual([]);
     expect(await getPrivateDraftPreview('gynoid-lisa-170cm-silicone-companion-doll-model-13')).toBeNull();
-    expect(catalogBrands.some(b => b.value === 'gynoid')).toBe(false);
-    expect(isHiddenCatalogBrand('gynoid')).toBe(true);
-    expect(getBrandAuthorization('gynoid')).toBeNull(); expect(isLiveAuthorizedBrand('gynoid')).toBe(false);
+    expect(catalogBrands.some(b => b.value === 'gynoid')).toBe(true);
+    expect(isHiddenCatalogBrand('gynoid')).toBe(false);
+    expect(getBrandAuthorization('gynoid')?.status).toBe('certificate'); expect(isLiveAuthorizedBrand('gynoid')).toBe(true);
   });
   it('shows only eleven retained products /94images/13real variants with disabled checkout and head holds', async () => {
     enable();
