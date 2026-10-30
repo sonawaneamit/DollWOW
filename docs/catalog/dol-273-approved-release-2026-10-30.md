@@ -11,6 +11,62 @@ then the DOL315 ten-category preview, before further DOL229 work.
 Production runtime, complete configuration/preset and paid-charge bindings,
 discount exclusion, country/shipping checks and publication remain unfinished.
 
+## Latest Actual Checkout QA
+
+30 Oct 16:27 UTC: 49 actual US Shopify carts pass using the intended clean-base
+server repricing and exact retained merchandise: all thirteen real variant bases
+times three tiers, plus ten individual paid choices on the representative parent.
+Every actual cart subtotal equals its base plus selected upgrades, in USD;
+HALLOWEEN299 is inapplicable. This is actual merchandise/cart evidence, not a
+deployed runtime/browser release or a settled shipping/tax quote. Production
+registries remain unsigned; Gynoid is still not live.
+
+Read-only preflight verifies all eleven parents are outside the current
+HALLOWEEN299 eligibility collection. That is one campaign's current collection
+exclusion, not a claim about every automatic or future discount.
+
+The first controlled staging attempt used only the existing Headless publication;
+the current Storefront token still exposed only the two shared accessories.
+Nineteen exact staged products were restored and verified, with zero carts.
+The corrected attempt used both existing Headless and Online Store publications,
+with `dollwow-test` on all eleven parents. All 23 requested variants were available
+in US/USD. DE/GB/FR each expose only fifteen: thirteen parents plus the two shared
+accessories; the eight Gynoid-specific upgrade variants are unavailable. Observed
+currencies remain EUR/GBP/EUR, not the proposed DOL284 USD settings.
+
+After the 49 US carts, all nineteen products were restored to DRAFT/unpublished.
+Observed tags and variant IDs/prices match before, including both Deluxe IDs;
+temporary test tags were removed. The two shared ACTIVE accessories were never
+changed. No new products, variants, media, category, Markets/tax/currency settings,
+order, payment or email was created/changed. Do not replay these carts or staging
+merely to refresh a receipt.
+
+New eligibility evidence: the native Publishing dialog on the exact implanted
+hair charge says 23 regions are unsupported until a category is added. A bounded
+16:29 Admin read confirms all eight Gynoid-specific charges have no category and
+are DRAFT, type System charge. The native explanation was inspected for one
+charge, not all eight dialogs; it does not establish that adding any arbitrary
+category clears every country. The native suggestion is Product Customization
+in Product Add-Ons, not an approved reclassification. Nothing was accepted/saved.
+Do not classify an adult item innocuously or alter a category simply to bypass
+Managed Markets; determine the accurate charge classification and retain the
+separate DOL284 exact-settings-yes gate. Shipping/rate acceptance remains open.
+
+Private immutable evidence:
+`readiness-1624/` (actual timestamp 16:22), `checkout-1625/` (headless-only,
+zero carts, restored), `checkout-1626-two-channels/` (49 carts, final restored
+16:27:42.965 UTC), and `charge-category-read-1630.json` (actual 16:29:14.708 UTC),
+under `data/exports/dol-273-approved-2026-10-30/`.
+The opt-in real-cart test passes. Fresh regression run: 228 tests across seventeen
+files pass, with the real-cart test safely skipped by default. Initial new test
+name-type inference was fixed before staging; scoped lint and TypeScript pass. No runtime change/build/deploy
+was made in this QA pass; prior private build/browser evidence stays dated above.
+
+Next: resolve accurate eligibility of the eight existing charge products, complete
+supported-country and shipping QA, then sign verified registries and finish the
+already-approved release. Do not reask prices/certificate/preview approval, claim
+US-only partial release accepted, or activate separate Markets settings.
+
 ## Latest Private Integration
 
 30 Oct 16:18 UTC: the clean-base private PDP, brand and certificate integration
