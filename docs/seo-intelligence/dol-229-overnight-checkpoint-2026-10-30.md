@@ -1,5 +1,24 @@
 # DOL-229: Overnight Batch C Revision
 
+## Latest Private Brunette Filter Removal30Oct10:44
+
+Same PR161/branch/worktree, runtime2b6d9a52; exact READY targetpreviewrcpp14ns9 /
+dpl_GWes32obhxtCb1iqoSzwoDNimZw8. Read
+dol-229-brunette-filter-removal-2026-10-30.md and latestBrunetteFilterRemoval in
+the private checkpoint first. New Brunette clear-one facet links remain private
+preview+flag gated; hair preset nonremovable. LOCAL3/HOSTED3 widths1319/390/320
+pass15-to36 material removal with price/sort retained and page cleared. Initial
+15results clamp requestedpage2 to1; separate actual populatedpage2 range37-72
+resets1-36 after material removal. Hosted320lastfacets clear to presetalone;
+Curvy390regression24-to36 passes. ExactItemList/noindex/canonical/nooverflow/
+44pxfit/weights retained.37focused5files+separate3builtHTMLtests(8routes+2filtered)/
+TSC/lint/configuredlocal+remotebuilds/two4950gates each PASS. Two native mobile
+control excerpts visually inspected, no screenshot-file attachment claim. Normal
+privacyDecline/noauthbypass. Serverstopped/browserclosed/viewportreset.
+Restart10:35 acknowledges Dolly10:25 chase truthfully; no229implementation05:57
+to10:35, interveningFirefly/Caseywork separate. Whole229InProgress/notlive/notfull
+competitiveacceptance. Do not use older NEXT to restart completed/held previews.
+
 ## Latest Private Curvy Filter Removal30Oct05:56
 
 Same PR161/branch/worktree, runtime475ec2ab880dc695d29c031cf7c71e848a7aff55.
