@@ -1,6 +1,7 @@
 import { test, expect, vi } from 'vitest';
 import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import type { Product } from '@/types/product';
 import reviewed from '@/data/catalog/gynoid-approved-configurations.json';
 import { getCustomizationConfig } from '@/lib/customization/configs';
@@ -26,6 +27,7 @@ test.skipIf(process.env.GYNOID_REGISTRY_PREPARE !== '1')('integrates only verifi
   expect(shipping.results).toHaveLength(4);
   expect(shipping.results.every((r: { options: Array<{ estimatedCost: { amount: string } }> }) => r.options.some(o => Number(o.estimatedCost.amount) === 0))).toBe(true);
   const products = await read(`${root}/source-parity-normalized-1653/source-products.json`) as Product[];
+  products.forEach(p => { p.tags = p.tags.filter(tag => tag !== 'catalog-review-hold'); });
   expect(products.map(p => p.id).sort()).toEqual(reviewed.products.map(p => p.productId).sort());
   expect(products.flatMap(p => p.variants)).toHaveLength(13);
   const template = await read('lib/customization/evidence/template-release.json') as TemplateReleaseRegistry;
@@ -77,3 +79,33 @@ test.skipIf(process.env.GYNOID_REGISTRY_PREPARE !== '1')('integrates only verifi
   await fs.writeFile('lib/customization/evidence/template-release.json', `${JSON.stringify(template, null, 2)}\n`);
   await fs.writeFile('lib/cart/evidence/named-upgrades-release.json', JSON.stringify(named));
 }, 120000);
+
+test.skipIf(process.env.GYNOID_REGISTRY_TAG_PROJECTION !== '1')('binds only the approved parent publication-hold removal to production recipe hashes', async () => {
+  const root = 'data/exports/dol-273-approved-2026-10-30';
+  const products = JSON.parse(await fs.readFile(`${root}/source-parity-normalized-1653/source-products.json`, 'utf8')) as Product[];
+  const template = JSON.parse(await fs.readFile('lib/customization/evidence/template-release.json', 'utf8')) as TemplateReleaseRegistry;
+  const original = JSON.parse(execFileSync('git', ['show', '9972efeb:lib/customization/evidence/template-release.json'], { maxBuffer: 8 * 1024 * 1024 }).toString()) as TemplateReleaseRegistry;
+  expect(templateReleaseIssues(template)).toEqual([]);
+  const before = structuredClone(template), previousHash = templateReleasePayloadHash(template.payload);
+  for (const product of products) {
+    const entry = template.payload.entries.find(e => e.productId === product.id)!;
+    expect(entry.runtimeHash).toBe(templateRuntimeHash(product, getCustomizationConfig(product)));
+    expect(product.tags).toContain('catalog-review-hold'); expect(product.tags).not.toContain('dollwow-test');
+    product.tags = product.tags.filter(tag => tag !== 'catalog-review-hold');
+    entry.runtimeHash = templateRuntimeHash(product, getCustomizationConfig(product));
+  }
+  expect(template.payload.entries.filter(e => !products.some(p => p.id === e.productId))).toEqual(original.payload.entries);
+  expect(template.payload.bindings).toEqual(before.payload.bindings);
+  template.payload.sourceSnapshotHash = createHash('sha256').update(JSON.stringify({ prior: original.payload.sourceSnapshotHash, products })).digest('hex');
+  const at = new Date().toISOString(), payloadHash = templateReleasePayloadHash(template.payload);
+  for (const approval of Object.values(template.approvals!)) {
+    approval.payloadHash = payloadHash; approval.reviewedAt = at;
+    approval.evidenceRef += '; exact approved parent publication-hold removal, all option/Laura holds retained';
+  }
+  expect(templateReleaseIssues(template)).toEqual([]);
+  for (const product of products) expect(selectReleasedTemplateRecipe(template, product, getCustomizationConfig(product))).not.toBeNull();
+  await fs.writeFile(`${root}/approved-publication-products.json`, JSON.stringify(products, null, 2), { flag: 'wx', mode: 0o600 });
+  await fs.writeFile(`${root}/verified-publication-tag-projection.json`, JSON.stringify({ at, previousHash, payloadHash,
+    parentIds: products.map(p => p.id), removedTag: 'catalog-review-hold', retainedSourceHolds: 'Unpriced alternate heads and unapproved Laura/additions remain held; no blanket brand/content clearance.' }, null, 2), { flag: 'wx', mode: 0o600 });
+  await fs.writeFile('lib/customization/evidence/template-release.json', `${JSON.stringify(template, null, 2)}\n`);
+});

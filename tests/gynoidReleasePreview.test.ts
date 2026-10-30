@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
 vi.mock('server-only', () => ({}));
 
 afterEach(() => { vi.unstubAllEnvs(); vi.resetModules(); });
@@ -54,9 +53,13 @@ describe('clean-base Gynoid private release integration', () => {
     const authorization = getBrandAuthorization('gynoid')!;
     expect(authorization.scopeStatement).toContain('Europe and the Americas');
     expect(authorization.scopeStatement).toContain('22 October 2026 to 21 October 2027');
-    for (const file of ['public/images/authorizations/gynoid-authorized.png', 'public/images/authorizations/previews/gynoid-authorized.webp', 'data/draft-previews/gynoid-oct28.json']) {
-      const prior = execFileSync('git', ['show', `codex/dol-273-gynoid-preview:${file}`], { maxBuffer: 8 * 1024 * 1024 });
-      expect(createHash('sha256').update(fs.readFileSync(file)).digest('hex')).toBe(createHash('sha256').update(prior).digest('hex'));
+    // Original PR199 bytes were verified before copying; CI needs no local branch.
+    for (const [file, hash] of [
+      ['public/images/authorizations/gynoid-authorized.png', '7d73d756a05069833d5601ed1ad51f5c84473586f0a0a720e2f0a8ae93d2e239'],
+      ['public/images/authorizations/previews/gynoid-authorized.webp', 'a9b1e34f4fddf7506a91497d882fc4d7de7644b2c3c8e34af5e5f5331dc2cc25'],
+      ['data/draft-previews/gynoid-oct28.json', '89870aeb316c4fe3aa733858a9e1352010a2c79ba13da7d124668fcee6f6e695']
+    ]) {
+      expect(createHash('sha256').update(fs.readFileSync(file)).digest('hex')).toBe(hash);
     }
   });
 });

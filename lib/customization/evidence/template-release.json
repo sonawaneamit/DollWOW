@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex scoped verification under Martin release approval 7bc009b1",
-      "reviewedAt": "2026-10-30T16:54:52.863Z",
-      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks",
-      "payloadHash": "c3c4eed67f75403438df8b85a180eff84f5d724d161c89fcfe64aeb89ed5f3fb"
+      "reviewedAt": "2026-10-30T17:05:18.140Z",
+      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks; exact approved parent publication-hold removal, all option/Laura holds retained",
+      "payloadHash": "ca760bc49a5bb12e6190769d8dd39b745e1bed8d6cc36cab40e5ebf37c3e54fc"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex scoped verification under Martin release approval 7bc009b1",
-      "reviewedAt": "2026-10-30T16:54:52.863Z",
-      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks",
-      "payloadHash": "c3c4eed67f75403438df8b85a180eff84f5d724d161c89fcfe64aeb89ed5f3fb"
+      "reviewedAt": "2026-10-30T17:05:18.140Z",
+      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks; exact approved parent publication-hold removal, all option/Laura holds retained",
+      "payloadHash": "ca760bc49a5bb12e6190769d8dd39b745e1bed8d6cc36cab40e5ebf37c3e54fc"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex scoped verification under Martin release approval 7bc009b1",
-      "reviewedAt": "2026-10-30T16:54:52.863Z",
-      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks",
-      "payloadHash": "c3c4eed67f75403438df8b85a180eff84f5d724d161c89fcfe64aeb89ed5f3fb"
+      "reviewedAt": "2026-10-30T17:05:18.140Z",
+      "evidenceRef": "docs/catalog/dol-273-approved-release-2026-10-30.md#latest-eligibility-and-rate-checks; owner approval 7bc009b1; actual source/49US-carts/4postal-country carts/8charge-country checks; exact approved parent publication-hold removal, all option/Laura holds retained",
+      "payloadHash": "ca760bc49a5bb12e6190769d8dd39b745e1bed8d6cc36cab40e5ebf37c3e54fc"
     }
   },
   "payload": {
     "releaseId": "dol273-gynoid-approved-2026-10-30",
-    "sourceSnapshotHash": "cfa624d57a6fbb86125f343804ee0023b4fb74115d44615e620d9bf34f911ed3",
+    "sourceSnapshotHash": "62c94391c6201e190e9f66509b8598b2f7439d860e66557fed74bc142f09e4ab",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -22987,77 +22987,77 @@
         "handle": "gynoid-ji-xiang-eye-closed-162cm-silicone-companion-doll-model-11",
         "tag": "options:gynoid-body-11-mvp-v1",
         "bindingKey": "gynoid-10637906968760-reviewed-2026-10-30",
-        "runtimeHash": "648ee9338eab050effb30a377d0809069aaad40f8496ff51d3ae21ed63a49795"
+        "runtimeHash": "da1e1b42d39546e19d13edd8519a94ebfcb399c93e512d5aa4bd9d5ede9a765b"
       },
       {
         "productId": "gid://shopify/Product/10637908443320",
         "handle": "gynoid-wan-ying-165cm-silicone-companion-doll-model-16",
         "tag": "options:gynoid-body-16-mvp-v1",
         "bindingKey": "gynoid-10637908443320-reviewed-2026-10-30",
-        "runtimeHash": "ed34d5e899465abea0b607e312dd52939be8e101ba7c97a1f99e787e551b43ac"
+        "runtimeHash": "52b1bcf5f3d43b42c3f3b7710839b6e0227071cc684effab615757eca4d930bb"
       },
       {
         "productId": "gid://shopify/Product/10637909885112",
         "handle": "gynoid-lisa-scott-168cm-silicone-companion-doll-model-18",
         "tag": "options:gynoid-body-18-mvp-v1",
         "bindingKey": "gynoid-10637909885112-reviewed-2026-10-30",
-        "runtimeHash": "98e8e12454f38cc3d1e68f32c7ca615059a5e3566e629c4f7ca34dc17356ea5c"
+        "runtimeHash": "f60bd8e41454254747f6ac170b8db09bc1b42c2de22526bb87173193226a61d2"
       },
       {
         "productId": "gid://shopify/Product/10637911163064",
         "handle": "gynoid-lisa-170cm-silicone-companion-doll-model-13",
         "tag": "options:gynoid-body-13-mvp-v1",
         "bindingKey": "gynoid-10637911163064-reviewed-2026-10-30",
-        "runtimeHash": "68d223eedc22949e51e377902ece13bf4bae9edd70d2d644976a2ba00c2a8610"
+        "runtimeHash": "1c2b8fa3945f6a73cec6e57e7df05d0f34f5f5ba6a63cdb411f50e1df8128158"
       },
       {
         "productId": "gid://shopify/Product/10637912375480",
         "handle": "gynoid-jiayi-170cm-silicone-companion-doll-model-13",
         "tag": "options:gynoid-body-13-mvp-v1",
         "bindingKey": "gynoid-10637912375480-reviewed-2026-10-30",
-        "runtimeHash": "62583c63cf7f07bd2d3986d7334091ba20bd100de79dd201a27f2d7d0d4d6cdd"
+        "runtimeHash": "71965f1e295ae663d9f46d71166a874f73d7168ecbb8dab7d748b9fbcd300e6f"
       },
       {
         "productId": "gid://shopify/Product/10637913784504",
         "handle": "gynoid-meiniang-164cm-silicone-companion-doll-model-21",
         "tag": "options:gynoid-body-21-mvp-v1",
         "bindingKey": "gynoid-10637913784504-reviewed-2026-10-30",
-        "runtimeHash": "4fb2c45e706f906b4de9ca24ad5cbaf2eed16f92276136c0f2e7d6cc7e8a8f4e"
+        "runtimeHash": "7d73e43619ffb1e9bab9f35522b954f5acfa0ab9cdf7cee0db88ef12325b9158"
       },
       {
         "productId": "gid://shopify/Product/10637915029688",
         "handle": "gynoid-elsa-164cm-silicone-companion-doll-model-21",
         "tag": "options:gynoid-body-21-mvp-v1",
         "bindingKey": "gynoid-10637915029688-reviewed-2026-10-30",
-        "runtimeHash": "25aa30b8854fcebfda3a771a3de5cc4fa1fbdf32ffb00f6d942c4f61b50e7380"
+        "runtimeHash": "2cbf077571cbc437d6fb90745623057404112116efbb002908e137b93d0fa6a7"
       },
       {
         "productId": "gid://shopify/Product/10637916143800",
         "handle": "gynoid-gina-164cm-silicone-companion-doll-model-21",
         "tag": "options:gynoid-body-21-mvp-v1",
         "bindingKey": "gynoid-10637916143800-reviewed-2026-10-30",
-        "runtimeHash": "9934c06761f3318c67aa5b27afa94e400819656ef9cb0f460329f9d1412e5911"
+        "runtimeHash": "b87b035ccfdbb40df5bfd51318d655dcdbc4a57f0eeeda6da66897a4bd4840f2"
       },
       {
         "productId": "gid://shopify/Product/10637917487288",
         "handle": "gynoid-sylvia-wright-170cm-silicone-companion-doll-model-13",
         "tag": "options:gynoid-body-13-mvp-v1",
         "bindingKey": "gynoid-10637917487288-reviewed-2026-10-30",
-        "runtimeHash": "df34d925dbcab1f386c3c15d971140acd3dc166347f13dd7555778028536c4e4"
+        "runtimeHash": "049296c3abcf1d1e200f8e7eecb04a70dc2a31162c3700d35d78fba5f6142709"
       },
       {
         "productId": "gid://shopify/Product/10637918863544",
         "handle": "gynoid-kelly-eveline-172cm-silicone-companion-doll-model-10",
         "tag": "options:gynoid-body-10-mvp-v1",
         "bindingKey": "gynoid-10637918863544-reviewed-2026-10-30",
-        "runtimeHash": "7cc131bfe184f9def675a75fce2b28654a6cb054c081f33462a0a2b928c008c2"
+        "runtimeHash": "8691f44e5c68c24cb0a2ffd1ac57ea1d0a82703cb08d0b685df9bf26eee44615"
       },
       {
         "productId": "gid://shopify/Product/10637919944888",
         "handle": "gynoid-tanya-172cm-silicone-companion-doll-model-10",
         "tag": "options:gynoid-body-10-mvp-v1",
         "bindingKey": "gynoid-10637919944888-reviewed-2026-10-30",
-        "runtimeHash": "16f3e7bb45216455174e42c3f79c85678da699cab2db1c6c7cfc460b1076125a"
+        "runtimeHash": "173a4bdba1f03041986203d27fec851aba74680582825b8d28860ac24d45404d"
       }
     ],
     "bindings": {

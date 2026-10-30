@@ -35,6 +35,30 @@ exact eleven additions, not removed; original JSON formatting is preserved.
 Fresh origin/main is still7a2073aa. Old PR199 is not merged. No remote CI/deploy
 or live acceptance is inferred from these local results.
 
+Final publication removes only the general `catalog-review-hold` tag from the
+eleven already-approved parent listings; alternate-head/Laura and other source
+holds remain intact. The recipe runtime hashes were explicitly re-bound to that
+approved tag projection before deployment, preserving every other historical
+entry and every recipe. `approved-publication-products.json` and
+`verified-publication-tag-projection.json` record the projection. Charge tags are
+not changed. The final publication dry run verifies exactly eleven retained
+parents plus eight required charges, no new products. Execution requires the
+exact READY production deployment SHA and domain aliases first.
+
+PR232's first Vercel preview build succeeded, but owned-assets CI found a brittle
+source-string assertion for the PDP projection's old argument spelling. The
+updated assertion still requires nested public/image projection and adds explicit
+raw-product-prop rejection for Gallery/Options/LowerAlive. No payload protection
+was removed. Original source byte hashes are pinned so focused tests don't depend
+on a machine-local historical branch. All remote checks must pass on the final
+head; the first failed ownership run is not acceptance.
+
+Final local verification after the tag projection and payload-test repair:
+252 focused tests across23files pass, four opt-in cases skipped by default;
+TypeScript/scoped lint, production-mode configured build, promotion-data check
+and both4950asset gates pass. The exact nineteen-product publication dry run
+passes. No publication execution or production deployment is claimed here.
+
 ## Latest Eligibility And Rate Checks
 
 30 Oct 16:39 UTC: eight dedicated adult-doll option/accessory charges were
