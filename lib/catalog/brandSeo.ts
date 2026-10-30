@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { catalogBrands, type CatalogBrand } from "@/lib/catalog/brands";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { env } from "@/lib/utils/env";
+import { batchGBuyerPreviewEnabled } from "./batchGBuyerPreview";
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
@@ -1006,10 +1007,10 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   };
 }
 
-export function buildBrandStructuredData(brand: CatalogBrand, products: Product[]) {
+export function buildBrandStructuredData(brand: CatalogBrand, products: Product[], { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const url = brandCanonicalUrl(brand);
   const profile = brandSeoProfile(brand);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -1056,7 +1057,14 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
 }
 
 export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
-  const custom = brandProfiles[brand.value] ?? {};
+  const privateIntros: Record<string, string> = {
+    "ai-tech": "Compare Ai-Tech dolls by their exact head, body, material, measurements and included features. The brand name alone does not mean interactive hardware is included. Check what costs extra, what setup is needed and which choices work together on your selected model.",
+    avant: "Compare Avant dolls by their exact construction, head and body pairing, dimensions and included build. Ask for the finished weight if it is missing: a similar height or photograph does not establish easy handling. Check the supported choices and final configured price before ordering.",
+    funwest: "Compare FunWest complete dolls and torsos by what each listing includes. Check the head and body materials, full dimensions, listed weight and included appearance before comparing prices. Supported options depend on the exact model and whether the build is custom-made or fixed warehouse stock."
+  };
+  const custom = batchGBuyerPreviewEnabled(`/brands/${brand.collectionHandle}`) && privateIntros[brand.value]
+    ? { ...brandProfiles[brand.value], intro: privateIntros[brand.value] }
+    : brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
     `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;
