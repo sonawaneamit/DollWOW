@@ -7,6 +7,7 @@ import { createReleasedTemplateSelector, selectReleasedTemplateRecipe, templateR
   templateReleasePayloadHash, templateRuntimeHash, type TemplateReleaseRegistry } from '@/lib/customization/template-release-registry';
 import { templateConfigSignature } from '@/lib/customization/template-config-signature';
 import blockedRegistry from '@/lib/customization/evidence/template-release.json';
+import gynoidReviewed from '@/data/catalog/gynoid-approved-configurations.json';
 
 const config: BrandCustomizationConfig = { id: 'se-fixture', brandLabel: 'SE', leadTimeNote: '', rules: [], groups: [
   { id: 'finish', label: 'Finish', display: 'compact', required: true, options: [
@@ -39,8 +40,9 @@ function fixture() {
 describe('coordinated template release boundary', () => {
   it('packages the entire reviewed cohort with evidence-bound approvals', () => {
     expect(templateReleaseIssues(blockedRegistry)).toEqual([]);
-    expect(blockedRegistry.payload.entries).toHaveLength(2868);
-    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2868);
+    expect(blockedRegistry.payload.entries).toHaveLength(2879);
+    expect(blockedRegistry.payload.expectedProductIds).toHaveLength(2879);
+    expect(blockedRegistry.payload.expectedProductIds).toEqual(expect.arrayContaining(gynoidReviewed.products.map(p => p.productId)));
     expect(blockedRegistry.payload.expectedProductIds).toEqual(expect.arrayContaining([
       'gid://shopify/Product/10659380363448',
       'gid://shopify/Product/10659380428984',

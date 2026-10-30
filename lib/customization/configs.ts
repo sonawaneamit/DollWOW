@@ -1,6 +1,7 @@
 import type { Product } from "@/types/product";
 import { withSeLightweight } from './se-lightweight';
 import { getIdoMdCustomizationConfig } from './ido-md';
+import { getGynoidCustomizationConfig } from './gynoid';
 import { withSeSiliconeHead } from './se-silicone-head';
 import { withSeOct27PreviewRules } from './se-oct27-preview';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption, CustomizationRule } from "@/types/customization";
@@ -309,6 +310,8 @@ export function getFactoryCustomizationConfig(product: Product): BrandCustomizat
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
+  const gynoid = getGynoidCustomizationConfig(product);
+  if (gynoid) return gynoid;
   const idoMd = getIdoMdCustomizationConfig(product);
   if (idoMd) return idoMd;
   const suki = getSukiCustomizationConfig(product);

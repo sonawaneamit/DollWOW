@@ -7,6 +7,9 @@ import type { Product } from "@/types/product";
 import type { CustomizationSelections } from "@/types/customization";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
 import { idoMdDependencyPlan, type DependencyDetails } from './ido-md-dependencies';
+import { verifiedGynoidBodyVersion } from '@/lib/catalog/gynoid-body-versions';
+import { reviewedGynoidIdentity, assertGynoidStandardCheckout } from '@/lib/customization/gynoid';
+import { gynoidDependencyPlan } from './gynoid-dependencies';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -51,6 +54,10 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   const variant = product.variants.find((item) => item.id === input.merchandiseId);
   if (!variant?.availableForSale) throw new Error("This product option is not available for checkout.");
 
+  const gynoidVersion = verifiedGynoidBodyVersion(product, input.merchandiseId);
+  assertGynoidStandardCheckout(product, input.merchandiseId);
+  if (reviewedGynoidIdentity(product)) getCustomizationConfig(product);
+
   const basePrice = Number(variant.price.amount);
   const currencyCode = variant.price.currencyCode.toUpperCase();
   if (!Number.isFinite(basePrice) || basePrice < 0 || !/^[A-Z]{3}$/.test(currencyCode)) {
@@ -60,7 +67,10 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   const displayName = product.extended.displayName?.trim();
   const title = displayName || product.title;
   const safeAttributes = allowlistedSafeAttributes(input.attributes);
-  const referenceAttribute = [{ key: "DollWow Reference Name", value: title }];
+  const referenceAttribute = [
+    { key: "DollWow Reference Name", value: title },
+    ...(gynoidVersion ? [{ key: 'Body version', value: gynoidVersion.version }] : [])
+  ];
 
   if (!input.selections) {
     return {
@@ -84,7 +94,8 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   }
 
   const paidOptions = resolved.selectedOptions.filter((option) => option.priceDelta > 0);
-  const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity);
+  const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity) ??
+    gynoidDependencyPlan(config, resolved.selectedOptions, input.quantity);
   const optionAmount = money(resolved.optionPriceDelta * input.quantity);
   // Included choices must remain meaningful if a separately purchased upgrade is removed.
   // Conditional menus need an explicit dependency-aware migration, not stale copied text.

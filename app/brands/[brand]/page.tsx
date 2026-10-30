@@ -18,6 +18,8 @@ import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { catalogContextualLinks, contextualLinksEnabled } from '@/lib/catalog/contextualLinks';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
+import { gynoidReleasePreviewEnabled } from '@/lib/catalog/gynoid-release-preview-flag';
+import { gynoidReleasePreviewProducts } from '@/lib/catalog/gynoidReleasePreview';
 
 // Brand pages need to reflect newly published catalog items without a full-site redeploy.
 export const dynamic = "force-dynamic";
@@ -30,7 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) return {};
-  return buildBrandMetadata(brand);
+  return { ...buildBrandMetadata(brand), ...(brand.value === 'gynoid' && gynoidReleasePreviewEnabled()
+    ? { robots: { index: false, follow: false } } : {}) };
 }
 
 export default async function BrandHubPage({
@@ -47,7 +50,8 @@ export default async function BrandHubPage({
 
   const requestedFilters = filtersFromSearchParams(rawSearchParams);
   const filters = compactFilters({ ...requestedFilters, brand: brand.value });
-  const products = await getProducts({
+  const isGynoidPreview = brand.value === 'gynoid' && gynoidReleasePreviewEnabled();
+  const products = isGynoidPreview ? gynoidReleasePreviewProducts() : await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
     cacheKey: `${brand.value}-release-order-v1`,
@@ -59,7 +63,7 @@ export default async function BrandHubPage({
   const profile = brandSeoProfile(brand);
   const compactBrowsing = usesCompactBrandLayout(brand.value);
   const relatedLinks = brandRelatedLinks(brand);
-  const structuredData = buildBrandStructuredData(brand, orderedProducts);
+  const structuredData = isGynoidPreview ? [] : buildBrandStructuredData(brand, orderedProducts);
   const activeFilterLabels = Object.entries(filters)
     .filter(([key, value]) => Boolean(value) && key !== "brand")
     .filter(([key, value]) => !(key === "sort" && value === "featured"))
@@ -146,7 +150,7 @@ export default async function BrandHubPage({
             lockedBrand
           />
         </aside>
-        <div id="brand-products" className={`shop-visual-main scroll-mt-28 ${compactBrowsing ? "max-sm:[&_.catalog-product-card]:w-full" : ""}`}>
+        <div id="brand-products" className={`shop-visual-main scroll-mt-28 ${compactBrowsing || brand.value === 'gynoid' ? "max-sm:[&_.catalog-product-card]:w-full" : ""}`}>
           {hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => <span key={label}>{label}</span>)}

@@ -5,11 +5,13 @@ import { ArrowRight, BadgeCheck, ExternalLink, FileCheck2, ShieldCheck } from "l
 import { brandAuthorizations, liveAuthorizedBrands } from "@/lib/catalog/authorizations";
 import { brandHubHref, getCatalogBrand } from "@/lib/catalog/brands";
 import { BrandAuthorizationCard } from "@/components/BrandAuthorizationCard";
+import { gynoidReleasePreviewEnabled } from '@/lib/catalog/gynoid-release-preview-flag';
 
 export const metadata: Metadata = {
   title: "Brand Certifications | DollWow",
   alternates: { canonical: "/authorized-vendors" },
-  description: "View certificates and written confirmations issued by brands authorizing DollWow to sell their products."
+  description: "View certificates and written confirmations issued by brands authorizing DollWow to sell their products.",
+  ...(gynoidReleasePreviewEnabled() ? { robots: { index: false, follow: false } } : {})
 };
 
 export default function AuthorizedVendorsPage() {
@@ -80,6 +82,7 @@ export default function AuthorizedVendorsPage() {
                     Issued by {entry.certificateIssuer ?? entry.brand} to confirm DollWow as an approved retailer.
                   </p>
                   {coveredBrands.length ? <p className="certification-card__covers">Also covers: {coveredBrands.join(", ")}</p> : null}
+                  {entry.scopeStatement ? <p>{entry.scopeStatement}</p> : null}
                   <div className="certification-card__actions">
                     {entry.brandValue ? <Link href={brandHubHref(entry.brandValue)}>Browse brand <ArrowRight aria-hidden="true" /></Link> : <span>Products coming soon</span>}
                     <a href={entry.certificateSrc!} target="_blank" rel="noreferrer">View certificate <ExternalLink aria-hidden="true" /></a>
