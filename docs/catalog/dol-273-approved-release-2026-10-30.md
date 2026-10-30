@@ -7,10 +7,43 @@ approves the eight final prices and Gynoid release. Do not ask again for prices,
 the certificate or preview approval. Dolly's 15:05 priority is Gynoid, FU241,
 then the DOL315 ten-category preview, before further DOL229 work.
 
-**Not live.** Real body variants are now registered on two unpublished drafts.
-The clean production runtime candidate now has verified preset/charge registries,
-country availability and representative postal-rate evidence. Remote CI, deployment,
-publication and live checks remain unfinished.
+## Latest Production Publication
+
+PR232 merged as `4faea45e37a047343034d380420d76e1ff8224ed` at17:18:29 UTC.
+Exact production `dpl_E8KSA3SvZfXRJfRpbWuZVuebFujD` is READY and independently
+bound to dollwow.com/www. Final679c9b9c owned-assets, Vercel and comments checks
+passed. Initial342 ownership assertion failed and was repaired, not counted green.
+
+Actual17:41:23 readback (`publication-web-final-1742/final.json`) verifies all
+eleven retained parents and eight required charges ACTIVE and published to the
+existing Headless/Online Store channels. Shared two charges are unchanged. Only
+the approved parent review tag was removed; all source/alternate-head holds remain.
+No new products, variants, media, order/payment or settings change occurred.
+
+Two existing automatic AppCatalogs (Microsoft Copilot and Meta AI/Muse) appear
+alongside those two sales-channel publications. Native Manage Publishing shows
+only Online Store/Headless selected, Shop/POS unchecked; Agentic says Shopify
+Catalog eligibility is being reviewed. This is NOT AI eligibility or an AI launch.
+Two earlier unpublish requests were acknowledged but ineffective; the claim of
+successful withdrawal in0f7aba27 was corrected in d76b4e4b. Do not replay requests
+or disable global channels. Unknown publications still fail closed. The existing
+IndexNow product-update webhook adds its own notification ledger; raw evidence
+retains it and preservation comparison excludes only that exact app-owned field.
+
+Brand listing is live with11real product links and original certificate. Actual
+1319/390/320 checks show index/follow, production canonical, no overflow/dialogs;
+certificate and nine initially visible card images decoded. Two lazy offscreen
+images were not decoded in that observation, not claimed a complete media audit.
+
+**Live acceptance unfinished:** actual Lisa PDP returned404 although an uncached
+Storefront read returned both real variants available at5299/5799. PR233 applies
+the existing no-store lookup pattern only to the eleven approved Gynoid handles.
+Other brands/unreviewed handles are unchanged.30focused tests, scoped lint,
+TypeScript and configured local production build/two4950gates pass. Remote checks,
+follow-up deployment, Standard/Deluxe browser cases and deployed cart smoke remain.
+Do not replay completed merchant publication or the49US/fourpostal carts.
+
+The sections below record earlier candidate/draft milestones, not current status.
 
 ## Production Runtime Candidate
 
