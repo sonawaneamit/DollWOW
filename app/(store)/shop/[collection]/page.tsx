@@ -1,5 +1,6 @@
 import { ProductFilters } from "@/components/ProductFilters";
 import { ProductGrid } from "@/components/ProductGrid";
+import { ActiveCatalogFilters } from "@/components/ActiveCatalogFilters";
 import { CatalogPagination } from "@/components/CatalogPagination";
 import { LocationFilter } from "@/components/LocationFilter";
 import { activeFilterCount, canonicalShopCollectionHandle, collectionPresets, compactFilters, filterProducts, filtersFromSearchParams, getCatalogFilterLabel, isStandaloneHeadCatalogProduct } from "@/lib/catalog/filters";
@@ -106,7 +107,9 @@ export default async function CollectionPage({
           <ProductFilters filters={filters} action={`/shop/${collection}`} resetHref={`/shop/${collection}`} variant="sidebar" defaultSort="latest" />
         </aside>
         <div id="collection-products" className="shop-visual-main scroll-mt-28">
-          {hasActiveFilters ? (
+          {showSelectionSummary && collection === "curvy-dolls" ? (
+            <ActiveCatalogFilters filters={filters} preset={preset.filters} raw={rawSearchParams} basePath="/shop/curvy-dolls" />
+          ) : hasActiveFilters ? (
             <div className="shop-active-strip">
               {activeFilterLabels.map((label) => (
                 <span key={label}>{label}</span>
