@@ -1,5 +1,24 @@
 # DOL-229: Overnight Batch C Revision
 
+## Latest Private Card Weight Pass30Oct04:10
+
+Continue SAME worktree/branch/PR161. New runtime b868fd9242be20877136cde6a9ddd20db2d546c0
+adds qualified mapped-weight scanning ONLY on the existing four flagged private
+paths; shared default/production/other callers remain off. Read
+dol-229-private-card-weights-2026-10-30.md and private checkpoint latestWeightPass
+FIRST. Exact READY host ejsmgt9os / dpl_FtFHgbTm4yKiyPNH2BkWdX4VMLqb, actual
+hosted16cases/36labels each/exact built-source text/nooverflow/noindex/canonical/
+ItemList/Climax EnterFAQ pass. Listed weight is not complete-doll/shipping proof;
+existing MD Body weight interpretation retained, unknown/head-only omitted.
+37focused5files + separate8route builtHTML/TSC/scopedlint/local+remote builds/
+two4950gates pass. Broader unchanged productSpecs assertion35.8vs36.0kg fails,
+not an all-tests-green claim; no unrelated rounding fix. All servers stopped/
+viewport reset/tabs closed. p21 remains old weight-free proof, not latest feature
+acceptance; no unchanged redeploy. Whole229 unfinished; Roshi series navigation
+needs exact SKU evidence, not invented series filters. Moonvale/C-K already
+have separate private milestones; older NEXT below is historical, do not restart
+those passes. Other gates/holds and exact release approval remain unchanged.
+
 In Progress. PR161 first, PR183 next, then the remaining approved batches.
 Not a completed five-page scorecard, not In Review, not live. Read the current
 Linear description and29Oct22:38 brief before continuing.
