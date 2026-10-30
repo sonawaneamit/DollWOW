@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
 import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
+import { batchJBuyerPreviewEnabled } from "./batchJBuyerPreview";
 
 type CollectionPreset = {
   title: string;
@@ -63,12 +64,12 @@ export function buildCollectionMetadata(
   };
 }
 
-export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext) {
+export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext, { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const title = collectionTitle(preset);
   const description = collectionDescription(handle, preset);
   const url = collectionCanonicalUrl(handle);
   const faq = collectionFaqItems(handle, preset);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -133,6 +134,12 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
 }
 
 export function collectionIntro(preset: CollectionPreset, handle = "") {
+  if (batchJBuyerPreviewEnabled(`/shop/${handle}`)) {
+    if (handle === "black-hair-dolls") return "Compare dolls photographed with black hair. Check the exact listing for the included wig or hair type and any available colour choices; the photograph does not grant every hairstyle or colour option.";
+    if (handle === "brown-skin-dolls") return "Compare dolls photographed with brown skin tones. Shade names differ between manufacturers, and lighting can change their appearance. Check the named shade, material and included head-and-body build on the exact listing.";
+    if (handle === "height-155-159") return "Compare listings with a recorded height from 155 to 159 cm inclusive. Results can include complete dolls and partial-body products. Check the included form, measurements and listed weight: height alone does not tell you how easy it is to handle.";
+    if (handle === "height-165-169") return "Compare listings with a recorded height from 165 to 169 cm inclusive. Results can include complete dolls and partial-body products. Check the included form, measurements and listed weight: height alone does not tell you how easy it is to handle.";
+  }
   const title = collectionTitle(preset);
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;
