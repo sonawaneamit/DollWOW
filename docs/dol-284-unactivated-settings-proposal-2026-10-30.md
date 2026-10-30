@@ -15,6 +15,76 @@ or turn Managed Markets off until rates/checkout are tested, existing managed
 orders reviewed, final screenshots posted and Martin gives the final preview yes.
 No settings or copy have been activated by this checkpoint correction.
 
+## Latest Unactivated Construction
+
+30 October18:33:49 UTC: four new markets are saved **DRAFT**. The existing
+United States market is reused unchanged; no duplicate US market was created.
+Existing active United States/Non-US records compare equal before and after every
+successful creation, including their regions, currencies, price inclusions and
+catalog assignments. Managed Markets remains ON for active Non-US; its local FX
+and rounding remain ON. No global tax, shipping, returns, privacy or payment
+setting was changed and no copy was released.
+
+| Market | Shopify Market ID | Status | Country Scope |
+| --- | --- | --- | --- |
+| United States |98723266744| Existing ACTIVE, unchanged | US |
+| Canada |102364119224| DRAFT | CA |
+| UK |102364151992| DRAFT | GB |
+| EU |102364184760| DRAFT | All27 requested EU countries |
+| Rest of the World |102364315832| DRAFT |207 explicit supported remaining country/region codes, including AU/NZ/CH/NO |
+
+All four drafts explicitly use USD, local currencies OFF and rounding OFF. Their
+price-inclusion strategies are included taxes/duties; this is draft pricing
+configuration, not a new tax registration, collection switch or legal assurance.
+Native Canada/EU pages show Draft, US Dollar, Not collecting and DollWOW as the
+draft merchant of record. Their Managed Markets checkbox is unchecked; the
+existing active Non-US Managed Markets setting is untouched.
+
+Shopify rejected a region wildcard with `WILDCARD_NOT_SUPPORTED`, so RoW uses
+explicit supported codes, not a workaround through another market. The first
+explicit request rejected seven codes as `UNSUPPORTED_COUNTRY_REGION`:
+**BV, CU, HM, IR, KP, AN, SY**. Each response says the code is not supported.
+Only those exact rejected codes were excluded from the successful draft; these
+are platform responses, not independent legal classifications. Unknown ZZ is
+not a real destination. No EU country was rejected; all27 are saved in the draft.
+Market membership does not establish product/payment/shipping eligibility.
+
+Execution evidence is immutable under `data/exports/dol-284-2026-10-30/`:
+`draft-markets-execute-1834/` owns the three completed Canada/UK/EU creations;
+`row-supported-execute-1838/` owns the one RoW creation and final six-market
+readback. Do not rerun completed writes. Earlier `draft-markets-execute-1831`
+was rejected during oneOf variable validation before any creation; the corrected
+input contains only `regions`, not both `regions` and `applicationLevel`.
+`row-execute-1836` records the explicit unsupported-country responses, zero new
+markets. The guarded resume read the three successful receipts instead of
+recreating them. Folder labels are not asserted request timestamps.
+
+### Existing Orders And Rates
+
+The existing app has `read_all_orders`. A complete accessible ten-order read,
+without customer/contact/address/payment details, finds one Managed Markets
+order: PAID, FULFILLED, not cancelled, already not merchant-editable. No outstanding
+managed fulfillment appears in this read. No order was edited, replayed, paid,
+refunded or emailed; future returns/refund obligations are not declared absent.
+
+Fresh `shipping-rate-read-1836.json` confirms one General profile, the same24
+countries, one location group and an active `DeliveryRateDefinition` priced
+0.00USD, not merely a free-sounding method name. This is a current manual static
+rate, not post-deactivation carrier or delivery acceptance. Native EU draft
+explicitly warns that10 regions lack rates and cannot check out;17 are covered.
+RoW's draft207 countries likewise do not imply207-country shipping coverage.
+No shipping zone/profile/rate was changed in this construction milestone.
+
+**Unfinished:** prepare safe unassigned shipping configuration/actual preview
+where supported, verify inherited prices/zero adjustment and checkout feasibility,
+deliver final screenshots and obtain Martin's final preview yes before activation
+or Managed Markets-off. Native EU screenshot inspected inline; no saved/uploaded
+image or completed screenshot package is claimed. No post-switch checkout, Tom
+draft, payment/refund or global included-price copy release occurred.
+
+Primary platform guidance: [creating draft markets](https://help.shopify.com/en/manual/markets/getting-started/set-up-markets),
+[MarketCreateInput](https://shopify.dev/docs/api/admin-graphql/2026-04/input-objects/MarketCreateInput).
+
 Martin's 12:12 decision (`43333027-9ce6-4486-a548-050a60dd95b2`) and 12:13
 EU instruction (`b47a1a8f-cc88-4709-a022-73c8a1f7d25c`) supersede the original
 three-market proposal below. The plain-list preview is explicitly accepted as
@@ -29,9 +99,9 @@ Updated preview posted at14:38 as `5f03f25a-0dd7-4cc2-93c0-0ea64c3d2527`.
 | EU | Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden | Same; include all27 in proposed free-shipping coverage |
 | Rest of the World | Remaining destinations outside those four markets, including previously covered AU/NZ/CH/NO | Same; actual country/product/shipping eligibility still applies |
 
-EU exclusions established: **none**. BG/HR/CY/CZ/HU/LV/LT/RO/SK/SI are now
-explicitly requested additions, not exclusions merely because absent from the
-old shipping zone. No country addition or replacement rate has been saved/tested.
+EU exclusions established: **none**. BG/HR/CY/CZ/HU/LV/LT/RO/SK/SI are saved
+in the new EU DRAFT, not excluded merely because absent from the old shipping
+zone. Their replacement shipping rates have not been saved/tested.
 Any actual Admin/provider rejection must be named with its reason, not bypassed.
 No universal worldwide delivery or product clearance is inferred.
 
