@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { env } from "@/lib/utils/env";
 import { isIndexableShopCollectionHandle, type CatalogFilters } from "./filters";
 import { productPublicTitle } from "./naming";
+import { batchKBuyerPreviewEnabled } from "./batchKBuyerPreview";
 
 type CollectionPreset = {
   title: string;
@@ -63,12 +64,12 @@ export function buildCollectionMetadata(
   };
 }
 
-export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext) {
+export function buildCollectionStructuredData({ handle, preset, products }: CollectionContext, { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const title = collectionTitle(preset);
   const description = collectionDescription(handle, preset);
   const url = collectionCanonicalUrl(handle);
   const faq = collectionFaqItems(handle, preset);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -133,6 +134,10 @@ export function buildCollectionStructuredData({ handle, preset, products }: Coll
 }
 
 export function collectionIntro(preset: CollectionPreset, handle = "") {
+  if (batchKBuyerPreviewEnabled(`/shop/${handle}`)) {
+    if (handle === "height-170-plus") return "Compare listings with a recorded height of 170 cm or more. Check whether each result is a complete doll or a partial-body product and what the measurement includes. Compare full dimensions and listed weight: height alone does not establish proportions or handling weight.";
+    if (handle === "latina-dolls") return "Compare listings in DollWow's Latina styling category, not verified nationality, ancestry or a standard body shape. Check the exact form, head and body materials, measurements and listed weight. Confirm included hair, skin tone and accessories rather than treating photographed styling as an option specification.";
+  }
   const title = collectionTitle(preset);
   const handleIntro = collectionIntroByHandle[handle];
   if (handleIntro) return handleIntro;
