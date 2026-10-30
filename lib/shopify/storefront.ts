@@ -564,8 +564,8 @@ export async function getProductCount({ query }: { query?: string } = {}) {
 }
 
 /** Strict lookups return null for unavailable products and throw on configuration or upstream failures. */
-export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number; strict?: boolean } = { cache: "no-store" }) {
-  const privateDraft = await getPrivateDraftPreview(handle);
+export async function getProductByHandle(handle: string, options: { cache?: RequestCache; revalidate?: number; strict?: boolean; publishedOnly?: boolean } = { cache: "no-store" }) {
+  const privateDraft = options.publishedOnly ? null : await getPrivateDraftPreview(handle);
   if (privateDraft) return privateDraft;
   if (!hasShopifyStorefrontEnv()) {
     if (options.strict) throw new Error("Shopify Storefront API is not configured.");
