@@ -3,6 +3,7 @@ import type { Product } from "@/types/product";
 import { catalogBrands, type CatalogBrand } from "@/lib/catalog/brands";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { env } from "@/lib/utils/env";
+import { batchIBuyerPreviewEnabled } from "./batchIBuyerPreview";
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
 
@@ -1136,10 +1137,10 @@ export function buildBrandMetadata(brand: CatalogBrand): Metadata {
   };
 }
 
-export function buildBrandStructuredData(brand: CatalogBrand, products: Product[]) {
+export function buildBrandStructuredData(brand: CatalogBrand, products: Product[], { visiblePage = false }: { visiblePage?: boolean } = {}) {
   const url = brandCanonicalUrl(brand);
   const profile = brandSeoProfile(brand);
-  const itemListProducts = products.slice(0, 24);
+  const itemListProducts = visiblePage ? products : products.slice(0, 24);
 
   return [
     {
@@ -1186,7 +1187,15 @@ export function buildBrandStructuredData(brand: CatalogBrand, products: Product[
 }
 
 export function brandSeoProfile(brand: CatalogBrand): BrandSeoProfile {
-  const custom = brandProfiles[brand.value] ?? {};
+  const privateIntros: Record<string, string> = {
+    piper: "Compare Piper listings by the product form, included body areas, complete dimensions, listed weight and material. Full dolls and torsos are different builds. Check the exact configuration and care requirements before choosing: a short listed dimension alone does not establish standing height or easy handling.",
+    rosretty: "Compare Rosretty listings by the exact product form and head-and-body construction. A silicone-head label does not establish a full-silicone body. Ask for the finished weight or any missing material details before planning lifting, cleaning and storage, then confirm what your chosen build includes.",
+    sy: "Compare SY complete dolls and torsos separately, checking the exact head and body materials, dimensions and listed weight. Similar names or photographs do not guarantee the same build or options. Confirm included accessories, supported choices and the final configured price on your selected listing.",
+    yl: "Compare YL dolls by their exact head and body construction, full dimensions and listed weight. Do not assume every model uses the same material or options. Check the included build and supported choices separately for custom orders and fixed warehouse configurations."
+  };
+  const custom = batchIBuyerPreviewEnabled(`/brands/${brand.collectionHandle}`)
+    ? { ...brandProfiles[brand.value], intro: privateIntros[brand.value] }
+    : brandProfiles[brand.value] ?? {};
   const positioning =
     custom.positioning ??
     `${brand.label} models are best compared by material, measurements, available options, current price, and expected delivery timing.`;
