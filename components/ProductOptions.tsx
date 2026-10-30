@@ -68,6 +68,7 @@ import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
 import { includedBuildItems, isChikuPreview } from "@/lib/customization/chiku-preview";
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
+import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
@@ -76,6 +77,7 @@ export function ProductOptions({ product, config, promoClock, templateRecipe, pr
 }
 
 function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview, draftPreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean; draftPreview: boolean }) {
+  const emptyOptionalLabel = reviewedGynoidIdentity(product) ? 'No optional upgrades selected' : undefined;
   const VariantContainer = gynoidBodyVersionMapping(product) ? 'div' : 'label';
   const router = useRouter();
   const didMountRef = useRef(false);
@@ -418,6 +420,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
             <h3 className="mt-5 text-xl font-semibold leading-snug">{displayTitle}</h3>
             <p className="mt-1 text-[15px] text-text-dim">{product.extended.brand ?? product.vendor}</p>
             <BuildSummary
+              emptyOptionalLabel={emptyOptionalLabel}
               groups={visibleGroups}
               selected={resolved.selections}
               selectedOptions={resolved.selectedOptions}
@@ -470,7 +473,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   <span className={clsx("flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold", active ? "bg-accent text-white" : "bg-surface-tint text-text")}>{index + 1}</span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-[17px] font-semibold text-text">{group.label}</span>
-                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, resolved.selections[group.id]) || "Factory default — included"}</span> : null}
+                    {!active ? <span className="mt-0.5 block text-[15px] leading-6 text-text-dim">{selectedLabelForGroup(group, resolved.selections[group.id]) || (emptyOptionalLabel && group.selectionMode === 'multiple' ? emptyOptionalLabel : "Factory default — included")}</span> : null}
                   </span>
                   {!active ? <span className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</span> : null}
                 </button>
@@ -524,7 +527,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                 <h3 className="mt-1 font-display text-2xl font-semibold">Review your build</h3>
                 <p className="mt-2 text-[15px] leading-6 text-text-dim">Check each choice, then continue to checkout. You can still change anything.</p>
 
-                <ReviewRows groups={visibleGroups} selected={resolved.selections} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} />
+                <ReviewRows groups={visibleGroups} selected={resolved.selections} selectedOptions={resolved.selectedOptions} currencyCode={currencyCode} onEdit={goToGroup} emptyOptionalLabel={emptyOptionalLabel} />
               </div>
             )}
           </section>
@@ -601,7 +604,8 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   );
 }
 
-function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, leadTimeNote, stockStatus }: {
+function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPriceDelta, totalPrice, currencyCode, leadTimeNote, stockStatus, emptyOptionalLabel }: {
+  emptyOptionalLabel?: string;
   groups: CustomizationGroup[];
   selected: CustomizationSelections;
   selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
@@ -620,7 +624,7 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
       <h3 className="text-xl font-semibold">Your build</h3>
       <div className="mt-3 divide-y divide-border">
         {groups.map((group) => {
-          const summary = groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode);
+          const summary = groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode, emptyOptionalLabel);
           return <div key={group.id} className="build-summary-row py-3 text-[15px]"><span className="text-text-dim">{group.label}</span><span className="min-w-0 font-semibold text-text">{summary}</span></div>;
         })}
       </div>
@@ -637,7 +641,8 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
   );
 }
 
-function ReviewRows({ groups, selected, selectedOptions, currencyCode, onEdit }: {
+function ReviewRows({ groups, selected, selectedOptions, currencyCode, onEdit, emptyOptionalLabel }: {
+  emptyOptionalLabel?: string;
   groups: CustomizationGroup[];
   selected: CustomizationSelections;
   selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"];
@@ -650,7 +655,7 @@ function ReviewRows({ groups, selected, selectedOptions, currencyCode, onEdit }:
         <div key={group.id} className="flex min-h-[72px] items-center gap-4 py-3">
           <span className="min-w-0 flex-1">
             <span className="block text-[15px] text-text-dim">{group.label}</span>
-            <span className="mt-0.5 block text-[15px] font-semibold text-text">{groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode)}</span>
+            <span className="mt-0.5 block text-[15px] font-semibold text-text">{groupSelectionSummary(group, selected[group.id], selectedOptions, currencyCode, emptyOptionalLabel)}</span>
           </span>
           <button type="button" onClick={() => onEdit(group.id)} className="inline-flex min-h-11 items-center px-2 text-[15px] font-semibold text-accent">Change</button>
         </div>
@@ -932,7 +937,8 @@ function selectedLabelForGroup(group: CustomizationGroup, value: CustomizationSe
   return labels.join(", ");
 }
 
-function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSelectionValue | undefined, selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"], currencyCode: string) {
+function groupSelectionSummary(group: CustomizationGroup, value: CustomizationSelectionValue | undefined, selectedOptions: ReturnType<typeof resolveCustomization>["selectedOptions"], currencyCode: string, emptyOptionalLabel?: string) {
+  if (emptyOptionalLabel && group.selectionMode === 'multiple' && !selectionIds(value).length) return emptyOptionalLabel;
   const label = selectedLabelForGroup(group, value) || "Factory default";
   const options = selectedOptions.filter((option) => option.groupId === group.id);
   const delta = options.reduce((sum, option) => sum + option.priceDelta, 0);
