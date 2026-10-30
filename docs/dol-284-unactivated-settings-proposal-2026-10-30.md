@@ -2,9 +2,18 @@
 
 Prepared 30 October 2026. Nothing below has been activated. The five category
 corrections and Casey's earlier country-cart test are separate completed work;
-they are not repeated here. Martin's exact preview yes is still required.
+they are not repeated here. Construction is approved; final activation approval
+is still required after the final checks.
 
 ## Current Decision: Five Markets
+
+Martin's 16:30 decision (`995e1420-48df-4e6e-b498-3706a40635c4`) approves
+construction of this five-market setup, USD-only/local currencies off, no VAT
+registrations and the proposed included-shipping/duties/taxes wording. Finish
+Gynoid DOL273 first. This is not activation authority: do not switch markets on
+or turn Managed Markets off until rates/checkout are tested, existing managed
+orders reviewed, final screenshots posted and Martin gives the final preview yes.
+No settings or copy have been activated by this checkpoint correction.
 
 Martin's 12:12 decision (`43333027-9ce6-4486-a548-050a60dd95b2`) and 12:13
 EU instruction (`b47a1a8f-cc88-4709-a022-73c8a1f7d25c`) supersede the original
@@ -28,7 +37,7 @@ No universal worldwide delivery or product clearance is inferred.
 
 No new VAT registrations, no standalone duty/import-tax collection, proposed
 included-shipping/duty/tax copy not released. Managed Markets remains on until
-exact preview yes and existing-managed-order review. No activation, category
+final preview yes and the required checks/order review. No activation, category
 replay, cart, draft, order, payment or refund in this update.
 
 The remainder records the original10:58 proposal and its evidence. Its
