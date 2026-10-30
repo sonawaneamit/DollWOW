@@ -60,7 +60,7 @@ export default async function BrandHubPage({
   const profile = brandSeoProfile(brand);
   const compactBrowsing = usesCompactBrandLayout(brand.value);
   const relatedLinks = brandRelatedLinks(brand);
-  const structuredData = buildBrandStructuredData(brand, orderedProducts);
+  const structuredData = buildBrandStructuredData(brand, showSelectionSummary ? catalogPage.items : orderedProducts, { visiblePage: showSelectionSummary });
   const activeFilterLabels = Object.entries(filters)
     .filter(([key, value]) => Boolean(value) && key !== "brand")
     .filter(([key, value]) => !(key === "sort" && value === "featured"))

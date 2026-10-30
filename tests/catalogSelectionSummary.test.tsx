@@ -3,12 +3,30 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CatalogSelectionSummary, batchCSelectionSummaryEnabled } from "@/components/CatalogSelectionSummary";
 import { sampleProducts } from "@/lib/data/sample-products";
+import { buildBrandStructuredData } from "@/lib/catalog/brandSeo";
+import { getCatalogBrand } from "@/lib/catalog/brands";
+import { buildCollectionStructuredData } from "@/lib/catalog/collectionSeo";
+import { collectionPresets } from "@/lib/catalog/filters";
 
 afterEach(() => vi.unstubAllEnvs());
 const product = (amount: string, currencyCode = "USD") => ({ ...sampleProducts[0], priceRange: { ...sampleProducts[0].priceRange, minVariantPrice: { amount, currencyCode } } });
 const render = (products: ReturnType<typeof product>[]) => renderToStaticMarkup(<CatalogSelectionSummary products={products} />);
 
 describe("scoped private catalog selection summary", () => {
+  it.each(["brand", "collection"])("matches every visible %s card while preserving the existing default schema contract", kind => {
+    const products = Array.from({ length: 36 }, (_, index) => ({ ...product("1999"), handle: `visible-${index}` }));
+    const build = (visiblePage: boolean) => kind === "brand"
+      ? buildBrandStructuredData(getCatalogBrand("erovenus-dolls")!, products, { visiblePage })
+      : buildCollectionStructuredData({ handle: "curvy-dolls", preset: collectionPresets["curvy-dolls"], products }, { visiblePage });
+    const list = (visiblePage: boolean) => {
+      const entity = build(visiblePage)[0].mainEntity!;
+      if (Array.isArray(entity)) throw new Error("Expected CollectionPage ItemList");
+      return entity;
+    };
+    expect(list(false).itemListElement).toHaveLength(24);
+    expect(list(true).numberOfItems).toBe(36);
+    expect(list(true).itemListElement.map((item: { url: string }) => new URL(item.url).pathname)).toEqual(products.map(p => `/products/${p.handle}`));
+  });
   it("reports current page starting prices without a landed or whole-catalog promise", () => {
     const html = render([product("1999"), product("850.50")]);
     expect(html).toContain("Starting prices on this page: $850.50 to $1,999.00 USD");

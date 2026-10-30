@@ -5,11 +5,11 @@ import { parse } from "node-html-parser";
 describe.skipIf(process.env.DOL229_SOURCE_HTML !== "1")("Batch C current-source HTML", () => {
   it("renders current card links, useful price summaries and valid matching FAQ without JavaScript", async () => {
     const proof = [];
-    for (const path of ["/brands/erovenus-dolls", "/brands/climax-dolls", "/shop/curvy-dolls", "/shop/brunette-dolls"]) {
+    for (const path of ["/brands/erovenus-dolls", "/brands/climax-dolls", "/shop/curvy-dolls", "/shop/brunette-dolls"].flatMap(path => [path, `${path}?page=2`])) {
       const response = await fetch(`http://localhost:3019${path}`);
       expect(response.status).toBe(200);
       const root = parse(await response.text());
-      expect(root.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe(`https://dollwow.com${path}`);
+      expect(root.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe(`https://dollwow.com${path.split("?")[0]}`);
       const summary = root.querySelector('[data-testid="catalog-selection-summary"]');
       expect(summary?.textContent).toContain("Starting prices on this page:");
       expect(summary?.textContent).toContain("Shipping, taxes, and any custom options are confirmed at checkout.");
@@ -19,14 +19,17 @@ describe.skipIf(process.env.DOL229_SOURCE_HTML !== "1")("Batch C current-source 
       const schemas = root.querySelectorAll('script[type="application/ld+json"]').map(script => JSON.parse(script.textContent));
       const page = schemas.find(schema => schema["@type"] === "CollectionPage");
       expect(page.mainEntity["@type"]).toBe("ItemList");
-      expect(page.mainEntity.itemListElement.length).toBeGreaterThan(0);
+      const cardUrls = cards.map(card => `https://dollwow.com${card.querySelector('a[href^="/products/"]')!.getAttribute("href")}`);
+      expect(page.mainEntity.numberOfItems).toBe(cards.length);
+      expect(page.mainEntity.itemListElement.map((item: { url: string }) => item.url)).toEqual(cardUrls);
+      expect(page.mainEntity.itemListElement.map((item: { position: number }) => item.position)).toEqual(cards.map((_, index) => index + 1));
       expect(schemas.some(schema => schema["@type"] === "BreadcrumbList")).toBe(true);
       expect(schemas.some(schema => schema["@type"] === "Organization")).toBe(true);
       const faq = schemas.find(schema => schema["@type"] === "FAQPage");
       const prefix = path.startsWith("/brands") ? "brand" : "collection";
       const visible = root.querySelector(`#${prefix}-faq-heading`)!.closest("details")!.querySelectorAll("article").map(article => [article.querySelector("h3")?.textContent, article.querySelector("p")?.textContent]);
       expect(faq.mainEntity.map((q: { name: string; acceptedAnswer: { text: string } }) => [q.name, q.acceptedAnswer.text])).toEqual(visible);
-      proof.push({ path, status: response.status, title: root.querySelector("title")?.textContent, h1: root.querySelector("main h1")?.textContent, summary: summary?.textContent, cards: cards.length, types: schemas.map(schema => schema["@type"]), faqMatchesVisible: true });
+      proof.push({ path, status: response.status, title: root.querySelector("title")?.textContent, h1: root.querySelector("main h1")?.textContent, summary: summary?.textContent, cards: cards.length, types: schemas.map(schema => schema["@type"]), itemListMatchesVisiblePage: true, faqMatchesVisible: true });
     }
     await mkdir("data/exports/dol-229-2026-10-30", { recursive: true });
     await writeFile("data/exports/dol-229-2026-10-30/source-html-proof.json", JSON.stringify({ checkedAt: new Date().toISOString(), scope: "LOCAL built route / semantic JSON checks, not external rich-results validator or hosted release proof", proof }, null, 2));

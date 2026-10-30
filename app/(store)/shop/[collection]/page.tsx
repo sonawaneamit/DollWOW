@@ -56,7 +56,7 @@ export default async function CollectionPage({
   const filteredProducts = filterProducts(collectionProducts, filters);
   const filtered = collection === "new-sex-dolls" ? storefrontFeatureProducts(filteredProducts) : filteredProducts;
   const catalogPage = paginateCatalog(filtered, catalogPageFromValue(rawSearchParams.page));
-  const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: filtered });
+  const structuredData = buildCollectionStructuredData({ handle: collection, preset, products: showSelectionSummary ? catalogPage.items : filtered }, { visiblePage: showSelectionSummary });
   const relatedLinks = collectionRelatedLinks(collection, preset);
   const buyerNotes = collectionBuyerNotes(collection, preset);
   const comparisonRows = collectionComparisonRows(collection, preset);
