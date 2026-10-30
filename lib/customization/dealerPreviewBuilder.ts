@@ -1,4 +1,5 @@
 import { SE_ELF_FACTS } from './se-oct27-preview';
+import gynoidApproved from '@/data/catalog/gynoid-approved-configurations.json';
 
 // FunWest/Top Fire previews keep the live listing structure: the step-by-step wizard stays
 // inline under the preset picker, including after a preset is chosen.
@@ -25,7 +26,7 @@ export function presetSelectLayout(handle: string, pendingChoiceCount: number) {
  */
 export function dealerPreviewProductFetch(handle: string): { cache: RequestCache; revalidate?: number } {
   // Newly appended Elf galleries must not retain the initial three-photo response.
-  return keepsWizardOpen(handle) || Object.hasOwn(SE_ELF_FACTS, handle)
+  return keepsWizardOpen(handle) || Object.hasOwn(SE_ELF_FACTS, handle) || gynoidApproved.products.some(product => product.handle === handle)
     ? { cache: "no-store" } : { cache: "reload", revalidate: 0 };
 }
 

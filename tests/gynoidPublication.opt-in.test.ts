@@ -10,7 +10,7 @@ vi.mock('server-only', () => ({}));
 
 type Node = { id: string; title: string; handle: string; status: string; tags: string[];
   variants: { nodes: Array<{ id: string; price: string }>; pageInfo: { hasNextPage: boolean } };
-  resourcePublications: { nodes: Array<{ isPublished: boolean; publication: { id: string } }>; pageInfo: { hasNextPage: boolean } } };
+  resourcePublications: { nodes: Array<{ isPublished: boolean; publication: { id: string; name: string; autoPublish: boolean } }>; pageInfo: { hasNextPage: boolean } } };
 
 test.skipIf(process.env.GYNOID_PUBLICATION !== '1')('publishes only the approved retained cohort after exact production deployment verification', async () => {
   const output = process.env.GYNOID_PUBLICATION_OUTPUT, execute = process.env.GYNOID_PUBLICATION_EXECUTE === '1';
@@ -45,12 +45,16 @@ test.skipIf(process.env.GYNOID_PUBLICATION !== '1')('publishes only the approved
   const ids = [...charges.map(c => c.product.id), ...products.map(p => p.id)];
   expect(new Set(ids).size).toBe(19);
   const channels = ['gid://shopify/Publication/321446248632', 'gid://shopify/Publication/321372946616'];
+  const automaticCatalogs = new Map([
+    ['gid://shopify/Publication/321373110456', 'Microsoft Copilot'],
+    ['gid://shopify/Publication/336936665272', 'Meta AI and Muse'],
+  ]);
   const current = async (readIds = ids) => (await adminFetch<{ nodes: Node[] }>(`query GynoidPublicationRead($ids:[ID!]!) {
     nodes(ids:$ids) { ... on Product { id title handle descriptionHtml status tags vendor productType category { id fullName }
       variants(first:3) { nodes { id title price taxable sku inventoryPolicy selectedOptions { name value } inventoryItem { requiresShipping tracked } } pageInfo { hasNextPage } }
       metafields(first:100) { nodes { namespace key type value } pageInfo { hasNextPage } }
       media(first:100) { nodes { id } pageInfo { hasNextPage } }
-      resourcePublications(first:20) { nodes { isPublished publication { id } } pageInfo { hasNextPage } }
+      resourcePublications(first:20) { nodes { isPublished publication { id name autoPublish } } pageInfo { hasNextPage } }
     } }
   }`, { ids: readIds })).nodes;
   const before = await current(); expect(before).toHaveLength(19);
@@ -88,12 +92,22 @@ test.skipIf(process.env.GYNOID_PUBLICATION !== '1')('publishes only the approved
       await save(`published-${plan.id.split('/').at(-1)}`, response); expect(response.publishablePublish.userErrors).toEqual([]);
     }
     const after = (await current([plan.id]))[0];
+    const extra = after.resourcePublications.nodes.filter(n => n.isPublished && !channels.includes(n.publication.id));
+    // Native Agentic review is separate from selected sales channels. Record
+    // these existing automatic catalogs, without claiming AI eligibility.
+    expect(extra.every(n => automaticCatalogs.get(n.publication.id) === n.publication.name && n.publication.autoPublish)).toBe(true);
     expect(after.status).toBe('ACTIVE'); expect([...after.tags].sort()).toEqual([...plan.desiredTags].sort());
-    expect(after.resourcePublications.nodes.filter(n => n.isPublished).map(n => n.publication.id).sort()).toEqual([...channels].sort());
-    const preserved = (p: Node) => { const { status, tags, resourcePublications, ...rest } = p; void status; void tags; void resourcePublications; return rest; };
+    expect(after.resourcePublications.nodes.filter(n => n.isPublished && channels.includes(n.publication.id)).map(n => n.publication.id).sort()).toEqual([...channels].sort());
+    const preserved = (p: Node) => {
+      const { status, tags, resourcePublications, ...rest } = p; void status; void tags; void resourcePublications;
+      const full = rest as typeof rest & { metafields: { nodes: Array<{ namespace: string; key: string }>; pageInfo: { hasNextPage: boolean } } };
+      // The existing product-update webhook owns this IndexNow delivery ledger.
+      // Preserve every merchant metafield; retain the ledger in raw evidence.
+      return { ...full, metafields: { ...full.metafields, nodes: full.metafields.nodes.filter(m => !(m.namespace === 'app--373284667393--indexnow' && m.key === 'notification_state')) } };
+    };
     expect(preserved(after)).toEqual(preserved(before.find(p => p.id === plan.id)!));
     await save(`verified-${plan.id.split('/').at(-1)}`, { at: new Date().toISOString(), after });
   }
   await save('final', { at: new Date().toISOString(), after: await current(), proof, products: 11, charges: 8,
-    qualification: 'Exact approved existing-product publication, not live-browser acceptance, delivery guarantee, order or payment.' });
+    qualification: 'Exact approved web-store publication. Existing automatic AppCatalog membership is not AI eligibility, live-browser acceptance, delivery guarantee, order or payment.' });
 }, 240000);

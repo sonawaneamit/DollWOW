@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import { keepsWizardOpen, presetSelectLayout, dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
 import { SE_ELF_FACTS } from '@/lib/customization/se-oct27-preview';
+import gynoidApproved from '@/data/catalog/gynoid-approved-configurations.json';
 
 const lily = "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052";
 const grace = "top-fire-doll-grace-162cm-i-cup-silicone-companion-doll";
@@ -28,6 +29,14 @@ describe("FunWest/Top Fire preset clicks keep the wizard open", () => {
 });
 
 describe("dealer preview PDP data", () => {
+  it('reads the eleven approved Gynoid PDPs uncached after publication without broadening brand scope', () => {
+    expect(gynoidApproved.products).toHaveLength(11);
+    for (const product of gynoidApproved.products) {
+      expect(dealerPreviewProductFetch(product.handle)).toEqual({cache: 'no-store'});
+      expect(keepsWizardOpen(product.handle)).toBe(false);
+    }
+    expect(dealerPreviewProductFetch('gynoid-unreviewed-model')).toEqual({cache: 'reload', revalidate: 0});
+  });
   it("keeps all four new Elf galleries fresh without changing their wizard behavior or other SE products", () => {
     expect(Object.keys(SE_ELF_FACTS)).toHaveLength(4);
     for (const handle of Object.keys(SE_ELF_FACTS)) {
