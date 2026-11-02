@@ -236,3 +236,30 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
   merge or release. Full regression, hosted candidate and real-device acceptance
   remain required before Martin's preview handoff. Do not replay parity reads
   or accepted transactional tests merely to refresh a receipt.
+
+## Homepage List Image Read (2 November, 20:14)
+
+- Reconciled the previous inconclusive controls against exact previous43 and
+  current19360 hosted previews: settled mouse Brands opens on both, mobile
+  Filter & sort expands on both, and Ria Head->Head Type advances the wizard on
+  both. Clicking its already-active Head step is not a collapse toggle. No
+  control change was needed; early reads are not regression acceptance.
+- Only the six homepage96-product list queries now request one image instead
+  of eight, matching their existing one-image public card projection. Spotlight
+  detail reads, brand-logo reads, PDP galleries and global image settings are
+  unchanged. Exact current eligibility/private-hold verification remains.
+- One actual read-only latest96 comparison at20:10:01Z: upstream uncompressed
+  catalog JSON548,117->397,186 bytes (150,931 fewer,27.5%). All96 projected card
+  objects/order/prices/badges match, SHA256
+  `3723a515d3ef6aba867fc9dad362ee1664e737a0e621f72cd2339e8ea5fc1cf6`.
+  This is one list, not whole-home transfer or visitor-speed proof. Do not rerun
+  the unchanged opt-in parity test merely for another receipt.
+- 112 tests/five files, scoped lint and diff check pass. Configured local Node26
+  build/TSC/promotion checks and both4,954-asset gates pass; existing diagnostics
+  remain. Actual local390/1319 home has correct title/no overflow, both empty
+  cart drawers work, inspected first two arrivals images decode, and Samantha.K
+  card reaches its correct PDP with gallery controls retained. Screens retained.
+- Local mobile home remains75/96/96/100, LCP7.3s: performance target still NOT
+  met. Smaller upstream JSON is not a measured page-speed win. No broad caching,
+  eligibility, product options, checkout, email/generation or consent changes.
+  Hosted acceptance and full matched after matrix remain required; nothing live.

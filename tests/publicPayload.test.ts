@@ -83,6 +83,29 @@ describe('customer payload boundaries', () => {
     }
   });
 
+  it('requests only one image for homepage card lists without shrinking spotlight detail or PDP galleries', () => {
+    const home = ts.createSourceFile('home.tsx', fs.readFileSync('app/(store)/page.tsx', 'utf8'), ts.ScriptTarget.Latest, true);
+    let cardLists = 0;
+    let spotlight = 0;
+    function visit(node: ts.Node) {
+      if (ts.isCallExpression(node) && node.expression.getText(home) === 'getProducts') {
+        const options = node.arguments[0] as ts.ObjectLiteralExpression;
+        const fields = Object.fromEntries(options.properties.filter(ts.isPropertyAssignment).map(p => [p.name.getText(home), p.initializer.getText(home)]));
+        expect(fields.imageFirst).toBe('1');
+        expect(fields.strict).toBe('true');
+        if (fields.first === '96') cardLists++;
+      }
+      if (ts.isCallExpression(node) && node.expression.getText(home) === 'getProductByHandle') {
+        spotlight++;
+        expect(node.arguments[1].getText(home)).not.toContain('imageFirst');
+      }
+      ts.forEachChild(node, visit);
+    }
+    visit(home);
+    expect(cardLists).toBe(6);
+    expect(spotlight).toBe(1);
+  });
+
   it('preserves sample menu default selection, totals and preset identity', () => {
     for (const product of sampleProducts) {
       const original = getCustomizationConfig(product);
