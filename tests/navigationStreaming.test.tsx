@@ -56,6 +56,7 @@ describe('Navigation feedback and streamed DollVue content', () => {
     const html = renderToStaticMarkup(<LoadingPage />);
     expect(html).toContain('role="status"');
     expect(html).toContain('aria-label="Loading page"');
+    expect(html).toContain('min-h-screen');
     expect(html).toContain('aspect-[2/3]');
     expect(html).not.toContain('<button');
   });
