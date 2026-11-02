@@ -2987,8 +2987,8 @@ a {
 
 .home-dollvue-strip__link {
   display: block;
-  width: 80%;
-  margin-inline: auto;
+  width: 100%;
+  padding-inline: 10%;
   outline-offset: -4px;
 }
 

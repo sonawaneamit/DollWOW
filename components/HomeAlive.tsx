@@ -182,7 +182,9 @@ export function HomeAlive({
 function DollVueHomepageStrip() {
   return (
     <section className="home-dollvue-strip" aria-label="DollVue personalized appearance previews">
-      <Link
+      {/* Native document navigation displays the streamed destination without waiting for the full client route payload. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+      <a
         href="/dollvue"
         className="home-dollvue-strip__link"
         aria-label="Explore DollVue personalized doll previews"
@@ -203,7 +205,7 @@ function DollVueHomepageStrip() {
           height={887}
           sizes="80vw"
         />
-      </Link>
+      </a>
     </section>
   );
 }
