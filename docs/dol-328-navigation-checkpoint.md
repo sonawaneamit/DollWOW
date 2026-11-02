@@ -409,3 +409,44 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
   full five-page matched matrix/regression and Martin handoff are unfinished;
   nothing live. Next prioritize the complete matched matrix/remaining gap
   reconciliation rather than repeating these completed phase measurements.
+
+## Configurator-Owned CSS Split (2 November, 23:28)
+
+- Moved 201 full-configurator selector records, covering 46 DollVue classes,
+  from shared globals to a stylesheet imported only by `DollVue.tsx`. All
+  1,404 original selector/declaration/media/keyframe/directive records are
+  conserved; relative order within both ownership boundaries is unchanged.
+  Shared PDP entry, access gate and star keyframes remain global. The real
+  configurator component is byte-unchanged except for the stylesheet import.
+  No product, eligibility, session, consent, generation, option or checkout
+  logic changed. Initial-view CSS coverage was not used as a deletion list.
+- Added a preview/development-only neutral layout fixture with zero allowance
+  and `live=false`, tested unavailable in production. No customer session,
+  email, consent choice, generation or cart was used. Complete computed styles
+  match before/after in four actual built views: photo/choice-limit at1319/390.
+  Choice three stays disabled after two choices; generation stays disabled.
+  Client exit to home restores the header/body mode and back navigation restores
+  the configurator. Shared Ria PDP entry has zero differences across11elements
+  for18layout properties at390; its real entry reaches the unauthenticated
+  access gate. This is NOT generated-result/error-state, full-media, real-device
+  or transactional acceptance. The390photo screenshots have different scroll
+  positions, not pixel-matched initial viewport proof. One full PDP style read
+  exceeded the provider deadline; bounded layout-property comparison is separate.
+- Built manifests exclude full-configurator CSS from home, collection, brand,
+  PDP and DollVue landing; only configurator/review fixtures include it. Root
+  stylesheet189,341->171,084 uncompressed bytes; observed home stylesheet
+  transfer36,018->33,199bytes. These are stylesheet figures, not whole-page
+  savings or guaranteed speed. Font faces/subsets/weights remain unchanged.
+- Two before and two changed-build home Lighthouse13.6 samples, same3033,
+  Node26.12.1/env/lock/flags/fiveHTMLwarmups/runtime-preview and final origin/path:
+  mobile79/96/96/100->82/96/96/100,LCP5395->4685ms;
+  desktop98/96/96/100->98/96/96/100,LCP1030->1128ms. CLS unchanged.
+  Desktop LCP decline retained; single pairs with backend/cache/animation
+  variation do not establish a stable overall speed win. Mobile90 still missed.
+  No unchanged reruns, full-five-page remeasurement, hosted/field/device claim.
+- 111focused tests/11files pass with the saved-source conservation opt-in;
+  default110pass/one migration-proof skip. Scoped lint, standalone TSC and
+  configured local build/promotion/two4,954asset gates pass; existing visual-index
+  and dynamic/static diagnostics retained. Exact new remote checks/deployment
+  and hosted affected-route verification remain pending. Private only, no
+  Martin handoff/live/merge; whole328 targets/full regression remain unfinished.
