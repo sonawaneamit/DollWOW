@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,14 +13,13 @@ import { AfterpayMessaging } from "@/components/AfterpayMessaging";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ContextualCatalogLinks } from '@/components/ContextualCatalogLinks';
 import { contextualLinksEnabled, productContextualLinks } from '@/lib/catalog/contextualLinks';
-import { dealerPreviewProductFetch, dealerPublicTags, keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
-import { ProductLowerAlive } from "@/components/ProductLowerAlive";
+import { dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
+import { ProductRelatedContent } from "@/components/product/ProductRelatedContent";
 import { ProductOptions } from "@/components/ProductOptions";
 import { ProductEditorialPreview, supportsProductEditorialPreview } from "@/components/ProductEditorialPreview";
 import { ResponsiveDetails } from "@/components/ResponsiveDetails";
 import { WarehouseStatusBadge } from "@/components/WarehouseStatusBadge";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
-import { scoreSimilarProducts } from "@/lib/catalog/similar";
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import { isLiveAuthorizedBrand } from "@/lib/catalog/authorizations";
 import { productDisplayName, productDisplayNameForUi, productPdpHeading, productPublicTitle } from "@/lib/catalog/naming";
@@ -43,7 +42,7 @@ import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalPdpPreview } from "@/components/factory-approval/FactoryApprovalPreview";
-import { getProductByHandle, getProducts } from "@/lib/shopify/storefront";
+import { getProductByHandle } from "@/lib/shopify/storefront";
 import { isSeElfPreviewProduct } from '@/lib/catalog/seElfPreview';
 import { isDollVueCatalogProduct, dollVueUrl } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
@@ -106,20 +105,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   )));
   const templateRecipe = await loadTemplateRecipe(product);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
-  const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
-  const brandQuery = brandTag ? `tag:${JSON.stringify(brandTag)}` : `title:${JSON.stringify(product.extended.brand ?? product.vendor)}`;
-  const brandProducts = await getProducts({
-    query: brandQuery,
-    first: 600,
-    imageFirst: 1,
-    cacheKey: `pdp-related-brand-v3-${(relatedBrand?.value ?? product.extended.brand ?? product.vendor).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
-    revalidate: 3600
-  });
   const price = product.priceRange.minVariantPrice;
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const heroImageUrl = protectedProductImageUrlFor(product, heroImage);
-  const alternatives = scoreSimilarProducts(product, brandProducts, 5);
   const displayTitle = productPublicTitle(product);
   const displayName = productDisplayName(product);
   const displayNameUi = productDisplayNameForUi(product);
@@ -305,7 +294,9 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <ContextualCatalogLinks links={contextualLinks.filter(link => link.kind !== 'brand')} label="Compare this doll" />
       </ToneBand>
 
-      <ProductLowerAlive product={publicProduct} similarProducts={alternatives.map(withProtectedProductImages).map(publicProductPayload).map((item) => keepsWizardOpen(product.handle) ? { ...item, tags: dealerPublicTags(item.tags) ?? item.tags } : item)} />
+      <Suspense fallback={<section className="tone-section py-8" aria-label="Related products"><p role="status" className="tone-inner">Loading related products</p></section>}>
+        <ProductRelatedContent product={product} publicProduct={publicProduct} />
+      </Suspense>
       {hasAuthorizationSection ? (
         <ToneBand tone="deep" className="pdp-authorization-band">
           <div id="authorization" className="scroll-mt-24">

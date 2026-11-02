@@ -287,3 +287,78 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
 - Actual local390/1319 home title/no-overflow/menu/empty cart/screens retain all
   six feeds/48 links. Search has six Samantha results. Broader regression and
   exact hosted acceptance remain unfinished; no live release or Martin handoff.
+
+## Related-Card Experiment Omitted (2 November, 20:45)
+
+- The ordinary ProductOptions and DollVue client runtime import graphs do not
+  reach the option asset manifest. No speculative URL-validation split was made.
+  Existing full asset validation/mapping, readiness, private holds and checkout
+  guards remain unchanged. Font discovery is still an unimplemented lead.
+- Tested the existing lightweight card projection after public redaction for
+  only the five PDP related cards. One current Samantha.K rail read at20:42:01Z
+  has byte-identical rendered markup (SHA256
+  `1e0a0c3fef538b32d21df08963c95f0d32375447aee5b7e0bb1fac25840a8542`),
+  with serialized props12,318->5,520 bytes. This is related-card prop JSON,
+  not whole-PDP transfer or a demonstrated speed gain; no merchant mutations.
+- Same localhost3033/Lighthouse13.6 serial product lab samples were mixed:
+  mobile71/96/77/92->67/96/77/92, LCP6.094->7.643s;
+  desktop89/96/77/92->90/96/77/92, LCP1.779->1.573s. Final origin/path verified.
+  Main document resource bytes1,615,154->1,607,199 and mobile transfer
+  133,316->131,541. Single samples do not establish causality or a reliable win.
+  Local Vercel instrumentation404s, Square deprecation and missing-description
+  audit occur both before/after; not newly fixed or certified hosted failures.
+- Conservatively OMITTED this runtime candidate under the regression rule.
+  The PDP source is restored exactly to ff3; no candidate push/deployment.
+  Candidate test text, four raw lab reports and before/after390/1319 screenshots
+  are retained privately. Actual local cards/order/text/prices/protected image
+  URLs match the baseline, rail scrolls, first image decodes,58-image main
+  gallery advances/returns, empty cart works both sizes and mobile menu opens.
+  No configured cart, checkout, generation, email, consent or device acceptance.
+- Experiment checks:127 tests/seven files pass plus one opt-in current-rail
+  parity pass; configured local build/promotion/two4,954 gates and scoped lint
+  pass with existing build diagnostics. Standalone TSC exposed the previous
+  catalog-boundary test's deliberately out-of-schema legacy `torso` fixture.
+  Added a test-only explicit cast without widening production types/behavior;
+  standalone TSC now passes. Earlier ff3 standalone-TSC claim is corrected.
+- Server3033 stopped, owned tab closed and viewport reset. Local `.next` still
+  contains the omitted experiment build: REBUILD before further local QA.
+  ff3 remains the current hosted runtime. Full five-page matched matrix,
+  regression/screens and exact Martin preview approval remain unfinished.
+- Final restored-source suite:125 tests/six files and standalone TSC pass.
+  Documentation and the test-only fixture cast remain owned local changes for
+  the next actual runtime phase; no unchanged deployment was triggered.
+
+## Independent PDP Related Stream (2 November, 20:56)
+
+- The selected PDP previously awaited the600-product related-brand read before
+  returning its gallery and configurator. Moved only that lower-section read
+  into the server-only `ProductRelatedContent` behind Suspense. Query,600 limit,
+  one image, existing cache key/3,600-second data refresh, ranking, public
+  redaction/protected image mapping and dealer-tag filtering remain the same.
+  The rejected lightweight-related-card projection is NOT included.
+- Selected-product Storefront/Admin/private-preview reads, template validation,
+  options,58-image gallery, metadata, promotions, prices and checkout repricing
+  are unchanged. A deliberately pending related read test proves the selected
+  content can stream; resolved lower-section markup exactly matches the old
+  ranking/projection/rendering path. Raw source records remain server-only.
+- One actual local HTTP pair: gallery marker1,989->1,051ms; after the change it
+  arrives423ms before the related section (previously6ms). Total response
+  1,997->1,475ms, resource bytes1,615,154->1,615,777. These are single requests
+  with cache/network variation, not guaranteed visitor gains or byte reduction.
+- Same localhost3033/Lighthouse13.6 serial product pair, before ff3 and current
+  candidate: mobile70/96/77/92->73/96/77/92; desktop88/96/77/92->89/96/77/92.
+  Mobile LCP7.477->7.516s is essentially unchanged, NOT improved; desktop
+  LCP1.768->1.767s. Mobile CLS0.02088 unchanged; desktop0.11489->0.10240.
+  Final origin/path verified. Local instrumentation404/Square deprecation/
+  description audit remain; no hosted/field/full-five-page acceptance claim.
+- Actual local390/1319 title, heading, all five related cards/order/text/prices/
+  protected URLs and gallery label exactly match the before DOM receipt, with
+  no document overflow. Empty cart both sizes, gallery advance/return, desktop
+  configurator entry, related-rail scroll and mobile menu work. First related
+  image decodes640px. Before/after screenshots and DOM receipt retained.
+  No configured cart/checkout, email/generation, consent, Chatra message or
+  real-device replay/acceptance. Full regression and90+ targets remain open.
+- 146 tests/nine files, scoped lint and standalone TSC pass; configured local
+  Node26 build/promotion/two4,954-asset gates pass with existing diagnostics.
+  Existing fixture-only TSC correction is included. Exact hosted verification
+  is still required; no live merge, release or Martin preview handoff.

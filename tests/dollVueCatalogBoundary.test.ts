@@ -5,6 +5,7 @@ import ts from 'typescript';
 import { sampleProducts } from '@/lib/data/sample-products';
 import * as catalog from '@/lib/dollvue/catalog';
 import * as config from '@/lib/dollvue/config';
+import type { Product } from '@/types/product';
 
 describe('lightweight DollVue catalog boundary', () => {
   it('keeps the existing config exports bound to the same predicates and constants', () => {
@@ -30,7 +31,8 @@ describe('lightweight DollVue catalog boundary', () => {
   ] as const)('retains %s catalog behavior with status %s and explicit badge %s', (handle, stockStatus, bodyType, dollVueAvailable, expected) => {
     const product = { ...sampleProducts[0], handle, dollVueAvailable,
       extended: { ...sampleProducts[0].extended, stockStatus, bodyType } };
-    expect(catalog.isDollVueCatalogProduct(product)).toBe(expected);
+    // The legacy "torso" marker is deliberately outside the current typed body schema.
+    expect(catalog.isDollVueCatalogProduct(product as unknown as Product)).toBe(expected);
   });
 
   it('keeps card/list runtime imports out of the option manifest and full validation module', () => {

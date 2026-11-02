@@ -72,12 +72,16 @@ describe('customer payload boundaries', () => {
     expect(home.match(/\.map\(homepageCardPayload\)/g)).toHaveLength(3);
     const pdp = fs.readFileSync('app/(store)/products/[handle]/page.tsx', 'utf8');
     expect(pdp).toMatch(/publicProductPayload\(\s*withProtectedProductImages\(/);
-    for (const component of ['ProductGallery', 'ProductOptions', 'ProductLowerAlive']) {
+    for (const component of ['ProductGallery', 'ProductOptions']) {
       expect(pdp).toContain(`<${component} product={publicProduct}`);
       expect(pdp).not.toContain(`<${component} product={product}`);
     }
     expect(pdp).toContain('publicCustomizationConfig(getCustomizationConfig(product))');
     expect(pdp).toContain('config={customizationConfig}');
+    expect(pdp).toContain('<ProductRelatedContent product={product} publicProduct={publicProduct}');
+    const related = fs.readFileSync('components/product/ProductRelatedContent.tsx', 'utf8');
+    expect(related).toContain('<ProductLowerAlive product={publicProduct}');
+    expect(related).toContain('alternatives.map(withProtectedProductImages).map(publicProductPayload)');
     for (const component of ['SeDollPdpFreebieBlock', 'IrontechAutumnPdpPromotion', 'FanrealSeptemberPdpPromotion', 'JinsanOctoberPdpPromotion']) {
       expect(pdp).toContain(`<${component} product={publicProduct}`);
     }
