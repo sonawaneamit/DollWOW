@@ -263,3 +263,27 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
   met. Smaller upstream JSON is not a measured page-speed win. No broad caching,
   eligibility, product options, checkout, email/generation or consent changes.
   Hosted acceptance and full matched after matrix remain required; nothing live.
+
+## Catalog Browser Bundle Boundary (2 November, 20:29)
+
+- The homepage/card/filter predicate import pulled a1,106,076-byte raw option
+  asset manifest chunk into the home browser route. Moved only the existing
+  catalog constants/predicates/URL helper into `lib/dollvue/catalog.ts`; config
+  re-exports the same bindings. All five moved function bodies are byte-identical
+  to128234f4. No option-asset validation, current readiness/private-hold check,
+  generation, checkout or caching behavior changes.
+- HomeAlive, ProductCard and catalog filters import the lightweight module.
+  A runtime dependency-graph test rejects full config/asset-manifest imports
+  through these roots;125 tests/six files and scoped lint/diff check pass.
+  Configured local Node26 build/TSC/promotion/two4,954-asset gates pass with the
+  same existing diagnostics. PDP/DollVue option consumers retain full validation.
+- Same-host/port/config Lighthouse13.6 serial local pair, before128234 and after
+  this change: mobile75/96/96/100->81/96/96/100, desktop89/96/96/100->92/96/96/100.
+  Mobile script transfer585,394->219,272 bytes (62.5% fewer); LCP7.286->4.773s.
+  Desktop script586,444->220,322 bytes; LCP1.830->1.473s. Final origin/path
+  checked. Single local lab samples, not field data/guaranteed gains; cache,
+  changing catalog and animation can vary. Mobile target still NOT met. This
+  home pair does not complete the five-page matched after matrix.
+- Actual local390/1319 home title/no-overflow/menu/empty cart/screens retain all
+  six feeds/48 links. Search has six Samantha results. Broader regression and
+  exact hosted acceptance remain unfinished; no live release or Martin handoff.

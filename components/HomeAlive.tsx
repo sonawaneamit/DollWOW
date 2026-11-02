@@ -16,7 +16,7 @@ import { HomepageReviews } from "@/components/reviews/HomepageReviews";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { DollVueHomepageStrip } from "@/components/dollvue/DollVueHomepageStrip";
-import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/catalog";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 import type { CustomerReview } from "@/lib/reviews/reviews";

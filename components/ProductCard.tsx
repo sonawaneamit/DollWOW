@@ -7,7 +7,7 @@ import { DisplayMoney } from "@/components/CurrencyProvider";
 import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
-import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/catalog";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
