@@ -69,7 +69,33 @@ in the ignored `dol-314-2026-10-29` exports: `chiku-eyes-clean-local-320.jpg`,
 `clean-local-browser-proof-2026-11-02.json`. No cart, order or email action.
 Owned tab closed, viewport reset and local port 3031 server stopped after QA.
 
-Exact hosted preview/CI checks remain required before merging and verifying
-production. Local acceptance is not hosted or production deployment proof.
-The old private preview is dated evidence, not this clean branch's acceptance.
-Do not merge PR230's older stack or claim the full catalog is live.
+## Live Acceptance
+
+PR234 source `5eae81f50b1f3d9b0b9c2f3f204812989b471d37` independently passed
+owned-assets, Vercel and preview-comment checks. Exact READY private deployment
+`dpl_DDKyvbew43Pq8vt5htofdDxFmty8` passed twelve hosted eye clicks and the
+2164 USD paid combination, with noindex and disabled preview checkout.
+
+Normal approved merge at 16:26:02 UTC on 2 November produced
+`59f0fd6b38178db590f53a011fb90a7bec1a44b9`. GitHub Production deployment
+7497513071 binds that merge to the successful deployment URL. Vercel deployment
+`dpl_6PpQFhBLCtnUbaAV9JQ1Z5Uj3NEG` is READY production with dollwow.com and
+www.dollwow.com aliases, independently inspected after deployment.
+
+Actual dollwow.com browser QA passed all twelve eye clicks at 1319/390/320:
+four decoded contained images, 1999 USD, eight fixed facts, no overflow or
+dialogs, index/follow and the production canonical. Blue #1 with heating 90
+and suction 75 remains 2164 USD. Returned to purple/default 1999 USD. The
+enabled add-to-cart control was not clicked; no cart or checkout was created.
+
+Actual saved live screenshots `chiku-eyes-LIVE-320-2026-11-02.jpg` and
+`chiku-eyes-LIVE-1319-2026-11-02.jpg`, structured
+`live-browser-proof-2026-11-02.json` and deployment inspection are retained
+in ignored exports. The mobile screenshot was reopened for visual inspection.
+Owned tabs are closed and viewport reset. No server remains running.
+
+This completes the approved Chiku-only eye-image delta, not the broader
+included-feature rollout. DOL313 stays externally Done; whole DOL314 remains
+In Review. No prices, Shopify records, production settings, freight promises,
+orders, payments or emails changed. Do not merge PR230's older stack or replay
+the prior checkout QA.
