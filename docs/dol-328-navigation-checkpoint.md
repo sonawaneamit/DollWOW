@@ -202,3 +202,37 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
 - No live merge/deploy, Shopify writes, checkout/generation/email replay,
   consent changes or Clarity installation. Hosted and complete after-metric
   acceptance still required before Martin receives a preview handoff.
+
+## Bounded DollVue Rail (2 November, 19:57)
+
+- The landing rail now stops after nine verified eligible public cards in the
+  existing CREATED_AT order instead of walking 5,000 visible records. The
+  lightweight mapper has no release rank; existing caller sorting is retained.
+  Other catalog callers are unchanged. Reviewed candidates still use the exact
+  current detail/private-hold verification; no readiness guard or cache changed.
+- An explicit request-time connection boundary keeps the rail dynamic even when
+  all nine current cards are legacy pilot products. Existing 300-second catalog
+  data caching remains; current no-store verification is not prerendered away.
+- One actual read-only helper comparison at 19:47:41Z found byte-identical nine
+  cards/order/prices (both full-object hashes
+  `0f4c37e86a34e41f42d2cea6e1bae62579d9f2f84d5ff273fb2560a981ee2a08`).
+  Full walk: 15,960ms/59 requests; bounded rail: 789ms/one request. All nine are
+  existing legacy pilot cards, not nine newly verified registry approvals. The
+  old walk's reviewed hydration concerned unused cards. Entry/generation checks
+  remain unchanged. This is helper evidence, not a hosted/page-speed guarantee.
+- 106 focused tests/six files, scoped lint, configured local Node26 build/TSC,
+  promotion checks and both 4,954-asset gates pass. `/dollvue` is dynamic in the
+  final build. Existing visual-index and dynamic/static diagnostics remain.
+  Four stale test expectations now match the unchanged baseline media limit100.
+- Actual local browser at 390/1319 shows all nine matching links/prices, correct
+  title, no overflow and settled rail; screenshots retained. Comparison50->51,
+  mobile menu and empty cart at both sizes work. The first rail link reaches the
+  correct Ria PDP/base2,819. Lazy offscreen images are not counted as decoded.
+- Serial local Lighthouse13.6 DollVue mobile99/93/96/92 (LCP1.7s), desktop
+  100/93/96/92 (LCP0.4s), correct final origin/path. These are separate local labs,
+  NOT matched improvements over the live baseline, field data or iPhone tests.
+  Full five-page targets and actual matched after matrix remain unfinished.
+- No merchant/settings/cart/checkout/generation/email/consent mutation, live
+  merge or release. Full regression, hosted candidate and real-device acceptance
+  remain required before Martin's preview handoff. Do not replay parity reads
+  or accepted transactional tests merely to refresh a receipt.

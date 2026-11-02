@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import { Suspense } from "react";
 import { ProductCard } from "@/components/ProductCard";
 import { DollVueLanding } from "@/components/dollvue/DollVueLanding";
@@ -39,7 +40,9 @@ function safeJson(value: unknown) {
 }
 
 async function LatestDollVueProducts() {
-  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true });
+  // Keep eligibility request-time even when the current first nine are legacy cards.
+  await connection();
+  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true, dollVueLimit: 9 });
   const latestEligibleProducts = catalog
     .filter(isDollVueCatalogProduct)
     .sort((a, b) => (b.extended.sourceReleaseRank ?? 0) - (a.extended.sourceReleaseRank ?? 0))

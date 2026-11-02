@@ -297,9 +297,13 @@ export async function getProducts({
   }
 }
 
-export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, strict = false, includeDollVueEligibility = false }: {
-  first?: number; revalidate?: number; strict?: boolean; includeDollVueEligibility?: boolean;
+export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, strict = false, includeDollVueEligibility = false, dollVueLimit }: {
+  first?: number; revalidate?: number; strict?: boolean; includeDollVueEligibility?: boolean; dollVueLimit?: number;
 } = {}) {
+  if (dollVueLimit !== undefined && (!strict || !includeDollVueEligibility ||
+    !Number.isInteger(dollVueLimit) || dollVueLimit < 1 || dollVueLimit > 36)) {
+    throw new RangeError('A DollVue rail limit requires strict current eligibility and an integer from 1 to 36');
+  }
   const fallbackProducts = sampleProducts.filter(isCustomerVisibleProduct).slice(0, first);
   if (!hasShopifyStorefrontEnv()) {
     if (strict) throw new Error("Sitemap requires the public Shopify catalog");
@@ -308,6 +312,7 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
 
   try {
     const products: Product[] = [];
+    const rail: Product[] = [];
     let after: string | null = null;
     const target = Math.max(1, first);
 
@@ -357,12 +362,25 @@ export async function getSeoCatalogProducts({ first = 5000, revalidate = 300, st
         { revalidate }
       );
 
-      products.push(...data.products.edges.map(({ node }) => mapSeoCatalogProduct(node)).filter(isCustomerVisibleProduct));
+      const page = data.products.edges.map(({ node }) => mapSeoCatalogProduct(node)).filter(isCustomerVisibleProduct);
+      products.push(...page);
+      if (dollVueLimit !== undefined) {
+        // The lightweight mapper has no release rank: retain the existing CREATED_AT order.
+        // Verify only enough candidates to fill the rail, with the same fresh guards.
+        const candidates = page.filter(product => withDollVueCatalogEligibility(product).dollVueAvailable === true);
+        for (let offset = 0; offset < candidates.length && rail.length < dollVueLimit;) {
+          const batch = candidates.slice(offset, offset + dollVueLimit - rail.length);
+          offset += batch.length;
+          rail.push(...(await withVerifiedDollVueCatalogEligibility(batch)).filter(product => product.dollVueAvailable === true));
+        }
+        if (rail.length === dollVueLimit) return rail;
+      }
       if (!data.products.pageInfo.hasNextPage) break;
       after = data.products.pageInfo.endCursor;
       if (!after) break;
     }
 
+    if (dollVueLimit !== undefined) return rail;
     if (!strict && !products.length) return fallbackProducts;
     // SEO consumers keep the lightweight hint; DollVue surfaces opt into current verification.
     return includeDollVueEligibility
