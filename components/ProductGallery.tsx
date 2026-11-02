@@ -59,6 +59,7 @@ export function ProductGallery({ product }: { product: Product }) {
               alt={`${displayTitle} — image ${index + 1} of ${media.length}`}
               fill
               sizes="(min-width: 1024px) 44vw, 94vw"
+              fetchPriority="high"
               priority
               loading="eager"
               className="object-cover noir-media"

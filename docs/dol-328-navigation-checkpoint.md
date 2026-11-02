@@ -362,3 +362,29 @@ No actual iPhone verification, 90+ matrix, wider SEO acceptance or release yet.
   Node26 build/promotion/two4,954-asset gates pass with existing diagnostics.
   Existing fixture-only TSC correction is included. Exact hosted verification
   is still required; no live merge, release or Martin preview handoff.
+
+## Explicit Active-Gallery Priority (2 November, 21:11)
+
+- Added only `fetchPriority="high"` to the existing active ProductGallery image.
+  Installed Next forwards it to both that image and its existing preload. All
+  58 gallery images, protected URLs, eager/preload behavior, lazy thumbnails,
+  video metadata loading and the global unoptimized safeguard remain unchanged.
+  No media processing, extra image request, cache, validation or pricing change.
+- Lighthouse already observed High network priority before this hint; do not
+  portray the audit recommendation as a proven large bottleneck or score win.
+  Saved exact363f local baseline versus this candidate, same3033/LH13.6:
+  mobile73/96/77/92 remains73/96/77/92; desktop89/96/77/92 remains89/96/77/92.
+  Mobile LCP7.516->7.255s; desktop1.767->1.771s. Single samples with network/
+  animation/cache variation, not stable gains. Both hint checks change false
+  to true; exactly one hero request remains, observed High before and after.
+- Actual local390/1319 has one high-priority hero and one matching high-priority
+  preload,58 thumbnails with zero high-priority thumbnail hints, correct title/
+  no overflow, all five related cards retained and gallery next/previous usable.
+  Empty cart both sizes, options entry and mobile menu pass; screenshots kept.
+  No configured checkout, email/generation, consent or device replay/acceptance.
+- 149 focused tests/ten files, scoped lint/diff check, standalone TSC and the
+  configured local Node26 build/promotion/two4,954-asset gates pass, retaining
+  existing diagnostics. Exact hosted verification remains required. Scores,
+  full five-page matched matrix/regression and Martin handoff are unfinished;
+  nothing live. Next prioritize the complete matched matrix/remaining gap
+  reconciliation rather than repeating these completed phase measurements.
