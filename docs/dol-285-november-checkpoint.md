@@ -2,13 +2,72 @@
 
 Status: In Progress. Commercial comparison independently verified in draft PR227; full campaign/PDP/cart acceptance remains unfinished. No production change.
 
+## Current 2 November Authority
+
+17:40 follow-up: configured local Node 26 production build now passes, including
+public promotion-data validation and both 4,950-asset gates. Existing broad
+visual-index and DollVue dynamic/static diagnostics remain; no all-repository
+clean claim. Preparing the changed private branch for PR227 only, never a main
+merge or production deployment. Exact new remote checks and hosted acceptance
+remain required; the old 4u1xctr8z link is still dated evidence.
+
+Latest local UI follow-up: five EU retail scenarios now appear on the existing
+private comparison route, explicitly marked as draft calculations with pending
+configuration/discount checks. Public-field fixture allowlists retail cents,
+restoration cents, handles and qualifications only; no dealer prices, source
+SKUs, quantities or raw supplier rows enter the rendered comparison.
+All nine local dev-browser cases (1319/390/320, before/during/expired) preserve
+five rows, exact restoration, phase-specific quotes, noindex/nofollow and no
+document overflow. Mobile table overflow is contained at 640px inside 358/288px
+wrappers. Keyboard Tab reaches listing links without activating them. The first
+mobile screenshot captured the header, not the stock section, and is not stock
+visual proof. A separate desktop section screenshot was saved and reopened.
+71 focused tests across five files, TypeScript, scoped ESLint and diff-check
+pass. This was a local dev server, not a production build or hosted deployment.
+Both temporary servers were stopped, port 3032 is empty, owned tabs closed and
+viewport reset. Full campaign/source/US/options/charge verification is unfinished.
+
+Martin's decisions `a2828ecd` and `a14fdd78` supersede the original month-end
+date and old cost assumptions below: 1 November through 7 December, dealer
+savings included in the margin calculation, 10% customer retail pass-through
+for exact US/EU stock and the approved option/head offers. Preview first.
+The local window uses exclusive 8 December midnight in the previously observed
+shop timezone; the factory's exact end-hour is not independently confirmed.
+The existing hosted comparison still shows old dates and is not a corrected
+full-campaign preview.
+
+Local private preparation now includes a deterministic stock-price/restoration
+plan in `seNovemberReview.ts`. It captures immutable original USD cents and
+compare-at state, proposes one 10% retail reduction and restores the exact
+captured original, not the discounted price multiplied by 1.10. Repeated
+desired-state comparisons are no-ops. Baseline/current identity, currency,
+price or compare-at drift stops; existing promotions, compare-at reductions,
+already-discounted supplier prices and absent source hashes stop rather than
+compounding an unverified offer. Retained hashes bind evidence but do not
+prove its commercial accuracy. An eventual executor still needs fresh
+ownership/conflict checks; these comparisons are not atomic rollback.
+
+This is an unused comparison-only planner, not a configured scheduler or
+Shopify mutation. Synthetic tests do not certify any actual stock listing,
+warehouse quantity, dealer cost or margin. The seven retained candidates and
+October-labelled supplier rows still need exact current source reconciliation.
+No supplier sheet is reread merely for a receipt; no failed link is retried.
+The planner deliberately does not assume that a 10% retail reduction equals
+the factory's discount for every material/warehouse.
+
+67 tests across four focused files, full TypeScript, scoped ESLint and
+diff-check pass. No build, deployment, hosted/browser acceptance, commit/push,
+live price, checkout, email or new automation action. Existing local date edits
+are preserved; current stock/source mapping and the full corrected preview
+remain unfinished. Sales@ is browser-only, never the Gmail connector.
+
 Verified preview: https://doll-4u1xctr8z-sonawaneamits-projects.vercel.app/review/se-november (`dpl_3JNnbRjAutyaCzEeGBG6cA8rQFwc`, runtime `4c9b2587`). Six desktop1319/mobile390 before/November/expired states passed with 78 exact sample row comparisons, three decoded original catalog images, no document overflow, noindex/nofollow and no main purchase controls. Mobile table scroll is bounded (430px table / 358px container). Production route independently showed 404. Viewport reset. This is not a live checkout or full campaign-release proof.
 
 ## Authority
 
 - Martin's 29 October 09:14 instruction (`6d67d437-d1e6-4dab-9b6b-956f5cd81604`) covers TPE custom, Silicone Pro custom, silicone torsos and US/EU stock, not only skin colour.
-- DollWOW dates are 1 November 00:00 through 30 November 23:59 store time. The 29 October Admin read independently returned `America/New_York`, not the operator's Lisbon timezone. Boundaries are `2026-11-01T04:00Z` and exclusive `2026-12-01T05:00Z`; DST changes during the month.
-- Supplier artwork's 7 December end does not override Martin. No date question or supplier contact is needed.
+- The original 29 October date convention was 1-30 November in `America/New_York`. Martin's 2 November decision above supersedes that end date; preserve the observed shop-time convention, not the old month-end gate.
+- Supplier artwork's 7 December end now matches Martin's current decision. No repeated date question or supplier contact is needed.
 - Reseller skin cost $100 to $50 does not establish DollWOW retail. New eye listings are a later task.
 
 ## Completed Preparation
@@ -26,7 +85,7 @@ Verified preview: https://doll-4u1xctr8z-sonawaneamits-projects.vercel.app/revie
 ## Artwork Decisions
 
 - Hold the torso desktop/mobile originals: school-uniform presentation (tie and pleated skirt). This is a narrow artwork hold, not a torso-product or campaign hold. Keep private evidence and use an independently reviewed suitable existing product photo or text treatment instead; do not request a waiver.
-- Every original carries the supplier's 7 December date. None is customer-ready with that uncorrected claim. Do not silently adopt it or edit explicit imagery. A separate factual presentation can use approved November dates and suitable unchanged assets.
+- Every original carries the supplier's 7 December date, now aligned with Martin's current decision. This does not clear the separate torso-artwork hold or the stock delivery claim. Do not edit explicit imagery; use a suitable independently reviewed unchanged asset or factual text presentation.
 - Stock originals also advertise global 3-7-day delivery. That claim is not independently verified and must not become a DollWOW promise.
 
 ## Next Checkpoint

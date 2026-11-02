@@ -1,0 +1,54 @@
+{
+  "sourceAt": "2026-11-02T17:09:20.927Z",
+  "sourceDigest": "8fb98ee4185bb5ed1618b2185e0c6ccb283633778b4409f12a092876e170fc00",
+  "currency": "USD",
+  "discountPercent": 10,
+  "releaseReady": false,
+  "rows": [
+    {
+      "handle": "sedoll-aryana-a-161cm-c-cup-silicone-companion-doll-1v1hi",
+      "title": "Aryana A",
+      "warehouse": "EU",
+      "baselineCents": 229900,
+      "proposedCents": 206910,
+      "restoreCents": 229900,
+      "identityCheck": "Factory configuration match pending"
+    },
+    {
+      "handle": "sedoll-bridget-b-161cm-e-cup-silicone-companion-doll-uqk1u",
+      "title": "Bridget B",
+      "warehouse": "EU",
+      "baselineCents": 219900,
+      "proposedCents": 197910,
+      "restoreCents": 219900,
+      "identityCheck": "Factory configuration match pending"
+    },
+    {
+      "handle": "sedoll-annika-f-165cm-c-cup-silicone-companion-doll-1pgb7",
+      "title": "Annika F",
+      "warehouse": "EU",
+      "baselineCents": 229900,
+      "proposedCents": 206910,
+      "restoreCents": 229900,
+      "identityCheck": "Regular / textured identity pending"
+    },
+    {
+      "handle": "sedoll-regina-f-165cm-c-cup-silicone-companion-doll-k8rdo",
+      "title": "Regina F",
+      "warehouse": "EU",
+      "baselineCents": 229900,
+      "proposedCents": 206910,
+      "restoreCents": 229900,
+      "identityCheck": "Factory configuration match pending"
+    },
+    {
+      "handle": "sedoll-yuuka-h-165cm-c-cup-silicone-companion-doll-l29ju",
+      "title": "Yuuka H",
+      "warehouse": "EU",
+      "baselineCents": 219900,
+      "proposedCents": 197910,
+      "restoreCents": 219900,
+      "identityCheck": "Factory configuration match pending"
+    }
+  ]
+}

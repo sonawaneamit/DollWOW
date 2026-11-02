@@ -5,9 +5,10 @@ describe('SEDOLL November reviewed terms (not live pricing)', () => {
   it.each([
     ['2026-11-01T03:59:59.999Z', false], ['2026-11-01T04:00:00Z', true],
     ['2026-11-01T05:59:59Z', true], ['2026-11-01T06:00:00Z', true],
-    ['2026-12-01T04:59:59.999Z', true], ['2026-12-01T05:00:00Z', false],
-    ['2026-12-07T12:00:00Z', false], ['invalid', false]
-  ])('uses approved store-time boundaries at %s', (date, active) => {
+    ['2026-12-01T04:59:59.999Z', true], ['2026-12-01T05:00:00Z', true],
+    ['2026-12-07T12:00:00Z', true], ['2026-12-08T04:59:59.999Z', true],
+    ['2026-12-08T05:00:00Z', false], ['invalid', false]
+  ])('uses corrected campaign dates with the existing shop-time convention at %s', (date, active) => {
     expect(isSeNovemberWindow(new Date(date))).toBe(active);
   });
   it('matches independently observed Shopify timezone including the DST transition', () => {
@@ -16,7 +17,8 @@ describe('SEDOLL November reviewed terms (not live pricing)', () => {
       timeZone: timing.timeZone, month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
     }).format(new Date(date));
     expect(format(timing.startsAt)).toBe('11/1, 00:00');
-    expect(format(timing.endsAt)).toBe('12/1, 00:00');
+    expect(format(timing.endsAt)).toBe('12/8, 00:00');
+    expect(timing.dateLabel).toBe('1 November-7 December 2026');
   });
   it('retains narrow body restrictions rather than granting brand-wide options', () => {
     expect(terms.tpeCustom.reductions[2].bodies).toEqual(['157H', '161F', '163E']);

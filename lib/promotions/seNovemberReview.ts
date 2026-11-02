@@ -1,3 +1,5 @@
+import { isSeNovemberWindow } from './seNovember2026';
+
 // Comparison-only quotes. No cart, charge binding or live promotion imports this module.
 export type SeNovemberCohort = 'tpe-custom' | 'silicone-pro-custom' | 'silicone-torso-custom' | 'warehouse' | 'held';
 type OptionFacts = { id: string; label: string; priceDelta?: number; factoryExists?: boolean; purchasable?: boolean; priceVerified?: boolean; displayable?: boolean };
@@ -49,4 +51,78 @@ export function seNovemberLightweightReviewQuote(parent: ParentFacts, group: Gro
     || !['tpe', 'silicone'].includes(selections.headMaterial)
     || selections.headMaterial === 'silicone' && selections.skinTone !== 'Light Tan') return null;
   return { current: 100, proposed: 90, reductionPercent: 10, menuSha256: parent.menuSha256, checkoutReady: false as const };
+}
+
+type StockPriceSnapshot = {
+  productId: string;
+  variantId: string;
+  currency: string;
+  priceCents: number;
+  compareAtPriceCents: number | null;
+};
+
+export type SeNovemberStockReviewInput = {
+  baseline: StockPriceSnapshot;
+  observed: StockPriceSnapshot;
+  region: 'US' | 'EU';
+  material: 'silicone-pro' | 'stpe';
+  baselineReceiptSha256: string;
+  sourceMappingSha256: string;
+  sourcePriceAlreadyDiscounted: boolean;
+  existingPromotionIds: readonly string[];
+};
+
+function validStockSnapshot(value: StockPriceSnapshot) {
+  return /^gid:\/\/shopify\/Product\/\d+$/.test(value.productId)
+    && /^gid:\/\/shopify\/ProductVariant\/\d+$/.test(value.variantId)
+    && value.currency === 'USD'
+    && Number.isSafeInteger(value.priceCents) && value.priceCents > 0
+    && value.priceCents <= Math.floor(Number.MAX_SAFE_INTEGER / 90)
+    && (value.compareAtPriceCents === null
+      || Number.isSafeInteger(value.compareAtPriceCents) && value.compareAtPriceCents >= value.priceCents);
+}
+
+function sameStockSnapshot(left: StockPriceSnapshot, right: StockPriceSnapshot) {
+  return left.productId === right.productId && left.variantId === right.variantId
+    && left.currency === right.currency && left.priceCents === right.priceCents
+    && left.compareAtPriceCents === right.compareAtPriceCents;
+}
+
+// Digests bind retained evidence; they do not independently certify source eligibility.
+export function seNovemberStockReviewPlan(input: SeNovemberStockReviewInput) {
+  const { baseline, observed } = input;
+  if (!validStockSnapshot(baseline) || !validStockSnapshot(observed)
+    || !sameStockSnapshot(baseline, observed)
+    || !['US', 'EU'].includes(input.region) || !['silicone-pro', 'stpe'].includes(input.material)
+    || !/^[a-f0-9]{64}$/.test(input.baselineReceiptSha256)
+    || !/^[a-f0-9]{64}$/.test(input.sourceMappingSha256)
+    || input.sourcePriceAlreadyDiscounted !== false
+    || !Array.isArray(input.existingPromotionIds) || input.existingPromotionIds.length !== 0
+    || baseline.compareAtPriceCents !== null && baseline.compareAtPriceCents > baseline.priceCents) return null;
+
+  const original = Object.freeze({ ...baseline });
+  const promotional = Object.freeze({ ...baseline, priceCents: Math.round(baseline.priceCents * 90 / 100) });
+  return Object.freeze({
+    original, promotional,
+    baselineReceiptSha256: input.baselineReceiptSha256,
+    sourceMappingSha256: input.sourceMappingSha256,
+    retailReductionPercent: 10 as const,
+    checkoutReady: false as const,
+    automaticWriteConfigured: false as const,
+    costAndMarginVerified: false as const
+  });
+}
+
+// Desired preview state only: restoration still requires fresh ownership/conflict checks.
+export function seNovemberStockReviewTransition(
+  plan: NonNullable<ReturnType<typeof seNovemberStockReviewPlan>>,
+  observed: StockPriceSnapshot,
+  now: Date
+) {
+  if (!Number.isFinite(now.getTime())) return null;
+  const target = isSeNovemberWindow(now) ? plan.promotional : plan.original;
+  if (sameStockSnapshot(observed, target)) return { action: 'none' as const, target };
+  const expected = isSeNovemberWindow(now) ? plan.original : plan.promotional;
+  if (!sameStockSnapshot(observed, expected)) return null;
+  return { action: 'review-write' as const, expected, target, requiresCoordinatedWindow: true as const };
 }

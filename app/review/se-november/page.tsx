@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import data from '@/data/promotion-previews/se-november-review.json';
+import stockReview from '@/data/promotion-previews/se-november-stock-review.json';
 import { isSeNovemberWindow, seNovemberReviewEnabled, SE_NOVEMBER_REVIEW_TERMS as terms, SE_NOVEMBER_TIMING as timing } from '@/lib/promotions/seNovember2026';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'SEDOLL November Commercial Review', robots: { index: false, follow: false } };
 const money = (value: number | string) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(value));
-const phases = { before: '2026-11-01T03:59:59.999Z', november: '2026-11-02T12:00:00Z', expired: '2026-12-01T05:00:00Z' };
+const phases = { before: new Date(Date.parse(timing.startsAt) - 1).toISOString(), november: '2026-11-02T12:00:00Z', expired: timing.endsAt };
 
 export default async function SeNovemberReview({ searchParams }: { searchParams: Promise<{ phase?: string }> }) {
   if (!seNovemberReviewEnabled()) notFound();
@@ -18,6 +19,7 @@ export default async function SeNovemberReview({ searchParams }: { searchParams:
       <p className="text-sm font-semibold uppercase">Private commercial review / Not released</p>
       <h1 className="text-3xl font-semibold">SEDOLL November</h1>
       <p>{timing.dateLabel} / {timing.timeZone} / USD</p>
+      <p className="text-sm">Date-only supplier notice; this comparison uses the existing shop-time midnight convention, not a confirmed factory end-hour.</p>
       <p className="border-l-4 border-amber-600 pl-3 text-sm">Price and eligibility gates remain open. No live prices, menus, discounts or checkout changes. Exact landed margins and charge bindings are not verified.</p>
       <nav aria-label="Review date" className="flex flex-wrap gap-2">{(['before', 'november', 'expired'] as const).map(key => <a key={key} aria-current={key === phase ? 'page' : undefined} href={`?phase=${key}`} className={`inline-flex min-h-11 items-center border px-4 text-sm ${key === phase ? 'border-accent font-semibold text-accent' : 'border-border'}`}>{key === 'before' ? 'Before November' : key === 'november' ? 'November' : 'After November'}</a>)}</nav>
       <p role="status" className="font-medium">Campaign window: {active ? 'In range' : 'Out of range'} <span className="text-sm font-normal">({phases[phase]})</span></p>
@@ -41,7 +43,23 @@ export default async function SeNovemberReview({ searchParams }: { searchParams:
         </div>
       </article>)}
     </section>
-    <section className="border-t border-border py-6"><h2 className="text-xl font-semibold">Warehouse Reconciliation</h2><p className="mt-2 text-sm">Seven current listings remain unchanged. Generic Silicone alone does not prove Silicone Pro; partial/torso stock must not inherit full-body terms.</p><ul className="mt-4 divide-y divide-border">{data.stock.map(row => <li key={row.handle} className="flex flex-wrap justify-between gap-2 py-3 text-sm"><span className="max-w-2xl">{row.title} / {row.warehouseCountry}</span><span className="tabular-nums">{money(row.baseRetail)} / Unchanged</span></li>)}</ul></section>
+    <section className="border-t border-border py-6">
+      <h2 className="text-xl font-semibold">EU Stock Price Scenario</h2>
+      <p className="mt-2 text-sm">Current store prices read {stockReview.sourceAt}. The 10% customer reduction below is a draft calculation, not an available offer. Factory configuration and overlapping discounts still need checking; no stock quantity or delivery promise.</p>
+      <div className="mt-4 overflow-x-auto"><table className="w-full min-w-[640px] text-left text-sm">
+        <caption className="sr-only">Draft EU retail prices and exact original-price restoration</caption>
+        <thead><tr className="border-b border-border"><th className="p-2">Listing</th><th className="p-2">Original</th><th className="p-2">{active ? 'Draft 10% reduction' : 'Outside window'}</th><th className="p-2">Restore after 7 Dec</th><th className="p-2">Check</th></tr></thead>
+        <tbody>{stockReview.rows.map(row => <tr key={row.handle} className="border-b border-border">
+          <th className="p-2 font-normal"><a href={`https://dollwow.com/products/${row.handle}`} className="underline">{row.title}</a></th>
+          <td className="p-2 tabular-nums">{money(row.baselineCents / 100)}</td>
+          <td className="p-2 tabular-nums">{money((active ? row.proposedCents : row.baselineCents) / 100)}</td>
+          <td className="p-2 tabular-nums">{money(row.restoreCents / 100)}</td>
+          <td className="p-2">{row.identityCheck}</td>
+        </tr>)}</tbody>
+      </table></div>
+      <p className="mt-3 text-sm">Restoration returns to each exact original amount, not the discounted amount plus 10%. This preview has no scheduled write configured. Supplier prices and dealer discounts are separate from these store-price calculations.</p>
+    </section>
+    <section className="border-t border-border py-6"><h2 className="text-xl font-semibold">Other Warehouse Evidence</h2><p className="mt-2 text-sm">The retained seven-listing snapshot below is dated {data.sourceAt}, not a new physical-stock check. Generic Silicone alone does not prove Silicone Pro; partial/torso stock must not inherit full-body terms.</p><ul className="mt-4 divide-y divide-border">{data.stock.map(row => <li key={row.handle} className="flex flex-wrap justify-between gap-2 py-3 text-sm"><span className="max-w-2xl">{row.title} / {row.warehouseCountry}</span><span className="tabular-nums">{money(row.baseRetail)} / Unchanged</span></li>)}</ul></section>
     <footer className="border-t border-border py-6 text-sm">Review outstanding: exact supplier option costs and landed margin, body/version exceptions, additional-head delivery mapping and server-side named charges. No purchase controls. Dolly review, then exact preview approval from Martin before release.</footer>
   </main>;
 }

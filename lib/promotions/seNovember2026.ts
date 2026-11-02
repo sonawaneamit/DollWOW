@@ -1,9 +1,9 @@
 // DOL-285: reviewed supplier terms, not checkout entitlements or a released campaign.
 export const SE_NOVEMBER_TIMING = {
   startsAt: '2026-11-01T04:00:00.000Z',
-  endsAt: '2026-12-01T05:00:00.000Z',
+  endsAt: '2026-12-08T05:00:00.000Z',
   timeZone: 'America/New_York',
-  dateLabel: '1-30 November 2026'
+  dateLabel: '1 November-7 December 2026'
 } as const;
 
 export function isSeNovemberWindow(now: Date) {
