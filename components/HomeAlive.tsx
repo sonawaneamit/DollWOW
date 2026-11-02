@@ -15,6 +15,7 @@ import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { HomepageReviews } from "@/components/reviews/HomepageReviews";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
+import { DollVueHomepageStrip } from "@/components/dollvue/DollVueHomepageStrip";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
@@ -176,37 +177,6 @@ export function HomeAlive({
       <PreviewShowcase products={featuredProducts} />
       <ClosingBand />
     </div>
-  );
-}
-
-function DollVueHomepageStrip() {
-  return (
-    <section className="home-dollvue-strip" aria-label="DollVue personalized appearance previews">
-      {/* Native document navigation displays the streamed destination without waiting for the full client route payload. */}
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a
-        href="/dollvue"
-        className="home-dollvue-strip__link"
-        aria-label="Explore DollVue personalized doll previews"
-      >
-        <Image
-          className="home-dollvue-strip__image home-dollvue-strip__image--desktop"
-          src="/images/dollvue/home/dollvue-skin-tone-strip-desktop.png"
-          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
-          width={1774}
-          height={300}
-          sizes="80vw"
-        />
-        <Image
-          className="home-dollvue-strip__image home-dollvue-strip__image--mobile"
-          src="/images/dollvue/home/dollvue-skin-tone-strip-mobile.png"
-          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
-          width={1774}
-          height={887}
-          sizes="80vw"
-        />
-      </a>
-    </section>
   );
 }
 
