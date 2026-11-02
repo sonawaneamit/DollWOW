@@ -1,5 +1,26 @@
 # DOL-328 Mobile Navigation
 
+## 2 November Brand List Image Projection
+
+The brand list now requests `imageFirst: 1`, matching the existing card's
+`featuredImage ?? images[0]` contract. The shared Storefront default, full PDP
+gallery read, 600/2200 limits, no-store, ranking, filters, metadata, prices,
+readiness verification and private-hold checks are unchanged.
+Two actual sequential DollsCastle reads returned the same 177 products after
+projecting only the redundant image array: equal complete product hash,
+rendered-card hash and structured-data hash. Decoded upstream catalog JSON was
+929,482 versus 653,368 bytes, not whole-page transfer or a speed guarantee.
+The proof uses strict reads to reject sample fallback; production fallback
+behavior is unchanged. The parity harness subsequently aligned its local sort
+helper exactly with the page; it does not claim a second upstream replay.
+50 focused tests in seven files pass, one live-read test skipped by default;
+the separate actual read run passed three tests before the final source guard
+was added. Scoped lint, standalone TSC, configured local build/promotion and
+both 4,954-asset gates pass with existing diagnostics retained.
+Changed-build browser/Lighthouse and exact hosted verification are pending;
+the ignored checkpoint will carry their actual results. No live release,
+Martin handoff or whole-ticket acceptance is implied.
+
 Base: fresh verified `origin/main` 59f0fd6b38178db590f53a011fb90a7bec1a44b9.
 Worktree: `/Volumes/Extreme Pro/Projects/DollWOW-dol328-navigation`.
 Branch: `codex/dol328-mobile-navigation`. Private preparation, not released.
