@@ -3194,6 +3194,19 @@ a {
   text-align: center;
 }
 
+.home-spot__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.home-spot__controls .home-spot__rail {
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
+}
+
 .home-spot__rail {
   display: flex;
   justify-content: space-between;
@@ -3225,6 +3238,12 @@ a {
   border-color: var(--home-peach);
   box-shadow: 0 12px 34px rgba(217, 154, 111, 0.28);
   transform: translateY(-3px);
+}
+
+.home-spot__rotation {
+  background: rgb(var(--color-surface));
+  color: rgb(var(--color-text));
+  border-color: rgb(var(--color-border));
 }
 
 @keyframes home-video-reveal {

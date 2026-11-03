@@ -1,5 +1,42 @@
 # DOL-328 Mobile Navigation
 
+## 3 November Spotlight Rotation Control
+
+Private acceptance fix, not a page-speed or whole-ticket completion claim.
+Actual exact875 hosted keyboard selection changed to Zeki with its correct
+hero link and decoded playing752x560video, then the existing6500ms interval
+rotated the selection away while it was being inspected. Manual selection
+previously did not pause, and there was no explicit rotation control.
+
+Manual thumbnails now pause rotation. A keyboard-operable Pause/Resume icon
+stays outside the horizontally scrolling thumbnail rail, with selected/paused
+state exposed through aria-pressed. Reduced motion prevents automatic rotation
+and disables Resume; its change listener and the timer are cleaned up. This
+controls slide rotation only, not video playback. Media, order, eligible
+products, URLs, prices, typefaces and commerce paths are unchanged.
+
+Final41focused tests across6files pass, including12new timer/control tests,
+standalone TypeScript/scoped lint and configured LOCAL Node26 preview build,
+promotion check and both4954asset gates. Existing visual-index broad-pattern,
+Browserslist and dynamic/static diagnostics remain. The initial synthetic
+fixture had no registered spotlight handles; corrected before the final pass.
+Two intermediate builds caught real UI refinements: keep Resume outside the
+scrolling rail and use theme foreground/surface colors for its icon. Final
+mobile computed colors are41/32/27 on255/255/255, not the faint peach prototype.
+
+Actual final LOCAL390 selection remained Zeki for23601ms, video752x560 decoded
+and playing, no overflow, selected hero link reached the correct Zeki PDP/title.
+At1319 a different manual selection paused; keyboard Resume restarted rotation
+(Freya to Isla observed after19075ms), and keyboard Pause restored Resume.
+Isla then remained selected for29689ms, with decoded playing752x560video;
+its hero link reached the correct Isla PDP/title at desktop width.
+These are bounded observations, not precise timer/input-latency or real-device
+measurements. Screenshots are inline inspections, not a saved/uploaded package.
+Remote checks and affected hosted verification of this new candidate remain
+pending; exact875 is only the before deployment. No Lighthouse rerun, release,
+merge, cart, checkout, email, generation, consent or settings actions. Whole328
+remains private HOLD, including mobile90, prior brand decline and broader gates.
+
 ## 3 November Conflict Lookup CPU Candidate
 
 The option-tile conflict helper now uses the same normalized, visibility-filtered

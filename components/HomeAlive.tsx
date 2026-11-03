@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Camera, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Camera, ImageIcon, Lock, Pause, Play, Search, ShieldCheck, Truck } from "lucide-react";
 import { homepageNewArrivals, homepageBestSellers, homepageFeatureProducts, homepageBrandLogos, HOMEPAGE_FEED_SIZE, isHomepageMaleProduct, uniqueHomepageModels, homepageModelKey, selectHomepageDiscovery } from "@/lib/catalog/homepage";
 import { catalogLookOptions, inferredShapeLookTags, productMatchesLook } from "@/lib/catalog/lookTags";
 import { productPublicTitle } from "@/lib/catalog/naming";
@@ -88,13 +88,23 @@ export function HomeAlive({
     [featuredProducts, bestSellingProducts, featuredRecentlyAddedProducts]
   );
   const [activeSpot, setActiveSpot] = useState(0);
+  const [spotlightPaused, setSpotlightPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   useHomeMotion();
 
   useEffect(() => {
-    if (spotlight.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (spotlight.length < 2 || spotlightPaused || reducedMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const interval = window.setInterval(() => setActiveSpot((current) => (current + 1) % spotlight.length), 6500);
     return () => window.clearInterval(interval);
-  }, [spotlight.length]);
+  }, [spotlight.length, spotlightPaused, reducedMotion]);
 
   const activeProduct = spotlight[activeSpot] ?? featuredProducts[0];
   const feed = (key: string) => {
@@ -132,14 +142,29 @@ export function HomeAlive({
                 </Link>
               ) : null}
             </div>
-            <div className="home-spot__rail" aria-label="Featured dolls">
+            <div className="home-spot__controls">
+              {spotlight.length > 1 ? (
+                <button
+                  type="button"
+                  className="home-spot__thumb home-spot__rotation flex items-center justify-center"
+                  onClick={() => setSpotlightPaused((paused) => !paused)}
+                  aria-label={reducedMotion ? "Spotlight rotation disabled by reduced motion" : spotlightPaused ? "Resume spotlight rotation" : "Pause spotlight rotation"}
+                  aria-pressed={spotlightPaused || reducedMotion}
+                  title={reducedMotion ? "Spotlight rotation disabled by reduced motion" : spotlightPaused ? "Resume spotlight rotation" : "Pause spotlight rotation"}
+                  disabled={reducedMotion}
+                >
+                  {spotlightPaused || reducedMotion ? <Play className="h-5 w-5" aria-hidden="true" /> : <Pause className="h-5 w-5" aria-hidden="true" />}
+                </button>
+              ) : null}
+              <div className="home-spot__rail" aria-label="Featured dolls">
               {spotlight.map((product, index) => (
                 <button
                   key={product.id}
                   type="button"
                   className={`home-spot__thumb ${index === activeSpot ? "is-active" : ""}`}
-                  onClick={() => setActiveSpot(index)}
+                  onClick={() => { setSpotlightPaused(true); setActiveSpot(index); }}
                   aria-label={`Show ${productPublicTitle(product)}`}
+                  aria-pressed={index === activeSpot}
                 >
                   {getHeroVideoMedia(product)?.poster || product.featuredImage ? (
                     <Image
@@ -154,6 +179,7 @@ export function HomeAlive({
                   )}
                 </button>
               ))}
+              </div>
             </div>
           </div>
         </div>
