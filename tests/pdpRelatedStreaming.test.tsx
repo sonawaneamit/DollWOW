@@ -78,7 +78,7 @@ describe('selected PDP independent of related catalog read', () => {
     expect(text).toContain('getProductByHandle(handle, dealerPreviewProductFetch(handle))');
     expect(text).toContain('getProductAdminMetafieldsByHandle(handle)');
     expect(text).toContain('const templateRecipe = await loadTemplateRecipe(product)');
-    expect(text).toContain('<ProductOptions product={publicProduct} config={customizationConfig}');
+    expect(text).toContain('<ProductOptions product={publicProduct} config={packCustomizationConfig(customizationConfig)}');
     expect(text).toContain('<ProductGallery product={publicProduct}');
   });
 });

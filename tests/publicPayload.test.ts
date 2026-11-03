@@ -77,7 +77,7 @@ describe('customer payload boundaries', () => {
       expect(pdp).not.toContain(`<${component} product={product}`);
     }
     expect(pdp).toContain('publicCustomizationConfig(getCustomizationConfig(product))');
-    expect(pdp).toContain('config={customizationConfig}');
+    expect(pdp).toContain('config={packCustomizationConfig(customizationConfig)}');
     expect(pdp).toContain('<ProductRelatedContent product={product} publicProduct={publicProduct}');
     const related = fs.readFileSync('components/product/ProductRelatedContent.tsx', 'utf8');
     expect(related).toContain('<ProductLowerAlive product={publicProduct}');

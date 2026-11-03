@@ -59,6 +59,7 @@ import { withPreviewCustomizationFixture } from "@/lib/customization/previewFixt
 import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
+import { packCustomizationConfig } from '@/lib/customization/rule-transport';
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
@@ -280,7 +281,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <GynoidBodyVersionNote product={product} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
+          <ProductOptions product={publicProduct} config={packCustomizationConfig(customizationConfig)} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>

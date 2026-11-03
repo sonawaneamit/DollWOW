@@ -1,5 +1,43 @@
 # DOL-328 Mobile Navigation
 
+## 3 November Lossless Rule Transport, Local Candidate
+
+The actual Samantha K PDP response showed one full product object and ten
+React Flight references, not eleven duplicated products. Its public configuration
+contained 3,246 compatibility rules taking 1,014,723 JSON bytes. A dictionary and
+tuple transport now reconstructs the exact original config before the unchanged
+builder uses it. Small configs and future extended rule formats stay unchanged;
+invalid encoded indices/rows throw rather than silently dropping constraints.
+No options, rules, media, prices, source records, eligibility checks, template
+signatures or server checkout paths were removed or changed.
+
+Actual built response round-trip: all 3,246 rules and 14 groups deep-equal the
+saved baseline. Config JSON 1,082,753 -> 295,698 bytes; observed decoded HTML
+1,620,589 -> 736,412 bytes and Flight text 1,255,847 -> 468,792 bytes.
+These are response representation sizes, not compressed network savings.
+One local mobile Lighthouse13.6 pair, same localhost3033/server Node/runtime
+and CLI flags: 62/96/77/92 -> 68/96/77/92, LCP7614 -> 7559ms, CLS unchanged.
+This is not a stable/field/hosted/90+ claim. The retained lower before result
+was not rerun for a better score. No desktop/full-matrix rerun this phase.
+
+Default builder text, controls, disabled/pressed states and title match before
+and after at390/1319, no overflow or page errors. One paid flight-case selection
+shows1899+899=2798 at both sizes; No Thanks restores1899. No cart/checkout,
+consent, generation or email actions. Six screenshots inspected; seasonal
+overlay and differing scroll positions mean no clean pixel-match/first-tap or
+whole-page acceptance. An initial accessible-name locator timed out and reset
+the isolated browser runtime; a capture path failed before its first PNG due to
+URL escaping. Corrected bounded harness completed; neither was an app defect.
+
+The local candidate passes102tests across10files (one opt-in skip), including
+actual config parity, transport/public payload/template/streaming and existing
+customization/checkout/preset/visibility regressions, standalone TSC, scoped lint (two existing
+ProductOptions warnings), configured local build and both4,954asset gates.
+Evidence is in ignored `data/exports/dol-328-2026-11-02/rule-wire/`.
+Private hosted/remote verification remains pending; no Martin handoff or live
+release. Prior brand decline and all whole-ticket functional/device/consent/
+Chatra/transactional gates remain open. Fresh Dolly order:328,333,332,216,295,288.
+
 ## 2 November Brand List Image Projection
 
 The brand list now requests `imageFirst: 1`, matching the existing card's
