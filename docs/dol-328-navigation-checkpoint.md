@@ -1,5 +1,35 @@
 # DOL-328 Mobile Navigation
 
+## 3 November Conflict Lookup CPU Candidate
+
+The option-tile conflict helper now uses the same normalized, visibility-filtered
+selections directly, then the original ordered rule search. It no longer asks
+the full resolver to calculate unused prices, issues and cart attributes first.
+The full resolver, server checkout, availability, prices, rules and media are
+unchanged. This is a private candidate on the same PR235, not a release.
+
+The retained full-resolver reference and candidate match across 1,125 lookups
+on the saved actual 3,246-rule config, plus synthetic default, multiple, invalid,
+conditional visibility and first-conflict-order cases. Inputs remain unchanged.
+The initial synthetic visibility fixture used the wrong shape; corrected to the
+actual nested condition array before the final 94-test/9-file pass (one opt-in
+skip). Standalone TypeScript and scoped lint pass.
+
+Five same-process batches of the initial 49 head choices measured full-resolver
+14.84-19.76ms versus selection-only 10.39-12.36ms, after one warmup each.
+This is CPU-only evidence with JIT/scheduler variation, not browser input latency,
+an LCP improvement, field data or a 90+ result. No new Lighthouse run is justified
+by this small helper saving. Configured LOCAL Node26 build, promotion check and
+both 4,954-asset gates pass with the existing build diagnostics retained.
+Actual changed-build LOCAL390/1319 default text/control signatures equal the
+retained883 views. The LSTPE prerequisite, enabled2099 total, reverse material
+conflict and orderly removal/restoration1899 pass without cart actions. Three
+inline screenshots inspected; the first desktop capture was scrolled to specs,
+not a paid-total frame, while the later desktop conflict frame is legible.
+Hosted verification is pending; the earlier exact883 hosted receipt is not this
+candidate's hosted proof. Whole-ticket performance and acceptance holds remain
+open. Local server stopped, owned tab closed and viewport reset.
+
 ## 3 November Lossless Rule Transport, Local Candidate
 
 The actual Samantha K PDP response showed one full product object and ten
