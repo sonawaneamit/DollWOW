@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Check, Download, ImageIcon, Loader2, RotateCcw, 
 import { trackEvent } from "@/lib/analytics/client";
 import { dollVueDraftKey, dollVueSelectionKey, dollVuePhotoPosition, type DollVueGroup } from "@/lib/dollvue/public";
 import { productUrl } from "@/lib/catalog/productUrl";
+import './configurator.css';
 import styles from './DollVue.module.css';
 
 type Props = {

@@ -69,8 +69,10 @@ import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/cu
 import { includedBuildItems, isChikuPreview, isChikuEyeImage } from "@/lib/customization/chiku-preview";
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
+import { unpackCustomizationConfig, type CustomizationConfigTransport } from '@/lib/customization/rule-transport';
 
-export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
+export function ProductOptions({ product, config: transportedConfig, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: CustomizationConfigTransport; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
+  const config = useMemo(() => unpackCustomizationConfig(transportedConfig), [transportedConfig]);
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
   if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
   return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} />;

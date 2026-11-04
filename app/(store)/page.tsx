@@ -24,12 +24,12 @@ const HOMEPAGE_SPOTLIGHT_HANDLES = [
 export default async function HomePage() {
   const [spotlightProducts, products, femaleProducts, maleProducts, readyProducts, bestSellingProducts, recentlyAddedProducts, brandProducts] = await Promise.all([
     Promise.all(HOMEPAGE_SPOTLIGHT_HANDLES.map((handle) => getProductByHandle(handle, { strict: true, revalidate: 120 }))),
-    getProducts({ first: 96, strict: true }),
-    getProducts({ first: 96, strict: true, query: shopifyQueryForFilters({ bodyType: "female" }) }),
-    getProducts({ first: 96, strict: true, query: shopifyQueryForFilters({ bodyType: "male" }) }),
-    getProducts({ first: 96, strict: true, query: shopifyQueryForFilters({ availability: "ready_to_ship" }) }),
-    getProducts({ first: 96, strict: true, sortKey: "BEST_SELLING", reverse: false }),
-    getProducts({ first: 96, strict: true, sortKey: "CREATED_AT", reverse: true }),
+    getProducts({ first: 96, strict: true, imageFirst: 1 }),
+    getProducts({ first: 96, strict: true, imageFirst: 1, query: shopifyQueryForFilters({ bodyType: "female" }) }),
+    getProducts({ first: 96, strict: true, imageFirst: 1, query: shopifyQueryForFilters({ bodyType: "male" }) }),
+    getProducts({ first: 96, strict: true, imageFirst: 1, query: shopifyQueryForFilters({ availability: "ready_to_ship" }) }),
+    getProducts({ first: 96, strict: true, imageFirst: 1, sortKey: "BEST_SELLING", reverse: false }),
+    getProducts({ first: 96, strict: true, imageFirst: 1, sortKey: "CREATED_AT", reverse: true }),
     Promise.all(homepageBrandLogos.map(logo => getProducts({first:1, imageFirst:1, revalidate:300, strict:true, query:shopifyQueryForFilters({brand:logo.brand})})))
   ]);
 

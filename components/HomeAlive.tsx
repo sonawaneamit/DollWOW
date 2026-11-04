@@ -15,7 +15,8 @@ import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { HomepageReviews } from "@/components/reviews/HomepageReviews";
 import { FactoryApprovalHomepagePreview } from "@/components/factory-approval/FactoryApprovalPreview";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
-import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
+import { DollVueHomepageStrip } from "@/components/dollvue/DollVueHomepageStrip";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/catalog";
 import { formatMoney } from "@/lib/utils/currency";
 import type { Product } from "@/types/product";
 import type { CustomerReview } from "@/lib/reviews/reviews";
@@ -139,6 +140,7 @@ export function HomeAlive({
                   className={`home-spot__thumb ${index === activeSpot ? "is-active" : ""}`}
                   onClick={() => setActiveSpot(index)}
                   aria-label={`Show ${productPublicTitle(product)}`}
+                  aria-pressed={index === activeSpot}
                 >
                   {getHeroVideoMedia(product)?.poster || product.featuredImage ? (
                     <Image
@@ -176,35 +178,6 @@ export function HomeAlive({
       <PreviewShowcase products={featuredProducts} />
       <ClosingBand />
     </div>
-  );
-}
-
-function DollVueHomepageStrip() {
-  return (
-    <section className="home-dollvue-strip" aria-label="DollVue personalized appearance previews">
-      <Link
-        href="/dollvue"
-        className="home-dollvue-strip__link"
-        aria-label="Explore DollVue personalized doll previews"
-      >
-        <Image
-          className="home-dollvue-strip__image home-dollvue-strip__image--desktop"
-          src="/images/dollvue/home/dollvue-skin-tone-strip-desktop.png"
-          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
-          width={1774}
-          height={300}
-          sizes="80vw"
-        />
-        <Image
-          className="home-dollvue-strip__image home-dollvue-strip__image--mobile"
-          src="/images/dollvue/home/dollvue-skin-tone-strip-mobile.png"
-          alt="DollVue preview showing the same Luna doll in four selectable skin tones"
-          width={1774}
-          height={887}
-          sizes="80vw"
-        />
-      </Link>
-    </section>
   );
 }
 

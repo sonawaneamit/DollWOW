@@ -54,6 +54,7 @@ export default async function BrandHubPage({
   const products = isGynoidPreview ? gynoidReleasePreviewProducts() : await getProducts({
     query: shopifyQueryForFilters(filters),
     first: requiresCatalogWideFetch(filters) ? 2200 : 600,
+    imageFirst: 1,
     cacheKey: `${brand.value}-release-order-v1`,
     cache: "no-store"
   });

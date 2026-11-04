@@ -161,7 +161,10 @@ export function getOptionConflict(
   const group = config.groups.find((item) => item.id === groupId);
   const currentValue = selections[groupId] ?? getDefaultSelections(config)[groupId];
   const nextValue = group?.selectionMode === "multiple" ? nextMultipleSelection(group.options, currentValue, optionId) : optionId;
-  const nextSelections = resolveCustomization(config, { ...selections, [groupId]: nextValue }, 0).selections;
+  // A tile needs the same active selections, not prices, cart attributes or a second rule scan.
+  const allSelections = normalizedSelections(config, { ...selections, [groupId]: nextValue });
+  const { activeGroupIds } = customizationVisibility(config, allSelections);
+  const nextSelections = Object.fromEntries(Object.entries(allSelections).filter(([id]) => activeGroupIds.has(id)));
   const conflict = config.rules.find((rule) => {
     const whenSelected = selectionIds(nextSelections[rule.when.groupId]).includes(rule.when.optionId);
     const conflictSelected = selectionIds(nextSelections[rule.conflictsWith.groupId]).includes(rule.conflictsWith.optionId);

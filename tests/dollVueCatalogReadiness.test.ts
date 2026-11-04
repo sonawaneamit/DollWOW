@@ -147,7 +147,7 @@ describe.each(paths)('$name readiness badges', ({ read }) => {
     const hydration = fetchMock.mock.calls[1][1];
     expect(hydration.cache).toBe('no-store');
     expect(JSON.parse(String(hydration.body)).query).toContain('customization_groups');
-    expect(JSON.parse(String(hydration.body)).query).toContain('media(first: 50)');
+    expect(JSON.parse(String(hydration.body)).query).toContain('media(first: 100)');
   });
 
   it.each(['menu', 'photo', 'policy', 'identity', 'stock'] as const)('rejects stale %s evidence', async change => {
@@ -248,4 +248,90 @@ it('isolates a failed hydration chunk without discarding other verified results'
   expect(cards.slice(0, 50).every(card => card.dollVueAvailable === false)).toBe(true);
   expect(cards[50].dollVueAvailable).toBe(true);
   expect(mocks.batchHolds).toHaveBeenCalledExactlyOnceWith([details[50].id]);
+});
+
+describe('bounded DollVue landing rail', () => {
+  const rail = (limit = 9) => getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true, dollVueLimit: limit });
+
+  it('stops at nine in the existing catalog order without hydrating unrelated cards or leaking details', async () => {
+    const details = Array.from({ length: 60 }, (_, index) => node(index + 1));
+    details.forEach(approve);
+    details[30].sourceReleaseRank = { value: '99999' };
+    const fetchMock = serve(details);
+    const cards = await rail();
+    expect(cards.map(card => card.id)).toEqual(details.slice(0, 9).map(detail => detail.id));
+    expect(cards.every(card => card.extended.sourceReleaseRank === undefined)).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const hydration = fetchMock.mock.calls[1][1];
+    expect(hydration.cache).toBe('no-store');
+    expect(JSON.parse(String(hydration.body)).variables.ids).toEqual(details.slice(0, 9).map(detail => detail.id));
+    expect(mocks.batchHolds).toHaveBeenCalledExactlyOnceWith(cards.map(card => card.id));
+    expect(cards.every(card => card.images.length === 1 && card.variants.length === 0 && card.description === '')).toBe(true);
+    expect(JSON.stringify(cards)).not.toContain('PRIVATE REVIEW EVIDENCE');
+    expect(cards.every(card => card.extended.customizationGroups === undefined)).toBe(true);
+  });
+
+  it('continues past stale and held candidates rather than filling with unsafe or empty slots', async () => {
+    const details = Array.from({ length: 6 }, (_, index) => node(index + 1));
+    details.forEach(approve);
+    mocks.registry[details[0].id].fingerprint = 'stale';
+    mocks.heldIds.add(details[1].id);
+    serve(details);
+    expect((await rail(3)).map(card => card.id)).toEqual(details.slice(2, 5).map(detail => detail.id));
+  });
+
+  it('keeps the already released legacy pilot, excluding explicitly unready and warehouse cards', async () => {
+    const legacy = node(1, 'irontech-existing'), excluded = node(2, 'irontech-excluded'), stock = node(3, 'irontech-stock');
+    approve(excluded); mocks.registry[excluded.id].status = 'excluded';
+    stock.stockStatus = { value: 'ready_to_ship' };
+    const fetchMock = serve([excluded, stock, legacy]);
+    expect((await rail(1)).map(card => card.id)).toEqual([legacy.id]);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(mocks.batchHolds).not.toHaveBeenCalled();
+  });
+
+  it('reads subsequent catalog pages when an earlier page has no eligible candidates', async () => {
+    const excluded = node(1), approved = node(2);
+    approve(approved);
+    const original = serve([excluded, approved]);
+    const fetchMock = vi.fn(async (url: unknown, init: RequestInit) => {
+      const body = JSON.parse(String(init.body));
+      if (!body.query.includes('query SeoCatalogProducts')) return original(url, init);
+      const secondPage = body.variables.after === 'next';
+      return new Response(JSON.stringify({ data: { products: {
+        edges: [{ node: secondPage ? approved : excluded }],
+        pageInfo: { hasNextPage: !secondPage, endCursor: secondPage ? null : 'next' },
+      } } }), { status: 200 });
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    expect((await rail(1)).map(card => card.id)).toEqual([approved.id]);
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1].body)).variables.after).toBe('next');
+  });
+
+  it('does not cache a private hold change between rail requests', async () => {
+    const details = [node(1), node(2)];
+    details.forEach(approve);
+    serve(details);
+    expect((await rail(1)).map(card => card.id)).toEqual([details[0].id]);
+    mocks.heldIds.add(details[0].id);
+    expect((await rail(1)).map(card => card.id)).toEqual([details[1].id]);
+    expect(mocks.batchHolds).toHaveBeenCalledTimes(3);
+  });
+
+  it('fails closed on missing detail evidence and returns fewer cards if none remain', async () => {
+    const detail = node(1);
+    approve(detail);
+    serve([detail], () => ({ nodes: [null] }));
+    expect(await rail(1)).toEqual([]);
+    expect(mocks.batchHolds).not.toHaveBeenCalled();
+  });
+
+  it.each([0, 37, 1.5, Infinity])('rejects an invalid rail limit %s', async limit => {
+    await expect(rail(limit)).rejects.toThrow(RangeError);
+  });
+
+  it('requires strict reads and current eligibility for the limited path', async () => {
+    await expect(getSeoCatalogProducts({ dollVueLimit: 9 })).rejects.toThrow(RangeError);
+    await expect(getSeoCatalogProducts({ strict: true, dollVueLimit: 9 })).rejects.toThrow(RangeError);
+  });
 });

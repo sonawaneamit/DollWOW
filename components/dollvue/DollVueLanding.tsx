@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
 import { ProductCard } from "@/components/ProductCard";
@@ -63,7 +63,7 @@ const examples = [
   }
 ] as const;
 
-export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProducts: Product[] }) {
+export function DollVueLanding({ latestEligibleProducts = [], latestProducts }: { latestEligibleProducts?: Product[]; latestProducts?: ReactNode }) {
   const [reveal, setReveal] = useState(50);
 
   useEffect(() => {
@@ -170,7 +170,7 @@ export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProdu
           <TrackedLink event="dollvue_enabled_catalog_cta" href="/shop/dollvue-enabled">See more <ArrowRight /></TrackedLink>
         </header>
         <div className={styles.productRail}>
-          {latestEligibleProducts.map((product, index) => (
+          {latestProducts ?? latestEligibleProducts.map((product, index) => (
             <div className={styles.productRailItem} key={product.id}>
               <ProductCard product={product} priority={index < 3} />
             </div>

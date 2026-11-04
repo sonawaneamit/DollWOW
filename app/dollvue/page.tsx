@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
+import { Suspense } from "react";
+import { ProductCard } from "@/components/ProductCard";
 import { DollVueLanding } from "@/components/dollvue/DollVueLanding";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
+import styles from "@/components/dollvue/DollVueLanding.module.css";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 const canonicalUrl = `${siteUrl}/dollvue`;
@@ -35,12 +39,20 @@ function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-export default async function DollVueLandingPage() {
-  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true });
+async function LatestDollVueProducts() {
+  // Keep eligibility request-time even when the current first nine are legacy cards.
+  await connection();
+  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true, dollVueLimit: 9 });
   const latestEligibleProducts = catalog
     .filter(isDollVueCatalogProduct)
     .sort((a, b) => (b.extended.sourceReleaseRank ?? 0) - (a.extended.sourceReleaseRank ?? 0))
     .slice(0, 9);
+  return latestEligibleProducts.map((product, index) => <div className={styles.productRailItem} key={product.id}>
+    <ProductCard product={product} priority={index < 3} />
+  </div>);
+}
+
+export default function DollVueLandingPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -57,7 +69,9 @@ export default async function DollVueLandingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(schema) }} />
-      <DollVueLanding latestEligibleProducts={latestEligibleProducts} />
+      <DollVueLanding latestProducts={<Suspense fallback={null}>
+        <LatestDollVueProducts />
+      </Suspense>} />
     </>
   );
 }

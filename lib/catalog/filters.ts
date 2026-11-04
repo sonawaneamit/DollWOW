@@ -1,7 +1,7 @@
 import type { Product } from "@/types/product";
 import { brandFilterOptions, brandFromText, catalogBrands, getCatalogBrand } from "@/lib/catalog/brands";
 import { getCatalogLook, lookCollectionPresets, lookFilterOptions, productMatchesLook } from "@/lib/catalog/lookTags";
-import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
+import { isDollVueCatalogProduct } from "@/lib/dollvue/catalog";
 import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
 
 export type CatalogFilters = {

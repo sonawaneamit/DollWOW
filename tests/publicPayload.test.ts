@@ -72,15 +72,42 @@ describe('customer payload boundaries', () => {
     expect(home.match(/\.map\(homepageCardPayload\)/g)).toHaveLength(3);
     const pdp = fs.readFileSync('app/(store)/products/[handle]/page.tsx', 'utf8');
     expect(pdp).toMatch(/publicProductPayload\(\s*withProtectedProductImages\(/);
-    for (const component of ['ProductGallery', 'ProductOptions', 'ProductLowerAlive']) {
+    for (const component of ['ProductGallery', 'ProductOptions']) {
       expect(pdp).toContain(`<${component} product={publicProduct}`);
       expect(pdp).not.toContain(`<${component} product={product}`);
     }
     expect(pdp).toContain('publicCustomizationConfig(getCustomizationConfig(product))');
-    expect(pdp).toContain('config={customizationConfig}');
+    expect(pdp).toContain('config={packCustomizationConfig(customizationConfig)}');
+    expect(pdp).toContain('<ProductRelatedContent product={product} publicProduct={publicProduct}');
+    const related = fs.readFileSync('components/product/ProductRelatedContent.tsx', 'utf8');
+    expect(related).toContain('<ProductLowerAlive product={publicProduct}');
+    expect(related).toContain('alternatives.map(withProtectedProductImages).map(publicProductPayload)');
     for (const component of ['SeDollPdpFreebieBlock', 'IrontechAutumnPdpPromotion', 'FanrealSeptemberPdpPromotion', 'JinsanOctoberPdpPromotion']) {
       expect(pdp).toContain(`<${component} product={publicProduct}`);
     }
+  });
+
+  it('requests only one image for homepage card lists without shrinking spotlight detail or PDP galleries', () => {
+    const home = ts.createSourceFile('home.tsx', fs.readFileSync('app/(store)/page.tsx', 'utf8'), ts.ScriptTarget.Latest, true);
+    let cardLists = 0;
+    let spotlight = 0;
+    function visit(node: ts.Node) {
+      if (ts.isCallExpression(node) && node.expression.getText(home) === 'getProducts') {
+        const options = node.arguments[0] as ts.ObjectLiteralExpression;
+        const fields = Object.fromEntries(options.properties.filter(ts.isPropertyAssignment).map(p => [p.name.getText(home), p.initializer.getText(home)]));
+        expect(fields.imageFirst).toBe('1');
+        expect(fields.strict).toBe('true');
+        if (fields.first === '96') cardLists++;
+      }
+      if (ts.isCallExpression(node) && node.expression.getText(home) === 'getProductByHandle') {
+        spotlight++;
+        expect(node.arguments[1].getText(home)).not.toContain('imageFirst');
+      }
+      ts.forEachChild(node, visit);
+    }
+    visit(home);
+    expect(cardLists).toBe(6);
+    expect(spotlight).toBe(1);
   });
 
   it('preserves sample menu default selection, totals and preset identity', () => {
