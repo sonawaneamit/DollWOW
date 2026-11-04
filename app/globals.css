@@ -2987,7 +2987,8 @@ a {
 
 .home-dollvue-strip__link {
   display: block;
-  width: 80%;
+  width: 100%;
+  padding-inline: 10%;
   margin-inline: auto;
   outline-offset: -4px;
 }
@@ -3600,6 +3601,7 @@ a {
 
 .home-heart {
   top: 0.75rem;
+  z-index: 6;
   right: 0.75rem;
   display: grid;
   place-items: center;
@@ -4702,6 +4704,12 @@ a {
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   background: #0b0504;
+}
+
+.home-product-card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
 }
 
 .home-product-card__media {
