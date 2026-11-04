@@ -4709,7 +4709,7 @@ a {
 .home-product-card__link {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 3;
 }
 
 .home-product-card__media {
@@ -4748,8 +4748,13 @@ a {
   inset-inline: 0;
   bottom: 0;
   z-index: 4;
+  pointer-events: none;
   padding: 4rem 1rem 1rem;
   color: #f7ece2;
+}
+
+.home-product-card__body [role="button"] {
+  pointer-events: auto;
 }
 
 .home-product-card__body p {
