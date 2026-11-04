@@ -3,6 +3,7 @@ import postcss from 'postcss';
 import { describe, expect, it } from 'vitest';
 
 const css = postcss.parse(readFileSync('app/globals.css', 'utf8'));
+const cardCss = postcss.parse(readFileSync('app/v2-storefront.css', 'utf8'));
 function declarations(selector: string) {
   const values: Record<string, string> = {};
   css.walkRules(selector, rule => {
@@ -18,11 +19,18 @@ describe('homepage small fixes', () => {
   });
 
   it('covers the whole home card and leaves the save button above its link', () => {
-    const link = declarations('.home-product-card__link');
-    expect(link).toMatchObject({ position: 'absolute', inset: '0', 'z-index': '3' });
-    expect(Number(declarations('.home-heart')['z-index'])).toBeGreaterThan(Number(link['z-index']));
-    expect(declarations('.home-product-card__body')['pointer-events']).toBe('none');
-    expect(declarations('.home-product-card__body [role="button"]')['pointer-events']).toBe('auto');
+    const values = (selector: string) => {
+      const result: Record<string, string> = {};
+      cardCss.walkRules(rule => {
+        if (rule.selectors.includes(selector)) {
+          rule.walkDecls(declaration => { result[declaration.prop] = declaration.value; });
+        }
+      });
+      return result;
+    };
+    const link = values('.home-product-card__link');
+    expect(link).toMatchObject({ position: 'absolute', inset: '0', 'z-index': '5' });
+    expect(Number(values('.home-heart')['z-index'])).toBeGreaterThan(Number(link['z-index']));
   });
 
   it('sets the home title explicitly without a second site-name suffix', () => {

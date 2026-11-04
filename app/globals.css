@@ -3601,7 +3601,6 @@ a {
 
 .home-heart {
   top: 0.75rem;
-  z-index: 6;
   right: 0.75rem;
   display: grid;
   place-items: center;
@@ -4706,12 +4705,6 @@ a {
   background: #0b0504;
 }
 
-.home-product-card__link {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-}
-
 .home-product-card__media {
   position: absolute;
   inset: 0;
@@ -4748,13 +4741,8 @@ a {
   inset-inline: 0;
   bottom: 0;
   z-index: 4;
-  pointer-events: none;
   padding: 4rem 1rem 1rem;
   color: #f7ece2;
-}
-
-.home-product-card__body [role="button"] {
-  pointer-events: auto;
 }
 
 .home-product-card__body p {
