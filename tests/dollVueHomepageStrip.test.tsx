@@ -7,12 +7,12 @@ import { describe, expect, it } from 'vitest';
 import { DollVueHomepageStrip, DollVueStripPicture } from '@/components/dollvue/DollVueHomepageStrip';
 
 describe('DollVue homepage banner', () => {
-  it('keeps one full-width native destination and a visible action with a matching accessible name', () => {
+  it('keeps one full-width native destination without adding a visible button', () => {
     const html = renderToStaticMarkup(<DollVueHomepageStrip />);
     expect(html.match(/<a /g)).toHaveLength(1);
     expect(html).toContain('href="/dollvue"');
-    expect(html).toContain('aria-label="Try DollVue personalized doll previews"');
-    expect(html).toContain('Try DollVue <svg');
+    expect(html).toContain('aria-label="Explore DollVue personalized doll previews"');
+    expect(html).not.toContain('home-dollvue-strip__cta');
     expect(html).not.toContain('<button');
     expect(html).not.toContain('/_next/image');
   });

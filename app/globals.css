@@ -2861,8 +2861,6 @@ a {
   width: 100%;
   padding-inline: 10%;
   outline-offset: -4px;
-  padding-bottom: 16px;
-  text-align: center;
 }
 
 .home-dollvue-strip__image {
@@ -2884,22 +2882,6 @@ a {
   transform: scale(1.003);
 }
 
-.home-dollvue-strip__cta {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
-  padding: 8px 16px;
-  border: 1px solid #bca88f;
-  border-radius: 4px;
-  background: #f4e9d8;
-  color: #1b1612;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-}
 
 .home-hero::after,
 .home-band::after,
@@ -3194,19 +3176,6 @@ a {
   text-align: center;
 }
 
-.home-spot__controls {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 1rem;
-}
-
-.home-spot__controls .home-spot__rail {
-  flex: 1;
-  min-width: 0;
-  margin-top: 0;
-}
-
 .home-spot__rail {
   display: flex;
   justify-content: space-between;
@@ -3240,11 +3209,6 @@ a {
   transform: translateY(-3px);
 }
 
-.home-spot__rotation {
-  background: rgb(var(--color-surface));
-  color: rgb(var(--color-text));
-  border-color: rgb(var(--color-border));
-}
 
 @keyframes home-video-reveal {
   from {

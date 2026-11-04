@@ -69,7 +69,7 @@ export default function DollVueLandingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(schema) }} />
-      <DollVueLanding latestProducts={<Suspense fallback={<div role="status" aria-label="Loading available dolls" className={`${styles.productRailItem} min-h-64 animate-pulse bg-surface-alt`} />}>
+      <DollVueLanding latestProducts={<Suspense fallback={null}>
         <LatestDollVueProducts />
       </Suspense>} />
     </>

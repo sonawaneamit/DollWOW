@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
 
 const directory = "/images/dollvue/home/dollvue-skin-tone-strip";
 const desktopSizes = [640, 1280, 1774].map(width => `${directory}-desktop-${width}.webp ${width}w`).join(", ");
@@ -27,9 +26,8 @@ export function DollVueHomepageStrip() {
     <section className="home-dollvue-strip" aria-label="DollVue personalized appearance previews">
       {/* Native navigation exposes the streamed introduction before the verified product rail. */}
       {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a href="/dollvue" className="home-dollvue-strip__link" aria-label="Try DollVue personalized doll previews">
+      <a href="/dollvue" className="home-dollvue-strip__link" aria-label="Explore DollVue personalized doll previews">
         <DollVueStripPicture originalOnly={originalOnly} onError={() => setOriginalOnly(true)} />
-        <span className="home-dollvue-strip__cta">Try DollVue <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
       </a>
     </section>
   );

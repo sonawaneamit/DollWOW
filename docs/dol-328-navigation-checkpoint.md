@@ -1,5 +1,51 @@
 # DOL-328 Mobile Navigation
 
+## 4 November: Return To The Requested Design
+
+Martin rejected the added visible controls. His 11:15 feedback supersedes the
+spotlight-control acceptance below. Nothing is approved for release; do not
+start DOL-333 before his answer.
+
+Removed: spotlight Pause/Resume, its extra rail wrapper and styling, and its
+manual-pause behavior; original automatic rotation and reduced-motion guard
+restored. Removed: the extra Try DollVue label/button, border, colors and extra
+vertical spacing below the homepage banner. Removed: the global loading screen
+and the DollVue product-rail loading placeholder. The existing artwork, native
+full-width banner destination and invisible verified data-loading changes stay.
+Existing DollVue landing/PDP button styles were not restyled by this branch.
+
+Plain-English reconciliation of the original asks:
+
+- Banner: only its inner image area was linked, leaving the outer margins dead.
+  Navigation also waited on the verified product list. The same artwork now has
+  a full-width native link, with the introduction delivered before that list.
+  This is not a guarantee of instant navigation on every phone.
+- Cards: existing home and catalog card markup was already full-card linked.
+  This branch did not add a new card-click handler; prior actual price/padding
+  checks verified destinations. Do not claim a source fix for an unproven cause.
+- Tab title: original routes already had correct metadata. The stale title was
+  seen while navigation had not yet committed; settled routes were correct.
+  No metadata replacement or general title-manager fix is claimed. The banner's
+  native navigation avoids that client-transition path for that link only.
+
+Other visible branch additions were exactly the controls/placeholders removed
+above. The private neutral review fixture is not linked in the customer UI and
+is unavailable in production. Image delivery, bundle boundaries, rule transport,
+related-content streaming and stylesheet ownership are retained optimizations,
+not a redesign or a new performance acceptance claim.
+
+At this checkpoint the removals are LOCAL verified: 105 focused tests, scoped
+lint, standalone TypeScript, configured build, promotion and both asset gates
+pass. Existing build diagnostics remain. Actual mobile390/desktop1319 show no
+added controls or overflow; banner reaches the correct DollVue title/heading at
+both sizes, mobile home return restores its title. Initial mobile heading wait
+used the wrong literal name; the same single click had reached the right page,
+with no repeated activation. Two saved JPEGs show the restored spotlight/banner;
+desktop is scrolled and is not a whole-hero framing claim. Viewport reset, tab
+closed and local server stopped. New private deployment and the requested full
+before/after screenshot package are still pending. Older screenshots are dated evidence,
+not proof of a broken card or wrong settled title. Do not invent before frames.
+
 ## 3 November Spotlight Rotation Control
 
 Private acceptance fix, not a page-speed or whole-ticket completion claim.

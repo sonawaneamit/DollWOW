@@ -3,7 +3,6 @@ import { PassThrough } from 'node:stream';
 import { renderToPipeableStream, renderToStaticMarkup } from 'react-dom/server';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import fs from 'node:fs';
-import LoadingPage from '@/app/loading';
 import DollVuePage from '@/app/dollvue/page';
 import { getSeoCatalogProducts } from '@/lib/shopify/storefront';
 import { connection } from 'next/server';
@@ -31,7 +30,7 @@ function readShell() {
     });
     output.on('data', chunk => {
       html += chunk.toString();
-      if (html.includes('Loading available dolls')) { resolve(html); stream.abort(); }
+      if (html.includes('DollVue introduction')) { resolve(html); stream.abort(); }
     });
   });
 }
@@ -40,7 +39,6 @@ describe('Navigation feedback and streamed DollVue content', () => {
   it('streams the introduction without waiting for catalog verification', async () => {
     const shell = await readShell();
     expect(shell).toContain('DollVue introduction');
-    expect(shell).toContain('Loading available dolls');
     expect(connection).toHaveBeenCalled();
     await vi.waitFor(() => expect(getSeoCatalogProducts).toHaveBeenCalledWith({ first: 5000, strict: true, includeDollVueEligibility: true, dollVueLimit: 9 }));
   });
@@ -52,13 +50,10 @@ describe('Navigation feedback and streamed DollVue content', () => {
     expect(getSeoCatalogProducts).not.toHaveBeenCalled();
   });
 
-  it('provides a stable accessible page-loading state with no purchase controls', () => {
-    const html = renderToStaticMarkup(<LoadingPage />);
-    expect(html).toContain('role="status"');
-    expect(html).toContain('aria-label="Loading page"');
-    expect(html).toContain('min-h-screen');
-    expect(html).toContain('aspect-[2/3]');
-    expect(html).not.toContain('<button');
+  it('does not add a global loading screen or a visible rail placeholder', () => {
+    expect(fs.existsSync(new URL('../app/loading.tsx', import.meta.url))).toBe(false);
+    const html = renderToStaticMarkup(<DollVuePage />);
+    expect(html).not.toContain('Loading available dolls');
   });
 
   it('extends the banner link to the margins without enlarging its artwork', () => {
