@@ -9,7 +9,10 @@ import { homepageCardPayload } from '@/lib/catalog/publicPayload';
 import { homepageFeatureProducts, homepageBrandLogos, homepageBrands, homepageNewArrivals, homepageBestSellers } from '@/lib/catalog/homepage';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { alternates: { canonical: 'https://dollwow.com' } };
+export const metadata: Metadata = {
+  title: { absolute: 'DollWOW | Find, compare, customize, and buy with confidence' },
+  alternates: { canonical: 'https://dollwow.com' }
+};
 
 const HOMEPAGE_SPOTLIGHT_HANDLES = [
   "irontech-vivian-153cm-f-cup-silicone-head-companion-doll-qryli",

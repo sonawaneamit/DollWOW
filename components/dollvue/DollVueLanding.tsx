@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { trackEvent } from "@/lib/analytics/client";
-import { ProductCard } from "@/components/ProductCard";
-import type { Product } from "@/types/product";
+import type { ReactNode } from "react";
 import { DollVueBadge } from "./DollVueBadge";
 import styles from "./DollVueLanding.module.css";
 
@@ -63,7 +62,7 @@ const examples = [
   }
 ] as const;
 
-export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProducts: Product[] }) {
+export function DollVueLanding({ arrivals }: { arrivals: ReactNode }) {
   const [reveal, setReveal] = useState(50);
 
   useEffect(() => {
@@ -170,11 +169,7 @@ export function DollVueLanding({ latestEligibleProducts }: { latestEligibleProdu
           <TrackedLink event="dollvue_enabled_catalog_cta" href="/shop/dollvue-enabled">See more <ArrowRight /></TrackedLink>
         </header>
         <div className={styles.productRail}>
-          {latestEligibleProducts.map((product, index) => (
-            <div className={styles.productRailItem} key={product.id}>
-              <ProductCard product={product} priority={index < 3} />
-            </div>
-          ))}
+          {arrivals}
         </div>
         <small>DollVue creates an AI-assisted approximation from product and option-reference images. Final factory appearance may vary.</small>
       </section>

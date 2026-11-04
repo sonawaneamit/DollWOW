@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { DollVueLanding } from "@/components/dollvue/DollVueLanding";
-import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
-import { getSeoCatalogProducts } from "@/lib/shopify/storefront";
+import { DollVueArrivals } from "@/components/dollvue/DollVueArrivals";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dollwow.com").replace(/\/$/, "");
 const canonicalUrl = `${siteUrl}/dollvue`;
@@ -35,12 +35,7 @@ function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-export default async function DollVueLandingPage() {
-  const catalog = await getSeoCatalogProducts({ first: 5000, strict: true, includeDollVueEligibility: true });
-  const latestEligibleProducts = catalog
-    .filter(isDollVueCatalogProduct)
-    .sort((a, b) => (b.extended.sourceReleaseRank ?? 0) - (a.extended.sourceReleaseRank ?? 0))
-    .slice(0, 9);
+export default function DollVueLandingPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -57,7 +52,13 @@ export default async function DollVueLandingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(schema) }} />
-      <DollVueLanding latestEligibleProducts={latestEligibleProducts} />
+      <DollVueLanding
+        arrivals={
+          <Suspense fallback={null}>
+            <DollVueArrivals />
+          </Suspense>
+        }
+      />
     </>
   );
 }
