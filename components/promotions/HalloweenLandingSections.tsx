@@ -1,3 +1,4 @@
+import { GynoidEarlyBirdBrowseLink } from './GynoidEarlyBirdPromotion';
 import Link from "next/link";
 import { ProductCard } from "@/components/ProductCard";
 import { getProductsByHandles } from "@/lib/shopify/storefront";
@@ -10,7 +11,7 @@ const featuredHandles = [
   "yl-isla-158cm-e-cup-silicone-companion-doll-1iikg"
 ];
 
-export async function HalloweenLandingSections({ preview = false }: { preview?: boolean }) {
+export async function HalloweenLandingSections({ preview = false, gynoidEarlyBirdClock, freezeGynoidClock = false }: { preview?: boolean; gynoidEarlyBirdClock?: string; freezeGynoidClock?: boolean }) {
   // Reuse public entries already featured on the homepage, not a final discount manifest.
   const products = await getProductsByHandles(featuredHandles);
   return <>
@@ -47,7 +48,7 @@ export async function HalloweenLandingSections({ preview = false }: { preview?: 
     <section className="halloween-page-section" aria-labelledby="halloween-brands-heading">
       <h2 id="halloween-brands-heading">Explore by brand</h2>
       <p>Compare styles, materials and options across our brand collections.</p>
-      <div className="halloween-brand-links">{[["irontech", "Irontech"], ["starpery", "Starpery"], ["sedoll", "SE Doll"], ["wm", "WM Doll"], ["yl", "YL Doll"]].map(([key, label]) => <Link key={key} href={brandHubHref(key)}>{label}</Link>)}</div>
+      <div className="halloween-brand-links">{[["irontech", "Irontech"], ["starpery", "Starpery"], ["sedoll", "SE Doll"], ["wm", "WM Doll"], ["yl", "YL Doll"]].map(([key, label]) => <Link key={key} href={brandHubHref(key)}>{label}</Link>)}{gynoidEarlyBirdClock ? <GynoidEarlyBirdBrowseLink promoClock={gynoidEarlyBirdClock} freezeClock={freezeGynoidClock} /> : null}</div>
     </section>
     <section className="halloween-page-section halloween-faq" id="halloween-faq" aria-labelledby="halloween-faq-heading">
       <h2 id="halloween-faq-heading">Halloween offer questions</h2>

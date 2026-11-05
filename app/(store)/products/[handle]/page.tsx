@@ -1,4 +1,7 @@
 import { isGreenbackPricePreview, withGreenbackPricePreview } from '@/lib/catalog/greenbackApprovedPriceBinding';
+import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
+import { gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
+import { canonicalBrandValue } from '@/lib/catalog/brands';
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
@@ -78,7 +81,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
   if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
-  if (isGreenbackPricePreview(product) || lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -96,7 +99,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   ));
-  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product);
+  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
@@ -187,6 +190,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 </span>
               </Link>
             ) : null}
+            {gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(productBrand) === 'gynoid' ? <GynoidEarlyBirdPromotion placement="pdp" promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} /> : null}
             <SeDollPdpFreebieBlock product={publicProduct} />
             <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />

@@ -47,3 +47,31 @@ M25 Standard/Deluxe listing. No assumption that current price approval covers
 these new models. The source factory prices are not advertised as our final
 selling prices in this presentation. No claim of cart/checkout testing for a
 new model. Sale completion and production release remain pending.
+
+## Martin's 16:03 review — text revision
+
+Linear fb8f586e-e9e4-4731-96e7-46922493fabb requests browse links instead of
+Ask buttons, tiers on Gynoid PDPs, Gynoid in the hand-picked Explore by brand
+list, one approved-model artwork concept, and automatic expiry. Prices stay
+unchanged. The list is hard-coded in HalloweenLandingSections, not automated
+ranking. Its new Gynoid link uses the same live campaign clock and expires.
+
+Implemented the non-artwork items. Every Gynoid PDP shows qualified campaign
+terms, not a discount on its current non-M25/non-Lyra listing. Original prices
+remain intact. Client clock removes offer and its browse link after4Dec; all
+tiers switch by date. The brand-list link has the same clock. No unrelated
+brands or sitewide discounts were changed.
+
+Actual local /promo: no old Ask link; one Gynoid link inside Explore by brand;
+browse navigates to /brands/gynoid-dolls#brand-products. Lisa PDP1319/390 has
+readable tiers/no overflow, unchanged5299,300 benefit at15Nov and no offer/browse
+link at5Dec. Desktop PDP uses a full-width campaign photograph above its text
+to keep the three date blocks readable inside the narrow gallery column.
+
+Artwork generation is STOPPED pending the missing exact skill/model evidence.
+Searched installed skills, plugin skills and both local skill/repository roots;
+dollwow-campaign-artwork and /workspace/design-bar/codex-56-se-sept-bonus-inspo.png
+are absent. Asked Dolly once in1c18fa3e-4e45-46bd-9ca0-3a68c8a51273 to provide
+an accessible SKILL.md, design-bar file and approved model. Do not substitute
+another model/process, generate more sizes, or claim the existing photo is the
+requested new banner concept. Price question also remains open.

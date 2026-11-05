@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { GYNOID_EARLY_BIRD as offer, gynoidEarlyBirdTier } from '@/lib/promotions/gynoidEarlyBird2026';
 import { useCampaignClock } from '@/lib/promotions/useCampaignClock';
 
-export function GynoidEarlyBirdPromotion({ promoClock, freezeClock = false }: { promoClock: string; freezeClock?: boolean }) {
+export function GynoidEarlyBirdPromotion({ promoClock, freezeClock = false, placement = 'promo' }: { promoClock: string; freezeClock?: boolean; placement?: 'promo' | 'pdp' }) {
   const clock = useCampaignClock(promoClock, freezeClock);
   const tier = gynoidEarlyBirdTier(clock);
   if (!tier) return null;
   return <section id={offer.id} aria-labelledby="gynoid-early-bird-heading" className="my-6 overflow-hidden rounded-lg border border-border bg-surface text-text">
-    <div className="grid md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
-      <Image src="/promo/gynoid-early-bird-2026/official.jpg" alt="Gynoid supplier campaign photograph" width={2560} height={3840} sizes="(min-width: 768px) 35vw, 100vw" className="h-64 w-full object-cover object-[center_24%] md:h-full md:max-h-[560px]" />
+    <div className={placement === 'pdp' ? '' : 'grid md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]'}>
+      <Image src="/promo/gynoid-early-bird-2026/official.jpg" alt="Gynoid supplier campaign photograph" width={2560} height={3840} sizes="(min-width: 768px) 35vw, 100vw" className={`${placement === 'pdp' ? 'h-48' : 'h-64 md:h-full md:max-h-[560px]'} w-full object-cover object-[center_24%]`} />
       <div className="min-w-0 p-5 sm:p-8">
         <p className="text-sm font-semibold text-accent">{offer.dateLabel}</p>
         <h2 id="gynoid-early-bird-heading" className="mt-2 text-3xl font-semibold">Gynoid Early Bird Sale</h2>
@@ -28,8 +28,14 @@ export function GynoidEarlyBirdPromotion({ promoClock, freezeClock = false }: { 
             <p>Offers apply to these combinations only. Other Gynoid listings keep their listed prices. Contact us to confirm your combination, final price and shipping before ordering.</p>
           </div>
         </details>
-        <Link href="/support" className="mt-5 inline-flex min-h-12 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-black">Ask about an Early Bird build</Link>
+        <Link href="/brands/gynoid-dolls#brand-products" className="mt-5 inline-flex min-h-12 items-center rounded-lg bg-accent px-5 py-3 font-semibold text-black">Browse Gynoid dolls</Link>
       </div>
     </div>
   </section>;
+}
+
+
+export function GynoidEarlyBirdBrowseLink({ promoClock, freezeClock = false }: { promoClock: string; freezeClock?: boolean }) {
+  const clock = useCampaignClock(promoClock, freezeClock);
+  return gynoidEarlyBirdTier(clock) ? <Link href="/brands/gynoid-dolls">Gynoid</Link> : null;
 }
