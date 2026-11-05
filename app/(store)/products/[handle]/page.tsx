@@ -1,3 +1,4 @@
+import { isGreenbackPricePreview, withGreenbackPricePreview } from '@/lib/catalog/greenbackApprovedPriceBinding';
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
@@ -63,7 +64,7 @@ import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/p
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
-  return applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"));
+  return withGreenbackPricePreview(applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview")));
 }
 
 export const revalidate = 60;
@@ -77,7 +78,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
   if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
-  if (lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  if (isGreenbackPricePreview(product) || lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -87,7 +88,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const { handle } = await params;
   const { editorialPreview, promoClock: requestedPromoClock } = await searchParams;
   const promoClock = previewPromotionClock(requestedPromoClock);
-  const promotionPreview = lusandyNovemberPreviewEnabled();
   const [storefrontProduct, adminProductData] = await Promise.all([
     getProductByHandle(handle, dealerPreviewProductFetch(handle)),
     getProductAdminMetafieldsByHandle(handle)
@@ -96,6 +96,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
   ));
+  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product);
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
