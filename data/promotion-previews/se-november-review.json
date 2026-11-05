@@ -1,0 +1,202 @@
+{
+  "sourceAt": "2026-10-29T19:01:53.254Z",
+  "counts": {
+    "tpe-custom": 272,
+    "held": 1,
+    "silicone-pro-custom": 101,
+    "warehouse": 7,
+    "silicone-torso-custom": 14
+  },
+  "samples": [
+    {
+      "handle": "sedoll-carry-150cm-g-cup-tpe-companion-doll-1xx8o",
+      "title": "SE Doll Carry 150cm G-Cup TPE Customizable Head 22 Companion Doll",
+      "cohort": "tpe-custom",
+      "baseRetail": "1645.00",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/150cm4ft11-G-cup-TPE-Sex-Doll-Carry-10.jpg?v=1780687307",
+        "width": 1000,
+        "height": 1500,
+        "altText": "Carry 150cm G-Cup TPE Customizable Companion Doll"
+      },
+      "quotes": [
+        {
+          "groupId": "material",
+          "optionId": "stpe-free",
+          "label": "STPE",
+          "current": 100,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "skin-tone",
+          "optionId": "custom-color",
+          "label": "Custom Color",
+          "current": 250,
+          "proposed": 125,
+          "reductionPercent": 50
+        },
+        {
+          "groupId": "enhanced-mouth-add-on",
+          "optionId": "with-tongue-free",
+          "label": "With Tongue",
+          "current": 49,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "breast-options",
+          "optionId": "gel-free",
+          "label": "Gel",
+          "current": 69,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "skeleton-type",
+          "optionId": "evo-free",
+          "label": "EVO",
+          "current": 50,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "hyper-realism-body-painting-free",
+          "label": "Hyper-realism Body Painting",
+          "current": 99,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "lubricant-free-free",
+          "label": "Lubricant-free",
+          "current": 29,
+          "proposed": 0,
+          "reductionPercent": 100
+        }
+      ]
+    },
+    {
+      "handle": "sedoll-jenny-163cm-c-cup-silicone-t163-ses115",
+      "title": "Jenny - T163",
+      "cohort": "silicone-pro-custom",
+      "baseRetail": "2776.67",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/jenny-t163-ses115-01.jpg?v=1788337589",
+        "width": 800,
+        "height": 1200,
+        "altText": "Jenny - T163"
+      },
+      "quotes": [
+        {
+          "groupId": "body-makeup",
+          "optionId": "master-body-makeup",
+          "label": "Master Body Makeup",
+          "current": 150,
+          "proposed": 135,
+          "reductionPercent": 10
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "articulated-fingers-free",
+          "label": "Articulated Fingers",
+          "current": 69,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "real-skin-texture",
+          "label": "Real Skin Texture",
+          "current": 250,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "ultra-flex-fingers",
+          "label": "Ultra-flex Fingers",
+          "current": 109,
+          "proposed": 0,
+          "reductionPercent": 100
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "gel-butt-free",
+          "label": "Gel",
+          "current": 69,
+          "proposed": 34.5,
+          "reductionPercent": 50
+        }
+      ]
+    },
+    {
+      "handle": "sedoll-jenny-o-set011-st4-111cm-g-cup-silicone-companion-doll",
+      "title": "Jenny.O - SET011 Natural ST4 111cm G-Cup",
+      "cohort": "silicone-torso-custom",
+      "baseRetail": "1665.56",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/sedoll-jenny-o-set011-st4-111cm-g-cup-silicone-companion-doll-1.jpg?v=1788336493",
+        "width": 800,
+        "height": 1200,
+        "altText": "Jenny.O - SET011 Natural ST4 111cm G-Cup"
+      },
+      "quotes": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "gel-butt-free",
+          "label": "Gel",
+          "current": 69,
+          "proposed": 34.5,
+          "reductionPercent": 50
+        }
+      ]
+    }
+  ],
+  "stock": [
+    {
+      "handle": "sedoll-isla-kane-a-114cm-f-cup-silicone-companion-doll-1c46q",
+      "title": "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "1399.00",
+      "warehouseCountry": "United States"
+    },
+    {
+      "handle": "sedoll-zoe-ellis-a-114cm-f-cup-silicone-companion-doll-cclt3",
+      "title": "SE Doll 114cm F-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "1399.00",
+      "warehouseCountry": "United States"
+    },
+    {
+      "handle": "sedoll-aryana-a-161cm-c-cup-silicone-companion-doll-1v1hi",
+      "title": "SE Doll Aryana A 161cm C-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "2299.00",
+      "warehouseCountry": "European Union"
+    },
+    {
+      "handle": "sedoll-bridget-b-161cm-e-cup-silicone-companion-doll-uqk1u",
+      "title": "SE Doll Bridget B 161cm E-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "2199.00",
+      "warehouseCountry": "European Union"
+    },
+    {
+      "handle": "sedoll-annika-f-165cm-c-cup-silicone-companion-doll-1pgb7",
+      "title": "SE Doll Annika F 165cm C-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "2299.00",
+      "warehouseCountry": "European Union"
+    },
+    {
+      "handle": "sedoll-regina-f-165cm-c-cup-silicone-companion-doll-k8rdo",
+      "title": "SE Doll Regina F 165cm C-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "2299.00",
+      "warehouseCountry": "European Union"
+    },
+    {
+      "handle": "sedoll-yuuka-h-165cm-c-cup-silicone-companion-doll-l29ju",
+      "title": "SE Doll Yuuka H 165cm C-Cup Silicone Ready-To-Ship Companion Doll",
+      "baseRetail": "2199.00",
+      "warehouseCountry": "European Union"
+    }
+  ]
+}
