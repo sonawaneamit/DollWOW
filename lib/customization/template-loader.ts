@@ -1,3 +1,4 @@
+import { greenbackApprovedPriceBinding } from '@/lib/catalog/greenbackApprovedPriceBinding';
 import 'server-only';
 import type { Product } from '@/types/product';
 import type { TemplatePresetDefinition } from './template-presets';
@@ -19,5 +20,5 @@ export async function loadTemplateRecipe(product: Product): Promise<TemplatePres
   // An environment variable alone cannot promote ignored local review artifacts.
   if (process.env.DOLLWOW_TEMPLATE_RELEASE !== '1') return undefined;
   const config = getCustomizationConfig(product);
-  return selectReleased(topfireApprovedPriceBinding(funwestApprovedPriceBinding(product, config), config), config);
+  return selectReleased(greenbackApprovedPriceBinding(topfireApprovedPriceBinding(funwestApprovedPriceBinding(product, config), config), config), config);
 }

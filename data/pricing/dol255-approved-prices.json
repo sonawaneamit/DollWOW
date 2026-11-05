@@ -1,0 +1,1032 @@
+{
+  "ticket": "DOL-255",
+  "approval": "b0e196b3-7cb7-496f-adb3-be8fb3ef79ce",
+  "source": "https://docs.google.com/spreadsheets/d/1qmR482I-4mQf_u52MdIi3_dXdzwOEj8JRj7rWp7GLhM/edit",
+  "exclusions": "All Top Fire prices remain held under DOL-257. WM 163/174/SS174 retain1777.",
+  "rows": [
+    {
+      "id": "gid://shopify/Product/10431698239672",
+      "handle": "wm-addison-163cm-h-cup-tpe-companion-doll-1tbg6",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53547122524344"
+      ],
+      "sku": "DW-WM-ADDISON-163CM-H-CUP-TPE-COMPANION-DOLL-1TBG6",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "2769070af294bd3f8a34774c293a905ae867a980a7a781abfd193797226a196f"
+    },
+    {
+      "id": "gid://shopify/Product/10433144586424",
+      "handle": "wm-ss174-173cm-h-cup-silicone-head-companion-doll-nerg3",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550290927800"
+      ],
+      "sku": "DW-WM-SS174-173CM-H-CUP-SILICONE-HEAD-COMPANION-DOLL-NERG3",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "1b7b96a0e7fa287ca94d564eea2cf54b2507d5a80634eb778729a836c567b22d",
+      "afterRuntimeHash": "9d400c238ce3daf61afe75287f8f258242712024c0247234a1e912e4051de749",
+      "nonPriceFingerprint": "f967d41668fd228adf5e93df2ae5727052e51eb64ade6170272536f9241ee4fb"
+    },
+    {
+      "id": "gid://shopify/Product/10433150648504",
+      "handle": "wm-rebecca-163cm-h-cup-tpe-companion-doll-16ajj",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550305902776"
+      ],
+      "sku": "DW-WM-REBECCA-163CM-H-CUP-TPE-COMPANION-DOLL-16AJJ",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "7259096584cbf8ac7988bba26d613ae38aaef803f47e1ac054c479cd2044d269",
+      "afterRuntimeHash": "37f326ea56bcc4a44833c936c9b52d385322cc84aa9aaf1e36194676b9bf34da",
+      "nonPriceFingerprint": "0060ee86717f8d2c3c47f61071ca68335cb3677b903ddc054b2810acf87c53b0"
+    },
+    {
+      "id": "gid://shopify/Product/10433153958072",
+      "handle": "wm-terry-173cm-h-cup-tpe-companion-doll-3uz4h",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310719672"
+      ],
+      "sku": "DW-WM-TERRY-173CM-H-CUP-TPE-COMPANION-DOLL-3UZ4H",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "b47817c8efd1e63ea1ca1f3c65a72958d34d1d482887c45cf2a1fdb031cf835d",
+      "afterRuntimeHash": "99e103bd3fa7dc717aa2503d2fb0ba2c101c28172a15db454f5ed57cc2a83c6a",
+      "nonPriceFingerprint": "b5b21cb1b34abe252f501e64d84fc00ba8ff567f1147b446aa08f83807d337cc"
+    },
+    {
+      "id": "gid://shopify/Product/10433153990840",
+      "handle": "wm-rhianna-173cm-h-cup-tpe-companion-doll-1n7ys",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310752440"
+      ],
+      "sku": "DW-WM-RHIANNA-173CM-H-CUP-TPE-COMPANION-DOLL-1N7YS",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "d626d791dc5b84899d4f048e9b33b5194899ce6f8e90925dd48069f2654677eb",
+      "afterRuntimeHash": "27e71e7ccc5429b3ce790b8d6a5eee64657a753963bd10f90ccd58f2b7a80e27",
+      "nonPriceFingerprint": "e0001d69c58ec887e47a712927000b0ce0c5e70954c081eec5de2fd80f72aa1b"
+    },
+    {
+      "id": "gid://shopify/Product/10433154023608",
+      "handle": "wm-jayden-173cm-h-cup-tpe-companion-doll-17ulk",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310785208"
+      ],
+      "sku": "DW-WM-JAYDEN-173CM-H-CUP-TPE-COMPANION-DOLL-17ULK",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "c9254e88d0386923a51a2d107609b5332c9f1dc33b10f3df511f34e9a6365333",
+      "afterRuntimeHash": "3d5bee258315ff278ed2967c0dbd9e327d9a0039252761662c4a13ec842a314a",
+      "nonPriceFingerprint": "d79a25ddc2b4550dffd571b07d90000d758c6cebac7dd776ebbade49763282ab"
+    },
+    {
+      "id": "gid://shopify/Product/10433154056376",
+      "handle": "wm-belinda-173cm-h-cup-tpe-companion-doll-103m1",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310817976"
+      ],
+      "sku": "DW-WM-BELINDA-173CM-H-CUP-TPE-COMPANION-DOLL-103M1",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "0f66a4e3e3be84480ea858166128e9e4aec41cf818e6b4fd5c542f6d17ef4861",
+      "afterRuntimeHash": "c68b068463eaa206ed00845432df3f21e1e404e5cf94fb684f341026e1071f11",
+      "nonPriceFingerprint": "5214914682bd1732fc101e50fbac4dec3fbef6bb4c787bf49187361966d15fc0"
+    },
+    {
+      "id": "gid://shopify/Product/10433154121912",
+      "handle": "wm-jamya-173cm-h-cup-tpe-companion-doll-3pej1",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310883512"
+      ],
+      "sku": "DW-WM-JAMYA-173CM-H-CUP-TPE-COMPANION-DOLL-3PEJ1",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "1222fb9595d4c4d0af0b476aa9259fca2629d330abb739baa41aa05beb462590",
+      "afterRuntimeHash": "b27fc0d611a5b629f209ce5815eda7aa3f45655031de5d4eb7d99e7138e4a8f4",
+      "nonPriceFingerprint": "9193c531a75b0951311217c3efea93ff1382c71a9415b1cda0a98cf34e724fcb"
+    },
+    {
+      "id": "gid://shopify/Product/10433154154680",
+      "handle": "wm-fabian-marlowe-174cm-g-cup-tpe-companion-doll-4e2si",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310916280"
+      ],
+      "sku": "DW-WM-FABIAN-MARLOWE-174CM-G-CUP-TPE-COMPANION-DOLL-4E2SI",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "75fed6803fd30c0e8890256dffeae12e2e10556130f551e39f575405426d3b76",
+      "afterRuntimeHash": "cab5a83af08583f20034263d8c99fa6c7490cfd0709667641d3094429d151ba5",
+      "nonPriceFingerprint": "20dbf21548d81cf682971504f0da715b4c5c30355d386e5621abcd40951d695c"
+    },
+    {
+      "id": "gid://shopify/Product/10433154187448",
+      "handle": "wm-amethyst-174cm-g-cup-tpe-companion-doll-ddvrf",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310949048"
+      ],
+      "sku": "DW-WM-AMETHYST-174CM-G-CUP-TPE-COMPANION-DOLL-DDVRF",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "db5d99e6f99c55a0e78758c873f0704d16d263908f341dd1f10994e091e134d5",
+      "afterRuntimeHash": "a6a19b2b8deb1a0a9e540342958765785712f66f0737fa0a53d88a856cbbe3b2",
+      "nonPriceFingerprint": "ccf000ae67c8713f3c3b4ff80dc3a19c4ecbd03b719a0013e66703761052f86e"
+    },
+    {
+      "id": "gid://shopify/Product/10433154220216",
+      "handle": "wm-sandy-bacon-174cm-g-cup-tpe-companion-doll-1k26e",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550310981816"
+      ],
+      "sku": "DW-WM-SANDY-BACON-174CM-G-CUP-TPE-COMPANION-DOLL-1K26E",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "b486cfd7ba8cb3e76b63230b9ec2a644cb4ccb9819a30a3a38a542cbc62221ac",
+      "afterRuntimeHash": "d15067dcfeb5142abd2e431c9d3b0682053fd861a58e327789c16dc832540519",
+      "nonPriceFingerprint": "b72ce4526db74c18b73e944dd00703edbfcde2e7456f5cb58db9071c6b3a1133"
+    },
+    {
+      "id": "gid://shopify/Product/10433154252984",
+      "handle": "wm-noemie-174cm-g-cup-tpe-companion-doll-q8a75",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311014584"
+      ],
+      "sku": "DW-WM-NOEMIE-174CM-G-CUP-TPE-COMPANION-DOLL-Q8A75",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "0e41846e44bd43e8ca6cb73dc14e8457bf464af1b8ec70363d42ca1fc9d8231f",
+      "afterRuntimeHash": "840f3c198e3d60081dc7adb560d999dfd664215241ba7397ee1afa59d586b081",
+      "nonPriceFingerprint": "6df7baafb0fcdca8da981e389149d1f7e9e65be7f93519704413c28f3c269665"
+    },
+    {
+      "id": "gid://shopify/Product/10433154285752",
+      "handle": "wm-tseven-174cm-g-cup-tpe-companion-doll-t4rah",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311047352"
+      ],
+      "sku": "DW-WM-TSEVEN-174CM-G-CUP-TPE-COMPANION-DOLL-T4RAH",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "abb3656048639bc0483a82130d668238b44f270f4549a30486a6b6ae578cccd4",
+      "afterRuntimeHash": "824a8db206954bd9d231b0868f9f7370a2ba1ce942d2867711b7b709c4f29193",
+      "nonPriceFingerprint": "3d20cbb3d2726c35a0447b6c600c99a387ffdb678b405683938478f68da2ddf9"
+    },
+    {
+      "id": "gid://shopify/Product/10433154318520",
+      "handle": "wm-ellemo-174cm-g-cup-tpe-companion-doll-lxciw",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311080120"
+      ],
+      "sku": "DW-WM-ELLEMO-174CM-G-CUP-TPE-COMPANION-DOLL-LXCIW",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "f73309138c977af2f3799d4edc6397994153074c63d8b953d54fdf0d6797656e",
+      "afterRuntimeHash": "f623cbb351a171295fa69028478bb13879b11b58c02f1bc77175de28b54a7b02",
+      "nonPriceFingerprint": "d120520fc8822e0c8640d43e480b84f446934b28eac6818e43ac408720019457"
+    },
+    {
+      "id": "gid://shopify/Product/10433154351288",
+      "handle": "wm-anastasia-174cm-g-cup-tpe-companion-doll-tly92",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311112888"
+      ],
+      "sku": "DW-WM-ANASTASIA-174CM-G-CUP-TPE-COMPANION-DOLL-TLY92",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "2277dd864f795b02d5a4a4fb68abf77afdf5e45587257a41c6ad3d3ffad8be2a",
+      "afterRuntimeHash": "c55006f962b0834038e2ea7830d37c10239ca033058702b131f401b29adfd565",
+      "nonPriceFingerprint": "c27457a71ebc2cd5818e10022c3b58ae2c4aeb15dc0f49c933968e7068d08b6e"
+    },
+    {
+      "id": "gid://shopify/Product/10433154384056",
+      "handle": "wm-colodny-174cm-g-cup-tpe-companion-doll-ciaak",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311145656"
+      ],
+      "sku": "DW-WM-COLODNY-174CM-G-CUP-TPE-COMPANION-DOLL-CIAAK",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "c23563580980c7306e997dbada6e9aa9d40346011e8152179f3e6c1a77fe7e4b",
+      "afterRuntimeHash": "826336eb3ebb8550eb63c7fd1cee69bb2403bb0219752109174fb57d198325c0",
+      "nonPriceFingerprint": "0896c4fa5fe042d1585d46b5c4abb069417a23cae5ddd300b1d0819f45584bf7"
+    },
+    {
+      "id": "gid://shopify/Product/10433154449592",
+      "handle": "wm-dominica-175cm-d-cup-tpe-companion-doll-1lt3i",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311342264"
+      ],
+      "sku": "DW-WM-DOMINICA-175CM-D-CUP-TPE-COMPANION-DOLL-1LT3I",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "91c396d4810d73ef6b9c9b81d43e3f9b84cfe13ecd1b143e47d2b1902832d412",
+      "afterRuntimeHash": "f668ab7183df0c2ec0436945260f86a06439da3d15f38242cb7a714364c83731",
+      "nonPriceFingerprint": "5e73dec664f73de8915092f5ce351723bfdc5d1328c2d83936522c709ae89031"
+    },
+    {
+      "id": "gid://shopify/Product/10433154515128",
+      "handle": "wm-effie-175cm-d-cup-tpe-companion-doll-7dopl",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311407800"
+      ],
+      "sku": "DW-WM-EFFIE-175CM-D-CUP-TPE-COMPANION-DOLL-7DOPL",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "b2c55a7ce9dc8e19b7b81a1675dd4812b8e800bd5acadd5d4ef3dac689c98c24",
+      "afterRuntimeHash": "f910883f8ea8794c95bd5be12838dd47ac8360c6ab8acabdfb9bc23b25cce7d8",
+      "nonPriceFingerprint": "228eca4f361550ca4245662c0f0fe9770b2466b69a327c9766158a1d9ccd9572"
+    },
+    {
+      "id": "gid://shopify/Product/10433154547896",
+      "handle": "wm-eileen-lew-175cm-d-cup-tpe-companion-doll-kwtka",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311440568"
+      ],
+      "sku": "DW-WM-EILEEN-LEW-175CM-D-CUP-TPE-COMPANION-DOLL-KWTKA",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "420594904e13a521e1d9a838c7b1810ff7206f0c5f999baf3de830992c4d6b63",
+      "afterRuntimeHash": "3e0bc55ef536779c4f7e3dc38a2583acdb882318f3cc3f0d822386efee363f32",
+      "nonPriceFingerprint": "ddeb511aa7194e492ad492da511467f31c4d296a7911cb65a9fdd8509aaba77b"
+    },
+    {
+      "id": "gid://shopify/Product/10433154580664",
+      "handle": "wm-amethyst-175cm-d-cup-tpe-companion-doll-9e4v1",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311506104"
+      ],
+      "sku": "DW-WM-AMETHYST-175CM-D-CUP-TPE-COMPANION-DOLL-9E4V1",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "4023b21d0a9df6c43e2ead109556a73b8c60d253a86b5d5d8b51b60363e90e1a",
+      "afterRuntimeHash": "ead090f6aee38b32f3228f864e0c7c04bd5e58d67d146f4eb68af6dbf0283cf5",
+      "nonPriceFingerprint": "0e4f38e4d470e636bf64f7ec31b594b4e0167359abf9d5de77d56e3b866cfcc5"
+    },
+    {
+      "id": "gid://shopify/Product/10433154613432",
+      "handle": "wm-faraday-175cm-d-cup-tpe-companion-doll-1r0ro",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311538872"
+      ],
+      "sku": "DW-WM-FARADAY-175CM-D-CUP-TPE-COMPANION-DOLL-1R0RO",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "c8af186834df0588dc0158480262f13a0c26ee8711babde11dfb8688f9b688c5",
+      "afterRuntimeHash": "727bbce7939499b114aeea325327d09965498ec111eedf7facd54f3d4eed1c21",
+      "nonPriceFingerprint": "96179f3b0dca7742c51b80e653d749c96f1d403278abe3e16660268969ce85a9"
+    },
+    {
+      "id": "gid://shopify/Product/10433154646200",
+      "handle": "wm-lesley-eva-175cm-d-cup-tpe-companion-doll-1v8wi",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311571640"
+      ],
+      "sku": "DW-WM-LESLEY-EVA-175CM-D-CUP-TPE-COMPANION-DOLL-1V8WI",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "c370948e133b42aac7193cd9e1f497565932e0ae7b9a9861feeabc6627b82204",
+      "afterRuntimeHash": "864f4fbb533c1c474dd4ae4a71dafc5a6ca7a27dc20cb9a074c6d91c3d67db17",
+      "nonPriceFingerprint": "389cc7d4c373632ab7012f7c0ca20b2c54032c9813341f4c43912521ef2cbd22"
+    },
+    {
+      "id": "gid://shopify/Product/10433154678968",
+      "handle": "wm-garcia-175cm-d-cup-tpe-companion-doll-gkhpb",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311604408"
+      ],
+      "sku": "DW-WM-GARCIA-175CM-D-CUP-TPE-COMPANION-DOLL-GKHPB",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "db6535ab5b3fdee4227f16daef16f976c283c4b38fc2f846db63c070e8f665c9",
+      "afterRuntimeHash": "cb86d58da0d9d4121f0ff90d16ae1197fa38896910f7c08e2c4417a1d11bd60b",
+      "nonPriceFingerprint": "dafdbdda007966d13efaa68bac655276a38729e89cd7f0d4772fd40862111f1a"
+    },
+    {
+      "id": "gid://shopify/Product/10433154744504",
+      "handle": "wm-corolf-175cm-b-cup-tpe-companion-doll-ckc51",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311932088"
+      ],
+      "sku": "DW-WM-COROLF-175CM-B-CUP-TPE-COMPANION-DOLL-CKC51",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "fba80534fe62b3d7ec4442409b2474e500480520a26c6f8cccf17adbce4728f6",
+      "afterRuntimeHash": "0863088a40c753a7fef6c9b9eca1874f4fca3ebf742f10683708a15c771466fb",
+      "nonPriceFingerprint": "047a5258db209aced9613fa4fe2e2b2ac1d1627a60545ac67a7794104a84d672"
+    },
+    {
+      "id": "gid://shopify/Product/10433154777272",
+      "handle": "wm-gillnson-175cm-b-cup-tpe-companion-doll-nz5ro",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311964856"
+      ],
+      "sku": "DW-WM-GILLNSON-175CM-B-CUP-TPE-COMPANION-DOLL-NZ5RO",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "82e3bbcc30b5ae9e233a1e82cb4a59bcd5c0f6b8dbabe36d34c2943ff001bed3",
+      "afterRuntimeHash": "790d8c4fcd5aa1ec2686d71a3f8c3fc3da2dabcafe4058600c5deba2a33e9021",
+      "nonPriceFingerprint": "e672ee69284fa6c9fec7af321541b720013a1aeca08491edf0d97c467217f86e"
+    },
+    {
+      "id": "gid://shopify/Product/10433154810040",
+      "handle": "wm-palmer-175cm-b-cup-tpe-companion-doll-ii48a",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550311997624"
+      ],
+      "sku": "DW-WM-PALMER-175CM-B-CUP-TPE-COMPANION-DOLL-II48A",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "68c9ce8d52907b0b57672e37645822080990bbf22f1ca171e085d73961b3079c",
+      "afterRuntimeHash": "580dd172d1f17aff4861a6bc8c279d95e9955a58700f439e962b02cc297deb3b",
+      "nonPriceFingerprint": "21f6f4f5a8f7db2f5fa93f786d7103ecd6a486d59e685374dacc77e050a16a2e"
+    },
+    {
+      "id": "gid://shopify/Product/10433154842808",
+      "handle": "wm-venus-josh-175cm-b-cup-tpe-companion-doll-5aze4",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550312030392"
+      ],
+      "sku": "DW-WM-VENUS-JOSH-175CM-B-CUP-TPE-COMPANION-DOLL-5AZE4",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "3d1061c88359a48d63b58811a29d5f9d12b20907a4a8282a7544fbe6f836bf70",
+      "afterRuntimeHash": "476d2993a62e276c0b3da91a3ba632e818392ed2a2da839368fc010317ae9831",
+      "nonPriceFingerprint": "b87b52e47497a1f006ac346d3729c5b7a40a62986dd1c79e0a87b61cd8efb9a4"
+    },
+    {
+      "id": "gid://shopify/Product/10433154875576",
+      "handle": "wm-kay-evan-175cm-g-cup-tpe-companion-doll-zirbj",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550312063160"
+      ],
+      "sku": "DW-WM-KAY-EVAN-175CM-G-CUP-TPE-COMPANION-DOLL-ZIRBJ",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "0a1c63d013c182ad79af2e978f11f3fb97eba5071273cf38ba53f18b98106520",
+      "afterRuntimeHash": "1ccb18e4698fe27bb3bc7d1cd8ab4466fa78da0db84f8f04e29bbdb8f5119505",
+      "nonPriceFingerprint": "5937a21749ad59522931cacaaef01bb986351d1708bd6a4b4786760998bf7043"
+    },
+    {
+      "id": "gid://shopify/Product/10433154908344",
+      "handle": "wm-isabel-175cm-b-cup-tpe-companion-doll-fghx7",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550312095928"
+      ],
+      "sku": "DW-WM-ISABEL-175CM-B-CUP-TPE-COMPANION-DOLL-FGHX7",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "75c449899daaee031a78f3e89d320160ecd0ff0f37e91516867cca6e6a30e312",
+      "afterRuntimeHash": "9a7a435623dcd0cd23d14cbddfe9e5ff498c0c3203f934006e63e11b54e74ba8",
+      "nonPriceFingerprint": "c848139bd1bf92d79b446dc2a5dc45abed1da3a531502bd35610465cfabb5b37"
+    },
+    {
+      "id": "gid://shopify/Product/10433154941112",
+      "handle": "wm-dominique-175cm-d-cup-tpe-companion-doll-ga8a2",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550312128696"
+      ],
+      "sku": "DW-WM-DOMINIQUE-175CM-D-CUP-TPE-COMPANION-DOLL-GA8A2",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": "ddf075c48e80787e88abc855077a3ab51f1fb00d69445aaceedc30e100ebae43",
+      "afterRuntimeHash": "85d86245f90e98d614d3b9fb615cfcbce7c37f34c3d173e77ff5baa0785d2fad",
+      "nonPriceFingerprint": "4bef2920e1c9fd5cbba500bc9b5bd652bf66b7baf81025e9a8892c048c96e508"
+    },
+    {
+      "id": "gid://shopify/Product/10433158545592",
+      "handle": "wm-megan-163cm-h-cup-tpe-companion-doll-1jrt2",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550317076664"
+      ],
+      "sku": "DW-WM-MEGAN-163CM-H-CUP-TPE-COMPANION-DOLL-1JRT2",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "ebdbd71c98bba431893e4390c34ca92af5d1bb15a082e2484d02c939f59860b8",
+      "afterRuntimeHash": "944b1a00808d2bd11f4d9befb48317c983c0b9b3a6c99c8f3d8c4b8f15e9b272",
+      "nonPriceFingerprint": "b65fd08045c2455b8da819b4e2b9b8df09eed59223fab6e4e223c46abb3bed23"
+    },
+    {
+      "id": "gid://shopify/Product/10433158578360",
+      "handle": "wm-carlota-163cm-h-cup-tpe-companion-doll-xkody",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550317109432"
+      ],
+      "sku": "DW-WM-CARLOTA-163CM-H-CUP-TPE-COMPANION-DOLL-XKODY",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "a032d7bd19c0142130e16337cb9ead1e5571be934ee65c103cb7c687546ea616",
+      "afterRuntimeHash": "658d15a9e26440d2e19f61d4d9bbf8655a0a548f591078a2c008bb48043d7a8d",
+      "nonPriceFingerprint": "955b185031f5da4254e9ab9ce487a3fe1e010a1c6293e428e507709d32920e0d"
+    },
+    {
+      "id": "gid://shopify/Product/10433158611128",
+      "handle": "wm-carlota-163cm-h-cup-tpe-companion-doll-gxvos",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550317142200"
+      ],
+      "sku": "DW-WM-CARLOTA-163CM-H-CUP-TPE-COMPANION-DOLL-GXVOS",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "8d6de53d795d1173f4fffdd16d86d06741a364a8d1a5595e006aa2120c64d134",
+      "afterRuntimeHash": "27f3b6bd2f2e03f7b329414a7a50691df6f9f08e7e7b285fbcd8593e889fff58",
+      "nonPriceFingerprint": "d47b1f66cfa1cc7a2d4bdc4df238b4dfaf4b7cbb9d7a83325f862a9893319dc6"
+    },
+    {
+      "id": "gid://shopify/Product/10433158643896",
+      "handle": "wm-carly-mall-163cm-h-cup-tpe-companion-doll-vm5kn",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550317174968"
+      ],
+      "sku": "DW-WM-CARLY-MALL-163CM-H-CUP-TPE-COMPANION-DOLL-VM5KN",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "d57118c2212a539db9918be65602779941a917177b5ad0b16cac1a64c8d07405",
+      "afterRuntimeHash": "c3cbb9578b6d907fbe4898ce7bdef4ec1537546f0fb6487fa89f29f15c9ea531",
+      "nonPriceFingerprint": "35aa8aab757391c71d6697511cc900b9a1a562238310a2f2ec6466c5b0916af2"
+    },
+    {
+      "id": "gid://shopify/Product/10433158709432",
+      "handle": "wm-molice-163cm-h-cup-tpe-companion-doll-ocxgr",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550317240504"
+      ],
+      "sku": "DW-WM-MOLICE-163CM-H-CUP-TPE-COMPANION-DOLL-OCXGR",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "d3128486fa83745cb9302ed554e4bd3278b44b2ebfb8c51decb19c59a1c5f21c",
+      "afterRuntimeHash": "18aaada39def4577a2c1bb354e280dfc7de8ede9a93fbf9dc5b1e80fc5e1933e",
+      "nonPriceFingerprint": "b48b5328fbf98f36de8477cc57c6a79c3a0f7581c232327a125c3acd95136707"
+    },
+    {
+      "id": "gid://shopify/Product/10433159397560",
+      "handle": "wm-carolyn-163cm-h-cup-tpe-companion-doll-xkq8t",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550318223544"
+      ],
+      "sku": "DW-WM-CAROLYN-163CM-H-CUP-TPE-COMPANION-DOLL-XKQ8T",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "f388d53e8e3828a060ae00310366ae39c7eb00e40545a9e53f0cac9a32d70995",
+      "afterRuntimeHash": "8d8f3d2f529d1ad503b0477884d398471dc3b1f6d3c0af729e41b4e7b2dee4a2",
+      "nonPriceFingerprint": "1cf4fbc294a4ea4f0d6ed586fe3ac8396b9e560799728c7694b9115a5cd9b37e"
+    },
+    {
+      "id": "gid://shopify/Product/10433160020152",
+      "handle": "wm-leah-163cm-h-cup-tpe-companion-doll-438jz",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319239352"
+      ],
+      "sku": "DW-WM-LEAH-163CM-H-CUP-TPE-COMPANION-DOLL-438JZ",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "db5be81e1385e245d8c23ed6d4d34a7a4ef312e394ceaf5bc0fe0726aca80c3c",
+      "afterRuntimeHash": "94bc9e1e99137138fc26de53196fe7b70328881b7136b33016fa51b75ecb7a8e",
+      "nonPriceFingerprint": "63d31f951fb7293b643489d5742069a9f24ef7fd4b5a5c7e321f07b5da700b65"
+    },
+    {
+      "id": "gid://shopify/Product/10433160085688",
+      "handle": "wm-kayla-163cm-h-cup-tpe-companion-doll-1jqnb",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319304888"
+      ],
+      "sku": "DW-WM-KAYLA-163CM-H-CUP-TPE-COMPANION-DOLL-1JQNB",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "0b497f402f820b0b7546c3c62705cffa7bfedbcfffd0b70e3cda8e1a934ca335",
+      "afterRuntimeHash": "d22aa0db3ebeb06f85f54668f07979f34662c83cf0e20d2ce4561e5bb81c753e",
+      "nonPriceFingerprint": "de975ed75475dbe403909bd68d234a39e20a3d3f5aa388e697ccf1d8fb2aa34c"
+    },
+    {
+      "id": "gid://shopify/Product/10433160118456",
+      "handle": "wm-zoe-163cm-h-cup-tpe-companion-doll-707xi",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319337656"
+      ],
+      "sku": "DW-WM-ZOE-163CM-H-CUP-TPE-COMPANION-DOLL-707XI",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "0420ec8d3a446728d5eee11feaab538a35fa0386b0c06ce6d16be092d1ec78b7",
+      "afterRuntimeHash": "ae79b2e0bc5340ae46137a9e883cd055676b5123bbc74236ab6bd8fe5e7d4289",
+      "nonPriceFingerprint": "2ff00091a6be4b2b31b2a706a901e6e5c7f9c4047dd60c960f895b5b0c0ce8c6"
+    },
+    {
+      "id": "gid://shopify/Product/10433160151224",
+      "handle": "wm-hailey-163cm-h-cup-tpe-companion-doll-lrydt",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319370424"
+      ],
+      "sku": "DW-WM-HAILEY-163CM-H-CUP-TPE-COMPANION-DOLL-LRYDT",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "7ca3fe9e73447cfc65568d173b658bf7a15dae4a80e7dafc8a274e816958b51b",
+      "afterRuntimeHash": "21fa0b482e210d314e4d47be6716f187fb1996430723f1bf61d8a72a49c4f7c7",
+      "nonPriceFingerprint": "6a8872edc718f59184b18ff34fae5fb10fc6dc9435653768af8b82369b74e3f8"
+    },
+    {
+      "id": "gid://shopify/Product/10433160216760",
+      "handle": "wm-amber-163cm-h-cup-tpe-companion-doll-1jlck",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319435960"
+      ],
+      "sku": "DW-WM-AMBER-163CM-H-CUP-TPE-COMPANION-DOLL-1JLCK",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "5a18a5554908e1dd0179a43173aedf1c6d5abe5f0e734c9e782a97a8e541b177",
+      "afterRuntimeHash": "8e3ca545a2cc9ea299be8fd9dd0be9cadfe2cd3375028b1adb8bafae350e0a04",
+      "nonPriceFingerprint": "6fbd3dd6dd04a68285743dbac3dd39e528e8a3d647524e7eb20dc3557878789f"
+    },
+    {
+      "id": "gid://shopify/Product/10433160249528",
+      "handle": "wm-morgan-163cm-h-cup-tpe-companion-doll-od195",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319468728"
+      ],
+      "sku": "DW-WM-MORGAN-163CM-H-CUP-TPE-COMPANION-DOLL-OD195",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "3d5dff2c31a0948213bf83e36caa142eb191c8f8352245fb995f9616b7a324d7",
+      "afterRuntimeHash": "256957deed68607431f9139337481b34c8d7025115ef3d5849bb6813d84e0f42",
+      "nonPriceFingerprint": "3749d2e826ed3b263d862b7dfab8558427ed3c0214e71b04c0c4f925712f5ef7"
+    },
+    {
+      "id": "gid://shopify/Product/10433160282296",
+      "handle": "wm-avery-163cm-h-cup-tpe-companion-doll-1jlid",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319501496"
+      ],
+      "sku": "DW-WM-AVERY-163CM-H-CUP-TPE-COMPANION-DOLL-1JLID",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "86d8eeb65c77d9d90aa57eccca1614ce824f3214f17905b4864aafdbf614e9cf",
+      "afterRuntimeHash": "7b9a9c3e07751fe642c524dc5c0b83be045f30611140fa9a704a8ea76d2c038b",
+      "nonPriceFingerprint": "e692a1025d67c7a9638d53e1518df1d9f8cc0a40e90daf268cb80b0cd0c49c35"
+    },
+    {
+      "id": "gid://shopify/Product/10433160413368",
+      "handle": "wm-jasmine-163cm-h-cup-tpe-companion-doll-1tawm",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319829176"
+      ],
+      "sku": "DW-WM-JASMINE-163CM-H-CUP-TPE-COMPANION-DOLL-1TAWM",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "463a94ddfe91c8f5134738bbb71abf589999f168b98f2e8201c3fa8e301257d9",
+      "afterRuntimeHash": "6df062b37987f67d1a459bbf6eade0322ac7c10fce5781528ef41eb69c0a540a",
+      "nonPriceFingerprint": "2abfb4d339ccbd8f2ef85eccb220f0ebb98e2913b2c94f28af3c5300eab8bd67"
+    },
+    {
+      "id": "gid://shopify/Product/10433160478904",
+      "handle": "wm-wendy-163cm-h-cup-tpe-companion-doll-1jxb6",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550319960248"
+      ],
+      "sku": "DW-WM-WENDY-163CM-H-CUP-TPE-COMPANION-DOLL-1JXB6",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "39469cd0f7905b477e0e8634dd2227b1f29b9d39e0d4c93f994902d66b35f6e0",
+      "afterRuntimeHash": "f0ae5bde93efbc3a2966c345039bacddcfc168f27c6a2fdee7c4f5800b40364e",
+      "nonPriceFingerprint": "961d302ca75a5ba2517e9dd4cdd638a465227f5e81107eff167018d5e697172e"
+    },
+    {
+      "id": "gid://shopify/Product/10433160609976",
+      "handle": "wm-sofia-163cm-h-cup-tpe-companion-doll-1jva7",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550320189624"
+      ],
+      "sku": "DW-WM-SOFIA-163CM-H-CUP-TPE-COMPANION-DOLL-1JVA7",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": "4cbee938f9f5386d630b3f7b51195297ead693f558151dcc6a1c42ca6cf5e25b",
+      "afterRuntimeHash": "824db1c9229ac919c04dd846eac0252a138e2fa9998710389e9693e9f6ac7b66",
+      "nonPriceFingerprint": "cba403c3333256c161da50e83322820ccd07f63318d1e3352fd95ac753fdea76"
+    },
+    {
+      "id": "gid://shopify/Product/10433163460792",
+      "handle": "wm-yadira-173cm-h-cup-tpe-companion-doll-1exwl",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550324023480"
+      ],
+      "sku": "DW-WM-YADIRA-173CM-H-CUP-TPE-COMPANION-DOLL-1EXWL",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "ec5cb198d80f485ddaaaf3f529a8d29a1b93825aa5c1d515480078e56ae64452",
+      "afterRuntimeHash": "c27d33fea220d461a61b7740569b2742d160fcb6348b5daab15a4e2e38d05f04",
+      "nonPriceFingerprint": "208b0e943fe22d317236c2bd74944cfee9a6cc87bdf894f121feb213812c1326"
+    },
+    {
+      "id": "gid://shopify/Product/10433163624632",
+      "handle": "wm-dahlia-173cm-h-cup-tpe-companion-doll-15015",
+      "brand": "WM Dolls",
+      "before": 1888,
+      "after": 1999,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53550324187320"
+      ],
+      "sku": "DW-WM-DAHLIA-173CM-H-CUP-TPE-COMPANION-DOLL-15015",
+      "beforeAmount": "1888.0",
+      "hold": false,
+      "beforeRuntimeHash": "9d3f1e97c745fdb273bab0a226c2ed33f85ac7e521a07549ea7662477a986895",
+      "afterRuntimeHash": "bafaf99532de850e6bfef556d0725fa07df900cde681f6acb37618c4d1efa0db",
+      "nonPriceFingerprint": "551d8e960adeb3093b9d590b2a7057d913a1f4065400dc6c80778ca48769e76f"
+    },
+    {
+      "id": "gid://shopify/Product/10433882259640",
+      "handle": "tantaly-freya-63cm-f-cup-tpe-companion-doll-sl1vx",
+      "brand": "Tantaly",
+      "before": 554,
+      "after": 669,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553441833144"
+      ],
+      "sku": "DW-TANTALY-FREYA-63CM-F-CUP-TPE-COMPANION-DOLL-SL1VX",
+      "beforeAmount": "554.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "8c70afdd95325d168fa4926cac5ee5ba66a0b5dace8854dcf5921a2c4b1470e6"
+    },
+    {
+      "id": "gid://shopify/Product/10433882390712",
+      "handle": "tantaly-ruka-momoto-75cm-g-cup-companion-doll-15by6",
+      "brand": "Tantaly",
+      "before": 579,
+      "after": 599,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553441996984"
+      ],
+      "sku": "DW-TANTALY-RUKA-MOMOTO-75CM-G-CUP-COMPANION-DOLL-15BY6",
+      "beforeAmount": "579.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "3582f39d04db036e9ac2d3a3b0d841fa3f5acecfe00660f13b8ff901befd4fa7"
+    },
+    {
+      "id": "gid://shopify/Product/10433885536440",
+      "handle": "tantaly-mark-pro-58cm-companion-doll-1twwy",
+      "brand": "Tantaly",
+      "before": 489,
+      "after": 569,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553446584504"
+      ],
+      "sku": "DW-TANTALY-MARK-PRO-58CM-COMPANION-DOLL-1TWWY",
+      "beforeAmount": "489.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "8bb0af7c03888e302607b15c660043c8ec48f965da9bf77a3fe7dfa680bd6853"
+    },
+    {
+      "id": "gid://shopify/Product/10433885667512",
+      "handle": "tantaly-mark-60cm-companion-doll-7k5kk",
+      "brand": "Tantaly",
+      "before": 399,
+      "after": 419,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553446715576"
+      ],
+      "sku": "DW-TANTALY-MARK-60CM-COMPANION-DOLL-7K5KK",
+      "beforeAmount": "399.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "8b9c97a337eb00998c6eec2d6dfa98792dbabc9a3f22b045ebeac1b94086a9d7"
+    },
+    {
+      "id": "gid://shopify/Product/10433885765816",
+      "handle": "tantaly-sarina-54cm-g-cup-companion-doll-t4i16",
+      "brand": "Tantaly",
+      "before": 299,
+      "after": 299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553446813880"
+      ],
+      "sku": "DW-TANTALY-SARINA-54CM-G-CUP-COMPANION-DOLL-T4I16",
+      "beforeAmount": "299.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "90864668d05a9b4656b716c755fd5f2b53c6ea912695f53635ced8f7c663e062"
+    },
+    {
+      "id": "gid://shopify/Product/10433885962424",
+      "handle": "tantaly-hannah-mini-41cm-d-cup-companion-doll-vs9yl",
+      "brand": "Tantaly",
+      "before": 149,
+      "after": 159,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553447043256"
+      ],
+      "sku": "DW-TANTALY-HANNAH-MINI-41CM-D-CUP-COMPANION-DOLL-VS9YL",
+      "beforeAmount": "149.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "eb2c8046cfbaed9ab826c67f17d688888bbb5b71dc1107bcbf2170f9052a2ffd"
+    },
+    {
+      "id": "gid://shopify/Product/10433886322872",
+      "handle": "tantaly-hannah-64cm-d-cup-companion-doll-191ae",
+      "brand": "Tantaly",
+      "before": 559,
+      "after": 569,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553447469240"
+      ],
+      "sku": "DW-TANTALY-HANNAH-64CM-D-CUP-COMPANION-DOLL-191AE",
+      "beforeAmount": "559.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "295de702f185622ef186dbd1c37b258382edcac0b9dcd14c807d6f478069409d"
+    },
+    {
+      "id": "gid://shopify/Product/10433888682168",
+      "handle": "tantaly-louise-companion-doll-i30up",
+      "brand": "Tantaly",
+      "before": 299,
+      "after": 299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553449828536"
+      ],
+      "sku": "DW-TANTALY-LOUISE-COMPANION-DOLL-I30UP",
+      "beforeAmount": "299.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "6245fac19d626a344c3c23c01e125c628bbc47966fb6ac25269615dfb61fd1f4"
+    },
+    {
+      "id": "gid://shopify/Product/10433889108152",
+      "handle": "tantaly-caroline-26cm-companion-doll-rgf5p",
+      "brand": "Tantaly",
+      "before": 339,
+      "after": 349,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553450254520"
+      ],
+      "sku": "DW-TANTALY-CAROLINE-26CM-COMPANION-DOLL-RGF5P",
+      "beforeAmount": "339.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "7744350c4cf345835a240b335013b691eaac04830e804ab2295db55a0d7fa015"
+    },
+    {
+      "id": "gid://shopify/Product/10433889697976",
+      "handle": "tantaly-rosie-29cm-companion-doll-860mx",
+      "brand": "Tantaly",
+      "before": 379,
+      "after": 389,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53553450877112"
+      ],
+      "sku": "DW-TANTALY-ROSIE-29CM-COMPANION-DOLL-860MX",
+      "beforeAmount": "379.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "a1a920807b188b2f649765f7c78ad62e46b73f607eb26cb3db188a610a0ecb1d"
+    },
+    {
+      "id": "gid://shopify/Product/10454995599544",
+      "handle": "wm-jack-head-207-175cm-tpe-companion-doll-kf8pg",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53627635859640"
+      ],
+      "sku": "DW-WM-JACK-HEAD-207-175CM-TPE-COMPANION-DOLL-KF8PG",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "680a8c22cc0873716e59c25cb2ada26337f86cd75ea72ac0a1370e77257c95c3"
+    },
+    {
+      "id": "gid://shopify/Product/10454995632312",
+      "handle": "wm-knox-head-n6-175cm-tpe-companion-doll-kf9md",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53627635892408"
+      ],
+      "sku": "DW-WM-KNOX-HEAD-N6-175CM-TPE-COMPANION-DOLL-KF9MD",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "6c263db307db203d38aa790ef355feef9695cbf6c07163c02d3a9696ed127ff3"
+    },
+    {
+      "id": "gid://shopify/Product/10454995665080",
+      "handle": "wm-marvin-head-n6-175cm-tpe-companion-doll-nrr0c",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1799,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53627635925176"
+      ],
+      "sku": "DW-WM-MARVIN-HEAD-N6-175CM-TPE-COMPANION-DOLL-NRR0C",
+      "beforeAmount": "1777.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "968c92e124456d9c7a3de282b4bb576dc417b6c5fcca96ecf88981ca15f79368"
+    },
+    {
+      "id": "gid://shopify/Product/10551462854840",
+      "handle": "wm-addison-163cm-h-cup-tpe-companion-doll-1tbg6-rts-us",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53990185828536"
+      ],
+      "sku": "DW-WM-ADDISON-163CM-H-CUP-TPE-COMPANION-DOLL-1TBG6",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "f1a816237cadbc4fc5d8832993e35c51b279740282873846c80dc9195748039d"
+    },
+    {
+      "id": "gid://shopify/Product/10551480811704",
+      "handle": "wm-addison-163cm-h-cup-tpe-companion-doll-1tbg6-rts-eu",
+      "brand": "WM Dolls",
+      "before": 1777,
+      "after": 1777,
+      "variantIds": [
+        "gid://shopify/ProductVariant/53990329450680"
+      ],
+      "sku": "DW-WM-ADDISON-163CM-H-CUP-TPE-COMPANION-DOLL-1TBG6",
+      "beforeAmount": "1777.0",
+      "hold": true,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "86a069ad628cc54155141061e8f12797732fb53bca1830ba9a7606f4b83d58e9"
+    },
+    {
+      "id": "gid://shopify/Product/10632843100344",
+      "handle": "lusandy-mizuki-159cm-h-cup-silicone-companion-doll-in-stock-us",
+      "brand": "Lusandy",
+      "before": 2480,
+      "after": 2499,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54238609768632"
+      ],
+      "sku": "LUSANDY-MIZUKI-159CM-H-CUP-SILICONE-COMPANION-DOLL-IN-STOCK-US",
+      "beforeAmount": "2480.0",
+      "hold": false,
+      "beforeRuntimeHash": null,
+      "afterRuntimeHash": null,
+      "nonPriceFingerprint": "8770b95574ca85ae62b2e8452a160407225175bf872ccdd5202f530934a50550"
+    }
+  ]
+}
