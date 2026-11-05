@@ -9,7 +9,7 @@ const sources = {
   evo: "https://www.irontechdoll.com/sex-doll-skeleton-evo-body-hand-toe-skeleton/"
 };
 
-function ManufacturerVideo({ name, label, caption, source }: {
+export function ManufacturerVideo({ name, label, caption, source }: {
   name: string; label: string; caption: string; source: string;
 }) {
   return (
