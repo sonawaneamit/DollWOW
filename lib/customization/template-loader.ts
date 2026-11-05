@@ -4,6 +4,7 @@ import type { Product } from '@/types/product';
 import type { TemplatePresetDefinition } from './template-presets';
 import { getCustomizationConfig } from './configs';
 import { loadLocalTemplateRecipe } from './template-review-loader';
+import { grace160TemplateRecipe } from './grace160-template';
 import { createReleasedTemplateSelector } from './template-release-registry';
 import releaseRegistry from './evidence/template-release.json';
 import { getPrivateDraftPreview, privateDraftRecipe } from '@/lib/catalog/privateDraftPreview';
@@ -20,5 +21,7 @@ export async function loadTemplateRecipe(product: Product): Promise<TemplatePres
   // An environment variable alone cannot promote ignored local review artifacts.
   if (process.env.DOLLWOW_TEMPLATE_RELEASE !== '1') return undefined;
   const config = getCustomizationConfig(product);
+  const grace = grace160TemplateRecipe(product, config);
+  if (grace !== undefined) return grace;
   return selectReleased(greenbackApprovedPriceBinding(topfireApprovedPriceBinding(funwestApprovedPriceBinding(product, config), config), config), config);
 }

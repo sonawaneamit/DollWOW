@@ -1,5 +1,5 @@
 import { grace160PreviewProduct, isGrace160PreviewProduct } from './grace160Preview';
-import grace160Recipe from '@/data/draft-previews/grace160-recipe-nov5.json';
+import { grace160TemplateRecipe } from '@/lib/customization/grace160-template';
 import 'server-only';
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
@@ -26,11 +26,7 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
-  if (isGrace160PreviewProduct(snapshot)) {
-    // Private-only copy of the donor's tier selections, bound to this saved menu.
-    // This does not add a production checkout approval.
-    return { ...structuredClone(grace160Recipe), signature: templateConfigSignature(config) } as TemplatePresetDefinition;
-  }
+  if (isGrace160PreviewProduct(snapshot)) return grace160TemplateRecipe(product, config, true);
   if (reviewedGynoidIdentity(snapshot)) return prepareGynoidTemplateCandidate(product, config);
   if (isSeElfPreviewProduct(snapshot)) {
     const recipe = elfRecipes.find(entry => entry.handle === product.handle);
