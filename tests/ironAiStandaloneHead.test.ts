@@ -99,3 +99,30 @@ describe("reviewed IronAI standalone head", () => {
     expect(schema.keywords).not.toContain("realistic sex doll");
   });
 });
+
+describe('Martin approved IronAI stand preview', () => {
+  it('includes the display stand and charges $300 once for a bust upgrade', () => {
+    process.env.VERCEL_ENV='preview'; process.env.NEXT_PUBLIC_DOL216_PREVIEW='1';
+    try {
+      const source=legacyHead();
+      source.extended.customizationGroups![1].options[2].id='realistic-bust-stand-natural';
+      const head=withIronAiHeadClassification(source);
+      const config=getCustomizationConfig(head);
+      const stand=config.groups.find(group=>group.id==='sex-doll-head-stand')!;
+      expect(stand.selectionMode).toBe('single'); expect(stand.required).toBe(true);
+      expect(stand.options.map(option=>[option.id,option.priceDelta])).toEqual([
+        ['tall-display-stand',0],['realistic-bust-stand-natural',300]
+      ]);
+      const defaults=getDefaultSelections(config);
+      expect(resolveCustomization(config,defaults,552).totalPrice).toBe(552);
+      expect(resolveCustomization(config,{...defaults,'sex-doll-head-stand':'realistic-bust-stand-natural'},552).totalPrice).toBe(852);
+      expect(head.priceRange).toBe(source.priceRange); expect(head.variants).toBe(source.variants);
+      expect(source.extended.customizationGroups![1].options[1].priceDelta).toBe(300);
+    } finally { delete process.env.VERCEL_ENV; delete process.env.NEXT_PUBLIC_DOL216_PREVIEW; }
+  });
+  it('does not apply preview stand prices to production', () => {
+    process.env.VERCEL_ENV='production'; process.env.NEXT_PUBLIC_DOL216_PREVIEW='1';
+    try { expect(withIronAiHeadClassification(legacyHead()).extended.customizationGroups![1].options[1].priceDelta).toBe(300); }
+    finally { delete process.env.VERCEL_ENV; delete process.env.NEXT_PUBLIC_DOL216_PREVIEW; }
+  });
+});
