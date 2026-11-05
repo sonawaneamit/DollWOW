@@ -1,5 +1,6 @@
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import type { Product } from "@/types/product";
+import { isReviewedIronAiHead } from "@/lib/catalog/ironAiStandaloneHead";
 
 export type CatalogNamingInput = {
   brand?: string | null;
@@ -90,6 +91,7 @@ export function topFireTitleFeatures(product: Product) {
 }
 
 export function productPdpHeading(product: Product) {
+  if (isReviewedIronAiHead(product) && product.tags.includes("head-only")) return productPublicTitle(product);
   const lockedTitle = productLockedPdpTitle(product);
   if (lockedTitle) return lockedTitle;
 

@@ -2,6 +2,7 @@ import type { Product, ProductMedia } from "@/types/product";
 import { catalogWeightLb } from '@/lib/catalog/mdWeight';
 import type { CustomizationGroup } from "@/types/customization";
 import { customerDeliveryEstimate } from "@/lib/catalog/delivery";
+import { withIronAiHeadClassification } from "@/lib/catalog/ironAiStandaloneHead";
 import { importedProductionNoteSignals, sanitizeImportedProductionNote } from "@/lib/customization/production-notes";
 
 type Edge<T> = { node: T };
@@ -167,7 +168,7 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
     .find(([key]) => key.trim().toLowerCase() === 'height')?.[1]
     ?.match(/(\d+(?:\.\d+)?)\s*cm\b/i)?.[1] : undefined;
 
-  return {
+  return withIronAiHeadClassification({
     id: node.id,
     handle: node.handle,
     title: node.title,
@@ -217,5 +218,5 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       customizationGroups,
       qcNote: node.qcNote?.value
     }
-  };
+  });
 }
