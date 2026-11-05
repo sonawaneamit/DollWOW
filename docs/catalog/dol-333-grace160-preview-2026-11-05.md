@@ -37,3 +37,34 @@ disabled cart is intentionally unavailable; no cart mutation/order/payment.
 The requested actual add-to-cart/checkout proof is outstanding because the
 product is unpublished and its preview deliberately disables checkout. Review
 this hidden listing before any publication or checkout-enabled release.
+
+## Release correction
+
+Dolly's correction in DOL-333 comment e308eda4 requires the product to stay
+offline through review. Shopify product 10699019059384 was unpublished from
+all four attached channels and returned to DRAFT with dollwow-test. The public
+product route returned 404. The two donor products are outside this release.
+
+The earlier protected deployment supplied the recipe directly. The corrected
+preview exercises the same product, variant, menu and price binding used by the
+storefront release candidate. The bundle prices are Starter $2,366, Enthusiast
+$2,634 and Collector $3,011. The existing checkout validator calculates
+$67, $335 and $712 in add-ons respectively.
+
+The private page disables Add to Cart. The cart test uses the released product
+shape with a simulated Shopify lookup and checks the configured charge amounts,
+then verifies the server rejects the unpublished product. It is not a Shopify
+cart acceptance run. The Top Fire 162 parent has no named-charge binding and
+matching named checkout merchandise was not verified active. The release remains
+held for checkout evidence and a fresh approval.
+
+## Upload checklist sources
+
+The local catalog team has the existing
+[listing release checklist](new-listing-release-checklist.md) and
+[new brand onboarding protocol](../seo-intelligence/new-brand-onboarding-protocol.md).
+The local checkout's Codex Handoffs folder also has the shared
+NEW-DOLL-ONBOARDING.md and the working DOLL-ONBOARDING-TEAM-PLAYBOOK.md.
+Dolly was asked for both current canonical checklists in
+[DOL-333](https://linear.app/dollwow/issue/DOL-333#comment-a4c0d269-afc2-4d7b-9cae-415916e3793e).
+Save the supplied existing-brand and new-brand versions separately when received.
