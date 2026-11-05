@@ -1,3 +1,5 @@
+import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
+import { gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPromotion";
@@ -38,7 +40,7 @@ export function generateMetadata(): Metadata {
   return {
   title,
   description,
-  ...(lusandyNovemberPreviewEnabled() ? { robots: { index: false, follow: false } } : {}),
+  ...((lusandyNovemberPreviewEnabled() || gynoidEarlyBirdPreviewEnabled()) ? { robots: { index: false, follow: false } } : {}),
   alternates: { canonical: "/promo" },
   openGraph: {
     title: `${title} | DollWOW`,
@@ -51,7 +53,7 @@ export function generateMetadata(): Metadata {
 
 export default async function PromoIndexPage({ searchParams }: { searchParams: Promise<{ promoClock?: string | string[] }> }) {
   const requestedClock = (await searchParams).promoClock;
-  const frozenClock = lusandyNovemberPreviewEnabled() ? previewPromotionClock(requestedClock) : undefined;
+  const frozenClock = (lusandyNovemberPreviewEnabled() || gynoidEarlyBirdPreviewEnabled()) ? previewPromotionClock(requestedClock) : undefined;
   const promoClock = frozenClock ?? new Date().toISOString();
   const { halloween, title, description } = promoCopy(Date.parse(promoClock));
   const preview = isHalloweenPreview();
@@ -98,6 +100,8 @@ export default async function PromoIndexPage({ searchParams }: { searchParams: P
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
       </header>}
+
+      {gynoidEarlyBirdPreviewEnabled() ? <GynoidEarlyBirdPromotion promoClock={promoClock} freezeClock={Boolean(frozenClock)} /> : null}
 
       <SeHalloweenPromotion enabled={hasSeHalloween} initialClock={promoClock} />
 

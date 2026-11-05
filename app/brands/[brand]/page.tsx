@@ -1,3 +1,6 @@
+import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
+import { gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
+import { previewPromotionClock } from '@/lib/promotions/optionPricing';
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
   const { brand: handle } = await params;
   const brand = getCatalogBrand(handle);
   if (!brand || isHiddenCatalogBrand(brand.value)) return {};
-  return { ...buildBrandMetadata(brand), ...(brand.value === 'gynoid' && gynoidReleasePreviewEnabled()
+  return { ...buildBrandMetadata(brand), ...(brand.value === 'gynoid' && (gynoidReleasePreviewEnabled() || gynoidEarlyBirdPreviewEnabled())
     ? { robots: { index: false, follow: false } } : {}) };
 }
 
@@ -123,6 +126,8 @@ export default async function BrandHubPage({
           </p>
         </div>
       </div>
+
+      {brand.value === 'gynoid' && gynoidEarlyBirdPreviewEnabled() ? <GynoidEarlyBirdPromotion promoClock={previewPromotionClock(rawSearchParams.promoClock) ?? new Date().toISOString()} freezeClock={Boolean(previewPromotionClock(rawSearchParams.promoClock))} /> : null}
 
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
       <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && brand.value === 'sedoll'} initialClock={new Date().toISOString()} />
