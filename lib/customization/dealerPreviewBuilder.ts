@@ -1,4 +1,5 @@
 import { SE_ELF_FACTS } from './se-oct27-preview';
+import greenbackApproved from '@/data/pricing/dol255-approved-prices.json';
 import gynoidApproved from '@/data/catalog/gynoid-approved-configurations.json';
 
 // FunWest/Top Fire previews keep the live listing structure: the step-by-step wizard stays
@@ -24,9 +25,13 @@ export function presetSelectLayout(handle: string, pendingChoiceCount: number) {
  * response landed in the shared Vercel Data Cache with no expiry and pages fetched before a Shopify
  * data change kept rendering the old product (no head model, preset fingerprint mismatch).
  */
+const greenbackChangedHandles = new Set(greenbackApproved.rows
+  .filter(row => !row.hold && row.before !== row.after)
+  .map(row => row.handle));
+
 export function dealerPreviewProductFetch(handle: string): { cache: RequestCache; revalidate?: number } {
   // Newly appended Elf galleries must not retain the initial three-photo response.
-  return keepsWizardOpen(handle) || Object.hasOwn(SE_ELF_FACTS, handle) || gynoidApproved.products.some(product => product.handle === handle)
+  return greenbackChangedHandles.has(handle) || keepsWizardOpen(handle) || Object.hasOwn(SE_ELF_FACTS, handle) || gynoidApproved.products.some(product => product.handle === handle)
     ? { cache: "no-store" } : { cache: "reload", revalidate: 0 };
 }
 
