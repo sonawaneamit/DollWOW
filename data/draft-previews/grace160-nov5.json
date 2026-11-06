@@ -1,0 +1,3447 @@
+{
+  "id": "gid://shopify/Product/10699019059384",
+  "handle": "top-fire-doll-grace-160cm-f-cup-silicone-customizable-companion-doll",
+  "title": "Top Fire Doll Grace 160cm F-Cup Silicone Customizable Companion Doll",
+  "description": " Grace is a made-to-order Top Fire Doll full-silicone companion doll with a 160 cm frame, an F-Cup profile, a 92 cm bust and 92 cm hips. Review the included configuration, available options, timing, and measurements before checkout.    Height:  5 ft 3 in / 160 cm   Weight:  66.1 lbs / 30 kg   Cup size:  F-Cup   Feet Length:  8 in / 20 cm   Bust:  3 ft / 92 cm   Legs Length:  3 ft 0 in / 91 cm   Waist:  2 ft 2 in / 65 cm   Arms Length:  1 ft 7 in / 47 cm   Hip:  3 ft / 92 cm   Shoulders Width:  1 ft 3 in / 39 cm   Vagina Depth:  7 in / 18 cm   Anus Depth:  6 in / 15 cm   Oral Depth:  7 in / 18 cm   Factory-made to your selected configuration, shipping from China. The base price includes one head. Motorised functions are optional factory upgrades, not standard inclusions. ",
+  "seo": {
+    "title": "Top Fire Grace 160cm F-Cup Silicone Doll",
+    "description": "Customise Top Fire Grace with a 160 cm F-cup silicone body, T64 head and factory options. Made to order in China; review measurements and build details."
+  },
+  "vendor": "DollWow",
+  "productType": "Custom Silicone doll",
+  "tags": [
+    "custom",
+    "customizable",
+    "female-doll",
+    "full-doll",
+    "height-160-164",
+    "options:top-fire-silicone-manual-v1",
+    "silicone",
+    "top-fire",
+    "top-fire-doll",
+    "top-fire-doll-dolls",
+    "weight-under-75",
+    "dollwow-test"
+  ],
+  "featuredImage": {
+    "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+    "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 1",
+    "width": 1667,
+    "height": 2500
+  },
+  "images": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 1",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/10_82be544f-12a5-4313-9705-68cc9ad2605f.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 2",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/15_37826f27-dd2e-4ef9-bb4e-b00edb701289.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 3",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/06_32f5ee27-b025-42a4-8149-03b29bb26d4d.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 4",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/21.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 5",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/14.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 6",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/25.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 7",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/23.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 8",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/29.jpg?v=1792055263",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 9",
+      "width": 1667,
+      "height": 2500
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/30_43015b49-c1bd-410d-b89b-56289fe38387.jpg?v=1792055264",
+      "altText": "Top Fire Grace 160cm F-cup custom doll \u2014 supplier photograph 10",
+      "width": 1667,
+      "height": 2500
+    }
+  ],
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/54627735240888",
+      "title": "Default Title",
+      "availableForSale": false,
+      "price": {
+        "amount": "2299.00",
+        "currencyCode": "USD"
+      },
+      "selectedOptions": [
+        {
+          "name": "Title",
+          "value": "Default Title"
+        }
+      ]
+    }
+  ],
+  "priceRange": {
+    "minVariantPrice": {
+      "amount": "2299.00",
+      "currencyCode": "USD"
+    },
+    "maxVariantPrice": {
+      "amount": "2299.00",
+      "currencyCode": "USD"
+    }
+  },
+  "extended": {
+    "brand": "Top Fire Doll",
+    "headModel": "head-t64",
+    "displayName": "Grace",
+    "bodyType": "female",
+    "material": "Silicone",
+    "heightCm": 160,
+    "weightLb": 66.1,
+    "cupSize": "F-Cup",
+    "measurements": {
+      "Height": "5 ft 3 in / 160 cm",
+      "Weight": "66.1 lbs / 30 kg",
+      "Cup size": "F-Cup",
+      "Feet Length": "8 in / 20 cm",
+      "Bust": "3 ft / 92 cm",
+      "Legs Length": "3 ft 0 in / 91 cm",
+      "Waist": "2 ft 2 in / 65 cm",
+      "Arms Length": "1 ft 7 in / 47 cm",
+      "Hip": "3 ft / 92 cm",
+      "Shoulders Width": "1 ft 3 in / 39 cm",
+      "Vagina Depth": "7 in / 18 cm",
+      "Anus Depth": "6 in / 15 cm",
+      "Oral Depth": "7 in / 18 cm"
+    },
+    "stockStatus": "custom",
+    "customAvailable": true,
+    "warehouseCountry": "China",
+    "catalogIdentityKey": "top-fire__t64__160cm__f-cup__silicone",
+    "catalogBodyIdentityKey": "top-fire__160cm__f-cup__silicone",
+    "customizationGroups": [
+      {
+        "id": "head",
+        "label": "Head",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "t01",
+            "label": "T01 Darcy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T01 Darcy face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8b6c80f81f2889638e20d00e1677e1743efe5922b59b11b6aff6d1e50e90b5d6.webp",
+              "label": "T01 Darcy"
+            }
+          },
+          {
+            "id": "t02",
+            "label": "T02 Flora",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T02 Flora face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2117d32be3a24431b988d5293b796f01c1e8b439b6e3c22f42a9d7c28aec576a.webp",
+              "label": "T02 Flora"
+            }
+          },
+          {
+            "id": "t03",
+            "label": "T03 Finn",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T03 Finn face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/49d0ef5de2c49f058667332e75fb249f940ec2882f743cb0d9bc9ac8ea8ed8ff.webp",
+              "label": "T03 Finn"
+            }
+          },
+          {
+            "id": "t04",
+            "label": "T04 Hedy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T04 Hedy face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0c0eb6853c1897ffc3b68510e0a542c47bc275b90b63a731547a7fb5352cf9ba.webp",
+              "label": "T04 Hedy"
+            }
+          },
+          {
+            "id": "t05",
+            "label": "T05 Ada",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T05 Ada face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b5382680d24194d79de2c9d20264309b3b71f8c76b9ffc7f5a5fc9e0a2b8a61.webp",
+              "label": "T05 Ada"
+            }
+          },
+          {
+            "id": "t06",
+            "label": "T06 Bid",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T06 Bid face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f2fdccfeea96973f311976641e1f79accc8a3f7c6ff49099a53f93f7ed43f733.webp",
+              "label": "T06 Bid"
+            }
+          },
+          {
+            "id": "t07",
+            "label": "T07 Lorna",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T07 Lorna face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5d6fe44bafd21b5062a082e4fdfc6003e7a27aedad689180a4b532e5e2ab9d25.webp",
+              "label": "T07 Lorna"
+            }
+          },
+          {
+            "id": "t08",
+            "label": "T08 Doris",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T08 Doris face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d9c43b0d983b813dd927e7e669250ba924e09324944c02459883ca6bcd04f289.webp",
+              "label": "T08 Doris"
+            }
+          },
+          {
+            "id": "t09",
+            "label": "T09 Mollie",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T09 Mollie face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/37cd852d5a078e343609c5c6ae6b03328e19d878539afd7571588fba3fc395ee.webp",
+              "label": "T09 Mollie"
+            }
+          },
+          {
+            "id": "t10",
+            "label": "T10 Ann",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T10 Ann face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bc766b343b7af23a70590e22c9d1b07b168e8ee43702fcb6313d73468ea569e4.webp",
+              "label": "T10 Ann"
+            }
+          },
+          {
+            "id": "t11",
+            "label": "T11 Hailey",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T11 Hailey face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/05d1d46c58f37101567a9e9e22396ac34d14019ef39f6b5630f0229476c68154.webp",
+              "label": "T11 Hailey"
+            }
+          },
+          {
+            "id": "t12",
+            "label": "T12 Bess",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T12 Bess face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a4be2135c64240ea5cb2eabaea1aaa4d05272aa99ea38fc1071eb143758fb327.webp",
+              "label": "T12 Bess"
+            }
+          },
+          {
+            "id": "t13",
+            "label": "T13 Edma",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T13 Edma face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a8e0db49c01a69f2cbe63a3a00a805d6dceebd02fefd34ce288fbc0924c4b92e.webp",
+              "label": "T13 Edma"
+            }
+          },
+          {
+            "id": "t14",
+            "label": "T14 Echo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T14 Echo face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4acd814a829c1d0f40842a4ca99b152808938d1284a8a4ec7e5d66dd5b23d5ae.webp",
+              "label": "T14 Echo"
+            }
+          },
+          {
+            "id": "t15",
+            "label": "T15 Venus",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T15 Venus face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fbb4fd197be258e66c6d0c3d0b5b7f08934cff789e953e9a4dce060ae117edf5.webp",
+              "label": "T15 Venus"
+            }
+          },
+          {
+            "id": "t16",
+            "label": "T16 Isis",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T16 Isis face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ac87152124d53b57edea7af072d29c6e860d44db9054151c83d7a49d9f69d234.webp",
+              "label": "T16 Isis"
+            }
+          },
+          {
+            "id": "t17",
+            "label": "T17 Susan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T17 Susan face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0ac50299f9ffab5b623f5532b9dd5c38a729063223e1f097f6bf6c29ea55958e.webp",
+              "label": "T17 Susan"
+            }
+          },
+          {
+            "id": "t18",
+            "label": "T18 Fay",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T18 Fay face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4d99c9c6908db6cfef8b31a2048922c1670749bb9c7a7a4165a63723144689f2.webp",
+              "label": "T18 Fay"
+            }
+          },
+          {
+            "id": "t19",
+            "label": "T19 Kaia",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T19 Kaia face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b576839889e4f733277d3b8e498950be0c0512ad214309a435a10b0336d8845.webp",
+              "label": "T19 Kaia"
+            }
+          },
+          {
+            "id": "t20",
+            "label": "T20 Kama",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T20 Kama face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2f052ba8253d21879c12ddb68e9a564b5319a12a994d8817a52a3e8445df8aa6.webp",
+              "label": "T20 Kama"
+            }
+          },
+          {
+            "id": "t21",
+            "label": "T21 Felix",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T21 Felix face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1b87bc8d055f6c4352f70120b0156ddd71ca91f42c4ee95a09a032aff8834335.webp",
+              "label": "T21 Felix"
+            }
+          },
+          {
+            "id": "t22",
+            "label": "T22 Camille",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T22 Camille face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f718aee3322fb934a8d9cdb26a7fbdd2a0fa266ae0af116d3cfa7b3986095ff6.webp",
+              "label": "T22 Camille"
+            }
+          },
+          {
+            "id": "t23",
+            "label": "T23 Mae",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T23 Mae face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cf9f4b0d91b34c6dc4981b3b6cabaa88f2eca4da146f233c65c6902cd732a7d9.webp",
+              "label": "T23 Mae"
+            }
+          },
+          {
+            "id": "t24",
+            "label": "T24 Chloe",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T24 Chloe face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/dc284f35e2ec02162ae38d6580e842ee5b1f4a72bd9a699d9b0ad4f550f80b75.webp",
+              "label": "T24 Chloe"
+            }
+          },
+          {
+            "id": "t25",
+            "label": "T25 Lydia",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T25 Lydia face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bbca1a4fc6bddce2e2fc3a3602458fced7c4a17e1679960f79cd576bb54f07b7.webp",
+              "label": "T25 Lydia"
+            }
+          },
+          {
+            "id": "t26",
+            "label": "T26 Hannah",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T26 Hannah face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/044ea30bccc66cac12f53b093db089779dd184cdae3af83dd5a99309c69b0807.webp",
+              "label": "T26 Hannah"
+            }
+          },
+          {
+            "id": "t27",
+            "label": "T27 Nina",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T27 Nina face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/38f2e44908aa2c6559b5cf15745458a2703f4a1006d7dfdfeb270c5843855306.webp",
+              "label": "T27 Nina"
+            }
+          },
+          {
+            "id": "t28",
+            "label": "T28 Sharon",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T28 Sharon face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9fae139fef281ea5be0161148c4a4e3923ef97f52169259d77198fbdae21d780.webp",
+              "label": "T28 Sharon"
+            }
+          },
+          {
+            "id": "t29",
+            "label": "T29 Esther",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T29 Esther face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/73ba42be3ca4446a3b2dac67bf4ff6ebce6c747e811cf8771ff70f0cb76ec02d.webp",
+              "label": "T29 Esther"
+            }
+          },
+          {
+            "id": "t30",
+            "label": "T30 Rose",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T30 Rose face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/35753ab4648504c5a3532ba015b41a16d74d731bc7ced2cda85ce2fc29760970.webp",
+              "label": "T30 Rose"
+            }
+          },
+          {
+            "id": "t31",
+            "label": "T31 Marjorie",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T31 Marjorie face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0f27567761b230ac514d395e20d606ef9af306058a052aec460db69a7f2267cd.webp",
+              "label": "T31 Marjorie"
+            }
+          },
+          {
+            "id": "t32",
+            "label": "T32 Jill",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T32 Jill face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/db3bd6dcc14b3a1ef2c7d39810b09b6ed83ed4303b347b8c20db76d6fa7f341a.webp",
+              "label": "T32 Jill"
+            }
+          },
+          {
+            "id": "t33",
+            "label": "T33 Yilia",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T33 Yilia face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5317b4b1ba22a3110711e97c9d76d58d9c5b02b70de9c0a51e61fb9814b01ade.webp",
+              "label": "T33 Yilia"
+            }
+          },
+          {
+            "id": "t34",
+            "label": "T34 Nicole",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T34 Nicole face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/88c120f4fc291ce0a2fb2262c4e83b815ef1690265d7584d6f73c5f172195d71.webp",
+              "label": "T34 Nicole"
+            }
+          },
+          {
+            "id": "t35",
+            "label": "T35 Kali",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T35 Kali face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/794a99ed683a66108d9911b010c9fea477c990248cf3ee89252912b5846efb51.webp",
+              "label": "T35 Kali"
+            }
+          },
+          {
+            "id": "t36",
+            "label": "T36 Laionni",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T36 Laionni face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2b8513f68c188074c5d49a9cc75f416ddf3b04f2a12d5077a8331e975e68504a.webp",
+              "label": "T36 Laionni"
+            }
+          },
+          {
+            "id": "t37",
+            "label": "T37 Geles",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T37 Geles face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8e50ed106a3a679a38bf03ae40f013bdc127d955904522845a00dece9e5d4a55.webp",
+              "label": "T37 Geles"
+            }
+          },
+          {
+            "id": "t38",
+            "label": "T38 Lin",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T38 Lin face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0599ca283aec03e7b0dc5afade9ff35e1bd27c7bd3a6d4934e195aa05fab20a8.webp",
+              "label": "T38 Lin"
+            }
+          },
+          {
+            "id": "t39",
+            "label": "T39 Wendy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T39 Wendy face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/929cca47ac79a3335043de7aea1c9c82505691f272d45d2798b31fbdd60d7532.webp",
+              "label": "T39 Wendy"
+            }
+          },
+          {
+            "id": "t40",
+            "label": "T40 Caroline",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T40 Caroline face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b19ce83106da90ecf6ece807ce6dde590be730a1644e65bdde0bb970d4c05f9.webp",
+              "label": "T40 Caroline"
+            }
+          },
+          {
+            "id": "t41",
+            "label": "T41 Casey",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T41 Casey face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/87cfeac43b7d838e2e0460cd19cca49d1c58d763eaf60b99ac76f574b5bf7b60.webp",
+              "label": "T41 Casey"
+            }
+          },
+          {
+            "id": "t42",
+            "label": "T42 Willa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T42 Willa face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ddb31527c99bba2ca780f81d5f1852b6409349a3a78a7caf91ad2d64559eb577.webp",
+              "label": "T42 Willa"
+            }
+          },
+          {
+            "id": "t43",
+            "label": "T43 Phoenix",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T43 Phoenix face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f7729f8386022f1f15ea14e71b8a744e061e167a27c6c1bcb342e99985130e8f.webp",
+              "label": "T43 Phoenix"
+            }
+          },
+          {
+            "id": "t44",
+            "label": "T44 Eva",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T44 Eva face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ebf7f8b3a0d3efd80e05750559ebb857c1aa267ad4f353b1b5f3cc122085c647.webp",
+              "label": "T44 Eva"
+            }
+          },
+          {
+            "id": "t45",
+            "label": "T45 Isabella",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T45 Isabella face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bf6e44e2bb9d927c4e40a6ddfca131e75154186509035887404674659f255104.webp",
+              "label": "T45 Isabella"
+            }
+          },
+          {
+            "id": "t46",
+            "label": "T46 Ivy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T46 Ivy face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/eebc202d1c1d386e00d4995fc7e1166ba4f6a89e081262ee424d03af96730732.webp",
+              "label": "T46 Ivy"
+            }
+          },
+          {
+            "id": "t47",
+            "label": "T47 Jasmine",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T47 Jasmine face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4c6d8db1fbda137b6a6240ce44615dfc96e44f5d26a5fbb51daefbdf738b7e31.webp",
+              "label": "T47 Jasmine"
+            }
+          },
+          {
+            "id": "t48",
+            "label": "T48 Jade",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T48 Jade face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/668ce3da5572e88c38ed54ad071b633366dffe10632fb976ee219cf47c99db66.webp",
+              "label": "T48 Jade"
+            }
+          },
+          {
+            "id": "t49",
+            "label": "T49 Amber",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T49 Amber face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/47f4ed3bb767f7e1cf46fe198172a43abf864fb53f133bbb7b5a15c8dc6b66cc.webp",
+              "label": "T49 Amber"
+            }
+          },
+          {
+            "id": "t50",
+            "label": "T50 Crystal",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T50 Crystal face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1e8d33045ed80fd2e3d93c05907e5e9d0a00a5125a3e7d78b37a31f4dbee5924.webp",
+              "label": "T50 Crystal"
+            }
+          },
+          {
+            "id": "t51",
+            "label": "T51 Megan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T51 Megan face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2ae745006cd40c0d0bc7b1cf9b6b4787f60cd07737bb5616141c19642f535b5d.webp",
+              "label": "T51 Megan"
+            }
+          },
+          {
+            "id": "t52",
+            "label": "T52 Selena",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T52 Selena face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/41ea82e0e308f7f1a4382d43fbd5ef648f1a5f9bcd0e9f7a92351c46f794cac6.webp",
+              "label": "T52 Selena"
+            }
+          },
+          {
+            "id": "t53",
+            "label": "T53 Lucy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T53 Lucy face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/689dd5b2fd310cc0979acf3d3a34630ff91b4dbd850eaae1a13152a9d771f4aa.webp",
+              "label": "T53 Lucy"
+            }
+          },
+          {
+            "id": "t54",
+            "label": "T54 Margaret",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T54 Margaret face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b1ff75787d0165f16c8c216209aa3b4cdbf09a9edd374d80f10224e86f08d98e.webp",
+              "label": "T54 Margaret"
+            }
+          },
+          {
+            "id": "t55",
+            "label": "T55 Ivory",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T55 Ivory face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4d7111d39378d679babc222947b73cad094e053dc147e77cba0c0ec9b3a031c6.webp",
+              "label": "T55 Ivory"
+            }
+          },
+          {
+            "id": "t56",
+            "label": "T56 Nova",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T56 Nova face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8dba2095c6ae15f8efb4d519f4727389341cb7d7a154f4e9d1708985b18286af.webp",
+              "label": "T56 Nova"
+            }
+          },
+          {
+            "id": "t57",
+            "label": "T57 Victoria",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T57 Victoria face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/726628d537366a4e7362ee0ce1fa7b55fe051532624a1712ff10ba0f17a16128.webp",
+              "label": "T57 Victoria"
+            }
+          },
+          {
+            "id": "t58",
+            "label": "T58 Mika",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T58 Mika face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/875265ba5367e1ce4d406931ce60e64218c4bb9b3886adb60ea215b70d515f3b.webp",
+              "label": "T58 Mika"
+            }
+          },
+          {
+            "id": "t59",
+            "label": "T59 Selina",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T59 Selina face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/000bc40abcfe3c409d17a895260f1533147073d2513e7100074f65f2f9df615d.webp",
+              "label": "T59 Selina"
+            }
+          },
+          {
+            "id": "t60",
+            "label": "T60 Ingrid",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T60 Ingrid face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c33b923a905afcf9757abd97cffaf1347108a429bce16625937a72e7f7a85679.webp",
+              "label": "T60 Ingrid"
+            }
+          },
+          {
+            "id": "t61",
+            "label": "T61 Bella",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T61 Bella face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a61d37a7bd3d79a01cbc5872879da6d0ace63fbf4243568b9db1c284ce82d915.webp",
+              "label": "T61 Bella"
+            }
+          },
+          {
+            "id": "t62",
+            "label": "T62 Hazel",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T62 Hazel face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2e5315d7dfdacdce8abd4bf0f355fa0900a3f215e9bdf96317f6a1d2719e47f2.webp",
+              "label": "T62 Hazel"
+            }
+          },
+          {
+            "id": "t63",
+            "label": "T63 Violet",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T63 Violet face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/00aacdbb2dc3e16b4a61143b069d8e0bdbb4b6ae2c5543f60ec25181892b232c.webp",
+              "label": "T63 Violet"
+            }
+          },
+          {
+            "id": "t64",
+            "label": "T64 Grace",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T64 Grace face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0a216ea17cad7cc92c55d7c1a31bac7176e1bd5446a6b4f283297f532a6f659e.webp",
+              "label": "T64 Grace"
+            }
+          },
+          {
+            "id": "t65",
+            "label": "T65 Jing",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T65 Jing face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0259dc55d8cc0fcf017a2761b1a2fdd38641253b2c8f3de50445d0f052e64c5c.webp",
+              "label": "T65 Jing"
+            }
+          },
+          {
+            "id": "t66",
+            "label": "T66 Nata",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T66 Nata face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f0c2c6d4f22d588b88c69f2f7b9752c421678f7358ae96a06554533b1d9283ab.webp",
+              "label": "T66 Nata"
+            }
+          },
+          {
+            "id": "t67",
+            "label": "T67 Aria",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T67 Aria face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bee46cda33b829da72b2d13f8a7ce469a4087bbc10e3e2e99d89f80df43ba713.webp",
+              "label": "T67 Aria"
+            }
+          },
+          {
+            "id": "t68",
+            "label": "T68 Amelia",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T68 Amelia face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bd54c55a653b680b9392192ffc60489831658fbad9c162ca68266ce9401ff9f3.webp",
+              "label": "T68 Amelia"
+            }
+          },
+          {
+            "id": "t71",
+            "label": "T71 Yuki",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T71 Yuki face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bfc1df408a6e67701c39ecc522c7a176b8e7859902d56992058c8c820055995c.webp",
+              "label": "T71 Yuki"
+            }
+          },
+          {
+            "id": "t72",
+            "label": "T72 Storm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T72 Storm face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e72adae9b6741e7224edce9fcc0441fa127d4aea64d156279a3b78752462d260.webp",
+              "label": "T72 Storm"
+            }
+          },
+          {
+            "id": "t73",
+            "label": "T73 Eleanor",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Swap to Top Fire's T73 Eleanor face. Included in the price.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0ed04a826acf5022356cfaa2c96ab86852598e7965d1175bdbe9a5af3676748c.webp",
+              "label": "T73 Eleanor"
+            }
+          }
+        ],
+        "description": "Keep the face in the photos or switch to another Top Fire head. Switching the face is included."
+      },
+      {
+        "id": "head-type",
+        "label": "Head Type",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "soft-silicone-head-free",
+            "label": "Soft Silicone Head (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ae2f7fbaf1cad3b7ca728c84d972388c218bff5629c1701826396cddf69dd93e.webp",
+              "label": "Soft Silicone Head (FREE)"
+            }
+          },
+          {
+            "id": "ros-head-free",
+            "label": "ROS Head with Fixed Tongue & Teeth (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e3d5a69047ee0794b6b9f9fc4b2da14fa472177d0dfa6efc42fbb066c317cc8f.webp",
+              "label": "ROS Head with Fixed Tongue & Teeth (FREE)"
+            }
+          },
+          {
+            "id": "movable-jaw-free",
+            "label": "Movable Jaw (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5adc239bc5ea04a0cfde54f3ad05ae9ccd297c4cc4ef91201ca1fe7d0b9cb1b5.webp",
+              "label": "Movable Jaw (FREE)"
+            }
+          }
+        ],
+        "description": "Pick how the head is built. All four are included at no extra cost."
+      },
+      {
+        "id": "skin-tone",
+        "label": "Skin Tone",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "fair",
+            "label": "Fair",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/14d3c2bba64e2be859c24cbd82a868d26bec505e43bd7b62852a67b3318e7d55.webp",
+              "label": "Fair"
+            }
+          },
+          {
+            "id": "light-tan",
+            "label": "Light Tan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/12cc0b7c5083cde2865ee886f3b94a4b6da861fd2cd3bacaa6ae3843b75d36d5.webp",
+              "label": "Light Tan"
+            }
+          },
+          {
+            "id": "dark-tan",
+            "label": "Dark Tan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/6f8551f88ef9006633b52462bb245dc76b915508a1f1257daf4671c286fee390.webp",
+              "label": "Dark Tan"
+            }
+          },
+          {
+            "id": "bronze",
+            "label": "Bronze",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/57b86fcb8854f70d9d97d744dcf73958d4faa4a18de3a44943edfce299417e26.webp",
+              "label": "Bronze"
+            }
+          }
+        ],
+        "description": "Top Fire's four factory skin tones. Shades can vary slightly between batches."
+      },
+      {
+        "id": "hairstyle",
+        "label": "Hairstyle",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "hairstyle-1",
+            "label": "Hairstyle #1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/16809ab3f2c3ba5046f3994924044945d07e566d6f52ba22547dcb9e274f47bf.webp",
+              "label": "Hairstyle #1"
+            }
+          },
+          {
+            "id": "hairstyle-2",
+            "label": "Hairstyle #2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f82ee2ac2618aeb9d847538f07ca02113d031e30ce2e66b2b781caba03a8c225.webp",
+              "label": "Hairstyle #2"
+            }
+          },
+          {
+            "id": "hairstyle-3",
+            "label": "Hairstyle #3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8d9ca05f22498c7af355696ee9f56344c19cc0b457aec225a8668132de8e5ce1.webp",
+              "label": "Hairstyle #3"
+            }
+          },
+          {
+            "id": "hairstyle-4",
+            "label": "Hairstyle #4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f2d9765fbdf1b7da27860556d8f3ec84282bc66a15fd0b737e11941cf08cb99c.webp",
+              "label": "Hairstyle #4"
+            }
+          },
+          {
+            "id": "hairstyle-5",
+            "label": "Hairstyle #5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e2814fd5bf7226fccf04dec80fd2d85bc0e4fed283c8b0f9e9f3edbb718eb526.webp",
+              "label": "Hairstyle #5"
+            }
+          },
+          {
+            "id": "hairstyle-6",
+            "label": "Hairstyle #6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/da45a256563b3d3d755a652d13a85107018dd553279afe2fb60b748c2a813cd0.webp",
+              "label": "Hairstyle #6"
+            }
+          },
+          {
+            "id": "hairstyle-7",
+            "label": "Hairstyle #7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d604f7c42b9a1138df3d1a071d7deacdb7a4e0b70813922e9b6338b5e0635ac3.webp",
+              "label": "Hairstyle #7"
+            }
+          },
+          {
+            "id": "hairstyle-8",
+            "label": "Hairstyle #8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bd1917f2d44bc068bea67d811d0c3eb0f395772efc459bed0e3201e89a845401.webp",
+              "label": "Hairstyle #8"
+            }
+          },
+          {
+            "id": "hairstyle-9",
+            "label": "Hairstyle #9",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3fab74873c9203bf010c0cef1eaa38761850f546ee1b6bfadcdb2389ffa344d9.webp",
+              "label": "Hairstyle #9"
+            }
+          },
+          {
+            "id": "hairstyle-10",
+            "label": "Hairstyle #10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8d42019e97012714e5d3bcd229dd33f2050970d26911d7082b3a1f31aba53e6c.webp",
+              "label": "Hairstyle #10"
+            }
+          },
+          {
+            "id": "implanted-synthetic-hair",
+            "label": "Implanted Synthetic Hair",
+            "priceDelta": 49,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c4da77f29b27349db365e161a7335934be2fe71fb221c0d5ac8d699db2d7612d.webp",
+              "label": "Implanted Synthetic Hair"
+            }
+          },
+          {
+            "id": "implanted-human-hair",
+            "label": "Implanted Human Hair",
+            "priceDelta": 389,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c4da77f29b27349db365e161a7335934be2fe71fb221c0d5ac8d699db2d7612d.webp",
+              "label": "Implanted Human Hair"
+            }
+          }
+        ],
+        "description": "Choose a wig from Top Fire's chart, or upgrade to implanted hair."
+      },
+      {
+        "id": "eye-color",
+        "label": "Eye Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "no-1",
+            "label": "No.1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c567f163a0860ecd6449737b1d39e91f5e4ef1a66a5546bd572fc6d823101541.webp",
+              "label": "No.1"
+            }
+          },
+          {
+            "id": "no-2",
+            "label": "No.2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/40495da7f9d62411782ecf840fc37b88ee6141116b18ec89e39b1186c1cc9a16.webp",
+              "label": "No.2"
+            }
+          },
+          {
+            "id": "no-3",
+            "label": "No.3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c38c4098aacd92c949fc8aefae9448ccae01903ac2cbd83713c9815478ddde28.webp",
+              "label": "No.3"
+            }
+          },
+          {
+            "id": "no-4",
+            "label": "No.4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ac8d85b6afb8fb7f14c57f0cc0ad720a0fbce6e455b179c4b61b7112684e4488.webp",
+              "label": "No.4"
+            }
+          },
+          {
+            "id": "no-5",
+            "label": "No.5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5efcf4d3a0116e7113e7e560a2e50719c12d0ca16a8c905368ccb41c3449b04c.webp",
+              "label": "No.5"
+            }
+          },
+          {
+            "id": "no-6",
+            "label": "No.6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8a049020e438263ffbe297a21ddf4d14227414b347d9ca3f34fda9a0b582a25f.webp",
+              "label": "No.6"
+            }
+          },
+          {
+            "id": "no-7",
+            "label": "No.7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ac9a5d04b2d92ed37d61e4512f749a8b02908d0735a0ba5dca7ca09f958256ab.webp",
+              "label": "No.7"
+            }
+          }
+        ],
+        "description": "Factory eye colors shown on the real eyes."
+      },
+      {
+        "id": "nail-color",
+        "label": "Nail Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "no-1",
+            "label": "No.1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/24e53441fbcab225e407b991bdc4d278d3bb082ff5a93d5660e0f9561e3dfa53.webp",
+              "label": "No.1"
+            }
+          },
+          {
+            "id": "no-2",
+            "label": "No.2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9c8014c70a2b4ef445a4ebb834aedeaadec8ede6f1638b9c76d9a8cfed5b3b2b.webp",
+              "label": "No.2"
+            }
+          },
+          {
+            "id": "no-3",
+            "label": "No.3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f692208ff34d9c7d7afd42106faaa00b1bf43a4162cb3bed490bf94f497a31fc.webp",
+              "label": "No.3"
+            }
+          },
+          {
+            "id": "no-4",
+            "label": "No.4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d1ed80d566b077fc5ae4b43f9a857e9b5e1a274f31c3552f655eb5e7cc0f002f.webp",
+              "label": "No.4"
+            }
+          },
+          {
+            "id": "no-5",
+            "label": "No.5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/94030ba1e4f417152fb8cc4a8bed7d52251a595479910796c4d95d9ba52bc42c.webp",
+              "label": "No.5"
+            }
+          },
+          {
+            "id": "no-6",
+            "label": "No.6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5bec98f80de26f304f4218c271347012be24649babe5c8bd439e4eef6ff4c5a2.webp",
+              "label": "No.6"
+            }
+          },
+          {
+            "id": "no-7",
+            "label": "No.7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cb40aa44d0cb9dfc1d0c275638803bb993a5c163f8ad17dc081d34fee7aa855f.webp",
+              "label": "No.7"
+            }
+          },
+          {
+            "id": "no-8",
+            "label": "No.8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/eb0fadef4ee214f354d70b3428213a854be742f973bb9af17683e6edc478da83.webp",
+              "label": "No.8"
+            }
+          }
+        ],
+        "description": "Fingernail polish color."
+      },
+      {
+        "id": "toenail-color",
+        "label": "Toe Nail Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "no-1",
+            "label": "No.1",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/24e53441fbcab225e407b991bdc4d278d3bb082ff5a93d5660e0f9561e3dfa53.webp",
+              "label": "No.1"
+            }
+          },
+          {
+            "id": "no-2",
+            "label": "No.2",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9c8014c70a2b4ef445a4ebb834aedeaadec8ede6f1638b9c76d9a8cfed5b3b2b.webp",
+              "label": "No.2"
+            }
+          },
+          {
+            "id": "no-3",
+            "label": "No.3",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f692208ff34d9c7d7afd42106faaa00b1bf43a4162cb3bed490bf94f497a31fc.webp",
+              "label": "No.3"
+            }
+          },
+          {
+            "id": "no-4",
+            "label": "No.4",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d1ed80d566b077fc5ae4b43f9a857e9b5e1a274f31c3552f655eb5e7cc0f002f.webp",
+              "label": "No.4"
+            }
+          },
+          {
+            "id": "no-5",
+            "label": "No.5",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/94030ba1e4f417152fb8cc4a8bed7d52251a595479910796c4d95d9ba52bc42c.webp",
+              "label": "No.5"
+            }
+          },
+          {
+            "id": "no-6",
+            "label": "No.6",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5bec98f80de26f304f4218c271347012be24649babe5c8bd439e4eef6ff4c5a2.webp",
+              "label": "No.6"
+            }
+          },
+          {
+            "id": "no-7",
+            "label": "No.7",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cb40aa44d0cb9dfc1d0c275638803bb993a5c163f8ad17dc081d34fee7aa855f.webp",
+              "label": "No.7"
+            }
+          },
+          {
+            "id": "no-8",
+            "label": "No.8",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/eb0fadef4ee214f354d70b3428213a854be742f973bb9af17683e6edc478da83.webp",
+              "label": "No.8"
+            }
+          }
+        ],
+        "description": "Toenail polish color."
+      },
+      {
+        "id": "breast-options",
+        "label": "Breast Options",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "gel-free",
+            "label": "Soft Gel Breasts (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bd55da0179ae4ef864c70b1b694d6aceb8cfc01030092fb2ccd18afab6429475.webp",
+              "label": "Soft Gel Breasts (FREE)"
+            }
+          },
+          {
+            "id": "hollow",
+            "label": "Hollow",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/90173267ee472d2d8da38e58cf1c30c24aee338081f643b201b1ec0153c9c287.webp",
+              "label": "Hollow"
+            }
+          },
+          {
+            "id": "solid",
+            "label": "Solid",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5639975519661656267f7d469f46b4a06dc37a9cb89aacc4e01d3d4c329d9388.webp",
+              "label": "Solid"
+            }
+          }
+        ],
+        "description": "Soft gel breasts are Top Fire's standard; hollow or solid are also free."
+      },
+      {
+        "id": "areola-color",
+        "label": "Nipple Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "pink",
+            "label": "Pink",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f305c64daa92bb7b1740c28dc2e3c69d89d37253ce41f1b453fcd43cc4cd26eb.webp",
+              "label": "Pink"
+            }
+          },
+          {
+            "id": "light-brown",
+            "label": "Light Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/764cd444420b04456a7f1e5f9148b403eb3c598b2ea0f18e5000834596d6c143.webp",
+              "label": "Light Brown"
+            }
+          },
+          {
+            "id": "dark-brown",
+            "label": "Dark Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0919fe0c7dc00b3c26c3bde73e5e94774aacd6bc9f2f5cd9b7ea838facc86123.webp",
+              "label": "Dark Brown"
+            }
+          }
+        ],
+        "description": "Nipple and areola color."
+      },
+      {
+        "id": "areola-size",
+        "label": "Areola Size",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "1cm",
+            "label": "1cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a86a38206e21a89f6c815ed16ccae9dcbe19b6f9f1885056e12df29419903c04.webp",
+              "label": "1cm"
+            }
+          },
+          {
+            "id": "3cm",
+            "label": "3cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b7bf205ac95490c734a7ab49705f0e10a44df76d441234aeafd865027eb4fd13.webp",
+              "label": "3cm"
+            }
+          },
+          {
+            "id": "5cm",
+            "label": "5cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c38f2e6a40e916519ec8d4ba23a19f556b94d8a309422b4abfba49ab3a4b46c9.webp",
+              "label": "5cm"
+            }
+          }
+        ],
+        "description": "Areola diameter."
+      },
+      {
+        "id": "vagina",
+        "label": "Vagina",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "fixed",
+            "label": "Fixed",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "productionNote": "Default supplier selection.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2b81bd597bf904208f403a09a91045101086e67510c3338787932c14e0eee2d8.webp",
+              "label": "Fixed"
+            }
+          },
+          {
+            "id": "removable",
+            "label": "Removable",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f39eb864dd788e0fd76d1aa88f7b78091a1bfb6ac98929b436d71a8cc68db1ec.webp",
+              "label": "Removable"
+            }
+          }
+        ],
+        "description": "Fixed is seamless; removable is easier to clean."
+      },
+      {
+        "id": "vaginal-texture",
+        "label": "Vagina Texture",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "default-texture-18cm",
+            "label": "Default Texture (18cm)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "productionNote": "Default supplier selection.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/61527c8ea8fd6ecdadc77e5616d5daff5d0631b54b1cc158f70a24e9f6f66d02.webp",
+              "label": "Default Texture (18cm)"
+            }
+          },
+          {
+            "id": "texture-1-18cm",
+            "label": "Texture #1 (18cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b5f666d57e97beb80fdfd9957699955e07b160be812f0c15c4b2c85e7dbeee8f.webp",
+              "label": "Texture #1 (18cm)"
+            }
+          },
+          {
+            "id": "texture-2-14cm",
+            "label": "Texture #2 (14cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e3f0b5f37184beb310b90c274969f37ec31b3fb3d03ad612e4e21171e7fea3d0.webp",
+              "label": "Texture #2 (14cm)"
+            }
+          },
+          {
+            "id": "texture-3-17-5cm",
+            "label": "Texture #3 (17.5cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/206ff011874808216bfd13eceb93f683d4392ae8f84057729456e99899e32bfd.webp",
+              "label": "Texture #3 (17.5cm)"
+            }
+          },
+          {
+            "id": "texture-4-17cm",
+            "label": "Texture #4 (17cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/15eb1b40a464fc852d4579a481f82dc2205ca3141305f70f621ad7ec960cea79.webp",
+              "label": "Texture #4 (17cm)"
+            }
+          },
+          {
+            "id": "texture-5-16cm",
+            "label": "Texture #5 (16cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/167590bb7cae6a6352a3238ec34c7b8c5af4210ad504546998899ac4dac8deec.webp",
+              "label": "Texture #5 (16cm)"
+            }
+          },
+          {
+            "id": "texture-7-14-5cm",
+            "label": "Texture #7 (14.5cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8b81de100018df1f536f56aca1785b15b9cdc40192560af11649a8b0a0eb305e.webp",
+              "label": "Texture #7 (14.5cm)"
+            }
+          },
+          {
+            "id": "texture-8-12-5cm",
+            "label": "Texture #8 (12.5cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/69a944ca4056622f983b72ff7a8b4f38df701520ce3d885256f21dbf43dd085d.webp",
+              "label": "Texture #8 (12.5cm)"
+            }
+          },
+          {
+            "id": "texture-9-13cm",
+            "label": "Texture #9 (13cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/218f668fc2a713f314b0d73d8179a6a1a2ea7dad32bdae2df1971b7343f55f0d.webp",
+              "label": "Texture #9 (13cm)"
+            }
+          },
+          {
+            "id": "texture-10-16-5cm",
+            "label": "Texture #10 (16.5cm)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5067ea0453e147f7983e71df0f30c94769696a236429558bc501daaae9b5540c.webp",
+              "label": "Texture #10 (16.5cm)"
+            }
+          }
+        ],
+        "description": "Inner texture and depth. Default texture is included; other patterns add a small fee."
+      },
+      {
+        "id": "labia-color",
+        "label": "Vagina Color",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-change",
+            "label": "As shown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "description": "Keep the look shown in this doll's photos.",
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/12_4b03ba82-5cfc-4c77-ac6c-171b3453cbd3.jpg?v=1792055263",
+              "label": "As shown"
+            }
+          },
+          {
+            "id": "pink",
+            "label": "Pink",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a1bca7080cb44070ee255f10424fd1c073887e8d531a7d532327849a1ecaa723.webp",
+              "label": "Pink"
+            }
+          },
+          {
+            "id": "light-brown",
+            "label": "Light Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/14a84e4cfe19a0fb7d1405f33405bcce943f62e3e4bc4860bad3d1118f325d2e.webp",
+              "label": "Light Brown"
+            }
+          },
+          {
+            "id": "dark-brown",
+            "label": "Dark Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9805f5daba0c0c070552498473a2f11bb73659447d4844e673a3701d932981a2.webp",
+              "label": "Dark Brown"
+            }
+          }
+        ],
+        "description": "Labia color."
+      },
+      {
+        "id": "vagina-hair-type",
+        "label": "Vagina Hair Type",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "none",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d96c2228b93fbf0555d421e335c5d5af56796afc18409e1bc61a81bb58c52d8b.webp",
+              "label": "None"
+            }
+          },
+          {
+            "id": "glued-on-pubic-hair",
+            "label": "Glued-On Pubic Hair",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ceb499b230ff5c046b2ffb69810ee68116ebfe52dc0b6496b1d7ec497a3b8006.webp",
+              "label": "Glued-On Pubic Hair"
+            }
+          },
+          {
+            "id": "implanted-pubic-hair",
+            "label": "Implanted Pubic Hair",
+            "priceDelta": 39,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ceb499b230ff5c046b2ffb69810ee68116ebfe52dc0b6496b1d7ec497a3b8006.webp",
+              "label": "Implanted Pubic Hair"
+            }
+          }
+        ],
+        "description": "Leave it smooth or add glued-on or implanted pubic hair."
+      },
+      {
+        "id": "skeleton-type",
+        "label": "Skeleton Type Add-On",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "evo-free",
+            "label": "EVO / Shrug Shoulder Skeleton (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dw-option-2-3-d19445978a25.jpg?v=1780993294",
+              "label": "EVO / Shrug Shoulder Skeleton (FREE)"
+            }
+          },
+          {
+            "id": "standard",
+            "label": "Standard",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dw-option-1-3-3c0a49ace7f7.jpg?v=1780993293",
+              "label": "Standard"
+            }
+          }
+        ],
+        "description": "EVO shrug-shoulder skeleton is included and allows more natural shoulder poses."
+      },
+      {
+        "id": "standing-add-on",
+        "label": "Standing Add-On",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "standing-with-bolts-free",
+            "label": "Standing With Bolts (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4d9b4101ca5104e2b155b0f2031a24702650bdee871e8876c863bb9b8326be41.webp",
+              "label": "Standing With Bolts (FREE)"
+            }
+          },
+          {
+            "id": "standing-with-hard-feet-no-bolts",
+            "label": "Standing With Hard Feet, No Bolts",
+            "priceDelta": 39,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c34970281c6eeaab3dedb4e632977a0694c82c8a17b731677960ae6bb53c42fc.webp",
+              "label": "Standing With Hard Feet, No Bolts"
+            }
+          },
+          {
+            "id": "non-standing",
+            "label": "Non Standing",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c34970281c6eeaab3dedb4e632977a0694c82c8a17b731677960ae6bb53c42fc.webp",
+              "label": "Non Standing"
+            }
+          }
+        ],
+        "description": "Standing feet let her stand for display; bolts give the most support."
+      },
+      {
+        "id": "premium-head-body-options-multiple",
+        "label": "Head & Body Upgrades",
+        "required": false,
+        "selectionMode": "multiple",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "realistic-body-painting-free",
+            "label": "Realistic Body Painting (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+              "label": "Realistic Body Painting (FREE)"
+            }
+          },
+          {
+            "id": "implanted-eyebrows-eyelashes-free",
+            "label": "Implanted Eyebrows & Eyelashes (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/6fa64b331e1873b57bda2c031126c56e5d803809a8e7846f62e29726d60530d9.webp",
+              "label": "Implanted Eyebrows & Eyelashes (FREE)"
+            }
+          },
+          {
+            "id": "super-weight-reduction-free",
+            "label": "Super Weight Reduction (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ac10f2daf870e5930689236321c5b8d74bfa9cd3fbcd4e87c13bb03f78cc9ff0.webp",
+              "label": "Super Weight Reduction (FREE)"
+            }
+          },
+          {
+            "id": "articulated-fingers-free",
+            "label": "Articulated Fingers (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/de7dd310f21fa7d302e725a07bd5cb3ea0845cf2ec2dac08a320bc180f326c9f.webp",
+              "label": "Articulated Fingers (FREE)"
+            }
+          },
+          {
+            "id": "soft-gel-buttocks-free",
+            "label": "Soft Gel Buttocks (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3146444ba8f76688e5e4ebcefd46a3a1a9ad600d3d0532735782b27e00e222c8.webp",
+              "label": "Soft Gel Buttocks (FREE)"
+            }
+          },
+          {
+            "id": "soft-vagina-inner-parts-free",
+            "label": "Soft Vagina Inner Parts (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9c65e2bbeca54c8cbba752118ebb0d3a5b517573788c1b45e2463e45ac3ae76a.webp",
+              "label": "Soft Vagina Inner Parts (FREE)"
+            }
+          },
+          {
+            "id": "oral-heating",
+            "label": "Oral Heating",
+            "priceDelta": 49,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fcf5fb0309e54ecf611fb25b4e2ef1d852863e2c0c7523ec5cb1173b42562fc2.webp",
+              "label": "Oral Heating"
+            }
+          },
+          {
+            "id": "oral-suction",
+            "label": "Oral Suction",
+            "priceDelta": 99,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/57cf7f6518abb81829875c5cb3be69cb5f846114bfe19a7dbb5d3e7e415a87cd.webp",
+              "label": "Oral Suction"
+            }
+          },
+          {
+            "id": "auto-licking",
+            "label": "Auto Licking",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fca7d2b54494607fea6af13242d64bc55e822b03f019caa4f0efb9bd768df00b.webp",
+              "label": "Auto Licking"
+            }
+          },
+          {
+            "id": "3-in-1-licking-suction-heating",
+            "label": "3-in-1: Auto Licking, Oral Suction & Oral Heating",
+            "priceDelta": 189,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4ee1b19219341780cd6ec464e518ddb5546eda2764748e7ef59b1bb93ec48c44.webp",
+              "label": "3-in-1: Auto Licking, Oral Suction & Oral Heating"
+            }
+          },
+          {
+            "id": "ai-unit",
+            "label": "AI Conversation Unit",
+            "priceDelta": 159,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8951744f83eb8f7c57810e1ac66f14804c1a69d0a7b73bda372c372f7371157f.webp",
+              "label": "AI Conversation Unit"
+            }
+          },
+          {
+            "id": "moaning-sound",
+            "label": "Moaning Sound",
+            "priceDelta": 49,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d3fed9d41d29aec07c61f86bb566b1ea5fcd6f5e83ed5ddab6ad33fa90a0db04.webp",
+              "label": "Moaning Sound"
+            }
+          },
+          {
+            "id": "hd-hand-painted-eyes",
+            "label": "HD Hand-Painted Eyes",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8eedd8d41d1689de8a47e925c1c021fd7cdd651640d9b67ac3ee78d833d77890.webp",
+              "label": "HD Hand-Painted Eyes"
+            }
+          },
+          {
+            "id": "painted-freckles-face-body",
+            "label": "Painted Freckles (Face & Body)",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e9b9d049fa364d52a89f3e8ff1c5fddc5d6e0452c3205a3dcf60a65249052fa5.webp",
+              "label": "Painted Freckles (Face & Body)"
+            }
+          },
+          {
+            "id": "extra-soft-tummy",
+            "label": "Extra Soft Tummy",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/6b339e239e4c64cadd513a3b2e3204da8c04556d96bff1633a98962251b13203.webp",
+              "label": "Extra Soft Tummy"
+            }
+          },
+          {
+            "id": "hard-hands",
+            "label": "Hard Hands",
+            "priceDelta": 39,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a5ce723515bd1eead9cbdefeed584df5f8cc6890086f15b7c5edd4499dacc0de.webp",
+              "label": "Hard Hands"
+            }
+          },
+          {
+            "id": "articulated-toes",
+            "label": "Articulated Toes",
+            "priceDelta": 59,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bcc109f4dd37cb5694d5b1e9e73a3c0a38872ea189546f52c3f4ed6e3b07ffbb.webp",
+              "label": "Articulated Toes"
+            }
+          },
+          {
+            "id": "body-tan-line",
+            "label": "Body Tan Line",
+            "priceDelta": 49,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dw-option-Bikini-Line-935c23e4d605.png?v=1780993294",
+              "label": "Body Tan Line"
+            }
+          },
+          {
+            "id": "breathing",
+            "label": "Breathing",
+            "priceDelta": 109,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a1ec2b91d79c7fe5fb7ab6edcd60bc3770bfe3f76d7defe8ca12293f1d7560e9.webp",
+              "label": "Breathing"
+            }
+          },
+          {
+            "id": "body-heating",
+            "label": "Body Heating",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c445e29dd3edf1f6f8cfb173f8d742905ce6d95f2a0ebfa92b651ce7ec2a540b.webp",
+              "label": "Body Heating"
+            }
+          },
+          {
+            "id": "vagina-suction-contraction",
+            "label": "Vagina Suction & Contraction",
+            "priceDelta": 109,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5cfdf64d29845bc80281ab3b305adbcc4a211c3ede3f11e81b279ceee7f7b75d.webp",
+              "label": "Vagina Suction & Contraction"
+            }
+          },
+          {
+            "id": "touch-sensors",
+            "label": "Touch Sensors",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e2bc1fe1d0b5ae450a20ae8044e608b5b4b5ee36cc14647229e8b84f3bc2b68c.webp",
+              "label": "Touch Sensors"
+            }
+          }
+        ],
+        "description": "The (FREE) items come standard with every Top Fire doll. Tick any paid upgrades you want."
+      },
+      {
+        "id": "robotic-functions",
+        "label": "Robot Options",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "none",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true
+          },
+          {
+            "id": "hip-swing-rotation-plug-in",
+            "label": "Hip Swing & Rotation (Plug-In)",
+            "priceDelta": 309,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cc4d616c4c526853c380b925d32bd0c5c1658ed1b6eab1787dbfbea94b423c0c.webp",
+              "label": "Hip Swing & Rotation (Plug-In)"
+            }
+          },
+          {
+            "id": "hip-swing-rotation-rechargeable",
+            "label": "Hip Swing & Rotation (Rechargeable)",
+            "priceDelta": 389,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cc4d616c4c526853c380b925d32bd0c5c1658ed1b6eab1787dbfbea94b423c0c.webp",
+              "label": "Hip Swing & Rotation (Rechargeable)"
+            }
+          },
+          {
+            "id": "auto-blowjob-plug-in",
+            "label": "Auto Blowjob (Plug-In)",
+            "priceDelta": 309,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/aa504436601d97b2aa4dac9b9e1f9b501f3e8807a0c5382a91d4b496e0a9f854.webp",
+              "label": "Auto Blowjob (Plug-In)"
+            }
+          },
+          {
+            "id": "auto-blowjob-rechargeable",
+            "label": "Auto Blowjob (Rechargeable)",
+            "priceDelta": 389,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/aa504436601d97b2aa4dac9b9e1f9b501f3e8807a0c5382a91d4b496e0a9f854.webp",
+              "label": "Auto Blowjob (Rechargeable)"
+            }
+          },
+          {
+            "id": "auto-blowjob-hip-swing-rotation-plug-in",
+            "label": "Auto Blowjob + Hip Swing & Rotation (Plug-In)",
+            "priceDelta": 589,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fa044b3a156cfebde00f7c82ec7afa3a5918be38937baf06dacafac508638e74.webp",
+              "label": "Auto Blowjob + Hip Swing & Rotation (Plug-In)"
+            }
+          },
+          {
+            "id": "auto-blowjob-hip-swing-rotation-rechargeable",
+            "label": "Auto Blowjob + Hip Swing & Rotation (Rechargeable)",
+            "priceDelta": 669,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fa044b3a156cfebde00f7c82ec7afa3a5918be38937baf06dacafac508638e74.webp",
+              "label": "Auto Blowjob + Hip Swing & Rotation (Rechargeable)"
+            }
+          }
+        ],
+        "description": "Optional motorised functions, built in at the factory."
+      },
+      {
+        "id": "accessories",
+        "label": "Accessories",
+        "required": false,
+        "selectionMode": "multiple",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "cleaning-set-drying-heating-rod-free",
+            "label": "Cleaning Set: Drying Rod & Heating Rod (FREE)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+              "label": "Cleaning Set: Drying Rod & Heating Rod (FREE)"
+            }
+          },
+          {
+            "id": "basic-head-stand",
+            "label": "Basic Head Stand",
+            "priceDelta": 39,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+              "label": "Basic Head Stand"
+            }
+          },
+          {
+            "id": "plastic-doll-stand",
+            "label": "Plastic Doll Stand",
+            "priceDelta": 79,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8d0b0ef0f8ea6e676ab9bc68d39749c102240ba4327205f4b52f07f9a1b45033.webp",
+              "label": "Plastic Doll Stand"
+            }
+          },
+          {
+            "id": "silicone-doll-stand-matching-color",
+            "label": "Silicone Doll Stand (Matching Color)",
+            "priceDelta": 159,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/81bd9b3320c65460db9c165359e4a0e09ce3caee7b30aed7bea6198551e9ce7a.webp",
+              "label": "Silicone Doll Stand (Matching Color)"
+            }
+          },
+          {
+            "id": "body-hanging-hook",
+            "label": "Body Hanging Hook",
+            "priceDelta": 9,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+              "label": "Body Hanging Hook"
+            }
+          },
+          {
+            "id": "extra-vagina-insert",
+            "label": "Extra Vagina Insert",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+              "label": "Extra Vagina Insert"
+            }
+          },
+          {
+            "id": "extra-vagina-insert-patterned",
+            "label": "Extra Vagina Insert, Patterned",
+            "priceDelta": 39,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b5f666d57e97beb80fdfd9957699955e07b160be812f0c15c4b2c85e7dbeee8f.webp",
+              "label": "Extra Vagina Insert, Patterned"
+            }
+          },
+          {
+            "id": "extra-wig",
+            "label": "Extra Wig",
+            "priceDelta": 29,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/169680b536d0560a7b435172f1f7a7776da46dba20dade1be316778a9b761cb0.webp",
+              "label": "Extra Wig"
+            }
+          },
+          {
+            "id": "skin-color-sample-blocks-4",
+            "label": "Skin Color Sample Blocks (4)",
+            "priceDelta": 19,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/725127a2399611742db8d3a6eeb95554205740555fe68e33fa17f953565f980b.webp",
+              "label": "Skin Color Sample Blocks (4)"
+            }
+          }
+        ],
+        "description": "Extras packed in the same box. The cleaning set is included."
+      },
+      {
+        "id": "upgraded-flight-case-add-on",
+        "label": "Upgraded Flight Case Add On",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-thanks",
+            "label": "No Thanks",
+            "priceDelta": 0,
+            "priceVerified": true
+          },
+          {
+            "id": "flight-case",
+            "label": "Sofa Case or Flight Case",
+            "priceDelta": 239,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+              "label": "Sofa Case or Flight Case"
+            }
+          }
+        ],
+        "description": "A hard case for storage and travel."
+      },
+      {
+        "id": "an-extra-head",
+        "label": "An Extra Head",
+        "required": false,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-extra-head",
+            "label": "No extra head",
+            "priceDelta": 0,
+            "priceVerified": true
+          },
+          {
+            "id": "t01",
+            "label": "T01 Darcy",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T01 Darcy silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8b6c80f81f2889638e20d00e1677e1743efe5922b59b11b6aff6d1e50e90b5d6.webp",
+              "label": "T01 Darcy"
+            }
+          },
+          {
+            "id": "t02",
+            "label": "T02 Flora",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T02 Flora silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2117d32be3a24431b988d5293b796f01c1e8b439b6e3c22f42a9d7c28aec576a.webp",
+              "label": "T02 Flora"
+            }
+          },
+          {
+            "id": "t03",
+            "label": "T03 Finn",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T03 Finn silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/49d0ef5de2c49f058667332e75fb249f940ec2882f743cb0d9bc9ac8ea8ed8ff.webp",
+              "label": "T03 Finn"
+            }
+          },
+          {
+            "id": "t04",
+            "label": "T04 Hedy",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T04 Hedy silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0c0eb6853c1897ffc3b68510e0a542c47bc275b90b63a731547a7fb5352cf9ba.webp",
+              "label": "T04 Hedy"
+            }
+          },
+          {
+            "id": "t05",
+            "label": "T05 Ada",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T05 Ada silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b5382680d24194d79de2c9d20264309b3b71f8c76b9ffc7f5a5fc9e0a2b8a61.webp",
+              "label": "T05 Ada"
+            }
+          },
+          {
+            "id": "t06",
+            "label": "T06 Bid",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T06 Bid silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f2fdccfeea96973f311976641e1f79accc8a3f7c6ff49099a53f93f7ed43f733.webp",
+              "label": "T06 Bid"
+            }
+          },
+          {
+            "id": "t07",
+            "label": "T07 Lorna",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T07 Lorna silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5d6fe44bafd21b5062a082e4fdfc6003e7a27aedad689180a4b532e5e2ab9d25.webp",
+              "label": "T07 Lorna"
+            }
+          },
+          {
+            "id": "t08",
+            "label": "T08 Doris",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T08 Doris silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d9c43b0d983b813dd927e7e669250ba924e09324944c02459883ca6bcd04f289.webp",
+              "label": "T08 Doris"
+            }
+          },
+          {
+            "id": "t09",
+            "label": "T09 Mollie",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T09 Mollie silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/37cd852d5a078e343609c5c6ae6b03328e19d878539afd7571588fba3fc395ee.webp",
+              "label": "T09 Mollie"
+            }
+          },
+          {
+            "id": "t10",
+            "label": "T10 Ann",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T10 Ann silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bc766b343b7af23a70590e22c9d1b07b168e8ee43702fcb6313d73468ea569e4.webp",
+              "label": "T10 Ann"
+            }
+          },
+          {
+            "id": "t11",
+            "label": "T11 Hailey",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T11 Hailey silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/05d1d46c58f37101567a9e9e22396ac34d14019ef39f6b5630f0229476c68154.webp",
+              "label": "T11 Hailey"
+            }
+          },
+          {
+            "id": "t12",
+            "label": "T12 Bess",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T12 Bess silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a4be2135c64240ea5cb2eabaea1aaa4d05272aa99ea38fc1071eb143758fb327.webp",
+              "label": "T12 Bess"
+            }
+          },
+          {
+            "id": "t13",
+            "label": "T13 Edma",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T13 Edma silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a8e0db49c01a69f2cbe63a3a00a805d6dceebd02fefd34ce288fbc0924c4b92e.webp",
+              "label": "T13 Edma"
+            }
+          },
+          {
+            "id": "t14",
+            "label": "T14 Echo",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T14 Echo silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4acd814a829c1d0f40842a4ca99b152808938d1284a8a4ec7e5d66dd5b23d5ae.webp",
+              "label": "T14 Echo"
+            }
+          },
+          {
+            "id": "t15",
+            "label": "T15 Venus",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T15 Venus silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/fbb4fd197be258e66c6d0c3d0b5b7f08934cff789e953e9a4dce060ae117edf5.webp",
+              "label": "T15 Venus"
+            }
+          },
+          {
+            "id": "t16",
+            "label": "T16 Isis",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T16 Isis silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ac87152124d53b57edea7af072d29c6e860d44db9054151c83d7a49d9f69d234.webp",
+              "label": "T16 Isis"
+            }
+          },
+          {
+            "id": "t17",
+            "label": "T17 Susan",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T17 Susan silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0ac50299f9ffab5b623f5532b9dd5c38a729063223e1f097f6bf6c29ea55958e.webp",
+              "label": "T17 Susan"
+            }
+          },
+          {
+            "id": "t18",
+            "label": "T18 Fay",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T18 Fay silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4d99c9c6908db6cfef8b31a2048922c1670749bb9c7a7a4165a63723144689f2.webp",
+              "label": "T18 Fay"
+            }
+          },
+          {
+            "id": "t19",
+            "label": "T19 Kaia",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T19 Kaia silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b576839889e4f733277d3b8e498950be0c0512ad214309a435a10b0336d8845.webp",
+              "label": "T19 Kaia"
+            }
+          },
+          {
+            "id": "t20",
+            "label": "T20 Kama",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T20 Kama silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2f052ba8253d21879c12ddb68e9a564b5319a12a994d8817a52a3e8445df8aa6.webp",
+              "label": "T20 Kama"
+            }
+          },
+          {
+            "id": "t21",
+            "label": "T21 Felix",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T21 Felix silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1b87bc8d055f6c4352f70120b0156ddd71ca91f42c4ee95a09a032aff8834335.webp",
+              "label": "T21 Felix"
+            }
+          },
+          {
+            "id": "t22",
+            "label": "T22 Camille",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T22 Camille silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f718aee3322fb934a8d9cdb26a7fbdd2a0fa266ae0af116d3cfa7b3986095ff6.webp",
+              "label": "T22 Camille"
+            }
+          },
+          {
+            "id": "t23",
+            "label": "T23 Mae",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T23 Mae silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cf9f4b0d91b34c6dc4981b3b6cabaa88f2eca4da146f233c65c6902cd732a7d9.webp",
+              "label": "T23 Mae"
+            }
+          },
+          {
+            "id": "t24",
+            "label": "T24 Chloe",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T24 Chloe silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/dc284f35e2ec02162ae38d6580e842ee5b1f4a72bd9a699d9b0ad4f550f80b75.webp",
+              "label": "T24 Chloe"
+            }
+          },
+          {
+            "id": "t25",
+            "label": "T25 Lydia",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T25 Lydia silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bbca1a4fc6bddce2e2fc3a3602458fced7c4a17e1679960f79cd576bb54f07b7.webp",
+              "label": "T25 Lydia"
+            }
+          },
+          {
+            "id": "t26",
+            "label": "T26 Hannah",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T26 Hannah silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/044ea30bccc66cac12f53b093db089779dd184cdae3af83dd5a99309c69b0807.webp",
+              "label": "T26 Hannah"
+            }
+          },
+          {
+            "id": "t27",
+            "label": "T27 Nina",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T27 Nina silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/38f2e44908aa2c6559b5cf15745458a2703f4a1006d7dfdfeb270c5843855306.webp",
+              "label": "T27 Nina"
+            }
+          },
+          {
+            "id": "t28",
+            "label": "T28 Sharon",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T28 Sharon silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9fae139fef281ea5be0161148c4a4e3923ef97f52169259d77198fbdae21d780.webp",
+              "label": "T28 Sharon"
+            }
+          },
+          {
+            "id": "t29",
+            "label": "T29 Esther",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T29 Esther silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/73ba42be3ca4446a3b2dac67bf4ff6ebce6c747e811cf8771ff70f0cb76ec02d.webp",
+              "label": "T29 Esther"
+            }
+          },
+          {
+            "id": "t30",
+            "label": "T30 Rose",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T30 Rose silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/35753ab4648504c5a3532ba015b41a16d74d731bc7ced2cda85ce2fc29760970.webp",
+              "label": "T30 Rose"
+            }
+          },
+          {
+            "id": "t31",
+            "label": "T31 Marjorie",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T31 Marjorie silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0f27567761b230ac514d395e20d606ef9af306058a052aec460db69a7f2267cd.webp",
+              "label": "T31 Marjorie"
+            }
+          },
+          {
+            "id": "t32",
+            "label": "T32 Jill",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T32 Jill silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/db3bd6dcc14b3a1ef2c7d39810b09b6ed83ed4303b347b8c20db76d6fa7f341a.webp",
+              "label": "T32 Jill"
+            }
+          },
+          {
+            "id": "t33",
+            "label": "T33 Yilia",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T33 Yilia silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5317b4b1ba22a3110711e97c9d76d58d9c5b02b70de9c0a51e61fb9814b01ade.webp",
+              "label": "T33 Yilia"
+            }
+          },
+          {
+            "id": "t34",
+            "label": "T34 Nicole",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T34 Nicole silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/88c120f4fc291ce0a2fb2262c4e83b815ef1690265d7584d6f73c5f172195d71.webp",
+              "label": "T34 Nicole"
+            }
+          },
+          {
+            "id": "t35",
+            "label": "T35 Kali",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T35 Kali silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/794a99ed683a66108d9911b010c9fea477c990248cf3ee89252912b5846efb51.webp",
+              "label": "T35 Kali"
+            }
+          },
+          {
+            "id": "t36",
+            "label": "T36 Laionni",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T36 Laionni silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2b8513f68c188074c5d49a9cc75f416ddf3b04f2a12d5077a8331e975e68504a.webp",
+              "label": "T36 Laionni"
+            }
+          },
+          {
+            "id": "t37",
+            "label": "T37 Geles",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T37 Geles silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8e50ed106a3a679a38bf03ae40f013bdc127d955904522845a00dece9e5d4a55.webp",
+              "label": "T37 Geles"
+            }
+          },
+          {
+            "id": "t38",
+            "label": "T38 Lin",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T38 Lin silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0599ca283aec03e7b0dc5afade9ff35e1bd27c7bd3a6d4934e195aa05fab20a8.webp",
+              "label": "T38 Lin"
+            }
+          },
+          {
+            "id": "t39",
+            "label": "T39 Wendy",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T39 Wendy silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/929cca47ac79a3335043de7aea1c9c82505691f272d45d2798b31fbdd60d7532.webp",
+              "label": "T39 Wendy"
+            }
+          },
+          {
+            "id": "t40",
+            "label": "T40 Caroline",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T40 Caroline silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0b19ce83106da90ecf6ece807ce6dde590be730a1644e65bdde0bb970d4c05f9.webp",
+              "label": "T40 Caroline"
+            }
+          },
+          {
+            "id": "t41",
+            "label": "T41 Casey",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T41 Casey silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/87cfeac43b7d838e2e0460cd19cca49d1c58d763eaf60b99ac76f574b5bf7b60.webp",
+              "label": "T41 Casey"
+            }
+          },
+          {
+            "id": "t42",
+            "label": "T42 Willa",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T42 Willa silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ddb31527c99bba2ca780f81d5f1852b6409349a3a78a7caf91ad2d64559eb577.webp",
+              "label": "T42 Willa"
+            }
+          },
+          {
+            "id": "t43",
+            "label": "T43 Phoenix",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T43 Phoenix silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f7729f8386022f1f15ea14e71b8a744e061e167a27c6c1bcb342e99985130e8f.webp",
+              "label": "T43 Phoenix"
+            }
+          },
+          {
+            "id": "t44",
+            "label": "T44 Eva",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T44 Eva silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ebf7f8b3a0d3efd80e05750559ebb857c1aa267ad4f353b1b5f3cc122085c647.webp",
+              "label": "T44 Eva"
+            }
+          },
+          {
+            "id": "t45",
+            "label": "T45 Isabella",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T45 Isabella silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bf6e44e2bb9d927c4e40a6ddfca131e75154186509035887404674659f255104.webp",
+              "label": "T45 Isabella"
+            }
+          },
+          {
+            "id": "t46",
+            "label": "T46 Ivy",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T46 Ivy silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/eebc202d1c1d386e00d4995fc7e1166ba4f6a89e081262ee424d03af96730732.webp",
+              "label": "T46 Ivy"
+            }
+          },
+          {
+            "id": "t47",
+            "label": "T47 Jasmine",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T47 Jasmine silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4c6d8db1fbda137b6a6240ce44615dfc96e44f5d26a5fbb51daefbdf738b7e31.webp",
+              "label": "T47 Jasmine"
+            }
+          },
+          {
+            "id": "t48",
+            "label": "T48 Jade",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T48 Jade silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/668ce3da5572e88c38ed54ad071b633366dffe10632fb976ee219cf47c99db66.webp",
+              "label": "T48 Jade"
+            }
+          },
+          {
+            "id": "t49",
+            "label": "T49 Amber",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T49 Amber silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/47f4ed3bb767f7e1cf46fe198172a43abf864fb53f133bbb7b5a15c8dc6b66cc.webp",
+              "label": "T49 Amber"
+            }
+          },
+          {
+            "id": "t50",
+            "label": "T50 Crystal",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T50 Crystal silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1e8d33045ed80fd2e3d93c05907e5e9d0a00a5125a3e7d78b37a31f4dbee5924.webp",
+              "label": "T50 Crystal"
+            }
+          },
+          {
+            "id": "t51",
+            "label": "T51 Megan",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T51 Megan silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2ae745006cd40c0d0bc7b1cf9b6b4787f60cd07737bb5616141c19642f535b5d.webp",
+              "label": "T51 Megan"
+            }
+          },
+          {
+            "id": "t52",
+            "label": "T52 Selena",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T52 Selena silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/41ea82e0e308f7f1a4382d43fbd5ef648f1a5f9bcd0e9f7a92351c46f794cac6.webp",
+              "label": "T52 Selena"
+            }
+          },
+          {
+            "id": "t53",
+            "label": "T53 Lucy",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T53 Lucy silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/689dd5b2fd310cc0979acf3d3a34630ff91b4dbd850eaae1a13152a9d771f4aa.webp",
+              "label": "T53 Lucy"
+            }
+          },
+          {
+            "id": "t54",
+            "label": "T54 Margaret",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T54 Margaret silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b1ff75787d0165f16c8c216209aa3b4cdbf09a9edd374d80f10224e86f08d98e.webp",
+              "label": "T54 Margaret"
+            }
+          },
+          {
+            "id": "t55",
+            "label": "T55 Ivory",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T55 Ivory silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4d7111d39378d679babc222947b73cad094e053dc147e77cba0c0ec9b3a031c6.webp",
+              "label": "T55 Ivory"
+            }
+          },
+          {
+            "id": "t56",
+            "label": "T56 Nova",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T56 Nova silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8dba2095c6ae15f8efb4d519f4727389341cb7d7a154f4e9d1708985b18286af.webp",
+              "label": "T56 Nova"
+            }
+          },
+          {
+            "id": "t57",
+            "label": "T57 Victoria",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T57 Victoria silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/726628d537366a4e7362ee0ce1fa7b55fe051532624a1712ff10ba0f17a16128.webp",
+              "label": "T57 Victoria"
+            }
+          },
+          {
+            "id": "t58",
+            "label": "T58 Mika",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T58 Mika silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/875265ba5367e1ce4d406931ce60e64218c4bb9b3886adb60ea215b70d515f3b.webp",
+              "label": "T58 Mika"
+            }
+          },
+          {
+            "id": "t59",
+            "label": "T59 Selina",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T59 Selina silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/000bc40abcfe3c409d17a895260f1533147073d2513e7100074f65f2f9df615d.webp",
+              "label": "T59 Selina"
+            }
+          },
+          {
+            "id": "t60",
+            "label": "T60 Ingrid",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T60 Ingrid silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c33b923a905afcf9757abd97cffaf1347108a429bce16625937a72e7f7a85679.webp",
+              "label": "T60 Ingrid"
+            }
+          },
+          {
+            "id": "t61",
+            "label": "T61 Bella",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T61 Bella silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a61d37a7bd3d79a01cbc5872879da6d0ace63fbf4243568b9db1c284ce82d915.webp",
+              "label": "T61 Bella"
+            }
+          },
+          {
+            "id": "t62",
+            "label": "T62 Hazel",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T62 Hazel silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2e5315d7dfdacdce8abd4bf0f355fa0900a3f215e9bdf96317f6a1d2719e47f2.webp",
+              "label": "T62 Hazel"
+            }
+          },
+          {
+            "id": "t63",
+            "label": "T63 Violet",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T63 Violet silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/00aacdbb2dc3e16b4a61143b069d8e0bdbb4b6ae2c5543f60ec25181892b232c.webp",
+              "label": "T63 Violet"
+            }
+          },
+          {
+            "id": "t64",
+            "label": "T64 Grace",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T64 Grace silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0a216ea17cad7cc92c55d7c1a31bac7176e1bd5446a6b4f283297f532a6f659e.webp",
+              "label": "T64 Grace"
+            }
+          },
+          {
+            "id": "t65",
+            "label": "T65 Jing",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T65 Jing silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0259dc55d8cc0fcf017a2761b1a2fdd38641253b2c8f3de50445d0f052e64c5c.webp",
+              "label": "T65 Jing"
+            }
+          },
+          {
+            "id": "t66",
+            "label": "T66 Nata",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T66 Nata silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f0c2c6d4f22d588b88c69f2f7b9752c421678f7358ae96a06554533b1d9283ab.webp",
+              "label": "T66 Nata"
+            }
+          },
+          {
+            "id": "t67",
+            "label": "T67 Aria",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T67 Aria silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bee46cda33b829da72b2d13f8a7ce469a4087bbc10e3e2e99d89f80df43ba713.webp",
+              "label": "T67 Aria"
+            }
+          },
+          {
+            "id": "t68",
+            "label": "T68 Amelia",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T68 Amelia silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bd54c55a653b680b9392192ffc60489831658fbad9c162ca68266ce9401ff9f3.webp",
+              "label": "T68 Amelia"
+            }
+          },
+          {
+            "id": "t71",
+            "label": "T71 Yuki",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T71 Yuki silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bfc1df408a6e67701c39ecc522c7a176b8e7859902d56992058c8c820055995c.webp",
+              "label": "T71 Yuki"
+            }
+          },
+          {
+            "id": "t72",
+            "label": "T72 Storm",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T72 Storm silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e72adae9b6741e7224edce9fcc0441fa127d4aea64d156279a3b78752462d260.webp",
+              "label": "T72 Storm"
+            }
+          },
+          {
+            "id": "t73",
+            "label": "T73 Eleanor",
+            "priceDelta": 459,
+            "priceVerified": true,
+            "description": "Top Fire T73 Eleanor silicone head as an extra head. Matched to your chosen skin tone; comes with a wig and eyes.",
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0ed04a826acf5022356cfaa2c96ab86852598e7965d1175bdbe9a5af3676748c.webp",
+              "label": "T73 Eleanor"
+            }
+          }
+        ],
+        "description": "Add a second Top Fire head. It is matched to your chosen skin tone."
+      }
+    ],
+    "qcNote": "Factory order from China. The base price includes one head. Motorised functions are optional; final configuration and timing are confirmed before production.",
+    "editorialIntro": {
+      "eyebrow": "A Sacred Celebration",
+      "heading": "The Solemnity of Grace",
+      "paragraph": "The ceremony has ended and the guests have departed, leaving Grace alone in the pale glow of the afternoon sun. She sits in a pool of diffused light, her fingers grazing her lips as she contemplates the weight of the cream lace draping her shoulders. The sheer veil obscures her dark eyes, adding a layer of mystery to her quiet, expectant expression. With a slow, deliberate motion, she reaches up to draw the fabric back, inviting you to witness her in this stolen moment of stillness. As the pearls at her neck catch the light, Grace turns her gaze toward you, ready to transform this formal devotion into a deeper, more intimate revelation.",
+      "promptVersion": "pdp-editorial-fantasy-v5 (Venice, lead-photo, no-tech-terms)",
+      "generatedAt": "2026-10-16T10:46:33.554Z"
+    }
+  }
+}

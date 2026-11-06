@@ -1,0 +1,59 @@
+{
+  "tag": "options:top-fire-silicone-manual-v1",
+  "signature": "sha256:e17ed253b743c5591667cc33954c8124b55ebc71695bdf4f8be6ad7be40d38d9",
+  "tiers": [
+    {
+      "id": "starter",
+      "description": "Care set: basic head stand, body hanging hook and a spare vagina insert.",
+      "add": [
+        {
+          "groupId": "accessories",
+          "optionId": "basic-head-stand"
+        },
+        {
+          "groupId": "accessories",
+          "optionId": "body-hanging-hook"
+        },
+        {
+          "groupId": "accessories",
+          "optionId": "extra-vagina-insert"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "enthusiast",
+      "description": "Adds 3-in-1 oral functions (auto licking, suction, heating) and body heating.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "3-in-1-licking-suction-heating"
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "body-heating"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "collector",
+      "description": "Adds the AI conversation unit, breathing and vagina suction & contraction.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "ai-unit"
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "breathing"
+        },
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "vagina-suction-contraction"
+        }
+      ],
+      "remove": []
+    }
+  ]
+}

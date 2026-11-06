@@ -1,3 +1,5 @@
+import { grace160PreviewProduct, isGrace160PreviewProduct } from './grace160Preview';
+import { grace160TemplateRecipe } from '@/lib/customization/grace160-template';
 import 'server-only';
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
@@ -10,6 +12,8 @@ import { prepareGynoidTemplateCandidate, reviewedGynoidIdentity } from '@/lib/cu
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
+  const grace = grace160PreviewProduct(handle);
+  if (grace) return grace;
   const gynoid = gynoidReleasePreviewProducts().find(product => product.handle === handle);
   if (gynoid) return gynoid;
   const elf = seElfPreviewProduct(handle);
@@ -22,6 +26,7 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
+  if (isGrace160PreviewProduct(snapshot)) return grace160TemplateRecipe(product, config, true);
   if (reviewedGynoidIdentity(snapshot)) return prepareGynoidTemplateCandidate(product, config);
   if (isSeElfPreviewProduct(snapshot)) {
     const recipe = elfRecipes.find(entry => entry.handle === product.handle);
