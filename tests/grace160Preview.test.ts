@@ -82,3 +82,22 @@ it('reprices all three preset selections through the cart validator and covers t
   fetchProducts.mockResolvedValue(new Map());
   await expect(serverValidateAndRepriceLine({ merchandiseId: variantId, quantity: 1 })).rejects.toThrow('not available for checkout');
 });
+
+it('maps every purchasable paid Grace choice to exactly one named charge at its menu price', async () => {
+  const { loadReleasedNamedUpgradeBindings } = await import('@/lib/cart/named-upgrade-release');
+  const { upgradeBindingAcceptsChoice } = await import('@/lib/cart/exact-upgrade-lines');
+  const { isOptionAvailableForCheckout } = await import('@/lib/customization/resolve');
+  const live = releasedProduct();
+  const config = getCustomizationConfig(live);
+  const bindings = loadReleasedNamedUpgradeBindings([live.variants[0].id]);
+  const choices = config.groups.flatMap(group => group.options.flatMap(option =>
+    (option.priceDelta ?? 0) > 0 && isOptionAvailableForCheckout(config, group.id, option.id) ? [{ group, option }] : []));
+  expect(choices).toHaveLength(116);
+  expect(bindings).toHaveLength(38);
+  for (const { group, option } of choices) {
+    const matches = bindings.filter(binding => binding.group === group.label && upgradeBindingAcceptsChoice(binding, option.label));
+    expect(matches, `${group.label}: ${option.label}`).toHaveLength(1);
+    expect(matches[0].unitAmount).toBe(option.priceDelta);
+    expect(matches[0].currencyCode).toBe('USD');
+  }
+});
