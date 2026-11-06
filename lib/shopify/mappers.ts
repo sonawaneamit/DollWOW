@@ -132,7 +132,7 @@ function normalizeImportedAssetUrl(value: string) {
   }
 }
 
-function normalizeCustomizationGroups(groups: Product["extended"]["customizationGroups"] | undefined): CustomizationGroup[] | undefined {
+export function normalizeCustomizationGroups(groups: Product["extended"]["customizationGroups"] | undefined): CustomizationGroup[] | undefined {
   if (!groups?.length) return groups;
 
   return groups.map((group) => ({
