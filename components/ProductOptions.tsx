@@ -14,7 +14,7 @@ function stripFreeLabel(label: string, brand?: string): string {
   return label;
 }
 
-import { keepsWizardOpen, presetSelectLayout } from "@/lib/customization/dealerPreviewBuilder";
+import { keepsWizardOpen } from "@/lib/customization/dealerPreviewBuilder";
 import {
   AlertTriangle,
   Check,
@@ -81,7 +81,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
   const VariantContainer = gynoidBodyVersionMapping(product) ? 'div' : 'label';
   const router = useRouter();
   const didMountRef = useRef(false);
-  const purchaseRef = useRef<HTMLDivElement>(null);
+  const purchaseButtonRef = useRef<HTMLButtonElement>(null);
   const scrollToPurchaseRef = useRef(false);
   const firstAvailable = product.variants.find((variant) => variant.availableForSale) ?? product.variants[0];
   const promotionNow = usePromotionClock(promoClock);
@@ -168,7 +168,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
     const frame = window.requestAnimationFrame(() => {
       // Let the preset radio's focus scroll and collapsed layout settle first.
       settledFrame = window.requestAnimationFrame(() => {
-        const target = purchaseRef.current;
+        const target = purchaseButtonRef.current;
         if (!target) return;
         scrollToPurchaseRef.current = false;
         target.scrollIntoView({
@@ -373,9 +373,8 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
       {presets.length === 3 && (
         <ConfigurationPresets presets={presets} activeId={activePreset?.id} handle={product.handle} currencyCode={currencyCode} onSelect={preset => {
-                    const layout = presetSelectLayout(product.handle, preset.pendingChoices.length);
-                    scrollToPurchaseRef.current = layout.scrollToPurchase;
-                    if (layout.collapseWizard) setManualExpanded(false);
+                    scrollToPurchaseRef.current = preset.pendingChoices.length === 0;
+                    setManualExpanded(false);
                     setReviewing(false);
                     setSelected(preset.selections);
                     setChosenPreset(preset.id);
@@ -436,7 +435,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
 
         <div className={clsx("product-builder-groups", manualVisible && "lg:col-span-7")}>
           <div id={`manual-options-${product.handle}`} hidden={!manualVisible} data-manual-options>
-          {presets.length === 3 && !keepsWizardOpen(product.handle) && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
+          {presets.length === 3 && <button type="button" onClick={() => setManualExpanded(false)} className="mb-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Hide step-by-step options</button>}
           {product.variants.length > 1 ? (
             <VariantContainer className="product-builder-variant block rounded-md bg-surface-tint p-4">
               <span className="mb-2 block text-[15px] font-semibold text-text-dim">Choose a build</span>
@@ -532,7 +531,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
             )}
           </section>
 
-          <div ref={purchaseRef} data-configuration-purchase className="mt-5 scroll-mt-28 border-t border-border pt-5">
+          <div data-configuration-purchase className="mt-5 scroll-mt-28 border-t border-border pt-5">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                   <p role="status" aria-live="polite" aria-atomic="true" className="flex items-center gap-2 text-base font-semibold text-text">
                     <Check className="h-5 w-5 text-accent" aria-hidden="true" />
@@ -565,7 +564,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                 {error ? <p role="alert" className="mt-4 text-[15px] text-danger">{error}</p> : null}
 
                 <div className="mt-6 grid gap-3">
-                  <button type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
+                  <button ref={purchaseButtonRef} type="button" disabled={!canCheckout || loading} onClick={addToCart} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-button bg-accent px-5 text-[17px] font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-45">
                     {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShoppingBag className="h-5 w-5" />}
                     {loading ? "Adding to Cart…" : "Add to Cart"}
                   </button>

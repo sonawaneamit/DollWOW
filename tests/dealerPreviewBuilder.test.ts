@@ -1,30 +1,27 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
-import { keepsWizardOpen, presetSelectLayout, dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
+import { keepsWizardOpen, dealerPreviewProductFetch, dealerPublicTags } from "@/lib/customization/dealerPreviewBuilder";
 import { SE_ELF_FACTS } from '@/lib/customization/se-oct27-preview';
 import gynoidApproved from '@/data/catalog/gynoid-approved-configurations.json';
 
 const lily = "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd052";
 const grace = "top-fire-doll-grace-162cm-i-cup-silicone-companion-doll";
 
-describe("FunWest/Top Fire preset clicks keep the wizard open", () => {
-  it("never collapses or auto-scrolls on dealer previews", () => {
-    for (const handle of [lily, grace]) {
-      expect(keepsWizardOpen(handle)).toBe(true);
-      expect(presetSelectLayout(handle, 0)).toEqual({ collapseWizard: false, scrollToPurchase: false });
-    }
-  });
-  it("leaves other brands unchanged", () => {
+describe("preset purchase flow", () => {
+  it("starts with the wizard expanded on FunWest and Top Fire listings", () => {
+    expect(keepsWizardOpen(lily)).toBe(true);
+    expect(keepsWizardOpen(grace)).toBe(true);
     expect(keepsWizardOpen("irontech-celine-164cm-d-cup-silicone-head-companion-doll-s38se")).toBe(false);
-    expect(presetSelectLayout("md-doll-x", 0)).toEqual({ collapseWizard: true, scrollToPurchase: true });
-    expect(presetSelectLayout("md-doll-x", 1)).toEqual({ collapseWizard: true, scrollToPurchase: false });
   });
-  it("ProductOptions routes the preset click through presetSelectLayout", () => {
+
+  it("collapses manual options on preset selection and waits for required choices before scrolling", () => {
     const src = fs.readFileSync("components/ProductOptions.tsx", "utf8");
-    const onSelect = src.slice(src.indexOf("<ConfigurationPresets"), src.indexOf("trackEvent(\"configuration_preset_selected\""));
-    expect(onSelect).toContain("presetSelectLayout(product.handle");
-    expect(onSelect).not.toMatch(/^\s*setManualExpanded\(false\);/m);
-    expect(onSelect).not.toMatch(/router\.|location|href/);
+    const onSelect = src.slice(src.indexOf("<ConfigurationPresets"), src.indexOf('trackEvent("configuration_preset_selected"'));
+    expect(onSelect).toContain("scrollToPurchaseRef.current = preset.pendingChoices.length === 0");
+    expect(onSelect).toContain("setManualExpanded(false)");
+    expect(onSelect).not.toMatch(/addToCart|router\.|location|href/);
+    expect(src).toContain("scrollToPurchaseRef.current = !nextSlot");
+    expect(src).toContain("const target = purchaseButtonRef.current");
   });
 });
 
@@ -42,7 +39,6 @@ describe("dealer preview PDP data", () => {
     for (const handle of Object.keys(SE_ELF_FACTS)) {
       expect(dealerPreviewProductFetch(handle)).toEqual({cache: 'no-store'});
       expect(keepsWizardOpen(handle)).toBe(false);
-      expect(presetSelectLayout(handle, 0)).toEqual({collapseWizard: true, scrollToPurchase: true});
     }
     expect(dealerPreviewProductFetch('sedoll-akina-157cm-h-cup-tpe-companion-doll-z7mv2'))
       .toEqual({cache: 'reload', revalidate: 0});
