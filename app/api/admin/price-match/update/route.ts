@@ -22,6 +22,13 @@ export async function POST(request: Request) {
   const denied = adminBasicAuthFailure(request);
   if (denied) return denied;
 
+  // Basic Auth can be cached by the browser. A form must not be able to
+  // submit a write with those credentials using a CORS-safelisted media type.
+  const contentType = request.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase();
+  if (contentType !== "application/json") {
+    return NextResponse.json({ error: "Expected an application/json request." }, { status: 415 });
+  }
+
   try {
     const input = schema.parse(await request.json());
     const current = await getComparisonRequest(input.id);

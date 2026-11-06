@@ -71,6 +71,13 @@ describe("price-match operator writes", () => {
     expect(mocks.getComparisonRequest).not.toHaveBeenCalled();
   });
 
+  it("rejects form-compatible payloads even with cached operator credentials", async () => {
+    const req = request("/ops/price-match/update", basic("operator:dummy:password"));
+    req.headers.set("content-type", "text/plain");
+    expect((await opsPost(req)).status).toBe(415);
+    expect(mocks.getComparisonRequest).not.toHaveBeenCalled();
+  });
+
   it("allows the signed-in operator to save through the ops path", async () => {
     const auth = basic("operator:dummy:password");
     mocks.getComparisonRequest.mockResolvedValue({ id });
