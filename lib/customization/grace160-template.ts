@@ -3,6 +3,7 @@ import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
 import snapshot from '@/data/draft-previews/grace160-nov5.json';
 import recipe from '@/data/draft-previews/grace160-recipe-nov5.json';
+import { normalizeCustomizationGroups } from '@/lib/shopify/mappers';
 import { isGrace160PreviewProduct } from '@/lib/catalog/grace160Preview';
 import { getCustomizationConfig } from './configs';
 import { templateConfigSignature } from './template-config-signature';
@@ -29,7 +30,15 @@ function publishedShape(product: Product) {
 
 const reference = publishedShape(snapshot as unknown as Product);
 const referenceConfig = getCustomizationConfig(reference);
-const referenceHash = templateRuntimeHash(reference, referenceConfig);
+const storefrontReference = structuredClone(reference);
+// Storefront does not return the body-type metafield for this product. Its
+// exact catalog identities, tags and menu still participate in the binding.
+delete storefrontReference.extended.bodyType;
+storefrontReference.extended.customizationGroups = normalizeCustomizationGroups(reference.extended.customizationGroups);
+const reviewedHashes = new Set([
+  templateRuntimeHash(reference, referenceConfig),
+  templateRuntimeHash(storefrontReference, getCustomizationConfig(storefrontReference))
+]);
 
 /** Bind the reviewed recipes only to the exact Grace 160F factory listing and menu. */
 export function grace160TemplateRecipe(
@@ -39,6 +48,6 @@ export function grace160TemplateRecipe(
 ): TemplatePresetDefinition | null | undefined {
   if (!isGrace160PreviewProduct(product)) return undefined;
   const candidate = privatePreview ? publishedShape(product) : structuredClone(product);
-  if (!normalizePrice(candidate) || templateRuntimeHash(candidate, config) !== referenceHash) return null;
+  if (!normalizePrice(candidate) || !reviewedHashes.has(templateRuntimeHash(candidate, config))) return null;
   return { ...structuredClone(recipe), signature: templateConfigSignature(config) } as TemplatePresetDefinition;
 }
