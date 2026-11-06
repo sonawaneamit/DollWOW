@@ -2,7 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { identifyAgentCrawler, requestedRepresentation } from "@/lib/seo/agentCrawler";
 import { CONTENT_SIGNAL, isPublicAgentResourcePath } from "@/lib/seo/contentSignals";
 import { isPublicMarkdownPath, markdownPathFor } from "@/lib/seo/publicMarkdownPath";
-import { env, hasAdminBasicAuthEnv } from "@/lib/utils/env";
+import { env } from "@/lib/utils/env";
+import { adminBasicAuthFailure } from "@/lib/auth/admin-basic";
 
 export function proxy(request: NextRequest) {
   if (request.nextUrl.hostname === 'www.dollwow.com' && request.nextUrl.pathname.startsWith('/dollvue/') &&
@@ -27,18 +28,7 @@ export function proxy(request: NextRequest) {
   }
 
   if (request.nextUrl.pathname.startsWith("/admin") || request.nextUrl.pathname.startsWith("/ops")) {
-    if (!hasAdminBasicAuthEnv()) {
-      return new NextResponse("Admin auth is not configured.", { status: 503 });
-    }
-
-    const auth = request.headers.get("authorization");
-    if (!auth?.startsWith("Basic ")) return unauthorized();
-
-    const decoded = atob(auth.slice(6));
-    const [username, password] = decoded.split(":");
-    if (username !== env.ADMIN_BASIC_AUTH_USERNAME || password !== env.ADMIN_BASIC_AUTH_PASSWORD) return unauthorized();
-
-    return NextResponse.next();
+    return adminBasicAuthFailure(request) ?? NextResponse.next();
   }
 
   const accept = request.headers.get("accept");
@@ -85,15 +75,6 @@ export function proxy(request: NextRequest) {
 
 function setAgentAccessHeaders(response: NextResponse) {
   response.headers.set("Content-Signal", CONTENT_SIGNAL);
-}
-
-function unauthorized() {
-  return new NextResponse("Unauthorized", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="DollWow Admin"'
-    }
-  });
 }
 
 export const config = {
