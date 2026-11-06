@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { adminBasicAuthFailure } from "@/lib/auth/admin-basic";
 import { sendPriceMatchCustomerReply } from "@/lib/email/adminAlerts";
 import { resolveApprovedDiscountAmount } from "@/lib/compare/reviewDecision";
 import { createPriceMatchDiscountCode } from "@/lib/shopify/admin";
@@ -18,6 +19,9 @@ const schema = z.object({
 });
 
 export async function POST(request: Request) {
+  const denied = adminBasicAuthFailure(request);
+  if (denied) return denied;
+
   try {
     const input = schema.parse(await request.json());
     const current = await getComparisonRequest(input.id);

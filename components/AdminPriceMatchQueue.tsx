@@ -40,7 +40,9 @@ function AdminPriceMatchCard({ request }: { request: ComparisonRequest }) {
     setSaving(true);
     setSaved("");
     setError("");
-    const response = await fetch("/api/admin/price-match/update", {
+    // Keep the write inside the protection space of the authenticated admin page.
+    const endpoint = window.location.pathname.startsWith("/ops/") ? "/ops/price-match/update" : "/admin/price-match/update";
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
