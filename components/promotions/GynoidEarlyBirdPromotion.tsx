@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { GYNOID_EARLY_BIRD as offer, gynoidEarlyBirdTier } from '@/lib/promotions/gynoidEarlyBird2026';
+import { formatMoney } from '@/lib/utils/currency';
 import { useCampaignClock } from '@/lib/promotions/useCampaignClock';
 
 export function GynoidEarlyBirdPromotion({ promoClock, freezeClock = false, placement = 'promo' }: { promoClock: string; freezeClock?: boolean; placement?: 'promo' | 'pdp' }) {
@@ -17,8 +18,12 @@ export function GynoidEarlyBirdPromotion({ promoClock, freezeClock = false, plac
         <h2 id="gynoid-early-bird-heading" className="mt-2 text-3xl font-semibold">Gynoid Early Bird Sale</h2>
         <p className="mt-4 text-xl font-semibold">${tier.saving} USD off eligible head + body builds</p>
         <p className="mt-3 text-base leading-7 text-text-dim">Choose any head with the new M25 body, or pair Lyra with another eligible body. The saving steps down as the sale continues.</p>
+        <p className="mt-4 text-sm text-text-dim">M25 list prices: Standard {formatMoney(offer.m25List.standard, 'USD')}, Deluxe {formatMoney(offer.m25List.deluxe, 'USD')}.</p>
         <dl className="mt-5 grid gap-2 sm:grid-cols-3">{offer.tiers.map(item => <div key={item.start} aria-current={tier.start === item.start ? 'date' : undefined} className={`rounded-lg border p-3 ${tier.start === item.start ? 'border-accent bg-surface-tint' : 'border-border'}`}>
-          <dt className="text-sm leading-6">{item.dates}</dt><dd className="mt-1 text-lg font-semibold">${item.saving} off</dd>
+          <dt className="text-sm leading-6">{item.dates}</dt><dd className="mt-1 text-sm font-semibold leading-6">
+            <span className="block">Standard {formatMoney(offer.m25List.standard - item.saving, 'USD')}</span>
+            <span className="block">Deluxe {formatMoney(offer.m25List.deluxe - item.saving, 'USD')}</span>
+          </dd>
         </div>)}</dl>
         <details className="mt-5 border-t border-border pt-4">
           <summary className="cursor-pointer text-base font-semibold focus-visible:outline-accent">Eligible builds and head offer</summary>

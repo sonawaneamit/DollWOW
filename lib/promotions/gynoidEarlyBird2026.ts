@@ -4,6 +4,7 @@ export const GYNOID_EARLY_BIRD = {
   startsAt: '2026-11-05T00:00:00Z',
   endsAt: '2026-12-05T00:00:00Z',
   dateLabel: '5 November – 4 December 2026',
+  m25List: { standard: 5299, deluxe: 5799 },
   tiers: [
     { start: '2026-11-05T00:00:00Z', end: '2026-11-15T00:00:00Z', dates: '5–14 November', saving: 500 },
     { start: '2026-11-15T00:00:00Z', end: '2026-11-25T00:00:00Z', dates: '15–24 November', saving: 300 },
