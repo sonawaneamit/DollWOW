@@ -12,7 +12,12 @@ export function createStorageStore<T>(key: string, changeEvent: string, parse: (
   let cachedValue: T | undefined;
 
   function getSnapshot(): T {
-    const raw = window.localStorage.getItem(key);
+    let raw: string | null;
+    try {
+      raw = window.localStorage.getItem(key);
+    } catch {
+      return fallback;
+    }
     if (raw !== cachedRaw) {
       cachedRaw = raw;
       cachedValue = parse(raw);
