@@ -86,6 +86,7 @@ export function GET() {
     "",
     "## Machine-Readable Feeds",
     "",
+    `- Agent discovery: ${siteUrl}/agents.md`,
     `- Sitemap: ${siteUrl}/sitemap.xml`,
     `- Image sitemap: ${siteUrl}/sitemap-images.xml`,
     `- Agent index: ${siteUrl}/agent-index.json`,

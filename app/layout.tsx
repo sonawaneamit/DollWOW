@@ -74,6 +74,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <link rel="alternate" type="text/plain" href="/agents.md" title="DollWOW agent discovery" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="DollWOW machine-readable site guide" />
         <link rel="alternate" type="application/json" href="/agent-index.json" title="DollWOW structured site index" />
         <script
