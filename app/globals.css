@@ -1305,8 +1305,6 @@ a {
 
 @media (max-width: 640px) {
   .consent-banner {
-    top: max(5rem, env(safe-area-inset-top));
-    bottom: auto;
     width: calc(100% - 1rem);
     border-radius: 16px;
   }
