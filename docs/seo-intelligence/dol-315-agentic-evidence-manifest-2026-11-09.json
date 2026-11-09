@@ -1,0 +1,71 @@
+{
+  "at": "2026-11-09T09:51:27.661Z",
+  "releaseCommit": "d0eb8ef5f32403a1bda8661111d29f811373a410",
+  "policyEquality": true,
+  "contactCorrect": true,
+  "internalNotesExcluded": true,
+  "knowledge": "16/16",
+  "channelControls": "all five Active",
+  "catalogObserved": 199,
+  "chargeScopeAbsentIn76Searches": true,
+  "outsideScopeVisibilityPreserved": 1944,
+  "guideAnonymousBothHostsGetHead200": true,
+  "independentReviewPreserved": true,
+  "evidence": [
+    {
+      "name": "final-native-policy-readback.json",
+      "bytes": 27888,
+      "sha256": "a97ca00e686050d9a82d62fe25138e2691823cfd0e84731e56e46d2bd44cf3ae"
+    },
+    {
+      "name": "agentic-final-dashboard.txt",
+      "bytes": 15102,
+      "sha256": "1bbb04a2d85effbf6adb138ec850d9cde0a72c58052d97671f91008699b68448"
+    },
+    {
+      "name": "category-final-census.json",
+      "bytes": 3964035,
+      "sha256": "4a88f42dc85fa30ca682f08c17737cdd303958ba4896db5ea4e257fd695f2549"
+    },
+    {
+      "name": "category-rollout-checkpoint.json",
+      "bytes": 358091,
+      "sha256": "2f223b06d7817317f3aff3f3d2e6fae7bd86f49aa476b6e2263013cd9cfdfe4c"
+    },
+    {
+      "name": "charge-hide-156-result.json",
+      "bytes": 7312,
+      "sha256": "f11610a873624a643f9a9ce275b2e73e639ebda8d0e955691965221b16e01c56"
+    },
+    {
+      "name": "charge-rollout-discovery-final.json",
+      "bytes": 579517,
+      "sha256": "e0460558dd50aad1c0a60ed0eca637d2949b955e1ffa9bc3bd3f5a7f99bbf661"
+    },
+    {
+      "name": "agents-edge-approved-verification.json",
+      "bytes": 22987,
+      "sha256": "4cc5b452100a40593a6f10e8bcd05f1676052323b5320eda044468a22d07ac80"
+    },
+    {
+      "name": "agentic-monitoring-baseline.json",
+      "bytes": 6937,
+      "sha256": "9d5c51324b44a2694b417b44799d2f75fbe744f1264c1e251af975eeeef71eea"
+    },
+    {
+      "name": "query-baseline.json",
+      "bytes": 10259,
+      "sha256": "ce1eb859c11b62c4b58d94180d68e73ab83d15db6437408c707769c2b0b08b27"
+    },
+    {
+      "name": "query-post-categories-raw.json",
+      "bytes": 94862,
+      "sha256": "b6eaa16c289c5a078b68d3e5128f7c8f60f3cb57e41703c53e5492b7b78bbf2b"
+    },
+    {
+      "name": "knowledge-published-readback.txt",
+      "bytes": 44868,
+      "sha256": "4ae49e9304533fdfb5a5fe55c007b357e80f038bc64886163c385109538522d0"
+    }
+  ]
+}
