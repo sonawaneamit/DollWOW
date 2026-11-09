@@ -3,6 +3,7 @@ export const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=yes, use=refer
 export function isPublicAgentResourcePath(pathname: string) {
   return (
     pathname === "/llms.txt" ||
+    pathname === "/agents.md" ||
     pathname === "/agent-index.json" ||
     pathname === "/product-feed.json" ||
     pathname === "/llms" ||

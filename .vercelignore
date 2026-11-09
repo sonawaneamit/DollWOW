@@ -12,3 +12,5 @@ docs
 *.zip
 README.md
 AGENTS.md
+!app/agents.md
+!app/agents.md/route.ts
