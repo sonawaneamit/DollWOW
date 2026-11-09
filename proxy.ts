@@ -118,6 +118,7 @@ export const config = {
     "/warehouse",
     "/why-dollwow",
     "/llms.txt",
+    "/agents.md",
     "/llms/:path*",
     "/markdown/:path*",
     "/agent-index.json",
