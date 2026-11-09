@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
+import { policies } from "@/lib/content/store-policies";
 
 export const metadata: Metadata = {
   title: "Sex Doll Shipping Guide",
@@ -11,38 +12,12 @@ export default function ShippingPage() {
     <PolicyLayout
       eyebrow="Shipping guide"
       title="Shipping timing and what to expect."
-      intro="Shipping timing depends on whether the doll is already in a warehouse or being built to order. DollWow shows that clearly before checkout so customers can tell the difference between a faster warehouse order and a custom build."
+      intro="Delivery depends on the product, warehouse, destination and confirmed order."
       ctas={[
         { label: "Shipping protection", href: "/shipping-protection", primary: true },
         { label: "How ordering works", href: "/how-ordering-works" }
       ]}
-      sections={[
-        {
-          title: "Ready-to-ship orders",
-          items: [
-            "Estimated delivery is typically 3 business days.",
-            "These orders are prioritized for fast release, so customization is limited and factory approval photos may not be available.",
-            "Final release still depends on stock verification and order review."
-          ]
-        },
-        {
-          title: "Made-to-order builds",
-          items: [
-            "Estimated production and delivery is typically 3 weeks.",
-            "Detailed factory photos and videos are shared before shipment so the final look can be approved before release.",
-            "Production timing varies by selected build and current factory schedule."
-          ]
-        },
-        {
-          title: "Privacy and tracking",
-          items: [
-            "Packaging is plain by default.",
-            "Tracking details are shared after shipment activation.",
-            "Delivery damage should be reported within 24 hours of arrival with photos, packaging, and the order reference kept for review.",
-            "International buyers remain responsible for local customs rules and import fees where they apply."
-          ]
-        }
-      ]}
+      sections={policies.find(policy => policy.key === "shipping")!.sections.map(([title, copy]) => ({ title, items: [copy] }))}
       asideTitle="Fast read"
       asideItems={[
         "Warehouse timing is faster, but still checked before release.",
