@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PolicyLayout } from "@/components/PolicyLayout";
+import { policies } from "@/lib/content/store-policies";
 
 export const metadata: Metadata = {
   title: "Sex Doll Returns and Replacements",
@@ -11,54 +12,17 @@ export default function ReturnsPage() {
     <PolicyLayout
       eyebrow="Returns and replacements"
       title="Returns, repairs, and replacements explained."
-      intro="Sex dolls are personal, made-to-order products, so ordinary returns are limited once production begins. Delivery damage, incorrect items, and meaningful differences from an approved custom build still receive prompt support."
+      intro="How cancellations, returns and product issues are handled."
       ctas={[
         { label: "Buyer protection", href: "/buyer-protection", primary: true },
         { label: "Shipping protection", href: "/shipping-protection" }
       ]}
-      sections={[
-        {
-          title: "Cancellation",
-          items: [
-            "Within 4 hours of payment: full refund (100%)",
-            "Within 8 hours of payment: 95% refund",
-            "Within 24 hours of payment: 80% refund",
-            "After 24 hours: order is locked because custom production has started",
-            "Once shipped: order cannot be canceled",
-            "Approved refunds return to the original payment method within 5–10 business days.",
-            "Ready-to-ship orders may ship within a few business days, so the window to cancel can be short."
-          ]
-        },
-        {
-          title: "Custom-order expectations",
-          items: [
-            "Custom items may not be returnable once production begins.",
-            "That is why the option review and factory-photo approval steps matter so much before shipment.",
-            "Ready-to-ship warehouse dolls move faster, but usually have fewer customization changes available."
-          ]
-        },
-        {
-          title: "Damage and delivery issues",
-          items: [
-            "Damage, missing-item, or wrong-item claims need photos and order details within 24 hours of delivery.",
-            "We assess the severity of the issue and the documented condition to determine whether repair, replacement, or another resolution is appropriate.",
-            "Minor cosmetic shipping wear is handled differently from major transit damage."
-          ]
-        },
-        {
-          title: "How we keep this fair",
-          items: [
-            "Custom production begins only after the order details are confirmed.",
-            "Factory photos give custom-order customers a chance to approve the final appearance before shipment.",
-            "The goal is a clear answer: repair, replacement, or another fair resolution when the order genuinely needs it."
-          ]
-        }
-      ]}
+      sections={policies.find(policy => policy.key === "refund")!.sections.map(([title, copy]) => ({ title, items: [copy] }))}
       asideTitle="Important note"
       asideItems={[
-        "Report any issue within 24 hours of delivery and keep packaging until the case is understood.",
-        "Custom production limits ordinary returns, but documented delivery problems are still taken seriously.",
-        "Buyer protection and shipping protection pages explain the difference between major and minor issues."
+        "Ready-to-ship cancellation or modification requests must be made within four hours of placing the order.",
+        "Contact us before returning an item so we can confirm the remedy, costs and destination.",
+        "Cancellation rules do not remove remedies for damage, an incorrect item, defects or rights that apply by law."
       ]}
     />
   );
