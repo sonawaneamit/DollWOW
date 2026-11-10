@@ -12,7 +12,7 @@ import {
   areDollVueSelectionsValid,
   resolveDollVueSelections
 } from "@/lib/dollvue/config";
-import { getProductByHandle } from "@/lib/shopify/storefront";
+import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { env } from "@/lib/utils/env";
 import { promotionPricingForSelections } from "@/lib/promotions/optionPricing";
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';

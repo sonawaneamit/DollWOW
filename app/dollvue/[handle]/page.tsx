@@ -9,7 +9,7 @@ import { dollVueUsageForEmail } from "@/lib/dollvue/accountUsage";
 import { maskedEmail, verifyDollVueSessionValue, DOLLVUE_SESSION_COOKIE } from "@/lib/dollvue/session";
 import { productDisplayName } from "@/lib/catalog/naming";
 import { protectedProductImageUrl, productImageSources } from "@/lib/catalog/productImage";
-import { getProductByHandle } from "@/lib/shopify/storefront";
+import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { publicCustomizationConfig } from '@/lib/catalog/publicPayload';
 
 export const metadata: Metadata = {

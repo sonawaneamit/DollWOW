@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/review/dollvue/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet, noimageindex" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store, max-age=0" }
+        ]
+      },
+      {
         source: "/dollvue/:path+",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet, noimageindex" },
@@ -114,7 +123,8 @@ const nextConfig: NextConfig = {
     "/*": ["./content/learn/drafts/*.md"],
     "/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png", "./public/images/products/se-elf-2026/*.jpg"],
     "/app/product-media/**/*": ["./public/images/brand/dollwow-black-gold-lockup.png", "./public/images/products/se-elf-2026/*.jpg"],
-    "/review/dollvue-branding": ["./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"]
+    "/review/dollvue-branding": ["./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"],
+    "/review/dollvue/generate": ["./public/images/dollvue/review-mmx-fanreal-nov10/*.webp", "./public/images/brand/dollwow-black-gold-lockup.png", "./node_modules/@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff"]
   },
   // Option references are fetched over HTTP; never bundle the static library
   // into functions whose unrelated local-image helpers use dynamic file paths.

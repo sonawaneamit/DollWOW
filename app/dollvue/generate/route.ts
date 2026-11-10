@@ -13,7 +13,7 @@ import { recordDollVuePreview, dollVueUsageForEmail } from "@/lib/dollvue/accoun
 import { readDollVueSession } from "@/lib/dollvue/session";
 import { productDisplayName } from "@/lib/catalog/naming";
 import { productImageSources } from "@/lib/catalog/productImage";
-import { getProductByHandle } from "@/lib/shopify/storefront";
+import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
