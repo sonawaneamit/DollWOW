@@ -1,3 +1,5 @@
+import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
+import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeDollPromoIndexCards } from "@/components/promotions/SeDollSeptemberPromotion";
@@ -38,7 +40,7 @@ export function generateMetadata(): Metadata {
   return {
   title,
   description,
-  ...(lusandyNovemberPreviewEnabled() ? { robots: { index: false, follow: false } } : {}),
+  ...((lusandyNovemberPreviewEnabled() || gynoidEarlyBirdPreviewEnabled()) ? { robots: { index: false, follow: false } } : {}),
   alternates: { canonical: "/promo" },
   openGraph: {
     title: `${title} | DollWOW`,
@@ -51,7 +53,7 @@ export function generateMetadata(): Metadata {
 
 export default async function PromoIndexPage({ searchParams }: { searchParams: Promise<{ promoClock?: string | string[] }> }) {
   const requestedClock = (await searchParams).promoClock;
-  const frozenClock = lusandyNovemberPreviewEnabled() ? previewPromotionClock(requestedClock) : undefined;
+  const frozenClock = (lusandyNovemberPreviewEnabled() || gynoidEarlyBirdPreviewEnabled()) ? previewPromotionClock(requestedClock) : undefined;
   const promoClock = frozenClock ?? new Date().toISOString();
   const { halloween, title, description } = promoCopy(Date.parse(promoClock));
   const preview = isHalloweenPreview();
@@ -91,13 +93,15 @@ export default async function PromoIndexPage({ searchParams }: { searchParams: P
   return (
     <div className="compact-promo mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      {halloween ? <HalloweenWindow preview={preview}><HalloweenCampaignBanner preview={preview} /><HalloweenLandingSections preview={preview} /></HalloweenWindow> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
+      {halloween ? <HalloweenWindow preview={preview}><HalloweenCampaignBanner preview={preview} /><HalloweenLandingSections preview={preview} gynoidEarlyBirdClock={gynoidEarlyBirdEnabled() ? promoClock : undefined} freezeGynoidClock={Boolean(frozenClock)} /></HalloweenWindow> : <header className="rounded-[20px] bg-surface-tint px-5 py-8 sm:px-8 sm:py-10">
         <p className="text-sm font-semibold text-accent">Current offers</p>
         <h1 className="mt-2 font-display text-4xl font-semibold text-text sm:text-5xl">Active sex doll brand promotions</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-dim">
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
       </header>}
+
+      {gynoidEarlyBirdEnabled() ? <GynoidEarlyBirdPromotion promoClock={promoClock} freezeClock={Boolean(frozenClock)} /> : null}
 
       <SeHalloweenPromotion enabled={hasSeHalloween} initialClock={promoClock} />
 
