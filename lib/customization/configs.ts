@@ -310,6 +310,22 @@ export function getFactoryCustomizationConfig(product: Product): BrandCustomizat
 }
 
 function customizationConfig(product: Product, purpose: "checkout" | "factory"): BrandCustomizationConfig {
+  // These reviewed fixed torso builds must never borrow the generic torso
+  // skin/care upsells when singleton source groups are filtered downstream.
+  if (product.id === 'gid://shopify/Product/10564112318648' &&
+      product.handle === 'fanreal-maria-t109f-f-cup-silicone-ready-to-ship-companion-doll') {
+    if (product.extended.customizationGroups?.length) throw new Error('This fixed Fanreal stock configuration needs review.');
+    return { id: 'fanreal-fixed-stock-v1', brandLabel: 'Fanreal', leadTimeNote: 'Ships as shown after current stock confirmation.', groups: [], rules: [] };
+  }
+  if (product.id === 'gid://shopify/Product/10705045455032' &&
+      product.handle === 'fanreal-diana-t110j-j-cup-real-skin-silicone-torso-companion-doll') {
+    const groups = product.extended.customizationGroups ?? [];
+    if (groups.length !== 2 || groups.some(group => !['head-type', 'skin-tone'].includes(group.id) ||
+        group.options.length !== 1 || group.options[0].priceDelta !== 0)) {
+      throw new Error('This fixed Fanreal torso configuration needs review.');
+    }
+    return { id: 'fanreal-fixed-torso-v1', brandLabel: 'Fanreal', leadTimeNote: 'The photographed Diana ROS head and tan finish are included.', groups, rules: [] };
+  }
   const gynoid = getGynoidCustomizationConfig(product);
   if (gynoid) return gynoid;
   const idoMd = getIdoMdCustomizationConfig(product);
