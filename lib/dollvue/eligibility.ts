@@ -1,5 +1,6 @@
 import 'server-only';
 import type { Product } from '@/types/product';
+import type { BrandCustomizationConfig } from '@/types/customization';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { productImageSources } from '@/lib/catalog/productImage';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
@@ -9,6 +10,14 @@ import registryData from './readiness-registry.json';
 import { getCurrentDollVueHold } from './currentHold';
 
 const registry = registryData as Readonly<Record<string, DollVueReadinessRecord>>;
+type Eligibility = {
+  available: boolean;
+  config: BrandCustomizationConfig;
+  sourcePositions: number[];
+  revision: string;
+  imageDigests: DollVueReadinessRecord['imageDigests'];
+  renderer?: DollVueReadinessRecord['renderer'];
+};
 
 export function isDollVueExcluded(product: Product) {
   const isPreviewDeployment = process.env.VERCEL_ENV === 'preview' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
@@ -21,7 +30,7 @@ export function isDollVueExcluded(product: Product) {
 }
 
 /** Product must come from a strict Storefront lookup before public use. */
-export function resolveDollVueEligibility(product: Product) {
+export function resolveDollVueEligibility(product: Product): Eligibility {
   const config = dollVueConfigForProduct(product, getCustomizationConfig(product));
   const record = registry[product.id];
   if (record) {
