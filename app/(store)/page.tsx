@@ -7,7 +7,6 @@ import { withProtectedProductImages } from "@/lib/catalog/productImage";
 import { getHomepageReviews } from "@/lib/reviews/reviews";
 import { homepageCardPayload } from '@/lib/catalog/publicPayload';
 import { homepageFeatureProducts, homepageBrandLogos, homepageBrands, homepageNewArrivals, homepageBestSellers } from '@/lib/catalog/homepage';
-import { isSinglesDayActive } from "@/lib/promotions/singlesDay2026";
 import type { Metadata } from 'next';
 
 export const dynamic = "force-dynamic";
@@ -45,7 +44,6 @@ export default async function HomePage() {
     <>
       <HomeContactStrip />
       <HomeAlive
-        initialSinglesDay={isSinglesDayActive()}
         products={homepageFeatureProducts(curatedProducts).map(withProtectedProductImages).map(homepageCardPayload)}
         bestSellingProducts={homepageBestSellers(bestSellingProducts).map(withProtectedProductImages).map(homepageCardPayload)}
         recentlyAddedProducts={homepageNewArrivals(recentlyAddedProducts, curatedProducts).map(withProtectedProductImages).map(homepageCardPayload)}
