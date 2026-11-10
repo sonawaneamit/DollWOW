@@ -20,7 +20,15 @@ Jev was called through the configured Typesafe connection in seven successful
 batches. Requested `jev-latest`; returned `jev-1.14.0`. Usage: 51,813 input and
 13,217 output tokens. The response did not report billed USD cost.
 
-Recommended appearance groups for Martin's review:
+The initial five groups below describe the existing software allowlist, not an
+image-model capability limit. Martin subsequently authorized broader private
+preparation of every externally visible cosmetic option, MMX first. The native
+sheet now separately records external visibility, software support, actual
+factory/SKU offering and fidelity limits for all 20 resolved groups and all 130
+labels. It also covers the two extra raw singleton groups (included body paint
+and skeleton tightness) and 13 expansion/baseline categories.
+
+Existing software appearance groups:
 
 | Group | Specific reference choices | Preparation needed |
 | --- | ---: | --- |
@@ -36,9 +44,13 @@ skin-only references should be prepared for the non-explicit appearance path.
 This review does not establish supplier-reference equivalence or generated
 output fidelity. No images were generated.
 
-Functional upgrades, softness/construction, implanted-hair installation,
-replacement/extra heads, accessories and intimate anatomy remain outside the
-current preview scope. Jev suggested appearance categories for `As shown`;
+Other visible features include implanted brows/lashes, head/body makeup,
+visible-vein paint, close-up skin texture, hairlines and exposed foot hardware.
+An exact head sculpt is visible but changes identity and needs a dedicated
+compatible-head workflow. Visibly distinct intimate attributes are recorded as
+visible metadata, separately from this non-explicit generation scope. Internal
+texture, softness, weight, skeletons and motion cannot be verified by a still
+appearance edit. Jev suggested appearance categories for `As shown`;
 the deterministic no-change rule overrides those suggestions. Head-code
 uncertainty does not authorize replacing the doll's identity.
 
@@ -56,10 +68,26 @@ current hold checks, exact option references, compatibility, byte bindings and
 representative generated-output review still need verification. DollVue
 readiness does not add a sales hold to the completed MMX launch.
 
-DOL-312 requires Martin to review the classification sheet before building.
-After classification approval, prepare the supported private scope, show an
-actual preview, and obtain exact preview approval before public release. This
-also respects Martin's standing instruction against unapproved visual changes.
+Kelly's quote expressly lists Custom Makeup, Handmade Resin Eyes, male chest
+hair and glued armpit hair. Exact styles, references, per-SKU compatibility,
+retail and checkout bindings are not yet established for those extensions. None
+of the current 63 snapshots is a male listing, so the male chest-hair extension
+has zero demonstrated applicability to this cohort. Included brows/lashes,
+factory makeup and body paint must not become invented paid or removal toggles.
+The quote says full/partial realistic skin texture is mold-specific and not
+customizable. Moles/freckles, belly piercing, inherited lingerie and unbound
+custom-eye choices retain their sourcing/cost/mapping holds.
+
+Martin's later explicit instruction authorizes broader private preparation;
+do not repeat the old five-group approval question. Obtain exact approval of
+the actual completed private preview before public release or a live visual
+change. The public rendering/runtime registry remains untouched.
+
+The configured DollVue route uses `seedream-v5-pro-edit`, then
+`seedream-v5-lite-edit` and `qwen-edit-uncensored` fallbacks. Venice's
+[multi-edit documentation](https://docs.venice.ai/api-reference/endpoint/image/multi-edit)
+describes layered prompt-based image editing, not a five-category limit. That
+does not prove any specific cosmetic edit's fidelity; no new generation was run.
 
 ## Private reproducibility
 
@@ -71,6 +99,10 @@ are under `data/exports/dol312-mmx-nov10/`:
 - `jev-option-classification.json`: actual model responses and usage;
 - `reference-byte-check.json`: reference dimensions, bytes and SHA256 values;
 - `review-summary.json`: reviewed recommendation and product-level coverage.
+- `broad-taxonomy.json`: superseding external-visibility/software/source matrix.
+- `private-cosmetic-preview-preparation.json`: exact per-product candidate
+  choice/reference/SHA preparation for 60 full-doll records; it is not a generated
+  or approval-ready preview and does not grant public availability.
 
 `scripts/audit-mmx-dollvue-options.mjs` consumes the final Storefront snapshot
 and imports the actual configuration/readiness implementation. The Jev runner
