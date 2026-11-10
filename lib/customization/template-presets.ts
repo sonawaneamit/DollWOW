@@ -45,6 +45,16 @@ export function templateConfigurationPresets(
   }
   const defaults = getDefaultSelections(pricedConfig);
   const state: CustomizationSelections = { ...defaults, ...current };
+  // A changed parent can reveal a branch that was absent from the initial
+  // defaults. Use the same branch default already shown by the configurator.
+  // Explicit empty or invalid choices stay intact for the normal validation.
+  const currentResolved = resolveCustomization(pricedConfig, state, basePrice);
+  for (const group of pricedConfig.groups) {
+    if (group.visibleWhen !== undefined && !Object.hasOwn(state, group.id) &&
+        Object.hasOwn(currentResolved.selections, group.id)) {
+      state[group.id] = currentResolved.selections[group.id];
+    }
+  }
   // Replace only recipe-owned choices, retaining independent extras in the same group.
   for (const [groupId, ids] of managed) {
     const group = pricedConfig.groups.find(g => g.id === groupId)!;

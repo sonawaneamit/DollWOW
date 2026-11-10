@@ -389,6 +389,7 @@ export function formatMeasurementDual(label: string, rawValue: string | number |
 }
 
 function dualWeightFromText(value: string) {
+  const qualifier = value.match(/\s*(\([^()]+\))$/)?.[1];
   const poundMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:lb|lbs|pounds?)\b/i);
   const kilogramMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:kg|kgs|kilograms?)\b/i);
   let pounds = poundMatch ? Number(poundMatch[1]) : undefined;
@@ -396,10 +397,16 @@ function dualWeightFromText(value: string) {
   if (pounds === undefined && kilograms === undefined) return value;
   if (pounds === undefined && kilograms !== undefined) pounds = kilograms * 2.20462;
   if (kilograms === undefined && pounds !== undefined) kilograms = pounds / 2.20462;
-  return `${pounds!.toFixed(1)} lb / ${kilograms!.toFixed(1)} kg`;
+  return `${pounds!.toFixed(1)} lb / ${kilograms!.toFixed(1)} kg${qualifier ? ` ${qualifier}` : ''}`;
 }
 
 function dualLengthFromText(value: string) {
+  const qualifier = value.match(/\s*(\([^()]+\))$/)?.[1];
+  const range = value.match(/(\d+(?:\.\d+)?)\s*[–-]\s*(\d+(?:\.\d+)?)\s*(?:cm|centimeters?)\b/i);
+  if (range) {
+    const low = Number(range[1]), high = Number(range[2]);
+    return `${formatImperialLength(low / 2.54)}–${formatImperialLength(high / 2.54)} / ${formatDecimal(low, 1)}–${formatDecimal(high, 1)} cm${qualifier ? ` ${qualifier}` : ''}`;
+  }
   const centimeterMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:cm|centimeters?)\b/i);
   const feetMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:ft|feet|foot)\b/i);
   const inchesMatch = value.match(/(\d+(?:\.\d+)?)\s*(?:in|inch|inches)\b/i);
@@ -412,7 +419,7 @@ function dualLengthFromText(value: string) {
   if (!hasImperial && centimeters !== undefined) totalInches = Math.round(centimeters / 2.54);
   if (centimeters === undefined) centimeters = totalInches * 2.54;
 
-  return `${formatImperialLength(totalInches)} / ${formatDecimal(centimeters, 1)} cm`;
+  return `${formatImperialLength(totalInches)} / ${formatDecimal(centimeters, 1)} cm${qualifier ? ` ${qualifier}` : ''}`;
 }
 
 function formatImperialLength(totalInches: number) {

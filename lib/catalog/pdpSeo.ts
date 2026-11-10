@@ -339,7 +339,9 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
     .map((property) => ({ name: cleanText(property.name), value: cleanText(property.value) }))
     .filter((property) => property.name && property.value)
     .filter((property) => {
-      const key = `${property.name.toLowerCase()}:${property.value.toLowerCase()}`;
+      // Measurements precede numeric fallbacks. Keep their ranges and source
+      // qualifications instead of emitting a second, less precise fact.
+      const key = property.name.toLowerCase();
       if (seen.has(key)) return false;
       seen.add(key);
       return true;

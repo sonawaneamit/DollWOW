@@ -87,3 +87,21 @@ When importing products from RosemaryDoll or another owned/approved source, use 
 - Rewrite imported product names and descriptions into DollWow-specific catalog copy before Shopify import. Keep factual specs, brand, price, stock, and option data, but avoid obvious duplicate Rosemary titles, copied descriptions, and source-store wording.
 - Keep Shopify as the production source of truth after import; crawlers should support updates and stock snapshots, not bypass catalog review.
 - Do not auto-publish scraped items until supplier authorization, product accuracy, and image provenance are clear.
+
+### Review-Ready Draft Means Launch-Complete
+
+Martin clarified on 10 November 2026: a draft sent to him for review must be a
+complete proposed listing, ready to publish once he approves. Use the actual
+storefront PDP layout, with the complete verified model-specific option menu,
+priced presets, finished editorial sections, accurate specifications and the
+full matching factory photo/specification/video assets and additional graphics.
+Retail must include the approved shipping basis and respect MAP and recorded
+margin decisions. Do not invent unsupported options or tiers to fill a template.
+
+A photo/spec audit page, incomplete configurator or unfinished pricing pass is an
+internal work checkpoint, not a review-ready draft. Keep such checkpoints internal
+and state the remaining source gaps on the ticket; do not ask Martin to approve
+or do QA on a half-finished listing. For new brands, reconcile the complete
+authorized catalog against factory sources and competitor coverage rather than
+treating an existing import batch as the full range. Preserve genuine per-model
+holds and the new-brand publication approval gate.
