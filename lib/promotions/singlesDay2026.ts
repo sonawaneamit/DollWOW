@@ -2,7 +2,7 @@
 export const SINGLES_DAY_2026 = {
   id: 'singles-day-2026',
   amountUsd: 299,
-  startsAt: '2026-11-11T05:00:00.000Z', // 00:00 America/New_York (EST)
+  startsAt: '2026-11-10T16:00:00.000Z', // Martin's superseding live-now approval, Lisbon/UTC
   // Provisional early Black Friday handover; one shared setting for the hero schedule.
   endsAt: '2026-11-16T05:00:00.000Z',
   timeZone: 'America/New_York',

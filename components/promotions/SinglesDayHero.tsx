@@ -29,7 +29,7 @@ export function SinglesDayHero() {
     <picture>
       <source media="(max-width: 640px)" srcSet="/images/promotions/singles-day-2026/ria-v4-960.jpg" />
       <source media="(max-width: 1280px)" srcSet="/images/promotions/singles-day-2026/ria-v4-1280.jpg" />
-      {/* Exact approved artwork, resized without crops, retouching or regenerated copy. */}
+      {/* Approved artwork; the obsolete 11-Nov footer is clipped by the layout after the live-now approval. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/images/promotions/singles-day-2026/ria-v4-2048.jpg" width="2048" height="1152"
         alt="Ria in a navy evening dress in the approved DollWOW Singles Day editorial artwork." fetchPriority="high" />
@@ -37,7 +37,7 @@ export function SinglesDayHero() {
     <div className="singles-day-hero__details">
       <div><h1 id="singles-day-title">$299 off full-size dolls</h1>
         <p>Ready to ship + custom. Stacks with eligible brand promotions.</p>
-        <p className="singles-day-hero__terms">From 11 Nov until early Black Friday. Excludes torsos, hips, minis and add-ons. Applied automatically at checkout.</p></div>
+        <p className="singles-day-hero__terms">Live now until early Black Friday. Excludes torsos, hips, minis and add-ons. Applied automatically at checkout.</p></div>
       <div className="singles-day-hero__actions">
         <Link href="/shop/sex-dolls">Shop dolls</Link>
         <Link href="/shop/ready-to-ship">Ready to ship</Link>
