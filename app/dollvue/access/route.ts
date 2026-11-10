@@ -3,7 +3,7 @@ import { z } from "zod";
 import { checkRateLimit } from "@/lib/ai/rateLimit";
 import { createDollVueAccessToken } from "@/lib/dollvue/session";
 import { sendEmail } from "@/lib/email/sendEmail";
-import { getProductByHandle } from "@/lib/shopify/storefront";
+import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { env } from "@/lib/utils/env";
 import { resolveCurrentDollVueEligibility } from "@/lib/dollvue/eligibility";
 import { dollVueAccessOrigin } from "@/lib/dollvue/accessOrigin";

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { dollVueUrl } from "@/lib/dollvue/config";
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
-import { getProductByHandle } from '@/lib/shopify/storefront';
+import { getDollVueProductByHandle as getProductByHandle } from '@/lib/dollvue/product';
 import { verifyDollVueAccessToken, dollVueSessionCookie } from "@/lib/dollvue/session";
 import { updateDollVueSubmission } from '@/lib/dollvue/submissions';
 

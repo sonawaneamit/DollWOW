@@ -2,6 +2,12 @@ import {describe, expect, it} from 'vitest';
 import {classifyAppearance, appearanceReferenceProperty} from '@/lib/dollvue/appearance';
 
 describe('DollVue appearance classification', () => {
+  it.each([['Eyes','E01','eye-color'],['Skin','Fair','skin-tone'],['Nail','Z02','nail-color']])('understands exact Fanreal %s labels without inferring codes', (group,label,attribute)=>{
+    expect(classifyAppearance({label:group},{label})).toEqual({status:'candidate',attribute});
+  });
+  it.each(['Tan (as pictured)','Tan (as shown)','As pictured'])('does not sell an existing source look as a new edit: %s',label=>{
+    expect(classifyAppearance({label:'Skin'},{label})).toEqual({status:'excluded',reason:'no-specific-change'});
+  });
   it.each(['Heating','Movable jaw','Standing feet','Breathing','Extra head','Vagina color','Pubic hair'])('does not enable %s', label => {
     expect(classifyAppearance({label}, {label} ).status).toBe('excluded');
   });

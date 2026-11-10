@@ -106,6 +106,33 @@ authorized catalog against factory sources and competitor coverage rather than
 treating an existing import batch as the full range. Preserve genuine per-model
 holds and the new-brand publication approval gate.
 
+## DollVue External Cosmetic Coverage
+
+Martin's standing instruction, 10 November 2026: assess every externally visible
+cosmetic or superficial factory option for DollVue across all brands, starting
+with MMX. Do not restrict the inventory to the current software allowlist or
+claim an image model cannot render something merely because the app does not
+support it yet. Separate visible appearance, model fidelity, current software
+support, exact factory/SKU applicability and orderable source evidence.
+
+Include supported cosmetics, facial makeup and lip/eye looks, hair appearance,
+skin color, nails, beauty marks, brows/lashes, external finishes and sourced
+external accessories where appropriate. Included appearance and mold-fixed
+texture are the actual product baseline, not invented optional or paid toggles.
+Never invent a factory palette, upgrade, compatible head, price or purchasable
+accessory from an AI model's ability to depict it. Head-sculpt changes need exact
+factory compatibility and dedicated identity-fidelity checks. Internal functions,
+touch/softness, weight and material identity cannot be verified by a still-image
+edit. Visibly distinct intimate options must be described separately from this
+non-explicit preview scope, not incorrectly called invisible.
+
+Prepare private previews within the authorized scope using the existing design.
+Do not change the live site's appearance or enable new public DollVue behavior
+until Martin approves the exact actual preview. Keep suitable non-explicit
+sources, per-option references, current holds, byte/fingerprint bindings and
+representative fidelity checks. A classification or source inventory is not an
+approval-ready generated preview.
+
 ## Homepage Hero And Promotion Placement
 
 Martin's standing instruction, 10 November 2026: never change the look of the

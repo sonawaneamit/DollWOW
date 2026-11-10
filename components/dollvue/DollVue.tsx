@@ -10,17 +10,20 @@ import { productUrl } from "@/lib/catalog/productUrl";
 import styles from './DollVue.module.css';
 
 type Props = {
-  product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
+  product: { handle: string; name: string; brand: string; defaultPhotoPosition?: number; photos: Array<{ position: number; url: string; alt: string; previewReady?: boolean }> };
   groups: DollVueGroup[];
   freePreviews: number;
   initialRemaining: number;
   unlimited?: boolean;
   verifiedEmail: string;
   live: boolean;
+  reviewOnly?: boolean;
+  eyeColorOnly?: boolean;
 };
 
 type Result = {
   previewDataUrl: string;
+  reviewOnly?: boolean;
   remaining: number;
   emailDelivered: boolean;
   selections: Array<{ groupId: string; group: string; optionId: string; option: string }>;
@@ -28,13 +31,15 @@ type Result = {
 
 const MAX_PREVIEW_OPTIONS = 2;
 
-export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live }: Props) {
+export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live, reviewOnly = false, eyeColorOnly = false }: Props) {
+  const draftHandle = reviewOnly ? `private-review:${product.handle}` : product.handle;
+  const trackDollVueEvent: typeof trackEvent = (...args) => { if (!reviewOnly) trackEvent(...args); };
   const resultStartRef = useRef<HTMLDivElement>(null);
   const consentRef = useRef<HTMLInputElement>(null);
   const [consentAttempts, setConsentAttempts] = useState(0);
-  const initialDraft = useMemo(() => readDraft(product.handle), [product.handle]);
+  const initialDraft = useMemo(() => readDraft(draftHandle), [draftHandle]);
   const [step, setStep] = useState(1);
-  const [photoPosition, setPhotoPosition] = useState(dollVuePhotoPosition(product.photos, initialDraft.photoPosition));
+  const [photoPosition, setPhotoPosition] = useState(dollVuePhotoPosition(product.photos, initialDraft.photoPosition ?? product.defaultPhotoPosition));
   const [selections, setSelections] = useState<Record<string, string>>(initialDraft.selections ?? {});
   const [accepted, setAccepted] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
@@ -63,8 +68,8 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
   }, [consentAttempts]);
 
   useEffect(() => {
-    localStorage.setItem(dollVueDraftKey(product.handle), JSON.stringify({ photoPosition, selections }));
-  }, [photoPosition, product.handle, selections]);
+    localStorage.setItem(dollVueDraftKey(draftHandle), JSON.stringify({ photoPosition, selections }));
+  }, [photoPosition, draftHandle, selections]);
 
   useEffect(() => {
     if (!loading) return;
@@ -86,8 +91,9 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
     const option = group.options.find((item) => item.id === selections[group.id]);
     return option ? [{ group, option }] : [];
   }), [groups, selections]);
-  const optionLimitReached = selectedItems.length >= MAX_PREVIEW_OPTIONS;
-  const canGenerate = live && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
+  const maxOptions = reviewOnly || eyeColorOnly ? 1 : MAX_PREVIEW_OPTIONS;
+  const optionLimitReached = selectedItems.length >= maxOptions;
+  const canGenerate = live && selectedPhoto?.previewReady !== false && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
     if (!selections[groupId] && optionLimitReached) return;
@@ -104,9 +110,9 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
     setElapsedSeconds(0);
     setLoading(true);
     setError("");
-    trackEvent("dollvue_generate", { product_handle: product.handle, option_count: selectedItems.length });
+    trackDollVueEvent("dollvue_generate", { product_handle: product.handle, option_count: selectedItems.length });
     try {
-      const response = await fetch("/dollvue/generate", {
+      const response = await fetch(reviewOnly ? "/review/dollvue/generate" : "/dollvue/generate", {
         method: "POST",
         headers: { "content-type": "application/json" },
         keepalive: true,
@@ -121,7 +127,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
       setResult(payload);
       setRemaining(payload.remaining);
       setStep(3);
-      trackEvent("dollvue_complete", { product_handle: product.handle, option_count: payload.selections.length, email_delivered: payload.emailDelivered });
+      trackDollVueEvent("dollvue_complete", { product_handle: product.handle, option_count: payload.selections.length, email_delivered: payload.emailDelivered });
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "We couldn’t create this preview.");
     } finally {
@@ -133,29 +139,30 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
     if (!result) return;
     const link = document.createElement("a");
     link.href = result.previewDataUrl;
-    link.download = `dollwow-${product.handle}-dollvue.webp`;
+    link.download = `dollwow-${product.handle}-dollvue.${result.previewDataUrl.startsWith("data:image/png") ? "png" : "webp"}`;
     link.click();
-    trackEvent("dollvue_download", { product_handle: product.handle });
+    trackDollVueEvent("dollvue_download", { product_handle: product.handle });
   }
 
   function usePreviewChoices() {
+    if (reviewOnly) return;
     if (!result) return;
     localStorage.setItem(dollVueSelectionKey(product.handle), JSON.stringify({
       selections: Object.fromEntries(result.selections.map(({ groupId, optionId }) => [groupId, optionId])),
       savedAt: Date.now()
     }));
-    trackEvent("dollvue_use_choices", { product_handle: product.handle, option_count: result.selections.length });
+    trackDollVueEvent("dollvue_use_choices", { product_handle: product.handle, option_count: result.selections.length });
     window.location.assign(`${productUrl(product.handle)}#build-studio`);
   }
 
   async function sharePreview() {
     if (!result) return;
     const blob = await (await fetch(result.previewDataUrl)).blob();
-    const file = new File([blob], `dollwow-${product.handle}-dollvue.webp`, { type: blob.type || "image/webp" });
+    const file = new File([blob], `dollwow-${product.handle}-dollvue.${result.previewDataUrl.startsWith("data:image/png") ? "png" : "webp"}`, { type: blob.type || "image/webp" });
     const shareData = { title: `${product.name} DollVue™ preview`, text: "My DollVue™ look from DollWOW.com", files: [file] };
     if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
       await navigator.share(shareData);
-      trackEvent("dollvue_share", { product_handle: product.handle });
+      trackDollVueEvent("dollvue_share", { product_handle: product.handle });
       return;
     }
     downloadPreview();
@@ -176,8 +183,8 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
             <div>
               <strong>Preparing your DollVue™ preview</strong>
               <p>{waitMessage(elapsedSeconds)}</p>
-              <small>You can wait here or leave this page. We’ll email {verifiedEmail} when your preview is ready.</small>
-              <Link className="dollvue-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link>
+              <small>{reviewOnly ? "Private review. No email or customer allowance is used." : <>You can wait here or leave this page. We’ll email {verifiedEmail} when your preview is ready.</>}</small>
+              {reviewOnly ? null : <Link className="dollvue-leave-link" href={`/products/${product.handle}`}>Leave and email me</Link>}
             </div>
           </div>
         </div>
@@ -212,7 +219,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
                 <button type="button" onClick={downloadPreview} aria-label="Download preview"><Download /> <span>Save</span></button>
               </div>
               <div className="dollvue-result-actions">
-                <button className="dollvue-result-primary" type="button" onClick={usePreviewChoices}>
+                <button className="dollvue-result-primary" type="button" onClick={usePreviewChoices} disabled={reviewOnly}>
                   Use these choices <ArrowRight />
                 </button>
                 <div className="dollvue-result-links">
@@ -231,7 +238,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
           <div className="dollvue-title">
             <p>DollVue™</p>
             <h1>See your doll your way</h1>
-            <span>Start with a real DollWOW product photo, then preview different hair, eyes, skin tone, and other available appearance choices before you decide.</span>
+            <span>{reviewOnly ? "Compare eye colors on a portrait cropped from the actual product photo." : eyeColorOnly ? "Compare eye colors using this doll’s original product photos." : "Start with a real DollWOW product photo, then preview different hair, eyes, skin tone, and other available appearance choices before you decide."}</span>
             <small>A private, no-pressure way to explore the look you have in mind.</small>
             <small className="dollvue-product-context">{product.brand} · {product.name}</small>
           </div>
@@ -242,8 +249,8 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
           {step === 2 ? (
             <div className={`dollvue-option-intro${optionLimitReached ? " is-limit-reached" : ""}`}>
               <div>
-                <strong>Choose up to {MAX_PREVIEW_OPTIONS} options</strong>
-                <small role="status" aria-live="polite">{selectedItems.length} of {MAX_PREVIEW_OPTIONS} selected</small>
+                <strong>{reviewOnly || eyeColorOnly ? "Choose one eye color" : `Choose up to ${maxOptions} options`}</strong>
+                <small role="status" aria-live="polite">{selectedItems.length} of {maxOptions} selected</small>
               </div>
               {optionLimitReached ? (
                 <p className="dollvue-option-limit" role="status" aria-live="polite">
@@ -258,13 +265,14 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
               <div className="dollvue-pane">
                 <div className="dollvue-instructions">
                   <ShieldCheck />
-                  <div><strong>Choose a photo to personalize</strong><p>Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.</p></div>
+                  <div><strong>Choose a photo to personalize</strong><p>{eyeColorOnly ? 'Browse all product photos. Photos marked “Preview” can be used to compare eye colors.' : 'Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.'}</p></div>
                 </div>
                 <div className="dollvue-photo-grid">
                   {product.photos.map((photo) => (
-                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={`Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
+                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={eyeColorOnly ? `Photo ${photo.position + 1}${photo.previewReady ? ' — preview available' : ' — view only'}` : `Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
                       <Image src={photo.url} alt={`${photo.alt} — photo ${photo.position}`} fill sizes="30vw" />
                       {photo.position === photoPosition ? <Check /> : null}
+                      {eyeColorOnly && photo.previewReady ? <span className={styles.photoReady}>Preview</span> : null}
                     </button>
                   ))}
                 </div>
@@ -295,7 +303,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
                     </div>
                   </fieldset>
                 ))}
-                <p className="dollvue-verified-email"><ShieldCheck /><span><b>Verified access</b><small>Previews are connected to {verifiedEmail} across your devices.</small></span></p>
+                <p className="dollvue-verified-email"><ShieldCheck /><span><b>{reviewOnly ? "Private review" : "Verified access"}</b><small>{reviewOnly ? "No customer account, email or allowance is used." : <>Previews are connected to {verifiedEmail} across your devices.</>}</small></span></p>
                 {!live ? <p className="dollvue-notice">DollVue™ is temporarily unavailable. Please try again shortly.</p> : null}
                 {error ? <div className="dollvue-error" role="alert"><strong>We couldn’t create this preview.</strong><p>{error}</p><small>Your selections are still here. Try again, choose another photo, or ask DollWOW for help.</small></div> : null}
               </div>
@@ -308,7 +316,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
 
           {!result ? (
             <footer className="dollvue-actionbar">
-              {step === 1 ? <button type="button" className="dollvue-primary" onClick={() => setStep(2)}>Choose this photo <ArrowRight /></button> : (
+              {step === 1 ? <button type="button" className="dollvue-primary" disabled={selectedPhoto?.previewReady === false} onClick={() => setStep(2)}>{selectedPhoto?.previewReady === false ? 'Choose a photo marked Preview' : 'Choose this photo'} <ArrowRight /></button> : (
                 <>
                   <button type="button" className="dollvue-back" onClick={() => setStep(1)} disabled={loading}><ArrowLeft /> Photo</button>
                   <button type="button" className="dollvue-primary" onClick={generate}
@@ -324,7 +332,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
                       <span>I understand this is an approximate preview. My finished doll may vary in color, texture, styling, and option details.</span>
                     </label>
                     {consentAttempts > 0 && !accepted ? <p className={styles.reminder} role="alert">Please tick the agreement to create your preview.</p> : null}
-                    <p className="dollvue-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>
+                    {reviewOnly ? null : <p className="dollvue-privacy">Your identity and account details are never displayed with a preview. DollWOW may retain and reuse selected previews.</p>}
                   </div>
                 </>
               )}
@@ -352,7 +360,7 @@ function ResultIntro({ result, verifiedEmail }: { result: Result; verifiedEmail:
       <h2>Your look is ready</h2>
       <strong className="dollvue-selection-heading">Previewed choices</strong>
       <div>{result.selections.map((item) => <span key={`${item.groupId}-${item.optionId}`}>{item.group}: {item.option}</span>)}</div>
-      <p>{result.emailDelivered ? `Sent to ${verifiedEmail}.` : "The email could not be sent. You can save the preview here."}</p>
+      <p>{result.reviewOnly ? "Private review. No email sent or customer allowance used." : result.emailDelivered ? `Sent to ${verifiedEmail}.` : "The email could not be sent. You can save the preview here."}</p>
     </>
   );
 }
