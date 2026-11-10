@@ -5,10 +5,11 @@ import { getCustomizationConfig } from '@/lib/customization/configs';
 import { normalizeCustomizationGroups } from '@/lib/shopify/mappers';
 import { templateConfigSignature } from '@/lib/customization/template-config-signature';
 import snapshot from '@/data/draft-previews/fanreal-pdp-nov10.json';
+const previewSnapshot = snapshot as unknown as { products: Product[] };
 
 export function fanrealPdpPreviewProduct(handle: string, environment: Record<string, string | undefined> = process.env): Product | null {
   if (environment.VERCEL_ENV !== 'preview' || environment.DOLLWOW_DOL335_PREVIEW !== '1') return null;
-  const saved = snapshot.products.find(product => product.handle === handle);
+  const saved = previewSnapshot.products.find(product => product.handle === handle);
   if (!saved) return null;
   const product = structuredClone(saved) as unknown as Product;
   product.extended.customizationGroups = normalizeCustomizationGroups(product.extended.customizationGroups);
