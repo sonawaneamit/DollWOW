@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:14:18.939Z",
+      "reviewedAt": "2026-11-10T18:35:18.587Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "0a452df0525d918a3dba26374ad537527b28b4f66c785e8c40d9c0b4991c15c7"
+      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:14:18.939Z",
+      "reviewedAt": "2026-11-10T18:35:18.587Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "0a452df0525d918a3dba26374ad537527b28b4f66c785e8c40d9c0b4991c15c7"
+      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:14:18.939Z",
+      "reviewedAt": "2026-11-10T18:35:18.587Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "0a452df0525d918a3dba26374ad537527b28b4f66c785e8c40d9c0b4991c15c7"
+      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
     }
   },
   "payload": {
     "releaseId": "templates-2026-11-10-mmx-batches",
-    "sourceSnapshotHash": "597fa5a19e93321f27ecfd6ee316874295021216185e09966532d878b9ea847c",
+    "sourceSnapshotHash": "52814055e9d1f665874dd7f8fa20d4fb0abb402ec75d4f52baa5ee52ea1fe40d",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2927,7 +2927,38 @@
       "gid://shopify/Product/10716920611000",
       "gid://shopify/Product/10716920774840",
       "gid://shopify/Product/10716920905912",
-      "gid://shopify/Product/10716921069752"
+      "gid://shopify/Product/10716921069752",
+      "gid://shopify/Product/10716948562104",
+      "gid://shopify/Product/10716948660408",
+      "gid://shopify/Product/10716948725944",
+      "gid://shopify/Product/10716948824248",
+      "gid://shopify/Product/10716948955320",
+      "gid://shopify/Product/10716949053624",
+      "gid://shopify/Product/10716949151928",
+      "gid://shopify/Product/10716949381304",
+      "gid://shopify/Product/10716973564088",
+      "gid://shopify/Product/10716973662392",
+      "gid://shopify/Product/10716973826232",
+      "gid://shopify/Product/10716973924536",
+      "gid://shopify/Product/10716941680824",
+      "gid://shopify/Product/10716941844664",
+      "gid://shopify/Product/10716941942968",
+      "gid://shopify/Product/10716942041272",
+      "gid://shopify/Product/10716942106808",
+      "gid://shopify/Product/10716971237560",
+      "gid://shopify/Product/10716971303096",
+      "gid://shopify/Product/10716971368632",
+      "gid://shopify/Product/10716971466936",
+      "gid://shopify/Product/10716960489656",
+      "gid://shopify/Product/10716960555192",
+      "gid://shopify/Product/10716960653496",
+      "gid://shopify/Product/10716960719032",
+      "gid://shopify/Product/10716960751800",
+      "gid://shopify/Product/10716960817336",
+      "gid://shopify/Product/10716972875960",
+      "gid://shopify/Product/10716972974264",
+      "gid://shopify/Product/10716973072568",
+      "gid://shopify/Product/10716973138104"
     ],
     "entries": [
       {
@@ -23250,6 +23281,223 @@
         "tag": "options:mmx-standard-v1",
         "bindingKey": "mmx-nov10-b641e54fb26905d206",
         "runtimeHash": "93252ccf51973744a0097f7666b61204b26e4d0a09abf05523797e5137e24cca"
+      },
+      {
+        "productId": "gid://shopify/Product/10716948562104",
+        "handle": "mmx-elena-166b-silicone-companion-doll",
+        "tag": "options:mmx-limited-v1",
+        "bindingKey": "mmx-nov10-da27e1ca41901a5058",
+        "runtimeHash": "cde7e3ee244799772fc8727e225d711b8cd1591855c48278f862b2dbf9987118"
+      },
+      {
+        "productId": "gid://shopify/Product/10716948660408",
+        "handle": "mmx-mengru-160-seamless-silicone-companion-doll",
+        "tag": "options:mmx-aio-v1",
+        "bindingKey": "mmx-nov10-464f45d91912a75e84",
+        "runtimeHash": "cc3365776ef79becc0d15a338494a2ab46035615b2e579268771fd25dd7e6588"
+      },
+      {
+        "productId": "gid://shopify/Product/10716948725944",
+        "handle": "mmx-monica-164b-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-2651be56dcd05c93df",
+        "runtimeHash": "adfebc5450d02e7b0b28609a77e74c023771508ba2ed8b54c289da02292b7242"
+      },
+      {
+        "productId": "gid://shopify/Product/10716948824248",
+        "handle": "mmx-meyu-165b-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-b641e54fb26905d206",
+        "runtimeHash": "6739a03153f20c7fe115f381bbbb250261ca1f6ed2cc61274a07cc25824264ce"
+      },
+      {
+        "productId": "gid://shopify/Product/10716948955320",
+        "handle": "mmx-mengjie-166a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-2651be56dcd05c93df",
+        "runtimeHash": "d63a031be3560d96bdca0e37613dca6bdc6c92f442aca4fe1590cf5b44c09ab5"
+      },
+      {
+        "productId": "gid://shopify/Product/10716949053624",
+        "handle": "mmx-mengsu-160-seamless-silicone-companion-doll",
+        "tag": "options:mmx-aio-v1",
+        "bindingKey": "mmx-nov10-464f45d91912a75e84",
+        "runtimeHash": "f622da391b168948119c1bc6fe53b9d33845abd5be18f0b14c0b4e8985840b28"
+      },
+      {
+        "productId": "gid://shopify/Product/10716949151928",
+        "handle": "mmx-mengyao-166a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-2651be56dcd05c93df",
+        "runtimeHash": "acf1831d2d2d9e547f38767a56d4fd0f696658c71ab78cccb387061925443c15"
+      },
+      {
+        "productId": "gid://shopify/Product/10716949381304",
+        "handle": "mmx-jiami-155a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-6a5d3faf3c24ddf80c",
+        "runtimeHash": "05df5d4aefca164fa43851455cf318d36546df48d35d01ab877f82979fc6ec34"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973564088",
+        "handle": "mmx-jiaxin-170b-a04-ros-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-3ddb9b4481946ffa2c",
+        "runtimeHash": "071187d833d3fb2517041365e3864d979e6e5755eefbd0425b8afd0b8fbe0e72"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973662392",
+        "handle": "mmx-jiaxian-170b-a03-ros-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-3ddb9b4481946ffa2c",
+        "runtimeHash": "d762eaf7378030aed18e92bca09ee83c50b974e0a33d6bcaaed500d8474c1095"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973826232",
+        "handle": "mmx-jiatao-168b-a02-ros-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-3ddb9b4481946ffa2c",
+        "runtimeHash": "e0effaec3c9c3f60a5059f4d8b5fd3ddaaa3f9fb41fc768a1323adc9092a08e9"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973924536",
+        "handle": "mmx-jiamei-168b-a01-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-3ddb9b4481946ffa2c",
+        "runtimeHash": "bf8d745a4ec7db06404341cd1288e30f17261de182f04e832b4ac9bd6108c82f"
+      },
+      {
+        "productId": "gid://shopify/Product/10716941680824",
+        "handle": "mmx-rola-original-172b",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "04cdaaa46c0bcdc83dcc567fe66005e1e73b675da449c089c00881abf7e18336"
+      },
+      {
+        "productId": "gid://shopify/Product/10716941844664",
+        "handle": "mmx-mengzhu-172a",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "5bc574091c7b57ca209718ab23bf7bf1891d7738a68c7c1c0b84ad9a6ae42235"
+      },
+      {
+        "productId": "gid://shopify/Product/10716941942968",
+        "handle": "mmx-mengying-172a",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "bdac48f159a87c0ccc33c24cac3e7137ed1648dadc3d7f51b877f5637601bbd6"
+      },
+      {
+        "productId": "gid://shopify/Product/10716942041272",
+        "handle": "mmx-mengyao-second-look-172a",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "d6e07dd5272814aed00359dde0d494b50ff7bafdce9cda7a9d07bb753bddb543"
+      },
+      {
+        "productId": "gid://shopify/Product/10716942106808",
+        "handle": "mmx-mengyao-original-172a",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "c82e012785c283eda06902f75598fba4099fe62d4b724bbff9123f61ae6886a0"
+      },
+      {
+        "productId": "gid://shopify/Product/10716971237560",
+        "handle": "mmx-mengyi-sunlit-156a",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "a2d042256c842e4c92d1796a9d5019d0a32f585e67139ad42a093a6322cf4652"
+      },
+      {
+        "productId": "gid://shopify/Product/10716971303096",
+        "handle": "mmx-mengfan-150a",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "931bd53610148210787661015f89419d7f6359341ad6471ea9cedfba98a14a66"
+      },
+      {
+        "productId": "gid://shopify/Product/10716971368632",
+        "handle": "mmx-mengting-floral-156b",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-2e1a4b7b1c4966c5b4",
+        "runtimeHash": "eadbf1f3d3c6f010bcd011bb514c57e489b70dc0b4c4591b37a51fb23521ca50"
+      },
+      {
+        "productId": "gid://shopify/Product/10716971466936",
+        "handle": "mmx-mengting-ivory-156b",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-2e1a4b7b1c4966c5b4",
+        "runtimeHash": "94945f1c38f7d553dbed37b69c6186822f221e921ec8effa1c45cb84e16492b4"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960489656",
+        "handle": "mmx-mengqi-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "df05927221d900debe97d81de24f0511845787b6f26ee32f2aecf033f2372c8c"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960555192",
+        "handle": "mmx-mengfan-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "4508edd37777efb5ab665dc28add34dfdc1d75145380e9ca761d2b7d8230be4e"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960653496",
+        "handle": "mmx-mengsha-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "76f955ab2fa7a815b7847efc0c6cbf98ac9f4786d983f80b3a7d33edce4589ac"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960719032",
+        "handle": "mmx-mengjie-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "a64446749abe9fca06f7cf840984f16b8a858dee46b92f643350eb02def0c2c7"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960751800",
+        "handle": "mmx-little-orange-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "3e84f14472c34dfa539fcbf29dca838f3491d9c973527571e088afcff0a9fe32"
+      },
+      {
+        "productId": "gid://shopify/Product/10716960817336",
+        "handle": "mmx-mengting-156b-silicone-companion-doll",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-2e1a4b7b1c4966c5b4",
+        "runtimeHash": "447792c95d1a423ca31f5a3b69e0240bd452d94686bcee5a3d8325a27b9c3546"
+      },
+      {
+        "productId": "gid://shopify/Product/10716972875960",
+        "handle": "mmx-mengqi-165a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "0eb114d5b0dffb6df8b91639e571722a317f7c0b98bb4962d97b6d4122ed1743"
+      },
+      {
+        "productId": "gid://shopify/Product/10716972974264",
+        "handle": "mmx-mengsha-165a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "449d102a71b5184dbcc4fc769496e73741a8684f2c85f332f67b02ca4bd064cf"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973072568",
+        "handle": "mmx-little-orange-165a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "37dd1d55c7a6030283353918c23002b2d6b00fd6e7857b089e39acebedaf752a"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973138104",
+        "handle": "mmx-mengyao-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "f6c81c1f884850e2ec2724ada3611d0263fe48738662e251b9ad4044712c7834"
       }
     ],
     "bindings": {
@@ -34555,6 +34803,167 @@
         ],
         "tag": "options:mmx-standard-v1",
         "signature": "sha256:3a8fedc6100cf6de0b446898302d92d7a62e2b22991bfa0291100a202afb61f1"
+      },
+      "mmx-nov10-da27e1ca41901a5058": {
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The photographed factory configuration.",
+            "add": [
+              {
+                "groupId": "hair-finish",
+                "optionId": "wig"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds implanted hair while retaining your hairstyle reference.",
+            "add": [
+              {
+                "groupId": "hair-finish",
+                "optionId": "implanted"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds an extra removable insert alongside implanted hair.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "replaceable-vagina-insert"
+              }
+            ],
+            "remove": [
+              {
+                "groupId": "accessories",
+                "optionId": "no-spare-insert"
+              }
+            ]
+          }
+        ],
+        "tag": "options:mmx-limited-v1",
+        "signature": "sha256:306112591c016e01f2802184afbbf4d7d7e201f8aac248a9f8f12f402818b20b"
+      },
+      "mmx-nov10-464f45d91912a75e84": {
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The included factory configuration.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hard-hands-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer-butt construction option.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds advanced toe joints; implanted hair remains included.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "toe-joints"
+              }
+            ],
+            "remove": []
+          }
+        ],
+        "tag": "options:mmx-aio-v1",
+        "signature": "sha256:1d5374d53521fee99297fe48d35c26230885bcebd62e6a9e28c884ae768a05eb"
+      },
+      "mmx-nov10-6a5d3faf3c24ddf80c": {
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The included factory configuration.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hard-hands-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer-butt construction option.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds implanted hair while keeping your hairstyle reference.",
+            "add": [
+              {
+                "groupId": "hair-finish",
+                "optionId": "implanted"
+              }
+            ],
+            "remove": []
+          }
+        ],
+        "tag": "options:mmx-standard-v1",
+        "signature": "sha256:567971b4ac83bd82c1852967f277457b1fc79b5c195423a9b6d6cb2d9538c092"
+      },
+      "mmx-nov10-3ddb9b4481946ffa2c": {
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "The included factory configuration.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hard-hands-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer-butt construction option.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds implanted hair while keeping your hairstyle reference.",
+            "add": [
+              {
+                "groupId": "hair-finish",
+                "optionId": "implanted"
+              }
+            ],
+            "remove": []
+          }
+        ],
+        "tag": "options:mmx-standard-v1",
+        "signature": "sha256:70426b31035beca1cc4cf424d181fa37da14de700a39b6c7e60ddc94a976261e"
       }
     }
   }
