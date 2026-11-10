@@ -72,5 +72,84 @@
         "remove": []
       }
     ]
+  },
+  "options:mmx-aio-v1": {
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "The included factory configuration.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "hard-hands-free"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds the softer-butt construction option.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "softer-butt"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Adds advanced toe joints; implanted hair remains included.",
+        "add": [
+          {
+            "groupId": "premium-head-body-options-multiple",
+            "optionId": "toe-joints"
+          }
+        ],
+        "remove": []
+      }
+    ]
+  },
+  "options:mmx-limited-v1": {
+    "tiers": [
+      {
+        "id": "starter",
+        "description": "The photographed factory configuration.",
+        "add": [
+          {
+            "groupId": "hair-finish",
+            "optionId": "wig"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "enthusiast",
+        "description": "Adds implanted hair while retaining your hairstyle reference.",
+        "add": [
+          {
+            "groupId": "hair-finish",
+            "optionId": "implanted"
+          }
+        ],
+        "remove": []
+      },
+      {
+        "id": "collector",
+        "description": "Adds an extra removable insert alongside implanted hair.",
+        "add": [
+          {
+            "groupId": "accessories",
+            "optionId": "replaceable-vagina-insert"
+          }
+        ],
+        "remove": [
+          {
+            "groupId": "accessories",
+            "optionId": "no-spare-insert"
+          }
+        ]
+      }
+    ]
   }
 }
