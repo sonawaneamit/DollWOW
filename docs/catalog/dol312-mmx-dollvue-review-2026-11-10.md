@@ -1,7 +1,8 @@
 # MMX DollVue option review
 
-10 November 2026. Classification only. No product, catalog, price, source menu,
-readiness registry, live interface, cart, email or image-generation change.
+10 November 2026. Expanded classification and private fidelity preparation.
+One journaled clothed image-generation probe; no product, catalog, price, source
+menu, readiness registry, live interface, cart, email or customer-usage change.
 
 Native review sheet:
 https://docs.google.com/spreadsheets/d/1HsCMcdovaqRHhajtSHBhACm5Q7Jx1GPhEMZLU2389v4/edit
@@ -42,7 +43,7 @@ All 45 reference files decode and have SHA256 bindings. Codex reviewed their
 contact sheets. The five skin references contain nude torsos, so reviewed
 skin-only references should be prepared for the non-explicit appearance path.
 This review does not establish supplier-reference equivalence or generated
-output fidelity. No images were generated.
+output fidelity. The subsequent single clothed fidelity probe is recorded below.
 
 Other visible features include implanted brows/lashes, head/body makeup,
 visible-vein paint, close-up skin texture, hairlines and exposed foot hardware.
@@ -87,7 +88,7 @@ The configured DollVue route uses `seedream-v5-pro-edit`, then
 `seedream-v5-lite-edit` and `qwen-edit-uncensored` fallbacks. Venice's
 [multi-edit documentation](https://docs.venice.ai/api-reference/endpoint/image/multi-edit)
 describes layered prompt-based image editing, not a five-category limit. That
-does not prove any specific cosmetic edit's fidelity; no new generation was run.
+does not prove any specific cosmetic edit's fidelity; the actual single probe below failed unselected-feature preservation.
 
 ## Private reproducibility
 
@@ -111,9 +112,10 @@ and resumes completed cases from its saved report. `check-mmx-dollvue-references
 only decodes/hashes existing local assets and builds private contact sheets.
 `prepare-mmx-dollvue-review` assembles the reviewed classification evidence.
 
-The native sheet was imported from an Artifact Tool workbook and all four tabs
-were visually verified in Google Sheets. Native table ranges, filters, frozen
-headers and dropdown column metadata were independently read back. No settings
+The original four native tabs were visually verified in Google Sheets. Expanded
+content was checked in a native export rendered through Artifact Tool after
+browser control timed out. Native table ranges, filters, frozen headers and
+dropdown column metadata were independently read back. No settings
 or permissions were changed for the existing website or live catalog.
 
 ## Private clothed fidelity pilot, 10 November
