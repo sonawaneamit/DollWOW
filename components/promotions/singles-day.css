@@ -1,0 +1,11 @@
+.singles-day-hero{background:#170f16;color:#faecd5;margin:0 auto;max-width:1920px}
+.singles-day-hero picture,.singles-day-hero img{display:block;width:100%;height:auto}
+.singles-day-hero__details{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.5rem clamp(1rem,4vw,4rem);border-top:1px solid #b8966533}
+.singles-day-hero__details h1{font:500 clamp(1.5rem,2.5vw,2.2rem)/1.15 Georgia,serif;margin:0 0 .5rem;color:inherit}
+.singles-day-hero__details p{margin:.3rem 0;line-height:1.5;font-size:.95rem}
+.singles-day-hero__details .singles-day-hero__terms{font-size:.8rem;color:#e4d4c3}
+.singles-day-hero__actions{display:flex;flex-wrap:wrap;gap:.65rem;flex-shrink:0}
+.singles-day-hero__actions a{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:.75rem 1.2rem;border:1px solid #ccb087;color:inherit;text-decoration:none;border-radius:3px;font-size:.9rem}
+.singles-day-hero__actions a:first-child{background:#ebd0a6;color:#261724}
+.singles-day-hero__actions a:focus-visible{outline:3px solid white;outline-offset:4px}
+@media(max-width:800px){.singles-day-hero__details{display:block;padding:1.1rem}.singles-day-hero__actions{margin-top:1rem}.singles-day-hero__actions a{flex:1}.singles-day-hero__details p{font-size:.9rem}}
