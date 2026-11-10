@@ -1,4 +1,4 @@
-// DOL-221: factory PDF dated 24 October; private presentation only.
+// DOL-221: approved presentation release, 10 November 2026. Checkout prices stay independent.
 export const GYNOID_EARLY_BIRD = {
   id: 'gynoid-early-bird-2026',
   startsAt: '2026-11-05T00:00:00Z',
@@ -19,4 +19,9 @@ export function gynoidEarlyBirdPreviewEnabled(environment: Record<string, string
 export function gynoidEarlyBirdTier(now: Date) {
   const time = now.getTime();
   return GYNOID_EARLY_BIRD.tiers.find(tier => time >= Date.parse(tier.start) && time < Date.parse(tier.end)) ?? null;
+}
+
+// Martin approved this exact campaign presentation for production on 10 Nov.
+export function gynoidEarlyBirdEnabled(environment: Record<string, string | undefined> = process.env) {
+  return environment.DOLLWOW_DOL221_ENABLED !== '0' && (environment.VERCEL_ENV === 'production' || gynoidEarlyBirdPreviewEnabled(environment));
 }

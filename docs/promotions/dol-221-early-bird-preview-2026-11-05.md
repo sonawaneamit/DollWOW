@@ -75,3 +75,17 @@ are absent. Asked Dolly once in1c18fa3e-4e45-46bd-9ca0-3a68c8a51273 to provide
 an accessible SKILL.md, design-bar file and approved model. Do not substitute
 another model/process, generate more sizes, or claim the existing photo is the
 requested new banner concept. Price question also remains open.
+
+## Approved presentation release — 10 November
+
+Martin approved the exact hosted preview in Codex chat on 10 November. The
+campaign presentation is now enabled in production, retaining its date-based
+$500/$300/$100 stages and 5 December expiry. Existing eleven product prices,
+variants, options and checkout are unchanged. This does not publish a new M25
+or Lyra product. Contact-before-order qualification remains in the approved copy.
+Preview-only clock overrides and noindex guards remain separate from production
+visibility; existing Greenback and Grace changes are preserved on current main.
+
+Validation: TypeScript; 11 campaign boundary/isolation tests; webpack production
+build; source and built-chunk asset gates (4,954 assets). Turbopack cannot build
+with the local external node_modules symlink, so webpack was used successfully.

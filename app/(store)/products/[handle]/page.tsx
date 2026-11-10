@@ -1,6 +1,6 @@
 import { isGreenbackPricePreview, withGreenbackPricePreview } from '@/lib/catalog/greenbackApprovedPriceBinding';
 import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
-import { gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
+import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
 import { canonicalBrandValue } from '@/lib/catalog/brands';
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -190,7 +190,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 </span>
               </Link>
             ) : null}
-            {gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(productBrand) === 'gynoid' ? <GynoidEarlyBirdPromotion placement="pdp" promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} /> : null}
+            {gynoidEarlyBirdEnabled() && canonicalBrandValue(productBrand) === 'gynoid' ? <GynoidEarlyBirdPromotion placement="pdp" promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} /> : null}
             <SeDollPdpFreebieBlock product={publicProduct} />
             <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />

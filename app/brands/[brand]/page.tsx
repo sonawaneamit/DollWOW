@@ -1,5 +1,5 @@
 import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
-import { gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
+import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
 import { previewPromotionClock } from '@/lib/promotions/optionPricing';
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -127,7 +127,7 @@ export default async function BrandHubPage({
         </div>
       </div>
 
-      {brand.value === 'gynoid' && gynoidEarlyBirdPreviewEnabled() ? <GynoidEarlyBirdPromotion promoClock={previewPromotionClock(rawSearchParams.promoClock) ?? new Date().toISOString()} freezeClock={Boolean(previewPromotionClock(rawSearchParams.promoClock))} /> : null}
+      {brand.value === 'gynoid' && gynoidEarlyBirdEnabled() ? <GynoidEarlyBirdPromotion promoClock={previewPromotionClock(rawSearchParams.promoClock) ?? new Date().toISOString()} freezeClock={Boolean(previewPromotionClock(rawSearchParams.promoClock))} /> : null}
 
       {brand.collectionHandle === "se-doll" ? <SeDollBrandPromotionBanner /> : null}
       <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && brand.value === 'sedoll'} initialClock={new Date().toISOString()} />

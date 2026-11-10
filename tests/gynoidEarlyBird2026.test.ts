@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gynoidEarlyBirdPreviewEnabled, gynoidEarlyBirdTier } from '@/lib/promotions/gynoidEarlyBird2026';
+import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled, gynoidEarlyBirdTier } from '@/lib/promotions/gynoidEarlyBird2026';
 
 describe('Gynoid Early Bird boundaries and isolation', () => {
   it.each([
@@ -21,4 +21,11 @@ describe('Gynoid Early Bird boundaries and isolation', () => {
     expect(gynoidEarlyBirdPreviewEnabled({ VERCEL_ENV: 'preview' })).toBe(false);
     expect(gynoidEarlyBirdPreviewEnabled({ VERCEL_ENV: 'preview', NEXT_PUBLIC_DOL221_PREVIEW: '1' })).toBe(true);
   });
+});
+
+it("enables only the approved production presentation and keeps preview isolation", () => {
+ expect(gynoidEarlyBirdEnabled({VERCEL_ENV:"production"})).toBe(true);
+ expect(gynoidEarlyBirdEnabled({VERCEL_ENV:"production",DOLLWOW_DOL221_ENABLED:"0"})).toBe(false);
+ expect(gynoidEarlyBirdEnabled({VERCEL_ENV:"preview"})).toBe(false);
+ expect(gynoidEarlyBirdEnabled({VERCEL_ENV:"preview",NEXT_PUBLIC_DOL221_PREVIEW:"1"})).toBe(true);
 });
