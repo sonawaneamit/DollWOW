@@ -221,6 +221,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
+            {isPrivateDraft && product.tags.some(tag => /^options:mmx-(standard|ultra-dream)-v1$/.test(tag)) ? <p className="mt-2 text-sm text-ivory-300">US shipping is included. Taxes and eligible discounts are calculated at checkout.</p> : null}
             <AfterpayMessaging amount={Number(price.amount)} currencyCode={price.currencyCode} pageType="product" itemSkus={firstAvailable?.id} itemCategories={product.productType} eligible={Boolean(firstAvailable?.availableForSale)} usesDisplayCurrency />
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
             {isChikuProduct(product) ? <p className="mt-3 text-base leading-7 text-ivory-300">Fixed teeth and tongue included as standard. Both are non-removable.</p> : null}
