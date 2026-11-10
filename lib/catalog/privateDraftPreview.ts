@@ -10,12 +10,14 @@ import elfRecipes from '@/data/draft-previews/se-elf-recipes.json';
 import { gynoidReleasePreviewProducts } from './gynoidReleasePreview';
 import { prepareGynoidTemplateCandidate, reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 import { mmxPdpPreviewProduct, mmxPdpPreviewRecipe } from './mmxPdpPreview';
-import { fanrealPdpPreviewProduct, fanrealPdpPreviewRecipe } from './fanrealPdpPreview';
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
-  const fanreal = fanrealPdpPreviewProduct(handle);
-  if (fanreal) return fanreal;
+  if (process.env.DOLLWOW_DOL335_PREVIEW === '1') {
+    const { fanrealPdpPreviewProduct } = await import('./fanrealPdpPreview');
+    const fanreal = fanrealPdpPreviewProduct(handle);
+    if (fanreal) return fanreal;
+  }
   const mmx = mmxPdpPreviewProduct(handle);
   if (mmx) return mmx;
   const grace = grace160PreviewProduct(handle);
@@ -32,8 +34,11 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
-  const fanrealRecipe = fanrealPdpPreviewRecipe(product, config);
-  if (fanrealRecipe !== undefined) return fanrealRecipe;
+  if (process.env.VERCEL_ENV === 'preview' && process.env.DOLLWOW_DOL335_PREVIEW === '1') {
+    const { fanrealPdpPreviewRecipe } = await import('./fanrealPdpPreview');
+    const fanrealRecipe = fanrealPdpPreviewRecipe(product, config);
+    if (fanrealRecipe !== undefined) return fanrealRecipe;
+  }
   const mmxRecipe = mmxPdpPreviewRecipe(product, config);
   if (mmxRecipe !== undefined) return mmxRecipe;
   if (isGrace160PreviewProduct(snapshot)) return grace160TemplateRecipe(product, config, true);
