@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:35:18.587Z",
+      "reviewedAt": "2026-11-10T18:53:53.720Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
+      "payloadHash": "86eb307eb5b221d5077ee4ee7c7ec1790c4ffcc9917d8bf2dd6a179e764e5a35"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:35:18.587Z",
+      "reviewedAt": "2026-11-10T18:53:53.720Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
+      "payloadHash": "86eb307eb5b221d5077ee4ee7c7ec1790c4ffcc9917d8bf2dd6a179e764e5a35"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex under Martin DOL261 17:52/17:55 launch instruction",
-      "reviewedAt": "2026-11-10T18:35:18.587Z",
+      "reviewedAt": "2026-11-10T18:53:53.720Z",
       "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "137adfe17d9916825ebb5020e7667e5a3d1dd8766d9329d2682d5adb3b9743a2"
+      "payloadHash": "86eb307eb5b221d5077ee4ee7c7ec1790c4ffcc9917d8bf2dd6a179e764e5a35"
     }
   },
   "payload": {
     "releaseId": "templates-2026-11-10-mmx-batches",
-    "sourceSnapshotHash": "52814055e9d1f665874dd7f8fa20d4fb0abb402ec75d4f52baa5ee52ea1fe40d",
+    "sourceSnapshotHash": "a1f78705dd1af88f8825f9b9d40e7ed4a1235ddb1f8708cac606ede0151ebfb8",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2947,8 +2947,6 @@
       "gid://shopify/Product/10716942106808",
       "gid://shopify/Product/10716971237560",
       "gid://shopify/Product/10716971303096",
-      "gid://shopify/Product/10716971368632",
-      "gid://shopify/Product/10716971466936",
       "gid://shopify/Product/10716960489656",
       "gid://shopify/Product/10716960555192",
       "gid://shopify/Product/10716960653496",
@@ -2958,7 +2956,13 @@
       "gid://shopify/Product/10716972875960",
       "gid://shopify/Product/10716972974264",
       "gid://shopify/Product/10716973072568",
-      "gid://shopify/Product/10716973138104"
+      "gid://shopify/Product/10716973138104",
+      "gid://shopify/Product/10716974022840",
+      "gid://shopify/Product/10716941254840",
+      "gid://shopify/Product/10716941451448",
+      "gid://shopify/Product/10716973203640",
+      "gid://shopify/Product/10640124182712",
+      "gid://shopify/Product/10716993519800"
     ],
     "entries": [
       {
@@ -23416,20 +23420,6 @@
         "runtimeHash": "931bd53610148210787661015f89419d7f6359341ad6471ea9cedfba98a14a66"
       },
       {
-        "productId": "gid://shopify/Product/10716971368632",
-        "handle": "mmx-mengting-floral-156b",
-        "tag": "options:mmx-ultra-dream-v1",
-        "bindingKey": "mmx-nov10-2e1a4b7b1c4966c5b4",
-        "runtimeHash": "eadbf1f3d3c6f010bcd011bb514c57e489b70dc0b4c4591b37a51fb23521ca50"
-      },
-      {
-        "productId": "gid://shopify/Product/10716971466936",
-        "handle": "mmx-mengting-ivory-156b",
-        "tag": "options:mmx-ultra-dream-v1",
-        "bindingKey": "mmx-nov10-2e1a4b7b1c4966c5b4",
-        "runtimeHash": "94945f1c38f7d553dbed37b69c6186822f221e921ec8effa1c45cb84e16492b4"
-      },
-      {
         "productId": "gid://shopify/Product/10716960489656",
         "handle": "mmx-mengqi-163a-silicone-companion-doll",
         "tag": "options:mmx-standard-v1",
@@ -23498,6 +23488,48 @@
         "tag": "options:mmx-standard-v1",
         "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
         "runtimeHash": "f6c81c1f884850e2ec2724ada3611d0263fe48738662e251b9ad4044712c7834"
+      },
+      {
+        "productId": "gid://shopify/Product/10716974022840",
+        "handle": "mmx-jiamei-168b-a01-ros-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-3ddb9b4481946ffa2c",
+        "runtimeHash": "997713498ea43b74b9f2b3b6c2ae1f3376257aecb290b7cce882eba177970a12"
+      },
+      {
+        "productId": "gid://shopify/Product/10716941254840",
+        "handle": "mmx-rola-atelier-172b",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "e67636ad14b99fc4e19ee76654410ef56d1c1a61f61c0f79b06206277a520d91"
+      },
+      {
+        "productId": "gid://shopify/Product/10716941451448",
+        "handle": "mmx-rola-second-look-172b",
+        "tag": "options:mmx-ultra-dream-v1",
+        "bindingKey": "mmx-nov10-de0b9033542535f4f7",
+        "runtimeHash": "e4a126352998ee703df5a8a09cddf1d6c13e864cd112e7a4a4cde44068386ca5"
+      },
+      {
+        "productId": "gid://shopify/Product/10716973203640",
+        "handle": "mmx-mengting-163a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "832aa9f93688ff8ceba86a8437da6db290710b3b7cfb6cbc453343d3d2580a60"
+      },
+      {
+        "productId": "gid://shopify/Product/10640124182712",
+        "handle": "mmx-marcy-165a-silicone-companion-doll",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-e1ac8d5fbb66679943",
+        "runtimeHash": "f014311342a3e910e8c8b3f282a21eaa64f622ff7645850a833045f0cf9965b5"
+      },
+      {
+        "productId": "gid://shopify/Product/10716993519800",
+        "handle": "mmx-menghan-150a",
+        "tag": "options:mmx-standard-v1",
+        "bindingKey": "mmx-nov10-7480d697743675335a",
+        "runtimeHash": "e8fd68c403a4ddba21c18b192eba4635511f9c6599ef60015b69461b67b00f7d"
       }
     ],
     "bindings": {
