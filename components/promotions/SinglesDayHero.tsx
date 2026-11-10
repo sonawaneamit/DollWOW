@@ -24,8 +24,9 @@ export function useSinglesDayCampaign(initialActive = false) {
   return active;
 }
 
-export function SinglesDayHero() {
-  return <section className="singles-day-hero" aria-labelledby="singles-day-title" data-singles-day-hero>
+export function SinglesDayHero({ headingLevel = 'h1' }: { headingLevel?: 'h1' | 'h2' }) {
+  const Heading = headingLevel;
+  return <section id={SINGLES_DAY_2026.id} className="singles-day-hero" aria-labelledby="singles-day-title" data-singles-day-hero>
     <picture>
       <source media="(max-width: 640px)" srcSet="/images/promotions/singles-day-2026/ria-v4-960.jpg" />
       <source media="(max-width: 1280px)" srcSet="/images/promotions/singles-day-2026/ria-v4-1280.jpg" />
@@ -35,13 +36,18 @@ export function SinglesDayHero() {
         alt="Ria in a navy evening dress in the approved DollWOW Singles Day editorial artwork." fetchPriority="high" />
     </picture>
     <div className="singles-day-hero__details">
-      <div><h1 id="singles-day-title">$299 off full-size dolls</h1>
+      <div><Heading id="singles-day-title">$299 off full-size dolls</Heading>
         <p>Ready to ship + custom. Stacks with eligible brand promotions.</p>
-        <p className="singles-day-hero__terms">Live now until early Black Friday. Excludes torsos, hips, minis and add-ons. Applied automatically at checkout.</p></div>
+        <p className="singles-day-hero__terms">Live now until early Black Friday. Excludes torsos, hips, minis and add-ons. Use code SINGLESDAYWOW at checkout.</p></div>
       <div className="singles-day-hero__actions">
         <Link href="/shop/sex-dolls">Shop dolls</Link>
         <Link href="/shop/ready-to-ship">Ready to ship</Link>
       </div>
     </div>
   </section>;
+}
+
+export function SinglesDayPromotion({ initialActive = false }: { initialActive?: boolean }) {
+  const active = useSinglesDayCampaign(initialActive);
+  return active ? <div className="mt-6"><SinglesDayHero headingLevel="h2" /></div> : null;
 }

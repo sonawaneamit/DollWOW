@@ -84,6 +84,13 @@ export function templateConfigurationPresets(
       } else state[choice.groupId] = choice.optionId;
     }
     const resolved = resolveCustomization(pricedConfig, state, basePrice);
+    // A tier can itself reveal a new included branch (for example the implant
+    // style after choosing paid hair). Retain explicit choices, including empty
+    // invalid choices, and adopt only genuinely absent visible defaults.
+    for (const group of pricedConfig.groups) {
+      if (group.visibleWhen !== undefined && !Object.hasOwn(state, group.id) &&
+          Object.hasOwn(resolved.selections, group.id)) state[group.id] = resolved.selections[group.id];
+    }
     if (definition.tag.startsWith('options:wm-') && wmPresetCompatibilityIssues(pricedConfig, state).length) return [];
     if (tier.add.some(choice => !selectionIds(resolved.selections[choice.groupId]).includes(choice.optionId))) return [];
     const expected = Object.entries(state).filter(([g]) =>

@@ -132,3 +132,17 @@ until Martin approves the exact actual preview. Keep suitable non-explicit
 sources, per-option references, current holds, byte/fingerprint bindings and
 representative fidelity checks. A classification or source inventory is not an
 approval-ready generated preview.
+
+## Homepage Hero And Promotion Placement
+
+Martin's standing instruction, 10 November 2026: never change the look of the
+website or homepage without confirming the exact visual change with him first.
+This covers layouts, styling, hero sections and banner placement. Preserve the
+homepage's existing video spotlight hero. Ask Martin for explicit approval before
+replacing or materially changing it. Approval of campaign artwork, copy, a discount or
+a campaign launch does not authorize changing the homepage hero placement.
+
+Promotion announcements belong in the top announcement bar, whose link always
+goes to `/promo`. Approved campaign banner artwork and full promotion details
+belong on `/promo`; do not substitute them for the video hero without an exact
+homepage-placement approval.

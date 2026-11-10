@@ -135,8 +135,7 @@ export function detailedProductSpecs(product: Product): DisplaySpec[] {
       : md && ['Weight', 'Listed weight (unverified)'].includes(spec.label) ? { ...spec, label: 'Listed weight' } : spec);
   return dedupeSpecs(specs)
     .map((spec) => isMeasurementLabel(spec.label) ? { ...spec, value: formatMeasurementDual(spec.label, spec.value) } : spec)
-    .filter((spec) => spec.value)
-    .slice(0, 18);
+    .filter((spec) => spec.value);
 }
 
 export function productMeasurementSpecs(product: Product): DisplaySpec[] {
@@ -291,6 +290,12 @@ function normalizeLabel(label: string) {
 }
 
 function normalizeMeasurementLabel(label: string) {
+  const factoryAliases: Record<string, string> = {
+    Hips: "Hip", Hipline: "Hip", Foot: "Feet Length", "Foot Length": "Feet Length",
+    Shoulder: "Shoulders Width", "Arm Length": "Arms Length",
+    "Vaginal Depth": "Vagina Depth", "Anal Depth": "Anus Depth", "Upper Bust": "Bust"
+  };
+  if (factoryAliases[label]) return factoryAliases[label];
   if (label === "Shoulder Width") return "Shoulders Width";
   if (label === "Shoulders width") return "Shoulders Width";
   return normalizeLabel(label);

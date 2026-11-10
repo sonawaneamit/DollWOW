@@ -1,0 +1,2457 @@
+{
+  "id": "gid://shopify/Product/10635758076088",
+  "handle": "fanreal-mirella-175cm-d-cup-real-skin-silicone-companion-doll",
+  "title": "Fanreal Mirella 175cm D-Cup Real Skin Silicone Companion Doll",
+  "description": "Fanreal Mirella is listed in 175 cm, Silicone, D-Cup with a 84 cm bust. Browse the full measurements and available configuration choices for this model below. Height: 175 cm / 5 ft 9 in Weight: 34 kg / 75 lb Cup size: D-Cup Bust: 84 cm Waist: 62 cm Brand: Fanreal Material: Silicone Availability: Custom factory order Warehouse: Factory order For custom orders, factory photos are shared for your approval before shipment.",
+  "seo": {
+    "title": "Fanreal Mirella 175cm D-Cup Real Skin Doll | DollWow",
+    "description": "Explore Fanreal Mirella: 175cm D-cup Real Skin silicone, ROS head and Tan factory look. Compare setups and personalize your made-to-order doll."
+  },
+  "vendor": "Fanreal",
+  "productType": "Custom silicone doll",
+  "tags": [
+    "custom",
+    "customizable",
+    "fanreal",
+    "fanreal-dolls",
+    "female-doll",
+    "full-doll",
+    "height-170-179",
+    "options:fanreal-female-silicone-real-skin-175d-ros",
+    "real-skin",
+    "silicone",
+    "skin-tan"
+  ],
+  "featuredImage": null,
+  "images": [],
+  "media": [],
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/54247001981112",
+      "title": "Default Title",
+      "availableForSale": true,
+      "price": {
+        "amount": "2980.0",
+        "currencyCode": "USD"
+      },
+      "selectedOptions": [
+        {
+          "name": "Title",
+          "value": "Default Title"
+        }
+      ]
+    }
+  ],
+  "priceRange": {
+    "minVariantPrice": {
+      "amount": "2980.0",
+      "currencyCode": "USD"
+    },
+    "maxVariantPrice": {
+      "amount": "2980.0",
+      "currencyCode": "USD"
+    }
+  },
+  "extended": {
+    "catalogIdentityKey": "fanreal__mirella__175cm__d-cup__real-skin__silicone",
+    "catalogBodyIdentityKey": "fanreal__real-skin-175cm-d__silicone",
+    "headModel": "Mirella",
+    "displayName": "Mirella Real Skin",
+    "brand": "Fanreal",
+    "material": "Silicone",
+    "heightCm": 175,
+    "weightLb": 74.96,
+    "cupSize": "D-Cup",
+    "measurements": {
+      "Height": "175 cm / 5 ft 9 in",
+      "Weight": "34 kg / 75 lb",
+      "Cup size": "D-Cup",
+      "Bust": "84 cm",
+      "Underbust": "68 cm",
+      "Waist": "62 cm",
+      "Hips": "93 cm",
+      "Shoulder": "40 cm",
+      "Foot": "Confirm for exact build",
+      "Series": "Real Skin",
+      "Head": "Mirella ROS",
+      "Skin": "Tan"
+    },
+    "warehouseCountry": "Factory order",
+    "stockStatus": "custom",
+    "deliveryEstimate": "Est. 3 weeks",
+    "customAvailable": true,
+    "customizationGroups": [
+      {
+        "id": "choose-head",
+        "label": "Choose a Head",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Mirella (as pictured)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/02c8f1b24263cb4048a14f38bed0e6ca4ac726ad653d3e65a85f8a37af2254ea.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "ling",
+            "label": "Ling",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/85ea2ea09c1c4150629ff1794dcf64281a2f05c9e536cf9158f4cc06a04c0a09.webp",
+              "label": "Ling"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "fei",
+            "label": "Fei",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f42ec818d94e0b6faf6811f80b709952b5efe81020ee36182cc065b6c919249f.webp",
+              "label": "Fei"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "josie",
+            "label": "Josie",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5a4edb8016680043f04000b52832a34cceafcf3d8971ff1db70471b5482143d2.webp",
+              "label": "Josie"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "gina",
+            "label": "Gina",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4c86f8800183eefc7f7a5d76ab0933b18f921d664ec37d864538092c338b7939.webp",
+              "label": "Gina"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "della",
+            "label": "Della",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2a16ac458f2c0381a78b7441b613b7507a412f62e95ea1c499cda669f447d463.webp",
+              "label": "Della"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "maria",
+            "label": "Maria",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/81ec800d3e5fa5004fd9d310834cedda303e8a511a37c43c20ea9491f98d45ae.webp",
+              "label": "Maria"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "ellie",
+            "label": "Ellie",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e48f18a28eee9ba7caed383dfc6121ea242538f24d1802fac39b2e1aec5e32fd.webp",
+              "label": "Ellie"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "carlee",
+            "label": "Carlee",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/96b573203ef4050eab1aa100b9cf43b30ff94fccbe6004c36a00a6277b06d974.webp",
+              "label": "Carlee"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "kelly",
+            "label": "Kelly",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/53585387d07a34d224426d7f0fa18e332f77ae26fe34ec9420e4408841427742.webp",
+              "label": "Kelly"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "vanessa",
+            "label": "Vanessa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2d34a4d8f30c266509e86e9adf273f53a8ba2b0db71982cc9d5e91588b574553.webp",
+              "label": "Vanessa"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "maddy",
+            "label": "Maddy",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e419f3e6bec9d9673ac87943eb28be315a404c4a1578674e15543145b631c626.webp",
+              "label": "Maddy"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "lila",
+            "label": "Lila",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/559099ba5fcfd0b29b4042f504f7c1adc35c2e6ad8ea512c7dbe9b6e3c8aa99d.webp",
+              "label": "Lila"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "bellona",
+            "label": "Bellona",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b3c9ede95046043f8ea05fbc86bd1dde931862934b94bff17372552e0fa99520.webp",
+              "label": "Bellona"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "mirella",
+            "label": "Mirella",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/20191d8c81fd0e421b95488435dc539e7c41f6c3b28f97e942970b979afdfbab.webp",
+              "label": "Mirella"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "eva",
+            "label": "Eva",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f74681e6556719622f46d4222369aeba7a7648a85a68ad7c71902e99cac0d4a5.webp",
+              "label": "Eva"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "melissa",
+            "label": "Melissa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1e4f7f1c08c1f2c737fd6224405f0dcfee94064847cb5799efe4f4afff39f1fa.webp",
+              "label": "Melissa"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "diana",
+            "label": "Diana",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a48eb0f1aa8a0081cdca0c9a4534a94eb6ca62c7136874b68eaa259e41853f75.webp",
+              "label": "Diana"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "description": "Choose one Fanreal head for this doll. Switching the head identity is included with this build."
+      },
+      {
+        "id": "head-upgrade",
+        "label": "Head Upgrade (Silicone)",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "soft-silicone-head-moveable-jaw",
+            "label": "Soft silicone head (Moveable jaw)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c51c4c7bdfa93a9c2f174fbd9e323d975795ec648b2e6306431b61deed938c7c.webp",
+              "label": "Soft silicone head (Moveable jaw)"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "same-as-photo"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "carlee"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "kelly"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "vanessa"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "maddy"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "lila"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "bellona"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "mirella"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "melissa"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "diana"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "head-upgrade-selectable",
+        "label": "Head Upgrade (Silicone)",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "hard-silicone-head-default",
+            "label": "Hard silicone head (Default)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/265fed0a7c5e2ce570ed5784db5cea06c0992caac5677115d454f206ae4d8730.webp",
+              "label": "Hard silicone head (Default)"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "soft-silicone-head-moveable-jaw",
+            "label": "Soft silicone head (Moveable jaw)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c51c4c7bdfa93a9c2f174fbd9e323d975795ec648b2e6306431b61deed938c7c.webp",
+              "label": "Soft silicone head (Moveable jaw)"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "ling"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "fei"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "gina"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "della"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "maria"
+            }
+          ],
+          [
+            {
+              "groupId": "choose-head",
+              "optionId": "ellie"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "tongue",
+        "label": "Tongue (ROS heads)",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "none",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/265fed0a7c5e2ce570ed5784db5cea06c0992caac5677115d454f206ae4d8730.webp",
+              "label": "None"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "head-upgrade",
+              "optionId": "soft-silicone-head-moveable-jaw"
+            }
+          ],
+          [
+            {
+              "groupId": "head-upgrade-selectable",
+              "optionId": "soft-silicone-head-moveable-jaw"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "hair-options",
+        "label": "Hair Options",
+        "required": true,
+        "selectionMode": "single",
+        "display": "cards",
+        "options": [
+          {
+            "id": "wig-cover",
+            "label": "Wig cover",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-transplant-ht-fiber",
+            "label": "Wig transplant (High temperature fiber)",
+            "priceDelta": 249,
+            "priceVerified": true
+          },
+          {
+            "id": "hair-transplant-human",
+            "label": "Hair transplant (Human hair)",
+            "priceDelta": 399,
+            "priceVerified": true
+          }
+        ]
+      },
+      {
+        "id": "wig",
+        "label": "Wig Style",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e1e6166fbf70970ad1a022b70a81a7126cccd0e0bbea474b6f77b7dab46b4cee.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-01",
+            "label": "Wig 01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7de7d76021db45b3e799611e312208369dd49f71a0b26fb99cbe7e8d60f39ab9.webp",
+              "label": "Wig 01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-02",
+            "label": "Wig 02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2466a760ab298b24e69db1f7732ed65a7cc4036ae6337de3047fd6b3f5943da2.webp",
+              "label": "Wig 02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-03",
+            "label": "Wig 03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5d018ad1da66c1b5c1c6a7cbd1196cf61bf7e656a24334f179b92422e202daa2.webp",
+              "label": "Wig 03"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-04",
+            "label": "Wig 04",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/24d999a0e775209ef0fc695b91e9ca4cd6393bf7c34e879409c2cb35f38add9d.webp",
+              "label": "Wig 04"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-05",
+            "label": "Wig 05",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8041dbaf98a6ba13088b04905fd322e3662a26c5102b36b632d37439947e4097.webp",
+              "label": "Wig 05"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-06",
+            "label": "Wig 06",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c6e12638d16c7737620afcb29be0a4778728063dcd0a111398aa534de679d614.webp",
+              "label": "Wig 06"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-07",
+            "label": "Wig 07",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d5863fd6175f3f4b23879af5f8f8223267414fab9bc81575a2005f0d01eb0b55.webp",
+              "label": "Wig 07"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-08",
+            "label": "Wig 08",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b58ded3b1c211bb125e504d80352b7d9a5d1b528e92afae928eeb24400346796.webp",
+              "label": "Wig 08"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-09",
+            "label": "Wig 09",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/656a2418310a198391ec0b55046673a075de8362683ecd2bf3aae51dca0af505.webp",
+              "label": "Wig 09"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-10",
+            "label": "Wig 10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/53242638e7ae773662e972eaf4ca6c154fc6741a8861219948f39a098b964a41.webp",
+              "label": "Wig 10"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-11",
+            "label": "Wig 11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d36330fc272ae697236cef3ff4d65b218992c67e2a4ecd80d2d272b99ac4fe3d.webp",
+              "label": "Wig 11"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-12",
+            "label": "Wig 12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4b924a1f19d3e88efa28f5f7a878dbd4dc76a167b427b9e0441235d45c60a607.webp",
+              "label": "Wig 12"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-13",
+            "label": "Wig 13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2e740f47268f10ea595a8be8f7b02d0660331b551b62cf5b6af78ced50cd6456.webp",
+              "label": "Wig 13"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-14",
+            "label": "Wig 14",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1182cd83f2c12d60e7bfb85f99905ec29f63038111321c7037bb5c24e648f516.webp",
+              "label": "Wig 14"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-15",
+            "label": "Wig 15",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3228f18bf756ab49615a7d83e84fa6fe6c3ac04ef67e8398a5094ac801c23bed.webp",
+              "label": "Wig 15"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-16",
+            "label": "Wig 16",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7dd03c0bb3b44c69b64fac9537cf7c1baccd21f8b4c75e3c29f8cda444664287.webp",
+              "label": "Wig 16"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-17",
+            "label": "Wig 17",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c4370d077dcb14393a66787599002b963199372d1207965ab7375bf653b1ec4a.webp",
+              "label": "Wig 17"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-18",
+            "label": "Wig 18",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/96f981ec275dbfe92d60474ff06e1e4636f66434d6afe2fbd6faf009c4788bfa.webp",
+              "label": "Wig 18"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-19",
+            "label": "Wig 19",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a5a68d64b788d321707ca3d82c02fcf3a2b30b30cfc1a44ae03ecbed9c6ec1da.webp",
+              "label": "Wig 19"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-20",
+            "label": "Wig 20",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ee233174988b198bc2c1d3a6e8e0003ddb3ae94b2e876e88377890ef3a9a9614.webp",
+              "label": "Wig 20"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-21",
+            "label": "Wig 21",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e84e200811baa2222728bbfac6621bf866961516ae629582efefbaab7779fc7c.webp",
+              "label": "Wig 21"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-22",
+            "label": "Wig 22",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/49df900121adb7475178aa031fbb30309a6f48a4d2ffaf6b288651b3a1c95624.webp",
+              "label": "Wig 22"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-23",
+            "label": "Wig 23",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1dcfa3f7682afa5a044dae55b67b7bb6190286d7eaa88b65885f51e4224292ba.webp",
+              "label": "Wig 23"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-24",
+            "label": "Wig 24",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/57f78de90567c320408bd6f94b87b0fa6f5c8cefcbf197d3334efdb47b9735ab.webp",
+              "label": "Wig 24"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-25",
+            "label": "Wig 25",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1c20c40bb157134e72461fe2aa1e77fc65e829b01cf3cafd936e2f3b7958eaaf.webp",
+              "label": "Wig 25"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-26",
+            "label": "Wig 26",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a0445fe5d3426aeb94bd922bfb2570bd41733b5022762b9cc396b4c319db8603.webp",
+              "label": "Wig 26"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-27",
+            "label": "Wig 27",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/498605c46e1f2fd7fc8e8ab4e5049d9471ebc653e3b50cd2aba79a1a63da1b4d.webp",
+              "label": "Wig 27"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-28",
+            "label": "Wig 28",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ea23c29c1b2b737a9a806b77df302675c508354f1077dd6483ce4867105bb930.webp",
+              "label": "Wig 28"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-29",
+            "label": "Wig 29",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5c7dcd4591b4372bb6b3e6d921d51b945d53c76cd97459fa59137741667e1eca.webp",
+              "label": "Wig 29"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-30",
+            "label": "Wig 30",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d535de985f6647eb408e0a257a62235f8fbfba120ec9824b0583cfcf59b785e7.webp",
+              "label": "Wig 30"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-31",
+            "label": "Wig 31",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e7bb3481f0c339662855671cce7c798f5977c8773f0dcafb10c6cd8dbb7c0543.webp",
+              "label": "Wig 31"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-32",
+            "label": "Wig 32",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f6ef1cc38c3ddca18b2da07a20fababfb74af7b2706f3100fe9363de38852e31.webp",
+              "label": "Wig 32"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "hair-options",
+              "optionId": "wig-cover"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "high-temperature-fiber",
+        "label": "High Temperature Fiber Implant Style",
+        "required": false,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e1e6166fbf70970ad1a022b70a81a7126cccd0e0bbea474b6f77b7dab46b4cee.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "dreadlocks",
+            "label": "Dreadlocks",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1c827c21d5cd74ec3bb993a8f34ed2bf99a00f746f860e340a467a9daa792175.webp",
+              "label": "Dreadlocks"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-01",
+            "label": "Wig 01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7de7d76021db45b3e799611e312208369dd49f71a0b26fb99cbe7e8d60f39ab9.webp",
+              "label": "Wig 01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-02",
+            "label": "Wig 02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2466a760ab298b24e69db1f7732ed65a7cc4036ae6337de3047fd6b3f5943da2.webp",
+              "label": "Wig 02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-03",
+            "label": "Wig 03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5d018ad1da66c1b5c1c6a7cbd1196cf61bf7e656a24334f179b92422e202daa2.webp",
+              "label": "Wig 03"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-04",
+            "label": "Wig 04",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/24d999a0e775209ef0fc695b91e9ca4cd6393bf7c34e879409c2cb35f38add9d.webp",
+              "label": "Wig 04"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-05",
+            "label": "Wig 05",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8041dbaf98a6ba13088b04905fd322e3662a26c5102b36b632d37439947e4097.webp",
+              "label": "Wig 05"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-06",
+            "label": "Wig 06",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c6e12638d16c7737620afcb29be0a4778728063dcd0a111398aa534de679d614.webp",
+              "label": "Wig 06"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-07",
+            "label": "Wig 07",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d5863fd6175f3f4b23879af5f8f8223267414fab9bc81575a2005f0d01eb0b55.webp",
+              "label": "Wig 07"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-08",
+            "label": "Wig 08",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b58ded3b1c211bb125e504d80352b7d9a5d1b528e92afae928eeb24400346796.webp",
+              "label": "Wig 08"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-09",
+            "label": "Wig 09",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/656a2418310a198391ec0b55046673a075de8362683ecd2bf3aae51dca0af505.webp",
+              "label": "Wig 09"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-10",
+            "label": "Wig 10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/53242638e7ae773662e972eaf4ca6c154fc6741a8861219948f39a098b964a41.webp",
+              "label": "Wig 10"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-11",
+            "label": "Wig 11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d36330fc272ae697236cef3ff4d65b218992c67e2a4ecd80d2d272b99ac4fe3d.webp",
+              "label": "Wig 11"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-12",
+            "label": "Wig 12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4b924a1f19d3e88efa28f5f7a878dbd4dc76a167b427b9e0441235d45c60a607.webp",
+              "label": "Wig 12"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-13",
+            "label": "Wig 13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2e740f47268f10ea595a8be8f7b02d0660331b551b62cf5b6af78ced50cd6456.webp",
+              "label": "Wig 13"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-14",
+            "label": "Wig 14",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1182cd83f2c12d60e7bfb85f99905ec29f63038111321c7037bb5c24e648f516.webp",
+              "label": "Wig 14"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-15",
+            "label": "Wig 15",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3228f18bf756ab49615a7d83e84fa6fe6c3ac04ef67e8398a5094ac801c23bed.webp",
+              "label": "Wig 15"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-16",
+            "label": "Wig 16",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7dd03c0bb3b44c69b64fac9537cf7c1baccd21f8b4c75e3c29f8cda444664287.webp",
+              "label": "Wig 16"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-17",
+            "label": "Wig 17",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c4370d077dcb14393a66787599002b963199372d1207965ab7375bf653b1ec4a.webp",
+              "label": "Wig 17"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-18",
+            "label": "Wig 18",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/96f981ec275dbfe92d60474ff06e1e4636f66434d6afe2fbd6faf009c4788bfa.webp",
+              "label": "Wig 18"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-19",
+            "label": "Wig 19",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a5a68d64b788d321707ca3d82c02fcf3a2b30b30cfc1a44ae03ecbed9c6ec1da.webp",
+              "label": "Wig 19"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-20",
+            "label": "Wig 20",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ee233174988b198bc2c1d3a6e8e0003ddb3ae94b2e876e88377890ef3a9a9614.webp",
+              "label": "Wig 20"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-21",
+            "label": "Wig 21",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e84e200811baa2222728bbfac6621bf866961516ae629582efefbaab7779fc7c.webp",
+              "label": "Wig 21"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-22",
+            "label": "Wig 22",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/49df900121adb7475178aa031fbb30309a6f48a4d2ffaf6b288651b3a1c95624.webp",
+              "label": "Wig 22"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-23",
+            "label": "Wig 23",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1dcfa3f7682afa5a044dae55b67b7bb6190286d7eaa88b65885f51e4224292ba.webp",
+              "label": "Wig 23"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-24",
+            "label": "Wig 24",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/57f78de90567c320408bd6f94b87b0fa6f5c8cefcbf197d3334efdb47b9735ab.webp",
+              "label": "Wig 24"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-25",
+            "label": "Wig 25",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1c20c40bb157134e72461fe2aa1e77fc65e829b01cf3cafd936e2f3b7958eaaf.webp",
+              "label": "Wig 25"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-26",
+            "label": "Wig 26",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a0445fe5d3426aeb94bd922bfb2570bd41733b5022762b9cc396b4c319db8603.webp",
+              "label": "Wig 26"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-27",
+            "label": "Wig 27",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/498605c46e1f2fd7fc8e8ab4e5049d9471ebc653e3b50cd2aba79a1a63da1b4d.webp",
+              "label": "Wig 27"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-28",
+            "label": "Wig 28",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ea23c29c1b2b737a9a806b77df302675c508354f1077dd6483ce4867105bb930.webp",
+              "label": "Wig 28"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-29",
+            "label": "Wig 29",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5c7dcd4591b4372bb6b3e6d921d51b945d53c76cd97459fa59137741667e1eca.webp",
+              "label": "Wig 29"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-30",
+            "label": "Wig 30",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d535de985f6647eb408e0a257a62235f8fbfba120ec9824b0583cfcf59b785e7.webp",
+              "label": "Wig 30"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-31",
+            "label": "Wig 31",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e7bb3481f0c339662855671cce7c798f5977c8773f0dcafb10c6cd8dbb7c0543.webp",
+              "label": "Wig 31"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "wig-32",
+            "label": "Wig 32",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f6ef1cc38c3ddca18b2da07a20fababfb74af7b2706f3100fe9363de38852e31.webp",
+              "label": "Wig 32"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "hair-options",
+              "optionId": "wig-transplant-ht-fiber"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "human-hair",
+        "label": "Human Hair Implant Style",
+        "required": false,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "h05-example",
+            "label": "H05 (Example)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/67c8a53dda3dcafadb82ddc0b457833676dd9b65793d9a9d32b1989071cd9cfd.webp",
+              "label": "H05 (Example)"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "h01",
+            "label": "H01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4549016794e42a0b6c62f063b936370cd38666af374f1b4a03c1c8235bbe4203.webp",
+              "label": "H01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "h02",
+            "label": "H02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5b12b721beccc8a76afdf4dc861b32eb668b4782c6044e5561704f3225fa5a31.webp",
+              "label": "H02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "h03",
+            "label": "H03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/917d6dab49c2ad60d3fef74a10bd347fd5646101832c1389bab6526c120302a2.webp",
+              "label": "H03"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "h04",
+            "label": "H04",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0eb201c9666a0dc14c6fe7ce00d0d9f0f84f4ab9d4985209b9acce0275fa6da2.webp",
+              "label": "H04"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "h05",
+            "label": "H05",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2be66c1aa7539c2d263497e3e35854e1c1d00da351b87f2789ba92497139d86e.webp",
+              "label": "H05"
+            },
+            "priceLabel": "included"
+          }
+        ],
+        "visibleWhen": [
+          [
+            {
+              "groupId": "hair-options",
+              "optionId": "hair-transplant-human"
+            }
+          ]
+        ]
+      },
+      {
+        "id": "eyes",
+        "label": "Eyes",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ca08e14e006996ab0ebc45f63fafae566e9d2b44257167fe9e3b6f0557cc0b5b.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e01",
+            "label": "E01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/f4b67a07bd74683a5b1d4b9d8d0961068703a15e7b4f9a99b4fc3c1635162a0a.webp",
+              "label": "E01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e02",
+            "label": "E02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7fda4aa238250895248cdf82d26f809af766b34abf7f496f015b9bd73e4e357b.webp",
+              "label": "E02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e03",
+            "label": "E03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0a732ca215d82329ba5a325699c9a5a15a0ff6de502692067aaacb21fd52d7e4.webp",
+              "label": "E03"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e04",
+            "label": "E04",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cb327c646682186af7764d8948bd0abc183bf9476b99005149d82b012a67ce6e.webp",
+              "label": "E04"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e05",
+            "label": "E05",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/280f3d88b6c0ba935707c7d9f902759837350e9cb751a709683b5df371111bb5.webp",
+              "label": "E05"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e06",
+            "label": "E06",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/6ec4b2c0eb547e2c63358ee1726fa16245e94f98a3c98340033c030e31e35548.webp",
+              "label": "E06"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e07",
+            "label": "E07",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/00582a41f416d90268ee236f33281725a3d543d33b61b512606ced0889e014f8.webp",
+              "label": "E07"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e08",
+            "label": "E08",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/7707f4ae085f47cf91b3197fd5afb227d4b061087ce7fd956034590e2467e1c1.webp",
+              "label": "E08"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e09",
+            "label": "E09",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/28a6ef56f402567428ff8b9b0ae88b9772abc34ed39b2b37f2244e4909501424.webp",
+              "label": "E09"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e10",
+            "label": "E10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8cd0ca40023fb8ea19de1d986afb9e749b5c48fafcf1d32681afe9b1476d6382.webp",
+              "label": "E10"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e11",
+            "label": "E11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/00e313de8d774daafcf989875604b744d46d9d729605211069e5ed5b1eb6ab56.webp",
+              "label": "E11"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e12",
+            "label": "E12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a46e234db714eb3e5306eb244abf425c3c2988c27dd7c726dbe39872309212e0.webp",
+              "label": "E12"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e13",
+            "label": "E13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/efbf7a6951c5a7f53ebc222411e6bd3efe6fd8c0fac2227d1f3bfce0d47583b3.webp",
+              "label": "E13"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e14",
+            "label": "E14",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/db29c60cc31726986d754e24f63aa42f8dc10033a3c3534ebc1340857ce10b4c.webp",
+              "label": "E14"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e15",
+            "label": "E15",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/5e607a3898e089a0afe96fbbec625276e6a53885852a7dbe8002fc33ed590097.webp",
+              "label": "E15"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "e16",
+            "label": "E16",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/52460f868356c6b75215ee76bcbf151d2d694cab5c39d1284695b1cb17127e57.webp",
+              "label": "E16"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "skin",
+        "label": "Skin",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Tan (as pictured)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/db83b4250a96f88f194dc8709e8af3afa2714a9a005f2260908e734d32dc0fd3.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "fair",
+            "label": "Fair",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b712d9ea3babedf16c06ef44800b5e69a421e4c346e09ea56c7fec5a4598f4c0.webp",
+              "label": "Fair"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "tan",
+            "label": "Tan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/155c1f71966a7624919536c217a5c92a8c3f926101bca040ab8f14d0ccfc76a2.webp",
+              "label": "Tan"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "cocoa",
+            "label": "Cocoa",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bd671c8e85cfb1a3662d86d581c60d8ad1bf7fd166fdf5fd8be6d27e9e7c9898.webp",
+              "label": "Cocoa"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "nail",
+        "label": "Nail",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d301042629356d8f3002eb88321ab498a2e7f5c911383d3180c8e4e34ddae443.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z01",
+            "label": "Z01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cb421444c36a65a07f3298eb189c9456dc80cc3dc361957d75dfce8b05b8629e.webp",
+              "label": "Z01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z02",
+            "label": "Z02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3b76b97a202946e93db7a68995be63610973154ea81d55fbc7e508fd18877e8a.webp",
+              "label": "Z02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z03",
+            "label": "Z03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ad01aa4615f8ad2233308c4348f78315fe20a54d75df003182b2c10bdc375f15.webp",
+              "label": "Z03"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z04",
+            "label": "Z04",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ca4e5a3671bf91b4351b0fe1bcb494036ad08c6967929ed64ec48b0a60ca4606.webp",
+              "label": "Z04"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z05",
+            "label": "Z05",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bf2b6d4922e6e583042cc774a4c53a2b8d05399529bde411aa10e63e646592c4.webp",
+              "label": "Z05"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z06",
+            "label": "Z06",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c1fa1c443f7bd09e15d6fe1093d462f903ba11a14e7861a8895a49838fc261ca.webp",
+              "label": "Z06"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z07",
+            "label": "Z07",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/39f34089add72c230a73230029a36eb1891335a4c1c984aafb1ab5db606eeecc.webp",
+              "label": "Z07"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z08",
+            "label": "Z08",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9d2105556ba5ac7f0c30f00b84ecc49eb4adee2331ec0994dca70fa738542121.webp",
+              "label": "Z08"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z09",
+            "label": "Z09",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a762e7488f20dd6d9521f635428e6282e07f8d35ba79c1f52a6f3891ecceb37e.webp",
+              "label": "Z09"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z10",
+            "label": "Z10",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0f274f0dd5395ea529eb58d81e91fea6d8d917295d626a01d25f873b25546dde.webp",
+              "label": "Z10"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z11",
+            "label": "Z11",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/869dc320deb0a015a9a86c52ea8434d6751be126145d2a157d785cf97a8df4bb.webp",
+              "label": "Z11"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z12",
+            "label": "Z12",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c9a802bd84ec3c61af17aea968bb480c76e59c186c4075f5ffdb141eecbfed16.webp",
+              "label": "Z12"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "z13",
+            "label": "Z13",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/540dd53b1ca984182cc53ea8ea7286cc0e3ac63abc2a2314dfe03becb5799568.webp",
+              "label": "Z13"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "areola",
+        "label": "Areola",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/70f5be19272e310f41dcb6b6c501baba714a8a52daedbb58a931054dd57a97fb.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "light-brown",
+            "label": "Light brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8a9f9cd6a5bcf58852948696c08ea07b5ef69d8a1327bf801d7892d7b784ddfa.webp",
+              "label": "Light brown"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "pink",
+            "label": "Pink",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/8ad51d33abff4fed98c06bcd6be9d33c58875d81728ce287667c981d40099dc4.webp",
+              "label": "Pink"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "tan",
+            "label": "Tan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4915695d5995770bae47d9d0904f8c5f08e6a0a6ca7cd4acb507ce5b76a459d9.webp",
+              "label": "Tan"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "dark-tan",
+            "label": "Dark tan",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/cb3e61ad9276fc7916b6e0a4106d63d6c62b769d4300a7f4df59ff359caf70ac.webp",
+              "label": "Dark tan"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "areola-width",
+        "label": "Areola Width",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/35bd3ea9d04e9cf65ddd6b28a5013d3b572f9b3917f159184c835ba889b34240.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "3cm",
+            "label": "3cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b51648661423314ae2e7c93558de9b69b112d724647429139d4ebbf1cb2a8652.webp",
+              "label": "3cm"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "4cm",
+            "label": "4cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/3f80c222a64c73e0a5126de481acf6e7d35a221f59eacb6617e573cdf942c9ce.webp",
+              "label": "4cm"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "5cm",
+            "label": "5cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/451b9c5766796fcb25b0464b567ec0a9c856d81546a6c2f1c93847edec601983.webp",
+              "label": "5cm"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "labia",
+        "label": "Labia",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "same-as-photo",
+            "label": "Same as photo",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/2eaaa3fb12605af6f07fa2d305bd7eb4c9996ecfba192157519f5d4ac3d1c1dd.webp",
+              "label": "Same as photo"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "pink",
+            "label": "Pink",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a17e22b4bfbaa0c84718cc18ac343dd3153b05510e6e3798c616cc19ef91e845.webp",
+              "label": "Pink"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "light-brown",
+            "label": "Light Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d81cf8f7aa28f9ccb708faa845e79c8c6bfbbc9da83b3b9f4beb740998569aa5.webp",
+              "label": "Light Brown"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "brown",
+            "label": "Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ee6dd67d7cdb9a35ec881680fa3fd252f21e084e83e8f994981cc630a09ba937.webp",
+              "label": "Brown"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "dark-brown",
+            "label": "Dark Brown",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/4daecc084e52a733f4afc6fb1478f0a83c26b88a1060d06238399e02e4675859.webp",
+              "label": "Dark Brown"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "pubic-hair",
+        "label": "Pubic Hair",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "none",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/265fed0a7c5e2ce570ed5784db5cea06c0992caac5677115d454f206ae4d8730.webp",
+              "label": "None"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "style-01",
+            "label": "Style 01",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/0cf3246c09353ecddff9cdfaed54d9dedda18822eec1037f041b57ea3ac14f14.webp",
+              "label": "Style 01"
+            }
+          },
+          {
+            "id": "style-02",
+            "label": "Style 02",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/805f82a54ef983bb582d6c58068fabbe16026186c654cadc5376e1fccabdf40a.webp",
+              "label": "Style 02"
+            }
+          },
+          {
+            "id": "style-03",
+            "label": "Style 03",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/ee204b1934406745f8996243feb5f4282e5112664e8616729d708dc20d588789.webp",
+              "label": "Style 03"
+            }
+          },
+          {
+            "id": "style-04",
+            "label": "Style 04",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/b55c77ab0a90843a9b9225893dc6d71cb909d0299d186e1c32877d842f663fc1.webp",
+              "label": "Style 04"
+            }
+          },
+          {
+            "id": "style-05",
+            "label": "Style 05",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/781eb30b41dd66d6061108c3f781d5c341ce3ec81d1460281528357ef96baabe.webp",
+              "label": "Style 05"
+            }
+          }
+        ]
+      },
+      {
+        "id": "vagina",
+        "label": "Vagina",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "unibody",
+            "label": "Unibody",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/a7c099e3c5880e244ed0d00fb2d2a0eccab321b47a71fac400d28c957e95c0cb.webp",
+              "label": "Unibody"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "removable",
+            "label": "Removable",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/40bf63f5faffde45d6fecd55a258fa0e541bf21f732a1ad61c91a6b7ab66d8ea.webp",
+              "label": "Removable"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "vagina-depth",
+        "label": "Vagina Depth",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "default-depth-15cm",
+            "label": "Default depth 15cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/bc825f76ea9786ded0979afc185883d9911419906356309d906914e0526f8576.webp",
+              "label": "Default depth 15cm"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "12cm",
+            "label": "12cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/657c877b3109a85c362be8bd24bd703f9bf939f092b153b13e544852768b8a6c.webp",
+              "label": "12cm"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "15cm",
+            "label": "15cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1103aedc6929bc1ef204be137a4177818b4dbff62b14bc765154d81396630f73.webp",
+              "label": "15cm"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "17cm",
+            "label": "17cm",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/76159dbb8cc9899cb61d7d368d67165e15b090071a6f8fbc9b5db20a26100171.webp",
+              "label": "17cm"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "vagina-texture",
+        "label": "Vagina Texture",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "texture-01",
+            "label": "Texture 01",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/9acd1d770e550d67ddb163f8967c2e775afe0242b4d9c9978cce7ff3e698a28f.webp",
+              "label": "Texture 01"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "texture-02",
+            "label": "Texture 02",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/87ca8ce392788451de2a53a86c66f86e1de2db0457558ea4390f531b5f2ea379.webp",
+              "label": "Texture 02"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "texture-03",
+            "label": "Texture 03",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/d3f1cafb713165db2c8747eaab3c52f277487c02b72f476372f91c9f923851aa.webp",
+              "label": "Texture 03"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "standing",
+        "label": "Standing / Feet",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "standing-without-bolts-hard-feet",
+            "label": "Standing without bolts (Hard feet)",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/07ea629f81ffd3203b9d849a61ebf663be1cc52110753dbc0d6199f719852d4f.webp",
+              "label": "Standing without bolts (Hard feet)"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "standing-with-bolts",
+            "label": "Standing with bolts",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/c45149d509071e3c8d0f7fa14de01f23f4515c80e58054a0c2e6e4dd11982681.webp",
+              "label": "Standing with bolts"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      },
+      {
+        "id": "more-features",
+        "label": "More Features",
+        "required": false,
+        "selectionMode": "multiple",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "no-more-features",
+            "label": "None",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/265fed0a7c5e2ce570ed5784db5cea06c0992caac5677115d454f206ae4d8730.webp",
+              "label": "None"
+            },
+            "priceLabel": "included"
+          },
+          {
+            "id": "freckle",
+            "label": "Freckle",
+            "priceDelta": 80,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/e5aa85194354b8cce7bcb5839ae73a8ea4a885d0650911caeff04754f1d7d208.webp",
+              "label": "Freckle"
+            }
+          },
+          {
+            "id": "nipple-piercing",
+            "label": "Nipple piercing",
+            "priceDelta": 20,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/105926e843b9bafd3b7edf6202f708bb78e702f163e583b84e5b9413f961d02a.webp",
+              "label": "Nipple piercing"
+            }
+          },
+          {
+            "id": "navel-ring",
+            "label": "Navel ring",
+            "priceDelta": 20,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/db184144619ba3c4cc3eef0352c602dd348de8817c3d8a662aa0b5adc15f439c.webp",
+              "label": "Navel ring"
+            }
+          },
+          {
+            "id": "pierce-ears",
+            "label": "Pierce Ears",
+            "priceDelta": 20,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/1ca7909ad7bc7c9a42470b095e8539ec83cccbb5315cc1320f84be6b9ba4bdcc.webp",
+              "label": "Pierce Ears"
+            }
+          },
+          {
+            "id": "replaceable-vagina-insert",
+            "label": "Replaceable vagina insert",
+            "priceDelta": 30,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/23482eca08b50625110facc4c2cce69748862b4cc99b58b3c9729387c4bcec26.webp",
+              "label": "Replaceable vagina insert"
+            }
+          },
+          {
+            "id": "bikini-print",
+            "label": "Bikini print",
+            "priceDelta": 100,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/42cd00d73c4c75f03d4aed05edd02a71303fb7f80938897043b8183c0fed8ce2.webp",
+              "label": "Bikini print"
+            }
+          }
+        ]
+      },
+      {
+        "id": "packaging",
+        "label": "Packaging",
+        "required": true,
+        "selectionMode": "single",
+        "display": "swatches",
+        "options": [
+          {
+            "id": "carton",
+            "label": "Carton",
+            "priceDelta": 0,
+            "priceVerified": true,
+            "swatch": {
+              "kind": "image",
+              "value": "/option-assets/281793511619c64d9604911e09a8933f31bc41990ec6c5197a953465cb5018fa.webp",
+              "label": "Carton"
+            },
+            "priceLabel": "included"
+          }
+        ]
+      }
+    ],
+    "editorialIntro": {
+      "eyebrow": "After Hours",
+      "heading": "On Her Own Time",
+      "paragraph": "Imagine Mirella waiting in the dim corners of a late-night lounge while you finish your last call. Her long chestnut hair spills in waves, and she rubs her magenta-pink nails against the edge of the wooden seat. When you finally set down your phone and face her, she offers a slow, knowing smile that suggests she has a far more interesting agenda for the evening. The dark silver-tone pendant at her neck catches a flicker of light as she leans in to ask where the mood takes you next. If you think you can actually keep her on schedule, she is happy to prove you wrong.",
+      "promptVersion": "non-graphic-editorial-voice-v3",
+      "generatedAt": "2026-10-05T18:33:37.273Z"
+    }
+  }
+}
