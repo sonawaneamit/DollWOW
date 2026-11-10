@@ -9,5 +9,10 @@ export function mmxReviewProducts(): Product[] {
   return structuredClone(snapshot.products) as unknown as Product[];
 }
 
+export function mmxReviewProduct(handle: string, environment: Record<string, string | undefined> = process.env): Product | null {
+  if (!mmxReviewEnabled(environment)) return null;
+  return mmxReviewProducts().find(product => product.handle === handle) ?? null;
+}
+
 export const mmxHeldReviews = snapshot.held;
 export const mmxReviewDate = snapshot.reviewedAt;
