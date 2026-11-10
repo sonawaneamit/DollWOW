@@ -27,6 +27,7 @@ describe('exact Fanreal release identities',()=>{
  });
  it('leaves unknown Fanreal parents deferred and rejects a changed release payload',()=>{
   expect(selectFanrealTemplateRecipe(release,{...product,id:'gid://shopify/Product/999'},getCustomizationConfig(product))).toBeUndefined();
+  expect(selectFanrealTemplateRecipe({...release,payload:null},product,getCustomizationConfig(product))).toBeNull();
   const changed=structuredClone(release);changed.payload.entries[0].recipe.tiers[0].description='Changed';
   expect(selectFanrealTemplateRecipe(changed,product,getCustomizationConfig(product))).toBeNull();
  });

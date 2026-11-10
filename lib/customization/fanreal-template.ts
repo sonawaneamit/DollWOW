@@ -14,9 +14,9 @@ export function fanrealTemplatePayloadHash(payload:Release['payload']) {return c
 export function selectFanrealTemplateRecipe(input:unknown,product:Product,config:BrandCustomizationConfig):TemplatePresetDefinition|null|undefined{
  if(!Object.hasOwn(scope.parents,product.id))return undefined;
  const r=input as Release;
- if(r?.schemaVersion!==1||r.releaseStatus!=='APPROVED'||!r.approval?.evidenceRef||!Number.isFinite(Date.parse(r.approval.reviewedAt))||r.approval.payloadHash!==fanrealTemplatePayloadHash(r.payload))return null;
- const entries=r.payload.entries.filter(entry=>entry.productId===product.id);if(entries.length!==1)return null;
- const entry=entries[0];const tags=product.tags.filter(tag=>tag.startsWith('options:'));
+ if(r?.schemaVersion!==1||r.releaseStatus!=='APPROVED'||!r.payload||!Array.isArray(r.payload.entries)||!r.approval?.evidenceRef||!Number.isFinite(Date.parse(r.approval.reviewedAt))||r.approval.payloadHash!==fanrealTemplatePayloadHash(r.payload))return null;
+ const entries=r.payload.entries.filter(entry=>entry?.productId===product.id);if(entries.length!==1)return null;
+ const entry=entries[0];if(!entry.recipe||!Array.isArray(entry.recipe.tiers))return null;const tags=product.tags.filter(tag=>tag.startsWith('options:'));
  if(entry.handle!==product.handle||entry.displayName!==product.extended.displayName||entry.runtimeHash!==templateRuntimeHash(product,config)||tags.length!==1||entry.recipe.tag!==tags[0]||entry.recipe.signature!==templateConfigSignature(config))return null;
  if(entry.recipe.tiers.map(tier=>tier.id).join(',')!=='starter,enthusiast,collector')return null;
  return structuredClone(entry.recipe);
