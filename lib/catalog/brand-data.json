@@ -1,5 +1,12 @@
 [
   {
+    "value": "mmx",
+    "label": "MMX Dolls",
+    "collectionHandle": "mmx-dolls",
+    "tags": ["mmx", "mmx-dolls"],
+    "aliases": ["mmx", "mmx doll", "mmx dolls", "mmxdoll"]
+  },
+  {
     "value": "gynoid",
     "label": "Gynoid",
     "collectionHandle": "gynoid-dolls",
