@@ -1,3 +1,4 @@
+import type { Product } from "@/types/product";
 import { env, hasShopifyAdminEnv } from "@/lib/utils/env";
 
 const API_VERSION = "2026-04";
@@ -188,3 +189,14 @@ function parseJson<T>(value?: string | null) {
 }
 
 export { API_VERSION as SHOPIFY_ADMIN_API_VERSION };
+
+/** The exact Admin enrichment used by the public PDP and release verification. */
+export function mergeProductAdminMetafields(product: Product, adminData: Awaited<ReturnType<typeof getProductAdminMetafieldsByHandle>>): Product {
+  if (!adminData) return product;
+  return { ...product, extended: { ...product.extended,
+    measurements: adminData.measurements || product.extended.measurements,
+    headModel: adminData.headModel || product.extended.headModel,
+    bodyCode: adminData.bodyCode || product.extended.bodyCode,
+    editorialIntro: adminData.editorialIntro || product.extended.editorialIntro
+  } };
+}

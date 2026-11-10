@@ -43,7 +43,7 @@ import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
 import { withPreviewEditorialFixture } from "@/lib/catalog/previewEditorialFixture";
-import { getProductAdminMetafieldsByHandle } from "@/lib/shopify/admin";
+import { getProductAdminMetafieldsByHandle, mergeProductAdminMetafields } from "@/lib/shopify/admin";
 import { DisplayMoney } from "@/components/CurrencyProvider";
 import { CareForLifePanel } from "@/components/care/CareForLifePanel";
 import { FactoryApprovalPdpPreview } from "@/components/factory-approval/FactoryApprovalPreview";
@@ -97,7 +97,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   ]);
   if (!storefrontProduct) notFound();
   const product = previewProduct(withPreviewCustomizationFixture(
-    withPreviewEditorialFixture(mergeAdminMetafields(storefrontProduct, adminProductData))
+    withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
   const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
@@ -322,23 +322,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
       {!isElf && !promotionPreview ? <PdpTrackers product={publicProduct} /> : null}
     </div>
   );
-}
-
-function mergeAdminMetafields(
-  product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>,
-  adminData: Awaited<ReturnType<typeof getProductAdminMetafieldsByHandle>>
-) {
-  if (!adminData) return product;
-  return {
-    ...product,
-    extended: {
-      ...product.extended,
-      measurements: adminData.measurements || product.extended.measurements,
-      headModel: adminData.headModel || product.extended.headModel,
-      bodyCode: adminData.bodyCode || product.extended.bodyCode,
-      editorialIntro: adminData.editorialIntro || product.extended.editorialIntro
-    }
-  };
 }
 
 function ToneBand({
