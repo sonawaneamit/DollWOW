@@ -13,27 +13,31 @@ Handle product images like commerce assets:
 - AI-generated variants can help differentiate DollWow, but must not misrepresent the actual product, included accessories, shipping state, or supplier authorization.
 - Preserve enough original product-detail imagery for customers to inspect the product accurately.
 
-### Generated Graphics Model Requirement
+### Generated Graphics Model And Editorial Style Requirement
 
-Martin's explicit instruction (21 October 2026): use GPT-image-2.5 for generated
-DollWOW graphics. Verify the actual provider model identifier before generation
-and record it with the asset provenance. A tool's generic image-generation label
-does not establish that model version. Do not silently substitute GPT Image 2,
-another model, or a manual composition as fulfillment of this requirement. If
-the exact model cannot be selected or verified, report the limitation on the
-Linear ticket and obtain an explicit decision before substituting. Existing
-supplier photographs and code-native interactive animation remain distinct from
-generated campaign graphics. Never route a rejected image request through
-another provider to evade its moderation.
+Martin's standing instruction (updated 10 November 2026): always use
+GPT-image-2.5 or GPT-image-2.6 to create DollWOW promotional banners, campaign
+hero artwork and similar marketing graphics. Aim for exciting, polished
+editorial imagery with deliberate art direction, strong composition and
+campaign-specific character. Generic code-built cards, gradients, text panels,
+SVG/canvas compositions or decorative UI are not substitutes for the banner
+artwork. Code may render the generated artwork, accessible offer text and
+responsive controls.
 
-Verified API IDs in official OpenAI documentation on 21 October 2026:
-`gpt-image-2.5-sunburst` (preferred for campaign graphics/precise editing) and
-`gpt-image-2.5-flare`. An API route is available through
-`treg catalog get replicate.image-gen.gpt-image-2-5-sunburst`; inspect the live
-price/schema and verify the returned `model` field. The installed local OpenAI
-credential failed read-only authentication on this date, so do not assume it is
-usable or expose its value. Do not label code-native interactive spider motion
-as image-model output.
+Verify the actual provider model identifier and returned model/version before
+claiming either approved version was used. Record the model, prompt, references
+and output provenance. A generic image-generation tool label or an old model
+alias is not proof. Do not silently substitute another model. If neither
+approved version can be selected and verified, record the blocker in Linear and
+ask Martin for a decision before substituting.
+
+Use supplier-authorized product references where needed; preserve actual product
+appearance and approved offer terms. Existing supplier photos are factual source
+material, not fulfillment of the generated editorial banner requirement. Show a
+private preview before release and preserve the campaign's exact release gate.
+This standing preference does not itself authorize replacing live artwork.
+Never route a rejected image request through another provider to evade its
+moderation.
 
 ## Differentiation
 
