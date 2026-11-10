@@ -47,9 +47,13 @@ export async function renderProtectedIris(source:Buffer,mask:ProtectedIrisSource
 export async function brandProtectedIris(bytes:Buffer,handle:string,selections:Array<{group:string;option:string}>) {
   const photo=await sharp(bytes).metadata();
   if(!photo.width||!photo.height||photo.width>1600||photo.height>1600)throw Error('Protected portrait dimensions are unsupported');
-  const branded=await brandDollVuePreview(bytes,handle,selections),meta=await sharp(branded).metadata();
-  if(meta.width!==photo.width||!meta.height||meta.height<=photo.height)throw Error('Protected footer dimensions changed');
-  const footer=await sharp(branded).extract({left:0,top:photo.height,width:photo.width,height:meta.height-photo.height}).png().toBuffer();
-  return sharp({create:{width:photo.width,height:meta.height,channels:3,background:'#fff'}})
-    .composite([{input:bytes,left:0,top:0},{input:footer,left:0,top:photo.height}]).png().toBuffer();
+  // The standard footer uses a minimum-size QR. Lay it out on a full-width
+  // canvas first so the QR cannot overlap text on a compact portrait.
+  const base=await sharp(bytes).resize({width:Math.max(1000,photo.width),height:1600,fit:'inside'}).png().toBuffer({resolveWithObject:true});
+  const branded=await brandDollVuePreview(base.data,handle,selections),meta=await sharp(branded).metadata();
+  if(meta.width!==base.info.width||!meta.height||meta.height<=base.info.height)throw Error('Protected footer dimensions changed');
+  const footer=await sharp(branded).extract({left:0,top:base.info.height,width:base.info.width,height:meta.height-base.info.height})
+    .resize({width:photo.width}).png().toBuffer({resolveWithObject:true});
+  return sharp({create:{width:photo.width,height:photo.height+footer.info.height,channels:3,background:'#fff'}})
+    .composite([{input:bytes,left:0,top:0},{input:footer.data,left:0,top:photo.height}]).png().toBuffer();
 }
