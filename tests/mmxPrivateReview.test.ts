@@ -24,6 +24,14 @@ describe('MMX private review boundaries', () => {
     expect(mmxReviewProduct(snapshot.products[0].handle, { ...enabled, VERCEL_ENV: 'production' })).toBeNull();
     expect(mmxReviewProduct(snapshot.products[0].handle, { VERCEL_ENV: 'preview' })).toBeNull();
   });
+  it('uses the 170A chart measurements for both reviewed head combinations', () => {
+    const models = snapshot.products.filter(product => product.extended.bodyCode === '170A');
+    expect(models).toHaveLength(2);
+    for (const product of models) {
+      expect(product.extended.measurements['Calf circumference']).toBe('33.5 cm');
+      expect(product.extended.measurements['Cup size']).toBe('H+ Cup');
+    }
+  });
   it('contains the supplier sheets and all 15 reviewed videos, without source costs or menus', () => {
     expect(snapshot.products.flatMap(product => product.media).filter(media => media.type === 'video')).toHaveLength(15);
     for (const product of snapshot.products) {
