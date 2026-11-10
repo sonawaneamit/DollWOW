@@ -2,7 +2,7 @@
 .singles-day-hero picture{display:block;width:100%;aspect-ratio:2048/900;overflow:hidden}
 .singles-day-hero img{display:block;width:100%;height:auto}
 .singles-day-hero__details{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.5rem clamp(1rem,4vw,4rem);border-top:1px solid #b8966533}
-.singles-day-hero__details h1{font:500 clamp(1.5rem,2.5vw,2.2rem)/1.15 Georgia,serif;margin:0 0 .5rem;color:inherit}
+.singles-day-hero__details :is(h1,h2){font:500 clamp(1.5rem,2.5vw,2.2rem)/1.15 Georgia,serif;margin:0 0 .5rem;color:inherit}
 .singles-day-hero__details p{margin:.3rem 0;line-height:1.5;font-size:.95rem}
 .singles-day-hero__details .singles-day-hero__terms{font-size:.8rem;color:#e4d4c3}
 .singles-day-hero__actions{display:flex;flex-wrap:wrap;gap:.65rem;flex-shrink:0}

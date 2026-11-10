@@ -1,3 +1,5 @@
+import { SinglesDayPromotion } from '@/components/promotions/SinglesDayHero';
+import { isSinglesDayActive, SINGLES_DAY_2026 } from '@/lib/promotions/singlesDay2026';
 import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
 import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
 import type { Metadata } from "next";
@@ -64,7 +66,9 @@ export default async function PromoIndexPage({ searchParams }: { searchParams: P
   const hasSeDollPromotion = isSeDollSeptemberPromotionVisible();
   const hasSeHalloween = isSeHalloweenArtworkEnabled() && isSeHalloweenActive(Date.parse(promoClock));
   const hasIrontechPromotion = isIrontechAutumnPromotionVisible();
+  const hasSinglesDayPromotion = isSinglesDayActive(Date.parse(promoClock));
   const itemList = [
+    ...(hasSinglesDayPromotion ? [{ name: 'Singles Day: $299 off full-size dolls', url: `${siteUrl}/promo#${SINGLES_DAY_2026.id}` }] : []),
     ...(hasSeHalloween ? [{ name: 'SE Doll Halloween offers', url: `${siteUrl}/promo#se-halloween-2026` }] : []),
     ...(hasLusandyNovemberPromotion ? [{name: 'Lusandy November factory promotion', url: `${siteUrl}/promo#${LUSANDY_NOVEMBER_OFFER.id}`}] : []),
     ...(hasJinsanPromotion ? Object.values(JINSAN_OCTOBER_OFFERS).map(offer => ({ name: `${offer.brand} October factory promotion`, url: `${siteUrl}/promo#${offer.id}` })) : []),
@@ -100,6 +104,8 @@ export default async function PromoIndexPage({ searchParams }: { searchParams: P
           Find the promotion dates, eligible order types, and included factory bonuses currently published by DollWOW. Product eligibility is shown on each qualifying product page before checkout.
         </p>
       </header>}
+
+      <SinglesDayPromotion initialActive={hasSinglesDayPromotion} />
 
       {gynoidEarlyBirdEnabled() ? <GynoidEarlyBirdPromotion promoClock={promoClock} freezeClock={Boolean(frozenClock)} /> : null}
 
