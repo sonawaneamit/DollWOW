@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { SinglesDayHero, useSinglesDayCampaign } from "@/components/promotions/SinglesDayHero";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, BadgeCheck, Camera, ImageIcon, Lock, Search, ShieldCheck, Truck } from "lucide-react";
@@ -68,13 +69,15 @@ export function HomeAlive({
   bestSellingProducts = [],
   recentlyAddedProducts,
   brands = [],
-  customerReviews
+  customerReviews,
+  initialSinglesDay = false
 }: {
   products: Product[];
   bestSellingProducts?: Product[];
   recentlyAddedProducts?: Product[];
   brands?: typeof homepageBrandLogos;
   customerReviews: CustomerReview[];
+  initialSinglesDay?: boolean;
 }) {
   const featuredProducts = useMemo(() => homepageFeatureProducts(products), [products]);
   const featuredRecentlyAddedProducts = useMemo(
@@ -87,6 +90,7 @@ export function HomeAlive({
     [featuredProducts, bestSellingProducts, featuredRecentlyAddedProducts]
   );
   const [activeSpot, setActiveSpot] = useState(0);
+  const singlesDay = useSinglesDayCampaign(initialSinglesDay);
   useHomeMotion();
 
   useEffect(() => {
@@ -103,7 +107,7 @@ export function HomeAlive({
 
   return (
     <div className="home-alive">
-      <section className="home-hero" data-tone="deep">
+      {singlesDay ? <SinglesDayHero /> : <section className="home-hero" data-tone="deep">
         <div className="home-hero__inner">
           <div className="home-hero__copy reveal in">
             <p className="home-kicker"><span /> Doll of the moment</p>
@@ -156,7 +160,7 @@ export function HomeAlive({
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       <DollVueHomepageStrip />
       {feed('new')}
