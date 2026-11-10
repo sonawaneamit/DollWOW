@@ -13,6 +13,7 @@ export type DollVueReadinessRecord = {
   status: 'ready' | 'excluded' | 'needs-review';
   sourcePositions: number[];
   imageDigests?: Record<string, string>;
+  renderer?: 'protected-iris';
   choices: Array<{ groupId: string; optionId: string; reference: string }>;
 };
 

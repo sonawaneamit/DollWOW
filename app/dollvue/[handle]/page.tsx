@@ -37,9 +37,14 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
   const sources = productImageSources(product);
-  const photos = eligibility.sourcePositions.map(position => ({
+  const eyeColorOnly = eligibility.renderer === 'protected-iris';
+  const stills = new Set([product.featuredImage?.url, ...product.images.map(image=>image.url),
+    ...product.media?.flatMap(media=>media.type==='image'?[media.image.url]:[]) ?? []]);
+  const positions = eyeColorOnly ? sources.flatMap((source, index) => stills.has(source.url) || eligibility.sourcePositions.includes(index) ? [index] : []) : eligibility.sourcePositions;
+  const photos = positions.map(position => ({
     position,
     url: protectedProductImageUrl(product.handle, position, "card"),
+    previewReady: eligibility.sourcePositions.includes(position),
     alt: sources[position].altText || `${productDisplayName(product) || product.title} reference photo ${position + 1}`
   }));
 
@@ -49,9 +54,11 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
         handle: product.handle,
         name: productDisplayName(product) || product.title,
         brand: product.extended.brand || product.vendor,
+        defaultPhotoPosition: eligibility.sourcePositions[0],
         photos
       }}
       groups={groups}
+      eyeColorOnly={eyeColorOnly}
       freePreviews={DOLLVUE_FREE_PREVIEWS}
       initialRemaining={usage.remaining}
       unlimited={usage.unlimited === true}

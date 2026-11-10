@@ -30,7 +30,7 @@ export function resolveDollVueEligibility(product: Product) {
     });
     return { available: readiness.publiclyAvailable, config: reviewedDollVueConfig(config, readiness, 'public'),
       sourcePositions: [...readiness.sourcePositions], revision: record.fingerprint,
-      imageDigests: record.imageDigests };
+      imageDigests: record.imageDigests, renderer: record.renderer };
   }
   // Preserve the already released pilot. New brands require an exact reviewed record.
   // Conditional appearance support requires a reviewed record, never legacy option flags.
@@ -41,7 +41,7 @@ export function resolveDollVueEligibility(product: Product) {
     .flatMap((photo, position) => isOwnedOptionAsset(photo.url) ? [position] : []);
   return { available: !isDollVueExcluded(product) && isLegacyDollVueCatalogProduct(product) &&
     dollVueGroups(legacyConfig).length > 0 && sourcePositions.length > 0,
-    config: legacyConfig, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined };
+    config: legacyConfig, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined, renderer: undefined };
 }
 
 /** Check private holds at the point of use; never expose their contents publicly. */

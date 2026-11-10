@@ -68,7 +68,9 @@ export async function POST(request: Request) {
   if (!areDollVueSelectionsValid(config, parsed.data.selections)) return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 400 });
   const selections = resolveDollVueSelections(config, parsed.data.selections);
   if (!selections.length) return NextResponse.json({ error: "Those visual options are not available for this doll." }, { status: 400 });
-  const optionImages = await Promise.all(selections.map(async ({ option }) => {
+  const protectedIris = eligibility.renderer === 'protected-iris';
+  if (protectedIris && selections.length !== 1) return apiError('Choose one eye color.', 400);
+  const optionImages = protectedIris ? selections.map(({option}) => option.swatch?.value || '') : await Promise.all(selections.map(async ({ option }) => {
     if (option.swatch?.kind !== "image") return "";
     if (eligibility.imageDigests) {
       return normalizeReviewedImage({ url: option.swatch.value,
@@ -79,13 +81,14 @@ export async function POST(request: Request) {
   }));
   const references = optionImages.filter(Boolean);
   if (references.length !== selections.length) return NextResponse.json({error:'One of these option photos is temporarily unavailable. Please choose another option or try again later.'}, {status:503});
-  const sourceImage = eligibility.imageDigests
+  const sourceImage = !protectedIris && eligibility.imageDigests
     ? await normalizeReviewedImage({ url: source.url, sha256: eligibility.imageDigests[source.url],
       origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin }).catch(() => '') : source.url;
   if (!sourceImage) return apiError('This photo has changed or is temporarily unavailable. Please try another photo.', 409);
   const images = [sourceImage, ...references];
   const cacheKey = createHash('sha256').update(JSON.stringify({
     version: DOLLVUE_PROMPT_VERSION,
+    renderer: eligibility.renderer,
     readiness: eligibility.revision,
     productId: product.id,
     source,
@@ -107,7 +110,14 @@ export async function POST(request: Request) {
   }
 
   const selectionLabels = selections.map(({ group, option }) => ({ group: group.label, option: option.label }));
-  const generated = cachedPreview ? null : await generatePreview({
+  const generated = cachedPreview ? null : protectedIris ? await (async () => {
+    try {
+      const {renderLiveIris} = await import('@/lib/dollvue/liveIris');
+      const bytes=await renderLiveIris({id:product.id,handle:product.handle,position:parsed.data.sourcePosition,sourceUrl:source.url,
+        sourceDigest:eligibility.imageDigests?.[source.url] || '',reference:references[0],origin:new URL(env.NEXT_PUBLIC_SITE_URL).origin,labels:selectionLabels});
+      return {ok:true as const,bytes,model:'reference-guided-iris',resolution:'original-photo'};
+    } catch { return {ok:false as const,status:422,detail:'Reviewed eye-color photo could not be rendered'}; }
+  })() : await generatePreview({
     images,
     prompt: buildDollVuePrompt(product, selections),
     aspectRatio: closestDollVueAspectRatio(source.width, source.height),

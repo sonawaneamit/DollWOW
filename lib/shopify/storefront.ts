@@ -12,6 +12,7 @@ import { resolveCurrentDollVueEligibility, resolveDollVueEligibility, withDollVu
 import { getCurrentDollVueHolds } from '@/lib/dollvue/currentHold';
 import dollVueRegistry from '@/lib/dollvue/readiness-registry.json';
 import type { DollVueReadinessRecord } from '@/lib/dollvue/readiness';
+import { getProductAdminMetafieldsByHandle, mergeProductAdminMetafields } from './admin';
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 
 const API_VERSION = "2026-04";
@@ -582,7 +583,11 @@ export async function getProductByHandle(handle: string, options: { cache?: Requ
       options
     );
 
-    const product = data.product ? mapShopifyProduct(data.product) : options.strict ? null : (sampleProducts.find((item) => item.handle === handle) ?? null);
+    let product = data.product ? mapShopifyProduct(data.product) : options.strict ? null : (sampleProducts.find((item) => item.handle === handle) ?? null);
+    const readiness = dollVueRegistry as Readonly<Record<string, DollVueReadinessRecord>>;
+    if (product && isCustomerVisibleProduct(product) && readiness[product.id]?.renderer === 'protected-iris') {
+      product = mergeProductAdminMetafields(product, await getProductAdminMetafieldsByHandle(product.handle));
+    }
     return product && isCustomerVisibleProduct(product)
       ? { ...product, dollVueAvailable: (await resolveCurrentDollVueEligibility(product)).available } : null;
   } catch (error) {

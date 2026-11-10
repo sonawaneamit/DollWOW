@@ -10,7 +10,7 @@ import { productUrl } from "@/lib/catalog/productUrl";
 import styles from './DollVue.module.css';
 
 type Props = {
-  product: { handle: string; name: string; brand: string; photos: Array<{ position: number; url: string; alt: string }> };
+  product: { handle: string; name: string; brand: string; defaultPhotoPosition?: number; photos: Array<{ position: number; url: string; alt: string; previewReady?: boolean }> };
   groups: DollVueGroup[];
   freePreviews: number;
   initialRemaining: number;
@@ -18,6 +18,7 @@ type Props = {
   verifiedEmail: string;
   live: boolean;
   reviewOnly?: boolean;
+  eyeColorOnly?: boolean;
 };
 
 type Result = {
@@ -30,7 +31,7 @@ type Result = {
 
 const MAX_PREVIEW_OPTIONS = 2;
 
-export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live, reviewOnly = false }: Props) {
+export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live, reviewOnly = false, eyeColorOnly = false }: Props) {
   const draftHandle = reviewOnly ? `private-review:${product.handle}` : product.handle;
   const trackDollVueEvent: typeof trackEvent = (...args) => { if (!reviewOnly) trackEvent(...args); };
   const resultStartRef = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
   const [consentAttempts, setConsentAttempts] = useState(0);
   const initialDraft = useMemo(() => readDraft(draftHandle), [draftHandle]);
   const [step, setStep] = useState(1);
-  const [photoPosition, setPhotoPosition] = useState(dollVuePhotoPosition(product.photos, initialDraft.photoPosition));
+  const [photoPosition, setPhotoPosition] = useState(dollVuePhotoPosition(product.photos, initialDraft.photoPosition ?? product.defaultPhotoPosition));
   const [selections, setSelections] = useState<Record<string, string>>(initialDraft.selections ?? {});
   const [accepted, setAccepted] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
@@ -90,9 +91,9 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
     const option = group.options.find((item) => item.id === selections[group.id]);
     return option ? [{ group, option }] : [];
   }), [groups, selections]);
-  const maxOptions = reviewOnly ? 1 : MAX_PREVIEW_OPTIONS;
+  const maxOptions = reviewOnly || eyeColorOnly ? 1 : MAX_PREVIEW_OPTIONS;
   const optionLimitReached = selectedItems.length >= maxOptions;
-  const canGenerate = live && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
+  const canGenerate = live && selectedPhoto?.previewReady !== false && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
     if (!selections[groupId] && optionLimitReached) return;
@@ -237,7 +238,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
           <div className="dollvue-title">
             <p>DollVue™</p>
             <h1>See your doll your way</h1>
-            <span>{reviewOnly ? "Compare eye colors on a portrait cropped from the actual product photo." : "Start with a real DollWOW product photo, then preview different hair, eyes, skin tone, and other available appearance choices before you decide."}</span>
+            <span>{reviewOnly ? "Compare eye colors on a portrait cropped from the actual product photo." : eyeColorOnly ? "Compare eye colors using this doll’s original product photos." : "Start with a real DollWOW product photo, then preview different hair, eyes, skin tone, and other available appearance choices before you decide."}</span>
             <small>A private, no-pressure way to explore the look you have in mind.</small>
             <small className="dollvue-product-context">{product.brand} · {product.name}</small>
           </div>
@@ -248,7 +249,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
           {step === 2 ? (
             <div className={`dollvue-option-intro${optionLimitReached ? " is-limit-reached" : ""}`}>
               <div>
-                <strong>{reviewOnly ? "Choose one eye color" : `Choose up to ${maxOptions} options`}</strong>
+                <strong>{reviewOnly || eyeColorOnly ? "Choose one eye color" : `Choose up to ${maxOptions} options`}</strong>
                 <small role="status" aria-live="polite">{selectedItems.length} of {maxOptions} selected</small>
               </div>
               {optionLimitReached ? (
@@ -264,13 +265,14 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
               <div className="dollvue-pane">
                 <div className="dollvue-instructions">
                   <ShieldCheck />
-                  <div><strong>Choose a photo to personalize</strong><p>Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.</p></div>
+                  <div><strong>Choose a photo to personalize</strong><p>{eyeColorOnly ? 'Browse all product photos. Photos marked “Preview” can be used to compare eye colors.' : 'Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.'}</p></div>
                 </div>
                 <div className="dollvue-photo-grid">
                   {product.photos.map((photo) => (
-                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={`Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
+                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={eyeColorOnly ? `Photo ${photo.position + 1}${photo.previewReady ? ' — preview available' : ' — view only'}` : `Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
                       <Image src={photo.url} alt={`${photo.alt} — photo ${photo.position}`} fill sizes="30vw" />
                       {photo.position === photoPosition ? <Check /> : null}
+                      {eyeColorOnly && photo.previewReady ? <span className={styles.photoReady}>Preview</span> : null}
                     </button>
                   ))}
                 </div>
@@ -314,7 +316,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
 
           {!result ? (
             <footer className="dollvue-actionbar">
-              {step === 1 ? <button type="button" className="dollvue-primary" onClick={() => setStep(2)}>Choose this photo <ArrowRight /></button> : (
+              {step === 1 ? <button type="button" className="dollvue-primary" disabled={selectedPhoto?.previewReady === false} onClick={() => setStep(2)}>{selectedPhoto?.previewReady === false ? 'Choose a photo marked Preview' : 'Choose this photo'} <ArrowRight /></button> : (
                 <>
                   <button type="button" className="dollvue-back" onClick={() => setStep(1)} disabled={loading}><ArrowLeft /> Photo</button>
                   <button type="button" className="dollvue-primary" onClick={generate}
