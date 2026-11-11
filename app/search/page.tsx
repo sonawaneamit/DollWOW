@@ -41,6 +41,18 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         {query ? <p className="mt-4 text-[15px] text-text-dim">{totalResults ? `${totalResults} matches for “${query}”` : `No matches for “${query}”`}</p> : <p className="mt-4 text-[15px] text-text-dim">Search product names, brands, specifications, buying questions, care topics, and policies.</p>}
       </header>
 
+      {products.length ? (
+        <section className="mt-12" aria-labelledby="product-results-heading">
+          <div className="flex items-end justify-between gap-4 border-b border-border pb-3">
+            <h2 id="product-results-heading" className="font-display text-2xl font-semibold text-text">Dolls</h2>
+            <span className="text-sm text-text-dim">{products.length} matches</span>
+          </div>
+          <div className="catalog-grid mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {products.map((product, index) => <ProductCard key={product.id} product={product} priority={index < 3} />)}
+          </div>
+        </section>
+      ) : null}
+
       {contentResults.length ? (
         <section className="mt-10" aria-labelledby="site-results-heading">
           <div className="flex items-end justify-between gap-4 border-b border-border pb-3">
@@ -55,18 +67,6 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
                 <p className="mt-2 line-clamp-3 text-[15px] leading-6 text-text-dim">{result.description}</p>
               </Link>
             ))}
-          </div>
-        </section>
-      ) : null}
-
-      {products.length ? (
-        <section className="mt-12" aria-labelledby="product-results-heading">
-          <div className="flex items-end justify-between gap-4 border-b border-border pb-3">
-            <h2 id="product-results-heading" className="font-display text-2xl font-semibold text-text">Dolls</h2>
-            <span className="text-sm text-text-dim">{products.length} matches</span>
-          </div>
-          <div className="catalog-grid mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {products.map((product, index) => <ProductCard key={product.id} product={product} priority={index < 3} />)}
           </div>
         </section>
       ) : null}
