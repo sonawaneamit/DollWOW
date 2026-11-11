@@ -5,6 +5,7 @@ import { canonicalBrandValue } from '@/lib/catalog/brands';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { productImageSources } from '@/lib/catalog/productImage';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
+import reviewedBrands from './jev-reviewed-brands.json';
 import jevLookDecisions from './jev-mmxfanreal.json';
 import { dollVueConfigForProduct, dollVueGroups, isLegacyDollVueCatalogProduct } from './config';
 import { evaluateDollVueReadiness, reviewedDollVueConfig, type DollVueReadinessRecord } from './readiness';
@@ -20,7 +21,6 @@ type Eligibility = {
   imageDigests: DollVueReadinessRecord['imageDigests'];
   renderer?: DollVueReadinessRecord['renderer'];
   expandedLook?: boolean;
-  allBrandLookReview?: boolean;
 };
 
 export function isDollVueExcluded(product: Product) {
@@ -61,16 +61,13 @@ export async function expandDollVueLook(product: Product, eligibility: Eligibili
   if (!eligibility.available) return eligibility;
 
   const scopedRelease = eligibility.renderer === 'protected-iris' && /^(mmx|fanreal)-/.test(product.handle);
-  const allBrandLookReview = !scopedRelease && process.env.VERCEL_ENV === 'preview' &&
-    process.env.DOLLWOW_ALL_BRAND_LOOK_REVIEW === '1';
-  if (!scopedRelease && !allBrandLookReview) return eligibility;
-
   const sourceConfig = getCustomizationConfig(product);
   const brandLabel = product.extended.brand || product.vendor;
   const brand = scopedRelease ? (product.handle.startsWith('mmx-') ? 'MMX' : 'Fanreal') :
     canonicalBrandValue(brandLabel) || brandLabel;
+  if (!scopedRelease && !Object.hasOwn(reviewedBrands, brand)) return eligibility;
   const verdicts: Record<string, string> = scopedRelease ? jevLookDecisions :
-    (await import('./jev-all-brands-preview.json')).default;
+    (await import('./jev-all-brands.json')).default;
   const hairService = sourceConfig.groups.find(group => group.id === 'hair-options');
   const config = { ...sourceConfig, groups: sourceConfig.groups.map(group => ({
     ...group,
@@ -88,7 +85,7 @@ export async function expandDollVueLook(product: Product, eligibility: Eligibili
     })),
   })) };
   if (!dollVueGroups(config, true).length) return eligibility;
-  return { ...eligibility, config, expandedLook: true, allBrandLookReview };
+  return { ...eligibility, config, expandedLook: true };
 }
 
 /** Check private holds at the point of use; never expose their contents publicly. */

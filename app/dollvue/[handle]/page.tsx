@@ -25,7 +25,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const eligibility = await resolveCurrentDollVueEligibility(product, { holdTimeoutMs: 8000 });
   if (!eligibility.available) notFound();
   const session = verifyDollVueSessionValue((await cookies()).get(DOLLVUE_SESSION_COOKIE)?.value);
-  if (!session && !eligibility.allBrandLookReview) return <div className="dollvue-access-shell"><DollVueAccessGate
+  if (!session) return <div className="dollvue-access-shell"><DollVueAccessGate
     handle={handle} productName={productDisplayName(product) || product.title}
     headLabel={product.extended.headModel?.replace(/^head-/i, '').toUpperCase()}
     bodyLabel={product.extended.bodyCode}
@@ -34,7 +34,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
       product.extended.cupSize && `${product.extended.cupSize.replace(/[-\s]*cup$/i, '')}-Cup`,
       product.extended.material].filter((value): value is string => Boolean(value))}
   /></div>;
-  const usage = session ? await dollVueUsageForEmail(session.email) : { available: false, remaining: 0, unlimited: false };
+  const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config), eligibility.expandedLook);
   const sources = productImageSources(product);
   const galleryStills = eligibility.renderer === 'protected-iris' || eligibility.expandedLook;
@@ -57,12 +57,11 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
       }}
       groups={groups}
       eyeColorOnly={eyeColorOnly}
-      menuReview={eligibility.allBrandLookReview}
       freePreviews={DOLLVUE_FREE_PREVIEWS}
       initialRemaining={usage.remaining}
       unlimited={usage.unlimited === true}
-      verifiedEmail={session ? maskedEmail(session.email) : ""}
-      live={!eligibility.allBrandLookReview && usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLLVUE_ENABLED === "true"}
+      verifiedEmail={maskedEmail(session.email)}
+      live={usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLLVUE_ENABLED === "true"}
     />
   );
 }
