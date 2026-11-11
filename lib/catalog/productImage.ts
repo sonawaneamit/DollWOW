@@ -18,6 +18,12 @@ export function productImageSources(product: Product) {
   return sources;
 }
 
+export function productStillImagePositions(product: Product, sources = productImageSources(product)) {
+  const stills = new Set([product.featuredImage?.url, ...product.images.map(image => image.url),
+    ...(product.media ?? []).flatMap(media => media.type === "image" ? [media.image.url] : [])]);
+  return sources.flatMap((source, position) => stills.has(source.url) ? [position] : []);
+}
+
 export type ProtectedImageSize = "full" | "card" | "thumb";
 
 const PRODUCT_IMAGE_CACHE_REVISIONS: Record<string, string> = {

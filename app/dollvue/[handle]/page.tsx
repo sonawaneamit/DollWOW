@@ -8,7 +8,7 @@ import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { dollVueUsageForEmail } from "@/lib/dollvue/accountUsage";
 import { maskedEmail, verifyDollVueSessionValue, DOLLVUE_SESSION_COOKIE } from "@/lib/dollvue/session";
 import { productDisplayName } from "@/lib/catalog/naming";
-import { protectedProductImageUrl, productImageSources } from "@/lib/catalog/productImage";
+import { protectedProductImageUrl, productImageSources, productStillImagePositions } from "@/lib/catalog/productImage";
 import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { publicCustomizationConfig } from '@/lib/catalog/publicPayload';
 
@@ -38,13 +38,10 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
   const sources = productImageSources(product);
   const eyeColorOnly = eligibility.renderer === 'protected-iris';
-  const stills = new Set([product.featuredImage?.url, ...product.images.map(image=>image.url),
-    ...product.media?.flatMap(media=>media.type==='image'?[media.image.url]:[]) ?? []]);
-  const positions = eyeColorOnly ? sources.flatMap((source, index) => stills.has(source.url) || eligibility.sourcePositions.includes(index) ? [index] : []) : eligibility.sourcePositions;
+  const positions = eyeColorOnly ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
   const photos = positions.map(position => ({
     position,
     url: protectedProductImageUrl(product.handle, position, "card"),
-    previewReady: eligibility.sourcePositions.includes(position),
     alt: sources[position].altText || `${productDisplayName(product) || product.title} reference photo ${position + 1}`
   }));
 

@@ -12,12 +12,13 @@ import { sendDollVueLookEmail } from "@/lib/dollvue/email";
 import { recordDollVuePreview, dollVueUsageForEmail } from "@/lib/dollvue/accountUsage";
 import { readDollVueSession } from "@/lib/dollvue/session";
 import { productDisplayName } from "@/lib/catalog/naming";
-import { productImageSources } from "@/lib/catalog/productImage";
+import { productImageSources, productStillImagePositions } from "@/lib/catalog/productImage";
 import { getDollVueProductByHandle as getProductByHandle } from "@/lib/dollvue/product";
 import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
+import { hasFullPhotoIrisMask, renderLiveIris } from '@/lib/dollvue/liveIris';
 import { brandDollVuePreview } from '@/lib/dollvue/branding';
 
 export const runtime = "nodejs";
@@ -31,7 +32,7 @@ const requestWindows = new Map<string, { count: number; resetsAt: number }>();
 
 const schema = z.object({
   productHandle: z.string().min(1).max(180),
-  sourcePosition: z.number().int().min(0).max(7),
+  sourcePosition: z.number().int().min(0),
   selections: z.array(z.object({ groupId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) })).min(1).max(2)
 });
 
@@ -59,8 +60,10 @@ export async function POST(request: Request) {
   const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
   if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
   const eligibility = await resolveCurrentDollVueEligibility(product);
-  if (!eligibility.available || !eligibility.sourcePositions.includes(parsed.data.sourcePosition)) return NextResponse.json({ error: 'This photo is not currently available for a preview.' }, { status: 409 });
   const sources = productImageSources(product);
+  const eyeColorOnly = eligibility.renderer === 'protected-iris';
+  const allowedPositions = eyeColorOnly ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
+  if (!eligibility.available || !allowedPositions.includes(parsed.data.sourcePosition)) return NextResponse.json({ error: 'This photo is not currently available for a preview.' }, { status: 409 });
   const source = sources[parsed.data.sourcePosition];
   if (!source?.url) return NextResponse.json({ error: "This photo could not be used for a preview. Choose another product photo and try again." }, { status: 400 });
 
@@ -68,8 +71,9 @@ export async function POST(request: Request) {
   if (!areDollVueSelectionsValid(config, parsed.data.selections)) return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 400 });
   const selections = resolveDollVueSelections(config, parsed.data.selections);
   if (!selections.length) return NextResponse.json({ error: "Those visual options are not available for this doll." }, { status: 400 });
-  const protectedIris = eligibility.renderer === 'protected-iris';
-  if (protectedIris && selections.length !== 1) return apiError('Choose one eye color.', 400);
+  const protectedIris = eyeColorOnly && eligibility.sourcePositions.includes(parsed.data.sourcePosition) &&
+    hasFullPhotoIrisMask(product.id, parsed.data.sourcePosition);
+  if (eyeColorOnly && selections.length !== 1) return apiError('Choose one eye color.', 400);
   const optionImages = protectedIris ? selections.map(({option}) => option.swatch?.value || '') : await Promise.all(selections.map(async ({ option }) => {
     if (option.swatch?.kind !== "image") return "";
     if (eligibility.imageDigests) {
@@ -81,20 +85,21 @@ export async function POST(request: Request) {
   }));
   const references = optionImages.filter(Boolean);
   if (references.length !== selections.length) return NextResponse.json({error:'One of these option photos is temporarily unavailable. Please choose another option or try again later.'}, {status:503});
-  const sourceImage = !protectedIris && eligibility.imageDigests
+  const sourceImage = !eyeColorOnly && eligibility.imageDigests
     ? await normalizeReviewedImage({ url: source.url, sha256: eligibility.imageDigests[source.url],
       origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin }).catch(() => '') : source.url;
   if (!sourceImage) return apiError('This photo has changed or is temporarily unavailable. Please try another photo.', 409);
   const images = [sourceImage, ...references];
+  const prompt = buildDollVuePrompt(product, selections);
   const cacheKey = createHash('sha256').update(JSON.stringify({
     version: DOLLVUE_PROMPT_VERSION,
-    renderer: eligibility.renderer,
+    renderer: protectedIris ? "protected-iris" : "venice",
     readiness: eligibility.revision,
     productId: product.id,
     source,
     sourceDigest: eligibility.imageDigests?.[source.url],
     references,
-    prompt: buildDollVuePrompt(product, selections)
+    prompt
   })).digest('hex');
   const cached = generationCache.get(cacheKey);
   const cachedPreview = cached && Date.now() - cached.createdAt < CACHE_TTL_MS ? cached.previewDataUrl : null;
@@ -112,14 +117,13 @@ export async function POST(request: Request) {
   const selectionLabels = selections.map(({ group, option }) => ({ group: group.label, option: option.label }));
   const generated = cachedPreview ? null : protectedIris ? await (async () => {
     try {
-      const {renderLiveIris} = await import('@/lib/dollvue/liveIris');
       const bytes=await renderLiveIris({id:product.id,handle:product.handle,position:parsed.data.sourcePosition,sourceUrl:source.url,
         sourceDigest:eligibility.imageDigests?.[source.url] || '',reference:references[0],origin:new URL(env.NEXT_PUBLIC_SITE_URL).origin,labels:selectionLabels});
       return {ok:true as const,bytes,model:'reference-guided-iris',resolution:'original-photo'};
     } catch { return {ok:false as const,status:422,detail:'Reviewed eye-color photo could not be rendered'}; }
   })() : await generatePreview({
     images,
-    prompt: buildDollVuePrompt(product, selections),
+    prompt,
     aspectRatio: closestDollVueAspectRatio(source.width, source.height),
     productHandle: product.handle,
     selections: selectionLabels

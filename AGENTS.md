@@ -133,6 +133,18 @@ sources, per-option references, current holds, byte/fingerprint bindings and
 representative fidelity checks. A classification or source inventory is not an
 approval-ready generated preview.
 
+For each DollVue brand, use Jev to classify the actual resolved customization
+menu before deciding what belongs in the Look step. Review Jev's results against
+the supplier menu and option references. Exclude internal functions such as body
+heating, mechanical behavior, feel and construction upgrades from image edits.
+Treat “as shown” as the original appearance. A cosmetic classification does not
+establish that an option is sold for a particular model or that its reference is
+ready for generation.
+
+For MMX and Fanreal, customers can pick any product still in the Photo step.
+Filter supported choices in the Look step using the selected product's menu.
+Do not gate the photo picker based on the angle or whether a feature is visible.
+
 ## Homepage Hero And Promotion Placement
 
 Martin's standing instruction, 10 November 2026: never change the look of the
