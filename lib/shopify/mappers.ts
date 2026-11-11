@@ -201,7 +201,9 @@ export function mapShopifyProduct(node: ShopifyProductNode): Product {
       sourceHandle: node.sourceHandle?.value,
       sourceReleaseRank: numberValue(node.sourceReleaseRank?.value),
       material,
-      heightCm: numberValue(node.heightCm?.value) ?? numberValue(measuredHeight),
+      heightCm: node.handle === 'erovenus-avery-112-5cm-max-series-silicone-torso'
+        ? numberValue(measuredHeight) ?? numberValue(node.heightCm?.value)
+        : numberValue(node.heightCm?.value) ?? numberValue(measuredHeight),
       weightLb: catalogWeightLb(node.brand?.value || node.vendor, measurements, numberValue(node.weightLb?.value), node.tags),
       cupSize: node.cupSize?.value,
       measurements,

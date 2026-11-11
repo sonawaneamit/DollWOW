@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:32:29.106Z",
+      "reviewedAt": "2026-11-11T20:33:02.229Z",
       "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "81be2d14473036d507b6e2b1c71a20166747418e0ec8c7e525533656f98ec689"
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:32:29.106Z",
+      "reviewedAt": "2026-11-11T20:33:02.230Z",
       "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "81be2d14473036d507b6e2b1c71a20166747418e0ec8c7e525533656f98ec689"
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:32:29.106Z",
+      "reviewedAt": "2026-11-11T20:33:02.230Z",
       "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "81be2d14473036d507b6e2b1c71a20166747418e0ec8c7e525533656f98ec689"
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     }
   },
   "payload": {
     "releaseId": "template-release-2026-11-11-erovenus-torsos",
-    "sourceSnapshotHash": "c97a65e1401589c435c90706a2a2cd0040b790df0140415fae57acb5aa230895",
+    "sourceSnapshotHash": "5ad4b0ff0e9155fc5d11ce3472c1c868bf33dec9062ede561620c38cd82c5296",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -23554,7 +23554,7 @@
         "handle": "erovenus-avery-112-5cm-max-series-silicone-torso",
         "tag": "options:erovenus-torso-max-v1",
         "bindingKey": "nov11-erovenus-avery-112-5cm-max-series-silicone-torso",
-        "runtimeHash": "494551562b2688780011e02f2ebb7e43e9b58d47ab1ec9ea9f833949e8403a53"
+        "runtimeHash": "85e373b77c26ce1c7794ffb4dbc03d68ecd92eb635c5485b87b4c20f1a09ee1d"
       },
       {
         "productId": "gid://shopify/Product/10721752318136",
