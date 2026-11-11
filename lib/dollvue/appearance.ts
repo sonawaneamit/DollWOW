@@ -41,3 +41,27 @@ export function appearanceReferenceProperty(attribute: AppearanceAttribute) {
     'nail-color': 'the visible nail polish color only',
   }[attribute];
 }
+
+
+const expandedReferenceProperties: Readonly<Record<string, string>> = {
+  head: 'the selected compatible head sculpt and facial geometry',
+  'choose-head': 'the selected compatible head sculpt and facial geometry',
+  'hair-finish': 'the visible hairline and hair finish shown in the reference',
+  'high-temperature-fiber': 'the hairstyle and hairline shown in the reference',
+  'human-hair': 'the hairstyle and hairline shown in the reference',
+  'nipple-color': 'the selected color on the visible nipple only',
+  'areola-size': 'the selected width of the existing areola only',
+  areola: 'the selected color of the existing areola only',
+  'areola-width': 'the selected width of the existing areola only',
+  labia: 'the selected color of the visible labia only',
+  'vagina-color': 'the selected color of the corresponding visible external feature only',
+  'pubic-hair': 'the selected visible pubic hair style only',
+  'vagina-hair-type': 'the selected visible pubic hair style only',
+};
+
+export function expandedDollVueReference(group: { id: string; label: string },
+  option: Pick<CustomizationOption, 'id' | 'label' | 'factoryExists' | 'displayable'>) {
+  if (option.factoryExists === false || option.displayable === false ||
+    /^(as shown|as pictured|same as (photo|pictured)|factory default)\b|\(as (shown|pictured)\)|\(example\)/i.test(option.label)) return;
+  return expandedReferenceProperties[group.id];
+}

@@ -18,6 +18,7 @@ import { env } from "@/lib/utils/env";
 import { normalizeOwnedOptionReference } from '@/lib/dollvue/option-reference';
 import { resolveCurrentDollVueEligibility } from '@/lib/dollvue/eligibility';
 import { normalizeReviewedImage } from '@/lib/dollvue/reviewedImages';
+import { classifyAppearance } from '@/lib/dollvue/appearance';
 import { hasFullPhotoIrisMask, renderLiveIris } from '@/lib/dollvue/liveIris';
 import { brandDollVuePreview } from '@/lib/dollvue/branding';
 
@@ -53,44 +54,50 @@ export async function POST(request: Request) {
 
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Choose a photo and at least one available appearance option." }, { status: 400 });
+  const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
+  if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
+  const eligibility = await resolveCurrentDollVueEligibility(product);
   const usage = await dollVueUsageForEmail(session.email);
   if (!usage.available) return NextResponse.json({ error: "DollVue™ usage tracking is temporarily unavailable. Please try again shortly." }, { status: 503 });
   if (!usage.unlimited && usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
-  const product = await getProductByHandle(parsed.data.productHandle, { cache: 'no-store', strict: true }).catch(() => null);
-  if (!product) return NextResponse.json({ error: "This doll is not currently available in DollVue™." }, { status: 404 });
-  const eligibility = await resolveCurrentDollVueEligibility(product);
   const sources = productImageSources(product);
-  const eyeColorOnly = eligibility.renderer === 'protected-iris';
-  const allowedPositions = eyeColorOnly ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
+  const galleryStills = eligibility.renderer === 'protected-iris';
+  const eyeColorOnly = galleryStills && !eligibility.expandedLook;
+  const allowedPositions = galleryStills ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
   if (!eligibility.available || !allowedPositions.includes(parsed.data.sourcePosition)) return NextResponse.json({ error: 'This photo is not currently available for a preview.' }, { status: 409 });
   const source = sources[parsed.data.sourcePosition];
   if (!source?.url) return NextResponse.json({ error: "This photo could not be used for a preview. Choose another product photo and try again." }, { status: 400 });
 
   const config = eligibility.config;
-  if (!areDollVueSelectionsValid(config, parsed.data.selections)) return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 400 });
-  const selections = resolveDollVueSelections(config, parsed.data.selections);
+  if (!areDollVueSelectionsValid(config, parsed.data.selections, eligibility.expandedLook)) return NextResponse.json({ error: "Choose one or two compatible appearance options for this doll." }, { status: 400 });
+  const selections = resolveDollVueSelections(config, parsed.data.selections, eligibility.expandedLook);
   if (!selections.length) return NextResponse.json({ error: "Those visual options are not available for this doll." }, { status: 400 });
-  const protectedIris = eyeColorOnly && eligibility.sourcePositions.includes(parsed.data.sourcePosition) &&
+  const irisOnly = selections.length === 1 && (() => {
+    const appearance = classifyAppearance(selections[0].group, selections[0].option);
+    return appearance.status === 'candidate' && appearance.attribute === 'eye-color';
+  })();
+  const protectedIris = galleryStills && irisOnly && eligibility.sourcePositions.includes(parsed.data.sourcePosition) &&
+    Boolean(eligibility.imageDigests?.[selections[0].option.swatch?.value ?? '']) &&
     hasFullPhotoIrisMask(product.id, parsed.data.sourcePosition);
   if (eyeColorOnly && selections.length !== 1) return apiError('Choose one eye color.', 400);
   const optionImages = protectedIris ? selections.map(({option}) => option.swatch?.value || '') : await Promise.all(selections.map(async ({ option }) => {
     if (option.swatch?.kind !== "image") return "";
-    if (eligibility.imageDigests) {
+    if (eligibility.imageDigests && (!eligibility.expandedLook || eligibility.imageDigests[option.swatch.value])) {
       return normalizeReviewedImage({ url: option.swatch.value,
         sha256: eligibility.imageDigests[option.swatch.value], origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin,
         optionReference: true }).catch(() => '');
     }
-    return normalizeOwnedOptionReference(option.swatch.value, new URL(request.url).origin);
+    return normalizeOwnedOptionReference(option.swatch.value, eligibility.expandedLook ? new URL(env.NEXT_PUBLIC_SITE_URL).origin : new URL(request.url).origin);
   }));
   const references = optionImages.filter(Boolean);
   if (references.length !== selections.length) return NextResponse.json({error:'One of these option photos is temporarily unavailable. Please choose another option or try again later.'}, {status:503});
-  const sourceImage = !eyeColorOnly && eligibility.imageDigests
+  const sourceImage = !galleryStills && eligibility.imageDigests
     ? await normalizeReviewedImage({ url: source.url, sha256: eligibility.imageDigests[source.url],
       origin: new URL(env.NEXT_PUBLIC_SITE_URL).origin }).catch(() => '') : source.url;
   if (!sourceImage) return apiError('This photo has changed or is temporarily unavailable. Please try another photo.', 409);
   const images = [sourceImage, ...references];
-  const prompt = buildDollVuePrompt(product, selections);
+  const prompt = buildDollVuePrompt(product, selections, eligibility.expandedLook);
   const cacheKey = createHash('sha256').update(JSON.stringify({
     version: DOLLVUE_PROMPT_VERSION,
     renderer: protectedIris ? "protected-iris" : "venice",

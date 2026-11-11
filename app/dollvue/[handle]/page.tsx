@@ -35,10 +35,11 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
       product.extended.material].filter((value): value is string => Boolean(value))}
   /></div>;
   const usage = await dollVueUsageForEmail(session.email);
-  const groups = dollVueGroups(publicCustomizationConfig(eligibility.config));
+  const groups = dollVueGroups(publicCustomizationConfig(eligibility.config), eligibility.expandedLook);
   const sources = productImageSources(product);
-  const eyeColorOnly = eligibility.renderer === 'protected-iris';
-  const positions = eyeColorOnly ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
+  const galleryStills = eligibility.renderer === 'protected-iris';
+  const eyeColorOnly = galleryStills && !eligibility.expandedLook;
+  const positions = galleryStills ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
   const photos = positions.map(position => ({
     position,
     url: protectedProductImageUrl(product.handle, position, "card"),
