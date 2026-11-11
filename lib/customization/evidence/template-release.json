@@ -4,26 +4,26 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "reviewedAt": "2026-11-11T19:18:54.171Z",
       "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
+      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "reviewedAt": "2026-11-11T19:18:54.171Z",
       "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
+      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
     },
     "coordinatedRelease": {
       "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "reviewedAt": "2026-11-11T19:18:54.171Z",
       "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
+      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
     }
   },
   "payload": {
     "releaseId": "template-release-2026-11-11-ido-ella",
-    "sourceSnapshotHash": "f2d3d6e85a52c0748125dc1449b7740d9d86eae49b423ca3b623559cdfdb079d",
+    "sourceSnapshotHash": "eb3e169b1cd58f90527871ffd61dd0d82d802531c61914059a3b0428c1dfa1ee",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -23537,7 +23537,7 @@
         "handle": "ido-ella-167cm-f-cup-silicone-companion-doll",
         "tag": "options:ido-silicone-included-manual-v1",
         "bindingKey": "ido-ella-167f-nov11",
-        "runtimeHash": "8411ceefb71fcea9f30ebd07f438eca3bac3c52089281259b835df77f8aa5fc9"
+        "runtimeHash": "e59c0e919110e18106aeaa3a3c5fe960ed90e3f502f4f71050084a3f974aac24"
       }
     ],
     "bindings": {

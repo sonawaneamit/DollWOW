@@ -7,3 +7,5 @@ Martin approved the exact shared-menu preview and requested release on 11 Novemb
 - The private product page showed Starter $2,716.30, Enthusiast $2,776.30 and Collector $2,815.30. Selecting Collector preserved the chosen alternate head on desktop and mobile.
 - The template runtime hash uses the expected US Storefront representation derived from the draft and live Laura. Verify the exact actual product and tier resolution at release. The production registry only binds this exact parent.
 - The working files and Shopify readback are saved in the DOL-360 worktree. Product-level search evidence remains in progress. The private page rendered the correct canonical, title, heading and Product Offer price.
+
+The initial publication supplied the actual public Storefront representation. It omits the Admin-only body type, so the predicted preset hash failed. Ella was restored to draft with zero publications. The corrected hash is bound to the actual saved Storefront response, which passes all three preset totals. Checkout charge mappings are unchanged by the correction.
