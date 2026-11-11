@@ -1,6 +1,7 @@
 import 'server-only';
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig } from '@/types/customization';
+import { canonicalBrandValue } from '@/lib/catalog/brands';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { productImageSources } from '@/lib/catalog/productImage';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
@@ -19,6 +20,7 @@ type Eligibility = {
   imageDigests: DollVueReadinessRecord['imageDigests'];
   renderer?: DollVueReadinessRecord['renderer'];
   expandedLook?: boolean;
+  allBrandLookReview?: boolean;
 };
 
 export function isDollVueExcluded(product: Product) {
@@ -55,14 +57,20 @@ export function resolveDollVueEligibility(product: Product): Eligibility {
     config: legacyConfig, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined, renderer: undefined };
 }
 
-export function expandDollVueLook(product: Product, eligibility: Eligibility): Eligibility {
-  if (!eligibility.available || eligibility.renderer !== 'protected-iris' || !/^(mmx|fanreal)-/.test(product.handle)) {
-    return eligibility;
-  }
+export async function expandDollVueLook(product: Product, eligibility: Eligibility): Promise<Eligibility> {
+  if (!eligibility.available) return eligibility;
+
+  const scopedRelease = eligibility.renderer === 'protected-iris' && /^(mmx|fanreal)-/.test(product.handle);
+  const allBrandLookReview = !scopedRelease && process.env.VERCEL_ENV === 'preview' &&
+    process.env.DOLLWOW_ALL_BRAND_LOOK_REVIEW === '1';
+  if (!scopedRelease && !allBrandLookReview) return eligibility;
 
   const sourceConfig = getCustomizationConfig(product);
-  const brand = product.handle.startsWith('mmx-') ? 'MMX' : 'Fanreal';
-  const verdicts: Record<string, string> = jevLookDecisions;
+  const brandLabel = product.extended.brand || product.vendor;
+  const brand = scopedRelease ? (product.handle.startsWith('mmx-') ? 'MMX' : 'Fanreal') :
+    canonicalBrandValue(brandLabel) || brandLabel;
+  const verdicts: Record<string, string> = scopedRelease ? jevLookDecisions :
+    (await import('./jev-all-brands-preview.json')).default;
   const hairService = sourceConfig.groups.find(group => group.id === 'hair-options');
   const config = { ...sourceConfig, groups: sourceConfig.groups.map(group => ({
     ...group,
@@ -79,7 +87,8 @@ export function expandDollVueLook(product: Product, eligibility: Eligibility): E
         verdicts[JSON.stringify([brand, group.id, group.label, option.id, option.label])] === 'VISIBLE',
     })),
   })) };
-  return { ...eligibility, config, expandedLook: true };
+  if (!dollVueGroups(config, true).length) return eligibility;
+  return { ...eligibility, config, expandedLook: true, allBrandLookReview };
 }
 
 /** Check private holds at the point of use; never expose their contents publicly. */

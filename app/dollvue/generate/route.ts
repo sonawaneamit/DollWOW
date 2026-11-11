@@ -62,7 +62,7 @@ export async function POST(request: Request) {
   if (!usage.unlimited && usage.remaining <= 0) return NextResponse.json({ error: "You have used your five complimentary previews. Save this look or contact DollWOW and we will help you compare the options." }, { status: 429 });
 
   const sources = productImageSources(product);
-  const galleryStills = eligibility.renderer === 'protected-iris';
+  const galleryStills = eligibility.renderer === 'protected-iris' || eligibility.expandedLook;
   const eyeColorOnly = galleryStills && !eligibility.expandedLook;
   const allowedPositions = galleryStills ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
   if (!eligibility.available || !allowedPositions.includes(parsed.data.sourcePosition)) return NextResponse.json({ error: 'This photo is not currently available for a preview.' }, { status: 409 });
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
     const appearance = classifyAppearance(selections[0].group, selections[0].option);
     return appearance.status === 'candidate' && appearance.attribute === 'eye-color';
   })();
-  const protectedIris = galleryStills && irisOnly && eligibility.sourcePositions.includes(parsed.data.sourcePosition) &&
+  const protectedIris = eligibility.renderer === 'protected-iris' && irisOnly && eligibility.sourcePositions.includes(parsed.data.sourcePosition) &&
     Boolean(eligibility.imageDigests?.[selections[0].option.swatch?.value ?? '']) &&
     hasFullPhotoIrisMask(product.id, parsed.data.sourcePosition);
   if (eyeColorOnly && selections.length !== 1) return apiError('Choose one eye color.', 400);
