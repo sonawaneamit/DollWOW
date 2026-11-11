@@ -3,27 +3,27 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex under Martin DOL261 launch authority; exact public PDP enrichment correction",
-      "reviewedAt": "2026-11-10T19:11:10.561Z",
-      "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "06363869c2afdfe26e4df6f435099ac3a241392212fa01c5014319c2726c48e1"
+      "reviewedBy": "Codex, exact Ella menu and server checkout check",
+      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
+      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex under Martin DOL261 launch authority; exact public PDP enrichment correction",
-      "reviewedAt": "2026-11-10T19:11:10.561Z",
-      "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "06363869c2afdfe26e4df6f435099ac3a241392212fa01c5014319c2726c48e1"
+      "reviewedBy": "Codex, exact Ella menu and server checkout check",
+      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
+      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex under Martin DOL261 launch authority; exact public PDP enrichment correction",
-      "reviewedAt": "2026-11-10T19:11:10.561Z",
-      "evidenceRef": "docs/catalog/mmx-release-2026-11-10.md",
-      "payloadHash": "06363869c2afdfe26e4df6f435099ac3a241392212fa01c5014319c2726c48e1"
+      "reviewedBy": "Codex, exact Ella menu and server checkout check",
+      "reviewedAt": "2026-11-11T19:10:50.602Z",
+      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
+      "payloadHash": "433731b0045b213fce19fb3280a10760f42eac1b342eca9865ee878f334c6eff"
     }
   },
   "payload": {
-    "releaseId": "templates-2026-11-10-mmx-batches",
-    "sourceSnapshotHash": "41630d89b6c16e47f19efb905950e156c8896fb749155ad2a6cc642fa7abbfe0",
+    "releaseId": "template-release-2026-11-11-ido-ella",
+    "sourceSnapshotHash": "f2d3d6e85a52c0748125dc1449b7740d9d86eae49b423ca3b623559cdfdb079d",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2962,7 +2962,8 @@
       "gid://shopify/Product/10716941451448",
       "gid://shopify/Product/10716973203640",
       "gid://shopify/Product/10640124182712",
-      "gid://shopify/Product/10716993519800"
+      "gid://shopify/Product/10716993519800",
+      "gid://shopify/Product/10721550106808"
     ],
     "entries": [
       {
@@ -23530,6 +23531,13 @@
         "tag": "options:mmx-standard-v1",
         "bindingKey": "mmx-nov10-7480d697743675335a",
         "runtimeHash": "f8a694137dca5c08e060b6beaaad99fc9c71ea5e1b64356de6bca5b12da49114"
+      },
+      {
+        "productId": "gid://shopify/Product/10721550106808",
+        "handle": "ido-ella-167cm-f-cup-silicone-companion-doll",
+        "tag": "options:ido-silicone-included-manual-v1",
+        "bindingKey": "ido-ella-167f-nov11",
+        "runtimeHash": "8411ceefb71fcea9f30ebd07f438eca3bac3c52089281259b835df77f8aa5fc9"
       }
     ],
     "bindings": {
@@ -34996,6 +35004,94 @@
         ],
         "tag": "options:mmx-standard-v1",
         "signature": "sha256:70426b31035beca1cc4cf424d181fa37da14de700a39b6c7e60ddc94a976261e"
+      },
+      "ido-ella-167f-nov11": {
+        "tag": "options:ido-silicone-included-manual-v1",
+        "signature": "sha256:668ab862462f5ef0185897ca8f22d87d6b09bae373d2f667d2439fbec4f76d28",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Realistic finish and an articulated lightweight build with your selected head.",
+            "add": [
+              {
+                "groupId": "breast-options",
+                "optionId": "gel-breasts-free"
+              },
+              {
+                "groupId": "skeleton-type-add-on",
+                "optionId": "evo-free"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "realistic-body-painting-free"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "real-skin-texture"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "super-weight-reduction-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "advanced-finger-joints-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "hard-hands-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-butt-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "wire-toes-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the irrigator and reusable drying rod for routine care.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Switches from the standalone care tools to the premium cleaning set.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "premium-cleaning-set-orig-550"
+              }
+            ],
+            "remove": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              }
+            ]
+          }
+        ]
       }
     }
   }
