@@ -129,6 +129,11 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const displayNameUi = productDisplayNameForUi(product);
   const isCastleOct22 = product.tags.some(tag => tag.startsWith('options:dolls-castle-oct22-'));
   const pdpHeading = isPrivateDraft || isCastleOct22 ? productPublicTitle(product) : productPdpHeading(product);
+  const brandName = (product.extended.brand || product.vendor || "").trim();
+  const hasSeparateModelName = Boolean(displayNameUi && displayNameUi !== pdpHeading);
+  const modelNameIsHeading = hasSeparateModelName && /^(?:mmx(?: dolls?)?|fanreal(?: dolls?)?)$/i.test(brandName);
+  const ModelNameElement = modelNameIsHeading ? "h1" : "p";
+  const ProductHeadingElement = modelNameIsHeading ? "div" : "h1";
   const intro = productHeroIntro(product);
   const heroSpecs = primaryProductSpecs(product);
   const measurements = productMeasurementSpecs(product);
@@ -212,11 +217,11 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 className="min-h-11 rounded-full border border-gold-500/24 px-3 text-sm font-semibold text-ivory-200 hover:border-gold-300/55 hover:text-gold-200"
               />
             </div>
-            {displayNameUi && displayNameUi !== pdpHeading ? <p className="mt-3 text-base font-medium  text-gold-200/90">{displayNameUi}</p> : null}
-            <h1 className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
+            {hasSeparateModelName ? <ModelNameElement className="mt-3 text-base font-medium text-gold-200/90">{displayNameUi}</ModelNameElement> : null}
+            <ProductHeadingElement className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold leading-tight text-ivory-50 sm:text-4xl">
               <span>{pdpHeading}</span>
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
-            </h1>
+            </ProductHeadingElement>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
               <span className="text-sm text-ivory-500">Base configuration</span>
