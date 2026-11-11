@@ -19,6 +19,7 @@ type Props = {
   live: boolean;
   reviewOnly?: boolean;
   eyeColorOnly?: boolean;
+  menuReview?: boolean;
 };
 
 type Result = {
@@ -31,7 +32,7 @@ type Result = {
 
 const MAX_PREVIEW_OPTIONS = 2;
 
-export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live, reviewOnly = false, eyeColorOnly = false }: Props) {
+export function DollVue({ product, groups, freePreviews, initialRemaining, unlimited = false, verifiedEmail, live, reviewOnly = false, eyeColorOnly = false, menuReview = false }: Props) {
   const draftHandle = reviewOnly ? `private-review:${product.handle}` : product.handle;
   const trackDollVueEvent: typeof trackEvent = (...args) => { if (!reviewOnly) trackEvent(...args); };
   const resultStartRef = useRef<HTMLDivElement>(null);
@@ -302,8 +303,8 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
                     </div>
                   </fieldset>
                 ))}
-                <p className="dollvue-verified-email"><ShieldCheck /><span><b>{reviewOnly ? "Private review" : "Verified access"}</b><small>{reviewOnly ? "No customer account, email or allowance is used." : <>Previews are connected to {verifiedEmail} across your devices.</>}</small></span></p>
-                {!live ? <p className="dollvue-notice">DollVue™ is temporarily unavailable. Please try again shortly.</p> : null}
+                <p className="dollvue-verified-email"><ShieldCheck /><span><b>{reviewOnly || menuReview ? "Private review" : "Verified access"}</b><small>{reviewOnly || menuReview ? "No customer account, email or allowance is used." : <>Previews are connected to {verifiedEmail} across your devices.</>}</small></span></p>
+                {!live ? <p className="dollvue-notice">{menuReview ? "This private preview is for reviewing options. Image generation is disabled here." : "DollVue™ is temporarily unavailable. Please try again shortly."}</p> : null}
                 {error ? <div className="dollvue-error" role="alert"><strong>We couldn’t create this preview.</strong><p>{error}</p><small>Your selections are still here. Try again, choose another photo, or ask DollWOW for help.</small></div> : null}
               </div>
             ) : result ? (

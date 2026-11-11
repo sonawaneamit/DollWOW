@@ -57,11 +57,12 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
       }}
       groups={groups}
       eyeColorOnly={eyeColorOnly}
+      menuReview={eligibility.allBrandLookReview}
       freePreviews={DOLLVUE_FREE_PREVIEWS}
       initialRemaining={usage.remaining}
       unlimited={usage.unlimited === true}
       verifiedEmail={session ? maskedEmail(session.email) : ""}
-      live={usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLLVUE_ENABLED === "true"}
+      live={!eligibility.allBrandLookReview && usage.available && Boolean(process.env.VENICE_API_KEY) && process.env.DOLLVUE_ENABLED === "true"}
     />
   );
 }
