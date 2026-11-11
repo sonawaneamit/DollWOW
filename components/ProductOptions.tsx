@@ -112,6 +112,14 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
         pricedConfig.groups.some((group) => group.id === groupId && group.options.some((option) => option.id === optionId))
       ));
       if (!Object.keys(supported).length) return;
+      if (product.handle.startsWith("fanreal-")) {
+        const hairstyle = pricedConfig.groups.find(group =>
+          ["wig", "high-temperature-fiber", "human-hair"].includes(group.id) && supported[group.id]);
+        const dependency = hairstyle?.visibleWhen;
+        if (dependency?.length === 1 && dependency[0].length === 1 && dependency[0][0].groupId === "hair-options") {
+          supported["hair-options"] = dependency[0][0].optionId;
+        }
+      }
       restoreFrame = window.requestAnimationFrame(() => {
         setSelected((current) => ({ ...current, ...supported }));
         const firstSelectedGroup = pricedConfig.groups.find((group) => supported[group.id]);

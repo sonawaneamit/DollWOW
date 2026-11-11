@@ -4,6 +4,7 @@ import type { BrandCustomizationConfig } from '@/types/customization';
 import { getCustomizationConfig } from '@/lib/customization/configs';
 import { productImageSources } from '@/lib/catalog/productImage';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
+import jevLookDecisions from './jev-mmxfanreal.json';
 import { dollVueConfigForProduct, dollVueGroups, isLegacyDollVueCatalogProduct } from './config';
 import { evaluateDollVueReadiness, reviewedDollVueConfig, type DollVueReadinessRecord } from './readiness';
 import registryData from './readiness-registry.json';
@@ -17,6 +18,7 @@ type Eligibility = {
   revision: string;
   imageDigests: DollVueReadinessRecord['imageDigests'];
   renderer?: DollVueReadinessRecord['renderer'];
+  expandedLook?: boolean;
 };
 
 export function isDollVueExcluded(product: Product) {
@@ -53,12 +55,39 @@ export function resolveDollVueEligibility(product: Product): Eligibility {
     config: legacyConfig, sourcePositions, revision: 'legacy-appearance-v2', imageDigests: undefined, renderer: undefined };
 }
 
+export function expandDollVueLook(product: Product, eligibility: Eligibility): Eligibility {
+  if (!eligibility.available || eligibility.renderer !== 'protected-iris' || !/^(mmx|fanreal)-/.test(product.handle)) {
+    return eligibility;
+  }
+
+  const sourceConfig = getCustomizationConfig(product);
+  const brand = product.handle.startsWith('mmx-') ? 'MMX' : 'Fanreal';
+  const verdicts: Record<string, string> = jevLookDecisions;
+  const hairService = sourceConfig.groups.find(group => group.id === 'hair-options');
+  const config = { ...sourceConfig, groups: sourceConfig.groups.map(group => ({
+    ...group,
+    visibleWhen: ['high-temperature-fiber', 'human-hair'].includes(group.id) &&
+      group.visibleWhen?.length === 1 && group.visibleWhen[0].length === 1 &&
+      group.visibleWhen[0][0].groupId === hairService?.id &&
+      hairService.options.some(option => option.id === group.visibleWhen?.[0][0].optionId &&
+        option.factoryExists !== false && option.displayable !== false && option.purchasable !== false)
+      ? undefined : group.visibleWhen,
+    options: group.options.map(option => ({
+      ...option,
+      dollVueEnabled: option.factoryExists !== false && option.displayable !== false && option.purchasable !== false &&
+        option.swatch?.kind === 'image' && isOwnedOptionAsset(option.swatch.value) &&
+        verdicts[JSON.stringify([brand, group.id, group.label, option.id, option.label])] === 'VISIBLE',
+    })),
+  })) };
+  return { ...eligibility, config, expandedLook: true };
+}
+
 /** Check private holds at the point of use; never expose their contents publicly. */
 export async function resolveCurrentDollVueEligibility(product: Product, options: { holdTimeoutMs?: number } = {}) {
   const eligibility = resolveDollVueEligibility(product);
   if (!eligibility.available) return eligibility;
   const hold = await getCurrentDollVueHold(product.id, options.holdTimeoutMs);
-  return hold === 'clear' ? eligibility : { ...eligibility, available: false, sourcePositions: [] };
+  return hold === 'clear' ? expandDollVueLook(product, eligibility) : { ...eligibility, available: false, sourcePositions: [] };
 }
 
 /** Lightweight lists never include the private review record or full option menus. */

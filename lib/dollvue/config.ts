@@ -1,7 +1,7 @@
 import type { BrandCustomizationConfig } from "@/types/customization";
 import type { Product } from "@/types/product";
 import type { DollVueGroup } from "./public";
-import { appearanceReferenceProperty, classifyAppearance } from './appearance';
+import { appearanceReferenceProperty, classifyAppearance, expandedDollVueReference } from './appearance';
 import { isOwnedOptionAsset } from '@/lib/assets/option-assets.mjs';
 import { isDollVueGroupVisible } from './conditionalVisibility';
 
@@ -62,12 +62,12 @@ export function dollVueConfigForProduct(product: Product, fallback: BrandCustomi
   return fallback;
 }
 
-export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] {
+export function dollVueGroups(config: BrandCustomizationConfig, expanded = false): DollVueGroup[] {
   const selectableGroupIds = new Set(config.groups.filter(group => group.options.some(option => option.dollVueEnabled === true)).map(group => group.id));
   return config.groups.flatMap((group) => {
     if (!isDollVueGroupVisible(config, group, selectableGroupIds)) return [];
     const options = group.options
-      .filter((option) => option.dollVueEnabled === true && option.swatch?.kind === "image" && isOwnedOptionAsset(option.swatch.value) && classifyAppearance(group, option).status === 'candidate')
+      .filter((option) => option.dollVueEnabled === true && option.swatch?.kind === "image" && isOwnedOptionAsset(option.swatch.value) && (expanded || classifyAppearance(group, option).status === 'candidate'))
       .map(({ id, label, swatch }) => ({ id, label: cleanLabel(label), swatch }));
     if (!options.length) return [];
     return [{
@@ -78,8 +78,8 @@ export function dollVueGroups(config: BrandCustomizationConfig): DollVueGroup[] 
   });
 }
 
-export function resolveDollVueSelections(config: BrandCustomizationConfig, selections: DollVueSelection[]) {
-  const groups = dollVueGroups(config);
+export function resolveDollVueSelections(config: BrandCustomizationConfig, selections: DollVueSelection[], expanded = false) {
+  const groups = dollVueGroups(config, expanded);
   const resolved = selections.flatMap((selection) => {
     const group = groups.find((item) => item.id === selection.groupId);
     const option = group?.options.find((item) => item.id === selection.optionId);
@@ -89,9 +89,9 @@ export function resolveDollVueSelections(config: BrandCustomizationConfig, selec
   return [...unique.values()].slice(0, 2);
 }
 
-export function areDollVueSelectionsValid(config: BrandCustomizationConfig, selections: DollVueSelection[]) {
+export function areDollVueSelectionsValid(config: BrandCustomizationConfig, selections: DollVueSelection[], expanded = false) {
   if (selections.length < 1 || selections.length > 2) return false;
-  const resolved = resolveDollVueSelections(config, selections);
+  const resolved = resolveDollVueSelections(config, selections, expanded);
   if (resolved.length !== selections.length) return false;
   const includes = (choice: DollVueSelection) => selections.some(s => s.groupId === choice.groupId && s.optionId === choice.optionId);
   for (const {group} of resolved) {
@@ -99,10 +99,12 @@ export function areDollVueSelectionsValid(config: BrandCustomizationConfig, sele
     if (original.selectionMode !== 'multiple' && selections.filter(s => s.groupId === group.id).length > 1) return false;
     // resolveDollVueSelections already applies the shared fixed-default visibility guard.
   }
+  if (expanded && resolved.filter(({group}) => ['wig', 'high-temperature-fiber', 'human-hair'].includes(group.id)).length > 1) return false;
   return !config.rules.some(rule => includes(rule.when) && includes(rule.conflictsWith));
 }
 
-export function buildDollVuePrompt(product: Product, selections: ReturnType<typeof resolveDollVueSelections>) {
+export function buildDollVuePrompt(product: Product, selections: ReturnType<typeof resolveDollVueSelections>, expanded = false) {
+  if (expanded) return buildExpandedLookPrompt(selections);
   const imageMap = selections.map(({ group, option }, index) =>
     `Image ${index + 2}: ${group.label} reference only. Transfer only ${referenceProperty(group, option)} for the selected ${option.label} option. Unless the selected attribute explicitly includes shape or size, preserve Image 1's exact original geometry, boundaries, scale, placement, and proportions. Do not copy the reference image's identity, anatomy, pose, clothing, accessories, setting, text, logo, watermark, or unselected properties.`
   );
@@ -128,6 +130,20 @@ export function buildDollVuePrompt(product: Product, selections: ReturnType<type
     "FINAL COVERAGE CHECK BEFORE OUTPUT",
     "Return the same exact product photograph as Image 1 with only the named selected customizations changed. Verify no unselected attribute changed and no new element appeared. If anything unselected changed, restore it to Image 1 before output."
   ].join("\n\n");
+}
+
+function buildExpandedLookPrompt(selections: ReturnType<typeof resolveDollVueSelections>) {
+  const edits = selections.map(({group, option}, index) => {
+    const meaning = classifyAppearance(group, option);
+    const attribute = expandedDollVueReference(group, option) ??
+      (meaning.status === 'candidate' ? appearanceReferenceProperty(meaning.attribute) : `the visible change specified by ${group.label}`);
+    return `Image ${index + 2} is the supplier reference for ${group.label}: ${option.label}. Transfer only ${attribute}.`;
+  });
+  return [
+    'Edit Image 1, the exact adult DollWOW product photograph. Use the other images only as supplier references for the named choices.',
+    ...edits,
+    'Keep the source pose, framing, expression, lighting, setting, outfit, and coverage. If the requested area is obscured or outside the frame, leave it alone. Keep all unselected features unchanged. Apply requested width only to its named feature. Change the sculpt only when a compatible head is explicitly selected. Do not copy the reference outfit, pose, or background. Return the edited source composition.',
+  ].join('\n');
 }
 
 function referenceProperty(group: DollVueGroup, option: DollVueGroup['options'][number]) {
