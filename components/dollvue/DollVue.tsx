@@ -10,7 +10,7 @@ import { productUrl } from "@/lib/catalog/productUrl";
 import styles from './DollVue.module.css';
 
 type Props = {
-  product: { handle: string; name: string; brand: string; defaultPhotoPosition?: number; photos: Array<{ position: number; url: string; alt: string; previewReady?: boolean }> };
+  product: { handle: string; name: string; brand: string; defaultPhotoPosition?: number; photos: Array<{ position: number; url: string; alt: string }> };
   groups: DollVueGroup[];
   freePreviews: number;
   initialRemaining: number;
@@ -93,7 +93,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
   }), [groups, selections]);
   const maxOptions = reviewOnly || eyeColorOnly ? 1 : MAX_PREVIEW_OPTIONS;
   const optionLimitReached = selectedItems.length >= maxOptions;
-  const canGenerate = live && selectedPhoto?.previewReady !== false && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
+  const canGenerate = live && Boolean(selectedPhoto) && selectedItems.length > 0 && accepted && remaining > 0 && !loading;
 
   function choose(groupId: string, optionId: string) {
     if (!selections[groupId] && optionLimitReached) return;
@@ -265,14 +265,13 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
               <div className="dollvue-pane">
                 <div className="dollvue-instructions">
                   <ShieldCheck />
-                  <div><strong>Choose a photo to personalize</strong><p>{eyeColorOnly ? 'Browse all product photos. Photos marked “Preview” can be used to compare eye colors.' : 'Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.'}</p></div>
+                  <div><strong>Choose a photo to personalize</strong><p>{eyeColorOnly ? 'Choose any photo, then pick the eye color you’d like to try.' : 'Pick the photo that shows the features you want to compare most clearly. Your preview will keep this photo’s pose, setting, and overall composition. Front-facing photos usually give the clearest preview of hair, eyes, makeup, and skin tone.'}</p></div>
                 </div>
                 <div className="dollvue-photo-grid">
                   {product.photos.map((photo) => (
-                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={eyeColorOnly ? `Photo ${photo.position + 1}${photo.previewReady ? ' — preview available' : ' — view only'}` : `Choose photo ${photo.position}`} aria-pressed={photo.position === photoPosition}>
+                    <button type="button" key={photo.position} className={photo.position === photoPosition ? "is-selected" : ""} onClick={() => setPhotoPosition(photo.position)} aria-label={`Choose photo ${photo.position + 1}`} aria-pressed={photo.position === photoPosition}>
                       <Image src={photo.url} alt={`${photo.alt} — photo ${photo.position}`} fill sizes="30vw" />
                       {photo.position === photoPosition ? <Check /> : null}
-                      {eyeColorOnly && photo.previewReady ? <span className={styles.photoReady}>Preview</span> : null}
                     </button>
                   ))}
                 </div>
@@ -316,7 +315,7 @@ export function DollVue({ product, groups, freePreviews, initialRemaining, unlim
 
           {!result ? (
             <footer className="dollvue-actionbar">
-              {step === 1 ? <button type="button" className="dollvue-primary" disabled={selectedPhoto?.previewReady === false} onClick={() => setStep(2)}>{selectedPhoto?.previewReady === false ? 'Choose a photo marked Preview' : 'Choose this photo'} <ArrowRight /></button> : (
+              {step === 1 ? <button type="button" className="dollvue-primary" disabled={!selectedPhoto} onClick={() => setStep(2)}>Choose this photo <ArrowRight /></button> : (
                 <>
                   <button type="button" className="dollvue-back" onClick={() => setStep(1)} disabled={loading}><ArrowLeft /> Photo</button>
                   <button type="button" className="dollvue-primary" onClick={generate}

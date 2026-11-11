@@ -120,6 +120,7 @@ export function buildDollVuePrompt(product: Product, selections: ReturnType<type
     "Preserve the doll's facial geometry, sculpt, body geometry and proportions, pose, expression, gaze, camera angle, perspective, crop, composition, lighting direction, shadows, highlights, synthetic material texture, seams and joints where visible, clothing, accessories, background, and all other product details. Preserve the original number and shape of limbs, hands, fingers, feet, and toes. Keep every unselected attribute unchanged.",
     "REQUESTED EDITS",
     ...(requestedEdits.length ? requestedEdits : ["Keep the complete factory look unchanged."]),
+    "If a selected feature is out of frame or obscured in Image 1, leave that feature and its surroundings unchanged.",
     "PROHIBITED CHANGES",
     "DO NOT ADD OR INVENT ANYTHING. Do not redesign, beautify, retouch, age-shift, or reinterpret the doll. Do not change anatomy, body shape, facial features, expression, pose, clothing, accessories, setting, framing, exposure, contrast, or color grade. Do not add, invent, remove, cover, or replace objects, masks, eyewear, clothing, text, logos, watermarks, body parts, accessories, decorations, or product features. Do not copy identity, anatomy, geometry, pose, clothing, background, text, branding, or accessories from option-reference images.",
     "OUTPUT",

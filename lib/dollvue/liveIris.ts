@@ -9,6 +9,10 @@ import sourceData from './live-iris-sources.json';
 type LiveIrisRecord = {portrait:{position:number;photo:string;mask:ProtectedIrisSource}; fullSources:Record<string,ProtectedIrisSource>; pigments:Record<string,IrisPigment>};
 const records = sourceData as unknown as Readonly<Record<string, LiveIrisRecord>>;
 
+export function hasFullPhotoIrisMask(productId: string, position: number) {
+  return Boolean(records[productId]?.fullSources[position]);
+}
+
 export async function renderLiveIris(input: {id:string; handle:string; position:number; sourceUrl:string; sourceDigest:string; reference:string; origin:string; labels:Array<{group:string;option:string}>}) {
   const record = records[input.id];
   const pigment = record?.pigments[input.reference];
