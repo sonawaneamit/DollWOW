@@ -37,7 +37,7 @@ export default async function DollVueProductPage({ params }: { params: Promise<{
   const usage = await dollVueUsageForEmail(session.email);
   const groups = dollVueGroups(publicCustomizationConfig(eligibility.config), eligibility.expandedLook);
   const sources = productImageSources(product);
-  const galleryStills = eligibility.renderer === 'protected-iris';
+  const galleryStills = eligibility.renderer === 'protected-iris' || eligibility.expandedLook;
   const eyeColorOnly = galleryStills && !eligibility.expandedLook;
   const positions = galleryStills ? productStillImagePositions(product, sources) : eligibility.sourcePositions;
   const photos = positions.map(position => ({
