@@ -3,27 +3,27 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:18:54.171Z",
-      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
+      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
+      "reviewedAt": "2026-11-11T20:33:02.229Z",
+      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:18:54.171Z",
-      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
+      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
+      "reviewedAt": "2026-11-11T20:33:02.230Z",
+      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex, exact Ella menu and server checkout check",
-      "reviewedAt": "2026-11-11T19:18:54.171Z",
-      "evidenceRef": "docs/catalog/ido-ella-release-2026-11-11.md",
-      "payloadHash": "7d9abe40e041c4161aef81a263617b303821bccab0b2416ef554d1df9e236e20"
+      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
+      "reviewedAt": "2026-11-11T20:33:02.230Z",
+      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
+      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
     }
   },
   "payload": {
-    "releaseId": "template-release-2026-11-11-ido-ella",
-    "sourceSnapshotHash": "eb3e169b1cd58f90527871ffd61dd0d82d802531c61914059a3b0428c1dfa1ee",
+    "releaseId": "template-release-2026-11-11-erovenus-torsos",
+    "sourceSnapshotHash": "5ad4b0ff0e9155fc5d11ce3472c1c868bf33dec9062ede561620c38cd82c5296",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
       "gid://shopify/Product/10431698239672",
@@ -2963,7 +2963,10 @@
       "gid://shopify/Product/10716973203640",
       "gid://shopify/Product/10640124182712",
       "gid://shopify/Product/10716993519800",
-      "gid://shopify/Product/10721550106808"
+      "gid://shopify/Product/10721550106808",
+      "gid://shopify/Product/10721752252600",
+      "gid://shopify/Product/10721752350904",
+      "gid://shopify/Product/10721752318136"
     ],
     "entries": [
       {
@@ -23538,6 +23541,27 @@
         "tag": "options:ido-silicone-included-manual-v1",
         "bindingKey": "ido-ella-167f-nov11",
         "runtimeHash": "e59c0e919110e18106aeaa3a3c5fe960ed90e3f502f4f71050084a3f974aac24"
+      },
+      {
+        "productId": "gid://shopify/Product/10721752252600",
+        "handle": "erovenus-crystal-101cm-max-series-silicone-torso",
+        "tag": "options:erovenus-torso-max-v1",
+        "bindingKey": "nov11-erovenus-crystal-101cm-max-series-silicone-torso",
+        "runtimeHash": "73587ba5ecffc81fc08bd8126e6e4dbb79a378578e57ffb9aa1c651e7614948c"
+      },
+      {
+        "productId": "gid://shopify/Product/10721752350904",
+        "handle": "erovenus-avery-112-5cm-max-series-silicone-torso",
+        "tag": "options:erovenus-torso-max-v1",
+        "bindingKey": "nov11-erovenus-avery-112-5cm-max-series-silicone-torso",
+        "runtimeHash": "85e373b77c26ce1c7794ffb4dbc03d68ecd92eb635c5485b87b4c20f1a09ee1d"
+      },
+      {
+        "productId": "gid://shopify/Product/10721752318136",
+        "handle": "erovenus-erica-101cm-max-series-silicone-torso",
+        "tag": "options:erovenus-torso-max-v1",
+        "bindingKey": "nov11-erovenus-erica-101cm-max-series-silicone-torso",
+        "runtimeHash": "dcadfa5abad1bb40068b8ee7ca47cfc5784cd8348782ba1a7c266b86f9ded24f"
       }
     ],
     "bindings": {
@@ -35090,6 +35114,159 @@
                 "optionId": "reusable-drying-rod"
               }
             ]
+          }
+        ]
+      },
+      "nov11-erovenus-crystal-101cm-max-series-silicone-torso": {
+        "tag": "options:erovenus-torso-max-v1",
+        "signature": "sha256:3b1757bbac46746529044637a3d7461a770ef2eb528826a92b98fc5cd0ef1410",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Factory build with 5S makeup, implanted brows and lashes, and a cleaning kit.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "5s-makeup-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "sex-doll-cleaning-kit-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer interior option and a compatible wigged extra head.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-internal-vagina-free"
+              },
+              {
+                "groupId": "add-extra-head",
+                "optionId": "extra-hailey-wig"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds the deluxe care kit alongside the extra head.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "deluxe-sex-doll-care-kit"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "nov11-erovenus-avery-112-5cm-max-series-silicone-torso": {
+        "tag": "options:erovenus-torso-max-v1",
+        "signature": "sha256:c1cce8f31811dd84f5de168bd72f7b20e35654247a28af634e9cbbe01ea30d33",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Factory build with 5S makeup, implanted brows and lashes, and a cleaning kit.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "5s-makeup-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "sex-doll-cleaning-kit-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer interior option and a compatible wigged extra head.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-internal-vagina-free"
+              },
+              {
+                "groupId": "add-extra-head",
+                "optionId": "extra-blair-wig"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Upgrades the extra head to implanted hair.",
+            "add": [
+              {
+                "groupId": "add-extra-head",
+                "optionId": "extra-blair-implanted"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "nov11-erovenus-erica-101cm-max-series-silicone-torso": {
+        "tag": "options:erovenus-torso-max-v1",
+        "signature": "sha256:3b1757bbac46746529044637a3d7461a770ef2eb528826a92b98fc5cd0ef1410",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Factory build with 5S makeup, implanted brows and lashes, and a cleaning kit.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "5s-makeup-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "sex-doll-cleaning-kit-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds the softer interior option and a compatible wigged extra head.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "softer-internal-vagina-free"
+              },
+              {
+                "groupId": "add-extra-head",
+                "optionId": "extra-hailey-wig"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds the deluxe care kit alongside the extra head.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "deluxe-sex-doll-care-kit"
+              }
+            ],
+            "remove": []
           }
         ]
       }
