@@ -1,0 +1,102 @@
+{
+  "snapshotAt": "2026-10-23T03:03:26.912Z",
+  "sourceRecordCount": 3526,
+  "includedListingCount": 3098,
+  "excludedListingCount": 428,
+  "exactDuplicateIdsRemoved": 0,
+  "repeatedHeuristicGroups": 128,
+  "listingsInRepeatedHeuristicGroups": 302,
+  "verifiedUniqueFactoryModels": null,
+  "weightStatistics": null,
+  "summary": {
+    "currency": "USD",
+    "listingCount": 3098,
+    "medianListedBasePrice": 1899,
+    "middleHalfListedBasePrice": [
+      1699,
+      2299
+    ],
+    "medianListedHeightCm": 163,
+    "middleHalfListedHeightCm": [
+      158,
+      166
+    ]
+  },
+  "heightBands": [
+    {
+      "band": "140 to under155cm",
+      "listingCount": 358,
+      "currency": "USD",
+      "medianListedBasePrice": 1699,
+      "middleHalfListedBasePrice": [
+        1599,
+        2100
+      ],
+      "medianListedHeightCm": 151,
+      "middleHalfListedHeightCm": [
+        150,
+        153
+      ]
+    },
+    {
+      "band": "155 to under160cm",
+      "listingCount": 579,
+      "currency": "USD",
+      "medianListedBasePrice": 1729,
+      "middleHalfListedBasePrice": [
+        1658,
+        2099
+      ],
+      "medianListedHeightCm": 158,
+      "middleHalfListedHeightCm": [
+        156,
+        158
+      ]
+    },
+    {
+      "band": "160 to under165cm",
+      "listingCount": 969,
+      "currency": "USD",
+      "medianListedBasePrice": 1899,
+      "middleHalfListedBasePrice": [
+        1733,
+        2333
+      ],
+      "medianListedHeightCm": 162,
+      "middleHalfListedHeightCm": [
+        161,
+        163
+      ]
+    },
+    {
+      "band": "165 to under170cm",
+      "listingCount": 711,
+      "currency": "USD",
+      "medianListedBasePrice": 1899,
+      "middleHalfListedBasePrice": [
+        1777,
+        2490
+      ],
+      "medianListedHeightCm": 166,
+      "middleHalfListedHeightCm": [
+        165,
+        167
+      ]
+    },
+    {
+      "band": "170cm and above",
+      "listingCount": 481,
+      "currency": "USD",
+      "medianListedBasePrice": 1949,
+      "middleHalfListedBasePrice": [
+        1777,
+        2199
+      ],
+      "medianListedHeightCm": 171,
+      "middleHalfListedHeightCm": [
+        170,
+        174
+      ]
+    }
+  ]
+}
