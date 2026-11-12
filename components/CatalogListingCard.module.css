@@ -1,0 +1,19 @@
+.card .title {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.card .measurement, .card .weight, .card .price {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: var(--text-dim);
+}
+.card .measurement, .card .price { margin-top: 0.5rem; }
+.card .weight { margin-top: 0; }
+.card .price { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+@media (min-width: 640px) {
+  .card .title { font-size: 1rem; }
+  .card .measurement, .card .weight { font-size: 0.875rem; }
+}
