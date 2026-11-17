@@ -14,6 +14,7 @@ const staticRoutes = [
   "",
   "/brands",
   "/promo",
+  "/black-friday-sex-doll-deals",
   "/learn",
   "/authors/jesse",
   "/authors/alex",
