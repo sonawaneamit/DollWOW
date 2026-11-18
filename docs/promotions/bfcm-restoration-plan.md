@@ -22,3 +22,9 @@ old/new base prices, compare-at, included-option deltas, deadlines, and calculat
 base-plus-code totals. It is not an executed write journal, and it is not evidence
 that a production restoration job is scheduled. Production scheduling and activation
 remain part of the owner-approved release, not this private preview.
+
+The read-only decision helper is `scripts/promotions/plan-restoration.mjs`.
+Its tests cover exact deadlines, original compare-at restoration, unchanged retry,
+intervening edits and exact customization JSON bytes. The captured catalog simulation
+in `output/dol371/restoration-qa.json` covers 383 products. It is a simulated
+restoration plan, not an activated scheduler or proof of a Shopify restoration.
