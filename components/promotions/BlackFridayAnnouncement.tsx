@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { isBlackFridayVisible, BLACK_FRIDAY_2026 } from "@/lib/promotions/blackFriday2026";
+import { isBlackFridayInWindow, BLACK_FRIDAY_2026 } from "@/lib/promotions/blackFriday2026";
 
-export function useBlackFridayCampaign() {
-  const [active, setActive] = useState(false);
+export function useBlackFridayWindow(preview = false) {
+  const [active, setActive] = useState(preview);
   useEffect(() => {
+    if (preview) return;
     let timer: ReturnType<typeof setTimeout>;
     const refresh = () => {
       clearTimeout(timer);
       const now = Date.now();
-      setActive(isBlackFridayVisible(process.env, now));
+      setActive(isBlackFridayInWindow(now));
       const boundary = [BLACK_FRIDAY_2026.startsAt, BLACK_FRIDAY_2026.endsAt]
         .map(Date.parse).find(time => time > now);
       if (boundary) timer = setTimeout(refresh, Math.min(boundary - now + 10, 2_147_000_000));
@@ -19,12 +20,12 @@ export function useBlackFridayCampaign() {
     refresh();
     document.addEventListener("visibilitychange", refresh);
     return () => { clearTimeout(timer); document.removeEventListener("visibilitychange", refresh); };
-  }, []);
+  }, [preview]);
   return active;
 }
 
-export function BlackFridayAnnouncement() {
-  const active = useBlackFridayCampaign();
+export function BlackFridayAnnouncement({ preview }: { preview: boolean }) {
+  const active = useBlackFridayWindow(preview);
   return (
     <div className={`announcement-bar sticky top-0 z-[81] h-[36px] flex items-center justify-center border-b px-2 ${active ? "bg-[#641e29] text-[#fff3df] border-[#8e3946]" : "bg-surface text-text border-border"}`}>
       <p className={`text-[13px] text-center leading-[16px] ${active ? "font-semibold" : "text-text-dim"}`}>
