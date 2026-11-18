@@ -31,15 +31,28 @@ If you are comparing **SexDollTech alternatives**, separate three questions: whi
 - Realism should be inspected across several current product images, not inferred from one hero photograph.
 - If a supported product is missing, send the link. Most approved requests can go live within 4 to 6 hours after details and supplier authorization are confirmed.
 
-## Why DollWow May Be The Better Fit
+## Compare The Same Build, Not Two Store Names
 
-| Decision Area | Typical Comparison Problem | DollWow Advantage |
+This is a shopping checklist, not a hands-on SexDollTech review. Save both listing links and the date, then compare the details that change what you get:
+
+| What to compare | What to check on both listings | If something's missing |
 | --- | --- | --- |
-| TPE shopping | TPE category pages can over-focus on price. | DollWow adds material, height, weight, care, stock, and support context. |
-| Price pages | A low price band may hide configuration differences. | DollWow connects price research to [sex doll cost](/learn/sex-doll-cost) and product facts. |
-| Material clarity | Some listings may mix head and body materials. | DollWow encourages exact construction checks before checkout. |
-| Product match | Similar product cards can still differ in options or delivery path. | [Compare a listing](/compare) helps review whether another offer is comparable. |
-| Support | Material and price questions often need a pre-checkout answer. | DollWow keeps support visible throughout the buying path. |
+| The doll | Brand, exact body and head codes, version, and material | Ask whether it's the same build |
+| What's included | Skin tone, hair, finish, functions, accessories, and paid options | Check which pictured extras cost more |
+| Handling | Measurements and whether the head or packaging is counted in the weight | Ask for comparable figures |
+| Stock and delivery | Ready stock or new production, location, and exact configuration | Confirm dispatch and delivery separately |
+| Delivered price | Same currency, destination, options, shipping, taxes, and applicable duties | Get the full total before calling one cheaper |
+| Aftercare | Support contacts, coverage, exclusions, and repair options | Read the linked terms and ask questions |
+
+An unanswered question means you need more information, not that a seller lacks the feature or service. Once the builds match, compare the delivered totals.
+
+## What DollWow Can Help With
+
+- **Compare a listing:** send us the other offer through [Compare a listing](/compare). We can help check the build and included options before you compare prices. Price protection has its own [eligibility and terms](/best-price-guarantee).
+- **Human Build Check:** eligible [custom orders](/shop/custom) get a review of the selected options and obvious compatibility issues before production. It's a chance to clear up missing choices, not a promise that every option works together.
+- **Ownership support:** our [Care for Life page](/care-for-life) explains Care 365, repair help, and the current coverage terms. You can check what support includes before you order.
+
+Those are DollWow services you can check directly. They aren't claims about what another store does or doesn't offer.
 
 ## Start With the Exact Look You Want
 
@@ -82,7 +95,7 @@ Read [TPE versus silicone sex dolls](/learn/tpe-vs-silicone-sex-dolls), then com
 
 Height is easy to scan but does not predict ownership effort. Review:
 
-- listed weight in pounds and kilograms
+- listed weight in pounds and kilograms, including whether the head or packaging is counted
 - shoulder width
 - bust or chest, waist, and hips
 - torso and limb proportions
