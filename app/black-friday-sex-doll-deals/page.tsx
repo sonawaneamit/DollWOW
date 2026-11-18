@@ -17,7 +17,7 @@ const mobileBanners: Record<string, string> = {
 
 const saleEnds = 'December 10';
 const promoCode = 'BLACKFRIDAYWOW26';
-const faqs = [
+const liveFaqs = [
   ['When does the Black Friday sale end?', 'DollWOW’s $299 offer runs through December 10. Brand offers have their own dates. Top Fire runs through December 14 and Galatea through December 31.'],
   ['Does the $299 discount stack with brand deals?', 'Yes. Eligible brand discounts apply first, then DollWOW’s $299 comes off.'],
   ['Which dolls qualify for $299 off?', 'Qualifying dolls priced $900 or more. Use BLACKFRIDAYWOW26 at checkout. Standalone heads are excluded.'],
@@ -27,6 +27,7 @@ export const dynamic = 'force-dynamic';
 
 export default function BfcmPreviewPage() {
   const brandPreview = process.env.VERCEL_ENV === 'preview' && process.env.DOL371_BRAND_PREVIEW === '1';
+  const faqs = brandPreview ? liveFaqs.map(([question, answer], index) => [question, index === 0 ? 'DollWOW’s $299 code and these Top Fire, Galatea, Climax and 6YE offers end December 10 at 11:59 pm Eastern. IDO ends November 30. Other brand dates are shown above.' : index === 2 ? 'Use BLACKFRIDAYWOW26 for $299 off an order subtotal of $900 or more after eligible brand discounts, before tax and shipping.' : answer]) : liveFaqs;
   const previewDeals: Record<string, string> = {
     'Top Fire': '$150 off full silicone dolls + one free second head. Add BLACKFRIDAYWOW26 for another $299 off qualifying orders.',
     'Galatea (Dolls Castle)': 'Factory orders include body heating, vaginal suction and oral heating FREE. Add BLACKFRIDAYWOW26 for $299 off qualifying orders.',
@@ -67,7 +68,7 @@ export default function BfcmPreviewPage() {
         <div className="mt-5 rounded-xl border border-border p-5">
           <p className="font-semibold">The deal in 10 seconds</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li>Save $299 on qualifying dolls priced $900 or more through December 10.</li>
+            <li>{brandPreview ? 'Save $299 on order subtotals of $900 or more after brand discounts through December 10.' : 'Save $299 on qualifying dolls priced $900 or more through December 10.'}</li>
             <li>Stack your $299 with eligible brand discounts and upgrades.</li>
             <li>Top Fire full silicone dolls get $449 off plus a free second head.</li>
           </ul>
