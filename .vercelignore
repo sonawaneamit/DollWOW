@@ -14,3 +14,6 @@ README.md
 AGENTS.md
 !app/agents.md
 !app/agents.md/route.ts
+
+output
+.env*

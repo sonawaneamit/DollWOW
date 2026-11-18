@@ -13,6 +13,11 @@ import { mmxPdpPreviewProduct, mmxPdpPreviewRecipe } from './mmxPdpPreview';
 
 export async function getPrivateDraftPreview(handle: string): Promise<Product | null> {
   if (process.env.VERCEL_ENV !== 'preview') return null;
+  if (process.env.DOL381_SCARLETT_PREVIEW === '1') {
+    const { default: products } = await import('@/data/draft-previews/scarlett-nov18.json');
+    const found = products.find(product => product.handle === handle);
+    if (found) return structuredClone(found) as unknown as Product;
+  }
   if (process.env.DOLLWOW_DOL335_PREVIEW === '1') {
     const { fanrealPdpPreviewProduct } = await import('./fanrealPdpPreview');
     const fanreal = fanrealPdpPreviewProduct(handle);
@@ -34,6 +39,10 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
 export async function privateDraftRecipe(product: Product, config: BrandCustomizationConfig): Promise<TemplatePresetDefinition | null | undefined> {
   const snapshot = await getPrivateDraftPreview(product.handle);
   if (!snapshot || snapshot.id !== product.id) return undefined;
+  if (process.env.DOL381_SCARLETT_PREVIEW === '1' && product.id === 'gid://shopify/Product/10742348513464') {
+    const { default: recipe } = await import('@/data/draft-previews/scarlett-nov18-recipe.json');
+    return { ...structuredClone(recipe), signature: templateConfigSignature(config) } as TemplatePresetDefinition;
+  }
   if (process.env.VERCEL_ENV === 'preview' && process.env.DOLLWOW_DOL335_PREVIEW === '1') {
     const { fanrealPdpPreviewRecipe } = await import('./fanrealPdpPreview');
     const fanrealRecipe = fanrealPdpPreviewRecipe(product, config);
