@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Sex Doll Black Friday Deals 2026 – $299 Off',
   description: 'Save $299 on qualifying dolls and stack eligible brand deals from Top Fire, Fanreal, Irontech and more. Compare Black Friday and Cyber Monday offers.',
   alternates: { canonical: '/black-friday-sex-doll-deals' },
+  ...(process.env.VERCEL_ENV === 'preview' ? { robots: { index: false, follow: false } } : {}),
 };
 const mobileBanners: Record<string, string> = {
   Avant: 'avant-mobile',
@@ -25,6 +26,17 @@ const faqs = [
 export const dynamic = 'force-dynamic';
 
 export default function BfcmPreviewPage() {
+  const brandPreview = process.env.VERCEL_ENV === 'preview' && process.env.DOL371_BRAND_PREVIEW === '1';
+  const previewDeals: Record<string, string> = {
+    'Top Fire': '$150 off full silicone dolls + one free second head. Add BLACKFRIDAYWOW26 for another $299 off qualifying orders.',
+    'Galatea (Dolls Castle)': 'Factory orders include body heating, vaginal suction and oral heating FREE. Add BLACKFRIDAYWOW26 for $299 off qualifying orders.',
+    'Climax': '10% off custom full-size dolls priced $900+ with a free extra head, gel butt and eligible hands/feet upgrade. Custom torsos include a free extra head and gel butt. Warehouse stock excluded. Stack BLACKFRIDAYWOW26 on qualifying orders.',
+  };
+  const brands = brandPreview ? [
+    ...campaign.brands.filter(b => b.name !== 'IDO').map(b => previewDeals[b.name] ? { ...b, deal: previewDeals[b.name], dates: 'DollWOW offer ends December 10 at 11:59 pm Eastern' } : b),
+    { name: '6YE', deal: '5% off + one free extra head on full-size dolls. Stack BLACKFRIDAYWOW26 for another $299 off orders of $900+.', dates: 'Ends December 10 at 11:59 pm Eastern', label: 'Shop 6YE', url: '/brands/6ye-dolls', banners: [] },
+    { name: 'IDO', deal: 'Warehouse dolls $2,499. China-made orders $2,599 with one extra random wig and a moving pad FREE. Take another $299 off with BLACKFRIDAYWOW26.', dates: 'November 1–30', label: 'Shop IDO', url: '/brands/ido-dolls', banners: [] },
+  ] : campaign.brands;
   return (
     <article className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
       <header className="border-b border-border pb-8">
@@ -64,7 +76,7 @@ export default function BfcmPreviewPage() {
       <section className="mt-10" aria-labelledby="brand-offers">
         <h2 id="brand-offers" className="font-display text-3xl font-semibold">Sex doll Black Friday deals by brand</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {campaign.brands.map(({ name, deal, dates, label, url, banners }) => (
+          {brands.map(({ name, deal, dates, label, url, banners }) => (
             <article key={name} className="rounded-xl border border-border p-5">
               <div className="relative mb-4 aspect-video overflow-hidden rounded-md bg-[#140f0d]">
                 {banners[0] ? (
