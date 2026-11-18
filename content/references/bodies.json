@@ -1,0 +1,69 @@
+[
+  {
+    "slug": "irontech-166cm-2-0-e",
+    "title": "Irontech 166cm 2.0 E-cup body",
+    "designation": "166cm 2.0 E-cup",
+    "material": "Silicone; metal skeleton",
+    "example": "Molly Natural with S44 ROS MAX",
+    "bodyOnlyKg": 37.5,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "The Irontech 166cm 2.0 E-cup body weighs 37.5kg without a head. Molly Natural pairs this silicone body with the S44 ROS MAX head.",
+    "identityNote": "Think about the proportions you prefer and the space you'll need for moving, dressing and storing your doll. We'll help you confirm the build you'd like.",
+    "sourceTitle": "Irontech: 166cm 2.0 S44 ROS MAX Molly Natural",
+    "sourceUrl": "https://www.irontechdoll.com/product/romantic-sex-doll-166cm-2-0-s44-ros-max-molly-natural/",
+    "measurements": [
+      { "label": "Height", "cm": 166 },
+      { "label": "Bust", "cm": 85 },
+      { "label": "Underbust", "cm": 65.3 },
+      { "label": "Waist", "cm": 59.6 },
+      { "label": "Hips", "cm": 98 },
+      { "label": "Shoulder width", "cm": 30 }
+    ]
+  },
+  {
+    "slug": "irontech-171cm-d",
+    "title": "Irontech 171cm D-cup body",
+    "designation": "171cm D-cup",
+    "material": "Silicone; metal skeleton",
+    "example": "Vivian Natural with S31 ROS MAX",
+    "bodyOnlyKg": 37.5,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "The Irontech 171cm D-cup body weighs 37.5kg without a head. Vivian Natural pairs this silicone body with the S31 ROS MAX head.",
+    "identityNote": "Like Vivian's taller silhouette? Consider your clothing and storage plans, then ask us about the exact build you'd like before ordering.",
+    "sourceTitle": "Irontech: 171cm S31 ROS MAX Vivian Natural",
+    "sourceUrl": "https://www.irontechdoll.com/product/d-cup-sex-doll-171cm-s31-ros-max-vivian-natural/",
+    "measurements": [
+      { "label": "Height", "cm": 171 },
+      { "label": "Bust", "cm": 82 },
+      { "label": "Underbust", "cm": 63.5 },
+      { "label": "Waist", "cm": 57.2 },
+      { "label": "Hips", "cm": 93.5 },
+      { "label": "Shoulder width", "cm": 37 }
+    ]
+  },
+  {
+    "slug": "irontech-164ln",
+    "title": "Irontech 164LN body",
+    "designation": "164LN",
+    "material": "Silicone",
+    "example": "164LN silicone body",
+    "bodyOnlyKg": 60,
+    "sourceCheckedAt": "2026-10-23",
+    "answer": "The Irontech 164LN silicone body weighs 60kg without a head. Use its measurements to plan the space and clothing for your doll.",
+    "identityNote": "Ask us about clothing and storage space for the 164LN you like, along with the head and appearance you'd prefer.",
+    "sourceTitle": "Irontech factory body chart",
+    "measurements": [
+      { "label": "Height", "cm": 164 },
+      { "label": "Bust", "cm": 98 },
+      { "label": "Underbust", "cm": 67.8 },
+      { "label": "Waist", "cm": 64.2 },
+      { "label": "Hips", "cm": 121.2 },
+      { "label": "Shoulder width", "cm": 35.5 },
+      { "label": "Arm length", "cm": 68 },
+      { "label": "Leg length", "cm": 75 },
+      { "label": "Thigh line", "cm": 68.8 },
+      { "label": "Calf line", "cm": 36.7 },
+      { "label": "Foot size", "cm": 23 }
+    ]
+  }
+]
