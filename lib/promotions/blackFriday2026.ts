@@ -2,7 +2,7 @@ export const BLACK_FRIDAY_2026 = {
   id: "black-friday-2026",
   code: "BLACKFRIDAYWOW26",
   amountUsd: 299,
-  startsAt: "2026-11-27T05:00:00Z", // Thanksgiving morning US Eastern
+  startsAt: "2026-11-18T00:00:00Z", // Martin's go-live approval 18 Nov 2026
   endsAt: "2026-12-11T04:59:59Z", // 10 Dec 2026 23:59:59 US Eastern
   headline: "Black Friday: $299 OFF · Code BLACKFRIDAYWOW26 · Shop the deals →",
 } as const;
