@@ -31,7 +31,8 @@ export function BlackFridayAnnouncement() {
         <Link href={active ? "/black-friday-sex-doll-deals" : "/promo"} data-black-friday-announcement={active || undefined}>
           {active ? (
             <>
-              Black Friday: <span className="text-[#ffd700]">$299 OFF</span> · Code BLACKFRIDAYWOW26 · Shop the deals →
+              <span className="hidden sm:inline">Black Friday: <span className="text-[#ffd700]">$299 OFF</span> · Code BLACKFRIDAYWOW26 · Shop the deals →</span>
+              <span className="sm:hidden">Black Friday: <span className="text-[#ffd700]">$299 OFF</span> · Code BLACKFRIDAYWOW26 →</span>
             </>
           ) : (
             "Explore our latest offers and factory bonuses"
