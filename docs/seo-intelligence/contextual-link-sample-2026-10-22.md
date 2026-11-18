@@ -2,8 +2,10 @@
 
 Status: sample retained as historical evidence. Martin approved the full-site
 pattern and production rollout on 23 October through DOL-225 comment
-`d62fe502-19c1-4ed1-8ddc-0f29f9a857ef`. Implementation is being verified; approval
-is not a claim that the full rollout is already live.
+`d62fe502-19c1-4ed1-8ddc-0f29f9a857ef`. The rollout is live as `a4e88e15`,
+production-ready 23 October at 07:40:30.694 UTC. Five live source checks include
+the retained WM identity-review source with zero new links. The release ledger
+records the actual event separately from historical sample evidence.
 
 ## Boundaries
 
@@ -15,8 +17,8 @@ handles were cross-checked against DOL-177's flagged/excluded identity records.
 No product identity, price, image, checkout behavior, hold or draft status changes.
 
 The approved `contextualLinksEnabled` gate covers canonical product, brand-hub
-and collection paths on Preview and Production, not arbitrary paths, query
-variants or draft articles. Local development/unset remain disabled. The
+and collection paths on Preview and Production. Emitted links use canonical
+paths, not query-parameter or draft-article destinations. Local development/unset remain disabled. The
 dedicated DollVue collection uses the same links after its existing verified
 product grid; its eligibility/readiness source is unchanged. `/shop` still
 redirects to its existing canonical owner.
@@ -70,6 +72,24 @@ below products, not ahead of them.
 This is navigation on established canonical owners, not new keyword content or
 proof of search demand. Existing canonical/intent evidence in the collection
 and brand SEO records is reused; no paid research is billed to another company.
-Full-rollout acceptance still needs Martin's yes, target/identity exclusions,
+Full-rollout acceptance requires Martin's yes, target/identity exclusions,
 production checks and actual release rows in the DOL-224 ledger. No invented
 release date, ranking benefit, indexing guarantee or organic-sales attribution.
+
+## Full Rollout Receipt
+
+Martin's recorded yes, scoped exclusions, preview checks and production readback
+are now retained on DOL-225. The rule inventory evaluates 3,590 sources; 3,522
+receive 13,979 contextual placements. Sixty-eight sources receive none. These
+are not newly discovered unique URLs or a full HTTP crawl. All 37 distinct new
+targets returned HTTP200 without noindex; 27 per-brand full-detail parity samples,
+20 exact source checks and 14 browser cases pass. The held WM source reduces
+the current 20-path regression to 66 placements; yesterday's 70-placement sample
+is unchanged as historical evidence.
+
+The expanded ledger adds 3,522 rows, preserving the original sixteen. Its shared
+22 September-19 October historical baseline matches 451 GSC page URLs and 83
+production GA4 landing paths. The 20-22 October gap, suppression, missing rows,
+all-channel GA4 scope and unknown release-time Google indexing states remain
+explicit. Independent documentation review is separate from implementation;
+no fresh technical-product, media or AI/GEO content clearance is implied.
