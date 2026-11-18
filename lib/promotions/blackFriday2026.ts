@@ -16,7 +16,7 @@ export function isBlackFridayInWindow(now = Date.now()) {
   return now >= Date.parse(BLACK_FRIDAY_2026.startsAt) && now < Date.parse(BLACK_FRIDAY_2026.endsAt);
 }
 
-// Shows only on preview during the campaign window
+// Shows on preview NOW for review, or in production during campaign window
 export function isBlackFridayVisible(environment: NodeJS.ProcessEnv = process.env, now = Date.now()) {
-  return isBlackFridayPreview(environment) && isBlackFridayInWindow(now);
+  return isBlackFridayPreview(environment) || isBlackFridayInWindow(now);
 }
