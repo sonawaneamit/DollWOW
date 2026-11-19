@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Sex Doll Black Friday Deals 2026 – $299 Off',
   description: 'Save $299 on qualifying dolls and stack eligible brand deals from Top Fire, Fanreal, Irontech and more. Compare Black Friday and Cyber Monday offers.',
   alternates: { canonical: '/black-friday-sex-doll-deals' },
+  ...(process.env.VERCEL_ENV === 'preview' ? { robots: { index: false, follow: false } } : {}),
 };
 const mobileBanners: Record<string, string> = {
   Avant: 'avant-mobile',
@@ -16,7 +17,7 @@ const mobileBanners: Record<string, string> = {
 
 const saleEnds = 'December 10';
 const promoCode = 'BLACKFRIDAYWOW26';
-const faqs = [
+const liveFaqs = [
   ['When does the Black Friday sale end?', 'DollWOW’s $299 offer runs through December 10. Brand offers have their own dates. Top Fire runs through December 14 and Galatea through December 31.'],
   ['Does the $299 discount stack with brand deals?', 'Yes. Eligible brand discounts apply first, then DollWOW’s $299 comes off.'],
   ['Which dolls qualify for $299 off?', 'Qualifying dolls priced $900 or more. Use BLACKFRIDAYWOW26 at checkout. Standalone heads are excluded.'],
@@ -25,6 +26,18 @@ const faqs = [
 export const dynamic = 'force-dynamic';
 
 export default function BfcmPreviewPage() {
+  const brandPreview = process.env.VERCEL_ENV === 'preview' && process.env.DOL371_BRAND_PREVIEW === '1';
+  const faqs = brandPreview ? liveFaqs.map(([question, answer], index) => [question, index === 0 ? 'DollWOW’s $299 code and these Top Fire, Galatea, Climax and 6YE offers end December 10 at 11:59 pm Eastern. IDO ends November 30. Other brand dates are shown above.' : index === 2 ? 'Use BLACKFRIDAYWOW26 for $299 off an order subtotal of $900 or more after eligible brand discounts, before tax and shipping.' : answer]) : liveFaqs;
+  const previewDeals: Record<string, string> = {
+    'Top Fire': '$150 off full silicone dolls + one free second head. Add BLACKFRIDAYWOW26 for another $299 off qualifying orders.',
+    'Galatea (Dolls Castle)': 'Factory orders include body heating, vaginal suction and oral heating FREE. Add BLACKFRIDAYWOW26 for $299 off qualifying orders.',
+    'Climax': '10% off custom full-size dolls priced $900+ with a free extra head, gel butt and eligible hands/feet upgrade. Custom torsos include a free extra head and gel butt. Warehouse stock excluded. Stack BLACKFRIDAYWOW26 on qualifying orders.',
+  };
+  const brands = brandPreview ? [
+    ...campaign.brands.filter(b => b.name !== 'IDO').map(b => previewDeals[b.name] ? { ...b, deal: previewDeals[b.name], dates: 'DollWOW offer ends December 10 at 11:59 pm Eastern' } : b),
+    { name: '6YE', deal: '5% off + one free extra head on full-size dolls. Stack BLACKFRIDAYWOW26 for another $299 off orders of $900+.', dates: 'Ends December 10 at 11:59 pm Eastern', label: 'Shop 6YE', url: '/brands/6ye-dolls', banners: [] },
+    { name: 'IDO', deal: 'Warehouse dolls $2,499. China-made orders $2,599 with one extra random wig and a moving pad FREE. Take another $299 off with BLACKFRIDAYWOW26.', dates: 'November 1–30', label: 'Shop IDO', url: '/brands/ido-dolls', banners: [] },
+  ] : campaign.brands;
   return (
     <article className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
       <header className="border-b border-border pb-8">
@@ -51,11 +64,11 @@ export default function BfcmPreviewPage() {
           </div>
         </div>
         <h1 className="mt-8 font-display text-4xl font-semibold">Sex Doll Black Friday Deals 2026</h1>
-        <p className="mt-2 text-sm text-text-dim">Updated November 17, 2026</p>
+        <p className="mt-2 text-sm text-text-dim">Updated November 19, 2026</p>
         <div className="mt-5 rounded-xl border border-border p-5">
           <p className="font-semibold">The deal in 10 seconds</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li>Save $299 on qualifying dolls priced $900 or more through December 10.</li>
+            <li>{brandPreview ? 'Save $299 on order subtotals of $900 or more after brand discounts through December 10.' : 'Save $299 on qualifying dolls priced $900 or more through December 10.'}</li>
             <li>Stack your $299 with eligible brand discounts and upgrades.</li>
             <li>Top Fire full silicone dolls get $449 off plus a free second head.</li>
           </ul>
@@ -64,7 +77,7 @@ export default function BfcmPreviewPage() {
       <section className="mt-10" aria-labelledby="brand-offers">
         <h2 id="brand-offers" className="font-display text-3xl font-semibold">Sex doll Black Friday deals by brand</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {campaign.brands.map(({ name, deal, dates, label, url, banners }) => (
+          {brands.map(({ name, deal, dates, label, url, banners }) => (
             <article key={name} className="rounded-xl border border-border p-5">
               <div className="relative mb-4 aspect-video overflow-hidden rounded-md bg-[#140f0d]">
                 {banners[0] ? (
