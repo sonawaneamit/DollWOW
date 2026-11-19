@@ -4,20 +4,20 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T11:45:36.617Z",
-      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "reviewedAt": "2026-11-19T12:03:14.022Z",
+      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
       "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T11:45:36.617Z",
-      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "reviewedAt": "2026-11-19T12:03:14.022Z",
+      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
       "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     },
     "coordinatedRelease": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T11:45:36.617Z",
-      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "reviewedAt": "2026-11-19T12:03:14.022Z",
+      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
       "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     }
   },
@@ -23571,21 +23571,21 @@
         "handle": "top-fire-doll-clara-170cm-e-cup-silicone-companion-doll",
         "tag": "options:top-fire-silicone-manual-v1",
         "bindingKey": "topfire-female-e17ed253b743",
-        "runtimeHash": "279c025214db4babb3b2c860b3a4109d38ef146a9d38b7f4ac02c6c81e6cc0a4"
+        "runtimeHash": "3261815d7bbf1a689efc35ba7f14f901100e608e9d920dd75c44c8ed9dc63a02"
       },
       {
         "productId": "gid://shopify/Product/10742344974520",
         "handle": "top-fire-doll-tessa-160cm-f-cup-silicone-companion-doll",
         "tag": "options:top-fire-silicone-manual-v1",
         "bindingKey": "topfire-female-e17ed253b743",
-        "runtimeHash": "63272f10533af12a8ac484d366240cd945fc24a2a33b6af2b1818787dfd7c346"
+        "runtimeHash": "e096884e46e81270018db6a71a3e704156f75545c57025ae40c78fa53bbe137f"
       },
       {
         "productId": "gid://shopify/Product/10742348513464",
         "handle": "irontech-scarlett-natural-171cm-s60-ros-max-silicone-companion-doll",
         "tag": "options:irontech-female-silicone-standard",
         "bindingKey": "irontech-scarlett-s60-ros-max-0a97cd5ddad0",
-        "runtimeHash": "4b088cf1b2dcdcec778e3dc2765039bc22e7bdc983171e02bb8f542e2c82fa54"
+        "runtimeHash": "ab7e5c36acb47246c8fc9c8ae19dc5fa0cb34eb16cc1adadff740fbbbc20b8a4"
       }
     ],
     "bindings": {
