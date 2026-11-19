@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/bfcm-restore",
+      "schedule": "59 4 1,11 12 *"
+    }
+  ]
+}

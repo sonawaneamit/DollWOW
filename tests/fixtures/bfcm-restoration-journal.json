@@ -1,0 +1,237 @@
+{
+  "entries": [
+    {
+      "id": "gid://shopify/ProductVariant/54901234567890",
+      "type": "variant_price",
+      "productHandle": "top-fire-doll-venus-170cm-e-cup-silicone-companion-doll",
+      "productTitle": "Top Fire Venus 170cm E-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "2799.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "2649.00",
+        "compareAtPrice": "2799.00"
+      },
+      "capturedAt": "2026-11-15T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567891",
+      "type": "variant_price",
+      "productHandle": "top-fire-doll-susan-170cm-e-cup-silicone-companion-doll",
+      "productTitle": "Top Fire Susan 170cm E-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "2699.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "2549.00",
+        "compareAtPrice": "2699.00"
+      },
+      "capturedAt": "2026-11-15T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567892",
+      "type": "variant_price",
+      "productHandle": "top-fire-doll-ivy-170cm-e-cup-silicone-companion-doll",
+      "productTitle": "Top Fire Ivy 170cm E-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "2899.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "2749.00",
+        "compareAtPrice": "2899.00"
+      },
+      "capturedAt": "2026-11-15T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567893",
+      "type": "variant_price",
+      "productHandle": "galatea-aurora-168cm-d-cup-silicone-companion-doll",
+      "productTitle": "Galatea Aurora 168cm D-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "3299.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "3299.00",
+        "compareAtPrice": null
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/Product/10901234567893/metafield/custom.customization_options",
+      "type": "metafield",
+      "productHandle": "galatea-aurora-168cm-d-cup-silicone-companion-doll",
+      "productTitle": "Galatea Aurora 168cm D-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "groups": []
+      },
+      "promotional": {
+        "groups": [
+          {
+            "id": "bfcm-body-heating",
+            "label": "Body heating (included)",
+            "options": [
+              {"id": "body-heating", "label": "Body heating", "price": 0}
+            ]
+          }
+        ]
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567894",
+      "type": "variant_price",
+      "productHandle": "galatea-celeste-165cm-c-cup-silicone-companion-doll",
+      "productTitle": "Galatea Celeste 165cm C-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "3199.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "3199.00",
+        "compareAtPrice": null
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567895",
+      "type": "variant_price",
+      "productHandle": "galatea-nova-172cm-f-cup-silicone-companion-doll",
+      "productTitle": "Galatea Nova 172cm F-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "3399.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "3399.00",
+        "compareAtPrice": null
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567896",
+      "type": "variant_price",
+      "productHandle": "climax-aria-158cm-b-cup-tpe-companion-doll",
+      "productTitle": "Climax Aria 158cm B-Cup TPE Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "1299.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1169.00",
+        "compareAtPrice": "1299.00"
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567897",
+      "type": "variant_price",
+      "productHandle": "climax-bella-163cm-d-cup-tpe-companion-doll",
+      "productTitle": "Climax Bella 163cm D-Cup TPE Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "1499.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1349.00",
+        "compareAtPrice": "1499.00"
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567898",
+      "type": "variant_price",
+      "productHandle": "climax-carmen-168cm-e-cup-silicone-companion-doll",
+      "productTitle": "Climax Carmen 168cm E-Cup Silicone Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "2199.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1979.00",
+        "compareAtPrice": "2199.00"
+      },
+      "capturedAt": "2026-11-13T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567899",
+      "type": "variant_price",
+      "productHandle": "6ye-diana-160cm-d-cup-tpe-companion-doll",
+      "productTitle": "6YE Diana 160cm D-Cup TPE Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "1599.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1519.00",
+        "compareAtPrice": "1599.00"
+      },
+      "capturedAt": "2026-11-18T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567900",
+      "type": "variant_price",
+      "productHandle": "6ye-emma-158cm-c-cup-tpe-companion-doll",
+      "productTitle": "6YE Emma 158cm C-Cup TPE Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "1499.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1424.00",
+        "compareAtPrice": "1499.00"
+      },
+      "capturedAt": "2026-11-18T00:00:00Z"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/54901234567901",
+      "type": "variant_price",
+      "productHandle": "6ye-fiona-165cm-f-cup-tpe-companion-doll",
+      "productTitle": "6YE Fiona 165cm F-Cup TPE Doll",
+      "restoreAt": "2026-12-11T04:59:00Z",
+      "original": {
+        "price": "1699.00",
+        "compareAtPrice": null
+      },
+      "promotional": {
+        "price": "1614.00",
+        "compareAtPrice": "1699.00"
+      },
+      "capturedAt": "2026-11-18T00:00:00Z"
+    }
+  ],
+  "brands": {
+    "Top Fire": {
+      "count": 3,
+      "deadline": "2026-12-11T04:59:00Z"
+    },
+    "Galatea": {
+      "count": 4,
+      "deadline": "2026-12-11T04:59:00Z"
+    },
+    "Climax": {
+      "count": 3,
+      "deadline": "2026-12-11T04:59:00Z"
+    },
+    "6YE": {
+      "count": 3,
+      "deadline": "2026-12-11T04:59:00Z"
+    }
+  },
+  "capturedAt": "2026-11-13T00:00:00Z"
+}
