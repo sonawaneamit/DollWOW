@@ -3,26 +3,26 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.229Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Cloud Agent production registry preparation",
+      "reviewedAt": "2026-11-19T11:11:33.120Z",
+      "evidenceRef": "DOL-382: Register Top Fire Clara T74 170-2 E and Tessa T75 160 F for production (2026-11-19)",
+      "payloadHash": "26b27109c40598475edc807b71adb6607d3b4408eb275fbbd706158a8154a9a8"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.230Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Cloud Agent production registry preparation",
+      "reviewedAt": "2026-11-19T11:11:33.120Z",
+      "evidenceRef": "DOL-382: Register Top Fire Clara T74 170-2 E and Tessa T75 160 F for production (2026-11-19)",
+      "payloadHash": "26b27109c40598475edc807b71adb6607d3b4408eb275fbbd706158a8154a9a8"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.230Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Cloud Agent production registry preparation",
+      "reviewedAt": "2026-11-19T11:11:33.120Z",
+      "evidenceRef": "DOL-382: Register Top Fire Clara T74 170-2 E and Tessa T75 160 F for production (2026-11-19)",
+      "payloadHash": "26b27109c40598475edc807b71adb6607d3b4408eb275fbbd706158a8154a9a8"
     }
   },
   "payload": {
-    "releaseId": "template-release-2026-11-11-erovenus-torsos",
+    "releaseId": "template-release-2026-11-19-clara-tessa",
     "sourceSnapshotHash": "5ad4b0ff0e9155fc5d11ce3472c1c868bf33dec9062ede561620c38cd82c5296",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
@@ -2966,7 +2966,9 @@
       "gid://shopify/Product/10721550106808",
       "gid://shopify/Product/10721752252600",
       "gid://shopify/Product/10721752350904",
-      "gid://shopify/Product/10721752318136"
+      "gid://shopify/Product/10721752318136",
+      "gid://shopify/Product/10742344941752",
+      "gid://shopify/Product/10742344974520"
     ],
     "entries": [
       {
@@ -23562,6 +23564,20 @@
         "tag": "options:erovenus-torso-max-v1",
         "bindingKey": "nov11-erovenus-erica-101cm-max-series-silicone-torso",
         "runtimeHash": "dcadfa5abad1bb40068b8ee7ca47cfc5784cd8348782ba1a7c266b86f9ded24f"
+      },
+      {
+        "productId": "gid://shopify/Product/10742344941752",
+        "handle": "top-fire-doll-clara-170cm-e-cup-silicone-companion-doll",
+        "tag": "options:top-fire-silicone-manual-v1",
+        "bindingKey": "topfire-female-e17ed253b743",
+        "runtimeHash": "05b61d2115fad6c3f79392ec936d8b53924986573500c8e1013eefd57e828e96"
+      },
+      {
+        "productId": "gid://shopify/Product/10742344974520",
+        "handle": "top-fire-doll-tessa-160cm-f-cup-silicone-companion-doll",
+        "tag": "options:top-fire-silicone-manual-v1",
+        "bindingKey": "topfire-female-e17ed253b743",
+        "runtimeHash": "9c2b46aabf8069c25ba891c186239b4223bb1c1088a4a16d30388cb7f104f8cd"
       }
     ],
     "bindings": {
