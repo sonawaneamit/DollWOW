@@ -1,0 +1,39 @@
+{
+  "tag": "options:md-silicone-body-mvp-v1",
+  "signature": "sha256:5d6b13b1fdad7c373bdab084d414ebf33237b50a000fcf79b14f5e7b7de130ea",
+  "tiers": [
+    {
+      "id": "starter",
+      "description": "Included articulated fingers and standard construction.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "articulated-fingers-free"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "enthusiast",
+      "description": "Adds subcutaneous heating.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "subcutaneous-heating"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "id": "collector",
+      "description": "Adds articulated toes alongside subcutaneous heating.",
+      "add": [
+        {
+          "groupId": "premium-head-body-options-multiple",
+          "optionId": "articulated-toes"
+        }
+      ],
+      "remove": []
+    }
+  ]
+}
