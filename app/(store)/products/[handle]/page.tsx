@@ -152,7 +152,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
-      {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       {!isElf && !promotionPreview ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} /> : null}
       {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
