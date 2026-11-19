@@ -18,6 +18,11 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
     const fanreal = fanrealPdpPreviewProduct(handle);
     if (fanreal) return fanreal;
   }
+  if (process.env.DOL382_TOPFIRE_PREVIEW === '1') {
+    const { default: topfire } = await import('@/data/draft-previews/topfire-clara-tessa-nov18.json');
+    const candidate = topfire.find(p => p.handle === handle);
+    if (candidate) return structuredClone(candidate) as unknown as Product;
+  }
   const mmx = mmxPdpPreviewProduct(handle);
   if (mmx) return mmx;
   const grace = grace160PreviewProduct(handle);
@@ -38,6 +43,10 @@ export async function privateDraftRecipe(product: Product, config: BrandCustomiz
     const { fanrealPdpPreviewRecipe } = await import('./fanrealPdpPreview');
     const fanrealRecipe = fanrealPdpPreviewRecipe(product, config);
     if (fanrealRecipe !== undefined) return fanrealRecipe;
+  }
+  if (process.env.VERCEL_ENV === 'preview' && process.env.DOL382_TOPFIRE_PREVIEW === '1' && ['gid://shopify/Product/10742344941752', 'gid://shopify/Product/10742344974520'].includes(product.id)) {
+    const { default: recipe } = await import('@/data/draft-previews/grace160-recipe-nov5.json');
+    return { ...structuredClone(recipe), signature: templateConfigSignature(config) } as TemplatePresetDefinition;
   }
   const mmxRecipe = mmxPdpPreviewRecipe(product, config);
   if (mmxRecipe !== undefined) return mmxRecipe;
