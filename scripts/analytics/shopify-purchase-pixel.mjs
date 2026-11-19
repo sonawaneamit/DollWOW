@@ -9,7 +9,7 @@ export function installShopifyPurchasePixel(api, config, runtime = window) {
     log("checkout_completed received");
     if (!privacy?.analyticsProcessingAllowed) return log("analytics permission absent");
     const hostname = event.context?.document?.location?.hostname;
-    if (!["checkout.dollwow.com", "dollwow.com", "www.dollwow.com", "shopify.com"].includes(hostname)) return log("checkout host not allowed");
+    if (!["checkout.dollwow.com", "dollwow.com", "www.dollwow.com", "shopify.com", "shop.app"].includes(hostname)) return log("checkout host not allowed");
     const checkout = event.data?.checkout;
     const orderId = checkout?.order?.id;
     if (!orderId || !/^(gid:\/\/shopify\/Order\/)?\d+$/.test(String(orderId))) return log("order identity absent or invalid");

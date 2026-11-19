@@ -54,22 +54,32 @@ describe("single consent-aware checkout purchase emitter", () => {
     Object.assign(f.event.data.checkout, { attributes: [{ key: "_dollwow_analytics_context", value: JSON.stringify({ clientId: "123.456", sessionId: "789", mode: "test", measurementId: "G-QA123", at: Date.now() }) }] });
     await f.run(); expect(f.purchases()).toHaveLength(1);
   });
-  it("documents the current shop.app host gap even with consent and a valid checkout identity", async () => {
+  it("tracks Shop Pay once using checkout attributes without a first-party cookie", async () => {
     const f = fixture({ cookie: "" });
     f.event.context.document.location.hostname = "shop.app";
     Object.assign(f.event.data.checkout, { attributes: [{ key: "_dollwow_analytics_context", value: JSON.stringify({ clientId: "123.456", sessionId: "789", mode: "test", measurementId: "G-QA123", at: Date.now() }) }] });
     await f.run();
-    expect(f.purchases()).toHaveLength(0);
+    expect(f.purchases()).toHaveLength(1);
     f.event.context.document.location.hostname = "checkout.dollwow.com";
     await f.run();
     expect(f.purchases()).toHaveLength(1);
+  });
+  it.each(['shop.app.attacker.example', 'evilshop.app', 'preview.vercel.app', 'localhost'])("rejects lookalike and preview hosts: %s", async hostname => {
+    const f = fixture({ mode: 'production', productionEnabled: true });
+    f.event.context.document.location.hostname = hostname;
+    await f.run(); expect(f.purchases()).toHaveLength(0);
+  });
+  it.each([{consent:false}, {age:1800001}, {cookie:'bad'}, {productionEnabled:false}])("preserves consent and identity validation on Shop Pay: %o", async blocked => {
+    const f = fixture({ mode: 'production', productionEnabled: true, ...blocked });
+    f.event.context.document.location.hostname = 'shop.app';
+    await f.run(); expect(f.purchases()).toHaveLength(0);
   });
   it("requires distinct streams when generating the Shopify install artifact", () => {
     expect(() => buildShopifyPurchasePixel({ testId: "G-SAME", productionId: "G-SAME" })).toThrow();
     expect(buildShopifyPurchasePixel({ testId: "G-QA123", productionId: "G-PROD123", productionEnabled: false })).toContain('"productionEnabled":false');
   });
   it("reports fixed privacy-safe reasons without widening host, consent or identity gates", async () => {
-    const host = fixture({ diagnostics: true }); host.event.context.document.location.hostname = 'shop.app'; await host.run();
+    const host = fixture({ diagnostics: true }); host.event.context.document.location.hostname = 'shop.app.attacker.example'; await host.run();
     expect(host.purchases()).toHaveLength(0); expect(host.logs).toContain('DollWOW purchase QA: checkout host not allowed');
     const expired = fixture({ diagnostics: true, age: 1800001 }); await expired.run();
     expect(expired.purchases()).toHaveLength(0); expect(expired.logs).toContain('DollWOW purchase QA: checkout identity expired or timestamp invalid');
