@@ -1,3 +1,5 @@
+> **Update 19 Nov 2026:** runtime hashes are no longer placeholders. They are relinked from a production Admin readback. See `docs/catalog/dol381-382-production-relink-2026-11-19.md`. Anything below that calls them placeholders, or that gives the old Scarlett handle/binding, is superseded.
+
 # DOL-382: Clara and Tessa Production Registry - Notes
 
 ## Status: PR Created
