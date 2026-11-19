@@ -23,10 +23,10 @@ export function bfcmOffer(product: Product, now = new Date()): BfcmPreview | nul
   } else if (/\bgalatea\b/i.test(identity) && custom) {
     brand = 'Galatea'; gifts = ['body-heating', 'vaginal-suction', 'oral-heating'];
   } else if (/\bclimax\b/i.test(identity) && custom && (full || torso)) {
-    brand = 'Climax'; price = full && originalPrice >= 900 ? round(originalPrice * .9) : originalPrice;
+    brand = 'Climax'; price = full && originalPrice >= 900 ? Math.floor(originalPrice * .9) : originalPrice;
     gifts = ['second-head', 'gel-butt', ...(full ? ['hands-feet'] : [])]; startsAt = '2026-11-13T00:00:00Z';
   } else if (/\b6ye\b/i.test(identity)) {
-    brand = '6YE'; price = round(originalPrice * .95); gifts = full && (product.extended.heightCm ?? 0) >= 135 ? ['second-head'] : [];
+    brand = '6YE'; price = Math.floor(originalPrice * .95); gifts = full && (product.extended.heightCm ?? 0) >= 135 ? ['second-head'] : [];
   } else if (/\bido(?:doll)?\b/i.test(identity) && full && (custom || product.extended.stockStatus === 'ready_to_ship')) {
     brand = 'IDO'; price = custom ? 2599 : 2499; gifts = custom ? ['random-wig', 'moving-pad'] : [];
     startsAt = '2026-11-01T00:00:00Z'; endsAt = IDO_REVERT_AT;
@@ -41,8 +41,8 @@ export function withBfcmPreview(product: Product, environment = process.env.VERC
   if (!offer) return product;
   const reprice = (value: string) => {
     const amount = Number(value);
-    return (offer.brand === 'Top Fire' ? amount - 150 : offer.brand === '6YE' ? round(amount * .95)
-      : offer.brand === 'Climax' && offer.price !== offer.originalPrice ? round(amount * .9)
+    return (offer.brand === 'Top Fire' ? amount - 150 : offer.brand === '6YE' ? Math.floor(amount * .95)
+      : offer.brand === 'Climax' && offer.price !== offer.originalPrice ? Math.floor(amount * .9)
       : offer.brand === 'IDO' ? offer.price : amount).toFixed(2);
   };
   return { ...product, extended: { ...product.extended, bfcmPreview: offer },
@@ -59,7 +59,7 @@ export function bfcmPreviewConfig(config: BrandCustomizationConfig, offer: BfcmP
     return /\b(hands?|feet)\b/.test(s) && /\b(hard|wired)\b/.test(s) ? [/\bhard\b/.test(s) ? 'hard' : 'wired'] : [];
   })));
   const groups = config.groups.map(g => {
-    const extraHead = /^(an-extra(?:-free)?-head|additional-head)$/.test(g.id);
+    const extraHead = /^(an-extra(?:-free)?-head|additional-head|included-extra-head)$/.test(g.id);
     const options = g.options.map(o => {
       let gift = '';
       if (extraHead && !/^(no-|none$)/.test(o.id)) gift = 'second-head';
@@ -68,7 +68,7 @@ export function bfcmPreviewConfig(config: BrandCustomizationConfig, offer: BfcmP
       else if (handKinds.size === 1 && /\b(hands?|feet)\b/i.test(o.label) && /\b(hard|wired)\b/i.test(o.label)) gift = 'hands-feet';
       if (!offer.gifts.includes(gift) || o.factoryExists === false || o.displayable === false) return o;
       mapped.add(gift);
-      return { ...o, priceDelta: 0, priceVerified: true, purchasable: true, priceLabel: 'included' as const };
+      return { ...o, priceDelta: 0, priceVerified: true, purchasable: true, priceLabel: 'included' as const, ...(gift !== 'second-head' ? { bfcmIncluded: true } : {}) };
     });
     return { ...g, ...(extraHead && offer.gifts.includes('second-head') ? { selectionMode: 'single' as const } : {}), options };
   });

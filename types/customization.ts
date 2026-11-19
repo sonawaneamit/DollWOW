@@ -28,6 +28,8 @@ export type CustomizationOption = {
     noPaidAddOn?: true;
     photographedProductConfiguration?: true;
   };
+  /** Confirmed non-choice gift selected by the isolated BFCM preview. */
+  bfcmIncluded?: boolean;
   productionNote?: string;
   swatch?: CustomizationSwatch;
 };

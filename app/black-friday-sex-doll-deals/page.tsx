@@ -64,7 +64,7 @@ export default function BfcmPreviewPage() {
           </div>
         </div>
         <h1 className="mt-8 font-display text-4xl font-semibold">Sex Doll Black Friday Deals 2026</h1>
-        <p className="mt-2 text-sm text-text-dim">Updated November 17, 2026</p>
+        <p className="mt-2 text-sm text-text-dim">Updated November 19, 2026</p>
         <div className="mt-5 rounded-xl border border-border p-5">
           <p className="font-semibold">The deal in 10 seconds</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
