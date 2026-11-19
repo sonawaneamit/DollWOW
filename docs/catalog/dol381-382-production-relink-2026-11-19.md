@@ -31,16 +31,14 @@ Tier totals are full price (no BFCM). ROS MAX is the default Scarlett head at $0
 - `tests/dol381-382-registry.test.ts` freezes the readback (`tests/fixtures/dol381-382-admin-readback-2026-11-19.json`),
   the hashes, the signatures and the tier totals.
 
-## Before go-live (Martin must approve the previews first)
+## Go-live (Martin approved the previews on 19 Nov 2026 at 11:42 Lisbon: "Yes, put all 3 live")
 
-1. Publish only after Martin approves. Right after publishing, recompute each hash from the real Storefront product.
-   If it differs, relink (for example, Storefront `availableForSale`).
-2. Re-run the script after any Shopify edit to these products. A changed menu stops the script on purpose.
-3. Scarlett's parent variant is not in `lib/cart/evidence/named-upgrades-release.json`. Other Irontech silicone parents
-   are, so Scarlett would use the legacy checkout path. Codex's review lists exact-parent named-charge registration
-   as a release requirement. It needs its own reviewed change. Top Fire parents (Clara/Tessa) match their live
-   siblings and are not in that file either.
-4. This branch has no private draft snapshots, so these PDPs cannot render on this PR's own preview. The customer
-   previews are Codex's deployments (PR #271 / #272 builds).
+- Before the final relink, removed the internal-only Shopify tags from all three: `dollwow-test` and `dol38x-nov18`. Also removed `catalog-review-hold` from Scarlett, because the live Irontech Luna/Betsy listings don't have it; Clara and Tessa keep it, like live Venus/Susan/Ivy. Deleted `seo.hidden`, which the live siblings don't have.
+  The hashes above were then recomputed: Clara `279c0252…`, Tessa `63272f10…`, Scarlett `4b088cf1…`.
+- Scarlett's parent variant (54851446276280) is registered in `lib/cart/evidence/named-upgrades-release.json`
+  with the same charge family as the live Irontech Luna 171cm ROS MAX body (`5afaf369…`). Every paid Scarlett
+  option maps to exactly one released charge at the same price, and ROS MAX stays $0 (tested).
+- Clara and Tessa have no named-charge parents, the same as the live Top Fire siblings.
+- Publication: ACTIVE on Online Store + DollWOW! Headless, the same as the live siblings. After publishing, recheck the hashes against the real Storefront product.
 
-No Shopify writes, carts, orders or payments were made.
+No carts, orders or payments were made.
