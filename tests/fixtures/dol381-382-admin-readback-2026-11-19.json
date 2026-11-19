@@ -1,8 +1,8 @@
 [
  {
   "readAt": "2026-11-19",
-  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access",
-  "status": "DRAFT",
+  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access; bodyCode kept because the PDP merges it from Admin",
+  "status": "ACTIVE",
   "product": {
    "id": "gid://shopify/Product/10742344941752",
    "handle": "top-fire-doll-clara-170cm-e-cup-silicone-companion-doll",
@@ -3379,14 +3379,15 @@
       ],
       "description": "Add a second Top Fire head. It is matched to your chosen skin tone."
      }
-    ]
+    ],
+    "bodyCode": "170-2E"
    }
   }
  },
  {
   "readAt": "2026-11-19",
-  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access",
-  "status": "DRAFT",
+  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access; bodyCode kept because the PDP merges it from Admin",
+  "status": "ACTIVE",
   "product": {
    "id": "gid://shopify/Product/10742344974520",
    "handle": "top-fire-doll-tessa-160cm-f-cup-silicone-companion-doll",
@@ -6763,14 +6764,15 @@
       ],
       "description": "Add a second Top Fire head. It is matched to your chosen skin tone."
      }
-    ]
+    ],
+    "bodyCode": "160F"
    }
   }
  },
  {
   "readAt": "2026-11-19",
-  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access",
-  "status": "DRAFT",
+  "source": "Shopify Admin GraphQL 2026-04 readback, mapped with mapShopifyProduct; bodyType/sourceTitle/sourceHandle omitted to mirror Storefront field access; bodyCode kept because the PDP merges it from Admin",
+  "status": "ACTIVE",
   "product": {
    "id": "gid://shopify/Product/10742348513464",
    "handle": "irontech-scarlett-natural-171cm-s60-ros-max-silicone-companion-doll",
@@ -10049,7 +10051,8 @@
        }
       ]
      }
-    ]
+    ],
+    "bodyCode": "171D"
    }
   }
  }

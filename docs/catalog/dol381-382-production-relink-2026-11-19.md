@@ -42,3 +42,14 @@ Tier totals are full price (no BFCM). ROS MAX is the default Scarlett head at $0
 - Publication: ACTIVE on Online Store + DollWOW! Headless, the same as the live siblings. After publishing, recheck the hashes against the real Storefront product.
 
 No carts, orders or payments were made.
+
+## Post-publish drift fix (19 Nov, after go-live)
+
+After publishing, the live PDPs fell back to the plain builder (no Starter / Enthusiast / Collector tiers).
+The cause: the PDP merges the Admin `custom.body_code` metafield into the product (`mergeProductAdminMetafields`)
+before `loadTemplateRecipe` hashes it. The Storefront API doesn't return body_code, so the earlier relink hashed
+`bodyCode: undefined`. The live Top Fire siblings have no body_code, which is why the six-entry method check passed.
+The relink script now applies the same Admin merge. New hashes: Clara `3261815d…`, Tessa `e096884e…`,
+Scarlett `ab7e5c36…`. Tier totals are unchanged: 2416/2684/3061, 2366/2634/3011, 2679/2779/2979.
+The full PDP pipeline (Storefront + Admin merge + loader) was checked against live data: it now selects the recipe
+for all three products.
