@@ -20,7 +20,7 @@ function rawDefaultSelections(config: BrandCustomizationConfig): CustomizationSe
       if (group.selectionMode === "multiple") {
         const previewGifts = group.options.filter(option => option.bfcmIncluded && option.priceDelta === 0 && option.purchasable !== false);
         if (previewGifts.length) {
-          const factoryDefaults = group.options.filter(option => isSupplierSelectedOption(option));
+          const factoryDefaults = group.options.filter(option => isSupplierSelectedOption(option) && !/^(?:non-standing|no-)/.test(option.id) && !isNeutralDefaultOption(option.id, option.label, option.productionNote, option.sourceProductionNoteSignals));
           return [group.id, [...new Set([...factoryDefaults, ...previewGifts].map(option => option.id))]];
         }
         const idoMdDefaults = idoMdIncludedDefaults(config, group);
