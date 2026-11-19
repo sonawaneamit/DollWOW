@@ -1,0 +1,4173 @@
+[
+  {
+    "title": "MD Doll T80 Shape Memory Silicone Chest Torso",
+    "handle": "md-doll-t80-shape-memory-silicone-chest-torso",
+    "status": "DRAFT",
+    "vendor": "MD Doll",
+    "productType": "Silicone Torso",
+    "category": "gid://shopify/TaxonomyCategory/ma-1-4",
+    "tags": [
+      "md",
+      "md-doll",
+      "md-doll-dolls",
+      "silicone",
+      "torso",
+      "custom",
+      "customizable",
+      "options:md-silicone-body-mvp-v1",
+      "dollwow-test",
+      "catalog-review-hold",
+      "dol382-md-nov19",
+      "bfcm-excluded",
+      "shape-memory-included"
+    ],
+    "descriptionHtml": "<p>Sculptural H-cup curves meet MD\u2019s new Shape Memory Silicone in the compact T80 chest torso. The material is included from the start, with the softness, high rebound and low-oil formulation described by MD.</p><p>Choose your finish from the MD skin and areola options below. The $450 price includes standard US shipping.</p><h2>Compact dimensions, complete detail</h2><dl><dt>Width</dt><dd>12.6 in / 32 cm</dd><dt>Length</dt><dd>5.5 in / 14 cm</dd><dt>Height</dt><dd>5.9 in / 15 cm</dd><dt>Weight</dt><dd>14.3 lb / 6.5 kg</dd><dt>Cup size</dt><dd>H</dd><dt>Material</dt><dd>Shape Memory Silicone</dd></dl><p>Explore the complete factory gallery and product video, plus MD\u2019s shape-memory demonstrations.</p><h2>Made for your collection</h2><p>Explore more designs in the <a href=\"/brands/md-doll\">MD Doll collection</a> and read our <a href=\"/shipping\">shipping guide</a>.</p>",
+    "seo": {
+      "title": "MD Doll T80 Shape Memory Silicone Chest Torso | DollWOW",
+      "description": "Discover MD\u2019s T80 H-cup chest torso with Shape Memory Silicone included. 6.5kg, 32cm wide, complete factory photos and videos. Standard US shipping included."
+    },
+    "metafields": [
+      {
+        "namespace": "custom",
+        "key": "brand",
+        "value": "MD Doll",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "display_name",
+        "value": "T80",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "body_code",
+        "value": "T80",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "body_type",
+        "value": "torso",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "material",
+        "value": "Silicone",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "stock_status",
+        "value": "custom",
+        "type": "single_line_text_field"
+      },
+      {
+        "namespace": "custom",
+        "key": "custom_available",
+        "value": "true",
+        "type": "boolean"
+      },
+      {
+        "namespace": "custom",
+        "key": "measurements",
+        "value": "{\"Width\":\"12.6 in / 32 cm\",\"Length\":\"5.5 in / 14 cm\",\"Height\":\"5.9 in / 15 cm\",\"Weight\":\"14.3 lb / 6.5 kg\",\"Cup size\":\"H\",\"Material\":\"Shape Memory Silicone\"}",
+        "type": "json"
+      },
+      {
+        "namespace": "custom",
+        "key": "customization_groups",
+        "value": "[{\"id\":\"skin-tone\",\"label\":\"Skin Tone\",\"required\":true,\"selectionMode\":\"single\",\"display\":\"swatches\",\"options\":[{\"id\":\"no-change\",\"label\":\"As shown\",\"priceDelta\":0,\"priceVerified\":true},{\"id\":\"natural\",\"label\":\"Natural\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/7cc6344797b54c6d161d4e5966f6c67f0c7ab85504c053b1f278965bfa98c1c7.webp\",\"label\":\"Natural\"}},{\"id\":\"tan\",\"label\":\"Tan\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/ca0a8c03c2075f111a5607cc807f96879b121a79f278add3af8a80ce0c25194b.webp\",\"label\":\"Tan\"}}]},{\"id\":\"areola-color\",\"label\":\"Areola Color\",\"required\":true,\"selectionMode\":\"single\",\"display\":\"swatches\",\"options\":[{\"id\":\"no-change\",\"label\":\"As shown\",\"priceDelta\":0,\"priceVerified\":true},{\"id\":\"no-1\",\"label\":\"No.1\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/f0bebe826b8943e0b6d72d94162805bd58e296fdc9dd1a55c371e3135edbab8b.webp\",\"label\":\"No.1\"}},{\"id\":\"no-2\",\"label\":\"No.2\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/936e21c5b6b36db46f0c49bd6702b8aac978a20be0c2526c0d07d5b031aecd1e.webp\",\"label\":\"No.2\"}},{\"id\":\"no-3\",\"label\":\"No.3\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/f489e069cbd3064f2d1c3b594737bf992a48166a319d2f37a262dd031659aad7.webp\",\"label\":\"No.3\"}}]},{\"id\":\"areola-size\",\"label\":\"Areola Size\",\"required\":true,\"selectionMode\":\"single\",\"display\":\"swatches\",\"options\":[{\"id\":\"no-change\",\"label\":\"As shown\",\"priceDelta\":0,\"priceVerified\":true},{\"id\":\"3cm\",\"label\":\"3cm\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/2ec93cc18989f4717b489007363c97bdb0ed76fca623604119ce21bc801f15f0.webp\",\"label\":\"3cm\"}},{\"id\":\"4cm\",\"label\":\"4cm\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/cd3a56f1a43cc4f0549950753a95bf015c951a9f0f99acd6033d74e8ad3496bf.webp\",\"label\":\"4cm\"}},{\"id\":\"5cm\",\"label\":\"5cm\",\"priceDelta\":0,\"priceVerified\":true,\"swatch\":{\"kind\":\"image\",\"value\":\"/option-assets/607e668a4f8ace1baac4287f556e391dafb91a6964e3befe38d3449980722eaa.webp\",\"label\":\"5cm\"}}]},{\"id\":\"body-material\",\"label\":\"Material\",\"required\":true,\"selectionMode\":\"single\",\"display\":\"cards\",\"options\":[{\"id\":\"shape-memory-silicone-included\",\"label\":\"Shape Memory Silicone \u2014 Included\",\"priceDelta\":0,\"priceVerified\":true,\"description\":\"MD\u2019s high-rebound, low-oil silicone is included in the T80 build.\"}]}]",
+        "type": "json"
+      },
+      {
+        "namespace": "custom",
+        "key": "editorial_intro",
+        "value": "{\"eyebrow\":\"Sculptural Sophistication\",\"heading\":\"Curves in Focus\",\"paragraph\":\"The T80 pairs a compact form with sculptural H-cup curves. MD\u2019s Shape Memory Silicone is included in the build, bringing the high rebound, softness and low-oil formulation described by the manufacturer. At 32cm wide and 6.5kg, this chest torso gives the material a focused expression. Choose the skin and areola finish that suits your collection, then explore the contours and material demonstrations in the complete factory gallery.\",\"promptVersion\":\"dol382-md-t80-venice-product-editorial-nov19\",\"generatedAt\":\"2026-11-19T07:49:57.181Z\"}",
+        "type": "json"
+      },
+      {
+        "namespace": "seo",
+        "key": "hidden",
+        "type": "number_integer",
+        "value": "1"
+      }
+    ],
+    "id": "gid://shopify/Product/10742984179896",
+    "description": "<p>Sculptural H-cup curves meet MD\u2019s new Shape Memory Silicone in the compact T80 chest torso. The material is included from the start, with the softness, high rebound and low-oil formulation described by MD.</p><p>Choose your finish from the MD skin and areola options below. The $450 price includes standard US shipping.</p><h2>Compact dimensions, complete detail</h2><dl>\n<dt>Width</dt>\n<dd>12.6 in / 32 cm</dd>\n<dt>Length</dt>\n<dd>5.5 in / 14 cm</dd>\n<dt>Height</dt>\n<dd>5.9 in / 15 cm</dd>\n<dt>Weight</dt>\n<dd>14.3 lb / 6.5 kg</dd>\n<dt>Cup size</dt>\n<dd>H</dd>\n<dt>Material</dt>\n<dd>Shape Memory Silicone</dd>\n</dl><p>Explore the complete factory gallery and product video, plus MD\u2019s shape-memory demonstrations.</p><h2>Made for your collection</h2><p>Explore more designs in the <a href=\"/brands/md-doll\">MD Doll collection</a> and read our <a href=\"/shipping\">shipping guide</a>.</p>",
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---1.jpg?v=1795074584",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (1)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---2.jpg?v=1795074585",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (2)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---3.jpg?v=1795074587",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (3)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---4.jpg?v=1795074589",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (4)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---5.jpg?v=1795074590",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (5)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---6.jpg?v=1795074592",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (6)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---7.jpg?v=1795074594",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (7)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---8.jpg?v=1795074596",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (8)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---9.jpg?v=1795074598",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (9)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---10.jpg?v=1795074600",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (10)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---11.jpg?v=1795074601",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (11)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---12.jpg?v=1795074603",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (12)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---13.jpg?v=1795074605",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (13)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---14.jpg?v=1795074607",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (14)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---15.jpg?v=1795074609",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (15)"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80.jpg?v=1795074610",
+        "width": 3620,
+        "height": 3131,
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo \u5c3a\u5bf8\u56fe"
+      }
+    ],
+    "media": [
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---1.jpg?v=1795074584",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (1)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (1)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---2.jpg?v=1795074585",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (2)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (2)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---3.jpg?v=1795074587",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (3)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (3)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---4.jpg?v=1795074589",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (4)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (4)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---5.jpg?v=1795074590",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (5)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (5)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---6.jpg?v=1795074592",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (6)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (6)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---7.jpg?v=1795074594",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (7)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (7)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---8.jpg?v=1795074596",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (8)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (8)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---9.jpg?v=1795074598",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (9)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (9)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---10.jpg?v=1795074600",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (10)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (10)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---11.jpg?v=1795074601",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (11)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (11)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---12.jpg?v=1795074603",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (12)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (12)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---13.jpg?v=1795074605",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (13)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (13)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---14.jpg?v=1795074607",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (14)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (14)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---15.jpg?v=1795074609",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (15)"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (15)"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80.jpg?v=1795074610",
+          "width": 3620,
+          "height": 3131,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory photo \u5c3a\u5bf8\u56fe"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory photo \u5c3a\u5bf8\u56fe"
+      },
+      {
+        "type": "video",
+        "url": "https://cdn.shopify.com/videos/c/vp/c431760827274e7dbbf58bd94abdf635/c431760827274e7dbbf58bd94abdf635.SD-480p-1.5Mbps-101951737.mp4",
+        "previewImage": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/preview_images/c431760827274e7dbbf58bd94abdf635.thumbnail.0000000000.jpg?v=1795074678",
+          "width": 3840,
+          "height": 2160,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory video video"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory video video"
+      },
+      {
+        "type": "video",
+        "url": "https://cdn.shopify.com/videos/c/vp/ebd6feca961849b18518a735bcc70b9a/ebd6feca961849b18518a735bcc70b9a.SD-480p-1.5Mbps-101951743.mp4",
+        "previewImage": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/preview_images/ebd6feca961849b18518a735bcc70b9a.thumbnail.0000000000.jpg?v=1795074695",
+          "width": 1920,
+          "height": 1080,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory video shape-memory-silicone"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory video shape-memory-silicone"
+      },
+      {
+        "type": "video",
+        "url": "https://cdn.shopify.com/videos/c/vp/514524526fe546038054be54e8b0802a/514524526fe546038054be54e8b0802a.SD-480p-1.5Mbps-101951748.mp4",
+        "previewImage": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/preview_images/514524526fe546038054be54e8b0802a.thumbnail.0000000000.jpg?v=1795074700",
+          "width": 1920,
+          "height": 1080,
+          "altText": "MD T80 Shape Memory Silicone chest torso factory video \u8bb0\u5fc6\u7845\u80f6"
+        },
+        "altText": "MD T80 Shape Memory Silicone chest torso factory video \u8bb0\u5fc6\u7845\u80f6"
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54860347375800",
+        "title": "Default Title",
+        "availableForSale": true,
+        "price": {
+          "amount": "450.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ]
+      }
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-t80-chest-torso---1.jpg?v=1795074584",
+      "width": 2000,
+      "height": 1334,
+      "altText": "MD T80 Shape Memory Silicone chest torso factory photo chest torso  (1)"
+    },
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "450",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "450",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "MD Doll",
+      "displayName": "T80",
+      "bodyCode": "T80",
+      "bodyType": "unknown",
+      "material": "Silicone",
+      "heightCm": 15,
+      "weightLb": 14.33,
+      "cupSize": "H",
+      "measurements": {
+        "Width": "12.6 in / 32 cm",
+        "Length": "5.5 in / 14 cm",
+        "Height": "5.9 in / 15 cm",
+        "Weight": "14.3 lb / 6.5 kg",
+        "Cup size": "H",
+        "Material": "Shape Memory Silicone"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7cc6344797b54c6d161d4e5966f6c67f0c7ab85504c053b1f278965bfa98c1c7.webp",
+                "label": "Natural"
+              }
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ca0a8c03c2075f111a5607cc807f96879b121a79f278add3af8a80ce0c25194b.webp",
+                "label": "Tan"
+              }
+            }
+          ]
+        },
+        {
+          "id": "areola-color",
+          "label": "Areola Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f0bebe826b8943e0b6d72d94162805bd58e296fdc9dd1a55c371e3135edbab8b.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/936e21c5b6b36db46f0c49bd6702b8aac978a20be0c2526c0d07d5b031aecd1e.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f489e069cbd3064f2d1c3b594737bf992a48166a319d2f37a262dd031659aad7.webp",
+                "label": "No.3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "areola-size",
+          "label": "Areola Size",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "3cm",
+              "label": "3cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2ec93cc18989f4717b489007363c97bdb0ed76fca623604119ce21bc801f15f0.webp",
+                "label": "3cm"
+              }
+            },
+            {
+              "id": "4cm",
+              "label": "4cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cd3a56f1a43cc4f0549950753a95bf015c951a9f0f99acd6033d74e8ad3496bf.webp",
+                "label": "4cm"
+              }
+            },
+            {
+              "id": "5cm",
+              "label": "5cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/607e668a4f8ace1baac4287f556e391dafb91a6964e3befe38d3449980722eaa.webp",
+                "label": "5cm"
+              }
+            }
+          ]
+        },
+        {
+          "id": "body-material",
+          "label": "Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "shape-memory-silicone-included",
+              "label": "Shape Memory Silicone \u2014 Included",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "description": "MD\u2019s high-rebound, low-oil silicone is included in the T80 build."
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "Sculptural Sophistication",
+        "heading": "Curves in Focus",
+        "paragraph": "The T80 pairs a compact form with sculptural H-cup curves. MD\u2019s Shape Memory Silicone is included in the build, bringing the high rebound, softness and low-oil formulation described by the manufacturer. At 32cm wide and 6.5kg, this chest torso gives the material a focused expression. Choose the skin and areola finish that suits your collection, then explore the contours and material demonstrations in the complete factory gallery.",
+        "promptVersion": "dol382-md-t80-venice-product-editorial-nov19",
+        "generatedAt": "2026-11-19T07:49:57.181Z"
+      }
+    }
+  },
+  {
+    "id": "gid://shopify/Product/10640032497848",
+    "handle": "md-leona-161cm-silicone-companion-doll",
+    "title": "MD Doll Leona 161cm Silicone Companion Doll",
+    "description": "<p>Leona is a made-to-order 161cm full-body silicone doll with the M63 head. Factory body weight: 33kg. Compare the measurements, product photos and available customization. Clothing and scene props are shown for styling.</p><ul>\n<li>\n<strong>Height:</strong> 5 ft 3 in / 161 cm</li>\n\n<li>\n<strong>Cup size:</strong> H-Cup</li>\n<li>\n<strong>Feet Length:</strong> 8 in / 21 cm</li>\n<li>\n<strong>Bust:</strong> 2 ft 11 in / 88 cm</li>\n<li>\n<strong>Legs Length:</strong> 2 ft 9 in / 85 cm</li>\n<li>\n<strong>Waist:</strong> 1 ft 10 in / 56 cm</li>\n<li>\n<strong>Arms Length:</strong> 1 ft 6 in / 46 cm</li>\n<li>\n<strong>Hip:</strong> 3 ft / 92 cm</li>\n<li>\n<strong>Shoulders Width:</strong> 1 ft 2 in / 36 cm</li>\n<li>\n<strong>Vagina Depth:</strong> 15-16cm</li>\n<li>\n<strong>Anus Depth:</strong> 6 in / 15 cm</li>\n<li>\n<strong>Oral Depth:</strong> N / A</li>\n<li>\n<strong>Brand:</strong> MD Doll</li>\n<li>\n<strong>Material:</strong> silicone</li>\n<li>\n<strong>Availability:</strong> Custom factory order</li>\n<li>\n<strong>Warehouse:</strong> Factory order</li>\n\n<li>\n<strong>Factory body weight:</strong> 33kg</li>\n<li>\n<strong>Packing weight:</strong> 44kg</li>\n</ul><p>For custom orders, factory photos are shared for your approval before shipment.</p>",
+    "seo": {
+      "title": "MD Leona 161cm Silicone Doll | DollWow",
+      "description": "Explore MD Doll Leona, a 161cm made-to-order silicone doll with the M63 head. View measurements, product photos and customization."
+    },
+    "vendor": "MD Doll",
+    "productType": "Custom Silicone doll",
+    "tags": [
+      "custom",
+      "customizable",
+      "female-doll",
+      "full-doll",
+      "height-160-164",
+      "md",
+      "md-doll",
+      "md-doll-dolls",
+      "options:md-silicone-body-mvp-v1",
+      "silicone",
+      "weight-0-74",
+      "dol382-md-nov19",
+      "dollwow-test"
+    ],
+    "images": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-23.jpg?v=1791302264",
+        "width": 1000,
+        "height": 1500,
+        "altText": "MD Doll Leona holding a flower beside a brown chair"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-19.jpg?v=1791302264",
+        "width": 1000,
+        "height": 1500,
+        "altText": "MD Doll Leona standing in a red-and-black outfit and white wrap"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-21.jpg?v=1791302264",
+        "width": 1000,
+        "height": 1500,
+        "altText": "MD Doll Leona with one arm raised beside the chair"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-5.jpg?v=1791302264",
+        "width": 1000,
+        "height": 1500,
+        "altText": "MD Doll Close view of Leona seated in a black cap"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-6.jpg?v=1791302264",
+        "width": 1000,
+        "height": 1500,
+        "altText": "MD Doll Leona seated facing forward in a white wrap"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-02321b2ff6b3.jpg?v=1791990497",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-6c883bbefe27.jpg?v=1791990500",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-ea820d9e55e5.jpg?v=1791990502",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-b9fc0e32db4f.jpg?v=1791990506",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-1cc5cb2eabb3.jpg?v=1791990508",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-6555283b5024.jpg?v=1791990511",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-88caea50a471.jpg?v=1791990512",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-3a402f6d08f8.jpg?v=1791990514",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-b1c1506be8a3.jpg?v=1791990516",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-91b083bf49a9.jpg?v=1791990525",
+        "width": 6000,
+        "height": 4000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-da3b3fdc669d.jpg?v=1791990537",
+        "width": 6000,
+        "height": 4000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1R3Y6FHXn_Co7MhWe47Trn8Ytr06MhpXN.jpg?v=1792011312",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 1"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1WeYvsXqmrQo8KMgXU16EYIck_eXLA6wG.jpg?v=1792011314",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 2"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1sNRLcP_AW9VW6jagnsuzpNXafUMtQzw7.jpg?v=1792011315",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 3"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1pL367dxRQ5FYSw8Qe3WCl64-RsaY9p0h.jpg?v=1792011317",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 4"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1Bh1nUG6MJIqKt_9Z_z87V-b49CTP4-0b.jpg?v=1792011319",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 5"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1Ud4Jy3G3vj__9CXj6iE2v7IJzqgVD8cm.jpg?v=1792011321",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 6"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1xLZzya7liakzRhsd9RCudn4muwsq8aEa.jpg?v=1792011322",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 7"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1yNgbiIeYkxKxsFWoFyfOnfRrNOZIGh_f.jpg?v=1792011324",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 8"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1JtfZ3OpTRBqp_gsggJ8zvjJTElq_TWcZ.jpg?v=1792011326",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 9"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1FI4ICu8JzwCnWEAhSfUI28Or_4wP6U6j.jpg?v=1792011327",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 10"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/10Xc8LxJtLJexhHXUn4g0aZtgLanLyss6.jpg?v=1792011330",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 11"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1lS0rIr-ljf_2w4RHBsW8RXroEepNmxMr.jpg?v=1792011332",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 12"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1zpw53cFJnov11mxdXSuMFGcDpStx53ut.jpg?v=1792011333",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 13"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/10Lfg4kvze8YbiyR_AFNtsN-owZzb0WB6.jpg?v=1792011335",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 14"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1PFki0iXaZ4JQI4mxF3e983BcyLZwWdoP.jpg?v=1792011337",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 15"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1aK-Lp9tLOxYVCcHnNB9lYb3QuN6DYX1I.jpg?v=1792011339",
+        "width": 2000,
+        "height": 1334,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 16"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1olSsulsx5_2aqzv0FrPAWdMmTaaAOcoz.jpg?v=1792011340",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 17"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1UTEMbgo_0jvwd39cT6P5VNWV06H-bBpo.jpg?v=1792011342",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 18"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1UHXk6CPCpxamCK1xiwgulDhROsuHq8R9.jpg?v=1792011343",
+        "width": 1334,
+        "height": 2000,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 19"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1SI6AOwFgkMuDzeNtEpkXF3LyZNN6Bstd.jpg?v=1792011345",
+        "width": 4000,
+        "height": 2667,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 20"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1hbWEIm7R08FK8PfXC09EhRCz2pCUfIrm.jpg?v=1792011346",
+        "width": 4000,
+        "height": 2667,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 21"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1jSYt7ErKzZw7L3rkOaMiDJVk8GB1rLll.jpg?v=1792011348",
+        "width": 4000,
+        "height": 2667,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 22"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1SQJOSs7fIbCGH9fu1Y4o_gy1QXp7c38d.jpg?v=1792011350",
+        "width": 4000,
+        "height": 2667,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 23"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1uJaxScJzAlBRkAWfGaqcxoEC49kFkfUt.jpg?v=1792011351",
+        "width": 4000,
+        "height": 2667,
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 24"
+      }
+    ],
+    "featuredImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-23.jpg?v=1791302264",
+      "width": 1000,
+      "height": 1500,
+      "altText": "MD Doll Leona holding a flower beside a brown chair"
+    },
+    "media": [
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-23.jpg?v=1791302264",
+          "width": 1000,
+          "height": 1500,
+          "altText": "MD Doll Leona holding a flower beside a brown chair"
+        },
+        "altText": "MD Doll Leona holding a flower beside a brown chair"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-19.jpg?v=1791302264",
+          "width": 1000,
+          "height": 1500,
+          "altText": "MD Doll Leona standing in a red-and-black outfit and white wrap"
+        },
+        "altText": "MD Doll Leona standing in a red-and-black outfit and white wrap"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-21.jpg?v=1791302264",
+          "width": 1000,
+          "height": 1500,
+          "altText": "MD Doll Leona with one arm raised beside the chair"
+        },
+        "altText": "MD Doll Leona with one arm raised beside the chair"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-5.jpg?v=1791302264",
+          "width": 1000,
+          "height": 1500,
+          "altText": "MD Doll Close view of Leona seated in a black cap"
+        },
+        "altText": "MD Doll Close view of Leona seated in a black cap"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/161cm5ft3-H-cup-Silicone-Sex-Doll-_E2_80_93-Leona-6.jpg?v=1791302264",
+          "width": 1000,
+          "height": 1500,
+          "altText": "MD Doll Leona seated facing forward in a white wrap"
+        },
+        "altText": "MD Doll Leona seated facing forward in a white wrap"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-02321b2ff6b3.jpg?v=1791990497",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-6c883bbefe27.jpg?v=1791990500",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-ea820d9e55e5.jpg?v=1791990502",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-b9fc0e32db4f.jpg?v=1791990506",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-1cc5cb2eabb3.jpg?v=1791990508",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-6555283b5024.jpg?v=1791990511",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-88caea50a471.jpg?v=1791990512",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-3a402f6d08f8.jpg?v=1791990514",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-b1c1506be8a3.jpg?v=1791990516",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-91b083bf49a9.jpg?v=1791990525",
+          "width": 6000,
+          "height": 4000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/md-leona-161cm-silicone-companion-doll-factory-da3b3fdc669d.jpg?v=1791990537",
+          "width": 6000,
+          "height": 4000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll - factory gallery photograph"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1R3Y6FHXn_Co7MhWe47Trn8Ytr06MhpXN.jpg?v=1792011312",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 1"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 1"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1WeYvsXqmrQo8KMgXU16EYIck_eXLA6wG.jpg?v=1792011314",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 2"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 2"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1sNRLcP_AW9VW6jagnsuzpNXafUMtQzw7.jpg?v=1792011315",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 3"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 3"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1pL367dxRQ5FYSw8Qe3WCl64-RsaY9p0h.jpg?v=1792011317",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 4"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 4"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1Bh1nUG6MJIqKt_9Z_z87V-b49CTP4-0b.jpg?v=1792011319",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 5"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 5"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1Ud4Jy3G3vj__9CXj6iE2v7IJzqgVD8cm.jpg?v=1792011321",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 6"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 6"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1xLZzya7liakzRhsd9RCudn4muwsq8aEa.jpg?v=1792011322",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 7"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 7"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1yNgbiIeYkxKxsFWoFyfOnfRrNOZIGh_f.jpg?v=1792011324",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 8"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 8"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1JtfZ3OpTRBqp_gsggJ8zvjJTElq_TWcZ.jpg?v=1792011326",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 9"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 9"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1FI4ICu8JzwCnWEAhSfUI28Or_4wP6U6j.jpg?v=1792011327",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 10"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 10"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/10Xc8LxJtLJexhHXUn4g0aZtgLanLyss6.jpg?v=1792011330",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 11"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 11"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1lS0rIr-ljf_2w4RHBsW8RXroEepNmxMr.jpg?v=1792011332",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 12"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 12"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1zpw53cFJnov11mxdXSuMFGcDpStx53ut.jpg?v=1792011333",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 13"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 13"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/10Lfg4kvze8YbiyR_AFNtsN-owZzb0WB6.jpg?v=1792011335",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 14"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 14"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1PFki0iXaZ4JQI4mxF3e983BcyLZwWdoP.jpg?v=1792011337",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 15"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 15"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1aK-Lp9tLOxYVCcHnNB9lYb3QuN6DYX1I.jpg?v=1792011339",
+          "width": 2000,
+          "height": 1334,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 16"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 16"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1olSsulsx5_2aqzv0FrPAWdMmTaaAOcoz.jpg?v=1792011340",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 17"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 17"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1UTEMbgo_0jvwd39cT6P5VNWV06H-bBpo.jpg?v=1792011342",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 18"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 18"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1UHXk6CPCpxamCK1xiwgulDhROsuHq8R9.jpg?v=1792011343",
+          "width": 1334,
+          "height": 2000,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 19"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 19"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1SI6AOwFgkMuDzeNtEpkXF3LyZNN6Bstd.jpg?v=1792011345",
+          "width": 4000,
+          "height": 2667,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 20"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 20"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1hbWEIm7R08FK8PfXC09EhRCz2pCUfIrm.jpg?v=1792011346",
+          "width": 4000,
+          "height": 2667,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 21"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 21"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1jSYt7ErKzZw7L3rkOaMiDJVk8GB1rLll.jpg?v=1792011348",
+          "width": 4000,
+          "height": 2667,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 22"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 22"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1SQJOSs7fIbCGH9fu1Y4o_gy1QXp7c38d.jpg?v=1792011350",
+          "width": 4000,
+          "height": 2667,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 23"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 23"
+      },
+      {
+        "type": "image",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/1uJaxScJzAlBRkAWfGaqcxoEC49kFkfUt.jpg?v=1792011351",
+          "width": 4000,
+          "height": 2667,
+          "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 24"
+        },
+        "altText": "MD Doll Leona 161cm Silicone Companion Doll factory photo 24"
+      }
+    ],
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/54254623260856",
+        "title": "Default Title",
+        "price": {
+          "amount": "2699.00",
+          "currencyCode": "USD"
+        },
+        "selectedOptions": [
+          {
+            "name": "Title",
+            "value": "Default Title"
+          }
+        ],
+        "availableForSale": true
+      }
+    ],
+    "priceRange": {
+      "minVariantPrice": {
+        "amount": "2699.00",
+        "currencyCode": "USD"
+      },
+      "maxVariantPrice": {
+        "amount": "2699.00",
+        "currencyCode": "USD"
+      }
+    },
+    "extended": {
+      "brand": "MD Doll",
+      "headModel": "M63",
+      "displayName": "Leona",
+      "bodyType": "female",
+      "material": "silicone",
+      "heightCm": 161,
+      "weightLb": 72.8,
+      "cupSize": "H-Cup",
+      "measurements": {
+        "Height": "5 ft 3 in / 161 cm",
+        "Cup size": "H-Cup",
+        "Feet Length": "8 in / 21 cm",
+        "Bust": "2 ft 11 in / 88 cm",
+        "Legs Length": "2 ft 9 in / 85 cm",
+        "Waist": "1 ft 10 in / 56 cm",
+        "Arms Length": "1 ft 6 in / 46 cm",
+        "Hip": "3 ft / 92 cm",
+        "Shoulders Width": "1 ft 2 in / 36 cm",
+        "Vagina Depth": "6 in / 15-16 cm",
+        "Anus Depth": "6 in / 15 cm",
+        "Oral Depth": "N/A",
+        "Factory body weight": "33kg",
+        "Packing weight": "97.0 lbs / 44 kg"
+      },
+      "stockStatus": "custom",
+      "customAvailable": true,
+      "customizationGroups": [
+        {
+          "id": "head",
+          "label": "Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "other-heads",
+              "label": "Other Heads",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-md-other-heads.webp?v=1792013479",
+                "label": "Other Heads"
+              }
+            }
+          ]
+        },
+        {
+          "id": "other-heads",
+          "label": "Other Heads",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "choose-a-head",
+              "label": "Choose a head",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "purchasable": false,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-md-other-heads.webp?v=1792013479",
+                "label": "Choose a head"
+              }
+            },
+            {
+              "id": "m22",
+              "label": "M22",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/be0bd79b648449462c00b024de4bec3b56ae2d8f79cfb0d3cbbea2008f807dd9.webp",
+                "label": "M22"
+              }
+            },
+            {
+              "id": "m23",
+              "label": "M23",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/20d859ecb7cb4fa7839524901bee7499e268ecc4c183fe7186516b27826ff81d.webp",
+                "label": "M23"
+              }
+            },
+            {
+              "id": "m27",
+              "label": "M27",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b1986995e58e521ac2faccaf33eaf0b0703ec492fe4edf182e1b761c2e6bf7a.webp",
+                "label": "M27"
+              }
+            },
+            {
+              "id": "m28",
+              "label": "M28",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/92385fd9e912730ba3ea3272c8b7143407c3682ea65a7827376e2ebca6d10da6.webp",
+                "label": "M28"
+              }
+            },
+            {
+              "id": "m29",
+              "label": "M29",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a79178f1c052e9a9478ebe285e64c6541c7eec07f9017204b2a0bb4551189fbc.webp",
+                "label": "M29"
+              }
+            },
+            {
+              "id": "m30",
+              "label": "M30",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dc02cc0a1e21885c32b4f065796cb15f4533923aa946d2db3b28360c09948db8.webp",
+                "label": "M30"
+              }
+            },
+            {
+              "id": "m31",
+              "label": "M31",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/535270e0502e10aeb3197d8b3444c64b8cf0127a142689063f1886a8c771a256.webp",
+                "label": "M31"
+              }
+            },
+            {
+              "id": "m33",
+              "label": "M33",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8e7230bf92c850b60c2eefe5adc5d7402dd8d28830ded546d69c39804f13e97a.webp",
+                "label": "M33"
+              }
+            },
+            {
+              "id": "m34",
+              "label": "M34",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e17b4429ef3145af5078349e0c9b0955700f1da49277acba67a96cac068dd771.webp",
+                "label": "M34"
+              }
+            },
+            {
+              "id": "m35",
+              "label": "M35",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2d3f22da6469bb62077053fe9d4e96512fc720b88fda940e3d4dfcea8d60c01c.webp",
+                "label": "M35"
+              }
+            },
+            {
+              "id": "m36",
+              "label": "M36",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0c1d38abfe553796ed7c3411e340c1132aa6554387c3645df8e1606e2124a8cd.webp",
+                "label": "M36"
+              }
+            },
+            {
+              "id": "m38",
+              "label": "M38",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a2316aae6fe3fa1ec7c62e88b6734d57b3227f47e29ab42378661a59bb086b4.webp",
+                "label": "M38"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "head",
+                "optionId": "other-heads"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "head-type",
+          "label": "Head Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "ros-head-movable-jaw",
+              "label": "ROS Head (Movable Jaw)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5adc239bc5ea04a0cfde54f3ad05ae9ccd297c4cc4ef91201ca1fe7d0b9cb1b5.webp",
+                "label": "ROS Head (Movable Jaw)"
+              },
+              "purchasable": true
+            },
+            {
+              "id": "hard-silicone",
+              "label": "Hard Silicone",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cef6be40fdee767858672702b01df85c7742cbf057832509a670924a2d0a13ea.webp",
+                "label": "Hard Silicone"
+              }
+            }
+          ]
+        },
+        {
+          "id": "skin-tone",
+          "label": "Skin Tone",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "natural",
+              "label": "Natural",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7cc6344797b54c6d161d4e5966f6c67f0c7ab85504c053b1f278965bfa98c1c7.webp",
+                "label": "Natural"
+              }
+            },
+            {
+              "id": "tan",
+              "label": "Tan",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ca0a8c03c2075f111a5607cc807f96879b121a79f278add3af8a80ce0c25194b.webp",
+                "label": "Tan"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hairstyle",
+          "label": "Hairstyle",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "hairstyle-1",
+              "label": "Hairstyle #1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/83c9b0882da3b67f42ec22c460d134470bdad40b2e7892bc9980e89ce6f3489f.webp",
+                "label": "Hairstyle #1"
+              }
+            },
+            {
+              "id": "hairstyle-2",
+              "label": "Hairstyle #2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/aaf6ec0a30c32c7232dda7ca62bfe187a757a2200a900b373198b772576c765d.webp",
+                "label": "Hairstyle #2"
+              }
+            },
+            {
+              "id": "hairstyle-3",
+              "label": "Hairstyle #3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/71e714d5913c96517a6b4f9cd5fd6949a63fe0c9c9010267b6e2bb67cc57b50b.webp",
+                "label": "Hairstyle #3"
+              }
+            },
+            {
+              "id": "hairstyle-4",
+              "label": "Hairstyle #4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0325f96dac4a8e7779e02ecc352cec619e97dd4f4a1c9a7456000b04414ea851.webp",
+                "label": "Hairstyle #4"
+              }
+            },
+            {
+              "id": "hairstyle-5",
+              "label": "Hairstyle #5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/67da36b24131609b3a3b477559e6d2c379bb262a8d2c9255a77898d4f48e5193.webp",
+                "label": "Hairstyle #5"
+              }
+            },
+            {
+              "id": "hairstyle-6",
+              "label": "Hairstyle #6",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eaa0a29a312e5b41bd4d835224308da705525a5fe650587732ceddb1a039c724.webp",
+                "label": "Hairstyle #6"
+              }
+            },
+            {
+              "id": "hairstyle-7",
+              "label": "Hairstyle #7",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b0b2427b45b5dd25908f4388c01ac7f8a1c3902ccd736b5aaaa1a6383e69e035.webp",
+                "label": "Hairstyle #7"
+              }
+            },
+            {
+              "id": "hairstyle-8",
+              "label": "Hairstyle #8",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2107cc9e4ad2502aa24173b6532a465462c488f61d7ee9c2f15defb1cf5c4680.webp",
+                "label": "Hairstyle #8"
+              }
+            },
+            {
+              "id": "hairstyle-9",
+              "label": "Hairstyle #9",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e0051a3923b503625d00966330501ab0167185cf40a8abc68617c3fd9c9a72e3.webp",
+                "label": "Hairstyle #9"
+              }
+            },
+            {
+              "id": "hairstyle-10",
+              "label": "Hairstyle #10",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cba8dc307fb0da17a24c5d288dde944dc846b49873eeb19e49ec25132b296974.webp",
+                "label": "Hairstyle #10"
+              }
+            },
+            {
+              "id": "hairstyle-11",
+              "label": "Hairstyle #11",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f71a5c8b310883c03faff6b8b93a67d1b8355c9d6b276ca24e84ba0dd83ddeab.webp",
+                "label": "Hairstyle #11"
+              }
+            },
+            {
+              "id": "hairstyle-12",
+              "label": "Hairstyle #12",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c056553d1990602a4164d9fe57507a60450cf4a62fe8d23e44c1cfd1abf699a7.webp",
+                "label": "Hairstyle #12"
+              }
+            },
+            {
+              "id": "implanted-synthetic-hair",
+              "label": "Implanted Synthetic Hair",
+              "priceDelta": 199,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/717a69f7f677ada3138a965041934ab67e1be1e3742cc6cc62d6e2ae534ff55e.webp",
+                "label": "Implanted Synthetic Hair"
+              }
+            },
+            {
+              "id": "implanted-human-hair",
+              "label": "Implanted Human Hair",
+              "priceDelta": 499,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0b7e7abed834cd00aced46f8c34ff7773fdafaed5c049431e577961759679b98.webp",
+                "label": "Implanted Human Hair"
+              }
+            }
+          ]
+        },
+        {
+          "id": "implanted-eyebrows-eyelashes",
+          "label": "Implanted Eyebrows & Eyelashes",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "draw-eyebrows-eyelashes",
+              "label": "Draw Eyebrows & Eyelashes",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1dba20f16a6d5f038a3930a28fa157d02a1fb7450e77eaf92dbba37bef07a185.webp",
+                "label": "Draw Eyebrows & Eyelashes"
+              }
+            },
+            {
+              "id": "implanted-eyebrows-eyelashes",
+              "label": "Implanted Eyebrows & Eyelashes",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8bf57f98ed8a48787bc00c06fe11b38afd10d25bf66f7bbae935fedbff45449f.webp",
+                "label": "Implanted Eyebrows & Eyelashes"
+              }
+            }
+          ]
+        },
+        {
+          "id": "eye-color",
+          "label": "Eye Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c21cb6cb76481180cb6584e2321dde319710983d3415d4ca7cf9573debd95da4.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a39c5a04b61346d281240897d194b98aaf9da85337c9000d6721bad3bf7a7a40.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d9683965937770eae63cae64c8bf53148a4dcfc038677f13e8046aa3bb6d2e6.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/449e82224b279d14f7d50d5d9af4c09ac09ebe4b18a9ab6133bc1b717ec9bcc1.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/066fd6130a99170d53a3e4f79fc55734d87db507553a6efca9192b95f21a3527.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d7df0fdc2b6e1c828ae68d2eb3aa5dc7e6d89406a6de55460cdb8227e9fe2f2f.webp",
+                "label": "No.6"
+              }
+            }
+          ]
+        },
+        {
+          "id": "nail-color",
+          "label": "Nail Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4179b94eab6cd16cc746d8e99bb9b432a96eea39dd71025f527c0253120ad240.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/59f513024c4388bcae7d8579b8b1f1fec351b34efd7bfbb456740914e72228c7.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2be41c334bf4d042c3ff46484a86fbc1c86cbf0a51aecb88d4b4d5fb4fdb742e.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2e1e58053c4ceb892bec308dcfb41ab50a578d93ef1a9c340d3a3454ed71ea34.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/37985b54a62779528d65e23950dd3f914e7eed4cb9652ebe4668d162d35a9e1e.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c03d8a70a23d695833f083cc822316ff202697bdac34cd33ceb8649d678a51f6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d0bac2bf5ab8999955ebbe2bc9f84f98935cc64b55874b3f6faefd0b8a6b9d60.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/68f1a913936127be038b9877643145512b6e34643d0485924e84fd4e18b7b4e4.webp",
+                "label": "No.8"
+              }
+            }
+          ]
+        },
+        {
+          "id": "toenail-color",
+          "label": "Toenail Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7130b81819851c11c2576dd88a9e909e5030e5fed75672d5b7667fa36143fed6.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eee03ace221b262094c7668d0e906542ce1eaa5dcb482d2212d5a9a62edfb216.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2c07980b91b525138cd39482e75e6c204bb29a9776edfd9717ff7df5ae49cf69.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fab6594abb817744eea43e58c360461a94504f72d92a9270bf6a99665bb1bf12.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3cb222f0b364422b20bfd5a35017e42987b4cb35c644d29873fb9b359f595747.webp",
+                "label": "No.5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "breast-options",
+          "label": "Breast Options",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "gel-free",
+              "label": "Gel (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/bd55da0179ae4ef864c70b1b694d6aceb8cfc01030092fb2ccd18afab6429475.webp",
+                "label": "Gel (FREE)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "areola-color",
+          "label": "Areola Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f0bebe826b8943e0b6d72d94162805bd58e296fdc9dd1a55c371e3135edbab8b.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/936e21c5b6b36db46f0c49bd6702b8aac978a20be0c2526c0d07d5b031aecd1e.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f489e069cbd3064f2d1c3b594737bf992a48166a319d2f37a262dd031659aad7.webp",
+                "label": "No.3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "areola-size",
+          "label": "Areola Size",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "3cm",
+              "label": "3cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2ec93cc18989f4717b489007363c97bdb0ed76fca623604119ce21bc801f15f0.webp",
+                "label": "3cm"
+              }
+            },
+            {
+              "id": "4cm",
+              "label": "4cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cd3a56f1a43cc4f0549950753a95bf015c951a9f0f99acd6033d74e8ad3496bf.webp",
+                "label": "4cm"
+              }
+            },
+            {
+              "id": "5cm",
+              "label": "5cm",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/607e668a4f8ace1baac4287f556e391dafb91a6964e3befe38d3449980722eaa.webp",
+                "label": "5cm"
+              }
+            }
+          ]
+        },
+        {
+          "id": "vagina",
+          "label": "Vagina",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d3d12e0d38f555d941b4e8c55e3a4db982d66f9afbd4abf47ac646d048c7537b.webp",
+                "label": "Fixed"
+              }
+            },
+            {
+              "id": "removable",
+              "label": "Removable",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4111d725f92debe1a5fc63db07884575d7e8bfe76f4dcf9e079e9982fb07584d.webp",
+                "label": "Removable"
+              }
+            }
+          ]
+        },
+        {
+          "id": "labia-color",
+          "label": "Labia Color",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4ae0d8285daf98d85d548e02738d7cc65b4aa8011e80a75f59d03bb95bf37147.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7ca601cf40aa77925f0414527f3faf04697c6abad57f03e8cdf429190df95fa0.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5c1448065c66b01e4c32c7cef13a717fa1bbae95cb4975b36395a3bb9c565fe9.webp",
+                "label": "No.3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "vagina-hair-type",
+          "label": "Vagina Hair Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "none",
+              "label": "None",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2a0c97d4f7a8aa0f728ee9c72a458fac2092d16b14b6a6549d1d67604853d094.webp",
+                "label": "None"
+              }
+            },
+            {
+              "id": "pubic-hair-1",
+              "label": "Pubic Hair #1",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f8de6b9642529bfc38364de7aaad51546cfebfcbcd8ed92626bef9810bc28ffd.webp",
+                "label": "Pubic Hair #1"
+              }
+            },
+            {
+              "id": "pubic-hair-2",
+              "label": "Pubic Hair #2",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/acf9a63db0541bdf45e9c7ef87ab97638f0ac7b943b851829fa391999ec182e8.webp",
+                "label": "Pubic Hair #2"
+              }
+            },
+            {
+              "id": "pubic-hair-3",
+              "label": "Pubic Hair #3",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c949a1129c4c3d08546d65068d53510711d2ba28a349988fa4060981d3d05c61.webp",
+                "label": "Pubic Hair #3"
+              }
+            },
+            {
+              "id": "pubic-hair-4",
+              "label": "Pubic Hair #4",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d5c22b70ae881fac4607e8e423d4e68fce61f297bf616ca00b9f3b0b47eb29fb.webp",
+                "label": "Pubic Hair #4"
+              }
+            }
+          ]
+        },
+        {
+          "id": "skeleton-type",
+          "label": "Skeleton Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "evo-free",
+              "label": "EVO (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6f72c1a869d24908cfab1f66be62e212a45a8783619e529cb39b5b76a37c0736.webp",
+                "label": "EVO (FREE)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "standing-add-on",
+          "label": "Standing Add-On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "standing-without-bolts-hard-feet-free",
+              "label": "Standing Without Bolts/Hard Feet (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0a80a26ca2d8ef69c55620ba17bd5b4c5caf56e6bdca0aca955a9b206be572f2.webp",
+                "label": "Standing Without Bolts/Hard Feet (FREE)"
+              }
+            },
+            {
+              "id": "non-standing",
+              "label": "Non Standing",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0a80a26ca2d8ef69c55620ba17bd5b4c5caf56e6bdca0aca955a9b206be572f2.webp",
+                "label": "Non Standing"
+              }
+            },
+            {
+              "id": "standing-free",
+              "label": "Standing (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c018904d584b1be2ad63d586c51319ba29ca399f6f08ff889ae9793143d9068.webp",
+                "label": "Standing (FREE)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium-head-body-options-multiple",
+          "label": "Premium Head & Body Options (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hyper-realism-body-painting-free",
+              "label": "Hyper Realism Body Painting (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/88ad756faaec94debf502970b778d9c2f64cae1569f90efcdec4366f88253928.webp",
+                "label": "Hyper Realism Body Painting (FREE)"
+              },
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "articulated-fingers-free",
+              "label": "Articulated Fingers (FREE)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e5fe3bbe67634a7989afd45cff14f9150d464b69c24adb8b6030ab59b35c31d2.webp",
+                "label": "Articulated Fingers (FREE)"
+              },
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "hard-hand",
+              "label": "Hard Hand",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/151e61bd896d9e9194bef356ff4772eef6a6fb7c88028f08cfd41fe3425d9442.webp",
+                "label": "Hard Hand"
+              },
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "articulated-toes",
+              "label": "Articulated Toes",
+              "priceDelta": 120,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/7d8e8fa25e202a9fd5edb1566ddeab3f830f7e8bf4a41edd43107fbdbff40081.webp",
+                "label": "Articulated Toes"
+              }
+            },
+            {
+              "id": "soft-butt",
+              "label": "Soft Butt",
+              "priceDelta": 100,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b70123497ea8eec532eff1fc2e00f5132bb54dfe362fe64c97b346a6f4369c46.webp",
+                "label": "Soft Butt"
+              }
+            },
+            {
+              "id": "facial-freckles",
+              "label": "Facial Freckles",
+              "priceDelta": 70,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/bd061f8ec2969e083fbcbaafa3cd6bd399b5329ec66f1b83606bb2e38427f5d5.webp",
+                "label": "Facial Freckles"
+              }
+            },
+            {
+              "id": "movable-eyelids",
+              "label": "Movable Eyelids",
+              "priceDelta": 149,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/875d1ed3f192eacb2e00417b483c843091506e4e514a6b27786c5cc0da99d76d.webp",
+                "label": "Movable Eyelids"
+              }
+            },
+            {
+              "id": "body-moles-freckles",
+              "label": "Body Moles & Freckles",
+              "priceDelta": 70,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e9b9d049fa364d52a89f3e8ff1c5fddc5d6e0452c3205a3dcf60a65249052fa5.webp",
+                "label": "Body Moles & Freckles"
+              }
+            },
+            {
+              "id": "bikini-line",
+              "label": "Bikini Line",
+              "priceDelta": 70,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ec2969861fd104e06e43402f252745da6c1a744e18bec67fd9d1bcc17a478510.webp",
+                "label": "Bikini Line"
+              }
+            },
+            {
+              "id": "body-moaning",
+              "label": "Body Moaning",
+              "priceDelta": 100,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/56da3e2236aa841d1c84e0d7ec20c6f92e5bc23148c58bc6504edb6538e325fe.webp",
+                "label": "Body Moaning"
+              }
+            },
+            {
+              "id": "subcutaneous-heating",
+              "label": "Subcutaneous Heating",
+              "priceDelta": 149,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c271ab297a83c2bfe0b5136fab2a366c620a3646a57fed1b5ca2c9563cee5712.webp",
+                "label": "Subcutaneous Heating"
+              }
+            },
+            {
+              "id": "auto-suck-vagina",
+              "label": "Auto-suck Vagina",
+              "priceDelta": 150,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/643946d35d5f2a412338d482df664ec36826e6e40653f5a367a8988fe62c00df.webp",
+                "label": "Auto-suck Vagina"
+              }
+            },
+            {
+              "id": "bionic-skin-softer-skin",
+              "label": "Bionic Skin (Softer Skin)",
+              "priceDelta": 299,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f0338d6340143e4b4b56135eb3ffc9b3e3ee6eb7a59e40623f8b91c646d61e4b.webp",
+                "label": "Bionic Skin (Softer Skin)"
+              }
+            },
+            {
+              "id": "soft-skeleton",
+              "label": "Soft Skeleton",
+              "priceDelta": 70,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/41c4c409d85cccf0f156360a617f6670fcfe0662217a8704c90dbdb35e350fe4.webp",
+                "label": "Soft Skeleton"
+              }
+            },
+            {
+              "id": "interactive-feedback-legs",
+              "label": "Interactive Feedback Legs",
+              "priceDelta": 99,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/26d218a01619b832d6b88601f85a620460b5df193a2b5da1da018a86d72dadf2.webp",
+                "label": "Interactive Feedback Legs"
+              }
+            },
+            {
+              "id": "auto-blowjob",
+              "label": "Auto Blowjob",
+              "priceDelta": 249,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e2035c7655ac5a76b5218e12c9179507c1ce2b0bbec6c827b069c86961b7dc56.webp",
+                "label": "Auto Blowjob"
+              }
+            },
+            {
+              "id": "real-skin-texture",
+              "label": "Real Skin Texture",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/53460674eeaced76a2a65de3b2db5104739bd55ffd129522b14c9abf5f9fbf26.webp",
+                "label": "Real Skin Texture"
+              },
+              "sourceProductionNoteSignals": {
+                "defaultSupplierSelection": true
+              }
+            },
+            {
+              "id": "neck-twisting",
+              "label": "Neck Twisting",
+              "priceDelta": 99,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/125f88626c83cea213d54f8a7016f7e9acf30f6b596f74c77a2aaa60d467d2b0.webp",
+                "label": "Neck Twisting"
+              }
+            },
+            {
+              "id": "water-lubrication-channel",
+              "label": "Water Lubrication Channel",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a38d64d02c3af27eb3b999662dc64d624541a2ecf2505f8a814f5248b449a071.webp",
+                "label": "Water Lubrication Channel"
+              }
+            }
+          ]
+        },
+        {
+          "id": "sexy-lingerie-add-on",
+          "label": "Sexy Lingerie Add-On",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ef34329c8231928ce52dd5c1914b9fb566187ca9f0af3b854ea41fcce23b8d96.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6391d475d7cb576b0db10cd1d152396cb53224bbe3537d29f271ffd385a93d0a.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/defd8f8523467b0f823b2ee680227a1ac5b84ebf678d406fc785154a32d99d6a.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e31da5af1b4851457eacc333ea5c4c0957e67840f566400bd5a572e6374c78a6.webp",
+                "label": "No.6"
+              }
+            },
+            {
+              "id": "no-7",
+              "label": "No.7",
+              "priceDelta": 40,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3aa7387b17d1bbb7583af3b1a2fa1b91cb974387f115ba9b6a73a6103f0a2f69.webp",
+                "label": "No.7"
+              }
+            },
+            {
+              "id": "no-8",
+              "label": "No.8",
+              "priceDelta": 100,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/663ec028d76e396b58753ef2a78ff6426aa9418f46b312c030926f3c748b1981.webp",
+                "label": "No.8"
+              }
+            },
+            {
+              "id": "no-9",
+              "label": "No.9",
+              "priceDelta": 60,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4a44d57bc678312d32c3e2d22024c0e4a5bc63e9beef2eff0aaab7cdd7cfaa07.webp",
+                "label": "No.9"
+              }
+            },
+            {
+              "id": "no-10",
+              "label": "No.10",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4bf2182062c5c1fe7676a9b2a8bbc9c8e5ae7d8f35dbc9a5e9b9287549fcf96f.webp",
+                "label": "No.10"
+              }
+            },
+            {
+              "id": "no-11",
+              "label": "No.11",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/60deedeccb72d5057591c2add3b07771615743fbe5a0c6adda7d48cd4e6f9dd1.webp",
+                "label": "No.11"
+              }
+            },
+            {
+              "id": "no-12",
+              "label": "No.12",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/494dfde816880294ea4899ac285a8255b9a23347f34804b6278ca1e848827b91.webp",
+                "label": "No.12"
+              }
+            },
+            {
+              "id": "no-13",
+              "label": "No.13",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/22493491e56f0b0b8aadf9f3c7a3b65a2af8f540dbdb57a734a778f1e72cbacc.webp",
+                "label": "No.13"
+              }
+            },
+            {
+              "id": "no-14",
+              "label": "No.14",
+              "priceDelta": 40,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/358f3a3f72033df07dccf94de0d8d668b40ae640af3a9bd3a9e7eca7037a51d5.webp",
+                "label": "No.14"
+              }
+            },
+            {
+              "id": "no-15",
+              "label": "No.15",
+              "priceDelta": 40,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/beb18b6b771e429678871712d6b59aa845885f022fa8c54ef005ef04e4ef53a1.webp",
+                "label": "No.15"
+              }
+            },
+            {
+              "id": "no-16",
+              "label": "No.16",
+              "priceDelta": 30,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/ff940f04ab0cd5ab50e62bd7188d37e68795cad1205acf6ed0e510b6224d1e2a.webp",
+                "label": "No.16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "accessories",
+          "label": "Accessories",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "vaginal-irrigator",
+              "label": "Vaginal Irrigator",
+              "priceDelta": 35,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/fce43f07a66ed26d85f3cff37a434cefbfc40402af70d667e6fbac7d95411989.webp",
+                "label": "Vaginal Irrigator"
+              }
+            },
+            {
+              "id": "reusable-drying-rod",
+              "label": "Reusable Drying Rod",
+              "priceDelta": 25,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9c257046b1950079fe359807d0abf3a75282e09019bdf12b402d081a0b783ae5.webp",
+                "label": "Reusable Drying Rod"
+              }
+            },
+            {
+              "id": "replaceable-vagina-insert",
+              "label": "Replaceable Vagina Insert",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/6df5dad08508ffe9e839c9eb4bbdc34f166a4119747c82500e8ac581932628fc.webp",
+                "label": "Replaceable Vagina Insert"
+              }
+            },
+            {
+              "id": "premium-cleaning-set-orig-550",
+              "label": "Premium Cleaning Set",
+              "priceDelta": 99,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a608771483b646d5e5a184bf4ab64dd75dac3442da30b89bdc766dbe2155e4e6.webp",
+                "label": "Premium Cleaning Set"
+              }
+            },
+            {
+              "id": "care-kit-orig-199",
+              "label": "Care Kit",
+              "priceDelta": 99,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/care-kit.svg",
+                "label": "Care Kit"
+              }
+            },
+            {
+              "id": "deluxe-care-kit-orig-299",
+              "label": "Deluxe Care Kit",
+              "priceDelta": 199,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-swatches/deluxe-care-kit.svg",
+                "label": "Deluxe Care Kit"
+              }
+            },
+            {
+              "id": "sex-doll-body-hanging-bracket",
+              "label": "Sex Doll Body Hanging Bracket",
+              "priceDelta": 399,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eab6f1486de8c5de917246bb3e2fa6b680e574c1e3fec3b16095bcdcbf304885.webp",
+                "label": "Sex Doll Body Hanging Bracket"
+              }
+            },
+            {
+              "id": "head-stand-holder",
+              "label": "Head Stand Holder",
+              "priceDelta": 50,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/550bd517c0ce7522100e8402ade9a58b37cbc0e16b38db5836f328d11ae8686a.webp",
+                "label": "Head Stand Holder"
+              }
+            },
+            {
+              "id": "heating-blanket",
+              "label": "Heating Blanket",
+              "priceDelta": 100,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/944372d3ba5f249df5051a8f53775a739cd149563f81febc55c188730f973b16.webp",
+                "label": "Heating Blanket"
+              }
+            },
+            {
+              "id": "belly-piercing",
+              "label": "Belly Piercing",
+              "priceDelta": 20,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/4502bcaf1036e3125ffa88ffd8d38b1d03edb56b172d84d9491378d03d09523b.webp",
+                "label": "Belly Piercing"
+              }
+            },
+            {
+              "id": "vine-talk-ai-box-free",
+              "label": "AI Box",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8951744f83eb8f7c57810e1ac66f14804c1a69d0a7b73bda372c372f7371157f.webp",
+                "label": "AI Box"
+              }
+            }
+          ]
+        },
+        {
+          "id": "upgraded-flight-case-add-on",
+          "label": "Upgraded Flight Case Add On",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-md-no-thanks.webp?v=1792013480",
+                "label": "No Thanks"
+              }
+            },
+            {
+              "id": "flight-case-doll-weight-40kg-f0c6b252",
+              "label": "Flight Case (Doll Weight < 40kg)",
+              "priceDelta": 699,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight < 40kg)"
+              },
+              "purchasable": false,
+              "description": "This case tier is for dolls below 40 kg."
+            },
+            {
+              "id": "flight-case-doll-weight-40kg-5f85babb",
+              "label": "Flight Case (Doll Weight \u2265 40kg)",
+              "priceDelta": 899,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/9ab0defcb274da30ade328f59d852acfc232d761eacdb863c75dc30443b69f9e.webp",
+                "label": "Flight Case (Doll Weight \u2265 40kg)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "an-extra-free-head",
+          "label": "Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-thanks",
+              "label": "No Thanks",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-md-no-thanks.webp?v=1792013480",
+                "label": "No Thanks"
+              }
+            },
+            {
+              "id": "yes-i-need-free",
+              "label": "Add an extra head",
+              "priceDelta": 599,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/61637be3265ede831c86f7a4c6e2cc3d106c0a482f7c752b00e069ee2ac75037.webp",
+                "label": "Add an extra head"
+              },
+              "purchasable": true
+            }
+          ]
+        },
+        {
+          "id": "extra-head-choice",
+          "label": "Choose Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "choose-a-head",
+              "label": "Choose a head",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "purchasable": false,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-md-other-heads.webp?v=1792013479",
+                "label": "Choose a head"
+              }
+            },
+            {
+              "id": "m22",
+              "label": "M22",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/be0bd79b648449462c00b024de4bec3b56ae2d8f79cfb0d3cbbea2008f807dd9.webp",
+                "label": "M22"
+              }
+            },
+            {
+              "id": "m23",
+              "label": "M23",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/20d859ecb7cb4fa7839524901bee7499e268ecc4c183fe7186516b27826ff81d.webp",
+                "label": "M23"
+              }
+            },
+            {
+              "id": "m27",
+              "label": "M27",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2b1986995e58e521ac2faccaf33eaf0b0703ec492fe4edf182e1b761c2e6bf7a.webp",
+                "label": "M27"
+              }
+            },
+            {
+              "id": "m28",
+              "label": "M28",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/92385fd9e912730ba3ea3272c8b7143407c3682ea65a7827376e2ebca6d10da6.webp",
+                "label": "M28"
+              }
+            },
+            {
+              "id": "m29",
+              "label": "M29",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a79178f1c052e9a9478ebe285e64c6541c7eec07f9017204b2a0bb4551189fbc.webp",
+                "label": "M29"
+              }
+            },
+            {
+              "id": "m30",
+              "label": "M30",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/dc02cc0a1e21885c32b4f065796cb15f4533923aa946d2db3b28360c09948db8.webp",
+                "label": "M30"
+              }
+            },
+            {
+              "id": "m31",
+              "label": "M31",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/535270e0502e10aeb3197d8b3444c64b8cf0127a142689063f1886a8c771a256.webp",
+                "label": "M31"
+              }
+            },
+            {
+              "id": "m33",
+              "label": "M33",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8e7230bf92c850b60c2eefe5adc5d7402dd8d28830ded546d69c39804f13e97a.webp",
+                "label": "M33"
+              }
+            },
+            {
+              "id": "m34",
+              "label": "M34",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e17b4429ef3145af5078349e0c9b0955700f1da49277acba67a96cac068dd771.webp",
+                "label": "M34"
+              }
+            },
+            {
+              "id": "m35",
+              "label": "M35",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2d3f22da6469bb62077053fe9d4e96512fc720b88fda940e3d4dfcea8d60c01c.webp",
+                "label": "M35"
+              }
+            },
+            {
+              "id": "m36",
+              "label": "M36",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0c1d38abfe553796ed7c3411e340c1132aa6554387c3645df8e1606e2124a8cd.webp",
+                "label": "M36"
+              }
+            },
+            {
+              "id": "m38",
+              "label": "M38",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/3a2316aae6fe3fa1ec7c62e88b6734d57b3227f47e29ab42378661a59bb086b4.webp",
+                "label": "M38"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "extra-head-type",
+          "label": "Extra Head Type",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "hard-silicone",
+              "label": "Hard Silicone",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cef6be40fdee767858672702b01df85c7742cbf057832509a670924a2d0a13ea.webp",
+                "label": "Hard Silicone"
+              }
+            },
+            {
+              "id": "ros-head-movable-jaw",
+              "label": "ROS Head (Movable Jaw)",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/5adc239bc5ea04a0cfde54f3ad05ae9ccd297c4cc4ef91201ca1fe7d0b9cb1b5.webp",
+                "label": "ROS Head (Movable Jaw)"
+              },
+              "purchasable": true
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m22"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m23"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m27"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m28"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m29"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m30"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m31"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m33"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m34"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m35"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m36"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m38"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "hairstyle-for-extra-head",
+          "label": "Hairstyle For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "hairstyle-1",
+              "label": "Hairstyle #1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/83c9b0882da3b67f42ec22c460d134470bdad40b2e7892bc9980e89ce6f3489f.webp",
+                "label": "Hairstyle #1"
+              }
+            },
+            {
+              "id": "hairstyle-2",
+              "label": "Hairstyle #2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/aaf6ec0a30c32c7232dda7ca62bfe187a757a2200a900b373198b772576c765d.webp",
+                "label": "Hairstyle #2"
+              }
+            },
+            {
+              "id": "hairstyle-3",
+              "label": "Hairstyle #3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/71e714d5913c96517a6b4f9cd5fd6949a63fe0c9c9010267b6e2bb67cc57b50b.webp",
+                "label": "Hairstyle #3"
+              }
+            },
+            {
+              "id": "hairstyle-4",
+              "label": "Hairstyle #4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0325f96dac4a8e7779e02ecc352cec619e97dd4f4a1c9a7456000b04414ea851.webp",
+                "label": "Hairstyle #4"
+              }
+            },
+            {
+              "id": "hairstyle-5",
+              "label": "Hairstyle #5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/67da36b24131609b3a3b477559e6d2c379bb262a8d2c9255a77898d4f48e5193.webp",
+                "label": "Hairstyle #5"
+              }
+            },
+            {
+              "id": "hairstyle-6",
+              "label": "Hairstyle #6",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/eaa0a29a312e5b41bd4d835224308da705525a5fe650587732ceddb1a039c724.webp",
+                "label": "Hairstyle #6"
+              }
+            },
+            {
+              "id": "hairstyle-7",
+              "label": "Hairstyle #7",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/b0b2427b45b5dd25908f4388c01ac7f8a1c3902ccd736b5aaaa1a6383e69e035.webp",
+                "label": "Hairstyle #7"
+              }
+            },
+            {
+              "id": "hairstyle-8",
+              "label": "Hairstyle #8",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/2107cc9e4ad2502aa24173b6532a465462c488f61d7ee9c2f15defb1cf5c4680.webp",
+                "label": "Hairstyle #8"
+              }
+            },
+            {
+              "id": "hairstyle-9",
+              "label": "Hairstyle #9",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/e0051a3923b503625d00966330501ab0167185cf40a8abc68617c3fd9c9a72e3.webp",
+                "label": "Hairstyle #9"
+              }
+            },
+            {
+              "id": "hairstyle-10",
+              "label": "Hairstyle #10",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/cba8dc307fb0da17a24c5d288dde944dc846b49873eeb19e49ec25132b296974.webp",
+                "label": "Hairstyle #10"
+              }
+            },
+            {
+              "id": "hairstyle-11",
+              "label": "Hairstyle #11",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/f71a5c8b310883c03faff6b8b93a67d1b8355c9d6b276ca24e84ba0dd83ddeab.webp",
+                "label": "Hairstyle #11"
+              }
+            },
+            {
+              "id": "hairstyle-12",
+              "label": "Hairstyle #12",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c056553d1990602a4164d9fe57507a60450cf4a62fe8d23e44c1cfd1abf699a7.webp",
+                "label": "Hairstyle #12"
+              }
+            },
+            {
+              "id": "implanted-synthetic-hair",
+              "label": "Implanted Synthetic Hair",
+              "priceDelta": 199,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/717a69f7f677ada3138a965041934ab67e1be1e3742cc6cc62d6e2ae534ff55e.webp",
+                "label": "Implanted Synthetic Hair"
+              }
+            },
+            {
+              "id": "implanted-human-hair",
+              "label": "Implanted Human Hair",
+              "priceDelta": 499,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0b7e7abed834cd00aced46f8c34ff7773fdafaed5c049431e577961759679b98.webp",
+                "label": "Implanted Human Hair"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m22"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m23"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m27"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m28"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m29"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m30"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m31"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m33"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m34"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m35"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m36"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m38"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "eye-color-for-extra-head",
+          "label": "Eye Color For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "no-change",
+              "label": "As shown",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "https://cdn.shopify.com/s/files/1/0960/7531/7432/files/dollwow-asshown-leona.webp?v=1792013479",
+                "label": "As shown"
+              }
+            },
+            {
+              "id": "no-1",
+              "label": "No.1",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/c21cb6cb76481180cb6584e2321dde319710983d3415d4ca7cf9573debd95da4.webp",
+                "label": "No.1"
+              }
+            },
+            {
+              "id": "no-2",
+              "label": "No.2",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/a39c5a04b61346d281240897d194b98aaf9da85337c9000d6721bad3bf7a7a40.webp",
+                "label": "No.2"
+              }
+            },
+            {
+              "id": "no-3",
+              "label": "No.3",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/0d9683965937770eae63cae64c8bf53148a4dcfc038677f13e8046aa3bb6d2e6.webp",
+                "label": "No.3"
+              }
+            },
+            {
+              "id": "no-4",
+              "label": "No.4",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/449e82224b279d14f7d50d5d9af4c09ac09ebe4b18a9ab6133bc1b717ec9bcc1.webp",
+                "label": "No.4"
+              }
+            },
+            {
+              "id": "no-5",
+              "label": "No.5",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/066fd6130a99170d53a3e4f79fc55734d87db507553a6efca9192b95f21a3527.webp",
+                "label": "No.5"
+              }
+            },
+            {
+              "id": "no-6",
+              "label": "No.6",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/d7df0fdc2b6e1c828ae68d2eb3aa5dc7e6d89406a6de55460cdb8227e9fe2f2f.webp",
+                "label": "No.6"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m22"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m23"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m27"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m28"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m29"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m30"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m31"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m33"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m34"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m35"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m36"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m38"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "implanted-eyebrows-eyelashes-for-extra-head",
+          "label": "Implanted Eyebrows & Eyelashes For Extra Head",
+          "required": true,
+          "selectionMode": "single",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "draw-eyebrows-eyelashes",
+              "label": "Draw Eyebrows & Eyelashes",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/1dba20f16a6d5f038a3930a28fa157d02a1fb7450e77eaf92dbba37bef07a185.webp",
+                "label": "Draw Eyebrows & Eyelashes"
+              }
+            },
+            {
+              "id": "implanted-eyebrows-eyelashes",
+              "label": "Implanted Eyebrows & Eyelashes",
+              "priceDelta": 0,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/8bf57f98ed8a48787bc00c06fe11b38afd10d25bf66f7bbae935fedbff45449f.webp",
+                "label": "Implanted Eyebrows & Eyelashes"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m22"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m23"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m27"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m28"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m29"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m30"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m31"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m33"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m34"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m35"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m36"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m38"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "premium-head-options-for-extra-head-multiple",
+          "label": "Premium Head Options For Extra Head (Multiple)",
+          "required": false,
+          "selectionMode": "multiple",
+          "display": "swatches",
+          "options": [
+            {
+              "id": "facial-freckles",
+              "label": "Facial Freckles",
+              "priceDelta": 70,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/bd061f8ec2969e083fbcbaafa3cd6bd399b5329ec66f1b83606bb2e38427f5d5.webp",
+                "label": "Facial Freckles"
+              }
+            },
+            {
+              "id": "movable-eyelids",
+              "label": "Movable Eyelids",
+              "priceDelta": 149,
+              "priceVerified": true,
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/875d1ed3f192eacb2e00417b483c843091506e4e514a6b27786c5cc0da99d76d.webp",
+                "label": "Movable Eyelids"
+              }
+            }
+          ],
+          "visibleWhen": [
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m22"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m23"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m27"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m28"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m29"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m30"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m31"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m33"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m34"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m35"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m36"
+              }
+            ],
+            [
+              {
+                "groupId": "an-extra-free-head",
+                "optionId": "yes-i-need-free"
+              },
+              {
+                "groupId": "extra-head-choice",
+                "optionId": "m38"
+              }
+            ]
+          ]
+        },
+        {
+          "id": "shape-memory-material",
+          "label": "Body Material",
+          "required": true,
+          "selectionMode": "single",
+          "display": "cards",
+          "options": [
+            {
+              "id": "standard-silicone",
+              "label": "Standard Silicone",
+              "priceDelta": 0,
+              "priceVerified": true
+            },
+            {
+              "id": "shape-memory-silicone",
+              "label": "Shape Memory Silicone",
+              "priceDelta": 299,
+              "priceVerified": true,
+              "description": "MD\u2019s high-rebound, low-oil silicone upgrade.",
+              "swatch": {
+                "kind": "image",
+                "value": "/option-assets/md-shape-memory-nov19.jpg",
+                "label": "Shape Memory Silicone"
+              }
+            }
+          ]
+        }
+      ],
+      "editorialIntro": {
+        "eyebrow": "After Hours",
+        "heading": "The Unscheduled Meeting",
+        "paragraph": "Leona has claimed the corner booth of a nearly empty lounge, her dark hair tucked neatly beneath a black cap. She watches the entrance with a steady gaze, her expression unreadable as she draws her white wrap tighter against the sudden chill. When you finally slide into the brown upholstered chair opposite her, she offers no greeting. Instead, she leans forward, her red-and-black outfit catching the dim light as she gestures for you to listen closely. Her proposition is simple: abandon the crowded reception and find somewhere that serves dinner after midnight. You came prepared for intrigue. Leona came prepared with a reservation.",
+        "promptVersion": "non-graphic-editorial-voice-v3-clarification-1+opener-rev-2026-10-14",
+        "generatedAt": "2026-10-14T20:45:33.181Z"
+      },
+      "previewCustomizationFixture": true
+    }
+  }
+]
