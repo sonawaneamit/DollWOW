@@ -117,7 +117,7 @@ export function getIrontechCustomizationGroups(product: Product, importedGroups?
       ...group,
       options: group.options.filter((option) => !isExplicitIrontechUlwOption(group, option))
     }))
-    .map(normalizeIrontechGroup)
+    .map((group) => normalizeIrontechGroup(group, product.tags.includes('irontech-ros-max-included')))
     .filter((group) => group.options.length > 0);
 
   return mergeDuplicateGroups([
@@ -266,18 +266,18 @@ function buildExtraHeadGroup(product: Product, groups: CustomizationGroup[]): Cu
   };
 }
 
-function normalizeIrontechGroup(group: CustomizationGroup): CustomizationGroup {
+function normalizeIrontechGroup(group: CustomizationGroup, rosMaxIncluded = false): CustomizationGroup {
   const groupLabel = group.label.toLowerCase();
   const multiple = group.selectionMode === "multiple" || /\bmultiple\b|accessories/i.test(group.label);
   return {
     ...group,
     selectionMode: multiple ? "multiple" : "single",
     required: multiple ? false : group.required,
-    options: group.options.map((option) => normalizeIrontechOption(groupLabel, option))
+    options: group.options.map((option) => normalizeIrontechOption(groupLabel, option, rosMaxIncluded))
   };
 }
 
-function normalizeIrontechOption(groupLabel: string, option: CustomizationOption): CustomizationOption {
+function normalizeIrontechOption(groupLabel: string, option: CustomizationOption, rosMaxIncluded = false): CustomizationOption {
   const normalizedLabel = option.label.replace(/^Natrual\b/i, "Natural");
   const label = normalizedLabel.toLowerCase();
   let priceDelta = option.priceDelta;
@@ -285,7 +285,9 @@ function normalizeIrontechOption(groupLabel: string, option: CustomizationOption
   if (/hairstyle/.test(groupLabel)) {
     priceDelta = /implanted/.test(label) ? 199 : 0;
   } else if (/head type/.test(groupLabel)) {
-    if (/ros max|movable jaw/.test(label)) priceDelta = 180;
+    // Explicitly quoted ROS MAX base builds must not charge for that head twice.
+    if (rosMaxIncluded && /ros max/.test(label)) priceDelta = 0;
+    else if (/ros max|movable jaw/.test(label)) priceDelta = 180;
     else if (/enhanced mouth/.test(label)) priceDelta = 30;
     else if (/hard silicone|soft silicone/.test(label)) priceDelta = 0;
   } else if (/premium head.*body|premium body/.test(groupLabel)) {

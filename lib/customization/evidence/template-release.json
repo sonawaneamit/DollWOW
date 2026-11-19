@@ -3,26 +3,26 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.229Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
+      "reviewedAt": "2026-11-19T11:45:36.617Z",
+      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.230Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
+      "reviewedAt": "2026-11-19T11:45:36.617Z",
+      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Codex, Erovenus menu and exact checkout checks",
-      "reviewedAt": "2026-11-11T20:33:02.230Z",
-      "evidenceRef": "docs/catalog/erovenus-torso-release-2026-11-11.md",
-      "payloadHash": "e0980bab302a5e8a2e3589c910b7915c2532904b52464d9c9e5c3d85b1079dcc"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
+      "reviewedAt": "2026-11-19T11:45:36.617Z",
+      "payloadHash": "47110f682df6aeae479323269d4829d1ff007252262436703d31359605562e6b",
+      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
     }
   },
   "payload": {
-    "releaseId": "template-release-2026-11-11-erovenus-torsos",
+    "releaseId": "template-release-2026-11-19-clara-tessa-scarlett",
     "sourceSnapshotHash": "5ad4b0ff0e9155fc5d11ce3472c1c868bf33dec9062ede561620c38cd82c5296",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
@@ -2966,7 +2966,10 @@
       "gid://shopify/Product/10721550106808",
       "gid://shopify/Product/10721752252600",
       "gid://shopify/Product/10721752350904",
-      "gid://shopify/Product/10721752318136"
+      "gid://shopify/Product/10721752318136",
+      "gid://shopify/Product/10742344941752",
+      "gid://shopify/Product/10742344974520",
+      "gid://shopify/Product/10742348513464"
     ],
     "entries": [
       {
@@ -23562,6 +23565,27 @@
         "tag": "options:erovenus-torso-max-v1",
         "bindingKey": "nov11-erovenus-erica-101cm-max-series-silicone-torso",
         "runtimeHash": "dcadfa5abad1bb40068b8ee7ca47cfc5784cd8348782ba1a7c266b86f9ded24f"
+      },
+      {
+        "productId": "gid://shopify/Product/10742344941752",
+        "handle": "top-fire-doll-clara-170cm-e-cup-silicone-companion-doll",
+        "tag": "options:top-fire-silicone-manual-v1",
+        "bindingKey": "topfire-female-e17ed253b743",
+        "runtimeHash": "279c025214db4babb3b2c860b3a4109d38ef146a9d38b7f4ac02c6c81e6cc0a4"
+      },
+      {
+        "productId": "gid://shopify/Product/10742344974520",
+        "handle": "top-fire-doll-tessa-160cm-f-cup-silicone-companion-doll",
+        "tag": "options:top-fire-silicone-manual-v1",
+        "bindingKey": "topfire-female-e17ed253b743",
+        "runtimeHash": "63272f10533af12a8ac484d366240cd945fc24a2a33b6af2b1818787dfd7c346"
+      },
+      {
+        "productId": "gid://shopify/Product/10742348513464",
+        "handle": "irontech-scarlett-natural-171cm-s60-ros-max-silicone-companion-doll",
+        "tag": "options:irontech-female-silicone-standard",
+        "bindingKey": "irontech-scarlett-s60-ros-max-0a97cd5ddad0",
+        "runtimeHash": "4b088cf1b2dcdcec778e3dc2765039bc22e7bdc983171e02bb8f542e2c82fa54"
       }
     ],
     "bindings": {
@@ -35264,6 +35288,73 @@
               {
                 "groupId": "accessories",
                 "optionId": "deluxe-sex-doll-care-kit"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "irontech-scarlett-s60-ros-max-0a97cd5ddad0": {
+        "tag": "options:irontech-female-silicone-standard",
+        "signature": "sha256:0a97cd5ddad09c6a02da763924a692a4fcf518aa3efe276bfec701936bd6e993",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care, S+ finish, and ball-jointed hands.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-makeup-upgrade"
+              },
+              {
+                "groupId": "makeup-options",
+                "optionId": "s-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ball-jointed-hand-skeleton-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Implanted brows, toe joints, and an ultra-soft butt.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "implanted-eyebrows-eyelashes-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "toe-joint-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "ultra-soft-butt"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Body heating with body moaning.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-heating"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple",
+                "optionId": "body-moaning"
               }
             ],
             "remove": []
