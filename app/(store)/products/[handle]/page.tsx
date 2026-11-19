@@ -1,3 +1,4 @@
+import { withBfcmPreview } from '@/lib/promotions/bfcmBrandPreview';
 import { isGreenbackPricePreview, withGreenbackPricePreview } from '@/lib/catalog/greenbackApprovedPriceBinding';
 import { GynoidEarlyBirdPromotion } from '@/components/promotions/GynoidEarlyBirdPromotion';
 import { gynoidEarlyBirdEnabled, gynoidEarlyBirdPreviewEnabled } from '@/lib/promotions/gynoidEarlyBird2026';
@@ -80,7 +81,7 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const product = await getProductByHandle(handle);
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
-  if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
+  if (process.env.VERCEL_ENV === "preview" || isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
   if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
@@ -96,10 +97,11 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     getProductAdminMetafieldsByHandle(handle)
   ]);
   if (!storefrontProduct) notFound();
-  const product = previewProduct(withPreviewCustomizationFixture(
+  const catalogProduct = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
-  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
+  const product = withBfcmPreview(catalogProduct);
+  const promotionPreview = Boolean(product.extended.bfcmPreview) || lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
   const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
@@ -108,7 +110,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const publicProduct = stripSupplierFreeProductLabels(publicProductPayload(withProtectedProductImages(
     reviewedGynoidIdentity(product) ? { ...product, extended: { ...product.extended, customizationGroups: customizationConfig.groups } } : product
   )));
-  const templateRecipe = await loadTemplateRecipe(product);
+  const templateRecipe = await loadTemplateRecipe(catalogProduct);
   const relatedBrand = getCatalogBrand(product.extended.brand ?? product.vendor);
   const brandTag = relatedBrand?.tags[0] ?? relatedBrand?.value;
   const brandQuery = brandTag ? `tag:${JSON.stringify(brandTag)}` : `title:${JSON.stringify(product.extended.brand ?? product.vendor)}`;
@@ -149,7 +151,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
-      {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       {!isElf && !promotionPreview ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} /> : null}
       {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
@@ -302,7 +303,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <GynoidBodyVersionNote product={product} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview || (process.env.VERCEL_ENV === "preview" && process.env.DOL371_BRAND_PREVIEW === "1")}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>
