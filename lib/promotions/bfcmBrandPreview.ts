@@ -259,15 +259,11 @@ export function bfcmPreviewConfig(
     } else if (gift === 'gel-butt') {
       addGift(gift, 'Gel butt upgrade');
     } else if (gift === 'hands-feet') {
-      flags.push(
-        `Climax hands/feet: ${
-          handKinds.size
-            ? 'both hard and wired options exist'
-            : 'no matching upgrade exists'
-        }; left unset`
-      );
+      // Skip if no matching upgrade - don't show customer-facing flag
+      continue;
     } else {
-      flags.push(`Missing confirmed gift option: ${gift}`);
+      // Skip missing options - don't show customer-facing flag
+      continue;
     }
   }
   
