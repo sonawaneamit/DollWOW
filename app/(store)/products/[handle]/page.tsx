@@ -152,6 +152,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
+      {isPrivateDraft && !isBfcmPreview ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       {!isElf && !promotionPreview ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} /> : null}
       {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
@@ -249,7 +250,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !promotionPreview && (
+            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !(lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid')) && (
               <ProductBuyActions
                 previewOnly={isChikuPreview(product)}
                 merchandiseId={firstAvailable.id}
@@ -312,7 +313,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <GynoidBodyVersionNote product={product} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || (promotionPreview && !isBfcmPreview)}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>

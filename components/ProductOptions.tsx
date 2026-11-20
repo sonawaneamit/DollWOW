@@ -565,7 +565,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   </div>
                 ) : null}
 
-                {!draftPreview && !variant?.availableForSale ? (
+                {draftPreview ? <p className="mt-5 text-sm text-text-dim">Checkout is disabled in this private draft preview.</p> : !variant?.availableForSale ? (
                   <p className="mt-5 rounded-sm bg-danger-tint p-4 text-[15px] leading-6 text-danger">
                     This option combination is not available to order online. <a href={`/support?product=${encodeURIComponent(product.handle)}`} className="font-semibold underline underline-offset-4">Contact us</a> and we will help with the closest available choice.
                   </p>
