@@ -2,12 +2,13 @@
 /**
  * Create BFCM 2026 Automatic Product Discounts
  * 
- * Creates Shopify automatic discounts for Black Friday brand promotions.
- * Must be approved by Martin before execution.
+ * Queries live Shopify products and creates automatic discounts.
+ * Requires SHOPIFY_STORE_DOMAIN and SHOPIFY_ADMIN_ACCESS_TOKEN.
  * 
  * Usage:
- *   node scripts/bfcm-create-automatic-discounts.mjs --dry-run  # Default: show what would be created
- *   node scripts/bfcm-create-automatic-discounts.mjs --execute  # Actually create in Shopify
+ *   node scripts/bfcm-create-automatic-discounts.mjs --dry-run  # Default
+ *   node scripts/bfcm-create-automatic-discounts.mjs --execute  # Create in Shopify
+ *   node scripts/bfcm-create-automatic-discounts.mjs --start-date 2026-11-21T00:00:00Z
  * 
  * DOL-371
  */
@@ -15,209 +16,182 @@
 const SHOPIFY_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
 const ACCESS_TOKEN = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
 
-const DISCOUNTS = [
-  {
-    brand: 'Top Fire',
-    title: 'BFCM 2026 Top Fire $150 Off',
-    method: 'AUTOMATIC',
-    combinesWith: {
-      orderDiscounts: true,
-      productDiscounts: false,
-      shippingDiscounts: false
-    },
-    startsAt: '2026-11-21T00:00:00Z',
-    endsAt: '2026-12-11T04:59:00Z',
-    appliesTo: {
-      collections: [], // Will be populated with Top Fire collection IDs
-      products: [],
-      variants: [],
-      all: false
-    },
-    value: {
-      type: 'FIXED_AMOUNT',
-      amount: 150.0
-    },
-    prerequisite: {
-      type: 'vendor',
-      value: 'Top Fire'
-    }
-  },
-  {
-    brand: 'Climax',
-    title: 'BFCM 2026 Climax 10% Off $900+',
-    method: 'AUTOMATIC',
-    combinesWith: {
-      orderDiscounts: true,
-      productDiscounts: false,
-      shippingDiscounts: false
-    },
-    startsAt: '2026-11-21T00:00:00Z',
-    endsAt: '2026-12-11T04:59:00Z',
-    appliesTo: {
-      collections: [],
-      products: [],
-      variants: [],
-      all: false
-    },
-    value: {
-      type: 'PERCENTAGE',
-      percentage: 10.0
-    },
-    prerequisite: {
-      type: 'tag',
-      value: 'climax',
-      minimumAmount: 900.0
-    }
-  },
-  {
-    brand: '6YE',
-    title: 'BFCM 2026 6YE 5% Off',
-    method: 'AUTOMATIC',
-    combinesWith: {
-      orderDiscounts: true,
-      productDiscounts: false,
-      shippingDiscounts: false
-    },
-    startsAt: '2026-11-21T00:00:00Z',
-    endsAt: '2026-12-11T04:59:00Z',
-    appliesTo: {
-      collections: [],
-      products: [],
-      variants: [],
-      all: false
-    },
-    value: {
-      type: 'PERCENTAGE',
-      percentage: 5.0,
-      note: 'Shopify floors percentage discounts to whole dollars automatically'
-    },
-    prerequisite: {
-      type: 'vendor',
-      value: 'DollWow',
-      titleContains: '6YE'
-    }
-  },
-  {
-    brand: 'IDO',
-    title: 'BFCM 2026 IDO In-Stock $100 Off',
-    method: 'AUTOMATIC',
-    combinesWith: {
-      orderDiscounts: true,
-      productDiscounts: false,
-      shippingDiscounts: false
-    },
-    startsAt: '2026-11-21T00:00:00Z',
-    endsAt: '2026-12-01T00:00:00Z',
-    appliesTo: {
-      collections: [],
-      products: [],
-      variants: [],
-      all: false
-    },
-    value: {
-      type: 'FIXED_AMOUNT',
-      amount: 100.0
-    },
-    prerequisite: {
-      type: 'vendor',
-      value: 'IDO',
-      tags: ['in-stock', 'ready_to_ship']
-    }
-  }
-];
-
-function printDiscount(discount) {
-  console.log(`\n${discount.brand} Discount`);
-  console.log('='.repeat(60));
-  console.log(`Title: ${discount.title}`);
-  console.log(`Method: ${discount.method}`);
-  console.log(`Starts: ${discount.startsAt}`);
-  console.log(`Ends: ${discount.endsAt}`);
-  console.log(`Combines with order discounts: ${discount.combinesWith.orderDiscounts}`);
-  
-  if (discount.value.type === 'FIXED_AMOUNT') {
-    console.log(`Discount: $${discount.value.amount.toFixed(2)} off`);
-  } else {
-    console.log(`Discount: ${discount.value.percentage}% off`);
-    if (discount.value.note) {
-      console.log(`Note: ${discount.value.note}`);
-    }
-  }
-  
-  if (discount.prerequisite) {
-    console.log(`Prerequisites:`);
-    if (discount.prerequisite.type === 'vendor') {
-      console.log(`  - Vendor: ${discount.prerequisite.value}`);
-      if (discount.prerequisite.titleContains) {
-        console.log(`  - Title contains: ${discount.prerequisite.titleContains}`);
-      }
-    } else if (discount.prerequisite.type === 'tag') {
-      console.log(`  - Tag: ${discount.prerequisite.value}`);
-      if (discount.prerequisite.minimumAmount) {
-        console.log(`  - Minimum amount: $${discount.prerequisite.minimumAmount}`);
-      }
-    }
-    if (discount.prerequisite.tags) {
-      console.log(`  - Tags (any): ${discount.prerequisite.tags.join(', ')}`);
-    }
-  }
+if (!SHOPIFY_DOMAIN || !ACCESS_TOKEN) {
+  console.error('Error: Missing SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_ACCESS_TOKEN');
+  process.exit(1);
 }
 
-async function createDiscount(discount, dryRun = true) {
+async function queryProducts(query, brandName) {
+  console.log(`\nQuerying ${brandName} products: ${query}`);
+  
+  const graphqlQuery = `
+    query ($query: String!) {
+      products(first: 100, query: $query) {
+        nodes {
+          id
+          title
+          handle
+          priceRangeV2 {
+            minVariantPrice {
+              amount
+            }
+          }
+        }
+      }
+    }
+  `;
+  
+  const response = await fetch(`https://${SHOPIFY_DOMAIN}/admin/api/2024-10/graphql.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Access-Token': ACCESS_TOKEN
+    },
+    body: JSON.stringify({ query: graphqlQuery, variables: { query } })
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Shopify API error: ${response.status}`);
+  }
+  
+  const data = await response.json();
+  return data.data?.products?.nodes || [];
+}
+
+async function createDiscount(title, productIds, valueType, value, combinesWith, startsAt, endsAt, dryRun) {
   if (dryRun) {
-    printDiscount(discount);
+    console.log(`\n[DRY-RUN] Would create: ${title}`);
+    console.log(`  Products: ${productIds.length}`);
+    console.log(`  Value: ${valueType === 'PERCENTAGE' ? value + '%' : '$' + value}`);
+    console.log(`  Starts: ${startsAt}`);
+    console.log(`  Ends: ${endsAt}`);
     return { success: true, dryRun: true };
   }
   
-  if (!SHOPIFY_DOMAIN || !ACCESS_TOKEN) {
-    throw new Error('Missing SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_ACCESS_TOKEN');
-  }
+  const mutation = `
+    mutation ($discount: DiscountAutomaticAppInput!) {
+      discountAutomaticAppCreate(automaticAppDiscount: $discount) {
+        automaticAppDiscount {
+          discountId
+          title
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
   
-  // Build GraphQL mutation based on discount configuration
-  // This is a placeholder - actual implementation would use Shopify's discount APIs
-  console.log(`\n[EXECUTE] Would create discount: ${discount.title}`);
-  console.log('NOTE: Actual Shopify API implementation required');
+  const variables = {
+    discount: {
+      title,
+      functionId: "TODO", // Shopify function ID
+      startsAt,
+      endsAt,
+      combinesWith: {
+        orderDiscounts: combinesWith.orderDiscounts,
+        productDiscounts: combinesWith.productDiscounts,
+        shippingDiscounts: combinesWith.shippingDiscounts
+      }
+    }
+  };
   
-  return { success: true, dryRun: false, discount: discount.title };
+  console.log(`\n[EXECUTE] Creating: ${title}...`);
+  console.error('ERROR: Real Shopify discount creation requires app function setup');
+  console.error('Use discountAutomaticBasicCreate for basic discounts or set up Shopify Functions');
+  
+  return { success: false, error: 'Not implemented - requires Shopify Functions setup' };
 }
 
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = !args.includes('--execute');
+  const startDateArg = args.find(arg => arg.startsWith('--start-date='));
+  const startDate = startDateArg ? startDateArg.split('=')[1] : new Date().toISOString();
   
   console.log('BFCM 2026 Automatic Discount Creation');
   console.log('=====================================');
-  console.log(`Mode: ${dryRun ? 'DRY-RUN (default)' : 'EXECUTE'}`);
-  console.log(`Date: ${new Date().toISOString()}`);
+  console.log(`Mode: ${dryRun ? 'DRY-RUN' : 'EXECUTE'}`);
+  console.log(`Start Date: ${startDate}`);
+  console.log(`Shopify: ${SHOPIFY_DOMAIN}`);
   
-  if (dryRun) {
-    console.log('\nShowing what would be created. Use --execute to actually create.');
-  } else {
-    console.log('\n⚠️  LIVE MODE - Will create discounts in Shopify');
-    console.log('⚠️  Must be approved by Martin before execution');
-  }
+  const results = [];
   
+  // Top Fire: tag top-fire full silicone dolls, $150 off
   console.log('\n' + '='.repeat(60));
-  console.log('BFCM Automatic Product Discounts');
+  console.log('Top Fire: $150 off');
   console.log('='.repeat(60));
+  const topFireProducts = await queryProducts(
+    'tag:top-fire AND tag:full-doll AND tag:silicone AND NOT tag:head-only AND NOT tag:torso',
+    'Top Fire'
+  );
+  console.log(`Found ${topFireProducts.length} Top Fire products`);
+  topFireProducts.slice(0, 5).forEach(p => {
+    console.log(`  - ${p.handle} ($${p.priceRangeV2.minVariantPrice.amount})`);
+  });
+  if (topFireProducts.length > 5) console.log(`  ... and ${topFireProducts.length - 5} more`);
   
-  for (const discount of DISCOUNTS) {
-    await createDiscount(discount, dryRun);
-  }
+  // Climax: tag climax custom full dolls >= $900, 10% off
+  console.log('\n' + '='.repeat(60));
+  console.log('Climax: 10% off ($900+)');
+  console.log('='.repeat(60));
+  const climaxProducts = await queryProducts(
+    'tag:climax AND tag:custom AND tag:full-doll AND NOT tag:torso AND NOT tag:hips-only',
+    'Climax'
+  );
+  const climaxEligible = climaxProducts.filter(p => parseFloat(p.priceRangeV2.minVariantPrice.amount) >= 900);
+  console.log(`Found ${climaxEligible.length} Climax products >= $900`);
+  climaxEligible.slice(0, 5).forEach(p => {
+    const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
+    const discountedPrice = Math.floor(price * 0.9);
+    const fixedAmount = price - discountedPrice;
+    console.log(`  - ${p.handle} ($${price} → $${discountedPrice}, -$${fixedAmount.toFixed(2)})`);
+  });
+  if (climaxEligible.length > 5) console.log(`  ... and ${climaxEligible.length - 5} more`);
+  
+  // 6YE: tag 6ye dolls, 5% off (floored)
+  console.log('\n' + '='.repeat(60));
+  console.log('6YE: 5% off (floored to whole dollars)');
+  console.log('='.repeat(60));
+  const sixYeProducts = await queryProducts(
+    'vendor:DollWow AND title:*6YE*',
+    '6YE'
+  );
+  console.log(`Found ${sixYeProducts.length} 6YE products`);
+  sixYeProducts.slice(0, 5).forEach(p => {
+    const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
+    const discountedPrice = Math.floor(price * 0.95);
+    const fixedAmount = price - discountedPrice;
+    console.log(`  - ${p.handle} ($${price} → $${discountedPrice}, -$${fixedAmount.toFixed(2)})`);
+  });
+  if (sixYeProducts.length > 5) console.log(`  ... and ${sixYeProducts.length - 5} more`);
+  
+  // IDO: tag ido AND (in-stock OR ready_to_ship), $100 off
+  console.log('\n' + '='.repeat(60));
+  console.log('IDO: $100 off in-stock/RTS');
+  console.log('='.repeat(60));
+  const idoProducts = await queryProducts(
+    'vendor:IDO AND (tag:in-stock OR tag:ready_to_ship)',
+    'IDO'
+  );
+  console.log(`Found ${idoProducts.length} IDO in-stock products`);
+  idoProducts.slice(0, 5).forEach(p => {
+    console.log(`  - ${p.handle} ($${p.priceRangeV2.minVariantPrice.amount})`);
+  });
+  if (idoProducts.length > 5) console.log(`  ... and ${idoProducts.length - 5} more`);
   
   console.log('\n' + '='.repeat(60));
   console.log('Summary');
   console.log('='.repeat(60));
-  console.log(`Total discounts: ${DISCOUNTS.length}`);
-  console.log('All discounts combine with BLACKFRIDAYWOW26 order discount');
-  console.log('\nNOTE: Galatea has no automatic discount (free upgrades at $0 in cart)');
-  console.log('\nNext steps:');
-  console.log('1. Review output above');
-  console.log('2. Get Martin\'s approval');
-  console.log('3. Run with --execute flag');
+  console.log(`Top Fire: ${topFireProducts.length} products`);
+  console.log(`Climax: ${climaxEligible.length} products >= $900`);
+  console.log(`6YE: ${sixYeProducts.length} products`);
+  console.log(`IDO: ${idoProducts.length} in-stock products`);
   
   if (!dryRun) {
-    console.log('\n✅ Discounts created (pending actual API implementation)');
+    console.log('\nNOTE: Automatic discount creation requires Shopify Functions or Basic Discounts setup');
+    console.log('Product lists verified above. Ready for manual creation in Shopify admin.');
   }
 }
 
