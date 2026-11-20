@@ -3,7 +3,13 @@ import 'server-only';
 /**
  * BFCM Restoration System
  * 
- * Snapshots original prices before promo, restores them at deadline.
+ * IMPORTANT: BFCM promotional pricing is DISPLAY-ONLY in preview environment.
+ * No promotional prices are written to Shopify during the promotion period.
+ * This restore system is a safety mechanism in case prices were ever written.
+ * 
+ * Current implementation: Prices remain unchanged in Shopify. Promotional display
+ * happens only in preview environment via DOL371_BRAND_PREVIEW=1.
+ * 
  * Disabled by default. Requires SHOPIFY_ADMIN_ACCESS_TOKEN with write_products scope.
  * 
  * DOL-371

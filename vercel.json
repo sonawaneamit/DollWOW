@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/cron/bfcm-restore",
-      "schedule": "0 5 * 12 *"
+      "schedule": "*/15 * * * *"
     }
   ]
 }
