@@ -1,0 +1,29 @@
+================================================================================
+BFCM RESTORE DRY-RUN - 15 REAL SKUs
+================================================================================
+
+Run time: 2026-11-20T09:30:30.365Z
+Data exported: 2026-11-20T09:14:52.178015+00:00
+
+| Brand      | Title (truncated)                     | Variant ID      | Current    | Promo      | Restored   | Revert At            |
+|------------|---------------------------------------|-----------------|------------|------------|------------|----------------------|
+| Top Fire   | Top Fire Doll Casey 158cm D-Cup Silic | 54333100097720  | $  2400.00 | $  2250.00 | $  2400.00 | 2026-12-11T04:59:00Z |
+| Top Fire   | Top Fire Doll 176cm D-Cup Silicone Bo | 54335385600184  | $  2399.00 | $  2249.00 | $  2399.00 | 2026-12-11T04:59:00Z |
+| Top Fire   | Top Fire Doll Kali 164cm B-Cup Silico | 54355757826232  | $  2299.00 | $  2149.00 | $  2299.00 | 2026-12-11T04:59:00Z |
+| Galatea    | Dolls Castle Galatea Alice GT06 163cm | 54492812869816  | $  1999.00 | $  1999.00 | $  1999.00 | 2026-12-11T04:59:00Z |
+| Galatea    | Dolls Castle Galatea Ginger GT06 163c | 54492813033656  | $  1999.00 | $  1999.00 | $  1999.00 | 2026-12-11T04:59:00Z |
+| Galatea    | Dolls Castle Galatea Emma GT06 163cm  | 54492813328568  | $  1999.00 | $  1999.00 | $  1999.00 | 2026-12-11T04:59:00Z |
+| Climax     | Grace 103cm N-Cup Hybrid Customizable | 53881315852472  | $  1199.00 | $  1079.00 | $  1199.00 | 2026-12-11T04:59:00Z |
+| Climax     | Zara 177cm A-Cup Hybrid Customizable  | 53881315164344  | $  1699.00 | $  1529.00 | $  1699.00 | 2026-12-11T04:59:00Z |
+| Climax     | Kay Morris 158cm B-Cup TPE Customizab | 53881320439992  | $  1699.00 | $  1529.00 | $  1699.00 | 2026-12-11T04:59:00Z |
+| 6YE        | 6YE Enabie 150cm G-Cup Silicone Head  | 53553753587896  | $  1699.00 | $  1614.00 | $  1699.00 | 2026-12-11T04:59:00Z |
+| 6YE        | 6YE Gresham 173cm D-Cup TPE Customiza | 53553769119928  | $  1899.00 | $  1804.00 | $  1899.00 | 2026-12-11T04:59:00Z |
+| 6YE        | 6YE Lena 162cm H-Cup TPE Customizable | 53553768366264  | $  1899.00 | $  1804.00 | $  1899.00 | 2026-12-11T04:59:00Z |
+| IDO        | IDO June 167cm F-Cup Silicone Compani | 54331004387512  | $  2599.00 | $  2499.00 | $  2599.00 | 2026-12-01T00:00:00Z |
+| IDO        | IDO Sara 153cm C-Cup Silicone Compani | 54252393398456  | $  2899.00 | $  2899.00 | $  2899.00 | 2026-12-01T00:00:00Z |
+| IDO        | IDO Isabelle 175cm D-Cup Silicone Com | 54331051933880  | $  2599.00 | $  2499.00 | $  2599.00 | 2026-12-01T00:00:00Z |
+
+Total SKUs: 15
+
+DRY-RUN: No actual Shopify writes performed.
+All prices would be restored from promo → current (original).
