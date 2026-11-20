@@ -236,6 +236,13 @@ export function bfcmPreviewConfig(
     };
   });
   
+  // Check if product already has a head step
+  const hasHeadStep = groups.some(g => 
+    /^(?:add\s+)?(?:second|extra|add[\s-]extra)[\s-]?head/i.test(g.label) ||
+    g.id === 'add-extra-head' ||
+    g.id === 'second-head'
+  );
+  
   // Add missing gifts as new groups
   const addGift = (id: string, label: string) => {
     groups.push({
