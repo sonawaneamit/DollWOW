@@ -108,7 +108,7 @@ export async function snapshotCurrentPrices(
         }
       `;
       
-      const response = await fetch(`https://${shopifyDomain}/admin/api/2024-10/graphql.json`, {
+      const response: Response = await fetch(`https://${shopifyDomain}/admin/api/2024-10/graphql.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ export async function snapshotCurrentPrices(
         throw new Error(`Shopify API error: ${response.status} ${response.statusText}`);
       }
       
-      const data = await response.json();
+      const data: any = await response.json();
       const products = data.data?.products?.nodes || [];
       
       for (const product of products) {
