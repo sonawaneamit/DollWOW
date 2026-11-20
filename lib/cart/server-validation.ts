@@ -173,7 +173,8 @@ function validateStructuredSelections(
   }
 
   // Check if BFCM preview is active for this product
-  const bfcmPreview = product ? bfcmOffer(product) : null;
+  const { isBfcmPromoLive: checkBfcmLive, bfcmOffer: checkBfcmOffer } = require('@/lib/promotions/bfcmBrandPreview');
+  const bfcmPreview = product && checkBfcmLive() ? checkBfcmOffer(product) : null;
   const bfcmFreeOptions = new Set<string>();
   
   if (bfcmPreview) {

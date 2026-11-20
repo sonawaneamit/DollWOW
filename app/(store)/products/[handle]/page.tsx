@@ -102,11 +102,13 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
   const { isBfcmPromoLive } = await import('@/lib/promotions/bfcmBrandPreview');
-  const isBfcmPreview = isBfcmPromoLive();
-  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || isBfcmPreview;
+  const isBfcmLive = isBfcmPromoLive();
+  // isBfcmPreview: only true in Vercel preview environment (for noindex/draft behavior)
+  const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
+  // promotionPreview: controls JSON-LD and trackers (do NOT set for production BFCM)
+  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
   const privateDraft = await getPrivateDraftPreview(handle);
-  // Don't treat ANY published products as private drafts during BFCM (Add to Cart must work)
-  // This includes Galatea (vendor 'Dolls Castle') and all other live products
+  // Don't treat ANY published products as private drafts during BFCM preview
   const isDraftTest = product.tags.some(t => /dollwow-test|catalog-review-hold/i.test(t));
   const isPrivateDraft = (isBfcmPreview && !isDraftTest) ? false : Boolean(privateDraft);
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);

@@ -1,7 +1,6 @@
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig, CustomizationGroup } from '@/types/customization';
 
-export const BFCM_START_AT = '2026-11-21T00:00:00Z';
 export const BFCM_REVERT_AT = '2026-12-11T04:59:00Z'; // Dec 10, 11:59 PM US Eastern
 export const IDO_REVERT_AT = '2026-12-01T00:00:00Z'; // End of Nov 30
 
@@ -190,7 +189,7 @@ export function bfcmPreviewConfig(
   
   // Process existing groups
   const groups = config.groups.map(g => {
-    const extraHead = /^(an-extra(?:-free)?-head|additional-head|included-extra-head)$/.test(g.id);
+    const extraHead = /^(an-extra(?:-free)?-head|additional-head|included-extra-head|add-extra-head|second-head)$/.test(g.id);
     
     const options = g.options.map(o => {
       let gift = '';
