@@ -22,7 +22,18 @@ export async function GET(request: NextRequest) {
   
   try {
     const now = new Date();
-    const dryRun = true;
+    const liveMode = process.env.BFCM_RESTORE_ENABLED === '1' && process.env.BFCM_RESTORE_LIVE === '1';
+    const dryRun = !liveMode;
+    
+    // Check done marker - never run twice in live mode
+    if (liveMode && await checkDoneMarker()) {
+      return NextResponse.json({
+        status: 'already_completed',
+        message: 'Restoration already completed. Will not run again.',
+        timestamp: now.toISOString(),
+      });
+    }
+    
     const snapshots = await loadSnapshots();
     
     if (snapshots.length === 0) {
@@ -43,10 +54,16 @@ export async function GET(request: NextRequest) {
     
     const result = await restorePrices(dueSnapshots, dryRun);
     
+    // Save done marker in live mode
+    if (liveMode && result.restored > 0) {
+      await saveDoneMarker(result);
+    }
+    
     return NextResponse.json({
       success: true,
       timestamp: now.toISOString(),
       dryRun,
+      liveMode,
       result,
     });
   } catch (error) {
@@ -117,5 +134,31 @@ function calculatePromoPrice(product: any, brand: string, originalPrice: string)
       return isRTS ? '2499.00' : originalPrice;
     }
     default: return originalPrice;
+  }
+}
+
+async function checkDoneMarker(): Promise<boolean> {
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const markerPath = path.join(process.cwd(), 'data/bfcm-restore-done.json');
+    return fs.existsSync(markerPath);
+  } catch {
+    return false;
+  }
+}
+
+async function saveDoneMarker(result: any): Promise<void> {
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const markerPath = path.join(process.cwd(), 'data/bfcm-restore-done.json');
+    fs.writeFileSync(markerPath, JSON.stringify({
+      completedAt: new Date().toISOString(),
+      restored: result.restored,
+      failed: result.failed,
+    }, null, 2));
+  } catch (error) {
+    console.error('Failed to save done marker:', error);
   }
 }
