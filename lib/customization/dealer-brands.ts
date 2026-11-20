@@ -143,9 +143,18 @@ export function getSeCustomizationGroups(product: Product, groups: Customization
 }
 
 export function getSixYeCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
+  // Check if BFCM promo is live (extra head is free during promo)
+  let isBfcmLive = false;
+  try {
+    const { isBfcmPromoLive } = require('@/lib/promotions/bfcmBrandPreview');
+    isBfcmLive = isBfcmPromoLive();
+  } catch {}
+  
   return normalizeDealerHeadGroups(product, groups, {
     chooseDescription: "Choose one compatible 6YE head. The standard head identity switch is included with the doll.",
-    extraDescription: "Optional paid TPE head ordered with this doll. Every selected additional head is charged separately.",
+    extraDescription: isBfcmLive 
+      ? "One extra TPE head is included free with this doll during Black Friday."
+      : "Optional paid TPE head ordered with this doll. Every selected additional head is charged separately.",
     // Current dealer evidence values the same-manufacturer 6YE TPE head at $299.
     fallbackExtraPrice: 299,
     fallbackExtraPriceApplies: (candidate) => /\btpe\b|hybrid|silicone head/.test(identity(candidate))

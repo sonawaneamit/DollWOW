@@ -65,9 +65,10 @@ import { loadTemplateRecipe } from "@/lib/customization/template-loader";
 import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
+import { withBfcmPreview } from "@/lib/promotions/bfcmBrandPreview";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
-  return withGreenbackPricePreview(applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview")));
+  return withBfcmPreview(withGreenbackPricePreview(applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"))));
 }
 
 export const revalidate = 60;
@@ -81,7 +82,8 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   if (!product) return {};
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
   if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
-  if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
+  if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || isBfcmPreview || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -99,8 +101,14 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
+  // isBfcmPreview: only true in Vercel preview environment (for noindex/draft behavior)
+  const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
+  // promotionPreview: controls JSON-LD and trackers (do NOT set for production BFCM)
   const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
-  const isPrivateDraft = Boolean(await getPrivateDraftPreview(handle));
+  const privateDraft = await getPrivateDraftPreview(handle);
+  // Don't treat ANY published products as private drafts during BFCM preview
+  const isDraftTest = product.tags.some(t => /dollwow-test|catalog-review-hold/i.test(t));
+  const isPrivateDraft = (isBfcmPreview && !isDraftTest) ? false : Boolean(privateDraft);
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
@@ -149,7 +157,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 
   return (
     <div>
-      {isPrivateDraft ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
+      {isPrivateDraft && !isBfcmPreview ? <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-gold-300">Private draft preview. Not published.</p> : null}
       {!isElf && !promotionPreview ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }} /> : null}
       {!isElf && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />}
       <ToneBand tone="deep" className="pt-8">
@@ -223,7 +231,15 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </ProductHeadingElement>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+              {product.extended.bfcmPreview && product.extended.bfcmPreview.originalPrice > product.extended.bfcmPreview.price ? (
+                <>
+                  <del className="text-xl text-ivory-500"><DisplayMoney amount={product.extended.bfcmPreview.originalPrice.toFixed(2)} currencyCode={price.currencyCode} /></del>
+                  <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{product.extended.bfcmPreview.brand} Black Friday</span>
+                </>
+              ) : (
+                <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+              )}
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
             {templateRecipe && /^options:mmx-(standard|ultra-dream|aio|limited)-v1$/.test(templateRecipe.tag) ? <p className="mt-2 text-sm text-ivory-300">US shipping is included. Taxes and eligible discounts are calculated at checkout.</p> : null}
@@ -239,7 +255,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <TrustLine icon={<ShieldCheck className="h-4 w-4" />} text="Discreet billing" />
               <TrustLine icon={<CheckCircle2 className="h-4 w-4" />} text="Team QC support" />
             </div>
-            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !promotionPreview && (
+            {isElf ? <a href="#build-studio" className="mt-5 inline-flex min-h-12 items-center text-accent underline">Customize your doll</a> : firstAvailable && !(lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid')) && (
               <ProductBuyActions
                 previewOnly={isChikuPreview(product)}
                 merchandiseId={firstAvailable.id}
@@ -302,7 +318,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <GynoidBodyVersionNote product={product} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || promotionPreview}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || (promotionPreview && !isBfcmPreview)}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>

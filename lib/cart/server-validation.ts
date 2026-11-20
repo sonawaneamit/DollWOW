@@ -11,6 +11,7 @@ import { verifiedGynoidBodyVersion } from '@/lib/catalog/gynoid-body-versions';
 import { reviewedGynoidIdentity, assertGynoidStandardCheckout } from '@/lib/customization/gynoid';
 import { gynoidDependencyPlan } from './gynoid-dependencies';
 import { fanrealDependencyPlan } from './fanreal-dependencies';
+import { bfcmOffer, bfcmPreviewConfig } from '@/lib/promotions/bfcmBrandPreview';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -83,8 +84,20 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
     };
   }
 
-  const { config } = promotionPricingForSelections(product, getCustomizationConfig(product), input.selections);
-  validateStructuredSelections(config, input.selections);
+  const catalogConfig = getCustomizationConfig(product);
+  let { config } = promotionPricingForSelections(product, catalogConfig, input.selections);
+  
+  // Apply BFCM pricing when live
+  const { isBfcmPromoLive, bfcmOffer: getBfcmOffer, bfcmPreviewConfig } = require('@/lib/promotions/bfcmBrandPreview');
+  if (isBfcmPromoLive()) {
+    const offer = getBfcmOffer(product);
+    if (offer) {
+      const bfcmResult = bfcmPreviewConfig(config, offer);
+      config = bfcmResult.config;
+    }
+  }
+  
+  validateStructuredSelections(config, input.selections, product);
   const resolved = resolveCustomization(config, input.selections, basePrice);
   if (config.groups.some(group => group.visibleWhen !== undefined) &&
       Object.keys(input.selections).some(id => !(id in resolved.selections))) {
@@ -152,10 +165,32 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
 
 function validateStructuredSelections(
   config: ReturnType<typeof getCustomizationConfig>,
-  selections: CustomizationSelections
+  selections: CustomizationSelections,
+  product?: Product
 ) {
   if (!Object.keys(selections).length) {
     throw new Error("These customization selections are not available for checkout.");
+  }
+
+  // Check if BFCM preview is active for this product
+  const { isBfcmPromoLive: checkBfcmLive, bfcmOffer: checkBfcmOffer } = require('@/lib/promotions/bfcmBrandPreview');
+  const bfcmPreview = product && checkBfcmLive() ? checkBfcmOffer(product) : null;
+  const bfcmFreeOptions = new Set<string>();
+  
+  if (bfcmPreview) {
+    // Get the BFCM config to find which options are free gifts
+    const { config: bfcmConfig } = bfcmPreviewConfig(config, bfcmPreview);
+    for (const group of bfcmConfig.groups) {
+      for (const option of group.options) {
+        // Options that are $0 due to BFCM (catalog price > 0, promo price = 0)
+        const catalogOption = config.groups
+          .find(g => g.id === group.id)
+          ?.options.find(o => o.id === option.id);
+        if (catalogOption && option.priceDelta === 0 && (catalogOption.priceDelta ?? 0) > 0) {
+          bfcmFreeOptions.add(`${group.id}:${option.id}`);
+        }
+      }
+    }
   }
 
   for (const [groupId, value] of Object.entries(selections)) {
@@ -175,7 +210,11 @@ function validateStructuredSelections(
       new Set(optionIds).size !== optionIds.length ||
       (isMultiple ? !Array.isArray(value) : Array.isArray(value) || optionIds.length !== 1) ||
       hasContradictoryNeutralSelection ||
-      optionIds.some((optionId) => !isOptionAvailableForCheckout(config, groupId, optionId))
+      optionIds.some((optionId) => {
+        // Allow BFCM free gift options even if not normally available for checkout
+        const isBfcmFreeGift = bfcmFreeOptions.has(`${groupId}:${optionId}`);
+        return !isBfcmFreeGift && !isOptionAvailableForCheckout(config, groupId, optionId);
+      })
     ) {
       throw new Error("These customization selections are not available for checkout.");
     }
