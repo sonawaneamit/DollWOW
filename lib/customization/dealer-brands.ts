@@ -153,7 +153,7 @@ export function getSixYeCustomizationGroups(product: Product, groups: Customizat
   return normalizeDealerHeadGroups(product, groups, {
     chooseDescription: "Choose one compatible 6YE head. The standard head identity switch is included with the doll.",
     extraDescription: isBfcmLive 
-      ? "Optional additional TPE head ordered with this doll. Select more than one head if desired."
+      ? "One extra TPE head is included free with this doll during Black Friday."
       : "Optional paid TPE head ordered with this doll. Every selected additional head is charged separately.",
     // Current dealer evidence values the same-manufacturer 6YE TPE head at $299.
     fallbackExtraPrice: 299,
