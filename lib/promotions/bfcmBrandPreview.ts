@@ -75,11 +75,14 @@ export function bfcmOffer(product: Product, now = new Date()): BfcmPreview | nul
     // Free extra head on dolls >= 135cm (treat all current 150-173cm as large)
     gifts = full && (product.extended.heightCm ?? 0) >= 135 ? ['second-head'] : [];
   }
-  // IDO: Fixed pricing + free wig/pad (November promo, ends Nov 30)
+  // IDO: Custom keeps current price + free wig/pad, RTS dolls $2499 (November promo, ends Nov 30)
   else if (/\bido(?:doll)?\b/i.test(identity) && full && (custom || product.extended.stockStatus === 'ready_to_ship')) {
     brand = 'IDO';
-    price = custom ? 2599 : 2499;
-    gifts = custom ? ['random-wig', 'moving-pad'] : [];
+    // Custom (China-shipped): keep current price, add free wig + pad
+    // US/EU stock (RTS): $2499 until Dec 1
+    const isRTS = product.extended.stockStatus === 'ready_to_ship' || /\b(in.stock|ready.to.ship)\b/i.test(identity);
+    price = isRTS ? 2499 : originalPrice; // RTS gets fixed price, custom keeps current
+    gifts = !isRTS ? ['random-wig', 'moving-pad'] : []; // Only custom gets free extras
     startsAt = '2026-11-01T00:00:00Z';
     endsAt = IDO_REVERT_AT; // Ends Nov 30
   }
