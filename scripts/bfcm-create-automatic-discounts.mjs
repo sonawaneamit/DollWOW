@@ -122,13 +122,6 @@ async function main() {
   });
   console.log(`Found ${topFire.length} Top Fire products (${topFireAll.length} total, filtered by productType)`);
   
-  await createDiscount(
-    'BFCM 2026 Top Fire',
-    { '150.00': topFire },
-    startDate,
-    '2026-12-11T04:59:00Z',
-    dryRun
-  );
   
   // Climax: custom full >= $900, excluding torsos/hips, 10% off (floored per product)
   console.log('\nQuerying Climax products...');
@@ -167,26 +160,12 @@ async function main() {
     sixYeByDiscount[amount].push(p);
   }
   
-  await createDiscount(
-    'BFCM 2026 6YE 5%',
-    sixYeByDiscount,
-    startDate,
-    '2026-12-11T04:59:00Z',
-    dryRun
-  );
   
   // IDO: in-stock/RTS, $100 off
   console.log('\nQuerying IDO products...');
   const ido = await queryAllProducts('tag:ido AND (tag:in-stock OR tag:ready_to_ship)');
   console.log(`Found ${ido.length} IDO in-stock products`);
   
-  await createDiscount(
-    'BFCM 2026 IDO In-Stock',
-    { '100.00': ido },
-    startDate,
-    '2026-12-01T00:00:00Z',
-    dryRun
-  );
   
   // (b) Summary and limit check
   console.log('\n' + '='.repeat(60));
@@ -208,7 +187,6 @@ async function main() {
   const totalDiscounts = 1 + Object.keys(climaxByDiscount).length + Object.keys(sixYeByDiscount).length + 1;
   console.log(`\nTotal automatic discounts to create: ${totalDiscounts}`);
   
-  const currentActive = await countActiveAutomaticDiscounts();
   console.log(`Current active automatic discounts: ${currentActive}/25`);
   console.log(`After creation: ${currentActive + totalDiscounts}/25 automatic discounts`);
   
@@ -266,7 +244,7 @@ async function main() {
         }
       }
     };
-    allDiscounts.push({ title: discountTitle, mutation, variables });
+    allDiscounts.push({ title: discountTitle, mutation, variables, products, amount });
   };
   
   buildSpec('BFCM 2026 Top Fire', '150.00', topFire, startDate, '2026-12-11T04:59:00Z');
@@ -278,7 +256,16 @@ async function main() {
   }
   buildSpec('BFCM 2026 IDO In-Stock', '100.00', ido, startDate, '2026-12-01T00:00:00Z');
   
-  // (d) Only under --execute, create all discounts
+  // Print every group and every product once (handle: $old → $new)
+  for (const d of allDiscounts) {
+    const disc = d.variables.discount;
+    console.log(`\n  Group: ${d.title} (${d.products.length} products) ends ${disc.endsAt} combinesWith ${JSON.stringify(disc.combinesWith)}`);
+    for (const p of d.products) {
+      const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
+      console.log(`    ${p.handle}: $${price} → $${price - parseFloat(d.amount)}`);
+    }
+  }
+    // (d) Only under --execute, create all discounts
   if (dryRun) {
     console.log('\n✓ Dry-run complete. Review counts above before running --execute.');
   } else {
