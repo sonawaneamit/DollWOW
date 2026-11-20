@@ -101,8 +101,6 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
-  const { isBfcmPromoLive } = await import('@/lib/promotions/bfcmBrandPreview');
-  const isBfcmLive = isBfcmPromoLive();
   // isBfcmPreview: only true in Vercel preview environment (for noindex/draft behavior)
   const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
   // promotionPreview: controls JSON-LD and trackers (do NOT set for production BFCM)

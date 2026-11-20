@@ -70,12 +70,11 @@ async function createDiscount(title, productsByAmount, startsAt, endsAt, dryRun)
   
   for (const [amount, products] of Object.entries(productsByAmount)) {
     console.log(`\n  Group: $${amount} off (${products.length} products)`);
-    products.slice(0, 3).forEach(p => {
+    products.forEach(p => {
       const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
       const newPrice = price - parseFloat(amount);
       console.log(`    ${p.handle}: $${price} → $${newPrice}`);
     });
-    if (products.length > 3) console.log(`    ... and ${products.length - 3} more`);
     
     if (dryRun) {
       console.log(`  [DRY-RUN] Would create discount for ${products.length} products`);
@@ -141,6 +140,28 @@ async function createDiscount(title, productsByAmount, startsAt, endsAt, dryRun)
   }
 }
 
+async function countActiveAutomaticDiscounts() {
+  const query = `
+    query {
+      automaticDiscountNodes(first: 100) {
+        nodes {
+          id
+          automaticDiscount {
+            ... on DiscountAutomaticBasic {
+              status
+            }
+          }
+        }
+      }
+    }
+  `;
+  const data = await graphql(query);
+  const active = data.data?.automaticDiscountNodes?.nodes.filter(n => 
+    n.automaticDiscount?.status === 'ACTIVE'
+  ) || [];
+  return active.length;
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = !args.includes('--execute');
@@ -153,10 +174,28 @@ async function main() {
   console.log(`Start: ${startDate}`);
   console.log(`Shopify: ${SHOPIFY_DOMAIN}\n`);
   
-  // Top Fire: full silicone dolls, $150 off
+  // Check current automatic discount count
+  if (!dryRun) {
+    const currentActive = await countActiveAutomaticDiscounts();
+    console.log(`Current active automatic discounts: ${currentActive}`);
+    console.log(`Note: Shopify has a limit on active automatic discounts.`);
+    console.log(`      If you hit the limit, pause or delete existing discounts first.\n`);
+  }
+  
+  // Top Fire: exclude heads and torsos, $150 off
   console.log('Querying Top Fire products...');
-  const topFire = await queryAllProducts('tag:top-fire AND tag:silicone AND product_type:"Full-size adult doll"');
-  console.log(`Found ${topFire.length} Top Fire products`);
+  const topFireAll = await queryAllProducts('tag:top-fire');
+  const topFire = topFireAll.filter(p => {
+    const title = p.title.toLowerCase();
+    const handle = p.handle.toLowerCase();
+    return !title.includes(' head') && 
+           !title.includes(' torso') && 
+           !handle.includes('-head') && 
+           !handle.includes('-torso') &&
+           !p.handle.startsWith('head-') &&
+           !p.handle.startsWith('torso-');
+  });
+  console.log(`Found ${topFire.length} Top Fire products (${topFireAll.length} total, filtered heads/torsos)`);
   
   await createDiscount(
     'BFCM 2026 Top Fire',
@@ -166,11 +205,19 @@ async function main() {
     dryRun
   );
   
-  // Climax: custom full >= $900, 10% off (floored per product)
+  // Climax: custom full >= $900, excluding torsos/hips, 10% off (floored per product)
   console.log('\nQuerying Climax products...');
-  const climax = await queryAllProducts('tag:climax AND tag:custom AND product_type:"Full-size adult doll"');
-  const climaxEligible = climax.filter(p => parseFloat(p.priceRangeV2.minVariantPrice.amount) >= 900);
-  console.log(`Found ${climaxEligible.length} Climax products >= $900`);
+  const climaxAll = await queryAllProducts('tag:climax');
+  const climax = climaxAll.filter(p => {
+    const title = p.title.toLowerCase();
+    const handle = p.handle.toLowerCase();
+    const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
+    const isTorsoOrHip = title.includes(' torso') || title.includes(' hip') || 
+                         handle.includes('-torso') || handle.includes('-hip') ||
+                         handle.startsWith('torso-') || handle.startsWith('hip-');
+    return !isTorsoOrHip && price >= 900;
+  });
+  console.log(`Found ${climax.length} Climax custom full dolls >= $900 (${climaxAll.length} total, filtered torsos/hips/under-$900)`);
   
   const climaxByDiscount = {};
   for (const p of climaxEligible) {
@@ -228,12 +275,20 @@ async function main() {
   console.log('Summary');
   console.log('='.repeat(60));
   console.log(`Top Fire: ${topFire.length} products ($150 off)`);
-  console.log(`Climax: ${climaxEligible.length} products (10% floored per product)`);
-  console.log(`6YE: ${sixYe.length} products (5% floored per product)`);
+  console.log(`Climax: ${climax.length} products (10% floored, ${Object.keys(climaxByDiscount).length} discount groups)`);
+  console.log(`6YE: ${sixYe.length} products (5% floored, ${Object.keys(sixYeByDiscount).length} discount groups)`);
   console.log(`IDO: ${ido.length} products ($100 off)`);
   
+  const totalDiscounts = 1 + Object.keys(climaxByDiscount).length + Object.keys(sixYeByDiscount).length + 1;
+  console.log(`\nTotal automatic discounts to create: ${totalDiscounts}`);
+  
+  if (totalDiscounts > 5) {
+    console.log(`\n⚠️  WARNING: ${totalDiscounts} discounts exceeds typical Shopify limits.`);
+    console.log(`   Consider consolidating or check your plan's automatic discount limit.`);
+  }
+  
   if (dryRun) {
-    console.log('\n✓ Dry-run complete. Use --execute to create in Shopify.');
+    console.log('\n✓ Dry-run complete. Review counts above before running --execute.');
   } else {
     console.log('\n✓ Execution complete. Check Shopify admin for created discounts.');
   }
