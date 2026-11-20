@@ -225,7 +225,15 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </ProductHeadingElement>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+              {product.extended.bfcmPreview && product.extended.bfcmPreview.originalPrice > product.extended.bfcmPreview.price ? (
+                <>
+                  <del className="text-xl text-ivory-500"><DisplayMoney amount={product.extended.bfcmPreview.originalPrice.toFixed(2)} currencyCode={price.currencyCode} /></del>
+                  <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{product.extended.bfcmPreview.brand} Black Friday</span>
+                </>
+              ) : (
+                <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+              )}
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
             {templateRecipe && /^options:mmx-(standard|ultra-dream|aio|limited)-v1$/.test(templateRecipe.tag) ? <p className="mt-2 text-sm text-ivory-300">US shipping is included. Taxes and eligible discounts are calculated at checkout.</p> : null}
