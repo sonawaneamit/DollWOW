@@ -84,7 +84,19 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
     };
   }
 
-  const { config } = promotionPricingForSelections(product, getCustomizationConfig(product), input.selections);
+  const catalogConfig = getCustomizationConfig(product);
+  let { config } = promotionPricingForSelections(product, catalogConfig, input.selections);
+  
+  // Apply BFCM pricing when live
+  const { isBfcmPromoLive, bfcmOffer, bfcmPreviewConfig } = await import('@/lib/promotions/bfcmBrandPreview');
+  if (isBfcmPromoLive()) {
+    const offer = bfcmOffer(product);
+    if (offer) {
+      const bfcmResult = bfcmPreviewConfig(config, offer);
+      config = bfcmResult.config;
+    }
+  }
+  
   validateStructuredSelections(config, input.selections, product);
   const resolved = resolveCustomization(config, input.selections, basePrice);
   if (config.groups.some(group => group.visibleWhen !== undefined) &&

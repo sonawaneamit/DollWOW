@@ -105,10 +105,10 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const isBfcmPreview = isBfcmPromoLive();
   const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || isBfcmPreview;
   const privateDraft = await getPrivateDraftPreview(handle);
-  // Don't treat live published products as private drafts during BFCM
-  // Galatea vendor is 'Dolls Castle', match in title/handle/tags
-  const isLivePublished = product.status === 'ACTIVE' && !product.tags.some(t => /draft|test/i.test(t));
-  const isPrivateDraft = (isBfcmPreview && isLivePublished) ? false : Boolean(privateDraft);
+  // Don't treat ANY published products as private drafts during BFCM (Add to Cart must work)
+  // This includes Galatea (vendor 'Dolls Castle') and all other live products
+  const isDraftTest = product.tags.some(t => /dollwow-test|catalog-review-hold/i.test(t));
+  const isPrivateDraft = (isBfcmPreview && !isDraftTest) ? false : Boolean(privateDraft);
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.

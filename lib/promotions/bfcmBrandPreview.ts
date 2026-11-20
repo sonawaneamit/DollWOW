@@ -114,13 +114,11 @@ export function bfcmOffer(product: Product, now = new Date()): BfcmPreview | nul
 /**
  * Apply BFCM preview pricing to product (preview environment only)
  */
-export function withBfcmPreview(
-  product: Product, 
-  environment = process.env.VERCEL_ENV, 
-  now = new Date(), 
-  enabled = process.env.DOL371_BRAND_PREVIEW === '1'
-): Product {
-  if (environment !== 'preview' || !enabled) {
+/**
+ * Wrap product with BFCM pricing (works in production when switch is on)
+ */
+export function withBfcmPreview(product: Product, now = new Date()): Product {
+  if (!isBfcmPromoLive()) {
     return product;
   }
   
