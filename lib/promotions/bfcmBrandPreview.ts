@@ -255,7 +255,9 @@ export function bfcmPreviewConfig(
     } else if (gift === 'moving-pad') {
       addGift(gift, 'Doll moving pad');
     } else if (gift === 'second-head') {
-      addGift(gift, 'One extra head');
+      // Don't add duplicate second-head step - it's already modified above
+      // For 6YE, the existing "Add Extra Head" step is already made free at $0
+      continue;
     } else if (gift === 'gel-butt') {
       addGift(gift, 'Gel butt upgrade');
     } else if (gift === 'hands-feet') {
