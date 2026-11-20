@@ -45,6 +45,7 @@ async function queryAllProducts(query) {
             handle
             title
             status
+            productType
             priceRangeV2 {
               minVariantPrice { amount }
             }
@@ -62,44 +63,6 @@ async function queryAllProducts(query) {
   }
   
   return products;
-}
-
-async function createDiscount(title, productsByAmount, startsAt, endsAt, dryRun, allDiscounts) {
-  console.log(`\n${title}`);
-  console.log('='.repeat(60));
-  
-  for (const [amount, products] of Object.entries(productsByAmount)) {
-    console.log(`\n  Group: $${amount} off (${products.length} products)`);
-    products.forEach(p => {
-      const price = parseFloat(p.priceRangeV2.minVariantPrice.amount);
-      const newPrice = price - parseFloat(amount);
-      console.log(`    ${p.handle}: $${price} → $${newPrice}`);
-    });
-    
-    if (dryRun) {
-      console.log(`  [DRY-RUN] Would create discount for ${products.length} products`);
-    } else {
-      // Build all discount specs first (done in main), now execute
-      const spec = allDiscounts.find(d => d.title === `${title} $${amount}`);
-      if (!spec) {
-        console.error(`  ERROR: Discount spec not found for ${title} $${amount}`);
-        continue;
-      }
-      
-      console.log(`\n  [EXECUTE] Creating: ${spec.title}...`);
-      const result = await graphql(spec.mutation, spec.variables);
-      
-      if (result.data?.discountAutomaticBasicCreate?.userErrors?.length > 0) {
-        console.error(`  ERROR:`, result.data.discountAutomaticBasicCreate.userErrors);
-        throw new Error(`Failed to create discount: ${spec.title}`);
-      } else if (result.data?.discountAutomaticBasicCreate?.automaticDiscountNode?.id) {
-        console.log(`  ✓ Created: ${result.data.discountAutomaticBasicCreate.automaticDiscountNode.id}`);
-      } else {
-        console.error(`  ERROR: No discount ID returned`);
-        throw new Error(`Failed to create discount: ${spec.title}`);
-      }
-    }
-  }
 }
 
 async function countActiveAutomaticDiscounts() {
@@ -225,6 +188,7 @@ async function main() {
     dryRun
   );
   
+  // (b) Summary and limit check
   console.log('\n' + '='.repeat(60));
   console.log('Summary');
   console.log('='.repeat(60));
@@ -233,20 +197,29 @@ async function main() {
   console.log(`6YE: ${sixYe.length} products (5% floored, ${Object.keys(sixYeByDiscount).length} discount groups)`);
   console.log(`IDO: ${ido.length} products ($100 off)`);
   
+  // Abort if any brand returns 0 products
+  if (topFire.length === 0 || climax.length === 0 || sixYe.length === 0 || ido.length === 0) {
+    console.error(`\n❌ ERROR: One or more brands returned 0 products.`);
+    console.error(`   Top Fire: ${topFire.length}, Climax: ${climax.length}, 6YE: ${sixYe.length}, IDO: ${ido.length}`);
+    console.error(`   Cannot create discounts with empty product lists.`);
+    process.exit(1);
+  }
+  
   const totalDiscounts = 1 + Object.keys(climaxByDiscount).length + Object.keys(sixYeByDiscount).length + 1;
   console.log(`\nTotal automatic discounts to create: ${totalDiscounts}`);
+  
+  const currentActive = await countActiveAutomaticDiscounts();
+  console.log(`Current active automatic discounts: ${currentActive}/25`);
   console.log(`After creation: ${currentActive + totalDiscounts}/25 automatic discounts`);
   
   if (currentActive + totalDiscounts > 25) {
     console.error(`\n❌ ERROR: ${currentActive} existing + ${totalDiscounts} new = ${currentActive + totalDiscounts} total`);
     console.error(`   Shopify allows maximum 25 active automatic discounts of all types.`);
     console.error(`   Pause or delete ${currentActive + totalDiscounts - 25} existing discount(s) before running --execute.`);
-    if (!dryRun) {
-      process.exit(1);
-    }
+    process.exit(1);
   }
   
-  // Build all discount specs before executing (so a crash can't leave partial set)
+  // (c) Build all discount specs
   const allDiscounts = [];
   const buildSpec = (title, amount, products, startsAt, endsAt) => {
     const mutation = `
@@ -296,58 +269,38 @@ async function main() {
     allDiscounts.push({ title: discountTitle, mutation, variables });
   };
   
-  if (!dryRun) {
-    // Build all specs first
-    buildSpec('BFCM 2026 Top Fire', '150.00', topFire, startDate, '2026-12-11T04:59:00Z');
-    for (const [amount, products] of Object.entries(climaxByDiscount)) {
-      buildSpec('BFCM 2026 Climax 10%', amount, products, startDate, '2026-12-11T04:59:00Z');
-    }
-    for (const [amount, products] of Object.entries(sixYeByDiscount)) {
-      buildSpec('BFCM 2026 6YE 5%', amount, products, startDate, '2026-12-11T04:59:00Z');
-    }
-    buildSpec('BFCM 2026 IDO In-Stock', '100.00', ido, startDate, '2026-12-01T00:00:00Z');
+  buildSpec('BFCM 2026 Top Fire', '150.00', topFire, startDate, '2026-12-11T04:59:00Z');
+  for (const [amount, products] of Object.entries(climaxByDiscount)) {
+    buildSpec('BFCM 2026 Climax 10%', amount, products, startDate, '2026-12-11T04:59:00Z');
   }
+  for (const [amount, products] of Object.entries(sixYeByDiscount)) {
+    buildSpec('BFCM 2026 6YE 5%', amount, products, startDate, '2026-12-11T04:59:00Z');
+  }
+  buildSpec('BFCM 2026 IDO In-Stock', '100.00', ido, startDate, '2026-12-01T00:00:00Z');
   
-  // Now execute discounts
-  await createDiscount(
-    'BFCM 2026 Top Fire',
-    { '150.00': topFire },
-    startDate,
-    '2026-12-11T04:59:00Z',
-    dryRun,
-    allDiscounts
-  );
-  
-  await createDiscount(
-    'BFCM 2026 Climax 10%',
-    climaxByDiscount,
-    startDate,
-    '2026-12-11T04:59:00Z',
-    dryRun,
-    allDiscounts
-  );
-  
-  await createDiscount(
-    'BFCM 2026 6YE 5%',
-    sixYeByDiscount,
-    startDate,
-    '2026-12-11T04:59:00Z',
-    dryRun,
-    allDiscounts
-  );
-  
-  await createDiscount(
-    'BFCM 2026 IDO In-Stock',
-    { '100.00': ido },
-    startDate,
-    '2026-12-01T00:00:00Z',
-    dryRun,
-    allDiscounts
-  );
-  
+  // (d) Only under --execute, create all discounts
   if (dryRun) {
     console.log('\n✓ Dry-run complete. Review counts above before running --execute.');
   } else {
+    console.log('\n' + '='.repeat(60));
+    console.log('Creating Discounts');
+    console.log('='.repeat(60));
+    
+    for (const spec of allDiscounts) {
+      console.log(`\n[EXECUTE] Creating: ${spec.title}...`);
+      const result = await graphql(spec.mutation, spec.variables);
+      
+      if (result.data?.discountAutomaticBasicCreate?.userErrors?.length > 0) {
+        console.error(`ERROR:`, result.data.discountAutomaticBasicCreate.userErrors);
+        throw new Error(`Failed to create discount: ${spec.title}`);
+      } else if (result.data?.discountAutomaticBasicCreate?.automaticDiscountNode?.id) {
+        console.log(`✓ Created: ${result.data.discountAutomaticBasicCreate.automaticDiscountNode.id}`);
+      } else {
+        console.error(`ERROR: No discount ID returned`);
+        throw new Error(`Failed to create discount: ${spec.title}`);
+      }
+    }
+    
     console.log('\n✓ Execution complete. Check Shopify admin for created discounts.');
   }
 }
