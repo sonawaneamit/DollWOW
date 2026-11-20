@@ -88,9 +88,9 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   let { config } = promotionPricingForSelections(product, catalogConfig, input.selections);
   
   // Apply BFCM pricing when live
-  const { isBfcmPromoLive, bfcmOffer, bfcmPreviewConfig } = await import('@/lib/promotions/bfcmBrandPreview');
+  const { isBfcmPromoLive, bfcmOffer: getBfcmOffer, bfcmPreviewConfig } = require('@/lib/promotions/bfcmBrandPreview');
   if (isBfcmPromoLive()) {
-    const offer = bfcmOffer(product);
+    const offer = getBfcmOffer(product);
     if (offer) {
       const bfcmResult = bfcmPreviewConfig(config, offer);
       config = bfcmResult.config;

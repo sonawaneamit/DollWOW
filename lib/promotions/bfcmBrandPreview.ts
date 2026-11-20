@@ -266,9 +266,11 @@ export function bfcmPreviewConfig(
     } else if (gift === 'moving-pad') {
       addGift(gift, 'Doll moving pad');
     } else if (gift === 'second-head') {
-      // Don't add duplicate second-head step - it's already modified above
-      // For 6YE, the existing "Add Extra Head" step is already made free at $0
-      continue;
+      // Only add "One extra head" step for dolls with no existing head step
+      // This covers Top Fire Casey, 176 body, Climax Grace, Climax Kay
+      if (!hasHeadStep) {
+        addGift(gift, 'One extra head');
+      }
     } else if (gift === 'gel-butt') {
       addGift(gift, 'Gel butt upgrade');
     } else if (gift === 'hands-feet') {
