@@ -101,12 +101,14 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
-  const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
+  const { isBfcmPromoLive } = await import('@/lib/promotions/bfcmBrandPreview');
+  const isBfcmPreview = isBfcmPromoLive();
   const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || isBfcmPreview;
   const privateDraft = await getPrivateDraftPreview(handle);
-  // During BFCM preview, don't treat Galatea as private draft (Add to Cart must work)
-  const isGalatea = /\bgalatea\b/i.test(`${product.extended.brand} ${product.vendor} ${product.tags.join(' ')}`);
-  const isPrivateDraft = isBfcmPreview && isGalatea ? false : Boolean(privateDraft);
+  // Don't treat live published products as private drafts during BFCM
+  // Galatea vendor is 'Dolls Castle', match in title/handle/tags
+  const isLivePublished = product.status === 'ACTIVE' && !product.tags.some(t => /draft|test/i.test(t));
+  const isPrivateDraft = (isBfcmPreview && isLivePublished) ? false : Boolean(privateDraft);
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.

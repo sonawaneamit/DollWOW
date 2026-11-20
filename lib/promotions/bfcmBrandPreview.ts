@@ -1,8 +1,21 @@
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig, CustomizationGroup } from '@/types/customization';
 
+export const BFCM_START_AT = '2026-11-21T00:00:00Z';
 export const BFCM_REVERT_AT = '2026-12-11T04:59:00Z'; // Dec 10, 11:59 PM US Eastern
 export const IDO_REVERT_AT = '2026-12-01T00:00:00Z'; // End of Nov 30
+
+/**
+ * Check if BFCM promo is live
+ * Works in production when BFCM_BRAND_PROMO_LIVE=1
+ * Works in preview when DOL371_BRAND_PREVIEW=1
+ */
+export function isBfcmPromoLive(): boolean {
+  if (process.env.VERCEL_ENV === 'preview') {
+    return process.env.DOL371_BRAND_PREVIEW === '1';
+  }
+  return process.env.BFCM_BRAND_PROMO_LIVE === '1';
+}
 
 export type BfcmBrand = 'Top Fire' | 'Galatea' | 'Climax' | '6YE' | 'IDO';
 export type BfcmPreview = { 
