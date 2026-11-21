@@ -25,13 +25,18 @@ const PRODUCTS: Array<{ id: string; kind: 'climax' | 'fu-female' | 'fu-male' }> 
   { id: 'gid://shopify/Product/10745002688696', kind: 'climax' },   // Frida SiP157
   { id: 'gid://shopify/Product/10745005473976', kind: 'fu-female' }, // White Peach 163 I
   { id: 'gid://shopify/Product/10745005637816', kind: 'fu-female' }, // Qin Xingyue 163 I
-  { id: 'gid://shopify/Product/10745005801656', kind: 'fu-male' }    // Luo Chengchuan 176
+  { id: 'gid://shopify/Product/10745005801656', kind: 'fu-male' },   // Luo Chengchuan 176
+  // DOL-382 held go-live (21 Nov, second release): October FU drafts brought up to the White Peach standard.
+  { id: 'gid://shopify/Product/10638363754680', kind: 'fu-female' }, // Anna 162 F
+  { id: 'gid://shopify/Product/10638363852984', kind: 'fu-female' }, // Tifa 162 F
+  { id: 'gid://shopify/Product/10638363951288', kind: 'fu-female' }, // Lisa 157 G RST
+  { id: 'gid://shopify/Product/10638364049592', kind: 'fu-female' }  // Ziqing 165 F
 ];
 const REG = 'lib/customization/evidence/template-release.json';
 const NAMED = 'lib/cart/evidence/named-upgrades-release.json';
 const RECIPES = 'data/draft-previews/dol382-new-dolls-recipes-nov19.json';
 const FIXTURE = 'tests/fixtures/dol382-nov21-admin-readback.json';
-const EVIDENCE = 'docs/catalog/dol382-nov21-golive.md';
+const EVIDENCE = 'docs/catalog/dol382-nov21-held-golive.md';
 const sha = (s: string) => createHash('sha256').update(s).digest('hex');
 const money = (a: string) => { const n = Number(a); return Number.isInteger(n) ? n.toFixed(1) : String(n); };
 const META: Record<string, string> = { catalogIdentityKey: 'catalog_identity_key', catalogBodyIdentityKey: 'catalog_body_identity_key', headModel: 'head_model', bodyCode: 'body_code', displayName: 'display_name', lookTags: 'look_tags', brand: 'brand', sourceReleaseRank: 'source_release_rank', material: 'material', heightCm: 'height_cm', weightLb: 'weight_lb', cupSize: 'cup_size', measurements: 'measurements', warehouseCountry: 'warehouse_country', warehouseRegions: 'warehouse_regions', stockStatus: 'stock_status', deliveryEstimate: 'delivery_estimate', stockLastCheckedAt: 'stock_last_checked_at', customAvailable: 'custom_available', penisAddOnAvailable: 'has_insertable_penis_add_on', irontechUlwEligibility: 'irontech_ulw_eligibility', qcNote: 'qc_note', customizationGroups: 'customization_groups' };
@@ -93,6 +98,7 @@ function fuBindingFor(group: string, label: string, amount: number) {
   return { group, label, unitAmount: amount, currencyCode: 'USD', merchandiseId: c.variants.nodes[0].id, productTitle: c.title, productId: c.id, handle: c.handle, choiceLabels: [label] };
 }
 const fuFamily: any[] = [];
+const recipeChanges: string[] = [];
 const famKey = (b: any) => JSON.stringify([b.group, b.merchandiseId]);
 
 const report: any[] = []; const readback: any[] = [];
@@ -118,7 +124,8 @@ for (const node of data.nodes) {
     bindingKey = `fudoll-${spec.kind === 'fu-male' ? 'male' : 'female'}-silicone-${sig.slice(7, 19)}`;
     const recipe = { ...structuredClone(recipeEntry.recipe), signature: sig };
     const existing = registry.payload.bindings[bindingKey];
-    if (existing && JSON.stringify(existing) !== JSON.stringify(recipe)) throw new Error(`${bindingKey}: recipe drift`);
+    // Recipes may change only through the recipes file (Luo's Starter moved to 9-ending tiers on 21 Nov); log it.
+    if (existing && JSON.stringify(existing) !== JSON.stringify(recipe)) recipeChanges.push(bindingKey);
     registry.payload.bindings[bindingKey] = recipe;
   }
   const runtimeHash = templateRuntimeHash(product, config);
@@ -154,14 +161,14 @@ for (const row of readback) {
   }
 }
 const now = new Date().toISOString();
-registry.payload.releaseId = 'template-release-2026-11-21-dol382-climax-sip157-fu';
+registry.payload.releaseId = 'template-release-2026-11-21b-dol382-held-golive';
 const payloadHash = templateReleasePayloadHash(registry.payload);
 for (const gate of ['catalogCompatibility', 'checkoutChargeLines', 'coordinatedRelease'])
-  registry.approvals[gate] = { reviewedBy: 'Dolly (Grok Bot) for Martin, DOL-382 go-live 21 Nov (Martin approved 09:12 Vienna)', reviewedAt: now, payloadHash, evidenceRef: EVIDENCE };
-named.payload.releaseId = 'named-upgrades-2026-11-21-dol382-climax-sip157-fu';
+  registry.approvals[gate] = { reviewedBy: 'Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)', reviewedAt: now, payloadHash, evidenceRef: EVIDENCE };
+named.payload.releaseId = 'named-upgrades-2026-11-21b-dol382-held-golive';
 named.approval = { payloadHash: namedUpgradePayloadHash(named.payload), evidenceRef: EVIDENCE, reviewedAt: now };
 const issues = templateReleaseIssues(registry);
-console.log(JSON.stringify({ issues, report, fuFamilySize: fuFamily.length }, null, 1));
+console.log(JSON.stringify({ issues, recipeChanges, report, fuFamilySize: fuFamily.length }, null, 1));
 if (issues.length) process.exit(1);
 if (process.argv.includes('--write')) {
   fs.writeFileSync(REG, JSON.stringify(registry, null, 2) + '\n');

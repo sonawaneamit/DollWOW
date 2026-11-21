@@ -15,19 +15,23 @@ import { getCatalogBrand } from '@/lib/catalog/brands';
 import type { Product } from '@/types/product';
 
 const sha = (value: string) => createHash('sha256').update(value).digest('hex');
-// Tier totals Martin saw on the 19 Nov previews (DOL-382), full price, no BFCM.
+// Tier totals Martin approved for DOL-382 (19 Nov previews; 21 Nov held release), full price, no BFCM.
 const expected: Record<string, number[]> = {
   'gid://shopify/Product/10745002033336': [1859, 1859, 1959], // Climax Lexi SiP157
   'gid://shopify/Product/10745002688696': [1859, 1859, 1959], // Climax Frida SiP157
   'gid://shopify/Product/10745005473976': [2359, 2459, 2659], // FU White Peach 163 I
   'gid://shopify/Product/10745005637816': [2359, 2459, 2659], // FU Qin Xingyue 163 I
-  'gid://shopify/Product/10745005801656': [2324, 2424, 2624]  // FU Luo Chengchuan 176 male
+  'gid://shopify/Product/10745005801656': [2299, 2399, 2599], // FU Luo Chengchuan 176 male (9-ending tiers, 21 Nov)
+  'gid://shopify/Product/10638363754680': [2159, 2259, 2459], // FU Anna 162 F
+  'gid://shopify/Product/10638363852984': [2159, 2259, 2459], // FU Tifa 162 F
+  'gid://shopify/Product/10638363951288': [2259, 2359, 2559], // FU Lisa 157 G RST
+  'gid://shopify/Product/10638364049592': [2159, 2259, 2459]  // FU Ziqing 165 F
 };
 
 describe('DOL-382 Nov 21 go-live registry (Admin readback)', () => {
   it('keeps the whole release registry valid', () => {
     expect(templateReleaseIssues(registry)).toEqual([]);
-    expect(readback).toHaveLength(5);
+    expect(readback).toHaveLength(9);
   });
   const select = createReleasedTemplateSelector(registry);
   for (const row of readback) {
