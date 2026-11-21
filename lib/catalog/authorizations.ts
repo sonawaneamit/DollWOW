@@ -38,6 +38,14 @@ const allBrandAuthorizations: BrandAuthorization[] = [
     certificatePendingStatement: "Certified SE Doll reseller. Formal authorization certificate pending our first order."
   },
   {
+    id: "fu-doll",
+    brand: "FU Doll",
+    brandValue: "fudoll",
+    aliases: ["fudoll", "fu doll", "fu dolls", "fu-doll"],
+    status: "certificate-pending",
+    certificatePendingStatement: "Authorized FU Doll dealer: approved, certificate pending."
+  },
+  {
     id: "erovenus",
     brand: "Erovenus",
     brandValue: "erovenus",

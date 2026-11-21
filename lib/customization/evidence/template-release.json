@@ -3,26 +3,26 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T12:03:14.022Z",
-      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
-      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 go-live 21 Nov (Martin approved 09:12 Vienna)",
+      "reviewedAt": "2026-11-21T08:24:21.518Z",
+      "payloadHash": "6c88ce26797f18942e12e311082c97f3f0de0834e5370195b4e560cd2365799a",
+      "evidenceRef": "docs/catalog/dol382-nov21-golive.md"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T12:03:14.022Z",
-      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
-      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 go-live 21 Nov (Martin approved 09:12 Vienna)",
+      "reviewedAt": "2026-11-21T08:24:21.518Z",
+      "payloadHash": "6c88ce26797f18942e12e311082c97f3f0de0834e5370195b4e560cd2365799a",
+      "evidenceRef": "docs/catalog/dol382-nov21-golive.md"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, production Admin readback relink",
-      "reviewedAt": "2026-11-19T12:03:14.022Z",
-      "payloadHash": "dbc519da4d6880f0bfea612194244ea4dbc8dc74323641bf9d63f19be8f9730a",
-      "evidenceRef": "docs/catalog/dol381-382-production-relink-2026-11-19.md"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 go-live 21 Nov (Martin approved 09:12 Vienna)",
+      "reviewedAt": "2026-11-21T08:24:21.518Z",
+      "payloadHash": "6c88ce26797f18942e12e311082c97f3f0de0834e5370195b4e560cd2365799a",
+      "evidenceRef": "docs/catalog/dol382-nov21-golive.md"
     }
   },
   "payload": {
-    "releaseId": "template-release-2026-11-19-clara-tessa-scarlett",
+    "releaseId": "template-release-2026-11-21-dol382-climax-sip157-fu",
     "sourceSnapshotHash": "5ad4b0ff0e9155fc5d11ce3472c1c868bf33dec9062ede561620c38cd82c5296",
     "expectedProductIds": [
       "gid://shopify/Product/10431698174136",
@@ -2969,7 +2969,12 @@
       "gid://shopify/Product/10721752318136",
       "gid://shopify/Product/10742344941752",
       "gid://shopify/Product/10742344974520",
-      "gid://shopify/Product/10742348513464"
+      "gid://shopify/Product/10742348513464",
+      "gid://shopify/Product/10745002033336",
+      "gid://shopify/Product/10745002688696",
+      "gid://shopify/Product/10745005473976",
+      "gid://shopify/Product/10745005637816",
+      "gid://shopify/Product/10745005801656"
     ],
     "entries": [
       {
@@ -23586,6 +23591,41 @@
         "tag": "options:irontech-female-silicone-standard",
         "bindingKey": "irontech-scarlett-s60-ros-max-0a97cd5ddad0",
         "runtimeHash": "ab7e5c36acb47246c8fc9c8ae19dc5fa0cb34eb16cc1adadff740fbbbc20b8a4"
+      },
+      {
+        "productId": "gid://shopify/Product/10745002033336",
+        "handle": "climax-lexi-157cm-f-cup-ulw-silicone-companion-doll",
+        "tag": "options:climax-female-silicone-standard",
+        "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
+        "runtimeHash": "c4c3030b7e08f0cdd027f91e3225dd9b0c3e5bc7716f1bceb1672a3001133927"
+      },
+      {
+        "productId": "gid://shopify/Product/10745002688696",
+        "handle": "climax-frida-157cm-f-cup-ulw-silicone-companion-doll",
+        "tag": "options:climax-female-silicone-standard",
+        "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
+        "runtimeHash": "8202510287ef9142b52f347fa3166d1016ccd71ec3e1e12818ea48398e4bd8ae"
+      },
+      {
+        "productId": "gid://shopify/Product/10745005473976",
+        "handle": "fu-doll-white-peach-163cm-i-cup-silicone-companion-doll",
+        "tag": "options:fu-silicone-body-mvp-v1",
+        "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+        "runtimeHash": "06aad8648addbc2f298488111c6697fb5a9dc7967527095faed229e0c8e6a286"
+      },
+      {
+        "productId": "gid://shopify/Product/10745005637816",
+        "handle": "fu-doll-qin-xingyue-163cm-i-cup-silicone-companion-doll",
+        "tag": "options:fu-silicone-body-mvp-v1",
+        "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+        "runtimeHash": "c2fdd8a7b73fa2a7d091c65d0085f7e3679c2c6c89ef5fc871c74d936c3eee66"
+      },
+      {
+        "productId": "gid://shopify/Product/10745005801656",
+        "handle": "fu-doll-luo-chengchuan-176cm-male-silicone-companion-doll",
+        "tag": "options:fu-silicone-body-mvp-v1",
+        "bindingKey": "fudoll-male-silicone-55e8ec088468",
+        "runtimeHash": "824962066a8287eb625006ff535fc32c1554f7e985ee56d3e5706ac969fccf76"
       }
     ],
     "bindings": {
@@ -35355,6 +35395,120 @@
               {
                 "groupId": "premium-head-body-options-multiple",
                 "optionId": "body-moaning"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "fudoll-female-silicone-044e91b62c4d": {
+        "tag": "options:fu-silicone-body-mvp-v1",
+        "signature": "sha256:044e91b62c4db7065e3edb040b73fb6e606447055fde6f609bce248f58bd9c95",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care kit, body painting and articulated fingers.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "vaginal-irrigator"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "articulated-fingers-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and standing feet.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "heating"
+              },
+              {
+                "groupId": "standing-add-on-silicone",
+                "optionId": "standing-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds moaning and a soft gel butt.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "moaning"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "gel-butt"
+              }
+            ],
+            "remove": []
+          }
+        ]
+      },
+      "fudoll-male-silicone-55e8ec088468": {
+        "tag": "options:fu-silicone-body-mvp-v1",
+        "signature": "sha256:55e8ec0884680dcd36312b9cdf93d355dbfbb1c3df063a1312b58772f82b6a41",
+        "tiers": [
+          {
+            "id": "starter",
+            "description": "Care kit, body painting and articulated fingers.",
+            "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "reusable-drying-rod"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "articulated-fingers-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Adds body heating and standing feet.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "heating"
+              },
+              {
+                "groupId": "standing-add-on-silicone",
+                "optionId": "standing-free"
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "collector",
+            "description": "Adds moaning and a soft gel butt.",
+            "add": [
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "moaning"
+              },
+              {
+                "groupId": "premium-head-body-options-multiple-silicone",
+                "optionId": "gel-butt"
               }
             ],
             "remove": []
