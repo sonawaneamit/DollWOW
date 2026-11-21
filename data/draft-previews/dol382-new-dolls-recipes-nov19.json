@@ -84,7 +84,11 @@
   "note": "FU female silicone",
   "productIds": [
    "gid://shopify/Product/10745005473976",
-   "gid://shopify/Product/10745005637816"
+   "gid://shopify/Product/10745005637816",
+   "gid://shopify/Product/10638363754680",
+   "gid://shopify/Product/10638363852984",
+   "gid://shopify/Product/10638363951288",
+   "gid://shopify/Product/10638364049592"
   ],
   "recipe": {
    "tag": "options:fu-silicone-body-mvp-v1",
@@ -157,12 +161,8 @@
    "tiers": [
     {
      "id": "starter",
-     "description": "Care kit, body painting and articulated fingers.",
+     "description": "Body painting and articulated fingers.",
      "add": [
-      {
-       "groupId": "accessories",
-       "optionId": "reusable-drying-rod"
-      },
       {
        "groupId": "premium-head-body-options-multiple-silicone",
        "optionId": "hyper-realism-body-painting-free"

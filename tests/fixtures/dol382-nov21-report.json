@@ -1,7 +1,7 @@
 [
  {
   "handle": "climax-lexi-157cm-f-cup-ulw-silicone-companion-doll",
-  "status": "DRAFT",
+  "status": "ACTIVE",
   "base": "1799.0",
   "variant": "gid://shopify/ProductVariant/54865227448504",
   "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
@@ -15,7 +15,7 @@
  },
  {
   "handle": "climax-frida-157cm-f-cup-ulw-silicone-companion-doll",
-  "status": "DRAFT",
+  "status": "ACTIVE",
   "base": "1799.0",
   "variant": "gid://shopify/ProductVariant/54865228726456",
   "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
@@ -29,7 +29,7 @@
  },
  {
   "handle": "fu-doll-white-peach-163cm-i-cup-silicone-companion-doll",
-  "status": "DRAFT",
+  "status": "ACTIVE",
   "base": "2299.0",
   "variant": "gid://shopify/ProductVariant/54865245700280",
   "bindingKey": "fudoll-female-silicone-044e91b62c4d",
@@ -43,7 +43,7 @@
  },
  {
   "handle": "fu-doll-qin-xingyue-163cm-i-cup-silicone-companion-doll",
-  "status": "DRAFT",
+  "status": "ACTIVE",
   "base": "2299.0",
   "variant": "gid://shopify/ProductVariant/54865245995192",
   "bindingKey": "fudoll-female-silicone-044e91b62c4d",
@@ -57,16 +57,72 @@
  },
  {
   "handle": "fu-doll-luo-chengchuan-176cm-male-silicone-companion-doll",
-  "status": "DRAFT",
+  "status": "ACTIVE",
   "base": "2299.0",
   "variant": "gid://shopify/ProductVariant/54865246224568",
   "bindingKey": "fudoll-male-silicone-55e8ec088468",
   "runtimeHash": "824962066a8287eb625006ff535fc32c1554f7e985ee56d3e5706ac969fccf76",
   "tiers": [
-   2324,
-   2424,
-   2624
+   2299,
+   2399,
+   2599
   ],
   "paidOptions": 24
+ },
+ {
+  "handle": "fu-doll-anna-162cm-f-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2099.0",
+  "variant": "gid://shopify/ProductVariant/54252692242616",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "ab79af1882a7164edde68dcf5e7c1cd6a74b75cca8ab4c4cd88d7a6a046870e0",
+  "tiers": [
+   2159,
+   2259,
+   2459
+  ],
+  "paidOptions": 59
+ },
+ {
+  "handle": "fu-doll-tifa-162cm-f-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2099.0",
+  "variant": "gid://shopify/ProductVariant/54252692340920",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "9e570f102062798e80a3d2d5cdc62d884b8f7d42bd33d890bd8a813c32104e65",
+  "tiers": [
+   2159,
+   2259,
+   2459
+  ],
+  "paidOptions": 59
+ },
+ {
+  "handle": "fu-doll-lisa-157cm-g-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2199.0",
+  "variant": "gid://shopify/ProductVariant/54252695617720",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "9f3d9d83e759e8f3d36c5b060cce74cbff366b51977fc0bddee077710dab1a41",
+  "tiers": [
+   2259,
+   2359,
+   2559
+  ],
+  "paidOptions": 59
+ },
+ {
+  "handle": "fu-doll-ziqing-165cm-f-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2099.0",
+  "variant": "gid://shopify/ProductVariant/54252695683256",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "d21b49d03158485bb685ac496d28c8850b2f061bb8efe61b3a05cb6630cd24ed",
+  "tiers": [
+   2159,
+   2259,
+   2459
+  ],
+  "paidOptions": 59
  }
 ]
