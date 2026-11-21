@@ -272,7 +272,8 @@ function normalizeProductKind(value: CatalogNamingInput["productKind"]) {
 
 function inferProductKind(product: Product) {
   const productType = cleanText(product.productType).toLowerCase();
-  const text = cleanText(`${productType} ${product.tags.join(" ")}`).toLowerCase();
+  // Menu tags (options:...) name a configuration, not the product form: Horty Si60 X reuses the ULW torso menu.
+  const text = cleanText(`${productType} ${product.tags.filter(tag => !/^options:/i.test(tag)).join(" ")}`).toLowerCase();
   if (/\bsilicone[-\s]?head\s+doll\b/.test(productType) || /\bsilicone[-\s]?head\s+companion\b/.test(productType)) return "full_doll";
   if (/\b(replacement\s+head|standalone\s+head|doll\s+head|heads?)\b/.test(productType)) return "head";
   if (/\btorso\b/.test(text)) return "torso";

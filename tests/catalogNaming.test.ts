@@ -32,6 +32,16 @@ describe("DollWow catalog naming", () => {
     expect(productDisplayName({ ...product, extended: { ...product.extended, displayName: "Custom editorial name" } })).toBe("Custom editorial name");
   });
 
+  it("does not read the product form from a menu tag (Horty Si60 X uses the ULW torso menu)", () => {
+    const base = { ...sampleProducts[0], title: "Climax Horty 60cm Si60 X Silicone Mini Doll", productType: "Silicone Doll", vendor: "Climax Doll",
+      extended: { ...sampleProducts[0].extended, brand: "Climax Doll", displayName: "Horty", heightCm: 60, material: "Silicone", customAvailable: true } };
+    const mini = { ...base, tags: ["climax", "full-doll", "mini", "options:climax-ulw885-torso-v1"] };
+    expect(productPdpTitle(mini)).toMatch(/Companion Doll/);
+    expect(productPdpTitle(mini)).not.toMatch(/Torso/);
+    const torso = { ...base, productType: "Torso", tags: ["climax", "torso", "form:torso", "options:climax-ulw885-torso-v1"] };
+    expect(productPdpTitle(torso)).toMatch(/Torso/);
+  });
+
   it("builds factual DollWow-owned public names", () => {
     const name = buildDollWowCatalogName({
       brand: "WM Dolls",
