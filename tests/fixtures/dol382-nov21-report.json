@@ -1,0 +1,72 @@
+[
+ {
+  "handle": "climax-lexi-157cm-f-cup-ulw-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "1799.0",
+  "variant": "gid://shopify/ProductVariant/54865227448504",
+  "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
+  "runtimeHash": "c4c3030b7e08f0cdd027f91e3225dd9b0c3e5bc7716f1bceb1672a3001133927",
+  "tiers": [
+   1859,
+   1859,
+   1959
+  ],
+  "paidOptions": 31
+ },
+ {
+  "handle": "climax-frida-157cm-f-cup-ulw-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "1799.0",
+  "variant": "gid://shopify/ProductVariant/54865228726456",
+  "bindingKey": "8586064917530b4599bbb3c6026a0013ce64e2dff8aea26f579fea957b6b719d",
+  "runtimeHash": "8202510287ef9142b52f347fa3166d1016ccd71ec3e1e12818ea48398e4bd8ae",
+  "tiers": [
+   1859,
+   1859,
+   1959
+  ],
+  "paidOptions": 31
+ },
+ {
+  "handle": "fu-doll-white-peach-163cm-i-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2299.0",
+  "variant": "gid://shopify/ProductVariant/54865245700280",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "06aad8648addbc2f298488111c6697fb5a9dc7967527095faed229e0c8e6a286",
+  "tiers": [
+   2359,
+   2459,
+   2659
+  ],
+  "paidOptions": 59
+ },
+ {
+  "handle": "fu-doll-qin-xingyue-163cm-i-cup-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2299.0",
+  "variant": "gid://shopify/ProductVariant/54865245995192",
+  "bindingKey": "fudoll-female-silicone-044e91b62c4d",
+  "runtimeHash": "c2fdd8a7b73fa2a7d091c65d0085f7e3679c2c6c89ef5fc871c74d936c3eee66",
+  "tiers": [
+   2359,
+   2459,
+   2659
+  ],
+  "paidOptions": 59
+ },
+ {
+  "handle": "fu-doll-luo-chengchuan-176cm-male-silicone-companion-doll",
+  "status": "DRAFT",
+  "base": "2299.0",
+  "variant": "gid://shopify/ProductVariant/54865246224568",
+  "bindingKey": "fudoll-male-silicone-55e8ec088468",
+  "runtimeHash": "824962066a8287eb625006ff535fc32c1554f7e985ee56d3e5706ac969fccf76",
+  "tiers": [
+   2324,
+   2424,
+   2624
+  ],
+  "paidOptions": 24
+ }
+]

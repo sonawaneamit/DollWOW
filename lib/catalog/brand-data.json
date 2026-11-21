@@ -315,6 +315,22 @@
     ]
   },
   {
+    "value": "fudoll",
+    "label": "FU Doll",
+    "collectionHandle": "fu-doll",
+    "tags": [
+      "fudoll",
+      "fu-doll",
+      "fudoll-dolls"
+    ],
+    "aliases": [
+      "fudoll",
+      "fu doll",
+      "fu dolls",
+      "fu-doll"
+    ]
+  },
+  {
     "value": "6ye",
     "label": "6YE Dolls",
     "collectionHandle": "6ye-dolls",

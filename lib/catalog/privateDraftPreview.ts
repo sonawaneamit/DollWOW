@@ -18,6 +18,11 @@ export async function getPrivateDraftPreview(handle: string): Promise<Product | 
     const fanreal = fanrealPdpPreviewProduct(handle);
     if (fanreal) return fanreal;
   }
+  if (process.env.DOL382_NEW_DOLLS_PREVIEW === '1') {
+    const { default: newDolls } = await import('@/data/draft-previews/dol382-new-dolls-nov19.json');
+    const candidate = newDolls.find(p => p.handle === handle);
+    if (candidate) return structuredClone(candidate) as unknown as Product;
+  }
   const mmx = mmxPdpPreviewProduct(handle);
   if (mmx) return mmx;
   const grace = grace160PreviewProduct(handle);
@@ -38,6 +43,11 @@ export async function privateDraftRecipe(product: Product, config: BrandCustomiz
     const { fanrealPdpPreviewRecipe } = await import('./fanrealPdpPreview');
     const fanrealRecipe = fanrealPdpPreviewRecipe(product, config);
     if (fanrealRecipe !== undefined) return fanrealRecipe;
+  }
+  if (process.env.VERCEL_ENV === 'preview' && process.env.DOL382_NEW_DOLLS_PREVIEW === '1') {
+    const { default: recipes } = await import('@/data/draft-previews/dol382-new-dolls-recipes-nov19.json');
+    const entry = recipes.find(r => r.productIds.includes(product.id));
+    if (entry) return entry.recipe ? { ...structuredClone(entry.recipe), signature: templateConfigSignature(config) } as TemplatePresetDefinition : null;
   }
   const mmxRecipe = mmxPdpPreviewRecipe(product, config);
   if (mmxRecipe !== undefined) return mmxRecipe;
