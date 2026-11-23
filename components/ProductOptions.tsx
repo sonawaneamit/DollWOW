@@ -68,12 +68,13 @@ import { PresetChoiceDialog } from "./PresetChoiceDialog";
 import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/customization/ido-md';
 import { includedBuildItems, isChikuPreview, isChikuEyeImage } from "@/lib/customization/chiku-preview";
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
+import { BfcmPreviewSummary } from './BfcmPreviewSummary';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
-  if (isFixedWarehouseUnit) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit />;
-  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} />;
+  if (isFixedWarehouseUnit && !product.extended.bfcmPreview) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit draftPreview={draftPreview} />;
+  return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} draftPreview={draftPreview} />;
 }
 
 function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, presetChoicePreview, draftPreview }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview: boolean; draftPreview: boolean }) {
@@ -551,6 +552,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   }} className="min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Review / edit options</button>
                 </div>
                 <PriceSummary basePrice={basePrice} optionPriceDelta={purchaseTotal - basePrice} totalPrice={purchaseTotal} currencyCode={currencyCode} />
+                {product.extended.bfcmPreview && <BfcmPreviewSummary offer={product.extended.bfcmPreview} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
                 {pendingChoices.length > 0 && <p className="mt-2 text-sm text-text-dim">Includes the extra-head upgrade. Choose your head before adding to cart.</p>}
 
                 {hasIssues ? (
@@ -779,7 +781,9 @@ export function OptionTile({ product, group, option, catalogOption, selected, di
   allowPromotions: boolean;
   onClick: () => void;
 }) {
-  const pricing = promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions, promotionContext);
+  const pricing = product.extended.bfcmPreview && option.priceDelta === 0 && catalogOption.priceDelta !== 0
+    ? { displayDelta: 0, catalogDelta: catalogOption.priceDelta ?? 0, strike: true, promoLabel: `${product.extended.bfcmPreview.brand} Black Friday`, displayLabel: option.label, active: true, eligible: true }
+    : promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions, promotionContext);
   return (
     <button
       type="button"
@@ -823,7 +827,7 @@ function OptionMark({ option, selected }: { option: CustomizationOption; selecte
   return <span className={clsx("flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-semibold", selected ? "bg-accent text-white" : "bg-surface-tint text-text")}>{option.swatch?.label ?? option.label.slice(0, 1)}</span>;
 }
 
-function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { product: Product; fixedWarehouseUnit?: boolean }) {
+function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPreview = false }: { product: Product; fixedWarehouseUnit?: boolean; draftPreview?: boolean }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -834,7 +838,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false }: { prod
   const heroImage = product.featuredImage ?? product.images[0] ?? null;
   const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
-  const canCheckout = Boolean(firstAvailable?.id && firstAvailable.availableForSale);
+  const canCheckout = Boolean(!draftPreview && firstAvailable?.id && firstAvailable.availableForSale);
   const checkedAt = product.extended.stockLastCheckedAt ? new Date(product.extended.stockLastCheckedAt) : null;
   const checkedLabel = checkedAt && !Number.isNaN(checkedAt.getTime())
     ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(checkedAt)

@@ -51,6 +51,7 @@ export type Product = {
 };
 
 export type ProductExtended = {
+  bfcmPreview?: import("@/lib/promotions/bfcmBrandPreview").BfcmPreview;
   catalogIdentityKey?: string;
   catalogBodyIdentityKey?: string;
   headModel?: string;

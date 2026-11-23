@@ -1,3 +1,4 @@
+import { bfcmPreviewConfig } from './bfcmBrandPreview';
 import {
   irontechAutumnOfferForProduct,
   isIrontechAutumnPromotionActive,
@@ -206,7 +207,9 @@ export function promotionPricingForSelections(
   const effectiveSelections = { ...getDefaultSelections(structuralConfig), ...selections };
   const context: OctoberPricingContext = { config: catalogConfig, selections: effectiveSelections };
   return {
-    config: withPromotionOptionPricing(product, catalogConfig, now, true, effectiveSelections),
+    config: product.extended.bfcmPreview
+      ? bfcmPreviewConfig(withPromotionOptionPricing(product, catalogConfig, now, true, effectiveSelections), product.extended.bfcmPreview, now).config
+      : withPromotionOptionPricing(product, catalogConfig, now, true, effectiveSelections),
     context
   };
 }
