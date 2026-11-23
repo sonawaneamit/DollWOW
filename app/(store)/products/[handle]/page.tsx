@@ -66,9 +66,11 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
 import { withBfcmPreview } from "@/lib/promotions/bfcmBrandPreview";
+import { withFanrealNovemberPreview, isFanrealNovPromoLive } from "@/lib/promotions/fanrealNovember2026";
+import { FanrealNovemberPdpPromotion } from "@/components/promotions/FanrealNovemberPromotion";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
-  return withBfcmPreview(withGreenbackPricePreview(applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"))));
+  return withFanrealNovemberPreview(withBfcmPreview(withGreenbackPricePreview(applyChikuPreview(product, process.env.VERCEL_ENV === "preview" || (process.env.NEXT_PUBLIC_DOL313_PREVIEW === "1" && process.env.NEXT_PUBLIC_VERCEL_ENV === "preview")))));
 }
 
 export const revalidate = 60;
@@ -83,7 +85,8 @@ export async function generateMetadata({ params, searchParams }: { params: Promi
   const metadata = buildPdpMetadata(withProtectedProductImages(product));
   if (isChikuPreview(previewProduct(product))) return { ...metadata, robots: { index: false, follow: false } };
   const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
-  if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || isBfcmPreview || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
+  const isFanrealNovPreview = isFanrealNovPromoLive() && process.env.VERCEL_ENV === 'preview';
+  if (isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || lusandyNovemberPreviewEnabled() || isBfcmPreview || isFanrealNovPreview || editorialPreview === "1" || (product.tags || []).some((tag) => /^dollwow-test$/i.test(tag))) {
     return { ...metadata, robots: { index: false, follow: false } };
   }
   return metadata;
@@ -101,14 +104,15 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
   const product = previewProduct(withPreviewCustomizationFixture(
     withPreviewEditorialFixture(mergeProductAdminMetafields(storefrontProduct, adminProductData))
   ));
-  // isBfcmPreview: only true in Vercel preview environment (for noindex/draft behavior)
+  // isBfcmPreview / isFanrealNovPreview: only true in Vercel preview (for noindex/draft behavior)
   const isBfcmPreview = process.env.DOL371_BRAND_PREVIEW === '1' && process.env.VERCEL_ENV === 'preview';
-  // promotionPreview: controls JSON-LD and trackers (do NOT set for production BFCM)
-  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid');
+  const isFanrealNovPreview = isFanrealNovPromoLive() && process.env.VERCEL_ENV === 'preview';
+  // promotionPreview: controls JSON-LD and trackers (do NOT set for production BFCM or a future live Fanreal switch)
+  const promotionPreview = lusandyNovemberPreviewEnabled() || isGreenbackPricePreview(product) || (gynoidEarlyBirdPreviewEnabled() && canonicalBrandValue(product.extended.brand ?? product.vendor) === 'gynoid') || isFanrealNovPreview;
   const privateDraft = await getPrivateDraftPreview(handle);
-  // Don't treat ANY published products as private drafts during BFCM preview
+  // Don't treat ANY published products as private drafts during BFCM / Fanreal November preview
   const isDraftTest = product.tags.some(t => /dollwow-test|catalog-review-hold/i.test(t));
-  const isPrivateDraft = (isBfcmPreview && !isDraftTest) ? false : Boolean(privateDraft);
+  const isPrivateDraft = ((isBfcmPreview || isFanrealNovPreview) && !isDraftTest) ? false : Boolean(privateDraft);
   const isElf = isPrivateDraft && isSeElfPreviewProduct(product);
   // FunWest/Top Fire supplier labels carry "(FREE)" sale slogans; the builder already shows "included".
   // Strip only the public payload so template runtime hashes keep binding to the source menu.
@@ -205,6 +209,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
             {gynoidEarlyBirdEnabled() && canonicalBrandValue(productBrand) === 'gynoid' ? <GynoidEarlyBirdPromotion placement="pdp" promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} /> : null}
             <SeDollPdpFreebieBlock product={publicProduct} />
             <IrontechAutumnPdpPromotion product={publicProduct} promoClock={promoClock} />
+            <FanrealNovemberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} />
             <FanrealSeptemberPdpPromotion product={publicProduct} promoClock={promoClock} />
             <JinsanOctoberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} />
             <LusandyNovemberPdpPromotion product={publicProduct} promoClock={promoClock ?? new Date().toISOString()} freezeClock={Boolean(promoClock)} />
@@ -230,11 +235,22 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               {isDollVueCatalogProduct(product) ? <DollVueBadge /> : null}
             </ProductHeadingElement>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              {product.extended.bfcmPreview && product.extended.bfcmPreview.originalPrice > product.extended.bfcmPreview.price ? (
+              {product.extended.fanrealNovember && product.extended.fanrealNovember.cashOff > 0 ? (
+                <>
+                  <del className="text-xl text-ivory-500"><DisplayMoney amount={product.extended.fanrealNovember.originalPrice.toFixed(2)} currencyCode={price.currencyCode} /></del>
+                  <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">Fanreal November deal</span>
+                </>
+              ) : product.extended.bfcmPreview && product.extended.bfcmPreview.originalPrice > product.extended.bfcmPreview.price ? (
                 <>
                   <del className="text-xl text-ivory-500"><DisplayMoney amount={product.extended.bfcmPreview.originalPrice.toFixed(2)} currencyCode={price.currencyCode} /></del>
                   <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
                   <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{product.extended.bfcmPreview.brand} Black Friday</span>
+                </>
+              ) : product.extended.fanrealNovember ? (
+                <>
+                  <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">Fanreal November deal</span>
                 </>
               ) : (
                 <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
@@ -317,7 +333,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
         <div id="build-studio" className="scroll-mt-28">
           <SeHalloweenPromotion enabled={isSeHalloweenArtworkEnabled() && relatedBrand?.value === 'sedoll'} initialClock={promoClock ?? new Date().toISOString()} />
           <GynoidBodyVersionNote product={product} />
-          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || (promotionPreview && !isBfcmPreview)}
+          <ProductOptions product={publicProduct} config={customizationConfig} promoClock={promoClock} templateRecipe={templateRecipe} draftPreview={isPrivateDraft || (promotionPreview && !isBfcmPreview && !isFanrealNovPreview)}
             presetChoicePreview={(process.env.DOLLWOW_TEMPLATE_RELEASE === "1" || (process.env.NODE_ENV !== "production" && process.env.DOLLWOW_EXACT_UPGRADE_PILOT === "1")) && product.tags.some(tag => tag.startsWith("options:se-"))} />
         </div>
       </ToneBand>

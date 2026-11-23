@@ -65,7 +65,7 @@ export function publicProductPayload(product: Product): Product {
   return {
     ...pick(product, ['id', 'dollVueAvailable', 'handle', 'title', 'description', 'seo', 'vendor', 'productType', 'tags', 'featuredImage', 'images', 'media', 'variants', 'priceRange']),
     extended: {
-      ...pick(extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable', 'bfcmPreview']),
+      ...pick(extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable', 'bfcmPreview', 'fanrealNovember']),
       ...(product.extended.customizationGroups ? { customizationGroups: publicCustomizationGroups(product.extended.customizationGroups) } : {}),
       ...(product.extended.editorialIntro ? { editorialIntro: pick(product.extended.editorialIntro, ['eyebrow', 'heading', 'paragraph']) } : {})
     }

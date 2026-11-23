@@ -12,6 +12,7 @@ import { reviewedGynoidIdentity, assertGynoidStandardCheckout } from '@/lib/cust
 import { gynoidDependencyPlan } from './gynoid-dependencies';
 import { fanrealDependencyPlan } from './fanreal-dependencies';
 import { bfcmOffer, bfcmPreviewConfig } from '@/lib/promotions/bfcmBrandPreview';
+import { isFanrealNovPromoLive, fanrealNovemberOffer, fanrealNovemberConfig } from '@/lib/promotions/fanrealNovember2026';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -96,6 +97,12 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
       config = bfcmResult.config;
     }
   }
+  if (isFanrealNovPromoLive()) {
+    const fanrealOffer = fanrealNovemberOffer(product);
+    if (fanrealOffer) {
+      config = fanrealNovemberConfig(config, fanrealOffer).config;
+    }
+  }
   
   validateStructuredSelections(config, input.selections, product);
   const resolved = resolveCustomization(config, input.selections, basePrice);
@@ -175,6 +182,7 @@ function validateStructuredSelections(
   // Check if BFCM preview is active for this product
   const { isBfcmPromoLive: checkBfcmLive, bfcmOffer: checkBfcmOffer } = require('@/lib/promotions/bfcmBrandPreview');
   const bfcmPreview = product && checkBfcmLive() ? checkBfcmOffer(product) : null;
+  const fanrealPreview = product && isFanrealNovPromoLive() ? fanrealNovemberOffer(product) : null;
   const bfcmFreeOptions = new Set<string>();
   
   if (bfcmPreview) {
@@ -187,6 +195,20 @@ function validateStructuredSelections(
           .find(g => g.id === group.id)
           ?.options.find(o => o.id === option.id);
         if (catalogOption && option.priceDelta === 0 && (catalogOption.priceDelta ?? 0) > 0) {
+          bfcmFreeOptions.add(`${group.id}:${option.id}`);
+        }
+      }
+    }
+  }
+  if (fanrealPreview && product) {
+    const catalog = getCustomizationConfig(product);
+    const { config: fanrealConfig } = fanrealNovemberConfig(catalog, fanrealPreview);
+    for (const group of fanrealConfig.groups) {
+      for (const option of group.options) {
+        const catalogOption = catalog.groups
+          .find(g => g.id === group.id)
+          ?.options.find(o => o.id === option.id);
+        if (option.priceDelta === 0 && ((catalogOption?.priceDelta ?? 0) > 0 || group.id.startsWith('fanreal-nov-'))) {
           bfcmFreeOptions.add(`${group.id}:${option.id}`);
         }
       }
