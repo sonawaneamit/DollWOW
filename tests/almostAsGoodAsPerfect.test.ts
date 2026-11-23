@@ -12,6 +12,7 @@ import {
   shouldSkipWarehouseDeliveryDate
 } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { collectionPresets, filterProducts } from "@/lib/catalog/filters";
+import { buildProductFaqStructuredData, buildProductStructuredData, pdpFaqItems } from "@/lib/catalog/pdpSeo";
 import type { Product } from "@/types/product";
 
 function product(partial: Partial<Product> & { id: string; tags: string[] }): Product {
@@ -98,5 +99,43 @@ describe("almost as good as perfect", () => {
         "Made to order · reviewed by our team first"
       )
     ).toBe("Ready to ship · timing confirmed before checkout");
+  });
+
+  it("keeps JSON-LD from calling clearance units ready to ship", () => {
+    const clearance = product({
+      id: "clearance",
+      tags: ["almost-as-good-as-perfect", "ido"],
+      extended: {
+        stockStatus: "ready_to_ship",
+        deliveryEstimate: "Est. 4–8 weeks by sea from China",
+        warehouseCountry: "China",
+        stockLastCheckedAt: "2026-11-23",
+        customAvailable: false
+      } as Product["extended"]
+    });
+    const regular = product({
+      id: "regular",
+      tags: ["ido", "ready_to_ship"],
+      handle: "ido-regular-us-warehouse",
+      title: "IDO Regular US Warehouse Doll",
+      extended: { stockStatus: "ready_to_ship", customAvailable: false, qcNote: undefined } as Product["extended"]
+    });
+
+    const clearanceSchema = buildProductStructuredData(clearance);
+    const regularSchema = buildProductStructuredData(regular);
+    expect(clearanceSchema.additionalProperty).toContainEqual(expect.objectContaining({ name: "Stock status", value: ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY }));
+    expect(clearanceSchema.additionalProperty).not.toContainEqual(expect.objectContaining({ name: "Stock status", value: "Ready to ship" }));
+    expect(clearanceSchema.additionalProperty).not.toContainEqual(expect.objectContaining({ name: "Stock last checked" }));
+    expect(clearanceSchema.offers.availability).toBe("https://schema.org/LimitedAvailability");
+    expect(String(clearanceSchema.keywords)).not.toMatch(/ready to ship/i);
+    expect(regularSchema.additionalProperty).toContainEqual(expect.objectContaining({ name: "Stock status", value: "Ready to ship" }));
+    expect(regularSchema.offers.availability).toBe("https://schema.org/InStock");
+
+    const faqs = pdpFaqItems(clearance);
+    expect(faqs.map((item) => item.answer).join(" ")).toMatch(/4–8 weeks by sea/i);
+    expect(faqs.map((item) => item.answer).join(" ")).not.toMatch(/Warehouse dolls usually move faster/i);
+    expect(faqs.map((item) => item.answer).join(" ")).not.toMatch(/listed as ready to ship/i);
+    expect(buildProductFaqStructuredData(clearance).mainEntity.find((item) => item.name === "Do I get factory approval photos before shipment?")?.acceptedAnswer.text).not.toMatch(/Warehouse dolls usually move faster/i);
+    expect(pdpFaqItems(regular).some((item) => /Warehouse dolls usually move faster/i.test(item.answer))).toBe(true);
   });
 });

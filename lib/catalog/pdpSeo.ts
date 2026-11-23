@@ -303,8 +303,9 @@ export function buildProductStructuredData(product: Product) {
       "@type": "Offer",
       priceCurrency: product.priceRange.minVariantPrice.currencyCode,
       price: product.priceRange.minVariantPrice.amount,
-      availability:
-        product.extended.stockStatus === "ready_to_ship"
+      availability: isAlmostAsGoodAsPerfect(product)
+        ? "https://schema.org/LimitedAvailability"
+        : product.extended.stockStatus === "ready_to_ship"
           ? "https://schema.org/InStock"
           : "https://schema.org/PreOrder",
       itemCondition: "https://schema.org/NewCondition",
@@ -328,11 +329,11 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
     { name: productWeightLabel(product), value: product.extended.weightLb ? `${product.extended.weightLb} lb` : undefined },
     { name: "Cup size", value: normalizeCup(product.extended.cupSize) },
     { name: "Ordering option", value: orderPathLabel(product) },
-    { name: "Stock status", value: stockStatusLabel(product.extended.stockStatus) },
-    { name: "Customization available", value: product.extended.customAvailable === true ? "Yes" : product.extended.stockStatus === "ready_to_ship" ? "No" : "Confirm available options with our team" },
+    { name: "Stock status", value: stockStatusLabel(product) },
+    { name: "Customization available", value: isAlmostAsGoodAsPerfect(product) ? "Any IDO head can be chosen after you order, included in the price" : product.extended.customAvailable === true ? "Yes" : product.extended.stockStatus === "ready_to_ship" ? "No" : "Confirm available options with our team" },
     { name: "Delivery estimate", value: product.extended.deliveryEstimate },
     { name: "Warehouse country", value: product.extended.warehouseCountry },
-    { name: "Stock last checked", value: product.extended.stockLastCheckedAt }
+    { name: "Stock last checked", value: isAlmostAsGoodAsPerfect(product) ? "" : product.extended.stockLastCheckedAt }
   ];
 
   const seen = new Set<string>();
@@ -362,7 +363,9 @@ function orderPathLabel(product: Product) {
   return product.extended.stockStatus === "custom" ? "Factory order" : undefined;
 }
 
-function stockStatusLabel(status: Product["extended"]["stockStatus"]) {
+function stockStatusLabel(product: Product) {
+  if (isAlmostAsGoodAsPerfect(product)) return ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY;
+  const status = product.extended.stockStatus;
   if (status === "ready_to_ship") return "Ready to ship";
   if (status === "custom") return "Custom order";
   if (status === "check_stock") return "Check stock";
@@ -385,13 +388,16 @@ export function buildProductFaqStructuredData(product: Product) {
 }
 
 export function pdpFaqItems(product: Product): FaqItem[] {
+  const almostAsGood = isAlmostAsGoodAsPerfect(product);
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
-  const delivery = product.extended.deliveryEstimate || (readyToShip ? "Typical warehouse delivery is 3–5 business days" : "Typical timing depends on the build");
+  const delivery = product.extended.deliveryEstimate || (almostAsGood ? ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY : readyToShip ? "Typical warehouse delivery is 3–5 business days" : "Typical timing depends on the build");
 
   return [
     {
       question: "How does delivery work for this build?",
-      answer: readyToShip
+      answer: almostAsGood
+        ? `This is a one-of-a-kind clearance doll. It ships from China by sea in about 4–8 weeks, sold as-is. ${delivery}.`
+        : readyToShip
         ? `This model is listed as ready to ship. Our team verifies stock and release details before discreet delivery. ${delivery}.`
         : `This model is built to order. ${delivery}.`
     },
@@ -401,7 +407,9 @@ export function pdpFaqItems(product: Product): FaqItem[] {
     },
     {
       question: "Do I get factory approval photos before shipment?",
-      answer: readyToShip
+      answer: almostAsGood
+        ? "The photos on this listing are of this exact body, which ships as shown in about 4–8 weeks by sea from China. After you order, you choose any IDO head, included in the price."
+        : readyToShip
         ? "Warehouse dolls usually move faster, but our team can still confirm what final approval material is available before the order ships."
         : "Yes. For custom builds, we request detailed factory photos and videos before shipment so you can approve the final look or ask for revisions."
     },
@@ -414,6 +422,9 @@ export function pdpFaqItems(product: Product): FaqItem[] {
 }
 
 function customizationCopy(product: Product) {
+  if (isAlmostAsGoodAsPerfect(product)) {
+    return "This exact body ships as shown, including its small cosmetic mark. After you order, pick any IDO head you like — it's included in the price.";
+  }
   if (product.extended.customAvailable === true) {
     return "Start with the included configuration, then review available options and price changes before checkout.";
   }
@@ -440,7 +451,7 @@ function buildPdpMetaDescription(product: Product) {
   const publicTitle = /\bhybrid\b/i.test(product.title)
     ? productPublicTitle(product).replace(/silicone[ -]head/i, "Hybrid")
     : productPublicTitle(product);
-  const stock = product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : product.extended.customAvailable ? "Customizable build." : "";
+  const stock = isAlmostAsGoodAsPerfect(product) ? `${ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY}.` : product.extended.stockStatus === "ready_to_ship" ? "Ready to ship." : product.extended.customAvailable ? "Customizable build." : "";
   const height = product.extended.heightCm ? `${product.extended.heightCm} cm` : "";
   const weight = product.extended.weightLb ? `${productWeightLabel(product) !== 'Weight' ? `${productWeightLabel(product)}: ` : ''}${Number(product.extended.weightLb.toFixed(1))} lb` : "";
   const normalizedCup = normalizeCup(product.extended.cupSize);
@@ -500,8 +511,8 @@ function buildIntentChips(product: Product): IntentChip[] {
 
   chips.push({ label: "Realistic build", keyword: "realistic sex doll" });
 
-  if (product.extended.stockStatus === "ready_to_ship") chips.push({ label: "Ready to ship", keyword: "ready to ship sex doll" });
-  else if (product.extended.customAvailable) chips.push({ label: "Custom order", keyword: "custom sex doll" });
+  if (!isAlmostAsGoodAsPerfect(product) && product.extended.stockStatus === "ready_to_ship") chips.push({ label: "Ready to ship", keyword: "ready to ship sex doll" });
+  else if (!isAlmostAsGoodAsPerfect(product) && product.extended.customAvailable) chips.push({ label: "Custom order", keyword: "custom sex doll" });
 
   if (height && height <= 155) chips.push({ label: "Petite size", keyword: "petite sex doll" });
   if (height >= 170) chips.push({ label: "Tall size", keyword: "tall sex doll" });
