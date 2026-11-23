@@ -66,7 +66,7 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
 import { withBfcmPreview } from "@/lib/promotions/bfcmBrandPreview";
-import { withFanrealNovemberPreview, isFanrealNovPromoLive, fanrealNovemberHasCustomerOffer } from "@/lib/promotions/fanrealNovember2026";
+import { withFanrealNovemberPreview, isFanrealNovPromoLive, fanrealNovemberHasCustomerOffer, fanrealNovemberHeadline } from "@/lib/promotions/fanrealNovember2026";
 import { FanrealNovemberPdpPromotion } from "@/components/promotions/FanrealNovemberPromotion";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
@@ -239,7 +239,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 <>
                   <del className="text-xl text-ivory-500"><DisplayMoney amount={product.extended.fanrealNovember.originalPrice.toFixed(2)} currencyCode={price.currencyCode} /></del>
                   <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
-                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">Fanreal November deal</span>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{fanrealNovemberHeadline(product.extended.fanrealNovember)}</span>
                 </>
               ) : product.extended.bfcmPreview && product.extended.bfcmPreview.originalPrice > product.extended.bfcmPreview.price ? (
                 <>
@@ -250,7 +250,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               ) : fanrealNovemberHasCustomerOffer(product.extended.fanrealNovember) ? (
                 <>
                   <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
-                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">Fanreal November deal</span>
+                  <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{fanrealNovemberHeadline(product.extended.fanrealNovember)}</span>
                 </>
               ) : (
                 <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>

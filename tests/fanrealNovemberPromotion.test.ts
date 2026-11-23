@@ -10,6 +10,7 @@ import {
   fanrealNovemberHasCustomerOffer,
   fanrealNovemberGiftLabels,
   fanrealNovemberHeadline,
+  fanrealNovemberSummaryCopy,
   isFanrealNovPromoLive,
   isFanrealNovemberActive,
   matchFanrealNovemberGift,
@@ -215,6 +216,16 @@ describe('Fanreal November 2026 promo', () => {
     expect(fanrealNovemberHeadline(anne)).toBe('Save $100 + 12 free upgrades');
     expect(fanrealNovemberGiftLabels(anne)).toContain('Free second head');
     expect(fanrealNovemberGiftLabels(anne)).toHaveLength(12);
+    expect(fanrealNovemberSummaryCopy(anne)).toEqual({
+      headline: 'Save $100 + 12 free upgrades',
+      lead: '$100 off your doll this November, plus 12 complimentary upgrades — including a second head. Choose them in the options below.',
+      stack: 'Stack another $299 off with BLACKFRIDAYWOW26 on orders of $900+. Ends 30 November 2026.'
+    });
+
+    const t95g = fanrealNovemberOffer(product({ title: 'Fanreal Nora T-95G Silicone Customizable Companion Doll', handle: 'fanreal-nora-t95g-g-cup-silicone-torso-companion-doll', price: 1814, heightCm: 95, cupSize: 'G', tags: ['custom', 'torso', 'silicone'] }), inside) as FanrealNovemberPreview;
+    expect(fanrealNovemberHeadline(t95g)).toBe('Save $134 + 12 free upgrades');
+    expect(fanrealNovemberSummaryCopy(t95g).lead).toContain('$134 off');
+    expect(fanrealNovemberSummaryCopy(t95g).lead).toContain('including a second head');
 
     const uni = fanrealNovemberOffer(product({ title: 'Fanreal Nora 166cm J-Cup UniSeries Silicone Companion Doll', handle: 'fanreal-nora-166cm-j-cup-uniseries-silicone-companion-doll', price: 3280, heightCm: 166, cupSize: 'J', tags: ['custom', 'customizable', 'silicone', 'uni-series'] }), inside) as FanrealNovemberPreview;
     expect(uni.gifts).not.toContain('second-head');
@@ -223,6 +234,9 @@ describe('Fanreal November 2026 promo', () => {
     expect(fanrealNovemberGiftLabels(uni).some((label) => /second head/i.test(label))).toBe(false);
     expect(fanrealNovemberGiftLabels(uni)).toContain('Free ROS (movable jaw)');
     expect(fanrealNovemberGiftLabels(uni)).not.toContain('Free ROS (movable jaw), including on your second head');
+    expect(fanrealNovemberSummaryCopy(uni).headline).toBe('Save $100 + 11 free upgrades');
+    expect(fanrealNovemberSummaryCopy(uni).lead).toBe('$100 off your doll this November, plus 11 complimentary upgrades. Choose them in the options below.');
+    expect(fanrealNovemberSummaryCopy(uni).lead).not.toMatch(/second head/i);
   });
 
   it('lets Add to Cart keep the reviewed catalog hash after November prices are applied', () => {

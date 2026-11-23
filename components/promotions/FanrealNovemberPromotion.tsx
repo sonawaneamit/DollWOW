@@ -9,7 +9,7 @@ import type { Product } from "@/types/product";
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended" | "priceRange">;
 
 export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: PromotionProduct; promoClock?: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   // Only render when the server attached the offer (flag is on). Do not read the
   // date window alone or this banner would appear on the live site before approval.
   const offer = product.extended.fanrealNovember;
@@ -34,8 +34,11 @@ export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: 
             <Image src={FANREAL_NOVEMBER_PROMOTION.mobileHeroImage} alt={FANREAL_NOVEMBER_PROMOTION.heroAlt} fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-contain sm:hidden" />
             <Image src={FANREAL_NOVEMBER_PROMOTION.heroImage} alt={FANREAL_NOVEMBER_PROMOTION.heroAlt} fill sizes="(min-width: 1024px) 55vw, 100vw" className="hidden object-contain sm:block" />
           </span>
-          <span className="flex min-h-12 items-center justify-between gap-3 border-t border-gold-500/20 bg-ink-950 px-4 py-3 text-sm font-semibold text-ivory-100 sm:px-5">
-            <span>Fanreal November deal — {FANREAL_NOVEMBER_PROMOTION.dateLabel}</span>
+          <span className="flex min-h-12 items-center justify-between gap-3 border-t border-gold-500/20 bg-ink-950 px-4 py-3 text-ivory-100 sm:px-5">
+            <span className="min-w-0">
+              <span className="block text-base font-semibold leading-6 sm:text-lg">{headline}</span>
+              <span className="mt-0.5 block text-sm font-medium text-gold-300">{FANREAL_NOVEMBER_PROMOTION.dateLabel}</span>
+            </span>
             <ChevronDown className={`h-5 w-5 shrink-0 text-gold-300 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
           </span>
         </button>

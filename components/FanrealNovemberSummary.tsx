@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { fanrealNovemberCart, type FanrealNovemberPreview } from '@/lib/promotions/fanrealNovember2026';
+import { fanrealNovemberCart, fanrealNovemberSummaryCopy, type FanrealNovemberPreview } from '@/lib/promotions/fanrealNovember2026';
 import type { SelectedCustomizationOption } from '@/types/customization';
 
 const usd = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
@@ -8,20 +8,18 @@ const usd = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', c
 export function FanrealNovemberSummary({ offer, subtotal, selections }: { offer: FanrealNovemberPreview; subtotal: number; selections: SelectedCustomizationOption[] }) {
   const [showCart, setShowCart] = useState(false);
   const cart = fanrealNovemberCart(subtotal);
+  const copy = fanrealNovemberSummaryCopy(offer);
   return (
     <section className="my-5 rounded-md border border-border bg-surface-tint p-5" data-fanreal-november-breakdown>
-      <h3 className="font-semibold">Fanreal November deal</h3>
+      <h3 className="text-lg font-semibold">{copy.headline}</h3>
       {offer.cashOff > 0 ? (
-        <p>
-          <del>{usd(offer.originalPrice)}</del> <strong>{usd(offer.price)}</strong> · {usd(offer.cashOff)} off your doll
+        <p className="mt-2">
+          <del>{usd(offer.originalPrice)}</del>{' '}
+          <strong>{usd(offer.price)}</strong>
         </p>
-      ) : offer.kind === 'custom' ? (
-        <p>Free custom extras are included in the options below.</p>
-      ) : (
-        <p>This in-stock doll keeps its current page price. The $299 code below still stacks.</p>
-      )}
-      {offer.kind === 'custom' ? <p className="mt-2 text-sm">Select your complimentary extras in the options menu.</p> : null}
-      <p className="mt-2 text-sm">Take another $299 off orders of $900+ with <strong>BLACKFRIDAYWOW26</strong>. Ends 30 November 2026.</p>
+      ) : null}
+      <p className="mt-2 text-sm leading-6">{copy.lead}</p>
+      <p className="mt-2 text-sm leading-6">{copy.stack}</p>
       <button type="button" onClick={() => setShowCart(!showCart)} className="mt-4 min-h-11 font-semibold text-accent underline">{showCart ? 'Close bag' : 'Review your bag'}</button>
       {showCart && (
         <div data-fanreal-november-calculated-cart className="mt-4 border-t border-border pt-4">

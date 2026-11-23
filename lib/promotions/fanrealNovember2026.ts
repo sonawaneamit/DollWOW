@@ -517,6 +517,32 @@ export function fanrealNovemberHeadline(offer: FanrealNovemberPreview) {
   return offer.kind === 'custom' ? FANREAL_NOVEMBER_PROMOTION.customHeadline : FANREAL_NOVEMBER_PROMOTION.inStockHeadline;
 }
 
+/** Visible deal-box copy. Keep this salesy and free of internal notes. */
+export function fanrealNovemberSummaryCopy(offer: FanrealNovemberPreview) {
+  const headline = fanrealNovemberHeadline(offer);
+  const upgrades = offer.kind === 'custom' ? offer.gifts.length : 0;
+  const includesSecondHead = offer.kind === 'custom' && offer.gifts.includes('second-head');
+  let lead: string;
+  if (offer.cashOff > 0 && upgrades > 0) {
+    lead = includesSecondHead
+      ? `${usdOff(offer.cashOff)} off your doll this November, plus ${upgrades} complimentary upgrades — including a second head. Choose them in the options below.`
+      : `${usdOff(offer.cashOff)} off your doll this November, plus ${upgrades} complimentary upgrades. Choose them in the options below.`;
+  } else if (offer.cashOff > 0) {
+    lead = `${usdOff(offer.cashOff)} off this doll this November.`;
+  } else if (upgrades > 0) {
+    lead = includesSecondHead
+      ? `${upgrades} complimentary upgrades are included — including a second head. Choose them in the options below.`
+      : `${upgrades} complimentary upgrades are included. Choose them in the options below.`;
+  } else {
+    lead = 'This in-stock doll is part of the November deal. Free custom extras apply to made-to-order dolls only.';
+  }
+  return {
+    headline,
+    lead,
+    stack: 'Stack another $299 off with BLACKFRIDAYWOW26 on orders of $900+. Ends 30 November 2026.'
+  };
+}
+
 export function fanrealNovemberCart(subtotal: number) {
   const discount = subtotal >= 900 ? 299 : 0;
   return { subtotal: round(subtotal), discount, total: round(subtotal - discount) };
