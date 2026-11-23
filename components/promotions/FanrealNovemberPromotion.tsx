@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CalendarDays, Check, ChevronDown, Gift } from "lucide-react";
-import { FANREAL_NOVEMBER_PROMOTION, fanrealNovemberHasCustomerOffer } from "@/lib/promotions/fanrealNovember2026";
+import { FANREAL_NOVEMBER_PROMOTION, fanrealNovemberGiftLabels, fanrealNovemberHasCustomerOffer, fanrealNovemberHeadline } from "@/lib/promotions/fanrealNovember2026";
 import type { Product } from "@/types/product";
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended" | "priceRange">;
@@ -17,9 +17,10 @@ export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: 
   void promoClock;
 
   const detailsId = "fanreal-november-pdp-details";
-  const included = offer.kind === "custom" ? FANREAL_NOVEMBER_PROMOTION.includedLabels : [];
+  const included = fanrealNovemberGiftLabels(offer);
+  const headline = fanrealNovemberHeadline(offer);
   return (
-    <section className="mt-4" aria-label="Fanreal November factory promotion" data-fanreal-november-pdp-promotion>
+    <section className="mt-4" aria-label="Fanreal November deal" data-fanreal-november-pdp-promotion>
       <div className="w-full overflow-hidden rounded-[16px] border border-gold-500/25 bg-ink-900">
         <button
           type="button"
@@ -40,10 +41,7 @@ export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: 
         </button>
         <div id={detailsId} hidden={!isOpen} className="border-t border-gold-500/20 bg-ink-900 px-5 py-5 sm:px-6">
           <p className="flex items-center gap-2 text-sm font-semibold text-gold-300"><CalendarDays className="h-4 w-4" aria-hidden="true" /> {FANREAL_NOVEMBER_PROMOTION.dateLabel}</p>
-          <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-gold-200"><Gift className="h-4 w-4" aria-hidden="true" /> Fanreal factory promo</p>
-          <h2 className="mt-1 text-xl font-semibold text-ivory-50">
-            {offer.kind === "custom" ? FANREAL_NOVEMBER_PROMOTION.customHeadline : FANREAL_NOVEMBER_PROMOTION.inStockHeadline}
-          </h2>
+          <h2 className="mt-4 flex items-center gap-2 text-xl font-semibold text-ivory-50"><Gift className="h-5 w-5 shrink-0 text-gold-300" aria-hidden="true" /> {headline}</h2>
           {offer.kind === "custom" ? (
             <ul className="mt-5 grid gap-2">
               {included.map((item) => (

@@ -8,12 +8,17 @@ import {
   fanrealNovemberConfig,
   fanrealNovemberOffer,
   fanrealNovemberHasCustomerOffer,
+  fanrealNovemberGiftLabels,
+  fanrealNovemberHeadline,
   isFanrealNovPromoLive,
   isFanrealNovemberActive,
   matchFanrealNovemberGift,
   withFanrealNovemberPreview,
   type FanrealNovemberPreview
 } from '@/lib/promotions/fanrealNovember2026';
+import { createFanrealDependencyPlanner, fanrealDependencyMenuHash } from '@/lib/cart/fanreal-dependencies';
+import { customerFacingEditorialIntro, cleanInternalMarketingCopy } from '@/lib/catalog/editorialIntro';
+import { publicProductPayload } from '@/lib/catalog/publicPayload';
 import type { Product } from '@/types/product';
 import type { BrandCustomizationConfig, CustomizationGroup } from '@/types/customization';
 
@@ -47,7 +52,7 @@ function product(partial: Partial<Product> & { title: string; handle: string; pr
       cupSize: partial.cupSize,
       warehouseRegions: partial.warehouseRegions
     }
-  } as Product;
+  } as unknown as Product;
 }
 
 describe('Fanreal November 2026 promo', () => {
@@ -203,5 +208,73 @@ describe('Fanreal November 2026 promo', () => {
   it('stacks BLACKFRIDAYWOW26 on a $900+ subtotal', () => {
     expect(fanrealNovemberCart(2580)).toEqual({ subtotal: 2580, discount: 299, total: 2281 });
     expect(fanrealNovemberCart(800)).toEqual({ subtotal: 800, discount: 0, total: 800 });
+  });
+
+  it('shows the cash off and hides the free second head on UniSeries', () => {
+    const anne = fanrealNovemberOffer(product({ title: 'Fanreal Anne 155cm F-Cup Silicone Companion Doll', handle: 'fanreal-anne-155cm-f-cup-silicone-companion-doll', price: 2680, heightCm: 155, cupSize: 'F' }), inside) as FanrealNovemberPreview;
+    expect(fanrealNovemberHeadline(anne)).toBe('Save $100 + 12 free upgrades');
+    expect(fanrealNovemberGiftLabels(anne)).toContain('Free second head');
+    expect(fanrealNovemberGiftLabels(anne)).toHaveLength(12);
+
+    const uni = fanrealNovemberOffer(product({ title: 'Fanreal Nora 166cm J-Cup UniSeries Silicone Companion Doll', handle: 'fanreal-nora-166cm-j-cup-uniseries-silicone-companion-doll', price: 3280, heightCm: 166, cupSize: 'J', tags: ['custom', 'customizable', 'silicone', 'uni-series'] }), inside) as FanrealNovemberPreview;
+    expect(uni.gifts).not.toContain('second-head');
+    expect(fanrealNovemberHeadline(uni)).toBe('Save $100 + 11 free upgrades');
+    expect(fanrealNovemberGiftLabels(uni)).not.toContain('Free second head');
+    expect(fanrealNovemberGiftLabels(uni).some((label) => /second head/i.test(label))).toBe(false);
+    expect(fanrealNovemberGiftLabels(uni)).toContain('Free ROS (movable jaw)');
+    expect(fanrealNovemberGiftLabels(uni)).not.toContain('Free ROS (movable jaw), including on your second head');
+  });
+
+  it('lets Add to Cart keep the reviewed catalog hash after November prices are applied', () => {
+    const offer = fanrealNovemberOffer(product({ title: 'Fanreal Anne 155cm F-Cup Silicone Companion Doll', handle: 'fanreal-anne-155cm-f-cup-silicone-companion-doll', price: 2680, heightCm: 155, cupSize: 'F' }), inside) as FanrealNovemberPreview;
+    const config = {
+      id: 'fanreal',
+      brandLabel: 'Fanreal',
+      leadTimeNote: 'Factory order',
+      rules: [],
+      groups: [
+        { id: 'hair-options', label: 'Hair Options', required: true, selectionMode: 'single', display: 'cards', options: [
+          { id: 'wig-cover', label: 'Wig cover', priceDelta: 0, priceVerified: true },
+          { id: 'wig-transplant-ht-fiber', label: 'Wig transplant (High temperature fiber)', priceDelta: 249, priceVerified: true }
+        ] }
+      ]
+    } as BrandCustomizationConfig;
+    const promo = fanrealNovemberConfig(config, offer, inside).config;
+    const parent = { id: 'gid://shopify/Product/anne-test' } as Product;
+    const planner = createFanrealDependencyPlanner({ [parent.id]: fanrealDependencyMenuHash(config) });
+    expect(fanrealDependencyMenuHash(promo)).not.toBe(fanrealDependencyMenuHash(config));
+    expect(() => planner(parent, promo, [], 1)).toThrow('fresh checkout review');
+    expect(() => planner(parent, config, [], 1)).not.toThrow();
+  });
+});
+
+describe('customer-facing Fanreal copy', () => {
+  it('strips internal factory-still and promotional-pack language', () => {
+    expect(cleanInternalMarketingCopy('T-95G TORSO, FACTORY STILL')).toBe('T-95G TORSO');
+    expect(cleanInternalMarketingCopy('Real Skin 168 F, factory still')).toBe('Real Skin 168 F');
+    const editorial = customerFacingEditorialIntro({
+      eyebrow: 'T-95G TORSO, FACTORY STILL',
+      heading: 'Nora',
+      paragraph: 'Nora is shown with the ROS head and tan finish from the Fanreal promotional pack.'
+    });
+    expect(editorial?.eyebrow).toBe('T-95G TORSO');
+    expect(editorial?.paragraph).toBe('Nora is shown with the ROS head and tan finish.');
+    expect(editorial?.paragraph).not.toMatch(/promotional pack/i);
+  });
+
+  it('removes that language from the public product payload without changing the source record', () => {
+    const src = product({ title: 'Fanreal Nora T-95G Silicone Customizable Companion Doll', handle: 'fanreal-nora-t95g-g-cup-silicone-torso-companion-doll', price: 1814, heightCm: 95, cupSize: 'G', tags: ['custom', 'torso', 'silicone'] });
+    src.extended.displayName = 'T-95G TORSO, FACTORY STILL';
+    src.extended.editorialIntro = {
+      eyebrow: 'T-95G TORSO, FACTORY STILL',
+      heading: 'Nora',
+      paragraph: 'A still from the promotional pack.'
+    };
+    const published = publicProductPayload(src);
+    expect(published.extended.displayName).toBe('T-95G TORSO');
+    expect(published.extended.editorialIntro?.eyebrow).toBe('T-95G TORSO');
+    expect(published.extended.editorialIntro?.paragraph).not.toMatch(/promotional pack/i);
+    expect(src.extended.displayName).toBe('T-95G TORSO, FACTORY STILL');
+    expect(src.extended.editorialIntro?.eyebrow).toBe('T-95G TORSO, FACTORY STILL');
   });
 });

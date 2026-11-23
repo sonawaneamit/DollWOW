@@ -844,11 +844,6 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPre
   const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
   const canCheckout = Boolean(!draftPreview && firstAvailable?.id && firstAvailable.availableForSale);
-  const checkedAt = product.extended.stockLastCheckedAt ? new Date(product.extended.stockLastCheckedAt) : null;
-  const checkedLabel = checkedAt && !Number.isNaN(checkedAt.getTime())
-    ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(checkedAt)
-    : null;
-
   async function addToCart() {
     if (!canCheckout || !firstAvailable?.id) return;
     setLoading(true);
@@ -910,7 +905,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPre
               </div>
               <div className="flex items-start gap-3 rounded-md bg-surface-tint p-4">
                 <PackageCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-                <div><p className="text-sm font-semibold text-text-dim">Stock record</p><p className="mt-1 text-base font-semibold text-text">{checkedLabel ? `Checked ${checkedLabel}` : "Confirmed before dispatch"}</p></div>
+                <div><p className="text-sm font-semibold text-text-dim">This exact doll</p><p className="mt-1 text-base font-semibold text-text">Ships as shown in the photos</p></div>
               </div>
             </div>
           ) : null}

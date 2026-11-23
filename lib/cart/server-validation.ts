@@ -117,7 +117,9 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   const paidOptions = resolved.selectedOptions.filter((option) => option.priceDelta > 0);
   const dependencyPlan = idoMdDependencyPlan(config, resolved.selectedOptions, input.quantity) ??
     gynoidDependencyPlan(config, resolved.selectedOptions, input.quantity) ??
-    fanrealDependencyPlan(product, config, resolved.selectedOptions, input.quantity);
+    // Hash the reviewed catalog menu, not the promo-mutated copy. November (and BFCM)
+    // free extras change price deltas and can add groups, which would otherwise block Add to Cart.
+    fanrealDependencyPlan(product, catalogConfig, resolved.selectedOptions, input.quantity);
   const optionAmount = money(resolved.optionPriceDelta * input.quantity);
   // Included choices must remain meaningful if a separately purchased upgrade is removed.
   // Conditional menus need an explicit dependency-aware migration, not stale copied text.

@@ -7,8 +7,8 @@ import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption 
  *
  * Source (do not invent terms):
  * - sales@ email from jocelyn@fanreal.com, 2 Nov 2026 02:25 UTC, subject "Nov promotion"
- *   (message 1a19a148ff5466e3): "please check November promotion banner" plus Drive folder
- *   https://drive.google.com/drive/folders/1joMd0HkravbBEThbDOwJ1Fcp53Ez6OPJ
+ *   (message 1a19a148ff5466e3): "please check November promotion banner" plus the official
+ *   November promotion folder on Drive, logged on DOL-371.
  * - Official "November Promotion.docx" in that folder (modified 3 Nov 2026 01:22 UTC)
  * - Official horizontal and vertical banners in the same folder
  *
@@ -52,28 +52,28 @@ export const FANREAL_NOVEMBER_DATE_LABEL = '1–30 November 2026';
 export const FANREAL_NOVEMBER_PROMOTION = {
   id: 'fanreal-november-2026',
   brand: 'Fanreal' as const,
-  title: 'Fanreal November factory promotion',
+  title: 'Fanreal November deal',
   dateLabel: FANREAL_NOVEMBER_DATE_LABEL,
   heroImage: '/promo/fanreal-november-2026/banner-desktop.jpg',
   mobileHeroImage: '/promo/fanreal-november-2026/banner-mobile.jpg',
-  heroAlt: 'Fanreal November 2026 factory promotion: custom and in-stock dolls 10% off, plus free extras on custom dolls, 1 to 30 November.',
+  heroAlt: 'Fanreal November deal: up to 10% off, plus 12 free upgrades on custom dolls, 1 to 30 November.',
   startsAt: FANREAL_NOVEMBER_STARTS_AT,
   endsAt: FANREAL_NOVEMBER_ENDS_AT,
-  customHeadline: 'Custom-made silicone dolls 10% off',
-  inStockHeadline: 'In-stock Fanreal dolls 10% off (EU, US and CA stock)',
+  customHeadline: 'Up to 10% off + 12 free upgrades',
+  inStockHeadline: 'Up to 10% off ready-to-ship Fanreal dolls',
   includedLabels: [
-    'Free Second Head (excluding UniSeries; available for torsos and full-size dolls)',
-    'Free ROS (including on the second head)',
-    'Free Implanted Synthetic Hair (one head only)',
-    'Free Implanted Eyebrows & Eyelashes',
-    'Free Movable Toes & Articulated Fingers',
-    'Free Hard Hand & Hard Feet',
-    'Free EVO Skeleton',
-    'Free Hyper-Realism Makeup',
-    'Free Hyper-Realism Body Painting',
-    'Free Soft Butt',
-    'Free Gel Breast',
-    'Free Soft Vagina'
+    'Free second head',
+    'Free ROS (movable jaw)',
+    'Free implanted synthetic hair (one head)',
+    'Free implanted eyebrows and eyelashes',
+    'Free movable toes and articulated fingers',
+    'Free hard hands and hard feet',
+    'Free EVO skeleton',
+    'Free hyper-realism makeup',
+    'Free hyper-realism body painting',
+    'Free soft butt',
+    'Free gel breast',
+    'Free soft vagina'
   ]
 } as const;
 
@@ -473,6 +473,48 @@ export function fanrealNovemberConfig(
   }
 
   return { config: { ...config, groups }, flags: [] as string[] };
+}
+
+
+function usdOff(amount: number) {
+  return Number.isInteger(amount)
+    ? `$${amount}`
+    : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+}
+
+const GIFT_CUSTOMER_LABELS: Record<FanrealNovemberGift, string> = {
+  'second-head': 'Free second head',
+  ros: 'Free ROS (movable jaw)',
+  'implanted-synthetic-hair': 'Free implanted synthetic hair (one head)',
+  'implanted-eyebrows-eyelashes': 'Free implanted eyebrows and eyelashes',
+  'movable-toes-articulated-fingers': 'Free movable toes and articulated fingers',
+  'hard-hands-feet': 'Free hard hands and hard feet',
+  'evo-skeleton': 'Free EVO skeleton',
+  'hyper-realism-makeup': 'Free hyper-realism makeup',
+  'hyper-realism-body-painting': 'Free hyper-realism body painting',
+  'soft-butt': 'Free soft butt',
+  'gel-breast': 'Free gel breast',
+  'soft-vagina': 'Free soft vagina'
+};
+
+/** Customer-facing extras for this doll — UniSeries never lists a free second head. */
+export function fanrealNovemberGiftLabels(offer: FanrealNovemberPreview): string[] {
+  if (offer.kind !== 'custom') return [];
+  return offer.gifts.map((gift) => {
+    if (gift === 'ros' && offer.gifts.includes('second-head')) {
+      return 'Free ROS (movable jaw), including on your second head';
+    }
+    return GIFT_CUSTOMER_LABELS[gift];
+  });
+}
+
+/** Honest, salesy headline: most dolls get about $100 off, not a flat 10%. */
+export function fanrealNovemberHeadline(offer: FanrealNovemberPreview) {
+  const upgrades = offer.kind === 'custom' ? offer.gifts.length : 0;
+  const upgradeBit = upgrades > 0 ? ` + ${upgrades} free upgrades` : '';
+  if (offer.cashOff > 0) return `Save ${usdOff(offer.cashOff)}${upgradeBit}`;
+  if (upgrades > 0) return `${upgrades} free upgrades on your custom build`;
+  return offer.kind === 'custom' ? FANREAL_NOVEMBER_PROMOTION.customHeadline : FANREAL_NOVEMBER_PROMOTION.inStockHeadline;
 }
 
 export function fanrealNovemberCart(subtotal: number) {

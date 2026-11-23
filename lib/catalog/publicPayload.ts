@@ -3,6 +3,7 @@ import { isMdReleaseWeight } from './mdWeight';
 import type { BrandCustomizationConfig, CustomizationGroup, CustomizationOption } from '@/types/customization';
 import { sanitizeImportedProductionNote } from '@/lib/customization/production-notes';
 import { productDisplayName } from '@/lib/catalog/naming';
+import { customerFacingEditorialIntro, cleanInternalMarketingCopy } from '@/lib/catalog/editorialIntro';
 import { catalogLookOptions, productMatchesLook } from '@/lib/catalog/lookTags';
 import { ownedOptionGroups } from '@/lib/assets/option-assets.mjs';
 
@@ -62,13 +63,20 @@ export function publicProductPayload(product: Product): Product {
     delete extended.sourceTitle;
     delete extended.sourceHandle;
   }
+  const editorialIntro = customerFacingEditorialIntro(product.extended.editorialIntro);
+  const publicExtended = {
+    ...pick(extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable', 'bfcmPreview', 'fanrealNovember']),
+    ...(product.extended.customizationGroups ? { customizationGroups: publicCustomizationGroups(product.extended.customizationGroups) } : {}),
+    ...(editorialIntro ? { editorialIntro: pick(editorialIntro, ['eyebrow', 'heading', 'paragraph']) } : {})
+  };
+  if (publicExtended.displayName) {
+    const cleanedName = cleanInternalMarketingCopy(publicExtended.displayName);
+    if (cleanedName) publicExtended.displayName = cleanedName;
+    else delete publicExtended.displayName;
+  }
   return {
     ...pick(product, ['id', 'dollVueAvailable', 'handle', 'title', 'description', 'seo', 'vendor', 'productType', 'tags', 'featuredImage', 'images', 'media', 'variants', 'priceRange']),
-    extended: {
-      ...pick(extended, ['catalogIdentityKey', 'catalogBodyIdentityKey', 'headModel', 'bodyCode', 'displayName', 'bodyType', 'lookTags', 'brand', 'sourceTitle', 'sourceHandle', 'sourceReleaseRank', 'material', 'heightCm', 'weightLb', 'cupSize', 'measurements', 'warehouseCountry', 'warehouseRegions', 'stockStatus', 'deliveryEstimate', 'stockLastCheckedAt', 'customAvailable', 'penisAddOnAvailable', 'bfcmPreview', 'fanrealNovember']),
-      ...(product.extended.customizationGroups ? { customizationGroups: publicCustomizationGroups(product.extended.customizationGroups) } : {}),
-      ...(product.extended.editorialIntro ? { editorialIntro: pick(product.extended.editorialIntro, ['eyebrow', 'heading', 'paragraph']) } : {})
-    }
+    extended: publicExtended
   };
 }
 
