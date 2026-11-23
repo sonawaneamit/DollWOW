@@ -1,4 +1,5 @@
 import type { Product } from '@/types/product';
+import { isAlmostAsGoodAsPerfect } from '@/lib/catalog/almostAsGoodAsPerfect';
 import type { BrandCustomizationConfig, CustomizationGroup } from '@/types/customization';
 
 export const BFCM_REVERT_AT = '2026-12-11T04:59:00Z'; // Dec 10, 11:59 PM US Eastern
@@ -88,7 +89,7 @@ export function bfcmOffer(product: Product, now = new Date()): BfcmPreview | nul
     gifts = full && (product.extended.heightCm ?? 0) >= 135 ? ['second-head'] : [];
   }
   // IDO: Custom keeps current price + free wig/pad, RTS dolls $2499 (November promo, ends Nov 30)
-  else if (/\bido(?:doll)?\b/i.test(identity) && full && (custom || product.extended.stockStatus === 'ready_to_ship')) {
+  else if (/\bido(?:doll)?\b/i.test(identity) && full && (custom || product.extended.stockStatus === 'ready_to_ship') && !isAlmostAsGoodAsPerfect(product)) {
     brand = 'IDO';
     // Custom (China-shipped): keep current price, add free wig + pad
     // US/EU stock (RTS): $2499 until Dec 1

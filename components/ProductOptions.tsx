@@ -35,6 +35,7 @@ import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
+import { shouldSkipWarehouseDeliveryDate } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { useMounted } from "@/lib/utils/storageStore";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -626,7 +627,7 @@ function BuildSummary({ groups, selected, selectedOptions, basePrice, optionPric
   stockStatus?: Product["extended"]["stockStatus"];
 }) {
   const mounted = useMounted();
-  const estimatedDate = mounted && stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
+  const estimatedDate = mounted && stockStatus && !shouldSkipWarehouseDeliveryDate(leadTimeNote) ? estimatedDeliveryDate(stockStatus) : undefined;
 
   return (
     <div className="mt-5 rounded-md bg-surface-tint p-5">

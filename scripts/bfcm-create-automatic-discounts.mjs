@@ -163,7 +163,7 @@ async function main() {
   
   // IDO: in-stock/RTS, $100 off
   console.log('\nQuerying IDO products...');
-  const ido = await queryAllProducts('tag:ido AND (tag:in-stock OR tag:ready_to_ship)');
+  const ido = await queryAllProducts('tag:ido AND (tag:in-stock OR tag:ready_to_ship) AND -tag:almost-as-good-as-perfect');
   console.log(`Found ${ido.length} IDO in-stock products`);
   
   

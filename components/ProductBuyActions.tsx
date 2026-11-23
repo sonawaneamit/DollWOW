@@ -7,6 +7,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
+import { ALMOST_AS_GOOD_AS_PERFECT_LABEL, isAlmostAsGoodAsPerfect, shouldSkipWarehouseDeliveryDate } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { useMounted } from "@/lib/utils/storageStore";
 import type { ProductImage, Product } from "@/types/product";
 import { Care365Seal } from "@/components/care/Care365Seal";
@@ -23,6 +24,7 @@ type ProductBuyActionsProps = {
   currencyCode: string;
   deliveryEstimate?: string;
   stockStatus?: Product["extended"]["stockStatus"];
+  productTags?: string[];
   readyToShip: boolean;
   customAvailable?: boolean;
   warehouseCountry?: string;
@@ -47,6 +49,7 @@ export function ProductBuyActions({
   currencyCode,
   deliveryEstimate,
   stockStatus,
+  productTags,
   readyToShip,
   customAvailable,
   warehouseCountry,
@@ -64,7 +67,8 @@ export function ProductBuyActions({
   ];
   
   const mounted = useMounted();
-  const estimatedDate = mounted && stockStatus ? estimatedDeliveryDate(stockStatus) : undefined;
+  const estimatedDate = mounted && stockStatus && !shouldSkipWarehouseDeliveryDate(deliveryEstimate) ? estimatedDeliveryDate(stockStatus) : undefined;
+  const almostAsGood = isAlmostAsGoodAsPerfect({ tags: productTags });
 
   function addToBag() {
     if (previewOnly) return;
@@ -93,7 +97,7 @@ export function ProductBuyActions({
   return (
     <div className="mt-6 rounded-lg bg-surface p-5 text-text shadow-card sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-[15px] font-semibold text-text-dim">{readyToShip ? "Ready to ship" : "Choose how to order"}</p>
+        <p className="text-[15px] font-semibold text-text-dim">{almostAsGood ? ALMOST_AS_GOOD_AS_PERFECT_LABEL : readyToShip ? "Ready to ship" : "Choose how to order"}</p>
         {installments ? <p className="text-sm text-text-faint">{installments}</p> : null}
       </div>
 
@@ -161,18 +165,22 @@ export function ProductBuyActions({
           <Truck className="h-5 w-5" />
         </span>
         <div>
-          {readyToShip ? (
+          {readyToShip || almostAsGood ? (
             <div className="mb-2">
               <WarehouseLocationBadge regions={warehouseRegions} country={warehouseCountry} compact />
             </div>
           ) : null}
           <p className="text-base font-semibold text-text">
-            {readyToShip
+            {almostAsGood
+              ? `Ships from ${(warehouseRegions?.length ? warehouseRegions.join(", ") : warehouseCountry) || "China"}`
+              : readyToShip
               ? `In stock in ${(warehouseRegions?.length ? warehouseRegions.join(", ") : warehouseCountry) || "a supplier warehouse"}`
               : "Built to order for you"}
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
-            {readyToShip
+            {almostAsGood
+              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}This is the exact body in the photos, sold as-is. Factory customization options do not apply.`
+              : readyToShip
               ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}${canCustomize ? "The available options below are supported for this stock unit." : "This is the fixed configuration shown; factory options do not apply."}`
               : "You approve detailed factory photos and videos before anything ships."}
           </p>

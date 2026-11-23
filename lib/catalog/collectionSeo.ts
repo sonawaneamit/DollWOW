@@ -32,7 +32,7 @@ export type CollectionComparisonRow = {
 };
 
 export function collectionUsesPlainGuidance(handle: string) {
-  return ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom", "cheap-sex-dolls", "lightweight-sex-dolls", "new-sex-dolls"].includes(handle);
+  return ["black-dolls", "futa-sex-dolls", "petite-dolls", "custom", "cheap-sex-dolls", "lightweight-sex-dolls", "new-sex-dolls", "almost-as-good-as-perfect"].includes(handle);
 }
 
 const siteUrl = env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
@@ -256,7 +256,8 @@ function collectionMetadataTitle(handle: string, preset: CollectionPreset) {
     "female-dolls": "Female Sex Dolls for Sale",
     "cheap-sex-dolls": "Affordable Sex Dolls for Sale | Options Under $1,000",
     "realistic-sex-dolls": "Most Realistic Sex Dolls for Sale | Compare Realism",
-    custom: "Custom Sex Dolls for Sale | Build & Compare Options"
+    custom: "Custom Sex Dolls for Sale | Build & Compare Options",
+    "almost-as-good-as-perfect": "Almost as Good as Perfect Dolls | Discounted IDO Clearance"
   };
   return titleByHandle[handle] ?? collectionTitle(preset);
 }
@@ -299,6 +300,8 @@ export function collectionFaqItems(handle: string, preset: CollectionPreset) {
 }
 
 const collectionIntroByHandle: Record<string, string> = {
+
+  "almost-as-good-as-perfect": "These IDO dolls are almost as good as perfect: each one has a small cosmetic defect but is fully usable, which is why it is discounted. Every listing is a one-of-a-kind China stock piece, sold as-is, and ships by sea or rail in about 4–8 weeks. Open a product to read that doll's exact defect note, see the factory photos, and check the price.",
   "sex-dolls":
     "Browse the complete current DollWow sex doll catalog and filter by material, body type, height, weight, price, availability, brand, and custom options. Open any product to compare its exact measurements, photos, starting price, configuration, and ordering path. If a model or detail you need is missing, ask our team through live chat or hello@dollwow.com and we will check it for you.",
   "realistic-sex-dolls":
@@ -337,6 +340,8 @@ const collectionIntroByHandle: Record<string, string> = {
 };
 
 const collectionMetaDescriptions: Record<string, string> = {
+
+  "almost-as-good-as-perfect": "Shop IDO dolls that are almost as good as perfect: each has a small cosmetic defect but is fully usable, which is why it is discounted. One-of-a-kind China stock, sold as-is.",
   "sex-dolls": "Shop TPE, silicone, ready-to-ship, and custom sex dolls. Compare exact size, weight, price, options, buyer protection, and Care 365 support.",
   "realistic-sex-dolls": "Shop realistic sex dolls and compare proportions, face sculpt, skin finish, eyes, hands, weight, product photos, and the exact final configuration.",
   "mini-sex-dolls": "Compare mini sex dolls up to 120 cm / 3 ft 11 in by weight, measurements, material, storage needs, stock status, and options.",
