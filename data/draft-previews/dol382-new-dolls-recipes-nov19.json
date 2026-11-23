@@ -1,0 +1,210 @@
+[
+ {
+  "note": "Climax SiP157: live Climax female silicone recipe",
+  "productIds": [
+   "gid://shopify/Product/10745002033336",
+   "gid://shopify/Product/10745002688696"
+  ],
+  "recipe": {
+   "tag": "options:climax-female-silicone-standard",
+   "signature": "computed-at-runtime",
+   "tiers": [
+    {
+     "id": "starter",
+     "description": "Care, body painting, and articulated fingers.",
+     "add": [
+      {
+       "groupId": "accessories",
+       "optionId": "vaginal-irrigator"
+      },
+      {
+       "groupId": "accessories",
+       "optionId": "reusable-drying-rod"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple",
+       "optionId": "realistic-body-painting-free"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple",
+       "optionId": "articulated-fingers-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "enthusiast",
+     "description": "EVO skeleton with standing feet.",
+     "add": [
+      {
+       "groupId": "skeleton-type",
+       "optionId": "evo-free"
+      },
+      {
+       "groupId": "standing-add-on",
+       "optionId": "standing-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "collector",
+     "description": "Implanted hair, a softer butt, and movable jaw.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple",
+       "optionId": "gel-butt-free"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple",
+       "optionId": "movable-jaw-free"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple",
+       "optionId": "implanted-synthetic-hair"
+      }
+     ],
+     "remove": []
+    }
+   ]
+  }
+ },
+ {
+  "note": "Fixed-configuration torsos and mini: no presets",
+  "productIds": [
+   "gid://shopify/Product/10745003245752",
+   "gid://shopify/Product/10745004032184",
+   "gid://shopify/Product/10745004392632",
+   "gid://shopify/Product/10745004818616",
+   "gid://shopify/Product/10745004949688"
+  ],
+  "recipe": null
+ },
+ {
+  "note": "FU female silicone",
+  "productIds": [
+   "gid://shopify/Product/10745005473976",
+   "gid://shopify/Product/10745005637816",
+   "gid://shopify/Product/10638363754680",
+   "gid://shopify/Product/10638363852984",
+   "gid://shopify/Product/10638363951288",
+   "gid://shopify/Product/10638364049592"
+  ],
+  "recipe": {
+   "tag": "options:fu-silicone-body-mvp-v1",
+   "signature": "computed-at-runtime",
+   "tiers": [
+    {
+     "id": "starter",
+     "description": "Care kit, body painting and articulated fingers.",
+     "add": [
+      {
+       "groupId": "accessories",
+       "optionId": "vaginal-irrigator"
+      },
+      {
+       "groupId": "accessories",
+       "optionId": "reusable-drying-rod"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "hyper-realism-body-painting-free"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "articulated-fingers-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "enthusiast",
+     "description": "Adds body heating and standing feet.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "heating"
+      },
+      {
+       "groupId": "standing-add-on-silicone",
+       "optionId": "standing-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "collector",
+     "description": "Adds moaning and a soft gel butt.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "moaning"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "gel-butt"
+      }
+     ],
+     "remove": []
+    }
+   ]
+  }
+ },
+ {
+  "note": "FU male silicone",
+  "productIds": [
+   "gid://shopify/Product/10745005801656"
+  ],
+  "recipe": {
+   "tag": "options:fu-silicone-body-mvp-v1",
+   "signature": "computed-at-runtime",
+   "tiers": [
+    {
+     "id": "starter",
+     "description": "Body painting and articulated fingers.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "hyper-realism-body-painting-free"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "articulated-fingers-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "enthusiast",
+     "description": "Adds body heating and standing feet.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "heating"
+      },
+      {
+       "groupId": "standing-add-on-silicone",
+       "optionId": "standing-free"
+      }
+     ],
+     "remove": []
+    },
+    {
+     "id": "collector",
+     "description": "Adds moaning and a soft gel butt.",
+     "add": [
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "moaning"
+      },
+      {
+       "groupId": "premium-head-body-options-multiple-silicone",
+       "optionId": "gel-butt"
+      }
+     ],
+     "remove": []
+    }
+   ]
+  }
+ }
+]
