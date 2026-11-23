@@ -70,11 +70,12 @@ import { includedBuildItems, isChikuPreview, isChikuEyeImage } from "@/lib/custo
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 import { BfcmPreviewSummary } from './BfcmPreviewSummary';
 import { FanrealNovemberSummary } from './FanrealNovemberSummary';
+import { fanrealNovemberHasCustomerOffer } from '@/lib/promotions/fanrealNovember2026';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
-  if (isFixedWarehouseUnit && !product.extended.bfcmPreview && !product.extended.fanrealNovember) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit draftPreview={draftPreview} />;
+  if (isFixedWarehouseUnit && !product.extended.bfcmPreview && !(product.extended.fanrealNovember && product.extended.fanrealNovember.gifts.length > 0)) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit draftPreview={draftPreview} />;
   return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} draftPreview={draftPreview} />;
 }
 
@@ -553,7 +554,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   }} className="min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Review / edit options</button>
                 </div>
                 <PriceSummary basePrice={basePrice} optionPriceDelta={purchaseTotal - basePrice} totalPrice={purchaseTotal} currencyCode={currencyCode} />
-                {product.extended.fanrealNovember && <FanrealNovemberSummary offer={product.extended.fanrealNovember} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
+                {fanrealNovemberHasCustomerOffer(product.extended.fanrealNovember) && <FanrealNovemberSummary offer={product.extended.fanrealNovember} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
                 {product.extended.bfcmPreview && <BfcmPreviewSummary offer={product.extended.bfcmPreview} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
                 {pendingChoices.length > 0 && <p className="mt-2 text-sm text-text-dim">Includes the extra-head upgrade. Choose your head before adding to cart.</p>}
 
