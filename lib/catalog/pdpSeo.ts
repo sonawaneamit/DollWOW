@@ -6,6 +6,7 @@ import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productLockedPdpTitle, productPublicTitle, productSeoAliases } from "./naming";
 import { isHeadOnlyProduct, productMeasurementSpecs } from "./productSpecs";
 import { unbrandedSeoTitle, conciseSeoDescription } from "./seoText.mjs";
+import { isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 
 type IntentChip = {
   label: string;
@@ -354,6 +355,7 @@ function productSchemaProperties(product: Product, measurements: ReturnType<type
 }
 
 function orderPathLabel(product: Product) {
+  if (isAlmostAsGoodAsPerfect(product)) return "Ships from China in about 4–8 weeks, sold as-is";
   if (product.extended.stockStatus === "ready_to_ship") return "Ready to ship after stock confirmation";
   if (product.extended.customAvailable) return "Factory-order custom build";
   if (product.extended.stockStatus === "check_stock") return "Check stock with support";

@@ -1,5 +1,6 @@
 import { getCatalogBrand } from "@/lib/catalog/brands";
 import type { Product } from "@/types/product";
+import { isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 
 export type CatalogNamingInput = {
   brand?: string | null;
@@ -90,6 +91,7 @@ export function topFireTitleFeatures(product: Product) {
 }
 
 export function productPdpHeading(product: Product) {
+  if (isAlmostAsGoodAsPerfect(product) && product.title) return product.title;
   const lockedTitle = productLockedPdpTitle(product);
   if (lockedTitle) return lockedTitle;
 
@@ -150,7 +152,7 @@ function buildProductNamingData(product: Product) {
   const inferredKind = inferProductKind(product);
   const headlessBody = product.tags.includes("options:top-fire-headless-body-v1");
   const kind = headlessBody ? "Body" : material === MATERIAL_LABELS["silicone-head"] && inferredKind === "head" ? "" : productKindLabel(inferredKind);
-  const availability = headlessBody ? "" : product.extended.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.extended.customAvailable ? "Customizable" : "";
+  const availability = headlessBody || isAlmostAsGoodAsPerfect(product) ? "" : product.extended.stockStatus === "ready_to_ship" ? "Ready-To-Ship" : product.extended.customAvailable ? "Customizable" : "";
   const head = product.extended.headModel ? readableHeadModel(product.extended.headModel) : "";
   const headTitlePart = formatHeadTitlePart(material, head);
   const includeHead = !hasSameHeadReference(model, head) && !hasSameHeadReference(series, head);
