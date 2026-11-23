@@ -41,7 +41,7 @@ import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { GynoidBodyVersionNote } from '@/components/GynoidBodyVersionNote';
 import { AlmostAsGoodAsPerfectBadge } from '@/components/AlmostAsGoodAsPerfectBadge';
 import { AlmostAsGoodAsPerfectNote } from '@/components/AlmostAsGoodAsPerfectNote';
-import { isAlmostAsGoodAsPerfect } from '@/lib/catalog/almostAsGoodAsPerfect';
+import { ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY, isAlmostAsGoodAsPerfect } from '@/lib/catalog/almostAsGoodAsPerfect';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
@@ -398,8 +398,8 @@ function ProductSpecSummary({
     ["Brand", product.extended.brand ?? product.vendor],
     ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
-    ["Availability", isAlmostAsGoodAsPerfect(product) ? "Ships from China in about 4–8 weeks, sold as-is" : product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
-    ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
+    ["Availability", isAlmostAsGoodAsPerfect(product) ? ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY : product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
+    ["Warehouse", isAlmostAsGoodAsPerfect(product) ? "" : product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
   const measurementGroups = groupMeasurements(measurements);

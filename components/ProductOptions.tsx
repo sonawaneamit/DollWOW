@@ -35,7 +35,12 @@ import { writeBrowserCartState } from "@/lib/cart/browser";
 import { normalizeCheckoutUrl } from "@/lib/cart/checkout-url";
 import { productBuilderHeading } from "@/lib/catalog/bodyType";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
-import { shouldSkipWarehouseDeliveryDate } from "@/lib/catalog/almostAsGoodAsPerfect";
+import {
+  ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY,
+  ALMOST_AS_GOOD_AS_PERFECT_PANEL_HEADING,
+  isAlmostAsGoodAsPerfect,
+  shouldSkipWarehouseDeliveryDate
+} from "@/lib/catalog/almostAsGoodAsPerfect";
 import { useMounted } from "@/lib/utils/storageStore";
 import { productDisplayName, productPublicTitle } from "@/lib/catalog/naming";
 import { protectedProductImageUrlFor } from "@/lib/catalog/productImage";
@@ -892,13 +897,15 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPre
       <div className={fixedWarehouseUnit ? "" : "grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.62fr)]"}>
         <div>
           <p className="text-[15px] font-semibold text-text-dim">{brandName}</p>
-          <h2 className="mt-1 font-display text-3xl font-semibold">{fixedWarehouseUnit ? "This warehouse doll ships as shown" : "Order this doll as shown"}</h2>
+          <h2 className="mt-1 font-display text-3xl font-semibold">{isAlmostAsGoodAsPerfect(product) ? ALMOST_AS_GOOD_AS_PERFECT_PANEL_HEADING : fixedWarehouseUnit ? "This warehouse doll ships as shown" : "Order this doll as shown"}</h2>
           <p className="mt-3 max-w-xl text-base leading-7 text-text-dim">
-            {fixedWarehouseUnit
+            {isAlmostAsGoodAsPerfect(product)
+              ? ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY
+              : fixedWarehouseUnit
               ? "This is a specific stocked configuration. Factory-order colors, heads, and body upgrades are not available unless they are explicitly listed for this unit."
               : "This listing is priced for the doll shown in the gallery and specifications. Contact us before checkout if you would like to confirm a different version."}
           </p>
-          {fixedWarehouseUnit ? (
+          {fixedWarehouseUnit && !isAlmostAsGoodAsPerfect(product) ? (
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="flex items-start gap-3 rounded-md bg-stock-tint p-4 text-stock">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />

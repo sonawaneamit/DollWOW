@@ -8,6 +8,7 @@ import { ArrowRight, Loader2, Lock, Minus, Plus, ShoppingBag, Trash2 } from "luc
 import { useCart } from "@/components/cart/CartProvider";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { captureCheckoutAnalytics } from "@/lib/analytics/checkout-context";
+import { cartItemShippingLabel } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { bagItemIdentity, MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
 import { clearBrowserCartState, useLegacyCartState } from "@/lib/cart/browser";
 import { formatMoney } from "@/lib/utils/currency";
@@ -110,7 +111,7 @@ export function CartPageClient() {
                         {item.productDisplayName || item.productTitle}
                       </Link>
                       <p className="mt-1 text-sm text-ivory-500">
-                        {item.readyToShip ? "Ready to ship · timing confirmed before checkout" : "Made to order · reviewed by our team first"}
+                        {cartItemShippingLabel(item, "Ready to ship · timing confirmed before checkout", "Made to order · reviewed by our team first")}
                       </p>
                       {item.attributes?.length ? (
                         <ul className="mt-2 grid gap-0.5">

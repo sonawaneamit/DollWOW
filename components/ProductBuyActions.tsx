@@ -7,7 +7,7 @@ import { WarehouseLocationBadge } from "@/components/WarehouseLocationBadge";
 import { installmentLabel } from "@/lib/commerce/installments";
 import { formatMoney } from "@/lib/utils/currency";
 import { estimatedDeliveryDate } from "@/lib/catalog/delivery";
-import { ALMOST_AS_GOOD_AS_PERFECT_LABEL, isAlmostAsGoodAsPerfect, shouldSkipWarehouseDeliveryDate } from "@/lib/catalog/almostAsGoodAsPerfect";
+import { ALMOST_AS_GOOD_AS_PERFECT_LABEL, almostAsGoodAsPerfectBuyBoxDetail, isAlmostAsGoodAsPerfect, shouldSkipWarehouseDeliveryDate } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { useMounted } from "@/lib/utils/storageStore";
 import type { ProductImage, Product } from "@/types/product";
 import { Care365Seal } from "@/components/care/Care365Seal";
@@ -179,7 +179,7 @@ export function ProductBuyActions({
           </p>
           <p className="mt-1 text-[15px] leading-6 text-text-dim">
             {almostAsGood
-              ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}This is the exact body in the photos, sold as-is. Factory customization options do not apply.`
+              ? almostAsGoodAsPerfectBuyBoxDetail(deliveryEstimate)
               : readyToShip
               ? `${deliveryEstimate ? `${deliveryEstimate}. ` : ""}${canCustomize ? "The available options below are supported for this stock unit." : "This is the fixed configuration shown; factory options do not apply."}`
               : "You approve detailed factory photos and videos before anything ships."}

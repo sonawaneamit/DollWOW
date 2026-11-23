@@ -8,6 +8,7 @@ import { ProductImageFrame } from "@/components/ProductImageFrame";
 import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
 import { productPublicTitle } from "@/lib/catalog/naming";
+import { ALMOST_AS_GOOD_AS_PERFECT_LABEL, isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { formatMoney } from "@/lib/utils/currency";
 
 type Props = {
@@ -26,6 +27,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState(0);
+  const almostAsGood = isAlmostAsGoodAsPerfect(product);
   const readyToShip = product.extended.stockStatus === "ready_to_ship";
 
   useRevealMotion(rootRef);
@@ -70,16 +72,18 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
           <div className="alive-reveal">
             <p className="alive-eyebrow">
               <span />
-              {readyToShip ? "Warehouse order" : "Made to order"}
+              {almostAsGood ? ALMOST_AS_GOOD_AS_PERFECT_LABEL : readyToShip ? "Warehouse order" : "Made to order"}
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-text">What happens next</h2>
             <p className="alive-lead mt-3">
-              {readyToShip
+              {almostAsGood
+                ? "A one-of-a-kind clearance doll. She ships as shown, and you pick any IDO head after you order — included in the price."
+                : readyToShip
                 ? "Stock confirmation, warehouse release, and discreet tracked delivery—kept to three clear stages."
                 : "Your configuration is reviewed, built, and approved with you before discreet tracked delivery."}
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {orderSteps(product, readyToShip).map((step) => (
+              {orderSteps(product, readyToShip, almostAsGood).map((step) => (
                 <article key={step.label} className="tone-card rounded-[14px] p-4">
                   <span className="grid h-10 w-10 place-items-center rounded-full bg-accent-tint text-accent">{step.icon}</span>
                   <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-accent">{step.timing}</p>
@@ -102,7 +106,7 @@ export function ProductLowerAlive({ product, similarProducts }: Props) {
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-text">Before you order</h2>
             <div className="alive-faq mt-5">
-              {faqItems(product, readyToShip).map((item, index) => (
+              {faqItems(product, readyToShip, almostAsGood).map((item, index) => (
                 <article key={item.question} className={openFaq === index ? "alive-faq-item is-open" : "alive-faq-item"}>
                   <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
                     {item.question}
@@ -138,7 +142,7 @@ function SimilarDollCard({ product }: { product: Product }) {
       <Link className="alive-sim-link" href={productUrl(product.handle)} aria-label={`View ${displayTitle}`}>
         <ProductImageFrame product={product} />
         <span className="alive-sim-scrim" aria-hidden="true" />
-        {product.extended.stockStatus === "ready_to_ship" ? <span className="alive-sim-status">Ready to ship</span> : null}
+        {isAlmostAsGoodAsPerfect(product) ? <span className="alive-sim-status">{ALMOST_AS_GOOD_AS_PERFECT_LABEL}</span> : product.extended.stockStatus === "ready_to_ship" ? <span className="alive-sim-status">Ready to ship</span> : null}
         <div className="alive-sim-body">
           <div><span>{product.extended.brand ?? product.vendor}</span></div>
           <h3>{displayTitle}</h3>
@@ -157,7 +161,14 @@ function SimilarDollCard({ product }: { product: Product }) {
   );
 }
 
-function orderSteps(product: Product, readyToShip: boolean): ProcessStep[] {
+function orderSteps(product: Product, readyToShip: boolean, almostAsGood = false): ProcessStep[] {
+  if (almostAsGood) {
+    return [
+      { label: "You order this unique doll", detail: "This exact body ships as shown, including her small cosmetic mark.", timing: "When you order", icon: <ShieldCheck className="h-5 w-5" /> },
+      { label: "Pick any IDO head", detail: "After you order, choose any IDO head you like. It's included in the price.", timing: "After checkout", icon: <PackageCheck className="h-5 w-5" /> },
+      { label: "Ships from China by sea", detail: "Typically 4–8 weeks, with tracking shared once she is on the way.", timing: product.extended.deliveryEstimate ?? "4–8 weeks by sea", icon: <Truck className="h-5 w-5" /> }
+    ];
+  }
   if (readyToShip) {
     return [
       { label: "Stock confirmed", detail: "We verify this exact warehouse unit and its current timing.", timing: "Before payment", icon: <ShieldCheck className="h-5 w-5" /> },
@@ -172,7 +183,15 @@ function orderSteps(product: Product, readyToShip: boolean): ProcessStep[] {
   ];
 }
 
-function faqItems(product: Product, readyToShip: boolean) {
+function faqItems(product: Product, readyToShip: boolean, almostAsGood = false) {
+  if (almostAsGood) {
+    return [
+      { question: "Is this the exact doll in the photos?", answer: "Yes. This is a one-of-a-kind clearance piece photographed as she'll ship, including her small cosmetic mark." },
+      { question: "Can I choose the head?", answer: "Yes. After you order, pick any IDO head you like. It's included in the price." },
+      { question: "How long does shipping take?", answer: product.extended.deliveryEstimate ? `${product.extended.deliveryEstimate}. Tracking is shared once she is on the way.` : "She ships from China by sea in about 4–8 weeks. Tracking is shared once she is on the way." },
+      { question: "What if it arrives damaged?", answer: "Contact us within 24 hours with photos of the product, carton, and packaging so the delivery claim can be reviewed." }
+    ];
+  }
   if (readyToShip) {
     return [
       {

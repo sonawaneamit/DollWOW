@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
+  ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY,
+  ALMOST_AS_GOOD_AS_PERFECT_CART_SHIPPING,
+  ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY,
+  ALMOST_AS_GOOD_AS_PERFECT_PANEL_HEADING,
+  almostAsGoodAsPerfectBuyBoxDetail,
   almostAsGoodAsPerfectNote,
+  cartItemShippingLabel,
   isAlmostAsGoodAsPerfect,
+  isAlmostAsGoodAsPerfectItem,
   shouldSkipWarehouseDeliveryDate
 } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { collectionPresets, filterProducts } from "@/lib/catalog/filters";
@@ -63,5 +70,33 @@ describe("almost as good as perfect", () => {
     });
     const filtered = filterProducts([clearance, regular], { availability: "ready_to_ship" });
     expect(filtered.map((item) => item.id)).toEqual(["regular"]);
+  });
+
+  it("uses customer-facing China sea shipping copy for clearance units only", () => {
+    const clearance = product({ id: "clearance", tags: ["almost-as-good-as-perfect", "ido"] });
+
+    expect(ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY).toBe("Ships in 4–8 weeks by sea from China");
+    expect(ALMOST_AS_GOOD_AS_PERFECT_CART_SHIPPING).toBe("Ships in 4–8 weeks");
+    expect(ALMOST_AS_GOOD_AS_PERFECT_PANEL_HEADING).toMatch(/one-of-a-kind/i);
+    expect(ALMOST_AS_GOOD_AS_PERFECT_PANEL_HEADING).not.toMatch(/warehouse doll/i);
+    expect(ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY).toMatch(/small cosmetic mark/i);
+    expect(ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY).toMatch(/any IDO head/i);
+    expect(ALMOST_AS_GOOD_AS_PERFECT_PANEL_BODY).not.toMatch(/Stock record|Factory-order colors/i);
+    expect(almostAsGoodAsPerfectBuyBoxDetail("Est. 4–8 weeks by sea from China")).toMatch(/any IDO head/i);
+    expect(almostAsGoodAsPerfectBuyBoxDetail("Est. 4–8 weeks by sea from China")).not.toMatch(/Factory customization options do not apply/i);
+
+    expect(isAlmostAsGoodAsPerfectItem({ productHandle: clearance.handle, productTitle: clearance.title, readyToShip: true })).toBe(true);
+    expect(isAlmostAsGoodAsPerfectItem({ productHandle: "fanreal-gina-ready-to-ship", productTitle: "Fanreal Gina", readyToShip: true })).toBe(false);
+
+    expect(cartItemShippingLabel({ readyToShip: true, productHandle: clearance.handle, productTitle: clearance.title })).toBe("Ships in 4–8 weeks");
+    expect(cartItemShippingLabel({ readyToShip: true, productHandle: "fanreal-gina-us-warehouse", productTitle: "Fanreal Gina" })).toBe("Ready to ship");
+    expect(cartItemShippingLabel({ readyToShip: false, productHandle: "custom-factory-doll", productTitle: "Custom doll" })).toBe("Reviewed before production");
+    expect(
+      cartItemShippingLabel(
+        { readyToShip: true, productHandle: "fanreal-gina-us-warehouse", productTitle: "Fanreal Gina" },
+        "Ready to ship · timing confirmed before checkout",
+        "Made to order · reviewed by our team first"
+      )
+    ).toBe("Ready to ship · timing confirmed before checkout");
   });
 });

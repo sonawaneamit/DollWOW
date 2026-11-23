@@ -10,6 +10,7 @@ import { compareEntryFromCartItem } from "@/lib/compare/products";
 import { useCart } from "@/components/cart/CartProvider";
 import { formatMoney } from "@/lib/utils/currency";
 import { bagItemIdentity, MAX_ITEM_QUANTITY } from "@/lib/cart/bag";
+import { cartItemShippingLabel } from "@/lib/catalog/almostAsGoodAsPerfect";
 import { analyticsEvents, trackEvent } from "@/lib/analytics/client";
 import { Care365Seal } from "@/components/care/Care365Seal";
 import { FactoryApprovalCartPreview } from "@/components/factory-approval/FactoryApprovalPreview";
@@ -99,7 +100,7 @@ export function CartDrawer() {
                           <Link href={`/products/${item.productHandle}`} onClick={cart.closeDrawer} className="mt-0.5 block truncate text-sm font-semibold text-ivory-100 hover:text-gold-200">
                             {item.productDisplayName || item.productTitle}
                           </Link>
-                          <p className="mt-0.5 text-sm text-ivory-500">{item.readyToShip ? "Ready to ship" : "Reviewed before production"}</p>
+                          <p className="mt-0.5 text-sm text-ivory-500">{cartItemShippingLabel(item)}</p>
                         </div>
                         <button
                           type="button"
