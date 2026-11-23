@@ -111,7 +111,7 @@ export type FanrealNovemberPreview = {
 };
 
 /** True when the customer actually gets cash off or free extras. */
-export function fanrealNovemberHasCustomerOffer(offer: FanrealNovemberPreview | null | undefined) {
+export function fanrealNovemberHasCustomerOffer(offer: FanrealNovemberPreview | null | undefined): offer is FanrealNovemberPreview {
   return Boolean(offer && (offer.cashOff > 0 || offer.gifts.length > 0));
 }
 

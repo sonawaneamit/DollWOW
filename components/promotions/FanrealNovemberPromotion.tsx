@@ -13,7 +13,7 @@ export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: 
   // Only render when the server attached the offer (flag is on). Do not read the
   // date window alone or this banner would appear on the live site before approval.
   const offer = product.extended.fanrealNovember;
-  if (!fanrealNovemberHasCustomerOffer(offer)) return null;
+  if (!offer || !fanrealNovemberHasCustomerOffer(offer)) return null;
   void promoClock;
 
   const detailsId = "fanreal-november-pdp-details";
