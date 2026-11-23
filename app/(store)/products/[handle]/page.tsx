@@ -398,7 +398,7 @@ function ProductSpecSummary({
     ["Brand", product.extended.brand ?? product.vendor],
     ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
-    ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
+    ["Availability", isAlmostAsGoodAsPerfect(product) ? "Ships from China in about 4–8 weeks, sold as-is" : product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
     ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
