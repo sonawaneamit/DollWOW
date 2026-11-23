@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CalendarDays, Check, ChevronDown, Gift } from "lucide-react";
-import { FANREAL_NOVEMBER_PROMOTION } from "@/lib/promotions/fanrealNovember2026";
+import { FANREAL_NOVEMBER_PROMOTION, fanrealNovemberHasCustomerOffer } from "@/lib/promotions/fanrealNovember2026";
 import type { Product } from "@/types/product";
 
 type PromotionProduct = Pick<Product, "handle" | "title" | "vendor" | "productType" | "tags" | "extended" | "priceRange">;
@@ -13,7 +13,7 @@ export function FanrealNovemberPdpPromotion({ product, promoClock }: { product: 
   // Only render when the server attached the offer (flag is on). Do not read the
   // date window alone or this banner would appear on the live site before approval.
   const offer = product.extended.fanrealNovember;
-  if (!offer) return null;
+  if (!fanrealNovemberHasCustomerOffer(offer)) return null;
   void promoClock;
 
   const detailsId = "fanreal-november-pdp-details";

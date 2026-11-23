@@ -66,7 +66,7 @@ import { getCustomizationConfig } from "@/lib/customization/configs";
 import { publicProductPayload, publicCustomizationConfig } from "@/lib/catalog/publicPayload";
 import { applyChikuPreview, isChikuPreview, isChikuProduct } from "@/lib/customization/chiku-preview";
 import { withBfcmPreview } from "@/lib/promotions/bfcmBrandPreview";
-import { withFanrealNovemberPreview, isFanrealNovPromoLive } from "@/lib/promotions/fanrealNovember2026";
+import { withFanrealNovemberPreview, isFanrealNovPromoLive, fanrealNovemberHasCustomerOffer } from "@/lib/promotions/fanrealNovember2026";
 import { FanrealNovemberPdpPromotion } from "@/components/promotions/FanrealNovemberPromotion";
 
 function previewProduct(product: NonNullable<Awaited<ReturnType<typeof getProductByHandle>>>) {
@@ -247,7 +247,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                   <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
                   <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">{product.extended.bfcmPreview.brand} Black Friday</span>
                 </>
-              ) : product.extended.fanrealNovember ? (
+              ) : fanrealNovemberHasCustomerOffer(product.extended.fanrealNovember) ? (
                 <>
                   <strong className="text-3xl text-gold-300"><DisplayMoney amount={price.amount} currencyCode={price.currencyCode} /></strong>
                   <span className="rounded-sm bg-accent px-2 py-1 text-sm font-semibold text-white">Fanreal November deal</span>

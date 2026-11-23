@@ -110,6 +110,11 @@ export type FanrealNovemberPreview = {
   dateLabel: string;
 };
 
+/** True when the customer actually gets cash off or free extras. */
+export function fanrealNovemberHasCustomerOffer(offer: FanrealNovemberPreview | null | undefined) {
+  return Boolean(offer && (offer.cashOff > 0 || offer.gifts.length > 0));
+}
+
 type PromoProduct = Pick<Product, 'handle' | 'title' | 'vendor' | 'productType' | 'tags' | 'extended' | 'priceRange'>;
 
 const round = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;

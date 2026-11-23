@@ -7,6 +7,7 @@ import {
   fanrealNovemberCart,
   fanrealNovemberConfig,
   fanrealNovemberOffer,
+  fanrealNovemberHasCustomerOffer,
   isFanrealNovPromoLive,
   isFanrealNovemberActive,
   matchFanrealNovemberGift,
@@ -135,6 +136,9 @@ describe('Fanreal November 2026 promo', () => {
     expect(rts?.price).toBe(2480);
     expect(rts?.cashOff).toBe(0);
     expect(rts?.gifts).toEqual([]);
+    expect(fanrealNovemberHasCustomerOffer(rts)).toBe(false);
+    expect(fanrealNovemberHasCustomerOffer(anne)).toBe(true);
+    expect(fanrealNovemberHasCustomerOffer(uni)).toBe(true);
 
     expect(fanrealNovemberOffer(product({ title: 'Fanreal Anne 155cm F-Cup Silicone Companion Doll', handle: 'fanreal-anne-155cm-f-cup-silicone-companion-doll', price: 2680, heightCm: 155, cupSize: 'F' }), after)).toBeNull();
   });
