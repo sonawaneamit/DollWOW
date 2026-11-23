@@ -4,6 +4,7 @@ import type { CustomizationGroup, CustomizationOption } from "@/types/customizat
 import { normalizeDealerHeadGroups } from "@/lib/customization/dealer-heads";
 import { restoreIlExtraHeadOwnership } from "@/lib/customization/il-source-ownership";
 import { chikuCustomizationGroups } from "@/lib/customization/chiku-preview";
+import { isBfcmPromoLive } from '@/lib/promotions/bfcmBrandPreview';
 
 export function getFunwestCustomizationGroups(product: Product, groups: CustomizationGroup[]): CustomizationGroup[] {
   return groups.map(group => {
@@ -144,11 +145,7 @@ export function getSeCustomizationGroups(product: Product, groups: Customization
 
 export function getSixYeCustomizationGroups(product: Product, groups: CustomizationGroup[]) {
   // Check if BFCM promo is live (extra head is free during promo)
-  let isBfcmLive = false;
-  try {
-    const { isBfcmPromoLive } = require('@/lib/promotions/bfcmBrandPreview');
-    isBfcmLive = isBfcmPromoLive();
-  } catch {}
+  const isBfcmLive = isBfcmPromoLive();
   
   return normalizeDealerHeadGroups(product, groups, {
     chooseDescription: "Choose one compatible 6YE head. The standard head identity switch is included with the doll.",
