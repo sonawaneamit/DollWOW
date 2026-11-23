@@ -21,8 +21,10 @@ afterEach(() => vi.unstubAllEnvs());
 describe('Lusandy November scheduled release', () => {
   it('guards both hero purchase and configured checkout in the private preview', () => {
     const source=fs.readFileSync('app/(store)/products/[handle]/page.tsx','utf8');
-    expect(source).toContain('firstAvailable && !promotionPreview');
-    expect(source).toContain('draftPreview={isPrivateDraft || promotionPreview}');
+    // Hero buy button is hidden whenever any private promotion preview (incl. Lusandy) is on.
+    expect(source).toContain('firstAvailable && !(lusandyNovemberPreviewEnabled() ||');
+    // Configured checkout stays in draft mode for promotion previews (the BFCM brand preview is exempt).
+    expect(source).toContain('draftPreview={isPrivateDraft || (promotionPreview && !isBfcmPreview)}');
     expect(source).toContain('!promotionPreview ? <PdpTrackers');
   });
   it.each([

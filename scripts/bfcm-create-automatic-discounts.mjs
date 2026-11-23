@@ -184,7 +184,11 @@ async function main() {
     process.exit(1);
   }
   
-  const totalDiscounts = 1 + Object.keys(climaxByDiscount).length + Object.keys(sixYeByDiscount).length + 1;
+  const parts = (n) => Math.max(1, Math.ceil(n / 100));
+  const totalDiscounts = parts(topFire.length)
+    + Object.values(climaxByDiscount).reduce((t, g) => t + parts(g.length), 0)
+    + Object.values(sixYeByDiscount).reduce((t, g) => t + parts(g.length), 0)
+    + parts(ido.length);
   console.log(`\nTotal automatic discounts to create: ${totalDiscounts}`);
   
   console.log(`Current active automatic discounts: ${currentActive}/25`);
@@ -199,7 +203,16 @@ async function main() {
   
   // (c) Build all discount specs
   const allDiscounts = [];
+  // Shopify caps productsToAdd at 100 per discount: split larger groups into parts
   const buildSpec = (title, amount, products, startsAt, endsAt) => {
+    if (products.length > 100) {
+      const parts = Math.ceil(products.length / 100);
+      for (let i = 0; i < parts; i++) buildSpecOne(`${title} (part ${i + 1}/${parts})`, amount, products.slice(i * 100, (i + 1) * 100), startsAt, endsAt);
+      return;
+    }
+    buildSpecOne(title, amount, products, startsAt, endsAt);
+  };
+  const buildSpecOne = (title, amount, products, startsAt, endsAt) => {
     const mutation = `
       mutation ($discount: DiscountAutomaticBasicInput!) {
         discountAutomaticBasicCreate(automaticBasicDiscount: $discount) {

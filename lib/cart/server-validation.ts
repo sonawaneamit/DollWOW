@@ -11,7 +11,7 @@ import { verifiedGynoidBodyVersion } from '@/lib/catalog/gynoid-body-versions';
 import { reviewedGynoidIdentity, assertGynoidStandardCheckout } from '@/lib/customization/gynoid';
 import { gynoidDependencyPlan } from './gynoid-dependencies';
 import { fanrealDependencyPlan } from './fanreal-dependencies';
-import { bfcmOffer, bfcmPreviewConfig } from '@/lib/promotions/bfcmBrandPreview';
+import { isBfcmPromoLive, bfcmOffer, bfcmPreviewConfig } from '@/lib/promotions/bfcmBrandPreview';
 
 const SAFE_ATTRIBUTE_KEYS = new Map([
   ["gift note", "Gift note"]
@@ -88,7 +88,7 @@ function validateAndRepriceLine(input: ParsedCartLine, product?: Product): Serve
   let { config } = promotionPricingForSelections(product, catalogConfig, input.selections);
   
   // Apply BFCM pricing when live
-  const { isBfcmPromoLive, bfcmOffer: getBfcmOffer, bfcmPreviewConfig } = require('@/lib/promotions/bfcmBrandPreview');
+  const getBfcmOffer = bfcmOffer;
   if (isBfcmPromoLive()) {
     const offer = getBfcmOffer(product);
     if (offer) {
@@ -173,7 +173,8 @@ function validateStructuredSelections(
   }
 
   // Check if BFCM preview is active for this product
-  const { isBfcmPromoLive: checkBfcmLive, bfcmOffer: checkBfcmOffer } = require('@/lib/promotions/bfcmBrandPreview');
+  const checkBfcmLive = isBfcmPromoLive;
+  const checkBfcmOffer = bfcmOffer;
   const bfcmPreview = product && checkBfcmLive() ? checkBfcmOffer(product) : null;
   const bfcmFreeOptions = new Set<string>();
   
