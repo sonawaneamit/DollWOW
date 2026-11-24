@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:13:30.002Z",
-      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
+      "reviewedAt": "2026-11-24T12:18:17.923Z",
+      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
+      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:13:30.002Z",
-      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
+      "reviewedAt": "2026-11-24T12:18:17.923Z",
+      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
+      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
     },
     "coordinatedRelease": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:13:30.002Z",
-      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
+      "reviewedAt": "2026-11-24T12:18:17.923Z",
+      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
+      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
     }
   },
   "payload": {
@@ -4605,7 +4605,7 @@
         "handle": "climax-eva-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2"
+        "runtimeHash": "a1b1a09e0aba06795349383b70e9ced0b8e2cd931582efe92fa5752c73a09eec"
       },
       {
         "productId": "gid://shopify/Product/10518039691448",
@@ -4703,7 +4703,7 @@
         "handle": "climax-kerekes-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3"
+        "runtimeHash": "2c5d5ed3634b9cff52575ed38be9cb06e09398b3715515103f8d770ce0720297"
       },
       {
         "productId": "gid://shopify/Product/10518041788600",
