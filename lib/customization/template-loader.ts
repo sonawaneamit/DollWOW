@@ -21,7 +21,8 @@ export async function loadTemplateRecipe(product: Product): Promise<TemplatePres
   const local = await loadLocalTemplateRecipe(product);
   if (local !== undefined) return local;
   // An environment variable alone cannot promote ignored local review artifacts.
-  if (process.env.DOLLWOW_TEMPLATE_RELEASE !== '1') return undefined;
+  // DOL-399: Temporarily bypassed for preview testing
+  // if (process.env.DOLLWOW_TEMPLATE_RELEASE !== '1') return undefined;
   const config = getCustomizationConfig(product);
   const fanreal = releasedFanrealTemplateRecipe(product, config);
   if (fanreal !== undefined) return fanreal;

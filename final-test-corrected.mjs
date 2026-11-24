@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 
-const PREVIEW_URL = 'https://doll-61u9t8kb7-sonawaneamits-projects.vercel.app';
-const SHARE_TOKEN = '_vercel_share=8PQ6IcsHNuYUpw6cY72EoHe542Z8bFgs';
+const PREVIEW_URL = 'https://doll-ead6du47l-sonawaneamits-projects.vercel.app';
+const SHARE_TOKEN = '_vercel_share=AXGmZSQRMyND86vFpUq5jxYzHuuqHh4d';
 
 const products = [
   { handle: 'wm-abbie-171cm-h-cup-tpe-companion-doll-493ex', name: 'WM Abbie', brand: 'WM' },
