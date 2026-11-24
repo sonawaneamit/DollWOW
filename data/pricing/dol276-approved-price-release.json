@@ -134,6 +134,17 @@
       "afterRuntimeHash": "35fa921e214877ddfd26f394859af23b5610701393fa49d728c9b77feaa9d4f7"
     },
     {
+      "id": "gid://shopify/Product/10663312064696",
+      "handle": "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd027",
+      "before": 1999,
+      "after": 2299,
+      "variantIds": [
+        "gid://shopify/ProductVariant/54355782041784"
+      ],
+      "beforeRuntimeHash": "e148251716b0b563a09bb0e8a6ba1d6bdc240038f4816c596092a0c3b328b8fb",
+      "afterRuntimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f"
+    },
+    {
       "id": "gid://shopify/Product/10663312130232",
       "handle": "funwest-dolls-sophiemina-159cm-a-cup-silicone-companion-doll-fsd028",
       "before": 2299,

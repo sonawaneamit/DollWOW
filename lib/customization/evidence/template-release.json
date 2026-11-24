@@ -3,22 +3,22 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:18:17.923Z",
-      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
-      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
+      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:18:17.923Z",
-      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
-      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
+      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:18:17.923Z",
-      "payloadHash": "81abd0c9f93362fe07ee1a42d5f4ce06a5696a2d2fb843f8580996b01a472804",
-      "evidenceRef": "Climax mini dolls relink 2026-11-24: 2 runtime hashes computed"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
+      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     }
   },
   "payload": {
@@ -22693,7 +22693,7 @@
         "handle": "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd027",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "e148251716b0b563a09bb0e8a6ba1d6bdc240038f4816c596092a0c3b328b8fb"
+        "runtimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f"
       },
       {
         "productId": "gid://shopify/Product/10663312130232",
@@ -22721,7 +22721,7 @@
         "handle": "funwest-dolls-nika-159cm-a-cup-silicone-companion-doll-fsd033",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "bff40de816f1407a1bc2c4ed8a70df832765ad63af4ba6f3b623851f3bd7fa2c"
+        "runtimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f"
       },
       {
         "productId": "gid://shopify/Product/10663312818360",
