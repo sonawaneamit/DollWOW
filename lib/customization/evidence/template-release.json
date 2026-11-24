@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:12:22.528Z",
+      "reviewedAt": "2026-11-24T15:27:56.330Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "f8855ca44aca1320e30faa6e1151df045f31b6a2893df43107f633fadfdbeb0b"
+      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:12:22.528Z",
+      "reviewedAt": "2026-11-24T15:27:56.330Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "f8855ca44aca1320e30faa6e1151df045f31b6a2893df43107f633fadfdbeb0b"
+      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
     },
     "coordinatedRelease": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:12:22.528Z",
+      "reviewedAt": "2026-11-24T15:27:56.330Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "f8855ca44aca1320e30faa6e1151df045f31b6a2893df43107f633fadfdbeb0b"
+      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
     }
   },
   "payload": {
@@ -34983,34 +34983,33 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential care kit and head stand for safe storage.",
-            "add": [
-              {
-                "groupId": "accessories",
-                "optionId": "head-stand-holder"
-              }
-            ],
+            "description": "Factory configuration with your selected head and customizations.",
+            "add": [],
             "remove": []
           },
           {
             "id": "enthusiast",
-            "description": "Replaceable insert with heating comfort.",
+            "description": "Adds storage solution and comfort accessories.",
             "add": [
               {
                 "groupId": "accessories",
-                "optionId": "replaceable-vagina-insert"
+                "optionId": "head-stand-holder"
               },
               {
                 "groupId": "accessories",
-                "optionId": "heating-blanket"
+                "optionId": "replaceable-vagina-insert"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with all comfort upgrades.",
+            "description": "Complete care system with heating comfort.",
             "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "head-stand-holder"
+              },
               {
                 "groupId": "accessories",
                 "optionId": "replaceable-vagina-insert"
@@ -35018,10 +35017,6 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
-              },
-              {
-                "groupId": "accessories",
-                "optionId": "head-stand-holder"
               }
             ],
             "remove": []
@@ -35034,34 +35029,33 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential care kit and head stand for safe storage.",
-            "add": [
-              {
-                "groupId": "accessories",
-                "optionId": "head-stand-holder"
-              }
-            ],
+            "description": "Factory configuration with your selected head and customizations.",
+            "add": [],
             "remove": []
           },
           {
             "id": "enthusiast",
-            "description": "Replaceable insert with heating comfort.",
+            "description": "Adds storage solution and comfort accessories.",
             "add": [
               {
                 "groupId": "accessories",
-                "optionId": "replaceable-vagina-insert"
+                "optionId": "head-stand-holder"
               },
               {
                 "groupId": "accessories",
-                "optionId": "heating-blanket"
+                "optionId": "replaceable-vagina-insert"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with all comfort upgrades.",
+            "description": "Complete care system with heating comfort.",
             "add": [
+              {
+                "groupId": "accessories",
+                "optionId": "head-stand-holder"
+              },
               {
                 "groupId": "accessories",
                 "optionId": "replaceable-vagina-insert"
@@ -35069,10 +35063,6 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
-              },
-              {
-                "groupId": "accessories",
-                "optionId": "head-stand-holder"
               }
             ],
             "remove": []
