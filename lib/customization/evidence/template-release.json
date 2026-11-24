@@ -35549,7 +35549,7 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "TPE body with silicone head, articulated fingers, and EVO skeleton.",
+            "description": "Factory build with articulated fingers and EVO skeleton.",
             "add": [
               {
                 "groupId": "skeleton-type",
@@ -35564,7 +35564,7 @@
           },
           {
             "id": "enthusiast",
-            "description": "Upgrades to STPE body for softer feel.",
+            "description": "Upgrades to S-TPE body.",
             "add": [
               {
                 "groupId": "body-material",
@@ -35575,7 +35575,7 @@
           },
           {
             "id": "collector",
-            "description": "Adds implanted head and pubic hair for complete realism.",
+            "description": "Adds pubic hair styling.",
             "add": [
               {
                 "groupId": "vagina-hair-type",
@@ -35592,7 +35592,7 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "TPE body with silicone head, articulated fingers, and EVO skeleton.",
+            "description": "Factory build with articulated fingers and EVO skeleton.",
             "add": [
               {
                 "groupId": "skeleton-type",
@@ -35607,7 +35607,7 @@
           },
           {
             "id": "enthusiast",
-            "description": "Upgrades to STPE body for softer feel.",
+            "description": "Upgrades to S-TPE body.",
             "add": [
               {
                 "groupId": "body-material",
@@ -35618,7 +35618,7 @@
           },
           {
             "id": "collector",
-            "description": "Adds implanted head and pubic hair for complete realism.",
+            "description": "Adds pubic hair styling.",
             "add": [
               {
                 "groupId": "vagina-hair-type",
