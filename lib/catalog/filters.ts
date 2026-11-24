@@ -3,6 +3,7 @@ import { brandFilterOptions, brandFromText, catalogBrands, getCatalogBrand } fro
 import { getCatalogLook, lookCollectionPresets, lookFilterOptions, productMatchesLook } from "@/lib/catalog/lookTags";
 import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { productMatchesCatalogSearch, productSearchScore } from "@/lib/search/catalog";
+import { isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 
 export type CatalogFilters = {
   query?: string;
@@ -19,6 +20,7 @@ export type CatalogFilters = {
   price?: string;
   dollVue?: "enabled";
   capability?: "insertable-penis-add-on";
+  tag?: string;
   sort?: string;
 };
 
@@ -135,6 +137,7 @@ export const collectionPresets: Record<string, { title: string; filters: Catalog
   "height-170-plus": { title: "Dolls 170 cm+", filters: { height: "170-999" } },
   "lightweight-sex-dolls": { title: "Lightweight sex dolls", filters: { productForm: "full-doll", weight: "0-74" } },
   "new-sex-dolls": { title: "New sex dolls and latest arrivals", filters: { sort: "latest" } },
+  "almost-as-good-as-perfect": { title: "Almost as Good as Perfect", filters: { tag: "almost-as-good-as-perfect" } },
   "futa-sex-dolls": {
     title: "Futa sex dolls by brand",
     filters: { bodyType: "female", productForm: "full-doll", capability: "insertable-penis-add-on" }
@@ -207,6 +210,7 @@ export function shopifyQueryForFilters(filters: CatalogFilters) {
   if (filters.availability) parts.push(`tag:${filters.availability}`);
   if (filters.material) parts.push(shopifyMaterialQuery(filters.material));
   if (filters.productForm) parts.push(shopifyProductFormQuery(filters.productForm));
+  if (filters.tag) parts.push(`tag:${filters.tag}`);
   return parts.join(" AND ") || undefined;
 }
 
@@ -247,6 +251,7 @@ export function filterProducts(products: Product[], filters: CatalogFilters) {
     if (filters.price && !inRange(price(product), filters.price)) return false;
     if (filters.dollVue === "enabled" && !isDollVueCatalogProduct(product)) return false;
     if (filters.capability === "insertable-penis-add-on" && product.extended.penisAddOnAvailable !== true) return false;
+    if (filters.tag && !product.tags.some((tag) => tag.toLowerCase() === filters.tag!.toLowerCase())) return false;
     return true;
   });
 
@@ -265,6 +270,7 @@ export function activeFilterCount(filters: CatalogFilters) {
 export function getCatalogFilterLabel(key: keyof CatalogFilters, value?: string) {
   if (!value) return undefined;
   if (key === "query") return `Search: ${value}`;
+  if (key === "tag" && value === "almost-as-good-as-perfect") return "Almost as Good as Perfect";
   if (key === "capability" && value === "insertable-penis-add-on") return "Insertable penis option available";
   const label = filterLabelMaps[key]?.get(value);
   if (label) return label;
@@ -281,6 +287,7 @@ export function requiresCatalogWideFetch(filters: CatalogFilters) {
       filters.region ||
       filters.dollVue ||
       filters.capability ||
+      filters.tag ||
       (filters.sort && filters.sort !== "featured")
   );
 }
@@ -311,6 +318,7 @@ function productMatchesWarehouseRegion(product: Product, region: NonNullable<Cat
 }
 
 function productMatchesAvailability(product: Product, availability: NonNullable<CatalogFilters["availability"]>) {
+  if (isAlmostAsGoodAsPerfect(product) && availability === "ready_to_ship") return false;
   if (product.extended.stockStatus === availability) return true;
   return product.tags.includes(availability) || product.tags.includes(tagForFilter(availability));
 }

@@ -11,6 +11,7 @@ import { isDollVueCatalogProduct } from "@/lib/dollvue/config";
 import { DollVueBadge } from "@/components/dollvue/DollVueBadge";
 import { productUrl } from "@/lib/catalog/productUrl";
 import type { Product } from "@/types/product";
+import { ALMOST_AS_GOOD_AS_PERFECT_LABEL, isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const price = product.priceRange.minVariantPrice;
@@ -18,6 +19,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const image = product.featuredImage ?? product.images[0] ?? null;
   const publicImageUrl = protectedProductImageUrlFor(product, image, "card");
   const ready = product.extended.stockStatus === "ready_to_ship";
+  const almostAsGood = isAlmostAsGoodAsPerfect(product);
   const specs = [
     product.extended.heightCm ? `${product.extended.heightCm} cm` : null,
     product.extended.material,
@@ -29,7 +31,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       <Link className="catalog-product-card__link" href={productUrl(product.handle)} aria-label={`View ${displayTitle}`} />
       <div className="catalog-product-card__media">
         {publicImageUrl ? <Image src={publicImageUrl} alt={displayTitle} fill sizes="(min-width: 1280px) 28vw, (min-width: 768px) 44vw, 92vw" className="catalog-product-card__image" priority={priority} loading={priority ? "eager" : "lazy"} /> : <div className="catalog-product-card__empty"><span>{displayTitle}</span></div>}
-        <span className={`catalog-product-card__status ${ready ? "is-ready" : ""}`}>{ready ? "Ready to ship" : "Custom build"}</span>
+        <span className={`catalog-product-card__status ${ready || almostAsGood ? "is-ready" : ""}`}>{almostAsGood ? ALMOST_AS_GOOD_AS_PERFECT_LABEL : ready ? "Ready to ship" : "Custom build"}</span>
       </div>
       <div className="catalog-product-card__body">
         <p>{product.extended.brand ?? product.vendor}</p>

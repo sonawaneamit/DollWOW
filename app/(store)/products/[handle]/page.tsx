@@ -39,6 +39,9 @@ import { protectedProductImageUrlFor, withProtectedProductImages } from "@/lib/c
 import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import { getPrivateDraftPreview } from '@/lib/catalog/privateDraftPreview';
 import { GynoidBodyVersionNote } from '@/components/GynoidBodyVersionNote';
+import { AlmostAsGoodAsPerfectBadge } from '@/components/AlmostAsGoodAsPerfectBadge';
+import { AlmostAsGoodAsPerfectNote } from '@/components/AlmostAsGoodAsPerfectNote';
+import { ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY, isAlmostAsGoodAsPerfect } from '@/lib/catalog/almostAsGoodAsPerfect';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 import { SeHalloweenPromotion } from '@/components/promotions/SeHalloweenPromotion';
 import { isSeHalloweenArtworkEnabled } from '@/lib/promotions/seHalloween2026';
@@ -219,7 +222,8 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
           <div id="overview" className="flex flex-col justify-center scroll-mt-24">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-sm  text-gold-300">{contextualBrand ? <Link data-contextual-brand href={contextualBrand.href} className="underline underline-offset-4">{productBrand}</Link> : productBrand}</p>
-              <WarehouseStatusBadge status={product.extended.stockStatus} />
+              {isAlmostAsGoodAsPerfect(product) ? null : <WarehouseStatusBadge status={product.extended.stockStatus} />}
+              <AlmostAsGoodAsPerfectBadge product={publicProduct} />
               {product.extended.stockStatus === "ready_to_ship" ? (
                 <WarehouseLocationBadge regions={product.extended.warehouseRegions} country={product.extended.warehouseCountry} />
               ) : null}
@@ -258,6 +262,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
               <span className="text-sm text-ivory-500">Base configuration</span>
             </div>
             {templateRecipe && /^options:mmx-(standard|ultra-dream|aio|limited)-v1$/.test(templateRecipe.tag) ? <p className="mt-2 text-sm text-ivory-300">US shipping is included. Taxes and eligible discounts are calculated at checkout.</p> : null}
+            <AlmostAsGoodAsPerfectNote product={product} />
             <AfterpayMessaging amount={Number(price.amount)} currencyCode={price.currencyCode} pageType="product" itemSkus={firstAvailable?.id} itemCategories={product.productType} eligible={Boolean(firstAvailable?.availableForSale)} usesDisplayCurrency />
             <p className="mt-4 max-w-2xl text-base leading-7 text-ivory-300">{intro}</p>
             {isChikuProduct(product) ? <p className="mt-3 text-base leading-7 text-ivory-300">Fixed teeth and tongue included as standard. Both are non-removable.</p> : null}
@@ -287,6 +292,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
                 customAvailable={product.extended.customAvailable}
                 warehouseCountry={product.extended.warehouseCountry}
                 warehouseRegions={product.extended.warehouseRegions}
+                productTags={publicProduct.tags}
                 requiresChoice={product.tags.includes("options:top-fire-headless-body-v1") ? "Choose your head" : undefined}
               />
             )}
@@ -408,8 +414,8 @@ function ProductSpecSummary({
     ["Brand", product.extended.brand ?? product.vendor],
     ...(product.extended.headModel ? [["Head model", formatHeadModel(product.extended.headModel)]] : []),
     ["Material", product.extended.material],
-    ["Availability", product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
-    ["Warehouse", product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
+    ["Availability", isAlmostAsGoodAsPerfect(product) ? ALMOST_AS_GOOD_AS_PERFECT_AVAILABILITY : product.extended.stockStatus === "ready_to_ship" ? "Ready to ship after stock confirmation" : "Factory order"],
+    ["Warehouse", isAlmostAsGoodAsPerfect(product) ? "" : product.extended.stockStatus === "ready_to_ship" ? (product.extended.warehouseRegions?.join(", ") || product.extended.warehouseCountry) : ""],
     ["Delivery", product.extended.deliveryEstimate]
   ].filter((row): row is [string, string] => Boolean(row[1]));
   const measurementGroups = groupMeasurements(measurements);

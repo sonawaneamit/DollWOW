@@ -2,6 +2,7 @@ import type { Product } from "@/types/product";
 import { isMdReleaseWeight, mdFactoryBodyKg, productWeightLabel } from './mdWeight';
 import { productBodyLabel } from "@/lib/catalog/bodyType";
 import { productDisplayNameForUi, productPublicTitle } from "@/lib/catalog/naming";
+import { isAlmostAsGoodAsPerfect } from "@/lib/catalog/almostAsGoodAsPerfect";
 
 export type DisplaySpec = {
   label: string;
@@ -213,6 +214,10 @@ function isMetadataOnlyIntro(intro: string) {
 }
 
 function productFallbackIntro(product: Product) {
+  if (isAlmostAsGoodAsPerfect(product)) {
+    const lead = product.title || productDisplayNameForUi(product) || productPublicTitle(product);
+    return `${lead} has a small cosmetic defect but is fully usable, which is why it is discounted. Photos show this exact body, sold as-is.`;
+  }
   const brand = (product.extended.brand || product.vendor || "DollWow").replace(/\s+dolls$/i, "");
   if (isHeadOnlyProduct(product)) {
     const lead = productDisplayNameForUi(product) || productPublicTitle(product);
