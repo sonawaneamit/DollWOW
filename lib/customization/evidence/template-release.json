@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:47:35.279Z",
+      "reviewedAt": "2026-11-24T15:50:08.209Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
+      "payloadHash": "f6c3414032b5f6951a8f0b2d5bca96e6a12239ecf98f1423b87bf27e9c24dee5"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:47:35.279Z",
+      "reviewedAt": "2026-11-24T15:50:08.209Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
+      "payloadHash": "f6c3414032b5f6951a8f0b2d5bca96e6a12239ecf98f1423b87bf27e9c24dee5"
     },
     "coordinatedRelease": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:47:35.279Z",
+      "reviewedAt": "2026-11-24T15:50:08.209Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
+      "payloadHash": "f6c3414032b5f6951a8f0b2d5bca96e6a12239ecf98f1423b87bf27e9c24dee5"
     }
   },
   "payload": {
@@ -34991,18 +34991,22 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential head stand for safe storage.",
+            "description": "Essential care accessories.",
             "add": [
               {
                 "groupId": "accessories",
                 "optionId": "head-stand-holder"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "gloves"
               }
             ],
             "remove": []
           },
           {
             "id": "enthusiast",
-            "description": "Adds comfort accessories for enhanced experience.",
+            "description": "Comfort and maintenance essentials.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35011,13 +35015,17 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "powder"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with all accessories.",
+            "description": "Complete premium care system.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35030,6 +35038,18 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "gloves"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "powder"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "comb"
               }
             ],
             "remove": []
@@ -35038,22 +35058,26 @@
       },
       "cca79ffc29b95b3799c029f9e842ff093e463965a9b3a991c3301136c49f6a63": {
         "tag": "options:funwest-tpe-full-body-v1",
-        "signature": "sha256:7664cde6872627cca20002eb12c2bdca990068e4093570a77c3313736f4b0c07",
+        "signature": "sha256:fdca99da87db12caaa5e7e6de83b90c82f4b7a86a85ea62e44085fc1c14b1d4d",
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential head stand for safe storage.",
+            "description": "Essential care accessories.",
             "add": [
               {
                 "groupId": "accessories",
                 "optionId": "head-stand-holder"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "gloves"
               }
             ],
             "remove": []
           },
           {
             "id": "enthusiast",
-            "description": "Adds comfort accessories for enhanced experience.",
+            "description": "Comfort and maintenance essentials.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35062,13 +35086,17 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "powder"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with all accessories.",
+            "description": "Complete premium care system.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35081,6 +35109,18 @@
               {
                 "groupId": "accessories",
                 "optionId": "heating-blanket"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "gloves"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "powder"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "comb"
               }
             ],
             "remove": []
