@@ -13,7 +13,7 @@ export function keepsWizardOpen(handle: string) {
  * Previous { cache: "reload", revalidate: 0 } cached responses in Vercel Data Cache
  * with no expiry, causing stale prices after Shopify updates.
  */
-export function dealerPreviewProductFetch(handle: string): { cache: RequestCache; revalidate?: number } {
+export function dealerPreviewProductFetch(handle: string): { cache?: RequestCache; revalidate?: number } {
   return { revalidate: 60 };
 }
 
