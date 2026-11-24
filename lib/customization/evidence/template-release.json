@@ -3,22 +3,22 @@
   "releaseStatus": "APPROVED",
   "approvals": {
     "catalogCompatibility": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:54:13.287Z",
-      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
-      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
+      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     },
     "checkoutChargeLines": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:54:13.287Z",
-      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
-      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
+      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     },
     "coordinatedRelease": {
-      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:54:13.287Z",
-      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
-      "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
+      "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
+      "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     }
   },
   "payload": {
@@ -4606,7 +4606,7 @@
         "handle": "climax-eva-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "a1b1a09e0aba06795349383b70e9ced0b8e2cd931582efe92fa5752c73a09eec"
+        "runtimeHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2"
       },
       {
         "productId": "gid://shopify/Product/10518039691448",
@@ -4704,7 +4704,7 @@
         "handle": "climax-kerekes-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "2c5d5ed3634b9cff52575ed38be9cb06e09398b3715515103f8d770ce0720297"
+        "runtimeHash": "b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3"
       },
       {
         "productId": "gid://shopify/Product/10518041788600",
@@ -17332,7 +17332,7 @@
         "handle": "wm-jade-sterling-164cm-g-cup-silicone-companion-doll-js166",
         "tag": "options:wm-female-silicone-softness",
         "bindingKey": "b51a819630023766142b41cc22f8fd2f80554d191c15219a8e5342c2dc7f5c2c",
-        "runtimeHash": "b206dbb65a5fb6aac31299307a2cc5c51b06da6ddad424a454e0c49a76b3a431"
+        "runtimeHash": "53f49219f32b95724fdc51457be326108936439fda670c95e004655352e9d3a3"
       },
       {
         "productId": "gid://shopify/Product/10433157955768",
@@ -22701,7 +22701,7 @@
         "handle": "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd027",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f"
+        "runtimeHash": "e148251716b0b563a09bb0e8a6ba1d6bdc240038f4816c596092a0c3b328b8fb"
       },
       {
         "productId": "gid://shopify/Product/10663312130232",
@@ -22729,7 +22729,7 @@
         "handle": "funwest-dolls-nika-159cm-a-cup-silicone-companion-doll-fsd033",
         "tag": "options:funwest-silicone-full-body-v1",
         "bindingKey": "funwest-silicone-f01435809119",
-        "runtimeHash": "132f1a2843c23b0a505782fc0053859e81efd318de08ea3c50c7792d66c44e8f"
+        "runtimeHash": "bff40de816f1407a1bc2c4ed8a70df832765ad63af4ba6f3b623851f3bd7fa2c"
       },
       {
         "productId": "gid://shopify/Product/10663312818360",
