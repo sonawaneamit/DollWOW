@@ -3463,6 +3463,5448 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
   "yl-zuzanny-155cm-d-cup-tpe-companion-doll-1ozwz": {
     "recipe": "yl-tpe",
     "configId": "yl-source-verified"
+  },,
+  // FunWest preset eligibility entries (160 products) - DOL-399
+  // All FunWest full-body dolls use accessories for package tiers
+  "funwest-dolls-adele-155cm-f-cup-tpe-companion-doll-123xb": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-adele-157cm-c-cup-tpe-companion-doll-14qz8": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-adele-165cm-c-cup-tpe-companion-doll-1og16": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-adele-165cm-c-cup-tpe-companion-doll-fwd049": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alexa-157cm-d-cup-silicone-companion-doll-hopp9": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alexa-157cm-d-cup-silicone-companion-doll-kc61z": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alexa-166cm-f-cup-silicone-companion-doll-fr4go": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-155cm-f-cup-tpe-companion-doll-fwd075": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-157cm-c-cup-tpe-companion-doll-fwd074": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-157cm-g-cup-silicone-companion-doll-fsd045": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-159cm-a-cup-silicone-companion-doll-fsd010": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-159cm-a-cup-tpe-companion-doll-fwd078": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-alice-159cm-a-cup-tpe-companion-doll-fwd079": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-152cm-d-cup-tpe-companion-doll-fwd085": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-152cm-d-cup-tpe-companion-doll-fwd099": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-157cm-g-cup-silicone-companion-doll-fsd040": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-157cm-g-cup-tpe-companion-doll-fwd087": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd026": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd027": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-amy-159cm-a-cup-silicone-companion-doll-fsd029": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-anastasia-170cm-c-cup-tpe-companion-doll-ogj5t": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-angel-165cm-k-cup-tpe-companion-doll-1fl23": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-assos-157cm-c-cup-tpe-companion-doll-fwd054": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-assos-157cm-g-cup-silicone-companion-doll-fsd012": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-assos-159cm-a-cup-tpe-companion-doll-fwd045": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-assos-162cm-f-cup-tpe-companion-doll-fwd062": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bambi-161cm-e-cup-tpe-companion-doll-1nm03": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bea-155cm-f-cup-tpe-companion-doll-fwd028": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bea-162cm-f-cup-tpe-companion-doll-fwd041": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-155cm-f-cup-tpe-companion-doll-fwd088": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-156cm-f-cup-silicone-companion-doll-fsd021": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-157cm-c-cup-tpe-companion-doll-fwd073": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-157cm-g-cup-silicone-companion-doll-fsd018": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-157cm-g-cup-silicone-companion-doll-fsd042": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-157cm-g-cup-tpe-companion-doll-10bz2": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-159cm-a-cup-silicone-companion-doll-fsd038": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bella-162cm-f-cup-tpe-companion-doll-mwjjq": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-bernie-peg-155cm-f-cup-tpe-companion-doll-11v9x": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-candace-155cm-f-cup-tpe-companion-doll-1xxu4": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chastity-160cm-h-cup-tpe-companion-doll-wy8iq": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chastity-165cm-j-cup-tpe-companion-doll-zv1gz": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-cherie-160cm-e-cup-silicone-companion-doll-7pabw": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-cherry-158cm-k-cup-tpe-companion-doll-bxvtg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chloe-157cm-g-cup-tpe-companion-doll-fwd081": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chloe-159cm-a-cup-tpe-companion-doll-fwd063": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chloe-159cm-f-cup-silicone-companion-doll-tf253": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chloe-160cm-e-cup-silicone-companion-doll-1378i": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chloe-162cm-f-cup-tpe-companion-doll-mx59c": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chyna-158cm-c-cup-tpe-companion-doll-4o20y": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-chyna-158cm-h-cup-tpe-companion-doll-1y5p5": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-clara-159cm-a-cup-tpe-companion-doll-fwd106": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-clara-163cm-g-cup-tpe-companion-doll-fwd103": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-coco-158cm-c-cup-tpe-companion-doll-1gumy": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-coco-159cm-k-cup-tpe-companion-doll-168gb": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-crystal-161cm-e-cup-tpe-companion-doll-1md6c": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-dallas-155cm-f-cup-tpe-companion-doll-1a9hw": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-dallas-155cm-f-cup-tpe-companion-doll-fwd024": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-dallas-162cm-f-cup-tpe-companion-doll-lliei": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-darlene-155cm-f-cup-tpe-companion-doll-fwd053": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-darlene-165cm-c-cup-tpe-companion-doll-fwd047": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-desiree-170cm-c-cup-tpe-companion-doll-1gmrq": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-destiny-164cm-b-cup-tpe-companion-doll-dnv30": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-doreen-155cm-f-cup-tpe-companion-doll-1ahap": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eira-163cm-g-cup-tpe-companion-doll-1ij4m": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-elina-157cm-c-cup-tpe-companion-doll-14tbm": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-elina-159cm-a-cup-tpe-companion-doll-fwd056": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-elise-155cm-f-cup-tpe-companion-doll-1269o": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eloise-157cm-g-cup-silicone-companion-doll-197mt": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eloise-157cm-g-cup-silicone-companion-doll-1qksy": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eudora-157cm-c-cup-tpe-companion-doll-fwd057": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eudora-159cm-a-cup-tpe-companion-doll-fwd052": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-eve-159cm-f-cup-tpe-companion-doll-1ilhc": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-evelyn-159cm-f-cup-silicone-companion-doll-1wqzh": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-giselle-157cm-g-cup-tpe-companion-doll-fwd111": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd036": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-giselle-159cm-a-cup-silicone-companion-doll-fsd037": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-iris-162cm-f-cup-tpe-companion-doll-1v6v8": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-jasmine-155cm-f-cup-tpe-companion-doll-upaw9": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-jasmine-159cm-a-cup-tpe-companion-doll-1qtqx": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-jasmine-160cm-e-cup-silicone-companion-doll-1iail": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-jasmine-162cm-f-cup-tpe-companion-doll-fwd032": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-jasmine-165cm-c-cup-tpe-companion-doll-18keg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-juliette-160cm-e-cup-silicone-companion-doll-1jebg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-juliette-160cm-e-cup-silicone-companion-doll-z2gh5": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-juliette-166cm-f-cup-silicone-companion-doll-1d3g1": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-kitty-161cm-e-cup-tpe-companion-doll-1nr3i": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-kristen-158cm-c-cup-tpe-companion-doll-1q3tg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-kristen-165cm-kk-cup-tpe-companion-doll-w4ygo": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-kylie-157cm-g-cup-tpe-companion-doll-fwd091": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-kylie-159cm-a-cup-tpe-companion-doll-fwd089": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-leila-161cm-e-cup-tpe-companion-doll-1nrkj": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lena-163cm-g-cup-tpe-companion-doll-1ij8z": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-103cm-g-cup-silicone-torso-f1x29": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-12a02": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-1q0y8": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-155cm-f-cup-tpe-companion-doll-fwd058": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-157cm-c-cup-tpe-companion-doll-fwd042": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-162cm-f-cup-tpe-companion-doll-fwd033": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-165cm-c-cup-tpe-companion-doll-1om3y": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-165cm-c-cup-tpe-companion-doll-fwd040": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-1gsv4": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lexie-168cm-d-cup-silicone-companion-doll-qgq4t": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd086": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-152cm-d-cup-tpe-companion-doll-fwd095": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-157cm-c-cup-tpe-companion-doll-f2g0r": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd020": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-157cm-g-cup-silicone-companion-doll-fsd046": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-fwd102": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-157cm-g-cup-tpe-companion-doll-qdqgg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-159cm-a-cup-tpe-companion-doll-fwd070": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-160cm-e-cup-silicone-companion-doll-fsd017": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lily-162cm-f-cup-tpe-companion-doll-1v6wy": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lucy-103cm-g-cup-silicone-torso-companion-doll-fwt010": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-1ecp8": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lucy-155cm-f-cup-tpe-companion-doll-zlrtu": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lucy-157cm-g-cup-silicone-companion-doll-fsd044": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lucy-159cm-a-cup-silicone-companion-doll-fsd009": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-luna-155cm-f-cup-tpe-companion-doll-fwd084": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-103cm-g-cup-silicone-torso-14roh": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-103cm-g-cup-silicone-torso-ite4t": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-113cm-d-cup-silicone-torso-1br4x": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-113cm-d-cup-silicone-torso-5g23k": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-14myp": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-17pmn": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-157cm-g-cup-silicone-companion-doll-1pjhu": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-159cm-a-cup-silicone-companion-doll-5z8kd": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-lyra-159cm-f-cup-tpe-companion-doll-1b0mg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-mirabelle-161cm-e-cup-tpe-companion-doll-frjws": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-monica-162cm-f-cup-tpe-companion-doll-52qg1": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-natalia-160cm-e-cup-silicone-companion-doll-15zbu": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-natural-rose-157cm-g-cup-tpe-companion-doll-1maka": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-nika-152cm-d-cup-silicone-companion-doll-fsd032": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-nika-152cm-d-cup-silicone-companion-doll-fsd034": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-nika-155cm-f-cup-tpe-companion-doll-fwd107": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-rose-113cm-d-cup-silicone-torso-1br8k": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-rose-157cm-g-cup-silicone-companion-doll-14n2b": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-rose-162cm-f-cup-tpe-companion-doll-1v70w": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-rose-168cm-d-cup-silicone-companion-doll-fgcsg": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-roxy-158cm-c-cup-tpe-companion-doll-1guwj": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-scarlett-161cm-e-cup-tpe-companion-doll-1e3ky": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sheila-159cm-f-cup-tpe-companion-doll-b1x0q": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sheila-165cm-c-cup-tpe-companion-doll-fwd110": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-skylar-157cm-g-cup-tpe-companion-doll-1wzt3": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-skylar-159cm-a-cup-tpe-companion-doll-14ta5": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-skylar-165cm-c-cup-tpe-companion-doll-zn3oa": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-skylar-168cm-d-cup-silicone-companion-doll-6jurd": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-157cm-c-cup-tpe-companion-doll-1onm6": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-159cm-a-cup-silicone-companion-doll-fsd028": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-159cm-a-cup-tpe-companion-doll-kpgav": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-159cm-f-cup-silicone-companion-doll-bsvw6": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-162cm-f-cup-tpe-companion-doll-ref3l": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-sophiemina-168cm-d-cup-silicone-companion-doll-138mt": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-stella-162cm-f-cup-tpe-companion-doll-7zlgx": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-thalia-152cm-d-cup-silicone-companion-doll-fsd054": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-trinity-155cm-k-cup-tpe-companion-doll-19vo7": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-trixie-161cm-e-cup-tpe-companion-doll-9x9j3": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-vera-160cm-d-cup-tpe-companion-doll-1ju0r": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-zoey-155cm-f-cup-tpe-companion-doll-zm0n9": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-zoey-162cm-f-cup-tpe-companion-doll-1v760": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
+  },
+  "funwest-dolls-zoey-165cm-k-cup-tpe-companion-doll-fwd082": {
+    "recipe": "bespoke",
+    "configId": "funwest-imported",
+    "bespoke": {
+      "groupId": "accessories",
+      "managedOptionIds": [
+        "vaginal-irrigator",
+        "reusable-drying-rod",
+        "head-stand-holder"
+      ],
+      "tiers": [
+        {
+          "id": "starter",
+          "add": []
+        },
+        {
+          "id": "popular",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod"
+          ]
+        },
+        {
+          "id": "premium",
+          "add": [
+            "vaginal-irrigator",
+            "reusable-drying-rod",
+            "head-stand-holder"
+          ]
+        }
+      ],
+      "applyWmGuard": false
+    }
   }
 };
-export const reviewedPresetHandleCount = 604;
+export const reviewedPresetHandleCount = 764;
