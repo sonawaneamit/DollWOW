@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:27:56.330Z",
+      "reviewedAt": "2026-11-24T15:38:17.904Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
+      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:27:56.330Z",
+      "reviewedAt": "2026-11-24T15:38:17.904Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
+      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
     },
     "coordinatedRelease": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:27:56.330Z",
+      "reviewedAt": "2026-11-24T15:38:17.904Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "1f623adc94360ccd911ae641205a27f7c012b3c65df102c03bd01766aef9036c"
+      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
     }
   },
   "payload": {
@@ -34983,28 +34983,33 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Factory configuration with your selected head and customizations.",
-            "add": [],
-            "remove": []
-          },
-          {
-            "id": "enthusiast",
-            "description": "Adds storage solution and comfort accessories.",
+            "description": "Essential care kit and head stand for safe storage.",
             "add": [
               {
                 "groupId": "accessories",
                 "optionId": "head-stand-holder"
-              },
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Replaceable insert with heating comfort.",
+            "add": [
               {
                 "groupId": "accessories",
                 "optionId": "replaceable-vagina-insert"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "heating-blanket"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with heating comfort.",
+            "description": "Complete care system with all comfort upgrades.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35029,28 +35034,33 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Factory configuration with your selected head and customizations.",
-            "add": [],
-            "remove": []
-          },
-          {
-            "id": "enthusiast",
-            "description": "Adds storage solution and comfort accessories.",
+            "description": "Essential care kit and head stand for safe storage.",
             "add": [
               {
                 "groupId": "accessories",
                 "optionId": "head-stand-holder"
-              },
+              }
+            ],
+            "remove": []
+          },
+          {
+            "id": "enthusiast",
+            "description": "Replaceable insert with heating comfort.",
+            "add": [
               {
                 "groupId": "accessories",
                 "optionId": "replaceable-vagina-insert"
+              },
+              {
+                "groupId": "accessories",
+                "optionId": "heating-blanket"
               }
             ],
             "remove": []
           },
           {
             "id": "collector",
-            "description": "Complete care system with heating comfort.",
+            "description": "Complete care system with all comfort upgrades.",
             "add": [
               {
                 "groupId": "accessories",
