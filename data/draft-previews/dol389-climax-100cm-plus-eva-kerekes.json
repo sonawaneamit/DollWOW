@@ -1,0 +1,116 @@
+[
+  {
+    "note": "DOL-389: Climax 100cm Plus+ Eva (Black) - DRAFT awaiting photo upload and cost verification",
+    "handle": "climax-eva-100cm-q-cup-plus-tpe-doll",
+    "title": "Climax Eva 100cm Q-Cup Plus+ TPE Doll",
+    "description": "PLACEHOLDER: Editorial description to be written after photo review. Needs measurements confirmation from body chart.",
+    "seo": {
+      "title": "Climax Eva 100cm Q-Cup Plus+ TPE Doll | DollWOW",
+      "description": "Meet Eva: Climax Plus+ 100cm Q-cup TPE doll at 32kg. Free US shipping."
+    },
+    "vendor": "Climax Doll",
+    "productType": "Custom TPE Doll",
+    "tags": [
+      "climax",
+      "climax-dolls",
+      "custom",
+      "customizable",
+      "female-doll",
+      "options:climax-female-silicone-standard",
+      "tpe",
+      "black-skin",
+      "dollwow-test"
+    ],
+    "basePrice": "1299.00",
+    "tierPrices": {
+      "starter": "1349.00",
+      "enthusiast": "1349.00",
+      "collector": "1449.00"
+    },
+    "pricingNotes": "Using MAP/0.85 formula: $1,100 MAP → $1,299 base. Needs verification: FOB $430 + shipping/taxes for 32kg + head cost. Estimated 36% margin if landed cost ~$830. HOLD if costs unclear.",
+    "measurements": {
+      "Height": "PENDING from body chart",
+      "Weight": "70.5 lbs / 32 kg",
+      "Cup size": "Q-Cup",
+      "note": "Complete measurements needed from body chart in Google Drive"
+    },
+    "photos": {
+      "source": "Google Drive folder 1ra4e8pdpr2Y1E1eytLJbR9m9ljy7QqxQ",
+      "count": "11 JPGs + 1 WebP + body chart",
+      "status": "NOT_DOWNLOADED",
+      "uploadedFiles": []
+    },
+    "extended": {
+      "catalogIdentityKey": "climax__eva__plus100__100cm__q-cup__tpe",
+      "catalogBodyIdentityKey": "climax__plus100__100cm__q-cup__tpe",
+      "headModel": "Eva",
+      "displayName": "Eva",
+      "brand": "Climax Doll",
+      "material": "TPE",
+      "heightCm": 100,
+      "weightLb": 70.5,
+      "cupSize": "Q-Cup",
+      "warehouseCountry": "Factory order",
+      "stockStatus": "custom",
+      "deliveryEstimate": "Est. 3 weeks",
+      "customAvailable": true
+    }
+  },
+  {
+    "note": "DOL-389: Climax 100cm Plus+ Kerekes (Black) - DRAFT awaiting photo upload and cost verification",
+    "handle": "climax-kerekes-100cm-q-cup-plus-tpe-doll",
+    "title": "Climax Kerekes 100cm Q-Cup Plus+ TPE Doll",
+    "description": "PLACEHOLDER: Editorial description to be written after photo review. Needs measurements confirmation from body chart.",
+    "seo": {
+      "title": "Climax Kerekes 100cm Q-Cup Plus+ TPE Doll | DollWOW",
+      "description": "Meet Kerekes: Climax Plus+ 100cm Q-cup TPE doll at 32kg. Free US shipping."
+    },
+    "vendor": "Climax Doll",
+    "productType": "Custom TPE Doll",
+    "tags": [
+      "climax",
+      "climax-dolls",
+      "custom",
+      "customizable",
+      "female-doll",
+      "options:climax-female-silicone-standard",
+      "tpe",
+      "black-skin",
+      "dollwow-test"
+    ],
+    "basePrice": "1299.00",
+    "tierPrices": {
+      "starter": "1349.00",
+      "enthusiast": "1349.00",
+      "collector": "1449.00"
+    },
+    "pricingNotes": "Using MAP/0.85 formula: $1,100 MAP → $1,299 base. Needs verification: FOB $430 + shipping/taxes for 32kg + head cost. Estimated 36% margin if landed cost ~$830. HOLD if costs unclear.",
+    "measurements": {
+      "Height": "PENDING from body chart",
+      "Weight": "70.5 lbs / 32 kg",
+      "Cup size": "Q-Cup",
+      "note": "Complete measurements needed from body chart in Google Drive"
+    },
+    "photos": {
+      "source": "Google Drive folder 1u1hz2zpY9v3KVqyk_lGjus-33d-WRcl-",
+      "count": "12 JPGs + 1 WebP + body chart",
+      "status": "NOT_DOWNLOADED",
+      "uploadedFiles": []
+    },
+    "extended": {
+      "catalogIdentityKey": "climax__kerekes__plus100__100cm__q-cup__tpe",
+      "catalogBodyIdentityKey": "climax__plus100__100cm__q-cup__tpe",
+      "headModel": "Kerekes",
+      "displayName": "Kerekes",
+      "brand": "Climax Doll",
+      "material": "TPE",
+      "heightCm": 100,
+      "weightLb": 70.5,
+      "cupSize": "Q-Cup",
+      "warehouseCountry": "Factory order",
+      "stockStatus": "custom",
+      "deliveryEstimate": "Est. 3 weeks",
+      "customAvailable": true
+    }
+  }
+]
