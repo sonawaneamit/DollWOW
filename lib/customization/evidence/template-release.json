@@ -2980,7 +2980,8 @@
       "gid://shopify/Product/10745005637816",
       "gid://shopify/Product/10745005801656",
       "gid://shopify/Product/10761282715832",
-      "gid://shopify/Product/10761283010744"
+      "gid://shopify/Product/10761283010744",
+      "gid://shopify/Product/10761476276408"
     ],
     "entries": [
       {
@@ -17325,6 +17326,13 @@
         "tag": "options:wm-female-silicone-softness",
         "bindingKey": "b51a819630023766142b41cc22f8fd2f80554d191c15219a8e5342c2dc7f5c2c",
         "runtimeHash": "ccc8d804193b80b80b4fb95cc60489134f619be241e2780137142dc4407142f2"
+      },
+      {
+        "productId": "gid://shopify/Product/10761476276408",
+        "handle": "wm-jade-sterling-164cm-g-cup-silicone-companion-doll-js166",
+        "tag": "options:wm-female-silicone-softness",
+        "bindingKey": "b51a819630023766142b41cc22f8fd2f80554d191c15219a8e5342c2dc7f5c2c",
+        "runtimeHash": "b206dbb65a5fb6aac31299307a2cc5c51b06da6ddad424a454e0c49a76b3a431"
       },
       {
         "productId": "gid://shopify/Product/10433157955768",
