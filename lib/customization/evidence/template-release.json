@@ -4,20 +4,20 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:46:25.361Z",
-      "payloadHash": "3b4328a86e23191340297a06b194aa26f2cfbffec5a4d09f30a1eb409d4eed5f",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
       "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:46:25.361Z",
-      "payloadHash": "3b4328a86e23191340297a06b194aa26f2cfbffec5a4d09f30a1eb409d4eed5f",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
       "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     },
     "coordinatedRelease": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-168 FunWest Amy fsd027 and Nika fsd033 go-live 24 Nov 2026",
-      "reviewedAt": "2026-11-24T12:46:25.361Z",
-      "payloadHash": "3b4328a86e23191340297a06b194aa26f2cfbffec5a4d09f30a1eb409d4eed5f",
+      "reviewedAt": "2026-11-24T12:54:13.287Z",
+      "payloadHash": "e6ccef75c629d1cd54c33e3d022d270a61c6f0708d641d4c53bf23d2927e9125",
       "evidenceRef": "Remove preview tags and rebind fsd027 and fsd033 for DOL-168 2026-11-24"
     }
   },
@@ -4605,7 +4605,7 @@
         "handle": "climax-eva-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2"
+        "runtimeHash": "a1b1a09e0aba06795349383b70e9ced0b8e2cd931582efe92fa5752c73a09eec"
       },
       {
         "productId": "gid://shopify/Product/10518039691448",
@@ -4703,7 +4703,7 @@
         "handle": "climax-kerekes-100cm-q-cup-plus-mini-doll",
         "tag": "options:climax-female-tpe-standard",
         "bindingKey": "c7f5d1fc77b7dbc76ad9026f5b2acc9e374874a071de97a0186ceb760ec31fd6",
-        "runtimeHash": "b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3"
+        "runtimeHash": "2c5d5ed3634b9cff52575ed38be9cb06e09398b3715515103f8d770ce0720297"
       },
       {
         "productId": "gid://shopify/Product/10518041788600",
