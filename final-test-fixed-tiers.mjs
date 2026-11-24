@@ -1,7 +1,7 @@
 import playwright from 'playwright';
 
-const SHARE_TOKEN = 'fJX3QC34ZR1ArthgcxfchSNNfJaQF0Or';
-const BASE_URL = 'https://doll-9brtfiazy-sonawaneamits-projects.vercel.app';
+const SHARE_TOKEN = 'tghWkVD9ptOe4wyUQGeWPn876UqYTywp';
+const BASE_URL = 'https://doll-p7a6dwyxk-sonawaneamits-projects.vercel.app';
 
 const products = [
   { brand: 'WM', name: 'WM Abbie', handle: 'wm-abbie-171cm-h-cup-tpe-companion-doll-493ex' },

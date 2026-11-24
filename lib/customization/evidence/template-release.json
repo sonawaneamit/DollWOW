@@ -34983,7 +34983,7 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential care kit and head stand for safe storage.",
+            "description": "Essential head stand for safe storage.",
             "add": [
               {
                 "groupId": "accessories",
@@ -34994,7 +34994,7 @@
           },
           {
             "id": "enthusiast",
-            "description": "Replaceable insert with heating comfort.",
+            "description": "Adds comfort accessories for enhanced experience.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35009,7 +35009,7 @@
           },
           {
             "id": "collector",
-            "description": "Complete care system with all comfort upgrades.",
+            "description": "Complete care system with all accessories.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35034,7 +35034,7 @@
         "tiers": [
           {
             "id": "starter",
-            "description": "Essential care kit and head stand for safe storage.",
+            "description": "Essential head stand for safe storage.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35045,7 +35045,7 @@
           },
           {
             "id": "enthusiast",
-            "description": "Replaceable insert with heating comfort.",
+            "description": "Adds comfort accessories for enhanced experience.",
             "add": [
               {
                 "groupId": "accessories",
@@ -35060,7 +35060,7 @@
           },
           {
             "id": "collector",
-            "description": "Complete care system with all comfort upgrades.",
+            "description": "Complete care system with all accessories.",
             "add": [
               {
                 "groupId": "accessories",
