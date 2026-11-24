@@ -3463,7 +3463,7 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
   "yl-zuzanny-155cm-d-cup-tpe-companion-doll-1ozwz": {
     "recipe": "yl-tpe",
     "configId": "yl-source-verified"
-  },,
+  },
   // FunWest preset eligibility entries (160 products) - DOL-399
   // All FunWest full-body dolls use accessories for package tiers
   "funwest-dolls-adele-155cm-f-cup-tpe-companion-doll-123xb": {
@@ -3472,8 +3472,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3484,15 +3484,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3506,8 +3506,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3518,15 +3518,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3540,8 +3540,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3552,15 +3552,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3574,8 +3574,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3586,15 +3586,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3608,8 +3608,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3620,15 +3620,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3642,8 +3642,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3654,15 +3654,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3676,8 +3676,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3688,15 +3688,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3710,8 +3710,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3722,15 +3722,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3744,8 +3744,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3756,15 +3756,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3778,8 +3778,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3790,15 +3790,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3812,8 +3812,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3824,15 +3824,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3846,8 +3846,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3858,15 +3858,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3880,8 +3880,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3892,15 +3892,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3914,8 +3914,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3926,15 +3926,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3948,8 +3948,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3960,15 +3960,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -3982,8 +3982,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -3994,15 +3994,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4016,8 +4016,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4028,15 +4028,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4050,8 +4050,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4062,15 +4062,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4084,8 +4084,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4096,15 +4096,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4118,8 +4118,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4130,15 +4130,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4152,8 +4152,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4164,15 +4164,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4186,8 +4186,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4198,15 +4198,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4220,8 +4220,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4232,15 +4232,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4254,8 +4254,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4266,15 +4266,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4288,8 +4288,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4300,15 +4300,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4322,8 +4322,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4334,15 +4334,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4356,8 +4356,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4368,15 +4368,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4390,8 +4390,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4402,15 +4402,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4424,8 +4424,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4436,15 +4436,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4458,8 +4458,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4470,15 +4470,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4492,8 +4492,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4504,15 +4504,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4526,8 +4526,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4538,15 +4538,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4560,8 +4560,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4572,15 +4572,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4594,8 +4594,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4606,15 +4606,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4628,8 +4628,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4640,15 +4640,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4662,8 +4662,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4674,15 +4674,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4696,8 +4696,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4708,15 +4708,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4730,8 +4730,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4742,15 +4742,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4764,8 +4764,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4776,15 +4776,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4798,8 +4798,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4810,15 +4810,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4832,8 +4832,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4844,15 +4844,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4866,8 +4866,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4878,15 +4878,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4900,8 +4900,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4912,15 +4912,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4934,8 +4934,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4946,15 +4946,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -4968,8 +4968,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -4980,15 +4980,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5002,8 +5002,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5014,15 +5014,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5036,8 +5036,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5048,15 +5048,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5070,8 +5070,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5082,15 +5082,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5104,8 +5104,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5116,15 +5116,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5138,8 +5138,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5150,15 +5150,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5172,8 +5172,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5184,15 +5184,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5206,8 +5206,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5218,15 +5218,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5240,8 +5240,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5252,15 +5252,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5274,8 +5274,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5286,15 +5286,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5308,8 +5308,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5320,15 +5320,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5342,8 +5342,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5354,15 +5354,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5376,8 +5376,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5388,15 +5388,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5410,8 +5410,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5422,15 +5422,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5444,8 +5444,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5456,15 +5456,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5478,8 +5478,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5490,15 +5490,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5512,8 +5512,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5524,15 +5524,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5546,8 +5546,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5558,15 +5558,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5580,8 +5580,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5592,15 +5592,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5614,8 +5614,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5626,15 +5626,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5648,8 +5648,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5660,15 +5660,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5682,8 +5682,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5694,15 +5694,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5716,8 +5716,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5728,15 +5728,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5750,8 +5750,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5762,15 +5762,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5784,8 +5784,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5796,15 +5796,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5818,8 +5818,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5830,15 +5830,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5852,8 +5852,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5864,15 +5864,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5886,8 +5886,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5898,15 +5898,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5920,8 +5920,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5932,15 +5932,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5954,8 +5954,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -5966,15 +5966,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -5988,8 +5988,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6000,15 +6000,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6022,8 +6022,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6034,15 +6034,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6056,8 +6056,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6068,15 +6068,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6090,8 +6090,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6102,15 +6102,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6124,8 +6124,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6136,15 +6136,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6158,8 +6158,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6170,15 +6170,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6192,8 +6192,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6204,15 +6204,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6226,8 +6226,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6238,15 +6238,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6260,8 +6260,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6272,15 +6272,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6294,8 +6294,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6306,15 +6306,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6328,8 +6328,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6340,15 +6340,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6362,8 +6362,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6374,15 +6374,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6396,8 +6396,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6408,15 +6408,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6430,8 +6430,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6442,15 +6442,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6464,8 +6464,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6476,15 +6476,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6498,8 +6498,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6510,15 +6510,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6532,8 +6532,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6544,15 +6544,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6566,8 +6566,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6578,15 +6578,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6600,8 +6600,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6612,15 +6612,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6634,8 +6634,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6646,15 +6646,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6668,8 +6668,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6680,15 +6680,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6702,8 +6702,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6714,15 +6714,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6736,8 +6736,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6748,15 +6748,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6770,8 +6770,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6782,15 +6782,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6804,8 +6804,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6816,15 +6816,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6838,8 +6838,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6850,15 +6850,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6872,8 +6872,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6884,15 +6884,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6906,8 +6906,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6918,15 +6918,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6940,8 +6940,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6952,15 +6952,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -6974,8 +6974,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -6986,15 +6986,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7008,8 +7008,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7020,15 +7020,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7042,8 +7042,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7054,15 +7054,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7076,8 +7076,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7088,15 +7088,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7110,8 +7110,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7122,15 +7122,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7144,8 +7144,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7156,15 +7156,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7178,8 +7178,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7190,15 +7190,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7212,8 +7212,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7224,15 +7224,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7246,8 +7246,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7258,15 +7258,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7280,8 +7280,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7292,15 +7292,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7314,8 +7314,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7326,15 +7326,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7348,8 +7348,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7360,15 +7360,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7382,8 +7382,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7394,15 +7394,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7416,8 +7416,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7428,15 +7428,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7450,8 +7450,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7462,15 +7462,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7484,8 +7484,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7496,15 +7496,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7518,8 +7518,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7530,15 +7530,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7552,8 +7552,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7564,15 +7564,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7586,8 +7586,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7598,15 +7598,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7620,8 +7620,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7632,15 +7632,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7654,8 +7654,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7666,15 +7666,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7688,8 +7688,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7700,15 +7700,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7722,8 +7722,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7734,15 +7734,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7756,8 +7756,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7768,15 +7768,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7790,8 +7790,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7802,15 +7802,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7824,8 +7824,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7836,15 +7836,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7858,8 +7858,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7870,15 +7870,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7892,8 +7892,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7904,15 +7904,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7926,8 +7926,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7938,15 +7938,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7960,8 +7960,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -7972,15 +7972,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -7994,8 +7994,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8006,15 +8006,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8028,8 +8028,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8040,15 +8040,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8062,8 +8062,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8074,15 +8074,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8096,8 +8096,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8108,15 +8108,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8130,8 +8130,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8142,15 +8142,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8164,8 +8164,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8176,15 +8176,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8198,8 +8198,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8210,15 +8210,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8232,8 +8232,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8244,15 +8244,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8266,8 +8266,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8278,15 +8278,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8300,8 +8300,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8312,15 +8312,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8334,8 +8334,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8346,15 +8346,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8368,8 +8368,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8380,15 +8380,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8402,8 +8402,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8414,15 +8414,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8436,8 +8436,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8448,15 +8448,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8470,8 +8470,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8482,15 +8482,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8504,8 +8504,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8516,15 +8516,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8538,8 +8538,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8550,15 +8550,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8572,8 +8572,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8584,15 +8584,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8606,8 +8606,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8618,15 +8618,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8640,8 +8640,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8652,15 +8652,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8674,8 +8674,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8686,15 +8686,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8708,8 +8708,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8720,15 +8720,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8742,8 +8742,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8754,15 +8754,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8776,8 +8776,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8788,15 +8788,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8810,8 +8810,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8822,15 +8822,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8844,8 +8844,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8856,15 +8856,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
@@ -8878,8 +8878,8 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
     "bespoke": {
       "groupId": "accessories",
       "managedOptionIds": [
-        "vaginal-irrigator",
-        "reusable-drying-rod",
+        "replaceable-vagina-insert",
+        "heating-blanket",
         "head-stand-holder"
       ],
       "tiers": [
@@ -8890,15 +8890,15 @@ export const reviewedPresetEligibility: Readonly<Record<string, ReviewedPresetEl
         {
           "id": "popular",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod"
+            "replaceable-vagina-insert",
+            "heating-blanket"
           ]
         },
         {
           "id": "premium",
           "add": [
-            "vaginal-irrigator",
-            "reusable-drying-rod",
+            "replaceable-vagina-insert",
+            "heating-blanket",
             "head-stand-holder"
           ]
         }
