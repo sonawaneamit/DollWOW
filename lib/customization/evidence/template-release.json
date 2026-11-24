@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:38:17.904Z",
+      "reviewedAt": "2026-11-24T15:47:35.279Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
+      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:38:17.904Z",
+      "reviewedAt": "2026-11-24T15:47:35.279Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
+      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
     },
     "coordinatedRelease": {
       "reviewedBy": "Preview regeneration: DOL-399 FunWest packages",
-      "reviewedAt": "2026-11-24T15:38:17.904Z",
+      "reviewedAt": "2026-11-24T15:47:35.279Z",
       "evidenceRef": "DOL-399: FunWest packages preview - approval regenerated for preview testing only",
-      "payloadHash": "952f4e25a071b29d7d3ccddb9a33a889bdee8e99bdcd1c3df07f1c4953dbb7a6"
+      "payloadHash": "141852026e720d2ebcb03a3eb6c7e88802219ff960ab65cd5269ffe33cd73a27"
     }
   },
   "payload": {
@@ -30700,15 +30700,23 @@
           },
           {
             "id": "enthusiast",
-            "description": "Standing capability with an included tongue choice.",
+            "description": "Standing capability with tongue and enhanced features.",
             "add": [
               {
                 "groupId": "standing-add-on",
-                "optionId": "standing-free"
+                "optionId": "standing"
               },
               {
                 "groupId": "enhanced-mouth-add-on",
-                "optionId": "with-tongue-free"
+                "optionId": "with-tongue"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "hyper-realism-body-painting-free"
+              },
+              {
+                "groupId": "premium-head-body-options",
+                "optionId": "articulated-fingers-free"
               }
             ],
             "remove": []
