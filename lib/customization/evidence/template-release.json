@@ -4,21 +4,21 @@
   "approvals": {
     "catalogCompatibility": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:04:23.767Z",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
       "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Climax mini dolls launch 2026-11-24: add Eva and Kerekes (placeholder hashes, to be relinked)"
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     },
     "checkoutChargeLines": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:04:23.767Z",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
       "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Climax mini dolls launch 2026-11-24: add Eva and Kerekes (placeholder hashes, to be relinked)"
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     },
     "coordinatedRelease": {
       "reviewedBy": "Dolly (Grok Bot) for Martin, DOL-382 held go-live 21 Nov (Martin approved all previews and all FU dolls)",
-      "reviewedAt": "2026-11-24T12:04:23.767Z",
+      "reviewedAt": "2026-11-24T12:13:30.002Z",
       "payloadHash": "6c570c145e794a5198633a1c09513e39ccea2e66d09c57e38e25bbe30c921856",
-      "evidenceRef": "Climax mini dolls launch 2026-11-24: add Eva and Kerekes (placeholder hashes, to be relinked)"
+      "evidenceRef": "Remove conflicting PR #288 bindings 2026-11-24"
     }
   },
   "payload": {
@@ -35553,92 +35553,6 @@
               {
                 "groupId": "premium-head-body-options-multiple-silicone",
                 "optionId": "gel-butt"
-              }
-            ],
-            "remove": []
-          }
-        ]
-      },
-      "climax-eva-100cm-plus-4971176e875437c3": {
-        "tag": "options:climax-female-tpe-standard",
-        "signature": "sha256:4971176e875437c3e39bb8f754d8fa8e88e0a0f8c849d6a5ead1acbcf25ce2d9",
-        "tiers": [
-          {
-            "id": "starter",
-            "description": "Factory build with articulated fingers and EVO skeleton.",
-            "add": [
-              {
-                "groupId": "skeleton-type",
-                "optionId": "evo-free"
-              },
-              {
-                "groupId": "premium-body-options-multiple",
-                "optionId": "articulated-fingers-free"
-              }
-            ],
-            "remove": []
-          },
-          {
-            "id": "enthusiast",
-            "description": "Upgrades to S-TPE body.",
-            "add": [
-              {
-                "groupId": "body-material",
-                "optionId": "s-tpe"
-              }
-            ],
-            "remove": []
-          },
-          {
-            "id": "collector",
-            "description": "Adds pubic hair styling.",
-            "add": [
-              {
-                "groupId": "vagina-hair-type",
-                "optionId": "no-1"
-              }
-            ],
-            "remove": []
-          }
-        ]
-      },
-      "climax-kerekes-100cm-plus-ddd350a0cae7d774": {
-        "tag": "options:climax-female-tpe-standard",
-        "signature": "sha256:ddd350a0cae7d774f9a8c2e1b34f56d7e88a1b9f8d59a6c3fba2cdeff36df3ea",
-        "tiers": [
-          {
-            "id": "starter",
-            "description": "Factory build with articulated fingers and EVO skeleton.",
-            "add": [
-              {
-                "groupId": "skeleton-type",
-                "optionId": "evo-free"
-              },
-              {
-                "groupId": "premium-body-options-multiple",
-                "optionId": "articulated-fingers-free"
-              }
-            ],
-            "remove": []
-          },
-          {
-            "id": "enthusiast",
-            "description": "Upgrades to S-TPE body.",
-            "add": [
-              {
-                "groupId": "body-material",
-                "optionId": "s-tpe"
-              }
-            ],
-            "remove": []
-          },
-          {
-            "id": "collector",
-            "description": "Adds pubic hair styling.",
-            "add": [
-              {
-                "groupId": "vagina-hair-type",
-                "optionId": "no-1"
               }
             ],
             "remove": []
