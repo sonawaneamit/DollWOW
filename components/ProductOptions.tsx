@@ -75,11 +75,13 @@ import { isIdoMdFixedInclusion, mdIncludedSoftButt, MD_MENU_TAG } from '@/lib/cu
 import { includedBuildItems, isChikuPreview, isChikuEyeImage } from "@/lib/customization/chiku-preview";
 import { gynoidBodyVersionMapping } from '@/lib/catalog/gynoid-body-versions';
 import { BfcmPreviewSummary } from './BfcmPreviewSummary';
+import { FanrealNovemberSummary } from './FanrealNovemberSummary';
+import { fanrealNovemberHasCustomerOffer } from '@/lib/promotions/fanrealNovember2026';
 import { reviewedGynoidIdentity } from '@/lib/customization/gynoid';
 
 export function ProductOptions({ product, config, promoClock, templateRecipe, presetChoicePreview = false, draftPreview = false }: { product: Product; config: BrandCustomizationConfig; promoClock?: string; templateRecipe?: TemplatePresetDefinition | null; presetChoicePreview?: boolean; draftPreview?: boolean }) {
   const isFixedWarehouseUnit = product.extended.stockStatus === "ready_to_ship" && product.extended.customAvailable !== true;
-  if (isFixedWarehouseUnit && !product.extended.bfcmPreview) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit draftPreview={draftPreview} />;
+  if (isFixedWarehouseUnit && !product.extended.bfcmPreview && !(product.extended.fanrealNovember && product.extended.fanrealNovember.gifts.length > 0)) return <ProductOptionsOnRequest product={product} fixedWarehouseUnit draftPreview={draftPreview} />;
   return config.groups.length ? <ProductOptionsBuilder product={product} config={config} promoClock={promoClock} templateRecipe={templateRecipe} presetChoicePreview={presetChoicePreview} draftPreview={draftPreview} /> : <ProductOptionsOnRequest product={product} draftPreview={draftPreview} />;
 }
 
@@ -558,6 +560,7 @@ function ProductOptionsBuilder({ product, config, promoClock, templateRecipe, pr
                   }} className="min-h-11 text-sm font-semibold text-accent underline underline-offset-4">Review / edit options</button>
                 </div>
                 <PriceSummary basePrice={basePrice} optionPriceDelta={purchaseTotal - basePrice} totalPrice={purchaseTotal} currencyCode={currencyCode} />
+                {fanrealNovemberHasCustomerOffer(product.extended.fanrealNovember) && <FanrealNovemberSummary offer={product.extended.fanrealNovember} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
                 {product.extended.bfcmPreview && <BfcmPreviewSummary offer={product.extended.bfcmPreview} subtotal={purchaseTotal} selections={resolved.selectedOptions} />}
                 {pendingChoices.length > 0 && <p className="mt-2 text-sm text-text-dim">Includes the extra-head upgrade. Choose your head before adding to cart.</p>}
 
@@ -787,7 +790,9 @@ export function OptionTile({ product, group, option, catalogOption, selected, di
   allowPromotions: boolean;
   onClick: () => void;
 }) {
-  const pricing = product.extended.bfcmPreview && option.priceDelta === 0 && catalogOption.priceDelta !== 0
+  const pricing = product.extended.fanrealNovember && option.priceDelta === 0 && catalogOption.priceDelta !== 0
+    ? { displayDelta: 0, catalogDelta: catalogOption.priceDelta ?? 0, strike: true, promoLabel: 'Fanreal November deal', displayLabel: option.label, active: true, eligible: true }
+    : product.extended.bfcmPreview && option.priceDelta === 0 && catalogOption.priceDelta !== 0
     ? { displayDelta: 0, catalogDelta: catalogOption.priceDelta ?? 0, strike: true, promoLabel: `${product.extended.bfcmPreview.brand} Black Friday`, displayLabel: option.label, active: true, eligible: true }
     : promotionOptionPrice(product, group, catalogOption, promotionNow, allowPromotions, promotionContext);
   return (
@@ -845,11 +850,6 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPre
   const basePrice = Number(firstAvailable?.price.amount ?? product.priceRange.minVariantPrice.amount);
   const currencyCode = firstAvailable?.price.currencyCode ?? product.priceRange.minVariantPrice.currencyCode;
   const canCheckout = Boolean(!draftPreview && firstAvailable?.id && firstAvailable.availableForSale);
-  const checkedAt = product.extended.stockLastCheckedAt ? new Date(product.extended.stockLastCheckedAt) : null;
-  const checkedLabel = checkedAt && !Number.isNaN(checkedAt.getTime())
-    ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(checkedAt)
-    : null;
-
   async function addToCart() {
     if (!canCheckout || !firstAvailable?.id) return;
     setLoading(true);
@@ -913,7 +913,7 @@ function ProductOptionsOnRequest({ product, fixedWarehouseUnit = false, draftPre
               </div>
               <div className="flex items-start gap-3 rounded-md bg-surface-tint p-4">
                 <PackageCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-                <div><p className="text-sm font-semibold text-text-dim">Stock record</p><p className="mt-1 text-base font-semibold text-text">{checkedLabel ? `Checked ${checkedLabel}` : "Confirmed before dispatch"}</p></div>
+                <div><p className="text-sm font-semibold text-text-dim">This exact doll</p><p className="mt-1 text-base font-semibold text-text">Ships as shown in the photos</p></div>
               </div>
             </div>
           ) : null}

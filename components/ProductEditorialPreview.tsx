@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { protectedProductImageUrl } from "@/lib/catalog/productImage";
-import { hasEditorialIntro } from "@/lib/catalog/editorialIntro";
+import { customerFacingEditorialIntro, hasEditorialIntro } from "@/lib/catalog/editorialIntro";
 import type { Product } from "@/types/product";
 
 type Props = {
@@ -79,9 +79,9 @@ export function supportsProductEditorialPreview(product: Product) {
 
 export function ProductEditorialPreview({ product, editorial, preview = false }: Props) {
   const testPreview = editorialPreviews[product.handle];
-  const content = preview ? testPreview : editorial;
+  const content = customerFacingEditorialIntro(preview ? testPreview : editorial);
   // Require real magazine copy — empty Admin shells must not paint a blank block.
-  if (!hasEditorialIntro(content)) return null;
+  if (!content) return null;
   const media = testPreview || {
     imageIndex: Math.min(3, Math.max(0, product.images.length - 1)),
     imageAlt: `${product.title} editorial product portrait`,
